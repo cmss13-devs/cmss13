@@ -114,11 +114,8 @@
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "abb" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider"
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -1018,11 +1015,7 @@
 /area/lv759/indoors/apartment/eastfoyer)
 "aiH" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider";
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	pixel_y = -8
 	},
 /turf/open/floor/prison{
@@ -1081,24 +1074,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv759/indoors/caves/north_east_caves)
-"aiZ" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/window/reinforced{
-	dir = 1;
-	layer = 2
-	},
-/obj/structure/machinery/computer/communications/simple{
-	dir = 8
-	},
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -7;
-	pixel_y = 12
-	},
-/turf/open/floor/hybrisa/carpet/carpetblack,
-/area/lv759/indoors/weyyu_office/floor)
 "ajj" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced/colony{
 	autoname = 1;
@@ -3060,6 +3035,16 @@
 	},
 /turf/open/floor/corsat,
 /area/lv759/outdoors/landing_zone_2)
+"aBn" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 8;
+	autoname = 1
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_plate"
+	},
+/area/lv759/indoors/apartment/eastrestroomsshower)
 "aBq" = (
 /obj/structure/prop/hybrisa/xenobiology/big/bigbottomright{
 	layer = 7
@@ -3183,10 +3168,6 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "aCR" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/item/tool/warning_cone{
-	pixel_x = 4;
-	pixel_y = 18
-	},
 /obj/structure/closet/crate/weapon{
 	opened = 1
 	},
@@ -4940,12 +4921,7 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "aRu" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /obj/item/stack/sheet/cardboard{
 	layer = 1
 	},
@@ -4978,12 +4954,7 @@
 /area/lv759/indoors/hospital/outgoing)
 "aRK" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/maintenance_east)
 "aRN" = (
@@ -5666,6 +5637,14 @@
 "aXD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/pen/blue,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
 /turf/open/floor/hybrisa/metal/bluemetal1{
 	dir = 9
 	},
@@ -7017,12 +6996,6 @@
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/landing_zone_2)
-"bjN" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_solid/autoname{
-	dir = 1
-	},
-/turf/closed/wall/hybrisa/colony/hospital,
-/area/lv759/indoors/hospital/operation)
 "bjO" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -7440,6 +7413,8 @@
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_4"
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "bmD" = (
@@ -7473,7 +7448,7 @@
 /area/lv759/indoors/spaceport/flight_control_room)
 "bmU" = (
 /turf/closed/wall/hybrisa/colony,
-/area/lv759/indoors/hospital/pharmacy)
+/area/lv759/indoors/hospital/outgoing)
 "bne" = (
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/meridian/meridian_maintenance_south)
@@ -9179,6 +9154,8 @@
 	pixel_y = 8
 	},
 /obj/structure/disposalpipe/segment,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/central_streets)
 "bCL" = (
@@ -9946,6 +9923,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/handrail/hybrisa/handrail,
 /mob/living/simple_animal/rat/gray,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/hybrisa/metal/grated{
 	dir = 4
 	},
@@ -9961,12 +9939,8 @@
 /turf/open/auto_turf/hybrisashale/layer2,
 /area/lv759/indoors/caves/north_caves)
 "bLh" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider";
-	pixel_y = 9
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -10903,6 +10877,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/barricade/handrail/strata,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -11971,6 +11949,19 @@
 	icon_state = "red3"
 	},
 /area/lv759/indoors/spaceport/security_office)
+"cbZ" = (
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
+	layer = 4
+	},
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
+	dir = 1;
+	layer = 4
+	},
+/obj/structure/fence{
+	icon = 'icons/obj/structures/props/dark_fence.dmi'
+	},
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/colony_streets/north_street)
 "ccb" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/handrail/medical{
@@ -13727,11 +13718,13 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "cri" = (
 /obj/structure/machinery/iv_drip{
-	pixel_y = 19
+	pixel_y = 19;
+	layer = 3.9
 	},
 /obj/structure/bed/roller/hospital_empty/bigrollerempty3{
 	dir = 4;
-	icon_state = "bigrollerempty3_up"
+	icon_state = "bigrollerempty3_up";
+	layer = 4
 	},
 /turf/open/floor/prison{
 	dir = 6;
@@ -14082,6 +14075,11 @@
 "cuj" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/pizzabox/vegetable,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/breakroom)
 "cuk" = (
@@ -14189,21 +14187,21 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_street)
 "cuP" = (
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -8;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -7;
-	pixel_y = -2
-	},
-/obj/effect/landmark/objective_landmark/close,
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
 	},
@@ -14946,6 +14944,7 @@
 	pixel_x = -2;
 	pixel_y = 20
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/central_streets)
 "cBb" = (
@@ -15393,6 +15392,8 @@
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_4"
 	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -15424,6 +15425,10 @@
 "cFx" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/camera_film,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/lv759/indoors/colonial_marshals/head_office)
 "cFG" = (
@@ -15557,12 +15562,7 @@
 	icon_state = "coffeecuppajoe";
 	name = "cuppa joe's coffee cup"
 	},
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/plating/kutjevo,
 /area/lv759/indoors/spaceport/maintenance_east)
 "cGU" = (
@@ -16312,20 +16312,6 @@
 /mob/living/simple_animal/rat/gray,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_street)
-"cMK" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider";
-	pixel_y = -7
-	},
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "blue"
-	},
-/area/lv759/indoors/hospital/outgoing)
 "cMT" = (
 /obj/structure/machinery/photocopier{
 	pixel_y = 4
@@ -19554,6 +19540,7 @@
 	icon_state = "trash_9";
 	pixel_y = 12
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/central_streets)
 "dmu" = (
@@ -19740,18 +19727,8 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "doy" = (
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoenolid";
-	name = "cuppa joe's coffee cup"
-	},
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /obj/item/trash/cigbutt,
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/cement3,
@@ -20146,6 +20123,7 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/hybrisa/metal/grated,
 /area/lv759/outdoors/colony_streets/central_streets)
 "drx" = (
@@ -20668,14 +20646,9 @@
 /obj/structure/machinery/body_scanconsole{
 	layer = 5
 	},
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	layer = 2.99;
-	name = "hospital divider";
-	pixel_y = 12
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = 20;
+	dir = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "blue_plate"
@@ -21159,10 +21132,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "dAw" = (
-/obj/structure/tunnel/maint_tunnel/no_xeno_desc{
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "maintenancehatch_alt"
-	},
+/obj/structure/tunnel/maint_tunnel/hybrisa/no_xeno_desc,
 /obj/item/tool/wet_sign{
 	layer = 4;
 	pixel_x = -9;
@@ -21305,6 +21275,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl2"
 	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/lv759/indoors/hospital/morgue)
 "dBC" = (
@@ -21740,6 +21711,8 @@
 /obj/item/reagent_container/food/drinks/cans/souto{
 	icon_state = "6_pack_1_crushed"
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/central_streets)
 "dFE" = (
@@ -22456,6 +22429,13 @@
 	dir = 8
 	},
 /area/lv759/outdoors/colony_streets/south_east_street)
+"dLA" = (
+/obj/effect/hybrisa/decal/dirt,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/hybrisa/street/sidewalk{
+	dir = 1
+	},
+/area/lv759/outdoors/colony_streets/north_street)
 "dLB" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/machinery/door/airlock/almayer/engineering/autoname{
@@ -23448,12 +23428,7 @@
 	},
 /area/lv759/indoors/spaceport/cargo)
 "dUO" = (
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoenolid";
-	name = "cuppa joe's coffee cup"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /obj/effect/hybrisa/decal/tiretrack{
 	dir = 9;
 	pixel_y = 4
@@ -25288,12 +25263,12 @@
 /area/lv759/indoors/caves/central_caves)
 "ejx" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -4;
-	pixel_y = 11
-	},
 /obj/structure/closet/hydrant{
 	pixel_y = 32
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /obj/item/reagent_container/food/drinks/cans/cola,
 /turf/open/floor{
@@ -25456,6 +25431,10 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/office)
+"elA" = (
+/obj/structure/ore_box,
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/colony_streets/north_street)
 "elG" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -25567,7 +25546,8 @@
 /area/lv759/indoors/spaceport/cuppajoes)
 "emp" = (
 /obj/structure/cable{
-	icon_state = "4-8"
+	icon_state = "4-8";
+	color = "#550d0d"
 	},
 /obj/item/tool/screwdriver{
 	pixel_x = 7;
@@ -26236,10 +26216,10 @@
 	},
 /area/lv759/indoors/spaceport/communications_office)
 "esG" = (
-/obj/item/tool/warning_cone{
-	pixel_x = 2;
-	pixel_y = 9
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
+	dir = 4
 	},
+/obj/item/trash/cigbutt,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/north_street)
 "esI" = (
@@ -26462,6 +26442,10 @@
 	pixel_x = -7;
 	pixel_y = 4
 	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv759/indoors/weyyu_office/vip)
 "eup" = (
@@ -26581,18 +26565,8 @@
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/lv759/indoors/apartment/westbedrooms)
 "evA" = (
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoenolid";
-	name = "cuppa joe's coffee cup"
-	},
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/hybrisa/metal/metalwhitefull,
 /area/lv759/indoors/spaceport/cuppajoes)
 "evB" = (
@@ -29274,6 +29248,19 @@
 	icon_state = "floor_plate"
 	},
 /area/whiskey_outpost/inside/caves)
+"eSs" = (
+/obj/structure/platform/hybrisa/metalplatform6{
+	dir = 1
+	},
+/obj/structure/platform/hybrisa/metalplatform6{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+	dir = 4;
+	pixel_y = 32
+	},
+/turf/open/hybrisa/street/sidewalk,
+/area/lv759/outdoors/colony_streets/north_street)
 "eSz" = (
 /obj/structure/xenoautopsy/jar_shelf{
 	layer = 4;
@@ -29556,6 +29543,7 @@
 /obj/item/stack/sheet/cardboard,
 /obj/effect/hybrisa/decal/dirt,
 /mob/living/simple_animal/rat/brown,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "eVy" = (
@@ -29694,6 +29682,25 @@
 	icon_state = "blue"
 	},
 /area/lv759/indoors/hospital/pharmacy)
+"eXd" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/window/reinforced/toughened,
+/obj/item/paper{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/floor)
 "eXi" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -13;
@@ -30341,12 +30348,13 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "fck" = (
 /obj/structure/cable{
-	icon_state = "5-8"
+	icon_state = "5-8";
+	color = "#550d0d"
 	},
-/obj/structure/surface/table/almayer,
 /obj/item/storage/xeno_tag_case,
 /obj/item/clothing/glasses/regular/hipster,
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/plating/prison,
 /area/lv759/outdoors/caveplateau)
 "fcl" = (
@@ -30677,6 +30685,7 @@
 	icon_state = "trash_13"
 	},
 /mob/living/simple_animal/rat/gray,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_east_street)
 "ffv" = (
@@ -32012,29 +32021,25 @@
 	dir = 1;
 	layer = 2
 	},
-/obj/item/trash/c_tube{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoestack2nolid";
-	name = "stack of cuppa joe's coffee cups";
-	pixel_y = 12
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup{
+	pixel_x = -5
 	},
-/obj/item/trash/c_tube{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoestacknolid";
-	name = "stack of cuppa joe's coffee cups";
-	pixel_x = 12;
-	pixel_y = 12
+/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup_stack{
+	pixel_y = 18;
+	pixel_x = -9
 	},
-/obj/item/trash/c_tube{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoenolid";
-	name = "cuppa joe's coffee cup";
+/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup_stack{
+	pixel_y = 18
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup_stack{
+	pixel_y = 18;
+	pixel_x = 9
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup_stack{
+	pixel_y = 8;
 	pixel_x = 4
 	},
-/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -32462,6 +32467,10 @@
 	},
 /obj/effect/hybrisa/decal/dirt_2,
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+	pixel_y = 28;
+	pixel_x = 20
+	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -32514,6 +32523,8 @@
 	dir = 8;
 	icon_state = "trash_11"
 	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 8
 	},
@@ -34690,6 +34701,8 @@
 	pixel_y = 20
 	},
 /obj/structure/disposalpipe/segment,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "fOC" = (
@@ -34808,6 +34821,7 @@
 	icon_state = "trash_6"
 	},
 /mob/living/simple_animal/rat/gray,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "cell_stripe"
@@ -35391,13 +35405,8 @@
 	pixel_x = -11;
 	pixel_y = 8
 	},
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	layer = 2;
-	name = "hospital divider"
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	layer = 3.9
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -35644,13 +35653,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/lv759/indoors/hospital/virology)
 "fWi" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider"
-	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider,
 /turf/open/floor/prison{
 	icon_state = "whitegreenfull"
 	},
@@ -36196,6 +36199,7 @@
 	icon_state = "trash_11"
 	},
 /obj/item/shard,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 8
 	},
@@ -37568,6 +37572,10 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrown2"
@@ -38056,8 +38064,10 @@
 	},
 /area/lv759/indoors/mining_outpost/vehicledeployment)
 "grK" = (
-/obj/structure/tunnel,
-/turf/open/auto_turf/hybrisashale/layer1,
+/obj/item/trash/hotdog,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "grO" = (
 /obj/structure/sign/poster/safety,
@@ -39159,14 +39169,10 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
 "gAp" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	layer = 4;
-	name = "hospital divider"
-	},
 /obj/structure/machinery/light,
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
 	},
@@ -40430,12 +40436,7 @@
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "gLf" = (
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /obj/structure/prop/hybrisa/signs/cuppajoessign{
 	light_color = "#FF9396";
 	light_on = 1;
@@ -42476,18 +42477,14 @@
 	},
 /area/lv759/indoors/colonial_marshals/hallway_north_locker)
 "hbY" = (
-/obj/item/trash/c_tube{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoe";
-	name = "cuppa joe's coffee cup";
-	pixel_x = -5;
-	pixel_y = 8
-	},
-/obj/item/reagent_container/food/drinks/cans/classcola,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#F13F3F"
 	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/cans/classcola,
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
 "hce" = (
@@ -42896,12 +42893,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "hfv" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider";
-	pixel_y = -8
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = -8;
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 5;
@@ -44350,6 +44344,9 @@
 "hrz" = (
 /obj/structure/platform/hybrisa/rockdark,
 /obj/item/stack/sheet/cardboard,
+/obj/structure/bed/bedroll{
+	dir = 9
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -45292,22 +45289,13 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/central_streets)
 "hzt" = (
-/obj/item/trash/c_tube{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoe";
-	name = "cuppa joe's coffee cup";
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#F13F3F"
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
@@ -45335,18 +45323,11 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
 "hzB" = (
-/obj/item/trash/c_tube{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoe";
-	name = "cuppa joe's coffee cup";
-	pixel_x = 4;
-	pixel_y = 4
-	},
 /obj/structure/machinery/light,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#F13F3F"
 	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes,
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
 "hzD" = (
@@ -45768,6 +45749,10 @@
 	icon_state = "triagedecaldir"
 	},
 /obj/structure/closet/crate/medical,
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = 20;
+	dir = 1
+	},
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "whitegreen"
@@ -46990,6 +46975,7 @@
 /obj/effect/hybrisa/decal/trash{
 	pixel_y = 12
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/colony_streets/central_streets)
 "hNo" = (
@@ -47728,13 +47714,13 @@
 	},
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/window/reinforced/toughened,
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -4;
-	pixel_y = 11
-	},
 /obj/item/reagent_container/food/snacks/donkpocket,
 /obj/item/card/id/pmc/ds{
 	layer = 2.9
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/floor)
@@ -48178,10 +48164,8 @@
 "hXO" = (
 /obj/structure/prop/invuln/overhead_pipe,
 /obj/item/stack/sheet/wood,
-/obj/structure/tunnel/maint_tunnel/no_xeno_desc{
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "maintenancehatch_alt";
-	pixel_y = 6
+/obj/structure/tunnel/maint_tunnel/hybrisa/no_xeno_desc{
+	pixel_y = 8
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
@@ -48308,11 +48292,7 @@
 	dir = 4;
 	icon_state = "bigrollerempty3_up"
 	},
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider";
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	pixel_y = -8
 	},
 /turf/open/floor/prison{
@@ -48744,10 +48724,12 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
 "idr" = (
 /obj/structure/cable{
-	icon_state = "2-4"
+	icon_state = "2-4";
+	color = "#550d0d"
 	},
 /obj/structure/cable{
-	icon_state = "4-10"
+	icon_state = "4-10";
+	color = "#550d0d"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caveplateau)
@@ -49976,6 +49958,7 @@
 	icon_state = "trash_7";
 	pixel_y = 12
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "ink" = (
@@ -50585,6 +50568,12 @@
 	icon_state = "blue"
 	},
 /area/lv759/indoors/power_plant/telecomms)
+"isV" = (
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
+	layer = 4
+	},
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/outdoors/colony_streets/north_street)
 "isY" = (
 /obj/structure/lz_sign/hybrisa_sign/mining,
 /obj/effect/hybrisa/decal/dirt,
@@ -50902,6 +50891,11 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/colony_streets/central_streets)
+"ivk" = (
+/obj/effect/hybrisa/decal/dirt,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/south_east_street)
 "ivq" = (
 /obj/structure/barricade/sandbags{
 	dir = 1;
@@ -50930,16 +50924,10 @@
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/whiskey_outpost/inside/caves)
 "ivG" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider";
-	pixel_y = 9
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitegreen"
@@ -53837,10 +53825,7 @@
 	},
 /area/lv759/indoors/wy_security/checkpoint_west)
 "iUz" = (
-/obj/structure/tunnel/maint_tunnel/no_xeno_desc{
-	desc = "An entrance to a sewer tunnel. Pieces of debris keep you from getting a closer look.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "wymanhole";
+/obj/structure/tunnel/maint_tunnel/hybrisa/grate/no_xeno_desc{
 	pixel_x = -5;
 	pixel_y = 12
 	},
@@ -53902,13 +53887,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
 "iUS" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider"
-	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "whitegreen"
@@ -55230,6 +55209,10 @@
 /obj/item/reagent_container/food/snacks/meatsteak,
 /turf/open/floor/hybrisa/tile/supermartfloor1,
 /area/lv759/indoors/bar/kitchen)
+"jgx" = (
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/hybrisa/street/sidewalk,
+/area/lv759/outdoors/colony_streets/north_west_street)
 "jgC" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/vehicles/Meridian/Brown{
@@ -55471,13 +55454,13 @@
 	color = "#6b675e"
 	},
 /obj/item/clothing/head/beret/sec/warden,
-/obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = -7;
-	pixel_y = 11
-	},
 /obj/structure/machinery/light{
 	unacidable = 1;
 	unslashable = 1
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
 	},
 /turf/open/floor/prison{
 	icon_state = "red"
@@ -59782,21 +59765,26 @@
 	dir = 1;
 	layer = 2
 	},
-/obj/item/trash/c_tube{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelidstack";
-	name = "stack of cuppa joe's coffee cup lids";
-	pixel_x = -5;
-	pixel_y = 12
-	},
-/obj/item/trash/c_tube{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/trash/hybrisa/cuppa_joes_static/lid_stack{
+	pixel_y = 20
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/lid_stack{
+	pixel_y = 20;
+	pixel_x = 9
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/lid_stack{
+	pixel_y = 20;
+	pixel_x = -9
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/lid_stack{
+	pixel_y = 12;
+	pixel_x = 4
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/lid_stack{
+	pixel_y = 12;
+	pixel_x = -8
+	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -59830,12 +59818,7 @@
 	},
 /area/whiskey_outpost/inside/caves)
 "jWw" = (
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/spaceport/cuppajoes)
 "jWx" = (
@@ -60793,13 +60776,8 @@
 	},
 /area/lv759/indoors/spaceport/communications_office)
 "keD" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider";
-	pixel_y = 9;
-	layer = 4
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	dir = 1
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/whiskey_outpost/inside/caves)
@@ -63968,6 +63946,12 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/south_east_street)
+"kCy" = (
+/obj/structure/cargo_container/kelland/right{
+	layer = 3
+	},
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/colony_streets/north_street)
 "kCz" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/handrail/strata{
@@ -64789,12 +64773,8 @@
 	},
 /area/lv759/indoors/mining_outpost/northeast)
 "kJq" = (
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
 "kJv" = (
@@ -65006,11 +64986,11 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "kLJ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/largecrate/random/mini/small_case,
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -7;
-	pixel_y = 12
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
 	},
+/obj/structure/largecrate/random/mini/small_case,
 /turf/open/floor/strata{
 	icon_state = "orange_edge"
 	},
@@ -65408,13 +65388,7 @@
 	},
 /area/lv759/indoors/power_plant/gas_generators)
 "kPB" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	layer = 4;
-	name = "hospital divider"
-	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider,
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
 	},
@@ -65433,10 +65407,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/obj/structure/tunnel/maint_tunnel/no_xeno_desc{
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "maintenancehatch_alt"
-	},
+/obj/structure/tunnel/maint_tunnel/hybrisa/no_xeno_desc,
 /turf/open/floor/hybrisa/metal/grated,
 /area/lv759/outdoors/colony_streets/central_streets)
 "kPI" = (
@@ -66851,6 +66822,13 @@
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark,
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange{
+	icon_state = "meridian_orange_damage_2";
+	dir = 1;
+	health = 1750;
+	pixel_x = 6;
+	layer = 2.97
+	},
 /turf/open/hybrisa/street/sidewalkcenter{
 	dir = 1
 	},
@@ -66887,19 +66865,27 @@
 	dir = 4;
 	layer = 2
 	},
-/obj/item/trash/c_tube{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoestack2";
-	name = "stack of cuppa joe's coffee cups";
-	pixel_y = 6
-	},
 /obj/item/tool/kitchen/tray{
 	layer = 3;
 	pixel_y = 8
 	},
 /obj/structure/window/reinforced/toughened,
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 4
+	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -69200,6 +69186,13 @@
 	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
+"luz" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime1"
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/hybrisa/street/cement1,
+/area/lv759/outdoors/colony_streets/central_streets)
 "luF" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -69341,10 +69334,7 @@
 	},
 /area/whiskey_outpost/inside/caves)
 "lvU" = (
-/obj/structure/tunnel/maint_tunnel/no_xeno_desc{
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "wymanhole"
-	},
+/obj/structure/tunnel/maint_tunnel/hybrisa/grate/no_xeno_desc,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
 	},
@@ -70115,12 +70105,6 @@
 	},
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_1/flight_control_room)
-"lBJ" = (
-/obj/structure/platform/hybrisa/rockdark{
-	dir = 8
-	},
-/turf/open/auto_turf/hybrisashale/layer2,
-/area/lv759/indoors/caves/north_west_caves)
 "lBN" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -70785,12 +70769,13 @@
 /area/whiskey_outpost/inside/caves)
 "lGO" = (
 /obj/structure/machinery/iv_drip{
-	layer = 2.1;
+	layer = 3.9;
 	pixel_y = 19
 	},
 /obj/structure/bed/roller/hospital_empty/bigrollerempty3{
 	dir = 4;
-	icon_state = "bigrollerempty3_up"
+	icon_state = "bigrollerempty3_up";
+	layer = 4
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -71740,13 +71725,8 @@
 	dir = 8;
 	icon_state = "bigrollerempty_up"
 	},
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider";
-	pixel_y = -7
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = -8
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -71840,6 +71820,15 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
+	},
+/area/lv759/outdoors/colony_streets/east_central_street)
+"lQE" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/turf/open/hybrisa/street/sidewalk{
+	dir = 8
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "lQG" = (
@@ -72775,6 +72764,12 @@
 	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/east_central_street)
+"lYo" = (
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer2,
+/area/lv759/outdoors/colony_streets/south_east_street)
 "lYu" = (
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
@@ -73108,6 +73103,13 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/lv759/indoors/apartment/westbedrooms)
+"mcA" = (
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 4;
+	layer = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/indoors/caves/north_west_caves)
 "mcB" = (
 /obj/item/stool{
 	pixel_x = -4;
@@ -73431,11 +73433,7 @@
 	dir = 1;
 	icon_state = "bigrollerempty3_up"
 	},
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider";
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	pixel_y = -8
 	},
 /turf/open/floor/prison{
@@ -74971,6 +74969,13 @@
 	icon_state = "black"
 	},
 /area/whiskey_outpost/inside/caves)
+"msM" = (
+/obj/structure/platform/hybrisa/metalplatform1{
+	dir = 8
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/central_streets)
 "msP" = (
 /obj/structure/window/framed/hybrisa/marshalls/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
@@ -76705,6 +76710,13 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/colony_streets/central_streets)
+"mIg" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/hybrisa/street/sidewalk{
+	dir = 6
+	},
+/area/lv759/outdoors/colony_streets/north_street)
 "mIk" = (
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
@@ -77062,15 +77074,11 @@
 	},
 /area/lv759/indoors/apartment/eastentrance)
 "mLb" = (
-/obj/item/trash/c_tube{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoe";
-	name = "cuppa joe's coffee cup";
-	pixel_x = 6;
-	pixel_y = 4
-	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -77965,12 +77973,6 @@
 /obj/structure/platform/hybrisa/metalplatform1,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/colony_streets/south_east_street)
-"mSN" = (
-/obj/structure/fence{
-	icon = 'icons/obj/structures/props/dark_fence.dmi'
-	},
-/turf/open/auto_turf/hybrisashale/layer1,
-/area/lv759/outdoors/colony_streets/south_east_street)
 "mSV" = (
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark2,
 /obj/structure/blocker/forcefield/vehicles,
@@ -78583,6 +78585,19 @@
 /obj/item/tank/emergency_oxygen,
 /turf/open/floor/hybrisa/tile/lightbeige_bigtile,
 /area/lv759/indoors/hospital/paramedics_garage)
+"mZt" = (
+/obj/structure/surface/table/reinforced{
+	layer = 1.9
+	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = -4;
+	layer = 3.8
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "whitered"
+	},
+/area/lv759/indoors/hospital/icu)
 "mZu" = (
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/lv759/indoors/weyyu_office/supervisor)
@@ -78719,6 +78734,7 @@
 	layer = 1
 	},
 /obj/effect/hybrisa/decal/dirt,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 4
 	},
@@ -79724,6 +79740,14 @@
 /area/lv759/outdoors/colony_streets/north_east_street)
 "njE" = (
 /obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "njF" = (
@@ -80730,6 +80754,18 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/lv759/indoors/garage_reception)
+"ntB" = (
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
+	dir = 8
+	},
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
+	dir = 8
+	},
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
+	dir = 4
+	},
+/turf/open/hybrisa/street/sidewalk,
+/area/lv759/outdoors/colony_streets/north_street)
 "ntG" = (
 /obj/structure/sink{
 	dir = 1;
@@ -81991,6 +82027,7 @@
 /obj/item/reagent_container/syringe{
 	icon_state = "broken"
 	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -83240,6 +83277,8 @@
 	icon_state = "trash_6"
 	},
 /obj/effect/hybrisa/decal/dirt_2,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "nPC" = (
@@ -83460,6 +83499,8 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "nRL" = (
@@ -85402,7 +85443,8 @@
 /area/lv759/indoors/power_plant/fusion_generators)
 "ohi" = (
 /obj/structure/cable{
-	icon_state = "1-4"
+	icon_state = "1-4";
+	color = "#550d0d"
 	},
 /obj/structure/machinery/sensortower,
 /turf/open/floor/plating/prison,
@@ -87498,6 +87540,12 @@
 	icon_state = "marked"
 	},
 /area/lv759/indoors/mining_outpost/northeast)
+"oyK" = (
+/obj/structure/platform_decoration/hybrisa/rockdark{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/indoors/caves/north_west_caves)
 "oyM" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -89123,18 +89171,14 @@
 /obj/item/reagent_container/food/snacks/cookie{
 	pixel_y = 12
 	},
-/obj/item/trash/c_tube{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoe";
-	name = "cuppa joe's coffee cup";
-	pixel_x = 6;
-	pixel_y = 6
-	},
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#F13F3F"
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
@@ -89489,6 +89533,10 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = -12;
+	dir = 1
+	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "whitegreen"
@@ -89504,11 +89552,6 @@
 	layer = 5;
 	pixel_x = 6;
 	pixel_y = -16
-	},
-/obj/structure/ore_box{
-	layer = 4.2;
-	pixel_x = -11;
-	pixel_y = 23
 	},
 /obj/structure/ore_box{
 	layer = 4;
@@ -89961,6 +90004,8 @@
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_13"
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/floor/hybrisa/metal/grated{
 	dir = 1
 	},
@@ -91050,7 +91095,6 @@
 /area/whiskey_outpost/inside/caves)
 "paT" = (
 /obj/structure/surface/table,
-/obj/effect/spawner/random/powercell,
 /obj/item/ashtray/bronze{
 	icon_state = "ashtray_full_bl";
 	pixel_x = -7;
@@ -91060,7 +91104,11 @@
 	pixel_x = -10;
 	pixel_y = 7
 	},
-/obj/item/trash/cigbutt,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/effect/spawner/random/powercell,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -93113,17 +93161,13 @@
 /area/lv759/indoors/spaceport/baggagehandling)
 "ptb" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -8;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = 5;
-	pixel_y = 9
-	},
 /obj/item/paper,
 /obj/item/tool/pen/blue,
 /obj/item/reagent_container/food/snacks/hotdog,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
 /turf/open/floor/strata{
 	icon_state = "red3"
 	},
@@ -93475,6 +93519,8 @@
 	pixel_y = 12
 	},
 /obj/effect/hybrisa/decal/dirt_2,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
 	},
@@ -94852,17 +94898,13 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/indoors/wy_security/checkpoint_northwest)
 "pHW" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	layer = 1.9;
-	name = "hospital divider";
-	pixel_y = -8
-	},
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 10;
 	pixel_y = 21
+	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = -4;
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -96137,6 +96179,10 @@
 	pixel_y = 12
 	},
 /obj/effect/hybrisa/decal/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = -21;
+	pixel_y = 3
+	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
 	},
@@ -97077,13 +97123,9 @@
 	dir = 4;
 	icon_state = "bigrollerempty3_up"
 	},
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider";
-	pixel_y = -7
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = -8;
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -97110,7 +97152,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
-/obj/item/trash/hotdog,
+/obj/structure/tunnel/maint_tunnel/hybrisa/grate/no_xeno_desc,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "qbG" = (
@@ -97145,6 +97187,7 @@
 	pixel_x = 12;
 	pixel_y = 12
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
 	},
@@ -97446,6 +97489,7 @@
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/hybrisa/metalplatform1,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/colony_streets/central_streets)
 "qeF" = (
@@ -97595,11 +97639,8 @@
 /area/whiskey_outpost/inside/caves)
 "qfM" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider"
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 9;
@@ -97616,6 +97657,8 @@
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_6"
 	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "qfR" = (
@@ -98155,10 +98198,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "qkG" = (
 /obj/structure/machinery/light/double/blue,
-/obj/structure/tunnel/maint_tunnel/no_xeno_desc{
-	desc = "An entrance to a sewer tunnel. Pieces of debris keep you from getting a closer look.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "wymanhole";
+/obj/structure/tunnel/maint_tunnel/hybrisa/grate/no_xeno_desc{
 	pixel_x = -5;
 	pixel_y = 12
 	},
@@ -99167,6 +99207,17 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/floor)
+"quf" = (
+/obj/structure/machinery/colony_floodlight/street{
+	layer = 7;
+	level = 7;
+	pixel_y = 12
+	},
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk,
+/area/lv759/outdoors/colony_streets/north_street)
 "quh" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -99463,10 +99514,7 @@
 /area/lv759/oob)
 "qwq" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/tunnel/maint_tunnel/no_xeno_desc{
-	desc = "An entrance to a sewer tunnel. Pieces of debris keep you from getting a closer look.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "wymanhole";
+/obj/structure/tunnel/maint_tunnel/hybrisa/grate/no_xeno_desc{
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/cement3,
@@ -99571,12 +99619,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
 "qwW" = (
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /obj/item/trash/burger,
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/strata{
@@ -99897,15 +99940,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/north_maint)
-"qzx" = (
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
-/turf/open/hybrisa/street/sidewalk,
-/area/lv759/outdoors/colony_streets/north_west_street)
 "qzy" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /turf/open/hybrisa/street/asphalt,
@@ -100827,12 +100861,8 @@
 	pixel_x = -4;
 	pixel_y = 23
 	},
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	layer = 4;
-	name = "hospital divider"
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -101980,14 +102010,6 @@
 	icon_state = "red1"
 	},
 /area/whiskey_outpost/inside/caves)
-"qQe" = (
-/obj/structure/platform/hybrisa/rockdark{
-	dir = 1
-	},
-/turf/open/auto_turf/sand_white/layer0{
-	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
-	},
-/area/lv759/indoors/caves/north_west_caves)
 "qQj" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/cigbutt,
@@ -103206,6 +103228,8 @@
 "raK" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/trash,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "raT" = (
@@ -103515,6 +103539,8 @@
 "rdW" = (
 /obj/effect/hybrisa/decal/dirt_2,
 /obj/effect/hybrisa/decal/dirt_2,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/north_east_street)
 "rdX" = (
@@ -104996,11 +105022,7 @@
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/lv759/indoors/colonial_marshals/north_office)
 "rqF" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider";
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	pixel_y = -8
 	},
 /turf/open/floor/prison{
@@ -105397,6 +105419,11 @@
 /area/lv759/indoors/caves/south_east_caves)
 "ruc" = (
 /obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -105513,10 +105540,7 @@
 	},
 /area/lv759/indoors/hospital/pharmacy)
 "rvp" = (
-/obj/structure/tunnel/maint_tunnel/no_xeno_desc{
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "maintenancehatch_alt"
-	},
+/obj/structure/tunnel/maint_tunnel/hybrisa/no_xeno_desc,
 /turf/open/floor/almayer{
 	allow_construction = 0;
 	icon_state = "plate"
@@ -105640,6 +105664,8 @@
 	pixel_x = 3;
 	pixel_y = 15
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
@@ -106774,13 +106800,10 @@
 /area/lv759/indoors/apartment/westrestroom)
 "rEQ" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2,
-/obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2,
-/obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2,
-/obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2,
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 8
 	},
-/turf/open/auto_turf/hybrisashale/layer2,
+/turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/indoors/caves/north_west_caves)
 "rET" = (
 /obj/structure/prop/hybrisa/cavedecor/stalagmite3,
@@ -108379,6 +108402,10 @@
 	layer = 6;
 	pixel_y = 11
 	},
+/obj/item/tool/warning_cone{
+	layer = 5;
+	pixel_y = 19
+	},
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
@@ -109648,12 +109675,7 @@
 "sca" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/eat,
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/maintenance_east)
 "scd" = (
@@ -109995,6 +110017,8 @@
 	},
 /mob/living/simple_animal/rat/gray,
 /mob/living/simple_animal/rat/gray,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 9
 	},
@@ -110084,7 +110108,8 @@
 /area/lv759/indoors/colonial_marshals/hallway_reception)
 "sfS" = (
 /obj/structure/cable{
-	icon_state = "1-8"
+	icon_state = "1-8";
+	color = "#550d0d"
 	},
 /obj/item/storage/toolbox/electrical{
 	pixel_y = 9
@@ -110875,6 +110900,8 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
 	},
@@ -111115,7 +111142,8 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "soX" = (
 /obj/structure/cable{
-	icon_state = "1-4"
+	icon_state = "1-4";
+	color = "#550d0d"
 	},
 /obj/item/storage/backpack/marine/satchel/rto/small{
 	pixel_x = 7;
@@ -111386,7 +111414,7 @@
 	dir = 6;
 	icon_state = "multi_tiles"
 	},
-/area/lv759/indoors/spaceport/security)
+/area/lv759/indoors/spaceport/docking_bay_1)
 "srj" = (
 /obj/structure/sink{
 	pixel_y = 16
@@ -112373,6 +112401,13 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
+"syC" = (
+/obj/structure/platform/hybrisa/metalplatform6{
+	dir = 1
+	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/colony_streets/central_streets)
 "syG" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/almayer{
@@ -112574,14 +112609,6 @@
 	dir = 1;
 	layer = 2
 	},
-/obj/item/trash/c_tube{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoestacknolid";
-	name = "stack of cuppa joe's coffee cups";
-	pixel_x = 8;
-	pixel_y = 12
-	},
 /obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine2{
 	pixel_x = -14;
 	pixel_y = 8
@@ -112593,6 +112620,11 @@
 	pixel_y = 28
 	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -112712,9 +112744,23 @@
 	},
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/snacks/donkpocket,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
 /obj/item/storage/box/donkpockets,
 /turf/open/floor/plating/prison,
 /area/lv759/indoors/colonial_marshals/office)
+"sBb" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
+/obj/structure/platform/hybrisa/metalplatform1{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
 "sBh" = (
 /obj/structure/platform/kutjevo/smooth,
 /obj/effect/hybrisa/decal/dirt,
@@ -112799,6 +112845,7 @@
 	},
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -112986,6 +113033,14 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer0_plate,
 /area/lv759/outdoors/caveplateau)
+"sDy" = (
+/obj/structure/machinery/door/airlock/hybrisa/medical/autoname{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "sterile_white"
+	},
+/area/lv759/indoors/hospital/outgoing)
 "sDA" = (
 /obj/structure/platform/hybrisa/metalplatform3{
 	dir = 1
@@ -113228,11 +113283,11 @@
 /obj/item/phone{
 	pixel_y = 7
 	},
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -8;
-	pixel_y = 7
-	},
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -6;
+	pixel_y = 6
+	},
 /turf/open/floor/plating/prison,
 /area/lv759/indoors/colonial_marshals/office)
 "sFQ" = (
@@ -113746,10 +113801,6 @@
 /area/lv759/indoors/colonial_marshals/hallway_south)
 "sKr" = (
 /obj/effect/decal/strata_decals/grime/grime1,
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 8;
-	autoname = 1
-	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -114327,14 +114378,6 @@
 	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/whiskey_outpost/inside/caves)
-"sOB" = (
-/obj/structure/fence{
-	icon = 'icons/obj/structures/props/dark_fence.dmi'
-	},
-/turf/open/auto_turf/sand_white/layer0{
-	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
-	},
-/area/lv759/outdoors/colony_streets/south_east_street)
 "sOI" = (
 /obj/structure/platform/hybrisa/metalplatformstair2,
 /obj/structure/stairs{
@@ -116452,6 +116495,7 @@
 	dir = 1
 	},
 /obj/effect/hybrisa/decal/dirt,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
@@ -116951,6 +116995,7 @@
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_11"
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/central_streets)
 "tlI" = (
@@ -117681,12 +117726,7 @@
 	},
 /area/lv759/indoors/apartment/eastfoyer)
 "trB" = (
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime1"
 	},
@@ -117772,6 +117812,8 @@
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_5"
 	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/hybrisa/metal/grated{
 	dir = 1
 	},
@@ -118216,6 +118258,7 @@
 	icon_state = "trash_16";
 	pixel_y = 32
 	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
 	},
@@ -118709,6 +118752,7 @@
 	pixel_y = 12
 	},
 /obj/effect/hybrisa/decal/dirt,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "cell_stripe"
@@ -119100,13 +119144,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltopleft"
 	},
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	name = "hospital divider"
-	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider,
 /turf/open/floor/prison{
 	icon_state = "whitegreenfull"
 	},
@@ -120803,6 +120841,17 @@
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
 /area/lv759/indoors/hospital/morgue)
+"tUw" = (
+/obj/effect/hybrisa/decal/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/hybrisa/decal/road/lines2,
+/obj/item/tool/warning_cone{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/north_street)
 "tUy" = (
 /turf/open/floor/strata{
 	dir = 9;
@@ -121277,12 +121326,12 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -8;
-	pixel_y = 7
-	},
 /obj/item/tool/pen/blue{
 	pixel_x = -6
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/floor)
@@ -122568,13 +122617,10 @@
 /obj/structure/surface/table/reinforced{
 	layer = 1.9
 	},
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	layer = 2;
-	name = "hospital divider";
-	pixel_y = -8
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = -4;
+	dir = 1;
+	layer = 3.8
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -123275,10 +123321,6 @@
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/computer/communications/simple{
 	dir = 4
-	},
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = 9;
-	pixel_y = 10
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/floor)
@@ -124572,6 +124614,12 @@
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
 /area/lv759/outdoors/colony_streets/south_east_street)
+"uAz" = (
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/colony_streets/south_east_street)
 "uAC" = (
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/whiskey_outpost/inside/caves)
@@ -125086,15 +125134,7 @@
 	},
 /area/lv759/indoors/recycling_plant/garage)
 "uDW" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	layer = 2.99;
-	name = "hospital divider";
-	pixel_y = 2
-	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider,
 /turf/open/floor/prison{
 	icon_state = "blue_plate"
 	},
@@ -125482,6 +125522,11 @@
 "uGL" = (
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/electical_systems/substation3)
+"uGN" = (
+/obj/structure/prop/hybrisa/cavedecor/stalagmite0,
+/obj/structure/platform_decoration/hybrisa/rockdark,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/indoors/caves/north_west_caves)
 "uGO" = (
 /obj/structure/platform/strata/metal{
 	dir = 1
@@ -125509,6 +125554,8 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
 	pixel_y = 28
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "uGQ" = (
@@ -126225,15 +126272,7 @@
 	},
 /area/lv759/indoors/bar)
 "uMC" = (
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	layer = 2.99;
-	name = "hospital divider";
-	pixel_y = -3
-	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -126427,6 +126466,7 @@
 	icon_state = "trash_4";
 	pixel_y = 12
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "uOj" = (
@@ -126829,6 +126869,7 @@
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 4
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/central_streets)
 "uQL" = (
@@ -126898,13 +126939,21 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -7;
-	pixel_y = -2
-	},
 /obj/item/paper/crumpled{
 	pixel_x = 6;
 	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -127708,6 +127757,11 @@
 "uYg" = (
 /turf/open/floor/hybrisa/misc/spaceport2,
 /area/lv759/indoors/spaceport/docking_bay_1)
+"uYk" = (
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/lv759/indoors/colonial_marshals/hallway_central)
 "uYt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -130427,6 +130481,14 @@
 	dir = 8
 	},
 /area/whiskey_outpost/inside/caves)
+"vwv" = (
+/obj/effect/hybrisa/decal/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = -21;
+	pixel_y = 3
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/east_central_street)
 "vwC" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/stack/rods{
@@ -130561,6 +130623,7 @@
 /area/lv759/indoors/meridian/meridian_office)
 "vxB" = (
 /obj/item/trash/cigbutt,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 8
 	},
@@ -130861,6 +130924,7 @@
 	dir = 4
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/colony_streets/central_streets)
 "vAP" = (
@@ -132591,7 +132655,7 @@
 	dir = 6;
 	icon_state = "multi_tiles"
 	},
-/area/lv759/indoors/spaceport/security)
+/area/lv759/indoors/spaceport/docking_bay_1)
 "vPS" = (
 /obj/structure/machinery/chem_dispenser/soda,
 /turf/closed/wall/hybrisa/colony,
@@ -133272,7 +133336,17 @@
 	pixel_x = 2;
 	pixel_y = 20
 	},
-/turf/open/auto_turf/hybrisashale/layer2,
+/obj/item/trash/c_tube{
+	pixel_x = -18
+	},
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_15";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "vVt" = (
 /obj/effect/hybrisa/decal/trash{
@@ -134075,6 +134149,8 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/trash,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_street)
 "wbW" = (
@@ -134843,6 +134919,29 @@
 	},
 /turf/open/floor/hybrisa/metal/stripe_red,
 /area/whiskey_outpost/inside/caves)
+"wjm" = (
+/obj/structure/platform_decoration/hybrisa/rockdark,
+/obj/item/trash/c_tube{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon_state = "ztrashbag";
+	name = "trash bag";
+	pixel_x = 2;
+	pixel_y = 20;
+	layer = 4
+	},
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_6";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/reagent_container/syringe{
+	icon_state = "broken"
+	},
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/outdoors/colony_streets/south_east_street)
 "wjp" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "An exchange valve";
@@ -135116,6 +135215,8 @@
 	pixel_y = 20
 	},
 /obj/effect/hybrisa/decal/dirt,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
 	},
@@ -135149,6 +135250,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
 	},
@@ -136564,12 +136666,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "wyv" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoenolid";
-	name = "cuppa joe's coffee cup"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -136612,6 +136709,10 @@
 	pixel_y = 14
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/garage_reception)
 "wyS" = (
@@ -136827,20 +136928,18 @@
 /area/lv759/indoors/landing_zone_1/flight_control_room)
 "wBe" = (
 /obj/structure/machinery/iv_drip{
-	layer = 2.1;
+	layer = 3.9;
 	pixel_y = 19
-	},
-/obj/structure/bed/chair/comfy/teal{
-	desc = "A hospital divider for privacy.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "hospitalcurtain";
-	layer = 2;
-	name = "hospital divider";
-	pixel_y = 22
 	},
 /obj/structure/bed/roller/hospital_empty/bigrollerempty3{
 	dir = 4;
-	icon_state = "bigrollerempty3_up"
+	icon_state = "bigrollerempty3_up";
+	layer = 4
+	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	dir = 1;
+	layer = 3.8;
+	pixel_y = 20
 	},
 /turf/open/floor/prison{
 	dir = 5;
@@ -137929,7 +138028,8 @@
 	},
 /obj/structure/machinery/power/port_gen/pacman/super,
 /obj/structure/cable{
-	icon_state = "0-2"
+	icon_state = "0-2";
+	color = "#550d0d"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caveplateau)
@@ -138449,6 +138549,19 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/east_central_street)
+"wOF" = (
+/obj/structure/platform/hybrisa/metalplatform6{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+	icon_state = "billboard2";
+	layer = 8;
+	level = 8;
+	pixel_y = 32;
+	dir = 4
+	},
+/turf/open/hybrisa/street/sidewalk,
+/area/lv759/outdoors/colony_streets/north_street)
 "wOI" = (
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 4
@@ -138731,6 +138844,13 @@
 	icon_state = "multi_tiles"
 	},
 /area/whiskey_outpost/inside/caves)
+"wRF" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = 20
+	},
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/colony_streets/north_street)
 "wRJ" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
@@ -139283,6 +139403,15 @@
 /obj/effect/hybrisa/decal/road/lines2,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_east_street)
+"wVN" = (
+/obj/structure/largecrate/random/barrel/green{
+	pixel_x = -6
+	},
+/obj/item/stack/sheet/cardboard{
+	layer = 1
+	},
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/colony_streets/south_east_street)
 "wWb" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -4;
@@ -139396,12 +139525,7 @@
 /area/lv759/indoors/mining_outpost/north_maint)
 "wWI" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoenolid";
-	name = "cuppa joe's coffee cup"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/maintenance_east)
@@ -140417,6 +140541,8 @@
 	},
 /area/lv759/indoors/spaceport/heavyequip)
 "xfa" = (
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/breakroom)
 "xfh" = (
@@ -140774,6 +140900,13 @@
 	},
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/east_central_street)
+"xiA" = (
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/cavedecor/stalagmite4,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/indoors/caves/north_west_caves)
 "xiK" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -13;
@@ -141147,10 +141280,7 @@
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/whiskey_outpost/inside/caves)
 "xmi" = (
-/obj/structure/tunnel/maint_tunnel/no_xeno_desc{
-	desc = "An entrance to a sewer tunnel. Pieces of debris keep you from getting a closer look.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "wymanhole";
+/obj/structure/tunnel/maint_tunnel/hybrisa/grate/no_xeno_desc{
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/cement3,
@@ -141436,6 +141566,20 @@
 	icon_state = "blackfull"
 	},
 /area/whiskey_outpost/inside/caves)
+"xoN" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/phone{
+	pixel_y = 7
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/prison,
+/area/lv759/indoors/colonial_marshals/office)
 "xoR" = (
 /obj/effect/hybrisa/decal/road/lines1,
 /obj/effect/hybrisa/decal/road/road_edge,
@@ -142037,6 +142181,10 @@
 	color = "#6b675e"
 	},
 /obj/item/storage/box/trackimp,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "red"
@@ -143182,7 +143330,8 @@
 /area/lv759/indoors/spaceport/horizon_runner)
 "xAz" = (
 /obj/structure/cable{
-	icon_state = "1-2"
+	icon_state = "1-2";
+	color = "#550d0d"
 	},
 /turf/open/floor/plating/prison,
 /area/lv759/outdoors/caveplateau)
@@ -143413,6 +143562,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/central_streets)
 "xBZ" = (
@@ -143658,10 +143808,6 @@
 	},
 /obj/structure/machinery/computer/cameras{
 	dir = 4
-	},
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = 9;
-	pixel_y = 10
 	},
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/plating/prison,
@@ -144404,6 +144550,13 @@
 /obj/structure/machinery/mech_bay_recharge_port,
 /turf/open/floor/corsat,
 /area/lv759/indoors/power_plant/fusion_generators)
+"xJB" = (
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
+	dir = 1;
+	layer = 4
+	},
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/outdoors/colony_streets/north_street)
 "xJU" = (
 /obj/structure/prop/hybrisa/supermart/rack/longrack7,
 /turf/open/floor/corsat{
@@ -144473,6 +144626,7 @@
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_4"
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
 	},
@@ -144723,18 +144877,8 @@
 	},
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
 "xMB" = (
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoenolid";
-	name = "cuppa joe's coffee cup"
-	},
-/obj/item/trash/cigbutt{
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	icon_state = "coffeecuppajoelid";
-	name = "cuppa joe's coffee cup lid"
-	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /obj/item/stack/sheet/cardboard{
 	layer = 1
 	},
@@ -146513,6 +146657,7 @@
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_14"
 	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/central_streets)
 "yeE" = (
@@ -147348,6 +147493,7 @@
 	icon_state = "trash_4"
 	},
 /mob/living/simple_animal/rat/gray,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
 	},
@@ -149956,7 +150102,7 @@ kWB
 txU
 dpy
 txU
-dpy
+txU
 fIf
 fIf
 fIf
@@ -151840,7 +151986,7 @@ unn
 unn
 unn
 unn
-vuP
+kDd
 pLV
 pLV
 vuP
@@ -152721,7 +152867,7 @@ kIa
 fFY
 fIf
 fIf
-qDu
+dpy
 rfq
 txU
 auk
@@ -152973,7 +153119,7 @@ kIa
 eJw
 dpy
 txU
-unn
+qDu
 unn
 unn
 gFK
@@ -153099,7 +153245,7 @@ unn
 unn
 unn
 unn
-vuP
+hIE
 dTu
 vuP
 vuP
@@ -153223,8 +153369,8 @@ fSk
 ftz
 kIa
 eJw
-gFK
-unn
+uGN
+mcA
 unn
 unn
 unn
@@ -153476,7 +153622,7 @@ edo
 kIa
 rla
 unn
-unn
+dpy
 unn
 unn
 unn
@@ -153728,7 +153874,7 @@ hcI
 hcI
 unn
 unn
-unn
+txU
 unn
 unn
 gFK
@@ -153980,8 +154126,8 @@ unn
 unn
 unn
 unn
-unn
-unn
+sch
+txU
 unn
 txU
 pWx
@@ -154108,7 +154254,7 @@ unn
 unn
 unn
 unn
-vuP
+qpQ
 pLV
 pLV
 pLV
@@ -154233,8 +154379,8 @@ unn
 unn
 unn
 unn
-lBJ
 rTO
+xiA
 rTO
 wVt
 fIf
@@ -154485,7 +154631,7 @@ unn
 unn
 unn
 puE
-fIf
+dpy
 fIf
 iSk
 bso
@@ -154736,9 +154882,9 @@ unn
 unn
 unn
 dIU
-qQe
+pWx
 rfq
-gFK
+dpy
 nXB
 ccn
 kIa
@@ -154988,9 +155134,9 @@ unn
 unn
 qDu
 gKd
-wVt
-unn
-unn
+oyK
+dpy
+fIf
 cXZ
 kIa
 qpu
@@ -155241,8 +155387,8 @@ unn
 txU
 aig
 dIU
-unn
-unn
+fIf
+gFK
 cXZ
 hHy
 quo
@@ -155622,7 +155768,7 @@ vuP
 pLV
 pLV
 vuP
-vuP
+sQm
 unn
 unn
 unn
@@ -156626,8 +156772,8 @@ pLV
 pLV
 vuP
 vuP
-vuP
-vuP
+smD
+qpQ
 unn
 unn
 unn
@@ -159736,7 +159882,7 @@ ina
 fqv
 jZg
 kik
-ouK
+jgx
 tnW
 iYb
 iYb
@@ -159982,7 +160128,7 @@ dTi
 hXw
 cPW
 gog
-qzx
+jgx
 cJW
 ina
 fqv
@@ -160386,8 +160532,8 @@ pLV
 unn
 unn
 unn
-vuP
-vuP
+qpQ
+sQm
 pLV
 pLV
 pLV
@@ -160629,7 +160775,7 @@ wKx
 unn
 unn
 unn
-vuP
+kDd
 vuP
 vuP
 vuP
@@ -161905,7 +162051,7 @@ unn
 unn
 unn
 unn
-vuP
+qpQ
 pLV
 pLV
 pLV
@@ -162356,7 +162502,7 @@ cAb
 unn
 unn
 unn
-unn
+sAQ
 unn
 unn
 jIp
@@ -162608,7 +162754,7 @@ unn
 unn
 unn
 nTP
-sAQ
+vhL
 vhL
 sAQ
 clm
@@ -162860,9 +163006,9 @@ unn
 unn
 vhL
 hQY
+hQY
 vhL
-vhL
-vhL
+hQY
 vhL
 sAQ
 nTP
@@ -162895,8 +163041,8 @@ gbg
 wKx
 unn
 unn
-vuP
-vuP
+kDd
+hnk
 wKx
 vuP
 unn
@@ -163364,7 +163510,7 @@ sAQ
 vhL
 hQY
 hQY
-vhL
+hQY
 vhL
 hQY
 hQY
@@ -163666,7 +163812,7 @@ pLV
 vuP
 unn
 wKx
-vuP
+sQm
 unn
 unn
 wti
@@ -163871,7 +164017,7 @@ vhL
 vhL
 nTP
 vhL
-vhL
+sAQ
 hQY
 sAQ
 clm
@@ -164123,7 +164269,7 @@ vhL
 unn
 sAQ
 unn
-unn
+ouG
 sAQ
 hQY
 hQY
@@ -164376,7 +164522,7 @@ unn
 unn
 unn
 unn
-ouG
+vhL
 hQY
 rwu
 bcA
@@ -165254,7 +165400,7 @@ agL
 qZL
 nye
 dKE
-tXW
+eXd
 xEA
 mKC
 xEA
@@ -165437,7 +165583,7 @@ pLV
 vuP
 vuP
 pLV
-vuP
+qpQ
 unn
 unn
 unn
@@ -165529,7 +165675,7 @@ fvr
 juu
 nYh
 pUG
-slz
+sBb
 jxg
 pPT
 amb
@@ -165677,7 +165823,7 @@ auT
 auT
 aHb
 fHp
-vuP
+kDd
 vuP
 vuP
 wKx
@@ -165688,7 +165834,7 @@ pLV
 vuP
 vuP
 vuP
-vuP
+sQm
 unn
 unn
 unn
@@ -165929,7 +166075,7 @@ auT
 aHb
 ksb
 aoL
-vuP
+hIE
 pLV
 vuP
 pLV
@@ -166260,7 +166406,7 @@ oWF
 jYU
 xnp
 xEA
-aiZ
+nye
 wLM
 hTA
 xEA
@@ -166937,7 +167083,7 @@ clB
 fRz
 unn
 unn
-vuP
+sQm
 pLV
 pLV
 vuP
@@ -169022,8 +169168,8 @@ gUk
 qRo
 oyM
 aTO
-bwC
-mRn
+isV
+quf
 tao
 gAn
 gAn
@@ -169083,7 +169229,7 @@ rfr
 qJq
 lym
 nEG
-bbn
+syC
 dWW
 giT
 dbA
@@ -169274,8 +169420,8 @@ nmM
 aTO
 aTO
 fDR
-jpE
-stq
+bwC
+wOF
 gDJ
 rQQ
 nsh
@@ -169331,7 +169477,7 @@ bZr
 bZr
 bZr
 tTn
-rcP
+luz
 tlj
 iab
 wZh
@@ -169526,8 +169672,8 @@ vkq
 fDR
 cNi
 fDR
-jpE
-stq
+bwC
+vGB
 uVe
 rQQ
 nsh
@@ -169577,7 +169723,7 @@ dOP
 dOP
 hUa
 hbc
-toG
+msM
 nQZ
 nQZ
 toG
@@ -169778,8 +169924,8 @@ wwJ
 ghu
 wxa
 tnh
-jpE
-stq
+cbZ
+ntB
 uVe
 rQQ
 nsh
@@ -170030,8 +170176,8 @@ cNi
 sUX
 tnh
 cNi
-jpE
-stq
+bwC
+eSs
 uVe
 lvW
 gvs
@@ -170282,8 +170428,8 @@ peo
 xoI
 tnh
 fDR
-jpE
-stq
+bwC
+vGB
 uVe
 rQQ
 nsh
@@ -170534,7 +170680,7 @@ wzn
 jpE
 jpE
 jpE
-bwC
+xJB
 esG
 uVe
 rQQ
@@ -170784,11 +170930,11 @@ unn
 pQi
 dyB
 rRi
-aTO
+sMP
 hYC
 xRc
-mPu
-gDJ
+mIg
+tUw
 rQQ
 nsh
 eFZ
@@ -171036,7 +171182,7 @@ unn
 tnh
 oDV
 hXh
-aTO
+kCy
 fsL
 qUb
 tpS
@@ -171288,7 +171434,7 @@ unn
 unn
 ijR
 dIv
-aTO
+elA
 efL
 fie
 kSc
@@ -171539,7 +171685,7 @@ unn
 unn
 unn
 unn
-tnh
+wRF
 wFI
 oOI
 bOD
@@ -171642,7 +171788,7 @@ prc
 rHL
 unn
 unn
-jUa
+unn
 oYd
 rHL
 prc
@@ -173613,11 +173759,11 @@ tcp
 fiw
 sjQ
 ecE
-uGd
-rxD
-uGd
-uGd
-uGd
+gSr
+aBn
+gSr
+gSr
+gSr
 vKQ
 lTV
 xcZ
@@ -181377,7 +181523,7 @@ cMI
 nmM
 fUo
 xsd
-wYu
+dLA
 stq
 aTO
 gVe
@@ -181482,7 +181628,7 @@ myb
 mvO
 iwR
 iCO
-sFO
+xoN
 iCO
 njU
 xPr
@@ -185483,7 +185629,7 @@ tua
 akO
 mBl
 mBl
-mBl
+lQE
 oVP
 fkY
 ivz
@@ -185735,7 +185881,7 @@ otU
 pSu
 nzv
 aCR
-rjI
+vwv
 wbj
 tXA
 sfO
@@ -186686,7 +186832,7 @@ gYg
 tQS
 qaG
 ggK
-loG
+qhG
 nQI
 uHI
 ehf
@@ -186938,7 +187084,7 @@ qBo
 lQg
 wsj
 dBD
-vGv
+sDy
 pXm
 pXm
 uHI
@@ -187190,7 +187336,7 @@ oph
 qFe
 oIu
 bLp
-loG
+qhG
 hfv
 bjA
 bjA
@@ -188199,7 +188345,7 @@ uwN
 kJv
 dvT
 hWP
-cMK
+hfv
 bjA
 mkL
 qaW
@@ -188524,7 +188670,7 @@ gDa
 svJ
 siw
 tUR
-oPz
+uYk
 oPz
 vuK
 xSM
@@ -189308,7 +189454,7 @@ hDi
 xBD
 aVG
 aup
-aup
+ryb
 aup
 aup
 hcI
@@ -189558,11 +189704,11 @@ raK
 sgx
 qbz
 oEP
-sOB
-unn
-unn
-unn
-unn
+slV
+wVN
+wjm
+uAz
+lYo
 hcI
 lCG
 lCG
@@ -189810,10 +189956,10 @@ cDh
 opJ
 umP
 wLI
-mSN
+slV
 grK
 kvK
-unn
+giD
 hcI
 hcI
 hcI
@@ -192835,7 +192981,7 @@ xCG
 tIs
 sbZ
 sbZ
-ozS
+ivk
 eZX
 ayw
 bHK
@@ -193477,7 +193623,7 @@ uJW
 uJW
 uJW
 uJW
-bjN
+uJW
 uJW
 uJW
 bwS
@@ -196996,7 +197142,7 @@ chG
 myP
 smu
 wBe
-ujd
+mZt
 lGO
 ujd
 cri

@@ -382,3 +382,11 @@
 	desc = "A matte gray coffee mug bearing the Weyland-Yutani logo on its front. Either issued as corporate standard, or bought as a souvenir for people who love the Company oh so dearly. Probably the former."
 	icon_state = "wycup"
 
+// Hybrisa
+
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes
+	name = "Cuppa Joe's coffee"
+	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee."
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "coffeecuppajoe"
+	center_of_mass = "x=15;y=10"

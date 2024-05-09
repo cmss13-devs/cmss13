@@ -752,94 +752,94 @@
 	flags_area = AREA_NOTUNNEL
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 
-// Weyland Yutani Advanced Bio-Genomic Research Complex
+// Weyland-Yutani Advanced Bio-Genomic Research Complex
 
 /area/lv759/indoors/wy_research_complex
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex"
 	icon_state = "wylab"
 	minimap_color = MINIMAP_AREA_COMMAND
 	soundscape_playlist = SCAPE_PL_LV759_WEYMART
 /area/lv759/indoors/wy_research_complex/northmainentrance
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - North Main Entrance"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Main Entrance"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/medical_annex
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Medical Annex Building"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Medical Annex Building"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/reception
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Reception & Administration"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Reception & Administration"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/cargo
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Requisitions & Cargo"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Requisitions & Cargo"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/researchanddevelopment
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Technology Research & Development Lab"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Technology Research & Development Lab"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/mainlabs
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Advanced Chemical Testing & Research Lab"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Advanced Chemical Testing & Research Lab"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/xenobiology
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Advanced Xenobiology Lab"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Advanced Xenobiology Lab"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/weaponresearchlab
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Advanced Weapon Research Lab"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Advanced Weapon Research Lab"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/weaponresearchlabtesting
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Advanced Weapon Research Lab - Weapons Testing Range"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Advanced Weapon Research Lab - Weapons Testing Range"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/xenoarcheology
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Xenoarcheology Research Lab"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Xenoarcheology Research Lab"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/vehicledeploymentbay
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Vehicle Deployment & Maintenance Bay"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Vehicle Deployment & Maintenance Bay"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/janitor
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Janitorial Supplies Storage"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Janitorial Supplies Storage"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/cafeteria
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Cafeteria"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Cafeteria"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/cafeteriakitchen
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Cafeteria - Kitchen"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Cafeteria - Kitchen"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/dormsfoyer
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Dorms Foyer"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Dorms Foyer"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/dormsbedroom
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Dorms"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Dorms"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/securitycommand
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Security Command Center & Deployment"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Security Command Center & Deployment"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/securityarmory
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Armory"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Armory"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/hangarbay
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Hangar Bay"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Hangar Bay"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Hangar Bay - Weyland Yutani PMC ERT Shuttle"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Hangar Bay - Weyland-Yutani PMC ERT Shuttle"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/hallwaynorth
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Technology Research & Development Lab"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Technology Research & Development Lab"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/hallwaynorthexit
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - North Hallway - Personnel Exit East"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Hallway - Personnel Exit East"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/hallwayeast
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Hallway East"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Hallway East"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/hallwaycentral
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Central Hallway"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Central Hallway"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/hallwaysouthwest
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - South West Hallway"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - South West Hallway"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/hallwaysoutheast
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - South East Hallway"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - South East Hallway"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/southeastexit
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - South East Maintenace & Emergency Exit"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - South East Maintenace & Emergency Exit"
 	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/changingroom
-	name = "Weyland Yutani - Advanced Bio-Genomic Research Complex - Locker Room"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Locker Room"
 	icon_state = "wylab"

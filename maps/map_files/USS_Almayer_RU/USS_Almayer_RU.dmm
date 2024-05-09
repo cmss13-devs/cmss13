@@ -12485,6 +12485,11 @@
 	},
 /area/almayer/hallways/upper/stern_hallway)
 "aWk" = (
+/obj/structure/machinery/cm_vending/gear/executive_officer{
+	pixel_y = 18;
+	pixel_x = -1;
+	density = 0
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -19139,7 +19144,8 @@
 	id = "CIC_armory";
 	name = "CIC Armory Control";
 	req_one_access_txt = "1;4";
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = 5
 	},
 /obj/item/device/cotablet{
 	pixel_x = -1;

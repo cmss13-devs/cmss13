@@ -715,9 +715,9 @@
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_4)
+	set_fire_delay(FIRE_DELAY_TIER_11)
 	set_burst_amount(BURST_AMOUNT_TIER_3)
-	set_burst_delay(FIRE_DELAY_TIER_11)
+	set_burst_delay(FIRE_DELAY_TIER_10)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -726,7 +726,6 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
-
 
 //-------------------------------------------------------
 /*

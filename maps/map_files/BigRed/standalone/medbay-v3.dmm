@@ -181,7 +181,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aF" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/computer/double_id/med_data,
 /turf/open/floor{
 	icon_state = "whitegreenfull"
 	},

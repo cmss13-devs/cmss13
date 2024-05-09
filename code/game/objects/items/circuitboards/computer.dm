@@ -49,7 +49,7 @@
 
 /obj/item/circuitboard/computer/med_data
 	name = "Circuit board (Medical Records)"
-	build_path = /obj/structure/machinery/computer/med_data
+	build_path = /obj/structure/machinery/computer/double_id/med_data
 
 /obj/item/circuitboard/computer/pandemic
 	name = "Circuit board (PanD.E.M.I.C. 2200)"
@@ -65,7 +65,7 @@
 
 /obj/item/circuitboard/computer/card
 	name = "Circuit board (ID Computer)"
-	build_path = /obj/structure/machinery/computer/card
+	build_path = /obj/structure/machinery/computer/double_id/card
 
 /obj/item/circuitboard/computer/teleporter
 	name = "Circuit board (Teleporter)"

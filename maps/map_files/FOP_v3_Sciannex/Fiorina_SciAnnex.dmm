@@ -4340,7 +4340,7 @@
 	health = 80
 	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -23963,7 +23963,7 @@
 /area/fiorina/tumor/servers)
 "ouH" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -26175,7 +26175,7 @@
 /area/fiorina/tumor/ice_lab)
 "pSU" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/double_id/med_data/laptop,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "pTj" = (

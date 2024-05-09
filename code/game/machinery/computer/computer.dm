@@ -133,6 +133,9 @@
 	if(!.) //not broken or unpowered
 		if(ishuman(usr))
 			playsound(src, "keyboard", 15, 1)
+	// maybe it shouldn't open the UI if you hit the computer with an object?
+	if(usr.get_active_hand())
+		return TRUE
 
 /obj/structure/machinery/computer/fixer
 	var/all_configs

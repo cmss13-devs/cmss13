@@ -16768,7 +16768,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "aXu" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/computer/double_id/med_data,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -17841,7 +17841,7 @@
 /area/bigredv2/outside/admin_building)
 "bbm" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 4
 	},
 /turf/open/floor{
@@ -38915,7 +38915,7 @@
 	},
 /area/bigredv2/caves_north)
 "tLO" = (
-/obj/structure/machinery/computer/med_data{
+/obj/structure/machinery/computer/double_id/med_data{
 	density = 0;
 	pixel_y = 16
 	},

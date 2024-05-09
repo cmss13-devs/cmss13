@@ -8,22 +8,19 @@
 #define CARDCON_DEPARTMENT_ENGINEERING "Engineering"
 #define CARDCON_DEPARTMENT_COMMAND "Command"
 
-/obj/structure/machinery/computer/card
-	name = "Identification Computer"
-	desc = "Terminal for programming USCM employee ID card access."
-	icon_state = "id"
-	req_access = list(ACCESS_MARINE_DATABASE)
-	circuit = /obj/item/circuitboard/computer/card
+// Parent code for computers that use a user and target card id
+// ------------------------------------------------------------------------------------------------------------------------------- //
+/obj/structure/machinery/computer/double_id
+	name = "Computer"
+	desc = "Terminal that takes a User and target ID"
+	// user who is modifying the target
 	var/obj/item/card/id/user_id_card
+	// the poor soul whos status needs to be updated as deceased.
 	var/obj/item/card/id/target_id_card
-	// What factions we are able to modify
-	var/list/factions = list(FACTION_MARINE)
-	var/printing
-
-	var/is_centcom = FALSE
+	// if we are currently authenticated and logged in.
 	var/authenticated = FALSE
 
-/obj/structure/machinery/computer/card/proc/authenticate(mob/user, obj/item/card/id/id_card)
+/obj/structure/machinery/computer/double_id/proc/authenticate(mob/user, obj/item/card/id/id_card)
 	if(!id_card)
 		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Authority confirmation card is missing!\"")
 		return FALSE
@@ -36,14 +33,107 @@
 
 	visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: You have not enough authority! Access denied.\"")
 	return FALSE
+// copy pasta, yeah some silly logic, it needs to be rewritten. I'll do it later.
+/obj/structure/machinery/computer/double_id/attackby(obj/card, mob/user)
+	if(istype(card, /obj/item/card/id))
+		if(!operable())
+			to_chat(user, SPAN_NOTICE("You tried to inject \the [card] but \the [src] remains silent."))
+			return
+		var/obj/item/card/id/idcard = card
+		if(check_access(idcard))
+			if(!user_id_card)
+				if(user.drop_held_item())
+					card.forceMove(src)
+					user_id_card = card
+				authenticate(user, user_id_card)
+			else if(!target_id_card)
+				if(user.drop_held_item())
+					card.forceMove(src)
+					target_id_card = card
+					update_static_data(user)
+					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
+			else
+				to_chat(user, "Both slots are full already. Remove a card first.")
+		else
+			if(!target_id_card)
+				if(user.drop_held_item())
+					card.forceMove(src)
+					target_id_card = card
+					update_static_data(user)
+					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
+			else
+				to_chat(user, "Both slots are full already. Remove a card first.")
+	else
+		..()
 
-/obj/structure/machinery/computer/card/tgui_interact(mob/user, datum/tgui/ui)
+/obj/structure/machinery/computer/double_id/verb/eject_id()
+	set category = "Object"
+	set name = "Eject ID Card"
+	set src in oview(1)
+
+	if(!usr || usr.is_mob_incapacitated()) return
+
+	if(user_id_card)
+		user_id_card.loc = get_turf(src)
+		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+			usr.put_in_hands(user_id_card)
+		if(operable()) // Powered. Console can response.
+			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
+		else
+			to_chat(usr, "You remove \the [user_id_card] from \the [src].")
+		authenticated = FALSE // No card - no access
+		user_id_card = null
+
+	else if(target_id_card)
+		target_id_card.loc = get_turf(src)
+		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+			usr.put_in_hands(target_id_card)
+		if(operable()) // Powered. Make comp proceed ejection
+			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
+			target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
+			visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
+		else
+			to_chat(usr, "You remove \the [target_id_card] from \the [src].")
+		target_id_card = null
+
+	else
+		to_chat(usr, "There is nothing to remove from the console.")
+	return
+
+//made these procs part of the parent since it has the same functionality anyway
+/obj/structure/machinery/computer/double_id/attack_hand(mob/user as mob)
+	if(..() || inoperable())
+		return
+	user.set_interaction(src)
+	tgui_interact(user)
+
+/obj/structure/machinery/computer/double_id/attack_remote(mob/user as mob)
+	return attack_hand(user)
+
+/obj/structure/machinery/computer/double_id/bullet_act()
+	return FALSE
+// ------------------------------------------------------------------------------------------------------------------------------- //
+
+// Identification Computer
+// ------------------------------------------------------------------------------------------------------------------------------- //
+/obj/structure/machinery/computer/double_id/card
+	name = "Identification Computer"
+	desc = "Terminal for programming USCM employee ID card access."
+	icon_state = "id"
+	req_access = list(ACCESS_MARINE_DATABASE)
+	circuit = /obj/item/circuitboard/computer/card
+	// What factions we are able to modify
+	var/list/factions = list(FACTION_MARINE)
+	var/printing
+	var/is_centcom = FALSE
+
+/obj/structure/machinery/computer/double_id/card/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "CardMod", name)
 		ui.open()
 
-/obj/structure/machinery/computer/card/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/structure/machinery/computer/double_id/card/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -287,7 +377,7 @@
 			log_idmod(target_id_card, "<font color='orange'> [user.real_name] changed the account number to '[account]'. </font>", key_name_admin(user))
 			return TRUE
 
-/obj/structure/machinery/computer/card/ui_static_data(mob/user)
+/obj/structure/machinery/computer/double_id/card/ui_static_data(mob/user)
 	var/list/data = list()
 	data["station_name"] = MAIN_SHIP_NAME
 	data["centcom_access"] = is_centcom
@@ -369,7 +459,7 @@
 
 	return data
 
-/obj/structure/machinery/computer/card/ui_data(mob/user)
+/obj/structure/machinery/computer/double_id/card/ui_data(mob/user)
 	var/list/data = list()
 
 	data["station_name"] = MAIN_SHIP_NAME
@@ -385,86 +475,6 @@
 
 	return data
 
-/obj/structure/machinery/computer/card/attackby(obj/O, mob/user)
-	if(istype(O, /obj/item/card/id))
-		if(!operable())
-			to_chat(user, SPAN_NOTICE("You tried to inject \the [O] but \the [src] remains silent."))
-			return
-		var/obj/item/card/id/idcard = O
-		if(check_access(idcard))
-			if(!user_id_card)
-				if(user.drop_held_item())
-					O.forceMove(src)
-					user_id_card = O
-				authenticate(user, user_id_card)
-			else if(!target_id_card)
-				if(user.drop_held_item())
-					O.forceMove(src)
-					target_id_card = O
-					update_static_data(user)
-					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
-			else
-				to_chat(user, "Both slots are full already. Remove a card first.")
-		else
-			if(!target_id_card)
-				if(user.drop_held_item())
-					O.forceMove(src)
-					target_id_card = O
-					update_static_data(user)
-					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
-			else
-				to_chat(user, "Both slots are full already. Remove a card first.")
-	else
-		..()
-
-/obj/structure/machinery/computer/card/attack_remote(mob/user as mob)
-	return attack_hand(user)
-
-/obj/structure/machinery/computer/card/bullet_act()
-	return 0
-
-/obj/structure/machinery/computer/card/verb/eject_id()
-	set category = "Object"
-	set name = "Eject ID Card"
-	set src in oview(1)
-
-	if(!usr || usr.is_mob_incapacitated()) return
-
-	if(user_id_card)
-		user_id_card.loc = get_turf(src)
-		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
-			usr.put_in_hands(user_id_card)
-		if(operable()) // Powered. Console can response.
-			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
-		else
-			to_chat(usr, "You remove \the [user_id_card] from \the [src].")
-		authenticated = FALSE // No card - no access
-		user_id_card = null
-
-	else if(target_id_card)
-		target_id_card.loc = get_turf(src)
-		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
-			usr.put_in_hands(target_id_card)
-		if(operable()) // Powered. Make comp proceed ejection
-			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
-			target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
-			visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
-		else
-			to_chat(usr, "You remove \the [target_id_card] from \the [src].")
-		target_id_card = null
-
-	else
-		to_chat(usr, "There is nothing to remove from the console.")
-	return
-
-/obj/structure/machinery/computer/card/attack_hand(mob/user as mob)
-	if(..())
-		return
-	if(inoperable())
-		return
-	user.set_interaction(src)
-	tgui_interact(user)
-
 #undef CARDCON_DEPARTMENT_MISC
 #undef CARDCON_DEPARTMENT_MARINE
 #undef CARDCON_DEPARTMENT_SECURITY
@@ -474,6 +484,10 @@
 #undef CARDCON_DEPARTMENT_AUXCOM
 #undef CARDCON_DEPARTMENT_ENGINEERING
 #undef CARDCON_DEPARTMENT_COMMAND
+
+// ------------------------------------------------------------------------------------------------------------------------------- //
+
+// TODO: RECODE THE SQUAD CHANGER
 
 //This console changes a marine's squad. It's very simple.
 //It also does not: change or increment the squad count (used in the login randomizer), nor does it check for jobs.

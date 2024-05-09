@@ -5922,7 +5922,7 @@
 /area/almayer/medical/morgue)
 "aEO" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 8
 	},
 /obj/structure/machinery/light{
@@ -10771,7 +10771,7 @@
 	},
 /area/almayer/living/cryo_cells)
 "bho" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/computer/double_id/med_data,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -11321,7 +11321,7 @@
 /area/almayer/engineering/upper_engineering/starboard)
 "blZ" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/double_id/med_data/laptop,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner"
 	},
@@ -12869,7 +12869,7 @@
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "bwR" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 1;
 	pixel_y = -4
 	},
@@ -26749,7 +26749,7 @@
 /obj/structure/machinery/computer/squad_changer{
 	pixel_x = -9
 	},
-/obj/structure/machinery/computer/card{
+/obj/structure/machinery/computer/double_id/card{
 	pixel_x = 9
 	},
 /turf/open/floor/almayer{
@@ -30033,7 +30033,7 @@
 "gkK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/card{
+/obj/structure/machinery/computer/double_id/card{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -32007,7 +32007,7 @@
 /obj/structure/machinery/computer/secure_data{
 	dir = 4
 	},
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 4;
 	pixel_y = -18
 	},
@@ -37452,7 +37452,7 @@
 /area/almayer/living/port_emb)
 "iQB" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/card{
+/obj/structure/machinery/computer/double_id/card{
 	dir = 4;
 	layer = 3.2;
 	pixel_y = 4
@@ -56345,7 +56345,7 @@
 /area/almayer/command/combat_correspondent)
 "phw" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/card{
+/obj/structure/machinery/computer/double_id/card{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -59323,7 +59323,7 @@
 	pixel_y = 9;
 	req_access_txt = "28"
 	},
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 1;
 	pixel_x = 6;
 	pixel_y = -4
@@ -65345,7 +65345,7 @@
 /area/almayer/living/grunt_rnr)
 "smw" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 8
 	},
 /obj/item/device/flashlight/lamp{
@@ -80275,7 +80275,7 @@
 /area/almayer/living/grunt_rnr)
 "xjt" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/card{
+/obj/structure/machinery/computer/double_id/card{
 	dir = 4;
 	pixel_x = 2
 	},
@@ -81922,7 +81922,7 @@
 	},
 /area/almayer/hallways/upper/starboard)
 "xMA" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/computer/double_id/med_data,
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = -32

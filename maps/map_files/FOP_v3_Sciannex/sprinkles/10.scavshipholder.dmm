@@ -236,7 +236,7 @@
 /area/template_noop)
 "pw" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,

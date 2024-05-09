@@ -11849,7 +11849,7 @@
 /area/lv624/lazarus/hop)
 "aYM" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/double_id/med_data/laptop,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},

@@ -26737,7 +26737,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bGP" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/computer/double_id/med_data,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -39194,7 +39194,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "cvl" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/computer/double_id/med_data,
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "cvm" = (
@@ -39381,7 +39381,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "cvP" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/computer/double_id/med_data,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -40946,7 +40946,7 @@
 	},
 /area/desert_dam/building/medical/office2)
 "cAD" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/computer/double_id/med_data,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitered"
@@ -40989,7 +40989,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "cAI" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/computer/double_id/med_data,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitered"
@@ -43715,7 +43715,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "cIO" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/computer/double_id/med_data,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -43958,7 +43958,7 @@
 /area/desert_dam/building/medical/treatment_room)
 "cJC" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	pixel_y = 3
 	},
 /turf/open/floor/prison{
@@ -43980,7 +43980,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "cJF" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/computer/double_id/med_data,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull"
@@ -51496,7 +51496,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "dun" = (
-/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/double_id/med_data/laptop,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
@@ -51625,7 +51625,7 @@
 	},
 /area/desert_dam/interior/caves/temple)
 "duU" = (
-/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/double_id/med_data/laptop,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
@@ -51652,7 +51652,7 @@
 	},
 /area/desert_dam/building/administration/overseer_office)
 "duZ" = (
-/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/double_id/med_data/laptop,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;

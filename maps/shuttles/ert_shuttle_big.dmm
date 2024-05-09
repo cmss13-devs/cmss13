@@ -328,7 +328,7 @@
 /area/shuttle/ert)
 "tf" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/card,
+/obj/structure/machinery/computer/double_id/card,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -653,7 +653,7 @@
 /area/shuttle/ert)
 "Mx" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 8
 	},
 /turf/open/floor/almayer{

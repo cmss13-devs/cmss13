@@ -1,509 +1,228 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
+// eventually someone will have to make these into global defines and change all the occurrences.
 
-/obj/structure/machinery/computer/med_data//TODO:SANITY
+#define AUTOPSY_NOTES "a_stat" // autopsy notes
+#define NOTES "notes" // general medical notes
+#define MENTAL "m_stat" // psychiatric illnesses
+#define DISEASE "cdi"
+#define DISABILITY "mi_dis"
+#define HEALTH "p_stat" // current health status
+#define DEATH "d_stat" // cause of death
+#define BLOOD_TYPE "b_type"
+#define AUTOPSY_SUBMISSION "aut_sub" // whether or not an autopsy report has been submitted already for a given record
+#define PRINT_COOLDOWN_TIME 2 MINUTES
+
+/obj/structure/machinery/computer/double_id/med_data//TODO:RIP OUT LEGACY CODE.
 	name = "Medical Records"
 	desc = "This can be used to check medical records."
 	icon_state = "medcomp"
 	density = TRUE
 	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_WY_MEDICAL)
 	circuit = /obj/item/circuitboard/computer/med_data
-	var/obj/item/card/id/scan = null
-	var/last_user_name = ""
-	var/last_user_rank = ""
-	var/authenticated = null
-	var/rank = null
-	var/screen = null
-	var/datum/data/record/active1 = null
-	var/datum/data/record/active2 = null
-	var/a_id = null
-	var/temp = null
-	var/printing = null
+	// general record for a given target user
+	var/datum/data/record/target_record_general = null
+	// medical record for a given target user
+	var/datum/data/record/target_record_medical = null
+	// print cooldown
+	COOLDOWN_DECLARE(print_cooldown)
 
-/obj/structure/machinery/computer/med_data/verb/eject_id()
-	set category = "Object"
-	set name = "Eject ID Card"
-	set src in oview(1)
-
-	if(!usr || usr.is_mob_incapacitated()) return
-
-	if(scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
-		scan.forceMove(get_turf(src))
-		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
-			usr.put_in_hands(scan)
-		scan = null
-	else
-		to_chat(usr, "There is nothing to remove from the console.")
-	return
-
-/obj/structure/machinery/computer/med_data/attackby(obj/item/O as obj, user as mob)
-	if(istype(O, /obj/item/card/id) && !scan)
-		if(usr.drop_held_item())
-			O.forceMove(src)
-			scan = O
-			last_user_name = scan.registered_name
-			last_user_rank = scan.rank
-			to_chat(user, "You insert [O].")
+/obj/structure/machinery/computer/double_id/med_data/attackby(obj/card, mob/user)
+	// we only check the target, never the user.
+	if(user_id_card)
+		var/obj/item/card/id/id_card = card
+		if(!retrieve_target_records(id_card))
+			return
 	..()
 
-/obj/structure/machinery/computer/med_data/attack_remote(user as mob)
-	return src.attack_hand(user)
+/obj/structure/machinery/computer/double_id/med_data/proc/retrieve_target_records(obj/item/card/id/target_id)
+	if(!target_id)
+		visible_message("[SPAN_BOLD("[src]")] states, \"CARD FAILURE: Unable to read target ID.\"")
+		return FALSE
 
-/obj/structure/machinery/computer/med_data/attack_hand(mob/user as mob)
-	if(..())
-		return
-	var/dat
-	if (src.temp)
-		dat = text("<TT>[src.temp]</TT><BR><BR><A href='?src=\ref[src];temp=1'>Clear Screen</A>")
-	else
-		dat = text("Confirm Identity: <A href='?src=\ref[];scan=1'>[]</A><HR>", src, (src.scan ? text("[]", src.scan.name) : "----------"))
-		if (src.authenticated)
-			switch(src.screen)
-				if(1.0)
-					dat += {"
-<A href='?src=\ref[src];search=1'>Search Records</A>
-<BR><A href='?src=\ref[src];screen=2'>List Records</A>
-<BR>
-<BR><A href='?src=\ref[src];screen=5'>Medbot Tracking</A>
-<BR>
-<BR><A href='?src=\ref[src];screen=3'>Record Maintenance</A>
-<BR><A href='?src=\ref[src];logout=1'>{Log Out}</A><BR>
-"}
-				if(2.0)
-					dat += "<B>Record List</B>:<HR>"
-					if(!isnull(GLOB.data_core.general))
-						for(var/datum/data/record/R in sortRecord(GLOB.data_core.general))
-							dat += text("<A href='?src=\ref[];d_rec=\ref[]'>[]: []<BR>", src, R, R.fields["id"], R.fields["name"])
-							//Foreach goto(132)
-					dat += text("<HR><A href='?src=\ref[];screen=1'>Back</A>", src)
-				if(3.0)
-					dat += text("<B>Records Maintenance</B><HR>\n<A href='?src=\ref[];back=1'>Backup To Disk</A><BR>\n<A href='?src=\ref[];u_load=1'>Upload From disk</A><BR>\n<A href='?src=\ref[];del_all=1'>Delete All Records</A><BR>\n<BR>\n<A href='?src=\ref[];screen=1'>Back</A>", src, src, src, src)
-				if(4.0)
-					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
-						dat += "<CENTER><B>Medical Record</B></CENTER><BR>"
-						dat += "<table><tr><td>Name: [active1.fields["name"]] \
-								ID: [active1.fields["id"]]<BR>\n \
-								Sex: <A href='?src=\ref[src];field=sex'>[active1.fields["sex"]]</A><BR>\n \
-								Age: <A href='?src=\ref[src];field=age'>[active1.fields["age"]]</A><BR>\n \
-								Physical Status: <A href='?src=\ref[src];field=p_stat'>[active1.fields["p_stat"]]</A><BR>\n \
-								Mental Status: <A href='?src=\ref[src];field=m_stat'>[active1.fields["m_stat"]]</A><BR></td><td align = center valign = top> \
-								Photo:<br><img src=front.png height=64 width=64 border=5><img src=side.png height=64 width=64 border=5></td></tr></table>"
-					else
-						dat += "<B>General Record Lost!</B><BR>"
-					if ((istype(src.active2, /datum/data/record) && GLOB.data_core.medical.Find(src.active2)))
-						dat += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: <A href='?src=\ref[src];field=b_type'>[active2.fields["b_type"]]</A><BR>\n<BR>\nMinor Disabilities: <A href='?src=\ref[src];field=mi_dis'>[active2.fields["mi_dis"]]</A><BR>\nDetails: <A href='?src=\ref[src];field=mi_dis_d'>[active2.fields["mi_dis_d"]]</A><BR>\n<BR>\nMajor Disabilities: <A href='?src=\ref[src];field=ma_dis'>[active2.fields["ma_dis"]]</A><BR>\nDetails: <A href='?src=\ref[src];field=ma_dis_d'>[active2.fields["ma_dis_d"]]</A><BR>\n<BR>\nAllergies: <A href='?src=\ref[src];field=alg'>[active2.fields["alg"]]</A><BR>\nDetails: <A href='?src=\ref[src];field=alg_d'>[active2.fields["alg_d"]]</A><BR>\n<BR>\nCurrent Diseases: <A href='?src=\ref[src];field=cdi'>[active2.fields["cdi"]]</A> (per disease info placed in log/comment section)<BR>\nDetails: <A href='?src=\ref[src];field=cdi_d'>[active2.fields["cdi_d"]]</A><BR>\n<BR>\nImportant Notes:<BR>\n\t<A href='?src=\ref[src];field=notes'>[decode(src.active2.fields["notes"])]</A><BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
-						var/counter = 1
-						while(src.active2.fields[text("com_[]", counter)])
-							dat += text("[]<BR><A href='?src=\ref[];del_c=[]'>Delete Entry</A><BR><BR>", src.active2.fields[text("com_[]", counter)], src, counter)
-							counter++
-						dat += text("<A href='?src=\ref[];add_c=1'>Add Entry</A><BR><BR>", src)
-						dat += text("<A href='?src=\ref[];del_r=1'>Delete Record (Medical Only)</A><BR><BR>", src)
-					else
-						dat += "<B>Medical Record Lost!</B><BR>"
-						dat += text("<A href='?src=\ref[src];new=1'>New Record</A><BR><BR>")
-					dat += text("\n<A href='?src=\ref[];print_p=1'>Print Record</A><BR>\n", src)
-					dat += text("\n<A href='?src=\ref[];print_bs=1'>Print Latest Bodyscan</A><BR><BR>\n<A href='?src=\ref[];screen=2'>Back</A><BR>", src, src)
-				if(5)
-					dat += "<center><b>Medical Robot Monitor</b></center>"
-					dat += "<a href='?src=\ref[src];screen=1'>Back</a>"
-					dat += "<br><b>Medical Robots:</b>"
-					var/bdat = null
-					for(var/obj/structure/machinery/bot/medbot/M in GLOB.machines)
+	for(var/datum/data/record/medical_record as anything in GLOB.data_core.medical)
+		if(medical_record.fields["name"] == target_id.registered_name)
+			target_record_medical = medical_record
+			break
+	for(var/datum/data/record/general_record as anything in GLOB.data_core.general)
+		if(general_record.fields["name"] == target_id.registered_name)
+			target_record_general = general_record
+			break
 
-						if(M.z != src.z) continue //only find medibots on the same z-level as the computer
-						var/turf/bl = get_turf(M)
-						if(bl) //if it can't find a turf for the medibot, then it probably shouldn't be showing up
-							bdat += "[M.name] - <b>\[[bl.x],[bl.y]\]</b> - [M.on ? "Online" : "Offline"]<br>"
-							if((!isnull(M.reagent_glass)) && M.use_beaker)
-								bdat += "Reservoir: \[[M.reagent_glass.reagents.total_volume]/[M.reagent_glass.reagents.maximum_volume]\]<br>"
-							else
-								bdat += "Using Internal Synthesizer.<br>"
-					if(!bdat)
-						dat += "<br><center>None detected</center>"
-					else
-						dat += "<br>[bdat]"
+	if(!target_record_medical || !target_record_general):
+		visible_message("[SPAN_BOLD("[src]")] states, \"CARD FAILURE: Unable to retrieve target records.\"")
+		return FALSE
 
-		else
-			dat += text("<A href='?src=\ref[];login=1'>{Log In}</A>", src)
-	show_browser(user, dat, "Medical Records", "med_rec")
-	onclose(user, "med_rec")
-	return
+	return TRUE
 
-/obj/structure/machinery/computer/med_data/Topic(href, href_list)
-	if(..())
-		return
-
-	if (!( GLOB.data_core.general.Find(src.active1) ))
-		src.active1 = null
-
-	if (!( GLOB.data_core.medical.Find(src.active2) ))
-		src.active2 = null
-
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
-		usr.set_interaction(src)
-
-		if (href_list["temp"])
-			src.temp = null
-
-		if (href_list["scan"])
-			if (src.scan)
-
-				if(ishuman(usr))
-					scan.forceMove(usr.loc)
-
-					if(!usr.get_active_hand())
-						usr.put_in_hands(scan)
-
-					scan = null
-
-				else
-					src.scan.forceMove(src.loc)
-					src.scan = null
-
-			else
-				var/obj/item/I = usr.get_active_hand()
-				if (istype(I, /obj/item/card/id))
-					if(usr.drop_held_item())
-						I.forceMove(src)
-						src.scan = I
-
-		else if (href_list["logout"])
-			src.authenticated = null
-			src.screen = null
-			src.active1 = null
-			src.active2 = null
-
-		else if (href_list["login"])
-
-			if (isRemoteControlling(usr))
-				src.active1 = null
-				src.active2 = null
-				src.authenticated = usr.name
-				src.rank = "AI"
-				src.screen = 1
-
-			else if (istype(src.scan, /obj/item/card/id))
-				src.active1 = null
-				src.active2 = null
-
-				if (src.check_access(src.scan))
-					src.authenticated = src.scan.registered_name
-					src.rank = src.scan.assignment
-					src.screen = 1
-
-		if (src.authenticated)
-
-			if(href_list["screen"])
-				src.screen = text2num(href_list["screen"])
-				if(src.screen < 1)
-					src.screen = 1
-
-				src.active1 = null
-				src.active2 = null
-
-			if (href_list["del_all"])
-				src.temp = text("Are you sure you wish to delete all records?<br>\n\t<A href='?src=\ref[];temp=1;del_all2=1'>Yes</A><br>\n\t<A href='?src=\ref[];temp=1'>No</A><br>", src, src)
-
-			if (href_list["del_all2"])
-				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-					GLOB.data_core.medical -= R
-					qdel(R)
-					//Foreach goto(494)
-				src.temp = "All records deleted."
-
-			if (href_list["field"])
-				var/a1 = src.active1
-				var/a2 = src.active2
-				switch(href_list["field"])
-					if("sex")
-						if (istype(src.active1, /datum/data/record))
-							if (src.active1.fields["sex"] == "Male")
-								src.active1.fields["sex"] = "Female"
-							else
-								src.active1.fields["sex"] = "Male"
-					if("age")
-						if (istype(src.active1, /datum/data/record))
-							var/t1 = input("Please input age:", "Med. records", src.active1.fields["age"], null)  as num
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || src.active1 != a1))
-								return
-							src.active1.fields["age"] = t1
-					if("mi_dis")
-						if (istype(src.active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please input minor disabilities list:", "Med. records", src.active2.fields["mi_dis"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || src.active2 != a2))
-								return
-							src.active2.fields["mi_dis"] = t1
-					if("mi_dis_d")
-						if (istype(src.active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please summarize minor dis.:", "Med. records", src.active2.fields["mi_dis_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || src.active2 != a2))
-								return
-							src.active2.fields["mi_dis_d"] = t1
-					if("ma_dis")
-						if (istype(src.active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please input major diabilities list:", "Med. records", src.active2.fields["ma_dis"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || src.active2 != a2))
-								return
-							src.active2.fields["ma_dis"] = t1
-					if("ma_dis_d")
-						if (istype(src.active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please summarize major dis.:", "Med. records", src.active2.fields["ma_dis_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || src.active2 != a2))
-								return
-							src.active2.fields["ma_dis_d"] = t1
-					if("alg")
-						if (istype(src.active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please state allergies:", "Med. records", src.active2.fields["alg"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || src.active2 != a2))
-								return
-							src.active2.fields["alg"] = t1
-					if("alg_d")
-						if (istype(src.active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please summarize allergies:", "Med. records", src.active2.fields["alg_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || src.active2 != a2))
-								return
-							src.active2.fields["alg_d"] = t1
-					if("cdi")
-						if (istype(src.active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please state diseases:", "Med. records", src.active2.fields["cdi"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || src.active2 != a2))
-								return
-							src.active2.fields["cdi"] = t1
-					if("cdi_d")
-						if (istype(src.active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please summarize diseases:", "Med. records", src.active2.fields["cdi_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || src.active2 != a2))
-								return
-							src.active2.fields["cdi_d"] = t1
-					if("notes")
-						if (istype(src.active2, /datum/data/record))
-							var/t1 = copytext(html_encode(trim(input("Please summarize notes:", "Med. records", html_decode(src.active2.fields["notes"]), null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || src.active2 != a2))
-								return
-							src.active2.fields["notes"] = t1
-					if("p_stat")
-						if (istype(src.active1, /datum/data/record))
-							src.temp = text("<B>Physical Condition:</B><BR>\n\t<A href='?src=\ref[];temp=1;p_stat=deceased'>*Deceased*</A><BR>\n\t<A href='?src=\ref[];temp=1;p_stat=ssd'>*SSD*</A><BR>\n\t<A href='?src=\ref[];temp=1;p_stat=active'>Active</A><BR>\n\t<A href='?src=\ref[];temp=1;p_stat=unfit'>Physically Unfit</A><BR>\n\t<A href='?src=\ref[];temp=1;p_stat=disabled'>Disabled</A><BR>", src, src, src, src, src)
-					if("m_stat")
-						if (istype(src.active1, /datum/data/record))
-							src.temp = text("<B>Mental Condition:</B><BR>\n\t<A href='?src=\ref[];temp=1;m_stat=insane'>*Insane*</A><BR>\n\t<A href='?src=\ref[];temp=1;m_stat=unstable'>*Unstable*</A><BR>\n\t<A href='?src=\ref[];temp=1;m_stat=watch'>*Watch*</A><BR>\n\t<A href='?src=\ref[];temp=1;m_stat=stable'>Stable</A><BR>", src, src, src, src)
-					if("b_type")
-						if (istype(src.active2, /datum/data/record))
-							src.temp = text("<B>Blood Type:</B><BR>\n\t<A href='?src=\ref[];temp=1;b_type=an'>A-</A> <A href='?src=\ref[];temp=1;b_type=ap'>A+</A><BR>\n\t<A href='?src=\ref[];temp=1;b_type=bn'>B-</A> <A href='?src=\ref[];temp=1;b_type=bp'>B+</A><BR>\n\t<A href='?src=\ref[];temp=1;b_type=abn'>AB-</A> <A href='?src=\ref[];temp=1;b_type=abp'>AB+</A><BR>\n\t<A href='?src=\ref[];temp=1;b_type=on'>O-</A> <A href='?src=\ref[];temp=1;b_type=op'>O+</A><BR>", src, src, src, src, src, src, src, src)
-
-
-			if (href_list["p_stat"])
-				if (src.active1)
-					switch(href_list["p_stat"])
-						if("deceased")
-							src.active1.fields["p_stat"] = "*Deceased*"
-						if("ssd")
-							src.active1.fields["p_stat"] = "*SSD*"
-						if("active")
-							src.active1.fields["p_stat"] = "Active"
-						if("unfit")
-							src.active1.fields["p_stat"] = "Physically Unfit"
-						if("disabled")
-							src.active1.fields["p_stat"] = "Disabled"
-
-			if (href_list["m_stat"])
-				if (src.active1)
-					switch(href_list["m_stat"])
-						if("insane")
-							src.active1.fields["m_stat"] = "*Insane*"
-						if("unstable")
-							src.active1.fields["m_stat"] = "*Unstable*"
-						if("watch")
-							src.active1.fields["m_stat"] = "*Watch*"
-						if("stable")
-							src.active1.fields["m_stat"] = "Stable"
-
-
-			if (href_list["b_type"])
-				if (src.active2)
-					switch(href_list["b_type"])
-						if("an")
-							src.active2.fields["b_type"] = "A-"
-						if("bn")
-							src.active2.fields["b_type"] = "B-"
-						if("abn")
-							src.active2.fields["b_type"] = "AB-"
-						if("on")
-							src.active2.fields["b_type"] = "O-"
-						if("ap")
-							src.active2.fields["b_type"] = "A+"
-						if("bp")
-							src.active2.fields["b_type"] = "B+"
-						if("abp")
-							src.active2.fields["b_type"] = "AB+"
-						if("op")
-							src.active2.fields["b_type"] = "O+"
-
-
-			if (href_list["del_r"])
-				if (active2)
-					src.temp = text("Are you sure you wish to delete the record (Medical Portion Only)?<br>\n\t<A href='?src=\ref[];temp=1;del_r2=1'>Yes</A><br>\n\t<A href='?src=\ref[];temp=1'>No</A><br>", src, src)
-
-			if (href_list["del_r2"])
-				QDEL_NULL(active2)
-
-			if (href_list["d_rec"])
-				var/datum/data/record/R = locate(href_list["d_rec"])
-				var/datum/data/record/M = locate(href_list["d_rec"])
-				if (!( GLOB.data_core.general.Find(R) ))
-					src.temp = "Record Not Found!"
-					return
-				for(var/datum/data/record/E in GLOB.data_core.medical)
-					if ((E.fields["ref"] == R.fields["ref"] || E.fields["id"] == R.fields["id"]))
-						M = E
-				src.active1 = R
-				src.active2 = M
-				src.screen = 4
-
-			if (href_list["new"])
-				if ((istype(src.active1, /datum/data/record) && !( istype(src.active2, /datum/data/record) )))
-					var/datum/data/record/R = new /datum/data/record(  )
-					R.fields["name"] = src.active1.fields["name"]
-					R.fields["id"] = src.active1.fields["id"]
-					R.name = text("Medical Record #[]", R.fields["id"])
-					R.fields["b_type"] = "Unknown"
-					R.fields["mi_dis"] = "None"
-					R.fields["mi_dis_d"] = "No minor disabilities have been declared."
-					R.fields["ma_dis"] = "None"
-					R.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
-					R.fields["alg"] = "None"
-					R.fields["alg_d"] = "No allergies have been detected in this patient."
-					R.fields["cdi"] = "None"
-					R.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
-					R.fields["notes"] = "No notes."
-					GLOB.data_core.medical += R
-					src.active2 = R
-					src.screen = 4
-
-			if (href_list["add_c"])
-				if (!( istype(src.active2, /datum/data/record) ))
-					return
-				var/a2 = src.active2
-				var/t1 = copytext(trim(strip_html(input("Add Comment:", "Med. records", null, null)  as message)),1,MAX_MESSAGE_LEN)
-				if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || src.active2 != a2))
-					return
-				var/counter = 1
-				while(src.active2.fields[text("com_[]", counter)])
-					counter++
-				src.active2.fields[text("com_[counter]")] = text("Made by [authenticated] ([rank]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
-
-			if (href_list["del_c"])
-				if ((istype(src.active2, /datum/data/record) && src.active2.fields[text("com_[]", href_list["del_c"])]))
-					src.active2.fields[text("com_[]", href_list["del_c"])] = "<B>Deleted</B>"
-
-			if (href_list["search"])
-				var/t1 = stripped_input(usr, "Search String: (Name, DNA, or ID)", "Med. records")
-				if ((!( t1 ) || usr.stat || !( src.authenticated ) || usr.is_mob_restrained() || ((!in_range(src, usr)) && (!isRemoteControlling(usr)))))
-					return
-				src.active1 = null
-				src.active2 = null
-				t1 = lowertext(t1)
-				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-					if ((lowertext(R.fields["name"]) == t1 || t1 == lowertext(R.fields["id"])))
-						src.active2 = R
-				if (!active2)
-					temp = "Could not locate record [t1]."
-				else
-					for(var/datum/data/record/E in GLOB.data_core.general)
-						if ((E.fields["name"] == src.active2.fields["name"] || E.fields["id"] == src.active2.fields["id"]))
-							src.active1 = E
-					src.screen = 4
-
-			if (href_list["print_p"])
-				if (!( src.printing ))
-					src.printing = 1
-					var/datum/data/record/record1 = null
-					var/datum/data/record/record2 = null
-					if ((istype(src.active1, /datum/data/record) && GLOB.data_core.general.Find(src.active1)))
-						record1 = active1
-					if ((istype(src.active2, /datum/data/record) && GLOB.data_core.medical.Find(src.active2)))
-						record2 = active2
-					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
-					sleep(40)
-					var/obj/item/paper/P = new /obj/item/paper( src.loc )
-					P.info = "<CENTER><B>Medical Record</B></CENTER><BR>"
-					if (record1)
-						P.info += text("Name: [] <BR>\nID: []<BR>\nSex: []<BR>\nAge: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>", record1.fields["name"], record1.fields["id"], record1.fields["sex"], record1.fields["age"], record1.fields["p_stat"], record1.fields["m_stat"])
-						P.name = text("Medical Record ([])", record1.fields["name"])
-					else
-						P.info += "<B>General Record Lost!</B><BR>"
-						P.name = "Medical Record"
-					if (record2)
-						P.info += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: [record2.fields["b_type"]]<BR>\n<BR>\nMinor Disabilities: [record2.fields["mi_dis"]]<BR>\nDetails: [record2.fields["mi_dis_d"]]<BR>\n<BR>\nMajor Disabilities: [record2.fields["ma_dis"]]<BR>\nDetails: [record2.fields["ma_dis_d"]]<BR>\n<BR>\nAllergies: [record2.fields["alg"]]<BR>\nDetails: [record2.fields["alg_d"]]<BR>\n<BR>\nCurrent Diseases: [record2.fields["cdi"]] (per disease info placed in log/comment section)<BR>\nDetails: [record2.fields["cdi_d"]]<BR>\n<BR>\nImportant Notes:<BR>\n\t[decode(record2.fields["notes"])]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
-						var/counter = 1
-						while(record2.fields[text("com_[]", counter)])
-							P.info += text("[]<BR>", record2.fields[text("com_[]", counter)])
-							counter++
-					else
-						P.info += "<B>Medical Record Lost!</B><BR>"
-					P.info += "</TT>"
-					P.info += text("<BR><HR><font size = \"1\"><I>This report was printed by [] [].<BR>The [MAIN_SHIP_NAME],[]/[], []</I></font><BR>\n<span class=\"paper_field\"></span>",last_user_rank,last_user_name,time2text(world.timeofday, "MM/DD"),GLOB.game_year,worldtime2text())
-					src.printing = null
-
-			if(href_list["print_bs"])//Prints latest body scan
-				if(!(src.printing))
-					src.printing = 1
-					var/datum/data/record/record
-					if ((istype(src.active1, /datum/data/record) && GLOB.data_core.general.Find(src.active1)))
-						record = active1
-					if(!record) return
-					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
-					sleep(40)
-					var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-					var/obj/item/paper/P = new /obj/item/paper( src.loc )
-					P.name = text("Scan: [], []",record.fields["name"],worldtime2text())
-					P.info += text("<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Scan Record</I><HR><H2>[]</H2>\n</center>",record.fields["name"])
-					for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-						if (R.fields["name"] ==  record.fields["name"])
-							if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
-								P.info += R.fields["last_scan_result"]
-								break
-							else
-								P.info += "No scan on record."
-					P.info += text("<BR><HR><font size = \"1\"><I>This report was printed by [] [].<BR>The [MAIN_SHIP_NAME],  []/[], []</I></font><BR>\n<span class=\"paper_field\"></span>",last_user_rank,last_user_name,time2text(world.timeofday, "MM/DD"),GLOB.game_year,worldtime2text())
-					src.printing = null
-
-
-
-	src.add_fingerprint(usr)
-	src.updateUsrDialog()
-	return
-
-/obj/structure/machinery/computer/med_data/emp_act(severity)
-	. = ..()
-	if(inoperable())
-		return
-
-	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-		if(prob(10/severity))
-			switch(rand(1,6))
-				if(1)
-					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
-				if(2)
-					R.fields["sex"] = pick("Male", "Female")
-				if(3)
-					R.fields["age"] = rand(5, 85)
-				if(4)
-					R.fields["b_type"] = pick("A-", "B-", "AB-", "O-", "A+", "B+", "AB+", "O+")
-				if(5)
-					R.fields["p_stat"] = pick("*SSD*", "Active", "Physically Unfit", "Disabled")
-				if(6)
-					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
-			continue
-
-		else if(prob(1))
-			GLOB.data_core.medical -= R
-			qdel(R)
-			continue
-
-
-/obj/structure/machinery/computer/med_data/laptop
+/obj/structure/machinery/computer/double_id/med_data/laptop
 	name = "Medical Laptop"
 	desc = "Cheap Weyland-Yutani Laptop."
 	icon_state = "medlaptop"
 	density = FALSE
+
+// TGUI med
+// ----------------------------------------------------------------------------------------------------- //
+/obj/structure/machinery/computer/double_id/med_data/tgui_interact(mob/user, datum/tgui/ui)
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "MedMod", name)
+		ui.open()
+
+/obj/structure/machinery/computer/double_id/med_data/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/user = ui.user
+	playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
+	switch(action)
+		if("selectHealthStatus")
+			target_record_general.fields[HEALTH] = params["health"]
+			return TRUE
+		if("selectCauseOfDeath")
+			target_record_medical.fields[DEATH] = params["death"]
+			return TRUE
+		if("authenticate")
+			var/obj/item/id_card = user.get_active_hand()
+			if (istype(id_card, /obj/item/card/id))
+				if(user.drop_held_item())
+					id_card.forceMove(src)
+					user_id_card = id_card
+			if(authenticate(user, user_id_card))
+				return TRUE
+			else
+				if(!user_id_card)
+					return
+				if(ishuman(user))
+					user_id_card.forceMove(user.loc)
+					if(!user.get_active_hand())
+						user.put_in_hands(user_id_card)
+				else
+					user_id_card.forceMove(loc)
+				user_id_card = null
+		if("logout")
+			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
+			authenticated = FALSE
+			if(ishuman(user))
+				user_id_card.forceMove(user.loc)
+				if(!user.get_active_hand())
+					user.put_in_hands(user_id_card)
+			else
+				user_id_card.forceMove(loc)
+			user_id_card = null
+			return TRUE
+		if("print")
+			if(!authenticated || !target_id_card)
+				return
+
+			if(!COOLDOWN_FINISHED(src, print_cooldown))
+				visible_message("[SPAN_BOLD("[src]")] states, \"PRINT ERROR: system is still on cooldown.\"")
+				return
+
+			COOLDOWN_START(src, print_cooldown, PRINT_COOLDOWN_TIME )
+			playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
+			var/contents = {"<center><h4>Medical Report</h4></center>
+								<u>Prepared By:</u> [user_id_card?.registered_name ? user_id_card.registered_name : "Unknown"]<br>
+								<u>For:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
+								<hr>
+								<center><h4>General Information</h4></center>
+								<u>Name:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
+								<u>Sex:</u> [target_record_general?.fields["sex"]]<br>
+								<u>Age:</u> [target_record_general?.fields["age"]]<br>
+								<u>Blood Type:</u> [target_record_medical?.fields[BLOOD_TYPE]]<br>
+								<hr>
+								<center><h4>Medical Notes</h4></center>
+								<u>General Notes:</u> [target_record_medical?.fields[NOTES]]<br>
+								<u>Psychiatric History:</u> [target_record_general?.fields[MENTAL]]<br>
+								<u>Disease History:</u> [target_record_medical?.fields[DISEASE]]<br>
+								<u>Disability History:</u> [target_record_medical?.fields[DISABILITY]]<br>
+								<hr>
+								"}
+
+			// autopsy report gets shwacked ontop if it exists and the target stat is dead
+			if(target_record_general.fields[HEALTH] == "Deceased" && target_record_medical.fields[AUTOPSY_SUBMISSION])
+				contents +=  {"<center><h4>Autopsy Report</h4></center>
+								<u>Autopsy Nites:</u> [target_record_medical.fields[AUTOPSY_NOTES]]<br>
+								<u>Cause Of Death:</u> [target_record_medical.fields[DEATH]]<br>
+							"}
+
+			var/obj/item/paper/med_report = new (loc)
+			med_report.name = "Medical Report"
+			med_report.info += contents
+			visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
+			return TRUE
+		if("eject")
+			if(target_id_card)
+				if(ishuman(user))
+					target_id_card.forceMove(user.loc)
+					if(!user.get_active_hand())
+						user.put_in_hands(target_id_card)
+				else
+					target_id_card.forceMove(loc)
+				visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
+				target_record_general = null
+				target_record_medical = null
+				target_id_card = null
+				return TRUE
+			else
+				var/obj/item/card/id/id_card = user.get_active_hand()
+				if (istype(id_card, /obj/item/card/id))
+					if(!retrieve_target_records(id_card))
+						ui.close()
+						return
+				if(user.drop_held_item())
+					id_card.forceMove(src)
+					target_id_card = id_card
+					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
+					update_static_data(user)
+					return TRUE
+			return FALSE
+		if("updateStatRecord")
+			if(params["stat_type"]) // 1 for medical
+				target_record_medical.fields[params["stat"]] = params["new_value"]
+			else // 0 for general
+				target_record_general.fields[params["stat"]] = params["new_value"]
+			return TRUE
+		if("submitReport")
+			if(!target_record_medical.fields[DEATH])
+				visible_message("[SPAN_BOLD("[src]")] states, \"LOG ERROR: You must select a cause of death before submitting a report.\"")
+				return
+			target_record_medical.fields[AUTOPSY_SUBMISSION] = TRUE
+			return TRUE
+
+/obj/structure/machinery/computer/double_id/med_data/ui_data(mob/user)
+	var/list/data = list()
+	// TODO:make each data var a list instead of harcoding the stat in tgui.
+	data["name"] = target_record_general?.fields["name"]
+	data["health"] = target_record_general?.fields[HEALTH]
+	data["sex"] = target_record_general?.fields["sex"]
+	data["bloodType"] = target_record_medical?.fields[BLOOD_TYPE]
+	data["age"] = target_record_general?.fields["age"]
+	data["notes"] = target_record_medical?.fields[NOTES]
+	data["death"] = target_record_medical?.fields[DEATH]
+	data["mental"] = target_record_general?.fields[MENTAL]
+	data["disease"] = target_record_medical?.fields[DISEASE]
+	data["disability"] = target_record_medical?.fields[DISABILITY]
+	data["autopsy"] = target_record_medical?.fields[AUTOPSY_NOTES]
+	data["existingReport"] = target_record_medical?.fields[AUTOPSY_SUBMISSION]
+
+	data["authenticated"] = authenticated
+	data["has_id"] = !!target_id_card
+	data["id_name"] = target_id_card ? target_id_card.name : "-----"
+	if(target_id_card)
+		data["id_rank"] = target_id_card.assignment ? target_id_card.assignment : "Unassigned"
+		data["id_owner"] = target_id_card.registered_name ? target_id_card.registered_name : "-----"
+		data["access_on_card"] = target_id_card.access + target_id_card.faction_group
+		data["id_account"] = target_id_card.associated_account_number
+
+	return data
+
+#undef AUTOPSY_NOTES
+#undef NOTES
+#undef MENTAL
+#undef DISEASE
+#undef DISABILITY
+#undef HEALTH
+#undef DEATH
+#undef BLOOD_TYPE
+#undef AUTOPSY_SUBMISSION

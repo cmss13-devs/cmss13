@@ -606,7 +606,7 @@
 /area/space)
 "abs" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	pixel_y = 3
 	},
 /turf/open/floor/prison{
@@ -747,7 +747,7 @@
 /area/prison/research/secret/bioengineering)
 "abL" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/double_id/med_data/laptop,
 /turf/open/floor/prison{
 	icon_state = "whitepurplefull"
 	},
@@ -5206,7 +5206,7 @@
 /area/prison/research/RD)
 "anT" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	pixel_y = 3
 	},
 /turf/open/floor/carpet,
@@ -8593,7 +8593,7 @@
 /area/prison/medbay)
 "axl" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	pixel_y = 3
 	},
 /turf/open/floor/prison{
@@ -11502,7 +11502,7 @@
 /area/prison/medbay)
 "aFO" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/double_id/med_data/laptop,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull"
@@ -15130,7 +15130,7 @@
 /area/prison/command/secretary_office)
 "aQH" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/double_id/med_data/laptop,
 /turf/open/floor/carpet,
 /area/prison/command/secretary_office)
 "aQI" = (
@@ -34990,7 +34990,7 @@
 /area/prison/cellblock/highsec/south/south)
 "bYA" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/double_id/med_data/laptop,
 /turf/open/floor/prison,
 /area/prison/security/head)
 "bYB" = (

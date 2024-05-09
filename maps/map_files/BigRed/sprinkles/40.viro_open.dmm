@@ -473,7 +473,7 @@
 /area/bigredv2/outside/virology)
 "bF" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 8
 	},
 /turf/open/floor{

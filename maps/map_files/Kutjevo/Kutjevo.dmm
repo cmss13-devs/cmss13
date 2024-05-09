@@ -10003,7 +10003,7 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
 "nCt" = (
-/obj/structure/machinery/computer/card{
+/obj/structure/machinery/computer/double_id/card{
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -10308,7 +10308,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/Northwest_Colony)
 "nRk" = (
-/obj/structure/machinery/computer/card{
+/obj/structure/machinery/computer/double_id/card{
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,

@@ -2996,7 +2996,7 @@
 /area/corsat/omega/offices)
 "aiR" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/card,
+/obj/structure/machinery/computer/double_id/card,
 /obj/structure/machinery/computer/guestpass,
 /turf/open/floor/corsat{
 	dir = 5;
@@ -5709,7 +5709,7 @@
 /area/corsat/gamma/medbay/morgue)
 "aqS" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/double_id/med_data/laptop,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "greenwhite"
@@ -16441,7 +16441,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 4
 	},
 /obj/structure/surface/table/woodentable/fancy,
@@ -27994,7 +27994,7 @@
 /area/corsat/omega/complex)
 "bAK" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	pixel_y = 3
 	},
 /turf/open/floor/corsat{
@@ -28117,7 +28117,7 @@
 /area/corsat/gamma/medbay)
 "bBd" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/double_id/med_data/laptop,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "greenwhite"
@@ -29350,7 +29350,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 4
 	},
 /turf/open/floor/corsat{
@@ -38752,7 +38752,7 @@
 /area/corsat/omega/hangar/office)
 "eoZ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 8
 	},
 /turf/open/floor/corsat{
@@ -54333,7 +54333,7 @@
 /area/corsat/gamma/residential)
 "pVL" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 4
 	},
 /turf/open/floor/corsat{
@@ -55537,7 +55537,7 @@
 /area/corsat/sigma/airlock/south)
 "qLI" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 1
 	},
 /turf/open/floor/corsat{
@@ -65095,7 +65095,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/double_id/med_data/laptop{
 	dir = 4
 	},
 /turf/open/floor/corsat{

@@ -249,6 +249,23 @@ GLOBAL_LIST_INIT(all_fences, list())
 	throwpass = TRUE
 	unacidable = TRUE
 
+/obj/structure/fence/electrified/hitby(atom/movable/AM)
+	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
+	var/tforce = 0
+	if(ismob(AM))
+		if(electrified && !cut)
+			if(istype(AM,/mob/living/carbon/human))
+				electrocute_human(AM)
+			if(istype(AM,/mob/living/carbon/xenomorph))
+				electrocute_xenomorph(AM)
+		else
+			tforce = 40
+	else if(isobj(AM))
+		var/obj/item/I = AM
+		tforce = I.throwforce
+	health = max(0, health - tforce)
+	healthcheck()
+
 /obj/structure/fence/electrified/update_nearby_icons()
 	return
 
@@ -280,6 +297,15 @@ GLOBAL_LIST_INIT(all_fences, list())
 	var/mob/living/carbon/human/human = electrocuted
 	human.apply_effect(1,STUN)
 	human.apply_effect(1,PARALYZE)
+	var/datum/effect_system/spark_spread/spark_system = new
+	spark_system.set_up(5, 0, src)
+	spark_system.attach(src)
+	spark_system.start(src)
+
+/obj/structure/fence/electrified/proc/electrocute_xenomorph(mob/living/carbon/xenomorph/electrocuted)
+	electrocuted.apply_damage(100,BURN)
+	electrocuted.apply_effect(1,STUN)
+	electrocuted.apply_effect(1,PARALYZE)
 	var/datum/effect_system/spark_spread/spark_system = new
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)

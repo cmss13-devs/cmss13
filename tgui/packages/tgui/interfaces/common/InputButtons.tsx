@@ -13,7 +13,7 @@ type InputButtonsProps = {
   readonly on_submit?: () => void;
   readonly on_cancel?: () => void;
   readonly message?: string;
-  readonly submit_disabled: BooleanLike;
+  readonly submit_disabled?: BooleanLike;
 };
 
 export const InputButtons = (props: InputButtonsProps) => {
@@ -24,6 +24,9 @@ export const InputButtons = (props: InputButtonsProps) => {
   let on_submit_actual = on_submit;
   if (!on_submit_actual) {
     on_submit_actual = () => {
+      if (submit_disabled) {
+        return;
+      }
       act('submit', { entry: input });
     };
   }

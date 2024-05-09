@@ -345,12 +345,13 @@
 				to_chat(user, SPAN_DANGER("\the [item] is empty."))
 	else if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 		if(assembly_stage == ASSEMBLY_UNLOCKED)
-			if(length(containers) > 0)
-				for(var/obj/container in containers)
-					if(istype(container))
-						containers -= container
-						user.put_in_hands(container)
-				current_container_volume = 0
+			if(!length(containers))
+				to_chat(user, SPAN_DANGER("\the [name] has no containers."))
+				return
+			for(var/obj/container in containers)
+				containers -= container
+				user.put_in_hands(container)
+			current_container_volume = 0
 	else return ..()
 
 /obj/structure/ship_ammo/rocket/custom_missile/get_examine_text(mob/user)

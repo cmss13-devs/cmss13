@@ -659,7 +659,7 @@
 		var/obj/item/research_upgrades/autodoc/upgrd = with
 		for(var/iter in upgrades)
 			if(iter == upgrd.value)
-				to_chat(user, SPAN_NOTICE("This data is already present in the [src]!"))
+				to_chat(user, SPAN_NOTICE("This data is already present in [src]!"))
 				return
 		if(!user.drop_inv_item_to_loc(with, src))
 			return

@@ -330,7 +330,6 @@
 	else if(is_type_in_list(item, allowed_containers) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
 		if(current_container_volume >= max_container_volume)
 			to_chat(user, SPAN_DANGER("The [name] can not hold more containers."))
-			return
 		else
 			if(item.reagents.total_volume)
 				if(item.reagents.maximum_volume + current_container_volume > max_container_volume)
@@ -346,7 +345,7 @@
 				to_chat(user, SPAN_DANGER("\the [item] is empty."))
 	else if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 		if(assembly_stage == ASSEMBLY_UNLOCKED)
-			if(containers.len)
+			if(length(containers) > 0)
 				for(var/obj/container in containers)
 					if(istype(container))
 						containers -= container
@@ -367,20 +366,19 @@
 	if(assembly_stage == ASSEMBLY_UNLOCKED || containers.len == 0) //shitty explosion if left unlocked or no containers
 		impact.ceiling_debris_check(3)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 60, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)), source_mob), 0.5 SECONDS)
-	else
-		if(assembly_stage == ASSEMBLY_LOCKED)
-			impact.ceiling_debris_check(3)
-			var/obj/item/explosive/bomb = new /obj/item/explosive
-			bomb.create_reagents(1000)
-			for(var/limit in bomb.reaction_limits)
-				bomb.reagents.vars[limit] = reaction_limits[limit]
-			for(var/obj/container in containers)
-				container.forceMove(bomb)
-				bomb.containers += container
-			bomb.forceMove(impact)
-			bomb.allow_star_shape = FALSE
-			bomb.prime(TRUE)
-			create_cause_data(initial(name), source_mob)
+	else if(assembly_stage == ASSEMBLY_LOCKED)
+		impact.ceiling_debris_check(3)
+		var/obj/item/explosive/bomb = new()
+		bomb.create_reagents(1000)
+		for(var/limit in bomb.reaction_limits)
+			bomb.reagents.vars[limit] = reaction_limits[limit]
+		for(var/obj/container in containers)
+			container.forceMove(bomb)
+			bomb.containers += container
+		bomb.forceMove(impact)
+		bomb.allow_star_shape = FALSE
+		bomb.prime(TRUE)
+		create_cause_data(initial(name), source_mob)
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/banshee

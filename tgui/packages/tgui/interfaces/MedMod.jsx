@@ -6,7 +6,7 @@ export const MedMod = (props) => {
   const [tab2, setTab2] = useLocalState('tab2', 1);
   return (
     <Window width={450} height={520} resizable>
-      <Window.Content >
+      <Window.Content>
         <Box>
           <Tabs fluid={1}>
             <Tabs.Tab selected={tab2 === 1} onClick={() => setTab2(1)}>
@@ -27,19 +27,25 @@ export const MedMod = (props) => {
 export const MedicalRecord = (props) => {
   const { act, data } = useBackend();
   const [tab, setTab] = useLocalState('tab', 1);
-  const { authenticated, name, has_id, notes, health, death, mental, disease, disability, autopsy, existingReport } = data;
+  const {
+    authenticated,
+    name,
+    has_id,
+    notes,
+    health,
+    death,
+    mental,
+    disease,
+    disability,
+    autopsy,
+    existingReport,
+  } = data;
   return (
     <>
       <Section
         title="Medical Record"
         buttons={
-          <Button
-            icon="print"
-            content="Print"
-            onClick={() =>
-              act('print')
-            }
-          />
+          <Button icon="print" content="Print" onClick={() => act('print')} />
         }></Section>
       {!!has_id && !!authenticated && (
         <Box height={550}>
@@ -56,100 +62,116 @@ export const MedicalRecord = (props) => {
               <Stack vertical align="start">
                 <Stack.Item>General Notes:</Stack.Item>
                 <Stack.Item>
-                  <Input value={notes} fluid={1}
-                  onChange={(e, value) =>
-                    act('updateStatRecord', {
-                      stat_type: statType.MEDICAL, // yes, it's hardcoded. Fix later.
-                      stat: stat.NOTES,
-                      new_value: value,
-                    })
-                  }
+                  <Input
+                    value={notes}
+                    fluid={1}
+                    onChange={(e, value) =>
+                      act('updateStatRecord', {
+                        stat_type: statType.MEDICAL, // yes, it's hardcoded. Fix later.
+                        stat: stat.NOTES,
+                        new_value: value,
+                      })
+                    }
                   />
                 </Stack.Item>
                 <Stack.Item>Psychiatric History:</Stack.Item>
                 <Stack.Item>
-                  <Input value={mental}fluid={1}
-                  onChange={(e, value) =>
-                    act('updateStatRecord', {
-                      stat_type: statType.GENERAL,
-                      stat: stat.MENTAL,
-                      new_value: value,
-                    })
-                  } />
+                  <Input
+                    value={mental}
+                    fluid={1}
+                    onChange={(e, value) =>
+                      act('updateStatRecord', {
+                        stat_type: statType.GENERAL,
+                        stat: stat.MENTAL,
+                        new_value: value,
+                      })
+                    }
+                  />
                 </Stack.Item>
                 <Stack.Item>Disease History:</Stack.Item>
                 <Stack.Item>
-                  <Input value={disease} fluid={1}
-                  onChange={(e, value) =>
-                    act('updateStatRecord', {
-                      stat_type: statType.MEDICAL,
-                      stat: stat.DISEASE, // we hardcode around here boyoz.
-                      new_value: value,
-                    })
-                  } />
+                  <Input
+                    value={disease}
+                    fluid={1}
+                    onChange={(e, value) =>
+                      act('updateStatRecord', {
+                        stat_type: statType.MEDICAL,
+                        stat: stat.DISEASE, // we hardcode around here boyoz.
+                        new_value: value,
+                      })
+                    }
+                  />
                 </Stack.Item>
                 <Stack.Item>Disability History:</Stack.Item>
                 <Stack.Item>
-                  <Input value={disability} fluid={1}
-                  onChange={(e, value) =>
-                    act('updateStatRecord', {
-                      stat_type: statType.MEDICAL,
-                      stat: stat.DISABILITY,
-                      new_value: value,
-                    })
-                  }/>
+                  <Input
+                    value={disability}
+                    fluid={1}
+                    onChange={(e, value) =>
+                      act('updateStatRecord', {
+                        stat_type: statType.MEDICAL,
+                        stat: stat.DISABILITY,
+                        new_value: value,
+                      })
+                    }
+                  />
                 </Stack.Item>
               </Stack>
             </Section>
           )}
-          {tab === 2 && (// should I have used a table instead of stack hell? Probably.
+          {tab === 2 && ( // should I have used a table instead of stack hell? Probably.
             <Section>
               <Stack justify="space-between" vertical>
-              { health == "Deceased" && !existingReport && (
-                <Stack.Item>
-                  <Stack vertical align="start" py={5}>
-                    <Stack.Item>Autopsy Notes:</Stack.Item>
-                    <Stack.Item>
-                      <Input value={autopsy} fluid={1}
-                      onChange={(e, value) =>
-                        act('updateStatRecord', {
-                          stat_type: statType.MEDICAL,
-                          stat: stat.AUTOPSY, // spaghetti noodle code will get fixed eventually, I promise.
-                          new_value: value,
-                        })
-                      } />
-                    </Stack.Item>
-                    <Stack.Item>
-                      <Stack justify="space-between" py={2}>
-                        <Stack.Item>
-                          <Stack>
-                            <Stack.Item>Cause Of Death:</Stack.Item>
-                            <Stack.Item>
-                              <Dropdown
-                                noscroll={1}
-                                options={deathOptions}
-                                selected={death}
-                                color={'red'}
-                                onSelected={(value) => act('selectCauseOfDeath', { death: value })}
-                                displayText={death}
-                              />
-                            </Stack.Item>
-                          </Stack>
-                        </Stack.Item>
-                        <Stack.Item>
-                          <Button
-                            icon={'file'}
-                            content={'Submit Report'}
-                            color={'red'}
-                            onClick={() => {
-                              act('submitReport');
-                            }}
-                          />
-                        </Stack.Item>
-                      </Stack>
-                    </Stack.Item>
-                  </Stack>
-                </Stack.Item>
+                {health == 'Deceased' && !existingReport && (
+                  <Stack.Item>
+                    <Stack vertical align="start" py={5}>
+                      <Stack.Item>Autopsy Notes:</Stack.Item>
+                      <Stack.Item>
+                        <Input
+                          value={autopsy}
+                          fluid={1}
+                          onChange={(e, value) =>
+                            act('updateStatRecord', {
+                              stat_type: statType.MEDICAL,
+                              stat: stat.AUTOPSY, // spaghetti noodle code will get fixed eventually, I promise.
+                              new_value: value,
+                            })
+                          }
+                        />
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Stack justify="space-between" py={2}>
+                          <Stack.Item>
+                            <Stack>
+                              <Stack.Item>Cause Of Death:</Stack.Item>
+                              <Stack.Item>
+                                <Dropdown
+                                  noscroll={1}
+                                  options={deathOptions}
+                                  selected={death}
+                                  color={'red'}
+                                  onSelected={(value) =>
+                                    act('selectCauseOfDeath', { death: value })
+                                  }
+                                  displayText={death}
+                                />
+                              </Stack.Item>
+                            </Stack>
+                          </Stack.Item>
+                          <Stack.Item>
+                            <Button
+                              icon={'file'}
+                              content={'Submit Report'}
+                              color={'red'}
+                              onClick={() => {
+                                act('submitReport');
+                              }}
+                            />
+                          </Stack.Item>
+                        </Stack>
+                      </Stack.Item>
+                    </Stack>
+                  </Stack.Item>
                 )}
                 <Stack.Item>
                   <Stack align="center" justify="space-around" vertical>
@@ -157,20 +179,20 @@ export const MedicalRecord = (props) => {
                       <Icon name="user" size={8} color={colors[health]} />
                     </Stack.Item>
                     {existingReport ? (
-                        <Stack.Item py={2}>
-                          The autopsy report for {name} has been submitted.
-                        </Stack.Item>
-                      ) : health !== 'Deceased' ? (
-                        <Stack.Item py={2}>
-                          he patient must be marked as deceased to create an
-                          autopsy report.
-                        </Stack.Item>
-                      ) : (
-                        <Stack.Item py={2}>
-                          Please submit the following information to create an
-                          autopsy report.
-                        </Stack.Item>
-                      )}
+                      <Stack.Item py={2}>
+                        The autopsy report for {name} has been submitted.
+                      </Stack.Item>
+                    ) : health !== 'Deceased' ? (
+                      <Stack.Item py={2}>
+                        he patient must be marked as deceased to create an
+                        autopsy report.
+                      </Stack.Item>
+                    ) : (
+                      <Stack.Item py={2}>
+                        Please submit the following information to create an
+                        autopsy report.
+                      </Stack.Item>
+                    )}
                   </Stack>
                 </Stack.Item>
               </Stack>
@@ -198,13 +220,7 @@ export const HealthStatus = (props) => {
   return (
     <>
       <Section
-        title={
-          has_id && authenticated ? (
-            id_owner
-          ) : (
-            'No Card Inserted'
-          )
-        }
+        title={has_id && authenticated ? id_owner : 'No Card Inserted'}
         buttons={
           <>
             <Button
@@ -281,15 +297,15 @@ const colors = {
 // i'll do it with a list instead, hardcoded for now.
 const statType = {
   MEDICAL: 1,
-  GENERAL: 0
+  GENERAL: 0,
 };
 
 // stats that have input strings.
 const stat = {
-  AUTOPSY: "a_stat",
-  NOTES: "notes",
-  MENTAL: "m_stat",
-  DISEASE: "cdi",
-  DISABILITY: "mi_dis"
+  AUTOPSY: 'a_stat',
+  NOTES: 'notes',
+  MENTAL: 'm_stat',
+  DISEASE: 'cdi',
+  DISABILITY: 'mi_dis',
 };
 // ----- const -------- //

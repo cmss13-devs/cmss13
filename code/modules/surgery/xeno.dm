@@ -20,7 +20,7 @@
 	if(islarva(patient) || isfacehugger(patient))
 		to_chat(user, SPAN_DANGER("This race is probably too small to have a mature organ worthy to extract..."))
 		return FALSE
-	if(patient.tier > 2 || isqueen(patient) && !istype(tool, /obj/item/tool/surgery/scalpel/laser/advanced))
+	if((patient.tier > 2 || isqueen(patient)) && !istype(tool, /obj/item/tool/surgery/scalpel/laser/advanced))
 		to_chat(user, SPAN_DANGER("Chitin of this kind is too thick for an ordinary tool, you would need something special."))
 		return FALSE
 	if(patient.stat == DEAD && !patient.organ_removed)
@@ -46,7 +46,7 @@
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/xenomorph/cut_exoskeleton/preop(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	if(tool_type == /obj/item/tool/surgery/circular_saw)
+	if(tool_type == /obj/item/tool/surgery/circular_saw || tool_type == /obj/item/tool/surgery/scalpel/laser/advanced)
 		user.affected_message(target,
 			SPAN_NOTICE("You start to cut [target.caste_type] carapace apart using \the [tool], carefully, with barely any acid."),
 			SPAN_NOTICE("[user] starts to cut Your carapace apart using \the [tool], carefully, with barely any acid."),
@@ -56,12 +56,8 @@
 			SPAN_NOTICE("You start to [pick("smash", "crack", "break")] [target.caste_type] carapace apart using \the [tool], Recklessly, with acid splashing on you!"),
 			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] Your carapace apart using \the [tool], Recklessly, with acid splashing all of the place!"),
 			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] [target.caste_type] carapace with \the [tool], Recklessly, with acid splashing them!"))
-		if(user.head && !(user.head.flags_inventory & COVEREYES))
-			var/datum/internal_organ/eyes/user_eye = user.internal_organs_by_name["eyes"]
-			user_eye.take_damage(rand(5,6), TRUE)
-			to_chat(user, SPAN_DANGER("Lots of acid gets into your eyes and on your skin!"))
-			user.emote("pain")
-		user.apply_damage(rand(10,25),BURN)
+		user.apply_damage(rand(25,50),BURN)
+		to_chat(user, SPAN_DANGER("You burn as acid gets on your skin!"))
 		//we dont really need log interact since we're working with dead body... I hope
 
 /datum/surgery_step/xenomorph/cut_exoskeleton/success(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

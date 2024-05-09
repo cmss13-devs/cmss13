@@ -250,7 +250,6 @@ GLOBAL_LIST_INIT(all_fences, list())
 	unacidable = TRUE
 
 /obj/structure/fence/electrified/hitby(atom/movable/AM)
-	..()
 	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
 	var/tforce = 0
 	if(ismob(AM))

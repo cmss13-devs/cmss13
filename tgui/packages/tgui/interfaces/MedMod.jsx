@@ -154,7 +154,7 @@ export const MedicalRecord = (props) => {
                                   onSelected={(value) =>
                                     act('selectCauseOfDeath', { death: value })
                                   }
-                                  displayText={death ? death : "NONE"}
+                                  displayText={death ? death : 'NONE'}
                                 />
                               </Stack.Item>
                             </Stack>

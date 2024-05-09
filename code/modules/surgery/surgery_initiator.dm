@@ -97,14 +97,14 @@
 				to_chat(user, SPAN_WARNING("You can't perform surgery on the same \
 					[target_zone == "r_hand"||target_zone == "l_hand" ? "hand":"arm"] you're using!"))
 				return FALSE
-
 			if(!length(valid_steps))
-				var/limbname = affecting?.status & LIMB_DESTROYED ? "the stump of [target]'s [affecting.display_name]" : "[target]'s [parse_zone(target_zone)]"
-				if(target.incision_depths[target_zone] != SURGERY_DEPTH_SURFACE)
-					to_chat(user, SPAN_WARNING("You don't know of any operations you could perform in the [target.incision_depths[target_zone]] incision on [limbname]."))
-				else
-					to_chat(user, SPAN_WARNING("You don't know of any operations you could begin on [limbname]."))
-				return FALSE
+				if(ishuman(target))
+					var/limbname = affecting?.status & LIMB_DESTROYED ? "the stump of [target]'s [affecting.display_name]" : "[target]'s [parse_zone(target_zone)]"
+					if(target.incision_depths[target_zone] != SURGERY_DEPTH_SURFACE)
+						to_chat(user, SPAN_WARNING("You don't know of any operations you could perform in the [target.incision_depths[target_zone]] incision on [limbname]."))
+					else
+						to_chat(user, SPAN_WARNING("You don't know of any operations you could begin on [limbname]."))
+					return FALSE
 			var/hint_msg
 			for(var/datum/surgery_step/current_step as anything in valid_steps)
 				if(hint_msg)

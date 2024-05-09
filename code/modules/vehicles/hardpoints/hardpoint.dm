@@ -696,7 +696,7 @@
 	if(muzzle_turf == target_turf)
 		return FALSE
 
-	var/angle_diff = SIMPLIFY_DEGREES(dir2angle(dir) - Get_Angle(muzzle_turf, target_turf))
+	var/angle_diff = (dir2angle(dir) - Get_Angle(muzzle_turf, target_turf)) %% 360
 	if(angle_diff < -180)
 		angle_diff += 360
 	else if(angle_diff > 180)

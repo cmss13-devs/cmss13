@@ -47,7 +47,7 @@
 			target_record_general = general_record
 			break
 
-	if(!target_record_medical || !target_record_general):
+	if(!target_record_medical || !target_record_general)
 		visible_message("[SPAN_BOLD("[src]")] states, \"CARD FAILURE: Unable to retrieve target records.\"")
 		return FALSE
 

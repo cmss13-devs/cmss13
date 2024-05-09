@@ -33,7 +33,7 @@
 
 	visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: You have not enough authority! Access denied.\"")
 	return FALSE
-// copy pasta, yeah some silly logic, it needs to be rewritten. I'll do it later.
+
 /obj/structure/machinery/computer/double_id/attackby(obj/card, mob/user)
 	if(istype(card, /obj/item/card/id))
 		if(!operable())
@@ -43,13 +43,13 @@
 		if(check_access(idcard))
 			if(!user_id_card)
 				if(user.drop_held_item())
-					card.forceMove(src)
-					user_id_card = card
+					idcard.forceMove(src)
+					user_id_card = idcard
 				authenticate(user, user_id_card)
 			else if(!target_id_card)
 				if(user.drop_held_item())
 					card.forceMove(src)
-					target_id_card = card
+					target_id_card = idcard
 					update_static_data(user)
 					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
@@ -58,7 +58,7 @@
 			if(!target_id_card)
 				if(user.drop_held_item())
 					card.forceMove(src)
-					target_id_card = card
+					target_id_card = idcard
 					update_static_data(user)
 					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else

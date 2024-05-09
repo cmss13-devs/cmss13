@@ -130,7 +130,9 @@
 
 	// subtract the threshold, keep the stored amount
 	evolution_stored -= evolution_threshold
-
+	var/obj/item/organ/xeno/organ = locate() in src
+	if(!isnull(organ))
+		qdel(organ)
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new M(get_turf(src), src)
 

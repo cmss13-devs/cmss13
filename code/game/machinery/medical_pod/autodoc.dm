@@ -856,6 +856,7 @@
 				updateUsrDialog()
 			if(href_list["larva"])
 				N.fields["autodoc_manual"] += create_autodoc_surgery("chest",ORGAN_SURGERY,"larva",0)
+				updateUsrDialog()
 			if(href_list["internal"])
 				for(var/obj/limb/L in connected.occupant.limbs)
 					if(L)

@@ -132,7 +132,7 @@
 	if(!ready)
 		to_chat(user, SPAN_WARNING("Take [src]'s paddles out first."))
 		return
-	if(dcell.charge <= charge_cost)
+	if(dcell.charge < charge_cost)
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src]'s battery is too low! It needs to recharge."))
 		return
 	if(H.stat != DEAD)
@@ -304,7 +304,7 @@
 	if(!ready)
 		to_chat(user, SPAN_WARNING("Take [src]'s paddles out first."))
 		return FALSE
-	if(dcell.charge <= charge_cost)
+	if(dcell.charge < charge_cost)
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src]'s battery is too low! It needs to recharge."))
 		return FALSE
 	if(H.stat != DEAD)

@@ -166,10 +166,11 @@
 				return TRUE
 			else
 				var/obj/item/card/id/id_card = user.get_active_hand()
-				if (istype(id_card, /obj/item/card/id))
-					if(!retrieve_target_records(id_card))
-						ui.close()
-						return
+				if (!istype(id_card, /obj/item/card/id))
+					return
+				if(!retrieve_target_records(id_card))
+					ui.close()
+					return
 				if(user.drop_held_item())
 					id_card.forceMove(src)
 					target_id_card = id_card

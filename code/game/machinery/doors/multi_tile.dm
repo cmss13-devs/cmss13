@@ -630,13 +630,13 @@
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_2x1generic.dmi'
-	opacity = TRUE
+	opacity = FALSE
 	glass = TRUE
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname
 	req_access = null
-	opacity = TRUE
+	opacity = FALSE
 	glass = TRUE
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 	autoname = TRUE
@@ -644,14 +644,14 @@
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_2x1generic_solid.dmi'
-	opacity = FALSE
+	opacity = TRUE
 	glass = FALSE
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid/autoname
 	autoname = TRUE
-	opacity = FALSE
+	opacity = TRUE
 	glass = FALSE
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)

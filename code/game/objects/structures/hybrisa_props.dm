@@ -716,22 +716,7 @@ var/damage_state = 0
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "supermarketbasket5"
 
-// Hospital
-
-/obj/structure/prop/hybrisa/hospital
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "hospital"
-/obj/structure/bed/hybrisa/hospital/hospitaldivider
-	name = "hospital divider"
-	desc = "A hospital divider for privacy."
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "hospitalcurtain"
-	layer = ABOVE_MOB_LAYER
-	anchored = TRUE
-	can_buckle = FALSE
-
 // Furniture
-
 /obj/structure/prop/hybrisa/furniture
     icon = 'icons/obj/structures/props/zenithtables.dmi'
     icon_state = "blackmetaltable"

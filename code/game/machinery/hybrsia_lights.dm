@@ -452,9 +452,7 @@ GLOBAL_LIST_INIT(ship_floodlights, list())
 	unslashable = TRUE
 	unacidable = TRUE
 	wrenchable = FALSE
-	light_color =  "#00ffa0"
-	lum_value = 14
-	light_power = 6
+	layer = TURF_LAYER
 	light_color =  "#00ffa0"
 	lum_value = 14
 	light_power = 6

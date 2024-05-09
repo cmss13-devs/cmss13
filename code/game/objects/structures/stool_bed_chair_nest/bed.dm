@@ -532,3 +532,13 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	buckling_y = 2
 	base_bed_icon = "bigrollerbloodempty"
 
+// Hospital divider (not a bed)
+/obj/structure/bed/hybrisa/hospital/hospitaldivider
+	name = "hospital divider"
+	desc = "A hospital divider for privacy."
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "hospitalcurtain"
+	layer = ABOVE_MOB_LAYER
+	anchored = TRUE
+	can_buckle = FALSE
+	hit_bed_sound = 'sound/effects/thud.ogg'

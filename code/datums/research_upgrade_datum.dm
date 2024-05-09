@@ -78,7 +78,7 @@
 /datum/research_upgrades/item/laser_scalpel
 	name = "Laser Scalpel"
 	desc = "An advanced, robust version of the normal scalpel, allowing it to pierce through thick skin and chitin alike with extreme ease."
-	value_upgrade = 5000
+	value_upgrade = 3000
 	item_reference = /obj/item/tool/surgery/scalpel/laser/advanced
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE

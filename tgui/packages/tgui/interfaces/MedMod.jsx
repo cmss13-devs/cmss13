@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Stack, Input, Dropdown, Section, Tabs, Flex, Icon, Table } from '../components';
+import { Box, Button, Stack, Input, Dropdown, Section, Tabs, Flex, Icon } from '../components';
 import { Window } from '../layouts';
 
 export const MedMod = (props) => {
@@ -46,7 +46,8 @@ export const MedicalRecord = (props) => {
         title="Medical Record"
         buttons={
           <Button icon="print" content="Print" onClick={() => act('print')} />
-        }></Section>
+        }
+      />
       {!!has_id && !!authenticated && (
         <Box height={550}>
           <Tabs>
@@ -57,7 +58,7 @@ export const MedicalRecord = (props) => {
               Autopsy Report
             </Tabs.Tab>
           </Tabs>
-          {tab === 1 && (
+          {tab === 1 && ( // to do, just map it instead.
             <Section>
               <Stack vertical align="start">
                 <Stack.Item>General Notes:</Stack.Item>
@@ -222,16 +223,14 @@ export const HealthStatus = (props) => {
       <Section
         title={has_id && authenticated ? id_owner : 'No Card Inserted'}
         buttons={
-          <>
-            <Button
-              icon={authenticated ? 'sign-out-alt' : 'sign-in-alt'}
-              content={authenticated ? 'Log Out' : 'Log In'}
-              color={authenticated ? 'bad' : 'good'}
-              onClick={() => {
-                act(authenticated ? 'logout' : 'authenticate');
-              }}
-            />
-          </>
+          <Button
+            icon={authenticated ? 'sign-out-alt' : 'sign-in-alt'}
+            content={authenticated ? 'Log Out' : 'Log In'}
+            color={authenticated ? 'bad' : 'good'}
+            onClick={() => {
+              act(authenticated ? 'logout' : 'authenticate');
+            }}
+          />
         }>
         <Button
           fluid

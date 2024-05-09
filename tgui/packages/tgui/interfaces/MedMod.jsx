@@ -125,7 +125,7 @@ export const MedicalRecord = (props) => {
               <Stack justify="space-between" vertical>
                 {health == 'Deceased' && !existingReport && (
                   <Stack.Item>
-                    <Stack vertical align="start" py={5}>
+                    <Stack vertical align="start" py={1}>
                       <Stack.Item>Autopsy Notes:</Stack.Item>
                       <Stack.Item>
                         <Input

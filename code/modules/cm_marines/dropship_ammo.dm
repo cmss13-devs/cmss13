@@ -308,7 +308,7 @@
 	/// current assembly state of the missile
 	var/assembly_stage = ASSEMBLY_UNLOCKED
 	/// the maximum volume allowed in the rocket
-	var/max_container_volume = 240
+	var/max_container_volume = 300
 	/// the current total volume
 	var/current_container_volume = 0
 	/// the containers inside the rocket

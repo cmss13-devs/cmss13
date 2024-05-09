@@ -348,7 +348,7 @@ FORENSIC SCANNER
 		holder = E.reagents
 		for(var/obj/container in E.containers)
 			scan(container)
-	else if(istype(O,/obj/item/ammo_magazine/rocket/custom))
+	else if(istype(O, /obj/item/ammo_magazine/rocket/custom))
 		var/obj/item/ammo_magazine/rocket/custom/E = O
 		if(!E.warhead)
 			to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
@@ -356,7 +356,7 @@ FORENSIC SCANNER
 		holder = E.warhead.reagents
 		for(var/obj/container in E.warhead.containers)
 			scan(container)
-	else if(istype(O,/obj/item/mortar_shell/custom))
+	else if(istype(O, /obj/item/mortar_shell/custom))
 		var/obj/item/mortar_shell/custom/E = O
 		if(!E.warhead)
 			to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
@@ -366,7 +366,7 @@ FORENSIC SCANNER
 			scan(container)
 	else if(istype(O, /obj/structure/ship_ammo/rocket/custom_missile))
 		var/obj/structure/ship_ammo/rocket/custom_missile/missile = O
-		if (missile.containers.len < 1)
+		if (length(missile.containers) < 1)
 			to_chat(user, SPAN_NOTICE("No containers detected in [missile]."))
 			return
 

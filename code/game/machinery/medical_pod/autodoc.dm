@@ -659,7 +659,7 @@
 		var/obj/item/research_upgrades/autodoc/upgrd = with
 		for(var/iter in upgrades)
 			if(iter == upgrd.value)
-				to_chat(user, SPAN_NOTICE("This data is already present in the [src]!"))
+				to_chat(user, SPAN_NOTICE("This data is already present in [src]!"))
 				return
 		if(!user.drop_inv_item_to_loc(with, src))
 			return
@@ -784,7 +784,7 @@
 				if(isnull(surgeryqueue["toxin"]))
 					dat += "<a href='?src=\ref[src];toxin=1'>Bloodstream Toxin Removal</a><br>"
 				dat += "<br>"
-				if(length(upgrades) > 0)
+				if(length(upgrades))
 					dat += "<b>Orthopedic Surgeries</b>"
 					for(var/iter in upgrades)
 						switch(iter)

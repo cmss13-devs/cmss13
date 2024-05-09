@@ -2731,6 +2731,7 @@
 	pixel_x = -5;
 	pixel_y = 10
 	},
+/obj/item/reagent_container/glass/rag,
 /turf/open/floor/hybrisa/metal/greenmetalfull,
 /area/lv759/indoors/colonial_marshals/prisoners_recreation_area)
 "ayN" = (
@@ -8349,6 +8350,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv759/indoors/apartment/eastrestroomsshower)
+"bvQ" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/hybrisa/metal/zbrownfloor1,
+/area/lv759/indoors/meridian/meridian_showroom)
 "bvS" = (
 /obj/item/reagent_container/food/snacks/mre_pack/meal5,
 /obj/item/reagent_container/food/drinks/sillycup{
@@ -14520,6 +14525,10 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/caves/north_caves)
+"cwY" = (
+/obj/item/trash/eat,
+/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/area/lv759/indoors/meridian/meridian_showroom)
 "cxe" = (
 /obj/structure/largecrate/random/mini/small_case,
 /obj/effect/hybrisa/decal/dirt,
@@ -15497,6 +15506,7 @@
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	layer = 6
 	},
+/obj/effect/decal/cleanable/generic,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "cGs" = (
@@ -26220,6 +26230,13 @@
 	dir = 4
 	},
 /obj/item/trash/cigbutt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -22;
+	pixel_y = 4
+	},
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/north_street)
 "esI" = (
@@ -30517,6 +30534,20 @@
 "feh" = (
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/apartment/westshowers)
+"fex" = (
+/obj/structure/machinery/light/spot/blue,
+/obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/snacks/eat_bar,
+/turf/open/floor/hybrisa/metal/zbrownfloor1,
+/area/lv759/indoors/meridian/meridian_showroom)
 "fey" = (
 /obj/structure/machinery/vending/hydroseeds,
 /obj/structure/machinery/light/blue{
@@ -48233,6 +48264,10 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
 	},
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_9";
+	pixel_y = 12
+	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_street)
 "hYJ" = (
@@ -51149,6 +51184,10 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 8
 	},
@@ -79960,6 +79999,11 @@
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/outdoors/colony_streets/north_east_street)
+"nlE" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine1,
+/turf/open/floor/hybrisa/metal/zbrownfloor1,
+/area/lv759/indoors/meridian/meridian_showroom)
 "nlF" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
@@ -99907,6 +99951,10 @@
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "qzk" = (
@@ -109242,6 +109290,11 @@
 	dir = 4
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
+"rXS" = (
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/area/lv759/indoors/meridian/meridian_showroom)
 "rXY" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/prison{
@@ -116977,6 +117030,11 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
+/obj/item/shard,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
 /turf/open/hybrisa/street/sidewalkcenter{
 	dir = 4
 	},
@@ -119554,6 +119612,8 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
+/obj/effect/decal/cleanable/generic,
+/obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 8
 	},
@@ -126947,13 +127007,12 @@
 	pixel_x = -10;
 	pixel_y = 8
 	},
-/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
-	pixel_x = 6;
-	pixel_y = 6
+/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup{
+	pixel_x = -5
 	},
-/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
-	pixel_x = -6;
-	pixel_y = 6
+/obj/item/trash/hybrisa/cuppa_joes_static/lid{
+	pixel_x = 4;
+	pixel_y = 10
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -131808,6 +131867,16 @@
 	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/east_central_street)
+"vIM" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/trash/hybrisa/cuppa_joes_static/lid{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/hybrisa/metal/zbrownfloor1,
+/area/lv759/indoors/meridian/meridian_showroom)
 "vIN" = (
 /obj/structure/largecrate/random/case/double,
 /obj/item/reagent_container/food/drinks/coffee{
@@ -133908,6 +133977,7 @@
 	dir = 1;
 	pixel_x = -7
 	},
+/obj/effect/decal/cleanable/generic,
 /turf/open/hybrisa/street/sidewalkcenter{
 	dir = 8
 	},
@@ -139240,6 +139310,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
+/obj/effect/decal/cleanable/generic,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "wUn" = (
@@ -143599,6 +143670,14 @@
 	dir = 8
 	},
 /obj/item/shard,
+/obj/structure/prop/hybrisa/vehicles/Meridian/Pink{
+	icon_state = "meridian_pink_damage_3";
+	health = 1250
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
 /turf/open/hybrisa/street/sidewalkcenter{
 	dir = 4
 	},
@@ -145068,6 +145147,28 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/indoors/caves/west_caves)
+"xPa" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	layer = 4;
+	pixel_x = 16;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/obj/item/tool/pen/blue,
+/turf/open/floor/hybrisa/metal/zbrownfloor1,
+/area/lv759/indoors/meridian/meridian_showroom)
 "xPb" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
@@ -145277,6 +145378,9 @@
 	pixel_x = -13;
 	pixel_y = 17
 	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 5
 	},
@@ -171266,7 +171370,7 @@ rTd
 nzJ
 aWO
 jzo
-fXp
+bvQ
 hcI
 unn
 unn
@@ -171518,7 +171622,7 @@ rrQ
 lui
 pWT
 jzo
-fXp
+vIM
 hcI
 hcI
 unn
@@ -171769,8 +171873,8 @@ hpd
 bBZ
 uoy
 btx
-jzo
-vJW
+cwY
+fex
 kRg
 oNW
 eEs
@@ -172021,8 +172125,8 @@ nKU
 wzx
 wzx
 suj
-jzo
-fXp
+rXS
+xPa
 kRg
 uoO
 eEs
@@ -172274,7 +172378,7 @@ jzo
 jzo
 jzo
 jzo
-fXp
+nlE
 pGQ
 wFj
 eEs

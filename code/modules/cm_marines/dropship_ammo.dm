@@ -378,8 +378,8 @@
 			bomb.containers += container
 		bomb.forceMove(impact)
 		bomb.allow_star_shape = FALSE
+		bomb.cause_data = create_cause_data(initial(name), source_mob)
 		bomb.prime(TRUE)
-		create_cause_data(initial(name), source_mob)
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/banshee

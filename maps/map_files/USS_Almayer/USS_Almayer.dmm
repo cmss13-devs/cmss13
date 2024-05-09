@@ -23036,6 +23036,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/upper/p_bow)
+"dJC" = (
+/obj/structure/machinery/sentry_holder/almayer/mini/aicore,
+/turf/open/floor/almayer/no_build{
+	icon_state = "plating"
+	},
+/area/almayer/command/airoom)
 "dJG" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -140719,7 +140725,7 @@ daz
 daz
 eKJ
 yaZ
-ffE
+dJC
 hZj
 clw
 daz
@@ -141531,7 +141537,7 @@ daz
 daz
 eKJ
 yaZ
-ffE
+dJC
 hZj
 fQD
 daz

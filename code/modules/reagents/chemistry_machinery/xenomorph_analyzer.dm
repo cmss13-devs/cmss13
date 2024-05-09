@@ -31,6 +31,9 @@
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
 	if(istype(attacked_item, /obj/item/organ/xeno))
+		if(organ)
+			to_chat(user, SPAN_WARNING("Organ slot is already full!"))
+			return
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			to_chat(user, SPAN_WARNING("You were interupted!"))
 			return

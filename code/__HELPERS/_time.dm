@@ -99,14 +99,14 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 	if(minute < 60)
 		return "[minute] minute[(minute != 1)? "s":""][secondT]"
 	var/hour = Floor(minute / 60)
-	minute = minute %% 60
+	minute %%= 60
 	var/minuteT
 	if(minute)
 		minuteT = " and [minute] minute[(minute != 1)? "s":""]"
 	if(hour < 24)
 		return "[hour] hour[(hour != 1)? "s":""][minuteT][secondT]"
 	var/day = Floor(hour / 24)
-	hour = hour %% 24
+	hour %%= 24
 	var/hourT
 	if(hour)
 		hourT = " and [hour] hour[(hour != 1)? "s":""]"

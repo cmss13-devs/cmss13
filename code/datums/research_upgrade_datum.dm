@@ -46,7 +46,7 @@
 	clearance_req = 2
 
 /datum/research_upgrades/machinery/autodoc/larva_removal
-	name = "AutoDoc Broken Embryo Removal"
+	name = "AutoDoc Embryo Removal"
 	desc = "Data and instruction set for AutoDoc making it mildly proficient in removing parasites left by unknown organism."
 	behavior = RESEARCH_UPGRADE_TIER_4
 	value_upgrade = 8000

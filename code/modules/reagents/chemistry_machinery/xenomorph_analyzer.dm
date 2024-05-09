@@ -141,7 +141,7 @@
 		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
 		return
 	if(upgrade.clearance_req > GLOB.chemical_data.clearance_level || upgrade.clearance_req == 6 && !GLOB.chemical_data.reached_x_access)
-		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red, You dont have the legal access to the upgrade!"))
+		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red - you don't have access to this upgrade!"))
 		return
 	icon_state = "xeno_analyzer_printing"
 	busy = TRUE

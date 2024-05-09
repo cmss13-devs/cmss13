@@ -663,7 +663,7 @@
 				return
 		if(!user.drop_inv_item_to_loc(with, src))
 			return
-		to_chat(user, SPAN_NOTICE("You insert the data into the console, and the drive whirrs to life, reading the data"))
+		to_chat(user, SPAN_NOTICE("You insert the data into [src] and the drive whirrs to life, reading the data."))
 		upgrades += upgrd.value
 
 /obj/structure/machinery/autodoc_console/attack_hand(mob/living/user)

@@ -784,7 +784,7 @@
 				if(isnull(surgeryqueue["toxin"]))
 					dat += "<a href='?src=\ref[src];toxin=1'>Bloodstream Toxin Removal</a><br>"
 				dat += "<br>"
-				if(length(upgrades) > 0)
+				if(length(upgrades))
 					dat += "<b>Orthopedic Surgeries</b>"
 					for(var/iter in upgrades)
 						switch(iter)

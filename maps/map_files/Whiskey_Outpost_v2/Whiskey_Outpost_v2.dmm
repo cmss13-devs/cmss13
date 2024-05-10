@@ -6970,7 +6970,7 @@
 "zH" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/closet/secure_closet/surgical{
-	pixel_x = +30
+	pixel_x = 30
 	},
 /obj/item/device/healthanalyzer,
 /obj/item/weapon/gun/pill{

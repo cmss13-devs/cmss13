@@ -744,7 +744,7 @@
 		return TRUE
 	else if (mob_moved)
 		if(momentum_penalty)
-			V.move_momentum = Floor(V.move_momentum*0.8)
+			V.move_momentum = floor(V.move_momentum*0.8)
 			V.update_next_move()
 		playsound(loc, "punch", 25, 1)
 		return TRUE
@@ -769,7 +769,7 @@
 			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, slowing [V]'s movement!"),
 			SPAN_DANGER("You dig your claws into the ground, slowing [V]'s movement!"))
 			var/mob_moved = step(src, V.last_move_dir)
-			V.move_momentum = Floor(V.move_momentum/3)
+			V.move_momentum = floor(V.move_momentum/3)
 			V.update_next_move()
 			return mob_moved
 

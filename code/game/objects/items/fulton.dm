@@ -143,8 +143,8 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	reservation = SSmapping.request_turf_block_reservation(3, 3, 1, turf_type_override = /turf/open/space)
 	var/turf/bottom_left_turf = reservation.bottom_left_turfs[1]
 	var/turf/top_right_turf = reservation.top_right_turfs[1]
-	var/middle_x = bottom_left_turf.x + Floor((top_right_turf.x - bottom_left_turf.x) / 2)
-	var/middle_y = bottom_left_turf.y + Floor((top_right_turf.y - bottom_left_turf.y) / 2)
+	var/middle_x = bottom_left_turf.x + floor((top_right_turf.x - bottom_left_turf.x) / 2)
+	var/middle_y = bottom_left_turf.y + floor((top_right_turf.y - bottom_left_turf.y) / 2)
 	var/turf/space_tile = locate(middle_x, middle_y, bottom_left_turf.z)
 	if(!space_tile)
 		visible_message(SPAN_WARNING("[src] begins beeping like crazy. Something is wrong!"))

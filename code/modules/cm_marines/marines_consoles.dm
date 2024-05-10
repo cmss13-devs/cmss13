@@ -525,8 +525,8 @@
 				if(user.drop_held_item())
 					card.forceMove(src)
 					user_id_card = card
-			if(authenticate(user, user_id_card))
-				return TRUE
+				if(authenticate(user, user_id_card))
+					return TRUE
 			else
 				if(!user_id_card)
 					return

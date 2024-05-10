@@ -4,6 +4,10 @@
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	hitsound = "swing_hit"
 
+/obj/item/weapon/Initialize()
+	. = ..()
+	flags_atom |= QUICK_DRAWABLE
+
 /obj/item/get_examine_text(mob/user)
 	. = ..()
 	var/strong_text = "a weak"

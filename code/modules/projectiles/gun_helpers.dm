@@ -518,10 +518,10 @@ DEFINES in setup.dm, referenced here.
 
 	if(istype(slot) && (slot.storage_flags & STORAGE_ALLOW_QUICKDRAW))
 		for(var/obj/cycled_weapon in slot.return_inv())
-			if(isweapon(cycled_weapon) || cycled_weapon.flags_atom & QUICK_DRAWABLE)
+			if(cycled_weapon.flags_atom & QUICK_DRAWABLE)
 				return slot
 
-	if(isweapon(slot) || slot.flags_atom & QUICK_DRAWABLE) //then check for weapons
+	if(slot.flags_atom & QUICK_DRAWABLE) //then check for weapons
 		return slot
 
 	return FALSE

@@ -521,7 +521,7 @@
 	playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 	switch(action)
 		if("authenticate")
-			// we place the id into the machine
+			// we place the user id into the machine
 			var/obj/item/card = user.get_active_hand()
 			if (istype(card, /obj/item/card/id))
 				if(!authenticate(user, card))
@@ -530,7 +530,7 @@
 					card.forceMove(src)
 					user_id_card = card
 				return TRUE
-			// we eject the id from the machine
+			// we eject the user id from the machine
 			else
 				if(!user_id_card)
 					return
@@ -553,7 +553,7 @@
 			user_id_card = null
 			return TRUE
 		if("eject")
-			// we eject the id from the machine
+			// we eject the target id from the machine
 			if(target_id_card)
 				if(ishuman(user))
 					target_id_card.forceMove(user.loc)
@@ -566,7 +566,7 @@
 				visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
 				person_to_modify = null
 				return TRUE
-			// we place the id into the machine
+			// we place the target id into the machine
 			else
 				var/obj/item/card = user.get_active_hand()
 				if (!istype(card, /obj/item/card/id))

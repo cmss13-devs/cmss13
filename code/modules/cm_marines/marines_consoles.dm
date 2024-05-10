@@ -12,7 +12,7 @@
 // ------------------------------------------------------------------------------------------------------------------------------- //
 /obj/structure/machinery/computer/double_id
 	name = "Computer"
-	desc = "Terminal that takes a User and target ID"
+	desc = "Terminal that takes a user and target ID"
 	// user who is modifying the target
 	var/obj/item/card/id/user_id_card
 	// the poor soul whos status needs to be updated as deceased.

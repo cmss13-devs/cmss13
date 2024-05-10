@@ -39,30 +39,27 @@
 		if(!operable())
 			to_chat(user, SPAN_NOTICE("You tried to inject \the [card] but \the [src] remains silent."))
 			return
+		if(user_id_card && target_id_card)
+			to_chat(user, "Both slots are full already. Remove a card first.")
+			return
+
 		var/obj/item/card/id/idcard = card
-		if(check_access(idcard))
-			if(!user_id_card)
-				if(user.drop_held_item())
-					idcard.forceMove(src)
-					user_id_card = idcard
+		if(!check_access(idcard))
+			visible_message("[SPAN_BOLD("[src]")] states, \"CARD FAILURE: No Access.\"")
+			return
+		if(!user.drop_held_item())
+			return
+
+		idcard.forceMove(src)
+		if(!user_id_card)
+			if(user.drop_held_item())
+				user_id_card = idcard
 				authenticate(user, user_id_card)
-			else if(!target_id_card)
-				if(user.drop_held_item())
-					card.forceMove(src)
-					target_id_card = idcard
-					update_static_data(user)
-					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
-			else
-				to_chat(user, "Both slots are full already. Remove a card first.")
-		else
-			if(!target_id_card)
-				if(user.drop_held_item())
-					card.forceMove(src)
-					target_id_card = idcard
-					update_static_data(user)
-					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
-			else
-				to_chat(user, "Both slots are full already. Remove a card first.")
+		else if(!target_id_card)
+			if(user.drop_held_item())
+				target_id_card = idcard
+				visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
+		update_static_data(user)
 	else
 		..()
 

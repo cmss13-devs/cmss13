@@ -8,33 +8,35 @@ export const SquadMod = (props) => {
   return (
     <Window width={450} height={520}>
       <Window.Content>
-          <Section
-            title={id_name ? id_name : 'No Card Inserted'}
-            buttons={
-              <Button
-                icon={authenticated ? 'sign-out-alt' : 'sign-in-alt'}
-                content={authenticated ? 'Log Out' : 'Log In'}
-                color={authenticated ? 'bad' : 'good'}
-                onClick={() => {
-                  act(authenticated ? 'logout' : 'authenticate');
-                }}
-              />
-            }>
+        <Section
+          title={id_name ? id_name : 'No Card Inserted'}
+          buttons={
             <Button
-              fluid
-              icon="eject"
-              content={id_name ? id_name : '....'}
-              onClick={() => act('eject')}
+              icon={authenticated ? 'sign-out-alt' : 'sign-in-alt'}
+              content={authenticated ? 'Log Out' : 'Log In'}
+              color={authenticated ? 'bad' : 'good'}
+              onClick={() => {
+                act(authenticated ? 'logout' : 'authenticate');
+              }}
             />
-          </Section>
+          }>
+          <Button
+            fluid
+            icon="eject"
+            content={id_name ? id_name : '....'}
+            onClick={() => act('eject')}
+          />
+        </Section>
         {!!has_id && !!authenticated && (
           <Section>
             <Stack vertical>
-                <Stack.Item>
+              <Stack.Item>
                 <NoticeBox>
-                  {human ? `Selected for squad transfer: ${human}` :  'Ask or force person to place hand on my scanner.'}
+                  {human
+                    ? `Selected for squad transfer: ${human}`
+                    : 'Ask or force person to place hand on my scanner.'}
                 </NoticeBox>
-                </Stack.Item>
+              </Stack.Item>
             </Stack>
           </Section>
         )}

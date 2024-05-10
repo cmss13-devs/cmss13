@@ -1149,6 +1149,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	icon_state = "thickmembrane"
 	wall_type = "thickmembrane"
 
+/*
 /obj/structure/alien/movable_wall/reflective
 	name = "shifting resin reflective wall"
 	desc = "Weird hardened slime solidified into a fine, smooth wall."
@@ -1204,7 +1205,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /obj/structure/alien/movable_wall/reflective/ex_act(severity, explosion_direction, source, mob/source_mob)
 	return ..(severity * explosive_multiplier, explosion_direction, source, source_mob)
-
+*/
 //############## END MOVABLES
 
 /turf/closed/wall/resin/reflective

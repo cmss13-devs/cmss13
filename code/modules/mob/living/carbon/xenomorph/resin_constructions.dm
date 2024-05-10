@@ -341,11 +341,13 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	construction_name = "thick resin membrane"
 	build_path = /obj/structure/alien/movable_wall/membrane/thick
 
+/*
 /datum/resin_construction/resin_obj/movable/reflective_royal
 	name = "Movable Royal Reflective Wall"
 	desc = "A thick resin membrane that can be moved onto any adjacent tile, as long as there are weeds. Reflects incoming projectiles."
 	construction_name = "reflective resin wall"
 	build_path = /obj/structure/alien/movable_wall/reflective
+*/
 
 // Remote Weed Nodes for originally coded for Resin Whisperers
 /datum/resin_construction/resin_obj/resin_node

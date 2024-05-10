@@ -43,17 +43,17 @@
 		if(user_id_card && target_id_card)
 			to_chat(user, "Both slots are full already. Remove a card first.")
 			return
-		if(!user.drop_held_item())
-			return
 
 		var/obj/item/card/id/idcard = card
-		idcard.forceMove(src)
 		if(!user_id_card)
+			if(!authenticate(user, card))
+				return
 			user_id_card = idcard
-			authenticate(user, user_id_card)
 		else
 			target_id_card = idcard
 			visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
+		if(user.drop_held_item())
+			idcard.forceMove(src)
 		update_static_data(user)
 	else
 		..()
@@ -138,9 +138,10 @@
 			var/obj/item/I = user.get_active_hand()
 			if (istype(I, /obj/item/card/id))
 				if(user.drop_held_item())
+					if(!authenticate(user, I))
+						return
 					I.forceMove(src)
 					user_id_card = I
-			if(authenticate(user, user_id_card))
 				return TRUE
 			// Well actualy we have no button for auth card ejection, so just spit it back in user's face
 			else
@@ -523,11 +524,12 @@
 			// we place the id into the machine
 			var/obj/item/card = user.get_active_hand()
 			if (istype(card, /obj/item/card/id))
+				if(!authenticate(user, card))
+					return
 				if(user.drop_held_item())
 					card.forceMove(src)
 					user_id_card = card
-				if(authenticate(user, user_id_card))
-					return TRUE
+				return TRUE
 			// we eject the id from the machine
 			else
 				if(!user_id_card)

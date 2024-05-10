@@ -330,7 +330,7 @@
 							to_chat(user, SPAN_WARNING("\The [S] are being stored in [SPAN_HELPFUL("stacks of 5")] for convenience. You need \the [S] stack of at least 5 to restock it."))
 						return FALSE
 					else
-						stack_restock = Floor(S.amount / 5)
+						stack_restock = floor(S.amount / 5)
 				//for the ease of finding enough materials to stack, it will be stored in stacks of 10 sheets just like they come in engie vendor
 				else
 					if(S.amount < 10)
@@ -338,7 +338,7 @@
 							to_chat(user, SPAN_WARNING("\The [S] are being stored in [SPAN_HELPFUL("stacks of 10")] for convenience. You need \the [S] stack of at least 10 to restock it."))
 						return FALSE
 					else
-						stack_restock = Floor(S.amount / 10)
+						stack_restock = floor(S.amount / 10)
 
 			//item we are restocking is a stack and we need to conveniently restock it
 			//instead of demanding user to split it into stacks of appropriate amount

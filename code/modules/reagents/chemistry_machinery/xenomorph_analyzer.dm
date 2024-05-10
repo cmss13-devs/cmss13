@@ -43,6 +43,7 @@
 		organ = attacked_item
 		icon_state = "xeno_analyzer_organ_on"
 		caste_of_organ = organ.caste_origin
+		playsound(loc, 'sound/machines/fax.ogg', 15, 1)
 	if(istype(attacked_item, /obj/item/clothing/accessory/health/research_plate))
 		var/obj/item/clothing/accessory/health/research_plate/plate = attacked_item
 		if(plate.recyclable_value == 0 && !plate.can_recycle(user))
@@ -51,9 +52,10 @@
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			to_chat(user, SPAN_WARNING("You were interupted!"))
 			return
-		to_chat(user, SPAN_NOTICE("You recycle the plate"))
+		to_chat(user, SPAN_NOTICE("You recycle [attacked_item]"))
 		biomass_points += plate.recyclable_value
 		qdel(attacked_item)
+		playsound(loc, 'sound/machines/fax.ogg', 15, 1)
 
 /obj/structure/machinery/xenoanalyzer/ui_data(mob/user)
 	var/list/data = list()
@@ -103,9 +105,10 @@
 
 		if("process_organ")
 			if(!busy)
-				addtimer(CALLBACK(src, PROC_REF(process_organ)), 5 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(process_organ)), 3 SECONDS)
 				icon_state = "xeno_analyzer_on_moving"
 				playsound(loc, 'sound/machines/blender.ogg', 25, TRUE)
+				QDEL_NULL(organ)
 				. = TRUE
 				busy = TRUE
 		if("produce")
@@ -124,11 +127,8 @@
 	organ = null
 
 /obj/structure/machinery/xenoanalyzer/proc/process_organ()
-	if(isnull(organ))
-		return
 	biomass_points += organ.research_value
 	icon_state = "xeno_analyzer_off"
-	QDEL_NULL(organ)
 	busy = FALSE
 
 /obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, mob/user, variation)
@@ -149,13 +149,13 @@
 	if(upgrade.value_upgrade > biomass_points)
 		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
 		return
-	if(upgrade.clearance_req > GLOB.chemical_data.clearance_level || upgrade.clearance_req == 6 && !GLOB.chemical_data.reached_x_access)
+	if((upgrade.clearance_req > GLOB.chemical_data.clearance_level && upgrade.clearance_req != 6) || (upgrade.clearance_req == 6 && !GLOB.chemical_data.reached_x_access))
 		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red - you don't have access to this upgrade!"))
 		return
 	icon_state = "xeno_analyzer_printing"
 	busy = TRUE
 	biomass_points -= upgrade.value_upgrade
-	addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path, variation), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path, variation), 3 SECONDS)
 
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, variation)
 	busy = FALSE

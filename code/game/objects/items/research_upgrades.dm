@@ -65,6 +65,9 @@
 
 /obj/item/research_upgrades/credits
 	name =	"Research Market (Credits)"
-	desc =	"Research points disk for chemical synthesis, insert this into research computer in order to sell the data and acquire two points" //need to balance this out somehow. either nerf passive income or remove grants from groundside
 	var/credit_value = 2
 
+/obj/item/research_upgrades/credits/Initialize(mapload, ...)
+	. = ..()
+	credit_value = rand(2, 3)
+	desc = "Research points disk for chemical synthesis, insert this into research computer in order to sell the data and acquire [credit_value] points"

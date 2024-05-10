@@ -42,8 +42,9 @@
 	value = RESEARCH_UPGRADE_TIER_1
 
 
-/obj/item/research_upgrades/autodoc/Initialize(mapload, ...)
+/obj/item/research_upgrades/autodoc/Initialize(mapload, value)
 	. = ..()
+	src.value = value
 	desc = "Research upgrade for AutoDoc, Technology on this disk is used [get_upgrade_text()] Insert it in the autodoc to use it."
 
 /obj/item/research_upgrades/autodoc/proc/get_upgrade_text()

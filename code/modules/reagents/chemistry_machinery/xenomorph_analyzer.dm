@@ -137,7 +137,7 @@
 		upgrade = datum_upgrades
 		if(upgrade.behavior == RESEARCH_UPGRADE_CATEGORY || upgrade.behavior == RESEARCH_UPGRADE_EXCLUDE_BUY)
 			continue
-		if(produce_path == upgrade.item_reference)
+		if(produce_path == upgrade.item_reference && upgrade.behavior == variation)
 			path_exists = TRUE
 			break
 	if(!path_exists)
@@ -157,6 +157,5 @@
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, variation)
 	busy = FALSE
 	icon_state = "xeno_analyzer_off"
-	var/obj/item/research_upgrades/upgrade = new produce_path(get_turf(src))
-	upgrade.value = variation
+	new produce_path(get_turf(src), variation)
 

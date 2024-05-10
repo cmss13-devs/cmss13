@@ -98,7 +98,7 @@
 
 	switch(action)
 		if("eject_organ")
-			eject_biomass()
+			eject_biomass(usr)
 			. = TRUE
 
 		if("process_organ")
@@ -113,7 +113,10 @@
 				start_print_upgrade(text2path(params["ref"]), usr, text2num(params["vari"]))
 	playsound(src, 'sound/machines/keyboard2.ogg', 25, TRUE)
 
-/obj/structure/machinery/xenoanalyzer/proc/eject_biomass()
+/obj/structure/machinery/xenoanalyzer/proc/eject_biomass(mob/user)
+	if(busy)
+		to_chat(user, SPAN_WARNING("[src] is currently busy!"))
+		return
 	if(isnull(organ))
 		return
 	icon_state = "xeno_analyzer_off"

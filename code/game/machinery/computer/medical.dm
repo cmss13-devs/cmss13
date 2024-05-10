@@ -180,7 +180,7 @@
 			return FALSE
 		if("updateStatRecord")
 			if(params["stat_type"]) // 1 for medical
-				target_record_medical.fields[params["stat"]] = params["new_value"] // might be best to just combine the two? Do we even need separate records?!
+				target_record_medical.fields[params["stat"]] = params["new_value"]
 			else // 0 for general
 				target_record_general.fields[params["stat"]] = params["new_value"]
 			return TRUE

@@ -309,12 +309,12 @@
 /datum/interior/proc/get_middle_coords()
 	var/turf/min = reservation.bottom_left_turfs[1]
 	var/turf/max = reservation.top_right_turfs[1]
-	return list(Floor(min.x + (max.x - min.x)/2), Floor(min.y + (max.y - min.y)/2), min.z)
+	return list(floor(min.x + (max.x - min.x)/2), floor(min.y + (max.y - min.y)/2), min.z)
 
 
 /datum/interior/proc/get_middle_turf()
 	var/list/turf/bounds = get_bound_turfs()
-	var/turf/middle = locate(Floor(bounds[1].x + (bounds[2].x - bounds[1].x)/2), Floor(bounds[1].y + (bounds[2].y - bounds[1].y)/2), bounds[1].z)
+	var/turf/middle = locate(floor(bounds[1].x + (bounds[2].x - bounds[1].x)/2), floor(bounds[1].y + (bounds[2].y - bounds[1].y)/2), bounds[1].z)
 
 	return middle
 

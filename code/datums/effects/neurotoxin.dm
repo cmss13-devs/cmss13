@@ -37,6 +37,10 @@
 		return FALSE
 	if(affected_mob.stat == DEAD)
 		return
+
+	if(issynth(affected_atom))
+		return
+	
 // General effects
 	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_stamina_damage(stam_dam)

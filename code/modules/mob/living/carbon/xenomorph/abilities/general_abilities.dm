@@ -329,6 +329,9 @@
 		xeno.recalculate_speed()
 	button.icon_state = "template"
 
+/datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_in()
+	return
+
 /datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/xeno, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 	movement_buffer--

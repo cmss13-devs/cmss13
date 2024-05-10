@@ -515,7 +515,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/restraints,
+/obj/item/xeno_restraints,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
 	color = "#5e5d5d";

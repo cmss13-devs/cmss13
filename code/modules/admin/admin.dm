@@ -95,12 +95,8 @@
 				color = "#AA0055"
 			else if(N.note_category == NOTE_MERIT)
 				color = "#9e3dff"
-			else if(N.note_category == NOTE_COMMANDER)
+			else if(N.note_category == NOTE_WHITELIST)
 				color = "#324da5"
-			else if(N.note_category == NOTE_SYNTHETIC)
-				color = "#39e7a4"
-			else if(N.note_category == NOTE_YAUTJA)
-				color = "#114e11"
 
 			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || check_for_rights(R_PERMISSIONS))

@@ -45,9 +45,6 @@
 			return
 
 		var/obj/item/card/id/idcard = card
-		if(!check_access(idcard))
-			visible_message("[SPAN_BOLD("[src]")] states, \"CARD FAILURE: No Access.\"")
-			return
 
 		if(!user.drop_held_item())
 			return

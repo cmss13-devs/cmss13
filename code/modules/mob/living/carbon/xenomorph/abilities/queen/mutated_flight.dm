@@ -1,5 +1,6 @@
 /datum/action/xeno_action/activable/flight
 	name = "Flight"
+	icon_file = 'icons/mob/hud/actions_palatine.dmi'
 	action_icon_state = "flight"
 	plasma_cost = 200
 	xeno_cooldown = 1 MINUTES
@@ -51,3 +52,11 @@
 		return
 	var/list/turf/path = get_line(user, t_turf, FALSE)
 	warning.forceMove(path[max_distance])
+
+/mob/living/carbon/xenomorph/proc/give_flight()
+	give_action(src, /datum/action/xeno_action/activable/flight)
+	message_admins("[key_name(usr)] gave [key_name(src)] flight!")
+
+/mob/living/carbon/xenomorph/proc/remove_flight()
+	remove_action(src, /datum/action/xeno_action/activable/flight)
+	message_admins("[key_name(usr)] removed flight from [key_name(src)]!")

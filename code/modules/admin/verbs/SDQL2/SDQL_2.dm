@@ -1333,7 +1333,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 	return query_list
 
 
-/obj/effect/statclick/SDQL2_delete/Click()
+/obj/effect/statclick/SDQL2_delete/clicked()
 	if(!CLIENT_IS_STAFF(usr.client))
 		message_admins("[key_name_admin(usr)] non-staff clicked on a statclick! ([src])")
 		log_admin("non-staff clicked on a statclick! ([src])")
@@ -1341,7 +1341,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 	var/datum/sdql2_query/Q = target
 	Q.delete_click()
 
-/obj/effect/statclick/SDQL2_action/Click()
+/obj/effect/statclick/SDQL2_action/clicked()
 	if(!CLIENT_IS_STAFF(usr.client))
 		message_admins("[key_name_admin(usr)] non-staff clicked on a statclick! ([src])")
 		log_admin("non-staff clicked on a statclick! ([src])")
@@ -1352,7 +1352,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 /obj/effect/statclick/sdql2_vv_all
 	name = "VIEW VARIABLES"
 
-/obj/effect/statclick/sdql2_vv_all/Click()
+/obj/effect/statclick/sdql2_vv_all/clicked()
 	if(!CLIENT_IS_STAFF(usr.client))
 		message_admins("[key_name_admin(usr)] non-staff clicked on a statclick! ([src])")
 		log_admin("non-staff clicked on a statclick! ([src])")

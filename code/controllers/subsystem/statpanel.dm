@@ -212,6 +212,9 @@ SUBSYSTEM_DEF(statpanels)
 
 /// Sets the current tab to the SDQL tab
 /datum/controller/subsystem/statpanels/proc/set_SDQL2_tab(client/target)
+	if(!target)
+		return
+
 	var/list/sdql2_initial = list()
 	sdql2_initial[++sdql2_initial.len] = list("", "Access Global SDQL2 List", REF(GLOB.sdql2_vv_statobj))
 	var/list/sdql2_querydata = list()
@@ -223,6 +226,9 @@ SUBSYSTEM_DEF(statpanels)
 
 ///immediately update the active statpanel tab of the target client
 /datum/controller/subsystem/statpanels/proc/immediate_send_stat_data(client/target)
+	if(!target)
+		return FALSE
+
 	if(!target.stat_panel.is_ready())
 		return FALSE
 

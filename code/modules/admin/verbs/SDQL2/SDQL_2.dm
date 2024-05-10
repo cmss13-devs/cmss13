@@ -218,12 +218,12 @@
 	var/prompt = tgui_alert(usr, "Run SDQL2 Query?", "SDQL2", list("Yes", "Cancel"))
 	if (prompt != "Yes")
 		return
-	var/list/results = world.SDQL2_query(query_text, key_name_admin(usr), "[key_name(usr)]")
+	var/list/results = world.SDQL2_query(query_text, key_name_admin(usr), "[key_name(usr)]", executor = src)
 	if(length(results) == 3)
 		for(var/I in 1 to 3)
 			to_chat(usr, results[I], confidential = TRUE)
 
-/world/proc/SDQL2_query(query_text, log_entry1, log_entry2, silent = FALSE)
+/world/proc/SDQL2_query(query_text, log_entry1, log_entry2, silent = FALSE, client/executor)
 	var/query_log = "executed SDQL query(s): \"[query_text]\"."
 	if(!silent)
 		message_admins("[log_entry1] [query_log]")
@@ -254,6 +254,8 @@
 		waiting_queue += query
 		if(query.options & SDQL2_OPTION_SEQUENTIAL)
 			sequential = TRUE
+
+	SSstatpanels.set_SDQL2_tab(executor)
 
 	if(sequential) //Start first one
 		var/datum/sdql2_query/query = popleft(waiting_queue)

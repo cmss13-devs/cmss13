@@ -87,3 +87,18 @@
       pred kitchen.
   - maptweak: Slightly expanded pred ship material storage area by moving bracer storage
       over to the left side of the ship.
+2024-05-07:
+  Zonespace, d.1.n.a. (original sprites), esselnek (new sprites):
+  - rscadd: Added the M540-B Armored Recon Carrier as a t1 intel purchase.
+2024-05-10:
+  realforest2001:
+  - code_imp: Repaths handcuffs and legcuffs to have a shared parent.
+  - code_imp: Repaths xeno restraints to reduce confusion from the typepath.
+  - rscadd: Legcuffs work appropriately now, and can be found in small numbers within
+      security vendors.
+  - rscadd: Cable restraints can now be adjusted via right-click to fit on wrists
+      or ankles.
+  - rscadd: Prison shoe chains now require ankle restraints rather than handcuffs.
+  - rscadd: Prison shoes that have been chained now have an equp and unequip delay
+      to account for the chains, proportionate to the breakout time of the item used
+      in the chains.

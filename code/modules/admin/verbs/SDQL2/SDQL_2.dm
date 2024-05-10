@@ -113,12 +113,13 @@
 
 	Here's a slightly more formal quick reference.
 
-	The 4 queries you can do are:
+	The 5 queries you can do are:
 
 	"SELECT <selectors>"
 	"CALL <proc call> ON <selectors>"
 	"UPDATE <selectors> SET var=<value>,var2=<value>"
 	"DELETE <selectors>"
+	"SINGLECALL <object>.<proc call>"
 
 	"<selectors>" in this context is "<type> [IN <source>] [chain of MAP/WHERE modifiers]"
 
@@ -537,7 +538,11 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 	SDQL2_STAGE_SWITCH_CHECK
 
 	state = SDQL2_STATE_SEARCHING
-	var/list/found = Search(search_tree)
+	var/list/found = list()
+	if(length(search_tree))
+		found = Search(search_tree)
+	else
+		state = SDQL2_STATE_SWITCHING
 	SDQL2_STAGE_SWITCH_CHECK
 
 	state = SDQL2_STATE_EXECUTING
@@ -816,6 +821,10 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 				obj_count_finished++
 				SDQL2_TICK_CHECK
 				SDQL2_HALT_CHECK
+
+		if("singlecall")
+			world.SDQL_var(null, query_tree["singlecall"][1], null, null, superuser, src)
+			obj_count_finished++
 
 		if("delete")
 			for(var/datum/d in found)
@@ -1172,42 +1181,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 	else if(D != null && long && expression[start + 1] == ":" && hascall(D, expression[start]))
 		v = expression[start]
 	else if(!long || expression[start + 1] == ".")
-		switch(expression[start])
-			if("usr")
-				v = usr
-			if("src")
-				v = source
-			if("marked")
-				if(usr?.client?.admin_holder?.marked_datum)
-					v = usr?.client?.admin_holder?.marked_datum
-				else
-					return null
-			if("world")
-				v = world
-			if("global")
-				v = GLOB
-			if("MC")
-				v = Master
-			if("FS")
-				v = Failsafe
-			if("CFG")
-				v = config
-			else
-				if(copytext(expression[start], 1, 3) == "SS") //Subsystem //3 == length("SS") + 1
-					var/SSname = copytext_char(expression[start], 3)
-					var/SSlength = length(SSname)
-					var/datum/controller/subsystem/SS
-					var/SSmatch
-					for(var/_SS in Master.subsystems)
-						SS = _SS
-						if(copytext("[SS.type]", -SSlength) == SSname)
-							SSmatch = SS
-							break
-					if(!SSmatch)
-						return null
-					v = SSmatch
-				else
-					return null
+		v = SDQL2_special_obj_from_string(expression[start], source)
 	else if(object == GLOB) // Shitty ass hack kill me.
 		v = expression[start]
 	if(long)
@@ -1332,6 +1306,43 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 		query_list += word
 	return query_list
 
+/proc/SDQL2_special_obj_from_string(input_text, datum/source)
+	switch(input_text)
+		if("usr")
+			return usr
+		if("src")
+			return source
+		if("marked")
+			if(usr?.client?.admin_holder?.marked_datum)
+				return usr?.client?.admin_holder?.marked_datum
+			else
+				return null
+		if("world")
+			return world
+		if("global")
+			return GLOB
+		if("MC")
+			return Master
+		if("FS")
+			return Failsafe
+		if("CFG")
+			return config
+		else
+			if(copytext(input_text, 1, 3) == "SS") //Subsystem //3 == length("SS") + 1
+				var/SSname = copytext_char(input_text, 3)
+				var/SSlength = length(SSname)
+				var/datum/controller/subsystem/SS
+				var/SSmatch
+				for(var/_SS in Master.subsystems)
+					SS = _SS
+					if(copytext("[SS.type]", -SSlength) == SSname)
+						SSmatch = SS
+						break
+				if(!SSmatch)
+					return null
+				return SSmatch
+			else
+				return null
 
 /obj/effect/statclick/SDQL2_delete/clicked()
 	if(!CLIENT_IS_STAFF(usr.client))

@@ -1749,7 +1749,7 @@
 /area/whiskey_outpost/inside/cic)
 "gE" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/squad_changer{
+/obj/structure/machinery/computer/double_id/squad_changer{
 	dir = 1;
 	layer = 2.99
 	},

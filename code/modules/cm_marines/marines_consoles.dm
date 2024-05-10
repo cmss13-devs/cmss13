@@ -8,7 +8,7 @@
 #define CARDCON_DEPARTMENT_ENGINEERING "Engineering"
 #define CARDCON_DEPARTMENT_COMMAND "Command"
 
-// Parent code for computers that use a user and target card id
+// Parent code for computers that take a user and target card id
 // ------------------------------------------------------------------------------------------------------------------------------- //
 /obj/structure/machinery/computer/double_id
 	name = "Computer"
@@ -487,52 +487,39 @@
 
 // ------------------------------------------------------------------------------------------------------------------------------- //
 
-// TODO: RECODE THE SQUAD CHANGER
 
 //This console changes a marine's squad. It's very simple.
 //It also does not: change or increment the squad count (used in the login randomizer), nor does it check for jobs.
 //Which means you could get sillyiness like "Alpha Sulaco Chief Medical Officer" or "Delta Logistics Officer".
 //But in the long run it's not really a big deal.
 
-/obj/structure/machinery/computer/squad_changer
+// Squad Changer
+// ------------------------------------------------------------------------------------------------------------------------------- //
+/obj/structure/machinery/computer/double_id/squad_changer
 	name = "Squad Distribution Computer"
 	desc = "You can use this to change someone's squad."
 	icon_state = "guest"
 	req_access = list(ACCESS_MARINE_DATABASE)
-	var/obj/item/card/id/ID_to_modify = null
 	var/mob/living/carbon/human/person_to_modify = null
 	var/faction = FACTION_MARINE
 
-/obj/structure/machinery/computer/squad_changer/verb/eject_id()
-	set category = "Object"
-	set name = "Eject ID Card"
-	set src in view(1)
+/obj/structure/machinery/computer/double_id/squad_changer/tgui_interact(mob/user, datum/tgui/ui)
 
-	if(!usr || usr.is_mob_incapacitated()) return
-
-	if(ishuman(usr) && ID_to_modify)
-		to_chat(usr, "You remove \the [ID_to_modify] from \the [src].")
-		ID_to_modify.forceMove(get_turf(src))
-		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
-			usr.put_in_hands(ID_to_modify)
-		ID_to_modify = null
-		person_to_modify = null
-	else
-		to_chat(usr, "There is nothing to remove from \the [src].")
-	return
-
-/obj/structure/machinery/computer/squad_changer/tgui_interact(mob/user, datum/tgui/ui)
+	// only the registered user should be able to mess with the squad changer
+	if(user_id_card && target_id_card)
+		if(user.name != user_id_card.registered_name)
+			return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "SquadMod", name)
 		ui.open()
 
-/obj/structure/machinery/computer/squad_changer/ui_act(action, params)
+/obj/structure/machinery/computer/double_id/squad_changer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 
-	var/mob/user = usr
+	var/mob/user = ui.user
 
 	// Please stay close, marine
 	if(person_to_modify && !(person_to_modify.Adjacent(src)))
@@ -540,31 +527,63 @@
 
 	playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 	switch(action)
-		if("PRG_eject")
-			if(ID_to_modify)
-				if(ishuman(user))
-					ID_to_modify.forceMove(user.loc)
-					if(!user.get_active_hand())
-						user.put_in_hands(ID_to_modify)
-					ID_to_modify = null
-				else
-					ID_to_modify.forceMove(loc)
-					ID_to_modify = null
-				visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: ID modification protocol disabled.\"")
+		if("authenticate")
+			var/obj/item/card = user.get_active_hand()
+			if (istype(card, /obj/item/card/id))
+				if(user.drop_held_item())
+					card.forceMove(src)
+					user_id_card = card
+			if(authenticate(user, user_id_card))
 				return TRUE
 			else
-				var/obj/item/I = user.get_active_hand()
-				if (istype(I, /obj/item/card/id))
+				if(!user_id_card)
+					return
+				if(ishuman(user))
+					user_id_card.forceMove(user.loc)
+					if(!user.get_active_hand())
+						user.put_in_hands(user_id_card)
+				else
+					user_id_card.forceMove(loc)
+				user_id_card = null
+		if("logout")
+			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
+			authenticated = FALSE
+			if(ishuman(user))
+				user_id_card.forceMove(user.loc)
+				if(!user.get_active_hand())
+					user.put_in_hands(user_id_card)
+			else
+				user_id_card.forceMove(loc)
+			user_id_card = null
+			return TRUE
+		if("eject")
+			if(target_id_card)
+				if(ishuman(user))
+					target_id_card.forceMove(user.loc)
+					if(!user.get_active_hand())
+						user.put_in_hands(target_id_card)
+				else
+					target_id_card.forceMove(loc)
+
+				target_id_card = null
+				visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
+				person_to_modify = null
+				return TRUE
+			else
+				var/obj/item/card = user.get_active_hand()
+				if (istype(card, /obj/item/card/id))
 					if(user.drop_held_item())
-						I.forceMove(src)
-						ID_to_modify = I
+						card.forceMove(src)
+						target_id_card = card
 						visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
+						update_static_data(user)
 						return TRUE
+			return FALSE
 		if("PRG_squad")
 			if(
-				istype(ID_to_modify) && istype(person_to_modify) && \
+				istype(target_id_card) && istype(person_to_modify) && \
 				person_to_modify.skills.get_skill_level(SKILL_FIREARMS) && \
-				person_to_modify.real_name == ID_to_modify.registered_name && \
+				person_to_modify.real_name == target_id_card.registered_name && \
 				person_to_modify.Adjacent(src)
 			)
 				var/datum/squad/selected = get_squad_by_name(params["name"])
@@ -573,12 +592,12 @@
 				if(GLOB.RoleAuthority.check_squad_capacity(person_to_modify, selected))
 					visible_message("[SPAN_BOLD("[src]")] states, \"CAPACITY ERROR: [selected] can't have another [person_to_modify.job].\"")
 					return TRUE
-				if(transfer_marine_to_squad(person_to_modify, selected, person_to_modify.assigned_squad, ID_to_modify))
+				if(transfer_marine_to_squad(person_to_modify, selected, person_to_modify.assigned_squad, target_id_card))
 					visible_message("[SPAN_BOLD("[src]")] states, \"DATABASE LOG: [person_to_modify] was assigned to [selected] Squad.\"")
 					return TRUE
 				else
 					visible_message("[SPAN_BOLD("[src]")] states, \"DATABASE ERROR: There was an error assigning [person_to_modify] to [selected] Squad.\"")
-			else if(!istype(ID_to_modify))
+			else if(!istype(target_id_card))
 				to_chat(usr, SPAN_WARNING("You need to insert a card to modify."))
 			else if(!istype(person_to_modify) || !person_to_modify.Adjacent(src))
 				visible_message("[SPAN_BOLD("[src]")] states, \"SCANNER ERROR: You need to keep the hand of the person to be assigned to Squad!\"")
@@ -586,9 +605,10 @@
 				visible_message("[SPAN_BOLD("[src]")] states, \"QUALIFICATION ERROR: You cannot assign untrained civilians to squads!\"")
 			else
 				visible_message("[SPAN_BOLD("[src]")] states, \"ID ERROR: The ID in the machine is not owned by the person whose hand is scanned!\"")
+				person_to_modify = null // smooth brain edge case.
 			return TRUE
 
-/obj/structure/machinery/computer/squad_changer/ui_data(mob/user)
+/obj/structure/machinery/computer/double_id/squad_changer/ui_data(mob/user)
 	// Please stay close, marine
 	if(person_to_modify && !(person_to_modify.Adjacent(src)))
 		person_to_modify = null
@@ -597,11 +617,12 @@
 		data["human"] = person_to_modify.name
 	else
 		data["human"] = null
-	data["id_name"] = ID_to_modify ? ID_to_modify.name : "-----"
-	data["has_id"] = !!ID_to_modify
+	data["id_name"] = target_id_card?.name
+	data["authenticated"] = authenticated
+	data["has_id"] = !!target_id_card
 	return data
 
-/obj/structure/machinery/computer/squad_changer/ui_static_data(mob/user)
+/obj/structure/machinery/computer/double_id/squad_changer/ui_static_data(mob/user)
 	var/list/data = list()
 	var/list/squads = list()
 	for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
@@ -614,70 +635,33 @@
 	data["squads"] = squads
 	return data
 
-/obj/structure/machinery/computer/squad_changer/attackby(obj/O as obj, mob/user as mob)
-	if(user)
-		add_fingerprint(user)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(istype(O, /obj/item/card/id))
-			if(!operable())
-				to_chat(usr, SPAN_NOTICE("You tried to insert [O] but \the [src] remains silent."))
-				return
-			var/obj/item/card/id/idcard = O
-			if(!ID_to_modify)
-				H.drop_held_item()
-				idcard.forceMove(src)
-				ID_to_modify = idcard
-				visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
-			else
-				to_chat(H, SPAN_NOTICE("Remove the inserted card first."))
-		else if(istype(O, /obj/item/grab))
-			var/obj/item/grab/G = O
-			if(ismob(G.grabbed_thing))
-				if(!operable())
-					to_chat(usr, SPAN_NOTICE("You place [G.grabbed_thing]'s hand on scanner but \the [src] remains silent."))
-					return
-				var/isxenos = isxeno(G.grabbed_thing)
-				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
-				visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
-				playsound(H.loc, 'sound/machines/screen_output1.ogg', 25, 1)
-				// No Xeno Squads, please!
-				if(!isxenos)
-					person_to_modify = G.grabbed_thing
-	else
-		..()
-
-
-/obj/structure/machinery/computer/squad_changer/attack_remote(mob/user as mob)
-	return attack_hand(user)
-
-/obj/structure/machinery/computer/squad_changer/bullet_act()
-	return 0
-
-/obj/structure/machinery/computer/squad_changer/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/double_id/squad_changer/attack_hand(mob/user as mob)
 	if(..())
 		return
+
+	if (isxeno(user))
+		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s limb is scanned to \the [name]."))
+		visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: Unknown lifeform detected! Forbidden operation!\"")
+		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
+		return
+
 	if(user)
 		add_fingerprint(user)
 
-	usr.set_interaction(src)
-	if(!operable())
+	if(!user_id_card || !target_id_card || person_to_modify || user.name == user_id_card.registered_name)
 		return
-	if(allowed(user))
-		tgui_interact(user)
-	else
-		var/isxenos = isxeno(user)
-		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
-		visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
-		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
-		// No Xeno Squads, please!
-		if(!isxenos)
-			person_to_modify = user
+
+	user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s hand is scanned to \the [name]."))
+	visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: Scanned, please stay close until operation's end.\"")
+	playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
+	person_to_modify = user
 
 /// How often the sensor data is updated
 #define SENSORS_UPDATE_PERIOD 10 SECONDS //How often the sensor data updates.
 /// The job sorting ID associated with otherwise unknown jobs
 #define UNKNOWN_JOB_ID 998
+
+// ------------------------------------------------------------------------------------------------------------------------------- //
 
 /obj/structure/machinery/computer/crew
 	name = "crew monitoring computer"

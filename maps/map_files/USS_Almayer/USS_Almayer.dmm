@@ -26746,7 +26746,7 @@
 /area/almayer/squads/req)
 "eYu" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/squad_changer{
+/obj/structure/machinery/computer/double_id/squad_changer{
 	pixel_x = -9
 	},
 /obj/structure/machinery/computer/double_id/card{
@@ -53980,7 +53980,7 @@
 "oug" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/computer/squad_changer{
+/obj/structure/machinery/computer/double_id/squad_changer{
 	dir = 8;
 	layer = 2.99;
 	pixel_y = 8

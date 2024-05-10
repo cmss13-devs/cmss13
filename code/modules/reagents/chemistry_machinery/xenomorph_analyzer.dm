@@ -110,8 +110,8 @@
 				busy = TRUE
 		if("produce")
 			if(!busy)
-
 				start_print_upgrade(text2path(params["ref"]), usr, text2num(params["vari"]))
+	playsound(src, 'sound/machines/keyboard2.ogg', 25, TRUE)
 
 /obj/structure/machinery/xenoanalyzer/proc/eject_biomass()
 	if(isnull(organ))

@@ -50,6 +50,7 @@
 	throw_range = 5
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
+	flags_item = CAN_DIG_SHRAPNEL
 	inherent_traits = list(TRAIT_TOOL_SCREWDRIVER)
 
 

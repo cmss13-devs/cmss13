@@ -155,5 +155,8 @@
 	for(var/obj/item/reagent_container/glass/I in freezer.contents)
 		if(I.reagents.replace_with(polymerization_recipe, "paraformaldehyde", 3))
 			containers++
+		if(containers)
+			if(!I.reagents.has_reagent("formaldehyde", 3)) //check if we have enough to polymerize, if we don't, play the bell
+				playsound(freezer.loc, 'sound/misc/desk_bell.ogg', 100)
 		if(containers > 3)
 			break

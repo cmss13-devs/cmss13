@@ -634,14 +634,14 @@
 	data["squads"] = squads
 	return data
 
+/obj/structure/machinery/computer/double_id/squad_changer/attack_alien(mob/living/carbon/xenomorph/xeno_user)
+	xeno_user.visible_message(SPAN_NOTICE("You hear a beep as [xeno_user]'s limb is scanned to \the [name]."))
+	visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: Unknown lifeform detected! Forbidden operation!\"")
+	playsound(xeno_user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
+	return XENO_ATTACK_ACTION
+
 /obj/structure/machinery/computer/double_id/squad_changer/attack_hand(mob/user as mob)
 	if(..())
-		return
-
-	if (isxeno(user))
-		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s limb is scanned to \the [name]."))
-		visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: Unknown lifeform detected! Forbidden operation!\"")
-		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 		return
 
 	if(user)

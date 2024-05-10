@@ -511,6 +511,7 @@
 
 /obj/item/maintenance_jack/Initialize()
 	. = ..()
+	flags_atom |= QUICK_DRAWABLE
 	RegisterSignal(src, COMSIG_ITEM_ATTACK_AIRLOCK, PROC_REF(handle_airlock_attack))
 
 /obj/item/maintenance_jack/get_examine_text(mob/user)

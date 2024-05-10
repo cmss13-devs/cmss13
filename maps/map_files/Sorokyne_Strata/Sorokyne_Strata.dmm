@@ -40149,7 +40149,7 @@
 "ulv" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/t73,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},

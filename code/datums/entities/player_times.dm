@@ -61,7 +61,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 	return list(
 		"job" = role_id,
 		"playtime" = round(total_minutes MINUTES_TO_HOURS, 0.1),
-		"bgcolor" = "rgb(0, [Floor(128 * playtime_percentage)], [Floor(255 * playtime_percentage)])",
+		"bgcolor" = "rgb(0, [floor(128 * playtime_percentage)], [floor(255 * playtime_percentage)])",
 		"textcolor" = "#FFFFFF",
 		"icondisplay" = icon_display
 	)

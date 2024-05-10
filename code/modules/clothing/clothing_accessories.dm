@@ -132,13 +132,20 @@
 		return
 	var/obj/item/clothing/accessory/A
 	var/list/removables = list()
+	var/list/choice_to_accessory = list()
 	for(var/obj/item/clothing/accessory/ass in accessories)
-		if(ass.removable)
-			removables |= ass
-	if(LAZYLEN(accessories) > 1)
-		A = tgui_input_list(usr, "Select an accessory to remove from [src]", "Remove accessory", removables)
+		if(!ass.removable)
+			continue
+		var/capitalized_name = capitalize_first_letters(ass.name)
+		removables[capitalized_name] = image(icon = ass.icon, icon_state = ass.icon_state)
+		choice_to_accessory[capitalized_name] = ass
+
+	if(LAZYLEN(removables) > 1)
+		var/use_radials = usr.client.prefs?.no_radials_preference ? FALSE : TRUE
+		var/choice = use_radials ? show_radial_menu(usr, src, removables, require_near = TRUE) : tgui_input_list(usr, "Select an accessory to remove from [src]", "Remove accessory", removables)
+		A = choice_to_accessory[choice]
 	else
-		A = LAZYACCESS(accessories, 1)
+		A = choice_to_accessory[removables[1]]
 	if(!usr.Adjacent(src))
 		to_chat(usr, SPAN_WARNING("You're too far away!"))
 		return

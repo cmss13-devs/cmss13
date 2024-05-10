@@ -68,7 +68,6 @@
 
 /mob/living/carbon/xenomorph/palatine/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	. = ..()
-	SStracking.set_leader("hive_[hivenumber]", src)
 	if(!should_block_game_interaction(src))//so admins can safely spawn Palatines in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Palatine has risen to defend the Hive! Rejoice!"),3,hivenumber)
 		notify_ghosts(header = "New Palatine", message = "A new Palatine has risen.", source = src, action = NOTIFY_ORBIT)

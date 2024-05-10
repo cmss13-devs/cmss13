@@ -11191,7 +11191,7 @@
 /obj/item/stack/cable_coil/orange,
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/cable_coil/yellow,
-/obj/item/handcuffs/cable/yellow,
+/obj/item/restraint/adjustable/cable/yellow,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
 "OS" = (

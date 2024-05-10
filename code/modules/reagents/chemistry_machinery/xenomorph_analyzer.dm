@@ -13,6 +13,7 @@
 	var/obj/item/organ/xeno/organ = null
 	var/busy = FALSE
 	var/caste_of_organ = null
+	var/remember_organ_value
 
 /obj/structure/machinery/xenoanalyzer/attack_hand(mob/user as mob)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
@@ -108,6 +109,7 @@
 				addtimer(CALLBACK(src, PROC_REF(process_organ)), 3 SECONDS)
 				icon_state = "xeno_analyzer_on_moving"
 				playsound(loc, 'sound/machines/blender.ogg', 25, TRUE)
+				remember_organ_value = organ.research_value
 				QDEL_NULL(organ)
 				. = TRUE
 				busy = TRUE
@@ -127,9 +129,10 @@
 	organ = null
 
 /obj/structure/machinery/xenoanalyzer/proc/process_organ()
-	biomass_points += organ.research_value
+	biomass_points += remember_organ_value
 	icon_state = "xeno_analyzer_off"
 	busy = FALSE
+	remember_organ_value = 0
 
 /obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, mob/user, variation)
 	if (stat & NOPOWER)

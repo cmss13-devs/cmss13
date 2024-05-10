@@ -262,9 +262,6 @@
 	move_delay = .
 
 
-/mob/living/carbon/xenomorph/show_inv(mob/user)
-	return
-
 /mob/living/carbon/xenomorph/proc/pounced_mob(mob/living/L)
 	// This should only be called back by a mob that has pounce, so no need to check
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
@@ -648,6 +645,10 @@
 		tracked_marker.xenos_tracking -= src
 
 	tracked_marker = null
+
+	///This permits xenos with thumbs to fire guns and arm grenades. God help us all.
+/mob/living/carbon/xenomorph/IsAdvancedToolUser()
+	return HAS_TRAIT(src, TRAIT_OPPOSABLE_THUMBS)
 
 /mob/living/carbon/xenomorph/proc/do_nesting_host(mob/current_mob, nest_structural_base)
 	var/list/xeno_hands = list(get_active_hand(), get_inactive_hand())

@@ -72,6 +72,7 @@
 #define MODE_HARDCORE_PERMA (1<<9) /// Toggles Hardcore for all marines, meaning they instantly perma upon death
 #define MODE_DISPOSABLE_MOBS (1<<10) // Toggles if mobs fit in disposals or not. Off by default.
 #define MODE_BYPASS_JOE (1<<11) // Toggles if ghosts can bypass Working Joe spawn limitations, does NOT bypass WL requirement. Off by default.
+#define MODE_DISABLE_JOE_RESPAWN (1<<12) // Toggles if ghosts can respawn as Working Joes after dying as one when 15 minutes have passed. Off by default
 
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2
@@ -90,6 +91,15 @@
 #define PAIN_OVERLAY_LEGACY 2 //Creates a legacy blurring effect over your screen if you have any eye_blur at all. Not recommended.
 //=================================================
 
+//=================================================
+#define FLASH_OVERLAY_WHITE 0 //Flashes your screen white.
+#define FLASH_OVERLAY_DARK 1 //Flashes your screen a dark grey.
+//=================================================
+
+//=================================================
+#define CRIT_OVERLAY_WHITE 0 //Overlays your screen white.
+#define CRIT_OVERLAY_DARK 1 //Overlays your screen a dark grey.
+//=================================================
 
 /// Number of weighted marine players for 1 gear_scale. gear_scale is clamped to 1 minimum
 #define MARINE_GEAR_SCALING_NORMAL 50

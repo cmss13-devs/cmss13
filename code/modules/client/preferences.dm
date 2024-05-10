@@ -65,6 +65,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
 	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
+	var/flash_overlay_pref = FLASH_OVERLAY_WHITE
+	var/crit_overlay_pref = CRIT_OVERLAY_WHITE
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
@@ -593,6 +595,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Play Announcement Sounds As Ghost:</b> <a href='?_src_=prefs;preference=hear_observer_announcements'><b>[(toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Toggle Meme or Atmospheric Sounds:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle</a><br>"
 			dat += "<b>Set Eye Blur Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
+			dat += "<b>Set Flash Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set</a><br>"
+			dat += "<b>Set Crit Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play VOX Announcements:</b> <a href='?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"
@@ -652,12 +656,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
  * Job Preferences: Preferences for role at round start.
  *
  * Arguments:
- * * limit - The amount of jobs allowed per column. Defaults to 19 to make it look nice.
- * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to MS to make it look nice.
- * * width - Screen' width. Defaults to 950 to make it look nice.
- * * height - Screen's height. Defaults to 700 to make it look nice.
+ * * limit - The amount of jobs allowed per column.
+ * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads.
+ * * width - Screen' width.
+ * * height - Screen's height.
  */
-/datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(JOB_MESS_SERGEANT), width = 950, height = 700)
+/datum/preferences/proc/SetChoices(mob/user, limit = 20, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -770,12 +774,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
  * Job Assignments window: Assign unique characters to a particular job.
  *
  * Arguments:
- * * limit - The amount of jobs allowed per column. Defaults to 19 to make it look nice.
- * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to MS to make it look nice.
- * * width - Screen' width. Defaults to 950 to make it look nice.
- * * height - Screen's height. Defaults to 700 to make it look nice.
+ * * limit - The amount of jobs allowed per column.
+ * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads.
+ * * width - Screen' width.
+ * * height - Screen's height.
  */
-/datum/preferences/proc/set_job_slots(mob/user, limit = 19, list/splitJobs = list(JOB_MESS_SERGEANT), width = 950, height = 700)
+/datum/preferences/proc/set_job_slots(mob/user, limit = 20, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 

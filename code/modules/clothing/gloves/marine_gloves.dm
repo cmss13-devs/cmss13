@@ -38,8 +38,8 @@
 /obj/item/clothing/gloves/marine/insulated
 	name = "marine insulated gloves"
 	desc = "These gloves will protect the wearer from electric shock."
-	icon_state = "lightbrown"
-	item_state = "lightbrowngloves"
+	icon_state = "insulated"
+	item_state = "insulated"
 	siemens_coefficient = 0
 
 /obj/item/clothing/gloves/marine/black

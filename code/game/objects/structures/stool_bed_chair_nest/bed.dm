@@ -166,11 +166,14 @@
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
 			var/atom/blocker = LinkBlocked(user, user.loc, loc)
+			if(!Adjacent(M))
+				visible_message(SPAN_DANGER("[M] is too far to place onto [src]."))
+				return FALSE
 			if(blocker)
 				to_chat(user, SPAN_WARNING("\The [blocker] is in the way!"))
-			else
-				to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
-				M.forceMove(loc)
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
+			M.forceMove(loc)
 		return TRUE
 
 	else

@@ -68,7 +68,7 @@
 
 /datum/research_upgrades/item/research_credits
 	name = "Research Credits"
-	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team for two points."
+	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team for two or three points."
 	value_upgrade = 2000
 	item_reference = /obj/item/research_upgrades/credits
 	behavior = RESEARCH_UPGRADE_TIER_1

@@ -57,7 +57,7 @@
 	if(istype(B, /obj/item/research_upgrades/credits))
 		var/obj/item/research_upgrades/credits/cred = B
 		GLOB.chemical_data.update_credits(cred.credit_value)
-		visible_message(SPAN_NOTICE("[user] inserts [cred] in [src], collecting 2 points from sales."))
+		visible_message(SPAN_NOTICE("[user] inserts [cred] in [src], collecting [cred.credit_value] points from sales."))
 		qdel(cred)
 	//Clearance Updating
 	if(!istype(B, /obj/item/card/id))

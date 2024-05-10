@@ -1149,6 +1149,64 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	icon_state = "thickmembrane"
 	wall_type = "thickmembrane"
 
+/obj/structure/alien/movable_wall/reflective
+	name = "shifting resin reflective wall"
+	desc = "Weird hardened slime solidified into a fine, smooth wall."
+	icon = 'icons/turf/walls/prison/bone_resin.dmi'
+	icon_state = "resin"
+	wall_type = WALL_BONE_RESIN
+	health = HEALTH_WALL_XENO_MEMBRANE_THICK
+
+	// 75% chance of reflecting projectiles
+	var/chance_to_reflect = 75
+	var/reflect_range = 10
+
+	var/brute_multiplier = 0.3
+	var/explosive_multiplier = 0.3
+	var/reflection_multiplier = 0.5
+
+/obj/structure/alien/movable_wall/reflective/bullet_act(obj/projectile/P)
+	if(src in P.permutated)
+		return
+
+	//Ineffective if someone is sitting on the wall
+	if(locate(/mob) in contents)
+		return ..()
+
+	if(!prob(chance_to_reflect))
+		if(P.ammo.damage_type == BRUTE)
+			P.damage *= brute_multiplier
+		return ..()
+	if(P.runtime_iff_group || P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
+		// Bullet gets absorbed if it has IFF or can't be reflected.
+		return
+
+	var/obj/projectile/new_proj = new(src, create_cause_data(initial(name)))
+	new_proj.generate_bullet(P.ammo)
+	new_proj.damage = P.damage * reflection_multiplier // don't make it too punishing
+	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
+
+	// Move back to who fired you.
+	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_OBJ, PROC_REF(bullet_ignore_turf))
+	new_proj.permutated |= src
+
+	var/angle = Get_Angle(src, P.firer) + rand(30, -30)
+	var/atom/target = get_angle_target_turf(src, angle, get_dist(src, P.firer))
+	new_proj.projectile_flags |= PROJECTILE_SHRAPNEL
+	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed)
+
+	return TRUE
+
+/obj/structure/alien/movable_wall/reflective/proc/bullet_ignore_turf(obj/projectile/P, turf/T)
+	SIGNAL_HANDLER
+	if(T == src)
+		return COMPONENT_BULLET_PASS_THROUGH
+
+/obj/structure/alien/movable_wall/reflective/ex_act(severity, explosion_direction, source, mob/source_mob)
+	return ..(severity * explosive_multiplier, explosion_direction, source, source_mob)
+
+//############## END MOVABLES
+
 /turf/closed/wall/resin/reflective
 	name = "resin reflective wall"
 	desc = "Weird hardened slime solidified into a fine, smooth wall."

@@ -1,3 +1,70 @@
+GLOBAL_LIST_INIT(resin_build_order_palatine, list(
+	/datum/resin_construction/resin_turf/wall/thick,
+	/datum/resin_construction/resin_turf/wall/reflective/royal,
+	/datum/resin_construction/resin_turf/membrane/thick,
+	/datum/resin_construction/resin_obj/door/thick,
+	/datum/resin_construction/resin_obj/acid_pillar/palatine,
+	/datum/resin_construction/resin_obj/sticky_resin,
+	/datum/resin_construction/resin_obj/resin_spike,
+	/datum/resin_construction/resin_obj/movable/thick_wall,
+	/datum/resin_construction/resin_obj/movable/thick_membrane
+//	/datum/resin_construction/resin_obj/movable/reflective_royal
+))
+
+/datum/resin_construction/resin_obj/acid_pillar/palatine
+	name = "Royal Acid Pillar"
+	desc = "A tall, green pillar that is capable of firing at multiple targets at once. Fires strong acid."
+	construction_name = "acid pillar"
+
+	build_overlay_icon = /obj/effect/warning/alien
+
+	build_path = /obj/effect/alien/resin/acid_pillar/palatine
+	build_time = 6 SECONDS
+
+/obj/effect/alien/resin/acid_pillar/palatine
+	name = "royal acid pillar"
+	desc = "An enhanced resin pillar that is oozing with acid."
+
+	health = (HEALTH_RESIN_XENO_ACID_PILLAR * 2)
+	should_track_build = TRUE
+	anchored = TRUE
+
+	acid_type = /obj/effect/xenomorph/spray/strong/no_stun
+	range = 6
+
+/obj/effect/alien/resin/acid_pillar/palatine/Initialize(mapload, hive)
+	. = ..()
+	add_filter("royal_glow", priority = 1, params = list("type" = "outline", "color" = BLOOD_COLOR_XENO_ROYAL, "size" = 1))
+
+/datum/resin_construction/resin_turf/wall/reflective/royal
+	name = "Royal Reflective Resin Wall"
+	desc = "A reflective resin wall, able to reflect any and all projectiles back to the shooter."
+	construction_name = "reflective resin wall"
+	cost = XENO_RESIN_WALL_REFLECT_COST
+	max_per_xeno = 10
+
+	build_path = /turf/closed/wall/resin/reflective/royal
+
+/turf/closed/wall/resin/reflective/royal
+	name = "royal reflective membrane"
+	damage_cap = HEALTH_WALL_XENO_MEMBRANE_THICK
+
+/datum/action/xeno_action/onclick/plant_weeds/palatine
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
+/datum/action/xeno_action/onclick/choose_resin/palatine
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
+/datum/action/xeno_action/activable/secrete_resin/palatine
+	name = "Secrete Royal Resin"
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+	thick = TRUE
+
+
+
+
+///##############################################
+
 /datum/action/xeno_action/onclick/palatine_roar
 	name = "Roar"
 	icon_file = 'icons/mob/hud/actions_palatine.dmi'

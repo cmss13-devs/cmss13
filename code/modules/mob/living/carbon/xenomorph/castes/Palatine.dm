@@ -44,6 +44,7 @@
 	tier = 3
 	counts_for_slots = FALSE
 	claw_type = CLAW_TYPE_VERY_SHARP
+	extra_build_dist = 4
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -61,6 +62,10 @@
 		/datum/action/xeno_action/activable/warden_heal,//Mac4
 		/datum/action/xeno_action/onclick/prae_switch_heal_type,//Mac5
 		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/plant_weeds/palatine,
+		/datum/action/xeno_action/onclick/choose_resin/palatine,
+		/datum/action/xeno_action/activable/secrete_resin/palatine,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	icon_xeno = 'icons/mob/xenos/palatine.dmi'
@@ -73,6 +78,8 @@
 		notify_ghosts(header = "New Palatine", message = "A new Palatine has risen.", source = src, action = NOTIFY_ORBIT)
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
+	resin_build_order = GLOB.resin_build_order_palatine
+
 
 /datum/behavior_delegate/palatine_base
 	name = "Base Palatine Behavior Delegate"

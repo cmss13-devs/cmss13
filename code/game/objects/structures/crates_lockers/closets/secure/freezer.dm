@@ -157,6 +157,6 @@
 			containers++
 		if(containers)
 			if(!I.reagents.has_reagent("formaldehyde", 3)) //check if we have enough to polymerize, if we don't, play the bell
-				playsound(freezer.loc, 'sound/misc/desk_bell.ogg', 100)
+				playsound(freezer.loc, 'sound/misc/desk_bell.ogg', 150)
 		if(containers > 3)
 			break

@@ -155,11 +155,13 @@
 	Add USING keyword to the front of the query to use options system
 	The defaults aren't necessarily implemented, as there is no need to.
 	Available options: (D) means default
-	PROCCALL = (D)ASYNC, BLOCKING
-	SELECT = FORCE_NULLS, (D)SKIP_NULLS
+	PROCCALL = (D) ASYNC, BLOCKING
+	SELECT = FORCE_NULLS, (D) SKIP_NULLS
 	PRIORITY = HIGH, (D) NORMAL
 	AUTOGC = (D) AUTOGC, KEEP_ALIVE
 	SEQUENTIAL = TRUE - The queries in this batch will be executed sequentially one by one not in parallel
+	LISTSOURCE = OPTIMIZED, (D) UNOPTIMIZED
+	SELECTPRINT = (D) OUTPUT_POPUP, NO_OUTPUT_POPUP
 
 	Example: USING PROCCALL = BLOCKING, SELECT = FORCE_NULLS, PRIORITY = HIGH SELECT /mob FROM world WHERE z == 1
 
@@ -174,21 +176,31 @@
 #define SDQL2_STATE_SWITCHING 5
 #define SDQL2_STATE_HALTING 6
 
-#define SDQL2_VALID_OPTION_TYPES list("proccall", "select", "priority", "autogc" , "sequential")
-#define SDQL2_VALID_OPTION_VALUES list("async", "blocking", "force_nulls", "skip_nulls", "high", "normal", "keep_alive" , "true")
+#define SDQL2_VALID_OPTION_TYPES list("proccall", "select", "priority", "autogc" , "sequential", "listsource", "selectprint")
+#define SDQL2_VALID_OPTION_VALUES list("async", "blocking", "force_nulls", "skip_nulls", "high", "normal", "keep_alive" , "true", "optimized", "no_output")
 
+/// Don't print nulls that the select picked up. Enabled by default
 #define SDQL2_OPTION_SELECT_OUTPUT_SKIP_NULLS (1<<0)
+/// Require proccalls to finish before continuing the query
 #define SDQL2_OPTION_BLOCKING_CALLS (1<<1)
-#define SDQL2_OPTION_HIGH_PRIORITY (1<<2) //High priority SDQL query, allow using almost all of the tick.
+/// High priority SDQL query, allow using almost all of the tick.
+#define SDQL2_OPTION_HIGH_PRIORITY (1<<2)
+/// Do not delete the query after its completion
 #define SDQL2_OPTION_DO_NOT_AUTOGC (1<<3)
+/// Queries chained together with ; will execute in series instead of in parallel
 #define SDQL2_OPTION_SEQUENTIAL (1<<4)
+/// Change to GLOB.mob_list for /mob or etc. automatically if we're iterating over world.
+/// This isn't default because SDQL2 is a technical tool that should be as failure-safe as possible (such as a mob not being added to GLOB.mob_list, for example)
+#define SDQL2_OPTION_OPTIMIZED_SOURCE (1<<5)
+/// When using SELECT, don't print a popup. Makes SELECT vastly faster.
+#define SDQL2_OPTION_NO_OUTPUT_POPUP (1<<6)
 
 #define SDQL2_OPTIONS_DEFAULT (SDQL2_OPTION_SELECT_OUTPUT_SKIP_NULLS)
 
 #define SDQL2_IS_RUNNING (state == SDQL2_STATE_EXECUTING || state == SDQL2_STATE_SEARCHING || state == SDQL2_STATE_SWITCHING || state == SDQL2_STATE_PRESEARCH)
 #define SDQL2_HALT_CHECK if(!SDQL2_IS_RUNNING) {state = SDQL2_STATE_HALTING; return FALSE;};
 
-#define SDQL2_TICK_CHECK ((options & SDQL2_OPTION_HIGH_PRIORITY)? CHECK_TICK_HIGH_PRIORITY : CHECK_TICK)
+#define SDQL2_TICK_CHECK ((options & SDQL2_OPTION_HIGH_PRIORITY) ? CHECK_TICK_HIGH_PRIORITY : CHECK_TICK)
 
 #define SDQL2_STAGE_SWITCH_CHECK if(state != SDQL2_STATE_SWITCHING){\
 		if(state == SDQL2_STATE_HALTING){\
@@ -492,6 +504,14 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 			switch(value)
 				if("true")
 					options |= SDQL2_OPTION_SEQUENTIAL
+		if("listsource")
+			switch(value)
+				if("optimized")
+					options |= SDQL2_OPTION_OPTIMIZED_SOURCE
+		if("selectprint")
+			switch(value)
+				if("no_output")
+					options |= SDQL2_OPTION_NO_OUTPUT_POPUP
 
 /datum/sdql2_query/proc/ARun()
 	INVOKE_ASYNC(src, PROC_REF(Run))
@@ -532,7 +552,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 			var/mob/showmob = C.mob
 			to_chat(showmob, "<span class='admin'>SDQL query results: [get_query_text()]<br>\
 			SDQL query completed: [islist(obj_count_all)? length(obj_count_all) : obj_count_all] objects selected by path, and \
-			[where_switched? "[islist(obj_count_eligible)? length(obj_count_eligible) : obj_count_eligible] objects executed on after WHERE keyword selection." : ""]<br>\
+			[where_switched? "[islist(obj_count_eligible)? length(obj_count_eligible) : obj_count_eligible] objects executed on after WHERE keyword selection." : "no execution performed."]<br>\
 			SDQL query took [DisplayTimeText(end_time - start_time)] to complete.</span>", confidential = TRUE)
 			if(length(select_text))
 				var/text = islist(select_text)? select_text.Join() : select_text
@@ -627,8 +647,45 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 		type = text2path(type)
 	var/typecache = typecacheof(type)
 
-	if(ispath(type, /mob))
-		for(var/mob/d in location)
+	if(ispath(type, /mob/living/carbon/human))
+		var/list/search_location = location
+		if((location == world) && (options & SDQL2_OPTION_OPTIMIZED_SOURCE))
+			search_location = GLOB.human_mob_list
+
+		for(var/mob/living/carbon/human/d in search_location)
+			if(typecache[d.type] && (d.can_vv_get() || superuser))
+				out += d
+			SDQL2_TICK_CHECK
+			SDQL2_HALT_CHECK
+
+	else if(ispath(type, /mob/living/carbon/xenomorph))
+		var/list/search_location = location
+		if((location == world) && (options & SDQL2_OPTION_OPTIMIZED_SOURCE))
+			search_location = GLOB.xeno_mob_list
+
+		for(var/mob/living/carbon/xenomorph/d in search_location)
+			if(typecache[d.type] && (d.can_vv_get() || superuser))
+				out += d
+			SDQL2_TICK_CHECK
+			SDQL2_HALT_CHECK
+
+	else if(ispath(type, /mob/living))
+		var/list/search_location = location
+		if((location == world) && (options & SDQL2_OPTION_OPTIMIZED_SOURCE))
+			search_location = GLOB.living_mob_list
+
+		for(var/mob/living/d in search_location)
+			if(typecache[d.type] && (d.can_vv_get() || superuser))
+				out += d
+			SDQL2_TICK_CHECK
+			SDQL2_HALT_CHECK
+
+	else if(ispath(type, /mob))
+		var/list/search_location = location
+		if((location == world) && (options & SDQL2_OPTION_OPTIMIZED_SOURCE))
+			search_location = GLOB.mob_list
+
+		for(var/mob/d in search_location)
 			if(typecache[d.type] && (d.can_vv_get() || superuser))
 				out += d
 			SDQL2_TICK_CHECK
@@ -636,6 +693,61 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 
 	else if(ispath(type, /turf))
 		for(var/turf/d in location)
+			if(typecache[d.type] && (d.can_vv_get() || superuser))
+				out += d
+			SDQL2_TICK_CHECK
+			SDQL2_HALT_CHECK
+
+	else if(ispath(type, /obj/item/weapon/gun))
+		var/list/search_location = location
+		if((location == world) && (options & SDQL2_OPTION_OPTIMIZED_SOURCE))
+			search_location = GLOB.gun_list
+
+		for(var/obj/item/weapon/gun/d in search_location)
+			if(typecache[d.type] && (d.can_vv_get() || superuser))
+				out += d
+			SDQL2_TICK_CHECK
+			SDQL2_HALT_CHECK
+
+	else if(ispath(type, /obj/item/ammo_magazine))
+		var/list/search_location = location
+		if((location == world) && (options & SDQL2_OPTION_OPTIMIZED_SOURCE))
+			search_location = GLOB.ammo_magazine_list
+
+		for(var/obj/item/ammo_magazine/d in search_location)
+			if(typecache[d.type] && (d.can_vv_get() || superuser))
+				out += d
+			SDQL2_TICK_CHECK
+			SDQL2_HALT_CHECK
+
+	else if(ispath(type, /obj/vehicle/multitile))
+		var/list/search_location = location
+		if((location == world) && (options & SDQL2_OPTION_OPTIMIZED_SOURCE))
+			search_location = GLOB.all_multi_vehicles
+
+		for(var/obj/item/ammo_magazine/d in search_location)
+			if(typecache[d.type] && (d.can_vv_get() || superuser))
+				out += d
+			SDQL2_TICK_CHECK
+			SDQL2_HALT_CHECK
+
+	else if(ispath(type, /obj/structure/closet))
+		var/list/search_location = location
+		if((location == world) && (options & SDQL2_OPTION_OPTIMIZED_SOURCE))
+			search_location = GLOB.closet_list
+
+		for(var/obj/item/ammo_magazine/d in search_location)
+			if(typecache[d.type] && (d.can_vv_get() || superuser))
+				out += d
+			SDQL2_TICK_CHECK
+			SDQL2_HALT_CHECK
+
+	else if(ispath(type, /obj/structure/cable))
+		var/list/search_location = location
+		if((location == world) && (options & SDQL2_OPTION_OPTIMIZED_SOURCE))
+			search_location = GLOB.cable_list
+
+		for(var/obj/item/ammo_magazine/d in search_location)
 			if(typecache[d.type] && (d.can_vv_get() || superuser))
 				out += d
 			SDQL2_TICK_CHECK
@@ -658,6 +770,17 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 	else if(ispath(type, /atom))
 		for(var/atom/d in location)
 			if(typecache[d.type] && (d.can_vv_get() || superuser))
+				out += d
+			SDQL2_TICK_CHECK
+			SDQL2_HALT_CHECK
+
+	else if(ispath(type, /client))
+		var/list/search_location = location
+		if(location == world) // clients aren't picked up by an in world loop
+			search_location = GLOB.clients
+
+		for(var/client/d in search_location)
+			if(d.can_vv_get() || superuser)
 				out += d
 			SDQL2_TICK_CHECK
 			SDQL2_HALT_CHECK
@@ -704,7 +827,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 			var/print_nulls = !(options & SDQL2_OPTION_SELECT_OUTPUT_SKIP_NULLS)
 			obj_count_finished = select_refs
 			for(var/i in found)
-				SDQL_print(i, text_list, print_nulls)
+				if(!(options & SDQL2_OPTION_NO_OUTPUT_POPUP))
+					SDQL_print(i, text_list, print_nulls)
 				select_refs[REF(i)] = TRUE
 				SDQL2_TICK_CHECK
 				SDQL2_HALT_CHECK
@@ -757,7 +881,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 			SDQL_print(x, text_list)
 			if (!isnull(x) && !isnum(x) && obj_list[x] != null)
 				text_list += " -> "
-				SDQL_print(obj_list[obj_list[x]])
+				SDQL_print(obj_list[x])
 		text_list += "]<br>"
 	else
 		if(isnull(object))

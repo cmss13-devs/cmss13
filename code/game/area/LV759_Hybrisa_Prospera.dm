@@ -1,7 +1,7 @@
 //lv759 AREAS--------------------------------------//
 
 /area/lv759
-	name = "Hybrisa Prospera"
+	name = "LV-759 Hybrisa Prospera"
 	icon = 'icons/turf/hybrisareas.dmi'
 	icon_state = "hybrisa"
 	can_build_special = TRUE
@@ -15,13 +15,14 @@
 	icon_state = "cliff_blocked"//because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
 	ceiling = CEILING_METAL
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
-
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 /area/lv759/outdoors
 	name = "Hybrisa - Outdoors"
 	icon_state = "cliff_blocked"//because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
 	ceiling = CEILING_NONE
 	soundscape_playlist = SCAPE_PL_LV759_OUTDOORS
-
+	ambience_exterior = AMBIENCE_CITY
+	soundscape_interval = 31
 /area/lv759/oob
 	name = "Out Of Bounds"
 	icon_state = "oob"
@@ -94,51 +95,90 @@
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
 
-//Outdoors areas
+// Derelict Ship
+/area/lv759/indoors/derelict_ship
+	name = "Derelict Ship"
+	icon_state = "derelictship"
+	ceiling = CEILING_MAX
+	flags_area = AREA_NOTUNNEL
+	ambience_exterior = AMBIENCE_DERELICT
+	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP
 
 // Caves
-/area/lv759/indoors/caves
-	name = "Hybrisa - Caverns"
-	icon_state = "caves_north"
-	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
-	soundscape_playlist = SCAPE_PL_LV759_CAVES
-/area/lv759/indoors/caves/west_caves
+/area/lv759/indoors/wy_research_complex_entrance
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Main Entrance"
+	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES_ALARM
+	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+/area/lv759/indoors/west_caves
 	name = "Caverns - West"
 	icon_state = "caves_west"
-/area/lv759/indoors/caves/east_caves
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_CAVES
+/area/lv759/indoors/west_caves_alarm
+	name = "Caverns - West"
+	icon_state = "caves_west"
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES_ALARM
+	soundscape_playlist = SCAPE_PL_LV759_CAVES
+/area/lv759/indoors/east_caves
 	name = "Caverns - East"
 	icon_state = "caves_east"
-/area/lv759/indoors/caves/south_caves
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+/area/lv759/indoors/south_caves
 	name = "Caverns - South"
 	icon_state = "caves_south"
-/area/lv759/indoors/caves/south_east_caves
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+/area/lv759/indoors/south_east_caves
 	name = "Caverns - Southeast"
 	icon_state = "caves_southeast"
-/area/lv759/indoors/caves/south_west_caves
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+/area/lv759/indoors/south_west_caves
 	name = "Caverns - Southwest"
 	icon_state = "caves_southwest"
-/area/lv759/indoors/caves/north_west_caves
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+/area/lv759/indoors/south_west_caves_alarm
+	name = "Caverns - Southwest"
+	icon_state = "caves_southwest"
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES_ALARM
+	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+/area/lv759/indoors/north_west_caves
 	name = "Caverns - Northwest"
 	icon_state = "caves_northwest"
-/area/lv759/outdoors/caves/north_west_caves_outdoors
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+/area/lv759/outdoors/north_west_caves_outdoors
 	name = "Caverns - Northwest"
 	icon_state = "caves_northwest"
 	ceiling = CEILING_NONE
-/area/lv759/indoors/caves/north_east_caves
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_CAVES
+/area/lv759/indoors/north_east_caves
 	name = "Caverns - Northeast"
 	icon_state = "caves_northeast"
-/area/lv759/indoors/caves/north_caves
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_CAVES
+/area/lv759/indoors/north_caves
 	name = "Caverns - North"
 	icon_state = "caves_north"
-/area/lv759/indoors/caves/central_caves
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+/area/lv759/indoors/central_caves
 	name = "Caverns - Central"
 	icon_state = "caves_central"
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_CAVES
+
 
 // Caves Central Plateau
 /area/lv759/outdoors/caveplateau
 	name = "Caverns - Plateau"
 	icon_state = "caves_plateau"
 	ceiling = CEILING_NONE
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_PLATEAU_OUTDOORS
 
 // Colony Streets
@@ -166,7 +206,8 @@
 	name = "Colony Streets - Southwest - WY Checkpoint Passthrough"
 	icon_state = "colonystreets_southwest"
 	ceiling = CEILING_NONE
-
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_CAVES
 /area/lv759/outdoors/colony_streets/north_west_street
 	name = "Colony Streets - Northwest"
 	icon_state = "colonystreets_northwest"
@@ -293,12 +334,10 @@
 	name = "Meridian - Foyer"
 	icon_state = "meridian"
 	minimap_color = MINIMAP_AREA_COLONY
-	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 /area/lv759/indoors/meridian/meridian_showroom
 	name = "Meridian - Showroom"
 	icon_state = "meridian"
 	minimap_color = MINIMAP_AREA_COLONY
-	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 /area/lv759/indoors/meridian/meridian_office
 	name = "Meridian - Office"
 	icon_state = "meridian"
@@ -709,7 +748,7 @@
 	name = "Weymart"
 	icon_state = "weymart"
 	minimap_color = MINIMAP_AREA_COMMAND
-	soundscape_playlist = SCAPE_PL_LV759_WEYMART
+	ambience_exterior = AMBIENCE_WEYMART
 /area/lv759/indoors/weymart/backrooms
 	name = "Weymart - Backrooms"
 	icon_state = "weymartbackrooms"
@@ -738,19 +777,12 @@
 	icon_state = "security_checkpoint_northwest"
 
 // Misc
-/area/lv759/derelictship
-	name = "Derelict Ship"
-	icon_state = "derelictship"
-	minimap_color = MINIMAP_AREA_COLONY
-	ceiling = CEILING_MAX
-	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP
 /area/lv759/indoors/hobosecret
 	name = "Hidden Hobo Haven"
 	icon_state = "hobo"
 	ceiling = CEILING_REINFORCED_METAL
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
-	soundscape_playlist = SCAPE_PL_LV759_CAVES
 
 // Weyland-Yutani Advanced Bio-Genomic Research Complex
 
@@ -758,88 +790,138 @@
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex"
 	icon_state = "wylab"
 	minimap_color = MINIMAP_AREA_COMMAND
-	soundscape_playlist = SCAPE_PL_LV759_WEYMART
-/area/lv759/indoors/wy_research_complex/northmainentrance
-	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Main Entrance"
-	icon_state = "wylab"
 /area/lv759/indoors/wy_research_complex/medical_annex
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Medical Annex Building"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/reception
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Reception & Administration"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB_HALLWAY
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/cargo
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Requisitions & Cargo"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/researchanddevelopment
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Technology Research & Development Lab"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/mainlabs
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Advanced Chemical Testing & Research Lab"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/xenobiology
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Advanced Xenobiology Lab"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB_2
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/weaponresearchlab
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Advanced Weapon Research Lab"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/weaponresearchlabtesting
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Advanced Weapon Research Lab - Weapons Testing Range"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/xenoarcheology
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Xenoarcheology Research Lab"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/vehicledeploymentbay
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Vehicle Deployment & Maintenance Bay"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/janitor
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Janitorial Supplies Storage"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/cafeteria
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Cafeteria"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/cafeteriakitchen
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Cafeteria - Kitchen"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/dormsfoyer
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Dorms Foyer"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/dormsbedroom
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Dorms"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/securitycommand
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Security Command Center & Deployment"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/securityarmory
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Armory"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/hangarbay
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Hangar Bay"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB_HALLWAY
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Hangar Bay - Weyland-Yutani PMC ERT Shuttle"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/hallwaynorth
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Technology Research & Development Lab"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB_HALLWAY
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/hallwaynorthexit
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Hallway - Personnel Exit East"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB_HALLWAY
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/hallwayeast
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Hallway East"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB_HALLWAY
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/hallwaycentral
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Central Hallway"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB_HALLWAY
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/hallwaysouthwest
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - South West Hallway"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB_HALLWAY
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/hallwaysoutheast
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - South East Hallway"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB_HALLWAY
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/southeastexit
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - South East Maintenace & Emergency Exit"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB_HALLWAY
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/changingroom
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Locker Room"
 	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS

@@ -64,8 +64,8 @@
 	if(tool_type == /obj/item/tool/surgery/circular_saw)
 		user.affected_message(target,
 			SPAN_NOTICE("You succesfully cut through [target.caste_type] carapace apart using \the [tool]."),
-			SPAN_NOTICE("[user] Succesfully cuts through Your carapace. \the [tool]."),
-			SPAN_NOTICE("[user] Succesfully cuts [target.caste_type] carapace. \the [tool]."))
+			SPAN_NOTICE("[user] Succesfully cuts through Your carapace using \the [tool]."),
+			SPAN_NOTICE("[user] Succesfully cuts [target.caste_type] carapace using \the [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You succesfully destroy [target.caste_type] carapace into bits and pieces apart using \the [tool]."),

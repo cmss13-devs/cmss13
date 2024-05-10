@@ -3731,7 +3731,7 @@
 /area/corsat/omega/checkpoint)
 "aoq" = (
 /obj/structure/surface/table/almayer,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "red"
@@ -10903,7 +10903,7 @@
 /area/corsat/omega/airlocknorth/id)
 "aMA" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/restraints,
+/obj/item/xeno_restraints,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -21088,7 +21088,7 @@
 /area/corsat/gamma/medbay)
 "byJ" = (
 /obj/structure/surface/rack,
-/obj/item/restraints,
+/obj/item/xeno_restraints,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhite"
@@ -22725,7 +22725,7 @@
 /area/corsat/sigma/south/security)
 "bDu" = (
 /obj/structure/surface/table/almayer,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -23249,8 +23249,8 @@
 /area/corsat/gamma/sigmaremote)
 "bFF" = (
 /obj/structure/surface/table/almayer,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -25985,8 +25985,8 @@
 /area/corsat/omega/checkpoint)
 "bRn" = (
 /obj/structure/surface/rack,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "red"
@@ -26197,7 +26197,7 @@
 "bSb" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
-/obj/item/handcuffs/zip,
+/obj/item/restraint/handcuffs/zip,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -26236,8 +26236,8 @@
 	name = "riot cabinet";
 	req_access_txt = "100"
 	},
-/obj/item/handcuffs,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/corsat{
 	icon_state = "red"
 	},
@@ -27913,7 +27913,7 @@
 	dir = 8
 	},
 /obj/structure/surface/table/reinforced,
-/obj/item/restraints,
+/obj/item/xeno_restraints,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -35794,8 +35794,8 @@
 	name = "riot cabinet";
 	req_access_txt = "100"
 	},
-/obj/item/restraints,
-/obj/item/restraints,
+/obj/item/xeno_restraints,
+/obj/item/xeno_restraints,
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "red"
@@ -51625,7 +51625,7 @@
 /area/corsat/omega/hangar)
 "wrd" = (
 /obj/structure/surface/rack,
-/obj/item/restraints,
+/obj/item/xeno_restraints,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -52285,7 +52285,7 @@
 /area/corsat/omega/complex)
 "wUd" = (
 /obj/structure/surface/table/almayer,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"

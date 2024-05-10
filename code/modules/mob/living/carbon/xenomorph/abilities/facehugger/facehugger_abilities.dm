@@ -17,3 +17,8 @@
 	freeze_time = 5
 	freeze_play_sound = FALSE
 	can_be_shield_blocked = TRUE
+
+/datum/action/xeno_action/onclick/toggle_long_range/facehugger
+	handles_movement = FALSE
+	should_delay = FALSE
+	ability_primacy = XENO_PRIMARY_ACTION_3

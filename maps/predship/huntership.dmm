@@ -525,6 +525,11 @@
 /obj/item/stack/sheet/mineral/sandstone/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -844,6 +849,13 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"bZ" = (
+/obj/item/storage/fancy/candle_box,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "ca" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -1028,6 +1040,18 @@
 	},
 /obj/structure/closet/secure_closet/freezer/fridge{
 	locked = 0
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
 	},
 /turf/open/floor{
 	dir = 10;
@@ -1343,6 +1367,29 @@
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1547,6 +1594,12 @@
 /obj/structure/closet/secure_closet/freezer/fridge{
 	locked = 0
 	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2"
@@ -1734,6 +1787,30 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
+"fI" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "fS" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/gm/dirtgrassborder/weedable{
@@ -1807,8 +1884,32 @@
 	name = "Armory Shutters";
 	needs_power = 0;
 	pixel_x = 24;
-	req_one_access_txt = "392";
-	needs_power = 0
+	req_one_access_txt = "392"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
+"gN" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1857,6 +1958,11 @@
 /area/yautja)
 "is" = (
 /obj/structure/kitchenspike,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
 /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
 /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
 /turf/open/floor{
@@ -1948,6 +2054,60 @@
 "lw" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "desert1"
+	},
+/area/yautja)
+"mn" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "mv" = (
@@ -2151,6 +2311,37 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
+"sS" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "sV" = (
 /obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
@@ -2210,18 +2401,22 @@
 	},
 /area/yautja)
 "tR" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
 	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/item/storage/box/bracer,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2232,6 +2427,54 @@
 	dir = 8
 	},
 /turf/open/gm/dirtgrassborder/west,
+/area/yautja)
+"uj" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
+"um" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
 /area/yautja)
 "uO" = (
 /obj/structure/bed/chair/hunter{
@@ -2358,6 +2601,24 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"yr" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/storage/box/bracer,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "yH" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
 /turf/open/floor{
@@ -2394,18 +2655,28 @@
 	},
 /area/yautja)
 "zZ" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
 	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 1;
-	health = 80;
-	pixel_y = 16
-	},
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2636,30 +2907,30 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/legcuffs{
+/obj/item/restraint/legcuffs{
 	pixel_y = 5
 	},
-/obj/item/legcuffs{
+/obj/item/restraint/legcuffs{
 	pixel_y = 5
 	},
-/obj/item/legcuffs{
+/obj/item/restraint/legcuffs{
 	pixel_y = 5
 	},
-/obj/item/legcuffs{
+/obj/item/restraint/legcuffs{
 	pixel_y = 5
 	},
-/obj/item/legcuffs{
+/obj/item/restraint/legcuffs{
 	pixel_y = 5
 	},
-/obj/item/legcuffs{
+/obj/item/restraint/legcuffs{
 	pixel_y = 5
 	},
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/shuttle/predship,
 /area/yautja)
 "GM" = (
@@ -2829,6 +3100,21 @@
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50
 	},
 /obj/item/stack/sheet/metal{
 	amount = 50
@@ -3109,17 +3395,32 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "Ut" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
 	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -3146,12 +3447,12 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/restraints,
-/obj/item/restraints,
-/obj/item/restraints,
-/obj/item/restraints,
-/obj/item/restraints,
-/obj/item/restraints,
+/obj/item/xeno_restraints,
+/obj/item/xeno_restraints,
+/obj/item/xeno_restraints,
+/obj/item/xeno_restraints,
+/obj/item/xeno_restraints,
+/obj/item/xeno_restraints,
 /turf/open/shuttle/predship,
 /area/yautja)
 "VT" = (
@@ -5403,7 +5704,7 @@ JH
 JH
 JH
 bL
-bL
+yr
 bj
 bj
 bj
@@ -5475,7 +5776,7 @@ bL
 bL
 JH
 JH
-bL
+yr
 bj
 bM
 da
@@ -5545,9 +5846,9 @@ cP
 bL
 bL
 bL
-bL
+bZ
 JH
-bL
+yr
 bj
 cv
 cP
@@ -5619,7 +5920,7 @@ bL
 mv
 xO
 JH
-bL
+yr
 bj
 cP
 cP
@@ -5691,7 +5992,7 @@ cP
 cP
 Dk
 JH
-bL
+yr
 bj
 cP
 cP
@@ -6479,7 +6780,7 @@ cH
 ti
 bd
 ti
-Ut
+uj
 bL
 cP
 tR
@@ -6554,7 +6855,7 @@ bj
 Ut
 cP
 cP
-tR
+fI
 bj
 bj
 bj
@@ -6621,12 +6922,12 @@ cP
 cP
 Pm
 ov
-nh
-ZM
+sS
+gN
 zZ
 cP
 cP
-tR
+mn
 bj
 bj
 bj
@@ -6698,7 +6999,7 @@ cP
 cP
 cP
 cP
-tR
+um
 bj
 bj
 aa

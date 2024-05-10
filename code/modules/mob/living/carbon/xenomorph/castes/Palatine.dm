@@ -64,7 +64,16 @@
 	)
 
 	icon_xeno = 'icons/mob/xenos/palatine.dmi'
-	icon_xenonid = 'icons/mob/xenos/palatine.dmi'
+	icon_xenonid = 'icons/mob/xenonids/palatine.dmi'
+
+/mob/living/carbon/xenomorph/palatine/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	SStracking.set_leader("hive_[hivenumber]", src)
+	if(!should_block_game_interaction(src))//so admins can safely spawn Palatines in Thunderdome for tests.
+		xeno_message(SPAN_XENOANNOUNCE("A new Palatine has risen to defend the Hive! Rejoice!"),3,hivenumber)
+		notify_ghosts(header = "New Palatine", message = "A new Palatine has risen.", source = src, action = NOTIFY_ORBIT)
+
+	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 
 /datum/behavior_delegate/palatine_base
 	name = "Base Palatine Behavior Delegate"

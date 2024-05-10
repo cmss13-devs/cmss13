@@ -1,7 +1,7 @@
 name: Labeling and Verification
 on:
   pull_request_target:
-    types: [opened, edited]
+    types: [opened, synchronize, reopened, edited] # I would prefer this not to run on synchronize but otherwise it blocks merge queue if required
 jobs:
   label:
     runs-on: ubuntu-latest

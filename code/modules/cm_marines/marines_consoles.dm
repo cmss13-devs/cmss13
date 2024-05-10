@@ -43,13 +43,11 @@
 		if(user_id_card && target_id_card)
 			to_chat(user, "Both slots are full already. Remove a card first.")
 			return
-
-		var/obj/item/card/id/idcard = card
-
 		if(!user.drop_held_item())
 			return
-		idcard.forceMove(src)
 
+		var/obj/item/card/id/idcard = card
+		idcard.forceMove(src)
 		if(!user_id_card)
 			user_id_card = idcard
 			authenticate(user, user_id_card)

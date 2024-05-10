@@ -152,6 +152,11 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 	if(!istype(accessory))
 		return
+
+	if(!user.Adjacent(sourcemob))
+		to_chat(user, SPAN_WARNING("You're too far away!"))
+		return
+
 	sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([accessory]) removed by [key_name(user)]</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(sourcemob)]'s' accessory ([accessory])</font>")
 	if(istype(accessory, /obj/item/clothing/accessory/holobadge) || istype(accessory, /obj/item/clothing/accessory/medal))

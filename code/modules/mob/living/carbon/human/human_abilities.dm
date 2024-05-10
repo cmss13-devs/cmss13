@@ -250,7 +250,7 @@ CULT
 		to_send_to = list(H)
 	message_admins("[key_name_admin(H)] called a tech droppod down at [get_area(assigned_droppod)].", T.x, T.y, T.z)
 	for(var/M in to_send_to)
-		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [Floor(land_time*0.1)] seconds."))
+		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [floor(land_time*0.1)] seconds."))
 	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, PROC_REF(handle_droppod_deleted))
 */
 
@@ -605,3 +605,26 @@ CULT
 
 	var/mob/living/carbon/human/human_user = owner
 	SEND_SIGNAL(human_user, COMSIG_MOB_MG_EXIT)
+
+/datum/action/human_action/toggle_arc_antenna
+	name = "Toggle Sensor Antenna"
+	action_icon_state = "recoil_compensation"
+
+/datum/action/human_action/toggle_arc_antenna/give_to(mob/user)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from))
+
+/datum/action/human_action/toggle_arc_antenna/remove_from(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
+
+/datum/action/human_action/toggle_arc_antenna/action_activate()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/human_user = owner
+	if(istype(human_user.buckled, /obj/structure/bed/chair/comfy/vehicle))
+		var/obj/structure/bed/chair/comfy/vehicle/vehicle_chair = human_user.buckled
+		if(istype(vehicle_chair.vehicle, /obj/vehicle/multitile/arc))
+			var/obj/vehicle/multitile/arc/vehicle = vehicle_chair.vehicle
+			vehicle.toggle_antenna(human_user)

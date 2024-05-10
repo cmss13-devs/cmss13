@@ -84,22 +84,23 @@
 		return PROC_BLOCKED
 
 	var/log = "[key_name(user)] triggered AI core lockdown!"
-	var/ares_log = "[user.name] triggered triggered AI Core Emergency Lockdown."
+	var/ares_log = "Triggered triggered AI Core Emergency Lockdown."
+	var/person = user.name
 	if(message)
 		log = "[key_name(user)] triggered AI core emergency lockdown! (Using a custom announcement)."
 	if(admin)
 		log += " (Admin Triggered)."
-		ares_log = "[MAIN_AI_SYSTEM] triggered AI Core Emergency Lockdown."
+		person = MAIN_AI_SYSTEM
 
 	if(GLOB.ares_datacore.ai_lockdown_active)
 		GLOB.ares_datacore.ai_lockdown_active = FALSE
 		if(!message)
 			message = "ATTENTION! \n\nAI CORE EMERGENCY LOCKDOWN LIFTED."
 		log = "[key_name(user)] lifted AI core lockdown!"
-		ares_log = "[user.name] lifted AI Core Emergency Lockdown."
+		ares_log = "Lifted AI Core Emergency Lockdown."
 		if(admin)
 			log += " (Admin Triggered)."
-			ares_log = "[MAIN_AI_SYSTEM] lifted AI Core Emergency Lockdown."
+			person = MAIN_AI_SYSTEM
 
 		if(GLOB.security_level > SEC_LEVEL_GREEN)
 			set_security_level(SEC_LEVEL_BLUE, TRUE, FALSE)
@@ -115,4 +116,4 @@
 	COOLDOWN_START(GLOB.ares_datacore, aicore_lockdown, 2 MINUTES)
 	shipwide_ai_announcement(message, MAIN_AI_SYSTEM, 'sound/effects/biohazard.ogg')
 	message_admins(log)
-	log_ares_security("AI Core Lockdown", ares_log)
+	log_ares_security("AI Core Lockdown", ares_log, person)

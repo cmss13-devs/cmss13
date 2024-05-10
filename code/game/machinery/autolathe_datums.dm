@@ -331,6 +331,11 @@
 	path = /obj/item/ammo_magazine/flamer_tank/custom/large
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
+/datum/autolathe/recipe/armylathe/smoke_tank
+	name = "Custom M240A1 Smoke Tank"
+	path = /obj/item/ammo_magazine/flamer_tank/smoke
+	category = AUTOLATHE_CATEGORY_EXPLOSIVES
+
 //Medilathe recipes
 /datum/autolathe/recipe/medilathe
 	category = AUTOLATHE_CATEGORY_MEDICAL

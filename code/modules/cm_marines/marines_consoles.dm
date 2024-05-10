@@ -520,6 +520,7 @@
 	playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 	switch(action)
 		if("authenticate")
+			// we place the id into the machine
 			var/obj/item/card = user.get_active_hand()
 			if (istype(card, /obj/item/card/id))
 				if(user.drop_held_item())
@@ -527,6 +528,7 @@
 					user_id_card = card
 				if(authenticate(user, user_id_card))
 					return TRUE
+			// we eject the id from the machine
 			else
 				if(!user_id_card)
 					return
@@ -549,6 +551,7 @@
 			user_id_card = null
 			return TRUE
 		if("eject")
+			// we eject the id from the machine
 			if(target_id_card)
 				if(ishuman(user))
 					target_id_card.forceMove(user.loc)
@@ -561,15 +564,17 @@
 				visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
 				person_to_modify = null
 				return TRUE
+			// we place the id into the machine
 			else
 				var/obj/item/card = user.get_active_hand()
-				if (istype(card, /obj/item/card/id))
-					if(user.drop_held_item())
-						card.forceMove(src)
-						target_id_card = card
-						visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
-						update_static_data(user)
-						return TRUE
+				if (!istype(card, /obj/item/card/id))
+					return
+				if(user.drop_held_item())
+					card.forceMove(src)
+					target_id_card = card
+					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
+					update_static_data(user)
+					return TRUE
 			return FALSE
 		if("PRG_squad")
 			if(

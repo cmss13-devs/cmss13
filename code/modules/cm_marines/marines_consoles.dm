@@ -137,9 +137,9 @@
 		if("PRG_authenticate")
 			var/obj/item/I = user.get_active_hand()
 			if (istype(I, /obj/item/card/id))
+				if(!authenticate(user, I))
+					return
 				if(user.drop_held_item())
-					if(!authenticate(user, I))
-						return
 					I.forceMove(src)
 					user_id_card = I
 				return TRUE

@@ -73,7 +73,7 @@
 	item_reference = /obj/item/research_upgrades/credits
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-	clearance_req = 5
+	clearance_req = 4
 
 /datum/research_upgrades/item/laser_scalpel
 	name = "Laser Scalpel"

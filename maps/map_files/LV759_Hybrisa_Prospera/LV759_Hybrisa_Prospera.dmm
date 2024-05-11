@@ -960,8 +960,8 @@
 /obj/structure/machinery/conveyor{
 	layer = 3
 	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	icon_state = "floor3"
 	},
 /area/lv759/indoors/weymart)
 "aik" = (
@@ -1248,8 +1248,8 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/prop/cash_register/open,
 /obj/item/spacecash/c10,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	icon_state = "floor3"
 	},
 /area/lv759/indoors/weymart)
 "akz" = (
@@ -1384,10 +1384,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/lv759/indoors/wy_research_complex/vehicledeploymentbay)
-"alO" = (
-/obj/effect/hybrisa/decal/grate,
-/turf/open/auto_turf/hybrisashale/layer1,
-/area/lv759/indoors/central_caves)
 "alQ" = (
 /turf/open/floor{
 	dir = 6;
@@ -2256,8 +2252,8 @@
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "auk" = (
@@ -3234,12 +3230,9 @@
 	dir = 1;
 	pixel_y = 2
 	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/bed/chair/wheelchair,
-/turf/open/floor/corsat{
-	icon_state = "box"
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "orange_edge"
 	},
 /area/lv759/indoors/weymart)
 "aDD" = (
@@ -3872,6 +3865,10 @@
 	icon_state = "plate"
 	},
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
+"aHx" = (
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/hybrisa/misc/wysmallleft,
+/area/lv759/indoors/weymart)
 "aHy" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/objective_landmark/science,
@@ -3920,8 +3917,9 @@
 /obj/structure/machinery/line_nexter{
 	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "box"
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "orange_edge"
 	},
 /area/lv759/indoors/weymart)
 "aHN" = (
@@ -4039,8 +4037,8 @@
 	density = 0;
 	pixel_y = 16
 	},
-/turf/open/floor/corsat{
-	icon_state = "box"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "aIF" = (
@@ -6595,8 +6593,8 @@
 	id = "MTline";
 	pixel_y = 3
 	},
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "bfg" = (
@@ -8250,6 +8248,10 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/mining_outpost/east_command)
+"bub" = (
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/hybrisa/misc/wysmallright,
+/area/lv759/indoors/weymart)
 "buJ" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -9111,8 +9113,8 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "bAO" = (
 /obj/structure/bed/stool,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	icon_state = "floor3"
 	},
 /area/lv759/indoors/weymart)
 "bAP" = (
@@ -9182,10 +9184,10 @@
 /area/lv759/indoors/spaceport/baggagehandling)
 "bBZ" = (
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/kutjevo/colors/cyan,
 /area/lv759/indoors/meridian/meridian_showroom)
@@ -11486,6 +11488,18 @@
 	icon_state = "carpet10-8"
 	},
 /area/lv759/indoors/bar/entertainment)
+"bXL" = (
+/obj/structure/prop/ice_colony/soil_net,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/indoors/central_caves)
 "bXM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -11989,6 +12003,13 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/indoors/wy_security/checkpoint_northeast)
+"cbt" = (
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/lv759/indoors/weymart)
 "cbu" = (
 /obj/structure/prop/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16
@@ -13356,6 +13377,15 @@
 	},
 /turf/open/hybrisa/dropship/dropship2,
 /area/lv759/indoors/spaceport/starglider)
+"cna" = (
+/obj/structure/prop/ice_colony/soil_net,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/indoors/central_caves)
 "cnk" = (
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_3"
@@ -14548,8 +14578,8 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/turf/open/floor/corsat{
-	icon_state = "box"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "cwl" = (
@@ -15199,6 +15229,18 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_east_street)
+"cCt" = (
+/obj/structure/machinery/line_nexter{
+	dir = 1;
+	id = "MTline";
+	pixel_y = 3
+	},
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/lv759/indoors/weymart)
 "cCB" = (
 /obj/structure/sign/safety/airtraffictower,
 /turf/closed/wall/hybrisa/colony,
@@ -15591,6 +15633,12 @@
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/lv759/indoors/colonial_marshals/head_office)
+"cFz" = (
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/lv759/indoors/weymart)
 "cFG" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 8
@@ -16578,8 +16626,8 @@
 /obj/structure/machinery/conveyor{
 	layer = 3
 	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	icon_state = "floor3"
 	},
 /area/lv759/indoors/weymart)
 "cND" = (
@@ -17760,8 +17808,9 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/turf/open/floor/corsat{
-	icon_state = "box"
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "orange_edge"
 	},
 /area/lv759/indoors/weymart)
 "cXj" = (
@@ -19983,8 +20032,8 @@
 "doL" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/prop/cash_register/off/open,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	icon_state = "floor3"
 	},
 /area/lv759/indoors/weymart)
 "doO" = (
@@ -20653,12 +20702,23 @@
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/meridian/meridian_factory)
 "dtM" = (
+/obj/item/storage/bag/plasticbag,
 /obj/structure/bedsheetbin{
-	icon_state = "linenbin-empty"
+	icon_state = "linenbin-empty";
+	pixel_y = -20
+	},
+/obj/structure/bedsheetbin{
+	icon_state = "linenbin-empty";
+	layer = 2.9;
+	pixel_y = -8
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 2
 	},
 /obj/item/storage/bag/plasticbag,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "dtR" = (
@@ -21538,7 +21598,8 @@
 	layer = 1
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/platform{
@@ -27310,6 +27371,12 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_east_street)
+"ezK" = (
+/turf/open/floor/strata{
+	dir = 9;
+	icon_state = "orange_edge"
+	},
+/area/lv759/indoors/weymart)
 "ezM" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -28224,7 +28291,8 @@
 	pixel_y = 19
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/almayer{
 	icon_state = "outerhull"
@@ -28852,8 +28920,8 @@
 	dir = 1;
 	pixel_y = 2
 	},
-/turf/open/floor/corsat{
-	icon_state = "box"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "eMC" = (
@@ -30945,11 +31013,15 @@
 	},
 /area/lv759/indoors/recycling_plant)
 "ffp" = (
-/obj/structure/bedsheetbin{
-	icon_state = "linenbin-empty"
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
 	},
-/turf/open/floor/corsat{
-	icon_state = "box"
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "ffq" = (
@@ -33625,8 +33697,10 @@
 	},
 /area/lv759/indoors/central_caves)
 "fBg" = (
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
+/obj/item/storage/bag/plasticbag,
+/turf/open/floor/strata{
+	dir = 5;
+	icon_state = "orange_edge"
 	},
 /area/lv759/indoors/weymart)
 "fBj" = (
@@ -34045,7 +34119,8 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/hybrisa/tile/greenfull_bigtile,
 /area/lv759/indoors/botany/botany_greenhouse)
@@ -37286,8 +37361,8 @@
 /obj/item/spacecash/c1{
 	pixel_y = -12
 	},
-/turf/open/floor/corsat{
-	icon_state = "box"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "ghl" = (
@@ -38427,6 +38502,7 @@
 	icon_state = "trash_14";
 	pixel_y = 27
 	},
+/obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/central_streets)
 "grv" = (
@@ -40786,8 +40862,8 @@
 /obj/structure/machinery/conveyor{
 	layer = 3
 	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	icon_state = "floor3"
 	},
 /area/lv759/indoors/weymart)
 "gKG" = (
@@ -41694,7 +41770,8 @@
 /area/lv759/indoors/apartment/westfoyer)
 "gRW" = (
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /obj/structure/prop/hybrisa/Factory/Conveyor_belt{
 	layer = 2
@@ -42306,6 +42383,12 @@
 	icon_state = "darkyellow2"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
+"gXa" = (
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "orange_edge"
+	},
+/area/lv759/indoors/weymart)
 "gXb" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -45290,7 +45373,8 @@
 	dir = 1
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -45797,6 +45881,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv759/indoors/apartment/westshowers)
+"hzO" = (
+/obj/effect/hybrisa/decal/dirt,
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/hybrisa/misc/wysmallright,
+/area/lv759/indoors/weymart)
 "hzR" = (
 /obj/item/trash/eat,
 /obj/item/trash/cigbutt,
@@ -48404,8 +48493,10 @@
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "box"
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "orange_edge"
 	},
 /area/lv759/indoors/weymart)
 "hWb" = (
@@ -50501,10 +50592,10 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "iob" = (
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 8
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/kutjevo/colors/blue,
 /area/lv759/indoors/meridian/meridian_showroom)
@@ -52345,7 +52436,8 @@
 	icon_state = "N"
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -52544,7 +52636,8 @@
 	icon_state = "SW-out"
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -52600,7 +52693,8 @@
 	pixel_y = 1
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/wy_research_complex/vehicledeploymentbay)
@@ -53737,7 +53831,8 @@
 	icon_state = "N"
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/south_west_caves)
@@ -56871,8 +56966,8 @@
 	layer = 3
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	icon_state = "floor3"
 	},
 /area/lv759/indoors/weymart)
 "jrJ" = (
@@ -60599,8 +60694,9 @@
 /obj/effect/decal/strata_decals/grime/grime4{
 	icon_state = "grime3"
 	},
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "orange_edge"
 	},
 /area/lv759/indoors/weymart)
 "jZO" = (
@@ -62052,6 +62148,16 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
+"klu" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "orange_edge"
+	},
+/area/lv759/indoors/weymart)
 "klv" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/road/roadmiddle{
@@ -67433,7 +67539,8 @@
 	pixel_y = -1
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -72476,7 +72583,8 @@
 	pixel_y = -3
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
 	pixel_y = 28;
@@ -72524,8 +72632,9 @@
 /obj/structure/machinery/line_nexter{
 	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
 	},
 /area/lv759/indoors/weymart)
 "lRK" = (
@@ -76641,6 +76750,12 @@
 	dir = 10
 	},
 /area/lv759/indoors/derelict_ship)
+"mCc" = (
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/lv759/indoors/weymart)
 "mCd" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice4";
@@ -79971,7 +80086,8 @@
 "nfD" = (
 /obj/item/stack/rods,
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -80127,7 +80243,8 @@
 	icon_state = "N"
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -80921,7 +81038,8 @@
 	layer = 1
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /obj/item/clothing/head/hardhat/dblue{
 	pixel_x = -5
@@ -84295,8 +84413,8 @@
 	pixel_y = 2
 	},
 /obj/item/storage/bag/plasticbag,
-/turf/open/floor/corsat{
-	icon_state = "box"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "nSE" = (
@@ -84811,6 +84929,10 @@
 	icon_state = "plate"
 	},
 /area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
+"nWX" = (
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/hybrisa/tile/supermartfloor1,
+/area/lv759/indoors/weymart)
 "nXc" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -94384,7 +94506,8 @@
 	dir = 1
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/wy_security/checkpoint_west)
@@ -98417,7 +98540,8 @@
 	pixel_x = 1
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/wy_research_complex/vehicledeploymentbay)
@@ -98446,8 +98570,8 @@
 	layer = 3
 	},
 /obj/item/clothing/head/soft/orange,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	icon_state = "floor3"
 	},
 /area/lv759/indoors/weymart)
 "qfA" = (
@@ -98664,7 +98788,8 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "qhe" = (
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/south_west_caves)
@@ -99244,7 +99369,8 @@
 	layer = 2.5
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -99626,8 +99752,8 @@
 	pixel_y = 22
 	},
 /obj/item/clothing/suit/apron,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	icon_state = "floor3"
 	},
 /area/lv759/indoors/weymart)
 "qpQ" = (
@@ -99878,13 +100004,12 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "qrS" = (
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 1
-	},
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer6,
 /obj/structure/machinery/light/spot/blue{
 	dir = 4
 	},
+/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4,
+/obj/structure/pipes/portables_connector,
+/obj/structure/pipes/unary/freezer,
 /turf/open/floor/plating,
 /area/lv759/indoors/weymart)
 "qsh" = (
@@ -102172,8 +102297,9 @@
 	dir = 1;
 	pixel_y = 2
 	},
-/turf/open/floor/corsat{
-	icon_state = "box"
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "orange_edge"
 	},
 /area/lv759/indoors/weymart)
 "qKl" = (
@@ -102815,6 +102941,13 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/north)
+"qPl" = (
+/obj/item/device/radio{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/indoors/central_caves)
 "qPr" = (
 /obj/structure/disposalconstruct,
 /obj/structure/disposalconstruct{
@@ -103539,8 +103672,8 @@
 /obj/structure/machinery/conveyor{
 	layer = 3
 	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	icon_state = "floor3"
 	},
 /area/lv759/indoors/weymart)
 "qVU" = (
@@ -106718,6 +106851,12 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/south)
+"rxp" = (
+/turf/open/floor/strata{
+	dir = 5;
+	icon_state = "orange_edge"
+	},
+/area/lv759/indoors/weymart)
 "rxq" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -108226,8 +108365,8 @@
 	id = "MTline";
 	pixel_y = 3
 	},
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "rHQ" = (
@@ -108414,6 +108553,14 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/lv759/indoors/apartment/westbedrooms)
+"rJO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/lv759/indoors/weymart)
 "rJT" = (
 /obj/item/stack/rods{
 	amount = 15
@@ -108848,8 +108995,10 @@
 	pixel_y = 3
 	},
 /obj/item/storage/bag/plasticbag,
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
 	},
 /area/lv759/indoors/weymart)
 "rMR" = (
@@ -109658,8 +109807,9 @@
 	id = "MTline";
 	pixel_y = 3
 	},
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
 	},
 /area/lv759/indoors/weymart)
 "rTd" = (
@@ -112085,8 +112235,8 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "soN" = (
@@ -115062,8 +115212,8 @@
 	buckling_y = 14;
 	pixel_y = 22
 	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	icon_state = "floor3"
 	},
 /area/lv759/indoors/weymart)
 "sMe" = (
@@ -116951,10 +117101,17 @@
 	},
 /area/lv759/indoors/wy_research_complex/mainlabs)
 "tcz" = (
-/obj/structure/pipes/portables_connector,
-/obj/structure/pipes/unary/freezer,
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4,
-/turf/open/floor/plating,
+/obj/structure/bedsheetbin{
+	icon_state = "linenbin-empty";
+	layer = 4
+	},
+/obj/effect/hybrisa/decal/trash{
+	dir = 8;
+	icon_state = "trash_11"
+	},
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
+	},
 /area/lv759/indoors/weymart)
 "tcA" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
@@ -117207,7 +117364,9 @@
 "tei" = (
 /obj/item/lightstick/planted,
 /obj/effect/hybrisa/decal/grate,
-/turf/open/auto_turf/hybrisashale/layer1,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/indoors/central_caves)
 "tel" = (
 /obj/structure/platform{
@@ -121110,8 +121269,8 @@
 	},
 /obj/item/trash/eat,
 /obj/item/storage/bag/plasticbag,
-/turf/open/floor/corsat{
-	icon_state = "box"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "tMw" = (
@@ -125587,10 +125746,10 @@
 /area/lv759/indoors/apartment/westshowers)
 "uya" = (
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/kutjevo/colors/blue,
 /area/lv759/indoors/meridian/meridian_showroom)
@@ -125733,6 +125892,12 @@
 	icon_state = "floor_plate"
 	},
 /area/lv759/outdoors/colony_streets/north_east_street)
+"uzO" = (
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "orange_edge"
+	},
+/area/lv759/indoors/weymart)
 "uzU" = (
 /obj/structure/ore_box{
 	layer = 4
@@ -128131,6 +128296,7 @@
 /area/lv759/indoors/wy_research_complex/dormsbedroom)
 "uQU" = (
 /obj/item/spacecash/ewallet,
+/obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/supermartfloor1,
 /area/lv759/indoors/weymart)
 "uQV" = (
@@ -128229,6 +128395,13 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/indoors/central_caves)
+"uRp" = (
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "orange_edge"
+	},
+/area/lv759/indoors/weymart)
 "uRq" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl2"
@@ -130857,6 +131030,14 @@
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv759/indoors/wy_research_complex/medical_annex)
+"vqk" = (
+/obj/structure/prop/hybrisa/vehicles/colonycrawlers/science/science1{
+	dir = 1
+	},
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/indoors/central_caves)
 "vql" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 9
@@ -131994,8 +132175,8 @@
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "vzu" = (
@@ -132503,6 +132684,14 @@
 /obj/structure/window/framed/hybrisa/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv759/indoors/meridian/meridian_managersoffice)
+"vDn" = (
+/obj/structure/prop/ice_colony/surveying_device{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/indoors/central_caves)
 "vDr" = (
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 1;
@@ -133125,8 +133314,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "vIV" = (
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/strata{
+	dir = 1;
+	icon_state = "orange_edge"
 	},
 /area/lv759/indoors/weymart)
 "vIY" = (
@@ -135319,6 +135509,14 @@
 	},
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_street)
+"waU" = (
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 1
+	},
+/obj/item/stock_parts/matter_bin,
+/obj/item/tool/shovel,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/indoors/central_caves)
 "wbb" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/kutjevo/grey,
@@ -136312,8 +136510,9 @@
 /obj/structure/machinery/light/blue{
 	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "box"
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "orange_edge"
 	},
 /area/lv759/indoors/weymart)
 "wke" = (
@@ -138033,6 +138232,18 @@
 	icon_state = "darkbrown2"
 	},
 /area/lv759/indoors/mining_outpost/vehicledeployment)
+"wyT" = (
+/obj/structure/prop/ice_colony/soil_net,
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/item/stock_parts/matter_bin,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/indoors/central_caves)
 "wzf" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /obj/effect/hybrisa/decal/dirt,
@@ -139810,8 +140021,8 @@
 	dir = 4
 	},
 /obj/item/spacecash/ewallet,
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "wOo" = (
@@ -141053,7 +141264,8 @@
 	pixel_y = -1
 	},
 /obj/structure/machinery/light/spot/blue{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -141581,8 +141793,8 @@
 	pixel_x = 11;
 	pixel_y = 11
 	},
-/turf/open/floor/corsat{
-	icon_state = "box"
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
 	},
 /area/lv759/indoors/weymart)
 "xcI" = (
@@ -142724,11 +142936,6 @@
 	icon_state = "sterile_white"
 	},
 /area/lv759/indoors/hospital/cryo_room)
-"xna" = (
-/turf/open/floor/corsat{
-	icon_state = "box"
-	},
-/area/lv759/indoors/weymart)
 "xnf" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/hybrisa/metal/bluemetal1{
@@ -143781,6 +143988,17 @@
 	icon_state = "plating"
 	},
 /area/lv759/indoors/spaceport/docking_bay_2)
+"xuc" = (
+/obj/structure/platform_decoration/hybrisa/rockdark{
+	dir = 8
+	},
+/obj/structure/closet/crate/science,
+/obj/item/tool/shovel,
+/obj/item/tool/shovel,
+/obj/item/device/mass_spectrometer,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/indoors/central_caves)
 "xuf" = (
 /obj/structure/prop/hybrisa/cavedecor/stalagmite3,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -165646,7 +165864,7 @@ lAW
 nHH
 kUv
 cwj
-fBg
+mCc
 bfb
 soJ
 kgO
@@ -165898,7 +166116,7 @@ nvP
 nxL
 puD
 eMx
-fBg
+mCc
 doL
 qpO
 sPU
@@ -166150,7 +166368,7 @@ nvP
 oHx
 puD
 eMx
-fBg
+mCc
 gKF
 qVN
 sPU
@@ -166402,7 +166620,7 @@ nvP
 oHx
 aVI
 tMn
-fBg
+mCc
 vzr
 wOn
 sPU
@@ -166654,7 +166872,7 @@ nvP
 oHx
 aVI
 aIE
-fBg
+mCc
 doL
 sLS
 sPU
@@ -166906,7 +167124,7 @@ htL
 vgN
 puD
 eMx
-fBg
+mCc
 aii
 qfp
 sPU
@@ -166980,8 +167198,8 @@ bfH
 bfH
 bfH
 bfH
-bfH
-bfH
+bcA
+bcA
 bfH
 nBd
 unn
@@ -167158,7 +167376,7 @@ nvP
 nBc
 puD
 nSv
-fBg
+mCc
 vzr
 aui
 sPU
@@ -167232,8 +167450,8 @@ bfH
 bfH
 bfH
 bfH
-bfH
-bfH
+bcA
+bcA
 bfH
 bfH
 nBd
@@ -167410,7 +167628,7 @@ dvR
 iml
 aVI
 xcH
-fBg
+mCc
 aku
 bAO
 sPU
@@ -167662,15 +167880,15 @@ gru
 aVI
 aVI
 ghi
-fBg
+mCc
 jrH
 cNB
 sPU
 ilX
 sPU
+nWX
 sPU
-sPU
-sPU
+rJO
 mFU
 uGQ
 waA
@@ -167738,8 +167956,8 @@ bfH
 tHg
 nTP
 udz
-bfH
-bfH
+bcA
+bcA
 bfH
 udz
 unn
@@ -167921,8 +168139,8 @@ sPU
 cvm
 mzB
 sPU
-sPU
-sPU
+nWX
+rJO
 ixR
 pFL
 rLJ
@@ -167990,8 +168208,8 @@ udz
 unn
 tHg
 bfH
-bfH
-bfH
+bcA
+bcA
 tHg
 unn
 unn
@@ -168162,12 +168380,12 @@ sMf
 mYE
 rfM
 ofM
-raD
+sGs
 fHF
-fBg
+aHx
 rSY
-fBg
-fBg
+cbt
+uzO
 jZJ
 sPU
 vBz
@@ -168413,14 +168631,14 @@ nJv
 sMf
 mYE
 rfM
-ofM
+eAj
 raD
 xpt
-fBg
-rSY
-fBg
+bub
+cCt
+cFz
 sPU
-sPU
+nWX
 fDa
 sPU
 sPU
@@ -168670,7 +168888,7 @@ nvP
 qmK
 hVP
 qKj
-fBg
+rxp
 sPU
 dTB
 mjP
@@ -168920,10 +169138,10 @@ rfM
 ofM
 nvP
 qmK
-xna
-eMx
-fBg
-sPU
+uzO
+klu
+ezK
+nWX
 lGr
 yfe
 xBZ
@@ -168999,8 +169217,8 @@ unn
 unn
 unn
 ohF
-prc
-prc
+smq
+smq
 rHL
 oYd
 rHL
@@ -169170,11 +169388,11 @@ sMf
 mYE
 acQ
 ofM
-raD
+sGs
 fHF
-fBg
+aHx
 rSY
-fBg
+cFz
 sPU
 hBC
 vJr
@@ -169251,10 +169469,10 @@ unn
 unn
 rHL
 prc
-prc
-prc
-prc
-prc
+smq
+smq
+mNA
+gBx
 oYd
 eQp
 jgr
@@ -169422,14 +169640,14 @@ sMf
 mYE
 acQ
 oSW
-raD
+sGs
 xpt
-fBg
+hzO
 rMP
-fBg
+cFz
 sPU
 sPU
-sPU
+nWX
 sPU
 sPU
 uQU
@@ -169504,10 +169722,10 @@ unn
 unn
 pSI
 rhO
-oYd
-prc
-prc
-prc
+mNA
+smq
+smq
+gBx
 fWR
 jgr
 auT
@@ -169678,11 +169896,11 @@ xNY
 puD
 wkd
 aDx
-fBg
-fBg
-fBg
-fBg
-fBg
+gXa
+gXa
+uRp
+gXa
+gXa
 fBg
 lDR
 twa
@@ -169756,10 +169974,10 @@ unn
 rHL
 mIP
 rHL
-prc
-prc
-prc
-oYd
+eAa
+smq
+smq
+gBY
 qiJ
 jgr
 auT
@@ -170008,9 +170226,9 @@ unn
 wcd
 hJY
 gPb
-oYd
 prc
-oYd
+eAa
+gBY
 oYd
 fWR
 jgr
@@ -170241,7 +170459,7 @@ pTu
 mNA
 smq
 smq
-alO
+gBx
 pSI
 unn
 unn
@@ -171017,8 +171235,8 @@ unn
 pTu
 prc
 prc
-rHL
-oYd
+smq
+smq
 prc
 oYd
 nqU
@@ -171269,8 +171487,8 @@ unn
 jUa
 oYd
 prc
-prc
-prc
+smq
+smq
 prc
 prc
 jvZ
@@ -171772,8 +171990,8 @@ rHL
 unn
 oYd
 prc
-prc
-prc
+smq
+smq
 prc
 prc
 oYd
@@ -172024,8 +172242,8 @@ prc
 rHL
 prc
 prc
-prc
-prc
+smq
+smq
 prc
 oYd
 eKI
@@ -172279,7 +172497,7 @@ prc
 prc
 prc
 prc
-ohF
+pTu
 qiJ
 uni
 auT
@@ -173529,9 +173747,9 @@ auT
 auT
 qwo
 mHO
-oMc
-prc
-oYd
+xuc
+qPl
+moP
 eAa
 gBY
 prc
@@ -173782,10 +174000,10 @@ auT
 cjq
 mRH
 oDU
-oYd
-prc
-prc
-oYd
+vqk
+dZn
+odj
+pSI
 oYd
 prc
 oYd
@@ -174033,11 +174251,11 @@ jgr
 auT
 auT
 qwo
-fuT
-oMc
-oYd
-oYd
-prc
+tqD
+avs
+cna
+wyT
+vDn
 rHL
 pTu
 pSI
@@ -174286,9 +174504,9 @@ auT
 auT
 auT
 mRH
-dFq
-oYd
-rHL
+waU
+bXL
+izh
 ohF
 oYd
 unn

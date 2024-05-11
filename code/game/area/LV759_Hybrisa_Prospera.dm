@@ -31,7 +31,6 @@
 	flags_area = AREA_NOTUNNEL
 
 // Landing Zone 1
-
 /area/lv759/outdoors/landing_zone_1
 	name = "Nova Medica Hospital Complex - Emergency Response Landing Zone One"
 	icon_state = "medical_lz1"

@@ -1,6 +1,0 @@
-author: "coldironwarrior"
-delete-after: True
-changes:
-  - rscadd: "Added eyewear options, more glove options to the SEA vendor"
-  - rscadd: "SEAs now get full versions of the utility holster belt"
-  - rscdel: "Removed the CPR dummy from the SEA vendor"

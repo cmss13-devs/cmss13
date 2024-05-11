@@ -27723,14 +27723,6 @@
 	icon_state = "upp4"
 	},
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
-"cnV" = (
-/obj/item/stack/catwalk,
-/obj/item/tool/wrench,
-/obj/structure/machinery/power/apc/groundsite/power/north,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/strata/ag/interior/outpost/engi/drome/shuttle)
 "cnZ" = (
 /obj/structure/machinery/power/apc/groundsite/no_power/north,
 /turf/open/floor/strata{
@@ -29600,6 +29592,14 @@
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/hotsprings)
+"dSm" = (
+/obj/item/stack/catwalk,
+/obj/item/tool/wrench,
+/obj/structure/machinery/power/apc/groundsite/power/north,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/strata/ag/interior/outpost/engi/drome/shuttle)
 "dSA" = (
 /obj/structure/bed{
 	icon_state = "abed"
@@ -36827,6 +36827,14 @@
 	},
 /turf/open/gm/river,
 /area/strata/ag/exterior/landing_zones/near_lz2)
+"psv" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/pistol/t73,
+/obj/item/restraint/handcuffs,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/research_decks/security)
 "psE" = (
 /obj/structure/machinery/power/smes/buildable{
 	capacity = 1e+006;
@@ -40023,14 +40031,6 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ag/exterior/outpost_decks)
-"ulv" = (
-/obj/structure/surface/rack,
-/obj/item/weapon/gun/pistol/t73,
-/obj/item/handcuffs,
-/turf/open/floor/strata{
-	icon_state = "red1"
-	},
-/area/strata/ag/interior/research_decks/security)
 "ulL" = (
 /obj/structure/platform/strata/metal{
 	dir = 1
@@ -60007,7 +60007,7 @@ cva
 ybN
 jWi
 bdU
-ulv
+psv
 ybN
 aGf
 bmB
@@ -67344,7 +67344,7 @@ csF
 baZ
 cgO
 clg
-cnV
+dSm
 dks
 guF
 kgC

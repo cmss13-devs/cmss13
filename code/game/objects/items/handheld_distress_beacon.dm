@@ -37,7 +37,11 @@
 
 	if(active)
 		to_chat(user, "[src] is already active!")
-		return
+		return FALSE
+	var/reason = tgui_input_text(user, "What is the reason for activating this beacon?", "Distress Reason")
+	if(!reason)
+		return FALSE
+
 	active = TRUE
 	update_icon()
 
@@ -52,7 +56,7 @@
 	for(var/client/admin_client in GLOB.admins)
 		if((R_ADMIN|R_MOD) & admin_client.admin_holder.rights)
 			playsound_client(admin_client,'sound/effects/sos-morse-code.ogg',10)
-	message_admins("[key_name(user)] has used a [beacon_type]! [CC_MARK(user)] [beacon_call_buttons](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];deny_distress_handheld=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
+	message_admins("[key_name(user)] has used a [beacon_type] for the reason '[SPAN_ORANGE(reason)]'! [CC_MARK(user)] [beacon_call_buttons](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];deny_distress_handheld=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
 	to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to [recipient]."))
 
 /// CMB distress beacon held by CMB Marshal for signalling distress to Anchorpoint Station

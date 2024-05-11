@@ -149,6 +149,8 @@
 			var/obj/item/paper/med_report = new (loc)
 			med_report.name = "Medical Report"
 			med_report.info += contents
+			med_report.update_icon()
+
 			visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
 			return TRUE
 		if("eject")

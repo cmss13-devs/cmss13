@@ -819,7 +819,7 @@
 		return
 
 	var/list/alerts = list()
-	for(var/i in RANGE_TURFS(Floor(width/2), T))
+	for(var/i as anything in RANGE_TURFS(floor(width/2), T))
 		alerts += new /obj/effect/warning/alien(i)
 
 	if(!do_after(Q, time_taken, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
@@ -833,7 +833,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	var/turf/new_turf = locate(max(T.x - Floor(width/2), 1), max(T.y - Floor(height/2), 1), T.z)
+	var/turf/new_turf = locate(max(T.x - floor(width/2), 1), max(T.y - floor(height/2), 1), T.z)
 	to_chat(Q, SPAN_XENONOTICE("You raise a blockade!"))
 	var/obj/effect/alien/resin/resin_pillar/RP = new pillar_type(new_turf)
 	RP.start_decay(brittle_time, decay_time)

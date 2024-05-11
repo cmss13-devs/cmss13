@@ -3223,6 +3223,10 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("This chemical will clog the nozzle!"))
 		return
 
+	if(istype(gun.current_mag, /obj/item/ammo_magazine/flamer_tank/smoke)) // you can't fire smoke like a projectile!
+		to_chat(user, SPAN_WARNING("[src] can't be used with this fuel tank!"))
+		return
+
 	gun.last_fired = world.time
 	gun.current_mag.reagents.remove_reagent(flamer_reagent.id, FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)
 

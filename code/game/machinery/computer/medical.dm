@@ -17,7 +17,7 @@
 // I hate the printing sound effect.
 #define PRINT_COOLDOWN_TIME 2 MINUTES
 
-/obj/structure/machinery/computer/double_id/med_data//TODO:RIP OUT LEGACY CODE.
+/obj/structure/machinery/computer/double_id/med_data
 	name = "Medical Records"
 	desc = "This can be used to check medical records."
 	icon_state = "medcomp"

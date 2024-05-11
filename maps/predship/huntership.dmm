@@ -2907,30 +2907,30 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/legcuffs{
+/obj/item/restraint/legcuffs{
 	pixel_y = 5
 	},
-/obj/item/legcuffs{
+/obj/item/restraint/legcuffs{
 	pixel_y = 5
 	},
-/obj/item/legcuffs{
+/obj/item/restraint/legcuffs{
 	pixel_y = 5
 	},
-/obj/item/legcuffs{
+/obj/item/restraint/legcuffs{
 	pixel_y = 5
 	},
-/obj/item/legcuffs{
+/obj/item/restraint/legcuffs{
 	pixel_y = 5
 	},
-/obj/item/legcuffs{
+/obj/item/restraint/legcuffs{
 	pixel_y = 5
 	},
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/shuttle/predship,
 /area/yautja)
 "GM" = (
@@ -3447,12 +3447,12 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/restraints,
-/obj/item/restraints,
-/obj/item/restraints,
-/obj/item/restraints,
-/obj/item/restraints,
-/obj/item/restraints,
+/obj/item/xeno_restraints,
+/obj/item/xeno_restraints,
+/obj/item/xeno_restraints,
+/obj/item/xeno_restraints,
+/obj/item/xeno_restraints,
+/obj/item/xeno_restraints,
 /turf/open/shuttle/predship,
 /area/yautja)
 "VT" = (

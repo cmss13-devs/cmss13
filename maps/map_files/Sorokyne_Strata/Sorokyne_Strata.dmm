@@ -27726,6 +27726,7 @@
 "cnV" = (
 /obj/item/stack/catwalk,
 /obj/item/tool/wrench,
+/obj/structure/machinery/power/apc/groundsite/power/north,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -73289,7 +73290,7 @@ lmv
 bDD
 btN
 aad
-aMw
+srk
 aad
 aad
 aad

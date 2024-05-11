@@ -408,8 +408,8 @@
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in our belly that needs regurgitating."))
 
-/// Checks if the target object can be obscured by other objects within the same time. Used for Eggs
-/mob/living/carbon/xenomorph/proc/check_if_can_be_obscured(turf/target_turf, obj/checked_obj)
+/// Returns true if the object would be obscured by other objects in the same turf. Used for Eggs
+/mob/living/carbon/xenomorph/proc/check_if_obscured(turf/target_turf, obj/checked_obj)
 	for(var/obj/object in target_turf.contents)
 		if(object.layer > checked_obj.layer)
 			return TRUE

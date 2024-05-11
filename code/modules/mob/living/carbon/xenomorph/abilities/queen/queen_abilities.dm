@@ -206,5 +206,6 @@
 
 /datum/action/xeno_action/onclick/egg_autoplant/give_to(mob/living/carbon/xenomorph/queen/Q)
 	. = ..()
+	button.icon_state = Q.egg_autoplant ? "template_active" : "template"
 	if(!Q.ovipositor)
 		hide_from(Q)

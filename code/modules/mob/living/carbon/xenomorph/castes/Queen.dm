@@ -552,8 +552,11 @@
 	if(suitable_turfs.len == 0)
 		to_chat(src, SPAN_XENONOTICE("There is no more suitable ground to plant eggs! Automatic planting disabled!"))
 		egg_autoplant = FALSE
+		var/datum/action/xeno_action/onclick/egg_autoplant/ability = get_xeno_action_by_type(src, /datum/action/xeno_action/onclick/egg_autoplant)
+		if(ability)
+			ability.button.icon_state = "template"
 		return
-	if(!src.check_plasma(30)) // Skip this cycle if we don't have enough plasma
+	if(!check_plasma(30)) // Skip this cycle if we don't have enough plasma
 		return
 
 	if(!do_after(src, 1 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_BUILD)) // mostly intended as a visual effect

@@ -863,6 +863,9 @@
 		else
 			egg_autoplant = TRUE
 			to_chat(src, SPAN_XENONOTICE("You enable automatic egg planting."))
+	var/datum/action/xeno_action/onclick/egg_autoplant/ability = get_xeno_action_by_type(src, /datum/action/xeno_action/onclick/egg_autoplant)
+	if(ability)
+		ability.button.icon_state = egg_autoplant ? "template_active" : "template"
 
 /datum/action/xeno_action/onclick/egg_autoplant/use_ability()
 	var/mob/living/carbon/xenomorph/queen/queen = owner

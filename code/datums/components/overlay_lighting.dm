@@ -175,7 +175,7 @@
 	LAZYINITLIST(affected_turfs)
 	if(range <= 2)
 		//Range here is 1 because actual range of lighting mask is 1 tile even if it says that range is 2
-		for(var/turf/lit_turf in RANGE_TURFS(1, current_holder.loc))
+		for(var/turf/lit_turf as anything in RANGE_TURFS(1, current_holder.loc))
 			lit_turf.dynamic_lumcount += lum_power
 			affected_turfs += lit_turf
 	else

@@ -597,7 +597,7 @@
 	if(L.len <= 1)
 		return L
 
-	var/middle = Floor(L.len / 2)
+	var/middle = floor(L.len / 2)
 	var/list/left = custom_mergesort(L.Copy(1, middle + 1))
 	var/list/right = custom_mergesort(L.Copy(middle + 1))
 	var/list/result = list()

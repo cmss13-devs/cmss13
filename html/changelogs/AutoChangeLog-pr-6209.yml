@@ -1,4 +1,0 @@
-author: "kivts"
-delete-after: True
-changes:
-  - bugfix: "Infinite metal oversight fix."

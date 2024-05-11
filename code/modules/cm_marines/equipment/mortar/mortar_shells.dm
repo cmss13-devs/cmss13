@@ -156,6 +156,10 @@
 		icon_state = initial(icon_state) +"_unlocked"
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 
+/obj/item/mortar_shell/ex_act(severity, explosion_direction)
+	if(!burning)
+		return ..()
+
 /obj/item/mortar_shell/attack_hand(mob/user)
 	if(burning)
 		to_chat(user, SPAN_DANGER("\The [src] is on fire and might explode!"))
@@ -172,7 +176,6 @@
 /obj/item/mortar_shell/proc/handle_fire()
 	visible_message(SPAN_WARNING("\The [src] catches on fire and starts cooking off! It's gonna blow!"))
 	anchored = TRUE // don't want other explosions launching it elsewhere
-	indestructible = TRUE // thou shall not runtime
 
 	var/datum/effect_system/spark_spread/sparks = new()
 	sparks.set_up(n = 10, loca = loc)

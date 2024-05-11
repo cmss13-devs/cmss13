@@ -517,8 +517,8 @@ DEFINES in setup.dm, referenced here.
 		return FALSE
 
 	if(istype(slot) && (slot.storage_flags & STORAGE_ALLOW_QUICKDRAW))
-		for(var/obj/cycled_weapon in slot.return_inv())
-			if(cycled_weapon.flags_atom & QUICK_DRAWABLE)
+		for(var/obj/cycled_object in slot.return_inv())
+			if(cycled_object.flags_atom & QUICK_DRAWABLE)
 				return slot
 
 	if(slot.flags_atom & QUICK_DRAWABLE)

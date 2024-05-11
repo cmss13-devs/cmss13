@@ -48,9 +48,9 @@
 /datum/surgery_step/xenomorph/cut_exoskeleton/preop(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/circular_saw || tool_type == /obj/item/tool/surgery/scalpel/laser/advanced)
 		user.affected_message(target,
-			SPAN_NOTICE("You start to cut [target.caste_type] carapace apart using \the [tool], carefully, with barely any acid."),
-			SPAN_NOTICE("[user] starts to cut Your carapace apart using \the [tool], carefully, with barely any acid."),
-			SPAN_NOTICE("[user] starts to cut [target.caste_type] carapace. \the [tool], carefully, with barely any acid."))
+			SPAN_NOTICE("You start to cut [target.caste_type] carapace apart using \the [tool], carefully, trying to prevent acid leaks."),
+			SPAN_NOTICE("[user] starts to cut Your carapace apart using \the [tool], carefully, trying to prevent acid leaks."),
+			SPAN_NOTICE("[user] starts to cut [target.caste_type] carapace. \the [tool], carefully, trying to prevent acid leaks."))
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You start to [pick("smash", "crack", "break")] [target.caste_type] carapace apart using \the [tool], Recklessly, with acid splashing on you!"),

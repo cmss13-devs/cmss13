@@ -1209,6 +1209,22 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
 
+/obj/item/storage/belt/gun/m4a3/nailgun
+	name = "customized nailgun holster"
+	desc = "Combination of a M276 pistol holster and engineering toolbelt that have been cannibalized into a unique belt that can holster a compact nailgun and two spare nailgun magazines."
+	icon_state = "nailgun_holster"
+	storage_slots = 3
+	can_hold = list(
+		/obj/item/weapon/gun/smg/nailgun/compact,
+		/obj/item/ammo_magazine/smg/nailgun,
+	)
+	has_gamemode_skin = FALSE
+
+/obj/item/storage/belt/gun/m4a3/nailgun/prefilled/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/smg/nailgun/compact())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/smg/nailgun(src)
+
 /obj/item/storage/belt/gun/m39
 	name = "\improper M276 pattern M39 holster rig"
 	desc = "Special issue variant of the M276 designed to holster a M39 submachine gun and two spare magazines. Uncommonly issued to USCM support and specialist personnel."

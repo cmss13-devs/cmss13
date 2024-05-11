@@ -142,7 +142,7 @@
 			// autopsy report gets shwacked ontop if it exists and the target stat is dead
 			if(target_record_general.fields[HEALTH] == "Deceased" && target_record_medical.fields[AUTOPSY_SUBMISSION])
 				contents +=  {"<center><h4>Autopsy Report</h4></center>
-								<u>Autopsy Nites:</u> [target_record_medical.fields[AUTOPSY_NOTES]]<br>
+								<u>Autopsy Notes:</u> [target_record_medical.fields[AUTOPSY_NOTES]]<br>
 								<u>Cause Of Death:</u> [target_record_medical.fields[DEATH]]<br>
 							"}
 

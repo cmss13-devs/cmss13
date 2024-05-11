@@ -185,7 +185,7 @@ export const MedicalRecord = (props) => {
                       </Stack.Item>
                     ) : health !== 'Deceased' ? (
                       <Stack.Item py={2}>
-                        he patient must be marked as deceased to create an
+                        The patient must be marked as deceased to create an
                         autopsy report.
                       </Stack.Item>
                     ) : (

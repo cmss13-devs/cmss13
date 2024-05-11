@@ -3772,7 +3772,6 @@
 "aGY" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/recharger,
-/obj/item/handcuffs,
 /obj/structure/machinery/light,
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/lv759/indoors/colonial_marshals/head_office)
@@ -23557,6 +23556,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/item/restraint/handcuffs,
 /obj/item/clothing/head/soft/sec/corp,
 /turf/open/floor/prison{
 	icon_state = "red"
@@ -28834,9 +28834,11 @@
 "eMd" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/gun/shotgun/lowchance,
-/obj/item/legcuffs/beartrap,
-/obj/item/legcuffs/beartrap,
 /obj/effect/hybrisa/decal/dirt,
+/obj/item/restraint/legcuffs/beartrap,
+/obj/item/restraint/legcuffs/beartrap,
+/obj/item/restraint/legcuffs/beartrap,
+/obj/item/restraint/legcuffs/beartrap,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "red"
@@ -36775,6 +36777,8 @@
 /area/lv759/indoors/power_plant/gas_generators)
 "gcg" = (
 /obj/structure/surface/table/reinforced,
+/obj/item/restraint/handcuffs,
+/obj/item/weapon/gun/revolver/cmb,
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
@@ -37104,7 +37108,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/item/handcuffs,
 /turf/open/floor/plating/kutjevo,
 /area/lv759/indoors/colonial_marshals/interrogation)
 "geB" = (
@@ -50435,6 +50438,7 @@
 "imQ" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/ammo_casing/bullet,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -52970,6 +52974,7 @@
 	icon_state = "S"
 	},
 /obj/structure/surface/table/reinforced,
+/obj/item/restraint/handcuffs,
 /obj/item/clothing/head/soft/sec/corp,
 /turf/open/floor/prison{
 	dir = 6;
@@ -85022,11 +85027,11 @@
 /area/lv759/indoors/north_west_caves)
 "nXD" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/handcuffs,
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = 7;
 	pixel_y = 10
 	},
+/obj/item/restraint/handcuffs,
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/lv759/indoors/colonial_marshals/north_office)
 "nXE" = (
@@ -98614,7 +98619,6 @@
 	pixel_x = -4;
 	pixel_y = 14
 	},
-/obj/item/handcuffs,
 /obj/item/weapon/classic_baton,
 /turf/open/floor/prison{
 	icon_state = "red"
@@ -111932,8 +111936,8 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
+/obj/item/restraint/handcuffs,
 /obj/item/storage/box/handcuffs,
-/obj/item/handcuffs,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "red"
@@ -144271,7 +144275,6 @@
 	color = "#6b675e"
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/item/handcuffs,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "cell_stripe"

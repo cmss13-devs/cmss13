@@ -1381,6 +1381,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/groundsite/no_power/north
 	pixel_y = 24
 	dir = 1
+
 /obj/structure/machinery/power/apc/groundsite/no_power/south
 	pixel_y = -24
 

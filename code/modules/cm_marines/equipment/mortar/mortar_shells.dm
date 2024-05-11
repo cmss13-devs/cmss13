@@ -172,6 +172,7 @@
 /obj/item/mortar_shell/proc/handle_fire()
 	visible_message(SPAN_WARNING("\The [src] catches on fire and starts cooking off! It's gonna blow!"))
 	anchored = TRUE // don't want other explosions launching it elsewhere
+	indestructible = TRUE // thou shall not runtime
 
 	var/datum/effect_system/spark_spread/sparks = new()
 	sparks.set_up(n = 10, loca = loc)

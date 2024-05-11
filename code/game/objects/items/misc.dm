@@ -56,13 +56,13 @@
 	..()
 	if(!gripped)
 		user.visible_message(SPAN_NOTICE("[user] grips [src] tightly."), SPAN_NOTICE("You grip [src] tightly."))
-		flags_item |= NODROP
+		flags_item |= NODROP|FORCEDROP_CONDITIONAL
 		ADD_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM)
 		user.AddComponent(/datum/component/footstep, 6, 35, 4, 1, "cane_step")
 		gripped = TRUE
 	else
 		user.visible_message(SPAN_NOTICE("[user] loosens \his grip on [src]."), SPAN_NOTICE("You loosen your grip on [src]."))
-		flags_item &= ~NODROP
+		flags_item &= ~(NODROP|FORCEDROP_CONDITIONAL)
 		REMOVE_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM)
 		// Ideally, this would be something like a component added onto every mob that prioritizes certain sounds, such as stomping over canes.
 		var/component = user.GetComponent(/datum/component/footstep)
@@ -292,11 +292,12 @@
 	new /obj/item/evidencebag(src)
 	new /obj/item/evidencebag(src)
 
-/obj/item/rappel_harness
-	name = "rappel harness"
-	desc = "A simple, uncomfortable rappel harness with just enough safety straps to make RnD pass health and safety. It comes with an in-built descender, but has no pouches for ammunition."
-	icon = 'icons/obj/items/clothing/belts.dmi'
-	icon_state = "rappel_harness"
-	item_state = "rappel_harness"
+/obj/item/parachute
+	name = "parachute"
+	desc = "A surprisingly small yet bulky pack with just enough safety straps to make RnD pass health and safety. The label says the pack comes with two parachutes - main and reserve, but you doubt the pack can fit even one."
+	icon = 'icons/obj/items/clothing/backpacks.dmi'
+	icon_state = "parachute_pack"
+	item_state = "parachute_pack"
 	w_class = SIZE_MASSIVE
-	flags_equip_slot = SLOT_WAIST
+	flags_equip_slot = SLOT_BACK
+	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE

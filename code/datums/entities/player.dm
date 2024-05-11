@@ -90,11 +90,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 /datum/entity/player/proc/add_note(note_text, is_confidential, note_category = NOTE_ADMIN, is_ban = FALSE, duration = null)
 	var/client/admin = usr.client
 	// do all checks here, especially for sensitive stuff like this
-	if(!admin || !admin.player_data)
-		return FALSE
-	if(note_category == NOTE_ADMIN || is_confidential)
-		if (!AHOLD_IS_MOD(admin.admin_holder))
+	if(!(note_category == NOTE_WHITELIST))
+		if(!admin || !admin.player_data)
 			return FALSE
+		if(note_category == NOTE_ADMIN || is_confidential)
+			if (!AHOLD_IS_MOD(admin.admin_holder))
+				return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
 	if(CONFIG_GET(flag/duplicate_notes_to_file))
@@ -119,7 +120,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	note.note_category = note_category
 	note.is_ban = is_ban
 	note.ban_time = duration
-	note.admin_rank = admin.admin_holder.rank
+	note.admin_rank = admin.admin_holder ? admin.admin_holder.rank : "Non-Staff"
 	// since admin is in game, their player_data has to be populated. This is also checked above
 	note.admin_id = admin.player_data.id
 	note.admin = admin.player_data
@@ -134,13 +135,17 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	notes.Add(note)
 	return TRUE
 
-/datum/entity/player/proc/remove_note(note_id)
+/datum/entity/player/proc/remove_note(note_id, whitelist = FALSE)
+	if(IsAdminAdvancedProcCall())
+		return PROC_BLOCKED
 	var/client/admin = usr.client
 	// do all checks here, especially for sensitive stuff like this
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.admin_holder))
+	if((!AHOLD_IS_MOD(admin.admin_holder)) && !whitelist)
+		return FALSE
+	if(whitelist && !(isSenator(admin) || CLIENT_HAS_RIGHTS(admin, R_PERMISSIONS)))
 		return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
@@ -455,15 +460,19 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			LAZYSET(stats, S.stat_id, S)
 
 /datum/entity/player/proc/load_byond_account_age()
-	var/datum/http_request/request = new()
-	request.prepare(RUSTG_HTTP_METHOD_GET, "https://www.byond.com/members/[ckey]?format=text")
-	request.execute_blocking()
-	var/datum/http_response/response = request.into_response()
-	if(response.errored)
+	var/list/http_request = world.Export("http://byond.com/members/[ckey]?format=text")
+	if(!http_request)
+		log_admin("Could not check BYOND account age for [ckey] - no response from server.")
+		return
+
+	var/body = file2text(http_request["CONTENT"])
+	if(!body)
+		log_admin("Could not check BYOND account age for [ckey] - invalid response.")
 		return
 
 	var/static/regex/regex = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
-	if(!regex.Find(response.body))
+	if(!regex.Find(body))
+		log_admin("Could not check BYOND account age for [ckey] - no valid date in response.")
 		return
 
 	byond_account_age = regex.group[1]

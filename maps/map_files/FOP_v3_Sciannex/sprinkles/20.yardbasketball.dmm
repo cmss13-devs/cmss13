@@ -36,7 +36,7 @@
 "f" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
 /obj/effect/decal/cleanable/blood,
-/obj/item/handcuffs/zip{
+/obj/item/restraint/handcuffs/zip{
 	pixel_y = -12
 	},
 /turf/open/floor/wood,

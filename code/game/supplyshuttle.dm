@@ -289,8 +289,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/machinery/computer/supply_drop_console/proc/handle_supplydrop()
 	SHOULD_NOT_SLEEP(TRUE)
-	var/obj/structure/closet/crate/C = check_pad()
-	if(!C)
+	var/obj/structure/closet/crate/crate = check_pad()
+	if(!crate)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
 		return
 
@@ -316,19 +316,21 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
-	C.visible_message(SPAN_WARNING("\The [C] loads into a launch tube. Stand clear!"))
-	current_squad.send_message("'[C.name]' supply drop incoming. Heads up!")
-	current_squad.send_maptext(C.name, "Incoming Supply Drop:")
+	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
+	current_squad.send_message("'[crate.name]' supply drop incoming. Heads up!")
+	current_squad.send_maptext(crate.name, "Incoming Supply Drop:")
 	COOLDOWN_START(src, next_fire, drop_cooldown)
 	if(ismob(usr))
 		var/mob/M = usr
 		M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
-	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
-	var/obj/structure/droppod/supply/pod = new(null, C)
-	C.forceMove(pod)
+	playsound(crate.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
+	var/obj/structure/droppod/supply/pod = new(null, crate)
+	crate.forceMove(pod)
 	pod.launch(T)
-	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
+	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply].", usr.real_name)
+	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
 
 //A limited version of the above console
 //Can't pick squads, drops less often
@@ -410,6 +412,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Operations",
 		"Weapons",
 		"Vehicle Ammo",
+		"Vehicle Equipment",
 		"Attachments",
 		"Ammo",
 		"Weapons Specialist Ammo",
@@ -1364,6 +1367,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /datum/vehicle_order/apc/empty
 	name = "Barebones M577 Armored Personal Carrier"
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc/unarmed/broken
+
+/datum/vehicle_order/arc
+	name = "M540-B Armored Recon Carrier"
+	ordered_vehicle = /obj/effect/vehicle_spawner/arc
+
+/datum/vehicle_order/arc/has_vehicle_lock()
+	return
 
 /obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
 	. = ..()

@@ -31,11 +31,11 @@
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black)
 
-	dress_under = list(/obj/item/clothing/under/marine/dress, /obj/item/clothing/under/marine/officer/formal/servicedress)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/general)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
-	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain/white, /obj/item/clothing/head/marine/peaked/captain/black)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit)
 
 /datum/equipment_preset/uscm_event/colonel/New()
 	. = ..()
@@ -72,6 +72,10 @@
 	service_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
 	service_hat = list(/obj/item/clothing/head/general, /obj/item/clothing/head/beret/marine/commander/black)
 
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/general)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
+
 /datum/equipment_preset/uscm_event/general/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_GLOBAL)
@@ -94,7 +98,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/general(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/cotablet(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/mateba_case/general(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs(new_human.back), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human.back), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash, WEAR_IN_JACKET)
 
@@ -149,6 +153,10 @@
 	role_comm_title = "OT"
 	skills = /datum/skills/spy
 
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
+
 /datum/equipment_preset/uscm_event/upp_spy/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -166,7 +174,7 @@
 	//TODO: preload all of those items before equipping the backpack
 	//Otherwise, if you spawn the spy next to other people
 	//they will see messages for them putting guns and explosives into their backpack...
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92/suppressed/tranq(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92/tranq(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92/tranq(new_human.back), WEAR_IN_BACK)
@@ -200,6 +208,10 @@
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
+
 /datum/equipment_preset/uscm_event/provost/enforcer/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/sec
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
@@ -229,7 +241,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat(new_human), WEAR_J_STORE)
 
 /datum/equipment_preset/uscm_event/provost/tml
@@ -241,6 +253,10 @@
 	paygrade = PAY_SHORT_CSPO
 	role_comm_title = "PvTML"
 	flags = EQUIPMENT_PRESET_EXTRA
+
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
 /datum/equipment_preset/uscm_event/provost/tml/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/sec
@@ -272,7 +288,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat(new_human), WEAR_J_STORE)
 
 /datum/equipment_preset/uscm_event/provost/inspector
@@ -283,6 +299,10 @@
 	paygrade = PAY_SHORT_PVI
 	role_comm_title = "PvI"
 	flags = EQUIPMENT_PRESET_EXTRA
+
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 
 /datum/equipment_preset/uscm_event/provost/inspector/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/sec
@@ -309,7 +329,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/provost/light/flexi(new_human.back), WEAR_IN_BACK)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/uscm_event/provost/inspector/advisor
 	name = "Provost Advisor"
@@ -331,6 +351,10 @@
 	role_comm_title = PAY_SHORT_PVM
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/general)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
+
 /datum/equipment_preset/uscm_event/provost/marshal/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/sec
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
@@ -351,6 +375,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mateba(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/provost/marshal(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/cotablet(new_human.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm_event/provost/marshal/sector
 	name = "Provost Sector Marshal (MO7)"

@@ -13,6 +13,12 @@
 		ACCESS_CIVILIAN_LOGISTICS,
 	)
 
+	dress_shoes = list(/obj/item/clothing/shoes/dress)
+	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
+
 /datum/equipment_preset/survivor/forecon/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
@@ -210,6 +216,10 @@
 	skills = /datum/skills/military/survivor/forecon_squad_leader
 	paygrade = PAY_SHORT_MO1
 
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
+
 /datum/equipment_preset/survivor/forecon/squad_leader/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
@@ -238,6 +248,10 @@
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "FORECON CO"
 
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
+
 /datum/equipment_preset/survivor/forecon/major/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
@@ -264,7 +278,7 @@
 //----------------------\\
 
 /datum/equipment_preset/synth/survivor/forecon
-	name = "Survivor - USCM Synthetic"
+	name = "Survivor - Synthetic - FORECON Synth"
 	assignment = JOB_FORECON_SYN
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/gold

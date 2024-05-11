@@ -148,6 +148,8 @@
 	human.make_jittery(500)
 	sleep(30)
 	if(human && human.loc)
+		if(human.buckled)
+			human.buckled.unbuckle()
 		if(human.stat == DEAD)
 			human.revive(TRUE)
 			human.remove_language(LANGUAGE_ENGLISH) // You lose the ability to understand english. Language processing is handled in the mind not the body.
@@ -257,7 +259,6 @@
 /obj/item/reagent_container/glass/bottle/labeled_black_goo_cure
 	name = "\"Pathogen\" cure bottle"
 	desc = "The bottle has a biohazard symbol on the front, and has a label, designating its use against Agent A0-3959X.91–15, colloquially known as the \"Black Goo\"."
-	icon_state = "bottle20"
 
 /obj/item/reagent_container/glass/bottle/labeled_black_goo_cure/Initialize()
 	. = ..()

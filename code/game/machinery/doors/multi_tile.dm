@@ -262,14 +262,14 @@
 		var/datum/door_controller/single/control = linked_dropship.door_control.door_controllers[direction]
 		if (control.status != SHUTTLE_DOOR_BROKEN)
 			return ..()
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't seem to understand how to restore a remote connection to [src]."))
 			return
 		if(user.action_busy)
 			return
 
 		to_chat(user, SPAN_WARNING("You begin to restore the remote connection to [src]."))
-		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		if(!do_after(user, (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) ? 5 SECONDS : 8 SECONDS), INTERRUPT_ALL, BUSY_ICON_BUILD))
 			to_chat(user, SPAN_WARNING("You fail to restore a remote connection to [src]."))
 			return
 		unlock(TRUE)
@@ -279,8 +279,8 @@
 		return
 	..()
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock()
-	if(is_reserved_level(z))
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock(forced=FALSE)
+	if(is_reserved_level(z) && !forced)
 		return // in orbit
 	..()
 
@@ -291,29 +291,35 @@
 	if(!queen_pryable)
 		return ..()
 
-	if(!locked)
-		return ..()
-
 	if(xeno.action_busy)
 		return
 
-	to_chat(xeno, SPAN_NOTICE("You try and force the doors open"))
-	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		unlock(TRUE)
-		open(1)
-		lock(TRUE)
-		var/direction
-		switch(id)
-			if("starboard_door")
-				direction = "starboard"
-			if("port_door")
-				direction = "port"
-			if("aft_door")
-				direction = "aft"
-		if(linked_dropship && linked_dropship.door_control.door_controllers[direction])
-			var/datum/door_controller/single/control = linked_dropship.door_control.door_controllers[direction]
-			control.status = SHUTTLE_DOOR_BROKEN
+	if(is_reserved_level(z)) //no prying in space even though it's funny
+		return
 
+	var/direction
+	switch(id)
+		if("starboard_door")
+			direction = "starboard"
+		if("port_door")
+			direction = "port"
+		if("aft_door")
+			direction = "aft"
+	var/datum/door_controller/single/control
+	if(linked_dropship && linked_dropship.door_control.door_controllers[direction])
+		control = linked_dropship.door_control.door_controllers[direction]
+
+	if(control && control.status == SHUTTLE_DOOR_BROKEN)
+		to_chat(xeno, SPAN_NOTICE("The door is already disabled."))
+		return
+
+	to_chat(xeno, SPAN_WARNING("You try and force the doors open!"))
+	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		if(control)
+			control.status = SHUTTLE_DOOR_BROKEN
+		unlock(TRUE)
+		open(TRUE)
+		lock(TRUE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1
 	name = "\improper Alamo cargo door"

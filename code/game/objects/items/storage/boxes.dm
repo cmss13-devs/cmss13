@@ -345,14 +345,28 @@
 	icon_state = "handcuff"
 
 /obj/item/storage/box/handcuffs/fill_preset_inventory()
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 
+
+/obj/item/storage/box/legcuffs
+	name = "box of legcuffs"
+	desc = "A box full of legcuffs."
+	icon_state = "handcuff"
+
+/obj/item/storage/box/legcuffs/fill_preset_inventory()
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
 
 /obj/item/storage/box/zipcuffs
 	name = "box of zip cuffs"
@@ -360,20 +374,20 @@
 	icon_state = "handcuff"
 
 /obj/item/storage/box/zipcuffs/fill_preset_inventory()
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
 
 /obj/item/storage/box/zipcuffs/small
 	name = "small box of zip cuffs"
@@ -381,13 +395,13 @@
 	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/zipcuffs/fill_preset_inventory()
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
 
 /obj/item/storage/box/tapes
 	name = "box of regulation tapes"
@@ -754,6 +768,18 @@
 	. = ..()
 	isopened = 0
 	icon_state = "mealpack"
+	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
+
+/obj/item/storage/box/MRE/proc/try_forced_folding(datum/source, mob/user)
+	SIGNAL_HANDLER
+
+	if(locate(/obj/item/reagent_container/food/snacks/packaged_meal) in src)
+		return
+
+	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
+	storage_close(user)
+	to_chat(user, SPAN_NOTICE("You throw away [src]."))
+	qdel(src)
 
 /obj/item/storage/box/MRE/update_icon()
 	if(!contents.len)

@@ -7,7 +7,7 @@
 	desc = "An automated weapon rack hooked up to a big storage of standard-issue weapons."
 	icon_state = "guns"
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_PREP, ACCESS_MARINE_CARGO)
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_PREP)
 	hackable = TRUE
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 

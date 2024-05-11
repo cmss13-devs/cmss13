@@ -73,7 +73,7 @@
 
 /obj/structure/machinery/prop/almayer/CICmap
 	name = "map table"
-	desc = "A table that displays a map of the current target location"
+	desc = "A table that displays a map of the current operation location."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "maptable"
 	anchored = TRUE
@@ -102,6 +102,11 @@
 	. = ..()
 
 	map.tgui_interact(user)
+
+/obj/structure/machinery/prop/almayer/CICmap/computer
+	name = "map terminal"
+	desc = "A terminal that displays a map of the current operation location."
+	icon_state = "security"
 
 /obj/structure/machinery/prop/almayer/CICmap/upp
 	minimap_type = MINIMAP_FLAG_UPP

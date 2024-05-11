@@ -22,6 +22,8 @@
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
 	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
+	/// A multiplier to an object's force when used against a stucture.
+	var/demolition_mod = 1
 
 	health = null
 
@@ -459,6 +461,8 @@ cases. Override_icon_state should be a list.*/
 
 	if(item.flags_equip_slot & slotdefine2slotbit(slot))
 		if(is_type_in_list(item, uniform_restricted))
+			if(light_on)
+				turn_light(toggle_on = FALSE)
 			user.drop_inv_item_on_ground(src)
 			to_chat(user, SPAN_NOTICE("You drop \the [src] to the ground while unequipping \the [item]."))
 
@@ -664,13 +668,13 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_HANDCUFFS)
 				if(human.handcuffed)
 					return FALSE
-				if(!istype(src, /obj/item/handcuffs))
+				if(!istype(src, /obj/item/restraint))
 					return FALSE
 				return TRUE
 			if(WEAR_LEGCUFFS)
 				if(human.legcuffed)
 					return FALSE
-				if(!istype(src, /obj/item/legcuffs))
+				if(!istype(src, /obj/item/restraint))
 					return FALSE
 				return TRUE
 			if(WEAR_IN_ACCESSORY)

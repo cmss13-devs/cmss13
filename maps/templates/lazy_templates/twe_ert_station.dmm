@@ -309,9 +309,7 @@
 "go" = (
 /obj/structure/platform,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/shuttle/twe_dropship{
-	icon_state = "0,0"
-	},
+/turf/closed/shuttle/twe_dropship,
 /area/adminlevel/ert_station/royal_marines_station)
 "gq" = (
 /turf/open/floor/almayer{
@@ -1220,7 +1218,6 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "xw" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
-	id_tag = null;
 	name = "Operating Theatre 1"
 	},
 /turf/open/floor/almayer{
@@ -1468,11 +1465,11 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Cm" = (
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_y = 12
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/weapon/baton{
 	pixel_x = -12
 	},
@@ -1705,6 +1702,9 @@
 "Hg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/power/apc/antag{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -2658,11 +2658,11 @@
 "VL" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/suit/straight_jacket,
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = -4;
 	pixel_y = 1
 	},
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "redfull"

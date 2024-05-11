@@ -160,6 +160,17 @@
 		logged_orders += list(current_order)
 	data["records_requisition"] = logged_orders
 
+	var/list/logged_techs = list()
+	for(var/datum/ares_record/tech/tech_unlock as anything in datacore.records_tech)
+		var/list/current_tech = list()
+		current_tech["time"] = tech_unlock.time
+		current_tech["details"] = tech_unlock.details
+		current_tech["user"] = tech_unlock.user
+		current_tech["tier_changer"] = tech_unlock.is_tier
+		current_tech["ref"] = "\ref[tech_unlock]"
+		logged_techs += list(current_tech)
+	data["records_tech"] = logged_techs
+
 	var/list/logged_convos = list()
 	var/list/active_convo = list()
 	var/active_ref
@@ -219,6 +230,8 @@
 		current_ticket["ref"] = "\ref[access_ticket]"
 		logged_access += list(current_ticket)
 	data["access_tickets"] = logged_access
+
+	data["security_vents"] = get_ares_vents()
 
 	return data
 
@@ -307,6 +320,12 @@
 		if("page_deleted_1to1")
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "deleted_talks"
+		if("page_tech")
+			admin_interface.last_menu = admin_interface.current_menu
+			admin_interface.current_menu = "tech_log"
+		if("page_core_sec")
+			admin_interface.last_menu = admin_interface.current_menu
+			admin_interface.current_menu = "core_security"
 		if("page_access_management")
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "access_management"
@@ -477,3 +496,21 @@
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [MAIN_AI_SYSTEM].")
 			to_chat(user, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
 			return TRUE
+
+		if("trigger_vent")
+			var/obj/structure/pipes/vents/pump/no_boom/gas/sec_vent = locate(params["vent"])
+			if(!istype(sec_vent) || sec_vent.welded)
+				to_chat(user, SPAN_WARNING("ERROR: Gas release failure."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(!COOLDOWN_FINISHED(sec_vent, vent_trigger_cooldown))
+				to_chat(user, SPAN_WARNING("ERROR: Insufficient gas reserve for this vent."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			to_chat(user, SPAN_WARNING("Initiating gas release from [sec_vent.vent_tag]."))
+			playsound(src, 'sound/machines/chime.ogg', 15, 1)
+			COOLDOWN_START(sec_vent, vent_trigger_cooldown, COOLDOWN_ARES_VENT)
+			ares_apollo_talk("Nerve Gas release imminent from [sec_vent.vent_tag].")
+			log_ares_security("Nerve Gas Release", "Released Nerve Gas from Vent '[sec_vent.vent_tag]'.", MAIN_AI_SYSTEM)
+			sec_vent.create_gas(VENT_GAS_CN20_XENO, 6, 5 SECONDS)
+			log_admin("[key_name(user)] released nerve gas from Vent '[sec_vent.vent_tag]' via ARES.")

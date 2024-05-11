@@ -1,4 +1,0 @@
-author: "iloveloopers"
-delete-after: True
-changes:
-  - rscadd: "Adds in a new incinerator smoke tank that turns any reagent inside it into chemsmoke when fired."

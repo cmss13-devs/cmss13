@@ -1,5 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - rscadd: "Added paradropping"
-  - rscdel: "Removed rappeling"

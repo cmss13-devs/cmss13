@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Stack, Input, Dropdown, Section, Tabs, Flex, Icon } from '../components';
 import { Window } from '../layouts';
@@ -29,14 +30,10 @@ export const MedicalRecord = (props) => {
   const [tab, setTab] = useLocalState('tab', 1);
   const {
     authenticated,
-    name,
     has_id,
-    notes,
+    id_name,
+    medical_record,
     health,
-    death,
-    mental,
-    disease,
-    disability,
     autopsy,
     existingReport,
   } = data;
@@ -58,65 +55,27 @@ export const MedicalRecord = (props) => {
               Autopsy Report
             </Tabs.Tab>
           </Tabs>
-          {tab === 1 && ( // to do, just map it instead.
+          {tab === 1 && (
             <Section>
               <Stack vertical align="start">
-                <Stack.Item>General Notes:</Stack.Item>
-                <Stack.Item>
-                  <Input
-                    value={notes}
-                    fluid={1}
-                    onChange={(e, value) =>
-                      act('updateStatRecord', {
-                        stat_type: statType.MEDICAL, // yes, it's hardcoded. Fix later.
-                        stat: stat.NOTES,
-                        new_value: value,
-                      })
-                    }
-                  />
-                </Stack.Item>
-                <Stack.Item>Psychiatric History:</Stack.Item>
-                <Stack.Item>
-                  <Input
-                    value={mental}
-                    fluid={1}
-                    onChange={(e, value) =>
-                      act('updateStatRecord', {
-                        stat_type: statType.GENERAL,
-                        stat: stat.MENTAL,
-                        new_value: value,
-                      })
-                    }
-                  />
-                </Stack.Item>
-                <Stack.Item>Disease History:</Stack.Item>
-                <Stack.Item>
-                  <Input
-                    value={disease}
-                    fluid={1}
-                    onChange={(e, value) =>
-                      act('updateStatRecord', {
-                        stat_type: statType.MEDICAL,
-                        stat: stat.DISEASE, // we hardcode around here boyoz.
-                        new_value: value,
-                      })
-                    }
-                  />
-                </Stack.Item>
-                <Stack.Item>Disability History:</Stack.Item>
-                <Stack.Item>
-                  <Input
-                    value={disability}
-                    fluid={1}
-                    onChange={(e, value) =>
-                      act('updateStatRecord', {
-                        stat_type: statType.MEDICAL,
-                        stat: stat.DISABILITY,
-                        new_value: value,
-                      })
-                    }
-                  />
-                </Stack.Item>
+                {medical_record.map((record, index) => (
+                  <Fragment key={index}>
+                    <Stack.Item>{record[3]}</Stack.Item>
+                    <Stack.Item>
+                      <Input
+                        value={record[2]}
+                        fluid={1}
+                        onChange={(e, value) =>
+                          act('updateStatRecord', {
+                            stat_type: record[0],
+                            stat: record[1],
+                            new_value: value,
+                          })
+                        }
+                      />
+                    </Stack.Item>
+                  </Fragment>
+                ))}
               </Stack>
             </Section>
           )}
@@ -126,15 +85,15 @@ export const MedicalRecord = (props) => {
                 {health == 'Deceased' && !existingReport && (
                   <Stack.Item>
                     <Stack vertical align="start" py={1}>
-                      <Stack.Item>Autopsy Notes:</Stack.Item>
+                      <Stack.Item>{autopsy[3]}</Stack.Item>
                       <Stack.Item>
                         <Input
-                          value={autopsy}
+                          value={autopsy[2]}
                           fluid={1}
                           onChange={(e, value) =>
                             act('updateStatRecord', {
-                              stat_type: statType.MEDICAL,
-                              stat: stat.AUTOPSY, // spaghetti noodle code will get fixed eventually, I promise.
+                              stat_type: autopsy[0],
+                              stat: autopsy[1],
                               new_value: value,
                             })
                           }
@@ -144,17 +103,21 @@ export const MedicalRecord = (props) => {
                         <Stack justify="space-between" py={2}>
                           <Stack.Item>
                             <Stack>
-                              <Stack.Item>Cause Of Death:</Stack.Item>
+                              <Stack.Item>{death[3]}</Stack.Item>
                               <Stack.Item>
                                 <Dropdown
                                   noscroll={1}
                                   options={deathOptions}
-                                  selected={death}
+                                  selected={death[2]}
                                   color={'red'}
                                   onSelected={(value) =>
-                                    act('selectCauseOfDeath', { death: value })
+                                    act('updateStatRecord', {
+                                      stat_type: death[0],
+                                      stat: death[1],
+                                      new_value: value,
+                                    })
                                   }
-                                  displayText={death ? death : 'NONE'}
+                                  displayText={death[2] ? death[2] : 'NONE'}
                                 />
                               </Stack.Item>
                             </Stack>
@@ -177,13 +140,13 @@ export const MedicalRecord = (props) => {
                 <Stack.Item>
                   <Stack align="center" justify="space-around" vertical>
                     <Stack.Item>
-                      <Icon name="user" size={8} color={colors[health]} />
+                      <Icon name="user" size={8} color={colors[health[2]]} />
                     </Stack.Item>
                     {existingReport ? (
                       <Stack.Item py={2}>
-                        The autopsy report for {name} has been submitted.
+                        The autopsy report for {id_name} has been submitted.
                       </Stack.Item>
-                    ) : health !== 'Deceased' ? (
+                    ) : health[2] !== 'Deceased' ? (
                       <Stack.Item py={2}>
                         The patient must be marked as deceased to create an
                         autopsy report.
@@ -207,21 +170,12 @@ export const MedicalRecord = (props) => {
 
 export const HealthStatus = (props) => {
   const { act, data } = useBackend();
-  const {
-    authenticated,
-    id_owner,
-    has_id,
-    id_name,
-    name,
-    sex,
-    age,
-    bloodType,
-    health,
-  } = data;
+  const { authenticated, has_id, id_name, general_record, health } = data;
+
   return (
     <>
       <Section
-        title={has_id && authenticated ? id_owner : 'No Card Inserted'}
+        title={has_id && authenticated ? id_name : 'No Card Inserted'}
         buttons={
           <Button
             icon={authenticated ? 'sign-out-alt' : 'sign-in-alt'}
@@ -241,26 +195,31 @@ export const HealthStatus = (props) => {
       </Section>
       {!!has_id && !!authenticated && (
         <Section>
-          <Box color={colors[health]}>
+          <Box color={colors[health[2]]}>
             <Flex direction="row" align="start" justify="space-between" fill>
               <Flex.Item>
                 <Dropdown
                   noscroll={1}
                   options={healthStatusOptions}
-                  selected={health}
-                  color={colors[health]}
+                  selected={health[2]}
+                  color={colors[health[2]]}
                   onSelected={(value) =>
-                    act('selectHealthStatus', { health: value })
+                    act('updateStatRecord', {
+                      stat_type: health[0],
+                      stat: health[1],
+                      new_value: value,
+                    })
                   }
-                  displayText={health}
+                  displayText={health[2]}
                 />
               </Flex.Item>
               <Flex.Item>
                 <Stack vertical>
-                  <Stack.Item>Name: {name}</Stack.Item>
-                  <Stack.Item>Sex: {sex}</Stack.Item>
-                  <Stack.Item>Age: {age}</Stack.Item>
-                  <Stack.Item>Blood Type: {bloodType}</Stack.Item>
+                  {general_record.map(([value, label], index) => (
+                    <Stack.Item key={index}>
+                      {value} {label}
+                    </Stack.Item>
+                  ))}
                 </Stack>
               </Flex.Item>
               <Flex.Item>
@@ -293,18 +252,4 @@ const colors = {
   'Unfit': 'yellow',
 };
 
-// i'll do it with a list instead, hardcoded for now.
-const statType = {
-  MEDICAL: 1,
-  GENERAL: 0,
-};
-
-// stats that have input strings.
-const stat = {
-  AUTOPSY: 'a_stat',
-  NOTES: 'notes',
-  MENTAL: 'm_stat',
-  DISEASE: 'cdi',
-  DISABILITY: 'mi_dis',
-};
 // ----- const -------- //

@@ -9,6 +9,12 @@
 #define DEATH "d_stat" // cause of death
 #define BLOOD_TYPE "b_type"
 #define AUTOPSY_SUBMISSION "aut_sub" // whether or not an autopsy report has been submitted already for a given record
+
+// the type of record
+#define MEDICAL 1
+#define GENERAL 0
+
+// I hate the priting sound.
 #define PRINT_COOLDOWN_TIME 2 MINUTES
 
 /obj/structure/machinery/computer/double_id/med_data//TODO:RIP OUT LEGACY CODE.
@@ -76,12 +82,6 @@
 	var/mob/user = ui.user
 	playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 	switch(action)
-		if("selectHealthStatus")
-			target_record_general.fields[HEALTH] = params["health"]
-			return TRUE
-		if("selectCauseOfDeath")
-			target_record_medical.fields[DEATH] = params["death"]
-			return TRUE
 		if("authenticate")
 			var/obj/item/id_card = user.get_active_hand()
 			if (istype(id_card, /obj/item/card/id))
@@ -181,9 +181,9 @@
 					return TRUE
 			return FALSE
 		if("updateStatRecord")
-			if(params["stat_type"]) // 1 for medical
+			if(params["stat_type"] == MEDICAL)
 				target_record_medical.fields[params["stat"]] = params["new_value"]
-			else // 0 for general
+			else
 				target_record_general.fields[params["stat"]] = params["new_value"]
 			return TRUE
 		if("submitReport")
@@ -193,30 +193,35 @@
 			target_record_medical.fields[AUTOPSY_SUBMISSION] = TRUE
 			return TRUE
 
+/obj/structure/machinery/computer/double_id/med_data/ui_static_data(mob/user)
+	var/list/data = list()
+	// general information, it is never modified. Why pass it in so weirdly? because it makes it easy to add and remove stats in the future.
+	data["general_record"] = list(
+		list(target_record_general?.fields["name"],"Name: "),
+		list(target_record_general?.fields["age"],"Age: "),
+		list(target_record_general?.fields["sex"],"Sex: "),
+		list(target_record_medical?.fields[BLOOD_TYPE],"Blood Type: ")
+		)
+
+	return data
+
 /obj/structure/machinery/computer/double_id/med_data/ui_data(mob/user)
 	var/list/data = list()
-	// TODO:make each data var a list instead of harcoding the stat in tgui.
-	data["name"] = target_record_general?.fields["name"]
-	data["health"] = target_record_general?.fields[HEALTH]
-	data["sex"] = target_record_general?.fields["sex"]
-	data["bloodType"] = target_record_medical?.fields[BLOOD_TYPE]
-	data["age"] = target_record_general?.fields["age"]
-	data["notes"] = target_record_medical?.fields[NOTES]
-	data["death"] = target_record_medical?.fields[DEATH]
-	data["mental"] = target_record_general?.fields[MENTAL]
-	data["disease"] = target_record_medical?.fields[DISEASE]
-	data["disability"] = target_record_medical?.fields[DISABILITY]
-	data["autopsy"] = target_record_medical?.fields[AUTOPSY_NOTES]
-	data["existingReport"] = target_record_medical?.fields[AUTOPSY_SUBMISSION]
 
+	// medical records, we pass it in as a list so it's better to handle in tgui.
+	data["medical_record"] = list(
+		list(MEDICAL, NOTES, target_record_medical?.fields[NOTES],"General Notes: "),
+		list(GENERAL, MENTAL, target_record_general?.fields[MENTAL],"Psychiatric History: "),
+		list(MEDICAL, DISEASE, target_record_medical?.fields[DISEASE],"Disease History: "),
+		list(MEDICAL, DISABILITY, target_record_medical?.fields[DISABILITY],"Disability History: ")
+		)
+	data["death"] = list(MEDICAL, DEATH, target_record_medical?.fields[DEATH],"Cause Of Death: ")
+	data["health"] = list(GENERAL, HEALTH, target_record_general?.fields[HEALTH],"Health Status: ")
+	data["autopsy"] = list(MEDICAL, AUTOPSY_NOTES, target_record_medical?.fields[AUTOPSY_NOTES],"Autopsy Notes: ")
+	data["existingReport"] = target_record_medical?.fields[AUTOPSY_SUBMISSION]
 	data["authenticated"] = authenticated
 	data["has_id"] = !!target_id_card
 	data["id_name"] = target_id_card ? target_id_card.name : "-----"
-	if(target_id_card)
-		data["id_rank"] = target_id_card.assignment ? target_id_card.assignment : "Unassigned"
-		data["id_owner"] = target_id_card.registered_name ? target_id_card.registered_name : "-----"
-		data["access_on_card"] = target_id_card.access + target_id_card.faction_group
-		data["id_account"] = target_id_card.associated_account_number
 
 	return data
 
@@ -229,3 +234,5 @@
 #undef DEATH
 #undef BLOOD_TYPE
 #undef AUTOPSY_SUBMISSION
+#undef MEDICAL
+#undef GENERAL

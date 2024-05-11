@@ -179,7 +179,7 @@
 		if("purchase_document")
 			if(!photocopier)
 				return
-			var/purchase_tier = Floor(text2num(params["purchase_document"]))
+			var/purchase_tier = floor(text2num(params["purchase_document"]))
 			if(purchase_tier <= 0 || purchase_tier > 5)
 				return
 			if(purchase_tier > GLOB.chemical_data.clearance_level)

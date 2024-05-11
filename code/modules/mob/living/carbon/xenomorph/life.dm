@@ -291,7 +291,7 @@
 
 	if(hud_used.alien_armor_display)
 		var/armor_stacks = min((get_armor_integrity_percentage() * 0.01) * HUD_ARMOR_STATES_XENO, HUD_ARMOR_STATES_XENO)
-		hud_used.alien_armor_display.icon_state = "armor_[Floor(armor_stacks)]0"
+		hud_used.alien_armor_display.icon_state = "armor_[floor(armor_stacks)]0"
 
 	return TRUE
 

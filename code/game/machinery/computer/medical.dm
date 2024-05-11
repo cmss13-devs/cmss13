@@ -14,7 +14,7 @@
 #define MEDICAL 1
 #define GENERAL 0
 
-// I hate the priting sound.
+// I hate the printing sound effect.
 #define PRINT_COOLDOWN_TIME 2 MINUTES
 
 /obj/structure/machinery/computer/double_id/med_data//TODO:RIP OUT LEGACY CODE.
@@ -208,7 +208,7 @@
 /obj/structure/machinery/computer/double_id/med_data/ui_data(mob/user)
 	var/list/data = list()
 
-	// medical records, we pass it in as a list so it's better to handle in tgui. Might be better to pass in an associated list for clarity?
+	// medical records, we pass it in as a list so it's better to handle in tgui. Might be ideal to pass in an associated list for clarity?
 	data["medical_record"] = list(
 		list(MEDICAL, NOTES, target_record_medical?.fields[NOTES],"General Notes: "),
 		list(GENERAL, MENTAL, target_record_general?.fields[MENTAL],"Psychiatric History: "),

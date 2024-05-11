@@ -17,7 +17,7 @@
 #define ROUND_UP(x) ( -round(-(x)))
 
 // round() acts like floor(x, 1) by default but can't handle other values
-#define FLOOR(x, y) ( round((x) / (y)) * (y) )
+#define FLOOR(x, y) ( floor((x) / (y)) * (y) )
 
 // Real modulus that handles decimals
 #define MODULUS(x, y) ( (x) - (y) * round((x) / (y)) )

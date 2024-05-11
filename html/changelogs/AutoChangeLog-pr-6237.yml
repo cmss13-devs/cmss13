@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - balance: "Watcher is now immobilized when zoomed out and loses health off weeds when not zoomed out"

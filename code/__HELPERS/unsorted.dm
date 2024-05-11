@@ -729,8 +729,7 @@
 	if(orange)
 		turfs -= get_turf(center)
 	. = list()
-	for(var/V in turfs)
-		var/turf/T = V
+	for(var/turf/T as anything in turfs)
 		. += T
 		. += T.contents
 		if(areas)

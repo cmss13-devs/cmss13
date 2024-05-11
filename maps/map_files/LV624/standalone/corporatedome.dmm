@@ -1216,7 +1216,7 @@
 "ZG" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor{
 	icon_state = "dark"
 	},

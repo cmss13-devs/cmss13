@@ -183,7 +183,7 @@
 	new /obj/effect/warning/explosive(loc, 5 SECONDS)
 
 	addtimer(CALLBACK(src, PROC_REF(detonate), loc), 5 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.5 SECONDS)
 
 /obj/structure/closet/crate/secure/mortar_ammo
 	name = "\improper M402 mortar ammo crate"

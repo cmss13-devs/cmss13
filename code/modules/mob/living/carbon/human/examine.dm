@@ -162,10 +162,10 @@
 
 	//Restraints
 	if(handcuffed)
-		msg += SPAN_ORANGE("[t_his] arms are restrained by [handcuffed].\n")
+		msg += SPAN_ORANGE("[capitalize(t_his)] arms are restrained by [handcuffed].\n")
 
 	if(legcuffed)
-		msg += SPAN_ORANGE("[t_his] ankles are restrained by [legcuffed].\n")
+		msg += SPAN_ORANGE("[capitalize(t_his)] ankles are restrained by [legcuffed].\n")
 
 	//Admin-slept
 	if(sleeping > 8000000)

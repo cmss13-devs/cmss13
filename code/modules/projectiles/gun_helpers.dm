@@ -521,7 +521,7 @@ DEFINES in setup.dm, referenced here.
 			if(cycled_weapon.flags_atom & QUICK_DRAWABLE)
 				return slot
 
-	if(slot.flags_atom & QUICK_DRAWABLE) //then check for weapons
+	if(slot.flags_atom & QUICK_DRAWABLE)
 		return slot
 
 	return FALSE

@@ -36,6 +36,7 @@ export const MedicalRecord = (props) => {
     health,
     autopsy,
     existingReport,
+    death,
   } = data;
   return (
     <>
@@ -82,7 +83,7 @@ export const MedicalRecord = (props) => {
           {tab === 2 && ( // should I have used a table instead of stack hell? Probably.
             <Section>
               <Stack justify="space-between" vertical>
-                {health == 'Deceased' && !existingReport && (
+                {health[2] == 'Deceased' && !existingReport && (
                   <Stack.Item>
                     <Stack vertical align="start" py={1}>
                       <Stack.Item>{autopsy[3]}</Stack.Item>
@@ -217,7 +218,7 @@ export const HealthStatus = (props) => {
                 <Stack vertical>
                   {general_record.map(([value, label], index) => (
                     <Stack.Item key={index}>
-                      {value} {label}
+                      {label} {value}
                     </Stack.Item>
                   ))}
                 </Stack>

@@ -208,7 +208,7 @@
 /obj/structure/machinery/computer/double_id/med_data/ui_data(mob/user)
 	var/list/data = list()
 
-	// medical records, we pass it in as a list so it's better to handle in tgui.
+	// medical records, we pass it in as a list so it's better to handle in tgui. Might be better to pass in an associated list for clarity?
 	data["medical_record"] = list(
 		list(MEDICAL, NOTES, target_record_medical?.fields[NOTES],"General Notes: "),
 		list(GENERAL, MENTAL, target_record_general?.fields[MENTAL],"Psychiatric History: "),

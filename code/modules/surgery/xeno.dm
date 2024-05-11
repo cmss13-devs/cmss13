@@ -71,6 +71,13 @@
 			SPAN_NOTICE("You succesfully destroy [target.caste_type] carapace into bits and pieces apart using \the [tool]."),
 			SPAN_NOTICE("[user] succesfully destroys Your carapace into bits and pieces apart using \the [tool]."),,
 			SPAN_NOTICE("[user] Succesfully destroys [target.caste_type] carapace into bits and pieces apart using \the [tool]."))
+	for(var/mob/living/carbon/human/victim in orange(1, target))
+		if(istype(victim.wear_suit, /obj/item/clothing/suit/bio_suit) && istype(victim.head, /obj/item/clothing/head/bio_hood))
+			continue
+		to_chat(victim, SPAN_HIGHDANGER("You are covered in acid as you feel agonizing pain!"))
+		victim.apply_damage(rand(50, 100), BURN) // you WILL wear biosuit.
+		playsound(victim, "acid_sizzle", 25, TRUE)
+		animation_flash_color(victim, "#FF0000")
 
 /datum/surgery_step/xenomorph/cut_exoskeleton/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/circular_saw)

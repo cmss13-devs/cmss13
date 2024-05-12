@@ -22,7 +22,7 @@
 	ceiling = CEILING_NONE
 	soundscape_playlist = SCAPE_PL_LV759_OUTDOORS
 	ambience_exterior = AMBIENCE_CITY
-	soundscape_interval = 31
+	soundscape_interval = 25
 /area/lv759/oob
 	name = "Out Of Bounds"
 	icon_state = "oob"

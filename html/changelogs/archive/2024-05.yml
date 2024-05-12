@@ -1,0 +1,129 @@
+2024-05-02:
+  Drathek:
+  - balance: Lurker invisibility recharge time is now 20s (up from 15s)
+  - balance: Lurker invisibility now ends when devouring but refunds 50% of time unused
+  - balance: Lurker invisibility bump now refunds 50% of time unused
+  - balance: Lurker invisibility can now be toggled refunding 90% of time unused (with
+      dbl click prevention)
+  - rscdel: Removed defender crest toggle balloon alerts
+  - bugfix: Lurker invisibility code is refactored to properly use cooldowns and now
+      doesn't incorrectly get interrupted by bump code
+  - rscadd: Lurker invisibility recharge time is now displayed in status tab
+  - maptweak: Added medlinks to WO
+  - maptweak: Added a medlink to each ground map
+  Git-Nivrak:
+  - rscadd: Survivors can now receive command announcements with IFF and a marine
+      headset.
+  Huffie56:
+  - maptweak: Officer cafeteria added back missing emergency shutters and move the
+      pipes from bellow the windows.
+  - maptweak: Starboard aft hull removed the two walls.
+  - maptweak: Upper engi area around lobby remove pipping going bellow window also
+      rework the area to better fit aestetic of almayer.
+  - maptweak: some apc are a bit moved around to avoid them having a small light on
+      them.
+  HumiliatedGoblin:
+  - qol: Now needs help intent to repair walls
+  - qol: Now needs disarm, grab and harm intent to deconstruct walls
+  cuberound:
+  - balance: FM sound is 4 seconds before CAS open fire from 5
+  - balance: FM direction warning is 1 seconds before CAS open fire from 1.5
+  ihatethisengine:
+  - rscadd: Corrupted Queen can set up personal alliances with humans
+  realforest2001:
+  - rscadd: Changed the AI Core Lockdown to the same system as Research Lockdown.
+  - rscadd: Added a subtype of desk bell for the AI Core reception desk that sends
+      an alert over APOLLO Link.
+  - imageadd: Added directional blast door sprites from Thwomper for blended black
+      shutters.
+  - code_imp: Renamed operator var in apollo console code to user.
+2024-05-03:
+  InsaneRed:
+  - spellcheck: New flavor text and better strain information
+  realforest2001:
+  - rscadd: Added the name of an announcement sender, if one exists, to ARES logs.
+2024-05-04:
+  AndroBetel:
+  - qol: Pointing at an item in your hands shows it off.
+  BasilHerb:
+  - rscadd: 'Type 80 bayonet to the mouths of the following mobs: CLF Soldier, CLF
+      Specialist, CLF Medic, CLF Engineer, CLF Leader.'
+  Drathek:
+  - bugfix: Fixed weeded corpses staying weeded if they were transported by shuttle
+  Git-Nivrak:
+  - bugfix: Synths no longer get affected by boiler's neurotoxin
+  coldironwarrior:
+  - rscadd: Added eyewear options, more glove options to the SEA vendor
+  - rscadd: SEAs now get full versions of the utility holster belt
+  - rscdel: Removed the CPR dummy from the SEA vendor
+  iloveloopers:
+  - qol: Bookcases can now be wrenched or slashed to be deconstructed
+  - balance: Kutjevo ledges now take only 0.2 seconds to climb instead of 1 whole
+      second
+  kivts:
+  - bugfix: Infinite metal oversight fix.
+  realforest2001:
+  - bugfix: Whitelist notes now work properly. Council can add notes to players regarding
+      whitelist issues.
+  - rscadd: Changing whitelist flags with the Whitelist Panel now automatically adds
+      a note with the reason.
+  - rscadd: Added skillsets specific to WY Goons.
+  - rscadd: Added a WY Goon Engineer preset.
+  vero5123:
+  - bugfix: Fixes microwave food duplication
+  - bugfix: Fixes scout being able to be decapitated with a helmet on while cloaked.
+  - bugfix: Fixes sentries firing at xenos while vent crawling.
+  - bugfix: fixes hugger not dying when squished by predator
+  - bugfix: Burrower can no longer tunnel across the map.
+2024-05-06:
+  Git-Nivrak:
+  - balance: Watcher is now immobilized when zoomed out and loses health off weeds
+      when not zoomed out
+  ihatethisengine:
+  - balance: SADAR backblast now knockdowns and is reduced by xeno explosion resistance
+  s5nt:
+  - rscadd: Added more materials to pred ship including more sandstone, wood, table
+      parts, etc for lodge construction, along with more pred specific food to the
+      pred kitchen.
+  - maptweak: Slightly expanded pred ship material storage area by moving bracer storage
+      over to the left side of the ship.
+2024-05-07:
+  Zonespace, d.1.n.a. (original sprites), esselnek (new sprites):
+  - rscadd: Added the M540-B Armored Recon Carrier as a t1 intel purchase.
+2024-05-10:
+  realforest2001:
+  - code_imp: Repaths handcuffs and legcuffs to have a shared parent.
+  - code_imp: Repaths xeno restraints to reduce confusion from the typepath.
+  - rscadd: Legcuffs work appropriately now, and can be found in small numbers within
+      security vendors.
+  - rscadd: Cable restraints can now be adjusted via right-click to fit on wrists
+      or ankles.
+  - rscadd: Prison shoe chains now require ankle restraints rather than handcuffs.
+  - rscadd: Prison shoes that have been chained now have an equp and unequip delay
+      to account for the chains, proportionate to the breakout time of the item used
+      in the chains.
+2024-05-11:
+  Tyranicranger4:
+  - qol: Emptied randomchem vials no longer show up on the data detector
+  - bugfix: Fixes empty vial storage boxes showing up on the data detector
+  cuberound:
+  - balance: projectiles can pass fences
+  ihatethisengine:
+  - rscadd: Added paradropping
+  - rscdel: Removed rappeling
+  - rscadd: Infection icon now has lower alpha if the human is dead
+  iloveloopers:
+  - rscadd: Adds in a new incinerator smoke tank that turns any reagent inside it
+      into chemsmoke when fired.
+2024-05-12:
+  Git-Nivrak:
+  - balance: Limbs will now only be delimb-able if they are fractured
+  XQ:
+  - qol: Updated the ARES reception bell's description to inform players it notifies
+      Working Joes when rung.
+  - qol: Increased the ARES reception bell's cooldown from 5 to 60 seconds.
+  ihatethisengine:
+  - balance: only disabled comms can be pyloned
+  realforest2001:
+  - rscadd: Handcuffs & Legcuffs now appear on examine.
+  - rscadd: Added a reason input field to handheld distress beacons.

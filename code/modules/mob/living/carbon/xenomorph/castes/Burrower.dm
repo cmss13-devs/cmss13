@@ -20,6 +20,7 @@
 	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = FALSE
 
+	available_strains = list(/datum/xeno_strain/ruiner)
 	behavior_delegate_type = /datum/behavior_delegate/burrower_base
 
 	tackle_min = 3

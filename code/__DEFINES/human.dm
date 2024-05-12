@@ -215,3 +215,91 @@
 #define RELIGION_AGNOSTICISM "Agnostic"
 
 #define MAXIMUM_DROPPED_OBJECTS_REMEMBERED 2
+
+// DEFINES FOR RECORD SYSTEM STAT TYPES, arguably pointless to create defines for these, could of just renamed the string but eh, who cares.
+// --------------------------------------------------------------------------------------------------------------- //
+
+// general records
+#define MOB_NAME "name"
+#define RECORD_UNIQUE_ID "id"
+#define MOB_SHOWN_RANK "rank"
+#define MOB_REAL_RANK "real_rank"
+#define MOB_SEX "sex"
+#define MOB_AGE "age"
+#define MOB_ETHNICITY "ethnicity"
+#define MOB_HEALTH_STATUS "p_stat"
+#define MOB_MENTAL_STATUS "m_stat"
+#define MOB_SPECIES "species"
+#define MOB_ORIGIN "origin"
+#define MOB_SHOWN_FACTION "faction"
+#define MOB_REAL_FACTION "mob_faction"
+#define MOB_RELIGION "religion"
+#define MOB_SQUAD "squad"
+#define MOB_GENERAL_NOTES "g_notes"
+#define MOB_EXPLOIT_RECORD "mob_exploit_record"
+#define MOB_WEAKREF "ref"
+
+#define GENERAL_RECORD_LIST list(MOB_NAME, RECORD_UNIQUE_ID, MOB_SHOWN_RANK, MOB_REAL_RANK, MOB_SEX, MOB_AGE, MOB_ETHNICITY, MOB_HEALTH_STATUS, MOB_MENTAL_STATUS, MOB_SPECIES, MOB_ORIGIN, MOB_SHOWN_FACTION, MOB_REAL_FACTION, MOB_RELIGION, MOB_SQUAD, MOB_GENERAL_NOTES, MOB_EXPLOIT_RECORD, MOB_WEAKREF)
+
+// security record stat types
+#define MOB_INCIDENTS "incidents"
+#define MOB_CRIMINAL_STATUS "criminal"
+#define MOB_SECURITY_COMMENT_LOG "comments"
+#define MOB_SECURITY_NOTES "s_notes"
+
+#define SECURITY_RECORD_LIST list(MOB_INCIDENTS, MOB_CRIMINAL_STATUS, MOB_SECURITY_COMMENT_LOG, MOB_SECURITY_NOTES)
+
+// medical record stat types
+#define MOB_BLOOD_TYPE "b_type"
+#define MOB_DISABILITIES "mi_dis"
+#define MOB_AUTOPSY_NOTES "a_stat"
+#define MOB_MEDICAL_NOTES "m_notes"
+#define MOB_DISEASES "cdi"
+#define MOB_CAUSE_OF_DEATH "d_stat"
+#define MOB_AUTOPSY_SUBMISSION "aut_sub"
+#define MOB_LAST_SCAN_TIME "last_scan_time"
+#define MOB_LAST_SCAN_RESULT "last_scan_result"
+#define MOB_AUTODOC_DATA "autodoc_data"
+#define MOB_AUTODOC_MANUAL "autodoc_manual"
+
+#define MEDICAL_RECORD_LIST list(MOB_BLOOD, MOB_DISABILITIES, MOB_AUTOPSY_NOTES, MOB_MEDICAL_NOTES, MOB_DISEASES, MOB_CAUSE_OF_DEATH, MOB_AUTOPSY_SUBMISSION, MOB_LAST_SCAN_TIME, MOB_LAST_SCAN_RESULT, MOB_AUTODOC_DATA, MOB_AUTODOC_MANUAL)
+
+// --------------------------------------------------------------------------------------------------------------- //
+
+// The actual stat that is set, for now we reduce the useless bullshit no one cares about and keep it minimal.
+// --------------------------------------------------------------------------------------------------------------- //
+
+// gender/sex stats
+#define MOB_STAT_SEX_MALE "Male"
+#define MOB_STAT_SEX_FEMALE "Female"
+
+#define MOB_STAT_GENDER_LIST list(MOB_STAT_SEX_MALE, MOB_STAT_SEX_FEMALE)
+
+// health stats
+#define MOB_STAT_HEALTH_DECEASED "Deceased"
+#define MOB_STAT_HEALTH_ACTIVE "Active"
+#define MOB_STAT_HEALTH_UNFIT "Unfit"
+
+#define MOB_STAT_HEALTH_LIST list(MOB_STAT_SEX_MALE, MOB_STAT_SEX_FEMALE)
+
+// Mental stats
+#define MOB_STAT_MENTAL_STATUS_STABLE "Stable"
+#define MOB_STAT_MENTAL_STATUS_ON_WATCH "Watch"  // i.e. potentailly unstable
+#define MOB_STAT_MENTAL_STATUS_UNSTABLE "Insane"
+
+#define MOB_STAT_MENTAL_STATUS_LIST list(MOB_STAT_MENTAL_STATUS_STABLE, MOB_STAT_MENTAL_STATUS_ON_WATCH, MOB_STAT_MENTAL_STATUS_UNSTABLE)
+
+// crime stats
+#define MOB_STAT_CRIME_NONE "None"
+#define MOB_STAT_CRIME_ARREST "Arrest"
+#define MOB_STAT_CRIME_INCARCERATED "Incarcerated"
+
+#define MOB_STAT_MENTAL_STATUS_LIST list(MOB_STAT_CRIME_NONE, MOB_STAT_CRIME_ARREST, MOB_STAT_CRIME_INCARDCERATED)
+// ------------------------------------------------------------------------------------------------------------------ //
+
+// types of records
+#define RECORD_TYPE_GENERAL "general"
+#define RECORD_TYPE_SECURITY "security"
+#define RECORD_TYPE_MEDICAL "medical"
+#define RECORD_TYPE_STATIC "locked" // immutable records, keeping it for now I guess.
+

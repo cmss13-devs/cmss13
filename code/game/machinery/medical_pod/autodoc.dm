@@ -669,7 +669,7 @@
 			for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 				if (R.fields["ref"] == occupant_ref)
 					N = R
-			if(isnull(N))
+			// if(isnull(N))
 				N = create_medical_record(connected.occupant)
 
 			if(!isnull(N.fields["autodoc_manual"]))

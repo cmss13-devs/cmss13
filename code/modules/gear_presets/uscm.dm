@@ -32,7 +32,7 @@
 	. = ..()
 	if(!auto_squad_name || (should_block_game_interaction(new_human) && !ert_squad))
 		return
-	if(!GLOB.data_core.manifest_modify(new_human.real_name, WEAKREF(new_human), assignment, rank))
+	if(!GLOB.data_core.manifest_modify(new_human.real_name, WEAKREF(new_human), assignment, rank, new_human.record_id_ref))
 		GLOB.data_core.manifest_inject(new_human)
 
 	var/obj/item/card/id/ID = new_human.wear_id

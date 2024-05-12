@@ -1,50 +1,103 @@
-/proc/CreateGeneralRecord()
-	var/datum/data/record/general_record = new /datum/data/record()
-	general_record.fields["name"] = "New Record"
-	general_record.name = "New Record"
-	general_record.fields["id"] = text("[]", add_zero(num2hex(rand(1, 1.6777215E7)), 6))
-	general_record.fields["rank"] = "Unassigned"
-	general_record.fields["real_rank"] = "Unassigned"
-	general_record.fields["sex"] = "Male"
-	general_record.fields["age"] = "Unknown"
-	general_record.fields["ethnicity"] = "Unknown"
-	general_record.fields["p_stat"] = "Active"
-	general_record.fields["m_stat"] = "Stable"
-	general_record.fields["species"] = "Human"
-	general_record.fields["origin"] = "Unknown"
-	general_record.fields["faction"] = "Unknown"
-	general_record.fields["mob_faction"] = "Unknown"
-	general_record.fields["religion"] = "Unknown"
-	GLOB.data_core.general += general_record
-	return general_record
+// mob ref is a failsafe, ideally we just access through the id.
+/proc/retrieve_record(record_id = null, mob_name = null, mob_ref = null, record_type = RECORD_TYPE_GENERAL)
+	if(!record_id && !mob_name && !mob_ref)
+		return
 
-/proc/CreateSecurityRecord(name as text, id as text)
-	var/datum/data/record/security_record = new /datum/data/record()
-	security_record.fields["name"] = name
-	security_record.fields["id"] = id
-	security_record.name = text("Security Record #[id]")
-	security_record.fields["incidents"] = "None"
-	GLOB.data_core.security += security_record
-	return security_record
+	var/datum/datacore/database = GLOB.data_core
+	if(!database)
+		return // should never happen but who knows.
+
+	var/datum/data/record/retrieved_record = null
+	var/list/selected_record_type = null
+
+	switch(record_type)
+		if(RECORD_TYPE_GENERAL)
+			selected_record_type = database.general
+		if(RECORD_TYPE_SECURITY)
+			selected_record_type = database.security
+		if(RECORD_TYPE_MEDICAL)
+			selected_record_type = database.medical
+		if(RECORD_TYPE_STATIC)
+			selected_record_type = database.locked
+		else
+			return
+	if(record_id)
+		retrieved_record = selected_record_type[record_id]
+	else
+		var/mob/living/carbon/human/human_ref = mob_ref
+		for(var/record_id_query as anything in selected_record_type)
+			var/datum/data/record/record = selected_record_type[record_id_query]
+			if(record.fields[MOB_NAME] == mob_name || record.fields[MOB_WEAKREF] == human_ref)
+				retrieved_record = record
+				break
+
+	return retrieved_record
+
+/proc/create_general_record(mob/living/carbon/human/person)
+	var/datum/data/record/general_record = new()
+	general_record.fields[MOB_NAME] = person.real_name ?  person.real_name : "Unassigned"
+	general_record.name = person.real_name ? person.real_name : "New Record"
+	general_record.fields[MOB_SHOWN_RANK] = person.job ? person.job : "Unassigned"  // yes they are the same at the start, but this can change depending on an alt title.
+	general_record.fields[MOB_REAL_RANK] = person.job ? person.job : "Unassigned"
+	general_record.fields[MOB_SEX] = person.gender ? person.gender : "Unknown"
+	general_record.fields[MOB_SQUAD] = person.assigned_squad ? person.assigned_squad.name : null
+	general_record.fields[MOB_AGE] = person.age ? person.age : "Unknown"
+	general_record.fields[MOB_HEALTH_STATUS] = MOB_STAT_HEALTH_ACTIVE // always starts as active
+	general_record.fields[MOB_MENTAL_STATUS] = MOB_STAT_MENTAL_STATUS_STABLE // debatable, haha.
+	general_record.fields[MOB_SPECIES] = person?.get_species()
+	general_record.fields[MOB_ORIGIN] = person.origin ? person.origin :"Unknown"
+	general_record.fields[MOB_SHOWN_FACTION] = person.personal_faction ? person.personal_faction : "Unknown"
+	general_record.fields[MOB_REAL_FACTION] = person.faction ? person.faction : "Unknown"
+	general_record.fields[MOB_RELIGION] = person.religion ? person.religion : "Unknown"
+	general_record.fields[MOB_WEAKREF] = WEAKREF(person)
+	general_record.fields[MOB_GENERAL_NOTES] = person.gen_record && !jobban_isbanned(person, "Records") ? person.gen_record : "No notes found."
+	GLOB.data_core.general[person.record_id_ref] += general_record
+
+/proc/create_security_record(mob/living/carbon/human/person)
+	var/datum/data/record/security_record = new()
+	security_record.fields[MOB_NAME] = person.name ? person.name : "Unknown"
+	security_record.name = text("Security Record")
+	security_record.fields[MOB_CRIMINAL_STATUS] = "None"
+	security_record.fields[MOB_INCIDENTS] = "None"
+	security_record.fields[MOB_WEAKREF] = WEAKREF(person)
+
+	if(person.sec_record && !jobban_isbanned(person, "Records"))
+		var/new_comment = list("entry" = person.sec_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "Military Police"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
+		security_record.fields[MOB_SECURITY_COMMENT_LOG] = list("1" = new_comment)
+		security_record.fields[MOB_SECURITY_NOTES] = person.sec_record
+	GLOB.data_core.security[person.record_id_ref] += security_record
 
 /proc/create_medical_record(mob/living/carbon/human/person)
-	var/datum/data/record/medical_record = new /datum/data/record()
-	medical_record.fields["id"] = null
-	medical_record.fields["name"] = person.real_name
-	medical_record.name = person.real_name
-	medical_record.fields["b_type"] = person.b_type
-	medical_record.fields["mi_dis"] = "None"
-	medical_record.fields["mi_dis_d"] = "No minor disabilities have been declared."
-	medical_record.fields["ma_dis"] = "None"
-	medical_record.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
-	medical_record.fields["alg"] = "None"
-	medical_record.fields["alg_d"] = "No allergies have been detected in this patient."
-	medical_record.fields["cdi"] = "None"
-	medical_record.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
-	medical_record.fields["last_scan_time"] = null
-	medical_record.fields["last_scan_result"] = "No scan data on record"
-	medical_record.fields["autodoc_data"] = list()
-	medical_record.fields["autodoc_manual"] = list()
-	medical_record.fields["ref"] = WEAKREF(person)
-	GLOB.data_core.medical += medical_record
-	return medical_record
+	var/datum/data/record/medical_record = new()
+	medical_record.fields[MOB_NAME] = person.real_name ? person.real_name : "Unknown"
+	medical_record.name = person.real_name ? person.real_name : "New Medical Record"
+	medical_record.fields[MOB_BLOOD_TYPE] = person.b_type ? person.b_type : "Unknown"
+	medical_record.fields[MOB_DISABILITIES] = "None"
+	medical_record.fields[MOB_AUTOPSY_NOTES] = null
+	medical_record.fields[MOB_MEDICAL_NOTES] = person.med_record && !jobban_isbanned(person, "Records") ? person.med_record : "No notes found."
+	medical_record.fields[MOB_DISEASES] = "None"
+	medical_record.fields[MOB_CAUSE_OF_DEATH] = "None"
+	medical_record.fields[MOB_AUTOPSY_SUBMISSION] = FALSE
+	medical_record.fields[MOB_LAST_SCAN_TIME] = null
+	medical_record.fields[MOB_LAST_SCAN_RESULT] = "No scan data on record"
+	medical_record.fields[MOB_AUTODOC_DATA] = list()
+	medical_record.fields[MOB_AUTODOC_MANUAL] = list()
+	medical_record.fields[MOB_WEAKREF] = WEAKREF(person)
+	GLOB.data_core.medical[person.record_id_ref] += medical_record
+
+/proc/create_static_character_record(mob/living/carbon/human/person)
+	var/datum/data/record/record_locked = new()
+	record_locked.fields[RECORD_UNIQUE_ID] = md5("[person.real_name][person.job]")
+	record_locked.fields[MOB_NAME] = person.real_name
+	record_locked.name = person.real_name
+	record_locked.fields[MOB_REAL_RANK] = person.job
+	record_locked.fields[MOB_AGE] = person.age
+	record_locked.fields[MOB_SEX] = person.gender
+	record_locked.fields[MOB_BLOOD_TYPE] = person.b_type
+	record_locked.fields[MOB_SPECIES] = person.get_species()
+	record_locked.fields[MOB_ORIGIN] = person.origin
+	record_locked.fields[MOB_SHOWN_FACTION] = person.personal_faction
+	record_locked.fields[MOB_RELIGION] = person.religion
+	record_locked.fields[MOB_WEAKREF] = WEAKREF(person)
+	record_locked.fields[MOB_EXPLOIT_RECORD] = person.exploit_record && !jobban_isbanned(person, "Records") ? person.exploit_record : "No additional information acquired"
+	GLOB.data_core.locked[person.record_id_ref] += record_locked

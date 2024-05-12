@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/structure/machinery/computer/skills//TODO:SANITY
+/obj/structure/machinery/computer/skills//TODO:MIGRATE TO TGUI
 	name = "Employment Records"
 	desc = "Used to view personnel's employment records"
 	icon_state = "medlaptop"
@@ -265,9 +265,6 @@ What a mess.*/
 					temp = "<h5>Are you sure you wish to delete the record (ALL)?</h5>"
 					temp += "<a href='?src=\ref[src];choice=Delete Record (ALL) Execute'>Yes</a><br>"
 					temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
-//RECORD CREATE
-			if ("New Record (General)")
-				active1 = CreateGeneralRecord()
 
 //FIELD FUNCTIONS
 			if ("Edit Field")
@@ -366,4 +363,3 @@ What a mess.*/
 			GLOB.data_core.security -= R
 			qdel(R)
 			continue
-

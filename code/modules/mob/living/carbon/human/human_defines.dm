@@ -170,6 +170,9 @@
 	/// Stored image references associated with focus-fire.
 	var/image/focused_fire_marker
 
+	// in the case of player controlled mobs it's the ckey, otherwise the original implementation of a large ass number.
+	var/record_id_ref = null
+
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)

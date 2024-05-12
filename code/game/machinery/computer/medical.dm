@@ -1,14 +1,4 @@
-// eventually someone will have to make these into global defines and change all the occurrences.
 
-#define AUTOPSY_NOTES "a_stat" // autopsy notes
-#define NOTES "notes" // general medical notes
-#define MENTAL "m_stat" // psychiatric illnesses
-#define DISEASE "cdi"
-#define DISABILITY "mi_dis"
-#define HEALTH "p_stat" // current health status
-#define DEATH "d_stat" // cause of death
-#define BLOOD_TYPE "b_type"
-#define AUTOPSY_SUBMISSION "aut_sub" // whether or not an autopsy report has been submitted already for a given record
 
 // the type of record
 #define MEDICAL 1
@@ -44,14 +34,14 @@
 		visible_message("[SPAN_BOLD("[src]")] states, \"CARD FAILURE: Unable to read target ID.\"")
 		return FALSE
 
-	for(var/datum/data/record/medical_record as anything in GLOB.data_core.medical)
-		if(medical_record.fields["name"] == target_id.registered_name)
-			target_record_medical = medical_record
-			break
-	for(var/datum/data/record/general_record as anything in GLOB.data_core.general)
-		if(general_record.fields["name"] == target_id.registered_name)
-			target_record_general = general_record
-			break
+	if(!target_id.registered_ref)
+		visible_message("[SPAN_BOLD("[src]")] states, \"CARD FAILURE: Unable to find target in database.\"")
+		return FALSE
+
+	var/mob/living/carbon/human/referenced_human = target_id.registered_ref
+	if(referenced_human)
+		target_record_medical = retrieve_record(record_id = referenced_human.record_id_ref, record_type = RECORD_TYPE_MEDICAL)
+		target_record_general = retrieve_record(record_id = referenced_human.record_id_ref, record_type = RECORD_TYPE_GENERAL)
 
 	if(!target_record_medical || !target_record_general)
 		visible_message("[SPAN_BOLD("[src]")] states, \"CARD FAILURE: Unable to retrieve target records.\"")
@@ -127,23 +117,23 @@
 								<hr>
 								<center><h4>General Information</h4></center>
 								<u>Name:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
-								<u>Sex:</u> [target_record_general?.fields["sex"]]<br>
-								<u>Age:</u> [target_record_general?.fields["age"]]<br>
-								<u>Blood Type:</u> [target_record_medical?.fields[BLOOD_TYPE]]<br>
+								<u>Sex:</u> [target_record_general?.fields[MOB_SEX]]<br>
+								<u>Age:</u> [target_record_general?.fields[MOB_AGE]]<br>
+								<u>Blood Type:</u> [target_record_medical?.fields[MOB_BLOOD_TYPE]]<br>
 								<hr>
 								<center><h4>Medical Notes</h4></center>
-								<u>General Notes:</u> [target_record_medical?.fields[NOTES]]<br>
-								<u>Psychiatric History:</u> [target_record_general?.fields[MENTAL]]<br>
-								<u>Disease History:</u> [target_record_medical?.fields[DISEASE]]<br>
-								<u>Disability History:</u> [target_record_medical?.fields[DISABILITY]]<br>
+								<u>General Notes:</u> [target_record_medical?.fields[MOB_MEDICAL_NOTES]]<br>
+								<u>Psychiatric History:</u> [target_record_general?.fields[MOB_MENTAL_STATUS]]<br>
+								<u>Disease History:</u> [target_record_medical?.fields[MOB_DISEASES]]<br>
+								<u>Disability History:</u> [target_record_medical?.fields[MOB_DISABILITIES]]<br>
 								<hr>
 								"}
 
 			// autopsy report gets shwacked ontop if it exists and the target stat is dead
-			if(target_record_general.fields[HEALTH] == "Deceased" && target_record_medical.fields[AUTOPSY_SUBMISSION])
+			if(target_record_general.fields[MOB_HEALTH_STATUS] == MOB_STAT_HEALTH_DECEASED && target_record_medical.fields[MOB_AUTOPSY_SUBMISSION])
 				contents +=  {"<center><h4>Autopsy Report</h4></center>
-								<u>Autopsy Notes:</u> [target_record_medical.fields[AUTOPSY_NOTES]]<br>
-								<u>Cause Of Death:</u> [target_record_medical.fields[DEATH]]<br>
+								<u>Autopsy Notes:</u> [target_record_medical.fields[MOB_AUTOPSY_NOTES]]<br>
+								<u>Cause Of Death:</u> [target_record_medical.fields[MOB_CAUSE_OF_DEATH]]<br>
 							"}
 
 			var/obj/item/paper/med_report = new (loc)
@@ -187,20 +177,20 @@
 				target_record_general.fields[params["stat"]] = params["new_value"]
 			return TRUE
 		if("submitReport")
-			if(!target_record_medical.fields[DEATH])
+			if(!target_record_medical.fields[MOB_CAUSE_OF_DEATH])
 				visible_message("[SPAN_BOLD("[src]")] states, \"LOG ERROR: You must select a cause of death before submitting a report.\"")
 				return
-			target_record_medical.fields[AUTOPSY_SUBMISSION] = TRUE
+			target_record_medical.fields[MOB_AUTOPSY_SUBMISSION] = TRUE
 			return TRUE
 
 /obj/structure/machinery/computer/double_id/med_data/ui_static_data(mob/user)
 	var/list/data = list()
 	// general information, it is never modified. Why pass it in so weirdly? because it makes it easy to add and remove stats in the future.
 	data["general_record"] = list(
-		list(target_record_general?.fields["name"],"Name: "),
-		list(target_record_general?.fields["age"],"Age: "),
-		list(target_record_general?.fields["sex"],"Sex: "),
-		list(target_record_medical?.fields[BLOOD_TYPE],"Blood Type: ")
+		list(target_record_general?.fields[MOB_NAME],"Name: "),
+		list(target_record_general?.fields[MOB_AGE],"Age: "),
+		list(target_record_general?.fields[MOB_SEX],"Sex: "),
+		list(target_record_medical?.fields[MOB_BLOOD_TYPE],"Blood Type: ")
 		)
 
 	return data
@@ -210,29 +200,20 @@
 
 	// medical records, we pass it in as a list so it's better to handle in tgui. Might be ideal to pass in an associated list instead?
 	data["medical_record"] = list(
-		list(MEDICAL, NOTES, target_record_medical?.fields[NOTES],"General Notes: "),
-		list(GENERAL, MENTAL, target_record_general?.fields[MENTAL],"Psychiatric History: "),
-		list(MEDICAL, DISEASE, target_record_medical?.fields[DISEASE],"Disease History: "),
-		list(MEDICAL, DISABILITY, target_record_medical?.fields[DISABILITY],"Disability History: ")
+		list(MEDICAL, MOB_MEDICAL_NOTES, target_record_medical?.fields[MOB_MEDICAL_NOTES],"General Notes: "),
+		list(GENERAL, MOB_MENTAL_STATUS, target_record_general?.fields[MOB_MENTAL_STATUS],"Psychiatric History: "),
+		list(MEDICAL, MOB_DISEASES, target_record_medical?.fields[MOB_DISEASES],"Disease History: "),
+		list(MEDICAL, MOB_DISABILITIES, target_record_medical?.fields[MOB_DISABILITIES],"Disability History: ")
 		)
-	data["death"] = list(MEDICAL, DEATH, target_record_medical?.fields[DEATH],"Cause Of Death: ")
-	data["health"] = list(GENERAL, HEALTH, target_record_general?.fields[HEALTH],"Health Status: ")
-	data["autopsy"] = list(MEDICAL, AUTOPSY_NOTES, target_record_medical?.fields[AUTOPSY_NOTES],"Autopsy Notes: ")
-	data["existingReport"] = target_record_medical?.fields[AUTOPSY_SUBMISSION]
+	data["death"] = list(MEDICAL, MOB_CAUSE_OF_DEATH, target_record_medical?.fields[MOB_CAUSE_OF_DEATH],"Cause Of Death: ")
+	data["health"] = list(GENERAL, MOB_HEALTH_STATUS, target_record_general?.fields[MOB_HEALTH_STATUS],"Health Status: ")
+	data["autopsy"] = list(MEDICAL, MOB_AUTOPSY_NOTES, target_record_medical?.fields[MOB_AUTOPSY_NOTES],"Autopsy Notes: ")
+	data["existingReport"] = target_record_medical?.fields[MOB_AUTOPSY_SUBMISSION]
 	data["authenticated"] = authenticated
 	data["has_id"] = !!target_id_card
 	data["id_name"] = target_id_card ? target_id_card.name : "-----"
 
 	return data
 
-#undef AUTOPSY_NOTES
-#undef NOTES
-#undef MENTAL
-#undef DISEASE
-#undef DISABILITY
-#undef HEALTH
-#undef DEATH
-#undef BLOOD_TYPE
-#undef AUTOPSY_SUBMISSION
 #undef MEDICAL
 #undef GENERAL

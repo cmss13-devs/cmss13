@@ -21,6 +21,10 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
+	if(ishuman_strict(src)) // turns out when u spawn mobs out of thin air they don't have records!
+		if(!src.record_id_ref)
+			GLOB.data_core.manifest_inject(src)
+
 /mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -626,7 +630,7 @@
 						for(var/datum/data/record/R in GLOB.data_core.general)
 							if(R.fields["id"] == E.fields["id"])
 
-								var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", R.fields["p_stat"], list("*SSD*", "*Deceased*", "Physically Unfit", "Active", "Disabled", "Cancel"))
+								var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", R.fields[MOB_HEALTH_STATUS], list(MOB_STAT_HEALTH_DECEASED, MOB_STAT_HEALTH_UNFIT, MOB_STAT_HEALTH_ACTIVE, "Cancel"))
 
 								if(hasHUD(usr,"medical"))
 									if(setmedical != "Cancel")

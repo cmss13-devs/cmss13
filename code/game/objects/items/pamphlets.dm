@@ -97,7 +97,7 @@
 
 	var/obj/item/card/id/ID = user.wear_id
 	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Spotter")
-	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter", record_id_ref = user.record_id_ref)
 
 /obj/item/pamphlet/skill/machinegunner
 	name = "heavy machinegunner instructional pamphlet"

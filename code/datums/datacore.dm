@@ -86,13 +86,13 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/list/squad_sublists = GLOB.ROLES_SQUAD_ALL.Copy() //Are there any marines in the squad?
 
 	for(var/datum/data/record/record_entry in GLOB.data_core.general)
-		if(record_entry.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
+		if(record_entry.fields[MOB_REAL_FACTION] != FACTION_MARINE) //we process only USCM humans
 			continue
 
-		var/name = record_entry.fields["name"]
-		var/rank = record_entry.fields["rank"]
-		var/real_rank = record_entry.fields["real_rank"]
-		var/squad_name = record_entry.fields["squad"]
+		var/name = record_entry.fields[MOB_NAME]
+		var/rank = record_entry.fields[MOB_SHOWN_RANK]
+		var/real_rank = record_entry.fields[MOB_REAL_RANK]
+		var/squad_name = record_entry.fields[MOB_SQUAD]
 		if(isnull(name) || isnull(rank) || isnull(real_rank))
 			continue
 
@@ -104,7 +104,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 					break
 			isactive[name] = active ? "Active" : "Inactive"
 		else
-			isactive[name] = record_entry.fields["p_stat"]
+			isactive[name] = record_entry.fields[MOB_HEALTH_STATUS]
 			//cael - to prevent multiple appearances of a player/job combination, add a continue after each line
 
 		if(real_rank in GLOB.ROLES_CIC)
@@ -212,141 +212,45 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			if(H.job in jobs_to_check)
 				manifest_inject(H)
 
-/datum/datacore/proc/manifest_modify(name, ref, assignment, rank, p_stat)
-	var/datum/data/record/foundrecord
+/datum/datacore/proc/manifest_modify(name, ref, assignment, rank, health_status, record_id_ref = null)
+	var/datum/data/record/found_record = null
+	found_record = retrieve_record(record_id_ref, name, ref, RECORD_TYPE_GENERAL)
 
-	var/use_name = isnull(ref)
-	for(var/datum/data/record/record_entry in GLOB.data_core.general)
-		if(use_name)
-			if(record_entry.fields["name"] == name)
-				foundrecord = record_entry
-				break
-		else
-			if(record_entry.fields["ref"] == ref)
-				foundrecord = record_entry
-				break
-
-	if(foundrecord)
+	if(found_record)
 		if(assignment)
-			foundrecord.fields["rank"] = assignment
+			found_record.fields[MOB_SHOWN_RANK] = assignment
 		if(rank)
-			foundrecord.fields["real_rank"] = rank
-		if(p_stat)
-			foundrecord.fields["p_stat"] = p_stat
-		if(!use_name)
-			if(name)
-				foundrecord.fields["name"] = name
+			found_record.fields[MOB_REAL_RANK] = rank
+		if(health_status)
+			found_record.fields[MOB_HEALTH_STATUS] = health_status
+		if(name)
+			found_record.fields[MOB_NAME] = name
 		return TRUE
 	return FALSE
 
 /datum/datacore/proc/manifest_inject(mob/living/carbon/human/target)
-	var/assignment
-	if(target.job)
-		assignment = target.job
+
+	if(!(target)) // big problemo.
+		return
+
+	// they already have a record.
+	if(target.record_id_ref)
+		return
+
+	var/id_ref = null
+	if(target.ckey)
+		id_ref = "[target.ckey]" // should be unique right?
 	else
-		assignment = "Unassigned"
+		id_ref = text("[]", add_zero(num2hex(rand(1, 1.6777215E7)), 6)) // not a player controlled mob.
+	target.record_id_ref = id_ref
 
-	var/id = add_zero(num2hex(target.gid), 6) //this was the best they could come up with? A large random number? *sigh*
-	//var/icon/front = new(get_id_photo(H), dir = SOUTH)
-	//var/icon/side = new(get_id_photo(H), dir = WEST)
-
-	//General Record
-	var/datum/data/record/record_general = new()
-	record_general.fields["id"] = id
-	record_general.fields["name"] = target.real_name
-	record_general.name = target.real_name
-	record_general.fields["real_rank"] = target.job
-	record_general.fields["rank"] = assignment
-	record_general.fields["squad"] = target.assigned_squad ? target.assigned_squad.name : null
-	record_general.fields["age"] = target.age
-	record_general.fields["p_stat"] = "Active"
-	record_general.fields["m_stat"] = "Stable"
-	record_general.fields["sex"] = target.gender
-	record_general.fields["species"] = target.get_species()
-	record_general.fields["origin"] = target.origin
-	record_general.fields["faction"] = target.personal_faction
-	record_general.fields["mob_faction"] = target.faction
-	record_general.fields["religion"] = target.religion
-	record_general.fields["ref"] = WEAKREF(target)
-	//record_general.fields["photo_front"] = front
-	//record_general.fields["photo_side"] = side
-
-	if(target.gen_record && !jobban_isbanned(target, "Records"))
-		record_general.fields["notes"] = target.gen_record
-	else
-		record_general.fields["notes"] = "No notes found."
-	general += record_general
-
-	//Medical Record
-	var/datum/data/record/record_medical = new()
-	record_medical.fields["id"] = id
-	record_medical.fields["name"] = target.real_name
-	record_medical.name = target.name
-	record_medical.fields["b_type"] = target.blood_type
-	record_medical.fields["mi_dis"] = "None"
-	record_medical.fields["mi_dis_d"] = "No minor disabilities have been declared."
-	record_medical.fields["ma_dis"] = "None"
-	record_medical.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
-	record_medical.fields["alg"] = "None"
-	record_medical.fields["alg_d"] = "No allergies have been detected in this patient."
-	record_medical.fields["cdi"] = "None"
-	record_medical.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
-	record_medical.fields["last_scan_time"] = null
-	record_medical.fields["last_scan_result"] = "No scan data on record" // body scanner results
-	record_medical.fields["autodoc_data"] = list()
-	record_medical.fields["autodoc_manual"] = list()
-	record_medical.fields["ref"] = WEAKREF(target)
-
-	if(target.med_record && !jobban_isbanned(target, "Records"))
-		record_medical.fields["notes"] = target.med_record
-	else
-		record_medical.fields["notes"] = "No notes found."
-	medical += record_medical
-
-	//Security Record
-	var/datum/data/record/record_security = new()
-	record_security.fields["id"] = id
-	record_security.fields["name"] = target.real_name
-	record_security.name = target.real_name
-	record_security.fields["criminal"] = "None"
-	record_security.fields["incident"] = ""
-	record_security.fields["ref"] = WEAKREF(target)
-
-	if(target.sec_record && !jobban_isbanned(target, "Records"))
-		var/new_comment = list("entry" = target.sec_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "Military Police"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
-		record_security.fields["comments"] = list("1" = new_comment)
-		record_security.fields["notes"] = target.sec_record
-	security += record_security
-
-
-	//Locked Record
-	var/datum/data/record/record_locked = new()
-	record_locked.fields["id"] = md5("[target.real_name][target.job]")
-	record_locked.fields["name"] = target.real_name
-	record_locked.name = target.real_name
-	record_locked.fields["rank"] = target.job
-	record_locked.fields["age"] = target.age
-	record_locked.fields["sex"] = target.gender
-	record_locked.fields["b_type"] = target.b_type
-	record_locked.fields["species"] = target.get_species()
-	record_locked.fields["origin"] = target.origin
-	record_locked.fields["faction"] = target.personal_faction
-	record_locked.fields["religion"] = target.religion
-	record_locked.fields["ref"] = WEAKREF(target)
-
-	if(target.exploit_record && !jobban_isbanned(target, "Records"))
-		record_locked.fields["exploit_record"] = target.exploit_record
-	else
-		record_locked.fields["exploit_record"] = "No additional information acquired."
-	locked += record_locked
-
+	create_general_record(target)
+	create_medical_record(target)
+	create_security_record(target)
+	create_static_character_record(target)
 
 /proc/get_id_photo(mob/living/carbon/human/H)
 	var/icon/preview_icon = null
-
-	//var/g = "m"
-	//if (H.gender == FEMALE)
-	// g = "f"
 
 	var/icon/icobase = H.species.icobase
 	var/icon/temp

@@ -243,7 +243,6 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	else
 		id_ref = text("[]", add_zero(num2hex(rand(1, 1.6777215E7)), 6)) // not a player controlled mob.
 	target.record_id_ref = id_ref
-
 	create_general_record(target)
 	create_medical_record(target)
 	create_security_record(target)

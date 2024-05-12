@@ -294,7 +294,7 @@
 #define MOB_STAT_CRIME_ARREST "Arrest"
 #define MOB_STAT_CRIME_INCARCERATED "Incarcerated"
 
-#define MOB_STAT_MENTAL_STATUS_LIST list(MOB_STAT_CRIME_NONE, MOB_STAT_CRIME_ARREST, MOB_STAT_CRIME_INCARDCERATED)
+#define MOB_STAT_CRIME_STATUS_LIST list(MOB_STAT_CRIME_NONE, MOB_STAT_CRIME_ARREST, MOB_STAT_CRIME_INCARDCERATED)
 // ------------------------------------------------------------------------------------------------------------------ //
 
 // types of records

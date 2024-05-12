@@ -24,10 +24,9 @@
 	if(record_id)
 		retrieved_record = selected_record_type[record_id]
 	else
-		var/mob/living/carbon/human/human_ref = mob_ref
 		for(var/record_id_query as anything in selected_record_type)
 			var/datum/data/record/record = selected_record_type[record_id_query]
-			if(record.fields[MOB_NAME] == mob_name || record.fields[MOB_WEAKREF] == human_ref)
+			if(record.fields[MOB_NAME] == mob_name || record.fields[MOB_WEAKREF] == mob_ref)
 				retrieved_record = record
 				break
 

@@ -34,14 +34,8 @@
 		visible_message("[SPAN_BOLD("[src]")] states, \"CARD FAILURE: Unable to read target ID.\"")
 		return FALSE
 
-	if(!target_id.registered_ref)
-		visible_message("[SPAN_BOLD("[src]")] states, \"CARD FAILURE: Unable to find target in database.\"")
-		return FALSE
-
-	var/mob/living/carbon/human/referenced_human = target_id.registered_ref
-	if(referenced_human)
-		target_record_medical = retrieve_record(record_id = referenced_human.record_id_ref, record_type = RECORD_TYPE_MEDICAL)
-		target_record_general = retrieve_record(record_id = referenced_human.record_id_ref, record_type = RECORD_TYPE_GENERAL)
+	target_record_medical = retrieve_record(mob_name = target_id.registered_name, mob_ref = target_id.registered_ref, record_type = RECORD_TYPE_MEDICAL)
+	target_record_general = retrieve_record(mob_name = target_id.registered_name, mob_ref = target_id.registered_ref, record_type = RECORD_TYPE_GENERAL)
 
 	if(!target_record_medical || !target_record_general)
 		visible_message("[SPAN_BOLD("[src]")] states, \"CARD FAILURE: Unable to retrieve target records.\"")

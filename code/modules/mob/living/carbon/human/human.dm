@@ -19,11 +19,7 @@
 	prev_gender = gender // Debug for plural genders
 
 	if(SSticker?.mode?.hardcore)
-		hardcore = TRUE //For WO disposing of corpses
-
-	if(ishuman_strict(src)) // turns out when u spawn mobs out of thin air they don't have records!
-		if(!src.record_id_ref)
-			GLOB.data_core.manifest_inject(src)
+		hardcore = TRUE //For WO disposing of corpsess
 
 /mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

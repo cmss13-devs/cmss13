@@ -141,7 +141,7 @@
 		return
 
 	if(!I.armor_health && !armor_health)
-		to_chat(user, SPAN_NOTICE("You use the shards of armor to cobble together an improvised trauma plate."))
+		to_chat(user, SPAN_NOTICE("You use the shards of armor to cobble together an improvised ceramic plate."))
 		qdel(I)
 		qdel(src)
 		user.put_in_active_hand(new /obj/item/clothing/accessory/health/scrap())
@@ -168,6 +168,9 @@
 
 	return ..()
 
+/obj/item/clothing/accessory/health/ceramic_plate/take_slash_damage(mob/living/user, list/slashdata)
+	return
+
 /obj/item/clothing/accessory/health/scrap
 	name = "scrap metal"
 	desc = "A weak armor plate, only able to protect from a little bit of damage. Perhaps that will be enough."
@@ -187,6 +190,15 @@
 	. = ..()
 	if(. && !armor_health)
 		qdel(src)
+
+/obj/item/clothing/accessory/health/scrap/take_bullet_damage(mob/living/user, damage, ammo_flags)
+	if(ammo_flags & AMMO_ACIDIC)
+		return
+
+	return ..()
+
+/obj/item/clothing/accessory/health/scrap/take_slash_damage(mob/living/user, list/slashdata)
+	return
 
 /obj/item/clothing/accessory/health/research_plate
 	name = "experimental uniform attachment"
@@ -357,7 +369,7 @@
 /datum/action/item_action/emergency_plate/inject_chemicals/New(Target, obj/item/holder)
 	. = ..()
 	name = "Inject Emergency Plate"
-	action_icon_state = "regular2_100"
+	action_icon_state = "plate_research"
 	button.name = name
 	button.overlays.Cut()
 	button.overlays += image('icons/obj/items/items.dmi', button, action_icon_state)

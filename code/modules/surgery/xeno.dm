@@ -75,7 +75,7 @@
 		if(istype(victim.wear_suit, /obj/item/clothing/suit/bio_suit) && istype(victim.head, /obj/item/clothing/head/bio_hood))
 			continue
 		to_chat(victim, SPAN_HIGHDANGER("You are covered in acid as you feel agonizing pain!"))
-		victim.apply_damage(rand(50, 100), BURN) // you WILL wear biosuit.
+		victim.apply_damage(rand(75, 125), BURN) // you WILL wear biosuit.
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
 

@@ -84,6 +84,15 @@
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	clearance_req = 3
 
+/datum/research_upgrades/item/incision_management
+	name = "Incision Management System"
+	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
+	value_upgrade = 3500
+	item_reference = /obj/item/tool/surgery/scalpel/manager
+	behavior = RESEARCH_UPGRADE_TIER_1
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
+	clearance_req = 5
+
 /datum/research_upgrades/armor
 	name = "Armor"
 	behavior = RESEARCH_UPGRADE_CATEGORY
@@ -101,7 +110,7 @@
 /datum/research_upgrades/armor/coagulator
 	name = "Active Blood Coagulator Plate"
 	desc = "A uniform-attachable plate capable of coagulating any bleeding wounds the user possesses."
-	value_upgrade = 1500
+	value_upgrade = 1250
 	behavior = RESEARCH_UPGRADE_TIER_1
 	clearance_req = 2
 	upgrade_type = ITEM_ARMOR_UPGRADE
@@ -116,6 +125,14 @@
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	item_reference = /obj/item/clothing/accessory/health/research_plate/emergency_injector
 
+/datum/research_upgrades/armor/ceramic
+	name = "Ceramic Armor Plate"
+	desc = "A strong trauma plate, able to protect the user from a large amount of bullets. completely useless against sharp objects."
+	value_upgrade = 250
+	clearance_req = 4
+	behavior = RESEARCH_UPGRADE_TIER_1
+	upgrade_type = ITEM_ARMOR_UPGRADE
+	item_reference = /obj/item/clothing/accessory/health/ceramic_plate
 
 
 

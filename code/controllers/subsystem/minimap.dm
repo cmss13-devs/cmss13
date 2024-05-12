@@ -88,8 +88,8 @@ SUBSYSTEM_DEF(minimaps)
 				else if(yval < smallest_y)
 					smallest_y = yval
 
-		minimaps_by_z["[level]"].x_offset = Floor((SCREEN_PIXEL_SIZE-largest_x-smallest_x) / MINIMAP_SCALE)
-		minimaps_by_z["[level]"].y_offset = Floor((SCREEN_PIXEL_SIZE-largest_y-smallest_y) / MINIMAP_SCALE)
+		minimaps_by_z["[level]"].x_offset = floor((SCREEN_PIXEL_SIZE-largest_x-smallest_x) / MINIMAP_SCALE)
+		minimaps_by_z["[level]"].y_offset = floor((SCREEN_PIXEL_SIZE-largest_y-smallest_y) / MINIMAP_SCALE)
 
 		icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset)
 		icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset)

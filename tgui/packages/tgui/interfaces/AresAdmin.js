@@ -19,6 +19,7 @@ const PAGES = {
   'requisitions': () => Requisitions,
   'emergency': () => Emergency,
   'tech_log': () => TechLogs,
+  'core_security': () => CoreSec,
   'admin_access_log': () => AdminAccessLogs,
   'access_management': () => AccessManagement,
   'maintenance_management': () => MaintManagement,
@@ -31,6 +32,10 @@ export const AresAdmin = (props, context) => {
 
   let themecolor = 'crtyellow';
   if (sudo >= 1) {
+    themecolor = 'crtred';
+  } else if (current_menu === 'emergency') {
+    themecolor = 'crtred';
+  } else if (current_menu === 'core_security') {
     themecolor = 'crtred';
   }
 
@@ -351,6 +356,25 @@ const MainMenu = (props, context) => {
         </Stack>
       </Section>
       <Section>
+        <h1 align="center">Core Security Protocols</h1>
+        <Stack>
+          <Stack.Item grow>
+            <Button
+              content="Nerve Gas Control"
+              align="center"
+              tooltip="Release stored CN20-X nerve gas from security vents."
+              icon="wind"
+              color="red"
+              ml="auto"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('page_core_sec')}
+            />
+          </Stack.Item>
+        </Stack>
+      </Section>
+      <Section>
         <Stack>
           <Stack.Item grow>
             <h3>Remote Admin</h3>
@@ -665,7 +689,7 @@ const BombardmentLogs = (props, context) => {
               User
             </Flex.Item>
             <Flex.Item width="30rem" textAlign="center">
-              Coordinates
+              Details
             </Flex.Item>
           </Flex>
         )}
@@ -1328,6 +1352,8 @@ const FlightLogs = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -1693,6 +1719,80 @@ const TechLogs = (props, context) => {
                 />
               </Flex.Item>
             </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const CoreSec = (props) => {
+  const { data, act } = useBackend();
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    security_vents,
+    admin_login,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Core Security Protocols</h1>
+      </Section>
+      <Section>
+        <h1 align="center">Nerve Gas Release</h1>
+        {security_vents.map((vent, i) => {
+          return (
+            <Button.Confirm
+              key={i}
+              align="center"
+              content={vent.vent_tag}
+              icon="wind"
+              tooltip="Release Gas"
+              width="100%"
+              disabled={!vent.available}
+              onClick={() => act('trigger_vent', { vent: vent.ref })}
+            />
           );
         })}
       </Section>

@@ -18,7 +18,6 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 #define Csc(x) (1 / sin(x))
 
 #define Default(a, b) ((a) ? (a) : (b))
-#define Floor(x) (round(x))
 
 // Greatest Common Divisor - Euclid's algorithm
 #define Gcd(a, b) ((b) ? Gcd((b), (a) % (b)) : (a))
@@ -26,7 +25,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 #define Inverse(x) (1 / (x))
 #define IsEven(x) ((x) % 2 == 0)
 
-#define IsInteger(x) (Floor(x) == (x))
+#define IsInteger(x) (floor(x) == (x))
 #define IsOdd(x) (!IsEven(x))
 #define IsMultiple(x, y) ((x) % (y) == 0)
 

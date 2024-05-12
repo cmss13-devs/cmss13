@@ -29,6 +29,7 @@
 	var/automated_lz_id
 	var/automated_delay
 	var/automated_timer
+	var/datum/cas_signal/paradrop_signal
 
 
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)

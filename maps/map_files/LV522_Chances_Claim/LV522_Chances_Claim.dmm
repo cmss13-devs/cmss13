@@ -9855,6 +9855,17 @@
 /obj/vehicle/train/cargo/engine,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
+"evg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/structure/machinery/power/apc/weak{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "greenfull"
+	},
+/area/lv522/landing_zone_1/ceiling)
 "evu" = (
 /obj/structure/tunnel/maint_tunnel{
 	pixel_y = 6
@@ -17194,8 +17205,8 @@
 /area/lv522/atmos/cargo_intake)
 "hlH" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs/cable/white,
-/obj/item/handcuffs/cable/white{
+/obj/item/restraint/adjustable/cable/white,
+/obj/item/restraint/adjustable/cable/white{
 	pixel_y = 4
 	},
 /turf/open/floor/strata{
@@ -18228,13 +18239,13 @@
 /area/lv522/indoors/c_block/casino)
 "hIz" = (
 /obj/structure/surface/table/almayer,
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_y = 12
 	},
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_y = 6
 	},
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/weapon/classic_baton,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
@@ -44744,6 +44755,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan3"
@@ -61924,15 +61936,6 @@
 	icon_state = "marked"
 	},
 /area/lv522/indoors/a_block/fitness)
-"xOS" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
-/area/lv522/landing_zone_1)
 "xPa" = (
 /obj/structure/machinery/conveyor,
 /turf/open/floor/plating,
@@ -66660,7 +66663,7 @@ cpy
 tFx
 tFx
 wnP
-rzz
+evg
 syM
 rnT
 lBl
@@ -66889,7 +66892,7 @@ moz
 mvP
 ggS
 tFx
-xOS
+rnT
 lBl
 ttT
 pkH

@@ -418,7 +418,7 @@
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/det_suit/black,
 		WEAR_IN_JACKET = /obj/item/weapon/telebaton,
-		WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
+		WEAR_WAIST = /obj/item/storage/belt/security/MP/full/synth,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
 		WEAR_R_HAND = /obj/item/device/camera,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
@@ -461,11 +461,11 @@
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/colonist/white_service,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
-		WEAR_IN_BACK = /obj/item/handcuffs/zip,
-		WEAR_IN_BACK = /obj/item/handcuffs/zip,
+		WEAR_IN_BACK = /obj/item/restraint/handcuffs,
+		WEAR_IN_BACK = /obj/item/restraint/handcuffs,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/webbing,
+		WEAR_WAIST = /obj/item/storage/belt/security/MP/full/synth,
 		WEAR_IN_JACKET = /obj/item/weapon/telebaton,
-		WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
@@ -800,7 +800,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/nanopaste(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/nanopaste(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/tranquilizer(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)

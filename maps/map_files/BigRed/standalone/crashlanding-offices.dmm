@@ -15,17 +15,6 @@
 	icon_state = "mars_dirt_3"
 	},
 /area/bigredv2/outside/c)
-"ae" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
-/area/bigredv2/outside/c)
-"ag" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
-/area/bigredv2/outside/e)
 "ah" = (
 /turf/open/floor{
 	dir = 1;
@@ -249,11 +238,6 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy18"
 	},
-/area/bigredv2/outside/office_complex)
-"aU" = (
-/obj/structure/surface/rack,
-/obj/item/restraints,
-/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/office_complex)
 "aV" = (
 /turf/open/shuttle/dropship/can_surgery/dark_grey,
@@ -1345,6 +1329,11 @@
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/office_complex)
+"fs" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached15"
+	},
+/area/bigredv2/outside/c)
 "fv" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
@@ -1359,11 +1348,6 @@
 /obj/item/device/radio/headset/distress/pmc/hvh,
 /turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/office_complex)
-"fP" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
-/area/bigredv2/outside/e)
 "hN" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
@@ -1386,16 +1370,21 @@
 /obj/item/limb/leg/l_leg,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
-"kr" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
-/area/bigredv2/outside/c)
-"nj" = (
+"jA" = (
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached14"
 	},
 /area/bigredv2/outside/c)
+"kX" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/bigredv2/outside/c)
+"ln" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/bigredv2/outside/e)
 "nE" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/crap_item,
@@ -1477,6 +1466,11 @@
 /obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/office_complex)
+"AR" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached1"
+	},
+/area/bigredv2/outside/e)
 "Bu" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
@@ -1485,11 +1479,6 @@
 /obj/item/limb/hand/r_hand,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
-"BR" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
-/area/bigredv2/outside/c)
 "EE" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
@@ -1497,6 +1486,17 @@
 /obj/item/limb/hand/l_hand,
 /turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/office_complex)
+"Fm" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached14"
+	},
+/area/bigredv2/outside/e)
+"Gm" = (
+/turf/open/floor{
+	dir = 9;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/e)
 "GG" = (
 /obj/item/weapon/gun/rifle/m41a/corporate/no_lock{
 	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. The IFF electronics appear to be non-functional.";
@@ -1511,10 +1511,9 @@
 	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/se)
-"IN" = (
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
+"HN" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached15"
 	},
 /area/bigredv2/outside/e)
 "Lk" = (
@@ -1524,6 +1523,12 @@
 /obj/item/device/radio/headset/distress/pmc/hvh,
 /turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/office_complex)
+"MH" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/bigredv2/outside/c)
 "NK" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/rubber,
@@ -1548,16 +1553,11 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/bigredv2/outside/office_complex)
-"WM" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
-/area/bigredv2/outside/e)
-"Xe" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
-/area/bigredv2/outside/e)
+"Wm" = (
+/obj/structure/surface/rack,
+/obj/item/xeno_restraints,
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
+/area/bigredv2/outside/office_complex)
 "XH" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
@@ -1837,7 +1837,7 @@ bu
 ar
 "}
 (11,1,1) = {"
-nj
+jA
 ao
 cX
 cX
@@ -1864,7 +1864,7 @@ bI
 bI
 "}
 (12,1,1) = {"
-BR
+kX
 ap
 ap
 ap
@@ -1891,12 +1891,12 @@ dm
 dW
 "}
 (13,1,1) = {"
-BR
+kX
 ap
 av
 ar
 aN
-aU
+Wm
 nE
 bm
 dA
@@ -1918,7 +1918,7 @@ dn
 dt
 "}
 (14,1,1) = {"
-ae
+MH
 aq
 aw
 aC
@@ -1945,7 +1945,7 @@ do
 ds
 "}
 (15,1,1) = {"
-kr
+fs
 ar
 bt
 aD
@@ -1972,7 +1972,7 @@ dp
 du
 "}
 (16,1,1) = {"
-IN
+Gm
 ba
 bb
 aE
@@ -2134,8 +2134,8 @@ Ha
 PR
 "}
 (22,1,1) = {"
-WM
-ag
+ln
+Fm
 aA
 aG
 dX
@@ -2161,8 +2161,8 @@ Ha
 PR
 "}
 (23,1,1) = {"
-fP
-Xe
+AR
+HN
 aA
 aG
 aG

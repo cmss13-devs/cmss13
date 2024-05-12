@@ -37,6 +37,7 @@ export function LootBox(props: Props) {
           className="SearchItem--box"
           onClick={(event) =>
             act('grab', {
+              alt: event.altKey,
               ctrl: event.ctrlKey,
               ref: item.ref,
               shift: event.shiftKey,
@@ -45,9 +46,8 @@ export function LootBox(props: Props) {
           onContextMenu={(event) => {
             event.preventDefault();
             act('grab', {
-              middle: true,
+              right: true,
               ref: item.ref,
-              shift: true,
             });
           }}
         >

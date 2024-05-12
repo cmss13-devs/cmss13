@@ -128,7 +128,7 @@
 /datum/research_upgrades/armor/ceramic
 	name = "Ceramic Armor Plate"
 	desc = "A strong trauma plate, able to protect the user from a large amount of bullets. completely useless against sharp objects."
-	value_upgrade = 250
+	value_upgrade = 500
 	clearance_req = 4
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ARMOR_UPGRADE

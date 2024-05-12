@@ -34,6 +34,7 @@
 	if (!user)
 		user = usr
 	if(!length(buttons))
+		stack_trace("tgui_input_list called with no buttons!")
 		return null
 	if (!istype(user))
 		if (istype(user, /client))

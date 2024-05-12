@@ -40,29 +40,6 @@ const ApcContent = (props) => {
     powerStatusMap[data.chargingStatus] || powerStatusMap[0];
   const channelArray = data.powerChannels || [];
   const adjustedCellChange = data.powerCellStatus / 100;
-  /* if (data.failTime > 0) {
-    return (
-      <NoticeBox info textAlign="center" mb={0}>
-        <b>
-          <h3>SYSTEM FAILURE</h3>
-        </b>
-        I/O regulators have malfunctioned! <br />
-        Awaiting system reboot.
-        <br />
-        Executing software reboot in {data.failTime} seconds...
-        <br />
-        <br />
-        <Button
-          icon="sync"
-          tooltip="Force an interface reset."
-          tooltipPosition="bottom"
-          onClick={() => act('reboot')}
-        >
-          Reboot Now
-        </Button>
-      </NoticeBox>
-    );
-  }*/
   return (
     <>
       <InterfaceLockNoticeBox />

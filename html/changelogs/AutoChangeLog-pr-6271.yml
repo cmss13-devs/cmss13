@@ -1,5 +1,0 @@
-author: "XQ"
-delete-after: True
-changes:
-  - qol: "Updated the ARES reception bell's description to inform players it notifies Working Joes when rung."
-  - qol: "Increased the ARES reception bell's cooldown from 5 to 60 seconds."

@@ -407,7 +407,7 @@
 #define PRAETORIAN_OPPRESSOR "Oppressor"
 
 // Crusher strain flags
-#define BURROWER_RUINER "Ruiner"
+#define BURROWER_SAPPER "Sapper"
 
 /////////////////////////////////////////////////////////////////////////////////////
 //

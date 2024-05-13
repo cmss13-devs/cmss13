@@ -5145,7 +5145,9 @@
 /area/lv759/indoors/bar)
 "aSR" = (
 /obj/effect/hybrisa/decal/meridianlogo/meridianlogo_right,
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison{
+	icon_state = "darkbrown3"
+	},
 /area/lv759/indoors/meridian/meridian_foyer)
 "aSX" = (
 /obj/item/ammo_magazine/rifle/mar40,
@@ -7816,7 +7818,9 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
-/turf/open/floor/hybrisa/metal/zbrownfloor1,
+/turf/open/floor/hybrisa/metal/zbrownfloor1{
+	dir = 6
+	},
 /area/lv759/indoors/meridian/meridian_foyer)
 "bqk" = (
 /obj/item/trash/hotdog,
@@ -12857,7 +12861,7 @@
 "cjv" = (
 /turf/open/floor/prison{
 	dir = 9;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "cjw" = (
@@ -13653,9 +13657,15 @@
 	icon_state = "N";
 	pixel_y = 3
 	},
+/obj/effect/decal/cleanable/blackgoo{
+	color = "#0079ff";
+	desc = "It's dried to the floor.";
+	name = "spilled paint";
+	alpha = 50
+	},
 /turf/open/floor/prison{
 	dir = 1;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "coY" = (
@@ -18681,7 +18691,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 9;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "ddY" = (
@@ -19098,6 +19108,23 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/south)
+"dhh" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkbrown3"
+	},
+/area/lv759/indoors/meridian/meridian_foyer)
+"dhn" = (
+/obj/effect/decal/cleanable/blackgoo{
+	color = "#f400ff";
+	desc = "It's dried to the floor.";
+	name = "spilled paint";
+	alpha = 25;
+	pixel_x = 24;
+	pixel_y = 12
+	},
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/meridian/meridian_maintenance_south)
 "dho" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -24615,7 +24642,12 @@
 /area/lv759/outdoors/colony_streets/south_west_street)
 "ebm" = (
 /obj/structure/platform_decoration{
-	dir = 1
+	dir = 1;
+	layer = 3.1
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -20;
+	layer = 3
 	},
 /turf/open/floor/hybrisa/metal/zbrownfloor1{
 	dir = 8
@@ -24806,6 +24838,10 @@
 	},
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/north_street)
+"ecB" = (
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/prison,
+/area/lv759/indoors/meridian/meridian_foyer)
 "ecE" = (
 /obj/structure/bed/hybrisa/bunkbed1{
 	dir = 1
@@ -25231,6 +25267,9 @@
 	pixel_x = -1;
 	pixel_y = 9
 	},
+/obj/item/reagent_container/glass/beaker/vial,
+/obj/item/reagent_container/glass/beaker/vial,
+/obj/item/reagent_container/glass/beaker/vial,
 /obj/item/reagent_container/glass/beaker/vial,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/wy_research_complex/mainlabs)
@@ -26167,6 +26206,10 @@
 	icon_state = "4"
 	},
 /area/lv759/indoors/spaceport/starglider)
+"epc" = (
+/obj/structure/bed/sofa/south/grey/left,
+/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/area/lv759/indoors/meridian/meridian_foyer)
 "epo" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -36700,6 +36743,11 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/indoors/central_caves)
+"gba" = (
+/turf/open/floor/prison{
+	icon_state = "darkbrown3"
+	},
+/area/lv759/indoors/meridian/meridian_foyer)
 "gbg" = (
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
@@ -38856,9 +38904,7 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "gtR" = (
 /obj/structure/bed/sofa/south/grey/right,
-/turf/open/floor/hybrisa/metal/zbrownfloor1{
-	dir = 1
-	},
+/turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/lv759/indoors/meridian/meridian_foyer)
 "gtT" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
@@ -40378,7 +40424,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 5;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "gGY" = (
@@ -40963,7 +41009,7 @@
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "gLn" = (
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/meridian/meridian_showroom)
 "gLu" = (
 /obj/structure/platform/hybrisa/metalplatform1,
@@ -42384,10 +42430,6 @@
 	},
 /area/lv759/outdoors/colony_streets/north_east_street)
 "gWY" = (
-/obj/item/reagent_container/glass/paint/remover{
-	pixel_x = -12;
-	pixel_y = 9
-	},
 /obj/structure/bed/stool{
 	buckling_y = 14;
 	layer = 4;
@@ -42400,9 +42442,13 @@
 /obj/structure/machinery/light/blue{
 	dir = 1
 	},
+/obj/item/reagent_container/glass/paint/violet{
+	pixel_x = -14;
+	pixel_y = 4
+	},
 /turf/open/floor/prison{
 	dir = 1;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "gXa" = (
@@ -44608,7 +44654,7 @@
 /area/lv759/oob)
 "hpd" = (
 /obj/structure/platform/hybrisa/metalplatform3,
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/meridian/meridian_showroom)
 "hpe" = (
 /obj/effect/decal/warning_stripes{
@@ -44807,7 +44853,7 @@
 /area/lv759/indoors/north_caves)
 "hqX" = (
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/meridian/meridian_showroom)
 "hra" = (
 /turf/open/floor/hybrisa/misc/wybiglogo{
@@ -44822,6 +44868,12 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv759/indoors/north_caves)
+"hrp" = (
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "darkbrown3"
+	},
+/area/lv759/indoors/meridian/meridian_foyer)
 "hrt" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	dir = 4
@@ -48524,6 +48576,12 @@
 	icon_state = "red3"
 	},
 /area/lv759/indoors/spaceport/security_office)
+"hVN" = (
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkbrown3"
+	},
+/area/lv759/indoors/meridian/meridian_foyer)
 "hVP" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -51038,7 +51096,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 4;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "irX" = (
@@ -52545,6 +52603,7 @@
 /obj/item/reagent_container/glass/beaker,
 /obj/item/reagent_container/glass/beaker/vial,
 /obj/effect/landmark/objective_landmark/science,
+/obj/item/reagent_container/glass/beaker/vial,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/wy_research_complex/mainlabs)
 "iCO" = (
@@ -55621,7 +55680,7 @@
 /area/lv759/indoors/hospital/virology)
 "jft" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco3,
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/meridian/meridian_showroom)
 "jfD" = (
 /obj/structure/surface/rack,
@@ -55793,7 +55852,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 4;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "jgu" = (
@@ -56638,9 +56697,17 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/obj/effect/decal/cleanable/blackgoo{
+	color = "#0079ff";
+	desc = "It's dried to the floor.";
+	name = "spilled paint";
+	alpha = 50;
+	pixel_x = -12;
+	pixel_y = 8
+	},
 /turf/open/floor/prison{
 	dir = 10;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "joi" = (
@@ -57681,9 +57748,7 @@
 	pixel_x = -7;
 	pixel_y = 2
 	},
-/turf/open/floor/hybrisa/metal/zbrownfloor1{
-	dir = 1
-	},
+/turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/lv759/indoors/meridian/meridian_foyer)
 "jxy" = (
 /obj/item/ammo_magazine/smg/nailgun,
@@ -58164,7 +58229,6 @@
 	},
 /area/lv759/indoors/meridian/meridian_office)
 "jBD" = (
-/obj/item/reagent_container/glass/paint,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 2
@@ -58183,9 +58247,25 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
 	pixel_y = 28
 	},
+/obj/effect/decal/cleanable/blackgoo{
+	color = "#0079ff";
+	desc = "It's dried to the floor.";
+	name = "spilled paint";
+	alpha = 50;
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/glass/paint/blue,
+/obj/effect/decal/cleanable/blackgoo{
+	color = "#0079ff";
+	desc = "It's dried to the floor.";
+	name = "spilled paint";
+	alpha = 175;
+	pixel_y = 2
+	},
 /turf/open/floor/prison{
 	dir = 5;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "jBG" = (
@@ -60248,9 +60328,7 @@
 "jUP" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/hybrisa/metal/zbrownfloor1{
-	dir = 1
-	},
+/turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/lv759/indoors/meridian/meridian_foyer)
 "jUS" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -62599,6 +62677,12 @@
 	},
 /turf/open/gm/river/desert/shallow,
 /area/lv759/indoors/apartment/westentertainment)
+"knD" = (
+/obj/structure/bed/sofa/south/grey/right,
+/turf/open/floor/hybrisa/metal/zbrownfloor1{
+	dir = 9
+	},
+/area/lv759/indoors/meridian/meridian_foyer)
 "knK" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/machinery/light,
@@ -68599,7 +68683,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 10;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "lkC" = (
@@ -69753,7 +69837,7 @@
 /area/lv759/indoors/colonial_marshals/interrogation)
 "ltS" = (
 /turf/open/floor/prison{
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "ltW" = (
@@ -71525,7 +71609,7 @@
 "lHd" = (
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/hybrisa/metal/zbrownfloor1{
-	dir = 1
+	dir = 5
 	},
 /area/lv759/indoors/meridian/meridian_foyer)
 "lHf" = (
@@ -74733,7 +74817,7 @@
 "mkH" = (
 /turf/open/floor/prison{
 	dir = 6;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "mkL" = (
@@ -74803,7 +74887,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "mlf" = (
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/meridian/meridian_foyer)
 "mlj" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -75026,7 +75110,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/prison{
 	dir = 10;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "mnk" = (
@@ -76528,6 +76612,10 @@
 /area/lv759/indoors/wy_research_complex/hangarbay)
 "mzK" = (
 /obj/structure/largecrate/random,
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = -5;
+	pixel_y = 4
+	},
 /turf/open/floor/hybrisa/metal/zbrownfloor1{
 	dir = 9
 	},
@@ -86915,7 +87003,7 @@
 "omx" = (
 /turf/open/floor/prison{
 	dir = 1;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "omC" = (
@@ -89149,7 +89237,7 @@
 	pixel_x = 10;
 	pixel_y = 2
 	},
-/turf/open/floor/hybrisa/metal/zbrownfloor1,
+/turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/lv759/indoors/meridian/meridian_foyer)
 "oEt" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -95128,11 +95216,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/recycling_plant)
-"pBU" = (
-/turf/open/floor/prison{
-	dir = 10
-	},
-/area/lv759/indoors/meridian/meridian_foyer)
 "pBW" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
 	locked = 1
@@ -96578,7 +96661,7 @@
 	},
 /obj/structure/machinery/light/blue,
 /turf/open/floor/prison{
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "pNn" = (
@@ -102392,7 +102475,9 @@
 	pixel_y = 12
 	},
 /obj/item/reagent_container/food/snacks/meatpizzaslice,
-/turf/open/floor/hybrisa/metal/zbrownfloor1,
+/turf/open/floor/hybrisa/metal/zbrownfloor1{
+	dir = 10
+	},
 /area/lv759/indoors/meridian/meridian_foyer)
 "qKz" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
@@ -103329,6 +103414,26 @@
 	dir = 1
 	},
 /area/lv759/outdoors/landing_zone_2)
+"qSi" = (
+/obj/effect/decal/cleanable/blackgoo{
+	color = "#f400ff";
+	desc = "It's dried to the floor.";
+	name = "spilled paint";
+	alpha = 100
+	},
+/obj/effect/decal/cleanable/blackgoo{
+	color = "#f400ff";
+	desc = "It's dried to the floor.";
+	name = "spilled paint";
+	alpha = 25;
+	pixel_x = 12;
+	pixel_y = 4
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "ramptop"
+	},
+/area/lv759/indoors/meridian/meridian_factory)
 "qSm" = (
 /turf/open/floor/plating{
 	dir = 8;
@@ -104745,6 +104850,8 @@
 /obj/item/storage/fancy/vials/random,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/structure/surface/rack,
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker/large,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/wy_research_complex/mainlabs)
 "rfa" = (
@@ -107717,10 +107824,6 @@
 	icon_state = "S";
 	layer = 3.3
 	},
-/obj/item/reagent_container/glass/paint{
-	pixel_x = 8;
-	pixel_y = 18
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 2
@@ -107728,9 +107831,27 @@
 /obj/structure/window/reinforced{
 	layer = 5
 	},
+/obj/effect/decal/cleanable/blackgoo{
+	color = "#0079ff";
+	desc = "It's dried to the floor.";
+	name = "spilled paint";
+	alpha = 100
+	},
+/obj/effect/decal/cleanable/blackgoo{
+	color = "#0079ff";
+	desc = "It's dried to the floor.";
+	name = "spilled paint";
+	alpha = 50;
+	pixel_x = -12;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/glass/paint/blue{
+	pixel_y = 14;
+	pixel_x = 8
+	},
 /turf/open/floor/prison{
 	dir = 6;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "rDM" = (
@@ -111838,10 +111959,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/item/reagent_container/glass/paint,
+/obj/item/reagent_container/glass/paint/remover,
 /turf/open/floor/prison{
 	dir = 6;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "skv" = (
@@ -111983,6 +112104,9 @@
 /obj/item/tool/mop,
 /turf/open/floor/plating,
 /area/lv759/indoors/weymart/maintenance)
+"slR" = (
+/turf/open/floor/prison,
+/area/lv759/indoors/meridian/meridian_foyer)
 "slS" = (
 /obj/structure/girder/reinforced,
 /obj/effect/hybrisa/decal/dirt,
@@ -112090,7 +112214,7 @@
 	dir = 2
 	},
 /turf/open/floor/prison{
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "smN" = (
@@ -117453,6 +117577,9 @@
 	dir = 1;
 	layer = 1
 	},
+/obj/item/reagent_container/glass/beaker,
+/obj/item/reagent_container/glass/beaker,
+/obj/item/reagent_container/glass/beaker,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blackfull"
@@ -120315,6 +120442,12 @@
 	icon_state = "officesquares"
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
+"tEI" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkbrown3"
+	},
+/area/lv759/indoors/meridian/meridian_foyer)
 "tEK" = (
 /obj/structure/barricade/handrail/kutjevo,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -122421,7 +122554,7 @@
 "tWg" = (
 /turf/open/floor/prison{
 	dir = 4;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "tWh" = (
@@ -123074,7 +123207,7 @@
 "uaN" = (
 /turf/open/floor/prison{
 	dir = 8;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "uaR" = (
@@ -124297,7 +124430,7 @@
 	icon_state = "E"
 	},
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/meridian/meridian_foyer)
 "ulh" = (
 /obj/effect/decal/warning_stripes{
@@ -126426,6 +126559,12 @@
 /obj/structure/prop/hybrisa/containersextended/bluewywingsleft,
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/east_central_street)
+"uDm" = (
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "darkbrown3"
+	},
+/area/lv759/indoors/meridian/meridian_foyer)
 "uDs" = (
 /obj/structure/machinery/power/terminal{
 	dir = 8
@@ -126813,7 +126952,7 @@
 "uGm" = (
 /turf/open/floor/prison{
 	dir = 5;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "uGo" = (
@@ -127999,7 +128138,7 @@
 	},
 /obj/structure/machinery/door/window/brigdoor/southright,
 /turf/open/floor/prison{
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "uOM" = (
@@ -128187,7 +128326,6 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/north_street)
 "uQh" = (
-/obj/item/reagent_container/glass/paint,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
@@ -128198,9 +128336,26 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
 	pixel_y = 18
 	},
+/obj/effect/decal/cleanable/blackgoo{
+	color = "#f400ff";
+	desc = "It's dried to the floor.";
+	name = "spilled paint";
+	alpha = 150
+	},
+/obj/effect/decal/cleanable/blackgoo{
+	color = "#f400ff";
+	desc = "It's dried to the floor.";
+	name = "spilled paint";
+	alpha = 75;
+	pixel_x = 12;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/glass/paint/violet{
+	pixel_y = -6
+	},
 /turf/open/floor/prison{
 	dir = 9;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "uQi" = (
@@ -130536,7 +130691,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/meridian/meridian_foyer)
 "vli" = (
 /obj/structure/machinery/vending/coffee,
@@ -130795,7 +130950,10 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "vnO" = (
 /obj/effect/hybrisa/decal/meridianlogo/meridianlogo_left,
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkbrown3"
+	},
 /area/lv759/indoors/meridian/meridian_foyer)
 "vnV" = (
 /obj/effect/spawner/random/sentry/highchance,
@@ -133593,6 +133751,10 @@
 /obj/structure/platform_decoration{
 	dir = 4
 	},
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 18
+	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "cell_stripe"
@@ -135273,7 +135435,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 1;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "vYF" = (
@@ -135842,6 +136004,8 @@
 /obj/item/reagent_container/glass/beaker,
 /obj/item/reagent_container/glass/beaker/vial,
 /obj/effect/landmark/objective_landmark/science,
+/obj/item/reagent_container/glass/beaker,
+/obj/item/reagent_container/glass/beaker,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/wy_research_complex/mainlabs)
 "wdI" = (
@@ -137513,7 +137677,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 1;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "wsD" = (
@@ -137892,7 +138056,10 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "darkbrown3"
+	},
 /area/lv759/indoors/meridian/meridian_foyer)
 "wvG" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -140360,6 +140527,7 @@
 	dir = 1;
 	layer = 2
 	},
+/obj/item/reagent_container/glass/beaker/large,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/wy_research_complex/mainlabs)
 "wRj" = (
@@ -142578,7 +142746,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 8;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "xjr" = (
@@ -144511,7 +144679,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 1;
-	icon_state = "darkyellow2"
+	icon_state = "darkbrown3"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "xxn" = (
@@ -144581,7 +144749,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "xxO" = (
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/meridian/meridian_foyer)
 "xxQ" = (
 /turf/open/auto_turf/sand_white/layer0{
@@ -145661,7 +145829,7 @@
 	layer = 7;
 	pixel_y = 9
 	},
-/turf/open/floor/hybrisa/metal/zbrownfloor1,
+/turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/lv759/indoors/meridian/meridian_foyer)
 "xFG" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -149298,7 +149466,7 @@
 /obj/structure/platform/hybrisa/metalplatform3{
 	dir = 8
 	},
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/meridian/meridian_showroom)
 "ylg" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -176753,11 +176921,11 @@ ofM
 nvP
 qcQ
 gtR
-von
-von
-von
+uDm
+hVN
+hVN
 vnO
-pBU
+von
 vxw
 ddQ
 rNu
@@ -177005,11 +177173,11 @@ ofM
 nvP
 bvU
 jxx
+dhh
+slR
+ecB
+gba
 von
-von
-heu
-von
-cbi
 xHA
 ddQ
 svn
@@ -177257,9 +177425,9 @@ ofM
 nvP
 bvU
 jUP
-von
-von
-von
+dhh
+slR
+slR
 aSR
 oEs
 xHA
@@ -177508,11 +177676,11 @@ rfM
 coF
 vrE
 qcQ
-lHd
+epc
 wvC
-von
-von
-von
+tEI
+tEI
+hrp
 xFx
 rbA
 nlq
@@ -177760,7 +177928,7 @@ scd
 jSG
 nvP
 bvU
-gtR
+knD
 ifL
 von
 von
@@ -178275,7 +178443,7 @@ wIL
 xhn
 bne
 bne
-bne
+dhn
 hcI
 hcI
 hcI
@@ -179031,7 +179199,7 @@ fbo
 nyh
 iHZ
 xxk
-jUV
+qSi
 pNf
 iHZ
 rFo

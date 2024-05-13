@@ -214,7 +214,9 @@ Template
 	name = "Falling Falcons"
 	desc = "Promotional material for the 2nd Company of the 2nd Battalion of the 4th Brigade, the Falling Falcons. Designed by an unknown artist and printed in an effort to bolster the ranks of the Falling Falcons."
 
-// Hybrisa
+// Hybrisa Posters //
+
+/// Alien Isolation - posters used as reference (direct downscale of the image for some) ///
 /datum/poster/poster_42
 	icon_state="poster42"
 	name = "Colonial Marines poster"

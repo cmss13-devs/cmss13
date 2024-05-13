@@ -1964,6 +1964,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 
 // Billboards, Signs and Posters
 
+/// Alien Isolation - posters used as reference (direct downscale of the image for some) If anyone wants to name the billboards individually ///
 /obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards
 	name = "billboard"
 	desc = "A advertisement billboard."

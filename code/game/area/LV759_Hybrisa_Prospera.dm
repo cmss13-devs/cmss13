@@ -269,7 +269,7 @@
 	icon_state = "security_checkpoint"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/cargo
-	name = "Weyland-Yutani Celestia Gateway Space-Port - Cargo"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Cargo Bay"
 	icon_state = "WYSpaceportcargo"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/cargo_maintenance

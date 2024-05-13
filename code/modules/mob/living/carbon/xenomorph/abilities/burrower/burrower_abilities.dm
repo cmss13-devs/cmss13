@@ -10,6 +10,11 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/burrow/use_ability(atom/A)
+
+	if(SSticker?.mode?.hardcore)
+		to_chat(X, SPAN_XENOWARNING("A certain presence is preventing us from burrowing here."))
+		return
+
 	var/mob/living/carbon/xenomorph/X = owner
 	if(HAS_TRAIT(X, TRAIT_ABILITY_BURROWED))
 		X.tunnel(get_turf(A))

@@ -23,7 +23,7 @@
 /obj/structure/machinery/phonebox
 	name = "phonebox"
 	icon = 'icons/obj/structures/props/phonebox .dmi'
-	icon_state = "borgcharger0"
+	icon_state = "phonebox_off_open"
 	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are... It seems the line is down though."
 	density = TRUE
 	anchored = TRUE
@@ -34,6 +34,7 @@
 	var/icon_update_tick = 0
 	///stun time upon exiting, if at all
 	var/exit_stun = 2
+	var/open = TRUE
 
 /obj/structure/machinery/phonebox/Initialize(mapload, ...)
 	. = ..()
@@ -69,13 +70,19 @@
 /obj/structure/machinery/phonebox/update_icon()
 	..()
 	if(stat & NOPOWER)
-		icon_state = "phonebox_off_open"
-		if(src.occupant)
-			icon_state = "phonebox_off_full_closed"
+		if(!open)
+			icon_state = "phonebox_off_closed"
+			if(src.occupant)
+				icon_state = "phonebox_off_full_closed"
+		else
+			icon_state = "phonebox_off_open"
 	else
-		icon_state = "phonebox_on_open"
-		if(src.occupant)
-			icon_state = "phonebox_on_full_closed"
+		if(!open)
+			icon_state = "phonebox_on_closed"
+			if(src.occupant)
+				icon_state = "phonebox_on_full_closed"
+		else
+			icon_state =  "phonebox_on_open"
 
 /obj/structure/machinery/phonebox/proc/go_out()
 	if(!occupant)
@@ -92,12 +99,15 @@
 		synth.visible_message(SPAN_WARNING("[synth] suddenly gets out of [src]!"), SPAN_WARNING("You get out of [src] and get your bearings!"))
 
 	occupant = null
+	open = TRUE
 	update_icon()
 
 /obj/structure/machinery/phonebox/do_buckle(mob/target, mob/user)
 	return move_mob_inside(target)
 
 /obj/structure/machinery/phonebox/verb/move_mob_inside(mob/living/M)
+	if(!open)
+		return FALSE
 	if (occupant)
 		return FALSE
 	M.stop_pulling()
@@ -108,6 +118,7 @@
 	src.occupant = M
 	start_processing()
 	src.add_fingerprint(usr)
+	src.open = FALSE
 	update_icon()
 	return TRUE
 
@@ -121,6 +132,13 @@
 	src.go_out()
 	add_fingerprint(usr)
 	return
+
+/obj/structure/machinery/phonebox/attack_hand(mob/living/user)
+	if(src.open)
+		src.open = FALSE
+	else
+		src.open = TRUE
+	src.go_out()
 
 
 

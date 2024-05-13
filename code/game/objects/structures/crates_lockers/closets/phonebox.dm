@@ -71,14 +71,14 @@
 	..()
 	if(stat & NOPOWER)
 		if(!open)
-			icon_state = "phonebox_off_closed"
+			icon_state = "phonebox_off_empty_closed"
 			if(src.occupant)
 				icon_state = "phonebox_off_full_closed"
 		else
 			icon_state = "phonebox_off_open"
 	else
 		if(!open)
-			icon_state = "phonebox_on_closed"
+			icon_state = "phonebox_on_empty_closed"
 			if(src.occupant)
 				icon_state = "phonebox_on_full_closed"
 		else
@@ -139,6 +139,7 @@
 	else
 		src.open = TRUE
 	src.go_out()
+	update_icon()
 
 
 

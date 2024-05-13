@@ -8,22 +8,17 @@
 	icon_state = "security"
 	req_access = list(ACCESS_MARINE_BRIG)
 	circuit = /obj/item/circuitboard/computer/secure_data
-
 	// if the user currently logged into the system
 	var/authenticated = FALSE
-
-	// the mob we select to view security logs from.
-	var/mob/living/carbon/human/target_mob
-
-	// fugly list that we pass into tgui to display the data. Why fugly? see the retreieve_general_records proc.
-	var/list/general_records = list()
-
 	// ID of the user currently griefing the logs
 	var/obj/item/card/id/user_id_card = null
-
 	var/obj/item/device/clue_scanner/scanner = null
-
-	// target's security record
+	// the names of all living human mobs.
+	var/list/human_mob_names = list()
+	// the name of the mob we select to view security logs from.
+	var/target_mob
+	// target's record
+	var/list/target_general_record = list()
 	var/list/target_security_record = list()
 
 /obj/structure/machinery/computer/secure_data/proc/authenticate(mob/user, obj/item/card/id/id_card)
@@ -81,45 +76,77 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-// dump the general records, get all of them. Immutable data for now.
-/obj/structure/machinery/computer/secure_data/proc/retrieve_general_records()
-	var/list/full_general_record
+// dump the general records, get all of the names. Immutable data for the players.
+/obj/structure/machinery/computer/secure_data/proc/retrieve_human_mob_names()
+	var/list/mob_names
+
+	// No, we can't use GLOB.human_mob_list since a mob is removed from that list when it gets deleted.
 	for(var/record as anything in GLOB.data_core.general)
 		var/datum/data/record/new_record = GLOB.data_core.general[record]
-		// TODO: PASS IN AN OBJECT INSTEAD
-		full_general_record += list(
-			list(new_record?.fields[MOB_NAME],"Name: "),
-			list(new_record?.fields[MOB_AGE],"Age: "),
-			list(new_record?.fields[MOB_SEX],"Sex: "),
-			list(new_record?.fields[MOB_BLOOD_TYPE],"Blood Type: "),
-		)
+		mob_names += new_record.fields[MOB_NAME]
 
-	return full_general_record
+	return mob_names
 
 // to make accessing the records more performant we only retrieve the security logs when a new target is selected in tgui or the record itself is updated.
-/obj/structure/machinery/computer/secure_data/proc/retrieve_target_security_record(mob/living/carbon/human/user)
-	if(!user)
+/obj/structure/machinery/computer/secure_data/proc/retrieve_target_record(username)
+	if(!username)
 		return
 
-	var/list/target_record
-	var/datum/data/record/target_sec_record = GLOB.data_core.security[user.record_id_ref]
-	target_record = list(
-		// TODO: PASS IN AN OBJECT INSTEAD
-		list(MOB_CRIMINAL_STATUS, target_sec_record?.fields[MOB_CRIMINAL_STATUS],"Criminal Status: "),
-		list(MOB_INCIDENTS, target_sec_record?.fields[MOB_INCIDENTS],"Incidents: "),
-		list(MOB_SECURITY_COMMENT_LOG, target_sec_record?.fields[MOB_SECURITY_COMMENT_LOG], "Security Entry: "),
-		list(MOB_SECURITY_NOTES, target_sec_record?.fields[MOB_SECURITY_NOTES], "Security Notes: ")
+	// lowkey this use of associated lists for the record_id is unnecesasry in the new implementation, whatever, in 10 years someone can refactor it again.
+	var/datum/data/record/target_sec_record = retrieve_record(mob_name = username, record_type = RECORD_TYPE_SECURITY)
+	var/datum/data/record/target_gen_record = retrieve_record(mob_name = username, record_type = RECORD_TYPE_GENERAL)
+	target_general_record = list(
+		name = list(
+			value = target_gen_record?.fields[MOB_NAME],
+			message = "Name: "
+			),
+		age =list(
+			value = target_gen_record?.fields[MOB_AGE],
+			message ="Age: "
+			),
+		sex = list(
+			value = target_gen_record?.fields[MOB_SEX],
+			message ="Sex: "
+			),
+		blood_type = list(
+			value = target_gen_record?.fields[MOB_BLOOD_TYPE],
+			message = "Blood Type: "
+			)
+		)
+
+	target_security_record = list(
+		crime_stat = list(
+			stat = MOB_CRIMINAL_STATUS,
+			value = target_sec_record?.fields[MOB_CRIMINAL_STATUS],
+			message = "Criminal Status: "
+		),
+		incident =list(
+			stat = MOB_INCIDENTS,
+			value = target_sec_record?.fields[MOB_INCIDENTS],
+			message = "Incidents: "
+		),
+		entry = list(
+			stat = MOB_SECURITY_COMMENT_LOG,
+			value = target_sec_record?.fields[MOB_SECURITY_COMMENT_LOG],
+			message ="Security Entry: "
+		),
+		notes = list(
+			stat = MOB_SECURITY_NOTES,
+			value = target_sec_record?.fields[MOB_SECURITY_NOTES],
+			message ="Security Notes: "
+		)
 	)
 
-	return target_record
+	if(!target_gen_record || !target_security_record)
+		return FALSE
+	return TRUE
 
 
 /obj/structure/machinery/computer/secure_data/attack_hand(mob/user as mob)
 	if(..() || inoperable())
 		return
 
-	general_records = retrieve_general_records()
-	if(!general_records)
+	if(!retrieve_human_mob_names())
 		visible_message("[SPAN_BOLD("[src]")] states, \"DATACORE FAILURE: Unable to retrieve database logs.\"")
 		return
 	user.set_interaction(src)
@@ -611,7 +638,7 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "SecMod", name)
+		ui = new(user, src, "SecRec", name)
 		ui.open()
 
 /obj/structure/machinery/computer/secure_data/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -653,27 +680,29 @@
 			return TRUE
 		if("selectTarget")
 			var/name = params["new_user"]
-			if(name == target_mob.name)
+			if(name == target_mob)
 				return
-			for(var/mob/living/carbon/human/selected_human in GLOB.human_mob_list)
-				if(selected_human.name == name)
-					target_mob = selected_human
-			target_security_record = retrieve_target_security_record(target_mob)
+			target_mob = name
+			retrieve_target_record(name)
 			return TRUE
 		if("updateStatRecord")
-			GLOB.data_core.security[target_mob.record_id_ref].fields[params["stat"]] = params["new_value"]
+			insert_record_stat(mob_name = target_mob, record_type = RECORD_TYPE_SECURITY, stat_type = params["stat"], new_stat = params["new_value"])
+			retrieve_target_record(target_mob) // let's update after we change any information.
 			return TRUE
+
 
 /obj/structure/machinery/computer/secure_data/ui_static_data(mob/user)
 	var/list/data = list()
-	data["general_record"] = general_records
+	data["mob_names"] = human_mob_names
 	return data
 
 /obj/structure/machinery/computer/secure_data/ui_data(mob/user)
 	var/list/data = list()
 
-	data["selecteded_target_name"] = target_mob ?  target_mob.name : "None"// is there a selected target.
+	data["human_mob_list"] = GLOB.human_mob_list
+	data["selected_target_name"] = target_mob ? target_mob : "None"// is there a selected target.
 	data["security_record"] = target_security_record
+	data["general_record"] = target_general_record
 	data["has_id"] = !!user_id_card
 	data["id_name"] = user_id_card ? user_id_card?.name : "-----"
 	data["authenticated"] = authenticated

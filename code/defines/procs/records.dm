@@ -32,6 +32,17 @@
 
 	return retrieved_record
 
+/proc/insert_record_stat(record_id = null, mob_name = null, mob_ref = null, record_type = RECORD_TYPE_GENERAL, stat_type = null, new_stat = null)
+	if(!stat_type || !new_stat)
+		return
+
+	var/datum/data/record/retrieved_record = retrieve_record(record_id, mob_name, mob_ref, record_type)
+	if(!retrieved_record)
+		return FALSE
+	retrieved_record[stat_type] = new_stat
+
+	return TRUE
+
 /proc/create_general_record(mob/living/carbon/human/person)
 	var/datum/data/record/general_record = new()
 	general_record.fields[MOB_NAME] = person.real_name ?  person.real_name : "Unassigned"

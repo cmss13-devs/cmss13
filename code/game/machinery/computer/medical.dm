@@ -55,7 +55,7 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "MedMod", name)
+		ui = new(user, src, "MedRec", name)
 		ui.open()
 
 /obj/structure/machinery/computer/double_id/med_data/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -179,13 +179,23 @@
 
 /obj/structure/machinery/computer/double_id/med_data/ui_static_data(mob/user)
 	var/list/data = list()
-	// general information, it is never modified.
-	// TODO, UTILIZE AN OBJECT INSTEAD.
 	data["general_record"] = list(
-		list(target_record_general?.fields[MOB_NAME],"Name: "),
-		list(target_record_general?.fields[MOB_AGE],"Age: "),
-		list(target_record_general?.fields[MOB_SEX],"Sex: "),
-		list(target_record_medical?.fields[MOB_BLOOD_TYPE],"Blood Type: ")
+		list(
+			value = target_record_general?.fields[MOB_NAME],
+			message = "Name: "
+			),
+		list(
+			value = target_record_general?.fields[MOB_AGE],
+			message ="Age: "
+			),
+		list(
+			value = target_record_general?.fields[MOB_SEX],
+			message ="Sex: "
+			),
+		list(
+			value = target_record_medical?.fields[MOB_BLOOD_TYPE],
+			message = "Blood Type: "
+			)
 		)
 
 	return data
@@ -193,16 +203,47 @@
 /obj/structure/machinery/computer/double_id/med_data/ui_data(mob/user)
 	var/list/data = list()
 
-	// TODO, UTILIZE AN OBJECT INSTEAD.
 	data["medical_record"] = list(
-		list(MEDICAL, MOB_MEDICAL_NOTES, target_record_medical?.fields[MOB_MEDICAL_NOTES],"General Notes: "),
-		list(GENERAL, MOB_MENTAL_STATUS, target_record_general?.fields[MOB_MENTAL_STATUS],"Psychiatric History: "),
-		list(MEDICAL, MOB_DISEASES, target_record_medical?.fields[MOB_DISEASES],"Disease History: "),
-		list(MEDICAL, MOB_DISABILITIES, target_record_medical?.fields[MOB_DISABILITIES],"Disability History: ")
+		list(
+			stat_type = MEDICAL,
+			stat = MOB_MEDICAL_NOTES,
+			value = target_record_medical?.fields[MOB_MEDICAL_NOTES],
+			message = "General Notes: "
+			),
+			list(
+				stat_type = GENERAL,
+				stat = MOB_MENTAL_STATUS,
+				value = target_record_general?.fields[MOB_MENTAL_STATUS],
+				message = "Psychiatric History: "
+				),
+			list(
+				stat_type = MEDICAL,
+				stat = MOB_DISEASES,
+				value = target_record_medical?.fields[MOB_DISEASES],
+				message = "Disease History: "
+				),
+			list(
+				stat_type = MEDICAL,
+				stat = MOB_DISABILITIES,
+				value = target_record_medical?.fields[MOB_DISABILITIES],
+				message = "Disability History: "
+				)
 		)
-	data["death"] = list(MEDICAL, MOB_CAUSE_OF_DEATH, target_record_medical?.fields[MOB_CAUSE_OF_DEATH],"Cause Of Death: ")
-	data["health"] = list(GENERAL, MOB_HEALTH_STATUS, target_record_general?.fields[MOB_HEALTH_STATUS],"Health Status: ")
-	data["autopsy"] = list(MEDICAL, MOB_AUTOPSY_NOTES, target_record_medical?.fields[MOB_AUTOPSY_NOTES],"Autopsy Notes: ")
+	data["death"] = list(
+		stat_type = MEDICAL,
+		stat = MOB_CAUSE_OF_DEATH,
+		value = target_record_medical?.fields[MOB_CAUSE_OF_DEATH],
+		message = "Cause Of Death: ")
+	data["health"] = list(
+		stat_type = GENERAL,
+		stat = MOB_HEALTH_STATUS,
+		value = target_record_general?.fields[MOB_HEALTH_STATUS],
+		message = "Health Status: ")
+	data["autopsy"] = list(
+		stat_type = MEDICAL,
+		stat = MOB_AUTOPSY_NOTES,
+		value = target_record_medical?.fields[MOB_AUTOPSY_NOTES],
+		message = "Autopsy Notes: ")
 	data["existingReport"] = target_record_medical?.fields[MOB_AUTOPSY_SUBMISSION]
 	data["authenticated"] = authenticated
 	data["has_id"] = !!target_id_card

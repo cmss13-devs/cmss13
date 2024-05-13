@@ -162,7 +162,7 @@
 
 /obj/item/mortar_shell/attack_hand(mob/user)
 	if(burning)
-		to_chat(user, SPAN_DANGER("\The [src] is on fire and might explode!"))
+		to_chat(user, SPAN_DANGER("[src] is on fire and might explode!"))
 		return
 	return ..()
 
@@ -174,7 +174,7 @@
 	handle_fire()
 
 /obj/item/mortar_shell/proc/handle_fire()
-	visible_message(SPAN_WARNING("\The [src] catches on fire and starts cooking off! It's gonna blow!"))
+	visible_message(SPAN_WARNING("[src] catches on fire and starts cooking off! It's gonna blow!"))
 	anchored = TRUE // don't want other explosions launching it elsewhere
 
 	var/datum/effect_system/spark_spread/sparks = new()

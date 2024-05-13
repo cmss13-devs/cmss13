@@ -13,6 +13,10 @@
 	var/upgrade_type
 	///Clearance requirment to buy this upgrade. 5x is level 6. Why is it not that way? no one knows.
 	var/clearance_req = 5
+	///The change of an item per purchase
+	var/change_purchase = 0
+	///the minimum price which we cant go any cheaper
+	var/minimum_price = 1000
 
 /datum/research_upgrades/machinery
 	name = "Machinery"
@@ -92,6 +96,14 @@
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	clearance_req = 5
+/datum/research_upgrades/item/nanosplints
+	name = "Reinforced Fiber Splints"
+	desc = "A set of splints made from durable carbon fiber sheets reinforced with flexible titanium lattice, comes in a stack of five."
+	value_upgrade = 800
+	clearance_req = 5
+	item_reference = /obj/item/stack/medical/splint/nano/research
+	behavior = RESEARCH_UPGRADE_TIER_1
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
 
 /datum/research_upgrades/armor
 	name = "Armor"
@@ -102,7 +114,7 @@
 	desc = "A uniform-attachable plate capable of translating any unknown language heard by the wearer."
 	value_upgrade = 2000
 	behavior = RESEARCH_UPGRADE_TIER_1
-	clearance_req = 5
+	clearance_req = 6
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	item_reference = /obj/item/clothing/accessory/health/research_plate/translator
 
@@ -119,7 +131,7 @@
 /datum/research_upgrades/armor/emergency_injector
 	name = "Medical Emergency Injector"
 	desc = "A medical plate with two buttons on the sides with hefty chemical tank. Attached to uniform and on simultanious press injects emergency dose of medical chemicals much larger than a normal emergency autoinjector. Single time use and is recycled in biomass printer. Features overdose protection"
-	value_upgrade = 750
+	value_upgrade = 250
 	clearance_req = 1
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ARMOR_UPGRADE
@@ -127,12 +139,21 @@
 
 /datum/research_upgrades/armor/ceramic
 	name = "Ceramic Armor Plate"
-	desc = "A strong trauma plate, able to protect the user from a large amount of bullets. completely useless against sharp objects."
+	desc = "A strong trauma plate, able to protect the user from a large amount of bullets. Completely useless against sharp objects."
 	value_upgrade = 500
 	clearance_req = 4
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	item_reference = /obj/item/clothing/accessory/health/ceramic_plate
+
+/datum/research_upgrades/armor/preservation
+	name = "Death Preservation Plate"
+	desc = "preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead, due to small tank of preservatives, it needs to be replaced on each death."
+	value_upgrade = 500
+	clearance_req = 4
+	behavior = RESEARCH_UPGRADE_TIER_1
+	upgrade_type = ITEM_ARMOR_UPGRADE
+	item_reference = /obj/item/clothing/accessory/health/research_plate/anti_decay
 
 
 

@@ -288,7 +288,7 @@
 	if(. == FALSE)
 		return
 	if(user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
-		to_chat(user, SPAN_NOTICE("You feel coagulator peeling off from your skin."))
+		to_chat(user, SPAN_NOTICE("You feel [src] peeling off from your skin."))
 		user.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
 		attached_uni = null
 
@@ -310,7 +310,7 @@
 		"dexalinp" = 1,
 		"inaprovaline" = 30,
 	)
-	recyclable_value = 500
+	recyclable_value = 100
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/Destroy()
 	wearer = null
@@ -397,3 +397,52 @@
 		to_chat(wearer, SPAN_DANGER("You hold the two buttons, and the plate injects the chemicals, but makes a relieving beep, indicating it adjusted amounts it injected to prevent overdose!"))
 	playsound(loc, "sound/items/air_release.ogg", 100, TRUE)
 	used = TRUE
+
+/obj/item/clothing/accessory/health/research_plate/anti_decay
+	name = "experimental preservation plate"
+	desc = "preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead, due to small tank of preservatives, it needs to be replaced on each death."
+	var/mob/living/carbon/human/wearer
+	var/used = FALSE
+
+
+/obj/item/clothing/accessory/health/research_plate/anti_decay/Destroy()
+	. = ..()
+	wearer = null
+
+/obj/item/clothing/accessory/health/research_plate/anti_decay/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
+	. = ..()
+	wearer = user
+	if(!used)
+		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(begin_preserving))
+		user.revive_grace_period += 2 MINUTES
+
+/obj/item/clothing/accessory/health/research_plate/anti_decay/on_removed(mob/living/user, obj/item/clothing/C)
+	. = ..()
+	wearer = null
+	attached_uni = null
+
+/obj/item/clothing/accessory/health/research_plate/anti_decay/on_removed_sig(mob/living/user, slot)
+	. = ..()
+	if(. == FALSE)
+		return
+	wearer = null
+	attached_uni = null
+
+/obj/item/clothing/accessory/health/research_plate/anti_decay/proc/begin_preserving()
+	SIGNAL_HANDLER
+	UnregisterSignal(wearer, COMSIG_MOB_DEATH)
+	to_chat(wearer, SPAN_NOTICE("The [src] detects your death and starts injecting various chemicals to slow down your final demise!"))
+	RegisterSignal(wearer, COMSIG_HUMAN_REVIVED, PROC_REF(onetime_use))
+
+/obj/item/clothing/accessory/health/research_plate/anti_decay/proc/onetime_use()
+	SIGNAL_HANDLER
+	UnregisterSignal(wearer, COMSIG_HUMAN_REVIVED)
+	to_chat(wearer, SPAN_NOTICE("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps: Chemical preservatives reserves depleted, replace the [src]"))
+	wearer.revive_grace_period = 5 MINUTES
+	used = TRUE
+
+
+
+
+
+

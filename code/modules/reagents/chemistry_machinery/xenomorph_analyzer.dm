@@ -4,11 +4,13 @@
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
-	icon_state = "xeno_analyzer_off" //for the time while no sprites
+	icon_state = "xeno_analyzer" //for the time while no sprites
 	use_power = USE_POWER_NONE
 	wrenchable = FALSE
 	idle_power_usage = 40
 	bound_x = 32
+	///assoc list containing the path to every upgrade followed by a number representing times this tech was bought. used by price inflation mechanic to increase/decrease price depending on the amount of times you bought it.
+	var/list/technology_purchased = list()
 	var/biomass_points = 0 //most important thing in this
 	var/obj/item/organ/xeno/organ = null
 	var/busy = FALSE
@@ -82,11 +84,12 @@
 			continue
 		if(upgrade.behavior == RESEARCH_UPGRADE_EXCLUDE_BUY)
 			continue
+		var/price_adjustment = upgrade.value_upgrade + upgrade.change_purchase * LAZYISIN(technology_purchased, upgrade_type)
 		static_data["upgrades"] += list(list(
 			"name" = capitalize_first_letters(upgrade.name),
 			"desc" = upgrade.desc,
 			"vari" = upgrade.behavior,
-			"cost" = upgrade.value_upgrade,
+			"cost" = price_adjustment,
 			"ref" = upgrade.item_reference,
 			"category" = upgrade.upgrade_type,
 			"clearance" = upgrade.clearance_req,
@@ -122,22 +125,24 @@
 		return
 	if(isnull(organ))
 		return
-	icon_state = "xeno_analyzer_off"
+	icon_state = "xeno_analyzer"
 	organ.forceMove(get_turf(src))
 	organ = null
 
 /obj/structure/machinery/xenoanalyzer/proc/process_organ(biomass_points_to_add)
 	biomass_points += biomass_points_to_add
-	icon_state = "xeno_analyzer_off"
+	icon_state = "xeno_analyzer"
 	busy = FALSE
 
 
 /obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, mob/user, variation)
 	if (stat & NOPOWER)
+		icon_state = "xeno_analyzer_off"
 		return
 	var/path_exists = FALSE
 	var/datum/research_upgrades/upgrade
-	for(var/datum_upgrades in subtypesof(/datum/research_upgrades))
+	var/datum_upgrades
+	for(datum_upgrades in subtypesof(/datum/research_upgrades))
 		upgrade = datum_upgrades
 		if(upgrade.behavior == RESEARCH_UPGRADE_CATEGORY || upgrade.behavior == RESEARCH_UPGRADE_EXCLUDE_BUY)
 			continue
@@ -156,10 +161,12 @@
 	icon_state = "xeno_analyzer_printing"
 	busy = TRUE
 	biomass_points -= upgrade.value_upgrade
+	technology_purchased[datum_upgrades] += 1
+	to_world("1")
 	addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path, variation), 3 SECONDS)
 
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, variation)
 	busy = FALSE
-	icon_state = "xeno_analyzer_off"
+	icon_state = "xeno_analyzer"
 	new produce_path(get_turf(src), variation)
 

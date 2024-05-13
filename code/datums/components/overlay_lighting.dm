@@ -356,7 +356,7 @@
 	if(current_holder && overlay_lighting_flags & LIGHTING_ON)
 		current_holder.underlays += visible_mask
 	if(directional)
-		cast_range = clamp(round(new_range * 0.5), 1, 3)
+		cast_range = clamp(floor(new_range * 0.5), 1, 3)
 	if(overlay_lighting_flags & LIGHTING_ON)
 		make_luminosity_update()
 

@@ -245,7 +245,7 @@
 			P.wrapped = O
 			O.forceMove(P)
 			P.w_class = O.w_class
-			var/i = round(P.w_class)
+			var/i = floor(P.w_class)
 			if(i in list(1,2,3,4,5))
 				P.icon_state = "deliverycrate[i]"
 				switch(i)

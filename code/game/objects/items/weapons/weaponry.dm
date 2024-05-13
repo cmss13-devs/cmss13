@@ -219,7 +219,7 @@
 
 	var/power = force
 	if(user.skills)
-		power = round(power * (1 + 0.3*user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //30% bonus per melee level
+		power = floor(power * (1 + 0.3*user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //30% bonus per melee level
 
 
 	//if the target also has a katana (and we aren't attacking ourselves), we add some suspense

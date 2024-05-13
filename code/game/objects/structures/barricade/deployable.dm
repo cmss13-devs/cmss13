@@ -269,7 +269,7 @@
 
 /obj/item/stack/folding_barricade/get_examine_text(mob/user)
 	. = ..()
-	if(round(min(stack_health)/maxhealth * 100) <= 75)
+	if(floor(min(stack_health)/maxhealth * 100) <= 75)
 		. += SPAN_WARNING("It appears to be damaged.")
 
 /obj/item/stack/folding_barricade/three

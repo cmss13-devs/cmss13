@@ -1059,7 +1059,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 
 	var/cur_user_zone_sel = busy_user.zone_selected
 	var/cur_target_zone_sel
-	var/delayfraction = Ceiling(delay/numticks)
+	var/delayfraction = ceil(delay/numticks)
 	var/user_orig_loc = busy_user.loc
 	var/user_orig_turf = get_turf(busy_user)
 	var/target_orig_loc
@@ -1561,7 +1561,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
-		. += Ceiling(i*DELTA_CALC)
+		. += ceil(i*DELTA_CALC)
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
@@ -1664,7 +1664,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 
 	// Redistribute the net displacement evenly on the side of the center line that needs it
 	// Only half the points are gonna be affected.
-	var/to_redistribute = abs(Ceiling(net_displacement / (variances.len/2)))
+	var/to_redistribute = abs(ceil(net_displacement / (variances.len/2)))
 	for(var/i in 1 to variances.len)
 		if(!net_displacement)
 			break

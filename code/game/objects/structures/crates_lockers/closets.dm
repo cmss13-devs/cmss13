@@ -127,7 +127,7 @@
 			var/obj/item/explosive/plastic/P = I
 			if(P.active)
 				continue
-		var/item_size = Ceiling(I.w_class / 2)
+		var/item_size = ceil(I.w_class / 2)
 		if(stored_units + item_size > storage_capacity)
 			continue
 		if(!I.anchored)

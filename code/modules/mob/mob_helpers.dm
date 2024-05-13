@@ -224,7 +224,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	if(strength < 1)
 		return phrase
 	else
-		strength = Ceiling(strength/5)
+		strength = ceil(strength/5)
 
 	var/list/split_phrase = text2list(phrase," ") //Split it up into words.
 	var/list/unstuttered_words = split_phrase.Copy()

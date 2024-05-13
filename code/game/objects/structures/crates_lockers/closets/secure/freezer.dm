@@ -162,4 +162,4 @@
 			break
 
 	if(containers_ready) //at least 1 container has finished, ring the bell
-		playsound(freezer.loc, 'sound/misc/desk_bell.ogg', 150)
+		playsound(freezer.loc, 'sound/machines/ding.ogg', 150)

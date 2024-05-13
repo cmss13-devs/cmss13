@@ -601,10 +601,10 @@
 			effective_total++
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
+	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
-	slots[TIER_2][OPEN_SLOTS] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
+	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
 
 	return slots
 
@@ -726,7 +726,7 @@
 		if(is_mainship_level(turf?.z))
 			shipside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
 	hijack_burrowed_surge = TRUE
-	hijack_burrowed_left = max(Ceiling(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
+	hijack_burrowed_left = max(ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
@@ -832,7 +832,7 @@
 		if(cycled_xeno.counts_for_slots)
 			countable_xeno_iterator++
 
-	playable_hugger_limit = max(Floor(countable_xeno_iterator / playable_hugger_max_divisor), playable_hugger_minimum)
+	playable_hugger_limit = max(floor(countable_xeno_iterator / playable_hugger_max_divisor), playable_hugger_minimum)
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
@@ -888,7 +888,7 @@
 		if(cycled_xeno.counts_for_slots)
 			countable_xeno_iterator++
 
-	lesser_drone_limit = max(Floor(countable_xeno_iterator / playable_lesser_drones_max_divisor), lesser_drone_minimum)
+	lesser_drone_limit = max(floor(countable_xeno_iterator / playable_lesser_drones_max_divisor), lesser_drone_minimum)
 
 /datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user, obj/effect/alien/resin/special/pylon/spawning_pylon)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])

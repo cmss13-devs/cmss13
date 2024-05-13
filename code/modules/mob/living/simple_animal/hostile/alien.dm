@@ -110,7 +110,7 @@
 
 	wound_icon_holder.layer = layer + 0.01
 	wound_icon_holder.dir = dir
-	var/health_threshold = max(Ceiling((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
+	var/health_threshold = max(ceil((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
 			wound_icon_holder.icon_state = "none"

@@ -251,7 +251,7 @@
 				hud_used.alien_armor_display.icon_state = "armor_00"
 		return TRUE
 
-	var/severity = HUD_PAIN_STATES_XENO - Ceiling(((max(health, 0) / maxHealth) * HUD_PAIN_STATES_XENO))
+	var/severity = HUD_PAIN_STATES_XENO - ceil(((max(health, 0) / maxHealth) * HUD_PAIN_STATES_XENO))
 	if(severity)
 		overlay_fullscreen("xeno_pain", /atom/movable/screen/fullscreen/xeno_pain, severity)
 	else
@@ -271,7 +271,7 @@
 		return TRUE
 
 	if(hud_used.healths)
-		var/health_stacks = Ceiling((health / maxHealth) * HUD_HEALTH_STATES_XENO)
+		var/health_stacks = ceil((health / maxHealth) * HUD_HEALTH_STATES_XENO)
 		hud_used.healths.icon_state = "health_[health_stacks]"
 		if(health_stacks >= HUD_HEALTH_STATES_XENO)
 			hud_used.healths.icon_state = "health_full"
@@ -283,7 +283,7 @@
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 		else
 			var/plasma_stacks = (get_plasma_percentage() * 0.01) * HUD_PLASMA_STATES_XENO
-			hud_used.alien_plasma_display.icon_state = "power_display_[Ceiling(plasma_stacks)]"
+			hud_used.alien_plasma_display.icon_state = "power_display_[ceil(plasma_stacks)]"
 			if(plasma_stacks >= HUD_PLASMA_STATES_XENO)
 				hud_used.alien_plasma_display.icon_state = "power_display_full"
 			else if(plasma_stacks <= 0)
@@ -291,7 +291,7 @@
 
 	if(hud_used.alien_armor_display)
 		var/armor_stacks = min((get_armor_integrity_percentage() * 0.01) * HUD_ARMOR_STATES_XENO, HUD_ARMOR_STATES_XENO)
-		hud_used.alien_armor_display.icon_state = "armor_[Floor(armor_stacks)]0"
+		hud_used.alien_armor_display.icon_state = "armor_[floor(armor_stacks)]0"
 
 	return TRUE
 

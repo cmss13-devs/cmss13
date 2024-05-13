@@ -1,46 +1,40 @@
-import { useLocalState } from '../backend';
-import { Box, Tabs } from '../components';
+import { Fragment } from 'react';
+import { useBackend, useLocalState } from '../backend';
+import { Box, Button, Stack, Section, Tabs, Flex, Icon } from '../components';
 import { Window } from '../layouts';
+// just trying to get this to work, i'll fix it up later and implement your suggested changes paul.
 
 export const SecMod = (props) => {
   const [tab2, setTab2] = useLocalState('tab2', 1);
   return (
     <Window width={450} height={520} resizable>
-      <Window.Content>
+      <Window.Content scrollable>
         <Box>
           <Tabs fluid={1}>
             <Tabs.Tab selected={tab2 === 1} onClick={() => setTab2(1)}>
               Criminal Status
             </Tabs.Tab>
-            <Tabs.Tab selected={tab2 === 2} onClick={() => setTab2(2)}>
+            {/* <Tabs.Tab selected={tab2 === 2} onClick={() => setTab2(2)}>
               Security Log
-            </Tabs.Tab>
+            </Tabs.Tab> */}
           </Tabs>
-          {tab2 === 1 && <HealthStatus />}
-          {tab2 === 2 && <CrewStatus />}
+          {/* {tab2 === 2 && <SecurityRecord />} */}
+          {tab2 === 1 && <CrewStatus />}
         </Box>
       </Window.Content>
     </Window>
   );
 };
 
-// export const MedicalRecord = (props) => {
+// export const SecurityRecord = (props) => {
 //   const { act, data } = useBackend();
 //   const [tab, setTab] = useLocalState('tab', 1);
-//   const {
-//     authenticated,
-//     has_id,
-//     id_name,
-//     medical_record,
-//     health,
-//     autopsy,
-//     existingReport,
-//     death,
-//   } = data;
+//   const { authenticated, has_id, id_name, security_record, selected_target } =
+//     data;
 //   return (
 //     <>
 //       <Section
-//         title="Medical Record"
+//         title="Security Record"
 //         buttons={
 //           <Button icon="print" content="Print" onClick={() => act('print')} />
 //         }
@@ -168,88 +162,104 @@ export const SecMod = (props) => {
 //   );
 // };
 
-// export const CrewStatus = (props) => {
-//   const { act, data } = useBackend();
-//   const { authenticated, has_id, id_name, general_record, health } = data;
+// TODO: UTILIZE OBJECTS.
+export const CrewStatus = (props) => {
+  const { act, data } = useBackend();
+  const {
+    authenticated,
+    has_id,
+    id_name,
+    general_record,
+    security_record,
+    selected_target_name,
+  } = data;
 
-//   return (
-//     <>
-//       <Section
-//         title={has_id && authenticated ? id_name : 'No Card Inserted'}
-//         buttons={
-//           <Button
-//             icon={authenticated ? 'sign-out-alt' : 'sign-in-alt'}
-//             content={authenticated ? 'Log Out' : 'Log In'}
-//             color={authenticated ? 'bad' : 'good'}
-//             onClick={() => {
-//               act(authenticated ? 'logout' : 'authenticate');
-//             }}
-//           />
-//         }>
-//         <Button
-//           fluid
-//           icon="eject"
-//           content={id_name}
-//           onClick={() => act('eject')}
-//         />
-//       </Section>
-//       {!!has_id && !!authenticated && (
-//         <Section>
-//           <Box color={colors[health[2]]}>
-//             <Flex direction="row" align="start" justify="space-between" fill>
-//               <Flex.Item>
-//                 <Dropdown
-//                   noscroll={1}
-//                   options={healthStatusOptions}
-//                   selected={health[2]}
-//                   color={colors[health[2]]}
-//                   onSelected={(value) =>
-//                     act('updateStatRecord', {
-//                       stat_type: health[0],
-//                       stat: health[1],
-//                       new_value: value,
-//                     })
-//                   }
-//                   displayText={health[2]}
-//                 />
-//               </Flex.Item>
-//               <Flex.Item>
-//                 <Stack vertical>
-//                   {general_record.map(([value, label], index) => (
-//                     <Stack.Item key={index}>
-//                       {label} {value}
-//                     </Stack.Item>
-//                   ))}
-//                 </Stack>
-//               </Flex.Item>
-//               <Flex.Item>
-//                 <Icon name="user" size={8} />
-//               </Flex.Item>
-//             </Flex>
-//           </Box>
-//         </Section>
-//       )}
-//     </>
-//   );
-// };
+  return (
+    <>
+      <Section
+        title={!!has_id && !!authenticated ? id_name : 'No Card Inserted'}
+        buttons={
+          <Button
+            icon={authenticated ? 'sign-out-alt' : 'sign-in-alt'}
+            content={authenticated ? 'Log Out' : 'Log In'}
+            color={authenticated ? 'bad' : 'good'}
+            onClick={() => {
+              act(authenticated ? 'logout' : 'authenticate');
+            }}
+          />
+        }
+      />
+      {!!has_id && !!authenticated && (
+        <Section>
+          {general_record.map((record, index) => (
+            <Button
+              key={index}
+              // onClick={() =>
+              //   act('selectTarget', {
+              //     new_user: record[0][0],
+              //   })
+              // }
+            >
+              <Box
+              // color={
+              //   selected_target_name == record[0][0] && security_record
+              //     ? colors[security_record[0][1]]
+              //     : 'white'
+              // }
+              >
+                <Flex
+                  direction="row"
+                  align="start"
+                  justify="space-between"
+                  fill>
+                  {/* {!!selected_target_name == record[0][0] &&
+                    security_record &
+                    (
+                      <Flex.Item>
+                        <Dropdown
+                          noscroll={1}
+                          options={crimeStatusOptions}
+                          selected={security_record[0][1]} // first element in the list is the crime stat.
+                          color={colors[security_record[0][1]]}
+                          onSelected={(value) =>
+                            act('updateStatRecord', {
+                              stat: security_record[0][0],
+                              new_value: value,
+                            })
+                          }
+                          displayText={security_record[0][1]}
+                        />
+                      </Flex.Item>
+                    )} */}
+                  <Flex.Item>
+                    <Stack vertical>
+                      {record.map(([value, label], idx) => (
+                        <Stack.Item key={idx}>
+                          {label} {value}
+                        </Stack.Item>
+                      ))}
+                    </Stack>
+                  </Flex.Item>
+                  <Flex.Item>
+                    <Icon name="user" size={8} />
+                  </Flex.Item>
+                </Flex>
+              </Box>
+            </Button>
+          ))}
+        </Section>
+      )}
+    </>
+  );
+};
 
-// // ----- const-------- //
-// const healthStatusOptions = ['Unfit', 'Deceased', 'Active'];
+// ------- const-------- //
+const crimeStatusOptions = ['Arrest', 'None', 'Incarcerated'];
 
-// const deathOptions = [
-//   'Organ Failure',
-//   'Decapitation',
-//   'Burn Trauma',
-//   'Bullet Wound',
-//   'Blunt Force Trauma',
-//   'Blood Loss',
-//   'Disease',
-// ];
+const colors = {
+  'Arrest': 'red',
+  'None': 'blue',
+  'Incarcerated': 'yellow',
+};
 
-// const colors = {
-//   'Deceased': 'red',
-//   'Active': 'blue',
-//   'Unfit': 'yellow',
-// };
-
-// // ----- const -------- //
+// ----- const -------- //

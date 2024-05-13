@@ -179,7 +179,8 @@
 
 /obj/structure/machinery/computer/double_id/med_data/ui_static_data(mob/user)
 	var/list/data = list()
-	// general information, it is never modified. Why pass it in so weirdly? because it makes it easy to add and remove stats in the future.
+	// general information, it is never modified.
+	// TODO, UTILIZE AN OBJECT INSTEAD.
 	data["general_record"] = list(
 		list(target_record_general?.fields[MOB_NAME],"Name: "),
 		list(target_record_general?.fields[MOB_AGE],"Age: "),
@@ -192,7 +193,7 @@
 /obj/structure/machinery/computer/double_id/med_data/ui_data(mob/user)
 	var/list/data = list()
 
-	// medical records, we pass it in as a list so it's better to handle in tgui. Might be ideal to pass in an associated list instead?
+	// TODO, UTILIZE AN OBJECT INSTEAD.
 	data["medical_record"] = list(
 		list(MEDICAL, MOB_MEDICAL_NOTES, target_record_medical?.fields[MOB_MEDICAL_NOTES],"General Notes: "),
 		list(GENERAL, MOB_MENTAL_STATUS, target_record_general?.fields[MOB_MENTAL_STATUS],"Psychiatric History: "),

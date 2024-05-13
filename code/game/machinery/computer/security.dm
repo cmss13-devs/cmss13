@@ -86,14 +86,13 @@
 	var/list/full_general_record
 	for(var/record as anything in GLOB.data_core.general)
 		var/datum/data/record/new_record = GLOB.data_core.general[record]
-		if(new_record[MOB_WEAKREF])
-			full_general_record += list(
-				list(new_record?.fields[MOB_NAME],"Name: "),
-				list(new_record?.fields[MOB_AGE],"Age: "),
-				list(new_record?.fields[MOB_SEX],"Sex: "),
-				list(new_record?.fields[MOB_BLOOD_TYPE],"Blood Type: "),
-				new_record[MOB_WEAKREF] // so we know who is selecteed in tgui.
-			)
+		// TODO: PASS IN AN OBJECT INSTEAD
+		full_general_record += list(
+			list(new_record?.fields[MOB_NAME],"Name: "),
+			list(new_record?.fields[MOB_AGE],"Age: "),
+			list(new_record?.fields[MOB_SEX],"Sex: "),
+			list(new_record?.fields[MOB_BLOOD_TYPE],"Blood Type: "),
+		)
 
 	return full_general_record
 
@@ -104,7 +103,8 @@
 
 	var/list/target_record
 	var/datum/data/record/target_sec_record = GLOB.data_core.security[user.record_id_ref]
-	target_record += list(
+	target_record = list(
+		// TODO: PASS IN AN OBJECT INSTEAD
 		list(MOB_CRIMINAL_STATUS, target_sec_record?.fields[MOB_CRIMINAL_STATUS],"Criminal Status: "),
 		list(MOB_INCIDENTS, target_sec_record?.fields[MOB_INCIDENTS],"Incidents: "),
 		list(MOB_SECURITY_COMMENT_LOG, target_sec_record?.fields[MOB_SECURITY_COMMENT_LOG], "Security Entry: "),
@@ -651,55 +651,15 @@
 				user_id_card.forceMove(loc)
 			user_id_card = null
 			return TRUE
-		// if("print")
-		// 	if(!authenticated)
-		// 		return
-
-		// 	if(!COOLDOWN_FINISHED(src, print_cooldown))
-		// 		visible_message("[SPAN_BOLD("[src]")] states, \"PRINT ERROR: system is still on cooldown.\"")
-		// 		return
-
-		// 	COOLDOWN_START(src, print_cooldown, PRINT_COOLDOWN_TIME )
-		// 	playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
-		// 	var/contents = {"<center><h4>Medical Report</h4></center>
-		// 						<u>Prepared By:</u> [user_id_card?.registered_name ? user_id_card.registered_name : "Unknown"]<br>
-		// 						<u>For:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
-		// 						<hr>
-		// 						<center><h4>General Information</h4></center>
-		// 						<u>Name:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
-		// 						<u>Sex:</u> [target_record_general?.fields[MOB_SEX]]<br>
-		// 						<u>Age:</u> [target_record_general?.fields[MOB_AGE]]<br>
-		// 						<u>Blood Type:</u> [target_record_medical?.fields[MOB_BLOOD_TYPE]]<br>
-		// 						<hr>
-		// 						<center><h4>Medical Notes</h4></center>
-		// 						<u>General Notes:</u> [target_record_medical?.fields[MOB_MEDICAL_NOTES]]<br>
-		// 						<u>Psychiatric History:</u> [target_record_general?.fields[MOB_MENTAL_STATUS]]<br>
-		// 						<u>Disease History:</u> [target_record_medical?.fields[MOB_DISEASES]]<br>
-		// 						<u>Disability History:</u> [target_record_medical?.fields[MOB_DISABILITIES]]<br>
-		// 						<hr>
-		// 						"}
-
-		// 	// autopsy report gets shwacked ontop if it exists and the target stat is dead
-		// 	if(target_record_general.fields[MOB_HEALTH_STATUS] == MOB_STAT_HEALTH_DECEASED && target_record_medical.fields[MOB_AUTOPSY_SUBMISSION])
-		// 		contents +=  {"<center><h4>Autopsy Report</h4></center>
-		// 						<u>Autopsy Notes:</u> [target_record_medical.fields[MOB_AUTOPSY_NOTES]]<br>
-		// 						<u>Cause Of Death:</u> [target_record_medical.fields[MOB_CAUSE_OF_DEATH]]<br>
-		// 					"}
-
-		// 	var/obj/item/paper/med_report = new (loc)
-		// 	med_report.name = "Medical Report"
-		// 	med_report.info += contents
-		// 	med_report.update_icon()
-
-		// 	visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
-		// 	return TRUE
 		if("selectTarget")
-			var/mob/living/carbon/human/new_rec_target = params["new_user"]
-			if(new_rec_target != target_mob)
-				target_security_record = retrieve_target_security_record(new_rec_target)
-			target_mob = new_rec_target
+			var/name = params["new_user"]
+			if(name == target_mob.name)
+				return
+			for(var/mob/living/carbon/human/selected_human in GLOB.human_mob_list)
+				if(selected_human.name == name)
+					target_mob = selected_human
+			target_security_record = retrieve_target_security_record(target_mob)
 			return TRUE
-
 		if("updateStatRecord")
 			GLOB.data_core.security[target_mob.record_id_ref].fields[params["stat"]] = params["new_value"]
 			return TRUE
@@ -707,15 +667,15 @@
 /obj/structure/machinery/computer/secure_data/ui_static_data(mob/user)
 	var/list/data = list()
 	data["general_record"] = general_records
-
 	return data
 
 /obj/structure/machinery/computer/secure_data/ui_data(mob/user)
 	var/list/data = list()
 
+	data["selecteded_target_name"] = target_mob ?  target_mob.name : "None"// is there a selected target.
 	data["security_record"] = target_security_record
-	data["authenticated"] = authenticated
 	data["has_id"] = !!user_id_card
-	data["id_name"] = user_id_card ? user_id_card.name : "-----"
+	data["id_name"] = user_id_card ? user_id_card?.name : "-----"
+	data["authenticated"] = authenticated
 
 	return data

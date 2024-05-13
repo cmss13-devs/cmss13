@@ -1,7 +1,7 @@
 /datum/xeno_strain/vampire
 	name = LURKER_VAMPIRE
 	description = "You lose all of your abilities and you forefeit a chunk of your health and damage in exchange for a large amount of armor, a little bit of movement speed, increased attack speed, and brand new abilities that make you an assassin. Rush on your opponent to disorient them and Flurry to unleash a forward cleave that can hit and slow three talls and heal you for every tall you hit. Use your special AoE Tail Jab to knock talls away, doing more damage with direct hits and even more damage and a stun if they smack into walls. Finally, execute unconscious talls with a headbite to heal your wounds."
-	flavor_description = "Child. Show no mercy! Slaughter them all!"
+	flavor_description = "Show no mercy! Slaughter them all!"
 	icon_state_prefix = "Vampire"
 
 	actions_to_remove = list(

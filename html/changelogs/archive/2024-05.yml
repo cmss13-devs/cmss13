@@ -127,3 +127,6 @@
   realforest2001:
   - rscadd: Handcuffs & Legcuffs now appear on examine.
   - rscadd: Added a reason input field to handheld distress beacons.
+2024-05-13:
+  kirieee:
+  - imageadd: rolled sleeve sprites for all IO uniforms

@@ -251,7 +251,7 @@
 //Nailgun!
 /obj/item/ammo_magazine/smg/nailgun
 	name = "nailgun magazine (7x45mm)"
-	desc = "A large magazine of oversized plasteel nails. Unfortunately, the production cost of those nail makes them ill-affordable for most military projects, and only some specific construction projects requires them."
+	desc = "A large magazine of oversized plasteel nails. Useful for making repairs."
 	default_ammo = /datum/ammo/bullet/smg/nail
 	flags_magazine = NO_FLAGS // Let's not start messing with nails...
 	caliber = "7x45mm"

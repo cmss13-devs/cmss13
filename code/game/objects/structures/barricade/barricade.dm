@@ -440,7 +440,7 @@
 	// Check if either hand has a metal stack by checking the weapon offhand
 	// Presume the material is a sheet until proven otherwise.
 	var/obj/item/stack/sheet/material = null
-	var/mat_tac = 4 //Material needed to make a repair with a tactical compact nailgun.
+	var/mat_tac = 2 //Material needed to make a repair with a tactical compact nailgun.
 	if(user.l_hand == nailgun)
 		material = user.r_hand
 	else

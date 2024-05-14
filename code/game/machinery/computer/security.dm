@@ -100,18 +100,9 @@
 	var/datum/data/record/target_sec_record = retrieve_record(mob_name = username, record_type = RECORD_TYPE_SECURITY)
 	var/datum/data/record/target_gen_record = retrieve_record(mob_name = username, record_type = RECORD_TYPE_GENERAL)
 	target_general_record = list(
-		list(
-			value = target_gen_record?.fields[MOB_NAME],
-			message = "Name: "
-			),
-		list(
-			value = target_gen_record?.fields[MOB_AGE],
-			message ="Age: "
-			),
-		list(
-			value = target_gen_record?.fields[MOB_SEX],
-			message ="Sex: "
-			)
+		list(value = target_gen_record?.fields[MOB_NAME],message = "Name: "),
+		list(value = target_gen_record?.fields[MOB_AGE], message ="Age: "),
+		list(value = target_gen_record?.fields[MOB_SEX], message ="Sex: "),
 		)
 
 	crime_stat = list(

@@ -102,3 +102,44 @@
   - rscadd: Prison shoes that have been chained now have an equp and unequip delay
       to account for the chains, proportionate to the breakout time of the item used
       in the chains.
+2024-05-11:
+  Tyranicranger4:
+  - qol: Emptied randomchem vials no longer show up on the data detector
+  - bugfix: Fixes empty vial storage boxes showing up on the data detector
+  cuberound:
+  - balance: projectiles can pass fences
+  ihatethisengine:
+  - rscadd: Added paradropping
+  - rscdel: Removed rappeling
+  - rscadd: Infection icon now has lower alpha if the human is dead
+  iloveloopers:
+  - rscadd: Adds in a new incinerator smoke tank that turns any reagent inside it
+      into chemsmoke when fired.
+2024-05-12:
+  Git-Nivrak:
+  - balance: Limbs will now only be delimb-able if they are fractured
+  XQ:
+  - qol: Updated the ARES reception bell's description to inform players it notifies
+      Working Joes when rung.
+  - qol: Increased the ARES reception bell's cooldown from 5 to 60 seconds.
+  ihatethisengine:
+  - balance: only disabled comms can be pyloned
+  realforest2001:
+  - rscadd: Handcuffs & Legcuffs now appear on examine.
+  - rscadd: Added a reason input field to handheld distress beacons.
+2024-05-13:
+  kirieee:
+  - imageadd: rolled sleeve sprites for all IO uniforms
+2024-05-14:
+  Huffie56:
+  - balance: added a crowbar to the cryo defense kit.
+  ihatethisengine:
+  - bugfix: fixed potential bugs with transparent infection icon
+  - bugfix: Fixes infinite lifeboat alarm after queen locking
+  iloveloopers:
+  - rscadd: Mortar shells will now cook off and explode when flamed
+  - qol: OT freezer will now play a bell sound when it's done making paraformaldehyde
+      in a container
+  neeshacark:
+  - rscadd: you can now remove shrapnel from your body with the M11 Throwing Knife
+      and screwdrivers

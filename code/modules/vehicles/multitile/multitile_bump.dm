@@ -494,7 +494,7 @@
 
 /obj/vehicle/handle_vehicle_bump(obj/vehicle/multitile/V)
 	V.take_damage_type(5, "blunt", V)
-	health = health - Ceiling(maxhealth/2.8) //we destroy any simple vehicle in 3 crushes
+	health = health - ceil(maxhealth/2.8) //we destroy any simple vehicle in 3 crushes
 	healthcheck()
 
 	visible_message(SPAN_DANGER("\The [V] crushes into \the [src]!"))

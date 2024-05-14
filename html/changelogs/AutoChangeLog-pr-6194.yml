@@ -1,5 +1,0 @@
-author: "Tyranicranger4"
-delete-after: True
-changes:
-  - qol: "Emptied randomchem vials no longer show up on the data detector"
-  - bugfix: "Fixes empty vial storage boxes showing up on the data detector"

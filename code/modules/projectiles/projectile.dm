@@ -187,7 +187,7 @@
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
-/obj/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override)
+/obj/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, speed_varience = TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	original = original || original_override || target
 	if(!loc)
@@ -230,6 +230,7 @@
 
 	//If we have the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
+		speed_varience = FALSE
 		ammo.fire_bonus_projectiles(src)
 		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
 
@@ -241,8 +242,9 @@
 	src.speed = speed
 	// Randomize speed by a small factor to help bullet animations look okay
 	// Otherwise you get a   s   t   r   e   a   m of warping bullets in same positions
-	src.speed *= (1 + (rand()-0.5) * 0.30) // 15.0% variance either way
-	src.speed = clamp(src.speed, 0.1, 100) // Safety to avoid loop hazards
+	if (speed_varience)
+		src.speed *= (1 + (rand()-0.5) * 0.30) // 15.0% variance either way
+		src.speed = clamp(src.speed, 0.1, 100) // Safety to avoid loop hazards
 
 	// Also give it some headstart, flying it now ahead of tick
 	var/delta_time = world.tick_lag * rand() * 0.4
@@ -837,7 +839,7 @@
 /mob/living/proc/get_projectile_hit_chance(obj/projectile/P)
 	if(HAS_TRAIT(src, TRAIT_NESTED) && src != P.original)
 		return FALSE // Snowflake check for xeno nests, because we want bullets to fly through even though they're standing in it
-	if(body_position == LYING_DOWN && src != P.original && world.time - body_position_changed > 0.3 SECONDS)
+	if(body_position == LYING_DOWN && src != P.original && world.time - body_position_changed > 0.1 SECONDS)
 		return FALSE // Grace period of 0.3 seconds after a target is knocked down to be hit by followup projectiles
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_XENO)

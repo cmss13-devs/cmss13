@@ -2520,6 +2520,7 @@
 #include "fray-marines\code\modules\cm_tech\trees\xeno.dm"
 #include "fray-marines\code\modules\gear_presets\usmc.dm"
 #include "fray-marines\code\modules\mob\mod_defines.dm"
+#include "fray-marines\code\modules\mob\say.dm"
 #include "fray-marines\code\modules\mob\living\carbon\xenomorph\Abilities.dm"
 #include "fray-marines\code\modules\mob\living\carbon\xenomorph\queen_abilities.dm"
 #include "fray-marines\code\modules\mob\living\carbon\xenomorph\xeno_helpers.dm"

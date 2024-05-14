@@ -13,7 +13,7 @@
 	)
 	behavior_delegate_type = /datum/behavior_delegate/lurker_stalker
 
-/datum/xeno_strain/vampire/apply_strain(mob/living/carbon/xenomorph/lurker/lurker)
+/datum/xeno_strain/stalker/apply_strain(mob/living/carbon/xenomorph/lurker/lurker)
 	lurker.walk_speed = DEFAULT_WALK_SPEED - 2
 	lurker.health_modifier += XENO_HEALTH_MOD_SMALL
 	lurker.speed_modifier += XENO_SPEED_FASTMOD_TIER_1

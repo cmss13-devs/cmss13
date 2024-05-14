@@ -92,7 +92,9 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	/client/proc/check_round_statistics,
 	/client/proc/force_teleporter,
 	/client/proc/matrix_editor,
-	/datum/admins/proc/open_shuttlepanel
+	/datum/admins/proc/open_shuttlepanel,
+	/client/proc/manage_chatfilter,
+	/client/proc/toggle_chatfilter_hardcore,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_ban, list(

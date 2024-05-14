@@ -29,3 +29,12 @@
 	var/mob/living/carbon/xenomorph/X = owner
 	X.tremor()
 	return ..()
+
+// Sapper
+/datum/action/xeno_action/activable/spray_acid/sapper
+	plasma_cost = 50
+	xeno_cooldown = 8 SECONDS
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	spray_type = ACID_SPRAY_LINE
+	spray_distance = 4
+	spray_effect_type = /obj/effect/xenomorph/spray/weak

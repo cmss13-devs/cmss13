@@ -104,7 +104,6 @@
 
 /obj/structure/filingcabinet/security/proc/populate()
 	if(virgin)
-		// fix
 		for(var/record_name in GLOB.data_core.general)
 			var/datum/data/record/G = GLOB.data_core.general[record_name] // yeah I know single letter vars, but like plz.
 			var/datum/data/record/S

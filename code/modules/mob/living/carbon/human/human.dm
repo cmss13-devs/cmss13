@@ -645,7 +645,6 @@
 			var/read = FALSE
 
 			if(perpref)
-				// fix
 				for(var/datum/data/record/E in GLOB.data_core.general)
 					if(E.fields["ref"] == perpref)
 						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
@@ -674,7 +673,6 @@
 			var/read = FALSE
 
 			if(perpref)
-				// fix
 				for(var/datum/data/record/E in GLOB.data_core.general)
 					if(E.fields["ref"] == perpref)
 						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
@@ -812,7 +810,6 @@
 
 /mob/living/carbon/human/ui_data(mob/user)
 	var/me_ref = WEAKREF(src)
-	// fix
 	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 		if(R.fields["ref"] == me_ref)
 			if(R.fields["last_tgui_scan_result"])

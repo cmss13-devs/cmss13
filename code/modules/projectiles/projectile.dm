@@ -228,24 +228,21 @@
 		var/mob/M = firer
 		M.track_shot(weapon_cause_data.cause_name)
 
-	src.speed = speed
-
 	//If we have the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		ammo.fire_bonus_projectiles(src)
 		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
-	else
-		// Randomize speed by a small factor to help bullet animations look okay
-		// Otherwise you get a   s   t   r   e   a   m of warping bullets in same positions
-		// Does not apply for stuff with extra projectiles as they are meant to arrive at the same time
-		src.speed *= (1 + (rand()-0.5) * 0.30) // 15.0% variance either way
-		src.speed = clamp(src.speed, 0.1, 100) // Safety to avoid loop hazards
-
 
 	path = get_line(starting, target_turf)
 	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)
 	p_y += clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)
+
+	src.speed = speed
+	// Randomize speed by a small factor to help bullet animations look okay
+	// Otherwise you get a   s   t   r   e   a   m of warping bullets in same positions
+	src.speed *= (1 + (rand()-0.5) * 0.30) // 15.0% variance either way
+	src.speed = clamp(src.speed, 0.1, 100) // Safety to avoid loop hazards
 
 	// Also give it some headstart, flying it now ahead of tick
 	var/delta_time = world.tick_lag * rand() * 0.4

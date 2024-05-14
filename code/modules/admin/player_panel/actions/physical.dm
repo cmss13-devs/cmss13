@@ -102,20 +102,14 @@
 	//Handle job slot/tater cleanup.
 	GLOB.RoleAuthority.free_role(GLOB.RoleAuthority.roles_for_mode[target.job], TRUE)
 
-	//Delete them from datacore.
-	var/target_ref = WEAKREF(target)
-	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-		if((R.fields["ref"] == target_ref))
-			GLOB.data_core.medical -= R
-			qdel(R)
-	for(var/datum/data/record/T in GLOB.data_core.security)
-		if((T.fields["ref"] == target_ref))
-			GLOB.data_core.security -= T
-			qdel(T)
-	for(var/datum/data/record/G in GLOB.data_core.general)
-		if((G.fields["ref"] == target_ref))
-			GLOB.data_core.general -= G
-			qdel(G)
+	var/mob/living/carbon/human/mob_cryo = null
+	if(ishuman(target))
+		mob_cryo = target
+
+	if(mob_cryo)
+		qdel(GLOB.data_core.general[mob_cryo.record_id_ref])
+		qdel(GLOB.data_core.medical[mob_cryo.record_id_ref])
+		qdel(GLOB.data_core.security[mob_cryo.record_id_ref])
 
 	if(target.key)
 		target.ghostize(FALSE)

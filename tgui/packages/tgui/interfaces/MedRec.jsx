@@ -1,47 +1,43 @@
-import { Fragment } from 'react';
-import { useBackend, useLocalState } from '../backend';
+import { Fragment, useState } from 'react';
+import { useBackend } from '../backend';
 import { Box, Button, Stack, Input, Dropdown, Section, Tabs, Flex, Icon } from '../components';
 import { Window } from '../layouts';
 
 export const MedRec = (props) => {
-  const [tab2, setTab2] = useLocalState('tab2', 1);
+  const [selectedTab, setSelectedTab] = useState(1);
   return (
     <Window width={450} height={520} resizable>
       <Window.Content>
         <Box>
           <Tabs fluid={1}>
-            <Tabs.Tab selected={tab2 === 1} onClick={() => setTab2(1)}>
+            <Tabs.Tab
+              selected={selectedTab === 1}
+              onClick={() => setSelectedTab(1)}>
               Health Status
             </Tabs.Tab>
-            <Tabs.Tab selected={tab2 === 2} onClick={() => setTab2(2)}>
+            <Tabs.Tab
+              selected={selectedTab === 2}
+              onClick={() => setSelectedTab(2)}>
               Medical Record
             </Tabs.Tab>
           </Tabs>
-          {tab2 === 1 && <HealthStatus />}
-          {tab2 === 2 && <MedicalRecord />}
+          {selectedTab === 1 && <HealthStatus />}
+          {selectedTab === 2 && <MedicalRecord />}
         </Box>
       </Window.Content>
     </Window>
   );
 };
+
 export const MedicalRecord = (props) => {
   const { act, data } = useBackend();
-  const [tab, setTab] = useLocalState('tab', 1);
-  const {
-    authenticated,
-    has_id,
-    id_name,
-    medical_record,
-    health,
-    autopsy,
-    existingReport,
-    death,
-  } = data;
+  const [selectedTab, setSelectedTab] = useState(1);
+  const { authenticated, has_id } = data;
 
   return (
     <>
       <Section
-        title="Medical Record"
+        title="Security Record"
         buttons={
           <Button icon="print" content="Print" onClick={() => act('print')} />
         }
@@ -49,129 +45,144 @@ export const MedicalRecord = (props) => {
       {!!has_id && !!authenticated && (
         <Box height={550}>
           <Tabs>
-            <Tabs.Tab selected={tab === 1} onClick={() => setTab(1)}>
+            <Tabs.Tab
+              selected={selectedTab === 1}
+              onClick={() => setSelectedTab(1)}>
               Medical Notes
             </Tabs.Tab>
-            <Tabs.Tab selected={tab === 2} onClick={() => setTab(2)}>
+            <Tabs.Tab
+              selected={selectedTab === 2}
+              onClick={() => setSelectedTab(2)}>
               Autopsy Report
             </Tabs.Tab>
           </Tabs>
-          {tab === 1 && (
-            <Section>
-              <Stack vertical align="start">
-                {medical_record.map((record, index) => (
-                  <Fragment key={index}>
-                    <Stack.Item>{record.message}</Stack.Item>
-                    <Stack.Item>
-                      <Input
-                        value={record.value}
-                        fluid={1}
-                        onChange={(e, value) =>
-                          act('updateStatRecord', {
-                            stat_type: record.stat_type,
-                            stat: record.stat,
-                            new_value: value,
-                          })
-                        }
-                      />
-                    </Stack.Item>
-                  </Fragment>
-                ))}
-              </Stack>
-            </Section>
-          )}
-          {tab === 2 && (
-            <Section>
-              <Stack justify="space-between" vertical>
-                {health.value === 'Deceased' && !existingReport && (
-                  <Stack.Item>
-                    <Stack vertical align="start" py={1}>
-                      <Stack.Item>{autopsy.message}</Stack.Item>
-                      <Stack.Item>
-                        <Input
-                          value={autopsy.value}
-                          fluid={1}
-                          onChange={(e, value) =>
-                            act('updateStatRecord', {
-                              stat_type: autopsy.stat_type,
-                              stat: autopsy.stat,
-                              new_value: value,
-                            })
-                          }
-                        />
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Stack justify="space-between" py={2}>
-                          <Stack.Item>
-                            <Stack>
-                              <Stack.Item>{death.message}</Stack.Item>
-                              <Stack.Item>
-                                <Dropdown
-                                  noscroll={1}
-                                  options={deathOptions}
-                                  selected={death.value}
-                                  color={'red'}
-                                  onSelected={(value) =>
-                                    act('updateStatRecord', {
-                                      stat_type: death.stat_type,
-                                      stat: death.stat,
-                                      new_value: value,
-                                    })
-                                  }
-                                  displayText={
-                                    death.value ? death.value : 'NONE'
-                                  }
-                                />
-                              </Stack.Item>
-                            </Stack>
-                          </Stack.Item>
-                          <Stack.Item>
-                            <Button
-                              icon={'file'}
-                              content={'Submit Report'}
-                              color={'red'}
-                              onClick={() => {
-                                act('submitReport');
-                              }}
-                            />
-                          </Stack.Item>
-                        </Stack>
-                      </Stack.Item>
-                    </Stack>
-                  </Stack.Item>
-                )}
-                <Stack.Item>
-                  <Stack align="center" justify="space-around" vertical>
-                    <Stack.Item>
-                      <Icon name="user" size={8} color={colors[health.value]} />
-                    </Stack.Item>
-                    {existingReport ? (
-                      <Stack.Item py={2}>
-                        The autopsy report for {id_name} has been submitted.
-                      </Stack.Item>
-                    ) : health.value !== 'Deceased' ? (
-                      <Stack.Item py={2}>
-                        The patient must be marked as deceased to create an
-                        autopsy report.
-                      </Stack.Item>
-                    ) : (
-                      <Stack.Item py={2}>
-                        Please submit the following information to create an
-                        autopsy report.
-                      </Stack.Item>
-                    )}
-                  </Stack>
-                </Stack.Item>
-              </Stack>
-            </Section>
-          )}
+          {selectedTab === 1 && <MedicalNotes />}
+          {selectedTab === 2 && <AutopsyReport />}
         </Box>
       )}
     </>
   );
 };
 
-// HealthStatus component
+const MedicalNotes = (props) => {
+  const { act, data } = useBackend();
+  const { medical_record } = data;
+
+  return (
+    <Section>
+      {medical_record.map((record, index) => (
+        <Fragment key={index}>
+          <Stack vertical align="start">
+            <Stack.Item>{record.message}</Stack.Item>
+            <Stack.Item>
+              <Input
+                value={record.value}
+                fluid={1}
+                onChange={(e, value) =>
+                  act('updateStatRecord', {
+                    stat_type: record.stat_type,
+                    stat: record.stat,
+                    new_value: value,
+                  })
+                }
+              />
+            </Stack.Item>
+          </Stack>
+        </Fragment>
+      ))}
+    </Section>
+  );
+};
+
+const AutopsyReport = (props) => {
+  const { act, data } = useBackend();
+  const { health, autopsy, existingReport, death, id_name } = data;
+
+  return (
+    <Section>
+      <Stack justify="space-between" vertical>
+        {health.value === 'Deceased' && !existingReport && (
+          <Stack.Item>
+            <Stack vertical align="start" py={1}>
+              <Stack.Item>{autopsy.message}</Stack.Item>
+              <Stack.Item>
+                <Input
+                  value={autopsy.value}
+                  fluid={1}
+                  onChange={(e, value) =>
+                    act('updateStatRecord', {
+                      stat_type: autopsy.stat_type,
+                      stat: autopsy.stat,
+                      new_value: value,
+                    })
+                  }
+                />
+              </Stack.Item>
+              <Stack.Item>
+                <Stack justify="space-between" py={2}>
+                  <Stack.Item>
+                    <Stack>
+                      <Stack.Item>{death.message}</Stack.Item>
+                      <Stack.Item>
+                        <Dropdown
+                          noscroll={1}
+                          options={deathOptions}
+                          selected={death.value}
+                          color={'red'}
+                          onSelected={(value) =>
+                            act('updateStatRecord', {
+                              stat_type: death.stat_type,
+                              stat: death.stat,
+                              new_value: value,
+                            })
+                          }
+                          displayText={death.value ? death.value : 'NONE'}
+                        />
+                      </Stack.Item>
+                    </Stack>
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Button
+                      icon={'file'}
+                      content={'Submit Report'}
+                      color={'red'}
+                      onClick={() => {
+                        act('submitReport');
+                      }}
+                    />
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+        )}
+        <Stack.Item>
+          <Stack align="center" justify="space-around" vertical>
+            <Stack.Item>
+              <Icon name="user" size={8} color={colors[health.value]} />
+            </Stack.Item>
+            {existingReport ? (
+              <Stack.Item py={2}>
+                The autopsy report for {id_name} has been submitted.
+              </Stack.Item>
+            ) : health.value !== 'Deceased' ? (
+              <Stack.Item py={2}>
+                The patient must be marked as deceased to create an autopsy
+                report.
+              </Stack.Item>
+            ) : (
+              <Stack.Item py={2}>
+                Please submit the following information to create an autopsy
+                report.
+              </Stack.Item>
+            )}
+          </Stack>
+        </Stack.Item>
+      </Stack>
+    </Section>
+  );
+};
+
 export const HealthStatus = (props) => {
   const { act, data } = useBackend();
   const { authenticated, has_id, id_name, general_record, health } = data;
@@ -236,7 +247,8 @@ export const HealthStatus = (props) => {
     </>
   );
 };
-// ----- const-------- //
+
+// Constants
 const healthStatusOptions = ['Unfit', 'Deceased', 'Active'];
 
 const deathOptions = [
@@ -254,5 +266,3 @@ const colors = {
   'Active': 'blue',
   'Unfit': 'yellow',
 };
-
-// ----- const -------- //

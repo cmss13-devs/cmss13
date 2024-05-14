@@ -34,12 +34,12 @@
 
 /proc/insert_record_stat(record_id = null, mob_name = null, mob_ref = null, record_type = RECORD_TYPE_GENERAL, stat_type = null, new_stat = null)
 	if(!stat_type || !new_stat)
-		return
+		return FALSE
 
 	var/datum/data/record/retrieved_record = retrieve_record(record_id, mob_name, mob_ref, record_type)
 	if(!retrieved_record)
 		return FALSE
-	retrieved_record[stat_type] = new_stat
+	retrieved_record.fields[stat_type] = new_stat
 
 	return TRUE
 
@@ -68,13 +68,9 @@
 	security_record.fields[MOB_NAME] = person.name ? person.name : "Unknown"
 	security_record.name = text("Security Record")
 	security_record.fields[MOB_CRIMINAL_STATUS] = "None"
-	security_record.fields[MOB_INCIDENTS] = "None"
+	security_record.fields[MOB_INCIDENTS] = list()
 	security_record.fields[MOB_WEAKREF] = WEAKREF(person)
-
-	if(person.sec_record && !jobban_isbanned(person, "Records"))
-		var/new_comment = list("entry" = person.sec_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "Military Police"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
-		security_record.fields[MOB_SECURITY_COMMENT_LOG] = list("1" = new_comment)
-		security_record.fields[MOB_SECURITY_NOTES] = person.sec_record
+	security_record.fields[MOB_SECURITY_NOTES] = person.sec_record  && !jobban_isbanned(person, "Records") ? person.sec_record : "No notes found."
 	GLOB.data_core.security[person.record_id_ref] += security_record
 
 /proc/create_medical_record(mob/living/carbon/human/person)
@@ -109,5 +105,5 @@
 	record_locked.fields[MOB_SHOWN_FACTION] = person.personal_faction
 	record_locked.fields[MOB_RELIGION] = person.religion
 	record_locked.fields[MOB_WEAKREF] = WEAKREF(person)
-	record_locked.fields[MOB_EXPLOIT_RECORD] = person.exploit_record && !jobban_isbanned(person, "Records") ? person.exploit_record : "No additional information acquired"
+	record_locked.fields[MOB_EXPLOIT_RECORD] = !jobban_isbanned(person, "Records") ? person.exploit_record : "No additional information acquired"
 	GLOB.data_core.locked[person.record_id_ref] += record_locked

@@ -160,21 +160,20 @@
 	var/mob/living/carbon/human/H = connected.occupant
 	var/datum/data/record/N = null
 	var/human_ref = WEAKREF(H)
-	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-		if (R.fields["ref"] == human_ref)
-			N = R
+	//fix
+	N = retrieve_record(record_id_ref = H.record_id_ref, mob_ref = human_ref, record_type = RECORD_TYPE_MEDICAL)
 	if(isnull(N))
 		N = create_medical_record(H)
 	var/list/od = connected.get_occupant_data()
 	var/dat
 	dat = format_occupant_data(od)
-	N.fields["last_scan_time"] = od["stationtime"]
+	N.fields[MOB_LAST_SCAN_TIME] = od["stationtime"]
 	// I am sure you are wondering why this is still here. And indeed why the rest of the autodoc html shit is here.
 	// The answer is : it is used in the medical records computer to print out the results of their last scan data
 	// Do I want to make it so that data from a tgui static data proc can go into a piece of paper? no
 	// Do I want to remove the feature from medical records computers? no
 	// and so here we are.
-	N.fields["last_scan_result"] = dat
+	N.fields[MOB_LAST_SCAN_RESULT] = dat
 
 	if (!last_health_display)
 		last_health_display = new(H)
@@ -182,7 +181,7 @@
 		last_health_display.target_mob = H
 
 	N.fields["last_tgui_scan_result"] = last_health_display.ui_data(user, DETAIL_LEVEL_BODYSCAN)
-	N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
+	N.fields[MOB_AUTODOC_DATA] = generate_autodoc_surgery_list(H)
 	visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [H.real_name]"))
 	playsound(src.loc, 'sound/machines/screen_output1.ogg', 25)
 

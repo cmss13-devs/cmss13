@@ -795,11 +795,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		new_squad.update_free_mar()
 
 		var/marine_ref = WEAKREF(transfer_marine)
-		for(var/datum/data/record/t in GLOB.data_core.general) //we update the crew manifest
-			if(t.fields["ref"] == marine_ref)
-				t.fields["squad"] = new_squad.name
-				break
-
+		insert_record_stat( record_id_ref = transfer_marine.record_id_ref, mob_ref = marine_ref, record_type = RECORD_TYPE_GENERAL, stat_type = MOB_SQUAD, new_stat = new_squad.name )
 		transfer_marine.hud_set_squad()
 
 // returns TRUE if transfer_marine's role is at max capacity in the new squad

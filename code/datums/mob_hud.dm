@@ -622,27 +622,20 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	if(!GLOB.data_core)
 		return
 
-	for(var/datum/data/record/E in GLOB.data_core.general)
-		if(E.fields["ref"] == perpref)
-			for(var/datum/data/record/R in GLOB.data_core.security)
-				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
-					holder.icon_state = "hudsec_wanted"
-					criminal = TRUE
-					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Incarcerated"))
-					holder.icon_state = "hudsec_prisoner"
-					criminal = TRUE
-					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
-					holder.icon_state = "hudsec_released"
-					criminal = FALSE
-					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Suspect"))
-					holder.icon_state = "hudsec_suspect"
-					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "NJP"))
-					holder.icon_state = "hudsec_njp"
-					break
+	var/datum/data/record/security_record = retrieve_record(mob_ref = perpref, record_type = RECORD_TYPE_SECURITY)
+	switch(security_record.fields[MOB_CRIMINAL_STATUS])
+		if(MOB_STAT_CRIME_ARREST)
+			holder.icon_state = "hudsec_wanted"
+			criminal = TRUE
+			return
+		if(MOB_STAT_CRIME_INCARCERATED)
+			holder.icon_state = "hudsec_prisoner"
+			criminal = TRUE
+			return
+		if(MOB_STAT_CRIME_NONE)
+			holder.icon_state = null
+			criminal = FALSE
+
 //Squad HUD
 
 /mob/proc/hud_set_squad()

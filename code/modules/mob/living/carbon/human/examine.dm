@@ -455,11 +455,9 @@
 
 		if(perpref)
 			var/criminal = "None"
-			for(var/datum/data/record/E in GLOB.data_core.general)
-				if(E.fields["ref"] == perpref)
-					for (var/datum/data/record/R in GLOB.data_core.security)
-						if(R.fields["id"] == E.fields["id"])
-							criminal = R.fields["criminal"]
+			//fix
+			var/datum/data/record/security_record = retrieve_record(mob_ref = perpref, record_type = RECORD_TYPE_SECURITY)
+			criminal = security_record.fields[MOB_CRIMINAL_STATUS]
 
 			msg += "<span class = 'deptradio'>Criminal status:</span>"
 			if(!observer)
@@ -468,10 +466,7 @@
 				msg += "\[[criminal]\]\n"
 
 			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]</a>"
-			if(!observer)
-				msg += " <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
-			else
-				msg += "\n"
+			msg += "\n"
 	if(hasHUD(user,"medical"))
 		var/cardcolor = holo_card_color
 		if(!cardcolor) cardcolor = "none"
@@ -480,15 +475,13 @@
 		// scan reports
 		var/datum/data/record/N = null
 		var/me_ref = WEAKREF(src)
-		for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-			if (R.fields["ref"] == me_ref)
-				N = R
-				break
+		//fix
+		N = retrieve_record(mob_ref = me_ref, record_type = RECORD_TYPE_MEDICAL)
 		if(!isnull(N))
-			if(!(N.fields["last_scan_time"]))
+			if(!(N.fields[MOB_LAST_SCAN_TIME]))
 				msg += "<span class = 'deptradio'>No scan report on record</span>\n"
 			else
-				msg += "<span class = 'deptradio'><a href='?src=\ref[src];scanreport=1'>Scan from [N.fields["last_scan_time"]]</a></span>\n"
+				msg += "<span class = 'deptradio'><a href='?src=\ref[src];scanreport=1'>Scan from [N.fields[MOB_LAST_SCAN_TIME]]</a></span>\n"
 
 
 	if(hasHUD(user,"squadleader"))

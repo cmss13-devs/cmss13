@@ -506,18 +506,14 @@
 					perpref = I.registered_ref
 
 			if(perpref)
-				for(var/datum/data/record/E in GLOB.data_core.general)
-					if(E.fields["ref"] == perpref)
-						for(var/datum/data/record/R in GLOB.data_core.security)
-							if(R.fields["id"] == E.fields["id"])
-
-								var/setcriminal = tgui_input_list(usr, "Specify a new criminal status for this person.", "Security HUD", list("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP", "Cancel"))
-
-								if(hasHUD(usr, "security"))
-									if(setcriminal != "Cancel")
-										R.fields["criminal"] = setcriminal
-										modified = 1
-										sec_hud_set_security_status()
+				var/datum/data/record/security_record = retrieve_record(mob_ref = perpref, record_type = RECORD_TYPE_SECURITY)
+				var/setcriminal = tgui_input_list(usr, "Specify a new criminal status for this person.", "Security HUD", list(MOB_STAT_CRIME_NONE, MOB_STAT_CRIME_ARREST, MOB_STAT_CRIME_INCARCERATED, "Cancel"))
+				if(setcriminal == "Cancel")
+					return
+				if(hasHUD(usr, "security"))
+					security_record.fields[MOB_CRIMINAL_STATUS] = setcriminal
+					modified = TRUE
+					sec_hud_set_security_status()
 
 
 			if(!modified)
@@ -532,19 +528,17 @@
 				var/obj/item/card/id/ID = wear_id.GetID()
 				if(istype(ID))
 					perpref = ID.registered_ref
-			for(var/datum/data/record/E in GLOB.data_core.general)
-				if(E.fields["ref"] == perpref)
-					for(var/datum/data/record/R in GLOB.data_core.security)
-						if(R.fields["id"] == E.fields["id"])
-							if(hasHUD(usr,"security") || isobserver(usr))
-								to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Criminal Status:</b> [R.fields["criminal"]]")
-								to_chat(usr, "<b>Incidents:</b> [R.fields["incident"]]")
-								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
-								read = 1
+			var/datum/data/record/security_record = retrieve_record(mob_ref = perpref, record_type = RECORD_TYPE_SECURITY)
+			if(hasHUD(usr,"security") || isobserver(usr))
+				to_chat(usr, "<b>Name:</b> [security_record.fields[MOB_NAME]] <b>Criminal Status:</b> [security_record.fields[MOB_CRIMINAL_STATUS]]")
+				to_chat(usr, "<b>Incidents:</b> [security_record.fields[MOB_INCIDENTS]]")
+				// to_chat(usr, "<a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
+				read = TRUE
 
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
+	/* removed for the time being.
 	if(href_list["secrecordComment"] && (hasHUD(usr,"security") || isobserver(usr)))
 		var/perpref = null
 		if(wear_id)
@@ -555,6 +549,7 @@
 		var/read = 0
 
 		if(perpref)
+			//fix
 			for(var/datum/data/record/E in GLOB.data_core.general)
 				if(E.fields["ref"] != perpref)
 					continue
@@ -576,9 +571,11 @@
 					to_chat(usr, comment_markup)
 					if(!isobserver(usr))
 						to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
-
 		if(!read)
 			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
+		*/
+
+
 
 	if(href_list["secrecordadd"] && hasHUD(usr,"security"))
 		var/perpref = null
@@ -588,6 +585,7 @@
 				perpref = ID.registered_ref
 
 		if(perpref)
+			//fix
 			for(var/datum/data/record/E in GLOB.data_core.general)
 				if(E.fields["ref"] != perpref)
 					continue
@@ -621,26 +619,23 @@
 			var/modified = FALSE
 
 			if(perpref)
-				for(var/datum/data/record/E in GLOB.data_core.general)
-					if(E.fields["ref"] == perpref)
-						for(var/datum/data/record/R in GLOB.data_core.general)
-							if(R.fields["id"] == E.fields["id"])
+				// fix - fml.
+				var/datum/data/record/health_record = retrieve_record(mob_ref = perpref, record_type = RECORD_TYPE_GENERAL)
+				var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", health_record.fields[MOB_HEALTH_STATUS], list(MOB_STAT_HEALTH_DECEASED, MOB_STAT_HEALTH_UNFIT, MOB_STAT_HEALTH_ACTIVE, "Cancel"))
 
-								var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", R.fields[MOB_HEALTH_STATUS], list(MOB_STAT_HEALTH_DECEASED, MOB_STAT_HEALTH_UNFIT, MOB_STAT_HEALTH_ACTIVE, "Cancel"))
-
-								if(hasHUD(usr,"medical"))
-									if(setmedical != "Cancel")
-										R.fields["p_stat"] = setmedical
-										modified = 1
-
-										spawn()
-											if(istype(usr,/mob/living/carbon/human))
-												var/mob/living/carbon/human/U = usr
-												U.handle_regular_hud_updates()
+				if(hasHUD(usr,"medical"))
+					if(setmedical != "Cancel")
+						health_record.fields[MOB_HEALTH_STATUS] = setmedical
+						modified = TRUE
+						spawn()
+						if(istype(usr,/mob/living/carbon/human))
+							var/mob/living/carbon/human/U = usr
+							U.handle_regular_hud_updates()
 
 			if(!modified)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
+/* removed for now, will be modified in the future.
 	if(href_list["medrecord"])
 		if(hasHUD(usr,"medical"))
 			var/perpref = null
@@ -652,6 +647,7 @@
 			var/read = FALSE
 
 			if(perpref)
+				// fix
 				for(var/datum/data/record/E in GLOB.data_core.general)
 					if(E.fields["ref"] == perpref)
 						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
@@ -680,6 +676,7 @@
 			var/read = FALSE
 
 			if(perpref)
+				// fix
 				for(var/datum/data/record/E in GLOB.data_core.general)
 					if(E.fields["ref"] == perpref)
 						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
@@ -707,6 +704,7 @@
 
 			if(perpref)
 				for(var/datum/data/record/E in GLOB.data_core.general)
+					//fix
 					if(E.fields["ref"] == perpref)
 						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
@@ -720,6 +718,7 @@
 									if(istype(usr,/mob/living/carbon/human))
 										var/mob/living/carbon/human/U = usr
 										R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
+	*/
 
 	if(href_list["medholocard"])
 		change_holo_card(usr)
@@ -766,11 +765,10 @@
 				return
 
 			var/me_ref = WEAKREF(src)
-			for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-				if(R.fields["ref"] == me_ref)
-					if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
-						tgui_interact(usr)
-					break
+
+			var/datum/data/record/medical_record = retrieve_record(mob_ref = me_ref, record_type = RECORD_TYPE_MEDICAL)
+			if(medical_record.fields[MOB_LAST_SCAN_TIME] && medical_record.fields[MOB_LAST_SCAN_RESULT])
+				tgui_interact(usr)
 	..()
 	return
 
@@ -817,6 +815,7 @@
 
 /mob/living/carbon/human/ui_data(mob/user)
 	var/me_ref = WEAKREF(src)
+	// fix
 	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 		if(R.fields["ref"] == me_ref)
 			if(R.fields["last_tgui_scan_result"])

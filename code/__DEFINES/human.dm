@@ -294,7 +294,7 @@
 #define MOB_STAT_CRIME_ARREST "Arrest"
 #define MOB_STAT_CRIME_INCARCERATED "Incarcerated"
 
-#define MOB_STAT_CRIME_STATUS_LIST list(MOB_STAT_CRIME_NONE, MOB_STAT_CRIME_ARREST, MOB_STAT_CRIME_INCARDCERATED)
+#define MOB_STAT_CRIME_STATUS_LIST list(MOB_STAT_CRIME_NONE, MOB_STAT_CRIME_ARREST, MOB_STAT_CRIME_INCARCERATED)
 // ------------------------------------------------------------------------------------------------------------------ //
 
 // types of records
@@ -303,3 +303,4 @@
 #define RECORD_TYPE_MEDICAL "medical"
 #define RECORD_TYPE_STATIC "locked" // immutable records, keeping it for now I guess.
 
+#define RECORD_TYPE_LIST list(RECORD_TYPE_GENERAL, RECORD_TYPE_SECURITY,  RECORD_TYPE_MEDICAL, RECORD_TYPE_STATIC )

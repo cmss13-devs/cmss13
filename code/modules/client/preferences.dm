@@ -2021,11 +2021,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	if(job_title)
 		find_assigned_slot(job_title, is_late_join)
 	if(check_datacore && !(be_random_body && be_random_name))
-		for(var/datum/data/record/record as anything in GLOB.data_core.locked)
-			if(record.fields["name"] == real_name)
-				be_random_body = TRUE
-				be_random_name = TRUE
-				break
+		var/datum/data/record/old_record = retrieve_record(record_id_ref = character.record_id_ref, record_type = RECORD_TYPE_STATIC)
+		if(old_record.fields[MOB_NAME] == real_name)
+			be_random_body = TRUE
+			be_random_name = TRUE
 
 	if(be_random_name)
 		real_name = random_name(gender)

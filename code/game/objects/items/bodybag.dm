@@ -308,13 +308,11 @@
 	if(ishuman(stasis_mob) && hasHUD(user,"medical"))
 		var/mob/living/carbon/human/H = stasis_mob
 		var/stasis_ref = WEAKREF(H)
-		for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-			if (R.fields["ref"] == stasis_ref)
-				if(!(R.fields["last_scan_time"]))
-					. += "<span class = 'deptradio'>No scan report on record</span>\n"
-				else
-					. += "<span class = 'deptradio'><a href='?src=\ref[src];scanreport=1'>Scan from [R.fields["last_scan_time"]]</a></span>\n"
-				break
+		var/datum/data/record/medical_record = retrieve_record(record_id_ref = H.record_id_ref, mob_ref = stasis_ref, record_type = RECORD_TYPE_MEDICAL)
+		if(!medical_record.fields[MOB_LAST_SCAN_TIME])
+			. += "<span class = 'deptradio'>No scan report on record</span>\n"
+		else
+			. += "<span class = 'deptradio'><a href='?src=\ref[src];scanreport=1'>Scan from [medical_record.fields[MOB_LAST_SCAN_TIME]]</a></span>\n"
 
 
 
@@ -338,6 +336,7 @@
 			if(ishuman(stasis_mob))
 				var/mob/living/carbon/human/H = stasis_mob
 				var/stasis_ref = WEAKREF(H)
+				//fix
 				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 					if (R.fields["ref"] == stasis_ref)
 						if(R.fields["last_scan_time"] && R.fields["last_tgui_scan_result"])
@@ -356,6 +355,7 @@
 	if(ishuman(stasis_mob))
 		var/mob/living/carbon/human/H = stasis_mob
 		var/stasis_ref = WEAKREF(H)
+		//fix
 		for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 			if(R.fields["ref"] == stasis_ref)
 				if(R.fields["last_tgui_scan_result"])

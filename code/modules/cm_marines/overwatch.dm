@@ -229,10 +229,8 @@
 				fteam = " [marine_human.assigned_fireteam]"
 
 		else //listed marine was deleted or gibbed, all we have is their name
-			for(var/datum/data/record/marine_record as anything in GLOB.data_core.general)
-				if(marine_record.fields["name"] == marine)
-					role = marine_record.fields["real_rank"]
-					break
+			var/datum/data/record/marine_record = retrieve_record(mob_name = marine, record_type = RECORD_TYPE_GENERAL)
+			role = marine_record[MOB_REAL_RANK]
 			mob_state = "Dead"
 			mob_name = marine
 
@@ -661,25 +659,19 @@
 		return
 
 	var/marine_ref = WEAKREF(wanted_marine)
-	for(var/datum/data/record/E in GLOB.data_core.general)
-		if(E.fields["ref"] == marine_ref)
-			for(var/datum/data/record/R in GLOB.data_core.security)
-				if(R.fields["id"] == E.fields["id"])
-					if(!findtext(R.fields["ma_crim"],"Insubordination."))
-						R.fields["criminal"] = "*Arrest*"
-						if(R.fields["ma_crim"] == "None")
-							R.fields["ma_crim"] = "Insubordination."
-						else
-							R.fields["ma_crim"] += "Insubordination."
+	var/marked_insub = insert_record_stat(record_id_ref = wanted_marine.record_id_ref,mob_ref = marine_ref, record_type = RECORD_TYPE_SECURITY, stat_type = MOB_CRIMINAL_STATUS, new_stat = MOB_STAT_CRIME_ARREST)
+	if(!marked_insub)
+		visible_message("Unable to mark [wanted_marine] for insubordiantion at this time, please contact QM at your earliest availability") // records fucked
+		return
 
-						var/insub = "[icon2html(src, usr)] [SPAN_BOLDNOTICE("[wanted_marine] has been reported for insubordination. Logging to enlistment file.")]"
-						if(isRemoteControlling(usr))
-							usr << insub
-						else
-							visible_message(insub)
-						to_chat(wanted_marine, "[icon2html(src, wanted_marine)] <font size='3' color='blue'><B>Overwatch:</b> You've been reported for insubordination by your overwatch officer.</font>")
-						wanted_marine.sec_hud_set_security_status()
-					return
+	var/insub = "[icon2html(src, usr)] [SPAN_BOLDNOTICE("[wanted_marine] has been reported for insubordination. Logging to enlistment file.")]"
+	if(isRemoteControlling(usr))
+		usr << insub
+	else
+		visible_message(insub)
+		to_chat(wanted_marine, "[icon2html(src, wanted_marine)] <font size='3' color='blue'><B>Overwatch:</b> You've been reported for insubordination by your overwatch officer.</font>")
+		wanted_marine.sec_hud_set_security_status()
+		return
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_squad()
 	if(!usr)

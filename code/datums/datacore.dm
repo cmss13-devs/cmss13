@@ -32,12 +32,13 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		)
 		departments += marines_by_squad
 		var/list/manifest_out = list()
-		for(var/datum/data/record/record_entry in GLOB.data_core.general)
-			if(record_entry.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
+		for(var/record in GLOB.data_core.general)
+			var/datum/data/record/record_entry =  GLOB.data_core.general[general] // I regret using associated lists for this.
+			if(record_entry.fields[MOB_REAL_FACTION] != FACTION_MARINE) //we process only USCM humans
 				continue
-			var/name = record_entry.fields["name"]
-			var/rank = record_entry.fields["rank"]
-			var/squad = record_entry.fields["squad"]
+			var/name = record_entry.fields[MOB_NAME]
+			var/rank = record_entry.fields[MOB_REAL_RANK]
+			var/squad = record_entry.fields[MOB_SQUAD]
 			if(isnull(name) || isnull(rank))
 				continue
 			var/has_department = FALSE
@@ -51,8 +52,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 					if(!manifest_out[department])
 						manifest_out[department] = list()
 					manifest_out[department] += list(list(
-						"name" = name,
-						"rank" = rank
+						MOB_NAME = name,
+						MOB_SHOWN_RANK = rank
 					))
 					has_department = TRUE
 					break
@@ -60,8 +61,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 				if(!manifest_out["Miscellaneous"])
 					manifest_out["Miscellaneous"] = list()
 				manifest_out["Miscellaneous"] += list(list(
-					"name" = name,
-					"rank" = rank
+					MOB_NAME = name,
+					MOB_SHOWN_RANK = rank
 				))
 		return manifest_out
 
@@ -85,6 +86,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/dept_flags = NO_FLAGS //Is there anybody in the department?.
 	var/list/squad_sublists = GLOB.ROLES_SQUAD_ALL.Copy() //Are there any marines in the squad?
 
+	// fix
 	for(var/datum/data/record/record_entry in GLOB.data_core.general)
 		if(record_entry.fields[MOB_REAL_FACTION] != FACTION_MARINE) //we process only USCM humans
 			continue
@@ -214,13 +216,13 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
 /datum/datacore/proc/manifest_modify(name, ref, assignment, rank, health_status, record_id_ref = null)
 	var/datum/data/record/found_record = null
-	found_record = retrieve_record(record_id_ref, name, ref, RECORD_TYPE_GENERAL)
+	found_record = retrieve_record(mob_ref = ref, mob_name = name, record_type =RECORD_TYPE_GENERAL, record_id_ref = record_id_ref)
 
 	if(found_record)
 		if(assignment)
 			found_record.fields[MOB_SHOWN_RANK] = assignment
 		if(rank)
-			found_record.fields[MOB_REAL_RANK] = rank
+			found_record.fields[MOB_SHOWN_RANK] = rank
 		if(health_status)
 			found_record.fields[MOB_HEALTH_STATUS] = health_status
 		if(name)

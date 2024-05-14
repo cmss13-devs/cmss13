@@ -198,15 +198,9 @@
 
 	// Update criminal record.
 	if (incident.criminal_gid)
-		for (var/datum/data/record/R in GLOB.data_core.security)
-			if (R.fields["id"] == incident.criminal_gid)
-				var/datum/data/record/found_record = R
+		var/datum/data/record/target_sec_record = retrieve_record(mob_name = incident.criminal_name, record_type = RECORD_TYPE_SECURITY)
+		target_sec_record.fields[MOB_INCIDENTS] += "Crime: [incident.charges_to_string()] Notes: [incident.notes] "
 
-				found_record.fields["incident"] += "<BR> \
-												Crime: [incident.charges_to_string()].<BR> \
-												Notes: [incident.notes].<BR>"
-
-				break
 
 	var/obj/item/paper/incident/paper = new /obj/item/paper/incident(loc)
 	paper.incident = incident

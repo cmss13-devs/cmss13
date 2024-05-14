@@ -202,7 +202,7 @@
 		M = holder.my_atom
 	if(prob(1))
 		M.emote("shiver")
-	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 0)
+	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, T0C)
 	M.recalculate_move_delay = TRUE
 	holder.remove_reagent("capsaicin", 5)
 	holder.remove_reagent("hotsauce", 5)

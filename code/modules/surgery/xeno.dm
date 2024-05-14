@@ -204,7 +204,7 @@
 		user.affected_message(target,
 			SPAN_NOTICE("You burn your hands as you pulled the [target.caste_type] organ out!"),
 			SPAN_NOTICE("[user] burns their hands as they pulled Your insides out!"),
-			SPAN_NOTICE("[user] burns their hands as they pulled the [target.caste_type] organ out"))
+			SPAN_NOTICE("[user] burns [user.p_their()] hands as [user.p_they()] pulled the [target.caste_type] organ out."))
 		user.emote("pain")
 		if(user.hand)
 			user.apply_damage(15, BURN, "l_hand")

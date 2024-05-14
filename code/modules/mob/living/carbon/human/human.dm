@@ -618,7 +618,6 @@
 			var/modified = FALSE
 
 			if(perpref)
-				// fix - fml.
 				var/datum/data/record/health_record = retrieve_record(mob_ref = perpref, record_type = RECORD_TYPE_GENERAL)
 				var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", health_record.fields[MOB_HEALTH_STATUS], list(MOB_STAT_HEALTH_DECEASED, MOB_STAT_HEALTH_UNFIT, MOB_STAT_HEALTH_ACTIVE, "Cancel"))
 

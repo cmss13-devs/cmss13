@@ -455,7 +455,6 @@
 
 		if(perpref)
 			var/criminal = "None"
-			//fix
 			var/datum/data/record/security_record = retrieve_record(mob_ref = perpref, record_type = RECORD_TYPE_SECURITY)
 			criminal = security_record.fields[MOB_CRIMINAL_STATUS]
 
@@ -475,7 +474,6 @@
 		// scan reports
 		var/datum/data/record/N = null
 		var/me_ref = WEAKREF(src)
-		//fix
 		N = retrieve_record(mob_ref = me_ref, record_type = RECORD_TYPE_MEDICAL)
 		if(!isnull(N))
 			if(!(N.fields[MOB_LAST_SCAN_TIME]))

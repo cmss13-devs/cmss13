@@ -336,7 +336,6 @@
 			if(ishuman(stasis_mob))
 				var/mob/living/carbon/human/H = stasis_mob
 				var/stasis_ref = WEAKREF(H)
-				//fix
 				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 					if (R.fields["ref"] == stasis_ref)
 						if(R.fields["last_scan_time"] && R.fields["last_tgui_scan_result"])
@@ -355,7 +354,6 @@
 	if(ishuman(stasis_mob))
 		var/mob/living/carbon/human/H = stasis_mob
 		var/stasis_ref = WEAKREF(H)
-		//fix
 		for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 			if(R.fields["ref"] == stasis_ref)
 				if(R.fields["last_tgui_scan_result"])

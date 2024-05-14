@@ -284,7 +284,6 @@
 	var/mob/living/carbon/human/H = M
 	var/datum/data/record/N = null
 	var/human_ref = WEAKREF(H)
-	//fix
 	N = retrieve_record(record_id_ref = H.record_id_ref, mob_ref = human_ref, record_type = RECORD_TYPE_MEDICAL)
 	if(isnull(N))
 		visible_message("\The [src] buzzes: No records found for occupant.")

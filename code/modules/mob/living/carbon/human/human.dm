@@ -550,7 +550,6 @@
 		var/read = 0
 
 		if(perpref)
-			//fix
 			for(var/datum/data/record/E in GLOB.data_core.general)
 				if(E.fields["ref"] != perpref)
 					continue
@@ -586,7 +585,6 @@
 				perpref = ID.registered_ref
 
 		if(perpref)
-			//fix
 			for(var/datum/data/record/E in GLOB.data_core.general)
 				if(E.fields["ref"] != perpref)
 					continue
@@ -705,7 +703,6 @@
 
 			if(perpref)
 				for(var/datum/data/record/E in GLOB.data_core.general)
-					//fix
 					if(E.fields["ref"] == perpref)
 						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])

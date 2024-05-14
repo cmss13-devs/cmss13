@@ -108,7 +108,7 @@
 	change_purchase = -200
 	minimum_price = 200
 	item_reference = /obj/item/stack/medical/splint/nano/research
-	behavior = RESEARCH_UPGRADE_TIER_1
+	behavior = RESEARCH_UPGRADE_TIER_5
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 
 /datum/research_upgrades/armor

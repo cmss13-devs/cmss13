@@ -944,7 +944,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		for(var/list/vendspec in listed_products)
 			var/amount = vendspec[2]
 			if(amount > -1)
-				var/multiplier = Ceiling(amount / scale)
+				var/multiplier = ceil(amount / scale)
 				//Record the multiplier and how many have actually been given out
 				dynamic_stock_multipliers[vendspec] = list(multiplier, amount)
 

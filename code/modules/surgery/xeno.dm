@@ -128,7 +128,7 @@
 	return FALSE
 
 /datum/surgery_step/xenomorph/severe_connections
-	name = "Severe organ connections"
+	name = "Sever Organ Connections"
 	desc = "detach tubes and connections from organ"
 	tools = list(
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_IDEAL,
@@ -169,7 +169,7 @@
 		return FALSE
 
 /datum/surgery_step/xenomorph/remove_organ
-	name = "Take out the organ"
+	name = "Remove Xenomorph Organ"
 	desc = "grab a hold of it and pull the organ out"
 	accept_hand = TRUE
 	tools = list(

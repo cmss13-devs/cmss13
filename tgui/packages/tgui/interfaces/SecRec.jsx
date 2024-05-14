@@ -57,12 +57,7 @@ export const CrimeHist = (props) => {
 
   return (
     <>
-      <Section
-        title="Security Record"
-        buttons={
-          <Button icon="print" content="Print" onClick={() => act('print')} />
-        }
-      />
+      <Section title="Security Record" />
       <Box height={550}>
         <Tabs>
           <Tabs.Tab

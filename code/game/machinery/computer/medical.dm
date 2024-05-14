@@ -145,7 +145,7 @@
 			target_record_medical.fields[MOB_AUTOPSY_SUBMISSION] = TRUE
 			return TRUE
 
-/obj/structure/machinery/computer/double_id/med_data/print_paper()
+/obj/structure/machinery/computer/double_id/med_data/proc/print_paper()
 	playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
 	var/contents = {"<center><h4>Medical Report</h4></center>
 								<u>Prepared By:</u> [user_id_card?.registered_name ? user_id_card.registered_name : "Unknown"]<br>

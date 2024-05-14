@@ -80,10 +80,10 @@
 		animation_flash_color(victim, "#FF0000")
 
 /datum/surgery_step/xenomorph/cut_exoskeleton/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, failing to cut [target.caste_type] carapace apart using [tool]!"),
-			SPAN_WARNING("[user]'s hand slips, failing to cut your carapace apart using [tool]!"),
-			SPAN_WARNING("[user] hand slips, failing to cut [target.caste_type] carapace using [tool]!"))
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, failing to cut [target.caste_type] carapace apart using [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, failing to cut your carapace apart using [tool]!"),
+		SPAN_WARNING("[user] hand slips, failing to cut [target.caste_type] carapace using [tool]!"))
 	return FALSE
 
 /datum/surgery_step/xenomorph/open_exoskeleton

@@ -745,7 +745,7 @@
 	storage_slots = 7
 	max_w_class = 0
 	use_sound = "rip"
-	var/isopened = 0
+	var/isopened = FALSE
 
 /obj/item/storage/box/MRE/fill_preset_inventory()
 	pickflavor()

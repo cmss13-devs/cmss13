@@ -102,41 +102,9 @@
 			if(!COOLDOWN_FINISHED(src, print_cooldown))
 				visible_message("[SPAN_BOLD("[src]")] states, \"PRINT ERROR: system is still on cooldown.\"")
 				return
-
 			COOLDOWN_START(src, print_cooldown, PRINT_COOLDOWN_TIME )
-			playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
-			var/contents = {"<center><h4>Medical Report</h4></center>
-								<u>Prepared By:</u> [user_id_card?.registered_name ? user_id_card.registered_name : "Unknown"]<br>
-								<u>For:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
-								<hr>
-								<center><h4>General Information</h4></center>
-								<u>Name:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
-								<u>Sex:</u> [target_record_general?.fields[MOB_SEX]]<br>
-								<u>Age:</u> [target_record_general?.fields[MOB_AGE]]<br>
-								<u>Blood Type:</u> [target_record_medical?.fields[MOB_BLOOD_TYPE]]<br>
-								<hr>
-								<center><h4>Medical Notes</h4></center>
-								<u>General Notes:</u> [target_record_medical?.fields[MOB_MEDICAL_NOTES]]<br>
-								<u>Psychiatric History:</u> [target_record_general?.fields[MOB_MENTAL_STATUS]]<br>
-								<u>Disease History:</u> [target_record_medical?.fields[MOB_DISEASES]]<br>
-								<u>Disability History:</u> [target_record_medical?.fields[MOB_DISABILITIES]]<br>
-								<hr>
-								"}
+			print_paper()
 
-			// autopsy report gets shwacked ontop if it exists and the target stat is dead
-			if(target_record_general.fields[MOB_HEALTH_STATUS] == MOB_STAT_HEALTH_DECEASED && target_record_medical.fields[MOB_AUTOPSY_SUBMISSION])
-				contents +=  {"<center><h4>Autopsy Report</h4></center>
-								<u>Autopsy Notes:</u> [target_record_medical.fields[MOB_AUTOPSY_NOTES]]<br>
-								<u>Cause Of Death:</u> [target_record_medical.fields[MOB_CAUSE_OF_DEATH]]<br>
-							"}
-
-			var/obj/item/paper/med_report = new (loc)
-			med_report.name = "Medical Report"
-			med_report.info += contents
-			med_report.update_icon()
-
-			visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
-			return TRUE
 		if("eject")
 			if(target_id_card)
 				if(ishuman(user))
@@ -176,6 +144,41 @@
 				return
 			target_record_medical.fields[MOB_AUTOPSY_SUBMISSION] = TRUE
 			return TRUE
+
+/obj/structure/machinery/computer/double_id/med_data/print_paper()
+	playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
+	var/contents = {"<center><h4>Medical Report</h4></center>
+								<u>Prepared By:</u> [user_id_card?.registered_name ? user_id_card.registered_name : "Unknown"]<br>
+								<u>For:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
+								<hr>
+								<center><h4>General Information</h4></center>
+								<u>Name:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
+								<u>Sex:</u> [target_record_general?.fields[MOB_SEX]]<br>
+								<u>Age:</u> [target_record_general?.fields[MOB_AGE]]<br>
+								<u>Blood Type:</u> [target_record_medical?.fields[MOB_BLOOD_TYPE]]<br>
+								<hr>
+								<center><h4>Medical Notes</h4></center>
+								<u>General Notes:</u> [target_record_medical?.fields[MOB_MEDICAL_NOTES]]<br>
+								<u>Psychiatric History:</u> [target_record_general?.fields[MOB_MENTAL_STATUS]]<br>
+								<u>Disease History:</u> [target_record_medical?.fields[MOB_DISEASES]]<br>
+								<u>Disability History:</u> [target_record_medical?.fields[MOB_DISABILITIES]]<br>
+								<hr>
+								"}
+
+			// autopsy report gets shwacked ontop if it exists and the target stat is dead
+	if(target_record_general.fields[MOB_HEALTH_STATUS] == MOB_STAT_HEALTH_DECEASED && target_record_medical.fields[MOB_AUTOPSY_SUBMISSION])
+		contents +=  {"<center><h4>Autopsy Report</h4></center>
+								<u>Autopsy Notes:</u> [target_record_medical.fields[MOB_AUTOPSY_NOTES]]<br>
+								<u>Cause Of Death:</u> [target_record_medical.fields[MOB_CAUSE_OF_DEATH]]<br>
+							"}
+
+	var/obj/item/paper/med_report = new (loc)
+	med_report.name = "Medical Report"
+	med_report.info += contents
+	med_report.update_icon()
+
+	visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
+	return TRUE
 
 /obj/structure/machinery/computer/double_id/med_data/ui_static_data(mob/user)
 	var/list/data = list()

@@ -130,3 +130,16 @@
 2024-05-13:
   kirieee:
   - imageadd: rolled sleeve sprites for all IO uniforms
+2024-05-14:
+  Huffie56:
+  - balance: added a crowbar to the cryo defense kit.
+  ihatethisengine:
+  - bugfix: fixed potential bugs with transparent infection icon
+  - bugfix: Fixes infinite lifeboat alarm after queen locking
+  iloveloopers:
+  - rscadd: Mortar shells will now cook off and explode when flamed
+  - qol: OT freezer will now play a bell sound when it's done making paraformaldehyde
+      in a container
+  neeshacark:
+  - rscadd: you can now remove shrapnel from your body with the M11 Throwing Knife
+      and screwdrivers

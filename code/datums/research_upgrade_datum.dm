@@ -13,10 +13,12 @@
 	var/upgrade_type
 	///Clearance requirment to buy this upgrade. 5x is level 6. Why is it not that way? no one knows.
 	var/clearance_req = 5
-	///The change of an item per purchase
+	///The change of price for item per purchase
 	var/change_purchase = 0
-	///the minimum price which we cant go any cheaper
-	var/minimum_price = 1000
+	///the minimum price which we cant go any cheaper usually dont need to set this if change price is 0 or positive
+	var/minimum_price = 0
+	///the maximum price which we cant go any more expensive, usually dont need to set this if change price is 0 or negative
+	var/maximum_price = INFINITY
 
 /datum/research_upgrades/machinery
 	name = "Machinery"
@@ -73,10 +75,12 @@
 /datum/research_upgrades/item/research_credits
 	name = "Research Credits"
 	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team for two or three points."
-	value_upgrade = 1500
+	value_upgrade = 500
 	item_reference = /obj/item/research_upgrades/credits
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
+	change_purchase = 100
+	maximum_price = 2000
 	clearance_req = 4
 
 /datum/research_upgrades/item/laser_scalpel
@@ -91,7 +95,7 @@
 /datum/research_upgrades/item/incision_management
 	name = "Incision Management System"
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
-	value_upgrade = 3500
+	value_upgrade = 2000
 	item_reference = /obj/item/tool/surgery/scalpel/manager
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
@@ -101,6 +105,8 @@
 	desc = "A set of splints made from durable carbon fiber sheets reinforced with flexible titanium lattice, comes in a stack of five."
 	value_upgrade = 800
 	clearance_req = 5
+	change_purchase = -200
+	minimum_price = 200
 	item_reference = /obj/item/stack/medical/splint/nano/research
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
@@ -125,6 +131,8 @@
 	value_upgrade = 1250
 	behavior = RESEARCH_UPGRADE_TIER_1
 	clearance_req = 2
+	change_purchase = -200
+	minimum_price = 200
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	item_reference = /obj/item/clothing/accessory/health/research_plate/coagulator
 
@@ -134,6 +142,8 @@
 	value_upgrade = 250
 	clearance_req = 1
 	behavior = RESEARCH_UPGRADE_TIER_1
+	change_purchase = -100
+	minimum_price = 100
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	item_reference = /obj/item/clothing/accessory/health/research_plate/emergency_injector
 
@@ -144,6 +154,8 @@
 	clearance_req = 4
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ARMOR_UPGRADE
+	change_purchase = -100
+	minimum_price = 100
 	item_reference = /obj/item/clothing/accessory/health/ceramic_plate
 
 /datum/research_upgrades/armor/preservation
@@ -153,6 +165,8 @@
 	clearance_req = 4
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ARMOR_UPGRADE
+	change_purchase = -100
+	minimum_price = 100
 	item_reference = /obj/item/clothing/accessory/health/research_plate/anti_decay
 
 

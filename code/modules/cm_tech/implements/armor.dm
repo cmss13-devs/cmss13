@@ -409,6 +409,11 @@
 	. = ..()
 	wearer = null
 
+/obj/item/clothing/accessory/health/research_plate/anti_decay/get_examine_text(mob/user)
+	. = ..()
+	if(used)
+		. += SPAN_WARNING("It is used!")
+
 /obj/item/clothing/accessory/health/research_plate/anti_decay/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
 	wearer = user
@@ -433,13 +438,14 @@
 	UnregisterSignal(wearer, COMSIG_MOB_DEATH)
 	to_chat(wearer, SPAN_NOTICE("The [src] detects your death and starts injecting various chemicals to slow down your final demise!"))
 	RegisterSignal(wearer, COMSIG_HUMAN_REVIVED, PROC_REF(onetime_use))
+	used = TRUE
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay/proc/onetime_use()
 	SIGNAL_HANDLER
 	UnregisterSignal(wearer, COMSIG_HUMAN_REVIVED)
 	to_chat(wearer, SPAN_NOTICE("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps: Chemical preservatives reserves depleted, replace the [src]"))
 	wearer.revive_grace_period = 5 MINUTES
-	used = TRUE
+
 
 
 

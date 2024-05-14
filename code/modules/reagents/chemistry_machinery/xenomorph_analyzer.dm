@@ -16,6 +16,16 @@
 	var/busy = FALSE
 	var/caste_of_organ = null
 
+/obj/structure/machinery/xenoanalyzer/Initialize(mapload, ...)
+	. = ..()
+	for(var/upgrade_type in subtypesof(/datum/research_upgrades))
+		var/datum/research_upgrades/upgrade = upgrade_type
+		if(upgrade.behavior == RESEARCH_UPGRADE_CATEGORY)
+			continue
+		if(upgrade.behavior == RESEARCH_UPGRADE_EXCLUDE_BUY)
+			continue
+		technology_purchased[upgrade_type] = 0
+
 /obj/structure/machinery/xenoanalyzer/attack_hand(mob/user as mob)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
@@ -71,21 +81,17 @@
 		data["value"] = organ.research_value
 	else
 		data["organ"] = FALSE
-	return data
-
-/obj/structure/machinery/xenoanalyzer/ui_static_data(mob/user)
-	var/list/static_data = list()
-	static_data["upgrades"] = list()
-	static_data["categories"] = list()
-	for(var/upgrade_type in subtypesof(/datum/research_upgrades))
+	data["upgrades"] = list()
+	data["categories"] = list()
+	for(var/upgrade_type in subtypesof(/datum/research_upgrades))// moved this here since prices are dynamic now
 		var/datum/research_upgrades/upgrade = upgrade_type
 		if(upgrade.behavior == RESEARCH_UPGRADE_CATEGORY)
-			static_data["categories"] += upgrade.name
+			data["categories"] += upgrade.name
 			continue
 		if(upgrade.behavior == RESEARCH_UPGRADE_EXCLUDE_BUY)
 			continue
-		var/price_adjustment = upgrade.value_upgrade + upgrade.change_purchase * LAZYISIN(technology_purchased, upgrade_type)
-		static_data["upgrades"] += list(list(
+		var/price_adjustment = clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[upgrade_type], upgrade.minimum_price, upgrade.maximum_price)
+		data["upgrades"] += list(list(
 			"name" = capitalize_first_letters(upgrade.name),
 			"desc" = upgrade.desc,
 			"vari" = upgrade.behavior,
@@ -93,8 +99,9 @@
 			"ref" = upgrade.item_reference,
 			"category" = upgrade.upgrade_type,
 			"clearance" = upgrade.clearance_req,
+			"price_change" = upgrade.change_purchase,
 		))
-	return static_data
+	return data
 
 /obj/structure/machinery/xenoanalyzer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -160,9 +167,8 @@
 		return
 	icon_state = "xeno_analyzer_printing"
 	busy = TRUE
-	biomass_points -= upgrade.value_upgrade
+	biomass_points -= clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[datum_upgrades], upgrade.minimum_price, upgrade.maximum_price)
 	technology_purchased[datum_upgrades] += 1
-	to_world("1")
 	addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path, variation), 3 SECONDS)
 
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, variation)

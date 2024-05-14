@@ -19,7 +19,7 @@ export const XenomorphExtractor = (_props, context) => {
   const [selectedTab, setSelectedTab] = useLocalState('category', 'NONE');
 
   return (
-    <Window width={600} height={650} theme="crtyellow">
+    <Window width={850} height={800} theme="crtyellow">
       <Window.Content scrollable>
         <Section>
           <Stack fill vertical>
@@ -81,12 +81,15 @@ export const XenomorphExtractor = (_props, context) => {
                         <LabeledList.Item
                           key={upgrades.name}
                           label={
-                            <h3 style={{ color: '#ffbf00' }}>
-                              {upgrades.name}
-                            </h3>
+                            <Box width={25}>
+                              <h3 style={{ color: '#ffbf00' }}>
+                                {upgrades.name}
+                              </h3>
+                            </Box>
                           }
                           buttons={
-                            <Box>
+                            <Box preserveWhitespace>
+                              {' '}
                               <Button
                                 fluid={1}
                                 content={'Print ' + '  (' + upgrades.cost + ')'}
@@ -108,6 +111,23 @@ export const XenomorphExtractor = (_props, context) => {
                               ? '5X'
                               : upgrades.clearance}{' '}
                             Required
+                            {upgrades.price_change !== 0 && (
+                              <Box>
+                                <Divider />
+                                This technology will{' '}
+                                {upgrades.price_change > 0
+                                  ? 'increase'
+                                  : 'decrease'}{' '}
+                                in cost by {upgrades.price_change} each purchase
+                              </Box>
+                            )}
+                            {upgrades.price_change === 0 && (
+                              <Box>
+                                <Divider />
+                                This technology will not change its value with
+                                purchase.
+                              </Box>
+                            )}
                           </Box>
                         </LabeledList.Item>
                       ) : null

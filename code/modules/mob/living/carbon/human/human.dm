@@ -529,9 +529,10 @@
 				if(istype(ID))
 					perpref = ID.registered_ref
 			var/datum/data/record/security_record = retrieve_record(mob_ref = perpref, record_type = RECORD_TYPE_SECURITY)
-			if(hasHUD(usr,"security") || isobserver(usr))
+			if(hasHUD(usr,"security") || isobserver(usr) && security_record)
 				to_chat(usr, "<b>Name:</b> [security_record.fields[MOB_NAME]] <b>Criminal Status:</b> [security_record.fields[MOB_CRIMINAL_STATUS]]")
-				to_chat(usr, "<b>Incidents:</b> [security_record.fields[MOB_INCIDENTS]]")
+				for(var/i in 1 to length(security_record.fields[MOB_INCIDENTS]))
+					to_chat(usr, "<b>Incidents:</b> [security_record.fields[MOB_INCIDENTS][i]]")
 				// to_chat(usr, "<a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
 				read = TRUE
 

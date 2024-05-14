@@ -623,6 +623,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		return
 
 	var/datum/data/record/security_record = retrieve_record(mob_ref = perpref, record_type = RECORD_TYPE_SECURITY)
+	if(!security_record)
+		return
 	switch(security_record.fields[MOB_CRIMINAL_STATUS])
 		if(MOB_STAT_CRIME_ARREST)
 			holder.icon_state = "hudsec_wanted"

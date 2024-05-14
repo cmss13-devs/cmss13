@@ -1,6 +1,6 @@
 // mob ref is a failsafe, ideally we just access through the id.
-/proc/retrieve_record(record_id = null, mob_name = null, mob_ref = null, record_type = RECORD_TYPE_GENERAL)
-	if(!record_id && !mob_name && !mob_ref)
+/proc/retrieve_record(record_id_ref = null, mob_name = null, mob_ref = null, record_type = RECORD_TYPE_GENERAL)
+	if(!record_id_ref && !mob_name && !mob_ref)
 		return
 
 	var/datum/datacore/database = GLOB.data_core
@@ -21,8 +21,8 @@
 			selected_record_type = database.locked
 		else
 			return
-	if(record_id)
-		retrieved_record = selected_record_type[record_id]
+	if(record_id_ref)
+		retrieved_record = selected_record_type[record_id_ref]
 	else
 		for(var/record_id_query as anything in selected_record_type)
 			var/datum/data/record/record = selected_record_type[record_id_query]
@@ -32,11 +32,11 @@
 
 	return retrieved_record
 
-/proc/insert_record_stat(record_id = null, mob_name = null, mob_ref = null, record_type = RECORD_TYPE_GENERAL, stat_type = null, new_stat = null)
+/proc/insert_record_stat(record_id_ref = null, mob_name = null, mob_ref = null, record_type = RECORD_TYPE_GENERAL, stat_type = null, new_stat = null)
 	if(!stat_type || !new_stat)
 		return FALSE
 
-	var/datum/data/record/retrieved_record = retrieve_record(record_id, mob_name, mob_ref, record_type)
+	var/datum/data/record/retrieved_record = retrieve_record(record_id_ref, mob_name, mob_ref, record_type)
 	if(!retrieved_record)
 		return FALSE
 	retrieved_record.fields[stat_type] = new_stat
@@ -67,7 +67,7 @@
 	var/datum/data/record/security_record = new()
 	security_record.fields[MOB_NAME] = person.name ? person.name : "Unknown"
 	security_record.name = text("Security Record")
-	security_record.fields[MOB_CRIMINAL_STATUS] = "None"
+	security_record.fields[MOB_CRIMINAL_STATUS] = MOB_STAT_CRIME_NONE
 	security_record.fields[MOB_INCIDENTS] = list()
 	security_record.fields[MOB_WEAKREF] = WEAKREF(person)
 	security_record.fields[MOB_SECURITY_NOTES] = person.sec_record  && !jobban_isbanned(person, "Records") ? person.sec_record : "No notes found."

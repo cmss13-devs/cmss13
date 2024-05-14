@@ -215,7 +215,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical
 	name = "\improper Wey-Med Plus"
-	desc = "Medical Pharmaceutical dispenser. Provided by Wey-Yu Pharmaceuticals Division(TM)."
+	desc = "Medical pharmaceutical dispenser. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon_state = "med"
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
@@ -676,7 +676,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed
 	name = "\improper ColMarTech MarineMed"
-	desc = "Medical Pharmaceutical dispenser with basic medical supplies for marines."
+	desc = "Medical pharmaceutical dispenser with basic medical supplies for marines."
 	icon_state = "marinemed"
 	req_access = list()
 	req_one_access = list()
@@ -713,7 +713,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood
 	name = "\improper MM Blood Dispenser"
-	desc = "The Marine Med Brand Blood Pack Dispensary is the premier, top-of-the-line blood dispenser of 2105! Get yours today!" //Don't update this year, the joke is it's old.
+	desc = "The MarineMed brand blood dispensary is the premier, top-of-the-line blood dispenser of 2105! Get yours today!" //Don't update this year, the joke is it's old.
 	icon_state = "blood"
 	wrenchable = TRUE
 	hackable = TRUE
@@ -749,7 +749,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med
 	name = "\improper NanoMed"
-	desc = "Wall-mounted Medical Equipment Dispenser."
+	desc = "A wall-mounted medical equipment dispenser."
 	icon_state = "wallmed"
 	appearance_flags = TILE_BOUND
 	req_access = list()
@@ -782,7 +782,7 @@
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited
-	desc = "Wall-mounted Medical Equipment Dispenser. This version is more limited than standard USCM NanoMeds."
+	desc = "A wall-mounted medical equipment dispenser. This version is more limited than standard USCM NanoMeds."
 
 	chem_refill_volume = 150
 	chem_refill_volume_max = 150

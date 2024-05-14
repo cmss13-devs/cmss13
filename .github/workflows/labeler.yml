@@ -1,7 +1,8 @@
 name: Labeling and Verification
 on:
   pull_request_target:
-    types: [opened, edited]
+    types: [opened, reopened, edited]
+  merge_group:
 jobs:
   label:
     runs-on: ubuntu-latest

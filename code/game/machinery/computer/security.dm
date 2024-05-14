@@ -111,7 +111,7 @@
 		list(
 			value = target_gen_record?.fields[MOB_SEX],
 			message ="Sex: "
-			),
+			)
 		)
 
 	crime_stat = list(

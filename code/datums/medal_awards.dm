@@ -164,7 +164,6 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 
 /proc/give_medal_award_prefilled(medal_location, mob/giving_mob, chosen_recipient, recipient_rank, recipient_ckey, reason, _medal_type)
 	var/list/recipient_ranks = list()
-	//fix
 	for(var/record_name in GLOB.data_core.general)
 		var/datum/data/record/record = GLOB.data_core.general[record_name]
 		var/recipient_name = record.fields[MOB_NAME]

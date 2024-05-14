@@ -279,3 +279,6 @@
 	data["authenticated"] = authenticated
 
 	return data
+
+#undef SECURITY
+#undef GENERAL

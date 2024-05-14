@@ -130,7 +130,8 @@
 
 	if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
 		frenzy_aura = frenzy_new
-		warding_aura = warding_new
+		if(health > crit_health || warding_new > warding_aura || !check_weeds_for_healing())
+			warding_aura = warding_new
 		recovery_aura = recovery_new
 		recalculate_move_delay = TRUE
 		hud_set_pheromone()

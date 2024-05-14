@@ -49,13 +49,13 @@
 	if(tool_type == /obj/item/tool/surgery/circular_saw || tool_type == /obj/item/tool/surgery/scalpel/laser/advanced)
 		user.affected_message(target,
 			SPAN_NOTICE("You start to cut [target.caste_type] carapace apart using \the [tool], carefully, trying to prevent acid leaks."),
-			SPAN_NOTICE("[user] starts to cut Your carapace apart using \the [tool], carefully, trying to prevent acid leaks."),
+			SPAN_NOTICE("[user] starts to cut your carapace apart using \the [tool], carefully, trying to prevent acid leaks."),
 			SPAN_NOTICE("[user] starts to cut [target.caste_type] carapace. \the [tool], carefully, trying to prevent acid leaks."))
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You start to [pick("smash", "crack", "break")] [target.caste_type] carapace apart using \the [tool], Recklessly, with acid splashing on you!"),
-			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] Your carapace apart using \the [tool], Recklessly, with acid splashing all of the place!"),
-			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] [target.caste_type] carapace with \the [tool], Recklessly, with acid splashing them!"))
+			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] your carapace apart using [tool], recklessly splashing acid everywhere!"),
+			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] [target.caste_type] carapace with [tool], recklessly splashing acid everywhere!"))
 		user.apply_damage(rand(25,50),BURN)
 		to_chat(user, SPAN_DANGER("You burn as acid gets on your skin!"))
 		//we dont really need log interact since we're working with dead body... I hope
@@ -64,13 +64,13 @@
 	if(tool_type == /obj/item/tool/surgery/circular_saw)
 		user.affected_message(target,
 			SPAN_NOTICE("You succesfully cut through [target.caste_type] carapace apart using \the [tool]."),
-			SPAN_NOTICE("[user] Succesfully cuts through Your carapace using \the [tool]."),
-			SPAN_NOTICE("[user] Succesfully cuts [target.caste_type] carapace using \the [tool]."))
+			SPAN_NOTICE("[user] successfully cuts through your carapace using [tool]."),
+			SPAN_NOTICE("[user] successfully cuts [target.caste_type] carapace using [tool]."))
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You succesfully destroy [target.caste_type] carapace into bits and pieces apart using \the [tool]."),
-			SPAN_NOTICE("[user] succesfully destroys Your carapace into bits and pieces apart using \the [tool]."),,
-			SPAN_NOTICE("[user] Succesfully destroys [target.caste_type] carapace into bits and pieces apart using \the [tool]."))
+			SPAN_NOTICE("You successfully destroy [target.caste_type] carapace into bits and pieces using \the [tool]."),
+			SPAN_NOTICE("[user] successfully destroys your carapace into bits and pieces using \the [tool]."),,
+			SPAN_NOTICE("[user] successfully destroys [target.caste_type] carapace into bits and pieces using \the [tool]."))
 	for(var/mob/living/carbon/human/victim in orange(1, target))
 		if(istype(victim.wear_suit, /obj/item/clothing/suit/bio_suit) && istype(victim.head, /obj/item/clothing/head/bio_hood))
 			continue
@@ -83,7 +83,7 @@
 	if(tool_type == /obj/item/tool/surgery/circular_saw)
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, failing to cut [target.caste_type] carapace apart using \the [tool]!"),
-			SPAN_WARNING("[user] hand slips, failing to cut Your carapace apart using \the [tool]!"),
+			SPAN_WARNING("[user]'s hand slips, failing to cut your carapace apart using [tool]!"),
 			SPAN_WARNING("[user] hand slips, failing to cut [target.caste_type] carapace using \the [tool]!"))
 	else
 		user.affected_message(target,

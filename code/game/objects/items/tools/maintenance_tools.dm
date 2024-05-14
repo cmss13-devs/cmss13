@@ -50,6 +50,7 @@
 	throw_range = 5
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
+	flags_item = CAN_DIG_SHRAPNEL
 	inherent_traits = list(TRAIT_TOOL_SCREWDRIVER)
 
 
@@ -141,7 +142,7 @@
 	icon_state = "tac_cutters"
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C, mob/user)
-	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
+	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/restraint/adjustable/cable)))
 		user.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
 		"You cut \the [C]'s restraints with \the [src]!",\
 		"You hear cable being cut.")

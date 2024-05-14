@@ -86,10 +86,13 @@ const DropshipDoorControl = () => {
               <Stack.Item key={x.id}>
                 <>
                   {x.value === DoorStatusEnum.SHUTTLE_DOOR_BROKEN && (
-                    <Button icon="ban">No response</Button>
+                    <Button disabled icon="ban">
+                      No response
+                    </Button>
                   )}
                   {x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
                     <Button
+                      disabled={disable_door_controls}
                       onClick={() =>
                         act('door-control', {
                           interaction: 'force-lock',

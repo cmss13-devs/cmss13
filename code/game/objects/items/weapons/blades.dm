@@ -125,6 +125,7 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	flags_equip_slot = SLOT_STORE|SLOT_FACE
 	flags_armor_protection = SLOT_FACE
+	flags_item = CAN_DIG_SHRAPNEL
 
 /obj/item/weapon/unathiknife
 	name = "duelling knife"

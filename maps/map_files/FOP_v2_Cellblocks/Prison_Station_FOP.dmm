@@ -1378,8 +1378,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	density = 0;
 	icon_state = "door_open";
-	name = "Cell Access";
-	req_access = null
+	name = "Cell Access"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -1574,8 +1573,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Cell";
-	opacity = 0;
-	req_access = null
+	opacity = 0
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1621,8 +1619,7 @@
 	dir = 2;
 	icon_state = "door_open";
 	name = "Cell";
-	opacity = 0;
-	req_access = null
+	opacity = 0
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
@@ -3454,10 +3451,10 @@
 /area/prison/research/secret)
 "aiZ" = (
 /obj/structure/surface/rack,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkpurple2"
@@ -3915,8 +3912,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	density = 0;
 	icon_state = "door_open";
-	name = "Cell Access";
-	req_access = null
+	name = "Cell Access"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -8229,13 +8225,6 @@
 	icon_state = "bright_clean"
 	},
 /area/prison/chapel)
-"awd" = (
-/obj/structure/machinery/door/airlock/almayer/security/colony{
-	locked = 0;
-	name = "Research Containment Locker"
-	},
-/turf/open/floor/prison,
-/area/prison/research/secret)
 "awe" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating,
@@ -13800,7 +13789,7 @@
 /area/prison/command/secretary_office)
 "aMK" = (
 /obj/structure/closet,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/clothing/mask/muzzle,
 /obj/item/weapon/chainofcommand,
 /turf/open/floor/prison{
@@ -28265,8 +28254,7 @@
 /area/prison/hallway/east)
 "bDU" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	dir = 2;
-	req_access = null
+	dir = 2
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -31414,9 +31402,7 @@
 /turf/open/floor/wood,
 /area/prison/residential/south)
 "bNt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	locked = 0
-	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /turf/open/floor/prison{
 	icon_state = "damaged3"
 	},
@@ -47865,6 +47851,14 @@
 	icon_state = "yellowfull"
 	},
 /area/prison/cellblock/protective)
+"rmb" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link/green,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull"
+	},
+/area/prison/medbay)
 "rpB" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/machinery/light{
@@ -82696,7 +82690,7 @@ arx
 apK
 asp
 asT
-att
+rmb
 att
 avj
 avn
@@ -87123,7 +87117,7 @@ aeZ
 aeZ
 aiN
 aiN
-awd
+atK
 aiN
 aiN
 aiN

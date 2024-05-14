@@ -98,7 +98,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/general(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/cotablet(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/mateba_case/general(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs(new_human.back), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human.back), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash, WEAR_IN_JACKET)
 
@@ -174,7 +174,7 @@
 	//TODO: preload all of those items before equipping the backpack
 	//Otherwise, if you spawn the spy next to other people
 	//they will see messages for them putting guns and explosives into their backpack...
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92/suppressed/tranq(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92/tranq(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92/tranq(new_human.back), WEAR_IN_BACK)
@@ -241,7 +241,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat(new_human), WEAR_J_STORE)
 
 /datum/equipment_preset/uscm_event/provost/tml
@@ -288,7 +288,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat(new_human), WEAR_J_STORE)
 
 /datum/equipment_preset/uscm_event/provost/inspector
@@ -329,7 +329,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/provost/light/flexi(new_human.back), WEAR_IN_BACK)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/uscm_event/provost/inspector/advisor
 	name = "Provost Advisor"
@@ -375,6 +375,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mateba(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/provost/marshal(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/cotablet(new_human.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm_event/provost/marshal/sector
 	name = "Provost Sector Marshal (MO7)"

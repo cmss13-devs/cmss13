@@ -27,25 +27,21 @@ export const XenomorphExtractor = (_props, context) => {
               <Button
                 fluid
                 icon="eject"
-                content={
-                  !organ ? 'Eject Biomass' : 'Eject ' + caste + ' biomass'
-                }
                 disabled={!organ}
-                onClick={() => act('eject_organ')}
-              />
+                onClick={() => act('eject_organ')}>
+                {!organ ? 'Eject Biomass' : 'Eject ' + caste + ' biomass'}
+              </Button>
             </Stack.Item>
             <Stack.Item>
               <Button
                 fluid
                 icon="eject"
-                content={
-                  !organ
-                    ? 'Process Biomass'
-                    : 'Process Biomass, Expected value : ' + value
-                }
                 disabled={!organ}
-                onClick={() => act('process_organ')}
-              />
+                onClick={() => act('process_organ')}>
+                {!organ
+                  ? 'Process Biomass'
+                  : 'Process Biomass, Expected value : ' + value}
+              </Button>
             </Stack.Item>
             <Stack.Item>
               <NoticeBox info>Biological Matter : {points}</NoticeBox>
@@ -92,7 +88,6 @@ export const XenomorphExtractor = (_props, context) => {
                               {' '}
                               <Button
                                 fluid={1}
-                                content={'Print ' + '  (' + upgrades.cost + ')'}
                                 icon="print"
                                 tooltip={upgrades.desc}
                                 tooltipPosition="left"
@@ -101,8 +96,9 @@ export const XenomorphExtractor = (_props, context) => {
                                     ref: upgrades.ref,
                                     vari: upgrades.vari,
                                   })
-                                }
-                              />
+                                }>
+                                Print ({upgrades.cost})
+                              </Button>
                             </Box>
                           }>
                           <Box mb={0.8}>

@@ -687,7 +687,7 @@
 
 	if(ammo_travelling_time && !istype(SA, /obj/structure/ship_ammo/rocket/custom_missile))
 		var/total_seconds = max(floor(ammo_travelling_time/10),1)
-		for(var/i = 0 to total_seconds)
+		for(var/i in 0 to total_seconds)
 			sleep(10)
 			if(!selected_target || !selected_target.loc)//if laser disappeared before we reached the target,
 				ammo_accuracy_range++ //accuracy decreases
@@ -700,7 +700,7 @@
 	if(ammo_travelling_time && istype(SA, /obj/structure/ship_ammo/rocket/custom_missile))
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)
 		var/total_seconds = max(floor(ammo_travelling_time/10),1)
-		for(var/i = 0 to total_seconds)
+		for(var/i in 0 to total_seconds)
 			sleep(10)
 			new /obj/effect/overlay/temp/blinking_laser (impact) //no decreased accuracy if laser dissapears, it will land where it is telegraphed to land
 

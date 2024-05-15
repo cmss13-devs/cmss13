@@ -80,7 +80,7 @@
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	change_purchase = 100
-	maximum_price = 2000
+	maximum_price = 3000
 	clearance_req = 4
 
 /datum/research_upgrades/item/laser_scalpel
@@ -95,7 +95,7 @@
 /datum/research_upgrades/item/incision_management
 	name = "Incision Management System"
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
-	value_upgrade = 2000
+	value_upgrade = 3000
 	item_reference = /obj/item/tool/surgery/scalpel/manager
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
@@ -150,11 +150,11 @@
 /datum/research_upgrades/armor/ceramic
 	name = "Ceramic Armor Plate"
 	desc = "A strong trauma plate, able to protect the user from a large amount of bullets. Completely useless against sharp objects."
-	value_upgrade = 1000
+	value_upgrade = 500
 	clearance_req = 4
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ARMOR_UPGRADE
-	change_purchase = -100
+	change_purchase = -50
 	minimum_price = 200
 	item_reference = /obj/item/clothing/accessory/health/ceramic_plate
 

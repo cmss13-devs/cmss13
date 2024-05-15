@@ -443,8 +443,7 @@
 							surgery_todo_list -= S
 							continue
 						open_incision(H,S.limb_ref)
-						sleep(BONEGEL_REPAIR_MAX_DURATION*surgery_mod)
-						sleep(BONESETTER_MAX_DURATION*surgery_mod)
+						sleep(BONEGEL_REPAIR_MAX_DURATION*surgery_mod+20)
 						if(S.limb_ref.brute_dam > 20)
 							sleep(((S.limb_ref.brute_dam - 20)/2)*surgery_mod)
 							if(!surgery) break

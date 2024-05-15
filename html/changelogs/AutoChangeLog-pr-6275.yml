@@ -1,5 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - qol: "Maintenance jack can now be quick drawn"
-  - code_imp: "Added a flag that allows items to be quick draw-able despite not being weapons."

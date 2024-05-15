@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - balance: "Added a 70% chance groundside reagent tanks start anchored, if they don't already."

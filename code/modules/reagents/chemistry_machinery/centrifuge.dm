@@ -208,7 +208,7 @@
 			else
 				A.name = "autoinjector (" + A.reagents.reagent_list[1].name + ")"
 			var/numberOfUses = A.reagents.total_volume / A.amount_per_transfer_from_this
-			A.uses_left = round(numberOfUses) == numberOfUses ? numberOfUses : round(numberOfUses) + 1
+			A.uses_left = floor(numberOfUses) == numberOfUses ? numberOfUses : floor(numberOfUses) + 1
 			A.update_icon()
 		else
 			if(autolabel)

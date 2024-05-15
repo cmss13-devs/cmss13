@@ -139,7 +139,7 @@
 	desc = "A rod with some wire wrapped around the top. It'd be easy to attach something to the top bit."
 	icon_state = "wiredrod"
 	item_state = "rods"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	force = MELEE_FORCE_WEAK
 	throwforce = MELEE_FORCE_WEAK
 	w_class = SIZE_MEDIUM
@@ -175,7 +175,7 @@
 <p>Katanas are thrice as sharp as European swords and thrice as hard for that matter too. Anything a longsword can cut through, a katana can cut through better. I'm pretty sure a katana could easily bisect a knight wearing full plate with a simple vertical slash.</p>\
 <p>Ever wonder why medieval Europe never bothered conquering Japan? That's right, they were too scared to fight the disciplined Samurai and their katanas of destruction. Even in World War II, American soldiers targeted the men with the katanas first because their killing power was feared and respected.</p>"
 	icon_state = "katana"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	force = 4444
 	throwforce = MELEE_FORCE_VERY_STRONG
 	sharp = IS_SHARP_ITEM_BIG
@@ -219,7 +219,7 @@
 
 	var/power = force
 	if(user.skills)
-		power = round(power * (1 + 0.3*user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //30% bonus per melee level
+		power = floor(power * (1 + 0.3*user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //30% bonus per melee level
 
 
 	//if the target also has a katana (and we aren't attacking ourselves), we add some suspense

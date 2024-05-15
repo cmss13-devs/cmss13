@@ -1,7 +1,7 @@
 
 /// Process asset cache client topic calls for "asset_cache_confirm_arrival=[INT]"
 /client/proc/asset_cache_confirm_arrival(job_id)
-	var/asset_cache_job = round(text2num(job_id))
+	var/asset_cache_job = floor(text2num(job_id))
 		//because we skip the limiter, we have to make sure this is a valid arrival and not somebody tricking us into letting them append to a list without limit.
 	if (asset_cache_job > 0 && asset_cache_job <= last_asset_job && !(completed_asset_jobs["[asset_cache_job]"]))
 		completed_asset_jobs["[asset_cache_job]"] = TRUE

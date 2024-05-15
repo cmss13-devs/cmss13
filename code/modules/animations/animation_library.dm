@@ -181,7 +181,7 @@ Can look good elsewhere as well.*/
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0
 	var/direction = get_dir(src, A)
-	pixel_offset = round(pixel_offset) // Just to be safe
+	pixel_offset = floor(pixel_offset) // Just to be safe
 	switch(direction)
 		if(NORTH)
 			pixel_y_diff = pixel_offset

@@ -41,7 +41,7 @@
 		rotation = dir2angle(new_dock.dir)-dir2angle(dir)
 		if ((rotation % 90) != 0)
 			rotation += (rotation % 90) //diagonal rotations not allowed, round up
-		rotation = SIMPLIFY_DEGREES(rotation)
+		rotation %%= 360
 
 	if(!movement_direction)
 		movement_direction = turn(preferred_direction, 180)

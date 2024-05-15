@@ -2317,7 +2317,7 @@
 	pixel_x = -5;
 	pixel_y = 1
 	},
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 2;
 	pixel_y = 16
 	},
@@ -2875,7 +2875,7 @@
 	},
 /area/varadero/interior/chapel)
 "bPL" = (
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 2;
 	pixel_y = 16
 	},
@@ -21989,7 +21989,7 @@
 /area/varadero/interior/hall_SE)
 "ohi" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/structure/machinery/flasher_button{
 	id = "sec_checkpoint";
 	pixel_y = 24
@@ -28062,7 +28062,7 @@
 /area/varadero/interior/caves/east)
 "rTu" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/weapon/baton,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
@@ -33846,7 +33846,7 @@
 "vEa" = (
 /obj/structure/closet/crate/medical,
 /obj/item/tool/wirecutters/clippers,
-/obj/item/handcuffs/zip,
+/obj/item/restraint/handcuffs/zip,
 /obj/item/tool/surgery/surgicaldrill,
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/shiva{

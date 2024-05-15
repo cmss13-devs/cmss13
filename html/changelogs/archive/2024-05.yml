@@ -90,3 +90,77 @@
 2024-05-07:
   Zonespace, d.1.n.a. (original sprites), esselnek (new sprites):
   - rscadd: Added the M540-B Armored Recon Carrier as a t1 intel purchase.
+2024-05-10:
+  realforest2001:
+  - code_imp: Repaths handcuffs and legcuffs to have a shared parent.
+  - code_imp: Repaths xeno restraints to reduce confusion from the typepath.
+  - rscadd: Legcuffs work appropriately now, and can be found in small numbers within
+      security vendors.
+  - rscadd: Cable restraints can now be adjusted via right-click to fit on wrists
+      or ankles.
+  - rscadd: Prison shoe chains now require ankle restraints rather than handcuffs.
+  - rscadd: Prison shoes that have been chained now have an equp and unequip delay
+      to account for the chains, proportionate to the breakout time of the item used
+      in the chains.
+2024-05-11:
+  Tyranicranger4:
+  - qol: Emptied randomchem vials no longer show up on the data detector
+  - bugfix: Fixes empty vial storage boxes showing up on the data detector
+  cuberound:
+  - balance: projectiles can pass fences
+  ihatethisengine:
+  - rscadd: Added paradropping
+  - rscdel: Removed rappeling
+  - rscadd: Infection icon now has lower alpha if the human is dead
+  iloveloopers:
+  - rscadd: Adds in a new incinerator smoke tank that turns any reagent inside it
+      into chemsmoke when fired.
+2024-05-12:
+  Git-Nivrak:
+  - balance: Limbs will now only be delimb-able if they are fractured
+  XQ:
+  - qol: Updated the ARES reception bell's description to inform players it notifies
+      Working Joes when rung.
+  - qol: Increased the ARES reception bell's cooldown from 5 to 60 seconds.
+  ihatethisengine:
+  - balance: only disabled comms can be pyloned
+  realforest2001:
+  - rscadd: Handcuffs & Legcuffs now appear on examine.
+  - rscadd: Added a reason input field to handheld distress beacons.
+2024-05-13:
+  kirieee:
+  - imageadd: rolled sleeve sprites for all IO uniforms
+2024-05-14:
+  Huffie56:
+  - balance: added a crowbar to the cryo defense kit.
+  ihatethisengine:
+  - bugfix: fixed potential bugs with transparent infection icon
+  - bugfix: Fixes infinite lifeboat alarm after queen locking
+  iloveloopers:
+  - rscadd: Mortar shells will now cook off and explode when flamed
+  - qol: OT freezer will now play a bell sound when it's done making paraformaldehyde
+      in a container
+  neeshacark:
+  - rscadd: you can now remove shrapnel from your body with the M11 Throwing Knife
+      and screwdrivers
+2024-05-15:
+  Diegoflores31:
+  - balance: Removes Generic tail stab from Vampire lurker
+  - spellcheck: adjusted Vampire lurker description
+  Git-Nivrak:
+  - qol: Maintenance jack can now be quick drawn
+  - code_imp: Added a flag that allows items to be quick draw-able despite not being
+      weapons.
+  Zonespace27:
+  - admin: Added LISTSOURCE and SELECTPRINT options to SDQL queries.
+  - admin: Added SINGLECALL SQDL query.
+  - admin: SDQL tab now works.
+  - admin: Clients can now be selected with SDQL more easily.
+  ihatethisengine:
+  - balance: xenos holding on warding don't lose it while on weeds
+  realforest2001:
+  - balance: Added a 70% chance groundside reagent tanks start anchored, if they don't
+      already.
+  s5nt:
+  - rscadd: Adds the option for synths to buy different varieties of suit pants, suit
+      jackets, vests, and dress gloves from their snowflake vendor.

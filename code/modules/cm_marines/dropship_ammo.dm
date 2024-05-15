@@ -231,12 +231,12 @@
 
 /obj/structure/ship_ammo/laser_battery/get_examine_text(mob/user)
 	. = ..()
-	. += "It's at [round(100*ammo_count/max_ammo_count)]% charge."
+	. += "It's at [floor(100*ammo_count/max_ammo_count)]% charge."
 
 
 /obj/structure/ship_ammo/laser_battery/show_loaded_desc(mob/user)
 	if(ammo_count)
-		return "It's loaded with \a [src] at [round(100*ammo_count/max_ammo_count)]% charge."
+		return "It's loaded with \a [src] at [floor(100*ammo_count/max_ammo_count)]% charge."
 	else
 		return "It's loaded with an empty [name]."
 

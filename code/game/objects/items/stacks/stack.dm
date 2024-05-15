@@ -107,7 +107,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 		if(istype(E, /datum/stack_recipe))
 			var/datum/stack_recipe/R = E
-			var/max_multiplier = round(src.amount / R.req_amount)
+			var/max_multiplier = floor(src.amount / R.req_amount)
 			var/title
 			var/can_build = 1
 			can_build = can_build && (max_multiplier > 0)
@@ -122,7 +122,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 				t1 += text("[]", title)
 				continue
 			if(R.max_res_amount>1 && max_multiplier > 1)
-				max_multiplier = min(max_multiplier, round(R.max_res_amount/R.res_amount))
+				max_multiplier = min(max_multiplier, floor(R.max_res_amount/R.res_amount))
 				t1 += " |"
 				var/list/multipliers = list(5, 10, 25)
 				for (var/n in multipliers)
@@ -160,7 +160,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(!isnum(multiplier)) // this used to block nan...
 			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with !isnum")
 			return
-		multiplier = round(multiplier)
+		multiplier = floor(multiplier)
 		if(multiplier < 1)
 			return  //href exploit protection
 		if(R.skill_lvl)

@@ -195,7 +195,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		for(var/list/product in topic_listed_products)
 			if(product[3] == item_box_pairing.box)
 				//We recalculate the amount of boxes we ought to have based on how many magazines we have
-				product[2] = round(base_ammo_item[2] / item_box_pairing.items_in_box)
+				product[2] = floor(base_ammo_item[2] / item_box_pairing.items_in_box)
 				break
 
 /obj/structure/machinery/cm_vending/proc/update_derived_from_boxes(obj/item/box_being_added_or_removed, add_box = FALSE)
@@ -965,7 +965,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if(!IMBP)
 			continue
 		for(var/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
-			tmp_list += list(list(initial(IBP.box.name), round(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
+			tmp_list += list(list(initial(IBP.box.name), floor(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
 
 	//Putting Ammo and other boxes on the bottom of the list as per player preferences
 	if(tmp_list.len > 0)

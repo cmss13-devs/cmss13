@@ -35,7 +35,7 @@
 	flashes_stored++
 	if(flashes_stored <= max_flashes_stored)
 		visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] pings as it recharges!"), SPAN_NOTICE("You hear a ping"), 3)
-	flashes_stored = min(max_flashes_stored, round(flashes_stored)) //sanity
+	flashes_stored = min(max_flashes_stored, floor(flashes_stored)) //sanity
 
 /obj/item/device/flash/proc/check_if_can_use_flash(mob/user) //checks for using the flash
 	if(!ishuman(user))

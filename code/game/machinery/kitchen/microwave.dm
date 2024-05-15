@@ -271,7 +271,7 @@
 			cooked.forceMove(src.loc)
 			return
 	else
-		var/halftime = round(recipe.time/10/2)
+		var/halftime = floor(recipe.time/10/2)
 		if (!wzhzhzh(halftime * time_multiplier))
 			abort()
 			return

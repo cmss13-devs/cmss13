@@ -121,7 +121,7 @@
 
 		if(use_current_aura || use_leader_aura)
 			for(var/mob/living/carbon/xenomorph/Z as anything in GLOB.living_xeno_list)
-				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || Z.z != z || get_dist(aura_center, Z) > round(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
+				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || Z.z != z || get_dist(aura_center, Z) > floor(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
 					continue
 				if(use_leader_aura)
 					Z.affected_by_pheromones(leader_current_aura, leader_aura_strength)
@@ -130,7 +130,8 @@
 
 	if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
 		frenzy_aura = frenzy_new
-		warding_aura = warding_new
+		if(health > crit_health || warding_new > warding_aura || !check_weeds_for_healing())
+			warding_aura = warding_new
 		recovery_aura = recovery_new
 		recalculate_move_delay = TRUE
 		hud_set_pheromone()
@@ -251,7 +252,7 @@
 				hud_used.alien_armor_display.icon_state = "armor_00"
 		return TRUE
 
-	var/severity = HUD_PAIN_STATES_XENO - Ceiling(((max(health, 0) / maxHealth) * HUD_PAIN_STATES_XENO))
+	var/severity = HUD_PAIN_STATES_XENO - ceil(((max(health, 0) / maxHealth) * HUD_PAIN_STATES_XENO))
 	if(severity)
 		overlay_fullscreen("xeno_pain", /atom/movable/screen/fullscreen/xeno_pain, severity)
 	else
@@ -271,7 +272,7 @@
 		return TRUE
 
 	if(hud_used.healths)
-		var/health_stacks = Ceiling((health / maxHealth) * HUD_HEALTH_STATES_XENO)
+		var/health_stacks = ceil((health / maxHealth) * HUD_HEALTH_STATES_XENO)
 		hud_used.healths.icon_state = "health_[health_stacks]"
 		if(health_stacks >= HUD_HEALTH_STATES_XENO)
 			hud_used.healths.icon_state = "health_full"
@@ -283,7 +284,7 @@
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 		else
 			var/plasma_stacks = (get_plasma_percentage() * 0.01) * HUD_PLASMA_STATES_XENO
-			hud_used.alien_plasma_display.icon_state = "power_display_[Ceiling(plasma_stacks)]"
+			hud_used.alien_plasma_display.icon_state = "power_display_[ceil(plasma_stacks)]"
 			if(plasma_stacks >= HUD_PLASMA_STATES_XENO)
 				hud_used.alien_plasma_display.icon_state = "power_display_full"
 			else if(plasma_stacks <= 0)
@@ -341,7 +342,7 @@ Make sure their actual health updates immediately.*/
 			if(!hive) return // can't heal if you have no hive, sorry bud
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
-				plasma_stored += round(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
+				plasma_stored += floor(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
 			if(health < maxHealth && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
 				if(body_position == LYING_DOWN || resting)
 					if(health < 0) //Unconscious
@@ -493,7 +494,7 @@ Make sure their actual health updates immediately.*/
 			if(hardcore)
 				async_gib(last_damage_data)
 			else if(world.time > next_grace_time && stat == CONSCIOUS)
-				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(round(warding_aura - 1), 0)) : 0
+				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(floor(warding_aura - 1), 0)) : 0
 				if(grace_time)
 					addtimer(CALLBACK(src, PROC_REF(handle_crit)), grace_time)
 				else

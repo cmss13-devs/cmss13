@@ -115,3 +115,52 @@
   iloveloopers:
   - rscadd: Adds in a new incinerator smoke tank that turns any reagent inside it
       into chemsmoke when fired.
+2024-05-12:
+  Git-Nivrak:
+  - balance: Limbs will now only be delimb-able if they are fractured
+  XQ:
+  - qol: Updated the ARES reception bell's description to inform players it notifies
+      Working Joes when rung.
+  - qol: Increased the ARES reception bell's cooldown from 5 to 60 seconds.
+  ihatethisengine:
+  - balance: only disabled comms can be pyloned
+  realforest2001:
+  - rscadd: Handcuffs & Legcuffs now appear on examine.
+  - rscadd: Added a reason input field to handheld distress beacons.
+2024-05-13:
+  kirieee:
+  - imageadd: rolled sleeve sprites for all IO uniforms
+2024-05-14:
+  Huffie56:
+  - balance: added a crowbar to the cryo defense kit.
+  ihatethisengine:
+  - bugfix: fixed potential bugs with transparent infection icon
+  - bugfix: Fixes infinite lifeboat alarm after queen locking
+  iloveloopers:
+  - rscadd: Mortar shells will now cook off and explode when flamed
+  - qol: OT freezer will now play a bell sound when it's done making paraformaldehyde
+      in a container
+  neeshacark:
+  - rscadd: you can now remove shrapnel from your body with the M11 Throwing Knife
+      and screwdrivers
+2024-05-15:
+  Diegoflores31:
+  - balance: Removes Generic tail stab from Vampire lurker
+  - spellcheck: adjusted Vampire lurker description
+  Git-Nivrak:
+  - qol: Maintenance jack can now be quick drawn
+  - code_imp: Added a flag that allows items to be quick draw-able despite not being
+      weapons.
+  Zonespace27:
+  - admin: Added LISTSOURCE and SELECTPRINT options to SDQL queries.
+  - admin: Added SINGLECALL SQDL query.
+  - admin: SDQL tab now works.
+  - admin: Clients can now be selected with SDQL more easily.
+  ihatethisengine:
+  - balance: xenos holding on warding don't lose it while on weeds
+  realforest2001:
+  - balance: Added a 70% chance groundside reagent tanks start anchored, if they don't
+      already.
+  s5nt:
+  - rscadd: Adds the option for synths to buy different varieties of suit pants, suit
+      jackets, vests, and dress gloves from their snowflake vendor.

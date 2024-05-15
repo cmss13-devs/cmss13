@@ -309,14 +309,14 @@ Additional game mode variables.
 
 			xenomorphs[hive] += new_xeno
 		else //Out of candidates, fill the xeno hive with burrowed larva
-			remaining_slots = round((xeno_starting_num - i))
+			remaining_slots = floor((xeno_starting_num - i))
 			break
 
 		current_index++
 
 
 	if(remaining_slots)
-		var/larva_per_hive = round(remaining_slots / LAZYLEN(hives))
+		var/larva_per_hive = floor(remaining_slots / LAZYLEN(hives))
 		for(var/hivenumb in hives)
 			var/datum/hive_status/hive = GLOB.hive_datum[hivenumb]
 			hive.stored_larva = larva_per_hive
@@ -944,7 +944,7 @@ Additional game mode variables.
 		CVS.populate_product_list_and_boxes(gear_scale)
 
 	//Scale the amount of cargo points through a direct multiplier
-	GLOB.supply_controller.points += round(GLOB.supply_controller.points_scale * gear_scale)
+	GLOB.supply_controller.points += floor(GLOB.supply_controller.points_scale * gear_scale)
 
 ///Returns a multiplier to the amount of gear that is to be distributed roundstart, stored in [/datum/game_mode/var/gear_scale]
 /datum/game_mode/proc/init_gear_scale()
@@ -972,7 +972,7 @@ Additional game mode variables.
 		gear_scale_max = gear_scale
 		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
 			vendor.update_dynamic_stock(gear_scale_max)
-		GLOB.supply_controller.points += round(gear_delta * GLOB.supply_controller.points_scale)
+		GLOB.supply_controller.points += floor(gear_delta * GLOB.supply_controller.points_scale)
 
 /// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
 /datum/game_mode/proc/latejoin_update(role, delta = 1)

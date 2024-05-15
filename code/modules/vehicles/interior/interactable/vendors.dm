@@ -17,10 +17,6 @@
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 	)
-	stack_refill = list(
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/ointment,
-	)
 
 //MED APC version of WY Med, provides resupply for basic stuff. Provides a decent amount of cryobags for evacuating hugged marines.
 /obj/structure/machinery/cm_vending/sorted/medical/vehicle
@@ -56,14 +52,6 @@
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
 		)
-
-	stack_refill = list(
-		/obj/item/stack/medical/advanced/ointment,
-		/obj/item/stack/medical/advanced/bruise_pack,
-		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint,
-	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(scale)
 	listed_products = list(
@@ -125,7 +113,6 @@
 	wrenchable = FALSE
 	hackable = FALSE
 	density = FALSE
-	var/being_restocked = FALSE
 
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_LOAD_AMMO_BOXES
 

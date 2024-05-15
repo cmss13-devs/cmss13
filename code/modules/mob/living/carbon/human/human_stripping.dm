@@ -129,33 +129,8 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 		return
 
 	var/obj/item/clothing/under/uniform = sourcemob.w_uniform
-	if(!LAZYLEN(uniform.accessories))
-		return FALSE
 
-	var/obj/item/clothing/accessory/accessory
-	var/list/removables = list()
-	var/list/choice_to_accessory = list()
-
-	for(var/obj/item/clothing/accessory/acc in uniform.accessories)
-		if(!acc.removable)
-			continue
-		var/capitalized_name = capitalize_first_letters(acc.name)
-		removables[capitalized_name] = image(icon = acc.icon, icon_state = acc.icon_state)
-		choice_to_accessory[capitalized_name] = acc
-
-	if(LAZYLEN(uniform.accessories) > 1)
-		var/use_radials = usr.client.prefs?.no_radials_preference ? FALSE : TRUE
-		var/choice = use_radials ? show_radial_menu(user, source, removables, require_near = TRUE) : tgui_input_list(user, "Select an accessory to remove from [src]", "Remove accessory", removables)
-		accessory = choice_to_accessory[choice]
-	else
-		accessory = choice_to_accessory[removables[1]]
-
-	if(!istype(accessory))
-		return
-
-	if(!user.Adjacent(sourcemob))
-		to_chat(user, SPAN_WARNING("You're too far away!"))
-		return
+	var/obj/item/clothing/accessory/accessory = uniform.pick_accessory_to_remove(user, sourcemob)
 
 	sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([accessory]) removed by [key_name(user)]</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(sourcemob)]'s' accessory ([accessory])</font>")

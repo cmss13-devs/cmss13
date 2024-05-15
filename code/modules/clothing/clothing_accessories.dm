@@ -124,13 +124,19 @@
 	set name = "Remove Accessory"
 	set category = "Object"
 	set src in usr
-	if(!isliving(usr))
+
+	remove_accessory(usr, pick_accessory_to_remove(usr, usr))
+	if(!LAZYLEN(accessories))
+		verbs -= /obj/item/clothing/proc/removetie_verb
+
+/obj/item/clothing/proc/pick_accessory_to_remove(mob/user, mob/targetmob)
+	if(!isliving(user))
 		return
-	if(usr.stat)
+	if(user.stat)
 		return
 	if(!LAZYLEN(accessories))
 		return
-	var/obj/item/clothing/accessory/A
+	var/obj/item/clothing/accessory/accessory
 	var/list/removables = list()
 	var/list/choice_to_accessory = list()
 	for(var/obj/item/clothing/accessory/ass in accessories)
@@ -141,18 +147,16 @@
 		choice_to_accessory[capitalized_name] = ass
 
 	if(LAZYLEN(removables) > 1)
-		var/use_radials = usr.client.prefs?.no_radials_preference ? FALSE : TRUE
-		var/choice = use_radials ? show_radial_menu(usr, src, removables, require_near = TRUE) : tgui_input_list(usr, "Select an accessory to remove from [src]", "Remove accessory", removables)
-		A = choice_to_accessory[choice]
+		var/use_radials = user.client.prefs?.no_radials_preference ? FALSE : TRUE
+		var/choice = use_radials ? show_radial_menu(user, targetmob, removables, require_near = FALSE) : tgui_input_list(user, "Select an accessory to remove from [src]", "Remove accessory", removables)
+		accessory = choice_to_accessory[choice]
 	else
-		A = choice_to_accessory[removables[1]]
-	if(!usr.Adjacent(src))
-		to_chat(usr, SPAN_WARNING("You're too far away!"))
+		accessory = choice_to_accessory[removables[1]]
+	if(!user.Adjacent(src))
+		to_chat(user, SPAN_WARNING("You're too far away!"))
 		return
-	src.remove_accessory(usr,A)
-	removables -= A
-	if(!removables.len)
-		verbs -= /obj/item/clothing/proc/removetie_verb
+
+	return accessory
 
 /obj/item/clothing/emp_act(severity)
 	. = ..()

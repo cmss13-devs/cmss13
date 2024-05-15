@@ -23,7 +23,7 @@ const getStories = () => r.keys().map((path) => r(path));
 
 export const KitchenSink = (props) => {
   const { panel } = props;
-  const [theme] = useState(null);
+  const [theme, setTheme] = useState(null);
   const [pageIndex, setPageIndex] = useState(0);
   const stories = getStories();
   const story = stories[pageIndex];
@@ -48,7 +48,9 @@ export const KitchenSink = (props) => {
           </Section>
         </Flex.Item>
         <Flex.Item position="relative" grow={1}>
-          <Layout.Content scrollable>{story.meta.render()}</Layout.Content>
+          <Layout.Content scrollable>
+            {story.meta.render(theme, setTheme)}
+          </Layout.Content>
         </Flex.Item>
       </Flex>
     </Layout>

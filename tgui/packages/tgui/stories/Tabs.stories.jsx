@@ -94,41 +94,40 @@ const Story = (props) => {
         </Button.Checkbox>
       </Section>
       <Section fitted>
-        <TabsPrefab />
+        <TabsPrefab tabProps={tabProps} />
       </Section>
       <Section title="Normal section">
-        <TabsPrefab />
+        <TabsPrefab tabProps={tabProps} />
         Some text
       </Section>
       <Section>
         Section-less tabs appear the same as tabs in a fitted section:
       </Section>
-      <TabsPrefab />
+      <TabsPrefab tabProps={tabProps} />
     </>
   );
 };
 
 const TabsPrefab = (props) => {
   const [tabIndex, setTabIndex] = useState(0);
-  const [tabProps] = useState({});
   return (
     <Tabs
-      vertical={tabProps.vertical}
-      fluid={tabProps.fluid}
-      textAlign={tabProps.centered && 'center'}
+      vertical={props.tabProps.vertical}
+      fluid={props.tabProps.fluid}
+      textAlign={props.tabProps.centered && 'center'}
     >
       {TAB_RANGE.map((text, i) => (
         <Tabs.Tab
           key={i}
           selected={i === tabIndex}
-          icon={tabProps.icon && 'info-circle'}
+          icon={props.tabProps.icon && 'info-circle'}
           leftSlot={
-            tabProps.leftSlot && (
+            props.tabProps.leftSlot && (
               <Button circular compact color="transparent" icon="times" />
             )
           }
           rightSlot={
-            tabProps.rightSlot && (
+            props.tabProps.rightSlot && (
               <Button circular compact color="transparent" icon="times" />
             )
           }

@@ -765,19 +765,6 @@ DEFINES in setup.dm, referenced here.
 
 	unique_action(usr)
 
-/obj/item/weapon/gun/verb/toggle_gun_ammo_display()
-	set category = "Weapons"
-	set name = "Toggle Ammo Display Type"
-	set desc = "Toggle ammo to only be displayed on every fifth bullet, however, it will always desplay your ammo when you have less than 15 bullets remaining."
-	set src = usr.contents
-
-	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr)
-	if(!active_firearm)
-		return
-
-	flags_gun_features ^= GUN_LIMIT_AMMO_DISPLAY
-	to_chat(usr, SPAN_NOTICE("You toggle the weapon to display the ammo on every [SPAN_BOLD(flags_gun_features & GUN_LIMIT_AMMO_DISPLAY ? "fifth" : "single")] bullet."))
-
 /obj/item/weapon/gun/verb/toggle_gun_safety()
 	set category = "Weapons"
 	set name = "Toggle Gun Safety"

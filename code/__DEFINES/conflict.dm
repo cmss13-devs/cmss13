@@ -72,8 +72,6 @@
 #define GUN_SUPPORT_PLATFORM (1<<15)
 /// No gun description, only base desc
 #define GUN_NO_DESCRIPTION (1<<16)
-/// limit how often the ammo is displayed.
-#define GUN_LIMIT_AMMO_DISPLAY (1<<17)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 #define USES_STREAKS (1<<0)

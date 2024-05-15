@@ -39,6 +39,12 @@
 	tier = 3
 	drag_delay = 6 //pulling a big dead xeno is hard
 
+/mob/living/carbon/xenomorph/crusher/recalculate_actions()
+	. = ..()
+	pull_multiplier *= 0.5
+	if(is_zoomed)
+		zoom_out()
+
 	small_explosives_stun = FALSE
 
 	mob_size = MOB_SIZE_IMMOBILE

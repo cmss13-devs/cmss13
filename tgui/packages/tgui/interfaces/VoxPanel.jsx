@@ -1,6 +1,7 @@
 import { KEY_CTRL, KEY_SHIFT } from 'common/keycodes';
+import { useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Box, Button, Flex, Input, Section, Slider, Tabs } from '../components';
 import { Window } from '../layouts';
 
@@ -22,7 +23,7 @@ const PAGES = [
 export const VoxPanel = (props) => {
   const { data } = useBackend();
 
-  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 0);
+  const [pageIndex, setPageIndex] = useState(0);
 
   const PageComponent = PAGES[pageIndex].component();
 
@@ -63,28 +64,28 @@ const SendVOX = (props) => {
   for (let i = 0; i < vox_keys.length; i++) {
     const key = vox_keys[i];
     let regexString =
-      '\\b' + Object.keys(glob_vox_types[key]).join('\\b|\\b') + '\\b';
-    regexString = regexString.replace(/!/g, '');
+      '(^|[^!-/:-@[-`])\\b' + // I'd prefer negative look behind...
+      Object.keys(glob_vox_types[key]).join(
+        '(?![!-+\\-/:-@[-`])\\b|(^|[^!-/:-@[-`])\\b',
+      ) +
+      '(?![!-+\\-/:-@[-`])\\b';
+    regexString = regexString.replace(/\\b!/g, '\\B!'); // sfx cause a different word boundary to occur
     regexString = regexString.replace(/\./g, '\\.');
-    voxRegexes[key] = new RegExp(regexString, 'g');
+    voxRegexes[key] = new RegExp(regexString, 'gi');
   }
 
-  const [voxRegex, setVoxRegex] = useLocalState('voxRegex', null);
-
-  const [voxType, setVoxType] = useLocalState('voxType', null);
-
-  const [message, setMessage] = useLocalState('message', '');
-
-  const [volume, setVolume] = useLocalState('volume', 100);
-
-  const [currentFaction, setCurrentFaction] = useLocalState('currentFaction', {
+  const [voxRegex, setVoxRegex] = useState(voxRegexes[vox_keys[0]]);
+  const [voxType, setVoxType] = useState(vox_keys[0]);
+  const [message, setMessage] = useState('');
+  const [volume, setVolume] = useState(100);
+  const [currentFaction, setCurrentFaction] = useState({
     [factions[0]]: true,
   });
 
   const handleFactionSet = (val, keysDown) => {
     if (keysDown[KEY_CTRL]) {
       currentFaction[val] = true;
-      setCurrentFaction(currentFaction);
+      setCurrentFaction({ ...currentFaction });
     } else if (keysDown[KEY_SHIFT]) {
       let [startSelecting, foundClickedValue, finishedSelecting] =
         (false, false, false);
@@ -121,21 +122,21 @@ const SendVOX = (props) => {
       for (let i = 0; i < toSelect.length; i++) {
         currentFaction[toSelect[i]] = true;
       }
-      setCurrentFaction(currentFaction);
+      setCurrentFaction({ ...currentFaction });
     } else {
       setCurrentFaction({ [val]: true });
     }
   };
 
-  const [validWords, setValidWords] = useLocalState('valid_words', []);
+  const [validWords, setValidWords] = useState([]);
 
-  const handleSetMessage = (msg) => {
+  const handleSetMessage = (msg, regex) => {
     setMessage(msg);
 
-    if (!voxRegex) return;
+    if (!regex) return;
 
     // matchAll not available on ie :clap:
-    const foundWords = msg.match(voxRegex);
+    const foundWords = msg.match(regex);
     setValidWords(foundWords || []);
   };
 
@@ -153,7 +154,7 @@ const SendVOX = (props) => {
                   for (let i = 0; i < factions.length; i++) {
                     currentFaction[factions[i]] = true;
                   }
-                  setCurrentFaction(currentFaction);
+                  setCurrentFaction({ ...currentFaction });
                 }}
               >
                 Select All
@@ -176,6 +177,7 @@ const SendVOX = (props) => {
               onSelected={(val, keysDown) => {
                 setVoxRegex(voxRegexes[val]);
                 setVoxType(val);
+                handleSetMessage(message, voxRegexes[val]);
               }}
               height={15}
             />
@@ -188,7 +190,7 @@ const SendVOX = (props) => {
             <Input
               fluid
               value={message}
-              onInput={(e, val) => handleSetMessage(val)}
+              onInput={(e, val) => handleSetMessage(val, voxRegex)}
             />
           </Flex.Item>
           <Flex.Item mt={1}>
@@ -255,9 +257,8 @@ const SoundList = (props) => {
   const { act, data } = useBackend();
   const { glob_vox_types } = data;
 
-  const [voxType, setVoxType] = useLocalState('voxFilesType', null);
-
-  const [currentSearch, setCurrentSearch] = useLocalState('current_search', '');
+  const [voxType, setVoxType] = useState(null);
+  const [currentSearch, setCurrentSearch] = useState('');
 
   return (
     <Flex direction="column">

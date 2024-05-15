@@ -7,7 +7,7 @@
 	unarmed_type = /datum/unarmed_attack/punch/synthetic
 	pain_type = /datum/pain/synthetic
 	stamina_type = /datum/stamina/none
-	mob_inherent_traits = list(TRAIT_OPPOSABLE_THUMBS, TRAIT_SUPER_STRONG)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG)
 	rarity_value = 2
 	insulated = TRUE
 
@@ -62,7 +62,7 @@
 /datum/species/synthetic/gen_one
 	name = SYNTH_GEN_ONE
 	uses_ethnicity = FALSE
-	mob_inherent_traits = list(TRAIT_OPPOSABLE_THUMBS, TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
 
 	hair_color = "#000000"
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
@@ -77,7 +77,7 @@
 	name_plural = "Colonial Synthetics"
 	uses_ethnicity = TRUE
 	burn_mod = 0.8
-	mob_inherent_traits = list(TRAIT_OPPOSABLE_THUMBS, TRAIT_SUPER_STRONG)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG)
 
 	pain_type = /datum/pain/synthetic/colonial
 	rarity_value = 1.5
@@ -97,7 +97,7 @@
 /datum/species/synthetic/colonial/colonial_gen_one
 	name = SYNTH_COLONY_GEN_ONE
 	uses_ethnicity = FALSE
-	mob_inherent_traits = list(TRAIT_OPPOSABLE_THUMBS, TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
 	//sets colonial_gen_one synth's hair to black
 	hair_color = "#000000"
 	//sets colonial_gen_one synth's icon to WJ sprite
@@ -109,7 +109,7 @@
 	name = SYNTH_COMBAT
 	name_plural = "Combat Synthetics"
 	uses_ethnicity = FALSE
-	mob_inherent_traits = list(TRAIT_OPPOSABLE_THUMBS, TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
 
 	burn_mod = 0.6 //made for combat
 	total_health = 250 //made for combat
@@ -130,7 +130,7 @@
 	name = SYNTH_INFILTRATOR
 	name_plural = "Infiltrator Synthetics"
 	uses_ethnicity = TRUE
-	mob_inherent_traits = list(TRAIT_OPPOSABLE_THUMBS, TRAIT_SUPER_STRONG, TRAIT_INFILTRATOR_SYNTH)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INFILTRATOR_SYNTH)
 
 	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
 

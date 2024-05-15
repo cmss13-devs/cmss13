@@ -1,13 +1,16 @@
 /obj/structure/closet/phonebox
 	name = "phonebox"
-	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are... It seems the line is down though."
-	icon = 'icons/obj/structures/props/phonebox .dmi'
-	icon_state = "phonebox_off_empty_closed"
+	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, it seems the line is down."
+	icon = 'icons/obj/structures/props/phonebox.dmi'
+	icon_state = "phonebox_on_empty_closed"
+	density = TRUE
 	bound_width = 32
 	bound_height = 64
 	material = MATERIAL_METAL
 	anchored = TRUE
 	layer = BETWEEN_OBJECT_ITEM_LAYER
+	exit_stun = 0 //no stun because it's a (glass) 'locker'
+	health = 750
 
 	open_sound = 'sound/effects/metal_door_open.ogg'
 	close_sound = 'sound/effects/metal_door_close.ogg'
@@ -18,13 +21,39 @@
 		icon_state = "phonebox_on_empty_closed"
 		for(var/mob/M in src)
 			icon_state = "phonebox_on_full_closed"
+/obj/structure/closet/phonebox_off
+	name = "phonebox"
+	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, the bulb has been smashed and it seems the line is down."
+	icon = 'icons/obj/structures/props/phonebox.dmi'
+	icon_state = "phonebox_off_empty_closed"
+	density = TRUE
+	bound_width = 32
+	bound_height = 64
+	material = MATERIAL_METAL
+	anchored = TRUE
+	layer = BETWEEN_OBJECT_ITEM_LAYER
+	exit_stun = 0 //no stun because it's a (glass) 'locker'
+	health = 750
+
+	open_sound = 'sound/effects/metal_door_open.ogg'
+	close_sound = 'sound/effects/metal_door_close.ogg'
+
+/obj/structure/closet/phonebox_off/update_icon()
+	icon_state = "phonebox_off_open"
+	if(!opened)
+		icon_state = "phonebox_off_empty_closed"
+		for(var/mob/M in src)
+			icon_state = "phonebox_off_full_closed"
 
 
+// Not currently working fully (don't use)
 /obj/structure/machinery/phonebox
 	name = "phonebox"
-	icon = 'icons/obj/structures/props/phonebox .dmi'
-	icon_state = "phonebox_off_open"
-	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are... It seems the line is down though."
+	icon = 'icons/obj/structures/props/phonebox.dmi'
+	icon_state = "phonebox_off_closed"
+	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, it seems the line is down."
+	bound_width = 32
+	bound_height = 64
 	density = TRUE
 	anchored = TRUE
 	use_power = 0
@@ -33,7 +62,7 @@
 	var/mob/living/occupant = null
 	var/icon_update_tick = 0
 	///stun time upon exiting, if at all
-	var/exit_stun = 2
+	var/exit_stun = 1
 	var/open = TRUE
 
 /obj/structure/machinery/phonebox/Initialize(mapload, ...)

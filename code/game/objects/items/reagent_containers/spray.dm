@@ -87,7 +87,7 @@
 
 /obj/item/reagent_container/spray/get_examine_text(mob/user)
 	. = ..()
-	. += "[round(reagents.total_volume)] units left."
+	. += "[floor(reagents.total_volume)] units left."
 
 /obj/item/reagent_container/spray/verb/empty()
 

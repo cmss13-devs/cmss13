@@ -33,7 +33,7 @@ tank [un]loading stuff
 turn on/off
 
 /obj/structure/machinery/power/port_gen/get_examine_text(mob/user)
-display round(lastgen) and phorontank amount
+display floor(lastgen) and phorontank amount
 
 */
 
@@ -168,8 +168,8 @@ display round(lastgen) and phorontank amount
 			temp_rating += SP.rating
 	for(var/obj/item/CP in component_parts)
 		temp_reliability += CP.reliability
-	reliability = min(round(temp_reliability / 4), 100)
-	power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
+	reliability = min(floor(temp_reliability / 4), 100)
+	power_gen = floor(initial(power_gen) * (max(2, temp_rating) / 2))
 
 /obj/structure/machinery/power/port_gen/pacman/get_examine_text(mob/user)
 	. = ..()
@@ -196,8 +196,8 @@ display round(lastgen) and phorontank amount
 	var/temp = min(needed_sheets, sheet_left)
 	needed_sheets -= temp
 	sheet_left -= temp
-	sheets -= round(needed_sheets)
-	needed_sheets -= round(needed_sheets)
+	sheets -= floor(needed_sheets)
+	needed_sheets -= floor(needed_sheets)
 	if (sheet_left <= 0 && sheets > 0)
 		sheet_left = 1 - needed_sheets
 		sheets--

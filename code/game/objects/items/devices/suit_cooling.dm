@@ -174,6 +174,6 @@
 			. += "The panel is open."
 
 	if (cell)
-		. += "The charge meter reads [round(cell.percent())]%."
+		. += "The charge meter reads [floor(cell.percent())]%."
 	else
 		. += "It doesn't have a power cell installed."

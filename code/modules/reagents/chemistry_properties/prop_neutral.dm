@@ -25,7 +25,7 @@
 	value = 1
 
 /datum/chem_property/neutral/thanatometabolizing/pre_process(mob/living/M)
-	if(M.stat != DEAD && M.oxyloss < 50 && round(M.blood_volume) > BLOOD_VOLUME_OKAY)
+	if(M.stat != DEAD && M.oxyloss < 50 && floor(M.blood_volume) > BLOOD_VOLUME_OKAY)
 		return list(REAGENT_CANCEL = TRUE)
 	var/effectiveness = 1
 	if(M.stat != DEAD)

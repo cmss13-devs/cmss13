@@ -1192,7 +1192,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 		else if(expression[start + 1] == "\[" && islist(v))
 			var/list/L = v
 			var/index = query.SDQL_expression(source, expression[start + 2])
-			if(isnum(index) && ((round(index) != index) || L.len < index))
+			if(isnum(index) && ((floor(index) != index) || L.len < index))
 				to_chat(usr, SPAN_DANGER("Invalid list index: [index]"), confidential = TRUE)
 				return null
 			return L[index]

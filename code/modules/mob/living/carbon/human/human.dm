@@ -171,12 +171,12 @@
 	var/knockdown_minus_armor = min(knockdown_value * bomb_armor_mult, 1 SECONDS)
 	var/obj/item/item1 = get_active_hand()
 	var/obj/item/item2 = get_inactive_hand()
-	apply_effect(round(knockdown_minus_armor), WEAKEN)
-	apply_effect(round(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
+	apply_effect(floor(knockdown_minus_armor), WEAKEN)
+	apply_effect(floor(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
 	var/knockout_value = damage * 0.1
 	var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
-	apply_effect(round(knockout_minus_armor), PARALYZE)
-	apply_effect(round(knockout_minus_armor) * 2, DAZE)
+	apply_effect(floor(knockout_minus_armor), PARALYZE)
+	apply_effect(floor(knockout_minus_armor) * 2, DAZE)
 	explosion_throw(severity, direction)
 
 	if(item1 && isturf(item1.loc))
@@ -1577,7 +1577,7 @@
 			QDEL_NULL(legcuffed)
 			handcuff_update()
 	else
-		var/displaytime = max(1, round(breakouttime / 600)) //Minutes
+		var/displaytime = max(1, floor(breakouttime / 600)) //Minutes
 		to_chat(src, SPAN_WARNING("You attempt to remove [restraint]. (This will take around [displaytime] minute(s) and you need to stand still)"))
 		for(var/mob/O in viewers(src))
 			O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [restraint]!</B>"), 1)

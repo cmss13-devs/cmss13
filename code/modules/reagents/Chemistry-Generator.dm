@@ -307,7 +307,7 @@
 	if(isNegativeProperty(P))
 		new_value = -1 * level
 	else if(isNeutralProperty(P))
-		new_value = round(-1 * level / 2)
+		new_value = floor(-1 * level / 2)
 	else
 		new_value = level
 

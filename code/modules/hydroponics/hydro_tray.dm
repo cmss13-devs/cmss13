@@ -207,7 +207,7 @@
 	if(seed.nutrient_consumption > 0 && nutrilevel > 0 && prob(25))
 		nutrilevel -= max(0,seed.nutrient_consumption * HYDRO_SPEED_MULTIPLIER)
 	if(seed.water_consumption > 0 && waterlevel > 0  && prob(25))
-		waterlevel -= round(max(0,(seed.water_consumption * HYDRO_WATER_CONSUMPTION_MULTIPLIER) * HYDRO_SPEED_MULTIPLIER))
+		waterlevel -= floor(max(0,(seed.water_consumption * HYDRO_WATER_CONSUMPTION_MULTIPLIER) * HYDRO_SPEED_MULTIPLIER))
 
 	// Make sure the plant is not starving or thirsty. Adequate
 	// water and nutrients will cause a plant to become healthier.
@@ -226,7 +226,7 @@
 	// Toxin levels beyond the plant's tolerance cause damage, but
 	// toxins are sucked up each tick and slowly reduce over time.
 	if(toxins > 0)
-		var/toxin_uptake = max(1,round(toxins/10))
+		var/toxin_uptake = max(1,floor(toxins/10))
 		if(toxins > seed.toxins_tolerance)
 			plant_health -= toxin_uptake
 		toxins -= toxin_uptake
@@ -319,7 +319,7 @@
 
 		// Water dilutes toxin level.
 		if(water_added > 0)
-			toxins -= round(water_added/4)
+			toxins -= floor(water_added/4)
 
 	temp_chem_holder.reagents.clear_reagents()
 	check_level_sanity()
@@ -390,7 +390,7 @@
 			overlays += "[seed.plant_icon]-harvest"
 		else if(age < seed.maturation)
 
-			var/t_growthstate = round(age/seed.maturation * seed.growth_stages)
+			var/t_growthstate = floor(age/seed.maturation * seed.growth_stages)
 			overlays += "[seed.plant_icon]-grow[t_growthstate]"
 			lastproduce = age
 		else
@@ -414,7 +414,7 @@
 	// Update bioluminescence.
 	if(seed)
 		if(seed.biolum)
-			set_light(round(seed.potency/10))
+			set_light(floor(seed.potency/10))
 			return
 
 	set_light(0)
@@ -577,7 +577,7 @@
 				dead = 0
 				age = 1
 				//Snowflakey, maybe move this to the seed datum
-				plant_health = (istype(S, /obj/item/seeds/cutting) ? round(seed.endurance/rand(2,5)) : seed.endurance)
+				plant_health = (istype(S, /obj/item/seeds/cutting) ? floor(seed.endurance/rand(2,5)) : seed.endurance)
 
 				lastcycle = world.time
 

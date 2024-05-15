@@ -45,10 +45,10 @@
 
 	. += ""
 
-	. += "Health: [round(health)]/[round(maxHealth)]"
-	. += "Armor: [round(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[round(armor_deflection)]"
-	. += "Plasma: [round(plasma_stored)]/[round(plasma_max)]"
-	. += "Slash Damage: [round((melee_damage_lower+melee_damage_upper)/2)]"
+	. += "Health: [floor(health)]/[floor(maxHealth)]"
+	. += "Armor: [floor(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[floor(armor_deflection)]"
+	. += "Plasma: [floor(plasma_stored)]/[floor(plasma_max)]"
+	. += "Slash Damage: [floor((melee_damage_lower+melee_damage_upper)/2)]"
 
 	var/shieldtotal = 0
 	for (var/datum/xeno_shield/XS in xeno_shields)
@@ -67,7 +67,7 @@
 
 	. += ""
 
-	var/stored_evolution = round(evolution_stored)
+	var/stored_evolution = floor(evolution_stored)
 	var/evolve_progress
 
 	if(caste && caste.evolution_allowed)

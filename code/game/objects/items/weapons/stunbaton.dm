@@ -54,7 +54,7 @@
 /obj/item/weapon/baton/get_examine_text(mob/user)
 	. = ..()
 	if(bcell)
-		. += SPAN_NOTICE("The baton is [round(bcell.percent())]% charged.")
+		. += SPAN_NOTICE("The baton is [floor(bcell.percent())]% charged.")
 	else
 		. += SPAN_WARNING("The baton does not have a power source installed.")
 

@@ -225,7 +225,7 @@
 /obj/item/device/helmet_visor/night_vision/get_examine_text(mob/user)
 	. = ..()
 
-	. += SPAN_NOTICE("It is currently at [round((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
+	. += SPAN_NOTICE("It is currently at [floor((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
 
 /obj/item/device/helmet_visor/night_vision/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(on_update_sight))
@@ -286,7 +286,7 @@
 /obj/item/device/helmet_visor/night_vision/get_helmet_examine_text()
 	. = ..()
 
-	. += SPAN_NOTICE(" It is currently at [round((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
+	. += SPAN_NOTICE(" It is currently at [floor((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
 
 /obj/item/device/helmet_visor/night_vision/proc/on_update_sight(mob/user)
 	SIGNAL_HANDLER

@@ -374,7 +374,7 @@
 		return 0
 	bullet_ping(P)
 	if(P.ammo.damage)
-		update_health(round(P.ammo.damage / 2))
+		update_health(floor(P.ammo.damage / 2))
 	return 1
 
 /obj/item/proc/get_mob_overlay(mob/user_mob, slot)

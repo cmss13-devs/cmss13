@@ -121,7 +121,7 @@
 		return
 	else
 		var/deathtime = world.time - src.timeofdeath
-		var/deathtimeminutes = round(deathtime / 600)
+		var/deathtimeminutes = floor(deathtime / 600)
 		var/pluralcheck = "minute"
 		if(deathtimeminutes == 0)
 			pluralcheck = ""

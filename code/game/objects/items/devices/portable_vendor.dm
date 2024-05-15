@@ -117,7 +117,7 @@
 
 	.["vendor_name"] = name
 	.["show_points"] = use_points
-	.["current_points"] = round(points)
+	.["current_points"] = floor(points)
 	.["max_points"] = max_points
 	.["displayed_records"] = available_items
 
@@ -178,7 +178,7 @@
 
 	if(special_prod_time_lock && (product[3] in special_prods))
 		if(ROUND_TIME < special_prod_time_lock)
-			to_chat(usr, SPAN_WARNING("[src] is still fabricating [product[1]]. Please wait another [round((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)] minutes before trying again."))
+			to_chat(usr, SPAN_WARNING("[src] is still fabricating [product[1]]. Please wait another [floor((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)] minutes before trying again."))
 			return
 
 	if(use_points)

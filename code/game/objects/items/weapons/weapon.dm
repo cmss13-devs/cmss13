@@ -3,6 +3,7 @@
 	name = "weapon"
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	hitsound = "swing_hit"
+	flags_atom = FPRINT|QUICK_DRAWABLE
 
 /obj/item/get_examine_text(mob/user)
 	. = ..()

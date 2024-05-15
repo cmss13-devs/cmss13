@@ -421,7 +421,7 @@
 
 /obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, amount)
 	. = ..()
-	light_range = round(amount * 0.04)
+	light_range = floor(amount * 0.04)
 	if(!light_range)
 		return INITIALIZE_HINT_QDEL
 	set_light(light_range)

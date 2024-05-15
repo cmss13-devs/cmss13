@@ -71,7 +71,7 @@
 	var/coord_col = "-[col-1]"
 	var/coord_col_offset = "-[4+2*col]"
 
-	var/row = round((placement-1)/13)
+	var/row = floor((placement-1)/13)
 	var/coord_row = "[-1 - row]"
 	var/coord_row_offset = 26
 	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
@@ -126,7 +126,7 @@
 	var/coord_col = "-0"
 	var/coord_col_offset = "-[24 * col + 2]"
 
-	var/row = round((placement-1)/6)
+	var/row = floor((placement-1)/6)
 	var/coord_row = "[-1 - row]"
 	var/coord_row_offset = -8
 	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"

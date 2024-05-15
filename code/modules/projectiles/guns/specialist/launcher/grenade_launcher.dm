@@ -175,7 +175,7 @@
 	SPAN_WARNING("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
 	playsound(user.loc, fire_sound, 50, 1)
 
-	var/angle = round(Get_Angle(user,target))
+	var/angle = floor(Get_Angle(user,target))
 	muzzle_flash(angle,user)
 	simulate_recoil(0, user)
 

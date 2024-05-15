@@ -48,18 +48,7 @@
 	var/list/obj/docking_port/stationary/ports = list()
 	var/list/area/areas = list()
 
-	var/list/turfs = block(
-		locate(
-			bounds[MAP_MINX],
-			bounds[MAP_MINY],
-			bounds[MAP_MINZ]
-			),
-		locate(
-			bounds[MAP_MAXX],
-			bounds[MAP_MAXY],
-			bounds[MAP_MAXZ]
-			)
-		)
+	var/list/turfs = block(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ], bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ])
 	for(var/turf/current_turf as anything in turfs)
 		var/area/current_turfs_area = current_turf.loc
 		areas |= current_turfs_area
@@ -89,8 +78,8 @@
 		unlit.static_lighting_build_overlay()
 
 /datum/map_template/proc/load_new_z(secret = FALSE)
-	var/x = round((world.maxx - width) * 0.5) + 1
-	var/y = round((world.maxy - height) * 0.5) + 1
+	var/x = floor((world.maxx - width) * 0.5) + 1
+	var/y = floor((world.maxy - height) * 0.5) + 1
 
 	var/datum/space_level/level = SSmapping.add_new_zlevel(name, list(), contain_turfs = FALSE)
 	var/datum/parsed_map/parsed = load_map(
@@ -115,7 +104,7 @@
 
 /datum/map_template/proc/load(turf/T, centered = FALSE, delete = FALSE)
 	if(centered)
-		T = locate(T.x - round(width/2) , T.y - round(height/2) , T.z)
+		T = locate(T.x - floor(width/2) , T.y - floor(height/2) , T.z)
 	if(!T)
 		return
 	if((T.x+width) - 1 > world.maxx)
@@ -163,12 +152,9 @@
 	return
 
 /datum/map_template/proc/get_affected_turfs(turf/T, centered = FALSE)
-	var/turf/placement = T
 	if(centered)
-		var/turf/corner = locate(placement.x - round(width/2), placement.y - round(height/2), placement.z)
-		if(corner)
-			placement = corner
-	return block(placement, locate(placement.x+width-1, placement.y+height-1, placement.z))
+		return RECT_TURFS(floor(width / 2), floor(height / 2), T)
+	return CORNER_BLOCK(T, width, height)
 
 
 //for your ever biggening badminnery kevinz000

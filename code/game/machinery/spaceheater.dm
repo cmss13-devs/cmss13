@@ -162,7 +162,7 @@
 		if(isturf(loc) && cell && cell.charge)
 			for(var/mob/living/carbon/human/H in range(2, src))
 				if(H.bodytemperature < T20C)
-					H.bodytemperature += min(round(T20C - H.bodytemperature)*0.7, 25)
+					H.bodytemperature += min(floor(T20C - H.bodytemperature)*0.7, 25)
 					H.recalculate_move_delay = TRUE
 
 

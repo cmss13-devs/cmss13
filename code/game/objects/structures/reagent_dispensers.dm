@@ -22,6 +22,8 @@
 		verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
 	if(chemical)
 		reagents.add_reagent(chemical, reagent_amount)
+	if(!anchored && is_ground_level(z) && prob(70))
+		anchored = TRUE
 
 /obj/structure/reagent_dispensers/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

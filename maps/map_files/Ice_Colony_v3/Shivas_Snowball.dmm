@@ -2249,7 +2249,7 @@
 /area/shiva/interior/colony/medseceng)
 "akT" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/weapon/baton,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
@@ -20198,7 +20198,7 @@
 "pCJ" = (
 /obj/item/book/manual/marine_law,
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "red"
@@ -22216,7 +22216,7 @@
 /area/shiva/interior/colony/medseceng)
 "rMe" = (
 /obj/structure/surface/table,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/tool/stamp,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -26358,7 +26358,7 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
 /area/shiva/interior/aerodrome)
 "vWf" = (
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"

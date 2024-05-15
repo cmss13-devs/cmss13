@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - balance: "The VP78 pistol has received a rate of fire boost, and it will deal full damage up to 3 tiles from the shooter's position before suffering damage falloff."

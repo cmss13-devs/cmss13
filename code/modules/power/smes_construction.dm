@@ -199,7 +199,7 @@
 			return
 
 		// Probability of failure if safety circuit is disabled (in %)
-		var/failure_probability = round((charge / capacity) * 100)
+		var/failure_probability = floor((charge / capacity) * 100)
 
 		// If failure probability is below 5% it's usually safe to do modifications
 		if (failure_probability < 5)

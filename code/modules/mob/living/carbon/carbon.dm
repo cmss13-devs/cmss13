@@ -48,7 +48,7 @@
 					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
 		var/obj/item/I = user.get_active_hand()
 		if(I && I.force)
-			var/d = rand(round(I.force / 4), I.force)
+			var/d = rand(floor(I.force / 4), I.force)
 			if(istype(src, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = src
 				var/organ = H.get_limb("chest")

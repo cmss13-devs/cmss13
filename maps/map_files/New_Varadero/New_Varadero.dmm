@@ -1890,9 +1890,7 @@
 /area/varadero/interior/hall_N)
 "bhU" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -2319,7 +2317,7 @@
 	pixel_x = -5;
 	pixel_y = 1
 	},
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 2;
 	pixel_y = 16
 	},
@@ -2877,7 +2875,7 @@
 	},
 /area/varadero/interior/chapel)
 "bPL" = (
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 2;
 	pixel_y = 16
 	},
@@ -10659,9 +10657,7 @@
 /area/varadero/interior/security)
 "gRU" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -13796,9 +13792,7 @@
 /area/varadero/interior/administration)
 "iWX" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/eastbeach)
@@ -19282,9 +19276,7 @@
 /area/varadero/interior/cargo)
 "mtp" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -19372,9 +19364,7 @@
 /area/varadero/interior/hall_SE)
 "mvO" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -19887,9 +19877,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -22001,7 +21989,7 @@
 /area/varadero/interior/hall_SE)
 "ohi" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/structure/machinery/flasher_button{
 	id = "sec_checkpoint";
 	pixel_y = 24
@@ -27273,6 +27261,7 @@
 /area/varadero/interior/caves/east)
 "rsh" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link,
 /turf/open/floor/shiva{
 	dir = 9;
 	icon_state = "wred"
@@ -28073,7 +28062,7 @@
 /area/varadero/interior/caves/east)
 "rTu" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/weapon/baton,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
@@ -33857,7 +33846,7 @@
 "vEa" = (
 /obj/structure/closet/crate/medical,
 /obj/item/tool/wirecutters/clippers,
-/obj/item/handcuffs/zip,
+/obj/item/restraint/handcuffs/zip,
 /obj/item/tool/surgery/surgicaldrill,
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/shiva{

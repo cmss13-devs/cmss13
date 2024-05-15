@@ -73,6 +73,11 @@ export type SpotlightSpec = {
   name: string;
 };
 
+export type ParadropSpec = {
+  signal: string | null;
+  locked: 0 | 1;
+};
+
 export type MGSpec = {
   name: string;
   health: number;

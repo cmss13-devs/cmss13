@@ -574,7 +574,7 @@
 
 	for(var/mob/living/carbon/human/mob in range(heating_range, src))
 		if(mob.bodytemperature < T20C)
-			mob.bodytemperature += min(round(T20C - mob.bodytemperature)*0.7, 25)
+			mob.bodytemperature += min(floor(T20C - mob.bodytemperature)*0.7, 25)
 			mob.recalculate_move_delay = TRUE
 
 	if(quiet)

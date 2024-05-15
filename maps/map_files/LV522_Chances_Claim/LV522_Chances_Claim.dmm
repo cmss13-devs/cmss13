@@ -17205,8 +17205,8 @@
 /area/lv522/atmos/cargo_intake)
 "hlH" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs/cable/white,
-/obj/item/handcuffs/cable/white{
+/obj/item/restraint/adjustable/cable/white,
+/obj/item/restraint/adjustable/cable/white{
 	pixel_y = 4
 	},
 /turf/open/floor/strata{
@@ -18239,13 +18239,13 @@
 /area/lv522/indoors/c_block/casino)
 "hIz" = (
 /obj/structure/surface/table/almayer,
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_y = 12
 	},
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_y = 6
 	},
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/weapon/classic_baton,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
@@ -44755,6 +44755,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan3"

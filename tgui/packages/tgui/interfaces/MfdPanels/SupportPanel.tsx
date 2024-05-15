@@ -4,6 +4,7 @@ import { MedevacMfdPanel } from './MedevacPanel';
 import { FultonMfdPanel } from './FultonPanel';
 import { Box, Stack } from '../../components';
 import { SentryMfdPanel } from './SentryPanel';
+import { ParadropMfdPanel } from './ParadropPanel';
 import { MgMfdPanel } from './MGPanel';
 import { SpotlightMfdPanel } from './SpotlightPanel';
 import { EquipmentContext } from './types';
@@ -26,6 +27,9 @@ export const SupportMfdPanel = (props: MfdProps) => {
   }
   if (result?.shorthand === 'Sentry') {
     return <SentryMfdPanel panelStateId={props.panelStateId} />;
+  }
+  if (result?.shorthand === 'PDS') {
+    return <ParadropMfdPanel panelStateId={props.panelStateId} />;
   }
   if (result?.shorthand === 'MG') {
     return <MgMfdPanel panelStateId={props.panelStateId} />;

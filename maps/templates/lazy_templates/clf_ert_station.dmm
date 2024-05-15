@@ -804,7 +804,7 @@
 "sx" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "sC" = (
@@ -1817,8 +1817,8 @@
 "Ro" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "Rr" = (

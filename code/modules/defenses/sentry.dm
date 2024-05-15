@@ -365,7 +365,7 @@
 				targets.Remove(A)
 				continue
 
-			if(M.get_target_lock(faction_group) || M.invisibility || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED))
+			if(M.get_target_lock(faction_group) || M.invisibility || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED) || M.is_ventcrawling)
 				if(M == target)
 					target = null
 				targets.Remove(M)

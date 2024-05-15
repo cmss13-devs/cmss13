@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		var/icon/big = size[SPRSZ_STRIPPED]
 		var/per_line = big.Width() / tiny.Width()
 		var/x = (idx % per_line) * tiny.Width()
-		var/y = round(idx / per_line) * tiny.Height()
+		var/y = floor(idx / per_line) * tiny.Height()
 
 		out += ".[name][size_id].[sprite_id]{background-position:-[x]px -[y]px;}"
 

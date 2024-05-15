@@ -255,7 +255,7 @@
 	for(var/turf/turf in turfs)
 
 		if(chemical.volume < ammount_required)
-			smoke_range = round(chemical.volume / use_multiplier)
+			smoke_range = floor(chemical.volume / use_multiplier)
 
 		if(distance >= smoke_range)
 			break

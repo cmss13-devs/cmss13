@@ -212,7 +212,7 @@
 	return FALSE
 
 /obj/structure/foamed_metal/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
-	var/damage = ((round((X.melee_damage_lower+X.melee_damage_upper)/2)) + dam_bonus)
+	var/damage = ((floor((X.melee_damage_lower+X.melee_damage_upper)/2)) + dam_bonus)
 
 	//Frenzy bonus
 	if(X.frenzy_aura > 0)

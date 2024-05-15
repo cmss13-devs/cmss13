@@ -165,7 +165,7 @@
 			if(choice != choice) //isnan
 				CRASH("A NaN was input into tgui input number by [usr]")
 			if(integer_only)
-				choice = round(choice)
+				choice = floor(choice)
 			if(choice > max_value)
 				CRASH("A number greater than the max value was input into tgui input number by [usr]")
 			if(choice < min_value)

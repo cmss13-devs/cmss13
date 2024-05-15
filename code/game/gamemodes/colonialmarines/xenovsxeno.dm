@@ -45,7 +45,7 @@
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
 	if(monkey_amount)
 		if(monkey_types.len)
-			for(var/i = min(round(monkey_amount*GLOB.clients.len), GLOB.monkey_spawns.len), i > 0, i--)
+			for(var/i = min(floor(monkey_amount*GLOB.clients.len), GLOB.monkey_spawns.len), i > 0, i--)
 
 				var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
 				var/monkey_to_spawn = pick(monkey_types)

@@ -299,7 +299,7 @@
 	var/hours = mills / 36000
 
 	var/dat = "<html><body onselectstart='return false;'><center>"
-	dat += "Round Duration: [round(hours)]h [round(mins)]m<br>"
+	dat += "Round Duration: [floor(hours)]h [floor(mins)]m<br>"
 
 	if(SShijack)
 		switch(SShijack.evac_status)
@@ -451,7 +451,7 @@
 
 	var/time_remaining = SSticker.GetTimeLeft()
 	if(time_remaining > 0)
-		. += "Time To Start: [round(time_remaining)]s[SSticker.delay_start ? " (DELAYED)" : ""]"
+		. += "Time To Start: [floor(time_remaining)]s[SSticker.delay_start ? " (DELAYED)" : ""]"
 	else if(time_remaining == -10)
 		. += "Time To Start: DELAYED"
 	else

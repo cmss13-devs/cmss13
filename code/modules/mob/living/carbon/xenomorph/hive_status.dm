@@ -595,7 +595,7 @@
 				slots[TIER_3][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
 
 	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
-	var/effective_total = round(burrowed_factor)
+	var/effective_total = floor(burrowed_factor)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(xeno.counts_for_slots)
 			effective_total++
@@ -844,7 +844,7 @@
 		to_chat(user, SPAN_WARNING("The hive cannot support facehuggers yet..."))
 		return FALSE
 	if(world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
-		var/time_left = round((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
+		var/time_left = floor((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
 	if(totalXenos.len <= 0)
@@ -899,7 +899,7 @@
 		return FALSE
 
 	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
-		var/time_left = round((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
+		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until 30 seconds have passed ([time_left] seconds remaining)."))
 		return FALSE
 

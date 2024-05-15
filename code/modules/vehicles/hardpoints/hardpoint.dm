@@ -301,7 +301,7 @@
 	if(health <= 0)
 		data["health"] = null
 	else
-		data["health"] = round(get_integrity_percent())
+		data["health"] = floor(get_integrity_percent())
 
 	if(ammo)
 		data["uses_ammo"] = TRUE
@@ -500,13 +500,13 @@
 		health += initial(health)/100 * (amount_fixed / amount_fixed_adjustment)
 		if(health >= initial(health))
 			health = initial(health)
-			user.visible_message(SPAN_NOTICE("[user] finishes repairing \the [name]."), SPAN_NOTICE("You finish repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
+			user.visible_message(SPAN_NOTICE("[user] finishes repairing \the [name]."), SPAN_NOTICE("You finish repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(floor(get_integrity_percent()))]%."))
 			being_repaired = FALSE
 			return
-		to_chat(user, SPAN_NOTICE("The integrity of \the [src] is now at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
+		to_chat(user, SPAN_NOTICE("The integrity of \the [src] is now at [SPAN_HELPFUL(floor(get_integrity_percent()))]%."))
 
 	being_repaired = FALSE
-	user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
+	user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(floor(get_integrity_percent()))]%."))
 	return
 
 /// Setter proc for the automatic firing flag.
@@ -724,7 +724,7 @@
 /obj/item/hardpoint/proc/get_icon_image(x_offset, y_offset, new_dir)
 	var/is_broken = health <= 0
 	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
-	switch(round((health / initial(health)) * 100))
+	switch(floor((health / initial(health)) * 100))
 		if(0)
 			I.color = "#888888"
 		if(1 to 20)

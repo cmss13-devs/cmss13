@@ -534,7 +534,7 @@
 	desc = "Used to swap the barrels of a mateba revolver."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "matebakey"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	force = 5
 	w_class = SIZE_TINY
 	throwforce = 5

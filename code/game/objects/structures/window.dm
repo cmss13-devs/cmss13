@@ -360,7 +360,7 @@
 /obj/structure/window/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 800)
 		if(!not_damageable)
-			health -= round(exposed_volume / 100)
+			health -= floor(exposed_volume / 100)
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()
 
@@ -373,7 +373,7 @@
 
 /obj/structure/window/phoronbasic/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 32000)
-		health -= round(exposed_volume / 1000)
+		health -= floor(exposed_volume / 1000)
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()
 

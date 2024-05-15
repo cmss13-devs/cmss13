@@ -58,7 +58,7 @@
 		antenna_extended = arc_owner.antenna_deployed
 
 	var/image/antenna_img = image(icon = disp_icon, icon_state = "[disp_icon_state]_[antenna_extended ? "extended" : "cover"]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
-	switch(round((health / initial(health)) * 100))
+	switch(floor((health / initial(health)) * 100))
 		if(0)
 			antenna_img.color = "#888888"
 		if(1 to 20)

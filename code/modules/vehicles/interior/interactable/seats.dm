@@ -108,8 +108,6 @@
 				to_chat(user, SPAN_WARNING("You are unable to use heavy weaponry."))
 			return
 
-		if(!HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-			return
 	for(var/obj/item/I in user.contents)		//prevents shooting while zoomed in, but zoom can still be activated and used without shooting
 		if(I.zoom)
 			I.zoom(user)

@@ -46,7 +46,11 @@
 	/// Direction to adjacent user from which we're allowed to do offset vending
 	var/list/vend_dir_whitelist
 
+	/// The actual inventory for this vendor as a list of lists
+	/// 1: name 2: amount 3: type 4: flag
 	var/list/listed_products = list()
+	/// Partial stacks to hold on to as an associated list of type : amount
+	var/list/partial_product_stacks = list()
 
 	// Are points associated with this vendor tied to its instance?
 	var/instanced_vendor_points = FALSE
@@ -195,7 +199,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		for(var/list/product in topic_listed_products)
 			if(product[3] == item_box_pairing.box)
 				//We recalculate the amount of boxes we ought to have based on how many magazines we have
-				product[2] = round(base_ammo_item[2] / item_box_pairing.items_in_box)
+				product[2] = floor(base_ammo_item[2] / item_box_pairing.items_in_box)
 				break
 
 /obj/structure/machinery/cm_vending/proc/update_derived_from_boxes(obj/item/box_being_added_or_removed, add_box = FALSE)
@@ -900,9 +904,17 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	///this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list
-	///If using [VEND_STOCK_DYNAMIC], assoc list of product entry to list of (product multiplier, awarded objects) - as seen in [/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list]
-	///This allows us to backtrack and refill the stocks when new players latejoin
+	/**
+	 * If using [VEND_STOCK_DYNAMIC], assoc list of product entry to list of (1.0 scale product multiplier, awarded objects) - as seen in [/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list]
+	 * This allows us to backtrack and refill the stocks when new players latejoin.
+	 *
+	 * If NOT using [VEND_STOCK_DYNAMIC], assoc list of product entry to list of (estimated 1.0 scale product multiplier, scaled product multiplier) - as seen in [/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list]
+	 * This allows us to know the original amounts to know if the vendor is full of an item.
+	 * The 1.0 scale is estimated because it is a divided by the scale rather than repopulating the list at 1.0 scale - anything that is a fixed amount won't necessarily be correct.
+	 */
 	var/list/list/dynamic_stock_multipliers
+	///indicates someone is performing a restock that isn't instant
+	var/being_restocked = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
@@ -917,22 +929,33 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 ///this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list_and_boxes(scale)
+	dynamic_stock_multipliers = list()
 	if(vend_flags & VEND_STOCK_DYNAMIC)
 		populate_product_list(1.0)
-		dynamic_stock_multipliers = list()
 		for(var/list/vendspec in listed_products)
 			var/multiplier = vendspec[2]
 			if(multiplier > 0)
-				var/awarded = round(vendspec[2] * scale, 1) // Starting amount
+				var/awarded = round(multiplier * scale, 1) // Starting amount
 				//Record the multiplier and how many have actually been given out
-				dynamic_stock_multipliers[vendspec] = list(vendspec[2], awarded)
+				dynamic_stock_multipliers[vendspec] = list(multiplier, awarded)
 				vendspec[2] = awarded // Override starting amount
 	else
 		populate_product_list(scale)
+		for(var/list/vendspec in listed_products)
+			var/amount = vendspec[2]
+			if(amount > -1)
+				var/multiplier = ceil(amount / scale)
+				//Record the multiplier and how many have actually been given out
+				dynamic_stock_multipliers[vendspec] = list(multiplier, amount)
 
 	if(vend_flags & VEND_LOAD_AMMO_BOXES)
 		populate_ammo_boxes()
-	return
+
+	partial_product_stacks = list()
+	for(var/list/vendspec in listed_products)
+		var/current_type = vendspec[3]
+		if(ispath(current_type, /obj/item/stack))
+			partial_product_stacks[current_type] = 0
 
 ///Updates the vendor stock when the [/datum/game_mode/var/marine_tally] has changed and we're using [VEND_STOCK_DYNAMIC]
 ///Assumes the scale can only increase!!! Don't take their items away!
@@ -965,7 +988,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if(!IMBP)
 			continue
 		for(var/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
-			tmp_list += list(list(initial(IBP.box.name), round(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
+			tmp_list += list(list(initial(IBP.box.name), floor(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
 
 	//Putting Ammo and other boxes on the bottom of the list as per player preferences
 	if(tmp_list.len > 0)
@@ -979,42 +1002,78 @@ GLOBAL_LIST_EMPTY(vending_products)
 	.["displayed_categories"] = vendor_user_inventory_list(user, null, 4)
 
 /obj/structure/machinery/cm_vending/sorted/MouseDrop_T(atom/movable/A, mob/user)
-
 	if(inoperable())
 		return
-
 	if(user.stat || user.is_mob_restrained())
 		return
-
 	if(get_dist(user, src) > 1 || get_dist(src, A) > 1)
+		return
+	if(!ishuman(user))
+		return
+
+	// Try to bulk restock using a container
+	if(istype(A, /obj/item/storage))
+		var/obj/item/storage/container = A
+		if(!length(container.contents))
+			return
+		if(being_restocked)
+			to_chat(user, SPAN_WARNING("[src] is already being restocked, you will get in the way!"))
+			return
+
+		user.visible_message(SPAN_NOTICE("[user] starts stocking a bunch of supplies into [src]."), \
+		SPAN_NOTICE("You start stocking a bunch of supplies into [src]."))
+		being_restocked = TRUE
+
+		for(var/obj/item/item in container.contents)
+			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
+				being_restocked = FALSE
+				user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
+				SPAN_NOTICE("You stop stocking [src] with supplies."))
+				return
+			if(QDELETED(item) || item.loc != container)
+				being_restocked = FALSE
+				user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
+				SPAN_NOTICE("You stop stocking [src] with supplies."))
+				return
+			stock(item, user)
+
+		being_restocked = FALSE
+		user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with supplies."), \
+		SPAN_NOTICE("You finish stocking [src] with supplies."))
 		return
 
 	if(istype(A, /obj/item))
-		var/obj/item/I = A
-		stock(I, user)
+		stock(A, user)
 
 /obj/structure/machinery/cm_vending/sorted/proc/stock(obj/item/item_to_stock, mob/user)
-	var/list/R
-	var/list/stock_listed_products = get_listed_products(user)
-	for(R in (stock_listed_products))
-		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
+	if(istype(item_to_stock, /obj/item/storage))
+		return FALSE
 
+	var/list/stock_listed_products = get_listed_products(user)
+	for(var/list/vendspec as anything in stock_listed_products)
+		if(item_to_stock.type == vendspec[3])
+
+			var/partial_stacks = 0
 			if(istype(item_to_stock, /obj/item/device/defibrillator))
-				var/obj/item/device/defibrillator/D = item_to_stock
-				if(!D.dcell)
-					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs a cell in it to be restocked!"))
-					return
-				if(D.dcell.charge < D.dcell.maxcharge)
-					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
-					return
+				var/obj/item/device/defibrillator/defib = item_to_stock
+				if(!defib.dcell)
+					to_chat(user, SPAN_WARNING("[item_to_stock] needs a cell in it to be restocked!"))
+					return FALSE
+				if(defib.dcell.charge < defib.dcell.maxcharge)
+					to_chat(user, SPAN_WARNING("[item_to_stock] needs to be fully charged to restock it!"))
+					return FALSE
 
 			else if(istype(item_to_stock, /obj/item/cell))
-				var/obj/item/cell/C = item_to_stock
-				if(C.charge < C.maxcharge)
-					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
-					return
+				var/obj/item/cell/cell = item_to_stock
+				if(cell.charge < cell.maxcharge)
+					to_chat(user, SPAN_WARNING("[item_to_stock] needs to be fully charged to restock it!"))
+					return FALSE
 
-			else if(!additional_restock_checks(item_to_stock, user))
+			else if(istype(item_to_stock, /obj/item/stack))
+				var/obj/item/stack/item_stack = item_to_stock
+				partial_stacks = item_stack.amount % item_stack.max_amount
+
+			if(!additional_restock_checks(item_to_stock, user, vendspec))
 				// the error message needs to go in the proc
 				return FALSE
 
@@ -1024,19 +1083,44 @@ GLOBAL_LIST_EMPTY(vending_products)
 				user.temp_drop_inv_item(item_to_stock)
 
 			if(isstorage(item_to_stock.loc)) //inside a storage item
-				var/obj/item/storage/S = item_to_stock.loc
-				S.remove_from_storage(item_to_stock, user.loc)
+				var/obj/item/storage/container = item_to_stock.loc
+				container.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
-			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
-			R[2]++
-			update_derived_ammo_and_boxes_on_add(R)
+			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [vendspec[1]]."), \
+			SPAN_NOTICE("You stock [src] with \a [vendspec[1]]."))
+			if(partial_stacks)
+				var/obj/item/stack/item_stack = item_to_stock
+				var/existing_stacks = partial_product_stacks[item_to_stock.type]
+				var/combined_stacks = existing_stacks + partial_stacks
+				if(existing_stacks == 0 || combined_stacks > item_stack.max_amount)
+					vendspec[2]++
+				partial_product_stacks[item_to_stock.type] = combined_stacks % item_stack.max_amount
+			else
+				vendspec[2]++
+			update_derived_ammo_and_boxes_on_add(vendspec)
 			updateUsrDialog()
-			return //We found our item, no reason to go on.
+			return TRUE //We found our item, no reason to go on.
+
+	return FALSE
 
 /// additional restocking checks for individual vendor subtypes. Parse in item, do checks, return FALSE to fail. Include error message.
-/obj/structure/machinery/cm_vending/sorted/proc/additional_restock_checks(obj/item/item_to_stock, mob/user)
+/obj/structure/machinery/cm_vending/sorted/proc/additional_restock_checks(obj/item/item_to_stock, mob/user, list/vendspec)
+	var/dynamic_metadata = dynamic_stock_multipliers[vendspec]
+	if(dynamic_metadata)
+		if(vendspec[2] >= dynamic_metadata[2])
+			if(!istype(item_to_stock, /obj/item/stack))
+				to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
+				return FALSE
+			var/obj/item/stack/item_stack = item_to_stock
+			if(partial_product_stacks[item_to_stock.type] == 0)
+				to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
+				return FALSE // No partial stack to fill
+			if((partial_product_stacks[item_to_stock.type] + item_stack.amount) > item_stack.max_amount)
+				to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
+				return FALSE // Exceeds partial stack to fill
+	else
+		stack_trace("[src] could not find dynamic_stock_multipliers for [vendspec[1]]!")
 	return TRUE
 
 //sending an /empty ammo box type path here will return corresponding regular (full) type of this box
@@ -1243,14 +1327,20 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 /obj/structure/machinery/cm_vending/proc/vendor_inventory_ui_data(mob/user)
 	. = list()
-	var/list/ui_listed_products = get_listed_products(user)
-	var/list/ui_categories = list()
+	var/list/products = get_listed_products(user)
+	var/list/product_amounts = list()
+	var/list/product_partials = list()
 
-	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
-		var/p_amount = myprod[2] //amount left
-		ui_categories += list(p_amount)
-	.["stock_listing"] = ui_categories
+	for(var/i in 1 to length(products))
+		var/list/cur_prod = products[i] //we take one list from listed_products
+		product_amounts += list(cur_prod[2]) //amount left
+		var/cur_type = cur_prod[3]
+		var/cur_amount_partial = 0
+		if(cur_type in partial_product_stacks)
+			cur_amount_partial = partial_product_stacks[cur_type]
+		product_partials += list(cur_amount_partial)
+	.["stock_listing"] = product_amounts
+	.["stock_listing_partials"] = product_partials
 
 /obj/structure/machinery/cm_vending/proc/vendor_successful_vend(list/itemspec, mob/living/carbon/human/user)
 	if(stat & IN_USE)
@@ -1267,18 +1357,22 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			sleep(vend_delay)
 
 		var/prod_type = itemspec[3]
-		if(islist(prod_type))
-			for(var/each_type in prod_type)
-				vendor_successful_vend_one(each_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
-				SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, itemspec, user)
-		else
-			vendor_successful_vend_one(prod_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
-			SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, itemspec, user)
-
+		var/stack_amount = 0
 		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--
+			if(itemspec[2] == 0)
+				stack_amount = partial_product_stacks[prod_type]
+				partial_product_stacks[prod_type] = 0
 			if(vend_flags & VEND_LOAD_AMMO_BOXES)
 				update_derived_ammo_and_boxes(itemspec)
+
+		if(islist(prod_type))
+			for(var/each_type in prod_type)
+				vendor_successful_vend_one(each_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM, stack_amount)
+				SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, itemspec, user)
+		else
+			vendor_successful_vend_one(prod_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM, stack_amount)
+			SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, itemspec, user)
 
 	else
 		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))
@@ -1288,7 +1382,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	icon_state = initial(icon_state)
 	update_icon()
 
-/obj/structure/machinery/cm_vending/proc/vendor_successful_vend_one(prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override)
+/obj/structure/machinery/cm_vending/proc/vendor_successful_vend_one(prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override, stack_amount)
 	var/obj/item/new_item
 	if(ispath(prod_type, /obj/item))
 		if(ispath(prod_type, /obj/item/weapon/gun))
@@ -1298,7 +1392,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 				prod_type = headset_type
 			else if(prod_type == /obj/item/clothing/gloves/marine)
 				prod_type = gloves_type
-			new_item = new prod_type(target_turf)
+			if(stack_amount > 0 && ispath(prod_type, /obj/item/stack))
+				new_item = new prod_type(target_turf, stack_amount)
+			else
+				new_item = new prod_type(target_turf)
+
 		new_item.add_fingerprint(user)
 	else
 		new_item = new prod_type(target_turf)
@@ -1354,17 +1452,22 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	while(i <= length(products))
 		sleep(0.5)
 		var/list/itemspec = products[i]
+		var/itemspec_item = itemspec[3]
 		if(!itemspec[2] || itemspec[2] <= 0)
 			i++
 			continue
-		itemspec[2] -= 1
+		itemspec[2]--
 		var/list/spawned = list()
-		if(islist(itemspec[3]))
-			for(var/path in itemspec[3])
+		if(islist(itemspec_item))
+			for(var/path in itemspec_item)
 				spawned += new path(loc)
-		else if(itemspec[3])
-			var/path = itemspec[3]
-			spawned += new path(loc)
+		else if(itemspec_item)
+			if(itemspec[2] == 0 && partial_product_stacks[itemspec_item] > 0 && ispath(itemspec_item, /obj/item/stack))
+				var/stack_amount = partial_product_stacks[itemspec_item]
+				partial_product_stacks[itemspec_item] = 0
+				spawned += new itemspec_item(loc, stack_amount)
+			else
+				spawned += new itemspec_item(loc)
 		if(throw_objects)
 			for(var/atom/movable/spawned_atom in spawned)
 				INVOKE_ASYNC(spawned_atom, TYPE_PROC_REF(/atom/movable, throw_atom), pick(orange(src, 4)), 4, SPEED_FAST)

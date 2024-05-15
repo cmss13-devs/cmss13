@@ -138,7 +138,7 @@
 	if (!r_hand) prob_slip -= 2
 	else if(r_hand.w_class <= SIZE_SMALL) prob_slip--
 
-	prob_slip = round(prob_slip)
+	prob_slip = floor(prob_slip)
 	return(prob_slip)
 
 /// Updates [TRAIT_FLOORED] based on whether the mob has appropriate limbs to stand or not

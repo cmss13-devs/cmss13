@@ -80,7 +80,7 @@
 
 /mob/living/carbon/xenomorph/runner/recalculate_actions()
 	. = ..()
-	pull_multiplier *= 0.85
+	pull_multiplier *= 0.5
 	if(is_zoomed)
 		zoom_out()
 

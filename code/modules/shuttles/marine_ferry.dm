@@ -147,12 +147,12 @@
 
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 
 	for(var/obj/structure/dropship_equipment/fuel/cooling_system/CS in equipments)
-		recharging = round(recharging * SHUTTLE_COOLING_FACTOR_RECHARGE) //cooling system reduces recharge time
+		recharging = floor(recharging * SHUTTLE_COOLING_FACTOR_RECHARGE) //cooling system reduces recharge time
 		break
 
 	//START: Heavy lifting backend
@@ -194,7 +194,7 @@
 		for(var/X in equipments)
 			var/obj/structure/dropship_equipment/E = X
 			if(istype(E, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-				travel_time  = round(travel_time / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer increases travel time
+				travel_time  = floor(travel_time / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer increases travel time
 				break
 	else
 		if(transit_optimized)
@@ -205,7 +205,7 @@
 		for(var/X in equipments)
 			var/obj/structure/dropship_equipment/E = X
 			if(istype(E, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-				travel_time  = round(travel_time * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer reduces travel time
+				travel_time  = floor(travel_time * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer reduces travel time
 				break
 
 	//START: Heavy lifting backend
@@ -324,7 +324,7 @@
 	if(moving_status != SHUTTLE_IDLE) return
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 

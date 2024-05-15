@@ -49,7 +49,7 @@
 			return SPAN_NOTICE("<b>PLAYING</b>")
 		else
 			var/time = mytape.used_capacity / 10 //deciseconds / 10 = seconds
-			var/mins = round(time / 60)
+			var/mins = floor(time / 60)
 			var/secs = time - mins * 60
 			return SPAN_NOTICE("<b>[mins]</b>m <b>[secs]</b>s")
 	return SPAN_NOTICE("<b>NO TAPE INSERTED</b>")
@@ -382,7 +382,7 @@
 		if(unspooled)
 			. += SPAN_WARNING("It's had all its magnetic tape pulled out! Maybe you can wind it back in with a screwdriver.")
 		else
-			var/used_tape_percent = round((used_capacity / max_capacity)*100)
+			var/used_tape_percent = floor((used_capacity / max_capacity)*100)
 			switch(used_tape_percent)
 				if(0 to 5)
 					. += SPAN_NOTICE("It's unused.")

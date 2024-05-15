@@ -46,6 +46,8 @@
 #define HTML_USE_INITAL_ICON (1<<18)
 // Whether or not the object sees emotes
 #define USES_SEEING (1<<19)
+// Can be quick drawn
+#define QUICK_DRAWABLE (1<<20)
 
 //==========================================================================================
 

@@ -134,8 +134,8 @@
 /obj/structure/machinery/chem_dispenser/ui_data(mob/user)
 	. = list()
 	.["amount"] = amount
-	.["energy"] = round(chem_storage.energy)
-	.["maxEnergy"] = round(chem_storage.max_energy)
+	.["energy"] = floor(chem_storage.energy)
+	.["maxEnergy"] = floor(chem_storage.max_energy)
 	.["isBeakerLoaded"] = beaker ? 1 : 0
 
 	var/list/beakerContents = list()

@@ -181,9 +181,9 @@
 		last_damage_mult = 1
 
 	if(effective_range_min && distance_travelled < effective_range_min)
-		return max(0, damage - round((effective_range_min - distance_travelled) * damage_buildup))
+		return max(0, damage - floor((effective_range_min - distance_travelled) * damage_buildup))
 	else if(distance_travelled > effective_range_max)
-		return max(0, damage - round((distance_travelled - effective_range_max) * damage_falloff))
+		return max(0, damage - floor((distance_travelled - effective_range_max) * damage_falloff))
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
@@ -372,7 +372,7 @@
 		return TRUE
 
 	// Process on move effects
-	if(distance_travelled == round(ammo.max_range / 2))
+	if(distance_travelled == floor(ammo.max_range / 2))
 		ammo.do_at_half_range(src)
 	if(distance_travelled >= ammo.max_range)
 		ammo.do_at_max_range(src)
@@ -1029,7 +1029,7 @@
 		. = TRUE
 		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer = P.firer)
 
-		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10)))
+		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + floor(damage / 10)))
 			if(ammo_flags & AMMO_SPECIAL_EMBED)
 				P.ammo.on_embed(src, organ)
 
@@ -1128,7 +1128,7 @@
 			P.play_shielded_hit_effect(src)
 		else
 			P.play_hit_effect(src)
-		if(!stat && prob(5 + round(damage_result / 4)))
+		if(!stat && prob(5 + floor(damage_result / 4)))
 			var/pain_emote = prob(70) ? "hiss" : "roar"
 			emote(pain_emote)
 		updatehealth()
@@ -1171,12 +1171,12 @@
 	switch(P.ammo.damage_type)
 		if(BRUTE) //Rockets do extra damage to walls.
 			if(ammo_flags & AMMO_ROCKET)
-				damage = round(damage * 10)
+				damage = floor(damage * 10)
 		if(BURN)
 			if(ammo_flags & AMMO_ENERGY)
-				damage = round(damage * 7)
+				damage = floor(damage * 7)
 			else if(ammo_flags & AMMO_ANTISTRUCT) // Railgun does extra damage to turfs
-				damage = round(damage * ANTISTRUCT_DMG_MULT_WALL)
+				damage = floor(damage * ANTISTRUCT_DMG_MULT_WALL)
 	if(ammo_flags & AMMO_BALLISTIC)
 		current_bulletholes++
 	take_damage(damage, P.firer)
@@ -1205,7 +1205,7 @@
 
 /obj/structure/surface/table/bullet_act(obj/projectile/P)
 	bullet_ping(P)
-	health -= round(P.damage/2)
+	health -= floor(P.damage/2)
 	if(health < 0)
 		visible_message(SPAN_WARNING("[src] breaks down!"))
 		deconstruct()

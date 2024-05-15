@@ -95,7 +95,7 @@
 
 	if(get_dist_euclidian(here_turf, target_turf) > 24)
 		userot = TRUE
-		rot = round(Get_Angle(here_turf, target_turf))
+		rot = floor(Get_Angle(here_turf, target_turf))
 	else
 		if(target_turf.z > here_turf.z)
 			pointer="caret-up"

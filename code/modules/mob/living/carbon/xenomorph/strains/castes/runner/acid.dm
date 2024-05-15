@@ -140,7 +140,7 @@
 			dist = (0.934*dx) + (0.427*dy)
 		else
 			dist = (0.427*dx) + (0.934*dy)
-		var/damage = round((burn_range - dist) * max_burn_damage / burn_range)
+		var/damage = floor((burn_range - dist) * max_burn_damage / burn_range)
 		if(isxeno(target_living))
 			damage *= XVX_ACID_DAMAGEMULT
 

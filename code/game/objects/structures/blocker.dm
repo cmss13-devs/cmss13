@@ -73,6 +73,11 @@ GLOBAL_LIST_INIT(landing_zone_fog, list())
 	GLOB.landing_zone_fog += src
 	. = ..()
 
+/obj/structure/blocker/landing_zone_fog/proc/Clear()
+	for(var/fog in GLOB.landing_zone_fog)
+		var/obj/structure/blocker/landing_zone_fog/landing_zone_fog = fog
+		GLOB.landing_zone_fog -= landing_zone_fog
+		QDEL_IN(landing_zone_fog, rand(2 SECONDS,4 SECONDS))
 
 /obj/structure/blocker/forcefield
 	name = "forcefield"

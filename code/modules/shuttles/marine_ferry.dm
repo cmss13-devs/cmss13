@@ -587,7 +587,7 @@
 	for(var/fog in GLOB.landing_zone_fog)
 		var/obj/structure/blocker/landing_zone_fog/landing_zone_fog = fog
 		landing_zone_fog -= fog
-		QDEL_IN(landing_zone_fog, rand(2,4))
+		QDEL_IN(landing_zone_fog, rand(2 SECONDS,4 SECONDS))
 
 	moving_status = SHUTTLE_IDLE
 

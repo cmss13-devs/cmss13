@@ -7,7 +7,7 @@
 	var/chunk_count
 	var/list/chunk_requests
 	for(chunk_count = 2; !chunk_requests; ++chunk_count)
-		var/max_chunk_size = -floor(-(data_length / chunk_count))
+		var/max_chunk_size = -round(-(data_length / chunk_count))
 		if(max_chunk_size > limit)
 			continue
 

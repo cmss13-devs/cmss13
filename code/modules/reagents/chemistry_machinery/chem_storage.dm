@@ -12,7 +12,7 @@
 	var/recharge_cooldown = 15
 	var/recharge_rate = 10
 	var/energy = 50
-	var/max_energy = 50
+	var/max_energy = 100
 
 	unslashable = TRUE
 	unacidable = TRUE

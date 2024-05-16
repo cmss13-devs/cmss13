@@ -124,8 +124,7 @@ GLOBAL_LIST_INIT(landing_zone_fog, list())
 /obj/structure/blocker/forcefield/vehicles/handle_vehicle_bump(obj/vehicle/multitile/multitile_vehicle)
 	if(multitile_vehicle.vehicle_flags & VEHICLE_BYPASS_BLOCKERS)
 		return TRUE
-	return FALSE  aaa
-
+	return FALSE
 /obj/structure/blocker/forcefield/multitile_vehicles
 	types = list(/obj/vehicle/multitile/)
 

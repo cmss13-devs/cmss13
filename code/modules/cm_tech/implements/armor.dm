@@ -419,7 +419,7 @@
 	wearer = user
 	if(!used)
 		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(begin_preserving))
-		user.revive_grace_period += 2 MINUTES
+		user.revive_grace_period += 4 MINUTES
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()

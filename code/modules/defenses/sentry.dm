@@ -467,6 +467,28 @@
 
 	fire(target)
 
+GLOBAL_LIST_INIT(landing_zone_sentryguns, list())
+/obj/structure/machinery/defenses/sentry/landing_zone
+	name = "UA-577 Gauss Turret spaceborn"
+	fire_delay = 2
+	omni_directional = TRUE
+	immobile = TRUE
+	turned_on = TRUE
+	icon_state = "premade" //for the map editor only
+	faction_group = FACTION_LIST_MARINE
+	placed = 1
+
+/obj/structure/machinery/defenses/sentry/landing_zone/Initialize()
+	GLOB.landing_zone_sentryguns += src
+	. = ..()
+
+/obj/structure/machinery/defenses/sentry/landing_zone/Destroy()
+	GLOB.landing_zone_sentryguns -= src
+	. = ..()
+/obj/structure/machinery/defenses/sentry/landing_zone/proc/on_landing()
+	GLOB.landing_zone_sentryguns -= src
+	QDEL_IN(src, 10 MINUTES)
+
 /obj/structure/machinery/defenses/sentry/premade
 	name = "UA-577 Gauss Turret"
 	immobile = TRUE
@@ -529,6 +551,8 @@
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer
 	fire_delay = 4
 	omni_directional = TRUE
+
+
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship

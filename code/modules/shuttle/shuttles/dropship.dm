@@ -261,8 +261,8 @@
 		xeno_announcement(SPAN_XENOANNOUNCE("The dropship has landed."), "everything")
 		xeno_announce = FALSE
 
-	for(var/obj/structure/blocker/landing_zone_fog/fog as anything in GLOB.landing_zone_fog)
-		fog.clear()
+	for(var/obj/structure/machinery/defenses/sentry/landing_zone/sentrygun as anything in GLOB.landing_zone_sentryguns)
+		sentrygun.on_landing()
 
 /obj/docking_port/stationary/marine_dropship/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
 	. = ..()

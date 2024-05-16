@@ -298,10 +298,6 @@
 		var/obj/structure/dropship_equipment/E = X
 		E.on_arrival()
 
-	for(var/fog in GLOB.landing_zone_fog)
-		var/obj/structure/blocker/landing_zone_fog/landing_zone_fog = fog
-		landing_zone_fog.Clear()
-
 	moving_status = SHUTTLE_IDLE
 
 	if(!transit_gun_mission) //we're back where we started, no location change.
@@ -577,9 +573,6 @@
 	for(var/X in equipments)
 		var/obj/structure/dropship_equipment/E = X
 		E.on_arrival()
-	for(var/fog in GLOB.landing_zone_fog)
-		var/obj/structure/blocker/landing_zone_fog/landing_zone_fog = fog
-		landing_zone_fog.Clear()
 
 	moving_status = SHUTTLE_IDLE
 

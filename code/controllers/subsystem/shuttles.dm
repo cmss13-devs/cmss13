@@ -569,14 +569,14 @@ SUBSYSTEM_DEF(shuttle)
 	// Templates panel
 	data["templates"] = list()
 	var/list/templates = data["templates"]
-	data["templates_tabs"] = list()
+	//data["templates_tabs"] = list()
 	data["selected"] = null
 
 	for(var/id in SSmapping.shuttle_templates)
 		var/datum/map_template/shuttle/S = SSmapping.shuttle_templates[id]
 
 		if(!templates[S.port_id])
-			data["templates_tabs"] += S.port_id
+			//data["templates_tabs"] += S.port_id
 			templates[S.port_id] = list(
 				"port_id" = S.port_id,
 				"templates" = list())
@@ -593,7 +593,7 @@ SUBSYSTEM_DEF(shuttle)
 
 		templates[S.port_id]["templates"] += list(L)
 
-	data["templates_tabs"] = sort_list(data["templates_tabs"])
+	//data["templates_tabs"] = sort_list(data["templates_tabs"])
 
 	data["existing_shuttle"] = null
 

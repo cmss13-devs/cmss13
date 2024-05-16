@@ -5,6 +5,39 @@ import { useBackend } from '../backend';
 import { Button, Flex, LabeledList, Section, Table, Tabs } from '../components';
 import { Window } from '../layouts';
 
+interface ShuttleData {
+  name: string;
+  id: string;
+  timer: string;
+  timeleft: string;
+  can_fast_travel: 0 | 1;
+  can_fly: 0 | 1;
+  mode: string;
+  status: string;
+  is_disabled: 0 | 1;
+  has_disable: 0 | 1;
+}
+
+interface ShuttleTemplate {
+  name: string;
+  id: string;
+  port_id: string;
+  description: string;
+  admin_notes: string;
+}
+
+interface TemplateGroup {
+  port_id: string;
+  templates: Array<ShuttleTemplate>;
+}
+
+interface ShuttleManipulatorData {
+  shuttles: Array<ShuttleData>;
+  templates: Record<string, TemplateGroup>;
+  selected?: ShuttleTemplate;
+  existing_shuttle?: ShuttleData;
+}
+
 export const ShuttleManipulator = (props) => {
   const [tab, setTab] = useState(1);
 
@@ -31,8 +64,8 @@ export const ShuttleManipulator = (props) => {
 };
 
 export const ShuttleManipulatorStatus = (props) => {
-  const { act, data } = useBackend();
-  const shuttles = data.shuttles || [];
+  const { act, data } = useBackend<ShuttleManipulatorData>();
+  const shuttles = data.shuttles ?? [];
   return (
     <Section>
       <Table>
@@ -112,9 +145,9 @@ export const ShuttleManipulatorStatus = (props) => {
 };
 
 export const ShuttleManipulatorTemplates = (props) => {
-  const { act, data } = useBackend();
-  const templateObject = data.templates || {};
-  const selected = data.selected || {};
+  const { act, data } = useBackend<ShuttleManipulatorData>();
+  const templateObject = data.templates;
+  const selected = data.selected;
   const [selectedTemplateId, setSelectedTemplateId] = useState(
     Object.keys(templateObject)[0],
   );
@@ -138,7 +171,7 @@ export const ShuttleManipulatorTemplates = (props) => {
         </Flex.Item>
         <Flex.Item grow basis={0} ml={2}>
           {actualTemplates.map((actualTemplate) => {
-            const isSelected = actualTemplate.id === selected.id;
+            const isSelected = actualTemplate.id === selected?.id;
             return (
               <Section
                 title={actualTemplate.name}
@@ -182,7 +215,7 @@ export const ShuttleManipulatorTemplates = (props) => {
 };
 
 export const ShuttleManipulatorModification = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<ShuttleManipulatorData>();
   const selected = data.selected;
   const existingShuttle = data.existing_shuttle;
   return (

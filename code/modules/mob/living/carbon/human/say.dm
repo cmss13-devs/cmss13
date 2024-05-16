@@ -26,7 +26,7 @@
 			else
 				headset.last_multi_broadcast = world.time
 		if(multibroadcast_cooldown)
-			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [round(multibroadcast_cooldown / 10)] more seconds."
+			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [floor(multibroadcast_cooldown / 10)] more seconds."
 		return
 
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":" || message[1] == "#"))

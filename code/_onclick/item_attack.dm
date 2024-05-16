@@ -87,7 +87,7 @@
 
 	var/power = force
 	if(user.skills)
-		power = round(power * (1 + 0.25 * user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //25% bonus per melee level
+		power = floor(power * (1 + 0.25 * user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //25% bonus per melee level
 	if(!ishuman(M))
 		var/used_verb = "attacked"
 		if(attack_verb && attack_verb.len)

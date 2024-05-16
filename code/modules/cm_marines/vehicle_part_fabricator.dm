@@ -233,9 +233,9 @@
 		qdel(thing)
 	qdel(powerloader_clamp_used.loaded)
 	powerloader_clamp_used.loaded = null
-	to_chat(user, SPAN_NOTICE("You recycle \the [thing_to_recycle] into [src], and get back [round(recycle_points * 0.8)] points."))
-	msg_admin_niche("[key_name(user)] recycled a [thing_to_recycle] into \the [src] for [round(recycle_points * 0.8)] points.")
-	add_to_point_store(round(recycle_points * 0.8))
+	to_chat(user, SPAN_NOTICE("You recycle \the [thing_to_recycle] into [src], and get back [floor(recycle_points * 0.8)] points."))
+	msg_admin_niche("[key_name(user)] recycled a [thing_to_recycle] into \the [src] for [floor(recycle_points * 0.8)] points.")
+	add_to_point_store(floor(recycle_points * 0.8))
 	playsound(loc, 'sound/machines/fax.ogg', 40, 1)
 	powerloader_clamp_used.update_icon()
 

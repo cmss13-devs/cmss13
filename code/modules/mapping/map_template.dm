@@ -78,8 +78,8 @@
 		unlit.static_lighting_build_overlay()
 
 /datum/map_template/proc/load_new_z(secret = FALSE)
-	var/x = round((world.maxx - width) * 0.5) + 1
-	var/y = round((world.maxy - height) * 0.5) + 1
+	var/x = floor((world.maxx - width) * 0.5) + 1
+	var/y = floor((world.maxy - height) * 0.5) + 1
 
 	var/datum/space_level/level = SSmapping.add_new_zlevel(name, list(), contain_turfs = FALSE)
 	var/datum/parsed_map/parsed = load_map(
@@ -104,7 +104,7 @@
 
 /datum/map_template/proc/load(turf/T, centered = FALSE, delete = FALSE)
 	if(centered)
-		T = locate(T.x - round(width/2) , T.y - round(height/2) , T.z)
+		T = locate(T.x - floor(width/2) , T.y - floor(height/2) , T.z)
 	if(!T)
 		return
 	if((T.x+width) - 1 > world.maxx)

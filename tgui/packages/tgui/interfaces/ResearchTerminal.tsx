@@ -276,7 +276,7 @@ export interface CompoundTableProps extends BoxProps {
   readonly docs: DocumentRecord[];
   readonly timeLabel: string;
   readonly canPrint: boolean;
-  readonly hideOld: boolean;
+  readonly hideOld?: boolean | true;
 }
 
 export const CompoundTable = (props: CompoundTableProps) => {

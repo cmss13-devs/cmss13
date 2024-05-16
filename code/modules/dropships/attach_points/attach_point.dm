@@ -58,6 +58,7 @@
 	installed_equipment = ds_equipment
 	ds_equipment.ship_base = src
 	ds_equipment.unslashable = TRUE
+	ds_equipment.unacidable = TRUE
 	ds_equipment.plane = plane
 
 	for(var/obj/docking_port/mobile/marine_dropship/shuttle in SSshuttle.mobile)

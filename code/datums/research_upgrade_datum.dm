@@ -3,9 +3,9 @@
 	var/name = "Upgrade."
 	///name of upgrades, not items. Items are at research_upgrades.dm somewhere in item folder.
 	var/desc = "something is broken. yippee!!"
-	///which behavior should this type follow. Should this be completely excluded from the buy menu? should it be one of the dropdown options?
-	var/behavior = RESEARCH_UPGRADE_EXCLUDE_BUY // should this be on the list? whatever.
-	/// the price of the upgrade, refer to this: 500 is a runner, 8k is queen. T3 is usually 3k.
+	///which behavior should this type follow. Should this be completely excluded from the buy menu? should it be one of the dropdown options? This is also what gets passed to the initizialize of an item, this can be any number *but* it cannot be -1 or -2, as it messes with the buy menu.
+	var/behavior = RESEARCH_UPGRADE_EXCLUDE_BUY // should this be on the list?
+	/// the price of the upgrade, refer to this: 500 is a runner, 8k is queen. T3 is usually 3k, woyer is 2k.
 	var/value_upgrade = 1000
 	/// actual path to the item.(upgrade)
 	var/item_reference
@@ -13,7 +13,7 @@
 	var/upgrade_type
 	///Clearance requirment to buy this upgrade. 5x is level 6. Why is it not that way? no one knows.
 	var/clearance_req = 5
-	///The change of price for item per purchase
+	///The change of price for item per purchase, recommended for mass producing stuff or limited upgrade.
 	var/change_purchase = 0
 	///the minimum price which we cant go any cheaper usually dont need to set this if change price is 0 or positive
 	var/minimum_price = 0
@@ -108,7 +108,7 @@
 	change_purchase = -200
 	minimum_price = 200
 	item_reference = /obj/item/stack/medical/splint/nano/research
-	behavior = RESEARCH_UPGRADE_TIER_5
+	behavior = RESEARCH_UPGRADE_TIER_5 //adjust this to change amount of nanosplints in a stack, cant be higher than five, go change max_amount in the nanosplint itself, then change it.
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 
 /datum/research_upgrades/armor

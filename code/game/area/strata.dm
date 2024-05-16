@@ -29,6 +29,14 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	minimap_color = MINIMAP_AREA_LZ
 	is_resin_allowed = FALSE
 
+
+//Begin actual area definitions. There's probably a better way to do this.
+
+//////////////////////////////////////////
+//   ------===| Essentials |===------   //
+//////////////////////////////////////////
+
+//-Above Ground (ag)
 /area/strata/ag
 	name = "Above Ground Area"
 	icon_state = "ag"
@@ -39,9 +47,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	//always_unpowered = 1 So exterior lights work, this will be commented out unless it causes unforseen issues.
 	is_resin_allowed = FALSE
 
-/area/strata/ag/exterior/paths
-	is_resin_allowed = TRUE
-
 /area/strata/ag/interior
 	name = "Interior Above Ground Area"
 	icon_state = "ag_i"
@@ -49,16 +54,8 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	temperature = T20C //Nice and room temp
 	ceiling = CEILING_METAL
 
-/area/strata/ag/interior/mountain
-	name = "Outside mountain"
-	icon_state = "ag_e"
 
-/area/strata/ag/interior/restricted
-	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
-
-/area/strata/ag/interior/restricted/devroom
-	name = "Super Secret Credits Room"
+//-Under Ground (ug)
 
 /area/strata/ug
 	name = "Under Ground Area"
@@ -78,276 +75,11 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	temperature = T20C
 	ceiling = CEILING_NONE
 
-//END PARENT ENTITIES
 
-//Begin actual area definitions. There's probably a better way to do this.
+////////////////////////////////////////
+//   ------===| Exterior |===------   //
+////////////////////////////////////////
 
-/area/strata/ag/interior/research_decks/security //For all security stuff outside the outpost.
-	name = "Outpost Deck Security Checkpoint"
-	icon_state = "rdecks_sec"
-
-////////Telecomms//////////////////
-
-/area/strata/ag/exterior/tcomms
-	name = "Do not use."
-	icon_state = "tcomms1"
-
-/area/strata/ag/exterior/tcomms/mining_caves
-	name = "Mining Caves Relay"
-
-
-//JUNGLE CAVES, ALL UNDERGROUND, ALL INTERIOR//
-
-/area/strata/ug/interior/jungle
-	name = "Deep I"
-
-//Topside Structures //Clean these up into a sub tree
-
-/area/strata/ag/interior/landingzone_checkpoint
-	name = "Landing Zone Security Checkpoint"
-	icon_state = "security_station"
-	minimap_color = MINIMAP_AREA_SEC
-
-/area/strata/ag/exterior/vanyard
-	name = "Flight Control Vehicle Yard"
-	icon_state = "garage"
-
-/area/strata/ag/interior/administration
-	name = "Flight Control Offices"
-	icon_state = "offices"
-	minimap_color = MINIMAP_AREA_COMMAND
-
-
-//More topside areas, somehow these got duplicated?? Includes some parent defs.
-
-//Also marshes
-
-
-
-/area/strata/ug/interior/jungle/deep/minehead
-	icon_state = "cabin2"
-	name = "Deep Jungle - Minehead"
-
-///OUTPOST INTERIOR///
-
-/area/strata/ag/interior/outpost
-	name = "Sorokyne Outpost"
-	icon_state = "research_station"
-
-/area/strata/ag/interior/outpost/gen
-	name = "Outpost Interior"
-	icon_state = "outpost_gen_0"
-
-/area/strata/ag/interior/outpost/gen/foyer
-	name = "Outpost Main Foyer"
-	icon_state = "outpost_gen_1"
-
-/area/strata/ag/interior/outpost/gen/bball //come on and SLAM.
-	name = "Outpost Basket Ball Court"
-	icon_state = "outpost_gen_4"
-
-/area/strata/ag/interior/outpost/gen/bball/nest //come on and BURST AND DIE.
-	name = "Outpost - B-Ball Caves"
-	icon_state = "hive_1"
-
-
-///ALL MAINTENANCE AREAS///
-
-
-/area/strata/ag/interior/outpost/maint
-	name = "Outpost Maintenance"
-	icon_state = "outpost_maint"
-
-/area/strata/ag/interior/outpost/maint/canteen_e_1
-	name = "Outpost Canteen - Eastern Maintenance"
-
-///OUTPOST MEDICAL///
-
-/area/strata/ag/interior/outpost/med
-	name = "Outpost Medical"
-	icon_state = "outpost_med"
-	minimap_color = MINIMAP_AREA_MEDBAY
-
-///OUTPOST ENGINEERING///
-
-/area/strata/ag/interior/engineering
-	name = "Do not use."
-	icon_state = "outpost_engi_3"
-
-/area/strata/ag/interior/engineering/parts_storage
-	name = "Engineering Parts Storage"
-	icon_state = "outpost_engi_1"
-
-/area/strata/ag/interior/engineering/parts_storage_exterior
-	name = "Engineering Parts Storage Exterior"
-
-/area/strata/ag/interior/outpost/engi
-	name = "Outpost Engineering"
-	icon_state = "outpost_engi_0"
-	minimap_color = MINIMAP_AREA_ENGI
-
-/area/strata/ag/interior/outpost/engi/drome
-	name = "Outpost Aerodome"
-	icon_state = "outpost_engi_4"
-
-/area/strata/ag/interior/outpost/engi/drome/shuttle
-	name = "Dismantled VDVK Eagle Mk 4"
-	icon_state = "outpost_engi_3"
-
-///OUTPOST SECURITY
-
-/area/strata/ag/interior/outpost/security
-	name = "Outpost Security"
-	icon_state = "outpost_sec_0"
-	minimap_color = MINIMAP_AREA_SEC
-
-///OUTPOST ADMINISTRATION
-
-/area/strata/ag/interior/outpost/admin
-	name = "Outpost Administration"
-	icon_state = "outpost_admin_0"
-	minimap_color = MINIMAP_AREA_COMMAND
-
-
-///CANTEEN / GENERAL QUARTERS///
-
-/area/strata/ag/interior/outpost/canteen
-	name = "Outpost Canteen"
-	icon_state = "outpost_canteen_0"
-
-/area/strata/ag/interior/outpost/canteen/bar
-	name = "Outpost Bar"
-	icon_state = "outpost_canteen_2"
-
-/area/strata/ag/interior/outpost/canteen/lower_cafeteria
-	name = "Outpost Cafeteria"
-	icon_state = "outpost_canteen_0"
-
-/area/strata/ag/interior/outpost/canteen/personal_storage
-	name = "Outpost Personal Storage"
-
-
-
-///JUNGLE STRUCTURES - UNDERGROUND///
-
-
-
-
-////END OUTPOST DEFINES////
-
-///DEEP JUNGLE///
-
-/area/strata/ug/exterior
-	ceiling = CEILING_NONE
-
-/area/strata/ug/exterior/jungle/deep/carplake_water
-	name = "Deep Jungle - Carp Lake Waters"
-	icon_state = "ug_jung_5"
-
-/area/strata/ug/exterior/jungle/deep/carplake_center
-	name = "Deep Jungle - Carp Lake Center Island"
-	icon_state = "ug_jung_1"
-
-
-/area/strata/ug/interior/jungle/deep/north_carp
-	name = "Deep Jungle - North of Carp Lake"
-	icon_state = "ug_jung_6"
-
-/area/strata/ug/interior/jungle/deep/south_carp
-	name = "Deep Jungle - South of Carp Lake"
-	icon_state = "ug_jung_3"
-
-/area/strata/ug/interior/jungle/deep/east_carp
-	name = "Deep Jungle - East of Carp Lake"
-	icon_state = "ug_jung_5"
-
-/area/strata/ug/interior/jungle/deep/tearlake
-	name = "Deep Jungle - Weeping Pool"
-	icon_state = "ug_jung_3"
-
-/area/strata/ug/interior/jungle/deep/tearlake_south
-	name = "Deep Jungle - South of Weeping Pool"
-	icon_state = "ug_jung_8"
-
-/area/strata/ug/interior/jungle/deep/tearlake_north
-	name = "Deep Jungle - North of Weeping Pool"
-	icon_state = "ug_jung_3"
-
-/area/strata/ug/interior/jungle/deep/tearlake_east
-	name = "Deep Jungle - East of Weeping Pool"
-	icon_state = "ug_jung_6"
-
-/area/strata/ug/interior/jungle/deep/tearlake_west
-	name = "Deep Jungle - West of Weeping Pool"
-	icon_state = "ug_jung_5"
-
-/area/strata/ug/interior/jungle/deep/south_dorms
-	name = "Deep Jungle - South Dorms"
-	icon_state = "ug_jung_4"
-
-/area/strata/ug/interior/jungle/deep/east_dorms
-	name = "Deep Jungle - East Dorms"
-	icon_state = "ug_jung_0"
-
-/area/strata/ug/interior/jungle/deep/structures
-	name = "Deep Jungle - Unknown Structure"
-	icon_state = "ug_jung_1"
-	ceiling = CEILING_DEEP_UNDERGROUND_METAL
-
-/area/strata/ug/interior/jungle/deep/structures/res
-	icon_state = "ug_jung_2"
-	name = "Deep Jungle - Classified Research Station"
-
-/area/strata/ug/interior/jungle/deep/south_res
-	icon_state = "ug_jung_3"
-	name = "Deep Jungle - South of Classified Research Station"
-
-/area/strata/ug/interior/jungle/deep/hotsprings
-	icon_state = "ug_jung_4"
-	name = "Deep Jungle - Hot Springs"
-
-/area/strata/ug/interior/jungle/deep/structures/engi
-	icon_state = "ug_jung_5"
-	name = "Deep Jungle - Planetary Core Monitoring"
-
-/area/strata/ug/interior/jungle/deep/south_engi
-	icon_state = "ug_jung_7"
-	name = "Deep Jungle - South of Core Monitoring"
-
-/area/strata/ug/interior/jungle/deep/east_engi
-	icon_state = "ug_jung_6"
-	name = "Deep Jungle - East of Core Monitoring"
-
-/area/strata/ug/interior/jungle/deep/west_engi
-	icon_state = "ug_jung_8"
-	name = "Deep Jungle - West of Core Monitoring"
-
-/area/strata/ug/interior/jungle/deep/minehead
-	icon_state = "ug_jung_mine_1"
-	name = "Deep Jungle - Old Tunnels"
-
-/area/strata/ug/interior/jungle/deep/minehead/north
-	icon_state = "ug_jung_mine_2"
-	name = "Deep Jungle - North Old Tunnels"
-
-/area/strata/ug/interior/jungle/deep/minehead/south
-	icon_state = "ug_jung_mine_3"
-	name = "Deep Jungle - South Old Tunnels"
-
-/area/strata/ug/interior/jungle/deep/minehead/east
-	icon_state = "ug_jung_mine_4"
-	name = "Deep Jungle - East Old Tunnels"
-
-/area/strata/ug/interior/jungle/deep/minehead/west
-	icon_state = "ug_jung_mine_5"
-	name = "Deep Jungle - West Old Tunnels"
-
-/area/strata/ug/interior/jungle/deep/minehead/ruins
-	icon_state = "ug_jung_mine_4"
-	name = "Deep Jungle - Ancient Dorms"
-
-
-// ------===| Exterior |===------
 
 //-Landing Zones
 /area/strata/ag/exterior/landing_zones
@@ -431,6 +163,19 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "marshwater"
 	temperature = TCMB //space cold
 
+//-Outside "interiors"
+
+/area/strata/ag/exterior/vanyard
+	name = "Flight Control Vehicle Yard"
+	icon_state = "garage"
+
+/area/strata/ag/exterior/tcomms
+	name = "Do not use."
+	icon_state = "tcomms1"
+
+/area/strata/ag/exterior/tcomms/mining_caves
+	name = "Mining Caves Relay"
+
 //-Outpost
 
 /area/strata/ag/exterior/outpost_decks
@@ -442,9 +187,10 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 //-Paths
 
-/area/strata/ag/exterior/paths //parent entity, just for sorting within the object tree, if anything, very generic, use as a placeholder.
+/area/strata/ag/exterior/paths
 	name = "Ice Path"
 	icon_state = "path"
+	is_resin_allowed = TRUE
 
 /area/strata/ag/exterior/paths/flight_control_exterior
 	name = "Flight Control Exterior"
@@ -461,25 +207,87 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Far North Of The Outpost"
 	icon_state = "cabin"
 
-/area/strata/ag/interior/paths/wooden_hospital
-	name = "Wooden Hospital - Hospital Proper"
-	icon_state = "cabin3"
-
 /area/strata/ag/exterior/paths/south_outpost
 	minimap_color = MINIMAP_AREA_RESEARCH
 	name = "South Of The Outpost"
 
 //-Underground "open" Lake
 
+/area/strata/ug/exterior/jungle
+	name = "Do not use."
+	icon_state = "ug_jung_0"
+
+/area/strata/ug/exterior/jungle/carplake_center
+	name = "Deep Jungle - Carp Lake Center Island"
+	icon_state = "ug_jung_1"
 
 
 
-// ------===| Interior |===------
+////////////////////////////////////////
+//   ------===| Interior |===------   //
+////////////////////////////////////////
+
+/area/strata/ug/interior/jungle
+	name = "Do not use."
+	ceiling = CEILING_DEEP_UNDERGROUND
 
 
 //-Outpost
 
+/area/strata/ag/interior/outpost
+	name = "Sorokyne Outpost"
+	icon_state = "shed_x_ag"
 
+/area/strata/ag/interior/outpost/foyer
+	name = "Outpost Main Foyer"
+	icon_state = "outpost_gen_1"
+
+/area/strata/ag/interior/outpost/maint
+	name = "Outpost Canteen - Eastern Maintenance"
+	icon_state = "outpost_maint"
+
+/area/strata/ag/interior/outpost/med
+	name = "Outpost Medical"
+	icon_state = "outpost_med"
+	minimap_color = MINIMAP_AREA_MEDBAY
+
+/area/strata/ag/interior/outpost/engi
+	name = "Outpost Engineering"
+	icon_state = "outpost_engi_0"
+	minimap_color = MINIMAP_AREA_ENGI
+
+/area/strata/ag/interior/outpost/engi/drome
+	name = "Outpost Aerodome"
+	icon_state = "outpost_engi_4"
+
+/area/strata/ag/interior/outpost/engi/drome/shuttle
+	name = "Dismantled VDVK Eagle Mk 4"
+	icon_state = "outpost_engi_3"
+
+/area/strata/ag/interior/outpost/security
+	name = "Outpost Security"
+	icon_state = "outpost_sec_0"
+	minimap_color = MINIMAP_AREA_SEC
+
+/area/strata/ag/interior/outpost/admin
+	name = "Outpost Administration"
+	icon_state = "outpost_admin_0"
+	minimap_color = MINIMAP_AREA_COMMAND
+
+/area/strata/ag/interior/outpost/canteen
+	name = "Outpost Canteen"
+	icon_state = "outpost_canteen_0"
+
+/area/strata/ag/interior/outpost/canteen/bar
+	name = "Outpost Bar"
+	icon_state = "outpost_canteen_2"
+
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria
+	name = "Outpost Cafeteria"
+	icon_state = "outpost_canteen_0"
+
+/area/strata/ag/interior/outpost/canteen/personal_storage
+	name = "Outpost Personal Storage"
 
 //-Mining Outpost
 
@@ -517,15 +325,78 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 //-Outside interiors
 
+/area/strata/ag/interior/outside
+	name= "Do not use."
+	icon_state = "outpost_gen_3"
 
+/area/strata/ag/interior/outside/administration
+	name = "Flight Control Offices"
+	icon_state = "offices"
+	minimap_color = MINIMAP_AREA_COMMAND
+
+/area/strata/ag/interior/outside/wooden_hospital
+	name = "Wooden Hospital - Hospital Proper"
+	icon_state = "cabin3"
+
+/area/strata/ag/interior/mountain
+	name = "Outside mountain"
+	icon_state = "ag_e"
+
+/area/strata/ag/interior/outside/mountain
+	name = "Outside mountain"
+	icon_state = "ag_e"
+
+/area/strata/ag/interior/outside/checkpoints
+	name= "Do not use."
+	icon_state = "security_station"
+	minimap_color = MINIMAP_AREA_SEC
+
+/area/strata/ag/interior/outside/checkpoints/north_armor
+	name = "North Security Armored Checkpoint"
+
+/area/strata/ag/interior/outside/checkpoints/north
+	name = "Landing Zone North Security Checkpoint"
+
+/area/strata/ag/interior/outside/checkpoints/west
+	name = "Landing Zone West Security Checkpoint"
+
+/area/strata/ag/interior/outside/checkpoints/south
+	name = "Landing Zone South Security Checkpoint"
+
+/area/strata/ag/interior/outside/checkpoints/outpost
+	name = "Outpost Deck Security Checkpoint"
+	icon_state = "rdecks_sec"
+
+/area/strata/ag/interior/outside/engineering
+	name = "Do not use."
+	icon_state = "outpost_engi_3"
+
+/area/strata/ag/interior/outside/engineering/parts_storage
+	name = "Engineering Parts Storage"
+	icon_state = "outpost_engi_1"
+
+/area/strata/ag/interior/outside/engineering/parts_storage_exterior
+	name = "Engineering Parts Storage Exterior"
+
+/area/strata/ag/interior/outside/bball //come on and SLAM.
+	name = "Outpost Basket Ball Court"
+	icon_state = "outpost_gen_4"
+
+/area/strata/ag/interior/outside/bball/cave //come on BURST AND DIE.
+	name = "Outpost - B-Ball Caves"
+	icon_state = "hive_1"
 
 
 //-Underground Dorms
 
+/area/strata/ug/interior/outpost
+	name = "Do not use."
+	icon_state = "shed_x_ug"
+	minimap_color = MINIMAP_AREA_CAVES
+
 /area/strata/ug/interior/outpost/underground_dorms
 	name = "Do not use."
 	icon_state = "ug_jung_dorm"
-	minimap_color = MINIMAP_AREA_CAVES
 
 /area/strata/ug/interior/outpost/underground_dorms/sec1
 	name = "Underground Security Dorm #1"
@@ -547,9 +418,11 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ug/interior/outpost/underground_dorms/med1
 	name = "Underground Medical Dorm #1"
+	requires_power = 1
 
 /area/strata/ug/interior/outpost/underground_dorms/med2
 	name = "Underground Medical Dorm #2"
+	requires_power = TRUE
 
 //-Underground platform
 
@@ -558,13 +431,86 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "ug_jung_1"
 	minimap_color = MINIMAP_AREA_JUNGLE
 
-
 //-Underground Jungle
 
-/area/strata/ug/interior/jungle/deep
-	name = "Deep Jungle"
-	ceiling = CEILING_DEEP_UNDERGROUND
+/area/strata/ug/interior/jungle
+	name = "Do not use."
+	icon_state = "ug_jung_0"
 
-/area/strata/ug/interior/jungle/deep/carplake
-	name = "Deep Jungle - Carp Lake Shores"
+/area/strata/ug/interior/jungle/carplake
+	name = "Do not use."
+	icon_state = "ug_jung_1"
+
+/area/strata/ug/interior/jungle/carplake/north
+	name = "Deep Jungle - North of Carp Lake"
+	icon_state = "ug_jung_6"
+
+/area/strata/ug/interior/jungle/carplake/east
+	name = "Deep Jungle - East of Carp Lake"
+	icon_state = "ug_jung_5"
+
+/area/strata/ug/interior/jungle/platform
+	name = "Do not use."
+	icon_state = "ug_jung_1"
+
+/area/strata/ug/interior/jungle/platform/south
+	name = "Deep Jungle - South of Underground Platform"
+	icon_state = "ug_jung_4"
+
+/area/strata/ug/interior/jungle/platform/east
+	name = "Deep Jungle - East of Underground Platform"
+	icon_state = "ug_jung_0"
+
+/area/strata/ug/interior/jungle/structures
+	name = "Do not use."
+	icon_state = "ug_jung_mine_1"
+	ceiling = CEILING_DEEP_UNDERGROUND_METAL
+
+/area/strata/ug/interior/jungle/structures/research
 	icon_state = "ug_jung_2"
+	name = "Deep Jungle - Classified Research Station"
+
+/area/strata/ug/interior/jungle/structures/research/south
+	icon_state = "ug_jung_3"
+	name = "Deep Jungle - South of Classified Research Station"
+
+/area/strata/ug/interior/jungle/structures/research/hot_springs
+	icon_state = "ug_jung_4"
+	name = "Deep Jungle - Hot Springs"
+
+/area/strata/ug/interior/jungle/structures/research/old_tunnels
+	icon_state = "ug_jung_mine_1"
+	name = "Deep Jungle - Old Tunnels"
+
+/area/strata/ug/interior/jungle/structures/monitoring
+	icon_state = "ug_jung_5"
+	name = "Deep Jungle - Planetary Core Monitoring"
+
+/area/strata/ug/interior/jungle/structures/monitoring/west
+	icon_state = "ug_jung_6"
+	name = "Deep Jungle - West of Planetary Core Monitoring"
+
+/area/strata/ug/interior/jungle/structures/monitoring/south
+	icon_state = "ug_jung_7"
+	name = "Deep Jungle - South of Planetary Core Monitoring"
+
+/area/strata/ug/interior/jungle/structures/monitoring/east
+	icon_state = "ug_jung_8"
+	name = "Deep Jungle - East of Planetary Core Monitoring"
+
+/area/strata/ug/interior/jungle/structures/ruin
+	icon_state = "ug_jung_mine_4"
+	name = "Deep Jungle - Ancient Dorms"
+
+/area/strata/ug/interior/jungle/tearlake
+	name = "Deep Jungle - Weeping Pool"
+	icon_state = "ug_jung_3"
+
+//-Others
+
+/area/strata/ag/interior/restricted
+	name = "Super Secret Credits Room"
+	icon_state = "marshwater"
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+

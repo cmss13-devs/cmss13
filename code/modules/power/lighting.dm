@@ -190,6 +190,11 @@
 	desc = "A small lighting fixture that is fitted with a bright blue fluorescent light bulb. Looking at it for too long makes your eyes go watery."
 	light_type = /obj/item/light_bulb/bulb
 
+/obj/structure/machinery/light/small/unpowered
+	icon_state = "bulb0"
+	status = LIGHT_OK
+	on = FALSE
+
 /obj/structure/machinery/light/double
 	icon_state = "ptube1"
 	base_state = "ptube"
@@ -252,17 +257,15 @@
 		if("tube")
 			switch(dir)
 				if(NORTH)
-					pixel_y = 23
+					pixel_y = 6
 				if(EAST)
-					pixel_x = 10
+					pixel_x = 6
 				if(WEST)
-					pixel_x = -10
+					pixel_x = -4
 		if("bulb")
 			switch(dir)
 				if(NORTH)
-					pixel_y = 10
-				if(SOUTH)
-					pixel_y = -10
+					pixel_y = 23
 				if(EAST)
 					pixel_x = 10
 				if(WEST)

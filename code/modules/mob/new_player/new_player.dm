@@ -270,7 +270,7 @@
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
 
 	if (ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
-		latejoin_larva_drop = SStgui.mode.latejoin_larva_drop_early
+		latejoin_larva_drop = SSticker.mode.latejoin_larva_drop_early
 
 	if(latejoin_larva_drop && SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= latejoin_larva_drop)
 		SSticker.mode.latejoin_larva_used += latejoin_larva_drop

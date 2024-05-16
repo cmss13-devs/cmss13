@@ -4,7 +4,7 @@
 /datum/equipment_preset/survivor/wy/asstmanager
 	name = "Survivor - Corporate Assistant Manager"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = PAY_SHORT_WYC7
+	paygrade_base = PAY_SHORT_WYC7
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Assistant Operations Manager"
 	idtype = /obj/item/card/id/silver/clearance_badge/manager

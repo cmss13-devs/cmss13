@@ -15,7 +15,14 @@
 	var/list/access = list()
 	var/assignment
 	var/rank
-	var/paygrade
+	/// Default Paygrade
+	var/paygrade_base
+	/// Paygrade for having less than 10 hours in a role. Ignores playtime perk prefs.
+	var/paygrade_low
+	/// Paygrade for hitting 70 hours in a role. As of May 2024 only used for Corporate Liaison & Marine Raiders.
+	var/paygrade_mid
+	/// Paygrade for hitting 175 hours in a role.
+	var/paygrade_high
 	var/role_comm_title
 	var/minimum_age
 	var/faction = FACTION_NEUTRAL
@@ -96,7 +103,18 @@
 		new_human.age = minimum_age
 
 /datum/equipment_preset/proc/load_rank(mob/living/carbon/human/new_human, client/mob_client)
-	return paygrade
+	if(mob_client)
+		var/playtime = get_job_playtime(mob_client, rank)
+		if(paygrade_low && playtime < JOB_PLAYTIME_TIER_1)
+			return paygrade_low
+		if(new_human.client.prefs.playtime_perks)
+			if(paygrade_high && playtime > JOB_PLAYTIME_TIER_4)
+				return paygrade_high
+			if(paygrade_mid && playtime < JOB_PLAYTIME_TIER_3)
+				return paygrade_mid
+			else
+				return paygrade_base
+	return paygrade_base
 
 /datum/equipment_preset/proc/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	return
@@ -185,7 +203,7 @@
 				new_human.equip_to_slot_or_del(equipping_gear, WEAR_IN_BACK)
 
 	//Gives ranks to the ranked
-	var/current_rank = paygrade
+	var/current_rank = paygrade_base
 	var/obj/item/card/id/I = new_human.get_idcard()
 	if(I)
 		current_rank = I.paygrade

@@ -61,7 +61,7 @@
 
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
-	paygrade = PAY_SHORT_CPO
+	paygrade_base = PAY_SHORT_CPO
 	skills = /datum/skills/wy_goon
 
 /datum/equipment_preset/goon/standard/load_gear(mob/living/carbon/human/new_human)
@@ -94,7 +94,7 @@
 
 	assignment = JOB_WY_GOON_TECH
 	rank = JOB_WY_GOON_TECH
-	paygrade = PAY_SHORT_CPO
+	paygrade_base = PAY_SHORT_CPO
 	skills = /datum/skills/wy_goon_tech
 
 /datum/equipment_preset/goon/engineer/load_gear(mob/living/carbon/human/new_human)
@@ -128,7 +128,7 @@
 
 	assignment = JOB_WY_GOON_LEAD
 	rank = JOB_WY_GOON_LEAD
-	paygrade = PAY_SHORT_CSPO
+	paygrade_base = PAY_SHORT_CSPO
 	skills = /datum/skills/wy_goon_lead
 
 /datum/equipment_preset/goon/lead/New()
@@ -164,7 +164,7 @@
 
 	assignment = JOB_WY_GOON_RESEARCHER
 	rank = JOB_WY_GOON_RESEARCHER
-	paygrade = PAY_SHORT_CCMO
+	paygrade_base = PAY_SHORT_CCMO
 	skills = /datum/skills/researcher
 
 /datum/equipment_preset/goon/researcher/load_gear(mob/living/carbon/human/new_human)

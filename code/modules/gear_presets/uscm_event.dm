@@ -16,7 +16,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_COLONEL
 	rank = JOB_COLONEL
-	paygrade = PAY_SHORT_MO6
+	paygrade_base = PAY_SHORT_MO6
 	role_comm_title = "COL"
 	minimum_age = 40
 	skills = /datum/skills/general
@@ -61,7 +61,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_GENERAL
 	rank = JOB_GENERAL
-	paygrade = PAY_SHORT_MO7
+	paygrade_base = PAY_SHORT_MO7
 	role_comm_title = "GEN"
 	minimum_age = 50
 	skills = /datum/skills/general
@@ -106,30 +106,30 @@
 
 /datum/equipment_preset/uscm_event/general/o7
 	name = "USCM O-7 - Brigadier General (High Command)"
-	paygrade = PAY_SHORT_MO7
+	paygrade_base = PAY_SHORT_MO7
 
 /datum/equipment_preset/uscm_event/general/o8
 	name = "USCM O-8 - Major General (High Command)"
-	paygrade = PAY_SHORT_MO8
+	paygrade_base = PAY_SHORT_MO8
 
 /datum/equipment_preset/uscm_event/general/o9
 	name = "USCM O-9 - Lieutenant General (High Command)"
-	paygrade = PAY_SHORT_MO9
+	paygrade_base = PAY_SHORT_MO9
 
 /datum/equipment_preset/uscm_event/general/o10
 	name = "USCM O-10 - General (High Command)"
-	paygrade = PAY_SHORT_MO10
+	paygrade_base = PAY_SHORT_MO10
 
 /datum/equipment_preset/uscm_event/general/o10c
 	name = "USCM O-10C - Assistant Commandant of the Marine Corps (High Command)"
-	paygrade = PAY_SHORT_MO10C
+	paygrade_base = PAY_SHORT_MO10C
 	assignment = JOB_ACMC
 	rank = JOB_ACMC
 	role_comm_title = "ACMC"
 
 /datum/equipment_preset/uscm_event/general/o10s
 	name = "USCM O-10S - Commandant of the Marine Corps (High Command)"
-	paygrade = PAY_SHORT_MO10S
+	paygrade_base = PAY_SHORT_MO10S
 	assignment = JOB_CMC
 	rank = JOB_CMC
 	role_comm_title = "CMC"
@@ -149,7 +149,9 @@
 	)
 	assignment = JOB_ORDNANCE_TECH
 	rank = "UPP"
-	paygrade = PAY_SHORT_ME2
+	paygrade_low = PAY_SHORT_ME1
+	paygrade_base = PAY_SHORT_ME2
+	paygrade_high = PAY_SHORT_ME3
 	role_comm_title = "OT"
 	skills = /datum/skills/spy
 
@@ -204,7 +206,7 @@
 
 	assignment = JOB_PROVOST_ENFORCER
 	rank = "Provost Enforcer"
-	paygrade = PAY_SHORT_CPO
+	paygrade_base = PAY_SHORT_CPO
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -250,7 +252,7 @@
 
 	assignment = JOB_PROVOST_TML
 	rank = "Provost Team Leader"
-	paygrade = PAY_SHORT_CSPO
+	paygrade_base = PAY_SHORT_CSPO
 	role_comm_title = "PvTML"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -296,7 +298,7 @@
 
 	assignment = JOB_PROVOST_INSPECTOR
 	rank = "Provost Inspector"
-	paygrade = PAY_SHORT_PVI
+	paygrade_base = PAY_SHORT_PVI
 	role_comm_title = "PvI"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -336,7 +338,7 @@
 
 	assignment = JOB_PROVOST_ADVISOR
 	rank = "Provost Advisor"
-	paygrade = PAY_SHORT_CSPO
+	paygrade_base = PAY_SHORT_CSPO
 	role_comm_title = "PvA"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -347,7 +349,7 @@
 
 	assignment = JOB_PROVOST_MARSHAL
 	rank = "Provost Marshal"
-	paygrade = PAY_SHORT_PVM
+	paygrade_base = PAY_SHORT_PVM
 	role_comm_title = PAY_SHORT_PVM
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -383,7 +385,7 @@
 
 	assignment = JOB_PROVOST_SMARSHAL
 	rank = "Provost Sector Marshal"
-	paygrade = PAY_SHORT_PVSM
+	paygrade_base = PAY_SHORT_PVSM
 	role_comm_title = PAY_SHORT_PVSM
 
 /datum/equipment_preset/uscm_event/provost/marshal/chief
@@ -392,7 +394,7 @@
 
 	assignment = JOB_PROVOST_CMARSHAL
 	rank = "Provost Chief Marshal"
-	paygrade = PAY_SHORT_PVCM
+	paygrade_base = PAY_SHORT_PVCM
 	role_comm_title = PAY_SHORT_PVCM
 
 /*****************************************************************************************************/
@@ -414,7 +416,7 @@
 
 	assignment = JOB_TIS_IO
 	rank = "UAAC-TIS Intelligence Officer"
-	paygrade = PAY_SHORT_NO2
+	paygrade_base = PAY_SHORT_NO2
 	role_comm_title = "TIS-IO"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -441,7 +443,7 @@
 
 	assignment = JOB_TIS_SA
 	rank = "UAAC-TIS Special Agent"
-	paygrade = PAY_SHORT_NO5
+	paygrade_base = PAY_SHORT_NO5
 	role_comm_title = "TIS-SA"
 	flags = EQUIPMENT_PRESET_EXTRA
 

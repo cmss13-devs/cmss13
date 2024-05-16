@@ -27,7 +27,9 @@
 	)
 	assignment = JOB_POLICE
 	rank = JOB_POLICE
-	paygrade = PAY_SHORT_ME5
+	paygrade_low = PAY_SHORT_ME4
+	paygrade_base = PAY_SHORT_ME5
+	paygrade_high = PAY_SHORT_ME6
 	role_comm_title = "MP"
 	skills = /datum/skills/MP
 
@@ -59,11 +61,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_R_STORE)
 
-/datum/equipment_preset/uscm_ship/uscm_police/mp/load_rank(mob/living/carbon/human/human)
-	if(human.client && get_job_playtime(human.client, rank) < JOB_PLAYTIME_TIER_1)
-		return PAY_SHORT_ME3
-	return paygrade
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/warden
@@ -90,7 +87,9 @@
 	)
 	assignment = JOB_WARDEN
 	rank = JOB_WARDEN
-	paygrade = PAY_SHORT_ME6
+	paygrade_low = PAY_SHORT_ME5
+	paygrade_base = PAY_SHORT_ME6
+	paygrade_high = PAY_SHORT_ME7
 	role_comm_title = "MW"
 	skills = /datum/skills/MW
 
@@ -151,7 +150,8 @@
 	)
 	assignment = JOB_CHIEF_POLICE
 	rank = JOB_CHIEF_POLICE
-	paygrade = PAY_SHORT_MO2
+	paygrade_low = PAY_SHORT_MO1
+	paygrade_base = PAY_SHORT_MO2
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
 
@@ -195,7 +195,7 @@
 	access = list()
 	assignment = JOB_RIOT
 	rank = JOB_RIOT
-	paygrade = PAY_SHORT_ME5
+	paygrade_base = PAY_SHORT_ME5
 	role_comm_title = "RMP"
 	skills = /datum/skills/CMP
 
@@ -243,6 +243,6 @@
 
 	assignment = JOB_RIOT_CHIEF
 	rank = JOB_RIOT_CHIEF
-	paygrade = PAY_SHORT_MO1
+	paygrade_base = PAY_SHORT_MO1
 	role_comm_title = "CRMP"
 	skills = /datum/skills/CMP

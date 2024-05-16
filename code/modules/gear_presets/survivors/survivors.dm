@@ -5,7 +5,7 @@
 
 	skills = /datum/skills/civilian/survivor
 	languages = list(LANGUAGE_ENGLISH)
-	paygrade = PAY_SHORT_CIV
+	paygrade_base = PAY_SHORT_CIV
 	idtype = /obj/item/card/id/lanyard
 	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_SURVIVOR)
@@ -187,7 +187,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 /datum/equipment_preset/survivor/colonial_marshal
 	name = "Survivor - Colonial Marshal Deputy"
 	assignment = "CMB Deputy"
-	paygrade = PAY_SHORT_CMBD
+	paygrade_base = PAY_SHORT_CMBD
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
@@ -288,7 +288,10 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade = PAY_SHORT_WYC2
+	paygrade_low = PAY_SHORT_WYC2
+	paygrade_base = PAY_SHORT_WYC3
+	paygrade_mid = PAY_SHORT_WYC4
+	paygrade_high = PAY_SHORT_WYC5
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
@@ -313,20 +316,6 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	add_random_cl_survivor_loot(new_human)
 	add_ice_colony_survivor_equipment(new_human)
 	..()
-
-/datum/equipment_preset/survivor/corporate/load_rank(mob/living/carbon/human/new_human)
-	if(new_human.client)
-		var/playtime = get_job_playtime(new_human.client, JOB_CORPORATE_LIAISON)
-		if(new_human.client.prefs.playtime_perks)
-			if(playtime > JOB_PLAYTIME_TIER_4)
-				return PAY_SHORT_WYC5
-			else if(playtime > JOB_PLAYTIME_TIER_3)
-				return PAY_SHORT_WYC4
-			else if(playtime > JOB_PLAYTIME_TIER_2)
-				return PAY_SHORT_WYC3
-			else
-				return paygrade
-	return paygrade
 
 // ---- Trucker Survivor
 
@@ -408,7 +397,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade = PAY_SHORT_ICCL
+	paygrade_base = PAY_SHORT_ICCL
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
@@ -442,7 +431,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "USCM Survivor"
 	skills = /datum/skills/civilian/survivor/marshal
 	idtype = /obj/item/card/id/dogtag
-	paygrade = PAY_SHORT_ME2
+	paygrade_base = PAY_SHORT_ME2
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 

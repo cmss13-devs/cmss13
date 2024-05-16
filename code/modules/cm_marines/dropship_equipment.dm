@@ -20,6 +20,8 @@
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 	var/skill_required = SKILL_PILOT_TRAINED
 	var/combat_equipment = TRUE
+	unslashable = FALSE
+	unacidable = FALSE
 
 
 /obj/structure/dropship_equipment/Destroy()
@@ -121,6 +123,8 @@
 		return
 	if(!PC.linked_powerloader || PC.loaded || PC.linked_powerloader.buckled_mob != user)
 		return
+	src.unslashable = FALSE
+	src.unacidable = FALSE
 	PC.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
 	if(ship_base)
 		ship_base.installed_equipment = null

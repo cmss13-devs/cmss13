@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Box, Button, Flex, LabeledList, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 
@@ -130,10 +132,7 @@ const NewReport = (props) => {
 const NewCharge = (props) => {
   const { data, act } = useBackend();
   const { laws } = data;
-  const [chargeCategory, setChargeCategory] = useLocalState(
-    'chargeCategory',
-    0,
-  );
+  const [chargeCategory, setChargeCategory] = useState(0);
 
   return (
     <>

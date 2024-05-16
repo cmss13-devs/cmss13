@@ -1,6 +1,7 @@
 import { classes } from 'common/react';
+import { useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Box, Button, Divider, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
@@ -25,14 +26,8 @@ type BackendContext = {
 export const TutorialMenu = (props) => {
   const { data, act } = useBackend<BackendContext>();
   const { tutorial_categories, completed_tutorials } = data;
-  const [chosenTutorial, setTutorial] = useLocalState<Tutorial | null>(
-    'tutorial',
-    null,
-  );
-  const [categoryIndex, setCategoryIndex] = useLocalState(
-    'category_index',
-    'Space Station 13',
-  );
+  const [chosenTutorial, setTutorial] = useState<Tutorial | null>(null);
+  const [categoryIndex, setCategoryIndex] = useState('Space Station 13');
   return (
     <Window title="Tutorial Menu" width={800} height={600} theme="usmc">
       <Window.Content>

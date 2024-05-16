@@ -1,6 +1,7 @@
 import { range } from 'common/collections';
+import { useState } from 'react';
 
-import { useBackend, useLocalState, useSharedState } from '../../backend';
+import { useBackend, useSharedState } from '../../backend';
 import { Box, Icon, Stack } from '../../components';
 import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import {
@@ -67,7 +68,7 @@ const useTargetFiremissionSelect = () => {
 };
 
 export const useTargetOffset = (panelId: string) => {
-  const [data, set] = useLocalState(`${panelId}_targetOffset`, 0);
+  const [data, set] = useSharedState(`${panelId}_targetOffset`, 0); // This was originally localState
   return {
     targetOffset: data,
     setTargetOffset: set,
@@ -132,7 +133,7 @@ export const TargetLines = (props: { readonly panelId: string }) => {
   );
 };
 
-const leftButtonGenerator = (panelId: string) => {
+const leftButtonGenerator = (panelId: string, fmOffset: number) => {
   const { data } = useBackend<
     EquipmentContext & FiremissionContext & TargetContext
   >();
@@ -143,7 +144,6 @@ const leftButtonGenerator = (panelId: string) => {
     useTargetFiremissionSelect();
   const { weaponSelected, setWeaponSelected } = useWeaponSelectedState();
   const weapons = data.equipment_data.filter((x) => x.is_weapon);
-  const [fmOffset] = useLocalState(`${panelId}_fm_strike_select_offset`, 0);
   const firemission_mapper = (x: number) => {
     if (x === 0) {
       return {
@@ -331,10 +331,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
   const { weaponSelected } = useWeaponSelectedState();
   const { firemissionSelected } = useTargetFiremissionSelect();
   const { targetOffset, setTargetOffset } = useTargetOffset(panelStateId);
-  const [fmOffset, setFmOffset] = useLocalState(
-    `${props.panelStateId}_fm_strike_select_offset`,
-    0,
-  );
+  const [fmOffset, setFmOffset] = useState(0);
   const { leftButtonMode } = useTargetSubmenu(props.panelStateId);
 
   const { fmXOffsetValue } = useFiremissionXOffsetValue();
@@ -453,7 +450,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
           },
         },
       ]}
-      leftButtons={leftButtonGenerator(panelStateId)}
+      leftButtons={leftButtonGenerator(panelStateId, fmOffset)}
       rightButtons={targets}
     >
       <Box className="NavigationMenu">

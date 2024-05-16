@@ -93,42 +93,49 @@ export type EntryFloatProps = {
   name: string;
   var_name: string;
   float: number;
+  setDesc: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type EntryCoordProps = {
   name: string;
   var_name: string;
   coord?: number[];
+  setDesc: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type EntryGradientProps = {
   name: string;
   var_name: string;
   gradient?: (string | number)[];
+  setDesc: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type EntryTransformProps = {
   name: string;
   var_name: string;
   transform?: number[];
+  setDesc: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type EntryIconStateProps = {
   name: string;
   var_name: string;
   icon_state?: string | { [key: string]: number };
+  setDesc: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type FloatGeneratorProps = {
   name: string;
   var_name: string;
   float?: number | string[];
+  setDesc: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type FloatGeneratorColorProps = {
   name: string;
   var_name: string;
   float?: number | string | string[];
+  setDesc: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type GeneratorProps = {
@@ -142,4 +149,5 @@ export type EntryGeneratorNumbersListProps = {
   var_name: string;
   allow_z: boolean;
   input?: number | number[] | string[];
+  setDesc: React.Dispatch<React.SetStateAction<string>>;
 };

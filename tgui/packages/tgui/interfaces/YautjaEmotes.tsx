@@ -1,5 +1,7 @@
+import { useState } from 'react';
+
 import { BooleanLike } from '../../common/react';
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Box, Button, Divider, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
@@ -19,10 +21,7 @@ type BackendContext = {
 const EmoteTab = (props) => {
   const { data, act } = useBackend<BackendContext>();
   const { categories, emotes, on_cooldown } = data;
-  const [categoryIndex, setCategoryIndex] = useLocalState(
-    'category_index',
-    'Fake Sound',
-  );
+  const [categoryIndex, setCategoryIndex] = useState('Fake Sound');
   const mapped_emote = emotes.filter(
     (emote) => emote && emote.category === categoryIndex,
   );

@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Box, Button, Flex, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 const PAGES = [
@@ -27,7 +29,7 @@ const PAGES = [
 export const VoteMenu = (props) => {
   const { data } = useBackend();
 
-  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 0);
+  const [pageIndex, setPageIndex] = useState(0);
 
   const PageComponent = PAGES[pageIndex].component();
 

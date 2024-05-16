@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Button, Input, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
@@ -21,13 +23,6 @@ const GeneralPanel = (props) => {
     available_transmitters.includes(val1.phone_id),
   );
 
-  const [currentSearch, setSearch] = useLocalState('current_search', '');
-
-  const [selectedPhone, setSelectedPhone] = useLocalState(
-    'selected_phone',
-    null,
-  );
-
   const categories = [];
   for (let i = 0; i < transmitters.length; i++) {
     let data = transmitters[i];
@@ -36,10 +31,9 @@ const GeneralPanel = (props) => {
     categories.push(data.phone_category);
   }
 
-  const [currentCategory, setCategory] = useLocalState(
-    'current_category',
-    categories[0],
-  );
+  const [currentSearch, setSearch] = useState('');
+  const [selectedPhone, setSelectedPhone] = useState(null);
+  const [currentCategory, setCategory] = useState(categories[0]);
 
   let dnd_tooltip = 'Do Not Disturb is DISABLED';
   let dnd_locked = 'No';

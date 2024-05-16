@@ -1,6 +1,7 @@
 import { classes } from 'common/react';
+import { useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Box, Button, Flex, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
@@ -12,10 +13,7 @@ export const IcMedalsPanel = (props) => {
   const VALOR_MEDAL = 'medal of valor';
   const HEROISM_MEDAL = 'medal of exceptional heroism';
 
-  const [recommendationMedalTypes, setRecommendationMedalTypes] = useLocalState(
-    'recommendation_types',
-    [],
-  );
+  const [recommendationMedalTypes, setRecommendationMedalTypes] = useState([]);
 
   return (
     <Window width={600} height={400} theme={'ntos'} resizable>
@@ -49,7 +47,7 @@ export const IcMedalsPanel = (props) => {
                             : ''
                         }
                         onClick={() => {
-                          let new_array = recommendationMedalTypes;
+                          const new_array = [...recommendationMedalTypes];
                           new_array[index] = CONDUCT_MEDAL;
                           setRecommendationMedalTypes(new_array);
                         }}
@@ -72,7 +70,7 @@ export const IcMedalsPanel = (props) => {
                             : ''
                         }
                         onClick={() => {
-                          let new_array = recommendationMedalTypes;
+                          const new_array = [...recommendationMedalTypes];
                           new_array[index] = VALOR_MEDAL;
                           setRecommendationMedalTypes(new_array);
                         }}
@@ -97,7 +95,7 @@ export const IcMedalsPanel = (props) => {
                             : ''
                         }
                         onClick={() => {
-                          let new_array = recommendationMedalTypes;
+                          const new_array = [...recommendationMedalTypes];
                           new_array[index] = BRONZE_HEART_MEDAL;
                           setRecommendationMedalTypes(new_array);
                         }}
@@ -120,7 +118,7 @@ export const IcMedalsPanel = (props) => {
                             : ''
                         }
                         onClick={() => {
-                          let new_array = recommendationMedalTypes;
+                          const new_array = [...recommendationMedalTypes];
                           new_array[index] = HEROISM_MEDAL;
                           setRecommendationMedalTypes(new_array);
                         }}

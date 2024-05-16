@@ -1,6 +1,7 @@
 import { classes } from 'common/react';
+import { useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Box, Button, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
@@ -8,7 +9,7 @@ export const ChooseFruit = (props) => {
   const { act, data } = useBackend();
   const { fruits, selected_fruit } = data;
 
-  const [compact, setCompact] = useLocalState('choosefruit_compact', false);
+  const [compact, setCompact] = useState(false);
 
   let heightScale = 80;
   if (compact) heightScale = 45;

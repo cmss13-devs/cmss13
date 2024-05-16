@@ -1,6 +1,7 @@
 import { range } from 'common/collections';
+import { useState } from 'react';
 
-import { useBackend, useLocalState } from '../../backend';
+import { useBackend } from '../../backend';
 import { Box, Button, Divider, Icon, Input, Stack } from '../../components';
 import { DropshipEquipment, DropshipProps } from '../DropshipWeaponsConsole';
 import { MfdPanel, MfdProps } from './MultifunctionDisplay';
@@ -16,9 +17,12 @@ const sortWeapons = (a: DropshipEquipment, b: DropshipEquipment) => {
   return (a?.mount_point ?? 0) < (b?.mount_point ?? 0) ? -1 : 1;
 };
 
-const CreateFiremissionPanel = (props) => {
+const CreateFiremissionPanel = (props: {
+  readonly fmName: string;
+  readonly setFmName: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   const { act } = useBackend();
-  const [fmName, setFmName] = useLocalState<string>('fmname', '');
+  const { fmName, setFmName } = props;
   return (
     <Stack align="center" vertical>
       <Stack.Item>
@@ -65,7 +69,7 @@ const FiremissionList = (props) => {
 
 const FiremissionMfdHomePage = (props: MfdProps) => {
   const { setSelectedFm } = fmState(props.panelStateId);
-  const [fmName, setFmName] = useLocalState<string>('fmname', '');
+  const [fmName, setFmName] = useState<string>('');
   const { data, act } = useBackend<FiremissionContext>();
   const { setPanelState } = mfdState(props.panelStateId);
 
@@ -78,10 +82,7 @@ const FiremissionMfdHomePage = (props: MfdProps) => {
     };
   };
 
-  const [fmOffset, setFmOffset] = useLocalState(
-    `${props.panelStateId}_fm_select_offset`,
-    0,
-  );
+  const [fmOffset, setFmOffset] = useState(0);
 
   const left_firemissions = range(fmOffset, fmOffset + 5).map(
     firemission_mapper,
@@ -147,7 +148,7 @@ const FiremissionMfdHomePage = (props: MfdProps) => {
           <Stack.Item width="300px">
             <Stack vertical align="center">
               <Stack.Item>
-                <CreateFiremissionPanel />
+                <CreateFiremissionPanel fmName={fmName} setFmName={setFmName} />
               </Stack.Item>
               <Stack.Item>
                 <FiremissionList />

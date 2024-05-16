@@ -1,7 +1,7 @@
 import { map } from 'common/collections';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -16,7 +16,7 @@ import { Window } from '../layouts';
 import { AccessList } from './common/AccessList';
 
 export const CardMod = (props) => {
-  const [tab2, setTab2] = useLocalState('tab2', 1);
+  const [tab2, setTab2] = useState(1);
   return (
     <Window width={450} height={520} resizable>
       <Window.Content scrollable>
@@ -74,7 +74,7 @@ export const CrewManifest = (props) => {
 
 export const CardContent = (props) => {
   const { act, data } = useBackend();
-  const [tab, setTab] = useLocalState('tab', 1);
+  const [tab, setTab] = useState(1);
   const {
     authenticated,
     regions = [],
@@ -86,8 +86,7 @@ export const CardContent = (props) => {
     id_name,
     id_account,
   } = data;
-  const [selectedDepartment, setSelectedDepartment] = useLocalState(
-    'department',
+  const [selectedDepartment, setSelectedDepartment] = useState(
     Object.keys(jobs)[0],
   );
   const departmentJobs = jobs[selectedDepartment] || [];

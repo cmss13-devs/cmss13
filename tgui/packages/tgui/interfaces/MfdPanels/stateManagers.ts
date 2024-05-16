@@ -1,4 +1,4 @@
-import { useLocalState, useSharedState } from '../../backend';
+import { useSharedState } from '../../backend';
 
 export const useEquipmentState = (panelId: string) => {
   const [data, set] = useSharedState<number | undefined>(
@@ -12,7 +12,7 @@ export const useEquipmentState = (panelId: string) => {
 };
 
 export const fmState = (panelId: string) => {
-  const [data, set] = useLocalState<string | undefined>(
+  const [data, set] = useSharedState<string | undefined>( // This was originally localState
     `${panelId}_selected_fm`,
     undefined,
   );
@@ -23,7 +23,7 @@ export const fmState = (panelId: string) => {
 };
 
 export const fmEditState = (panelId: string) => {
-  const [data, set] = useLocalState<boolean>(`${panelId}_edit_fm`, false);
+  const [data, set] = useSharedState<boolean>(`${panelId}_edit_fm`, false); // This was originally localState
   return {
     editFm: data,
     setEditFm: set,
@@ -31,7 +31,7 @@ export const fmEditState = (panelId: string) => {
 };
 
 export const fmWeaponEditState = (panelId: string) => {
-  const [data, set] = useLocalState<number | undefined>(
+  const [data, set] = useSharedState<number | undefined>( // This was originally localState
     `${panelId}_edit_fm_weapon`,
     undefined,
   );

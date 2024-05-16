@@ -1,6 +1,6 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -74,8 +74,8 @@ const hasPermission = (data, action) => {
 
 export const PlayerPanel = (props) => {
   const { act, data } = useBackend();
-  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 0);
-  const [canModifyCkey, setModifyCkey] = useLocalState('canModifyCkey', false);
+  const [pageIndex, setPageIndex] = useState(0);
+  const [canModifyCkey, setModifyCkey] = useState(false);
   const PageComponent = PAGES[pageIndex].component();
   const {
     mob_name,
@@ -582,17 +582,11 @@ const TransformActions = (props) => {
 const FunActions = (props) => {
   const { act, data } = useBackend();
   const { glob_span } = data;
-  const [getSpanSetting, setSpanSetting] = useLocalState(
-    'span_setting',
-    glob_span[0].span,
-  );
 
-  const [lockExplode, setLockExplode] = useLocalState(
-    'explode_lock_toggle',
-    true,
-  );
-  const [expPower, setExpPower] = useLocalState('exp_power', 50);
-  const [falloff, setFalloff] = useLocalState('falloff', 75);
+  const [getSpanSetting, setSpanSetting] = useState(glob_span[0].span);
+  const [lockExplode, setLockExplode] = useState(true);
+  const [expPower, setExpPower] = useState(50);
+  const [falloff, setFalloff] = useState(75);
   return (
     <Section fill>
       {hasPermission(data, 'mob_narrate') && (
@@ -696,8 +690,7 @@ const AntagActions = (props) => {
   const { act, data } = useBackend();
   const { glob_hives, is_xeno, is_human } = data;
 
-  const [selectedHivenumber, setHivenumber] = useLocalState(
-    'selected_hivenumber',
+  const [selectedHivenumber, setHivenumber] = useState(
     Object.keys(glob_hives)[0],
   );
   return (
@@ -806,7 +799,7 @@ const PhysicalActions = (props) => {
   const limbs = Object.keys(glob_limbs);
   const limb_flags = limbs.map((_, i) => 1 << i);
 
-  const [delimbOption, setDelimbOption] = useLocalState('delimb_flags', 0);
+  const [delimbOption, setDelimbOption] = useState(0);
   return (
     <Section fill>
       <Section level={2} title="Status Flags">

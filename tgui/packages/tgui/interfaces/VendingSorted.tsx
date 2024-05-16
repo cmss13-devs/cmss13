@@ -1,7 +1,8 @@
 import { KEY_ESCAPE } from 'common/keycodes';
 import { classes } from 'common/react';
+import { useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -217,6 +218,7 @@ const VendableClothingItemRow = (props: {
 
 interface VendingCategoryProps {
   readonly category: VendingCategory;
+  readonly searchTerm: string;
 }
 
 interface DescriptionProps {
@@ -248,8 +250,7 @@ const ItemDescriptionViewer = (props: DescriptionProps, _) => {
 export const ViewVendingCategory = (props: VendingCategoryProps) => {
   const { data } = useBackend<VendingData>();
   const { vendor_type } = data;
-  const { category } = props;
-  const [searchTerm, _] = useLocalState('searchTerm', '');
+  const { category, searchTerm } = props;
   const searchFilter = (x: VendingRecord) =>
     x.prod_name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
 
@@ -314,7 +315,7 @@ export const VendingSorted = () => {
     );
   }
   const categories = data.displayed_categories ?? [];
-  const [searchTerm, setSearchTerm] = useLocalState('searchTerm', '');
+  const [searchTerm, setSearchTerm] = useState('');
   const isEmpty = categories.length === 0;
   const show_points = data.show_points ?? false;
   const points = data.current_m_points ?? 0;
@@ -382,7 +383,10 @@ export const VendingSorted = () => {
             <Flex direction="column" fill>
               {categories.map((category, i) => (
                 <Flex.Item key={i} className="Category">
-                  <ViewVendingCategory category={category} />
+                  <ViewVendingCategory
+                    searchTerm={searchTerm}
+                    category={category}
+                  />
                 </Flex.Item>
               ))}
               <Flex.Item height={15}>&nbsp;</Flex.Item>

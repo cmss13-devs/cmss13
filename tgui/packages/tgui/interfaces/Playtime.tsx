@@ -1,6 +1,7 @@
 import { classes } from 'common/react';
+import { useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Tabs } from '../components';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
@@ -60,7 +61,7 @@ const PlaytimeTable = (props: { readonly data: PlaytimeRecord[] }) => {
 
 export const Playtime = (props) => {
   const { data } = useBackend<PlaytimeData>();
-  const [selected, setSelected] = useLocalState('selected', 'human');
+  const [selected, setSelected] = useState('human');
   const humanTime =
     data.stored_human_playtime.length > 0
       ? data.stored_human_playtime[0].playtime

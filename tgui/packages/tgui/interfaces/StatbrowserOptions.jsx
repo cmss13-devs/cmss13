@@ -1,11 +1,13 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Flex, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
 export const StatbrowserOptions = (props) => {
   const { act, data } = useBackend();
   const { current_fontsize } = data;
-  const [fontsize, setFontsize] = useLocalState('fontsize', current_fontsize);
+  const [fontsize, setFontsize] = useState(current_fontsize);
 
   return (
     <Window title="Statbrowser Options" width={300} height={120}>

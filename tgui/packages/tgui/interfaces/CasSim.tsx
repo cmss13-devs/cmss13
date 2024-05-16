@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -18,10 +20,7 @@ interface CasSimData {
 
 export const CasSim = () => {
   const { act, data } = useBackend<CasSimData>();
-  const [simulationView, setSimulationView] = useLocalState(
-    'simulation_view',
-    false,
-  );
+  const [simulationView, setSimulationView] = useState(false);
 
   const timeLeft = data.nextdetonationtime - data.worldtime;
   const timeLeftPct = timeLeft / data.detonation_cooldown;

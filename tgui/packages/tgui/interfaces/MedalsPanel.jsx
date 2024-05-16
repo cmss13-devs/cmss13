@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Button, Flex, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
@@ -19,7 +21,7 @@ export const MedalsPanel = (props) => {
   const { data } = useBackend();
   const { uscm_awards, uscm_award_ckeys, xeno_awards, xeno_award_ckeys } = data;
 
-  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 1);
+  const [pageIndex, setPageIndex] = useState(1);
 
   return (
     <Window

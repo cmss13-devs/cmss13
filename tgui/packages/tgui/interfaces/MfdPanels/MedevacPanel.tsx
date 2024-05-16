@@ -1,6 +1,7 @@
 import { range } from 'common/collections';
+import { useState } from 'react';
 
-import { useBackend, useLocalState } from '../../backend';
+import { useBackend } from '../../backend';
 import { Box, Divider, Flex, Stack } from '../../components';
 import { Icon } from '../../components';
 import { MfdPanel, MfdProps } from './MultifunctionDisplay';
@@ -50,10 +51,7 @@ const MedevacOccupant = (props: { readonly data: MedevacTargets }) => (
 
 export const MedevacMfdPanel = (props: MfdProps) => {
   const { data, act } = useBackend<MedevacContext>();
-  const [medevacOffset, setMedevacOffset] = useLocalState(
-    `${props.panelStateId}_medevacoffset`,
-    0,
-  );
+  const [medevacOffset, setMedevacOffset] = useState(0);
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
 

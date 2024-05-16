@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-undef */
-import { useBackend, useLocalState } from '../../backend';
+import { useBackend } from '../../backend';
 import {
   Button,
   ColorBox,
@@ -21,15 +21,14 @@ import { isStringArray } from './helpers';
 
 export const FloatGenerator = (props: FloatGeneratorProps) => {
   const { act, data } = useBackend<ParticleUIData>();
-  const [desc, setdesc] = useLocalState('desc', '');
-  const { name, var_name, float } = props;
+  const { name, var_name, float, setDesc } = props;
   return (
     <LabeledList.Item label={name}>
       <Stack>
         <Stack.Item>
           <Button
             icon={'question'}
-            onClick={() => setdesc(var_name)}
+            onClick={() => setDesc(var_name)}
             tooltip={'View details'}
           />
         </Stack.Item>
@@ -75,15 +74,14 @@ export const FloatGenerator = (props: FloatGeneratorProps) => {
 
 export const FloatGeneratorColor = (props: FloatGeneratorColorProps) => {
   const { act, data } = useBackend<ParticleUIData>();
-  const [desc, setdesc] = useLocalState('desc', '');
-  const { name, var_name, float } = props;
+  const { name, var_name, float, setDesc } = props;
   return (
     <LabeledList.Item label={name}>
       <Stack>
         <Stack.Item>
           <Button
             icon={'question'}
-            onClick={() => setdesc(var_name)}
+            onClick={() => setDesc(var_name)}
             tooltip={'View details'}
           />
         </Stack.Item>
@@ -132,15 +130,14 @@ export const EntryGeneratorNumbersList = (
   props: EntryGeneratorNumbersListProps,
 ) => {
   const { act, data } = useBackend<ParticleUIData>();
-  const [desc, setdesc] = useLocalState('desc', '');
-  const { name, var_name, allow_z, input } = props;
+  const { name, var_name, allow_z, input, setDesc } = props;
   return (
     <LabeledList.Item label={name}>
       <Stack>
         <Stack.Item>
           <Button
             icon={'question'}
-            onClick={() => setdesc(var_name)}
+            onClick={() => setDesc(var_name)}
             tooltip={'View details'}
           />
         </Stack.Item>

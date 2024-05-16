@@ -1,6 +1,6 @@
-import { Component } from 'react';
+import { Component, useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Box, Button, Dropdown, Flex, Input, Section } from '../components';
 import { globalEvents } from '../events';
 import { Window } from '../layouts';
@@ -35,9 +35,8 @@ export const KeyBinds = (props) => {
   const { act, data } = useBackend();
   const { player_keybinds, glob_keybinds, byond_keymap } = data;
 
-  const [selectedTab, setSelectedTab] = useLocalState('progress', 'ALL');
-
-  const [searchTerm, setSearchTerm] = useLocalState('searchTerm', '');
+  const [selectedTab, setSelectedTab] = useState('ALL');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const keybinds_to_use =
     searchTerm.length || selectedTab === 'ALL'
@@ -104,7 +103,11 @@ export const KeyBinds = (props) => {
                 </Flex.Item>
                 <Flex.Item>
                   <Box height="5px" />
-                  <KeybindsDropdown />
+                  <KeybindsDropdown
+                    selectedTab={selectedTab}
+                    setSelectedTab={setSelectedTab}
+                    searchTerm={searchTerm}
+                  />
                 </Flex.Item>
               </Flex>
             </Section>
@@ -151,9 +154,7 @@ export const KeyBinds = (props) => {
 const KeybindsDropdown = (props) => {
   const { act, data } = useBackend();
   const { glob_keybinds } = data;
-  const [selectedTab, setSelectedTab] = useLocalState('progress', 'ALL');
-
-  const [searchTerm, setSearchTerm] = useLocalState('searchTerm', '');
+  const { selectedTab, setSelectedTab, searchTerm } = props;
 
   const dropdownOptions = ['ALL', ...Object.keys(glob_keybinds)];
 

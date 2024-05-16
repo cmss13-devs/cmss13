@@ -1,6 +1,7 @@
 import { classes } from 'common/react';
+import { useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Box, Button, Flex, Icon, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
@@ -32,11 +33,11 @@ interface PlacedMark extends Mark {
 // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
 type HivePosition = 0 | 1 | 2;
 
-const MenuActions = (props) => {
-  const [historicalSelected, setHistoricalSelected] = useLocalState(
-    'historicalSelected',
-    '',
-  );
+const MenuActions = (props: {
+  readonly historicalSelected: string;
+  readonly setHistoricalSelected: React.Dispatch<React.SetStateAction<string>>;
+}) => {
+  const { historicalSelected, setHistoricalSelected } = props;
   const { data, act } = useBackend<MarkProps>();
   return (
     <Flex fill justify="space-between" className="ActionMenu">
@@ -90,10 +91,7 @@ const MenuActions = (props) => {
 
 const MarkSelection = (props) => {
   const { data } = useBackend<MarkProps>();
-  const [selectionMenu, setSelectionMenu] = useLocalState(
-    'selectionMenu',
-    false,
-  );
+  const [selectionMenu, setSelectionMenu] = useState(false);
   const { selected_mark } = data;
   const mark_prototype =
     data.mark_meanings.find((x) => x.id === selected_mark) ??
@@ -151,13 +149,13 @@ const MarkImage = (
   );
 };
 
-const HistoricalMark = (props: { readonly mark: PlacedMark }) => {
+const HistoricalMark = (props: {
+  readonly mark: PlacedMark;
+  readonly historicalSelected: string;
+  readonly setHistoricalSelected: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   const { data } = useBackend<MarkProps>();
-  const { mark } = props;
-  const [historicalSelected, setHistoricalSelected] = useLocalState(
-    'historicalSelected',
-    '',
-  );
+  const { mark, historicalSelected, setHistoricalSelected } = props;
 
   const isTracked =
     data.tracked_mark === null ? false : data.tracked_mark === mark.id;
@@ -220,6 +218,7 @@ const HistoricalMark = (props: { readonly mark: PlacedMark }) => {
 
 const MarkHistory = (props) => {
   const { data } = useBackend<MarkProps>();
+  const [historicalSelected, setHistoricalSelected] = useState('');
 
   const { mark_list_infos } = data;
   return (
@@ -231,12 +230,19 @@ const MarkHistory = (props) => {
       <hr />
 
       <Flex.Item>
-        <MenuActions />
+        <MenuActions
+          historicalSelected={historicalSelected}
+          setHistoricalSelected={setHistoricalSelected}
+        />
       </Flex.Item>
 
       {mark_list_infos.map((x) => (
         <Flex.Item key={x.id}>
-          <HistoricalMark mark={x} />
+          <HistoricalMark
+            mark={x}
+            historicalSelected={historicalSelected}
+            setHistoricalSelected={setHistoricalSelected}
+          />
         </Flex.Item>
       ))}
     </Flex>

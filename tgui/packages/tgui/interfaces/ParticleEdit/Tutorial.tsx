@@ -1,5 +1,4 @@
 import { resolveAsset } from '../../assets';
-import { useLocalState } from '../../backend';
 import {
   Box,
   Button,
@@ -10,8 +9,12 @@ import {
   Stack,
 } from '../../components';
 
-export const ShowDesc = (props) => {
-  const [desc, setdesc] = useLocalState('desc', '');
+export const ShowDesc = (props: {
+  readonly desc: string;
+  readonly setDesc: React.Dispatch<React.SetStateAction<string>>;
+}) => {
+  const { desc, setDesc } = props;
+
   return (
     <Modal
       width={'60em'}
@@ -21,24 +24,24 @@ export const ShowDesc = (props) => {
         title={'Var Details'}
         buttons={
           VarExplanation[desc].dataunit ? (
-            <Button onClick={() => setdesc('')}>Dismiss</Button>
+            <Button onClick={() => setDesc('')}>Dismiss</Button>
           ) : (
             <>
               <Button
                 selected={desc === 'motion'}
-                onClick={() => setdesc('motion')}
+                onClick={() => setDesc('motion')}
               >
                 Motion basics
               </Button>
               <Button
                 selected={desc === 'randtypes'}
-                onClick={() => setdesc('randtypes')}
+                onClick={() => setDesc('randtypes')}
               >
                 Rand types
               </Button>
               <Button
                 selected={desc === 'gentypes'}
-                onClick={() => setdesc('gentypes')}
+                onClick={() => setDesc('gentypes')}
               >
                 Generator types
               </Button>
@@ -46,7 +49,7 @@ export const ShowDesc = (props) => {
                 icon="x"
                 tooltip={'Dismiss'}
                 color={'red'}
-                onClick={() => setdesc('')}
+                onClick={() => setDesc('')}
               />
             </>
           )

@@ -1,6 +1,7 @@
 import { range } from 'common/collections';
+import { useState } from 'react';
 
-import { useBackend, useLocalState } from '../../backend';
+import { useBackend } from '../../backend';
 import { Box, Stack } from '../../components';
 import { Icon } from '../../components';
 import { MfdPanel, MfdProps } from './MultifunctionDisplay';
@@ -9,10 +10,7 @@ import { FultonProps } from './types';
 
 export const FultonMfdPanel = (props: MfdProps) => {
   const { data, act } = useBackend<FultonProps>();
-  const [fulltonOffset, setFultonOffset] = useLocalState(
-    `${props.panelStateId}_fultonoffset`,
-    0,
-  );
+  const [fulltonOffset, setFultonOffset] = useState(0);
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
 

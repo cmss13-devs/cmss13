@@ -1,7 +1,7 @@
 import { capitalize } from 'common/string';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -157,17 +157,14 @@ const PrintablesSection = (props) => {
     queuemax,
   } = data;
 
-  const [currentSearch, setSearch] = useLocalState('current_search', '');
+  const [currentSearch, setSearch] = useState('');
 
   const categories = [];
   printables
     .filter((x) => categories.includes(x.recipe_category))
     .map((x) => x.recipe_category);
 
-  const [currentCategory, setCategory] = useLocalState(
-    'current_category',
-    'All',
-  );
+  const [currentCategory, setCategory] = useState('All');
 
   const filteredPrintables = printables.filter(
     (val) =>

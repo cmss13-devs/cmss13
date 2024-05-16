@@ -1,8 +1,8 @@
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import {
   Button,
   Collapsible,
@@ -261,13 +261,13 @@ const XenoCounts = (props) => {
 
 const XenoList = (props) => {
   const { act, data } = useBackend();
-  const [searchKey, setSearchKey] = useLocalState('searchKey', '');
-  const [searchFilters, setSearchFilters] = useLocalState('searchFilters', {
+  const [searchKey, setSearchKey] = useState('');
+  const [searchFilters, setSearchFilters] = useState({
     name: true,
     strain: true,
     location: true,
   });
-  const [maxHealth, setMaxHealth] = useLocalState('maxHealth', 100);
+  const [maxHealth, setMaxHealth] = useState(100);
   const { xeno_keys, xeno_vitals, xeno_info, user_ref, is_in_ovi, hive_color } =
     data;
   const xeno_entries = filterXenos({

@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Box, Button, Flex, LabeledList, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 
@@ -35,7 +37,7 @@ type TechProps = {
 
 export const TechMemories = () => {
   const { config, data } = useBackend<TechProps>();
-  const [clueCategory, setClueCategory] = useLocalState('clueCategory', 0);
+  const [clueCategory, setClueCategory] = useState(0);
   const { tech_points, theme, clue_categories } = data;
 
   return (

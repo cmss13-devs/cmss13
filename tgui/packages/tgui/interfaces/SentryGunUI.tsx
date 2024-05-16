@@ -1,6 +1,7 @@
 import { classes } from 'common/react';
+import { useState } from 'react';
 
-import { useBackend, useLocalState, useSharedState } from '../backend';
+import { useBackend, useSharedState } from '../backend';
 import {
   Box,
   Button,
@@ -278,10 +279,7 @@ const InputGroup = (props: {
   readonly startingValue: string;
 }) => {
   const { act } = useBackend<SentryData>();
-  const [categoryValue, setCategoryValue] = useLocalState(
-    `${props.index} ${props.category}`,
-    props.startingValue,
-  );
+  const [categoryValue, setCategoryValue] = useState(props.startingValue);
   return (
     <Stack vertical className="SelectionMenu">
       <Stack.Item className="Title">

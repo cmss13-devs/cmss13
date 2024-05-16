@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Button, LabeledList, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
@@ -6,13 +8,10 @@ export const Mortar = (props) => {
   const { act, data } = useBackend();
   const { data_target_x, data_target_y, data_dial_x, data_dial_y } = data;
 
-  const [target_x, setTargetX] = useLocalState('target_x', data_target_x);
-
-  const [target_y, setTargetY] = useLocalState('target_y', data_target_y);
-
-  const [dial_x, setDialX] = useLocalState('dial_x', data_dial_x);
-
-  const [dial_y, setDialY] = useLocalState('dial_y', data_dial_y);
+  const [target_x, setTargetX] = useState(data_target_x);
+  const [target_y, setTargetY] = useState(data_target_y);
+  const [dial_x, setDialX] = useState(data_dial_x);
+  const [dial_y, setDialY] = useState(data_dial_y);
 
   return (
     <Window width={245} height={220}>

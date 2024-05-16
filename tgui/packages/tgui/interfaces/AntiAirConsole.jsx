@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -27,10 +29,7 @@ const GeneralPanel = (props) => {
 
   const sections = data.sections;
 
-  const [selectedSection, setSelectedSection] = useLocalState(
-    'selected_section',
-    null,
-  );
+  const [selectedSection, setSelectedSection] = useState(null);
 
   return (
     <Section fill>

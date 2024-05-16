@@ -2,9 +2,9 @@ import { toFixed } from 'common/math';
 import { storage } from 'common/storage';
 import { multiline } from 'common/string';
 import { createUuid } from 'common/uuid';
-import { Component, Fragment } from 'react';
+import { Component, Fragment, useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -33,6 +33,7 @@ export const PodLauncher = (props) => {
 };
 
 const PodLauncherContent = (props) => {
+  const [tabPageIndex, setTabPageIndex] = useState(1);
   return (
     <Window.Content>
       <Flex direction="column" height="100%">
@@ -47,7 +48,10 @@ const PodLauncherContent = (props) => {
                   <PresetsPage />
                 </Flex.Item>
                 <Flex.Item>
-                  <ReverseMenu />
+                  <ReverseMenu
+                    tabPageIndex={tabPageIndex}
+                    setTabPageIndex={setTabPageIndex}
+                  />
                 </Flex.Item>
                 <Flex.Item>
                   <Section>
@@ -57,7 +61,10 @@ const PodLauncherContent = (props) => {
               </Flex>
             </Flex.Item>
             <Flex.Item grow={3}>
-              <ViewTabHolder />
+              <ViewTabHolder
+                tabPageIndex={tabPageIndex}
+                setTabPageIndex={setTabPageIndex}
+              />
             </Flex.Item>
             <Flex.Item basis="16em">
               <Flex height="100%" direction="column">
@@ -261,7 +268,7 @@ const EFFECTS_ALL = [
 
 const ViewTabHolder = (props) => {
   const { act, data } = useBackend();
-  const [tabPageIndex, setTabPageIndex] = useLocalState('tabPageIndex', 1);
+  const { tabPageIndex, setTabPageIndex } = props;
   const { glob_tab_indexes, custom_dropoff, map_ref } = data;
   const TabPageComponent = TABPAGES[tabPageIndex].component();
   return (
@@ -457,7 +464,7 @@ const PodStatusPage = (props) => {
 
 const ReverseMenu = (props) => {
   const { act, data } = useBackend();
-  const [tabPageIndex, setTabPageIndex] = useLocalState('tabPageIndex', 1);
+  const { tabPageIndex, setTabPageIndex } = props;
   const { glob_tab_indexes, target_mode } = data;
   const { TARGET_MODE_DROPOFF, TARGET_MODE_NONE } = data.glob_target_mode;
   return (
@@ -513,6 +520,10 @@ class PresetsPage extends Component {
     super();
     this.state = {
       presets: [],
+      presetIndex: 0,
+      settingName: 0,
+      newNameText: '',
+      hue: 0,
     };
   }
 
@@ -569,12 +580,8 @@ class PresetsPage extends Component {
     });
   }
   render() {
-    const { presets } = this.state;
+    const { presets, presetIndex, settingName, newNameText, hue } = this.state;
     const { act, data } = useBackend();
-    const [presetIndex, setSelectedPreset] = useLocalState('presetIndex', 0);
-    const [settingName, setEditingNameStatus] = useLocalState('settingName', 0);
-    const [newNameText, setText] = useLocalState('newNameText', '');
-    const [hue, setHue] = useLocalState('hue', 0);
     return (
       <Section
         scrollable
@@ -588,7 +595,7 @@ class PresetsPage extends Component {
                 icon="plus"
                 tooltip="New Preset"
                 tooltipPosition="bottom"
-                onClick={() => setEditingNameStatus(1)}
+                onClick={() => this.setState({ settingName: 1 })}
               />
             )}
             <Button
@@ -630,7 +637,7 @@ class PresetsPage extends Component {
               tooltipPosition="right"
               onClick={() => {
                 this.newPreset(newNameText, hue, data);
-                setEditingNameStatus(0);
+                this.setState({ settingName: 0 });
               }}
             />
             <Button
@@ -638,8 +645,7 @@ class PresetsPage extends Component {
               icon="window-close"
               tooltip="Cancel"
               onClick={() => {
-                setText('');
-                setEditingNameStatus(0);
+                this.setState({ newNameText: '', settingName: 0 });
               }}
             />
             <span color="label"> Hue: </span>
@@ -652,13 +658,13 @@ class PresetsPage extends Component {
               value={hue}
               minValue={0}
               maxValue={360}
-              onChange={(value) => setHue(value)}
+              onChange={(value) => this.setState({ hue: value })}
             />
             <Input
               inline
               autofocus
               placeholder="Preset Name"
-              onChange={(e, value) => setText(value)}
+              onChange={(e, value) => this.setState({ newNameText: value })}
             />
             <Divider horizontal />
           </>
@@ -675,7 +681,11 @@ class PresetsPage extends Component {
                 key={i}
                 width="100%"
                 backgroundColor={`hsl(${preset.hue}, 50%, 50%)`}
-                onClick={() => setSelectedPreset(preset.id)}
+                onClick={() =>
+                  this.setState({
+                    presetIndex: preset.id,
+                  })
+                }
                 style={
                   presetIndex === preset.id
                     ? {
@@ -862,7 +872,7 @@ const Damage = (props) => {
 
 const Explosion = (props) => {
   const { act, data } = useBackend();
-  const [enabled, setEnabled] = useLocalState('explosion_enabled', false);
+  const [enabled, setEnabled] = useState(false);
   return (
     <Section
       fill

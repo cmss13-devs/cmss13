@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Button, Flex, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 import { DrawnMap } from './DrawnMap';
@@ -37,7 +39,7 @@ export const TacmapAdminPanel = (props) => {
     last_update_time,
   } = data;
 
-  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 0);
+  const [pageIndex, setPageIndex] = useState(0);
 
   const PageComponent = PAGES[pageIndex].component();
 

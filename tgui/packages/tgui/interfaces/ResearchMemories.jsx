@@ -1,10 +1,12 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Box, Flex, LabeledList, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const ResearchMemories = () => {
   const { data } = useBackend();
-  const [clueCategory, setClueCategory] = useLocalState('clueCategory', 0);
+  const [clueCategory, setClueCategory] = useState(0);
 
   const { clearance, research_credits, theme, clue_categories } = data;
 

@@ -1,6 +1,7 @@
 import { classes } from 'common/react';
+import { useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import {
   Button,
   Icon,
@@ -58,10 +59,7 @@ const Contents = (props: {
   readonly items: StorageItem[];
   readonly title: string;
 }) => {
-  const [tabIndex, setTabIndex] = useLocalState(
-    `contentsTab_${props.isLocal}`,
-    'all',
-  );
+  const [tabIndex, setTabIndex] = useState('all');
   const allItems = props.items;
 
   if (allItems.length === 0) {

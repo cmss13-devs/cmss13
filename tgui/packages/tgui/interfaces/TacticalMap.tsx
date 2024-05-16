@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -95,10 +97,7 @@ const colors: Record<string, string> = {
 
 export const TacticalMap = (props) => {
   const { data, act } = useBackend<TacMapProps>();
-  const [pageIndex, setPageIndex] = useLocalState(
-    'pageIndex',
-    data.canViewTacmap ? 0 : 1,
-  );
+  const [pageIndex, setPageIndex] = useState(data.canViewTacmap ? 0 : 1);
   const PageComponent = PAGES[pageIndex].component();
 
   const handleTacmapOnClick = (i: number, pageTitle: string) => {

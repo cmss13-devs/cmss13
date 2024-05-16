@@ -73,7 +73,7 @@ GLOBAL_LIST_INIT(landing_zone_fog, list())
 	GLOB.landing_zone_fog += src
 	. = ..()
 
-/obj/structure/blocker/landing_zone_fog/proc/Clear()
+/obj/structure/blocker/landing_zone_fog/proc/clear()
 	GLOB.landing_zone_fog -= src
 	QDEL_IN(src, rand(3 SECONDS,5 SECONDS))
 

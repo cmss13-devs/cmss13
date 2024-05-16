@@ -61,6 +61,18 @@
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
 
+GLOBAL_LIST_INIT(landing_zone_fog, list())
+/obj/structure/blocker/landing_zone_fog
+	name = "dense fog"
+	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke"
+	opacity = TRUE
+
+/obj/structure/blocker/landing_zone_fog/Initialize()
+	GLOB.landing_zone_fog += src
+	. = ..()
+
 
 /obj/structure/blocker/forcefield
 	name = "forcefield"

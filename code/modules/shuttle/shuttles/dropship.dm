@@ -262,7 +262,7 @@
 		xeno_announce = FALSE
 
 	for(var/obj/structure/blocker/landing_zone_fog/fog as anything in GLOB.landing_zone_fog)
-		fog.Clear()
+		fog.clear()
 
 	for(var/obj/structure/machinery/defenses/sentry/landing_zone/sentrygun as anything in GLOB.landing_zone_sentryguns)
 		sentrygun.on_landing()

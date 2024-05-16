@@ -74,10 +74,8 @@ GLOBAL_LIST_INIT(landing_zone_fog, list())
 	. = ..()
 
 /obj/structure/blocker/landing_zone_fog/proc/Clear()
-	for(var/fog in GLOB.landing_zone_fog)
-		var/obj/structure/blocker/landing_zone_fog/landing_zone_fog = fog
-		GLOB.landing_zone_fog -= landing_zone_fog
-		QDEL_IN(landing_zone_fog, rand(2 SECONDS,4 SECONDS))
+	GLOB.landing_zone_fog -= src
+	QDEL_IN(src, rand(2 SECONDS,4 SECONDS))
 
 /obj/structure/blocker/forcefield
 	name = "forcefield"
@@ -132,10 +130,7 @@ GLOBAL_LIST_INIT(landing_zone_fog, list())
 	types = list(/obj/vehicle/multitile/)
 
 
-/obj/structure/blocker/forcefield/multitile_vehicles/handle_vehicle_bump(obj/vehicle/multitile/multitile_vehicle)
-	if(multitile_vehicle.vehicle_flags & VEHICLE_BYPASS_BLOCKERS)
-		return TRUE
-	return FALSE
+
 
 /obj/structure/blocker/forcefield/human
 	types = list(/mob/living/carbon/human)

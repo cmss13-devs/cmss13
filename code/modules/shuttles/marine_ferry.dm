@@ -297,13 +297,10 @@
 	for(var/X in equipments)
 		var/obj/structure/dropship_equipment/E = X
 		E.on_arrival()
+
 	for(var/fog in GLOB.landing_zone_fog)
 		var/obj/structure/blocker/landing_zone_fog/landing_zone_fog = fog
-		landing_zone_fog -= fog
-		QDEL_IN(landing_zone_fog, rand(2,4))
-
-
-
+		landing_zone_fog.Clear()
 
 	moving_status = SHUTTLE_IDLE
 
@@ -507,10 +504,6 @@
 	for(var/X in equipments)
 		var/obj/structure/dropship_equipment/E = X
 		E.on_arrival()
-	for(var/fog in GLOB.landing_zone_fog)
-		var/obj/structure/blocker/landing_zone_fog/landing_zone_fog = fog
-		landing_zone_fog -= fog
-		QDEL_IN(landing_zone_fog, rand(2,4))
 
 	open_doors_crashed(turfs_trg) //And now open the doors
 
@@ -586,8 +579,7 @@
 		E.on_arrival()
 	for(var/fog in GLOB.landing_zone_fog)
 		var/obj/structure/blocker/landing_zone_fog/landing_zone_fog = fog
-		landing_zone_fog -= fog
-		QDEL_IN(landing_zone_fog, rand(2 SECONDS,4 SECONDS))
+		landing_zone_fog.Clear()
 
 	moving_status = SHUTTLE_IDLE
 

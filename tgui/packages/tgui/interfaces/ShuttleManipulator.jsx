@@ -36,11 +36,10 @@ export const ShuttleManipulatorStatus = (props) => {
   return (
     <Section>
       <Table>
-        {shuttles.map((shuttle) => (
-          <Table.Row key={shuttle.id}>
+        {shuttles.map((shuttle, i) => (
+          <Table.Row key={i}>
             <Table.Cell width="11rem">
               <Button
-                key={shuttle.id}
                 onClick={() =>
                   act('jump_to', {
                     id: shuttle.id,
@@ -50,7 +49,6 @@ export const ShuttleManipulatorStatus = (props) => {
                 JMP
               </Button>
               <Button
-                key={shuttle.id}
                 disabled={!shuttle.can_fly}
                 onClick={() =>
                   act('fly', {
@@ -62,7 +60,6 @@ export const ShuttleManipulatorStatus = (props) => {
               </Button>
               {shuttle.has_disable === 1 && shuttle.is_disabled === 0 && (
                 <Button
-                  key={shuttle.id}
                   disabled={!shuttle.can_fly}
                   onClick={() =>
                     act('lock', {
@@ -75,7 +72,6 @@ export const ShuttleManipulatorStatus = (props) => {
               )}
               {shuttle.has_disable === 1 && shuttle.is_disabled === 1 && (
                 <Button
-                  key={shuttle.id}
                   disabled={!shuttle.can_fly}
                   onClick={() =>
                     act('unlock', {
@@ -96,7 +92,6 @@ export const ShuttleManipulatorStatus = (props) => {
                 <>
                   ({shuttle.timeleft})
                   <Button
-                    key={shuttle.id}
                     disabled={!shuttle.can_fast_travel}
                     onClick={() =>
                       act('fast_travel', {

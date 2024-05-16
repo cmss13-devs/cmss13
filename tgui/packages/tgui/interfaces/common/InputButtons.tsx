@@ -77,7 +77,7 @@ export const InputButtons = (props: InputButtonsProps) => {
     <Flex
       align="center"
       direction={!swapped_buttons ? 'row' : 'row-reverse'}
-      fill
+      fill={1}
       justify="space-around"
     >
       {large_buttons ? (

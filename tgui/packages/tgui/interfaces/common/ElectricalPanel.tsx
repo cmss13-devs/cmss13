@@ -146,7 +146,7 @@ const ElectricalPanelOpen = (props: BoxProps) => {
       <Flex
         direction="column"
         justify="space-between"
-        fill
+        fill={1}
         className="ElectricalSafetySign"
       >
         <Flex.Item>

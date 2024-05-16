@@ -380,7 +380,7 @@ export const VendingSorted = () => {
 
         {!isEmpty && (
           <Box className="ItemContainer">
-            <Flex direction="column" fill>
+            <Flex direction="column" fill={1}>
               {categories.map((category, i) => (
                 <Flex.Item key={i} className="Category">
                   <ViewVendingCategory

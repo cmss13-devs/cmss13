@@ -40,7 +40,7 @@ const MenuActions = (props: {
   const { historicalSelected, setHistoricalSelected } = props;
   const { data, act } = useBackend<MarkProps>();
   return (
-    <Flex fill justify="space-between" className="ActionMenu">
+    <Flex fill={1} justify="space-between" className="ActionMenu">
       <Flex.Item>
         <Button
           color="xeno"
@@ -173,12 +173,17 @@ const HistoricalMark = (props: {
         )
       }
     >
-      <Flex className="MarkStack" direction="row" justify="space-between" fill>
+      <Flex
+        className="MarkStack"
+        direction="row"
+        justify="space-between"
+        fill={1}
+      >
         <Flex.Item className="ChooseMark__BuildIcon">
           <MarkImage image={mark.image} size="64x64" />
         </Flex.Item>
         <Flex.Item className={classes(['MarkLabel'])}>
-          <Flex align="flex-top" justify="flex-start" fill>
+          <Flex align="flex-top" justify="flex-start" fill={1}>
             <Flex.Item>
               <Stack vertical className="HistoricalLabel">
                 <Stack.Item>
@@ -222,7 +227,7 @@ const MarkHistory = (props) => {
 
   const { mark_list_infos } = data;
   return (
-    <Flex direction="column" fill className="History">
+    <Flex direction="column" fill={1} className="History">
       <Flex.Item>
         <MarkSelection />
       </Flex.Item>

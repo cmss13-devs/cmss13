@@ -50,7 +50,7 @@ const PurchaseDocs = () => {
       </Stack.Item>
 
       <Stack.Item>
-        <Flex justify="space-between" fill className="purchase-flex">
+        <Flex justify="space-between" fill={1} className="purchase-flex">
           {all_levels.map((x) => {
             const isDisabled =
               !available_levels.includes(x) || costs[x] > data.rsc_credits;
@@ -246,7 +246,7 @@ const ResearchReportTable = (props: {
   return (
     <Stack vertical>
       <Stack.Item>
-        <Flex justify="space-between" fill>
+        <Flex justify="space-between" fill={1}>
           <Flex.Item>
             {hideOld && (
               <Button onClick={() => setHideOld(false)}>

@@ -76,7 +76,7 @@ const DrawShipOutline = () => {
       x2={xLookup(pos1)}
       y2={yLookup(pos1)}
       stroke={OutlineColor}
-      stroke-width={OutlineWidth}
+      strokeWidth={OutlineWidth}
     />
   );
   return (
@@ -109,7 +109,7 @@ const DrawWeapon = (props: { readonly weapon: DropshipEquipment }) => {
       <text
         x={x + (index < 2 ? -25 : 25)}
         y={y}
-        text-anchor="middle"
+        textAnchor="middle"
         fontWeight="bold"
         fill={OutlineColor}
       >

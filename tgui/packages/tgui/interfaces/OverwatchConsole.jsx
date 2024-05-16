@@ -144,7 +144,7 @@ const MainDashboard = (props) => {
         </>
       }
     >
-      <Table fill mb="5px">
+      <Table mb="5px">
         <Table.Row bold>
           <Table.Cell textAlign="center">PRIMARY ORDERS</Table.Cell>
           <Table.Cell textAlign="center">SECONDARY ORDERS</Table.Cell>

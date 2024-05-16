@@ -31,26 +31,26 @@ const WeaponPanel = (props: {
     <Stack>
       <Stack.Item>
         <svg height="501" width="100">
-          <text stroke="#00e94e" x={60} y={230} text-anchor="start">
+          <text stroke="#00e94e" x={60} y={230} textAnchor="start">
             ACTIONS
           </text>
           {true && (
             <path
-              fill-opacity="0"
+              fillOpacity="0"
               stroke="#00e94e"
               d="M 50 210 l -20 0 l -20 -180 l -40 0"
             />
           )}
           {false && (
             <path
-              fill-opacity="0"
+              fillOpacity="0"
               stroke="#00e94e"
               d="M 50 220 l -25 0 l -15 -90 l -40 0"
             />
           )}
           {false && (
             <path
-              fill-opacity="0"
+              fillOpacity="0"
               stroke="#00e94e"
               d="M 50 230 l -20 0 l -20 0 l -40 0"
             />
@@ -58,14 +58,14 @@ const WeaponPanel = (props: {
 
           {false && (
             <path
-              fill-opacity="0"
+              fillOpacity="0"
               stroke="#00e94e"
               d="M 50 240 l -25 0 l -15 90 l -40 0"
             />
           )}
           {false && (
             <path
-              fill-opacity="0"
+              fillOpacity="0"
               stroke="#00e94e"
               d="M 50 250 l -20 0 l -20 180 l -40 0"
             />
@@ -97,7 +97,7 @@ const WeaponPanel = (props: {
                 stroke="#00e94e"
                 x={-20}
                 y={210}
-                text-anchor="end"
+                textAnchor="end"
                 transform="rotate(-90 20 210)"
                 fontSize="2em"
               >
@@ -107,7 +107,7 @@ const WeaponPanel = (props: {
               </text>
             )}
             {data.targets_data.length > 0 && (
-              <text stroke="#00e94e" x={20} y={190} text-anchor="end">
+              <text stroke="#00e94e" x={20} y={190} textAnchor="end">
                 <tspan x={40} dy="1.2em">
                   SELECT
                 </tspan>

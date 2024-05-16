@@ -469,7 +469,7 @@ const ReverseMenu = (props) => {
   const { TARGET_MODE_DROPOFF, TARGET_MODE_NONE } = data.glob_target_mode;
   return (
     <Section fill height="100%" title="Reverse">
-      <Flex fill direction="column">
+      <Flex fill={1} direction="column">
         <Flex.Item maxHeight="20px">
           <Button
             selected={target_mode === TARGET_MODE_DROPOFF}

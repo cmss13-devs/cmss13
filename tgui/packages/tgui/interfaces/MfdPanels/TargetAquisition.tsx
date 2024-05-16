@@ -95,21 +95,21 @@ export const TargetLines = (props: { readonly panelId: string }) => {
     <>
       {data.targets_data.length > targetOffset && (
         <path
-          fill-opacity="0"
+          fillOpacity="0"
           stroke="#00e94e"
           d="M 50 210 l 20 0 l 20 -180 l 40 0"
         />
       )}
       {data.targets_data.length > targetOffset + 1 && (
         <path
-          fill-opacity="0"
+          fillOpacity="0"
           stroke="#00e94e"
           d="M 50 220 l 25 0 l 15 -90 l 40 0"
         />
       )}
       {data.targets_data.length > targetOffset + 2 && (
         <path
-          fill-opacity="0"
+          fillOpacity="0"
           stroke="#00e94e"
           d="M 50 230 l 20 0 l 20 0 l 40 0"
         />
@@ -117,14 +117,14 @@ export const TargetLines = (props: { readonly panelId: string }) => {
 
       {data.targets_data.length > targetOffset + 3 && (
         <path
-          fill-opacity="0"
+          fillOpacity="0"
           stroke="#00e94e"
           d="M 50 240 l 25 0 l 15 90 l 40 0"
         />
       )}
       {data.targets_data.length > targetOffset + 4 && (
         <path
-          fill-opacity="0"
+          fillOpacity="0"
           stroke="#00e94e"
           d="M 50 250 l 20 0 l 20 180 l 40 0"
         />
@@ -472,7 +472,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
               </defs>
               <path
                 stroke="#00e94e"
-                stroke-width="1"
+                strokeWidth="1"
                 fillOpacity="0"
                 d="M 0 0 l 50 50 l 0 400 l -50 50"
               />
@@ -484,7 +484,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
                 <svg width="500px" height="50px">
                   <path
                     stroke="#00e94e"
-                    stroke-width="1"
+                    strokeWidth="1"
                     fillOpacity="0"
                     d="M -1 0 l 50 50 l 395 0 l 50 -50"
                   />
@@ -526,7 +526,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
             <svg width="50px" height="500px">
               <path
                 stroke="#00e94e"
-                stroke-width="1"
+                strokeWidth="1"
                 fillOpacity="0"
                 d="M 40 0 l -50 50 l 0 400 l 50 50"
               />
@@ -536,7 +536,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
                     stroke="#00e94e"
                     x={-20}
                     y={210}
-                    text-anchor="end"
+                    textAnchor="end"
                     transform="rotate(-90 20 210)"
                     fontSize="2em"
                   >
@@ -546,7 +546,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
                   </text>
                 )}
                 {data.targets_data.length > 0 && (
-                  <text stroke="#00e94e" x={20} y={190} text-anchor="end">
+                  <text stroke="#00e94e" x={20} y={190} textAnchor="end">
                     <tspan x={40} dy="1.2em">
                       SELECT
                     </tspan>

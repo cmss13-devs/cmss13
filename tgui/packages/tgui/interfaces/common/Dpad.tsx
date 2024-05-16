@@ -15,14 +15,14 @@ const SvgButton = (props: {
       <g transform={props.transform} onClick={props.onClick}>
         <path
           stroke="#808080"
-          stroke-width="1"
+          strokeWidth="1"
           fillOpacity="1"
           fill="#606060"
           d="M 0 15 l 0 -20 l 10 -10 l 20 15 l 0 25 l -20 15 l -10 -10 l 0 -20"
         />
         <path
           stroke="#FFFFFF"
-          stroke-width="2"
+          strokeWidth="2"
           fillOpacity="0"
           d="M 25 12 l -20 0 l 10 -10 l -10 10 l 10 10"
         />

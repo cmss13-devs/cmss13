@@ -20,7 +20,7 @@ export const StatbrowserOptions = (props) => {
             maxValue={30}
             step={0.5}
             format={(value) => value + 'px'}
-            onChange={(_, value) => {
+            onChange={(value) => {
               setFontsize(value);
               act('change_fontsize', { new_fontsize: value });
             }}

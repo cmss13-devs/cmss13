@@ -97,7 +97,7 @@ export const SettingsGeneral = (props) => {
           />
         </LabeledList.Item>
         <LabeledList.Item label="Font style">
-          <Stack inline align="baseline">
+          <Stack inline align="center">
             <Stack.Item>
               {(!freeFont && (
                 <Dropdown
@@ -113,6 +113,7 @@ export const SettingsGeneral = (props) => {
                 />
               )) || (
                 <Input
+                  width="15em"
                   value={fontFamily}
                   onChange={(value) =>
                     dispatch(

@@ -18,7 +18,7 @@ const MedevacOccupant = (props: { readonly data: MedevacTargets }) => (
         </Stack>
       </Flex.Item>
       <Flex.Item grow>
-        <Flex fill justify="space-around">
+        <Flex fill={1} justify="space-around">
           <Flex.Item>
             HP
             <br />
@@ -122,35 +122,35 @@ export const MedevacMfdPanel = (props: MfdProps) => {
             <svg width="60px">
               {all_targets.length > 0 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 50 50 l -20 0 l -20 -20 l -20 0"
                 />
               )}
               {all_targets.length > 1 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 50 100 l -20 0 l -20 30 l -20 0"
                 />
               )}
               {all_targets.length > 2 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 50 155 l -20 0 l -20 80 l -20 0"
                 />
               )}
               {all_targets.length > 3 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 50 210 l -20 0 l -20 120 l -20 0"
                 />
               )}
               {all_targets.length > 4 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 50 260 l -20 0 l -20 170 l -20 0"
                 />
@@ -176,21 +176,21 @@ export const MedevacMfdPanel = (props: MfdProps) => {
             <svg width="60px">
               {all_targets.length > 5 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 0 310 l 20 0 l 20 -180 l 20 0"
                 />
               )}
               {all_targets.length > 6 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 0 360 l 20 0 l 20 -130 l 20 0"
                 />
               )}
               {all_targets.length > 7 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 0 410 l 20 0 l 20 -80 l 20 0"
                 />

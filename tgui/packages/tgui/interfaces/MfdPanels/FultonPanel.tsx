@@ -80,41 +80,41 @@ export const FultonMfdPanel = (props: MfdProps) => {
     >
       <Box className="NavigationMenu">
         <Stack>
-          <Stack.Item width="100px">
-            <svg>
+          <Stack.Item>
+            <svg width="60px">
               {all_targets.length > 0 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
-                  d="M 180 45 l -50 0 l -20 -15 l -150 0"
+                  d="M 100 45 l -50 0 l -20 -15 l -150 0"
                 />
               )}
               {all_targets.length > 1 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
-                  d="M 180 75 l -50 0 l -20 55 l -150 0"
+                  d="M 100 75 l -50 0 l -20 55 l -150 0"
                 />
               )}
               {all_targets.length > 2 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
-                  d="M 180 110 l -50 0 l -20 120 l -150 0"
+                  d="M 100 110 l -50 0 l -20 120 l -150 0"
                 />
               )}
               {all_targets.length > 3 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
-                  d="M 180 140 l -50 0 l -20 190 l -150 0"
+                  d="M 100 140 l -50 0 l -20 190 l -150 0"
                 />
               )}
               {all_targets.length > 4 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
-                  d="M 180 175 l -50 0 l -20 255 l -150 0"
+                  d="M 100 175 l -50 0 l -20 255 l -150 0"
                 />
               )}
             </svg>
@@ -124,34 +124,34 @@ export const FultonMfdPanel = (props: MfdProps) => {
               <Stack.Item>
                 <h3>Active Fultons</h3>
               </Stack.Item>
-              {all_targets.map((x) => (
-                <Stack.Item key={x}>
+              {all_targets.map((x, i) => (
+                <Stack.Item key={i}>
                   <h4>{x}</h4>
                 </Stack.Item>
               ))}
             </Stack>
           </Stack.Item>
-          <Stack.Item width="100px">
-            <svg>
+          <Stack.Item>
+            <svg width="60px">
               {all_targets.length > 5 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
-                  d="M -100 205 l 50 0 l 20 -75 l 150 0"
+                  d="M -40 205 l 50 0 l 20 -75 l 150 0"
                 />
               )}
               {all_targets.length > 6 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
-                  d="M -100 235 l 50 0 l 150 0"
+                  d="M -40 235 l 50 0 l 150 0"
                 />
               )}
               {all_targets.length > 7 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
-                  d="M -100 265 l 50 0 l 20 65 l 150 0"
+                  d="M -40 265 l 50 0 l 20 65 l 150 0"
                 />
               )}
             </svg>

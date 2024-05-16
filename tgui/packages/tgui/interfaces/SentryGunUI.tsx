@@ -59,7 +59,7 @@ const SelectionGroup = (props: {
   const { act } = useBackend<SentryData>();
   const comparisonstr = props.selected ?? '';
   return (
-    <Flex direction="column" className="SelectionMenu" fill>
+    <Flex direction="column" className="SelectionMenu" fill={1}>
       <Flex.Item className="Title">
         <span>{props.data[0]}</span>
       </Flex.Item>
@@ -88,7 +88,7 @@ const SelectionMenu = (props: { readonly data: SentrySpec }) => {
     return output === undefined ? undefined : output[1];
   };
   return (
-    <Flex wrap justify="center" fill>
+    <Flex wrap justify="center" fill={1}>
       {props.data.selection_menu.map((x) => (
         <Flex.Item key={x[0]} className="SelectionFlexItem">
           <SelectionGroup

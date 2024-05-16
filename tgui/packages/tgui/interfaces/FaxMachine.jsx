@@ -135,7 +135,7 @@ const FaxEmpty = (props) => {
   const { act, data } = useBackend();
   const { paper, paper_name } = data;
   return (
-    <Section textAlign="center" flexGrow="1" fill>
+    <Section textAlign="center" fill>
       <Flex height="100%">
         <Flex.Item grow="1" align="center" color="red">
           <Icon name="times-circle" mb="0.5rem" size="5" color="red" />

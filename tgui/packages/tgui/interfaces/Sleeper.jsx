@@ -215,7 +215,7 @@ const SleeperChemicals = (props) => {
   const { act, data } = useBackend();
   const { occupant, chemicals, maxchem, amounts } = data;
   return (
-    <Section title="Occupant Chemicals" flexGrow="1">
+    <Section title="Occupant Chemicals">
       {chemicals.map((chem, i) => {
         let barColor = '';
         let odWarning;
@@ -295,7 +295,7 @@ const SleeperChemicals = (props) => {
 
 const SleeperEmpty = (props) => {
   return (
-    <Section textAlign="center" flexGrow="1">
+    <Section textAlign="center">
       <Flex height="100%">
         <Flex.Item grow="1" align="center" color="label">
           <Icon name="user-slash" mb="0.5rem" size="5" />

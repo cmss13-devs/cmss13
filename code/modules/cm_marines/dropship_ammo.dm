@@ -356,12 +356,12 @@
 
 /obj/structure/ship_ammo/rocket/custom_missile/get_examine_text(mob/user)
 	. = ..()
-	. += "\n Contains [containers.len] containers."
+	. += SPAN_NOTICE("Contains [containers.len] container\s.")
 	switch(assembly_stage)
 		if(ASSEMBLY_LOCKED)
-			. += "\n It is ready."
+			. += SPAN_NOTICE("It is ready.")
 		if(ASSEMBLY_UNLOCKED)
-			. += "\n It is unlocked."
+			. += SPAN_NOTICE("It is unlocked.")
 
 /obj/structure/ship_ammo/rocket/custom_missile/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	if(assembly_stage == ASSEMBLY_UNLOCKED || containers.len == 0) //shitty explosion if left unlocked or no containers

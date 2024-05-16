@@ -1,7 +1,7 @@
 /datum/tech/repeatable/req_points
 	name = "Requisition Budget Increase"
 	icon_state = "budget_req"
-	desc = "Distributes resources to requisitions for spending."
+	desc = "Distributes resources to requisitions for spending. (20000$)"
 
 	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 	announce_message = "Additional supply budget has been authorised for this operation."
@@ -12,7 +12,7 @@
 	flags = TREE_FLAG_MARINE
 	tier = /datum/tier/one
 
-	var/points_to_give = 500
+	var/points_to_give = 200
 
 /datum/tech/repeatable/req_points/proc/get_tech_scaling_value()
 	//We take the number of marine players, deduced from other lists, and then get a scale multiplier from it, to be used in arbitrary manners to distribute equipment

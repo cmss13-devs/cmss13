@@ -26,12 +26,46 @@
 	if(!H || !D)
 		return
 	if(H.job == JOB_SQUAD_ENGI)
-		.["R-1NG Bell Tower"] = /obj/item/defenses/handheld/bell_tower
-		.["21S Tesla Coil"] = /obj/item/defenses/handheld/tesla_coil
-		.["JIMA Planted Flag"] = /obj/item/defenses/handheld/planted_flag
-		.["UA 42-F Sentry Flamer"] = /obj/item/defenses/handheld/sentry/flamer
-		.["UA 571-C Sentry Gun"] = /obj/item/defenses/handheld/sentry
+		.["21S Tesla Coil"] = /obj/item/storage/box/combat_zone_engi_package_tesla
+		.["UA 42-F Sentry Flamer"] = /obj/item/storage/box/combat_zone_engi_package_flamer
+		.["UA 571-C Sentry Gun"] = /obj/item/storage/box/combat_zone_engi_package
 	else if(H.job == JOB_SQUAD_MARINE)
 		.["Portable Composite Barricade"] = /obj/item/stack/folding_barricade
 	else
 		.["Random Tool"] = pick(GLOB.common_tools)
+
+/obj/item/storage/box/combat_zone_engi_package
+	name = "Engineer sentry gun czsp"
+	icon_state = "guncase"
+	storage_slots = 4
+
+/obj/item/storage/box/combat_zone_engi_package_flamer
+	name = "Engineer sentry flamer czsp"
+	icon_state = "guncase"
+	storage_slots = 4
+
+/obj/item/storage/box/combat_zone_engi_package_tesla
+	name = "Engineer tesla czsp"
+	icon_state = "guncase"
+	storage_slots = 4
+
+/obj/item/storage/box/combat_zone_engi_package/Initialize()
+	. = ..()
+	new /obj/item/defenses/handheld/sentry(src)
+	new /obj/item/engi_upgrade_kit(src)
+	new /obj/item/weapon/gun/smg/nailgun/compact(src)
+	new /obj/item/ammo_magazine/smg/nailgun(src)
+
+/obj/item/storage/box/combat_zone_engi_package_flamer/Initialize()
+	. = ..()
+	new /obj/item/defenses/handheld/sentry/flamer(src)
+	new /obj/item/engi_upgrade_kit(src)
+	new /obj/item/weapon/gun/smg/nailgun/compact(src)
+	new /obj/item/ammo_magazine/smg/nailgun(src)
+
+/obj/item/storage/box/combat_zone_engi_package_tesla/Initialize()
+	. = ..()
+	new /obj/item/defenses/handheld/tesla_coil(src)
+	new /obj/item/engi_upgrade_kit(src)
+	new /obj/item/weapon/gun/smg/nailgun/compact(src)
+	new /obj/item/ammo_magazine/smg/nailgun(src)

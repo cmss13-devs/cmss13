@@ -26,9 +26,9 @@
 		.["Random Medical Item"] = type_to_add
 
 /obj/item/storage/box/combat_zone_support_package
-	name = "medical czsp"
+	name = "Medical czsp"
 	icon_state = "guncase"
-	storage_slots = 6
+	storage_slots = 8
 
 /obj/item/storage/box/combat_zone_support_package/Initialize()
 	. = ..()
@@ -36,5 +36,7 @@
 	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
 	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
 	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/device/defibrillator/upgraded(src)
 	new /obj/item/stack/medical/splint/nano(src)
 	new /obj/item/weapon/gun/pill(src)
+	new /obj/item/tool/crew_monitor(src)

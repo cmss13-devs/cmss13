@@ -5371,7 +5371,6 @@
 /area/strata/ag/interior/mining_outpost/canteen)
 "aqU" = (
 /obj/structure/reagent_dispensers/water_cooler,
-/obj/effect/landmark/queen_spawn,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -26223,9 +26222,6 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/canteen)
-"ceQ" = (
-/turf/closed/wall/strata_ice/jungle,
-/area/strata/ug/interior/jungle/carplake/north)
 "ceS" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -30695,12 +30691,6 @@
 "fKT" = (
 /turf/open/gm/river,
 /area/strata/ug/interior/jungle/structures/monitoring/south)
-"fLe" = (
-/obj/effect/landmark/queen_spawn,
-/turf/open/floor/strata{
-	icon_state = "floor2"
-	},
-/area/strata/ug/interior/jungle/structures/research)
 "fLl" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -32796,6 +32786,10 @@
 	icon_state = "blue1"
 	},
 /area/strata/ag/interior/outpost/admin)
+"iVX" = (
+/obj/effect/landmark/queen_spawn,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/jungle/carplake/east)
 "iVZ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/cameras{
@@ -36028,6 +36022,12 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh/river)
+"nUh" = (
+/obj/effect/landmark/queen_spawn,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "nUM" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
@@ -76160,7 +76160,7 @@ bDm
 bDm
 bDm
 bDn
-bDn
+nUh
 bDm
 aad
 aad
@@ -80052,7 +80052,7 @@ aad
 jUA
 cei
 jUA
-ceQ
+jUA
 jUA
 jUA
 aad
@@ -80227,7 +80227,7 @@ jUA
 jUA
 jUA
 aSF
-ceQ
+jUA
 jUA
 aVN
 aad
@@ -80401,8 +80401,8 @@ aNG
 jUA
 cei
 jUA
-ceQ
-ceQ
+jUA
+jUA
 jUA
 aad
 aad
@@ -80576,8 +80576,8 @@ aNH
 jUA
 chj
 jUA
-ceQ
-ceQ
+jUA
+jUA
 jUA
 jUA
 aad
@@ -80751,7 +80751,7 @@ jUA
 jUA
 cei
 jUA
-ceQ
+jUA
 jUA
 jUA
 jUA
@@ -81641,7 +81641,7 @@ daq
 cgq
 daq
 daq
-daq
+iVX
 daq
 daq
 aad
@@ -82128,7 +82128,7 @@ aDa
 abX
 abU
 bAr
-fLe
+bAr
 aqU
 uux
 abX

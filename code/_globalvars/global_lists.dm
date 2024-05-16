@@ -375,7 +375,7 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 	while(gap > 1 || swapped)
 		swapped = 0
 		if(gap > 1)
-			gap = round(gap / 1.247330950103979)
+			gap = floor(gap / 1.247330950103979)
 		if(gap < 1)
 			gap = 1
 		for(var/i = 1; gap + i <= length(surgeries); i++)

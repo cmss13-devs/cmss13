@@ -1,4 +1,5 @@
 import { KEY_ESCAPE } from 'common/keycodes';
+import { toFixed } from 'common/math';
 import { classes } from 'common/react';
 import { useState } from 'react';
 
@@ -10,6 +11,7 @@ import {
   Icon,
   Input,
   NoticeBox,
+  ProgressBar,
   Section,
   Tooltip,
 } from '../components';
@@ -46,8 +48,11 @@ interface VendingData {
   theme: string;
   displayed_categories: VendingCategory[];
   stock_listing: Array<number>;
+  stock_listing_partials?: Array<number>;
   show_points?: boolean;
   current_m_points?: number;
+  reagents?: number;
+  reagents_max?: number;
 }
 
 interface VenableItem {
@@ -127,20 +132,24 @@ const VendableItemRow = (props: VenableItem) => {
 
   const quantity = data.stock_listing[record.prod_index - 1];
   const available = quantity > 0;
+  const partial_quantity =
+    data.stock_listing_partials?.[record.prod_index - 1] ?? 0;
+  const partialDesignation = partial_quantity > 0 ? '*' : '';
   const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
 
   return (
     <>
-      <TableCell className="IconCell">
+      <TableCell className="IconCell" verticalAlign="top">
         <span
           className={classes([`Icon`, `vending32x32`, `${props.record.image}`])}
         />
       </TableCell>
 
-      <TableCell>
+      <TableCell minWidth="3rem">
         <span className={classes(['Text', !available && 'Failure'])}>
           {quantity}
+          {partialDesignation}
         </span>
       </TableCell>
 
@@ -157,7 +166,10 @@ const VendableItemRow = (props: VenableItem) => {
 
       <TableCell>
         <DescriptionTooltip record={record}>
-          <Icon name="circle-info" className={classes(['RegularItemText'])} />
+          <Icon
+            name="circle-info"
+            className={classes(['RegularItemText', 'SmallIcon'])}
+          />
         </DescriptionTooltip>
       </TableCell>
     </>
@@ -179,7 +191,7 @@ const VendableClothingItemRow = (props: {
 
   return (
     <>
-      <TableCell className="IconCell">
+      <TableCell className="IconCell" verticalAlign="top">
         <span
           className={classes([`Icon`, `vending32x32`, `${props.record.image}`])}
         />
@@ -208,7 +220,7 @@ const VendableClothingItemRow = (props: {
         <DescriptionTooltip record={record}>
           <Icon
             name="circle-info"
-            className={classes(['ShowDesc', 'RegularItemText'])}
+            className={classes(['ShowDesc', 'RegularItemText', 'SmallIcon'])}
           />
         </DescriptionTooltip>
       </TableCell>
@@ -272,6 +284,7 @@ export const ViewVendingCategory = (props: VendingCategoryProps) => {
           return (
             <TableRow
               key={record.prod_index}
+              height="30px"
               className={classes([
                 'VendingItem',
                 i % 2 ? 'VendingFlexAlt' : undefined,
@@ -309,7 +322,7 @@ export const VendingSorted = () => {
   const { data, act } = useBackend<VendingData>();
   if (data === undefined) {
     return (
-      <Window height={800} width={400}>
+      <Window height={800} width={450}>
         no data!
       </Window>
     );
@@ -319,8 +332,10 @@ export const VendingSorted = () => {
   const isEmpty = categories.length === 0;
   const show_points = data.show_points ?? false;
   const points = data.current_m_points ?? 0;
+  const reagents = data.reagents ?? 0;
+  const reagents_max = data.reagents_max ?? 0;
   return (
-    <Window height={800} width={400} theme={getTheme(data.theme)}>
+    <Window height={800} width={450} theme={getTheme(data.theme)}>
       <Window.Content
         scrollable
         className="Vendor"
@@ -350,6 +365,22 @@ export const VendingSorted = () => {
                 />
               </Flex.Item>
             </Flex>
+            {reagents_max > 0 && (
+              <Flex
+                align="center"
+                justify="space-between"
+                align-items="stretch"
+              >
+                <Flex.Item>
+                  <span className="Section__content">Reagents</span>
+                </Flex.Item>
+                <Flex.Item grow>
+                  <ProgressBar value={reagents} maxValue={reagents_max}>
+                    {toFixed(reagents) + ' units'}
+                  </ProgressBar>
+                </Flex.Item>
+              </Flex>
+            )}
           </Box>
         )}
 

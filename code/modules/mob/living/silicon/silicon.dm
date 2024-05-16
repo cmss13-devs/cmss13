@@ -64,7 +64,7 @@
 // this function shows health in the Status panel
 /mob/living/silicon/proc/show_system_integrity()
 	if(!stat)
-		stat(null, text("System integrity: [round((health/maxHealth)*100)]%"))
+		stat(null, text("System integrity: [floor((health/maxHealth)*100)]%"))
 	else
 		stat(null, text("Systems nonfunctional"))
 

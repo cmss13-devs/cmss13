@@ -145,10 +145,6 @@ $mandatory-color: rgb(128, 83, 0);
     width: 100%;
   }
 
-  .ItemTable {
-    width: 95vw;
-  }
-
   .IconCell {
     width: 32px;
   }
@@ -180,6 +176,11 @@ $mandatory-color: rgb(128, 83, 0);
 
   .RegularItemText {
     color: white;
+  }
+
+  .SmallIcon {
+    min-width: 20px;
+    max-width: 20px;
   }
 
   .MandatoryItemText {

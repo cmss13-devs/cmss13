@@ -1198,6 +1198,15 @@ const Requisitions = (props) => {
       <Section>
         <h1 align="center">ASRS Audit Log</h1>
         {!!records_requisition.length && (
+          <Button
+            icon="print"
+            px="2rem"
+            textAlign="center"
+            tooltip="Print Audit Log"
+            onClick={() => act('print_req')}
+          />
+        )}
+        {!!records_requisition.length && (
           <Flex
             className="candystripe"
             p=".75rem"

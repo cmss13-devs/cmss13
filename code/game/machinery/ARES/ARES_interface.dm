@@ -337,6 +337,46 @@
 			last_menu = current_menu
 			current_menu = "core_security"
 
+		// -- Print ASRS Audit Log -- //
+		if("print_req")
+			playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
+			var/contents = {"<center><h4>ASRS Audit Log</h4></center>
+						<u>Printed By:</u> [last_login]<br>
+						<u>Print Time:</u> [worldtime2text()]<br>
+						<hr>
+						<center>
+						<table border=1 cellspacing=0 cellpadding=3 style='border: 1px solid black;'>
+						<thead>
+							<tr>
+							<th scope="col">Time</th>
+							<th scope="col">User</th>
+							<th scope="col">Source</th>
+							<th scope="col">Order</th>
+							</tr>
+						</thead>
+						<tbody>
+						"}
+
+			for(var/datum/ares_record/requisition_log/req_order as anything in datacore.records_asrs)
+				if(!istype(req_order))
+					continue
+
+				contents += {"
+							<tr>
+							<th scope="row">[req_order.time]</th>
+							<td>[req_order.details]</td>
+							<td>[req_order.title]</td>
+							<td>[req_order.user]</td>
+							</tr>
+							"}
+
+			contents += "</center></tbody></table>"
+
+			var/obj/item/paper/log = new /obj/item/paper(src.loc)
+			log.name = "ASRS Audit Log"
+			log.info += contents
+			visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
+
 		// -- Delete Button -- //
 		if("delete_record")
 			var/datum/ares_record/record = locate(params["record"])

@@ -26,12 +26,6 @@
 	},
 /area/event)
 "h" = (
-/obj/effect/landmark/start/tank_crew,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"h" = (
 /obj/effect/landmark/start/police,
 /turf/open/floor/almayer{
 	icon_state = "plating"

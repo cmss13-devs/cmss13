@@ -59099,7 +59099,6 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/obj/effect/landmark/start/tank_crew,
 /area/almayer/living/tankerbunks)
 "qim" = (
 /obj/structure/disposalpipe/segment,

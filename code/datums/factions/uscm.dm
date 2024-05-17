@@ -24,7 +24,7 @@
 			if(JOB_GENERAL) marine_rk = "general"
 			if(JOB_CAS_PILOT) marine_rk = "gp"
 			if(JOB_DROPSHIP_PILOT) marine_rk = "dp"
-			if(JOB_TANKCREW) marine_rk = "cg"
+			if(JOB_TANKCREW) marine_rk = "tc"
 			if(JOB_INTEL) marine_rk = "io"
 			if(JOB_DROPSHIP_CREW_CHIEF) marine_rk = "dcc"
 			if(JOB_MARINE_RAIDER) marine_rk = "soc"

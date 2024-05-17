@@ -1611,7 +1611,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(flags_gun_features & GUN_AMMO_COUNTER && current_mag)
 		// toggleable spam control.
-		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15 && gun_firemode != GUN_FIREMODE_BURSTFIRE)
+		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
 			return
 		var/chambered = in_chamber ? TRUE : FALSE
 		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))

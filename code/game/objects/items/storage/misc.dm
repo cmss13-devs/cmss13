@@ -119,6 +119,7 @@
 	w_class = SIZE_SMALL
 	max_w_class = SIZE_TINY
 	storage_slots = 2
+	can_hold = list(/obj/item/weapon/gun/pistol/clfpistol, /obj/item/ammo_magazine/pistol/clfpistol)
 
 /obj/item/storage/box/clf/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/clfpistol(src)
@@ -132,6 +133,7 @@
 	w_class = SIZE_MEDIUM
 	max_w_class = SIZE_MEDIUM
 	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/pistol/t73, /obj/item/ammo_magazine/pistol/t73)
 
 /obj/item/storage/box/upp/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/t73(src)
@@ -147,6 +149,7 @@
 	storage_slots = 3
 	w_class = SIZE_SMALL
 	max_w_class = SIZE_SMALL
+	can_hold = list(/obj/item/attachable/bayonet/co2, /obj/item/co2_cartridge)
 
 /obj/item/storage/box/co2_knife/fill_preset_inventory()
 	new /obj/item/attachable/bayonet/co2(src)

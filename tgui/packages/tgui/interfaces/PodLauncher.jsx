@@ -1,6 +1,5 @@
 import { toFixed } from 'common/math';
 import { storage } from 'common/storage';
-import { multiline } from 'common/string';
 import { createUuid } from 'common/uuid';
 import { Component, Fragment, useState } from 'react';
 
@@ -330,10 +329,7 @@ const ViewTabHolder = (props) => {
           <Button
             icon="trash"
             color="transparent"
-            tooltip={multiline`
-            Clears everything
-            from the bay`}
-            tooltipOverrideLong
+            tooltip={`Clears everything from the bay`}
             tooltipPosition="top"
             onClick={() => act('clear_bay')}
           />
@@ -429,7 +425,6 @@ const PodStatusPage = (props) => {
                         <Button
                           tooltip={effect.title}
                           tooltipPosition={list.tooltipPosition}
-                          tooltipOverrideLong
                           icon={effect.icon}
                           selected={
                             effect.selected ? effect.selected(data) : false
@@ -473,10 +468,7 @@ const ReverseMenu = (props) => {
         <Flex.Item maxHeight="20px">
           <Button
             selected={target_mode === TARGET_MODE_DROPOFF}
-            tooltip={multiline`
-              Where the pods
-              go after being recalled`}
-            tooltipOverrideLong
+            tooltip={`Where the pods go after being recalled`}
             tooltipPosition="bottom"
             onClick={() => {
               if (data.target_mode === TARGET_MODE_DROPOFF) {
@@ -496,10 +488,7 @@ const ReverseMenu = (props) => {
             inline
             icon="trash"
             disabled={!data.custom_dropoff}
-            tooltip={multiline`
-              Clears the custom dropoff
-              location.`}
-            tooltipOverrideLong
+            tooltip={`Clears the custom dropoff location.`}
             tooltipPosition="bottom"
             onClick={() => {
               act('clear_dropoff');
@@ -603,7 +592,6 @@ class PresetsPage extends Component {
               color="transparent"
               icon="download"
               tooltip="Saves preset"
-              tooltipOverrideLong
               tooltipPosition="bottom"
               onClick={() => this.saveDataToPreset(presetIndex, data)}
             />
@@ -712,9 +700,7 @@ const LaunchPage = (props) => {
     <Button
       fluid
       textAlign="center"
-      tooltip={multiline`
-        Launches the droppod`}
-      tooltipOverrideLong
+      tooltip={`Launches the droppod`}
       selected={data.target_mode === TARGET_MODE_LAUNCH}
       tooltipPosition="top"
       onClick={() => {
@@ -746,10 +732,7 @@ const Timing = (props) => {
         <Button
           icon="undo"
           color="transparent"
-          tooltip={multiline`
-          Reset all pod
-          timings/delays`}
-          tooltipOverrideLong
+          tooltip={`Reset all pod timings/delays`}
           tooltipPosition="top"
           onClick={() => {
             act('set_delays', {
@@ -843,7 +826,6 @@ const Damage = (props) => {
           icon="undo"
           color="transparent"
           tooltip="Reset damage"
-          tooltipOverrideLong
           tooltipPosition="top"
           onClick={() => {
             act('set_damage', {
@@ -883,7 +865,6 @@ const Explosion = (props) => {
           selected={enabled}
           color="transparent"
           tooltip="Toggle explosion"
-          tooltipOverrideLong
           tooltipPosition="top"
           onClick={() => {
             if (enabled) {

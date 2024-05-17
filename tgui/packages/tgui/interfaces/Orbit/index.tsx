@@ -1,5 +1,5 @@
 import { filter, sortBy } from 'common/collections';
-import { capitalizeFirst, multiline } from 'common/string';
+import { capitalizeFirst } from 'common/string';
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
@@ -96,8 +96,7 @@ const ObservableSearch = (props: {
             color={auto_observe ? 'good' : 'transparent'}
             icon={auto_observe ? 'toggle-on' : 'toggle-off'}
             onClick={() => act('toggle_auto_observe')}
-            tooltip={multiline`Toggle Full Observe. When active, you'll
-            see the UI / full inventory of whoever you're orbiting. Neat!`}
+            tooltip={`Toggle Full Observe. When active, you'll see the UI / full inventory of whoever you're orbiting. Neat!`}
             tooltipPosition="bottom-start"
           />
         </Stack.Item>

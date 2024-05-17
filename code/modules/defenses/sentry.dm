@@ -496,18 +496,16 @@ GLOBAL_LIST_INIT(landing_zone_sentryguns, list())
 	QDEL_IN(src, 10 MINUTES)
 
 /obj/structure/machinery/defenses/sentry/landing_zone/proc/time_left(counter)
-	var/volume = 15
 	switch(counter)
 		if(1)
-			volume = 15
+			playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 15, 1)
 			visible_message(SPAN_WARNING("\The [name] beeps steadily as its battery gets low."))
 		if(2)
-			volume = 20
+			playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 20, 1)
 			visible_message(SPAN_WARNING("\The [name] beeps steadily as its battery gets criticly low."))
 		if(3)
-			visible_message(SPAN_WARNING("\The [name] beeps steadily as its battery goes out! It deconstructs itself!"))
-			volume = 25
-	playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', volume, 1)
+			playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
+			visible_message(SPAN_WARNING("\The [name] deconstructs itself as its battery goes out!))
 
 /obj/structure/machinery/defenses/sentry/premade
 	name = "UA-577 Gauss Turret"

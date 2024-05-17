@@ -261,7 +261,7 @@ const StripContent = (props: { readonly item: StripMenuItem }) => {
   return <> </>;
 };
 
-export const StripMenu = (props, context) => {
+export const StripMenu = (props) => {
   const { act, data } = useBackend<StripMenuData>();
 
   const gridSpots = new Map<GridSpotKey, string>();

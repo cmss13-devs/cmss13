@@ -7,8 +7,8 @@ const PAGES = {
   Update: () => StatusUpdate,
 };
 
-export const WhitelistPanel = (props, context) => {
-  const { data } = useBackend(context);
+export const WhitelistPanel = (props) => {
+  const { data } = useBackend();
   const { current_menu } = data;
   const PageComponent = PAGES[current_menu]();
 
@@ -21,8 +21,8 @@ export const WhitelistPanel = (props, context) => {
   );
 };
 
-const PlayerList = (props, context) => {
-  const { data, act } = useBackend(context);
+const PlayerList = (props) => {
+  const { data, act } = useBackend();
   const { whitelisted_players } = data;
 
   return (
@@ -87,8 +87,8 @@ const PlayerList = (props, context) => {
   );
 };
 
-const StatusUpdate = (props, context) => {
-  const { act, data } = useBackend(context);
+const StatusUpdate = (props) => {
+  const { act, data } = useBackend();
   const {
     co_flags,
     syn_flags,

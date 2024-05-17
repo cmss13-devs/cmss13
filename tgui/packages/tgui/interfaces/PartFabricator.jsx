@@ -13,8 +13,8 @@ export const PartFabricator = (props) => {
   );
 };
 
-const GeneralPanel = (props, context) => {
-  const { act, data } = useBackend(context);
+const GeneralPanel = (props) => {
+  const { act, data } = useBackend();
   const { points, omnisentrygun_price, Equipment, Ammo } = data;
   return (
     <div>

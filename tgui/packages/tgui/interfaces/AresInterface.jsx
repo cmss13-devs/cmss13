@@ -1645,8 +1645,8 @@ const Emergency = (props) => {
   );
 };
 
-const TechLogs = (props, context) => {
-  const { data, act } = useBackend(context);
+const TechLogs = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,

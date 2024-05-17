@@ -25,8 +25,8 @@ const PAGES = {
   maintenance_management: () => MaintManagement,
 };
 
-export const AresAdmin = (props, context) => {
-  const { data } = useBackend(context);
+export const AresAdmin = (props) => {
+  const { data } = useBackend();
   const { current_menu, sudo } = data;
   const PageComponent = PAGES[current_menu]();
 
@@ -48,8 +48,8 @@ export const AresAdmin = (props, context) => {
   );
 };
 
-const Login = (props, context) => {
-  const { act } = useBackend(context);
+const Login = (props) => {
+  const { act } = useBackend();
 
   return (
     <Flex
@@ -84,8 +84,8 @@ const Login = (props, context) => {
   );
 };
 
-const MainMenu = (props, context) => {
-  const { data, act } = useBackend(context);
+const MainMenu = (props) => {
+  const { data, act } = useBackend();
   const { logged_in, access_text, last_page, current_menu, sudo, admin_login } =
     data;
 
@@ -448,8 +448,8 @@ const MainMenu = (props, context) => {
   );
 };
 
-const AnnouncementLogs = (props, context) => {
-  const { data, act } = useBackend(context);
+const AnnouncementLogs = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -547,8 +547,8 @@ const AnnouncementLogs = (props, context) => {
   );
 };
 
-const BioscanLogs = (props, context) => {
-  const { data, act } = useBackend(context);
+const BioscanLogs = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -646,8 +646,8 @@ const BioscanLogs = (props, context) => {
   );
 };
 
-const BombardmentLogs = (props, context) => {
-  const { data, act } = useBackend(context);
+const BombardmentLogs = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -749,8 +749,8 @@ const BombardmentLogs = (props, context) => {
   );
 };
 
-const ApolloLog = (props, context) => {
-  const { data, act } = useBackend(context);
+const ApolloLog = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -815,8 +815,8 @@ const ApolloLog = (props, context) => {
   );
 };
 
-const AccessLogs = (props, context) => {
-  const { data, act } = useBackend(context);
+const AccessLogs = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -881,8 +881,8 @@ const AccessLogs = (props, context) => {
   );
 };
 
-const DeletionLogs = (props, context) => {
-  const { data, act } = useBackend(context);
+const DeletionLogs = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -977,8 +977,8 @@ const DeletionLogs = (props, context) => {
   );
 };
 
-const ARESTalk = (props, context) => {
-  const { data, act } = useBackend(context);
+const ARESTalk = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -1102,8 +1102,8 @@ const ARESTalk = (props, context) => {
   );
 };
 
-const DeletedTalks = (props, context) => {
-  const { data, act } = useBackend(context);
+const DeletedTalks = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -1197,8 +1197,8 @@ const DeletedTalks = (props, context) => {
   );
 };
 
-const ReadingTalks = (props, context) => {
-  const { data, act } = useBackend(context);
+const ReadingTalks = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -1262,8 +1262,8 @@ const ReadingTalks = (props, context) => {
   );
 };
 
-const Requisitions = (props, context) => {
-  const { data, act } = useBackend(context);
+const Requisitions = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -1359,8 +1359,8 @@ const Requisitions = (props, context) => {
   );
 };
 
-const FlightLogs = (props, context) => {
-  const { data, act } = useBackend(context);
+const FlightLogs = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -1458,8 +1458,8 @@ const FlightLogs = (props, context) => {
   );
 };
 
-const Security = (props, context) => {
-  const { data, act } = useBackend(context);
+const Security = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -1556,8 +1556,8 @@ const Security = (props, context) => {
   );
 };
 
-const Emergency = (props, context) => {
-  const { data, act } = useBackend(context);
+const Emergency = (props) => {
+  const { data, act } = useBackend();
   const { logged_in, access_text, last_page, current_menu, admin_login } = data;
 
   return (
@@ -1663,8 +1663,8 @@ const Emergency = (props, context) => {
   );
 };
 
-const TechLogs = (props, context) => {
-  const { data, act } = useBackend(context);
+const TechLogs = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -1861,8 +1861,8 @@ const CoreSec = (props) => {
 // Anything below this line is exclusive to the Admin Remote Interface.
 // -------------------------------------------------------------------- //
 
-const AdminAccessLogs = (props, context) => {
-  const { data, act } = useBackend(context);
+const AdminAccessLogs = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -1923,8 +1923,8 @@ const AdminAccessLogs = (props, context) => {
   );
 };
 
-const AccessManagement = (props, context) => {
-  const { data, act } = useBackend(context);
+const AccessManagement = (props) => {
+  const { data, act } = useBackend();
   const { last_page, current_menu, access_tickets, admin_login } = data;
 
   return (
@@ -2070,8 +2070,8 @@ const AccessManagement = (props, context) => {
   );
 };
 
-const MaintManagement = (props, context) => {
-  const { data, act } = useBackend(context);
+const MaintManagement = (props) => {
+  const { data, act } = useBackend();
   const { last_page, current_menu, maintenance_tickets, admin_login } = data;
 
   return (

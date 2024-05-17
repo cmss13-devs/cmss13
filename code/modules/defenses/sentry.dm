@@ -477,6 +477,9 @@ GLOBAL_LIST_INIT(landing_zone_sentryguns, list())
 	icon_state = "premade" //for the map editor only
 	faction_group = FACTION_LIST_MARINE
 	placed = 1
+	var/first_warning = 9 MINUTES
+	var/second_warning = 9 MINUTES + 30 SECONDS
+	var/third_warning = 9 MINUTES + 57 SECONDS
 
 /obj/structure/machinery/defenses/sentry/landing_zone/Initialize()
 	GLOB.landing_zone_sentryguns += src
@@ -487,7 +490,24 @@ GLOBAL_LIST_INIT(landing_zone_sentryguns, list())
 	. = ..()
 /obj/structure/machinery/defenses/sentry/landing_zone/proc/on_landing()
 	GLOB.landing_zone_sentryguns -= src
+	addtimer(CALLBACK(src,PROC_REF(time_left), 1), first_warning)
+	addtimer(CALLBACK(src,PROC_REF(time_left), 2), second_warning)
+	addtimer(CALLBACK(src,PROC_REF(time_left), 3), third_warning)
 	QDEL_IN(src, 10 MINUTES)
+
+/obj/structure/machinery/defenses/sentry/landing_zone/proc/time_left(counter)
+	var/volume = 15
+	switch(counter)
+		if(1)
+			volume = 15
+			visible_message(SPAN_WARNING("\The [name] beeps steadily as its battery gets low."))
+		if(2)
+			volume = 20
+			visible_message(SPAN_WARNING("\The [name] beeps steadily as its battery gets criticly low."))
+		if(3)
+			visible_message(SPAN_WARNING("\The [name] beeps steadily as its battery goes out! It deconstructs itself!"))
+			volume = 25
+	playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', volume, 1)
 
 /obj/structure/machinery/defenses/sentry/premade
 	name = "UA-577 Gauss Turret"

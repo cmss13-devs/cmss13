@@ -505,7 +505,8 @@ GLOBAL_LIST_INIT(landing_zone_sentryguns, list())
 			visible_message(SPAN_WARNING("\The [name] beeps steadily as its battery gets criticly low."))
 		if(3)
 			playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
-			visible_message(SPAN_WARNING("\The [name] deconstructs itself as its battery goes out!))
+			visible_message(SPAN_WARNING("\The [name] deconstructs itself as its battery goes out!"))
+
 
 /obj/structure/machinery/defenses/sentry/premade
 	name = "UA-577 Gauss Turret"

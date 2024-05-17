@@ -110,7 +110,7 @@
 		if(new_human.client.prefs.playtime_perks)
 			if(paygrade_high && playtime > JOB_PLAYTIME_TIER_4)
 				return paygrade_high
-			if(paygrade_mid && playtime < JOB_PLAYTIME_TIER_3)
+			if(paygrade_mid && playtime > JOB_PLAYTIME_TIER_3)
 				return paygrade_mid
 			else
 				return paygrade_base

@@ -109,12 +109,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"aev" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfship"
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/eastbeach)
 "afg" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 8
@@ -64568,7 +64562,7 @@ tsC
 cFw
 pll
 eHs
-aev
+cFw
 nwq
 bGU
 pmM

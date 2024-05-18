@@ -5,7 +5,6 @@
 		{ "type": "map_insert", "landmark": "crashlanding-eva",   "path": "standalone/crashlanding-eva.dmm", "when": { "lvevent": "none" } }
 	]},
 	{ "type": "map_insert", "chance": 0.50, "landmark": "lambda-graveyard", "path": "standalone/lambda-graveyard.dmm" },
-    { "type": "map_insert", "chance": 0.40, "landmark": "admin_pmc", "path": "sprinkles/40.admin_pmc", "when": { "lvevent": "none" } },
 	{ "type": "pick",     "chance": 0.50, "choices": [
 		{ "type": "map_insert", "landmark": "lambda-cave-mushroom", "path": "standalone/lambda-cave_mushroom.dmm" },
 		{ "type": "map_insert", "landmark": "lambda-cave-extratunnel",   "path": "standalone/lambda-cave_extratunnel.dmm" }

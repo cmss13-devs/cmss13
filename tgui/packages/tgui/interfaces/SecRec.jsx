@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useBackend } from '../backend';
 import { Box, Button, Section, Tabs, Flex, Icon, Stack, Dropdown, Input } from '../components';
 import { Window } from '../layouts';
+
 export const SecRec = (props) => {
   const { act, data } = useBackend();
   const { authenticated, selected_target_name } = data;
@@ -50,7 +51,7 @@ export const SecRec = (props) => {
     </Window>
   );
 };
-export const CrimeHist = (props) => {
+const CrimeHist = (props) => {
   const { act, data } = useBackend();
   const [selectedTab, setSelectedTab] = useState(1);
   const { incident, notes } = data;
@@ -78,7 +79,7 @@ export const CrimeHist = (props) => {
   );
 };
 
-export const GeneralNotes = ({ act, notes }) => (
+const GeneralNotes = ({ act, notes }) => (
   <Section>
     <Stack vertical align="start">
       <Stack.Item>{notes.message}</Stack.Item>
@@ -107,7 +108,7 @@ export const GeneralNotes = ({ act, notes }) => (
   </Section>
 );
 
-export const IncidentReport = ({ incident }) => (
+const IncidentReport = ({ incident }) => (
   <Section>
     <Stack vertical>
       <Stack.Item>Incident Reports:</Stack.Item>
@@ -120,7 +121,7 @@ export const IncidentReport = ({ incident }) => (
   </Section>
 );
 
-export const CrewManifest = ({ searchQuery, setSearchQuery }) => {
+const CrewManifest = ({ searchQuery, setSearchQuery }) => {
   const { act, data } = useBackend();
   const { human_mob_list, selected_target_name, authenticated, id_name } = data;
 
@@ -182,7 +183,7 @@ export const CrewManifest = ({ searchQuery, setSearchQuery }) => {
   );
 };
 
-export const CrimeStat = (props) => {
+const CrimeStat = (props) => {
   const { act, data } = useBackend();
   const { general_record, crime_stat } = data;
 

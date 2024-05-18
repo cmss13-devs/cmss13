@@ -29,7 +29,7 @@ export const MedRec = (props) => {
   );
 };
 
-export const MedicalRecord = (props) => {
+const MedicalRecord = (props) => {
   const { act, data } = useBackend();
   const [selectedTab, setSelectedTab] = useState(1);
   const { authenticated, has_id } = data;
@@ -183,7 +183,7 @@ const AutopsyReport = (props) => {
   );
 };
 
-export const HealthStatus = (props) => {
+const HealthStatus = (props) => {
   const { act, data } = useBackend();
   const { authenticated, has_id, id_name, general_record, health } = data;
 

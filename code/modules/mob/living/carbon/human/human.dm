@@ -1272,10 +1272,18 @@
 
 	if(!H || H.w_uniform?.sensor_mode != SENSOR_MODE_LOCATION)
 		return
-	if(H.z != src.z || get_dist(src,H) < 1 || src == H)
+
+	var/atom/tracking_atom = H
+	if(tracking_atom.z != src.z && SSinterior.in_interior(tracking_atom))
+		var/datum/interior/interior = SSinterior.get_interior_by_coords(tracking_atom.x, tracking_atom.y, tracking_atom.z)
+		var/atom/exterior = interior.exterior
+		if(exterior)
+			tracking_atom = exterior
+
+	if(tracking_atom.z != src.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
 		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
 	else
-		hud_used.locate_leader.setDir(Get_Compass_Dir(src,H))
+		hud_used.locate_leader.setDir(Get_Compass_Dir(src, tracking_atom))
 		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
 
 /mob/living/carbon/proc/locate_nearest_nuke()

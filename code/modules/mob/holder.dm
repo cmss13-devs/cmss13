@@ -49,7 +49,8 @@
 
 	var/obj/item/holder/mob_holder = new holder_type(loc)
 	src.forceMove(mob_holder)
-	mob_holder.name = loc.name
+	mob_holder.name = src.name
+	mob_holder.desc = src.desc
 	mob_holder.attack_hand(grabber)
 
 	to_chat(grabber, "You scoop up [src].")

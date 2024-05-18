@@ -15,7 +15,7 @@
 	var/list/access = list()
 	var/assignment
 	var/rank
-	var/list/paygrades = list()
+	var/list/paygrades = list(PAY_SHORT_CIV)
 	var/role_comm_title
 	var/minimum_age
 	var/faction = FACTION_NEUTRAL
@@ -379,7 +379,7 @@
 	new_human.equip_to_slot_or_del(new beltpath, WEAR_WAIST)
 
 
-/datum/equipment_preset/proc/spawn_rebel_weapon(atom/M, sidearm = JOB_PLAYTIME_TIER_1, ammo_amount = 12)
+/datum/equipment_preset/proc/spawn_rebel_weapon(atom/M, sidearm = 0, ammo_amount = 12)
 	if(!M) return
 
 	var/list/rebel_firearms = list(
@@ -554,7 +554,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	new_human.equip_to_slot_or_del(new helmetpath, WEAR_HEAD)
 
 
-/datum/equipment_preset/proc/spawn_merc_weapon(atom/M, sidearm = JOB_PLAYTIME_TIER_1, ammo_amount = 12)
+/datum/equipment_preset/proc/spawn_merc_weapon(atom/M, sidearm = 0, ammo_amount = 12)
 	if(!M) return
 
 	var/list/merc_sidearms = list(

@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 	// Pick a marine
 	var/list/possible_recipients = list()
 	var/list/recipient_ranks = list()
-	for(var/record_name in GLOB.data_core.general)
+	for(var/record_name as anything in GLOB.data_core.general)
 		var/datum/data/record/record = GLOB.data_core.general[record_name]
 		var/recipient_name = record.fields[MOB_NAME]
 		recipient_ranks[recipient_name] = record.fields[MOB_REAL_RANK]
@@ -164,7 +164,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 
 /proc/give_medal_award_prefilled(medal_location, mob/giving_mob, chosen_recipient, recipient_rank, recipient_ckey, reason, _medal_type)
 	var/list/recipient_ranks = list()
-	for(var/record_name in GLOB.data_core.general)
+	for(var/record_name as anything in GLOB.data_core.general)
 		var/datum/data/record/record = GLOB.data_core.general[record_name]
 		var/recipient_name = record.fields[MOB_NAME]
 		recipient_ranks[recipient_name] = record.fields[MOB_SHOWN_RANK]
@@ -475,7 +475,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	// Pick a marine
 	var/list/possible_recipients = list()
 	var/list/recipient_ranks = list()
-	for(var/record_name in GLOB.data_core.general)
+	for(var/record_name as anything in GLOB.data_core.general)
 		var/datum/data/record/record = GLOB.data_core.general[record_name]
 		var/recipient_name = record.fields["name"]
 		if(recipient_name == recommendation_giver.real_name)

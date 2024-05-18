@@ -2991,6 +2991,11 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
 	pixel_y = 28
 	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+	dir = 5;
+	pixel_y = 32;
+	pixel_x = 16
+	},
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
 	},
@@ -44489,13 +44494,13 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2{
-	dir = 8;
-	pixel_y = 34
-	},
 /obj/item/tool/warning_cone{
 	pixel_x = -21;
 	pixel_y = 3
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2{
+	dir = 6;
+	pixel_y = 34
 	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
@@ -48918,6 +48923,10 @@
 	dir = 1
 	},
 /turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
+"hYh" = (
+/obj/structure/sign/poster/propaganda,
+/turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
 "hYn" = (
 /obj/structure/sign/nosmoking_1,
@@ -56367,13 +56376,6 @@
 	},
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
-	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
-	pixel_y = 34;
-	layer = 8;
-	level = 8;
-	dir = 8;
-	pixel_x = -15
 	},
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
@@ -88751,10 +88753,9 @@
 	pixel_y = -2
 	},
 /obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
-	pixel_y = 34;
-	layer = 8;
-	level = 8;
-	dir = 8
+	dir = 9;
+	pixel_y = 32;
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
@@ -155052,7 +155053,7 @@ fIf
 dpy
 rfq
 txU
-dpy
+auk
 fIf
 fIf
 rfq
@@ -196935,7 +196936,7 @@ pom
 jsV
 hmO
 pft
-pft
+hYh
 oze
 idd
 xZv

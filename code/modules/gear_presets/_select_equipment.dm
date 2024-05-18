@@ -15,14 +15,7 @@
 	var/list/access = list()
 	var/assignment
 	var/rank
-	/// Default Paygrade
-	var/paygrade_base
-	/// Paygrade for having less than 10 hours in a role. Ignores playtime perk prefs.
-	var/paygrade_low
-	/// Paygrade for hitting 70 hours in a role. As of May 2024 only used for Corporate Liaison & Marine Raiders.
-	var/paygrade_mid
-	/// Paygrade for hitting 175 hours in a role.
-	var/paygrade_high
+	var/list/paygrades = list()
 	var/role_comm_title
 	var/minimum_age
 	var/faction = FACTION_NEUTRAL
@@ -102,19 +95,24 @@
 	if(minimum_age && new_human.age < minimum_age)
 		new_human.age = minimum_age
 
-/datum/equipment_preset/proc/load_rank(mob/living/carbon/human/new_human, client/mob_client)
-	if(mob_client)
-		var/playtime = get_job_playtime(mob_client, rank)
-		if(paygrade_low && playtime < JOB_PLAYTIME_TIER_1)
-			return paygrade_low
-		if(new_human.client.prefs.playtime_perks)
-			if(paygrade_high && playtime > JOB_PLAYTIME_TIER_4)
-				return paygrade_high
-			if(paygrade_mid && playtime > JOB_PLAYTIME_TIER_3)
-				return paygrade_mid
-			else
-				return paygrade_base
-	return paygrade_base
+/datum/equipment_preset/proc/load_rank(mob/living/carbon/human/new_human, client/mob_client)//Beagle-Code
+	if(paygrades.len == 1)
+		return paygrades[1]
+	var/playtime
+	if(!mob_client)
+		playtime = JOB_PLAYTIME_TIER_1
+	else
+		playtime = get_job_playtime(mob_client, rank)
+	var/final_paygrade
+	for(var/current_paygrade as anything in paygrades)
+		var/required_time = paygrades[current_paygrade]
+		if(required_time - playtime > 0)
+			break
+		final_paygrade = current_paygrade
+	if(!final_paygrade)
+		. = "???"
+		CRASH("[key_name(new_human)] spawned with no valid paygrade.")
+	return final_paygrade
 
 /datum/equipment_preset/proc/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	return
@@ -203,7 +201,7 @@
 				new_human.equip_to_slot_or_del(equipping_gear, WEAR_IN_BACK)
 
 	//Gives ranks to the ranked
-	var/current_rank = paygrade_base
+	var/current_rank = paygrades[1]
 	var/obj/item/card/id/I = new_human.get_idcard()
 	if(I)
 		current_rank = I.paygrade
@@ -381,7 +379,7 @@
 	new_human.equip_to_slot_or_del(new beltpath, WEAR_WAIST)
 
 
-/datum/equipment_preset/proc/spawn_rebel_weapon(atom/M, sidearm = 0, ammo_amount = 12)
+/datum/equipment_preset/proc/spawn_rebel_weapon(atom/M, sidearm = JOB_PLAYTIME_TIER_1, ammo_amount = 12)
 	if(!M) return
 
 	var/list/rebel_firearms = list(
@@ -556,7 +554,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	new_human.equip_to_slot_or_del(new helmetpath, WEAR_HEAD)
 
 
-/datum/equipment_preset/proc/spawn_merc_weapon(atom/M, sidearm = 0, ammo_amount = 12)
+/datum/equipment_preset/proc/spawn_merc_weapon(atom/M, sidearm = JOB_PLAYTIME_TIER_1, ammo_amount = 12)
 	if(!M) return
 
 	var/list/merc_sidearms = list(
@@ -651,7 +649,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		spawn_weapon(gunpath, ammopath, M, 0, ammo_amount)
 
 
-/datum/equipment_preset/proc/spawn_weapon(gunpath, ammopath, atom/M, sidearm = 0, ammo_amount = 12)
+/datum/equipment_preset/proc/spawn_weapon(gunpath, ammopath, atom/M, sidearm = JOB_PLAYTIME_TIER_1, ammo_amount = 12)
 
 	var/atom/spawnloc = M
 	var/obj/item/weapon/gun/gun

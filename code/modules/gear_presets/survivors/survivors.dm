@@ -5,7 +5,7 @@
 
 	skills = /datum/skills/civilian/survivor
 	languages = list(LANGUAGE_ENGLISH)
-	paygrade_base = PAY_SHORT_CIV
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_1)
 	idtype = /obj/item/card/id/lanyard
 	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_SURVIVOR)
@@ -187,7 +187,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 /datum/equipment_preset/survivor/colonial_marshal
 	name = "Survivor - Colonial Marshal Deputy"
 	assignment = "CMB Deputy"
-	paygrade_base = PAY_SHORT_CMBD
+	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_1)
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
@@ -288,10 +288,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade_low = PAY_SHORT_WYC2
-	paygrade_base = PAY_SHORT_WYC3
-	paygrade_mid = PAY_SHORT_WYC4
-	paygrade_high = PAY_SHORT_WYC5
+	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_1, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
@@ -397,7 +394,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade_base = PAY_SHORT_ICCL
+	paygrades = list(PAY_SHORT_ICCL = JOB_PLAYTIME_TIER_1)
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
@@ -431,7 +428,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "USCM Survivor"
 	skills = /datum/skills/civilian/survivor/marshal
 	idtype = /obj/item/card/id/dogtag
-	paygrade_base = PAY_SHORT_ME2
+	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 

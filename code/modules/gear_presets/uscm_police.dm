@@ -27,9 +27,7 @@
 	)
 	assignment = JOB_POLICE
 	rank = JOB_POLICE
-	paygrade_low = PAY_SHORT_ME4
-	paygrade_base = PAY_SHORT_ME5
-	paygrade_high = PAY_SHORT_ME6
+	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "MP"
 	skills = /datum/skills/MP
 
@@ -87,9 +85,7 @@
 	)
 	assignment = JOB_WARDEN
 	rank = JOB_WARDEN
-	paygrade_low = PAY_SHORT_ME5
-	paygrade_base = PAY_SHORT_ME6
-	paygrade_high = PAY_SHORT_ME7
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "MW"
 	skills = /datum/skills/MW
 
@@ -150,8 +146,7 @@
 	)
 	assignment = JOB_CHIEF_POLICE
 	rank = JOB_CHIEF_POLICE
-	paygrade_low = PAY_SHORT_MO1
-	paygrade_base = PAY_SHORT_MO2
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
 
@@ -195,7 +190,7 @@
 	access = list()
 	assignment = JOB_RIOT
 	rank = JOB_RIOT
-	paygrade_base = PAY_SHORT_ME5
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "RMP"
 	skills = /datum/skills/CMP
 
@@ -243,6 +238,6 @@
 
 	assignment = JOB_RIOT_CHIEF
 	rank = JOB_RIOT_CHIEF
-	paygrade_base = PAY_SHORT_MO1
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "CRMP"
 	skills = /datum/skills/CMP

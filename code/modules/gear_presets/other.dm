@@ -60,7 +60,7 @@
 
 /datum/equipment_preset/other/freelancer/standard
 	name = "Freelancer (Standard)"
-	paygrade_base = PAY_SHORT_FL_S
+	paygrades = list(PAY_SHORT_FL_S = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/freelancer
@@ -132,7 +132,7 @@
 
 /datum/equipment_preset/other/freelancer/medic
 	name = "Freelancer (Medic)"
-	paygrade_base = PAY_SHORT_FL_M
+	paygrades = list(PAY_SHORT_FL_M = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Freelancer Medic"
 	skills = /datum/skills/freelancer/combat_medic
@@ -203,7 +203,7 @@
 
 /datum/equipment_preset/other/freelancer/leader
 	name = "Freelancer (Leader)"
-	paygrade_base = PAY_SHORT_FL_WL
+	paygrades = list(PAY_SHORT_FL_WL = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Freelancer Warlord"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_JAPANESE)
@@ -269,7 +269,7 @@
 
 /datum/equipment_preset/other/elite_merc/standard
 	name = "Elite Mercenary (Standard Miner)"
-	paygrade_base = PAY_SHORT_EFL_S
+	paygrades = list(PAY_SHORT_EFL_S = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -306,7 +306,7 @@
 
 /datum/equipment_preset/other/elite_merc/heavy
 	name = "Elite Mercenary (Heavy)"
-	paygrade_base = PAY_SHORT_EFL_H
+	paygrades = list(PAY_SHORT_EFL_H = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -346,7 +346,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/other/elite_merc/engineer
 	name = "Elite Mercenary (Engineer)"
-	paygrade_base = PAY_SHORT_EFL_E
+	paygrades = list(PAY_SHORT_EFL_E = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/data
@@ -400,7 +400,7 @@
 
 /datum/equipment_preset/other/elite_merc/medic
 	name = "Elite Mercenary (Medic)"
-	paygrade_base = PAY_SHORT_EFL_M
+	paygrades = list(PAY_SHORT_EFL_M = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -446,7 +446,7 @@
 
 /datum/equipment_preset/other/elite_merc/leader
 	name = "Elite Mercenary (Leader)"
-	paygrade_base = PAY_SHORT_EFL_TL
+	paygrades = list(PAY_SHORT_EFL_TL = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -883,7 +883,7 @@
 	idtype = /obj/item/card/id/dogtag
 	assignment = JOB_CREWMAN
 	rank = JOB_CREWMAN
-	paygrade_base = PAY_SHORT_ME4
+	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "CRMN"
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
@@ -923,7 +923,7 @@
 	idtype = /obj/item/card/id/dogtag
 	assignment = "Crewman Trainee"
 	rank = "Crewman Trainee"
-	paygrade_base = PAY_SHORT_ME3
+	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "CRTR"
 	minimum_age = 25
 	skills = /datum/skills/tank_crew

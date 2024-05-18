@@ -14,7 +14,7 @@
 
 /datum/equipment_preset/survivor/cmb/standard
 	name = "Survivor - Colonial Marshal Deputy(Riot Response)"
-	paygrade_base = PAY_SHORT_CMBD
+	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "CMB DEP"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Deputy"
@@ -86,7 +86,7 @@
 // cmb synth
 /datum/equipment_preset/synth/survivor/cmb/synth
 	name = "Survivor - Synthetic - CMB Investigative Synthetic(Riot Response)"
-	paygrade_base = PAY_SHORT_CMBS
+	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_1)
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -147,7 +147,7 @@
 
 /datum/equipment_preset/survivor/cmb/ua
 	name = "Survivor - United Americas Riot Officer(Riot Response)"
-	paygrade_base = PAY_SHORT_CPO
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "UA RCP"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "United Americas Police Officer"
@@ -226,7 +226,7 @@
 // ua synth
 /datum/equipment_preset/synth/survivor/cmb/ua_synth
 	name = "Survivor - Synthetic - UA Police Synthetic(Riot Response)"
-	paygrade_base = PAY_SHORT_CMBS
+	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "UA Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "UA Police Synthetic"

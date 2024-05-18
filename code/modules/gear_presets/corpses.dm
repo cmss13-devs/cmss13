@@ -205,7 +205,7 @@
 /datum/equipment_preset/corpse/security/cmb
 	name = "Corpse - Colonial Marshal Deputy"
 	rank = JOB_CMB
-	paygrade_base = PAY_SHORT_CMBD
+	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_1)
 	idtype = /obj/item/card/id/deputy
 	xenovictim = TRUE
 	access = list(
@@ -240,7 +240,7 @@
 	assignment = JOB_EXECUTIVE
 	rank = JOB_EXECUTIVE
 	faction_group = FACTION_LIST_WY
-	paygrade_base = PAY_SHORT_WYC3
+	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_1)
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	xenovictim = TRUE
 	access = list(
@@ -316,7 +316,7 @@
 	assignment = "Colonial Division Manager"
 	rank = JOB_DIVISION_MANAGER
 	faction_group = FACTION_LIST_WY
-	paygrade_base = PAY_SHORT_WYC8
+	paygrades = list(PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_1)
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,
@@ -352,7 +352,7 @@
 	assignment = "Colonial Administrator"
 	rank = JOB_DIRECTOR
 	faction_group = FACTION_LIST_WY
-	paygrade_base = PAY_SHORT_WYC10
+	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_1)
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -533,7 +533,7 @@
 	name = "Corpse - Corporate Supervisor"
 	assignment = "Colony Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade_base = PAY_SHORT_WYC6
+	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_1)
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = FACTION_LIST_WY
@@ -614,7 +614,7 @@
 	name = "Corpse - Union of Progressive Peoples Soldier"
 	assignment = JOB_UPP
 	idtype = /obj/item/card/id/dogtag
-	paygrade_base = PAY_SHORT_UE2
+	paygrades = list(PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 	rank = JOB_UPP
 	faction = FACTION_UPP
 
@@ -651,7 +651,7 @@
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
 	rank = JOB_PMC_STANDARD
-	paygrade_base = PAY_SHORT_PMC_OP
+	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_1)
 	idtype = /obj/item/card/id/pmc
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -695,7 +695,7 @@
 	languages = list(LANGUAGE_ENGLISH)
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
-	paygrade_base = PAY_SHORT_CPO
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_1)
 
 /datum/equipment_preset/corpse/pmc/goon/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -720,7 +720,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON_LEAD
 	rank = JOB_WY_GOON_LEAD
-	paygrade_base = PAY_SHORT_CSPO
+	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_1)
 
 /datum/equipment_preset/corpse/pmc/goon/lead/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -746,7 +746,7 @@
 
 /datum/equipment_preset/corpse/freelancer
 	name = "Corpse - Freelancer"
-	paygrade_base = PAY_SHORT_FL_S
+	paygrades = list(PAY_SHORT_FL_S = JOB_PLAYTIME_TIER_1)
 	rank = FACTION_FREELANCER
 	idtype = /obj/item/card/id/data
 	faction = FACTION_FREELANCER
@@ -962,7 +962,7 @@
 	name = "Corpse - USCM Reconnaissance Spotter"
 	assignment = "Reconnaissance Spotter"
 	xenovictim = FALSE
-	paygrade_base = PAY_SHORT_ME5
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_1)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)

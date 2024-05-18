@@ -61,7 +61,7 @@
 
 	assignment = JOB_PMC_STANDARD
 	rank = JOB_PMC_STANDARD
-	paygrade_base = PAY_SHORT_PMC_OP
+	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_1)
 	skills = /datum/skills/pmc
 
 /datum/equipment_preset/pmc/pmc_standard/load_gear(mob/living/carbon/human/new_human)
@@ -203,7 +203,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_DETAINER
 	rank = JOB_PMC_DETAINER
-	paygrade_base = PAY_SHORT_PMC_EN
+	paygrades = list(PAY_SHORT_PMC_EN = JOB_PLAYTIME_TIER_1)
 	skills = /datum/skills/pmc
 
 /datum/equipment_preset/pmc/pmc_detainer/load_gear(mob/living/carbon/human/new_human)
@@ -332,7 +332,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_MEDIC
 	rank = JOB_PMC_MEDIC
-	paygrade_base = PAY_SHORT_PMC_MS
+	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_1)
 	skills = /datum/skills/pmc/medic
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
 
@@ -507,7 +507,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_INVESTIGATOR
 	rank = JOB_PMC_INVESTIGATOR
-	paygrade_base = PAY_SHORT_PMC_MS //Fixed from PMC2 to PMC-MS to display properly.
+	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_1)
 	skills = /datum/skills/pmc/medic/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
 
@@ -686,7 +686,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_LEADER
 	rank = JOB_PMC_LEADER
-	paygrade_base = PAY_SHORT_PMC_TL
+	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
@@ -842,7 +842,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_LEAD_INVEST
 	rank = JOB_PMC_LEAD_INVEST
-	paygrade_base = PAY_SHORT_PMC_TL
+	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
@@ -985,7 +985,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_GUNNER
 	rank = JOB_PMC_GUNNER
-	paygrade_base = PAY_SHORT_PMC_SS
+	paygrades = list(PAY_SHORT_PMC_SS = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "SG"
 	skills = /datum/skills/pmc/smartgunner
 
@@ -1090,7 +1090,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_SNIPER
 	rank = JOB_PMC_SNIPER
-	paygrade_base = PAY_SHORT_PMC_WS
+	paygrades = list(PAY_SHORT_PMC_WS = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "Spc"
 	skills = /datum/skills/pmc/specialist
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
@@ -1212,7 +1212,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_CREWMAN
 	rank = JOB_PMC_CREWMAN
-	paygrade_base = PAY_SHORT_PMC_VS
+	paygrades = list(PAY_SHORT_PMC_VS = JOB_PLAYTIME_TIER_1)
 	skills = /datum/skills/pmc/tank_crew
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
 
@@ -1340,7 +1340,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_XENO_HANDLER
 	rank = JOB_PMC_XENO_HANDLER
-	paygrade_base = PAY_SHORT_PMC_XS
+	paygrades = list(PAY_SHORT_PMC_XS = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "XH"
 	skills = /datum/skills/pmc/xeno_handler
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_XENOMORPH)
@@ -1486,7 +1486,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_DOCTOR
 	rank = JOB_PMC_DOCTOR
-	paygrade_base = PAY_SHORT_PMC_DOC
+	paygrades = list(PAY_SHORT_PMC_DOC = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "SGN"
 	skills = /datum/skills/pmc/doctor
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
@@ -1660,7 +1660,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_ENGINEER
 	rank = JOB_PMC_ENGINEER
-	paygrade_base = PAY_SHORT_PMC_TEC
+	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "TEC"
 	skills = /datum/skills/pmc/engineer
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
@@ -1809,7 +1809,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_DIRECTOR
 	rank = JOB_PMC_DIRECTOR
-	paygrade_base = PAY_SHORT_PMC_DIR
+	paygrades = list(PAY_SHORT_PMC_DIR = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "DIR"
 	skills = /datum/skills/pmc/director
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
@@ -1839,18 +1839,18 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/synth
-		name = "Weyland-Yutani PMC (Support Synthetic)"
-		flags = EQUIPMENT_PRESET_EXTRA
+	name = "Weyland-Yutani PMC (Support Synthetic)"
+	flags = EQUIPMENT_PRESET_EXTRA
 
-		languages = ALL_SYNTH_LANGUAGES
+	languages = ALL_SYNTH_LANGUAGES
 
-		skills = /datum/skills/synthetic
-		idtype = /obj/item/card/id/pmc
-		assignment = JOB_PMC_SYNTH
-		rank = JOB_PMC_SYNTH
-		paygrade_base = PAY_SHORT_SYN
-		role_comm_title = "WY Syn"
-		headset_type = /obj/item/device/radio/headset/distress/pmc/command
+	skills = /datum/skills/synthetic
+	idtype = /obj/item/card/id/pmc
+	assignment = JOB_PMC_SYNTH
+	rank = JOB_PMC_SYNTH
+	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_1)
+	role_comm_title = "WY Syn"
+	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
 
 /datum/equipment_preset/pmc/synth/load_name(mob/living/carbon/human/new_human, randomise)

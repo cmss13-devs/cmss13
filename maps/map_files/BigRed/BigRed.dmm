@@ -35475,6 +35475,14 @@
 	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/e)
+"pkW" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfship"
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_13"
+	},
+/area/bigredv2/outside/c)
 "plx" = (
 /obj/structure/machinery/power/apc{
 	dir = 4
@@ -59563,7 +59571,7 @@ apD
 aHD
 aBR
 aBR
-aLd
+pkW
 bhi
 bhi
 bhi

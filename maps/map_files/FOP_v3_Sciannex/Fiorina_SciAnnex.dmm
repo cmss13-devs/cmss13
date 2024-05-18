@@ -5598,6 +5598,12 @@
 	icon_state = "plate"
 	},
 /area/fiorina/tumor/aux_engi)
+"duE" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfship"
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
 "duF" = (
 /obj/structure/window/framed/prison/reinforced,
 /turf/open/floor/plating/prison,
@@ -68499,7 +68505,7 @@ cME
 eLu
 kqC
 dHD
-upY
+duE
 skj
 uGY
 ceC

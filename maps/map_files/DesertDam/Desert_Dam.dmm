@@ -40287,6 +40287,12 @@
 	icon_state = "darkbrown2"
 	},
 /area/desert_dam/building/mining/workshop_foyer)
+"cyy" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfship"
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
 "cyB" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
@@ -101405,7 +101411,7 @@ dTs
 dTs
 dTs
 dTs
-dTs
+cyy
 dTs
 dTs
 dTs

@@ -1,0 +1,9 @@
+[
+    {
+		"type": "map_insert",
+		"landmark": "clfship",
+		"chance": 1.0,
+		"path": "standalone/clfship.dmm",
+		"when": { "lvevent": "clfship" }
+	}
+]

@@ -6,5 +6,12 @@
     "chance": 0.5,
     "path": "standalone/riot_in_progress.dmm",
     "when": { "riot_in_progress": "true" }
+},
+{
+    "type": "map_insert",
+    "landmark": "clfship",
+    "chance": 1.0,
+    "path": "standalone/clfship.dmm",
+    "when": { "lvevent": "clfship" }
 }
 ]

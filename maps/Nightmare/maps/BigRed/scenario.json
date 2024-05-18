@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "type": "pick", "name": "Big Red Global Event",
+        "choices": [
+            { "weight": 9, "type": "def", "values": { "lvevent": "none"       } },
+            { "weight": 1, "type": "def", "values": { "lvevent": "fallen_ship" } }
+        ]
+    }
+
+]

@@ -1,10 +1,11 @@
 [
 	{ "type": "map_sprinkle", "path": "sprinkles/" },
 	{ "type": "pick",     "chance": 0.40, "choices": [
-		{ "type": "map_insert", "landmark": "crashlanding-offices", "path": "standalone/crashlanding-offices.dmm" },
-		{ "type": "map_insert", "landmark": "crashlanding-eva",   "path": "standalone/crashlanding-eva.dmm" }
+		{ "type": "map_insert", "landmark": "crashlanding-offices", "path": "standalone/crashlanding-offices.dmm", "when": { "lvevent": "none" } },
+		{ "type": "map_insert", "landmark": "crashlanding-eva",   "path": "standalone/crashlanding-eva.dmm", "when": { "lvevent": "none" } }
 	]},
 	{ "type": "map_insert", "chance": 0.50, "landmark": "lambda-graveyard", "path": "standalone/lambda-graveyard.dmm" },
+    { "type": "map_insert", "chance": 0.40, "landmark": "admin_pmc", "path": "sprinkles/40.admin_pmc", "when": { "lvevent": "none" } },
 	{ "type": "pick",     "chance": 0.50, "choices": [
 		{ "type": "map_insert", "landmark": "lambda-cave-mushroom", "path": "standalone/lambda-cave_mushroom.dmm" },
 		{ "type": "map_insert", "landmark": "lambda-cave-extratunnel",   "path": "standalone/lambda-cave_extratunnel.dmm" }
@@ -12,5 +13,12 @@
 	{ "type": "pick",     "chance": 0.50, "choices": [
 		{ "weight": 3, "type": "map_insert", "landmark": "medbay-passage", "path": "standalone/medbay-passage.dmm" },
 		{ "weight": 1, "type": "map_insert", "landmark": "medbay-v3",   "path": "standalone/medbay-v3.dmm" }
-	]}
+	]},
+    {
+		"type": "map_insert",
+		"landmark": "clfship",
+		"chance": 1.0,
+		"path": "standalone/clfship.dmm",
+		"when": { "lvevent": "fallen_ship" }
+	}
 ]

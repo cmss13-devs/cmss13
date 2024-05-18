@@ -82,7 +82,7 @@
 
 /obj/item/device/helmet_visor/medical/advanced
 	name = "advanced medical optic"
-	helmet_overlay = "med_sight_left"
+	helmet_overlay = "med_sight_right"
 
 /obj/item/device/helmet_visor/medical/advanced/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	. = ..()

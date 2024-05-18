@@ -126,6 +126,8 @@
 /datum/equipment_preset/proc/load_id(mob/living/carbon/human/new_human, client/mob_client)
 	if(!idtype)
 		return
+	if(!mob_client)
+		mob_client = new_human.client
 	var/obj/item/card/id/ID = new idtype()
 	ID.name = "[new_human.real_name]'s ID Card"
 	if(assignment)
@@ -139,7 +141,7 @@
 	ID.registered_ref = WEAKREF(new_human)
 	ID.registered_gid = new_human.gid
 	ID.blood_type = new_human.blood_type
-	ID.paygrade = load_rank(new_human) || ID.paygrade
+	ID.paygrade = load_rank(new_human, mob_client) || ID.paygrade
 	ID.uniform_sets = uniform_sets
 	new_human.equip_to_slot_or_del(ID, WEAR_ID)
 	new_human.faction = faction

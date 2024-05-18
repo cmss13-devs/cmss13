@@ -850,12 +850,13 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "DUMMY"
 	rank = "DUMMY"
+	paygrades = list(PAY_SHORT_CCMO)
 	idtype = /obj/item/card/id/dogtag
 	uses_special_name = TRUE
 
 /datum/equipment_preset/other/professor_dummy/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
-	new_human.real_name = "Professor DUMMY the Medical Mannequin"
+	new_human.real_name = "Alex the Medical Mannequin"
 	new_human.name = new_human.real_name
 	new_human.age = rand(1,5)
 	var/datum/preferences/A = new

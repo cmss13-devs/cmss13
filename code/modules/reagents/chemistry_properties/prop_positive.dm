@@ -1004,7 +1004,7 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_METABOLITE
 	max_level = 1
-	value = 2
+	value = 1
 
 /datum/chem_property/positive/regulating/reset_reagent()
 	holder.flags = initial(holder.flags)

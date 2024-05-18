@@ -19025,6 +19025,12 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/aerodrome)
+"okt" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfship"
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/cp_colony_grounds)
 "okz" = (
 /obj/effect/decal/cleanable/blood{
 	layer = 3
@@ -50928,7 +50934,7 @@ eOM
 sYu
 sYu
 sYu
-sYu
+okt
 sYu
 lwo
 lwo

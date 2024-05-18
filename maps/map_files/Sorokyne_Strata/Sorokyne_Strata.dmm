@@ -19522,6 +19522,9 @@
 /obj/structure/platform/strata{
 	dir = 1
 	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfship"
+	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/mountain)
 "blv" = (

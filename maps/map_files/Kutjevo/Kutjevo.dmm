@@ -1996,6 +1996,12 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
+"cMl" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfship"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/oob/dev_room)
 "cMv" = (
 /obj/effect/decal/kutjevo_decals/catwalk,
 /turf/open/floor/greengrid,
@@ -35321,7 +35327,7 @@ dxF
 dxF
 dxF
 dxF
-dxF
+cMl
 dxF
 dxF
 dxF

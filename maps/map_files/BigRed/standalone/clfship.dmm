@@ -69,6 +69,12 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/c)
+"ct" = (
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
 "cz" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood,
@@ -323,6 +329,11 @@
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
+"gz" = (
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/template_noop)
 "gE" = (
 /obj/structure/largecrate/supply/ammo/m56d,
 /turf/open/floor/plating,
@@ -426,14 +437,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
-"ji" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
 "jj" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tank/oxygen/red,
@@ -895,6 +898,14 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
+"sq" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Dormitories"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/template_noop)
 "sF" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
@@ -964,6 +975,11 @@
 /obj/item/ammo_magazine/shotgun/incendiary,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
+"tV" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_14"
+	},
+/area/bigredv2/outside/c)
 "ua" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -977,6 +993,13 @@
 /obj/structure/barricade/wooden,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/c)
+"uY" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/c)
 "uZ" = (
@@ -1227,6 +1250,9 @@
 	icon_state = "white"
 	},
 /area/bigredv2/outside/admin_building)
+"Bx" = (
+/turf/closed/wall/solaris,
+/area/template_noop)
 "BF" = (
 /obj/structure/girder/displaced,
 /turf/open/floor/plating{
@@ -1392,6 +1418,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
+"Fq" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/bigredv2/outside/c)
 "Fu" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
@@ -1476,6 +1509,14 @@
 	icon_state = "orangecorner"
 	},
 /area/lv624/lazarus/crashed_ship)
+"HA" = (
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Dormitories";
+	name = "\improper Dormitories Shutters"
+	},
+/turf/open/floor/plating,
+/area/template_noop)
 "HM" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -1620,10 +1661,6 @@
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
-"Kh" = (
-/turf/template_noop,
-/turf/template_noop,
-/area/template_noop)
 "Kp" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan20"
@@ -1854,16 +1891,6 @@
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
-"PJ" = (
-/obj/structure/stairs/perspective{
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
 "PQ" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
@@ -1953,6 +1980,14 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/crashed_ship)
+"Si" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/c)
 "Sn" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
@@ -2331,7 +2366,6 @@
 /area/bigredv2/outside/admin_building)
 
 (1,1,1) = {"
-Kh
 Vi
 Vi
 Vi
@@ -2349,9 +2383,10 @@ Vi
 Vi
 Vi
 Vi
-ji
-mX
-mU
+Vi
+Vi
+Vi
+Vi
 Vi
 Vi
 Vi
@@ -2386,9 +2421,9 @@ Vi
 Vi
 Vi
 Vi
-PJ
-IA
-IA
+Vi
+Vi
+Vi
 Vi
 Vi
 Vi
@@ -2423,9 +2458,9 @@ Vi
 Vi
 Vi
 Vi
-IA
-dZ
-mX
+Vi
+Vi
+Vi
 Vi
 Vi
 Vi
@@ -2812,7 +2847,7 @@ kP
 EU
 "}
 (14,1,1) = {"
-Vi
+Bx
 xj
 Ym
 xk
@@ -2849,7 +2884,7 @@ aN
 dv
 "}
 (15,1,1) = {"
-Vi
+Bx
 Eb
 Ym
 vg
@@ -2886,7 +2921,7 @@ kP
 jd
 "}
 (16,1,1) = {"
-Vi
+Bx
 Ex
 VV
 fW
@@ -2923,7 +2958,7 @@ kP
 dv
 "}
 (17,1,1) = {"
-Vi
+Bx
 xj
 Ym
 oo
@@ -2960,7 +2995,7 @@ zG
 Mq
 "}
 (18,1,1) = {"
-Vi
+Bx
 xj
 Ym
 Ym
@@ -2997,7 +3032,7 @@ ny
 BW
 "}
 (19,1,1) = {"
-Vi
+HA
 xj
 vc
 Ym
@@ -3034,7 +3069,7 @@ rq
 BW
 "}
 (20,1,1) = {"
-Vi
+HA
 xj
 sF
 vc
@@ -3071,7 +3106,7 @@ nq
 UK
 "}
 (21,1,1) = {"
-Vi
+sq
 xj
 sF
 sF
@@ -3108,7 +3143,7 @@ Dc
 kv
 "}
 (22,1,1) = {"
-Vi
+gz
 xj
 sF
 sF
@@ -3145,7 +3180,7 @@ kv
 JC
 "}
 (23,1,1) = {"
-Vi
+Bx
 xj
 sF
 qY
@@ -3182,7 +3217,7 @@ SH
 xj
 "}
 (24,1,1) = {"
-Vi
+Bx
 xj
 jc
 Ym
@@ -3219,7 +3254,7 @@ ti
 xj
 "}
 (25,1,1) = {"
-Vi
+Bx
 xj
 Ym
 Ym
@@ -3256,7 +3291,7 @@ ak
 SH
 "}
 (26,1,1) = {"
-Vi
+Bx
 xj
 Ym
 Ym
@@ -3293,7 +3328,7 @@ ak
 SH
 "}
 (27,1,1) = {"
-Vi
+Bx
 xj
 Ym
 Ym
@@ -3330,7 +3365,7 @@ ti
 xj
 "}
 (28,1,1) = {"
-Vi
+Bx
 xj
 Ym
 Ym
@@ -3344,30 +3379,30 @@ Ym
 Ym
 Lq
 eD
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
+Ym
+uY
+IQ
+IQ
+IQ
+IQ
+IQ
+IQ
+SH
+Fq
+IQ
+IQ
+IQ
+IQ
+IQ
+IQ
+IQ
+IQ
+IQ
+SH
+xj
 "}
 (29,1,1) = {"
-Vi
+Bx
 xj
 Ym
 Ym
@@ -3381,30 +3416,30 @@ Ym
 Ym
 Ym
 eD
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
+Ym
+ti
+SH
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ct
 "}
 (30,1,1) = {"
-Vi
+Bx
 xj
 Ym
 Ym
@@ -3418,30 +3453,30 @@ vy
 Ym
 Lq
 eD
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
+Ym
+ti
+xj
+sF
+sF
+sF
+sF
+sF
+sF
+sF
+HN
+HN
+HN
+jc
+Ym
+Ym
+Ym
+tV
+HN
+HN
+jc
 "}
 (31,1,1) = {"
-Vi
+Bx
 SH
 IQ
 IQ
@@ -3455,25 +3490,25 @@ IQ
 IQ
 IQ
 fI
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
-Vi
+Ym
+ti
+xj
+sF
+Si
+HN
+HN
+HN
+HN
+jc
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
 "}

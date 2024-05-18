@@ -144,7 +144,6 @@
 	name = "M8 cartridge bayonet packaging"
 	desc = "Contains one M8 Cartridge Bayonet and two sister CO2 cartridges. Thanks for being a dedicated Boots magazine subscriber!"
 	icon_state = "co2_box"
-	can_hold = list(/obj/item/attachable/bayonet/co2, /obj/item/co2_cartridge)
 	foldable = TRUE
 	storage_slots = 3
 	w_class = SIZE_SMALL

@@ -608,30 +608,34 @@
 					to_chat(usr, "You have added a new comment to the Security Record of [R.fields["name"]]. <a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
 
 	if(href_list["medical"])
-		if(hasHUD(usr,"medical"))
-			var/perpref = null
-			if(wear_id)
-				var/obj/item/card/id/ID = wear_id.GetID()
-				if(istype(ID))
-					perpref = ID.registered_ref
+		if(!hasHUD(usr,"medical"))
+			return
+		var/perpref = null
+		if(wear_id)
+			var/obj/item/card/id/ID = wear_id.GetID()
+			if(istype(ID))
+				perpref = ID.registered_ref
 
-			var/modified = FALSE
+		var/modified = FALSE
 
-			if(perpref)
-				var/datum/data/record/health_record = retrieve_record(mob_ref = perpref, record_type = RECORD_TYPE_GENERAL)
-				var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", health_record.fields[MOB_HEALTH_STATUS], list(MOB_STAT_HEALTH_DECEASED, MOB_STAT_HEALTH_UNFIT, MOB_STAT_HEALTH_ACTIVE, "Cancel"))
+		if(!perpref)
+			return
 
-				if(hasHUD(usr,"medical"))
-					if(setmedical != "Cancel")
-						health_record.fields[MOB_HEALTH_STATUS] = setmedical
-						modified = TRUE
-						spawn()
-						if(istype(usr,/mob/living/carbon/human))
-							var/mob/living/carbon/human/U = usr
-							U.handle_regular_hud_updates()
+		var/datum/data/record/health_record = retrieve_record(mob_ref = perpref, record_type = RECORD_TYPE_GENERAL)
+		var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", health_record.fields[MOB_HEALTH_STATUS], list(MOB_STAT_HEALTH_DECEASED, MOB_STAT_HEALTH_UNFIT, MOB_STAT_HEALTH_ACTIVE, "Cancel"))
 
-			if(!modified)
-				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
+		if(!hasHUD(usr,"medical") || setmedical == "Cancel")
+			return
+
+		health_record.fields[MOB_HEALTH_STATUS] = setmedical
+		modified = TRUE
+		spawn()
+		if(istype(usr,/mob/living/carbon/human))
+			var/mob/living/carbon/human/U = usr
+			U.handle_regular_hud_updates()
+
+		if(!modified)
+			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 /* removed for now, will be modified in the future.
 	if(href_list["medrecord"])

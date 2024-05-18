@@ -568,7 +568,7 @@
 		if(attacked_door.density && !attacked_door.arePowerSystemsOn()) // if its closed and unpowered
 			attacked_door.open(TRUE)
 			return
-		if(!attacked_door.density && attacked_door.arePowerSystemsOn()) //If its open and powered
+		if(!attacked_door.density) //If its open
 			return
 
 		user.visible_message(SPAN_DANGER("[user] jams [src] into [attacked_door] and starts to pry it open."),

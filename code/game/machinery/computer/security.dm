@@ -212,7 +212,7 @@
 		return
 
 	var/mob/user = ui.user
-	playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
+	playsound(src, "keyboard_alt", 5, 1)
 	switch(action)
 		if("authenticate")
 			var/obj/item/id_card = user.get_active_hand()

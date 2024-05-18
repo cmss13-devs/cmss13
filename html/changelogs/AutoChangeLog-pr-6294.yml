@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - rscadd: "Changed advanced medhud visor to be displayed on the same eye as normal medhud visor"

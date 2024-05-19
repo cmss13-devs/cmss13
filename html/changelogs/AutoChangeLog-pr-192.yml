@@ -1,0 +1,6 @@
+author: "Mr-Pickles-beep"
+delete-after: True
+changes:
+  - rscadd: "New tcommsat spawn"
+  - rscadd: "New maint tunnel for xenos"
+  - bugfix: "Zones near crushed ship"

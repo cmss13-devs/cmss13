@@ -227,7 +227,8 @@
 /area/lv759/indoors/wy_research_complex/cargo)
 "acb" = (
 /obj/structure/machinery/power/apc{
-	pixel_y = -24
+	dir = 4;
+	
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
@@ -82906,7 +82907,8 @@
 	},
 /obj/structure/machinery/light,
 /obj/structure/machinery/power/apc{
-	pixel_y = -24
+	dir = 4;
+	
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0;

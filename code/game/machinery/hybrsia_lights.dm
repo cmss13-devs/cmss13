@@ -291,12 +291,6 @@
 	else
 		icon_state = "street_off"
 
-#undef FLOODLIGHT_REPAIR_UNSCREW
-#undef FLOODLIGHT_REPAIR_CROWBAR
-#undef FLOODLIGHT_REPAIR_WELD
-#undef FLOODLIGHT_REPAIR_CABLE
-#undef FLOODLIGHT_REPAIR_SCREW
-
 // Traffic
 
 /obj/structure/machinery/colony_floodlight/traffic
@@ -319,11 +313,6 @@
 	else
 		icon_state = "trafficlight"
 
-#undef FLOODLIGHT_REPAIR_UNSCREW
-#undef FLOODLIGHT_REPAIR_CROWBAR
-#undef FLOODLIGHT_REPAIR_WELD
-#undef FLOODLIGHT_REPAIR_CABLE
-#undef FLOODLIGHT_REPAIR_SCREW
 /obj/structure/machinery/colony_floodlight/traffic_alt
 	lum_value = 0
 	name = "traffic light"
@@ -343,12 +332,6 @@
 		icon_state = "trafficlight_alt_on"
 	else
 		icon_state = "trafficlight_alt"
-
-#undef FLOODLIGHT_REPAIR_UNSCREW
-#undef FLOODLIGHT_REPAIR_CROWBAR
-#undef FLOODLIGHT_REPAIR_WELD
-#undef FLOODLIGHT_REPAIR_CABLE
-#undef FLOODLIGHT_REPAIR_SCREW
 
 // Engineer Floor lights
 
@@ -472,4 +455,3 @@ GLOBAL_LIST_INIT(ship_floodlights, list())
 /obj/structure/machinery/colony_floodlight/engineer_circular/Destroy()
 	. = ..()
 	GLOB.ship_floodlights -= src
-

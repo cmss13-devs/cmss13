@@ -87,7 +87,6 @@ var/damage_state = 0
     icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
     icon_state = "MeridianCar_1"
 
-
 // Very Large Vehicles
 
 /obj/structure/prop/hybrisa/vehicles/large_vehicles
@@ -110,6 +109,7 @@ var/damage_state = 0
 	icon_state = "armoredtruck_wy_security_1"
 	bound_height = 64
 	bound_width = 96
+
 /obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/WY_Security/Truck_1
 	name = "Weyland-Yutani security truck"
 	desc = "Seems to be broken down."
@@ -125,10 +125,12 @@ var/damage_state = 0
 	name = "heavy loader truck"
 	desc = "Seems to be broken down."
 	icon_state = "armoredtruck_white_white"
+
 /obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/heavy_loader/white_teal
 	name = "heavy loader truck"
 	desc = "Seems to be broken down."
 	icon_state = "armoredtruck_white_teal"
+
 /obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/heavy_loader/blue_white
 	name = "heavy loader truck"
 	desc = "Seems to be broken down."
@@ -149,12 +151,16 @@ var/damage_state = 0
 
 /obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/kelland
 	icon_state = "longtruck_kellandmining"
+
 /obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/red_stripe
 	icon_state = "longtruck_blue_redstripe"
+
 /obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/blue_stripe
 	icon_state = "longtruck_red_bluestripe"
+
 /obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/brown
 	icon_state = "longtruck_brown"
+
 /obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/donk
 	icon_state = "longtruck_donk"
 
@@ -162,10 +168,13 @@ var/damage_state = 0
 /obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/wy_black
 	name = "Weyland-Yutani mega-hauler truck"
 	icon_state = "longtruck_wy_black"
+
 /obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/wy_blue
 	name = "Weyland-Yutani mega-hauler truck"
 	icon_state = "longtruck_wy_blue"
+
 // SUV
+
 /obj/structure/prop/hybrisa/vehicles/suv
 	name = "SUV"
 	desc = "Seems to be broken down."
@@ -176,16 +185,22 @@ var/damage_state = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/vehicles/suv/suv_1
 	icon_state = "SUV1"
+
 /obj/structure/prop/hybrisa/vehicles/suv/suv_2
 	icon_state = "SUV2"
+
 /obj/structure/prop/hybrisa/vehicles/suv/suv_5
 	icon_state = "SUV5"
+
 /obj/structure/prop/hybrisa/vehicles/suv/suv_6
 	icon_state = "SUV6"
+
 /obj/structure/prop/hybrisa/vehicles/suv/suv_7
 	icon_state = "SUV7"
+
 /obj/structure/prop/hybrisa/vehicles/suv/suv_8
 	icon_state = "SUV8"
 
@@ -199,45 +214,59 @@ var/damage_state = 0
 	bound_width = 64
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Red
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_red.dmi'
 	icon_state = "meridian_red"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Black
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_black.dmi'
 	icon_state = "meridian_black"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Blue
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_blue.dmi'
 	icon_state = "meridian_blue"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Brown
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_brown.dmi'
 	icon_state = "meridian_brown"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Cop
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_cop.dmi'
 	icon_state = "meridian_cop"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Desat_Blue
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_desatblue.dmi'
 	icon_state = "meridian_desatblue"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Green
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_green.dmi'
 	icon_state = "meridian_green"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_lightblue.dmi'
 	icon_state = "meridian_lightblue"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Pink
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_pink.dmi'
 	icon_state = "meridian_pink"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Purple
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_purple.dmi'
 	icon_state = "meridian_purple"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_turquoise.dmi'
 	icon_state = "meridian_turquoise"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Orange
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_orange.dmi'
 	icon_state = "meridian_orange"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_wy.dmi'
 	icon_state = "meridian_wy"
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Taxi
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_taxi.dmi'
 	icon_state = "meridian_taxi"
@@ -264,6 +293,7 @@ var/damage_state = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/vehicles/suvdamaged/suv_damaged1
 	icon_state = "SUV1_damaged"
 	bound_height = 64
@@ -271,6 +301,7 @@ var/damage_state = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/vehicles/suvdamaged/suv_damaged2
 	icon_state = "SUV2_damaged"
 	bound_height = 64
@@ -291,26 +322,35 @@ var/damage_state = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/vehicles/truck/truck1
 	icon_state = "zentruck2"
+
 /obj/structure/prop/hybrisa/vehicles/truck/truck2
 	icon_state = "zentruck3"
+
 /obj/structure/prop/hybrisa/vehicles/truck/truck3
 	icon_state = "zentruck4"
+
 /obj/structure/prop/hybrisa/vehicles/truck/truck4
 	icon_state = "zentruck5"
+
 /obj/structure/prop/hybrisa/vehicles/truck/truck5
 	icon_state = "truck_cargo"
+
 /obj/structure/prop/hybrisa/vehicles/truck/truck6
 	icon_state = "truck"
+
 /obj/structure/prop/hybrisa/vehicles/truck/garbage
 	name = "garbage truck"
 	icon_state = "zengarbagetruck"
 	desc = "Seems to be broken down."
+
 /obj/structure/prop/hybrisa/vehicles/truck/mining
 	name = "mining supply truck"
 	icon_state = "truck_mining"
 	desc = "Seems to be broken down."
+
 // large trucks
 
 /obj/structure/prop/hybrisa/vehicles/largetruck
@@ -323,12 +363,16 @@ var/damage_state = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/vehicles/largetruck/largetruck1
 	icon_state = "zenithlongtruck2"
+
 /obj/structure/prop/hybrisa/vehicles/largetruck/largetruck2
 	icon_state = "zenithlongtruck3"
+
 /obj/structure/prop/hybrisa/vehicles/largetruck/largetruck3
 	icon_state = "zenithlongtruck4"
+
 /obj/structure/prop/hybrisa/vehicles/largetruck/largetruck4
 	icon_state = "zenithlongtruck5"
 
@@ -336,19 +380,25 @@ var/damage_state = 0
 
 /obj/structure/prop/hybrisa/vehicles/largetruck/largetruckmining
 	icon_state = "zenithlongtruckkellandmining1"
+
 /obj/structure/prop/hybrisa/vehicles/largetruck/largetruckmining
     name = "Kelland mining mega-hauler truck"
+
 /obj/structure/prop/hybrisa/vehicles/largetruck/largetruckmining/mining
 	icon_state = "zenithlongtruckkellandmining1"
+
 
 // w-y truck
 
 /obj/structure/prop/hybrisa/vehicles/largetruck/largetruckwy
 	icon_state = "zenithlongtruckweyland1"
+
 /obj/structure/prop/hybrisa/vehicles/largetruck/largetruckwy
     name = "Weyland-Yutani mega-hauler truck"
+
 /obj/structure/prop/hybrisa/vehicles/largetruck/largetruckwy/wy1
 	icon_state = "zenithlongtruckweyland1"
+
 /obj/structure/prop/hybrisa/vehicles/largetruck/largetruckwy/wy2
 	icon_state = "zenithlongtruckweyland2"
 
@@ -367,14 +417,17 @@ var/damage_state = 0
 	icon_state = "miningcrawler1"
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
+
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining2
 	icon_state = "crawler_fuel"
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
+
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining3
 	icon_state = "crawler_covered_bed"
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
+
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/science
 	icon_state = "crawler_wy2"
 	desc = "It is a tread bound crawler used in harsh conditions. This one is designed for personnel transportation. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
@@ -388,6 +441,7 @@ var/damage_state = 0
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/science/science1
 	icon_state = "crawler_wy1"
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
+
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/science/science2
 	icon_state = "crawler_wy2"
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
@@ -400,12 +454,15 @@ var/damage_state = 0
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining/mining1
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
 	icon_state = "miningcrawler2"
+
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining/mining2
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
 	icon_state = "miningcrawler3"
+
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining/mining3
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
 	icon_state = "miningcrawler4"
+
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining/mining4
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
 	icon_state = "miningcrawlerblank"
@@ -422,40 +479,51 @@ var/damage_state = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/vehicles/suv/misc/wy1
 	icon_state = "WYSUV1"
+
 /obj/structure/prop/hybrisa/vehicles/suv/misc/wy2
 	icon_state = "WYSUV2"
+
 /obj/structure/prop/hybrisa/vehicles/suv/misc/wy3
 	icon_state = "WYSUV3"
+
 /obj/structure/prop/hybrisa/vehicles/suv/misc/ambulance
 	name = "emergency response medical van"
 	desc = "Seems to be broken down."
 	icon_state = "ambulance"
+
 /obj/structure/prop/hybrisa/vehicles/suv/misc/whitevan
 	name = "maintenance SUV"
 	desc = "Seems to be broken down."
 	icon_state = "whitevan"
+
 /obj/structure/prop/hybrisa/vehicles/suv/misc/maintenance
 	name = "maintenance SUV"
 	desc = "Seems to be broken down."
 	icon_state = "maintenaceSUV"
+
 /obj/structure/prop/hybrisa/vehicles/suv/misc/marshalls
 	name = "colonial marshalls rapid response SUV"
 	desc = "Seems to be broken down."
 	icon_state = "marshalls"
+
 /obj/structure/prop/hybrisa/vehicles/suv/misc/marshalls2
 	name = "colonial marshalls rapid response SUV"
 	desc = "Seems to be broken down."
 	icon_state = "marshalls2"
+
 /obj/structure/prop/hybrisa/vehicles/suv/misc/expensive
 	name = "Expensive looking SUV"
 	desc = "Seems to be broken down."
 	icon_state = "SUV9"
+
 /obj/structure/prop/hybrisa/vehicles/suv/misc/expensive2
 	name = "Expensive Weyland-Yutani SUV"
 	desc = "Seems to be broken down."
 	icon_state = "blackSUV"
+
 /obj/structure/prop/hybrisa/vehicles/suv/misc/expensive3
 	name = "The Pimp-Mobile"
 	desc = "Seems to be broken down."
@@ -473,6 +541,7 @@ var/damage_state = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/vehicles/van/vandamaged
 	name = "van"
 	desc = "A shell of a vehicle, broken down beyond repair."
@@ -482,6 +551,7 @@ var/damage_state = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/vehicles/van/vanpizza
 	name = "pizza delivery van"
 	desc = "Seems to be broken down."
@@ -491,6 +561,7 @@ var/damage_state = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/vehicles/van/vanmining
 	name = "Kelland Mining van"
 	desc = "Seems to be broken down."
@@ -500,6 +571,7 @@ var/damage_state = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/vehicles/van/hyperdynevan
 	name = "Hyperdyne van"
 	desc = "Seems to be broken down."
@@ -509,6 +581,7 @@ var/damage_state = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/vehicles/crashedcarsleft
 	name = "car pileup"
 	desc = "Burned out wrecked vehicles block your path."
@@ -520,6 +593,7 @@ var/damage_state = 0
 	unacidable = TRUE
 	density = TRUE
 	layer = 5
+
 /obj/structure/prop/hybrisa/vehicles/crashedcarsright
 	name = "car pileup"
 	desc = "Burned out wrecked vehicles block your path."
@@ -550,10 +624,13 @@ var/damage_state = 0
 	unacidable = TRUE
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1
 	icon_state = "boulder_largedark1"
+
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2
 	icon_state = "boulder_largedark2"
+
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3
 	icon_state = "boulder_largedark3"
+
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark
 	name = "boulder"
 	desc = "A large rock. It's not cooking anything."
@@ -566,8 +643,10 @@ var/damage_state = 0
 	unacidable = TRUE
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1
 	icon_state = "boulderwidedark"
+
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder2
 	icon_state = "boulderwidedark2"
+
 /obj/structure/prop/hybrisa/boulders/smallboulderdark
 	name = "boulder"
 	icon_state = "bouldersmalldark1"
@@ -576,12 +655,16 @@ var/damage_state = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1
 	icon_state = "bouldersmalldark1"
+
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark2
 	icon_state = "bouldersmalldark2"
+
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark3
 	icon_state = "bouldersmalldark3"
+
 
 /obj/structure/prop/hybrisa/cavedecor
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
@@ -590,18 +673,25 @@ var/damage_state = 0
 	desc = "A cave stalagmite."
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE
+
 /obj/structure/prop/hybrisa/cavedecor/stalagmite0
 	icon_state = "stalagmite"
+
 /obj/structure/prop/hybrisa/cavedecor/stalagmite1
 	icon_state = "stalagmite1"
+
 /obj/structure/prop/hybrisa/cavedecor/stalagmite2
 	icon_state = "stalagmite2"
+
 /obj/structure/prop/hybrisa/cavedecor/stalagmite3
 	icon_state = "stalagmite3"
+
 /obj/structure/prop/hybrisa/cavedecor/stalagmite4
 	icon_state = "stalagmite4"
+
 /obj/structure/prop/hybrisa/cavedecor/stalagmite5
 	icon_state = "stalagmite5"
+
 
 
 // Supermart
@@ -618,36 +708,43 @@ var/damage_state = 0
 	desc = "A long empty shelf."
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrackempty"
+
 /obj/structure/prop/hybrisa/supermart/rack/longrack1
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack1"
+
 /obj/structure/prop/hybrisa/supermart/rack/longrack2
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack2"
+
 /obj/structure/prop/hybrisa/supermart/rack/longrack3
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack3"
+
 /obj/structure/prop/hybrisa/supermart/rack/longrack4
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack4"
+
 /obj/structure/prop/hybrisa/supermart/rack/longrack5
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack5"
+
 /obj/structure/prop/hybrisa/supermart/rack/longrack6
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack6"
+
 /obj/structure/prop/hybrisa/supermart/rack/longrack7
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
@@ -666,21 +763,27 @@ var/damage_state = 0
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezerupper"
 	density = TRUE
+
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer1
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezerupper"
+
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer2
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezerlower"
+
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer3
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezermid"
+
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezerupper1"
+
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer5
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezerlower1"
+
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer6
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezermid1"
@@ -690,26 +793,31 @@ var/damage_state = 0
 	desc = "A basket."
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "supermarketbasketempty"
+
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketoranges
 	name = "basket"
 	desc = "A basket full of oranges."
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "supermarketbasket1"
+
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketpears
 	name = "basket"
 	desc = "A basket full of pears."
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "supermarketbasket2"
+
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketcarrots
 	name = "basket"
 	desc = "A basket full of carrots."
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "supermarketbasket3"
+
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketmelons
 	name = "basket"
 	desc = "A basket full of melons."
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "supermarketbasket4"
+
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketapples
 	name = "basket"
 	desc = "A basket full of apples."
@@ -766,6 +874,7 @@ var/damage_state = 0
 	climbable = TRUE
 	breakable = TRUE
 	debris = list(/obj/item/stack/sheet/wood)
+
 /obj/structure/prop/hybrisa/furniture/tables/tablegambling
 	name = "gambling table"
 	desc = "A large table used for gambling."
@@ -786,12 +895,15 @@ var/damage_state = 0
 /obj/structure/bed/hybrisa/chairs/black
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "comfychair_zenithblack"
+
 /obj/structure/bed/hybrisa/chairs/red
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "comfychair_zenithred"
+
 /obj/structure/bed/hybrisa/chairs/blue
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "comfychair_zenithblue"
+
 /obj/structure/bed/hybrisa/chairs/brown
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "comfychair_zenithbrown"
@@ -861,55 +973,62 @@ var/damage_state = 0
 	icon_state = "xenocellemptyon"
 	layer = ABOVE_MOB_LAYER
 
-
 /obj/structure/prop/hybrisa/xenobiology/small/empty
 	name = "specimen containment cell"
 	desc = "It's empty."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellemptyon"
 	density = TRUE
+
 /obj/structure/prop/hybrisa/xenobiology/small/offempty
 	name = "specimen containment cell"
 	desc = "It's turned off and empty."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellemptyoff"
 	density = TRUE
+
 /obj/structure/prop/hybrisa/xenobiology/small/larva
 	name = "specimen containment cell"
 	desc = "There is something worm-like inside..."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocelllarva"
 	density = TRUE
+
 /obj/structure/prop/hybrisa/xenobiology/small/egg
 	name = "specimen containment cell"
 	desc = "There is, what looks like some sort of egg inside..."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellegg"
 	density = TRUE
+
 /obj/structure/prop/hybrisa/xenobiology/small/hugger
 	name = "specimen containment cell"
 	desc = "There's something spider-like inside..."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellhugger"
 	density = TRUE
+
 /obj/structure/prop/hybrisa/xenobiology/small/cracked1
 	name = "specimen containment cell"
 	desc = "Looks like something broke it...from the inside."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellcrackedempty"
 	density = TRUE
+
 /obj/structure/prop/hybrisa/xenobiology/small/cracked2
 	name = "specimen containment cell"
 	desc = "Looks like something broke it...from the inside."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellcrackedempty2"
 	density = TRUE
+
 /obj/structure/prop/hybrisa/xenobiology/small/crackedegg
 	name = "specimen containment cell"
 	desc = "Looks like something broke it, there's a giant empty egg inside."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellcrackedegg"
 	density = TRUE
+
 /obj/structure/prop/hybrisa/xenobiology/big
 	name = "specimen containment cell"
 	desc = "A giant tube with a hulking monstrosity inside, is this thing alive?"
@@ -923,15 +1042,18 @@ var/damage_state = 0
 	icon = 'icons/obj/structures/props/zenithxenocryogenics2.dmi'
 	icon_state = "bigqueencryo1"
 	layer = ABOVE_MOB_LAYER
+
 /obj/structure/prop/hybrisa/xenobiology/big/bigright
 	icon = 'icons/obj/structures/props/zenithxenocryogenics2.dmi'
 	icon_state = "bigqueencryo2"
 	layer = ABOVE_MOB_LAYER
+
 /obj/structure/prop/hybrisa/xenobiology/big/bigbottomleft
 	icon = 'icons/obj/structures/props/zenithxenocryogenics2.dmi'
 	icon_state = "bigqueencryo3"
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+
 /obj/structure/prop/hybrisa/xenobiology/big/bigbottomright
 	icon = 'icons/obj/structures/props/zenithxenocryogenics2.dmi'
 	icon_state = "bigqueencryo4"
@@ -975,7 +1097,8 @@ var/damage_state = 0
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
 	density = TRUE
-obj/structure/prop/hybrisa/engineer/giantpod
+
+/obj/structure/prop/hybrisa/engineer/giantpod
 	name = "Giant Hypersleep Chamber"
 	desc = "What looks to be a Giant Hypersleep Chamber, a strange alien design, unlike anything you've ever seen before. It's empty."
 	icon = 'icons/obj/structures/props/engineerPod.dmi'
@@ -986,7 +1109,8 @@ obj/structure/prop/hybrisa/engineer/giantpod
 	unacidable = TRUE
 	indestructible = TRUE
 	density = TRUE
-obj/structure/prop/hybrisa/engineer/giantconsole
+
+/obj/structure/prop/hybrisa/engineer/giantconsole
 	name = "Giant Alien Console"
 	desc = "A Giant Alien console of some kind, unlike anything you've ever seen before. Who knows the purpose of this strange technology..."
 	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
@@ -997,6 +1121,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	unacidable = TRUE
 	indestructible = TRUE
 	density = TRUE
+
 /obj/structure/prop/hybrisa/engineer/engineerpillar
 	icon = 'icons/obj/structures/props/zenithengineerpillarangled.dmi'
 	icon_state = "engineerpillar_SW1fade"
@@ -1011,22 +1136,27 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	name = "strange pillar"
 	icon = 'icons/obj/structures/props/zenithengineerpillarangled.dmi'
 	icon_state = "engineerpillar_NW1"
+
 /obj/structure/prop/hybrisa/engineer/engineerpillar/northwestbottom
 	name = "strange pillar"
 	icon = 'icons/obj/structures/props/zenithengineerpillarangled.dmi'
 	icon_state = "engineerpillar_NW2"
+
 /obj/structure/prop/hybrisa/engineer/engineerpillar/southwesttop
 	name = "strange pillar"
 	icon = 'icons/obj/structures/props/zenithengineerpillarangled.dmi'
 	icon_state = "engineerpillar_SW1"
+
 /obj/structure/prop/hybrisa/engineer/engineerpillar/southwestbottom
 	name = "strange pillar"
 	icon = 'icons/obj/structures/props/zenithengineerpillarangled.dmi'
 	icon_state = "engineerpillar_SW2"
+
 /obj/structure/prop/hybrisa/engineer/engineerpillar/smallsouthwest1
 	name = "strange pillar"
 	icon = 'icons/obj/structures/props/zenithengineerpillarangled.dmi'
 	icon_state = "engineerpillar_SW1fade"
+
 /obj/structure/prop/hybrisa/engineer/engineerpillar/smallsouthwest2
 	name = "strange pillar"
 	icon = 'icons/obj/structures/props/zenithengineerpillarangled.dmi'
@@ -1053,36 +1183,42 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	icon_state = "dropshipfrontwhite1"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
+
 /obj/structure/prop/hybrisa/airport/dropshipwingleft
 	name = "wing"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "dropshipwingtop1"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
+
 /obj/structure/prop/hybrisa/airport/dropshipwingright
 	name = "wing"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "dropshipwingtop2"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
+
 /obj/structure/prop/hybrisa/airport/dropshipvent1left
 	name = "vent"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "dropshipvent1"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
+
 /obj/structure/prop/hybrisa/airport/dropshipvent2right
 	name = "vent"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "dropshipvent2"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
+
 /obj/structure/prop/hybrisa/airport/dropshipventleft
 	name = "vent"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "dropshipvent3"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
+
 /obj/structure/prop/hybrisa/airport/dropshipventright
 	name = "vent"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
@@ -1123,6 +1259,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	bound_width = 96
 	unslashable = TRUE
 	unacidable = TRUE
+
 /obj/structure/prop/hybrisa/airport/refuelinghose2
 	name = "refueling hose"
 	desc = "A long refueling hose that connects to various types of dropships."
@@ -1144,6 +1281,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	bound_width = 96
 	unslashable = TRUE
 	unacidable = TRUE
+
 /obj/structure/prop/hybrisa/airport/deadpilot2
 	name = "decapitated Weyland-Yutani Pilot"
 	desc = "What remains of a Weyland-Yutani Pilot. Their entire head is missing. Where'd it roll off to?..."
@@ -1192,6 +1330,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
+
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass2
 	name = "reinforced glass floor"
 	desc = "A heavily reinforced glass floor panel, this looks almost indestructible."
@@ -1201,6 +1340,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	unacidable = TRUE
 	indestructible = TRUE
 	layer = 2.1
+
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass3
 	name = "reinforced glass floor"
 	desc = "A heavily reinforced glass floor panel, this looks almost indestructible."
@@ -1225,21 +1365,27 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti1
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "zgraffiti1"
+
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti2
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "zgraffiti2"
+
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti3
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "zgraffiti3"
+
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti4
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "zgraffiti4"
+
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti5
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "zgraffiti5"
+
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti6
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "zgraffiti6"
+
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti7
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "zgraffiti7"
@@ -1257,9 +1403,11 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 /obj/structure/prop/hybrisa/misc/blood/blood1
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "wallblood_floorblood"
+
 /obj/structure/prop/hybrisa/misc/blood/blood2
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "wall_blood_1"
+
 /obj/structure/prop/hybrisa/misc/blood/blood3
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "wall_blood_2"
@@ -1306,18 +1454,21 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	desc = "a small cabinet with drawers."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "sidecabinet"
+
 /obj/structure/prop/hybrisa/misc/trash/green
 	name = "trash bin"
 	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "trashgreen"
 	density = TRUE
+
 /obj/structure/prop/hybrisa/misc/trash/blue
 	name = "trash bin"
 	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "trashblue"
 	density = TRUE
+
 /obj/structure/prop/hybrisa/misc/redmeter
 	name = "meter"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
@@ -1539,24 +1690,31 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 /obj/structure/prop/hybrisa/misc/road/roadbarrierred
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "roadbarrier"
+
 /obj/structure/prop/hybrisa/misc/road/roadbarrierredlong
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "roadbarrier4"
+
 /obj/structure/prop/hybrisa/misc/road/roadbarrierblue
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "roadbarrier2"
+
 /obj/structure/prop/hybrisa/misc/road/roadbarrierbluelong
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "roadbarrier5"
+
 /obj/structure/prop/hybrisa/misc/road/roadbarrierwyblack
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "roadbarrier3"
+
 /obj/structure/prop/hybrisa/misc/road/roadbarrierwyblacklong
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "roadbarrier6"
+
 /obj/structure/prop/hybrisa/misc/road/roadbarrierwyblackjoined
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "roadbarrierjoined3"
+
 /obj/structure/prop/hybrisa/misc/road/roadbarrierjoined
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "roadbarrierjoined"
@@ -1597,62 +1755,77 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blueleft"
+
 /obj/structure/prop/hybrisa/containersextended/blueright
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blueright"
+
 /obj/structure/prop/hybrisa/containersextended/greenleft
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greenleft"
+
 /obj/structure/prop/hybrisa/containersextended/greenright
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greenright"
+
 /obj/structure/prop/hybrisa/containersextended/tanleft
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "tanleft"
+
 /obj/structure/prop/hybrisa/containersextended/tanright
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "tanright"
+
 /obj/structure/prop/hybrisa/containersextended/redleft
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "redleft"
+
 /obj/structure/prop/hybrisa/containersextended/redright
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "redright"
+
 /obj/structure/prop/hybrisa/containersextended/greywyleft
 	name = "Weyland-Yutani cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greywyleft"
+
 /obj/structure/prop/hybrisa/containersextended/greywyright
 	name = "Weyland-Yutani cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greywyright"
+
 /obj/structure/prop/hybrisa/containersextended/lightgreywyleft
 	name = "Weyland-Yutani cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "lightgreywyleft"
+
 /obj/structure/prop/hybrisa/containersextended/lightgreywyright
 	name = "Weyland-Yutani cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "lightgreywyright"
+
 /obj/structure/prop/hybrisa/containersextended/blackwyleft
 	name = "Weyland-Yutani cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blackwyleft"
+
 /obj/structure/prop/hybrisa/containersextended/blackwyright
 	name = "Weyland-Yutani cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blackwyright"
+
 /obj/structure/prop/hybrisa/containersextended/whitewyleft
 	name = "Weyland-Yutani cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "whitewyleft"
+
 /obj/structure/prop/hybrisa/containersextended/whitewyright
 	name = "Weyland-Yutani cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
@@ -1662,46 +1835,57 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "tanwywingsleft"
+
 /obj/structure/prop/hybrisa/containersextended/tanwywingsright
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "tanwywingsright"
+
 /obj/structure/prop/hybrisa/containersextended/greenwywingsleft
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greenwywingsleft"
+
 /obj/structure/prop/hybrisa/containersextended/greenwywingsright
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greenwywingsright"
+
 /obj/structure/prop/hybrisa/containersextended/bluewywingsleft
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "bluewywingsleft"
+
 /obj/structure/prop/hybrisa/containersextended/bluewywingsright
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "bluewywingsright"
+
 /obj/structure/prop/hybrisa/containersextended/redwywingsleft
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "redwywingsleft"
+
 /obj/structure/prop/hybrisa/containersextended/redwywingsright
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "redwywingsright"
+
 /obj/structure/prop/hybrisa/containersextended/medicalleft
 	name = "medical cargo containers"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "medicalleft"
+
 /obj/structure/prop/hybrisa/containersextended/medicalright
 	name = "medical cargo containers"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "medicalright"
+
 /obj/structure/prop/hybrisa/containersextended/emptymedicalleft
 	name = "medical cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "emptymedicalleft"
+
 /obj/structure/prop/hybrisa/containersextended/emptymedicalright
 	name = "medical cargo container"
 	icon = 'icons/obj/structures/props/containersextended.dmi'
@@ -1754,30 +1938,42 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	health = 200
 	anchored = TRUE
 	layer = 5
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble1
 	icon_state = "buildingventbig2"
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble2
 	icon_state = "buildingventbig3"
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble3
 	icon_state = "buildingventbig4"
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble4
 	icon_state = "buildingventbig5"
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble5
 	icon_state = "buildingventbig6"
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble6
 	icon_state = "buildingventbig7"
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble7
 	icon_state = "buildingventbig8"
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble8
 	icon_state = "buildingventbig9"
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble9
 	icon_state = "buildingventbig10"
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble10
 	density = FALSE
 	icon_state = "buildingventbig11"
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble11
 	density = FALSE
 	icon_state = "buildingventbig12"
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble12
 	density = FALSE
 	icon_state = "buildingventbig13"
@@ -1788,16 +1984,18 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "smallwallvent1"
 	density = FALSE
+
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall2
 	name = "wall vent"
 	icon_state = "smallwallvent2"
+
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall2
 	name = "wall vent"
 	icon_state = "smallwallvent2"
+
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall3
 	name = "wall vent"
 	icon_state = "smallwallvent3"
-
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer
 	name = "machinery"
@@ -1863,7 +2061,6 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 			var/datum/cause_data/temp_cause = create_cause_data(src, user)
 			explosive.handle_explosion(target_turf,temp_cause)
 
-
 /obj/structure/prop/hybrisa/misc/firehydrant
 	name = "fire hydrant"
 	desc = "A fire hydrant public water outlet, designed for quick access to water."
@@ -1871,6 +2068,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	icon_state = "firehydrant"
 	density = TRUE
 	anchored = TRUE
+
 /obj/structure/prop/hybrisa/misc/phonebox
 	name = "phonebox"
 	desc = "A phone-box, it doesn't seem to be working, the line must be down."
@@ -1881,6 +2079,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	bound_height = 32
 	density = TRUE
 	anchored = TRUE
+
 /obj/structure/prop/hybrisa/misc/phonebox/broken
 	desc = "A phone-box, it doesn't seem to be working, the line must be down. The glass has been broken."
 	icon_state = "phonebox_closed_broken"
@@ -1917,34 +2116,42 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	name = "casino sign"
 	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
 	icon_state = "nightgoldcasinoopen_on"
+
 /obj/structure/prop/hybrisa/signs/jackssign
 	name = "jack's surplus sign"
 	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
 	icon_state = "jacksopen_on"
+
 /obj/structure/prop/hybrisa/signs/opensign
 	name = "open sign"
 	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
 	icon_state = "open_on"
+
 /obj/structure/prop/hybrisa/signs/opensign2
 	name = "open sign"
 	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
 	icon_state = "open_on2"
+
 /obj/structure/prop/hybrisa/signs/pizzasign
 	name = "pizza sign"
 	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
 	icon_state = "pizzaneon_on"
+
 /obj/structure/prop/hybrisa/signs/weymartsign
 	name = "weymart sign"
 	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
 	icon_state = "weymartsign2"
+
 /obj/structure/prop/hybrisa/signs/mechanicsign
 	name = "mechanic sign"
 	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
 	icon_state = "mechanicopen_on2"
+
 /obj/structure/prop/hybrisa/signs/cuppajoessign
 	name = "cuppa joe's sign"
 	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
 	icon_state = "cuppajoes"
+
 /obj/structure/prop/hybrisa/signs/barsign
 	name = "bar sign"
 	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
@@ -1956,6 +2163,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	desc = "DANGER - HIGH VOLTAGE - DEATH!."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "shockyBig"
+
 /obj/structure/prop/hybrisa/signs/high_voltage/small
 	name = "warning sign"
 	desc = "DANGER - HIGH VOLTAGE - DEATH!."
@@ -1975,21 +2183,25 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	density = FALSE
 	health = 200
 	anchored = TRUE
+
 /obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1
 	name = "billboard"
 	desc = "A advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_zenithbillboards.dmi'
 	icon_state = "billboard1"
+
 /obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2
 	name = "billboard"
 	desc = "A advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_zenithbillboards.dmi'
 	icon_state = "billboard2"
+
 /obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3
 	name = "billboard"
 	desc = "A advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_zenithbillboards.dmi'
 	icon_state = "billboard3"
+
 /obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4
 	name = "billboard"
 	desc = "A advertisement billboard."
@@ -2010,6 +2222,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	layer = 8
 /obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1
 	icon_state = "roadsign_1"
+
 /obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_2
 	icon_state = "roadsign_2"
 
@@ -2026,14 +2239,15 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	bound_width = 64
 	bound_height = 32
 	anchored = TRUE
+
 /obj/structure/prop/hybrisa/Factory/Robotic_arm/Flipped
 	icon_state = "factory_roboticarm2"
+
 /obj/structure/prop/hybrisa/Factory/Conveyor_belt
 	name = "large conveyor belt"
 	desc = "A large conveyor belt used in industrial factories."
 	icon_state = "factory_conveyer"
 	density = FALSE
-
 
 // Hybrisa Lattice
 
@@ -2048,13 +2262,18 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 
 /obj/structure/prop/hybrisa/lattice_prop/lattice_1
 	icon_state = "lattice1"
+
 /obj/structure/prop/hybrisa/lattice_prop/lattice_2
 	icon_state = "lattice2"
+
 /obj/structure/prop/hybrisa/lattice_prop/lattice_3
 	icon_state = "lattice3"
+
 /obj/structure/prop/hybrisa/lattice_prop/lattice_4
 	icon_state = "lattice4"
+
 /obj/structure/prop/hybrisa/lattice_prop/lattice_5
 	icon_state = "lattice5"
+
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6
 	icon_state = "lattice6"

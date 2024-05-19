@@ -108,7 +108,7 @@
 		hugger_image_index.Cut()
 		return
 
-	update_clinger_maths(round(( huggers_cur / huggers_max ) * 3.999) + 1)
+	update_clinger_maths(floor(( huggers_cur / huggers_max ) * 3.999) + 1)
 
 	for(var/i in hugger_image_index)
 		if(stat == DEAD)

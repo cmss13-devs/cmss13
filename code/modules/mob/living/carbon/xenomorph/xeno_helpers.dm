@@ -27,12 +27,12 @@
 /mob/living/carbon/xenomorph/proc/get_plasma_percentage()
 	if(plasma_max<=0)
 		return 100
-	return round(plasma_stored * 100 / plasma_max)
+	return floor(plasma_stored * 100 / plasma_max)
 
 /mob/living/carbon/xenomorph/proc/get_armor_integrity_percentage()
 	if(armor_deflection<=0)
 		return 100
-	return round(armor_integrity * 100 / armor_integrity_max)
+	return floor(armor_integrity * 100 / armor_integrity_max)
 
 /**
  * Returns the name of the xeno's strain, if it has one.

@@ -1,7 +1,0 @@
-author: "Zonespace27"
-delete-after: True
-changes:
-  - admin: "Added LISTSOURCE and SELECTPRINT options to SDQL queries."
-  - admin: "Added SINGLECALL SQDL query."
-  - admin: "SDQL tab now works."
-  - admin: "Clients can now be selected with SDQL more easily."

@@ -115,7 +115,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		return FALSE
 	//Make the chem storage scale with number of dispensers
 	storage.recharge_rate += 5
-	storage.max_energy += 50
+	storage.max_energy += 100
 	storage.energy = storage.max_energy
 	return storage
 
@@ -125,7 +125,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		return FALSE
 	//Make the chem storage scale with number of dispensers
 	storage.recharge_rate -= 5
-	storage.max_energy -= 50
+	storage.max_energy -= 100
 	storage.energy = storage.max_energy
 	return TRUE
 

@@ -226,10 +226,7 @@
 	},
 /area/lv759/indoors/wy_research_complex/cargo)
 "acb" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	
-	},
+/obj/structure/machinery/power/apc,
 /turf/open/floor/almayer{
 	allow_construction = 0;
 	icon_state = "plate"
@@ -16553,8 +16550,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 24
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
@@ -20222,7 +20218,6 @@
 "dpB" = (
 /obj/structure/machinery/power/apc{
 	dir = 8;
-	pixel_x = -30;
 	start_charge = 0
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -20832,7 +20827,6 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24;
 	start_charge = 0
 	},
 /turf/open/floor/plating,
@@ -24529,7 +24523,6 @@
 "eah" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24;
 	start_charge = 0
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -35450,7 +35443,6 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24;
 	start_charge = 150
 	},
 /turf/open/floor/almayer{
@@ -37324,7 +37316,6 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24;
 	start_charge = 0
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
@@ -39403,7 +39394,6 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24;
 	start_charge = 0
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -43109,8 +43099,7 @@
 	icon_state = "N"
 	},
 /obj/structure/machinery/power/apc/wires_cut{
-	dir = 1;
-	pixel_y = 24
+	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/electical_systems/substation1)
@@ -59483,7 +59472,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24;
 	start_charge = 0
 	},
 /turf/open/floor/prison{
@@ -66219,7 +66207,6 @@
 "kOO" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24;
 	start_charge = 0
 	},
 /turf/open/floor/prison{
@@ -82906,10 +82893,6 @@
 	dir = 1
 	},
 /obj/structure/machinery/light,
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	
-	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
 	icon_state = "plate"
@@ -96449,8 +96432,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
@@ -96533,7 +96515,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24;
 	start_charge = 0
 	},
 /turf/open/floor/plating,
@@ -98983,7 +98964,6 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 8;
-	pixel_x = -30;
 	start_charge = 0
 	},
 /turf/open/floor/prison{
@@ -107456,7 +107436,6 @@
 "rzj" = (
 /obj/structure/machinery/power/apc{
 	dir = 8;
-	pixel_x = -30;
 	start_charge = 0
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -113398,7 +113377,6 @@
 "suB" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24;
 	start_charge = 0
 	},
 /turf/open/floor/strata{
@@ -116673,7 +116651,6 @@
 "sVh" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24;
 	start_charge = 0
 	},
 /turf/open/floor/corsat{
@@ -129206,8 +129183,7 @@
 /area/lv759/outdoors/landing_zone_2)
 "uUh" = (
 /obj/structure/bed/chair/comfy{
-	dir = 1;
-	
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
@@ -140673,7 +140649,6 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 8;
-	pixel_x = -30;
 	start_charge = 0
 	},
 /turf/open/hybrisa/street/asphalt,
@@ -140847,8 +140822,7 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
 "wRp" = (
 /obj/structure/bed/chair/comfy{
-	dir = 1;
-	
+	dir = 1
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -146210,7 +146184,6 @@
 /obj/structure/barricade/handrail/strata,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24;
 	start_charge = 0
 	},
 /turf/open/floor/almayer{
@@ -149085,6 +149058,9 @@
 "ygt" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/briefcase/stowaway,
+/obj/structure/machinery/power/apc{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
 	icon_state = "plate"

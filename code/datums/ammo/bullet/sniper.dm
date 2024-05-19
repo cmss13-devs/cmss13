@@ -194,7 +194,7 @@
 				if(2)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Two hits! You're starting to get a good read on the target's patterns."))
 				if(3)
-					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))
+					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye! You're fully focused on the target. You notice they are starting to change their patterns."))
 				else
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))
 		else

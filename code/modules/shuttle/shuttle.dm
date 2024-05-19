@@ -19,6 +19,8 @@
 	  * port can be used in these places, or the docking port is compatible, etc.
 	  */
 	var/id
+	///The original template shuttle_id for this shuttle (so without a suffix identifier)
+	var/template_id
 	///Possible destinations
 	var/port_destinations
 	///this should point -away- from the dockingport door, ie towards the ship
@@ -521,6 +523,7 @@
 			id = "[id][idnum]"
 		if(name == initial(name))
 			name = "[name] [idnum]"
+	template_id = template.shuttle_id // Value without the idnum
 	// ================ END CM Change ================
 
 	for(var/area/place as anything in shuttle_areas)

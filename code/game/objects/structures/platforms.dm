@@ -212,10 +212,10 @@
 /// Hybrisa Platforms
 
 /obj/structure/platform/hybrisa
-    icon_state = "hybrisa"
+	icon_state = "hybrisa"
 
 /obj/structure/platform_decoration/hybrisa
-    icon_state = "hybrisa"
+	icon_state = "hybrisa"
 
 /obj/structure/platform/hybrisa/engineer
 	icon_state = "engineer_platform"

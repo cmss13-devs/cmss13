@@ -3629,7 +3629,7 @@
 	},
 /area/varadero/interior/hall_NW)
 "coc" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/tunnel/maint_tunnel,
 /turf/open/floor/shiva{
 	icon_state = "blue"
 	},
@@ -6436,7 +6436,7 @@
 	id = "north_research_tunnel"
 	},
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
+/area/varadero/interior_protected/caves/digsite)
 "emC" = (
 /obj/structure/surface/rack,
 /obj/item/tool/surgery/scalpel/pict_system,
@@ -7297,6 +7297,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "eMD" = (
+/obj/structure/tunnel/maint_tunnel,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "red"
@@ -18176,6 +18177,7 @@
 	},
 /area/varadero/interior/medical)
 "lLq" = (
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
@@ -35362,11 +35364,11 @@
 	},
 /area/varadero/interior/comms3)
 "wvI" = (
-/obj/structure/tunnel{
-	id = "north_research_tunnel"
+/obj/structure/tunnel/maint_tunnel,
+/turf/open/floor/shiva{
+	icon_state = "purple"
 	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/research)
 "wvK" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/landmark/objective_landmark/close,
@@ -39127,7 +39129,7 @@ oPQ
 xCn
 cBI
 xCn
-emt
+xCn
 ljt
 pGs
 pGs
@@ -41309,7 +41311,7 @@ wmg
 vSY
 izs
 oyi
-sDM
+wvI
 fay
 ebr
 ebr
@@ -52793,7 +52795,7 @@ cto
 iFb
 mCF
 jdm
-mCF
+mSa
 mCF
 mCF
 mCF
@@ -53511,7 +53513,7 @@ pKs
 chs
 chs
 kGq
-wvI
+ixr
 ixr
 ixr
 ixr
@@ -53553,7 +53555,7 @@ xxk
 xxk
 xEG
 cSa
-mCF
+mSa
 mCF
 mCF
 mCF
@@ -62119,7 +62121,7 @@ cty
 cty
 aOg
 mCF
-mSa
+mCF
 mCF
 pGs
 pGs
@@ -62987,7 +62989,7 @@ wXs
 xJZ
 ouy
 eyt
-wnE
+kbQ
 kbQ
 kbQ
 kbQ
@@ -64795,7 +64797,7 @@ eyt
 eyt
 jqw
 qfu
-kbQ
+wnE
 sgk
 kbQ
 kbQ
@@ -65926,7 +65928,7 @@ bsf
 bsf
 bsf
 bsf
-bsf
+emt
 bsf
 bsf
 pDX

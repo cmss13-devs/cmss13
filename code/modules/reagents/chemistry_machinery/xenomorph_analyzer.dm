@@ -117,12 +117,12 @@
 
 		if("process_organ")
 			if(!busy)
+				busy = TRUE
 				addtimer(CALLBACK(src, PROC_REF(process_organ), organ.research_value), 3 SECONDS)
 				icon_state = "xeno_analyzer_on_moving"
 				playsound(loc, 'sound/machines/blender.ogg', 25, TRUE)
 				QDEL_NULL(organ)
 				. = TRUE
-				busy = TRUE
 		if("produce")
 			if(!busy)
 				start_print_upgrade(text2path(params["ref"]), usr, text2num(params["vari"]))
@@ -145,8 +145,11 @@
 
 
 /obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, mob/user, variation)
-	if (stat & NOPOWER)
+	if(stat & NOPOWER)
 		icon_state = "xeno_analyzer_off"
+		return
+	if(busy)//double check for me here
+		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red - its currently busy!"))
 		return
 	var/path_exists = FALSE
 	var/datum/research_upgrades/upgrade
@@ -161,7 +164,7 @@
 	if(!path_exists)
 		to_chat(user, SPAN_WARNING("[src] makes a suspicious wail before powering down."))
 		return
-	if(upgrade.value_upgrade > biomass_points)
+	if(clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[datum_upgrades], upgrade.minimum_price, upgrade.maximum_price) > biomass_points)
 		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
 		return
 	if((upgrade.clearance_req > GLOB.chemical_data.clearance_level && upgrade.clearance_req != 6) || (upgrade.clearance_req == 6 && !GLOB.chemical_data.reached_x_access))

@@ -135,7 +135,7 @@
 				if(amr.focused_fire_counter < 2) // Can stack up to twice.
 					amr.focused_fire_counter += 1
 				else
-					amr.focused_fire_counter = 0
+					amr.focused_fire_counter = -1
 			else // If it's a new target
 				amr.focused_fire_counter = 0 // Stacks to 0
 				if(human_firer && !(target_mob.is_dead()))
@@ -184,17 +184,17 @@
 
 		if((focused_fire_active || isxeno(target_mob)) && !(target_mob.is_dead()))
 			switch(amr_counter)
-				if(1)
+				if(0)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("One hit! You begin to carefully track the target's movements."))
 					if(isxeno(target_mob) && isxeno(old_target?.resolve()))
 						var/mob/living/carbon/xenomorph/old_xeno = old_target.resolve()
 						var/mob/living/carbon/xenomorph/new_xeno = target_mob
 						if((old_xeno.hive == new_xeno.hive) && !(old_xeno.stat)) // Must be in same hive and conscious
 							to_chat(old_xeno,SPAN_XENOLEADER("The feeling of looming danger fades as we sense that another sister has been targeted instead."))
-				if(2)
+				if(1)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Two hits! You're starting to get a good read on the target's patterns."))
-				if(3)
-					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye! It appears the heavy hit has made the target change its patterns."))
+				if(2)
+					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))
 				else
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))
 		else

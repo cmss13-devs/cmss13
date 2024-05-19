@@ -24,7 +24,7 @@
 	if(record_id_ref)
 		retrieved_record = selected_record_type[record_id_ref]
 	else
-		for(var/record_id_query as anything in selected_record_type)
+		for(var/record_id_query in selected_record_type)
 			var/datum/data/record/record = selected_record_type[record_id_query]
 			if(record.fields[MOB_NAME] == mob_name || record.fields[MOB_WEAKREF] == mob_ref)
 				retrieved_record = record

@@ -7755,6 +7755,9 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/platform_decoration/shiva{
+	dir = 4
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -55244,6 +55247,9 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/platform_decoration/shiva{
+	dir = 1
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"

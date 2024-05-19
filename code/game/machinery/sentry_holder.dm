@@ -79,11 +79,12 @@
 	deployed_turret.forceMove(loc)
 	icon_state = "[base_icon_state]_deployed"
 
-	for(var/mob/M in deployed_turret.loc)
-		if(deployed_turret.loc == src.loc)
-			step(M, deployed_turret.dir)
-		else
-			step(M, get_dir(src,deployed_turret))
+	if(deployed_turret.density)
+		for(var/mob/M in deployed_turret.loc)
+			if(deployed_turret.loc == src.loc)
+				step(M, deployed_turret.dir)
+			else
+				step(M, get_dir(src,deployed_turret))
 
 	deployed_turret.setDir(dir)
 	deployed_turret.pixel_x = 0
@@ -134,7 +135,6 @@
 /obj/structure/machinery/sentry_holder/almayer/mini/aicore/proc/auto_deploy()
 	if(deployed_turret.loc == src) //not deployed
 		if(stat & NOPOWER)
-			//to_chat(user, SPAN_WARNING("[src] is non-functional."))
 			return FALSE
 
 		deploy_sentry()

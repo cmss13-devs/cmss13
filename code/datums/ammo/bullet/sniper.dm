@@ -184,16 +184,16 @@
 
 		if((focused_fire_active || isxeno(target_mob)) && !(target_mob.is_dead()))
 			switch(amr_counter)
-				if(0)
+				if(1)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("One hit! You begin to carefully track the target's movements."))
 					if(isxeno(target_mob) && isxeno(old_target?.resolve()))
 						var/mob/living/carbon/xenomorph/old_xeno = old_target.resolve()
 						var/mob/living/carbon/xenomorph/new_xeno = target_mob
 						if((old_xeno.hive == new_xeno.hive) && !(old_xeno.stat)) // Must be in same hive and conscious
 							to_chat(old_xeno,SPAN_XENOLEADER("The feeling of looming danger fades as we sense that another sister has been targeted instead."))
-				if(1)
-					to_chat(aimed_projectile.firer, SPAN_WARNING("Two hits! You're starting to get a good read on the target's patterns."))
 				if(2)
+					to_chat(aimed_projectile.firer, SPAN_WARNING("Two hits! You're starting to get a good read on the target's patterns."))
+				if(3)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))
 				else
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))

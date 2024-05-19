@@ -116,8 +116,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
- // Hybrisa Shutters
-
+// Hybrisa Shutters
 /obj/structure/machinery/door/poddoor/hybrisa
 	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
 	icon_state = "almayer_pdoor1"

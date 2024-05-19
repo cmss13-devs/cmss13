@@ -143768,9 +143768,7 @@
 	},
 /area/lv759/indoors/wy_research_complex_entrance)
 "xpP" = (
-/mob/living/simple_animal/rat/gray{
-	icon_state = "rat_gray_sleep"
-	},
+/mob/living/simple_animal/rat/gray,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "xpR" = (

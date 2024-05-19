@@ -309,12 +309,6 @@
 	update_icon()
 	return is_lit
 
-#undef FLOODLIGHT_REPAIR_UNSCREW
-#undef FLOODLIGHT_REPAIR_CROWBAR
-#undef FLOODLIGHT_REPAIR_WELD
-#undef FLOODLIGHT_REPAIR_CABLE
-#undef FLOODLIGHT_REPAIR_SCREW
-
 // Hybrisa Streetlights
 /obj/structure/machinery/colony_floodlight/street
 	name = "Colony Streetlight"
@@ -330,14 +324,7 @@
 	else
 		icon_state = "street_off"
 
-#undef FLOODLIGHT_REPAIR_UNSCREW
-#undef FLOODLIGHT_REPAIR_CROWBAR
-#undef FLOODLIGHT_REPAIR_WELD
-#undef FLOODLIGHT_REPAIR_CABLE
-#undef FLOODLIGHT_REPAIR_SCREW
-
 // Traffic
-
 /obj/structure/machinery/colony_floodlight/traffic
 	lum_value = 0
 	name = "traffic light"
@@ -358,11 +345,6 @@
 	else
 		icon_state = "trafficlight"
 
-#undef FLOODLIGHT_REPAIR_UNSCREW
-#undef FLOODLIGHT_REPAIR_CROWBAR
-#undef FLOODLIGHT_REPAIR_WELD
-#undef FLOODLIGHT_REPAIR_CABLE
-#undef FLOODLIGHT_REPAIR_SCREW
 /obj/structure/machinery/colony_floodlight/traffic_alt
 	lum_value = 0
 	name = "traffic light"
@@ -388,4 +370,3 @@
 #undef FLOODLIGHT_REPAIR_WELD
 #undef FLOODLIGHT_REPAIR_CABLE
 #undef FLOODLIGHT_REPAIR_SCREW
-

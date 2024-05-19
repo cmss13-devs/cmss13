@@ -1,6 +1,14 @@
 import { BooleanLike } from '../../common/react';
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Stack, Icon, Section, ProgressBar } from '../components';
+import {
+  Box,
+  Button,
+  Flex,
+  Icon,
+  ProgressBar,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
 type ScopeData = {
@@ -42,9 +50,10 @@ const OffsetAdjuster = (props) => {
   return (
     <div
       style={{
-        'flex': '1',
-        'marginRight': '20px',
-      }}>
+        flex: '1',
+        marginRight: '20px',
+      }}
+    >
       <Section title="Offset">
         <Box>
           <Stack vertical>
@@ -62,7 +71,8 @@ const OffsetAdjuster = (props) => {
                   color="yellow"
                   lineHeight={3}
                   m={-0.2}
-                  fluid>
+                  fluid
+                >
                   <Icon name="arrows-alt" size={1.5} m="0%" />
                 </Button>
               </Flex.Item>
@@ -86,7 +96,6 @@ const OffsetDirection = (props) => {
   return (
     <Flex.Item grow={1} basis={0}>
       <Button
-        content={DirectionAbbreviation[dir]}
         tooltip={`Adjusts the scope's offset to the ${DirectionAbbreviation[dir]}`}
         disabled={
           data.valid_offset_dirs.indexOf(dir) === -1 || data.scope_cooldown
@@ -97,7 +106,9 @@ const OffsetDirection = (props) => {
         lineHeight={3}
         m={-0.2}
         fluid
-      />
+      >
+        {DirectionAbbreviation[dir]}
+      </Button>
     </Flex.Item>
   );
 };
@@ -105,7 +116,7 @@ const OffsetDirection = (props) => {
 const PositionAdjuster = (props) => {
   const { act, data } = useBackend<ScopeData>();
   return (
-    <div style={{ 'flex': '1' }}>
+    <div style={{ flex: '1' }}>
       <Section title="Position" textAlign="right">
         <Box>
           <Stack vertical>
@@ -123,7 +134,8 @@ const PositionAdjuster = (props) => {
                   color="yellow"
                   lineHeight={3}
                   m={-0.2}
-                  fluid>
+                  fluid
+                >
                   <Icon name="arrows-alt" size={1.5} m="0%" />
                 </Button>
               </Flex.Item>
@@ -147,7 +159,6 @@ const ScopePosition = (props) => {
   return (
     <Flex.Item grow={1} basis={0}>
       <Button
-        content={DirectionAbbreviation[dir]}
         tooltip={`Adjusts the scope's position to the ${DirectionAbbreviation[dir]}`}
         disabled={
           data.valid_adjust_dirs.indexOf(dir) === -1 || data.scope_cooldown
@@ -158,7 +169,9 @@ const ScopePosition = (props) => {
         lineHeight={3}
         m={-0.2}
         fluid
-      />
+      >
+        {DirectionAbbreviation[dir]}
+      </Button>
     </Flex.Item>
   );
 };
@@ -169,7 +182,6 @@ const SecondarySection = (props) => {
     <Section title="Breathing & Data" textAlign="center">
       <Flex.Item grow={1} basis={0}>
         <Button
-          content="Control Breathing"
           tooltip="Control your breathing for a short time, removing scope drift."
           disabled={data.breath_cooldown}
           textAlign="center"
@@ -178,9 +190,11 @@ const SecondarySection = (props) => {
           lineHeight={3}
           m={-0.2}
           fluid
-        />
+        >
+          Control Breathing
+        </Button>
       </Flex.Item>
-      <div style={{ 'padding': '6px' }} />
+      <div style={{ padding: '6px' }} />
       <Flex.Item>
         <ProgressBar
           minValue={0}
@@ -190,12 +204,13 @@ const SecondarySection = (props) => {
             good: [0.8, Infinity],
             average: [0.5, 0.8],
             bad: [-Infinity, 0.5],
-          }}>
+          }}
+        >
           Recharge
         </ProgressBar>
       </Flex.Item>
       <Flex.Item>
-        <div style={{ 'paddingTop': '8px', 'paddingBottom': '8px' }}>
+        <div style={{ paddingTop: '8px', paddingBottom: '8px' }}>
           <ProgressBar
             minValue={0}
             maxValue={100}
@@ -204,7 +219,8 @@ const SecondarySection = (props) => {
               good: [-Infinity, 0],
               average: [1, 50],
               bad: [51, Infinity],
-            }}>
+            }}
+          >
             Scope Drift: {data.current_scope_drift}%
           </ProgressBar>
         </div>
@@ -218,7 +234,8 @@ const SecondarySection = (props) => {
             good: [0.8, Infinity],
             average: [0.5, 0.8],
             bad: [-Infinity, 0.5],
-          }}>
+          }}
+        >
           Fire Readiness
         </ProgressBar>
       </Flex.Item>
@@ -232,7 +249,7 @@ export const VultureScope = (props) => {
     <Window title="Scope Configuration" width={325} height={400}>
       <Window.Content>
         <Section title="Scope Adjustments">
-          <div style={{ 'display': 'flex' }}>
+          <div style={{ display: 'flex' }}>
             <OffsetAdjuster />
             <PositionAdjuster />
           </div>

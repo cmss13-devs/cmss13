@@ -1,7 +1,17 @@
-import { useBackend } from '../backend';
 import { addZeros } from 'common/math';
+
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  ColorBox,
+  Divider,
+  Flex,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+} from '../components';
 import { Window } from '../layouts';
-import { Box, ColorBox, NoticeBox, Flex, ProgressBar, Button, LabeledList, Divider } from '../components';
 
 export const BrigCell = (props) => {
   const { data, act } = useBackend();
@@ -12,20 +22,22 @@ export const BrigCell = (props) => {
       <Window.Content scrollable>
         <Flex justify="center" mt="2rem" mb=".5rem">
           <Button
-            content="Toggle Shutters"
             height="100%"
             mr="1rem"
             px="2rem"
             py=".25rem"
             onClick={() => act('toggle_doors')}
-          />
+          >
+            Toggle Shutters
+          </Button>
           <Button
-            content="Activate Flash"
             height="100%"
             px="2rem"
             py=".25rem"
             onClick={() => act('flash')}
-          />
+          >
+            Activate Flash
+          </Button>
         </Flex>
 
         <Divider />
@@ -54,7 +66,8 @@ export const BrigCell = (props) => {
                     color={isActive ? 'green' : ''}
                     onClick={() =>
                       act('set_viewed_incident', { incident: incident.ref })
-                    }>
+                    }
+                  >
                     {incident.suspect}
                   </Button>
                 );
@@ -173,7 +186,8 @@ const IncidentDetails = (props) => {
           value={progress}
           p="1.25rem"
           color="average"
-          style={{ border: 'none', margin: 0 }}>
+          style={{ border: 'none', margin: 0 }}
+        >
           <Flex justify="center" fontSize="2rem" bold>
             {time_left_pretty}
           </Flex>
@@ -186,7 +200,8 @@ const IncidentDetails = (props) => {
           width="100%"
           textAlign="center"
           p="1rem"
-          fontSize="2rem">
+          fontSize="2rem"
+        >
           {statusText}
         </NoticeBox>
       )}
@@ -244,7 +259,6 @@ const IncidentDetails = (props) => {
 
           {!!can_pardon && (
             <Button.Confirm
-              content="Pardon"
               tooltip="Pardon"
               icon="gavel"
               px="2rem"
@@ -252,7 +266,9 @@ const IncidentDetails = (props) => {
               mt="1rem"
               height="100%"
               onClick={() => act('pardon')}
-            />
+            >
+              Pardon
+            </Button.Confirm>
           )}
         </Flex>
       )}

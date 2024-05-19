@@ -267,7 +267,7 @@
 
 #define TRAIT_GUN_BIPODDED "t_gun_bipodded"
 
-#define TRAIT_GUN_LIGHT_DEACTIVATED "t_gun_light_deactivated"
+#define TRAIT_GUN_LIGHT_FORCE_DEACTIVATED "t_gun_light_deactivated"
 
 /// If this ID belongs to an ERT member
 #define TRAIT_ERT_ID "ert_id"

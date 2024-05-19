@@ -1,7 +1,8 @@
 import { BooleanLike, classes } from 'common/react';
+
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
-import { Box, Button, Icon, NoticeBox, Section, Stack } from '../components';
+import { Button, Icon, Image, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 type Data = {
@@ -45,16 +46,17 @@ export const RadarContent = (props) => {
       </Stack.Item>
       <Stack.Item
         style={{
-          'backgroundImage':
+          backgroundImage:
             'url("' + resolveAsset('ntosradarbackground.png') + '")',
-          'backgroundPosition': 'center',
-          'backgroundRepeat': 'no-repeat',
-          'top': '20px',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          top: '20px',
         }}
         position="relative"
         m={1.5}
         width={45}
-        height={45}>
+        height={45}
+      >
         <TargetDisplay />
       </Stack.Item>
     </Stack>
@@ -70,11 +72,12 @@ const ObjectDisplay = (props) => {
     <Section>
       <Button
         icon="redo-alt"
-        content={scanning ? 'Scanning...' : 'Scan'}
         color="blue"
         disabled={scanning}
         onClick={() => act('scan')}
-      />
+      >
+        {scanning ? 'Scanning...' : 'Scan'}
+      </Button>
       {!object.length && !scanning && <div>No trackable signals found</div>}
       {!scanning &&
         object.map((object) => (
@@ -92,7 +95,8 @@ const ObjectDisplay = (props) => {
               act('selecttarget', {
                 ref: object.ref,
               });
-            }}>
+            }}
+          >
             {object.name}
           </div>
         ))}
@@ -116,20 +120,20 @@ const TargetDisplay = (props) => {
         left={1.35}
         width={42}
         fontSize="30px"
-        textAlign="center">
+        textAlign="center"
+      >
         Signal Lost
       </NoticeBox>
     );
   }
   return target.userot ? (
-    <Box
-      as="img"
+    <Image
       src={resolveAsset(target.arrowstyle)}
       position="absolute"
       top="20px"
       left="243px"
       style={{
-        'transform': `rotate(${target.rot}deg)`,
+        transform: `rotate(${target.rot}deg)`,
       }}
     />
   ) : (

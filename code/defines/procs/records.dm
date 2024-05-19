@@ -61,7 +61,7 @@
 	general_record.fields[MOB_RELIGION] = person.religion ? person.religion : "Unknown"
 	general_record.fields[MOB_WEAKREF] = WEAKREF(person)
 	general_record.fields[MOB_GENERAL_NOTES] = person.gen_record && !jobban_isbanned(person, "Records") ? person.gen_record : "No notes found."
-	GLOB.data_core.general[person.record_id_ref] += general_record
+	GLOB.data_core.general[person.record_id_ref] = general_record
 
 /proc/create_security_record(mob/living/carbon/human/person)
 	var/datum/data/record/security_record = new()
@@ -71,7 +71,7 @@
 	security_record.fields[MOB_INCIDENTS] = list()
 	security_record.fields[MOB_WEAKREF] = WEAKREF(person)
 	security_record.fields[MOB_SECURITY_NOTES] = person.sec_record  && !jobban_isbanned(person, "Records") ? person.sec_record : "No notes found."
-	GLOB.data_core.security[person.record_id_ref] += security_record
+	GLOB.data_core.security[person.record_id_ref] = security_record
 
 /proc/create_medical_record(mob/living/carbon/human/person)
 	var/datum/data/record/medical_record = new()
@@ -89,7 +89,7 @@
 	medical_record.fields[MOB_AUTODOC_DATA] = list()
 	medical_record.fields[MOB_AUTODOC_MANUAL] = list()
 	medical_record.fields[MOB_WEAKREF] = WEAKREF(person)
-	GLOB.data_core.medical[person.record_id_ref] += medical_record
+	GLOB.data_core.medical[person.record_id_ref] = medical_record
 
 /proc/create_static_character_record(mob/living/carbon/human/person)
 	var/datum/data/record/record_locked = new()
@@ -106,4 +106,4 @@
 	record_locked.fields[MOB_RELIGION] = person.religion
 	record_locked.fields[MOB_WEAKREF] = WEAKREF(person)
 	record_locked.fields[MOB_EXPLOIT_RECORD] = !jobban_isbanned(person, "Records") ? person.exploit_record : "No additional information acquired"
-	GLOB.data_core.locked[person.record_id_ref] += record_locked
+	GLOB.data_core.locked[person.record_id_ref] = record_locked

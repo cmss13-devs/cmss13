@@ -86,7 +86,7 @@
 	var/list/mob_names
 
 	// No, we can't use GLOB.human_mob_list since a mob is removed from that list when it gets deleted.
-	for(var/record as anything in GLOB.data_core.general)
+	for(var/record in GLOB.data_core.general)
 		var/datum/data/record/new_record = GLOB.data_core.general[record]
 		mob_names += new_record.fields[MOB_NAME]
 

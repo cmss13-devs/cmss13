@@ -20,10 +20,14 @@ map bigredv2
 endmap
 
 map khami_barrens
+	disabled
+	voteweight 0
 endmap
 
 map dockred
 	maxplayers 30
+	disabled
+	voteweight 0
 endmap
 
 #map prison_station_fop

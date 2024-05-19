@@ -75,12 +75,12 @@
 /datum/research_upgrades/item/research_credits
 	name = "Research Credits"
 	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team for two or three points."
-	value_upgrade = 500
+	value_upgrade = 800
 	item_reference = /obj/item/research_upgrades/credits
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	change_purchase = 100
-	maximum_price = 3000
+	maximum_price = 4000
 	clearance_req = 4
 
 /datum/research_upgrades/item/laser_scalpel
@@ -128,7 +128,7 @@
 /datum/research_upgrades/armor/coagulator
 	name = "Active Blood Coagulator Plate"
 	desc = "A uniform-attachable plate capable of coagulating any bleeding wounds the user possesses."
-	value_upgrade = 1250
+	value_upgrade = 1200
 	behavior = RESEARCH_UPGRADE_TIER_1
 	clearance_req = 2
 	change_purchase = -200
@@ -160,7 +160,7 @@
 
 /datum/research_upgrades/armor/preservation
 	name = "Death Preservation Plate"
-	desc = "preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead, due to small tank of preservatives, it needs to be replaced on each death."
+	desc = "preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead, due to small tank of preservatives, it needs to be replaced on each death. Extends time to permadeath by around four minutes."
 	value_upgrade = 500
 	clearance_req = 4
 	behavior = RESEARCH_UPGRADE_TIER_1

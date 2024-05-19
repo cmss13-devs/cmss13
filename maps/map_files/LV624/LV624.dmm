@@ -9358,7 +9358,7 @@
 /area/lv624/lazarus/security)
 "aPv" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/storage/firstaid/adv,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -24636,10 +24636,10 @@
 /area/lv624/ground/caves/east_caves)
 "xwQ" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs/cable/white{
+/obj/item/restraint/adjustable/cable/white{
 	pixel_y = 4
 	},
-/obj/item/handcuffs/cable/white,
+/obj/item/restraint/adjustable/cable/white,
 /turf/open/floor{
 	icon_state = "whiteyellow"
 	},

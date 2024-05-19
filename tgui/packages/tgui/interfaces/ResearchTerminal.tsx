@@ -1,9 +1,11 @@
-import { useBackend, useLocalState } from '../backend';
-import { Button, Stack, Section, Flex, Tabs, Box } from '../components';
-import { Window } from '../layouts';
-import { Table, TableCell, TableRow } from '../components/Table';
+import { useState } from 'react';
+
 import { classes } from '../../common/react';
+import { useBackend } from '../backend';
+import { Box, Button, Flex, Section, Stack, Tabs } from '../components';
 import { BoxProps } from '../components/Box';
+import { Table, TableCell, TableRow } from '../components/Table';
+import { Window } from '../layouts';
 
 export interface DocumentLog {
   ['XRF Scans']?: Array<DocumentRecord>;
@@ -17,30 +19,27 @@ export interface DocumentRecord {
 }
 
 interface TerminalProps {
-  'clearance_level': number;
-  'research_documents': DocumentLog;
-  'published_documents': DocumentLog;
-  'rsc_credits': number;
-  'broker_cost': number;
-  'base_purchase_cost': number;
-  'main_terminal': number;
-  'terminal_view': number;
-  'clearance_x_access': number;
-  'photocopier_error': number;
-  'printer_toner': number;
+  clearance_level: number;
+  research_documents: DocumentLog;
+  published_documents: DocumentLog;
+  rsc_credits: number;
+  broker_cost: number;
+  base_purchase_cost: number;
+  main_terminal: number;
+  terminal_view: number;
+  clearance_x_access: number;
+  photocopier_error: number;
+  printer_toner: number;
 }
 
 const PurchaseDocs = () => {
   const { data, act } = useBackend<TerminalProps>();
-  const [purchaseSelection, setPurchaseSelection] = useLocalState(
-    'purchase_confirm',
-    '0'
-  );
+  const [purchaseSelection, setPurchaseSelection] = useState('0');
   const clearance_level = data.clearance_level;
   const all_levels = ['1', '2', '3', '4', '5'];
   const costs = { '1': 7, '2': 9, '3': 11, '4': 13, '5': 15 };
   const available_levels = Array.from(Array(clearance_level).keys()).map((x) =>
-    (x + 1).toString()
+    (x + 1).toString(),
   );
 
   return (
@@ -51,7 +50,7 @@ const PurchaseDocs = () => {
       </Stack.Item>
 
       <Stack.Item>
-        <Flex justify="space-between" fill className="purchase-flex">
+        <Flex justify="space-between" fill={1} className="purchase-flex">
           {all_levels.map((x) => {
             const isDisabled =
               !available_levels.includes(x) || costs[x] > data.rsc_credits;
@@ -62,7 +61,8 @@ const PurchaseDocs = () => {
                     !available_levels.includes(x) && 'HiddenButton',
                   ])}
                   disabled={isDisabled}
-                  onClick={() => setPurchaseSelection(x)}>
+                  onClick={() => setPurchaseSelection(x)}
+                >
                   Level {x} {costs[x]}CR
                 </Button>
               </Flex.Item>
@@ -80,7 +80,8 @@ const PurchaseDocs = () => {
               });
               setPurchaseSelection('0');
             }}
-            onCancel={() => setPurchaseSelection('0')}>
+            onCancel={() => setPurchaseSelection('0')}
+          >
             <span>
               Are you sure you want to purchase a level{' '}
               <u>{purchaseSelection}</u> document?
@@ -109,7 +110,8 @@ const ConfirmationDialogue = (props: ConfirmationProps) => {
             <Button
               className="Button ConfirmButton"
               icon="check"
-              onClick={props.onConfirm}>
+              onClick={props.onConfirm}
+            >
               Confirm
             </Button>
           </Stack.Item>
@@ -138,8 +140,8 @@ const CompoundRecord = (props: CompoundRecordProps) => {
   const isMainTerminal = data.main_terminal === 1;
   const { compound } = props;
   const doc_ref = {
-    'print_type': compound.category,
-    'print_title': compound.id,
+    print_type: compound.category,
+    print_title: compound.id,
   };
   return (
     <TableRow key={compound.id}>
@@ -168,7 +170,8 @@ const CompoundRecord = (props: CompoundRecordProps) => {
           className="compound_actions"
           justify="space-around"
           align-items="stretch"
-          wrap={false}>
+          wrap={false}
+        >
           <Flex.Item>
             <Button icon="book" onClick={() => act('read_document', doc_ref)}>
               Read
@@ -179,7 +182,8 @@ const CompoundRecord = (props: CompoundRecordProps) => {
               <Button
                 disabled={data.photocopier_error || data.printer_toner === 0}
                 icon="print"
-                onClick={() => act('print', doc_ref)}>
+                onClick={() => act('print', doc_ref)}
+              >
                 Print
               </Button>
             </Flex.Item>
@@ -188,7 +192,8 @@ const CompoundRecord = (props: CompoundRecordProps) => {
             <Flex.Item>
               <Button
                 icon="upload"
-                onClick={() => act('publish_document', doc_ref)}>
+                onClick={() => act('publish_document', doc_ref)}
+              >
                 Publish
               </Button>
             </Flex.Item>
@@ -197,7 +202,8 @@ const CompoundRecord = (props: CompoundRecordProps) => {
             <Flex.Item>
               <Button
                 icon="remove"
-                onClick={() => act('unpublish_document', doc_ref)}>
+                onClick={() => act('unpublish_document', doc_ref)}
+              >
                 Unpublish
               </Button>
             </Flex.Item>
@@ -222,9 +228,12 @@ interface CompoundData {
   isPublished: boolean;
 }
 
-const ResearchReportTable = () => {
+const ResearchReportTable = (props: {
+  readonly hideOld: boolean;
+  readonly setHideOld: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { data } = useBackend<TerminalProps>();
-  const [hideOld, setHideOld] = useLocalState('hide_old', true);
+  const { hideOld, setHideOld } = props;
   const documents = Object.keys(data.research_documents)
     .map((x) => {
       const output = data.research_documents[x] as DocumentRecord[];
@@ -237,7 +246,7 @@ const ResearchReportTable = () => {
   return (
     <Stack vertical>
       <Stack.Item>
-        <Flex justify="space-between" fill>
+        <Flex justify="space-between" fill={1}>
           <Flex.Item>
             {hideOld && (
               <Button onClick={() => setHideOld(false)}>
@@ -252,7 +261,12 @@ const ResearchReportTable = () => {
       </Stack.Item>
       <hr />
       <Stack.Item>
-        <CompoundTable docs={documents} timeLabel="Scan Time" canPrint />
+        <CompoundTable
+          hideOld={hideOld}
+          docs={documents}
+          timeLabel="Scan Time"
+          canPrint
+        />
       </Stack.Item>
     </Stack>
   );
@@ -262,11 +276,11 @@ export interface CompoundTableProps extends BoxProps {
   readonly docs: DocumentRecord[];
   readonly timeLabel: string;
   readonly canPrint: boolean;
+  readonly hideOld?: boolean | true;
 }
 
 export const CompoundTable = (props: CompoundTableProps) => {
   const { data } = useBackend<TerminalProps>();
-  const [hideOld] = useLocalState('hide_old', true);
   const published = Object.keys(data.published_documents)
     .map((x) => {
       const output = data.published_documents[x] as DocumentRecord[];
@@ -276,14 +290,13 @@ export const CompoundTable = (props: CompoundTableProps) => {
       return output;
     })
     .flat() as DocumentRecord[];
-  const [sortby, setSortBy] = useLocalState('sort_by', 'time');
-  const [sortdir, setSortdir] = useLocalState('sort_dir', 'asc');
-
-  const documents = props.docs;
+  const [sortby, setSortBy] = useState('time');
+  const [sortdir, setSortdir] = useState('asc');
+  const { docs, hideOld } = props;
 
   const outputDocs: Map<String, CompoundData> = new Map();
-  documents
-    .map((x) => {
+  docs
+    .map<CompoundData>((x) => {
       const document_prefix = x.document_title.split(' ')[0];
       const doc_number = Number.parseInt(document_prefix, 10);
       const doctype: DocInfo = {
@@ -296,10 +309,10 @@ export const CompoundTable = (props: CompoundTableProps) => {
 
       return {
         id: x.document_title,
+        category: x.category,
         docNumber: Number.isNaN(doc_number) ? 0 : doc_number,
         type: doctype,
         isPublished: isPublished(doctype.document),
-        category: x.category,
       };
     })
     .forEach((x) => {
@@ -311,7 +324,7 @@ export const CompoundTable = (props: CompoundTableProps) => {
 
         if (
           x.type.time.localeCompare(
-            outputDocs.get(x.type.document)?.type.time ?? ''
+            outputDocs.get(x.type.document)?.type.time ?? '',
           )
         ) {
           outputDocs.set(x.type.document, x);
@@ -350,7 +363,8 @@ export const CompoundTable = (props: CompoundTableProps) => {
         <TableCell textAlign="center">
           <Button
             icon={iconRef('time', true)}
-            onClick={() => sortColClick('time')}>
+            onClick={() => sortColClick('time')}
+          >
             {props.timeLabel}
           </Button>
         </TableCell>
@@ -360,7 +374,8 @@ export const CompoundTable = (props: CompoundTableProps) => {
         <TableCell textAlign="center">
           <Button
             icon={iconRef('name', false)}
-            onClick={() => sortColClick('name')}>
+            onClick={() => sortColClick('name')}
+          >
             Compound
           </Button>
         </TableCell>
@@ -384,8 +399,8 @@ export const CompoundTable = (props: CompoundTableProps) => {
             }
           }
         })
-        .map((x) => (
-          <CompoundRecord compound={x} key={x.id} canPrint={props.canPrint} />
+        .map((x, i) => (
+          <CompoundRecord compound={x} key={i} canPrint={props.canPrint} />
         ))}
     </Table>
   );
@@ -399,12 +414,12 @@ const TonerEmpty = () => {
   return <span>ERROR: Printer toner is empty.</span>;
 };
 
-const ImproveClearanceConfirmation = (props) => {
+const ImproveClearanceConfirmation = (props: {
+  readonly isConfirm: string | undefined;
+  readonly setConfirm: React.Dispatch<React.SetStateAction<string | undefined>>;
+}) => {
   const { data, act } = useBackend<TerminalProps>();
-  const [isConfirm, setConfirm] = useLocalState<string | undefined>(
-    'purchase_confirmation',
-    undefined
-  );
+  const { isConfirm, setConfirm } = props;
   if (isConfirm === undefined || isConfirm !== 'broker_clearance') {
     return null;
   }
@@ -416,7 +431,8 @@ const ImproveClearanceConfirmation = (props) => {
             act('broker_clearance');
             setConfirm(undefined);
           }}
-          onCancel={() => setConfirm(undefined)}>
+          onCancel={() => setConfirm(undefined)}
+        >
           <span>
             Are you sure you want to spend <u>{data.broker_cost}</u> research
             credits to increase the clearance immediately?
@@ -427,12 +443,12 @@ const ImproveClearanceConfirmation = (props) => {
   );
 };
 
-const XClearanceConfirmation = (props) => {
+const XClearanceConfirmation = (props: {
+  readonly isConfirm: string | undefined;
+  readonly setConfirm: React.Dispatch<React.SetStateAction<string | undefined>>;
+}) => {
   const { data, act } = useBackend<TerminalProps>();
-  const [isConfirm, setConfirm] = useLocalState<string | undefined>(
-    'purchase_confirmation',
-    undefined
-  );
+  const { isConfirm, setConfirm } = props;
   if (isConfirm === undefined || isConfirm !== 'request_clearance_x_access') {
     return null;
   }
@@ -444,7 +460,8 @@ const XClearanceConfirmation = (props) => {
             act('request_clearance_x_access');
             setConfirm(undefined);
           }}
-          onCancel={() => setConfirm(undefined)}>
+          onCancel={() => setConfirm(undefined)}
+        >
           <span>
             Are you sure you wish request clearance level <u>X</u> access for{' '}
             <u>5</u> credits?
@@ -455,8 +472,12 @@ const XClearanceConfirmation = (props) => {
   );
 };
 
-const ResearchManager = () => {
+const ResearchManager = (props: {
+  readonly isConfirm: string | undefined;
+  readonly setConfirm: React.Dispatch<React.SetStateAction<string | undefined>>;
+}) => {
   const { data } = useBackend<TerminalProps>();
+  const { isConfirm, setConfirm } = props;
   return (
     <Box>
       <Stack vertical>
@@ -466,8 +487,11 @@ const ResearchManager = () => {
       </Stack>
       <hr />
       <PurchaseDocs />
-      <ImproveClearanceConfirmation />
-      <XClearanceConfirmation />
+      <ImproveClearanceConfirmation
+        isConfirm={isConfirm}
+        setConfirm={setConfirm}
+      />
+      <XClearanceConfirmation isConfirm={isConfirm} setConfirm={setConfirm} />
     </Box>
   );
 };
@@ -490,8 +514,9 @@ const ErrorStack = () => {
   );
 };
 
-const PublishedMaterial = (props) => {
+const PublishedMaterial = (props: { readonly hideOld: boolean }) => {
   const { data } = useBackend<TerminalProps>();
+  const { hideOld } = props;
   const documents = Object.keys(data.published_documents)
     .map((x) => {
       const output = data.published_documents[x] as DocumentRecord[];
@@ -505,36 +530,60 @@ const PublishedMaterial = (props) => {
   return (
     <Stack vertical>
       <Stack.Item>
-        <CompoundTable docs={documents} timeLabel="Published" canPrint />
+        <CompoundTable
+          hideOld={hideOld}
+          docs={documents}
+          timeLabel="Published"
+          canPrint
+        />
       </Stack.Item>
     </Stack>
   );
 };
 
-const ResearchOverview = () => {
-  const [selectedTab, setSelectedTab] = useLocalState('research_tab', 1);
+const ResearchOverview = (props: {
+  readonly isConfirm: string | undefined;
+  readonly setConfirm: React.Dispatch<React.SetStateAction<string | undefined>>;
+  readonly selectedTab: number;
+  readonly setSelectedTab: React.Dispatch<React.SetStateAction<number>>;
+}) => {
+  const { isConfirm, setConfirm, selectedTab, setSelectedTab } = props;
+  const [hideOld, setHideOld] = useState(true);
+
   return (
     <div className="TabWrapper">
       <Tabs fluid>
         <Tabs.Tab
           selected={selectedTab === 1}
-          onClick={() => setSelectedTab(1)}
+          onClick={() => {
+            setSelectedTab(1);
+            setConfirm(undefined);
+          }}
           icon="gear"
-          color="black">
+          color="black"
+        >
           Manage Research
         </Tabs.Tab>
         <Tabs.Tab
           selected={selectedTab === 2}
-          onClick={() => setSelectedTab(2)}
+          onClick={() => {
+            setSelectedTab(2);
+            setConfirm(undefined);
+          }}
           icon="flask"
-          color="black">
+          color="black"
+        >
           View Chemicals
         </Tabs.Tab>
         <Tabs.Tab
           selected={selectedTab === 3}
-          onClick={() => setSelectedTab(3)}
+          onClick={() => {
+            setSelectedTab(3);
+            setConfirm(undefined);
+          }}
           icon="book"
-          color="black">
+          color="black"
+        >
           Published Material
         </Tabs.Tab>
       </Tabs>
@@ -544,9 +593,13 @@ const ResearchOverview = () => {
             <ErrorStack />
           </Stack.Item>
           <Stack.Item>
-            {selectedTab === 1 && <ResearchManager />}
-            {selectedTab === 2 && <ResearchReportTable />}
-            {selectedTab === 3 && <PublishedMaterial />}
+            {selectedTab === 1 && (
+              <ResearchManager isConfirm={isConfirm} setConfirm={setConfirm} />
+            )}
+            {selectedTab === 2 && (
+              <ResearchReportTable hideOld={hideOld} setHideOld={setHideOld} />
+            )}
+            {selectedTab === 3 && <PublishedMaterial hideOld={hideOld} />}
           </Stack.Item>
         </Stack>
       </div>
@@ -554,13 +607,12 @@ const ResearchOverview = () => {
   );
 };
 
-const ClearanceImproveButton = () => {
+const ClearanceImproveButton = (props: {
+  readonly setSelectedTab: React.Dispatch<React.SetStateAction<number>>;
+  readonly setConfirm: React.Dispatch<React.SetStateAction<string | undefined>>;
+}) => {
   const { data } = useBackend<TerminalProps>();
-  const [selectedTab, setSelectedTab] = useLocalState('research_tab', 1);
-  const [confirm, setConfirm] = useLocalState<string | undefined>(
-    'purchase_confirmation',
-    undefined
-  );
+  const { setSelectedTab, setConfirm } = props;
   const clearance_level = data.clearance_level;
   const x_access = data.clearance_x_access;
   const isDisabled = data.rsc_credits < data.broker_cost;
@@ -572,7 +624,8 @@ const ClearanceImproveButton = () => {
           onClick={() => {
             setSelectedTab(1);
             setConfirm('broker_clearance');
-          }}>
+          }}
+        >
           Improve {data.broker_cost}CR
         </Button>
       )}
@@ -583,7 +636,8 @@ const ClearanceImproveButton = () => {
             onClick={() => {
               setSelectedTab(1);
               setConfirm('request_clearance_x_access');
-            }}>
+            }}
+          >
             Request X (5)
           </Button>
         </Flex.Item>
@@ -599,13 +653,26 @@ const ClearanceImproveButton = () => {
 
 export const ResearchTerminal = () => {
   const { data } = useBackend<TerminalProps>();
+  const [selectedTab, setSelectedTab] = useState(1);
+  const [isConfirm, setConfirm] = useState<string | undefined>(undefined);
   return (
     <Window width={480 * 2} height={320 * 2} theme="crtyellow">
       <Window.Content scrollable className="ResearchTerminal">
         <Section
           title={`Clearance Level ${data.clearance_level}`}
-          buttons={<ClearanceImproveButton />}>
-          <ResearchOverview />
+          buttons={
+            <ClearanceImproveButton
+              setSelectedTab={setSelectedTab}
+              setConfirm={setConfirm}
+            />
+          }
+        >
+          <ResearchOverview
+            isConfirm={isConfirm}
+            setConfirm={setConfirm}
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+          />
         </Section>
       </Window.Content>
     </Window>

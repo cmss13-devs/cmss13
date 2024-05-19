@@ -69,8 +69,7 @@
 
 /obj/item/folded_tent/proc/get_deployment_area(turf/ref_turf)
 	RETURN_TYPE(/list/turf)
-	var/turf/block_end_turf = locate(ref_turf.x + dim_x - 1, ref_turf.y + dim_y - 1, ref_turf.z)
-	return block(ref_turf, block_end_turf)
+	return CORNER_BLOCK(ref_turf, dim_x, dim_y)
 
 /obj/item/folded_tent/attack_self(mob/living/user)
 	. = ..()

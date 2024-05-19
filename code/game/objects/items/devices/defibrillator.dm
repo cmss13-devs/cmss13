@@ -56,7 +56,7 @@
 		icon_state += "_out"
 
 	if(dcell && dcell.charge)
-		switch(round(dcell.charge * 100 / dcell.maxcharge))
+		switch(floor(dcell.charge * 100 / dcell.maxcharge))
 			if(67 to INFINITY)
 				overlays += "+full"
 			if(34 to 66)
@@ -72,8 +72,8 @@
 	. = ..()
 	var/maxuses = 0
 	var/currentuses = 0
-	maxuses = round(dcell.maxcharge / charge_cost)
-	currentuses = round(dcell.charge / charge_cost)
+	maxuses = floor(dcell.maxcharge / charge_cost)
+	currentuses = floor(dcell.charge / charge_cost)
 	. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery.")
 	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) || !blocked_by_suit)
 		. += SPAN_NOTICE("This defibrillator will ignore worn armor.")

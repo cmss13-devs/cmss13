@@ -206,6 +206,7 @@
 	var/evasion_modifier = 0
 	var/attack_speed_modifier = 0
 	var/armor_integrity_modifier = 0
+	var/fire_vulnerability_mult_modifier = 0
 
 	var/list/modifier_sources
 

@@ -522,6 +522,9 @@
 // Hive Pylon protection range
 #define XENO_HIVE_PYLON_PROTECTION_RANGE 8
 
+// Fire damage multiplier
+#define XENO_FIRE_DAMAGE_MULT_VERY_LARGE 3
+
 /////////////////////////////////////////////////////////////////////////////////////
 //
 // Default scaling values

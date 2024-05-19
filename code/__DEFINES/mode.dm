@@ -77,6 +77,7 @@
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2
 
+#define LATEJOIN_MARINES_PER_LATEJOIN_LARVA_EARLY 4
 #define LATEJOIN_MARINES_PER_LATEJOIN_LARVA 2.5
 
 //=================================================

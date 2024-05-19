@@ -7100,11 +7100,11 @@
 	req_one_access_txt = "3;22;2;19;7"
 	},
 /obj/structure/surface/rack,
-/obj/item/rappel_harness{
+/obj/item/parachute{
 	pixel_y = 8
 	},
-/obj/item/rappel_harness,
-/obj/item/rappel_harness{
+/obj/item/parachute,
+/obj/item/parachute{
 	pixel_y = -6
 	},
 /obj/structure/sign/safety/bulkhead_door{
@@ -30261,7 +30261,7 @@
 	},
 /area/almayer/engineering/upper_engineering/starboard)
 "gpi" = (
-/obj/structure/dropship_equipment/rappel_system,
+/obj/structure/dropship_equipment/paradrop_system,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -33988,9 +33988,9 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "hAG" = (
 /obj/structure/closet/crate/internals,
-/obj/item/handcuffs/cable/blue,
-/obj/item/handcuffs/cable/blue,
-/obj/item/handcuffs/cable/cyan,
+/obj/item/restraint/adjustable/cable/blue,
+/obj/item/restraint/adjustable/cable/blue,
+/obj/item/restraint/adjustable/cable/cyan,
 /obj/effect/spawner/random/toolbox,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3"
@@ -54802,7 +54802,7 @@
 "oFn" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/wirecutters/clippers,
-/obj/item/handcuffs/zip,
+/obj/item/restraint/handcuffs/zip,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -67835,7 +67835,7 @@
 	pixel_x = -5;
 	pixel_y = 5
 	},
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/storage/firstaid/regular,
 /obj/structure/machinery/light{
 	dir = 8
@@ -78353,7 +78353,7 @@
 	pixel_y = 5
 	},
 /obj/item/paper,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/clothing/mask/cigarette/cigar/classic,
 /obj/item/coin/silver{
 	desc = "A small coin, bearing the falling falcons insignia.";

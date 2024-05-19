@@ -30,8 +30,16 @@
 #define COMSIG_TENT_COLLAPSING "tent_collapsing"
 
 /// from /obj/proc/afterbuckle()
-#define COSMIG_OBJ_AFTER_BUCKLE "signal_obj_after_buckle"
+#define COMSIG_OBJ_AFTER_BUCKLE "signal_obj_after_buckle"
 
+/// from /datum/cm_objective/retrieve_data/disk/process()
+#define COMSIG_INTEL_DISK_LOST_POWER "intel_disk_lost_power"
+
+/// from /datum/cm_objective/retrieve_data/disk/complete()
+#define COMSIG_INTEL_DISK_COMPLETED "intel_disk_completed"
+
+/// from /obj/vehicle/multitile/arc/toggle_antenna()
+#define COMSIG_ARC_ANTENNA_TOGGLED "arc_antenna_toggled"
 /// from /obj/structure/machinery/cryopod/go_out()
 #define COMSIG_CRYOPOD_GO_OUT "cryopod_go_out"
 

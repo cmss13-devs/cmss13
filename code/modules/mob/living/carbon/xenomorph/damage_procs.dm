@@ -228,7 +228,7 @@
 	if(!caste) return
 	sleep(XENO_ARMOR_BREAK_PASS_TIME)
 	if(warding_aura && armor_break_to_apply > 0) //Damage to armor reduction
-		armor_break_to_apply = round(armor_break_to_apply * ((100 - (warding_aura * 15)) / 100))
+		armor_break_to_apply = floor(armor_break_to_apply * ((100 - (warding_aura * 15)) / 100))
 	if(caste)
 		armor_integrity -= armor_break_to_apply
 	if(armor_integrity < 0)

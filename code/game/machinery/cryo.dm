@@ -110,7 +110,7 @@
 		else
 			data["occupant"]["temperaturestatus"] = "bad"
 
-	data["cellTemperature"] = round(temperature)
+	data["cellTemperature"] = floor(temperature)
 
 	data["isBeakerLoaded"] = beaker ? TRUE : FALSE
 	var/beakerContents = list()

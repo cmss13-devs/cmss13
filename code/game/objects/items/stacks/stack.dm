@@ -15,10 +15,14 @@
 	var/list/datum/stack_recipe/recipes
 	var/singular_name
 	var/amount = 1
-	var/max_amount //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
-	var/stack_id //used to determine if two stacks are of the same kind.
-	var/amount_sprites = FALSE //does it have sprites for extra amount, like metal, plasteel, or wood
-	var/display_maptext = TRUE //does it show amount on top of the icon
+	///also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
+	var/max_amount
+	///used to determine if two stacks are of the same kind.
+	var/stack_id
+	///does it have sprites for extra amount, like metal, plasteel, or wood
+	var/amount_sprites = FALSE
+	///does it show amount on top of the icon
+	var/display_maptext = TRUE
 	//Coords for contents display, to make it play nice with inventory borders.
 	maptext_x = 4
 	maptext_y = 3
@@ -107,7 +111,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 		if(istype(E, /datum/stack_recipe))
 			var/datum/stack_recipe/R = E
-			var/max_multiplier = round(src.amount / R.req_amount)
+			var/max_multiplier = floor(src.amount / R.req_amount)
 			var/title
 			var/can_build = 1
 			can_build = can_build && (max_multiplier > 0)
@@ -122,7 +126,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 				t1 += text("[]", title)
 				continue
 			if(R.max_res_amount>1 && max_multiplier > 1)
-				max_multiplier = min(max_multiplier, round(R.max_res_amount/R.res_amount))
+				max_multiplier = min(max_multiplier, floor(R.max_res_amount/R.res_amount))
 				t1 += " |"
 				var/list/multipliers = list(5, 10, 25)
 				for (var/n in multipliers)
@@ -160,7 +164,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(!isnum(multiplier)) // this used to block nan...
 			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with !isnum")
 			return
-		multiplier = round(multiplier)
+		multiplier = floor(multiplier)
 		if(multiplier < 1)
 			return  //href exploit protection
 		if(R.skill_lvl)
@@ -330,48 +334,48 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			return
 		if(!use(desired))
 			return
-		var/obj/item/stack/newstack = new src.type(user, desired)
+		var/obj/item/stack/newstack = new type(user, desired)
 		transfer_fingerprints_to(newstack)
 		user.put_in_hands(newstack)
-		src.add_fingerprint(user)
+		add_fingerprint(user)
 		newstack.add_fingerprint(user)
-		if(src && usr.interactee==src)
-			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), usr)
+		if(!QDELETED(src) && user.interactee == src)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
 		return TRUE
-	else
-		return ..()
+
+	return ..()
 
 /obj/item/stack/attack_hand(mob/user as mob)
-	if (user.get_inactive_hand() == src)
-		var/obj/item/stack/F = new src.type(user, 1)
-		transfer_fingerprints_to(F)
-		user.put_in_hands(F)
-		src.add_fingerprint(user)
-		F.add_fingerprint(user)
+	if(user.get_inactive_hand() == src)
+		var/obj/item/stack/new_stack = new type(user, 1)
+		transfer_fingerprints_to(new_stack)
+		user.put_in_hands(new_stack)
+		add_fingerprint(user)
+		new_stack.add_fingerprint(user)
 		use(1)
-		if (src && usr.interactee==src)
-			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), usr)
-	else
-		..()
-	return
+		if(!QDELETED(src) && user.interactee == src)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
+		return
+
+	return ..()
 
 /obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/stack))
-		var/obj/item/stack/S = W
-		if(S.stack_id == stack_id) //same stack type
-			if(S.amount >= max_amount)
+		var/obj/item/stack/other_stack = W
+		if(other_stack.stack_id == stack_id) //same stack type
+			if(other_stack.amount >= max_amount)
 				to_chat(user, SPAN_WARNING("The stack is full!"))
 				return TRUE
-			var/to_transfer = min(src.amount, S.max_amount-S.amount)
+			var/to_transfer = min(amount, other_stack.max_amount - other_stack.amount)
 			if(to_transfer <= 0)
 				return
 			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
-			S.add(to_transfer)
-			if (S && usr.interactee==S)
-				INVOKE_ASYNC(S, TYPE_PROC_REF(/obj/item/stack, interact), usr)
-			src.use(to_transfer)
-			if (src && usr.interactee==src)
-				INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), usr)
+			other_stack.add(to_transfer)
+			if(other_stack && user.interactee == other_stack)
+				INVOKE_ASYNC(other_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
+			use(to_transfer)
+			if(!QDELETED(src) && user.interactee == src)
+				INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
 			user.next_move = world.time + 0.3 SECONDS
 			return TRUE
 

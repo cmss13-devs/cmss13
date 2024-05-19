@@ -43,6 +43,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_auto_eject_to_hand,
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
+	/client/proc/toggle_ammo_display_type,
 	/client/proc/toggle_middle_mouse_click,
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
@@ -187,39 +188,21 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/datum/entity/player/P = get_player_from_key(key)
 		P.add_note(add, FALSE, NOTE_MERIT)
 
-	if(href_list["add_wl_info_1"])
-		var/key = href_list["add_wl_info_1"]
-		var/add = input("Add Commander Note") as null|message
+	if(href_list["add_wl_info"])
+		var/key = href_list["add_wl_info"]
+		var/add = input("Add Whitelist Note") as null|message
 		if(!add)
 			return
 
 		var/datum/entity/player/P = get_player_from_key(key)
-		P.add_note(add, FALSE, NOTE_COMMANDER)
-
-	if(href_list["add_wl_info_2"])
-		var/key = href_list["add_wl_info_2"]
-		var/add = input("Add Synthetic Note") as null|message
-		if(!add)
-			return
-
-		var/datum/entity/player/P = get_player_from_key(key)
-		P.add_note(add, FALSE, NOTE_SYNTHETIC)
-
-	if(href_list["add_wl_info_3"])
-		var/key = href_list["add_wl_info_3"]
-		var/add = input("Add Yautja Note") as null|message
-		if(!add)
-			return
-
-		var/datum/entity/player/P = get_player_from_key(key)
-		P.add_note(add, FALSE, NOTE_YAUTJA)
+		P.add_note(add, FALSE, NOTE_WHITELIST)
 
 	if(href_list["remove_wl_info"])
 		var/key = href_list["remove_wl_info"]
 		var/index = text2num(href_list["remove_index"])
 
 		var/datum/entity/player/P = get_player_from_key(key)
-		P.remove_note(index)
+		P.remove_note(index, whitelist = TRUE)
 
 	switch(href_list["_src_"])
 		if("admin_holder")
@@ -283,7 +266,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//Helps prevent multiple files being uploaded at once. Or right after eachother.
 	var/time_to_wait = fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [round(time_to_wait/10)] seconds.</font>")
+		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [floor(time_to_wait/10)] seconds.</font>")
 		return 0
 	fileaccess_timer = world.time + FTPDELAY */
 	return 1
@@ -701,39 +684,33 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					movement_keys[key] = SOUTH
 				if(SAY_CHANNEL)
 					if(prefs.tgui_say)
-						var/say = tgui_say_create_open_command(SAY_CHANNEL)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[say]")
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if(COMMS_CHANNEL)
 					if(prefs.tgui_say)
-						var/radio = tgui_say_create_open_command(COMMS_CHANNEL)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[radio]")
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if(ME_CHANNEL)
 					if(prefs.tgui_say)
-						var/me = tgui_say_create_open_command(ME_CHANNEL)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[me]")
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
 				if(OOC_CHANNEL)
 					if(prefs.tgui_say)
-						var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[ooc]")
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
 				if(LOOC_CHANNEL)
 					if(prefs.tgui_say)
-						var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 				if(ADMIN_CHANNEL)
 					if(admin_holder?.check_for_rights(R_MOD))
 						if(prefs.tgui_say)
-							var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
-							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[asay]")
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 						else
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=asay")
 					else
@@ -741,8 +718,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if(MENTOR_CHANNEL)
 					if(admin_holder?.check_for_rights(R_MENTOR))
 						if(prefs.tgui_say)
-							var/mentor = tgui_say_create_open_command(MENTOR_CHANNEL)
-							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[mentor]")
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 						else
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=mentorsay")
 					else

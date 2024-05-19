@@ -33,6 +33,7 @@
 	boiler.health_modifier -= XENO_HEALTH_MOD_MED
 
 	boiler.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5 // compensating for base buffs
+	boiler.fire_vulnerability_mult = 0 // Default is 0, not 1 for some reason
 	boiler.recalculate_everything()
 
 /datum/behavior_delegate/boiler_trapper

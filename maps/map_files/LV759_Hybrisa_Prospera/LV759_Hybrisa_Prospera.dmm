@@ -5602,7 +5602,6 @@
 /area/lv759/indoors/meridian/meridian_showroom)
 "aWQ" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -8;
 	pixel_y = 7
@@ -6424,7 +6423,6 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "bdM" = (
-/obj/structure/surface/table,
 /obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
 /obj/item/storage/box/syringes,
@@ -18758,7 +18756,6 @@
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
 "dec" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/syringes{
 	pixel_x = 4;
 	pixel_y = 6
@@ -22001,9 +21998,6 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/north_west_caves_outdoors)
 "dEY" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/surface/table/reinforced/prison,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -8;
@@ -27946,8 +27940,6 @@
 /obj/item/reagent_container/glass/beaker,
 /obj/item/reagent_container/glass/beaker,
 /obj/item/reagent_container/glass/beaker,
-/obj/structure/surface/table/almayer,
-/obj/structure/surface/table/almayer,
 /obj/structure/machinery/reagent_analyzer,
 /turf/open/floor/prison{
 	icon_state = "blue"
@@ -85523,9 +85515,6 @@
 	},
 /area/lv759/indoors/south_east_caves)
 "nZh" = (
-/obj/structure/surface/table/reinforced/prison{
-	layer = 3
-	},
 /obj/item/storage/firstaid/fire{
 	pixel_x = 6;
 	pixel_y = 6
@@ -85535,6 +85524,7 @@
 	pixel_y = 3
 	},
 /obj/item/storage/firstaid/adv,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	icon_state = "blue_plate"
 	},
@@ -93990,7 +93980,6 @@
 /obj/structure/machinery/reagentgrinder{
 	pixel_y = 3
 	},
-/obj/structure/surface/table/almayer,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"
@@ -128652,7 +128641,6 @@
 /obj/item/reagent_container/glass/beaker/cryoxadone,
 /obj/item/reagent_container/glass/beaker/cryoxadone,
 /obj/item/reagent_container/glass/beaker/cryoxadone,
-/obj/structure/surface/table/almayer,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"
@@ -136642,8 +136630,8 @@
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "wgQ" = (
-/obj/structure/surface/table,
 /obj/item/clothing/accessory/stethoscope,
+/obj/structure/surface/table,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/hospital/patient_ward)
 "wgT" = (
@@ -145652,7 +145640,6 @@
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketcarrots{
 	pixel_x = -10
 	},
-/obj/structure/surface/table/reinforced/cloth,
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketcarrots{
 	pixel_x = 12
 	},

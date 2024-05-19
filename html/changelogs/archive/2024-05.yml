@@ -208,3 +208,9 @@
       damage up to 3 tiles from the shooter's position before suffering damage falloff.
   TheGamerdk:
   - balance: Milkshakes no longer bring you to absolute zero, just 0 celsius
+2024-05-19:
+  Git-Nivrak:
+  - rscadd: Changed advanced medhud visor to be displayed on the same eye as normal
+      medhud visor
+  iloveloopers:
+  - spellcheck: Custom rocket description now looks nicer

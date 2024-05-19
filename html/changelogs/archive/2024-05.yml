@@ -88,5 +88,11 @@
 2024-05-19:
   Archemagus:
   - bugfix: Synt station fixes eye and face correctly
+  Mr-Pickles-beep:
+  - rscadd: New tcommsat spawn
+  - rscadd: New maint tunnel for xenos
+  - bugfix: Zones near crushed ship
   Noname995:
   - balance: "\u0420\u0435\u0431\u0430\u043B\u0430\u043D\u0441!!!"
+  - rscdel: "\u041A\u0445\u0430\u043C\u0438 \u0431\u0430\u0440\u0440\u0435\u043D\u0441"
+  - rscdel: "\u0414\u043E\u043A \u0420\u0435\u0434"

@@ -2,8 +2,8 @@ import { useBackend, useLocalState } from '../backend';
 import { Section, Button, Stack, NoticeBox, LabeledList, Flex, Box, Dropdown, Divider } from '../components';
 import { Window } from '../layouts';
 
-export const XenomorphExtractor = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const XenomorphExtractor = () => {
+  const { act, data } = useBackend();
 
   const {
     organ,
@@ -16,7 +16,7 @@ export const XenomorphExtractor = (_props, context) => {
     is_x_level,
   } = data;
   const dropdownOptions = categories;
-  const [selectedTab, setSelectedTab] = useLocalState('category', 'NONE');
+  const [selectedTab, setSelectedTab] = useState('NONE');
 
   return (
     <Window width={850} height={800} theme="crtyellow">

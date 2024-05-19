@@ -104,7 +104,7 @@
 
 /obj/structure/filingcabinet/security/proc/populate()
 	if(virgin)
-		for(var/record_name as anything in GLOB.data_core.general)
+		for(var/record_name in GLOB.data_core.general)
 			var/datum/data/record/G = GLOB.data_core.general[record_name] // yeah I know single letter vars, but like plz.
 			var/datum/data/record/S
 			for(var/record_id in GLOB.data_core.security)
@@ -141,7 +141,7 @@
 		for(var/record in GLOB.data_core.general)
 			var/datum/data/record/G = GLOB.data_core.general[record]
 			var/datum/data/record/M
-			for(var/record_name as anything in GLOB.data_core.medical)
+			for(var/record_name in GLOB.data_core.medical)
 				var/datum/data/record/R = GLOB.data_core.medical[record_name]
 				if((R.fields[MOB_NAME] == G.fields[MOB_NAME]))
 					M = R

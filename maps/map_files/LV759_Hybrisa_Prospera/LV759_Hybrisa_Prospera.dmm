@@ -91397,7 +91397,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble10{
 	dir = 8;
-	pixel_w = null;
 	pixel_x = 13;
 	pixel_y = 3
 	},
@@ -129206,7 +129205,7 @@
 "uUh" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
+	
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
@@ -140847,7 +140846,7 @@
 "wRp" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
+	
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{

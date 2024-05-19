@@ -1281,7 +1281,7 @@
 
 
 /turf/open/floor/hybrisa/misc/marshallsemblem
-    icon_state = "marshallsemblem"
+	icon_state = "marshallsemblem"
 /turf/open/floor/hybrisa/misc/wybiglogo
 	name = "Weyland-Yutani corp. - bulding better worlds."
 	icon_state = "big8x8wylogo"

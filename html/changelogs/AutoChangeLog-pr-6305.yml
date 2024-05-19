@@ -1,0 +1,4 @@
+author: "Doubleumc"
+delete-after: True
+changes:
+  - qol: "squad/queen/leader trackers can find targets in interiors"

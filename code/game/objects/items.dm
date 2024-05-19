@@ -668,13 +668,13 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_HANDCUFFS)
 				if(human.handcuffed)
 					return FALSE
-				if(!istype(src, /obj/item/handcuffs))
+				if(!istype(src, /obj/item/restraint))
 					return FALSE
 				return TRUE
 			if(WEAR_LEGCUFFS)
 				if(human.legcuffed)
 					return FALSE
-				if(!istype(src, /obj/item/legcuffs))
+				if(!istype(src, /obj/item/restraint))
 					return FALSE
 				return TRUE
 			if(WEAR_IN_ACCESSORY)

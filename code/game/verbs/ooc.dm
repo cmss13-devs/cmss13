@@ -217,7 +217,7 @@
 	if(!desired_width)
 		// Calculate desired pixel width using window size and aspect ratio
 		var/height = text2num(map_size[2])
-		desired_width = round(height * aspect_ratio)
+		desired_width = floor(height * aspect_ratio)
 
 	var/split_size = splittext(sizes["mainwindow.split.size"], "x")
 	var/split_width = text2num(split_size[1])

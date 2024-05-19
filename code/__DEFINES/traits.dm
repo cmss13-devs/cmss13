@@ -267,7 +267,7 @@
 
 #define TRAIT_GUN_BIPODDED "t_gun_bipodded"
 
-#define TRAIT_GUN_LIGHT_DEACTIVATED "t_gun_light_deactivated"
+#define TRAIT_GUN_LIGHT_FORCE_DEACTIVATED "t_gun_light_deactivated"
 
 /// If this ID belongs to an ERT member
 #define TRAIT_ERT_ID "ert_id"
@@ -354,6 +354,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
 		"TRAIT_ABILITY_OVIPOSITOR" = TRAIT_ABILITY_OVIPOSITOR,
+		"TRAIT_OPPOSABLE_THUMBS" = TRAIT_OPPOSABLE_THUMBS,
 	),
 	/datum/hive_status = list(
 		"TRAIT_XENONID" = TRAIT_XENONID,

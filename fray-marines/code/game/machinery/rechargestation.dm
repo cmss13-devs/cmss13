@@ -86,6 +86,9 @@
 			if(!doing_stuff)
 				for(var/datum/internal_organ/current_organ in humanoid_occupant.internal_organs)
 					if(!doing_stuff && (current_organ.robotic == ORGAN_ASSISTED||current_organ.robotic == ORGAN_ROBOT)) //this time the machine can *only* fix robotic organs
+						// Shithack to trigger eye repairs if they somehow undamaged but user still blind
+						if(current_organ == humanoid_occupant.internal_organs_by_name["eyes"] && current_organ.damage <= 0 && (humanoid_occupant.disabilities & NEARSIGHTED || humanoid_occupant.sdisabilities & DISABILITY_BLIND))
+							current_organ.damage++
 						if(current_organ.damage > 0)
 							if (very_busy)
 								to_chat(occupant, "Востановление компонента '[current_organ]' в процессе...")
@@ -97,6 +100,10 @@
 								sleep(FIX_ORGAN_MAX_DURATION)
 								very_busy = FALSE
 								current_organ.rejuvenate()
+								// Actualy fixing eyes
+								if (current_organ == humanoid_occupant.internal_organs_by_name["eyes"])
+									humanoid_occupant.disabilities &= ~NEARSIGHTED
+									humanoid_occupant.sdisabilities &= ~DISABILITY_BLIND
 								to_chat(occupant, "Внутренний компонент отремонтирован.")
 			// Пластическая операция для синтетика?
 			if(!doing_stuff)
@@ -111,9 +118,11 @@
 						very_busy = TRUE
 						sleep(10 SECONDS)
 						very_busy = FALSE
-						H.remove_all_bleeding(TRUE)
 						H.disfigured = FALSE
 						H.owner.name = H.owner.get_visible_name()
+						H.remove_all_bleeding(TRUE)
+						humanoid_occupant.update_body()
+						H.update_icon()
 						to_chat(occupant, "Товарный вид востановлен.")
 
 			// TODO убрать звук дефиба?

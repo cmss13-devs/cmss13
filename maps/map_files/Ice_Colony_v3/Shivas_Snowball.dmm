@@ -1370,6 +1370,12 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/central)
+"agd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E-corner"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/valley)
 "age" = (
 /obj/structure/closet/radiation,
 /obj/effect/landmark/crap_item,
@@ -7305,6 +7311,15 @@
 	icon_state = "multi_tiles"
 	},
 /area/shiva/interior/colony/botany)
+"bJV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E-corner"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/valley)
 "bKF" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 2.99;
@@ -7328,6 +7343,12 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
+"bLG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/valley)
 "bMn" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/drinks/bottle/holywater,
@@ -8620,6 +8641,12 @@
 /obj/vehicle/train/cargo/engine,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
+"dhx" = (
+/obj/structure/platform/shiva/catwalk{
+	dir = 8
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "diL" = (
 /obj/structure/machinery/light/double{
 	dir = 1;
@@ -8752,6 +8779,12 @@
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
+"dqC" = (
+/obj/structure/platform_decoration/shiva/catwalk{
+	dir = 8
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "dqH" = (
 /obj/structure/surface/table,
 /obj/item/stock_parts/matter_bin/super{
@@ -8890,6 +8923,12 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/lz2_habs)
+"dxw" = (
+/obj/structure/platform/shiva/catwalk{
+	dir = 1
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/valley)
 "dxS" = (
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/right_spiders)
@@ -9010,6 +9049,9 @@
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/aerodrome)
+"dKW" = (
+/turf/open/floor/plating,
+/area/shiva/exterior/valley)
 "dLe" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 2.99;
@@ -9115,6 +9157,12 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/caves/cp_camp)
+"dRY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/valley)
 "dTj" = (
 /obj/structure/machinery/space_heater,
 /turf/open/floor/shiva,
@@ -9238,6 +9286,12 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/aerodrome)
+"dZS" = (
+/obj/structure/platform_decoration/shiva/catwalk{
+	dir = 1
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "eaa" = (
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = 32
@@ -9829,6 +9883,10 @@
 	icon_state = "kitchen"
 	},
 /area/shiva/interior/bar)
+"eNU" = (
+/obj/structure/platform/shiva/catwalk,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "eOG" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/structure/machinery/light/double{
@@ -10331,6 +10389,15 @@
 /obj/item/tool/shovel/snow,
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
+"frG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/valley)
 "frV" = (
 /obj/structure/prop/invuln/ice_prefab/standalone/trim{
 	icon_state = "pink_trim"
@@ -15890,6 +15957,12 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/s_admin)
+"kVO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/valley)
 "kWa" = (
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 9
@@ -18433,6 +18506,15 @@
 /obj/structure/machinery/space_heater,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/warehouse/caves)
+"nDI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E-corner"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/valley)
 "nED" = (
 /obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/shiva{
@@ -19882,6 +19964,12 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/medseceng)
+"pnR" = (
+/obj/structure/platform/shiva/catwalk{
+	dir = 1
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "poz" = (
 /obj/structure/platform/strata{
 	dir = 1
@@ -21057,6 +21145,10 @@
 	icon_state = "red"
 	},
 /area/shiva/interior/colony/central)
+"qoM" = (
+/obj/structure/platform_decoration/shiva/catwalk,
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/valley)
 "qoU" = (
 /obj/structure/flora/grass/tallgrass/ice/corner,
 /turf/open/auto_turf/snow/layer2,
@@ -21614,6 +21706,15 @@
 	icon_state = "greenfull"
 	},
 /area/shiva/interior/colony/n_admin)
+"qXz" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "qXS" = (
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
@@ -22108,6 +22209,15 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
+"rEs" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/valley)
 "rEQ" = (
 /obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer2,
@@ -22791,6 +22901,15 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/colony/deck)
+"srn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/valley)
 "srJ" = (
 /obj/structure/stairs/perspective/ice{
 	dir = 4;
@@ -23920,6 +24039,10 @@
 	icon_state = "multi_tiles"
 	},
 /area/shiva/interior/colony/deck)
+"tzW" = (
+/obj/structure/platform/shiva/catwalk,
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/valley)
 "tAc" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass{
 	icon_state = "lavendergrass_4"
@@ -26393,6 +26516,12 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
+"vXp" = (
+/obj/structure/machinery/sensortower{
+	pixel_x = 6
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/valley)
 "vXw" = (
 /obj/structure/machinery/power/apc{
 	dir = 4;
@@ -26914,6 +27043,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/shiva/interior/colony/s_admin)
+"wHc" = (
+/obj/structure/platform_decoration/shiva/catwalk{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "wHi" = (
 /turf/open/floor/shiva{
 	dir = 8;
@@ -27807,6 +27942,12 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/colony/deck)
+"xMJ" = (
+/obj/structure/platform/shiva/catwalk{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "xMQ" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/shiva{
@@ -58724,11 +58865,11 @@ oQl
 oQl
 jAL
 iMb
-iMb
-iMb
-fQX
-fQX
-iMb
+qoM
+xMJ
+xMJ
+xMJ
+dqC
 iMb
 iMb
 iMb
@@ -58886,14 +59027,14 @@ iMb
 iMb
 iMb
 iMb
-fQX
-fQX
-fQX
+eNU
+frG
+dRY
+srn
+dxw
 iMb
 iMb
 iMb
-fQX
-fQX
 iMb
 iMb
 jAL
@@ -59048,16 +59189,16 @@ iMb
 iMb
 jAL
 jAL
-fQX
-jAL
-jAL
+eNU
+kVO
+vXp
+bLG
+rEs
 iMb
-fQX
 iMb
-fQX
-fQX
+iMb
+iMb
 aiz
-iMb
 fQX
 iMb
 pQE
@@ -59210,11 +59351,11 @@ jAL
 jAL
 jAL
 jAL
-jAL
-iMb
-jAL
-iMb
-jAL
+eNU
+kVO
+dKW
+bLG
+qXz
 iMb
 iMb
 iMb
@@ -59372,11 +59513,11 @@ iMb
 jAL
 jAL
 iMb
-iMb
-iMb
-jAL
-jAL
-jAL
+tzW
+nDI
+agd
+bJV
+pnR
 iMb
 iMb
 iMb
@@ -59534,11 +59675,11 @@ iMb
 iMb
 iMb
 iMb
-iMb
-iMb
-iMb
-iMb
-iMb
+dZS
+dhx
+dhx
+dhx
+wHc
 iMb
 iMb
 iMb

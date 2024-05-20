@@ -36,7 +36,6 @@
 	aura_strength = 2
 
 	minimum_evolve_time = 1 MINUTES
-	evolve_without_queen = TRUE
 	evolution_cost = 30
 
 	minimap_icon = "drone"

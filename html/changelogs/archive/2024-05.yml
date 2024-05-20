@@ -208,3 +208,64 @@
       damage up to 3 tiles from the shooter's position before suffering damage falloff.
   TheGamerdk:
   - balance: Milkshakes no longer bring you to absolute zero, just 0 celsius
+2024-05-19:
+  Git-Nivrak:
+  - rscadd: Changed advanced medhud visor to be displayed on the same eye as normal
+      medhud visor
+  iloveloopers:
+  - spellcheck: Custom rocket description now looks nicer
+2024-05-20:
+  Doubleumc:
+  - qol: ghost "Scan Health" works at any range
+  - qol: squad/queen/leader trackers can find targets in interiors
+  Drathek, mullenpaul:
+  - ui: Finalizes the TGUI React port and brings us back into parity again with TG's
+      interface components
+  - ui: Strip panel is now larger with sprites at 64x64 instead of 48 because as an
+      Image component now they didn't alias the same.
+  - ui: VOX panel's second tab now doesn't overlap the other buttons
+  - ui: Wiring panel for some machines is now restored to use circular indicators
+      again
+  - ui: Smart fridge interface is more in line with sorted inventories as far as layout
+      & tooltips
+  - ui: Tacmap drawing interface is tweaked a little to deal with the changes to dropdowns
+      + clicking the tab is now disabled again until the tacmap is ready (It needs
+      minimap subsystem to fire to have icons when flattening the map to be up to
+      date)
+  - ui: Reworks RestrictedInput number handling
+  - ui: Adds the DMIcon, VirtualList (deferred lazy list), Dialogue, MenuBar, StyleableSection,
+      and Checkbox TGUI components (but nothing uses them yet)
+  - ui: 'Chat: Adds a clear chat button clearing the current tab, mute button to disable
+      unread notifications for a tab, and updates the word highlight regex for case
+      sensitivity'
+  - ui: Updates the ship manipulator window to allow replacing any Shuttle
+  - ui: Fixes the supply pod panel not displaying its byondui map correctly
+  - ui: Fixes the research terminal duplicating papers in display old mode.
+  - ui: Updates the tgui_input_list to for new features like hotkey selection, duplicate
+      key handling, etc
+  - bugfix: Fixes thinking runtimes when quickly switching between tgsay categories
+  - code_imp: Shuttle subsystem now is less aggressive with reservations (skipping
+      deletion if below a threshold, delaying reservation if above a threshold)
+  - bugfix: Fixes F5 key still refreshing a TGUI window even if default was set to
+      be prevented (e.g. Hotkey interface)
+  Git-Nivrak:
+  - qol: Changed the Queen's pointing color to purple
+  - balance: Latejoin marines to larva ratio changed to 1:4 for the first 15 minutes,
+      going back to 1:2.5 afterwards.
+  HeresKozmos:
+  - mapadd: Added three new tunnels to New Varadero.
+  - maptweak: Adjusts placement of some existing tunnels on New Varadero.
+  Nomoresolvalou:
+  - balance: unpowered doors are now opened instantly in maintenance jack crowbar
+      mode instead of in three seconds.
+  - balance: crowbar mode can now pry doors closed when unpowered.
+  - bugfix: fixed cats not specifically defined in code displaying wrong info when
+      held or stored in a container. This should also fix any other mob capable of
+      being picked up that is not defined in code as well.
+  doganesi:
+  - bugfix: Fixed some oversights with custom loadout provided weapon boxes
+  vero5123:
+  - qol: Toggleable ammo counter, can now cycle between displaying every fifth or
+      single bullet.
+  - bugfix: Light attachments will no longer automatically turn on when the weapon
+      is equipped from suit storage

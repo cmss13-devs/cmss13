@@ -189,5 +189,5 @@
 /obj/effect/hybrisa/decal/egg_base
 	name = "strange goop"
 	desc = null
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "egg_base"

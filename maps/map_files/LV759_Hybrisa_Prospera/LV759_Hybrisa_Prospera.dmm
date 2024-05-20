@@ -358,7 +358,7 @@
 "add" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -416,7 +416,7 @@
 "ads" = (
 /obj/structure/window/framed/corsat,
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/wy_research_complex/hallwaycentral)
@@ -1669,7 +1669,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -1688,7 +1688,7 @@
 "apc" = (
 /obj/item/trash/cigbutt{
 	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "coffeecuppajoe";
 	name = "cuppa joe's coffee cup"
 	},
@@ -4000,7 +4000,7 @@
 	},
 /obj/structure/prop/almayer/computers/mapping_computer{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer";
 	pixel_y = 12
 	},
@@ -4249,7 +4249,7 @@
 /area/lv759/indoors/garage_workshop)
 "aKI" = (
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 4
 	},
 /turf/open/floor/corsat{
@@ -4704,7 +4704,7 @@
 	},
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -4713,7 +4713,7 @@
 	},
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -6200,7 +6200,7 @@
 "bce" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp1";
 	name = "computer"
 	},
@@ -7224,7 +7224,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 4;
 	name = "trash bag";
@@ -8494,7 +8494,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -8659,7 +8659,7 @@
 "bxj" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -8850,7 +8850,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -9399,7 +9399,7 @@
 /obj/structure/window/framed/corsat/research,
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -10086,7 +10086,7 @@
 "bLm" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -4;
@@ -10337,7 +10337,7 @@
 /obj/item/trash/chunk,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -10703,7 +10703,7 @@
 "bQK" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp1";
 	name = "computer"
 	},
@@ -10795,7 +10795,7 @@
 	},
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /turf/open/floor/plating,
@@ -13650,7 +13650,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -13865,7 +13865,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -4;
@@ -13937,7 +13937,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -14428,7 +14428,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -14766,7 +14766,7 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "zenithstone"
+	icon_state = "hybrisastone"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
@@ -15826,7 +15826,7 @@
 /obj/item/trash/eat,
 /obj/item/trash/cigbutt{
 	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "coffeecuppajoe";
 	name = "cuppa joe's coffee cup"
 	},
@@ -16694,7 +16694,7 @@
 	},
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -18948,7 +18948,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 4
 	},
 /turf/open/floor/corsat{
@@ -19334,7 +19334,7 @@
 /area/lv759/indoors/power_plant/fusion_generators)
 "dib" = (
 /obj/structure/machinery/atm{
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi';
 	pixel_x = 6;
 	pixel_y = 11
 	},
@@ -19789,7 +19789,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -20051,7 +20051,7 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer3{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer"
 	},
 /turf/open/floor/almayer{
@@ -20737,7 +20737,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -21253,7 +21253,7 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer"
 	},
 /turf/open/floor/almayer{
@@ -21446,7 +21446,7 @@
 /obj/item/trash/liquidfood,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -21467,7 +21467,7 @@
 "dAc" = (
 /obj/structure/prop/almayer/computers/sensor_computer2{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer"
 	},
 /turf/open/floor/almayer{
@@ -23295,7 +23295,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -24015,7 +24015,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 5;
 	name = "trash bag";
@@ -24174,7 +24174,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 6;
 	name = "trash bag";
@@ -24539,7 +24539,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -24737,7 +24737,7 @@
 	},
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -24746,7 +24746,7 @@
 	},
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -25028,7 +25028,7 @@
 	},
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /obj/structure/machinery/light/spot/blue{
@@ -25902,7 +25902,7 @@
 "elT" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/machinery/atm{
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi';
 	pixel_x = 6;
 	pixel_y = 11
 	},
@@ -27688,7 +27688,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 3.2;
 	name = "trash bag";
@@ -28090,7 +28090,7 @@
 "eFv" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -28098,7 +28098,7 @@
 	},
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -29068,7 +29068,7 @@
 "eMO" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -29936,7 +29936,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -4;
@@ -29987,7 +29987,7 @@
 "eVu" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 5;
 	name = "trash bag";
@@ -30572,7 +30572,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 6;
 	name = "trash bag";
@@ -31786,7 +31786,7 @@
 /area/lv759/indoors/spaceport/heavyequip)
 "fkB" = (
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 4
 	},
 /turf/open/floor/corsat{
@@ -33619,7 +33619,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -33764,7 +33764,7 @@
 "fAG" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp1";
 	name = "computer"
 	},
@@ -35258,7 +35258,7 @@
 "fOs" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -36076,7 +36076,7 @@
 "fUL" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -36983,7 +36983,7 @@
 "gct" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 4;
 	name = "trash bag";
@@ -37512,7 +37512,7 @@
 /area/lv759/indoors/spaceport/docking_bay_1)
 "ghi" = (
 /obj/structure/machinery/atm{
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi';
 	pixel_x = 3;
 	pixel_y = 11
 	},
@@ -38526,7 +38526,7 @@
 /obj/structure/window/framed/corsat/research,
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -38739,7 +38739,7 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 2;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	id = "hybrisacolonylockdown";
 	indestructible = 1;
 	name = "Emergency Lockdown";
@@ -38997,7 +38997,7 @@
 "gtT" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer"
 	},
 /turf/open/floor/almayer{
@@ -40020,7 +40020,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -41237,7 +41237,7 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer2{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp2";
 	name = "computer"
 	},
@@ -42219,7 +42219,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -43056,7 +43056,7 @@
 "hbp" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_y = 12
@@ -43396,7 +43396,7 @@
 /obj/structure/platform/hybrisa/metalplatform6,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -43451,7 +43451,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -4;
@@ -44132,7 +44132,7 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp1";
 	name = "computer"
 	},
@@ -45675,7 +45675,7 @@
 /obj/effect/decal/strata_decals/grime/grime1,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -45683,7 +45683,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -9;
@@ -45719,7 +45719,7 @@
 "hxl" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_solid_white/autoname,
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 2
 	},
 /turf/open/floor/corsat{
@@ -47298,7 +47298,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -48701,7 +48701,7 @@
 "hWu" = (
 /obj/structure/prop/almayer/computers/sensor_computer2{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp2";
 	name = "computer"
 	},
@@ -50134,7 +50134,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -50474,7 +50474,7 @@
 "ilD" = (
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -50947,7 +50947,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_y = 12
@@ -52789,7 +52789,7 @@
 "iDs" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -4;
@@ -52797,7 +52797,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -54387,7 +54387,7 @@
 "iSJ" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -54534,7 +54534,7 @@
 /obj/effect/decal/strata_decals/grime/grime4,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -54902,7 +54902,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -55023,7 +55023,7 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "zenithstone"
+	icon_state = "hybrisastone"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
@@ -55555,7 +55555,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -55591,7 +55591,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 6;
 	name = "trash bag";
@@ -55619,7 +55619,7 @@
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -57331,7 +57331,7 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer2{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp2";
 	name = "computer"
 	},
@@ -57373,7 +57373,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -58017,7 +58017,7 @@
 	},
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /turf/open/floor/shiva{
@@ -58141,7 +58141,7 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "zenithstone"
+	icon_state = "hybrisastone"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
@@ -58566,7 +58566,7 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /obj/structure/platform/strata/metal{
@@ -59347,7 +59347,7 @@
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /turf/open/floor/strata{
@@ -59788,7 +59788,7 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer2{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer"
 	},
 /turf/open/floor/almayer{
@@ -61305,7 +61305,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -62059,7 +62059,7 @@
 "kiB" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -62634,13 +62634,13 @@
 /obj/structure/machinery/disposal,
 /obj/item/trash/cigbutt{
 	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "coffeecuppajoe";
 	name = "cuppa joe's coffee cup"
 	},
 /obj/item/trash/cigbutt{
 	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "coffeecuppajoe";
 	name = "cuppa joe's coffee cup"
 	},
@@ -64248,7 +64248,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -64823,7 +64823,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 7;
 	name = "trash bag";
@@ -67110,7 +67110,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -68099,7 +68099,7 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/structure/window_frame/corsat,
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/wy_research_complex/hallwaycentral)
@@ -68295,7 +68295,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -5;
@@ -69272,7 +69272,7 @@
 "loA" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp1";
 	name = "computer"
 	},
@@ -69600,7 +69600,7 @@
 "lrj" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -70444,11 +70444,11 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "zenithstone"
+	icon_state = "hybrisastone"
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "zenithstone"
+	icon_state = "hybrisastone"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
@@ -70662,7 +70662,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -70711,7 +70711,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -70741,7 +70741,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 5;
 	name = "trash bag";
@@ -71025,7 +71025,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -71352,7 +71352,7 @@
 "lEN" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp1";
 	name = "computer"
 	},
@@ -71527,7 +71527,7 @@
 "lFU" = (
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_solid_white/autoname{
 	dir = 1
@@ -71812,7 +71812,7 @@
 "lHR" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 5;
 	name = "trash bag";
@@ -73956,7 +73956,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_y = 12
@@ -75000,7 +75000,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 4;
 	name = "trash bag";
@@ -75071,7 +75071,7 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer2{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer"
 	},
 /obj/structure/window/reinforced{
@@ -76298,7 +76298,7 @@
 "mvV" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -76489,7 +76489,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 5;
 	name = "trash bag";
@@ -77690,7 +77690,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -78274,7 +78274,7 @@
 /obj/effect/decal/strata_decals/grime/grime4,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -79246,7 +79246,7 @@
 "mVH" = (
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /turf/open/floor/plating,
@@ -79672,7 +79672,7 @@
 "mZI" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -80884,7 +80884,7 @@
 "nkj" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -81241,7 +81241,7 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp1";
 	name = "computer"
 	},
@@ -81533,7 +81533,7 @@
 "nrb" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart1";
 	icon_opened = "foodcart1_open";
 	icon_state = "foodcart1";
@@ -81875,7 +81875,7 @@
 	},
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /turf/open/floor/shiva{
@@ -82218,7 +82218,7 @@
 "nxn" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 2;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	id = "secretlockdown1";
 	indestructible = 1;
 	name = "Stuck Emergency Lockdown";
@@ -82227,7 +82227,7 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 2;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	id = "secretlockdown2";
 	indestructible = 1;
 	name = "Stuck Emergency Lockdown";
@@ -82236,7 +82236,7 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 2;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	id = "secretlockdown3";
 	indestructible = 1;
 	name = "Stuck Emergency Lockdown";
@@ -82245,7 +82245,7 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 2;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	id = "secretlockdown4";
 	indestructible = 1;
 	name = "Stuck Emergency Lockdown";
@@ -82629,7 +82629,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 8;
 	name = "trash bag";
@@ -84397,7 +84397,7 @@
 	},
 /obj/structure/prop/almayer/computers/mapping_computer{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer"
 	},
 /turf/open/floor/plating/prison,
@@ -84945,7 +84945,7 @@
 /area/lv759/indoors/colonial_marshals/holding_cells)
 "nUU" = (
 /obj/structure/machinery/atm{
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi';
 	pixel_x = 9;
 	pixel_y = 11
 	},
@@ -85338,7 +85338,7 @@
 "nXH" = (
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -85717,7 +85717,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 8;
 	name = "trash bag";
@@ -85914,7 +85914,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -86277,7 +86277,7 @@
 "oeL" = (
 /obj/structure/prop/almayer/computers/sensor_computer3{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp3";
 	name = "computer"
 	},
@@ -86672,7 +86672,7 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -87540,7 +87540,7 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer3{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer"
 	},
 /turf/open/floor/almayer{
@@ -88198,7 +88198,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -88280,7 +88280,7 @@
 	},
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer";
 	pixel_x = 4;
 	pixel_y = 4
@@ -89303,7 +89303,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -89762,7 +89762,7 @@
 "oHc" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer"
 	},
 /turf/open/floor/corsat{
@@ -89790,7 +89790,7 @@
 "oHp" = (
 /obj/structure/machinery/computer/cameras/telescreen{
 	desc = "A broken Tele-Screen monitor.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "telescreenbspark"
 	},
 /turf/closed/wall/hybrisa/marhsalls_reinforced,
@@ -90986,7 +90986,7 @@
 "oQD" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -90995,7 +90995,7 @@
 	},
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -91353,7 +91353,7 @@
 "oTt" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_solid_white/autoname,
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -91885,7 +91885,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -92042,7 +92042,7 @@
 "oZi" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer";
 	pixel_y = 12;
 	icon_state = "blackmps";
@@ -92723,7 +92723,7 @@
 "pey" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -93053,7 +93053,7 @@
 "phJ" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 5;
 	name = "trash bag";
@@ -95453,7 +95453,7 @@
 "pCz" = (
 /obj/item/trash/c_tube{
 	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "coffeecuppajoe";
 	name = "cuppa joe's coffee cup";
 	pixel_x = -5;
@@ -95623,7 +95623,7 @@
 "pDZ" = (
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /turf/open/floor/strata{
@@ -96279,7 +96279,7 @@
 "pIK" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -96783,7 +96783,7 @@
 "pNa" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -96792,7 +96792,7 @@
 	},
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -96801,7 +96801,7 @@
 	},
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -97216,7 +97216,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -97347,7 +97347,7 @@
 	},
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -100724,7 +100724,7 @@
 "qvw" = (
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -101046,7 +101046,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -101130,7 +101130,7 @@
 "qyA" = (
 /obj/structure/prop/almayer/computers/sensor_computer3{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp3";
 	name = "computer"
 	},
@@ -101521,7 +101521,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -101879,7 +101879,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -102279,7 +102279,7 @@
 "qIq" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 5;
 	name = "trash bag";
@@ -102514,7 +102514,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 7;
 	name = "trash bag";
@@ -103356,7 +103356,7 @@
 "qQd" = (
 /obj/structure/prop/almayer/computers/sensor_computer2{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp2";
 	name = "computer"
 	},
@@ -103543,7 +103543,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -104336,7 +104336,7 @@
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -105101,7 +105101,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 6;
 	name = "trash bag";
@@ -105370,7 +105370,7 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp1";
 	name = "computer"
 	},
@@ -106199,7 +106199,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_y = 12
@@ -106371,7 +106371,7 @@
 /obj/structure/barricade/handrail/hybrisa/handrail,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 4;
 	name = "trash bag";
@@ -107044,7 +107044,7 @@
 /area/lv759/indoors/west_caves)
 "rwv" = (
 /obj/structure/machinery/atm{
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi';
 	pixel_x = 3;
 	pixel_y = 15
 	},
@@ -108778,7 +108778,7 @@
 "rIS" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 7;
 	name = "trash bag";
@@ -108787,7 +108787,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_y = 12
@@ -109566,7 +109566,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -4;
@@ -110001,7 +110001,7 @@
 "rSk" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -111471,7 +111471,7 @@
 "sfm" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 2;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	id = "hybrisacolonylockdown";
 	indestructible = 1;
 	name = "Emergency Lockdown";
@@ -111744,7 +111744,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 6;
 	name = "trash bag";
@@ -111893,7 +111893,7 @@
 /area/lv759/indoors/colonial_marshals/north_office)
 "siz" = (
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 2
 	},
 /turf/open/floor/corsat{
@@ -112522,7 +112522,7 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -4;
@@ -113618,7 +113618,7 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer"
 	},
 /obj/structure/cable/white{
@@ -113659,7 +113659,7 @@
 	},
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /obj/structure/prop/hybrisa/misc/fake/wire/red{
@@ -114544,7 +114544,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -115282,7 +115282,7 @@
 "sJP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname,
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 2
 	},
 /turf/open/floor/corsat{
@@ -115292,7 +115292,7 @@
 "sJS" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -115954,7 +115954,7 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "zenithstone"
+	icon_state = "hybrisastone"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
@@ -117223,7 +117223,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 4
 	},
 /turf/open/floor/corsat{
@@ -117529,7 +117529,7 @@
 /area/lv759/indoors/spaceport/horizon_runner)
 "tcU" = (
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_solid_white/autoname,
 /turf/open/floor/corsat{
@@ -118024,7 +118024,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -118646,7 +118646,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/trash/cigbutt{
 	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "coffeecuppajoe";
 	name = "cuppa joe's coffee cup"
 	},
@@ -119429,7 +119429,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 4;
 	name = "trash bag";
@@ -120015,7 +120015,7 @@
 /obj/item/trash/cigbutt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -120430,7 +120430,7 @@
 /area/lv759/indoors/wy_research_complex_entrance)
 "tCk" = (
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -121378,7 +121378,7 @@
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "zenithstone"
+	icon_state = "hybrisastone"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
@@ -121505,7 +121505,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -4;
@@ -122331,7 +122331,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 4;
 	name = "trash bag";
@@ -122380,7 +122380,7 @@
 /obj/item/stack/sheet/cardboard,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 7;
 	name = "trash bag";
@@ -123027,7 +123027,7 @@
 "tXR" = (
 /obj/structure/prop/almayer/computers/sensor_computer3{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp3";
 	name = "computer"
 	},
@@ -123199,7 +123199,7 @@
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco1,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -123766,7 +123766,7 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "zenithstone"
+	icon_state = "hybrisastone"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
@@ -123899,7 +123899,7 @@
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -123908,7 +123908,7 @@
 /obj/item/trash/barcardine,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -124068,7 +124068,7 @@
 "ugH" = (
 /obj/structure/prop/almayer/computers/sensor_computer2{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer"
 	},
 /turf/open/floor/corsat{
@@ -124428,7 +124428,7 @@
 	},
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer";
 	pixel_y = 12;
 	icon_state = "blackmps";
@@ -124765,7 +124765,7 @@
 "umn" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -4;
@@ -126471,7 +126471,7 @@
 "uBt" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -4;
@@ -126852,7 +126852,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 3.1;
 	name = "trash bag";
@@ -126861,7 +126861,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 3.2;
 	name = "trash bag";
@@ -126870,7 +126870,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 3;
 	name = "trash bag";
@@ -126927,7 +126927,7 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "zenithstone"
+	icon_state = "hybrisastone"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
@@ -127681,7 +127681,7 @@
 "uIX" = (
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_solid_white/autoname{
 	dir = 1
@@ -128343,7 +128343,7 @@
 /area/lv759/indoors/wy_research_complex/reception)
 "uOG" = (
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -128688,7 +128688,7 @@
 /obj/item/trash/burger,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -129128,7 +129128,7 @@
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -129145,7 +129145,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -131280,7 +131280,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -131417,7 +131417,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -131656,7 +131656,7 @@
 "vrI" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -132274,7 +132274,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -132589,7 +132589,7 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "zenithstone"
+	icon_state = "hybrisastone"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
@@ -132678,7 +132678,7 @@
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -133598,7 +133598,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/reagent_dispensers/fueltank{
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "spacecraft fuel-mix tank"
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -134422,7 +134422,7 @@
 "vOU" = (
 /obj/structure/window/framed/corsat,
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -135033,7 +135033,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -135041,7 +135041,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -4;
@@ -135227,7 +135227,7 @@
 /obj/structure/platform_decoration/hybrisa/rockdark,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -135343,7 +135343,7 @@
 /area/lv759/indoors/colonial_marshals/armory)
 "vWq" = (
 /obj/structure/machinery/atm{
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi';
 	pixel_x = 6;
 	pixel_y = 11
 	},
@@ -135525,7 +135525,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 2.9;
 	name = "trash bag";
@@ -136830,7 +136830,7 @@
 /obj/structure/platform_decoration/hybrisa/rockdark,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 2;
@@ -137093,7 +137093,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 5;
 	name = "trash bag";
@@ -137131,7 +137131,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 6;
 	name = "trash bag";
@@ -137781,7 +137781,7 @@
 	},
 /obj/structure/prop/almayer/computers/mapping_computer{
 	desc = null;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	name = "computer";
 	pixel_y = 12
 	},
@@ -137832,7 +137832,7 @@
 "wrm" = (
 /obj/structure/window/framed/corsat,
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -138140,7 +138140,7 @@
 "wuv" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	layer = 5;
 	name = "trash bag";
@@ -138260,7 +138260,7 @@
 "wvn" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -138269,7 +138269,7 @@
 	},
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -138640,7 +138640,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_y = 12
@@ -139733,7 +139733,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -140320,7 +140320,7 @@
 "wMx" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart1";
 	icon_opened = "foodcart1_open";
 	icon_state = "foodcart1";
@@ -140551,7 +140551,7 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -140799,7 +140799,7 @@
 /area/lv759/indoors/central_caves)
 "wRk" = (
 /obj/structure/machinery/atm{
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi';
 	pixel_x = 6;
 	pixel_y = 11
 	},
@@ -142061,7 +142061,7 @@
 "xaR" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -142070,7 +142070,7 @@
 	},
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_closed = "foodcart2";
 	icon_opened = "foodcart2_open";
 	icon_state = "foodcart2";
@@ -142271,7 +142271,7 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "xcH" = (
 /obj/structure/machinery/atm{
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi';
 	pixel_x = 11;
 	pixel_y = 11
 	},
@@ -142980,7 +142980,7 @@
 "xjh" = (
 /obj/structure/window/framed/corsat,
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 2
 	},
 /turf/open/floor/plating,
@@ -143407,7 +143407,7 @@
 "xmQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_white/autoname,
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 2
 	},
 /turf/open/floor/corsat{
@@ -144815,7 +144815,7 @@
 /obj/structure/surface/rack,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -4;
@@ -145110,7 +145110,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -145305,7 +145305,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;
@@ -145426,7 +145426,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -9;
@@ -146350,7 +146350,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = 3;
@@ -147700,7 +147700,7 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "xUz" = (
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 2
 	},
 /turf/open/floor/corsat{
@@ -148582,7 +148582,7 @@
 "ycI" = (
 /obj/structure/window/framed/corsat,
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -149627,7 +149627,7 @@
 	},
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "ztrashbag";
 	name = "trash bag";
 	pixel_x = -3;

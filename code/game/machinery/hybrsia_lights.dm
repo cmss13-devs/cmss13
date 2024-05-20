@@ -205,7 +205,7 @@
 // Hybrisa Electrical Stuff
 /obj/structure/machinery/colony_electrified_fence_switch
 	name = "Colony Electrified Fence Switch"
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the electrified fences. It only functions when there is power."
 	density = FALSE
@@ -279,7 +279,7 @@
 // Hybrisa Streetlights
 /obj/structure/machinery/colony_floodlight/street
 	name = "Colony Streetlight"
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "street_off"
 	layer = ABOVE_XENO_LAYER
 
@@ -297,7 +297,7 @@
 	lum_value = 0
 	name = "traffic light"
 	desc = "A traffic light"
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "trafficlight"
 	bound_width = 32
 	bound_height = 32
@@ -317,7 +317,7 @@
 	lum_value = 0
 	name = "traffic light"
 	desc = "A traffic light"
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "trafficlight_alt"
 	bound_width = 32
 	bound_height = 32
@@ -337,7 +337,7 @@
 
 /obj/structure/machinery/engineerconsole_switch
 	name = "Giant Alien Console"
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "engineerconsole"
 	desc = "A Giant Alien console of some kind, unlike anything you've ever seen before. Who knows the purpose of this strange technology..."
 	bound_height = 32
@@ -430,7 +430,7 @@ GLOBAL_LIST_INIT(ship_floodlights, list())
 	name = "circular light"
 	icon_state = "engineerlight_off"
 	desc = "A huge circular light"
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE

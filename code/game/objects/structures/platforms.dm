@@ -246,11 +246,11 @@
 
 
 /obj/structure/platform/hybrisa/metalplatform1
-	icon_state = "zenithstone"
+	icon_state = "hybrisastone"
 	name = "raised metal edge"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco1
-	icon_state = "zenithstone_deco"
+	icon_state = "hybrisastone_deco"
 	name = "raised metal corner"
 	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
 
@@ -275,41 +275,41 @@
 	icon_state = "strata_metalplatform3"
 
 /obj/structure/platform/hybrisa/metalplatform4
-	icon_state = "zenithplatform"
+	icon_state = "hybrisaplatform"
 	name = "raised metal platform"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco4
-	icon_state = "zenithplatform_deco"
+	icon_state = "hybrisaplatform_deco"
 	name = "raised metal corner"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 
 /obj/structure/platform/hybrisa/metalplatform5
-	icon_state = "zenithplatform2"
+	icon_state = "hybrisaplatform2"
 	name = "raised metal platform"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco5
-	icon_state = "zenithplatform_deco2"
+	icon_state = "hybrisaplatform_deco2"
 	name = "raised metal corner"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 
 /obj/structure/platform/hybrisa/metalplatform6
-	icon_state = "zenithplatform3"
+	icon_state = "hybrisaplatform3"
 	name = "raised metal platform"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 
 /obj/structure/platform/hybrisa/metalplatformstair1
-	icon_state = "zenithplatform_stair"
+	icon_state = "hybrisaplatform_stair"
 	name = "raised metal platform"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 
 /obj/structure/platform/hybrisa/metalplatformstair2
-	icon_state = "zenithplatform_stair_alt"
+	icon_state = "hybrisaplatform_stair_alt"
 	name = "raised metal platform"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6
-	icon_state = "zenithplatform_deco3"
+	icon_state = "hybrisaplatform_deco3"
 	name = "raised metal corner"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."

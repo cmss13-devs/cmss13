@@ -152,8 +152,14 @@
 		return
 	cooldown = 5
 	var/containers = 0
+	var/containers_ready = FALSE
 	for(var/obj/item/reagent_container/glass/I in freezer.contents)
 		if(I.reagents.replace_with(polymerization_recipe, "paraformaldehyde", 3))
 			containers++
+			if(!I.reagents.has_reagent("formaldehyde", 3) || !I.reagents.has_reagent("water", 3))
+				containers_ready = TRUE
 		if(containers > 3)
 			break
+
+	if(containers_ready) //at least 1 container has finished, ring the bell
+		playsound(freezer.loc, 'sound/machines/ding.ogg', 150)

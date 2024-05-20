@@ -389,6 +389,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	holder4.color = null
 	holder5.color = null
 
+	holder2.alpha = alpha
+	holder3.alpha = alpha
+
 	holder4.icon_state = "hudblank"
 
 	if(species && species.flags & IS_SYNTHETIC)
@@ -444,9 +447,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 				if(stat == DEAD || status_flags & FAKEDEATH)
 					holder2.alpha = 100
 					holder3.alpha = 100
-				else
-					holder2.alpha = 255
-					holder3.alpha = 255
+
 		if(status_flags & CORRUPTED_ALLY)
 			holder4.color = "#80ff80"
 			holder4.icon_state = "hudalien_ally"

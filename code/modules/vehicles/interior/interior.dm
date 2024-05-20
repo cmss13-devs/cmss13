@@ -118,7 +118,7 @@
 
 	var/list/passengers
 	var/list/bounds = get_bound_turfs()
-	for(var/turf/T in block(bounds[1], bounds[2]))
+	for(var/turf/T as anything in block(bounds[1], bounds[2]))
 		for(var/atom/A in T)
 			if(isliving(A))
 				LAZYADD(passengers, A)
@@ -322,7 +322,7 @@
 /datum/interior/proc/find_entrances()
 	var/list/bounds = get_bound_turfs()
 
-	for(var/turf/T in block(bounds[1], bounds[2]))
+	for(var/turf/T as anything in block(bounds[1], bounds[2]))
 		var/obj/effect/landmark/interior/spawn/entrance/E = locate() in T
 		if(E)
 			LAZYADD(entrance_markers, E)
@@ -332,6 +332,6 @@
 /datum/interior/proc/handle_landmarks()
 	var/list/bounds = get_bound_turfs()
 
-	for(var/turf/T in block(bounds[1], bounds[2]))
+	for(var/turf/T as anything in block(bounds[1], bounds[2]))
 		for(var/obj/effect/landmark/interior/L in T)
 			L.on_load(src)

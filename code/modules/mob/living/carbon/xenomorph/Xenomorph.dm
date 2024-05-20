@@ -218,6 +218,7 @@
 	//////////////////////////////////////////////////////////////////
 	var/xeno_mobhud = FALSE //whether the xeno mobhud is activated or not.
 	var/xeno_hostile_hud = FALSE // 'Hostile' HUD - the verb Xenos use to see tags, etc on humans
+	var/execute_hud = FALSE // Crit HUD, only visible to vampire lurkers
 	var/list/plasma_types = list() //The types of plasma the caste contains
 	var/list/xeno_shields = list() // List of /datum/xeno_shield that holds all active shields on the Xeno.
 	var/acid_splash_cooldown = 5 SECONDS //Time it takes between acid splash retaliate procs

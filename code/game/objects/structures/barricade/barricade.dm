@@ -456,7 +456,7 @@
 
 	var/repair_value = 0
 	for(var/validSheetType in repair_materials)
-		if(validSheetType == material.sheettype)
+		if(!isnull(material) && validSheetType == material.sheettype)
 			repair_value = repair_materials[validSheetType]
 			break
 

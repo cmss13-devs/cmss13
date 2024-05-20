@@ -1,4 +1,4 @@
-import { useBackend, useLocalState } from '../backend';
+import { useBackend, useState } from '../backend';
 import { Section, Button, Stack, NoticeBox, LabeledList, Flex, Box, Dropdown, Divider } from '../components';
 import { Window } from '../layouts';
 

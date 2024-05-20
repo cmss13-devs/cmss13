@@ -944,3 +944,11 @@
 /mob/living/carbon/xenomorph/queen/alter_ghost(mob/dead/observer/ghost)
 	ghost.icon = queen_standing_icon
 	return ..()
+
+/mob/living/carbon/xenomorph/queen/point_to_atom(atom/target_atom, turf/target_turf)
+	recently_pointed_to = world.time + 1 SECONDS
+
+	var/obj/effect/overlay/temp/point/big/greyscale/point = new(target_turf, src, target_atom)
+	point.color = "#a800a8"
+
+	visible_message("<b>[src]</b> points to [target_atom]", null, null, 5)

@@ -1,5 +1,0 @@
-author: "Nomoresolvalou"
-delete-after: True
-changes:
-  - balance: "unpowered doors are now opened instantly in maintenance jack crowbar mode instead of in three seconds."
-  - balance: "crowbar mode can now pry doors closed when unpowered."

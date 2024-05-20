@@ -1,4 +1,0 @@
-author: "doganesi"
-delete-after: True
-changes:
-  - bugfix: "Fixed some oversights with custom loadout provided weapon boxes"

@@ -1,4 +1,0 @@
-author: "Nomoresolvalou"
-delete-after: True
-changes:
-  - bugfix: "fixed cats not specifically defined in code displaying wrong info when held or stored in a container. This should also fix any other mob capable of being picked up that is not defined in code as well."

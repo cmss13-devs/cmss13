@@ -1,5 +1,16 @@
 import { useBackend } from '../backend';
-import { Section, ProgressBar, Box, LabeledList, NoticeBox, Stack, Icon, Divider, Flex, Button } from '../components';
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Icon,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
 export const HealthScan = (props) => {
@@ -85,7 +96,8 @@ export const HealthScan = (props) => {
                     good: [0.7, Infinity],
                     average: [0.2, 0.7],
                     bad: [-Infinity, 0.2],
-                  }}>
+                  }}
+                >
                   {health}% healthy
                 </ProgressBar>
               ) : (
@@ -93,7 +105,8 @@ export const HealthScan = (props) => {
                   value={1 + health / 100}
                   ranges={{
                     bad: [-Infinity, Infinity],
-                  }}>
+                  }}
+                >
                   {health}% healthy
                 </ProgressBar>
               )}
@@ -164,10 +177,11 @@ export const HealthScan = (props) => {
 
               <Button
                 inline
-                style={{ 'margin-left': '2%' }}
-                content="Change"
+                style={{ marginLeft: '2%' }}
                 onClick={() => act('change_holo_card')}
-              />
+              >
+                Change
+              </Button>
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -180,7 +194,8 @@ export const HealthScan = (props) => {
               {diseases.map((disease) => (
                 <LabeledList.Item
                   key={disease.name}
-                  label={disease.name[0].toUpperCase() + disease.name.slice(1)}>
+                  label={disease.name[0].toUpperCase() + disease.name.slice(1)}
+                >
                   <Box inline bold={1}>
                     Type : {disease.type}, possible cure : {disease.cure}
                   </Box>
@@ -193,7 +208,8 @@ export const HealthScan = (props) => {
                         good: [-Infinity, 20],
                         average: [20, 50],
                         bad: [50, Infinity],
-                      }}>
+                      }}
+                    >
                       Stage:{disease.stage}/{disease.max_stage}
                     </ProgressBar>
                   </Box>
@@ -209,7 +225,8 @@ export const HealthScan = (props) => {
                 <Box
                   color={
                     bloodpct > 0.9 ? 'green' : bloodpct > 0.7 ? 'orange' : 'red'
-                  }>
+                  }
+                >
                   {Math.round(blood_amount / 5.6)}%, {blood_amount}cl
                 </Box>
               </LabeledList.Item>
@@ -287,7 +304,8 @@ const ScannerChems = (props) => {
               <Box
                 inline
                 color={chemical.dangerous ? 'red' : 'white'}
-                bold={chemical.dangerous}>
+                bold={chemical.dangerous}
+              >
                 {chemical.amount + 'u ' + chemical.name}
               </Box>
               <Box inline width={'5px'} />
@@ -339,7 +357,8 @@ const ScannerLimbs = (props) => {
             width="100%"
             minHeight="15px"
             py="3px"
-            backgroundColor={index++ % 2 === 0 ? row_bg_color : ''}>
+            backgroundColor={index++ % 2 === 0 ? row_bg_color : ''}
+          >
             <Flex.Item basis="85px" shrink="0" bold pl="3px">
               {limb.name[0].toUpperCase() + limb.name.slice(1)}
             </Flex.Item>
@@ -353,14 +372,16 @@ const ScannerLimbs = (props) => {
                   <Box
                     inline
                     width="50px"
-                    color={limb.brute > 0 ? 'red' : 'white'}>
+                    color={limb.brute > 0 ? 'red' : 'white'}
+                  >
                     {limb.unbandaged ? `{${limb.brute}}` : `${limb.brute}`}
                   </Box>
                   <Box inline width="5px" />
                   <Box
                     inline
                     width="50px"
-                    color={limb.burn > 0 ? '#ffb833' : 'white'}>
+                    color={limb.burn > 0 ? '#ffb833' : 'white'}
+                  >
                     {limb.unsalved ? `{${limb.burn}}` : `${limb.burn}`}
                   </Box>
                   <Box inline width="5px" />
@@ -384,7 +405,8 @@ const ScannerLimbs = (props) => {
                           ? 'white'
                           : 'red'
                       }
-                      bold={1}>
+                      bold={1}
+                    >
                       [{limb.limb_status}]
                     </Box>
                   ) : null}
@@ -401,7 +423,8 @@ const ScannerLimbs = (props) => {
                           ? 'red'
                           : 'green'
                       }
-                      bold={1}>
+                      bold={1}
+                    >
                       [{limb.limb_type}]
                     </Box>
                   ) : null}
@@ -440,11 +463,13 @@ const ScannerOrgans = (props) => {
         {damaged_organs.map((organ) => (
           <LabeledList.Item
             key={organ.name}
-            label={organ.name[0].toUpperCase() + organ.name.slice(1)}>
+            label={organ.name[0].toUpperCase() + organ.name.slice(1)}
+          >
             <Box
               inline
               color={organ.status === 'Bruised' ? 'orange' : 'red'}
-              bold={1}>
+              bold={1}
+            >
               {organ.status + ' [' + organ.damage + ' damage]'}
             </Box>
             <Box inline width={'5px'} />

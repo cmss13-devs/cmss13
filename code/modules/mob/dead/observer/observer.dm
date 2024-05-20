@@ -655,7 +655,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.forceMove(pick(L))
 	following = null
 
-/mob/dead/observer/proc/scan_health(mob/living/target in oview())
+/mob/dead/observer/proc/scan_health(mob/living/target in view(src.client))
 	set name = "Scan Health"
 
 	if(!istype(target))
@@ -1191,7 +1191,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!SSticker.HasRoundStarted())
 		var/time_remaining = SSticker.GetTimeLeft()
 		if(time_remaining > 0)
-			. += "Time To Start: [round(time_remaining)]s[SSticker.delay_start ? " (DELAYED)" : ""]"
+			. += "Time To Start: [floor(time_remaining)]s[SSticker.delay_start ? " (DELAYED)" : ""]"
 		else if(time_remaining == -10)
 			. += "Time To Start: DELAYED"
 		else

@@ -1,7 +1,13 @@
 import { useBackend } from '../backend';
-import { AnimatedNumber, Button, LabeledList, ProgressBar, Section } from '../components';
-import { BeakerContents } from './common/BeakerContents';
+import {
+  AnimatedNumber,
+  Button,
+  LabeledList,
+  ProgressBar,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
+import { BeakerContents } from './common/BeakerContents';
 
 const damageTypes = [
   {
@@ -53,14 +59,16 @@ const CryoContent = (props) => {
               </LabeledList.Item>
               <LabeledList.Item
                 label="Temperature"
-                color={data.occupant.temperaturestatus}>
+                color={data.occupant.temperaturestatus}
+              >
                 <AnimatedNumber value={data.occupant.bodyTemperature} />
                 {' K'}
               </LabeledList.Item>
               <LabeledList.Item label="Health">
                 <ProgressBar
                   value={data.occupant.health / data.occupant.maxHealth}
-                  color={data.occupant.health > 0 ? 'good' : 'average'}>
+                  color={data.occupant.health > 0 ? 'good' : 'average'}
+                >
                   <AnimatedNumber value={data.occupant.health} />
                 </ProgressBar>
               </LabeledList.Item>
@@ -82,7 +90,8 @@ const CryoContent = (props) => {
               icon={data.isOperating ? 'power-off' : 'times'}
               disabled={data.isOpen}
               onClick={() => act('power')}
-              color={data.isOperating && 'green'}>
+              color={data.isOperating && 'green'}
+            >
               {data.isOperating ? 'On' : 'Off'}
             </Button>
           </LabeledList.Item>
@@ -94,8 +103,9 @@ const CryoContent = (props) => {
               icon="eject"
               disabled={!data.hasOccupant}
               onClick={() => act('eject')}
-              content="Eject Patient"
-            />
+            >
+              Eject Patient
+            </Button>
             <Button
               icon={data.autoEject ? 'sign-out-alt' : 'sign-in-alt'}
               width="6rem"
@@ -103,9 +113,10 @@ const CryoContent = (props) => {
               tooltip={
                 'Auto eject is ' + (data.autoEject ? 'enabled.' : 'disabled.')
               }
-              content={data.autoEject ? 'Auto' : 'Manual'}
               onClick={() => act('autoeject')}
-            />
+            >
+              {data.autoEject ? 'Auto' : 'Manual'}
+            </Button>
             <Button
               icon={soundicon}
               ml="auto"
@@ -116,9 +127,10 @@ const CryoContent = (props) => {
                 'Auto eject notifications are ' +
                 (data.notify ? 'enabled.' : 'disabled.')
               }
-              content={data.notify ? 'Notify' : 'Silent'}
               onClick={() => act('notice')}
-            />
+            >
+              {data.notify ? 'Notify' : 'Silent'}
+            </Button>
           </LabeledList.Item>
         </LabeledList>
       </Section>
@@ -129,9 +141,11 @@ const CryoContent = (props) => {
             icon="eject"
             disabled={!data.isBeakerLoaded}
             onClick={() => act('ejectbeaker')}
-            content="Eject"
-          />
-        }>
+          >
+            Eject
+          </Button>
+        }
+      >
         <BeakerContents
           beakerLoaded={data.isBeakerLoaded}
           beakerContents={data.beakerContents}

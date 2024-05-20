@@ -1,5 +1,15 @@
 import { useBackend, useState } from '../backend';
-import { Section, Button, Stack, NoticeBox, LabeledList, Flex, Box, Dropdown, Divider } from '../components';
+import {
+  Box,
+  Button,
+  Divider,
+  Dropdown,
+  Flex,
+  LabeledList,
+  NoticeBox,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
 export const XenomorphExtractor = () => {
@@ -28,7 +38,8 @@ export const XenomorphExtractor = () => {
                 fluid
                 icon="eject"
                 disabled={!organ}
-                onClick={() => act('eject_organ')}>
+                onClick={() => act('eject_organ')}
+              >
                 {!organ ? 'Eject Biomass' : 'Eject ' + caste + ' biomass'}
               </Button>
             </Stack.Item>
@@ -37,7 +48,8 @@ export const XenomorphExtractor = () => {
                 fluid
                 icon="eject"
                 disabled={!organ}
-                onClick={() => act('process_organ')}>
+                onClick={() => act('process_organ')}
+              >
                 {!organ
                   ? 'Process Biomass'
                   : 'Process Biomass, Expected value : ' + value}
@@ -96,11 +108,13 @@ export const XenomorphExtractor = () => {
                                     ref: upgrades.ref,
                                     vari: upgrades.vari,
                                   })
-                                }>
+                                }
+                              >
                                 Print ({upgrades.cost})
                               </Button>
                             </Box>
-                          }>
+                          }
+                        >
                           <Box mb={0.8}>
                             Clearance{' '}
                             {upgrades.clearance === 6
@@ -126,7 +140,7 @@ export const XenomorphExtractor = () => {
                             )}
                           </Box>
                         </LabeledList.Item>
-                      ) : null
+                      ) : null,
                     )}
                   </LabeledList>
                 )}

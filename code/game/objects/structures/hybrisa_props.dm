@@ -706,122 +706,100 @@
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty
 	name = "shelf"
 	desc = "A long empty shelf."
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrackempty"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack1
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack1"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack2
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack2"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack3
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack3"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack4
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack4"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack5
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack5"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack6
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack6"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack7
 	name = "shelf"
 	desc = "A long shelf filled with various foodstuffs"
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "longrack7"
 
 /obj/structure/prop/hybrisa/supermart/supermartbelt
 	name = "conveyor belt"
 	desc = "A conveyor belt."
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "checkoutbelt"
 
 /obj/structure/prop/hybrisa/supermart/freezer
 	name = "commercial freezer"
 	desc = "A commercial grade freezer."
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezerupper"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer1
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezerupper"
 
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer2
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezerlower"
 
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer3
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezermid"
 
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezerupper1"
 
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer5
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezerlower1"
 
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer6
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "freezermid1"
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketempty
 	name = "basket"
 	desc = "A basket."
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "supermarketbasketempty"
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketoranges
 	name = "basket"
 	desc = "A basket full of oranges."
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "supermarketbasket1"
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketpears
 	name = "basket"
 	desc = "A basket full of pears."
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "supermarketbasket2"
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketcarrots
 	name = "basket"
 	desc = "A basket full of carrots."
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "supermarketbasket3"
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketmelons
 	name = "basket"
 	desc = "A basket full of melons."
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "supermarketbasket4"
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketapples
 	name = "basket"
 	desc = "A basket full of apples."
-	icon = 'icons/obj/structures/props/supermart.dmi'
 	icon_state = "supermarketbasket5"
 
 // Furniture
@@ -917,53 +895,44 @@
 /obj/structure/bed/hybrisa/prisonbed
 	name = "bunk bed"
 	desc = "A sorry looking bunk-bed."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "prisonbed"
 
 /obj/structure/bed/hybrisa/bunkbed1
 	name = "bunk bed"
 	desc = "A comfy looking bunk-bed."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "zbunkbed"
 
 /obj/structure/bed/hybrisa/bunkbed2
 	name = "bunk bed"
 	desc = "A comfy looking bunk-bed."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "zbunkbed2"
 
 /obj/structure/bed/hybrisa/bunkbed3
 	name = "bunk bed"
 	desc = "A comfy looking bunk-bed."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "zbunkbed3"
 
 /obj/structure/bed/hybrisa/bunkbed4
 	name = "bunk bed"
 	desc = "A comfy looking bunk-bed."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "zbunkbed4"
 
 /obj/structure/bed/hybrisa/hospitalbeds
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "hospital"
 
 /obj/structure/bed/hybrisa/hospitalbeds/hospitalbed1
 	name = "hospital bed"
 	desc = "A mattress seated on a rectangular metallic frame with wheels. This is used to support a lying person in a comfortable manner."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "bigrollerempty2_up"
 
 /obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2
 	name = "hospital bed"
 	desc = "A mattress seated on a rectangular metallic frame with wheels. This is used to support a lying person in a comfortable manner."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "bigrollerempty_up"
 
 /obj/structure/bed/hybrisa/hospitalbeds/hospitalbed3
 	name = "hospital bed"
 	desc = "A mattress seated on a rectangular metallic frame with wheels. This is used to support a lying person in a comfortable manner."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "bigrollerempty3_up"
 
 // Xenobiology
@@ -976,86 +945,73 @@
 /obj/structure/prop/hybrisa/xenobiology/small/empty
 	name = "specimen containment cell"
 	desc = "It's empty."
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics.dmi'
 	icon_state = "xenocellemptyon"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/offempty
 	name = "specimen containment cell"
 	desc = "It's turned off and empty."
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics.dmi'
 	icon_state = "xenocellemptyoff"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/larva
 	name = "specimen containment cell"
 	desc = "There is something worm-like inside..."
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics.dmi'
 	icon_state = "xenocelllarva"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/egg
 	name = "specimen containment cell"
 	desc = "There is, what looks like some sort of egg inside..."
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics.dmi'
 	icon_state = "xenocellegg"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/hugger
 	name = "specimen containment cell"
 	desc = "There's something spider-like inside..."
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics.dmi'
 	icon_state = "xenocellhugger"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/cracked1
 	name = "specimen containment cell"
 	desc = "Looks like something broke it...from the inside."
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics.dmi'
 	icon_state = "xenocellcrackedempty"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/cracked2
 	name = "specimen containment cell"
 	desc = "Looks like something broke it...from the inside."
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics.dmi'
 	icon_state = "xenocellcrackedempty2"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/crackedegg
 	name = "specimen containment cell"
 	desc = "Looks like something broke it, there's a giant empty egg inside."
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics.dmi'
 	icon_state = "xenocellcrackedegg"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/big
 	name = "specimen containment cell"
 	desc = "A giant tube with a hulking monstrosity inside, is this thing alive?"
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics2.dmi'
 	icon_state = "bigqueencryo1"
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/big/bigleft
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics2.dmi'
 	icon_state = "bigqueencryo1"
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/big/bigright
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics2.dmi'
 	icon_state = "bigqueencryo2"
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/big/bigbottomleft
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics2.dmi'
 	icon_state = "bigqueencryo3"
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/big/bigbottomright
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics2.dmi'
 	icon_state = "bigqueencryo4"
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
@@ -1063,7 +1019,6 @@
 /obj/structure/prop/hybrisa/xenobiology/misc
 	name = "strange egg"
 	desc = "A strange ancient looking egg, it seems to be inert."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "inertegg"
 	unslashable = TRUE
 	indestructible = TRUE
@@ -1134,32 +1089,26 @@
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/northwesttop
 	name = "strange pillar"
-	icon = 'icons/obj/structures/props/hybrisaengineerpillarangled.dmi'
 	icon_state = "engineerpillar_NW1"
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/northwestbottom
 	name = "strange pillar"
-	icon = 'icons/obj/structures/props/hybrisaengineerpillarangled.dmi'
 	icon_state = "engineerpillar_NW2"
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/southwesttop
 	name = "strange pillar"
-	icon = 'icons/obj/structures/props/hybrisaengineerpillarangled.dmi'
 	icon_state = "engineerpillar_SW1"
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/southwestbottom
 	name = "strange pillar"
-	icon = 'icons/obj/structures/props/hybrisaengineerpillarangled.dmi'
 	icon_state = "engineerpillar_SW2"
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/smallsouthwest1
 	name = "strange pillar"
-	icon = 'icons/obj/structures/props/hybrisaengineerpillarangled.dmi'
 	icon_state = "engineerpillar_SW1fade"
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/smallsouthwest2
 	name = "strange pillar"
-	icon = 'icons/obj/structures/props/hybrisaengineerpillarangled.dmi'
 	icon_state = "engineerpillar_SW2fade"
 
 /obj/structure/prop/hybrisa/engineer/blackgoocontainer
@@ -1179,49 +1128,42 @@
 
 /obj/structure/prop/hybrisa/airport/dropshipnosecone
 	name = "nose cone"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "dropshipfrontwhite1"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/airport/dropshipwingleft
 	name = "wing"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "dropshipwingtop1"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/airport/dropshipwingright
 	name = "wing"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "dropshipwingtop2"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/airport/dropshipvent1left
 	name = "vent"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "dropshipvent1"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/airport/dropshipvent2right
 	name = "vent"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "dropshipvent2"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/airport/dropshipventleft
 	name = "vent"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "dropshipvent3"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/airport/dropshipventright
 	name = "vent"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "dropshipvent4"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
@@ -1301,31 +1243,26 @@
 // Floor props
 
 /obj/structure/prop/hybrisa/misc/floorprops
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "solidgrate1"
 
 /obj/structure/prop/hybrisa/misc/floorprops/grate
 	name = "solid metal grate"
 	desc = "A metal grate."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "solidgrate1"
 
 /obj/structure/prop/hybrisa/misc/floorprops/grate2
 	name = "solid metal grate"
 	desc = "A metal grate."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "solidgrate5"
 
 /obj/structure/prop/hybrisa/misc/floorprops/grate3
 	name = "solid metal grate"
 	desc = "A metal grate."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "zhalfgrate1"
 
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass
 	name = "reinforced glass floor"
 	desc = "A heavily reinforced glass floor panel, this looks almost indestructible."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "solidgrate2"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -1334,7 +1271,6 @@
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass2
 	name = "reinforced glass floor"
 	desc = "A heavily reinforced glass floor panel, this looks almost indestructible."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "solidgrate3"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -1344,7 +1280,6 @@
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass3
 	name = "reinforced glass floor"
 	desc = "A heavily reinforced glass floor panel, this looks almost indestructible."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "solidgrate4"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -1363,31 +1298,24 @@
 	breakable = TRUE
 
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti1
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "zgraffiti1"
 
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti2
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "zgraffiti2"
 
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti3
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "zgraffiti3"
 
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti4
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "zgraffiti4"
 
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti5
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "zgraffiti5"
 
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti6
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "zgraffiti6"
 
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti7
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "zgraffiti7"
 
 // Wall Blood
@@ -1401,20 +1329,17 @@
 	breakable = TRUE
 
 /obj/structure/prop/hybrisa/misc/blood/blood1
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "wallblood_floorblood"
 
 /obj/structure/prop/hybrisa/misc/blood/blood2
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "wall_blood_1"
 
 /obj/structure/prop/hybrisa/misc/blood/blood3
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "wall_blood_2"
 
 // Fire
 
-/obj/structure/prop/hybrisa/misc/fire/fire1
+/obj/structure/prop/hybrisa/misc/fire
 	name = "fire"
 	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "zfire_smoke"
@@ -1423,65 +1348,50 @@
 	light_power = 2
 	light_range = 3
 
+/obj/structure/prop/hybrisa/misc/fire/fire1
+	icon_state = "zfire_smoke"
+
 /obj/structure/prop/hybrisa/misc/fire/fire2
-	name = "fire"
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "zfire_smoke2"
-	layer = 5
-	light_on = TRUE
-	light_power = 2
-	light_range = 3
 
 /obj/structure/prop/hybrisa/misc/fire/firebarrel
 	name = "barrel"
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "zbarrelfireon"
-	layer = 5
-	light_on = TRUE
-	light_power = 2
-	light_range = 3
 
 // Misc
 
 /obj/structure/prop/hybrisa/misc/commandosuitemptyprop
 	name = "Weyland-Yutani 'Ape-Suit' Showcase"
 	desc = "A display model of the Weyland-Yutani 'Apesuit', shame it's only a model..."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "dogcatchersuitempty1"
 
 /obj/structure/prop/hybrisa/misc/cabinet
 	name = "cabinet"
 	desc = "a small cabinet with drawers."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "sidecabinet"
 
 /obj/structure/prop/hybrisa/misc/trash/green
 	name = "trash bin"
 	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "trashgreen"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/misc/trash/blue
 	name = "trash bin"
 	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "trashblue"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/misc/redmeter
 	name = "meter"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "redmeter"
 
 /obj/structure/prop/hybrisa/misc/firebarreloff
 	name = "barrel"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "zfirebarreloff"
 
 /obj/structure/prop/hybrisa/misc/trashbagfullprop
 	name = "trash bag"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "ztrashbag"
 
 /obj/structure/prop/hybrisa/misc/slotmachine
@@ -1494,6 +1404,7 @@
 	anchored = TRUE
 	density = TRUE
 	layer = 3.2
+
 /obj/structure/prop/hybrisa/misc/slotmachine_broken
 	name = "slot machine"
 	desc = "A broken slot machine."
@@ -1504,16 +1415,15 @@
 	anchored = TRUE
 	density = TRUE
 	layer = 3.2
+
 /obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine1
 	name = "coffee machine"
 	desc = "A coffee machine."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "coffee"
 
 /obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine2
 	name = "coffee machine"
 	desc = "A coffee machine."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "coffee_cup"
 
 /obj/structure/prop/hybrisa/misc/machinery/computers
@@ -1521,65 +1431,62 @@
 	icon_state = "mapping_comp"
 
 /obj/structure/prop/hybrisa/misc/machinery/computers/computerwhite/computer1
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "mapping_comp"
 
 /obj/structure/prop/hybrisa/misc/machinery/computers/computerwhite/computer2
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "mps"
 
 /obj/structure/prop/hybrisa/misc/machinery/computers/computerwhite/computer3
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "sensor_comp1"
 
 /obj/structure/prop/hybrisa/misc/machinery/computers/computerwhite/computer4
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "sensor_comp2"
 
 /obj/structure/prop/hybrisa/misc/machinery/computers/computerwhite/computer5
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "sensor_comp3"
 
-
 /obj/structure/prop/hybrisa/misc/machinery/computers/computerblack/computer1
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "blackmapping_comp"
 
 /obj/structure/prop/hybrisa/misc/machinery/computers/computerblack/computer2
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "blackmps"
 
 /obj/structure/prop/hybrisa/misc/machinery/computers/computerblack/computer3
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "blacksensor_comp1"
 
 /obj/structure/prop/hybrisa/misc/machinery/computers/computerblack/computer4
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "blacksensor_comp2"
 
 /obj/structure/prop/hybrisa/misc/machinery/computers/computerblack/computer5
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "blacksensor_comp3"
-
 
 /obj/structure/prop/hybrisa/misc/machinery/screens
 	name = "monitor"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/frame
 	icon_state = "frame"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/security
 	icon_state = "security"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/evac
 	icon_state = "evac"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert
 	icon_state = "redalert"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank
 	icon_state = "redalertblank"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/entertainment
 	icon_state = "entertainment"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreen
 	icon_state = "telescreen"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreenbroke
 	icon_state = "telescreenb"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreenbrokespark
 	icon_state = "telescreenbspark"
 
@@ -1588,14 +1495,19 @@
 //Green
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_off
 	icon_state = "multimonitorsmall_off"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_on
 	icon_state = "multimonitorsmall_on"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_off
 	icon_state = "multimonitormedium_off"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_on
 	icon_state = "multimonitormedium_on"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorbig_off
 	icon_state = "multimonitorbig_off"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorbig_on
 	icon_state = "multimonitorbig_on"
 
@@ -1603,20 +1515,26 @@
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_off
 	icon_state = "bluemultimonitorsmall_off"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_on
 	icon_state = "bluemultimonitorsmall_on"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_off
 	icon_state = "bluemultimonitormedium_off"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on
 	icon_state = "bluemultimonitormedium_on"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorbig_off
 	icon_state = "bluemultimonitorbig_off"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorbig_on
 	icon_state = "bluemultimonitorbig_on"
 
 // Egg
 /obj/structure/prop/hybrisa/misc/machinery/screens/wallegg_off
 	icon_state = "wallegg_off"
+
 /obj/structure/prop/hybrisa/misc/machinery/screens/wallegg_on
 	icon_state = "wallegg_on"
 
@@ -1626,15 +1544,19 @@
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1
 	layer = 2
 	icon_state = "pipe-s"
+
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe2
 	layer = 2
 	icon_state = "pipe-c"
+
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe3
 	layer = 2
 	icon_state = "pipe-j1"
+
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe4
 	layer = 2
 	icon_state = "pipe-y"
+
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe5
 	layer = 2
 	icon_state = "pipe-b"
@@ -1645,13 +1567,14 @@
 /obj/structure/prop/hybrisa/misc/fake/wire/red
 	layer = 2
 	icon_state = "intactred"
+
 /obj/structure/prop/hybrisa/misc/fake/wire/yellow
 	layer = 2
 	icon_state = "intactyellow"
+
 /obj/structure/prop/hybrisa/misc/fake/wire/blue
 	layer = 2
 	icon_state = "intactblue"
-
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire
 	name = "heavy duty wire"
@@ -1659,15 +1582,19 @@
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy1
 	layer = 2
 	icon_state = "0-1"
+
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2
 	layer = 2
 	icon_state = "1-2"
+
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3
 	layer = 2
 	icon_state = "1-4"
+
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy4
 	layer = 2
 	icon_state = "1-2-4"
+
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy5
 	layer = 2
 	icon_state = "1-2-4-8"
@@ -1688,50 +1615,40 @@
 	debris = list(/obj/item/stack/sheet/mineral/plastic)
 
 /obj/structure/prop/hybrisa/misc/road/roadbarrierred
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "roadbarrier"
 
 /obj/structure/prop/hybrisa/misc/road/roadbarrierredlong
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "roadbarrier4"
 
 /obj/structure/prop/hybrisa/misc/road/roadbarrierblue
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "roadbarrier2"
 
 /obj/structure/prop/hybrisa/misc/road/roadbarrierbluelong
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "roadbarrier5"
 
 /obj/structure/prop/hybrisa/misc/road/roadbarrierwyblack
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "roadbarrier3"
 
 /obj/structure/prop/hybrisa/misc/road/roadbarrierwyblacklong
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "roadbarrier6"
 
 /obj/structure/prop/hybrisa/misc/road/roadbarrierwyblackjoined
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "roadbarrierjoined3"
 
 /obj/structure/prop/hybrisa/misc/road/roadbarrierjoined
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "roadbarrierjoined"
 
 /obj/structure/prop/hybrisa/misc/road/wood
 	name = "road barrier"
 	desc = "A wooden barrier for blocking entry."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "roadbarrierwood"
 	breakable = TRUE
 	debris = list(/obj/item/stack/sheet/wood)
 
 /obj/structure/prop/hybrisa/misc/road/wood/roadbarrierwoodorange
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "roadbarrierwood"
+
 /obj/structure/prop/hybrisa/misc/road/wood/roadbarrierwoodblue
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "roadbarrierpolice"
 
 // Cargo Containers extended
@@ -1753,169 +1670,141 @@
 
 /obj/structure/prop/hybrisa/containersextended/blueleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blueleft"
 
 /obj/structure/prop/hybrisa/containersextended/blueright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blueright"
 
 /obj/structure/prop/hybrisa/containersextended/greenleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greenleft"
 
 /obj/structure/prop/hybrisa/containersextended/greenright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greenright"
 
 /obj/structure/prop/hybrisa/containersextended/tanleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "tanleft"
 
 /obj/structure/prop/hybrisa/containersextended/tanright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "tanright"
 
 /obj/structure/prop/hybrisa/containersextended/redleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "redleft"
 
 /obj/structure/prop/hybrisa/containersextended/redright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "redright"
 
 /obj/structure/prop/hybrisa/containersextended/greywyleft
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greywyleft"
 
 /obj/structure/prop/hybrisa/containersextended/greywyright
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greywyright"
 
 /obj/structure/prop/hybrisa/containersextended/lightgreywyleft
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "lightgreywyleft"
 
 /obj/structure/prop/hybrisa/containersextended/lightgreywyright
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "lightgreywyright"
 
 /obj/structure/prop/hybrisa/containersextended/blackwyleft
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blackwyleft"
 
 /obj/structure/prop/hybrisa/containersextended/blackwyright
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blackwyright"
 
 /obj/structure/prop/hybrisa/containersextended/whitewyleft
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "whitewyleft"
 
 /obj/structure/prop/hybrisa/containersextended/whitewyright
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "whitewyright"
 
 /obj/structure/prop/hybrisa/containersextended/tanwywingsleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "tanwywingsleft"
 
 /obj/structure/prop/hybrisa/containersextended/tanwywingsright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "tanwywingsright"
 
 /obj/structure/prop/hybrisa/containersextended/greenwywingsleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greenwywingsleft"
 
 /obj/structure/prop/hybrisa/containersextended/greenwywingsright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greenwywingsright"
 
 /obj/structure/prop/hybrisa/containersextended/bluewywingsleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "bluewywingsleft"
 
 /obj/structure/prop/hybrisa/containersextended/bluewywingsright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "bluewywingsright"
 
 /obj/structure/prop/hybrisa/containersextended/redwywingsleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "redwywingsleft"
 
 /obj/structure/prop/hybrisa/containersextended/redwywingsright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "redwywingsright"
 
 /obj/structure/prop/hybrisa/containersextended/medicalleft
 	name = "medical cargo containers"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "medicalleft"
 
 /obj/structure/prop/hybrisa/containersextended/medicalright
 	name = "medical cargo containers"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "medicalright"
 
 /obj/structure/prop/hybrisa/containersextended/emptymedicalleft
 	name = "medical cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "emptymedicalleft"
 
 /obj/structure/prop/hybrisa/containersextended/emptymedicalright
 	name = "medical cargo container"
-	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "emptymedicalright"
 
 /// Fake Platforms
 
 /obj/structure/prop/hybrisa/fakeplatforms
 	name = "platform"
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 
 /obj/structure/prop/hybrisa/fakeplatforms/platform1
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "engineer_platform"
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
+
 /obj/structure/prop/hybrisa/fakeplatforms/platform2
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "engineer_platform_platformcorners"
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
+
 /obj/structure/prop/hybrisa/fakeplatforms/platform3
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "platform"
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
+
 /obj/structure/prop/hybrisa/fakeplatforms/platform4
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "hybrisaplatform3"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -1924,7 +1813,6 @@
 // Grille
 
 /obj/structure/prop/hybrisa/misc/highvoltagegrille
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "highvoltagegrille"
 
 // Greeblies
@@ -1985,15 +1873,11 @@
 	icon_state = "smallwallvent1"
 	density = FALSE
 
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2
 	name = "wall vent"
 	icon_state = "smallwallvent2"
 
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2
-	name = "wall vent"
-	icon_state = "smallwallvent2"
-
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3
 	name = "wall vent"
 	icon_state = "smallwallvent3"
 
@@ -2007,7 +1891,6 @@
 	name = "meter"
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "biggreenmeter1"
-
 
 // MISC
 
@@ -2043,7 +1926,6 @@
 /obj/structure/prop/hybrisa/misc/detonator
 	name = "detonator"
 	desc = "A detonator for explosives, armed and ready."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "detonator"
 	density = FALSE
 	anchored = TRUE
@@ -2064,7 +1946,6 @@
 /obj/structure/prop/hybrisa/misc/firehydrant
 	name = "fire hydrant"
 	desc = "A fire hydrant public water outlet, designed for quick access to water."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "firehydrant"
 	density = TRUE
 	anchored = TRUE
@@ -2114,47 +1995,38 @@
 
 /obj/structure/prop/hybrisa/signs/casniosign
 	name = "casino sign"
-	icon = 'icons/obj/structures/props/hybrisa64x64_signs.dmi'
 	icon_state = "nightgoldcasinoopen_on"
 
 /obj/structure/prop/hybrisa/signs/jackssign
 	name = "jack's surplus sign"
-	icon = 'icons/obj/structures/props/hybrisa64x64_signs.dmi'
 	icon_state = "jacksopen_on"
 
 /obj/structure/prop/hybrisa/signs/opensign
 	name = "open sign"
-	icon = 'icons/obj/structures/props/hybrisa64x64_signs.dmi'
 	icon_state = "open_on"
 
 /obj/structure/prop/hybrisa/signs/opensign2
 	name = "open sign"
-	icon = 'icons/obj/structures/props/hybrisa64x64_signs.dmi'
 	icon_state = "open_on2"
 
 /obj/structure/prop/hybrisa/signs/pizzasign
 	name = "pizza sign"
-	icon = 'icons/obj/structures/props/hybrisa64x64_signs.dmi'
 	icon_state = "pizzaneon_on"
 
 /obj/structure/prop/hybrisa/signs/weymartsign
 	name = "weymart sign"
-	icon = 'icons/obj/structures/props/hybrisa64x64_signs.dmi'
 	icon_state = "weymartsign2"
 
 /obj/structure/prop/hybrisa/signs/mechanicsign
 	name = "mechanic sign"
-	icon = 'icons/obj/structures/props/hybrisa64x64_signs.dmi'
 	icon_state = "mechanicopen_on2"
 
 /obj/structure/prop/hybrisa/signs/cuppajoessign
 	name = "cuppa joe's sign"
-	icon = 'icons/obj/structures/props/hybrisa64x64_signs.dmi'
 	icon_state = "cuppajoes"
 
 /obj/structure/prop/hybrisa/signs/barsign
 	name = "bar sign"
-	icon = 'icons/obj/structures/props/hybrisa64x64_signs.dmi'
 	icon_state = "barsign_on"
 
 // Small Sign
@@ -2173,7 +2045,7 @@
 // Billboards, Signs and Posters
 
 /// Alien Isolation - posters used as reference (direct downscale of the image for some) If anyone wants to name the billboards individually ///
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards
 	name = "billboard"
 	desc = "A advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
@@ -2184,32 +2056,32 @@
 	health = 200
 	anchored = TRUE
 
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1
 	name = "billboard"
 	desc = "A advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard1"
 
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2
 	name = "billboard"
 	desc = "A advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard2"
 
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3
 	name = "billboard"
 	desc = "A advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard3"
 
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4
 	name = "billboard"
 	desc = "A advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard4"
 
 // Big Road Signs
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns
 	name = "road sign"
 	desc = "A road sign."
 	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
@@ -2220,10 +2092,10 @@
 	health = 200
 	anchored = TRUE
 	layer = 8
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1
 	icon_state = "roadsign_1"
 
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_2
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2
 	icon_state = "roadsign_2"
 
 // Car Factory

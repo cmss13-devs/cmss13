@@ -3015,7 +3015,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	pixel_x = -16;
 	pixel_y = 34
 	},
@@ -3086,10 +3086,10 @@
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	dir = 5;
 	pixel_y = 32;
 	pixel_x = 16
@@ -3327,7 +3327,7 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -3767,7 +3767,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/prison{
@@ -4005,7 +4005,7 @@
 	dir = 1
 	},
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark3,
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 6;
 	pixel_y = 34
 	},
@@ -5586,7 +5586,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -6308,7 +6308,7 @@
 	pixel_y = 6
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/almayer{
@@ -6540,7 +6540,7 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "bed" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /obj/structure/prop/invuln/overhead_pipe{
@@ -6581,7 +6581,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	layer = 8;
 	level = 8;
 	pixel_x = -26;
@@ -7560,7 +7560,7 @@
 /obj/structure/machinery/light/small/blue{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -7576,7 +7576,7 @@
 /area/lv759/indoors/spaceport/docking_bay_1)
 "bmp" = (
 /obj/structure/machinery/disposal,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating/prison,
@@ -10468,7 +10468,7 @@
 /area/lv759/indoors/wy_research_complex/hallwaycentral)
 "bNt" = (
 /obj/structure/largecrate/random/case/double,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/strata{
@@ -11739,7 +11739,7 @@
 /area/lv759/indoors/south_west_caves)
 "bXZ" = (
 /obj/structure/closet/bombclosetsecurity,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -12435,7 +12435,7 @@
 	dir = 1
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -13427,7 +13427,7 @@
 	dir = 1
 	},
 /obj/item/shard,
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	pixel_y = 34
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -13449,7 +13449,7 @@
 	pixel_x = 4;
 	pixel_y = 7
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/floor/prison{
@@ -13464,7 +13464,7 @@
 /obj/item/ammo_magazine/smg/mp5,
 /obj/item/ammo_magazine/smg/mp5,
 /obj/item/ammo_magazine/smg/mp5,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -14282,7 +14282,7 @@
 "csR" = (
 /obj/structure/surface/rack,
 /obj/item/bodybag/tarp/reactive,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/corsat{
@@ -15918,7 +15918,7 @@
 /obj/item/clothing/gloves/swat,
 /obj/item/weapon/gun/energy/taser,
 /obj/item/clothing/mask/gas/swat,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/prison{
@@ -17282,7 +17282,7 @@
 /turf/open/floor/prison,
 /area/lv759/indoors/garage_workshop)
 "cQx" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	dir = 1;
 	pixel_y = 32
 	},
@@ -18887,7 +18887,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	pixel_y = 34
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -18957,7 +18957,7 @@
 	icon_state = "N";
 	pixel_y = 3
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/prison{
@@ -19451,7 +19451,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	pixel_y = 16
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -19657,7 +19657,7 @@
 	icon_state = "SE-out"
 	},
 /obj/structure/bed/stool,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/almayer{
@@ -19697,7 +19697,7 @@
 /turf/open/hybrisa/street/roadlines4,
 /area/lv759/outdoors/colony_streets/central_streets)
 "diZ" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -19733,7 +19733,7 @@
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -20125,7 +20125,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 10;
 	layer = 8;
 	level = 8;
@@ -20712,7 +20712,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	layer = 8;
 	level = 8;
 	pixel_y = 20;
@@ -21507,7 +21507,7 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating{
@@ -22782,7 +22782,7 @@
 	pixel_x = -9;
 	pixel_y = 20
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/hybrisa/street/underground_unweedable,
@@ -22861,7 +22861,7 @@
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_11"
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -23213,7 +23213,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating{
@@ -25647,7 +25647,7 @@
 	pixel_x = 5;
 	pixel_y = 7
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 8;
 	pixel_y = 34
 	},
@@ -26220,11 +26220,11 @@
 	layer = 5;
 	pixel_y = 12
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 8
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = -4
 	},
@@ -26245,7 +26245,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/strata{
@@ -27367,7 +27367,7 @@
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -27549,7 +27549,7 @@
 /obj/structure/machinery/light/small/blue{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/hybrisa/street/cement3,
@@ -27980,7 +27980,7 @@
 	id = "Hybrisa_Crem_switch2"
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
@@ -28049,7 +28049,7 @@
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/indoors/east_caves)
 "eDS" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	layer = 8;
 	level = 8;
 	pixel_y = 20;
@@ -28112,7 +28112,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/box/bodybags,
 /obj/item/storage/box/bodybags,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/hybrisa/tile/lightbeige_bigtile,
@@ -29618,7 +29618,7 @@
 	pixel_y = 8
 	},
 /obj/structure/prop/hybrisa/misc/trash/green,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/hybrisa/street/cement3,
@@ -29870,7 +29870,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	dir = 4;
 	pixel_y = 32
 	},
@@ -30436,7 +30436,7 @@
 	pixel_x = 1;
 	pixel_y = 14
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/hybrisa/street/cement3,
@@ -30876,7 +30876,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 10;
 	layer = 8;
 	level = 8;
@@ -33126,7 +33126,7 @@
 	},
 /obj/effect/hybrisa/decal/dirt_2,
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -33540,7 +33540,7 @@
 /obj/item/tool/wet_sign{
 	pixel_y = 18
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -36088,7 +36088,6 @@
 	light_range = 5
 	},
 /turf/closed/wall/r_wall/bunker{
-	icon = 'icons/turf/walls/bunkeryellow.dmi';
 	name = "reinforced metal wall"
 	},
 /area/lv759/indoors/wy_research_complex/hallwaynorth)
@@ -40219,7 +40218,7 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "gBF" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -40848,7 +40847,7 @@
 	icon_state = "E"
 	},
 /obj/structure/machinery/door/window/brigdoor/eastleft,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/prison{
@@ -41232,7 +41231,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /obj/item/reagent_container/glass/bucket/mopbucket{
@@ -41506,7 +41505,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_2{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2{
 	pixel_y = 16
 	},
 /turf/open/hybrisa/street/sidewalkcenter{
@@ -44198,7 +44197,7 @@
 /turf/open/floor/interior/wood,
 /area/lv759/indoors/jacks_surplus)
 "hih" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 4;
 	pixel_y = 16
 	},
@@ -44533,7 +44532,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/hybrisa/metal/greenmetal1{
@@ -44796,7 +44795,7 @@
 	pixel_x = -21;
 	pixel_y = 3
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 6;
 	pixel_y = 34
 	},
@@ -45274,7 +45273,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	layer = 8;
 	level = 8;
 	pixel_y = 20;
@@ -45927,7 +45926,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/floor/prison{
@@ -45976,7 +45975,7 @@
 /obj/item/tool/wirecutters{
 	pixel_y = -7
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/almayer{
@@ -47514,7 +47513,7 @@
 /area/lv759/indoors/north_west_caves)
 "hIU" = (
 /obj/structure/machinery/computer/med_data,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
@@ -49009,7 +49008,7 @@
 	pixel_x = -10;
 	pixel_y = 14
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -49938,7 +49937,7 @@
 	},
 /area/lv759/indoors/spaceport/security)
 "ieH" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 10;
 	pixel_y = 34
 	},
@@ -49963,7 +49962,7 @@
 /obj/item/hardpoint/locomotion/van_wheels{
 	unacidable = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 1;
 	pixel_y = 34
 	},
@@ -50408,7 +50407,7 @@
 	},
 /obj/structure/closet/emcloset,
 /obj/item/storage/pouch/sling,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -50565,7 +50564,7 @@
 /obj/structure/machinery/light/small/blue{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/hybrisa/street/cement3,
@@ -51836,7 +51835,7 @@
 /area/lv759/indoors/mining_outpost/south)
 "iuS" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -52870,7 +52869,7 @@
 	pixel_y = 7
 	},
 /obj/structure/largecrate/random/barrel/brown,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating{
@@ -53300,7 +53299,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 5;
 	pixel_x = -14;
 	pixel_y = 34
@@ -55174,7 +55173,7 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "iXb" = (
 /obj/structure/closet/firecloset,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/corsat{
@@ -58102,7 +58101,7 @@
 /obj/structure/surface/rack{
 	color = "#8B7B5B"
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
@@ -58454,7 +58453,7 @@
 "jzY" = (
 /obj/structure/largecrate/random/barrel/blue,
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -58643,7 +58642,7 @@
 	icon_state = "N";
 	pixel_y = 3
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /obj/effect/decal/cleanable/blackgoo{
@@ -58760,7 +58759,7 @@
 /obj/structure/machinery/vending/coffee{
 	layer = 5
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 5;
 	pixel_y = 34
 	},
@@ -59169,7 +59168,7 @@
 	desc = "You think you can make out the iconography of a Xenomorph.";
 	icon_state = "3"
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -59788,7 +59787,7 @@
 	},
 /area/lv759/indoors/wy_research_complex/securityarmory)
 "jMk" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 6;
 	pixel_y = 34
 	},
@@ -59887,7 +59886,7 @@
 	},
 /area/lv759/indoors/central_caves)
 "jNz" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 1;
 	pixel_y = 34
 	},
@@ -60844,7 +60843,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	pixel_y = 20;
 	pixel_x = -8;
 	layer = 8;
@@ -61268,7 +61267,7 @@
 	},
 /area/lv759/indoors/recycling_plant)
 "jZS" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	dir = 4;
 	pixel_y = 32
 	},
@@ -64237,7 +64236,7 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "kvw" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 8;
 	pixel_x = 6;
 	pixel_y = 34
@@ -65774,7 +65773,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	pixel_y = 34
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -66621,7 +66620,7 @@
 /obj/structure/morgue{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
@@ -68514,7 +68513,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -69027,7 +69026,7 @@
 	dir = 8
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/hybrisa/street/underground_unweedable,
@@ -69356,7 +69355,7 @@
 /area/lv759/outdoors/north_west_caves_outdoors)
 "lmz" = (
 /obj/structure/largecrate/random,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating{
@@ -69732,11 +69731,11 @@
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/floor/prison{
@@ -69908,7 +69907,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/central_hallway)
 "lqS" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 1;
 	pixel_x = 16;
 	pixel_y = 34
@@ -70757,7 +70756,7 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	pixel_y = 20;
 	pixel_x = 6;
 	layer = 8;
@@ -71280,7 +71279,7 @@
 	},
 /area/lv759/indoors/spaceport/docking_bay_1)
 "lAU" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 9;
 	pixel_y = 34
 	},
@@ -71749,7 +71748,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -72093,7 +72092,7 @@
 /obj/item/ammo_magazine/smg/mp5,
 /obj/item/ammo_magazine/smg/mp5,
 /obj/item/ammo_magazine/smg/mp5,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -72924,7 +72923,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 4;
 	layer = 8;
 	level = 8;
@@ -73227,7 +73226,7 @@
 	dir = 1;
 	pixel_y = 22
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -73261,7 +73260,7 @@
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/indoors/south_east_caves)
 "lRu" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	pixel_y = 34
 	},
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -73317,7 +73316,7 @@
 /obj/effect/spawner/random/toolbox{
 	layer = 4
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/hybrisa/tile/beige_bigtile,
@@ -73581,7 +73580,7 @@
 	pixel_x = -11;
 	pixel_y = 6
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_2{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2{
 	pixel_y = 16
 	},
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
@@ -73619,7 +73618,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -74483,7 +74482,7 @@
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "mbW" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	pixel_y = 16
 	},
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
@@ -75174,7 +75173,7 @@
 	pixel_x = 7
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/floor/plating,
@@ -75316,7 +75315,7 @@
 	dir = 1
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/hybrisa/street/underground_unweedable,
@@ -76270,7 +76269,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	pixel_y = 20;
 	layer = 8;
 	level = 8;
@@ -77370,7 +77369,7 @@
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/largecrate/random/barrel/brown,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/hybrisa/street/asphalt,
@@ -77427,7 +77426,7 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood/gibs/robot,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -77665,7 +77664,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	icon_state = "billboard2";
 	layer = 8;
 	level = 8;
@@ -78164,7 +78163,7 @@
 	},
 /area/lv759/indoors/hospital/cryo_room)
 "mIq" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 8;
 	pixel_y = 34
 	},
@@ -78346,7 +78345,7 @@
 /area/lv759/indoors/spaceport/docking_bay_1)
 "mKh" = (
 /obj/structure/barricade/handrail/strata,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/almayer{
@@ -78369,7 +78368,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/strata{
@@ -78644,7 +78643,7 @@
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 9;
 	pixel_y = 34
 	},
@@ -78945,7 +78944,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 1;
 	icon_state = "billboard2";
 	layer = 8;
@@ -80546,7 +80545,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 10;
 	layer = 8;
 	level = 8;
@@ -81208,7 +81207,7 @@
 	dir = 1
 	},
 /obj/item/tool/warning_cone,
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	pixel_y = 34
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -84287,7 +84286,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -84815,7 +84814,7 @@
 	},
 /area/lv759/indoors/wy_research_complex/vehicledeploymentbay)
 "nPO" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -86580,7 +86579,7 @@
 	},
 /area/lv759/indoors/colonial_marshals/press_room)
 "oeb" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /obj/structure/platform/hybrisa/rockdark{
@@ -86626,14 +86625,14 @@
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal4"
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "oev" = (
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -86689,7 +86688,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	dir = 4;
 	pixel_y = 32
 	},
@@ -86774,7 +86773,7 @@
 	dir = 9
 	},
 /obj/structure/flora/bush/ausbushes/grassybush,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/hybrisa/tile/greenfull_bigtile,
@@ -87053,7 +87052,7 @@
 /turf/open/floor/prison,
 /area/lv759/indoors/garage_workshop)
 "ohX" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 4;
 	pixel_y = 34
 	},
@@ -87491,7 +87490,7 @@
 /area/lv759/indoors/wy_research_complex/vehicledeploymentbay)
 "olm" = (
 /obj/structure/largecrate/random/barrel/blue,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = -4
 	},
@@ -87664,7 +87663,7 @@
 	},
 /area/lv759/indoors/wy_research_complex/mainlabs)
 "omS" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating{
@@ -88065,7 +88064,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -89169,7 +89168,7 @@
 	pixel_x = 9;
 	pixel_y = -2
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	dir = 9;
 	pixel_y = 32;
 	pixel_x = 12
@@ -91331,7 +91330,7 @@
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/prison{
@@ -93506,7 +93505,7 @@
 /area/lv759/indoors/hospital/reception)
 "piv" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/prison{
@@ -93646,7 +93645,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	layer = 2.9
 	},
@@ -93828,7 +93827,7 @@
 	icon_state = "fernybush_2";
 	pixel_y = 10
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/hybrisa/tile/greenfull_bigtile,
@@ -95280,7 +95279,7 @@
 	pixel_y = 20
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/hybrisa/street/cement3,
@@ -95400,7 +95399,7 @@
 	dir = 4
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	layer = 8;
 	level = 8;
 	pixel_y = 20;
@@ -95463,7 +95462,7 @@
 "pzc" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/disposaloutlet,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -96569,7 +96568,7 @@
 	icon_state = "fernybush_2";
 	pixel_y = 10
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -96865,7 +96864,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/strata{
@@ -96898,7 +96897,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/south_west_caves)
 "pKv" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	layer = 8;
 	level = 8;
 	pixel_y = 20
@@ -97785,7 +97784,7 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "pSp" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/floor/plating{
@@ -98220,7 +98219,7 @@
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -99023,7 +99022,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 5;
 	pixel_y = 34
 	},
@@ -100249,7 +100248,7 @@
 	layer = 4;
 	pixel_x = 24
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/prison{
@@ -100784,7 +100783,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/prison{
@@ -100811,7 +100810,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "qto" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -102574,7 +102573,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/prison{
@@ -106034,7 +106033,7 @@
 	layer = 4
 	},
 /obj/effect/decal/cleanable/cobweb,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -107160,7 +107159,7 @@
 	},
 /area/lv759/oob)
 "rvf" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 1;
 	pixel_y = 34
 	},
@@ -107419,7 +107418,7 @@
 	pixel_x = 6;
 	pixel_y = 9
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -107487,7 +107486,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 4;
 	layer = 8;
 	level = 8;
@@ -107835,7 +107834,7 @@
 	},
 /area/lv759/indoors/spaceport/starglider)
 "rzY" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/auto_turf/hybrisashale/layer2,
@@ -108340,7 +108339,7 @@
 /area/lv759/indoors/wy_research_complex/hangarbay)
 "rDP" = (
 /obj/structure/closet/firecloset,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -108500,7 +108499,7 @@
 	layer = 1
 	},
 /obj/structure/prop/hybrisa/misc/trash/green,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/hybrisa/street/cement3,
@@ -110027,7 +110026,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 4;
 	pixel_y = 16
 	},
@@ -110353,7 +110352,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 8;
 	pixel_y = 34
 	},
@@ -110989,7 +110988,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 8;
 	pixel_y = 16
 	},
@@ -112105,7 +112104,7 @@
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
 /area/lv759/indoors/colonial_marshals/head_office)
 "shR" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -112375,7 +112374,7 @@
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty{
 	layer = 2
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/corsat{
@@ -114385,7 +114384,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -114828,7 +114827,7 @@
 	},
 /area/lv759/outdoors/colony_streets/north_west_street)
 "sDQ" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_x = 6;
 	pixel_y = 25
 	},
@@ -118946,7 +118945,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/item/clothing/head/headband/rebel,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/floor/plating{
@@ -119751,7 +119750,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 1;
 	pixel_y = 16
 	},
@@ -120081,7 +120080,7 @@
 "twv" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
@@ -120360,7 +120359,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/prison{
@@ -121846,7 +121845,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 8;
 	layer = 8;
 	level = 8;
@@ -122985,7 +122984,7 @@
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "tWo" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	layer = 8;
 	level = 8;
 	pixel_y = 20;
@@ -123432,7 +123431,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/corsat,
@@ -123612,7 +123611,7 @@
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/attachment,
 /obj/effect/spawner/random/tool,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /obj/structure/prop/invuln/overhead_pipe{
@@ -123866,7 +123865,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 8;
 	pixel_y = 16
 	},
@@ -124063,10 +124062,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = -12
 	},
@@ -124982,7 +124981,7 @@
 	dir = 1;
 	layer = 2
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -125823,7 +125822,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	icon_state = "billboard2";
 	layer = 8;
 	level = 8;
@@ -126169,7 +126168,7 @@
 	color = "#a6aeab";
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -127389,7 +127388,7 @@
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	pixel_y = 34;
 	layer = 8;
 	level = 8;
@@ -127409,7 +127408,7 @@
 	dir = 4;
 	icon_state = "trash_11"
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /obj/item/trash/hybrisa/cuppa_joes/lid,
@@ -127507,7 +127506,7 @@
 	id = "Hybrisa_Crem_switch1"
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -127921,7 +127920,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "uKq" = (
 /obj/structure/machinery/vending/snack,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -128314,7 +128313,7 @@
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "uNP" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 4;
 	pixel_x = -12;
 	pixel_y = 34
@@ -128384,7 +128383,7 @@
 	dir = 16
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -129262,7 +129261,7 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/attachment,
 /obj/item/weapon/gun/pistol/vp78,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -129456,7 +129455,7 @@
 	},
 /area/lv759/outdoors/colony_streets/north_street)
 "uWG" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
@@ -129716,11 +129715,11 @@
 	pixel_x = 9;
 	pixel_y = 8
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 8
 	},
@@ -130421,7 +130420,7 @@
 /area/lv759/oob)
 "vfU" = (
 /obj/structure/machinery/floodlight,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/hybrisa/street/cement3,
@@ -130605,7 +130604,7 @@
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	pixel_y = 20;
 	layer = 8;
 	level = 8;
@@ -131460,7 +131459,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -131985,7 +131984,7 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "vtr" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -133186,7 +133185,7 @@
 	dir = 1;
 	layer = 2
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/hybrisa/street/cement1,
@@ -133844,7 +133843,7 @@
 /turf/open/auto_turf/hybrisashale/layer0_plate,
 /area/lv759/outdoors/caveplateau)
 "vJj" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/hybrisa/tile/yellow_bigtile,
@@ -134024,7 +134023,7 @@
 	icon_state = "trash_9";
 	pixel_y = 12
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/floor/hybrisa/metal/grated{
@@ -134337,7 +134336,7 @@
 	dir = 1
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	dir = 6;
 	pixel_y = 34
 	},
@@ -135475,7 +135474,7 @@
 	dir = 4
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -135638,7 +135637,7 @@
 	icon_state = "S";
 	pixel_y = -1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -136384,7 +136383,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 1;
 	pixel_y = 16
 	},
@@ -136812,7 +136811,7 @@
 /area/lv759/indoors/spaceport/kitchen)
 "whU" = (
 /obj/structure/blocker/forcefield/vehicles,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
 	},
@@ -137310,7 +137309,7 @@
 	pixel_x = -10;
 	pixel_y = 7
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /obj/effect/hybrisa/decal/dirt,
@@ -137670,7 +137669,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 1;
 	pixel_y = 34
 	},
@@ -138258,7 +138257,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	pixel_y = 34;
 	layer = 8;
 	level = 8;
@@ -139086,7 +139085,7 @@
 /area/lv759/indoors/bar/entertainment)
 "wCh" = (
 /obj/structure/machinery/vending/cigarette/colony,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor{
@@ -139350,7 +139349,7 @@
 	pixel_y = 12
 	},
 /mob/living/simple_animal/rat/gray,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/hybrisa/street/cement3,
@@ -140111,7 +140110,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 4;
 	pixel_y = 34
 	},
@@ -140529,7 +140528,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	icon_state = "billboard2";
 	layer = 8;
 	level = 8;
@@ -140582,7 +140581,7 @@
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/floor/prison{
@@ -141280,7 +141279,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 1;
 	pixel_y = 16
 	},
@@ -141611,7 +141610,7 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "wWX" = (
 /obj/structure/blocker/forcefield/vehicles,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/auto_turf/hybrisashale/layer2,
@@ -142198,7 +142197,7 @@
 /obj/structure/bed/sofa{
 	icon_state = "couch_hori1"
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 6;
 	pixel_y = 34
 	},
@@ -142321,7 +142320,7 @@
 	layer = 3.1
 	},
 /obj/effect/landmark/corpsespawner/wygoon,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/floor/prison{
@@ -144489,7 +144488,7 @@
 	layer = 3.3
 	},
 /obj/effect/spawner/random/toolbox,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -144512,7 +144511,7 @@
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -144537,7 +144536,7 @@
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating{
@@ -145169,7 +145168,7 @@
 /obj/item/device/flashlight/lamp/tripod{
 	pixel_x = -5
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
 /turf/open/floor/plating{
@@ -145465,7 +145464,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
 /turf/open/floor/prison{
@@ -149253,7 +149252,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	dir = 1;
 	pixel_y = 32
 	},
@@ -149557,7 +149556,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4{
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	dir = 8;
 	pixel_y = 32
 	},

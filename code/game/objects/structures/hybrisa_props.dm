@@ -991,6 +991,7 @@
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/big
+	icon = 'icons/obj/structures/props/hybrisaxenocryogenics2.dmi'
 	name = "specimen containment cell"
 	desc = "A giant tube with a hulking monstrosity inside, is this thing alive?"
 	icon_state = "bigqueencryo1"
@@ -1606,54 +1607,9 @@
 	icon_state = "latticefull"
 	layer = 2
 
-// Barriers
-
-/obj/structure/prop/hybrisa/misc/road
-	name = "road barrier"
-	desc = "A plastic barrier for blocking entry."
-	breakable = TRUE
-	debris = list(/obj/item/stack/sheet/mineral/plastic)
-
-/obj/structure/prop/hybrisa/misc/road/roadbarrierred
-	icon_state = "roadbarrier"
-
-/obj/structure/prop/hybrisa/misc/road/roadbarrierredlong
-	icon_state = "roadbarrier4"
-
-/obj/structure/prop/hybrisa/misc/road/roadbarrierblue
-	icon_state = "roadbarrier2"
-
-/obj/structure/prop/hybrisa/misc/road/roadbarrierbluelong
-	icon_state = "roadbarrier5"
-
-/obj/structure/prop/hybrisa/misc/road/roadbarrierwyblack
-	icon_state = "roadbarrier3"
-
-/obj/structure/prop/hybrisa/misc/road/roadbarrierwyblacklong
-	icon_state = "roadbarrier6"
-
-/obj/structure/prop/hybrisa/misc/road/roadbarrierwyblackjoined
-	icon_state = "roadbarrierjoined3"
-
-/obj/structure/prop/hybrisa/misc/road/roadbarrierjoined
-	icon_state = "roadbarrierjoined"
-
-/obj/structure/prop/hybrisa/misc/road/wood
-	name = "road barrier"
-	desc = "A wooden barrier for blocking entry."
-	icon_state = "roadbarrierwood"
-	breakable = TRUE
-	debris = list(/obj/item/stack/sheet/wood)
-
-/obj/structure/prop/hybrisa/misc/road/wood/roadbarrierwoodorange
-	icon_state = "roadbarrierwood"
-
-/obj/structure/prop/hybrisa/misc/road/wood/roadbarrierwoodblue
-	icon_state = "roadbarrierpolice"
-
 // Cargo Containers extended
 
-/obj/structure/prop/hybrisa/containersextended
+/obj/structure/cargo_container/hybrisa/containersextended
 	name = "cargo container"
 	desc = "a cargo container."
 	icon = 'icons/obj/structures/props/containersextended.dmi'
@@ -1668,115 +1624,115 @@
 	unacidable = TRUE
 	layer = 5
 
-/obj/structure/prop/hybrisa/containersextended/blueleft
+/obj/structure/cargo_container/hybrisa/containersextended/blueleft
 	name = "cargo container"
 	icon_state = "blueleft"
 
-/obj/structure/prop/hybrisa/containersextended/blueright
+/obj/structure/cargo_container/hybrisa/containersextended/blueright
 	name = "cargo container"
 	icon_state = "blueright"
 
-/obj/structure/prop/hybrisa/containersextended/greenleft
+/obj/structure/cargo_container/hybrisa/containersextended/greenleft
 	name = "cargo container"
 	icon_state = "greenleft"
 
-/obj/structure/prop/hybrisa/containersextended/greenright
+/obj/structure/cargo_container/hybrisa/containersextended/greenright
 	name = "cargo container"
 	icon_state = "greenright"
 
-/obj/structure/prop/hybrisa/containersextended/tanleft
+/obj/structure/cargo_container/hybrisa/containersextended/tanleft
 	name = "cargo container"
 	icon_state = "tanleft"
 
-/obj/structure/prop/hybrisa/containersextended/tanright
+/obj/structure/cargo_container/hybrisa/containersextended/tanright
 	name = "cargo container"
 	icon_state = "tanright"
 
-/obj/structure/prop/hybrisa/containersextended/redleft
+/obj/structure/cargo_container/hybrisa/containersextended/redleft
 	name = "cargo container"
 	icon_state = "redleft"
 
-/obj/structure/prop/hybrisa/containersextended/redright
+/obj/structure/cargo_container/hybrisa/containersextended/redright
 	name = "cargo container"
 	icon_state = "redright"
 
-/obj/structure/prop/hybrisa/containersextended/greywyleft
+/obj/structure/cargo_container/hybrisa/containersextended/greywyleft
 	name = "Weyland-Yutani cargo container"
 	icon_state = "greywyleft"
 
-/obj/structure/prop/hybrisa/containersextended/greywyright
+/obj/structure/cargo_container/hybrisa/containersextended/greywyright
 	name = "Weyland-Yutani cargo container"
 	icon_state = "greywyright"
 
-/obj/structure/prop/hybrisa/containersextended/lightgreywyleft
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyleft
 	name = "Weyland-Yutani cargo container"
 	icon_state = "lightgreywyleft"
 
-/obj/structure/prop/hybrisa/containersextended/lightgreywyright
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyright
 	name = "Weyland-Yutani cargo container"
 	icon_state = "lightgreywyright"
 
-/obj/structure/prop/hybrisa/containersextended/blackwyleft
+/obj/structure/cargo_container/hybrisa/containersextended/blackwyleft
 	name = "Weyland-Yutani cargo container"
 	icon_state = "blackwyleft"
 
-/obj/structure/prop/hybrisa/containersextended/blackwyright
+/obj/structure/cargo_container/hybrisa/containersextended/blackwyright
 	name = "Weyland-Yutani cargo container"
 	icon_state = "blackwyright"
 
-/obj/structure/prop/hybrisa/containersextended/whitewyleft
+/obj/structure/cargo_container/hybrisa/containersextended/whitewyleft
 	name = "Weyland-Yutani cargo container"
 	icon_state = "whitewyleft"
 
-/obj/structure/prop/hybrisa/containersextended/whitewyright
+/obj/structure/cargo_container/hybrisa/containersextended/whitewyright
 	name = "Weyland-Yutani cargo container"
 	icon_state = "whitewyright"
 
-/obj/structure/prop/hybrisa/containersextended/tanwywingsleft
+/obj/structure/cargo_container/hybrisa/containersextended/tanwywingsleft
 	name = "cargo container"
 	icon_state = "tanwywingsleft"
 
-/obj/structure/prop/hybrisa/containersextended/tanwywingsright
+/obj/structure/cargo_container/hybrisa/containersextended/tanwywingsright
 	name = "cargo container"
 	icon_state = "tanwywingsright"
 
-/obj/structure/prop/hybrisa/containersextended/greenwywingsleft
+/obj/structure/cargo_container/hybrisa/containersextended/greenwywingsleft
 	name = "cargo container"
 	icon_state = "greenwywingsleft"
 
-/obj/structure/prop/hybrisa/containersextended/greenwywingsright
+/obj/structure/cargo_container/hybrisa/containersextended/greenwywingsright
 	name = "cargo container"
 	icon_state = "greenwywingsright"
 
-/obj/structure/prop/hybrisa/containersextended/bluewywingsleft
+/obj/structure/cargo_container/hybrisa/containersextended/bluewywingsleft
 	name = "cargo container"
 	icon_state = "bluewywingsleft"
 
-/obj/structure/prop/hybrisa/containersextended/bluewywingsright
+/obj/structure/cargo_container/hybrisa/containersextended/bluewywingsright
 	name = "cargo container"
 	icon_state = "bluewywingsright"
 
-/obj/structure/prop/hybrisa/containersextended/redwywingsleft
+/obj/structure/cargo_container/hybrisa/containersextended/redwywingsleft
 	name = "cargo container"
 	icon_state = "redwywingsleft"
 
-/obj/structure/prop/hybrisa/containersextended/redwywingsright
+/obj/structure/cargo_container/hybrisa/containersextended/redwywingsright
 	name = "cargo container"
 	icon_state = "redwywingsright"
 
-/obj/structure/prop/hybrisa/containersextended/medicalleft
+/obj/structure/cargo_container/hybrisa/containersextended/medicalleft
 	name = "medical cargo containers"
 	icon_state = "medicalleft"
 
-/obj/structure/prop/hybrisa/containersextended/medicalright
+/obj/structure/cargo_container/hybrisa/containersextended/medicalright
 	name = "medical cargo containers"
 	icon_state = "medicalright"
 
-/obj/structure/prop/hybrisa/containersextended/emptymedicalleft
+/obj/structure/cargo_container/hybrisa/containersextended/emptymedicalleft
 	name = "medical cargo container"
 	icon_state = "emptymedicalleft"
 
-/obj/structure/prop/hybrisa/containersextended/emptymedicalright
+/obj/structure/cargo_container/hybrisa/containersextended/emptymedicalright
 	name = "medical cargo container"
 	icon_state = "emptymedicalright"
 

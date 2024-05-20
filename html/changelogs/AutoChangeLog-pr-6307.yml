@@ -1,4 +1,0 @@
-author: "Doubleumc"
-delete-after: True
-changes:
-  - qol: "ghost \"Scan Health\" works at any range"

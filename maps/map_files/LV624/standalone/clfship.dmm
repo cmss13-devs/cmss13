@@ -1328,11 +1328,11 @@
 "IP" = (
 /obj/structure/bed,
 /obj/item/bedsheet/yellow,
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "green"

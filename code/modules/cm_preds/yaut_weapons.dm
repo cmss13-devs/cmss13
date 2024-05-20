@@ -235,6 +235,8 @@
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
 	icon_state = "whip"
 	item_state = "whip"
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
+	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_MEDIUM
 	force = MELEE_FORCE_TIER_7
@@ -908,7 +910,7 @@
 	force_wielded = MELEE_FORCE_TIER_10
 	throwforce = MELEE_FORCE_TIER_3
 	sharp = IS_SHARP_ITEM_BIG
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
 
@@ -1272,7 +1274,7 @@
 	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE

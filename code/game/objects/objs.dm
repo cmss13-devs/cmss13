@@ -306,6 +306,7 @@
 	if (M.mob_size <= MOB_SIZE_XENO)
 		if ((M.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(M, TRAIT_OPPOSABLE_THUMBS)))
 			do_buckle(M, user)
+			return
 	if ((M.mob_size > MOB_SIZE_HUMAN))
 		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
 		return
@@ -374,7 +375,7 @@
 		return 0
 	bullet_ping(P)
 	if(P.ammo.damage)
-		update_health(round(P.ammo.damage / 2))
+		update_health(floor(P.ammo.damage / 2))
 	return 1
 
 /obj/item/proc/get_mob_overlay(mob/user_mob, slot)

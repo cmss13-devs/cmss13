@@ -250,7 +250,7 @@
 	pixel_x = -11;
 	pixel_y = 1
 	},
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 1;
 	pixel_y = 5
 	},
@@ -432,7 +432,7 @@
 /area/bigredv2/caves_sw)
 "OV" = (
 /obj/structure/surface/rack,
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 1;
 	pixel_y = 5
 	},
@@ -509,7 +509,7 @@
 "Ue" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bundle,
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_y = -3
 	},
 /turf/open/floor/plating{

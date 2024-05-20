@@ -101,7 +101,7 @@
 	if(item_box.handfuls)
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 		if(AM)
-			. +=  SPAN_INFO("It has roughly [round(AM.current_rounds/5)] handfuls remaining.")
+			. +=  SPAN_INFO("It has roughly [floor(AM.current_rounds/5)] handfuls remaining.")
 	else
 		. +=  SPAN_INFO("It has [item_box.contents.len] magazines out of [item_box.num_of_magazines].")
 	if(burning)

@@ -12,7 +12,7 @@
 	return ..()
 
 /datum/job/marine/standard/set_spawn_positions(count)
-	spawn_positions = max((round(count * STANDARD_MARINE_TO_TOTAL_SPAWN_RATIO)), 8)
+	spawn_positions = max((floor(count * STANDARD_MARINE_TO_TOTAL_SPAWN_RATIO)), 8)
 
 /datum/job/marine/standard/whiskey
 	title = JOB_WO_SQUAD_MARINE

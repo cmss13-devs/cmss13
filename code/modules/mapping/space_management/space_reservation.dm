@@ -131,8 +131,7 @@
 		if(!final)
 			continue
 		passing = TRUE
-		for(var/I in final)
-			var/turf/checking = I
+		for(var/turf/checking as anything in final)
 			if(!(checking.turf_flags & UNUSED_RESERVATION_TURF))
 				passing = FALSE
 				break

@@ -411,7 +411,7 @@ const MainMenu = (props) => {
               disabled={remotelock}
               tooltip="Trigger an immediate bioscan for diagnostics."
             >
-            Bioscan
+              Bioscan
             </Button>
           </Stack.Item>
         </Stack>
@@ -432,7 +432,7 @@ const MainMenu = (props) => {
                 bold
                 onClick={() => act('page_admin_list')}
               >
-              Remote Access Log
+                Remote Access Log
               </Button>
             </Stack.Item>
           </Stack>

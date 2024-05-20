@@ -27843,11 +27843,13 @@
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "eCO" = (
-/obj/structure/surface/table/almayer,
 /obj/structure/bedsheetbin{
 	pixel_y = 9
 	},
 /obj/item/clothing/under/colonist/ua_civvies,
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/wy_research_complex/dormsbedroom)
 "eCU" = (
@@ -28346,6 +28348,14 @@
 "eIn" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 1
+	},
+/obj/structure/surface/table/almayer{
+	color = "#848484";
+	layer = 4
+	},
+/obj/structure/machinery/computer/card{
+	layer = 4;
+	pixel_x = 4
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -29219,10 +29229,6 @@
 /turf/closed/wall/engineership,
 /area/lv759/oob)
 "eOz" = (
-/obj/structure/window/reinforced{
-	dir = 1;
-	layer = 2
-	},
 /obj/structure/machinery/chem_master/industry_mixer,
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/surface/table/almayer{
@@ -48603,8 +48609,10 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "hVl" = (
-/obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/snacks/wy_chips/pepper,
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "black"
@@ -50763,14 +50771,9 @@
 /turf/open/floor/corsat,
 /area/lv759/indoors/power_plant/gas_generators)
 "inF" = (
-/obj/structure/window/reinforced{
-	dir = 1;
-	layer = 2
-	},
 /obj/item/tool/kitchen/tray{
 	pixel_y = 9
 	},
-/obj/effect/hybrisa/decal/dirt,
 /obj/item/reagent_container/food/snacks/lemoncakeslice,
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -81998,6 +82001,9 @@
 	dir = 4
 	},
 /obj/effect/hybrisa/decal/dirt,
+/obj/structure/bed/chair{
+	dir = 8
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"

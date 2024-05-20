@@ -1,5 +1,0 @@
-author: "s5nt"
-delete-after: True
-changes:
-  - rscadd: "Added more materials to pred ship including more sandstone, wood, table parts, etc for lodge construction, along with more pred specific food to the pred kitchen."
-  - maptweak: "Slightly expanded pred ship material storage area by moving bracer storage over to the left side of the ship."

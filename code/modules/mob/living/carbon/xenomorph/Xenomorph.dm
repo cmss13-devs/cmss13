@@ -872,7 +872,7 @@
 	if(health < maxHealth)
 		currentHealthRatio = health / maxHealth
 	maxHealth = new_max_health
-	health = round(maxHealth * currentHealthRatio + 0.5)//Restore our health ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	health = floor(maxHealth * currentHealthRatio + 0.5)//Restore our health ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(health > maxHealth)
 		health = maxHealth
 
@@ -886,7 +886,7 @@
 		return
 	var/plasma_ratio = plasma_stored / plasma_max
 	plasma_max = new_plasma_max
-	plasma_stored = round(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	plasma_stored = floor(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(plasma_stored > plasma_max)
 		plasma_stored = plasma_max
 
@@ -899,7 +899,7 @@
 
 /mob/living/carbon/xenomorph/proc/recalculate_armor()
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
-	armor_deflection = armor_modifier + round(100 - (100 - caste.armor_deflection))
+	armor_deflection = armor_modifier + floor(100 - (100 - caste.armor_deflection))
 	armor_explosive_buff = explosivearmor_modifier
 
 /mob/living/carbon/xenomorph/proc/recalculate_damage()
@@ -1009,7 +1009,7 @@
 	next_move = world.time + 10 SECONDS
 	last_special = world.time + 1 SECONDS
 
-	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
+	var/displaytime = max(1, floor(breakouttime / 600)) //Minutes
 	visible_message(SPAN_DANGER("<b>[src] attempts to remove [legcuffed]!</b>"),
 		SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute\s and we must stand still)"))
 	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND ^ INTERRUPT_RESIST, BUSY_ICON_HOSTILE))

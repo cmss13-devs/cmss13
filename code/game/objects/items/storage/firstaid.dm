@@ -385,7 +385,7 @@
 	. = ..()
 	var/pills_amount = contents.len
 	if(pills_amount)
-		var/percentage_filled = round(pills_amount/max_storage_space * 100)
+		var/percentage_filled = floor(pills_amount/max_storage_space * 100)
 		switch(percentage_filled)
 			if(80 to 101)
 				. += SPAN_INFO("The [name] seems fairly full.")

@@ -1,6 +1,6 @@
 #define BULLETHOLE_STATES 10 //How many variations of bullethole patterns there are
 //Formulas. These don't need to be defines, but helpful green. Should likely reuse these for a base 8 icon system.
-#define cur_increment(v) round((v-1)/8)+1
+#define cur_increment(v) floor((v-1)/8)+1
 
 /turf/closed/wall/update_icon()
 	..()
@@ -31,7 +31,7 @@
 			overlays += I
 
 	if(damage)
-		var/current_dmg_overlay = round(damage / damage_cap * damage_overlays.len) + 1
+		var/current_dmg_overlay = floor(damage / damage_cap * damage_overlays.len) + 1
 		if(current_dmg_overlay > damage_overlays.len)
 			current_dmg_overlay = damage_overlays.len
 

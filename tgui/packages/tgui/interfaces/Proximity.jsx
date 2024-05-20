@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Knob, LabeledList, Section, Slider, Tooltip } from '../components';
+import { Button, Knob, LabeledList, Section, Slider } from '../components';
 import { Window } from '../layouts';
 
 export const Proximity = (props) => {
@@ -17,11 +17,12 @@ export const Proximity = (props) => {
               <Button
                 color={data.is_arming ? 'green' : 'red'}
                 icon="clock"
-                content={data.is_arming ? 'Arming' : 'Not Arming'}
                 onClick={() =>
                   act('set_arming', { should_start_arming: !data.is_arming })
                 }
-              />
+              >
+                {data.is_arming ? 'Arming' : 'Not Arming'}
+              </Button>
               <Slider
                 maxValue={max_time}
                 minValue={min_time}
@@ -62,12 +63,11 @@ export const Proximity = (props) => {
             fluid
             color={data.armed ? 'red' : 'green'}
             icon={data.armed ? 'exclamation-triangle' : 'bomb'}
-            content={data.armed ? 'Armed' : 'Unarmed'}
-            onClick={() => act('set_armed', { armed: !data.armed })}>
-            <Tooltip
-              position="top"
-              content="Begins scanning for potential hostiles. Very dangerous if attached to any volatile materials."
-            />
+            onClick={() => act('set_armed', { armed: !data.armed })}
+            tooltip="Begins scanning for potential hostiles. Very dangerous if attached to any volatile materials."
+            tooltipPosition="top"
+          >
+            {data.armed ? 'Armed' : 'Unarmed'}
           </Button>
         </Section>
       </Window.Content>

@@ -118,7 +118,7 @@
 
 // Hybrisa Shutters
 /obj/structure/machinery/door/poddoor/hybrisa
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	icon_state = "almayer_pdoor1"
 	base_icon_state = "almayer_pdoor"
 	openspeed = 4

@@ -242,7 +242,7 @@ GLOBAL_LIST_INIT(all_fences, list())
 // Hybrisa Electric Fence
 /obj/structure/fence/electrified
 	name = "electrified fence "
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "highvoltagegrille_off"
 	basestate = "highvoltagegrille"
 	var/electrified = FALSE

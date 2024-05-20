@@ -28,6 +28,7 @@
 	heal_resting = 1.75
 
 	minimum_evolve_time = 5 MINUTES
+	evolution_cost = 30
 
 	minimap_icon = "runner"
 

@@ -34,6 +34,7 @@
 	tacklestrength_max = 4
 
 	minimum_evolve_time = 15 MINUTES
+	evolution_cost = 500
 
 	minimap_icon = "boiler"
 

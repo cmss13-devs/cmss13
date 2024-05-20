@@ -18,6 +18,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/crusher_base
 
 	minimum_evolve_time = 15 MINUTES
+	evolution_cost = 500
 
 	tackle_min = 2
 	tackle_max = 6

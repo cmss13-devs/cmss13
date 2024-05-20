@@ -36,6 +36,8 @@
 	aura_strength = 2
 
 	minimum_evolve_time = 1 MINUTES
+	evolve_without_queen = TRUE
+	evolution_cost = 30
 
 	minimap_icon = "drone"
 
@@ -85,3 +87,4 @@
 
 /mob/living/carbon/xenomorph/drone/tutorial/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)
+

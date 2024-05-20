@@ -46,7 +46,7 @@
 	if(!evolve_checks())
 		return
 
-	if((!hive.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !islarva(src) && !hive.allow_no_queen_evo)
+	if((!hive.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !islarva(src) && !hive.allow_no_queen_evo && castepick != XENO_CASTE_RUNNER && castepick != XENO_CASTE_DEFENDER && castepick != XENO_CASTE_SENTINEL)
 		to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. We can't find the strength to evolve."))
 		return
 
@@ -66,9 +66,9 @@
 		else
 			to_chat(src, SPAN_WARNING("Nuh-uhh."))
 			return
-	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
-		if(evolution_stored < evolution_threshold)
-			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
+	if(caste_datum.evolution_cost && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
+		if(evolution_stored < caste_datum.evolution_cost)
+			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [caste_datum.evolution_cost]."))
 			return
 
 	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
@@ -128,8 +128,8 @@
 	else if(!can_evolve(castepick, potential_queens))
 		return
 
-	// subtract the threshold, keep the stored amount
-	evolution_stored -= evolution_threshold
+	// subtract the evolution cost, keep the stored amount
+	evolution_stored -= caste_datum.evolution_cost
 
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new M(get_turf(src), src)
@@ -193,20 +193,6 @@
 	if(new_xeno.mind && GLOB.round_statistics)
 		GLOB.round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
-
-	var/castes_refund = 200
-
-	if(castepick == XENO_CASTE_RUNNER)
-		if(!isxeno(XENO_CASTE_RUNNER))
-			evolution_stored += castes_refund
-
-	if(castepick == XENO_CASTE_SENTINEL)
-		if(!isxeno(XENO_CASTE_SENTINEL))
-			evolution_stored += castes_refund
-
-	if(castepick == XENO_CASTE_DEFENDER)
-		if(!isxeno(XENO_CASTE_DEFENDER))
-			evolution_stored += castes_refund
 
 /mob/living/carbon/xenomorph/proc/evolve_checks()
 	if(!check_state(TRUE))

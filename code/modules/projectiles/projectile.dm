@@ -358,8 +358,10 @@
 		SEND_SIGNAL(src, COMSIG_BULLET_TERMINAL)
 
 
+	var/list/ignore_list
 	var/obj/item/hardpoint/hardpoint = shot_from
-	var/list/ignore_list = istype(hardpoint) ? list(hardpoint.owner) : null //if fired from a vehicle, exclude the vehicle's body from the adjacency check
+	if(istype(hardpoint))
+		LAZYOR(ignore_list, hardpoint.owner) //if fired from a vehicle, exclude the vehicle's body from the adjacency check
 
 	// Check we can reach the turf at all based on pathed grid
 	if(check_canhit(current_turf, next_turf, ignore_list))

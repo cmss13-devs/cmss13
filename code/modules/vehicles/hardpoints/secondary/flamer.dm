@@ -38,7 +38,7 @@
 	//step forward along path so flame starts outside hull
 	var/list/turfs = get_line(get_origin_turf(), get_turf(target))
 	var/turf/origin_turf
-	for(var/turf/turf in turfs)
+	for(var/turf/turf as anything in turfs)
 		if(turf in owner.locs)
 			continue
 		origin_turf = turf

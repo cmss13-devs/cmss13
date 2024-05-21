@@ -64,7 +64,7 @@
 /obj/item/weapon/gun/flamer/get_examine_text(mob/user)
 	. = ..()
 	if(current_mag)
-		. += "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!"
+		. += "The fuel gauge shows the current tank is [floor(current_mag.get_ammo_percent())]% full!"
 	else
 		. += "There's no tank in [src]!"
 
@@ -255,7 +255,7 @@
 	for(var/turf/turf in turfs)
 
 		if(chemical.volume < ammount_required)
-			smoke_range = round(chemical.volume / use_multiplier)
+			smoke_range = floor(chemical.volume / use_multiplier)
 
 		if(distance >= smoke_range)
 			break
@@ -309,7 +309,7 @@
 	for(var/turf/turf in turfs)
 
 		if(chemical.volume < ammount_required)
-			foam_range = round(chemical.volume / use_multiplier)
+			foam_range = floor(chemical.volume / use_multiplier)
 
 		if(distance >= foam_range)
 			break
@@ -347,7 +347,7 @@
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(mob/living/user)
 	if(current_mag)
-		to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(current_mag.get_ammo_percent())]</b>% fuel remains!"))
+		to_chat(user, SPAN_WARNING("The gauge reads: <b>[floor(current_mag.get_ammo_percent())]</b>% fuel remains!"))
 
 /obj/item/weapon/gun/flamer/underextinguisher
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
@@ -647,7 +647,7 @@
 		if(!(sig_result & COMPONENT_NO_IGNITE))
 			switch(fire_variant)
 				if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
-					ignited_morb.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+					ignited_morb.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
 				else
 					ignited_morb.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
@@ -705,7 +705,7 @@
 		return
 
 	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
-	var/burn_damage = round(burnlevel * 0.5)
+	var/burn_damage = floor(burnlevel * 0.5)
 	switch(fire_variant)
 		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, 2x tile damage (Equiavlent to UT)
 			burn_damage = burnlevel
@@ -724,7 +724,7 @@
 	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
 		switch(fire_variant)
 			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
-				M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+				M.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
 			else
 				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 

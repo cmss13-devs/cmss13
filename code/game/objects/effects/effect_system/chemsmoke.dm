@@ -262,4 +262,4 @@
 /obj/effect/particle_effect/smoke/chem/affect(mob/living/carbon/M)
 	if(reagents.reagent_list.len)
 		for(var/datum/reagent/reagent in reagents.reagent_list)
-			reagent.reaction_mob(M, volume = reagent.volume * POTENCY_MULTIPLIER_VLOW, permeable = FALSE)
+			reagent.reaction_mob(M, volume = reagent.volume * POTENCY_MULTIPLIER_LOW, permeable = FALSE)

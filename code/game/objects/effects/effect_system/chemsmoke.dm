@@ -8,6 +8,8 @@
 	time_to_live = 300
 	anchored = TRUE
 	smokeranking = SMOKE_RANK_HIGH
+	alpha = 100
+	var/obj/chemholder
 
 /obj/effect/particle_effect/smoke/chem/Initialize()
 	. = ..()
@@ -138,10 +140,10 @@
 								var/dist = cheap_pythag(T.x - location.x, T.y - location.y)
 								if(!dist)
 									dist = 1
-								R.reaction_mob(A, volume = R.volume / dist, permeable = FALSE)
+								R.reaction_mob(A, volume = R.volume * POTENCY_MULTIPLIER_VLOW / dist, permeable = FALSE)
 							else if(istype(A, /obj))
 								R.reaction_obj(A, R.volume)
-					sleep(30)
+					sleep(3 SECONDS)
 
 
 	//build smoke icon
@@ -166,7 +168,7 @@
 			continue
 
 		var/offset = 0
-		var/points = round((radius * 2 * PI) / arcLength)
+		var/points = floor((radius * 2 * PI) / arcLength)
 		var/angle = round(ToDegrees(arcLength / radius), 1)
 
 		if(!IsInteger(radius))
@@ -199,10 +201,7 @@
 	smoke.pixel_x = -32 + rand(-8,8)
 	smoke.pixel_y = -32 + rand(-8,8)
 	walk_to(smoke, T)
-	smoke.set_opacity(1) //switching opacity on after the smoke has spawned, and then
-	sleep(150+rand(0,20)) // turning it off before it is deleted results in cleaner
-	if(smoke.opacity)
-		smoke.set_opacity(0)
+	sleep(150+rand(0,20))
 	fadeOut(smoke)
 	qdel(smoke)
 
@@ -259,3 +258,8 @@
 	targetTurfs = complete
 
 	return
+
+/obj/effect/particle_effect/smoke/chem/affect(mob/living/carbon/M)
+	if(reagents.reagent_list.len)
+		for(var/datum/reagent/reagent in reagents.reagent_list)
+			reagent.reaction_mob(M, volume = reagent.volume * POTENCY_MULTIPLIER_VLOW, permeable = FALSE)

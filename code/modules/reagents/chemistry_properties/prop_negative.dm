@@ -431,9 +431,6 @@
 		apply_neuro(M, POTENCY_MULTIPLIER_MEDIUM * potency, FALSE)
 
 /datum/chem_property/negative/neurotoxic/reaction_mob(mob/M, method = TOUCH, volume, potency)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		H.apply_damage(potency, BRAIN)
 	to_chat(M, SPAN_WARNING("You start to go numb."))
 	M.apply_effect(potency * volume * POTENCY_MULTIPLIER_LOW, DAZE)
 

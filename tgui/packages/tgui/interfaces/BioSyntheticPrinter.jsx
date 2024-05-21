@@ -1,5 +1,13 @@
 import { useBackend } from '../backend';
-import { Section, Button, Box, LabeledList, ProgressBar, NoticeBox, Divider } from '../components';
+import {
+  Box,
+  Button,
+  Divider,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
 
 export const BioSyntheticPrinter = () => {
@@ -20,10 +28,12 @@ export const BioSyntheticPrinter = () => {
           buttons={
             <Button
               onClick={() => act('eject')}
-              disabled={data.metal_amt < 100}>
+              disabled={data.metal_amt < 100}
+            >
               Eject all
             </Button>
-          }>
+          }
+        >
           <ProgressBar value={data.metal_amt} maxValue={data.metal_max}>
             <Box textAlign="center">
               {data.metal_amt}/{data.metal_max} metal stored
@@ -52,13 +62,15 @@ export const BioSyntheticPrinter = () => {
                   }
                   buttons={
                     <Button
-                      content="print"
                       color="good"
                       disabled={data.metal_amt < val.metal || !!Working}
                       textAlign="center"
                       onClick={() => act('print', { recipe_id: val.recipe_id })}
-                    />
-                  }>
+                    >
+                      print
+                    </Button>
+                  }
+                >
                   <Box>
                     {val.metal} metal, {val.time / 10} seconds
                   </Box>

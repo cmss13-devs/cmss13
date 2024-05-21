@@ -136,6 +136,9 @@
 		if("call")
 			call_query(i, node)
 
+		if("singlecall")
+			singlecall_query(i, node)
+
 		if("explain")
 			node += "explain"
 			node["explain"] = list()
@@ -193,6 +196,14 @@
 	i = object_selectors(i + 1, select)
 
 	node["on"] = select
+
+	return i
+
+//singlecall_query: 'CALL' object.call_function
+/datum/sdql_parser/proc/singlecall_query(i, list/node)
+	var/list/func = list()
+	i = variable(i + 1, func)
+	node["singlecall"] = func
 
 	return i
 

@@ -119,7 +119,7 @@
 
 	data += list(list( // turret smokescreen data
 		"name" = "M34A2-A Turret Smoke Screen",
-		"health" = health <= 0 ? null : round(get_integrity_percent()),
+		"health" = health <= 0 ? null : floor(get_integrity_percent()),
 		"uses_ammo" = TRUE,
 		"current_rounds" = ammo.current_rounds / 2,
 		"max_rounds"= ammo.max_rounds / 2,

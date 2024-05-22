@@ -40,7 +40,7 @@
 	flags = TREE_FLAG_MARINE
 	tier = /datum/tier/one
 
-	var/points_to_give = 2500
+	var/points_to_give = 5000
 
 /datum/tech/repeatable/dropship_points/on_unlock()
 	. = ..()

@@ -25,7 +25,7 @@
 	. = ..()
 	if(!H || !D)
 		return
-	if(H.job == JOB_SQUAD_ENGI)
+	if(H.job == JOB_SQUAD_ENGI || JOB_SYNTH)
 		.["21S Tesla Coil"] = /obj/item/storage/box/combat_zone_engi_package_tesla
 		.["UA 42-F Sentry Flamer"] = /obj/item/storage/box/combat_zone_engi_package_flamer
 		.["UA 571-C Sentry Gun"] = /obj/item/storage/box/combat_zone_engi_package

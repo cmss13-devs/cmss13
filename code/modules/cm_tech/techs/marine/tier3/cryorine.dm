@@ -8,7 +8,7 @@
 	announce_message = "Additional troops are being taken out of cryo."
 
 	required_points = 6
-	increase_per_purchase = 6
+	increase_per_purchase = 2
 
 	flags = TREE_FLAG_MARINE
 	tier = /datum/tier/three

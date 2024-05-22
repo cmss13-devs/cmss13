@@ -33,6 +33,7 @@
 	name = "Research upgrade"
 	desc = "Somehow you got this, you shouldnt be able to, consider yourself special."
 	icon = 'icons/obj/items/disk.dmi'
+	w_class = SIZE_TINY
 	icon_state = "datadisk1" // doesnt HAVE to be a disk!
 	///technology stored on this disk, goes through one to whatever levels of upgrades there are.
 	var/value

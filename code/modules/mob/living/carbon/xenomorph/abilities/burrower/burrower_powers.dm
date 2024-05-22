@@ -226,3 +226,136 @@
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
+
+// Sapper Powers
+/datum/action/xeno_action/onclick/demolish/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/sapper = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if (!sapper.check_state())
+		return
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	sapper.visible_message(SPAN_XENOWARNING("[sapper] bulks up and enters a destructive frenzy!"), SPAN_XENOHIGHDANGER("We bulk our muscles and enter a destructive frenzy!"))
+	sapper.add_filter("sapper_demolish", 1, list("type" = "outline", "color" = "#ff6600", "size" = 1))
+	button.icon_state = "template_active"
+
+	addtimer(CALLBACK(src, PROC_REF(no_demolish)), 15 SECONDS)
+
+	sapper.claw_type = CLAW_TYPE_VERY_SHARP
+	sapper.attack_speed_modifier -= 2.5
+	sapper.damage_modifier += XENO_DAMAGE_MOD_VERY_SMALL
+	sapper.small_explosives_stun = FALSE
+
+	return ..()
+
+/datum/action/xeno_action/onclick/demolish/proc/no_demolish()
+	var/mob/living/carbon/xenomorph/sapper = owner
+
+	to_chat(sapper, SPAN_XENONOTICE("We calm down as our muscles shrink back to normal."))
+	sapper.remove_filter("sapper_demolish")
+	button.icon_state = "template"
+
+	sapper.claw_type = CLAW_TYPE_SHARP
+	sapper.attack_speed_modifier += 2.5
+	sapper.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
+	sapper.small_explosives_stun = TRUE
+
+	apply_cooldown()
+
+/datum/action/xeno_action/activable/tail_axe/use_ability(atom/targeted_atom)
+
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/hit_target = targeted_atom
+	var/distance = get_dist(xeno, hit_target)
+
+	if(!action_cooldown_check())
+		return
+
+	if(!xeno.check_state())
+		return
+
+	if(distance > 2)
+		return
+
+	var/list/turf/path = get_line(xeno, targeted_atom, include_start_atom = FALSE)
+	for(var/turf/path_turf as anything in path)
+		if(path_turf.density)
+			to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
+			return
+		var/atom/barrier = path_turf.handle_barriers(A = xeno , pass_flags = (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
+		if(barrier != path_turf)
+			to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
+			return
+		for(var/obj/structure/current_structure in path_turf)
+			if(istype(current_structure, /obj/structure/window/framed))
+				var/obj/structure/window/framed/target_window = current_structure
+				if(target_window.unslashable)
+					return
+				playsound(get_turf(target_window),"windowshatter", 50, TRUE)
+				target_window.shatter_window(TRUE)
+				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] smashes the window with their tail!"), SPAN_XENOWARNING("We smash the window with our tail!"))
+				apply_cooldown(cooldown_modifier = 0.2)
+				return
+			if(current_structure.density && !current_structure.throwpass)
+				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
+				return
+	// find a target in the target turf
+	if(!iscarbon(targeted_atom) || hit_target.stat == DEAD)
+		for(var/mob/living/carbon/carbonara in get_turf(targeted_atom))
+			hit_target = carbonara
+			if(!xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
+				break
+
+	if(iscarbon(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
+		if(targeted_atom == hit_target) //reward for a direct hit
+			to_chat(xeno, SPAN_XENOHIGHDANGER("We directly strike [hit_target] with our tail, throwing it back with the force of the hit!"))
+			hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
+		else
+			to_chat(xeno, SPAN_XENODANGER("We attack [hit_target] with our tail, throwing it back with the force of the hit!"))
+	else
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swings their tail through the air!"), SPAN_XENOWARNING("We swing our tail through the air!"))
+		apply_cooldown(cooldown_modifier = 0.2)
+		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
+		return
+
+	// FX
+	var/stab_direction
+
+	stab_direction = turn(xeno.dir, pick(90, -90))
+	playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
+	if(hit_target.mob_size < MOB_SIZE_BIG)
+		step_away(hit_target, xeno)
+
+	/// To reset the direction if they haven't moved since then in below callback.
+	var/last_dir = xeno.dir
+
+	xeno.setDir(stab_direction)
+	xeno.flick_attack_overlay(hit_target, "slash")
+	xeno.animation_attack_on(hit_target)
+
+	var/new_dir = xeno.dir
+	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
+
+	hit_target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
+
+	shake_camera(hit_target, 2, 1)
+	if(hit_target.mob_size < MOB_SIZE_BIG)
+		hit_target.apply_effect(0.5, WEAKEN)
+	else
+		hit_target.apply_effect(0.5, SLOW)
+
+	hit_target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+	log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Axe")
+
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/activable/tail_axe/proc/reset_direction(mob/living/carbon/xenomorph/xeno, last_dir, new_dir)
+	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
+	if(new_dir == xeno.dir)
+		xeno.setDir(last_dir)

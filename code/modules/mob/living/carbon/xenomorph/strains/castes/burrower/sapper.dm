@@ -1,26 +1,52 @@
 /datum/xeno_strain/sapper
 	name = BURROWER_SAPPER
-	description = "Lose half of your plasma, some speed and some of your abilities to burrow, trap and construct, in exchange for being able to slash holes in up to reinforced walls and tear open holed walls entirely. Additionally, you gain buffs to your explosive resistance and armor as well as gaining the ability to spray weak acid."
+	description = "Lose half of your plasma and your ability to burrow, trap and construct in exchange for increased durability and wall-destroying capabilites. You gain the ability to slash holes in normal walls and expand any hole to completely destroy the wall. Your Demolish ability sends you into a frenzy, increasing your attack speed, slash damage, and allows you to slash holes in reinforced walls, but has a very long cooldown. "
 	flavor_description = "No matter how stalwart their defences may be, remind our enemies that nothing endures the hive."
 	icon_state_prefix = "Sapper"
 
 	actions_to_remove = list (
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/place_trap,
 		/datum/action/xeno_action/activable/burrow,
 		)
 
 	actions_to_add = list (
-		/datum/action/xeno_action/activable/spray_acid/sapper,	//third macro
+		/datum/action/xeno_action/onclick/demolish,
+		/datum/action/xeno_action/activable/tail_axe,
 	)
+
+	behavior_delegate_type = /datum/behavior_delegate/burrower_sapper
 
 /datum/xeno_strain/sapper/apply_strain(mob/living/carbon/xenomorph/burrower/burrower)
 	burrower.plasmapool_modifier = 0.5
-	burrower.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
-	burrower.armor_modifier += XENO_ARMOR_MOD_SMALL
+	burrower.armor_modifier -= XENO_ARMOR_MOD_SMALL
 	burrower.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_MED
-	burrower.small_explosives_stun = FALSE
-	burrower.claw_type = CLAW_TYPE_VERY_SHARPS
+	burrower.claw_type = CLAW_TYPE_SHARP
 	burrower.mob_size = MOB_SIZE_BIG
 
 	burrower.recalculate_everything()
+/datum/behavior_delegate/burrower_sapper
+	name = "Sapper Burrower Behavior Delegate"
+
+	var/frontal_armor = 25
+	var/side_armor = 15
+
+/datum/behavior_delegate/burrower_sapper/add_to_xeno()
+	RegisterSignal(bound_xeno, COMSIG_MOB_SET_FACE_DIR, PROC_REF(cancel_dir_lock))
+	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(apply_directional_armor))
+
+/datum/behavior_delegate/burrower_sapper/proc/cancel_dir_lock()
+	SIGNAL_HANDLER
+	return COMPONENT_CANCEL_SET_FACE_DIR
+
+/datum/behavior_delegate/burrower_sapper/proc/apply_directional_armor(mob/living/carbon/xenomorph/xeno, list/damagedata)
+	SIGNAL_HANDLER
+	var/projectile_direction = damagedata["direction"]
+	if(xeno.dir & REVERSE_DIR(projectile_direction))
+		damagedata["armor"] += frontal_armor
+	else
+		for(var/side_direction in get_perpen_dir(xeno.dir))
+			if(projectile_direction == side_direction)
+				damagedata["armor"] += side_armor
+				return

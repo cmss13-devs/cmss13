@@ -31,10 +31,20 @@
 	return ..()
 
 // Sapper
-/datum/action/xeno_action/activable/spray_acid/sapper
-	plasma_cost = 50
-	xeno_cooldown = 8 SECONDS
+/datum/action/xeno_action/onclick/demolish
+	name = "Demolish"
+	action_icon_state = "rav_enrage"
+	ability_name = "demolish"
+	macro_path = /datum/action/xeno_action/verb/verb_demolish
+	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	spray_type = ACID_SPRAY_LINE
-	spray_distance = 4
-	spray_effect_type = /obj/effect/xenomorph/spray/weak
+	xeno_cooldown = 30 SECONDS
+	plasma_cost = 100
+
+/datum/action/xeno_action/activable/tail_axe
+	name = "Tail Axe"
+	action_icon_state = "prae_impale"
+	ability_name = "tail axe"
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 8 SECONDS
+	ability_primacy = XENO_TAIL_STAB

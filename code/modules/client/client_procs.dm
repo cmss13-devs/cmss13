@@ -43,6 +43,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_auto_eject_to_hand,
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
+	/client/proc/toggle_ammo_display_type,
 	/client/proc/toggle_middle_mouse_click,
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
@@ -683,39 +684,33 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					movement_keys[key] = SOUTH
 				if(SAY_CHANNEL)
 					if(prefs.tgui_say)
-						var/say = tgui_say_create_open_command(SAY_CHANNEL)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[say]")
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if(COMMS_CHANNEL)
 					if(prefs.tgui_say)
-						var/radio = tgui_say_create_open_command(COMMS_CHANNEL)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[radio]")
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if(ME_CHANNEL)
 					if(prefs.tgui_say)
-						var/me = tgui_say_create_open_command(ME_CHANNEL)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[me]")
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
 				if(OOC_CHANNEL)
 					if(prefs.tgui_say)
-						var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[ooc]")
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
 				if(LOOC_CHANNEL)
 					if(prefs.tgui_say)
-						var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 				if(ADMIN_CHANNEL)
 					if(admin_holder?.check_for_rights(R_MOD))
 						if(prefs.tgui_say)
-							var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
-							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[asay]")
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 						else
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=asay")
 					else
@@ -723,8 +718,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if(MENTOR_CHANNEL)
 					if(admin_holder?.check_for_rights(R_MENTOR))
 						if(prefs.tgui_say)
-							var/mentor = tgui_say_create_open_command(MENTOR_CHANNEL)
-							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[mentor]")
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 						else
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=mentorsay")
 					else

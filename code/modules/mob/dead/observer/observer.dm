@@ -655,7 +655,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.forceMove(pick(L))
 	following = null
 
-/mob/dead/observer/proc/scan_health(mob/living/target in oview())
+/mob/dead/observer/proc/scan_health(mob/living/target in view(src.client))
 	set name = "Scan Health"
 
 	if(!istype(target))

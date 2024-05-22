@@ -1,11 +1,11 @@
 import { useBackend } from '../backend';
 import { Section, Stack } from '../components';
 import { Window } from '../layouts';
-import { DocumentLog, CompoundTable, DocumentRecord } from './ResearchTerminal';
+import { CompoundTable, DocumentLog, DocumentRecord } from './ResearchTerminal';
 
 interface TerminalProps {
-  'published_documents': DocumentLog;
-  'terminal_view': number;
+  published_documents: DocumentLog;
+  terminal_view: number;
 }
 
 export const PublishedDocsHud = () => {

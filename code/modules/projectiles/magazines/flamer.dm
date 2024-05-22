@@ -238,7 +238,6 @@
 	desc = "A large fuel tank for use in the M240-T incinerator unit. This one has been modified with a pressure regulator and a large internal propellant tank. Must be manually attached."
 	gun_type = /obj/item/weapon/gun/flamer/M240T
 	max_rounds = 250
-	custom = TRUE
 
 	max_intensity = 60
 	max_range = 8

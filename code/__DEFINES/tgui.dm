@@ -37,6 +37,12 @@
 	"%7b%22type%22%3a%22[type]%22%2c%22payload%22%3a[url_encode(json_encode(payload))]%7d" \
 )
 
+/// Creates a message packet for sending via output() specifically for opening tgsay using an embedded winget
+// This is {"type":"open","payload":{"channel":channel,"mapfocus":[[map.focus]]}}, but pre-encoded.
+#define TGUI_CREATE_OPEN_MESSAGE(channel) ( \
+	"%7b%22type%22%3a%22open%22%2c%22payload%22%3a%7B%22channel%22%3a%22[channel]%22%2c%22mapfocus%22%3a\[\[map.focus\]\]%7d%7d" \
+)
+
 /*
 *Defines for the TGUI health analyser interface
 *The higher the level, the more information you can see

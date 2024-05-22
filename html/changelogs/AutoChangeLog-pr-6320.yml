@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - ui: "TGSay is now opened the same way it used to for more responsiveness"

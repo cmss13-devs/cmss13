@@ -9,7 +9,6 @@
 	anchored = TRUE
 	smokeranking = SMOKE_RANK_HIGH
 	alpha = 100
-	var/obj/chemholder
 
 /obj/effect/particle_effect/smoke/chem/Initialize()
 	. = ..()

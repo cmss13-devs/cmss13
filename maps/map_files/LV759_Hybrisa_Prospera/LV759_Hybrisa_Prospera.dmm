@@ -2155,14 +2155,16 @@
 	desc = null;
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp3";
-	name = "computer"
+	name = "computer";
+	indestructible = 1
 	},
 /obj/structure/machinery/door_control{
 	id = "hybrisacolonylockdown";
 	indestructible = 1;
-	name = "Colony Exterior Lockdown";
+	name = "Colony Exterior - Lockdown";
 	pixel_x = 1;
-	pixel_y = -5
+	pixel_y = -5;
+	needs_power = 0
 	},
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -4436,8 +4438,7 @@
 	layer = 3.3
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
+	icon_state = "E"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -5240,6 +5241,22 @@
 /obj/item/ammo_magazine/rifle/mar40,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
+"aSZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/light/spot/blue{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "black"
+	},
+/area/lv759/indoors/wy_research_complex/cargo)
 "aTg" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform1,
 /turf/open/engineership/engineer_floor3,
@@ -6561,18 +6578,6 @@
 	icon_state = "ramptop"
 	},
 /area/lv759/indoors/colonial_marshals/prisoners_foyer)
-"ben" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice1";
-	pixel_y = -13;
-	layer = 4.1
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_y = 19
-	},
-/turf/closed/wall/hybrisa/colony/reinforced,
-/area/lv759/outdoors/landing_zone_2)
 "bep" = (
 /obj/item/clothing/head/bio_hood/scientist,
 /turf/open/floor/plating/prison,
@@ -7365,7 +7370,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	name = "\improper Lockdown";
 	needs_power = 0;
-	dir = 2
+	id = "hybrisaresearchlockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -8860,20 +8865,6 @@
 	icon_state = "blackfull"
 	},
 /area/lv759/indoors/wy_research_complex/mainlabs)
-"bxB" = (
-/obj/structure/barricade/handrail/wire{
-	dir = 1
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/indoors/wy_research_complex_entrance)
 "bxK" = (
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security)
@@ -13901,8 +13892,7 @@
 	layer = 3.3
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
+	icon_state = "E"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -19650,15 +19640,15 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
+/obj/structure/bed/stool,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
-	},
-/obj/structure/bed/stool,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
-	pixel_y = 28
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -23496,10 +23486,10 @@
 	icon_state = "N"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
+	icon_state = "SW-out"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "SW-out"
+	icon_state = "SE-out"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -23677,25 +23667,6 @@
 	icon_state = "cell_stripe"
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
-"dRZ" = (
-/obj/structure/barricade/handrail/wire{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 6;
-	pixel_y = 19
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/indoors/wy_research_complex_entrance)
 "dSg" = (
 /obj/item/tool/warning_cone,
 /turf/open/hybrisa/street/asphalt,
@@ -28451,7 +28422,6 @@
 	},
 /area/lv759/indoors/spaceport/starglider)
 "eHC" = (
-/obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/CMB_4x4_emblem{
 	name = "Office of the Colonial Marshals - Concrete Emblem";
 	desc = "A small inscription reads - The laws of Earth stretch beyond the Sol. To live, to serve, wherever humanity roams."
@@ -30703,7 +30673,8 @@
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	name = "\improper Lockdown";
 	needs_power = 0;
-	dir = 4
+	dir = 4;
+	id = "hybrisaresearchlockdown"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -32670,10 +32641,6 @@
 	},
 /area/lv759/indoors/wy_research_complex/hallwayeast)
 "fqI" = (
-/obj/structure/window/reinforced/toughened{
-	dir = 1;
-	layer = 2
-	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/trash/hybrisa/cuppa_joes_static/empty_cup{
 	pixel_x = -5
@@ -32847,9 +32814,7 @@
 	layer = 3.3
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
+	icon_state = "NE-out"
 	},
 /turf/open/floor/almayer{
 	dir = 10;
@@ -32884,9 +32849,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 2
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
@@ -33102,14 +33064,6 @@
 	},
 /area/lv759/indoors/north_east_caves)
 "ful" = (
-/obj/structure/window/reinforced/toughened{
-	dir = 8;
-	layer = 2
-	},
-/obj/structure/window/reinforced/toughened{
-	dir = 1;
-	layer = 2
-	},
 /obj/item/reagent_container/food/drinks/milk{
 	pixel_x = -9;
 	pixel_y = 3
@@ -33129,6 +33083,10 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 8;
+	layer = 2
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -34380,7 +34338,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	name = "\improper Lockdown";
 	needs_power = 0;
-	dir = 2
+	id = "hybrisaresearchlockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -36080,17 +36038,6 @@
 	icon_state = "darkbrown2"
 	},
 /area/lv759/indoors/recycling_plant/garage)
-"fTc" = (
-/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
-	light_color = "#FF0000";
-	light_on = 1;
-	light_power = 3;
-	light_range = 5
-	},
-/turf/closed/wall/r_wall/bunker{
-	name = "reinforced metal wall"
-	},
-/area/lv759/indoors/wy_research_complex/hallwaynorth)
 "fTd" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/item/prop/colony/canister{
@@ -38982,7 +38929,8 @@
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	name = "\improper Lockdown";
 	needs_power = 0;
-	dir = 4
+	dir = 4;
+	id = "hybrisaresearchlockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -41151,7 +41099,8 @@
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	name = "\improper Lockdown";
 	needs_power = 0;
-	dir = 4
+	dir = 4;
+	id = "hybrisaresearchlockdown"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/wy_research_complex/southeastexit)
@@ -43322,8 +43271,7 @@
 	icon_state = "N"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
+	icon_state = "S"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -53098,15 +53046,15 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
+/obj/structure/machinery/light/spot/blue{
+	dir = 1;
+	pixel_y = 22
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
-/obj/structure/machinery/light/spot/blue{
-	dir = 1;
-	pixel_y = 22
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -58477,8 +58425,7 @@
 	layer = 3.3
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
+	icon_state = "E"
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0
@@ -60392,6 +60339,19 @@
 	},
 /turf/open/floor/prison,
 /area/lv759/indoors/wy_research_complex_entrance)
+"jSs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "cargo_arrow"
+	},
+/area/lv759/indoors/wy_research_complex/cargo)
 "jSA" = (
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 8
@@ -60486,24 +60446,6 @@
 /obj/structure/platform_decoration/hybrisa/rockdark,
 /turf/closed/wall/hybrisa/rock,
 /area/lv759/oob)
-"jTc" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 6;
-	pixel_y = 19
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "ramptop"
-	},
-/area/lv759/indoors/wy_research_complex_entrance)
 "jTg" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 10;
@@ -60871,10 +60813,6 @@
 /turf/closed/wall/hybrisa/colony/hospital,
 /area/lv759/indoors/hospital/janitor)
 "jWk" = (
-/obj/structure/window/reinforced/toughened{
-	dir = 1;
-	layer = 2
-	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/trash/hybrisa/cuppa_joes_static/lid_stack{
 	pixel_y = 20
@@ -61744,7 +61682,8 @@
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	name = "\improper Lockdown";
 	needs_power = 0;
-	dir = 4
+	dir = 4;
+	id = "hybrisaresearchlockdown"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/wy_research_complex/southeastexit)
@@ -62093,10 +62032,6 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "khc" = (
-/obj/structure/window/reinforced/toughened{
-	dir = 1;
-	layer = 2
-	},
 /obj/item/storage/donut_box,
 /obj/item/storage/donut_box{
 	pixel_y = 5
@@ -62554,9 +62489,6 @@
 	icon_state = "lattice3";
 	pixel_x = 6;
 	pixel_y = 19
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/wy_research_complex_entrance)
@@ -68095,13 +68027,12 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
 /obj/structure/machinery/light/spot/blue{
 	dir = 1;
 	pixel_y = 22
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -70331,7 +70262,15 @@
 	desc = null;
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi';
 	icon_state = "blacksensor_comp3";
-	name = "computer"
+	name = "computer";
+	indestructible = 1
+	},
+/obj/structure/machinery/door_control{
+	id = "hybrisaresearchlockdown";
+	indestructible = 1;
+	name = "Research Complex - Lockdown";
+	pixel_y = -5;
+	needs_power = 0
 	},
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/lv759/indoors/wy_research_complex/reception)
@@ -70542,12 +70481,11 @@
 	icon_state = "W";
 	layer = 3.3
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /obj/structure/machinery/light/spot/blue{
 	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -73876,7 +73814,8 @@
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	name = "\improper Lockdown";
 	needs_power = 0;
-	dir = 4
+	dir = 4;
+	id = "hybrisaresearchlockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -74249,11 +74188,10 @@
 	icon_state = "W";
 	layer = 3.3
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /obj/item/stack/sheet/wood,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "cargo_arrow"
@@ -76434,10 +76372,7 @@
 /area/lv759/outdoors/colony_streets/north_east_street)
 "msW" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/frame,
-/turf/closed/wall/r_wall/bunker{
-	icon = 'icons/turf/walls/bunkeryellow.dmi';
-	name = "reinforced metal wall"
-	},
+/turf/closed/wall/hybrisa/research/reinforced,
 /area/lv759/indoors/wy_research_complex/changingroom)
 "mta" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -78472,10 +78407,7 @@
 	light_power = 3;
 	light_range = 5
 	},
-/turf/closed/wall/r_wall/bunker{
-	icon = 'icons/turf/walls/bunkeryellow.dmi';
-	name = "reinforced metal wall"
-	},
+/turf/closed/wall/hybrisa/research/reinforced,
 /area/lv759/indoors/wy_research_complex/hallwaynorth)
 "mKR" = (
 /obj/structure/bed/chair/office/light{
@@ -78965,12 +78897,10 @@
 	icon_state = "W";
 	layer = 3.3
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
 /obj/structure/machinery/light/spot/blue,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out"
+	},
 /turf/open/floor/almayer{
 	icon_state = "black"
 	},
@@ -79535,9 +79465,6 @@
 	icon_state = "lattice3";
 	pixel_x = 6;
 	pixel_y = 19
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
 	},
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -83023,7 +82950,8 @@
 "nAN" = (
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	name = "\improper Lockdown";
-	needs_power = 0
+	needs_power = 0;
+	id = "hybrisaresearchlockdown"
 	},
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
@@ -84223,9 +84151,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 2.5
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/prison{
@@ -88455,9 +88380,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 2.5
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/prison{
@@ -101247,10 +101169,6 @@
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco2{
 	dir = 1
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
 /obj/structure/machinery/light/spot/blue,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/wy_research_complex_entrance)
@@ -101412,10 +101330,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 2
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_y = 19
 	},
 /turf/open/floor/hybrisa/metal/grated{
 	dir = 1
@@ -111348,7 +111262,8 @@
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	name = "\improper Lockdown";
 	needs_power = 0;
-	dir = 4
+	dir = 4;
+	id = "hybrisaresearchlockdown"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -113655,7 +113570,8 @@
 "suG" = (
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	name = "\improper Lockdown";
-	needs_power = 0
+	needs_power = 0;
+	id = "hybrisaresearchlockdown"
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -113789,12 +113705,10 @@
 	pixel_y = -1
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
+	icon_state = "NW-out"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-out"
+	icon_state = "NE-out"
 	},
 /turf/open/floor/almayer{
 	icon_state = "black"
@@ -114373,10 +114287,6 @@
 /turf/open/gm/river,
 /area/lv759/outdoors/colony_streets/north_street)
 "sAa" = (
-/obj/structure/window/reinforced/toughened{
-	dir = 1;
-	layer = 2
-	},
 /obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine2{
 	pixel_x = -14;
 	pixel_y = 8
@@ -116961,8 +116871,7 @@
 	layer = 3.3
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
+	icon_state = "E"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -121658,10 +121567,6 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/wy_research_complex_entrance)
@@ -123535,10 +123440,6 @@
 	pixel_y = 16
 	},
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco2,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /obj/structure/machinery/light/spot/blue,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/wy_research_complex_entrance)
@@ -126002,21 +125903,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_east_street)
-"uvQ" = (
-/obj/structure/barricade/handrail/wire{
-	dir = 4
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 6;
-	pixel_y = 19
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/indoors/wy_research_complex_entrance)
 "uvW" = (
 /obj/structure/cargo_container/kelland/left,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -127798,11 +127684,10 @@
 	pixel_y = -1
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
+	icon_state = "NW-out"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-out"
+	icon_state = "E"
 	},
 /turf/open/floor/almayer{
 	icon_state = "black"
@@ -135633,13 +135518,12 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28;
 	pixel_x = 20
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -141769,13 +141653,12 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
 /obj/structure/machinery/light/spot/blue{
 	dir = 1;
 	pixel_y = 22
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -157331,7 +157214,7 @@ rSN
 wJW
 qQh
 dHm
-lve
+aSZ
 cpE
 lve
 frU
@@ -157574,12 +157457,12 @@ ezN
 osl
 kkj
 eSe
-jTc
+fsJ
 fsJ
 eSe
 eSe
 eSe
-dRZ
+eSe
 dsh
 qQh
 lbG
@@ -157823,7 +157706,7 @@ wlL
 atj
 rpo
 bfo
-bxB
+iZD
 hIB
 edb
 kCR
@@ -159091,7 +158974,7 @@ fIt
 fIt
 fIt
 fIt
-uvQ
+fIt
 xnl
 qQh
 iDI
@@ -159599,7 +159482,7 @@ cAb
 cAb
 qQh
 diR
-sXm
+jSs
 sXm
 sXm
 mOE
@@ -159856,7 +159739,7 @@ lkZ
 oHN
 bbT
 qQh
-fTc
+oRN
 tki
 aqu
 tCJ
@@ -198392,12 +198275,12 @@ rTB
 fHI
 bxK
 hts
-wjo
+hts
 qxS
 qxS
 qxS
 qxS
-ben
+hts
 hts
 kix
 aos

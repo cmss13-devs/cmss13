@@ -1018,6 +1018,7 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/misc
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	name = "strange egg"
 	desc = "A strange ancient looking egg, it seems to be inert."
 	icon_state = "inertegg"

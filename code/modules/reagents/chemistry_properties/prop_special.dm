@@ -12,9 +12,7 @@
 	max_level = 4
 
 /datum/chem_property/special/boosting/pre_process(mob/living/M)
-	if(level > max_level)
-		level = max_level
-	return list(REAGENT_BOOST = level)
+	return list(REAGENT_BOOST = level * 0.5)
 
 /datum/chem_property/special/hypergenetic
 	name = PROPERTY_HYPERGENETIC

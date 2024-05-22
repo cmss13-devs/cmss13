@@ -106,6 +106,7 @@ const MainMenu = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -114,6 +115,7 @@ const MainMenu = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
               disabled={current_menu === 'main'}
@@ -147,6 +149,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="Access the AI Announcement logs."
               icon="bullhorn"
               ml="auto"
@@ -160,6 +163,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="Direct communication 1:1 with ARES."
               icon="comments"
               ml="auto"
@@ -179,6 +183,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="Read the Dropship Flight Control Records."
               icon="jet-fighter-up"
               ml="auto"
@@ -192,6 +197,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="Access the Bioscan records."
               icon="eye"
               ml="auto"
@@ -205,6 +211,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="Access Orbital Bombardment logs."
               icon="meteor"
               ml="auto"
@@ -224,6 +231,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="Read the Security Updates."
               icon="file-shield"
               ml="auto"
@@ -237,6 +245,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="Read the Apollo Link logs."
               icon="clipboard"
               ml="auto"
@@ -256,6 +265,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="Access emergency protocols."
               icon="shield"
               color="red"
@@ -270,6 +280,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="Review the ASRS Audit Log."
               icon="cart-shopping"
               ml="auto"
@@ -283,6 +294,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="Review the Intel Tech Log."
               icon="magnifying-glass-chart"
               ml="auto"
@@ -302,6 +314,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="View the recent logins."
               icon="users"
               ml="auto"
@@ -320,6 +333,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="View the deletion log."
               icon="sd-card"
               ml="auto"
@@ -333,6 +347,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="View the deleted 1:1 conversations with ARES."
               icon="sd-card"
               ml="auto"
@@ -359,6 +374,7 @@ const MainMenu = (props) => {
                 bold
                 onClick={() => act('sudo')}
                 disabled={remotelock}
+                tooltipPosition="top"
                 tooltip={remotetip}
               >
                 Sudo Login
@@ -375,6 +391,7 @@ const MainMenu = (props) => {
                 bold
                 onClick={() => act('sudo_logout')}
                 disabled={!sudo}
+                tooltipPosition="top"
                 tooltip="Sudo Logout"
               >
                 Sudo Logout
@@ -387,6 +404,7 @@ const MainMenu = (props) => {
         <h1 align="center">Core Security Protocols</h1>
         <Button
           align="center"
+          tooltipPosition="top"
           tooltip="Release stored CN20-X nerve gas from security vents."
           icon="wind"
           color="red"
@@ -401,6 +419,7 @@ const MainMenu = (props) => {
 
         <Button.Confirm
           align="center"
+          tooltipPosition="top"
           tooltip="Activate/Deactivate the AI Core Lockdown."
           icon="lock"
           color="red"
@@ -428,6 +447,7 @@ const MainMenu = (props) => {
               bold
               onClick={() => act('bioscan')}
               disabled={remotelock}
+              tooltipPosition="top"
               tooltip="Trigger an immediate bioscan for diagnostics."
             >
               Bioscan
@@ -443,6 +463,7 @@ const MainMenu = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
+                tooltipPosition="top"
                 tooltip="View which admins have been using ARES."
                 icon="user-secret"
                 ml="auto"
@@ -462,6 +483,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="View and update access tickets."
               icon="user-tag"
               ml="auto"
@@ -475,6 +497,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              tooltipPosition="top"
               tooltip="View, create and update maintenance tickets."
               icon="user-tag"
               ml="auto"
@@ -512,6 +535,7 @@ const AnnouncementLogs = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -520,6 +544,7 @@ const AnnouncementLogs = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -581,6 +606,7 @@ const AnnouncementLogs = (props) => {
                   icon="trash"
                   onClick={() => act('delete_record', { record: record.ref })}
                   disabled={remotelock}
+                  tooltipPosition="top"
                   tooltip={deletetip}
                 />
               </Flex.Item>
@@ -612,6 +638,7 @@ const BioscanLogs = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -620,6 +647,7 @@ const BioscanLogs = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -681,6 +709,7 @@ const BioscanLogs = (props) => {
                   icon="trash"
                   onClick={() => act('delete_record', { record: record.ref })}
                   disabled={remotelock}
+                  tooltipPosition="top"
                   tooltip={deletetip}
                 />
               </Flex.Item>
@@ -712,6 +741,7 @@ const BombardmentLogs = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -720,6 +750,7 @@ const BombardmentLogs = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -785,6 +816,7 @@ const BombardmentLogs = (props) => {
                   icon="trash"
                   onClick={() => act('delete_record', { record: record.ref })}
                   disabled={remotelock}
+                  tooltipPosition="top"
                   tooltip={deletetip}
                 />
               </Flex.Item>
@@ -816,6 +848,7 @@ const ApolloLog = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -824,6 +857,7 @@ const ApolloLog = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -882,6 +916,7 @@ const AccessLogs = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -890,6 +925,7 @@ const AccessLogs = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -948,6 +984,7 @@ const DeletionLogs = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -956,6 +993,7 @@ const DeletionLogs = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -1045,6 +1083,7 @@ const ARESTalk = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -1053,6 +1092,7 @@ const ARESTalk = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -1118,6 +1158,7 @@ const ARESTalk = (props) => {
                 ml="auto"
                 px="2rem"
                 bold
+                tooltipPosition="top"
                 tooltip="Send a message as if you were the person logged in at the interface."
                 onClick={() =>
                   act('fake_message_ares', { active_convo: active_ref })
@@ -1132,6 +1173,7 @@ const ARESTalk = (props) => {
       <Section align="center">
         <Button.Confirm
           icon="trash"
+          tooltipPosition="top"
           tooltip="Clears the conversation. Please note, your 1:1 conversation is only visible to you."
           width="30vw"
           textAlign="center"
@@ -1169,6 +1211,7 @@ const DeletedTalks = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -1177,6 +1220,7 @@ const DeletedTalks = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -1232,6 +1276,7 @@ const DeletedTalks = (props) => {
               <Flex.Item width="30rem" ml="1rem" shrink="0" textAlign="center">
                 <Button
                   icon="eye"
+                  tooltipPosition="top"
                   tooltip="Read Conversation"
                   onClick={() => act('read_record', { record: record.ref })}
                 />
@@ -1264,6 +1309,7 @@ const ReadingTalks = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -1272,6 +1318,7 @@ const ReadingTalks = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -1329,6 +1376,7 @@ const Requisitions = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -1337,6 +1385,7 @@ const Requisitions = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -1426,6 +1475,7 @@ const FlightLogs = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -1434,6 +1484,7 @@ const FlightLogs = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -1494,6 +1545,7 @@ const FlightLogs = (props) => {
                   icon="trash"
                   onClick={() => act('delete_record', { record: record.ref })}
                   disabled={remotelock}
+                  tooltipPosition="top"
                   tooltip={deletetip}
                 />
               </Flex.Item>
@@ -1525,6 +1577,7 @@ const Security = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -1533,6 +1586,7 @@ const Security = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -1593,6 +1647,7 @@ const Security = (props) => {
                   icon="trash"
                   onClick={() => act('delete_record', { record: record.ref })}
                   disabled={remotelock}
+                  tooltipPosition="top"
                   tooltip={deletetip}
                 />
               </Flex.Item>
@@ -1686,6 +1741,7 @@ const Emergency = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -1694,6 +1750,7 @@ const Emergency = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -1720,6 +1777,7 @@ const Emergency = (props) => {
       <h1 align="center">Emergency Protocols</h1>
       <Flex align="center" justify="center" height="50%" direction="column">
         <Button.Confirm
+          tooltipPosition="top"
           tooltip={quarters_reason}
           icon="triangle-exclamation"
           color="red"
@@ -1735,6 +1793,7 @@ const Emergency = (props) => {
           Call General Quarters
         </Button.Confirm>
         <Button.Confirm
+          tooltipPosition="top"
           tooltip={evac_reason}
           icon="shuttle-space"
           color="red"
@@ -1750,6 +1809,7 @@ const Emergency = (props) => {
           Initiate Evacuation
         </Button.Confirm>
         <Button.Confirm
+          tooltipPosition="top"
           tooltip={distress_reason}
           icon="circle-exclamation"
           color="red"
@@ -1765,6 +1825,7 @@ const Emergency = (props) => {
           Launch Distress Beacon
         </Button.Confirm>
         <Button.Confirm
+          tooltipPosition="top"
           tooltip={nuke_reason}
           icon="circle-radiation"
           color="red"
@@ -1804,6 +1865,7 @@ const TechLogs = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -1812,6 +1874,7 @@ const TechLogs = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -1891,6 +1954,7 @@ const TechLogs = (props) => {
                   icon="trash"
                   onClick={() => act('delete_record', { record: record.ref })}
                   disabled={remotelock}
+                  tooltipPosition="top"
                   tooltip={deletetip}
                 />
               </Flex.Item>
@@ -1922,6 +1986,7 @@ const CoreSec = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -1930,6 +1995,7 @@ const CoreSec = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -1964,6 +2030,7 @@ const CoreSec = (props) => {
               key={i}
               align="center"
               icon="wind"
+              tooltipPosition="top"
               tooltip="Release Gas"
               width="100%"
               disabled={!vent.available}
@@ -2002,6 +2069,7 @@ const AdminAccessLogs = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -2010,6 +2078,7 @@ const AdminAccessLogs = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -2057,6 +2126,7 @@ const AccessManagement = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -2065,6 +2135,7 @@ const AccessManagement = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -2167,9 +2238,14 @@ const AccessManagement = (props) => {
                 {ticket.details}
               </Flex.Item>
               <Flex.Item ml="1rem">
-                <Button icon={view_icon} tooltip={view_status} />
+                <Button
+                  icon={view_icon}
+                  tooltipPosition="top"
+                  tooltip={view_status}
+                />
                 <Button.Confirm
                   icon="user-gear"
+                  tooltipPosition="top"
                   tooltip={update_tooltip}
                   disabled={can_update === 'No'}
                   onClick={() => act('auth_access', { ticket: ticket.ref })}
@@ -2177,6 +2253,7 @@ const AccessManagement = (props) => {
                 {can_reject === 'Yes' && (
                   <Button.Confirm
                     icon="user-minus"
+                    tooltipPosition="top"
                     tooltip="Reject Ticket"
                     disabled={can_reject === 'No'}
                     onClick={() => act('reject_access', { ticket: ticket.ref })}
@@ -2204,6 +2281,7 @@ const MaintManagement = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
+              tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
               disabled={last_page === current_menu}
@@ -2212,6 +2290,7 @@ const MaintManagement = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
+              tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
             />
@@ -2335,15 +2414,21 @@ const MaintManagement = (props) => {
                 {ticket.assignee}
               </Flex.Item>
               <Flex.Item width="8rem" ml="1rem" direction="column">
-                <Button icon={view_icon} tooltip={view_status} />
+                <Button
+                  icon={view_icon}
+                  tooltipPosition="top"
+                  tooltip={view_status}
+                />
                 <Button.Confirm
                   icon="user-lock"
+                  tooltipPosition="top"
                   tooltip="Claim Ticket"
                   disabled={can_claim === 'No'}
                   onClick={() => act('claim_ticket', { ticket: ticket.ref })}
                 />
                 <Button
                   icon="user-gear"
+                  tooltipPosition="top"
                   tooltip="Mark Ticket"
                   disabled={can_mark === 'No'}
                   onClick={() => act('mark_ticket', { ticket: ticket.ref })}

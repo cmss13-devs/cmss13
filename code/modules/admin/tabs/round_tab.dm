@@ -42,6 +42,7 @@
 		if(istype(PJ) && !PJ.spawn_positions)
 			PJ.set_spawn_positions(GLOB.players_preassigned)
 		predator_round.flags_round_type |= MODE_PREDATOR
+		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 	else
 		predator_round.flags_round_type &= ~MODE_PREDATOR
 

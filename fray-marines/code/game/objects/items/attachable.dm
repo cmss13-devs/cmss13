@@ -3,7 +3,7 @@
 
 /obj/item/attachable/heavy_barrel/upgraded
 	name = "upgraded barrel charger"
-	desc = "A hyper threaded barrel extender that fits to the muzzle of most firearms. Increases bullet speed and velocity.\nGreatly increases projectile damage at the cost of accuracy and firing speed."
+	desc = "A hyper threaded barrel extender that fits to the muzzle of most firearms. Increases bullet speed and velocity.\nGreatly increases projectile damage at the cost of accuracy and firing speed. Can be attachable to MK1"
 	icon = 'fray-marines/icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "ubc"
 	attach_icon = "ubc_a"

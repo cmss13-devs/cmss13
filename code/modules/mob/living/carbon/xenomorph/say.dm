@@ -95,7 +95,7 @@
 //General proc for hivemind. Lame, but effective.
 /mob/living/carbon/xenomorph/proc/hivemind_talk(message)
 	if(interference)
-		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_HIVEMIND_TALK, message) & COMPONENT_OVERRIDE_HIVEMIND_TALK)

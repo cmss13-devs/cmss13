@@ -150,7 +150,7 @@
 		stacked_size--
 		update_overlays()
 
-		var/list/candidate_target_turfs = range(round(stacked_size/2), starting_turf)
+		var/list/candidate_target_turfs = range(floor(stacked_size/2), starting_turf)
 		candidate_target_turfs -= starting_turf
 		var/turf/target_turf = candidate_target_turfs[rand(1, length(candidate_target_turfs))]
 

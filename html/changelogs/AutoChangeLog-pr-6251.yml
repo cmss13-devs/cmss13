@@ -1,5 +1,0 @@
-author: "vero5123"
-delete-after: True
-changes:
-  - qol: "Toggleable ammo counter, can now cycle between displaying every fifth or single bullet."
-  - bugfix: "Light attachments will no longer automatically turn on when the weapon is equipped from suit storage"

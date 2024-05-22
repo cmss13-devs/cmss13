@@ -313,15 +313,15 @@ GLOBAL_LIST_INIT(all_fences, list())
 	spark_system.start(src)
 
 /obj/structure/fence/electrified/attackby(obj/item/W, mob/user)
-	if(src.electrified && !src.cut)
+	if(electrified && !cut)
 		if(istype(user, /mob/living/carbon/human))
 			var/mob/living/carbon/human/human = user
 			if(human.gloves)
-				var/obj/item/clothing/gloves/G = human.gloves
-				if(G.siemens_coefficient != 0)
-					src.electrocute_human(human)
+				var/obj/item/clothing/gloves/worn_gloves = human.gloves
+				if(worn_gloves.siemens_coefficient != 0)
+					electrocute_human(human)
 			else
-				src.electrocute_human(human)
+				electrocute_human(human)
 	. = ..()
 
 /obj/structure/fence/electrified/ex_act(severity)

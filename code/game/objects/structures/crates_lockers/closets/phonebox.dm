@@ -88,12 +88,12 @@
 	update_icon()
 
 /obj/structure/machinery/phonebox/allow_drop()
-	return 0
+	return FALSE
 
 /obj/structure/machinery/phonebox/relaymove(mob/user as mob)
 	if(user.stat)
 		return
-	src.go_out()
+	go_out()
 	return
 
 /obj/structure/machinery/phonebox/update_icon()
@@ -101,14 +101,14 @@
 	if(stat & NOPOWER)
 		if(!open)
 			icon_state = "phonebox_off_empty_closed"
-			if(src.occupant)
+			if(occupant)
 				icon_state = "phonebox_off_full_closed"
 		else
 			icon_state = "phonebox_off_open"
 	else
 		if(!open)
 			icon_state = "phonebox_on_empty_closed"
-			if(src.occupant)
+			if(occupant)
 				icon_state = "phonebox_on_full_closed"
 		else
 			icon_state =  "phonebox_on_open"
@@ -144,10 +144,10 @@
 		M.client.perspective = EYE_PERSPECTIVE
 		M.client.eye = src
 	M.forceMove(src)
-	src.occupant = M
+	occupant = M
 	start_processing()
-	src.add_fingerprint(usr)
-	src.open = FALSE
+	add_fingerprint(usr)
+	open = FALSE
 	update_icon()
 	return TRUE
 
@@ -158,16 +158,16 @@
 	set src in oview(1)
 	if (usr.stat != 0)
 		return
-	src.go_out()
+	go_out()
 	add_fingerprint(usr)
 	return
 
 /obj/structure/machinery/phonebox/attack_hand(mob/living/user)
-	if(src.open)
-		src.open = FALSE
+	if(open)
+		open = FALSE
 	else
-		src.open = TRUE
-	src.go_out()
+		open = TRUE
+	go_out()
 	update_icon()
 
 

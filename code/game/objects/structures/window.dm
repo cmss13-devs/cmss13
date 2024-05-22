@@ -1057,7 +1057,7 @@
 	basestate = "strata_window"
 	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
-	reinf = 1
+	reinf = TRUE
 	window_frame = /obj/structure/window_frame/hybrisa/colony/reinforced
 
 /obj/structure/window/framed/hybrisa/colony/hull
@@ -1086,7 +1086,7 @@
 	basestate = "strata_window"
 	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
-	reinf = 1
+	reinf = TRUE
 	window_frame = /obj/structure/window_frame/hybrisa/research/reinforced
 
 /obj/structure/window/framed/hybrisa/research/hull
@@ -1111,7 +1111,7 @@
 	name = "reinforced window"
 	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
-	reinf = 1
+	reinf = TRUE
 	icon_state = "prison_rwindow0"
 	basestate = "prison_rwindow"
 	window_frame = /obj/structure/window_frame/hybrisa/marshalls/reinforced
@@ -1138,7 +1138,7 @@
 	basestate = "strata_window"
 	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
-	reinf = 1
+	reinf = TRUE
 	window_frame = /obj/structure/window_frame/hybrisa/colony/hospital/reinforced
 
 /obj/structure/window/framed/hybrisa/colony/hospital/hull
@@ -1168,7 +1168,7 @@
 	basestate = "strata_window"
 	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
-	reinf = 1
+	reinf = TRUE
 	window_frame = /obj/structure/window_frame/hybrisa/colony/office/reinforced
 
 /obj/structure/window/framed/hybrisa/colony/office/hull
@@ -1198,7 +1198,7 @@
 	basestate = "strata_window"
 	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
-	reinf = 1
+	reinf = TRUE
 	window_frame = /obj/structure/window_frame/hybrisa/colony/engineering/reinforced
 
 /obj/structure/window/framed/hybrisa/colony/engineering/hull
@@ -1223,7 +1223,7 @@
 	name = "reinforced window"
 	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
-	reinf = 1
+	reinf = TRUE
 	icon_state = "prison_rwindow0"
 	basestate = "prison_rwindow"
 	window_frame = /obj/structure/window_frame/hybrisa/spaceport/reinforced

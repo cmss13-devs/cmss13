@@ -514,7 +514,7 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/fence/electrified/attack_alien(mob/living/carbon/xenomorph/M)
-	if(src.electrified && !src.cut) //this is placeholder, needs to be updated
+	if(electrified && !cut) //this is placeholder, needs to be updated
 		electrocute_xenomorph(M)
 	. = ..()
 

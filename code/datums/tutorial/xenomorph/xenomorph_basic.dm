@@ -1,8 +1,8 @@
 #define WAITING_HEALTH_THRESHOLD 300
 
 /datum/tutorial/xenomorph/basic
-	name = "Xenomorph - Basic"
-	desc = "A tutorial to get you acquainted with the very basics of how to play a xenomorph."
+	name = "Ксеноморф - Базовое"
+	desc = "Это обучение покажет тебе как играть за ксеноморфа, хотя бы базовое."
 	icon_state = "xeno"
 	tutorial_id = "xeno_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s12x12
@@ -23,20 +23,20 @@
 	xeno.melee_damage_upper = 40
 	xeno.lock_evolve = TRUE
 
-	message_to_player("Welcome to the Xenomorph basic tutorial. You are [xeno.name], a drone, the workhorse of the hive.")
+	message_to_player("Приветствую тебя, дитя. Ты [xeno.name], дрон, рабочая лошадка всего улья.")
 
 	addtimer(CALLBACK(src, PROC_REF(on_stretch_legs)), 10 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/on_stretch_legs()
-	message_to_player("As a drone you can perform most basic functions of the Xenomorph Hive. Such as weeding, building, planting eggs and nesting captured humans.")
+	message_to_player("Как дрон, ты будешь выполнять базовые действия в улье. Такие как распространение, строительство, сажание яиц и крепление захваченых хостов (людей).")
 	addtimer(CALLBACK(src, PROC_REF(on_inform_health)), 5 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/on_inform_health()
-	message_to_player("The green icon on the <b>right</b> of your screen and green bar next to your character represents your health.")
+	message_to_player("Зелёная иконка <b>справа</b>, твоего экрана, зелёный овал показывает твоё здоровье.")
 	addtimer(CALLBACK(src, PROC_REF(on_give_plasma)), 10 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/on_give_plasma()
-	message_to_player("You have been given <b>plasma</b>, a resource used for casting your abilities. This is represented by the blue icon at the <b>right</b> of your screen and the blue bar next to your character.")
+	message_to_player("Тебе была дана <b>плазма</b>, это ресурс для использования твоих способностей. она отображена <b>справа</b> твоего экрана, синий овал.")
 	xeno.plasma_max = 200
 	xeno.plasma_stored = 200
 	addtimer(CALLBACK(src, PROC_REF(on_damage_xenomorph)), 15 SECONDS)
@@ -44,44 +44,44 @@
 /datum/tutorial/xenomorph/basic/proc/on_damage_xenomorph()
 	xeno.apply_damage(350)
 	xeno.emote("hiss")
-	message_to_player("Oh no! You've been damaged. Notice your green health bars have decreased. Xenomorphs can recover their health by standing or resting on weeds.")
+	message_to_player("О нет! Ты получил повреждения. Посмотри, количество твоего здоровья снизилось. Ксеноморфы восстанавливают его только если отдыхают на траве улья.")
 	addtimer(CALLBACK(src, PROC_REF(request_player_plant_weed)), 10 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/request_player_plant_weed()
-	update_objective("Plant a weed node using the new ability <b>Plant Weeds</b> you've just been given.")
+	update_objective("Установи кластер травы с помощью способности сверху слева, она называется <b>Plant Weeds</b>.")
 	give_action(xeno, /datum/action/xeno_action/onclick/plant_weeds)
-	message_to_player("Plant a weed node to spread weeds using your new ability at the top of the screen. Weeds heal xenomorphs and regenerate their plasma. They also slow humans, making them easier to fight.")
+	message_to_player("Установи кластер травы с помощью своей новой способности. Трава лечит всех ксеноморфов и восстанавливает плазму. Она так же замедляет хостов для более лёгкого боя.")
 	RegisterSignal(xeno, COMSIG_XENO_PLANT_RESIN_NODE, PROC_REF(on_plant_resinode))
 
 /datum/tutorial/xenomorph/basic/proc/on_plant_resinode()
 	SIGNAL_HANDLER
 	UnregisterSignal(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
-	message_to_player("Well done. You can rest on the weeds to heal faster using the <b>Rest</b> ability or with the [retrieve_bind("rest")] key.")
-	message_to_player("We have increased your plasma reserves. Notice also your plasma will regenerate while you are on weeds.")
+	message_to_player("Отлично. Теперь ты можешь <b>отдохнуть</b> с помощью нажатия на [retrieve_bind("rest")] или нажав на иконку сверху слева.")
+	message_to_player("Мы увеличили твой резерв плазмы. Помни что плазму ты регенерируешь только на траве.")
 	give_action(xeno, /datum/action/xeno_action/onclick/xeno_resting)
-	update_objective("Rest or wait until you are at least [WAITING_HEALTH_THRESHOLD] health.")
+	update_objective("Отдохни пока не восполнится твоё [WAITING_HEALTH_THRESHOLD] здоровье.")
 	xeno.plasma_max = 500
 	RegisterSignal(xeno, COMSIG_XENO_ON_HEAL_WOUNDS, PROC_REF(on_xeno_gain_health))
 
 /datum/tutorial/xenomorph/basic/proc/on_xeno_gain_health()
 	SIGNAL_HANDLER
 	UnregisterSignal(xeno, COMSIG_XENO_ON_HEAL_WOUNDS)
-	message_to_player("Even on weeds. Healing is a slow process. This can be sped up using pheromones. Emit \"Recovery\" pheromones now using your new ability to speed up your healing.")
+	message_to_player("Пока ты отдыхаешь, лечение очень медленное. Оно может быть ускорено с помощью феромонов. раздай феромоны \"Лечения (Recovery)\" они позволят тебе быстро встать в строй.")
 	give_action(xeno, /datum/action/xeno_action/onclick/emit_pheromones)
-	update_objective("Emit recovery pheromones.")
+	update_objective("Раздай феромоны.")
 	RegisterSignal(xeno, COMSIG_XENO_START_EMIT_PHEROMONES, PROC_REF(on_xeno_emit_pheromone))
 
 /datum/tutorial/xenomorph/basic/proc/on_xeno_emit_pheromone(emitter, pheromone)
 	SIGNAL_HANDLER
 	if(!(pheromone == "recovery"))
-		message_to_player("These are not recovery pheromones. Click your ability again to stop emitting, and choose <b>Recovery</b> instead.")
+		message_to_player("Это не феромоны лечения. Нажми на способность что бы прекратить раздавать феромоны и попробуй ещё раз.")
 	else if(xeno.health > WAITING_HEALTH_THRESHOLD)
 		reach_health_threshold()
 		UnregisterSignal(xeno, COMSIG_XENO_START_EMIT_PHEROMONES)
 	else
 		UnregisterSignal(xeno, COMSIG_XENO_START_EMIT_PHEROMONES)
-		message_to_player("Well done. Recovery Pheromones will significantly speed up your health regeneration. Rest or wait until your health is at least [WAITING_HEALTH_THRESHOLD].")
-		message_to_player("Pheromones also provide their effects to other xenomorph sisters nearby!")
+		message_to_player("Отлично. Лечащие феромоны очень сильно ускоряют твоё лечение. Отдохни пока твоё здоровье не восполнится [WAITING_HEALTH_THRESHOLD].")
+		message_to_player("Феромоны так же раздаются всем сёстрам (ксеноморфам) поблизости!")
 		RegisterSignal(xeno, COMSIG_XENO_ON_HEAL_WOUNDS, PROC_REF(reach_health_threshold))
 
 /datum/tutorial/xenomorph/basic/proc/reach_health_threshold()
@@ -91,9 +91,9 @@
 
 	UnregisterSignal(xeno, COMSIG_XENO_ON_HEAL_WOUNDS)
 
-	message_to_player("Good. Well done.")
-	message_to_player("A hostile human or \"tallhost\" has appeared. Use your <b>harm intent</b> to kill it in melee!")
-	update_objective("Kill the human!")
+	message_to_player("Хорошо. Отлично!")
+	message_to_player("Враждебный человек или \"длинный хост\" появился перед тобой. Используй <b>вред</b> и убей его!")
+	update_objective("Убей человека!!!")
 
 	var/mob/living/carbon/human/human_dummy = new(loc_from_corner(7,7))
 	add_to_tracking_atoms(human_dummy)
@@ -106,8 +106,8 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 
 	UnregisterSignal(human_dummy, COMSIG_MOB_DEATH)
-	message_to_player("Well done. Killing humans is one of many ways to help the hive.")
-	message_to_player("Another way is to <b>capture</b> them. This will grow a new xenomorph inside them which will eventually burst into a new playable xenomorph!")
+	message_to_player("Отлично. Убийство людей это одно из множества занятий ксеноморфа.")
+	message_to_player("Однако! Ты можешь <b>захватить</b> хоста. И вырастить из него ещё ксеноморфов, так что лучше попытайся захватить его!")
 	addtimer(CALLBACK(human_dummy, TYPE_PROC_REF(/mob/living, rejuvenate)), 8 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(proceed_to_tackle_phase)), 10 SECONDS)
 
@@ -116,8 +116,8 @@
 	remove_highlight(human_dummy)
 	RegisterSignal(human_dummy, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(on_tackle_phase_human_damage))
 	RegisterSignal(human_dummy, COMSIG_MOB_TACKLED_DOWN, PROC_REF(proceed_to_cap_phase))
-	message_to_player("Tackle the human to the ground using your <b>disarm intent</b>. This can take up to four tries as a drone.")
-	update_objective("Tackle the human to the ground!")
+	message_to_player("Толкни хоста с помощью <b>толкания</b>. Это может потребовать нескольких попыток для дрона.")
+	update_objective("Толкни хоста на землю!")
 
 /datum/tutorial/xenomorph/basic/proc/on_tackle_phase_human_damage(source, damagedata)
 	SIGNAL_HANDLER
@@ -126,7 +126,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	// Rejuvenate the dummy if it's less than half health so our player can't kill it and softlock themselves.
 	if(human_dummy.health < (human_dummy.maxHealth / 2))
-		message_to_player("Don't harm the human!")
+		message_to_player("Не надо убивать если можешь захватить!")
 		human_dummy.rejuvenate()
 
 /datum/tutorial/xenomorph/basic/proc/proceed_to_cap_phase()
@@ -138,7 +138,7 @@
 	ADD_TRAIT(human_dummy, TRAIT_FLOORED, TRAIT_SOURCE_TUTORIAL)
 	xeno.melee_damage_lower = 0
 	xeno.melee_damage_upper = 0
-	message_to_player("Well done. Under normal circumstances, you would have to keep tackling the human to keep them down, but for the purposes of this tutorial they will stay down forever.")
+	message_to_player("Отлично. В основном, если ты продолжаешь толкать хоста, он останется лежать, а может и встать, но тут он будет лежать вечно.")
 	addtimer(CALLBACK(src, PROC_REF(cap_phase)), 10 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/cap_phase()
@@ -146,7 +146,7 @@
 	morpher.stored_huggers = 1
 	add_to_tracking_atoms(morpher)
 	add_highlight(morpher, COLOR_YELLOW)
-	message_to_player("In the south west is an egg morpher. Click the egg morpher to take a <b>facehugger</b>.")
+	message_to_player("На юго-западе появился формовщик яиц. Нажми на него что бы получить <b>лицехвата</b>.")
 	RegisterSignal(xeno, COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER, PROC_REF(take_facehugger_phase))
 
 /datum/tutorial/xenomorph/basic/proc/take_facehugger_phase(source, hugger)
@@ -158,8 +158,8 @@
 	remove_highlight(morpher)
 
 	add_highlight(hugger, COLOR_YELLOW)
-	message_to_player("This is a facehugger, highlighted in yellow. Pick up the facehugger by clicking it.")
-	message_to_player("Stand next to the downed human and click them to apply the facehugger. Or drop the facehugger near them to see it leap onto their face automatically.")
+	message_to_player("Это лицехват, он подсвечен. Возьми его нажатием на него.")
+	message_to_player("Подойди к человеку на земле и кликни на него. или урони лицехвата рядом что бы посмотреть как он автоматически прыгнет на него после подготовки.")
 	RegisterSignal(human_dummy, COMSIG_HUMAN_IMPREGNATE, PROC_REF(nest_cap_phase))
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase()
@@ -170,8 +170,8 @@
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_IMPREGNATE)
 	remove_highlight(hugger)
 
-	message_to_player("We should nest the infected human to make sure they don't get away.")
-	message_to_player("Humans cannot escape nests without help, and the nest will keep them alive long enough for our new sister to burst forth.")
+	message_to_player("Нам нужно сделать так, что бы хост не убежал из улья, для этого нужно их прикрепить к стене.")
+	message_to_player("Хосты не могут сбежать из резины без чьей то помощи, так же резина будет поддерживать его жизнь пока новые сёстры не прорвут его торс.")
 	addtimer(CALLBACK(src, PROC_REF(nest_cap_phase_two)), 10 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_two()
@@ -184,36 +184,36 @@
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_three()
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	message_to_player("Grab the human using your grab intent. Or use control + click.")
+	message_to_player("Схвати хоста с помощью захвата. Или используй <b>Ctrl + Click</b>.")
 	RegisterSignal(human_dummy, COMSIG_MOVABLE_XENO_START_PULLING, PROC_REF(nest_cap_phase_four))
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_four()
 	SIGNAL_HANDLER
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_MOVABLE_XENO_START_PULLING)
-	message_to_player("Well done. Now devour the human by clicking on your character with the grab selected in your hand. You must not move during this process.")
+	message_to_player("Отлично. Теперь поглоти его с помощью нажатия на себя. Тебе нельзя двигаться во время этого.")
 	RegisterSignal(human_dummy, COMSIG_MOB_DEVOURED, PROC_REF(nest_cap_phase_five))
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_five()
 	SIGNAL_HANDLER
-	message_to_player("Well done, you can reguritate the human using the new ability you have gained.")
-	message_to_player("Be careful. Real humans may put up a fight and can try to cut out of you from inside!")
+	message_to_player("Отлично теперь ты можешь его срыгнуть с помощью новой способности.")
+	message_to_player("Будь осторожен! Хосты часто сопротивляются и пробуют разрезать тебя изнутри! Так же они через некоторое время выберутся сами.")
 	give_action(xeno, /datum/action/xeno_action/onclick/regurgitate)
 	addtimer(CALLBACK(src, PROC_REF(nest_cap_phase_six)), 15 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_six()
-	message_to_player("Humans can only be nested on <b>hive weeds</b>. These are special weeds created by structures such as the hive core, or hive clusters.")
-	message_to_player("We have set up hive weeds and walls for you in the south east.")
+	message_to_player("Хосты могут быть прикреплены к стенам которые обвиты <b>травой улья</b>. Это специальная трава которая образуется в улье и с помощью кластеров.")
+	message_to_player("Мы поместили тебе траву улья на востоке.")
 	addtimer(CALLBACK(src, PROC_REF(nest_cap_phase_seven)), 10 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_seven()
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_MOB_DEVOURED)
 	RegisterSignal(human_dummy, COMSIG_MOB_NESTED, PROC_REF(on_mob_nested))
-	message_to_player("Nest the captive human!")
-	update_objective("Nest the captive human!")
-	message_to_player("Drag the human next to the wall so both you and human are directly adjacent to the wall.")
-	message_to_player("With the grab selected in your hand. Click on the wall. Or click and drag the mouse from the human onto the wall. You must not move during this process.")
+	message_to_player("Прирезинь этого пленного хоста!")
+	update_objective("Прирезинь этого пленного хоста!")
+	message_to_player("Поднеси хоста к стене рядом с которой появилась трава.")
+	message_to_player("Теперь захвати хоста и нажми по стене, или зажми мышку на хосте и перетащи на стену. Ты не должен двигаться.")
 	new /obj/effect/alien/resin/special/cluster(loc_from_corner(9,0), GLOB.hive_datum[XENO_HIVE_TUTORIAL])
 
 /datum/tutorial/xenomorph/basic/proc/on_mob_nested()
@@ -221,8 +221,8 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_MOB_NESTED)
 
-	message_to_player("Well done, this concludes the basic Xenomorph tutorial.")
-	message_to_player("This tutorial will end shortly.")
+	message_to_player("Отлично! Теперь ты знаешь как играть за ксеноморфа!.")
+	message_to_player("Скоро тебя вернёт в лобби.")
 	tutorial_end_in(10 SECONDS)
 
 // END OF SCRIPTING

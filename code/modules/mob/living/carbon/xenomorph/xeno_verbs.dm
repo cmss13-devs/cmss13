@@ -12,7 +12,7 @@
 		return
 
 	if(interference)
-		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off our psychic connection!"))
+		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
 		return
 
 	hive.hive_ui.open_hive_status(src)
@@ -37,7 +37,7 @@
 		return
 
 	if(interference)
-		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
 		return
 
 	hive.faction_ui.tgui_interact(src)

@@ -651,7 +651,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		spawn_weapon(gunpath, ammopath, M, 0, ammo_amount)
 
 
-/datum/equipment_preset/proc/spawn_weapon(gunpath, ammopath, atom/M, sidearm = JOB_PLAYTIME_TIER_1, ammo_amount = 12)
+/datum/equipment_preset/proc/spawn_weapon(gunpath, ammopath, atom/M, sidearm = 0, ammo_amount = 12)
 
 	var/atom/spawnloc = M
 	var/obj/item/weapon/gun/gun

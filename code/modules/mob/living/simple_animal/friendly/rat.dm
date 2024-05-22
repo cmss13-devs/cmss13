@@ -25,27 +25,27 @@
 	min_oxy = 16 //Require atleast 16kPA oxygen
 	minbodytemp = 223 //Below -50 Degrees Celcius
 	maxbodytemp = 323 //Above 50 Degrees Celcius
-	universal_speak = 0
-	universal_understand = 1
+	universal_speak = FALSE
+	universal_understand = TRUE
 	holder_type = /obj/item/holder/rat
 
 /mob/living/simple_animal/rat/Life(delta_time)
 	..()
 	if(!stat && prob(speak_chance))
-		for(var/mob/M in view())
-			M << 'sound/effects/mousesqueek.ogg'
+		for(var/mob/cur_mob in view())
+			cur_mob << 'sound/effects/mousesqueek.ogg'
 
 	if(!ckey && stat == CONSCIOUS && prob(0.5))
 		set_stat(UNCONSCIOUS)
 		icon_state = "rat_[body_color]_sleep"
-		wander = 0
+		wander = FALSE
 		speak_chance = 0
 		//snuffles
 	else if(stat == UNCONSCIOUS)
 		if(ckey || prob(1))
 			set_stat(CONSCIOUS)
 			icon_state = "rat_[body_color]"
-			wander = 1
+			wander = TRUE
 		else if(prob(5))
 			INVOKE_ASYNC(src, PROC_REF(emote), "snuffles")
 
@@ -72,10 +72,10 @@
 		PF.flags_pass = PASS_FLAGS_CRAWLER
 
 /mob/living/simple_animal/rat/splat(mob/killer)
-	src.health = 0
-	src.set_stat(DEAD)
-	src.icon_dead = "rat_[body_color]_splat"
-	src.icon_state = "rat_[body_color]_splat"
+	health = 0
+	set_stat(DEAD)
+	icon_dead = "rat_[body_color]_splat"
+	icon_state = "rat_[body_color]_splat"
 	layer = ABOVE_LYING_MOB_LAYER
 	if(client)
 		client.time_died_as_mouse = world.time
@@ -89,11 +89,11 @@
 		if(!ckey && stat == UNCONSCIOUS)
 			set_stat(CONSCIOUS)
 			icon_state = "rat_[body_color]"
-			wander = 1
+			wander = TRUE
 		else if(!stat && prob(5))
-			var/mob/M = AM
-			to_chat(M, SPAN_NOTICE(" [icon2html(src, M)] Squeek!"))
-			M << 'sound/effects/mousesqueek.ogg'
+			var/mob/crossed_mob = AM
+			to_chat(crossed_mob, SPAN_NOTICE(" [icon2html(src, crossed_mob)] Squeek!"))
+			crossed_mob << 'sound/effects/mousesqueek.ogg'
 	..()
 
 /mob/living/simple_animal/rat/death()
@@ -111,8 +111,7 @@
 	if(H.a_intent == INTENT_HELP)
 		get_scooped(H)
 		return
-	else
-		return ..()
+	return ..()
 
 /mob/living/simple_animal/rat/get_scooped(mob/living/carbon/grabber)
 	if (stat >= DEAD)

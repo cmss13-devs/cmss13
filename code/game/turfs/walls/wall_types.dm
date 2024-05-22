@@ -1343,7 +1343,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	icon = 'icons/turf/walls/engineership.dmi'
 	icon_state = "metal"//DMI specific name
 	walltype = WALL_HUNTERSHIP
-	hull = 1
+	hull = TRUE
 
 // Rock
 /turf/closed/wall/hybrisa/rock
@@ -1352,7 +1352,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	icon = 'icons/turf/walls/kutjevorockdark.dmi'
 	icon_state = "rock"
 	walltype = WALL_KUTJEVO_ROCK
-	hull = 1
+	hull = TRUE
 
 // Marshalls
 /turf/closed/wall/hybrisa/marhsalls
@@ -1372,7 +1372,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	icon = 'icons/turf/walls/hybrisa_marshalls.dmi'
 	icon_state = "hwall"
 	walltype = WALL_REINFORCED
-	hull = 1
+	hull = TRUE
 
 // Research
 
@@ -1399,7 +1399,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/research/reinforced/hull
-	hull = 1
+	hull = TRUE
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
@@ -1427,7 +1427,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/reinforced/hull
-	hull = 1
+	hull = TRUE
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
@@ -1456,7 +1456,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/hospital/reinforced/hull
-	hull = 1
+	hull = TRUE
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
@@ -1512,7 +1512,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/engineering/reinforced/hull
-	hull = 1
+	hull = TRUE
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
@@ -1534,4 +1534,4 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	icon = 'icons/turf/walls/hybrisa_spaceport_walls.dmi'
 	icon_state = "hwall"
 	walltype = WALL_REINFORCED
-	hull = 1
+	hull = TRUE

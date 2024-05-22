@@ -6,10 +6,9 @@
 /datum/chem_property/special/boosting
 	name = PROPERTY_BOOSTING
 	code = "BST"
-	description = "Boosts the potency of all other properties in this chemical when inside the body by up to 4 levels."
+	description = "Boosts the potency of all other properties in this chemical when inside the body by 0.5 levels for every level that this property has."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
-	max_level = 4
 
 /datum/chem_property/special/boosting/pre_process(mob/living/M)
 	return list(REAGENT_BOOST = level * 0.5)

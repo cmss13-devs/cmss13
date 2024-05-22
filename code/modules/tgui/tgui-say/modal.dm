@@ -10,9 +10,7 @@
  * string - A JSON encoded message to open the modal.
  */
 /client/proc/tgui_say_create_open_command(channel)
-	var/message = TGUI_CREATE_MESSAGE("open", list(
-		channel = channel,
-	))
+	var/message = TGUI_CREATE_OPEN_MESSAGE(channel)
 	return "\".output tgui_say.browser:update [message]\""
 
 /**

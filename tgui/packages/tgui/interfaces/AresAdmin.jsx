@@ -409,6 +409,7 @@ const MainMenu = (props) => {
           width="50%"
           bold
           onClick={() => act('security_lockdown')}
+          disabled={remotelock}
         >
           AI Core Lockdown
         </Button.Confirm>

@@ -247,8 +247,7 @@
 	addtimer(CALLBACK(src, PROC_REF(no_demolish)), 15 SECONDS)
 
 	sapper.claw_type = CLAW_TYPE_VERY_SHARP
-	sapper.attack_speed_modifier -= 2.5
-	sapper.damage_modifier += XENO_DAMAGE_MOD_VERY_SMALL
+	sapper.attack_speed_modifier -= 3
 	sapper.small_explosives_stun = FALSE
 
 	return ..()
@@ -261,8 +260,7 @@
 	button.icon_state = "template"
 
 	sapper.claw_type = CLAW_TYPE_SHARP
-	sapper.attack_speed_modifier += 2.5
-	sapper.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
+	sapper.attack_speed_modifier += 3
 	sapper.small_explosives_stun = TRUE
 
 	apply_cooldown()
@@ -314,9 +312,10 @@
 	if(iscarbon(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
 		if(targeted_atom == hit_target) //reward for a direct hit
 			to_chat(xeno, SPAN_XENOHIGHDANGER("We directly strike [hit_target] with our tail, throwing it back with the force of the hit!"))
-			hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
+			if(hit_target.mob_size < MOB_SIZE_BIG)
+				step_away(hit_target, xeno)
 		else
-			to_chat(xeno, SPAN_XENODANGER("We attack [hit_target] with our tail, throwing it back with the force of the hit!"))
+			to_chat(xeno, SPAN_XENODANGER("We attack [hit_target] with our tail!"))
 	else
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swings their tail through the air!"), SPAN_XENOWARNING("We swing our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.2)
@@ -328,8 +327,6 @@
 
 	stab_direction = turn(xeno.dir, pick(90, -90))
 	playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
-	if(hit_target.mob_size < MOB_SIZE_BIG)
-		step_away(hit_target, xeno)
 
 	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = xeno.dir

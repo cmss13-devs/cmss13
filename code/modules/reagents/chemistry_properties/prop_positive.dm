@@ -169,9 +169,10 @@
 	value = 3
 
 /datum/chem_property/positive/nervestimulating/process(mob/living/M, potency = 1)
-	M.adjust_effect(potency*-0.80, PARALYZE)
-	M.adjust_effect(potency*-0.80, STUN)
-	M.adjust_effect(potency*-0.80, WEAKEN)
+	M.adjust_effect(potency*-1, PARALYZE)
+	M.adjust_effect(potency*-1, STUN)
+	M.adjust_effect(potency*-1, WEAKEN)
+	M.adjust_effect(-0.5*potency, STUN)
 	if(potency > CREATE_MAX_TIER_1)
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
@@ -200,7 +201,7 @@
 	category = PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, potency = 1)
-	M.reagent_move_delay_modifier -= 0.15 * potency
+	M.reagent_move_delay_modifier -= POTENCY_MULTIPLIER_VLOW * potency
 	M.recalculate_move_delay = TRUE
 	M.nutrition = max (0, M.nutrition - 0.5 * HUNGER_FACTOR)
 	if(prob(10))
@@ -1000,7 +1001,7 @@
 /datum/chem_property/positive/regulating
 	name = PROPERTY_REGULATING
 	code = "REG"
-	description = "The chemical regulates its own metabolization, any ammount overdosed is turned into sugar."
+	description = "The chemical regulates its own metabolization, any amount overdosed is turned into sugar."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_METABOLITE
 	max_level = 1

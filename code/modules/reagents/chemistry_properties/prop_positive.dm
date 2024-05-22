@@ -878,7 +878,7 @@
 	L.ExtinguishMob() //Extinguishes mobs on contact
 	if(isxeno(L))
 		var/mob/living/carbon/xenomorph/X = M
-		X.plasma_stored = max(X.plasma_stored - POTENCY_MULTIPLIER_VHIGH * POTENCY_MULTIPLIER_VHIGH * potency, 0)
+		X.plasma_stored = max(X.plasma_stored - POTENCY_MULTIPLIER_HIGH * volume * potency, 0)
 
 /datum/chem_property/positive/neutralizing/reaction_turf(turf/T, volume, potency)
 	if(!istype(T))

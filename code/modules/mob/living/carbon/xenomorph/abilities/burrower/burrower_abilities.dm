@@ -38,7 +38,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_demolish
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 30 SECONDS
+	xeno_cooldown = 45 SECONDS
 	plasma_cost = 100
 
 /datum/action/xeno_action/activable/tail_axe

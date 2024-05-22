@@ -1,6 +1,6 @@
 /datum/xeno_strain/sapper
 	name = BURROWER_SAPPER
-	description = "Lose half of your plasma and your ability to burrow, trap and construct in exchange for increased durability and wall-destroying capabilites. You gain the ability to slash holes in normal walls and expand any hole to completely destroy the wall. Your Demolish ability sends you into a frenzy, increasing your attack speed, slash damage, and allows you to slash holes in reinforced walls, but has a very long cooldown. "
+	description = "Lose half of your plasma, a bit of armor and your abilities to burrow, trap and construct, and your ability to lock direction in exchange for directional armor, knockback resistance, more explosive resistance, and new abilities. You can slash holes in normal walls and expand any hole to completely destroy the wall, as well as being able to fully destroy APCs. Your new Demolish ability sends you into a frenzy, increasing your attack speed and slash damage, giving you immunity to some explosive stuns, and allows you to slash holes in reinforced walls, but has a long cooldown. Your upgraded tail stab allows you to instantly break certain windows, attack via AOE targetting, knock hit targets back, and deals extra damage on a direct hit."
 	flavor_description = "No matter how stalwart their defences may be, remind our enemies that nothing endures the hive."
 	icon_state_prefix = "Sapper"
 

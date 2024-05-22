@@ -48,6 +48,14 @@ export const AresAdmin = (props) => {
   );
 };
 
+const { data } = useBackend();
+const { is_pda } = data;
+let remotelock = !is_pda;
+let remotetip = 'You cannot do this via remote console.';
+if (!remotelock) {
+  remotetip = '';
+}
+
 const Login = (props) => {
   const { act } = useBackend();
 
@@ -375,25 +383,35 @@ const MainMenu = (props) => {
           )}
         </Stack>
       </Section>
-      <Section>
+      <Section align="center">
         <h1 align="center">Core Security Protocols</h1>
-        <Stack>
-          <Stack.Item grow>
-            <Button
-              align="center"
-              tooltip="Release stored CN20-X nerve gas from security vents."
-              icon="wind"
-              color="red"
-              ml="auto"
-              px="2rem"
-              width="100%"
-              bold
-              onClick={() => act('page_core_sec')}
-            >
-              Nerve Gas Control
-            </Button>
-          </Stack.Item>
-        </Stack>
+        <Button
+          align="center"
+          tooltip="Release stored CN20-X nerve gas from security vents."
+          icon="wind"
+          color="red"
+          ml="auto"
+          px="2rem"
+          width="50%"
+          bold
+          onClick={() => act('page_core_sec')}
+        >
+          Nerve Gas Control
+        </Button>
+
+        <Button.Confirm
+          align="center"
+          tooltip="Activate/Deactivate the AI Core Lockdown."
+          icon="lock"
+          color="red"
+          ml="auto"
+          px="2rem"
+          width="50%"
+          bold
+          onClick={() => act('security_lockdown')}
+        >
+          AI Core Lockdown
+        </Button.Confirm>
       </Section>
       <Section>
         <Stack>
@@ -1587,8 +1605,22 @@ const Security = (props) => {
 
 const Emergency = (props) => {
   const { data, act } = useBackend();
-  const { logged_in, access_text, last_page, current_menu, admin_login } = data;
-
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    admin_login,
+    worldtime,
+    alert_level,
+    distresstimelock,
+    distresstime,
+    quarterstime,
+    evac_status,
+    mission_failed,
+    nuketimelock,
+    nuke_available,
+  } = data;
   const minimumEvacTime = worldtime > distresstimelock;
   const distressCooldown = worldtime < distresstime;
   const quartersCooldown = worldtime < quarterstime;
@@ -1598,8 +1630,7 @@ const Emergency = (props) => {
     quarters_reason =
       'It has not been long enough since the last General Quarters call.';
   }
-  const canDistress =
-    alert_level === 2 && !distressCooldown && minimumEvacTime && !remotelock;
+  const canDistress = alert_level === 2 && !distressCooldown && minimumEvacTime;
   let distress_reason = 'Launch a Distress Beacon.';
   if (remotelock) {
     distress_reason = remotetip;
@@ -1613,7 +1644,7 @@ const Emergency = (props) => {
     distress_reason = "It's too early to launch a distress beacon.";
   }
 
-  const canEvac = (evac_status === 0, alert_level >= 2) && !remotelock;
+  const canEvac = (evac_status === 0, alert_level >= 2);
   let evac_reason = 'Begin evacuation procedures. Authorise Lifeboats.';
   if (remotelock) {
     evac_reason = remotetip;
@@ -1629,8 +1660,7 @@ const Emergency = (props) => {
 
   const minimumNukeTime = worldtime > nuketimelock;
   const canNuke =
-    (nuke_available, !mission_failed, evac_reason === 0, minimumNukeTime) &&
-    !remotelock;
+    (nuke_available, !mission_failed, evac_reason === 0, minimumNukeTime);
   let nuke_reason =
     'Request a nuclear device to be authorized by USCM High Command.';
   if (remotelock) {
@@ -1689,7 +1719,7 @@ const Emergency = (props) => {
       <h1 align="center">Emergency Protocols</h1>
       <Flex align="center" justify="center" height="50%" direction="column">
         <Button.Confirm
-          tooltip="You cannot do this via remote console."
+          tooltip={quarters_reason}
           icon="triangle-exclamation"
           color="red"
           width="40vw"
@@ -1698,12 +1728,13 @@ const Emergency = (props) => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={access_text}
+          onClick={() => act('general_quarters')}
+          disabled={!canQuarters}
         >
           Call General Quarters
         </Button.Confirm>
         <Button.Confirm
-          tooltip="You cannot do this via remote console."
+          tooltip={evac_reason}
           icon="shuttle-space"
           color="red"
           width="40vw"
@@ -1712,12 +1743,13 @@ const Emergency = (props) => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={access_text}
+          onClick={() => act('evacuation_start')}
+          disabled={remotelock || !canEvac}
         >
           Initiate Evacuation
         </Button.Confirm>
         <Button.Confirm
-          tooltip="You cannot do this via remote console."
+          tooltip={distress_reason}
           icon="circle-exclamation"
           color="red"
           width="40vw"
@@ -1726,12 +1758,13 @@ const Emergency = (props) => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={access_text}
+          onClick={() => act('distress')}
+          disabled={remotelock || !canDistress}
         >
           Launch Distress Beacon
         </Button.Confirm>
         <Button.Confirm
-          tooltip="You cannot do this via remote console."
+          tooltip={nuke_reason}
           icon="circle-radiation"
           color="red"
           width="40vw"
@@ -1740,7 +1773,8 @@ const Emergency = (props) => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={access_text}
+          onClick={() => act('nuclearbomb')}
+          disabled={remotelock || !canNuke}
         >
           Request Nuclear Device
         </Button.Confirm>

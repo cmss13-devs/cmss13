@@ -722,6 +722,297 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	contains = list(/obj/item/storage/box/guncase/m1911/socom)
 	containertype = /obj/structure/largecrate/black_market
 
+/* --- AMMO --- */
+
+/datum/supply_packs/contraband/ammo
+	group = "Contraband Ammo"
+
+/datum/supply_packs/contraband/ammo/r4t
+	name = "45-70 bullet box crate (x300 rounds)"
+	dollar_cost = 135
+	contains = list(/obj/item/ammo_box/magazine/lever_action)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/r4t/training
+	name = "45-70 bullet box crate (x300 training rounds)"
+	dollar_cost = 35
+	contains = list(/obj/item/ammo_box/magazine/lever_action/training)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/m16
+	name = "Magazine box (M16, 12x regular mags)"
+	dollar_cost = 100
+	contains = list(/obj/item/ammo_box/magazine/M16)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/ar10
+	name = "Magazine box (AR10, 12x regular mags)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/ar10)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/deagle
+	name = "Magazine box (Desert Eagle, 16x regular mags)"
+	dollar_cost = 180
+	contains = list(/obj/item/ammo_box/magazine/deagle)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/deagle/hiap
+	name = "Magazine box (Desert Eagle, 16x HIAP mags)"
+	dollar_cost = 260
+	contains = list(/obj/item/ammo_box/magazine/deagle/super/highimpact/ap/empty)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/type73
+	name = "Magazine box (Type 73, 16x regular mags)"
+	dollar_cost = 60
+	contains = list(/obj/item/ammo_box/magazine/type73)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/nsg
+	name = "Magazine box (NSG-23, 16x regular mags)"
+	dollar_cost = 140
+	contains = list(/obj/item/ammo_box/magazine/nsg23)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/cmb
+	name = "Speed loaders box (CMB Spearhead, 16x HP loaders)"
+	dollar_cost = 70
+	contains = list(/obj/item/ammo_box/magazine/spearhead)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/mar30
+	name = "Magazines crate (MAR30, 10x regular mags)"
+	dollar_cost = 60
+	contains = list(
+		/obj/item/ammo_magazine/rifle/mar40,
+		/obj/item/ammo_magazine/rifle/mar40,
+		/obj/item/ammo_magazine/rifle/mar40,
+		/obj/item/ammo_magazine/rifle/mar40,
+		/obj/item/ammo_magazine/rifle/mar40,
+		/obj/item/ammo_magazine/rifle/mar40,
+		/obj/item/ammo_magazine/rifle/mar40,
+		/obj/item/ammo_magazine/rifle/mar40,
+		/obj/item/ammo_magazine/rifle/mar40,
+		/obj/item/ammo_magazine/rifle/mar40,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/fp9000
+	name = "Magazines crate (FN FP9000, 10x mags)"
+	dollar_cost = 25
+	contains = list(
+		/obj/item/ammo_magazine/smg/fp9000,
+		/obj/item/ammo_magazine/smg/fp9000,
+		/obj/item/ammo_magazine/smg/fp9000,
+		/obj/item/ammo_magazine/smg/fp9000,
+		/obj/item/ammo_magazine/smg/fp9000,
+		/obj/item/ammo_magazine/smg/fp9000,
+		/obj/item/ammo_magazine/smg/fp9000,
+		/obj/item/ammo_magazine/smg/fp9000,
+		/obj/item/ammo_magazine/smg/fp9000,
+		/obj/item/ammo_magazine/smg/fp9000,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/mp27
+	name = "Magazines crate (MP-27, 10x mags)"
+	dollar_cost = 40
+	contains = list(
+		/obj/item/ammo_magazine/smg/mp27,
+		/obj/item/ammo_magazine/smg/mp27,
+		/obj/item/ammo_magazine/smg/mp27,
+		/obj/item/ammo_magazine/smg/mp27,
+		/obj/item/ammo_magazine/smg/mp27,
+		/obj/item/ammo_magazine/smg/mp27,
+		/obj/item/ammo_magazine/smg/mp27,
+		/obj/item/ammo_magazine/smg/mp27,
+		/obj/item/ammo_magazine/smg/mp27,
+		/obj/item/ammo_magazine/smg/mp27,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uzi
+	name = "Magazines crate (UZI, 10x mags)"
+	dollar_cost = 20
+	contains = list(
+		/obj/item/ammo_magazine/smg/uzi,
+		/obj/item/ammo_magazine/smg/uzi,
+		/obj/item/ammo_magazine/smg/uzi,
+		/obj/item/ammo_magazine/smg/uzi,
+		/obj/item/ammo_magazine/smg/uzi,
+		/obj/item/ammo_magazine/smg/uzi,
+		/obj/item/ammo_magazine/smg/uzi,
+		/obj/item/ammo_magazine/smg/uzi,
+		/obj/item/ammo_magazine/smg/uzi,
+		/obj/item/ammo_magazine/smg/uzi,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/mac15
+	name = "Magazines crate (MAC-15, 10x mags)"
+	dollar_cost = 10
+	contains = list(
+		/obj/item/ammo_magazine/smg/mac15,
+		/obj/item/ammo_magazine/smg/mac15,
+		/obj/item/ammo_magazine/smg/mac15,
+		/obj/item/ammo_magazine/smg/mac15,
+		/obj/item/ammo_magazine/smg/mac15,
+		/obj/item/ammo_magazine/smg/mac15,
+		/obj/item/ammo_magazine/smg/mac15,
+		/obj/item/ammo_magazine/smg/mac15,
+		/obj/item/ammo_magazine/smg/mac15,
+		/obj/item/ammo_magazine/smg/mac15,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/pps43
+	name = "Magazines crate (Type-19, 10x regular mags)"
+	dollar_cost = 30
+	contains = list(
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/b92fs
+	name = "Magazines crate (Beretta 92FS, 12x mags)"
+	dollar_cost = 20
+	contains = list(
+		/obj/item/ammo_magazine/pistol/b92fs,
+		/obj/item/ammo_magazine/pistol/b92fs,
+		/obj/item/ammo_magazine/pistol/b92fs,
+		/obj/item/ammo_magazine/pistol/b92fs,
+		/obj/item/ammo_magazine/pistol/b92fs,
+		/obj/item/ammo_magazine/pistol/b92fs,
+		/obj/item/ammo_magazine/pistol/b92fs,
+		/obj/item/ammo_magazine/pistol/b92fs,
+		/obj/item/ammo_magazine/pistol/b92fs,
+		/obj/item/ammo_magazine/pistol/b92fs,
+		/obj/item/ammo_magazine/pistol/b92fs,
+		/obj/item/ammo_magazine/pistol/b92fs,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/kt42
+	name = "Magazines crate (KT-42, 10x mags)"
+	dollar_cost = 30
+	contains = list(
+		/obj/item/ammo_magazine/pistol/kt42,
+		/obj/item/ammo_magazine/pistol/kt42,
+		/obj/item/ammo_magazine/pistol/kt42,
+		/obj/item/ammo_magazine/pistol/kt42,
+		/obj/item/ammo_magazine/pistol/kt42,
+		/obj/item/ammo_magazine/pistol/kt42,
+		/obj/item/ammo_magazine/pistol/kt42,
+		/obj/item/ammo_magazine/pistol/kt42,
+		/obj/item/ammo_magazine/pistol/kt42,
+		/obj/item/ammo_magazine/pistol/kt42,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/bizon
+	name = "Magazines crate (Type 64, 8x mags)"
+	dollar_cost = 30
+	contains = list(
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/m1911
+	name = "Magazines crate (M1911, 14x mags)"
+	dollar_cost = 35
+	contains = list(
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+		/obj/item/ammo_magazine/pistol/m1911,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/mk45
+	name = "Magazines crate (MK-45 Automagnum, 12x mags)"
+	dollar_cost = 70
+	contains = list(
+		/obj/item/ammo_magazine/pistol/highpower/black,
+		/obj/item/ammo_magazine/pistol/highpower/black,
+		/obj/item/ammo_magazine/pistol/highpower/black,
+		/obj/item/ammo_magazine/pistol/highpower/black,
+		/obj/item/ammo_magazine/pistol/highpower/black,
+		/obj/item/ammo_magazine/pistol/highpower/black,
+		/obj/item/ammo_magazine/pistol/highpower/black,
+		/obj/item/ammo_magazine/pistol/highpower/black,
+		/obj/item/ammo_magazine/pistol/highpower/black,
+		/obj/item/ammo_magazine/pistol/highpower/black,
+		/obj/item/ammo_magazine/pistol/highpower/black,
+		/obj/item/ammo_magazine/pistol/highpower/black,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/smw
+	name = "Speed loaders crate (Smith and Wesson revolver, 12x loaders)"
+	dollar_cost = 30
+	contains = list(
+		/obj/item/ammo_magazine/revolver/small,
+		/obj/item/ammo_magazine/revolver/small,
+		/obj/item/ammo_magazine/revolver/small,
+		/obj/item/ammo_magazine/revolver/small,
+		/obj/item/ammo_magazine/revolver/small,
+		/obj/item/ammo_magazine/revolver/small,
+		/obj/item/ammo_magazine/revolver/small,
+		/obj/item/ammo_magazine/revolver/small,
+		/obj/item/ammo_magazine/revolver/small,
+		/obj/item/ammo_magazine/revolver/small,
+		/obj/item/ammo_magazine/revolver/small,
+		/obj/item/ammo_magazine/revolver/small,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/zhnk
+	name = "Speed loaders crate (ZHNK-72, 12x loaders)"
+	dollar_cost = 30
+	contains = list(
+		/obj/item/ammo_magazine/revolver/upp,
+		/obj/item/ammo_magazine/revolver/upp,
+		/obj/item/ammo_magazine/revolver/upp,
+		/obj/item/ammo_magazine/revolver/upp,
+		/obj/item/ammo_magazine/revolver/upp,
+		/obj/item/ammo_magazine/revolver/upp,
+		/obj/item/ammo_magazine/revolver/upp,
+		/obj/item/ammo_magazine/revolver/upp,
+		/obj/item/ammo_magazine/revolver/upp,
+		/obj/item/ammo_magazine/revolver/upp,
+		/obj/item/ammo_magazine/revolver/upp,
+		/obj/item/ammo_magazine/revolver/upp,
+	)
+	containertype = /obj/structure/largecrate/black_market
+
+
 /* --- DEEP STORAGE --- */
 
 /*

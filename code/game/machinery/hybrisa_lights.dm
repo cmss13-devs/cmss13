@@ -1,3 +1,7 @@
+#define COLONYLIGHT_BUILDSTATE_WORKING 0
+#define COLONYLIGHT_BUILDSTATE_BLOWTORCH 1
+#define COLONYLIGHT_BUILDSTATE_WIRECUTTERS 2
+#define COLONYLIGHT_BUILDSTATE_WRENCH 3
 /obj/structure/machinery/power/geothermal
 	name = "\improper G-11 geothermal generator"
 	icon = 'icons/obj/structures/machinery/geothermal.dmi'
@@ -11,7 +15,7 @@
 	var/power_gen_percent = 0 //100,000W at full capacity
 	var/power_generation_max = 100000 //Full capacity
 	var/powernet_connection_failed = 0 //Logic checking for powernets
-	var/buildstate = SENSORTOWER_BUILDSTATE_BLOWTORCH //What state of building it are we on, 0-3, 1 is "broken", the default
+	var/buildstate = COLONYLIGHT_BUILDSTATE_BLOWTORCH //What state of building it are we on, 0-3, 1 is "broken", the default
 	var/is_on = FALSE  //Is this damn thing on or what?
 	var/fail_rate = 10 //% chance of failure each fail_tick check
 	var/fail_check_ticks = 100 //Check for failure every this many ticks
@@ -38,10 +42,10 @@
 		icon_state = "off"
 		desc = "A thermoelectric generator sitting atop a borehole dug deep in the planet's surface. It generates energy by boiling the plasma steam that rises from the well.\nIt is old technology and has a large failure rate, and must be repaired frequently.\nIt is currently turned off and silent."
 	else
-		if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH)
+		if(buildstate == COLONYLIGHT_BUILDSTATE_BLOWTORCH)
 			icon_state = "weld"
 			desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is heavily damaged. Use a blowtorch, wirecutters, then wrench to repair it."
-		else if(buildstate == SENSORTOWER_BUILDSTATE_WIRECUTTERS)
+		else if(buildstate == COLONYLIGHT_BUILDSTATE_WIRECUTTERS)
 			icon_state = "wire"
 			desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is damaged. Use a wirecutters, then wrench to repair it."
 		else
@@ -89,11 +93,11 @@
 	if(rand(1,100) < fail_rate) //Oh snap, we failed! Shut it down!
 		if(rand(0,3) == 0)
 			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")]")
-			buildstate = SENSORTOWER_BUILDSTATE_WIRECUTTERS
+			buildstate = COLONYLIGHT_BUILDSTATE_WIRECUTTERS
 			icon_state = "wire"
 		else
 			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")]")
-			buildstate = SENSORTOWER_BUILDSTATE_WRENCH
+			buildstate = COLONYLIGHT_BUILDSTATE_WRENCH
 			icon_state = "wrench"
 		is_on = FALSE
 		power_gen_percent = 0
@@ -118,13 +122,13 @@
 		to_chat(user, SPAN_WARNING("You have no clue how this thing works..."))
 		return FALSE
 
-	if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH)
+	if(buildstate == COLONYLIGHT_BUILDSTATE_BLOWTORCH)
 		to_chat(usr, SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it."))
 		return FALSE
-	else if (buildstate == SENSORTOWER_BUILDSTATE_WIRECUTTERS)
+	else if (buildstate == COLONYLIGHT_BUILDSTATE_WIRECUTTERS)
 		to_chat(usr, SPAN_INFO("Use a wirecutters, then wrench to repair it."))
 		return FALSE
-	else if (buildstate == SENSORTOWER_BUILDSTATE_WRENCH)
+	else if (buildstate == COLONYLIGHT_BUILDSTATE_WRENCH)
 		to_chat(usr, SPAN_INFO("Use a wrench to repair it."))
 		return FALSE
 	if(is_on)
@@ -148,7 +152,7 @@
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
-		if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH && !is_on)
+		if(buildstate == COLONYLIGHT_BUILDSTATE_BLOWTORCH && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return FALSE
@@ -159,10 +163,10 @@
 				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
 				SPAN_NOTICE("You start welding [src]'s internal damage."))
 				if(do_after(user, 200 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(buildstate != SENSORTOWER_BUILDSTATE_BLOWTORCH || is_on || !welder.isOn())
+					if(buildstate != COLONYLIGHT_BUILDSTATE_BLOWTORCH || is_on || !welder.isOn())
 						return FALSE
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-					buildstate = SENSORTOWER_BUILDSTATE_WIRECUTTERS
+					buildstate = COLONYLIGHT_BUILDSTATE_WIRECUTTERS
 					user.visible_message(SPAN_NOTICE("[user] welds [src]'s internal damage."),
 					SPAN_NOTICE("You weld [src]'s internal damage."))
 					update_icon()
@@ -171,7 +175,7 @@
 				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 				return
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
-		if(buildstate == SENSORTOWER_BUILDSTATE_WIRECUTTERS && !is_on)
+		if(buildstate == COLONYLIGHT_BUILDSTATE_WIRECUTTERS && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return FALSE
@@ -179,16 +183,16 @@
 			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
 			SPAN_NOTICE("You start securing [src]'s wiring."))
 			if(do_after(user, 120 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
-				if(buildstate != SENSORTOWER_BUILDSTATE_WIRECUTTERS || is_on)
+				if(buildstate != COLONYLIGHT_BUILDSTATE_WIRECUTTERS || is_on)
 					return FALSE
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				buildstate = SENSORTOWER_BUILDSTATE_WRENCH
+				buildstate = COLONYLIGHT_BUILDSTATE_WRENCH
 				user.visible_message(SPAN_NOTICE("[user] secures [src]'s wiring."),
 				SPAN_NOTICE("You secure [src]'s wiring."))
 				update_icon()
 				return TRUE
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH && !is_on)
+		if(buildstate == COLONYLIGHT_BUILDSTATE_WRENCH && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return FALSE
@@ -196,10 +200,10 @@
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
 			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
 			if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(buildstate != SENSORTOWER_BUILDSTATE_WRENCH || is_on)
+				if(buildstate != COLONYLIGHT_BUILDSTATE_WRENCH || is_on)
 					return FALSE
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-				buildstate = SENSORTOWER_BUILDSTATE_WORKING
+				buildstate = COLONYLIGHT_BUILDSTATE_WORKING
 				user.count_niche_stat(STATISTICS_NICHE_REPAIR_GENERATOR)
 				user.visible_message(SPAN_NOTICE("[user] repairs [src]'s tubing and plating."),
 				SPAN_NOTICE("You repair [src]'s tubing and plating."))
@@ -457,3 +461,8 @@ GLOBAL_LIST_INIT(ship_floodlights, list())
 /obj/structure/machinery/colony_floodlight/engineer_circular/Destroy()
 	. = ..()
 	GLOB.ship_floodlights -= src
+
+#undef COLONYLIGHT_BUILDSTATE_WORKING
+#undef COLONYLIGHT_BUILDSTATE_BLOWTORCH
+#undef COLONYLIGHT_BUILDSTATE_WIRECUTTERS
+#undef COLONYLIGHT_BUILDSTATE_WRENCH

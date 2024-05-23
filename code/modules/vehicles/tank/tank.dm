@@ -164,7 +164,39 @@
 	update_icon()
 
 	return TRUE
+/obj/vehicle/multitile/tank/MouseDrop_T(mob/M, mob/user)
+	. = ..()
+	if((M != user) || !isxeno(user))
+		return
 
+	if(health > 0)
+		to_chat(user, SPAN_XENO("We can't jump over [src] until it is destroyed!"))
+		return
+
+	var/turf/current_turf = get_turf(user)
+	var/dir_to_go = get_dir(current_turf, src)
+	for(var/i in 1 to 3)
+		current_turf = get_step(current_turf, dir_to_go)
+		if(!(current_turf in locs))
+			break
+
+		if(current_turf.density)
+			to_chat(user, SPAN_XENO("The path over [src] is obstructed!"))
+			return
+
+	// Now we check to make sure the turf on the other side of the tank isn't dense too
+	current_turf = get_step(current_turf, dir_to_go)
+	if(current_turf.density)
+		to_chat(user, SPAN_XENO("The path over [src] is obstructed!"))
+		return
+
+	to_chat(user, SPAN_XENO("We begin to jump over [src]..."))
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		to_chat(user, SPAN_XENO("We stop jumping over [src]."))
+		return
+
+	user.forceMove(current_turf)
+	to_chat(user, SPAN_XENO("We jump to the other side of [src]."))
 /*
 ** PRESETS SPAWNERS
 */
@@ -193,6 +225,7 @@
 
 /obj/effect/vehicle_spawner/tank/load_hardpoints(obj/vehicle/multitile/tank/V)
 	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
 
 //PRESET: turret, treads installed
 /obj/effect/vehicle_spawner/tank/plain/load_hardpoints(obj/vehicle/multitile/tank/V)

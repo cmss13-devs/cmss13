@@ -82,4 +82,4 @@ All new interfaces in CM must be created using tgui - this document will help ge
 > Assets including icons and sound are under the [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated. Authorship for assets including art and sound under the CC BY-SA license is defined as the active development team of CM-SS13 unless stated otherwise (by author of the commit).
 
 ### <a href="LICENSE-GPL3"><img src="https://img.shields.io/badge/licence-GPL_3-orange?style=for-the-badge" alt="GPLv3 license"></a>
-> Commits before [9a001bf520f889b434acd295253a1052420860af on Mon, 14 Sep 2020 09:13:32 +0000](https://github.com/cmss13-devs/cmss13/commit/9a001bf520f889b434acd295253a1052420860af) are assumed to be licensed under GPLv3 and can be used in closed source repositories.
+> Commits before [9a001bf520f889b434acd295253a1052420860af on Mon, 14 Sep 2020 09:13:32 +0000](https://github.com/cmss13-devs/cmss13/commit/9a001bf520f889b434acd295253a1052420860af) are assumed to be licensed under [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.html) and can be used in closed source repositories.

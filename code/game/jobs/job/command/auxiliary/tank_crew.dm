@@ -22,8 +22,8 @@
 	if(positions > total_positions_so_far)
 		total_positions_so_far = positions
 		return positions
-		positions = total_positions_so_far
-		return positions
+	positions = total_positions_so_far
+	return positions
 
 /obj/effect/landmark/start/vehicle_crewmen
 	name = JOB_TANKCREW

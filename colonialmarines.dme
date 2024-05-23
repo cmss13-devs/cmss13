@@ -856,7 +856,7 @@
 #include "code\game\machinery\gear.dm"
 #include "code\game\machinery\hologram.dm"
 #include "code\game\machinery\holosign.dm"
-#include "code\game\machinery\hybrsia_lights.dm"
+#include "code\game\machinery\hybrisa_lights.dm"
 #include "code\game\machinery\igniter.dm"
 #include "code\game\machinery\iv_drip.dm"
 #include "code\game\machinery\lightswitch.dm"

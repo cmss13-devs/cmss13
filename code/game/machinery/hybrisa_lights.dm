@@ -369,9 +369,9 @@
 
 /obj/structure/machinery/engineerconsole_switch/LateInitialize()
 	. = ..()
-	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/F in GLOB.ship_floodlights)
-		floodlist += F
-		F.fswitch = src
+	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/floodlight in GLOB.ship_floodlights)
+		floodlist += floodlight
+		floodlight.fswitch = src
 	start_processing()
 
 /obj/structure/machinery/engineerconsole_switch/Destroy()
@@ -401,15 +401,15 @@
 		update_icon()
 
 /obj/structure/machinery/engineerconsole_switch/proc/toggle_lights()
-	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/F in floodlist)
+	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/floodlight in floodlist)
 		spawn(rand(10,60))
 		turned_on = FALSE
-			if(!F.damaged)
-				if(F.is_lit) //Shut it down
-					F.set_light(l_range = F.lum_value,l_power = F.light_power , l_color = F.light_color)
+			if(!floodlight.damaged)
+				if(floodlight.is_lit) //Shut it down
+					floodlight.set_light(l_range = floodlight.lum_value,l_power = floodlight.light_power , l_color = floodlight.light_color)
 				else
-					F.set_light(0)
-			F.update_icon()
+					floodlight.set_light(0)
+			floodlight.update_icon()
 	return 0
 
 /obj/structure/machinery/engineerconsole_switch/attack_hand(mob/user as mob)

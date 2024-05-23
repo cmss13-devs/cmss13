@@ -10,7 +10,7 @@
 
 <p align="center">
 	<a href="https://www.monkeyuser.com/assets/images/2019/131-bug-free.png"><img src="https://img.shields.io/badge/Built_with-Resentment-orange?style=for-the-badge&labelColor=%23D47439&color=%23C36436" width=260px></a>
-	<a href="https://user-images.githubusercontent.com/8171642/50290880-ffef5500-043a-11e9-8270-a2e5b697c86c.png"><img src="https://img.shields.io/badge/Contains-Technical_Debt-blue?style=for-the-badge&color=5598D0&labelColor=62C1EE" width=280px></a> 
+	<a href="https://user-images.githubusercontent.com/8171642/50290880-ffef5500-043a-11e9-8270-a2e5b697c86c.png"><img src="https://img.shields.io/badge/Contains-Technical_Debt-blue?style=for-the-badge&color=5598D0&labelColor=62C1EE" width=280px></a>
 	<a href="https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a"><img src="https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif"></a>
 </p>
 
@@ -75,11 +75,11 @@ All new interfaces in CM must be created using tgui - this document will help ge
 
 # Licenses
 
-### <a href="LICENSE"><img src="https://img.shields.io/badge/licence-AGPL_3-red?style=for-the-badge" alt="AGPLv3 license"></a>
+### <a href="LICENSE-AGPLv3.txt"><img src="https://img.shields.io/badge/licence-AGPL_3-red?style=for-the-badge" alt="AGPLv3 license"></a>
 > The code for CM-SS13 is licensed under the [GNU Affero General Public License v3](http://www.gnu.org/licenses/agpl.html). All code is assumed to be licensed under AGPL v3 unless stated otherwise by file header, or this document.
 
-### <a href="LICENSE-CC-BY-NC-SA-3.0"><img src="https://img.shields.io/badge/licence-CC_3.0_BY--SA-lightblue?style=for-the-badge" alt="Creative Commons 3.0 BY-SA"></a>
+### <a href="LICENSE-CC-BY-NC-SA-3.0.txt"><img src="https://img.shields.io/badge/licence-CC_3.0_BY--SA-lightblue?style=for-the-badge" alt="Creative Commons 3.0 BY-SA"></a>
 > Assets including icons and sound are under the [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated. Authorship for assets including art and sound under the CC BY-SA license is defined as the active development team of CM-SS13 unless stated otherwise (by author of the commit).
 
-### <a href="LICENSE-GPL3"><img src="https://img.shields.io/badge/licence-GPL_3-orange?style=for-the-badge" alt="GPLv3 license"></a>
+### <a href="LICENSE-GPLv3.txt"><img src="https://img.shields.io/badge/licence-GPL_3-orange?style=for-the-badge" alt="GPLv3 license"></a>
 > Commits before [9a001bf520f889b434acd295253a1052420860af on Mon, 14 Sep 2020 09:13:32 +0000](https://github.com/cmss13-devs/cmss13/commit/9a001bf520f889b434acd295253a1052420860af) are assumed to be licensed under [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.html) and can be used in closed source repositories.

@@ -1,11 +1,23 @@
 import { KEY_ESCAPE } from 'common/keycodes';
-import { useBackend, useLocalState } from '../backend';
-import { Button, Section, Flex, Box, Tooltip, Input, NoticeBox, Icon, ProgressBar } from '../components';
-import { Window } from '../layouts';
+import { toFixed } from 'common/math';
 import { classes } from 'common/react';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  Flex,
+  Icon,
+  Input,
+  NoticeBox,
+  ProgressBar,
+  Section,
+  Tooltip,
+} from '../components';
 import { BoxProps } from '../components/Box';
 import { Table, TableCell, TableRow } from '../components/Table';
-import { toFixed } from 'common/math';
+import { Window } from '../layouts';
 
 const THEME_COMP = 0;
 const THEME_USCM = 1;
@@ -67,7 +79,8 @@ const DescriptionTooltip = (props: RecordNameProps) => {
             'Description',
             isRecommended && 'RecommendedDescription',
             isMandatory && 'MandatoryDescription',
-          ])}>
+          ])}
+        >
           <ItemDescriptionViewer
             desc={record.prod_desc ?? ''}
             name={record.prod_name}
@@ -75,7 +88,8 @@ const DescriptionTooltip = (props: RecordNameProps) => {
             isMandatory={isMandatory}
           />
         </NoticeBox>
-      }>
+      }
+    >
       {props.children}
     </Tooltip>
   );
@@ -97,7 +111,7 @@ const VendButton = (props: VendButtonProps, _) => {
         props.isMandatory && 'MandatoryVendButton',
       ])}
       preserveWhitespace
-      icon={props.text ? undefined : props.available ? 'circle-down' : 'xmark'}
+      icon={props.available ? 'circle-down' : 'xmark'}
       onMouseDown={(e) => {
         e.preventDefault();
         if (props.available) {
@@ -105,7 +119,8 @@ const VendButton = (props: VendButtonProps, _) => {
         }
       }}
       textAlign="center"
-      disabled={!props.available}>
+      disabled={!props.available}
+    >
       {props.children}
     </Button>
   );
@@ -143,7 +158,8 @@ const VendableItemRow = (props: VenableItem) => {
           isRecommended={isRecommended}
           isMandatory={isMandatory}
           available={available}
-          onClick={() => act('vend', record)}>
+          onClick={() => act('vend', record)}
+        >
           {record.prod_name}
         </VendButton>
       </TableCell>
@@ -194,7 +210,8 @@ const VendableClothingItemRow = (props: {
           isRecommended={isRecommended}
           isMandatory={isMandatory}
           available={available}
-          onClick={() => act('vend', record)}>
+          onClick={() => act('vend', record)}
+        >
           {record.prod_name}
         </VendButton>
       </TableCell>
@@ -213,6 +230,7 @@ const VendableClothingItemRow = (props: {
 
 interface VendingCategoryProps {
   readonly category: VendingCategory;
+  readonly searchTerm: string;
 }
 
 interface DescriptionProps {
@@ -244,8 +262,7 @@ const ItemDescriptionViewer = (props: DescriptionProps, _) => {
 export const ViewVendingCategory = (props: VendingCategoryProps) => {
   const { data } = useBackend<VendingData>();
   const { vendor_type } = data;
-  const { category } = props;
-  const [searchTerm, _] = useLocalState('searchTerm', '');
+  const { category, searchTerm } = props;
   const searchFilter = (x: VendingRecord) =>
     x.prod_name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
 
@@ -271,7 +288,8 @@ export const ViewVendingCategory = (props: VendingCategoryProps) => {
               className={classes([
                 'VendingItem',
                 i % 2 ? 'VendingFlexAlt' : undefined,
-              ])}>
+              ])}
+            >
               {vendor_type === 'sorted' && <VendableItemRow record={record} />}
               {(vendor_type === 'clothing' || vendor_type === 'gear') && (
                 <VendableClothingItemRow
@@ -310,7 +328,7 @@ export const VendingSorted = () => {
     );
   }
   const categories = data.displayed_categories ?? [];
-  const [searchTerm, setSearchTerm] = useLocalState('searchTerm', '');
+  const [searchTerm, setSearchTerm] = useState('');
   const isEmpty = categories.length === 0;
   const show_points = data.show_points ?? false;
   const points = data.current_m_points ?? 0;
@@ -326,14 +344,16 @@ export const VendingSorted = () => {
           if (keyCode === KEY_ESCAPE) {
             act('cancel');
           }
-        }}>
+        }}
+      >
         {!isEmpty && !show_points && (
           <Box className={classes(['SearchBox'])}>
             <Flex
               align="center"
               justify="space-between"
               align-items="stretch"
-              className="Section__title">
+              className="Section__title"
+            >
               <Flex.Item>
                 <span className="Section__titleText">Search</span>
               </Flex.Item>
@@ -349,7 +369,8 @@ export const VendingSorted = () => {
               <Flex
                 align="center"
                 justify="space-between"
-                align-items="stretch">
+                align-items="stretch"
+              >
                 <Flex.Item>
                   <span className="Section__content">Reagents</span>
                 </Flex.Item>
@@ -369,7 +390,8 @@ export const VendingSorted = () => {
               align="center"
               justify="space-between"
               align-items="stretch"
-              className="Section__title">
+              className="Section__title"
+            >
               <Flex.Item>
                 <span className="Section__titleText">Points Remaining</span>
               </Flex.Item>
@@ -389,10 +411,13 @@ export const VendingSorted = () => {
 
         {!isEmpty && (
           <Box className="ItemContainer">
-            <Flex direction="column" fill>
+            <Flex direction="column" fill={1}>
               {categories.map((category, i) => (
                 <Flex.Item key={i} className="Category">
-                  <ViewVendingCategory category={category} />
+                  <ViewVendingCategory
+                    searchTerm={searchTerm}
+                    category={category}
+                  />
                 </Flex.Item>
               ))}
               <Flex.Item height={15}>&nbsp;</Flex.Item>

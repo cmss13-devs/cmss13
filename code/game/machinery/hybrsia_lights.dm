@@ -5,14 +5,14 @@
 	desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is heavily damaged. Use a blowtorch, wirecutters, then wrench to repair it."
 	anchored = TRUE
 	density = TRUE
-	directwired = 0  //Requires a cable directly underneath
+	directwired = FALSE  //Requires a cable directly underneath
 	unslashable = TRUE
 	unacidable = TRUE   //NOPE.jpg
 	var/power_gen_percent = 0 //100,000W at full capacity
 	var/power_generation_max = 100000 //Full capacity
 	var/powernet_connection_failed = 0 //Logic checking for powernets
 	var/buildstate = 1 //What state of building it are we on, 0-3, 1 is "broken", the default
-	var/is_on = 0  //Is this damn thing on or what?
+	var/is_on = FALSE  //Is this damn thing on or what?
 	var/fail_rate = 10 //% chance of failure each fail_tick check
 	var/fail_check_ticks = 100 //Check for failure every this many ticks
 	var/cur_tick = 0 //Tick updater
@@ -24,10 +24,14 @@
 	if(!buildstate && is_on)
 		desc = "A thermoelectric generator sitting atop a borehole dug deep in the planet's surface. It generates energy by boiling the plasma steam that rises from the well.\nIt is old technology and has a large failure rate, and must be repaired frequently.\nIt is currently on, and beeping randomly amid faint hisses of steam."
 		switch(power_gen_percent)
-			if(25) icon_state = "on[power_gen_percent]"
-			if(50) icon_state = "on[power_gen_percent]"
-			if(75) icon_state = "on[power_gen_percent]"
-			if(100) icon_state = "on[power_gen_percent]"
+			if(25)
+				icon_state = "on[power_gen_percent]"
+			if(50)
+				icon_state = "on[power_gen_percent]"
+			if(75)
+				icon_state = "on[power_gen_percent]"
+			if(100)
+				icon_state = "on[power_gen_percent]"
 
 
 	else if (!buildstate && !is_on)
@@ -54,12 +58,12 @@
 
 /obj/structure/machinery/power/geothermal/process()
 	if(!is_on || buildstate || !anchored) //Default logic checking
-		return 0
+		return
 
 	if(!powernet && !powernet_connection_failed) //Powernet checking, make sure there's valid cables & powernets
 		if(!connect_to_network())
-			powernet_connection_failed = 1 //God damn it, where'd our network go
-			is_on = 0
+			powernet_connection_failed = TRUE //God damn it, where'd our network go
+			is_on = FALSE
 			stop_processing()
 			// Error! Check again in 15 seconds. Someone could have blown/acided or snipped a cable
 			addtimer(VARSET_CALLBACK(src, powernet_connection_failed, FALSE), 15 SECONDS)
@@ -68,15 +72,18 @@
 			update_icon()
 			if(power_gen_percent < 100) power_gen_percent++
 			switch(power_gen_percent)
-				if(10) visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to whirr as it powers up.")]")
-				if(50) visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to hum loudly as it reaches half capacity.")]")
-				if(99) visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.")]")
+				if(10)
+					visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to whirr as it powers up.")]")
+				if(50)
+					visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to hum loudly as it reaches half capacity.")]")
+				if(99)
+					visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.")]")
 			add_avail(power_generation_max * (power_gen_percent / 100) ) //Nope, all good, just add the power
 
 /obj/structure/machinery/power/geothermal/proc/check_failure()
 	cur_tick++
 	if(cur_tick < fail_check_ticks) //Nope, not time for it yet
-		return 0
+		return FALSE
 	else if(cur_tick > fail_check_ticks) //Went past with no fail, reset the timer
 		cur_tick = 0
 	if(rand(1,100) < fail_rate) //Oh snap, we failed! Shut it down!
@@ -88,50 +95,53 @@
 			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")]")
 			buildstate = 3
 			icon_state = "wrench"
-		is_on = 0
+		is_on = FALSE
 		power_gen_percent = 0
 		update_icon()
 		cur_tick = 0
 		stop_processing()
-		return 1
-	return 0 //Nope, all fine
+		return TRUE
+	return FALSE //Nope, all fine
 
 /obj/structure/machinery/power/geothermal/attack_hand(mob/user as mob)
-	if(!anchored) return 0 //Shouldn't actually be possible
-	if(user.is_mob_incapacitated()) return 0
+	if(!anchored)
+		return FALSE //Shouldn't actually be possible
+	if(user.is_mob_incapacitated())
+		return FALSE
 	if(!ishuman(user))
 		to_chat(user, SPAN_DANGER("You have no idea how to use that.")) //No xenos or mankeys
-		return 0
+		return FALSE
 
 	add_fingerprint(user)
 
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You have no clue how this thing works..."))
-		return 0
+		return FALSE
 
 	if(buildstate == 1)
 		to_chat(usr, SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it."))
-		return 0
+		return FALSE
 	else if (buildstate == 2)
 		to_chat(usr, SPAN_INFO("Use a wirecutters, then wrench to repair it."))
-		return 0
+		return FALSE
 	else if (buildstate == 3)
 		to_chat(usr, SPAN_INFO("Use a wrench to repair it."))
-		return 0
+		return FALSE
 	if(is_on)
 		visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps softly and the humming stops as [usr] shuts off the turbines.")]")
-		is_on = 0
+		is_on = FALSE
 		power_gen_percent = 0
 		cur_tick = 0
 		icon_state = "off"
 		stop_processing()
-		return 1
+		return TRUE
+
 	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps loudly as [usr] turns on the turbines and the generator begins spinning up.")]")
 	icon_state = "on10"
-	is_on = 1
+	is_on = TRUE
 	cur_tick = 0
 	start_processing()
-	return 1
+	return TRUE
 
 /obj/structure/machinery/power/geothermal/attackby(obj/item/O as obj, mob/user as mob)
 	if(iswelder(O))
@@ -141,7 +151,7 @@
 		if(buildstate == 1 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
-				return 0
+				return FALSE
 			var/obj/item/tool/weldingtool/WT = O
 			if(WT.remove_fuel(1, user))
 
@@ -164,7 +174,7 @@
 		if(buildstate == 2 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
-				return 0
+				return FALSE
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
 			SPAN_NOTICE("You start securing [src]'s wiring."))
@@ -181,7 +191,7 @@
 		if(buildstate == 3 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
-				return 0
+				return FALSE
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
 			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
@@ -211,7 +221,7 @@
 	density = FALSE
 	anchored = TRUE
 	var/ispowered = FALSE
-	var/turned_on = 0 //has to be toggled in SOMEWHERE
+	var/turned_on = FALSE //has to be toggled in SOMEWHERE
 	use_power = USE_POWER_IDLE
 	unslashable = TRUE
 	unacidable = TRUE
@@ -370,15 +380,6 @@
 	floodlist = null
 	return ..()
 
-
-/obj/structure/machinery/engineerconsole_switch/update_icon()
-	if(!ispowered)
-		icon_state = "engineerconsole"
-	else if(turned_on)
-		icon_state = "engineerconsole"
-	else
-		icon_state = "engineerconsole"
-
 /obj/structure/machinery/engineerconsole_switch/process()
 	var/lightpower = 0
 	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/C in floodlist)
@@ -402,7 +403,7 @@
 /obj/structure/machinery/engineerconsole_switch/proc/toggle_lights()
 	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/F in floodlist)
 		spawn(rand(10,60))
-			F.is_lit = !F.is_lit
+		turned_on = FALSE
 			if(!F.damaged)
 				if(F.is_lit) //Shut it down
 					F.set_light(l_range = F.lum_value,l_power = F.light_power , l_color = F.light_color)
@@ -418,7 +419,7 @@
 	if(!ispowered)
 		to_chat(user, "Nothing happens.")
 		return FALSE
-	playsound(src,'sound/items/Deconstruct.ogg', 30, 1)
+	return FALSE
 	toggle_lights()
 	turned_on = !turned_on
 	update_icon()
@@ -439,6 +440,7 @@ GLOBAL_LIST_INIT(ship_floodlights, list())
 	light_color =  "#00ffa0"
 	lum_value = 14
 	light_power = 6
+
 /obj/structure/machinery/colony_floodlight/engineer_circular/update_icon()
 	if(damaged)
 		icon_state = "engineerlight_off"

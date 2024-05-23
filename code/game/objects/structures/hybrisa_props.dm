@@ -1277,7 +1277,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
-	layer = 2.1
+	layer = ABOVE_TURF_LAYER
 
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass3
 	name = "reinforced glass floor"
@@ -1405,7 +1405,7 @@
 	bound_height = 32
 	anchored = TRUE
 	density = TRUE
-	layer = 3.2
+	layer = WINDOW_LAYER
 
 /obj/structure/prop/hybrisa/misc/slotmachine_broken
 	name = "slot machine"
@@ -1416,7 +1416,7 @@
 	bound_height = 32
 	anchored = TRUE
 	density = TRUE
-	layer = 3.2
+	layer = WINDOW_LAYER
 
 /obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine1
 	name = "coffee machine"
@@ -1544,61 +1544,61 @@
 	name = "disposal pipe"
 
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "pipe-s"
 
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe2
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "pipe-c"
 
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe3
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "pipe-j1"
 
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe4
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "pipe-y"
 
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe5
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "pipe-b"
 
 /obj/structure/prop/hybrisa/misc/fake/wire
 	name = "power cable"
 
 /obj/structure/prop/hybrisa/misc/fake/wire/red
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "intactred"
 
 /obj/structure/prop/hybrisa/misc/fake/wire/yellow
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "intactyellow"
 
 /obj/structure/prop/hybrisa/misc/fake/wire/blue
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "intactblue"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire
 	name = "heavy duty wire"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy1
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "0-1"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "1-2"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "1-4"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy4
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "1-2-4"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy5
-	layer = 2
+	layer = TURF_LAYER
 	icon_state = "1-2-4-8"
 
 /obj/structure/prop/hybrisa/misc/fake/lattice
@@ -1606,7 +1606,7 @@
 
 /obj/structure/prop/hybrisa/misc/fake/lattice/full
 	icon_state = "latticefull"
-	layer = 2
+	layer = TURF_LAYER
 
 // Cargo Containers extended
 
@@ -1615,16 +1615,6 @@
 	desc = "a cargo container."
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blackwyleft"
-	bound_width = 32
-	bound_height = 32
-	density = TRUE
-	health = 200
-	opacity = TRUE
-	anchored = TRUE
-	unslashable = TRUE
-	unacidable = TRUE
-	layer = 5
-
 /obj/structure/cargo_container/hybrisa/containersextended/blueleft
 	name = "cargo container"
 	icon_state = "blueleft"
@@ -1767,11 +1757,6 @@
 	unacidable = TRUE
 	indestructible = TRUE
 
-// Grille
-
-/obj/structure/prop/hybrisa/misc/highvoltagegrille
-	icon_state = "highvoltagegrille"
-
 // Greeblies
 /obj/structure/prop/hybrisa/misc/buildinggreeblies
 	name = "machinery"
@@ -1782,7 +1767,7 @@
 	density = TRUE
 	health = 200
 	anchored = TRUE
-	layer = 5
+	layer = LATTICE_LAYER
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble1
 	icon_state = "buildingventbig2"
@@ -1907,6 +1892,7 @@
 	density = TRUE
 	anchored = TRUE
 
+// Phonebox Prop (Doesn't actually work a locker)
 /obj/structure/prop/hybrisa/misc/phonebox
 	name = "phonebox"
 	desc = "A phone-box, it doesn't seem to be working, the line must be down."

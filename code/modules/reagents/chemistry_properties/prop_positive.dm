@@ -854,6 +854,8 @@
 		return
 	var/mob/living/carbon/xenomorph/X = M
 	X.interference += (volume * potency)
+	if(X.interference > 90)
+		X.interference = 90
 
 /datum/chem_property/positive/neutralizing
 	name = PROPERTY_NEUTRALIZING

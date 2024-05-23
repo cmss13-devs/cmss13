@@ -407,7 +407,7 @@
 /obj/structure/machinery/engineerconsole_switch/proc/toggle_lights()
 	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/floodlight in floodlist)
 		spawn(rand(10,60))
-		turned_on = FALSE
+			floodlight.is_lit = !floodlight.is_lit
 			if(!floodlight.damaged)
 				if(floodlight.is_lit) //Shut it down
 					floodlight.set_light(l_range = floodlight.lum_value,l_power = floodlight.light_power , l_color = floodlight.light_color)
@@ -423,7 +423,7 @@
 	if(!ispowered)
 		to_chat(user, "Nothing happens.")
 		return FALSE
-	return FALSE
+	playsound(src,'sound/effects/EMPulse.ogg', 30, 1)
 	toggle_lights()
 	turned_on = !turned_on
 	update_icon()

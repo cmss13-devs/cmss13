@@ -20,7 +20,6 @@
 	response_disarm = "gently pushes aside the"
 	response_harm   = "stamps on the"
 	density = FALSE
-	var/body_color //black, brown, gray and white, leave blank for random
 	layer = ABOVE_LYING_MOB_LAYER
 	min_oxy = 16 //Require atleast 16kPA oxygen
 	minbodytemp = 223 //Below -50 Degrees Celcius
@@ -28,6 +27,7 @@
 	universal_speak = FALSE
 	universal_understand = TRUE
 	holder_type = /obj/item/holder/rat
+	var/body_color //black, brown, gray and white, leave blank for random
 
 /mob/living/simple_animal/rat/Life(delta_time)
 	..()

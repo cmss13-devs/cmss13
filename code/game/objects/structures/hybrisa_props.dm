@@ -42,7 +42,6 @@
 		if(0 to 500)
 			damage_state = 5
 	icon_state = "[initial(icon_state)]_damage_[damage_state]"
-	damage_state = 0
 
 /obj/structure/prop/hybrisa/vehicles/proc/explode(dam, mob/M)
 	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
@@ -1228,6 +1227,7 @@
 
 /obj/structure/prop/hybrisa/misc/floorprops
 	icon_state = "solidgrate1"
+	layer = HATCH_LAYER
 
 /obj/structure/prop/hybrisa/misc/floorprops/grate
 	name = "solid metal grate"
@@ -1524,71 +1524,57 @@
 
 /obj/structure/prop/hybrisa/misc/fake/pipes
 	name = "disposal pipe"
-
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1
 	layer = TURF_LAYER
+/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1
 	icon_state = "pipe-s"
 
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe2
-	layer = TURF_LAYER
 	icon_state = "pipe-c"
 
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe3
-	layer = TURF_LAYER
 	icon_state = "pipe-j1"
 
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe4
-	layer = TURF_LAYER
 	icon_state = "pipe-y"
 
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe5
-	layer = TURF_LAYER
 	icon_state = "pipe-b"
 
 /obj/structure/prop/hybrisa/misc/fake/wire
 	name = "power cable"
-
-/obj/structure/prop/hybrisa/misc/fake/wire/red
 	layer = TURF_LAYER
+/obj/structure/prop/hybrisa/misc/fake/wire/red
 	icon_state = "intactred"
 
 /obj/structure/prop/hybrisa/misc/fake/wire/yellow
-	layer = TURF_LAYER
 	icon_state = "intactyellow"
 
 /obj/structure/prop/hybrisa/misc/fake/wire/blue
-	layer = TURF_LAYER
 	icon_state = "intactblue"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire
 	name = "heavy duty wire"
-
-/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy1
 	layer = TURF_LAYER
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy1
 	icon_state = "0-1"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2
-	layer = TURF_LAYER
 	icon_state = "1-2"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3
-	layer = TURF_LAYER
 	icon_state = "1-4"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy4
-	layer = TURF_LAYER
 	icon_state = "1-2-4"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy5
-	layer = TURF_LAYER
 	icon_state = "1-2-4-8"
 
 /obj/structure/prop/hybrisa/misc/fake/lattice
 	name = "structural lattice"
-
+	layer = TURF_LAYER
 /obj/structure/prop/hybrisa/misc/fake/lattice/full
 	icon_state = "latticefull"
-	layer = TURF_LAYER
 
 // Cargo Containers extended
 
@@ -1597,6 +1583,10 @@
 	desc = "a cargo container."
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blackwyleft"
+	bound_height = 32
+	bound_width = 64
+	layer = ABOVE_MOB_LAYER
+
 /obj/structure/cargo_container/hybrisa/containersextended/blueleft
 	name = "cargo container"
 	icon_state = "blueleft"
@@ -1749,7 +1739,7 @@
 	density = TRUE
 	health = 200
 	anchored = TRUE
-	layer = RIPPLE_LAYER
+	layer = EXTERIOR_HIGHWALLMOUNT_LAYER
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble1
 	icon_state = "buildingventbig2"
@@ -2052,7 +2042,7 @@
 	icon = 'icons/obj/structures/props/hybrisa_lattice.dmi'
 	icon_state = "lattice1"
 	density = FALSE
-	layer = RIPPLE_LAYER
+	layer = EXTERIOR_HIGHWALLMOUNT_LAYER
 	health = 6000
 /obj/structure/prop/hybrisa/lattice_prop/lattice_1
 	icon_state = "lattice1"

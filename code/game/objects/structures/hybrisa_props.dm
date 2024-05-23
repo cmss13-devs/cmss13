@@ -917,24 +917,6 @@
 	desc = "A comfy looking bunk-bed."
 	icon_state = "zbunkbed4"
 
-/obj/structure/bed/hybrisa/hospitalbeds
-	icon_state = "hospital"
-
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed1
-	name = "hospital bed"
-	desc = "A mattress seated on a rectangular metallic frame with wheels. This is used to support a lying person in a comfortable manner."
-	icon_state = "bigrollerempty2_up"
-
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2
-	name = "hospital bed"
-	desc = "A mattress seated on a rectangular metallic frame with wheels. This is used to support a lying person in a comfortable manner."
-	icon_state = "bigrollerempty_up"
-
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed3
-	name = "hospital bed"
-	desc = "A mattress seated on a rectangular metallic frame with wheels. This is used to support a lying person in a comfortable manner."
-	icon_state = "bigrollerempty3_up"
-
 // Xenobiology
 
 /obj/structure/prop/hybrisa/xenobiology
@@ -1919,7 +1901,7 @@
 	icon_state = "seatedbench"
 	bound_width = 32
 	bound_height = 64
-	layer = 4
+	layer = BELOW_MOB_LAYER
 	density = FALSE
 	health = 200
 	anchored = TRUE
@@ -2037,7 +2019,6 @@
 	layer = 8
 /obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1
 	icon_state = "roadsign_1"
-
 /obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2
 	icon_state = "roadsign_2"
 
@@ -2065,7 +2046,6 @@
 	density = FALSE
 
 // Hybrisa Lattice
-
 /obj/structure/prop/hybrisa/lattice_prop
 	desc = "A support lattice."
 	name = "lattice"
@@ -2074,21 +2054,15 @@
 	density = FALSE
 	layer = RIPPLE_LAYER
 	health = 6000
-
 /obj/structure/prop/hybrisa/lattice_prop/lattice_1
 	icon_state = "lattice1"
-
 /obj/structure/prop/hybrisa/lattice_prop/lattice_2
 	icon_state = "lattice2"
-
 /obj/structure/prop/hybrisa/lattice_prop/lattice_3
 	icon_state = "lattice3"
-
 /obj/structure/prop/hybrisa/lattice_prop/lattice_4
 	icon_state = "lattice4"
-
 /obj/structure/prop/hybrisa/lattice_prop/lattice_5
 	icon_state = "lattice5"
-
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6
 	icon_state = "lattice6"

@@ -1,8 +1,25 @@
-## CM-SS13 codebase
+<p align="center">
+	<a href="#"><img src=".github/assets/logo.png" alt="CM-SS13" align="center"></a>
+</p>
+<hr />
 
-<a href="https://www.monkeyuser.com/assets/images/2019/131-bug-free.png"><img src="https://img.shields.io/badge/Built_with-Resentment-orange?style=for-the-badge&labelColor=%23D47439&color=%23C36436" width=260px></a> <a href="https://user-images.githubusercontent.com/8171642/50290880-ffef5500-043a-11e9-8270-a2e5b697c86c.png"><img src="https://img.shields.io/badge/Contains-Technical_Debt-blue?style=for-the-badge&color=5598D0&labelColor=62C1EE" width=280px></a> [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
+<p align="center">
+	<a href="https://github.com/cmss13-devs/cmss13/actions?query=workflow%3A%22CI+Suite%22"><img src="https://github.com/cmss13-devs/cmss13/workflows/CI%20Suite/badge.svg"></a>
+ 	<a href="https://github.com/cmss13-devs/cmss13/actions/workflows/generate_documentation.yml"><img src="https://github.com/cmss13-devs/cmss13/actions/workflows/generate_documentation.yml/badge.svg"></a>
+</p>
 
-[![Build Status](https://github.com/cmss13-devs/cmss13/workflows/CI%20Suite/badge.svg)](https://github.com/cmss13-devs/cmss13/actions?query=workflow%3A%22CI+Suite%22)
+<p align="center">
+	<a href="https://www.monkeyuser.com/assets/images/2019/131-bug-free.png"><img src="https://img.shields.io/badge/Built_with-Resentment-orange?style=for-the-badge&labelColor=%23D47439&color=%23C36436" width=260px></a>
+	<a href="https://user-images.githubusercontent.com/8171642/50290880-ffef5500-043a-11e9-8270-a2e5b697c86c.png"><img src="https://img.shields.io/badge/Contains-Technical_Debt-blue?style=for-the-badge&color=5598D0&labelColor=62C1EE" width=280px></a> 
+	<a href="https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a"><img src="https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif"></a>
+</p>
+
+
+> [!IMPORTANT]
+> CM-SS13 cannot be compiled exclusively using BYOND - **you must use our build tool**.<br>
+> Firstly, you need to install [BYOND](https://www.byond.com/download/), and run the `bin/server.cmd` file to start the server.<br>
+> You can learn more in our [Installation Guide](tools/build/README.md).
+
 * **Website:** https://forum.cm-ss13.com/
 * **Code:** https://github.com/cmss13-devs/cmss13
 * **Wiki:** https://cm-ss13.com/wiki/Main_Page

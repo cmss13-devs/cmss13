@@ -105,11 +105,11 @@
 /mob/living/simple_animal/rat/MouseDrop(atom/over_object)
 	if(!CAN_PICKUP(usr, src))
 		return ..()
-	var/mob/living/carbon/H = over_object
-	if(!istype(H) || !Adjacent(H) || H != usr) return ..()
+	var/mob/living/carbon/human = over_object
+	if(!istype(human) || !Adjacent(human) || human != usr) return ..()
 
-	if(H.a_intent == INTENT_HELP)
-		get_scooped(H)
+	if(human.a_intent == INTENT_HELP)
+		get_scooped(human)
 		return
 	return ..()
 

@@ -1749,7 +1749,7 @@
 	density = TRUE
 	health = 200
 	anchored = TRUE
-	layer = LATTICE_LAYER
+	layer = RIPPLE_LAYER
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble1
 	icon_state = "buildingventbig2"

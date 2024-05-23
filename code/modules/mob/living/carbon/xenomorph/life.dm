@@ -216,6 +216,7 @@
 
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
 			handle_interference()
+			handle_debuff_grade_period()
 
 	return TRUE
 
@@ -546,6 +547,11 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/GetDazeDuration(amount)
 	amount *= 2 / 3
 	return ..()
+
+/mob/living/carbon/xenomorph/proc/handle_debuff_grace_period()
+	if(debuff_grace_period)
+		debuff_grace_period = max(debuff_grace_period-2, 0)
+	return debuff_grace_period
 
 /mob/living/carbon/xenomorph/proc/handle_interference()
 	if(interference)

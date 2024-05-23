@@ -216,7 +216,7 @@
 
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
 			handle_interference()
-			handle_debuff_grade_period()
+			handle_debuff_grace_period()
 
 	return TRUE
 

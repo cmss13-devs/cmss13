@@ -748,7 +748,7 @@
 /mob/living/carbon/xenomorph/proc/throw_carbon_end(mob/living/carbon/target)
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 
-/mob/living/carbon/xenomorph/proc/clear_debuffs(grace_period = 6)
+/mob/living/carbon/xenomorph/proc/clear_debuffs(grace_period = 10)
 	var/debuffs = list(/datum/component/healing_reduction, /datum/component/toxic_buildup, /datum/component/speed_modifier)
 	//speed modifier can be a buff but using it as a buff is considered an exploit so whatever
 	for(var/datum/component/debuff as anything in debuffs)

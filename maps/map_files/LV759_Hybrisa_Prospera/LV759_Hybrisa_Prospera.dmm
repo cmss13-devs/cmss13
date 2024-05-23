@@ -114727,6 +114727,10 @@
 	opacity = 0
 	},
 /area/lv759/indoors/spaceport/starglider)
+"sDJ" = (
+/obj/effect/landmark/railgun_camera_pos,
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
 "sDP" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -9;
@@ -134453,11 +134457,6 @@
 "vPw" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/closet/walllocker,
-/obj/item/storage/backpack/marine/satchel/rto/small{
-	pixel_x = 7;
-	pixel_y = 19;
-	layer = 4
-	},
 /obj/item/device/encryptionkey/commando,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/gunner,
 /turf/open/floor/almayer{
@@ -147784,6 +147783,11 @@
 "xWl" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/bullet,
+/obj/item/storage/backpack/marine/satchel/rto/small{
+	pixel_x = 7;
+	pixel_y = 19;
+	layer = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -198033,7 +198037,7 @@ hts
 sxx
 srr
 hBM
-hBM
+sDJ
 msv
 vDk
 njy

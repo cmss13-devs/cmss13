@@ -1,8 +1,8 @@
 {
-	"map_name": "LV-759 Hybrisa Prospera",
+    "map_name": "LV-759 Hybrisa Prospera",
     "short_name": "Hybrisa",
-	"map_path": "map_files/LV759_Hybrisa_Prospera",
-	"map_file": "LV759_Hybrisa_Prospera.dmm",
+    "map_path": "map_files/LV759_Hybrisa_Prospera",
+    "map_file": "LV759_Hybrisa_Prospera.dmm",
     "webmap_url": "LV759",
 
     "weather_holder": "/datum/weather_ss_map_holder/lv759_hybrisa_prospera",

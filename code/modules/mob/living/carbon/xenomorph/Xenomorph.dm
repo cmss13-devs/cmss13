@@ -303,6 +303,9 @@
 
 	bubble_icon = "alien"
 
+	///super snowflake used for research warcrimes debuffs
+	var/debuff_grace_period = 0
+
 	/////////////////////////////////////////////////////////////////////
 	//
 	// Phero related vars

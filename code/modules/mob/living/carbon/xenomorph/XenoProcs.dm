@@ -747,3 +747,13 @@
 /// Handler callback to reset immobilization status after a successful [/mob/living/carbon/xenomorph/proc/throw_carbon]
 /mob/living/carbon/xenomorph/proc/throw_carbon_end(mob/living/carbon/target)
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
+
+/mob/living/carbon/xenomorph/proc/clear_debuffs(grave_period = 6)
+	var/debuffs = list(/datum/component/healing_reduction, /datum/component/toxic_buildup, /datum/component/speed_modifier)
+	//speed modifier can be a buff but using it as a buff is considered an exploit so whatever
+	for(var/datum/component/debuff as anything in debuffs)
+		var/datum/component/instance = GetComponent(debuff)
+		if(instance)
+			instance.RemoveComponent()
+	SetDaze(0) //from neurotoxic property
+	debuff_grace_period += grace_period

@@ -95,6 +95,11 @@
 	R.durationfire = BURN_TIME_INSTANT
 	new /obj/flamer_fire(T, cause_data, R, 0)
 
+/datum/ammo/flamethrower/sentry_flamer/wy
+	name = "sticky fire"
+	flamer_reagent_id = "stickynapalm"
+	shell_speed = AMMO_SPEED_TIER_4
+
 /datum/ammo/flare
 	name = "flare"
 	ping = null //no bounce off.

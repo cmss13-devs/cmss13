@@ -18,7 +18,7 @@
 	var/fire_delay = 4
 	var/immobile = FALSE //Used for prebuilt ones.
 	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
-	var/sentry_type = "sentry" //Used for the icon
+	var/sentry_type = "uac_sentry" //Used for the icon
 	display_additional_stats = TRUE
 	/// Light strength when turned on
 	var/luminosity_strength = 5
@@ -115,16 +115,16 @@
 
 	overlays.Cut()
 	if(stat == DEFENSE_DAMAGED)
-		overlays += "[defense_type] uac_[sentry_type]_destroyed"
+		overlays += "[defense_type] [sentry_type]_destroyed"
 		return
 
 	if(!ammo || ammo && !ammo.current_rounds)
-		overlays += "[defense_type] uac_[sentry_type]_noammo"
+		overlays += "[defense_type] [sentry_type]_noammo"
 		return
 	if(turned_on)
-		overlays += "[defense_type] uac_[sentry_type]_on"
+		overlays += "[defense_type] [sentry_type]_on"
 	else
-		overlays += "[defense_type] uac_[sentry_type]"
+		overlays += "[defense_type] [sentry_type]"
 
 
 /obj/structure/machinery/defenses/sentry/attack_hand_checks(mob/user)
@@ -722,6 +722,38 @@
 		new /obj/item/stack/sheet/metal/medium_stack(loc)
 		new /obj/item/stack/sheet/plasteel/medium_stack(loc)
 	return ..()
+
+/obj/structure/machinery/defenses/sentry/wy
+	name = "WY 202-GMA1 Smart Sentry"
+	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
+	sentry_type = "wy_sentry"
+	fire_delay = 2 SECONDS
+	health = 350
+	health_max = 350
+	damage_mult = 3.5
+	disassemble_time = 5 SECONDS
+	sentry_range = 6
+	omni_directional = TRUE
+	handheld_type = /obj/item/defenses/handheld/sentry/wy
+	ammo = new /obj/item/ammo_magazine/sentry/wy
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_WEYLAND,
+	)
+
+/obj/structure/machinery/defenses/sentry/mini/wy
+	name = "WY 14-GRA2 Mini Sentry"
+	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
+	sentry_type = "wy_sentry"
+	fire_delay = 0.08 SECONDS
+	health = 200
+	health_max = 200
+	damage_mult = 0.3
+	disassemble_time = 2 SECONDS
+	handheld_type = /obj/item/defenses/handheld/sentry/wy/mini
+	ammo = new /obj/item/ammo_magazine/sentry/wy/mini
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_WEYLAND,
+	)
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE

@@ -800,7 +800,7 @@
 	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
 
 	/// Project ARES interface log.
-	log_ares_bombardment(user.name, ob_name, "X[x_bomb], Y[y_bomb] in [get_area(T)]")
+	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb] in [get_area(T)]")
 
 	busy = FALSE
 	if(istype(T))
@@ -866,6 +866,9 @@
 
 /obj/structure/machinery/computer/overwatch/almayer/broken
 	name = "Broken Overwatch Console"
+
+/obj/structure/machinery/computer/overwatch/almayer/small
+	icon_state = "engineering_terminal"
 
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF

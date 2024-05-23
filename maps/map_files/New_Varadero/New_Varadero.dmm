@@ -1890,9 +1890,7 @@
 /area/varadero/interior/hall_N)
 "bhU" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -2319,7 +2317,7 @@
 	pixel_x = -5;
 	pixel_y = 1
 	},
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 2;
 	pixel_y = 16
 	},
@@ -2877,7 +2875,7 @@
 	},
 /area/varadero/interior/chapel)
 "bPL" = (
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 2;
 	pixel_y = 16
 	},
@@ -3631,7 +3629,7 @@
 	},
 /area/varadero/interior/hall_NW)
 "coc" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/tunnel/maint_tunnel,
 /turf/open/floor/shiva{
 	icon_state = "blue"
 	},
@@ -6438,7 +6436,7 @@
 	id = "north_research_tunnel"
 	},
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
+/area/varadero/interior_protected/caves/digsite)
 "emC" = (
 /obj/structure/surface/rack,
 /obj/item/tool/surgery/scalpel/pict_system,
@@ -7299,6 +7297,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "eMD" = (
+/obj/structure/tunnel/maint_tunnel,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "red"
@@ -10659,9 +10658,7 @@
 /area/varadero/interior/security)
 "gRU" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -13796,9 +13793,7 @@
 /area/varadero/interior/administration)
 "iWX" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/eastbeach)
@@ -18174,6 +18169,7 @@
 	},
 /area/varadero/interior/medical)
 "lLq" = (
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
@@ -19282,9 +19278,7 @@
 /area/varadero/interior/cargo)
 "mtp" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -19372,9 +19366,7 @@
 /area/varadero/interior/hall_SE)
 "mvO" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -19887,9 +19879,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -22001,7 +21991,7 @@
 /area/varadero/interior/hall_SE)
 "ohi" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/structure/machinery/flasher_button{
 	id = "sec_checkpoint";
 	pixel_y = 24
@@ -27273,6 +27263,7 @@
 /area/varadero/interior/caves/east)
 "rsh" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link,
 /turf/open/floor/shiva{
 	dir = 9;
 	icon_state = "wred"
@@ -28073,7 +28064,7 @@
 /area/varadero/interior/caves/east)
 "rTu" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/weapon/baton,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
@@ -33857,7 +33848,7 @@
 "vEa" = (
 /obj/structure/closet/crate/medical,
 /obj/item/tool/wirecutters/clippers,
-/obj/item/handcuffs/zip,
+/obj/item/restraint/handcuffs/zip,
 /obj/item/tool/surgery/surgicaldrill,
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/shiva{
@@ -35365,11 +35356,11 @@
 	},
 /area/varadero/interior/comms3)
 "wvI" = (
-/obj/structure/tunnel{
-	id = "north_research_tunnel"
+/obj/structure/tunnel/maint_tunnel,
+/turf/open/floor/shiva{
+	icon_state = "purple"
 	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/research)
 "wvK" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/landmark/objective_landmark/close,
@@ -39130,7 +39121,7 @@ oPQ
 xCn
 cBI
 xCn
-emt
+xCn
 ljt
 pGs
 pGs
@@ -41312,7 +41303,7 @@ wmg
 vSY
 izs
 oyi
-sDM
+wvI
 fay
 ebr
 ebr
@@ -52796,7 +52787,7 @@ cto
 iFb
 mCF
 jdm
-mCF
+mSa
 mCF
 mCF
 mCF
@@ -53514,7 +53505,7 @@ pKs
 chs
 chs
 kGq
-wvI
+ixr
 ixr
 ixr
 ixr
@@ -53556,7 +53547,7 @@ xxk
 xxk
 xEG
 cSa
-mCF
+mSa
 mCF
 mCF
 mCF
@@ -62122,7 +62113,7 @@ cty
 cty
 aOg
 mCF
-mSa
+mCF
 mCF
 pGs
 pGs
@@ -62990,7 +62981,7 @@ wXs
 xJZ
 ouy
 eyt
-wnE
+kbQ
 kbQ
 kbQ
 kbQ
@@ -64798,7 +64789,7 @@ eyt
 eyt
 jqw
 qfu
-kbQ
+wnE
 sgk
 kbQ
 kbQ
@@ -65929,7 +65920,7 @@ bsf
 bsf
 bsf
 bsf
-bsf
+emt
 bsf
 bsf
 pDX

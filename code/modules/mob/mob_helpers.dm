@@ -224,7 +224,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	if(strength < 1)
 		return phrase
 	else
-		strength = Ceiling(strength/5)
+		strength = ceil(strength/5)
 
 	var/list/split_phrase = text2list(phrase," ") //Split it up into words.
 	var/list/unstuttered_words = split_phrase.Copy()
@@ -331,7 +331,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	while(i < steps)
 		animate(pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step)
 		i++
-	animate(pixel_x = old_X, pixel_y = old_y,time = clamp(Floor(strength/PIXELS_PER_STRENGTH_VAL),2,4))//ease it back
+	animate(pixel_x = old_X, pixel_y = old_y,time = clamp(floor(strength/PIXELS_PER_STRENGTH_VAL),2,4))//ease it back
 
 #undef PIXELS_PER_STRENGTH_VAL
 
@@ -342,7 +342,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	return FALSE
 
 
-/mob/proc/abiotic(full_body = 0)
+/mob/proc/abiotic(full_body = FALSE)
 	if(full_body && ((src.l_hand && !( src.l_hand.flags_item & ITEM_ABSTRACT )) || (src.r_hand && !( src.r_hand.flags_item & ITEM_ABSTRACT )) || (src.back || src.wear_mask)))
 		return TRUE
 

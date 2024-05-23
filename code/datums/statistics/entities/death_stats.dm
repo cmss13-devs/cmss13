@@ -113,13 +113,13 @@
 		cause_mob.life_kills_total += life_value
 
 	if(getBruteLoss())
-		new_death.total_brute = round(getBruteLoss())
+		new_death.total_brute = floor(getBruteLoss())
 	if(getFireLoss())
-		new_death.total_burn = round(getFireLoss())
+		new_death.total_burn = floor(getFireLoss())
 	if(getOxyLoss())
-		new_death.total_oxy = round(getOxyLoss())
+		new_death.total_oxy = floor(getOxyLoss())
 	if(getToxLoss())
-		new_death.total_tox = round(getToxLoss())
+		new_death.total_tox = floor(getToxLoss())
 
 	new_death.time_of_death = world.time
 

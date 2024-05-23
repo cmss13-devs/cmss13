@@ -275,6 +275,8 @@
 
 /datum/ammo/rocket/custom
 	name = "custom rocket"
+	accurate_range = 8
+	max_range = 8
 
 /datum/ammo/rocket/custom/proc/prime(atom/atom, obj/projectile/projectile)
 	var/obj/item/weapon/gun/launcher/rocket/launcher = projectile.shot_from

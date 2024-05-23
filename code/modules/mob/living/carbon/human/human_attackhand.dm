@@ -209,7 +209,10 @@
 		if(client)
 			sleeping = max(0,src.sleeping-5)
 		if(!sleeping)
-			set_resting(FALSE)
+			if(is_dizzy)
+				to_chat(M, SPAN_WARNING("[src] looks dizzy. Maybe you should let [t_him] rest a bit longer."))
+			else
+				set_resting(FALSE)
 		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
 			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
 	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))

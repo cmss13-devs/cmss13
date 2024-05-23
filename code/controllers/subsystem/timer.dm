@@ -1,7 +1,7 @@
 /// Controls how many buckets should be kept, each representing a tick. (1 minutes worth)
 #define BUCKET_LEN (world.fps*1*60)
 /// Helper for getting the correct bucket for a given timer
-#define BUCKET_POS(timer) (((round((timer.timeToRun - timer.timer_subsystem.head_offset) / world.tick_lag)+1) % BUCKET_LEN)||BUCKET_LEN)
+#define BUCKET_POS(timer) (((floor((timer.timeToRun - timer.timer_subsystem.head_offset) / world.tick_lag)+1) % BUCKET_LEN)||BUCKET_LEN)
 /// Gets the maximum time at which timers will be invoked from buckets, used for deferring to secondary queue
 #define TIMER_MAX(timer_ss) (timer_ss.head_offset + TICKS2DS(BUCKET_LEN + timer_ss.practical_offset - 1))
 /// Max float with integer precision
@@ -411,7 +411,7 @@ SUBSYSTEM_DEF(timer)
 	if (flags & TIMER_STOPPABLE)
 		id = num2text(nextid, 100)
 		if (nextid >= SHORT_REAL_LIMIT)
-			nextid += min(1, 2 ** round(nextid / SHORT_REAL_LIMIT))
+			nextid += min(1, 2 ** floor(nextid / SHORT_REAL_LIMIT))
 		else
 			nextid++
 		timer_subsystem.timer_id_dict[id] = src
@@ -583,7 +583,7 @@ SUBSYSTEM_DEF(timer)
 			be supported and may refuse to run or run with a 0 wait")
 
 	if (flags & TIMER_CLIENT_TIME) // REALTIMEOFDAY has a resolution of 1 decisecond
-		wait = max(Ceiling(wait), 1) // so if we use tick_lag timers may be inserted in the "past"
+		wait = max(ceil(wait), 1) // so if we use tick_lag timers may be inserted in the "past"
 	else
 		wait = max(CEILING(wait, world.tick_lag), world.tick_lag)
 

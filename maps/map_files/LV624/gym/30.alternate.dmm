@@ -658,11 +658,8 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
 "Wy" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Fitness APC";
-	pixel_y = 30;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 4;

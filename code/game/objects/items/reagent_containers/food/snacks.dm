@@ -212,7 +212,7 @@
 			SPAN_NOTICE("[user] crudely slices \the [src] with [W]!"), \
 			SPAN_NOTICE("You crudely slice \the [src] with your [W]!") \
 		)
-		slices_lost = rand(1,max(1,round(slices_num/2)))
+		slices_lost = rand(1,max(1,floor(slices_num/2)))
 	var/reagents_per_slice = reagents.total_volume/slices_num
 	for(var/i=1 to (slices_num-slices_lost))
 		var/obj/slice = new slice_path (src.loc)
@@ -2743,6 +2743,10 @@
 	var/obj/item/reagent_container/food/snacks/sliceable/pizza/pizza // Content pizza
 	var/list/boxes = list() // If the boxes are stacked, they come here
 	var/boxtag = ""
+
+/obj/item/pizzabox/Destroy(force)
+	QDEL_NULL(pizza)
+	return ..()
 
 /obj/item/pizzabox/update_icon()
 

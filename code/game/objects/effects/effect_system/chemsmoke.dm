@@ -138,7 +138,7 @@
 								var/dist = cheap_pythag(T.x - location.x, T.y - location.y)
 								if(!dist)
 									dist = 1
-								R.reaction_mob(A, volume = R.volume / dist)
+								R.reaction_mob(A, volume = R.volume / dist, permeable = FALSE)
 							else if(istype(A, /obj))
 								R.reaction_obj(A, R.volume)
 					sleep(30)
@@ -166,7 +166,7 @@
 			continue
 
 		var/offset = 0
-		var/points = round((radius * 2 * PI) / arcLength)
+		var/points = floor((radius * 2 * PI) / arcLength)
 		var/angle = round(ToDegrees(arcLength / radius), 1)
 
 		if(!IsInteger(radius))

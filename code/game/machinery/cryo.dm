@@ -110,7 +110,7 @@
 		else
 			data["occupant"]["temperaturestatus"] = "bad"
 
-	data["cellTemperature"] = round(temperature)
+	data["cellTemperature"] = floor(temperature)
 
 	data["isBeakerLoaded"] = beaker ? TRUE : FALSE
 	var/beakerContents = list()
@@ -252,7 +252,7 @@
 
 		if(can_administer)
 			beaker.reagents.trans_to(occupant, 5)
-			beaker.reagents.reaction(occupant)
+			beaker.reagents.reaction(occupant, permeable_in_mobs = FALSE)
 
 	if(autoeject)
 		//release the patient automatically when brute and burn are handled on non-robotic limbs

@@ -1,23 +1,44 @@
 import { filter, sortBy } from 'common/collections';
-import { flow } from 'common/fp';
-import { capitalizeFirst, multiline } from 'common/string';
-import { useBackend, useLocalState } from 'tgui/backend';
-import { Box, Button, Collapsible, ColorBox, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
+import { capitalizeFirst } from 'common/string';
+import { useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import {
+  Button,
+  Collapsible,
+  ColorBox,
+  Icon,
+  Image,
+  Input,
+  LabeledList,
+  Section,
+  Stack,
+} from 'tgui/components';
 import { Window } from 'tgui/layouts';
-import { getDisplayName, isJobOrNameMatch, getHealthColor } from './helpers';
+
+import {
+  getDisplayName,
+  getHealthColor,
+  getMostRelevant,
+  isJobOrNameMatch,
+} from './helpers';
 import type { Observable, OrbitData } from './types';
 
 export const Orbit = (props) => {
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
   return (
     <Window title="Orbit" width={500} height={700}>
       <Window.Content scrollable>
         <Stack fill vertical>
           <Stack.Item>
-            <ObservableSearch />
+            <ObservableSearch
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
           </Stack.Item>
           <Stack.Item mt={0.2} grow>
             <Section fill>
-              <ObservableContent />
+              <ObservableContent searchQuery={searchQuery} />
             </Section>
           </Stack.Item>
         </Stack>
@@ -27,37 +48,28 @@ export const Orbit = (props) => {
 };
 
 /** Controls filtering out the list of observables via search */
-const ObservableSearch = (props) => {
+const ObservableSearch = (props: {
+  readonly searchQuery: string;
+  readonly setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   const { act, data } = useBackend<OrbitData>();
+  const { searchQuery, setSearchQuery } = props;
   const { humans = [], marines = [], survivors = [], xenos = [] } = data;
 
   let auto_observe = data.auto_observe;
 
-  const [autoObserve, setAutoObserve] = useLocalState<boolean>(
-    'autoObserve',
-    auto_observe ? true : false
-  );
-  const [searchQuery, setSearchQuery] = useLocalState<string>(
-    'searchQuery',
-    ''
-  );
-
   /** Gets a list of Observables, then filters the most relevant to orbit */
   const orbitMostRelevant = (searchQuery: string) => {
-    /** Returns the most orbited observable that matches the search. */
-    const mostRelevant: Observable = flow([
-      // Filters out anything that doesn't match search
-      filter<Observable>((observable) =>
-        isJobOrNameMatch(observable, searchQuery)
-      ),
-      // Sorts descending by orbiters
-      sortBy<Observable>((observable) => -(observable.orbiters || 0)),
-      // Makes a single Observables list for an easy search
-    ])([humans, marines, survivors, xenos].flat())[0];
+    const mostRelevant = getMostRelevant(searchQuery, [
+      humans,
+      marines,
+      survivors,
+      xenos,
+    ]);
+
     if (mostRelevant !== undefined) {
       act('orbit', {
         ref: mostRelevant.ref,
-        auto_observe: autoObserve,
       });
     }
   };
@@ -72,8 +84,8 @@ const ObservableSearch = (props) => {
           <Input
             autoFocus
             fluid
-            onEnter={(e, value) => orbitMostRelevant(value)}
-            onInput={(e) => setSearchQuery(e.target.value)}
+            onEnter={(event, value) => orbitMostRelevant(value)}
+            onInput={(event, value) => setSearchQuery(value)}
             placeholder="Search..."
             value={searchQuery}
           />
@@ -81,11 +93,10 @@ const ObservableSearch = (props) => {
         <Stack.Divider />
         <Stack.Item>
           <Button
-            color={autoObserve ? 'good' : 'transparent'}
-            icon={autoObserve ? 'toggle-on' : 'toggle-off'}
+            color={auto_observe ? 'good' : 'transparent'}
+            icon={auto_observe ? 'toggle-on' : 'toggle-off'}
             onClick={() => act('toggle_auto_observe')}
-            tooltip={multiline`Toggle Auto-Observe. When active, you'll
-            see the UI / full inventory of whoever you're orbiting. Neat!`}
+            tooltip={`Toggle Full Observe. When active, you'll see the UI / full inventory of whoever you're orbiting. Neat!`}
             tooltipPosition="bottom-start"
           />
         </Stack.Item>
@@ -108,8 +119,9 @@ const ObservableSearch = (props) => {
  * Renders a scrollable section replete with subsections for each
  * observable group.
  */
-const ObservableContent = (props) => {
+const ObservableContent = (props: { readonly searchQuery: string }) => {
   const { data } = useBackend<OrbitData>();
+  const { searchQuery } = props;
   const {
     humans = [],
     marines = [],
@@ -138,65 +150,138 @@ const ObservableContent = (props) => {
 
   return (
     <Stack vertical>
-      <ObservableSection color="blue" section={marines} title="Marines" />
-      <ObservableSection color="teal" section={humans} title="Humans" />
-      <ObservableSection color="xeno" section={xenos} title="Xenomorphs" />
-      <ObservableSection color="good" section={survivors} title="Survivors" />
       <ObservableSection
+        searchQuery={searchQuery}
+        color="blue"
+        section={marines}
+        title="Marines"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
+        color="teal"
+        section={humans}
+        title="Humans"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
+        color="xeno"
+        section={xenos}
+        title="Xenomorphs"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
+        color="good"
+        section={survivors}
+        title="Survivors"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
         color="average"
         section={ert_members}
         title="ERT Members"
       />
       <ObservableSection
+        searchQuery={searchQuery}
         color="light-grey"
         section={synthetics}
         title="Synthetics"
       />
       <ObservableSection
+        searchQuery={searchQuery}
         color="green"
         section={upp}
         title="Union of Progressive Peoples"
       />
       <ObservableSection
+        searchQuery={searchQuery}
         color="teal"
         section={clf}
         title="Colonial Liberation Front"
       />
-      <ObservableSection color="white" section={wy} title="Weyland Yutani" />
       <ObservableSection
+        searchQuery={searchQuery}
+        color="white"
+        section={wy}
+        title="Weyland Yutani"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
         color="red"
         section={twe}
         title="Royal Marines Commando"
       />
       <ObservableSection
+        searchQuery={searchQuery}
         color="orange"
         section={freelancer}
         title="Freelancers"
       />
       <ObservableSection
+        searchQuery={searchQuery}
         color="label"
         section={mercenary}
         title="Mercenaries"
       />
       <ObservableSection
+        searchQuery={searchQuery}
         color="light-grey"
         section={contractor}
         title="Military Contractors"
       />
-      <ObservableSection color="good" section={dutch} title="Dutchs Dozen" />
       <ObservableSection
+        searchQuery={searchQuery}
+        color="good"
+        section={dutch}
+        title="Dutchs Dozen"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
         color="dark-blue"
         section={marshal}
         title="Colonial Marshal Bureau"
       />
-      <ObservableSection color="green" section={predators} title="Predators" />
-      <ObservableSection color="olive" section={escaped} title="Escaped" />
-      <ObservableSection section={vehicles} title="Vehicles" />
-      <ObservableSection section={animals} title="Animals" />
-      <ObservableSection section={dead} title="Dead" />
-      <ObservableSection section={ghosts} title="Ghosts" />
-      <ObservableSection section={misc} title="Misc" />
-      <ObservableSection section={npcs} title="NPCs" />
+      <ObservableSection
+        searchQuery={searchQuery}
+        color="green"
+        section={predators}
+        title="Predators"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
+        color="olive"
+        section={escaped}
+        title="Escaped"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
+        section={vehicles}
+        title="Vehicles"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
+        section={animals}
+        title="Animals"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
+        section={dead}
+        title="Dead"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
+        section={ghosts}
+        title="Ghosts"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
+        section={misc}
+        title="Misc"
+      />
+      <ObservableSection
+        searchQuery={searchQuery}
+        section={npcs}
+        title="NPCs"
+      />
     </Stack>
   );
 };
@@ -209,22 +294,22 @@ const ObservableSection = (props: {
   readonly color?: string;
   readonly section: Array<Observable>;
   readonly title: string;
+  readonly searchQuery: string;
 }) => {
-  const { color, section = [], title } = props;
+  const { color, section = [], title, searchQuery } = props;
+
   if (!section.length) {
     return null;
   }
-  const [searchQuery] = useLocalState<string>('searchQuery', '');
-  const filteredSection: Array<Observable> = flow([
-    filter<Observable>((observable) =>
-      isJobOrNameMatch(observable, searchQuery)
-    ),
-    sortBy<Observable>((observable) =>
+
+  const filteredSection = sortBy(
+    filter(section, (observable) => isJobOrNameMatch(observable, searchQuery)),
+    (observable) =>
       getDisplayName(observable.full_name, observable.nickname)
         .replace(/^"/, '')
-        .toLowerCase()
-    ),
-  ])(section);
+        .toLowerCase(),
+  );
+
   if (!filteredSection.length) {
     return null;
   }
@@ -235,7 +320,8 @@ const ObservableSection = (props: {
         bold
         color={color ?? 'grey'}
         open={!!color}
-        title={title + ` - (${filteredSection.length})`}>
+        title={title + ` - (${filteredSection.length})`}
+      >
         {filteredSection.map((poi, index) => {
           return <ObservableItem color={color} item={poi} key={index} />;
         })}
@@ -254,28 +340,22 @@ const ObservableItem = (props: {
   const { health, icon, full_name, nickname, orbiters, ref, background_color } =
     item;
 
-  const [autoObserve] = useLocalState<boolean>('autoObserve', false);
-
   const displayHealth = typeof health === 'number';
 
   return (
     <Button
       color={'transparent'}
       style={{
-        'border-color': color ? '#2185d0' : 'grey',
-        'border-style': 'solid',
-        'border-width': '1px',
-        'color': color ? 'white' : 'grey',
+        borderColor: color ? '#2185d0' : 'grey',
+        borderStyle: 'solid',
+        borderWidth: '1px',
+        color: color ? 'white' : 'grey',
       }}
       onClick={() => act('orbit', { ref: ref })}
       tooltip={displayHealth && <ObservableTooltip item={item} />}
-      tooltipPosition="bottom-start">
-      {displayHealth && (
-        <ColorBox
-          color={getHealthColor(health)}
-          style={{ 'margin-right': '0.5em' }}
-        />
-      )}
+      tooltipPosition="bottom-start"
+    >
+      {displayHealth && <ColorBox color={getHealthColor(health)} mr="0.5em" />}
       {capitalizeFirst(getDisplayName(full_name, nickname))}
       {!!orbiters && (
         <>
@@ -338,15 +418,14 @@ const ObservableIcon = (props: {
   }
 
   return (
-    <Box
-      as="img"
+    <Image
       mr={1.3}
       src={`data:image/jpeg;base64,${icons[icon]}`}
+      fixBlur
+      verticalAlign="middle"
+      backgroundColor={background_color ? background_color : undefined}
       style={{
         transform: 'scale(2) translatey(-1px)',
-        '-ms-interpolation-mode': 'nearest-neighbor',
-        'backgroundColor': background_color ? background_color : null,
-        'verticalAlign': 'middle',
       }}
     />
   );

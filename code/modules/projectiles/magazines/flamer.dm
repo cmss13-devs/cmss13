@@ -90,7 +90,7 @@
 		to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
 		return
 
-	if(!to_add.intensityfire)
+	if(!to_add.intensityfire && to_add.id != "stablefoam" && !istype(src, /obj/item/ammo_magazine/flamer_tank/smoke))
 		to_chat(user, SPAN_WARNING("This chemical is not potent enough to be used in a flamethrower!"))
 		return
 
@@ -236,3 +236,9 @@
 	max_intensity = 60
 	max_range = 8
 	max_duration = 50
+
+/obj/item/ammo_magazine/flamer_tank/smoke
+	name = "Custom incinerator smoke tank"
+	desc = "A tank holding powdered smoke that expands when exposed to an open flame and carries any chemicals along with it."
+	matter = list("metal" = 3750)
+	flamer_chem = null

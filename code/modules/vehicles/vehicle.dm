@@ -159,10 +159,11 @@
 
 	// Checked here because we want to be able to null the mob in a seat
 	if(!istype(M))
-		return
+		return FALSE
 
 	M.forceMove(src)
 	M.set_interaction(src)
+	return TRUE
 
 /obj/vehicle/proc/turn_on()
 	if(stat)

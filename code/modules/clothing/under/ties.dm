@@ -676,6 +676,25 @@
 /obj/item/clothing/accessory/storage/surg_vest/drop_green/equipped
 	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
 
+/obj/item/clothing/accessory/storage/surg_vest/drop_green/upp
+	hold = /obj/item/storage/internal/accessory/surg_vest/drop_green/upp
+
+/obj/item/storage/internal/accessory/surg_vest/drop_green/upp/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
+	new /obj/item/tool/surgery/cautery(src)
+	new /obj/item/tool/surgery/circular_saw(src)
+	new /obj/item/tool/surgery/surgicaldrill(src)
+	new /obj/item/tool/surgery/scalpel/pict_system(src)
+	new /obj/item/tool/surgery/bonesetter(src)
+	new /obj/item/tool/surgery/FixOVein(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/tool/surgery/bonegel(src)
+	new /obj/item/tool/surgery/bonegel(src)
+	new /obj/item/reagent_container/blood/OMinus(src)
+
 /obj/item/clothing/accessory/storage/surg_vest/drop_black
 	name = "black surgical drop pouch"
 	desc = "A tactical black synthcotton drop pouch purpose-made for holding surgical tools."

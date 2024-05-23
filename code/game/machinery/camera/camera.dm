@@ -312,8 +312,8 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 	. = ..()
 	if(!camera_item)
 		return INITIALIZE_HINT_QDEL
-	c_tag = camera_item.get_broadcast_name()
 	linked_broadcasting = camera_item
+	c_tag = linked_broadcasting.get_broadcast_name()
 
 /obj/structure/machinery/camera/mortar
 	alpha = 0

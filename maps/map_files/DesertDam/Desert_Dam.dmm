@@ -18539,7 +18539,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bfk" = (
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/weapon/baton,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/interior/wood/alt,
@@ -26207,7 +26207,7 @@
 /area/desert_dam/exterior/valley/valley_mining)
 "bFf" = (
 /obj/structure/surface/table,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkred2"
@@ -37633,7 +37633,7 @@
 /area/desert_dam/building/warehouse/breakroom)
 "cqj" = (
 /obj/structure/surface/table,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/prison{
 	icon_state = "darkred2"
 	},
@@ -64959,6 +64959,14 @@
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_one)
+"uIC" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link/green,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull"
+	},
+/area/desert_dam/building/medical/treatment_room)
 "uKo" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 4
@@ -102788,7 +102796,7 @@ cvU
 cvU
 cCn
 ctW
-cEy
+uIC
 cEB
 cGg
 cHc

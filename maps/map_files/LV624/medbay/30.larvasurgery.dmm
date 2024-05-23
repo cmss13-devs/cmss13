@@ -363,14 +363,11 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "qP" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Medbay APC";
-	pixel_y = 30;
-	start_charge = 0
-	},
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
+	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteblue"

@@ -385,7 +385,7 @@
 	. = ..()
 	var/pills_amount = contents.len
 	if(pills_amount)
-		var/percentage_filled = round(pills_amount/max_storage_space * 100)
+		var/percentage_filled = floor(pills_amount/max_storage_space * 100)
 		switch(percentage_filled)
 			if(80 to 101)
 				. += SPAN_INFO("The [name] seems fairly full.")
@@ -509,6 +509,34 @@
 
 /obj/item/storage/pill_bottle/proc/error_idlock(mob/user)
 	to_chat(user, SPAN_WARNING("It must have some kind of ID lock..."))
+
+/obj/item/storage/pill_bottle/proc/choose_color(mob/user)
+	if(!user)
+		user = usr
+	var/static/list/possible_colors = list(
+		"Orange" = "",
+		"Blue" = "1",
+		"Yellow" = "2",
+		"Light Purple" = "3",
+		"Light Grey" = "4",
+		"White" = "5",
+		"Light Green" = "6",
+		"Cyan" = "7",
+		"Bordeaux" = "8",
+		"Aquamarine" = "9",
+		"Grey" = "10",
+		"Red" = "11",
+		"Black" = "12",
+	)
+	var/selected_color = tgui_input_list(user, "Select a color.", "Color choice", possible_colors)
+	if(!selected_color)
+		return
+
+	selected_color = possible_colors[selected_color]
+
+	icon_state = "pill_canister" + selected_color
+	to_chat(user, SPAN_NOTICE("You color [src]."))
+	update_icon()
 
 /obj/item/storage/pill_bottle/verb/set_maptext()
 	set category = "Object"

@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - admin: "Fixed the adjust_predator_round verb"

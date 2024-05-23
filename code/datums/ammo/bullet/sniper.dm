@@ -111,8 +111,6 @@
 /datum/ammo/bullet/sniper/anti_materiel/proc/stopping_power_knockback(mob/living/living_mob, obj/projectile/fired_projectile)
 	var/stopping_power = min(CEILING((fired_projectile.damage/30), 1), 5) // This is from bullet damage, and does not take Aimed Shot into account.
 
-	. = stopping_power
-
 	if(!living_mob || living_mob == fired_projectile.firer)
 		return stopping_power
 

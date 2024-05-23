@@ -26257,6 +26257,9 @@
 /area/lv759/indoors/wy_research_complex/southeastexit)
 "eob" = (
 /obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
@@ -36924,12 +36927,14 @@
 /obj/structure/machinery/vending/coffee{
 	density = 0;
 	pixel_x = 11;
-	pixel_y = 16
+	pixel_y = 16;
+	layer = 4
 	},
 /obj/structure/reagent_dispensers/water_cooler{
 	density = 0;
 	pixel_x = -8;
-	pixel_y = 16
+	pixel_y = 16;
+	layer = 4
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/lv759/indoors/weyyu_office)
@@ -57510,11 +57515,11 @@
 /obj/item/trash/cigbutt,
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/prop/hybrisa/misc/phonebox/broken{
-	pixel_x = 12
-	},
 /obj/effect/hybrisa/decal/bloodtrail{
 	pixel_x = 5
+	},
+/obj/structure/prop/hybrisa/misc/phonebox/bloody{
+	pixel_x = 8
 	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/east_central_street)
@@ -62194,6 +62199,13 @@
 	dir = 4
 	},
 /area/lv759/outdoors/colony_streets/south_east_street)
+"khX" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office)
 "kib" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/rifle/mar40/carbine,
@@ -82653,6 +82665,7 @@
 /area/lv759/indoors/weyyu_office/floor)
 "nyf" = (
 /obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/weyyu_office/vip)
 "nyg" = (
@@ -96551,7 +96564,8 @@
 /obj/structure/filingcabinet/chestdrawer{
 	density = 0;
 	pixel_x = -6;
-	pixel_y = 18
+	pixel_y = 18;
+	layer = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/hybrisa/decal/trash{
@@ -102078,7 +102092,8 @@
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
 	pixel_y = 24;
-	pixel_x = -20
+	pixel_x = -20;
+	layer = 4
 	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv759/indoors/weyyu_office/vip)
@@ -103652,8 +103667,8 @@
 "qQj" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/cigbutt,
-/obj/structure/prop/hybrisa/misc/phonebox/broken{
-	pixel_x = 5
+/obj/structure/prop/hybrisa/misc/phonebox{
+	pixel_x = 4
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -103966,7 +103981,7 @@
 /obj/structure/flora/pottedplant{
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
-	layer = 3.1;
+	layer = 4;
 	name = "synthethic potted plant";
 	pixel_y = 14
 	},
@@ -114603,7 +114618,8 @@
 /obj/effect/hybrisa/decal/road/lines5,
 /obj/structure/closet/crate/freezer/cooler{
 	pixel_x = 15;
-	pixel_y = 15
+	pixel_y = 15;
+	layer = 4
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -145174,6 +145190,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "xzV" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/shard,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "xzX" = (
@@ -170257,7 +170274,7 @@ qCN
 puV
 tMU
 tOx
-rzH
+gRZ
 pck
 hEi
 hEi
@@ -170509,7 +170526,7 @@ cAP
 bJn
 fOn
 klB
-rzH
+gRZ
 fZU
 efk
 efk
@@ -170757,7 +170774,7 @@ gPX
 rzH
 pZw
 pZw
-rzH
+khX
 eob
 pZw
 pZw

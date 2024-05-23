@@ -78,10 +78,6 @@
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	icon_state = "SUV_damaged"
 
-/obj/structure/prop/hybrisa/vehicles/largetruck
-	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
-	icon_state = "hybrisalongtruck3"
-
 /obj/structure/prop/hybrisa/vehicles/Car
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	icon_state = "MeridianCar_1"
@@ -349,57 +345,6 @@
 	name = "mining supply truck"
 	icon_state = "truck_mining"
 	desc = "Seems to be broken down."
-
-// large trucks
-
-/obj/structure/prop/hybrisa/vehicles/largetruck
-	name = "mega-hauler truck"
-	icon_state = "hybrisalongtruck4"
-	desc = "Seems to be broken down."
-	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
-	bound_height = 64
-	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
-	density = TRUE
-
-/obj/structure/prop/hybrisa/vehicles/largetruck/largetruck1
-	icon_state = "hybrisalongtruck2"
-
-/obj/structure/prop/hybrisa/vehicles/largetruck/largetruck2
-	icon_state = "hybrisalongtruck3"
-
-/obj/structure/prop/hybrisa/vehicles/largetruck/largetruck3
-	icon_state = "hybrisalongtruck4"
-
-/obj/structure/prop/hybrisa/vehicles/largetruck/largetruck4
-	icon_state = "hybrisalongtruck5"
-
-// mining truck
-
-/obj/structure/prop/hybrisa/vehicles/largetruck/largetruckmining
-	icon_state = "hybrisalongtruckkellandmining1"
-
-/obj/structure/prop/hybrisa/vehicles/largetruck/largetruckmining
-	name = "Kelland mining mega-hauler truck"
-
-/obj/structure/prop/hybrisa/vehicles/largetruck/largetruckmining/mining
-	icon_state = "hybrisalongtruckkellandmining1"
-
-
-// w-y truck
-
-/obj/structure/prop/hybrisa/vehicles/largetruck/largetruckwy
-	icon_state = "hybrisalongtruckweyland1"
-
-/obj/structure/prop/hybrisa/vehicles/largetruck/largetruckwy
-	name = "Weyland-Yutani mega-hauler truck"
-
-/obj/structure/prop/hybrisa/vehicles/largetruck/largetruckwy/wy1
-	icon_state = "hybrisalongtruckweyland1"
-
-/obj/structure/prop/hybrisa/vehicles/largetruck/largetruckwy/wy2
-	icon_state = "hybrisalongtruckweyland2"
 
 // Colony Crawlers
 
@@ -1584,7 +1529,7 @@
 	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blackwyleft"
 	bound_height = 32
-	bound_width = 64
+	bound_width = 32
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/cargo_container/hybrisa/containersextended/blueleft
@@ -1863,27 +1808,6 @@
 	icon_state = "firehydrant"
 	density = TRUE
 	anchored = TRUE
-
-// Phonebox Prop (Doesn't actually work a locker)
-/obj/structure/prop/hybrisa/misc/phonebox
-	name = "phonebox"
-	desc = "A phone-box, it doesn't seem to be working, the line must be down."
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
-	icon_state = "phonebox_closed"
-	layer = ABOVE_MOB_LAYER
-	bound_width = 32
-	bound_height = 32
-	density = TRUE
-	anchored = TRUE
-
-/obj/structure/prop/hybrisa/misc/phonebox/broken
-	desc = "A phone-box, it doesn't seem to be working, the line must be down. The glass has been broken."
-	icon_state = "phonebox_closed_broken"
-
-/obj/structure/prop/hybrisa/misc/phonebox/lightup
-	desc = "A phone-box, it doesn't seem to be working, the line must be down."
-	icon_state = "phonebox_closed_light"
-
 /obj/structure/prop/hybrisa/misc/bench
 	name = "bench"
 	desc = "A metal frame, with seats that are fitted with synthetic leather, they've faded in time."
@@ -1895,6 +1819,22 @@
 	density = FALSE
 	health = 200
 	anchored = TRUE
+
+// Phonebox Prop (Doesn't actually work a locker)
+/obj/structure/prop/hybrisa/misc/phonebox
+	name = "wrecked phonebox"
+	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, the glass is smashed, hiding inside would be pointless."
+	icon = 'icons/obj/structures/props/phonebox.dmi'
+	icon_state = "phonebox_off_broken"
+	layer = ABOVE_MOB_LAYER
+	bound_width = 32
+	bound_height = 32
+	density = TRUE
+	anchored = TRUE
+/obj/structure/prop/hybrisa/misc/phonebox/bloody
+	name = "wrecked phonebox"
+	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, covered in blood and the glass is smashed. Hiding inside would be pointless."
+	icon_state = "phonebox_bloody_off_broken"
 
 // Signs
 

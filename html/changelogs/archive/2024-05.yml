@@ -269,3 +269,6 @@
       single bullet.
   - bugfix: Light attachments will no longer automatically turn on when the weapon
       is equipped from suit storage
+2024-05-23:
+  Drathek:
+  - ui: TGSay is now opened the same way it used to for more responsiveness

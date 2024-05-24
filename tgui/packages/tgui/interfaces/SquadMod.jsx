@@ -19,7 +19,8 @@ export const SquadMod = (props) => {
                 act(authenticated ? 'logout' : 'authenticate');
               }}
             />
-          }>
+          }
+        >
           <Button
             fluid
             icon="eject"

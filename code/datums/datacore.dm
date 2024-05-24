@@ -33,7 +33,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		departments += marines_by_squad
 		var/list/manifest_out = list()
 		for(var/record in GLOB.data_core.general)
-			var/datum/data/record/record_entry =  GLOB.data_core.general[general] // I regret using associated lists for this.
+			var/datum/data/record/record_entry =  GLOB.data_core.general[record] // I regret using associated lists for this.
 			if(record_entry.fields[MOB_REAL_FACTION] != FACTION_MARINE) //we process only USCM humans
 				continue
 			var/name = record_entry.fields[MOB_NAME]

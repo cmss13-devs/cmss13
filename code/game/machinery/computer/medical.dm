@@ -177,7 +177,7 @@
 	med_report.info += contents
 	med_report.update_icon()
 
-	visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
+	visible_message(SPAN_NOTICE("[src] prints out a paper."))
 	return TRUE
 
 /obj/structure/machinery/computer/double_id/med_data/ui_static_data(mob/user)

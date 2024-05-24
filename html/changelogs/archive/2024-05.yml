@@ -272,3 +272,10 @@
 2024-05-23:
   Drathek:
   - ui: TGSay is now opened the same way it used to for more responsiveness
+2024-05-24:
+  Drathek:
+  - bugfix: Fixed some winset errors with some nanoui windows
+  - admin: Fixed the adjust_predator_round verb
+  TheGamerdk:
+  - rscadd: Adds a sensor tower to the far East of Shivas, between Med-Sec and the
+      Research labs

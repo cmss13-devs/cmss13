@@ -37,7 +37,7 @@
 /datum/chem_property/special/hypergenetic/reaction_mob(mob/M, method=TOUCH, volume, potency)
 	if(!isxeno_human(M))
 		return
-	M.AddComponent(/datum/component/healing_reduction, -potency * volume * POTENCY_MULTIPLIER_LOW) //reduces heal reduction if present
+	M.AddComponent(/datum/component/status_effect/healing_reduction, -potency * volume * POTENCY_MULTIPLIER_LOW) //reduces heal reduction if present
 	if(ishuman(M)) //heals on contact with humans/xenos
 		var/mob/living/carbon/human/H = M
 		H.heal_limb_damage(potency * volume * POTENCY_MULTIPLIER_LOW)

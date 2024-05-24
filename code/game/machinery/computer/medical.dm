@@ -146,7 +146,7 @@
 			return TRUE
 
 /obj/structure/machinery/computer/double_id/med_data/proc/print_paper()
-	playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
+	playsound(loc, 'sound/machines/fax.ogg', 15, 1)
 	var/contents = {"<center><h4>Medical Report</h4></center>
 								<u>Prepared By:</u> [user_id_card?.registered_name ? user_id_card.registered_name : "Unknown"]<br>
 								<u>For:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>

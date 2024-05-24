@@ -748,12 +748,13 @@
 /mob/living/carbon/xenomorph/proc/throw_carbon_end(mob/living/carbon/target)
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 
+/// snowflake proc to clear effects from research warcrimes
 /mob/living/carbon/xenomorph/proc/clear_debuffs(grace_period = 10)
-	var/debuffs = list(/datum/component/healing_reduction, /datum/component/toxic_buildup, /datum/component/speed_modifier)
-	//speed modifier can be a buff but using it as a buff is considered an exploit so whatever
-	for(var/datum/component/debuff as anything in debuffs)
-		var/datum/component/instance = GetComponent(debuff)
+	var/debuffs = list(/datum/component/status_effect/healing_reduction, /datum/component/status_effect/toxic_buildup, /datum/component/status_effect/speed_modifier)
+	for(var/datum/component/status_effect/debuff as anything in debuffs)
+		var/datum/component/status_effect/instance = GetComponent(debuff)
 		if(instance)
-			instance.RemoveComponent()
-	SetDaze(0) //from neurotoxic property
-	debuff_grace_period += grace_period
+			instance.cleanse()
+	if(interference)
+		interference = 0
+		interference_grace_period = 20

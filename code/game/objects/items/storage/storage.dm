@@ -556,6 +556,24 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	update_icon()
 	W.mouse_opacity = initial(W.mouse_opacity)
 
+//Handle clean removal from storage when item is used up (vs dropped)
+/obj/item/storage/proc/item_used(obj/item/W as obj)
+	for(var/mob/M in can_see_content())
+		if(M.client)
+			M.client.remove_from_screen(W)
+
+	W.moveToNullspace()
+
+	orient2hud()
+	for(var/mob/M in can_see_content())
+		show_to(M)
+	if(W.maptext && (storage_flags & STORAGE_CONTENT_NUM_DISPLAY))
+		W.maptext = ""
+	W.on_exit_storage(src)
+	update_icon()
+	W.mouse_opacity = initial(W.mouse_opacity)
+
+
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()

@@ -239,3 +239,12 @@ const CrimeStat = (props) => {
     </Section>
   );
 };
+
+// Constants
+const crimeStatusOptions = ['Arrest', 'None', 'Incarcerated'];
+
+const colors = {
+  Arrest: 'red',
+  None: 'blue',
+  Incarcerated: 'orange',
+};

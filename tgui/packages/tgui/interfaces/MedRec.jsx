@@ -1,6 +1,16 @@
 import { Fragment, useState } from 'react';
 import { useBackend } from '../backend';
-import { Box, Button, Stack, Input, Dropdown, Section, Tabs, Flex, Icon } from '../components';
+import {
+  Box,
+  Button,
+  Stack,
+  Input,
+  Dropdown,
+  Section,
+  Tabs,
+  Flex,
+  Icon,
+} from '../components';
 import { Window } from '../layouts';
 
 export const MedRec = (props) => {
@@ -12,12 +22,14 @@ export const MedRec = (props) => {
           <Tabs fluid={1}>
             <Tabs.Tab
               selected={selectedTab === 1}
-              onClick={() => setSelectedTab(1)}>
+              onClick={() => setSelectedTab(1)}
+            >
               Health Status
             </Tabs.Tab>
             <Tabs.Tab
               selected={selectedTab === 2}
-              onClick={() => setSelectedTab(2)}>
+              onClick={() => setSelectedTab(2)}
+            >
               Medical Record
             </Tabs.Tab>
           </Tabs>
@@ -47,12 +59,14 @@ const MedicalRecord = (props) => {
           <Tabs>
             <Tabs.Tab
               selected={selectedTab === 1}
-              onClick={() => setSelectedTab(1)}>
+              onClick={() => setSelectedTab(1)}
+            >
               Medical Notes
             </Tabs.Tab>
             <Tabs.Tab
               selected={selectedTab === 2}
-              onClick={() => setSelectedTab(2)}>
+              onClick={() => setSelectedTab(2)}
+            >
               Autopsy Report
             </Tabs.Tab>
           </Tabs>
@@ -200,7 +214,8 @@ const HealthStatus = (props) => {
               act(authenticated ? 'logout' : 'authenticate');
             }}
           />
-        }>
+        }
+      >
         <Button
           fluid
           icon="eject"
@@ -262,7 +277,7 @@ const deathOptions = [
 ];
 
 const colors = {
-  'Deceased': 'red',
-  'Active': 'blue',
-  'Unfit': 'yellow',
+  Deceased: 'red',
+  Active: 'blue',
+  Unfit: 'yellow',
 };

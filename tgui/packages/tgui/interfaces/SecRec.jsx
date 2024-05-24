@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import { useBackend } from '../backend';
-import { Box, Button, Section, Tabs, Flex, Icon, Stack, Dropdown, Input } from '../components';
+import {
+  Box,
+  Button,
+  Section,
+  Tabs,
+  Flex,
+  Icon,
+  Stack,
+  Dropdown,
+  Input,
+} from '../components';
 import { Window } from '../layouts';
 
 export const SecRec = (props) => {
@@ -16,19 +26,22 @@ export const SecRec = (props) => {
           <Tabs fluid={1}>
             <Tabs.Tab
               selected={selectedTab === 1}
-              onClick={() => setSelectedTab(1)}>
+              onClick={() => setSelectedTab(1)}
+            >
               Crew Manifest
             </Tabs.Tab>
             {!!authenticated && !!selected_target_name && (
               <>
                 <Tabs.Tab
                   selected={selectedTab === 2}
-                  onClick={() => setSelectedTab(2)}>
+                  onClick={() => setSelectedTab(2)}
+                >
                   Criminal Status
                 </Tabs.Tab>
                 <Tabs.Tab
                   selected={selectedTab === 3}
-                  onClick={() => setSelectedTab(3)}>
+                  onClick={() => setSelectedTab(3)}
+                >
                   Criminal History
                 </Tabs.Tab>
               </>
@@ -63,12 +76,14 @@ const CrimeHist = (props) => {
         <Tabs>
           <Tabs.Tab
             selected={selectedTab === 1}
-            onClick={() => setSelectedTab(1)}>
+            onClick={() => setSelectedTab(1)}
+          >
             General Notes
           </Tabs.Tab>
           <Tabs.Tab
             selected={selectedTab === 2}
-            onClick={() => setSelectedTab(2)}>
+            onClick={() => setSelectedTab(2)}
+          >
             Incident Report
           </Tabs.Tab>
         </Tabs>
@@ -160,7 +175,8 @@ const CrewManifest = ({ searchQuery, setSearchQuery }) => {
                 justify={'space-between'}
                 fluid={1}
                 py={2}
-                px={5}>
+                px={5}
+              >
                 <Stack.Item>{record}</Stack.Item>
                 <Stack.Item>
                   <Button
@@ -222,13 +238,4 @@ const CrimeStat = (props) => {
       </Box>
     </Section>
   );
-};
-
-// Constants
-const crimeStatusOptions = ['Arrest', 'None', 'Incarcerated'];
-
-const colors = {
-  Arrest: 'red',
-  None: 'blue',
-  Incarcerated: 'orange',
 };

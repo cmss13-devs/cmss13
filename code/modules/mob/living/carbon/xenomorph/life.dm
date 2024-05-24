@@ -551,6 +551,9 @@ Make sure their actual health updates immediately.*/
 	if(interference)
 		interference = max(interference-2, 0)
 
+	if(interference_grace_period)
+		interference_grace_period = max(interference_grace_period - 2, 0)
+
 	if(observed_xeno && observed_xeno.interference)
 		overwatch(observed_xeno,TRUE)
 

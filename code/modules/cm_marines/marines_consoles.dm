@@ -73,7 +73,7 @@
 		if(operable()) // Powered. Console can response.
 			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
 		else
-			to_chat(usr, "You remove \the [user_id_card] from \the [src].")
+			to_chat(usr, "You remove [user_id_card] from [src].")
 		authenticated = FALSE // No card - no access
 		user_id_card = null
 
@@ -86,7 +86,7 @@
 			target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
 			visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
 		else
-			to_chat(usr, "You remove \the [target_id_card] from \the [src].")
+			to_chat(usr, "You remove [target_id_card] from [src].")
 		target_id_card = null
 
 	else
@@ -651,7 +651,7 @@
 	if(!user_id_card || !target_id_card || person_to_modify || user.name == user_id_card.registered_name)
 		return
 
-	user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s hand is scanned to \the [name]."))
+	user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s hand is scanned to [name]."))
 	visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: Scanned, please stay close until operation's end.\"")
 	playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 	person_to_modify = user

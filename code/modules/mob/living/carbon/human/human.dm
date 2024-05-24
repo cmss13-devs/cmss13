@@ -19,7 +19,7 @@
 	prev_gender = gender // Debug for plural genders
 
 	if(SSticker?.mode?.hardcore)
-		hardcore = TRUE //For WO disposing of corpsess
+		hardcore = TRUE //For WO disposing of corpses
 
 /mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

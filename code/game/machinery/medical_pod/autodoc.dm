@@ -286,8 +286,8 @@
 	var/human_ref = WEAKREF(H)
 	N = retrieve_record(record_id_ref = H.record_id_ref, mob_ref = human_ref, record_type = RECORD_TYPE_MEDICAL)
 	if(isnull(N))
-		visible_message("\The [src] buzzes: No records found for occupant.")
-		src.go_out() //kick them out too.
+		visible_message("[src] buzzes: No records found for occupant.")
+		go_out() //kick them out too.
 		return
 
 	var/list/surgery_todo_list = N.fields["autodoc_manual"]

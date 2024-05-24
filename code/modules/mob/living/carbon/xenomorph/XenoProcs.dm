@@ -758,3 +758,5 @@
 	if(interference)
 		interference = 0
 		interference_grace_period = grace_period
+	if(HAS_TRAIT(src, TRAIT_DAZED))
+		SetDaze(0)

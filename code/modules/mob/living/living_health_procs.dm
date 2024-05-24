@@ -526,7 +526,7 @@
 	jitteriness = 0
 	dizziness = 0
 	stamina.apply_damage(-stamina.max_stamina)
-	
+
 	// restore all of a human's blood
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
@@ -536,6 +536,10 @@
 		H.undefibbable = FALSE
 		H.chestburst = 0
 		H.update_headshot_overlay() //They don't have their brains blown out anymore, if they did.
+
+	if(isxeno(src))
+		var/mob/living/carbon/xenomorph/xeno = src
+		xeno.clear_debuffs()
 
 	// fix all of our organs
 	restore_all_organs()

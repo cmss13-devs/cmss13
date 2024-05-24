@@ -749,7 +749,7 @@
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 
 /// snowflake proc to clear effects from research warcrimes
-/mob/living/carbon/xenomorph/proc/clear_debuffs(grace_period = 20)
+/mob/living/carbon/xenomorph/proc/clear_debuffs()
 	var/debuffs = list(/datum/component/status_effect/healing_reduction, /datum/component/status_effect/toxic_buildup, /datum/component/status_effect/speed_modifier)
 	for(var/datum/component/status_effect/debuff as anything in debuffs)
 		var/datum/component/status_effect/instance = GetComponent(debuff)
@@ -757,6 +757,6 @@
 			instance.cleanse()
 	if(interference)
 		interference = 0
-		interference_grace_period = grace_period
+		interference_grace_period = 20
 	if(HAS_TRAIT(src, TRAIT_DAZED))
 		SetDaze(0)

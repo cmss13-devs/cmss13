@@ -619,6 +619,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)
 			perpref = I.registered_ref
+	else
+		perpref = WEAKREF(usr)
 
 	if(!GLOB.data_core)
 		return
@@ -635,9 +637,6 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 			holder.icon_state = "hudsec_prisoner"
 			criminal = TRUE
 			return
-		if(MOB_STAT_CRIME_NONE)
-			holder.icon_state = null
-			criminal = FALSE
 
 //Squad HUD
 

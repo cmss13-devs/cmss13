@@ -260,6 +260,11 @@
 				visible_message("[SPAN_BOLD("[src]")] states, \"DATACORE FAILURE: Unable to update relevant database logs.\"")
 				return
 			retrieve_target_record(target_mob)
+			if(params["stat"] == MOB_CRIMINAL_STATUS)
+				for(var/mob/living/carbon/human/human as anything in GLOB.human_mob_list)
+					if(human.name == target_mob)
+						human.sec_hud_set_security_status()
+						return TRUE
 			return TRUE
 
 /obj/structure/machinery/computer/secure_data/ui_static_data(mob/user)

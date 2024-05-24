@@ -74,7 +74,7 @@
 		if(operable())
 			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
 		else
-			to_chat(usr, "You remove \the [user_id_card] from \the [src].")
+			to_chat(usr, "You remove [user_id_card] from [src].")
 		authenticated = FALSE
 		user_id_card = null
 	else

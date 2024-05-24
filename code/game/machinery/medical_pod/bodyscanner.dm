@@ -181,8 +181,8 @@
 
 	N.fields["last_tgui_scan_result"] = last_health_display.ui_data(user, DETAIL_LEVEL_BODYSCAN)
 	N.fields[MOB_AUTODOC_DATA] = generate_autodoc_surgery_list(H)
-	visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [H.real_name]"))
-	playsound(src.loc, 'sound/machines/screen_output1.ogg', 25)
+	visible_message(SPAN_NOTICE("[src] pings as it stores the scan report of [H.real_name]"))
+	playsound(loc, 'sound/machines/screen_output1.ogg', 25)
 
 	last_health_display.look_at(user, DETAIL_LEVEL_BODYSCAN, bypass_checks = TRUE)
 

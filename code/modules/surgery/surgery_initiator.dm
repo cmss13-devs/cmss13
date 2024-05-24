@@ -106,7 +106,7 @@
 						to_chat(user, SPAN_WARNING("You don't know of any operations you could begin on [limbname]."))
 					return FALSE
 				if(isxeno(target))
-					to_chat(user, SPAN_WARNING("You don't know of any operations you could perform on this body part of a xenomorph."))
+					to_chat(user, SPAN_WARNING("You don't know any operations you could perform on this body part of a xenomorph."))
 			var/hint_msg
 			for(var/datum/surgery_step/current_step as anything in valid_steps)
 				if(hint_msg)
@@ -116,7 +116,8 @@
 						hint_msg += ", [current_step.desc]"
 				else
 					hint_msg = "You can't [current_step.desc] with \the [tool]"
-			to_chat(user, SPAN_WARNING("[hint_msg]."))
+			if(!isnull(hint_msg))
+				to_chat(user, SPAN_WARNING("[hint_msg]."))
 		return FALSE
 
 	var/datum/surgery/surgeryinstance

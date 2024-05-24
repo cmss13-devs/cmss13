@@ -100,6 +100,6 @@
 		qdel(target_tag)
 
 	if (HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || stat == UNCONSCIOUS)
-		new /datum/effects/execute_tag(src, src, , , 35)
+		new /datum/effects/execute_tag(src, src, ttl = 35)
 
 	src.update_execute_hud()

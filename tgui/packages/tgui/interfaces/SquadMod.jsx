@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Stack, Section, NoticeBox } from '../components';
+import { Button, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const SquadMod = (props) => {
@@ -46,14 +46,15 @@ export const SquadMod = (props) => {
               <Button
                 key={entry.name}
                 fluid
-                content={entry.name}
                 backgroundColor={entry.color}
                 onClick={() =>
                   act('PRG_squad', {
                     name: entry.name,
                   })
                 }
-              />
+              >
+                {entry.name}
+              </Button>
             ))}
           </Section>
         )}

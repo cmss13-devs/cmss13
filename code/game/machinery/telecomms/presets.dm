@@ -81,7 +81,7 @@
 	else if(P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
 		update_health(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	update_health(round(P.damage/2))
+	update_health(floor(P.damage/2))
 	return TRUE
 
 /obj/structure/machinery/telecomms/relay/preset/tower/update_health(damage = 0)

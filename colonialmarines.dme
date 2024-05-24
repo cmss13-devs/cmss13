@@ -2386,6 +2386,7 @@
 #include "code\modules\tgui\tgui-say\modal.dm"
 #include "code\modules\tgui\tgui-say\speech.dm"
 #include "code\modules\tgui\tgui-say\typing.dm"
+#include "code\modules\tgui_input\checkboxes.dm"
 #include "code\modules\tgui_input\text.dm"
 #include "code\modules\tgui_panel\audio.dm"
 #include "code\modules\tgui_panel\external.dm"

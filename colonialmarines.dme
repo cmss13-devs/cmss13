@@ -414,6 +414,7 @@
 #include "code\datums\components\overlay_lighting.dm"
 #include "code\datums\components\rename.dm"
 #include "code\datums\components\speed_modifier.dm"
+#include "code\datums\components\status_effect_component.dm"
 #include "code\datums\components\temporary_mute.dm"
 #include "code\datums\components\toxin_buildup.dm"
 #include "code\datums\components\tutorial_status.dm"

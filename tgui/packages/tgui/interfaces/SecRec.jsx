@@ -165,7 +165,7 @@ const CrewManifest = ({ searchQuery, setSearchQuery }) => {
           />
           {human_mob_list
             .filter((record) =>
-              record.toLowerCase().includes(searchQuery.toLowerCase())
+              record.toLowerCase().includes(searchQuery.toLowerCase()),
             )
             .map((record, index) => (
               <Stack

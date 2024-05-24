@@ -526,6 +526,23 @@
 	choice_categories[SENTRY_CATEGORY_IFF] = list(FACTION_COLONY, FACTION_WEYLAND)
 	selected_categories[SENTRY_CATEGORY_IFF] = FACTION_COLONY
 
+/obj/structure/machinery/defenses/sentry/premade/deployable/wy
+	name = "WY 5-GSE3 Static Turret"
+	desc = "An old static, semi-automated turret with AI targeting capabilities from Weyland-Yutani."
+	icon = 'icons/obj/structures/machinery/defenses/wy_static.dmi'
+	defense_type = "Static"
+	sentry_type = "wy_sentry"
+	health = 350
+	health_max = 350
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR)
+	fire_delay = 0.6 SECONDS
+	damage_mult = 2
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/wy/Initialize()
+	. = ..()
+	choice_categories[SENTRY_CATEGORY_IFF] = list(FACTION_COLONY, FACTION_WEYLAND)
+	selected_categories[SENTRY_CATEGORY_IFF] = FACTION_WEYLAND
+
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer
 	fire_delay = 4
 	omni_directional = TRUE
@@ -725,6 +742,7 @@
 
 /obj/structure/machinery/defenses/sentry/wy
 	name = "WY 202-GMA1 Smart Sentry"
+	desc = "A deployable, fully-automated turret with AI targeting capabilities used by the PMC."
 	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
 	sentry_type = "wy_sentry"
 	fire_delay = 2 SECONDS
@@ -742,6 +760,7 @@
 
 /obj/structure/machinery/defenses/sentry/mini/wy
 	name = "WY 14-GRA2 Mini Sentry"
+	desc = "A deployable, semi-automated turret with AI targeting capabilities used by the PMC."
 	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
 	sentry_type = "wy_sentry"
 	fire_delay = 0.08 SECONDS

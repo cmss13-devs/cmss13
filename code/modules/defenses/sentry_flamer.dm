@@ -104,7 +104,7 @@
 /obj/structure/machinery/defenses/sentry/flamer/wy
 	name = "WY 406-FE2 Smart Sentry"
 	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
-	desc = "A deployable, semi-automated turret with AI targeting capabilities used by the PMC. Armed with a special flamer and a 200 liters fuel tank."
+	desc = "A deployable, fully-automated turret with AI targeting capabilities used by the PMC."
 	health = 300
 	health_max = 300
 	fire_delay = 2 SECONDS

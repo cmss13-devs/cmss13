@@ -114,6 +114,11 @@
 	desc = "A box that deploys a sentry turret for protection of the residents in the area."
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony
 
+/obj/structure/machinery/sentry_holder/wy
+	health = 200
+	desc = "A box that deploys a sentry turret for protecting Weyland-Yutani personnel"
+	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/wy
+
 /obj/structure/machinery/sentry_holder/almayer
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/almayer
 	require_red_alert = TRUE

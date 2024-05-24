@@ -145,7 +145,7 @@
 
 /obj/item/defenses/handheld/sentry/wy
 	name = "handheld WY 202-GMA1 smart sentry"
-	desc = "A compact version of the Weyland-Yutani defenses. Designed for area control for deployment of the associated type in the field."
+	desc = "A compact version of the Weyland-Yutani defenses. Designed for deployment in the field."
 	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
 	icon_state = "Normal wy_sentry_handheld"
 	defense_type = /obj/structure/machinery/defenses/sentry/wy
@@ -217,7 +217,7 @@
 
 /obj/item/defenses/handheld/sentry/flamer/wy
 	name = "handheld WY 406-FE2 smart sentry"
-	desc = "A compact version of the Weyland-Yutani defenses. Designed for quick deployment of the associated type in the field."
+	desc = "A compact version of the Weyland-Yutani defenses. Designed for deployment in the field."
 	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
 	icon_state = "Normal wy_flamer_handheld"
 	defense_type = /obj/structure/machinery/defenses/sentry/flamer/wy
@@ -324,6 +324,7 @@
 
 /obj/item/defenses/handheld/planted_flag/wy
 	name = "handheld WY planted flag"
+	desc = "A compact version of the Weyland-Yutani defenses. Designed for deployment in the field."
 	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
 	icon_state = "WY planted_flag_handheld"
 	deployment_time = 3 SECONDS

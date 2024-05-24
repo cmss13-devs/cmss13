@@ -86,7 +86,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/dept_flags = NO_FLAGS //Is there anybody in the department?.
 	var/list/squad_sublists = GLOB.ROLES_SQUAD_ALL.Copy() //Are there any marines in the squad?
 
-	for(var/datum/data/record/record_entry in GLOB.data_core.general)
+	for(var/entry in GLOB.data_core.general)
+		var/datum/data/record/record_entry = GLOB.data_core.general[entry]
 		if(record_entry.fields[MOB_REAL_FACTION] != FACTION_MARINE) //we process only USCM humans
 			continue
 

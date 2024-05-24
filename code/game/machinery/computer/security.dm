@@ -41,7 +41,7 @@
 
 /obj/structure/machinery/computer/secure_data/attackby(obj/card, mob/user)
 	if(!operable())
-		to_chat(user, SPAN_NOTICE("You tried to inject \the [card] but \the [src] remains silent."))
+		to_chat(user, SPAN_NOTICE("You tried to inject [card] but [src] remains silent."))
 		return
 
 	if(istype(card, /obj/item/card/id))

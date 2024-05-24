@@ -3885,11 +3885,6 @@
 /area/fiorina/tumor/servers)
 "ctC" = (
 /obj/structure/surface/table/reinforced/prison,
-/*
-/obj/structure/machinery/computer/skills{
-	dir = 4
-	},
-*/
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull"
@@ -34554,9 +34549,6 @@
 /area/fiorina/tumor/fiberbush)
 "uXw" = (
 /obj/structure/surface/table/reinforced/prison,
-/*
-/obj/structure/machinery/computer/skills,
-*/
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "uXB" = (
@@ -38360,11 +38352,6 @@
 /area/fiorina/tumor/servers)
 "xro" = (
 /obj/structure/surface/table/reinforced/prison,
-/*
-/obj/structure/machinery/computer/skills{
-	dir = 4
-	},
-*/
 /turf/open/floor/prison{
 	icon_state = "bluefull"
 	},

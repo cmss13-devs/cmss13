@@ -63585,11 +63585,6 @@
 	},
 /area/almayer/maint/upper/mess)
 "rGU" = (
-/*
-/obj/structure/machinery/computer/skills{
-	req_one_access_txt = "200"
-	},
-*/
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)

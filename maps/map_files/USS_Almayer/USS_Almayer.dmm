@@ -32000,10 +32000,12 @@
 /area/almayer/hallways/lower/port_umbilical)
 "gTH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/*
 /obj/structure/machinery/computer/skills{
 	dir = 4;
 	pixel_y = 18
 	},
+*/
 /obj/structure/machinery/computer/secure_data{
 	dir = 4
 	},
@@ -63589,9 +63591,11 @@
 	},
 /area/almayer/maint/upper/mess)
 "rGU" = (
+/*
 /obj/structure/machinery/computer/skills{
 	req_one_access_txt = "200"
 	},
+*/
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)

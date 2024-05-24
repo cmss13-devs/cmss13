@@ -3781,9 +3781,11 @@
 	dir = 8
 	},
 /obj/structure/surface/table/reinforced,
+/*
 /obj/structure/machinery/computer/skills{
 	dir = 4
 	},
+*/
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "bluegrey"
@@ -16525,9 +16527,11 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "aTV" = (
+/*
 /obj/structure/machinery/computer/skills{
 	dir = 4
 	},
+*/
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -29035,7 +29039,9 @@
 /area/corsat/sigma/airlock/control)
 "bDO" = (
 /obj/structure/surface/table/almayer,
+/*
 /obj/structure/machinery/computer/skills,
+*/
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "bluegrey"
@@ -45664,9 +45670,11 @@
 /area/corsat/theta/airlock/control)
 "jok" = (
 /obj/structure/surface/table/almayer,
+/*
 /obj/structure/machinery/computer/skills{
 	dir = 8
 	},
+*/
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "purplewhite"

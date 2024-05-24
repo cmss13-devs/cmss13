@@ -1,5 +1,5 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
-
+/* rip it out for now, migrate this later.
 /obj/structure/machinery/computer/skills//TODO:MIGRATE TO TGUI
 	name = "Employment Records"
 	desc = "Used to view personnel's employment records"
@@ -20,7 +20,6 @@
 	//Sorting Variables
 	var/sortBy = "name"
 	var/order = 1 // -1 = Descending - 1 = Ascending
-
 
 /obj/structure/machinery/computer/skills/attackby(obj/item/O as obj, user as mob)
 	if(istype(O, /obj/item/card/id) && !scan)
@@ -68,11 +67,11 @@
 <th><A href='?src=\ref[src];choice=Sorting;sort=fingerprint'>Fingerprints</A></th>
 </tr>"}
 					if(!isnull(GLOB.data_core.general))
-						for(var/datum/data/record/R in sortRecord(GLOB.data_core.general, sortBy, order))
+						for(var/general_record_key in GLOB.data_core.general)
+							var/datum/data/record/R = GLOB.data_core.general[general_record_key]
 							for(var/datum/data/record/E in GLOB.data_core.security)
-							dat += "<tr><td><A href='?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
-							dat += "<td>[R.fields["id"]]</td>"
-							dat += "<td>[R.fields["rank"]]</td>"
+							dat += "<tr><td><A href='?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields[MOB_NAME]]</a></td>"
+							dat += "<td>[R.fields[MOB_SHOWN_RANK]]</td>"
 						dat += "</table><hr width='75%' />"
 					dat += "<A href='?src=\ref[src];choice=Record Maintenance'>Record Maintenance</A><br><br>"
 					dat += "<A href='?src=\ref[src];choice=Log Out'>{Log Out}</A>"
@@ -83,14 +82,13 @@
 					dat += "<CENTER><B>Employment Record</B></CENTER><BR>"
 					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
 						dat += "<table><tr><td> \
-						Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
-						ID: <A href='?src=\ref[src];choice=Edit Field;field=id'>[active1.fields["id"]]</A><BR>\n \
-						Sex: <A href='?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n \
-						Age: <A href='?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n \
-						Rank: <A href='?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n \
-						Physical Status: [active1.fields["p_stat"]]<BR>\n \
-						Mental Status: [active1.fields["m_stat"]]<BR><BR>\n \
-						Employment/skills summary:<BR> [decode(active1.fields["notes"])]<BR></td> \
+						Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields[MOB_NAME]]</A><BR> \
+						Sex: <A href='?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields[MOB_SEX]]</A><BR>\n \
+						Age: <A href='?src=\ref[src];choice=Edit Field;field=age'>[active1.fields[MOB_AGE]]</A><BR>\n \
+						Rank: <A href='?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields[MOB_SHOWN_RANK]]</A><BR>\n \
+						Physical Status: [active1.fields[MOB_HEALTH_STATUS]]<BR>\n \
+						Mental Status: [active1.fields[MOB_MENTAL_STATUS]]<BR><BR>\n \
+						Employment/skills summary:<BR> [decode(active1.fields[MOB_GENERAL_NOTES])]<BR></td> \
 						<td align = center valign = top>Photo:<br><img src=front.png height=80 width=80 border=4> \
 						<img src=side.png height=80 width=80 border=4></td></tr></table>"
 					else
@@ -120,9 +118,8 @@
 							if(istype(Perp[i+1],/datum/data/record/))
 								var/datum/data/record/E = Perp[i+1]
 								crimstat = E.fields["criminal"]
-							dat += "<tr style=background-color:#00FF7F><td><A href='?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
-							dat += "<td>[R.fields["id"]]</td>"
-							dat += "<td>[R.fields["rank"]]</td>"
+							dat += "<tr style=background-color:#00FF7F><td><A href='?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields[MOB_NAME]]</a></td>"
+							dat += "<td>[R.fields[MOB_SHOWN_RANK]]</td>"
 							dat += "<td>[crimstat]</td></tr>"
 						dat += "</table><hr width='75%' />"
 						dat += "<br><A href='?src=\ref[src];choice=Return'>Return to index.</A>"
@@ -205,6 +202,7 @@ What a mess.*/
 				if(components.len > 5)
 					return //Lets not let them search too greedily.
 				for(var/datum/data/record/R in GLOB.data_core.general)
+
 					var/temptext = R.fields["name"] + " " + R.fields["id"] + " " + R.fields["rank"]
 					for(var/i = 1, i<=components.len, i++)
 						if(findtext(temptext,components[i]))
@@ -346,20 +344,21 @@ What a mess.*/
 		if(prob(10/severity))
 			switch(rand(1,6))
 				if(1)
-					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
+					R.fields[MOB_NAME] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
 				if(2)
-					R.fields["sex"] = pick("Male", "Female")
+					R.fields[MOB_SEX] = pick(MOB_STAT_GENDER_LIST)
 				if(3)
-					R.fields["age"] = rand(5, 85)
+					R.fields[MOB_AGE] = rand(5, 85)
 				if(4)
-					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released")
+					R.fields[MOB_CRIMINAL_STATUS] = pick(MOB_STAT_CRIME_STATUS_LIST)
 				if(5)
-					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
+					R.fields[MOB_HEALTH_STATUS] = pick(MOB_STAT_HEALTH_LIST)
 				if(6)
-					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
+					R.fields[MOB_MENTAL_STATUS] = pick(MOB_STAT_MENTAL_STATUS_LIST)
 			continue
 
 		else if(prob(1))
 			GLOB.data_core.security -= R
 			qdel(R)
 			continue
+*/

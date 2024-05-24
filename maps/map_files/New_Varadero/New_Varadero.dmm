@@ -8151,11 +8151,13 @@
 "fla" = (
 /obj/structure/machinery/faxmachine,
 /obj/structure/surface/table/reinforced/prison,
+/*
 /obj/structure/machinery/computer/skills{
 	dir = 4;
 	layer = 3.1;
 	pixel_y = 18
 	},
+*/
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "fmu" = (

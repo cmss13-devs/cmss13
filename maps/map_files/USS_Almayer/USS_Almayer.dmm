@@ -32000,12 +32000,6 @@
 /area/almayer/hallways/lower/port_umbilical)
 "gTH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/*
-/obj/structure/machinery/computer/skills{
-	dir = 4;
-	pixel_y = 18
-	},
-*/
 /obj/structure/machinery/computer/secure_data{
 	dir = 4
 	},

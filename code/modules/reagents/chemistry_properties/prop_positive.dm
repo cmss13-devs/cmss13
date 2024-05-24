@@ -476,7 +476,7 @@
 /datum/chem_property/positive/neurocryogenic/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	if(!isxeno_human(M))
 		return
-	M.AddComponent(/datum/component/speed_modifier, potency * volume * 0.5) //Brainfreeze
+	M.AddComponent(/datum/component/status_effect/speed_modifier, potency * volume * 0.5) //Brainfreeze
 
 /datum/chem_property/positive/antiparasitic
 	name = PROPERTY_ANTIPARASITIC

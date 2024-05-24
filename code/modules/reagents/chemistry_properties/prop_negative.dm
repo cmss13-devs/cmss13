@@ -151,7 +151,7 @@
 	if(isxeno(M))
 		var/mob/living/carbon/xenomorph/X = M
 		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
-			X.AddComponent(/datum/component/toxic_buildup, potency * volume * 0.25)
+			X.AddComponent(/datum/component/status_effect/toxic_buildup, potency * volume * 0.25)
 			to_chat(X, SPAN_XENODANGER("The corrosive substance damages your carapace!"))
 
 /datum/chem_property/negative/corrosive/reaction_obj(obj/O, volume, potency)
@@ -280,7 +280,7 @@
 		L.wounds += I
 
 /datum/chem_property/negative/hemorrhaging/reaction_mob(mob/M, method = TOUCH, volume, potency)
-	M.AddComponent(/datum/component/healing_reduction, potency * volume * POTENCY_MULTIPLIER_VLOW) //deals brute DOT to humans, prevents healing for xenos
+	M.AddComponent(/datum/component/status_effect/healing_reduction, potency * volume * POTENCY_MULTIPLIER_VLOW) //deals brute DOT to humans, prevents healing for xenos
 
 /datum/chem_property/negative/carcinogenic
 	name = PROPERTY_CARCINOGENIC

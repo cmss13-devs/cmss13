@@ -218,7 +218,7 @@
 /datum/chem_property/positive/musclestimulating/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	if(!isxeno_human(M))
 		return
-	M.AddComponent(/datum/component/speed_modifier, volume, TRUE, AMOUNT_PER_TIME(1, potency SECONDS), potency*volume) //Long-lasting speed for beans, stamina for humans
+	M.AddComponent(/datum/component/status_effect/speed_modifier, volume, TRUE, AMOUNT_PER_TIME(1, potency SECONDS), potency*volume) //Long-lasting speed for beans, stamina for humans
 
 /datum/chem_property/positive/painkilling
 	name = PROPERTY_PAINKILLING

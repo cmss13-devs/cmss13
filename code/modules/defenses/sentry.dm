@@ -534,7 +534,7 @@
 	sentry_type = "wy_sentry"
 	health = 350
 	health_max = 350
-	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR)
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_WY)
 	fire_delay = 0.6 SECONDS
 	damage_mult = 2
 

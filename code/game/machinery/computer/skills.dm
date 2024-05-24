@@ -1,5 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 /* rip it out for now, migrate this later.
+
 /obj/structure/machinery/computer/skills//TODO:MIGRATE TO TGUI
 	name = "Employment Records"
 	desc = "Used to view personnel's employment records"

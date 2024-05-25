@@ -106,7 +106,19 @@
 	icon_state = "engineerconsole"
 	desc = "A Giant Alien console of some kind, unlike anything you've ever seen before. Who knows the purpose of this strange technology..."
 	use_power = USE_POWER_NONE
+	needs_power = FALSE
+	ispowered = TRUE
 	machinery_type_to_control = /obj/structure/machinery/colony_floodlight/engineer_circular
+
+/obj/structure/machinery/colony_floodlight_switch/engineerconsole_switch/LateInitialize()
+	. = ..()
+	stop_processing()
+
+/obj/structure/machinery/colony_floodlight_switch/engineerconsole_switch/update_icon()
+	return
+
+/obj/structure/machinery/colony_floodlight_switch/engineerconsole_switch/power_change()
+	return // It just works
 
 /obj/structure/machinery/colony_floodlight/engineer_circular
 	name = "circular light"

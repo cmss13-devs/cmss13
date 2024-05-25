@@ -11,6 +11,7 @@
 	unacidable = TRUE
 	power_machine = TRUE
 	idle_power_usage = 0
+	is_on = FALSE
 	var/ispowered = FALSE
 	///All machinery under our control
 	var/list/machinery_list = list()

@@ -32161,7 +32161,8 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "fkb" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor5"
+	icon_state = "floor1";
+	dir = 1
 	},
 /area/lv759/indoors/spaceport/engineering)
 "fke" = (
@@ -81838,7 +81839,9 @@
 	pixel_x = -9;
 	pixel_y = 10
 	},
-/obj/structure/largecrate/random/mini/small_case,
+/obj/structure/largecrate/random/mini/small_case{
+	layer = 3.1
+	},
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/central_streets)
 "njy" = (
@@ -122331,6 +122334,14 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "tJw" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -6;
+	pixel_y = -5
+	},
 /turf/open/floor/strata{
 	icon_state = "orange_edge"
 	},

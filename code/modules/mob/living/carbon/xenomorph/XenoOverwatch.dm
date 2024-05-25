@@ -139,6 +139,13 @@
 	if (observed_xeno && (observed_xeno.stat == DEAD || QDELETED(observed_xeno)))
 		overwatch(null, TRUE)
 
+	if(observed_xeno && HAS_TRAIT(observed_xeno, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
+		overwatch(null, TRUE)
+
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		overwatch(null, TRUE)
+
 /mob/living/carbon/xenomorph/proc/overwatch_handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 

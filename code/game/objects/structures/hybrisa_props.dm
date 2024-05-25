@@ -474,8 +474,6 @@
 /obj/structure/prop/hybrisa/cavedecor/stalagmite5
 	icon_state = "stalagmite5"
 
-
-
 // Supermart
 
 /obj/structure/prop/hybrisa/supermart

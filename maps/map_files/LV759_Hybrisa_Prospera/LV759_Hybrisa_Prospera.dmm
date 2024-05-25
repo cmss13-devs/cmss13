@@ -33997,15 +33997,8 @@
 /area/lv759/indoors/recycling_plant_office)
 "fzp" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/machinery/fuelcell_recycler,
-/obj/item/prop/colony/canister{
-	pixel_y = 7
-	},
 /obj/structure/machinery/power/terminal{
 	dir = 4
-	},
-/obj/structure/machinery/power/terminal{
-	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/garage)
@@ -35830,6 +35823,10 @@
 	pixel_y = 2
 	},
 /obj/effect/hybrisa/decal/dirt,
+/obj/item/prop/colony/canister{
+	pixel_x = 4;
+	pixel_y = 16
+	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
@@ -86748,10 +86745,6 @@
 	icon_state = "W"
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/item/tool/warning_cone{
-	pixel_x = -21;
-	pixel_y = 3
-	},
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
@@ -98042,6 +98035,15 @@
 /obj/structure/sign/nosmoking_1,
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"pPl" = (
+/obj/effect/hybrisa/decal/dirt,
+/obj/item/tool/warning_cone{
+	pixel_y = 19
+	},
+/turf/open/floor/corsat{
+	icon_state = "officetiles"
+	},
+/area/lv759/indoors/colonial_marshals/garage)
 "pPm" = (
 /obj/structure/cargo_container/hybrisa/containersextended/greywyleft,
 /turf/open/floor/strata{
@@ -116755,18 +116757,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/portable_atmospherics/powered/scrubber{
-	desc = "A big air filter.";
-	icon = 'icons/obj/structures/props/almayer_props64.dmi';
-	icon_state = "fuel_enhancer";
-	layer = 5;
-	name = "Air filter";
-	pixel_x = -3;
-	pixel_y = 1
-	},
 /obj/structure/machinery/power/terminal{
 	dir = 8
 	},
+/obj/structure/machinery/fuelcell_recycler,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -125214,9 +125208,6 @@
 /area/lv759/indoors/mining_outpost/northeast)
 "uik" = (
 /obj/item/stack/rods,
-/obj/structure/machinery/power/terminal{
-	dir = 4
-	},
 /obj/item/trash/cigbutt{
 	pixel_x = 4
 	},
@@ -187536,7 +187527,7 @@ bQB
 eZR
 eZR
 eZR
-eZR
+pPl
 eZR
 uBL
 uBL

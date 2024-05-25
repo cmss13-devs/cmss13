@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { useBackend, useSharedState } from '../backend';
 import {
   Box,
@@ -372,13 +373,13 @@ const LaunchAnnouncementAlarm = () => {
   );
 };
 
-const DropshipButton = (props: { readonly shipId: string, readonly shipName: string, readonly disable, onClick: () => void }) => {
+const DropshipButton = (props: { readonly shipId: string, readonly shipName: string, readonly disable: boolean, readonly onClick: () => void }) => {
   const { act, data } = useBackend<DropshipNavigationProps>();
   const match = props.shipId === data.shuttle_id;
 
   return (
     <Button
-      disabled={match || props.disable }
+      disabled={match || props.disable}
       onClick={() => {
         act('change_shuttle', { new_shuttle: props.shipId });
         act('button-push');
@@ -414,9 +415,9 @@ const DropshipSelector = () => {
               shipName={x.name}
               disable={refreshTimeout !== undefined}
               onClick={() => {
-                const freeze = setTimeout(() => setRefreshTimeout(undefined), 2000)
+                const freeze = setTimeout(() => setRefreshTimeout(undefined), 2000);
                 setRefreshTimeout(freeze);
-            }}/>
+            }} />
           ))}
       </Stack>
     </Section>
@@ -454,8 +455,8 @@ const DropshipDisabledScreen = () => {
     {data.alternative_shuttles.length > 0 && <DropshipSelector />}
     <DisabledScreen />
     </>
-  )
-}
+  );
+};
 
 export const DropshipFlightControl = () => {
   const { data } = useBackend<DropshipNavigationProps>();

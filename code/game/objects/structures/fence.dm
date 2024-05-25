@@ -284,10 +284,10 @@ GLOBAL_LIST_INIT(all_fences, list())
 		electrified = FALSE
 	else
 		electrified = TRUE
-	src.update_icon()
+	update_icon()
 
 /obj/structure/fence/electrified/Initialize()
-	..()
+	. = ..()
 	GLOB.all_fences += src
 
 /obj/structure/fence/electrified/Destroy()

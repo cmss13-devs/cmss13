@@ -1,7 +1,7 @@
 // Hybrisa props
 
 /obj/structure/prop/hybrisa
-	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/small_truck_red.dmi'
 	icon_state = "pimp"
 
 // Vehicles
@@ -70,94 +70,91 @@
 		take_damage(P.ammo.damage)
 		update_icon()
 
-// Very Large Vehicles
-/obj/structure/prop/hybrisa/vehicles/large_vehicles
-	icon = 'icons/obj/structures/props/128x32_vehiclesexpanded.dmi'
-	icon_state = "armoredtruck_wy_security_1"
+// Armored Truck - Damage States
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck
+	name = "heavy-loader truck"
+	desc = "Seems to be broken down."
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/armored_truck_wy_black.dmi'
+	icon_state = "armored_truck_wy_black"
+	bound_height = 64
+	bound_width = 96
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 
-// Misc
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/ambulance
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/Blue
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/armored_truck_blue.dmi'
+	icon_state = "armored_truck_blue"
+
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/Teal
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/armored_truck_teal.dmi'
+	icon_state = "armored_truck_teal"
+
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/White
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/armored_truck_white.dmi'
+	icon_state = "armored_truck_white"
+
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_Black
+	name = "Weyland-Yutani security truck"
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/armored_truck_wy_black.dmi'
+	icon_state = "armored_truck_wy_black"
+
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_White
+	name = "Weyland-Yutani security truck"
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/armored_truck_wy_white.dmi'
+	icon_state = "armored_truck_wy_white"
+
+// Ambulance - Damage States
+/obj/structure/prop/hybrisa/vehicles/Ambulance
 	name = "ambulance"
 	desc = "Seems to be broken down."
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/ambulance.dmi'
 	icon_state = "ambulance"
 	bound_height = 64
 	bound_width = 96
+	density = TRUE
+	layer = ABOVE_MOB_LAYER
 
-// Armored Truck
-
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks
-	icon_state = "armoredtruck_wy_security_1"
-	bound_height = 64
-	bound_width = 96
-
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/WY_Security/Truck_1
-	name = "Weyland-Yutani security truck"
+// Long Hauler Truck - Damage States
+/obj/structure/prop/hybrisa/vehicles/Long_Truck
+	name = "long-hauler truck"
 	desc = "Seems to be broken down."
-	icon_state = "armoredtruck_wy_security_1"
-
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/WY_Security/Truck_2
-	name = "Weyland-Yutani security truck"
-	desc = "Seems to be broken down."
-	icon_state = "armoredtruck_wy_security_2"
-
-// Armored Truck Goods
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/heavy_loader/white
-	name = "heavy loader truck"
-	desc = "Seems to be broken down."
-	icon_state = "armoredtruck_white_white"
-
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/heavy_loader/white_teal
-	name = "heavy loader truck"
-	desc = "Seems to be broken down."
-	icon_state = "armoredtruck_white_teal"
-
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/heavy_loader/blue_white
-	name = "heavy loader truck"
-	desc = "Seems to be broken down."
-	icon_state = "armoredtruck_blue_white"
-
-// Mega-Hauler Trucks 128x64
-
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck
-	name = "mega-hauler truck"
-	icon_state = "longtruck_kellandmining"
-	desc = "Seems to be broken down."
-	icon = 'icons/obj/structures/props/128x32_vehiclesexpanded.dmi'
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/long_truck_wy_blue.dmi'
+	icon_state = "longtruck_wy_blue"
 	bound_height = 64
 	bound_width = 128
-	unslashable = TRUE
-	unacidable = TRUE
 	density = TRUE
 
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/kelland
-	icon_state = "longtruck_kellandmining"
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/Blue
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/long_truck_blue.dmi'
+	icon_state = "longtruck_blue"
 
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/red_stripe
-	icon_state = "longtruck_blue_redstripe"
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/Red
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/long_truck_red.dmi'
+	icon_state = "longtruck_red"
 
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/blue_stripe
-	icon_state = "longtruck_red_bluestripe"
-
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/brown
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/Brown
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/long_truck_brown.dmi'
 	icon_state = "longtruck_brown"
 
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/donk
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/Kelland_Mining
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/long_truck_kelland.dmi'
+	icon_state = "longtruck_kelland"
+
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/Donk
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/long_truck_donk.dmi'
 	icon_state = "longtruck_donk"
 
-//WY
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/wy_black
-	name = "Weyland-Yutani mega-hauler truck"
-	icon_state = "longtruck_wy_black"
-
-/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/wy_blue
-	name = "Weyland-Yutani mega-hauler truck"
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/WY_Blue
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/long_truck_wy_blue.dmi'
 	icon_state = "longtruck_wy_blue"
+
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/WY_Black
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/long_truck_wy_black.dmi'
+	icon_state = "longtruck_wy_black"
 
 // Small Truck - Damage States
 /obj/structure/prop/hybrisa/vehicles/Small_Truck
-	name = "Small Truck"
+	name = "small truck"
 	desc = "Seems to be broken down."
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/small_truck_turquoise_cargo.dmi'
 	icon_state = "small_truck_turquoise_cargo"
@@ -220,7 +217,7 @@
 
 // Box Vans - Damage States
 /obj/structure/prop/hybrisa/vehicles/Box_Vans
-	name = "Box Van"
+	name = "box van"
 	desc = "Seems to be broken down."
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/box_van_hyperdyne.dmi'
 	icon_state = "box_van_hyperdyne"
@@ -325,73 +322,49 @@
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_shell.dmi'
 	icon_state = "meridian_shell"
 
-// Colony Crawlers
-
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers
-	icon_state = "crawler_wy2"
-	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
-	bound_height = 64
+// Colony Crawlers - Damage States
+/obj/structure/prop/hybrisa/vehicles/Colony_Crawlers
+	name = "colony crawler"
+	desc = "Seems to be broken down."
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/crawler_wy_1.dmi'
+	icon_state = "crawler_wy_1"
+	bound_height = 32
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
 	density = TRUE
+	layer = ABOVE_MOB_LAYER
 
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining
-	icon_state = "miningcrawler1"
-	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
-	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
-
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining2
-	icon_state = "crawler_fuel"
-	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
-	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
-
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining3
-	icon_state = "crawler_covered_bed"
-	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
-	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
-
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers/science
-	icon_state = "crawler_wy2"
+/obj/structure/prop/hybrisa/vehicles/Colony_Crawlers/Science_1
 	desc = "It is a tread bound crawler used in harsh conditions. This one is designed for personnel transportation. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
-	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/crawler_wy_1.dmi'
+	icon_state = "crawler_wy_1"
 
-// Science Crawlers
+/obj/structure/prop/hybrisa/vehicles/Colony_Crawlers/Science_2
+	desc = "It is a tread bound crawler used in harsh conditions. This one is designed for personnel transportation. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/crawler_wy_2.dmi'
+	icon_state = "crawler_wy_2"
 
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers/science
-	name = "weyland-yutani colony crawler"
-
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers/science/science1
-	icon_state = "crawler_wy1"
-	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
-
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers/science/science2
-	icon_state = "crawler_wy2"
-	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
+/obj/structure/prop/hybrisa/vehicles/Colony_Crawlers/Crawler_Cargo
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/crawler_bed.dmi'
+	icon_state = "crawler_bed"
 
 // Mining Crawlers
 
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining
-	name = "kelland mining colony crawler"
-
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining/mining1
+/obj/structure/prop/hybrisa/vehicles/Mining_Crawlers
+	name = "mining crawler"
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
-	icon_state = "miningcrawler2"
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/mining_crawler.dmi'
+	icon_state = "mining_crawler_1"
+	bound_height = 32
+	bound_width = 64
+	density = TRUE
+	layer = ABOVE_MOB_LAYER
 
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining/mining2
-	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
-	icon_state = "miningcrawler3"
+/obj/structure/prop/hybrisa/vehicles/Mining_Crawlers/Fuel
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/mining_crawler_fuel.dmi'
+	icon_state = "mining_crawler_fuel"
 
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining/mining3
-	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
-	icon_state = "miningcrawler4"
-
-/obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining/mining4
-	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
-	icon_state = "miningcrawlerblank"
-
-// Car Pile up
-/obj/structure/prop/hybrisa/vehicles/crashedcarsleft
+// Car Pileup
+/obj/structure/prop/hybrisa/crashedcarsleft
 	name = "car pileup"
 	desc = "Burned out wrecked vehicles block your path."
 	icon = 'icons/obj/structures/props/crashedcars.dmi'
@@ -403,7 +376,7 @@
 	density = TRUE
 	layer = 5
 
-/obj/structure/prop/hybrisa/vehicles/crashedcarsright
+/obj/structure/prop/hybrisa/crashedcarsright
 	name = "car pileup"
 	desc = "Burned out wrecked vehicles block your path."
 	icon = 'icons/obj/structures/props/crashedcars.dmi'
@@ -1230,6 +1203,12 @@
 	anchored = TRUE
 	density = TRUE
 
+/obj/structure/machinery/big_computers/computerwhite
+	name = "computer"
+
+/obj/structure/machinery/big_computers/computerblack
+	name = "computer"
+
 /obj/structure/machinery/big_computers/computerwhite/computer1
 	icon_state = "mapping_comp"
 
@@ -1259,6 +1238,8 @@
 
 /obj/structure/machinery/big_computers/computerblack/computer5
 	icon_state = "blacksensor_comp3"
+
+// Monitors
 
 /obj/structure/prop/hybrisa/misc/machinery/screens
 	name = "monitor"

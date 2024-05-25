@@ -387,9 +387,9 @@
 				contents += {"
 							<tr>
 							<th scope="row">[req_order.time]</th>
-							<td>[req_order.details]</td>
-							<td>[req_order.title]</td>
 							<td>[req_order.user]</td>
+							<td>[req_order.title]</td>
+							<td>[req_order.details]</td>
 							</tr>
 							"}
 

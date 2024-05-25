@@ -337,7 +337,8 @@ const StopLaunchAnnouncementAlarm = () => {
       onClick={() => {
         act('stop_playing_launch_announcement_alarm');
         act('button-push');
-      }}>
+      }}
+    >
       Stop Alarm
     </Button>
   );
@@ -351,7 +352,8 @@ const PlayLaunchAnnouncementAlarm = () => {
       onClick={() => {
         act('play_launch_announcement_alarm');
         act('button-push');
-      }}>
+      }}
+    >
       Start Alarm
     </Button>
   );
@@ -373,7 +375,12 @@ const LaunchAnnouncementAlarm = () => {
   );
 };
 
-const DropshipButton = (props: { readonly shipId: string, readonly shipName: string, readonly disable: boolean, readonly onClick: () => void }) => {
+const DropshipButton = (props: {
+  readonly shipId: string;
+  readonly shipName: string;
+  readonly disable: boolean;
+  readonly onClick: () => void;
+}) => {
   const { act, data } = useBackend<DropshipNavigationProps>();
   const match = props.shipId === data.shuttle_id;
 
@@ -384,7 +391,8 @@ const DropshipButton = (props: { readonly shipId: string, readonly shipName: str
         act('change_shuttle', { new_shuttle: props.shipId });
         act('button-push');
         props.onClick();
-      }}>
+      }}
+    >
       {match && '['}
       {props.shipName}
       {match && ']'}
@@ -394,10 +402,12 @@ const DropshipButton = (props: { readonly shipId: string, readonly shipName: str
 
 const DropshipSelector = () => {
   const { data } = useBackend<DropshipNavigationProps>();
-  const [refreshTimeout, setRefreshTimeout] = useState<NodeJS.Timeout | undefined>(undefined);
+  const [refreshTimeout, setRefreshTimeout] = useState<
+    NodeJS.Timeout | undefined
+  >(undefined);
 
   useEffect(() => {
-    if(refreshTimeout) {
+    if (refreshTimeout) {
       return () => clearTimeout(refreshTimeout);
     }
     return () => {};
@@ -415,9 +425,13 @@ const DropshipSelector = () => {
               shipName={x.name}
               disable={refreshTimeout !== undefined}
               onClick={() => {
-                const freeze = setTimeout(() => setRefreshTimeout(undefined), 2000);
+                const freeze = setTimeout(
+                  () => setRefreshTimeout(undefined),
+                  2000,
+                );
                 setRefreshTimeout(freeze);
-            }} />
+              }}
+            />
           ))}
       </Stack>
     </Section>
@@ -452,8 +466,8 @@ const DropshipDisabledScreen = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
     <>
-    {data.alternative_shuttles.length > 0 && <DropshipSelector />}
-    <DisabledScreen />
+      {data.alternative_shuttles.length > 0 && <DropshipSelector />}
+      <DisabledScreen />
     </>
   );
 };

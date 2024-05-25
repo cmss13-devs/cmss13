@@ -295,7 +295,8 @@
 	var/effect_amt = floor(6 + amount*6)
 
 	if(xeno_creature)
-		to_chat(xeno_creature, SPAN_XENOHIGHDANGER("Your awareness dims to a small area!"))
+		if(!HAS_TRAIT(xeno_creature, TRAIT_HIVEMIND_INTERFERENCE))
+			to_chat(xeno_creature, SPAN_XENOHIGHDANGER("Your awareness dims to a small area!"))
 		xeno_creature.AddComponent(/datum/component/status_effect/interference, 10, 10)
 		xeno_creature.blinded = TRUE
 	else

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useBackend, useSharedState } from '../backend';
 import {
   Box,
@@ -371,18 +372,20 @@ const LaunchAnnouncementAlarm = () => {
   );
 };
 
-const DropshipButton = (props: { readonly ship: ShuttleRef }) => {
+const DropshipButton = (props: { readonly shipId: string, readonly shipName: string, readonly disable, onClick: () => void }) => {
   const { act, data } = useBackend<DropshipNavigationProps>();
-  const match = props.ship.id === data.shuttle_id;
+  const match = props.shipId === data.shuttle_id;
+
   return (
     <Button
-      disabled={match}
+      disabled={match || props.disable }
       onClick={() => {
-        act('change_shuttle', { new_shuttle: props.ship.id });
+        act('change_shuttle', { new_shuttle: props.shipId });
         act('button-push');
+        props.onClick();
       }}>
       {match && '['}
-      {props.ship.name}
+      {props.shipName}
       {match && ']'}
     </Button>
   );
@@ -390,13 +393,30 @@ const DropshipButton = (props: { readonly ship: ShuttleRef }) => {
 
 const DropshipSelector = () => {
   const { data } = useBackend<DropshipNavigationProps>();
+  const [refreshTimeout, setRefreshTimeout] = useState<NodeJS.Timeout | undefined>(undefined);
+
+  useEffect(() => {
+    if(refreshTimeout) {
+      return () => clearTimeout(refreshTimeout);
+    }
+    return () => {};
+  }, [refreshTimeout]);
+
   return (
     <Section title="Select Dropship">
       <Stack>
         {data.alternative_shuttles
           .sort((a, b) => a.id.localeCompare(b.id))
           .map((x) => (
-            <DropshipButton ship={x} key={x.id} />
+            <DropshipButton
+              key={x.id}
+              shipId={x.id}
+              shipName={x.name}
+              disable={refreshTimeout !== undefined}
+              onClick={() => {
+                const freeze = setTimeout(() => setRefreshTimeout(undefined), 2000)
+                setRefreshTimeout(freeze);
+            }}/>
           ))}
       </Stack>
     </Section>
@@ -427,12 +447,22 @@ const RenderScreen = () => {
   );
 };
 
+const DropshipDisabledScreen = () => {
+  const { data } = useBackend<DropshipNavigationProps>();
+  return (
+    <>
+    {data.alternative_shuttles.length > 0 && <DropshipSelector />}
+    <DisabledScreen />
+    </>
+  )
+}
+
 export const DropshipFlightControl = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
     <Window theme="crtgreen" height={500} width={700}>
       <Window.Content className="NavigationMenu" scrollable>
-        {data.is_disabled === 0 ? <RenderScreen /> : <DisabledScreen />}
+        {data.is_disabled === 0 ? <RenderScreen /> : <DropshipDisabledScreen />}
       </Window.Content>
     </Window>
   );

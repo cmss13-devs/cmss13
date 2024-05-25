@@ -134,7 +134,9 @@
 		.["max_refuel_duration"] = shuttle.rechargeTime / 10
 		.["max_engine_start_duration"] = shuttle.ignitionTime / 10
 		.["door_data"] = list("port", "starboard", "aft")
-	.["alternative_shuttles"] = alternative_shuttles()
+	.["alternative_shuttles"] = list()
+	if(can_change_shuttle)
+		.["alternative_shuttles"] = alternative_shuttles()
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/alternative_shuttles()
 	. = list()
@@ -208,6 +210,23 @@
 
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(linked_lz)
+		var/obj/docking_port/stationary/landing_zone = SSshuttle.getDock(linked_lz)
+		var/obj/docking_port/mobile/maybe_dropship = landing_zone.get_docked()
+
+		if(maybe_dropship)
+			to_chat(xeno, SPAN_NOTICE("A metal bird already is here."))
+			return
+
+		var/conflicting_transit = FALSE
+		for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
+			if(landing_zone == other_shuttle.destination)
+				conflicting_transit = TRUE
+				break
+
+		if(conflicting_transit)
+			to_chat(xeno, SPAN_NOTICE("A metal bird is already coming."))
+			return
+
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		if(shuttle.mode == SHUTTLE_IDLE && !is_ground_level(shuttle.z))
 			var/result = SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
@@ -235,7 +254,7 @@
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
 	// if the shuttleid is null or the shuttleid references a shuttle that has been removed from play, pick one
-	if(!shuttleId || !SSshuttle.hasShuttle(shuttleId))
+	if(!shuttleId || !SSshuttle.getShuttle(shuttleId, FALSE))
 		var/list/alternatives = alternative_shuttles()
 		shuttleId = pick(alternatives)["id"]
 
@@ -421,6 +440,10 @@
 		return
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(disabled || (shuttle && shuttle.is_hijacked))
+		switch(action)
+			if ("change_shuttle")
+				var/new_shuttle = params["new_shuttle"]
+				return set_shuttle(new_shuttle)
 		return
 	var/mob/user = usr
 	if (shuttle)
@@ -560,19 +583,24 @@
 			stop_playing_launch_announcement_alarm()
 			return TRUE
 		if ("change_shuttle")
-			var/list/alternatives = alternative_shuttles()
 			var/new_shuttle = params["new_shuttle"]
-			var/found = FALSE
-			for(var/alt_shuttle in alternatives)
-				if(alt_shuttle["id"] == new_shuttle)
-					found = TRUE
-			if(found)
-				shuttleId = new_shuttle
-				update_static_data(user, ui)
-			else
-				log_admin("Player [user] attempted to change shuttle illegally.")
-			return TRUE
+			return set_shuttle(new_shuttle)
 
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/set_shuttle(new_shuttle)
+	var/mob/user = usr
+	if(!new_shuttle || shuttleId == new_shuttle)
+		return FALSE
+	var/found = FALSE
+	var/list/alternatives = alternative_shuttles()
+	for(var/alt_shuttle in alternatives)
+		if(alt_shuttle["id"] == new_shuttle)
+			found = TRUE
+	if(found)
+		shuttleId = new_shuttle
+		update_static_data(user)
+	else
+		log_admin("Player [user] attempted to change shuttle illegally.")
+	return TRUE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/stop_playing_launch_announcement_alarm()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)

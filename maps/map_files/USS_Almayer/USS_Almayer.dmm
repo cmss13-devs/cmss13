@@ -29437,8 +29437,8 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 4;
-	name = "Secondary Remote Control Console";
-	pixel_y = -12
+	pixel_y = -12;
+	name = "Remote dropship navigation computer"
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull"
@@ -65347,9 +65347,9 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 8;
-	name = "Primary Remote Control Console";
 	pixel_y = 12;
-	shuttleId = "dropship_alamo"
+	shuttleId = "dropship_alamo";
+	name = "Remote dropship navigation computer"
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull"

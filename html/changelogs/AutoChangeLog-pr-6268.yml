@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - imageadd: "added sprites for floor-mounted sentry deployment systems."
+  - rscadd: "Added mini-sentry deployment systems, and an AI Core subtype."

@@ -338,7 +338,7 @@
 	icon_state = "meridian"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/meridian/meridian_office
-	name = "Meridian - Office"
+	name = "Meridian - Offices"
 	icon_state = "meridian"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/meridian/meridian_managersoffice

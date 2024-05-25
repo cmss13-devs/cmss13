@@ -425,7 +425,7 @@
 	radial_icon = "shield"
 
 /datum/hivebuff/defence/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_deflection += 0.05 * xeno.armor_deflectionarmor_modifier
+	xeno.armor_deflection += 0.05 * xeno.armor_deflection
 
 /datum/hivebuff/defence/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
 	xeno.armor_deflection = initial(xeno.armor_deflection)

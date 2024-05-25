@@ -144,6 +144,8 @@
 	/// Hivebuff being sustained by this pylon
 	var/datum/hivebuff/sustained_buff
 
+	var/list/players_on_buff_cooldown = list()
+
 	/// Cooldown between trying to activate a hive buff
 	COOLDOWN_DECLARE(buff_cooldown)
 
@@ -283,7 +285,12 @@
 
 	xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, src)
 	COOLDOWN_START(src, buff_cooldown, 30 SECONDS)
+	players_on_buff_cooldown += xeno
+	addtimer(CALLBACK(src, PROC_REF(remove_buff_cooldown), xeno), 30 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	return TRUE
+
+/obj/effect/alien/resin/special/pylon/endgame/proc/remove_buff_cooldown(mob/living/carbon/xenomorph/xeno)
+	players_on_buff_cooldown -= xeno
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

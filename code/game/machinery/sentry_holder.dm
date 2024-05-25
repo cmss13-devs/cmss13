@@ -80,11 +80,11 @@
 	icon_state = "[base_icon_state]_deployed"
 
 	if(deployed_turret.density)
-		for(var/mob/M in deployed_turret.loc)
-			if(deployed_turret.loc == src.loc)
-				step(M, deployed_turret.dir)
+		for(var/mob/blocking_mob in deployed_turret.loc)
+			if(deployed_turret.loc == loc)
+				step(blocking_mob, deployed_turret.dir)
 			else
-				step(M, get_dir(src,deployed_turret))
+				step(blocking_mob, get_dir(src, deployed_turret))
 
 	deployed_turret.setDir(dir)
 	deployed_turret.pixel_x = 0

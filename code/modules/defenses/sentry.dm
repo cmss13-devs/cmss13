@@ -541,6 +541,7 @@
 	health_max = 150
 	damage_mult = 0.6
 	density = FALSE
+	layer = BELOW_MOB_LAYER
 	disassemble_time = 0.75 SECONDS
 	handheld_type = /obj/item/defenses/handheld/sentry/mini
 	composite_icon = FALSE

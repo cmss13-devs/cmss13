@@ -39,8 +39,8 @@
 
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
-#define MODE_HAS_FLAG(flag) (SSticker.mode.flags_round_type & flag)
-#define MODE_HAS_TOGGLEABLE_FLAG(flag) (SSticker.mode.toggleable_flags & flag)
+#define MODE_HAS_FLAG(flag) (SSticker.mode?.flags_round_type & flag)
+#define MODE_HAS_TOGGLEABLE_FLAG(flag) (SSticker.mode?.toggleable_flags & flag)
 
 // Gamemode Flags
 #define MODE_INFESTATION (1<<0)

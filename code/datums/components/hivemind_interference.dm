@@ -23,6 +23,8 @@
 	else
 		interference += inter.interference
 
+	interference = min(interference, max_buildup)
+
 /datum/component/status_effect/interference/process(delta_time)
 	if(has_immunity)
 		return ..()

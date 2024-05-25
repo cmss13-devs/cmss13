@@ -152,7 +152,7 @@
 		var/mob/living/carbon/xenomorph/xeno = M
 		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
 			xeno.AddComponent(/datum/component/status_effect/toxic_buildup, potency * volume * 0.25)
-			to_chat(X, SPAN_XENODANGER("The corrosive substance damages your carapace!"))
+			to_chat(xeno, SPAN_XENODANGER("The corrosive substance damages your carapace!"))
 
 /datum/chem_property/negative/corrosive/reaction_obj(obj/O, volume, potency)
 	if((istype(O,/obj/item) || istype(O,/obj/effect/glowshroom)) && prob(potency * 10))

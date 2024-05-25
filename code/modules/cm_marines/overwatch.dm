@@ -843,6 +843,10 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
+	if(crate.opened)
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The crate is not secure on the drop pad. Get Requisitions to close the crate!")]")
+		return
+
 	busy = TRUE
 	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
 	SEND_SIGNAL(crate, COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED, current_squad)

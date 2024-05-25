@@ -765,7 +765,6 @@ DEFINES in setup.dm, referenced here.
 
 	unique_action(usr)
 
-
 /obj/item/weapon/gun/verb/toggle_gun_safety()
 	set category = "Weapons"
 	set name = "Toggle Gun Safety"
@@ -932,6 +931,15 @@ DEFINES in setup.dm, referenced here.
 	if(!istype(target, /atom/movable/screen/click_catcher))
 		return null
 	return params2turf(modifiers["screen-loc"], get_turf(user), user.client)
+
+/// check if the gun contains any light source that is currently turned on.
+/obj/item/weapon/gun/proc/light_sources()
+	var/obj/item/attachable/flashlight/torch
+	for(var/slot in attachments)
+		torch = attachments[slot]
+		if(istype(torch) && torch.light_on == TRUE)
+			return TRUE // an attachment has light enabled.
+	return FALSE
 
 /// If this gun has a relevant flashlight attachable attached, (de)activate it
 /obj/item/weapon/gun/proc/force_light(on)

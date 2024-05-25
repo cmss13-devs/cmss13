@@ -74,6 +74,7 @@ Additional game mode variables.
 	var/monkey_amount = 0 //How many monkeys do we spawn on this map ?
 	var/list/monkey_types = list() //What type of monkeys do we spawn
 	var/latejoin_tally = 0 //How many people latejoined Marines
+	var/latejoin_larva_drop_early = LATEJOIN_MARINES_PER_LATEJOIN_LARVA_EARLY
 	var/latejoin_larva_drop = LATEJOIN_MARINES_PER_LATEJOIN_LARVA //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
 	/// Amount of latejoin_tally already awarded as larvas
 	var/latejoin_larva_used = 0
@@ -175,43 +176,46 @@ Additional game mode variables.
 
 	if(pred_candidate) pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
-#define calculate_pred_max (floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count)
+/datum/game_mode/proc/calculate_pred_max()
+	return floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count
 
-/datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = 1)
-
+/datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = TRUE)
 	if(!pred_candidate.client)
 		return
 
-	var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 
-	if(!J)
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
-		return
+	if(!pred_job)
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
+		return FALSE
 
 	if(!(pred_candidate?.client.check_whitelist_status(WHITELIST_PREDATOR)))
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
-		return
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
+		return FALSE
 
 	if(!(flags_round_type & MODE_PREDATOR))
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
-		return
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
+		return FALSE
 
 	if(pred_candidate.ckey in predators)
 		if(show_warning)
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
-		return
+		return FALSE
 
-	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
-		return
-	if(J.get_whitelist_status(pred_candidate.client) == WHITELIST_NORMAL)
-		var/pred_max = calculate_pred_max
+	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(pred_job.get_whitelist_status(pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return FALSE
+
+	if(pred_job.get_whitelist_status(pred_candidate.client) == WHITELIST_NORMAL)
+		var/pred_max = calculate_pred_max()
 		if(pred_current_num >= pred_max)
-			if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
-			return
+			if(show_warning)
+				to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
+			return FALSE
 
-	return 1
-
-#undef calculate_pred_max
+	return TRUE
 
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
 	set waitfor = FALSE

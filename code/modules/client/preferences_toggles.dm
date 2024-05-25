@@ -264,6 +264,7 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_help_intent_safety'>Toggle Help Intent Safety</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ammo_display_type'>Toggle Semi-Auto Ammo Counter</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_click'>Toggle Middle Mouse Ability Activation</a><br>",
@@ -313,6 +314,12 @@
 		to_chat(src, msg)
 	else
 		to_chat(src, SPAN_BOLDNOTICE("Guns with auto-ejectors will automatically eject their magazines."))
+	prefs.save_preferences()
+
+
+/client/proc/toggle_ammo_display_type()
+	prefs.toggle_prefs ^= TOGGLE_AMMO_DISPLAY_TYPE
+	to_chat(usr, SPAN_NOTICE("Guns in semi-automatic mode will now display the ammo on every [SPAN_BOLD(prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE ? "fifth bullet and when the mag has less than 15 rounds left" : "single bullet")]"))
 	prefs.save_preferences()
 
 /client/proc/toggle_auto_eject_to_hand() // Toggle whether guns with auto-ejectors will eject their magazines to your offhand

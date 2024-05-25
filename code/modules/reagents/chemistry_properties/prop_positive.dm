@@ -852,8 +852,10 @@
 /datum/chem_property/positive/disrupting/reaction_mob(mob/M, method=TOUCH, volume, potency)
 	if(!isxeno(M))
 		return
-	var/mob/living/carbon/xenomorph/X = M
-	X.AddComponent(/datum/component/status_effect/interference, volume * potency, 90)
+	var/mob/living/carbon/xenomorph/xeno = M
+	if(!HAS_TRAIT(xeno , TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(xeno , SPAN_XENOHIGHDANGER("Your awareness dims to a small area!"))
+	xeno.AddComponent(/datum/component/status_effect/interference, volume * potency, 90)
 
 /datum/chem_property/positive/neutralizing
 	name = PROPERTY_NEUTRALIZING
@@ -878,8 +880,8 @@
 	var/mob/living/L = M
 	L.ExtinguishMob() //Extinguishes mobs on contact
 	if(isxeno(L))
-		var/mob/living/carbon/xenomorph/X = M
-		X.plasma_stored = max(X.plasma_stored - POTENCY_MULTIPLIER_HIGH * volume * potency, 0)
+		var/mob/living/carbon/xenomorph/xeno = M
+		xeno.plasma_stored = max(xeno.plasma_stored - POTENCY_MULTIPLIER_HIGH * volume * potency, 0)
 
 /datum/chem_property/positive/neutralizing/reaction_turf(turf/T, volume, potency)
 	if(!istype(T))

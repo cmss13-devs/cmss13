@@ -144,6 +144,8 @@
 		return
 	return ..()
 
+/datum/ammo/rocket/ap/tank_towlauncher
+	max_range = 8
 
 /datum/ammo/rocket/ltb
 	name = "cannon round"

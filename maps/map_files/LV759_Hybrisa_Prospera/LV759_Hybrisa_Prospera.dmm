@@ -31201,6 +31201,16 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/north_east_caves)
+"fbY" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_on{
+	dir = 4;
+	light_color = "#00da64";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5
+	},
+/turf/closed/wall/hybrisa/spaceport_unmeltable,
+/area/lv759/oob)
 "fce" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4
@@ -45370,7 +45380,7 @@
 /area/lv759/indoors/wy_research_complex_entrance)
 "hpc" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorbig_off{
-	dir = 1
+	dir = 4
 	},
 /turf/closed/wall/hybrisa/spaceport_unmeltable,
 /area/lv759/oob)
@@ -55654,12 +55664,12 @@
 /area/lv759/indoors/spaceport/docking_bay_1)
 "iXN" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_on{
-	dir = 1;
+	dir = 4;
 	light_color = "#00da64";
 	light_on = 1;
 	light_power = 3;
 	light_range = 5;
-	pixel_x = 2
+	pixel_x = 4
 	},
 /turf/closed/wall/hybrisa/spaceport_unmeltable,
 /area/lv759/oob)
@@ -121182,9 +121192,13 @@
 	},
 /area/lv759/indoors/mining_outpost/east_deploymentbay)
 "tzy" = (
-/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_off{
-	dir = 1;
-	pixel_x = 3
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 4;
+	dir = 4
 	},
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
@@ -132566,7 +132580,7 @@
 /area/lv759/indoors/bar/bathroom)
 "vrc" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorbig_on{
-	dir = 1;
+	dir = 4;
 	light_color = "#00da64";
 	light_on = 1;
 	light_power = 3;
@@ -152909,7 +152923,7 @@ eNr
 aKR
 mzY
 cRq
-iWh
+fbY
 xTC
 oaS
 ptg

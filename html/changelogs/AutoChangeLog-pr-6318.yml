@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added access check for use of escape pod consoles, and access requirement on the CLs pod."

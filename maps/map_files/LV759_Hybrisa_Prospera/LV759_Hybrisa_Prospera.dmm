@@ -3316,6 +3316,11 @@
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/hybrisa/colony/engineering/reinforced,
 /area/lv759/indoors/garage_restroom)
+"aCK" = (
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/outdoors/caveplateau)
 "aCO" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -9112,6 +9117,12 @@
 	icon_state = "officetiles"
 	},
 /area/lv759/indoors/wy_research_complex/xenobiology)
+"bzr" = (
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer2,
+/area/lv759/indoors/south_west_caves)
 "bzs" = (
 /turf/open/hybrisa/street/roadlines4,
 /area/lv759/outdoors/landing_zone_2)
@@ -11081,6 +11092,14 @@
 	icon_state = "officetiles"
 	},
 /area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"bRK" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/lv759/indoors/central_caves)
 "bRM" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -12985,6 +13004,12 @@
 	dir = 8
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
+"chQ" = (
+/obj/structure/platform_decoration/hybrisa/rockdark{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/indoors/central_caves)
 "chR" = (
 /obj/effect/hybrisa/decal/road/roadmiddle{
 	dir = 8;
@@ -18782,7 +18807,7 @@
 "dbH" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3,
 /turf/open/auto_turf/hybrisashale/layer2,
-/area/lv759/indoors/central_caves)
+/area/lv759/indoors/west_caves)
 "dbM" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 1
@@ -31540,6 +31565,10 @@
 	icon_state = "floor_marked"
 	},
 /area/lv759/indoors/recycling_plant)
+"ffn" = (
+/obj/structure/platform/hybrisa/rockdark,
+/turf/open/auto_turf/hybrisashale/layer2,
+/area/lv759/indoors/south_west_caves)
 "ffp" = (
 /obj/structure/bed/chair/wheelchair{
 	dir = 8
@@ -38890,7 +38919,7 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 8
 	},
-/turf/open/auto_turf/hybrisashale/layer1,
+/turf/open/auto_turf/hybrisashale/layer2,
 /area/lv759/indoors/south_west_caves)
 "gon" = (
 /obj/structure/barricade/handrail/medical{
@@ -57129,7 +57158,6 @@
 	dir = 1;
 	layer = 1
 	},
-/obj/structure/machinery/big_computers/computerwhite/computer3,
 /obj/structure/cable/white{
 	color = "550d0d";
 	icon_state = "2-10";
@@ -60765,6 +60793,12 @@
 	dir = 4
 	},
 /area/lv759/indoors/derelict_ship)
+"jRR" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/turf/open/floor/plating,
+/area/lv759/indoors/central_caves)
 "jRU" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/prison{
@@ -66865,6 +66899,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/south_east_street)
+"kNr" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+	dir = 1
+	},
+/obj/structure/inflatable/popped/door,
+/turf/open/engineership/engineer_floor2,
+/area/lv759/indoors/derelict_ship)
 "kNv" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced/colony{
 	autoname = 1;
@@ -71210,6 +71251,11 @@
 	icon_state = "black"
 	},
 /area/lv759/indoors/wy_research_complex/mainlabs)
+"lwB" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform1,
+/obj/structure/inflatable/popped/door,
+/turf/open/engineership/engineer_floor9,
+/area/lv759/indoors/derelict_ship)
 "lwF" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
@@ -72253,6 +72299,10 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
+"lFf" = (
+/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark3,
+/turf/open/auto_turf/hybrisashale/layer0_plate,
+/area/lv759/outdoors/caveplateau)
 "lFg" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating{
@@ -73046,6 +73096,12 @@
 	},
 /turf/open/engineership/engineer_floor9,
 /area/lv759/indoors/derelict_ship)
+"lLK" = (
+/obj/effect/hybrisa/decal/grate{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/caveplateau)
 "lLN" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -80304,11 +80360,11 @@
 	layer = 5;
 	level = 2
 	},
-/obj/structure/machinery/big_computers/computerwhite/computer4,
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2
 	},
+/obj/effect/spawner/random/pills/highchance,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/wy_research_complex/mainlabs)
 "mVZ" = (
@@ -83837,14 +83893,6 @@
 	icon_state = "cargo"
 	},
 /area/lv759/indoors/spaceport/baggagehandling)
-"nCQ" = (
-/obj/structure/platform/hybrisa/rockdark{
-	dir = 8
-	},
-/turf/open/auto_turf/sand_white/layer0{
-	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
-	},
-/area/lv759/indoors/central_caves)
 "nCR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -96182,7 +96230,8 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/auto_turf/hybrisashale/layer2,
+/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark2,
+/turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caveplateau)
 "pzY" = (
 /obj/structure/surface/rack,
@@ -100548,6 +100597,10 @@
 "qlQ" = (
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/maintenance)
+"qlT" = (
+/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark2,
+/turf/open/auto_turf/hybrisashale/layer2,
+/area/lv759/outdoors/caveplateau)
 "qlW" = (
 /turf/closed/wall/r_wall/biodome,
 /area/lv759/indoors/wy_research_complex/medical_annex)
@@ -109111,6 +109164,9 @@
 	icon_state = "0-2";
 	layer = 5
 	},
+/obj/structure/machinery/chem_storage/research{
+	icon_state = "protolathe"
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blackfull"
@@ -110087,13 +110143,11 @@
 	},
 /area/lv759/indoors/east_caves)
 "rLc" = (
-/obj/structure/machinery/chem_storage/research{
-	icon_state = "operator"
-	},
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2
 	},
+/obj/structure/machinery/big_computers/computerwhite/computer5,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/wy_research_complex/mainlabs)
 "rLf" = (
@@ -113224,6 +113278,15 @@
 	icon_state = "officetiles"
 	},
 /area/lv759/indoors/weymart/backrooms)
+"slq" = (
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 1
+	},
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer2,
+/area/lv759/indoors/south_west_caves)
 "slw" = (
 /turf/open/floor/hybrisa/metal/stripe_red{
 	dir = 4
@@ -119418,7 +119481,7 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 8
 	},
-/turf/open/auto_turf/hybrisashale/layer1,
+/turf/open/auto_turf/hybrisashale/layer2,
 /area/lv759/indoors/south_west_caves)
 "tkK" = (
 /obj/structure/sign/poster/pimp,
@@ -123082,10 +123145,12 @@
 	},
 /area/lv759/indoors/east_caves)
 "tQz" = (
-/obj/effect/spawner/random/pills/highchance,
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2
+	},
+/obj/structure/machinery/chem_storage/research{
+	icon_state = "operator"
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/wy_research_complex/mainlabs)
@@ -137543,7 +137608,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/lv759/indoors/central_caves)
+/area/lv759/outdoors/caveplateau)
 "wgx" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -4;
@@ -138305,6 +138370,21 @@
 	icon_state = "multi_tiles"
 	},
 /area/lv759/indoors/wy_research_complex/vehicledeploymentbay)
+"wnj" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = 16;
+	pixel_y = -15
+	},
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "orange_edge"
+	},
+/area/lv759/indoors/wy_research_complex/hangarbay)
 "wnm" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/cans/souto,
@@ -145950,9 +146030,7 @@
 	dir = 1;
 	layer = 1
 	},
-/obj/structure/machinery/chem_storage/research{
-	icon_state = "protolathe"
-	},
+/obj/structure/machinery/big_computers/computerwhite/computer3,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blackfull"
@@ -151510,11 +151588,11 @@ bFx
 jKB
 gHM
 huZ
-xVD
-xVD
+wnj
+wnj
 huZ
-xVD
-xVD
+wnj
+wnj
 huZ
 xVD
 rBK
@@ -165358,7 +165436,7 @@ unn
 unn
 udz
 udz
-bfH
+gbg
 vuP
 vuP
 vuP
@@ -165610,8 +165688,8 @@ udz
 udz
 udz
 bfH
-tHg
-bfH
+wKx
+gbg
 gbg
 vuP
 vuP
@@ -165862,9 +165940,9 @@ udz
 udz
 bfH
 udz
-udz
-bfH
-udz
+vuP
+gbg
+vuP
 gbg
 wKx
 gbg
@@ -166114,10 +166192,10 @@ bfH
 bfH
 udz
 bfH
-udz
-udz
-bfH
-tHg
+vuP
+vuP
+gbg
+wKx
 vuP
 vuP
 kDd
@@ -166366,10 +166444,10 @@ udz
 udz
 bfH
 udz
-bfH
-udz
-bfH
-udz
+gbg
+vuP
+gbg
+vuP
 vuP
 wKx
 vuP
@@ -166619,9 +166697,9 @@ udz
 bfH
 tHg
 unn
-tHg
-udz
-udz
+wKx
+vuP
+vuP
 hnk
 vuP
 ijl
@@ -166631,7 +166709,7 @@ unn
 unn
 unn
 unn
-vuP
+qpQ
 pLV
 pLV
 pLV
@@ -166647,7 +166725,7 @@ pLV
 vuP
 pLV
 vuP
-unn
+wKx
 unn
 unn
 unn
@@ -166872,7 +166950,7 @@ tHg
 unn
 unn
 unn
-tHg
+wKx
 unn
 unn
 vuP
@@ -167136,7 +167214,7 @@ unn
 unn
 unn
 unn
-vuP
+sQm
 pLV
 pLV
 pLV
@@ -169610,7 +169688,7 @@ bcA
 bcA
 unn
 unn
-wgs
+hEl
 unn
 unn
 unn
@@ -169848,22 +169926,22 @@ unn
 unn
 unn
 unn
-rHL
-oYd
-oYd
-prc
-oYd
-prc
-prc
-smq
-smq
-prc
-smq
-smq
-prc
-prc
-prc
-oYd
+tHg
+udz
+udz
+bfH
+udz
+bfH
+bfH
+bcA
+bcA
+bfH
+bcA
+bcA
+bfH
+bfH
+bfH
+udz
 unn
 unn
 unn
@@ -170340,7 +170418,7 @@ udz
 unn
 tHg
 unn
-oYd
+udz
 dbH
 unn
 unn
@@ -170595,7 +170673,7 @@ unn
 oYd
 oYd
 unn
-unn
+rHL
 unn
 unn
 unn
@@ -170847,8 +170925,8 @@ unn
 rHL
 rHL
 dFq
+oYd
 rHL
-unn
 unn
 aJN
 unn
@@ -170920,10 +170998,10 @@ auT
 mRH
 iOu
 uwI
-vuP
+wKx
 pLV
 pLV
-nRp
+ffn
 qlM
 cjq
 auT
@@ -171097,8 +171175,8 @@ unn
 unn
 vcA
 qki
-nCQ
-fBd
+qki
+chQ
 prc
 oYd
 rHL
@@ -171171,7 +171249,7 @@ lOV
 auT
 auT
 mRH
-xBR
+slq
 uwI
 vuP
 pLV
@@ -171351,7 +171429,7 @@ oYd
 prc
 prc
 prc
-prc
+oYd
 prc
 prc
 prc
@@ -171426,7 +171504,7 @@ auT
 mRH
 oEA
 vuu
-whG
+bzr
 whG
 tkI
 pQu
@@ -171928,7 +172006,7 @@ hMP
 uEr
 lOV
 auT
-dpI
+kNr
 woC
 auT
 auT
@@ -172136,7 +172214,7 @@ unn
 unn
 oYd
 prc
-prc
+oYd
 prc
 unn
 unn
@@ -172181,7 +172259,7 @@ hMP
 uEr
 rjM
 fEm
-oRp
+lwB
 auT
 auT
 nSu
@@ -172389,8 +172467,8 @@ pSI
 oYd
 prc
 prc
-prc
 oYd
+rHL
 unn
 unn
 unn
@@ -173401,7 +173479,7 @@ prc
 oYd
 prc
 prc
-prc
+oYd
 rHL
 unn
 oYd
@@ -173652,11 +173730,11 @@ prc
 prc
 oYd
 prc
-prc
-prc
+oYd
+oYd
 prc
 rHL
-prc
+oYd
 prc
 smq
 smq
@@ -173680,7 +173758,7 @@ xAQ
 iep
 jbZ
 iep
-unn
+iep
 unn
 qqW
 lie
@@ -173908,8 +173986,8 @@ prc
 prc
 oYd
 prc
-prc
-prc
+oYd
+rHL
 prc
 prc
 prc
@@ -173933,7 +174011,7 @@ guz
 iep
 guz
 oCt
-tbU
+guz
 unn
 unn
 qqW
@@ -174162,7 +174240,7 @@ prc
 prc
 prc
 prc
-prc
+oYd
 rHL
 oYd
 rHL
@@ -174183,9 +174261,9 @@ fHp
 unn
 bbE
 jfJ
+uDj
 jfJ
-jfJ
-guz
+iep
 dXq
 pzV
 unn
@@ -174669,7 +174747,7 @@ smq
 smq
 prc
 prc
-oYd
+guz
 mil
 lHS
 qqW
@@ -174921,7 +174999,7 @@ smq
 smq
 prc
 prc
-prc
+aCK
 guz
 srR
 guz
@@ -174942,9 +175020,9 @@ iep
 guG
 guG
 iep
-srR
+hmj
 jbZ
-byX
+lFf
 unn
 unn
 unn
@@ -175172,8 +175250,8 @@ prc
 prc
 prc
 prc
-smq
-smq
+guG
+guG
 iLf
 vJi
 iep
@@ -175202,7 +175280,7 @@ unn
 unn
 unn
 qAK
-guz
+jbZ
 srR
 izU
 bGa
@@ -175424,8 +175502,8 @@ oYd
 prc
 oYd
 prc
-smq
-jmf
+guG
+lLK
 guG
 guG
 vJi
@@ -175446,7 +175524,7 @@ iep
 guz
 jbZ
 iep
-guz
+iep
 guz
 nnj
 unn
@@ -175636,8 +175714,8 @@ unn
 unn
 unn
 unn
-gkN
-pUT
+jRR
+bRK
 unn
 unn
 unn
@@ -175676,7 +175754,7 @@ rHL
 pTu
 pSI
 wgv
-prc
+aCK
 mnW
 guG
 guG
@@ -175692,14 +175770,14 @@ iep
 guG
 guG
 iep
-guz
+iep
 guz
 jbZ
 guz
 iep
 guG
 guG
-guz
+iep
 guz
 guz
 wZa
@@ -175888,7 +175966,7 @@ oYd
 unn
 unn
 anK
-pUT
+bRK
 oYd
 eSF
 unn
@@ -175927,7 +176005,7 @@ ohF
 oYd
 unn
 unn
-rHL
+jbZ
 guz
 iep
 mnW
@@ -175945,14 +176023,14 @@ guG
 guG
 guz
 guz
-guz
+iep
 srR
 guz
 guz
 guG
 guG
 iep
-guz
+iep
 guz
 iep
 guz
@@ -176176,7 +176254,7 @@ cgb
 nqH
 aJN
 unn
-oYd
+rHL
 unn
 unn
 unn
@@ -176196,7 +176274,7 @@ iep
 guz
 srR
 jbZ
-nBd
+guz
 jbZ
 guz
 iep
@@ -176971,7 +177049,7 @@ iep
 guz
 oPD
 iep
-guz
+jbZ
 unn
 lHS
 qqW
@@ -178456,7 +178534,7 @@ iep
 iep
 guz
 jbZ
-nBd
+guz
 unn
 unn
 unn
@@ -178473,7 +178551,7 @@ iep
 iep
 mJk
 iep
-mil
+guz
 iep
 iep
 iep
@@ -178482,10 +178560,10 @@ iep
 iep
 nnj
 unn
-jbZ
+qlT
 unn
-guz
-iep
+byX
+jbZ
 iep
 jbZ
 aef
@@ -178726,17 +178804,17 @@ iep
 lhd
 guz
 jbZ
-srR
-guz
+mil
+jbZ
 iep
 iep
 guz
 guz
 jbZ
 guz
+jbZ
 guz
-guz
-iep
+jbZ
 iep
 iep
 guz
@@ -178959,7 +179037,7 @@ iep
 bxT
 guG
 guz
-nBd
+guz
 unn
 unn
 unn
@@ -178978,13 +179056,13 @@ iep
 guz
 unn
 unn
-unn
+srR
 guz
 guz
 iep
 iep
-byX
-tbU
+guz
+guz
 jbZ
 iep
 iep
@@ -180489,14 +180567,14 @@ dCi
 iep
 jfJ
 mIc
-guz
-unn
+byX
 unn
 unn
 guz
 iep
+iep
 guG
-qHc
+guG
 iep
 iep
 iep
@@ -181055,8 +181133,8 @@ nvw
 mak
 mak
 nvw
-unn
-unn
+tmD
+tmD
 unn
 whP
 kEs
@@ -181743,7 +181821,7 @@ unn
 unn
 jbZ
 unn
-guz
+tbU
 unn
 jbZ
 guz
@@ -182256,7 +182334,7 @@ guG
 vJi
 jbZ
 srR
-unn
+guz
 unn
 unn
 unn
@@ -182506,7 +182584,7 @@ mnW
 guG
 guG
 iwx
-guz
+iep
 guz
 unn
 unn
@@ -183005,7 +183083,7 @@ jbZ
 guz
 byX
 guz
-guz
+iep
 iep
 iep
 iep
@@ -183569,7 +183647,7 @@ unn
 unn
 unn
 unn
-unn
+tmD
 nvw
 eGI
 mak
@@ -183821,7 +183899,7 @@ unn
 unn
 unn
 unn
-unn
+tmD
 nvw
 xvo
 mak
@@ -184017,7 +184095,7 @@ iep
 iep
 iep
 guz
-guz
+iep
 iep
 iep
 piw
@@ -184268,7 +184346,7 @@ guz
 iep
 iep
 iep
-guz
+iep
 guz
 iep
 lhd
@@ -189096,7 +189174,7 @@ beZ
 kDA
 beZ
 kDA
-nBd
+hdz
 unn
 unn
 unn
@@ -189599,7 +189677,7 @@ unn
 beZ
 lAE
 beZ
-fQt
+unn
 unn
 unn
 unn

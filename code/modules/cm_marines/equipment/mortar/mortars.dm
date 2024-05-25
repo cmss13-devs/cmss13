@@ -31,6 +31,8 @@
 	var/firing = FALSE
 	/// If set to 1, can't unanchor and move the mortar, used for map spawns and WO
 	var/fixed = FALSE
+	/// if true, blows up the shell immediately
+	var/ship_side = FALSE
 
 	var/obj/structure/machinery/computer/cameras/mortar/internal_camera
 
@@ -56,28 +58,28 @@
 	else
 		return FALSE
 
-/obj/structure/mortar/attack_alien(mob/living/carbon/xenomorph/M)
-	if(islarva(M))
+/obj/structure/mortar/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(islarva(xeno))
 		return XENO_NO_DELAY_ACTION
 
 	if(fixed)
-		to_chat(M, SPAN_XENOWARNING("\The [src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there."))
+		to_chat(xeno, SPAN_XENOWARNING("\The [src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there."))
 		return XENO_NO_DELAY_ACTION
 
 	if(firing)
-		M.animation_attack_on(src)
-		M.flick_attack_overlay(src, "slash")
+		xeno.animation_attack_on(src)
+		xeno.flick_attack_overlay(src, "slash")
 		playsound(src, "acid_hit", 25, 1)
-		playsound(M, "alien_help", 25, 1)
-		M.apply_damage(10, BURN)
-		M.visible_message(SPAN_DANGER("[M] tried to knock the steaming hot [src] over, but burned itself and pulled away!"),
+		playsound(xeno, "alien_help", 25, 1)
+		xeno.apply_damage(10, BURN)
+		xeno.visible_message(SPAN_DANGER("[xeno] tried to knock the steaming hot [src] over, but burned itself and pulled away!"),
 		SPAN_XENOWARNING("\The [src] is burning hot! Wait a few seconds."))
 		return XENO_ATTACK_ACTION
 
-	M.visible_message(SPAN_DANGER("[M] lashes at \the [src] and knocks it over!"),
+	xeno.visible_message(SPAN_DANGER("[xeno] lashes at \the [src] and knocks it over!"),
 	SPAN_DANGER("You knock \the [src] over!"))
-	M.animation_attack_on(src)
-	M.flick_attack_overlay(src, "slash")
+	xeno.animation_attack_on(src)
+	xeno.flick_attack_overlay(src, "slash")
 	playsound(loc, 'sound/effects/metalhit.ogg', 25)
 	var/obj/item/mortar_kit/MK = new /obj/item/mortar_kit(loc)
 	MK.name = name
@@ -171,8 +173,8 @@
 	SPAN_NOTICE("You finish adjusting [src]'s firing angle and distance to match the new coordinates."))
 	targ_x = deobfuscate_x(temp_targ_x)
 	targ_y = deobfuscate_y(temp_targ_y)
-	var/offset_x_max = round(abs((targ_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 20 tiles travelled
-	var/offset_y_max = round(abs((targ_y) - y)/offset_per_turfs)
+	var/offset_x_max = floor(abs((targ_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 20 tiles travelled
+	var/offset_y_max = floor(abs((targ_y) - y)/offset_per_turfs)
 	offset_x = rand(-offset_x_max, offset_x_max)
 	offset_y = rand(-offset_y_max, offset_y_max)
 
@@ -206,40 +208,47 @@
 
 	SStgui.update_uis(src)
 
-/obj/structure/mortar/attackby(obj/item/O, mob/user)
-	if(istype(O, /obj/item/mortar_shell))
-		var/obj/item/mortar_shell/mortar_shell = O
+/obj/structure/mortar/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/mortar_shell))
+		var/obj/item/mortar_shell/mortar_shell = item
+		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
+		var/area/target_area = get_area(target_turf)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't have the training to fire [src]."))
 			return
 		if(busy)
 			to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 			return
-		if(!is_ground_level(z))
-			to_chat(user, SPAN_WARNING("You cannot fire [src] here."))
-			return
-		if(targ_x == 0 && targ_y == 0) //Mortar wasn't set
-			to_chat(user, SPAN_WARNING("[src] needs to be aimed first."))
-			return
-		var/turf/T = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
-		if(!T)
-			to_chat(user, SPAN_WARNING("You cannot fire [src] to this target."))
-			return
-		var/area/A = get_area(T)
-		if(!istype(A))
-			to_chat(user, SPAN_WARNING("This area is out of bounds!"))
-			return
-		if(CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2) || protected_by_pylon(TURF_PROTECTION_MORTAR, T))
-			to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
-			return
-		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) && A.is_landing_zone)
-			to_chat(user, SPAN_WARNING("You cannot bomb the landing zone!"))
-			return
+		if(!ship_side)
+			if(targ_x == 0 && targ_y == 0) //Mortar wasn't set
+				to_chat(user, SPAN_WARNING("[src] needs to be aimed first."))
+				return
+			if(!target_turf)
+				to_chat(user, SPAN_WARNING("You cannot fire [src] to this target."))
+				return
+			if(!istype(target_area))
+				to_chat(user, SPAN_WARNING("This area is out of bounds!"))
+				return
+			if(CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_2) || protected_by_pylon(TURF_PROTECTION_MORTAR, target_turf))
+				to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
+				return
+			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) && target_area.is_landing_zone)
+				to_chat(user, SPAN_WARNING("You cannot bomb the landing zone!"))
+				return
 
-		//Small amount of spread so that consecutive mortar shells don't all land on the same tile
-		var/turf/T1 = locate(T.x + pick(-1,0,0,1), T.y + pick(-1,0,0,1), T.z)
-		if(T1)
-			T = T1
+		if(ship_side)
+			var/crash_occurred = (SSticker?.mode?.is_in_endgame)
+			if(crash_occurred)
+				var/turf/our_turf = get_turf(src)
+				target_turf = our_turf
+				travel_time = 0.5 SECONDS
+			else
+				to_chat(user, SPAN_RED("You realize how bad of an idea this is and quickly stop."))
+				return
+		else
+			var/turf/deviation_turf = locate(target_turf.x + pick(-1,0,0,1), target_turf.y + pick(-1,0,0,1), target_turf.z) //Small amount of spread so that consecutive mortar shells don't all land on the same tile
+			if(deviation_turf)
+				target_turf = deviation_turf
 
 		user.visible_message(SPAN_NOTICE("[user] starts loading \a [mortar_shell.name] into [src]."),
 		SPAN_NOTICE("You start loading \a [mortar_shell.name] into [src]."))
@@ -259,15 +268,15 @@
 			mortar_shell.cause_data = create_cause_data(initial(mortar_shell.name), user, src)
 			mortar_shell.forceMove(src)
 
-			var/turf/G = get_turf(src)
-			G.ceiling_debris_check(2)
+			var/turf/mortar_turf = get_turf(src)
+			mortar_turf.ceiling_debris_check(2)
 
-			for(var/mob/M in range(7))
-				shake_camera(M, 3, 1)
+			for(var/mob/mob in range(7))
+				shake_camera(mob, 3, 1)
 
-			addtimer(CALLBACK(src, PROC_REF(handle_shell), T, mortar_shell), travel_time)
+			addtimer(CALLBACK(src, PROC_REF(handle_shell), target_turf, mortar_shell), travel_time)
 
-	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't have the training to undeploy [src]."))
 			return
@@ -287,11 +296,11 @@
 			user.visible_message(SPAN_NOTICE("[user] undeploys [src]."), \
 				SPAN_NOTICE("You undeploy [src]."))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-			var/obj/item/mortar_kit/M = new /obj/item/mortar_kit(loc)
-			M.name = src.name
+			var/obj/item/mortar_kit/mortar = new /obj/item/mortar_kit(loc)
+			mortar.name = src.name
 			qdel(src)
 
-	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
+	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.visible_message(SPAN_NOTICE("[user] toggles the targeting computer on [src]."), \
 				SPAN_NOTICE("You toggle the targeting computer on [src]."))
@@ -303,29 +312,45 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 
+/obj/effect/mortar_effect
+	icon = 'icons/obj/structures/mortar.dmi'
+	icon_state = "mortar_ammo_custom"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	invisibility = INVISIBILITY_MAXIMUM
+
 /obj/structure/mortar/proc/handle_shell(turf/target, obj/item/mortar_shell/shell)
 	if(protected_by_pylon(TURF_PROTECTION_MORTAR, target))
 		firing = FALSE
 		return
 
+	if(ship_side)
+		var/turf/our_turf = get_turf(src)
+		shell.detonate(our_turf)
+		return
+
+	if(istype(shell, /obj/item/mortar_shell/custom)) // big shell warning for ghosts
+		var/obj/effect/effect = new /obj/effect/mortar_effect(target)
+		QDEL_IN(effect, 5 SECONDS)
+		notify_ghosts(header = "Custom Shell", message = "A custom mortar shell is about to land at [get_area(target)].", source = effect)
+
 	playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
 	var/relative_dir
-	for(var/mob/M in range(15, target))
-		if(get_turf(M) == target)
+	for(var/mob/mob in range(15, target))
+		if(get_turf(mob) == target)
 			relative_dir = 0
 		else
-			relative_dir = Get_Compass_Dir(M, target)
-		M.show_message( \
+			relative_dir = Get_Compass_Dir(mob, target)
+		mob.show_message( \
 			SPAN_DANGER("A SHELL IS COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(2.5 SECONDS) // Sleep a bit to give a message
-	for(var/mob/M in range(10, target))
-		if(get_turf(M) == target)
+	for(var/mob/mob in range(10, target))
+		if(get_turf(mob) == target)
 			relative_dir = 0
 		else
-			relative_dir = Get_Compass_Dir(M, target)
-		M.show_message( \
+			relative_dir = Get_Compass_Dir(mob, target)
+		mob.show_message( \
 			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
@@ -338,6 +363,9 @@
 
 /obj/structure/mortar/proc/can_fire_at(mob/user, test_targ_x = targ_x, test_targ_y = targ_y, test_dial_x, test_dial_y)
 	var/dialing = test_dial_x || test_dial_y
+	if(ship_side)
+		to_chat(user, SPAN_WARNING("You cannot aim the mortar while on a ship."))
+		return FALSE
 	if(test_dial_x + test_targ_x > world.maxx || test_dial_x + test_targ_x < 0)
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is outside of the area of operations."))
 		return FALSE
@@ -385,21 +413,23 @@
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't have the training to deploy [src]."))
 		return
-	if(!is_ground_level(deploy_turf.z))
-		to_chat(user, SPAN_WARNING("You cannot deploy [src] here."))
-		return
-	var/area/A = get_area(deploy_turf)
-	if(CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_1))
+	var/area/area = get_area(deploy_turf)
+	if(CEILING_IS_PROTECTED(area.ceiling, CEILING_PROTECTION_TIER_1) && is_ground_level(deploy_turf.z))
 		to_chat(user, SPAN_WARNING("You probably shouldn't deploy [src] indoors."))
 		return
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
 		SPAN_NOTICE("You start deploying [src]."))
 	playsound(deploy_turf, 'sound/items/Deconstruct.ogg', 25, 1)
 	if(do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
-			SPAN_NOTICE("You deploy [src]."))
+		var/obj/structure/mortar/mortar = new /obj/structure/mortar(deploy_turf)
+		if(!is_ground_level(deploy_turf.z))
+			mortar.ship_side = TRUE
+			user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
+				SPAN_NOTICE("You deploy [src]. This is a bad idea."))
+		else
+			user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
+				SPAN_NOTICE("You deploy [src]."))
 		playsound(deploy_turf, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)
-		var/obj/structure/mortar/M = new /obj/structure/mortar(deploy_turf)
-		M.name = src.name
-		M.setDir(user.dir)
+		mortar.name = src.name
+		mortar.setDir(user.dir)
 		qdel(src)

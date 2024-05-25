@@ -444,7 +444,7 @@
 "anl" = (
 /obj/item/pamphlet/engineer,
 /obj/structure/closet,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
@@ -2947,7 +2947,7 @@
 /area/fiorina/lz/near_lzI)
 "bMG" = (
 /obj/structure/surface/rack,
-/obj/item/handcuffs/zip,
+/obj/item/restraint/handcuffs/zip,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -18049,7 +18049,7 @@
 /area/fiorina/tumor/civres)
 "kWv" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "kWx" = (
@@ -19576,7 +19576,7 @@
 	},
 /area/fiorina/station/lowsec)
 "lNv" = (
-/obj/item/handcuffs/cable/pink,
+/obj/item/restraint/adjustable/cable/pink,
 /turf/open/floor/prison/chapel_carpet{
 	dir = 1;
 	icon_state = "doubleside"
@@ -22085,6 +22085,7 @@
 	dir = 8;
 	health = 80
 	},
+/obj/structure/medical_supply_link,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white"
@@ -27463,6 +27464,12 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison,
 /area/fiorina/station/civres_blue)
+"qHi" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "riot_control"
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
 "qHG" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 25
@@ -30998,7 +31005,7 @@
 /area/fiorina/tumor/ice_lab)
 "sQC" = (
 /obj/structure/surface/rack,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -38280,7 +38287,7 @@
 /area/fiorina/station/chapel)
 "xoK" = (
 /obj/structure/closet,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/clothing/mask/muzzle,
 /obj/item/weapon/chainofcommand,
 /turf/open/floor/wood,
@@ -68528,7 +68535,7 @@ uGY
 ihB
 ihB
 ubP
-ubP
+qHi
 gag
 sbF
 sbF
@@ -69572,12 +69579,12 @@ ihB
 ceC
 obh
 obh
-nqN
+ceC
 bxc
 jbF
 bBK
 ceC
-uGY
+ceC
 uGY
 uGY
 uGY
@@ -69996,7 +70003,7 @@ stw
 wQg
 qet
 mKp
-nqN
+ceC
 qJv
 bqF
 tNF
@@ -70203,15 +70210,15 @@ kjX
 ueP
 gag
 hQj
-nqN
-nqN
-nqN
-nqN
-nqN
-nqN
+uGY
+uGY
+uGY
+uGY
+uGY
 ceC
-nqN
-nqN
+ceC
+ceC
+ceC
 ceC
 unz
 gag
@@ -70644,7 +70651,7 @@ uGY
 ppq
 ubP
 ihB
-nqN
+uGY
 lJx
 fAf
 fAf
@@ -71054,7 +71061,7 @@ qdE
 uGY
 ltQ
 ltQ
-nqN
+uGY
 ltQ
 ayo
 uGY
@@ -71266,7 +71273,7 @@ uGY
 uGY
 fRq
 fRq
-nqN
+uGY
 fRq
 ygr
 xGt
@@ -71704,7 +71711,7 @@ uGY
 ceC
 uGY
 uGY
-nqN
+uGY
 qQd
 jwK
 jwK
@@ -71897,8 +71904,8 @@ dCM
 dCM
 dCM
 nqN
-nqN
-nqN
+uGY
+uGY
 uxv
 ceC
 ceC

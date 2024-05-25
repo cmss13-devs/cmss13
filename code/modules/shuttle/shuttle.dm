@@ -19,6 +19,8 @@
 	  * port can be used in these places, or the docking port is compatible, etc.
 	  */
 	var/id
+	///The original template shuttle_id for this shuttle (so without a suffix identifier)
+	var/template_id
 	///Possible destinations
 	var/port_destinations
 	///this should point -away- from the dockingport door, ie towards the ship
@@ -105,9 +107,7 @@
 ///returns turfs within our projected rectangle in no particular order
 /obj/docking_port/proc/return_turfs()
 	var/list/L = return_coords()
-	var/turf/T0 = locate(L[1],L[2],z)
-	var/turf/T1 = locate(L[3],L[4],z)
-	return block(T0,T1)
+	return block(L[1], L[2], z, L[3], L[4], z)
 
 /obj/docking_port/proc/return_center_turf()
 	var/list/L = return_coords()
@@ -123,8 +123,8 @@
 		if(EAST)
 			cos = 0
 			sin = -1
-	var/_x = L[1] + (round(width/2))*cos - (round(height/2))*sin
-	var/_y = L[2] + (round(width/2))*sin + (round(height/2))*cos
+	var/_x = L[1] + (floor(width/2))*cos - (floor(height/2))*sin
+	var/_y = L[2] + (floor(width/2))*sin + (floor(height/2))*cos
 	return locate(_x, _y, z)
 
 //returns turfs within our projected rectangle in a specific order.
@@ -159,9 +159,7 @@
 //Debug proc used to highlight bounding area
 /obj/docking_port/proc/highlight(_color)
 	var/list/L = return_coords()
-	var/turf/T0 = locate(L[1],L[2],z)
-	var/turf/T1 = locate(L[3],L[4],z)
-	for(var/turf/T in block(T0,T1))
+	for(var/turf/T as anything in block(L[1], L[2], z, L[3], L[4], z))
 		T.color = _color
 		T.maptext = null
 	if(_color)
@@ -525,6 +523,7 @@
 			id = "[id][idnum]"
 		if(name == initial(name))
 			name = "[name] [idnum]"
+	template_id = template.shuttle_id // Value without the idnum
 	// ================ END CM Change ================
 
 	for(var/area/place as anything in shuttle_areas)
@@ -792,6 +791,10 @@
 			else if(error)
 				setTimer(20)
 				return
+			if(mode == SHUTTLE_CRASHED)
+				destination = null
+				timer = 0
+				return
 			if(rechargeTime)
 				set_mode(SHUTTLE_RECHARGING)
 				destination = null
@@ -810,6 +813,8 @@
 				setTimer(callTime * engine_coeff())
 				enterTransit()
 				return
+		if(SHUTTLE_CRASHED)
+			return
 
 	set_idle()
 

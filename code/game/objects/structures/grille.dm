@@ -112,7 +112,7 @@
 	if(Proj.ammo.damage_type == HALLOSS)
 		return 0
 
-	src.health -= round(Proj.damage*0.3)
+	src.health -= floor(Proj.damage*0.3)
 	healthcheck()
 	return 1
 

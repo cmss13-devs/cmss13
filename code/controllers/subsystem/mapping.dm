@@ -37,6 +37,9 @@ SUBSYSTEM_DEF(mapping)
 	/// list of traits and their associated z leves
 	var/list/z_trait_levels = list()
 
+	/// list of lazy templates that have been loaded
+	var/list/loaded_lazy_templates
+
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
 	if(!configs)
@@ -184,9 +187,9 @@ SUBSYSTEM_DEF(mapping)
 		var/x_offset = 1
 		var/y_offset = 1
 		if(bounds && world.maxx > bounds[MAP_MAXX])
-			x_offset = round(world.maxx / 2 - bounds[MAP_MAXX] / 2) + 1
+			x_offset = floor(world.maxx / 2 - bounds[MAP_MAXX] / 2) + 1
 		if(bounds && world.maxy > bounds[MAP_MAXY])
-			y_offset = round(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1
+			y_offset = floor(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1
 		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[pm], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
 		// CM Snowflake for Mass Screenshot dimensions auto detection
@@ -360,9 +363,7 @@ SUBSYSTEM_DEF(mapping)
 	if(!level_trait(z,ZTRAIT_RESERVED))
 		clearing_reserved_turfs = FALSE
 		CRASH("Invalid z level prepared for reservations.")
-	var/turf/A = get_turf(locate(SHUTTLE_TRANSIT_BORDER,SHUTTLE_TRANSIT_BORDER,z))
-	var/turf/B = get_turf(locate(world.maxx - SHUTTLE_TRANSIT_BORDER,world.maxy - SHUTTLE_TRANSIT_BORDER,z))
-	var/block = block(A, B)
+	var/block = block(SHUTTLE_TRANSIT_BORDER, SHUTTLE_TRANSIT_BORDER, z, world.maxx - SHUTTLE_TRANSIT_BORDER, world.maxy - SHUTTLE_TRANSIT_BORDER, z)
 	for(var/turf/T as anything in block)
 		// No need to empty() these, because they just got created and are already /turf/open/space/basic.
 		T.turf_flags = UNUSED_RESERVATION_TURF
@@ -423,3 +424,28 @@ SUBSYSTEM_DEF(mapping)
 	if(!MC)
 		return MAIN_SHIP_DEFAULT_NAME
 	return MC.map_name
+
+/datum/controller/subsystem/mapping/proc/lazy_load_template(datum/lazy_template/template_to_load, force = FALSE)
+	RETURN_TYPE(/datum/turf_reservation)
+
+	UNTIL(initialized)
+	var/static/lazy_loading = FALSE
+	UNTIL(!lazy_loading)
+
+	lazy_loading = TRUE
+	. = _lazy_load_template(template_to_load, force)
+	lazy_loading = FALSE
+	return .
+
+/datum/controller/subsystem/mapping/proc/_lazy_load_template(datum/lazy_template/template_to_load, force = FALSE)
+	PRIVATE_PROC(TRUE)
+
+	if(LAZYACCESS(loaded_lazy_templates, template_to_load) && !force)
+		var/datum/lazy_template/template = GLOB.lazy_templates[template_to_load]
+		return template.reservations[1]
+	LAZYSET(loaded_lazy_templates, template_to_load, TRUE)
+
+	var/datum/lazy_template/target = GLOB.lazy_templates[template_to_load]
+	if(!target)
+		CRASH("Attempted to lazy load a template key that does not exist: '[template_to_load]'")
+	return target.lazy_load()

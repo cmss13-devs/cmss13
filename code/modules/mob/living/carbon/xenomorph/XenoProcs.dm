@@ -45,10 +45,10 @@
 
 	. += ""
 
-	. += "Health: [round(health)]/[round(maxHealth)]"
-	. += "Armor: [round(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[round(armor_deflection)]"
-	. += "Plasma: [round(plasma_stored)]/[round(plasma_max)]"
-	. += "Slash Damage: [round((melee_damage_lower+melee_damage_upper)/2)]"
+	. += "Health: [floor(health)]/[floor(maxHealth)]"
+	. += "Armor: [floor(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[floor(armor_deflection)]"
+	. += "Plasma: [floor(plasma_stored)]/[floor(plasma_max)]"
+	. += "Slash Damage: [floor((melee_damage_lower+melee_damage_upper)/2)]"
 
 	var/shieldtotal = 0
 	for (var/datum/xeno_shield/XS in xeno_shields)
@@ -67,7 +67,7 @@
 
 	. += ""
 
-	var/stored_evolution = round(evolution_stored)
+	var/stored_evolution = floor(evolution_stored)
 	var/evolve_progress
 
 	if(caste && caste.evolution_allowed)
@@ -262,9 +262,6 @@
 	move_delay = .
 
 
-/mob/living/carbon/xenomorph/show_inv(mob/user)
-	return
-
 /mob/living/carbon/xenomorph/proc/pounced_mob(mob/living/L)
 	// This should only be called back by a mob that has pounce, so no need to check
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
@@ -404,6 +401,7 @@
 			visible_message(SPAN_XENOWARNING("[src] hurls out the contents of their stomach!"), \
 			SPAN_XENOWARNING("We hurl out the contents of our stomach!"), null, 5)
 			playsound(get_true_location(loc), 'sound/voice/alien_drool2.ogg', 50, 1)
+			log_interact(src, victim, "[key_name(src)] regurgitated [key_name(victim)] at [get_area_name(loc)]")
 
 			if (stuns)
 				victim.adjust_effect(2, STUN)
@@ -647,6 +645,10 @@
 		tracked_marker.xenos_tracking -= src
 
 	tracked_marker = null
+
+	///This permits xenos with thumbs to fire guns and arm grenades. God help us all.
+/mob/living/carbon/xenomorph/IsAdvancedToolUser()
+	return HAS_TRAIT(src, TRAIT_OPPOSABLE_THUMBS)
 
 /mob/living/carbon/xenomorph/proc/do_nesting_host(mob/current_mob, nest_structural_base)
 	var/list/xeno_hands = list(get_active_hand(), get_inactive_hand())

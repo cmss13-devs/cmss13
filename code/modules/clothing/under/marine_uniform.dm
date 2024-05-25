@@ -749,6 +749,14 @@
 	has_sensor = UNIFORM_HAS_SENSORS
 	sensor_faction = FACTION_MARINE
 
+/obj/item/clothing/under/colonist/white_service
+	name = "white service uniform"
+	desc = "A white dress shirt and tie with sleek pants. Standard clothing for anyone on professional business."
+	icon_state = "CO_service"
+	worn_state = "CO_service"
+	has_sensor = UNIFORM_HAS_SENSORS
+	sensor_faction = FACTION_MARINE
+
 /obj/item/clothing/under/colonist/wy_joliet_shopsteward
 	name = "steward utilities"
 	desc = "A stylish brown vest and shorts - uniforms like this are often worn by clerks and shop stewards."
@@ -882,11 +890,24 @@
 /obj/item/clothing/under/marine/reporter
 	name = "combat correspondent uniform"
 	desc = "A relaxed and robust uniform fit for any potential reporting needs."
-	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
-	icon_state = "wc_uniform"
-	worn_state = "wc_uniform"
-	contained_sprite = TRUE
-	flags_atom = NO_NAME_OVERRIDE
+	icon_state = "cc_white"
+	worn_state = "cc_white"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
+
+/obj/item/clothing/under/marine/reporter/black
+	icon_state = "cc_black"
+	worn_state = "cc_black"
+
+/obj/item/clothing/under/marine/reporter/orange
+	icon_state = "cc_orange"
+	worn_state = "cc_orange"
+
+/obj/item/clothing/under/marine/reporter/red
+	icon_state = "cc_red"
+	worn_state = "cc_red"
 
 /obj/item/clothing/under/twe_suit
 	name = "representative's fine suit"

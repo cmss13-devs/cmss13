@@ -1,25 +1,31 @@
 import { useBackend } from '../backend';
-import { Flex, Box, Section, Button, Stack } from '../components';
+import { Box, Button, Flex, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
-  'login': () => Login,
-  'main': () => MainMenu,
-  'apollo': () => ApolloLog,
-  'login_records': () => LoginRecords,
-  'maint_reports': () => MaintReports,
-  'maint_claim': () => MaintManagement,
-  'access_requests': () => AccessRequests,
-  'access_tickets': () => AccessTickets,
-  'id_access': () => AccessID,
+  login: () => Login,
+  main: () => MainMenu,
+  apollo: () => ApolloLog,
+  login_records: () => LoginRecords,
+  maint_reports: () => MaintReports,
+  maint_claim: () => MaintManagement,
+  access_requests: () => AccessRequests,
+  access_tickets: () => AccessTickets,
+  id_access: () => AccessID,
+  core_security_gas: () => CoreSecGas,
 };
 export const WorkingJoe = (props) => {
   const { data } = useBackend();
   const { current_menu } = data;
   const PageComponent = PAGES[current_menu]();
 
+  let themecolor = 'crtblue';
+  if (current_menu === 'core_security_gas') {
+    themecolor = 'crtred';
+  }
+
   return (
-    <Window theme="crtblue" width={950} height={725}>
+    <Window theme={themecolor} width={950} height={725}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -39,7 +45,8 @@ const Login = (props) => {
       color="darkgrey"
       fontSize="2rem"
       mt="-3rem"
-      bold>
+      bold
+    >
       <Box fontFamily="monospace">APOLLO Maintenance Controller</Box>
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
@@ -48,7 +55,6 @@ const Login = (props) => {
       <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
 
       <Button
-        content="Login"
         icon="id-card"
         width="30vw"
         textAlign="center"
@@ -56,18 +62,30 @@ const Login = (props) => {
         p="1rem"
         mt="5rem"
         onClick={() => act('login')}
-      />
+      >
+        Login
+      </Button>
     </Flex>
   );
 };
 
 const MainMenu = (props) => {
   const { data, act } = useBackend();
-  const { logged_in, access_text, last_page, current_menu, access_level } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    access_level,
+    notify_sounds,
+  } = data;
   let can_request_access = 'Yes';
   if (access_level > 2) {
     can_request_access = 'No';
+  }
+  let soundicon = 'volume-high';
+  if (!notify_sounds) {
+    soundicon = 'volume-xmark';
   }
 
   return (
@@ -86,10 +104,16 @@ const MainMenu = (props) => {
             <Button
               icon="house"
               ml="auto"
-              mr="1rem"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
               disabled={current_menu === 'main'}
+            />
+            <Button
+              icon={soundicon}
+              ml="auto"
+              mr="1rem"
+              tooltip="Mute/Un-Mute notifcation sounds."
+              onClick={() => act('toggle_sound')}
             />
           </Box>
 
@@ -98,13 +122,14 @@ const MainMenu = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -117,7 +142,6 @@ const MainMenu = (props) => {
           {can_request_access === 'Yes' && (
             <Stack.Item>
               <Button
-                content="Request Access Ticket"
                 tooltip="Request an access ticket to visit ARES."
                 icon="bullhorn"
                 ml="auto"
@@ -125,13 +149,14 @@ const MainMenu = (props) => {
                 width="33vw"
                 bold
                 onClick={() => act('page_request')}
-              />
+              >
+                Request Access Ticket
+              </Button>
             </Stack.Item>
           )}
           {access_level === 3 && (
             <Stack.Item>
               <Button.Confirm
-                content="Surrender Access Ticket"
                 tooltip="Return your temporary access."
                 icon="eye"
                 ml="auto"
@@ -139,12 +164,13 @@ const MainMenu = (props) => {
                 width="33vw"
                 bold
                 onClick={() => act('return_access')}
-              />
+              >
+                Surrender Access Ticket
+              </Button.Confirm>
             </Stack.Item>
           )}
           <Stack.Item>
             <Button
-              content="Maintenance Tickets"
               tooltip="View or Report any maintenance problems."
               icon="comments"
               ml="auto"
@@ -152,7 +178,9 @@ const MainMenu = (props) => {
               width="33vw"
               bold
               onClick={() => act('page_report')}
-            />
+            >
+              Maintenance Tickets
+            </Button>
           </Stack.Item>
         </Stack>
 
@@ -163,7 +191,6 @@ const MainMenu = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
-                content="View Apollo Log"
                 tooltip="Read the Apollo Link logs."
                 icon="clipboard"
                 ml="auto"
@@ -171,11 +198,12 @@ const MainMenu = (props) => {
                 width="33vw"
                 bold
                 onClick={() => act('page_apollo')}
-              />
+              >
+                View Apollo Log
+              </Button>
             </Stack.Item>
             <Stack.Item>
               <Button
-                content="View Access Log"
                 tooltip="View the recent logins."
                 icon="users"
                 ml="auto"
@@ -183,7 +211,9 @@ const MainMenu = (props) => {
                 width="33vw"
                 bold
                 onClick={() => act('page_logins')}
-              />
+              >
+                View Access Log
+              </Button>
             </Stack.Item>
           </Stack>
         )}
@@ -194,7 +224,6 @@ const MainMenu = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
-                content="Manage Access Tickets"
                 tooltip="Approve, or deny, temporary visitation access to personnel."
                 icon="user-shield"
                 ml="auto"
@@ -202,11 +231,12 @@ const MainMenu = (props) => {
                 width="33vw"
                 bold
                 onClick={() => act('page_tickets')}
-              />
+              >
+                Manage Access Tickets
+              </Button>
             </Stack.Item>
             <Stack.Item>
               <Button
-                content="Manage Maintenance Tickets"
                 tooltip="Claim, Complete, Prioritise or Cancel Maintenance Tickets."
                 icon="cart-shopping"
                 ml="auto"
@@ -214,11 +244,50 @@ const MainMenu = (props) => {
                 width="33vw"
                 bold
                 onClick={() => act('page_maintenance')}
-              />
+              >
+                Manage Maintenance Tickets
+              </Button>
             </Stack.Item>
           </Stack>
         )}
       </Section>
+      {access_level >= 5 && (
+        <Section>
+          <h1 align="center">Core Security Protocols</h1>
+          <Stack>
+            <Stack.Item grow>
+              <Button
+                align="center"
+                tooltip="Release stored CN20-X nerve gas from security vents."
+                icon="wind"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('page_core_gas')}
+              >
+                Nerve Gas Control
+              </Button>
+            </Stack.Item>
+            <Stack.Item grow>
+              <Button.Confirm
+                align="center"
+                tooltip="Activate/Deactivate the AI Core Lockdown."
+                icon="lock"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('security_lockdown')}
+              >
+                AI Core Lockdown
+              </Button.Confirm>
+            </Stack.Item>
+          </Stack>
+        </Section>
+      )}
     </>
   );
 };
@@ -254,13 +323,14 @@ const ApolloLog = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -310,13 +380,14 @@ const LoginRecords = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -371,13 +442,14 @@ const MaintReports = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -391,16 +463,18 @@ const MaintReports = (props) => {
           color="darkgrey"
           fontSize="2rem"
           mt="-3rem"
-          bold>
+          bold
+        >
           <Button
-            content="New Report"
             icon="exclamation-circle"
             width="30vw"
             textAlign="center"
             fontSize="1.5rem"
             mt="5rem"
             onClick={() => act('new_report')}
-          />
+          >
+            New Report
+          </Button>
         </Flex>
 
         {!!maintenance_tickets.length && (
@@ -409,7 +483,8 @@ const MaintReports = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
               ID
             </Flex.Item>
@@ -521,13 +596,14 @@ const MaintManagement = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -540,7 +616,8 @@ const MaintManagement = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="5rem" shrink="0">
               ID
             </Flex.Item>
@@ -673,13 +750,14 @@ const AccessRequests = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -693,9 +771,9 @@ const AccessRequests = (props) => {
           color="darkgrey"
           fontSize="2rem"
           mt="-3rem"
-          bold>
+          bold
+        >
           <Button
-            content="Create Ticket"
             icon="exclamation-circle"
             width="30vw"
             textAlign="center"
@@ -703,7 +781,9 @@ const AccessRequests = (props) => {
             mt="5rem"
             onClick={() => act('new_access')}
             disabled={access_level > 2}
-          />
+          >
+            Create Ticket
+          </Button>
         </Flex>
 
         {!!access_tickets.length && (
@@ -712,7 +792,8 @@ const AccessRequests = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
               ID
             </Flex.Item>
@@ -826,13 +907,14 @@ const AccessTickets = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -844,7 +926,8 @@ const AccessTickets = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
               ID
             </Flex.Item>
@@ -941,6 +1024,77 @@ const AccessTickets = (props) => {
                 )}
               </Flex.Item>
             </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const CoreSecGas = (props) => {
+  const { data, act } = useBackend();
+  const {
+    logged_in,
+    access_text,
+    access_level,
+    last_page,
+    current_menu,
+    security_vents,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          >
+            Logout
+          </Button.Confirm>
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Nerve Gas Release</h1>
+        {security_vents.map((vent, i) => {
+          return (
+            <Button.Confirm
+              key={i}
+              align="center"
+              icon="wind"
+              tooltip="Release Gas"
+              width="100%"
+              disabled={access_level < 5 || !vent.available}
+              onClick={() => act('trigger_vent', { vent: vent.ref })}
+            >
+              {vent.vent_tag}
+            </Button.Confirm>
           );
         })}
       </Section>

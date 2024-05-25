@@ -10,13 +10,16 @@
 			// Override the current limb status
 			E.droplimb(0, 0, cause)
 
-	undefibbable = TRUE
+
 
 	GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "*Deceased*")
 
 	if(is_a_synth)
 		spawn_gibs()
 		return
+
+	undefibbable = TRUE
+
 	..()
 
 /mob/living/carbon/human/gib_animation()

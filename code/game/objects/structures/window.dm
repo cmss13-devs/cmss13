@@ -286,7 +286,7 @@
 		to_chat(user, (state ? SPAN_NOTICE("You have pried the window into the frame.") : SPAN_NOTICE("You have pried the window out of the frame.")))
 	else
 		if(!not_damageable) //Impossible to destroy
-			health -= W.force
+			health -= W.force * W.demolition_mod
 			if(health <= 7  && !reinf && !static_frame && !not_deconstructable)
 				anchored = FALSE
 				update_nearby_icons()
@@ -360,7 +360,7 @@
 /obj/structure/window/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 800)
 		if(!not_damageable)
-			health -= round(exposed_volume / 100)
+			health -= floor(exposed_volume / 100)
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()
 
@@ -373,7 +373,7 @@
 
 /obj/structure/window/phoronbasic/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 32000)
-		health -= round(exposed_volume / 1000)
+		health -= floor(exposed_volume / 1000)
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()
 
@@ -593,6 +593,56 @@
 /obj/structure/window/framed/almayer/white/hull
 	name = "hull window"
 	desc = "An ultra-reinforced window designed to keep research a secure area. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000 //Failsafe, shouldn't matter
+
+/obj/structure/window/framed/almayer/aicore
+	icon_state = "ai_rwindow0"
+	basestate = "ai_rwindow"
+	window_frame = /obj/structure/window_frame/almayer/aicore
+
+/obj/structure/window/framed/almayer/aicore/hull
+	name = "hull window"
+	desc = "An ultra-reinforced window designed to protect the AI Core. Made out of exotic materials to prevent hull breaches, nothing will get through here."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000 //Failsafe, shouldn't matter
+
+/obj/structure/window/framed/almayer/aicore/white
+	icon_state = "w_ai_rwindow0"
+	basestate = "w_ai_rwindow"
+	window_frame = /obj/structure/window_frame/almayer/aicore/white
+
+/obj/structure/window/framed/almayer/aicore/black
+	icon_state = "alm_ai_rwindow0"
+	basestate = "alm_ai_rwindow"
+	window_frame = /obj/structure/window_frame/almayer/aicore/black
+
+/obj/structure/window/framed/almayer/aicore/hull/black
+	icon_state = "alm_ai_rwindow0"
+	basestate = "alm_ai_rwindow"
+	window_frame = /obj/structure/window_frame/almayer/aicore/black
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000 //Failsafe, shouldn't matter
+
+/obj/structure/window/framed/almayer/aicore/hull/black/hijack_bustable //I exist to explode after hijack, that is all.
+
+/obj/structure/window/framed/almayer/aicore/hull/black/hijack_bustable/Initialize()
+	. = ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(deconstruct))
+
+/obj/structure/window/framed/almayer/aicore/white/hull
+	name = "hull window"
+	desc = "An ultra-reinforced window designed to protect the AI Core. Made out of exotic materials to prevent hull breaches, nothing will get through here."
 	not_damageable = TRUE
 	not_deconstructable = TRUE
 	unslashable = TRUE

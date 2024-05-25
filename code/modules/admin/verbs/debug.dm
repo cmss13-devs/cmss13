@@ -117,8 +117,8 @@
 		var/datum/space_level/cur_level = SSmapping.z_list[cur_z]
 		cur_x += cur_level.bounds[MAP_MINX] - 1
 		cur_y += cur_level.bounds[MAP_MINY] - 1
-		width = cur_level.bounds[MAP_MAXX] - cur_level.bounds[MAP_MINX] - half_chunk_size + 1
-		height = cur_level.bounds[MAP_MAXY] - cur_level.bounds[MAP_MINY] - half_chunk_size + 1
+		width = cur_level.bounds[MAP_MAXX] - cur_level.bounds[MAP_MINX] - half_chunk_size + 3
+		height = cur_level.bounds[MAP_MAXY] - cur_level.bounds[MAP_MINY] - half_chunk_size + 3
 	else
 		width = world.maxx - half_chunk_size + 2
 		height = world.maxy - half_chunk_size + 2

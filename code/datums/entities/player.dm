@@ -29,6 +29,9 @@
 
 	var/stickyban_whitelisted = FALSE
 
+	var/byond_account_age
+	var/first_join_date
+
 
 // UNTRACKED FIELDS
 	var/name // Used for NanoUI statistics menu
@@ -78,6 +81,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"migrated_bans" = DB_FIELDTYPE_INT,
 		"migrated_jobbans" = DB_FIELDTYPE_INT,
 		"stickyban_whitelisted" = DB_FIELDTYPE_INT,
+		"byond_account_age" = DB_FIELDTYPE_STRING_MEDIUM,
+		"first_join_date" = DB_FIELDTYPE_STRING_MEDIUM,
 	)
 
 // NOTE: good example of database operations using NDatabase, so it is well commented
@@ -85,11 +90,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 /datum/entity/player/proc/add_note(note_text, is_confidential, note_category = NOTE_ADMIN, is_ban = FALSE, duration = null)
 	var/client/admin = usr.client
 	// do all checks here, especially for sensitive stuff like this
-	if(!admin || !admin.player_data)
-		return FALSE
-	if(note_category == NOTE_ADMIN || is_confidential)
-		if (!AHOLD_IS_MOD(admin.admin_holder))
+	if(!(note_category == NOTE_WHITELIST))
+		if(!admin || !admin.player_data)
 			return FALSE
+		if(note_category == NOTE_ADMIN || is_confidential)
+			if (!AHOLD_IS_MOD(admin.admin_holder))
+				return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
 	if(CONFIG_GET(flag/duplicate_notes_to_file))
@@ -114,7 +120,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	note.note_category = note_category
 	note.is_ban = is_ban
 	note.ban_time = duration
-	note.admin_rank = admin.admin_holder.rank
+	note.admin_rank = admin.admin_holder ? admin.admin_holder.rank : "Non-Staff"
 	// since admin is in game, their player_data has to be populated. This is also checked above
 	note.admin_id = admin.player_data.id
 	note.admin = admin.player_data
@@ -129,13 +135,17 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	notes.Add(note)
 	return TRUE
 
-/datum/entity/player/proc/remove_note(note_id)
+/datum/entity/player/proc/remove_note(note_id, whitelist = FALSE)
+	if(IsAdminAdvancedProcCall())
+		return PROC_BLOCKED
 	var/client/admin = usr.client
 	// do all checks here, especially for sensitive stuff like this
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.admin_holder))
+	if((!AHOLD_IS_MOD(admin.admin_holder)) && !whitelist)
+		return FALSE
+	if(whitelist && !(isSenator(admin) || CLIENT_HAS_RIGHTS(admin, R_PERMISSIONS)))
 		return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
@@ -449,6 +459,35 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		for(var/datum/entity/player_stat/S as anything in _stat)
 			LAZYSET(stats, S.stat_id, S)
 
+/datum/entity/player/proc/load_byond_account_age()
+	var/list/http_request = world.Export("http://byond.com/members/[ckey]?format=text")
+	if(!http_request)
+		log_admin("Could not check BYOND account age for [ckey] - no response from server.")
+		return
+
+	var/body = file2text(http_request["CONTENT"])
+	if(!body)
+		log_admin("Could not check BYOND account age for [ckey] - invalid response.")
+		return
+
+	var/static/regex/regex = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
+	if(!regex.Find(body))
+		log_admin("Could not check BYOND account age for [ckey] - no valid date in response.")
+		return
+
+	byond_account_age = regex.group[1]
+
+/datum/entity/player/proc/find_first_join_date()
+	var/list/triplets = search_login_triplet_by_ckey(ckey)
+
+	if(!length(triplets))
+		first_join_date = "UNKNOWN"
+		return
+
+	var/datum/view_record/login_triplet/first_triplet = triplets[1]
+	first_join_date = first_triplet.login_date
+
+
 /proc/get_player_from_key(key)
 	var/safe_key = ckey(key)
 	if(!safe_key)
@@ -470,9 +509,15 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		error("ALARM: MISMATCH. Loaded player data for client [ckey], player data ckey is [player.ckey], id: [player.id]")
 	player_data = player
 	player_data.owning_client = src
+	if(!player_data.last_login)
+		player_data.first_join_date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
+	if(!player_data.first_join_date)
+		player_data.find_first_join_date()
 	player_data.last_login = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
 	player_data.last_known_ip = address
 	player_data.last_known_cid = computer_id
+	if(!player_data.byond_account_age)
+		player_data.load_byond_account_age()
 	player_data.save()
 	record_login_triplet(player.ckey, address, computer_id)
 	player_data.sync()

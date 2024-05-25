@@ -68,9 +68,11 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/datum/admins/proc/alertall,
 	/datum/admins/proc/imaginary_friend,
 	/client/proc/toggle_admin_pings,
+	/client/proc/cmd_admin_open_ares,
 	/client/proc/cmd_admin_say, /*staff-only ooc chat*/
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	/client/proc/cmd_admin_tacmaps_panel,
+	/client/proc/other_records,
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
@@ -137,8 +139,10 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/adminpanelweapons,
 	/client/proc/admin_general_quarters,
 	/client/proc/admin_biohazard_alert,
+	/client/proc/admin_aicore_alert,
 	/client/proc/toggle_hardcore_perma,
 	/client/proc/toggle_bypass_joe_restriction,
+	/client/proc/toggle_joe_respawns,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
@@ -155,6 +159,7 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,
 	/client/proc/map_template_upload,
+	/client/proc/force_load_lazy_template,
 	/client/proc/enable_podlauncher,
 	/client/proc/change_taskbar_icon,
 	/client/proc/change_weather,
@@ -271,6 +276,7 @@ GLOBAL_LIST_INIT(admin_mob_event_verbs_hideable, list(
 
 //verbs which can be hidden - needs work
 GLOBAL_LIST_INIT(admin_verbs_hideable, list(
+	/client/proc/cmd_assume_direct_control,
 	/client/proc/release,
 	/client/proc/possess,
 	/client/proc/callproc_datum,

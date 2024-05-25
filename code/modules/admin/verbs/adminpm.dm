@@ -60,7 +60,10 @@
 
 	var/message_prompt = "Message:"
 
-	if((AH?.opening_responders && length(AH.ticket_interactions) == 1 ) || ((AH?.marked_admin && AH?.marked_admin != usr.key) && length(AH.ticket_interactions) == 2))
+	if(AH && !AH.marked_admin)
+		AH.mark_ticket()
+
+	if((AH?.opening_responders && length(AH.ticket_interactions) == 1 ) || ((AH?.marked_admin && AH?.marked_admin != usr.ckey) && length(AH.ticket_interactions) == 2))
 		SEND_SOUND(src, sound('sound/machines/buzz-sigh.ogg', volume=30))
 		message_prompt += "\n\n**This ticket is already being responded to by: [length(AH.opening_responders) ? english_list(AH.opening_responders) : AH.marked_admin]**"
 
@@ -228,7 +231,8 @@
 		if(CLIENT_IS_STAFF(src)) //sender is an admin but recipient is not. Do BIG RED TEXT
 			var/already_logged = FALSE
 			if(!recipient.current_ticket)
-				new /datum/admin_help(msg, recipient, TRUE)
+				var/datum/admin_help/new_ticket = new(msg, recipient, TRUE)
+				new_ticket.marked_admin = ckey
 				already_logged = TRUE
 				log_ahelp(recipient.current_ticket.id, "Ticket Opened", msg, recipient.ckey, src.ckey)
 

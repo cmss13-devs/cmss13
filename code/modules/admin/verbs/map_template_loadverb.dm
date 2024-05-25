@@ -74,3 +74,30 @@
 	SSmapping.map_templates[M.name] = M
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(src)] has uploaded a map template '[map]' ([M.width]x[M.height])[report_link]."))
 	to_chat(src, SPAN_NOTICE("Map template '[map]' ready to place ([M.width]x[M.height])"), confidential = TRUE)
+
+/client/proc/force_load_lazy_template()
+	set name = "Map Template - Lazy Load/Jump"
+	set category = "Admin.Events"
+	if(!check_rights(R_EVENT))
+		return
+
+	var/choice = tgui_input_list(usr, "Key?", "Lazy Loader", GLOB.lazy_templates)
+	if(!choice)
+		return
+
+	var/already_loaded = LAZYACCESS(SSmapping.loaded_lazy_templates, choice)
+	var/force_load = FALSE
+	if(already_loaded && (tgui_alert(usr, "Template already loaded.", "", list("Jump", "Load Again")) == "Load Again"))
+		force_load = TRUE
+
+	var/datum/turf_reservation/reservation = SSmapping.lazy_load_template(choice, force = force_load)
+	if(!reservation)
+		to_chat(usr, SPAN_BOLDWARNING("Failed to load template!"))
+		return
+
+	if(!isobserver(usr))
+		admin_ghost()
+	usr.forceMove(reservation.bottom_left_turfs[1])
+
+	message_admins("[key_name_admin(usr)] has loaded lazy template '[choice]'")
+	to_chat(usr, SPAN_BOLD("Template loaded, you have been moved to the bottom left of the reservation."))

@@ -89,6 +89,11 @@
 	icon_state = "uscmflag2"
 	desc = "A miniature historical table flag of the United States Colonial Marines, in traditional scarlet and gold. The USCM logo sits in the center; an eagle is perched atop it and an anchor rests behind it."
 
+/obj/item/prop/tableflag/upp
+	name = "UPP table flag"
+	icon_state = "uppflag"
+	desc = "A miniature table flag of the Union of Progressive Peoples, consisting of 17 yellow stars, surrounding the bigger one in the middle on scarlet field."
+
 /obj/item/prop/flower_vase
 	name = "flower vase"
 	icon_state = "flowervase"

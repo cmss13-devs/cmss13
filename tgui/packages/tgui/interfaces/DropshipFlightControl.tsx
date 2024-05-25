@@ -1,11 +1,36 @@
 import { useBackend, useSharedState } from '../backend';
+import {
+  Box,
+  Button,
+  Flex,
+  Icon,
+  ProgressBar,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
-import { Box, Button, Flex, Icon, ProgressBar, Section, Stack } from '../components';
-import { LaunchButton, CancelLaunchButton, DisabledScreen, InFlightCountdown, LaunchCountdown, NavigationProps, ShuttleRecharge, DockingPort } from './NavigationShuttle';
+import {
+  CancelLaunchButton,
+  DisabledScreen,
+  DockingPort,
+  InFlightCountdown,
+  LaunchButton,
+  LaunchCountdown,
+  NavigationProps,
+  ShuttleRecharge,
+} from './NavigationShuttle';
+
+const DoorStatusEnum = {
+  SHUTTLE_DOOR_BROKEN: -1,
+  SHUTTLE_DOOR_UNLOCKED: 0,
+  SHUTTLE_DOOR_LOCKED: 1,
+} as const;
+
+type DoorStatusEnums = (typeof DoorStatusEnum)[keyof typeof DoorStatusEnum];
 
 interface DoorStatus {
   id: string;
-  value: 0 | 1;
+  value: DoorStatusEnums;
 }
 
 interface AutomatedControl {
@@ -47,7 +72,7 @@ const DropshipDoorControl = () => {
         .filter((x) => x.id === 'all')
         .map((x) => (
           <>
-            {x.value === 0 && (
+            {x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
               <Button
                 disabled={disable_door_controls}
                 onClick={() =>
@@ -56,12 +81,13 @@ const DropshipDoorControl = () => {
                     location: 'all',
                   })
                 }
-                icon="triangle-exclamation">
+                icon="triangle-exclamation"
+              >
                 Lockdown
               </Button>
             )}
 
-            {x.value === 1 && (
+            {x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
               <Button
                 disabled={disable_door_controls}
                 onClick={() =>
@@ -70,12 +96,14 @@ const DropshipDoorControl = () => {
                     location: 'all',
                   })
                 }
-                icon="triangle-exclamation">
+                icon="triangle-exclamation"
+              >
                 Lift Lockdown
               </Button>
             )}
           </>
-        ))}>
+        ))}
+    >
       <Stack className="DoorControlStack">
         {data.door_status
           .filter((x) => x.id !== 'all')
@@ -84,19 +112,26 @@ const DropshipDoorControl = () => {
             return (
               <Stack.Item key={x.id}>
                 <>
-                  {x.value === 0 && (
+                  {x.value === DoorStatusEnum.SHUTTLE_DOOR_BROKEN && (
+                    <Button disabled icon="ban">
+                      No response
+                    </Button>
+                  )}
+                  {x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
                     <Button
+                      disabled={disable_door_controls}
                       onClick={() =>
                         act('door-control', {
                           interaction: 'force-lock',
                           location: x.id,
                         })
                       }
-                      icon="door-closed">
+                      icon="door-closed"
+                    >
                       Lock {name}
                     </Button>
                   )}
-                  {x.value === 1 && (
+                  {x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
                     <Button
                       disabled={disable_door_controls}
                       onClick={() =>
@@ -105,7 +140,8 @@ const DropshipDoorControl = () => {
                           location: x.id,
                         })
                       }
-                      icon="door-open">
+                      icon="door-open"
+                    >
                       Unlock {name}
                     </Button>
                   )}
@@ -122,7 +158,7 @@ export const DropshipDestinationSelection = () => {
   const { data, act } = useBackend<DropshipNavigationProps>();
   const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
     'target_site',
-    undefined
+    undefined,
   );
   return (
     <Section
@@ -132,7 +168,8 @@ export const DropshipDestinationSelection = () => {
           <CancelLaunchButton />
           <LaunchButton />
         </>
-      }>
+      }
+    >
       <Stack vertical className="DestinationSelector">
         <DestinationSelector
           options={data.destinations}
@@ -181,7 +218,8 @@ const DestinationSelector = (props: DestinationProps) => {
                   }
                   icon={x.id === data.primary_lz ? 'home' : undefined}
                   iconPosition="right"
-                  onClick={() => props.onClick(x.id)}>
+                  onClick={() => props.onClick(x.id)}
+                >
                   {x.name}
                 </Button>
               </Flex.Item>
@@ -206,7 +244,8 @@ export const TouchdownCooldown = () => {
           <Stack.Item>
             <ProgressBar
               maxValue={data.max_pre_arrival_duration}
-              value={data.flight_time}>
+              value={data.flight_time}
+            >
               T-{data.flight_time}s
             </ProgressBar>
           </Stack.Item>
@@ -223,7 +262,7 @@ const AutopilotConfig = () => {
   >('autopilot_hangar', undefined);
   const [automatedLZ, setAutomatedLZ] = useSharedState<string | undefined>(
     'autopilot_groundside',
-    undefined
+    undefined,
   );
   return (
     <Section
@@ -238,7 +277,8 @@ const AutopilotConfig = () => {
                   ground_id: automatedLZ,
                   delay: 30,
                 })
-              }>
+              }
+            >
               Enable
             </Button>
           )}
@@ -246,14 +286,15 @@ const AutopilotConfig = () => {
             <Button onClick={() => act('disable-automate')}>Disable</Button>
           )}
         </>
-      }>
+      }
+    >
       <Stack vertical className="DestinationSelector">
         <Stack.Item>From</Stack.Item>
         <DestinationSelector
           options={data.destinations.filter((x) =>
             data.automated_control.is_automated
               ? x.id === data.automated_control.hangar_lz
-              : true
+              : true,
           )}
           selected={automatedHangar}
           applyFilter={false}
@@ -271,7 +312,7 @@ const AutopilotConfig = () => {
           options={data.destinations.filter((x) =>
             data.automated_control.is_automated
               ? x.id === data.automated_control.ground_lz
-              : true
+              : true,
           )}
           selected={automatedLZ}
           applyFilter={false}
@@ -335,7 +376,7 @@ const DropshipButton = (props: { readonly ship: ShuttleRef }) => {
   const match = props.ship.id === data.shuttle_id;
   return (
     <Button
-      disable={match}
+      disabled={match}
       onClick={() => {
         act('change_shuttle', { new_shuttle: props.ship.id });
         act('button-push');

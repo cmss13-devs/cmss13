@@ -1,5 +1,14 @@
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Icon, Flex, Section, Stack, ProgressBar } from '../components';
+import {
+  Box,
+  Button,
+  Dimmer,
+  Flex,
+  Icon,
+  ProgressBar,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
 export interface DockingPort {
@@ -19,6 +28,9 @@ export interface NavigationProps {
   max_refuel_duration: number;
   max_engine_start_duration: number;
   max_pre_arrival_duration: number;
+  must_launch_home: boolean;
+  spooling: boolean;
+  mission_accomplished: boolean;
   is_disabled: 0 | 1;
   locked_down: 0 | 1;
 }
@@ -26,13 +38,14 @@ export interface NavigationProps {
 export const CancelLaunchButton = () => {
   const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
     'target_site',
-    undefined
+    undefined,
   );
   return (
     <Button
       icon="ban"
       disabled={siteselection === undefined}
-      onClick={() => setSiteSelection(undefined)}>
+      onClick={() => setSiteSelection(undefined)}
+    >
       Cancel
     </Button>
   );
@@ -42,7 +55,7 @@ export const LaunchButton = () => {
   const { act } = useBackend<NavigationProps>();
   const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
     'target_site',
-    undefined
+    undefined,
   );
   return (
     <Button
@@ -51,7 +64,8 @@ export const LaunchButton = () => {
       onClick={() => {
         act('move', { target: siteselection });
         setSiteSelection(undefined);
-      }}>
+      }}
+    >
       Launch
     </Button>
   );
@@ -61,7 +75,7 @@ export const DestionationSelection = () => {
   const { data, act } = useBackend<NavigationProps>();
   const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
     'target_site',
-    undefined
+    undefined,
   );
   return (
     <Section
@@ -71,7 +85,8 @@ export const DestionationSelection = () => {
           <CancelLaunchButton />
           <LaunchButton />
         </>
-      }>
+      }
+    >
       <Stack vertical className="DestinationSelector">
         {data.destinations
           .filter((x) => x.available === 1)
@@ -94,7 +109,8 @@ export const DestionationSelection = () => {
                     onClick={() => {
                       setSiteSelection(x.id);
                       act('button-push');
-                    }}>
+                    }}
+                  >
                     {x.name}
                   </Button>
                 </Flex.Item>
@@ -120,7 +136,8 @@ export const ShuttleRecharge = () => {
           <Stack.Item>
             <ProgressBar
               maxValue={data.max_refuel_duration}
-              value={data.flight_time}>
+              value={data.flight_time}
+            >
               T-{data.flight_time}s
             </ProgressBar>
           </Stack.Item>
@@ -145,7 +162,8 @@ export const LaunchCountdown = () => {
           <Stack.Item>
             <ProgressBar
               maxValue={data.max_engine_start_duration}
-              value={data.flight_time}>
+              value={data.flight_time}
+            >
               T-{data.flight_time}s
             </ProgressBar>
           </Stack.Item>
@@ -164,7 +182,8 @@ export const InFlightCountdown = () => {
         data.target_destination === 'Flyby' && (
           <Button onClick={() => act('cancel-flyby')}>Cancel</Button>
         )
-      }>
+      }
+    >
       <div className="InFlightCountdown">
         <Stack vertical>
           <Stack.Item>
@@ -175,7 +194,8 @@ export const InFlightCountdown = () => {
           <Stack.Item>
             <ProgressBar
               maxValue={data.max_flight_duration}
-              value={data.flight_time}>
+              value={data.flight_time}
+            >
               T-{data.flight_time}s
             </ProgressBar>
           </Stack.Item>
@@ -199,7 +219,8 @@ const DoorControls = () => {
             <Button
               disabled={disable_door_controls}
               onClick={() => act('lockdown')}
-              icon="triangle-exclamation">
+              icon="triangle-exclamation"
+            >
               Lockdown
             </Button>
           )}
@@ -207,18 +228,21 @@ const DoorControls = () => {
             <Button
               disabled={disable_door_controls}
               onClick={() => act('unlock')}
-              icon="triangle-exclamation">
+              icon="triangle-exclamation"
+            >
               Lift Lockdown
             </Button>
           )}
         </>
-      }>
+      }
+    >
       <Stack className="DoorControlStack">
         <Stack.Item>
           <Button
             disabled={disable_normal_control || disable_door_controls}
             onClick={() => act('open')}
-            icon="door-open">
+            icon="door-open"
+          >
             Force Open
           </Button>
         </Stack.Item>
@@ -226,7 +250,8 @@ const DoorControls = () => {
           <Button
             disabled={disable_normal_control || disable_door_controls}
             onClick={() => act('close')}
-            icon="door-closed">
+            icon="door-closed"
+          >
             Force Close
           </Button>
         </Stack.Item>
@@ -236,23 +261,75 @@ const DoorControls = () => {
 };
 
 export const DisabledScreen = (props) => {
+  const { data, act } = useBackend<NavigationProps>();
+
+  const disabled_text = data.mission_accomplished
+    ? 'Auto-navigation protocol completed - return home complete. Shuttle disabled.'
+    : 'The shuttle has had an error. Contact your nearest system administrator to resolve the issue.';
+
   return (
     <Box className="DisabledScreen">
       <div>
-        <span>
-          The shuttle has had an error. Contact your nearest system
-          administrator to resolve the issue.
-        </span>
+        <span>{disabled_text}</span>
       </div>
     </Box>
   );
+};
+
+const LaunchHome = (props) => {
+  const { data, act } = useBackend<NavigationProps>();
+
+  return (
+    <Section title="Automatic Return Enabled" className="DestinationSelector">
+      <Button.Confirm
+        fluid
+        confirmContent={'One-way navigation enabled - confirm?'}
+        onClick={() => act('launch_home')}
+      >
+        Return Home
+      </Button.Confirm>
+    </Section>
+  );
+};
+
+const SpoolingDimmer = (props) => {
+  const { data, act } = useBackend<NavigationProps>();
+
+  return (
+    <Dimmer>
+      <Stack>
+        <Stack.Item>
+          <Box>Spooling...</Box>
+        </Stack.Item>
+        <Stack.Item>
+          <Icon name={'spinner'} spin />
+        </Stack.Item>
+      </Stack>
+    </Dimmer>
+  );
+};
+
+const DestinationOptions = (props) => {
+  const { data, act } = useBackend<NavigationProps>();
+
+  if (data.must_launch_home) {
+    return (
+      <>
+        <LaunchHome />
+        <DestionationSelection />
+      </>
+    );
+  } else {
+    return <DestionationSelection />;
+  }
 };
 
 const RenderScreen = (props) => {
   const { data } = useBackend<NavigationProps>();
   return (
     <>
-      {data.shuttle_mode === 'idle' && <DestionationSelection />}
+      {!!data.spooling && <SpoolingDimmer />}
+      {data.shuttle_mode === 'idle' && <DestinationOptions />}
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}
       {data.shuttle_mode === 'called' && <InFlightCountdown />}
@@ -264,7 +341,7 @@ const RenderScreen = (props) => {
 export const NavigationShuttle = (props) => {
   const { data } = useBackend<NavigationProps>();
   return (
-    <Window theme="crtgreen" height={500} width={700}>
+    <Window theme="crtgreen" height={505} width={700}>
       <Window.Content className="NavigationMenu">
         {data.is_disabled === 1 && <DisabledScreen />}
         {data.is_disabled === 0 && <RenderScreen />}

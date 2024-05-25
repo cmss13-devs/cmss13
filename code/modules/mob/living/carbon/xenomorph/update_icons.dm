@@ -148,7 +148,12 @@
 		var/t_state = r_hand.item_state
 		if(!t_state)
 			t_state = r_hand.icon_state
-		overlays_standing[X_R_HAND_LAYER] = r_hand.get_mob_overlay(src, WEAR_R_HAND)
+		/*Move inhand image to the center of the sprite. Strictly speaking this should probably be like monkey get_offset_overlay_image() and tailor item icon
+		positions to the hands of the xeno, but outside of special occasions xenos can't really pick items up and this tends to look better than human default.*/
+		var/image/inhand_image = r_hand.get_mob_overlay(src, WEAR_R_HAND)
+		inhand_image.pixel_x = xeno_inhand_item_offset
+		overlays_standing[X_R_HAND_LAYER] = inhand_image
+
 		apply_overlay(X_R_HAND_LAYER)
 
 /mob/living/carbon/xenomorph/update_inv_l_hand()
@@ -161,7 +166,13 @@
 		var/t_state = l_hand.item_state
 		if(!t_state)
 			t_state = l_hand.icon_state
-		overlays_standing[X_L_HAND_LAYER] = l_hand.get_mob_overlay(src, WEAR_L_HAND)
+
+		/*Move inhand image overlay to the center of the sprite. Strictly speaking this should probably be like monkey get_offset_overlay_image() and tailor item icon
+		positions to the hands of the xeno, but outside of special occasions xenos can't really pick items up and this tends to look better than human default.*/
+		var/image/inhand_image = l_hand.get_mob_overlay(src, WEAR_L_HAND)
+		inhand_image.pixel_x = xeno_inhand_item_offset
+		overlays_standing[X_L_HAND_LAYER] = inhand_image
+
 		apply_overlay(X_L_HAND_LAYER)
 
 /mob/living/carbon/xenomorph/update_inv_back()
@@ -196,31 +207,46 @@
 		overlays_standing[X_LEGCUFF_LAYER] = image("icon" = 'icons/mob/xenos/effects.dmi', "icon_state" = "legcuff", "layer" =-X_LEGCUFF_LAYER)
 		apply_overlay(X_LEGCUFF_LAYER)
 
-/mob/living/carbon/xenomorph/proc/create_shriekwave(color = null)
-	var/image/screech_image
+/mob/living/carbon/xenomorph/proc/create_shriekwave(shriekwaves_left)
+	var/offset_y = 8
+	if(mob_size == MOB_SIZE_XENO)
+		offset_y = 24
+	if(mob_size == MOB_SIZE_IMMOBILE)
+		offset_y = 28
 
-	var/offset_x = 0
-	var/offset_y = 0
-	if(mob_size <= MOB_SIZE_XENO)
-		offset_x = -7
-		offset_y = -10
+	//the shockwave center is updated eachtime shockwave is called and offset relative to the mob_size.
+	//due to the speed of the shockwaves, it isn't required to be tied to the exact mob movements
+	var/epicenter = loc //center of the shockwave, set at the center of the tile that the mob is currently standing on
+	var/easing = QUAD_EASING | EASE_OUT
+	var/stage1_radius = rand(11, 12)
+	var/stage2_radius = rand(9, 11)
+	var/stage3_radius = rand(8, 10)
+	var/stage4_radius = 7.5
 
-	if (color)
-		screech_image = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "shriek_waves_greyscale") // For Praetorian screech
-		screech_image.color = color
-	else
-		screech_image = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
-
-	screech_image.pixel_x = offset_x
-	screech_image.pixel_y = offset_y
-
-	screech_image.appearance_flags |= RESET_COLOR
-
-	remove_suit_layer()
-
-	overlays_standing[X_SUIT_LAYER] = screech_image
-	apply_overlay(X_SUIT_LAYER)
-	addtimer(CALLBACK(src, PROC_REF(remove_overlay), X_SUIT_LAYER), 30)
+	//shockwaves are iterated, counting down once per shriekwave, with the total amount being determined on the respective xeno ability tile
+	if(shriekwaves_left > 12)
+		shriekwaves_left--
+		new /obj/effect/shockwave(epicenter, stage1_radius, 0.5, easing, offset_y)
+		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), shriekwaves_left), 2)
+		return
+	if(shriekwaves_left > 8)
+		shriekwaves_left--
+		new /obj/effect/shockwave(epicenter, stage2_radius, 0.5, easing, offset_y)
+		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), shriekwaves_left), 3)
+		return
+	if(shriekwaves_left > 4)
+		shriekwaves_left--
+		new /obj/effect/shockwave(epicenter, stage3_radius, 0.5, easing, offset_y)
+		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), shriekwaves_left), 3)
+		return
+	if(shriekwaves_left > 1)
+		shriekwaves_left--
+		new /obj/effect/shockwave(epicenter, stage4_radius, 0.5, easing, offset_y)
+		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), shriekwaves_left), 3)
+		return
+	if(shriekwaves_left == 1)
+		shriekwaves_left--
+		new /obj/effect/shockwave(epicenter, 10.5, 0.6, easing, offset_y)
 
 /mob/living/carbon/xenomorph/proc/create_stomp()
 	remove_suit_layer()
@@ -301,7 +327,7 @@
 		return
 
 	var/health_threshold
-	health_threshold = max(Ceiling((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
+	health_threshold = max(ceil((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
 			wound_icon_holder.icon_state = "none"

@@ -232,7 +232,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	for (var/datum/controller/subsystem/subsystem as anything in subsystems)
 		var/subsystem_init_stage = subsystem.init_stage
-		if (!isnum(subsystem_init_stage) || subsystem_init_stage < 1 || subsystem_init_stage > INITSTAGE_MAX || round(subsystem_init_stage) != subsystem_init_stage)
+		if (!isnum(subsystem_init_stage) || subsystem_init_stage < 1 || subsystem_init_stage > INITSTAGE_MAX || floor(subsystem_init_stage) != subsystem_init_stage)
 			stack_trace("ERROR: MC: subsystem `[subsystem.type]` has invalid init_stage: `[subsystem_init_stage]`. Setting to `[INITSTAGE_MAX]`")
 			subsystem_init_stage = subsystem.init_stage = INITSTAGE_MAX
 		stage_sorted_subsystems[subsystem_init_stage] += subsystem
@@ -668,7 +668,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			tick_precentage = max(tick_precentage*0.5, tick_precentage-queue_node.tick_overrun)
 
-			current_ticklimit = round(TICK_USAGE + tick_precentage)
+			current_ticklimit = floor(TICK_USAGE + tick_precentage)
 
 			ran = TRUE
 

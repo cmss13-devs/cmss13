@@ -125,6 +125,7 @@
 	name = "Inspection - Corporate"
 	mob_max = 2
 	mob_min = 1
+	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	probability = 0
@@ -207,6 +208,7 @@
 	mob_max = 4
 	mob_min = 1
 	probability = 0
+	home_base = /datum/lazy_template/ert/weyland_station
 
 	var/max_synths = 1
 	var/synths = 0
@@ -256,7 +258,7 @@
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 
 /datum/emergency_call/inspection_cmb/print_backstory(mob/living/carbon/human/M)
@@ -304,7 +306,7 @@
 	name = "Inspection - Colonial Marshals Ledger Investigation Team"
 	mob_max = 3 //Marshal, Deputy, ICC CL
 	mob_min = 2
-	shuttle_id = "Distress_PMC"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 
 	max_synths = 0
 	will_spawn_icc_liaison = TRUE
@@ -339,4 +341,4 @@
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)

@@ -28,6 +28,8 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	var/parent_path = /datum/tutorial
 	/// A dictionary of "bind_name" : "keybind_button". The inverse of `key_bindings` on a client's prefs
 	var/list/player_bind_dict = list()
+	/// If the tutorial has been completed. This doesn't need to be modified if you call end_tutorial() with a param of TRUE
+	var/completion_marked = FALSE
 
 /datum/tutorial/Destroy(force, ...)
 	GLOB.ongoing_tutorials -= src
@@ -83,7 +85,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	if(tutorial_mob)
 		remove_action(tutorial_mob, /datum/action/tutorial_end) // Just in case to make sure the client can't try and leave the tutorial while it's mid-cleanup
-		if(tutorial_mob.client?.prefs && completed)
+		if(tutorial_mob.client?.prefs && (completed || completion_marked))
 			tutorial_mob.client.prefs.completed_tutorials |= tutorial_id
 			tutorial_mob.client.prefs.save_character()
 		var/mob/new_player/new_player = new
@@ -99,13 +101,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/verify_template_loaded()
 	// We subtract 1 from x and y because the bottom left corner doesn't start at the walls.
 	var/turf/true_bottom_left_corner = reservation.bottom_left_turfs[1]
-	// We subtract 1 from x and y here because the bottom left corner counts as the first tile
-	var/turf/top_right_corner = locate(
-		true_bottom_left_corner.x + initial(tutorial_template.width) - 1,
-		true_bottom_left_corner.y + initial(tutorial_template.height) - 1,
-		true_bottom_left_corner.z
-	)
-	for(var/turf/tile as anything in block(true_bottom_left_corner, top_right_corner))
+	for(var/turf/tile as anything in CORNER_BLOCK(true_bottom_left_corner, initial(tutorial_template.width), initial(tutorial_template.height)))
 		// For some reason I'm unsure of, the template will not always fully load, leaving some tiles to be space tiles. So, we check all tiles in the (small) tutorial area
 		// and tell start_tutorial to abort if there's any space tiles.
 		if(istype(tile, /turf/open/space))
@@ -209,6 +205,10 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 		return "Undefined"
 
 	return player_bind_dict[action_name][1]
+
+/// When called, will make anything that ends the tutorial mark it as completed. Does not need to be called if end_tutorial(TRUE) is called instead
+/datum/tutorial/proc/mark_completed()
+	completion_marked = TRUE
 
 /datum/action/tutorial_end
 	name = "Stop Tutorial"

@@ -96,6 +96,15 @@
 	var/disabled = FALSE
 	var/compatible_landing_zones = list()
 
+	/// this interface is busy - used in [/obj/structure/machinery/computer/shuttle/ert/proc/launch_home] as this can take a second
+	var/spooling
+
+	/// if this shuttle only has the option to return home
+	var/must_launch_home = FALSE
+
+	/// if the ERT that used this shuttle has returned home
+	var/mission_accomplished = FALSE
+
 /obj/structure/machinery/computer/shuttle/ert/broken
 	name = "nonfunctional shuttle control console"
 	disabled = TRUE
@@ -108,8 +117,48 @@
 /obj/structure/machinery/computer/shuttle/ert/proc/get_landing_zones()
 	. = list()
 	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
-		if(!dock.is_external)
-			. += list(dock)
+		if(!is_mainship_level(dock.z))
+			continue
+
+		if(dock.is_external)
+			continue
+
+		. += list(dock)
+
+/obj/structure/machinery/computer/shuttle/ert/proc/launch_home()
+	if(spooling)
+		return
+
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+
+	spooling = TRUE
+	SStgui.update_uis(src)
+
+	var/datum/turf_reservation/loaded = SSmapping.lazy_load_template(ert.distress_beacon.home_base, force = TRUE)
+	var/turf/bottom_left = loaded.bottom_left_turfs[1]
+	var/turf/top_right = loaded.top_right_turfs[1]
+
+	var/obj/docking_port/stationary/emergency_response/target
+	for(var/obj/docking_port/stationary/emergency_response/shuttle in SSshuttle.stationary)
+		if(shuttle.z != bottom_left.z)
+			continue
+		if(shuttle.x >= top_right.x || shuttle.y >= top_right.y)
+			continue
+		if(shuttle.x <= bottom_left.x || shuttle.y <= bottom_left.y)
+			continue
+
+		target = shuttle
+		break
+
+	if(!target)
+		spooling = FALSE
+		return
+
+	SSshuttle.moveShuttleToDock(ert, target, TRUE)
+	target.lockdown_on_land = TRUE
+
+	spooling = FALSE
+	must_launch_home = FALSE
 
 
 /obj/structure/machinery/computer/shuttle/ert/is_disabled()
@@ -122,10 +171,25 @@
 	disabled = FALSE
 
 /obj/structure/machinery/computer/shuttle/ert/tgui_interact(mob/user, datum/tgui/ui)
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+
+	if(ert.distress_beacon && ishuman(user))
+		var/mob/living/carbon/human/human_user = user
+		var/obj/item/card/id/id = human_user.get_active_hand()
+		if(!istype(id))
+			id = human_user.get_inactive_hand()
+
+		if(!istype(id))
+			id = human_user.get_idcard()
+
+		if(!id || !HAS_TRAIT_FROM_ONLY(id, TRAIT_ERT_ID, ert.distress_beacon))
+			to_chat(user, SPAN_WARNING("Your ID is not authorized to interact with this terminal."))
+			balloon_alert(user, "unauthorized!")
+			return
+
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-		ui = new(user, src, "NavigationShuttle", "[shuttle.name] Navigation Computer")
+		ui = new(user, src, "NavigationShuttle", "[ert.name] Navigation Computer")
 		ui.open()
 
 
@@ -154,6 +218,9 @@
 	.["shuttle_mode"] = ert.mode
 	.["flight_time"] = ert.timeLeft(0)
 	.["is_disabled"] = disabled
+	.["spooling"] = spooling
+	.["must_launch_home"] = must_launch_home
+	.["mission_accomplished"] = mission_accomplished
 
 	var/door_count = length(ert.external_doors)
 	var/locked_count = 0
@@ -188,7 +255,31 @@
 		return
 
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+
 	switch(action)
+		if("button-push")
+			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			return FALSE
+		if("open")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("open", external_only = TRUE)
+		if("close")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("close", external_only = TRUE)
+		if("lockdown")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("force-lock", external_only = TRUE)
+		if("lock")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("lock", external_only = TRUE)
+		if("unlock")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("unlock", external_only = TRUE)
 		if("move")
 			if(ert.mode != SHUTTLE_IDLE)
 				to_chat(usr, SPAN_WARNING("You can't move to a new destination whilst in transit."))
@@ -217,29 +308,17 @@
 			SSshuttle.moveShuttle(ert.id, dock.id, TRUE)
 			to_chat(usr, SPAN_NOTICE("You begin the launch sequence to [dock]."))
 			return TRUE
-		if("button-push")
-			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
-			return FALSE
-		if("open")
-			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
-				return TRUE
-			ert.control_doors("open", external_only = TRUE)
-		if("close")
-			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
-				return TRUE
-			ert.control_doors("close", external_only = TRUE)
-		if("lockdown")
-			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
-				return TRUE
-			ert.control_doors("force-lock", external_only = TRUE)
-		if("lock")
-			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
-				return TRUE
-			ert.control_doors("lock", external_only = TRUE)
-		if("unlock")
-			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
-				return TRUE
-			ert.control_doors("unlock", external_only = TRUE)
+		if("launch_home")
+			if(!must_launch_home)
+				return
+
+			if(ert.mode != SHUTTLE_IDLE)
+				to_chat(ui.user, SPAN_WARNING("Unable to return home."))
+				balloon_alert(ui.user, "can't go home!")
+				return
+
+			launch_home()
+			return TRUE
 
 /obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)
 	. = ..(user)
@@ -257,6 +336,8 @@
 /obj/structure/machinery/computer/shuttle/ert/small/get_landing_zones()
 	. = list()
 	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(!is_mainship_level(dock.z))
+			continue
 		if(istype(dock, /obj/docking_port/stationary/emergency_response/external/hangar_port))
 			continue
 		if(istype(dock, /obj/docking_port/stationary/emergency_response/external/hangar_starboard))
@@ -273,6 +354,8 @@
 /obj/structure/machinery/computer/shuttle/ert/big/get_landing_zones()
 	. = list()
 	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(!is_mainship_level(dock.z))
+			continue
 		. += list(dock)
 
 /obj/structure/machinery/computer/shuttle/lifeboat
@@ -357,6 +440,8 @@
 			lifeboat.status = LIFEBOAT_LOCKED
 			lifeboat.available = FALSE
 			lifeboat.set_mode(SHUTTLE_IDLE)
+			lifeboat.alarm_sound_loop?.stop()
+			lifeboat.playing_launch_announcement_alarm = FALSE
 			var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
 			lifeboat_dock.open_dock()
 			xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)

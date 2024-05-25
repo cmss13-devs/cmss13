@@ -160,6 +160,13 @@
 	if(wear_id)
 		msg += "[t_He] [t_is] [wear_id.get_examine_location(src, user, WEAR_ID, t_He, t_his, t_him, t_has, t_is)].\n"
 
+	//Restraints
+	if(handcuffed)
+		msg += SPAN_ORANGE("[capitalize(t_his)] arms are restrained by [handcuffed].\n")
+
+	if(legcuffed)
+		msg += SPAN_ORANGE("[capitalize(t_his)] ankles are restrained by [legcuffed].\n")
+
 	//Admin-slept
 	if(sleeping > 8000000)
 		msg += SPAN_HIGHDANGER("<B>This player has been slept by staff.</B>\n")
@@ -541,7 +548,7 @@
 					if(med_hud.hudusers[passed_human])
 						return TRUE
 			if("squadleader")
-				var/datum/mob_hud/faction_hud = GLOB.huds[MOB_HUD_FACTION_USCM]
+				var/datum/mob_hud/faction_hud = GLOB.huds[MOB_HUD_FACTION_MARINE]
 				if(passed_human.mind && passed_human.assigned_squad && passed_human.assigned_squad.squad_leader == passed_human && faction_hud.hudusers[passed_mob])
 					return TRUE
 			else

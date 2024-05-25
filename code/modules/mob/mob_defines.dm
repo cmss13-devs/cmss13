@@ -16,9 +16,6 @@
 
 	var/atom/movable/screen/hands = null //robot
 
-	var/adminhelp_marked = 0 // Prevents marking an Adminhelp more than once. Making this a client define will cause runtimes and break some Adminhelps
-	var/adminhelp_marked_admin = "" // Ckey of last marking admin
-
 	/// a ckey that persists client logout / ghosting, replaced when a client inhabits the mob
 	var/persistent_ckey
 
@@ -166,7 +163,7 @@
 
 	var/datum/skills/skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
 									//see skills.dm in #define folder and code/datums/skills.dm for more info
-	var/obj/item/legcuffs/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
+	var/obj/item/restraint/legcuffs/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
 
 	var/list/viruses = list() //List of active diseases
 

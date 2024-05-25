@@ -179,6 +179,8 @@
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive
 #define TRAIT_XENONID "t_xenonid"
+/// If the hive or xeno can use objects.
+#define TRAIT_OPPOSABLE_THUMBS "t_thumbs"
 /// If the Hive delays round end (this is overridden for some hives). Does not occur naturally. Must be applied in events.
 #define TRAIT_NO_HIVE_DELAY "t_no_hive_delay"
 /// If the Hive uses it's colors on the mobs. Does not occur naturally, excepting the Mutated hive.
@@ -265,7 +267,10 @@
 
 #define TRAIT_GUN_BIPODDED "t_gun_bipodded"
 
-#define TRAIT_GUN_LIGHT_DEACTIVATED "t_gun_light_deactivated"
+#define TRAIT_GUN_LIGHT_FORCE_DEACTIVATED "t_gun_light_deactivated"
+
+/// If this ID belongs to an ERT member
+#define TRAIT_ERT_ID "ert_id"
 
 // Miscellaneous item traits.
 // Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)
@@ -349,6 +354,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
 		"TRAIT_ABILITY_OVIPOSITOR" = TRAIT_ABILITY_OVIPOSITOR,
+		"TRAIT_OPPOSABLE_THUMBS" = TRAIT_OPPOSABLE_THUMBS,
 	),
 	/datum/hive_status = list(
 		"TRAIT_XENONID" = TRAIT_XENONID,

@@ -14,11 +14,11 @@
 	var/front_description = "A red trading card with a picture of the United Americas flag emblazoned on it. It is number one out of the five red cards."
 	var/back_icon_state = "trading_red"
 	var/front_icon_state = "trading_red_one"
-	var/picture_descriptions = list("5" = list("red" = "a Holy Order of the HEFA cultist", "green" = "General Delyla S. Vaughn (the Assistant Commandant of the United States Colonial Marines)", "blue" = "the Weyland Yutani logo"),
-									"4" = list("red" = "a UPPA officer", "green" = "General Diego Dellamarggio (the Commandant of the United States Colonial Marines)", "blue" = "the Independent Core System Colonies logo"),
+	var/picture_descriptions = list("5" = list("red" = "a fanatical colonial seditionist", "green" = "Almirante Joelle De La Cruz (the United Americas Secretary of Defense)", "blue" = "the United Americas flag"),
+									"4" = list("red" = "a UPPA soldier", "green" = "Marechal-do-ar Enzo Gabriel Lurdes (the Chief of Naval Operations of the Latin American Colonial Navy)", "blue" = "the Union of Progressive Peoples flag"),
 									"3" = list("red" = "a UPPA minigunner", "green" = "Generale d'armee Felix Couture (the Commandant of the Canadian Colonial Armed Forces)", "blue" = "the Three World Empire flag"),
-									"2" = list("red" = "a UPPA soldier", "green" = "Marechal-do-ar Enzo Gabriel Lurdes (the Chief of Naval Operations of the Latin American Colonial Navy)", "blue" = "the Union of Progressive Peoples flag"),
-									"1" = list("red" = "a fanatical colonial seditionist", "green" = "Almirante Joelle De La Cruz (the United Americas Secretary of Defense)", "blue" = "the United Americas flag",)
+									"2" = list("red" = "a UPPA officer", "green" = "General Diego Dellamarggio (the Commandant of the United States Colonial Marines)", "blue" = "the Weyland Yutani logo"),
+									"1" = list("red" = "a Holy Order of the HEFA cultist", "green" = "General Delyla S. Vaughn (the Assistant Commandant of the United States Colonial Marines)", "blue" = "the Independent Core System Colonies logo",)
 									)
 
 /obj/item/toy/trading_card/Initialize()

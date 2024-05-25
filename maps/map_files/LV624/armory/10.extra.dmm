@@ -168,11 +168,8 @@
 	},
 /area/lv624/lazarus/security)
 "u" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Secure Vault APC";
-	pixel_x = -28;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "cult"

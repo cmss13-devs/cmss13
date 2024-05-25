@@ -50,7 +50,7 @@
 		icon_state += "_out"
 
 	if(dcell && dcell.charge)
-		switch(round(dcell.charge * 100 / dcell.maxcharge))
+		switch(floor(dcell.charge * 100 / dcell.maxcharge))
 			if(67 to INFINITY)
 				overlays += "+full"
 			if(34 to 66)
@@ -66,8 +66,8 @@
 	. = ..()
 	var/maxuses = 0
 	var/currentuses = 0
-	maxuses = round(dcell.maxcharge / charge_cost)
-	currentuses = round(dcell.charge / charge_cost)
+	maxuses = floor(dcell.maxcharge / charge_cost)
+	currentuses = floor(dcell.charge / charge_cost)
 	. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery.")
 	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) || !blocked_by_suit)
 		. += SPAN_NOTICE("This defibrillator will ignore worn armor.")
@@ -175,7 +175,7 @@
 	playsound(get_turf(src),'sound/items/defib_charge.ogg', 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 
 	//Taking square root not to make defibs too fast...
-	if(!do_after(user, 7 SECONDS * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, H, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+	if(!do_after(user, (4 + (3 * user.get_skill_duration_multiplier(SKILL_MEDICAL))) SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, H, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 		user.visible_message(SPAN_WARNING("[user] stops setting up the paddles on [H]'s chest."), \
 		SPAN_WARNING("You stop setting up the paddles on [H]'s chest."))
 		return

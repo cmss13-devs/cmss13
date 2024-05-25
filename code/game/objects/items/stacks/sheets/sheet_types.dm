@@ -107,7 +107,7 @@ GLOBAL_LIST_INIT_TYPED(plasteel_recipes, /datum/stack_recipe, list ( \
 /obj/item/stack/sheet/plasteel
 	name = "plasteel sheet"
 	singular_name = "plasteel sheet"
-	desc = "These sheets are an alloy of iron and phoron."
+	desc = "Plasteel is an expensive, durable material made from combining platinum, steel, and advanced polymers to create a metal that is corrosion-resistant, highly durable, and lightweight. The only reason this isn't used more often is because of how damn costly it is."
 	icon_state = "sheet-plasteel"
 	item_state = "sheet-plasteel"
 	matter = list("metal" = 3750)

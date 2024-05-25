@@ -320,7 +320,8 @@
 /area/shuttle/lifeboat)
 "Jg" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor8"
+	icon_state = "floor1";
+	dir = 4
 	},
 /area/shuttle/lifeboat)
 "Jw" = (

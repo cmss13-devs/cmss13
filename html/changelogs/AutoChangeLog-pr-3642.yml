@@ -1,5 +1,0 @@
-author: "paulrpg,kugamo"
-delete-after: True
-changes:
-  - imageadd: "shuttle rotation sprites added"
-  - maptweak: "escape pods now use new floors"

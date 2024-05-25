@@ -101,11 +101,6 @@
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 
-	//Get area light
-	var/area/A = loc
-	if(A?.lighting_effect)
-		overlays += A.lighting_effect
-
 	return INITIALIZE_HINT_NORMAL
 
 /turf/Destroy(force)
@@ -521,7 +516,7 @@
 		return
 
 	var/amount = size
-	var/spread = round(sqrt(size)*1.5)
+	var/spread = floor(sqrt(size)*1.5)
 
 	var/list/turfs = list()
 	for(var/turf/open/floor/F in range(src,spread))

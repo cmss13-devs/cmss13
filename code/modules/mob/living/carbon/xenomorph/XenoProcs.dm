@@ -750,13 +750,13 @@
 
 /// snowflake proc to clear effects from research warcrimes
 /mob/living/carbon/xenomorph/proc/clear_debuffs()
-	var/debuffs = list(/datum/component/status_effect/healing_reduction, /datum/component/status_effect/toxic_buildup, /datum/component/status_effect/speed_modifier)
-	for(var/datum/component/status_effect/debuff as anything in debuffs)
-		var/datum/component/status_effect/instance = GetComponent(debuff)
-		if(instance)
-			instance.cleanse()
-	if(interference)
-		interference = 0
-		interference_grace_period = 20
-	if(HAS_TRAIT(src, TRAIT_DAZED))
-		SetDaze(0)
+	SEND_SIGNAL(src, COMSIG_XENO_DEBUFF_CLEANSE)
+	SetKnockOut(0)
+	SetStun(0)
+	SetKnockDown(0)
+	SetDaze(0)
+	SetSlow(0)
+	SetSuperslow(0)
+	SetRoot(0)
+	SetEyeBlur(0)
+	updatehealth()

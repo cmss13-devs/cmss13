@@ -537,10 +537,6 @@
 		H.chestburst = 0
 		H.update_headshot_overlay() //They don't have their brains blown out anymore, if they did.
 
-	if(isxeno(src))
-		var/mob/living/carbon/xenomorph/xeno = src
-		xeno.clear_debuffs()
-
 	// fix all of our organs
 	restore_all_organs()
 

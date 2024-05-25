@@ -89,7 +89,7 @@
 			to_chat(src, SPAN_XENOWARNING("We can't watch ourselves!"))
 			return
 
-		if(targetXeno.interference)
+		if(HAS_TRAIT(targetXeno, TRAIT_HIVEMIND_INTERFERENCE))
 			to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
 			return
 

@@ -23,9 +23,9 @@
 	src.toxic_buildup = min(src.toxic_buildup, max_buildup)
 
 /datum/component/status_effect/toxic_buildup/process(delta_time)
-	var/atom/A = parent
+	var/atom/parent_atom = parent
 	if(has_immunity)
-		A.remove_filter("toxic_buildup")
+		parent_atom.remove_filter("toxic_buildup")
 		return ..()
 
 	toxic_buildup = max(toxic_buildup - toxic_buildup_dissipation * delta_time, 0)
@@ -42,7 +42,7 @@
 	color += num2text(max_alpha*intensity, 2, 16)
 
 	if(parent)
-		A.add_filter("toxic_buildup", 2, list("type" = "outline", "color" = color, "size" = 1))
+		parent_atom.add_filter("toxic_buildup", 2, list("type" = "outline", "color" = color, "size" = 1))
 
 /datum/component/status_effect/toxic_buildup/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)

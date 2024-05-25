@@ -29,9 +29,9 @@
 	src.speed_modifier = min(src.speed_modifier, max_buildup)
 
 /datum/component/status_effect/speed_modifier/process(delta_time)
-	var/atom/A = parent
+	var/atom/parent_atom = parent
 	if(has_immunity)
-		A.remove_filter("speed_modifier")
+		parent_atom.remove_filter("speed_modifier")
 		return ..()
 
 	if(!parent)
@@ -52,7 +52,7 @@
 	var/intensity = speed_modifier/max_buildup
 	color += num2text(MAX_ALPHA*intensity, 2, 16)
 
-	A.add_filter("speed_modifier", 2, list("type" = "outline", "color" = color, "size" = 1))
+	parent_atom.add_filter("speed_modifier", 2, list("type" = "outline", "color" = color, "size" = 1))
 
 /datum/component/status_effect/speed_modifier/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)

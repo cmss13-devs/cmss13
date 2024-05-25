@@ -408,6 +408,7 @@
 #include "code\datums\components\disk_reader.dm"
 #include "code\datums\components\footstep.dm"
 #include "code\datums\components\healing_reduction.dm"
+#include "code\datums\components\hivemind_interference.dm"
 #include "code\datums\components\id_lock.dm"
 #include "code\datums\components\label.dm"
 #include "code\datums\components\orbiter.dm"

@@ -11,7 +11,7 @@
 		to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
 		return
 
-	if(interference)
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
 		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
 		return
 
@@ -36,7 +36,7 @@
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
-	if(interference)
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
 		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
 		return
 

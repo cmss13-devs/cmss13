@@ -81641,7 +81641,7 @@
 	},
 /area/lv759/indoors/north_west_caves)
 "nhG" = (
-/obj/structure/machinery/colony_electrified_fence_switch,
+/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch,
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/lv759/oob)
 "nhI" = (
@@ -135117,7 +135117,7 @@
 	},
 /area/lv759/indoors/wy_research_complex/medical_annex)
 "vLR" = (
-/obj/structure/machinery/engineerconsole_switch{
+/obj/structure/machinery/colony_floodlight_switch/engineerconsole_switch{
 	layer = 4
 	},
 /turf/open/engineership/engineer_floor1,

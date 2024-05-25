@@ -279,3 +279,20 @@
   TheGamerdk:
   - rscadd: Adds a sensor tower to the far East of Shivas, between Med-Sec and the
       Research labs
+2024-05-25:
+  Doubleumc:
+  - qol: vehicle weapon projectiles start from the weapon
+  Git-Nivrak:
+  - balance: AMR will now reset its focus after two fully charged aimed shots on the
+      same target.
+  JackieEstegado:
+  - qol: Requisition drop pads will now no longer launch open crates
+  Steelpoint:
+  - rscadd: The Compact Nailgun that the USCM Synthetic can vend now comes with a
+      unique nailgun holster, capable of holding the nailgun and two spare magazines.
+  Tyranicranger4:
+  - bugfix: Fixes improperly placed APCs on Shivas Snowball
+  realforest2001:
+  - bugfix: Fixed ARES remote interface UI crash relating to flight logs.
+  - rscadd: Added access check for use of escape pod consoles, and access requirement
+      on the CLs pod.

@@ -2,7 +2,7 @@
 /// 3 x 3 damage centred on the xenomorph
 /datum/action/xeno_action/onclick/rend
 	name = "Rend"
-	action_icon_state = "crest_defense"
+	action_icon_state = "rav_eviscerate"
 	ability_name = "rend"
 	macro_path = /datum/action_xeno_action/verb/verb_rend
 	xeno_cooldown = 2.5 SECONDS
@@ -16,10 +16,10 @@
 /// Screech which puts out lights in a 7 tile radius, slows and dazes.
 /datum/action/xeno_action/activable/doom
 	name = "Doom"
-	action_icon_state = "crest_defense"
+	action_icon_state = "screech"
 	ability_name = "doom"
 	macro_path = /datum/action_xeno_action/verb/verb_doom
-	xeno_cooldown = 2.5 SECONDS //90 SECONDS?
+	xeno_cooldown = 90 SECONDS
 	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
@@ -32,11 +32,11 @@
 /// Leap ability, crashing down dealing major damage to mobs and structures in the area.
 /datum/action/xeno_action/activable/destroy
 	name = "Destroy"
-	action_icon_state = "crest_defense"
+	action_icon_state = "charge"
 	ability_name = "destroy"
 	macro_path = /datum/action/xeno_action/verb/verb_destroy
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 1.5 SECONDS // 90 SECONDS
+	xeno_cooldown = 90 SECONDS // 90 SECONDS
 	plasma_cost = 0
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
@@ -46,7 +46,7 @@
 /// Shield ability, limits the amount of damage from a single instance of damage to 10% of the xenomorph's max health.
 /datum/action/xeno_action/onclick/destroyer_shield
 	name = "Bulwark of the Hive"
-	action_icon_state = "crest_defense"
+	action_icon_state = "soak"
 	ability_name = "legion_shield"
 	macro_path = /datum/action_xeno_action/verb/destroyer_shield
 	action_type = XENO_ACTION_ACTIVATE

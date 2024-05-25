@@ -10,7 +10,7 @@
 
 ///GLOBAL DEFINES///
 
-#define HIVE_STARTING_BUFFPOINTS 10
+#define HIVE_STARTING_BUFFPOINTS 0
 #define BUFF_POINTS_NAME "Royal resin"
 
 ///LOCAL DEFINES///
@@ -40,9 +40,9 @@
 	var/roundtime_to_enable = 0 HOURS
 
 	/// Flavour message to announce to the hive on buff application. Narrated to all players in the hive.
-	var/engage_flavourmessage = "The qween has purchased a buff UwU!"
+	var/engage_flavourmessage = "The Queen has purchased a buff!"
 	/// Flavour message to announce to the hive on buff expiry. Narrated to all players in the hive.
-	var/cease_flavourmessage = "Oh noes! =>.<= our buff has expired!!"
+	var/cease_flavourmessage = "The buff has expired."
 
 	/// Minor or Major buff. Governs announcements made and importance.
 	var/tier = HIVEBUFF_TIER_MINOR
@@ -240,8 +240,6 @@
 	return TRUE
 
 /datum/hivebuff/proc/_roundtime_check()
-	//BIRDTALON: REMOVE TO_CHAT(WORLD)
-	to_chat(world, "[ROUND_TIME] > [SSticker.round_start_time] +  [roundtime_to_enable]")
 	if(ROUND_TIME > (SSticker.round_start_time + roundtime_to_enable))
 		return TRUE
 	return FALSE
@@ -350,8 +348,8 @@
 	desc = "Provides 5 larva instantly to the hive."
 	radial_icon = "larba"
 
-	engage_flavourmessage = "The queen has purchased 5 extra larva to join the hive!"
-
+	engage_flavourmessage = "The Queen has purchased 5 extra larva to join the hive!"
+	cost = 5
 	is_reusable = FALSE
 
 /datum/hivebuff/extra_larva/on_engage()
@@ -362,8 +360,7 @@
 	name = "Boon of Plenty"
 	desc = "Increases all xenomorph health by 10% for 10 seconds"
 	tier = HIVEBUFF_TIER_MINOR
-
-	engage_flavourmessage = "The queen has imbued us with greater fortitude."
+	engage_flavourmessage = "The Queen has imbued us with greater fortitude."
 	duration = 10 SECONDS
 	number_of_required_pylons = 2
 
@@ -378,7 +375,7 @@
 	desc = "Increases all xenomorph health by 10% for 10 minutes"
 	tier = HIVEBUFF_TIER_MAJOR
 
-	engage_flavourmessage = "The queen has imbued us with greater fortitude."
+	engage_flavourmessage = "The Queen has imbued us with greater fortitude."
 	duration = 10 MINUTES
 	number_of_required_pylons = 2
 	radial_icon = "health_m"
@@ -393,33 +390,28 @@
 /datum/hivebuff/game_ender_caste/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
 	var/turf/spawn_turf
 	for(var/turf/potential_turf in orange(5, purchased_pylon))
-		if(potential_turf.density)
-			continue
-		var/area/target_area = get_area(potential_turf)
-		if(target_area.flags_area & AREA_NOTUNNEL)
-			continue
+		var/failed = FALSE
+		for(var/x_offset in 0 to 3)
+			for(var/y_offset in 0 to 3)
+				var/turf/turf_to_check = locate(potential_turf.x + x_offset, potential_turf.y + y_offset, potential_turf.z)
 
-		// Do we have a turf for the Destroyer to exit after spawning?
-		var/exit_turf = FALSE
-		for(var/cardinal in GLOB.cardinals)
-			var/turf/turf_to_check = get_step(potential_turf, cardinal)
-			if(turf_to_check.density)
-				continue
-			var/area/exit_target_area = get_area(turf_to_check)
-			if(exit_target_area.flags_area & AREA_NOTUNNEL)
-				continue
-			exit_turf = TRUE
+				if(turf_to_check.density)
+					failed = TRUE
+					break
+				var/area/target_area = get_area(turf_to_check)
+				if(target_area.flags_area & AREA_NOTUNNEL)
+					failed = TRUE		
+					break			
+		if(!failed)
+			spawn_turf = potential_turf
 			break
-		if(!exit_turf)
-			engage_failure_message = "Unable to find a viable spawn point for the Destroyer"
-			return FALSE
 
-		spawn_turf = potential_turf
-		break
+	if(!spawn_turf)
+		engage_failure_message = "Unable to find a viable spawn point for the Destroyer"
+		return FALSE
 
-	new /obj/effect/alien/destroyer_cocoon(spawn_turf)
+	new /obj/effect/alien/resin/destroyer_cocoon(spawn_turf)
 
-	/// CODE FOR SPAWNING OF THE DESTROYER HERE.
 	return TRUE
 
 /datum/hivebuff/defence
@@ -427,39 +419,66 @@
 	desc = "Increases all xenomorph armour by 5% for 5 minutes"
 	tier = HIVEBUFF_TIER_MINOR
 
-	engage_flavourmessage = "The queen has imbued us with greater chitin."
+	engage_flavourmessage = "The Queen has imbued us with greater chitin."
 	duration = 5 MINUTES
 	number_of_required_pylons = 1
 	radial_icon = "shield"
+
+/datum/hivebuff/defence/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.armor_deflection += 0.05 * xeno.armor_deflectionarmor_modifier
+
+/datum/hivebuff/defence/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.armor_deflection = initial(xeno.armor_deflection)
 
 /datum/hivebuff/defence/major
 	name = "Major Boon of Defence"
 	desc = "Increases all xenomorph armour by 10% for 10 minutes"
 	tier = HIVEBUFF_TIER_MAJOR
 
-	engage_flavourmessage = "The queen has imbued us with even greater chitin."
+	engage_flavourmessage = "The Queen has imbued us with even greater chitin."
 	duration = 10 MINUTES
 	number_of_required_pylons = 2
 	radial_icon = "shield_m"
 
+/datum/hivebuff/defence/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.armor_deflection += 0.1 * xeno.armor_deflection
+
+/datum/hivebuff/defence/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.armor_deflection = initial(xeno.armor_deflection)
 
 /datum/hivebuff/attack
 	name = "Boon of Aggression"
 	desc = "Increases all xenomorph damage by 5% for 5 minutes"
 	tier = HIVEBUFF_TIER_MINOR
 
-	engage_flavourmessage = "The queen has imbued us with slarp claws."
+	engage_flavourmessage = "The Queen has imbued us with slarp claws."
 	duration = 5 MINUTES
 	number_of_required_pylons = 1
 	radial_icon = "slash"
+
+/datum/hivebuff/attack/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.melee_damage_lower += 0.05 * xeno.melee_damage_lower
+	xeno.melee_damage_upper += 0.05 * xeno.melee_damage_upper
+
+/datum/hivebuff/attack/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.melee_damage_lower += initial(xeno.melee_damage_lower)
+	xeno.melee_damage_upper += initial(xeno.melee_damage_upper)
 
 /datum/hivebuff/attack/major
 	name = "Major Boon of Aggression"
 	desc = "Increases all xenomorph damage by 10% for 10 minutes"
 	tier = HIVEBUFF_TIER_MAJOR
 
-	engage_flavourmessage = "The queen has imbued us with razer sharp claws."
+	engage_flavourmessage = "The Queen has imbued us with razer sharp claws."
 	duration = 10 MINUTES
 	number_of_required_pylons = 2
 	radial_icon = "slash_m"
+
+/datum/hivebuff/attack/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.melee_damage_lower += 0.1 * xeno.melee_damage_lower
+	xeno.melee_damage_upper += 0.1 * xeno.melee_damage_upper
+
+/datum/hivebuff/attack/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.melee_damage_lower += initial(xeno.melee_damage_lower)
+	xeno.melee_damage_upper += initial(xeno.melee_damage_upper)
 

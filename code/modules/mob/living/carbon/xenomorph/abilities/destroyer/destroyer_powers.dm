@@ -1,17 +1,4 @@
 /*
-* TO ADD
-*
-* CAN NOT HARM CHECKS / DEAD CHECKS? X
-* PLASMA CHECKS X
-* STATUS CHECKS X
-* LOGS X
-* EARLY RETURNS? X
-* ATTACK VISUALS FOR ALL ABILITIES X
-* SOUNDS FOR ALL ABILITIES X
-* LAST DAMAGE DATA = cause_data X
-*/
-
-/*
 	REND ABILITY
 	3x3 aoe damage centred on the destroyer. Basic ability, spammable, low damage.
 */

@@ -59,46 +59,29 @@
 	)
 
 	icon_xeno = 'icons/mob/xenos/destroyer.dmi'
-
-	//BIRDTALON: Do we need xenonid stuff?
-	//icon_xenonid = ''
-
-	//BIRDTALON: need weed food icon
-	//weed_food_icon = ''
 	weed_food_states = list()
 	weed_food_states_flipped = list()
 
-/datum/behavior_delegate/destroyer_base
-	name = "Base Destroyer Behavior Delegate"
-	///reward for hitting shots instead of spamming acid ball
+/mob/living/carbon/xenomorph/destroyer/Initialize()
+	. = ..()
+	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
+	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
 
-
-///Direct override on Collide() to prevent bumping
-/mob/living/carbon/xenomorph/destroyer/Collide(atom/movable/movable_atom)
-	if(behavior_delegate)
-		behavior_delegate.on_collide(movable_atom)
-	..()
-
-/// Knocks down hostiles and deals damage, knocks down allies for a much shorter time
-/datum/behavior_delegate/destroyer_base/on_collide(atom/movable/movable_atom)
-	if(!bound_xeno.Adjacent(movable_atom))
-		return
-
-	if(isxeno_human(movable_atom))
-		var/mob/living/carbon/carbon = movable_atom
-
+/mob/living/carbon/xenomorph/destroyer/proc/check_block(mob/destroyer, turf/new_loc)
+	SIGNAL_HANDLER
+	for(var/mob/living/carbon/carbon in new_loc.contents)
 		if(isxeno(carbon))
 			var/mob/living/carbon/xenomorph/xeno = carbon
-			if(xeno.hivenumber == bound_xeno.hivenumber)
+			if(xeno.hivenumber == src.hivenumber)
 				xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
 			else
 				xeno.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
 		else
-			//Review damage and knockdown
-			carbon.apply_armoured_damage(20)
-
-			var/turf/T = get_turf(carbon)
-			var/list/contents = T.contents
-
-			for(var/mob/living/carbon/carbon in contents)
+			if(carbon.stat != DEAD)
+				carbon.apply_armoured_damage(20)
 				carbon.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
+		
+		playsound(src.loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+
+/datum/behavior_delegate/destroyer_base
+	name = "Base Destroyer Behavior Delegate"

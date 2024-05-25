@@ -205,30 +205,21 @@
 
 	activated = TRUE
 	linked_hive.check_if_hit_larva_from_pylon_limit()
-	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(give_royal_resin)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 
 /// Looped proc via timer to give larva after time
-/obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()
+/obj/effect/alien/resin/special/pylon/endgame/proc/give_royal_resin()
 	if(!activated)
 		return
 
 	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
 
-	if(linked_hive.check_if_hit_larva_from_pylon_limit())
-		return
-
-	linked_hive.partial_larva += (linked_hive.get_real_total_xeno_count() + linked_hive.stored_larva) * LARVA_ADDITION_MULTIPLIER
-	linked_hive.convert_partial_larva_to_full_larva()
-	linked_hive.hive_ui.update_burrowed_larva()
+	linked_hive.buff_points += 1
 
 /// APPLYING HIVE BUFFS ///
 
 /obj/effect/alien/resin/special/pylon/endgame/attack_alien(mob/living/carbon/xenomorph/xeno)
-	choose_hivebuff(xeno)
-	return XENO_NONCOMBAT_ACTION
-	///BIRDTALON: REVERT TO THIS AFTER TESTING
-	/*
 	if(!damaged && health == maxhealth && xeno.a_intent == INTENT_HELP && xeno.hivenumber == linked_hive.hivenumber && IS_XENO_LEADER(xeno))
 		if(!LAZYISIN(players_on_buff_cooldown, xeno))
 			choose_hivebuff(xeno)
@@ -237,7 +228,7 @@
 			to_chat(xeno, SPAN_XENONOTICE("We cannot choose a hive buff just yet. Try again later."))
 			return ..()
 	else
-		..() */
+		..() 
 
 /// To choose a hivebuff
 /obj/effect/alien/resin/special/pylon/endgame/proc/choose_hivebuff(mob/living/carbon/xenomorph/xeno)

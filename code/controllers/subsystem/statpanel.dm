@@ -108,7 +108,7 @@ SUBSYSTEM_DEF(statpanels)
 
 	target.stat_panel.send_message("update_stat", list(
 		"global_data" = global_data,
-		//"ping_str" = "Ping: [round(target.lastping, 1)]ms (Average: [round(target.avgping, 1)]ms)",
+		//"ping_str" = "Ping: [floor(target.lastping, 1)]ms (Average: [floor(target.avgping, 1)]ms)",
 		"other_str" = target.mob?.get_status_tab_items(),
 	))
 
@@ -212,17 +212,23 @@ SUBSYSTEM_DEF(statpanels)
 
 /// Sets the current tab to the SDQL tab
 /datum/controller/subsystem/statpanels/proc/set_SDQL2_tab(client/target)
+	if(!target)
+		return
+
 	var/list/sdql2_initial = list()
-	//sdql2_initial[length(sdql2_initial)++] = list("", "Access Global SDQL2 List", REF(GLOB.sdql2_vv_statobj))
+	sdql2_initial[++sdql2_initial.len] = list("", "Access Global SDQL2 List", REF(GLOB.sdql2_vv_statobj))
 	var/list/sdql2_querydata = list()
-	//for(var/datum/sdql2_query/query as anything in GLOB.sdql2_queries)
-		//sdql2_querydata = query.generate_stat()
+	for(var/datum/sdql2_query/query as anything in GLOB.sdql2_queries)
+		sdql2_querydata += query.generate_stat()
 
 	sdql2_initial += sdql2_querydata
 	target.stat_panel.send_message("update_sdql2", sdql2_initial)
 
 ///immediately update the active statpanel tab of the target client
 /datum/controller/subsystem/statpanels/proc/immediate_send_stat_data(client/target)
+	if(!target)
+		return FALSE
+
 	if(!target.stat_panel.is_ready())
 		return FALSE
 

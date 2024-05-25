@@ -82,7 +82,7 @@
 	if(current_pain - new_pain_reduction > max_pain)
 		return 100
 
-	var/percentage = round(((current_pain - new_pain_reduction) / max_pain) * 100)
+	var/percentage = floor(((current_pain - new_pain_reduction) / max_pain) * 100)
 	if(percentage < 0)
 		return 0
 	else

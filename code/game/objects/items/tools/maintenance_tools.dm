@@ -494,6 +494,7 @@
 	w_class = SIZE_LARGE
 	force = MELEE_FORCE_STRONG
 	flags_equip_slot = SLOT_SUIT_STORE
+	flags_atom = FPRINT|QUICK_DRAWABLE
 	pry_capable = IS_PRY_CAPABLE_FORCE //but not really
 	///Whether the Maintenance Jack is on crowbar or wrench mode
 	var/crowbar_mode = TRUE //False for wrench mode
@@ -556,12 +557,18 @@
 		if(requires_superstrength_pry)
 			if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
 				return
-		if(!attacked_door.density) //If its open
-			return
 		if(attacked_door.heavy) //Unopenable
 			to_chat(usr, SPAN_DANGER("You cannot force [attacked_door] open."))
 			return
 		if(user.action_busy)
+			return
+		if(!attacked_door.density && !attacked_door.arePowerSystemsOn()) //If its open and unpowered
+			attacked_door.close(TRUE)
+			return
+		if(attacked_door.density && !attacked_door.arePowerSystemsOn()) // if its closed and unpowered
+			attacked_door.open(TRUE)
+			return
+		if(!attacked_door.density) //If its open
 			return
 
 		user.visible_message(SPAN_DANGER("[user] jams [src] into [attacked_door] and starts to pry it open."),

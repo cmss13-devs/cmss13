@@ -152,7 +152,7 @@
 			if(!(NO_BLOOD in human_occupant.species.flags))
 				occupantData["pulse"] = human_occupant.get_pulse(GETPULSE_TOOL)
 				occupantData["hasBlood"] = 1
-				occupantData["bloodLevel"] = round(occupant.blood_volume)
+				occupantData["bloodLevel"] = floor(occupant.blood_volume)
 				occupantData["bloodMax"] = occupant.max_blood
 				occupantData["bloodPercent"] = round(100*(occupant.blood_volume/occupant.max_blood), 0.01)
 

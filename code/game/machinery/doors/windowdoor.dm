@@ -125,7 +125,7 @@
 /obj/structure/machinery/door/window/bullet_act(obj/projectile/Proj)
 	bullet_ping(Proj)
 	if(Proj.ammo.damage)
-		take_damage(round(Proj.ammo.damage / 2))
+		take_damage(floor(Proj.ammo.damage / 2))
 		if(Proj.ammo.damage_type == BRUTE)
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	return 1

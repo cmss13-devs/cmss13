@@ -1,4 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - bugfix: "fixed potential bugs with transparent infection icon"

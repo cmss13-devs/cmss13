@@ -316,6 +316,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
+	if(crate.opened)
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The crate is not secure on the drop pad. Please close it!")]")
+		return
+
 	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
 	current_squad.send_message("'[crate.name]' supply drop incoming. Heads up!")
 	current_squad.send_maptext(crate.name, "Incoming Supply Drop:")
@@ -489,13 +493,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(crate_iteration <= 5 && crate_amount < 4)
 		crate_amount = 4
 
-	var/unit_crate_amount = round(crate_amount)
+	var/unit_crate_amount = floor(crate_amount)
 	var/carry = crate_amount - unit_crate_amount
 	random_crates_carry[pool] += carry
 	var/total_carry = random_crates_carry[pool]
 
 	if(total_carry >= 1)
-		var/additional_crates = round(total_carry)
+		var/additional_crates = floor(total_carry)
 		random_crates_carry[pool] -= additional_crates
 		unit_crate_amount += additional_crates
 
@@ -511,7 +515,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(!GLOB.supply_packs_datums[supply_info.reference_package])
 		return
 
-	supply_info.cost = round(supply_info.cost * ASRS_COST_MULTIPLIER) //We still do this to raise the weight
+	supply_info.cost = floor(supply_info.cost * ASRS_COST_MULTIPLIER) //We still do this to raise the weight
 	//We have to create a supply order to make the system spawn it. Here we transform a crate into an order.
 	var/datum/supply_order/supply_order = new /datum/supply_order()
 	supply_order.ordernum = ordernum++
@@ -525,7 +529,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /datum/controller/supply/proc/pick_weighted_crate(list/datum/supply_packs_asrs/cratelist)
 	var/list/datum/supply_packs_asrs/weighted_crate_list = list()
 	for(var/datum/supply_packs_asrs/crate in cratelist)
-		var/weight = (round(10000/crate.cost))
+		var/weight = (floor(10000/crate.cost))
 		weighted_crate_list[crate] = weight
 	return pickweight(weighted_crate_list)
 
@@ -777,7 +781,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
 				if(supply_pack.contraband || supply_pack.group != last_viewed_group || !supply_pack.buyable)
 					continue //Have to send the type instead of a reference to
-				temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[round(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
+				temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
 
 	else if (href_list["doorder"])
 		if(world.time < reqtime)
@@ -976,7 +980,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
 					if(!is_buyable(supply_pack))
 						continue
-					temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[round(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
+					temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
 
 	else if (href_list["doorder"])
 		if(world.time < reqtime)
@@ -1054,10 +1058,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			if(SO.ordernum == ordernum)
 				supply_order = SO
 				supply_pack = supply_order.object
-				if(GLOB.supply_controller.points >= round(supply_pack.cost) && GLOB.supply_controller.black_market_points >= supply_pack.dollar_cost)
+				if(GLOB.supply_controller.points >= floor(supply_pack.cost) && GLOB.supply_controller.black_market_points >= supply_pack.dollar_cost)
 					GLOB.supply_controller.requestlist.Cut(i,i+1)
-					GLOB.supply_controller.points -= round(supply_pack.cost)
-					GLOB.supply_controller.black_market_points -= round(supply_pack.dollar_cost)
+					GLOB.supply_controller.points -= floor(supply_pack.cost)
+					GLOB.supply_controller.black_market_points -= floor(supply_pack.dollar_cost)
 					if(GLOB.supply_controller.black_market_heat != -1) //-1 Heat means heat is disabled
 						GLOB.supply_controller.black_market_heat = clamp(GLOB.supply_controller.black_market_heat + supply_pack.crate_heat + (supply_pack.crate_heat * rand(rand(-0.25,0),0.25)), 0, 100) // black market heat added is crate heat +- up to 25% of crate heat
 					GLOB.supply_controller.shoppinglist += supply_order
@@ -1156,7 +1160,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
 		if(!is_buyable(supply_pack))
 			continue
-		temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[round(supply_pack.dollar_cost)]<BR>"
+		temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.dollar_cost)]<BR>"
 
 /obj/structure/machinery/computer/supplycomp/proc/handle_mendoza_dialogue()
 

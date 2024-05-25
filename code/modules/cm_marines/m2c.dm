@@ -369,7 +369,7 @@
 				return
 			user.visible_message(SPAN_NOTICE("[user] repairs some of the damage on [src]."), \
 					SPAN_NOTICE("You repair [src]."))
-			update_health(-round(health_max*0.2))
+			update_health(-floor(health_max*0.2))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		else
 			to_chat(user, SPAN_WARNING("You need more fuel in [WT] to repair damage to [src]."))
@@ -422,7 +422,7 @@
 /obj/structure/machinery/m56d_hmg/auto/proc/force_cooldown(mob/user)
 	user = operator
 
-	overheat_value = round((rand(M2C_LOW_COOLDOWN_ROLL, M2C_HIGH_COOLDOWN_ROLL) * overheat_threshold))
+	overheat_value = floor((rand(M2C_LOW_COOLDOWN_ROLL, M2C_HIGH_COOLDOWN_ROLL) * overheat_threshold))
 	playsound(src.loc, 'sound/weapons/hmg_cooling.ogg', 75, 1)
 	to_chat(user, SPAN_NOTICE("[src]'s barrel has cooled down enough to restart firing."))
 	emergency_cooling = FALSE
@@ -479,7 +479,7 @@
 			var/obj/item/device/m2c_gun/HMG = new(loc)
 			transfer_label_component(HMG)
 			HMG.rounds = rounds
-			HMG.overheat_value = round(0.5 * overheat_value)
+			HMG.overheat_value = floor(0.5 * overheat_value)
 			if (HMG.overheat_value <= 10)
 				HMG.overheat_value = 0
 			HMG.update_icon()

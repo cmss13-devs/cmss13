@@ -104,7 +104,7 @@
 	human.face_atom(target)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
-	var/distance = round(get_dist(target, human) * 0.5)
+	var/distance = floor(get_dist(target, human) * 0.5)
 	var/f_aiming_time = sniper_rifle.aiming_time + distance
 
 	var/aim_multiplier = 1
@@ -128,7 +128,7 @@
 
 	if(istype(sniper_rifle, /obj/item/weapon/gun/rifle/sniper/XM43E1))
 		var/obj/item/weapon/gun/rifle/sniper/XM43E1/amr = sniper_rifle
-		if((amr.focused_fire_counter >= 1) && (target == amr.focused_fire_target?.resolve()))
+		if((amr.focused_fire_counter >= 1 && amr.focused_fire_counter < 3) && (target == amr.focused_fire_target?.resolve()))
 			sniper_rifle.enable_aimed_shot_icon_alt = TRUE
 		else
 			sniper_rifle.enable_aimed_shot_icon_alt = FALSE

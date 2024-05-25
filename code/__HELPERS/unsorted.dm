@@ -40,15 +40,15 @@
 #define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled((skill), (req_level), TRUE)))
 
 // Ensure the frequency is within bounds of what it should be sending/receiving at
-// Sets f within bounds via `clamp(round(f), 1441, 1489)`
+// Sets f within bounds via `clamp(floor(f), 1441, 1489)`
 // If f is even, adds 1 to its value to make it odd
-#define sanitize_frequency(f) ((clamp(round(f), 1441, 1489) % 2) == 0 ? \
-									clamp(round(f), 1441, 1489) + 1 : \
-									clamp(round(f), 1441, 1489) \
+#define sanitize_frequency(f) ((clamp(floor(f), 1441, 1489) % 2) == 0 ? \
+									clamp(floor(f), 1441, 1489) + 1 : \
+									clamp(floor(f), 1441, 1489) \
 								)
 
 //Turns 1479 into 147.9
-#define format_frequency(f) "[round((f) / 10)].[(f) % 10]"
+#define format_frequency(f) "[floor((f) / 10)].[(f) % 10]"
 
 #define reverse_direction(direction) ( \
 											( dir & (NORTH|SOUTH) ? ~dir & (NORTH|SOUTH) : 0 ) | \
@@ -1766,8 +1766,8 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		pixel_y_offset += ((AMiconheight/world.icon_size)-1)*(world.icon_size*0.5)
 
 	//DY and DX
-	var/rough_x = round(round(pixel_x_offset,world.icon_size)/world.icon_size)
-	var/rough_y = round(round(pixel_y_offset,world.icon_size)/world.icon_size)
+	var/rough_x = floor(round(pixel_x_offset,world.icon_size)/world.icon_size)
+	var/rough_y = floor(round(pixel_y_offset,world.icon_size)/world.icon_size)
 
 	//Find coordinates
 	var/turf/T = get_turf(AM) //use AM's turfs, as it's coords are the same as AM's AND AM's coords are lost if it is inside another atom

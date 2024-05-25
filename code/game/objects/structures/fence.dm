@@ -292,7 +292,7 @@ GLOBAL_LIST_INIT(all_fences, list())
 
 /obj/structure/fence/electrified/Destroy()
 	GLOB.all_fences -= src
-	..()
+	return ..()
 
 /obj/structure/fence/electrified/proc/electrocute_human(mob/living/carbon/human/electrocuted)
 	var/mob/living/carbon/human/human = electrocuted

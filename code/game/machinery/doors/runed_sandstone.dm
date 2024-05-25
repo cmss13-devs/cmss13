@@ -4,7 +4,7 @@
 	mineral = "runed sandstone"
 	no_panel = TRUE
 	not_weldable = TRUE
-	use_power = FALSE
+	use_power = USE_POWER_NONE
 	autoclose = FALSE
 	locked = TRUE
 	icon_state = "door_locked"

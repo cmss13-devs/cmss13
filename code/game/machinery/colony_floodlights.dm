@@ -1,5 +1,5 @@
 //Putting these here since it's power-related
-/obj/structure/machinery/colony_floodlight_switch
+/obj/structure/machinery/colony_floodlight_switch // TODO: Repath to just breaker_switch
 	name = "colony floodlight switch"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "panelnopower"
@@ -10,10 +10,12 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	power_machine = TRUE
+	idle_power_usage = 0
 	var/ispowered = FALSE
-	var/turned_on = FALSE //has to be toggled in engineering
-	///All floodlights under our control
-	var/list/floodlist = list()
+	///All machinery under our control
+	var/list/machinery_list = list()
+	///The strict type of machinery we control
+	var/machinery_type_to_control = /obj/structure/machinery/colony_floodlight
 
 /obj/structure/machinery/colony_floodlight_switch/Initialize(mapload, ...)
 	. = ..()
@@ -21,48 +23,50 @@
 
 /obj/structure/machinery/colony_floodlight_switch/LateInitialize()
 	. = ..()
-	for(var/obj/structure/machinery/colony_floodlight/floodlight in GLOB.machines)
-		floodlist += floodlight
-		floodlight.fswitch = src
+	if(machinery_type_to_control)
+		for(var/obj/structure/machinery/machine as anything in GLOB.machines)
+			if(machine.breaker_switch == null && istypestrict(machine, machinery_type_to_control))
+				machinery_list += machine
+				machine.breaker_switch = src
 	start_processing()
 
 /obj/structure/machinery/colony_floodlight_switch/Destroy()
-	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
-		floodlight.fswitch = null
-	floodlist = null
+	for(var/obj/structure/machinery/machine as anything in machinery_list)
+		if(machine.breaker_switch == src)
+			machine.breaker_switch = null
+	machinery_list = null
 	return ..()
 
 /obj/structure/machinery/colony_floodlight_switch/update_icon()
 	if(!ispowered)
 		icon_state = "panelnopower"
-	else if(turned_on)
+	else if(is_on)
 		icon_state = "panelon"
 	else
 		icon_state = "paneloff"
 
 /obj/structure/machinery/colony_floodlight_switch/process()
-	var/lightpower = 0
-	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
-		if(!floodlight.is_lit)
+	var/machinepower = calculate_current_power_usage()
+	for(var/obj/structure/machinery/machine as anything in machinery_list)
+		if(!machine.is_on)
 			continue
-		lightpower += floodlight.power_tick
-	use_power(lightpower)
+		machinepower += machine.active_power_usage
+	use_power(machinepower)
 
 /obj/structure/machinery/colony_floodlight_switch/power_change()
 	..()
 	if((stat & NOPOWER))
-		if(ispowered && turned_on)
-			toggle_lights()
+		if(ispowered && is_on)
+			toggle_machines()
 		ispowered = FALSE
-		turned_on = FALSE
-		update_icon()
+		set_is_on(FALSE)
 	else
 		ispowered = TRUE
 		update_icon()
 
-/obj/structure/machinery/colony_floodlight_switch/proc/toggle_lights()
-	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
-		addtimer(CALLBACK(floodlight, TYPE_PROC_REF(/obj/structure/machinery/colony_floodlight, toggle_light)), rand(0, 5 SECONDS))
+/obj/structure/machinery/colony_floodlight_switch/proc/toggle_machines()
+	for(var/obj/structure/machinery/machine as anything in machinery_list)
+		addtimer(CALLBACK(machine, TYPE_PROC_REF(/obj/structure/machinery, toggle_is_on)), rand(0, 5 SECONDS))
 
 /obj/structure/machinery/colony_floodlight_switch/attack_hand(mob/user as mob)
 	if(!ishuman(user))
@@ -73,9 +77,8 @@
 		return FALSE
 	playsound(src,'sound/items/Deconstruct.ogg', 30, 1)
 	use_power(5)
-	toggle_lights()
-	turned_on = !turned_on
-	update_icon()
+	toggle_is_on()
+	toggle_machines()
 	return TRUE
 
 
@@ -96,28 +99,18 @@
 	unacidable = TRUE
 	use_power = USE_POWER_NONE //It's the switch that uses the actual power, not the lights
 	needs_power = FALSE
+	is_on = FALSE //Whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
+	health = 150
+	active_power_usage = 50 //The power each floodlight takes up per process
 	///Whether it has been smashed by xenos
 	var/damaged = FALSE
-	///Whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
-	var/is_lit = FALSE
-	///The power each floodlight takes up per process
-	var/power_tick = 50
-	///Reverse lookup for power grabbing in area
-	var/obj/structure/machinery/colony_floodlight_switch/fswitch = null
 	var/lum_value = 7
 	var/repair_state = FLOODLIGHT_REPAIR_UNSCREW
-	health = 150
-
-/obj/structure/machinery/colony_floodlight/Destroy()
-	if(fswitch)
-		fswitch.floodlist -= src
-		fswitch = null
-	. = ..()
 
 /obj/structure/machinery/colony_floodlight/update_icon()
 	if(damaged)
 		icon_state = "flood_s_dmg"
-	else if(is_lit)
+	else if(is_on)
 		icon_state = "flood_s_on"
 	else
 		icon_state = "flood_s_off"
@@ -154,7 +147,7 @@
 					health = initial(health)
 					user.visible_message(SPAN_NOTICE("[user] screws [src]'s maintenance hatch closed."), \
 					SPAN_NOTICE("You screw [src]'s maintenance hatch closed."))
-					if(is_lit)
+					if(is_on)
 						set_light(lum_value)
 					update_icon()
 			return TRUE
@@ -261,7 +254,7 @@
 	if(ishuman(user))
 		if(damaged)
 			to_chat(user, SPAN_WARNING("[src] is damaged."))
-		else if(!is_lit)
+		else if(!is_on)
 			to_chat(user, SPAN_WARNING("Nothing happens. Looks like it's powered elsewhere."))
 		return FALSE
 	return ..()
@@ -278,7 +271,7 @@
 					if(FLOODLIGHT_REPAIR_WELD) . += SPAN_INFO("You must weld the damage to it.")
 					if(FLOODLIGHT_REPAIR_CABLE) . += SPAN_INFO("You must replace its damaged cables.")
 					if(FLOODLIGHT_REPAIR_SCREW) . += SPAN_INFO("You must screw its maintenance hatch closed.")
-		else if(!is_lit)
+		else if(!is_on)
 			. += SPAN_INFO("It doesn't seem powered.")
 
 /obj/structure/machinery/colony_floodlight/ex_act(severity)
@@ -298,72 +291,15 @@
 /obj/structure/machinery/colony_floodlight/proc/set_damaged()
 	playsound(src, "glassbreak", 70, 1)
 	damaged = TRUE
-	if(is_lit)
+	if(is_on)
 		set_light(0)
 	update_icon()
 
-/obj/structure/machinery/colony_floodlight/proc/toggle_light()
-	is_lit = !is_lit
+/obj/structure/machinery/colony_floodlight/toggle_is_on()
+	. = ..()
 	if(!damaged)
-		set_light(is_lit ? lum_value : 0)
-	update_icon()
-	return is_lit
-
-// Hybrisa Streetlights
-/obj/structure/machinery/colony_floodlight/street
-	name = "Colony Streetlight"
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
-	icon_state = "street_off"
-	layer = ABOVE_XENO_LAYER
-
-/obj/structure/machinery/colony_floodlight/street/update_icon()
-	if(damaged)
-		icon_state = "street_dmg"
-	else if(is_lit)
-		icon_state = "street_on"
-	else
-		icon_state = "street_off"
-
-// Traffic
-/obj/structure/machinery/colony_floodlight/traffic
-	lum_value = 0
-	name = "traffic light"
-	desc = "A traffic light"
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
-	icon_state = "trafficlight"
-	bound_width = 32
-	bound_height = 32
-	density = TRUE
-	health = 200
-	layer = ABOVE_XENO_LAYER
-
-/obj/structure/machinery/colony_floodlight/traffic/update_icon()
-	if(damaged)
-		icon_state = "trafficlight_damaged"
-	else if(is_lit)
-		icon_state = "trafficlight_on"
-	else
-		icon_state = "trafficlight"
-
-/obj/structure/machinery/colony_floodlight/traffic_alt
-	lum_value = 0
-	name = "traffic light"
-	desc = "A traffic light"
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
-	icon_state = "trafficlight_alt"
-	bound_width = 32
-	bound_height = 32
-	density = TRUE
-	health = 200
-	layer = ABOVE_XENO_LAYER
-
-/obj/structure/machinery/colony_floodlight/traffic_alt/update_icon()
-	if(damaged)
-		icon_state = "trafficlight_alt_damaged"
-	else if(is_lit)
-		icon_state = "trafficlight_alt_on"
-	else
-		icon_state = "trafficlight_alt"
+		set_light(is_on ? lum_value : 0)
+	return .
 
 #undef FLOODLIGHT_REPAIR_UNSCREW
 #undef FLOODLIGHT_REPAIR_CROWBAR

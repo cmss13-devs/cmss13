@@ -16,8 +16,8 @@
 	unacidable = TRUE   //NOPE.jpg
 	needs_power = FALSE
 	idle_power_usage = 1000
+	is_on = FALSE  //Is this damn thing on or what?
 	var/buildstate = SENSORTOWER_BUILDSTATE_BLOWTORCH //What state of building it are we on, 0-3, 1 is "broken", the default
-	var/is_on = FALSE  //Is this damn thing on or what?
 	var/fail_rate = 15 //% chance of failure each fail_tick check
 	var/fail_check_ticks = 50 //Check for failure every this many ticks
 	//The sensor tower fails more often since it is experimental.

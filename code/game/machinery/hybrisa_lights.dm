@@ -1,221 +1,3 @@
-#define GENERATOR_BUILDSTATE_WORKING 0
-#define GENERATOR_BUILDSTATE_BLOWTORCH 1
-#define GENERATOR_BUILDSTATE_WIRECUTTERS 2
-#define GENERATOR_BUILDSTATE_WRENCH 3
-/obj/structure/machinery/power/geothermal
-	name = "\improper G-11 geothermal generator"
-	icon = 'icons/obj/structures/machinery/geothermal.dmi'
-	icon_state = "weld"
-	desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is heavily damaged. Use a blowtorch, wirecutters, then wrench to repair it."
-	anchored = TRUE
-	density = TRUE
-	directwired = FALSE  //Requires a cable directly underneath
-	unslashable = TRUE
-	unacidable = TRUE   //NOPE.jpg
-	var/power_gen_percent = 0 //100,000W at full capacity
-	var/power_generation_max = 100000 //Full capacity
-	var/powernet_connection_failed = 0 //Logic checking for powernets
-	var/buildstate = GENERATOR_BUILDSTATE_BLOWTORCH //What state of building it are we on, 0-3, 1 is "broken", the default
-	var/is_on = FALSE  //Is this damn thing on or what?
-	var/fail_rate = 10 //% chance of failure each fail_tick check
-	var/fail_check_ticks = 100 //Check for failure every this many ticks
-	var/cur_tick = 0 //Tick updater
-	power_machine = TRUE
-
-//We don't want to cut/update the power overlays every single proc. Just when it actually changes. This should save on CPU cycles. Efficiency!
-/obj/structure/machinery/power/geothermal/update_icon()
-	..()
-	if(!buildstate && is_on)
-		desc = "A thermoelectric generator sitting atop a borehole dug deep in the planet's surface. It generates energy by boiling the plasma steam that rises from the well.\nIt is old technology and has a large failure rate, and must be repaired frequently.\nIt is currently on, and beeping randomly amid faint hisses of steam."
-		switch(power_gen_percent)
-			if(25)
-				icon_state = "on[power_gen_percent]"
-			if(50)
-				icon_state = "on[power_gen_percent]"
-			if(75)
-				icon_state = "on[power_gen_percent]"
-			if(100)
-				icon_state = "on[power_gen_percent]"
-
-
-	else if (!buildstate && !is_on)
-		icon_state = "off"
-		desc = "A thermoelectric generator sitting atop a borehole dug deep in the planet's surface. It generates energy by boiling the plasma steam that rises from the well.\nIt is old technology and has a large failure rate, and must be repaired frequently.\nIt is currently turned off and silent."
-	else
-		if(buildstate == GENERATOR_BUILDSTATE_BLOWTORCH)
-			icon_state = "weld"
-			desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is heavily damaged. Use a blowtorch, wirecutters, then wrench to repair it."
-		else if(buildstate == GENERATOR_BUILDSTATE_WIRECUTTERS)
-			icon_state = "wire"
-			desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is damaged. Use a wirecutters, then wrench to repair it."
-		else
-			icon_state = "wrench"
-			desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is lightly damaged. Use a wrench to repair it."
-
-/obj/structure/machinery/power/geothermal/Initialize(mapload, ...)
-	. = ..()
-	if(!connect_to_network()) //Should start with a cable piece underneath, if it doesn't, something's messed up in mapping
-		powernet_connection_failed = 1
-
-/obj/structure/machinery/power/geothermal/power_change()
-	return
-
-/obj/structure/machinery/power/geothermal/process()
-	if(!is_on || buildstate || !anchored) //Default logic checking
-		return
-
-	if(!powernet && !powernet_connection_failed) //Powernet checking, make sure there's valid cables & powernets
-		if(!connect_to_network())
-			powernet_connection_failed = TRUE //God damn it, where'd our network go
-			is_on = FALSE
-			stop_processing()
-			// Error! Check again in 15 seconds. Someone could have blown/acided or snipped a cable
-			addtimer(VARSET_CALLBACK(src, powernet_connection_failed, FALSE), 15 SECONDS)
-	else if(powernet) //All good! Let's fire it up!
-		if(!check_failure()) //Wait! Check to see if it breaks during processing
-			update_icon()
-			if(power_gen_percent < 100) power_gen_percent++
-			switch(power_gen_percent)
-				if(10)
-					visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to whirr as it powers up.")]")
-				if(50)
-					visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to hum loudly as it reaches half capacity.")]")
-				if(99)
-					visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.")]")
-			add_avail(power_generation_max * (power_gen_percent / 100) ) //Nope, all good, just add the power
-
-/obj/structure/machinery/power/geothermal/proc/check_failure()
-	cur_tick++
-	if(cur_tick < fail_check_ticks) //Nope, not time for it yet
-		return FALSE
-	else if(cur_tick > fail_check_ticks) //Went past with no fail, reset the timer
-		cur_tick = 0
-	if(rand(1,100) < fail_rate) //Oh snap, we failed! Shut it down!
-		if(rand(0,3) == 0)
-			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")]")
-			buildstate = GENERATOR_BUILDSTATE_WIRECUTTERS
-			icon_state = "wire"
-		else
-			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")]")
-			buildstate = GENERATOR_BUILDSTATE_WRENCH
-			icon_state = "wrench"
-		is_on = FALSE
-		power_gen_percent = 0
-		update_icon()
-		cur_tick = 0
-		stop_processing()
-		return TRUE
-	return FALSE //Nope, all fine
-
-/obj/structure/machinery/power/geothermal/attack_hand(mob/user as mob)
-	if(!anchored)
-		return FALSE //Shouldn't actually be possible
-	if(user.is_mob_incapacitated())
-		return FALSE
-	if(!ishuman(user))
-		to_chat(user, SPAN_DANGER("You have no idea how to use that.")) //No xenos or mankeys
-		return FALSE
-
-	add_fingerprint(user)
-
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-		to_chat(user, SPAN_WARNING("You have no clue how this thing works..."))
-		return FALSE
-
-	if(buildstate == GENERATOR_BUILDSTATE_BLOWTORCH)
-		to_chat(usr, SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it."))
-		return FALSE
-	else if (buildstate == GENERATOR_BUILDSTATE_WIRECUTTERS)
-		to_chat(usr, SPAN_INFO("Use a wirecutters, then wrench to repair it."))
-		return FALSE
-	else if (buildstate == GENERATOR_BUILDSTATE_WRENCH)
-		to_chat(usr, SPAN_INFO("Use a wrench to repair it."))
-		return FALSE
-	if(is_on)
-		visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps softly and the humming stops as [usr] shuts off the turbines.")]")
-		is_on = FALSE
-		power_gen_percent = 0
-		cur_tick = 0
-		icon_state = "off"
-		stop_processing()
-		return TRUE
-
-	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps loudly as [usr] turns on the turbines and the generator begins spinning up.")]")
-	icon_state = "on10"
-	is_on = TRUE
-	cur_tick = 0
-	start_processing()
-	return TRUE
-
-/obj/structure/machinery/power/geothermal/attackby(obj/item/O as obj, mob/user as mob)
-	if(iswelder(O))
-		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		if(buildstate == GENERATOR_BUILDSTATE_BLOWTORCH && !is_on)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
-				return FALSE
-			var/obj/item/tool/weldingtool/welder = O
-			if(welder.remove_fuel(1, user))
-
-				playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
-				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
-				SPAN_NOTICE("You start welding [src]'s internal damage."))
-				if(do_after(user, 200 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(buildstate != GENERATOR_BUILDSTATE_BLOWTORCH || is_on || !welder.isOn())
-						return FALSE
-					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-					buildstate = GENERATOR_BUILDSTATE_WIRECUTTERS
-					user.visible_message(SPAN_NOTICE("[user] welds [src]'s internal damage."),
-					SPAN_NOTICE("You weld [src]'s internal damage."))
-					update_icon()
-					return TRUE
-			else
-				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
-				return
-	else if(HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
-		if(buildstate == GENERATOR_BUILDSTATE_WIRECUTTERS && !is_on)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
-				return FALSE
-			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
-			SPAN_NOTICE("You start securing [src]'s wiring."))
-			if(do_after(user, 120 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
-				if(buildstate != GENERATOR_BUILDSTATE_WIRECUTTERS || is_on)
-					return FALSE
-				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				buildstate = GENERATOR_BUILDSTATE_WRENCH
-				user.visible_message(SPAN_NOTICE("[user] secures [src]'s wiring."),
-				SPAN_NOTICE("You secure [src]'s wiring."))
-				update_icon()
-				return TRUE
-	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		if(buildstate == GENERATOR_BUILDSTATE_WRENCH && !is_on)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
-				return FALSE
-			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
-			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
-			if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(buildstate != GENERATOR_BUILDSTATE_WRENCH || is_on)
-					return FALSE
-				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-				buildstate = GENERATOR_BUILDSTATE_WORKING
-				user.count_niche_stat(STATISTICS_NICHE_REPAIR_GENERATOR)
-				user.visible_message(SPAN_NOTICE("[user] repairs [src]'s tubing and plating."),
-				SPAN_NOTICE("You repair [src]'s tubing and plating."))
-				update_icon()
-				return TRUE
-	else
-		return ..() //Deal with everything else, like hitting with stuff
-
-/obj/structure/machinery/power/geothermal/ex_act(severity, direction)
-	return FALSE //gameplay-wise these should really never go away
-
-
 // Hybrisa Electrical Stuff
 /obj/structure/machinery/colony_electrified_fence_switch
 	name = "Colony Electrified Fence Switch"
@@ -398,7 +180,7 @@
 		if(ispowered && turned_on)
 			toggle_lights()
 		ispowered = FALSE
-		turned_on = 0
+		turned_on = FALSE
 		update_icon()
 	else
 		ispowered = TRUE
@@ -414,7 +196,7 @@
 				else
 					floodlight.set_light(0)
 			floodlight.update_icon()
-	return 0
+	return FALSE
 
 /obj/structure/machinery/engineerconsole_switch/attack_hand(mob/user as mob)
 	if(!ishuman(user))
@@ -428,7 +210,6 @@
 	turned_on = !turned_on
 	update_icon()
 	return TRUE
-
 
 GLOBAL_LIST_INIT(ship_floodlights, list())
 /obj/structure/machinery/colony_floodlight/engineer_circular
@@ -457,12 +238,6 @@ GLOBAL_LIST_INIT(ship_floodlights, list())
 	. = ..()
 	GLOB.ship_floodlights += src
 
-
 /obj/structure/machinery/colony_floodlight/engineer_circular/Destroy()
 	. = ..()
 	GLOB.ship_floodlights -= src
-
-#undef GENERATOR_BUILDSTATE_WORKING
-#undef GENERATOR_BUILDSTATE_BLOWTORCH
-#undef GENERATOR_BUILDSTATE_WIRECUTTERS
-#undef GENERATOR_BUILDSTATE_WRENCH

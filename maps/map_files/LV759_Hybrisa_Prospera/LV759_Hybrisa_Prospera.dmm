@@ -4778,7 +4778,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
 "aOc" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor,
 /turf/open/floor/corsat,
 /area/lv759/indoors/electical_systems/substation2)
 "aOe" = (
@@ -118080,7 +118080,7 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv759/indoors/weyyu_office/breakroom)
 "tac" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor,
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
@@ -138708,7 +138708,7 @@
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/indoors/west_caves)
 "wpW" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor,
 /turf/open/floor/corsat,
 /area/lv759/indoors/power_plant/geothermal_generators)
 "wpX" = (

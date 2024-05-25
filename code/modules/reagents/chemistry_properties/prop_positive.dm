@@ -853,8 +853,6 @@
 	if(!isxeno(M))
 		return
 	var/mob/living/carbon/xenomorph/xeno = M
-	if(!HAS_TRAIT(xeno, TRAIT_HIVEMIND_INTERFERENCE))
-		to_chat(xeno, SPAN_XENOHIGHDANGER("Your awareness dims to a small area!"))
 	xeno.AddComponent(/datum/component/status_effect/interference, volume * potency, 90)
 
 /datum/chem_property/positive/neutralizing

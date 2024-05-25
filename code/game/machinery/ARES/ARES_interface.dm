@@ -339,8 +339,31 @@
 
 		// -- Print ASRS Audit Log -- //
 		if("print_req")
-			playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
-			var/contents = {"<center><h4>ASRS Audit Log</h4></center>
+			playsound = FALSE
+			if(!datacore.records_asrs.len)
+				to_chat(user, SPAN_WARNING("There are no records to print!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return
+			playsound(src, 'sound/machines/fax.ogg', 15, 1)
+			sleep(3.4 SECONDS)
+			var/contents = {"
+						<style>
+							#container { width: 500px; min-height: 500px; margin: 25px auto;  \
+									font-family: monospace; padding: 0; font-size: 130% }  \
+							#title { font-size: 250%; letter-spacing: 8px; \
+									font-weight: bolder; margin: 20px auto }   \
+							.header { font-size: 130%; text-align: center; }   \
+							.important { font-variant: small-caps; font-size = 130%;   \
+										font-weight: bolder; }    \
+							.tablelabel { width: 150px; }  \
+							.field { font-style: italic; } \
+							table { table-layout: fixed }  \
+						</style><div id='container'>   \
+						<div class='header'>   \
+							<p id='title' class='important'>A.S.R.S.</p>   \
+							<p class='important'>Automatic Storage Retrieval System</p>    \
+							<p class='field'>Audit Log</p> \
+						</div><hr>
 						<u>Printed By:</u> [last_login]<br>
 						<u>Print Time:</u> [worldtime2text()]<br>
 						<hr>
@@ -375,6 +398,7 @@
 			var/obj/item/paper/log = new /obj/item/paper(src.loc)
 			log.name = "ASRS Audit Log"
 			log.info += contents
+			log.icon_state = "paper_uscm_words"
 			visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
 
 		// -- Delete Button -- //

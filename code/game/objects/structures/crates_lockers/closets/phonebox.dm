@@ -50,7 +50,7 @@
 /obj/structure/machinery/phonebox
 	name = "phonebox"
 	icon = 'icons/obj/structures/props/phonebox.dmi'
-	icon_state = "phonebox_off_closed"
+	icon_state = "phonebox_off_empty_closed"
 	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, it seems the line is down."
 	bound_width = 32
 	bound_height = 64

@@ -269,3 +269,30 @@
       single bullet.
   - bugfix: Light attachments will no longer automatically turn on when the weapon
       is equipped from suit storage
+2024-05-23:
+  Drathek:
+  - ui: TGSay is now opened the same way it used to for more responsiveness
+2024-05-24:
+  Drathek:
+  - bugfix: Fixed some winset errors with some nanoui windows
+  - admin: Fixed the adjust_predator_round verb
+  TheGamerdk:
+  - rscadd: Adds a sensor tower to the far East of Shivas, between Med-Sec and the
+      Research labs
+2024-05-25:
+  Doubleumc:
+  - qol: vehicle weapon projectiles start from the weapon
+  Git-Nivrak:
+  - balance: AMR will now reset its focus after two fully charged aimed shots on the
+      same target.
+  JackieEstegado:
+  - qol: Requisition drop pads will now no longer launch open crates
+  Steelpoint:
+  - rscadd: The Compact Nailgun that the USCM Synthetic can vend now comes with a
+      unique nailgun holster, capable of holding the nailgun and two spare magazines.
+  Tyranicranger4:
+  - bugfix: Fixes improperly placed APCs on Shivas Snowball
+  realforest2001:
+  - bugfix: Fixed ARES remote interface UI crash relating to flight logs.
+  - rscadd: Added access check for use of escape pod consoles, and access requirement
+      on the CLs pod.

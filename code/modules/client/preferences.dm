@@ -651,7 +651,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	dat += "</div></body>"
 
 	winshow(user, "preferencewindow", TRUE)
-	show_browser(user, dat, "Preferences", "preferencebrowser")
+	show_browser(user, dat, "Preferences", "preferencewindow")
 	onclose(user, "preferencewindow", src)
 
 /**

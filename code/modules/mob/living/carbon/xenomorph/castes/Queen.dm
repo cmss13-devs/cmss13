@@ -417,8 +417,7 @@
 	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
 		if(xeno.hivenumber == src.hivenumber)
 			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
-	
-		playsound(src.loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+			playsound(src.loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 
 /mob/living/carbon/xenomorph/queen/generate_name()
 	if(!nicknumber)

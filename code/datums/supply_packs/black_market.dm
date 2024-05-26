@@ -507,6 +507,18 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/shipside/gunslinger_holster
+	contains = list(
+		/obj/item/storage/belt/gun/m44/gunslinger,
+		/obj/item/storage/belt/gun/m44/gunslinger,
+	)
+	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
+	dollar_cost = 35
+	crate_heat = -5
+	containertype = /obj/structure/closet/crate
+	containername = "Cowboy Costume Crate"
+	group = "Clothing"
+
 /datum/supply_packs/contraband/shipside/confiscated_medicine
 	name = "confiscated medicinal supplies crate"
 	randomised_num_contained = 5

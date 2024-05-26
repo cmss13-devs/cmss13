@@ -3,54 +3,20 @@
 //explosif related section
 
 /datum/supply_packs/assembly
-	name = "assembly crate"
+	name = "Explosive assembly crate"
 	contains = list(
-		/obj/item/device/assembly/igniter,
-		/obj/item/device/assembly/igniter,
-		/obj/item/device/assembly/igniter,
-		/obj/item/device/assembly/igniter,
-		/obj/item/device/assembly/igniter,
-		/obj/item/device/assembly/prox_sensor,
-		/obj/item/device/assembly/prox_sensor,
-		/obj/item/device/assembly/prox_sensor,
-		/obj/item/device/assembly/prox_sensor,
-		/obj/item/device/assembly/prox_sensor,
-		/obj/item/device/assembly/timer,
-		/obj/item/device/assembly/timer,
-		/obj/item/device/assembly/timer,
-		/obj/item/device/assembly/timer,
-		/obj/item/device/assembly/timer,
+		/obj/item/explosive/grenade/custom,
+		/obj/item/explosive/grenade/custom,
+		/obj/item/explosive/grenade/custom,
+		/obj/item/explosive/grenade/custom,
+		/obj/item/explosive/grenade/custom/large,
+		/obj/item/explosive/grenade/custom/large,
+		/obj/item/explosive/grenade/custom/large,
+		/obj/item/explosive/grenade/custom/large,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "assembly crate"
-	access = ACCESS_MARINE_ENGINEERING
-	group = "Research"
-
-//Chemical section
-
-/datum/supply_packs/pyrotec
-	name = "pyrotechnics crate"
-	contains = list(
-		/obj/item/reagent_container/glass/beaker/sulphuric,
-		/obj/item/reagent_container/glass/beaker/sulphuric,
-		/obj/item/reagent_container/glass/beaker/sulphuric,
-		/obj/item/reagent_container/glass/beaker/ethanol,
-		/obj/item/reagent_container/glass/beaker/ethanol,
-		/obj/item/reagent_container/glass/beaker/ethanol,
-		/obj/item/reagent_container/glass/beaker/large/phosphorus,
-		/obj/item/reagent_container/glass/beaker/large/phosphorus,
-		/obj/item/reagent_container/glass/beaker/large/phosphorus,
-		/obj/item/reagent_container/glass/beaker/large/lithium,
-		/obj/item/reagent_container/glass/beaker/large/lithium,
-		/obj/item/reagent_container/glass/beaker/large/sodiumchloride,
-		/obj/item/reagent_container/glass/beaker/large/sodiumchloride,
-		/obj/item/reagent_container/glass/beaker/large/potassiumchloride,
-		/obj/item/reagent_container/glass/beaker/large/potassiumchloride,
-	)
-	cost = 10
-	containertype = /obj/structure/closet/crate/secure/phoron
-	containername = "pyrotechnics crate"
 	access = ACCESS_MARINE_ENGINEERING
 	group = "Research"
 
@@ -63,19 +29,6 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "phoron crate"
-	access = ACCESS_MARINE_ENGINEERING
-	group = "Research"
-
-/datum/supply_packs/plastic
-	name = "plastic crate"
-	contains = list(
-		/obj/item/stack/sheet/mineral/plastic/small_stack,
-		/obj/item/stack/sheet/mineral/plastic/small_stack,
-	)
-	cost = 20
-	containertype = /obj/structure/closet/crate/secure/phoron
-	containername = "plastic crate"
-	access = ACCESS_MARINE_ENGINEERING
 	group = "Research"
 
 /datum/supply_packs/precious_metals

@@ -22,6 +22,7 @@
 	name = "metal sheets (x50)"
 	contains = list(/obj/item/stack/sheet/metal/large_stack)
 	cost = 20
+	buyable = FALSE
 	containertype = /obj/structure/closet/crate/supply
 	containername = "metal sheets crate"
 	group = "Engineering"
@@ -30,6 +31,7 @@
 	name = "plasteel sheets (x40)"
 	contains = list(/obj/item/stack/sheet/plasteel/med_large_stack)
 	cost = 30
+	buyable = FALSE
 	containertype = /obj/structure/closet/crate/supply
 	containername = "plasteel sheets crate"
 	group = "Engineering"
@@ -48,6 +50,17 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "wooden planks crate"
+	group = "Engineering"
+
+/datum/supply_packs/plastic
+	name = "plastic crate"
+	contains = list(
+		/obj/item/stack/sheet/mineral/plastic/small_stack,
+		/obj/item/stack/sheet/mineral/plastic/small_stack,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/secure/phoron
+	containername = "plastic crate"
 	group = "Engineering"
 
 /datum/supply_packs/folding_barricades

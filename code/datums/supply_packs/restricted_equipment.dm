@@ -1,9 +1,11 @@
 // here they will be all the Equipment that are restricted to a role/job.
 
 /datum/supply_packs/armor_leader
-	name = "B12 pattern marine armor crate (x1 helmet, x1 armor)"
+	name = "B12 pattern marine armor crate (x2)"
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/leader,
+		/obj/item/clothing/head/helmet/marine/leader,
+		/obj/item/clothing/suit/storage/marine/medium/leader,
 		/obj/item/clothing/suit/storage/marine/medium/leader,
 	)
 	cost = 20
@@ -12,9 +14,11 @@
 	group = "Restricted Equipment"
 
 /datum/supply_packs/armor_tl
-	name = "M4 pattern marine armor crate (x1 helmet, x1 armor)"
+	name = "M4 pattern marine armor crate (x2)"
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/rto,
+		/obj/item/clothing/head/helmet/marine/rto,
+		/obj/item/clothing/suit/storage/marine/medium/rto,
 		/obj/item/clothing/suit/storage/marine/medium/rto,
 	)
 	cost = 20

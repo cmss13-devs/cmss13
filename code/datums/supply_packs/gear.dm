@@ -21,7 +21,7 @@
 		/obj/item/ammo_box/magazine/misc/flares,
 		/obj/item/ammo_box/magazine/misc/flares,
 	)
-	cost = 40
+	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "flare pack crate"
 	group = "Gear"
@@ -33,7 +33,7 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/motiondetector,
 					)
-	cost = 40
+	cost = 30
 	containertype = /obj/structure/closet/crate/supply
 	containername = "Motion Detector crate"
 	group = "Gear"
@@ -46,7 +46,7 @@
 		/obj/item/storage/box/m94/signal,
 		/obj/item/storage/box/m94/signal,
 	)
-	cost = 60
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "signal flare pack crate"
 	group = "Gear"
@@ -59,7 +59,7 @@
 		/obj/item/stack/fulton,
 		/obj/item/stack/fulton,
 	)
-	cost = 20
+	cost = 10
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "fulton recovery device crate"
 	group = "Gear"
@@ -88,7 +88,7 @@
 		/obj/item/parachute,
 		/obj/item/parachute,
 	)
-	cost = 40
+	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "parachute crate"
 	group = "Gear"

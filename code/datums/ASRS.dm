@@ -6,7 +6,7 @@
 
 /datum/supply_packs_asrs
 	/// How likely we are to select this pack over others
-	var/cost = ASRS_MEDIUM_WEIGHT
+	var/cost = ASRS_MEDIUM_WEIGHT // inheritance shall not be used to improve readability
 	/// Which pool of ASRS automatically dispensed supplies this belongs to
 	var/pool = ASRS_POOL_MAIN
 	/// What supply pack would this dispense
@@ -14,45 +14,55 @@
 
 //===================================
 // Rounds
+
 /datum/supply_packs_asrs/ammo_rounds_box_rifle
 	reference_package = /datum/supply_packs/ammo_rounds_box_rifle
-	cost = ASRS_MEDIUM_WEIGHT
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs_asrs/ammo_rounds_box_rifle_ap
 	reference_package = /datum/supply_packs/ammo_rounds_box_rifle_ap
-	cost = ASRS_LOW_WEIGHT
+	cost = ASRS_VERY_LOW_WEIGHT
 
-/datum/supply_packs_asrs/ammo_rounds_box_xm88
-	reference_package = /datum/supply_packs/ammo_rounds_box_xm88
-	cost = ASRS_LOW_WEIGHT
+/datum/supply_packs_asrs/ammo_rounds_box_smg
+	reference_package = /datum/supply_packs/ammo_rounds_box_smg
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs_asrs/ammo_rounds_box_smg_ap
+	reference_package = /datum/supply_packs/ammo_rounds_box_smg_ap
+	cost = ASRS_VERY_LOW_WEIGHT
 
 //===================================
 // Magazines
-/datum/supply_packs_asrs/gun/ammo_hpr
-	reference_package = /datum/supply_packs/ammo_hpr
-	cost = ASRS_LOWEST_WEIGHT
 
+// USCM secondary
 /datum/supply_packs_asrs/ammo_m4a3_mag_box
 	reference_package = /datum/supply_packs/ammo_m4a3_mag_box
-	cost = ASRS_LOW_WEIGHT
-
-/datum/supply_packs_asrs/ammo_m4a3_mag_box_ap
-	reference_package = /datum/supply_packs/ammo_m4a3_mag_box_ap
 	cost = ASRS_VERY_LOW_WEIGHT
 
+/datum/supply_packs_asrs/ammo_mod88_mag_box
+	reference_package = /datum/supply_packs/ammo_mod88_mag_box_ap
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs_asrs/ammo_m44_mag_box
+	reference_package = /datum/supply_packs/ammo_m44_mag_box
+	cost = ASRS_VERY_LOW_WEIGHT
+
+// USCM Primary
 /datum/supply_packs_asrs/ammo_mag_box
 	reference_package = /datum/supply_packs/ammo_mag_box
-	cost = ASRS_VERY_LOW_WEIGHT
+	cost = ASRS_LOW_WEIGHT
 
 /datum/supply_packs_asrs/ammo_mag_box_ap
 	reference_package = /datum/supply_packs/ammo_mag_box_ap
+	cost = ASRS_LOW_WEIGHT
 
 /datum/supply_packs_asrs/ammo_m4ra_mag_box
 	reference_package = /datum/supply_packs/ammo_m4ra_mag_box
-	cost = ASRS_VERY_LOW_WEIGHT
+	cost = ASRS_LOW_WEIGHT
 
 /datum/supply_packs_asrs/ammo_m4ra_mag_box_ap
 	reference_package = /datum/supply_packs/ammo_m4ra_mag_box_ap
+	cost = ASRS_LOW_WEIGHT
 
 /datum/supply_packs_asrs/ammo_shell_box
 	reference_package = /datum/supply_packs/ammo_shell_box
@@ -66,42 +76,34 @@
 	reference_package = /datum/supply_packs/ammo_shell_box_flechette
 	cost = ASRS_VERY_LOW_WEIGHT
 
-/datum/supply_packs_asrs/ammo_shell_box_breaching
-	reference_package = /datum/supply_packs/ammo_shell_box_breaching
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs_asrs/ammo_xm51
-	reference_package = /datum/supply_packs/ammo_xm51
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs_asrs/ammo_smartgun
+/datum/supply_packs_asrs/ammo_smartgun //todo remove magazines and send raw bullet crates
 	reference_package = /datum/supply_packs/ammo_smartgun
-
-/datum/supply_packs_asrs/ammo_napalm
-	reference_package = /datum/supply_packs/ammo_napalm
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs_asrs/ammo_napalm_gel
-	reference_package = /datum/supply_packs/ammo_napalm_gel
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs_asrs/ammo_flamer_mixed
-	reference_package = /datum/supply_packs/ammo_flamer_mixed
-	cost = ASRS_VERY_LOW_WEIGHT
+	cost = ASRS_MEDIUM_WEIGHT
 
 //===================================
 // Mortar ammo
 /datum/supply_packs_asrs/ammo_mortar_he
 	reference_package = /datum/supply_packs/ammo_mortar_he
+	cost = ASRS_MEDIUM_WEIGHT
 
 /datum/supply_packs_asrs/ammo_mortar_incend
 	reference_package = /datum/supply_packs/ammo_mortar_incend
+	cost = ASRS_MEDIUM_WEIGHT
 
 /datum/supply_packs_asrs/ammo_mortar_flare
 	reference_package = /datum/supply_packs/ammo_mortar_flare
+	cost = ASRS_MEDIUM_WEIGHT
 
 //===================================
 // Misc supplies
+/datum/supply_packs_asrs/metal_sheets
+	reference_package = /datum/supply_packs/flares
+	cost = ASRS_LOW_WEIGHT
+
+/datum/supply_packs_asrs/plasteel_sheets
+	reference_package = /datum/supply_packs/flares
+	cost = ASRS_MEDIUM_WEIGHT
+
 /datum/supply_packs_asrs/flares
 	reference_package = /datum/supply_packs/flares
 	cost = ASRS_LOW_WEIGHT

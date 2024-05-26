@@ -130,22 +130,3 @@
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "\improper XM88 Heavy Rifle crate"
 	group = "Weapons"
-
-/* Uncomment me if it's decided to let the m707 be purchasable through req
-/datum/supply_packs/gun/m707
-	name = "M707 Anti-Materiel Rifle crate (M707 x1)"
-	contains = list()
-	cost = 120
-	containertype = /obj/structure/closet/crate/secure/vulture
-	containername = "M707 crate"
-	group = "Weapons"
-*/
-
-/datum/supply_packs/gun/merc
-	contains = list()
-	name = "black market firearms (x1)"
-	cost = 40
-	contraband = 1
-	containertype = /obj/structure/largecrate/guns/merc
-	containername = "\improper black market firearms crate"
-	group = "Weapons"

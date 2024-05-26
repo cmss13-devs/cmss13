@@ -5,24 +5,25 @@
 		/obj/item/storage/pouch/magazine/large,
 		/obj/item/storage/pouch/magazine/pistol/large,
 		/obj/item/storage/pouch/magazine/pistol/large,
-		/obj/item/storage/pouch/general,
-		/obj/item/storage/pouch/general,
+		/obj/item/storage/pouch/general/large,
+		/obj/item/storage/pouch/general/large,
 	)
-	cost = 20
+	cost = 10
 	containertype = /obj/structure/closet/crate
 	containername = "Large Pouch"
 	group = "Clothing"
 
 /datum/supply_packs/pouches_medical
-	name = "medical pouches crate (1x firstaid, medical, syringe, medkit, autoinjector)"
+	name = "Combat medical pouches crate (6x autoinjector)"
 	contains = list(
-		/obj/item/storage/pouch/firstaid,
-		/obj/item/storage/pouch/medical,
-		/obj/item/storage/pouch/syringe,
-		/obj/item/storage/pouch/medkit,
+		/obj/item/storage/pouch/autoinjector,
+		/obj/item/storage/pouch/autoinjector,
+		/obj/item/storage/pouch/autoinjector,
+		/obj/item/storage/pouch/autoinjector,
+		/obj/item/storage/pouch/autoinjector,
 		/obj/item/storage/pouch/autoinjector,
 	)
-	cost = 20
+	cost = 10
 	containertype = /obj/structure/closet/crate
 	containername = "medical pouches crate"
 	group = "Clothing"
@@ -32,40 +33,46 @@
 //---------------------------------------------
 
 /datum/supply_packs/webbing_brown_black
-	name = "Brown And Black Webbing Crate (x2 each)"
+	name = "Brown And Black Webbing Crate (x6)"
 	contains = list(
 		/obj/item/clothing/accessory/storage/black_vest/brown_vest,
 		/obj/item/clothing/accessory/storage/black_vest/brown_vest,
+		/obj/item/clothing/accessory/storage/black_vest/brown_vest,
+		/obj/item/clothing/accessory/storage/black_vest,
 		/obj/item/clothing/accessory/storage/black_vest,
 		/obj/item/clothing/accessory/storage/black_vest,
 	)
-	cost = 20
+	cost = 10
 	containertype = /obj/structure/closet/crate/green
 	containername = "Brown And Black Webbing Crate"
 	group = "Clothing"
 
 /datum/supply_packs/webbing_large
-	name = "Webbing Crate (x4)"
+	name = "Ammo Webbing Crate (x6)"
 	contains = list(
 		/obj/item/clothing/accessory/storage/webbing,
 		/obj/item/clothing/accessory/storage/webbing,
 		/obj/item/clothing/accessory/storage/webbing,
 		/obj/item/clothing/accessory/storage/webbing,
+		/obj/item/clothing/accessory/storage/webbing,
+		/obj/item/clothing/accessory/storage/webbing,
 	)
-	cost = 20
+	cost = 10
 	containertype = /obj/structure/closet/crate/green
 	containername = "Webbing Crate"
 	group = "Clothing"
 
 /datum/supply_packs/drop_pouches
-	name = "Drop Pouch Crate (x4)"
+	name = "Drop Pouch Crate (x6)"
 	contains = list(
 		/obj/item/clothing/accessory/storage/droppouch,
 		/obj/item/clothing/accessory/storage/droppouch,
 		/obj/item/clothing/accessory/storage/droppouch,
 		/obj/item/clothing/accessory/storage/droppouch,
+		/obj/item/clothing/accessory/storage/droppouch,
+		/obj/item/clothing/accessory/storage/droppouch,
 	)
-	cost = 20
+	cost = 10
 	containertype = /obj/structure/closet/crate/green
 	containername = "Drop Pouch Crate"
 	group = "Clothing"
@@ -76,9 +83,9 @@
 	contains = list(
 		/obj/item/clothing/accessory/storage/knifeharness,//old unathi knife harness updated for our needs
 		/obj/item/clothing/accessory/storage/knifeharness,
-		/obj/item/clothing/accessory/storage/knifeharness
+		/obj/item/clothing/accessory/storage/knifeharness,
 	)
-	cost = 30
+	cost = 10
 	containertype = /obj/structure/closet/crate/green
 	containername = "Knife Vest Crate"
 	group = "Clothing"
@@ -91,33 +98,52 @@
 		/obj/item/clothing/accessory/storage/holster,
 		/obj/item/clothing/accessory/storage/holster,
 	)
-	cost = 20
+	cost = 10
 	containertype = /obj/structure/closet/crate/green
 	containername = "Shoulder Holster Crate"
 	group = "Clothing"
 
-/datum/supply_packs/gunslinger_holster
-	contains = list(
-		/obj/item/storage/belt/gun/m44/gunslinger,
-		/obj/item/storage/belt/gun/m44/gunslinger,
-	)
-	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
-	cost = 20
-	contraband = 1
-	containertype = /obj/structure/closet/crate
-	containername = "Cowboy Costume Crate"
-	group = "Clothing"
-
-/datum/supply_packs/officer_outfits//lmao this shit is so hideously out of date
+/datum/supply_packs/officer_outfits//up to date :)
+	name = "officer outfit crate(x1 each)"
 	contains = list(
 		/obj/item/clothing/under/rank/qm_suit,
-		/obj/item/clothing/under/marine/officer/bridge,
-		/obj/item/clothing/under/marine/officer/bridge,
-		/obj/item/clothing/under/marine/dress,
+		/obj/item/clothing/under/marine/officer/warrant,
+		/obj/item/clothing/under/marine/chef,
+		/obj/item/clothing/under/marine/officer/command,
+		/obj/item/clothing/under/marine/officer/command,
 		/obj/item/clothing/under/marine/officer/ce,
 	)
-	name = "officer outfit crate"
-	cost = 30
+	cost = 10
+	containertype = /obj/structure/closet/crate
+	containername = "officer dress crate"
+	group = "Clothing"
+
+/datum/supply_packs/marine_formal_outfits
+	name = "Formal Marine outfit crate(x6)"
+	contains = list(
+		/obj/item/clothing/under/marine/dress,
+		/obj/item/clothing/under/marine/dress,
+		/obj/item/clothing/under/marine/dress,
+		/obj/item/clothing/under/marine/dress,
+		/obj/item/clothing/under/marine/dress,
+		/obj/item/clothing/under/marine/dress,
+	)
+	cost = 10
+	containertype = /obj/structure/closet/crate
+	containername = "officer dress crate"
+	group = "Clothing"
+
+/datum/supply_packs/officer_formal_outfits
+	name = "Formal officer outfit crate(x6)"
+	contains = list(
+		/obj/item/clothing/under/marine/dress/command,
+		/obj/item/clothing/under/marine/dress/command,
+		/obj/item/clothing/under/marine/dress/command,
+		/obj/item/clothing/under/marine/dress/command,
+		/obj/item/clothing/under/marine/dress/command,
+		/obj/item/clothing/under/marine/dress/command,
+	)
+	cost = 10
 	containertype = /obj/structure/closet/crate
 	containername = "officer dress crate"
 	group = "Clothing"

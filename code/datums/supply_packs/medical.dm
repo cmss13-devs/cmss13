@@ -17,7 +17,7 @@
 		/obj/item/storage/pill_bottle/peridaxon,
 		/obj/item/storage/box/pillbottles,
 	)
-	cost = 15
+	cost = 10
 	containertype = /obj/structure/closet/crate/medical
 	containername = "medical crate"
 	group = "Medical"
@@ -62,7 +62,7 @@
 		/obj/item/storage/box/pillbottles,
 		/obj/item/storage/box/pillbottles,
 	)
-	cost = 15
+	cost = 10
 	containertype = /obj/structure/closet/crate/medical
 	containername = "medical crate"
 	group = "Medical"
@@ -81,7 +81,7 @@
 		/obj/item/storage/firstaid/adv,
 		/obj/item/storage/firstaid/adv,
 	)
-	cost = 11
+	cost = 10
 	containertype = /obj/structure/closet/crate/medical
 	containername = "medical crate"
 	group = "Medical"
@@ -106,7 +106,7 @@
 		/obj/item/bodybag/cryobag,
 		/obj/item/bodybag/cryobag,
 	)
-	cost = 15
+	cost = 20
 	containertype = /obj/structure/closet/crate/medical
 	containername = "stasis bag crate"
 	group = "Medical"
@@ -121,7 +121,7 @@
 		/obj/item/storage/box/masks,
 		/obj/item/storage/box/gloves,
 	)
-	cost = 25
+	cost = 20
 	containertype = /obj/structure/closet/crate/secure/surgery
 	containername = "surgery crate"
 	access = ACCESS_MARINE_MEDBAY

@@ -2,11 +2,11 @@
 
 /datum/component/status_effect
 	var/has_immunity = FALSE
-	var/grace_period = 5
+	var/grace_period = 30
 
 /datum/component/status_effect/InheritComponent(datum/component/C, i_am_original)
 	if(has_immunity)
-		grace_period = initial(grace_period)
+		grace_period = min(grace_period + 1, initial(grace_period))
 
 /datum/component/status_effect/Initialize()
 	. = ..()

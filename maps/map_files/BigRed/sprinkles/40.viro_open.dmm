@@ -493,7 +493,7 @@
 /area/bigredv2/outside/virology)
 "bH" = (
 /obj/structure/surface/table/almayer,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "asteroidwarning"

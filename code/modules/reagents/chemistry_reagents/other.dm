@@ -705,9 +705,11 @@
 	description = "A custom napalm mix, stickier and lasts longer but lower damage"
 	reagent_state = LIQUID
 	color = "#f8e3b2"
-	chemfiresupp = FALSE
 	burncolor = "#f8e3b2"
 	burn_sprite = "dynamic"
+	intensitymod = -1.5
+	durationmod = -5
+	radiusmod = -0.5
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION = BURN_TIME_TIER_5,
@@ -720,9 +722,11 @@
 	description = "A custom napalm mix, higher damage but not as sticky"
 	reagent_state = LIQUID
 	color = "#c51c1c"
-	chemfiresupp = FALSE
 	burncolor = "#c51c1c"
 	burn_sprite = "dynamic"
+	intensitymod = -4.5
+	durationmod = -1
+	radiusmod = -0.5
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_8,
 		PROPERTY_DURATION = BURN_TIME_TIER_1,

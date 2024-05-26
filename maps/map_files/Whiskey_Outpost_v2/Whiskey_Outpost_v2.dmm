@@ -2413,6 +2413,7 @@
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "iJ" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "whitegreen"
@@ -2446,6 +2447,7 @@
 /area/whiskey_outpost/outside/mortar_pit)
 "iN" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor{
 	icon_state = "whitegreen"
 	},
@@ -3686,16 +3688,6 @@
 	icon_state = "whitegreencorner"
 	},
 /area/whiskey_outpost/inside/hospital/triage)
-"ne" = (
-/obj/effect/decal/medical_decals{
-	icon_state = "docstripingdir"
-	},
-/obj/structure/machinery/cm_vending/gear/medic,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/whiskey_outpost)
 "nf" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/medical_decals{
@@ -3713,12 +3705,10 @@
 /area/whiskey_outpost/outside/south/very_far)
 "ni" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
-/obj/effect/decal/medical_decals{
-	icon_state = "docstripingdir"
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/medical_supply_link,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -3911,9 +3901,7 @@
 /area/whiskey_outpost)
 "nR" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
-/obj/effect/decal/medical_decals{
-	icon_state = "docstripingdir"
-	},
+/obj/structure/medical_supply_link,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -13296,6 +13284,7 @@
 /area/whiskey_outpost/outside/south)
 "Zm" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry,
+/obj/structure/medical_supply_link,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -23638,7 +23627,7 @@ lG
 iV
 qz
 qz
-ne
+kh
 kj
 oW
 OX

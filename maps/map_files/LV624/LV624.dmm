@@ -2125,8 +2125,7 @@
 "akh" = (
 /obj/item/trash/candy,
 /obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Corporate Lobby APC"
+	dir = 1
 	},
 /obj/structure/machinery/door_control{
 	id = "secure_outer_blast";
@@ -3238,11 +3237,8 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aru" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Hydroponics APC";
-	pixel_y = 30;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 9;
@@ -4413,11 +4409,8 @@
 	},
 /area/lv624/lazarus/fitness)
 "aww" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Fitness APC";
-	pixel_y = 30;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 4;
@@ -5132,11 +5125,8 @@
 	},
 /area/lv624/lazarus/robotics)
 "azc" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Robotics Lab APC";
-	pixel_y = 30;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "vault"
@@ -5625,33 +5615,27 @@
 	},
 /area/lv624/lazarus/sleep_male)
 "aAR" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Research APC";
-	pixel_y = 30;
-	start_charge = 0
-	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/research)
 "aAS" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Men's Dorms APC";
-	pixel_y = 30;
-	start_charge = 0
-	},
 /obj/structure/surface/table,
 /obj/item/toy/deck,
 /obj/item/storage/fancy/cigarettes/wypacket,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
+	},
 /turf/open/floor{
 	icon_state = "bluecorner"
 	},
@@ -6067,12 +6051,6 @@
 "aCd" = (
 /obj/structure/machinery/light/small{
 	dir = 4
-	},
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	name = "Women's Dorms APC";
-	pixel_x = 30;
-	start_charge = 0
 	},
 /turf/open/floor{
 	dir = 9;
@@ -6498,11 +6476,8 @@
 	},
 /area/lv624/lazarus/sleep_female)
 "aDE" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Storage Pods APC";
-	pixel_x = -30;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 8
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
@@ -6682,11 +6657,8 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Unisex Bathrooms APC";
-	pixel_y = 30;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -6779,14 +6751,11 @@
 	},
 /area/lv624/ground/caves/north_central_caves)
 "aEK" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Chapel APC";
-	pixel_y = 30;
-	start_charge = 0
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 1;
@@ -6915,15 +6884,12 @@
 	},
 /area/lv624/lazarus/quart)
 "aEZ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Quartermaster APC";
-	pixel_y = 30;
-	start_charge = 0
-	},
 /obj/structure/largecrate/random,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 4;
@@ -7756,15 +7722,12 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aIh" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Central Hallway APC";
-	pixel_y = 30;
-	start_charge = 0
-	},
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
+	},
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -8313,9 +8276,8 @@
 /area/lv624/lazarus/yggdrasil)
 "aKq" = (
 /obj/structure/flora/jungle/vines/light_1,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Atmospherics Processing APC"
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
 	},
 /turf/open/gm/grass/grass2,
 /area/lv624/lazarus/yggdrasil)
@@ -9003,9 +8965,8 @@
 	},
 /area/lv624/lazarus/security)
 "aNR" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Security Office APC"
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "red"
@@ -9148,11 +9109,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_central_jungle)
 "aOy" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Secure Vault APC";
-	pixel_x = -28;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "cult"
@@ -9400,7 +9358,7 @@
 /area/lv624/lazarus/security)
 "aPv" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/storage/firstaid/adv,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -9775,11 +9733,8 @@
 	},
 /area/lv624/lazarus/kitchen)
 "aQQ" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Cafeteria APC";
-	pixel_x = -28;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "bar"
@@ -10128,11 +10083,8 @@
 	},
 /area/lv624/ground/caves/south_east_caves)
 "aSq" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Commandant's Quarters APC";
-	pixel_x = -28;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "grimy"
@@ -10483,7 +10435,6 @@
 "aTJ" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	name = "Telecomms APC";
 	start_charge = 15
 	},
 /turf/open/floor{
@@ -10594,8 +10545,7 @@
 "aUc" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Kitchen APC"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -10748,18 +10698,6 @@
 	icon_state = "grimy"
 	},
 /area/lv624/lazarus/hop)
-"aUF" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Research Director's APC"
-	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
-/area/lv624/lazarus/hop)
 "aUG" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -10823,8 +10761,6 @@
 "aUR" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	name = "Secure Vault APC";
-	pixel_y = 30;
 	start_charge = 200
 	},
 /turf/open/floor/greengrid,
@@ -11562,10 +11498,8 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "aXs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Geothermal APC";
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -14779,9 +14713,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "fqM" = (
-/obj/structure/machinery/power/apc{
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/nocharge,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning"
@@ -14881,6 +14813,7 @@
 /area/lv624/lazarus/engineering)
 "fAz" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link,
 /turf/open/floor{
 	icon_state = "whitebluefull"
 	},
@@ -14951,9 +14884,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/engineering)
 "fFZ" = (
-/obj/structure/machinery/power/apc{
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/nocharge,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -16668,6 +16599,15 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
+"jcb" = (
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "purple"
+	},
+/area/lv624/lazarus/sleep_female)
 "jcn" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 8
@@ -17096,6 +17036,17 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
+"jQX" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/lv624/lazarus/hop)
 "jRm" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_nexus_road)
@@ -20098,11 +20049,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/barrens/north_east_barrens)
 "pgf" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Medbay APC";
-	pixel_y = 30;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 1;
@@ -24688,10 +24636,10 @@
 /area/lv624/ground/caves/east_caves)
 "xwQ" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs/cable/white{
+/obj/item/restraint/adjustable/cable/white{
 	pixel_y = 4
 	},
-/obj/item/handcuffs/cable/white,
+/obj/item/restraint/adjustable/cable/white,
 /turf/open/floor{
 	icon_state = "whiteyellow"
 	},
@@ -51067,7 +51015,7 @@ aSA
 aSA
 aTC
 aQM
-aUF
+jQX
 aVq
 aVM
 aSB
@@ -54914,7 +54862,7 @@ azw
 aBg
 azR
 aCd
-aBC
+jcb
 aDb
 aOo
 aDY

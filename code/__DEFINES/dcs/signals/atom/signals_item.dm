@@ -29,8 +29,10 @@
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
 
-///from /obj/item/device/camera/broadcasting/attack_self
+///from /obj/item/device/camera/broadcasting
 #define COMSIG_BROADCAST_GO_LIVE "broadcast_live"
+#define COMSIG_BROADCAST_HEAR_TALK "broadcast_hear_talk"
+#define COMSIG_BROADCAST_SEE_EMOTE "broadcast_see_emote"
 
 /// from /obj/item/proc/mob_can_equip
 #define COMSIG_ITEM_ATTEMPTING_EQUIP "item_attempting_equip"

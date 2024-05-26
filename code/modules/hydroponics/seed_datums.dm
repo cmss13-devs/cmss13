@@ -402,9 +402,9 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 			if(gene.values.len < 6) return
 
-			if(yield > 0)  yield =  max(1,round(yield*0.85))
-			if(endurance > 0) endurance = max(1,round(endurance*0.85))
-			if(lifespan > 0)  lifespan =  max(1,round(lifespan*0.85))
+			if(yield > 0)  yield =  max(1,floor(yield*0.85))
+			if(endurance > 0) endurance = max(1,floor(endurance*0.85))
+			if(lifespan > 0)  lifespan =  max(1,floor(lifespan*0.85))
 
 			if(!products) products = list()
 			products |= gene.values[1]
@@ -425,7 +425,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 					if(isnull(gene_chem[i])) gene_chem[i] = 0
 
 					if(chems[rid][i])
-						chems[rid][i] = max(1,round((gene_chem[i] + chems[rid][i])/2))
+						chems[rid][i] = max(1,floor((gene_chem[i] + chems[rid][i])/2))
 					else
 						chems[rid][i] = gene_chem[i]
 
@@ -434,7 +434,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 				if(!exude_gasses) exude_gasses = list()
 				exude_gasses |= new_gasses
 				for(var/gas in exude_gasses)
-					exude_gasses[gas] = max(1,round(exude_gasses[gas]*0.8))
+					exude_gasses[gas] = max(1,floor(exude_gasses[gas]*0.8))
 
 			alter_temp =    gene.values[4]
 			potency =   gene.values[5]

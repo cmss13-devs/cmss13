@@ -195,6 +195,10 @@
 			client.pixel_x = -viewoffset
 			client.pixel_y = 0
 
+	for (var/datum/action/xeno_action/onclick/toggle_long_range/action in actions)
+		action.on_zoom_in()
+		return
+
 /mob/living/carbon/xenomorph/proc/zoom_out()
 	if(!client)
 		return

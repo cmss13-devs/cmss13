@@ -105,15 +105,28 @@
 		to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 		return
 
-	if(victim.abiotic(1))
+	if(victim.abiotic(TRUE))
 		to_chat(user, SPAN_WARNING("Subject may not have abiotic items on."))
 		return
 
 	user.visible_message(SPAN_DANGER("[user] starts to put [victim] into the gibber!"))
 	add_fingerprint(user)
 
+	///If synth is getting gibbed, we will 'soft gib' them, but this is still pretty LRP so let admin know.
+	if(issynth(victim) && ishuman_strict(user) && !occupant)
+		var/turf/turf_ref = get_turf(user)
+		var/area/area = get_area(user)
+		message_admins("ALERT: [user] ([user.key]) is trying to shove [victim] in a gibber! (They are a synth, so this will delimb them) ([victim.key]) in [area.name] [ADMIN_JMP(turf_ref)]</font>")
+		log_attack("[key_name(user)] tried to delimb [victim] using a gibber ([victim.key]) in [area.name]")
+		to_chat(user, SPAN_DANGER("What are you doing..."))
+		if(do_after(user, 30 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE && grabbed && grabbed.grabbed_thing && !occupant))
+			user.visible_message(SPAN_DANGER("[user] stuffs [victim] into the gibber!"))
+			victim.forceMove(src)
+			occupant = victim
+			update_icon()
+
 	///If someone's being LRP and doing funny chef shit, this lets admins know. This *shouldn't* flag preds, though.
-	if(ishuman(victim) && ishuman_strict(user) && !occupant)
+	else if(ishuman(victim) && ishuman_strict(user) && !occupant)
 		var/turf/turf_ref = get_turf(user)
 		var/area/area = get_area(user)
 		message_admins("ALERT: [user] ([user.key]) is trying to gib [victim] ([victim.key]) in [area.name] [ADMIN_JMP(turf_ref)]</font>")
@@ -142,18 +155,23 @@
 	add_fingerprint(usr)
 	return
 
-/obj/structure/machinery/gibber/proc/go_out()
+/obj/structure/machinery/gibber/proc/go_out(launch = FALSE)
 	if (!occupant)
-		return
+		return FALSE
 	for(var/obj/O in src)
 		O.forceMove(loc)
 	if (occupant.client)
 		occupant.client.eye = occupant.client.mob
 		occupant.client.perspective = MOB_PERSPECTIVE
 	occupant.forceMove(loc)
+	if(launch)
+		// yeet them out of the gibber
+		visible_message(SPAN_DANGER("[occupant] suddenly is launched out of the [src]!"))
+		var/turf/Tx = locate(x - 3, y, z)
+		occupant.throw_atom(Tx, 3, SPEED_FAST, src, TRUE)
 	occupant = null
 	update_icon()
-	return
+	return TRUE
 
 
 /obj/structure/machinery/gibber/proc/startgibbing(mob/user as mob)
@@ -162,12 +180,17 @@
 	if(!occupant)
 		visible_message(SPAN_DANGER("You hear a loud metallic grinding sound."))
 		return
+	var/synthetic = issynth(occupant)
 	use_power(1000)
-	visible_message(SPAN_DANGER("You hear a loud squelchy grinding sound."))
-	operating = 1
+	if(synthetic)
+		visible_message(SPAN_BOLDWARNING("[src] begins to emitt sparks out the top as a banging noise can be heard!"), SPAN_BOLDWARNING("You hear a myriad of loud bangs!"))
+	else
+		visible_message(SPAN_DANGER("You hear a loud squelchy grinding sound."))
+	operating = TRUE
 	update_icon()
 
 	var/totalslabs = 2
+
 
 	var/obj/item/reagent_container/food/snacks/meat/meat_template = /obj/item/reagent_container/food/snacks/meat/monkey
 	if(istype(occupant, /mob/living/carbon/xenomorph))
@@ -186,6 +209,35 @@
 			meat_template = /obj/item/reagent_container/food/snacks/meat/human
 			totalslabs = 3
 
+	// Synths only get delimbed from this. 1 meat per limb
+	if(synthetic)
+		meat_template = /obj/item/reagent_container/food/snacks/meat/synthmeat/synthflesh
+		totalslabs = 0
+		var/mob/living/carbon/human/victim = occupant
+
+		// Remove all limbs to allow synth to park closer at the supermarket
+		var/obj/limb/limb
+
+		if(victim.has_limb("l_leg"))
+			limb = victim.get_limb("r_leg")
+			totalslabs += 1
+			limb.droplimb(FALSE, TRUE, "gibber")
+
+		if(victim.has_limb("l_leg"))
+			limb = victim.get_limb("l_leg")
+			totalslabs += 1
+			limb.droplimb(FALSE, TRUE, "gibber")
+
+		if(victim.has_limb("r_arm"))
+			limb = victim.get_limb("r_arm")
+			totalslabs += 1
+			limb.droplimb(FALSE, TRUE, "gibber")
+
+		if(victim.has_limb("l_arm"))
+			limb = victim.get_limb("l_arm")
+			totalslabs += 1
+			limb.droplimb(FALSE, TRUE, "gibber")
+
 	var/obj/item/reagent_container/food/snacks/meat/allmeat[totalslabs]
 	for(var/i in 1 to totalslabs)
 		var/obj/item/reagent_container/food/snacks/meat/newmeat
@@ -194,26 +246,37 @@
 		newmeat.name = newmeat.made_from_player + newmeat.name
 		allmeat[i] = newmeat
 
-		if(src.occupant.client) // Gibbed a cow with a client in it? log that shit
-			src.occupant.attack_log += "\[[time_stamp()]\] Was gibbed by <b>[key_name(user)]</b>"
+		// Synths wont die to this (on it's own at least), dont log as a gib
+		if(synthetic)
+			if(occupant.client) // Log still
+				occupant.attack_log += "\[[time_stamp()]\] Was delimbed by <b>[key_name(user)]</b>"
+				user.attack_log += "\[[time_stamp()]\] delimbed <b>[key_name(occupant)]</b>"
+				msg_admin_attack("[key_name(user)] delimbed [key_name(occupant)] with a gibber in [user.loc.name]([user.x], [user.y], [user.z]).", user.x, user.y, user.z)
+			continue
+
+		if(occupant.client) // Gibbed a cow with a client in it? log that shit
+			occupant.attack_log += "\[[time_stamp()]\] Was gibbed by <b>[key_name(user)]</b>"
 			user.attack_log += "\[[time_stamp()]\] Gibbed <b>[key_name(occupant)]</b>"
 			msg_admin_attack("[key_name(user)] gibbed [key_name(occupant)] in [user.loc.name] ([user.x], [user.y], [user.z]).", user.x, user.y, user.z)
 
-		src.occupant.death(create_cause_data("gibber", user), TRUE)
-		src.occupant.ghostize()
-
-	QDEL_NULL(occupant)
+		occupant.death(create_cause_data("gibber", user), TRUE)
+		occupant.ghostize()
 
 	addtimer(CALLBACK(src, PROC_REF(create_gibs), totalslabs, allmeat), gibtime)
+	if(synthetic)
+		to_chat(occupant, SPAN_HIGHDANGER("You can detect your limbs being ripped off your body, but it begins to malfunction as it reaches your torso!"))
+		addtimer(CALLBACK(src, PROC_REF(go_out), TRUE), gibtime)
+	else
+		QDEL_NULL(occupant)
 
 /obj/structure/machinery/gibber/proc/create_gibs(totalslabs, list/obj/item/reagent_container/food/snacks/allmeat)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1)
 	operating = FALSE
+	var/turf/Tx = locate(x - 1, y, z)
 	for (var/i in 1 to totalslabs)
 		var/obj/item/meatslab = allmeat[i]
-		var/turf/Tx = locate(x - i, y, z)
 		meatslab.forceMove(loc)
-		meatslab.throw_atom(Tx, i, SPEED_FAST, src)
+		meatslab.throw_atom(Tx, 1, SPEED_FAST, src)
 		if (!Tx.density)
 			if(istype(meatslab, /obj/item/reagent_container/food/snacks/meat/xenomeat))
 				new /obj/effect/decal/cleanable/blood/gibs/xeno(Tx)

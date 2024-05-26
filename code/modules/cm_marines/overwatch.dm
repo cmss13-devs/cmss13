@@ -800,7 +800,7 @@
 	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
 
 	/// Project ARES interface log.
-	log_ares_bombardment(user.name, ob_name, "X[x_bomb], Y[y_bomb] in [get_area(T)]")
+	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb] in [get_area(T)]")
 
 	busy = FALSE
 	if(istype(T))
@@ -843,6 +843,10 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
+	if(crate.opened)
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The crate is not secure on the drop pad. Get Requisitions to close the crate!")]")
+		return
+
 	busy = TRUE
 	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
 	SEND_SIGNAL(crate, COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED, current_squad)
@@ -866,6 +870,9 @@
 
 /obj/structure/machinery/computer/overwatch/almayer/broken
 	name = "Broken Overwatch Console"
+
+/obj/structure/machinery/computer/overwatch/almayer/small
+	icon_state = "engineering_terminal"
 
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF

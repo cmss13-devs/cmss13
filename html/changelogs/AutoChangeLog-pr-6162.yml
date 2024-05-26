@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - bugfix: "Fixed a bug which made boilers go way faster than they should"

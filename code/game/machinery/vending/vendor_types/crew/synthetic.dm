@@ -387,4 +387,5 @@ GLOBAL_LIST_INIT(cm_vending_synth_tools, list(
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/ammo_magazine/smg/nailgun,
 		/obj/item/ammo_magazine/smg/nailgun,
+		/obj/item/storage/belt/gun/m4a3/nailgun,
 	)

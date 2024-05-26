@@ -278,3 +278,78 @@
   - rscadd: adds new flamer fuel type, stabilized metallic foam
   - rscadd: Incinerator tanks can now hold stabilized metallic foam
   - balance: High-Combustion napalm fuel is now easier to see on the ground
+2024-04-21:
+  567Turtle:
+  - balance: ' SO can now do basic surgeries'
+  Ben10083:
+  - rscadd: Synthetics when shoved into meat gibber will not be delimbed and spawn
+      their own flesh, but would not die (they are spat out as a torso and head)
+  - admin: Adjustment to meatgibber code to notify admins when a synthetic is being
+      shoved into gibber
+  Git-Nivrak:
+  - bugfix: You can no longer infinitely extend  facehugger's lifetime by REDACTED
+  - balance: Lessers now lose 5 hp every 2 seconds off weeds
+  - bugfix: Fixed a bug which made boilers go way faster than they should
+  LTNTS:
+  - rscadd: Adds Command Tablets to Provost Marshal+
+  iloveloopers:
+  - bugfix: White phosphorus will no longer forcefully set a mob's fire_reagent to
+      be UT napthal
+  realforest2001:
+  - rscadd: Added an ARES Log for chambering the OB Cannon.
+  vero5123:
+  - bugfix: toggling ghost vision now keeps the user's mob visible.
+2024-04-22:
+  Git-Nivrak:
+  - rscdel: Reverted back to old throw logic
+  GrrrKitten:
+  - rscadd: Adds shockwave VFX to powerful explosions
+  - rscadd: Adds shockwave VFX to Queen + Predalien screech
+  LC4492:
+  - rscadd: Adds a new, better variation of the normal photocopier.
+  - imageadd: Adds a new sprite to the new photocopier variation and updates the sprites
+      of both normal, and new photocopiers to look slightly better.
+  - maptweak: Adds the new photocopiers to the CC and CL offices.
+  Zonespace27:
+  - admin: Unmarked tickets now mark themselves when an admin starts responding to
+      one
+  harryob:
+  - bugfix: you can bind to space again
+  iloveloopers:
+  - bugfix: custom flamer fuels no longer work for increasing OT assembly's caps
+  realforest2001:
+  - bugfix: Delaying round start now shows on the timer again.
+  - rscadd: Added ID Modification Log to the Access Report printout from an ID Console.
+2024-04-23:
+  Drulikar:
+  - balance: Cryotubes now also cure external bleeding
+  - bugfix: Fixed internal bleeding granting blood on its last tick
+2024-04-24:
+  Git-Nivrak:
+  - bugfix: Fixes boilers slowing themselves by using long range sight while resting.
+  iloveloopers:
+  - qol: Alt clicking a reagent tank will now toggle whether its dispensing or filling
+2024-04-25:
+  Drathek:
+  - bugfix: 'Fixed hugger handling in drone tutorial: Now the hugger dying will put
+      another hugger into the tutorial morpher.'
+  Steelpoint:
+  - rscadd: UPP and CLF Combat Synthetic preset is now available for admins to spawn
+      them in.
+  ihatethisengine:
+  - bugfix: spotlight no longer breaks after every flight
+  - rscadd: Combat Correspondent can broadcast speech and emotes.
+  - rscadd: Speech close enough to the camera will be shown above connected TVs as
+      abovehead messages
+  realforest2001:
+  - bugfix: You can delete flight logs from ARES Interface again as intended.
+2024-04-26:
+  Git-Nivrak:
+  - qol: You can now change the color of pill bottles in the chem master or with a
+      hand labeler.
+  realforest2001:
+  - spellcheck: Fixes a typo for M4RA AP Ammo in the ASRS menu.
+2024-04-27:
+  Lagomorphica:
+  - balance: The spotter laser designators, scout laser designators, and scout cloak
+      are now unmeltable and indestructible to explosions.

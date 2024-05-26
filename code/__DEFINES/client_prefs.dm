@@ -24,6 +24,7 @@
 #define TOGGLE_START_JOIN_CURRENT_SLOT (1<<16) // Whether joining at roundstart ignores assigned character slot for the job and uses currently selected slot.
 #define TOGGLE_LATE_JOIN_CURRENT_SLOT (1<<17) //Whether joining during the round ignores assigned character slot for the job and uses currently selected slot.
 #define TOGGLE_ABILITY_DEACTIVATION_OFF (1<<18) // This toggles whether selecting the same ability again can toggle it off
+#define TOGGLE_AMMO_DISPLAY_TYPE (1<<19)/// limit how often the ammo is displayed when using semi-automatic fire
 
 #define JOB_SLOT_RANDOMISED_SLOT -1
 #define JOB_SLOT_CURRENT_SLOT 0

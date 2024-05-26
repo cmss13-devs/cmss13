@@ -132,10 +132,10 @@
 			old_target = amr.focused_fire_target
 
 			if(target_mob == (amr.focused_fire_target?.resolve()))
-				if(amr.focused_fire_counter < 2) // Can stack up to twice.
+				if(amr.focused_fire_counter < 3) // Can stack up to twice.
 					amr.focused_fire_counter += 1
 				else
-					amr.focused_fire_counter = 2
+					amr.focused_fire_counter = 0
 			else // If it's a new target
 				amr.focused_fire_counter = 0 // Stacks to 0
 				if(human_firer && !(target_mob.is_dead()))
@@ -144,7 +144,7 @@
 					human_firer.focused_fire_marker = focused_fire_marker_temp // Store new marker ref
 					human_firer.client?.images += focused_fire_marker_temp // Add new marker
 
-			amr_counter = amr.focused_fire_counter + 1
+			amr_counter = min(amr.focused_fire_counter + 1, 3)
 			amr.focused_fire_target = WEAKREF(target_mob)
 
 		var/size_damage_mod = 0.8 // 1.8x vs Non-Xenos (225)
@@ -194,7 +194,7 @@
 				if(2)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Two hits! You're starting to get a good read on the target's patterns."))
 				if(3)
-					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye! You're fully focused on the target."))
+					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye! You're fully focused on the target. You notice they are starting to change their patterns."))
 				else
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))
 		else

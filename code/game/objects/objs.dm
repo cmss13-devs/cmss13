@@ -208,6 +208,9 @@
 /obj/proc/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking, italics = 0)
 	return
 
+/obj/proc/see_emote(mob/living/M as mob, emote, audible = FALSE)
+	return
+
 /obj/attack_hand(mob/user)
 	if(can_buckle) manual_unbuckle(user)
 	else . = ..()
@@ -231,7 +234,7 @@
 
 /obj/proc/afterbuckle(mob/M as mob) // Called after somebody buckled / unbuckled
 	handle_rotation() // To be removed when we have full dir support in set_buckled
-	SEND_SIGNAL(src, COSMIG_OBJ_AFTER_BUCKLE, buckled_mob)
+	SEND_SIGNAL(src, COMSIG_OBJ_AFTER_BUCKLE, buckled_mob)
 	if(!buckled_mob)
 		UnregisterSignal(M, COMSIG_PARENT_QDELETING)
 	else
@@ -303,6 +306,7 @@
 	if (M.mob_size <= MOB_SIZE_XENO)
 		if ((M.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(M, TRAIT_OPPOSABLE_THUMBS)))
 			do_buckle(M, user)
+			return
 	if ((M.mob_size > MOB_SIZE_HUMAN))
 		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
 		return
@@ -371,7 +375,7 @@
 		return 0
 	bullet_ping(P)
 	if(P.ammo.damage)
-		update_health(round(P.ammo.damage / 2))
+		update_health(floor(P.ammo.damage / 2))
 	return 1
 
 /obj/item/proc/get_mob_overlay(mob/user_mob, slot)

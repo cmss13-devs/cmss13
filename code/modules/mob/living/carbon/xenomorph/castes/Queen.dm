@@ -410,6 +410,15 @@
 		make_combat_effective()
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
+	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
+
+/mob/living/carbon/xenomorph/queen/proc/check_block(mob/destroyer, turf/new_loc)
+	SIGNAL_HANDLER
+	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
+		if(xeno.hivenumber == src.hivenumber)
+			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
+	
+		playsound(src.loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 
 /mob/living/carbon/xenomorph/queen/generate_name()
 	if(!nicknumber)
@@ -423,13 +432,13 @@
 			if(XENO_NORMAL)
 				name = "[name_prefix]Queen"  //Regular
 			if(XENO_MATURE)
-				name = "[name_prefix]Elder Queen"  //Mature
+				name = "[name_prefix]Empress"  //Mature
 			if(XENO_ELDER)
 				name = "[name_prefix]Elder Empress"  //Elite
 			if(XENO_ANCIENT)
 				name = "[name_prefix]Ancient Empress" //Ancient
 			if(XENO_PRIME)
-				name = "[name_prefix]Prime Empress" //Primordial
+				name = "[name_prefix]Matriarch" //Primordial
 	else
 		age = XENO_NORMAL
 		if(client)

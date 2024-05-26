@@ -161,8 +161,8 @@
 		ACCESS_MARINE_CHARLIE,
 		ACCESS_MARINE_DELTA,
 	)
-	assignment = JOB_TANKCREW
-	rank = JOB_TANKCREW
+	assignment = JOB_TANK_CREW
+	rank = JOB_TANK_CREW
 	paygrade = PAY_SHORT_ME4
 	role_comm_title = "CRMN"
 	minimum_age = 30

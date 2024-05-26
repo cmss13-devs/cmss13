@@ -12,8 +12,6 @@
 		return min
 	return floor(clamp((marine_count/factor)+c, min, max))
 
-/proc/tank_crew_slot_formula(playercount)
-	return job_slot_formula(playercount, 200,2,0,2)
 
 /proc/medic_slot_formula(playercount)
 	return job_slot_formula(playercount,40,1,3,5)

@@ -1320,7 +1320,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	// Can only retrieve one vehicle per round
 	var/spent = FALSE
 	var/tank_unlocked = TRUE
-	var/list/allowed_roles = list(JOB_TANKCREW)
+	var/list/allowed_roles = list(JOB_TANK_CREW)
 
 	var/list/vehicles
 

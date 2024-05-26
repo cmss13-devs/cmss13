@@ -107,6 +107,7 @@
 		list("M5 Bayonet", floor(scale * 25), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
 		list("M11 Throwing Knife", floor(scale * 10), /obj/item/weapon/throwing_knife, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", floor(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR)
+		list("Plastic Explosive", floor(scale * 2), /obj/item/explosive/plastic, VENDOR_ITEM_REGULAR)
 	)
 
 //------------REQ AMMUNITION VENDOR---------------

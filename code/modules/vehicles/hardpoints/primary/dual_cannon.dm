@@ -14,7 +14,7 @@
 	health = 500
 	firing_arc = 60
 
-	origins = list(0, -2)
+	origins = list(0, 1)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/boyars_dualcannon
 	max_clips = 2

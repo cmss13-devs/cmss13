@@ -1367,7 +1367,7 @@ const FlightLogs = (props) => {
     last_page,
     current_menu,
     records_flight,
-    access_level,
+    admin_login,
   } = data;
 
   return (
@@ -1446,7 +1446,7 @@ const FlightLogs = (props) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 4}
+                  disabled={access_text}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>

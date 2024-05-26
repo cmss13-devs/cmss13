@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Nade boxes now have the same throw away logic when dropped to the ground instead of in update_icon when empty."
-  - bugfix: "Fixed MREs getting thrown away if you don't drop them to the ground."
-  - bugfix: "Fixed MREs throwing runtimes if spawned on a person that doesn't have space for the MRE."

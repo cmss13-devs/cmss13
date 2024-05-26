@@ -267,8 +267,13 @@
 			sq.max_engineers = engi_slot_formula(GLOB.clients.len)
 			sq.max_medics = medic_slot_formula(GLOB.clients.len)
 
-	if(SSticker.mode.latejoin_larva_drop && SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= SSticker.mode.latejoin_larva_drop)
-		SSticker.mode.latejoin_larva_used += SSticker.mode.latejoin_larva_drop
+	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
+
+	if (ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
+		latejoin_larva_drop = SSticker.mode.latejoin_larva_drop_early
+
+	if(latejoin_larva_drop && SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= latejoin_larva_drop)
+		SSticker.mode.latejoin_larva_used += latejoin_larva_drop
 		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]

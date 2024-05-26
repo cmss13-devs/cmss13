@@ -855,12 +855,22 @@
 	var/mob/chosen_candidate
 
 /obj/effect/alien/resin/destroyer_cocoon/Initialize(mapload, pylon)
-	..()
+	. = ..()
 	timer = addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE)
+
+/obj/effect/alien/resin/destroyer_cocoon/proc/check_pylons()
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	
+	if(hive.active_endgame_pylons.len < 2)
+		qdel(src)
+	
+	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE)
+
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/start_growing()
 	icon_state = "growing"
-	addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 9 MINUTES SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	timer = addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 9 MINUTES SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/roll_candidates()
 	// First, Let the Queen choose
@@ -910,12 +920,12 @@
 /obj/effect/alien/resin/destroyer_cocoon/proc/choose_candidate()
 	chosen_candidate = roll_candidates()
 
-	addtimer(CALLBACK(src, PROC_REF(animate_hatch_destroyer)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	timer = addtimer(CALLBACK(src, PROC_REF(animate_hatch_destroyer)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/animate_hatch_destroyer()
 	flick("hatching", src)
 
-	addtimer(CALLBACK(src, PROC_REF(hatch_destroyer)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(hatch_destroyer)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/hatch_destroyer()
 	var/mob/living/carbon/xenomorph/destroyer/destroyer = new(locate(src.x + 2, src.y + 2, src.z))

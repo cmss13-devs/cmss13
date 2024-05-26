@@ -350,6 +350,7 @@
 
 	engage_flavourmessage = "The Queen has purchased 5 extra larva to join the hive!"
 	cost = 5
+	number_of_required_pylons = 1
 	is_reusable = FALSE
 
 /datum/hivebuff/extra_larva/on_engage()
@@ -358,11 +359,11 @@
 
 /datum/hivebuff/extra_life
 	name = "Boon of Plenty"
-	desc = "Increases all xenomorph health by 10% for 10 seconds"
+	desc = "Increases all xenomorph health by 5% for 10 seconds"
 	tier = HIVEBUFF_TIER_MINOR
 	engage_flavourmessage = "The Queen has imbued us with greater fortitude."
 	duration = 10 SECONDS
-	number_of_required_pylons = 2
+	number_of_required_pylons = 1
 
 /datum/hivebuff/extra_life/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
 	xeno.maxHealth *= 1.05
@@ -377,15 +378,24 @@
 
 	engage_flavourmessage = "The Queen has imbued us with greater fortitude."
 	duration = 10 MINUTES
+	cost = 2
 	number_of_required_pylons = 2
 	radial_icon = "health_m"
+
+/datum/hivebuff/extra_life/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.maxHealth *= 1.1
+
+/datum/hivebuff/extra_life/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.maxHealth = initial(xeno.caste.max_health)
 
 /datum/hivebuff/game_ender_caste
 	name = "Boon of Destruction"
 	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike."
 	tier = HIVEBUFF_TIER_MAJOR
 	is_unique = TRUE
-	is_reusable = FALSE
+	is_reusable = TRUE
+	cost = 10
+	number_of_required_pylons = 2
 
 /datum/hivebuff/game_ender_caste/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
 	var/turf/spawn_turf
@@ -437,6 +447,7 @@
 
 	engage_flavourmessage = "The Queen has imbued us with even greater chitin."
 	duration = 10 MINUTES
+	cost = 2
 	number_of_required_pylons = 2
 	radial_icon = "shield_m"
 
@@ -472,6 +483,7 @@
 	engage_flavourmessage = "The Queen has imbued us with razer sharp claws."
 	duration = 10 MINUTES
 	number_of_required_pylons = 2
+	cost = 2
 	radial_icon = "slash_m"
 
 /datum/hivebuff/attack/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)

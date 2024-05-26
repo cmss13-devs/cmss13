@@ -139,6 +139,7 @@
 
 /obj/effect/alien/resin/special/pylon/endgame
 	cover_range = WEED_RANGE_CORE
+	protection_level = TURF_PROTECTION_OB
 	var/activated = FALSE
 
 	/// Hivebuff being sustained by this pylon

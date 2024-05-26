@@ -20,6 +20,7 @@
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 	var/skill_required = SKILL_PILOT_TRAINED
 	var/combat_equipment = TRUE
+	health = 400
 
 
 /obj/structure/dropship_equipment/Destroy()
@@ -47,30 +48,50 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/dropship_equipment/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/powerloader_clamp))
-		var/obj/item/powerloader_clamp/PC = I
-		if(PC.loaded)
+/obj/structure/dropship_equipment/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/powerloader_clamp))
+		var/obj/item/powerloader_clamp/powerloader_clamp = item
+		if(powerloader_clamp.loaded)
 			if(ammo_equipped)
 				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first!"))
 				return TRUE
 			if(uses_ammo)
-				load_ammo(PC, user) //it handles on it's own whether the ammo fits
+				load_ammo(powerloader_clamp, user) //it handles on it's own whether the ammo fits
 				return
 
 		else
 			if(uses_ammo && ammo_equipped)
-				unload_ammo(PC, user)
+				unload_ammo(powerloader_clamp, user)
 			else
-				grab_equipment(PC, user)
+				grab_equipment(powerloader_clamp, user)
 		return TRUE
+	if(iswelder(item))
+		if(health == initial(health))
+			to_chat(user, SPAN_WARNING("[src] is in working condition."))
+			return
+		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
+		if(user.action_busy)
+			return
+		if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
+			to_chat(user, SPAN_WARNING("You are not trained to fix [src]..."))
+			return
+		playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
+		if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+		repair(50);
+		user.visible_message(SPAN_NOTICE("[user] repairs parts of [src]."),
+		SPAN_NOTICE("You repair damaged parts of [src]."))
 
-/obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
-	if(!ship_base || !uses_ammo || ammo_equipped || !istype(PC.loaded, /obj/structure/ship_ammo))
+/obj/structure/dropship_equipment/proc/repair(amount)
+	health = min(initial(health), health+amount)
+
+/obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
+	if(!ship_base || !uses_ammo || ammo_equipped || !istype(powerloader_clamp.loaded, /obj/structure/ship_ammo))
 		return
-	var/obj/structure/ship_ammo/SA = PC.loaded
-	if(SA.equipment_type != type)
-		to_chat(user, SPAN_WARNING("[SA] doesn't fit in [src]."))
+	var/obj/structure/ship_ammo/ship_ammo = powerloader_clamp.loaded
+	if(ship_ammo.equipment_type != type)
+		to_chat(user, SPAN_WARNING("[ship_ammo] doesn't fit in [src]."))
 		return
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	var/point_loc = ship_base.loc
@@ -78,23 +99,23 @@
 		return
 	if(!ship_base || ship_base.loc != point_loc)
 		return
-	if(!ammo_equipped && PC.loaded == SA && PC.linked_powerloader && PC.linked_powerloader.buckled_mob == user)
-		SA.forceMove(src)
-		PC.loaded = null
+	if(!ammo_equipped && powerloader_clamp.loaded == ship_ammo && powerloader_clamp.linked_powerloader && powerloader_clamp.linked_powerloader.buckled_mob == user)
+		ship_ammo.forceMove(src)
+		powerloader_clamp.loaded = null
 		playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
-		PC.update_icon()
-		to_chat(user, SPAN_NOTICE("You load [SA] into [src]."))
-		ammo_equipped = SA
+		powerloader_clamp.update_icon()
+		to_chat(user, SPAN_NOTICE("You load [ship_ammo] into [src]."))
+		ammo_equipped = ship_ammo
 		update_equipment()
 
-/obj/structure/dropship_equipment/proc/unload_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
+/obj/structure/dropship_equipment/proc/unload_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/point_loc = ship_base ? ship_base.loc : null
 	if(!do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(point_loc && ship_base.loc != point_loc) //dropship flew away
 		return
-	if(!ammo_equipped || !PC.linked_powerloader || PC.linked_powerloader.buckled_mob != user)
+	if(!ammo_equipped || !powerloader_clamp.linked_powerloader || powerloader_clamp.linked_powerloader.buckled_mob != user)
 		return
 	if(!ammo_equipped.ammo_count)
 		ammo_equipped.moveToNullspace()
@@ -102,13 +123,13 @@
 		qdel(ammo_equipped)
 	else
 		if(ammo_equipped.ammo_name == "rocket")
-			PC.grab_object(user, ammo_equipped, "ds_rocket")
+			powerloader_clamp.grab_object(user, ammo_equipped, "ds_rocket")
 		else
-			PC.grab_object(user, ammo_equipped, "ds_ammo")
+			powerloader_clamp.grab_object(user, ammo_equipped, "ds_ammo")
 	ammo_equipped = null
 	update_icon()
 
-/obj/structure/dropship_equipment/proc/grab_equipment(obj/item/powerloader_clamp/PC, mob/living/user)
+/obj/structure/dropship_equipment/proc/grab_equipment(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/duration_time = 10
 	var/point_loc
@@ -119,9 +140,9 @@
 		return
 	if(point_loc && ship_base && ship_base.loc != point_loc) //dropship flew away
 		return
-	if(!PC.linked_powerloader || PC.loaded || PC.linked_powerloader.buckled_mob != user)
+	if(!powerloader_clamp.linked_powerloader || powerloader_clamp.loaded || powerloader_clamp.linked_powerloader.buckled_mob != user)
 		return
-	PC.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
+	powerloader_clamp.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
 	if(ship_base)
 		ship_base.installed_equipment = null
 		ship_base = null
@@ -668,12 +689,12 @@
 	var/turf/target_turf = get_turf(selected_target)
 	if(firing_sound)
 		playsound(loc, firing_sound, 70, 1)
-	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
-	var/ammo_max_inaccuracy = SA.max_inaccuracy
-	var/ammo_accuracy_range = SA.accuracy_range
-	var/ammo_travelling_time = SA.travelling_time //how long the rockets/bullets take to reach the ground target.
-	var/ammo_warn_sound = SA.warning_sound
-	var/ammo_warn_sound_volume = SA.warning_sound_volume
+	var/obj/structure/ship_ammo/ship_ammo = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
+	var/ammo_max_inaccuracy = ship_ammo.max_inaccuracy
+	var/ammo_accuracy_range = ship_ammo.accuracy_range
+	var/ammo_travelling_time = ship_ammo.travelling_time //how long the rockets/bullets take to reach the ground target.
+	var/ammo_warn_sound = ship_ammo.warning_sound
+	var/ammo_warn_sound_volume = ship_ammo.warning_sound_volume
 	deplete_ammo()
 	last_fired = world.time
 	if(linked_shuttle)
@@ -683,7 +704,7 @@
 			ammo_travelling_time = max(ammo_travelling_time - 20, 10)
 			break
 
-	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
+	msg_admin_niche("[key_name(user)] is direct-firing [ship_ammo] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
 	if(ammo_travelling_time)
 		var/total_seconds = max(floor(ammo_travelling_time/10),1)
 		for(var/i = 0 to total_seconds)
@@ -700,8 +721,8 @@
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 	sleep(10)
-	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	ship_ammo.source_mob = user
+	ship_ammo.detonate_on(impact, src)
 
 /obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target, mob/user = usr)
 	set waitfor = 0
@@ -709,8 +730,8 @@
 	if(firing_sound)
 		playsound(loc, firing_sound, 70, 1)
 		playsound(target_turf, firing_sound, 70, 1)
-	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
-	var/ammo_accuracy_range = SA.accuracy_range
+	var/obj/structure/ship_ammo/ship_ammo = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
+	var/ammo_accuracy_range = ship_ammo.accuracy_range
 	// no warning sound and no travel time
 	deplete_ammo()
 	last_fired = world.time
@@ -726,8 +747,8 @@
 		possible_turfs += TU
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
-	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	ship_ammo.source_mob = user
+	ship_ammo.detonate_on(impact, src)
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
@@ -749,7 +770,7 @@
 
 /obj/structure/dropship_equipment/weapon/rocket_pod
 	name = "\improper LAU-444 Guided Missile Launcher"
-	icon_state = "rocket_pod" //I want to force whoever used rocket and missile interchangeably to come back and look at this god damn mess.
+	icon_state = "rocket_pod" //item want to force whoever used rocket and missile interchangeably to come back and look at this god damn mess.
 	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter. Accepts AGM, AIM, BLU, and GBU missile systems."
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 5
@@ -1319,8 +1340,8 @@
 /obj/structure/dropship_equipment/weapon/proc/open_simulated_fire_firemission(obj/selected_target, mob/user = usr)
 	set waitfor = FALSE
 	var/turf/target_turf = get_turf(selected_target)
-	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
-	var/ammo_accuracy_range = SA.accuracy_range
+	var/obj/structure/ship_ammo/ship_ammo = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
+	var/ammo_accuracy_range = ship_ammo.accuracy_range
 	// no warning sound and no travel time
 	last_fired = world.time
 
@@ -1333,5 +1354,5 @@
 		possible_turfs += TU
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
-	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	ship_ammo.source_mob = user
+	ship_ammo.detonate_on(impact, src)

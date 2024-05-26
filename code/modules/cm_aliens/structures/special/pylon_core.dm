@@ -223,7 +223,7 @@
 /// APPLYING HIVE BUFFS ///
 
 /obj/effect/alien/resin/special/pylon/endgame/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(!damaged && health == maxhealth && xeno.a_intent == INTENT_HELP && xeno.hivenumber == linked_hive.hivenumber && IS_XENO_LEADER(xeno))
+	if(!damaged && health == maxhealth && xeno.a_intent == INTENT_HELP && xeno.hivenumber == linked_hive.hivenumber && (IS_XENO_LEADER(xeno)|| isqueen(xeno)))
 		if(!LAZYISIN(players_on_buff_cooldown, xeno))
 			choose_hivebuff(xeno)
 			return

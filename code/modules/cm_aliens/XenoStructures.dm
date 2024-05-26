@@ -870,7 +870,7 @@
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/start_growing()
 	icon_state = "growing"
-	timer = addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 9 MINUTES SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	timer = addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 9 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/roll_candidates()
 	// First, Let the Queen choose

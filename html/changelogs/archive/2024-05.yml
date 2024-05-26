@@ -296,3 +296,7 @@
   - bugfix: Fixed ARES remote interface UI crash relating to flight logs.
   - rscadd: Added access check for use of escape pod consoles, and access requirement
       on the CLs pod.
+2024-05-26:
+  realforest2001:
+  - imageadd: added sprites for floor-mounted sentry deployment systems.
+  - rscadd: Added mini-sentry deployment systems, and an AI Core subtype.

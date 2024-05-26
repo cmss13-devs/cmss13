@@ -889,7 +889,7 @@
 	ambience_exterior = AMBIENCE_LAB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/hallwaynorth
-	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Technology Research & Development Lab"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Hallway"
 	icon_state = "wylab"
 	ambience_exterior = AMBIENCE_LAB_HALLWAY
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS

@@ -7,7 +7,19 @@
 
     "weather_holder": "/datum/weather_ss_map_holder/lv759_hybrisa_prospera",
     "survivor_types": [
-        "/datum/equipment_preset/survivor/forecon/standard"
+        "/datum/equipment_preset/survivor/doctor/hybrisa",
+        "/datum/equipment_preset/survivor/scientist/hybrisa",
+        "/datum/equipment_preset/survivor/roughneck",
+        "/datum/equipment_preset/survivor/chaplain/hybrisa",
+        "/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison",
+        "/datum/equipment_preset/survivor/colonial_marshal/hybrisa",
+        "/datum/equipment_preset/survivor/engineer/hybrisa",
+        "/datum/equipment_preset/survivor/engineer/hybrisa/hydro",
+        "/datum/equipment_preset/survivor/trucker/hybrisa",
+        "/datum/equipment_preset/survivor/security/hybrisa",
+        "/datum/equipment_preset/survivor/corporate/hybrisa",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
     ],
 	"synth_survivor_types": [
         "/datum/equipment_preset/synth/survivor/forecon"

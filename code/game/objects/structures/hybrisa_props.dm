@@ -1108,7 +1108,7 @@
 	name = "fire"
 	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
 	icon_state = "zfire_smoke"
-	layer = 5
+	layer = ABOVE_MOB_LAYER
 	light_on = TRUE
 	light_power = 2
 	light_range = 3
@@ -1121,9 +1121,26 @@
 
 /obj/structure/prop/hybrisa/misc/fire/firebarrel
 	name = "barrel"
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "zbarrelfireon"
+	bound_height = 32
+	bound_width = 32
+	density = TRUE
+
+/obj/structure/prop/hybrisa/misc/firebarreloff
+	name = "barrel"
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon_state = "zfirebarreloff"
+	bound_height = 32
+	bound_width = 32
+	density = TRUE
 
 // Misc
+
+/obj/structure/prop/hybrisa/misc/picture
+	name = "framed picture"
+	desc = "A golden framed picture of an ominous skeletal figure ordorned in golden garb, fancy for a pile of bones..."
+	icon_state = "pictureframe"
 
 /obj/structure/prop/hybrisa/misc/commandosuitemptyprop
 	name = "Weyland-Yutani 'Ape-Suit' Showcase"
@@ -1150,10 +1167,6 @@
 /obj/structure/prop/hybrisa/misc/redmeter
 	name = "meter"
 	icon_state = "redmeter"
-
-/obj/structure/prop/hybrisa/misc/firebarreloff
-	name = "barrel"
-	icon_state = "zfirebarreloff"
 
 /obj/structure/prop/hybrisa/misc/trashbagfullprop
 	name = "trash bag"

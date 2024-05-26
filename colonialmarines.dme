@@ -424,6 +424,7 @@
 #include "code\datums\components\autofire\_automated_fire.dm"
 #include "code\datums\components\autofire\autofire.dm"
 #include "code\datums\components\xeno\shield_slash.dm"
+#include "code\datums\components\xeno\xeno_daze.dm"
 #include "code\datums\construction\construction_template.dm"
 #include "code\datums\construction\xenomorph\construction_template_xenomorph.dm"
 #include "code\datums\decorators\decorator.dm"

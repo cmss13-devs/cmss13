@@ -880,6 +880,7 @@
 	if(isxeno(L))
 		var/mob/living/carbon/xenomorph/xeno = M
 		xeno.plasma_stored = max(xeno.plasma_stored - POTENCY_MULTIPLIER_HIGH * volume * potency, 0)
+		to_chat(xeno, SPAN_WARNING("You feel your plasma reserves being drained!"))
 
 /datum/chem_property/positive/neutralizing/reaction_turf(turf/T, volume, potency)
 	if(!istype(T))

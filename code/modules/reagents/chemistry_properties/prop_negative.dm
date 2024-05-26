@@ -152,7 +152,6 @@
 		var/mob/living/carbon/xenomorph/xeno = M
 		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
 			xeno.AddComponent(/datum/component/status_effect/toxic_buildup, potency * volume * 0.25)
-			to_chat(xeno, SPAN_XENODANGER("The corrosive substance damages your carapace!"))
 
 /datum/chem_property/negative/corrosive/reaction_obj(obj/O, volume, potency)
 	if((istype(O,/obj/item) || istype(O,/obj/effect/glowshroom)) && prob(potency * 10))
@@ -431,8 +430,13 @@
 		apply_neuro(M, POTENCY_MULTIPLIER_MEDIUM * potency, FALSE)
 
 /datum/chem_property/negative/neurotoxic/reaction_mob(mob/M, method = TOUCH, volume, potency)
-	to_chat(M, SPAN_WARNING("You start to go numb."))
-	M.apply_effect(potency * volume * POTENCY_MULTIPLIER_LOW, DAZE)
+	if(ishuman(M))
+		var/mob/living/carbon/human/human = M
+		human.Daze(potency * volume * POTENCY_MULTIPLIER_VLOW)
+		to_chat(human, SPAN_WARNING("You start to go numb."))
+	if(isxeno(M))
+		var/mob/living/carbon/xenomorph/xeno = M
+		xeno.AddComponent(/datum/component/status_effect/daze, volume * potency * POTENCY_MULTIPLIER_LOW, 30)
 
 /datum/chem_property/negative/hypermetabolic
 	name = PROPERTY_HYPERMETABOLIC

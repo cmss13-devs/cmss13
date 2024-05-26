@@ -16,10 +16,6 @@
 	if(stat == UNCONSCIOUS)
 		return //Unconscious? Nope.
 
-	if(HAS_TRAIT(src, TRAIT_DAZED))
-		to_chat(src, SPAN_WARNING("You are too dazed to talk."))
-		return
-
 	if(copytext(message, 1, 2) == "*")
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
 			return emote(lowertext(copytext(message, 2)), intentional = TRUE)

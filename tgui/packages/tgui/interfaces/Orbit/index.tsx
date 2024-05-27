@@ -152,7 +152,7 @@ const MarineObservable = (props: {
   const foxtrotSquad: Array<Observable> = [];
   const other: Array<Observable> = [];
 
-  section.forEach((x) => {
+  filteredSection.forEach((x) => {
     if (x.job?.includes('Alpha')) {
       alphaSquad.push(x);
     } else if (x.job?.includes('Bravo')) {

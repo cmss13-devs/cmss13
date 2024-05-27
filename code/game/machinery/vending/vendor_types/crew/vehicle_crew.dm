@@ -157,8 +157,7 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("Snowplow", 0, /obj/item/hardpoint/armor/snowplow, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
 
 	list("TREADS", 0, null, null, null),
-	list("Reinforced Treads", 0, /obj/item/hardpoint/locomotion/treads/robust, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_REGULAR),
-	list("Treads", 0, /obj/item/hardpoint/locomotion/treads, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_RECOMMENDED)))
+	list("Reinforced Treads", 0, /obj/item/hardpoint/locomotion/treads/robust, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_REGULAR)))
 
 GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank_spare, list(
 
@@ -205,8 +204,7 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank_spare, list(
 	list("Snowplow", 0, /obj/item/hardpoint/armor/snowplow, null, VENDOR_ITEM_REGULAR),
 
 	list("TREADS", 0, null, null, null),
-	list("Reinforced Treads", 0, /obj/item/hardpoint/locomotion/treads/robust, null, VENDOR_ITEM_REGULAR),
-	list("Treads", 0, /obj/item/hardpoint/locomotion/treads, null, VENDOR_ITEM_REGULAR)))
+	list("Reinforced Treads", 0, /obj/item/hardpoint/locomotion/treads/robust, null, VENDOR_ITEM_REGULAR)))
 
 GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),

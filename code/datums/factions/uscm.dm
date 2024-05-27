@@ -97,6 +97,8 @@
 				border_rk = "command"
 			if(JOB_POLICE)
 				marine_rk = "mp"
+			if(JOB_TANK_CREW)
+				marine_rk = "tc"
 			if(JOB_WARDEN)
 				marine_rk = "warden"
 				border_rk = "command"

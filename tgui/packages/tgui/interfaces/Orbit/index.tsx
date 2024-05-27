@@ -1,8 +1,8 @@
-import { filter, sortBy } from 'common/collections';
 import { capitalizeFirst } from 'common/string';
-import { useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
+  Box,
   Button,
   Collapsible,
   ColorBox,
@@ -23,37 +23,41 @@ import {
 } from './helpers';
 import type { Observable, OrbitData } from './types';
 
-export const Orbit = (props) => {
+type search = {
+  value: string;
+  setValue: (value: string) => void;
+};
+
+const SearchContext = createContext<search>({ value: '', setValue: () => {} });
+
+export const Orbit = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   return (
     <Window title="Orbit" width={500} height={700}>
       <Window.Content scrollable>
-        <Stack fill vertical>
-          <Stack.Item>
-            <ObservableSearch
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-            />
-          </Stack.Item>
-          <Stack.Item mt={0.2} grow>
-            <Section fill>
-              <ObservableContent searchQuery={searchQuery} />
-            </Section>
-          </Stack.Item>
-        </Stack>
+        <SearchContext.Provider
+          value={{ value: searchQuery, setValue: setSearchQuery }}
+        >
+          <Stack fill vertical>
+            <Stack.Item>
+              <ObservableSearch />
+            </Stack.Item>
+            <Stack.Item mt={0.2} grow>
+              <Section fill>
+                <ObservableContent />
+              </Section>
+            </Stack.Item>
+          </Stack>
+        </SearchContext.Provider>
       </Window.Content>
     </Window>
   );
 };
 
 /** Controls filtering out the list of observables via search */
-const ObservableSearch = (props: {
-  readonly searchQuery: string;
-  readonly setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
-}) => {
+const ObservableSearch = () => {
   const { act, data } = useBackend<OrbitData>();
-  const { searchQuery, setSearchQuery } = props;
   const { humans = [], marines = [], survivors = [], xenos = [] } = data;
 
   let auto_observe = data.auto_observe;
@@ -74,6 +78,8 @@ const ObservableSearch = (props: {
     }
   };
 
+  const { value, setValue } = useContext(SearchContext);
+
   return (
     <Section>
       <Stack>
@@ -85,9 +91,9 @@ const ObservableSearch = (props: {
             autoFocus
             fluid
             onEnter={(event, value) => orbitMostRelevant(value)}
-            onInput={(event, value) => setSearchQuery(value)}
+            onInput={(event, value) => setValue(value)}
             placeholder="Search..."
-            value={searchQuery}
+            value={value}
           />
         </Stack.Item>
         <Stack.Divider />
@@ -114,14 +120,92 @@ const ObservableSearch = (props: {
   );
 };
 
+const MarineObservable = (props: {
+  readonly color?: string;
+  readonly section: Array<Observable>;
+  readonly title: string;
+}) => {
+  const { color, section = [], title } = props;
+
+  const { value: searchQuery } = useContext(SearchContext);
+
+  if (!section.length) {
+    return null;
+  }
+
+  const filteredSection = section
+    .filter((observable) => isJobOrNameMatch(observable, searchQuery))
+    .sort((a, b) =>
+      a.full_name
+        .toLocaleLowerCase()
+        .localeCompare(b.full_name.toLocaleLowerCase()),
+    );
+
+  if (!filteredSection.length) {
+    return null;
+  }
+
+  const alphaSquad: Array<Observable> = [];
+  const bravoSquad: Array<Observable> = [];
+  const charlieSquad: Array<Observable> = [];
+  const deltaSquad: Array<Observable> = [];
+  const foxtrotSquad: Array<Observable> = [];
+  const other: Array<Observable> = [];
+
+  section.forEach((x) => {
+    if (x.job?.includes('Alpha')) {
+      alphaSquad.push(x);
+    } else if (x.job?.includes('Bravo')) {
+      bravoSquad.push(x);
+    } else if (x.job?.includes('Charlie')) {
+      charlieSquad.push(x);
+    } else if (x.job?.includes('Delta')) {
+      deltaSquad.push(x);
+    } else {
+      other.push(x);
+    }
+  });
+
+  return (
+    <Stack.Item>
+      <Collapsible
+        bold
+        color={color ?? 'grey'}
+        open={!!color}
+        title={title + ` - (${filteredSection.length})`}
+      >
+        <Box style={{ paddingLeft: '12px' }}>
+          <ObservableSection color="red" section={alphaSquad} title="Alpha" />
+          <ObservableSection
+            color="yellow"
+            section={bravoSquad}
+            title="Bravo"
+          />
+          <ObservableSection
+            color="purple"
+            section={charlieSquad}
+            title="Charlie"
+          />
+          <ObservableSection color="blue" section={deltaSquad} title="Delta" />
+          <ObservableSection
+            color="teal"
+            section={foxtrotSquad}
+            title="Foxtrot"
+          />
+          <ObservableSection color="grey" section={other} title="Other" />
+        </Box>
+      </Collapsible>
+    </Stack.Item>
+  );
+};
+
 /**
  * The primary content display for points of interest.
  * Renders a scrollable section replete with subsections for each
  * observable group.
  */
-const ObservableContent = (props: { readonly searchQuery: string }) => {
+const ObservableContent = () => {
   const { data } = useBackend<OrbitData>();
-  const { searchQuery } = props;
   const {
     humans = [],
     marines = [],
@@ -150,138 +234,65 @@ const ObservableContent = (props: { readonly searchQuery: string }) => {
 
   return (
     <Stack vertical>
+      <MarineObservable color="blue" section={marines} title="Marines" />
+      <ObservableSection color="teal" section={humans} title="Humans" />
+      <ObservableSection color="xeno" section={xenos} title="Xenomorphs" />
+      <ObservableSection color="good" section={survivors} title="Survivors" />
       <ObservableSection
-        searchQuery={searchQuery}
-        color="blue"
-        section={marines}
-        title="Marines"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
-        color="teal"
-        section={humans}
-        title="Humans"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
-        color="xeno"
-        section={xenos}
-        title="Xenomorphs"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
-        color="good"
-        section={survivors}
-        title="Survivors"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
         color="average"
         section={ert_members}
         title="ERT Members"
       />
       <ObservableSection
-        searchQuery={searchQuery}
         color="light-grey"
         section={synthetics}
         title="Synthetics"
       />
       <ObservableSection
-        searchQuery={searchQuery}
         color="green"
         section={upp}
         title="Union of Progressive Peoples"
       />
       <ObservableSection
-        searchQuery={searchQuery}
         color="teal"
         section={clf}
         title="Colonial Liberation Front"
       />
+      <ObservableSection color="white" section={wy} title="Weyland Yutani" />
       <ObservableSection
-        searchQuery={searchQuery}
-        color="white"
-        section={wy}
-        title="Weyland Yutani"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
         color="red"
         section={twe}
         title="Royal Marines Commando"
       />
       <ObservableSection
-        searchQuery={searchQuery}
         color="orange"
         section={freelancer}
         title="Freelancers"
       />
       <ObservableSection
-        searchQuery={searchQuery}
         color="label"
         section={mercenary}
         title="Mercenaries"
       />
       <ObservableSection
-        searchQuery={searchQuery}
         color="light-grey"
         section={contractor}
         title="Military Contractors"
       />
+      <ObservableSection color="good" section={dutch} title="Dutchs Dozen" />
       <ObservableSection
-        searchQuery={searchQuery}
-        color="good"
-        section={dutch}
-        title="Dutchs Dozen"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
         color="dark-blue"
         section={marshal}
         title="Colonial Marshal Bureau"
       />
-      <ObservableSection
-        searchQuery={searchQuery}
-        color="green"
-        section={predators}
-        title="Predators"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
-        color="olive"
-        section={escaped}
-        title="Escaped"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
-        section={vehicles}
-        title="Vehicles"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
-        section={animals}
-        title="Animals"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
-        section={dead}
-        title="Dead"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
-        section={ghosts}
-        title="Ghosts"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
-        section={misc}
-        title="Misc"
-      />
-      <ObservableSection
-        searchQuery={searchQuery}
-        section={npcs}
-        title="NPCs"
-      />
+      <ObservableSection color="green" section={predators} title="Predators" />
+      <ObservableSection color="olive" section={escaped} title="Escaped" />
+      <ObservableSection section={vehicles} title="Vehicles" />
+      <ObservableSection section={animals} title="Animals" />
+      <ObservableSection section={dead} title="Dead" />
+      <ObservableSection section={ghosts} title="Ghosts" />
+      <ObservableSection section={misc} title="Misc" />
+      <ObservableSection section={npcs} title="NPCs" />
     </Stack>
   );
 };
@@ -294,21 +305,22 @@ const ObservableSection = (props: {
   readonly color?: string;
   readonly section: Array<Observable>;
   readonly title: string;
-  readonly searchQuery: string;
 }) => {
-  const { color, section = [], title, searchQuery } = props;
+  const { color, section = [], title } = props;
+
+  const { value: searchQuery } = useContext(SearchContext);
 
   if (!section.length) {
     return null;
   }
 
-  const filteredSection = sortBy(
-    filter(section, (observable) => isJobOrNameMatch(observable, searchQuery)),
-    (observable) =>
-      getDisplayName(observable.full_name, observable.nickname)
-        .replace(/^"/, '')
-        .toLowerCase(),
-  );
+  const filteredSection = section
+    .filter((observable) => isJobOrNameMatch(observable, searchQuery))
+    .sort((a, b) =>
+      a.full_name
+        .toLocaleLowerCase()
+        .localeCompare(b.full_name.toLocaleLowerCase()),
+    );
 
   if (!filteredSection.length) {
     return null;

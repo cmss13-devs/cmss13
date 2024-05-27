@@ -6,7 +6,7 @@
 	if(!.)
 		return
 	var/mob/user_mob = user.mob
-	return isgun(user_mob.get_held_item())
+	return isweapon(user_mob.get_held_item())
 
 /datum/keybinding/human/combat/field_strip_weapon
 	hotkey_keys = list("Unbound")
@@ -101,7 +101,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/human = user.mob
-	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	var/obj/item/weapon/held_item = human.get_held_item()
 	held_item.use_unique_action()
 	return TRUE
 

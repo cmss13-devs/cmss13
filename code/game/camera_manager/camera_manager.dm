@@ -191,6 +191,9 @@
 	else if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
 		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
 		cam_location = helmet.loc
+	else if(istype(current.loc, /obj/item/clothing/under/rank/synthetic/joe))
+		var/obj/item/clothing/under/rank/synthetic/joe/uniform = current.loc
+		cam_location = uniform.loc
 
 	// If we're not forcing an update for some reason and the cameras are in the same location,
 	// we don't need to update anything.

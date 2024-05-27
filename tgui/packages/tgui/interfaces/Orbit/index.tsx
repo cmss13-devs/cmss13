@@ -21,7 +21,12 @@ import {
   getMostRelevant,
   isJobOrNameMatch,
 } from './helpers';
-import type { Observable, OrbitData } from './types';
+import {
+  buildSquadObservable,
+  type Observable,
+  type OrbitData,
+  SquadObservable,
+} from './types';
 
 type search = {
   value: string;
@@ -120,10 +125,64 @@ const ObservableSearch = () => {
   );
 };
 
-const MarineObservable = (props: {
+const xenoSplitter = (members: Array<Observable>) => {
+  const primeHive: Array<Observable> = [];
+  const corruptedHive: Array<Observable> = [];
+
+  members.forEach((x) => {
+    if (x.full_name?.includes('Corrupted')) {
+      corruptedHive.push(x);
+    } else {
+      primeHive.push(x);
+    }
+  });
+  const squads = [
+    buildSquadObservable('Prime', 'xeno', primeHive),
+    buildSquadObservable('Corrupted', 'green', corruptedHive),
+  ];
+  return squads;
+};
+
+const marineSplitter = (members: Array<Observable>) => {
+  const alphaSquad: Array<Observable> = [];
+  const bravoSquad: Array<Observable> = [];
+  const charlieSquad: Array<Observable> = [];
+  const deltaSquad: Array<Observable> = [];
+  const foxtrotSquad: Array<Observable> = [];
+  const other: Array<Observable> = [];
+
+  members.forEach((x) => {
+    if (x.job?.includes('Alpha')) {
+      alphaSquad.push(x);
+    } else if (x.job?.includes('Bravo')) {
+      bravoSquad.push(x);
+    } else if (x.job?.includes('Charlie')) {
+      charlieSquad.push(x);
+    } else if (x.job?.includes('Delta')) {
+      deltaSquad.push(x);
+    } else if (x.job?.includes('Foxtrot')) {
+      foxtrotSquad.push(x);
+    } else {
+      other.push(x);
+    }
+  });
+
+  const squads = [
+    buildSquadObservable('Alpha', 'red', alphaSquad),
+    buildSquadObservable('Bravo', 'yellow', bravoSquad),
+    buildSquadObservable('Charlie', 'purple', charlieSquad),
+    buildSquadObservable('Delta', 'blue', deltaSquad),
+    buildSquadObservable('Foxtrot', 'teal', foxtrotSquad),
+    buildSquadObservable('Other', 'grey', other),
+  ];
+  return squads;
+};
+
+const GroupedObservable = (props: {
   readonly color?: string;
   readonly section: Array<Observable>;
   readonly title: string;
+  readonly splitter: (members: Array<Observable>) => Array<SquadObservable>;
 }) => {
   const { color, section = [], title } = props;
 
@@ -145,26 +204,7 @@ const MarineObservable = (props: {
     return null;
   }
 
-  const alphaSquad: Array<Observable> = [];
-  const bravoSquad: Array<Observable> = [];
-  const charlieSquad: Array<Observable> = [];
-  const deltaSquad: Array<Observable> = [];
-  const foxtrotSquad: Array<Observable> = [];
-  const other: Array<Observable> = [];
-
-  filteredSection.forEach((x) => {
-    if (x.job?.includes('Alpha')) {
-      alphaSquad.push(x);
-    } else if (x.job?.includes('Bravo')) {
-      bravoSquad.push(x);
-    } else if (x.job?.includes('Charlie')) {
-      charlieSquad.push(x);
-    } else if (x.job?.includes('Delta')) {
-      deltaSquad.push(x);
-    } else {
-      other.push(x);
-    }
-  });
+  const squads = props.splitter(filteredSection);
 
   return (
     <Stack.Item>
@@ -175,24 +215,14 @@ const MarineObservable = (props: {
         title={title + ` - (${filteredSection.length})`}
       >
         <Box style={{ paddingLeft: '12px' }}>
-          <ObservableSection color="red" section={alphaSquad} title="Alpha" />
-          <ObservableSection
-            color="yellow"
-            section={bravoSquad}
-            title="Bravo"
-          />
-          <ObservableSection
-            color="purple"
-            section={charlieSquad}
-            title="Charlie"
-          />
-          <ObservableSection color="blue" section={deltaSquad} title="Delta" />
-          <ObservableSection
-            color="teal"
-            section={foxtrotSquad}
-            title="Foxtrot"
-          />
-          <ObservableSection color="grey" section={other} title="Other" />
+          {squads.map((x) => (
+            <ObservableSection
+              color={x.color}
+              title={x.title}
+              section={x.members}
+              key={x.title}
+            />
+          ))}
         </Box>
       </Collapsible>
     </Stack.Item>
@@ -234,9 +264,19 @@ const ObservableContent = () => {
 
   return (
     <Stack vertical>
-      <MarineObservable color="blue" section={marines} title="Marines" />
+      <GroupedObservable
+        color="blue"
+        section={marines}
+        title="Marines"
+        splitter={marineSplitter}
+      />
       <ObservableSection color="teal" section={humans} title="Humans" />
-      <ObservableSection color="xeno" section={xenos} title="Xenomorphs" />
+      <GroupedObservable
+        color="xeno"
+        section={xenos}
+        title="Xenomorphs"
+        splitter={xenoSplitter}
+      />
       <ObservableSection color="good" section={survivors} title="Survivors" />
       <ObservableSection
         color="average"

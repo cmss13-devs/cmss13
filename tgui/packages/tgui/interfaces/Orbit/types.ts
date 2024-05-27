@@ -39,3 +39,21 @@ export type Observable = {
   orbiters?: number;
   ref: string;
 };
+
+export type SquadObservable = {
+  members: Array<Observable>;
+  color: string;
+  title: string;
+};
+
+export const buildSquadObservable: (
+  title: string,
+  color: string,
+  members: Array<Observable>,
+) => SquadObservable = (title, color, members = []) => {
+  return {
+    members: members,
+    color: color,
+    title: title,
+  };
+};

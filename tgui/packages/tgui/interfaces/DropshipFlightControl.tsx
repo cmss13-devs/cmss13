@@ -389,29 +389,28 @@ const LaunchAnnouncementAlarm = () => {
       buttons={
         (!data.playing_launch_announcement_alarm ?
           ( <PlayLaunchAnnouncementAlarm /> )
-      :
-      ( <StopLaunchAnnouncementAlarm /> )
-      )
+          :
+          ( <StopLaunchAnnouncementAlarm /> )
+          )
       }
     >
       <Stack vertical className="AnnouncementAlarms">
         {
           (!data.playing_launch_announcement_alarm ?
             ( <PlayLaunchAnnouncementAlarm /> )
-        :
-        ( <StopLaunchAnnouncementAlarm /> )
-        )
-          }
-
+            :
+            ( <StopLaunchAnnouncementAlarm /> )
+            )
+        }
         {
-        (!data.playing_cycle_launch_announcement_alarm ?
-        ( <PlayCycleLaunchAnnouncementAlarm /> )
-        :
-        ( <StopCycleLaunchAnnouncementAlarm /> )
-      )
+          (!data.playing_cycle_launch_announcement_alarm ?
+            ( <PlayCycleLaunchAnnouncementAlarm /> )
+            :
+            ( <StopCycleLaunchAnnouncementAlarm /> )
+            )
         }
         </Stack>
-        </Section>
+      </Section>
   );
 };
 

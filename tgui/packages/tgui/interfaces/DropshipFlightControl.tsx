@@ -391,7 +391,7 @@ const LaunchAnnouncementAlarm = () => {
           ( <PlayLaunchAnnouncementAlarm /> )
           :
           ( <StopLaunchAnnouncementAlarm /> )
-          )
+        )
       }
     >
       <Stack vertical className="AnnouncementAlarms">
@@ -400,14 +400,14 @@ const LaunchAnnouncementAlarm = () => {
             ( <PlayLaunchAnnouncementAlarm /> )
             :
             ( <StopLaunchAnnouncementAlarm /> )
-            )
+          )
         }
         {
           (!data.playing_cycle_launch_announcement_alarm ?
             ( <PlayCycleLaunchAnnouncementAlarm /> )
             :
             ( <StopCycleLaunchAnnouncementAlarm /> )
-            )
+          )
         }
         </Stack>
       </Section>

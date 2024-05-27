@@ -417,7 +417,7 @@
 	var/obj/item/card/id/id_card = wearer.wear_id?.GetID()
 	if(!istype(id_card))
 		return
-	var/paygrade = wearer.get_paygrade()
+	var/paygrade = get_paygrade_id_by_name(wearer.get_paygrade(FALSE))
 	var/last_number = text2num(copytext(paygrade, length(paygrade), length(paygrade)+1))
 	if(!(findtext(paygrade, "O") || last_number >= 4))
 		to_chat(wearer, SPAN_WARNING("Only officers or NCO's (ME4+) can recommend medals!"))

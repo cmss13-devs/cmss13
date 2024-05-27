@@ -482,6 +482,7 @@
 			if(new_iff == link.faction_label)
 				return FALSE
 			link.change_iff(new_iff)
+			message_admins("ARES: [key_name(user)] updated ARES Sentry IFF to [new_iff].")
 			playsound(src, 'sound/machines/chime.ogg', 15, 1)
 			to_chat(user, SPAN_WARNING("Sentry IFF settings updated!"))
 			return TRUE

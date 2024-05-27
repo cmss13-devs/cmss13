@@ -457,6 +457,7 @@
 				return FALSE
 			link.change_iff(new_iff)
 			playsound(src, 'sound/machines/chime.ogg', 15, 1)
+			message_admins("ARES: [key_name(user)] updated ARES Sentry IFF to [new_iff].")
 			to_chat(user, SPAN_WARNING("Sentry IFF settings updated!"))
 			return TRUE
 

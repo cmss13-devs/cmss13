@@ -14457,10 +14457,12 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "aSC" = (
-/turf/open/gm/coast/beachcorner/north_west,
+/turf/open/gm/coast/beachcorner/can_surgery,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aSD" = (
-/turf/open/gm/coast/beachcorner/north_east,
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 1
+	},
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aSF" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -14903,10 +14905,12 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "aUg" = (
-/turf/open/gm/river,
+/turf/open/gm/river/can_surgery,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aUh" = (
-/turf/open/gm/coast/east,
+/turf/open/gm/coast/can_surgery{
+	dir = 8
+	},
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aUn" = (
 /obj/structure/platform/strata/metal,
@@ -15333,13 +15337,19 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aVK" = (
-/turf/open/gm/coast/beachcorner2/south_east,
+/turf/open/gm/coast/beachcorner2/can_surgery{
+	dir = 8
+	},
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aVL" = (
-/turf/open/gm/coast/beachcorner2/south_west,
+/turf/open/gm/coast/beachcorner2/can_surgery{
+	dir = 4
+	},
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aVM" = (
-/turf/open/gm/coast/beachcorner2/north_east,
+/turf/open/gm/coast/beachcorner2/can_surgery{
+	dir = 1
+	},
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aVN" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
@@ -15359,10 +15369,12 @@
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "aVS" = (
-/turf/open/gm/coast/beachcorner/north_west,
+/turf/open/gm/coast/beachcorner/can_surgery,
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "aVT" = (
-/turf/open/gm/coast/beachcorner/north_east,
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 1
+	},
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "aVW" = (
 /obj/structure/platform/strata/metal{
@@ -15722,7 +15734,9 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "aXr" = (
-/turf/open/gm/coast/beachcorner/south_west,
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 8
+	},
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aXs" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony,
@@ -15732,10 +15746,14 @@
 	},
 /area/strata/ag/exterior/shed_five_caves)
 "aXt" = (
-/turf/open/gm/coast/beachcorner/south_west,
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 8
+	},
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "aXu" = (
-/turf/open/gm/coast/beachcorner/south_east,
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 4
+	},
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "aXv" = (
 /obj/structure/platform/strata/metal{
@@ -16341,7 +16359,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aZL" = (
-/turf/open/gm/coast/beachcorner2/north_west,
+/turf/open/gm/coast/beachcorner2/can_surgery,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aZO" = (
 /turf/open/gm/dirt,
@@ -28191,7 +28209,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/bar)
 "cmu" = (
-/turf/open/gm/coast/north,
+/turf/open/gm/coast/can_surgery,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "cmA" = (
 /turf/open/asphalt/cement{
@@ -28498,7 +28516,9 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
 "cor" = (
-/turf/open/gm/coast/west,
+/turf/open/gm/coast/can_surgery{
+	dir = 4
+	},
 /area/strata/ug/interior/jungle/deep/north_carp)
 "cot" = (
 /obj/structure/platform_decoration/strata/metal{
@@ -30185,6 +30205,9 @@
 	icon_state = "floor2"
 	},
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
+"dKg" = (
+/turf/open/gm/coast/beachcorner/can_surgery,
+/area/strata/ug/interior/jungle/deep/tearlake)
 "dKj" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior/jungle/deep/tearlake)
@@ -31550,7 +31573,9 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "gcj" = (
-/turf/open/gm/coast/beachcorner2/south_east,
+/turf/open/gm/coast/beachcorner2/can_surgery{
+	dir = 8
+	},
 /area/strata/ug/interior/jungle/deep/tearlake)
 "gdZ" = (
 /obj/structure/machinery/smartfridge,
@@ -32148,6 +32173,11 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh/crash)
+"gVq" = (
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 8
+	},
+/area/strata/ug/interior/jungle/deep/tearlake)
 "gVJ" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
@@ -34175,6 +34205,9 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/research_decks/security)
+"kuF" = (
+/turf/open/gm/coast/can_surgery,
+/area/strata/ug/interior/jungle/deep/tearlake)
 "kvY" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -36358,7 +36391,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "oeO" = (
-/turf/open/gm/coast/beachcorner/north_west,
+/turf/open/gm/coast/beachcorner/can_surgery,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "oeQ" = (
 /turf/open/floor/strata{
@@ -36680,6 +36713,9 @@
 	icon_state = "orange_cover"
 	},
 /area/strata/ag/interior/tcomms)
+"oNj" = (
+/turf/open/gm/river/can_surgery,
+/area/strata/ug/interior/jungle/deep/tearlake)
 "oOB" = (
 /obj/item/clothing/shoes/snow,
 /obj/structure/surface/rack,
@@ -36826,6 +36862,11 @@
 	icon_state = "cyan1"
 	},
 /area/strata/ag/interior/dorms)
+"oYJ" = (
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 4
+	},
+/area/strata/ug/interior/jungle/deep/east_carp)
 "oZt" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/strata{
@@ -37865,6 +37906,11 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/tcomms)
+"qCi" = (
+/turf/open/gm/coast/can_surgery{
+	dir = 8
+	},
+/area/strata/ug/interior/jungle/deep/tearlake)
 "qCv" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
 /turf/open/floor/strata{
@@ -38516,6 +38562,11 @@
 	icon_state = "orange_cover"
 	},
 /area/strata/ag/interior/outpost/engi/drome)
+"rDL" = (
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 4
+	},
+/area/strata/ug/interior/jungle/deep/tearlake)
 "rEr" = (
 /obj/structure/platform/strata/metal{
 	dir = 1
@@ -38553,7 +38604,9 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/nearlz2)
 "rIM" = (
-/turf/open/gm/coast/south,
+/turf/open/gm/coast/can_surgery{
+	dir = 1
+	},
 /area/strata/ug/interior/jungle/deep/north_carp)
 "rJf" = (
 /turf/open/floor/strata{
@@ -39354,6 +39407,11 @@
 /obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/shed_five_caves)
+"tfU" = (
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 1
+	},
+/area/strata/ug/interior/jungle/deep/east_carp)
 "tgr" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
@@ -39418,12 +39476,22 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
+"tjT" = (
+/turf/open/gm/coast/can_surgery{
+	dir = 4
+	},
+/area/strata/ug/interior/jungle/deep/tearlake)
 "tkq" = (
 /obj/structure/platform_decoration/strata/metal{
 	dir = 1
 	},
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/platform/east/scrub)
+"tkx" = (
+/turf/open/gm/coast/can_surgery{
+	dir = 1
+	},
+/area/strata/ug/interior/jungle/deep/tearlake)
 "tlc" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/beakers,
@@ -41276,6 +41344,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
+"wcV" = (
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 8
+	},
+/area/strata/ug/interior/jungle/deep/east_carp)
 "wdf" = (
 /obj/structure/bookcase{
 	icon_state = "book-5"
@@ -41623,6 +41696,11 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_engi)
+"wPc" = (
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 1
+	},
+/area/strata/ug/interior/jungle/deep/tearlake)
 "wPp" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/structure/platform/strata,
@@ -72301,10 +72379,10 @@ aad
 aad
 jLb
 jLb
-ahK
-dIh
-dIh
-mMp
+dKg
+tjT
+tjT
+gVq
 jLb
 jLb
 jLb
@@ -72496,10 +72574,10 @@ aad
 aad
 jLb
 pHR
-fCz
-saY
-saY
-lvF
+kuF
+oNj
+oNj
+tkx
 pHR
 pHR
 pHR
@@ -72691,10 +72769,10 @@ aad
 jLb
 kyW
 pHR
-fCz
-saY
+kuF
+oNj
 gcj
-iBT
+rDL
 pHR
 pHR
 pHR
@@ -72886,9 +72964,9 @@ vPQ
 jLb
 jLb
 pHR
-toV
-drQ
-iBT
+wPc
+qCi
+rDL
 pHR
 pHR
 jLb
@@ -85690,7 +85768,7 @@ ceQ
 ceQ
 daq
 oeO
-bhd
+wcV
 qcB
 daq
 daq
@@ -85884,8 +85962,8 @@ ceQ
 ceQ
 daq
 daq
-beG
-bhg
+tfU
+oYJ
 daq
 daq
 sKg

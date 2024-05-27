@@ -61011,6 +61011,11 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
+"hef" = (
+/turf/open/desert/desert_shore/desert_shore1/can_surgery{
+	dir = 4
+	},
+/area/desert_dam/exterior/valley/valley_crashsite)
 "het" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
@@ -61559,6 +61564,11 @@
 	icon_state = "cement_sunbleached15"
 	},
 /area/desert_dam/exterior/valley/valley_hydro)
+"iQO" = (
+/turf/open/desert/desert_shore/shore_corner2/can_surgery{
+	dir = 4
+	},
+/area/desert_dam/exterior/valley/valley_crashsite)
 "iRU" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
@@ -62366,6 +62376,11 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
+"lVs" = (
+/turf/open/desert/desert_shore/shore_edge1/can_surgery{
+	dir = 8
+	},
+/area/desert_dam/exterior/valley/valley_crashsite)
 "lVW" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -63917,6 +63932,9 @@
 	icon_state = "bluecorner"
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
+"rqH" = (
+/turf/open/gm/river/desert/shallow/can_surgery,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "rtW" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/asphalt/cement_sunbleached{
@@ -64107,6 +64125,9 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/exterior/rock)
+"rTW" = (
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/interior/caves/temple)
 "rUA" = (
 /obj/structure/fence,
 /turf/open/desert/dirt{
@@ -64325,6 +64346,9 @@
 	icon_state = "cement_sunbleached4"
 	},
 /area/desert_dam/exterior/valley/valley_hydro)
+"syH" = (
+/turf/open/desert/desert_shore/desert_shore1/can_surgery,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "sDf" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison{
@@ -64352,6 +64376,12 @@
 	},
 /turf/open/shuttle/can_surgery/red,
 /area/desert_dam/interior/dam_interior/hanger)
+"sGs" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/desert/desert_shore/shore_edge1/can_surgery,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "sGP" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f5"
@@ -64754,6 +64784,9 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
+"tRT" = (
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "tSK" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal7"
@@ -105314,7 +105347,7 @@ dTs
 dTs
 dTs
 dTs
-aJx
+sGs
 aJM
 adA
 dTs
@@ -105547,8 +105580,8 @@ dTs
 dTs
 dTs
 dTs
-aIv
-aJB
+rqH
+syH
 acZ
 adA
 dTs
@@ -105781,8 +105814,8 @@ dTs
 dTs
 dTs
 dTs
-aIv
-aJB
+rqH
+syH
 njF
 adA
 dTs
@@ -106015,8 +106048,8 @@ dTs
 dTs
 dTs
 dTs
-aIv
-aJB
+rqH
+syH
 uGU
 aJM
 dTs
@@ -106249,8 +106282,8 @@ dTs
 dTs
 dTs
 dTs
-aIv
-aJB
+rqH
+syH
 aIy
 adr
 adA
@@ -106482,9 +106515,9 @@ dTs
 dTs
 dTs
 dTs
-aIv
-aIF
-aIG
+rqH
+iQO
+lVs
 acZ
 adA
 adA
@@ -106715,9 +106748,9 @@ azT
 dTs
 dTs
 dTs
-aIx
-aIx
-aIG
+hef
+hef
+lVs
 aIy
 adr
 adA
@@ -115833,7 +115866,7 @@ dTs
 dTs
 dTs
 dTs
-aIv
+tRT
 aIv
 aIF
 aIG
@@ -117720,8 +117753,8 @@ dTs
 dTs
 uhf
 ioA
-ioA
-ioA
+rTW
+rTW
 ioA
 ktJ
 aBE

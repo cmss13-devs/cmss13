@@ -468,6 +468,9 @@
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
+/turf/open/gm/river/can_surgery
+	allow_construction = TRUE
+	supports_surgery = TRUE
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -605,6 +608,9 @@
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
+/turf/open/gm/coast/can_surgery
+	allow_construction = TRUE
+	supports_surgery = TRUE
 
 /turf/open/gm/coast/north
 
@@ -619,6 +625,9 @@
 
 /turf/open/gm/coast/beachcorner
 	icon_state = "beachcorner"
+/turf/open/gm/coast/beachcorner/can_surgery
+	allow_construction = TRUE
+	supports_surgery = TRUE
 
 /turf/open/gm/coast/beachcorner/north_west
 
@@ -633,6 +642,9 @@
 
 /turf/open/gm/coast/beachcorner2
 	icon_state = "beachcorner2"
+/turf/open/gm/coast/beachcorner2/can_surgery
+	allow_construction = TRUE
+	supports_surgery = TRUE
 
 /turf/open/gm/coast/beachcorner2/north_west
 

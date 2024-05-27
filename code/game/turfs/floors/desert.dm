@@ -126,6 +126,11 @@
 /turf/open/desert/desert_shore/desert_shore1
 	name = "shore"
 	icon_state = "shore1"
+
+/turf/open/desert/desert_shore/desert_shore1/can_surgery
+	allow_construction = TRUE
+	supports_surgery = TRUE
+
 /*
 /turf/open/desert/desert_shore/desert_shore2
 	name = "shore"
@@ -139,12 +144,23 @@
 /turf/open/desert/desert_shore/shore_edge1
 	name = "shore"
 	icon_state = "shore_edge1"
+/turf/open/desert/desert_shore/shore_edge1/can_surgery
+	allow_construction = TRUE
+	supports_surgery = TRUE
+
 /turf/open/desert/desert_shore/shore_corner1
 	name = "shore"
 	icon_state = "shore_corner1"
+/turf/open/desert/desert_shore/shore_corner1/can_surgery
+	allow_construction = TRUE
+	supports_surgery = TRUE
+
 /turf/open/desert/desert_shore/shore_corner2
 	name = "shore"
 	icon_state = "shore_corner2"
+/turf/open/desert/desert_shore/shore_corner2/can_surgery
+	allow_construction = TRUE
+	supports_surgery = TRUE
 
 //Desert Waterway
 /turf/open/desert/waterway
@@ -236,6 +252,9 @@
 /turf/open/gm/river/desert/shallow
 	icon_state = "shallow"
 	icon_overlay = "_shallow"
+/turf/open/gm/river/desert/shallow/can_surgery
+	allow_construction = TRUE
+	supports_surgery = TRUE
 
 /turf/open/gm/river/desert/shallow/covered
 	covered = 1

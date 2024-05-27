@@ -142,9 +142,8 @@
 	data["access_tickets"] = logged_access
 
 	data["security_vents"] = link.get_ares_vents()
-
 	data["sentry_setting"] = link.faction_label
-	data["faction_options"] = list(FACTION_MARINE, FACTION_WY, "USCM-WY", FACTION_ARES)
+	data["faction_options"] = link.faction_options
 
 	return data
 
@@ -458,6 +457,7 @@
 				return FALSE
 			link.change_iff(new_iff)
 			playsound(src, 'sound/machines/chime.ogg', 15, 1)
+			to_chat(user, SPAN_WARNING("Sentry IFF settings updated!"))
 			return TRUE
 
 	if(playsound)

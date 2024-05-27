@@ -234,8 +234,8 @@
 	data["access_tickets"] = logged_access
 
 	data["security_vents"] = get_ares_vents()
-
 	data["sentry_setting"] = faction_label
+	data["faction_options"] = faction_options
 
 	return data
 
@@ -524,4 +524,15 @@
 				to_chat(user, SPAN_BOLDWARNING("AI Core Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(datacore, aicore_lockdown)] seconds!"))
 				return FALSE
 			aicore_lockdown(user)
+			return TRUE
+
+		if("update_sentries")
+			var/new_iff = params["chosen_iff"]
+			if(!new_iff)
+				to_chat(user, SPAN_WARNING("ERROR: Unknown setting."))
+				return FALSE
+			if(new_iff == faction_label)
+				return FALSE
+			change_iff(new_iff)
+			to_chat(user, SPAN_WARNING("Sentry IFF settings updated!"))
 			return TRUE

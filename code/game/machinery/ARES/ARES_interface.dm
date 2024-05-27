@@ -217,6 +217,8 @@
 	data["security_vents"] = link.get_ares_vents()
 
 	data["sentry_setting"] = link.faction_label
+	data["sentry_setting"] = link.faction_label
+	data["faction_options"] = link.faction_options
 
 	return data
 
@@ -547,6 +549,20 @@
 				to_chat(user, SPAN_BOLDWARNING("AI Core Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(datacore, aicore_lockdown)] seconds!"))
 				return FALSE
 			aicore_lockdown(user)
+			return TRUE
+
+		if("update_sentries")
+			playsound = FALSE
+			var/new_iff = params["chosen_iff"]
+			if(!new_iff)
+				to_chat(user, SPAN_WARNING("ERROR: Unknown setting."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(new_iff == link.faction_label)
+				return FALSE
+			link.change_iff(new_iff)
+			playsound(src, 'sound/machines/chime.ogg', 15, 1)
+			to_chat(user, SPAN_WARNING("Sentry IFF settings updated!"))
 			return TRUE
 
 	if(playsound)

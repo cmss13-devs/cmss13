@@ -43,6 +43,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	///Sentry faction stuff
 	var/faction_label = FACTION_MARINE
 	var/list/faction_group = FACTION_LIST_ARES_MARINE
+	var/list/faction_options = list(FACTION_MARINE, FACTION_WY, "USCM-WY", FACTION_ARES)
 	var/list/core_sentries = list()
 
 /datum/ares_link/New()

@@ -278,6 +278,8 @@
 	data["access_tickets"] = logged_access
 
 	data["security_vents"] = link.get_ares_vents()
+	data["sentry_setting"] = link.faction_label
+	data["faction_options"] = link.faction_options
 
 	return data
 
@@ -735,6 +737,19 @@
 			sec_vent.create_gas(VENT_GAS_CN20_XENO, 6, 5 SECONDS)
 			log_admin("[key_name(user)] released nerve gas from Vent '[sec_vent.vent_tag]' via ARES.")
 
+		if("update_sentries")
+			playsound = FALSE
+			var/new_iff = params["chosen_iff"]
+			if(!new_iff)
+				to_chat(user, SPAN_WARNING("ERROR: Unknown setting."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(new_iff == link.faction_label)
+				return FALSE
+			link.change_iff(new_iff)
+			playsound(src, 'sound/machines/chime.ogg', 15, 1)
+			to_chat(user, SPAN_WARNING("Sentry IFF settings updated!"))
+			return TRUE
 
 	if(playsound)
 		var/sound = pick('sound/machines/pda_button1.ogg', 'sound/machines/pda_button2.ogg')

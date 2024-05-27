@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Section, Stack } from '../components';
+import { Box, Button, Dropdown, Flex, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
@@ -96,8 +96,16 @@ const Login = (props) => {
 
 const MainMenu = (props) => {
   const { data, act } = useBackend();
-  const { logged_in, access_text, last_page, current_menu, sudo, admin_login } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    sudo,
+    admin_login,
+    faction_options,
+    sentry_setting,
+  } = data;
 
   return (
     <>
@@ -412,28 +420,41 @@ const MainMenu = (props) => {
           color="red"
           ml="auto"
           px="2rem"
-          width="50%"
+          width="100%"
           bold
           onClick={() => act('page_core_sec')}
         >
           Nerve Gas Control
         </Button>
 
-        <Button.Confirm
-          align="center"
-          tooltipPosition="top"
-          tooltip="Activate/Deactivate the AI Core Lockdown."
-          icon="lock"
-          color="red"
-          ml="auto"
-          px="2rem"
-          width="50%"
-          bold
-          onClick={() => act('security_lockdown')}
-          disabled={remotelock}
-        >
-          AI Core Lockdown
-        </Button.Confirm>
+        <Stack>
+          <Stack.Item grow mr="0">
+            <Button.Confirm
+              align="center"
+              tooltip="Activate/Deactivate the AI Core Lockdown."
+              icon="lock"
+              color="red"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('security_lockdown')}
+            >
+              AI Core Lockdown
+            </Button.Confirm>
+          </Stack.Item>
+          <Stack.Item ml="0" mr="0">
+            <Dropdown
+              options={faction_options}
+              selected={sentry_setting}
+              color="red"
+              onSelected={(value) =>
+                act('update_sentries', { chosen_iff: value })
+              }
+              width="90px"
+              tooltip="Change core sentries IFF settings."
+            />
+          </Stack.Item>
+        </Stack>
       </Section>
       <Section>
         <Stack>

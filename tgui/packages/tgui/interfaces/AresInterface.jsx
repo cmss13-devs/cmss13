@@ -3,7 +3,7 @@
 // -------------------------------------------------------------------- //
 
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Section, Stack } from '../components';
+import { Box, Button, Dropdown, Flex, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
@@ -93,6 +93,8 @@ const MainMenu = (props) => {
     last_page,
     current_menu,
     access_level,
+    faction_options,
+    sentry_setting,
     sudo,
   } = data;
 
@@ -385,7 +387,6 @@ const MainMenu = (props) => {
             )}
             <Stack.Item>
               <Button
-                content="Bioscan"
                 icon="satellite"
                 ml="auto"
                 px="2rem"
@@ -393,7 +394,9 @@ const MainMenu = (props) => {
                 bold
                 onClick={() => act('bioscan')}
                 tooltip="Trigger an immediate bioscan for diagnostics."
-              />
+              >
+                Bioscan
+              </Button>
             </Stack.Item>
           </Stack>
         )}
@@ -415,19 +418,35 @@ const MainMenu = (props) => {
           >
             Nerve Gas Control
           </Button>
-          <Button.Confirm
-            align="center"
-            tooltip="Activate/Deactivate the AI Core Lockdown."
-            icon="lock"
-            color="red"
-            ml="auto"
-            px="2rem"
-            width="100%"
-            bold
-            onClick={() => act('security_lockdown')}
-          >
-            AI Core Lockdown
-          </Button.Confirm>
+          <Stack>
+            <Stack.Item grow mr="0">
+              <Button.Confirm
+                align="center"
+                tooltip="Activate/Deactivate the AI Core Lockdown."
+                icon="lock"
+                color="red"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('security_lockdown')}
+              >
+                AI Core Lockdown
+              </Button.Confirm>
+            </Stack.Item>
+            <Stack.Item ml="0" mr="0">
+              <Dropdown
+                options={faction_options}
+                selected={sentry_setting}
+                color="red"
+                onSelected={(value) =>
+                  act('update_sentries', { chosen_iff: value })
+                }
+                width="90px"
+                disabled={access_level < 9}
+                tooltip="Change core sentries IFF settings."
+              />
+            </Stack.Item>
+          </Stack>
         </Section>
       )}
     </>

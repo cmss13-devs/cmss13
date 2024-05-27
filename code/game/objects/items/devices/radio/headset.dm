@@ -417,8 +417,10 @@
 	var/obj/item/card/id/id_card = wearer.wear_id?.GetID()
 	if(!istype(id_card))
 		return
-	if(!(id_card.rank in list(JOB_SO, JOB_XO, JOB_SQUAD_LEADER)))
-		to_chat(wearer, SPAN_WARNING("Only Staff Officers, Executive Officers and Squad Leaders are permitted to give medal recommendations!"))
+	var/paygrade = wearer.get_paygrade()
+	var/last_number = text2num(copytext(paygrade, length(paygrade), length(paygrade)+1))
+	if(!(findtext(paygrade, "O") || last_number >= 4))
+		to_chat(wearer, SPAN_WARNING("Only officers or NCO's (ME4+) can recommend medals!"))
 		return
 	if(add_medal_recommendation(usr))
 		to_chat(usr, SPAN_NOTICE("Recommendation successfully submitted."))

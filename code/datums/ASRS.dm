@@ -97,11 +97,11 @@
 //===================================
 // Misc supplies
 /datum/supply_packs_asrs/metal_sheets
-	reference_package = /datum/supply_packs/flares
+	reference_package = /datum/supply_packs/metal
 	cost = ASRS_LOW_WEIGHT
 
 /datum/supply_packs_asrs/plasteel_sheets
-	reference_package = /datum/supply_packs/flares
+	reference_package = /datum/supply_packs/plas
 	cost = ASRS_MEDIUM_WEIGHT
 
 /datum/supply_packs_asrs/flares

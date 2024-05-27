@@ -343,6 +343,8 @@
 
 	var/playing_launch_announcement_alarm = FALSE // FALSE = off ; TRUE = on
 	var/datum/looping_sound/looping_launch_announcement_alarm/alarm_sound_loop
+	var/playing_cycle_launch_announcement_alarm = FALSE // FALSE = off ; TRUE = on
+	var/datum/looping_sound/looping_cycle_launch_announcement_alarm/cycle_alarm_sound_loop
 
 	var/landing_sound = 'sound/effects/engine_landing.ogg'
 	var/ignition_sound = 'sound/effects/engine_startup.ogg'
@@ -457,6 +459,7 @@
 /obj/docking_port/mobile/Destroy(force)
 	if(force)
 		QDEL_NULL(alarm_sound_loop)
+		QDEL_NULL(cycle_alarm_sound_loop)
 		SSshuttle.mobile -= src
 		destination = null
 		previous = null
@@ -491,6 +494,14 @@
 	alarm_sound_loop.volume = 100
 	alarm_sound_loop.is_sound_projecting = TRUE
 	alarm_sound_loop.falloff_distance = 7
+
+	//Cycle Launch Announcement Alarm
+	cycle_alarm_sound_loop = new(src)
+	cycle_alarm_sound_loop.mid_length = 20
+	cycle_alarm_sound_loop.extra_range = 30
+	cycle_alarm_sound_loop.volume = 100
+	cycle_alarm_sound_loop.is_sound_projecting = TRUE
+	cycle_alarm_sound_loop.falloff_distance = 7
 
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#0f0")

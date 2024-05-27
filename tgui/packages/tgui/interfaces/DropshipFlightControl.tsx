@@ -50,6 +50,7 @@ interface DropshipNavigationProps extends NavigationProps {
   has_flyby_skill: 0 | 1;
 
   playing_launch_announcement_alarm: boolean;
+  playing_cycle_launch_announcement_alarm: boolean
 }
 
 const DropshipDoorControl = () => {
@@ -329,7 +330,7 @@ const StopLaunchAnnouncementAlarm = () => {
         act('stop_playing_launch_announcement_alarm');
       }}
     >
-      Stop Alarm
+      Stop Main Alarm
     </Button>
   );
 };
@@ -343,7 +344,35 @@ const PlayLaunchAnnouncementAlarm = () => {
         act('play_launch_announcement_alarm');
       }}
     >
-      Start Alarm
+      Start Main Alarm
+    </Button>
+  );
+};
+
+const StopCycleLaunchAnnouncementAlarm = () => {
+  const { act } = useBackend<NavigationProps>();
+  return (
+    <Button
+      icon="ban"
+      onClick={() => {
+        act('stop_playing_cycle_launch_announcement_alarm');
+      }}
+    >
+      Stop Cycle Alarm
+    </Button>
+  );
+};
+
+const PlayCycleLaunchAnnouncementAlarm = () => {
+  const { act } = useBackend<NavigationProps>();
+  return (
+    <Button
+      icon="rocket"
+      onClick={() => {
+        act('play_cycle_launch_announcement_alarm');
+      }}
+    >
+      Play Cycle Alarm
     </Button>
   );
 };
@@ -358,13 +387,31 @@ const LaunchAnnouncementAlarm = () => {
     <Section
       title="Launch Announcement Alarm"
       buttons={
-        !data.playing_launch_announcement_alarm ? (
-          <PlayLaunchAnnouncementAlarm />
-        ) : (
-          <StopLaunchAnnouncementAlarm />
-        )
+        (!data.playing_launch_announcement_alarm ?
+          ( <PlayLaunchAnnouncementAlarm /> )
+      :
+      ( <StopLaunchAnnouncementAlarm /> )
+      )
       }
-    />
+    >
+      <Stack vertical className="AnnouncementAlarms">
+        {
+          (!data.playing_launch_announcement_alarm ?
+            ( <PlayLaunchAnnouncementAlarm /> )
+        :
+        ( <StopLaunchAnnouncementAlarm /> )
+        )
+          }
+
+        {
+        (!data.playing_cycle_launch_announcement_alarm ?
+        ( <PlayCycleLaunchAnnouncementAlarm /> )
+        :
+        ( <StopCycleLaunchAnnouncementAlarm /> )
+      )
+        }
+        </Stack>
+        </Section>
   );
 };
 
@@ -392,7 +439,7 @@ const RenderScreen = (props) => {
 export const DropshipFlightControl = (props) => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
-    <Window theme="crtgreen" height={500} width={700}>
+    <Window theme="crtgreen" height={650} width={700}>
       <Window.Content className="NavigationMenu">
         {data.is_disabled === 1 && <DisabledScreen />}
         {data.is_disabled === 0 && <RenderScreen />}

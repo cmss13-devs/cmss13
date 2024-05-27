@@ -220,7 +220,7 @@
 	if(xeno.hive_pos != XENO_QUEEN)
 		// If the 'about to launch' alarm is playing, a xeno can whack the computer to stop it.
 		if(dropship.playing_launch_announcement_alarm)
-			stop_playing_launch_announcement_alarm()
+			stop_all_alarms()
 			xeno.animation_attack_on(src)
 			to_chat(xeno, SPAN_XENONOTICE("We slash at [src], silencing its squawking!"))
 			playsound(loc, 'sound/machines/terminal_shutdown.ogg', 20)
@@ -252,7 +252,7 @@
 			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
 		if(!GLOB.resin_lz_allowed)
 			set_lz_resin_allowed(TRUE)
-		stop_playing_launch_announcement_alarm()
+		stop_all_alarms()
 
 		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
@@ -359,6 +359,7 @@
 
 	// Launch Alarm Variables
 	.["playing_launch_announcement_alarm"] = shuttle.playing_launch_announcement_alarm
+	.["playing_cycle_launch_announcement_alarm"] = shuttle.playing_cycle_launch_announcement_alarm
 
 	.["destinations"] = list()
 	// add flight
@@ -422,7 +423,7 @@
 				msg_admin_niche(log)
 				log_interact(user, msg = "[log]")
 				shuttle.send_for_flyby()
-				stop_playing_launch_announcement_alarm()
+				stop_all_alarms()
 				return TRUE
 
 			update_equipment(is_optimised, FALSE)
@@ -452,7 +453,7 @@
 			var/log = "[key_name(user)] launched the dropship [src.shuttleId] on transport."
 			msg_admin_niche(log)
 			log_interact(user, msg = "[log]")
-			stop_playing_launch_announcement_alarm()
+			stop_all_alarms()
 			return TRUE
 		if("button-push")
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
@@ -523,11 +524,35 @@
 			stop_playing_launch_announcement_alarm()
 			return
 
+		//Cycle alarms - for cycling, not evacuating.
+		if("play_cycle_launch_announcement_alarm")
+			if (shuttle.mode != SHUTTLE_IDLE && shuttle.mode != SHUTTLE_RECHARGING)
+				to_chat(usr, SPAN_WARNING("The Launch Announcement Alarm is designed to tell people that you're going to take off soon."))
+				return
+			shuttle.cycle_alarm_sound_loop.start()
+			shuttle.playing_cycle_launch_announcement_alarm = TRUE
+			return
+		if ("stop_playing_cycle_launch_announcement_alarm")
+			stop_playing_launch_cycle_announcement_alarm()
+			return
+
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/stop_all_alarms()
+	stop_playing_launch_announcement_alarm()
+	stop_playing_launch_cycle_announcement_alarm()
+
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/stop_playing_launch_announcement_alarm()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 
 	shuttle.alarm_sound_loop.stop()
 	shuttle.playing_launch_announcement_alarm = FALSE
+	return
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/stop_playing_launch_cycle_announcement_alarm()
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+
+	shuttle.cycle_alarm_sound_loop.stop()
+	shuttle.playing_cycle_launch_announcement_alarm = FALSE
 	return
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1

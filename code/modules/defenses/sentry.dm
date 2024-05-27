@@ -551,12 +551,12 @@
 	faction_group = FACTION_LIST_ARES_MARINE
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/Initialize()
+	. = ..()
 	link_sentry()
-	..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/Destroy()
+	. = ..()
 	delink_sentry()
-	..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/start_processing()
 	sync_iff()

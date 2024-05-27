@@ -269,8 +269,13 @@
 		if(targeted_atom == hit_target) //reward for a direct hit
 			to_chat(xeno, SPAN_XENOHIGHDANGER("We directly slam [hit_target] with our tail, throwing it back after impaling it on our tail!"))
 			hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
+			if (hit_target.mob_size < MOB_SIZE_BIG)
+				hit_target.apply_effect(0.5, WEAKEN)
+			else
+				hit_target.apply_effect(0.5, SLOW)
 		else
 			to_chat(xeno, SPAN_XENODANGER("We attack [hit_target] with our tail, throwing it back after stabbing it with our tail!"))
+			hit_target.apply_effect(0.5, SLOW)
 	else
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.2)
@@ -282,9 +287,11 @@
 
 	stab_direction = turn(get_dir(xeno, targeted_atom), 180)
 	playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
-	if(hit_target.mob_size < MOB_SIZE_BIG)
-		step_away(hit_target, xeno)
-
+	if(!step_away(hit_target, xeno))
+		playsound(hit_target.loc, "punch", 25, 1)
+		hit_target.visible_message(SPAN_DANGER("[hit_target] slams into an obstacle!"),
+		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		hit_target.apply_damage(MELEE_FORCE_TIER_2)
 	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = xeno.dir
 
@@ -296,11 +303,6 @@
 	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
 
 	hit_target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
-
-	if(hit_target.mob_size < MOB_SIZE_BIG)
-		hit_target.apply_effect(0.5, WEAKEN)
-	else
-		hit_target.apply_effect(0.5, SLOW)
 
 	hit_target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 	log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Jab")

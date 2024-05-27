@@ -401,38 +401,33 @@ const MainMenu = (props) => {
       {(access_level === 3 || access_level >= 6) && (
         <Section>
           <h1 align="center">Core Security Protocols</h1>
-          <Stack>
-            <Stack.Item grow>
-              <Button
-                align="center"
-                tooltip="Release stored CN20-X nerve gas from security vents."
-                icon="wind"
-                color="red"
-                ml="auto"
-                px="2rem"
-                width="100%"
-                bold
-                onClick={() => act('page_core_sec')}
-              >
-                Nerve Gas Control
-              </Button>
-            </Stack.Item>
-            <Stack.Item grow>
-              <Button.Confirm
-                align="center"
-                tooltip="Activate/Deactivate the AI Core Lockdown."
-                icon="lock"
-                color="red"
-                ml="auto"
-                px="2rem"
-                width="100%"
-                bold
-                onClick={() => act('security_lockdown')}
-              >
-                AI Core Lockdown
-              </Button.Confirm>
-            </Stack.Item>
-          </Stack>
+
+          <Button
+            align="center"
+            tooltip="Release stored CN20-X nerve gas from security vents."
+            icon="wind"
+            color="red"
+            ml="auto"
+            px="2rem"
+            width="100%"
+            bold
+            onClick={() => act('page_core_sec')}
+          >
+            Nerve Gas Control
+          </Button>
+          <Button.Confirm
+            align="center"
+            tooltip="Activate/Deactivate the AI Core Lockdown."
+            icon="lock"
+            color="red"
+            ml="auto"
+            px="2rem"
+            width="100%"
+            bold
+            onClick={() => act('security_lockdown')}
+          >
+            AI Core Lockdown
+          </Button.Confirm>
         </Section>
       )}
     </>

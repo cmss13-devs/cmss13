@@ -40,6 +40,11 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/list/waiting_ids = list()
 	var/list/active_ids = list()
 
+	///Sentry faction stuff
+	var/faction_label = FACTION_MARINE
+	var/list/faction_group = FACTION_LIST_ARES_MARINE
+	var/list/core_sentries = list()
+
 /datum/ares_link/New()
 	admin_interface = new
 	datacore = GLOB.ares_datacore
@@ -70,6 +75,28 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		security_vents += list(current_vent)
 	return security_vents
 
+/datum/ares_link/proc/change_iff(selection)
+	faction_label = selection
+	var/list/new_iff = list()
+	var/setting
+	switch(selection)
+		if("USCM-WY")
+			setting = "all USCM and Corporate personnel!"
+			new_iff = FACTION_LIST_ARES_ALL
+		if(FACTION_WY)
+			setting = "Corporate personnel only!"
+			new_iff = FACTION_LIST_ARES_WY
+		if(FACTION_ARES)
+			setting = "authenticated Core Assets!"
+			new_iff = FACTION_LIST_ARES_ALONE
+		else
+			setting = "USCM personnel only!"
+			faction_label = FACTION_MARINE
+			new_iff = FACTION_LIST_ARES_MARINE
+	faction_group = new_iff
+	ares_apollo_talk("Security IFF systems updated to [setting]")
+	for(var/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/sentry in core_sentries)
+		sentry.sync_iff()
 
 /* BELOW ARE IN AdminAres.dm
 /datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)

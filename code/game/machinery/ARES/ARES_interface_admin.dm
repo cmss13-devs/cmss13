@@ -235,6 +235,8 @@
 
 	data["security_vents"] = get_ares_vents()
 
+	data["sentry_setting"] = faction_label
+
 	return data
 
 

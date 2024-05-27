@@ -10805,6 +10805,14 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/upper/u_m_p)
+"bia" = (
+/obj/structure/machinery/camera/autoname/almayer/containment/ares{
+	dir = 8;
+	c_tag = "AI - Reception Desk";
+	autoname = 0
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "biq" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/glass/beaker/large,
@@ -26345,7 +26353,7 @@
 	dir = 8;
 	pixel_y = 2;
 	autoname = 0;
-	c_tag = "AI - Reception Exterior"
+	c_tag = "AI - Reception Corridor"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -29259,6 +29267,12 @@
 "fVe" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/maint/hull/upper/u_a_p)
+"fVh" = (
+/obj/structure/machinery/sentry_holder/almayer/mini/aicore,
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "w_ai_floor1"
+	},
+/area/almayer/command/aist_office)
 "fVk" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/almayer{
@@ -58027,7 +58041,9 @@
 /area/almayer/hallways/upper/midship_hallway)
 "pLH" = (
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 4
+	dir = 4;
+	c_tag = "AI - AIST Office";
+	autoname = 0
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build{
 	icon_state = "w_ai_silver";
@@ -69679,7 +69695,7 @@
 "tCC" = (
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 1;
-	c_tag = "AI - Reception Interior";
+	c_tag = "AI - Reception Lobby";
 	autoname = 0
 	},
 /turf/open/floor/almayer/aicore/no_build,
@@ -123104,7 +123120,7 @@ ryn
 ryn
 mOi
 xdA
-qQS
+bia
 fnt
 aqU
 aHq
@@ -138390,7 +138406,7 @@ gPo
 pym
 mBA
 kXv
-ngZ
+fVh
 qSH
 mrS
 iBn

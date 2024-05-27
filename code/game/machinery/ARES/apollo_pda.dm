@@ -168,6 +168,8 @@
 
 	data["security_vents"] = link.get_ares_vents()
 
+	data["sentry_setting"] = link.faction_label
+
 	return data
 
 /obj/item/device/working_joe_pda/ui_status(mob/user, datum/ui_state/state)

@@ -471,7 +471,7 @@
 	name = "AI Technician (USCM)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_MARINE
-	faction_group = list(FACTION_MARINE)
+	faction_group = FACTION_LIST_ARES_MARINE
 	assignment = JOB_AI_TECH
 	rank = JOB_AI_TECH
 	paygrade = PAY_SHORT_MO2
@@ -524,7 +524,7 @@
 
 /datum/equipment_preset/uscm_event/ai_tech/corporate
 	name = "AI Technician (Contractor)"
-	faction_group =	FACTION_LIST_MARINE_WY
+	faction_group =	FACTION_LIST_ARES_ALL
 	paygrade = PAY_SHORT_WYC5
 
 	idtype = /obj/item/card/id/silver/cl

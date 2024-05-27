@@ -300,3 +300,8 @@
   realforest2001:
   - imageadd: added sprites for floor-mounted sentry deployment systems.
   - rscadd: Added mini-sentry deployment systems, and an AI Core subtype.
+2024-05-27:
+  neeshacark:
+  - rscadd: lifeboats now come stocked with uno cards, for all your fun-filled needs
+  vero5123:
+  - bugfix: Fixes non-synthetic mobs getting stuck in the gibber

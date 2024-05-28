@@ -770,7 +770,7 @@
 
 /obj/structure/dropship_equipment/weapon/rocket_pod
 	name = "\improper LAU-444 Guided Missile Launcher"
-	icon_state = "rocket_pod" //item want to force whoever used rocket and missile interchangeably to come back and look at this god damn mess.
+	icon_state = "rocket_pod" //I want to force whoever used rocket and missile interchangeably to come back and look at this god damn mess.
 	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter. Accepts AGM, AIM, BLU, and GBU missile systems."
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 5

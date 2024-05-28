@@ -417,9 +417,13 @@
 	var/obj/item/card/id/id_card = wearer.wear_id?.GetID()
 	if(!istype(id_card))
 		return
-	var/paygrade = get_paygrade_id_by_name(wearer.get_paygrade(FALSE))
-	var/last_number = text2num(copytext(paygrade, length(paygrade), length(paygrade)+1))
-	if(!(findtext(paygrade, "O") || last_number >= 4))
+	
+	var/datum/paygrade/paygrade_actual = GLOB.paygrades[id_card.paygrade]
+	if(!paygrade_actual)
+		return
+	if(!istype(paygrade_actual, /datum/paygrade/marine)) //We only want marines to be able to recommend for medals
+		return
+	if(ranking < 3) //E1 starts at 0, so anyone above Corporal (ranking = 3) can recommend for medals
 		to_chat(wearer, SPAN_WARNING("Only officers or NCO's (ME4+) can recommend medals!"))
 		return
 	if(add_medal_recommendation(usr))

@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
-	machinery_type_to_control = /obj/structure/machinery/hydro_floodlight
+	machinery_type_whitelist = list(/obj/structure/machinery/hydro_floodlight)
 
 /obj/structure/machinery/colony_floodlight_switch/hydro_floodlight_switch/update_icon()
 	if(!ispowered)

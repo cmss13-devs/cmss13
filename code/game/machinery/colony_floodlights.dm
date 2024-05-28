@@ -1,4 +1,5 @@
-//Putting these here since it's power-related
+GLOBAL_LIST_INIT(all_breaker_switches, list())
+
 /obj/structure/machinery/colony_floodlight_switch // TODO: Repath to just breaker_switch
 	name = "colony floodlight switch"
 	icon = 'icons/obj/structures/machinery/power.dmi'
@@ -15,20 +16,32 @@
 	var/ispowered = FALSE
 	///All machinery under our control
 	var/list/machinery_list = list()
-	///The strict type of machinery we control
-	var/machinery_type_to_control = /obj/structure/machinery/colony_floodlight
+	///The types of machinery we control (define this)
+	var/list/machinery_type_whitelist = list(/obj/structure/machinery/colony_floodlight)
+	///The types of machinery we don't control (generated automatically)
+	var/list/machinery_type_blacklist = list()
 
 /obj/structure/machinery/colony_floodlight_switch/Initialize(mapload, ...)
 	. = ..()
+	for(var/obj/structure/machinery/colony_floodlight_switch/other_switch as anything in GLOB.all_breaker_switches)
+		if(!length(other_switch.machinery_type_whitelist))
+			continue
+		machinery_type_blacklist |= other_switch.machinery_type_whitelist
+	GLOB.all_breaker_switches += src
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/machinery/colony_floodlight_switch/LateInitialize()
 	. = ..()
-	if(machinery_type_to_control)
+	if(length(machinery_type_whitelist))
 		for(var/obj/structure/machinery/machine as anything in GLOB.machines)
-			if(machine.breaker_switch == null && istypestrict(machine, machinery_type_to_control))
-				machinery_list += machine
-				machine.breaker_switch = src
+			if(machine.breaker_switch != null)
+				continue
+			if(!is_type_in_list(machine, machinery_type_whitelist))
+				continue
+			if(is_type_in_list(machine, machinery_type_blacklist))
+				continue
+			machinery_list += machine
+			machine.breaker_switch = src
 	start_processing()
 
 /obj/structure/machinery/colony_floodlight_switch/Destroy()
@@ -36,6 +49,7 @@
 		if(machine.breaker_switch == src)
 			machine.breaker_switch = null
 	machinery_list = null
+	GLOB.all_breaker_switches -= src
 	return ..()
 
 /obj/structure/machinery/colony_floodlight_switch/update_icon()

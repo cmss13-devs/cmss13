@@ -328,8 +328,6 @@ Class Procs:
 	return
 
 /obj/structure/machinery/proc/set_is_on(is_on)
-	if(src.is_on == is_on)
-		return
 	src.is_on = is_on
 	update_icon()
 

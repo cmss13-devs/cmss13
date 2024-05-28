@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the electrified fences. It only functions when there is power."
-	machinery_type_to_control = null
+	machinery_type_whitelist = null
 	/// The power each fence takes up per process
 	var/power_usage_per_fence = 5
 
@@ -108,7 +108,7 @@
 	use_power = USE_POWER_NONE
 	needs_power = FALSE
 	ispowered = TRUE
-	machinery_type_to_control = /obj/structure/machinery/colony_floodlight/engineer_circular
+	machinery_type_whitelist = list(/obj/structure/machinery/colony_floodlight/engineer_circular)
 
 /obj/structure/machinery/colony_floodlight_switch/engineerconsole_switch/LateInitialize()
 	. = ..()

@@ -23,9 +23,10 @@ import {
 } from './helpers';
 import {
   buildSquadObservable,
+  groupSorter,
   type Observable,
   type OrbitData,
-  SquadObservable,
+  splitter,
 } from './types';
 
 type search = {
@@ -107,7 +108,7 @@ const ObservableSearch = () => {
             color={auto_observe ? 'good' : 'transparent'}
             icon={auto_observe ? 'toggle-on' : 'toggle-off'}
             onClick={() => act('toggle_auto_observe')}
-            tooltip={`Toggle Full Observe. When active, you'll see the UI / full inventory of whoever you're orbiting. Neat!`}
+            tooltip={`Toggle Full Observe. When active, you'll see the UI / full inventory of whoever you're orbiting.`}
             tooltipPosition="bottom-start"
           />
         </Stack.Item>
@@ -178,11 +179,31 @@ const marineSplitter = (members: Array<Observable>) => {
   return squads;
 };
 
+const rankList = [
+  'Rifleman',
+  'Spotter',
+  'Hospital Corpsman',
+  'Combat Technician',
+  'Smartgunner',
+  'Weapons Specialist',
+  'Fireteam Leader',
+  'Squad Leader',
+];
+const marineSort = (a: Observable, b: Observable) => {
+  const a_index = rankList.findIndex((str) => a.job?.includes(str)) ?? 0;
+  const b_index = rankList.findIndex((str) => b.job?.includes(str)) ?? 0;
+  if (a_index === b_index) {
+    return a.full_name.localeCompare(b.full_name);
+  }
+  return a_index > b_index ? -1 : 1;
+};
+
 const GroupedObservable = (props: {
   readonly color?: string;
   readonly section: Array<Observable>;
   readonly title: string;
-  readonly splitter: (members: Array<Observable>) => Array<SquadObservable>;
+  readonly splitter: splitter;
+  readonly sorter?: groupSorter;
 }) => {
   const { color, section = [], title } = props;
 
@@ -219,7 +240,7 @@ const GroupedObservable = (props: {
             <ObservableSection
               color={x.color}
               title={x.title}
-              section={x.members}
+              section={props.sorter ? x.members.sort(props.sorter) : x.members}
               key={x.title}
             />
           ))}
@@ -269,6 +290,7 @@ const ObservableContent = () => {
         section={marines}
         title="Marines"
         splitter={marineSplitter}
+        sorter={marineSort}
       />
       <ObservableSection color="teal" section={humans} title="Humans" />
       <GroupedObservable
@@ -408,6 +430,9 @@ const ObservableItem = (props: {
       tooltipPosition="bottom-start"
     >
       {displayHealth && <ColorBox color={getHealthColor(health)} mr="0.5em" />}
+      {!!icon && (
+        <ObservableIcon icon={icon} background_color={background_color} />
+      )}
       {capitalizeFirst(getDisplayName(full_name, nickname))}
       {!!orbiters && (
         <>

@@ -57,3 +57,6 @@ export const buildSquadObservable: (
     title: title,
   };
 };
+
+export type splitter = (members: Array<Observable>) => Array<SquadObservable>;
+export type groupSorter = (a: Observable, b: Observable) => number;

@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	var/tforce = 0
 	if(ismob(AM))
 		if(electrified && !cut)
-			electrocute_mob(AM)
+			electrocute_mob(AM, get_area(breaker_switch), src, 0.75)
 		else
 			tforce = 40
 	else if(isobj(AM))
@@ -297,7 +297,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 
 /obj/structure/fence/electrified/attackby(obj/item/W, mob/user)
 	if(electrified && !cut)
-		electrocute_mob(user, get_area(src), src, 0.3)
+		electrocute_mob(user, get_area(breaker_switch), src, 0.75)
 	return ..()
 
 /obj/structure/fence/electrified/ex_act(severity)

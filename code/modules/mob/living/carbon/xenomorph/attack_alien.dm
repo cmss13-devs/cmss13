@@ -515,7 +515,7 @@
 
 /obj/structure/fence/electrified/attack_alien(mob/living/carbon/xenomorph/M)
 	if(electrified && !cut)
-		electrocute_mob(M)
+		electrocute_mob(M, get_area(breaker_switch), src, 0.75)
 	return ..()
 
 

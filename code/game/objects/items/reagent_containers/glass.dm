@@ -217,17 +217,16 @@
 	overlays.Cut()
 
 	if(reagents && reagents.total_volume)
-		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-20")
 
-		var/percent = round((reagents.total_volume / volume) * 100)
+		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 9) filling.icon_state = "[icon_state]-10"
-			if(10 to 24) filling.icon_state = "[icon_state]10"
-			if(25 to 49) filling.icon_state = "[icon_state]25"
-			if(50 to 74) filling.icon_state = "[icon_state]50"
-			if(75 to 79) filling.icon_state = "[icon_state]75"
-			if(80 to 90) filling.icon_state = "[icon_state]80"
-			if(91 to INFINITY) filling.icon_state = "[icon_state]100"
+			if(0) filling.icon_state = null
+			if(1 to 20) filling.icon_state = "[icon_state]-20"
+			if(21 to 40) filling.icon_state = "[icon_state]-40"
+			if(41 to 60) filling.icon_state = "[icon_state]-60"
+			if(61 to 80) filling.icon_state = "[icon_state]-80"
+			if(81 to INFINITY) filling.icon_state = "[icon_state]-100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -308,7 +307,7 @@
 	overlays.Cut()
 	if(reagents && reagents.total_volume)
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
-		var/percent = round((reagents.total_volume / volume) * 100)
+		var/percent = floor((reagents.total_volume / volume) * 100)
 		var/round_percent = 0
 		if(percent > 24) round_percent = round(percent, 25)
 		else round_percent = 10
@@ -345,8 +344,8 @@
 	flags_atom = FPRINT|OPENCONTAINER|NOREACT
 
 /obj/item/reagent_container/glass/beaker/bluespace
-	name = "bluespace beaker"
-	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure - affectionately nicknamed \"bluespace\". Can hold up to 300 units."
+	name = "high-capacity beaker"
+	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 300 units."
 	icon_state = "beakerbluespace"
 	matter = list("glass" = 10000)
 	volume = 300
@@ -365,6 +364,14 @@
 	flags_atom = FPRINT|OPENCONTAINER
 	ground_offset_x = 9
 	ground_offset_y = 8
+
+/obj/item/reagent_container/glass/beaker/vial/epinephrine
+	name = "epinephrine vial"
+
+/obj/item/reagent_container/glass/beaker/vial/epinephrine/Initialize()
+	. = ..()
+	reagents.add_reagent("adrenaline", 30)
+	update_icon()
 
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 	name = "tricordrazine vial"
@@ -612,7 +619,7 @@
 	if(reagents && reagents.total_volume)
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-00-65")
 
-		var/percent = round((reagents.total_volume / volume) * 100)
+		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
 			if(0 to 33) filling.icon_state = "[icon_state]-00-33"
 			if(34 to 65) filling.icon_state = "[icon_state]-34-65"

@@ -574,7 +574,7 @@
 
 	for(var/mob/living/carbon/human/mob in range(heating_range, src))
 		if(mob.bodytemperature < T20C)
-			mob.bodytemperature += min(round(T20C - mob.bodytemperature)*0.7, 25)
+			mob.bodytemperature += min(floor(T20C - mob.bodytemperature)*0.7, 25)
 			mob.recalculate_move_delay = TRUE
 
 	if(quiet)
@@ -926,7 +926,7 @@
 	name = "\improper S-52 fusion reactor"
 	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power.  Also produces a large amount of heat."
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
-	icon_state = "off-0"
+	icon_state = "off"
 
 /obj/structure/prop/invuln/pipe_water
 	name = "pipe water"

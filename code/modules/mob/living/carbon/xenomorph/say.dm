@@ -98,6 +98,9 @@
 		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
 		return
 
+	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_HIVEMIND_TALK, message) & COMPONENT_OVERRIDE_HIVEMIND_TALK)
+		return
+
 	hivemind_broadcast(message, hive)
 
 /mob/living/carbon/proc/hivemind_broadcast(message, datum/hive_status/hive)

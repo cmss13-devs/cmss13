@@ -40,7 +40,7 @@
 
 	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
 	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)
-		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([round((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
+		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
 		return
 
 	if(!evolve_checks())
@@ -211,7 +211,10 @@
 		return FALSE
 
 	if(lock_evolve)
-		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
+		if(banished)
+			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		else
+			to_chat(src, SPAN_WARNING("We can't evolve."))
 		return FALSE
 
 	if(jobban_isbanned(src, JOB_XENOMORPH))//~who so genius to do this is?
@@ -269,7 +272,10 @@
 		return
 
 	if(lock_evolve)
-		to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		if(banished)
+			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		else
+			to_chat(src, SPAN_WARNING("We can't deevolve."))
 		return FALSE
 
 
@@ -385,7 +391,7 @@
 				used_tier_3_slots -= min(slots_used, slots_free)
 
 	var/burrowed_factor = min(hive.stored_larva, sqrt(4*hive.stored_larva))
-	var/totalXenos = round(burrowed_factor)
+	var/totalXenos = floor(burrowed_factor)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
 		if(xeno.counts_for_slots)
 			totalXenos++

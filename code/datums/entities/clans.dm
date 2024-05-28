@@ -27,7 +27,7 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 	)
 
 /datum/entity_meta/clan/on_insert(datum/entity/clan/player_clan)
-	player_clan.color = COLOR_WHITE
+	player_clan.color = "#FFFFFF"
 
 	player_clan.save()
 

@@ -228,6 +228,7 @@ a.popt {
 .looc,
 .adminooc,
 .admin,
+.niche,
 .medal,
 .yell {
   font-weight: bold;
@@ -286,6 +287,11 @@ em {
 }
 
 .admin {
+  color: #5975da;
+  font-weight: bold;
+}
+
+.niche {
   color: #5975da;
   font-weight: bold;
 }
@@ -480,6 +486,11 @@ em {
   color: #6685f5;
   font-style: italic;
   font-size: 90%;
+}
+
+.bolditalic {
+  font-style: italic;
+  font-weight: bold;
 }
 
 .boldnotice {
@@ -799,6 +810,10 @@ em {
   font-size: 2.5em;
 }
 
+.hugeicon {
+  font-size: 5em;
+}
+
 .memo {
   color: #638500;
   text-align: center;
@@ -839,6 +854,15 @@ em {
 
 .resonate {
   color: #298f85;
+}
+
+.upside_down {
+  display: inline;
+  -moz-transform: scale(-1, -1);
+  -webkit-transform: scale(-1, -1);
+  -o-transform: scale(-1, -1);
+  -ms-transform: scale(-1, -1);
+  transform: scale(-1, -1);
 }
 
 .monkeyhive {

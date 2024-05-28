@@ -78,8 +78,8 @@
 						if(istype(I,/obj/item/stack/sheet))
 							recipe.resources[material] = I.matter[material] //Doesn't take more if it's just a sheet or something. Get what you put in.
 						else
-							recipe.resources[material] = round(I.matter[material]*1.25) // More expensive to produce than they are to recycle.
-				qdel(I)
+							recipe.resources[material] = floor(I.matter[material]*1.25) // More expensive to produce than they are to recycle.
+			QDEL_NULL(I)
 
 	//Create parts for lathe.
 	for(var/component in components)
@@ -339,7 +339,7 @@
 
 	if(istype(eating,/obj/item/stack))
 		var/obj/item/stack/stack = eating
-		stack.use(max(1,round(total_used/mass_per_sheet))) // Always use at least 1 to prevent infinite materials.
+		stack.use(max(1,floor(total_used/mass_per_sheet))) // Always use at least 1 to prevent infinite materials.
 	else if(user.temp_drop_inv_item(O))
 		qdel(O)
 
@@ -419,11 +419,16 @@
 	)
 	SStgui.update_uis(src)
 
+	//Print speed based on w_class.
+	var/obj/item/item = making.path
+	var/size = initial(item.w_class)
+	var/print_speed = clamp(size, 2, 5) SECONDS
+
 	//Fancy autolathe animation.
 	icon_state = "[base_state]_n"
 
 	playsound(src, 'sound/machines/print.ogg', 25)
-	sleep(5 SECONDS)
+	sleep(print_speed)
 	playsound(src, 'sound/machines/print_off.ogg', 25)
 	icon_state = "[base_state]"
 
@@ -530,7 +535,7 @@
 					print_data["can_make"] = FALSE
 					max_print_amt = 0
 				else
-					print_amt = round(projected_stored_material[material]/R.resources[material])
+					print_amt = floor(projected_stored_material[material]/R.resources[material])
 
 				if(print_data["can_make"] && max_print_amt < 0 || max_print_amt > print_amt)
 					max_print_amt = print_amt

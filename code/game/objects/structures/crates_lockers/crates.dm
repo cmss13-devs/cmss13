@@ -335,7 +335,7 @@
 	icon_closed = "closed_supply"
 
 /obj/structure/closet/crate/trashcart
-	name = "\improper trash cart"
+	name = "trash cart"
 	desc = "A heavy, metal trashcart with wheels."
 	icon_state = "closed_trashcart"
 	icon_opened = "open_trashcart"
@@ -437,4 +437,3 @@
 	density = TRUE
 	icon_opened = "open_mcart_y"
 	icon_closed = "closed_mcart_y"
-

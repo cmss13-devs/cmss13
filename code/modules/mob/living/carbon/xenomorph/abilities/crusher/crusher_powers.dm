@@ -37,7 +37,7 @@
 	RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
 
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
-	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+	if(!istype(xeno_owner))
 		return
 
 	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
@@ -51,7 +51,7 @@
 	..()
 	UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
-	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+	if(!istype(xeno_owner))
 		return
 
 	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
@@ -62,7 +62,7 @@
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/proc/undo_charging_icon()
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
-	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+	if(!istype(xeno_owner))
 		return
 
 	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate

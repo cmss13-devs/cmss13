@@ -105,7 +105,7 @@
 	current_angle = angle
 
 ///Setter proc for colors
-/atom/movable/lighting_mask/proc/set_color(colour = COLOR_WHITE)
+/atom/movable/lighting_mask/proc/set_color(colour = "#ffffff")
 	color = colour
 
 ///Setter proc for the intensity of the mask

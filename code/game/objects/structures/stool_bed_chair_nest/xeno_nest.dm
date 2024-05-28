@@ -18,8 +18,6 @@
 	var/mob/dead/observer/ghost_of_buckled_mob =  null
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/force_nest = FALSE
-	/// counterpart to buckling_y --> offsets the buckled mob when it buckles
-	var/list/buckling_x
 
 /obj/structure/bed/nest/Initialize(mapload, hive)
 	. = ..()
@@ -116,8 +114,7 @@
 			playsound(loc, "alien_resin_move", 50)
 			if(ishuman(buckled_mob))
 				var/mob/living/carbon/human/H = buckled_mob
-				user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
-				H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
+				log_interact(user, H, "[key_name(user)] unnested [key_name(H)] at [get_area_name(loc)]")
 			unbuckle()
 			return
 		if(is_sharp(W))
@@ -130,8 +127,7 @@
 			playsound(loc, "alien_resin_move", 50)
 			if(ishuman(buckled_mob))
 				var/mob/living/carbon/human/H = buckled_mob
-				user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
-				H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
+				log_interact(user, H, "[key_name(user)] unnested [key_name(H)] at [get_area_name(loc)]")
 			unbuckle()
 			return
 	health = max(0, health - W.force)
@@ -180,8 +176,9 @@
 	playsound(loc, "alien_resin_move", 50)
 	if(ishuman(buckled_mob))
 		var/mob/living/carbon/human/H = buckled_mob
-		user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
-		H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
+		if(isxeno(user))
+			msg_admin_niche("[key_name(user)] unnested [key_name(H)] at [get_location_in_text(H)] [ADMIN_JMP(loc)]")
+		log_interact(user, H, "[key_name(user)] unnested [key_name(H)] at [get_area_name(loc)]")
 	unbuckle()
 	return
 

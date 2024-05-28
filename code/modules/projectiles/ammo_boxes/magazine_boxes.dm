@@ -170,6 +170,19 @@
 /obj/item/ammo_box/magazine/m4ra/heap/empty
 	empty = TRUE
 
+//-----------------------XM51 Breaching Scattergun Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/xm51
+	name = "\improper magazine box (XM51 x 8)"
+	icon_state = "base_breach"
+	flags_equip_slot = SLOT_BACK
+	overlay_gun_type = "_xm51"
+	num_of_magazines = 8
+	magazine_type = /obj/item/ammo_magazine/rifle/xm51
+
+/obj/item/ammo_box/magazine/xm51/empty
+	empty = TRUE
+
 //-----------------------L42A Battle Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/l42a

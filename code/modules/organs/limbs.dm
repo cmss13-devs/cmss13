@@ -367,7 +367,7 @@
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
 	var/no_bone_break = owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE
 	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage && !no_bone_break)
-		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier))
+		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && (status & LIMB_BROKEN))
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
 				limb_delimb(damage_source)
@@ -580,8 +580,9 @@ This function completely restores a damaged organ to perfect condition.
 	if(brute_dam || burn_dam)
 		return TRUE
 	if(knitting_time > 0)
-		return 1
-	return 0
+		return TRUE
+	update_wounds()
+	return FALSE
 
 /obj/limb/process()
 
@@ -1512,7 +1513,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 /obj/limb/head/limb_delimb(damage_source)
 	var/obj/item/clothing/head/helmet/owner_helmet = owner.head
 
-	if(!istype(owner_helmet) || !owner.allow_gun_usage)
+	if(!istype(owner_helmet) || (issynth(owner) && !owner.allow_gun_usage))
 		droplimb(0, 0, damage_source)
 		return
 

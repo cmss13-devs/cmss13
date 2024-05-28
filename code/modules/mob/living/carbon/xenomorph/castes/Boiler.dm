@@ -13,6 +13,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_3
 
+	available_strains = list(/datum/xeno_strain/trapper)
 	behavior_delegate_type = /datum/behavior_delegate/boiler_base
 
 	evolution_allowed = FALSE
@@ -50,7 +51,6 @@
 	tier = 3
 	gib_chance = 100
 	drag_delay = 6 //pulling a big dead xeno is hard
-	mutation_type = BOILER_NORMAL
 	spit_delay  = 30 SECONDS
 	tileoffset = 3
 	viewsize = 7
@@ -98,4 +98,3 @@
 // No special behavior for boilers
 /datum/behavior_delegate/boiler_base
 	name = "Base Boiler Behavior Delegate"
-

@@ -71,7 +71,7 @@
 	var/coord_col = "-[col-1]"
 	var/coord_col_offset = "-[4+2*col]"
 
-	var/row = round((placement-1)/13)
+	var/row = floor((placement-1)/13)
 	var/coord_row = "[-1 - row]"
 	var/coord_row_offset = 26
 	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
@@ -82,7 +82,7 @@
 	var/coords_x = splittext(coords[1], ":")
 	return "[coords_x[1]]:[text2num(coords_x[2])+A.hud_offset],[coords[2]]"
 
-/datum/custom_hud/proc/special_behaviour(datum/hud/element, ui_alpha = 255, ui_color = COLOR_WHITE)
+/datum/custom_hud/proc/special_behaviour(datum/hud/element, ui_alpha = 255, ui_color = "#ffffff")
 	return
 
 /datum/custom_hud/old
@@ -126,12 +126,12 @@
 	var/coord_col = "-0"
 	var/coord_col_offset = "-[24 * col + 2]"
 
-	var/row = round((placement-1)/6)
+	var/row = floor((placement-1)/6)
 	var/coord_row = "[-1 - row]"
 	var/coord_row_offset = -8
 	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
 
-/datum/custom_hud/dark/special_behaviour(datum/hud/element, ui_alpha = 255, ui_color = COLOR_WHITE)
+/datum/custom_hud/dark/special_behaviour(datum/hud/element, ui_alpha = 255, ui_color = "#ffffff")
 	element.frame_hud = new /atom/movable/screen()
 	element.frame_hud.icon = ui_frame_icon
 	element.frame_hud.icon_state = "dark"

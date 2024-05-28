@@ -269,7 +269,7 @@
 
 /datum/autolathe/recipe/handcuffs
 	name = "handcuffs"
-	path = /obj/item/handcuffs
+	path = /obj/item/restraint/handcuffs
 	hidden = TRUE
 	category = AUTOLATHE_CATEGORY_GENERAL
 
@@ -329,6 +329,11 @@
 /datum/autolathe/recipe/armylathe/large_flamer_tank
 	name = "Custom M240-T Fuel Tank"
 	path = /obj/item/ammo_magazine/flamer_tank/custom/large
+	category = AUTOLATHE_CATEGORY_EXPLOSIVES
+
+/datum/autolathe/recipe/armylathe/smoke_tank
+	name = "Custom M240A1 Smoke Tank"
+	path = /obj/item/ammo_magazine/flamer_tank/smoke
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
 //Medilathe recipes
@@ -409,7 +414,7 @@
 	path = /obj/item/reagent_container/blood
 
 /datum/autolathe/recipe/medilathe/bluespace
-	name = "bluespace beaker"
+	name = "high-capacity beaker"
 	path = /obj/item/reagent_container/glass/beaker/bluespace
 
 /datum/autolathe/recipe/medilathe/bonesetter

@@ -348,6 +348,45 @@
 	new /obj/item/device/vulture_spotter_scope/skillless(src, WEAKREF(rifle))
 	new /obj/item/tool/screwdriver(src) // Spotter scope needs a screwdriver to disassemble
 
+/obj/item/storage/box/guncase/vulture/holo_target
+	name = "\improper M707 holo-targetting anti-materiel rifle case"
+	desc = "A gun case containing the M707 \"Vulture\" anti-materiel rifle and its requisite spotting tools. This variant is pre-loaded with <b>IFF-CAPABLE</b> holo-targeting rounds."
+
+/obj/item/storage/box/guncase/vulture/holo_target/fill_preset_inventory()
+	var/obj/item/weapon/gun/boltaction/vulture/holo_target/rifle = new(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope(src, WEAKREF(rifle))
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/pamphlet/trait/vulture(src)
+	new /obj/item/pamphlet/trait/vulture(src)
+
+/obj/item/storage/box/guncase/vulture/holo_target/skillless
+	storage_slots = 5
+
+/obj/item/storage/box/guncase/vulture/holo_target/skillless/fill_preset_inventory()
+	var/obj/item/weapon/gun/boltaction/vulture/holo_target/skillless/rifle = new(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope/skillless(src, WEAKREF(rifle))
+	new /obj/item/tool/screwdriver(src)
+
+
+/obj/item/storage/box/guncase/xm51
+	name = "\improper XM51 breaching scattergun case"
+	desc = "A gun case containing the XM51 Breaching Scattergun. Comes with two spare magazines, two spare shell boxes, an optional stock and a belt to holster the weapon."
+	storage_slots = 7
+	can_hold = list(/obj/item/weapon/gun/rifle/xm51, /obj/item/ammo_magazine/rifle/xm51, /obj/item/storage/belt/gun/xm51, /obj/item/attachable/stock/xm51)
+
+/obj/item/storage/box/guncase/xm51/fill_preset_inventory()
+	new /obj/item/attachable/stock/xm51(src)
+	new /obj/item/weapon/gun/rifle/xm51(src)
+	new /obj/item/ammo_magazine/rifle/xm51(src)
+	new /obj/item/ammo_magazine/rifle/xm51(src)
+	new /obj/item/ammo_magazine/shotgun/light/breaching(src)
+	new /obj/item/ammo_magazine/shotgun/light/breaching(src)
+	new /obj/item/storage/belt/gun/xm51(src)
+
 //Handgun case for Military police vendor three mag , a railflashligh and the handgun.
 
 //88 Mod 4 Combat Pistol

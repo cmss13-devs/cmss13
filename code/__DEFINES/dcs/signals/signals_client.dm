@@ -19,8 +19,8 @@
 /// Called after one or more verbs are added: (list of verbs added)
 #define COMSIG_CLIENT_VERB_REMOVED "client_verb_removed"
 
-/// Called after a client logs into a mob: (mob)
-#define COMSIG_CLIENT_MOB_LOGIN "client_mob_changed"
+/// Called from /mob/Login() after a client logs into a mob: (mob)
+#define COMSIG_CLIENT_MOB_LOGGED_IN "client_mob_logged_in"
 
 /// Called when something is added to a client's screen : /client/proc/add_to_screen(screen_add)
 #define COMSIG_CLIENT_SCREEN_ADD "client_screen_add"

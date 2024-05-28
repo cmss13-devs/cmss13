@@ -206,18 +206,18 @@
 	return FALSE
 
 
-/mob/living/carbon/human/is_mob_restrained(check_grab = 1)
+/mob/living/carbon/human/is_mob_restrained(check_grab = TRUE)
 	if(check_grab && pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE)
-		return 1
+		return TRUE
 	if (handcuffed)
-		return 1
+		return TRUE
 	if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
-		return 1
+		return TRUE
 
 	if (HAS_TRAIT(src, TRAIT_NESTED))
 		return TRUE
 
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/proc/disable_special_flags()
 	status_flags |= CANPUSH
@@ -247,6 +247,13 @@
 				var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in sg.actions
 				TMD.update_icon()
 				sg.motion_detector()
+		if(istype(i, /obj/item/clothing/suit/storage/marine/medium/rto/intel))
+			var/obj/item/clothing/suit/storage/marine/medium/rto/intel/xm4 = i
+			if(xm4.motion_detector)
+				xm4.motion_detector = FALSE
+				var/datum/action/item_action/intel/toggle_motion_detector/TMD = locate(/datum/action/item_action/intel/toggle_motion_detector) in xm4.actions
+				TMD.update_icon()
+				xm4.motion_detector()
 
 /mob/living/carbon/human/proc/disable_headsets()
 	//Disable all radios to reduce radio spam for dead people

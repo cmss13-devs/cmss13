@@ -183,7 +183,7 @@
 /area/lv624/lazarus/crashed_ship)
 "fX" = (
 /obj/item/stool,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf_leader,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1328,11 +1328,11 @@
 "IP" = (
 /obj/structure/bed,
 /obj/item/bedsheet/yellow,
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "green"
@@ -1601,12 +1601,10 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Px" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Crashed Ship APC";
-	pixel_y = 25
-	},
 /obj/structure/machinery/autolathe,
+/obj/structure/machinery/power/apc{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "orange"

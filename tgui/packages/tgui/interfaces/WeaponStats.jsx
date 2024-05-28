@@ -1,7 +1,8 @@
 import { map } from 'common/collections';
-import { resolveAsset } from '../assets';
+import { classes } from 'common/react';
+
 import { useBackend } from '../backend';
-import { ProgressBar, Section, Box, Flex, Table, Divider } from '../components';
+import { Box, Divider, Flex, ProgressBar, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 const GreedRedRange = {
@@ -68,7 +69,7 @@ const GeneralInfo = (props) => {
         <Flex.Item align="center">
           <Box height="5px" />
           <Box align="center">
-            <img src={resolveAsset(icon)} />
+            <span className={classes(['Icon', 'gunlineart96x96', `${icon}`])} />
           </Box>
           <Box height="5px" />
         </Flex.Item>
@@ -78,25 +79,33 @@ const GeneralInfo = (props) => {
         <Flex.Item align="center">
           <Flex direction="row">
             <Flex.Item>
-              {!auto_only ? (
-                <img src={resolveAsset('single.png')} />
-              ) : (
-                <img src={resolveAsset('disabled_single.png')} />
-              )}
+              <span
+                className={classes([
+                  'Icon',
+                  'gunlineartmodes96x32',
+                  `${!auto_only ? 'single' : 'disabled_single'}`,
+                ])}
+              />
             </Flex.Item>
             <Flex.Item>
-              {!auto_only && burst_amount > 1 ? (
-                <img src={resolveAsset('burst.png')} />
-              ) : (
-                <img src={resolveAsset('disabled_burst.png')} />
-              )}
+              <span
+                className={classes([
+                  'Icon',
+                  'gunlineartmodes96x32',
+                  `${
+                    !auto_only && burst_amount > 1 ? 'burst' : 'disabled_burst'
+                  }`,
+                ])}
+              />
             </Flex.Item>
             <Flex.Item>
-              {automatic ? (
-                <img src={resolveAsset('auto.png')} />
-              ) : (
-                <img src={resolveAsset('disabled_automatic.png')} />
-              )}
+              <span
+                className={classes([
+                  'Icon',
+                  'gunlineartmodes96x32',
+                  `${automatic ? 'auto' : 'disabled_automatic'}`,
+                ])}
+              />
             </Flex.Item>
           </Flex>
         </Flex.Item>
@@ -129,7 +138,8 @@ const Recoil = (props) => {
           <Box height="5px" />
           <ProgressBar
             value={unwielded_recoil / recoil_max}
-            ranges={GreedRedRange}>
+            ranges={GreedRedRange}
+          >
             Unwielded recoil: {unwielded_recoil} / {recoil_max}
           </ProgressBar>
         </>
@@ -158,13 +168,15 @@ const Scatter = (props) => {
           <Box height="5px" />
           <ProgressBar
             value={unwielded_scatter / scatter_max}
-            ranges={GreedRedRange}>
+            ranges={GreedRedRange}
+          >
             Unwielded scatter: {unwielded_scatter} / {scatter_max}
           </ProgressBar>
           <Box height="5px" />
           <ProgressBar
             value={burst_scatter / scatter_max}
-            ranges={GreedRedRange}>
+            ranges={GreedRedRange}
+          >
             Burst scatter multiplier: {burst_scatter} / {scatter_max}
           </ProgressBar>
         </>
@@ -248,7 +260,8 @@ const Accuracy = (props) => {
           <Box height="5px" />
           <ProgressBar
             value={unwielded_accuracy / accuracy_max}
-            ranges={RedGreenRange}>
+            ranges={RedGreenRange}
+          >
             Unwielded accurate range: {unwielded_accuracy} / {accuracy_max}
           </ProgressBar>
         </>
@@ -315,30 +328,30 @@ const DamageTable = (props) => {
           <Table.Cell bold textAlign="left">
             Armour Value
           </Table.Cell>
-          {map((entry, i) => (
+          {map(damage_armor_profile_headers, (entry, i) => (
             <Table.Cell bold key={i}>
               {entry}
             </Table.Cell>
-          ))(damage_armor_profile_headers)}
+          ))}
         </Table.Row>
         <Table.Row>
           <Table.Cell textAlign="left">Bioform</Table.Cell>
-          {map((entry, i) => <Table.Cell key={i}>{entry}</Table.Cell>)(
-            damage_armor_profile_xeno
-          )}
+          {map(damage_armor_profile_xeno, (entry, i) => (
+            <Table.Cell key={i}>{entry}</Table.Cell>
+          ))}
         </Table.Row>
         <Table.Row>
           <Table.Cell textAlign="left">Humanoid</Table.Cell>
-          {map((entry, i) => <Table.Cell key={i}>{entry}</Table.Cell>)(
-            damage_armor_profile_marine
-          )}
+          {map(damage_armor_profile_marine, (entry, i) => (
+            <Table.Cell key={i}>{entry}</Table.Cell>
+          ))}
         </Table.Row>
         {!glob_armourbreak ? (
           <Table.Row>
             <Table.Cell textAlign="left">Armor break</Table.Cell>
-            {map((entry, i) => <Table.Cell key={i}>{entry}</Table.Cell>)(
-              damage_armor_profile_armorbreak
-            )}
+            {map(damage_armor_profile_armorbreak, (entry, i) => (
+              <Table.Cell key={i}>{entry}</Table.Cell>
+            ))}
           </Table.Row>
         ) : null}
       </Table>

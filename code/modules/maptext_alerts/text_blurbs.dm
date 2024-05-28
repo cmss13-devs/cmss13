@@ -90,7 +90,7 @@ blurb_key = a key used for specific blurb types so they are not shown repeatedly
 ignore_key = used to skip key checks. Ex. a USCM ERT member shouldn't see the normal USCM drop message,
 but should see their own spawn message even if the player already dropped as USCM.**/
 /proc/show_blurb(list/mob/targets, duration = 3 SECONDS, message, scroll_down, screen_position = "LEFT+0:16,BOTTOM+1:16",\
-	text_alignment = "left", text_color = COLOR_WHITE, blurb_key, ignore_key = FALSE, speed = 1)
+	text_alignment = "left", text_color = "#FFFFFF", blurb_key, ignore_key = FALSE, speed = 1)
 	set waitfor = 0
 	if(!islist(targets))
 		targets = list(targets)

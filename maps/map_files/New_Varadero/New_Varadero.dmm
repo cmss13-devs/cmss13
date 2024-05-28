@@ -1890,9 +1890,7 @@
 /area/varadero/interior/hall_N)
 "bhU" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -2319,7 +2317,7 @@
 	pixel_x = -5;
 	pixel_y = 1
 	},
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 2;
 	pixel_y = 16
 	},
@@ -2877,7 +2875,7 @@
 	},
 /area/varadero/interior/chapel)
 "bPL" = (
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 2;
 	pixel_y = 16
 	},
@@ -3631,7 +3629,7 @@
 	},
 /area/varadero/interior/hall_NW)
 "coc" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/tunnel/maint_tunnel,
 /turf/open/floor/shiva{
 	icon_state = "blue"
 	},
@@ -4392,13 +4390,6 @@
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/administration)
-"cNC" = (
-/obj/item/fuelCell{
-	pixel_x = 4;
-	pixel_y = 22
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/maintenance/south)
 "cNF" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -5636,6 +5627,16 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior_protected/maintenance/south)
+"dJI" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "dJX" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood,
@@ -6068,24 +6069,6 @@
 	icon_state = "yellow"
 	},
 /area/varadero/interior/cargo)
-"dZZ" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/clothing/mask/cigarette/cigar/tarbacks{
-	pixel_x = -7;
-	pixel_y = 8
-	},
-/obj/item/tool/lighter/zippo/black{
-	pixel_x = -5;
-	pixel_y = 7
-	},
-/obj/item/ashtray/plastic{
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/turf/open/floor/shiva{
-	icon_state = "blue"
-	},
-/area/varadero/interior/technical_storage)
 "eat" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 4
@@ -6453,7 +6436,7 @@
 	id = "north_research_tunnel"
 	},
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
+/area/varadero/interior_protected/caves/digsite)
 "emC" = (
 /obj/structure/surface/rack,
 /obj/item/tool/surgery/scalpel/pict_system,
@@ -7100,6 +7083,15 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/security)
+"eGd" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/electrical)
 "eGq" = (
 /obj/item/reagent_container/food/snacks/eat_bar,
 /obj/item/reagent_container/food/snacks/eat_bar{
@@ -7305,6 +7297,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "eMD" = (
+/obj/structure/tunnel/maint_tunnel,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "red"
@@ -10665,9 +10658,7 @@
 /area/varadero/interior/security)
 "gRU" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -13802,9 +13793,7 @@
 /area/varadero/interior/administration)
 "iWX" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/eastbeach)
@@ -14289,6 +14278,24 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/exterior/lz1_near)
+"jkq" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clothing/mask/cigarette/cigar/tarbacks{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/obj/item/tool/lighter/zippo/black{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/ashtray/plastic{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/turf/open/floor/shiva{
+	icon_state = "blue"
+	},
+/area/varadero/interior/technical_storage)
 "jks" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -18162,6 +18169,7 @@
 	},
 /area/varadero/interior/medical)
 "lLq" = (
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
@@ -19270,9 +19278,7 @@
 /area/varadero/interior/cargo)
 "mtp" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -19360,9 +19366,7 @@
 /area/varadero/interior/hall_SE)
 "mvO" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -19875,9 +19879,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -21989,7 +21991,7 @@
 /area/varadero/interior/hall_SE)
 "ohi" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/structure/machinery/flasher_button{
 	id = "sec_checkpoint";
 	pixel_y = 24
@@ -27261,6 +27263,7 @@
 /area/varadero/interior/caves/east)
 "rsh" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link,
 /turf/open/floor/shiva{
 	dir = 9;
 	icon_state = "wred"
@@ -28061,7 +28064,7 @@
 /area/varadero/interior/caves/east)
 "rTu" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/weapon/baton,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
@@ -28758,6 +28761,13 @@
 	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/eastocean)
+"spN" = (
+/obj/item/fuel_cell{
+	pixel_x = 4;
+	pixel_y = 22
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/maintenance/south)
 "spP" = (
 /obj/structure/bed/chair,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -28985,6 +28995,13 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior_protected/maintenance/south)
+"swM" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/light/small,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/electrical)
 "swV" = (
 /obj/structure/closet/crate/construction,
 /turf/open/auto_turf/sand_white/layer1,
@@ -29519,15 +29536,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance)
-"sLi" = (
-/obj/structure/machinery/power/geothermal,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/electrical)
 "sLO" = (
 /obj/item/device/flashlight/slime{
 	mouse_opacity = 0;
@@ -30123,6 +30131,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
+"thp" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/electrical)
 "thS" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -31416,12 +31430,6 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
-"ubK" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/electrical)
 "ubT" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -32750,6 +32758,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -33839,7 +33848,7 @@
 "vEa" = (
 /obj/structure/closet/crate/medical,
 /obj/item/tool/wirecutters/clippers,
-/obj/item/handcuffs/zip,
+/obj/item/restraint/handcuffs/zip,
 /obj/item/tool/surgery/surgicaldrill,
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/shiva{
@@ -35347,11 +35356,11 @@
 	},
 /area/varadero/interior/comms3)
 "wvI" = (
-/obj/structure/tunnel{
-	id = "north_research_tunnel"
+/obj/structure/tunnel/maint_tunnel,
+/turf/open/floor/shiva{
+	icon_state = "purple"
 	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/research)
 "wvK" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/landmark/objective_landmark/close,
@@ -36394,13 +36403,6 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/cargo)
-"xjp" = (
-/obj/structure/machinery/power/geothermal,
-/obj/structure/machinery/light/small,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/electrical)
 "xka" = (
 /obj/structure/window/framed/colony/reinforced{
 	color = "#aba9a9"
@@ -39119,7 +39121,7 @@ oPQ
 xCn
 cBI
 xCn
-emt
+xCn
 ljt
 pGs
 pGs
@@ -41301,7 +41303,7 @@ wmg
 vSY
 izs
 oyi
-sDM
+wvI
 fay
 ebr
 ebr
@@ -48027,7 +48029,7 @@ ibP
 haT
 teu
 haT
-dZZ
+jkq
 ykw
 cIB
 waB
@@ -52785,7 +52787,7 @@ cto
 iFb
 mCF
 jdm
-mCF
+mSa
 mCF
 mCF
 mCF
@@ -53503,7 +53505,7 @@ pKs
 chs
 chs
 kGq
-wvI
+ixr
 ixr
 ixr
 ixr
@@ -53545,7 +53547,7 @@ xxk
 xxk
 xEG
 cSa
-mCF
+mSa
 mCF
 mCF
 mCF
@@ -54234,7 +54236,7 @@ bkM
 pKs
 pKs
 bkM
-cNC
+spN
 etv
 cto
 xxk
@@ -60381,9 +60383,9 @@ mSf
 kCA
 rsB
 wOO
-ubK
-ubK
-sLi
+thp
+thp
+eGd
 pkT
 pAZ
 wOO
@@ -60749,7 +60751,7 @@ lur
 lur
 lur
 fEu
-ubK
+thp
 oSX
 viK
 xJZ
@@ -60931,7 +60933,7 @@ aDZ
 aDZ
 rTv
 fEu
-ubK
+thp
 oSX
 mZk
 xJZ
@@ -61113,7 +61115,7 @@ rKl
 lur
 cbg
 fEu
-xjp
+swM
 wOO
 viK
 xJZ
@@ -61661,7 +61663,7 @@ uZa
 mEB
 mEB
 oSX
-xJZ
+dJI
 xJZ
 xJZ
 viK
@@ -62111,7 +62113,7 @@ cty
 cty
 aOg
 mCF
-mSa
+mCF
 mCF
 pGs
 pGs
@@ -62979,7 +62981,7 @@ wXs
 xJZ
 ouy
 eyt
-wnE
+kbQ
 kbQ
 kbQ
 kbQ
@@ -64787,7 +64789,7 @@ eyt
 eyt
 jqw
 qfu
-kbQ
+wnE
 sgk
 kbQ
 kbQ
@@ -65918,7 +65920,7 @@ bsf
 bsf
 bsf
 bsf
-bsf
+emt
 bsf
 bsf
 pDX

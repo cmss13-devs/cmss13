@@ -8,6 +8,8 @@
 	var/datum/cause_data/cause_data
 	ground_offset_x = 7
 	ground_offset_y = 6
+	/// is it currently on fire and about to explode?
+	var/burning = FALSE
 
 
 /obj/item/mortar_shell/Destroy()
@@ -153,6 +155,35 @@
 		to_chat(user, SPAN_DANGER("You add [W] to [name]."))
 		icon_state = initial(icon_state) +"_unlocked"
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+
+/obj/item/mortar_shell/ex_act(severity, explosion_direction)
+	if(!burning)
+		return ..()
+
+/obj/item/mortar_shell/attack_hand(mob/user)
+	if(burning)
+		to_chat(user, SPAN_DANGER("[src] is on fire and might explode!"))
+		return
+	return ..()
+
+/obj/item/mortar_shell/flamer_fire_act(dam, datum/cause_data/flame_cause_data)
+	if(burning)
+		return
+	burning = TRUE
+	cause_data = create_cause_data("Burning Mortar Shell", flame_cause_data.resolve_mob(), src)
+	handle_fire()
+
+/obj/item/mortar_shell/proc/handle_fire()
+	visible_message(SPAN_WARNING("[src] catches on fire and starts cooking off! It's gonna blow!"))
+	anchored = TRUE // don't want other explosions launching it elsewhere
+
+	var/datum/effect_system/spark_spread/sparks = new()
+	sparks.set_up(n = 10, loca = loc)
+	sparks.start()
+	new /obj/effect/warning/explosive(loc, 5 SECONDS)
+
+	addtimer(CALLBACK(src, PROC_REF(detonate), loc), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.5 SECONDS)
 
 /obj/structure/closet/crate/secure/mortar_ammo
 	name = "\improper M402 mortar ammo crate"

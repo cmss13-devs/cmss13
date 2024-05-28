@@ -95,6 +95,10 @@
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay
 
+	var/area/my_area = loc
+	if(my_area.lighting_effect)
+		overlays += my_area.lighting_effect
+
 /turf/open/proc/scorch(heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
 	// "name_scorched#" where # is the scorchedness level 0 - 1 - 2 - 3
@@ -910,9 +914,66 @@
 	allow_construction = FALSE
 	supports_surgery = FALSE
 
+/turf/open/shuttle/can_surgery
+	allow_construction = TRUE
+	supports_surgery = TRUE
+
+/turf/open/shuttle/can_surgery/blue
+	name = "floor"
+	icon_state = "floor"
+	icon = 'icons/turf/shuttle.dmi'
+
+/turf/open/shuttle/can_surgery/red
+	icon_state = "floor6"
+
+/turf/open/shuttle/can_surgery/black
+	icon_state = "floor7"
+
 /turf/open/shuttle/dropship
 	name = "floor"
 	icon_state = "rasputin1"
+
+/turf/open/shuttle/dropship/can_surgery
+	icon_state = "rasputin1"
+	allow_construction = TRUE
+	supports_surgery = TRUE
+
+/turf/open/shuttle/dropship/can_surgery/light_grey_middle
+	icon_state = "rasputin13"
+
+/turf/open/shuttle/dropship/can_surgery/light_grey_top
+	icon_state = "rasputin10"
+
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right
+	icon_state = "floor8"
+
+/*same two but helps with finding if you think top to bottom or up to down*/
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down
+	icon_state = "rasputin3"
+
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_top_to_bottom
+	icon_state = "rasputin3"
+
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_left
+	icon_state = "rasputin6"
+
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left
+	icon_state = "rasputin4"
+
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_right
+	icon_state = "rasputin7"
+
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right
+	icon_state = "rasputin8"
+
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right
+	icon_state = "rasputin14"
+
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down
+	icon_state = "rasputin15"
+
+/turf/open/shuttle/dropship/can_surgery/dark_grey
+	icon_state = "rasputin15"
 
 /turf/open/shuttle/predship
 	name = "ship floor"

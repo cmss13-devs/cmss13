@@ -87,7 +87,6 @@
 			if(!(virus_type in discovered_diseases))
 				return
 			var/obj/item/reagent_container/glass/bottle/B = new/obj/item/reagent_container/glass/bottle(src.loc)
-			B.icon_state = "bottle3"
 			var/datum/disease/D = null
 			if(!virus_type)
 				var/datum/disease/advance/A = GLOB.archive_diseases[href_list["create_virus_culture"]]

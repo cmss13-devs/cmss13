@@ -28,16 +28,16 @@
 	icon_state = "stun"
 	damage_type = OXY
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_ALWAYS_FF //Not that ignoring will do much right now.
-
 	stamina_damage = 45
 	accuracy = HIT_ACCURACY_TIER_8
 	shell_speed = AMMO_SPEED_TIER_1 // Slightly faster
 	hit_effect_color = "#FFFF00"
 
-/datum/ammo/energy/taser/on_hit_mob(mob/M, obj/projectile/P)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		H.disable_special_items() // Disables scout cloak
+/datum/ammo/energy/taser/on_hit_mob(mob/mobs, obj/projectile/P)
+	if(ishuman(mobs))
+		var/mob/living/carbon/human/humanus = mobs
+		humanus.disable_special_items() // Disables scout cloak
+		humanus.make_jittery(40)
 
 /datum/ammo/energy/taser/precise
 	name = "precise taser bolt"
@@ -230,3 +230,10 @@
 		var/mob/living/carbon/xenomorph/xeno = hit_mob
 		xeno.apply_damage(damage * 0.75, BURN)
 		xeno.interference = 30
+
+/datum/ammo/energy/yautja/rifle/bolt/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
+

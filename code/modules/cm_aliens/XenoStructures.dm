@@ -94,7 +94,12 @@
 		else
 			playsound(loc, "alien_resin_break", 25)
 
-		health -= (M.melee_damage_upper + 50) //Beef up the damage a bit
+		var/damage_to_structure = M.melee_damage_upper + XENO_DAMAGE_TIER_7
+		// Builders can destroy beefy things in maximum 5 hits
+		if(isxeno_builder(M))
+			health -= max(initial(health) * 0.2, damage_to_structure)
+		else
+			health -= damage_to_structure
 		healthcheck()
 	return XENO_ATTACK_ACTION
 
@@ -113,7 +118,7 @@
 
 /obj/effect/alien/resin/attackby(obj/item/W, mob/user)
 	if(!(W.flags_item & NOBLUDGEON))
-		var/damage = W.force * RESIN_MELEE_DAMAGE_MULTIPLIER
+		var/damage = W.force * W.demolition_mod * RESIN_MELEE_DAMAGE_MULTIPLIER
 		health -= damage
 		if(istype(src, /obj/effect/alien/resin/sticky))
 			playsound(loc, "alien_resin_move", 25)
@@ -386,7 +391,7 @@
 		return // defer to item afterattack
 	if(!(W.flags_item & NOBLUDGEON) && W.force)
 		user.animation_attack_on(src)
-		health -= W.force*RESIN_MELEE_DAMAGE_MULTIPLIER
+		health -= W.force * RESIN_MELEE_DAMAGE_MULTIPLIER * W.demolition_mod
 		to_chat(user, "You hit the [name] with your [W.name]!")
 		playsound(loc, "alien_resin_move", 25)
 		healthcheck()
@@ -571,6 +576,9 @@
 	if(!burning_friendly && current_mob.health < 0)
 		return FALSE
 	if(current_mob.stat == DEAD)
+		return FALSE
+
+	if(HAS_TRAIT(current_mob, TRAIT_NESTED))
 		return FALSE
 
 	var/turf/current_turf

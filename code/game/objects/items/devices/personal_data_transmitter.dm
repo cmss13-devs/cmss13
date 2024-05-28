@@ -139,6 +139,7 @@
 
 /obj/item/device/pdt_locator_tube/Destroy()
 	linked_bracelet = null
+	QDEL_NULL(battery)
 	return ..()
 
 /obj/item/clothing/accessory/pdt_bracelet

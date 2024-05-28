@@ -37,3 +37,23 @@ You can filter out the Xenomorphs displayed in hive status by health, allowing y
 Each xeno has their own ‘tackle counter’ on a marine. The range to successfully tackle can be anywhere from two to six tackles based on caste. If a marine gets stunned or knocked over by other means it will reset everyone's tackle counters and they may get up!
 As a Xenomorph, the list of available tunnels is sorted by their distance to the player!
 As a Xenomorph, pay attention to what a marine is wearing. If they have no helmet, aiming for the head will be significantly more damaging, if they aren't wearing gloves, then think about going for their hands.
+The M540-A Armored Recon Carrier can be crawled under as a xenomorph when destroyed.
+The M540-A Armored Recon Carrier is very vulnerable to acid damage.
+Applying acid to flares makes them burn faster.
+Melting weapons, ammo or other valuables owned by marines is a good way to debilitate them.
+The secrete acid shortcut is (by default) Shift + C.
+Placing acid traps under map debris such as metal sheets, wooden planks or other semi-large to large items is good for catching marines by surprise.
+Burrower can place tunnels underneath tables or lockers.
+Lesser drones and facehuggers cannot speak or use the Hivemind for three minutes after spawning.
+Alt-clicking on the Queen tracker allows you to set it to also track the Hive Core, any living leaders or any existing tunnels. Tunnels are ordered by closest to furthest; top to bottom.
+Be mindful of not blocking the escape of injured sisters.
+As a Xenomorph, you are able to melt advanced body scanners, sleepers, MarineMeds and limb printers.
+You can break roller beds with a single slash to stop a medic from quickly transporting a body.
+As a Defender, lowering your crest gives you increased resistance to stuns like explosives or shotgun shells.
+Tail stab will always hit the targetted limb and will do 1.2x your normal melee damage; it has a two tile range.
+You can check if a door is shocked by tailstabbing it.
+You can use your tail stab to slowly damage and break doors; this takes some time.
+Some smaller Xenomorphs such as Runners can hide behind barricades by resting against them, a good surprise tactic.
+Defenders with a lowered crest can open existing holes in walls.
+As a Defender, you can deal an additional stage of damage to an APC by lowering your crest and then attacking it.
+Any Xenomorph with acid can melt any kind of window frame; you may use this to create additional paths.

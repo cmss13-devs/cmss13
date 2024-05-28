@@ -152,7 +152,7 @@
 			if(!(NO_BLOOD in human_occupant.species.flags))
 				occupantData["pulse"] = human_occupant.get_pulse(GETPULSE_TOOL)
 				occupantData["hasBlood"] = 1
-				occupantData["bloodLevel"] = round(occupant.blood_volume)
+				occupantData["bloodLevel"] = floor(occupant.blood_volume)
 				occupantData["bloodMax"] = occupant.max_blood
 				occupantData["bloodPercent"] = round(100*(occupant.blood_volume/occupant.max_blood), 0.01)
 
@@ -207,6 +207,14 @@
 			var/chemical = params["chemid"]
 			var/amount = text2num(params["amount"])
 			if(!length(chemical) || amount <= 0)
+				return
+			if(!(amount in connected.amounts))
+				log_debug("[amount] is an invalid amount to inject in [src]!")
+				return
+			if(!(chemical in connected.available_chemicals))
+				log_debug("[chemical] is not available to inject in [src]!")
+				return
+			if(connected.occupant.reagents && connected.occupant.reagents.get_reagent_amount(chemical) + amount > connected.max_chem)
 				return
 			if(connected.occupant.health > connected.min_health || (chemical in connected.emergency_chems))
 				connected.inject_chemical(usr, chemical, amount)

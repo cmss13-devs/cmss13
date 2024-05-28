@@ -21,34 +21,34 @@
 #define between(low, middle, high) (max(min(middle, high), low))
 
 //Offuscate x for coord system
-#define obfuscate_x(x) (x + GLOB.obfs_x)
+#define obfuscate_x(x) ((x) + GLOB.obfs_x)
 
 //Offuscate y for coord system
-#define obfuscate_y(y) (y + GLOB.obfs_y)
+#define obfuscate_y(y) ((y) + GLOB.obfs_y)
 
 //Deoffuscate x for coord system
-#define deobfuscate_x(x) (x - GLOB.obfs_x)
+#define deobfuscate_x(x) ((x) - GLOB.obfs_x)
 
 //Deoffuscate y for coord system
-#define deobfuscate_y(y) (y - GLOB.obfs_y)
+#define deobfuscate_y(y) ((y) - GLOB.obfs_y)
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
 
 // For the purpose of a skillcheck, not having a skillset counts as being skilled in everything (!user.skills check)
 // Note that is_skilled() checks if the skillset contains the skill internally, so a has_skill check is unnecessary
-#define skillcheck(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level)))
-#define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level, TRUE)))
+#define skillcheck(user, skill, req_level) ((!user.skills || user.skills.is_skilled((skill), (req_level))))
+#define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled((skill), (req_level), TRUE)))
 
 // Ensure the frequency is within bounds of what it should be sending/receiving at
-// Sets f within bounds via `clamp(round(f), 1441, 1489)`
+// Sets f within bounds via `clamp(floor(f), 1441, 1489)`
 // If f is even, adds 1 to its value to make it odd
-#define sanitize_frequency(f) ((clamp(round(f), 1441, 1489) % 2) == 0 ? \
-									clamp(round(f), 1441, 1489) + 1 : \
-									clamp(round(f), 1441, 1489) \
+#define sanitize_frequency(f) ((clamp(floor(f), 1441, 1489) % 2) == 0 ? \
+									clamp(floor(f), 1441, 1489) + 1 : \
+									clamp(floor(f), 1441, 1489) \
 								)
 
 //Turns 1479 into 147.9
-#define format_frequency(f) "[round(f / 10)].[f % 10]"
+#define format_frequency(f) "[floor((f) / 10)].[(f) % 10]"
 
 #define reverse_direction(direction) ( \
 											( dir & (NORTH|SOUTH) ? ~dir & (NORTH|SOUTH) : 0 ) | \
@@ -729,8 +729,7 @@
 	if(orange)
 		turfs -= get_turf(center)
 	. = list()
-	for(var/V in turfs)
-		var/turf/T = V
+	for(var/turf/T as anything in turfs)
 		. += T
 		. += T.contents
 		if(areas)
@@ -820,13 +819,23 @@
 		animation.master = target
 		flick(flick_anim, animation)
 
-//Will return the contents of an atom recursivly to a depth of 'searchDepth'
+///Will return the contents of an atom recursivly to a depth of 'searchDepth', not including starting atom
 /atom/proc/GetAllContents(searchDepth = 5, list/toReturn = list())
 	for(var/atom/part as anything in contents)
 		toReturn += part
 		if(part.contents.len && searchDepth)
 			part.GetAllContents(searchDepth - 1, toReturn)
 	return toReturn
+
+///Returns the src and all recursive contents as a list. Includes the starting atom.
+/atom/proc/get_all_contents(ignore_flag_1)
+	. = list(src)
+	var/i = 0
+	while(i < length(.))
+		var/atom/checked_atom = .[++i]
+		if(checked_atom.flags_atom & ignore_flag_1)
+			continue
+		. += checked_atom.contents
 
 /// Returns list of contents of a turf recursively, much like GetAllContents
 /// We only get containing atoms in the turf, excluding multitiles bordering on it
@@ -1050,7 +1059,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 
 	var/cur_user_zone_sel = busy_user.zone_selected
 	var/cur_target_zone_sel
-	var/delayfraction = Ceiling(delay/numticks)
+	var/delayfraction = ceil(delay/numticks)
 	var/user_orig_loc = busy_user.loc
 	var/user_orig_turf = get_turf(busy_user)
 	var/target_orig_loc
@@ -1552,7 +1561,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
-		. += Ceiling(i*DELTA_CALC)
+		. += ceil(i*DELTA_CALC)
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
@@ -1655,7 +1664,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 
 	// Redistribute the net displacement evenly on the side of the center line that needs it
 	// Only half the points are gonna be affected.
-	var/to_redistribute = abs(Ceiling(net_displacement / (variances.len/2)))
+	var/to_redistribute = abs(ceil(net_displacement / (variances.len/2)))
 	for(var/i in 1 to variances.len)
 		if(!net_displacement)
 			break
@@ -1757,8 +1766,8 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		pixel_y_offset += ((AMiconheight/world.icon_size)-1)*(world.icon_size*0.5)
 
 	//DY and DX
-	var/rough_x = round(round(pixel_x_offset,world.icon_size)/world.icon_size)
-	var/rough_y = round(round(pixel_y_offset,world.icon_size)/world.icon_size)
+	var/rough_x = floor(round(pixel_x_offset,world.icon_size)/world.icon_size)
+	var/rough_y = floor(round(pixel_y_offset,world.icon_size)/world.icon_size)
 
 	//Find coordinates
 	var/turf/T = get_turf(AM) //use AM's turfs, as it's coords are the same as AM's AND AM's coords are lost if it is inside another atom
@@ -1904,8 +1913,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		region_y2["[i]"] = TRUE
 
 	return list(region_x1 & region_x2, region_y1 & region_y2)
-
-#define TURF_FROM_COORDS_LIST(List) (locate(List[1], List[2], List[3]))
 
 //Vars that will not be copied when using /DuplicateObject
 GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(

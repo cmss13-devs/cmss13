@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(vote)
 
 /datum/controller/subsystem/vote/fire()
 	if(mode)
-		time_remaining = round((started_time + CONFIG_GET(number/vote_period) - world.time)/10)
+		time_remaining = floor((started_time + CONFIG_GET(number/vote_period) - world.time)/10)
 
 		if(time_remaining < 0)
 			result()
@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(vote)
 	voting.Cut()
 	remove_action_buttons()
 
-	UnregisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN)
 
 	for(var/c in GLOB.player_list)
 		update_static_data(c)
@@ -363,7 +363,7 @@ SUBSYSTEM_DEF(vote)
 		var/vp = CONFIG_GET(number/vote_period)
 		SEND_SOUND(world, sound(vote_sound, channel = SOUND_CHANNEL_VOX, volume = vote_sound_vol))
 		to_chat(world, SPAN_CENTERBOLD("<br><br><font color='purple'><b>[text]</b><br>Type <b>vote</b> or click <a href='?src=[REF(src)]'>here</a> to place your votes.<br>You have [DisplayTimeText(vp)] to vote.</font><br><br>"))
-		time_remaining = round(vp/10)
+		time_remaining = floor(vp/10)
 		for(var/c in GLOB.clients)
 			var/client/C = c
 			var/datum/action/innate/vote/V = give_action(C.mob, /datum/action/innate/vote)
@@ -373,14 +373,14 @@ SUBSYSTEM_DEF(vote)
 			if(send_clients_vote)
 				C.mob.vote()
 
-		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, PROC_REF(handle_client_joining))
+		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_client_joining))
 		SStgui.update_uis(src)
 		return TRUE
 	return FALSE
 
 /datum/controller/subsystem/vote/proc/map_vote_adjustment(current_votes, carry_over, total_votes)
 	// Get 10% of the total map votes and remove them from the pool
-	var/total_vote_adjustment = round(total_votes * CONFIG_GET(number/vote_adjustment_callback))
+	var/total_vote_adjustment = floor(total_votes * CONFIG_GET(number/vote_adjustment_callback))
 
 	// Do not remove more votes than were made for the map
 	return -(min(current_votes, total_vote_adjustment))
@@ -525,7 +525,7 @@ GLOBAL_LIST_INIT(possible_vote_types, list(
 			if(!(params["vote_type"] in GLOB.possible_vote_types))
 				return
 
-			if(!check_rights(R_ADMIN))
+			if(!check_rights(R_MOD))
 				var/list/vote_type = GLOB.possible_vote_types[params["vote_type"]]
 				if(vote_type["admin_only"])
 					return

@@ -323,7 +323,7 @@
 
 	var/dat = "<html><body><h1><B>Antagonists</B></h1>"
 	dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
-	dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
+	dat += "Round Duration: <B>[floor(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
 
 	if(length(GLOB.other_factions_human_list))
 		dat += "<br><table cellspacing=5><tr><td><B>Other human factions</B></td><td></td><td></td></tr>"
@@ -381,7 +381,7 @@
 	if (SSticker.current_state >= GAME_STATE_PLAYING)
 		var/dat = "<html><body><h1><B>Round Status</B></h1>"
 		dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
-		dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
+		dat += "Round Duration: <B>[floor(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
 
 		if(check_rights(R_DEBUG, 0))
 			dat += "<A HREF='?_src_=vars;Vars=\ref[SSoldshuttle.shuttle_controller]'>VV Shuttle Controller</A><br><br>"
@@ -493,6 +493,8 @@
 		.["client_ckey"] = targetClient.ckey
 
 		.["client_muted"] = targetClient.prefs.muted
+		.["client_age"] = targetClient.player_data.byond_account_age
+		.["first_join"] = targetClient.player_data.first_join_date
 		.["client_rank"] = targetClient.admin_holder ? targetClient.admin_holder.rank : "Player"
 		.["client_muted"] = targetClient.prefs.muted
 

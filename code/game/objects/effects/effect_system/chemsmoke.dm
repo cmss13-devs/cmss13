@@ -26,7 +26,7 @@
 	var/list/targetTurfs
 	var/list/wallList
 	var/density
-
+	var/static/last_reaction_signature
 
 /datum/effect_system/smoke_spread/chem/New()
 	..()
@@ -79,14 +79,19 @@
 		contained = "\[[contained]\]"
 	var/area/A = get_area(location)
 
+	var/reaction_signature = "[time2text(world.timeofday, "hh:mm")]: ([A.name])[contained] by [carry.my_atom.fingerprintslast]"
+	if(last_reaction_signature == reaction_signature)
+		return
+	last_reaction_signature = reaction_signature
+
 	var/where = "[A.name]|[location.x], [location.y]"
 	var/whereLink = "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
 
 	if(carry.my_atom.fingerprintslast)
-		message_admins("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
+		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 		log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 	else
-		message_admins("A chemical smoke reaction has taken place in ([whereLink]). No associated key.")
+		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink]). No associated key.")
 		log_game("A chemical smoke reaction has taken place in ([where])[contained]. No associated key.")
 
 

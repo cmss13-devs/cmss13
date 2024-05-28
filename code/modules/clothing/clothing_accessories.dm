@@ -126,8 +126,6 @@
 	set src in usr
 
 	remove_accessory(usr, pick_accessory_to_remove(usr, usr))
-	if(!LAZYLEN(accessories))
-		verbs -= /obj/item/clothing/proc/removetie_verb
 
 /obj/item/clothing/proc/pick_accessory_to_remove(mob/user, mob/targetmob)
 	if(!isliving(user))
@@ -155,6 +153,9 @@
 	if(!user.Adjacent(src))
 		to_chat(user, SPAN_WARNING("You're too far away!"))
 		return
+
+	if(!LAZYLEN(removables))
+		verbs -= /obj/item/clothing/proc/removetie_verb
 
 	return accessory
 

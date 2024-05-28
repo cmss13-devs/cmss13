@@ -423,7 +423,7 @@
 		return
 	if(!istype(paygrade_actual, /datum/paygrade/marine)) //We only want marines to be able to recommend for medals
 		return
-	if(ranking < 3) //E1 starts at 0, so anyone above Corporal (ranking = 3) can recommend for medals
+	if(paygrade_actual.ranking < 3) //E1 starts at 0, so anyone above Corporal (ranking = 3) can recommend for medals
 		to_chat(wearer, SPAN_WARNING("Only officers or NCO's (ME4+) can recommend medals!"))
 		return
 	if(add_medal_recommendation(usr))

@@ -88,23 +88,6 @@
 	name = "Burst Weyland-Yutani Corporate Security Lead"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon/lead/burst
 
-// Hybrisa - Goons
-
-/obj/effect/landmark/corpsespawner/hybrisa_goon
-	name = "Weyland-Yutani Corporate Security Officer"
-	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon
-
-/obj/effect/landmark/corpsespawner/hybrisa_goon/burst
-	name = "Burst Weyland-Yutani Corporate Security Officer"
-	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/burst
-
-/obj/effect/landmark/corpsespawner/hybrisa_goon/lead
-	name = "Weyland-Yutani Corporate Security Lead"
-	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead
-
-/obj/effect/landmark/corpsespawner/hybrisa_goon/lead/burst
-	name = "Burst Weyland-Yutani Corporate Security Lead"
-	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/burst
 
 ///CM specific jobs///
 
@@ -228,3 +211,26 @@
 /obj/effect/landmark/corpsespawner/forecon_spotter
 	name = "USCM Reconnaissance Spotter"
 	equip_path = /datum/equipment_preset/corpse/forecon_spotter
+
+
+///////////////////////
+/////// HYBRISA ///////
+///////////////////////
+
+// Hybrisa - Goons
+
+/obj/effect/landmark/corpsespawner/hybrisa_goon
+	name = "Weyland-Yutani Corporate Security Officer"
+	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon
+
+/obj/effect/landmark/corpsespawner/hybrisa_goon/burst
+	name = "Burst Weyland-Yutani Corporate Security Officer"
+	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/burst
+
+/obj/effect/landmark/corpsespawner/hybrisa_goon/lead
+	name = "Weyland-Yutani Corporate Security Lead"
+	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead
+
+/obj/effect/landmark/corpsespawner/hybrisa_goon/lead/burst
+	name = "Burst Weyland-Yutani Corporate Security Lead"
+	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/burst

@@ -99,6 +99,7 @@
 	name = "Derelict Ship"
 	icon_state = "derelictship"
 	ceiling = CEILING_MAX
+	ceiling_muffle = FALSE
 	flags_area = AREA_NOTUNNEL
 	ambience_exterior = AMBIENCE_DERELICT
 	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP
@@ -925,6 +926,11 @@
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/changingroom
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Locker Room"
+	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_LAB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+/area/lv759/indoors/wy_research_complex/head_research_office
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Head of Research's Office"
 	icon_state = "wylab"
 	ambience_exterior = AMBIENCE_LAB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS

@@ -1,0 +1,16 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - balance: "MST now conflicts with NST, you can only have one in your stim, not both"
+  - balance: "Boosting now only boosts other properties by 0.5 levels for each level"
+  - balance: "Regulating is now a common property and turns any overdose ammount into sugar"
+  - balance: "Flowing no longer decreases intensity and duration, it is now possible to make a blueflame equivalent fire chemical with clearance 5 and around 25 credits (30 if fire penetrating)"
+  - balance: "Bonemending is now only 2 levels less efficient when not using a splint on the broken limb as opposed to 5 levels less efficient and can be made by combining nutritious and hyper-densificating"
+  - balance: "Anti-xeno properties, fire properties and most healing properties no longer have a cost penalty when above level 5 in create mode"
+  - balance: "All anti-xeno properties are now available roundstart at low levels from basic chemicals"
+  - balance: "Fire penetrating is now a rare property and can be made by combining oxygenating and viscous (both roundstart available)"
+  - balance: "Many other various changes to flamers, chemsmoke and anti-xeno properties"
+  - balance: "Resin fruits and Warden debuff rejuvenate now clear warcrime's effects and give a short immunity"
+  - code_imp: "Refactored interference to be a component and added new traits for it"
+  - balance: "Daze no longer stops xenos from talking and is slightly less punishing when applied to humans from the neurotoxic property"
+  - code_imp: "New snowflake daze component for neurotoxic property"

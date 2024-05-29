@@ -16,7 +16,7 @@
 /area/lv80/lazarus
 	name = "\improper Lazarus"
 	icon_state = "green"
-	ceiling = CEILING_METAL
+	ceiling = CEILING_NONE
 
 /area/lv80/lazarus/landing_zones
 	ceiling = CEILING_NONE
@@ -61,6 +61,7 @@
 //Shopping Centre
 /area/lv80/ground/shopping_centre
 	minimap_color = MINIMAP_AREA_COLONY
+	ceiling = CEILING_METAL
 
 /area/lv80/ground/shopping_centre/cafeteria
 	name = "\improper Canteen"
@@ -95,6 +96,9 @@
 	icon_state = "yellow"
 
 //Corporate Offices
+/area/lv80/ground/corporate
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+
 /area/lv80/ground/corporate/north_corporate_rooms
 	name = "\improper Northern Corporate Offices"
 	icon_state = "xeno_lab"
@@ -123,6 +127,7 @@
 /area/lv80/ground/research
 	name = "\improper Research Labs"
 	icon_state = "yellow"
+	ceiling = CEILING_METAL
 
 //Checkpoints
 /area/lv80/ground/checkpoint
@@ -131,35 +136,43 @@
 
 /area/lv80/ground/checkpoint/north
 	name = "\improper North Security Checkpoint"
+	ceiling = CEILING_METAL
 
 /area/lv80/ground/checkpoint/south
 	name = "\improper South Security Checkpoint"
+	ceiling = CEILING_METAL
 
 //Town
 /area/lv80/ground/town
 	name = "\improper Town Square"
 	icon_state = "purple"
+	ceiling = CEILING_NONE
 
 /area/lv80/ground/town/church
 	name = "\improper Church"
 	icon_state = "courtroom"
+	ceiling = CEILING_METAL
 
 /area/lv80/ground/town/station
 	name = "\improper Police Station"
 	icon_state = "brig"
+	ceiling = CEILING_METAL
 
 /area/lv80/ground/town/bar
 	name = "\improper Bar"
 	icon_state = "bar"
+	ceiling = CEILING_METAL
 
 /area/lv80/ground/town/community_center
 	name = "\improper Community Center"
 	icon_state = "yellow"
+	ceiling = CEILING_METAL
 
 //Park
 /area/lv80/ground/park
 	name = "\improper Recreation Park"
 	icon_state = "blue"
+	ceiling = CEILING_NONE
 
 /area/lv80/ground/park/basketball
 	name = "\improper Basketball Court"
@@ -170,19 +183,23 @@
 	icon_state = "yellow"
 
 //Residence
-/area/lv80/ground/Residence
+/area/lv80/ground/residence
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+
+/area/lv80/ground/residence
 	name = "\improper Residence"
 
-/area/lv80/ground/Residence/backyard
+/area/lv80/ground/residence/backyard
 	name = "\improper Residence Backyard"
 
-/area/lv80/ground/Residence/fence
+/area/lv80/ground/residence/fence
 	name = "\improper Residence Fence Yard"
 
 //Reactor/water treatment
 /area/lv80/ground/engineering
 	name = "\improper Engineering"
 	icon_state = "yellow"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 
 /area/lv80/ground/engineering/office
 	name = "\improper Engineering Offices"
@@ -195,6 +212,7 @@
 /area/lv80/ground/engineering/water
 	name = "\improper Engineering Water Processing"
 	icon_state = "yellow"
+	ceiling = CEILING_METAL
 
 /area/lv80/ground/engineering/residence
 	name = "\improper Engineering Residence Walkway"
@@ -206,6 +224,9 @@
 	icon_state = "blue"
 
 //Tunnels
+/area/lv80/ground/tunnels
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+
 /area/lv80/ground/tunnels/north_tunnel
 	name= "\improper Northern Tunnel"
 	icon_state = "north"

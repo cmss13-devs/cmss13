@@ -1,0 +1,6 @@
+author: "mullenpaul"
+delete-after: True
+changes:
+  - ui: "orbit menu now splits marine squads"
+  - ui: "orbit menu now splits xeno hives"
+  - ui: "orbit menu sorts marines by job"

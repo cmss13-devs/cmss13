@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - admin: "Logging for chem smoke is now niche logged and less spammy"

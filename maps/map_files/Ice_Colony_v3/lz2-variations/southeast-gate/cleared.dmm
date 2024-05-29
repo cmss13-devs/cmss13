@@ -48,7 +48,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8
 	},
-/turf/open/auto_turf/snow/layer2,
+/turf/open/floor/plating,
 /area/shiva/exterior/cp_lz2)
 "r" = (
 /obj/effect/decal/cleanable/ash,

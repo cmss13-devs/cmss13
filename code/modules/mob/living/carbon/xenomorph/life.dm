@@ -201,7 +201,7 @@
 			blinded = TRUE
 			set_stat(UNCONSCIOUS)
 		else
-			if(!interference)//If their connection to hivemind is affected, their vision should be too.
+			if(!HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))//If their connection to hivemind is affected, their vision should be too.
 				blinded = FALSE
 			set_stat(CONSCIOUS)
 			if(regular_update && halloss > 0)
@@ -215,7 +215,6 @@
 				src.ReduceEyeBlur(1)
 
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
-			handle_interference()
 
 	return TRUE
 
@@ -428,6 +427,12 @@ Make sure their actual health updates immediately.*/
 			queen_locator()
 		return
 
+	if(tracking_atom.loc.z != loc.z && SSinterior.in_interior(tracking_atom))
+		var/datum/interior/interior = SSinterior.get_interior_by_coords(tracking_atom.x, tracking_atom.y, tracking_atom.z)
+		var/atom/exterior = interior.exterior
+		if(exterior)
+			tracking_atom = exterior
+
 	if(tracking_atom.loc.z != loc.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
 		locator.icon_state = "trackondirect"
 	else
@@ -540,15 +545,6 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/GetDazeDuration(amount)
 	amount *= 2 / 3
 	return ..()
-
-/mob/living/carbon/xenomorph/proc/handle_interference()
-	if(interference)
-		interference = max(interference-2, 0)
-
-	if(observed_xeno && observed_xeno.interference)
-		overwatch(observed_xeno,TRUE)
-
-	return interference
 
 /mob/living/carbon/xenomorph/handle_slowed()
 	if(slowed)

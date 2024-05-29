@@ -277,7 +277,7 @@
 			var/datum/effect_system/smoke_spread/chem/smoke = new()
 			smoke.set_up(to_disperse, 1, loca = turf)
 			smoke.start()
-		sleep(2)
+		sleep(4)
 
 		distance++
 

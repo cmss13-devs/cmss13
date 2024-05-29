@@ -527,8 +527,25 @@
 	selected_categories[SENTRY_CATEGORY_IFF] = FACTION_COLONY
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer
-	fire_delay = 4
+	name = "UA-635C Static Gauss Turret"
+	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed and modified for UA warship use."
+	fire_delay = 0.4 SECONDS
 	omni_directional = TRUE
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini
+	name = "UA 512-S mini sentry"
+	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M30 Autocannon and an internal belt feed and modified for UA warship use."
+	defense_type = "Mini"
+	fire_delay = 0.25 SECONDS
+	health = 150
+	health_max = 150
+	damage_mult = 0.6
+	density = FALSE
+	layer = BELOW_MOB_LAYER
+	disassemble_time = 0.75 SECONDS
+	handheld_type = /obj/item/defenses/handheld/sentry/mini
+	composite_icon = FALSE
+
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship

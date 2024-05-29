@@ -16,6 +16,7 @@
 	var/ox = 0
 	var/oy = 0
 	var/require_red_alert = FALSE
+	var/base_icon_state = "sentry_system"
 
 /obj/structure/machinery/sentry_holder/Initialize()
 	. = ..()
@@ -76,13 +77,14 @@
 	deployment_cooldown = world.time + 50
 	deployed_turret.turned_on = TRUE
 	deployed_turret.forceMove(loc)
-	icon_state = "sentry_system_deployed"
+	icon_state = "[base_icon_state]_deployed"
 
-	for(var/mob/M in deployed_turret.loc)
-		if(deployed_turret.loc == src.loc)
-			step(M, deployed_turret.dir)
-		else
-			step(M, get_dir(src,deployed_turret))
+	if(deployed_turret.density)
+		for(var/mob/blocking_mob in deployed_turret.loc)
+			if(deployed_turret.loc == loc)
+				step(blocking_mob, deployed_turret.dir)
+			else
+				step(blocking_mob, get_dir(src, deployed_turret))
 
 	deployed_turret.setDir(dir)
 	deployed_turret.pixel_x = 0
@@ -103,7 +105,7 @@
 	deployed_turret.unset_range()
 	pixel_x = ox
 	pixel_y = oy
-	icon_state = "sentry_system_installed"
+	icon_state = "[base_icon_state]_installed"
 
 /obj/structure/machinery/sentry_holder/Destroy()
 	QDEL_NULL(deployed_turret)
@@ -115,5 +117,29 @@
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony
 
 /obj/structure/machinery/sentry_holder/almayer
+	icon_state = "floor_sentry_installed"
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/almayer
+	base_icon_state = "floor_sentry"
 	require_red_alert = TRUE
+
+/obj/structure/machinery/sentry_holder/almayer/mini
+	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini
+
+/obj/structure/machinery/sentry_holder/almayer/mini/aicore
+
+/obj/structure/machinery/sentry_holder/almayer/mini/aicore/Initialize()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_AICORE_LOCKDOWN, PROC_REF(auto_deploy))
+	RegisterSignal(SSdcs, COMSIG_GLOB_AICORE_LIFT, PROC_REF(undeploy_sentry))
+
+/obj/structure/machinery/sentry_holder/almayer/mini/aicore/proc/auto_deploy()
+	if(deployed_turret.loc == src) //not deployed
+		if(stat & NOPOWER)
+			return FALSE
+
+		deploy_sentry()
+		return TRUE
+
+/obj/structure/machinery/sentry_holder/almayer/mini/aicore/attack_hand(mob/user)
+	to_chat(user, SPAN_WARNING("[src] can only be deployed remotely."))
+	return

@@ -154,7 +154,7 @@
 
 /area/lv80/ground/town/community_center
 	name = "\improper Community Center"
-	icon_state = "outpost_admin_0"
+	icon_state = "yellow"
 
 //Park
 /area/lv80/ground/park
@@ -167,7 +167,7 @@
 
 /area/lv80/ground/park/botanical
 	name = "\improper Botanical Garden"
-	icon_state = "Flight Control Exterior"
+	icon_state = "yellow"
 
 //Residence
 /area/lv80/ground/Residence

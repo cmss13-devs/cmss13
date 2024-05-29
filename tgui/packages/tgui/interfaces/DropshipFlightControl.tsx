@@ -50,7 +50,7 @@ interface DropshipNavigationProps extends NavigationProps {
   has_flyby_skill: 0 | 1;
 
   playing_launch_announcement_alarm: boolean;
-  playing_cycle_launch_announcement_alarm: boolean
+  playing_cycle_launch_announcement_alarm: boolean;
 }
 
 const DropshipDoorControl = () => {
@@ -387,30 +387,26 @@ const LaunchAnnouncementAlarm = () => {
     <Section
       title="Launch Announcement Alarm"
       buttons={
-        (!data.playing_launch_announcement_alarm ?
-          ( <PlayLaunchAnnouncementAlarm /> )
-          :
-          ( <StopLaunchAnnouncementAlarm /> )
+        !data.playing_launch_announcement_alarm ? (
+          <PlayLaunchAnnouncementAlarm />
+        ) : (
+          <StopLaunchAnnouncementAlarm />
         )
       }
     >
       <Stack vertical className="AnnouncementAlarms">
-        {
-          (!data.playing_launch_announcement_alarm ?
-            ( <PlayLaunchAnnouncementAlarm /> )
-            :
-            ( <StopLaunchAnnouncementAlarm /> )
-          )
-        }
-        {
-          (!data.playing_cycle_launch_announcement_alarm ?
-            ( <PlayCycleLaunchAnnouncementAlarm /> )
-            :
-            ( <StopCycleLaunchAnnouncementAlarm /> )
-          )
-        }
-        </Stack>
-      </Section>
+        {!data.playing_launch_announcement_alarm ? (
+          <PlayLaunchAnnouncementAlarm />
+        ) : (
+          <StopLaunchAnnouncementAlarm />
+        )}
+        {!data.playing_cycle_launch_announcement_alarm ? (
+          <PlayCycleLaunchAnnouncementAlarm />
+        ) : (
+          <StopCycleLaunchAnnouncementAlarm />
+        )}
+      </Stack>
+    </Section>
   );
 };
 

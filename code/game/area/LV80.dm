@@ -109,20 +109,20 @@
 
 /area/lv80/ground/corporate/parking_lot
 	name = "\improper Corporate Parking"
-	icon_state = "upperhull"
+	icon_state = "blue"
 
 /area/lv80/ground/corporate/entrance
 	name = "\improper Corporate Parking"
-	icon_state = "upperhull"
+	icon_state = "red"
 
 /area/lv80/ground/corporate/engineering
 	name = "\improper Corporate to Engineering Walkway"
-	icon_state = "upperhull"
+	icon_state = "purple"
 
 //Research
 /area/lv80/ground/research
 	name = "\improper Research Labs"
-	icon_state = "science"
+	icon_state = "yellow"
 
 //Checkpoints
 /area/lv80/ground/checkpoint
@@ -159,7 +159,7 @@
 //Park
 /area/lv80/ground/park
 	name = "\improper Recreation Park"
-	icon_state = "portemb"
+	icon_state = "blue"
 
 /area/lv80/ground/park/basketball
 	name = "\improper Basketball Court"
@@ -182,24 +182,28 @@
 //Reactor/water treatment
 /area/lv80/ground/engineering
 	name = "\improper Engineering"
-	icon_state = "orange"
+	icon_state = "yellow"
 
 /area/lv80/ground/engineering/office
 	name = "\improper Engineering Offices"
+	icon_state = "yellow"
 
 /area/lv80/ground/engineering/storage
 	name = "\improper Engineering Storage"
+	icon_state = "yellow"
 
 /area/lv80/ground/engineering/water
 	name = "\improper Engineering Water Processing"
+	icon_state = "yellow"
 
 /area/lv80/ground/engineering/residence
 	name = "\improper Engineering Residence Walkway"
+	icon_state = "yellow"
 
 //Comms
 /area/lv80/ground/communications
 	name = "\improper Western Communications"
-	icon_state = "req"
+	icon_state = "blue"
 
 //Tunnels
 /area/lv80/ground/tunnels/north_tunnel

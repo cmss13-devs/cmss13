@@ -182,26 +182,19 @@
 /turf/open/asphalt,
 /area/lv80/ground/corporate/parking_lot)
 "aD" = (
-/obj/structure/desertdam/decals/road_stop{
-	dir = 8;
-	icon_state = "stop_decal5"
+/obj/item/stack/sheet/wood{
+	pixel_x = -4
 	},
-/turf/open/asphalt,
-/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 1
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "aG" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /turf/open/floor{
 	icon_state = "asteroidwarning"
 	},
 /area/lv80/lazarus/landing_zones/lz1)
-"aH" = (
-/obj/structure/desertdam/decals/road_edge,
-/obj/structure/desertdam/decals/road_stop{
-	dir = 1;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "aI" = (
 /turf/open/floor/plating,
 /area/lv80/lazarus/landing_zones/lz2)
@@ -227,6 +220,13 @@
 	icon_state = "whiteblue"
 	},
 /area/lv80/ground/shopping_centre)
+"aP" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "aR" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/machinery/door_control{
@@ -301,6 +301,12 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/plating,
 /area/lv80/ground/corporate/north_corporate_rooms)
+"bd" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal2"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "be" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -337,6 +343,15 @@
 	icon_state = "dark"
 	},
 /area/lv80/ground/corporate/middle_corporate_rooms)
+"bk" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/cameras{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 8
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "bl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
@@ -517,6 +532,9 @@
 "bM" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/space)
+"bN" = (
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "bO" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -648,6 +666,16 @@
 	icon_state = "grimy"
 	},
 /area/lv80/ground/shopping_centre/mall_office)
+"ci" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/town)
 "cj" = (
 /turf/open/floor{
 	dir = 10;
@@ -720,21 +748,15 @@
 	},
 /area/lv80/ground/town/bar)
 "cv" = (
-/turf/open/floor/coagulation{
-	icon_state = "0,5"
-	},
-/area/lv80/ground/engineering/water)
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/kutjevo/tan,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "cw" = (
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
 /area/lv80/ground/shopping_centre/mall_storage)
-"cx" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
-/area/lv80/ground/town)
 "cy" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -793,11 +815,6 @@
 	icon_state = "redcorner"
 	},
 /area/lv80/ground/town/station)
-"cG" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
-/area/lv80/ground/town)
 "cH" = (
 /obj/structure/bed/stool,
 /turf/open/floor{
@@ -1162,16 +1179,6 @@
 	},
 /turf/open/asphalt,
 /area/lv80/lazarus/landing_zones/lz2/perimiter_north)
-"dV" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/structure/desertdam/decals/road_stop{
-	dir = 8;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "dW" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/corsat{
@@ -1399,16 +1406,6 @@
 	icon_state = "whitegreenfull"
 	},
 /area/lv80/ground/research)
-"eG" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal2"
-	},
-/obj/structure/desertdam/decals/road_stop{
-	dir = 1;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "eH" = (
 /turf/open/asphalt,
 /area/lv80/ground/corporate/parking_lot)
@@ -1455,6 +1452,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt,
 /area/lv80/ground/corporate/entrance)
+"eL" = (
+/obj/structure/machinery/light,
+/obj/structure/closet/secure_closet/security,
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 4
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "eM" = (
 /turf/open/floor{
 	icon_state = "cult"
@@ -1527,6 +1531,20 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv80/ground/corporate/entrance)
+"eY" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin{
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/obj/item/newspaper,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 8
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "fa" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -30
@@ -1802,6 +1820,14 @@
 	icon_state = "brown"
 	},
 /area/lv80/ground/engineering/office)
+"fW" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 4
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "fX" = (
 /obj/structure/machinery/teleport/hub,
 /turf/open/floor{
@@ -1960,12 +1986,6 @@
 	icon_state = "plate"
 	},
 /area/lv80/ground/engineering/office)
-"gB" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/corporate/entrance)
 "gE" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -2164,6 +2184,10 @@
 	icon_state = "wood"
 	},
 /area/lv80/ground/shopping_centre/mall_office)
+"hl" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
+/turf/open/floor/prison,
+/area/lv80/ground/Residence)
 "hn" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -2176,8 +2200,12 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
 /turf/open/asphalt,
-/area/lv80/ground/corporate/entrance)
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "hq" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor{
@@ -2198,6 +2226,11 @@
 	icon_state = "marked"
 	},
 /area/lv80/ground/engineering/office)
+"hu" = (
+/turf/open/floor/coagulation{
+	icon_state = "0,5"
+	},
+/area/lv80/ground/engineering/water)
 "hv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/lv624/fog_blocker,
@@ -2215,6 +2248,13 @@
 	icon_state = "chapel"
 	},
 /area/lv80/ground/town/church)
+"hz" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	req_one_access = null;
+	welded = 1
+	},
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "hA" = (
 /obj/structure/sign/safety/chem_lab{
 	pixel_x = 8;
@@ -2274,16 +2314,6 @@
 	icon_state = "bcircuitoff"
 	},
 /area/lv80/ground/corporate/south_corporate_rooms)
-"hJ" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/structure/desertdam/decals/road_stop{
-	dir = 4;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "hK" = (
 /obj/structure/sign/poster{
 	pixel_y = 32
@@ -2359,6 +2389,10 @@
 	icon_state = "vault"
 	},
 /area/lv80/ground/communications)
+"hW" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/kutjevo/tan,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "hX" = (
 /obj/structure/bed/chair/comfy/lime{
 	dir = 8
@@ -2390,11 +2424,6 @@
 	icon_state = "whitepurple"
 	},
 /area/lv80/ground/corporate/south_corporate_rooms)
-"if" = (
-/turf/open/floor/coagulation{
-	icon_state = "0,0"
-	},
-/area/lv80/ground/engineering/water)
 "ig" = (
 /turf/closed/wall/r_wall/prison,
 /area/lv80/lazarus/landing_zones/lz1/perimiter_south)
@@ -2443,6 +2472,12 @@
 	},
 /turf/open/floor/wood,
 /area/lv80/ground/corporate/middle_corporate_rooms)
+"ip" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "iq" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/transmitter/colony_net/rotary{
@@ -2691,8 +2726,12 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv80/ground/shopping_centre/mall_hospital)
-"jj" = (
-/obj/structure/desertdam/decals/road_stop,
+"jh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
 /turf/open/asphalt,
 /area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "jk" = (
@@ -2786,6 +2825,17 @@
 	},
 /turf/open/floor/plating,
 /area/lv80/ground/shopping_centre/mall_storage)
+"jG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "jH" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4
@@ -2821,15 +2871,6 @@
 "jM" = (
 /turf/open/asphalt/cement,
 /area/lv80/lazarus/landing_zones/lz2)
-"jN" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal2"
-	},
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "jR" = (
 /obj/structure/machinery/vending/snack,
 /obj/structure/machinery/light,
@@ -2968,6 +3009,10 @@
 	icon_state = "darkpurple2"
 	},
 /area/lv80/ground/corporate/south_corporate_rooms)
+"kr" = (
+/obj/effect/landmark/railgun_camera_pos,
+/turf/closed/wall,
+/area/space)
 "ks" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -3073,6 +3118,13 @@
 	},
 /turf/open/floor/carpet,
 /area/lv80/ground/corporate/middle_corporate_rooms)
+"kK" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 1
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "kL" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating{
@@ -3124,12 +3176,6 @@
 "kT" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/space)
-"kU" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal12"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/town)
 "kV" = (
 /turf/open/floor{
 	dir = 1;
@@ -3208,6 +3254,12 @@
 	icon_state = "whitegreenfull"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
+"lf" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "li" = (
 /obj/structure/surface/table,
 /turf/open/floor{
@@ -3287,6 +3339,16 @@
 	icon_state = "bcircuitoff"
 	},
 /area/lv80/ground/research)
+"lx" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "lz" = (
 /turf/open/floor/plating,
 /area/lv80/ground/corporate/south_corporate_rooms)
@@ -3307,6 +3369,12 @@
 	icon_state = "darkpurple2"
 	},
 /area/lv80/ground/corporate/south_corporate_rooms)
+"lE" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal3"
+	},
+/turf/open/asphalt,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "lF" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -3408,6 +3476,16 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv80/ground/corporate/entrance)
+"mb" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
+/turf/open/floor{
+	icon_state = "whitegreenfull"
+	},
+/area/lv80/ground/corporate/north_corporate_rooms)
+"mc" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/kutjevo/tan,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "md" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 2
@@ -3565,16 +3643,6 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv80/ground/shopping_centre/cafeteria)
-"mD" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/obj/structure/desertdam/decals/road_stop{
-	dir = 8;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "mE" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -3734,6 +3802,11 @@
 	},
 /turf/open/floor/wood,
 /area/lv80/ground/park/basketball)
+"na" = (
+/turf/open/floor/coagulation{
+	icon_state = "8,0"
+	},
+/area/lv80/ground/engineering/water)
 "nc" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
@@ -3853,11 +3926,20 @@
 	},
 /area/lv80/ground/engineering/office)
 "ns" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal6"
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
+"nt" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 3
 	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
+/obj/item/tool/wrench{
+	pixel_y = 6
+	},
+/turf/open/floor/kutjevo/tan,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "nu" = (
 /obj/structure/window/framed/colony,
 /turf/open/asphalt/cement_sunbleached{
@@ -3892,6 +3974,12 @@
 "nB" = (
 /turf/open/asphalt/cement,
 /area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
+"nC" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
+/area/lv80/ground/engineering/water)
 "nD" = (
 /turf/open/floor/carpet,
 /area/lv80/ground/corporate/middle_corporate_rooms)
@@ -3954,6 +4042,16 @@
 	icon_state = "grimy"
 	},
 /area/lv80/ground/shopping_centre/mall_office)
+"nS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "nT" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
@@ -4054,6 +4152,9 @@
 	icon_state = "whiteyellow"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
+"om" = (
+/turf/open/floor/kutjevo/tan,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "oo" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -4398,6 +4499,16 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv80/ground/engineering/storage)
+"pn" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "po" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor{
@@ -4617,12 +4728,6 @@
 	icon_state = "darkpurplecorners2"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
-"qj" = (
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "stop_decal2"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "qk" = (
 /turf/open/floor/greengrid,
 /area/lv80/ground/corporate/south_corporate_rooms)
@@ -4886,22 +4991,6 @@
 	icon_state = "carpet15-15"
 	},
 /area/lv80/ground/town/bar)
-"rw" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 4;
-	id = "dam_stormlock_central";
-	name = "\improper Storm Lock";
-	unacidable = 0
-	},
-/obj/structure/desertdam/decals/road_stop{
-	dir = 8;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint/south)
 "rx" = (
 /obj/structure/bed/chair,
 /turf/open/floor{
@@ -5067,6 +5156,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement,
 /area/lv80/ground/corporate/entrance)
+"rZ" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "sa" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = -12
@@ -5077,6 +5173,15 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/floor/sandstone,
 /area/lv80/ground/town)
+"sb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "sc" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -5237,6 +5342,15 @@
 	icon_state = "red"
 	},
 /area/lv80/ground/Residence)
+"sF" = (
+/turf/open/floor/coagulation{
+	icon_state = "2,0"
+	},
+/area/lv80/ground/engineering/water)
+"sG" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "sH" = (
 /obj/structure/machinery/landinglight/ds1/delaythree,
 /turf/open/floor{
@@ -5281,10 +5395,6 @@
 	icon_state = "cement_sunbleached12"
 	},
 /area/lv80/ground/checkpoint/north)
-"sP" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
-/turf/open/floor/prison,
-/area/lv80/ground/Residence)
 "sR" = (
 /turf/open/floor{
 	dir = 8;
@@ -5494,6 +5604,12 @@
 	},
 /turf/open/asphalt,
 /area/lv80/ground/checkpoint)
+"ty" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "tz" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -5593,6 +5709,13 @@
 	icon_state = "plate"
 	},
 /area/lv80/ground/engineering/storage)
+"tO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "tP" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor{
@@ -5697,6 +5820,13 @@
 	icon_state = "darkyellow2"
 	},
 /area/lv80/ground/town/community_center)
+"ul" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "um" = (
 /obj/structure/bed/chair/bolted{
 	dir = 1
@@ -5709,13 +5839,10 @@
 "un" = (
 /turf/open/asphalt/cement,
 /area/lv80/ground/Residence/backyard)
-"up" = (
-/obj/structure/desertdam/decals/road_stop{
-	dir = 4;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
+"uo" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "uq" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal2"
@@ -5955,6 +6082,19 @@
 	icon_state = "whitegreen"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
+"vc" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = "dam_stormlock_central";
+	name = "\improper Storm Lock";
+	unacidable = 0
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint/south)
 "vd" = (
 /obj/effect/decal/remains/human,
 /obj/structure/desertdam/decals/road_edge{
@@ -6005,6 +6145,16 @@
 	},
 /turf/open/floor/plating,
 /area/lv80/lazarus/landing_zones/lz1)
+"vo" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "vp" = (
 /turf/open/floor/corsat{
 	icon_state = "brown"
@@ -6024,6 +6174,16 @@
 	icon_state = "platingdmg2"
 	},
 /area/lv80/ground/corporate/south_corporate_rooms)
+"vu" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "vv" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -6167,6 +6327,13 @@
 	},
 /turf/open/asphalt,
 /area/lv80/lazarus/landing_zones/lz2/perimiter_north)
+"vX" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/cameras,
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 1
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "vY" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -6181,6 +6348,11 @@
 	icon_state = "dark"
 	},
 /area/lv80/ground/town/church)
+"we" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached14"
+	},
+/area/lv80/ground/checkpoint)
 "wf" = (
 /obj/structure/surface/rack,
 /turf/open/floor/plating,
@@ -6491,13 +6663,6 @@
 	icon_state = "plate"
 	},
 /area/lv80/ground/engineering/office)
-"xh" = (
-/obj/structure/desertdam/decals/road_stop{
-	dir = 4;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "xi" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -6515,6 +6680,10 @@
 	},
 /turf/open/floor/plating,
 /area/lv80/ground/shopping_centre/mall_office)
+"xk" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "xl" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/floor/grass,
@@ -6553,6 +6722,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement,
 /area/lv80/ground/tunnels/east_tunnel)
+"xt" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "xu" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -6723,15 +6899,6 @@
 	icon_state = "chapel"
 	},
 /area/lv80/ground/town/church)
-"xX" = (
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "stop_decal3"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "xY" = (
 /obj/structure/showcase,
 /turf/open/floor{
@@ -6936,6 +7103,12 @@
 	icon_state = "plate"
 	},
 /area/lv80/ground/engineering/office)
+"yH" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/tan,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "yI" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat{
@@ -7034,11 +7207,6 @@
 	icon_state = "whitepurple"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
-"za" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
-/area/lv80/ground/checkpoint)
 "zb" = (
 /turf/open/asphalt/cement,
 /area/lv80/ground/checkpoint)
@@ -7048,12 +7216,6 @@
 	},
 /turf/open/asphalt,
 /area/lv80/ground/town)
-"zd" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/lv80/ground/engineering/office)
 "ze" = (
 /obj/structure/bed/chair/wood/normal,
 /turf/open/floor{
@@ -7068,6 +7230,15 @@
 	icon_state = "whitegreen"
 	},
 /area/lv80/ground/research)
+"zg" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal3"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "zh" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
@@ -7209,16 +7380,6 @@
 	icon_state = "cult"
 	},
 /area/lv80/ground/shopping_centre/mall_office)
-"zC" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/structure/desertdam/decals/road_stop{
-	dir = 1;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "zE" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 1
@@ -7228,6 +7389,9 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv80/lazarus/landing_zones/lz2)
+"zF" = (
+/turf/open/floor/kutjevo/multi_tiles,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "zG" = (
 /obj/structure/machinery/power/apc/nocharge{
 	dir = 8
@@ -7254,6 +7418,14 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv80/lazarus/landing_zones/lz1)
+"zJ" = (
+/obj/structure/tunnel{
+	id = "hole2"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/lv80/ground/engineering/office)
 "zL" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/woodentable,
@@ -7507,6 +7679,10 @@
 	icon_state = "darkgreen2"
 	},
 /area/lv80/ground/research)
+"AD" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating/kutjevo,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "AE" = (
 /obj/item/stack/sandbags/large_stack,
 /turf/open/asphalt/cement,
@@ -7550,6 +7726,10 @@
 	},
 /turf/open/asphalt,
 /area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
+"AM" = (
+/obj/structure/desertdam/decals/road_stop,
+/turf/open/asphalt,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "AP" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 2;
@@ -7587,12 +7767,6 @@
 	icon_state = "dark"
 	},
 /area/lv80/ground/town/church)
-"AT" = (
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "AU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -7601,6 +7775,12 @@
 	icon_state = "squares"
 	},
 /area/lv80/ground/engineering/office)
+"AV" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/town)
 "AW" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
@@ -7657,6 +7837,11 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv80/lazarus/landing_zones/lz1)
+"Bm" = (
+/turf/open/floor/coagulation{
+	icon_state = "0,0"
+	},
+/area/lv80/ground/engineering/water)
 "Bn" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -7934,6 +8119,13 @@
 	icon_state = "grimy"
 	},
 /area/lv80/ground/shopping_centre/mall_office)
+"Cm" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/revolver/cmb,
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 1
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Co" = (
 /obj/structure/surface/table/almayer,
 /obj/item/co2_cartridge{
@@ -8332,6 +8524,14 @@
 	icon_state = "sterile_green_side"
 	},
 /area/lv80/ground/shopping_centre/mall_hospital)
+"DH" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/light,
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 8
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "DI" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor{
@@ -8642,8 +8842,10 @@
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
 "ES" = (
-/turf/open/asphalt/cement,
-/area/lv80/ground/research)
+/turf/open/floor/coagulation{
+	icon_state = "8,3"
+	},
+/area/lv80/ground/engineering/water)
 "ET" = (
 /obj/structure/safe/floor{
 	name = "safe";
@@ -8660,6 +8862,16 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
+"EV" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "EW" = (
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
@@ -8695,6 +8907,10 @@
 	icon_state = "whitegreenfull"
 	},
 /area/lv80/ground/engineering/water)
+"Fc" = (
+/obj/structure/bed/stool,
+/turf/open/asphalt/cement,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Fd" = (
 /turf/open/floor{
 	dir = 8;
@@ -8824,6 +9040,12 @@
 	dir = 10
 	},
 /area/lv80/ground/town/community_center)
+"Fz" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "FA" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt,
@@ -8846,22 +9068,11 @@
 	},
 /area/lv80/ground/engineering/office)
 "FF" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_marked"
-	},
-/area/lv80/ground/engineering/water)
-"FG" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal12"
 	},
 /turf/open/asphalt,
-/area/lv80/ground/checkpoint)
+/area/lv80/ground/town)
 "FH" = (
 /turf/open/asphalt/cement,
 /area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
@@ -8899,6 +9110,12 @@
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/shuttle/dropship,
 /area/lv80/ground/checkpoint/north)
+"FO" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/corporate/entrance)
 "FP" = (
 /turf/open/floor/prison{
 	icon_state = "darkyellowcorners2"
@@ -8913,22 +9130,21 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv80/ground/corporate/entrance)
-"FS" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 4;
-	id = "dam_stormlock_central";
-	name = "\improper Storm Lock";
-	unacidable = 0
-	},
-/obj/structure/desertdam/decals/road_stop,
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint/south)
 "FT" = (
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
 /area/lv80/ground/engineering/office)
+"FU" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 4
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "FV" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat{
@@ -8984,12 +9200,6 @@
 "Gg" = (
 /turf/open/asphalt/cement_sunbleached,
 /area/lv80/lazarus/landing_zones/lz1/perimiter_south)
-"Gh" = (
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "stop_decal3"
-	},
-/turf/open/asphalt,
-/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "Gi" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal10"
@@ -9259,6 +9469,10 @@
 	icon_state = "dark"
 	},
 /area/lv80/ground/communications)
+"Hd" = (
+/obj/item/tool/warning_cone,
+/turf/open/asphalt/cement,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "He" = (
 /obj/item/prop/colony/proptag{
 	desc = "A fallen marine's information dog tag. It reads, Sergeant Douglas 'Bedwetter' Smith"
@@ -9269,13 +9483,6 @@
 	icon_state = "brown"
 	},
 /area/lv80/ground/engineering/office)
-"Hf" = (
-/obj/structure/desertdam/decals/road_edge,
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "Hg" = (
 /turf/closed/wall,
 /area/lv80/ground/shopping_centre/department_store)
@@ -9608,6 +9815,10 @@
 	icon_state = "brown"
 	},
 /area/lv80/ground/engineering/office)
+"Il" = (
+/obj/structure/surface/rack,
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Im" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -9624,6 +9835,15 @@
 	icon_state = "plate"
 	},
 /area/lv80/ground/engineering/office)
+"Io" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "Ip" = (
 /obj/item/stack/sandbags/large_stack{
 	pixel_x = -7
@@ -9838,6 +10058,13 @@
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/plating,
 /area/lv80/ground/shopping_centre/mall_janitor)
+"IY" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 8
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Ja" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -9862,37 +10089,12 @@
 	},
 /area/lv80/ground/shopping_centre/department_store)
 "Jc" = (
-/obj/effect/landmark/railgun_camera_pos,
-/turf/closed/wall,
-/area/space)
-"Jd" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/obj/structure/desertdam/decals/road_stop{
-	dir = 4;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
-"Jf" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
 /obj/structure/desertdam/decals/road_stop{
 	dir = 8;
 	icon_state = "stop_decal5"
 	},
 /turf/open/asphalt,
 /area/lv80/ground/town)
-"Jg" = (
-/obj/structure/tunnel{
-	id = "hole2"
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/lv80/ground/engineering/office)
 "Jh" = (
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor/greengrid,
@@ -9953,15 +10155,6 @@
 	icon_state = "dark"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
-"Jq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "Jr" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -10204,19 +10397,6 @@
 	icon_state = "plate"
 	},
 /area/lv80/ground/engineering/office)
-"Kg" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 4;
-	id = "dam_stormlock_central";
-	name = "\improper Storm Lock";
-	unacidable = 0
-	},
-/obj/structure/desertdam/decals/road_stop{
-	dir = 8;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint/south)
 "Kh" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -10237,16 +10417,6 @@
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/asphalt/cement,
 /area/lv80/ground/communications)
-"Kl" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/obj/structure/desertdam/decals/road_stop{
-	dir = 4;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "Ko" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -10260,6 +10430,33 @@
 	icon_state = "browncorner"
 	},
 /area/lv80/ground/engineering/office)
+"Kr" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/cranberry{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/cherry{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 4
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
+"Ks" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "Kt" = (
 /obj/structure/machinery/power/apc{
 	dir = 8;
@@ -10277,6 +10474,10 @@
 	icon_state = "whitepurple"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
+"Ku" = (
+/obj/item/storage/donut_box,
+/turf/open/floor/kutjevo/tan,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Kv" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -10417,6 +10618,14 @@
 	icon_state = "whitegreen_v"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
+"KU" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "KV" = (
 /turf/closed/wall/r_wall,
 /area/lv80/ground/shopping_centre/mall_office)
@@ -10459,6 +10668,16 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
+"La" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
+	},
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 1
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Lb" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -10536,14 +10755,15 @@
 	},
 /area/lv80/ground/corporate/middle_corporate_rooms)
 "Lp" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = "dam_stormlock_central";
+	name = "\improper Storm Lock";
+	unacidable = 0
 	},
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "stop_decal5"
-	},
+/obj/structure/desertdam/decals/road_stop,
 /turf/open/asphalt,
-/area/lv80/ground/checkpoint)
+/area/lv80/ground/checkpoint/south)
 "Lq" = (
 /obj/structure/surface/table/almayer,
 /obj/item/toy/plush,
@@ -10656,6 +10876,22 @@
 	icon_state = "dark"
 	},
 /area/lv80/ground/communications)
+"LG" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = "dam_stormlock_central";
+	name = "\improper Storm Lock";
+	unacidable = 0
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint/south)
 "LH" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/radio,
@@ -10896,17 +11132,6 @@
 	},
 /turf/open/asphalt,
 /area/lv80/lazarus/landing_zones/lz2/perimiter_north)
-"MA" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/desertdam/decals/road_stop{
-	dir = 4;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "MB" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 2
@@ -11041,16 +11266,6 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/lv80/ground/corporate/middle_corporate_rooms)
-"MX" = (
-/obj/structure/desertdam/decals/road_stop{
-	dir = 1;
-	icon_state = "stop_decal5"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "MY" = (
 /turf/open/asphalt/cement,
 /area/lv80/ground/communications)
@@ -11082,6 +11297,16 @@
 	icon_state = "redcorner"
 	},
 /area/lv80/ground/shopping_centre/shooting_range)
+"Nc" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 1
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Ne" = (
 /obj/item/storage/backpack/marine/satchel/scout_cloak,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -11232,10 +11457,10 @@
 	},
 /area/lv80/ground/shopping_centre/mall_office)
 "NB" = (
-/turf/open/floor/coagulation{
-	icon_state = "8,0"
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached14"
 	},
-/area/lv80/ground/engineering/water)
+/area/lv80/ground/town)
 "NC" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -11249,10 +11474,20 @@
 	icon_state = "cult"
 	},
 /area/lv80/ground/shopping_centre/shooting_range)
+"ND" = (
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 4
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "NE" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/floor/grass,
 /area/lv80/ground/park/botanical)
+"NG" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached2"
+	},
+/area/lv80/ground/town)
 "NI" = (
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/solaris/reinforced,
@@ -11421,16 +11656,6 @@
 	},
 /turf/open/floor/grass,
 /area/lv80/ground/park/botanical)
-"Or" = (
-/obj/structure/desertdam/decals/road_stop{
-	dir = 4;
-	icon_state = "stop_decal5"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "Os" = (
 /obj/structure/surface/table/almayer,
 /obj/item/toy/deck,
@@ -11658,6 +11883,10 @@
 	icon_state = "dark"
 	},
 /area/lv80/ground/corporate/south_corporate_rooms)
+"Pj" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/kutjevo/tan,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Pk" = (
 /turf/open/asphalt/cement,
 /area/lv80/ground/engineering/water)
@@ -11750,6 +11979,10 @@
 	icon_state = "multi_tiles"
 	},
 /area/lv80/ground/park/basketball)
+"Px" = (
+/obj/structure/closet/secure_closet/security,
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Py" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -11865,6 +12098,12 @@
 	icon_state = "marked"
 	},
 /area/lv80/ground/engineering/office)
+"PR" = (
+/obj/structure/tunnel{
+	id = "hole2"
+	},
+/turf/open/floor/prison,
+/area/lv80/ground/Residence)
 "PT" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 1;
@@ -11882,6 +12121,17 @@
 	icon_state = "dark"
 	},
 /area/lv80/ground/town/church)
+"PV" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/weldingtool/simple{
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/obj/item/tool/weldingtool/largetank{
+	pixel_x = 3
+	},
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "PW" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -11948,17 +12198,20 @@
 	icon_state = "brown"
 	},
 /area/lv80/ground/engineering/office)
+"Qh" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached9"
+	},
+/area/lv80/ground/checkpoint)
+"Qi" = (
+/obj/structure/window_frame/colony,
+/turf/open/floor/plating/kutjevo,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Qk" = (
 /obj/structure/foamed_metal,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkyellow2"
-	},
-/area/lv80/ground/corporate/north_corporate_rooms)
-"Ql" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
 "Qm" = (
@@ -11994,12 +12247,6 @@
 	icon_state = "dark"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
-"Qq" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/town)
 "Qr" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -12081,6 +12328,16 @@
 	icon_state = "cement_sunbleached14"
 	},
 /area/lv80/lazarus/landing_zones/lz1/perimiter_south)
+"QI" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "QJ" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv80/ground/engineering/office)
@@ -12166,27 +12423,11 @@
 	icon_state = "darkgreencorners2"
 	},
 /area/lv80/ground/research)
-"QX" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal8"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/town)
 "QY" = (
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
 /area/lv80/ground/engineering/storage)
-"QZ" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/obj/structure/desertdam/decals/road_stop{
-	dir = 8;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "Ra" = (
 /turf/open/floor{
 	dir = 1;
@@ -12465,6 +12706,13 @@
 	icon_state = "plate"
 	},
 /area/lv80/ground/shopping_centre/kitchen)
+"RU" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 1
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "RV" = (
 /obj/structure/filtration/machine_64x96{
 	icon_state = "filtration_machine_A_1"
@@ -12529,12 +12777,29 @@
 	icon_state = "purple"
 	},
 /area/lv80/ground/corporate/south_corporate_rooms)
+"Sj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "Sk" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor{
 	icon_state = "delivery"
 	},
 /area/lv80/ground/corporate/south_corporate_rooms)
+"Sl" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/tan,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Sm" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/floor{
@@ -12780,13 +13045,6 @@
 	icon_state = "whitegreenfull"
 	},
 /area/lv80/ground/engineering/water)
-"Te" = (
-/obj/structure/desertdam/decals/road_stop{
-	dir = 1;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "Tf" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
@@ -12898,15 +13156,12 @@
 	},
 /area/lv80/ground/shopping_centre/department_store)
 "TA" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
+/obj/structure/desertdam/decals/road_edge,
 /obj/structure/desertdam/decals/road_stop{
-	dir = 4;
 	icon_state = "stop_decal5"
 	},
 /turf/open/asphalt,
-/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
+/area/lv80/ground/checkpoint)
 "TB" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -13084,6 +13339,16 @@
 	icon_state = "chapel"
 	},
 /area/lv80/ground/town/church)
+"Ui" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "Uj" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump,
@@ -13107,6 +13372,12 @@
 "Um" = (
 /turf/open/asphalt/cement,
 /area/lv80/ground/park/botanical)
+"Un" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/town)
 "Uo" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	name = "\improper Lambda Lab Surgery"
@@ -13115,13 +13386,6 @@
 	icon_state = "delivery"
 	},
 /area/lv80/ground/corporate/north_corporate_rooms)
-"Uq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "Us" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/large_stack{
@@ -13185,7 +13449,7 @@
 "UC" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/asphalt/cement,
-/area/space)
+/area/lv80/ground/tunnels/north_tunnel)
 "UD" = (
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/almayer{
@@ -13468,6 +13732,10 @@
 	},
 /turf/open/asphalt,
 /area/lv80/ground/corporate/entrance)
+"Vx" = (
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/turf/open/floor/kutjevo/tan,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Vz" = (
 /obj/structure/bed/chair/comfy/lime{
 	dir = 4
@@ -13565,11 +13833,16 @@
 	icon_state = "bcircuitoff"
 	},
 /area/lv80/ground/research)
-"VU" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
+"VT" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 3
 	},
-/area/lv80/ground/checkpoint)
+/obj/item/tool/wrench{
+	pixel_y = 6
+	},
+/turf/open/asphalt/cement,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "VV" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/trash/sosjerky,
@@ -13577,6 +13850,17 @@
 	icon_state = "wood"
 	},
 /area/lv80/ground/town/bar)
+"VW" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/weldingtool/simple{
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/obj/item/tool/weldingtool/largetank{
+	pixel_x = 3
+	},
+/turf/open/asphalt/cement,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "VX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
@@ -13609,6 +13893,10 @@
 	icon_state = "darkpurple2"
 	},
 /area/lv80/ground/corporate/south_corporate_rooms)
+"Wd" = (
+/obj/item/frame/table/almayer,
+/turf/open/floor/kutjevo/tan,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Wf" = (
 /turf/open/floor{
 	icon_state = "whiteyellow"
@@ -13717,17 +14005,6 @@
 	icon_state = "podhatchfloor"
 	},
 /area/lv80/ground/corporate/south_corporate_rooms)
-"Wv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "Ww" = (
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor{
@@ -13735,6 +14012,16 @@
 	icon_state = "darkgreen2"
 	},
 /area/lv80/ground/research)
+"Wx" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 13
+	},
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/kutjevo/colors/orange/edge{
+	dir = 1
+	},
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_west)
 "Wy" = (
 /turf/open/floor{
 	icon_state = "white"
@@ -13842,10 +14129,16 @@
 	},
 /area/lv80/ground/town/community_center)
 "WS" = (
-/turf/open/floor/coagulation{
-	icon_state = "2,0"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
 	},
-/area/lv80/ground/engineering/water)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "WT" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor{
@@ -13922,12 +14215,11 @@
 /turf/open/floor/prison,
 /area/lv80/ground/Residence)
 "Xg" = (
-/obj/structure/desertdam/decals/road_stop{
-	dir = 8;
-	icon_state = "stop_decal5"
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
+/turf/open/floor/corsat{
+	icon_state = "squares"
 	},
-/turf/open/asphalt,
-/area/lv80/ground/town)
+/area/lv80/ground/engineering/office)
 "Xh" = (
 /turf/closed/wall,
 /area/lv80/lazarus/landing_zones/lz1)
@@ -14018,6 +14310,13 @@
 	icon_state = "red"
 	},
 /area/lv80/ground/town/station)
+"Xy" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "Xz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -14031,6 +14330,12 @@
 	icon_state = "brown"
 	},
 /area/lv80/ground/engineering/office)
+"XB" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/corporate/entrance)
 "XC" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/folder,
@@ -14073,14 +14378,6 @@
 	icon_state = "vault"
 	},
 /area/lv80/ground/communications)
-"XO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/desertdam/decals/road_stop{
-	dir = 8;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "XP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -14337,12 +14634,6 @@
 "YC" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/lv80/ground/engineering/water)
-"YE" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal8"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "YG" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
@@ -14361,11 +14652,6 @@
 	icon_state = "darkish"
 	},
 /area/lv80/ground/research)
-"YI" = (
-/turf/open/floor/coagulation{
-	icon_state = "8,3"
-	},
-/area/lv80/ground/engineering/water)
 "YJ" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -14379,13 +14665,6 @@
 /obj/item/moneybag,
 /turf/open/floor/plating,
 /area/lv80/ground/shopping_centre/department_store)
-"YN" = (
-/obj/structure/desertdam/decals/road_stop{
-	dir = 8;
-	icon_state = "stop_decal5"
-	},
-/turf/open/asphalt,
-/area/lv80/ground/checkpoint)
 "YO" = (
 /turf/closed/wall,
 /area/lv80/ground/Residence/fence)
@@ -14540,6 +14819,16 @@
 	icon_state = "bcircuitoff"
 	},
 /area/lv80/ground/corporate/south_corporate_rooms)
+"Zn" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/lazarus/landing_zones/lz1/perimiter_south_east)
 "Zp" = (
 /turf/open/asphalt,
 /area/lv80/ground/checkpoint)
@@ -14653,12 +14942,6 @@
 	},
 /turf/open/asphalt,
 /area/lv80/ground/corporate/entrance)
-"ZG" = (
-/obj/structure/tunnel{
-	id = "hole2"
-	},
-/turf/open/floor/prison,
-/area/lv80/ground/Residence)
 "ZI" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
@@ -14718,6 +15001,15 @@
 	icon_state = "redcorner"
 	},
 /area/lv80/ground/shopping_centre/shooting_range)
+"ZQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/lv80/ground/checkpoint)
 "ZS" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat{
@@ -14968,21 +15260,21 @@ SH
 SH
 SH
 SH
+VW
 nB
+Hd
 nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
+VT
+SH
+SH
+eY
+IY
+bk
+SH
+SH
+DH
+SH
+SH
 nB
 nB
 uZ
@@ -15073,7 +15365,7 @@ lP
 (3,1,1) = {"
 lP
 uZ
-Jc
+kr
 uZ
 uZ
 uZ
@@ -15122,19 +15414,19 @@ SH
 SH
 nB
 nB
+Hd
 nB
 nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
+AD
+RU
+nt
+om
+yH
+SH
+Cm
+om
+ns
+SH
 nB
 nB
 uZ
@@ -15274,19 +15566,19 @@ nB
 nB
 nB
 nB
+Hd
 nB
 nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
+AD
+vX
+Sl
+mc
+uo
+SH
+kK
+om
+Il
+SH
 nB
 nB
 uZ
@@ -15426,19 +15718,19 @@ nB
 nB
 nB
 nB
+Fc
 nB
 nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
+AD
+vX
+Sl
+om
+om
+SH
+SH
+hz
+SH
+SH
 nB
 nB
 uZ
@@ -15581,16 +15873,16 @@ nB
 nB
 nB
 nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
+SH
+La
+om
+om
+cv
+om
+om
+om
+PV
+SH
 nB
 nB
 uZ
@@ -15728,21 +16020,21 @@ SH
 nB
 nB
 SH
+Hd
+Hd
 nB
+Hd
 nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
+Qi
+aD
+hW
+om
+om
+om
+om
+Pj
+xk
+SH
 nB
 nB
 uZ
@@ -15885,16 +16177,16 @@ nB
 nB
 nB
 nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
+Qi
+Nc
+Wd
+om
+Vx
+om
+mc
+om
+sG
+SH
 nB
 nB
 uZ
@@ -16037,16 +16329,16 @@ nB
 nB
 nB
 nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
+AD
+Wx
+om
+om
+hW
+om
+Ku
+cv
+Px
+SH
 nB
 nB
 uZ
@@ -16189,16 +16481,16 @@ nB
 nB
 nB
 nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
+SH
+SH
+Kr
+ND
+FU
+fW
+ND
+eL
+SH
+SH
 nB
 nB
 uZ
@@ -16341,16 +16633,16 @@ nB
 nB
 nB
 nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
-nB
+zF
+SH
+SH
+SH
+bN
+ip
+SH
+SH
+SH
+SH
 nB
 nB
 uZ
@@ -22844,7 +23136,7 @@ lp
 lp
 lp
 lp
-ES
+mu
 rR
 Ra
 vF
@@ -22869,10 +23161,10 @@ FH
 FH
 FH
 WD
-Kl
-xh
-Gh
-TA
+pn
+xt
+lE
+hp
 da
 FH
 FH
@@ -22996,7 +23288,7 @@ lp
 lp
 lp
 lp
-ES
+Pn
 iq
 wY
 wB
@@ -23022,9 +23314,9 @@ FH
 FH
 WD
 RA
-xh
-xh
-TA
+xt
+xt
+hp
 Di
 dS
 dS
@@ -23602,8 +23894,8 @@ cX
 cX
 cX
 cX
-ED
-ED
+wz
+wz
 wz
 wz
 Yg
@@ -23754,7 +24046,7 @@ cX
 cX
 cX
 cX
-ED
+wz
 wz
 wz
 UM
@@ -23781,10 +24073,10 @@ FH
 FH
 FH
 WD
-QZ
-XO
-XO
-dV
+Zn
+jh
+jh
+Ui
 VD
 Sv
 Sv
@@ -23933,10 +24225,10 @@ FH
 FH
 FH
 WD
-QZ
-jj
-aD
-dV
+Zn
+AM
+rZ
+Ui
 da
 FH
 FH
@@ -24818,7 +25110,7 @@ cX
 cX
 UC
 uZ
-ED
+wz
 wz
 wz
 Wg
@@ -24970,8 +25262,8 @@ cX
 cX
 uZ
 uZ
-ED
-ED
+wz
+wz
 wz
 wz
 Yg
@@ -25909,10 +26201,10 @@ zb
 zb
 zb
 EW
-Jd
-Or
-xX
-hJ
+Ks
+vo
+zg
+vu
 bY
 zb
 zb
@@ -26061,11 +26353,11 @@ CK
 CK
 CK
 fQ
-MA
-up
-up
-hJ
-za
+WS
+ul
+ul
+vu
+Qh
 CK
 CK
 CK
@@ -26211,14 +26503,14 @@ ye
 ye
 ye
 ye
-Hf
-Hf
+TA
+TA
 XR
 dg
 fA
-ns
-aH
-aH
+lf
+KU
+KU
 ye
 ye
 dy
@@ -26234,7 +26526,7 @@ dy
 dy
 dy
 dy
-kU
+FF
 dx
 dx
 eM
@@ -26364,13 +26656,13 @@ Zp
 Zp
 bb
 tw
-Lp
+sb
 Zp
 Zp
 Zp
 Zp
-zC
-Te
+nS
+aP
 Zp
 Zp
 of
@@ -26515,14 +26807,14 @@ Ay
 Zp
 Zp
 Ay
-AT
-Jq
+Fz
+ZQ
 Zp
 Zp
 Zp
 Zp
-MX
-qj
+QI
+bd
 Zp
 Zp
 LU
@@ -26667,18 +26959,18 @@ mM
 mM
 mM
 mM
-jN
-jN
+Io
+Io
 mM
 mM
 mM
 mM
-eG
-eG
-YE
+lx
+lx
+ty
 Zp
 Ga
-Qq
+Un
 zc
 zc
 zc
@@ -26687,7 +26979,7 @@ zc
 zc
 zc
 zc
-QX
+AV
 Qd
 dt
 hF
@@ -26826,19 +27118,19 @@ LJ
 LJ
 LJ
 Re
-VU
-mD
-YN
-Xg
-Jf
-cG
+we
+EV
+Xy
+Jc
+ci
+NG
 Yw
 Yw
 Yw
 Yw
 Yw
 Yw
-cx
+NB
 Iy
 Ga
 Ga
@@ -26979,9 +27271,9 @@ zb
 zb
 Oa
 Oa
-rw
-FS
-Kg
+LG
+Lp
+vc
 Dn
 Oa
 Oa
@@ -28195,10 +28487,10 @@ Hn
 Hn
 zb
 zb
-FG
-Uq
-Uq
-Wv
+jG
+tO
+tO
+Sj
 zb
 zb
 zb
@@ -29271,10 +29563,10 @@ Yr
 Yr
 Yr
 dE
-gB
+FO
 ik
 ik
-hp
+XB
 Yr
 Yr
 Yr
@@ -29587,25 +29879,25 @@ Fb
 Fb
 Fb
 fJ
-cv
-cv
-cv
-if
+hu
+hu
+hu
+Bm
 Fb
 Fb
 Fb
 fJ
-cv
-cv
-cv
-if
+hu
+hu
+hu
+Bm
 Fb
 Fb
 Fb
 fJ
-cv
-cv
-if
+hu
+hu
+Bm
 Cq
 Cq
 Cq
@@ -29739,25 +30031,25 @@ jd
 Mf
 ir
 vV
-FF
-FF
-FF
-WS
+nC
+nC
+nC
+sF
 jd
 Mf
 ir
 vV
-FF
-FF
-FF
-WS
+nC
+nC
+nC
+sF
 jd
 Mf
 ir
 vV
-FF
-FF
-WS
+nC
+nC
+sF
 Pk
 Pk
 By
@@ -29891,25 +30183,25 @@ Fb
 Fb
 RV
 vV
-FF
-FF
-FF
-WS
+nC
+nC
+nC
+sF
 Fb
 Fb
 RV
 vV
-FF
-FF
-FF
-WS
+nC
+nC
+nC
+sF
 Fb
 Fb
 RV
 vV
-FF
-FF
-WS
+nC
+nC
+sF
 Pk
 Pk
 By
@@ -30043,25 +30335,25 @@ Fb
 Fb
 Fb
 vV
-FF
-FF
-FF
-WS
+nC
+nC
+nC
+sF
 Fb
 Fb
 Fb
 vV
-FF
-FF
-FF
-WS
+nC
+nC
+nC
+sF
 Fb
 Fb
 Fb
 vV
-FF
-FF
-WS
+nC
+nC
+sF
 Pk
 Pk
 By
@@ -30195,25 +30487,25 @@ Cr
 Mf
 Td
 vV
-FF
-FF
-FF
-WS
+nC
+nC
+nC
+sF
 Cr
 Mf
 Td
 vV
-FF
-FF
-FF
-WS
+nC
+nC
+nC
+sF
 Cr
 Mf
 Td
 vV
-FF
-FF
-WS
+nC
+nC
+sF
 Pk
 Pk
 By
@@ -30347,25 +30639,25 @@ Fb
 Fb
 GZ
 sd
-YI
-YI
-YI
-NB
+ES
+ES
+ES
+na
 Fb
 Fb
 GZ
 sd
-YI
-YI
-YI
-NB
+ES
+ES
+ES
+na
 Fb
 Fb
 GZ
 sd
-YI
-YI
-NB
+ES
+ES
+na
 Pk
 Pk
 Cq
@@ -33489,7 +33781,7 @@ td
 Lv
 Lv
 XH
-Ql
+mb
 sw
 sw
 Lv
@@ -34649,7 +34941,7 @@ KE
 oc
 oc
 bn
-sP
+hl
 oc
 oc
 MN
@@ -34762,7 +35054,7 @@ yW
 Qu
 Qu
 HI
-Jg
+zJ
 IU
 Qu
 vp
@@ -34800,7 +35092,7 @@ oc
 SE
 oc
 oc
-ZG
+PR
 oc
 oc
 oc
@@ -34911,7 +35203,7 @@ bM
 bM
 OG
 ZZ
-zd
+Xg
 Na
 vR
 Qu

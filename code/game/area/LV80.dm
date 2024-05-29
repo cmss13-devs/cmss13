@@ -41,7 +41,7 @@
 	icon_state = "south"
 
 /area/lv80/lazarus/landing_zones/lz1/perimiter_south_west
-	name = "\improper LZ1 Perimiter South West"
+	name = "\improper Auto Repair Shop"
 	icon_state = "south"
 
 /area/lv80/lazarus/landing_zones/lz2

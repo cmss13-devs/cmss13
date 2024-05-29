@@ -119,7 +119,7 @@
 			if(!busy)
 				busy = TRUE
 				addtimer(CALLBACK(src, PROC_REF(process_organ), organ.research_value), 3 SECONDS)
-				icon_state = "xeno_analyzer_on_moving"
+				flick("xeno_analyzer_on_moving", src)
 				playsound(loc, 'sound/machines/blender.ogg', 25, TRUE)
 				QDEL_NULL(organ)
 				. = TRUE
@@ -170,7 +170,7 @@
 	if((upgrade.clearance_req > GLOB.chemical_data.clearance_level && upgrade.clearance_req != 6) || (upgrade.clearance_req == 6 && !GLOB.chemical_data.reached_x_access))
 		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red - you don't have access to this upgrade!"))
 		return
-	icon_state = "xeno_analyzer_printing"
+	flick("xeno_analyzer_printing", src)
 	busy = TRUE
 	biomass_points -= clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[datum_upgrades], upgrade.minimum_price, upgrade.maximum_price)
 	technology_purchased[datum_upgrades] += 1
@@ -178,6 +178,5 @@
 
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, variation)
 	busy = FALSE
-	icon_state = "xeno_analyzer"
 	new produce_path(get_turf(src), variation)
 

@@ -152,6 +152,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/g_eyes = 0 //Eye color
 	var/b_eyes = 0 //Eye color
 	var/species = "Human"    //Species datum to use.
+	var/ethnicity = "Western" //Legacy, kept to update save files
 	var/skin_color = "Pale 2" // Skin color
 	var/body_size = "Average" // Body Size
 	var/body_type = "Lean" // Body Type

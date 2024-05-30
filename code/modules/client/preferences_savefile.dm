@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 22
+#define SAVEFILE_VERSION_MAX 23
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -94,6 +94,53 @@
 		S["toggles_sound"] >> sound_toggles
 		sound_toggles |= SOUND_OBSERVER_ANNOUNCEMENTS
 		S["toggles_sound"] << sound_toggles
+
+	if(savefile_version < 23)
+		var/ethnicity
+		var/skin_color = "pale2"
+		S["ethnicity"] >> ethnicity
+		switch(ethnicity)
+			if("anglo")
+				skin_color = "pale2"
+			if("western")
+				skin_color = "tan2"
+			if("germanic")
+				skin_color = "pale2"
+			if("scandinavian")
+				skin_color = "pale3"
+			if("baltic")
+				skin_color = "pale3"
+			if("sinoorient")
+				skin_color = "pale1"
+			if("southorient")
+				skin_color = "tan1"
+			if("indian")
+				skin_color = "tan3"
+			if("sino")
+				skin_color = "tan1"
+			if("mesoamerican")
+				skin_color = "tan3"
+			if("northamerican")
+				skin_color = "tan3"
+			if("southamerican")
+				skin_color = "tan2"
+			if("circumpolar")
+				skin_color = "tan1"
+			if("northafrican")
+				skin_color = "tan3"
+			if("centralafrican")
+				skin_color = "dark1"
+			if("costalafrican")
+				skin_color = "dark3"
+			if("persian")
+				skin_color = "tan3"
+			if("levant")
+				skin_color = "tan3"
+			if("australasian")
+				skin_color = "dark2"
+			if("polynesian")
+				skin_color = "tan3"
+		S["skin_color"] << skin_color
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
@@ -422,6 +469,7 @@
 	S["body_is_always_random"] >> be_random_body
 	S["gender"] >> gender
 	S["age"] >> age
+	S["ethnicity"] >> ethnicity
 	S["skin_color"] >> skin_color
 	S["body_type"] >> body_type
 	S["body_size"] >> body_size
@@ -575,6 +623,7 @@
 	S["body_is_always_random"] << be_random_body
 	S["gender"] << gender
 	S["age"] << age
+	S["ethnicity"] << ethnicity
 	S["skin_color"] << skin_color
 	S["body_type"] << body_type
 	S["body_size"] << body_size

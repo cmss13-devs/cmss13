@@ -164,9 +164,10 @@
 	update_icon()
 
 	return TRUE
-/obj/vehicle/multitile/tank/MouseDrop_T(mob/M, mob/user)
+
+/obj/vehicle/multitile/tank/MouseDrop_T(mob/dropped, mob/user)
 	. = ..()
-	if((M != user) || !isxeno(user))
+	if((dropped != user) || !isxeno(user))
 		return
 
 	if(health > 0)

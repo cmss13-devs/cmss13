@@ -65,7 +65,10 @@
 		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			return
 
-		playsound(loc, 'sound/effects/toilet_flush_new.ogg', 25, 1)
+		if(prob(100))
+			playsound(loc, 'sound/effects/skibidibopbop.ogg', 25, 1)
+		else
+			playsound(loc, 'sound/effects/toilet_flush_new.ogg', 25, 1)
 		flick("toilet1[cistern]_flush", src)
 		if(dir == SOUTH)
 			flick("cistern[cistern]_flush", cistern_overlay)

@@ -330,3 +330,10 @@
   - balance: Daze no longer stops xenos from talking and is slightly less punishing
       when applied to humans from the neurotoxic property
   - code_imp: New snowflake daze component for neurotoxic property
+2024-05-30:
+  Drathek:
+  - admin: Logging for chem smoke is now niche logged and less spammy
+  mullenpaul:
+  - ui: orbit menu now splits marine squads
+  - ui: orbit menu now splits xeno hives
+  - ui: orbit menu sorts marines by job

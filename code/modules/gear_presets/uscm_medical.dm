@@ -66,7 +66,7 @@
 
 	assignment = JOB_DOCTOR
 	rank = JOB_DOCTOR
-	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
 
@@ -124,7 +124,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_RESEARCHER
 	rank = JOB_RESEARCHER
-	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher
 

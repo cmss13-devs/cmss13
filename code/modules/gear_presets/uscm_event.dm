@@ -16,7 +16,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_COLONEL
 	rank = JOB_COLONEL
-	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "COL"
 	minimum_age = 40
 	skills = /datum/skills/general
@@ -61,7 +61,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_GENERAL
 	rank = JOB_GENERAL
-	paygrades = list(PAY_SHORT_MO7 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_MO7 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "GEN"
 	minimum_age = 50
 	skills = /datum/skills/general
@@ -106,30 +106,30 @@
 
 /datum/equipment_preset/uscm_event/general/o7
 	name = "USCM O-7 - Brigadier General (High Command)"
-	paygrades = list(PAY_SHORT_MO7 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_MO7 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/uscm_event/general/o8
 	name = "USCM O-8 - Major General (High Command)"
-	paygrades = list(PAY_SHORT_MO8 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_MO8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/uscm_event/general/o9
 	name = "USCM O-9 - Lieutenant General (High Command)"
-	paygrades = list(PAY_SHORT_MO9 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_MO9 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/uscm_event/general/o10
 	name = "USCM O-10 - General (High Command)"
-	paygrades = list(PAY_SHORT_MO10 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_MO10 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/uscm_event/general/o10c
 	name = "USCM O-10C - Assistant Commandant of the Marine Corps (High Command)"
-	paygrades = list(PAY_SHORT_MO10C = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_MO10C = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ACMC
 	rank = JOB_ACMC
 	role_comm_title = "ACMC"
 
 /datum/equipment_preset/uscm_event/general/o10s
 	name = "USCM O-10S - Commandant of the Marine Corps (High Command)"
-	paygrades = list(PAY_SHORT_MO10S = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_MO10S = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_CMC
 	rank = JOB_CMC
 	role_comm_title = "CMC"
@@ -204,7 +204,7 @@
 
 	assignment = JOB_PROVOST_ENFORCER
 	rank = "Provost Enforcer"
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -250,7 +250,7 @@
 
 	assignment = JOB_PROVOST_TML
 	rank = "Provost Team Leader"
-	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PvTML"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -296,7 +296,7 @@
 
 	assignment = JOB_PROVOST_INSPECTOR
 	rank = "Provost Inspector"
-	paygrades = list(PAY_SHORT_PVI = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_PVI = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PvI"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -336,7 +336,7 @@
 
 	assignment = JOB_PROVOST_ADVISOR
 	rank = "Provost Advisor"
-	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PvA"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -347,7 +347,7 @@
 
 	assignment = JOB_PROVOST_MARSHAL
 	rank = "Provost Marshal"
-	paygrades = list(PAY_SHORT_PVM = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_PVM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVM
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -383,7 +383,7 @@
 
 	assignment = JOB_PROVOST_SMARSHAL
 	rank = "Provost Sector Marshal"
-	paygrades = list(PAY_SHORT_PVSM = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_PVSM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVSM
 
 /datum/equipment_preset/uscm_event/provost/marshal/chief
@@ -392,7 +392,7 @@
 
 	assignment = JOB_PROVOST_CMARSHAL
 	rank = "Provost Chief Marshal"
-	paygrades = list(PAY_SHORT_PVCM = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_PVCM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVCM
 
 /*****************************************************************************************************/
@@ -414,7 +414,7 @@
 
 	assignment = JOB_TIS_IO
 	rank = "UAAC-TIS Intelligence Officer"
-	paygrades = list(PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TIS-IO"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -441,7 +441,7 @@
 
 	assignment = JOB_TIS_SA
 	rank = "UAAC-TIS Special Agent"
-	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TIS-SA"
 	flags = EQUIPMENT_PRESET_EXTRA
 

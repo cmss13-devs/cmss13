@@ -190,7 +190,7 @@
 	access = list()
 	assignment = JOB_RIOT
 	rank = JOB_RIOT
-	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMP"
 	skills = /datum/skills/CMP
 
@@ -238,6 +238,6 @@
 
 	assignment = JOB_RIOT_CHIEF
 	rank = JOB_RIOT_CHIEF
-	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CRMP"
 	skills = /datum/skills/CMP

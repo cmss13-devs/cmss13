@@ -609,6 +609,7 @@
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
+	
 /turf/open/gm/coast/can_surgery
 	allow_construction = TRUE
 	supports_surgery = TRUE

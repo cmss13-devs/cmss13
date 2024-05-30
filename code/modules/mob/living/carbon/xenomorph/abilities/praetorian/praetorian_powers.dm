@@ -879,12 +879,7 @@
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it spasms as it recuperates unnaturally quickly!")) //marines probably should know if a xeno gets rejuvenated
 		targetXeno.xeno_jitter(1 SECONDS) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating
 		targetXeno.flick_heal_overlay(3 SECONDS, "#F5007A") //therefore making the Praetorian a priority target
-		targetXeno.set_effect(0, PARALYZE)
-		targetXeno.set_effect(0, STUN)
-		targetXeno.set_effect(0, WEAKEN)
-		targetXeno.set_effect(0, DAZE)
-		targetXeno.set_effect(0, SLOW)
-		targetXeno.set_effect(0, SUPERSLOW)
+		targetXeno.clear_debuffs()
 		use_plasma = TRUE
 	if (use_plasma)
 		use_plasma_owner()

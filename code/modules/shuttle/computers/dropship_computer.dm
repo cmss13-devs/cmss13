@@ -546,14 +546,12 @@
 
 	shuttle.alarm_sound_loop.stop()
 	shuttle.playing_launch_announcement_alarm = FALSE
-	return
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/stop_playing_launch_cycle_announcement_alarm()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 
 	shuttle.cycle_alarm_sound_loop.stop()
 	shuttle.playing_cycle_launch_announcement_alarm = FALSE
-	return
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1
 	icon = 'icons/obj/structures/machinery/computer.dmi'

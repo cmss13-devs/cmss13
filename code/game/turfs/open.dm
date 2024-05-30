@@ -468,6 +468,7 @@
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
+	
 /turf/open/gm/river/can_surgery
 	allow_construction = TRUE
 	supports_surgery = TRUE

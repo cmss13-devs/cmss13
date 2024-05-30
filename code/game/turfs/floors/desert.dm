@@ -255,6 +255,7 @@
 /turf/open/gm/river/desert/shallow
 	icon_state = "shallow"
 	icon_overlay = "_shallow"
+	
 /turf/open/gm/river/desert/shallow/can_surgery
 	allow_construction = TRUE
 	supports_surgery = TRUE

@@ -6,12 +6,8 @@ United States Colonial Marines
 
 /datum/skills/pfc
 	name = "Private"
-	skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
-	)
+	skills = list()
 	//same as default
-	// I added fireman skills here. I suspect that since shooting skills aren't here, they are in the 'default' area, but I don't know where that is
-	// so I've just pasted the fireman skill across every role in the USCM category instead.
 
 /datum/skills/pfc/crafty
 	name = "Crafty Private"
@@ -123,7 +119,6 @@ MILITARY NONCOMBATANT
 /datum/skills/nurse
 	name = "Nurse"
 	skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_FIREARMS = SKILL_FIREARMS_CIVILIAN,
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
@@ -132,7 +127,6 @@ MILITARY NONCOMBATANT
 /datum/skills/researcher
 	name = "Researcher"
 	skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_FIREARMS = SKILL_FIREARMS_CIVILIAN,
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,

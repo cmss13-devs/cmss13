@@ -1,0 +1,4 @@
+author: "Tyranicranger4"
+delete-after: True
+changes:
+  - bugfix: "Fixed an exploit that allowed Burrowers to apply acid to objects while underground"

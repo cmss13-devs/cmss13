@@ -65,7 +65,7 @@
 		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			return
 
-		if(prob(100))
+		if(prob(1))
 			playsound(loc, 'sound/effects/skibidibopbop.ogg', 25, 1)
 		else
 			playsound(loc, 'sound/effects/toilet_flush_new.ogg', 25, 1)

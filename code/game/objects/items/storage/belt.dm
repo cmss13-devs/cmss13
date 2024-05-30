@@ -319,6 +319,29 @@
 	new /obj/item/storage/pill_bottle/inaprovaline(src)
 	new /obj/item/storage/pill_bottle/tramadol(src)
 
+/obj/item/storage/belt/medical/lifesaver/upp/synth/fill_preset_inventory()
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/storage/pill_bottle/antitox(src)
+	new /obj/item/storage/pill_bottle/alkysine(src)
+	new /obj/item/storage/pill_bottle/imidazoline(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/device/healthanalyzer(src)
+
 /obj/item/storage/belt/security
 	name = "\improper M276 pattern security rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This configuration is commonly seen among USCM Military Police and peacekeepers, though it can hold some light munitions."
@@ -334,7 +357,7 @@
 		/obj/item/explosive/grenade/flashbang,
 		/obj/item/explosive/grenade/custom/teargas,
 		/obj/item/reagent_container/spray/pepper,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/flash,
 		/obj/item/clothing/glasses,
 		/obj/item/ammo_magazine/pistol,
@@ -379,10 +402,17 @@
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
 
+/obj/item/storage/belt/security/MP/full/synth/fill_preset_inventory()
+	new /obj/item/explosive/grenade/flashbang(src)
+	new /obj/item/device/flash(src)
+	new /obj/item/weapon/baton(src)
+	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/device/clue_scanner(src)
+	new /obj/item/restraint/handcuffs(src)
 
 /obj/item/storage/belt/security/MP/UPP
 	name = "\improper Type 43 military police rig"
@@ -392,7 +422,7 @@
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/ammo_magazine/revolver/upp/shrapnel(src)
 
@@ -409,8 +439,8 @@
 	new /obj/item/weapon/baton(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/explosive/grenade/flashbang(src)
 
 /obj/item/storage/belt/security/MP/CMB/synth/fill_preset_inventory()
@@ -419,8 +449,8 @@
 	new /obj/item/weapon/baton(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/explosive/grenade/flashbang(src)
 
 /obj/item/storage/belt/marine
@@ -1178,6 +1208,22 @@
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower/tactical())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+
+/obj/item/storage/belt/gun/m4a3/nailgun
+	name = "customized nailgun holster"
+	desc = "Combination of a M276 pistol holster and engineering toolbelt that have been cannibalized into a unique belt that can holster a compact nailgun and two spare nailgun magazines."
+	icon_state = "nailgun_holster"
+	storage_slots = 3
+	can_hold = list(
+		/obj/item/weapon/gun/smg/nailgun/compact,
+		/obj/item/ammo_magazine/smg/nailgun,
+	)
+	has_gamemode_skin = FALSE
+
+/obj/item/storage/belt/gun/m4a3/nailgun/prefilled/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/smg/nailgun/compact())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/smg/nailgun(src)
 
 /obj/item/storage/belt/gun/m39
 	name = "\improper M276 pattern M39 holster rig"

@@ -74,6 +74,7 @@ Additional game mode variables.
 	var/monkey_amount = 0 //How many monkeys do we spawn on this map ?
 	var/list/monkey_types = list() //What type of monkeys do we spawn
 	var/latejoin_tally = 0 //How many people latejoined Marines
+	var/latejoin_larva_drop_early = LATEJOIN_MARINES_PER_LATEJOIN_LARVA_EARLY
 	var/latejoin_larva_drop = LATEJOIN_MARINES_PER_LATEJOIN_LARVA //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
 	/// Amount of latejoin_tally already awarded as larvas
 	var/latejoin_larva_used = 0
@@ -175,43 +176,46 @@ Additional game mode variables.
 
 	if(pred_candidate) pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
-#define calculate_pred_max (Floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count)
+/datum/game_mode/proc/calculate_pred_max()
+	return floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count
 
-/datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = 1)
-
+/datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = TRUE)
 	if(!pred_candidate.client)
 		return
 
-	var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 
-	if(!J)
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
-		return
+	if(!pred_job)
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
+		return FALSE
 
 	if(!(pred_candidate?.client.check_whitelist_status(WHITELIST_PREDATOR)))
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
-		return
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
+		return FALSE
 
 	if(!(flags_round_type & MODE_PREDATOR))
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
-		return
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
+		return FALSE
 
 	if(pred_candidate.ckey in predators)
 		if(show_warning)
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
-		return
+		return FALSE
 
-	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
-		return
-	if(J.get_whitelist_status(pred_candidate.client) == WHITELIST_NORMAL)
-		var/pred_max = calculate_pred_max
+	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(pred_job.get_whitelist_status(pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return FALSE
+
+	if(pred_job.get_whitelist_status(pred_candidate.client) == WHITELIST_NORMAL)
+		var/pred_max = calculate_pred_max()
 		if(pred_current_num >= pred_max)
-			if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
-			return
+			if(show_warning)
+				to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
+			return FALSE
 
-	return 1
-
-#undef calculate_pred_max
+	return TRUE
 
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
 	set waitfor = FALSE
@@ -309,14 +313,14 @@ Additional game mode variables.
 
 			xenomorphs[hive] += new_xeno
 		else //Out of candidates, fill the xeno hive with burrowed larva
-			remaining_slots = round((xeno_starting_num - i))
+			remaining_slots = floor((xeno_starting_num - i))
 			break
 
 		current_index++
 
 
 	if(remaining_slots)
-		var/larva_per_hive = round(remaining_slots / LAZYLEN(hives))
+		var/larva_per_hive = floor(remaining_slots / LAZYLEN(hives))
 		for(var/hivenumb in hives)
 			var/datum/hive_status/hive = GLOB.hive_datum[hivenumb]
 			hive.stored_larva = larva_per_hive
@@ -687,9 +691,9 @@ Additional game mode variables.
 	return TRUE
 
 /// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup
-/datum/game_mode/proc/pick_queen_spawn(datum/mind/ghost_mind, hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/proc/pick_queen_spawn(mob/player, hivenumber = XENO_HIVE_NORMAL)
 	RETURN_TYPE(/turf)
-
+	var/datum/mind/ghost_mind = player.mind
 	var/mob/living/original = ghost_mind.current
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.living_xeno_queen || !original || !original.client)
@@ -710,6 +714,9 @@ Additional game mode variables.
 		spawn_list_map[spawn_name] = T
 
 	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
+	if(hive.living_xeno_queen)
+		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, a queen has already evolved before you."))
+		player.send_to_lobby()
 	if(!selected_spawn)
 		selected_spawn = pick(spawn_list_map)
 		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, one has been chosen for you."))
@@ -941,7 +948,7 @@ Additional game mode variables.
 		CVS.populate_product_list_and_boxes(gear_scale)
 
 	//Scale the amount of cargo points through a direct multiplier
-	GLOB.supply_controller.points += round(GLOB.supply_controller.points_scale * gear_scale)
+	GLOB.supply_controller.points += floor(GLOB.supply_controller.points_scale * gear_scale)
 
 ///Returns a multiplier to the amount of gear that is to be distributed roundstart, stored in [/datum/game_mode/var/gear_scale]
 /datum/game_mode/proc/init_gear_scale()
@@ -969,7 +976,7 @@ Additional game mode variables.
 		gear_scale_max = gear_scale
 		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
 			vendor.update_dynamic_stock(gear_scale_max)
-		GLOB.supply_controller.points += round(gear_delta * GLOB.supply_controller.points_scale)
+		GLOB.supply_controller.points += floor(gear_delta * GLOB.supply_controller.points_scale)
 
 /// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
 /datum/game_mode/proc/latejoin_update(role, delta = 1)

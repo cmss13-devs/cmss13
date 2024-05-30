@@ -55,7 +55,13 @@
 		return FALSE
 
 	if(package)
-		to_chat(M, SPAN_WARNING("How do you expect to eat this with the package still on?"))
+		if(user.a_intent == INTENT_HARM)
+			return ..() // chunk box gaming
+
+		if(user == M)
+			to_chat(M, SPAN_WARNING("How do you expect to eat this with the package still on?"))
+		else
+			to_chat(M, SPAN_WARNING("[user] made an endearing attempt to force feed you a snack with the packaging still on."))
 		return FALSE
 
 	if(istype(M, /mob/living/carbon))
@@ -206,7 +212,7 @@
 			SPAN_NOTICE("[user] crudely slices \the [src] with [W]!"), \
 			SPAN_NOTICE("You crudely slice \the [src] with your [W]!") \
 		)
-		slices_lost = rand(1,max(1,round(slices_num/2)))
+		slices_lost = rand(1,max(1,floor(slices_num/2)))
 	var/reagents_per_slice = reagents.total_volume/slices_num
 	for(var/i=1 to (slices_num-slices_lost))
 		var/obj/slice = new slice_path (src.loc)
@@ -2738,6 +2744,10 @@
 	var/list/boxes = list() // If the boxes are stacked, they come here
 	var/boxtag = ""
 
+/obj/item/pizzabox/Destroy(force)
+	QDEL_NULL(pizza)
+	return ..()
+
 /obj/item/pizzabox/update_icon()
 
 	overlays = list()
@@ -3289,8 +3299,11 @@
 	name = "CHUNK box"
 	desc = "A bar of \"The <b>CHUNK</b>\" brand chocolate. <i>\"The densest chocolate permitted to exist according to federal law. We are legally required to ask you not to use this blunt object for anything other than nutrition.\"</i>"
 	icon_state = "chunk"
-	force = 15 //LEGAL LIMIT OF CHOCOLATE
+	hitsound = "swing_hit"
+	force = 15
 	throwforce = 10
+	attack_speed = 10
+	demolition_mod = 0.3
 	bitesize = 2
 	wrapper = /obj/item/trash/chunk
 
@@ -3304,8 +3317,7 @@
 	desc = "A 'crate', as the marketing called it, of \"The <b>HUNK</b>\" brand chocolate. An early version of the CHUNK box, the HUNK bar was hit by a class action lawsuit and forced to go into bankruptcy and get bought out by the Company when hundreds of customers had their teeth crack from simply attempting to eat the bar."
 	icon_state = "hunk"
 	w_class = SIZE_MEDIUM
-	hitsound = "swing_hit"
-	force = 35 //ILLEGAL LIMIT OF CHOCOLATE
+	force = 35
 	throwforce = 50
 	bitesize = 20
 	wrapper = /obj/item/trash/chunk/hunk

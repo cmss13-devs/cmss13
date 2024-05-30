@@ -241,3 +241,15 @@ GAMEMODE_DEFAULT Extended
 
 ## How long the mob will take to chestburst, in seconds
 #EMBRYO_BURST_TIMER 450
+
+## CLIENT VERSION CONTROL
+## This allows you to configure the minimum required client version, as well as a warning version, and message for both.
+## These trigger for any version below (non-inclusive) the given version, so 510 triggers on 509 or lower.
+## These messages will be followed by one stating the clients current version and the required version for clarity.
+#CLIENT_WARN_VERSION 514
+#CLIENT_WARN_BUILD 1589
+#CLIENT_WARN_MESSAGE Your version of BYOND may have issues or be blocked from accessing this server in the future.
+#CLIENT_WARN_POPUP
+CLIENT_ERROR_VERSION 514
+#CLIENT_ERROR_BUILD 1589
+#CLIENT_ERROR_MESSAGE Your version of BYOND is too old, may have issues, and is blocked from accessing this server.

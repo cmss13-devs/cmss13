@@ -2905,7 +2905,7 @@
 /area/bigredv2/outside/marshal_office)
 "aiG" = (
 /obj/structure/surface/table,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Solaris Ridge";
 	phone_color = "red";
@@ -2955,7 +2955,7 @@
 /area/bigredv2/outside/marshal_office)
 "aiM" = (
 /obj/structure/surface/table,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
@@ -16219,7 +16219,7 @@
 /area/bigredv2/outside/general_store)
 "aVL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/handcuffs/cable,
+/obj/item/restraint/adjustable/cable,
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aVM" = (
@@ -16667,7 +16667,7 @@
 /area/bigredv2/outside/general_store)
 "aWY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/handcuffs/cable/cyan,
+/obj/item/restraint/adjustable/cable/cyan,
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aXb" = (
@@ -26626,7 +26626,7 @@
 /area/bigredv2/caves/mining)
 "cry" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -27889,6 +27889,14 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
+"efh" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/caves/eta/research)
 "efK" = (
 /obj/structure/machinery/computer/crew{
 	density = 0;
@@ -66550,7 +66558,7 @@ bvY
 kdr
 kdr
 aBv
-bwZ
+efh
 bxo
 bxz
 bxo

@@ -101,3 +101,4 @@ The nuclear ordnance requires BOTH communication towers to be actively held to d
 ARES will periodically report the amount of available tech points on Command Channel.
 The quick wield keys generally prioritize wieldable gear going from left to right on your inventory bar.
 Orbital Bombardment warheads respect roofing and hive core protection. They won't hit inside of protected areas.
+The Queen can unbolt and break dropship doors by prying them open, even if they are unlocked. Pilots, Dropship Crew Chiefs, Engineers and Synths can repair these doors with a multitool.

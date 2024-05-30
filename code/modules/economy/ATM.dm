@@ -63,7 +63,7 @@ log transactions
 			var/obj/item/spacecash/spacecash = I
 			//consume the money
 			if(spacecash.counterfeit)
-				authenticated_account.money += round(spacecash.worth * 0.25)
+				authenticated_account.money += floor(spacecash.worth * 0.25)
 				visible_message(SPAN_DANGER("[src] starts sparking and making error noises as you load [I] into it!"))
 				spark_system.start()
 			else
@@ -284,7 +284,7 @@ log transactions
 					previous_account_number = tried_account_num
 			if("e_withdrawal")
 				if(withdrawal_timer > world.time)
-					alert("Please wait [round((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
+					alert("Please wait [floor((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
 					return
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
@@ -316,7 +316,7 @@ log transactions
 						withdrawal_timer = world.time + 20
 			if("withdrawal")
 				if(withdrawal_timer > world.time)
-					alert("Please wait [round((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
+					alert("Please wait [floor((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
 					return
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)

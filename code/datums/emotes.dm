@@ -112,6 +112,7 @@
 	var/paygrade = user.get_paygrade()
 	var/formatted_message = "<b>[paygrade][user]</b> [msg]"
 	var/user_turf = get_turf(user)
+	var/list/seeing_obj = list()
 	if (user.client)
 		for(var/mob/ghost as anything in GLOB.dead_mob_list)
 			if(!ghost.client || isnewplayer(ghost))
@@ -132,18 +133,27 @@
 		if(emote_type & EMOTE_VISIBLE)
 			var/list/viewers = get_mobs_in_view(7, user)
 			for(var/mob/current_mob in viewers)
+				for(var/obj/object in current_mob.contents)
+					if((object.flags_atom & USES_SEEING))
+						seeing_obj |= object
 				if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
 					viewers -= current_mob
 			run_langchat(user, viewers)
 		else if(emote_type & EMOTE_AUDIBLE)
 			var/list/heard = get_mobs_in_view(7, user)
 			for(var/mob/current_mob in heard)
+				for(var/obj/object in current_mob.contents)
+					if((object.flags_atom & USES_HEARING))
+						seeing_obj |= object
 				if(current_mob.ear_deaf)
 					heard -= current_mob
 					continue
 				if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
 					heard -= current_mob
 			run_langchat(user, heard)
+
+	for(var/obj/object as anything in seeing_obj)
+		object.see_emote(user, msg, (emote_type & EMOTE_AUDIBLE))
 
 	SEND_SIGNAL(user, COMSIG_MOB_EMOTED(key))
 

@@ -191,7 +191,7 @@ FORENSIC SCANNER
 		user.show_message(SPAN_DANGER("Pressure: [round(env_pressure,0.1)] kPa"), 1)
 	if(env_pressure > 0)
 		user.show_message(SPAN_NOTICE("Gas Type: [env_gas]"), 1)
-		user.show_message(SPAN_NOTICE("Temperature: [round(env_temp-T0C)]&deg;C"), 1)
+		user.show_message(SPAN_NOTICE("Temperature: [floor(env_temp-T0C)]&deg;C"), 1)
 
 	src.add_fingerprint(user)
 	return

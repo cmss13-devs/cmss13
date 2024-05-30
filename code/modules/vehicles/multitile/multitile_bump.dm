@@ -384,7 +384,7 @@
 	var/obj/item/device/m2c_gun/HMG = new(loc)
 	HMG.name = name
 	HMG.rounds = rounds
-	HMG.overheat_value = round(0.5 * overheat_value)
+	HMG.overheat_value = floor(0.5 * overheat_value)
 	if(HMG.overheat_value <= 10)
 		HMG.overheat_value = 0
 	HMG.update_icon()
@@ -494,7 +494,7 @@
 
 /obj/vehicle/handle_vehicle_bump(obj/vehicle/multitile/V)
 	V.take_damage_type(5, "blunt", V)
-	health = health - Ceiling(maxhealth/2.8) //we destroy any simple vehicle in 3 crushes
+	health = health - ceil(maxhealth/2.8) //we destroy any simple vehicle in 3 crushes
 	healthcheck()
 
 	visible_message(SPAN_DANGER("\The [V] crushes into \the [src]!"))
@@ -726,7 +726,7 @@
 		//this adds more flexibility for trample damage
 		damage_percentage *= VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION
 
-		damage_percentage -= round((armor_deflection*(armor_integrity/100)) / VEHICLE_TRAMPLE_DAMAGE_REDUCTION_ARMOR_MULT) // Ravager reduces percentage by ~50% by virtue of having very high armor.
+		damage_percentage -= floor((armor_deflection*(armor_integrity/100)) / VEHICLE_TRAMPLE_DAMAGE_REDUCTION_ARMOR_MULT) // Ravager reduces percentage by ~50% by virtue of having very high armor.
 
 		if(locate(/obj/item/hardpoint/support/overdrive_enhancer) in V)
 			damage_percentage += VEHICLE_TRAMPLE_DAMAGE_OVERDRIVE_BUFF
@@ -734,7 +734,7 @@
 		damage_percentage = max(VEHICLE_TRAMPLE_DAMAGE_OVERDRIVE_BUFF, max(0, damage_percentage))
 		damage_percentage = max(damage_percentage, VEHICLE_TRAMPLE_DAMAGE_MIN)
 
-		apply_damage(round((maxHealth / 100) * damage_percentage), BRUTE)
+		apply_damage(floor((maxHealth / 100) * damage_percentage), BRUTE)
 		last_damage_data = create_cause_data("[initial(V.name)] roadkill", V.seats[VEHICLE_DRIVER])
 		var/mob/living/driver = V.get_seat_mob(VEHICLE_DRIVER)
 		log_attack("[key_name(src)] was rammed by [key_name(driver)] with [V].")
@@ -744,7 +744,7 @@
 		return TRUE
 	else if (mob_moved)
 		if(momentum_penalty)
-			V.move_momentum = Floor(V.move_momentum*0.8)
+			V.move_momentum = floor(V.move_momentum*0.8)
 			V.update_next_move()
 		playsound(loc, "punch", 25, 1)
 		return TRUE
@@ -769,7 +769,7 @@
 			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, slowing [V]'s movement!"),
 			SPAN_DANGER("You dig your claws into the ground, slowing [V]'s movement!"))
 			var/mob_moved = step(src, V.last_move_dir)
-			V.move_momentum = Floor(V.move_momentum/3)
+			V.move_momentum = floor(V.move_momentum/3)
 			V.update_next_move()
 			return mob_moved
 

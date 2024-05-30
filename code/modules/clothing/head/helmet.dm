@@ -366,7 +366,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/obj/structure/machinery/camera/camera
 	var/helmet_overlays[]
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS
+	flags_inv_hide = NONE
 	var/flags_marine_helmet = HELMET_SQUAD_OVERLAY|HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 	var/helmet_bash_cooldown = 0
 
@@ -676,6 +676,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/list/total_visors = built_in_visors + inserted_visors
 
 	if(!length(total_visors))
+		to_chat(user, SPAN_WARNING("There are no visors to swap to."))
 		return FALSE
 
 	if(active_visor)
@@ -692,6 +693,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 						skipped_hud = TRUE
 						continue
 
+					if(!next_visor.can_toggle(user))
+						iterator++
+						skipped_hud = TRUE
+						continue
+
 					active_visor = next_visor
 					toggle_visor(user, visor_to_deactivate, silent = TRUE) // disables the old visor
 					toggle_visor(user)
@@ -703,15 +709,19 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			iterator++
 
 	for(var/obj/item/device/helmet_visor/new_visor in total_visors)
-
 		if(!isnull(GLOB.huds[new_visor.hud_type]?.hudusers[user]))
+			continue
+
+		if(!new_visor.can_toggle(user))
 			continue
 
 		active_visor = new_visor
 		toggle_visor(user)
 		return active_visor
 
+	to_chat(user, SPAN_WARNING("There are no visors to swap to currently."))
 	return FALSE
+
 /datum/action/item_action/cycle_helmet_huds/New(Target, obj/item/holder)
 	. = ..()
 	name = "Cycle helmet HUD"

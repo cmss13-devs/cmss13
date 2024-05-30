@@ -264,7 +264,7 @@
 		bullet.damage = bullet.damage * brute_projectile_multiplier
 
 	if(istype(bullet.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage(round(50 * burn_multiplier))
+		take_damage(floor(50 * burn_multiplier))
 
 	else if(bullet.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
 		take_damage(bullet.damage * ANTISTRUCT_DMG_MULT_BARRICADES)
@@ -279,9 +279,9 @@
 			new /obj/item/stack/barbed_wire(loc)
 		if(stack_type)
 			var/stack_amt
-			stack_amt = round(stack_amount * (health/starting_maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
+			stack_amt = floor(stack_amount * (health/starting_maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
 			if(upgraded)
-				stack_amt += round(2 * (health/starting_maxhealth))
+				stack_amt += floor(2 * (health/starting_maxhealth))
 			if(stack_amt)
 				new stack_type(loc, stack_amt)
 	else
@@ -304,7 +304,7 @@
 		deconstruct(FALSE)
 		create_shrapnel(location, rand(2,5), direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
 	else
-		update_health(round(severity * explosive_multiplier))
+		update_health(floor(severity * explosive_multiplier))
 
 /obj/structure/barricade/get_explosion_resistance(direction)
 	if(!density || direction == turn(dir, 90) || direction == turn(dir, -90))
@@ -333,7 +333,7 @@
 	take_damage(dam * burn_flame_multiplier)
 
 /obj/structure/barricade/proc/hit_barricade(obj/item/item)
-	take_damage(item.force * 0.5 * brute_multiplier)
+	take_damage(item.force * item.demolition_mod * 0.5 * brute_multiplier)
 
 /obj/structure/barricade/proc/take_damage(damage)
 	for(var/obj/structure/barricade/barricade in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
@@ -359,7 +359,7 @@
 	update_icon()
 
 /obj/structure/barricade/proc/update_damage_state()
-	var/health_percent = round(health/maxhealth * 100)
+	var/health_percent = floor(health/maxhealth * 100)
 	switch(health_percent)
 		if(0 to 25) damage_state = BARRICADE_DMG_HEAVY
 		if(25 to 50) damage_state = BARRICADE_DMG_MODERATE

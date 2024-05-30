@@ -16,9 +16,10 @@
 	can_be_revived = FALSE
 
 	build_time_mult = BUILD_TIME_MULT_LESSER_DRONE
+	behavior_delegate_type = /datum/behavior_delegate/lesser_drone_base
 
 	caste_desc = "A builder of hives."
-	can_hold_facehuggers = 1
+	can_hold_facehuggers = TRUE
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	acid_level = 1
 	weed_level = WEED_LEVEL_STANDARD
@@ -118,3 +119,10 @@
 
 /mob/living/carbon/xenomorph/lesser_drone/handle_ghost_message()
 	return
+
+/datum/behavior_delegate/lesser_drone_base
+	name = "Base Lesser Drone Behavior Delegate"
+
+/datum/behavior_delegate/lesser_drone_base/on_life()
+	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
+		bound_xeno.adjustBruteLoss(5)

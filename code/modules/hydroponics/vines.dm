@@ -138,7 +138,7 @@
 			if(seed.carnivorous == 2)
 				to_chat(buckled_mob, SPAN_DANGER("\The [src] pierces your flesh greedily!"))
 
-				var/damage = rand(round(seed.potency/2),seed.potency)
+				var/damage = rand(floor(seed.potency/2),seed.potency)
 				if(!istype(H))
 					H.apply_damage(damage, BRUTE)
 					return
@@ -167,7 +167,7 @@
 
 	// Update bioluminescence.
 	if(seed.biolum)
-		set_light(1+round(seed.potency/10))
+		set_light(1+floor(seed.potency/10))
 		return
 	else
 		set_light(0)

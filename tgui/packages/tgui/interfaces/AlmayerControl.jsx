@@ -1,6 +1,15 @@
 import { Fragment } from 'react';
+
 import { useBackend } from '../backend';
-import { Button, Section, Flex, NoticeBox, Collapsible, Divider, Box } from '../components';
+import {
+  Box,
+  Button,
+  Collapsible,
+  Divider,
+  Flex,
+  NoticeBox,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
 
 export const AlmayerControl = (_props) => {
@@ -73,58 +82,62 @@ export const AlmayerControl = (_props) => {
           <Flex height="100%" direction="column">
             <Flex.Item>
               <Button
-                fluid={1}
+                fluid
                 color={alertLevelColor}
                 icon="triangle-exclamation"
                 disabled={AlertLevel === 3}
-                onClick={() => act('change_sec_level')}>
+                onClick={() => act('change_sec_level')}
+              >
                 Change alert level; current alert level: {alertLevelString}.
               </Button>
             </Flex.Item>
             <Flex.Item>
               {!canMessage && (
-                <Button color="bad" warning={1} fluid={1} icon="ban">
+                <Button color="bad" warning={1} fluid icon="ban">
                   Shipwide announcement recharging:{' '}
                   {Math.ceil((data.time_message - worldTime) / 10)} secs
                 </Button>
               )}
               {!!canMessage && (
                 <Button
-                  fluid={1}
+                  fluid
                   icon="bullhorn"
                   title="Make a shipwide announcement"
-                  content="Make a shipwide announcement"
                   onClick={() => act('ship_announce')}
                   disabled={!canMessage}
-                />
+                >
+                  Make a shipwide announcement
+                </Button>
               )}
             </Flex.Item>
             <Flex.Item>
               {!canCentral && (
-                <Button color="bad" warning={1} fluid={1} icon="ban">
+                <Button color="bad" warning={1} fluid icon="ban">
                   Quantum relay re-cycling :{' '}
                   {Math.ceil((data.time_message - worldTime) / 10)} secs
                 </Button>
               )}
               {!!canCentral && (
                 <Button
-                  fluid={1}
+                  fluid
                   icon="paper-plane"
                   title="Send a message to USCM High Command"
-                  content="Send a message to USCM High Command"
                   onClick={() => act('messageUSCM')}
                   disabled={!canCentral}
-                />
+                >
+                  Send a message to USCM High Command
+                </Button>
               )}
             </Flex.Item>
             <Flex.Item>
               <Button
-                fluid={1}
+                fluid
                 icon="medal"
                 title="Give a medal"
-                content="Give a medal"
                 onClick={() => act('award')}
-              />
+              >
+                Give a medal
+              </Button>
             </Flex.Item>
             <Section title="Emergency measures">
               {AlertLevel < 2 && (
@@ -136,16 +149,17 @@ export const AlmayerControl = (_props) => {
               {evacstatus === 0 && (
                 <Flex.Item>
                   <Button.Confirm
-                    fluid={1}
+                    fluid
                     color="orange"
                     icon="door-open"
-                    content={'Initiate Evacuation'}
                     confirmColor="bad"
                     confirmContent="Confirm?"
                     confirmIcon="question"
                     onClick={() => act('evacuation_start')}
                     disabled={!canEvac}
-                  />
+                  >
+                    Initiate Evacuation
+                  </Button.Confirm>
                 </Flex.Item>
               )}
               {evacstatus === 1 && (
@@ -154,15 +168,16 @@ export const AlmayerControl = (_props) => {
                     Evacuation ongoing. Time until escape pod launch: {evacEta}.
                   </NoticeBox>
                   <Button.Confirm
-                    fluid={1}
+                    fluid
                     color="red"
                     icon="ban"
-                    content={'Cancel Evacuation'}
                     confirmColor="bad"
                     confirmContent="Confirm?"
                     confirmIcon="question"
                     onClick={() => act('evacuation_cancel')}
-                  />
+                  >
+                    Cancel Evacuation
+                  </Button.Confirm>
                 </Flex.Item>
               )}
               {evacstatus === 2 && (
@@ -179,46 +194,50 @@ export const AlmayerControl = (_props) => {
                 {!canDestruct && (
                   <Button
                     disabled={1}
-                    content={'Self-destruct disabled!'}
                     tooltip={destruct_reason}
-                    fluid={1}
+                    fluid
                     icon="ban"
-                  />
+                  >
+                    Self-destruct disabled!
+                  </Button>
                 )}
                 {canDestruct && (
                   <Button.Confirm
-                    fluid={1}
+                    fluid
                     color="red"
                     icon="explosion"
-                    content={'Request to initiate Self-destruct'}
                     confirmColor="bad"
                     confirmContent="Confirm Self-destruct?"
                     confirmIcon="question"
                     onClick={() => act('destroy')}
-                  />
+                  >
+                    Request to initiate Self-destruct
+                  </Button.Confirm>
                 )}
               </Flex.Item>
               <Flex.Item>
                 {!canRequest && (
                   <Button
                     disabled={1}
-                    content={'Distress Beacon disabled'}
                     tooltip={distress_reason}
-                    fluid={1}
+                    fluid
                     icon="ban"
-                  />
+                  >
+                    Distress Beacon disabled
+                  </Button>
                 )}
                 {canRequest && (
                   <Button.Confirm
-                    fluid={1}
+                    fluid
                     color="orange"
                     icon="phone-volume"
-                    content={'Send Distress Beacon'}
                     confirmColor="bad"
                     confirmContent="Confirm?"
                     confirmIcon="question"
                     onClick={() => act('distress')}
-                  />
+                  >
+                    Send Distress Beacon
+                  </Button.Confirm>
                 )}
               </Flex.Item>
             </Section>
@@ -236,14 +255,16 @@ export const AlmayerControl = (_props) => {
                         title={entry.title}
                         buttons={
                           <Button
-                            content={'Delete message'}
                             color="red"
                             icon="trash"
                             onClick={() =>
                               act('delmessage', { number: entry.number })
                             }
-                          />
-                        }>
+                          >
+                            Delete message
+                          </Button>
+                        }
+                      >
                         <Box>{entry.text}</Box>
                       </Section>
                     </Flex.Item>

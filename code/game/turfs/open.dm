@@ -644,6 +644,7 @@
 
 /turf/open/gm/coast/beachcorner2
 	icon_state = "beachcorner2"
+	
 /turf/open/gm/coast/beachcorner2/can_surgery
 	allow_construction = TRUE
 	supports_surgery = TRUE

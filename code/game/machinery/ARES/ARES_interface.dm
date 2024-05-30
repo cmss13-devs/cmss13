@@ -24,6 +24,8 @@
 	/// The datacore storing all the information.
 	var/datum/ares_datacore/datacore
 
+	COOLDOWN_DECLARE(printer_cooldown)
+
 /obj/structure/machinery/computer/ares_console/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
 		return FALSE
@@ -93,6 +95,8 @@
 	data["mission_failed"] = SSticker.mode.is_in_endgame
 	data["nuketimelock"] = NUCLEAR_TIME_LOCK
 	data["nuke_available"] = datacore.nuke_available
+
+	data["printer_cooldown"] = !COOLDOWN_FINISHED(src, printer_cooldown)
 
 	var/list/logged_announcements = list()
 	for(var/datum/ares_record/announcement/broadcast as anything in datacore.records_announcement)
@@ -340,10 +344,14 @@
 		// -- Print ASRS Audit Log -- //
 		if("print_req")
 			playsound = FALSE
+			if(!COOLDOWN_FINISHED(src, printer_cooldown))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
 			if(!datacore.records_asrs.len)
 				to_chat(user, SPAN_WARNING("There are no records to print!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
-				return
+				return FALSE
+			COOLDOWN_START(src, printer_cooldown, 20 SECONDS)
 			playsound(src, 'sound/machines/fax.ogg', 15, 1)
 			sleep(3.4 SECONDS)
 			var/contents = {"

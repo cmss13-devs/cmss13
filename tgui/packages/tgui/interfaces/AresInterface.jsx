@@ -1193,6 +1193,7 @@ const Requisitions = (props) => {
     last_page,
     current_menu,
     records_requisition,
+    printer_cooldown,
   } = data;
 
   return (
@@ -1242,6 +1243,7 @@ const Requisitions = (props) => {
             textAlign="center"
             tooltip="Print Audit Log"
             onClick={() => act('print_req')}
+            disabled={printer_cooldown}
           >
             Print Audit Log
           </Button>

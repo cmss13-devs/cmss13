@@ -1,4 +1,0 @@
-author: "JackieEstegado"
-delete-after: True
-changes:
-  - qol: "Requisition drop pads will now no longer launch open crates"

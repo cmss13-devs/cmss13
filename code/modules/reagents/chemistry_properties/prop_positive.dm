@@ -28,6 +28,7 @@
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(0, potency)
@@ -47,6 +48,7 @@
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/neogenetic/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(potency, 0)
@@ -216,7 +218,7 @@
 /datum/chem_property/positive/musclestimulating/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	if(!isxeno_human(M))
 		return
-	M.AddComponent(/datum/component/speed_modifier, volume, TRUE, AMOUNT_PER_TIME(1, potency SECONDS), potency*volume) //Long-lasting speed for beans, stamina for humans
+	M.AddComponent(/datum/component/status_effect/speed_modifier, volume, TRUE, AMOUNT_PER_TIME(1, potency SECONDS), potency*volume) //Long-lasting speed for beans, stamina for humans
 
 /datum/chem_property/positive/painkilling
 	name = PROPERTY_PAINKILLING
@@ -399,7 +401,7 @@
 				L.time_to_knit = 600 // 6 mins
 		if(L.time_to_knit && (L.status & LIMB_BROKEN) && L.knitting_time == -1)
 			if(!(L.status & LIMB_SPLINTED))
-				potency -= 2.5 // It'll work, but we're effectively 5 level lower.
+				potency -= 1 // It'll work, but we're effectively 2 levels lower.
 			if(potency > 0)
 				var/total_knitting_time = world.time + L.time_to_knit - min(150*potency, L.time_to_knit - 50)
 				L.knitting_time = total_knitting_time
@@ -450,6 +452,7 @@
 	description = "Causes a temporal freeze of all neurological processes and cellular respirations in the brain. This allows the brain to be preserved for long periods of time."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/neurocryogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(10 * delta_time))
@@ -473,7 +476,7 @@
 /datum/chem_property/positive/neurocryogenic/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	if(!isxeno_human(M))
 		return
-	M.AddComponent(/datum/component/speed_modifier, potency * volume * 0.5) //Brainfreeze
+	M.AddComponent(/datum/component/status_effect/speed_modifier, potency * volume * 0.5) //Brainfreeze
 
 /datum/chem_property/positive/antiparasitic
 	name = PROPERTY_ANTIPARASITIC
@@ -548,6 +551,7 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
 	value = 3
+	cost_penalty = FALSE
 	COOLDOWN_DECLARE(ghost_notif)
 
 /datum/chem_property/positive/defibrillating/on_delete(mob/living/M)
@@ -684,6 +688,7 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 	value = 2
+	cost_penalty = FALSE
 
 	var/intensitymod_per_level = 0
 	var/radiusmod_per_level = 0
@@ -777,8 +782,6 @@
 	rarity = PROPERTY_COMMON
 	value = 1
 	range_per_level = 1
-	duration_per_level = -1
-	intensity_per_level = -1
 
 	intensitymod_per_level = -0.05
 	radiusmod_per_level = 0.05
@@ -835,6 +838,7 @@
 	description = "Disrupts certain neurological processes related to communication in animals."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/disrupting/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_NOTICE("Your mind feels oddly... quiet."))
@@ -848,8 +852,8 @@
 /datum/chem_property/positive/disrupting/reaction_mob(mob/M, method=TOUCH, volume, potency)
 	if(!isxeno(M))
 		return
-	var/mob/living/carbon/xenomorph/X = M
-	X.interference += (volume * potency)
+	var/mob/living/carbon/xenomorph/xeno = M
+	xeno.AddComponent(/datum/component/status_effect/interference, volume * potency, 90)
 
 /datum/chem_property/positive/neutralizing
 	name = PROPERTY_NEUTRALIZING
@@ -857,6 +861,7 @@
 	description = "Neutralizes certain reactive chemicals and plasmas on contact. Unsafe to administer intravenously."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/neutralizing/process(mob/living/M, potency = 1)
 	M.apply_damages(0, potency, potency * POTENCY_MULTIPLIER_LOW)
@@ -873,8 +878,9 @@
 	var/mob/living/L = M
 	L.ExtinguishMob() //Extinguishes mobs on contact
 	if(isxeno(L))
-		var/mob/living/carbon/xenomorph/X = M
-		X.plasma_stored = max(X.plasma_stored - POTENCY_MULTIPLIER_VHIGH * POTENCY_MULTIPLIER_VHIGH * potency, 0)
+		var/mob/living/carbon/xenomorph/xeno = M
+		xeno.plasma_stored = max(xeno.plasma_stored - POTENCY_MULTIPLIER_HIGH * volume * potency, 0)
+		to_chat(xeno, SPAN_WARNING("You feel your plasma reserves being drained!"))
 
 /datum/chem_property/positive/neutralizing/reaction_turf(turf/T, volume, potency)
 	if(!istype(T))
@@ -992,3 +998,37 @@
 
 /datum/chem_property/positive/anticarcinogenic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis
+
+/datum/chem_property/positive/regulating
+	name = PROPERTY_REGULATING
+	code = "REG"
+	description = "The chemical regulates its own metabolization, any amount overdosed is turned into sugar."
+	rarity = PROPERTY_COMMON
+	category = PROPERTY_TYPE_METABOLITE
+	max_level = 1
+	value = 1
+
+/datum/chem_property/positive/regulating/reset_reagent()
+	holder.flags = initial(holder.flags)
+	..()
+
+/datum/chem_property/positive/regulating/update_reagent()
+	holder.flags |= REAGENT_CANNOT_OVERDOSE
+	..()
+
+/datum/chem_property/positive/firepenetrating
+	name = PROPERTY_FIRE_PENETRATING
+	code = "PTR"
+	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
+	rarity = PROPERTY_RARE
+	category = PROPERTY_TYPE_REACTANT
+	value = 8
+	max_level = 1
+
+/datum/chem_property/positive/firepenetrating/reset_reagent()
+	holder.fire_penetrating = initial(holder.fire_penetrating)
+	..()
+
+/datum/chem_property/positive/firepenetrating/update_reagent()
+	holder.fire_penetrating = TRUE
+	..()

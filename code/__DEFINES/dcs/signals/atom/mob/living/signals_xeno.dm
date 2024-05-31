@@ -78,3 +78,6 @@
 /// From /mob/living/carbon/xenomorph/proc/hivemind_talk(): (message)
 #define COMSIG_XENO_TRY_HIVEMIND_TALK "xeno_try_hivemind_talk"
 	#define COMPONENT_OVERRIDE_HIVEMIND_TALK (1<<0)
+
+/// used in /datum/component/status_effect/cleanse()
+#define COMSIG_XENO_DEBUFF_CLEANSE "xeno_debuff_cleanse"

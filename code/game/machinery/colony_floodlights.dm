@@ -24,9 +24,14 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 /obj/structure/machinery/colony_floodlight_switch/Initialize(mapload, ...)
 	. = ..()
 	for(var/obj/structure/machinery/colony_floodlight_switch/other_switch as anything in GLOB.all_breaker_switches)
-		if(!length(other_switch.machinery_type_whitelist))
-			continue
-		machinery_type_blacklist |= other_switch.machinery_type_whitelist
+		// blacklist anything other switches whitelist if theres subtype overlap
+		for(var/other_whitelisted in other_switch.machinery_type_whitelist)
+			if(is_path_in_list(other_whitelisted, machinery_type_whitelist))
+				machinery_type_blacklist |= other_whitelisted
+		for(var/our_whitelisted in machinery_type_whitelist)
+			if(is_path_in_list(our_whitelisted, other_switch.machinery_type_whitelist))
+				other_switch.machinery_type_blacklist |= our_whitelisted
+
 	GLOB.all_breaker_switches += src
 	return INITIALIZE_HINT_LATELOAD
 

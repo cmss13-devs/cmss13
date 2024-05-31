@@ -1,5 +1,5 @@
 /obj/structure/machinery/colony_floodlight_switch/hydro_floodlight_switch
-	name = "Biodome Floodlight Switch"
+	name = "biodome floodlight switch"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
@@ -14,7 +14,7 @@
 		icon_state = "paneloff"
 
 /obj/structure/machinery/hydro_floodlight // TODO: Repath under /obj/structure/machinery/colony_floodlight
-	name = "Biodome Floodlight"
+	name = "biodome floodlight"
 	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
 	icon_state = "flood_s_off"
 	density = TRUE

@@ -6,7 +6,7 @@
 	icon_state = "hybrisa"
 	can_build_special = TRUE
 	powernet_name = "ground"
-	minimap_color = MINIMAP_AREA_COLONY
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 
 //parent types
 
@@ -29,6 +29,7 @@
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
+	minimap_color = MINIMAP_AREA_OOB
 
 // Landing Zone 1
 /area/lv759/outdoors/landing_zone_1
@@ -59,27 +60,35 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room
 	name = "KMCC Interstellar Freight Hub - Flight Control Room"
 	icon_state = "hybrisa"
+	ceiling = CEILING_METAL
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security
 	name = "KMCC Interstellar Freight Hub - Security Checkpoint Office"
 	icon_state = "security_checkpoint"
+	ceiling = CEILING_METAL
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north
 	name = "KMCC Interstellar Freight Hub - Passenger Departures - Lounge North"
 	icon_state = "hybrisa"
+	ceiling = CEILING_METAL
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel
 	name = "KMCC Interstellar Freight Hub - Fuel Storage & Maintenance - North"
 	icon_state = "hybrisa"
+	ceiling = CEILING_METAL
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south
 	name = "KMCC Interstellar Freight Hub - Passenger Departures - Lounge South"
 	icon_state = "hybrisa"
+	ceiling = CEILING_METAL
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway
 	name = "KMCC Interstellar Freight Hub - Passenger Departures - Hallway"
 	icon_state = "hybrisa"
+	ceiling = CEILING_METAL
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office
 	name = "KMCC Interstellar Freight Hub - Passenger Departures - South Office"
 	icon_state = "hybrisa"
+	ceiling = CEILING_METAL
 /area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance
 	name = "KMCC Interstellar Freight Hub - Passenger Departures - Maintenance"
 	icon_state = "hybrisa"
+	ceiling = CEILING_METAL
 /area/lv759/indoors/landing_zone_2/kmcc_hub/lz2_console
 	name = "KMCC Interstellar Freight Hub - Dropship Normandy Console"
 	icon_state = "hybrisa"
@@ -88,11 +97,13 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_cargo
 	name = "KMCC Interstellar Freight Hub - Cargo Processing Center"
 	icon_state = "mining_cargo"
-	minimap_color = MINIMAP_AREA_COLONY
+	ceiling = CEILING_METAL
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 /area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north
 	name = "KMCC Interstellar Freight Hub - Cargo Processing Center - Maintenance"
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
+	ceiling = CEILING_METAL
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 
 // Derelict Ship
 /area/lv759/indoors/derelict_ship
@@ -103,74 +114,100 @@
 	flags_area = AREA_NOTUNNEL
 	ambience_exterior = AMBIENCE_DERELICT
 	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP
+	minimap_color = MINIMAP_AREA_CAVES
 
 // Caves
 /area/lv759/indoors/wy_research_complex_entrance
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Main Entrance"
 	icon_state = "wylab"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES_ALARM
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	minimap_color = MINIMAP_AREA_CAVES
 /area/lv759/indoors/west_caves
 	name = "Caverns - West"
 	icon_state = "caves_west"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	minimap_color = MINIMAP_AREA_CAVES
 /area/lv759/indoors/west_caves_alarm
 	name = "Caverns - West"
 	icon_state = "caves_west"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES_ALARM
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	minimap_color = MINIMAP_AREA_CAVES
 /area/lv759/indoors/east_caves
 	name = "Caverns - East"
 	icon_state = "caves_east"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	minimap_color = MINIMAP_AREA_CAVES
 /area/lv759/indoors/south_caves
 	name = "Caverns - South"
 	icon_state = "caves_south"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	minimap_color = MINIMAP_AREA_CAVES
 /area/lv759/indoors/south_east_caves
 	name = "Caverns - Southeast"
 	icon_state = "caves_southeast"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	minimap_color = MINIMAP_AREA_CAVES
 /area/lv759/indoors/south_west_caves
 	name = "Caverns - Southwest"
 	icon_state = "caves_southwest"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	minimap_color = MINIMAP_AREA_CAVES
 /area/lv759/indoors/south_west_caves_alarm
 	name = "Caverns - Southwest"
 	icon_state = "caves_southwest"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES_ALARM
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	minimap_color = MINIMAP_AREA_CAVES
 /area/lv759/indoors/north_west_caves
 	name = "Caverns - Northwest"
 	icon_state = "caves_northwest"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	minimap_color = MINIMAP_AREA_CAVES
 /area/lv759/outdoors/north_west_caves_outdoors
 	name = "Caverns - Northwest"
 	icon_state = "caves_northwest"
 	ceiling = CEILING_NONE
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	minimap_color = MINIMAP_AREA_CAVES
 /area/lv759/indoors/north_east_caves
 	name = "Caverns - Northeast"
 	icon_state = "caves_northeast"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	minimap_color = MINIMAP_AREA_CAVES
 /area/lv759/indoors/north_caves
 	name = "Caverns - North"
 	icon_state = "caves_north"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	minimap_color = MINIMAP_AREA_CAVES
 /area/lv759/indoors/central_caves
 	name = "Caverns - Central"
 	icon_state = "caves_central"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	minimap_color = MINIMAP_AREA_CAVES
 
 
 // Caves Central Plateau
@@ -180,12 +217,14 @@
 	ceiling = CEILING_NONE
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_PLATEAU_OUTDOORS
+	minimap_color = MINIMAP_AREA_CAVES
 
 // Colony Streets
 /area/lv759/outdoors/colony_streets
 	name = "Colony Streets"
 	icon_state = "colonystreets_north"
 	ceiling = CEILING_NONE
+	minimap_color = MINIMAP_AREA_COLONY_STREETS
 /area/lv759/outdoors/colony_streets/central_streets
 	name = "Central Street - West"
 	icon_state = "colonystreets_west"
@@ -208,6 +247,15 @@
 	ceiling = CEILING_NONE
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+
+/area/lv759/outdoors/colony_streets/south_west_street_comms
+	name = "Colony Streets - Southwest - WY Checkpoint Passthrough - Subspace Communications"
+	icon_state = "colonystreets_southwest"
+	ceiling = CEILING_NONE
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	minimap_color = MINIMAP_AREA_COMMS
+
 /area/lv759/outdoors/colony_streets/north_west_street
 	name = "Colony Streets - Northwest"
 	icon_state = "colonystreets_northwest"
@@ -221,74 +269,60 @@
 	icon_state = "colonystreets_north"
 
 //Spaceport Indoors
+
+/area/lv759/indoors/spaceport
+	minimap_color = MINIMAP_AREA_COLONY_SPACE_PORT
 /area/lv759/indoors/spaceport/hallway_northeast
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Hallway - Northeast"
 	icon_state = "WYSpaceport"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/hallway_north
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Hallway - North"
 	icon_state = "WYSpaceport"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/hallway_northwest
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Hallway - Northwest"
 	icon_state = "WYSpaceport"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/hallway_east
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Hallway - East"
 	icon_state = "WYSpaceport"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/heavyequip
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Heavy Equipment Storage"
 	icon_state = "WYSpaceport"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/engineering
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Fuel Storage & Processing"
 	icon_state = "WYSpaceport"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/janitor
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Janitorial Storage Room"
 	icon_state = "WYSpaceport"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/maintenance_east
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Maintenance - East"
 	icon_state = "WYSpaceport"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/communications_office
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Communications & Administration Office"
 	icon_state = "WYSpaceportadmin"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/flight_control_room
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Flight Control Room"
 	icon_state = "WYSpaceportadmin"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/security
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Security- Observation & Office"
 	icon_state = "security_checkpoint"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/security_office
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Office"
 	icon_state = "security_checkpoint"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/cargo
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Cargo Bay"
 	icon_state = "WYSpaceportcargo"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/cargo_maintenance
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Cargo - Maintenance"
 	icon_state = "WYSpaceportcargo"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/baggagehandling
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Baggage Storage & Handling"
 	icon_state = "WYSpaceportbaggage"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/cuppajoes
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Cuppa Joe's"
 	icon_state = "cuppajoes"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/kitchen
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Kitchen"
 	icon_state = "WYSpaceportblue"
-	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/docking_bay_2
 	name = "Weyland-Yutani Celestia Gateway Space-Port - Docking Bay: 2 - Refueling and Maintenance"
 	icon_state = "WYSpaceportblue"
@@ -301,150 +335,118 @@
 	name = "WY-LWI StarGlider SG-200"
 	icon_state = "wydropship"
 	requires_power = FALSE
+	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/spaceport/horizon_runner
 	name = "WY-LWI Horizon Runner HR-150"
 	icon_state = "wydropship"
 	requires_power = FALSE
+	minimap_color = MINIMAP_AREA_COLONY
 
 // Garage
 
 /area/lv759/indoors/garage_reception
 	name = "Garage - Reception"
 	icon_state = "garage"
-	minimap_color = MINIMAP_AREA_ENGI
 /area/lv759/indoors/garage_restroom
 	name = "Garage - Restroom"
 	icon_state = "garage"
-	minimap_color = MINIMAP_AREA_ENGI
 /area/lv759/indoors/garage_workshop
 	name = "Garage - Workshop"
 	icon_state = "garage"
-	minimap_color = MINIMAP_AREA_ENGI
 /area/lv759/indoors/garage_workshop_storage
 	name = "Garage - Workshop - Storage Room"
 	icon_state = "garage"
-	minimap_color = MINIMAP_AREA_ENGI
 /area/lv759/indoors/garage_managersoffice
 	name = "Garage - Managers Office"
 	icon_state = "garage"
-	minimap_color = MINIMAP_AREA_ENGI
 
 // Meridian Offices & Factory Floor
 /area/lv759/indoors/meridian/meridian_foyer
 	name = "Meridian - Foyer"
 	icon_state = "meridian"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/meridian/meridian_showroom
 	name = "Meridian - Showroom"
 	icon_state = "meridian"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/meridian/meridian_office
 	name = "Meridian - Offices"
 	icon_state = "meridian"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/meridian/meridian_managersoffice
 	name = "Meridian - Manager's Office"
 	icon_state = "meridian"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/meridian/meridian_factory
 	name = "Meridian - Factory Floor"
 	icon_state = "meridian_factory"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/meridian/meridian_restroom
 	name = "Meridian - Restroom"
 	icon_state = "meridian"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/meridian/meridian_maintenance_south
 	name = "Meridian - Maintenance South"
 	icon_state = "meridian"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/meridian/meridian_maintenance_east
 	name = "Meridian - Factory Floor - Maintenance"
 	icon_state = "meridian"
-	minimap_color = MINIMAP_AREA_COLONY
 
 // Apartments (Dorms)
+
+/area/lv759/indoors/apartment
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 /area/lv759/indoors/apartment/westfoyer
 	name = "Westhaven Apartment Complex - West - Foyer"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
-
 /area/lv759/indoors/apartment/westhallway
 	name = "Westhaven Apartment Complex - West - Hallway"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/apartment/westbedrooms
 	name = "Westhaven Apartment Complex - West - Bedrooms"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/apartment/westshowers
 	name = "Westhaven Apartment Complex - West - Showers"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/apartment/westrestroom
 	name = "Westhaven Apartment Complex - West - Restrooms"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/apartment/westentertainment
 	name = "Westhaven Apartment Complex - West - Recreation Hub"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
-
-
-
 /area/lv759/indoors/apartment/eastentrance
 	name = "Westhaven Apartment Complex - East - Entrance Room"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/apartment/eastfoyer
 	name = "Westhaven Apartment Complex - East - Foyer"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/apartment/eastrestroomsshower
 	name = "Westhaven Apartment Complex - East - Restrooms & Showers"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/apartment/eastbedrooms
 	name = "Westhaven Apartment Complex - East - Bedrooms"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/apartment/eastbedroomsstorage
 	name = "Westhaven Apartment Complex - East - Bedrooms - Storage Room"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
-
 /area/lv759/indoors/apartment/northfoyer
 	name = "Westhaven Apartment Complex - North - Foyer"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/apartment/northhallway
 	name = "Westhaven Apartment Complex - North - Hallway"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/apartment/northapartments
 	name = "Westhaven Apartment Complex - North - Luxury Apartments"
 	icon_state = "apartments"
-	minimap_color = MINIMAP_AREA_COLONY
 
 // Weyland-Yutani Offices
 /area/lv759/indoors/weyyu_office
 	name = "Weyland-Yutani Offices - Reception Hallway"
 	icon_state = "wyoffice"
 	minimap_color = MINIMAP_AREA_COMMAND
-
 /area/lv759/indoors/weyyu_office/hallway
 	name = "Weyland-Yutani Offices - West Foyer"
 	icon_state = "wyoffice"
-
 /area/lv759/indoors/weyyu_office/floor
 	name = "Weyland-Yutani Offices - Main Office Floor"
-
 /area/lv759/indoors/weyyu_office/breakroom
 	name = "Weyland-Yutani Offices - Breakroom"
-
 /area/lv759/indoors/weyyu_office/vip
 	name = "Weyland-Yutani Offices - Conference Room"
-
 /area/lv759/indoors/weyyu_office/pressroom
 	name = "Weyland-Yutani Offices - Assembly Hall"
 /area/lv759/indoors/weyyu_office/supervisor
@@ -454,8 +456,6 @@
 /area/lv759/indoors/bar
 	name = "Bar"
 	icon_state = "bar"
-	minimap_color = MINIMAP_AREA_COLONY
-
 /area/lv759/indoors/bar/entertainment
 	name = "Bar - Entertainment Subsection"
 /area/lv759/indoors/bar/bathroom
@@ -466,6 +466,7 @@
 	name = "Bar - Kitchen"
 
 //Botany
+
 /area/lv759/indoors/botany/botany_greenhouse
 	name = "Botany - Greenhouse"
 	icon_state = "botany"
@@ -495,6 +496,7 @@
 	name = "Nova Medica Hospital Complex - Chief Medical Officer's Office"
 /area/lv759/indoors/hospital/maintenance
 	name = "Nova Medica Hospital Complex - Subspace Communications & Electrical Systems"
+	minimap_color = MINIMAP_AREA_COMMS
 /area/lv759/indoors/hospital/pharmacy
 	name = "Nova Medica Hospital Complex - Pharmacy & Outgoing Foyer"
 /area/lv759/indoors/hospital/outgoing
@@ -528,70 +530,60 @@
 
 /area/lv759/indoors/mining_outpost
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
+	minimap_color = MINIMAP_AREA_MINING
 /area/lv759/indoors/mining_outpost/north
 	name = "KMCC - Mining Outpost - North"
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/north_maint
 	name = "KMCC - Mining Outpost - North - Maintenance"
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/northeast
 	name = "KMCC - Mining Outpost - Northeast"
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/south
 	name = "KMCC - Mining Outpost - South"
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/vehicledeployment
 	name = "KMCC - Mining Vehicle Deployment South"
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/processing
 	name = "KMCC - Mining Processing & Storage"
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/east
 	name = "KMCC - Mining Outpost - East"
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/east_dorms
 	name = "KMCC - Mining Outpost - East Dorms"
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/east_deploymentbay
 	name = "KMCC - Mining Outpost - East - Deployment Bay"
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/east_command
 	name = "KMCC - Mining Outpost - East - Command Center"
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/cargo_maint
 	name = "KMCC - Mining Outpost - East - Maintenance"
 	icon_state = "mining"
-	minimap_color = MINIMAP_AREA_COLONY
+
 // Electrical Substations
+
+/area/lv759/indoors/electical_systems
+	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 /area/lv759/indoors/electical_systems/substation1
 	name = "Electrical Systems - Substation One - Control Room"
 	icon_state = "power0"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/electical_systems/substation2
 	name = "Electrical Systems - Substation Two"
 	icon_state = "power0"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/electical_systems/substation3
 	name = "Electrical Systems - Substation Three"
 	icon_state = "power0"
-	minimap_color = MINIMAP_AREA_COLONY
 
 // Power-Plant (Engineering)
 /area/lv759/indoors/power_plant
 	name = "Weyland-Yutani DynaGrid Nexus - Central Hallway"
 	icon_state = "power0"
-	minimap_color = MINIMAP_AREA_COLONY
+	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 /area/lv759/indoors/power_plant/south_hallway
 	name = "Weyland-Yutani DynaGrid Nexus - South Hallway"
 /area/lv759/indoors/power_plant/geothermal_generators
@@ -613,6 +605,7 @@
 /area/lv759/indoors/power_plant/telecomms
 	icon_state = "comms_1"
 	name = "Weyland-Yutani DynaGrid Nexus - Telecommunications"
+	minimap_color = MINIMAP_AREA_COMMS
 /area/lv759/indoors/power_plant/workers_canteen
 	name = "Weyland-Yutani DynaGrid Nexus - Worker's Canteen"
 /area/lv759/indoors/power_plant/workers_canteen_kitchen
@@ -626,7 +619,7 @@
 /area/lv759/indoors/colonial_marshals
 	name = "CMB - Sentinel Outpost"
 	icon_state = "security_hub"
-	minimap_color = MINIMAP_AREA_SEC
+	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
 /area/lv759/indoors/colonial_marshals/prisoners_cells
 	name = "CMB - Sentinel Outpost - Maximum Security Ward - Cells"
 /area/lv759/indoors/colonial_marshals/prisoners_foyer
@@ -685,88 +678,82 @@
 /area/lv759/indoors/jacks_surplus
 	name = "Jack's Military Surplus"
 	icon_state = "jacks"
-	minimap_color = MINIMAP_AREA_COLONY
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 
 //Weyland-Yutani - Resource Recovery Facility
 /area/lv759/indoors/recycling_plant
 	name = "Weyland-Yutani - Resource Recovery Facility"
 	icon_state = "recycling"
-	minimap_color = MINIMAP_AREA_COLONY
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 /area/lv759/indoors/recycling_plant/garage
 	name = "Weyland-Yutani - Resource Recovery Facility - Garage"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/recycling_plant/synthetic_storage
 	name = "Synthetic Storage"
 	icon_state = "synthetic"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/recycling_plant_office
 	name = "Weyland-Yutani - Resource Recovery Facility - Office"
 	icon_state = "recycling"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/recycling_plant_waste_disposal_incinerator
 	name = "Weyland-Yutani - Resource Recovery Facility - Waste Disposal Incinerating Room"
 	icon_state = "recycling"
-	minimap_color = MINIMAP_AREA_COLONY
+
 // Restrooms
 /area/lv759/indoors/south_public_restroom
 	name = "Public Restroom - South"
 	icon_state = "restroom"
-	minimap_color = MINIMAP_AREA_COLONY
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 /area/lv759/indoors/southwest_public_restroom
 	name = "Public Restroom - Southwest"
 	icon_state = "restroom"
-	minimap_color = MINIMAP_AREA_COLONY
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 
 //Nightgold Casino
 /area/lv759/indoors/casino
 	name = "Night Gold Casino"
 	icon_state = "nightgold"
-	minimap_color = MINIMAP_AREA_ENGI
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 /area/lv759/indoors/casino/casino_office
 	name = "Night Gold Casino - Managers Office"
 	icon_state = "nightgold"
-	minimap_color = MINIMAP_AREA_ENGI
 /area/lv759/indoors/casino/casino_restroom
 	name = "Night Gold Casino - Restroom"
 	icon_state = "nightgold"
-	minimap_color = MINIMAP_AREA_ENGI
 /area/lv759/indoors/casino/casino_vault
 	name = "Night Gold Casino - Vault"
 	icon_state = "nightgold"
-	minimap_color = MINIMAP_AREA_ENGI
 
 // Pizza
 /area/lv759/indoors/pizzaria
 	name = "Pizza Galaxy - Outpost Zeta"
 	icon_state = "pizza"
-	minimap_color = MINIMAP_AREA_ENGI
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 
 //T-comms
 /area/lv759/indoors/tcomms_northwest
 	name = "Telecommunications Substation - Northwest"
 	icon_state = "comms_1"
-	minimap_color = MINIMAP_AREA_ENGI
+	minimap_color = MINIMAP_AREA_COMMS
 
 // Weymart
 /area/lv759/indoors/weymart
 	name = "Weymart"
 	icon_state = "weymart"
-	minimap_color = MINIMAP_AREA_COMMAND
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 	ambience_exterior = AMBIENCE_WEYMART
 /area/lv759/indoors/weymart/backrooms
 	name = "Weymart - Backrooms"
 	icon_state = "weymartbackrooms"
-	minimap_color = MINIMAP_AREA_COMMAND
 /area/lv759/indoors/weymart/maintenance
 	name = "Weymart - Maintenance"
 	icon_state = "weymartbackrooms"
-	minimap_color = MINIMAP_AREA_COMMAND
 
 // WY Security Checkpoints
+
+/area/lv759/indoors/wy_security
+	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
 /area/lv759/indoors/wy_security/checkpoint_northeast
 	name = "Weyland-Yutani Security Checkpoint - North East"
 	icon_state = "security_checkpoint_northeast"
-	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/wy_security/checkpoint_east
 	name = "Weyland-Yutani Security Checkpoint - East"
 	icon_state = "security_checkpoint_east"
@@ -793,7 +780,7 @@
 /area/lv759/indoors/wy_research_complex
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex"
 	icon_state = "wylab"
-	minimap_color = MINIMAP_AREA_COMMAND
+	minimap_color = MINIMAP_AREA_RESEARCH
 /area/lv759/indoors/wy_research_complex/medical_annex
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Medical Annex Building"
 	icon_state = "wylab"
@@ -889,6 +876,7 @@
 	icon_state = "wylab"
 	ambience_exterior = AMBIENCE_LAB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/wy_research_complex/hallwaynorth
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Hallway"
 	icon_state = "wylab"

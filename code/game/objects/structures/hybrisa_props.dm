@@ -590,6 +590,40 @@
 /obj/structure/prop/hybrisa/furniture/tables
 	icon = 'icons/obj/structures/props/hybrisatables.dmi'
 	icon_state = "table_pool"
+	health = 500
+
+/obj/structure/prop/hybrisa/furniture/tables/bullet_act(obj/projectile/P)
+	var/damage = P.damage
+	health -= damage
+	..()
+	healthcheck()
+	return 1
+
+/obj/structure/prop/hybrisa/furniture/tables/proc/explode()
+	src.visible_message(SPAN_DANGER("<B>[src] breaks apart!</B>"), null, null, 1)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/furniture/tables/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hybrisa/furniture/tables/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/furniture/tables/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/hybrisa/furniture/tables/tableblack
 	name = "large metal table"
@@ -760,24 +794,19 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
-
+	density = TRUE
+	layer = ABOVE_MOB_LAYER
 /obj/structure/prop/hybrisa/xenobiology/big/bigleft
 	icon_state = "bigqueencryo1"
-	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/big/bigright
 	icon_state = "bigqueencryo2"
-	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/big/bigbottomleft
 	icon_state = "bigqueencryo3"
-	density = TRUE
-	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/big/bigbottomright
 	icon_state = "bigqueencryo4"
-	density = TRUE
-	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/misc
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
@@ -786,7 +815,7 @@
 	icon_state = "inertegg"
 	unslashable = TRUE
 	indestructible = TRUE
-	layer = 2
+	layer = TURF_LAYER
 
 // Engineer
 
@@ -875,11 +904,55 @@
 	name = "strange pillar"
 	icon_state = "engineerpillar_SW2fade"
 
-/obj/structure/prop/hybrisa/engineer/blackgoocontainer
+/obj/structure/blackgoocontainer
 	name = "strange container"
 	icon_state = "blackgoocontainer1"
-	desc = "A strange alien container, who knows what's inside..."
-	icon = 'icons/obj/structures/props/blackgoocontainers.dmi'
+	desc = "A strange alien container, it appears to be completely empty."
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	density = TRUE
+	anchored = TRUE
+	unslashable = FALSE
+	health = 150
+
+/obj/structure/blackgoocontainer/initialize_pass_flags(datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY
+
+/obj/structure/blackgoocontainer/bullet_act(obj/projectile/P)
+	var/damage = P.damage
+	health -= damage
+	..()
+	healthcheck()
+	return 1
+
+/obj/structure/blackgoocontainer/proc/explode()
+	src.visible_message(SPAN_DANGER("<B>[src] crumbles!</B>"), null, null, 1)
+	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
+
+	deconstruct(FALSE)
+
+/obj/structure/blackgoocontainer/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/blackgoocontainer/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/blackgoocontainer/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metal_close.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 // Airport
 
@@ -1213,6 +1286,40 @@
 	bound_height = 32
 	anchored = TRUE
 	density = TRUE
+	health = 500
+
+/obj/structure/machinery/big_computers/bullet_act(obj/projectile/P)
+	var/damage = P.damage
+	health -= damage
+	..()
+	healthcheck()
+	return 1
+
+/obj/structure/machinery/big_computers/proc/explode()
+	src.visible_message(SPAN_DANGER("<B>[src] breaks apart!</B>"), null, null, 1)
+	deconstruct(FALSE)
+
+/obj/structure/machinery/big_computers/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/machinery/big_computers/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/machinery/big_computers/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/big_computers/computerwhite
 	name = "computer"
@@ -1220,6 +1327,24 @@
 /obj/structure/machinery/big_computers/computerblack
 	name = "computer"
 
+/obj/structure/machinery/big_computers/computerbrown
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	name = "computer"
+
+/obj/structure/machinery/big_computers/computerbrown/computer1
+	icon_state = "mapping_comp"
+
+/obj/structure/machinery/big_computers/computerbrown/computer2
+	icon_state = "mps"
+
+/obj/structure/machinery/big_computers/computerbrown/computer3
+	icon_state = "sensor_comp1"
+
+/obj/structure/machinery/big_computers/computerbrown/computer4
+	icon_state = "sensor_comp2"
+
+/obj/structure/machinery/big_computers/computerbrown/computer5
+	icon_state = "sensor_comp3"
 /obj/structure/machinery/big_computers/computerwhite/computer1
 	icon_state = "mapping_comp"
 
@@ -1250,10 +1375,54 @@
 /obj/structure/machinery/big_computers/computerblack/computer5
 	icon_state = "blacksensor_comp3"
 
+/obj/structure/machinery/big_computers/messaging_server
+	name = "Messaging Server"
+	icon_state = "messageserver_black"
+/obj/structure/machinery/big_computers/messaging_server/black
+	icon_state = "messageserver_black"
+/obj/structure/machinery/big_computers/messaging_server/white
+	icon_state = "messageserver_white"
+/obj/structure/machinery/big_computers/messaging_server/brown
+	icon_state = "messageserver_brown"
+
 // Monitors
 
 /obj/structure/prop/hybrisa/misc/machinery/screens
 	name = "monitor"
+	health = 250
+
+/obj/structure/prop/hybrisa/misc/machinery/screens/bullet_act(obj/projectile/P)
+	var/damage = P.damage
+	health -= damage
+	..()
+	healthcheck()
+	return 1
+
+/obj/structure/prop/hybrisa/misc/machinery/screens/proc/explode()
+	src.visible_message(SPAN_DANGER("<B>[src] breaks apart!</B>"), null, null, 1)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/machinery/screens/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hybrisa/misc/machinery/screens/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/machinery/screens/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/frame
 	icon_state = "frame"
@@ -1330,6 +1499,7 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/wallegg_on
 	icon_state = "wallegg_on"
 
+// Fake Pipes
 /obj/structure/prop/hybrisa/misc/fake/pipes
 	name = "disposal pipe"
 	layer = TURF_LAYER
@@ -1342,6 +1512,7 @@
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe3
 	icon_state = "pipe-j1"
 
+// Fake Wire
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe4
 	icon_state = "pipe-y"
 
@@ -1546,9 +1717,42 @@
 	bound_width = 64
 	bound_height = 32
 	density = TRUE
-	health = 200
+	health = 1000
 	anchored = TRUE
 	layer = EXTERIOR_HIGHWALLMOUNT_LAYER
+
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/bullet_act(obj/projectile/P)
+	var/damage = P.damage
+	health -= damage
+	..()
+	healthcheck()
+	return 1
+
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/proc/explode()
+	src.visible_message(SPAN_DANGER("<B>[src] breaks apart!</B>"), null, null, 1)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble1
 	icon_state = "buildingventbig2"
@@ -1595,6 +1799,40 @@
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "smallwallvent1"
 	density = FALSE
+	health = 250
+
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/bullet_act(obj/projectile/P)
+	var/damage = P.damage
+	health -= damage
+	..()
+	healthcheck()
+	return 1
+
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/proc/explode()
+	src.visible_message(SPAN_DANGER("<B>[src] breaks apart!</B>"), null, null, 1)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2
 	name = "wall vent"
@@ -1625,7 +1863,7 @@
 	bound_width = 32
 	bound_height = 64
 	density = TRUE
-	health = 200
+	health = 1000
 	anchored = TRUE
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty
@@ -1708,8 +1946,6 @@
 	icon_state = "jacksopen_on"
 	bound_height = 64
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/signs/casniosign
@@ -1771,9 +2007,42 @@
 	icon_state = "billboard_bigger"
 	bound_width = 64
 	bound_height = 32
+	health = 1000
 	density = FALSE
-	health = 200
 	anchored = TRUE
+
+/obj/structure/prop/hybrisa/billboardsandsigns/bullet_act(obj/projectile/P)
+	var/damage = P.damage
+	health -= damage
+	..()
+	healthcheck()
+	return 1
+
+/obj/structure/prop/hybrisa/billboardsandsigns/proc/explode()
+	src.visible_message(SPAN_DANGER("<B>[src] breaks apart!</B>"), null, null, 1)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/billboardsandsigns/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hybrisa/billboardsandsigns/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/billboardsandsigns/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1
 	name = "billboard"
@@ -1808,7 +2077,7 @@
 	bound_width = 64
 	bound_height = 32
 	density = FALSE
-	health = 200
+	health = 1000
 	anchored = TRUE
 	layer = 8
 /obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1

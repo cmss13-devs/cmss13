@@ -666,7 +666,7 @@
 
 	var/insub = "[icon2html(src, usr)] [SPAN_BOLDNOTICE("[wanted_marine] has been reported for insubordination. Logging to enlistment file.")]"
 	if(isRemoteControlling(usr))
-		usr << insub
+		to_chat(usr, insub)
 	else
 		visible_message(insub)
 		to_chat(wanted_marine, "[icon2html(src, wanted_marine)] <font size='3' color='blue'><B>Overwatch:</b> You've been reported for insubordination by your overwatch officer.</font>")

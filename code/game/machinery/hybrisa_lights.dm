@@ -1,6 +1,6 @@
 // Hybrisa Electrical Stuff
 /obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch
-	name = "Colony Electrified Fence Switch"
+	name = "colony electrified fence switch"
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the electrified fences. It only functions when there is power."
@@ -45,7 +45,7 @@
 
 // Hybrisa Streetlights
 /obj/structure/machinery/colony_floodlight/street
-	name = "Colony Streetlight"
+	name = "colony streetlight"
 	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "street_off"
 	layer = ABOVE_XENO_LAYER
@@ -101,10 +101,10 @@
 
 // Engineer Floor lights
 /obj/structure/machinery/colony_floodlight_switch/engineerconsole_switch
-	name = "Giant Alien Console"
+	name = "giant alien console"
 	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "engineerconsole"
-	desc = "A Giant Alien console of some kind, unlike anything you've ever seen before. Who knows the purpose of this strange technology..."
+	desc = "A giant alien console of some kind, unlike anything you've ever seen before. Who knows the purpose of this strange technology..."
 	use_power = USE_POWER_NONE
 	needs_power = FALSE
 	ispowered = TRUE

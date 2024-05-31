@@ -367,7 +367,7 @@
 /area/strata/ag/interior/outside/bball/cave)
 "abt" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/cameras,
+/obj/structure/machinery/computer/cameras/wooden_tv,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -1753,14 +1753,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
-"afr" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/floor/strata{
-	icon_state = "floor3"
-	},
-/area/strata/ag/interior/outpost/admin)
 "afs" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
@@ -5157,10 +5149,6 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outside/checkpoints/north_armor)
-"aqk" = (
-/obj/structure/sign/safety/storage,
-/turf/closed/wall/strata_outpost,
-/area/strata/ag/interior/outside/checkpoints/north_armor)
 "aql" = (
 /obj/structure/machinery/weather_siren,
 /turf/closed/wall/strata_outpost/reinforced,
@@ -8209,14 +8197,6 @@
 /area/strata/ag/interior/mining_outpost/central)
 "azE" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/sign/safety/medical{
-	pixel_x = 32;
-	pixel_y = -8
-	},
-/obj/structure/sign/safety/med_cryo{
-	pixel_x = 32;
-	pixel_y = 7
-	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/mining_outpost/central)
 "azG" = (
@@ -12099,6 +12079,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/strata{
 	icon_state = "orange_tile"
 	},
@@ -13637,14 +13618,6 @@
 	},
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
-"aRk" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/floor/strata{
-	icon_state = "blue1"
-	},
-/area/strata/ag/interior/outpost/admin)
 "aRm" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -13897,9 +13870,6 @@
 "aSk" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
-	},
-/obj/structure/barricade/handrail/strata{
-	dir = 8
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -16388,6 +16358,9 @@
 "bbM" = (
 /obj/structure/closet/wardrobe/pjs,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/underground_dorms/admin4)
 "bbN" = (
@@ -17794,6 +17767,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/bed/chair{
 	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -25767,6 +25743,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/flight_control_exterior)
 "cbO" = (
+/obj/structure/sign/safety/security,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outside/checkpoints/south)
 "cbR" = (
@@ -29749,6 +29726,20 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh/center)
+"emU" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib2"
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/mining_outpost/central)
 "enU" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -31653,6 +31644,10 @@
 	icon_state = "white_cyan2"
 	},
 /area/strata/ug/interior/outpost/underground_dorms/admin3)
+"hfP" = (
+/obj/structure/sign/safety/security,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outside/checkpoints/outpost)
 "hgr" = (
 /turf/open/floor/strata{
 	dir = 6;
@@ -32053,7 +32048,7 @@
 /obj/structure/platform/strata/metal{
 	dir = 4
 	},
-/obj/structure/machinery/light/small/built,
+/obj/structure/machinery/light/small,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -32608,6 +32603,10 @@
 /obj/item/storage/surgical_tray,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/outpost_decks)
+"iJq" = (
+/obj/structure/sign/safety/storage,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outside/checkpoints/north_armor)
 "iJw" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -33089,6 +33088,10 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/restricted)
+"jvl" = (
+/obj/structure/sign/safety/synth_storage,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/exterior/vanyard)
 "jww" = (
 /obj/structure/sign/safety/biohazard,
 /turf/closed/wall/strata_outpost/reinforced,
@@ -33503,10 +33506,10 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/light/small/unpowered{
+/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/underground_dorms/med2)
 "kdm" = (
@@ -34594,6 +34597,10 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outside/checkpoints/north)
+"lOI" = (
+/obj/structure/sign/safety/security,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/security)
 "lOJ" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 6
@@ -35998,9 +36005,6 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/structure/machinery/light/small/unpowered{
-	dir = 1
-	},
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -36272,7 +36276,7 @@
 "ooj" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/communications,
-/obj/structure/machinery/light/small/unpowered{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/strata{
@@ -36335,6 +36339,10 @@
 	icon_state = "cement1"
 	},
 /area/strata/ag/exterior/landing_zones/lz2)
+"owp" = (
+/obj/structure/sign/safety/security,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/mining_outpost/central)
 "owF" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata{
@@ -36949,6 +36957,10 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/engi/drome)
+"prN" = (
+/obj/structure/sign/safety/security,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outside/checkpoints/west)
 "psl" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/structure/platform/strata,
@@ -37126,6 +37138,13 @@
 	icon_state = "orange_cover"
 	},
 /area/strata/ag/interior/outpost/engi/drome)
+"pAR" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/machinery/light/small,
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/mining_outpost/central)
 "pAY" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -37457,6 +37476,10 @@
 /obj/item/stack/sheet/wood,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/south_outpost)
+"pYZ" = (
+/obj/structure/sign/safety/outpatient,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/mining_outpost/central)
 "pZe" = (
 /obj/structure/platform/strata/metal,
 /turf/open/gm/river,
@@ -40522,6 +40545,10 @@
 	icon_state = "cyan1"
 	},
 /area/strata/ag/interior/outpost/med)
+"uGx" = (
+/obj/structure/sign/safety/security,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outside/checkpoints/north_armor)
 "uGH" = (
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -40977,6 +41004,9 @@
 	},
 /obj/structure/mirror{
 	pixel_x = -29
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -47118,7 +47148,7 @@ crY
 bWy
 bCh
 ctC
-ctC
+owp
 apX
 ctC
 crY
@@ -47468,7 +47498,7 @@ crY
 avx
 bUq
 ctC
-afW
+eOI
 apZ
 ctC
 arX
@@ -47529,7 +47559,7 @@ sGb
 gWg
 xFl
 iWf
-ydJ
+prN
 mjG
 iWf
 aac
@@ -48169,7 +48199,7 @@ bWy
 bCh
 ctC
 ctC
-apZ
+emU
 ctC
 ctC
 ctC
@@ -48871,13 +48901,13 @@ crY
 crY
 aFO
 afW
-bKb
+pAR
 ctC
 ctC
 avt
 bZV
 aCl
-ctC
+pYZ
 aBm
 cbW
 ctC
@@ -50994,7 +51024,7 @@ ckY
 aRK
 aSV
 cnB
-aPh
+bXd
 aXE
 cnB
 aac
@@ -54819,7 +54849,7 @@ qSH
 uyf
 uyf
 uyf
-qSH
+iJq
 bXi
 asl
 atz
@@ -54877,7 +54907,7 @@ bFv
 bFv
 bFv
 bFv
-dOO
+jvl
 ajl
 opg
 xJb
@@ -54994,7 +55024,7 @@ qSH
 dcX
 bUV
 bRw
-aqk
+run
 ark
 asm
 bTb
@@ -55340,11 +55370,11 @@ aac
 aac
 aac
 aac
-qSH
+aqm
 ans
 bUY
 sDs
-aqm
+uGx
 ark
 bXi
 bTb
@@ -58144,7 +58174,7 @@ qSH
 qSH
 bVz
 qSH
-qSH
+uGx
 lUm
 cuP
 cuP
@@ -60998,7 +61028,7 @@ uJn
 xGi
 foN
 iKW
-pRj
+hfP
 pRj
 vPi
 vPi
@@ -65840,7 +65870,7 @@ ayw
 awJ
 aAR
 bTk
-ijo
+lOI
 ijo
 aoE
 ijo
@@ -65851,7 +65881,7 @@ bYk
 ijo
 ijo
 caf
-ijo
+lOI
 aAB
 aCb
 cfx
@@ -66365,7 +66395,7 @@ ufG
 awJ
 awJ
 bTk
-ijo
+lOI
 cfx
 cfx
 tJJ
@@ -66376,7 +66406,7 @@ cfx
 auL
 cfx
 axz
-ijo
+lOI
 cco
 cco
 cco
@@ -66390,9 +66420,9 @@ wpE
 aEQ
 cik
 aqL
-afr
+bll
 aSk
-aRk
+blN
 aVn
 aWV
 aYT

@@ -190,11 +190,6 @@
 	desc = "A small lighting fixture that is fitted with a bright blue fluorescent light bulb. Looking at it for too long makes your eyes go watery."
 	light_type = /obj/item/light_bulb/bulb
 
-/obj/structure/machinery/light/small/unpowered
-	icon_state = "bulb0"
-	status = LIGHT_OK
-	on = FALSE
-
 /obj/structure/machinery/light/double
 	icon_state = "ptube1"
 	base_state = "ptube"

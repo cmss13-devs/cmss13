@@ -1,0 +1,76 @@
+@use '../base.scss';
+
+.terminal {
+  background: black;
+  color: yellow;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 10px;
+  border-radius: 5px;
+  width: 600px;
+  height: 400px;
+  overflow-y: auto;
+  margin: 20px auto;
+}
+.highlight-yellow {
+  color: yellow;
+}
+
+.terminal-path {
+  font-family: 'Courier New', Courier, monospace;
+  color: red;
+  font-size: 15px;
+  padding-bottom: 15px;
+}
+
+.invisible-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font: inherit;
+  width: 100%;
+}
+
+.terminal-output {
+  padding-bottom: 10px;
+}
+
+.terminal-line {
+  white-space: pre-wrap;
+  padding-left: 2px;
+  color: yellow;
+}
+
+.terminal-input {
+  display: flex;
+  align-items: center;
+}
+
+.prompt {
+  margin-right: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  color: yellow;
+}
+
+.input {
+  background: black;
+  color: yellow;
+  border: none;
+  outline: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-in-out;
+}

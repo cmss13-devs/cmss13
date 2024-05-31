@@ -55,7 +55,7 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "MedRec", name)
+		ui = new(user, src, "Terminal", name)
 		ui.open()
 
 /obj/structure/machinery/computer/double_id/med_data/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

@@ -52,6 +52,8 @@
 @include meta.load-css('./interfaces/ListInput.scss');
 @include meta.load-css('./interfaces/CasSim.scss');
 @include meta.load-css('./interfaces/AlertModal.scss');
+@include meta.load-css('./interfaces/ConsoleTerminal.scss');
+@include meta.load-css('./interfaces/ConsoleTerminalHack.scss');
 @include meta.load-css('./interfaces/VoteMenu.scss');
 @include meta.load-css('./interfaces/CrtPanel.scss');
 @include meta.load-css('./interfaces/ChooseResin.scss');

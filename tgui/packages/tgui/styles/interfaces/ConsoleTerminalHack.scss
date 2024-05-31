@@ -1,0 +1,53 @@
+@use '../base.scss';
+
+.terminal-hack {
+  background: black;
+  color: green;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 10px;
+  border-radius: 5px;
+  width: 600px;
+  height: 400px;
+  overflow-y: auto;
+  margin: 20px auto;
+}
+
+.terminal-message-hack {
+  font-family: 'Courier New', Courier, monospace;
+  color: lightcoral;
+  font-size: 15px;
+  padding-bottom: 15px;
+}
+
+.terminal-output-hack {
+  padding-bottom: 10px;
+}
+
+.terminal-line-hack {
+  white-space: pre-wrap;
+  padding-left: 2px;
+  color: green;
+}
+
+.input {
+  background: black;
+  color: yellow;
+  border: none;
+  outline: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-in-out;
+}

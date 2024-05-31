@@ -355,9 +355,9 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	var/mob/living/carbon/human/cryo_pod = occupant
 	if(cryo_pod.record_id_ref)
-		GLOB.data_core.medical -= occupant.record_id_ref
-		GLOB.data_core.general -= occupant.record_id_ref
-		GLOB.data_core.security -= occupant.record_id_ref
+		GLOB.data_core.medical -= cryo_pod.record_id_ref
+		GLOB.data_core.general -= cryo_pod.record_id_ref
+		GLOB.data_core.security -= cryo_pod.record_id_ref
 		qdel(GLOB.data_core.medical[cryo_pod.record_id_ref])
 		qdel(GLOB.data_core.general[cryo_pod.record_id_ref])
 		qdel(GLOB.data_core.security[cryo_pod.record_id_ref])

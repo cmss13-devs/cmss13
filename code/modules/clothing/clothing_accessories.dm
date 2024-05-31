@@ -118,6 +118,14 @@
 
 	A.on_removed(user, src)
 	LAZYREMOVE(accessories, A)
+	var/list/removables = list()
+	for(var/obj/item/clothing/accessory/accessory in accessories)
+		if(accessory.removable)
+			removables += accessory
+
+	if(!LAZYLEN(removables))
+		verbs -= /obj/item/clothing/proc/removetie_verb
+
 	update_clothing_icon()
 
 /obj/item/clothing/proc/removetie_verb()
@@ -153,9 +161,6 @@
 	if(!user.Adjacent(src))
 		to_chat(user, SPAN_WARNING("You're too far away!"))
 		return
-
-	if(!LAZYLEN(removables))
-		verbs -= /obj/item/clothing/proc/removetie_verb
 
 	return accessory
 

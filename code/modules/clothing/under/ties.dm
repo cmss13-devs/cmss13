@@ -413,6 +413,12 @@
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
 	update_icon()
 
+/obj/item/clothing/accessory/poncho/get_mob_overlay(mob/user_mob, slot)
+	var/image/overlay = ..()
+	overlay.layer = MOB_LAYER + 0.01
+	overlay.alpha = 190 // TODO: Update the sprite itself to have transparency instead
+	return overlay
+
 /obj/item/clothing/accessory/poncho/green
 	icon_state = "poncho"
 

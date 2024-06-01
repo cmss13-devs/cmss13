@@ -388,6 +388,7 @@
 /obj/item/device/overwatch_camera/equipped(mob/living/carbon/human/mob, slot)
 	if(camera)
 		camera.c_tag = mob.name
+	..()
 
 /obj/item/device/overwatch_camera/dropped(mob/user)
 	if(camera)

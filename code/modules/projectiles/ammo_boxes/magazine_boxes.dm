@@ -735,3 +735,297 @@
 
 /obj/item/ammo_box/magazine/deagle/super/highimpact/ap/empty
 	empty = TRUE
+
+
+//-----------------------S&W Revolver Speed Loaders Box-----------------------
+/obj/item/ammo_box/magazine/snw
+	name = "\improper speed loaders box (S&W .38 x 12)"
+	icon_state = "base_S&W"
+	overlay_ammo_type = "_m44_reg"
+	overlay_gun_type = "_38"
+	overlay_content = "_speed"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/revolver/small
+
+/obj/item/ammo_box/magazine/snw/empty
+	empty = TRUE
+
+
+//-----------------------Type64 Bizon SMG Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/type64
+	name = "\improper magazine box (Type64 Bizon x 10)"
+	icon_state = "base_type64"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_type71_reg"
+	overlay_gun_type = "_type64"
+	overlay_content = "_type71_reg"
+	num_of_magazines = 10
+	magazine_type = /obj/item/ammo_magazine/smg/bizon
+
+/obj/item/ammo_box/magazine/type64/empty
+	empty = TRUE
+
+//-----------------------ZhNK-72 Revolver Speedloader Box-----------------------
+
+/obj/item/ammo_box/magazine/zhnk
+	name = "\improper speed loaders box (ZhNK-72 x 12)"
+	icon_state = "base_zhnk72"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_zhnk72"
+	overlay_content = "_zhnk72"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/revolver/upp
+
+/obj/item/ammo_box/magazine/zhnk/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+/obj/item/ammo_box/magazine/zhnk/empty
+	empty = TRUE
+
+//-----------------------Type-19 SMG Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/type19
+	name = "\improper magazine box (Type19 x 12)"
+	icon_state = "base_type19"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_type19"
+	overlay_content = "_type71_reg"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/smg/pps43
+
+/obj/item/ammo_box/magazine/type19/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+
+/obj/item/ammo_box/magazine/type19/empty
+	empty = TRUE
+
+//-----------------------UZI SMG Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/uzi
+	name = "\improper magazine box (UZI x 12)"
+	icon_state = "base_uzi"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_uzi"
+	overlay_content = "_uzi"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/smg/uzi
+
+/obj/item/ammo_box/magazine/uzi/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+/obj/item/ammo_box/magazine/uzi/empty
+	empty = TRUE
+
+//-----------------------MAC-15 SMG Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/mac15
+	name = "\improper magazine box (MAC-15 x 12)"
+	icon_state = "base_uzi"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_mac15"
+	overlay_content = "_uzi"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/smg/mac15
+
+/obj/item/ammo_box/magazine/mac15/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+/obj/item/ammo_box/magazine/mac15/empty
+	empty = TRUE
+
+//-----------------------MP27 SMG Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/mp27
+	name = "\improper magazine box (MP27 x 12)"
+	icon_state = "base_uzi"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_mp27"
+	overlay_content = "_fn"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/smg/mp27
+
+/obj/item/ammo_box/magazine/mp27/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+/obj/item/ammo_box/magazine/mp27/empty
+	empty = TRUE
+
+//-----------------------M1911 Pistol Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/m1911
+	name = "\improper magazine box (M1911 x 16)"
+	icon_state = "base_mk45"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_m1911"
+	overlay_content = "_uzi"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol/m1911
+
+/obj/item/ammo_box/magazine/m1911/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+
+/obj/item/ammo_box/magazine/m1911/empty
+	empty = TRUE
+
+//-----------------------MK-45 Highpower Pistol Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/mk45
+	name = "\improper magazine box (MK-45 x 16)"
+	icon_state = "base_mk45"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_mk45"
+	overlay_content = "_uzi"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol/highpower
+
+/obj/item/ammo_box/magazine/mk45/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+/obj/item/ammo_box/magazine/mk45/empty
+	empty = TRUE
+
+//-----------------------KT-42 Automag Pistol Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/kt42
+	name = "\improper magazine box (KT-42 x 16)"
+	icon_state = "base_mk45"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_kt42"
+	overlay_content = "_uzi"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol/kt42
+
+/obj/item/ammo_box/magazine/kt42/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+
+/obj/item/ammo_box/magazine/mk45/empty
+	empty = TRUE
+
+//-----------------------Beretta 92FS Pistol Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/b92fs
+	name = "\improper magazine box (Beretta 92FS x 16)"
+	icon_state = "base_mk45"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_b92fs"
+	overlay_content = "_uzi"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol/b92fs
+
+/obj/item/ammo_box/magazine/b92fs/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+/obj/item/ammo_box/magazine/b92fs/empty
+	empty = TRUE
+
+//-----------------------FN FP9000 SMG Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/fp9000
+	name = "\improper magazine box (FN FP9000 x 12)"
+	icon_state = "base_fn"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_fnfp9000"
+	overlay_content = "_fn"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/smg/fp9000
+
+/obj/item/ammo_box/magazine/fp9000/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+/obj/item/ammo_box/magazine/fp9000/empty
+	empty = TRUE
+
+//-----------------------MAR30/40 Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/mar30
+	name = "\improper magazine box (MAR30/40 x 10)"
+	icon_state = "base_mar"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_mar30"
+	overlay_content = "_mar"
+	num_of_magazines = 10
+	magazine_type = /obj/item/ammo_magazine/rifle/mar40
+
+/obj/item/ammo_box/magazine/mar30/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+/obj/item/ammo_box/magazine/mar30/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/mar30/ext
+	name = "\improper magazine box (MAR30/40 Ext x 8)"
+	overlay_gun_type = "_mar40"
+	num_of_magazines = 8
+	magazine_type = /obj/item/ammo_magazine/rifle/mar40/extended
+
+/obj/item/ammo_box/magazine/mar30/ext/empty
+	empty = TRUE
+
+//-----------------------MAR50 Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/mar50
+	name = "\improper magazine box (MAR30/40 Ext x 8)"
+	icon_state = "base_mar"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_mar50"
+	overlay_content = "_mar"
+	num_of_magazines = 8
+	magazine_type = /obj/item/ammo_magazine/rifle/mar40/lmg
+
+/obj/item/ammo_box/magazine/mar50/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+/obj/item/ammo_box/magazine/mar50
+	empty = TRUE

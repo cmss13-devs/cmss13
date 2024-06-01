@@ -347,7 +347,7 @@
 			if(!COOLDOWN_FINISHED(src, printer_cooldown))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			if(!datacore.records_asrs.len)
+			if(!length(datacore.records_asrs))
 				to_chat(user, SPAN_WARNING("There are no records to print!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
@@ -389,8 +389,6 @@
 						"}
 
 			for(var/datum/ares_record/requisition_log/req_order as anything in datacore.records_asrs)
-				if(!istype(req_order))
-					continue
 
 				contents += {"
 							<tr>
@@ -403,7 +401,7 @@
 
 			contents += "</center></tbody></table>"
 
-			var/obj/item/paper/log = new /obj/item/paper(src.loc)
+			var/obj/item/paper/log = new(loc)
 			log.name = "ASRS Audit Log"
 			log.info += contents
 			log.icon_state = "paper_uscm_words"

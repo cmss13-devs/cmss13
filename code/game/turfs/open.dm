@@ -999,6 +999,7 @@
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "plating"
 	allow_construction = FALSE
+	supports_surgery = TRUE
 
 // Elevator floors
 /turf/open/shuttle/elevator

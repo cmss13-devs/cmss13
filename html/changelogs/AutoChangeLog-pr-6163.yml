@@ -1,8 +1,0 @@
-author: "Kaga"
-delete-after: True
-changes:
-  - balance: "The Heavy Sniper's XM43E1 rounds are now actually heavy. Targets hit will get screenshake, like slugs and impact rounds, scaling with damage dealt."
-  - balance: "XM43E1 shots can now potentially interrupt targets if it deals enough damage. The heavier the target, the more force is needed to interrupt them. Big xenos require a full-damage shot with no piercing, while smaller targets can also be knocked back with enough damage."
-  - balance: "XM43E1 Aimed Shots can now potentially apply a slow to the main target only, scaling with base damage and target size. If a slow is applied, vision range is reduced for a moment as a warning."
-  - balance: "XM43E1 and M42C ammo AP increased to 75 (from 50)"
-  - balance: "Removed the Defender exception from the AMR Aimed Shot calculations."

@@ -58,7 +58,7 @@
 	if(!selected_vehicle)
 		selected_vehicle = "TANK" // The whole thing seems to be based upon the assumption you unlock tank as an override, defaulting to APC
 	if(selected_vehicle == "TANK")
-		available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
+		available_categories &= ~(VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_listed_products(mob/user)
 	var/list/display_list = list()
@@ -146,10 +146,6 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("Overdrive Enhancer", 0, /obj/item/hardpoint/support/overdrive_enhancer, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
 
 	list("ARMOR", 0, null, null, null),
-	list("Ballistic Armor", 0, /obj/item/hardpoint/armor/ballistic, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
-	list("Caustic Armor", 0, /obj/item/hardpoint/armor/caustic, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
-	list("Concussive Armor", 0, /obj/item/hardpoint/armor/concussive, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
-	list("Paladin Armor", 0, /obj/item/hardpoint/armor/paladin, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
 	list("Snowplow", 0, /obj/item/hardpoint/armor/snowplow, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
 
 	list("TREADS", 0, null, null, null),

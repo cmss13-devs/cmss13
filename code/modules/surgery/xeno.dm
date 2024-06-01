@@ -116,13 +116,13 @@
 		SPAN_WARNING("Your hand slips, letting go of [target.caste_type] carapace and exoskeleton, slaming it back into place and splashing acid everywhere!"),
 		SPAN_WARNING("[user] hand slips, letting go of [target.caste_type] carapace and exoskeleton, slaming it back into place and splashing acid everywhere!"),
 		SPAN_WARNING("[user] hand slips, letting go of [target.caste_type] carapace and exoskeleton, slaming it back into place and splashing acid everywhere!"))
-		for(var/mob/living/carbon/human/victim in orange(1, target))
-			if(istype(victim.wear_suit, /obj/item/clothing/suit/bio_suit) && istype(victim.head, /obj/item/clothing/head/bio_hood))
-				continue
-			to_chat(victim, SPAN_DANGER("You are covered in blood gushing out from [target.caste_type]"))
-			victim.apply_damage(rand(50, 75), BURN) // still dangerous
-			playsound(victim, "acid_sizzle", 25, TRUE)
-			animation_flash_color(victim, "#FF0000")
+	for(var/mob/living/carbon/human/victim in orange(1, target))
+		if(istype(victim.wear_suit, /obj/item/clothing/suit/bio_suit) && istype(victim.head, /obj/item/clothing/head/bio_hood))
+			continue
+		to_chat(victim, SPAN_DANGER("You are covered in blood gushing out from [target.caste_type]"))
+		victim.apply_damage(rand(50, 75), BURN) // still dangerous
+		playsound(victim, "acid_sizzle", 25, TRUE)
+		animation_flash_color(victim, "#FF0000")
 	return FALSE
 
 /datum/surgery_step/xenomorph/severe_connections
@@ -159,17 +159,17 @@
 			SPAN_NOTICE("[user] rips [target.caste_type] connections and links to vital organs apart using [tool]"))
 
 /datum/surgery_step/xenomorph/severe_connections/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, damaging one of [target.caste_type] [pick("arteries", "viens")], gushing acid blood everywhere!"),
-			SPAN_WARNING("[user] hand slips, damaging one of your [pick("arteries", "viens")], gushing acid blood everywhere!"),
-			SPAN_WARNING("[user] hand slips, damaging one of [target.caste_type] [pick("arteries", "viens")], gushing acid blood everywhere!"))
-		for(var/mob/living/carbon/human/victim in orange(1, target))
-			if(istype(victim.wear_suit, /obj/item/clothing/suit/bio_suit) && istype(victim.head, /obj/item/clothing/head/bio_hood))
-				continue
-			to_chat(victim, SPAN_DANGER("You are covered in blood gushing out from [target.caste_type]"))
-			victim.apply_damage(rand(50, 75), BURN) // not SO dangerous but still is
-			playsound(victim, "acid_sizzle", 25, TRUE)
-			animation_flash_color(victim, "#FF0000")
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, damaging one of [target.caste_type] [pick("arteries", "viens")], gushing acid blood everywhere!"),
+		SPAN_WARNING("[user] hand slips, damaging one of your [pick("arteries", "viens")], gushing acid blood everywhere!"),
+		SPAN_WARNING("[user] hand slips, damaging one of [target.caste_type] [pick("arteries", "viens")], gushing acid blood everywhere!"))
+	for(var/mob/living/carbon/human/victim in orange(1, target))
+		if(istype(victim.wear_suit, /obj/item/clothing/suit/bio_suit) && istype(victim.head, /obj/item/clothing/head/bio_hood))
+			continue
+		to_chat(victim, SPAN_DANGER("You are covered in blood gushing out from [target.caste_type]"))
+		victim.apply_damage(rand(50, 75), BURN) // not SO dangerous but still is
+		playsound(victim, "acid_sizzle", 25, TRUE)
+		animation_flash_color(victim, "#FF0000")
 
 /datum/surgery_step/xenomorph/remove_organ
 	name = "Remove Xenomorph Organ"
@@ -179,7 +179,7 @@
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_SUBOPTIMAL,
 		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_SUBSTITUTE,
-		)//shamelessly taken from embryo code
+	)//shamelessly taken from embryo code
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
 	success_sound = 'sound/surgery/scalpel2.ogg'

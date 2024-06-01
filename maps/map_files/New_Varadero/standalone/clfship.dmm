@@ -2109,6 +2109,16 @@
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
+"UU" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_3"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
 "UV" = (
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_2_1"
@@ -2468,10 +2478,10 @@ rz
 lt
 eK
 Cw
-vv
-vv
+gu
+gu
 ar
-vv
+gu
 gu
 JQ
 Yz
@@ -2509,7 +2519,7 @@ rz
 Ye
 Lp
 wK
-vv
+Qs
 pq
 YX
 mO
@@ -2839,7 +2849,7 @@ TZ
 IJ
 BW
 mO
-Fz
+UU
 BW
 sa
 Fs
@@ -3049,7 +3059,7 @@ fH
 Fl
 sa
 mO
-Fz
+UU
 sa
 BW
 WV

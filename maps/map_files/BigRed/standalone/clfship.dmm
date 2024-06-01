@@ -333,7 +333,7 @@
 /turf/open/floor{
 	icon_state = "delivery"
 	},
-/area/template_noop)
+/area/bigredv2/outside/dorms)
 "gE" = (
 /obj/structure/largecrate/supply/ammo/m56d,
 /turf/open/floor/plating,
@@ -905,7 +905,7 @@
 /turf/open/floor{
 	icon_state = "delivery"
 	},
-/area/template_noop)
+/area/bigredv2/outside/dorms)
 "sF" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
@@ -1252,7 +1252,7 @@
 /area/bigredv2/outside/admin_building)
 "Bx" = (
 /turf/closed/wall/solaris,
-/area/template_noop)
+/area/bigredv2/outside/dorms)
 "BF" = (
 /obj/structure/girder/displaced,
 /turf/open/floor/plating{
@@ -1516,7 +1516,7 @@
 	name = "\improper Dormitories Shutters"
 	},
 /turf/open/floor/plating,
-/area/template_noop)
+/area/bigredv2/outside/dorms)
 "HM" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -2492,8 +2492,8 @@ Bt
 dZ
 eZ
 Kp
-sM
-sM
+RP
+RP
 eH
 RP
 RP
@@ -2613,8 +2613,8 @@ yx
 id
 RP
 RP
-cB
-sM
+RP
+RP
 RP
 MP
 pw

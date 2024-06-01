@@ -771,14 +771,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
-"kM" = (
-/obj/item/stack/rods,
-/obj/structure/girder,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
-/area/lv624/lazarus/crashed_ship)
 "kN" = (
 /obj/structure/largecrate/supply/supplies/flares,
 /turf/open/floor/plating{
@@ -2919,6 +2911,11 @@
 	icon_state = "emerald"
 	},
 /area/lv624/lazarus/crashed_ship)
+"LP" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan20"
+	},
+/area/bigredv2/outside/dorms)
 "LU" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 4
@@ -4363,7 +4360,7 @@ Hn
 Uu
 Fp
 JV
-ii
+LP
 Lf
 VS
 fS
@@ -4517,7 +4514,7 @@ lm
 ii
 oA
 tP
-kM
+VR
 Lf
 NA
 LW
@@ -4595,7 +4592,7 @@ Nc
 Ts
 ka
 nj
-JR
+VR
 uE
 nj
 Lf
@@ -4790,7 +4787,7 @@ sq
 UI
 DQ
 Hf
-fy
+VR
 Zd
 IV
 tZ

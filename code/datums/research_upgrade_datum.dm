@@ -34,28 +34,28 @@
 	name = "AutoDoc Internal Bleeding Repair"
 	desc = "A data and instruction set for the Autodoc, making it capable of rapidly fixing internal bleeding."
 	behavior = RESEARCH_UPGRADE_TIER_1
-	value_upgrade = 1000
+	value_upgrade = 200
 	clearance_req = 1
 
 /datum/research_upgrades/machinery/autodoc/broken_bone
 	name = "AutoDoc Bone Fracture Repair"
 	desc = "A data instruction set for the Autodoc, making it capable of setting fractures and applying bonegel."
 	behavior = RESEARCH_UPGRADE_TIER_2
-	value_upgrade = 3000
+	value_upgrade = 2000
 	clearance_req = 3
 
 /datum/research_upgrades/machinery/autodoc/organ_damage
 	name = "AutoDoc Broken Organ Repair"
 	desc = "A data and instruction set for the Autodoc, making it capable of fixing organ damage."
 	behavior = RESEARCH_UPGRADE_TIER_3
-	value_upgrade = 2500
+	value_upgrade = 1500
 	clearance_req = 2
 
 /datum/research_upgrades/machinery/autodoc/larva_removal
 	name = "AutoDoc Embryo Removal"
 	desc = "Data and instruction set for AutoDoc making it mildly proficient in removing parasites left by unknown organism."
 	behavior = RESEARCH_UPGRADE_TIER_4
-	value_upgrade = 7000
+	value_upgrade = 4000
 	clearance_req = 6
 
 
@@ -63,10 +63,10 @@
 	name = "Sleeper Upgrade"
 	desc = "Research upgrade for Sleeper system, technology on this disk is used on a sleeper to allow wider spectrum of chemicals to be administered, as well as upgrading dialysis software."
 	behavior = RESEARCH_UPGRADE_TIER_1
-	value_upgrade = 1000
+	value_upgrade = 500
 	item_reference = /obj/item/research_upgrades/sleeper
 	upgrade_type = ITEM_MACHINERY_UPGRADE
-	clearance_req = 2
+	clearance_req = 1
 
 /datum/research_upgrades/item
 	name = "Items"
@@ -74,14 +74,14 @@
 
 /datum/research_upgrades/item/research_credits
 	name = "Research Credits"
-	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team for two or three points."
-	value_upgrade = 800
+	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team for 8 or 9 points."
+	value_upgrade = 2000
 	item_reference = /obj/item/research_upgrades/credits
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-	change_purchase = 100
-	maximum_price = 4000
-	clearance_req = 4
+	change_purchase = 1000
+	maximum_price = 5000
+	clearance_req = 5
 
 /datum/research_upgrades/item/laser_scalpel
 	name = "Laser Scalpel"
@@ -99,12 +99,12 @@
 	item_reference = /obj/item/tool/surgery/scalpel/manager
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-	clearance_req = 5
+	clearance_req = 4
 /datum/research_upgrades/item/nanosplints
 	name = "Reinforced Fiber Splints"
 	desc = "A set of splints made from durable carbon fiber sheets reinforced with flexible titanium lattice, comes in a stack of five."
 	value_upgrade = 800
-	clearance_req = 5
+	clearance_req = 3
 	change_purchase = -200
 	minimum_price = 200
 	item_reference = /obj/item/stack/medical/splint/nano/research

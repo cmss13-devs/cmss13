@@ -427,7 +427,7 @@
 						for(var/datum/wound/W in S.limb_ref.wounds)
 							if(!surgery) break
 							if(W.internal)
-								sleep(FIXVEIN_MAX_DURATION*surgery_mod)
+								sleep(FIXVEIN_MIN_DURATION-30)
 								S.limb_ref.wounds -= W
 								S.limb_ref.remove_all_bleeding(FALSE, TRUE)
 								qdel(W)

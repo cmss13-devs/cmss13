@@ -66,9 +66,9 @@
 
 /obj/item/research_upgrades/credits
 	name =	"Research Market (Credits)"
-	var/credit_value = 2
+	var/credit_value = 8
 
 /obj/item/research_upgrades/credits/Initialize(mapload, ...)
 	. = ..()
-	credit_value = rand(2, 3)
-	desc = "Research points disk for chemical synthesis, insert this into research computer in order to sell the data and acquire [credit_value] points"
+	credit_value = rand(8, 9)
+	desc = "Research disk containing all bits of data the analyzer could salvage, insert this into research computer in order to sell the data and acquire [credit_value] points"

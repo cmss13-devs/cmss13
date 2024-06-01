@@ -31,7 +31,7 @@
 	name = "Cut Exoskeleton Carapace"
 	desc = "cut the carapace open"
 	tools = list(
-		/obj/item/tool/surgery/scalpel/laser/advanced = 1.5,
+		/obj/item/tool/surgery/scalpel/laser/advanced = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/surgery/circular_saw = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/weapon/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBOPTIMAL,
 		/obj/item/weapon/sword/machete = SURGERY_TOOL_MULT_SUBOPTIMAL,
@@ -167,11 +167,11 @@
 	desc = "grab a hold of it and pull the organ out"
 	accept_hand = TRUE
 	tools = list(
-		/obj/item/tool/surgery/hemostat = 1.5,
+		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_SUBOPTIMAL,
 		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_SUBSTITUTE
 		)//shamelessly taken from embryo code
-	time = 6 SECONDS
+	time = 3 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
 	success_sound = 'sound/surgery/scalpel2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'

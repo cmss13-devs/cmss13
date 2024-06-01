@@ -65,16 +65,12 @@
 
 	if(!user)
 		display_list += GLOB.cm_vending_vehicle_crew_tank
-		display_list += GLOB.cm_vending_vehicle_crew_tank_spare
 		display_list += GLOB.cm_vending_vehicle_crew_apc
-		display_list += GLOB.cm_vending_vehicle_crew_apc_spare
 		return display_list
 
 	if(selected_vehicle == "TANK")
 		if(available_categories)
 			display_list = GLOB.cm_vending_vehicle_crew_tank
-		else
-			display_list = GLOB.cm_vending_vehicle_crew_tank_spare
 
 	else if(selected_vehicle == "ARC")
 		display_list = GLOB.cm_vending_vehicle_crew_arc
@@ -157,54 +153,8 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("Snowplow", 0, /obj/item/hardpoint/armor/snowplow, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
 
 	list("TREADS", 0, null, null, null),
-	list("Reinforced Treads", 0, /obj/item/hardpoint/locomotion/treads/robust, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_REGULAR)))
-
-GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank_spare, list(
-
-	list("INTEGRAL PARTS", 0, null, null, null),
-	list("M34A2-A Multipurpose Turret", 500, /obj/item/hardpoint/holder/tank_turret, null, VENDOR_ITEM_REGULAR),
-
-	list("SUPPORT AMMUNITION", 0, null, null, null),
-	list("Turret Smoke Screen Magazine", 50, /obj/item/ammo_magazine/hardpoint/turret_smoke, null, VENDOR_ITEM_REGULAR),
-
-	list("PRIMARY WEAPON", 0, null, null, null),
-	list("AC3-E Autocannon", 0, /obj/item/hardpoint/primary/autocannon, null, VENDOR_ITEM_REGULAR),
-	list("DRG-N Offensive Flamer Unit", 200, /obj/item/hardpoint/primary/flamer, null, VENDOR_ITEM_REGULAR),
-	list("LTAA-AP Minigun", 0, /obj/item/hardpoint/primary/minigun, null, VENDOR_ITEM_REGULAR),
-	list("LTB Cannon", 0, /obj/item/hardpoint/primary/cannon, null, VENDOR_ITEM_RECOMMENDED),
-
-	list("PRIMARY AMMUNITION", 0, null, null, null),
-	list("AC3-E Autocannon Magazine", 0, /obj/item/ammo_magazine/hardpoint/ace_autocannon, null, VENDOR_ITEM_REGULAR),
-	list("DRG-N Offensive Flamer Unit Fuel Tank", 0, /obj/item/ammo_magazine/hardpoint/primary_flamer, null, VENDOR_ITEM_REGULAR),
-	list("LTAA-AP Minigun Magazine", 0, /obj/item/ammo_magazine/hardpoint/ltaaap_minigun, null, VENDOR_ITEM_REGULAR),
-	list("LTB Cannon Magazine", 0, /obj/item/ammo_magazine/hardpoint/ltb_cannon, null, VENDOR_ITEM_REGULAR),
-
-	list("SECONDARY WEAPON", 0, null, null, null),
-	list("M92T Grenade Launcher", 200, /obj/item/hardpoint/secondary/grenade_launcher, null, VENDOR_ITEM_REGULAR),
-	list("M56 Cupola", 0, /obj/item/hardpoint/secondary/m56cupola, null, VENDOR_ITEM_REGULAR),
-	list("LZR-N Flamer Unit", 0, /obj/item/hardpoint/secondary/small_flamer, null, VENDOR_ITEM_REGULAR),
-	list("TOW Launcher", 0, /obj/item/hardpoint/secondary/towlauncher, null, VENDOR_ITEM_REGULAR),
-
-	list("SECONDARY AMMUNITION", 0, null, null, null),
-	list("M92T Grenade Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/tank_glauncher, null, VENDOR_ITEM_REGULAR),
-	list("M56 Cupola Magazine", 0, /obj/item/ammo_magazine/hardpoint/m56_cupola, null, VENDOR_ITEM_REGULAR),
-	list("LZR-N Flamer Unit Fuel Tank", 50, /obj/item/ammo_magazine/hardpoint/secondary_flamer, null, VENDOR_ITEM_REGULAR),
-	list("TOW Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/towlauncher, null, VENDOR_ITEM_REGULAR),
-
-	list("SUPPORT MODULE", 0, null, null, null),
-	list("Artillery Module", 0, /obj/item/hardpoint/support/artillery_module, null, VENDOR_ITEM_REGULAR),
-	list("Integrated Weapons Sensor Array", 200, /obj/item/hardpoint/support/weapons_sensor, null, VENDOR_ITEM_REGULAR),
-	list("Overdrive Enhancer", 0, /obj/item/hardpoint/support/overdrive_enhancer, null, VENDOR_ITEM_REGULAR),
-
-	list("ARMOR", 0, null, null, null),
-	list("Ballistic Armor", 0, /obj/item/hardpoint/armor/ballistic, null, VENDOR_ITEM_REGULAR),
-	list("Caustic Armor", 0, /obj/item/hardpoint/armor/caustic, null, VENDOR_ITEM_REGULAR),
-	list("Concussive Armor", 0, /obj/item/hardpoint/armor/concussive, null, VENDOR_ITEM_REGULAR),
-	list("Paladin Armor", 0, /obj/item/hardpoint/armor/paladin, null, VENDOR_ITEM_REGULAR),
-	list("Snowplow", 0, /obj/item/hardpoint/armor/snowplow, null, VENDOR_ITEM_REGULAR),
-
-	list("TREADS", 0, null, null, null),
-	list("Reinforced Treads", 0, /obj/item/hardpoint/locomotion/treads/robust, null, VENDOR_ITEM_REGULAR)))
+	list("Reinforced Treads", 0, /obj/item/hardpoint/locomotion/treads/robust, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_REGULAR),
+	list("Treads", 0, /obj/item/hardpoint/locomotion/treads, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_REGULAR)))
 
 GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),

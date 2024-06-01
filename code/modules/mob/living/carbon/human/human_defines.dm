@@ -167,6 +167,9 @@
 	/// static associated list of limb key -> image to avoid unnecessary overlay generation
 	var/static/list/icon_render_image_cache = list()
 
+	/// Stored image references associated with focus-fire.
+	var/image/focused_fire_marker
+
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)

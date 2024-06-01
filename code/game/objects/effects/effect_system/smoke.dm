@@ -240,9 +240,9 @@
 	if(isyautja(M) || isxeno(M))
 		burn_damage *= xeno_yautja_reduction
 
+	var/reagent = new /datum/reagent/napalm/ut()
 	M.burn_skin(burn_damage)
-	M.adjust_fire_stacks(applied_fire_stacks)
-	M.fire_reagent = new /datum/reagent/napalm/ut()
+	M.adjust_fire_stacks(applied_fire_stacks, reagent)
 	M.IgniteMob()
 	M.updatehealth()
 
@@ -292,19 +292,17 @@
 	if(human_creature && (human_creature.head && (human_creature.head.flags_inventory & BLOCKGASEFFECT)))
 		return FALSE
 
-	var/effect_amt = round(6 + amount*6)
+	var/effect_amt = floor(6 + amount*6)
 
 	if(xeno_creature)
-		if(xeno_creature.interference < 4)
-			to_chat(xeno_creature, SPAN_XENOHIGHDANGER("Your awareness dims to a small area!"))
-		xeno_creature.interference = 10
+		xeno_creature.AddComponent(/datum/component/status_effect/interference, 10, 10)
 		xeno_creature.blinded = TRUE
 	else
 		creature.apply_damage(12, OXY)
-	creature.SetEarDeafness(max(creature.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
+	creature.SetEarDeafness(max(creature.ear_deaf, floor(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!xeno_creature && !creature.eye_blind) //Eye exposure damage
 		to_chat(creature, SPAN_DANGER("Your eyes sting. You can't see!"))
-		creature.SetEyeBlind(round(effect_amt/3))
+		creature.SetEyeBlind(floor(effect_amt/3))
 	if(!xeno_creature && creature.coughedtime != 1 && !creature.stat) //Coughing/gasping
 		creature.coughedtime = 1
 		if(prob(50))
@@ -316,14 +314,14 @@
 	if(xeno_affecting)
 		stun_chance = 35
 	if(prob(stun_chance))
-		creature.apply_effect(1, WEAKEN)
+		creature.apply_effect(2, WEAKEN)
 
 	//Topical damage (neurotoxin on exposed skin)
 	if(xeno_creature)
 		to_chat(xeno_creature, SPAN_XENODANGER("You are struggling to move, it's as if you're paralyzed!"))
 	else
 		to_chat(creature, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
-	if(prob(60 + round(amount*15))) //Highly likely to drop items due to arms/hands seizing up
+	if(prob(60 + floor(amount*15))) //Highly likely to drop items due to arms/hands seizing up
 		creature.drop_held_item()
 	if(human_creature)
 		human_creature.temporary_slowdown = max(human_creature.temporary_slowdown, 4) //One tick every two second
@@ -465,7 +463,7 @@
 		var/mob/living/carbon/human/H = moob
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return
-	var/effect_amt = round(6 + amount*6)
+	var/effect_amt = floor(6 + amount*6)
 	moob.eye_blurry = max(moob.eye_blurry, effect_amt)
 	moob.apply_effect(max(moob.eye_blurry, effect_amt), EYE_BLUR)
 	moob.apply_damage(5, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
@@ -516,13 +514,13 @@
 	if(HAS_TRAIT(moob, TRAIT_NESTED) && moob.status_flags & XENO_HOST)
 		return
 
-	var/effect_amt = round(6 + amount*6)
+	var/effect_amt = floor(6 + amount*6)
 
 	moob.apply_damage(9, OXY) // MUCH harsher
-	moob.SetEarDeafness(max(moob.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
+	moob.SetEarDeafness(max(moob.ear_deaf, floor(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!moob.eye_blind) //Eye exposure damage
 		to_chat(moob, SPAN_DANGER("Your eyes sting. You can't see!"))
-	moob.SetEyeBlind(round(effect_amt/3))
+	moob.SetEyeBlind(floor(effect_amt/3))
 	if(moob.coughedtime != 1 && !moob.stat) //Coughing/gasping
 		moob.coughedtime = 1
 		if(prob(50))
@@ -535,7 +533,7 @@
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(moob, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
-	if(prob(40 + round(amount*15))) //Highly likely to drop items due to arms/hands seizing up
+	if(prob(40 + floor(amount*15))) //Highly likely to drop items due to arms/hands seizing up
 		moob.drop_held_item()
 	if(ishuman(moob))
 		var/mob/living/carbon/human/Human = moob

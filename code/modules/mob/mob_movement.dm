@@ -301,5 +301,5 @@
 	if(stat)
 		prob_slip = 0  // Changing this to zero to make it line up with the comment.
 
-	prob_slip = round(prob_slip)
+	prob_slip = floor(prob_slip)
 	return(prob_slip)

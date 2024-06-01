@@ -8,7 +8,6 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 
 // MATH DEFINES
 
-#define Ceiling(x) (-round(-(x)))
 #define CLAMP01(x) (clamp((x), 0, 1))
 
 // cotangent
@@ -18,7 +17,6 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 #define Csc(x) (1 / sin(x))
 
 #define Default(a, b) ((a) ? (a) : (b))
-#define Floor(x) (round(x))
 
 // Greatest Common Divisor - Euclid's algorithm
 #define Gcd(a, b) ((b) ? Gcd((b), (a) % (b)) : (a))
@@ -26,7 +24,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 #define Inverse(x) (1 / (x))
 #define IsEven(x) ((x) % 2 == 0)
 
-#define IsInteger(x) (Floor(x) == (x))
+#define IsInteger(x) (floor(x) == (x))
 #define IsOdd(x) (!IsEven(x))
 #define IsMultiple(x, y) ((x) % (y) == 0)
 
@@ -46,7 +44,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 #define ToRadians(degrees) ((degrees) * 0.0174532925)
 
 // min is inclusive, max is exclusive
-#define WRAP(val, min, max) clamp(( (min) == (max) ? (min) : (val) - (round(((val) - (min))/((max) - (min))) * ((max) - (min))) ),(min),(max))
+#define WRAP(val, min, max) clamp(( (min) == (max) ? (min) : (val) - (floor(((val) - (min))/((max) - (min))) * ((max) - (min))) ),(min),(max))
 
 
 // MATH PROCS
@@ -99,7 +97,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 	var/static/list/units_prefix = list("", "un", "duo", "tre", "quattuor", "quin", "sex", "septen", "octo", "novem")
 	var/static/list/tens_prefix = list("", "decem", "vigin", "trigin", "quadragin", "quinquagin", "sexagin", "septuagin", "octogin", "nongen")
 	var/static/list/one_to_nine = list("monuple", "double", "triple", "quadruple", "quintuple", "sextuple", "septuple", "octuple", "nonuple")
-	number = round(number)
+	number = floor(number)
 	switch(number)
 		if(0)
 			return "empty tuple"
@@ -108,7 +106,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 		if(10 to 19)
 			return "[units_prefix[(number%10)+1]]decuple"
 		if(20 to 99)
-			return "[units_prefix[(number%10)+1]][tens_prefix[round((number % 100)/10)+1]]tuple"
+			return "[units_prefix[(number%10)+1]][tens_prefix[floor((number % 100)/10)+1]]tuple"
 		if(100)
 			return "centuple"
 		else //It gets too tedious to use latin prefixes from here.

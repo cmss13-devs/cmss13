@@ -254,7 +254,7 @@
 /area/bigredv2/outside/office_complex)
 "aU" = (
 /obj/structure/surface/rack,
-/obj/item/restraints,
+/obj/item/xeno_restraints,
 /turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/office_complex)
 "aV" = (

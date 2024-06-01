@@ -8,7 +8,7 @@
 	if(stat == DEAD || status_flags & FAKEDEATH)
 		return PULSE_NONE //That's it, you're dead, nothing can influence your pulse
 
-	if(round(blood_volume) <= BLOOD_VOLUME_BAD) //How much blood do we have
+	if(floor(blood_volume) <= BLOOD_VOLUME_BAD) //How much blood do we have
 		return PULSE_THREADY //not enough :(
 
 	return PULSE_NORM

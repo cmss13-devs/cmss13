@@ -45,7 +45,7 @@
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
 	if(monkey_amount)
 		if(monkey_types.len)
-			for(var/i = min(round(monkey_amount*GLOB.clients.len), GLOB.monkey_spawns.len), i > 0, i--)
+			for(var/i = min(floor(monkey_amount*GLOB.clients.len), GLOB.monkey_spawns.len), i > 0, i--)
 
 				var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
 				var/monkey_to_spawn = pick(monkey_types)
@@ -154,7 +154,7 @@
 		var/mob/living/carbon/xenomorph/larva/L = new(xeno_turf, null, hivenumber)
 		ghost_mind.transfer_to(L)
 
-/datum/game_mode/xenovs/pick_queen_spawn(datum/mind/ghost_mind, hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/xenovs/pick_queen_spawn(mob/player, hivenumber = XENO_HIVE_NORMAL)
 	. = ..()
 	if(!.) return
 	// Spawn additional hive structures

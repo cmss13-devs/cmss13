@@ -453,6 +453,61 @@
 
 			initiate_firemission(user, fm_tag, direction, text2num(offset_x_value), text2num(offset_y_value))
 			return TRUE
+		if("paradrop-lock")
+			var/obj/docking_port/mobile/marine_dropship/linked_shuttle = SSshuttle.getShuttle(shuttle_tag)
+			if(!linked_shuttle)
+				return FALSE
+			if(linked_shuttle.mode != SHUTTLE_CALL)
+				return FALSE
+			if(linked_shuttle.paradrop_signal)
+				clear_locked_turf_and_lock_aft()
+				return TRUE
+			var/datum/cas_signal/sig = get_cas_signal(camera_target_id)
+			if(!sig)
+				to_chat(user, SPAN_WARNING("No signal chosen."))
+				return FALSE
+			var/turf/location = get_turf(sig.signal_loc)
+			var/area/location_area = get_area(location)
+			if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
+				to_chat(user, SPAN_WARNING("Target is obscured."))
+				return FALSE
+			var/equipment_tag = params["equipment_id"]
+			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
+				var/mount_point = equipment.ship_base.attach_id
+				if(mount_point != equipment_tag)
+					continue
+				if(istype(equipment, /obj/structure/dropship_equipment/paradrop_system))
+					var/obj/structure/dropship_equipment/paradrop_system/paradrop_system = equipment
+					if(paradrop_system.system_cooldown > world.time)
+						to_chat(user, SPAN_WARNING("You toggled the system too recently."))
+						return
+					paradrop_system.system_cooldown = world.time + 5 SECONDS
+					paradrop_system.visible_message(SPAN_NOTICE("[equipment] hums as it locks to a signal."))
+					break
+			linked_shuttle.paradrop_signal = sig
+			addtimer(CALLBACK(src, PROC_REF(open_aft_for_paradrop)), 2 SECONDS)
+			RegisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
+			RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
+			return TRUE
+
+/obj/structure/machinery/computer/dropship_weapons/proc/open_aft_for_paradrop()
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)
+	if(!shuttle || !shuttle.paradrop_signal || shuttle.mode != SHUTTLE_CALL)
+		return
+	shuttle.door_control.control_doors("force-unlock", "aft", TRUE)
+
+/obj/structure/machinery/computer/dropship_weapons/proc/clear_locked_turf_and_lock_aft()
+	SIGNAL_HANDLER
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)
+	if(!shuttle)
+		return
+	shuttle.door_control.control_doors("force-lock", "aft", TRUE)
+	visible_message(SPAN_WARNING("[src] displays an alert as it loses the paradrop target."))
+	for(var/obj/structure/dropship_equipment/paradrop_system/parad in shuttle.equipments)
+		parad.visible_message(SPAN_WARNING("[parad] displays an alert as it loses the paradrop target."))
+	UnregisterSignal(shuttle.paradrop_signal, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(shuttle, COMSIG_SHUTTLE_SETMODE)
+	shuttle.paradrop_signal = null
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
@@ -754,7 +809,7 @@
 	if (!dropship.in_flyby || dropship.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("Has to be in Fly By mode"))
 		return FALSE
-	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.get_total_duration())
+	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.flyoff_period)
 		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission"))
 		return FALSE
 	var/datum/cas_signal/recorded_loc = firemission_envelope.recorded_loc

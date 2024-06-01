@@ -524,12 +524,6 @@
 		if(light_on)
 			set_light(0)
 
-/obj/structure/dropship_equipment/electronics/spotlights/on_launch()
-	set_light(0)
-
-/obj/structure/dropship_equipment/electronics/spotlights/on_arrival()
-	set_light(brightness)
-
 /obj/structure/dropship_equipment/electronics/spotlights/ui_data(mob/user)
 	. = list()
 	var/is_deployed = light_on
@@ -691,7 +685,7 @@
 
 	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
 	if(ammo_travelling_time)
-		var/total_seconds = max(round(ammo_travelling_time/10),1)
+		var/total_seconds = max(floor(ammo_travelling_time/10),1)
 		for(var/i = 0 to total_seconds)
 			sleep(10)
 			if(!selected_target || !selected_target.loc)//if laser disappeared before we reached the target,
@@ -1296,130 +1290,29 @@
 	fulton_cooldown = world.time + 50
 
 // Rappel deployment system
-/obj/structure/dropship_equipment/rappel_system
-	name = "\improper HPU-1 Rappel Deployment System"
-	shorthand = "Rappel"
+/obj/structure/dropship_equipment/paradrop_system
+	name = "\improper HPU-1 Paradrop Deployment System"
+	shorthand = "PDS"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "rappel_module_packaged"
 	point_cost = 50
 	combat_equipment = FALSE
+	var/system_cooldown
 
-	var/harness = /obj/item/rappel_harness
+/obj/structure/dropship_equipment/paradrop_system/ui_data(mob/user)
+	. = list()
+	.["signal"] = "[linked_shuttle.paradrop_signal]"
+	.["locked"] = !!linked_shuttle.paradrop_signal
 
-/obj/structure/dropship_equipment/rappel_system/update_equipment()
+/obj/structure/dropship_equipment/paradrop_system/update_equipment()
 	if(ship_base)
 		icon_state = "rappel_hatch_closed"
 		density = FALSE
 	else
 		icon_state = "rappel_module_packaged"
 
-/obj/effect/warning/rappel
-	color = "#17d17a"
-
-/obj/structure/dropship_equipment/rappel_system/attack_hand(mob/living/carbon/human/user)
-	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[FACTION_MARINE]
-	var/list/targets = cas_group.cas_signals
-
-	if(!LAZYLEN(targets))
-		to_chat(user, SPAN_NOTICE("No CAS signals found."))
-		return
-
-	if(!can_use(user))
-		return
-
-	var/user_input = tgui_input_list(user, "Choose a target to jump to.", name, targets)
-	if(!user_input)
-		return
-
-	if(!can_use(user))
-		return
-
-	var/datum/cas_signal/LT = user_input
-	if(!istype(LT) || !LT.valid_signal())
-		return
-
-	var/turf/location = get_turf(LT.signal_loc)
-	var/area/location_area = get_area(location)
-	if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
-		to_chat(user, SPAN_WARNING("You cannot jump to the target. It is probably underground."))
-		return
-
-	var/list/valid_turfs = list()
-	for(var/turf/T as anything in RANGE_TURFS(2, location))
-		var/area/t_area = get_area(T)
-		if(!t_area || CEILING_IS_PROTECTED(t_area.ceiling, CEILING_PROTECTION_TIER_1))
-			continue
-		if(T.density)
-			continue
-		var/found_dense = FALSE
-		for(var/atom/A in T)
-			if(A.density && A.can_block_movement)
-				found_dense = TRUE
-				break
-		if(found_dense)
-			continue
-		if(protected_by_pylon(TURF_PROTECTION_MORTAR, T))
-			continue
-		valid_turfs += T
-
-	if(!length(valid_turfs))
-		to_chat(user, SPAN_WARNING("There's nowhere safe for you to land, the landing zone is too congested."))
-		return
-
-	var/turf/deploy_turf = pick(valid_turfs)
-
-	var/obj/effect/warning/rappel/warning_zone = new(deploy_turf)
-	flick("rappel_hatch_opening", src)
-	icon_state = "rappel_hatch_open"
-	user.forceMove(loc)
-	user.client?.perspective = EYE_PERSPECTIVE
-	user.client?.eye = deploy_turf
-
-	if(!do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED) || !can_use(user) || protected_by_pylon(TURF_PROTECTION_MORTAR, deploy_turf))
-		qdel(warning_zone)
-		flick("rappel_hatch_closing", src)
-		icon_state = "rappel_hatch_closed"
-		user.client?.perspective = MOB_PERSPECTIVE
-		user.client?.eye = user
-		return
-
-	new /obj/effect/rappel_rope(deploy_turf)
-	user.forceMove(deploy_turf)
-	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon/human, animation_rappel))
-	user.client?.perspective = MOB_PERSPECTIVE
-	user.client?.eye = user
-	deploy_turf.ceiling_debris_check(2)
-	playsound(deploy_turf, 'sound/items/rappel.ogg', 50, TRUE)
-
-	flick("rappel_hatch_closing", src)
-	icon_state = "rappel_hatch_closed"
-	qdel(warning_zone)
-
-/obj/structure/dropship_equipment/rappel_system/proc/can_use(mob/living/carbon/human/user)
-	if(linked_shuttle.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("\The [src] can only be used while in flight."))
-		return FALSE
-
-	if(!linked_shuttle.in_flyby)
-		to_chat(user, SPAN_WARNING("\The [src] requires a flyby flight to be used."))
-		return FALSE
-
-	if(user.buckled)
-		to_chat(user, SPAN_WARNING("You cannot rappel while buckled!"))
-		return FALSE
-
-	if(user.is_mob_incapacitated())
-		to_chat(user, SPAN_WARNING("You are in no state to do that!"))
-		return FALSE
-
-	if(!istype(user.belt, harness))
-		to_chat(user, SPAN_WARNING("You must have a rappel harness equipped in order to use \the [src]!"))
-		return FALSE
-
-	if(user.action_busy)
-		return FALSE
-
-	return TRUE
+/obj/structure/dropship_equipment/paradrop_system/attack_hand(mob/living/carbon/human/user)
+	return
 
 // used in the simulation room for cas runs, removed the sound and ammo depletion methods.
 // copying code is definitely bad, but adding an unnecessary sim or not sim boolean check in the open_fire_firemission just doesn't seem right.

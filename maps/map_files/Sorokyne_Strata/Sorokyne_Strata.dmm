@@ -33534,6 +33534,7 @@
 /area/strata/ag/interior/outpost/med)
 "jsd" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -40148,7 +40149,7 @@
 "ulv" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/t73,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},

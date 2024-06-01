@@ -144,6 +144,8 @@
 		return
 	return ..()
 
+/datum/ammo/rocket/ap/tank_towlauncher
+	max_range = 8
 
 /datum/ammo/rocket/ltb
 	name = "cannon round"
@@ -275,6 +277,8 @@
 
 /datum/ammo/rocket/custom
 	name = "custom rocket"
+	accurate_range = 8
+	max_range = 8
 
 /datum/ammo/rocket/custom/proc/prime(atom/atom, obj/projectile/projectile)
 	var/obj/item/weapon/gun/launcher/rocket/launcher = projectile.shot_from

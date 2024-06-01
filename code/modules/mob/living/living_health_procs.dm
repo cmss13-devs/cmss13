@@ -410,7 +410,7 @@
 
 	switch(client.prefs?.pain_overlay_pref_level)
 		if(PAIN_OVERLAY_IMPAIR)
-			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, Ceiling(clamp(eye_blurry * 0.3, 1, 6)))
+			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, ceil(clamp(eye_blurry * 0.3, 1, 6)))
 		if(PAIN_OVERLAY_LEGACY)
 			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/blurry)
 		else // PAIN_OVERLAY_BLURRY
@@ -526,7 +526,7 @@
 	jitteriness = 0
 	dizziness = 0
 	stamina.apply_damage(-stamina.max_stamina)
-	
+
 	// restore all of a human's blood
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src

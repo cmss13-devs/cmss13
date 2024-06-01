@@ -164,51 +164,6 @@
 	if(initial_turf == null || check(linked_console) != FIRE_MISSION_ALL_GOOD)
 		return FIRE_MISSION_NOT_EXECUTABLE
 
-	var/obj/effect/firemission_effect = new(initial_turf)
-
-	firemission_effect.icon = 'icons/obj/items/weapons/projectiles.dmi'
-	firemission_effect.icon_state = "laser_target2"
-	firemission_effect.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	firemission_effect.invisibility = INVISIBILITY_MAXIMUM
-	QDEL_IN(firemission_effect, 5 SECONDS)
-
-	notify_ghosts(header = "CAS Fire Mission", message = "[usr ? usr : "Someone"] is launching Fire Mission '[name]' at [get_area(initial_turf)].", source = firemission_effect)
-	msg_admin_niche("[usr ? key_name(usr) : "Someone"] is launching Fire Mission '[name]' at ([initial_turf.x],[initial_turf.y],[initial_turf.z]) [ADMIN_JMP(initial_turf)]")
-
-	var/relative_dir
-	for(var/mob/mob in range(15, initial_turf))
-		if(get_turf(mob) == initial_turf)
-			relative_dir = 0
-		else
-			relative_dir = Get_Compass_Dir(mob, initial_turf)
-
-		var/ds_identifier = "LARGE BIRD"
-		if (mob.mob_flags & KNOWS_TECHNOLOGY)
-			ds_identifier = "DROPSHIP"
-
-		mob.show_message( \
-			SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
-		)
-
-	// Xenos have time to react to the first message
-	sleep(1.5 SECONDS)
-
-	for(var/mob/mob in range(10, initial_turf))
-		if(get_turf(mob) == initial_turf)
-			relative_dir = 0
-		else
-			relative_dir = Get_Compass_Dir(mob, initial_turf)
-
-		var/ds_identifier = "LARGE BIRD"
-		if (mob.mob_flags & KNOWS_TECHNOLOGY)
-			ds_identifier = "DROPSHIP"
-
-		mob.show_message( \
-			SPAN_HIGHDANGER("A [ds_identifier] FIRES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING FIRE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
-		)
-
 	var/turf/current_turf = initial_turf
 	var/tally_step = steps / mission_length //how much shots we need before moving to next turf
 	var/next_step = tally_step //when we move to next turf

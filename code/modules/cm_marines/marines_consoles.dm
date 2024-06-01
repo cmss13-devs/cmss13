@@ -43,12 +43,12 @@
 		ui = new(user, src, "CardMod", name)
 		ui.open()
 
-/obj/structure/machinery/computer/card/ui_act(action, params)
+/obj/structure/machinery/computer/card/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 
-	var/mob/user = usr
+	var/mob/user = ui.user
 
 	playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 	switch(action)
@@ -91,18 +91,11 @@
 					printing = TRUE
 					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
 					sleep(40)
-					var/faction = "N/A"
-					if(target_id_card.faction_group && islist(target_id_card.faction_group))
-						faction = jointext(target_id_card.faction_group, ", ")
-					if(isnull(target_id_card.faction_group))
-						target_id_card.faction_group = list()
-					else
-						faction = target_id_card.faction_group
 					var/contents = {"<center><h4>Access Report</h4></center>
 								<u>Prepared By:</u> [user_id_card?.registered_name ? user_id_card.registered_name : "Unknown"]<br>
 								<u>For:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
 								<hr>
-								<u>Faction:</u> [faction]<br>
+								<u>Faction:</u> [target_id_card.faction ? target_id_card.faction : "N/A"]<br>
 								<u>Assignment:</u> [target_id_card.assignment]<br>
 								<u>Account Number:</u> #[target_id_card.associated_account_number]<br>
 								<u>Blood Type:</u> [target_id_card.blood_type]<br><br>
@@ -112,7 +105,10 @@
 					var/known_access_rights = get_access(ACCESS_LIST_MARINE_ALL)
 					for(var/A in target_id_card.access)
 						if(A in known_access_rights)
-							contents += "  [get_access_desc(A)]"
+							contents += "  [get_access_desc(A)]<br>"
+					contents += "<br><u>Modification Log:</u><br>"
+					for(var/change in target_id_card.modification_log)
+						contents += "  [change]<br>"
 
 					var/obj/item/paper/P = new /obj/item/paper(src.loc)
 					P.name = "Access Report"
@@ -139,9 +135,9 @@
 					GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
 					target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
 					if(target_id_card.registered_name != origin_name)
-						log_idmod(target_id_card, "<font color='orange'> [key_name_admin(usr)] changed the registered name of the ID to '[target_id_card.registered_name]'. </font>")
+						log_idmod(target_id_card, "<font color='orange'> [user.real_name] changed the registered name of the ID to '[target_id_card.registered_name]'. </font>", key_name_admin(user))
 					if(target_id_card.assignment != origin_assignment)
-						log_idmod(target_id_card, "<font color='orange'> [key_name_admin(usr)] changed the assignment of the ID to the custom position '[target_id_card.assignment]'. </font>")
+						log_idmod(target_id_card, "<font color='orange'> [user.real_name] changed the assignment of the ID to the custom position '[target_id_card.assignment]'. </font>", key_name_admin(user))
 				if(ishuman(user))
 					target_id_card.forceMove(user.loc)
 					if(!user.get_active_hand())
@@ -170,8 +166,8 @@
 
 			target_id_card.assignment = "Terminated"
 			target_id_card.access = list()
-			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] terminated the ID. </font>")
-			message_admins("[key_name_admin(usr)] terminated the ID of [target_id_card.registered_name].")
+			log_idmod(target_id_card, "<font color='red'> [user.real_name] terminated the ID. </font>", key_name_admin(user))
+			message_admins("[user.real_name] terminated the ID of [target_id_card.registered_name].", key_name_admin(user))
 			return TRUE
 		if("PRG_edit")
 			if(!authenticated || !target_id_card)
@@ -221,19 +217,19 @@
 					target_id_card.faction_group = list()
 				if(params["access_target"] in target_id_card.faction_group)
 					target_id_card.faction_group -= params["access_target"]
-					log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked [access_type] IFF. </font>")
+					log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked [access_type] IFF. </font>", key_name_admin(user))
 				else
 					target_id_card.faction_group |= params["access_target"]
-					log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted [access_type] IFF. </font>")
+					log_idmod(target_id_card, "<font color='green'> [user.real_name] granted [access_type] IFF. </font>", key_name_admin(user))
 				return TRUE
 			access_type = text2num(params["access_target"])
 			if(access_type in (is_centcom ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN)))
 				if(access_type in target_id_card.access)
 					target_id_card.access -= access_type
-					log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked access '[access_type]'. </font>")
+					log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked access '[get_access_desc(access_type)]'. </font>", key_name_admin(user))
 				else
 					target_id_card.access |= access_type
-					log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted access '[access_type]'. </font>")
+					log_idmod(target_id_card, "<font color='green'> [user.real_name] granted access '[get_access_desc(access_type)]'. </font>", key_name_admin(user))
 				return TRUE
 		if("PRG_grantall")
 			if(!authenticated || !target_id_card)
@@ -241,7 +237,7 @@
 
 			target_id_card.access |= (is_centcom ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN))
 			target_id_card.faction_group |= factions
-			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted the ID all access and USCM IFF. </font>")
+			log_idmod(target_id_card, "<font color='green'> [user.real_name] granted the ID all access and USCM IFF. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_denyall")
 			if(!authenticated || !target_id_card)
@@ -250,7 +246,7 @@
 			var/list/access = target_id_card.access
 			access.Cut()
 			target_id_card.faction_group -= factions
-			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] removed all accesses and USCM IFF. </font>")
+			log_idmod(target_id_card, "<font color='red'> [user.real_name] removed all accesses and USCM IFF. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_grantregion")
 			if(!authenticated || !target_id_card)
@@ -258,14 +254,14 @@
 
 			if(params["region"] == "Faction (IFF system)")
 				target_id_card.faction_group |= factions
-				log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted USCM IFF. </font>")
+				log_idmod(target_id_card, "<font color='green'> [user.real_name] granted USCM IFF. </font>", key_name_admin(user))
 				return TRUE
 			var/region = text2num(params["region"])
 			if(isnull(region))
 				return
 			target_id_card.access |= get_region_accesses(region)
 			var/additions = get_region_accesses_name(region)
-			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted all [additions] accesses. </font>")
+			log_idmod(target_id_card, "<font color='green'> [user.real_name] granted all [additions] accesses. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_denyregion")
 			if(!authenticated || !target_id_card)
@@ -273,14 +269,14 @@
 
 			if(params["region"] == "Faction (IFF system)")
 				target_id_card.faction_group -= factions
-				log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked USCM IFF. </font>")
+				log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked USCM IFF. </font>", key_name_admin(user))
 				return TRUE
 			var/region = text2num(params["region"])
 			if(isnull(region))
 				return
 			target_id_card.access -= get_region_accesses(region)
 			var/additions = get_region_accesses_name(region)
-			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked all [additions] accesses. </font>")
+			log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked all [additions] accesses. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_account")
 			if(!authenticated || !target_id_card)
@@ -288,7 +284,7 @@
 
 			var/account = text2num(params["account"])
 			target_id_card.associated_account_number = account
-			log_idmod(target_id_card, "<font color='orange'> [key_name_admin(usr)] changed the account number to '[account]'. </font>")
+			log_idmod(target_id_card, "<font color='orange'> [user.real_name] changed the account number to '[account]'. </font>", key_name_admin(user))
 			return TRUE
 
 /obj/structure/machinery/computer/card/ui_static_data(mob/user)
@@ -1084,6 +1080,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// 50-59: Engineering
 				JOB_UPP_COMBAT_SYNTH = 50,
 				JOB_UPP_CREWMAN = 51,
+				JOB_UPP_SUPPORT_SYNTH = 52,
 				// 60-69: Soldiers
 				JOB_UPP_LEADER = 60,
 				JOB_UPP_SPECIALIST = 61,

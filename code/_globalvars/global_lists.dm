@@ -375,7 +375,7 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 	while(gap > 1 || swapped)
 		swapped = 0
 		if(gap > 1)
-			gap = round(gap / 1.247330950103979)
+			gap = floor(gap / 1.247330950103979)
 		if(gap < 1)
 			gap = 1
 		for(var/i = 1; gap + i <= length(surgeries); i++)
@@ -490,6 +490,7 @@ GLOBAL_LIST_EMPTY(timelocks)
 GLOBAL_LIST_INIT(available_specialist_sets, list(
 			"Scout Set",
 			"Sniper Set",
+			"Anti-materiel Sniper Set",
 			"Demolitionist Set",
 			"Heavy Grenadier Set",
 			"Pyro Set"
@@ -502,6 +503,7 @@ GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 			"Sniper" = 2,
 			"Scout" = 2,
 			"Demo" = 2,
+			"Anti-materiel Sniper" = 2,
 			))
 
 /proc/init_global_referenced_datums()

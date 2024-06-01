@@ -37,7 +37,7 @@
 		/obj/item/weapon/sword/machete = SURGERY_TOOL_MULT_SUBOPTIMAL,
 		/obj/item/tool/hatchet = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE
+		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
 	)
 
 	time = 4 SECONDS
@@ -56,8 +56,6 @@
 			SPAN_NOTICE("You start to [pick("smash", "crack", "break")] [target.caste_type] carapace apart using [tool], Recklessly, with acid splashing on you!"),
 			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] your carapace apart using [tool], recklessly splashing acid everywhere!"),
 			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] [target.caste_type] carapace with [tool], recklessly splashing acid everywhere!"))
-		user.apply_damage(rand(25,50),BURN)
-		to_chat(user, SPAN_DANGER("You burn as acid gets on your skin!"))
 		//we dont really need log interact since we're working with dead body... I hope
 
 /datum/surgery_step/xenomorph/cut_exoskeleton/success(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -118,7 +116,13 @@
 		SPAN_WARNING("Your hand slips, letting go of [target.caste_type] carapace and exoskeleton, slaming it back into place and splashing acid everywhere!"),
 		SPAN_WARNING("[user] hand slips, letting go of [target.caste_type] carapace and exoskeleton, slaming it back into place and splashing acid everywhere!"),
 		SPAN_WARNING("[user] hand slips, letting go of [target.caste_type] carapace and exoskeleton, slaming it back into place and splashing acid everywhere!"))
-	user.apply_damage(rand(15, 45), BURN)
+		for(var/mob/living/carbon/human/victim in orange(1, target))
+			if(istype(victim.wear_suit, /obj/item/clothing/suit/bio_suit) && istype(victim.head, /obj/item/clothing/head/bio_hood))
+				continue
+			to_chat(victim, SPAN_DANGER("You are covered in blood gushing out from [target.caste_type]"))
+			victim.apply_damage(rand(50, 75), BURN) // still dangerous
+			playsound(victim, "acid_sizzle", 25, TRUE)
+			animation_flash_color(victim, "#FF0000")
 	return FALSE
 
 /datum/surgery_step/xenomorph/severe_connections
@@ -174,7 +178,7 @@
 	tools = list(
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_SUBOPTIMAL,
-		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_SUBSTITUTE
+		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_SUBSTITUTE,
 		)//shamelessly taken from embryo code
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'

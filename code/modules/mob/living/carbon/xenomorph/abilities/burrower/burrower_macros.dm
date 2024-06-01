@@ -11,3 +11,16 @@
 	set hidden = TRUE
 	var/action_name = "Demolish"
 	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/verb/verb_earthquake()
+	set category = "Alien"
+	set name = "Earthquake"
+	set hidden = TRUE
+	var/action_name = "Earthquake"
+	handle_xeno_macro(src, action_name)
+/datum/action/xeno_action/verb/verb_boulder_toss()
+	set category = "Alien"
+	set name = "Boulder Toss"
+	set hidden = TRUE
+	var/action_name = "Boulder Toss"
+	handle_xeno_macro(src, action_name)

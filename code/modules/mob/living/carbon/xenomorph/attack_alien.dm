@@ -477,7 +477,7 @@
 	M.visible_message(SPAN_DANGER("[M] smashes against [src]!"), \
 	SPAN_DANGER("We smash against [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/damage = 25
-	if(M.mob_size >= MOB_SIZE_BIG)
+	if(M.mob_size >= MOB_SIZE_BULKY)
 		damage = 40
 	take_damage(damage)
 	return XENO_ATTACK_ACTION
@@ -821,7 +821,7 @@
 	if(stat & BROKEN)
 		to_chat(M, SPAN_XENONOTICE("[src] is already broken!"))
 		return XENO_NO_DELAY_ACTION
-	else if(beenhit >= XENO_HITS_TO_CUT_WIRES && M.mob_size < MOB_SIZE_BIG)
+	else if(beenhit >= XENO_HITS_TO_CUT_WIRES && M.mob_size < MOB_SIZE_BULKY)
 		to_chat(M, SPAN_XENONOTICE("We aren't big enough to further damage [src]."))
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)
@@ -960,7 +960,7 @@
 	M.visible_message(SPAN_WARNING("[M] begins to lean against [src]."), \
 	SPAN_WARNING("We begin to lean against [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/shove_time = 100
-	if(M.mob_size >= MOB_SIZE_BIG)
+	if(M.mob_size >= MOB_SIZE_BULKY)
 		shove_time = 50
 	if(istype(M,/mob/living/carbon/xenomorph/crusher))
 		shove_time = 15

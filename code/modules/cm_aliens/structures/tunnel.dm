@@ -215,7 +215,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(!isfriendly(M))
-		if(M.mob_size < MOB_SIZE_BIG)
+		if(M.mob_size < MOB_SIZE_BULKY)
 			to_chat(M, SPAN_XENOWARNING("We aren't large enough to collapse this tunnel!"))
 			return XENO_NO_DELAY_ACTION
 

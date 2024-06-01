@@ -311,7 +311,7 @@ explosion resistance exactly as much as their health
 				return 0
 			if(MOB_SIZE_HUMAN)
 				return 20
-			if(MOB_SIZE_XENO, MOB_SIZE_XENO_SMALL)
+			if(MOB_SIZE_XENO, MOB_SIZE_XENO_SMALL, MOB_SIZE_BULKY)
 				return 20
 			if(MOB_SIZE_BIG, MOB_SIZE_IMMOBILE)
 				return 40
@@ -363,6 +363,8 @@ explosion resistance exactly as much as their health
 			weight = 1
 		if(MOB_SIZE_XENO, MOB_SIZE_XENO_SMALL)
 			weight = 1
+		if(MOB_SIZE_BULKY)
+			weight = 2
 		if(MOB_SIZE_BIG, MOB_SIZE_IMMOBILE)
 			weight = 4
 	var/range = round( severity/weight * 0.02 ,1)

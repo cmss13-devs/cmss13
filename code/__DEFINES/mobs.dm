@@ -232,6 +232,7 @@
 #define MOB_SIZE_XENO_VERY_SMALL 1.5
 #define MOB_SIZE_XENO_SMALL 2
 #define MOB_SIZE_XENO 3
+#define MOB_SIZE_BULKY 3.5
 #define MOB_SIZE_BIG 4
 #define MOB_SIZE_IMMOBILE 5 // if you are not supposed to be able to moved AT ALL then you get this flag
 

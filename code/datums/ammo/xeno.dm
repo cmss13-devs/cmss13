@@ -395,3 +395,39 @@
 
 /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(mob/overlayed_mob, image/tail_image)
 	overlayed_mob.overlays -= tail_image
+
+/datum/ammo/xeno/sapper_stone
+	name = "boulder"
+	icon_state = "neurotoxin"
+	sound_hit = "slam"
+	sound_bounce = "slam"
+	flags_ammo_behavior = AMMO_XENO
+	damage_type = BRUTE
+	shell_speed = AMMO_SPEED_TIER_1
+
+	damage = 80 // It's a large boulder being hurled by an angry and muscley mole, it's gonna do some damage
+	max_range = 8
+	accuracy = HIT_ACCURACY_TIER_MAX
+
+	var/window_mult = 2
+	var/cade_mult = 4
+	var/airlock_mult = 4
+
+/datum/ammo/xeno/sapper_stone/on_hit_mob(mob/target, obj/projectile/proj)
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon = target
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
+			return
+	slam_back(target, proj)
+	target.apply_effect(7, DAZE)
+	target.apply_effect(3, WEAKEN)
+
+/datum/ammo/xeno/sapper_stone/on_hit_obj(obj/structure/target, obj/projectile/proj)
+	var/list/turf/path = target
+	for(var/obj/structure/current_structure in path)
+		if(istype(current_structure, /obj/structure/window/framed))
+			proj.damage = damage*window_mult
+			return
+		if(istype(current_structure, /obj/structure/barricade))
+			proj.damage = damage*cade_mult
+			return

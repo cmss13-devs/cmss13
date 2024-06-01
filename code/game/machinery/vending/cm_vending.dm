@@ -410,7 +410,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."), \
 	SPAN_WARNING("You begin to lean against [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/shove_time = 80
-	if(user.mob_size >= MOB_SIZE_BIG)
+	if(user.mob_size >= MOB_SIZE_BULKY)
 		shove_time = 30
 	if(istype(user,/mob/living/carbon/xenomorph/crusher))
 		shove_time = 15

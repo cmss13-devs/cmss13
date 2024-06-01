@@ -231,24 +231,33 @@
 /datum/action/xeno_action/onclick/demolish/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/sapper = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!sapper.check_state())
+	if(!sapper.check_state())
+		return
+
+	var/datum/behavior_delegate/burrower_sapper/behavior_del = sapper.behavior_delegate
+	if(!istype(behavior_del))
+		return
+	if(behavior_del.tension < behavior_del.demolish_cost)
+		to_chat(src, SPAN_XENOHIGHDANGER("We're not angry enough!"))
 		return
 
 	if(!check_and_use_plasma_owner())
 		return
 
+	behavior_del.modify_tension(-behavior_del.demolish_cost)
+
 	sapper.visible_message(SPAN_XENOWARNING("[sapper] bulks up and enters a destructive frenzy!"), SPAN_XENOHIGHDANGER("We bulk our muscles and enter a destructive frenzy!"))
 	sapper.add_filter("sapper_demolish", 1, list("type" = "outline", "color" = "#ff6600", "size" = 1))
+	sapper.emote("roar")
 	button.icon_state = "template_active"
 
 	addtimer(CALLBACK(src, PROC_REF(no_demolish)), 15 SECONDS)
 
 	sapper.claw_type = CLAW_TYPE_VERY_SHARP
 	sapper.attack_speed_modifier -= 3
-	sapper.small_explosives_stun = FALSE
 
 	return ..()
 
@@ -261,98 +270,167 @@
 
 	sapper.claw_type = CLAW_TYPE_SHARP
 	sapper.attack_speed_modifier += 3
-	sapper.small_explosives_stun = TRUE
 
 	apply_cooldown()
 
-/datum/action/xeno_action/activable/tail_axe/use_ability(atom/targeted_atom)
-
+/datum/action/xeno_action/activable/sapper_punch/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	var/mob/living/carbon/hit_target = targeted_atom
-	var/distance = get_dist(xeno, hit_target)
 
 	if(!action_cooldown_check())
+		return
+
+	if(!isxeno_human(affected_atom) || xeno.can_not_harm(affected_atom))
 		return
 
 	if(!xeno.check_state())
 		return
 
+	var/distance = get_dist(xeno, affected_atom)
+
 	if(distance > 2)
 		return
 
-	var/list/turf/path = get_line(xeno, targeted_atom, include_start_atom = FALSE)
-	for(var/turf/path_turf as anything in path)
-		if(path_turf.density)
-			to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
-			return
-		var/atom/barrier = path_turf.handle_barriers(A = xeno , pass_flags = (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
-		if(barrier != path_turf)
-			to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
-			return
-		for(var/obj/structure/current_structure in path_turf)
-			if(istype(current_structure, /obj/structure/window/framed))
-				var/obj/structure/window/framed/target_window = current_structure
-				if(target_window.unslashable)
-					return
-				playsound(get_turf(target_window),"windowshatter", 50, TRUE)
-				target_window.shatter_window(TRUE)
-				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] smashes the window with their tail!"), SPAN_XENOWARNING("We smash the window with our tail!"))
-				apply_cooldown(cooldown_modifier = 0.2)
-				return
-			if(current_structure.density && !current_structure.throwpass)
-				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
-				return
-	// find a target in the target turf
-	if(!iscarbon(targeted_atom) || hit_target.stat == DEAD)
-		for(var/mob/living/carbon/carbonara in get_turf(targeted_atom))
-			hit_target = carbonara
-			if(!xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
-				break
+	var/mob/living/carbon/carbon = affected_atom
 
-	if(iscarbon(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
-		if(targeted_atom == hit_target) //reward for a direct hit
-			to_chat(xeno, SPAN_XENOHIGHDANGER("We directly strike [hit_target] with our tail, throwing it back with the force of the hit!"))
-			if(hit_target.mob_size < MOB_SIZE_BIG)
-				step_away(hit_target, xeno)
-		else
-			to_chat(xeno, SPAN_XENODANGER("We attack [hit_target] with our tail!"))
-	else
-		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swings their tail through the air!"), SPAN_XENOWARNING("We swing our tail through the air!"))
-		apply_cooldown(cooldown_modifier = 0.2)
-		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
+	if(!xeno.Adjacent(carbon))
 		return
 
-	// FX
-	var/stab_direction
+	if(carbon.stat == DEAD)
+		return
+	if(HAS_TRAIT(carbon, TRAIT_NESTED))
+		return
 
-	stab_direction = turn(xeno.dir, pick(90, -90))
-	playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
+	var/obj/limb/target_limb = carbon.get_limb(check_zone(xeno.zone_selected))
 
-	/// To reset the direction if they haven't moved since then in below callback.
-	var/last_dir = xeno.dir
+	if(ishuman(carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
+		target_limb = carbon.get_limb("chest")
 
-	xeno.setDir(stab_direction)
-	xeno.flick_attack_overlay(hit_target, "slash")
-	xeno.animation_attack_on(hit_target)
+	if(!check_and_use_plasma_owner())
+		return
 
-	var/new_dir = xeno.dir
-	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
+	carbon.last_damage_data = create_cause_data(initial(xeno.caste_type), xeno)
 
-	hit_target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
-
-	shake_camera(hit_target, 2, 1)
-	if(hit_target.mob_size < MOB_SIZE_BIG)
-		hit_target.apply_effect(0.5, WEAKEN)
-	else
-		hit_target.apply_effect(0.5, SLOW)
-
-	hit_target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-	log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Axe")
-
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] hits [carbon] in the [target_limb ? target_limb.display_name : "chest"] with a powerful punch!"), \
+	SPAN_XENOWARNING("We hit [carbon] in the [target_limb ? target_limb.display_name : "chest"] with a powerful punch!"))
+	var/sound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
+	playsound(carbon, sound, 50, 1)
+	do_sapper_punch(carbon, target_limb)
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/tail_axe/proc/reset_direction(mob/living/carbon/xenomorph/xeno, last_dir, new_dir)
-	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
-	if(new_dir == xeno.dir)
-		xeno.setDir(last_dir)
+/datum/action/xeno_action/activable/sapper_punch/proc/do_sapper_punch(mob/living/carbon/carbon, obj/limb/target_limb)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/burrower_sapper/behavior_del = xeno.behavior_delegate
+	var/damage = rand(base_damage, base_damage + behavior_del.tension / 2 * 0.1 * 0.4)
+
+	if(ishuman(carbon))
+		if(carbon.buckled && istype(carbon.buckled, /obj/structure/bed/nest))
+			return
+		if(carbon.stat == DEAD)
+			return
+		if((target_limb.status & LIMB_SPLINTED) && !(target_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE))
+			target_limb.status &= ~LIMB_SPLINTED
+			playsound(get_turf(carbon), 'sound/items/splintbreaks.ogg', 20)
+			to_chat(carbon, SPAN_DANGER("The splint on your [target_limb.display_name] comes apart!"))
+			carbon.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
+
+	carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, damage), ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
+
+	xeno.face_atom(carbon)
+	xeno.animation_attack_on(carbon)
+	xeno.flick_attack_overlay(carbon, "punch")
+	shake_camera(carbon, 2, 1)
+	step_away(carbon, xeno, 2)
+
+/datum/action/xeno_action/onclick/earthquake/use_ability()
+	var/mob/living/carbon/xenomorph/sapper = owner
+
+	if(!action_cooldown_check())
+		return
+
+	if(!sapper.check_state())
+		return
+
+	var/datum/behavior_delegate/burrower_sapper/behavior_del = sapper.behavior_delegate
+	if(!istype(behavior_del))
+		return
+	if(behavior_del.tension < behavior_del.earthquake_cost)
+		to_chat(src, SPAN_XENOHIGHDANGER("We're not angry enough!"))
+		return
+
+	sapper.visible_message(SPAN_XENOWARNING("[sapper] rears up on it's hind legs!"), SPAN_XENOHIGHDANGER("We rear up on our hind legs, ready to leap!"))
+	if(!do_after(sapper, 1 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		return
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	behavior_del.modify_tension(-behavior_del.earthquake_cost)
+
+	sapper.quake()
+	apply_cooldown()
+	return ..()
+
+/mob/living/carbon/xenomorph/proc/quake()
+
+	playsound(loc, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
+	visible_message(SPAN_XENODANGER("[src] leaps forward into the air and slams the ground, causing an incredibly violent quake!"), \
+	SPAN_XENODANGER("We leap forward into the air and slam the ground with all our might, causing an incredibly violent quake!"))
+	create_stomp()
+
+	for(var/mob/living/carbon/carbon_target in range(7, loc))
+		to_chat(carbon_target, SPAN_WARNING("You struggle to remain on your feet as the ground shakes violently beneath your feet!"))
+		shake_camera(carbon_target, 2, 3)
+		carbon_target.apply_effect(1, SLOW)
+		if(get_dist(loc, carbon_target) <= 3 && !src.can_not_harm(carbon_target))
+			if(carbon_target.mob_size >= MOB_SIZE_BIG)
+				carbon_target.apply_effect(1, SLOW)
+				to_chat(carbon_target, SPAN_WARNING("The violent quake causes the ground beneath you to shift, making it hard to remain upright!"))
+			else
+				step_away(carbon_target, src, rand(1, 3))
+				carbon_target.apply_effect(1, WEAKEN)
+				to_chat(carbon_target, SPAN_WARNING("The violent quake knocks you over and the shifting ground throws you about!"))
+
+/datum/action/xeno_action/activable/boulder_toss/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/sapper = owner
+	var/rock_target = aim_turf ? get_turf(atom) : atom
+	if(!istype(sapper))
+		return
+
+	if(!sapper.check_state())
+		return
+
+	if(!action_cooldown_check())
+		return
+
+	var/datum/behavior_delegate/burrower_sapper/behavior_del = sapper.behavior_delegate
+	if(behavior_del.tension < behavior_del.boulder_cost)
+		to_chat(src, SPAN_XENOHIGHDANGER("We're not angry enough!"))
+		return
+
+	var/turf/current_turf = get_turf(sapper)
+	if(!current_turf)
+		return
+
+	sapper.face_atom(rock_target)
+	sapper.visible_message(SPAN_XENOWARNING("[sapper] starts tearing a piece of the ground up!"), SPAN_XENOHIGHDANGER("We start tearing a piece of the ground below us!"))
+	if(!do_after(sapper, 5 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	behavior_del.modify_tension(-behavior_del.boulder_cost)
+
+	sapper.visible_message(SPAN_XENOWARNING("After lifting it above it, [sapper] throws a boulder at [atom]!"), SPAN_XENOWARNING("We heave a large boulder above us and throw it at [atom]!"))
+	sapper.emote("roar")
+
+	var/datum/ammo/ammo_datum = GLOB.ammo_list[ammo_type]
+	var/obj/projectile/proj = new (current_turf, create_cause_data(initial(sapper.caste_type), sapper))
+	proj.generate_bullet(ammo_datum)
+	proj.permutated += sapper
+	proj.def_zone = sapper.get_limbzone_target()
+	proj.fire_at(rock_target, sapper, sapper, ammo_datum.max_range, ammo_datum.shell_speed)
+
+	apply_cooldown()
+	return ..()

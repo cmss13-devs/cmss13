@@ -282,7 +282,7 @@
 
 	stab_direction = turn(get_dir(xeno, targeted_atom), 180)
 	playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
-	if(hit_target.mob_size < MOB_SIZE_BIG)
+	if(hit_target.mob_size < MOB_SIZE_BULKY)
 		step_away(hit_target, xeno)
 
 	/// To reset the direction if they haven't moved since then in below callback.
@@ -297,7 +297,7 @@
 
 	hit_target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
 
-	if(hit_target.mob_size < MOB_SIZE_BIG)
+	if(hit_target.mob_size < MOB_SIZE_BULKY)
 		hit_target.apply_effect(0.5, WEAKEN)
 	else
 		hit_target.apply_effect(0.5, SLOW)

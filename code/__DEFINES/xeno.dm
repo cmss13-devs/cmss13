@@ -406,7 +406,7 @@
 #define PRAETORIAN_WARDEN "Warden"
 #define PRAETORIAN_OPPRESSOR "Oppressor"
 
-// Crusher strain flags
+// Burrower strain flags
 #define BURROWER_SAPPER "Sapper"
 
 /////////////////////////////////////////////////////////////////////////////////////

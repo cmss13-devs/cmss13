@@ -27,7 +27,7 @@
 	slot = HDPT_TURRET
 
 	// big beefy chonk of metal
-	health = 750
+	health = 450
 	damage_multiplier = 0.05
 
 	accepted_hardpoints = list(

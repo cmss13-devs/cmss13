@@ -226,7 +226,6 @@
 
 /obj/effect/vehicle_spawner/tank/load_hardpoints(obj/vehicle/multitile/tank/V)
 	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
-	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
 
 //PRESET: turret, treads installed
 /obj/effect/vehicle_spawner/tank/plain/load_hardpoints(obj/vehicle/multitile/tank/V)

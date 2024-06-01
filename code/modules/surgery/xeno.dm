@@ -143,7 +143,7 @@
 		SPAN_NOTICE("[user] starts to sever [target.caste_type] organ links using [tool], with confidence"))
 
 /datum/surgery_step/xenomorph/severe_connections/success(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	if(tool_type == /obj/item/tool/surgery/retractor)
+	if(tool_type == /obj/item/tool/surgery/scalpel || tool_type == /obj/item/tool/surgery/scalpel/pict_system)
 		user.affected_message(target,
 			SPAN_NOTICE("You severed [target.caste_type] connections and links to vital organs using [tool]"),
 			SPAN_NOTICE("[user] severed your connections and links to vital organs using [tool]"),
@@ -159,8 +159,13 @@
 			SPAN_WARNING("Your hand slips, damaging one of [target.caste_type] [pick("arteries", "viens")], gushing acid blood everywhere!"),
 			SPAN_WARNING("[user] hand slips, damaging one of your [pick("arteries", "viens")], gushing acid blood everywhere!"),
 			SPAN_WARNING("[user] hand slips, damaging one of [target.caste_type] [pick("arteries", "viens")], gushing acid blood everywhere!"))
-		user.apply_damage(rand(15, 45), BURN)
-		return FALSE
+		for(var/mob/living/carbon/human/victim in orange(1, target))
+			if(istype(victim.wear_suit, /obj/item/clothing/suit/bio_suit) && istype(victim.head, /obj/item/clothing/head/bio_hood))
+				continue
+			to_chat(victim, SPAN_DANGER("You are covered in blood gushing out from [target.caste_type]"))
+			victim.apply_damage(rand(50, 75), BURN) // not SO dangerous but still is
+			playsound(victim, "acid_sizzle", 25, TRUE)
+			animation_flash_color(victim, "#FF0000")
 
 /datum/surgery_step/xenomorph/remove_organ
 	name = "Remove Xenomorph Organ"
@@ -195,15 +200,23 @@
 			SPAN_NOTICE("[user] pulled your organ out using [tool]"),
 			SPAN_NOTICE("[user] pulled the [target.caste_type] organ out using [tool]"))
 	else
-		user.affected_message(target,
-			SPAN_NOTICE("You burn your hands as you pulled the [target.caste_type] organ out!"),
-			SPAN_NOTICE("[user] burns their hands as they pulled your insides out!"),
-			SPAN_NOTICE("[user] burns [user.p_their()] hands as [user.p_they()] pulled the [target.caste_type] organ out."))
-		user.emote("pain")
-		if(user.hand)
-			user.apply_damage(15, BURN, "l_hand")
+		if(istype(user.wear_suit, /obj/item/clothing/suit/bio_suit))
+			user.affected_message(target,
+				SPAN_NOTICE("You pulled the [target.caste_type] organ out!"),
+				SPAN_NOTICE("[user] pulles your insides out!"),
+				SPAN_NOTICE("[user] pulled the [target.caste_type] organ out."))
 		else
-			user.apply_damage(15, BURN, "r_hand")
+			user.affected_message(target,
+				SPAN_NOTICE("You burn your hands as you pulled the [target.caste_type] organ out!"),
+				SPAN_NOTICE("[user] burns their hands as they pulled your insides out!"),
+				SPAN_NOTICE("[user] burns [user.p_their()] hands as [user.p_they()] pulled the [target.caste_type] organ out."))
+			user.emote("pain")
+			if(user.hand)
+				user.apply_damage(rand(30,50), BURN, "l_hand")
+			else
+				user.apply_damage(rand(30,50), BURN, "r_hand")
+			playsound(user, "acid_sizzle", 25, TRUE)
+			animation_flash_color(user, "#FF0000")
 	var/obj/item/organ/xeno/organ = locate() in target
 	if(!isnull(organ))
 		organ.forceMove(target.loc)

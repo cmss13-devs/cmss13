@@ -109,104 +109,117 @@
 /area/lv759/indoors/derelict_ship
 	name = "Derelict Ship"
 	icon_state = "derelictship"
-	ceiling = CEILING_MAX
-	ceiling_muffle = FALSE
+	ceiling = CEILING_DEEP_UNDERGROUND
 	flags_area = AREA_NOTUNNEL
 	ambience_exterior = AMBIENCE_DERELICT
 	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
 
 // Caves
-/area/lv759/indoors/wy_research_complex_entrance
+/area/lv759/indoors/caves/wy_research_complex_entrance
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Main Entrance"
 	icon_state = "wylab"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES_ALARM
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
-/area/lv759/indoors/west_caves
+/area/lv759/indoors/caves/west_caves
 	name = "Caverns - West"
 	icon_state = "caves_west"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
-/area/lv759/indoors/west_caves_alarm
+/area/lv759/indoors/caves/west_caves_alarm
 	name = "Caverns - West"
 	icon_state = "caves_west"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES_ALARM
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
-/area/lv759/indoors/east_caves
+/area/lv759/indoors/caves/east_caves
 	name = "Caverns - East"
 	icon_state = "caves_east"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
-/area/lv759/indoors/south_caves
+/area/lv759/indoors/caves/south_caves
 	name = "Caverns - South"
 	icon_state = "caves_south"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
-/area/lv759/indoors/south_east_caves
+/area/lv759/indoors/caves/south_east_caves
 	name = "Caverns - Southeast"
 	icon_state = "caves_southeast"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
-/area/lv759/indoors/south_west_caves
+/area/lv759/indoors/caves/south_west_caves
 	name = "Caverns - Southwest"
 	icon_state = "caves_southwest"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
-/area/lv759/indoors/south_west_caves_alarm
+/area/lv759/indoors/caves/south_west_caves_alarm
 	name = "Caverns - Southwest"
-	icon_state = "caves_southwest"
+	icon_state = "wylab"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES_ALARM
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
-	minimap_color = MINIMAP_AREA_CAVES
-/area/lv759/indoors/north_west_caves
+	ceiling_muffle = FALSE
+	minimap_color = MINIMAP_AREA_RESEARCH
+/area/lv759/indoors/caves/north_west_caves
 	name = "Caverns - Northwest"
 	icon_state = "caves_northwest"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
-/area/lv759/outdoors/north_west_caves_outdoors
+/area/lv759/outdoors/caves/north_west_caves_outdoors
 	name = "Caverns - Northwest"
 	icon_state = "caves_northwest"
 	ceiling = CEILING_NONE
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
-/area/lv759/indoors/north_east_caves
+/area/lv759/indoors/caves/north_east_caves
 	name = "Caverns - Northeast"
 	icon_state = "caves_northeast"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
-/area/lv759/indoors/north_caves
+/area/lv759/indoors/caves/north_caves
 	name = "Caverns - North"
 	icon_state = "caves_north"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
-/area/lv759/indoors/central_caves
+/area/lv759/indoors/caves/central_caves
 	name = "Caverns - Central"
 	icon_state = "caves_central"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_CAVES
 
 
@@ -910,7 +923,7 @@
 /area/lv759/indoors/wy_research_complex/southeastexit
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - South East Maintenace & Emergency Exit"
 	icon_state = "wylab"
-	ambience_exterior = AMBIENCE_LAB_HALLWAY
+	ambience_exterior = AMBIENCE_LAB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 /area/lv759/indoors/wy_research_complex/changingroom
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Locker Room"

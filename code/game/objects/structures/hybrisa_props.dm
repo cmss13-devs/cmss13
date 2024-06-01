@@ -44,7 +44,7 @@
 	icon_state = "[initial(icon_state)]_damage_[damage_state]"
 
 /obj/structure/prop/hybrisa/vehicles/proc/explode(dam, mob/M)
-	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
+	visible_message(SPAN_DANGER("[src] blows apart!"), max_distance = 1)
 	playsound(loc, 'sound/effects/car_crush.ogg', 25)
 	var/turf/Tsec = get_turf(src)
 	new /obj/item/stack/rods(Tsec)
@@ -586,21 +586,21 @@
 /obj/structure/prop/hybrisa/furniture
 	icon = 'icons/obj/structures/props/hybrisatables.dmi'
 	icon_state = "blackmetaltable"
-
+	health = 1000
 /obj/structure/prop/hybrisa/furniture/tables
 	icon = 'icons/obj/structures/props/hybrisatables.dmi'
 	icon_state = "table_pool"
-	health = 500
+	health = 1000
 
 /obj/structure/prop/hybrisa/furniture/tables/bullet_act(obj/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
 	healthcheck()
-	return 1
+	return TRUE
 
 /obj/structure/prop/hybrisa/furniture/tables/proc/explode()
-	src.visible_message(SPAN_DANGER("<B>[src] breaks apart!</B>"), null, null, 1)
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/furniture/tables/proc/healthcheck()
@@ -924,10 +924,10 @@
 	health -= damage
 	..()
 	healthcheck()
-	return 1
+	return TRUE
 
 /obj/structure/blackgoocontainer/proc/explode()
-	src.visible_message(SPAN_DANGER("<B>[src] crumbles!</B>"), null, null, 1)
+	visible_message(SPAN_DANGER("[src] crumbles!"), max_distance = 1)
 	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
 
 	deconstruct(FALSE)
@@ -1287,16 +1287,17 @@
 	anchored = TRUE
 	density = TRUE
 	health = 500
+	opacity = FALSE
 
 /obj/structure/machinery/big_computers/bullet_act(obj/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
 	healthcheck()
-	return 1
+	return TRUE
 
 /obj/structure/machinery/big_computers/proc/explode()
-	src.visible_message(SPAN_DANGER("<B>[src] breaks apart!</B>"), null, null, 1)
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/machinery/big_computers/proc/healthcheck()
@@ -1396,10 +1397,10 @@
 	health -= damage
 	..()
 	healthcheck()
-	return 1
+	return TRUE
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/proc/explode()
-	src.visible_message(SPAN_DANGER("<B>[src] breaks apart!</B>"), null, null, 1)
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/proc/healthcheck()
@@ -1678,6 +1679,16 @@
 	name = "medical cargo container"
 	icon_state = "emptymedicalright"
 
+/obj/structure/cargo_container/hybrisa/containersextended/kelland_left
+	name = "Kelland Mining Company Cargo Container"
+	desc = "A small industrial shipping container.\nYou haven't heard much about Kelland Mining, besides the incident at LV-178's mining operation."
+	icon_state = "kelland_alt_l"
+
+/obj/structure/cargo_container/hybrisa/containersextended/kelland_right
+	name = "Kelland Mining Company Cargo Container"
+	desc = "A small industrial shipping container.\nYou haven't heard much about Kelland Mining, besides the incident at LV-178's mining operation."
+	icon_state = "kelland_alt_r"
+
 /// Fake Platforms
 
 /obj/structure/prop/hybrisa/fakeplatforms
@@ -1717,19 +1728,19 @@
 	bound_width = 64
 	bound_height = 32
 	density = TRUE
-	health = 1000
+	health = 1500
 	anchored = TRUE
-	layer = EXTERIOR_HIGHWALLMOUNT_LAYER
+	layer = ABOVE_XENO_LAYER
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/bullet_act(obj/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
 	healthcheck()
-	return 1
+	return TRUE
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/proc/explode()
-	src.visible_message(SPAN_DANGER("<B>[src] breaks apart!</B>"), null, null, 1)
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/proc/healthcheck()
@@ -1799,17 +1810,17 @@
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "smallwallvent1"
 	density = FALSE
-	health = 250
+	health = 1000
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/bullet_act(obj/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
 	healthcheck()
-	return 1
+	return TRUE
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/proc/explode()
-	src.visible_message(SPAN_DANGER("<B>[src] breaks apart!</B>"), null, null, 1)
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/proc/healthcheck()
@@ -1863,7 +1874,7 @@
 	bound_width = 32
 	bound_height = 64
 	density = TRUE
-	health = 1000
+	health = 2000
 	anchored = TRUE
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty
@@ -1919,7 +1930,7 @@
 	bound_height = 64
 	layer = BELOW_MOB_LAYER
 	density = FALSE
-	health = 200
+	health = 1500
 	anchored = TRUE
 
 // Phonebox Prop (Doesn't actually work a locker)
@@ -1946,7 +1957,7 @@
 	icon_state = "jacksopen_on"
 	bound_height = 64
 	bound_width = 64
-	layer = ABOVE_MOB_LAYER
+	layer = ABOVE_XENO_LAYER
 
 /obj/structure/prop/hybrisa/signs/casniosign
 	name = "casino sign"
@@ -2000,6 +2011,9 @@
 // Billboards, Signs and Posters
 
 /// Alien Isolation - posters used as reference (direct downscale of the image for some) If anyone wants to name the billboards individually ///
+
+/obj/structure/prop/hybrisa/billboardsandsigns
+	health = 1000
 /obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards
 	name = "billboard"
 	desc = "A advertisement billboard."
@@ -2007,7 +2021,6 @@
 	icon_state = "billboard_bigger"
 	bound_width = 64
 	bound_height = 32
-	health = 1000
 	density = FALSE
 	anchored = TRUE
 
@@ -2016,10 +2029,10 @@
 	health -= damage
 	..()
 	healthcheck()
-	return 1
+	return TRUE
 
 /obj/structure/prop/hybrisa/billboardsandsigns/proc/explode()
-	src.visible_message(SPAN_DANGER("<B>[src] breaks apart!</B>"), null, null, 1)
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/billboardsandsigns/proc/healthcheck()
@@ -2077,9 +2090,8 @@
 	bound_width = 64
 	bound_height = 32
 	density = FALSE
-	health = 1000
 	anchored = TRUE
-	layer = 8
+	layer = FACEHUGGER_LAYER
 /obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1
 	icon_state = "roadsign_1"
 /obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2
@@ -2115,7 +2127,7 @@
 	icon = 'icons/obj/structures/props/hybrisa_lattice.dmi'
 	icon_state = "lattice1"
 	density = FALSE
-	layer = EXTERIOR_HIGHWALLMOUNT_LAYER
+	layer = ABOVE_XENO_LAYER
 	health = 6000
 /obj/structure/prop/hybrisa/lattice_prop/lattice_1
 	icon_state = "lattice1"

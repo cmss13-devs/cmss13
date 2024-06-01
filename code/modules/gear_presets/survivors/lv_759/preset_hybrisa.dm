@@ -29,7 +29,7 @@
 
 /datum/equipment_preset/survivor/doctor/hybrisa
 	name = "Survivor - Hybrisa Doctor"
-	assignment = "Hybrisa  Doctor"
+	assignment = "Hybrisa Doctor"
 
 /datum/equipment_preset/survivor/doctor/hybrisa/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/blue(new_human), WEAR_HEAD)
@@ -39,7 +39,7 @@
 
 /datum/equipment_preset/survivor/scientist/hybrisa
 	name = "Survivor - Hybrisa Researcher"
-	assignment = "Hybrisa  Researcher"
+	assignment = "Hybrisa Researcher"
 
 /datum/equipment_preset/survivor/scientist/hybrisa/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/rd(new_human), WEAR_BODY)
@@ -53,7 +53,7 @@
 
 /datum/equipment_preset/survivor/trucker/hybrisa
 	name = "Survivor - Hybrisa Heavy Vehicle Operator"
-	assignment = "Hybrisa  Heavy Vehicle Operator"
+	assignment = "Hybrisa Heavy Vehicle Operator"
 	skills = /datum/skills/civilian/survivor/trucker
 
 /datum/equipment_preset/survivor/trucker/hybrisa/load_gear(mob/living/carbon/human/new_human)
@@ -79,7 +79,7 @@
 
 /datum/equipment_preset/survivor/engineer/hybrisa
 	name = "Survivor -  Maintenance Technician"
-	assignment = " Maintenance Technician"
+	assignment = "Maintenance Technician"
 
 /datum/equipment_preset/survivor/engineer/hybrisa/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi(new_human), WEAR_BODY)
@@ -93,7 +93,7 @@
 
 /datum/equipment_preset/survivor/corporate/hybrisa
 	name = "Survivor - Hybrisa Corporate Liaison"
-	assignment = "Hybrisa  Corporate Liaison"
+	assignment = "Hybrisa Corporate Liaison"
 
 /datum/equipment_preset/survivor/corporate/hybrisa/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/ivy(new_human), WEAR_BODY)
@@ -103,13 +103,14 @@
 	..()
 
 /datum/equipment_preset/survivor/security/hybrisa
-	name = "Survivor - Hybrisa Security Guard"
-	assignment = "Hybrisa Security Guard"
+	name = "Survivor - Hybrisa Weyland-Yutani Corporate Security Guard"
+	assignment = "Weyland-Yutani Corporate Security Guard"
 
 /datum/equipment_preset/survivor/security/hybrisa/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate(new_human), WEAR_FEET)
 	..()

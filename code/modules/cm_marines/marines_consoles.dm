@@ -28,13 +28,8 @@
 		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Authority confirmation card is missing!\"")
 		return FALSE
 
-	var/bio_fail = FALSE
-	if(!istype(id_card))
-		bio_fail = TRUE
-	else if(!id_card.check_biometrics(user))
-		bio_fail = TRUE
-	if(bio_fail)
-		to_chat(user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+	if(!istype(id_card) || !id_card.check_biometrics(user))
+	    visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Biometrics failure! You require an authenticated ID card to perform this action!\"")
 		return FALSE
 
 	if(check_access(id_card))

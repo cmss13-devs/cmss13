@@ -29,7 +29,7 @@
 		return FALSE
 
 	if(!istype(id_card) || !id_card.check_biometrics(user))
-	    visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Biometrics failure! You require an authenticated ID card to perform this action!\"")
+		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Biometrics failure! You require an authenticated ID card to perform this action!\"")
 		return FALSE
 
 	if(check_access(id_card))

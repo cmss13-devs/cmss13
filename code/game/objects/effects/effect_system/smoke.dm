@@ -149,6 +149,47 @@
 				affected_mob.emote("cough")
 
 /////////////////////////////////////////////
+// Miasma smoke (for LZs)
+/////////////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/miasma
+	name = "CN20-X miasma"
+	amount = 1
+	time_to_live = INFINITY
+	smokeranking = SMOKE_RANK_MAX
+	opacity = FALSE
+	alpha = 75
+	color = "#301934"
+
+/obj/effect/particle_effect/smoke/miasma/Initialize(mapload, oldamount, new_cause_data)
+	. = ..()
+	// Mimic dispersal without actually doing spread logic
+	alpha = 0
+	addtimer(VARSET_CALLBACK(src, alpha, initial(alpha)), rand(1, 6) SECONDS)
+
+/obj/effect/particle_effect/smoke/miasma/process()
+	. = ..()
+	for(var/obj/structure/closet/container in get_turf(src))
+		for(var/mob/living/carbon/mob in container)
+			affect(mob)
+
+/obj/effect/particle_effect/smoke/miasma/affect(mob/living/carbon/affected_mob)
+	..()
+
+	affected_mob.apply_damage(10, TOX)
+	affected_mob.SetEyeBlind(1)
+	if(affected_mob.coughedtime < world.time && !affected_mob.stat)
+		affected_mob.coughedtime = world.time + 2 SECONDS
+		if(ishuman(affected_mob)) //Humans only to avoid issues
+			if(prob(50))
+				affected_mob.emote("cough")
+			else
+				affected_mob.emote("gasp")
+			if(prob(20))
+				affected_mob.drop_held_item()
+		to_chat(affected_mob, SPAN_DANGER("Something is not right here..."))
+
+/////////////////////////////////////////////
 // Sleep smoke
 /////////////////////////////////////////////
 

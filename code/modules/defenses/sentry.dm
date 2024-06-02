@@ -546,6 +546,45 @@
 	handheld_type = /obj/item/defenses/handheld/sentry/mini
 	composite_icon = FALSE
 
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone
+	name = "\improper UA-577 Spaceborn Gauss Turret"
+	fire_delay = 2
+	omni_directional = TRUE
+	var/battery_low = 7 MINUTES
+	var/battery_critical = 9 MINUTES
+	var/battery_dead = 10 MINUTES
+	var/battery_state = TURRET_BATTERY_STATE_OK
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/Initialize()
+	. = ..()
+	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_LOW), battery_low)
+	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_CRITICAL), battery_critical)
+	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_DEAD), battery_dead)
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/get_examine_text(mob/user)
+	. = ..()
+	switch(battery_state)
+		if(TURRET_BATTERY_STATE_LOW)
+			. += "Its battery indictor is flashing yellow."
+		if(TURRET_BATTERY_STATE_CRITICAL)
+			. += "Its battery indictor is flashing red."
+		if(TURRET_BATTERY_STATE_DEAD)
+			. += "It appears to be offline."
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/proc/set_battery_state(state)
+	battery_state = state
+	switch(state)
+		if(TURRET_BATTERY_STATE_LOW)
+			playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 15, 1)
+			visible_message(SPAN_WARNING("[name] beeps steadily as its battery is getting low."))
+		if(TURRET_BATTERY_STATE_CRITICAL)
+			playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 20, 1)
+			visible_message(SPAN_WARNING("[name] beeps steadily as its battery gets critically low."))
+		if(TURRET_BATTERY_STATE_DEAD)
+			playsound(loc, 'sound/machines/terminal_shutdown.ogg', 35, 1)
+			turned_on = FALSE
+			power_off_action()
+			update_icon()
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship

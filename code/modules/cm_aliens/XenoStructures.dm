@@ -851,18 +851,23 @@
 	icon = 'icons/obj/structures/alien/xenoDestroyerHatchery.dmi'
 	icon_state = "static"
 
-	var/timer
+	// The mob picked as a candidate to be the destroyer
 	var/mob/chosen_candidate
+
+/obj/effect/alien/resin/destroyer_cocoon/Destroy()
+	chosen_candidate = null
+
+	. = ..()
 
 /obj/effect/alien/resin/destroyer_cocoon/Initialize(mapload, pylon)
 	. = ..()
-	timer = addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/check_pylons()
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	
-	if(hive.active_endgame_pylons.len < 2)
+	if(length(hive.active_endgame_pylons) < 2)
 		qdel(src)
 	
 	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE)
@@ -870,7 +875,7 @@
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/start_growing()
 	icon_state = "growing"
-	timer = addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 9 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 9 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/roll_candidates()
 	// First, Let the Queen choose
@@ -887,7 +892,7 @@
 		if (get_job_playtime(candidate.client, JOB_XENO_ROLES) < 25 HOURS)
 			continue
 
-		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", list("Yes", "No"), 10)
+		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", list("Yes", "No"), 10 SECONDS)
 
 		if(pick == "Yes")
 			return candidate
@@ -897,20 +902,20 @@
 		if (get_job_playtime(candidate.client, JOB_XENO_ROLES) < 25 HOURS)
 			continue
 
-		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", list("Yes", "No"), 10)
+		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", list("Yes", "No"), 10 SECONDS)
 
 		if(pick == "Yes")
 			return candidate
 	
 	// Lastly all of the above again, without playtime requirements
 	for(var/mob/living/carbon/xenomorph/candidate in total_xenos_copy)
-		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", list("Yes", "No"), 10)
+		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", list("Yes", "No"), 10 SECONDS)
 
 		if(pick == "Yes")
 			return candidate
 
 	for(var/mob/candidate in GLOB.observer_list)
-		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", list("Yes", "No"), 10)
+		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", list("Yes", "No"), 10 SECONDS)
 
 		if(pick == "Yes")
 			return candidate
@@ -920,7 +925,7 @@
 /obj/effect/alien/resin/destroyer_cocoon/proc/choose_candidate()
 	chosen_candidate = roll_candidates()
 
-	timer = addtimer(CALLBACK(src, PROC_REF(animate_hatch_destroyer)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(animate_hatch_destroyer)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/animate_hatch_destroyer()
 	flick("hatching", src)
@@ -928,9 +933,9 @@
 	addtimer(CALLBACK(src, PROC_REF(hatch_destroyer)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/hatch_destroyer()
-	var/mob/living/carbon/xenomorph/destroyer/destroyer = new(locate(src.x + 2, src.y + 2, src.z))
+	var/mob/living/carbon/xenomorph/destroyer/destroyer = new(locate(x + 2, y + 2, z))
 	chosen_candidate.mind.transfer_to(destroyer, TRUE)
-	playsound(src.loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
+	playsound(src, 'sound/voice/alien_queen_command.ogg', 75, 0)
 
 	icon_state = "hatched"
 

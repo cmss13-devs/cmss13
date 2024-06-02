@@ -28,7 +28,7 @@
 /obj/effect/temp_visual/heavy_impact
 	icon = 'icons/effects/heavyimpact.dmi'
 	icon_state = "heavyimpact"
-	duration = 13
+	duration = 1.3 SECONDS
 
 /obj/effect/temp_visual/heavyimpact/Initialize(mapload)
 	. = ..()

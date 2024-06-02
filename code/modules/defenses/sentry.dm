@@ -468,7 +468,7 @@
 	fire(target)
 
 /obj/structure/machinery/defenses/sentry/premade
-	name = "UA-577 Gauss Turret"
+	name = "\improper UA-577 Gauss Turret"
 	immobile = TRUE
 	turned_on = TRUE
 	icon_state = "premade" //for the map editor only
@@ -497,14 +497,14 @@
 	return
 
 /obj/structure/machinery/defenses/sentry/premade/dumb
-	name = "Modified UA-577 Gauss Turret"
+	name = "modified UA-577 Gauss Turret"
 	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been disabled, and it will open fire on any targets within range."
 	faction_group = null
 	ammo = new /obj/item/ammo_magazine/sentry/premade/dumb
 
 //the turret inside a static sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/deployable
-	name = "UA-633 Static Gauss Turret"
+	name = "\improper UA-633 Static Gauss Turret"
 	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
@@ -527,13 +527,13 @@
 	selected_categories[SENTRY_CATEGORY_IFF] = FACTION_COLONY
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer
-	name = "UA-635C Static Gauss Turret"
+	name = "\improper UA-635C Static Gauss Turret"
 	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed and modified for UA warship use."
 	fire_delay = 0.4 SECONDS
 	omni_directional = TRUE
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini
-	name = "UA 512-S mini sentry"
+	name = "\improper UA 512-S mini sentry"
 	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M30 Autocannon and an internal belt feed and modified for UA warship use."
 	defense_type = "Mini"
 	fire_delay = 0.25 SECONDS
@@ -566,7 +566,7 @@
 
 #define SENTRY_SNIPER_RANGE 10
 /obj/structure/machinery/defenses/sentry/dmr
-	name = "UA 725-D Sniper Sentry"
+	name = "\improper UA 725-D Sniper Sentry"
 	desc = "A fully-automated defence turret with long-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
 	defense_type = "DMR"
 	health = 150
@@ -603,7 +603,7 @@
 
 #undef SENTRY_SNIPER_RANGE
 /obj/structure/machinery/defenses/sentry/shotgun
-	name = "UA 12-G Shotgun Sentry"
+	name = "\improper UA 12-G Shotgun Sentry"
 	defense_type = "Shotgun"
 	health = 250
 	health_max = 250
@@ -634,7 +634,7 @@
 				L.apply_effect(1, WEAKEN)
 
 /obj/structure/machinery/defenses/sentry/mini
-	name = "UA 512-M mini sentry"
+	name = "\improper UA 512-M mini sentry"
 	defense_type = "Mini"
 	fire_delay = 0.15 SECONDS
 	health = 150

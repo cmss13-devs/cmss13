@@ -171,9 +171,11 @@
 
 		to_chat(user, SPAN_NOTICE("You deploy [src]."))
 		deploy_sentry()
+		msg_admin_niche("[key_name(user)] deployed [turret] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
 		return
 
 	to_chat(user, SPAN_NOTICE("You retract [src]."))
+	msg_admin_niche("[key_name(user)] retracted [turret] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
 	undeploy_sentry()
 	return
 

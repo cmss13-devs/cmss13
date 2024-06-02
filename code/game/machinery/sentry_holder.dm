@@ -148,10 +148,7 @@
 	icon_state = "floor_sentry_installed" // TODO: More appropriate sprites
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone
 	base_icon_state = "floor_sentry" // TODO: More appropriate sprites
-
-/obj/structure/machinery/sentry_holder/landing_zone/Initialize()
-	. = ..()
-	deploy_sentry()
+	layer = HATCH_LAYER // Needs to not hide barricades
 
 /obj/structure/machinery/sentry_holder/landing_zone/attack_hand(mob/user)
 	var/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/turret = deployed_turret

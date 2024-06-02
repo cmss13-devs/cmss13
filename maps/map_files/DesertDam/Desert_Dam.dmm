@@ -51516,7 +51516,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
 	id = "dam_stormlock_north2";
-	name = "\improper Storm Lock"
+	name = "\improper Storm Lock";
+	unacidable = 0
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)
@@ -51545,7 +51546,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
 	id = "dam_stormlock_north2";
-	name = "\improper Storm Lock"
+	name = "\improper Storm Lock";
+	unacidable = 0
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)
@@ -51915,7 +51917,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
 	id = "dam_stormlock_north2";
-	name = "\improper Storm Lock"
+	name = "\improper Storm Lock";
+	unacidable = 0
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)
@@ -52107,7 +52110,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
 	id = "dam_stormlock_north2";
-	name = "\improper Storm Lock"
+	name = "\improper Storm Lock";
+	unacidable = 0
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)

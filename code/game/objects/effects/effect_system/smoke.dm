@@ -160,6 +160,8 @@
 	opacity = FALSE
 	alpha = 75
 	color = "#301934"
+	var/burn_damage = 4
+	var/xeno_yautja_multiplier = 3
 
 /obj/effect/particle_effect/smoke/miasma/Initialize(mapload, oldamount, new_cause_data)
 	. = ..()
@@ -176,8 +178,17 @@
 /obj/effect/particle_effect/smoke/miasma/affect(mob/living/carbon/affected_mob)
 	..()
 
-	affected_mob.apply_damage(10, TOX)
-	affected_mob.SetEyeBlind(1)
+	var/damage = burn_damage
+	if(isxeno(affected_mob))
+		damage *= xeno_yautja_multiplier
+	else if(isyautja(affected_mob))
+		if(prob(75))
+			return FALSE
+		damage *= xeno_yautja_multiplier
+
+	affected_mob.apply_damage(damage, BURN)
+	affected_mob.AdjustEyeBlur(0.75)
+
 	if(affected_mob.coughedtime < world.time && !affected_mob.stat)
 		affected_mob.coughedtime = world.time + 2 SECONDS
 		if(ishuman(affected_mob)) //Humans only to avoid issues

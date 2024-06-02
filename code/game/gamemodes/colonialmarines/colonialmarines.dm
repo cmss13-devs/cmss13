@@ -182,7 +182,7 @@
 
 ///Spawns a droppod with a temporary defense sentry at the given turf
 /datum/game_mode/colonialmarines/proc/spawn_lz_sentry(turf/target, list/structures_to_break)
-	var/obj/structure/droppod/equipment/droppod = new(target, /obj/structure/machinery/sentry_holder/landing_zone)
+	var/obj/structure/droppod/equipment/sentry_holder/droppod = new(target, /obj/structure/machinery/sentry_holder/landing_zone)
 	droppod.special_structures_to_damage = structures_to_break
 	droppod.special_structure_damage = 500
 	droppod.drop_time = 5 SECONDS

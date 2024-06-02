@@ -605,8 +605,10 @@
 	name = "Weyland-Yutani DynaGrid Nexus - Power Storage Room"
 /area/lv759/outdoors/power_plant/transformers_north
 	name = "Weyland-Yutani DynaGrid Nexus - Transformers - North"
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 /area/lv759/outdoors/power_plant/transformers_south
 	name = "Weyland-Yutani DynaGrid Nexus - Transformers - South"
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 /area/lv759/indoors/power_plant/transformers_north
 	name = "Weyland-Yutani DynaGrid Nexus - Transformers - North"
 /area/lv759/indoors/power_plant/transformers_south

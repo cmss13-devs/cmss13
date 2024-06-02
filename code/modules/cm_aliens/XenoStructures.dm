@@ -847,9 +847,9 @@
 /obj/effect/alien/resin/destroyer_cocoon
 	name = "alien cocoon"
 	desc = "A large pulsating cocoon."
-	health = 3600
 	icon = 'icons/obj/structures/alien/xenoDestroyerHatchery.dmi'
 	icon_state = "static"
+	health = 3600
 
 	// The mob picked as a candidate to be the destroyer
 	var/mob/chosen_candidate

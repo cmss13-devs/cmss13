@@ -24,12 +24,12 @@
 	H.bloody_footsteps = steps_to_take
 	LAZYADD(entered_bloody_turf, target)
 
-	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
-	RegisterSignal(target, COMSIG_HUMAN_BLOOD_CROSSED, PROC_REF(blood_crossed))
-	RegisterSignal(target, COMSIG_HUMAN_CLEAR_BLOODY_FEET, PROC_REF(clear_blood))
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved), override = TRUE)
+	RegisterSignal(target, COMSIG_HUMAN_BLOOD_CROSSED, PROC_REF(blood_crossed), override = TRUE)
+	RegisterSignal(target, COMSIG_HUMAN_CLEAR_BLOODY_FEET, PROC_REF(clear_blood), override = TRUE)
 	if(shoes)
 		LAZYSET(target_shoes, target, shoes)
-		RegisterSignal(shoes, COMSIG_ITEM_DROPPED, PROC_REF(on_shoes_removed))
+		RegisterSignal(shoes, COMSIG_ITEM_DROPPED, PROC_REF(on_shoes_removed), override = TRUE)
 
 	if(dry_time)
 		addtimer(CALLBACK(src, PROC_REF(clear_blood), target), dry_time)

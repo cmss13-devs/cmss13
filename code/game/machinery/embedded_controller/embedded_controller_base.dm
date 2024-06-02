@@ -2,7 +2,7 @@
 	var/datum/computer/file/embedded_program/program //the currently executing program
 
 	name = "Embedded Controller"
-	anchored = 1
+	anchored = TRUE
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
@@ -54,6 +54,11 @@
 	. = ..()
 	set_frequency(frequency)
 
+/obj/structure/machinery/embedded_controller/radio/Destroy()
+	SSradio.remove_object(src, frequency)
+	radio_connection = null
+	return ..()
+
 /obj/structure/machinery/embedded_controller/radio/update_icon()
 	if(on && program)
 		if(program.memory["processing"])
@@ -63,7 +68,7 @@
 	else
 		icon_state = "airlock_control_off"
 
-/obj/structure/machinery/embedded_controller/radio/post_signal(datum/signal/signal, var/filter = null)
+/obj/structure/machinery/embedded_controller/radio/post_signal(datum/signal/signal, filter = null)
 	signal.transmission_method = TRANSMISSION_RADIO
 	if(radio_connection)
 		//use_power(radio_power_use) //neat idea, but causes way too much lag.

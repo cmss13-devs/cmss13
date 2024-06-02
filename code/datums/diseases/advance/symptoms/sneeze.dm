@@ -3,7 +3,7 @@
 
 Sneezing
 
-	Very Noticable.
+	Very Noticeable.
 	Increases resistance.
 	Doesn't increase stage speed.
 	Very transmittable.
@@ -25,7 +25,7 @@ Bonus
 	transmittable = 4
 	level = 1
 
-/datum/symptom/sneeze/Activate(var/datum/disease/advance/A)
+/datum/symptom/sneeze/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/M = A.affected_mob

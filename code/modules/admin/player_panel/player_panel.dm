@@ -63,7 +63,7 @@
 					body += "<a href='?src=\ref[src];[HrefToken()];adminplayeropts="+ref+"'>PP</a> - "
 					body += "<a href='?src=\ref[src];[HrefToken()];playerpanelextended="+ref+"'>PPE</a> - "
 					body += "<a href='?src=\ref[src];[HrefToken()];notes=show;mob="+ref+"'>N</a> - "
-					body += "<a href='?_src_=vars;Vars="+ref+"'>VV</a> - "
+					body += "<a href='?_src_=vars;[HrefToken(forceGlobal = TRUE)];Vars="+ref+"'>VV</a> - "
 					body += "<a href='?src=\ref[src];[HrefToken()];traitor="+ref+"'>TP</a> - "
 					body += "<a href='?src=\ref[usr];priv_msg="+key+"'>PM</a> - "
 					body += "<a href='?src=\ref[src];[HrefToken()];subtlemessage="+ref+"'>SM</a> - "
@@ -188,6 +188,8 @@
 	for(var/mob/M in mobs)
 		if(!M.ckey)
 			continue
+		if(!CLIENT_HAS_RIGHTS(usr.client, R_STEALTH) && (M.client && (CLIENT_IS_STEALTHED(M.client))))
+			continue
 
 		var/color = i % 2 == 0 ? "#6289b7" : "#48709d"
 
@@ -199,17 +201,12 @@
 					M_job = M.job
 				else if(ismonkey(M))
 					M_job = "Monkey"
-				else if(isXeno(M))
+				else if(isxeno(M))
 					M_job = "Alien"
 				else
 					M_job = "Carbon-based"
 			else if(isSilicon(M)) //silicon
-				if(isAI(M))
-					M_job = "AI"
-				else if(isrobot(M))
-					M_job = "Cyborg"
-				else
-					M_job = "Silicon-based"
+				M_job = "Silicon-based"
 			else if(isanimal(M)) //simple animals
 				if(iscorgi(M))
 					M_job = "Corgi"
@@ -219,6 +216,8 @@
 				M_job = "Living"
 		else if(istype(M,/mob/new_player))
 			M_job = "New player"
+		else if(istype(M,/mob/camera/imaginary_friend))
+			M_job = "Imaginary Friend"
 		else if(isobserver(M))
 			M_job = "Ghost"
 
@@ -288,10 +287,8 @@
 
 		dat += "<tr><td>[(M.client ? "[M.client]" : "No client")]</td>"
 		dat += "<td><a href='?src=\ref[usr];priv_msg=[M.ckey]'>[M.name]</a></td>"
-		if(isAI(M))
+		if(isSilicon(M))
 			dat += "<td>AI</td>"
-		else if(isrobot(M))
-			dat += "<td>Cyborg</td>"
 		else if(ishuman(M))
 			dat += "<td>[M.real_name]</td>"
 		else if(istype(M, /mob/new_player))
@@ -300,7 +297,7 @@
 			dat += "<td>Ghost</td>"
 		else if(ismonkey(M))
 			dat += "<td>Monkey</td>"
-		else if(isXeno(M))
+		else if(isxeno(M))
 			dat += "<td>Alien</td>"
 		else
 			dat += "<td>Unknown</td>"
@@ -326,7 +323,7 @@
 
 	var/dat = "<html><body><h1><B>Antagonists</B></h1>"
 	dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
-	dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
+	dat += "Round Duration: <B>[floor(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
 
 	if(length(GLOB.other_factions_human_list))
 		dat += "<br><table cellspacing=5><tr><td><B>Other human factions</B></td><td></td><td></td></tr>"
@@ -384,38 +381,24 @@
 	if (SSticker.current_state >= GAME_STATE_PLAYING)
 		var/dat = "<html><body><h1><B>Round Status</B></h1>"
 		dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
-		dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
+		dat += "Round Duration: <B>[floor(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
 
 		if(check_rights(R_DEBUG, 0))
-			dat += "<br><A HREF='?_src_=vars;Vars=\ref[EvacuationAuthority]'>VV Evacuation Controller</A><br>"
-			dat += "<A HREF='?_src_=vars;Vars=\ref[shuttle_controller]'>VV Shuttle Controller</A><br><br>"
+			dat += "<A HREF='?_src_=vars;Vars=\ref[SSoldshuttle.shuttle_controller]'>VV Shuttle Controller</A><br><br>"
 
 		if(check_rights(R_MOD, 0))
-			dat += "<b>Evacuation:</b> "
-			switch(EvacuationAuthority.evac_status)
-				if(EVACUATION_STATUS_STANDING_BY) dat += "STANDING BY"
-				if(EVACUATION_STATUS_INITIATING) dat += "IN PROGRESS: [EvacuationAuthority.get_status_panel_eta()]"
-				if(EVACUATION_STATUS_COMPLETE) dat += "COMPLETE"
+			dat += "<b>Evacuation Goals:</b> "
+			switch(SShijack.evac_status)
+				if(EVACUATION_STATUS_NOT_INITIATED)
+					dat += "STANDING BY"
+				if(EVACUATION_STATUS_INITIATED)
+					dat += "IN PROGRESS"
 			dat += "<br>"
 
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
 			if(check_rights(R_ADMIN, 0)) dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
-
-		if(check_rights(R_ADMIN, 0))
-			dat += "<b>Self-Destruct:</b> "
-			switch(EvacuationAuthority.dest_status)
-				if(NUKE_EXPLOSION_INACTIVE) dat += "INACTIVE"
-				if(NUKE_EXPLOSION_ACTIVE) dat += "ACTIVE"
-				if(NUKE_EXPLOSION_IN_PROGRESS) dat += "IN PROGRESS"
-				if(NUKE_EXPLOSION_FINISHED, NUKE_EXPLOSION_GROUND_FINISHED) dat += "FINISHED"
-			dat += "<br>"
-
-			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_dest'>Unlock Self-Destruct control panel for humans</a><br>"
-			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_dest'>Lock Self-Destruct control panel for humans</A><br>"
-			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=use_dest'>Destruct the [MAIN_SHIP_NAME] NOW</A><br>"
-			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_dest'>Toggle Self-Destruct Permission (does not affect evac in progress)</A><br>"
 
 		dat += "<br><A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</A><br>"
 		dat += "</body></html>"
@@ -459,7 +442,7 @@
 /datum/player_panel
 	var/mob/targetMob
 
-/datum/player_panel/New(var/mob/target)
+/datum/player_panel/New(mob/target)
 	. = ..()
 	targetMob = target
 
@@ -486,8 +469,13 @@
 	. = list()
 	.["mob_name"] = targetMob.name
 
-	.["mob_sleeping"] = targetMob.sleeping
-	.["mob_frozen"] = targetMob.frozen
+	if(istype(targetMob, /mob/living))
+		var/mob/living/livingTarget = targetMob
+		.["mob_sleeping"] = livingTarget.sleeping
+	else
+		.["mob_sleeping"] = 0
+
+	.["mob_frozen"] = HAS_TRAIT_FROM(targetMob, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ADMIN)
 
 	.["mob_speed"] = targetMob.speed
 	.["mob_status_flags"] = targetMob.status_flags
@@ -505,6 +493,8 @@
 		.["client_ckey"] = targetClient.ckey
 
 		.["client_muted"] = targetClient.prefs.muted
+		.["client_age"] = targetClient.player_data.byond_account_age
+		.["first_join"] = targetClient.player_data.first_join_date
 		.["client_rank"] = targetClient.admin_holder ? targetClient.admin_holder.rank : "Player"
 		.["client_muted"] = targetClient.prefs.muted
 
@@ -562,7 +552,7 @@ GLOBAL_LIST_INIT(pp_status_flags, list(
 	.["mob_type"] = targetMob.type
 
 	.["is_human"] = ishuman(targetMob)
-	.["is_xeno"] = isXeno(targetMob)
+	.["is_xeno"] = isxeno(targetMob)
 
 	.["glob_status_flags"] = GLOB.pp_status_flags
 	.["glob_limbs"] = GLOB.pp_limbs
@@ -589,7 +579,7 @@ GLOBAL_LIST_INIT(pp_status_flags, list(
 
 	return P.act(clUser, targetMob, params)
 
-/datum/admins/proc/show_player_panel(var/mob/M in GLOB.mob_list)
+/datum/admins/proc/show_player_panel(mob/M in GLOB.mob_list)
 	set name = "Show Player Panel"
 	set desc = "Edit player (respawn, ban, heal, etc)"
 	set category = null

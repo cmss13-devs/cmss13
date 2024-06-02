@@ -7,7 +7,7 @@
 	icon_state = "implantchair"
 	density = TRUE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 
 	var/ready = 1
 	var/malfunction = 0
@@ -69,7 +69,7 @@
 		src.add_fingerprint(usr)
 		return
 
-/obj/structure/machinery/implantchair/attackby(var/obj/item/I, var/mob/user as mob)
+/obj/structure/machinery/implantchair/attackby(obj/item/I, mob/user as mob)
 	if(istype(I, /obj/item/grab))
 		var/obj/item/grab/G = I
 		if(ismob(G.grabbed_thing))
@@ -79,7 +79,7 @@
 	return
 
 
-/obj/structure/machinery/implantchair/proc/go_out(var/mob/M)
+/obj/structure/machinery/implantchair/proc/go_out(mob/M)
 	if(!( src.occupant ))
 		return
 	if(M == occupant) // so that the guy inside can't eject himself -Agouri
@@ -110,7 +110,7 @@
 	return 1
 
 
-/obj/structure/machinery/implantchair/proc/implant(var/mob/M)
+/obj/structure/machinery/implantchair/proc/implant(mob/M)
 	if (!istype(M, /mob/living/carbon))
 		return
 	if(!implant_list.len) return

@@ -31,7 +31,7 @@ $dark: #000011;
   .Button.ConfirmButton {
     animation: blueConfirmFlicker 5s infinite;
     &:hover {
-      animation:none;
+      animation: none;
     }
   }
 }

@@ -75,10 +75,11 @@
 	GLOB.cable_list += src
 
 /obj/structure/cable/Destroy()
+	breaker_box = null
 	GLOB.cable_list -= src
 	return ..()
 
-/obj/structure/cable/hide(var/i)
+/obj/structure/cable/hide(i)
 
 	if(level == 1 && istype(loc, /turf))
 		invisibility = i ? 101 : 0
@@ -121,7 +122,7 @@
 		for(var/mob/O in viewers(src, null))
 			O.show_message(SPAN_WARNING("[user] cuts the cable."), SHOW_MESSAGE_VISIBLE)
 		// wires are irrelevant so I have disabled this message for now
-		//message_staff("[key_name(user)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[user]'>?</A>) cut a wire at ([x],[y],[z]) - <A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>")
+		//message_admins("[key_name(user)] cut a wire at ([x],[y],[z]) [ADMIN_JMP(src)]")
 
 		return // not needed, but for clarity
 
@@ -138,7 +139,7 @@
 
 // shock the user with probability prb
 
-/obj/structure/cable/proc/shock(mob/user, prb, var/siemens_coeff = 1.0)
+/obj/structure/cable/proc/shock(mob/user, prb, siemens_coeff = 1.0)
 	if(!prob(prb))
 		return 0
 	if (electrocute_mob(user, powernet, src, siemens_coeff))
@@ -177,7 +178,7 @@
 		new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
 	return ..()
 
-/obj/structure/cable/proc/cableColor(var/colorC)
+/obj/structure/cable/proc/cableColor(colorC)
 	if(colorC)
 		color = colorC
 	else

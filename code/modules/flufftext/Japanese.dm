@@ -24,7 +24,7 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 	var/null_initial
 	var/null_final_syllable
 
-/datum/japanese_syllable/proc/randomly_generate_japanese_syllable(var/initial_geminable = TRUE, var/nucleus_geminable = TRUE, var/no_null_initial = FALSE)
+/datum/japanese_syllable/proc/randomly_generate_japanese_syllable(initial_geminable = TRUE, nucleus_geminable = TRUE, no_null_initial = FALSE)
 	var/syllable
 	var/IN = (pick(subtypesof(/datum/japanese_sound/initial/))) //assign a random consonant and vowel
 	var/NU = (pick(subtypesof(/datum/japanese_sound/nucleus/)))
@@ -66,7 +66,7 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 	QDEL_NULL(initial)
 	QDEL_NULL(nucleus)
 
-/proc/randomly_generate_japanese_word(var/syllables = pick(30;1, 35;2, 20;3, 10;4, 5;5)) //default has args which don't make obnoxiously massive words
+/proc/randomly_generate_japanese_word(syllables = pick(30;1, 35;2, 20;3, 10;4, 5;5)) //default has args which don't make obnoxiously massive words
 	var/datum/japanese_syllable/J = new /datum/japanese_syllable
 	if(syllables == 1) //only one syllable, no need for a loop
 		J.randomly_generate_japanese_syllable(FALSE) //word-initial syllables cannot be geminated
@@ -114,7 +114,7 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 	var/geminated_affricated_form //self explanatory
 	var/forced_to_palatalise = FALSE //if it HAS to palatalise before an I. Applies to t, d, s and z. This lets it bypass anti-palatalise rules on I but not e.
 
-/datum/japanese_sound/initial/proc/palatalise(var/datum/japanese_sound/nucleus/nucleus)
+/datum/japanese_sound/initial/proc/palatalise(datum/japanese_sound/nucleus/nucleus)
 	if(forced_to_palatalise && nucleus.forces_palatalisation) //is the sound forced to palatalise and is the nucleus i? then palatalise
 		if(geminated) //we have to have the check above so that we get "chi" but not "che"
 			sound = palatalised_geminated_form
@@ -133,7 +133,7 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 		sound = palatalised_form
 		return
 
-/datum/japanese_sound/initial/proc/affricate(var/datum/japanese_sound/nucleus/nucleus)
+/datum/japanese_sound/initial/proc/affricate(datum/japanese_sound/nucleus/nucleus)
 	if(affricated_form && nucleus.causes_affrication)
 		if(geminated)
 			sound = geminated_affricated_form

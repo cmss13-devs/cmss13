@@ -8,7 +8,7 @@
 	var/serial_number = 0
 
 
-/obj/item/poster/New(turf/loc, var/given_serial = 0)
+/obj/item/poster/New(turf/loc, given_serial = 0)
 	if(given_serial == 0)
 		serial_number = rand(1, GLOB.poster_designs.len)
 	else
@@ -22,12 +22,12 @@
 	name = "poster"
 	desc = "A large piece of cheap printed paper."
 	icon = 'icons/obj/structures/props/posters.dmi'
-	anchored = 1
+	anchored = TRUE
 	var/serial_number //determines the design of the poster
 	var/ruined = 0
 
 
-/obj/structure/sign/poster/Initialize(mapload, var/serial)
+/obj/structure/sign/poster/Initialize(mapload, serial)
 	. = ..()
 	if(serial)
 		serial_number = serial
@@ -78,7 +78,7 @@
 
 
 //separated to reduce code duplication. Moved here for ease of reference and to unclutter r_wall/attackby()
-/turf/closed/wall/proc/place_poster(var/obj/item/poster/P, var/mob/user)
+/turf/closed/wall/proc/place_poster(obj/item/poster/P, mob/user)
 
 	if(!istype(src,/turf/closed/wall))
 		to_chat(user, SPAN_DANGER("You can't place this here!"))
@@ -160,14 +160,14 @@
 	icon_state = "poster3"
 
 /obj/structure/sign/poster/music/Initialize()
-	serial_number = pick(3,5,25,26,29,38,39)
+	serial_number = pick(3,5,25,26,38,39)
 	.=..()
 
 /obj/structure/sign/poster/pinup
 	icon_state = "poster12"
 
 /obj/structure/sign/poster/pinup/Initialize()
-	serial_number = pick(12,16,17)
+	serial_number = pick(12,16,17,29)
 	.=..()
 
 /obj/structure/sign/poster/propaganda
@@ -184,6 +184,12 @@
 	serial_number = pick(27,28,30,31)
 	.=..()
 
+/obj/structure/sign/poster/io
+	icon_state = "poster14"
+
+/obj/structure/sign/poster/io/Initialize()
+	serial_number = 14
+	. = ..()
 ////////////////
 //Hero Posters//
 ////////////////

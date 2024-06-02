@@ -3,7 +3,7 @@
 	desc = "Someone should clean that up."
 	gender = PLURAL
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = TURF_LAYER
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "shards"
@@ -14,7 +14,7 @@
 	gender = PLURAL
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "ash"
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/decal/cleanable/ash/attack_hand(mob/user as mob)
 	to_chat(user, SPAN_NOTICE("[src] sifts through your fingers."))
@@ -25,18 +25,24 @@
 	desc = "Someone should clean that up."
 	gender = PLURAL
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = TURF_LAYER
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "dirt"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/obj/effect/decal/cleanable/dirt/greenglow
+	name = "glowing goo"
+	acid_damage = 1
+	icon_state = "greenglow"
+	light_range = 1
+	light_color = COLOR_LIGHT_GREEN
 /obj/effect/decal/cleanable/flour
 	name = "flour"
 	desc = "It's still good. Four second rule!"
 	gender = PLURAL
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = TURF_LAYER
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "flour"
@@ -46,9 +52,10 @@
 	desc = "Jeez. I hope that's not for lunch."
 	gender = PLURAL
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = TURF_LAYER
-	luminosity = 1
+	light_range = 1
+	light_color = COLOR_LIGHT_GREEN
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenglow"
 
@@ -58,15 +65,11 @@
 	. = ..()
 	QDEL_IN(WEAKREF(src), 2 MINUTES)
 
-/obj/effect/decal/cleanable/greenglow/Destroy()
-	SetLuminosity(0)
-	return ..()
-
 /obj/effect/decal/cleanable/cobweb
 	name = "cobweb"
 	desc = "Somebody should remove that."
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = FLY_LAYER
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "cobweb1"
@@ -75,8 +78,9 @@
 	name = "gooey grey mass"
 	desc = "It looks like a melted... something."
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = OBJ_LAYER
+	gender = PLURAL
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "molten"
 
@@ -84,7 +88,7 @@
 	name = "cobweb"
 	desc = "Somebody should remove that."
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = OBJ_LAYER
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "cobweb2"
@@ -95,7 +99,7 @@
 	appearance_flags = RESET_ALPHA | TILE_BOUND | PIXEL_SCALE
 	garbage = FALSE
 /obj/effect/decal/cleanable/cobweb2/dynamic/Initialize(mapload, targetdir, webscale = 1.0)
-	alpha += round(webscale * 120)
+	alpha += floor(webscale * 120)
 	var/angle = dir2angle(targetdir)
 	var/matrix/TM = new
 	TM *= webscale
@@ -111,7 +115,7 @@
 	desc = "Gosh, how unpleasant."
 	gender = PLURAL
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = TURF_LAYER
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "vomit_1"
@@ -125,7 +129,7 @@
 	name = "tomato smudge"
 	desc = "It's red."
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = TURF_LAYER
 	icon = 'icons/effects/effects.dmi'
 	random_icon_states = list("tomato_floor1", "tomato_floor2", "tomato_floor3")
@@ -134,7 +138,7 @@
 	name = "smashed egg"
 	desc = "Seems like this one won't hatch."
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = TURF_LAYER
 	icon = 'icons/effects/effects.dmi'
 	random_icon_states = list("smashed_egg1", "smashed_egg2", "smashed_egg3")
@@ -143,7 +147,7 @@
 	name = "smashed pie"
 	desc = "It's pie cream from a cream pie."
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = TURF_LAYER
 	icon = 'icons/effects/effects.dmi'
 	random_icon_states = list("smashed_pie")
@@ -158,7 +162,7 @@
 /obj/effect/decal/cleanable/blackgoo/Crossed(mob/living/carbon/human/H)
 	if(!istype(H)) return
 	if(H.species.name == "Human")
-		if(!H.shoes || prob(25))
+		if(!H.shoes && prob(50))
 			H.contract_disease(new /datum/disease/black_goo)
 
 
@@ -169,7 +173,7 @@
 	desc = "Disgusting mucus."
 	gender = PLURAL
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = TURF_LAYER
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "mucus"

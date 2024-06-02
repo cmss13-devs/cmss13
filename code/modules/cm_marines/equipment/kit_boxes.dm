@@ -69,6 +69,26 @@
 	// spotter
 	new /obj/item/storage/box/kit/spotter(src)
 
+/obj/item/storage/box/spec/sniper/anti_materiel/fill_preset_inventory()
+	name = "\improper AMR equipment case"
+	desc = "A large case containing an experimental XM43E1, a set of M45 ghillie armor and helmet, an M42 scout sight, ammunition, a set of spotter gear, and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	new /obj/item/clothing/suit/storage/marine/ghillie(src)
+	new /obj/item/clothing/head/helmet/marine/ghillie(src)
+	new /obj/item/clothing/glasses/night/m42_night_goggles(src)
+	new /obj/item/weapon/gun/rifle/sniper/XM43E1(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/storage/backpack/marine/smock(src)
+	new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/facepaint/sniper(src)
+	// spotter
+	new /obj/item/storage/box/kit/spotter(src)
+
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment case"
 	desc = "A large case containing an M4RA battle rifle, M3-S light armor and helmet, M4RA battle sight, M68 thermal cloak, V3 reactive thermal tarp, improved scout laser designator, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
@@ -78,18 +98,18 @@
 	new /obj/item/clothing/suit/storage/marine/M3S(src)
 	new /obj/item/clothing/head/helmet/marine/scout(src)
 	new /obj/item/clothing/glasses/night/M4RA(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/incendiary(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/incendiary(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
-	new /obj/item/weapon/gun/rifle/m4ra(src)
+	new /obj/item/weapon/gun/rifle/m4ra_custom(src)
 	new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
 	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
@@ -180,11 +200,21 @@
 	icon_state = "spec_kit"
 	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_CREWMAN)
 
+	///Used for cryo specs who already have "foxtrot" appended to their ID assignments
+	var/squad_assignment_update = TRUE
+
 //this one is delivered via ASRS as a reward for DEFCON/techwebs/whatever else we will have
-/obj/item/spec_kit/asrs
+/obj/item/spec_kit/rifleman
+	squad_assignment_update = FALSE
 	allowed_roles_list = list(JOB_SQUAD_MARINE, JOB_WO_SQUAD_MARINE)
 
-/obj/item/spec_kit/get_examine_text(var/mob/user)
+/obj/item/spec_kit/rifleman/jobless
+	allowed_roles_list = list()
+
+/obj/item/spec_kit/cryo
+	squad_assignment_update = FALSE
+
+/obj/item/spec_kit/get_examine_text(mob/user)
 	. = ..()
 	if(!ishuman(user) && !isobserver(user))
 		return
@@ -200,7 +230,7 @@
 		allowed_roles = SPAN_HELPFUL("anyone")
 	. += SPAN_INFO("This [name] can be used by [allowed_roles] if they didn't use one of these yet.")
 
-/obj/item/spec_kit/attack_self(var/mob/living/carbon/human/user)
+/obj/item/spec_kit/attack_self(mob/living/carbon/human/user)
 	..()
 	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You can't use \the [src]!"))
@@ -214,25 +244,36 @@
 		to_chat(user, SPAN_WARNING("You can't use this [name]!"))
 	return
 
-/obj/item/spec_kit/proc/can_use(var/mob/living/carbon/human/user)
+/obj/item/spec_kit/proc/can_use(mob/living/carbon/human/user)
 	if(!length(allowed_roles_list))
 		return TRUE
 
 	for(var/allowed_role in allowed_roles_list)
 		if(user.job == allowed_role)
-			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
+				return FALSE
+			return TRUE
+
+/obj/item/spec_kit/rifleman/can_use(mob/living/carbon/human/user)
+	if(!length(allowed_roles_list))
+		return TRUE
+
+	for(var/allowed_role in allowed_roles_list)
+		if(user.job == allowed_role)//Alternate check to normal kit as this is distributed to people without SKILL_SPEC_TRAINED.
+			if(skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_KITTED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
 				return FALSE
 			return TRUE
 
 /obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
-	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", available_specialist_kit_boxes)
+	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", GLOB.available_specialist_kit_boxes)
 	if(!selection || QDELETED(src))
 		return FALSE
-	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 		to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
 		return
-	if(!available_specialist_kit_boxes[selection] || available_specialist_kit_boxes[selection] <= 0)
+	if(!GLOB.available_specialist_kit_boxes[selection] || GLOB.available_specialist_kit_boxes[selection] <= 0)
 		to_chat(user, SPAN_WARNING("No more kits of this type may be chosen!"))
 		return FALSE
 	var/obj/item/card/id/ID = user.wear_id
@@ -255,6 +296,10 @@
 			spec_box = new /obj/item/storage/box/spec/sniper(T)
 			specialist_assignment = "Sniper"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
+		if("Anti-materiel Sniper")
+			spec_box = new /obj/item/storage/box/spec/sniper/anti_materiel(T)
+			specialist_assignment = "Heavy Sniper"
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
 		if("Scout")
 			spec_box = new /obj/item/storage/box/spec/scout(T)
 			specialist_assignment = "Scout"
@@ -271,7 +316,7 @@
 				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
 	if(specialist_assignment)
 		user.put_in_hands(spec_box)
-		ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")
+		ID.set_assignment((user.assigned_squad && squad_assignment_update ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")
 		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
 		return TRUE
 	return FALSE
@@ -312,12 +357,12 @@
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	foldable = TRUE
+	ground_offset_x = 5
+	ground_offset_y = 5
 	var/pro_case_overlay
 
 /obj/item/storage/box/kit/Initialize()
 	. = ..()
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
 	if(pro_case_overlay)
 		overlays += image('icons/obj/items/storage.dmi', "+[pro_case_overlay]")
 
@@ -393,17 +438,28 @@
 
 
 /obj/item/storage/box/kit/mini_sniper
-	name = "\improper L42A Sniper Kit"
+	name = "\improper M4RA Marksman Kit"
 	pro_case_overlay = "sniper"
 
 /obj/item/storage/box/kit/mini_sniper/fill_preset_inventory()
-	new /obj/item/weapon/gun/rifle/l42a(src)
+	new /obj/item/weapon/gun/rifle/m4ra(src)
 	new /obj/item/attachable/scope(src)
 	new /obj/item/attachable/suppressor(src)
 	new /obj/item/attachable/extended_barrel(src)
-	new /obj/item/ammo_magazine/rifle/l42a/ap(src)
-	new /obj/item/ammo_magazine/rifle/l42a/ap(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
 
+/obj/item/storage/box/kit/m41a_kit
+	name = "\improper M41A Rifle Kit"
+	pro_case_overlay = "pursuit"
+
+/obj/item/storage/box/kit/m41a_kit/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m41a(src)
+	new /obj/item/attachable/angledgrip(src)
+	new /obj/item/attachable/suppressor(src)
+	new /obj/item/attachable/extended_barrel(src)
+	new /obj/item/ammo_magazine/rifle/ap(src)
+	new /obj/item/ammo_magazine/rifle/ap(src)
 
 /obj/item/storage/box/kit/heavy_support
 	name = "\improper Forward HPR Shield Kit"
@@ -456,7 +512,7 @@
 	new /obj/item/pamphlet/skill/medical(src)
 	new /obj/item/storage/pouch/first_responder/full(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
-	new /obj/item/clothing/glasses/hud/sensor(src)
+	new /obj/item/device/helmet_visor/medical(src)
 	new /obj/item/roller(src)
 
 
@@ -471,8 +527,6 @@
 	new /obj/item/storage/box/m94/signal(src)
 	new /obj/item/device/binoculars/range/designator(src)
 	new /obj/item/device/encryptionkey/jtac(src)
-	new /obj/item/storage/backpack/marine/satchel/rto/small(src)
-
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"
@@ -512,7 +566,7 @@
 	name = "\improper Cryo Self Defense Kit"
 	desc = "A basic self-defense kit reserved for emergencies. As you might expect, not much care was put into keeping the stock fresh, who would be insane enough to attack a USCM ship directly?"
 	icon_state = "cryo_defense_kit"
-	storage_slots = 2
+	storage_slots = 4
 
 /obj/item/storage/box/kit/cryo_self_defense/update_icon()
 	if(LAZYLEN(contents))
@@ -523,6 +577,7 @@
 /obj/item/storage/box/kit/cryo_self_defense/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/mod88/flashlight(src)
 	new /obj/item/attachable/bayonet(src)
+	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender"))
 
 /obj/item/storage/box/kit/exp_trooper

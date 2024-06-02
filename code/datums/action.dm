@@ -11,15 +11,17 @@
 	var/cost = 0 // By default an action has no cost -> will be utilized by skill actions/xeno actions
 	var/action_flags = 0 // Check out __game.dm for flags
 	/// Whether the action is hidden from its owner
-	/// Useful for when you want to preserve action state while preventing
-	/// a mob from using said action
-	var/hidden = FALSE
+	var/hidden = FALSE //Preserve action state while preventing mob from using action
+	///Hide the action from the owner without preventing them from using it (incase of keybind listen_signal)
+	var/player_hidden = FALSE
 	var/unique = TRUE
+	/// A signal on the mob that will cause the action to activate
+	var/listen_signal
 
 /datum/action/New(Target, override_icon_state)
 	target = Target
 	button = new
-	if(target)
+	if(target && isatom(target))
 		var/image/IMG = image(target.icon, button, target.icon_state)
 		IMG.pixel_x = 0
 		IMG.pixel_y = 0
@@ -42,6 +44,12 @@
 
 /datum/action/proc/action_activate()
 	return
+
+/// handler for when a keybind signal is received by the action, calls the action_activate proc asynchronous
+/datum/action/proc/keybind_activation()
+	SIGNAL_HANDLER
+	if(can_use_action())
+		INVOKE_ASYNC(src, PROC_REF(action_activate))
 
 /datum/action/proc/can_use_action()
 	if(hidden)
@@ -88,12 +96,14 @@
 		remove_from(owner)
 	SEND_SIGNAL(src, COMSIG_ACTION_GIVEN, L)
 	L.handle_add_action(src)
+	if(listen_signal)
+		RegisterSignal(L, listen_signal, PROC_REF(keybind_activation))
 	owner = L
 
-/mob/proc/handle_add_action(var/datum/action/action)
+/mob/proc/handle_add_action(datum/action/action)
 	LAZYADD(actions, action)
 	if(client)
-		client.screen += action.button
+		client.add_to_screen(action.button)
 	update_action_buttons()
 
 /proc/remove_action(mob/L, action_path)
@@ -109,13 +119,13 @@
 	L.handle_remove_action(src)
 	owner = null
 
-/mob/proc/handle_remove_action(var/datum/action/action)
+/mob/proc/handle_remove_action(datum/action/action)
 	actions?.Remove(action)
 	if(client)
-		client.screen -= action.button
+		client.remove_from_screen(action.button)
 	update_action_buttons()
 
-/mob/living/carbon/human/handle_remove_action(var/datum/action/action)
+/mob/living/carbon/human/handle_remove_action(datum/action/action)
 	if(selected_ability == action)
 		action.action_activate()
 	return ..()
@@ -177,7 +187,11 @@
 		I.ui_action_click(owner, holder_item)
 
 /datum/action/item_action/can_use_action()
-	if(ishuman(owner) && !owner.is_mob_incapacitated() && !owner.lying)
+	if(ishuman(owner) && !owner.is_mob_incapacitated())
+		var/mob/living/carbon/human/human = owner
+		if(human.body_position == STANDING_UP)
+			return TRUE
+	if((HAS_TRAIT(owner, TRAIT_OPPOSABLE_THUMBS)) && !owner.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/item_action/update_button_icon()
@@ -209,13 +223,13 @@
 		for(var/datum/action/A in actions)
 			A.button.screen_loc = null
 			if(reload_screen)
-				client.screen += A.button
+				client.add_to_screen(A.button)
 	else
 		for(var/datum/action/A in actions)
 			var/atom/movable/screen/action_button/B = A.button
 			if(reload_screen)
-				client.screen += B
-			if(A.hidden)
+				client.add_to_screen(B)
+			if(A.hidden || A.player_hidden)
 				B.screen_loc = null
 				continue
 			button_number++
@@ -224,11 +238,11 @@
 		if(!button_number)
 			hud_used.hide_actions_toggle.screen_loc = null
 			if(reload_screen)
-				client.screen += hud_used.hide_actions_toggle
+				client.add_to_screen(hud_used.hide_actions_toggle)
 			return
 
 	hud_used.hide_actions_toggle.screen_loc = hud_used.hide_actions_toggle.get_button_screen_loc(button_number+1)
 
 	if(reload_screen)
-		client.screen += hud_used.hide_actions_toggle
+		client.add_to_screen(hud_used.hide_actions_toggle)
 

@@ -4,8 +4,8 @@
 
 
 /datum/keybinding/client/admin_help
-	hotkey_keys = list("F1")
-	classic_keys = list("F1")
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "admin_help"
 	full_name = "Admin Help"
 	description = "Ask an admin for help."
@@ -21,7 +21,7 @@
 
 /datum/keybinding/client/screenshot
 	hotkey_keys = list("F2")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "screenshot"
 	full_name = "Screenshot"
 	description = "Take a screenshot."

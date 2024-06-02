@@ -14,7 +14,7 @@
 ///How likely the syllable is not to have a consonant at the start, needs to be kinda high
 #define CHINESE_SOUND_ZERO_INITIAL_CHANCE 15
 
-/proc/randomly_generate_chinese_word(var/syllables = pick(60;1, 35;2, 5;3))
+/proc/randomly_generate_chinese_word(syllables = pick(60;1, 35;2, 5;3))
 	var/datum/chinese_syllable/C = new /datum/chinese_syllable
 	if(syllables == 1) //only one syllable, no need for a loop
 		C.randomly_generate_chinese_syllable()
@@ -62,12 +62,12 @@
 		//remove complex/simple -u- glide final_syllables
 		if(initial.initial_sound_flags & SIMPLE_U_ONLY)
 			for(var/datum/chinese_sound/final_syllable/final_syllable as anything in possible_final_syllables)
-				if(initial(initial(final_syllable.vowel_class)) == VOWEL_CLASS_BACK_CLOSE)
+				if(initial(final_syllable.vowel_class) == VOWEL_CLASS_BACK_CLOSE)
 					possible_final_syllables -= final_syllable
 			possible_final_syllables += /datum/chinese_sound/final_syllable/u
 		else if(initial.initial_sound_flags & HALF_U)
 			for(var/datum/chinese_sound/final_syllable/final_syllable as anything in possible_final_syllables)
-				if(initial(initial(final_syllable.vowel_class)) == VOWEL_CLASS_BACK_CLOSE && initial(final_syllable.final_syllable_sound_flags) & U_GROUP_FULL)
+				if(initial(final_syllable.vowel_class) == VOWEL_CLASS_BACK_CLOSE && initial(final_syllable.final_syllable_sound_flags) & U_GROUP_FULL)
 					possible_final_syllables -= final_syllable
 
 		//check for if the sound is alveolo-palatal or sibilant/retroflex - then remove or keep front close vowels accordingly

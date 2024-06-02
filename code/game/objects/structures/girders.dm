@@ -25,7 +25,7 @@
 	// To store what type of wall it used to be
 	var/original
 
-/obj/structure/girder/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/girder/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
@@ -81,11 +81,12 @@
 	if(user.action_busy)
 		return TRUE //no afterattack
 
-	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+	if(istype(W, /obj/item/weapon/twohanded/breacher))
+		var/obj/item/weapon/twohanded/breacher/current_hammer = W
 		if(user.action_busy)
 			return
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
+			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
 			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
@@ -117,7 +118,7 @@
 			return
 	..()
 
-/obj/structure/girder/proc/change_state(var/obj/item/W, var/mob/user)
+/obj/structure/girder/proc/change_state(obj/item/W, mob/user)
 	switch(state)
 		if(STATE_STANDARD)
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
@@ -172,6 +173,14 @@
 			return do_reinforced_wall(W, user)
 		if(STATE_DISPLACED)
 			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+				var/turf/open/floor = loc
+				if(!floor.allow_construction)
+					to_chat(user, SPAN_WARNING("The girder must be secured on a proper surface!"))
+					return
+				var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in loc
+				if(tunnel)
+					to_chat(user, SPAN_WARNING("The girder cannot be secured on a tunnel!"))
+					return
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("Now securing the girder..."))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -184,7 +193,7 @@
 				return TRUE
 	return FALSE
 
-/obj/structure/girder/proc/do_dismantle(var/obj/item/W, var/mob/user)
+/obj/structure/girder/proc/do_dismantle(obj/item/W, mob/user)
 	if(!(state == STATE_DISMANTLING))
 		return FALSE
 
@@ -225,7 +234,7 @@
 		new /obj/item/stack/sheet/metal(loc, 2)
 	return ..()
 
-/obj/structure/girder/proc/do_wall(var/obj/item/W, var/mob/user)
+/obj/structure/girder/proc/do_wall(obj/item/W, mob/user)
 	if(!(state == STATE_WALL))
 		return FALSE
 
@@ -234,7 +243,7 @@
 		to_chat(user, SPAN_NOTICE("You are attaching the metal to the internal structure."))
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 			return TRUE
-		to_chat(user, SPAN_NOTICE("You are attached the metal to the internal structure!"))
+		to_chat(user, SPAN_NOTICE("You have attached the metal to the internal structure!"))
 		step_state = STATE_SCREWDRIVER
 		return TRUE
 
@@ -266,7 +275,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/girder/proc/do_reinforced_wall(var/obj/item/W, var/mob/user)
+/obj/structure/girder/proc/do_reinforced_wall(obj/item/W, mob/user)
 	if(!(state == STATE_REINFORCED_WALL))
 		return FALSE
 
@@ -284,7 +293,7 @@
 		to_chat(user, SPAN_NOTICE("You are attaching the plasteel to the internal structure."))
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 			return TRUE
-		to_chat(user, SPAN_NOTICE("You are attached the plasteel to the internal structure!"))
+		to_chat(user, SPAN_NOTICE("You have attached the plasteel to the internal structure!"))
 		step_state = STATE_SCREWDRIVER
 		return TRUE
 
@@ -315,7 +324,7 @@
 
 	return FALSE
 
-/obj/structure/girder/bullet_act(var/obj/item/projectile/P)
+/obj/structure/girder/bullet_act(obj/projectile/P)
 	//Tasers and the like should not damage girders.
 	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
 		return FALSE
@@ -323,7 +332,7 @@
 	if(P.ammo.damage_type == BURN)
 		dmg = P.damage
 	else
-		dmg = round(P.damage * 0.5)
+		dmg = floor(P.damage * 0.5)
 	if(dmg)
 		health -= dmg
 		take_damage(dmg)

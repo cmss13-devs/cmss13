@@ -105,28 +105,44 @@ Class Procs:
 	var/list/component_parts //list of all the parts used to build it, if made from certain kinds of frames.
 	var/manual = 0
 	layer = OBJ_LAYER
-	var/machine_processing = 0 // whether the machine is busy and requires process() calls in scheduler.
+	var/machine_processing = 0 // whether the machine is busy and requires process() calls in scheduler. // Please replace this by DF_ISPROCESSING in another refactor --fira
 	throwpass = 1
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	var/power_machine = FALSE //Whether the machine should process on power, or normal processor
 
+/obj/structure/machinery/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "-----MACHINERY-----")
+	VV_DROPDOWN_OPTION(VV_HK_TOGGLEPOWER, "Toggle Needs Power")
+
+/obj/structure/machinery/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_TOGGLEPOWER])
+		if(!check_rights(R_VAREDIT))
+			return
+
+		needs_power = !needs_power
+		power_change()
+		message_admins("[key_name(src, TRUE)] has toggled needs_power to [needs_power] on [src] in [get_area(src)] ([x],[y],[z]).", x, y, z)
+
+
 /obj/structure/machinery/Initialize(mapload, ...)
 	. = ..()
-	machines += src
+	GLOB.machines += src
 	var/area/A = get_area(src)
 	if(A)
 		A.add_machine(src) //takes care of adding machine's power usage
 
 /obj/structure/machinery/Destroy()
-	machines -= src
-	processing_machines -= src
-	power_machines -= src
+	GLOB.machines -= src
+	GLOB.processing_machines -= src
+	GLOB.power_machines -= src
 	var/area/A = get_area(src)
 	if(A)
 		A.remove_machine(src) //takes care of removing machine from power usage
 	. = ..()
 
-/obj/structure/machinery/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
@@ -135,15 +151,15 @@ Class Procs:
 	if(!machine_processing)
 		machine_processing = 1
 		if(power_machine)
-			addToListNoDupe(power_machines, src)
+			addToListNoDupe(GLOB.power_machines, src)
 		else
-			addToListNoDupe(processing_machines, src)
+			addToListNoDupe(GLOB.processing_machines, src)
 
 /obj/structure/machinery/proc/stop_processing()
 	if(machine_processing)
 		machine_processing = 0
-		processing_machines -= src
-		power_machines -= src
+		GLOB.processing_machines -= src
+		GLOB.power_machines -= src
 
 /obj/structure/machinery/process()//If you dont use process or power why are you here
 	return PROCESS_KILL
@@ -159,29 +175,29 @@ Class Procs:
 		. += SPAN_WARNING("[msg]")
 
 /obj/structure/machinery/emp_act(severity)
+	. = ..()
 	if(use_power && stat == 0)
 		use_power(7500/severity)
 	new /obj/effect/overlay/temp/emp_sparks (loc)
-	..()
 
 
 /obj/structure/machinery/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				deconstruct()
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				deconstruct()
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			deconstruct()
+			deconstruct(FALSE)
 			return
 	return
 
 //sets the use_power var and then forces an area power update
-/obj/structure/machinery/proc/update_use_power(var/new_use_power)
+/obj/structure/machinery/proc/update_use_power(new_use_power)
 	if (new_use_power == use_power)
 		return //don't need to do anything
 
@@ -201,10 +217,10 @@ Class Procs:
 			return idle_power_usage + active_power_usage
 	return 0
 
-/obj/structure/machinery/proc/operable(var/additional_flags = 0)
+/obj/structure/machinery/proc/operable(additional_flags = 0)
 	return !inoperable(additional_flags)
 
-/obj/structure/machinery/proc/inoperable(var/additional_flags = 0)
+/obj/structure/machinery/proc/inoperable(additional_flags = 0)
 	return (stat & (NOPOWER|BROKEN|additional_flags))
 
 /obj/structure/machinery/Topic(href, href_list)
@@ -213,7 +229,11 @@ Class Procs:
 		return TRUE
 	if(inoperable())
 		return 1
-	if(usr.is_mob_restrained() || usr.lying || usr.stat)
+	if(isliving(usr))
+		var/mob/living/living = usr
+		if(living.body_position == LYING_DOWN) // legacy. if you too find it doesn't make sense, consider removing it
+			return TRUE
+	if(usr.is_mob_restrained())
 		return 1
 	if(!is_valid_user(usr))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
@@ -227,19 +247,17 @@ Class Procs:
 	return (user.IsAdvancedToolUser(user) || isRemoteControlling(user))
 
 /obj/structure/machinery/attack_remote(mob/user as mob)
-	if(isrobot(user))
-		// For some reason attack_robot doesn't work
-		// This is to stop robots from using cameras to remotely control machines.
-		if(user.client && user.client.eye == user)
-			return src.attack_hand(user)
-	else
-		return src.attack_hand(user)
+	return src.attack_hand(user)
 
-/obj/structure/machinery/attack_hand(mob/user as mob)
+/obj/structure/machinery/attack_hand(mob/living/user as mob)
 	if(inoperable(MAINT))
 		return TRUE
-	if(user.lying || user.stat)
+	if(user.is_mob_incapacitated())
 		return TRUE
+	if(!(istype(user, /mob/living/carbon/human) || isRemoteControlling(user) || istype(user, /mob/living/carbon/xenomorph)))
+		if(!HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+			return TRUE
 	if(!is_valid_user(user))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return TRUE
@@ -264,7 +282,7 @@ Class Procs:
 /obj/structure/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
 	return
 
-/obj/structure/machinery/proc/state(var/msg)
+/obj/structure/machinery/proc/state(msg)
 	for(var/mob/O in hearers(src, null))
 		O.show_message("[icon2html(src, O)] [SPAN_NOTICE("[msg]")]", SHOW_MESSAGE_AUDIBLE)
 
@@ -300,10 +318,109 @@ Class Procs:
 	qdel(src)
 	return 1
 
-/obj/structure/machinery/proc/get_repair_move_text(var/include_name = TRUE)
+/obj/structure/machinery/proc/get_repair_move_text(include_name = TRUE)
 	return
 
 // UI related procs \\
 
 /obj/structure/machinery/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
+
+//made into "prop" from an old destilery project abandon 9 year ago.
+
+/obj/structure/machinery/mill
+	name = "\improper Mill"
+	desc = "It is a machine that grinds produce."
+	icon_state = "autolathe"
+	density = TRUE
+	anchored = TRUE
+
+/obj/structure/machinery/fermenter
+	name = "\improper Fermenter"
+	desc = "It is a machine that ferments produce into alcoholic drinks."
+	icon_state = "autolathe"
+	density = TRUE
+	anchored = TRUE
+
+/obj/structure/machinery/still
+	name = "\improper Still"
+	desc = "It is a machine that produces hard liquor from alcoholic drinks."
+	icon_state = "autolathe"
+	density = TRUE
+	anchored = TRUE
+
+/obj/structure/machinery/squeezer
+	name = "\improper Squeezer"
+	desc = "It is a machine that squeezes extracts from produce."
+	icon_state = "autolathe"
+	density = TRUE
+	anchored = TRUE
+
+/obj/structure/machinery/fuelpump
+	name = "\improper Fuel Pump"
+	layer = ABOVE_MOB_LAYER
+	desc = "It is a machine that pumps fuel around the ship."
+	icon = 'icons/obj/structures/machinery/fuelpump.dmi'
+	icon_state = "fuelpump_off"
+	health = null
+	indestructible = TRUE
+	density = TRUE
+	anchored = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	wrenchable = FALSE
+	
+/obj/structure/machinery/fuelpump/ex_act(severity)
+	return
+
+/obj/structure/machinery/fuelpump/Initialize(mapload, ...)
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_FUEL_PUMP_UPDATE, PROC_REF(on_pump_update))
+
+/obj/structure/machinery/fuelpump/proc/on_pump_update()
+	SIGNAL_HANDLER
+	playsound(src, 'sound/machines/resource_node/node_idle.ogg', 60, TRUE)
+	update_icon()
+
+/obj/structure/machinery/fuelpump/update_icon()
+	if(stat & NOPOWER)
+		icon_state = "fuelpump_off"
+		return
+	if(SShijack.hijack_status < HIJACK_OBJECTIVES_STARTED)
+		icon_state = "fuelpump_on"
+		return
+	switch(SShijack.current_progress)
+		if(-INFINITY to 24)
+			icon_state = "fuelpump_0"
+		if(25 to 49)
+			icon_state = "fuelpump_25"
+		if(50 to 74)
+			icon_state = "fuelpump_50"
+		if(75 to 99)
+			icon_state = "fuelpump_75"
+		if(100 to INFINITY)
+			icon_state = "fuelpump_100"
+		else
+			icon_state = "fuelpump_on" // Never should happen
+
+/obj/structure/machinery/fuelpump/get_examine_text(mob/user)
+	. = ..()
+	if(get_dist(user, src) > 2 && user != loc)
+		return
+	if(inoperable())
+		return
+	if(SShijack.hijack_status < HIJACK_OBJECTIVES_STARTED)
+		return
+	switch(SShijack.current_progress)
+		if(-INFINITY to 24)
+			. += SPAN_NOTICE("It looks like it barely has any fuel yet.")
+		if(25 to 49)
+			. += SPAN_NOTICE("It looks like it has accumulated some fuel.")
+		if(50 to 74)
+			. += SPAN_NOTICE("It looks like the fuel tank is a little over half full.")
+		if(75 to 99)
+			. += SPAN_NOTICE("It looks like the fuel tank is almost full.")
+		if(100 to INFINITY)
+			. += SPAN_NOTICE("It looks like the fuel tank is full.")
+		else
+			. += SPAN_NOTICE("It looks like something is wrong!") // Never should happen

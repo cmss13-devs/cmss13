@@ -15,7 +15,11 @@ $large-text: 3vw;
     display: flex;
   }
 
-  .compound_actions{
+  span {
+    font-size: $small-text;
+  }
+
+  .compound_actions {
     margin-bottom: 4px;
     margin-top: 3px;
   }
@@ -50,6 +54,18 @@ $large-text: 3vw;
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 1vw;
+  }
+
+  .Button {
+    font-size: $small-text;
+  }
+
+  .Tab__text {
+    font-size: $large-text;
+  }
+
+  .Tab__left {
+    font-size: $large-text;
   }
 
   .HiddenButton {

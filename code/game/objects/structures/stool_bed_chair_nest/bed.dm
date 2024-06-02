@@ -13,13 +13,14 @@
 	icon_state = "bed"
 	icon = 'icons/obj/objects.dmi'
 	can_buckle = TRUE
-	buckle_lying = TRUE
+	buckle_lying = 90
 	throwpass = TRUE
 	debris = list(/obj/item/stack/sheet/metal)
 	var/buildstacktype = /obj/item/stack/sheet/metal
 	var/buildstackamount = 1
 	var/foldabletype //To fold into an item (e.g. roller bed item)
 	var/buckling_y = 0 //pixel y shift to give to the buckled mob.
+	var/buckling_x = 0 //pixel x shift to give to the buckled mob.
 	var/obj/structure/closet/bodybag/buckled_bodybag
 	var/accepts_bodybag = FALSE //Whether you can buckle bodybags to this bed
 	var/base_bed_icon //Used by beds that change sprite when something is buckled to them
@@ -28,7 +29,7 @@
 	var/buckling_sound = 'sound/effects/buckle.ogg'
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
 
-/obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
@@ -45,13 +46,13 @@
 		unbuckle()
 	. = ..()
 
-/obj/structure/bed/ex_act(var/power)
+/obj/structure/bed/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
 /obj/structure/bed/deconstruct(disassembled = TRUE)
 	if(!disassembled)
-		if(!isnull(buildstacktype))
+		if(!isnull(buildstacktype) && buildstackamount)
 			new buildstacktype(get_turf(src), buildstackamount)
 	return ..()
 
@@ -60,11 +61,15 @@
 	if(. && buckled_mob == M)
 		M.pixel_y = buckling_y
 		M.old_y = buckling_y
+		M.pixel_x = buckling_x
+		M.old_x = buckling_x
 		if(base_bed_icon)
 			density = TRUE
 	else
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
+		M.pixel_x = initial(buckled_mob.pixel_x)
+		M.old_x = initial(buckled_mob.pixel_x)
 		if(base_bed_icon)
 			density = FALSE
 
@@ -161,11 +166,14 @@
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
 			var/atom/blocker = LinkBlocked(user, user.loc, loc)
+			if(!Adjacent(M))
+				visible_message(SPAN_DANGER("[M] is too far to place onto [src]."))
+				return FALSE
 			if(blocker)
 				to_chat(user, SPAN_WARNING("\The [blocker] is in the way!"))
-			else
-				to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
-				M.forceMove(loc)
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
+			M.forceMove(loc)
 		return TRUE
 
 	else
@@ -207,6 +215,20 @@
 			to_chat(user, SPAN_DANGER("You cannot buckle someone who is handcuffed onto this bed."))
 			return
 	..()
+
+/obj/structure/bed/roller/Collided(atom/movable/moving_atom)
+	if(!isxeno(moving_atom))
+		return ..()
+
+	if(buckled_mob && buckled_mob.stat != DEAD)
+		return ..()
+
+	if(buckled_bodybag)
+		var/mob/mob_in_bodybag = locate(/mob) in buckled_bodybag
+		if(mob_in_bodybag && mob_in_bodybag.stat != DEAD)
+			return ..()
+
+	return
 
 /obj/item/roller
 	name = "roller bed"
@@ -296,7 +318,7 @@
 //////////////////////////////////////////////
 
 //List of all activated medevac stretchers
-var/global/list/activated_medevac_stretchers = list()
+GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 
 /obj/structure/bed/medevac_stretcher
 	name = "medevac stretcher"
@@ -308,13 +330,14 @@ var/global/list/activated_medevac_stretchers = list()
 	base_bed_icon = "stretcher"
 	accepts_bodybag = TRUE
 	var/stretcher_activated
+	var/view_range = 5
 	var/obj/structure/dropship_equipment/medevac_system/linked_medevac
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL //On the one hand, it's a big stretcher. On the other hand, you have a big sheet covering the patient and those damned Fulton hookups everywhere.
 
 /obj/structure/bed/medevac_stretcher/Destroy()
 	if(stretcher_activated)
 		stretcher_activated = FALSE
-		activated_medevac_stretchers -= src
+		GLOB.activated_medevac_stretchers -= src
 		if(linked_medevac)
 			linked_medevac.linked_stretcher = null
 			linked_medevac = null
@@ -330,14 +353,21 @@ var/global/list/activated_medevac_stretchers = list()
 	if(buckled_mob || buckled_bodybag)
 		overlays += image("icon_state"="stretcher_box","layer"=LYING_LIVING_MOB_LAYER + 0.1)
 
-
-/obj/structure/bed/medevac_stretcher/verb/activate_medevac_beacon()
-	set name = "Activate medevac"
+/obj/structure/bed/medevac_stretcher/verb/toggle_medevac_beacon_verb()
+	set name = "Toggle medevac"
 	set desc = "Toggle the medevac beacon inside the stretcher."
 	set category = "Object"
 	set src in oview(1)
 
 	toggle_medevac_beacon(usr)
+
+// Used to pretend to be a camera
+/obj/structure/bed/medevac_stretcher/proc/can_use()
+	return TRUE
+
+// Used to pretend to be a camera
+/obj/structure/bed/medevac_stretcher/proc/isXRay()
+	return FALSE
 
 /obj/structure/bed/medevac_stretcher/proc/toggle_medevac_beacon(mob/user)
 	if(!ishuman(user))
@@ -353,7 +383,7 @@ var/global/list/activated_medevac_stretchers = list()
 
 	if(stretcher_activated)
 		stretcher_activated = FALSE
-		activated_medevac_stretchers -= src
+		GLOB.activated_medevac_stretchers -= src
 		if(linked_medevac)
 			linked_medevac.linked_stretcher = null
 			linked_medevac = null
@@ -370,13 +400,10 @@ var/global/list/activated_medevac_stretchers = list()
 			to_chat(user, SPAN_WARNING("[src] must be in the open or under a glass roof."))
 			return
 
-		if(buckled_mob || buckled_bodybag)
-			stretcher_activated = TRUE
-			activated_medevac_stretchers += src
-			to_chat(user, SPAN_NOTICE("You activate [src]'s beacon."))
-			update_icon()
-		else
-			to_chat(user, SPAN_WARNING("You need to attach something to [src] before you can activate its beacon yet."))
+		stretcher_activated = TRUE
+		GLOB.activated_medevac_stretchers += src
+		to_chat(user, SPAN_NOTICE("You activate [src]'s beacon."))
+		update_icon()
 
 /obj/item/roller/medevac
 	name = "medevac stretcher"
@@ -384,3 +411,29 @@ var/global/list/activated_medevac_stretchers = list()
 	icon_state = "stretcher_folded"
 	rollertype = /obj/structure/bed/medevac_stretcher
 	matter = list("plastic" = 5000, "metal" = 5000)
+
+/obj/item/roller/medevac/deploy_roller(mob/user, atom/location)
+	var/obj/structure/bed/medevac_stretcher/medevac_stretcher = new rollertype(location)
+	medevac_stretcher.add_fingerprint(user)
+	user.temp_drop_inv_item(src)
+	qdel(src)
+	medevac_stretcher.toggle_medevac_beacon(user)
+
+//bedroll
+/obj/structure/bed/bedroll
+	name = "unfolded bedroll"
+	desc = "Perfect for those long missions, when there's nowhere else to sleep, you remembered to bring at least one thing of comfort."
+	icon = 'icons/monkey_icos.dmi'
+	icon_state = "bedroll_o"
+	buckling_y = 0
+	foldabletype = /obj/item/roller/bedroll
+	accepts_bodybag = FALSE
+	debris = null
+	buildstacktype = null
+
+/obj/item/roller/bedroll
+	name = "folded bedroll"
+	desc = "A standard issue USCMC bedroll, They've been in service for as long as you can remember. The tag on it states to unfold it before rest, but who needs rules anyway, right?"
+	icon = 'icons/monkey_icos.dmi'
+	icon_state = "bedroll"
+	rollertype = /obj/structure/bed/bedroll

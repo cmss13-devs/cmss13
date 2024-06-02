@@ -15,7 +15,7 @@
 	name = "\improper Turing Dispenser"
 	desc = "A chem dispenser variant that can not be operated manually, but will instead automatically dispense chemicals based on a program of chemicals, loaded using a vial box. Despite having a digital screen the machine is mostly analog."
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
-	icon_state = "autodispenser_empty_open"
+	icon_state = "autodispenser"
 	active_power_usage = 40
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
@@ -154,8 +154,7 @@
 	data["multiplier"] = multiplier
 	data["cycle_limit"] = cycle_limit
 	data["automode"] = automode
-	data["linked_storage"] = linked_storage
-	data["networked_storage"] = linked_storage.is_in_network()
+	data["networked_storage"] = linked_storage?.is_in_network()
 	data["smartlink"] = smartlink
 	data["outputmode"] = outputmode
 	data["buffervolume"] = reagents.total_volume
@@ -347,8 +346,7 @@
 					C.reagents.trans_to(container, amount)
 					//We don't care about keeping empty bottles stored
 					if(C.reagents.total_volume <= 0 && istypestrict(C,/obj/item/reagent_container/glass/bottle))
-						linked_storage.item_quants[C.name]--
-						qdel(C) //Might want to connect it to a disposal system later instead
+						linked_storage.delete_contents(C)
 
 					if(stage_missing)
 						amount = stage_missing
@@ -374,7 +372,7 @@
 			stage_missing = 0
 			next_stage()
 
-/obj/structure/machinery/autodispenser/proc/get_program(var/save_to = PROGRAM_BOX)
+/obj/structure/machinery/autodispenser/proc/get_program(save_to = PROGRAM_BOX)
 	for(var/obj/item/reagent_container/glass/beaker/vial/V in input_container.contents)
 		if(!V.reagents.get_reagents()) //Ignore empty vials
 			continue
@@ -423,7 +421,7 @@
 			flush_buffer()
 
 
-/obj/structure/machinery/autodispenser/proc/stop_program(var/set_status = AUTODISPENSER_IDLE)
+/obj/structure/machinery/autodispenser/proc/stop_program(set_status = AUTODISPENSER_IDLE)
 	stage = 1
 	cycle = 0
 	stage_missing = 0

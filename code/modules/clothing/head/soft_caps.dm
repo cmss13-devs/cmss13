@@ -87,6 +87,19 @@
 	desc = "It's a trucker hat. They're becoming collector items since Ferret went under in 2180."
 	icon_state = "ferretsoft"
 	cap_color = "ferret"
+	black_market_value = 25
+
+/obj/item/clothing/head/soft/trucker
+	name = "\improper blue trucker hat"
+	desc = "It's a blue trucker hat."
+	icon_state = "truckercap_bluesoft"
+	cap_color = "truckercap_blue"
+
+/obj/item/clothing/head/soft/trucker/red
+	name = "\improper red trucker hat"
+	desc = "It's a red trucker hat."
+	icon_state = "truckercap_redsoft"
+	cap_color = "truckercap_red"
 
 /obj/item/clothing/head/soft/sec
 	name = "security cap"

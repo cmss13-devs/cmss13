@@ -8,8 +8,8 @@
 	icon_state = "fiorina"
 	can_build_special = TRUE //T-Comms structure
 	temperature = T20C
-	lighting_use_dynamic = 1
 	ceiling = CEILING_GLASS
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/fiorina/oob
 	name = "Fiorina - Out Of Bounds"
@@ -40,6 +40,7 @@
 	name = "Fiorina - Scavenger Ship 'NSV Renault'"
 	icon_state = "tumor1"
 	requires_power = 0
+	minimap_color = MINIMAP_AREA_SHIP
 
 /area/fiorina/tumor/civres
 	name = "Fiorina - Green Block Residences"
@@ -48,15 +49,17 @@
 /area/fiorina/tumor/aux_engi
 	name = "Fiorina - Engineering Sector"
 	icon_state = "tumor2"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/fiorina/tumor/servers
 	name = "Fiorina - Research Servers"
 	icon_state = "tumor2"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/fiorina/tumor/ice_lab
 	name = "Fiorina - Cryogenic Research Labs"
 	icon_state = "tumor3"
-
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 
 
@@ -66,14 +69,14 @@
 	ceiling = CEILING_GLASS
 	name = "Fiorina - LZ"
 	is_landing_zone = TRUE
+	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/fiorina/lz/near_lzI
 	name = "Fiorina - LZ1 Aux Port"
-	is_resin_allowed = FALSE
 
 /area/fiorina/lz/near_lzII
 	name = "Fiorina - LZ2 Prison Port"
-	is_resin_allowed = FALSE
 
 /area/fiorina/lz/console_I
 	name = "Fiorina - LZ1 Control Console"
@@ -108,6 +111,7 @@
 /area/fiorina/station/power_ring
 	name = "Fiorina - Engineering Ring"
 	icon_state = "power0"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/fiorina/station/disco
 	name = "Fiorina - Disco Storage"
@@ -120,14 +124,17 @@
 /area/fiorina/station/security
 	name = "Fiorina - Security Hub"
 	icon_state = "security_hub"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/fiorina/station/security/wardens
 	name = "Fiorina - Warden's Office"
 	icon_state = "wardens"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/fiorina/station/botany
 	name = "Fiorina - Botany Growtrays"
 	icon_state = "botany"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/fiorina/station/park
 	name = "Fiorina - Park"
@@ -152,10 +159,13 @@
 /area/fiorina/station/medbay
 	name = "Fiorina - Medical Bay"
 	icon_state = "station4"
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/fiorina/station/research_cells
 	name = "Fiorina - Research Cellblock"
 	icon_state = "station0"
+	minimap_color = MINIMAP_AREA_RESEARCH
+
 
 //telecomms areas
 /area/fiorina/station/telecomm

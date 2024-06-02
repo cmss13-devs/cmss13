@@ -53,6 +53,8 @@
 	attack_sound = null
 	friendly = "nuzzles" //If the mob does no damage with it's attack
 	can_crawl = FALSE
+	black_market_value = 25
+	dead_black_market_value = 0
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
@@ -78,9 +80,9 @@
 			icon_state = icon_living
 			GLOB.dead_mob_list -= src
 			GLOB.alive_mob_list += src
-			stat = CONSCIOUS
-			lying = 0
-			density = TRUE
+			set_stat(CONSCIOUS)
+//			lying = 0
+//			density = TRUE
 			reload_fullscreens()
 		return 0
 
@@ -91,18 +93,13 @@
 	if(health > maxHealth)
 		health = maxHealth
 
-	handle_stunned()
-	handle_knocked_down(TRUE)
-	handle_knocked_out(TRUE)
-	update_canmove()
-
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
-		if(isturf(src.loc) && !resting && !buckled && canmove) //This is so it only moves if it's not inside a closet, gentics machine, etc.
+		if(isturf(src.loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE)) //This is so it only moves if it's not inside a closet, gentics machine, etc.
 			turns_since_move++
 			if(turns_since_move >= turns_per_move)
 				if(!(stop_automated_movement_when_pulled && pulledby)) //Soma animals don't move when pulled
-					var/move_dir = pick(cardinal)
+					var/move_dir = pick(GLOB.cardinals)
 					Move(get_step(src, move_dir ))
 					setDir(move_dir)
 					turns_since_move = 0
@@ -123,23 +120,23 @@
 					else
 						randomValue -= speak.len
 						if(emote_see && randomValue <= emote_see.len)
-							INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_see),1)
+							INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
 						else
-							INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_hear),2)
+							INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
 				else
 					INVOKE_ASYNC(src, PROC_REF(say), pick(speak))
 			else
 				if(!(emote_hear && emote_hear.len) && (emote_see && emote_see.len))
-					INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_see),1)
+					INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
 				if((emote_hear && emote_hear.len) && !(emote_see && emote_see.len))
-					INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_hear),2)
+					INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
 				if((emote_hear && emote_hear.len) && (emote_see && emote_see.len))
 					var/length = emote_hear.len + emote_see.len
 					var/pick = rand(1,length)
 					if(pick <= emote_see.len)
-						INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_see),1)
+						INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
 					else
-						INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_hear),2)
+						INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
 
 
 	//Atmos
@@ -212,9 +209,10 @@
 	if(!.) return //was already dead
 	SSmob.living_misc_mobs -= src
 	icon_state = icon_dead
+	black_market_value = dead_black_market_value
 
 
-/mob/living/simple_animal/gib(var/cause = "gibbing")
+/mob/living/simple_animal/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	SSmob.living_misc_mobs -= src
 	if(meat_amount && meat_type)
 		for(var/i = 0; i < meat_amount; i++)
@@ -224,18 +222,6 @@
 /mob/living/simple_animal/gib_animation()
 	if(icon_gib)
 		new /obj/effect/overlay/temp/gib_animation/animal(loc, src, icon_gib)
-
-
-
-
-
-/mob/living/simple_animal/emote(var/act, var/type, var/message, player_caused)
-	if(act)
-		if(act == "scream") act = "whimper" //ugly hack to stop animals screaming when crushed :P
-		if(act == "me")
-			custom_emote(type,desc, nolog = !ckey) //if the animal has a ckey then it will log the message
-		else
-			..(act, type, message, player_caused)
 
 /mob/living/simple_animal/attack_animal(mob/living/M as mob)
 	if(M.melee_damage_upper == 0)
@@ -278,13 +264,13 @@
 
 	return
 
-/mob/living/simple_animal/can_be_pulled_by(var/mob/pulling_mob)
+/mob/living/simple_animal/can_be_pulled_by(mob/pulling_mob)
 	if(locate(/obj/item/explosive/plastic) in contents)
 		to_chat(pulling_mob, SPAN_WARNING("You leave \the [src] alone. It's got live explosives on it!"))
 		return FALSE
 	return ..()
 
-/mob/living/simple_animal/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri
+/mob/living/simple_animal/attackby(obj/item/O as obj, mob/user as mob)  //Marker -Agouri
 	if(istype(O, /obj/item/stack/medical))
 
 		if(stat != DEAD)
@@ -295,7 +281,7 @@
 					MED.use(1)
 					for(var/mob/M as anything in viewers(src, null))
 						if ((M.client && !( M.blinded )))
-							M.show_message(SPAN_NOTICE("[user] applies the [MED] on [src]"), SHOW_MESSAGE_VISIBLE)
+							M.show_message(SPAN_NOTICE("[user] applies [MED] on [src]"), SHOW_MESSAGE_VISIBLE)
 					return
 		else
 			to_chat(user, SPAN_NOTICE(" this [src] is dead, medical items won't bring it back to life."))
@@ -337,7 +323,7 @@
 		explosion_throw(severity, direction)
 
 /mob/living/simple_animal/adjustBruteLoss(damage)
-	health = Clamp(health - damage, 0, maxHealth)
+	health = clamp(health - damage, 0, maxHealth)
 
 /mob/living/simple_animal/proc/SA_attackable(target_mob)
 	if (isliving(target_mob))
@@ -350,22 +336,13 @@
 			return (0)
 	return (1)
 
-//Call when target overlay should be added/removed
-/mob/living/simple_animal/update_targeted()
-	if(!targeted_by && target_locked)
-		QDEL_NULL(target_locked)
-	overlays = null
-	if (targeted_by && target_locked)
-		overlays += target_locked
-
-/mob/living/simple_animal/say(var/message)
+/mob/living/simple_animal/say(message)
 	if(stat)
 		return
 
 	if(copytext(message,1,2) == "*")
-		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
-			INVOKE_ASYNC(src, PROC_REF(emote), lowertext(copytext(message,2)))
-			return
+		INVOKE_ASYNC(src, PROC_REF(emote), copytext(message,2))
+		return
 
 	if(stat)
 		return
@@ -379,15 +356,22 @@
 
 	..(message, null, verb, nolog = !ckey) //if the animal has a ckey then it will log the message
 
-/mob/living/simple_animal/update_canmove()
+/mob/living/simple_animal/on_immobilized_trait_gain(datum/source)
 	. = ..()
-	if(!canmove)
-		stop_moving()
+	stop_moving()
+
+/mob/living/simple_animal/on_knockedout_trait_gain(datum/source)
+	. = ..()
+	stop_moving()
+
+/mob/living/simple_animal/on_incapacitated_trait_gain(datum/source)
+	. = ..()
+	stop_moving()
 
 /mob/living/simple_animal/proc/stop_moving()
 	walk_to(src, 0) // stops us dead in our tracks
 
-/mob/living/simple_animal/can_inject(var/mob/user, var/error_msg)
+/mob/living/simple_animal/can_inject(mob/user, error_msg)
 	if(user && error_msg)
 		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal!"))
 	return FALSE

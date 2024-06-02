@@ -6,7 +6,6 @@
 	density = TRUE
 
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 6000
 
 	walltype = WALL_REINFORCED
 
@@ -14,10 +13,6 @@
 
 /turf/closed/wall/r_wall/attackby(obj/item/W, mob/user)
 	if(hull)
-		return
-
-	if (!(istype(user, /mob/living/carbon/human) || isrobot(user) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
 	//get the user's location
@@ -38,11 +33,12 @@
 	if(try_weldingtool_usage(W, user) || try_nailgun_usage(W, user))
 		return
 
-	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+	if(istype(W, /obj/item/weapon/twohanded/breacher))
+		var/obj/item/weapon/twohanded/breacher/current_hammer = W
 		if(user.action_busy)
 			return
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
+			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
 			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
@@ -131,7 +127,7 @@
 		user.visible_message(SPAN_NOTICE("[user] starts repairing the damage to [src]."),
 		SPAN_NOTICE("You start repairing the damage to [src]."))
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
-		if(do_after(user, max(5, round(damage / 5) * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall/r_wall))
+		if(do_after(user, max(5, floor(damage / 5) * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall/r_wall))
 			user.visible_message(SPAN_NOTICE("[user] finishes repairing the damage to [src]."),
 			SPAN_NOTICE("You finish repairing the damage to [src]."))
 			take_damage(-damage)
@@ -264,7 +260,7 @@
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
 	icon_state = "h_dome"
-	hull = 1
+	hull = TRUE
 
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable/ex_act(severity) //Should make it indestructible
 		return

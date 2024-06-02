@@ -23,7 +23,7 @@
 	var/icon_on = "smartfridge"
 	var/icon_off = "smartfridge-off"
 	var/icon_panel = "smartfridge-panel"
-	var/item_quants = list()
+	var/list/item_quants = list() //! Assoc list of names -> list(items)
 	var/ispowered = TRUE //starts powered
 	var/is_secure_fridge = FALSE
 	var/shoot_inventory = FALSE
@@ -40,7 +40,25 @@
 	GLOB.vending_products[/obj/item/reagent_container/glass/bottle] = 1
 	GLOB.vending_products[/obj/item/storage/pill_bottle] = 1
 
-/obj/structure/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/Destroy(force)
+	if(is_in_network()) // Delete all contents from networked storage index
+		for(var/atom/movable/item as anything in contents)
+			delete_contents(item)
+	item_quants.Cut()
+	return ..() // parent will delete contents if we're not networked
+
+/// Deletes given object in contents of the smartfridge
+/obj/structure/machinery/smartfridge/proc/delete_contents(obj/item/item)
+	if(item.loc != src)
+		return
+	contents -= item
+	if(item_quants[item.name])
+		item_quants[item.name] -= item
+	if(is_in_network() && GLOB.chemical_data.shared_item_storage[item.name])
+		GLOB.chemical_data.shared_item_storage[item.name] -= item
+	qdel(item)
+
+/obj/structure/machinery/smartfridge/proc/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/food/snacks/grown/) || istype(O,/obj/item/seeds/))
 		return 1
 	return 0
@@ -65,7 +83,7 @@
 //*   Item Adding
 //********************/
 
-/obj/structure/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/smartfridge/attackby(obj/item/O as obj, mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		. = ..()
 		return
@@ -76,7 +94,7 @@
 		overlays.Cut()
 		if(panel_open)
 			overlays += image(icon, icon_panel)
-		nanomanager.update_uis(src)
+		SSnano.nanomanager.update_uis(src)
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL)||HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
@@ -127,19 +145,19 @@
 
 	tgui_interact(user)
 
-/obj/structure/machinery/smartfridge/proc/add_local_item(var/obj/item/O)
+/obj/structure/machinery/smartfridge/proc/add_local_item(obj/item/O)
 	add_item(item_quants, O)
 
-/obj/structure/machinery/smartfridge/proc/add_item(var/list/target, var/obj/item/O)
+/obj/structure/machinery/smartfridge/proc/add_item(list/target, obj/item/O)
 	O.forceMove(src)
 	if(target[O.name])
 		target[O.name] += O
 	else
 		target[O.name] = list(O)
 
-/obj/structure/machinery/smartfridge/proc/add_network_item(var/obj/item/O)
+/obj/structure/machinery/smartfridge/proc/add_network_item(obj/item/O)
 	if(is_in_network())
-		add_item(chemical_data.shared_item_storage, O)
+		add_item(GLOB.chemical_data.shared_item_storage, O)
 		return TRUE
 	return FALSE
 
@@ -214,9 +232,9 @@
 
 	var/list/networked_items = list()
 	if(is_in_network())
-		for (var/i=1 to length(chemical_data.shared_item_storage))
-			var/item_index = chemical_data.shared_item_storage[i]
-			var/list/item_list = chemical_data.shared_item_storage[item_index]
+		for (var/i=1 to length(GLOB.chemical_data.shared_item_storage))
+			var/item_index = GLOB.chemical_data.shared_item_storage[i]
+			var/list/item_list = GLOB.chemical_data.shared_item_storage[item_index]
 			var/count = length(item_list)
 			if(count < 1)
 				continue
@@ -277,7 +295,7 @@
 
 			var/list/target_list = item_quants
 			if(params["isLocal"] == 0)
-				target_list = chemical_data.shared_item_storage
+				target_list = GLOB.chemical_data.shared_item_storage
 
 			var/item_index = target_list[index]
 			var/list/item_list = target_list[item_index]
@@ -310,9 +328,9 @@
 			var/amount=params["amount"]
 
 			var/source = item_quants
-			var/target = chemical_data.shared_item_storage
+			var/target = GLOB.chemical_data.shared_item_storage
 			if(params["isLocal"] == 0)
-				source = chemical_data.shared_item_storage
+				source = GLOB.chemical_data.shared_item_storage
 				target = item_quants
 
 			var/item_index = source[index]
@@ -332,9 +350,12 @@
 		if("cutwire")
 			if(!panel_open)
 				return FALSE
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(user, "You need wirecutters!")
+				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 				return TRUE
 
 			var/wire = params["wire"]
@@ -343,9 +364,12 @@
 		if("fixwire")
 			if(!panel_open)
 				return FALSE
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(user, "You need wirecutters!")
+				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 				return TRUE
 			var/wire = params["wire"]
 			mend(wire)
@@ -353,13 +377,16 @@
 		if("pulsewire")
 			if(!panel_open)
 				return FALSE
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 				to_chat(user, "You need multitool!")
 				return TRUE
 			var/wire = params["wire"]
 			if (isWireCut(wire))
-				to_chat(usr, "You can't pulse a cut wire.")
+				to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
 				return TRUE
 			pulse(wire)
 			return TRUE
@@ -376,7 +403,7 @@
 		FRIDGE_WIRE_IDSCAN  = "ID scanner"
 	)
 
-/obj/structure/machinery/smartfridge/proc/cut(var/wire)
+/obj/structure/machinery/smartfridge/proc/cut(wire)
 	wires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -391,7 +418,7 @@
 			locked = FRIDGE_LOCK_COMPLETE //totally lock it down
 			visible_message(SPAN_NOTICE("\The [src] emits a slight thunk."))
 
-/obj/structure/machinery/smartfridge/proc/mend(var/wire)
+/obj/structure/machinery/smartfridge/proc/mend(wire)
 	wires |= getWireFlag(wire)
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
@@ -403,7 +430,7 @@
 			locked = FRIDGE_LOCK_ID //back to normal
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/structure/machinery/smartfridge/proc/pulse(var/wire)
+/obj/structure/machinery/smartfridge/proc/pulse(wire)
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
 			COOLDOWN_START(src, electrified_cooldown, 30 SECONDS)
@@ -418,7 +445,7 @@
 			locked = FRIDGE_LOCK_NOLOCK //open sesame
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/structure/machinery/smartfridge/proc/isWireCut(var/wire)
+/obj/structure/machinery/smartfridge/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
 /obj/structure/machinery/smartfridge/proc/throw_item()
@@ -459,7 +486,7 @@
 	icon_on = "seeds"
 	icon_off = "seeds-off"
 
-/obj/structure/machinery/smartfridge/seeds/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/seeds/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/seeds/))
 		return 1
 	return 0
@@ -471,9 +498,9 @@
 	icon_state = "smartfridge" //To fix the icon in the map editor.
 	icon_on = "smartfridge_chem"
 	is_secure_fridge = TRUE
-	req_one_access = list(ACCESS_MARINE_CMO, 33)
+	req_one_access = list(ACCESS_MARINE_CMO)
 
-/obj/structure/machinery/smartfridge/secure/medbay/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/secure/medbay/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass/))
 		return 1
 	if(istype(O,/obj/item/storage/pill_bottle/))
@@ -492,7 +519,7 @@
 	icon_on = "smartfridge_virology"
 	icon_off = "smartfridge_virology-off"
 
-/obj/structure/machinery/smartfridge/secure/virology/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/secure/virology/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass/beaker/vial/))
 		return 1
 	return 0
@@ -505,13 +532,13 @@
 	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MEDPREP)
 	networked = TRUE
 
-/obj/structure/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/chemistry/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/storage/pill_bottle) || istype(O,/obj/item/reagent_container) || istype(O,/obj/item/storage/fancy/vials))
 		return 1
 	return 0
 
 /obj/structure/machinery/smartfridge/chemistry/antag
-	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
 
 /obj/structure/machinery/smartfridge/chemistry/virology
 	name = "\improper Smart Virus Storage"
@@ -522,6 +549,6 @@
 	name = "\improper Drink Showcase"
 	desc = "A refrigerated storage unit for tasty tasty alcohol."
 
-/obj/structure/machinery/smartfridge/drinks/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/drinks/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment))
 		return 1

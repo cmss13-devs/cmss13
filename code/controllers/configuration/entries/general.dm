@@ -21,7 +21,13 @@ Basics, the most important.
 
 /datum/config_entry/string/wikiurl
 
+/datum/config_entry/string/wikiarticleurl
+
 /datum/config_entry/string/forumurl
+
+/datum/config_entry/string/staffreport
+
+/datum/config_entry/string/playerreport
 
 /datum/config_entry/string/rulesurl
 
@@ -30,6 +36,8 @@ Basics, the most important.
 /datum/config_entry/string/discordurl
 
 /datum/config_entry/string/banappeals
+
+/datum/config_entry/string/endofroundblurb
 
 /datum/config_entry/string/dburl
 
@@ -41,7 +49,7 @@ Basics, the most important.
 
 /// Host of the webmap
 /datum/config_entry/string/webmap_host
-	config_entry_value = "https://affectedarc07.co.uk/tgmc.php?m="
+	config_entry_value = "https://affectedarc07.github.io/SS13WebMap/CMSS13/"
 
 /datum/config_entry/string/python_path
 
@@ -126,6 +134,9 @@ Administrative related.
 /datum/config_entry/flag/allow_admin_ooccolor // Allows admins to customize their OOC color.
 
 /datum/config_entry/flag/allow_vote_adjustment_callback
+
+/// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
+/datum/config_entry/flag/log_timers_on_bucket_reset
 
 /datum/config_entry/number/vote_adjustment_callback
 	config_entry_value = 0.1
@@ -260,11 +271,7 @@ Voting
 
 // Gamemode to auto-switch to at the start of the round
 /datum/config_entry/string/gamemode_default
-	config_entry_value = "extended"
-
-// Rounds needed for gamemode vote
-/datum/config_entry/number/gamemode_rounds_needed
-	config_entry_value = 5
+	config_entry_value = "Extended"
 
 /datum/config_entry/number/rounds_until_hard_restart
 	config_entry_value = -1 // -1 is disabled by default, 0 is every round, x is after so many rounds
@@ -484,8 +491,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/flag/respawn
 
-/datum/config_entry/flag/ToRban
-
 /datum/config_entry/flag/ooc_country_flags
 
 /datum/config_entry/flag/record_rounds
@@ -524,6 +529,29 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/adminhelp_ahelp_link
 
+/datum/config_entry/string/round_results_webhook_url
+
+/datum/config_entry/string/important_log_channel
+
+/// InfluxDB v2 Host to connect to for sending statistics (over HTTP API)
+/datum/config_entry/string/influxdb_host
+/// InfluxDB v2 Bucket to send staistics to
+/datum/config_entry/string/influxdb_bucket
+/// InfluxDB v2 Organization to access buckets of
+/datum/config_entry/string/influxdb_org
+/// InfluxDB v2 API Token to access the organization and bucket
+/datum/config_entry/string/influxdb_token
+
+/// How often to snapshot general game statistics to influxdb driver
+/datum/config_entry/number/influxdb_stats_period
+	config_entry_value = 30
+/// How often to snapshot MC statistics
+/datum/config_entry/number/influxdb_mcstats_period
+	config_entry_value = 60
+/// How often to send queued influxdb statistics
+/datum/config_entry/number/influxdb_send_period
+	config_entry_value = 10
+
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset
 
@@ -535,3 +563,104 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/number/hard_deletes_overrun_limit
 	default = 0
 	min_val = 0
+
+/datum/config_entry/string/bot_prefix
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/bot_command
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/certification_minutes
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/topic_max_size
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/log_world_topic
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/keyed_list/topic_tokens
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_TEXT
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/keyed_list/topic_tokens/ValidateListEntry(key_name, key_value)
+	return key_value != "topic_token" && ..()
+
+
+//Fail2Topic settings.
+/datum/config_entry/number/topic_rate_limit
+	config_entry_value = 5
+	min_val = 1
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/topic_max_fails
+	config_entry_value = 5
+	min_val = 1
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/topic_rule_name
+	config_entry_value = "_DD_Fail2topic"
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/topic_max_size
+	config_entry_value = 500
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/topic_enabled
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/redis_enabled
+	config_entry_value = FALSE
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/redis_logging
+	config_entry_value = FALSE
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/redis_connection
+	config_entry_value = "redis://127.0.0.1/"
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/instance_name
+	config_entry_value = "game"
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/guest_ban
+
+/datum/config_entry/flag/auto_profile
+
+/// Relay Ping Browser configuration
+/datum/config_entry/keyed_list/connection_relay_ping
+	splitter = "|"
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
+
+/datum/config_entry/keyed_list/connection_relay_con
+	splitter = "|"
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
+
+/datum/config_entry/number/client_warn_version
+	default = null
+	min_val = 500
+
+/datum/config_entry/number/client_warn_build
+	default = null
+	min_val = 0
+
+/datum/config_entry/string/client_warn_message
+	default = "Your version of BYOND may have issues or be blocked from accessing this server in the future."
+
+/datum/config_entry/flag/client_warn_popup
+
+/datum/config_entry/number/client_error_version
+	default = null
+	min_val = 500
+
+/datum/config_entry/number/client_error_build
+	default = null
+	min_val = 0
+
+/datum/config_entry/string/client_error_message
+	default = "Your version of BYOND is too old, may have issues, and is blocked from accessing this server."

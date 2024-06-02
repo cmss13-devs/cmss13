@@ -4,9 +4,12 @@
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "0"
 	opacity = TRUE
-	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
+	layer = WALL_LAYER
+	/// 1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
+	var/hull = 0
 	var/walltype = WALL_METAL
-	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
+	/// when walls smooth with one another, the type of junction each wall is.
+	var/junctiontype
 	var/thermite = 0
 	var/melting = FALSE
 	var/claws_minimum = CLAW_TYPE_SHARP
@@ -16,10 +19,12 @@
 		/obj/structure/window/framed,
 		/obj/structure/window_frame,
 		/obj/structure/girder,
-		/obj/structure/machinery/door)
+		/obj/structure/machinery/door,
+	)
 
 	var/damage = 0
-	var/damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
+	/// Wall will break down to girders if damage reaches this point
+	var/damage_cap = HEALTH_WALL
 
 	var/damage_overlay
 	var/global/damage_overlays[8]
@@ -28,12 +33,12 @@
 	var/image/bullet_overlay = null
 	var/list/wall_connections = list("0", "0", "0", "0")
 	var/neighbors_list = 0
-	var/max_temperature = 1800 //K, walls will take damage if they're next to a fire hotter than this
 	var/repair_materials = list("wood"= 0.075, "metal" = 0.15, "plasteel" = 0.3) //Max health % recovered on a nailgun repair
 
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
 
-	var/obj/effect/acid_hole/acided_hole //the acid hole inside the wall
+	/// the acid hole inside the wall
+	var/obj/effect/acid_hole/acided_hole
 	var/acided_hole_dir = SOUTH
 
 	var/special_icon = 0
@@ -60,13 +65,18 @@
 	update_icon()
 
 
+/turf/closed/wall/setDir(newDir)
+	..()
+	update_connections(FALSE)
+	update_icon()
+
 /turf/closed/wall/ChangeTurf(newtype, ...)
 	QDEL_NULL(acided_hole)
 
 	. = ..()
 	if(.) //successful turf change
 		var/turf/T
-		for(var/i in cardinal)
+		for(var/i in GLOB.cardinals)
 			T = get_step(src, i)
 
 			//nearby glowshrooms updated
@@ -77,21 +87,34 @@
 					shroom.pixel_x = 0
 					shroom.pixel_y = 0
 
-		for(var/obj/O in src) //Eject contents!
-			if(istype(O, /obj/structure/sign/poster))
-				var/obj/structure/sign/poster/P = O
-				P.roll_and_drop(src)
-			if(istype(O, /obj/effect/alien/weeds))
-				qdel(O)
+		for(var/obj/found_object in src) //Eject contents!
+			if(istype(found_object, /obj/structure/sign/poster))
+				var/obj/structure/sign/poster/found_poster = found_object
+				found_poster.roll_and_drop(src)
+			if(istype(found_object, /obj/effect/alien/weeds/weedwall))
+				qdel(found_object)
 
-/turf/closed/wall/MouseDrop_T(mob/M, mob/user)
+		var/list/turf/cardinal_neighbors = list(get_step(src, NORTH), get_step(src, SOUTH), get_step(src, EAST), get_step(src, WEST))
+		for(var/turf/cardinal_turf as anything in cardinal_neighbors)
+			for(var/obj/structure/bed/nest/found_nest in cardinal_turf)
+				if(found_nest.dir == get_dir(found_nest, src))
+					qdel(found_nest) //nests are built on walls, no walls, no nest
+
+/turf/closed/wall/MouseDrop_T(mob/current_mob, mob/user)
+	if(!ismob(current_mob))
+		return
+
 	if(acided_hole)
-		if(M == user && isXeno(user))
+		if(current_mob == user && isxeno(user))
 			acided_hole.use_wall_hole(user)
 			return
+
+	if(isxeno(user) && istype(user.get_active_hand(), /obj/item/grab))
+		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
+		user_as_xenomorph.do_nesting_host(current_mob, src)
 	..()
 
-/turf/closed/wall/attack_alien(mob/living/carbon/Xenomorph/user)
+/turf/closed/wall/attack_alien(mob/living/carbon/xenomorph/user)
 	if(acided_hole && user.mob_size >= MOB_SIZE_BIG)
 		acided_hole.expand_hole(user) //This proc applies the attack delay itself.
 		return XENO_NO_DELAY_ACTION
@@ -150,9 +173,12 @@
 		if (acided_hole)
 			. += SPAN_WARNING("There's a large hole in the wall that could've been caused by some sort of acid.")
 
+	if(turf_flags & TURF_ORGANIC)
+		return // Skip the part below. 'Organic' walls aren't deconstructable with tools.
+
 	switch(d_state)
 		if(WALL_STATE_WELD)
-			. += SPAN_INFO("The outer plating is intact. A blowtorch should slice it open.")
+			. += SPAN_INFO("The outer plating is intact. If you are not on help intent, a blowtorch should slice it open.")
 		if(WALL_STATE_SCREW)
 			. += SPAN_INFO("The outer plating has been sliced open. A screwdriver should remove the support lines.")
 		if(WALL_STATE_WIRECUTTER)
@@ -163,7 +189,7 @@
 			. += SPAN_INFO("The anchor bolts have been removed. A crowbar will pry apart the connecting rods.")
 
 //Damage
-/turf/closed/wall/proc/take_damage(dam, var/mob/M)
+/turf/closed/wall/proc/take_damage(dam, mob/M)
 	if(hull) //Hull is literally invincible
 		return
 	if(!dam)
@@ -254,7 +280,7 @@
 	O.desc = "Looks hot."
 	O.icon = 'icons/effects/fire.dmi'
 	O.icon_state = "red_3"
-	O.anchored = 1
+	O.anchored = TRUE
 	O.density = TRUE
 	O.layer = FLY_LAYER
 
@@ -272,7 +298,7 @@
 			break
 
 		if(thermite > (damage_cap - damage)/100) // Thermite gains a speed buff when the amount is overkill
-			var/timereduction = round((thermite - (damage_cap - damage)/100)/5) // Every 5 units over the required amount reduces the sleep by 0.1s
+			var/timereduction = floor((thermite - (damage_cap - damage)/100)/5) // Every 5 units over the required amount reduces the sleep by 0.1s
 			sleep(max(2, 20 - timereduction))
 		else
 			sleep(20)
@@ -306,29 +332,34 @@
 				return
 
 
-/turf/closed/wall/attackby(obj/item/W, mob/user)
+/turf/closed/wall/attackby(obj/item/attacking_item, mob/user)
+	if(isxeno(user) && istype(attacking_item, /obj/item/grab))
+		var/obj/item/grab/attacker_grab = attacking_item
+		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
+		user_as_xenomorph.do_nesting_host(attacker_grab.grabbed_thing, src)
 
-	if(!ishuman(user) && !isrobot(user))
+	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting simulated walls and the relevant effects
 	if(thermite)
-		if(W.heat_source >= 1000)
+		if(attacking_item.heat_source >= 1000)
 			if(hull)
-				to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))
+				to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [attacking_item]."))
 			else
-				if(iswelder(W))
-					var/obj/item/tool/weldingtool/WT = W
+				if(iswelder(attacking_item))
+					var/obj/item/tool/weldingtool/WT = attacking_item
 					WT.remove_fuel(0,user)
 				thermitemelt(user)
 			return
 
-	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+	if(istype(attacking_item, /obj/item/weapon/twohanded/breacher))
+		var/obj/item/weapon/twohanded/breacher/current_hammer = attacking_item
 		if(user.action_busy)
 			return
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
+			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
 			return
 		if(hull)
 			to_chat(user, SPAN_WARNING("Even with your immense strength, you can't bring down \the [src]."))
@@ -346,41 +377,46 @@
 		take_damage(damage_cap)
 		return
 
-	if(istype(W,/obj/item/frame/apc))
-		var/obj/item/frame/apc/AH = W
+	if(istype(attacking_item,/obj/item/frame/apc))
+		var/obj/item/frame/apc/AH = attacking_item
 		AH.try_build(src)
 		return
 
-	if(istype(W,/obj/item/frame/air_alarm))
-		var/obj/item/frame/air_alarm/AH = W
+	if(istype(attacking_item,/obj/item/frame/air_alarm))
+		var/obj/item/frame/air_alarm/AH = attacking_item
 		AH.try_build(src)
 		return
 
-	if(istype(W,/obj/item/frame/fire_alarm))
-		var/obj/item/frame/fire_alarm/AH = W
+	if(istype(attacking_item,/obj/item/frame/fire_alarm))
+		var/obj/item/frame/fire_alarm/AH = attacking_item
 		AH.try_build(src)
 		return
 
-	if(istype(W,/obj/item/frame/light_fixture))
-		var/obj/item/frame/light_fixture/AH = W
+	if(istype(attacking_item,/obj/item/frame/light_fixture))
+		var/obj/item/frame/light_fixture/AH = attacking_item
 		AH.try_build(src)
 		return
 
-	if(istype(W,/obj/item/frame/light_fixture/small))
-		var/obj/item/frame/light_fixture/small/AH = W
+	if(istype(attacking_item,/obj/item/frame/light_fixture/small))
+		var/obj/item/frame/light_fixture/small/AH = attacking_item
 		AH.try_build(src)
 		return
 
 	//Poster stuff
-	if(istype(W,/obj/item/poster))
-		place_poster(W,user)
+	if(istype(attacking_item,/obj/item/poster))
+		place_poster(attacking_item, user)
 		return
+
+	if(istype(attacking_item, /obj/item/prop/torch_frame))
+		to_chat(user, SPAN_NOTICE("You place the torch down on the wall."))
+		new /obj/structure/prop/brazier/frame/full/torch(src)
+		qdel(attacking_item)
 
 	if(hull)
-		to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))
+		to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [attacking_item]."))
 		return
 
-	if(try_weldingtool_usage(W, user) || try_nailgun_usage(W, user))
+	if(try_weldingtool_usage(attacking_item, user) || try_nailgun_usage(attacking_item, user))
 		return
 
 	if(!istype(src, /turf/closed/wall))
@@ -389,15 +425,15 @@
 	//DECONSTRUCTION
 	switch(d_state)
 		if(WALL_STATE_WELD)
-			if(iswelder(W))
-				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			if(iswelder(attacking_item))
+				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 					return
-				var/obj/item/tool/weldingtool/WT = W
+				var/obj/item/tool/weldingtool/WT = attacking_item
 				try_weldingtool_deconstruction(WT, user)
 
 		if(WALL_STATE_SCREW)
-			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
 				user.visible_message(SPAN_NOTICE("[user] begins removing the support lines."),
 				SPAN_NOTICE("You begin removing the support lines."))
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -408,7 +444,7 @@
 				return
 
 		if(WALL_STATE_WIRECUTTER)
-			if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS))
 				user.visible_message(SPAN_NOTICE("[user] begins uncrimping the hydraulic lines."),
 				SPAN_NOTICE("You begin uncrimping the hydraulic lines."))
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -419,7 +455,7 @@
 				return
 
 		if(WALL_STATE_WRENCH)
-			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
 				user.visible_message(SPAN_NOTICE("[user] starts loosening the anchoring bolts securing the support rods."),
 				SPAN_NOTICE("You start loosening the anchoring bolts securing the support rods."))
 				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
@@ -430,7 +466,7 @@
 				return
 
 		if(WALL_STATE_CROWBAR)
-			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
 				user.visible_message(SPAN_NOTICE("[user] struggles to pry apart the connecting rods."),
 				SPAN_NOTICE("You struggle to pry apart the connecting rods."))
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
@@ -446,13 +482,15 @@
 /turf/closed/wall/proc/try_weldingtool_usage(obj/item/W, mob/user)
 	if(!damage || !iswelder(W))
 		return FALSE
+	if(user.a_intent != INTENT_HELP)
+		return FALSE
 
 	var/obj/item/tool/weldingtool/WT = W
 	if(WT.remove_fuel(0, user))
 		user.visible_message(SPAN_NOTICE("[user] starts repairing the damage to [src]."),
 		SPAN_NOTICE("You start repairing the damage to [src]."))
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
-		if(do_after(user, max(5, round(damage / 5) * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall) && WT && WT.isOn())
+		if(do_after(user, max(5, floor(damage / 5) * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall) && WT && WT.isOn())
 			user.visible_message(SPAN_NOTICE("[user] finishes repairing the damage to [src]."),
 			SPAN_NOTICE("You finish repairing the damage to [src]."))
 			take_damage(-damage)
@@ -467,6 +505,8 @@
 		return
 	if(!(WT.remove_fuel(0, user)))
 		to_chat(user, SPAN_WARNING("You need more welding fuel!"))
+		return
+	if(user.a_intent == INTENT_HELP)
 		return
 
 	playsound(src, 'sound/items/Welder.ogg', 25, 1)

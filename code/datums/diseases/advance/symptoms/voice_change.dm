@@ -3,7 +3,7 @@
 
 Voice Change
 
-	Very Very noticable.
+	Very Very noticeable.
 	Lowers resistance considerably.
 	Decreases stage speed.
 	Reduced transmittable.
@@ -24,7 +24,7 @@ Bonus
 	transmittable = -1
 	level = 6
 
-/datum/symptom/voice_change/Activate(var/datum/disease/advance/A)
+/datum/symptom/voice_change/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 
@@ -38,15 +38,15 @@ Bonus
 					var/random_name = ""
 					switch(H.gender)
 						if(MALE)
-							random_name = pick(first_names_male)
+							random_name = pick(GLOB.first_names_male)
 						else
-							random_name = pick(first_names_female)
-					random_name += " [pick(last_names)]"
+							random_name = pick(GLOB.first_names_female)
+					random_name += " [pick(GLOB.last_names)]"
 					H.SetSpecialVoice(random_name)
 
 	return
 
-/datum/symptom/voice_change/End(var/datum/disease/advance/A)
+/datum/symptom/voice_change/End(datum/disease/advance/A)
 	..()
 	if(ishuman(A.affected_mob))
 		var/mob/living/carbon/human/H = A.affected_mob

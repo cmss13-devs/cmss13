@@ -3,7 +3,7 @@
 /proc/carp_migration() // -- Darem
 	//sleep(100)
 	spawn(rand(300, 600)) //Delayed announcements to keep the crew on their toes.
-		marine_announcement("Unknown biological entities have been detected near [station_name], please stand-by.", "Lifesign Alert", 'sound/AI/commandreport.ogg')
+		marine_announcement("Unknown biological entities have been detected near [MAIN_SHIP_NAME], please stand-by.", "Lifesign Alert", 'sound/AI/commandreport.ogg')
 
 /proc/lightsout(isEvent = 0, lightsoutAmount = 1,lightsoutRange = 25) //leave lightsoutAmount as 0 to break ALL lights
 	if(isEvent)
@@ -13,7 +13,7 @@
 		return
 
 	else
-		for(var/obj/structure/machinery/power/apc/apc in machines)
+		for(var/obj/structure/machinery/power/apc/apc in GLOB.machines)
 			apc.overload_lighting()
 
 	return

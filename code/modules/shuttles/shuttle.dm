@@ -29,13 +29,11 @@
 	var/iselevator = 0 //Used to remove some shuttle related procs and texts to make it compatible with elevators
 	var/almayerelevator = 0 //elevators on the almayer without limitations
 
-	var/list/last_passangers = list() //list of living creatures that were our last passengers
-
 	var/require_link = FALSE
 	var/linked = FALSE
 	var/ambience_muffle = MUFFLE_HIGH
 
-/datum/shuttle/proc/short_jump(var/area/origin,var/area/destination)
+/datum/shuttle/proc/short_jump(area/origin, area/destination)
 	if(moving_status != SHUTTLE_IDLE) return
 
 	//it would be cool to play a sound here
@@ -48,12 +46,12 @@
 		move(origin, destination)
 		moving_status = SHUTTLE_IDLE
 
-/datum/shuttle/proc/long_jump(var/area/departing, var/area/destination, var/area/interim, var/travel_time, var/direction)
+/datum/shuttle/proc/long_jump(area/departing, area/destination, area/interim, travel_time, direction)
 	if(moving_status != SHUTTLE_IDLE) return
 
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 	spawn(warmup_time)
@@ -88,7 +86,7 @@
 		transit_optimized = 0 //De-optimize the flight plans
 
 /* Pseudo-code. Auto-bolt shuttle airlocks when in motion.
-/datum/shuttle/proc/toggle_doors(var/close_doors, var/bolt_doors, var/area/whatArea)
+/datum/shuttle/proc/toggle_doors(close_doors, bolt_doors, area/whatArea)
 	if(!whatArea) return <-- logic checks!
 		for(all doors in whatArea)
 			if(door.id is the same as src.id)
@@ -99,7 +97,7 @@
 */
 
 //Actual code. lel
-/datum/shuttle/proc/close_doors(var/area/area)
+/datum/shuttle/proc/close_doors(area/area)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!area || !istype(area)) //somehow
 		return
@@ -122,14 +120,14 @@
 		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
 			INVOKE_ASYNC(src, PROC_REF(force_close_launch), D)
 
-/datum/shuttle/proc/force_close_launch(var/obj/structure/machinery/door/airlock/AL) // whatever. SLEEPS
+/datum/shuttle/proc/force_close_launch(obj/structure/machinery/door/airlock/AL) // whatever. SLEEPS
 	AL.safe = FALSE
 	AL.unlock()
 	AL.close()
 	AL.lock()
 	AL.safe = TRUE
 
-/datum/shuttle/proc/open_doors(var/area/area)
+/datum/shuttle/proc/open_doors(area/area)
 	if(!area || !istype(area)) //somehow
 		return
 
@@ -180,7 +178,7 @@
 //just moves the shuttle from A to B, if it can be moved
 //A note to anyone overriding move in a subtype. move() must absolutely not, under any circumstances, fail to move the shuttle.
 //If you want to conditionally cancel shuttle launches, that logic must go in short_jump() or long_jump()
-/datum/shuttle/proc/move(var/area/origin, var/area/destination, var/direction=null)
+/datum/shuttle/proc/move(area/origin, area/destination, direction=null)
 
 	if(origin == destination)
 		return
@@ -195,16 +193,14 @@
 		T.ScrapeAway()
 
 	for(var/mob/living/carbon/bug in destination)
-		bug.gib(create_cause_data(initial(origin.name)))
+		bug.gib(create_cause_data("squashing", initial(origin.name)))
 
 	for(var/mob/living/simple_animal/pest in destination)
-		pest.gib(create_cause_data(initial(origin.name)))
+		pest.gib(create_cause_data("squashing", initial(origin.name)))
 
 	origin.move_contents_to(destination, direction=direction)
 
-	last_passangers.Cut()
-	for(var/mob/M in destination)
-		last_passangers += M
+	for(var/mob/living/M in destination)
 		if(M.client)
 			spawn(0)
 				if(M.buckled && !iselevator)
@@ -215,17 +211,18 @@
 					shake_camera(M, iselevator? 2 : 10, 1)
 		if(istype(M, /mob/living/carbon) && !iselevator)
 			if(!M.buckled)
-				M.apply_effect(3, WEAKEN)
+				M.Stun(3)
+				M.KnockDown(3)
 
 	for(var/turf/T in origin) // WOW so hacky - who cares. Abby
 		if(iselevator)
 			if(istype(T,/turf/open/space))
 				if(is_mainship_level(T.z))
-					new /turf/open/floor/almayer/empty(T)
+					T.ChangeTurf(/turf/open/floor/almayer/empty/requisitions)
 				else
-					new /turf/open/gm/empty(T)
+					T.ChangeTurf(/turf/open/gm/empty)
 		else if(istype(T,/turf/open/space))
-			new /turf/open/floor/plating(T)
+			T.ChangeTurf(/turf/open/floor/plating)
 
 	return
 

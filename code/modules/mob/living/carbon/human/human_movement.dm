@@ -4,7 +4,8 @@
 	recalculate_move_delay = FALSE
 
 	if(interactee)// moving stops any kind of interaction
-		unset_interaction()
+		if(!(SEND_SIGNAL(src, COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION) & COMPONENT_HUMAN_MOVEMENT_KEEP_USING))
+			unset_interaction()
 
 	if(species.slowdown)
 		. += species.slowdown
@@ -58,7 +59,7 @@
 
 	reducible_tally += reagent_move_delay_modifier //Muscle-stimulating property
 
-	if(bodytemperature < species.cold_level_1 && !isYautja(src))
+	if(bodytemperature < species.cold_level_1 && !isyautja(src))
 		reducible_tally += 2 //Major slowdown if you're freezing
 
 	if(temporary_slowdown)
@@ -100,14 +101,14 @@
 
 	move_delay = .
 
-/mob/living/carbon/human/Process_Spacemove(var/check_drift = 0)
+/mob/living/carbon/human/Process_Spacemove(check_drift = 0)
 	//Can we act
 	if(is_mob_restrained()) return 0
 
 	//Do we have a working jetpack
 	if(istype(back, /obj/item/tank/jetpack))
 		var/obj/item/tank/jetpack/J = back
-		if(((!check_drift) || (check_drift && J.stabilization_on)) && (!lying) && (J.allow_thrust(0.01, src)))
+		if(((!check_drift) || (check_drift && J.stabilization_on)) && (body_position == STANDING_UP) && (J.allow_thrust(0.01, src)))
 			inertia_dir = 0
 			return 1
 // if(!check_drift && J.allow_thrust(0.01, src))
@@ -118,7 +119,7 @@
 	return 0
 
 
-/mob/living/carbon/human/Process_Spaceslipping(var/prob_slip = 5)
+/mob/living/carbon/human/Process_Spaceslipping(prob_slip = 5)
 	//If knocked out we might just hit it and stop.  This makes it possible to get dead bodies and such.
 
 	if(species.flags & NO_SLIP)
@@ -137,5 +138,12 @@
 	if (!r_hand) prob_slip -= 2
 	else if(r_hand.w_class <= SIZE_SMALL) prob_slip--
 
-	prob_slip = round(prob_slip)
+	prob_slip = floor(prob_slip)
 	return(prob_slip)
+
+/// Updates [TRAIT_FLOORED] based on whether the mob has appropriate limbs to stand or not
+/mob/living/carbon/human/proc/update_leg_status()
+	if((has_limb("r_foot") && has_limb("r_leg")) || (has_limb("l_foot") && has_limb("l_leg")))
+		REMOVE_TRAIT(src, TRAIT_FLOORED, BODY_TRAIT)
+	else
+		ADD_TRAIT(src, TRAIT_FLOORED, BODY_TRAIT)

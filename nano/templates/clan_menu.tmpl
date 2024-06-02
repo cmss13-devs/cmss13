@@ -46,7 +46,7 @@
 	}
 
 	#clan_list {
-		border-collapse: collapse; 
+		border-collapse: collapse;
 		width: 100%;
 	}
 </style>
@@ -76,9 +76,6 @@
 	<h1 class="whiteTitle">{{:data.clan_name}}</h1>
 	<pre class="whiteDescription">{{:data.clan_description}}</pre>
 
-	{{if data.clan_honor != null}}
-		<h3 class="whiteTitle">Honor: {{:data.clan_honor}}</h3>
-	{{/if}}
 	<table>
 		<tr>
 			{{if data.player_rename_clan}}
@@ -111,7 +108,6 @@
 		<th class="noPadCell"></th>
 		<th>Name</th>
 		<th>Rank</th>
-		<th>Honor</th>
 		{{if data.player_modify_ranks}}
 			<th></th>
 		{{/if}}
@@ -128,7 +124,6 @@
 			<td class="noPadCell"></td>
 			<td id="clan_name">{{:keys.name}}</td>
 			<td>{{:keys.rank}}</td>
-			<td>{{:keys.honor}}</td>
 			{{if data.player_rank_pos > keys.rank_pos}}
 				{{if data.player_modify_ranks}}
 					<td><div unselectable="on">{{:helper.link('Set Rank', '', { 'clan_target_href' : keys.player_id, 'clan_action': 'modifyrank' })}}</div></td>

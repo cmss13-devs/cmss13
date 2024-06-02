@@ -6,7 +6,7 @@
 	duration = 4
 	var/hit_count = 1
 
-/datum/effects/weak_spray_stack/validate_atom(var/atom/A)
+/datum/effects/weak_spray_stack/validate_atom(atom/A)
 
 	if(!ishuman(A))
 		return FALSE

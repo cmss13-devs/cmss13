@@ -14,7 +14,7 @@
  */
 
 //Simply removes < and > and limits the length of the message
-/proc/strip_html_simple(var/t,var/limit=MAX_MESSAGE_LEN)
+/proc/strip_html_simple(t, limit=MAX_MESSAGE_LEN)
 	var/list/strip_chars = list("<",">")
 	t = copytext(t,1,limit)
 	for(var/char in strip_chars)
@@ -25,44 +25,49 @@
 	return t
 
 //Removes a few problematic characters
-/proc/sanitize_simple(var/text, var/list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
+/proc/sanitize_simple(text, list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
 	for(var/char in repl_chars)
 		text = replacetext(text, char, repl_chars[char])
 	return text
 
-/proc/readd_quotes(var/text)
+///Helper for only alphanumeric characters plus common punctuation, spaces, underscore and hyphen _ -.
+/proc/replace_non_alphanumeric_plus(text)
+	var/regex/alphanumeric = regex(@{"[^a-z0-9 ,.?!\-_&]"}, "gi")
+	return alphanumeric.Replace(text, "")
+
+/proc/readd_quotes(text)
 	var/list/repl_chars = list("&#34;" = "\"", "&#39;" = "'")
 	for(var/char in repl_chars)
 		text = replacetext(text, char, repl_chars[char])
 	return text
 
 //Runs byond's sanitization proc along-side sanitize_simple
-/proc/sanitize(var/input, var/list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
+/proc/sanitize(input, list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
 	var/output = html_encode(sanitize_simple(input, repl_chars))
 	return readd_quotes(output)
 
 //Runs byond's sanitization proc along-side strip_improper
-/proc/sanitize_area(var/input)
+/proc/sanitize_area(input)
 	var/output = html_encode(strip_improper(input))
 	return readd_quotes(output)
 
 //Removes control chars like "\n"
-/proc/sanitize_control_chars(var/text)
+/proc/sanitize_control_chars(text)
 	var/static/regex/whitelistedWords = regex(@{"([^\u0020-\u8000]+)"}, "g")
 	return whitelistedWords.Replace(text, "")
 
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's html_encode()
-/proc/strip_html(var/text, var/limit=MAX_MESSAGE_LEN)
+/proc/strip_html(text, limit=MAX_MESSAGE_LEN)
 	return copytext((sanitize(strip_html_simple(text))), 1, limit)
 
 //Runs byond's sanitization proc along-side strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' that html_encode() would cause
-/proc/adminscrub(var/text, var/limit=MAX_MESSAGE_LEN)
+/proc/adminscrub(text, limit=MAX_MESSAGE_LEN)
 	return copytext((html_encode(strip_html_simple(text))), 1, limit)
 
 //Returns null if there is any bad text in the string
-/proc/reject_bad_text(var/text, var/max_length=512)
+/proc/reject_bad_text(text, max_length=512)
 	if(length(text) > max_length) return //message too long
 	var/non_whitespace = 0
 	for(var/i=1, i<=length(text), i++)
@@ -75,17 +80,17 @@
 	if(non_whitespace) return text //only accepts the text if it has some non-spaces
 
 // Used to get a sanitized input.
-/proc/stripped_input(var/mob/user, var/message = "", var/title = "", var/default = "", var/max_length=MAX_MESSAGE_LEN)
+/proc/stripped_input(mob/user, message = "", title = "", default = "", max_length=MAX_MESSAGE_LEN)
 	var/name = input(user, message, title, default) as text|null
 	return html_encode(trim(name, max_length))
 
 // Used to get a properly sanitized multiline input, of max_length
-/proc/stripped_multiline_input(var/mob/user, var/message = "", var/title = "", var/default = "", var/max_length=MAX_MESSAGE_LEN)
+/proc/stripped_multiline_input(mob/user, message = "", title = "", default = "", max_length=MAX_MESSAGE_LEN)
 	var/name = input(user, message, title, default) as message|null
 	return html_encode(trim(name, max_length))
 
 //Filters out undesirable characters from names
-/proc/reject_bad_name(var/t_in, var/allow_numbers = 0, var/max_length = MAX_NAME_LEN, var/allow_signs = TRUE)
+/proc/reject_bad_name(t_in, allow_numbers = 0, max_length = MAX_NAME_LEN, allow_signs = TRUE)
 	if(!t_in || length(t_in) > max_length)
 		return //Rejects the input if it is null or if it is longer then the max length allowed
 
@@ -164,6 +169,11 @@
 		t = "0[t]"
 	return t
 
+/proc/pad_trailing(text, padding, size)
+	while (length(text) < size)
+		text = "[text][padding]"
+	return text
+
 //Adds 'u' number of spaces ahead of the text 't'
 /proc/add_lspace(t, u)
 	while(length(t) < u)
@@ -191,15 +201,33 @@
 
 	return ""
 
+//Returns a string with reserved characters and spaces after the first and last letters removed
+//Like trim(), but very slightly faster. worth it for niche usecases
+/proc/trim_reduced(text)
+	var/starting_coord = 1
+	var/text_len = length(text)
+	for (var/i in 1 to text_len)
+		if (text2ascii(text, i) > 32)
+			starting_coord = i
+			break
+
+	for (var/i = text_len, i >= starting_coord, i--)
+		if (text2ascii(text, i) > 32)
+			return copytext(text, starting_coord, i + 1)
+
+	if(starting_coord > 1)
+		return copytext(text, starting_coord)
+	return ""
+
 //Returns a string with reserved characters and spaces before the first word and after the last word removed.
 /proc/trim(text)
 	return trim_left(trim_right(text))
 
 //Returns a string with the first element of the string capitalized.
-/proc/capitalize(var/t as text)
+/proc/capitalize(t as text)
 	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
 
-/proc/stringpercent(var/text,character = "*")
+/proc/stringpercent(text,character = "*")
 //This proc returns the number of chars of the string that is the character
 //This is used for detective work to determine fingerprint completion.
 	if(!text || !character)
@@ -211,7 +239,7 @@
 			count++
 	return count
 
-/proc/reverse_text(var/text = "")
+/proc/reverse_text(text = "")
 	var/new_text = ""
 	for(var/i = length(text); i > 0; i--)
 		new_text += copytext(text, i, i+1)
@@ -219,7 +247,7 @@
 
 //Used in preferences' SetFlavorText and human's set_flavor verb
 //Previews a string of len or less length
-/proc/TextPreview(var/string,var/len=40)
+/proc/TextPreview(string, len=40)
 	var/string_length = length(string)
 	if(!string_length)
 		return "\[...\]"
@@ -235,7 +263,7 @@
 /proc/sanitize_filename(t)
 	return sanitize_simple(t, list("\n"="", "\t"="", "/"="", "\\"="", "?"="", "%"="", "*"="", ":"="", "|"="", "\""="", "<"="", ">"=""))
 
-/proc/deep_string_equals(var/A, var/B)
+/proc/deep_string_equals(A, B)
 	if(length(A) != length(B))
 		return FALSE
 	for(var/i = 1 to length(A))
@@ -301,7 +329,7 @@
 // Returns the location of the atom as a string in the following format:
 // "Area Name (X, Y, Z)"
 // Mainly used for logging
-/proc/get_location_in_text(atom/A, var/include_jmp_link = TRUE)
+/proc/get_location_in_text(atom/A, include_jmp_link = TRUE)
 	var/message
 	if(!A.loc)
 		message = "Invalid location"
@@ -319,7 +347,7 @@
 	return jointext(chars_to_add, char) + text
 
 /// Finds the first letter of each word in the provided string and capitalize them
-/proc/capitalize_first_letters(var/string)
+/proc/capitalize_first_letters(string)
 	var/list/text = splittext_char(string, " ")
 	var/list/finalized_text = list()
 	for(var/word in text)
@@ -329,15 +357,15 @@
 // Aurorastation Markup System
 // For processing simple markup, similar to what Skype and Discord use.
 // Enabled from a config setting.
-/proc/process_chat_markup(var/message, var/list/ignore_tags = list())
+/proc/process_chat_markup(message, list/ignore_tags = list())
 	if (!message)
 		return ""
 
 	// ---Begin URL caching.
 	var/list/urls = list()
 	var/i = 1
-	while (url_find_lazy.Find_char(message))
-		urls["\ref[urls]-[i]"] = url_find_lazy.match
+	while (GLOB.url_find_lazy.Find_char(message))
+		urls["\ref[urls]-[i]"] = GLOB.url_find_lazy.match
 		i++
 
 	for (var/ref in urls)
@@ -345,9 +373,9 @@
 	// ---End URL caching
 
 	var/regex/tag_markup
-	for (var/tag in (markup_tags - ignore_tags))
-		tag_markup = markup_regex[tag]
-		message = tag_markup.Replace_char(message, "$2[markup_tags[tag][1]]$3[markup_tags[tag][2]]$5")
+	for (var/tag in (GLOB.markup_tags - ignore_tags))
+		tag_markup = GLOB.markup_regex[tag]
+		message = tag_markup.Replace_char(message, "$2[GLOB.markup_tags[tag][1]]$3[GLOB.markup_tags[tag][2]]$5")
 
 	// ---Unload URL cache
 	for (var/ref in urls)
@@ -358,3 +386,20 @@
 #define SMALL_FONTS(FONTSIZE, MSG) "<span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span>"
 #define SMALL_FONTS_CENTRED(FONTSIZE, MSG) "<center><span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span></center>"
 #define SMALL_FONTS_COLOR(FONTSIZE, MSG, COLOR) "<span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px; color: [COLOR];\">[MSG]</span>"
+
+//finds the first occurrence of one of the characters from needles argument inside haystack
+//it may appear this can be optimised, but it really can't. findtext() is so much faster than anything you can do in byondcode.
+//stupid byond :(
+/proc/findchar(haystack, needles, start=1, end=0)
+	var/char = ""
+	var/len = length(needles)
+	for(var/i = 1, i <= len, i += length(char))
+		char = needles[i]
+		. = findtextEx(haystack, char, start, end)
+		if(.)
+			return
+	return 0
+
+/// Check if the string `haystack` begins with the string `needle`.
+/proc/string_starts_with(haystack, needle)
+	return (copytext(haystack, 1, length(needle) + 1) == needle)

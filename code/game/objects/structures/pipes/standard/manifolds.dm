@@ -6,7 +6,7 @@
 	dir = SOUTH
 	valid_directions = list(EAST, NORTH, WEST)
 
-/obj/structure/pipes/standard/manifold/color_cache_name(var/obj/structure/pipes/node)
+/obj/structure/pipes/standard/manifold/color_cache_name(obj/structure/pipes/node)
 	if(pipe_color == node.pipe_color)
 		return node.pipe_color
 	else
@@ -28,7 +28,7 @@
 		if(WEST)
 			valid_directions = list(NORTH, EAST, SOUTH)
 
-/obj/structure/pipes/standard/manifold/update_icon(var/safety = 0)
+/obj/structure/pipes/standard/manifold/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
@@ -103,6 +103,10 @@
 	icon_state = "map-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
+
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom
+	name = "Reinforced Air supply pipe manifold"
+	explodey = FALSE
 
 /obj/structure/pipes/standard/manifold/hidden/yellow
 	color = PIPE_COLOR_YELLOW
@@ -181,6 +185,10 @@
 	icon_state = "map_4way-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
+
+/obj/structure/pipes/standard/manifold/fourway/hidden/supply/no_boom
+	name = "reinforced 4-way air supply pipe manifold"
+	explodey = FALSE
 
 /obj/structure/pipes/standard/manifold/fourway/hidden/yellow
 	color = PIPE_COLOR_YELLOW

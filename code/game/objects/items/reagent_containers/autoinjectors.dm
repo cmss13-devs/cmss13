@@ -33,7 +33,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/proc/update_uses_left()
 	var/UL = reagents.total_volume / amount_per_transfer_from_this
-	UL = round(UL) == UL ? UL : round(UL) + 1
+	UL = floor(UL) == UL ? UL : floor(UL) + 1
 	uses_left = UL
 
 /obj/item/reagent_container/hypospray/autoinjector/attack(mob/M, mob/user)
@@ -50,7 +50,7 @@
 	if(uses_left)
 		overlays += "[chemname]_[uses_left]"
 	if((isstorage(loc) || ismob(loc)) && display_maptext)
-		maptext = "<span class='langchat'>[maptext_label]</span>"
+		maptext = SPAN_LANGCHAT("[maptext_label]")
 	else
 		maptext = ""
 
@@ -89,15 +89,6 @@
 	icon_state = "emptyskill"
 	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
-
-/obj/item/reagent_container/hypospray/autoinjector/quickclot
-	name = "quick clot autoinjector"
-	chemname = "quickclot"
-	desc = "An autoinjector loaded with 3 uses of Quick Clot, a chemical designed to pause all bleeding. Renew doses as needed."
-	amount_per_transfer_from_this = LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
-	volume = (LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
-	display_maptext = TRUE
-	maptext_label = "Qc"
 
 /obj/item/reagent_container/hypospray/autoinjector/adrenaline
 	name = "epinephrine autoinjector"
@@ -148,6 +139,12 @@
 	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use
+	desc = "An EZ autoinjector loaded with 1 use of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
+	volume = 15
+	amount_per_transfer_from_this = 15
+	uses_left = 1
+
 /obj/item/reagent_container/hypospray/autoinjector/oxycodone
 	name = "oxycodone autoinjector (EXTREME PAINKILLER)"
 	chemname = "oxycodone"
@@ -173,6 +170,12 @@
 	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
+/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use
+	desc = "An EZ autoinjector loaded with 1 use of Kelotane, a common burn medicine. Doesn't require any training to use."
+	volume = 15
+	amount_per_transfer_from_this = 15
+	uses_left = 1
+
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine
 	name = "bicaridine autoinjector"
 	chemname = "bicaridine"
@@ -189,6 +192,12 @@
 	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use
+	desc = "An EZ autoinjector loaded with 1 use of Bicaridine, a common brute and circulatory damage medicine.  Doesn't require any training to use."
+	volume = 15
+	amount_per_transfer_from_this = 15
+	uses_left = 1
+
 /obj/item/reagent_container/hypospray/autoinjector/inaprovaline
 	name = "inaprovaline autoinjector"
 	chemname = "inaprovaline"
@@ -200,8 +209,10 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency
 	name = "emergency autoinjector (CAUTION)"
+	desc = "An auto-injector loaded with a special cocktail of chemicals, to be used in life-threatening situations. Doesn't require any training to use."
+	icon_state = "emptyskill"
+	item_state = "emptyskill"
 	chemname = "emergency"
-	desc = "An auto-injector loaded with a special cocktail of chemicals, to be used in life-threatening situations."
 	amount_per_transfer_from_this = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
 	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
 	mixed_chem = TRUE
@@ -210,12 +221,6 @@
 	injectVOL = 70//limited-supply emergency injector with v.large injection of drugs. Variable sfx freq sometimes rolls too quiet.
 	display_maptext = TRUE //see anaesthetic injector
 	maptext_label = "!!"
-
-/obj/item/reagent_container/hypospray/autoinjector/emergency/skillless
-	name = "EZ emergency autoinjector (CAUTION)"
-	desc = "An auto-injector loaded with a special cocktail of chemicals, to be used in life-threatening situations. Doesn't require any training to use."
-	icon_state = "emptyskill"
-	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize()
@@ -252,6 +257,7 @@
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE
 	volume = REAGENTS_OVERDOSE
 	uses_left = 1
+	black_market_value = 25
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/attack(mob/M as mob, mob/user as mob)
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))

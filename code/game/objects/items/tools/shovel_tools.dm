@@ -17,7 +17,8 @@
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	var/dirt_overlay = "shovel_overlay"
 	var/folded = FALSE
-	var/dirt_type = NO_DIRT // 0 for no dirt, 1 for brown dirt, 2 for snow, 3 for big red.
+	/// 0 for no dirt, 1 for brown dirt, 2 for snow, 3 for big red.
+	var/dirt_type = NO_DIRT
 	var/shovelspeed = 30
 	var/dirt_amt = 0
 	var/dirt_amt_per_dig = 6
@@ -25,7 +26,7 @@
 
 /obj/item/tool/shovel/update_icon()
 	var/image/I = image(icon,src,dirt_overlay)
-	switch(dirt_type) // We can actually shape the color for what enviroment we dig up our dirt in.
+	switch(dirt_type) // We can actually shape the color for what environment we dig up our dirt in.
 		if(DIRT_TYPE_GROUND) I.color = "#512A09"
 		if(DIRT_TYPE_MARS) I.color = "#FF5500"
 		if(DIRT_TYPE_SNOW) I.color = "#EBEBEB"
@@ -148,9 +149,9 @@
 	else
 		dump_shovel(target, user)
 
-/obj/item/tool/shovel/proc/dump_shovel(var/atom/target, var/mob/user)
+/obj/item/tool/shovel/proc/dump_shovel(atom/target, mob/user)
 	var/turf/T = target
-	to_chat(user, SPAN_NOTICE("you dump the [dirt_type_to_name(dirt_type)]!"))
+	to_chat(user, SPAN_NOTICE("You dump the [dirt_type_to_name(dirt_type)]!"))
 	playsound(user.loc, "rustle", 30, 1, 6)
 	if(dirt_type == DIRT_TYPE_SNOW)
 		var/obj/item/stack/snow/S = locate() in T
@@ -161,7 +162,7 @@
 	dirt_amt = 0
 	update_icon()
 
-/obj/item/tool/shovel/proc/dirt_type_to_name(var/dirt_type)
+/obj/item/tool/shovel/proc/dirt_type_to_name(dirt_type)
 	switch(dirt_type)
 		if(DIRT_TYPE_GROUND)
 			return "dirt"
@@ -171,6 +172,8 @@
 			return "snow"
 		if(DIRT_TYPE_SAND)
 			return "sand"
+		if(DIRT_TYPE_SHALE)
+			return "loam"
 
 /obj/item/tool/shovel/proc/check_dirt_type()
 	if(dirt_amt <= 0)
@@ -230,7 +233,7 @@
 /obj/item/tool/shovel/etool/attack_self(mob/user as mob)
 	folded = !folded
 	if(folded)
-		w_class = SIZE_MEDIUM
+		w_class = SIZE_SMALL
 		force = 2
 	else
 		w_class = SIZE_LARGE
@@ -239,7 +242,7 @@
 
 /obj/item/tool/shovel/etool/folded
 	folded = TRUE
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	force = 2
 	icon_state = "etool_c"
 	item_state = "etool_c"

@@ -1,8 +1,8 @@
-var/list/machines = list()
-var/list/processing_machines = list()
+GLOBAL_LIST_EMPTY(machines)
+GLOBAL_LIST_EMPTY(processing_machines)
 
-var/list/datum/powernet/powernets = list() //Holds all powernet datums in use or pooled
-var/list/datum/powernet/powernets_by_name = list() //Holds all powernet datums in use or pooled
+GLOBAL_LIST_EMPTY(powernets) //Holds all powernet datums in use or pooled
+GLOBAL_LIST_EMPTY(powernets_by_name) //Holds all powernet datums in use or pooled
 
 
 SUBSYSTEM_DEF(machinery)
@@ -19,12 +19,12 @@ SUBSYSTEM_DEF(machinery)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/machinery/stat_entry(msg)
-	msg = "M:[global.processing_machines.len]"
+	msg = "M:[GLOB.processing_machines.len]"
 	return ..()
 
 /datum/controller/subsystem/machinery/fire(resumed = FALSE)
 	if (!resumed)
-		currentrunmachines = processing_machines.Copy()
+		currentrunmachines = GLOB.processing_machines.Copy()
 
 	while (currentrunmachines.len)
 		var/obj/structure/machinery/M = currentrunmachines[currentrunmachines.len]

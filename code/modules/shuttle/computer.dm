@@ -51,14 +51,14 @@
 	if(.)
 		return
 
-	if(!isXenoQueen(usr) && !allowed(usr))
-		to_chat(usr, "<span class='danger'>Access denied.</span>")
+	if(!isqueen(usr) && !allowed(usr))
+		to_chat(usr, SPAN_DANGER("Access denied."))
 		return TRUE
 
 	if(href_list["move"])
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 // if(!(M.shuttle_flags & GAMEMODE_IMMUNE) && world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock)
-// to_chat(usr, "<span class='warning'>The engines are still refueling.</span>")
+// to_chat(usr, SPAN_WARNING("The engines are still refueling."))
 // return TRUE
 		if(!M.can_move_topic(usr))
 			return TRUE
@@ -71,18 +71,18 @@
 		switch(SSshuttle.moveShuttle(shuttleId, href_list["move"], 1))
 			if(DOCKING_SUCCESS)
 				if(previous_status != SHUTTLE_IDLE)
-					visible_message("<span class='notice'>Destination updated, recalculating route.</span>")
+					visible_message(SPAN_NOTICE("Destination updated, recalculating route."))
 				else
-					visible_message("<span class='notice'>Shuttle departing. Please stand away from the doors.</span>")
+					visible_message(SPAN_NOTICE("Shuttle departing. Please stand away from the doors."))
 			if(DOCKING_NULL_SOURCE)
-				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
+				to_chat(usr, SPAN_WARNING("Invalid shuttle requested."))
 				return TRUE
 			else
-				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
+				to_chat(usr, SPAN_NOTICE("Unable to comply."))
 				return TRUE
 
-/obj/structure/machinery/computer/shuttle/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
-	if(port && (shuttleId == initial(shuttleId) || override))
+/obj/structure/machinery/computer/shuttle/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	if(port && (shuttleId == initial(shuttleId)))
 		shuttleId = port.id
 
 /obj/structure/machinery/computer/shuttle/ert
@@ -91,7 +91,75 @@
 	icon_state = "syndishuttle"
 	req_access = list()
 	breakable = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
 	var/disabled = FALSE
+	var/compatible_landing_zones = list()
+
+	/// this interface is busy - used in [/obj/structure/machinery/computer/shuttle/ert/proc/launch_home] as this can take a second
+	var/spooling
+
+	/// if this shuttle only has the option to return home
+	var/must_launch_home = FALSE
+
+	/// if the ERT that used this shuttle has returned home
+	var/mission_accomplished = FALSE
+
+/obj/structure/machinery/computer/shuttle/ert/broken
+	name = "nonfunctional shuttle control console"
+	disabled = TRUE
+	desc = "A transport shuttle flight computer. This one seems broken."
+
+/obj/structure/machinery/computer/shuttle/ert/Initialize(mapload, ...)
+	. = ..()
+	compatible_landing_zones = get_landing_zones()
+
+/obj/structure/machinery/computer/shuttle/ert/proc/get_landing_zones()
+	. = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(!is_mainship_level(dock.z))
+			continue
+
+		if(dock.is_external)
+			continue
+
+		. += list(dock)
+
+/obj/structure/machinery/computer/shuttle/ert/proc/launch_home()
+	if(spooling)
+		return
+
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+
+	spooling = TRUE
+	SStgui.update_uis(src)
+
+	var/datum/turf_reservation/loaded = SSmapping.lazy_load_template(ert.distress_beacon.home_base, force = TRUE)
+	var/turf/bottom_left = loaded.bottom_left_turfs[1]
+	var/turf/top_right = loaded.top_right_turfs[1]
+
+	var/obj/docking_port/stationary/emergency_response/target
+	for(var/obj/docking_port/stationary/emergency_response/shuttle in SSshuttle.stationary)
+		if(shuttle.z != bottom_left.z)
+			continue
+		if(shuttle.x >= top_right.x || shuttle.y >= top_right.y)
+			continue
+		if(shuttle.x <= bottom_left.x || shuttle.y <= bottom_left.y)
+			continue
+
+		target = shuttle
+		break
+
+	if(!target)
+		spooling = FALSE
+		return
+
+	SSshuttle.moveShuttleToDock(ert, target, TRUE)
+	target.lockdown_on_land = TRUE
+
+	spooling = FALSE
+	must_launch_home = FALSE
+
 
 /obj/structure/machinery/computer/shuttle/ert/is_disabled()
 	return disabled
@@ -103,10 +171,25 @@
 	disabled = FALSE
 
 /obj/structure/machinery/computer/shuttle/ert/tgui_interact(mob/user, datum/tgui/ui)
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+
+	if(ert.distress_beacon && ishuman(user))
+		var/mob/living/carbon/human/human_user = user
+		var/obj/item/card/id/id = human_user.get_active_hand()
+		if(!istype(id))
+			id = human_user.get_inactive_hand()
+
+		if(!istype(id))
+			id = human_user.get_idcard()
+
+		if(!id || !HAS_TRAIT_FROM_ONLY(id, TRAIT_ERT_ID, ert.distress_beacon))
+			to_chat(user, SPAN_WARNING("Your ID is not authorized to interact with this terminal."))
+			balloon_alert(user, "unauthorized!")
+			return
+
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-		ui = new(user, src, "NavigationShuttle", "[shuttle.name] Navigation Computer")
+		ui = new(user, src, "NavigationShuttle", "[ert.name] Navigation Computer")
 		ui.open()
 
 
@@ -131,24 +214,25 @@
 
 /obj/structure/machinery/computer/shuttle/ert/ui_data(mob/user)
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
-	var/list/docks = SSshuttle.stationary
 	. = list()
 	.["shuttle_mode"] = ert.mode
 	.["flight_time"] = ert.timeLeft(0)
 	.["is_disabled"] = disabled
+	.["spooling"] = spooling
+	.["must_launch_home"] = must_launch_home
+	.["mission_accomplished"] = mission_accomplished
 
-	var/door_count = length(ert.doors)
+	var/door_count = length(ert.external_doors)
 	var/locked_count = 0
-	for(var/obj/structure/machinery/door/airlock/air as anything in ert.doors)
+	for(var/obj/structure/machinery/door/airlock/air as anything in ert.external_doors)
 		if(air.locked)
 			locked_count++
 	.["locked_down"] = door_count == locked_count
 
-	if(ert.destination)
-		.["target_destination"] = ert.destination.name
+	.["target_destination"] = ert.destination?.name
 
 	.["destinations"] = list()
-	for(var/obj/docking_port/stationary/emergency_response/dock in docks)
+	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
 		var/dock_reserved = FALSE
 		for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
 			if(dock == other_shuttle.destination)
@@ -171,7 +255,31 @@
 		return
 
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+
 	switch(action)
+		if("button-push")
+			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			return FALSE
+		if("open")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("open", external_only = TRUE)
+		if("close")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("close", external_only = TRUE)
+		if("lockdown")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("force-lock", external_only = TRUE)
+		if("lock")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("lock", external_only = TRUE)
+		if("unlock")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("unlock", external_only = TRUE)
 		if("move")
 			if(ert.mode != SHUTTLE_IDLE)
 				to_chat(usr, SPAN_WARNING("You can't move to a new destination whilst in transit."))
@@ -200,29 +308,17 @@
 			SSshuttle.moveShuttle(ert.id, dock.id, TRUE)
 			to_chat(usr, SPAN_NOTICE("You begin the launch sequence to [dock]."))
 			return TRUE
-		if("button-push")
-			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
-			return FALSE
-		if("open")
-			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
-				return TRUE
-			ert.control_doors("open")
-		if("close")
-			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
-				return TRUE
-			ert.control_doors("close")
-		if("lockdown")
-			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
-				return TRUE
-			ert.control_doors("force-lock")
-		if("lock")
-			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
-				return TRUE
-			ert.control_doors("lock")
-		if("unlock")
-			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
-				return TRUE
-			ert.control_doors("unlock")
+		if("launch_home")
+			if(!must_launch_home)
+				return
+
+			if(ert.mode != SHUTTLE_IDLE)
+				to_chat(ui.user, SPAN_WARNING("Unable to return home."))
+				balloon_alert(ui.user, "can't go home!")
+				return
+
+			launch_home()
+			return TRUE
 
 /obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)
 	. = ..(user)
@@ -230,43 +326,125 @@
 		return TRUE
 	tgui_interact(user)
 
+/obj/structure/machinery/computer/shuttle/ert/small
+	name = "transport shuttle"
+	desc = "A transport shuttle flight computer."
+	icon_state = "comm_alt"
+	req_access = list()
+	breakable = FALSE
+
+/obj/structure/machinery/computer/shuttle/ert/small/get_landing_zones()
+	. = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(!is_mainship_level(dock.z))
+			continue
+		if(istype(dock, /obj/docking_port/stationary/emergency_response/external/hangar_port))
+			continue
+		if(istype(dock, /obj/docking_port/stationary/emergency_response/external/hangar_starboard))
+			continue
+		. += list(dock)
+
+/obj/structure/machinery/computer/shuttle/ert/big
+	name = "transport shuttle"
+	desc = "A transport shuttle flight computer."
+	icon_state = "comm_alt"
+	req_access = list()
+	breakable = FALSE
+
+/obj/structure/machinery/computer/shuttle/ert/big/get_landing_zones()
+	. = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(!is_mainship_level(dock.z))
+			continue
+		. += list(dock)
+
 /obj/structure/machinery/computer/shuttle/lifeboat
 	name = "lifeboat console"
 	desc = "A lifeboat control computer."
 	icon_state = "terminal"
 	req_access = list()
 	breakable = FALSE
+	///If true, the lifeboat is in the process of launching, and so the code will not allow another launch.
+	var/launch_initiated = FALSE
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)
 	. = ..()
-	var/obj/docking_port/mobile/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 	if(lifeboat.status == LIFEBOAT_LOCKED)
-		to_chat(user, SPAN_WARNING("\The [src] flickers with error messages."))
+		to_chat(user, SPAN_WARNING("[src] flickers with error messages."))
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
-		to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Awaiting evacuation order\"."))
+		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)
 		switch(lifeboat.mode)
 			if(SHUTTLE_IDLE)
-				to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Awaiting confirmation of the evacuation order\"."))
-			if(SHUTTLE_IGNITING)
-				to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Engines firing\"."))
-			if(SHUTTLE_CALL)
-				to_chat(user, SPAN_NOTICE("\The [src] has flight information scrolling across the screen. The autopilot is working correctly."))
+				if(!istype(user, /mob/living/carbon/human))
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
+					return
 
-/obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/Xenomorph/xeno)
+				var/mob/living/carbon/human/human_user = user
+				if(!(ACCESS_MARINE_SENIOR in human_user.wear_id?.access) && !(ACCESS_MARINE_DROPSHIP in human_user.wear_id?.access))
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
+					return
+
+				if(SShijack.current_progress < SShijack.early_launch_required_progress)
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))
+					return
+
+				if(launch_initiated)
+					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
+					return
+
+				var/response = tgui_alert(user, "Launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
+				if(launch_initiated)
+					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
+					return
+				switch(response)
+					if ("Yes")
+						launch_initiated = TRUE
+						to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")
+						shipwide_ai_announcement("Launch command received. [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat doors will close in 10 seconds.")
+						addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
+						lifeboat.alarm_sound_loop.start()
+						lifeboat.playing_launch_announcement_alarm = TRUE
+						return
+
+					if ("Emergency Launch")
+						launch_initiated = TRUE
+						to_chat(user, "[src]'s screen blinks and says \"Emergency Launch command accepted\".")
+						lifeboat.evac_launch()
+						shipwide_ai_announcement("Emergency Launch command received. Launching [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat.")
+						return
+
+			if(SHUTTLE_IGNITING)
+				to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing\"."))
+			if(SHUTTLE_CALL)
+				to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))
+
+/obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.caste && xeno.caste.is_intelligent)
-		var/obj/docking_port/mobile/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
+		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 		if(lifeboat.status == LIFEBOAT_LOCKED)
 			to_chat(xeno, SPAN_WARNING("We already wrested away control of this metal bird."))
+			return XENO_NO_DELAY_ACTION
+		if(lifeboat.mode == SHUTTLE_CALL)
+			to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
 			return XENO_NO_DELAY_ACTION
 
 		xeno_attack_delay(xeno)
 		if(do_after(usr, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			if(lifeboat.status != LIFEBOAT_LOCKED)
-				lifeboat.status = LIFEBOAT_LOCKED
-				lifeboat.available = FALSE
-				lifeboat.set_mode(SHUTTLE_IDLE)
-				xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
+			if(lifeboat.status == LIFEBOAT_LOCKED)
+				return XENO_NO_DELAY_ACTION
+			if(lifeboat.mode == SHUTTLE_CALL)
+				to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
+				return XENO_NO_DELAY_ACTION
+			lifeboat.status = LIFEBOAT_LOCKED
+			lifeboat.available = FALSE
+			lifeboat.set_mode(SHUTTLE_IDLE)
+			lifeboat.alarm_sound_loop?.stop()
+			lifeboat.playing_launch_announcement_alarm = FALSE
+			var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
+			lifeboat_dock.open_dock()
+			xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()

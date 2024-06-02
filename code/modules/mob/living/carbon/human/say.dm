@@ -1,4 +1,4 @@
-/mob/living/carbon/human/proc/parse_say_modes(var/message)
+/mob/living/carbon/human/proc/parse_say_modes(message)
 	. = list("message_and_language", "modes" = list())
 	if(length(message) >= 1 && message[1] == ";")
 		.["message_and_language"] = copytext(message, 2)
@@ -15,7 +15,7 @@
 			if(current_channel == " " || current_channel == ":" || current_channel == ".")
 				i--
 				break
-			.["modes"] += department_radio_keys[":[current_channel]"]
+			.["modes"] += GLOB.department_radio_keys[":[current_channel]"]
 		.["message_and_language"] = copytext(message, i+1)
 		var/multibroadcast_cooldown = 0
 		for(var/obj/item/device/radio/headset/headset in list(wear_l_ear, wear_r_ear))
@@ -26,25 +26,25 @@
 			else
 				headset.last_multi_broadcast = world.time
 		if(multibroadcast_cooldown)
-			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [round(multibroadcast_cooldown / 10)] more seconds."
+			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [floor(multibroadcast_cooldown / 10)] more seconds."
 		return
 
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":" || message[1] == "#"))
 		var/channel_prefix = copytext(message, 1, 3)
-		if(channel_prefix in department_radio_keys)
+		if(channel_prefix in GLOB.department_radio_keys)
 			.["message_and_language"] = copytext(message, 3)
-			.["modes"] += department_radio_keys[channel_prefix]
+			.["modes"] += GLOB.department_radio_keys[channel_prefix]
 			return
 
 	.["message_and_language"] = message
 	.["modes"] += MESSAGE_MODE_LOCAL
 	return
 
-/mob/living/carbon/human/proc/parse_say(var/message)
+/mob/living/carbon/human/proc/parse_say(message)
 	. = list("message", "language", "modes")
 	var/list/ml_and_modes = parse_say_modes(message)
-	.["modes"] = ml_and_modes["modes"]
-	.["fail_with"] = ml_and_modes["fail_with"]
+	.["modes"] = stat ? list(RADIO_MODE_WHISPER) : ml_and_modes["modes"]
+	.["fail_with"] = stat ? null : ml_and_modes["fail_with"]
 	var/message_and_language = ml_and_modes["message_and_language"]
 	var/parsed_language = parse_language(message_and_language)
 	if(parsed_language)
@@ -53,11 +53,11 @@
 	else
 		.["message"] = message_and_language
 
-/mob/living/carbon/human/say(var/message)
+/mob/living/carbon/human/say(message)
 
 	var/verb = "says"
 	var/alt_name = ""
-	var/message_range = world_view_size
+	var/message_range = GLOB.world_view_size
 	var/italics = 0
 
 	if(!able_to_speak)
@@ -69,14 +69,14 @@
 			to_chat(src, SPAN_DANGER("You cannot speak in IC (Muted)."))
 			return
 
-	message =  trim(strip_html(message))
+	message = trim(strip_html(message))
 
-	if(stat == 2)
+	if(stat == DEAD)
 		return say_dead(message)
 
 	if(copytext(message,1,2) == "*")
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
-			return emote(lowertext(copytext(message,2)), 1, null, TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
+			return emote(lowertext(copytext(message,2)), intentional = TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
 
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
@@ -115,13 +115,10 @@
 	message = capitalize(trim(message))
 	message = process_chat_markup(message, list("~", "_"))
 
-	if(speech_problem_flag)
-		var/list/handle_r = handle_speech_problems(message)
-		message = handle_r[1]
-		verb = handle_r[2]
-		speech_problem_flag = handle_r[3]
-
-	if(!message || stat)
+	var/list/handle_r = handle_speech_problems(message)
+	message = handle_r[1]
+	verb = handle_r[2]
+	if(!message)
 		return
 
 	// Automatic punctuation
@@ -132,7 +129,6 @@
 	for(var/message_mode in parsed["modes"])
 		var/list/obj/item/used_radios = list()
 		switch(message_mode)
-			if(MESSAGE_MODE_LOCAL)
 			if(RADIO_MODE_WHISPER)
 				whisper_say(message, speaking, alt_name)
 				return
@@ -142,9 +138,10 @@
 					used_radios += I
 					break // remove this if we EVER have two different intercomms with DIFFERENT frequencies IN ONE ROOM
 			else
-				var/earpiece = get_type_in_ears(/obj/item/device/radio)
-				if(earpiece)
-					used_radios += earpiece
+				if(message_mode != MESSAGE_MODE_LOCAL)
+					var/earpiece = get_type_in_ears(/obj/item/device/radio)
+					if(earpiece)
+						used_radios += earpiece
 
 		var/sound/speech_sound
 		var/sound_vol
@@ -162,7 +159,7 @@
 			for(var/mob/living/M in hearers(message_range, src))
 				if(M != src)
 					M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
-			if(isHumanSynthStrict(src))
+			if(ishumansynth_strict(src))
 				playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 
 			italics = 1
@@ -176,7 +173,7 @@
 	for(var/obj/item/device/radio/R in used_radios)
 		R.talk_into(src, message, message_mode, verb, speaking)
 
-/mob/living/carbon/human/proc/forcesay(var/forcesay_type = SUDDEN)
+/mob/living/carbon/human/proc/forcesay(forcesay_type = SUDDEN)
 	if (!client || stat != CONSCIOUS)
 		return
 
@@ -200,7 +197,7 @@
 	say(say_text)
 	winset(client, "input", "text=[null]")
 
-/mob/living/carbon/human/say_understands(var/mob/other,var/datum/language/speaking = null)
+/mob/living/carbon/human/say_understands(mob/other, datum/language/speaking = null)
 
 	if(species.can_understand(other))
 		return 1
@@ -223,7 +220,7 @@
 /mob/living/carbon/human/GetVoice()
 	return real_name
 
-/mob/living/carbon/human/proc/SetSpecialVoice(var/new_voice)
+/mob/living/carbon/human/proc/SetSpecialVoice(new_voice)
 	if(new_voice)
 		special_voice = new_voice
 	return
@@ -245,7 +242,7 @@ There is no language handling build into it however there is at the /mob level s
 for it but just ignore it.
 */
 
-/mob/living/carbon/human/say_quote(var/message, var/datum/language/speaking = null)
+/mob/living/carbon/human/say_quote(message, datum/language/speaking = null)
 	var/verb = "says"
 	var/ending = copytext(message, length(message))
 
@@ -259,50 +256,40 @@ for it but just ignore it.
 
 	return verb
 
-/mob/living/carbon/human/proc/handle_speech_problems(var/message)
-	var/list/returns[3]
+/mob/living/carbon/human/proc/handle_speech_problems(message)
+	var/list/returns[2]
 	var/verb = "says"
-	var/handled = 0
 	if(silent)
 		message = ""
-		handled = 1
 	if(sdisabilities & DISABILITY_MUTE)
 		message = ""
-		handled = 1
-	if(wear_mask)
-		if(istype(wear_mask, /obj/item/clothing/mask/horsehead))
-			var/obj/item/clothing/mask/horsehead/hoers = wear_mask
-			if(hoers.voicechange)
-				message = pick("NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!")
-				verb = pick("whinnies","neighs", "says")
-				handled = 1
-
+	var/braindam = getBrainLoss()
+	if(slurring || stuttering || HAS_TRAIT(src, TRAIT_DAZED) || braindam >= 60)
+		msg_admin_niche("[key_name(src)] stuttered while saying: \"[message]\"") //Messages that get modified by the 4 reasons below have their original message logged too
 	if(slurring)
 		message = slur(message)
 		verb = pick("stammers","stutters")
-		handled = 1
 	if(stuttering)
 		message = NewStutter(message)
 		verb = pick("stammers", "stutters")
-		handled = 1
-	if(dazed)
+	if(HAS_TRAIT(src, TRAIT_DAZED))
 		message = DazedText(message)
 		verb = pick("mumbles", "babbles")
-		handled = 1
-	var/braindam = getBrainLoss()
 	if(braindam >= 60)
-		handled = 1
 		if(prob(braindam/4))
-			message = stutter(message)
+			message = stutter(message, stuttering)
 			verb = pick("stammers", "stutters")
 		if(prob(braindam))
 			message = uppertext(message)
 			verb = pick("yells like an idiot","says rather loudly")
+	if(HAS_TRAIT(src, TRAIT_LISPING))
+		var/old_message = message
+		message = lisp_replace(message)
+		if(old_message != message)
+			verb = "lisps"
 
 	returns[1] = message
 	returns[2] = verb
-	returns[3] = handled
-
 	return returns
 
 /mob/living/carbon/human/hear_apollo()

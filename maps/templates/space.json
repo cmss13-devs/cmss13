@@ -1,0 +1,6 @@
+{
+    "map_name": "Space",
+    "map_path": "templates",
+    "map_file": "space.dmm",
+    "traits": [{"Marine Main Ship": true}]
+}

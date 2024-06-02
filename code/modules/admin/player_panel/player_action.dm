@@ -9,7 +9,7 @@ GLOBAL_LIST_INIT(pp_actions_data, generate_pp_actions_data())
 	var/list/data
 
 // usr here is set to user.mob
-/datum/player_action/proc/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/proc/act(client/user, mob/target, list/params)
 	return TRUE
 
 /proc/generate_pp_actions()

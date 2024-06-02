@@ -63,6 +63,7 @@
 
 	var/darksight = 2
 	var/default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	var/flags_sight = 0
 
 	var/brute_mod = null // Physical damage reduction/malus.
 	var/burn_mod = null  // Burn damage reduction/malus.
@@ -71,7 +72,7 @@
 
 	var/list/abilities = list() // For species-derived or admin-given powers
 
-	var/blood_color = "#A10808" //Red.
+	var/blood_color = BLOOD_COLOR_HUMAN //Red.
 	var/flesh_color = "#FFC896" //Pink.
 	var/base_color   //Used when setting species.
 	var/hair_color   //If the species only has one hair color
@@ -91,9 +92,12 @@
 		"eyes" =  /datum/internal_organ/eyes
 		)
 
-	var/knock_down_reduction = 1 //how much the knocked_down effect is reduced per Life call.
-	var/stun_reduction = 1 //how much the stunned effect is reduced per Life call.
-	var/knock_out_reduction = 1 //same thing
+	/// Factor of reduction of  KnockDown duration.
+	var/knock_down_reduction = 1
+	/// Factor of reduction of Stun duration.
+	var/stun_reduction = 1
+	/// Factor of reduction of  KnockOut duration.
+	var/knock_out_reduction = 1
 
 	/// If different from 1, a signal is registered on post_spawn().
 	var/weed_slowdown_mult = 1
@@ -120,17 +124,22 @@
 	if(secondary_unarmed_type)
 		secondary_unarmed = new secondary_unarmed_type()
 
-/datum/species/proc/larva_impregnated(var/obj/item/alien_embryo/embryo)
+/datum/species/proc/larva_impregnated(obj/item/alien_embryo/embryo)
 	return
 
-/datum/species/proc/handle_npc(var/mob/living/carbon/human/H)
+/// Override to add an emote panel to a species
+/datum/species/proc/open_emote_panel()
 	return
 
-/datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs and limbs.
-	for(var/L in H.limbs) //In case of pre-existing limbs/organs, we remove the old ones.
-		qdel(L)
-	H.internal_organs = list()
-	H.internal_organs_by_name = list()
+/datum/species/proc/handle_npc(mob/living/carbon/human/H)
+	set waitfor = FALSE
+	return
+
+/datum/species/proc/create_organs(mob/living/carbon/human/H) //Handles creation of mob organs and limbs.
+	//In case of pre-existing limbs/organs, we remove the old ones.
+	QDEL_LIST(H.limbs)
+	QDEL_LIST(H.internal_organs)
+	H.internal_organs_by_name.Cut()
 
 	//This is a basic humanoid limb setup.
 	var/obj/limb/chest/C = new(H, null, H)
@@ -160,6 +169,13 @@
 		for(var/datum/internal_organ/I in H.internal_organs)
 			I.mechanize()
 
+	// We just deleted the legs so they fell down.
+	// Update again now that the legs are back so they can stand properly during rest of species code and before outside updates kick in.
+	// I hate this code.
+	H.update_leg_status()
+	// While we're deep in shitcode we also force instant transition so this nonsense isn't visually noticeable
+	H.update_transform(instant_update = TRUE)
+
 /datum/species/proc/initialize_pain(mob/living/carbon/human/H)
 	if(pain_type)
 		QDEL_NULL(H.pain)
@@ -170,15 +186,10 @@
 		QDEL_NULL(H.stamina)
 		H.stamina = new stamina_type(H)
 
-/datum/species/proc/hug(var/mob/living/carbon/human/H, var/mob/living/carbon/target, var/target_zone = "chest")
+/datum/species/proc/hug(mob/living/carbon/human/H, mob/living/carbon/target, target_zone = "chest")
 	if(H.flags_emote)
 		return
-	var/t_him = "them"
-	switch(target.gender)
-		if(MALE)
-			t_him = "him"
-		if(FEMALE)
-			t_him = "her"
+	var/t_him = target.p_them()
 
 	if(target_zone == "head")
 		attempt_rock_paper_scissors(H, target)
@@ -189,6 +200,9 @@
 	else if(target_zone in list("l_hand", "r_hand"))
 		attempt_fist_bump(H, target)
 		return
+	else if(H.body_position == LYING_DOWN) // Keep other interactions above lying check for maximum awkwardness potential
+		H.visible_message(SPAN_NOTICE("[H] waves at [target] to make [t_him] feel better!"), \
+			SPAN_NOTICE("You wave at [target] to make [t_him] feel better!"), null, 4)
 	else if(target_zone == "groin")
 		H.visible_message(SPAN_NOTICE("[H] hugs [target] to make [t_him] feel better!"), \
 			SPAN_NOTICE("You hug [target] to make [t_him] feel better!"), null, 4)
@@ -197,7 +211,7 @@
 			SPAN_NOTICE("You pat [target] on the back to make [t_him] feel better!"), null, 4)
 	playsound(target, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 
-/datum/species/proc/attempt_rock_paper_scissors(var/mob/living/carbon/human/H, var/mob/living/carbon/human/target)
+/datum/species/proc/attempt_rock_paper_scissors(mob/living/carbon/human/H, mob/living/carbon/human/target)
 	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
 		to_chat(H, SPAN_WARNING("You have no hands!"))
 		return
@@ -242,8 +256,8 @@
 		H.visible_message(SPAN_NOTICE("[H] plays <b>[protagonist_plays]</b>![winner_text]"), SPAN_NOTICE("You play <b>[protagonist_plays]</b>![winner_text]"), max_distance = 5)
 		target.visible_message(SPAN_NOTICE("[target] plays <b>[antagonist_plays]</b>![winner_text]"), SPAN_NOTICE("You play <b>[antagonist_plays]</b>![winner_text]"), max_distance = 5)
 		playsound(target, "clownstep", 35, TRUE)
-		INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(do_after), H, 8, INTERRUPT_NONE, play_to_emote[protagonist_plays])
-		INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(do_after), target, 8, INTERRUPT_NONE, play_to_emote[antagonist_plays])
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(do_after), H, 8, INTERRUPT_NONE, play_to_emote[protagonist_plays])
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(do_after), target, 8, INTERRUPT_NONE, play_to_emote[antagonist_plays])
 		H.animation_attack_on(target)
 		target.animation_attack_on(H)
 		H.start_audio_emote_cooldown(5 SECONDS)
@@ -261,7 +275,7 @@
 		to_chat(H, SPAN_NOTICE("You were left hanging!"))
 	H.flags_emote &= ~EMOTING_ROCK_PAPER_SCISSORS
 
-/datum/species/proc/attempt_high_five(var/mob/living/carbon/human/H, var/mob/living/carbon/human/target)
+/datum/species/proc/attempt_high_five(mob/living/carbon/human/H, mob/living/carbon/human/target)
 	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
 		to_chat(H, SPAN_NOTICE("You have no hands!"))
 		return
@@ -307,7 +321,7 @@
 		to_chat(H, SPAN_NOTICE("You were left hanging!"))
 	H.flags_emote &= ~EMOTING_HIGH_FIVE
 
-/datum/species/proc/attempt_fist_bump(var/mob/living/carbon/human/H, var/mob/living/carbon/human/target)
+/datum/species/proc/attempt_fist_bump(mob/living/carbon/human/H, mob/living/carbon/human/target)
 	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
 		to_chat(H, SPAN_NOTICE("You have no hands!"))
 		return
@@ -354,23 +368,23 @@
 	for(var/T in mob_inherent_traits)
 		REMOVE_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
 
-/datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
+/datum/species/proc/remove_inherent_verbs(mob/living/carbon/human/H)
 	if(inherent_verbs)
 		remove_verb(H, inherent_verbs)
 
-/datum/species/proc/add_inherent_verbs(var/mob/living/carbon/human/H)
+/datum/species/proc/add_inherent_verbs(mob/living/carbon/human/H)
 	if(inherent_verbs)
 		add_verb(H, inherent_verbs)
 
-/datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
+/datum/species/proc/handle_post_spawn(mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
 	apply_signals(H)
 
 /// Apply signals to the human
-/datum/species/proc/apply_signals(var/mob/living/carbon/human/H)
+/datum/species/proc/apply_signals(mob/living/carbon/human/H)
 	return
 
-/datum/species/proc/handle_death(var/mob/living/carbon/human/H) //Handles any species-specific death events.
+/datum/species/proc/handle_death(mob/living/carbon/human/H) //Handles any species-specific death events.
 /*
 	if(flags & IS_SYNTHETIC)
 		H.h_style = ""
@@ -380,11 +394,11 @@
 	return
 */
 
-/datum/species/proc/handle_dead_death(var/mob/living/carbon/human/H, var/gibbed)
+/datum/species/proc/handle_dead_death(mob/living/carbon/human/H, gibbed)
 
-/datum/species/proc/handle_cryo(var/mob/living/carbon/human/H)
+/datum/species/proc/handle_cryo(mob/living/carbon/human/H)
 
-/datum/species/proc/get_offset_overlay_image(var/spritesheet, var/mob_icon, var/mob_state, var/color, var/slot)
+/datum/species/proc/get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
 	// If we don't actually need to offset this, don't bother with any of the generation/caching.
 	if(!spritesheet && equip_adjust.len && equip_adjust[slot] && LAZYLEN(equip_adjust[slot]))
 
@@ -408,37 +422,37 @@
 	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
 
 //Only used by horrors at the moment. Only triggers if the mob is alive and not dead.
-/datum/species/proc/handle_unique_behavior(var/mob/living/carbon/human/H)
+/datum/species/proc/handle_unique_behavior(mob/living/carbon/human/H)
 	return
 
 // Used to update alien icons for aliens.
-/datum/species/proc/handle_login_special(var/mob/living/carbon/human/H)
+/datum/species/proc/handle_login_special(mob/living/carbon/human/H)
 	return
 
 // As above.
-/datum/species/proc/handle_logout_special(var/mob/living/carbon/human/H)
+/datum/species/proc/handle_logout_special(mob/living/carbon/human/H)
 	return
 
 // Builds the HUD using species-specific icons and usable slots.
-/datum/species/proc/build_hud(var/mob/living/carbon/human/H)
+/datum/species/proc/build_hud(mob/living/carbon/human/H)
 	return
 
 // Grabs the window received when you click-drag someone onto you.
-/datum/species/proc/get_inventory_dialogue(var/mob/living/carbon/human/H)
+/datum/species/proc/get_inventory_dialogue(mob/living/carbon/human/H)
 	return
 
 //Used by xenos understanding larvae and dionaea understanding nymphs.
-/datum/species/proc/can_understand(var/mob/other)
+/datum/species/proc/can_understand(mob/other)
 	return
 
-/datum/species/proc/get_bodytype(var/mob/living/carbon/human/H)
+/datum/species/proc/get_bodytype(mob/living/carbon/human/H)
 	return name
 
-/datum/species/proc/get_tail(var/mob/living/carbon/human/H)
+/datum/species/proc/get_tail(mob/living/carbon/human/H)
 	return tail
 
 // Called when using the shredding behavior.
-/datum/species/proc/can_shred(var/mob/living/carbon/human/H)
+/datum/species/proc/can_shred(mob/living/carbon/human/H)
 
 	if(H.a_intent != INTENT_HARM)
 		return 0
@@ -452,24 +466,30 @@
 
 	return 0
 
-/datum/species/proc/get_hairstyle(var/style)
+/datum/species/proc/get_hairstyle(style)
 	return GLOB.hair_styles_list[style]
 
 // Used for checking on how each species would scream when they are burning
-/datum/species/proc/handle_on_fire(var/humanoidmob)
+/datum/species/proc/handle_on_fire(humanoidmob)
 	// call this for each species so each has their own unique scream options when burning alive
 	// heebie-jebies made me do all this effort, I HATE YOU
 	return
 
-/datum/species/proc/handle_blood_splatter(var/mob/living/carbon/human/human, var/splatter_dir)
-	var/obj/effect/temp_visual/dir_setting/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, splatter_dir)
+/datum/species/proc/handle_blood_splatter(mob/living/carbon/human/human, splatter_dir)
+	var/color_override
+	if(human.special_blood)
+		var/datum/reagent/D = GLOB.chemical_reagents_list[human.special_blood]
+		if(D)
+			color_override = D.color
+
+	var/obj/effect/temp_visual/dir_setting/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, splatter_dir, 5, color_override)
 	return bloodsplatter
 
 /datum/species/proc/get_status_tab_items()
 	return list()
 
-/datum/species/proc/handle_head_loss(var/mob/living/carbon/human/human)
+/datum/species/proc/handle_head_loss(mob/living/carbon/human/human)
 	return
 
-/datum/species/proc/handle_paygrades(var/paygrade, var/size, var/gender)
+/datum/species/proc/handle_paygrades(paygrade, size, gender)
 	return get_paygrades(paygrade, size, gender)

@@ -7,11 +7,15 @@
 	max_health = XENO_HEALTH_TIER_6
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_10
-	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_NO_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_MEDIUM
 	speed = XENO_SPEED_TIER_7
+
+	available_strains = list(
+		/datum/xeno_strain/gardener,
+		/datum/xeno_strain/healer,
+	)
 
 	build_time_mult = BUILD_TIME_MULT_BUILDER
 
@@ -31,15 +35,19 @@
 
 	aura_strength = 2
 
+	minimum_evolve_time = 1 MINUTES
+
+	minimap_icon = "drone"
+
 /datum/caste_datum/drone/New()
 	. = ..()
 
 	resin_build_order = GLOB.resin_build_order_drone
 
-/mob/living/carbon/Xenomorph/Drone
+/mob/living/carbon/xenomorph/drone
 	caste_type = XENO_CASTE_DRONE
 	name = XENO_CASTE_DRONE
-	desc = "An Alien Drone"
+	desc = "An alien drone"
 	icon = 'icons/mob/xenos/drone.dmi'
 	icon_size = 48
 	icon_state = "Drone Walking"
@@ -59,13 +67,21 @@
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
 		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
+		/datum/action/xeno_action/onclick/tacmap,
 		)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
-		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
-		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
-		)
-	mutation_type = DRONE_NORMAL
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
+	)
 
 	icon_xeno = 'icons/mob/xenos/drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/drone.dmi'
+	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
+	weed_food_states = list("Drone_1","Drone_2","Drone_3")
+	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
+
+/mob/living/carbon/xenomorph/drone/tutorial
+
+/mob/living/carbon/xenomorph/drone/tutorial/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
+	death(cause, 1)

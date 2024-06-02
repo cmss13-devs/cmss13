@@ -5,128 +5,24 @@
 	icon_state = "crew_monitor"
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_SMALL
+	var/datum/radar/lifeline/radar
+	var/faction = FACTION_MARINE
 
-	var/cooldown_to_use = 0
+/obj/item/tool/crew_monitor/Initialize(mapload, ...)
+	. = ..()
+	radar = new /datum/radar/lifeline(src, faction)
 
-/obj/item/tool/crew_monitor/attack_self(var/mob/user)
-	..()
+/obj/item/tool/crew_monitor/Destroy()
+	QDEL_NULL(radar)
+	. = ..()
 
-	if(cooldown_to_use > world.time)
-		return
+/obj/item/tool/crew_monitor/attack_self(mob/user)
+	. = ..()
+	radar.tgui_interact(user)
 
-	ui_interact(user)
-
-	cooldown_to_use = world.time + 2 SECONDS
-
-/obj/item/tool/crew_monitor/ui_interact(var/mob/user as mob)
-	user.set_interaction(src)
-
-	var/dat = "<head><title>Crew Monitor</title></head><body>"
-	dat += get_crew_info(user)
-
-	dat += "<BR><A HREF='?src=\ref[user];mach_close=crew_monitor'>Close</A>"
-	show_browser(user, dat, name, "crew_monitor", "size=600x700")
-	onclose(user, "crew_monitor")
-
-/obj/item/tool/crew_monitor/proc/get_crew_info(var/mob/user)
-	var/dat = ""
-	dat += {"
-	<script type="text/javascript">
-		function updateSearch() {
-			var filter_text = document.getElementById("filter");
-			var filter = filter_text.value.toLowerCase();
-
-			var marine_list = document.getElementById("marine_list");
-			var ltr = marine_list.getElementsByTagName("tr");
-
-			for(var i = 0; i < ltr.length; ++i) {
-				try {
-					var tr = ltr\[i\];
-					tr.style.display = '';
-					var ltd = tr.getElementsByTagName("td")
-					var name = ltd\[0\].innerText.toLowerCase();
-					var role = ltd\[1\].innerText.toLowerCase()
-					if(name.indexOf(filter) == -1 && role.indexOf(filter) == -1) {
-						tr.style.display = 'none';
-					}
-				} catch(err) {}
-			}
-		}
-	</script>
-	"}
-
-	var/turf/user_turf = get_turf(user)
-
-	dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
-	dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
-	dat += "<th>Name</th><th>Squad</th><th>Role</th><th>State</th><th>Location</th><th>Distance</th></tr>"
-	for(var/datum/squad/S in RoleAuthority.squads)
-		var/list/squad_roles = ROLES_MARINES.Copy()
-		for(var/i in squad_roles)
-			squad_roles[i] = ""
-		var/misc_roles = ""
-
-		for(var/X in S.marines_list)
-			if(!X)
-				continue //just to be safe
-			var/mob_name = "unknown"
-			var/mob_state = ""
-			var/squad = "None"
-			var/role = "unknown"
-			var/dist = "<b>???</b>"
-			var/area_name = "<b>???</b>"
-			var/mob/living/carbon/human/H
-			if(ishuman(X))
-				H = X
-				mob_name = H.real_name
-				var/area/A = get_area(H)
-				var/turf/M_turf = get_turf(H)
-				if(A)
-					area_name = sanitize_area(A.name)
-
-				if(H.undefibbable)
-					continue
-
-				if(H.job)
-					role = H.job
-				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-					var/obj/item/card/id/ID = H.wear_id //we use their ID to get their role.
-					if(ID.rank)
-						role = ID.rank
-
-				if(M_turf)
-					var/area/mob_area = M_turf.loc
-					var/area/user_area = user_turf.loc
-					if(M_turf.z == user_turf.z && mob_area.fake_zlevel == user_area.fake_zlevel)
-						dist = "[get_dist(H, user)] ([dir2text_short(get_dir(user, H))])"
-
-				if(H.assigned_squad)
-					squad = H.assigned_squad.name
-
-				switch(H.stat)
-					if(CONSCIOUS)
-						mob_state = "Conscious"
-					if(UNCONSCIOUS)
-						if(H.health < 0)
-							mob_state = "<b>Critical</b>"
-						else
-							mob_state = "Unconscious"
-					if(DEAD)
-						mob_state = "<b>Dead</b>"
-
-			var/marine_infos = "<tr><td>[mob_name]</a></td><td>[squad]</td><td>[role]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td></tr>"
-			if(role in squad_roles)
-				squad_roles[role] += marine_infos
-			else
-				misc_roles += marine_infos
-
-		for(var/i in squad_roles)
-			dat += squad_roles[i]
-		dat += misc_roles
-
-	dat += "</table>"
-	dat += "<br><hr>"
-	return dat
+/obj/item/tool/crew_monitor/dropped(mob/user)
+	. = ..()
+	SStgui.close_uis(src)
 
 /obj/item/clothing/suit/auto_cpr
 	name = "autocompressor" //autocompressor
@@ -154,7 +50,7 @@
 
 /obj/item/clothing/suit/auto_cpr/mob_can_equip(mob/living/carbon/human/H, slot, disable_warning = 0, force = 0)
 	. = ..()
-	if(!isHumanStrict(H))
+	if(!ishuman_strict(H))
 		return FALSE
 
 /obj/item/clothing/suit/auto_cpr/attack(mob/living/carbon/human/M, mob/living/user)
@@ -180,7 +76,7 @@
 							SPAN_NOTICE("You start fitting \the [src] onto [M]'s chest."),
 							SPAN_WARNING("[user] starts fitting \the [src] onto your chest!"),
 							SPAN_NOTICE("[user] starts fitting \the [src] onto [M]'s chest."))
-		if(!(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)))
+		if(!(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)))
 			return
 		if(!mob_can_equip(M, WEAR_JACKET))
 			return
@@ -211,17 +107,18 @@
 		icon_state = "autocomp"
 	if(pdcell && pdcell.charge)
 		overlays.Cut()
-	switch(round(pdcell.charge * 100 / pdcell.maxcharge))
+	switch(floor(pdcell.charge * 100 / pdcell.maxcharge))
+		if(1 to 32)
+			overlays += "cpr_batt_lo"
+		if(33 to 65)
+			overlays += "cpr_batt_mid"
 		if(66 to INFINITY)
 			overlays += "cpr_batt_hi"
-		if(65 to 33)
-			overlays += "cpr_batt_mid"
-		if(32 to 1)
-			overlays += "cpr_batt_lo"
+
 
 /obj/item/clothing/suit/auto_cpr/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("It has [round(pdcell.charge * 100 / pdcell.maxcharge)]% charge remaining.")
+	. += SPAN_NOTICE("It has [floor(pdcell.charge * 100 / pdcell.maxcharge)]% charge remaining.")
 
 
 
@@ -260,7 +157,7 @@
 		end_cpr()
 		return PROCESS_KILL
 
-	if(world.time > last_pump + 10 SECONDS)
+	if(world.time > last_pump + 7.5 SECONDS)
 		last_pump = world.time
 		if(H.stat == UNCONSCIOUS)
 			var/suff = min(H.getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dying.
@@ -313,7 +210,7 @@
 	pdcell = new/obj/item/cell(src) //has 1000 charge
 	update_icon()
 
-/obj/item/tool/portadialysis/update_icon(var/detaching = FALSE)
+/obj/item/tool/portadialysis/update_icon(detaching = FALSE)
 	overlays.Cut()
 	if(attached)
 		overlays += "+hooked"
@@ -333,7 +230,7 @@
 		overlays += "+filtering"
 
 	if(pdcell && pdcell.charge)
-		switch(round(pdcell.charge * 100 / pdcell.maxcharge))
+		switch(floor(pdcell.charge * 100 / pdcell.maxcharge))
 			if(85 to INFINITY)
 				overlays += "dialysis_battery_100"
 			if(60 to 84)
@@ -352,7 +249,7 @@
 /obj/item/tool/portadialysis/get_examine_text(mob/user)
 	. = ..()
 	var/currentpercent = 0
-	currentpercent = round(pdcell.charge * 100 / pdcell.maxcharge)
+	currentpercent = floor(pdcell.charge * 100 / pdcell.maxcharge)
 	. += SPAN_INFO("It has [currentpercent]% charge left in its internal battery.")
 
 /obj/item/tool/portadialysis/proc/painful_detach()
@@ -370,7 +267,7 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/tool/portadialysis/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
-	if(!isHumanStrict(target))
+	if(!ishuman_strict(target))
 		return ..()
 
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
@@ -382,7 +279,7 @@
 		return
 
 	if(ishuman(user))
-		if(user.stat || user.blinded || user.lying)
+		if(user.stat || user.blinded || user.body_position == LYING_DOWN)
 			return
 
 		if(attaching)
@@ -474,7 +371,7 @@
 	updateUsrDialog()
 	update_icon()
 
-/obj/item/tool/portadialysis/proc/damage_arms(var/mob/living/carbon/human/human_to_damage)
+/obj/item/tool/portadialysis/proc/damage_arms(mob/living/carbon/human/human_to_damage)
 	var/obj/limb/l_arm = human_to_damage.get_limb("l_arm")
 	var/obj/limb/r_arm = human_to_damage.get_limb("r_arm")
 	var/list/arms_to_damage = list(l_arm, r_arm)

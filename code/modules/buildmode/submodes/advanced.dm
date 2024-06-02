@@ -70,7 +70,7 @@
 			log_admin("Build Mode: [key_name(c)] deleted [object] at [AREACOORD(object)]")
 			qdel(object)
 
-/datum/buildmode_mode/advanced/proc/apply_copied_vars_shallow(var/atom/A)
+/datum/buildmode_mode/advanced/proc/apply_copied_vars_shallow(atom/A)
 	if(ismob(A))
 		return
 
@@ -85,7 +85,7 @@
 
 		A.vars[variable] = temp_value
 
-/datum/buildmode_mode/advanced/proc/filter_vars(var/atom/A)
+/datum/buildmode_mode/advanced/proc/filter_vars(atom/A)
 	var/list/filtered_vars = list()
 
 	for(var/variable in A.vars)

@@ -2,8 +2,9 @@
 /obj/item/ammo_magazine/sentry
 	name = "M30 ammo drum (10x28mm Caseless)"
 	desc = "An ammo drum of 500 10x28mm caseless rounds for the UA 571-C Sentry Gun. Just feed it into the sentry gun's ammo port when its ammo is depleted."
-	w_class = SIZE_MEDIUM
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "ua571c"
+	w_class = SIZE_MEDIUM
 	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand
 	caliber = "10x28mm"
 	max_rounds = 500
@@ -11,7 +12,8 @@
 	gun_type = null
 
 /obj/item/ammo_magazine/sentry/dropped
-	max_rounds = 1500
+	max_rounds = 100
+	max_inherent_rounds = 500
 
 /obj/item/ammo_magazine/sentry/premade
 	max_rounds = 99999
@@ -31,8 +33,9 @@
 /obj/item/ammo_magazine/sentry_flamer
 	name = "sentry incinerator tank"
 	desc = "A fuel tank of usually Ultra Thick Napthal Fuel, a sticky combustible liquid chemical, used in the UA 42-F."
-	w_class = SIZE_MEDIUM
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "ua571c"
+	w_class = SIZE_MEDIUM
 	flags_magazine = NO_FLAGS
 	caliber = "Napalm B"
 	max_rounds = 100

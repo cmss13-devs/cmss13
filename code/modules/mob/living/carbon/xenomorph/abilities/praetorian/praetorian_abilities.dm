@@ -25,7 +25,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_dash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 110
+	xeno_cooldown = 11 SECONDS
 	plasma_cost = 50
 
 	// Config options
@@ -36,7 +36,7 @@
 
 	var/buff_duration = 12
 	var/damage = 40
-	var/shield_regen_threshold = 2
+	var/shield_regen_threshold = 1
 
 	var/activated_once = FALSE
 	var/time_until_timeout = 20
@@ -51,11 +51,11 @@
 	macro_path = /datum/action/xeno_action/verb/verb_cleave
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 120
+	xeno_cooldown = 12 SECONDS
 
 	// Root config
-	var/root_duration_unbuffed = 5
-	var/root_duration_buffed = 12.5
+	var/root_duration_unbuffed = 1 SECONDS
+	var/root_duration_buffed = 1.8 SECONDS
 
 	// Fling config
 	var/fling_dist_unbuffed = 3
@@ -74,12 +74,12 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_cleave/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/toggle_cleave/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!istype(X))
 		return
@@ -97,13 +97,14 @@
 	var/action_icon_result
 	if (cAction.root_toggle)
 		action_icon_result = "prae_cleave_root"
-		to_chat(X, SPAN_WARNING("You will now root marines with your cleave."))
+		to_chat(X, SPAN_WARNING("We will now root marines with our cleave."))
 	else
 		action_icon_result = "prae_cleave_fling" // TODO: update
-		to_chat(X, SPAN_WARNING("You will now throw marines with your cleave."))
+		to_chat(X, SPAN_WARNING("We will now throw marines with our cleave."))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
+	return ..()
 
 ////////// Oppressor powers
 
@@ -123,12 +124,12 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 180
+	xeno_cooldown = 15 SECONDS
 	plasma_cost = 180
 
 	// Config
 	var/max_distance = 7
-	var/windup = 8
+	var/windup = 8 DECISECONDS
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
@@ -137,7 +138,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_oppressor_punch
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 55
 
 	// Configurables
@@ -163,12 +164,12 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crush
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 	plasma_cost = 80
 
 	// Config
 	var/fling_dist = 3
-	var/windup = 2
+	var/windup = 2 DECISECONDS
 
 ////////// Dancer Abilities
 
@@ -179,10 +180,8 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_impale
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 	plasma_cost = 80
-
-	var/click_miss_cooldown = 15
 
 /datum/action/xeno_action/onclick/prae_dodge
 	name = "Dodge"
@@ -192,7 +191,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
 	plasma_cost = 200
-	xeno_cooldown = 190
+	xeno_cooldown = 19 SECONDS
 
 	// Config
 	var/duration = 70
@@ -205,7 +204,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_tail_trip
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 	plasma_cost = 30
 
 	// Config
@@ -216,8 +215,6 @@
 	var/stun_duration_buffed = 1
 	var/daze_duration_buffed = 2
 
-	var/click_miss_cooldown = 15
-
 ////////// BASE PRAE
 
 /datum/action/xeno_action/activable/pounce/base_prae_dash
@@ -227,7 +224,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_dash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 40
 
 	// Config options
@@ -258,7 +255,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 	plasma_cost = 80
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 
 	// Configurable options
 	spray_type = ACID_SPRAY_LINE
@@ -273,7 +270,7 @@
 /datum/action/xeno_action/activable/spray_acid/prae_warden
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 130
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 
 
 	// Configurable options
@@ -285,13 +282,13 @@
 	activation_delay_length = 5
 
 /datum/action/xeno_action/activable/warden_heal
-	name = "Protect"
-	action_icon_state = "transfer_health"
-	ability_name = "protect"
+	name = "Aid Xenomorph"
+	action_icon_state = "prae_aid"
+	ability_name = "aid"
 	// todo: macro
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 100
 
 	// Config
@@ -312,20 +309,20 @@
 
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type
-	name = "Toggle Heal Type"
+	name = "Toggle Aid Type"
 	action_icon_state = "warden_heal" // default = heal
 	macro_path = /datum/action/xeno_action/verb/verb_prae_switch_heal_types
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/use_ability(atom/A)
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	var/action_icon_result
 
 	if(!X.check_state(1))
@@ -338,15 +335,16 @@
 	if (WH.curr_effect_type == WARDEN_HEAL_HP)
 		action_icon_result = "warden_rejuvenate"
 		WH.curr_effect_type = WARDEN_HEAL_DEBUFFS
-		to_chat(X, SPAN_XENOWARNING("You will now protect your allies by rejuvenating them!"))
+		to_chat(X, SPAN_XENOWARNING("We will now aid our sisters by curing their ailments!"))
 
 	else
 		action_icon_result = "warden_heal"
 		WH.curr_effect_type = WARDEN_HEAL_HP
-		to_chat(X, SPAN_XENOWARNING("You will now protect your allies with a heal!"))
+		to_chat(X, SPAN_XENOWARNING("We will now aid our sisters by healing them!"))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
+	return ..()
 
 /datum/action/xeno_action/activable/prae_retrieve
 	name = "Retrieve"

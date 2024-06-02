@@ -1,0 +1,100 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall/almayer/outer,
+/area/misc/tutorial/no_baselight)
+"z" = (
+/turf/open/floor/almayer,
+/area/misc/tutorial/no_baselight)
+"R" = (
+/obj/effect/landmark/tutorial_bottom_left,
+/turf/open/floor/almayer,
+/area/misc/tutorial/no_baselight)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+z
+z
+z
+z
+z
+z
+R
+a
+"}
+(3,1,1) = {"
+a
+z
+z
+z
+z
+z
+z
+z
+a
+"}
+(4,1,1) = {"
+a
+z
+z
+z
+z
+z
+z
+z
+a
+"}
+(5,1,1) = {"
+a
+z
+z
+z
+z
+z
+z
+z
+a
+"}
+(6,1,1) = {"
+a
+z
+z
+z
+z
+z
+z
+z
+a
+"}
+(7,1,1) = {"
+a
+z
+z
+z
+z
+z
+z
+z
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

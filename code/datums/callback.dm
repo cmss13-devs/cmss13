@@ -50,6 +50,13 @@ HELP TO PROC TYPEPATH SHORTCUTS (Purely based on the path in the code)
 	if (length(args) > 2)
 		arguments = args.Copy(3)
 
+/datum/callback/Destroy(force, ...)
+	delegate = null
+	if(arguments)
+		arguments.Cut()
+	arguments = null
+	return ..()
+
 /proc/ImmediateInvokeAsync(thingtocall, proctocall, ...)
 	set waitfor = FALSE
 

@@ -8,7 +8,7 @@
 
 // creates a new object and deletes itself
 /obj/effect/spawner/random/Initialize()
-	..()
+	. = ..()
 
 	if(!prob(spawn_nothing_percentage))
 		if(spawn_on_roundstart)
@@ -31,6 +31,8 @@
 // creates the random item
 /obj/effect/spawner/random/proc/spawn_item()
 	var/build_path = item_to_spawn()
+	if(!ispath(build_path))
+		return
 	return (new build_path(src.loc))
 
 
@@ -55,10 +57,13 @@
 	icon_state = "atmos"
 
 /obj/effect/spawner/random/technology_scanner/item_to_spawn()
-	return pick(prob(5);/obj/item/device/t_scanner,\
-				prob(2);/obj/item/device/radio,\
-				prob(5);/obj/item/device/analyzer)
-
+	return pick_weight(list(
+		"none" = 10,
+		/obj/item/device/t_scanner = 10,
+		/obj/item/device/radio = 8,
+		/obj/item/device/analyzer = 10,
+		/obj/item/device/black_market_hacking_device = 2,
+	))
 
 /obj/effect/spawner/random/powercell
 	name = "Random Powercell"
@@ -136,13 +141,49 @@
 				prob(1);/obj/item/attachable/heavy_barrel,\
 				prob(1);/obj/item/attachable/scope/mini)
 
+/obj/effect/spawner/random/balaclavas
+	name = "Random Balaclava"
+	desc = "This is a randomly chosen balaclava."
+	icon_state = "loot_goggles"
+	spawn_nothing_percentage = 50
+
+/obj/effect/spawner/random/balaclavas/item_to_spawn()
+	return pick(prob(100);/obj/item/clothing/mask/balaclava,\
+				prob(50);/obj/item/clothing/mask/balaclava/tactical,\
+				prob(25);/obj/item/clothing/mask/rebreather/scarf/green,\
+				prob(25);/obj/item/clothing/mask/rebreather/scarf/gray,\
+				prob(25);/obj/item/clothing/mask/rebreather/scarf/tan,\
+				prob(10);/obj/item/clothing/mask/rebreather/skull,\
+				prob(10);/obj/item/clothing/mask/rebreather/skull/black)
+
+///If anyone wants to make custom sprites for this and the bala random spawner, be my guest.
+/obj/effect/spawner/random/facepaint
+	name = "Random Facepaint"
+	desc = "This is a randomly chosen facepaint."
+	icon_state = "loot_goggles"
+	spawn_nothing_percentage = 50
+
+/obj/effect/spawner/random/facepaint/item_to_spawn()
+	return pick(prob(100);/obj/item/facepaint/black,\
+				prob(50);/obj/item/facepaint/green,\
+				prob(25);/obj/item/facepaint/brown,\
+				prob(25);/obj/item/facepaint/sunscreen_stick,\
+				prob(10);/obj/item/facepaint/sniper,\
+				prob(10);/obj/item/facepaint/skull)
 
 /obj/effect/spawner/random/supply_kit
 	name = "Random Supply Kit"
 	desc = "This is a random kit."
 	icon_state = "random_kit"
 
-/obj/effect/spawner/random/toy/item_to_spawn()
+/obj/effect/spawner/random/supply_kit/item_to_spawn()
+	return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
+				prob(3);/obj/item/storage/box/kit/self_defense,\
+				prob(3);/obj/item/storage/box/kit/mini_medic,\
+				prob(2);/obj/item/storage/box/kit/mou53_sapper,\
+				prob(1);/obj/item/storage/box/kit/heavy_support)
+
+/obj/effect/spawner/random/supply_kit/market/item_to_spawn()
 	return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
 				prob(3);/obj/item/storage/box/kit/mini_intel,\
 				prob(3);/obj/item/storage/box/kit/mini_jtac,\
@@ -168,7 +209,6 @@
 				/obj/item/poster,\
 				/obj/item/toy/bikehorn,\
 				/obj/item/toy/beach_ball,\
-				/obj/item/weapon/melee/banhammer,\
 				/obj/item/toy/balloon,\
 				/obj/item/toy/blink,\
 				/obj/item/toy/crossbow,\
@@ -189,7 +229,10 @@
 				/obj/item/toy/sword,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,\
-				/obj/item/clothing/accessory/horrible)
+				/obj/item/clothing/accessory/horrible,\
+				/obj/item/clothing/shoes/slippers,\
+				/obj/item/clothing/shoes/slippers_worn,\
+				/obj/item/clothing/head/collectable/tophat/super)
 
 /obj/effect/spawner/random/pills
 	name = "Pill Bottle Loot Spawner" // 60% chance for strong loot
@@ -197,11 +240,14 @@
 	icon_state = "loot_pills"
 
 /obj/effect/spawner/random/pills/item_to_spawn()
-	return pick(prob(4);/obj/item/storage/pill_bottle/ultrazine/skillless,\
+	return pick(prob(4);/obj/item/storage/pill_bottle/inaprovaline/skillless,\
 				prob(4);/obj/item/storage/pill_bottle/mystery/skillless,\
-				prob(4);/obj/item/storage/pill_bottle/stimulant/skillless,\
 				prob(3);/obj/item/storage/pill_bottle/alkysine/skillless,\
 				prob(3);/obj/item/storage/pill_bottle/imidazoline/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/tramadol/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/bicaridine/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/kelotane/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/peridaxon/skillless,\
 				prob(2);/obj/item/storage/pill_bottle/packet/oxycodone)
 
 /obj/effect/spawner/random/pills/lowchance
@@ -296,38 +342,37 @@
 	var/gunpath = pick(guns)
 	var/ammopath
 	if(istype(gunpath, /obj/item/weapon/gun/shotgun))
-		ammopath = pick(shotgun_boxes_12g)
+		ammopath = pick(GLOB.shotgun_boxes_12g)
 	else if(istype(gunpath, /obj/item/weapon/gun/launcher/grenade))
-		ammopath = pick(grenade_packets)
+		ammopath = pick(GLOB.grenade_packets)
 	else
 		ammopath = guns[gunpath]
 	spawn_weapon_on_floor(gunpath, ammopath, rand(mags_min, mags_max))
 
-/obj/effect/spawner/random/gun/proc/spawn_weapon_on_floor(var/gunpath, var/ammopath, var/ammo_amount = 1)
+/obj/effect/spawner/random/gun/proc/spawn_weapon_on_floor(gunpath, ammopath, ammo_amount = 1)
 
-	var/atom/spawnloc = src
-	spawnloc = get_turf(spawnloc)
+	var/turf/spawnloc = get_turf(src)
 	var/obj/gun
 	var/obj/ammo
 
 	if(gunpath)
 		gun = new gunpath(spawnloc)
 		if(scatter)
-			var/direction = pick(alldirs)
-			var/turf/T = get_step(gun, direction)
-			if(!T || T.density)
+			var/direction = pick(GLOB.alldirs)
+			var/turf/turf = get_step(gun, direction)
+			if(!turf || turf.density)
 				return
-			gun.loc = T
+			gun.forceMove(turf)
 	if(ammopath)
 		for(var/i in 0 to ammo_amount-1)
 			ammo = new ammopath(spawnloc)
 			if(scatter)
 				for(i=0, i<rand(1,3), i++)
-					var/direction = pick(alldirs)
-					var/turf/T = get_step(ammo, direction)
-					if(!T || T.density)
+					var/direction = pick(GLOB.alldirs)
+					var/turf/turf = get_step(ammo, direction)
+					if(!turf || turf.density)
 						break
-					ammo.loc = T
+					ammo.forceMove(turf)
 
 /*
 // the actual spawners themselves
@@ -356,7 +401,6 @@
 		/obj/item/weapon/gun/revolver/small = /obj/item/ammo_magazine/revolver/small,
 		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,
 		/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
-		/obj/item/weapon/gun/pistol/skorpion/upp = /obj/item/ammo_magazine/pistol/skorpion,
 		)
 
 /obj/effect/spawner/random/gun/pistol/lowchance
@@ -376,9 +420,9 @@
 	desc = "spawns a surv rifle and some ammo"
 	icon_state = "loot_rifle"
 	guns = list(
-		/obj/item/weapon/gun/boltaction/colony = /obj/item/ammo_magazine/rifle/boltaction/colony,
-		/obj/item/weapon/gun/boltaction/colony = /obj/item/ammo_magazine/rifle/boltaction/colony,
-		/obj/item/weapon/gun/boltaction/colony = /obj/item/ammo_magazine/rifle/boltaction/colony,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
@@ -389,7 +433,7 @@
 		/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
 		/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 		/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
-		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
+		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 		/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped = /obj/item/ammo_magazine/rifle/nsg23
 		)
 
@@ -423,7 +467,6 @@
 		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action,
 		/obj/item/weapon/gun/shotgun/merc = null,
 		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717 = null,
-		/obj/item/weapon/gun/shotgun/double = null
 	) //no ammotypes needed as it spawns random 12g boxes. Apart from the r4t. why is the r4t in the shotgun pool? fuck you, that's why.
 
 /obj/effect/spawner/random/gun/shotgun/lowchance
@@ -451,7 +494,7 @@
 		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
-		/obj/item/weapon/gun/smg/ppsh = /obj/item/ammo_magazine/smg/ppsh,
+		/obj/item/weapon/gun/smg/pps43 = /obj/item/ammo_magazine/smg/pps43,
 		/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 		/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 		/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
@@ -477,7 +520,6 @@
 	icon_state = "loot_special"
 	guns = list(
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
-		/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
 		/obj/item/weapon/gun/shotgun/merc = null,
 		/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable = /obj/item/prop/folded_anti_tank_sadar,
 		/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,

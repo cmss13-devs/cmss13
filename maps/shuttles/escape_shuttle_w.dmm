@@ -1,0 +1,123 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"b" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall8"
+	},
+/area/shuttle/escape_pod)
+"d" = (
+/turf/open/shuttle/escapepod{
+	dir = 1
+	},
+/area/shuttle/escape_pod)
+"e" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall6"
+	},
+/area/shuttle/escape_pod)
+"g" = (
+/obj/docking_port/mobile/crashable/escape_shuttle/w,
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall9"
+	},
+/area/shuttle/escape_pod)
+"j" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall7"
+	},
+/area/shuttle/escape_pod)
+"o" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall3"
+	},
+/area/shuttle/escape_pod)
+"p" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall2"
+	},
+/area/shuttle/escape_pod)
+"r" = (
+/obj/structure/machinery/cryopod/evacuation,
+/turf/open/shuttle/escapepod{
+	icon_state = "floor4"
+	},
+/area/shuttle/escape_pod)
+"B" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall10"
+	},
+/area/shuttle/escape_pod)
+"F" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall1"
+	},
+/area/shuttle/escape_pod)
+"G" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall4"
+	},
+/area/shuttle/escape_pod)
+"N" = (
+/obj/structure/machinery/computer/shuttle/escape_pod_panel{
+	pixel_y = 30
+	},
+/turf/open/shuttle/escapepod{
+	icon_state = "floor2"
+	},
+/area/shuttle/escape_pod)
+"O" = (
+/turf/open/shuttle/escapepod{
+	icon_state = "floor0";
+	dir = 1
+	},
+/area/shuttle/escape_pod)
+"P" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall13"
+	},
+/area/shuttle/escape_pod)
+"S" = (
+/obj/structure/machinery/door/airlock/evacuation{
+	name = "\improper Evacuation Airlock PL-3"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/shuttle/escape_pod)
+"T" = (
+/obj/structure/machinery/cryopod/evacuation,
+/obj/structure/sign/safety/cryo{
+	pixel_x = 36
+	},
+/turf/open/shuttle/escapepod{
+	icon_state = "floor4"
+	},
+/area/shuttle/escape_pod)
+
+(1,1,1) = {"
+P
+B
+S
+B
+g
+"}
+(2,1,1) = {"
+F
+N
+d
+O
+b
+"}
+(3,1,1) = {"
+p
+r
+T
+r
+j
+"}
+(4,1,1) = {"
+o
+G
+G
+G
+e
+"}

@@ -1,9 +1,10 @@
 /obj/structure/machinery/pipedispenser
 	name = "Pipe Dispenser"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	desc = "A large machine used for dispensing pipes. Bolts anchor it to the ground, but you can move it around if you unwrench them."
 	icon_state = "pipe_d"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	var/unwrenched = 0
 	var/wait = 0
 
@@ -74,7 +75,7 @@
 /obj/structure/machinery/pipedispenser/Topic(href, href_list)
 	if(..())
 		return
-	if(unwrenched || !usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
+	if(unwrenched || usr.is_mob_incapacitated() || !in_range(loc, usr))
 		close_browser(usr, "pipedispenser")
 		return
 	usr.set_interaction(src)
@@ -95,7 +96,7 @@
 			addtimer(VARSET_CALLBACK(src, wait, FALSE), 1.5 SECONDS)
 	return
 
-/obj/structure/machinery/pipedispenser/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/pipedispenser/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(usr)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
 		to_chat(usr, SPAN_NOTICE(" You put [W] back to [src]."))
@@ -111,7 +112,7 @@
 					"[user] unfastens \the [src].", \
 					SPAN_NOTICE("You have unfastened \the [src]. Now it can be pulled somewhere else."), \
 					"You hear ratchet.")
-				src.anchored = 0
+				src.anchored = FALSE
 				src.stat |= MAINT
 				src.unwrenched = 1
 				if (usr.interactee==src)
@@ -124,7 +125,7 @@
 					"[user] fastens \the [src].", \
 					SPAN_NOTICE("You have fastened \the [src]. Now it can dispense pipes."), \
 					"You hear ratchet.")
-				src.anchored = 1
+				src.anchored = TRUE
 				src.stat &= ~MAINT
 				src.unwrenched = 0
 				power_change()
@@ -136,11 +137,11 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "pipe_d"
 	density = TRUE
-	anchored = 1.0
+	anchored = TRUE
 
 /*
 //Allow you to push disposal pipes into it (for those with density 1)
-/obj/structure/machinery/pipedispenser/disposal/Crossed(var/obj/structure/disposalconstruct/pipe as obj)
+/obj/structure/machinery/pipedispenser/disposal/Crossed(obj/structure/disposalconstruct/pipe as obj)
 	if(istype(pipe) && !pipe.anchored)
 		qdel(pipe)
 
@@ -148,8 +149,8 @@ Nah
 */
 
 //Allow you to drag-drop disposal pipes into it
-/obj/structure/machinery/pipedispenser/disposal/MouseDrop_T(var/obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+/obj/structure/machinery/pipedispenser/disposal/MouseDrop_T(obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
+	if(usr.is_mob_incapacitated())
 		return
 
 	if (!istype(pipe) || get_dist(usr, src) > 1 || get_dist(src,pipe) > 1 )
@@ -191,7 +192,7 @@ Nah
 	usr.set_interaction(src)
 	src.add_fingerprint(usr)
 	if(href_list["dmake"])
-		if(unwrenched || !usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
+		if(unwrenched || usr.is_mob_incapacitated() || !in_range(loc, usr))
 			close_browser(usr, "pipedispenser")
 			return
 		if(!wait)
@@ -231,9 +232,9 @@ Nah
 
 // adding a pipe dispensers that spawn unhooked from the ground
 /obj/structure/machinery/pipedispenser/orderable
-	anchored = 0
+	anchored = FALSE
 	unwrenched = 1
 
 /obj/structure/machinery/pipedispenser/disposal/orderable
-	anchored = 0
+	anchored = FALSE
 	unwrenched = 1

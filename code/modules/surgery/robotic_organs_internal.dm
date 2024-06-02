@@ -12,7 +12,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(/datum/surgery_step/repair_robotic_organs)
 
-/datum/surgery/robotic_organ_repair/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/robotic_organ_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	for(var/datum/internal_organ/IO as anything in L.internal_organs)
 		if(IO.damage > 0 && IO.robotic == ORGAN_ROBOT)
 			return TRUE
@@ -30,8 +30,8 @@ and organ transplant code which may come in handy in future but haven't been edi
 	//Tools used to fix damaged organs. Predator herbs may be herbal and organic, but are not as good for surgery.
 	tools = list(
 		/obj/item/stack/nanopaste = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_SUBSTITUTE
-		)
+		/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_SUBSTITUTE,
+	)
 	time = 3 SECONDS
 	repeat_step = TRUE
 

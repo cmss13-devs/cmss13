@@ -2,10 +2,9 @@
 /obj/item/clothing/accessory/health
 	name = "armor plate"
 	desc = "A metal trauma plate, able to absorb some blows."
-
 	icon = 'icons/obj/items/items.dmi'
-	var/base_icon_state
-	icon_state = "regular2"
+	icon_state = "regular2_100"
+	var/base_icon_state = "regular2"
 
 	slot = ACCESSORY_SLOT_ARMOR_C
 	var/armor_health = 10
@@ -27,12 +26,6 @@
 	var/armor_hitsound = 'sound/effects/metalhit.ogg'
 	var/armor_shattersound = 'sound/effects/metal_shatter.ogg'
 
-/obj/item/clothing/accessory/health/Initialize(mapload, ...)
-	base_icon_state = icon_state
-	. = ..()
-
-	update_icon()
-
 /obj/item/clothing/accessory/health/update_icon()
 	for(var/health_state in health_states)
 		if(armor_health / armor_maxhealth * 100 <= health_state)
@@ -40,14 +33,14 @@
 			return
 
 /obj/item/clothing/accessory/health/proc/get_damage_status()
-	var/percentage = round(armor_health / armor_maxhealth * 100)
+	var/percentage = floor(armor_health / armor_maxhealth * 100)
 	switch(percentage)
 		if(0)
 			. = "It is broken."
 			if(scrappable)
 				. += " If you had two, you could repair it."
 		if(1 to 19)
-			. = "It is falling apart!"
+			. = "It is crumbling apart!"
 		if(20 to 49)
 			. = "It is seriously damaged."
 		if(50 to 79)
@@ -101,7 +94,7 @@
 		COMSIG_HUMAN_BULLET_ACT
 	))
 
-/obj/item/clothing/accessory/health/proc/take_bullet_damage(mob/living/carbon/human/user, damage, ammo_flags, obj/item/projectile/P)
+/obj/item/clothing/accessory/health/proc/take_bullet_damage(mob/living/carbon/human/user, damage, ammo_flags, obj/projectile/P)
 	SIGNAL_HANDLER
 	if(damage <= 0 || (ammo_flags & AMMO_IGNORE_ARMOR))
 		return
@@ -122,7 +115,7 @@
 
 	if(damage_to_nullify)
 		playsound(user, armor_hitsound, 25, TRUE)
-		P.play_damage_effect(user)
+		P.play_hit_effect(user)
 		return COMPONENT_CANCEL_BULLET_ACT
 
 /obj/item/clothing/accessory/health/proc/take_slash_damage(mob/living/user, list/slashdata)
@@ -145,18 +138,17 @@
 		return
 
 	if(!I.armor_health && !armor_health)
-		to_chat(user, SPAN_NOTICE("You use the shards of armour to cobble together an improvised trauma plate."))
+		to_chat(user, SPAN_NOTICE("You use the shards of armor to cobble together an improvised trauma plate."))
 		qdel(I)
 		qdel(src)
 		user.put_in_active_hand(new /obj/item/clothing/accessory/health/scrap())
 
-/obj/item/clothing/accessory/health/metal_plate
 
 /obj/item/clothing/accessory/health/ceramic_plate
 	name = "ceramic plate"
 	desc = "A strong trauma plate, able to protect the user from a large amount of bullets. Ineffective against sharp objects."
-
-	icon_state = "ceramic2"
+	icon_state = "ceramic2_100"
+	base_icon_state = "ceramic2"
 
 	take_slash_damage = FALSE
 	scrappable = FALSE
@@ -167,7 +159,7 @@
 
 	armor_shattersound = 'sound/effects/ceramic_shatter.ogg'
 
-/obj/item/clothing/accessory/health/ceramic_plate/take_bullet_damage(var/mob/living/user, damage, ammo_flags)
+/obj/item/clothing/accessory/health/ceramic_plate/take_bullet_damage(mob/living/user, damage, ammo_flags)
 	if(ammo_flags & AMMO_ACIDIC)
 		return
 
@@ -175,12 +167,12 @@
 
 /obj/item/clothing/accessory/health/scrap
 	name = "scrap metal"
-	desc = "A weak armour plate, only able to protect from a little bit of damage. Perhaps that will be enough."
-
-	icon_state = "scrap"
+	desc = "A weak armor plate, only able to protect from a little bit of damage. Perhaps that will be enough."
+	icon_state = "scrap_100"
+	base_icon_state = "scrap"
 	health_states = list(
 		0,
-		100
+		100,
 	)
 
 	scrappable = FALSE

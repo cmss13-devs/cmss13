@@ -27,7 +27,11 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-/mob/living/carbon/Xenomorph/Spitter
+	minimum_evolve_time = 9 MINUTES
+
+	minimap_icon = "spitter"
+
+/mob/living/carbon/xenomorph/spitter
 	caste_type = XENO_CASTE_SPITTER
 	name = XENO_CASTE_SPITTER
 	desc = "A gross, oozing alien of some kind."
@@ -47,11 +51,15 @@
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/onclick/charge_spit,
 		/datum/action/xeno_action/activable/spray_acid/spitter,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	mutation_type = SPITTER_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/spitter.dmi'
 	icon_xenonid = 'icons/mob/xenonids/spitter.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
+	weed_food_states = list("Drone_1","Drone_2","Drone_3")
+	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")

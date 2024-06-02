@@ -9,6 +9,7 @@
 	w_class = SIZE_HUGE
 
 	matter = list("metal" = 10000,"glass" = 2500)
+	black_market_value = 20
 
 	var/code = 2
 	var/mob_move_time = 0
@@ -34,7 +35,7 @@
 		else
 			if(href_list["code"])
 				code += text2num(href_list["code"])
-				code = round(code)
+				code = floor(code)
 				code = min(100, code)
 				code = max(1, code)
 			else

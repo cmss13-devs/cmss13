@@ -12,7 +12,9 @@
 	var/morgue_type = "morgue"
 	var/tray_path = /obj/structure/morgue_tray
 	var/morgue_open = 0
-	anchored = 1
+	var/exit_stun = 2
+	var/update_name = TRUE
+	anchored = TRUE
 	throwpass = 1
 
 /obj/structure/morgue/Initialize()
@@ -56,19 +58,20 @@
 			if(!A.anchored)
 				A.forceMove(src)
 		connected.forceMove(src)
-		name = "morgue"
-		var/mob/living/L = locate(/mob/living) in contents
-		if(L)
-			name = "morgue ([L])"
-		else
-			var/obj/structure/closet/bodybag/B = locate(/obj/structure/closet/bodybag) in contents
-			if(B)
-				L = locate(/mob/living) in B.contents
-				if(L)
-					name = "morgue ([L])"
+		if(update_name)
+			name = initial(name)
+			var/mob/living/L = locate(/mob/living) in contents
+			if(L)
+				name = "[name] ([L])"
+			else
+				var/obj/structure/closet/bodybag/B = locate(/obj/structure/closet/bodybag) in contents
+				if(B)
+					L = locate(/mob/living) in B.contents
+					if(L)
+						name = "[name] ([L])"
 
 	else
-		name = "morgue"
+		name = initial(name)
 		connected.forceMove(loc)
 		if(step(connected, dir))
 			connected.setDir(dir)
@@ -110,10 +113,15 @@
 	else
 		. = ..()
 
-/obj/structure/morgue/relaymove(mob/user)
-	if(user.is_mob_incapacitated(TRUE))
+/obj/structure/morgue/relaymove(mob/living/user)
+	if(user.is_mob_incapacitated())
 		return
-	toggle_morgue(user)
+	if(exit_stun)
+		user.apply_effect(exit_stun, STUN)
+		if(user.mobility_flags & MOBILITY_MOVE)
+			user.visible_message(SPAN_WARNING("[user] suddenly gets out of [src]!"),
+			SPAN_WARNING("You get out of [src] and get your bearings!"))
+		toggle_morgue(user)
 
 
 /*
@@ -129,7 +137,7 @@
 	density = TRUE
 	layer = OBJ_LAYER
 	var/obj/structure/morgue/linked_morgue = null
-	anchored = 1
+	anchored = TRUE
 	throwpass = 1
 	var/bloody = FALSE
 
@@ -176,7 +184,7 @@
 
 /obj/structure/morgue/crematorium
 	name = "crematorium"
-	desc = "A human incinerator. Works well on barbeque nights."
+	desc = "A human incinerator. Works well on barbecue nights."
 	icon_state = "crema1"
 	dir = SOUTH
 	tray_path = /obj/structure/morgue_tray/crematorium
@@ -275,10 +283,11 @@
 
 /obj/structure/morgue/sarcophagus
 	name = "sarcophagus"
-	desc = "Used to store predators."
+	desc = "Used to store fallen warriors."
 	icon_state = "sarcophagus1"
 	morgue_type = "sarcophagus"
 	tray_path = /obj/structure/morgue_tray/sarcophagus
+	update_name = FALSE
 
 
 /*

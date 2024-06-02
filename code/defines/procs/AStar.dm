@@ -119,7 +119,7 @@ length to avoid portals or something i guess?? Not that they're counted right no
 /proc/PathWeightCompare(PathNode/a, PathNode/b)
 	return a.f - b.f
 
-/proc/AStar(start,end,adjacent,dist,maxnodes,maxnodedepth = 30,mintargetdist,minnodedist,id=null, var/turf/exclude=null)
+/proc/AStar(start,end,adjacent,dist,maxnodes,maxnodedepth = 30,mintargetdist,minnodedist,id=null, turf/exclude=null)
 	var/PriorityQueue/open = new /PriorityQueue(/proc/PathWeightCompare)
 	var/closed[] = new()
 	var/path[]

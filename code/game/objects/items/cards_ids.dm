@@ -50,6 +50,7 @@
 	desc = "This card contains coordinates to the fabled Clown Planet. Handle with care."
 	function = "teleporter"
 	data = "Clown Land"
+	black_market_value = 50
 
 /*
  * ID CARDS
@@ -64,23 +65,30 @@
 	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
 
-	var/registered_name = "Unknown" // The name registered_name on the card
-	var/registered_ref = null
+	/// The name registered_name on the card
+	var/registered_name = "Unknown"
+	var/datum/weakref/registered_ref = null
 	var/registered_gid = 0
 	flags_equip_slot = SLOT_ID
 
 	var/blood_type = "\[UNSET\]"
 
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
-	var/assignment = null //can be alt title or the actual job
-	var/rank = null //actual job
-	var/paygrade = "ME1"  // Marine's paygrade
-	var/claimedgear = 1 // For medics and engineers to 'claim' a locker
+
+	/// can be alt title or the actual job
+	var/assignment = null
+	/// actual job
+	var/rank = null
+	/// Marine's paygrade
+	var/paygrade = PAY_SHORT_CIV
+	/// For medics and engineers to 'claim' a locker
+	var/claimedgear = 1
 
 	var/list/uniform_sets = null
 	var/list/vended_items
 
-	var/pinned_on_uniform = TRUE //whether the id's onmob overlay only appear when wearing a uniform
+	/// whether the id's onmob overlay only appear when wearing a uniform
+	var/pinned_on_uniform = TRUE
 
 	var/modification_log = list()
 
@@ -89,12 +97,27 @@
 	. = ..()
 	screen_loc = null
 
+/obj/item/card/id/proc/GetJobName() //Used in secHUD icon generation
+
+	var/job_icons = get_all_job_icons()
+	var/centcom = get_all_centcom_jobs()
+
+	if(assignment in job_icons)
+		return assignment//Check if the job has a hud icon
+	if(rank in job_icons)
+		return rank
+	if(assignment in centcom)
+		return "Centcom"//Return with the NT logo if it is a Centcom job
+	if(rank in centcom)
+		return "Centcom"
+	return "Unknown" //Return unknown if none of the above apply
+
 /obj/item/card/id/attack_self(mob/user as mob)
 	..()
 	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
 	src.add_fingerprint(user)
 
-/obj/item/card/id/proc/set_user_data(var/mob/living/carbon/human/H)
+/obj/item/card/id/proc/set_user_data(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 
@@ -103,7 +126,7 @@
 	registered_gid = H.gid
 	blood_type = H.blood_type
 
-/obj/item/card/id/proc/set_assignment(var/new_assignment)
+/obj/item/card/id/proc/set_assignment(new_assignment)
 	assignment = new_assignment
 	name = "[registered_name]'s ID Card ([assignment])"
 
@@ -121,6 +144,12 @@
 	to_chat(usr, "[icon2html(src, usr)] [name]: The current assignment on the card is [assignment]")
 	to_chat(usr, "The blood type on the card is [blood_type].")
 
+/obj/item/card/id/proc/check_biometrics(mob/living/carbon/human/target)
+	if(registered_ref && (registered_ref != WEAKREF(target)))
+		return FALSE
+	if(target.real_name != registered_name)
+		return FALSE
+	return TRUE
 
 /obj/item/card/id/data
 	name = "identification holo-badge"
@@ -202,13 +231,25 @@
 	assignment = "Corporate Mercenary"
 
 /obj/item/card/id/pmc/New()
-	access = get_all_centcom_access()
+	access = get_access(ACCESS_LIST_WY_ALL)
 	..()
 
 /obj/item/card/id/pmc/ds
 	name = "\improper Corporate holo-badge"
 	desc = "It lists a callsign and a blood type. Issued to Whiteout protocol teams only."
 	icon_state = "ds"
+
+/obj/item/card/id/marshal
+	name = "\improper CMB marshal gold badge"
+	desc = "A coveted gold badge signifying that the wearer is one of the few CMB Marshals patroling the outer rim. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
+	icon_state = "cmbmar"
+	paygrade = PAY_SHORT_CMBM
+
+/obj/item/card/id/deputy
+	name = "\improper CMB deputy silver badge"
+	desc = "The silver badge which represents that the wearer is a CMB Deputy. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
+	icon_state = "cmbdep"
+	paygrade = PAY_SHORT_CMBD
 
 /obj/item/card/id/general
 	name = "general officer holo-badge"
@@ -218,7 +259,7 @@
 	assignment = "General"
 
 /obj/item/card/id/general/New()
-	access = get_all_centcom_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /obj/item/card/id/provost
 	name = "provost holo-badge"
@@ -228,81 +269,53 @@
 	assignment = "Provost"
 
 /obj/item/card/id/provost/New()
-	access = get_all_centcom_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
-/obj/item/card/id/syndicate
+/obj/item/card/id/adaptive
 	name = "agent card"
 	access = list(ACCESS_ILLEGAL_PIRATE)
-	var/registered_user=null
 
-/obj/item/card/id/syndicate/New(mob/user as mob)
+/obj/item/card/id/adaptive/New(mob/user as mob)
 	..()
 	if(!QDELETED(user)) // Runtime prevention on laggy starts or where users log out because of lag at round start.
-		registered_name = ishuman(user) ? user.real_name : user.name
-	else
-		registered_name = "Agent Card"
+		registered_name = ishuman(user) ? user.real_name : "Unknown"
 	assignment = "Agent"
 	name = "[registered_name]'s ID Card ([assignment])"
 
-/obj/item/card/id/syndicate/afterattack(var/obj/item/O as obj, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/card/id/adaptive/afterattack(obj/item/O as obj, mob/user as mob, proximity)
+	if(!proximity)
+		return
 	if(istype(O, /obj/item/card/id))
-		var/obj/item/card/id/I = O
-		src.access |= I.access
-		if(istype(user, /mob/living) && user.mind)
-			to_chat(usr, SPAN_NOTICE(" The card's microscanners activate as you pass it over the ID, copying its access."))
+		var/obj/item/card/id/target_id = O
+		access |= target_id.access
+		if(ishuman(user))
+			to_chat(user, SPAN_NOTICE("The card's microscanners activate as you pass it over the ID, copying its access."))
 
-/obj/item/card/id/syndicate/attack_self(mob/user as mob)
-	if(!src.registered_name)
-		//Stop giving the players unsanitized unputs! You are giving ways for players to intentionally crash clients! -Nodrak
-		var t = reject_bad_name(input(user, "What name would you like to put on this card?", "Agent card name", ishuman(user) ? user.real_name : user.name))
-		if(!t) //Same as mob/new_player/prefrences.dm
-			alert("Invalid name.")
-			return
-		src.registered_name = t
-
-		var u = strip_html(input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", "Agent"))
-		if(!u)
-			alert("Invalid assignment.")
-			src.registered_name = ""
-			return
-		src.assignment = u
-		src.name = "[src.registered_name]'s ID Card ([src.assignment])"
-		to_chat(user, SPAN_NOTICE(" You successfully forge the ID card."))
-		registered_user = user
-	else if(!registered_user || registered_user == user)
-
-		if(!registered_user) registered_user = user  //
-
-		switch(alert("Would you like to display the ID, or retitle it?","Choose.","Rename","Show"))
-			if("Rename")
-				var t = strip_html(input(user, "What name would you like to put on this card?", "Agent card name", ishuman(user) ? user.real_name : user.name),26)
-				if(!t || t == "Unknown" || t == "floor" || t == "wall" || t == "r-wall") //Same as mob/new_player/prefrences.dm
-					alert("Invalid name.")
-					return
-				src.registered_name = t
-
-				var u = strip_html(input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", "Assistant"))
-				if(!u)
-					alert("Invalid assignment.")
-					return
-				src.assignment = u
-				src.name = "[src.registered_name]'s ID Card ([src.assignment])"
-				to_chat(user, SPAN_NOTICE(" You successfully forge the ID card."))
+/obj/item/card/id/adaptive/attack_self(mob/user as mob)
+	switch(alert("Would you like to display the ID, or retitle it?","Choose.","Rename","Show"))
+		if("Rename")
+			var/new_name = strip_html(input(user, "What name would you like to put on this card?", "Agent card name", ishuman(user) ? user.real_name : user.name),26)
+			if(!new_name || new_name == "Unknown" || new_name == "floor" || new_name == "wall" || new_name == "r-wall") //Same as mob/new_player/prefrences.dm
+				to_chat(user, SPAN_WARNING("Invalid Name."))
 				return
-			if("Show")
-				..()
-	else
-		..()
 
+			var/new_job = strip_html(input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", "Assistant"))
+			if(!new_job)
+				to_chat(user, SPAN_WARNING("Invalid Assignment."))
+				return
 
+			var/new_rank = strip_html(input(user, "What paygrade do would you like to put on this card?\nNote: This must be the shorthand version of the grade, I.E CIV for Civillian or ME1 for Marine Private", "Agent card paygrade assignment", PAY_SHORT_CIV))
+			if(!new_rank || !(new_rank in GLOB.paygrades))
+				to_chat(user, SPAN_WARNING("Invalid Paygrade."))
+				return
 
-/obj/item/card/id/syndicate_command
-	name = "syndicate ID card"
-	desc = "An ID straight from the Syndicate."
-	registered_name = "Syndicate"
-	assignment = "Syndicate Overlord"
-	access = list(ACCESS_ILLEGAL_PIRATE)
+			registered_name = new_name
+			assignment = new_job
+			name = "[registered_name]'s ID Card ([assignment])"
+			paygrade = new_rank
+			to_chat(user, SPAN_NOTICE("You successfully forge the ID card."))
+			return
+	..()
 
 /obj/item/card/id/captains_spare
 	name = "captain's spare ID"
@@ -313,7 +326,7 @@
 	assignment = "Captain"
 
 /obj/item/card/id/captains_spare/New()
-	access = get_all_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 	..()
 
 /obj/item/card/id/centcom
@@ -324,7 +337,7 @@
 	assignment = "General"
 
 /obj/item/card/id/centcom/New()
-	access = get_all_centcom_access()
+	access = get_access(ACCESS_LIST_WY_ALL)
 	..()
 
 

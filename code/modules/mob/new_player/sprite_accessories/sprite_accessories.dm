@@ -43,6 +43,6 @@
 		SYNTH_INFILTRATOR
 		)
 
-	// Whether or not the accessory can be affected by colouration
-	var/do_colouration = 1
+	// Whether or not the accessory can be affected by coloration
+	var/do_coloration = 1
 	var/selectable = 1

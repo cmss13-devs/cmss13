@@ -1,9 +1,3 @@
-#define RANGE_TURFS(RADIUS, CENTER) \
-block( \
-	locate(max(CENTER.x-(RADIUS),1),   max(CENTER.y-(RADIUS),1),   CENTER.z), \
-	locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
-)
-
 //Admin perms are in global.dm.
 
 /// To make it even more clear that something is a bitfield.
@@ -13,7 +7,6 @@ block( \
 
 //Game defining directives.
 #define MAIN_AI_SYSTEM "ARES v3.2"
-#define MAIN_SHIP_ESCAPE_POD_NUMBER 18
 
 // Maploader bounds indices
 #define MAP_MINX 1
@@ -37,10 +30,13 @@ block( \
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
 #define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
-#define MAP_HAUNTED_HOUSE_V2 "Haunted House V2"
 #define MAP_RUNTIME "USS Runtime"
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
+#define MAP_CHINOOK "Chinook 91 GSO" //admin level
+
+#define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
+#define GAMEMODE_HIVE_WARS "Hive Wars"
 
 /// Number of players before we switch to lowpop maps only (LV, BR, Prison).
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130
@@ -82,6 +78,8 @@ block( \
 #define SEE_INVISIBLE_LEVEL_TWO 45 //Used by some other stuff in code. It's really poorly organized.
 #define INVISIBILITY_LEVEL_TWO 45 //Used by some other stuff in code. It's really poorly organized.
 
+#define HIDE_INVISIBLE_OBSERVER 59 // define for when we want to hide all observer mobs.
+
 #define INVISIBILITY_OBSERVER 60
 #define SEE_INVISIBLE_OBSERVER 60
 
@@ -101,10 +99,12 @@ block( \
 #define SOUND_MIDI (1<<1)
 #define SOUND_AMBIENCE (1<<2)
 #define SOUND_LOBBY (1<<3)
-#define SOUND_INTERNET (1<<4)
+#define SOUND_INTERNET (1<<4) // Unused currently. Kept for default prefs compat only
 #define SOUND_REBOOT (1<<5)
 #define SOUND_ADMIN_MEME (1<<6)
 #define SOUND_ADMIN_ATMOSPHERIC (1<<7)
+#define SOUND_ARES_MESSAGE (1<<8)
+#define SOUND_OBSERVER_ANNOUNCEMENTS (1<<9)
 
 //toggles_chat
 #define CHAT_OOC (1<<0)
@@ -121,6 +121,7 @@ block( \
 #define CHAT_FFATTACKLOGS (1<<11)
 #define CHAT_GHOSTHIVEMIND (1<<12)
 #define CHAT_NICHELOGS (1<<13)
+#define CHAT_LISTENINGBUG (1<<14)
 
 //toggles_ghost
 #define GHOST_HEALTH_SCAN  (1<<0)
@@ -148,16 +149,17 @@ block( \
 //toggles_admin
 /// Splits admin tabs in Statpanel
 #define SPLIT_ADMIN_TABS (1<<0)
+#define ADMIN_STEALTHMODE (1<<1)
 
 //=================================================
 
-#define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_ATTACKLOGS|CHAT_LOOC|CHAT_GHOSTHIVEMIND)
+#define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_LOOC|CHAT_GHOSTHIVEMIND)
 
 #define TOGGLES_GHOST_DEFAULT (GHOST_HEALTH_SCAN)
 
 #define TOGGLES_LANGCHAT_DEFAULT (LANGCHAT_SEE_EMOTES)
 
-#define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|SOUND_INTERNET|SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC)
+#define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|SOUND_INTERNET|SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC|SOUND_OBSERVER_ANNOUNCEMENTS)
 
 #define TOGGLES_FLASHING_DEFAULT (FLASH_ROUNDSTART|FLASH_ROUNDEND|FLASH_CORPSEREVIVE|FLASH_ADMINPM|FLASH_UNNEST)
 
@@ -197,7 +199,6 @@ block( \
 //#define SHUTTLE_IDLE 0
 #define SHUTTLE_WARMUP 1
 #define SHUTTLE_INTRANSIT 2
-#define SHUTTLE_CRASHED 3
 
 //Ferry shuttle processing status
 #define IDLE_STATE 0
@@ -214,6 +215,7 @@ block( \
 #define SEC_LEVEL_DELTA 3
 
 //Alarm levels.
+// flags_alarm_state
 #define ALARM_WARNING_FIRE (1<<0)
 #define ALARM_WARNING_ATMOS (1<<1)
 #define ALARM_WARNING_EVAC (1<<2)
@@ -278,8 +280,7 @@ block( \
 
 // Helpers
 /// Only use the CEILING_PROTECTION_TIER_X defines for `protection_level`
-#define CEILING_IS_PROTECTED(ceiling, protection_level) (ceiling >= protection_level)
-
+#define CEILING_IS_PROTECTED(ceiling, protection_level) ((ceiling) >= (protection_level))
 
 // Default font settings
 #define FONT_SIZE "5pt"
@@ -375,6 +376,7 @@ block( \
 #define WALL_DEVWALL "devwall"
 #define WALL_DEVWALL_R "devwall_r"
 #define WALL_HUNTERSHIP "metal"//DMI specific name
+#define WALL_AICORE "aiwall"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1
@@ -389,6 +391,8 @@ block( \
 #define FIRE_MISSION_WEAPON_REMOVED 8
 #define FIRE_MISSION_WEAPON_UNUSABLE 16
 #define FIRE_MISSION_WEAPON_OUT_OF_AMMO 32
+#define FIRE_MISSION_BAD_DIRECTION 64
+#define FIRE_MISSION_NOT_EXECUTABLE -1
 
 //Defines for firemission state
 #define FIRE_MISSION_STATE_IDLE 0
@@ -489,6 +493,18 @@ block( \
 #define TURF_PROTECTION_CAS 2
 #define TURF_PROTECTION_OB 3
 
+/// Convert a turf protection level to a ceiling protection level
+/proc/get_ceiling_protection_level(turf_protection_level)
+	switch(turf_protection_level)
+		if(TURF_PROTECTION_OB)
+			return CEILING_PROTECTION_TIER_4
+		if(TURF_PROTECTION_CAS)
+			return CEILING_PROTECTION_TIER_3
+		if(TURF_PROTECTION_MORTAR)
+			return CEILING_PROTECTION_TIER_2
+		else
+			return CEILING_NO_PROTECTION
+
 // Anything above the deck boundary is the upper deck, anything below is the lower deck
 // This is exclusive, so anything ON the boundary is an edge case that's neither on the upper nor the lower deck
 #define ALMAYER_DECK_BOUNDARY 101
@@ -498,7 +514,7 @@ block( \
 #define ALMAYER_FORE_BOUNDARY 121
 #define ALMAYER_AFT_BOUNDARY 197
 
-/proc/get_accurate_dist(var/turf/A, var/turf/B)
+/proc/get_accurate_dist(turf/A, turf/B)
 	var/dist
 	if(!A || !B)
 		dist = 0
@@ -518,7 +534,7 @@ block( \
 /// `amount` - The number to get per time
 /// `time` - The time period in which to gain this amount
 /// To be used with delta_time. Multiplied by 10 to convert from deciseconds to seconds
-#define AMOUNT_PER_TIME(amount, time) ((amount / (time))*10)
+#define AMOUNT_PER_TIME(amount, time) (((amount) / (time))*10)
 
 // Local message mode. Used to decide wheter message should be dispatched on the radio.
 #define MESSAGE_MODE_LOCAL 1
@@ -527,6 +543,7 @@ block( \
 
 // Performance toggle flags
 /// Set conservative MC timings on game start
+// perf_flags
 #define PERF_TOGGLE_LAZYSS (1<<0)
 /// Disable bloody footprints
 #define PERF_TOGGLE_NOBLOODPRINTS (1<<1)

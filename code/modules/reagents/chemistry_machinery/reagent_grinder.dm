@@ -4,7 +4,7 @@
 	icon_state = "juicer1"
 	layer = ABOVE_TABLE_LAYER
 	density = FALSE
-	anchored = 0
+	anchored = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
@@ -68,7 +68,10 @@
 
 /obj/structure/machinery/reagentgrinder/Destroy()
 	cleanup()
-	. = ..()
+
+	QDEL_NULL(beaker)
+
+	return ..()
 
 /obj/structure/machinery/reagentgrinder/update_icon()
 	icon_state = "juicer"+num2text(!isnull(beaker))
@@ -240,44 +243,44 @@
 		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
 
-/obj/structure/machinery/reagentgrinder/proc/is_allowed(var/obj/item/reagent_container/O)
+/obj/structure/machinery/reagentgrinder/proc/is_allowed(obj/item/reagent_container/O)
 	for(var/i in blend_items)
 		if(istype(O, i))
 			return 1
 	return 0
 
-/obj/structure/machinery/reagentgrinder/proc/get_allowed_by_id(var/obj/item/grown/O)
+/obj/structure/machinery/reagentgrinder/proc/get_allowed_by_id(obj/item/grown/O)
 	for(var/i in blend_items)
 		if(istype(O, i))
 			return blend_items[i]
 
-/obj/structure/machinery/reagentgrinder/proc/get_allowed_snack_by_id(var/obj/item/reagent_container/food/snacks/O)
+/obj/structure/machinery/reagentgrinder/proc/get_allowed_snack_by_id(obj/item/reagent_container/food/snacks/O)
 	for(var/i in blend_items)
 		if(istype(O, i))
 			return blend_items[i]
 
-/obj/structure/machinery/reagentgrinder/proc/get_allowed_juice_by_id(var/obj/item/reagent_container/food/snacks/O)
+/obj/structure/machinery/reagentgrinder/proc/get_allowed_juice_by_id(obj/item/reagent_container/food/snacks/O)
 	for(var/i in juice_items)
 		if(istype(O, i))
 			return juice_items[i]
 
-/obj/structure/machinery/reagentgrinder/proc/get_grownweapon_amount(var/obj/item/grown/O)
+/obj/structure/machinery/reagentgrinder/proc/get_grownweapon_amount(obj/item/grown/O)
 	if(!istype(O))
 		return 5
 	else if(O.potency == -1)
 		return 5
 	else
-		return round(O.potency)
+		return floor(O.potency)
 
-/obj/structure/machinery/reagentgrinder/proc/get_juice_amount(var/obj/item/reagent_container/food/snacks/grown/O)
+/obj/structure/machinery/reagentgrinder/proc/get_juice_amount(obj/item/reagent_container/food/snacks/grown/O)
 	if(!istype(O))
 		return 5
 	else if(O.potency == -1)
 		return 5
 	else
-		return round(5*sqrt(O.potency))
+		return floor(5*sqrt(O.potency))
 
-/obj/structure/machinery/reagentgrinder/proc/remove_object(var/obj/item/O)
+/obj/structure/machinery/reagentgrinder/proc/remove_object(obj/item/O)
 	holdingitems -= O
 	qdel(O)
 
@@ -345,7 +348,7 @@
 						O.reagents.remove_reagent("nutriment", min(O.reagents.get_reagent_amount("nutriment"), space))
 				else
 					if(O.reagents != null && O.reagents.has_reagent("nutriment"))
-						beaker.reagents.add_reagent(r_id, min(round(O.reagents.get_reagent_amount("nutriment")*abs(amount)), space))
+						beaker.reagents.add_reagent(r_id, min(floor(O.reagents.get_reagent_amount("nutriment")*abs(amount)), space))
 						O.reagents.remove_reagent("nutriment", min(O.reagents.get_reagent_amount("nutriment"), space))
 
 			else

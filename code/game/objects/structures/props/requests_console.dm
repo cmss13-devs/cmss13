@@ -1,10 +1,9 @@
 /obj/structure/machinery/requests_console
 	name = "Requests Console"
 	desc = "A console intended to send requests to different departments on the station."
-	anchored = 1
+	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/terminals.dmi'
 	icon_state = "req_comp0"
-	luminosity = 0
 
 /obj/structure/machinery/requests_console/power_change()
 	..()

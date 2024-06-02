@@ -61,8 +61,8 @@
 	icon_state = "sandbag_pile"
 	item_state = "sandbag_pile"
 	w_class = SIZE_LARGE
-	force = 9.0
-	throwforce = 15.0
+	force = 9
+	throwforce = 15
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 25

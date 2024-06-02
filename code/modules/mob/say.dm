@@ -59,14 +59,14 @@
 	else
 		usr.emote(message, 1, null, TRUE)
 
-/mob/proc/say_dead(var/message)
+/mob/proc/say_dead(message)
 	var/name = src.real_name
 
 	if(!src.client) //Somehow
 		return
 
 	if(!src.client.admin_holder || !(client.admin_holder.rights & R_MOD))
-		if(!dsay_allowed)
+		if(!GLOB.dsay_allowed)
 			to_chat(src, SPAN_DANGER("Deadchat is globally muted"))
 			return
 
@@ -103,7 +103,7 @@
 	if(length(langchat_listeners))
 		langchat_speech(message, langchat_listeners, GLOB.all_languages, skip_language_check = TRUE)
 
-/mob/proc/say_understands(var/mob/other,var/datum/language/speaking = null)
+/mob/proc/say_understands(mob/other, datum/language/speaking = null)
 	if (src.stat == 2) //Dead
 		return 1
 
@@ -116,8 +116,6 @@
 		if(!other)
 			return 1
 		if(other.universal_speak)
-			return 1
-		if(isAI(src))
 			return 1
 		if (istype(other, src.type) || istype(src, other.type))
 			return 1
@@ -139,7 +137,7 @@ There is no language handling build into it however there is at the /mob level s
 for it but just ignore it.
 */
 
-/mob/proc/say_quote(var/message, var/datum/language/speaking = null)
+/mob/proc/say_quote(message, datum/language/speaking = null)
 		var/verb = "says"
 		var/ending = copytext(message, length(message))
 		if(ending=="!")
@@ -149,11 +147,6 @@ for it but just ignore it.
 
 		return verb
 
-
-/mob/proc/emote(var/act, var/type, var/message, player_caused)
-	if(act == "me")
-		return custom_emote(type, message, player_caused)
-
 /mob/proc/get_ear()
 	// returns an atom representing a location on the map from which this
 	// mob can hear things
@@ -162,7 +155,7 @@ for it but just ignore it.
 
 	return get_turf(src)
 
-/mob/proc/say_test(var/text)
+/mob/proc/say_test(text)
 	var/ending = copytext(text, length(text))
 	if (ending == "?")
 		return "1"
@@ -173,19 +166,19 @@ for it but just ignore it.
 //parses the message mode code (e.g. :h, :w) from text, such as that supplied to say.
 //returns the message mode string or null for no message mode.
 //standard mode is the mode returned for the special ';' radio code.
-/mob/proc/parse_message_mode(var/message, var/standard_mode="headset")
+/mob/proc/parse_message_mode(message, standard_mode="headset")
 	if(length(message) >= 1 && copytext(message,1,2) == ";")
 		return standard_mode
 
 	if(length(message) >= 2)
 		var/channel_prefix = copytext(message, 1 ,3)
-		return department_radio_keys[channel_prefix]
+		return GLOB.department_radio_keys[channel_prefix]
 
 	return null
 
 //parses the language code (e.g. :j) from text, such as that supplied to say.
 //returns the language object only if the code corresponds to a language that src can speak, otherwise null.
-/mob/proc/parse_language(var/message)
+/mob/proc/parse_language(message)
 	if(length(message) >= 2)
 		var/language_prefix = lowertext(copytext(message, 1 ,3))
 		var/datum/language/L = GLOB.all_languages[GLOB.language_keys[language_prefix]]

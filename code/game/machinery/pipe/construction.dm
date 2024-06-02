@@ -58,7 +58,7 @@ Buildable meters
 	w_class = SIZE_MEDIUM
 	level = 2
 
-/obj/item/pipe/Initialize(mapload, var/pipe_type as num, var/dir as num, var/obj/structure/pipes/make_from = null)
+/obj/item/pipe/Initialize(mapload, pipe_type as num, dir as num, obj/structure/pipes/make_from = null)
 	. = ..()
 	if(pipe_type == null)
 		pipe_type = 0
@@ -296,7 +296,7 @@ Buildable meters
 /obj/item/pipe/Move()
 	. = ..()
 	if ((pipe_type in list (PIPE_SIMPLE_BENT, PIPE_SUPPLY_BENT, PIPE_SCRUBBERS_BENT, PIPE_HE_BENT, PIPE_INSULATED_BENT)) \
-		&& (src.dir in cardinal))
+		&& (src.dir in GLOB.cardinals))
 		setDir(src.dir|turn(src.dir, 90))
 	else if (pipe_type in list (PIPE_SIMPLE_STRAIGHT, PIPE_SUPPLY_STRAIGHT, PIPE_SCRUBBERS_STRAIGHT, PIPE_UNIVERSAL, PIPE_HE_STRAIGHT, PIPE_INSULATED_STRAIGHT, PIPE_MVALVE))
 		if(dir==2)
@@ -620,8 +620,8 @@ Buildable meters
 
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 	user.visible_message( \
-		"[user] fastens the [src].", \
-		SPAN_NOTICE("You have fastened the [src]."), \
+		"[user] fastens [src].", \
+		SPAN_NOTICE("You have fastened [src]."), \
 		"You hear ratchet.")
 	qdel(src) // remove the pipe item
 
@@ -641,7 +641,7 @@ Buildable meters
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_LARGE
 
-/obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/item/pipe_meter/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
 	if (!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))

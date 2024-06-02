@@ -80,10 +80,6 @@
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/structure/surface/rack,
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	pixel_x = 3;
-	pixel_y = 3
-	},
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
@@ -114,7 +110,6 @@
 /obj/item/ammo_magazine/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -156,12 +151,6 @@
 	},
 /area/lv624/lazarus/security)
 "u" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Secure Vault APC";
-	pixel_x = -28;
-	start_charge = 0
-	},
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/cheesewedge/verymature{
 	pixel_x = -7;
@@ -173,6 +162,9 @@
 	},
 /obj/item/reagent_container/food/snacks/cheesewedge/verymature{
 	pixel_y = 6
+	},
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "cult"
@@ -186,12 +178,6 @@
 /obj/item/paper/lv_624/cheese{
 	pixel_x = 8;
 	pixel_y = -4
-	},
-/obj/structure/machinery/door_control{
-	id = "secure_inner_blast";
-	name = "Inner Blast Door";
-	pixel_x = 25;
-	pixel_y = 5
 	},
 /turf/open/floor{
 	icon_state = "cult"
@@ -221,7 +207,7 @@
 	},
 /area/lv624/lazarus/armory)
 "B" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Armory"
 	},

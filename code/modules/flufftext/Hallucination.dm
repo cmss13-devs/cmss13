@@ -59,7 +59,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 						halitem.layer = 50
 						switch(rand(1,6))
 							if(1) //revolver
-								halitem.icon = 'icons/obj/items/weapons/guns/gun.dmi'
+								halitem.icon = 'icons/obj/items/weapons/guns/legacy/old_bayguns.dmi'
 								halitem.icon_state = "revolver"
 								halitem.name = "Revolver"
 							if(2) //c4
@@ -85,17 +85,17 @@ Gunshots/explosions/opening doors/less rare audio (done)
 								halitem.icon_state = "flashbang1"
 								halitem.name = "Flashbang"
 						if(client)
-							client.screen += halitem
+							client.add_to_screen(halitem)
 						spawn(rand(100,250))
 							if(client)
-								client.screen -= halitem
+								client.remove_from_screen(halitem)
 							halitem = null
 			if(26 to 40)
 				//Flashes of danger
 				//to_chat(src, "Danger Flash")
 				if(!halimage)
 					var/list/possible_points = list()
-					for(var/turf/open/floor/F in view(src,world_view_size))
+					for(var/turf/open/floor/F in view(src,GLOB.world_view_size))
 						possible_points += F
 					if(possible_points.len)
 						var/turf/open/floor/target = pick(possible_points)
@@ -159,7 +159,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 				//to_chat(src, "Danger Flash")
 				if(!halbody)
 					var/list/possible_points = list()
-					for(var/turf/open/floor/F in view(src,world_view_size))
+					for(var/turf/open/floor/F in view(src,GLOB.world_view_size))
 						possible_points += F
 					if(possible_points.len)
 						var/turf/open/floor/target = pick(possible_points)
@@ -233,7 +233,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	name = ""
 	desc = ""
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	opacity = FALSE
 	var/mob/living/carbon/human/my_target = null
 	var/weapon_name = null
@@ -247,9 +247,9 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 	health = 100
 
-/obj/effect/fake_attacker/attackby(var/obj/item/P as obj, mob/user as mob)
+/obj/effect/fake_attacker/attackby(obj/item/P as obj, mob/user as mob)
 	step_away(src,my_target,2)
-	for(var/mob/M in oviewers(world_view_size,my_target))
+	for(var/mob/M in oviewers(GLOB.world_view_size,my_target))
 		to_chat(M, SPAN_WARNING("<B>[my_target] flails around wildly.</B>"))
 	my_target.show_message(SPAN_DANGER("<B>[src] has been attacked by [my_target] </B>"), SHOW_MESSAGE_VISIBLE) //Lazy.
 
@@ -258,11 +258,11 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 	return
 
-/obj/effect/fake_attacker/Crossed(var/mob/M, somenumber)
+/obj/effect/fake_attacker/Crossed(mob/M, somenumber)
 	if(M == my_target)
 		step_away(src,my_target,2)
 		if(prob(30))
-			for(var/mob/O in oviewers(world_view_size , my_target))
+			for(var/mob/O in oviewers(GLOB.world_view_size , my_target))
 				to_chat(O, SPAN_DANGER("<B>[my_target] stumbles around.</B>"))
 
 /obj/effect/fake_attacker/New()
@@ -281,6 +281,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	weap = null
 	currentimage = null
 	left = null
+	right = null
 	up = null
 	down = null
 	return ..()
@@ -332,7 +333,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	collapse = 1
 	updateimage()
 
-/proc/fake_blood(var/mob/target)
+/proc/fake_blood(mob/target)
 	var/obj/effect/overlay/O = new/obj/effect/overlay(target.loc)
 	O.name = "blood"
 	var/image/I = image('icons/effects/blood.dmi',O,"floor[rand(1,7)]",O.dir,1)
@@ -340,17 +341,17 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	QDEL_IN(O, 30 SECONDS)
 	return
 
-var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
+GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/device/aicard,\
 	/obj/item/clothing/shoes/magboots, /obj/item/disk/nuclear,\
-	/obj/item/clothing/suit/space/uscm, /obj/item/tank)
+	/obj/item/clothing/suit/space/uscm, /obj/item/tank))
 
-/proc/fake_attack(var/mob/living/target)
+/proc/fake_attack(mob/living/target)
 // var/list/possible_clones = new/list()
 	var/mob/living/carbon/human/clone = null
 	var/clone_weapon = null
 
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
-		if(H.stat || H.lying) continue
+		if(H.stat) continue
 // possible_clones += H
 		clone = H
 		break //changed the code a bit. Less randomised, but less work to do. Should be ok, world.contents aren't stored in any particular order.
@@ -362,11 +363,11 @@ var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
 	//var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(outside_range(target))
 	var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(target.loc)
 	if(clone.l_hand)
-		if(!(locate(clone.l_hand) in non_fakeattack_weapons))
+		if(!(locate(clone.l_hand) in GLOB.non_fakeattack_weapons))
 			clone_weapon = clone.l_hand.name
 			F.weap = clone.l_hand
 	else if (clone.r_hand)
-		if(!(locate(clone.r_hand) in non_fakeattack_weapons))
+		if(!(locate(clone.r_hand) in GLOB.non_fakeattack_weapons))
 			clone_weapon = clone.r_hand.name
 			F.weap = clone.r_hand
 

@@ -15,7 +15,7 @@
 	var/list/mouse_trace_history
 	var/list/lmb_last_mousedown_mods
 
-/client/MouseDown(var/atom/A, var/turf/T, var/skin_ctl, var/params)
+/client/MouseDown(atom/A, turf/T, skin_ctl, params)
 	ignore_next_click = FALSE
 	if(!A)
 		return
@@ -29,6 +29,9 @@
 
 	mouse_trace_history = null
 	LAZYADD(mouse_trace_history, A)
+
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDOWN, A, T, skin_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
+		return
 
 	var/list/mods = params2list(params)
 	if(mods["left"])
@@ -44,7 +47,7 @@
 
 		//Some combat intent click-drags shouldn't be overridden.
 		var/mob/target_mob = A
-		if(ismob(target_mob) && target_mob.faction == mob.faction && !mods["ctrl"] && !(isCarbonSizeXeno(mob) && !mob.get_active_hand())) //Don't attack your allies or yourself, unless you're a xeno with an open hand.
+		if(ismob(target_mob) && target_mob.faction == mob.faction && !mods["ctrl"] && !(iscarbonsizexeno(mob) && !mob.get_active_hand())) //Don't attack your allies or yourself, unless you're a xeno with an open hand.
 			return
 
 		if(!isturf(T)) //If clickdragging something in your own inventory, it's probably a deliberate attempt to open something, tactical-reload, etc. Don't click it.
@@ -52,7 +55,7 @@
 
 		Click(A, T, skin_ctl, params)
 
-/client/MouseUp(var/atom/A, var/turf/T, var/skin_ctl, var/params)
+/client/MouseUp(atom/A, turf/T, skin_ctl, params)
 	if(!A)
 		return
 
@@ -62,11 +65,14 @@
 		params += ";click_catcher=1"
 	holding_click = FALSE
 
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEUP, A, T, skin_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
+		return
+
 	var/list/mods = params2list(params)
 	if(mods["left"])
 		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_UP, A, params)
 
-/client/MouseDrag(var/atom/src_obj, var/atom/over_obj, var/turf/src_loc, var/turf/over_loc, var/src_ctl, var/over_ctl, var/params)
+/client/MouseDrag(atom/src_obj, atom/over_obj, turf/src_loc, turf/over_loc, src_ctl, over_ctl, params)
 	if(!over_obj)
 		return
 
@@ -74,6 +80,9 @@
 	CONVERT_CLICK_CATCHER(over_obj, over_loc, click_catcher_click)
 	if(click_catcher_click)
 		params += ";click_catcher=1"
+
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDRAG, src_obj, over_obj, src_loc, over_loc, src_ctl, over_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
+		return
 
 	var/list/mods = params2list(params)
 	if(mods["left"])
@@ -85,3 +94,11 @@
 
 	// Add the hovered atom to the trace
 	LAZYADD(mouse_trace_history, over_obj)
+
+/client/MouseDrop(datum/src_object, datum/over_object, src_location, over_location, src_control, over_control, params)
+	. = ..()
+	if(over_object)
+		SEND_SIGNAL(over_object, COMSIG_ATOM_DROPPED_ON, src_object, src)
+
+	if(src_object)
+		SEND_SIGNAL(src_object, COMSIG_ATOM_DROP_ON, over_object, src)

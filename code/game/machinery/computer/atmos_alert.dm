@@ -17,6 +17,13 @@
 	. = ..()
 	set_frequency(receive_frequency)
 
+/obj/structure/machinery/computer/atmos_alert/Destroy()
+	SSradio.remove_object(src, receive_frequency)
+	QDEL_NULL_LIST(priority_alarms)
+	QDEL_NULL_LIST(minor_alarms)
+	radio_connection = null
+	. = ..()
+
 /obj/structure/machinery/computer/atmos_alert/receive_signal(datum/signal/signal)
 	if(!signal || signal.encryption) return
 

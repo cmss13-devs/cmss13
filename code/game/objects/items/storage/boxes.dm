@@ -151,6 +151,7 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(handle_delete_clash_contents))
 
 /obj/item/storage/box/flashbangs/proc/handle_delete_clash_contents()
+	SIGNAL_HANDLER
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		var/grenade_count = 0
 		var/grenades_desired = 4
@@ -344,14 +345,28 @@
 	icon_state = "handcuff"
 
 /obj/item/storage/box/handcuffs/fill_preset_inventory()
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 
+
+/obj/item/storage/box/legcuffs
+	name = "box of legcuffs"
+	desc = "A box full of legcuffs."
+	icon_state = "handcuff"
+
+/obj/item/storage/box/legcuffs/fill_preset_inventory()
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
 
 /obj/item/storage/box/zipcuffs
 	name = "box of zip cuffs"
@@ -359,20 +374,34 @@
 	icon_state = "handcuff"
 
 /obj/item/storage/box/zipcuffs/fill_preset_inventory()
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+
+/obj/item/storage/box/zipcuffs/small
+	name = "small box of zip cuffs"
+	desc = "A small box full of zip cuffs."
+	w_class = SIZE_MEDIUM
+
+/obj/item/storage/box/zipcuffs/fill_preset_inventory()
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
 
 /obj/item/storage/box/tapes
 	name = "box of regulation tapes"
@@ -451,15 +480,6 @@
 	if(istype(W) && !W.heat_source && !W.burnt)
 		W.light_match()
 
-/obj/item/storage/box/quickclot
-	name = "box of quickclot injectors"
-	desc = "Contains quickclot autoinjectors."
-	icon_state = "syringe"
-
-/obj/item/storage/box/quickclot/fill_preset_inventory()
-	for (var/i; i < 7; i++)
-		new /obj/item/reagent_container/hypospray/autoinjector/quickclot(src)
-
 /obj/item/storage/box/lights
 	name = "box of replacement bulbs"
 	icon = 'icons/obj/items/storage.dmi'
@@ -469,7 +489,7 @@
 	foldable = /obj/item/stack/sheet/cardboard //BubbleWrap
 	can_hold = list(
 		/obj/item/light_bulb/tube,
-		/obj/item/light_bulb/bulb
+		/obj/item/light_bulb/bulb,
 	)
 	max_storage_space = 42 //holds 21 items of w_class 2
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER
@@ -554,7 +574,7 @@
 		new /obj/item/device/flashlight/flare(src)
 
 /obj/item/storage/box/m94/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		icon_state = "m94_e"
 	else
 		icon_state = "m94"
@@ -570,7 +590,7 @@
 		new /obj/item/device/flashlight/flare/signal(src)
 
 /obj/item/storage/box/m94/signal/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		icon_state = "m89_e"
 	else
 		icon_state = "m89"
@@ -583,10 +603,28 @@
 	w_class = SIZE_LARGE
 	storage_slots = 25
 	max_storage_space = 50
-	can_hold = list(/obj/item/explosive/grenade/HE)
+	can_hold = list(/obj/item/explosive/grenade/high_explosive)
 	var/base_icon
-	var/grenade_type = /obj/item/explosive/grenade/HE
+	var/grenade_type = /obj/item/explosive/grenade/high_explosive
 	has_gamemode_skin = TRUE
+
+/obj/item/storage/box/nade_box/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
+
+/obj/item/storage/box/nade_box/proc/try_forced_folding(datum/source, mob/user)
+	SIGNAL_HANDLER
+
+	if(!isturf(loc))
+		return
+
+	if(length(contents))
+		return
+
+	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
+	storage_close(user)
+	to_chat(user, SPAN_NOTICE("You throw away [src]."))
+	qdel(src)
 
 /obj/item/storage/box/nade_box/post_skin_selection()
 	base_icon = icon_state
@@ -596,9 +634,8 @@
 		new grenade_type(src)
 
 /obj/item/storage/box/nade_box/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		icon_state = "[base_icon]_e"
-		qdel(src) //No reason to keep it - nobody will reuse it...
 	else
 		icon_state = base_icon
 
@@ -610,8 +647,8 @@
 	w_class = SIZE_LARGE
 	storage_slots = 25
 	max_storage_space = 50
-	can_hold = list(/obj/item/explosive/grenade/HE/frag)
-	grenade_type = /obj/item/explosive/grenade/HE/frag
+	can_hold = list(/obj/item/explosive/grenade/high_explosive/frag)
+	grenade_type = /obj/item/explosive/grenade/high_explosive/frag
 	has_gamemode_skin = FALSE
 
 /obj/item/storage/box/nade_box/phophorus
@@ -632,16 +669,16 @@
 	w_class = SIZE_LARGE
 	storage_slots = 25
 	max_storage_space = 50
-	can_hold = list(/obj/item/explosive/grenade/HE/airburst)
-	grenade_type = /obj/item/explosive/grenade/HE/airburst
+	can_hold = list(/obj/item/explosive/grenade/high_explosive/airburst)
+	grenade_type = /obj/item/explosive/grenade/high_explosive/airburst
 	has_gamemode_skin = FALSE
 
 /obj/item/storage/box/nade_box/training
 	name = "\improper M07 training grenade box"
 	desc = "A secure box holding 25 M07 training grenades. Harmless and reusable."
 	icon_state = "train_nade_placeholder"
-	grenade_type = /obj/item/explosive/grenade/HE/training
-	can_hold = list(/obj/item/explosive/grenade/HE/training)
+	grenade_type = /obj/item/explosive/grenade/high_explosive/training
+	can_hold = list(/obj/item/explosive/grenade/high_explosive/training)
 	has_gamemode_skin = FALSE
 
 /obj/item/storage/box/nade_box/tear_gas
@@ -708,7 +745,7 @@
 	storage_slots = 7
 	max_w_class = 0
 	use_sound = "rip"
-	var/isopened = 0
+	var/isopened = FALSE
 
 /obj/item/storage/box/MRE/fill_preset_inventory()
 	pickflavor()
@@ -746,12 +783,233 @@
 
 /obj/item/storage/box/MRE/Initialize()
 	. = ..()
-	isopened = 0
+	isopened = FALSE
 	icon_state = "mealpack"
+	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
+
+/obj/item/storage/box/MRE/proc/try_forced_folding(datum/source, mob/user)
+	SIGNAL_HANDLER
+
+	if(!isturf(loc))
+		return
+
+	if(locate(/obj/item/reagent_container/food/snacks/packaged_meal) in src)
+		return
+
+	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
+	storage_close(user)
+	to_chat(user, SPAN_NOTICE("You throw away [src]."))
+	qdel(src)
 
 /obj/item/storage/box/MRE/update_icon()
-	if(!contents.len)
-		qdel(src)
-	else if(!isopened)
-		isopened = 1
+	if(!isopened)
+		isopened = TRUE
 		icon_state = "mealpackopened"
+
+//food boxes for storage in bulk
+
+//meat
+/obj/item/storage/box/meat
+	name = "box of meat"
+
+/obj/item/storage/box/meat/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/meat/monkey(src)
+
+//fish
+/obj/item/storage/box/fish
+	name = "box of fish"
+
+/obj/item/storage/box/fish/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/carpmeat(src)
+
+//grocery
+
+//milk
+/obj/item/storage/box/milk
+	name = "box of milk"
+
+/obj/item/storage/box/milk/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/drinks/milk(src)
+
+//soymilk
+/obj/item/storage/box/soymilk
+	name = "box of soymilk"
+
+/obj/item/storage/box/soymilk/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/drinks/soymilk(src)
+
+//enzyme
+/obj/item/storage/box/enzyme
+	name = "box of enzyme"
+
+/obj/item/storage/box/enzyme/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/condiment/enzyme(src)
+
+//dry storage
+
+//flour
+/obj/item/storage/box/flour
+	name = "box of flour"
+
+/obj/item/storage/box/flour/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/flour(src)
+
+//sugar
+/obj/item/storage/box/sugar
+	name = "box of sugar"
+
+/obj/item/storage/box/sugar/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/condiment/sugar(src)
+
+//saltshaker
+/obj/item/storage/box/saltshaker
+	name = "box of saltshakers"
+
+/obj/item/storage/box/saltshaker/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/condiment/saltshaker(src)
+
+//peppermill
+/obj/item/storage/box/peppermill
+	name = "box of peppermills"
+
+/obj/item/storage/box/peppermill/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/condiment/peppermill(src)
+
+//mint
+/obj/item/storage/box/mint
+	name = "box of mints"
+
+/obj/item/storage/box/mint/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/mint(src)
+
+// ORGANICS
+
+//apple
+/obj/item/storage/box/apple
+	name = "box of apples"
+
+/obj/item/storage/box/apple/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/apple(src)
+
+//banana
+/obj/item/storage/box/banana
+	name = "box of bananas"
+
+/obj/item/storage/box/banana/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/banana(src)
+
+//chanterelle
+/obj/item/storage/box/chanterelles
+	name = "box of chanterelle"
+
+/obj/item/storage/box/chanterelle/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle(src)
+
+//cherries
+/obj/item/storage/box/cherries
+	name = "box of cherries"
+
+/obj/item/storage/box/cherries/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/cherries(src)
+
+//chili
+/obj/item/storage/box/chili
+	name = "box of chili"
+
+/obj/item/storage/box/chili/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/chili(src)
+
+//cabbage
+/obj/item/storage/box/cabbage
+	name = "box of cabbages"
+
+/obj/item/storage/box/cabbage/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/cabbage(src)
+
+//carrot
+/obj/item/storage/box/carrot
+	name = "box of carrots"
+
+/obj/item/storage/box/carrot/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/carrot(src)
+
+//corn
+/obj/item/storage/box/corn
+	name = "box of corn"
+
+/obj/item/storage/box/corn/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/corn(src)
+
+//eggplant
+/obj/item/storage/box/eggplant
+	name = "box of eggplants"
+
+/obj/item/storage/box/eggplant/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/eggplant(src)
+
+//lemon
+/obj/item/storage/box/lemon
+	name = "box of lemons"
+
+/obj/item/storage/box/lemon/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/lemon(src)
+
+//lime
+/obj/item/storage/box/lime
+	name = "box of limes"
+
+/obj/item/storage/box/lime/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/lime(src)
+
+//orange
+/obj/item/storage/box/orange
+	name = "box of oranges"
+
+/obj/item/storage/box/orange/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/orange(src)
+
+//potato
+/obj/item/storage/box/potato
+	name = "box of potatoes"
+
+/obj/item/storage/box/potato/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/potato(src)
+
+//tomato
+/obj/item/storage/box/tomato
+	name = "box of tomatoes"
+
+/obj/item/storage/box/tomato/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/tomato(src)
+
+//whitebeet
+/obj/item/storage/box/whitebeet
+	name = "box of whitebeet"
+
+/obj/item/storage/box/whitebeet/fill_preset_inventory()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_container/food/snacks/grown/whitebeet(src)

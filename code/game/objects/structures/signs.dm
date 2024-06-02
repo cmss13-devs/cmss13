@@ -1,6 +1,6 @@
 /obj/structure/sign
 	icon = 'icons/obj/structures/props/decals.dmi'
-	anchored = 1
+	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
 	layer = WALL_OBJ_LAYER
@@ -17,6 +17,7 @@
 		S.desc = desc
 		S.icon_state = icon_state
 		S.sign_state = icon_state
+		S.icon = icon
 		deconstruct(FALSE)
 	else ..()
 
@@ -45,6 +46,7 @@
 		S.name = name
 		S.desc = desc
 		S.icon_state = sign_state
+		S.icon = icon
 		to_chat(user, "You fasten \the [S] with your [tool].")
 		qdel(src)
 	else ..()
@@ -70,7 +72,7 @@
 
 /obj/structure/sign/kiddieplaque
 	name = "AI developers plaque"
-	desc = "Next to the extremely long list of names and job titles, there is a drawing of a little child. The child appears to be retarded. Beneath the image, someone has scratched the word \"PACKETS\""
+	desc = "Next to the extremely long list of names and job titles, there is a drawing of a little child. Beneath the image, someone has scratched the word \"PACKETS\""
 	icon_state = "kiddieplaque"
 
 /obj/structure/sign/arcturianstopsign
@@ -105,6 +107,11 @@
 	desc = "This banner depicts Delta Squad's motto. The Marines of Delta Squad adopted it after picking an old bomber movie for movie night a while back."
 	icon_state = "maximumeffort"
 
+/obj/structure/sign/banners/united_americas_flag
+	name = "\improper United Americas flag"
+	desc = "A flag of the United Americas. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "uaflag"
+
 //=====================//
 // SEMIOTIC STANDARD  //
 //===================//
@@ -113,7 +120,7 @@
 	name = "sign"
 	icon = 'icons/obj/structures/props/semiotic_standard.dmi'
 	desc = "A sign denoting Semiotic Standard. The Interstellar Commerce Commission requires that these symbols be placed pretty much everywhere for your safety."
-	anchored = 1
+	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
 
@@ -303,7 +310,7 @@
 	icon_state = "lifesupport"
 
 /obj/structure/sign/safety/maint
-	name = "maintenace semiotic"
+	name = "maintenance semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of maintenance access."
 	icon_state = "maint"
 
@@ -568,7 +575,7 @@
 
 /obj/structure/sign/ROsign
 	name = "\improper USCM Requisitions Office Guidelines"
-	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cyrosleep underwear is non-permissible.\n 3. The Requsitions Officer has the final say and the right to decline service. Only the Acting Captain may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
+	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cryosleep underwear is non-permissible.\n 3. The Quartermaster has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
 	icon_state = "roplaque"
 
 /obj/structure/sign/prop1

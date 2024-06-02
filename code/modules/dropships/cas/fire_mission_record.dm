@@ -5,6 +5,11 @@
 	/// List of transverse offsets for each firing step - null meaning not shooting
 	var/list/offsets
 
+/datum/cas_fire_mission_record/ui_data(mob/user)
+	. = list()
+	.["weapon"] = weapon.ship_base.attach_id
+	.["offsets"] = offsets
+
 /// Get offset range allowed when firing weapon in this configuration
 /datum/cas_fire_mission_record/proc/get_offsets()
 	if(!weapon?.ship_base)

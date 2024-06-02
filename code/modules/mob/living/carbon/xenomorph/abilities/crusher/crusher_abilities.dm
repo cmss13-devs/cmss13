@@ -39,7 +39,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_stomp
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 180
+	xeno_cooldown = 18 SECONDS
 	plasma_cost = 30
 
 	var/damage = 65
@@ -68,7 +68,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 50
-	xeno_cooldown = 12 SECONDS
+	xeno_cooldown = 26 SECONDS
 	var/shield_amount = 200
 
 /datum/action/xeno_action/activable/fling/charger
@@ -120,8 +120,12 @@
 	var/momentum = 0
 
 
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_position_change(mob/living/carbon/xenomorph/xeno, body_position)
+	SIGNAL_HANDLER
+	if(body_position == LYING_DOWN)
+		handle_movement(xeno)
 
-/datum/action/xeno_action/onclick/charger_charge/proc/handle_movement(mob/living/carbon/Xenomorph/Xeno, atom/oldloc, dir, forced)
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_movement(mob/living/carbon/xenomorph/Xeno, atom/oldloc, dir, forced)
 	SIGNAL_HANDLER
 	if(Xeno.pulling)
 		if(!momentum)
@@ -178,9 +182,9 @@
 		playsound(Xeno, 'sound/effects/alien_footstep_charge1.ogg', 50)
 
 	for(var/mob/living/carbon/human/Mob in Xeno.loc)
-		if(Mob.lying && Mob.stat != DEAD)
+		if(Mob.body_position == LYING_DOWN && Mob.stat != DEAD)
 			Xeno.visible_message(SPAN_DANGER("[Xeno] runs [Mob] over!"),
-				SPAN_DANGER("You run [Mob] over!")
+				SPAN_DANGER("We run [Mob] over!")
 			)
 			var/ram_dir = pick(get_perpen_dir(Xeno.dir))
 			var/dist = 1
@@ -206,13 +210,13 @@
 	if(!covered)
 		stop_momentum()
 
-/datum/action/xeno_action/onclick/charger_charge/proc/update_speed(mob/living/carbon/Xenomorph/Xeno)
+/datum/action/xeno_action/onclick/charger_charge/proc/update_speed(mob/living/carbon/xenomorph/Xeno)
 	SIGNAL_HANDLER
 	Xeno.speed += momentum * speed_per_momentum
 
 /datum/action/xeno_action/onclick/charger_charge/proc/stop_momentum(datum/source)
 	SIGNAL_HANDLER
-	var/mob/living/carbon/Xenomorph/Xeno = owner
+	var/mob/living/carbon/xenomorph/Xeno = owner
 	if(momentum == max_momentum)
 		Xeno.visible_message(SPAN_DANGER("[Xeno] skids to a halt!"))
 
@@ -227,10 +231,10 @@
 		stop_momentum()
 	else
 		momentum -= amount
-		var/mob/living/carbon/Xenomorph/Xeno = owner
+		var/mob/living/carbon/xenomorph/Xeno = owner
 		Xeno.recalculate_speed()
 
-/datum/action/xeno_action/onclick/charger_charge/proc/handle_collision(mob/living/carbon/Xenomorph/Xeno, atom/tar)
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_collision(mob/living/carbon/xenomorph/Xeno, atom/tar)
 	SIGNAL_HANDLER
 	if(!momentum)
 		stop_momentum()
@@ -259,21 +263,21 @@
 	xeno_cooldown = 10 SECONDS
 
 /datum/action/xeno_action/activable/tumble/proc/on_end_throw(start_charging)
-	var/mob/living/carbon/Xenomorph/Xeno = owner
+	var/mob/living/carbon/xenomorph/Xeno = owner
 	Xeno.flags_atom &= ~DIRLOCK
 	if(start_charging)
 		SEND_SIGNAL(Xeno, COMSIG_XENO_START_CHARGING)
 
 
 /datum/action/xeno_action/activable/tumble/proc/handle_mob_collision(mob/living/carbon/Mob)
-	var/mob/living/carbon/Xenomorph/Xeno = owner
-	Xeno.visible_message(SPAN_XENODANGER("[Xeno] Sweeps to the side, knocking down [Mob]!"), SPAN_XENODANGER("You knock over [Mob] as you sweep to the side!"))
+	var/mob/living/carbon/xenomorph/Xeno = owner
+	Xeno.visible_message(SPAN_XENODANGER("[Xeno] Sweeps to the side, knocking down [Mob]!"), SPAN_XENODANGER("We knock over [Mob] as we sweep to the side!"))
 	var/turf/target_turf = get_turf(Mob)
 	playsound(Mob,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	Mob.apply_damage(15,BRUTE)
 	if(ishuman(Mob))
 		var/mob/living/carbon/human/Human = Mob
-		xeno_throw_human(Human, Xeno, get_dir(Xeno, Human), 1)
+		Xeno.throw_carbon(Human, distance = 1)
 		Human.apply_effect(1, WEAKEN)
 	else
 		Mob.apply_effect(1, WEAKEN)

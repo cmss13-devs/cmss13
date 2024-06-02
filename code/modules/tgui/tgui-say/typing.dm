@@ -22,6 +22,7 @@
 	remove_all_indicators()
 	return ..()
 
+/// Whether or not to show a typing indicator when speaking. Defaults to on.
 /client/verb/typing_indicator()
 	set name = "Show/Hide Typing Indicator"
 	set category = "Preferences.Chat"
@@ -104,4 +105,3 @@
 	thinking_IC = FALSE
 	remove_thinking_indicator()
 	remove_typing_indicator()
-

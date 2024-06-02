@@ -13,7 +13,7 @@
 	var/icon_state_off = "bbox_off"
 	flags_atom = FPRINT
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	var/on = 0
 	var/busy = FALSE
 	var/directions = list(1,2,4,8,5,6,9,10)
@@ -39,7 +39,7 @@
 		return
 
 	busy = TRUE
-	to_chat(user, SPAN_XENOWARNING(" Updating power settings.."))
+	to_chat(user, SPAN_XENOWARNING(" Updating power settings..."))
 	if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) //5s for AI as AIs can manipulate electronics much faster.
 		set_state(!on)
 		to_chat(user, SPAN_XENOWARNING(" Update Completed. New setting:[on ? "on": "off"]"))
@@ -63,7 +63,7 @@
 		SPAN_NOTICE("You [on ? "enabled" : "disabled"] the breaker box!"))
 	busy = FALSE
 
-/obj/structure/machinery/power/breakerbox/proc/set_state(var/state)
+/obj/structure/machinery/power/breakerbox/proc/set_state(state)
 	on = state
 	if(on)
 		icon_state = icon_state_on

@@ -1,0 +1,483 @@
+2023-03-01:
+  Morrow:
+  - bugfix: Fixes barrel and ammo box sprites for M4RA
+  - server: Introduces round results webhook.
+2023-03-02:
+  BeagleGaming1:
+  - rscadd: Reworks alcohol and its property and makes it way too complicated
+  - bugfix: Adds a limit to how long you will be slurring for after drinking alcohol
+  Segrain:
+  - admin: Editing bitflag variables actually works now.
+  - bugfix: Rotating chairs now only works with actual rotating chairs.
+  carlarctg:
+  - code_imp: Clears up gun and mob related hard dels
+2023-03-03:
+  CapCamIII:
+  - rscadd: M4RA now uses L42A handling effects for loading/unloading and chambering
+  - spellcheck: HPR now says M4RA instead of L42A when going over the other 10x24
+      marine weapons
+  Puckaboo2:
+  - bugfix: Xenomorph HUD sprites are now properly spaced out so borders no longer
+      overlay one another.
+  - code_imp: Renamed Warden's 'Protect' ability to 'Aid' and fixed its flavor text
+      to better represent its function.
+  - imageadd: Added a new ability icon for Warden's aforementioned 'Aid' ability.
+  harryob:
+  - ui: the escape menu was made a bit more readable on certain maps and gamemodes
+  realforest2001:
+  - bugfix: Poddoors now use their closed/open_layer vars properly.
+2023-03-04:
+  Puckaboo2:
+  - bugfix: Warden's Aid ability now has its proper icon state name, so the ability
+      icon will properly display.
+  - spellcheck: prae_assist has been renamed to prae_aid.
+  - spellcheck: Renamed Aid Xeno to Aid Xenomorph.
+  - spellcheck: Renamed Toggle Heal Type to Toggle Aid Type.
+  harryob:
+  - qol: you now receive notifications when it is possible to evolve into certain
+      castes, based on roundstart time locks
+  - qol: unavailable castes are no longer shown in the evolve list
+  mullenpaul:
+  - bugfix: Queen can't hijack dropships on the Almayer
+  - bugfix: Ported upstream fix to stop shuttle separation
+  - bugfix: Resolved auto launch feature for ERT
+  - bugfix: escape pod sound now correct
+2023-03-05:
+  realforest2001:
+  - rscadd: Re-Adds autoreplies to ahelps.
+2023-03-06:
+  NewyearnewmeUwu:
+  - bugfix: you can now see emotes while deaf
+  carlarctg:
+  - qol: Queens can grant jellies of Proliferation and Rejuvenation.
+  realforest2001:
+  - rscadd: High Command now show at the top of the Crew Monitor.
+  - rscadd: Most Provost and Riot MP roles appear in the MP section of the Crew Monitor.
+  - rscadd: Foxtrot Squad and Marine Raiders now appear in consecutive lists below
+      Delta and Echo.
+2023-03-07:
+  BeagleGaming1:
+  - spellcheck: Corrects smart-disk's to smart-disc's
+  Mister-moon1:
+  - spellcheck: fixed unneeded commas for caste descriptions
+  - code_imp: Removed unnecessary words from defender and crusher description
+  Totalepicness:
+  - rscadd: Added "Globber Boiler", which is a total replacement of base boiler, designed
+      to kill the "safe" gameplay loops of current base boiler in an attempt for a
+      more challenging and fun caste to both play as and against.
+  - balance: 'Globber Active 1 - Bombard: Spit a large acid glob that will, upon impact,
+      immediately spread a gas glob of your choice'
+  - balance: 'Globber Active 2 - Spray acid: Instantly sprays a line of acid'
+  - balance: 'Globber Active 3 - Shift spits: Switch between acid and neuro gas globs.
+      Acid deals damage while neuro slows, blinds and eventually knocks down marines.
+      Neuro has a larger radius than acid'
+  - balance: 'Globber Active 4 -  Acid shroud: A quick windup action that dumps an
+      acid cloud over the boiler. Cooldowns other abilities similar to dump acid.'
+  - balance: 'Globber Active 5 - Zoom: Short-ranged zoom with no windup.'
+  - balance: 'Globber Passive: Globber features armor, but it is weaker against flames!
+      Stay away from fire!'
+  - refactor: Refractored some minor spit code and icons
+  - balance: Neuro has been completely reworked to deal mainly stamina damage, causes
+      dizzyness and has a small chance to make you 'stumble' in a random direction
+      along with minor tox damage. Stay out of it!
+  - rscadd: Completly reworked neuro gas, it now uses a proper effect with escalating
+      effects the larger the dosage rather than RNG.
+  - bugfix: Acid now deals damage to cades and now has a good chance of going over
+      instead of being airtight
+  - bugfix: ' Boiler globs no longer can target mobs and track them.'
+  Unknownity:
+  - bugfix: You can no longer get a functional clan mask in a black market crate.
+  - bugfix: The stone clan armor is no longer invisible if you wear it.
+  - bugfix: Fixed certain useless items showing up on the predator tracking system.
+  carlarctg:
+  - rscadd: Adds a new biological trait and component, 'Bad Leg'. This trait will
+      give your character a bad leg, which will flare up in pain if you walk without
+      a cane too much. Combat roles cannot get this trait, and neither can some rookie/physically-demanding
+      roles such as MT, CT, nurse.
+  - imageadd: Added and separated the one cane into various types of canes. Makeshift,
+      wooden, fancy, holster, gun.
+  - soundadd: Added sounds for cane walking that will occur while you walk, if you're
+      gripping a cane.
+  - rscadd: Survivors will get a makeshift cane. Command roles (And the CL) will get
+      a fancy cane. Everyone else gets a normal wooden cane.
+  - rscadd: You can create a 'cane', a wooden pole, via 3 wooden planks.
+  - rscadd: Added a 'holster' cane that can fit any melee weapon inside, that the
+      CL can purchase from their briefcase.
+  - admin: 'Added a fancy cane that can be unfolded to become a gun! Six shots, more
+      than enough to kill anything that moves, and integrally silenced. Admin-only
+      for now, also comes inside a case with two spare handfuls of ammunition. Admins:
+      Mess around with the cane first, it might be finicky to learn.'
+  - code_imp: Added a new flag for guns that prevents them from showing their gun
+      features in examine.
+  - spellcheck: Fixed a typo in the CL briefcase.
+  stanalbatross:
+  - ui: converted money-based vendors to tgui
+2023-03-08:
+  BeagleGaming1:
+  - admin: Adds logs when you stammered speech
+  LynxSolstice:
+  - maptweak: Increased Dropship capacity from 33 to 64.
+  Morrow:
+  - bugfix: Fixes power issues for shuttle consoles
+  Puckaboo2:
+  - rscdel: Death Commando Masks have been removed, fixing a missing icon state error.
+  - code_imp: Most of the missing icon state linter errors have been fixed through
+      code and the addition of certain icon states.
+  - code_imp: Removed all instances of placeholder icon_state and item_state variables
+      and replaced them with null so no files will be assigned to them.
+  - imageadd: The donator item The Fists of Mandalore no longer has missing icon states.
+  - imageadd: Armored Sandals now have a distinctive sprite from normal sandals.
+  - bugfix: The donator item XXX's custom Cigar can now be flickered on and off.
+  - bugfix: The donator item Ghost Cigar can now be used.
+  carlarctg:
+  - bugfix: Increased maximum amount of text in predator flavor text to the normal
+      1024 characters value.
+  - soundadd: Adds two new sounds for the clan sword.
+  - spellcheck: Slightly tuned some yautja weapon descriptions.
+  insertnamehere123:
+  - bugfix: Grape soda's sprite isn't broken anymore
+  - imageadd: copypasted the grape soda sprite from one sheet into the right sheet
+  realforest2001:
+  - rscadd: Added a var to decide if morgues update their names to reflect contents.
+      Currently just used to protect Yautja sarcophagi.
+  totalepicness:
+  - bugfix: Fixes cats now do 25 damage and a flicker stun to prey instead of instakilling
+      them.
+2023-03-09:
+  Totalepicness5:
+  - bugfix: Fixed being able to slap dead huggers on your face
+  - refactor: Got rid of all dead hugger instances and replaced them with a prop.
+2023-03-10:
+  BeagleGaming1:
+  - qol: If you are unable to fire guns, you are also unable to execute, and instead
+      just melee
+  Morrow:
+  - bugfix: Fixes shuttle console accesses
+  carlarctg:
+  - balance: Plasma pistols and Spike launchers can be wielded.
+  - balance: Removed Wrist Scimitar power reduction.
+2023-03-11:
+  LynxSolstice:
+  - bugfix: Removed old unused code, reducing code debt.
+  NewyearnewmeUwu:
+  - rscdel: Removed the ability to get combat drones and DD gear+guns from black market
+      crates.
+  TopHatPenguin:
+  - rscadd: Adds Chinese to the UPP presets.
+  realforest2001:
+  - config: References to the forum now direct to the new one.
+2023-03-12:
+  Morrow:
+  - bugfix: Fixes runtimes related to leaving the server
+  NewyearnewmeUwu:
+  - bugfix: soil for sandbags on Chance's now has a proper name
+  TopHatPenguin:
+  - rscadd: Adds breaching charges to the RTO vendor
+2023-03-13:
+  LC4492:
+  - bugfix: Fixed poorly made yummy-tummies around the engineering area.
+  - maptweak: The upper engineering area have been properly tweaked to accomodate
+      a shared bunk room for the enlisted ranks of the engineering department, a proper
+      cryosleep room and gave the Chief Engineer his own chamber to sleep in.
+  Morrow:
+  - rscadd: Xenos can now slash and fully destroy vehicle chairs
+  - qol: Made Hivemind available for the first 5 minutes of round even without a queen.
+2023-03-14:
+  NewyearnewmeUwu:
+  - qol: You can now pull a mask up or down with a UI button.
+  - refactor: massively refactored /obj/structure{ objects into proper items
+  - maptweak: every /obj/structure{ item in map files has been removed.
+  carlarctg:
+  - bugfix: Fixed zombie powder perma killing you
+  realforest2001:
+  - admin: Adds a confirmation button to View Global Variables.
+  - bugfix: Admin awarding req points no longer does an alert even if the cancel button
+      is pressed.
+2023-03-15:
+  Geeves:
+  - rscadd: hijack is more cinematic, with explosions and better sound effects
+  Morrow:
+  - bugfix: Removes random flight terminal on big red
+  XSlayer300:
+  - soundadd: Added 23 male *warcry variations.
+  - soundadd: Added 12 female *warcry variations.
+  harryob:
+  - admin: admins can mark ahelps again, and the ticket interface is a different color
+2023-03-16:
+  CapCamIII:
+  - bugfix: Torn scarves no longer cover your facial hair or identity
+  DecemberIsHere:
+  - balance: Nerfs to the Scout Custom M4RA.
+  NewyearnewmeUwu:
+  - bugfix: Sandbags are no longer invisible when when in the same tile as a north/south
+      plasteel cade while facing east/west.
+  Segrain:
+  - bugfix: AA cannon actually works once again.
+  TheDonkified:
+  - rscdel: Evo pods and spawn pool are removed.
+  - rscadd: Hive core directly affects evolution speed and is where burrowed larva
+      spawn from now on.
+  harryob:
+  - refactor: the interior manager is gone, long live ssinterior
+  - bugfix: whitelisted predators can now use apostrophes in their flavour texts
+  realforest2001:
+  - bugfix: Dropships can no longer squish oneanother on Chance's Claim.
+2023-03-17:
+  NewyearnewmeUwu:
+  - maptweak: removed yet another default ss13 door from big red
+  TopHatPenguin:
+  - bugfix: Removes the duplicated closet in DCC bunks.
+  realforest2001:
+  - rscadd: Vehicle Elevator now starts raised.
+2023-03-18:
+  Morrow:
+  - bugfix: Fix to evacuated personnel not ending the round
+  - balance: Reduces screenshake and volume of klaxons during hijack.
+  Zonespace27:
+  - rscadd: Map, shipmap, and gamemode votes have their entries in a random order.
+  - admin: Admin-created votes can now, optionally, have their entries in a random
+      order.
+  harryob:
+  - qol: added keybinds for joining as xeno, viewing hive status, hiding, evolving
+      and cancelling camera view
+  - qol: added actions buttons for evolving and joining as xeno
+  - code_imp: actions can listen for a keybind to activate the action
+  - bugfix: fixed a very spammy runtime error
+  memesky:
+  - qol: Increased the maximum font size of the chat from 32px to 48px.
+2023-03-19:
+  CapCamIII:
+  - bugfix: Torn scarves are now small instead of normal sized
+  - balance: M42A, M42C, and XM43E1 can no longer scope in faction clash.
+  Jackie_Estegado:
+  - balance: Reverted the unintentionally nerfed melee damage of the M4RA Custom Battle
+      Rifle.
+  LTNTS:
+  - bugfix: fixed being able to see through walls
+  - bugfix: fixes OT spawning at latejoin landmark on roundstart
+  - qol: mapping or remapping ships/HvH made much easier
+  - imageadd: added landmark icons for mapper use for USCM Almayer roles
+  - bugfix: entrance map marking by brig
+  Moonshanks:
+  - rscadd: added altitude control console and related mechanic
+  - rscadd: added the 'navigations' skill for using the console and applied it to
+      the CO/Synth
+  - balance: added a mechanic for COs to reduce transport and OB cooldown times, and
+      increase hijack transport times
+  Morrow:
+  - bugfix: Removes unintentional survsynth USCM IFF.
+  NewyearnewmeUwu:
+  - maptweak: the lambda graveyard on Solaris Ridge no longer spawns a clown
+  fira:
+  - bugfix: Changed method of logging early game errors to be more convenient.
+2023-03-20:
+  BeagleGaming1:
+  - admin: IC mute now functions properly
+  LynxSolstice, Harryob:
+  - code_imp: Changed the worldtime2text offset to be between 10 minutes and 4 hours.
+  carlarctg:
+  - refactor: Refactors how magazine ammo color is handled into overlays.
+  - refactor: Instead of filling up dmis with a ridiculous amount of icon states for
+      each new barely used magazine type, compatible magazines have a 'band' white
+      overlay icon that is colored based on a variable on the magazine.
+  - imageadd: This will cause various sprites of various magazines to look subtly
+      different as the exact look couldn't be copied.
+  - spellcheck: Renamed wallpiercing to wall-penetrating.
+  - code_imp: Removed cluster magazines from the code.
+  - spellcheck: Altered the name of A19 magazines a little.
+  mullenpaul:
+  - bugfix: DCC is no longer able to launch flybys
+  - bugfix: Queen is once again able to force open dropship airlocks
+  realforest2001:
+  - rscadd: Adds two variables to yautja cloaks for admin customisation. cloak_alpha
+      and true_cloak, true cloak will make the invisibility 100% effective.
+2023-03-21:
+  BeagleGaming1:
+  - admin: Adds more admin super snowflake vendors
+  Morrow:
+  - bugfix: Partially fixed upper aft out of bounds hijack crash location
+  NewyearnewmeUwu:
+  - bugfix: shrapnel removal and robolimb repair is now possible while on the dropship
+      with surgery mode enabled.
+  Segrain:
+  - bugfix: Shuttles' transit time is once again properly calculated.
+  roll1d20st:
+  - qol: Made it easier to make Muffins, Cookies, and Waffles
+2023-03-22:
+  BeagleGaming1:
+  - qol: Adds a new chat tab for Mentor-related stuff
+  CapCamIII:
+  - bugfix: Most non-standard armored gloves no longer take on squad color.
+  Morrow:
+  - rscadd: Added timelock for corporate liaison
+  - rscdel: Removed corporate liaison dropship control access
+  - rscadd: COs no longer have emote cooldown
+  Puckaboo2:
+  - code_imp: Renamed some text strings to apply existing icon states.
+  - imageadd: Added dozens of new icon states to missing objects.
+  - bugfix: A huge list of items can now be used.
+  - imageadd: Adds a few missing goodies.
+  - code_imp: Made some icon state text strings empty so they would not cause missing
+      icon state errors.
+  - rscdel: Deleted some lines of code that caused missing icon state errors.
+  - imageadd: All weapons that can be camouflaged now have a basic USCM sprite to
+      make the linter happy.
+  - imageadd: The Energy Pistol now has an icon state.
+  - imageadd: Everything under the obj/item/clothing path that had missing icon states
+      now have their icon states again, including all donor clothing.
+  - imageadd: Added all missing Donor clothing icon states.
+  - imageadd: Added a Formal Command uniform. Fancyyy. Don't get this dirty.
+  - code_imp: Fixed some lines of code responsible for flagging some objects as having
+      missing icon states when they already existed.
+  - bugfix: Added icon states that have been deleted in previous PRs of long ago.
+  - bugfix: Jungle Cowls will now have their proper camouflage in jungle maps instead
+      of using snow for all maps.
+  - bugfix: Metal, ceramic, and scrap plates are functional and can now be slipped
+      into armor.
+  - bugfix: Yellow and Blue jumpsuits exist and can now be worn.
+  - bugfix: The M44R Holster and the Medical Storage Rig will now properly appear
+      in the map editor.
+  - rscdel: Deleted some unnecessary and outdated objects that were flagged as having
+      missing icon states.
+  - rscdel: Removed a few duplicate icon states.
+  Tsunamico:
+  - spellcheck: A minimal change to the text!
+  harryob:
+  - qol: id locks can now be removed icly
+  realforest2001:
+  - bugfix: Create Bank Account verb now correctly assigns a paygrade to ID
+  - bugfix: Fixes camel case in hellhound typepath causing duplication of entries
+2023-03-23:
+  BeagleGaming1:
+  - spellcheck: fixed the to_chat for the katana cane
+  H20Begod:
+  - rscadd: ' sound/voice/upp_warcry/* (Sound files, such as `warcry_male_1` , for
+      the UPP)'
+  - code_imp: changed `code/modules/mob/living/carbon/human/emote.dm`, in order to
+      add conditionals that will check a player's faction. Right now, it's a simple
+      conditional, however, the code is there to be changed to an switch should somebody
+      else come and add more faction-based voicelines.
+  Tsunamico:
+  - admin: panel that allows admins to trash the ship about.
+  - code_imp: adds a shakeship proc that can be called to rock the shipmap.
+  harryob:
+  - code_imp: cleaned up some mentorhelp code
+  nauticall:
+  - code_imp: Reduced the frequency of several ambient sounds on the Almayer to make
+      them less annoying.
+  - sounddel: Removed a CIC ambient sound that didn't fit with the rest.
+  - mapadd: Readds the autodoc back to the Almayer.
+  - balance: Neuters the autodoc so that it can only perform emergency treatments
+      and life-saving procedures; it can no longer do complex surgeries.
+  - bugfix: Fixed broken icon states on the autodoc, sleeper, and body scanner console
+      when using a map editor.
+2023-03-24:
+  LTNTS:
+  - imageadd: landmarks for xeno_spawn
+  - imageadd: landmarks for thunderdome
+  Morrow:
+  - bugfix: Fixed icons for sleepers and body scanners
+  carlarctg:
+  - bugfix: Laundering money through the ATM is now only 25% as effective.
+  - bugfix: Increased cane pacing sound a little.
+  - bugfix: Fixed not actually ever being harmed from walking around with a bad leg
+      and no cane.
+  harryob:
+  - bugfix: fixed a bunch of bad dels causing lag
+2023-03-25:
+  BeagleGaming1:
+  - rscadd: You can now drag people up ledges
+  Khadd:
+  - rscadd: three sound files ```joe_report.ogg```, ```joe_breach.ogg```, ```joe_species.ogg```
+  - code_imp: modified ```code\modules\mob\living\carbon\human\species\emote-synthetic.dm```
+      in order to add the new emotes
+  LTNTS:
+  - rscdel: deletes unconnected piping in research
+  NewyearnewmeUwu:
+  - bugfix: overhead lattices now properly show up
+  - bugfix: Ghosts can no longer become offset.
+2023-03-26:
+  LynxSolstice:
+  - bugfix: Fixes PMC survivors spawning with ID locked NSG-23s.
+  kugamo:
+  - imageadd: Sink filling animation improved.
+  realforest2001:
+  - rscadd: ERT Station hangars have lockdowns toggleable only from inside each, to
+      prevent theft.
+  - rscdel: Removed sneaky CKeys from monkey name list
+2023-03-27:
+  BeagleGaming1:
+  - balance: Replaces spare CT headsets with req keys. Removes most spare mcom headsets.
+      Lowers armory mcom headsets to 6 from 12.
+  H20Begod:
+  - bugfix: Ghosts can now see megaphone messages
+  - code_imp: When a message is sent (using the megaphone), a new iteration over  GLOB.observer_list
+      has been added to send the a notification to observers.
+  Morrow:
+  - rscadd: trucker survivors now spawn with van wheels
+  - rscadd: engineer survivors now spawn with a toolbelt
+  - rscadd: survivor shotgun spawns should start with more ammo
+  - rscdel: removed free screwdriver from all survivor loadouts
+  - rscdel: removed R4T scout kit from random survivor weapon pool
+  - bugfix: survivors will no longer sometimes spawn with two motion detectors
+  - bugfix: survivors will no longer spawn with incorrect shotgun types
+  NewyearnewmeUwu:
+  - bugfix: Metal cades are no longer invisible when when in the same tile as a north/south
+      plasteel cade while facing east/west.
+  Segrain:
+  - bugfix: Items doing things by clicking on floors can do those things again.
+  carlarctg:
+  - balance: Vampire's Tail Jab now needs you to directly click the target like a
+      tail stab, like it used to be.
+  - balance: Reworks the firearms skill. Civilians can now fire pistols, SMGs, and
+      certain other civilian weapons without penalties. Civilian gun penalties have
+      had their firerate reduction remove and scatter increased.
+  kugamo:
+  - bugfix: Fixed certain structures dropping parts when they should have been destroyed.
+2023-03-28:
+  Morrow:
+  - balance: Helmets now get thrown off if they save you from a decapitation.
+  - rscadd: Added the role Combat Correspondent.
+  Puckaboo2:
+  - imageadd: Added several icon states for miscellaneous items that did not have
+      any.
+  - imageadd: Added lead sheets to shield from radiation poisoning and to possibly
+      soundproof rooms.
+  - imageadd: Platinum sheet now have a new sprite that looks like platinum.
+  - bugfix: The dark indigo blocks that were Platinum have been repurposed as Chitin
+      blocks. Not to be confused with sheets of chitin.
+  - bugfix: Mercs with battle-related mental trauma may now comfort themselves with
+      therapy dolls! Don't pop their heads off, please.
+  - bugfix: Several miscellaneous items may now be used, such as paper flags, unlit
+      torches, flower vases, and other items.
+  - bugfix: Marine specialist weapon tokens can be used again.
+  - bugfix: Silver, platinum, and uranium coins' color palettes match their metals.
+  - code_imp: Renamed some icon states and incorrect strings of text to apply more
+      missing icon states.
+  Segrain:
+  - qol: Activating ammo boxes in hand now unfolds them on harm intent and deploys
+      them on any other intent, even if empty.
+2023-03-29:
+  BeagleGaming1:
+  - code_imp: Repaths melee weapons
+  - qol: You can see the melee and throw force of more items
+  Mister-moon1:
+  - bugfix: fixed sprite for ceremonial sword empty holster on mob icon
+  - imageadd: new sprites for the ceremonial sword including sprites for the scabbard
+2023-03-30:
+  BeagleGaming1:
+  - bugfix: Fixes a Skills Menu runtime when you have null skills
+  Nanu:
+  - code_imp: Bumped required byond version to compile similar to the dependencies
+      file. Now 514.1588 is the minimum required version.
+  NewyearnewmeUwu:
+  - rscadd: Cassette pouches now fit regulation tapes.
+  - rscadd: Flipping a previously labeled tape will store the label for that side
+      and vice versa.
+  - rscadd: Tapes now have a unique renaming system.
+  realforest2001:
+  - code_imp: Adds procs to bioscans to make them individually callable and a little
+      more optimised.
+2023-03-31:
+  NewyearnewmeUwu:
+  - bugfix: Corrosive tail stabs now properly credit their users for kills.

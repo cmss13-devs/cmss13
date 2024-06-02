@@ -6,10 +6,10 @@
 	desc = "The M20 Claymore is a directional proximity-triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. The mine is triggered by movement both on the mine itself, and on the space immediately in front of it. Detonation sprays shrapnel forwards in a 120-degree cone. The words \"FRONT TOWARD ENEMY\" are embossed on the front."
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "m20"
-	force = 5.0
+	force = 5
 	w_class = SIZE_SMALL
 	//layer = MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
-	throwforce = 5.0
+	throwforce = 5
 	throw_range = 6
 	throw_speed = SPEED_VERY_FAST
 	unacidable = TRUE
@@ -42,6 +42,7 @@
 	prime() //We don't care about how strong the explosion was.
 
 /obj/item/explosive/mine/emp_act()
+	. = ..()
 	prime() //Same here. Don't care about the effect strength.
 
 
@@ -53,7 +54,7 @@
 	if(user.loc && (user.loc.density || locate(/obj/structure/fence) in user.loc))
 		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
 		return TRUE
-	if(user.z == GLOB.interior_manager.interior_z)
+	if(SSinterior.in_interior(user))
 		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return TRUE
 
@@ -88,7 +89,7 @@
 
 	deploy_mine(user)
 
-/obj/item/explosive/mine/proc/deploy_mine(var/mob/user)
+/obj/item/explosive/mine/proc/deploy_mine(mob/user)
 	if(!hard_iff_lock && user)
 		iff_signal = user.faction
 
@@ -122,7 +123,7 @@
 				if(prob(75))
 					triggered = TRUE
 					if(tripwire)
-						var/direction = reverse_dir[src.dir]
+						var/direction = GLOB.reverse_dir[src.dir]
 						var/step_direction = get_step(src, direction)
 						tripwire.forceMove(step_direction)
 					prime()
@@ -196,7 +197,9 @@
 		return
 	if(L.stat == DEAD)
 		return
-	if(L.get_target_lock(iff_signal) || isrobot(L))
+	if(L.get_target_lock(iff_signal))
+		return
+	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
 		return
 	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."), \
 	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."), \
@@ -222,7 +225,7 @@
 			disarm()
 
 
-/obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/M)
 	if(triggered) //Mine is already set to go off
 		return XENO_NO_DELAY_ACTION
 
@@ -238,7 +241,7 @@
 	//We move the tripwire randomly in either of the four cardinal directions
 	triggered = TRUE
 	if(tripwire)
-		var/direction = pick(cardinal)
+		var/direction = pick(GLOB.cardinals)
 		var/step_direction = get_step(src, direction)
 		tripwire.forceMove(step_direction)
 	prime()
@@ -263,6 +266,8 @@
 
 /obj/effect/mine_tripwire/Destroy()
 	if(linked_claymore)
+		if(linked_claymore.tripwire == src)
+			linked_claymore.tripwire = null
 		linked_claymore = null
 	. = ..()
 
@@ -306,7 +311,7 @@
 	map_deployed = TRUE
 
 /obj/item/explosive/mine/custom
-	name = "Custom mine"
+	name = "custom mine"
 	desc = "A custom chemical mine built from an M20 casing."
 	icon_state = "m20_custom"
 	customizable = TRUE

@@ -41,14 +41,14 @@
 		process_cooldown()
 	return 1
 
-/obj/item/device/assembly/proc/pulsed(var/radio = 0) //Called when another assembly acts on this one, var/radio will determine where it came from for wire calcs
+/obj/item/device/assembly/proc/pulsed(radio = 0) //Called when another assembly acts on this one, radio will determine where it came from for wire calcs
 	if(holder && (wires & WIRE_ASSEMBLY_RECEIVE))
 		activate()
 	if(radio && (wires & WIRE_RADIO_RECEIVE))
 		activate()
 	return 1
 
-/obj/item/device/assembly/proc/pulse(var/radio = 0) //Called when this device attempts to act on another device, var/radio determines if it was sent via radio or direct
+/obj/item/device/assembly/proc/pulse(radio = 0) //Called when this device attempts to act on another device, radio determines if it was sent via radio or direct
 	if(holder && (wires & WIRE_ASSEMBLY_PULSE))
 		holder.process_activation(src, 1, 0)
 	if(holder && (wires & WIRE_ASSEMBLY_PULSE_SPECIAL))
@@ -60,7 +60,7 @@
 	update_icon()
 	return secured
 
-/obj/item/device/assembly/proc/attach_assembly(var/obj/A, var/mob/user) //Called when an assembly is attacked by another
+/obj/item/device/assembly/proc/attach_assembly(obj/A, mob/user) //Called when an assembly is attacked by another
 	holder = new/obj/item/device/assembly_holder(get_turf(src))
 	if(holder.attach(A,src,user))
 		to_chat(user, SPAN_NOTICE("You attach \the [A] to \the [src]!"))

@@ -8,7 +8,7 @@
 
 	//computer stuff
 	density = TRUE
-	anchored = 1.0
+	anchored = TRUE
 	var/circuit = /obj/item/circuitboard/computer/powermonitor
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 300
@@ -67,7 +67,7 @@
 			for(var/obj/structure/machinery/power/apc/A in L)
 
 				t += copytext(add_tspace("\The [A.area]", 30), 1, 30)
-				t += " [S[A.equipment+1]] [S[A.lighting+1]] [S[A.environ+1]] [add_lspace(A.lastused_total, 6)]  [A.cell ? "[add_lspace(round(A.cell.percent()), 3)]% [chg[A.charging+1]]" : "  N/C"]<BR>"
+				t += " [S[A.equipment+1]] [S[A.lighting+1]] [S[A.environ+1]] [add_lspace(A.lastused_total, 6)]  [A.cell ? "[add_lspace(floor(A.cell.percent()), 3)]% [chg[A.charging+1]]" : "  N/C"]<BR>"
 				total_demand += A.lastused_total
 
 			t += "<HR>Total demand: [total_demand] W</FONT>"
@@ -107,7 +107,7 @@
 			var/obj/structure/computerframe/A = new( src.loc )
 			var/obj/item/circuitboard/computer/M = new circuit( A )
 			A.circuit = M
-			A.anchored = 1
+			A.anchored = TRUE
 			for (var/obj/C in src)
 				C.forceMove(src.loc)
 			if (src.stat & BROKEN)

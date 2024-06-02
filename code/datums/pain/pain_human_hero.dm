@@ -10,5 +10,5 @@
 
 	feels_pain = FALSE
 
-/datum/pain/human_hero/apply_pain(var/amount = 0, var/type = BRUTE)
+/datum/pain/human_hero/apply_pain(amount = 0, type = BRUTE)
 	return FALSE

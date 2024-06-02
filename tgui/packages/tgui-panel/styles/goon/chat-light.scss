@@ -246,6 +246,7 @@ a.popt {
 .looc,
 .adminooc,
 .admin,
+.niche,
 .medal,
 .yell {
   font-weight: bold;
@@ -308,6 +309,11 @@ em {
   font-weight: bold;
 }
 
+.niche {
+  color: #4473ff;
+  font-weight: bold;
+}
+
 .name {
   font-weight: bold;
 }
@@ -360,6 +366,10 @@ em {
 
 .engradio {
   color: #fb5613;
+}
+
+.sentryradio {
+  color: #844300;
 }
 
 .suppradio {
@@ -466,9 +476,9 @@ h2.alert {
   font-weight: bold;
 }
 
-.minorannounce {
+.bigannounce {
   font-weight: bold;
-  font-size: 185%;
+  font-size: 115%;
 }
 
 .greenannounce {
@@ -485,6 +495,10 @@ h2.alert {
 }
 
 .notice {
+  color: #000099;
+}
+
+.staff_ic {
   color: #000099;
 }
 
@@ -508,6 +522,11 @@ h2.alert {
   color: #000099;
   font-style: italic;
   font-size: 90%;
+}
+
+.bolditalic {
+  font-style: italic;
+  font-weight: bold;
 }
 
 .boldnotice {
@@ -827,6 +846,10 @@ h2.alert {
   font-size: 2.5em;
 }
 
+.hugeicon {
+  font-size: 5em;
+}
+
 .memo {
   color: #638500;
   text-align: center;
@@ -867,6 +890,15 @@ h2.alert {
 
 .resonate {
   color: #298f85;
+}
+
+.upside_down {
+  display: inline;
+  -moz-transform: scale(-1, -1);
+  -webkit-transform: scale(-1, -1);
+  -o-transform: scale(-1, -1);
+  -ms-transform: scale(-1, -1);
+  transform: scale(-1, -1);
 }
 
 .monkeyhive {
@@ -964,6 +996,9 @@ h2.alert {
 .hcradio {
   color: #318779;
 }
+.pvstradio {
+  color: #9b0612;
+}
 
 .airadio {
   color: #ff00ff;
@@ -975,6 +1010,10 @@ h2.alert {
 
 .engradio {
   color: #a66300;
+}
+
+.sentryradio {
+  color: #844300;
 }
 
 .medradio {
@@ -1003,6 +1042,10 @@ h2.alert {
 
 .vairadio {
   color: #943d0a;
+}
+
+.cmbradio {
+  color: #1b748c;
 }
 
 .clfradio {
@@ -1114,7 +1157,7 @@ h2.alert {
 
 .xenoboldnotice {
   color: #2a623d;
-  font-style: italic;
+  font-weight: bold;
 }
 
 .xenowarning {
@@ -1298,6 +1341,21 @@ h2.alert {
 
 .mentorsay {
   color: #b38c32;
+  font-weight: bold;
+}
+
+.mentorhelp {
+  color: #007e00;
+  font-weight: bold;
+}
+
+.mentorbody {
+  color: #da6200;
+  font-weight: bold;
+}
+
+.mentorstaff {
+  color: #876101;
   font-weight: bold;
 }
 

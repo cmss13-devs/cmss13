@@ -7,7 +7,7 @@
 #define HDPT_TURRET  "turret"
 #define HDPT_SPECIAL "special" //special pre-installed hardpoints with unique behaviour
 
-#define HDPT_LAYER_WHEELS   1
+#define HDPT_LAYER_WHEELS   0.01 // so it appears below xenomorphs and other mobs
 #define HDPT_LAYER_SUPPORT  2
 #define HDPT_LAYER_ARMOR 3
 #define HDPT_LAYER_TURRET   4
@@ -29,10 +29,10 @@
 #define VEHICLE_SPEED_DEBUGFAST  1
 
 #define VEHICLE_TRAMPLE_DAMAGE_TIER_1  22.5
-#define VEHICLE_TRAMPLE_DAMAGE_TIER_2  18.0
+#define VEHICLE_TRAMPLE_DAMAGE_TIER_2  18
 #define VEHICLE_TRAMPLE_DAMAGE_TIER_3  13.5
-#define VEHICLE_TRAMPLE_DAMAGE_SPECIAL 10.0 // Larva, Queen, Abomination, or Xenoborg
-#define VEHICLE_TRAMPLE_DAMAGE_MIN 5.0  // Minimum is 5% damage from a ram
+#define VEHICLE_TRAMPLE_DAMAGE_SPECIAL 10 // Larva, Queen, Abomination, or Xenoborg
+#define VEHICLE_TRAMPLE_DAMAGE_MIN 5  // Minimum is 5% damage from a ram
 
 #define VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION 0.2  // APC deals 1/5 of normal damage
 
@@ -53,5 +53,6 @@
 #define VEHICLE_CLASS_LIGHT (1<<2) //light class armor (APC, tank)
 #define VEHICLE_CLASS_MEDIUM (1<<3) //medium class armor (tank)
 #define VEHICLE_CLASS_HEAVY (1<<4) //heavy class armor (tank)
-
-#define TANK_POPLOCK 90
+// Other vehicle flags
+/// Vehicle can bypass vehicle blockers, typically going further into maps than intended
+#define VEHICLE_BYPASS_BLOCKERS (1<<5)

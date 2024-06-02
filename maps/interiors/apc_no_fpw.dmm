@@ -6,7 +6,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_6"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "c" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 4
@@ -14,7 +14,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_12"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "d" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
@@ -29,7 +29,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_12"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "e" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
@@ -47,7 +47,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "f" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_2"
@@ -70,7 +70,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_1_3"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "j" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
@@ -89,7 +89,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "k" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wall";
@@ -108,7 +108,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "m" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_1"
@@ -139,7 +139,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "r" = (
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	dir = 8;
@@ -157,7 +157,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_11"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "s" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_2"
@@ -179,7 +179,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9_1"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "u" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wheel_front_top_1";
@@ -208,7 +208,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_6"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "z" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
@@ -219,7 +219,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_13"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "A" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wheel_back_top_1";
@@ -240,7 +240,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "C" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 4
@@ -248,7 +248,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_11"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "D" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_L"
@@ -259,7 +259,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_5"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "F" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "corner_small_R";
@@ -298,7 +298,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_11"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "J" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "corner_inverse_R";
@@ -322,7 +322,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_0_1_15"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "M" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_L";
@@ -343,7 +343,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9_1"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "P" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "corner_small_L"
@@ -385,7 +385,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_14"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "V" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_1"
@@ -411,7 +411,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "X" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wall_2";
@@ -446,7 +446,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 
 (1,1,1) = {"
 G

@@ -2,20 +2,24 @@
 	name = "landmark"
 	icon = 'icons/landmarks.dmi'
 	icon_state = "x2"
-	anchored = 1.0
+	anchored = TRUE
 	unacidable = TRUE
 
 	var/invisibility_value = INVISIBILITY_MAXIMUM
 
 /obj/effect/landmark/New()
-	..()
 	tag = "landmark*[name]"
 	invisibility = invisibility_value
-	return 1
+	return ..()
 
 /obj/effect/landmark/Initialize(mapload, ...)
 	. = ..()
+	GLOB.landmarks_list += src
 	invisibility = invisibility_value
+
+/obj/effect/landmark/Destroy()
+	GLOB.landmarks_list -= src
+	return ..()
 
 /obj/effect/landmark/newplayer_start
 	name = "New player start"
@@ -26,6 +30,29 @@
 
 /obj/effect/landmark/newplayer_start/Destroy()
 	GLOB.newplayer_start -= src
+	return ..()
+
+/obj/effect/landmark/sim_target
+	name = "simulator_target"
+
+/obj/effect/landmark/sim_target/Initialize(mapload, ...)
+	. = ..()
+	GLOB.simulator_targets += src
+
+/obj/effect/landmark/sim_target/Destroy()
+	GLOB.simulator_targets -= src
+	return ..()
+
+/obj/effect/landmark/sim_camera
+	name = "simulator_camera"
+	color = "#FFFF00"
+
+/obj/effect/landmark/sim_camera/Initialize(mapload, ...)
+	. = ..()
+	GLOB.simulator_cameras += src
+
+/obj/effect/landmark/sim_camera/Destroy()
+	GLOB.simulator_cameras -= src
 	return ..()
 
 /obj/effect/landmark/observer_start
@@ -63,9 +90,11 @@
 		return
 	GLOB.nightmare_landmarks[insert_tag] = get_turf(src)
 /obj/effect/landmark/nightmare/Destroy()
-	if(insert_tag && autoremove \
-	   && GLOB.nightmare_landmarks[insert_tag] == get_turf(src))
-		GLOB.nightmare_landmarks.Remove(insert_tag)
+	if(insert_tag)
+		var/turf/turf = get_turf(src)
+		if(autoremove && GLOB.nightmare_landmarks[insert_tag] == turf)
+			GLOB.nightmare_landmarks.Remove(insert_tag)
+		GLOB.nightmare_landmark_tags_removed += insert_tag
 	return ..()
 
 /obj/effect/landmark/ert_spawns/distress
@@ -76,6 +105,9 @@
 
 /obj/effect/landmark/ert_spawns/distress_wo
 	name = "distress_wo"
+
+/obj/effect/landmark/ert_spawns/groundside_xeno
+	name = "distress_groundside_xeno"
 
 /obj/effect/landmark/monkey_spawn
 	name = "monkey_spawn"
@@ -102,6 +134,7 @@
 
 /obj/effect/landmark/thunderdome/one
 	name = "Thunderdome Team 1"
+	icon_state = "thunderdome_t1"
 
 /obj/effect/landmark/thunderdome/one/Initialize(mapload, ...)
 	. = ..()
@@ -113,6 +146,7 @@
 
 /obj/effect/landmark/thunderdome/two
 	name = "Thunderdome Team 2"
+	icon_state = "thunderdome_t2"
 
 /obj/effect/landmark/thunderdome/two/Initialize(mapload, ...)
 	. = ..()
@@ -124,6 +158,7 @@
 
 /obj/effect/landmark/thunderdome/admin
 	name = "Thunderdome Admin"
+	icon_state = "thunderdome_admin"
 
 /obj/effect/landmark/thunderdome/admin/Initialize(mapload, ...)
 	. = ..()
@@ -135,6 +170,7 @@
 
 /obj/effect/landmark/thunderdome/observer
 	name = "Thunderdome Observer"
+	icon_state = "thunderdome_observer"
 
 /obj/effect/landmark/thunderdome/observer/Initialize(mapload, ...)
 	. = ..()
@@ -158,6 +194,7 @@
 
 /obj/effect/landmark/xeno_spawn
 	name = "xeno spawn"
+	icon_state = "xeno_spawn"
 
 /obj/effect/landmark/xeno_spawn/Initialize(mapload, ...)
 	. = ..()
@@ -181,23 +218,25 @@
 
 /obj/effect/landmark/yautja_teleport
 	name = "yautja_teleport"
+	/// The index we registered as in mainship_yautja_desc or yautja_teleport_descs
+	var/desc_index
 
 /obj/effect/landmark/yautja_teleport/Initialize(mapload, ...)
 	. = ..()
-	var/turf/T = get_turf(src)
+	var/turf/turf = get_turf(src)
+	desc_index = turf.loc.name + turf.loc_to_string()
 	if(is_mainship_level(z))
 		GLOB.mainship_yautja_teleports += src
-		GLOB.mainship_yautja_desc[T.loc.name + T.loc_to_string()] = src
+		GLOB.mainship_yautja_desc[desc_index] = src
 	else
 		GLOB.yautja_teleports += src
-		GLOB.yautja_teleport_descs[T.loc.name + T.loc_to_string()] = src
+		GLOB.yautja_teleport_descs[desc_index] = src
 
 /obj/effect/landmark/yautja_teleport/Destroy()
-	var/turf/T = get_turf(src)
 	GLOB.mainship_yautja_teleports -= src
 	GLOB.yautja_teleports -= src
-	GLOB.mainship_yautja_desc -= T.loc.name + T.loc_to_string()
-	GLOB.yautja_teleport_descs -= T.loc.name + T.loc_to_string()
+	GLOB.mainship_yautja_desc -= desc_index
+	GLOB.yautja_teleport_descs -= desc_index
 	return ..()
 
 
@@ -241,9 +280,9 @@
 	icon_state = "leader_spawn"
 	job = /datum/job/marine/leader/whiskey
 
-/obj/effect/landmark/start/whiskey/rto
-	icon_state = "rto_spawn"
-	job = /datum/job/marine/rto //Need to create a WO variant in the future
+/obj/effect/landmark/start/whiskey/tl
+	icon_state = "tl_spawn"
+	job = /datum/job/marine/tl //Need to create a WO variant in the future
 
 /obj/effect/landmark/start/whiskey/spec
 	icon_state = "spec_spawn"
@@ -341,6 +380,8 @@
 	name = "late join"
 	icon_state = "x2"
 	var/squad
+	/// What job should latejoin on this landmark
+	var/job
 
 /obj/effect/landmark/late_join/alpha
 	name = "alpha late join"
@@ -359,16 +400,42 @@
 	squad = SQUAD_MARINE_4
 
 
+/obj/effect/landmark/late_join/working_joe
+	name = "working joe late join"
+	job = JOB_WORKING_JOE
+
+
+/obj/effect/landmark/late_join/cmo
+	name = "Chief Medical Officer late join"
+	job = JOB_CMO
+
+/obj/effect/landmark/late_join/researcher
+	name = "Researcher late join"
+	job = JOB_RESEARCHER
+
+/obj/effect/landmark/late_join/doctor
+	name = "Doctor late join"
+	job = JOB_DOCTOR
+
+/obj/effect/landmark/late_join/nurse
+	name = "Nurse late join"
+	job = JOB_NURSE
+
+
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
 	if(squad)
 		LAZYADD(GLOB.latejoin_by_squad[squad], src)
+	else if(job)
+		LAZYADD(GLOB.latejoin_by_job[job], src)
 	else
 		GLOB.latejoin += src
 
 /obj/effect/landmark/late_join/Destroy()
 	if(squad)
 		LAZYREMOVE(GLOB.latejoin_by_squad[squad], src)
+	else if(job)
+		LAZYREMOVE(GLOB.latejoin_by_job[job], src)
 	else
 		GLOB.latejoin -= src
 	return ..()
@@ -426,7 +493,7 @@
 	GLOB.zombie_landmarks -= src
 	return ..()
 
-/obj/effect/landmark/zombie/proc/spawn_zombie(var/mob/dead/observer/observer)
+/obj/effect/landmark/zombie/proc/spawn_zombie(mob/dead/observer/observer)
 	if(!infinite_spawns)
 		spawns_left--
 	if(spawns_left <= 0)
@@ -436,7 +503,7 @@
 	observer.client.eye = src // gives the player a second to orient themselves to the spawn zone
 	addtimer(CALLBACK(src, PROC_REF(handle_zombie_spawn), observer), 1 SECONDS)
 
-/obj/effect/landmark/zombie/proc/handle_zombie_spawn(var/mob/dead/observer/observer)
+/obj/effect/landmark/zombie/proc/handle_zombie_spawn(mob/dead/observer/observer)
 	var/mob/living/carbon/human/zombie = new /mob/living/carbon/human(loc)
 	if(!zombie.hud_used)
 		zombie.create_hud()
@@ -451,3 +518,17 @@
 
 /obj/effect/landmark/zombie/infinite
 	infinite_spawns = TRUE
+
+/// Marks the bottom left of the testing zone.
+/// In landmarks.dm and not unit_test.dm so it is always active in the mapping tools.
+/obj/effect/landmark/unit_test_bottom_left
+	name = "unit test zone bottom left"
+
+/// Marks the top right of the testing zone.
+/// In landmarks.dm and not unit_test.dm so it is always active in the mapping tools.
+/obj/effect/landmark/unit_test_top_right
+	name = "unit test zone top right"
+
+/// Marks the bottom left of the tutorial zone.
+/obj/effect/landmark/tutorial_bottom_left
+	name = "tutorial bottom left"

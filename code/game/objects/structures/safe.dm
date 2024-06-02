@@ -28,7 +28,7 @@ FLOOR SAFES
 	desc = "A huge chunk of metal with a dial embedded in it. Fine print on the dial reads \"Scarborough Arms - 2 tumbler safe, guaranteed thermite resistant, explosion resistant, and assistant resistant.\""
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "safe"
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 	layer = BELOW_OBJ_LAYER
 	unslashable = TRUE
@@ -220,5 +220,30 @@ FLOOR SAFES
 	hide(T.intact_tile)
 
 
-/obj/structure/safe/floor/hide(var/intact)
+/obj/structure/safe/floor/hide(intact)
 	invisibility = intact ? 101 : 0
+
+//almayer
+
+/obj/structure/safe/co_office
+
+/obj/structure/safe/co_office/Initialize()
+	. = ..()
+	new /obj/item/clothing/glasses/monocle(src)
+	new /obj/item/book/codebook(src)
+	new /obj/item/coin/silver/falcon(src)
+	new /obj/item/weapon/telebaton(src)
+	new /obj/item/moneybag(src)
+
+/obj/structure/safe/cl_office
+
+/obj/structure/safe/cl_office/Initialize()
+	. = ..()
+	new /obj/item/clothing/suit/armor/bulletproof(src)
+	new /obj/item/weapon/gun/pistol/es4(src)
+	new /obj/item/ammo_magazine/pistol/es4(src)
+	new /obj/item/ammo_magazine/pistol/es4(src)
+	new /obj/item/clothing/accessory/storage/holster(src)
+	new /obj/item/spacecash/c1000/counterfeit(src)
+	new /obj/item/spacecash/c1000/counterfeit(src)
+	new /obj/item/coin/platinum(src)

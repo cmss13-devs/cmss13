@@ -6,7 +6,7 @@
 	density = TRUE
 	anchored = TRUE
 
-/obj/structure/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/seed_extractor/attackby(obj/item/O as obj, mob/user as mob)
 
 	// Fruits and vegetables.
 	if(istype(O, /obj/item/reagent_container/food/snacks/grown) || istype(O, /obj/item/grown))
@@ -14,10 +14,10 @@
 			var/datum/seed/new_seed_type
 			if(istype(O, /obj/item/grown))
 				var/obj/item/grown/F = O
-				new_seed_type = seed_types[F.plantname]
+				new_seed_type = GLOB.seed_types[F.plantname]
 			else
 				var/obj/item/reagent_container/food/snacks/grown/F = O
-				new_seed_type = seed_types[F.plantname]
+				new_seed_type = GLOB.seed_types[F.plantname]
 
 			if(new_seed_type)
 				to_chat(user, SPAN_NOTICE("You extract some seeds from [O]."))

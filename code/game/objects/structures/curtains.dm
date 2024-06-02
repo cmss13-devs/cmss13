@@ -10,7 +10,7 @@
 	..()
 	toggle()
 
-/obj/structure/curtain/bullet_act(obj/item/projectile/P, def_zone)
+/obj/structure/curtain/bullet_act(obj/projectile/P, def_zone)
 	if(P.damage)
 		visible_message(SPAN_WARNING("[P] tears [src] down!"))
 		qdel(src)
@@ -21,7 +21,7 @@
 	toggle()
 	..()
 
-/obj/structure/curtain/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/curtain/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), \
 	SPAN_DANGER("You slice [src] apart!"), null, 5)

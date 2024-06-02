@@ -15,6 +15,7 @@
 	flags_atom = ON_BORDER
 	unacidable = TRUE
 	climb_delay = CLIMB_DELAY_SHORT
+	projectile_coverage = PROJECTILE_COVERAGE_NONE
 
 /obj/structure/platform/stair_cut
 	icon_state = "platform_stair"//icon will be honked in all dirs except (1), that's because the behavior breaks if it ain't (1)
@@ -41,7 +42,7 @@
 			layer = ABOVE_MOB_LAYER+0.1
 	overlays += I
 
-/obj/structure/platform/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/platform/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER
@@ -60,6 +61,23 @@
 
 /obj/structure/platform/ex_act()
 	return
+
+/obj/structure/platform/attackby(obj/item/W, mob/user)
+	. = ..()
+	if(user.pulling)
+		if(!can_climb(user))
+			return
+		user.visible_message(SPAN_WARNING("[user] starts dragging \the [user.pulling] onto \the [src]"),\
+		SPAN_WARNING("You start dragging \the [user.pulling] onto \the [src]."))
+		if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_FIREMAN), INTERRUPT_ALL, BUSY_ICON_HOSTILE, user.pulling, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+			return
+		if(user.pulling)
+			if(!can_climb(user))
+				return
+			var/turf/move_to_turf = get_step(get_turf(src), dir)
+			user.visible_message(SPAN_WARNING("[user] finishes dragging \the [user.pulling] onto \the [src]"),\
+			SPAN_WARNING("You finish dragging \the [user.pulling] onto \the [src]."))
+			user.pulling.forceMove(move_to_turf)
 
 /obj/structure/platform_decoration
 	name = "platform"
@@ -86,7 +104,7 @@
 		if (SOUTHWEST)
 			layer = ABOVE_MOB_LAYER+0.2
 
-/obj/structure/platform_decoration/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/platform_decoration/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER
@@ -124,7 +142,6 @@
 	icon_state = "kutjevo_platform"
 	name = "raised metal edge"
 	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
-	climb_delay = 10
 
 /obj/structure/platform_decoration/kutjevo
 	name = "raised metal corner"
@@ -139,10 +156,6 @@
 
 /obj/structure/platform/kutjevo/smooth/stair_plate
 	icon_state = "kutjevo_stair_plate"
-
-/obj/structure/platform/kutjevo/smooth/stair_cut
-	icon_state = "kutjevo_stair_cm_stair"
-
 
 /obj/structure/platform_decoration/kutjevo/smooth
 	name = "raised metal corner"

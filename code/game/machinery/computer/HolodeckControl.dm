@@ -22,7 +22,7 @@
 	. = ..()
 	icon_state = "grass[pick("1","2","3","4")]"
 	update_icon()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		if(istype(get_step(src, direction), /turf/open/floor))
 			var/turf/open/floor/FF = get_step(src,direction)
 			FF.update_icon() //so siding get updated properly
@@ -50,7 +50,7 @@
 	desc = "A square piece of metal standing on four metal legs. It can not move."
 	icon_state = "table"
 	density = TRUE
-	anchored = 1.0
+	anchored = TRUE
 	throwpass = 1 //You can throw objects over this, despite it's density.
 
 /obj/structure/surface/table/holotable/attack_animal(mob/living/user as mob) //Removed code for larva since it doesn't work. Previous code is now a larva ability. /N
@@ -77,9 +77,6 @@
 		to_chat(user, "It's a holotable!  There are no bolts!")
 		return
 
-	if(isborg(user))
-		return
-
 	..()
 
 /obj/structure/surface/table/holotable/wood
@@ -93,7 +90,7 @@
 	desc = "Apply butt."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "stool"
-	anchored = 1.0
+	anchored = TRUE
 	flags_atom = FPRINT
 
 
@@ -110,10 +107,10 @@
 	desc = "A window."
 	density = TRUE
 	layer = WINDOW_LAYER
-	anchored = 1.0
+	anchored = TRUE
 	flags_atom = ON_BORDER
 
-/obj/structure/holowindow/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/holowindow/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_GLASS
@@ -132,7 +129,7 @@
 	desc = "Boom, Shakalaka!"
 	icon = 'icons/obj/structures/props/misc.dmi'
 	icon_state = "hoop"
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 	throwpass = 1
 	var/side = ""
@@ -148,29 +145,29 @@
 				return
 			M.forceMove(loc)
 			M.apply_effect(5, WEAKEN)
-			for(var/obj/structure/machinery/scoreboard/X in machines)
+			for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
 				if(X.id == id)
 					X.score(side, 3)// 3 points for dunking a mob
 					// no break, to update multiple scoreboards
-			visible_message(SPAN_DANGER("[user] dunks [M] into the [src]!"))
+			visible_message(SPAN_DANGER("[user] dunks [M] into [src]!"))
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
 		user.drop_inv_item_to_loc(W, loc)
-		for(var/obj/structure/machinery/scoreboard/X in machines)
+		for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
 			if(X.id == id)
 				X.score(side)
 				// no break, to update multiple scoreboards
-		visible_message(SPAN_NOTICE("[user] dunks [W] into the [src]!"))
+		visible_message(SPAN_NOTICE("[user] dunks [W] into [src]!"))
 		return
 
 /obj/structure/holohoop/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
-		if(istype(I, /obj/item/projectile))
+		if(istype(I, /obj/projectile))
 			return BLOCKED_MOVEMENT
 		if(prob(50))
 			I.forceMove(src.loc)
-			for(var/obj/structure/machinery/scoreboard/X in machines)
+			for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
 				if(X.id == id)
 					X.score(side)
 					// no break, to update multiple scoreboards
@@ -191,7 +188,7 @@
 	var/area/currentarea = null
 	var/eventstarted = 0
 
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6

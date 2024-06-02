@@ -7,7 +7,7 @@
 	name = "conveyor belt"
 	desc = "A conveyor belt."
 	layer = CONVEYOR_LAYER // so they appear under stuff
-	anchored = 1
+	anchored = TRUE
 	var/operating = 0 // 1 if running forward, -1 if backwards, 0 if off
 	var/operable = 1 // true if can operate (no broken segments in this belt run)
 	var/forwards // this is the default (forward) direction, set by the map dir
@@ -100,8 +100,7 @@
 				break
 
 // attack with item, place item on conveyor
-/obj/structure/machinery/conveyor/attackby(var/obj/item/I, mob/user)
-	if(isrobot(user)) return //Carn: fix for borgs dropping their modules on conveyor belts
+/obj/structure/machinery/conveyor/attackby(obj/item/I, mob/user)
 	var/obj/item/grab/G = I
 	if(istype(G)) // handle grabbed mob
 		if(ismob(G.grabbed_thing))
@@ -112,7 +111,7 @@
 
 // attack with hand, move pulled object onto conveyor
 /obj/structure/machinery/conveyor/attack_hand(mob/user as mob)
-	if ((!( user.canmove ) || user.is_mob_restrained() || !( user.pulling )))
+	if (( user.is_mob_incapacitated() || !( user.pulling )))
 		return
 	if (user.pulling.anchored)
 		return
@@ -185,7 +184,7 @@
 	var/id = "" // must match conveyor IDs to control them
 
 	var/list/conveyors // the list of converyors that are controlled by this switch
-	anchored = 1
+	anchored = TRUE
 
 
 
@@ -197,7 +196,7 @@
 /obj/structure/machinery/conveyor_switch/LateInitialize()
 	. = ..()
 	conveyors = list()
-	for(var/obj/structure/machinery/conveyor/C in machines)
+	for(var/obj/structure/machinery/conveyor/C in GLOB.machines)
 		if(C.id == id)
 			conveyors += C
 	start_processing()
@@ -246,7 +245,7 @@
 	update()
 
 	// find any switches with same id as this one, and set their positions to match us
-	for(var/obj/structure/machinery/conveyor_switch/S in machines)
+	for(var/obj/structure/machinery/conveyor_switch/S in GLOB.machines)
 		if(S.id == src.id)
 			S.position = position
 			S.update()
@@ -266,7 +265,7 @@
 	update()
 
 	// find any switches with same id as this one, and set their positions to match us
-	for(var/obj/structure/machinery/conveyor_switch/S in machines)
+	for(var/obj/structure/machinery/conveyor_switch/S in GLOB.machines)
 		if(S.id == src.id)
 			S.position = position
 			S.update()

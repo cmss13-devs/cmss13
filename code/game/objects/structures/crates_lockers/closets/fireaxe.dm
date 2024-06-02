@@ -2,11 +2,11 @@
 /obj/structure/closet/fireaxecabinet
 	name = "Fire Axe Cabinet"
 	desc = "There is small label that reads \"For Emergency use only\" along with details for safe use of the axe. As if."
-	var/obj/item/weapon/melee/twohanded/fireaxe/fireaxe = new/obj/item/weapon/melee/twohanded/fireaxe
+	var/obj/item/weapon/twohanded/fireaxe/fireaxe = new/obj/item/weapon/twohanded/fireaxe
 	icon_state = "fireaxe1000"
 	icon_closed = "fireaxe1000"
 	icon_opened = "fireaxe1100"
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	var/localopened = 0 //Setting this to keep it from behaviouring like a normal closet and obstructing movement in the map. -Agouri
 	opened = 1
@@ -14,14 +14,14 @@
 	var/locked = 1
 	var/smashed = 0
 
-/obj/structure/closet/fireaxecabinet/attackby(obj/item/O, var/mob/user)  //Marker -Agouri
+/obj/structure/closet/fireaxecabinet/attackby(obj/item/O, mob/user)  //Marker -Agouri
 	//..() //That's very useful, Erro
 
 	var/hasaxe = 0       //gonna come in handy later~
 	if(fireaxe)
 		hasaxe = 1
 
-	if (isrobot(usr) || src.locked)
+	if (src.locked)
 		if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL))
 			to_chat(user, SPAN_DANGER("Resetting circuitry..."))
 			playsound(user, 'sound/machines/lockreset.ogg', 25, 1)
@@ -51,7 +51,7 @@
 					src.localopened = 1
 			update_icon()
 		return
-	if (istype(O, /obj/item/weapon/melee/twohanded/fireaxe) && src.localopened)
+	if (istype(O, /obj/item/weapon/twohanded/fireaxe) && src.localopened)
 		if(!fireaxe)
 			if(O.flags_item & WIELDED)
 				to_chat(user, SPAN_DANGER("Unwield the axe first."))
@@ -140,7 +140,7 @@
 	set name = "Open/Close"
 	set category = "Object"
 
-	if (isrobot(usr) || src.locked || src.smashed)
+	if (src.locked || src.smashed)
 		if(src.locked)
 			to_chat(usr, SPAN_DANGER("The cabinet won't budge!"))
 		else if(src.smashed)
@@ -154,10 +154,7 @@
 	set name = "Remove Fire Axe"
 	set category = "Object"
 
-	if (isrobot(usr))
-		return
-
-	if (istype(usr, /mob/living/carbon/Xenomorph))
+	if (istype(usr, /mob/living/carbon/xenomorph))
 		return
 
 	if (localopened)

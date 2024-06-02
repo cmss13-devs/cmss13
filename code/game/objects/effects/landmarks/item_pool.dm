@@ -13,10 +13,10 @@
 
 /obj/effect/landmark/item_pool_spawner/Initialize(mapload, ...)
 	. = ..()
-	item_pool_landmarks += src
+	GLOB.item_pool_landmarks += src
 
 /obj/effect/landmark/item_pool_spawner/Destroy()
-	item_pool_landmarks -= src
+	GLOB.item_pool_landmarks -= src
 	. = ..()
 
 /obj/effect/landmark/item_pool_spawner/corsat_bio_lock

@@ -1,6 +1,6 @@
 #define BULLETHOLE_STATES 10 //How many variations of bullethole patterns there are
 //Formulas. These don't need to be defines, but helpful green. Should likely reuse these for a base 8 icon system.
-#define cur_increment(v) round((v-1)/8)+1
+#define cur_increment(v) floor((v-1)/8)+1
 
 /turf/closed/wall/update_icon()
 	..()
@@ -19,6 +19,8 @@
 		icon_state = "blank"
 		var/image/I
 
+		flags_atom |= HTML_USE_INITAL_ICON
+
 		if(!density)
 			I = image(icon, "[walltype]fwall_open")
 			overlays += I
@@ -29,7 +31,7 @@
 			overlays += I
 
 	if(damage)
-		var/current_dmg_overlay = round(damage / damage_cap * damage_overlays.len) + 1
+		var/current_dmg_overlay = floor(damage / damage_cap * damage_overlays.len) + 1
 		if(current_dmg_overlay > damage_overlays.len)
 			current_dmg_overlay = damage_overlays.len
 
@@ -41,6 +43,10 @@
 				var/bullethole_state = rand(1, BULLETHOLE_STATES)
 				bullet_overlay = image('icons/effects/bulletholes.dmi', src, "bhole_[bullethole_state]_2")
 			overlays += bullet_overlay
+
+	var/area/my_area = loc
+	if(my_area.lighting_effect)
+		overlays += my_area.lighting_effect
 
 #undef BULLETHOLE_STATES
 #undef cur_increment
@@ -84,14 +90,14 @@
 				break
 
 		if(success)
-			if(get_dir(src, T) in cardinal)
+			if(get_dir(src, T) in GLOB.cardinals)
 				wall_dirs += get_dir(src, T)
 
 	for(var/neighbor in wall_dirs)
 		neighbors_list |= neighbor
 	wall_connections = dirs_to_corner_states(wall_dirs)
 
-/turf/closed/wall/proc/can_join_with(var/turf/closed/wall/W)
+/turf/closed/wall/proc/can_join_with(turf/closed/wall/W)
 	if(W.type == src.type)
 		return 1
 	for(var/wb_type in blend_turfs)

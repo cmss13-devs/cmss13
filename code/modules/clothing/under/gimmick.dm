@@ -11,6 +11,10 @@
 	has_sensor = UNIFORM_NO_SENSORS
 	displays_id = 0
 
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
+
 //JASON
 /obj/item/clothing/under/gimmick/jason
 	name = "dirty work attire"
@@ -80,16 +84,17 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	allowed = list(
-			/obj/item/weapon/gun,
-			/obj/item/device/flashlight,
-			/obj/item/ammo_magazine/,
-			/obj/item/storage/fancy/cigarettes,
-			/obj/item/tool/lighter,
-			/obj/item/explosive/grenade,
-			/obj/item/device/binoculars,
-			/obj/item/attachable/bayonet,
-			/obj/item/storage/backpack/general_belt,
-			/obj/item/storage/large_holster/machete)
+		/obj/item/weapon/gun,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine/,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/explosive/grenade,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/large_holster/machete,
+	)
 
 //ROBOCOP
 /obj/item/clothing/under/gimmick/robocop

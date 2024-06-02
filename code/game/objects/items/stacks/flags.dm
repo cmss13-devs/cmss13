@@ -2,7 +2,7 @@
 
 /obj/item/stack/flag
 	name = "flags"
-	desc = "Some colourful flags."
+	desc = "Some colorful flags."
 	singular_name = "flag"
 	amount = 10
 	max_amount = 10
@@ -50,7 +50,7 @@
 	if(upright)
 		upright = 0
 		icon_state = base_state
-		anchored = 0
+		anchored = FALSE
 		src.visible_message("<b>[user]</b> knocks down [src].")
 	else
 		..()
@@ -71,7 +71,7 @@
 	var/obj/item/stack/flag/newflag = new src.type(T)
 	newflag.amount = 1
 	newflag.upright = TRUE
-	anchored = TRUE
+	newflag.anchored = TRUE
 	newflag.name = newflag.singular_name
 	newflag.icon_state = "[newflag.base_state]_open"
 	newflag.visible_message("<b>[user]</b> plants [newflag] firmly in the ground.")

@@ -8,10 +8,14 @@
 		if(toIndex <= 0)
 			toIndex += L.len + 1
 
-		sortInstance.L = L
-		sortInstance.cmp = cmp
-		sortInstance.associative = associative
+		var/datum/sortInstance/sort_instance = GLOB.sortInstance
+		if(!sort_instance)
+			sort_instance = new()
 
-		sortInstance.timSort(fromIndex, toIndex)
+		sort_instance.L = L
+		sort_instance.cmp = cmp
+		sort_instance.associative = associative
+
+		sort_instance.timSort(fromIndex, toIndex)
 
 	return L

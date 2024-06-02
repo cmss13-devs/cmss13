@@ -3,7 +3,7 @@
 	desc = "The ultimate in janitorial carts! Has space for water, mops, signs, trash bags, and more!"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cart"
-	anchored = 0
+	anchored = FALSE
 	density = TRUE
 	drag_delay = 1
 	throwpass = TRUE
@@ -180,7 +180,7 @@
 	if(signs)
 		overlays += "cart_sign[signs]"
 
-/obj/structure/janitorialcart/attack_alien(mob/living/carbon/Xenomorph/xeno_attacker)
+/obj/structure/janitorialcart/attack_alien(mob/living/carbon/xenomorph/xeno_attacker)
 	xeno_attacker.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	xeno_attacker.visible_message(SPAN_DANGER("[xeno_attacker] slices \the [src] apart!"),

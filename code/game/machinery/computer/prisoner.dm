@@ -7,20 +7,20 @@
 	density = TRUE
 	req_access = list(ACCESS_MARINE_BRIG)
 	circuit = /obj/item/circuitboard/computer/prisoner
-	var/id = 0.0
+	var/id = 0
 	var/temp = null
 	var/status = 0
 	var/timeleft = 60
-	var/stop = 0.0
+	var/stop = 0
 	var/screen = 0 // 0 - No Access Denied, 1 - Access allowed
 	processing = TRUE
 
 
-/obj/structure/machinery/computer/prisoner/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/prisoner/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 
-/obj/structure/machinery/computer/prisoner/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/prisoner/attack_hand(mob/user as mob)
 	if(..())
 		return
 	user.set_interaction(src)

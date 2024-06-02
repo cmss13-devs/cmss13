@@ -1,7 +1,7 @@
 /obj/structure/machinery/chem_master
 	name = "ChemMaster 3000"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
 	var/base_state = "mixer"
@@ -90,7 +90,7 @@
 		updateUsrDialog()
 	return
 
-/obj/structure/machinery/chem_master/proc/transfer_chemicals(var/obj/dest, var/obj/source, var/amount, var/reagent_id)
+/obj/structure/machinery/chem_master/proc/transfer_chemicals(obj/dest, obj/source, amount, reagent_id)
 	if(istype(source))
 		if(amount > 0 && source.reagents && amount <= source.reagents.maximum_volume)
 			if(!istype(dest))
@@ -141,7 +141,15 @@
 			if(length(label) < 3)
 				loaded_pill_bottle.maptext_label = label
 				loaded_pill_bottle.update_icon()
+	else if(href_list["setcolor"])
+		// Checking for state changes
+		if(!loaded_pill_bottle)
+			return
 
+		if(!Adjacent(usr))
+			return
+
+		loaded_pill_bottle.choose_color()
 
 	else if(href_list["close"])
 		close_browser(user, "chemmaster")
@@ -215,7 +223,7 @@
 				return
 
 			if(href_list["createpill_multiple"])
-				count = Clamp(tgui_input_number(user, "Select the number of pills to make. (max: [max_pill_count])", "Pills to make", pillamount, max_pill_count, 1), 0, max_pill_count)
+				count = clamp(tgui_input_number(user, "Select the number of pills to make. (max: [max_pill_count])", "Pills to make", pillamount, max_pill_count, 1), 0, max_pill_count)
 				if(!count)
 					return
 
@@ -237,8 +245,6 @@
 			while (count--)
 				var/obj/item/reagent_container/pill/P = new/obj/item/reagent_container/pill(loc)
 				P.pill_desc = "A custom pill."
-				P.pixel_x = rand(-7, 7) //random position
-				P.pixel_y = rand(-7, 7)
 				P.icon_state = "pill"+pillsprite
 				reagents.trans_to(P,amount_per_pill)
 				if(loaded_pill_bottle)
@@ -271,8 +277,6 @@
 					P.name = "[name] vial"
 					reagents.trans_to(P, 30)
 
-				P.pixel_x = rand(-7, 7) //random position
-				P.pixel_y = rand(-7, 7)
 				P.update_icon()
 
 				if(href_list["store"])
@@ -359,7 +363,8 @@
 		if(pill_maker)
 			if(loaded_pill_bottle)
 				dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
-				dat += "<A href='?src=\ref[src];addlabelp=1;user=\ref[user]'>Add label to [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
+				dat += "<A href='?src=\ref[src];addlabelp=1;user=\ref[user]'>Add label to [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
+				dat += "<A href='?src=\ref[src];setcolor=1;user=\ref[user]'>Set color to [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
 				dat += "<A href='?src=\ref[src];transferp=1;'>Transfer [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\] to the smartfridge</A><BR><BR>"
 			else
 				dat += "No pill bottle inserted.<BR><BR>"

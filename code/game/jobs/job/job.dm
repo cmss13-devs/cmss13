@@ -34,16 +34,39 @@
 	/// When set to true, SSticker won't call spawn_in_player, instead calling the job's spawn_and_equip proc
 	var/handle_spawn_and_equip = FALSE
 
+	/// When set you will be able to choose between the different job options when selecting your role.
+	/// Associated list. Main list elements - actual options, associated values - shorthands for job preferences menu (keep those short).
+	var/job_options
+	/// If TRUE, this job will spawn w/ a cryo emergency kit during evac/red alert
+	var/gets_emergency_kit = TRUE
+
 /datum/job/New()
 	. = ..()
 
+	RegisterSignal(SSdcs, COMSIG_GLOB_CONFIG_LOADED, PROC_REF(on_config_load))
+
 	minimum_playtimes = setup_requirements(list())
-	if(!disp_title) disp_title = title
+	if(!disp_title)
+		disp_title = title
 
-/datum/job/proc/get_whitelist_status(var/list/roles_whitelist, var/client/player)
-	if(!roles_whitelist)
-		return FALSE
+	if(global.config.is_loaded)
+		on_config_load()
 
+/datum/job/proc/on_config_load()
+	if(entry_message_body)
+		entry_message_body = replace_placeholders(entry_message_body)
+
+/datum/job/proc/replace_placeholders(replacement_string)
+	replacement_string = replacetextEx(replacement_string, WIKI_PLACEHOLDER, generate_wiki_link())
+	replacement_string = replacetextEx(replacement_string, LAW_PLACEHOLDER, "[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_LAW]")
+	return replacement_string
+
+/datum/job/proc/generate_wiki_link()
+	if(!CONFIG_GET(string/wikiarticleurl))
+		return ""
+	return "[CONFIG_GET(string/wikiarticleurl)]/[replacetext(title, " ", "_")]"
+
+/datum/job/proc/get_whitelist_status(client/player)
 	return WHITELIST_NORMAL
 
 /datum/timelock
@@ -51,13 +74,13 @@
 	var/time_required
 	var/roles
 
-/datum/timelock/New(var/name, var/time_required, var/list/roles)
+/datum/timelock/New(name, time_required, list/roles)
 	. = ..()
 	if(name) src.name = name
 	if(time_required) src.time_required = time_required
 	if(roles) src.roles = roles
 
-/datum/job/proc/setup_requirements(var/list/L)
+/datum/job/proc/setup_requirements(list/L)
 	var/list/to_return = list()
 	for(var/PT in L)
 		if(ispath(PT))
@@ -67,7 +90,7 @@
 
 	return to_return
 
-/datum/timelock/proc/can_play(var/client/C)
+/datum/timelock/proc/can_play(client/C)
 	if(islist(roles))
 		var/total = 0
 		for(var/role_required in roles)
@@ -77,7 +100,7 @@
 	else
 		return get_job_playtime(C, roles) >= time_required
 
-/datum/timelock/proc/get_role_requirement(var/client/C)
+/datum/timelock/proc/get_role_requirement(client/C)
 	if(islist(roles))
 		var/total = 0
 		for(var/role_required in roles)
@@ -87,7 +110,7 @@
 	else
 		return time_required - get_job_playtime(C, roles)
 
-/datum/job/proc/can_play_role(var/client/client)
+/datum/job/proc/can_play_role(client/client)
 	if(!CONFIG_GET(flag/use_timelocks))
 		return TRUE
 
@@ -104,7 +127,7 @@
 
 	return TRUE
 
-/datum/job/proc/get_role_requirements(var/client/C)
+/datum/job/proc/get_role_requirements(client/C)
 	var/list/return_requirements = list()
 	for(var/prereq in minimum_playtimes)
 		var/datum/timelock/T = prereq
@@ -142,10 +165,10 @@
 		return GLOB.gear_path_presets_list[gear_preset].role_comm_title
 	return ""
 
-/datum/job/proc/set_spawn_positions(var/count)
+/datum/job/proc/set_spawn_positions(count)
 	return spawn_positions
 
-/datum/job/proc/spawn_and_equip(var/mob/new_player/player)
+/datum/job/proc/spawn_and_equip(mob/new_player/player)
 	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")
 
 /datum/job/proc/generate_money_account(mob/living/carbon/human/account_user)
@@ -179,7 +202,7 @@
 		entry_message_end = "As the [title] you answer to [supervisors]. Special circumstances may change this!"
 	return "[entry_message_intro]<br>[entry_message_body]<br>[entry_message_end]"
 
-/datum/job/proc/announce_entry_message(mob/living/carbon/human/H, datum/money_account/M, var/whitelist_status) //The actual message that is displayed to the mob when they enter the game as a new player.
+/datum/job/proc/announce_entry_message(mob/living/carbon/human/H, datum/money_account/M, whitelist_status) //The actual message that is displayed to the mob when they enter the game as a new player.
 	set waitfor = 0
 	sleep(10)
 	if(H && H.loc && H.client)
@@ -196,7 +219,7 @@
 		"
 		to_chat_spaced(H, html = entrydisplay)
 
-/datum/job/proc/generate_entry_conditions(mob/living/M, var/whitelist_status)
+/datum/job/proc/generate_entry_conditions(mob/living/M, whitelist_status)
 	if (istype(M) && M.client)
 		M.client.soundOutput.update_ambience()
 
@@ -204,43 +227,21 @@
 
 //This lets you scale max jobs at runtime
 //All you have to do is rewrite the inheritance
-/datum/job/proc/get_total_positions(var/latejoin)
+/datum/job/proc/get_total_positions(latejoin)
 	return latejoin ? total_positions : spawn_positions
 
-/datum/job/proc/spawn_in_player(var/mob/new_player/NP)
+/datum/job/proc/spawn_in_player(mob/new_player/NP)
 	if(!istype(NP))
 		return
-
-	NP.spawning = TRUE
-	NP.close_spawn_windows()
 
 	var/mob/living/carbon/human/new_character = new(NP.loc)
 	new_character.lastarea = get_area(NP.loc)
 
-	NP.client.prefs.copy_all_to(new_character)
-
-	if (NP.client.prefs.be_random_body)
-		var/datum/preferences/TP = new()
-		TP.randomize_appearance(new_character)
-
-	new_character.job = NP.job
-	new_character.name = NP.real_name
-	new_character.voice = NP.real_name
-
-	if(NP.mind)
-		NP.mind_initialize()
-		NP.mind.transfer_to(new_character, TRUE)
-		NP.mind.setup_human_stats()
-
-	// Update the character icons
-	// This is done in set_species when the mob is created as well, but
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
+	setup_human(new_character, NP)
 
 	return new_character
 
-/datum/job/proc/equip_job(var/mob/living/M)
+/datum/job/proc/equip_job(mob/living/M)
 	if(!istype(M))
 		return
 
@@ -248,7 +249,7 @@
 		var/mob/living/carbon/human/human = M
 
 		var/job_whitelist = title
-		var/whitelist_status = get_whitelist_status(RoleAuthority.roles_whitelist, human.client)
+		var/whitelist_status = get_whitelist_status(human.client)
 
 		if(whitelist_status)
 			job_whitelist = "[title][whitelist_status]"
@@ -267,9 +268,9 @@
 			generate_entry_conditions(human) //Do any other thing that relates to their spawn.
 
 		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
-			RoleAuthority.randomize_squad(human)
+			GLOB.RoleAuthority.randomize_squad(human)
 
-		if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(human.job))) //activates self setting proc for marine headsets for WO
+		if(Check_WO() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(human.job))) //activates self setting proc for marine headsets for WO
 			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 			WO.self_set_headset(human)
 
@@ -284,6 +285,8 @@
 			join_turf = get_turf(pick(GLOB.spawns_by_job[type]))
 		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
 			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		else if(GLOB.latejoin_by_job[title])
+			join_turf = get_turf(pick(GLOB.latejoin_by_job[title]))
 		else
 			join_turf = get_turf(pick(GLOB.latejoin))
 		human.forceMove(join_turf)
@@ -300,3 +303,18 @@
 		SSround_recording.recorder.track_player(human)
 
 	return TRUE
+
+/// Intended to be overwritten to handle when a job has variants that can be selected.
+/datum/job/proc/handle_job_options(option)
+	return
+
+/// Intended to be overwritten to handle any requirements for specific job variations that can be selected
+/datum/job/proc/filter_job_option(mob/job_applicant)
+	return job_options
+
+/datum/job/proc/check_whitelist_status(mob/user)
+	if(!(flags_startup_parameters & ROLE_WHITELISTED))
+		return TRUE
+
+	if(user.client.check_whitelist_status(flags_whitelist))
+		return TRUE

@@ -13,7 +13,7 @@
 	/// If it's been enhanced by a spit combo.
 	var/acid_enhanced = FALSE
 
-/datum/effects/acid/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest")
+/datum/effects/acid/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest")
 	..(A, from, last_dmg_source, zone)
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
@@ -32,7 +32,7 @@
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 
-/datum/effects/acid/validate_atom(var/atom/A)
+/datum/effects/acid/validate_atom(atom/A)
 	if(istype(A, /obj/structure/barricade))
 		return TRUE
 
@@ -104,7 +104,7 @@
 	if(!acids_area)
 		return
 
-	if(SSweather.is_weather_event && locate(acids_area.master) in SSweather.weather_areas)
+	if(SSweather.is_weather_event && locate(acids_area) in SSweather.weather_areas)
 		//smothering_strength is 1-10, we use this to take a proportional amount off the stats
 		duration = duration - (duration * (SSweather.weather_event_instance.fire_smothering_strength * 0.1))
 		damage_in_total_human = damage_in_total_human - (damage_in_total_human * (SSweather.weather_event_instance.fire_smothering_strength * 0.1))

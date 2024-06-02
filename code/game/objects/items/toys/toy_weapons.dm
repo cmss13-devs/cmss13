@@ -20,7 +20,7 @@
 	matter = list("glass" = 10,"metal" = 10)
 
 	attack_verb = list("struck", "pistol whipped", "hit", "bashed")
-	var/bullets = 7.0
+	var/bullets = 7
 
 /obj/item/toy/gun/get_examine_text(mob/user)
 	desc = "There are [bullets] caps\s left. Looks almost like the real thing! Ages 8 and up."
@@ -130,7 +130,7 @@
 				for(var/mob/living/M in D.loc)
 					if(!istype(M,/mob/living)) continue
 					if(M == user) continue
-					for(var/mob/O in viewers(world_view_size, D))
+					for(var/mob/O in viewers(GLOB.world_view_size, D))
 						O.show_message(SPAN_DANGER("[M] was hit by the foam dart!"), SHOW_MESSAGE_VISIBLE)
 					new /obj/item/toy/crossbow_ammo(M.loc)
 					qdel(D)
@@ -152,14 +152,14 @@
 		return
 	else if (bullets == 0)
 		user.apply_effect(5, WEAKEN)
-		for(var/mob/O in viewers(world_view_size, user))
+		for(var/mob/O in viewers(GLOB.world_view_size, user))
 			O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), SHOW_MESSAGE_VISIBLE)
 
 
-/obj/item/toy/crossbow/attack(mob/M as mob, mob/user as mob)
+/obj/item/toy/crossbow/attack(mob/living/M as mob, mob/user as mob)
 	src.add_fingerprint(user)
 
-	if (src.bullets > 0 && M.lying)
+	if (src.bullets > 0 && M.body_position == LYING_DOWN)
 
 		for(var/mob/O in viewers(M, null))
 			if(O.client)
@@ -169,7 +169,7 @@
 		playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
 		new /obj/item/toy/crossbow_ammo(M.loc)
 		src.bullets--
-	else if (M.lying && src.bullets == 0)
+	else if (M.body_position == LYING_DOWN && src.bullets == 0)
 		for(var/mob/O in viewers(M, null))
 			if (O.client)
 				O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear someone fall"), SHOW_MESSAGE_AUDIBLE)
@@ -187,8 +187,8 @@
 	name = ""
 	desc = ""
 	icon = 'icons/obj/items/toy.dmi'
-	icon_state = "null"
-	anchored = 1
+	icon_state = null
+	anchored = TRUE
 	density = FALSE
 
 
@@ -201,7 +201,7 @@
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "sword0"
 	item_state = "sword0"
-	var/active = 0.0
+	var/active = 0
 	w_class = SIZE_SMALL
 	flags_item = NOSHIELD
 	attack_verb = list("attacked", "struck", "hit")

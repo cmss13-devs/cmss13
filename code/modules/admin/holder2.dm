@@ -1,4 +1,4 @@
-var/list/datum/admins/admin_datums = list()
+GLOBAL_LIST_INIT_TYPED(admin_datums, /datum/admins, list())
 
 GLOBAL_VAR_INIT(href_token, GenerateToken())
 GLOBAL_PROTECT(href_token)
@@ -10,30 +10,26 @@ GLOBAL_PROTECT(href_token)
 	var/rights = 0
 	var/fakekey = null
 
-	var/list/datum/marked_datums = list()
-
-	var/admincaster_screen = 0 //See newscaster.dm under machinery for a full description
-	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as admin_holders.
-	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
-	var/admincaster_signature //What you'll sign the newsfeeds as
-
 	var/href_token
+
+	var/datum/marked_datum
+	var/list/datum/tagged_datums
 
 	///Whether this admin is invisiminning
 	var/invisimined = FALSE
 
 	var/datum/filter_editor/filteriffic
+	var/datum/particle_editor/particle_test
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey, list/new_extra_titles)
 	if(!ckey)
 		error("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
 		return
-	admincaster_signature = "Weyland-Yutani Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
 	href_token = GenerateToken()
-	admin_datums[ckey] = src
+	GLOB.admin_datums[ckey] = src
 	extra_titles = new_extra_titles
 
 // Letting admins edit their own permission giver is a poor idea
@@ -45,7 +41,8 @@ GLOBAL_PROTECT(href_token)
 		owner = C
 		owner.admin_holder = src
 		owner.add_admin_verbs()
-		owner.add_admin_whitelists()
+		owner.tgui_say.load()
+		owner.update_special_keybinds()
 		GLOB.admins |= C
 		if(owner.admin_holder.rights & R_PROFILER)
 			if(!world.GetConfig("admin", C.ckey))
@@ -56,6 +53,8 @@ GLOBAL_PROTECT(href_token)
 		GLOB.admins -= owner
 		owner.remove_admin_verbs()
 		owner.admin_holder = null
+		owner.tgui_say.load()
+		owner.update_special_keybinds()
 		owner = null
 
 /*
@@ -71,7 +70,7 @@ generally it would be used like so:
 NOTE: it checks usr! not src! So if you're checking somebody's rank in a proc which they did not call
 you will have to do something like if(client.admin_holder.rights & R_ADMIN) yourself.
 */
-/proc/check_client_rights(var/client/C, rights_required, show_msg = TRUE)
+/proc/check_client_rights(client/C, rights_required, show_msg = TRUE)
 	if(!C)
 		return FALSE
 
@@ -123,20 +122,32 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	return 0
 
 /client/proc/deadmin()
+	if(IsAdminAdvancedProcCall())
+		alert_proccall("deadmin")
+		return PROC_BLOCKED
 	if(admin_holder)
 		admin_holder.disassociate()
 		QDEL_NULL(admin_holder)
-	return 1
+	return TRUE
 
 /client/proc/readmin()
-	if(admin_datums[ckey])
-		admin_datums[ckey].associate(src)
-	return 1
+	if(GLOB.admin_datums[ckey])
+		GLOB.admin_datums[ckey].associate(src)
+	return TRUE
 
 /datum/admins/proc/check_for_rights(rights_required)
 	if(rights_required && !(rights_required & rights))
 		return FALSE
 	return TRUE
+
+/// gets any additional channels for tgui-say (admin & mentor)
+/datum/admins/proc/get_tgui_say_extra_channels()
+	var/extra_channels = list()
+	if(check_for_rights(R_ADMIN) || check_for_rights(R_MOD))
+		extra_channels += ADMIN_CHANNEL
+	if(check_for_rights(R_MENTOR))
+		extra_channels += MENTOR_CHANNEL
+	return extra_channels
 
 /datum/proc/CanProcCall(procname)
 	return TRUE

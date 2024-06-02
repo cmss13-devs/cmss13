@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT_TYPED(faction_datums, /datum/faction, setup_faction_list())
 		faction_datums_list[F.faction_tag] = F
 	return faction_datums_list
 
-/proc/get_faction(var/faction = FACTION_MARINE)
+/proc/get_faction(faction = FACTION_MARINE)
 	var/datum/faction/F = GLOB.faction_datums[faction]
 	if(F)
 		return F

@@ -1,10 +1,10 @@
 /obj/structure/machinery/hydro_floodlight_switch
 	name = "Biodome Floodlight Switch"
-	icon = 'icons/turf/ground_map.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	var/ispowered = FALSE
 	var/turned_on = 0 //has to be toggled in engineering
 	use_power = USE_POWER_IDLE
@@ -14,10 +14,17 @@
 
 /obj/structure/machinery/hydro_floodlight_switch/Initialize(mapload, ...)
 	. = ..()
-	for(var/obj/structure/machinery/hydro_floodlight/F in machines)
+	for(var/obj/structure/machinery/hydro_floodlight/F in GLOB.machines)
 		floodlist += F
 		F.fswitch = src
 	start_processing()
+
+/obj/structure/machinery/hydro_floodlight_switch/Destroy()
+	for(var/obj/structure/machinery/hydro_floodlight/floodlight as anything in floodlist)
+		floodlight.fswitch = null
+	floodlist = null
+	return ..()
+
 
 /obj/structure/machinery/hydro_floodlight_switch/process()
 	var/lightpower = 0
@@ -53,9 +60,9 @@
 
 		spawn(rand(0,50))
 			if(F.is_lit) //Shut it down
-				F.SetLuminosity(0)
+				F.set_light(0)
 			else
-				F.SetLuminosity(F.lum_value)
+				F.set_light(F.lum_value)
 			F.is_lit = !(F.is_lit)
 			F.update_icon()
 	return 0
@@ -79,7 +86,7 @@
 	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
 	icon_state = "flood_s_off"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	layer = WINDOW_LAYER
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0
@@ -91,7 +98,9 @@
 	var/lum_value = 7
 
 /obj/structure/machinery/hydro_floodlight/Destroy()
-	SetLuminosity(0)
+	if(fswitch?.floodlist)
+		fswitch.floodlist -= src
+	fswitch = null
 	return ..()
 
 /obj/structure/machinery/hydro_floodlight/update_icon()
@@ -120,7 +129,7 @@
 				user.visible_message(SPAN_NOTICE("[user] finishes welding [src]'s damage."), \
 					SPAN_NOTICE("You finish welding [src]'s damage."))
 				if(is_lit)
-					SetLuminosity(lum_value)
+					set_light(lum_value)
 				update_icon()
 				return 1
 		else
@@ -141,7 +150,7 @@
 			to_chat(user, SPAN_WARNING("It's already damaged."))
 			return 0
 		else
-			if(isXenoLarva(user))
+			if(islarva(user))
 				return //Larvae can't do shit
 			if(user.get_active_hand())
 				to_chat(user, SPAN_WARNING("You need your claws empty for this!"))
@@ -151,7 +160,7 @@
 			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !damaged) //Not when it's already damaged.
 				if(!src) return 0
 				damaged = 1
-				SetLuminosity(0)
+				set_light(0)
 				user.visible_message(SPAN_DANGER("[user] slashes up [src]!"),
 				SPAN_DANGER("You slash up [src]!"))
 				playsound(src, 'sound/weapons/blade1.ogg', 25, 1)

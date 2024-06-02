@@ -27,7 +27,7 @@
 	set category = "Object"
 	set src in usr
 
-	if ((usr.canmove && !( usr.is_mob_restrained() )))
+	if (usr.is_mob_incapacitated())
 		src.code = t
 	if (!( src.code ))
 		src.code = "beacon"

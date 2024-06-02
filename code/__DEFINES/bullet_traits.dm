@@ -3,7 +3,7 @@
 // list of args if there are any args
 /// An entry to a list for giving projectiles bullet traits
 /// Must be placed inside of a list
-#define BULLET_TRAIT_ENTRY(trait, args...) trait = #args ? list(##args) : null
+#define BULLET_TRAIT_ENTRY(trait, args...) trait = list(##args)
 /// An entry to a list for giving projectiles bullet traits with a unique ID
 /// Must be placed inside of a list
 #define BULLET_TRAIT_ENTRY_ID(id, trait, args...) id = list(trait, ##args)

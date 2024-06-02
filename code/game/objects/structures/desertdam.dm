@@ -5,7 +5,7 @@
 	name = "desert foliage"
 	icon = 'icons/turf/floors/desertdam_map.dmi'
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE // can toggle it off anyway
 	layer = ABOVE_MOB_LAYER

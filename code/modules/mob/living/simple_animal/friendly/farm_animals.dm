@@ -27,7 +27,13 @@
 /mob/living/simple_animal/hostile/retaliate/goat/Initialize()
 	udder = new(50)
 	udder.my_atom = src
-	..()
+	. = ..()
+
+/mob/living/simple_animal/hostile/retaliate/goat/Destroy()
+	if(udder)
+		udder.my_atom = null
+	QDEL_NULL(udder)
+	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/goat/Life(delta_time)
 	. = ..()
@@ -71,13 +77,13 @@
 			if(prob(10))
 				INVOKE_ASYNC(src, PROC_REF(say), "Nom")
 
-/mob/living/simple_animal/hostile/retaliate/goat/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/hostile/retaliate/goat/attackby(obj/item/O as obj, mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
-			to_chat(user, SPAN_DANGER("The [O] is full."))
+			to_chat(user, SPAN_DANGER("[O] is full."))
 		if(!transfered)
 			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
 	else
@@ -111,7 +117,13 @@
 	udder.my_atom = src
 	..()
 
-/mob/living/simple_animal/cow/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/cow/Destroy()
+	if(udder)
+		udder.my_atom = null
+	QDEL_NULL(udder)
+	return ..()
+
+/mob/living/simple_animal/cow/attackby(obj/item/O as obj, mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
@@ -182,7 +194,7 @@
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 
-/mob/living/simple_animal/chick/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/simple_animal/chick/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_UNDER
@@ -197,8 +209,8 @@
 			new /mob/living/simple_animal/chicken(src.loc)
 			qdel(src)
 
-var/const/MAX_CHICKENS = 50
-var/global/chicken_count = 0
+GLOBAL_VAR_INIT(MAX_CHICKENS, 50)
+GLOBAL_VAR_INIT(chicken_count, 0)
 
 /mob/living/simple_animal/chicken
 	name = "\improper chicken"
@@ -232,22 +244,22 @@ var/global/chicken_count = 0
 	icon_dead = "chicken_[body_color]_dead"
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
-	chicken_count++
+	GLOB.chicken_count++
 
-/mob/living/simple_animal/chicken/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/simple_animal/chicken/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_UNDER
 
 /mob/living/simple_animal/chicken/death()
 	..()
-	chicken_count--
+	GLOB.chicken_count--
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
 			user.count_niche_stat(STATISTICS_NICHE_CHICKEN)
 
-/mob/living/simple_animal/chicken/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/chicken/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/reagent_container/food/snacks/grown/wheat)) //feedin' dem chickens
 		if(!stat && eggsleft < 8)
 			user.visible_message(SPAN_NOTICE("[user] feeds [O] to [name]! It clucks happily."),SPAN_NOTICE("You feed [O] to [name]! It clucks happily."))
@@ -270,7 +282,7 @@ var/global/chicken_count = 0
 		var/obj/item/reagent_container/food/snacks/egg/E = new(get_turf(src))
 		E.pixel_x = rand(-6,6)
 		E.pixel_y = rand(-6,6)
-		if(chicken_count < MAX_CHICKENS && prob(10))
+		if(GLOB.chicken_count < GLOB.MAX_CHICKENS && prob(10))
 			START_PROCESSING(SSobj, E)
 
 /obj/item/reagent_container/food/snacks/egg/var/amount_grown = 0

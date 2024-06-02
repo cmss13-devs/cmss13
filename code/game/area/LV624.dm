@@ -4,6 +4,7 @@
 	can_build_special = TRUE
 	powernet_name = "ground"
 	ambience_exterior = AMBIENCE_JUNGLE
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/lv624/ground
 	name = "Ground"
@@ -11,6 +12,9 @@
 	always_unpowered = 1 //Will this mess things up? God only knows
 
 //Jungle
+/area/lv624/ground/jungle
+	minimap_color = MINIMAP_AREA_JUNGLE
+
 /area/lv624/ground/jungle/south_east_jungle
 	name ="\improper Southeast Jungle"
 	icon_state = "southeast"
@@ -26,10 +30,17 @@
 	icon_state = "southwest"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
+/area/lv624/ground/jungle/south_west_jungle/ceiling
+	ceiling = CEILING_GLASS
+
 /area/lv624/ground/jungle/west_jungle
 	name ="\improper Western Jungle"
 	icon_state = "west"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	is_resin_allowed = FALSE
+
+/area/lv624/ground/jungle/west_jungle/ceiling
+	ceiling = CEILING_GLASS
 
 /area/lv624/ground/jungle/east_jungle
 	name ="\improper Eastern Jungle"
@@ -78,10 +89,16 @@
 	icon_state = "west"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
+/area/lv624/ground/barrens/west_barrens/ceiling
+	ceiling = CEILING_GLASS
+
 /area/lv624/ground/barrens/east_barrens
 	name = "\improper Eastern Barrens"
 	icon_state = "east"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+
+/area/lv624/ground/barrens/east_barrens/ceiling
+	ceiling = CEILING_GLASS
 
 /area/lv624/ground/barrens/containers
 	name = "\improper Containers"
@@ -92,6 +109,9 @@
 	name = "\improper North Eastern Barrens"
 	icon_state = "northeast"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+
+/area/lv624/ground/barrens/north_east_barrens/ceiling
+	ceiling = CEILING_GLASS
 
 /area/lv624/ground/barrens/south_west_barrens
 	name = "\improper South Western Barrens"
@@ -203,6 +223,7 @@
 	soundscape_interval = 25
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/lv624/ground/caves/west_caves
 	name ="\improper Western Caves"
@@ -283,22 +304,27 @@
 /area/lv624/lazarus/medbay
 	name = "\improper Medbay"
 	icon_state = "medbay"
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/lv624/lazarus/armory
 	name = "\improper Armory"
 	icon_state = "armory"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/lv624/lazarus/security
 	name = "\improper Security"
 	icon_state = "security"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/lv624/lazarus/captain
 	name = "\improper Commandant's Quarters"
 	icon_state = "captain"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/lv624/lazarus/hop
 	name = "\improper Head of Personnel's Office"
 	icon_state = "head_quarters"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/lv624/lazarus/kitchen
 	name = "\improper Kitchen"
@@ -357,10 +383,12 @@
 /area/lv624/lazarus/engineering
 	name = "\improper Engineering"
 	icon_state = "engine_smes"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv624/lazarus/comms
 	name = "\improper Communications Relay"
 	icon_state = "tcomsatcham"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv624/lazarus/secure_storage
 	name = "\improper Secure Storage"
@@ -375,6 +403,7 @@
 /area/lv624/lazarus/research
 	name = "\improper Research Lab"
 	icon_state = "toxlab"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/lv624/lazarus/fitness
 	name = "\improper Fitness Room"

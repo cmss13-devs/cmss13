@@ -1,4 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - refactor: "`Principally changed // comment to /// comment with the proper format so that it fallow the current documentation standard."

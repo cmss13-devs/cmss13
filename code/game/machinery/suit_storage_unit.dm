@@ -35,6 +35,13 @@
 		inserted_tank = new starting_tank_type(src)
 	update_icon()
 
+/obj/structure/machinery/suit_storage_unit/Destroy()
+	QDEL_NULL(inserted_suit)
+	QDEL_NULL(inserted_helmet)
+	QDEL_NULL(inserted_mask)
+	QDEL_NULL(inserted_tank)
+	. = ..()
+
 
 /obj/structure/machinery/suit_storage_unit/update_icon()
 	overlays.Cut()

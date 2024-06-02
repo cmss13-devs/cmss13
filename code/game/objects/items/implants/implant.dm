@@ -54,7 +54,7 @@
 /obj/item/implant/tracking
 	name = "tracking implant"
 	desc = "Track with this."
-	var/id = 1.0
+	var/id = 1
 
 /obj/item/implant/tracking/Initialize(mapload, ...)
 	. = ..()
@@ -82,6 +82,7 @@ Implant Specifics:<BR>"}
 		return dat
 
 /obj/item/implant/tracking/emp_act(severity)
+	. = ..()
 	if (malfunction) //no, dawg, you can't malfunction while you are malfunctioning
 		return
 	malfunction = MALFUNCTION_TEMPORARY
@@ -123,7 +124,7 @@ Implant Specifics:<BR>"}
 	return
 
 
-/obj/item/implant/dexplosive/activate(var/cause)
+/obj/item/implant/dexplosive/activate(cause)
 	if((!cause) || (!src.imp_in)) return 0
 	explosion(src, -1, 0, 2, 3, 0)//This might be a bit much, dono will have to see.
 	if(src.imp_in)
@@ -157,7 +158,7 @@ Implant Specifics:<BR>"}
 	hear(msg)
 	return
 
-/obj/item/implant/explosive/hear(var/msg)
+/obj/item/implant/explosive/hear(msg)
 	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
 	msg = sanitize_simple(msg, replacechars)
 	if(findtext(msg,phrase))
@@ -171,7 +172,7 @@ Implant Specifics:<BR>"}
 	var/need_gib = null
 	if(istype(imp_in, /mob/))
 		var/mob/T = imp_in
-		message_staff("Explosive implant triggered in [T] ([T.key]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>) ")
+		message_admins("Explosive implant triggered in [T] ([T.key]). [ADMIN_JMP(T)] ")
 		log_game("Explosive implant triggered in [T] ([T.key]).")
 		need_gib = 1
 
@@ -216,6 +217,7 @@ Implant Specifics:<BR>"}
 	return 1
 
 /obj/item/implant/explosive/emp_act(severity)
+	. = ..()
 	if (malfunction)
 		return
 	malfunction = MALFUNCTION_TEMPORARY
@@ -295,7 +297,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	return
 
 
-/obj/item/implant/chem/activate(var/cause)
+/obj/item/implant/chem/activate(cause)
 	if((!cause) || (!src.imp_in)) return 0
 	var/mob/living/carbon/R = src.imp_in
 	src.reagents.trans_to(R, cause)
@@ -307,6 +309,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	return
 
 /obj/item/implant/chem/emp_act(severity)
+	. = ..()
 	if (malfunction)
 		return
 	malfunction = MALFUNCTION_TEMPORARY
@@ -345,7 +348,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 /obj/item/implant/loyalty/implanted(mob/M)
 	if(!ishuman(M)) return
-	if(isYautja(M)) return
+	if(isyautja(M)) return
 	var/mob/living/carbon/human/H = M
 	to_chat(H, SPAN_NOTICE("You are now tagged as a WY loyalist and will be monitored by their central headquarters. You retain your free will and mental faculties."))
 	return 1
@@ -414,7 +417,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	else if(M.stat == 2)
 		activate("death")
 
-/obj/item/implant/death_alarm/activate(var/cause)
+/obj/item/implant/death_alarm/activate(cause)
 	var/mob/M = imp_in
 	var/area/t = get_area(M)
 	switch (cause)
@@ -432,6 +435,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 			STOP_PROCESSING(SSobj, src)
 
 /obj/item/implant/death_alarm/emp_act(severity) //for some reason alarms stop going off in case they are emp'd, even without this
+	. = ..()
 	if (malfunction) //so I'm just going to add a meltdown chance here
 		return
 	malfunction = MALFUNCTION_TEMPORARY

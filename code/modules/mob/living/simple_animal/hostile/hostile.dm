@@ -12,6 +12,8 @@
 	var/list/friends = list()
 	var/break_stuff_probability = 10
 	stop_automated_movement_when_pulled = 0
+	black_market_value = KILL_MENDOZA
+	dead_black_market_value = 25
 	var/destroy_surroundings = 1
 
 /mob/living/simple_animal/hostile/Destroy()
@@ -48,7 +50,7 @@
 				break
 	return T
 
-/mob/living/simple_animal/hostile/proc/evaluate_target(var/mob/living/target)
+/mob/living/simple_animal/hostile/proc/evaluate_target(mob/living/target)
 	if(target.faction == src.faction && !attack_same)
 		return FALSE
 	else if(target in friends)
@@ -57,7 +59,7 @@
 		if(!target.stat)
 			return target
 
-/mob/living/simple_animal/hostile/proc/Found(var/atom/A)
+/mob/living/simple_animal/hostile/proc/Found(atom/A)
 	return
 
 /mob/living/simple_animal/hostile/proc/MoveToTarget()
@@ -105,7 +107,7 @@
 	walk(src, 0)
 
 
-/mob/living/simple_animal/hostile/proc/ListTargets(var/dist = 7)
+/mob/living/simple_animal/hostile/proc/ListTargets(dist = 7)
 	var/list/L = hearers(src, dist)
 	return L
 
@@ -123,7 +125,7 @@
 	if(client)
 		return 0
 
-	if(!stat && canmove)
+	if(!stat && mobility_flags & MOBILITY_MOVE)
 		switch(stance)
 			if(HOSTILE_STANCE_IDLE)
 				target_mob = FindTarget()
@@ -143,9 +145,9 @@
 
 /mob/living/simple_animal/hostile/proc/DestroySurroundings()
 	if(prob(break_stuff_probability))
-		for(var/dir in cardinal) // North, South, East, West
+		for(var/dir in GLOB.cardinals) // North, South, East, West
 			for(var/obj/structure/window/obstacle in get_step(src, dir))
-				if(obstacle.dir == reverse_dir[dir]) // So that windows get smashed in the right order
+				if(obstacle.dir == GLOB.reverse_dir[dir]) // So that windows get smashed in the right order
 					obstacle.attack_animal(src)
 					return
 			var/obj/structure/obstacle = locate(/obj/structure, get_step(src, dir))

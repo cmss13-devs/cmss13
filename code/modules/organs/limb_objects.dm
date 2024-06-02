@@ -1,6 +1,10 @@
 
 /obj/item/limb
 	icon = 'icons/mob/humans/species/r_human.dmi'
+	///Predators can flay limbs to eventually turn them into bones for their armor
+	var/flayed = FALSE
+	///What bone would be in this limb?
+	var/bone_type
 
 /obj/item/limb/New(loc, mob/living/carbon/human/H)
 	..(loc)
@@ -34,7 +38,7 @@
 	else
 		b_icon = B.icon_name
 
-	if(isSpeciesYautja(H))
+	if(isspeciesyautja(H))
 		e_icon = H.ethnicity
 		b_icon = H.body_type
 
@@ -47,31 +51,40 @@
 /obj/item/limb/arm/l_arm
 	name = "left arm"
 	icon_state = "l_arm"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_arm
 /obj/item/limb/foot/l_foot
 	name = "left foot"
 	icon_state = "l_foot"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_foot
 /obj/item/limb/hand/l_hand
 	name = "left hand"
 	icon_state = "l_hand"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_hand
 /obj/item/limb/leg/l_leg
 	name = "left leg"
 	icon_state = "l_leg"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_leg
 /obj/item/limb/arm/r_arm
 	name = "right arm"
 	icon_state = "r_arm"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_arm
 /obj/item/limb/foot/r_foot
 	name = "right foot"
 	icon_state = "r_foot"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_foot
 /obj/item/limb/hand/r_hand
 	name = "right hand"
 	icon_state = "r_hand"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_hand
 /obj/item/limb/leg/r_leg
 	name = "right leg"
 	icon_state = "r_leg"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_leg
 
 /obj/item/limb/head
 	name = "head"
 	icon_state = "head_m"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/head
 	unacidable = TRUE
 	var/mob/living/brain/brainmob
 	var/brain_op_stage = 0
@@ -79,7 +92,7 @@
 	var/brain_mob_type = /mob/living/brain
 	var/braindeath_on_decap = 1 //whether the brainmob dies when head is decapitated (used by synthetics)
 
-/obj/item/limb/head/New(loc, mob/living/carbon/human/H, var/cause = "decapitation")
+/obj/item/limb/head/New(loc, mob/living/carbon/human/H, cause = "decapitation")
 	if(istype(H))
 		src.icon_state = H.gender == MALE? "head_m" : "head_f"
 	..()
@@ -92,7 +105,7 @@
 		var/datum/sprite_accessory/facial_hair_style = GLOB.facial_hair_styles_list[H.f_style]
 		if(facial_hair_style)
 			var/icon/facial = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
-			if(facial_hair_style.do_colouration)
+			if(facial_hair_style.do_coloration)
 				facial.Blend(rgb(H.r_facial, H.g_facial, H.b_facial), ICON_ADD)
 
 			overlays.Add(facial) // icon.Blend(facial, ICON_OVERLAY)
@@ -102,7 +115,7 @@
 		if(hair_style)
 			var/icon/hair = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			var/icon/eyes = new/icon("icon" = 'icons/mob/humans/onmob/human_face.dmi', "icon_state" = H.species ? H.species.eyes : "eyes_s")
-			if(hair_style.do_colouration)
+			if(hair_style.do_coloration)
 				hair.Blend(rgb(H.r_hair, H.g_hair, H.b_hair), ICON_ADD)
 				eyes.Blend(rgb(H.r_eyes, H.g_eyes, H.b_eyes), ICON_ADD)
 
@@ -123,7 +136,8 @@
 	H.regenerate_icons()
 
 	if(braindeath_on_decap)
-		brainmob.stat = DEAD
+		brainmob.timeofdeath = world.time
+		brainmob.set_stat(DEAD)
 		brainmob.death(cause)
 
 	GLOB.head_limb_list += src
@@ -133,7 +147,7 @@
 	GLOB.head_limb_list -= src
 	return ..()
 
-/obj/item/limb/head/proc/transfer_identity(var/mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->head
+/obj/item/limb/head/proc/transfer_identity(mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->head
 	brainmob = new brain_mob_type(src)
 	brainmob.name = H.real_name
 	brainmob.real_name = H.real_name
@@ -157,7 +171,7 @@
 									SPAN_WARNING("You cut [brainmob]'s head open with [W]!"))
 				to_chat(brainmob, SPAN_WARNING("[user] begins to cut open your head with [W]!"))
 
-				brain_op_stage = 3.0
+				brain_op_stage = 3
 			else
 				..()
 	else if(istype(W,/obj/item/tool/surgery/circular_saw))
@@ -182,7 +196,7 @@
 					brainmob.death(create_cause_data("brain extraction", user)) //brain mob doesn't survive outside a head
 				B.transfer_identity(brainmob)
 
-				brain_op_stage = 4.0
+				brain_op_stage = 4
 			else
 				..()
 	else
@@ -201,7 +215,7 @@
 	flags_atom |= USES_HEARING
 
 //as ugly and painful as it is to write, the synth can still be revived, and mind needs to be updated if ghosted
-/obj/item/limb/head/synth/transfer_identity(var/mob/living/carbon/human/H)
+/obj/item/limb/head/synth/transfer_identity(mob/living/carbon/human/H)
 	..()
 	if(!brainmob.mind)
 		for(var/mob/dead/observer/G in GLOB.observer_list)

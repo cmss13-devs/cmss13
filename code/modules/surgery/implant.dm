@@ -15,14 +15,14 @@
 	steps = list(
 		/datum/surgery_step/create_cavity,
 		/datum/surgery_step/place_item,
-		/datum/surgery_step/cauterize/close_cavity
+		/datum/surgery_step/cauterize/close_cavity,
 	)
 
 /datum/surgery/implant/groin
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
-/datum/surgery/implant/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/implant/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	return !L.hidden
 
 //------------------------------------
@@ -32,14 +32,14 @@
 	steps = list(
 		/datum/surgery_step/create_cavity,
 		/datum/surgery_step/remove_implant,
-		/datum/surgery_step/cauterize/close_cavity
+		/datum/surgery_step/cauterize/close_cavity,
 	)
 
 /datum/surgery/implant/removal/groin
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
-/datum/surgery/implant/removal/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/implant/removal/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	return L.hidden
 
 //------------------------------------
@@ -50,8 +50,8 @@
 	tools = list(
 		/obj/item/tool/surgery/surgicaldrill = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/pen = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/stack/rods = SURGERY_TOOL_MULT_AWFUL
-		)
+		/obj/item/stack/rods = SURGERY_TOOL_MULT_AWFUL,
+	)
 	time = 6 SECONDS
 
 /datum/surgery_step/create_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -105,6 +105,8 @@
 	. = ..()
 	if(.)
 		if(is_surgery_tool(tool)) //Make sure you still have all your tools after a surgery.
+			return FALSE
+		if(HAS_TRAIT(tool, TRAIT_ITEM_NOT_IMPLANTABLE))
 			return FALSE
 		if(tool.w_class > get_max_wclass(surgery))
 			to_chat(user, SPAN_WARNING("[tool] is too big to implant into [surgery.target]'s [surgery.affected_limb.cavity]!"))
@@ -257,7 +259,7 @@
 	pain_reduction_required = PAIN_REDUCTION_LIGHT //This is Yank Object without the damage or IB risk.
 	required_surgery_skill = SKILL_SURGERY_NOVICE
 
-/datum/surgery/embedded/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/embedded/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	return length(L.implants)
 
 //------------------------------------

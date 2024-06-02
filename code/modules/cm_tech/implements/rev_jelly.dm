@@ -11,11 +11,11 @@
 	max_amount = 9
 	var/time_to_take = 3 SECONDS
 
-/obj/item/stack/revival_jelly/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/item/stack/revival_jelly/attack_alien(mob/living/carbon/xenomorph/M)
 	attack_hand(M) //This has a .2 second delay of its own.
 	return XENO_NO_DELAY_ACTION
 
-/obj/item/stack/revival_jelly/proc/can_revive(var/required_jelly, var/mob/living/carbon/Xenomorph/X, var/mob/living/user)
+/obj/item/stack/revival_jelly/proc/can_revive(required_jelly, mob/living/carbon/xenomorph/X, mob/living/user)
 	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("You're already performing an action!"))
 		return FALSE
@@ -38,7 +38,7 @@
 
 	return TRUE
 
-/obj/item/stack/revival_jelly/attack(mob/living/carbon/Xenomorph/X, mob/living/user)
+/obj/item/stack/revival_jelly/attack(mob/living/carbon/xenomorph/X, mob/living/user)
 	if(!istype(X))
 		return ..()
 

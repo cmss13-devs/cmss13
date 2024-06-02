@@ -34,7 +34,7 @@
 	throw_mode = THROW_MODE_HIGH
 
 /datum/keybinding/carbon/cycle_intent
-	hotkey_keys = list()
+	hotkey_keys = list("Unbound")
 	classic_keys = list("Insert")
 	name = "cycle_intent"
 	full_name = "Cycle Intent"
@@ -118,7 +118,7 @@
 
 /datum/keybinding/carbon/give
 	hotkey_keys = list("G")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "Give_Item"
 	full_name = "Give item"
 	description = "Give the item you're currently holding"
@@ -130,36 +130,4 @@
 		return
 	var/mob/living/carbon/C = user.mob
 	C.give()
-	return TRUE
-
-/datum/keybinding/carbon/warcry
-	hotkey_keys = list()
-	classic_keys = list()
-	name = "warcry"
-	full_name = "Warcry"
-	description = "Shout your species-specific warcry, motivate your allies, instill fear in your enemies."
-	keybind_signal = COMSIG_KB_CARBON_WARCRY
-
-/datum/keybinding/carbon/warcry/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/C = user.mob
-	C.warcry_macro()
-	return TRUE
-
-/datum/keybinding/carbon/medic
-	hotkey_keys = list()
-	classic_keys = list()
-	name = "medic"
-	full_name = "Medic"
-	description = "Call for aid from your allies."
-	keybind_signal = COMSIG_KB_CARBON_MEDIC
-
-/datum/keybinding/carbon/medic/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/C = user.mob
-	C.medic_macro()
 	return TRUE

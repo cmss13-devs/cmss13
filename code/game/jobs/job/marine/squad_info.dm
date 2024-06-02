@@ -17,7 +17,7 @@
 			update_squad_leader()
 	var/list/data = squad_info_data.Copy()
 	data["squad"] = name
-	data["squad_color"] = squad_colors[color]
+	data["squad_color"] = equipment_color
 	data["is_lead"] = get_leadership(user)
 	data["objective"] = list(
 		"primary" = primary_objective,
@@ -36,7 +36,7 @@
 				return fireteam
 	return FALSE
 
-/datum/squad/proc/get_marine_from_name(var/name)
+/datum/squad/proc/get_marine_from_name(name)
 	for(var/mob/living/carbon/human/marine in marines_list)
 		if(marine.name == name)
 			return marine
@@ -169,8 +169,8 @@
 					rank = "SG"
 				if(JOB_SQUAD_SPECIALIST)
 					rank = "Spc"
-				if(JOB_SQUAD_RTO)
-					rank = "RTO"
+				if(JOB_SQUAD_TEAM_LEADER)
+					rank = "TL"
 				if(JOB_SQUAD_LEADER)
 					rank = "SL"
 				else
@@ -246,8 +246,8 @@
 						rank = "SG"
 					if(JOB_SQUAD_SPECIALIST)
 						rank = "Spc"
-					if(JOB_SQUAD_RTO)
-						rank = "RTO"
+					if(JOB_SQUAD_TEAM_LEADER)
+						rank = "TL"
 					if(JOB_SQUAD_LEADER)
 						rank = "SL"
 					else
@@ -293,8 +293,8 @@
 						rank = "SG"
 					if(JOB_SQUAD_SPECIALIST)
 						rank = "Spc"
-					if(JOB_SQUAD_RTO)
-						rank = "RTO"
+					if(JOB_SQUAD_TEAM_LEADER)
+						rank = "TL"
 					if(JOB_SQUAD_LEADER)
 						rank = "SL"
 					else

@@ -24,14 +24,13 @@
 
 /datum/tech/repeatable/req_points/on_unlock()
 	. = ..()
-	supply_controller.points += points_to_give * get_tech_scaling_value()
+	GLOB.supply_controller.points += points_to_give * get_tech_scaling_value()
 
 /datum/tech/repeatable/dropship_points
 	name = "Dropship Budget Increase"
 	icon_state = "budget_ds"
 	desc = "Distributes resources to the dropship fabricator."
 
-	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 	announce_message = "Additional dropship part fabricator points have been authorised for this operation."
 
 	required_points = 12
@@ -44,4 +43,4 @@
 
 /datum/tech/repeatable/dropship_points/on_unlock()
 	. = ..()
-	supply_controller.dropship_points += points_to_give
+	GLOB.supply_controller.dropship_points += points_to_give

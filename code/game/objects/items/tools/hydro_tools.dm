@@ -31,24 +31,19 @@
 
 /obj/item/tool/plantspray/pests/old
 	name = "bottle of pestkiller"
-	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "bottle16"
 
 /obj/item/tool/plantspray/pests/old/carbaryl
 	name = "bottle of carbaryl"
-	icon_state = "bottle16"
 	toxicity = 4
 	pest_kill_str = 2
 
 /obj/item/tool/plantspray/pests/old/lindane
 	name = "bottle of lindane"
-	icon_state = "bottle18"
 	toxicity = 6
 	pest_kill_str = 4
 
 /obj/item/tool/plantspray/pests/old/phosmet
 	name = "bottle of phosmet"
-	icon_state = "bottle15"
 	toxicity = 8
 	pest_kill_str = 7
 
@@ -57,25 +52,21 @@
 /obj/item/tool/weedkiller
 	name = "bottle of weedkiller"
 	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "bottle16"
 	var/toxicity = 0
 	var/weed_kill_str = 0
 
 /obj/item/tool/weedkiller/triclopyr
 	name = "bottle of glyphosate"
-	icon_state = "bottle16"
 	toxicity = 4
 	weed_kill_str = 2
 
 /obj/item/tool/weedkiller/lindane
 	name = "bottle of triclopyr"
-	icon_state = "bottle18"
 	toxicity = 6
 	weed_kill_str = 4
 
 /obj/item/tool/weedkiller/D24
 	name = "bottle of 2,4-D"
-	icon_state = "bottle15"
 	toxicity = 8
 	weed_kill_str = 7
 
@@ -90,8 +81,8 @@
 	item_state = "hoe"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOBLUDGEON
-	force = 5.0
-	throwforce = 7.0
+	force = 5
+	throwforce = 7
 	w_class = SIZE_SMALL
 	matter = list("metal" = 50)
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
@@ -108,13 +99,13 @@
 	flags_atom = FPRINT|CONDUCT
 	force = MELEE_FORCE_NORMAL
 	w_class = SIZE_SMALL
-	throwforce = 20.0
+	throwforce = 20
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 4
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	matter = list("metal" = 15000)
-	
+
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("chopped", "torn", "cut")
 
@@ -124,15 +115,15 @@
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "scythe"
-	force = 13.0
-	throwforce = 5.0
+	force = 13
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 3
 	w_class = SIZE_LARGE
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOSHIELD
 	flags_equip_slot = SLOT_BACK
-	
+
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 
 /obj/item/tool/scythe/afterattack(atom/A, mob/user as mob, proximity)

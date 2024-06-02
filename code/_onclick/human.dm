@@ -11,7 +11,7 @@
 #define HANDLE_CLICK_HANDLED 1
 
 
-/mob/living/carbon/human/click(var/atom/A, var/list/mods)
+/mob/living/carbon/human/click(atom/A, list/mods)
 	if(mods["shift"] && !mods["middle"])
 		if(selected_ability && client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
 			selected_ability.use_ability(A)
@@ -34,7 +34,7 @@
 
 	return ..()
 
-/mob/living/carbon/human/RestrainedClickOn(var/atom/A) //chewing your handcuffs
+/mob/living/carbon/human/RestrainedClickOn(atom/A) //chewing your handcuffs
 	if (A != src) return ..()
 	var/mob/living/carbon/human/H = A
 
@@ -62,9 +62,9 @@
 
 	last_chew = world.time
 
-/mob/living/carbon/human/UnarmedAttack(var/atom/A, var/proximity, click_parameters)
+/mob/living/carbon/human/UnarmedAttack(atom/A, proximity, click_parameters)
 
-	if(lying) //No attacks while laying down
+	if(body_position == LYING_DOWN) //No attacks while laying down
 		return 0
 
 	var/obj/item/clothing/gloves/G = gloves // not typecast specifically enough in defines
@@ -88,18 +88,18 @@
 /atom/proc/attack_hand(mob/user)
 	return
 
-/mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/user)
+/mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/living/user)
 	if(user != src)
 		return . = ..()
 
-	if(isXeno(dropping))
-		var/mob/living/carbon/Xenomorph/xeno = dropping
+	if(isxeno(dropping))
+		var/mob/living/carbon/xenomorph/xeno = dropping
 		if(xeno.back)
 			var/obj/item/back_item = xeno.back
 			if(xeno.stat != DEAD) // If the Xeno is alive, fight back
 				var/mob/living/carbon/carbon_user = user
 				if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
-					user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
+					carbon_user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
 					playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
 					user.visible_message(SPAN_WARNING("\The [user] tried to unstrap \the [back_item] from [xeno] but instead gets a tail swipe to the head!"))
 					return
@@ -108,7 +108,7 @@
 				return
 			user.visible_message(SPAN_NOTICE("\The [user] starts unstrapping \the [back_item] from [xeno]"), \
 			SPAN_NOTICE("You start unstrapping \the [back_item] from [xeno]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
-			if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, xeno, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+			if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_CQC), INTERRUPT_ALL, BUSY_ICON_GENERIC, xeno, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				to_chat(user, SPAN_WARNING("You were interrupted!"))
 				return
 
@@ -152,7 +152,5 @@
 
 	target.Move(user.loc, get_dir(target.loc, user.loc))
 	target.update_transform(TRUE)
-
-	target.update_canmove()
 
 

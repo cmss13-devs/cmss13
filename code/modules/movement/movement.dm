@@ -92,12 +92,12 @@
 
 /atom/movable/proc/Moved(atom/oldloc, direction, Forced = FALSE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, oldloc, direction, Forced)
-	if (isturf(loc))
-		if (opacity)
-			oldloc.UpdateAffectingLights()
-		else
-			if (light)
-				light.changed()
+	for(var/datum/dynamic_light_source/light as anything in hybrid_light_sources)
+		light.source_atom.update_light()
+		if(!isturf(loc))
+			light.find_containing_atom()
+	for(var/datum/static_light_source/L as anything in static_light_sources) // Cycle through the light sources on this atom and tell them to update.
+		L.source_atom.static_update_light()
 	return TRUE
 
 /atom/movable/proc/forceMove(atom/destination)
@@ -127,18 +127,18 @@
 		if(!same_loc)
 			if(oldloc)
 				oldloc.Exited(src, destination)
-				if(old_area && old_area != destarea)
+				if(old_area && (old_area != destarea || !isturf(destination)))
 					old_area.Exited(src, destination)
 			for(var/atom/movable/AM in oldloc)
 				AM.Uncrossed(src)
-// var/turf/oldturf = get_turf(oldloc)  // TODO: maploader
-// var/turf/destturf = get_turf(destination)
-// var/old_z = (oldturf ? oldturf.z : null)
-// var/dest_z = (destturf ? destturf.z : null)
-// if(old_z != dest_z)
-// onTransitZ(old_z, dest_z)
+			var/turf/oldturf = get_turf(oldloc)  // TODO: maploader
+			var/turf/destturf = get_turf(destination)
+			var/old_z = (oldturf ? oldturf.z : null)
+			var/dest_z = (destturf ? destturf.z : null)
+			if(old_z != dest_z)
+				onTransitZ(old_z, dest_z)
 			destination.Entered(src, oldloc)
-			if(destarea && old_area != destarea)
+			if(destarea && (old_area != destarea || !isturf(oldloc)))
 				destarea.Entered(src, oldloc)
 
 			for(var/atom/movable/AM in destination)

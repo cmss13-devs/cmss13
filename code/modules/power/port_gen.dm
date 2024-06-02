@@ -8,7 +8,7 @@
 	icon = 'generator.dmi'
 	icon_state = "off"
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 	directwired = 0
 	var/t_status = 0
 	var/t_per = 5000
@@ -33,7 +33,7 @@ tank [un]loading stuff
 turn on/off
 
 /obj/structure/machinery/power/port_gen/get_examine_text(mob/user)
-display round(lastgen) and phorontank amount
+display floor(lastgen) and phorontank amount
 
 */
 
@@ -47,7 +47,7 @@ display round(lastgen) and phorontank amount
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "portgen0"
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 // directwired = 0
 	use_power = USE_POWER_NONE
 	unslashable = FALSE
@@ -102,6 +102,30 @@ display round(lastgen) and phorontank amount
 	else
 		. += SPAN_NOTICE("The generator is off.")
 
+/obj/structure/machinery/power/port_gen/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+	if(!active && !anchored)
+		return ..()
+
+	if(attacking_xeno.mob_size < MOB_SIZE_XENO)
+		to_chat(attacking_xeno, SPAN_XENOWARNING("You're too small to do any significant damage to affect this!"))
+		return XENO_NO_DELAY_ACTION
+
+	attacking_xeno.animation_attack_on(src)
+	attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
+	playsound(attacking_xeno, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
+
+	if(active)
+		active = FALSE
+		stop_processing()
+		icon_state = initial(icon_state)
+		visible_message(SPAN_NOTICE("[src] sputters to a stop!"))
+		return XENO_NONCOMBAT_ACTION
+
+	if(anchored)
+		anchored = FALSE
+		visible_message(SPAN_NOTICE("[src]'s bolts are dislodged!"))
+		return XENO_NONCOMBAT_ACTION
+
 //A power generator that runs on solid plasma sheets.
 /obj/structure/machinery/power/port_gen/pacman
 	name = "P.A.C.M.A.N.-type Portable Generator"
@@ -144,8 +168,8 @@ display round(lastgen) and phorontank amount
 			temp_rating += SP.rating
 	for(var/obj/item/CP in component_parts)
 		temp_reliability += CP.reliability
-	reliability = min(round(temp_reliability / 4), 100)
-	power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
+	reliability = min(floor(temp_reliability / 4), 100)
+	power_gen = floor(initial(power_gen) * (max(2, temp_rating) / 2))
 
 /obj/structure/machinery/power/port_gen/pacman/get_examine_text(mob/user)
 	. = ..()
@@ -172,8 +196,8 @@ display round(lastgen) and phorontank amount
 	var/temp = min(needed_sheets, sheet_left)
 	needed_sheets -= temp
 	sheet_left -= temp
-	sheets -= round(needed_sheets)
-	needed_sheets -= round(needed_sheets)
+	sheets -= floor(needed_sheets)
+	needed_sheets -= floor(needed_sheets)
 	if (sheet_left <= 0 && sheets > 0)
 		sheet_left = 1 - needed_sheets
 		sheets--
@@ -207,7 +231,7 @@ display round(lastgen) and phorontank amount
 /obj/structure/machinery/power/port_gen/pacman/proc/overheat()
 	explosion(src.loc, 2, 5, 2, -1)
 
-/obj/structure/machinery/power/port_gen/pacman/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/power/port_gen/pacman/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, sheet_path))
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)
@@ -240,7 +264,7 @@ display round(lastgen) and phorontank amount
 				to_chat(user, SPAN_NOTICE(" You open the access panel."))
 			else
 				to_chat(user, SPAN_NOTICE(" You close the access panel."))
-		else if(istype(O, /obj/item/tool/crowbar) && open)
+		else if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) && open)
 			var/obj/structure/machinery/constructable_frame/new_frame = new /obj/structure/machinery/constructable_frame(src.loc)
 			for(var/obj/item/I in component_parts)
 				if(I.reliability < 100)
@@ -328,7 +352,7 @@ display round(lastgen) and phorontank amount
 			close_browser(usr, "port_gen")
 			usr.unset_interaction()
 
-/obj/structure/machinery/power/port_gen/pacman/inoperable(var/additional_flags)
+/obj/structure/machinery/power/port_gen/pacman/inoperable(additional_flags)
 	return (stat & (BROKEN|additional_flags)) //Removes NOPOWER check since its a goddam generator and doesn't need power
 
 /obj/structure/machinery/power/port_gen/pacman/super

@@ -31,6 +31,11 @@
 		hub.com = src
 		hub.setDir(dir)
 
+/obj/structure/machinery/computer/teleporter/Destroy()
+	QDEL_NULL(locked)
+	. = ..()
+
+
 /obj/structure/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/card/data/))
 		var/obj/item/card/data/C = I
@@ -93,7 +98,7 @@
 		var/turf/T = get_turf(R)
 		if (!T)
 			continue
-		if(is_admin_level(T.z))
+		if(should_block_game_interaction(T))
 			continue
 		var/tmpname = T.loc.name
 		if(areaindex[tmpname])
@@ -113,7 +118,7 @@
 					continue
 			var/turf/T = get_turf(M)
 			if(T) continue
-			if(is_admin_level(T.z)) continue
+			if(should_block_game_interaction(T)) continue
 			var/tmpname = M.real_name
 			if(areaindex[tmpname])
 				tmpname = "[tmpname] ([++areaindex[tmpname]])"
@@ -157,7 +162,7 @@
 	name = "teleport"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	density = TRUE
-	anchored = 1.0
+	anchored = TRUE
 	var/lockeddown = 0
 
 
@@ -176,6 +181,11 @@
 	. = ..()
 	underlays.Cut()
 	underlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "tele-wires")
+
+/obj/structure/machinery/teleport/hub/Destroy()
+	QDEL_NULL(com)
+	. = ..()
+
 
 /obj/structure/machinery/teleport/hub/Collided(atom/movable/AM)
 	spawn()
@@ -313,7 +323,11 @@
 	overlays.Cut()
 	overlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "controller-wires")
 
-/obj/structure/machinery/teleport/station/attackby(var/obj/item/W)
+/obj/structure/machinery/teleport/station/Destroy()
+	QDEL_NULL(com)
+	. = ..()
+
+/obj/structure/machinery/teleport/station/attackby(obj/item/W)
 	src.attack_hand()
 
 /obj/structure/machinery/teleport/station/attack_remote()
@@ -388,8 +402,8 @@
 	name = "laser"
 	desc = "IT BURNS!!!"
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
-	var/damage = 0.0
-	var/range = 10.0
+	var/damage = 0
+	var/range = 10
 
 
 /obj/effect/laser/Collide(atom/A)

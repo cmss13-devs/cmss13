@@ -12,16 +12,20 @@
  * Crayon Box
  * Cigarette Box
  * Cigar Box
+ * Match Box
+ * Vial Box
  */
 
 /obj/item/storage/fancy
 	icon = 'icons/obj/items/food.dmi'
-	icon_state = "donutbox6"
+	icon_state = "donutbox"
 	name = "donut box"
+	desc = "A box where round, heavenly, holey pastries reside."
 	var/icon_type = "donut"
+	var/plural = "s"
 
 /obj/item/storage/fancy/update_icon()
-	icon_state = "[icon_type]box[contents.len]"
+	icon_state = "[icon_type]box[length(contents)]"
 
 /obj/item/storage/fancy/remove_from_storage(obj/item/W, atom/new_location)
 	. = ..()
@@ -31,23 +35,21 @@
 
 /obj/item/storage/fancy/get_examine_text(mob/user)
 	. = ..()
-	if(contents.len <= 0)
-		. += "There are no [src.icon_type]s left in the box."
-	else if(contents.len == 1)
+	if(!length(contents))
+		. += "There are no [src.icon_type][plural] left in the box."
+	else if(length(contents) == 1)
 		. += "There is one [src.icon_type] left in the box."
 	else
-		. += "There are [src.contents.len] [src.icon_type]s in the box."
+		. += "There are [length(src.contents)] [src.icon_type][plural] in the box."
 
-
-/*
- * Egg Box
- */
+// EGG BOX
 
 /obj/item/storage/fancy/egg_box
 	icon = 'icons/obj/items/food.dmi'
 	icon_state = "eggbox"
 	icon_type = "egg"
-	name = "egg box"
+	name = "egg carton"
+	desc = "A storage container filled with neatly-lined, egg-shaped holes."
 	storage_slots = 12
 	max_storage_space = 24
 	can_hold = list(/obj/item/reagent_container/food/snacks/egg)
@@ -57,9 +59,7 @@
 		new /obj/item/reagent_container/food/snacks/egg(src)
 	return
 
-/*
- * Candle Box
- */
+// CANDLE BOX
 
 /obj/item/storage/fancy/candle_box
 	name = "candle pack"
@@ -71,16 +71,14 @@
 	storage_slots = 5
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
-
+	can_hold = list(/obj/item/tool/candle)
 
 /obj/item/storage/fancy/candle_box/fill_preset_inventory()
 	for(var/i=1; i <= storage_slots; i++)
 		new /obj/item/tool/candle(src)
 	return
 
-/*
- * Crayon Box
- */
+// CRAYON BOX
 
 /obj/item/storage/fancy/crayons
 	name = "box of crayons"
@@ -91,6 +89,7 @@
 	storage_slots = 6
 	icon_type = "crayon"
 	can_hold = list(/obj/item/toy/crayon)
+	black_market_value = 25
 
 /obj/item/storage/fancy/crayons/fill_preset_inventory()
 	new /obj/item/toy/crayon/red(src)
@@ -104,11 +103,11 @@
 	overlays = list() //resets list
 	overlays += image('icons/obj/items/crayons.dmi',"crayonbox")
 	for(var/obj/item/toy/crayon/crayon in contents)
-		overlays += image('icons/obj/items/crayons.dmi',crayon.colourName)
+		overlays += image('icons/obj/items/crayons.dmi',crayon.colorName)
 
 /obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/toy/crayon))
-		switch(W:colourName)
+		switch(W:colorName)
 			if("mime")
 				to_chat(usr, "This crayon is too sad to be contained in this box.")
 				return
@@ -117,11 +116,13 @@
 				return
 	..()
 
-////////////
-//CIG PACK//
-////////////
+// CIGARETTES BOX
+
 /obj/item/storage/fancy/cigarettes
 	icon = 'icons/obj/items/cigarettes.dmi'
+	icon_state = "cigpacket"
+	name = "cigarette packet"
+	desc = "A packet of cigarettes with a built-in lighter compartment."
 	w_class = SIZE_TINY
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
@@ -131,7 +132,7 @@
 		/obj/item/clothing/mask/cigarette,
 		/obj/item/clothing/mask/cigarette/ucigarette,
 		/obj/item/clothing/mask/cigarette/bcigarette,
-		/obj/item/tool/lighter
+		/obj/item/tool/lighter,
 	)
 	icon_type = "cigarette"
 	var/default_cig_type=/obj/item/clothing/mask/cigarette
@@ -147,14 +148,14 @@
 	icon_state = "[initial(icon_state)]"
 
 /obj/item/storage/fancy/cigarettes/update_icon()
-	icon_state = "[initial(icon_state)][contents.len]"
+	icon_state = "[initial(icon_state)][length(contents)]"
 	return
 
 /obj/item/storage/fancy/cigarettes/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M, /mob))
 		return
 
-	if(M == user && user.zone_selected == "mouth" && contents.len > 0 && !user.wear_mask)
+	if(M == user && user.zone_selected == "mouth" && length(contents) > 0 && !user.wear_mask)
 		var/obj/item/clothing/mask/cigarette/C = locate() in src
 		if(C)
 			remove_from_storage(C, get_turf(user))
@@ -217,9 +218,47 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 	storage_slots = 4
 
+/obj/item/storage/fancy/cigarettes/trading_card
+	name = "\improper WeyYu Gold Military Trading Card packet"
+	desc = "Gotta collect 'em all, and smoke 'em all! This fancy military trading card version of Weyland Yutani Gold cigarette packs has one card that is apart of the 3 available 5-card sets."
+	icon_state = "collectpacket"
+	item_state = "collectpacket"
+	storage_slots = 21
+	can_hold = list(
+		/obj/item/clothing/mask/cigarette,
+		/obj/item/clothing/mask/cigarette/ucigarette,
+		/obj/item/clothing/mask/cigarette/bcigarette,
+		/obj/item/tool/lighter,
+		/obj/item/toy/trading_card,
+	)
+	var/obj/item/toy/trading_card/trading_card
+
+/obj/item/storage/fancy/cigarettes/trading_card/fill_preset_inventory()
+	flags_atom |= NOREACT
+	for(var/i = 1 to (storage_slots-1))
+		new default_cig_type(src)
+	trading_card = new(src)
+
+/obj/item/storage/fancy/cigarettes/trading_card/attack_hand(mob/user, mods)
+	if(trading_card?.loc == src && loc == user)
+		to_chat(user, SPAN_NOTICE("You pull a [trading_card.collection_color] trading card out of the cigarette pack."))
+		//have to take two disparate systems n' ram 'em together
+		remove_from_storage(trading_card, user.loc)
+		user.put_in_hands(trading_card)
+		trading_card = null
+
+	return ..()
+
+/obj/item/storage/fancy/cigarettes/trading_card/attackby(obj/item/attacked_by_item, mob/user)
+	if(istype(attacked_by_item, /obj/item/toy/trading_card))
+		trading_card = attacked_by_item
+
+	return ..()
+
 /////////////
 //CIGAR BOX//
 /////////////
+// CIGAR BOX
 
 /obj/item/storage/fancy/cigar
 	name = "cigar case"
@@ -233,6 +272,7 @@
 	storage_slots = 7
 	can_hold = list(/obj/item/clothing/mask/cigarette/cigar)
 	icon_type = "cigar"
+	black_market_value = 30
 	var/default_cigar_type = /obj/item/clothing/mask/cigarette/cigar
 
 /obj/item/storage/fancy/cigar/fill_preset_inventory()
@@ -246,14 +286,14 @@
 	icon_state = "[initial(icon_state)]"
 
 /obj/item/storage/fancy/cigar/update_icon()
-	icon_state = "[initial(icon_state)][contents.len]"
+	icon_state = "[initial(icon_state)][length(contents)]"
 	return
 
 /obj/item/storage/fancy/cigar/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M, /mob))
 		return
 
-	if(M == user && user.zone_selected == "mouth" && contents.len > 0 && !user.wear_mask)
+	if(M == user && user.zone_selected == "mouth" && length(contents) > 0 && !user.wear_mask)
 		var/obj/item/clothing/mask/cigarette/cigar/C = locate() in src
 		if(C)
 			remove_from_storage(C, get_turf(user))
@@ -279,6 +319,8 @@
 	storage_slots = 1
 	default_cigar_type = /obj/item/clothing/mask/cigarette/cigar/tarbacks
 
+// MATCH BOX
+
 /obj/item/storage/fancy/cigar/matchbook
 	name = "\improper Lucky Strikes matchbook"
 	desc = "A small book of cheap paper matches. Good luck getting them to light. Made by Lucky Strikes, but you'll be anything but lucky when you burn your hand trying to light a match on this."
@@ -291,6 +333,7 @@
 	w_class = SIZE_TINY
 	var/light_chance = 70 //how likely you are to light the match on the book
 	var/burn_chance = 20 //how likely you are to burn yourself once you light it
+	plural = "es"
 
 /obj/item/storage/fancy/cigar/matchbook/attackby(obj/item/tool/match/W as obj, mob/living/carbon/human/user as mob)
 	if(!istype(user))
@@ -299,7 +342,7 @@
 		if(istype(W) && !W.heat_source && !W.burnt)
 			if(prob(burn_chance))
 				to_chat(user, SPAN_WARNING("\The [W] lights, but you burn your hand in the process! Ouch!"))
-				user.apply_damage(3, BRUTE, pick("r_hand", "l_hand"))
+				user.apply_damage(3, BURN, pick("r_hand", "l_hand"))
 				if((user.pain.feels_pain) && prob(25))
 					user.emote("scream")
 				W.light_match()
@@ -333,15 +376,14 @@
 	light_chance = 60
 	burn_chance = 40
 
-/*
- * Vial Box
- */
+// VIAL BOX
 
 /obj/item/storage/fancy/vials
 	icon = 'icons/obj/items/vialbox.dmi'
 	icon_state = "vialbox0"
 	icon_type = "vial"
 	name = "vial storage box"
+	desc = "A place to store your fragile vials when you are not using them."
 	is_objective = TRUE
 	storage_slots = 6
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER
@@ -392,8 +434,8 @@
 	storage_slots = 6
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
-/obj/item/storage/lockbox/vials/update_icon(var/itemremoved = 0)
-	var/total_contents = src.contents.len - itemremoved
+/obj/item/storage/lockbox/vials/update_icon(itemremoved = 0)
+	var/total_contents = length(src.contents) - itemremoved
 	src.icon_state = "vialbox[total_contents]"
 	src.overlays.Cut()
 	if (!broken)
@@ -407,3 +449,73 @@
 /obj/item/storage/lockbox/vials/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	update_icon()
+
+// Trading Card Pack
+
+/obj/item/storage/fancy/trading_card
+	name = "pack of Red WeyYu Military Trading Cards"
+	desc = "A 5 pack of Red Weyland Yutani Military Trading Cards."
+	icon = 'icons/obj/items/playing_cards.dmi'
+	icon_state = "trading_red_pack_closed"
+	storage_slots = 5
+	icon_type = "trading card"
+	can_hold = list(/obj/item/toy/trading_card)
+	foldable = /obj/item/stack/sheet/cardboard
+	var/collection_color = null
+	var/obj/item/toy/trading_card/top_trading_card
+
+/obj/item/storage/fancy/trading_card/Initialize()
+	if(!collection_color)
+		collection_color = pick("red", "green", "blue") // because of vodoo shenanigans with fill_preset_inventory happening during parent's initalize this'll have to run prior to that
+
+	. = ..()
+
+	name = "pack of [capitalize(collection_color)] WeyYu Military Trading Cards"
+	desc = "A 5 pack of [capitalize(collection_color)] Weyland Yutani Military Trading Cards."
+	icon_state = "trading_[collection_color]_pack_closed"
+
+
+/obj/item/storage/fancy/trading_card/fill_preset_inventory()
+
+	for(var/i in 1 to storage_slots)
+		top_trading_card = new /obj/item/toy/trading_card(src)
+
+/obj/item/storage/fancy/trading_card/update_icon()
+	if(!(top_trading_card))
+		icon_state = "trading_[collection_color]_pack_empty"
+		return
+	if(length(contents) == storage_slots)
+		icon_state = "trading_[collection_color]_pack_closed"
+		return
+	icon_state = "trading_[collection_color]_pack_open"
+
+/obj/item/storage/fancy/trading_card/attack_hand(mob/user, mods)
+	if(top_trading_card?.loc == src && loc == user)
+		to_chat(user, SPAN_NOTICE("You pull a [top_trading_card.collection_color] trading card out of the pack."))
+		//have to take two disparate systems n' ram 'em together
+		remove_from_storage(top_trading_card, user.loc)
+		user.put_in_hands(top_trading_card)
+		if(!(length(contents)))
+			top_trading_card = null
+			update_icon()
+			return
+		top_trading_card = contents[(length(contents))]
+		update_icon()
+		return
+
+	return ..()
+
+/obj/item/storage/fancy/trading_card/attackby(obj/item/attacked_by_item, mob/user)
+	if(istype(attacked_by_item, /obj/item/toy/trading_card))
+		top_trading_card = attacked_by_item
+
+	return ..()
+
+/obj/item/storage/fancy/trading_card/red
+	collection_color = "red"
+
+/obj/item/storage/fancy/trading_card/green
+	collection_color = "green"
+
+/obj/item/storage/fancy/trading_card/blue
+	collection_color = "blue"

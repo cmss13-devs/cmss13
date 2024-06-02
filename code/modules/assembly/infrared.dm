@@ -137,7 +137,7 @@
 
 /obj/item/device/assembly/infra/Topic(href, href_list)
 	..()
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
+	if(usr.is_mob_incapacitated() || !in_range(loc, usr))
 		close_browser(usr, "infra")
 		return
 
@@ -180,9 +180,9 @@
 	var/obj/effect/beam/i_beam/next = null
 	var/obj/item/device/assembly/infra/master = null
 	var/limit = null
-	var/visible = 0.0
+	var/visible = 0
 	var/left = null
-	anchored = 1.0
+	anchored = TRUE
 	flags_atom = NOINTERACT
 
 /obj/effect/beam/i_beam/proc/hit()

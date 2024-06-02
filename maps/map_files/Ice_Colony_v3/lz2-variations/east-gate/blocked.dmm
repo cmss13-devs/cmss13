@@ -16,7 +16,7 @@
 	},
 /area/shiva/exterior/lz2_fortress)
 "f" = (
-/obj/item/weapon/gun/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
 "g" = (

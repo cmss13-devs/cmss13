@@ -40,7 +40,7 @@
 	corpse = /obj/effect/landmark/corpsespawner/russian/ranged
 	weapon1 = /obj/item/weapon/gun/pistol
 	ranged = 1
-	projectiletype = /obj/item/projectile
+	projectiletype = /obj/projectile
 	projectilesound = 'sound/weapons/Gunshot.ogg'
 	casingtype = null
 
@@ -84,7 +84,7 @@
 /mob/living/simple_animal/hostile/UPP/ranged
 	//weapon1 = /obj/item/weapon/gun/projectile/mateba
 	ranged = 1
-	projectiletype = /obj/item/projectile
+	projectiletype = /obj/projectile
 	projectilesound = 'sound/weapons/Gunshot.ogg'
 	casingtype = null
 

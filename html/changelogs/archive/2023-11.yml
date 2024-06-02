@@ -1,0 +1,425 @@
+2023-11-01:
+  HeresKozmos:
+  - rscadd: added flashlight, donk pocket box, interview table, folder, taperecorder,
+      ink toner, extra lights and expanded the size of the CC's room.
+2023-11-02:
+  Huffie56:
+  - refactor: Refactor gun cabinet code adding subtype for all the secure guncabinet.
+  - refactor: Refactor safe code adding subtype for cl and co safes also add a subtype
+      for armory honor guard closet .
+  cuberound:
+  - balance: LZ detector now works even when the DS is stationary
+  harryob:
+  - qol: you can now click drag from items in your storage to your hands
+  private-tristan:
+  - balance: predators are no longer immune to molecular acid injected from spitter
+      and boiler tailstabs
+2023-11-03:
+  harryob:
+  - ui: the options button is now part of the statbrowser tabs proper
+2023-11-04:
+  BeagleGaming1:
+  - rscadd: Added many new loadout items
+  - code_imp: Added a signal to items that triggers right after the mob finishes spawning
+  - code_imp: Added a signal to add additional behavior to storing items in shoes
+  Blundir:
+  - rscadd: added intel and foxtrot squad berets and headband
+  TheGamerdk:
+  - bugfix: Restores the MK1 AP mags in the CIC armory
+  fira:
+  - bugfix: M56D/M2C should now properly stop firing when they stop being used.
+  realforest2001:
+  - code_imp: Repathed sword weapons to a uniform /obj/item/weapon/sword
+  - balance: All sword-type weapons are now Large items instead of Normal sized, to
+      match machetes.
+  - rscadd: Added the KN5500 PDA for Working Joes. Sprites by Frans_Feiffer.
+  - rscadd: Changed the plain glass in Working Joe presets to Reinforced Glass.
+  sleepynecrons:
+  - imagedel: shrinks the type-19 SMG stick magazine to a more reasonable size
+2023-11-05:
+  fira:
+  - bugfix: Fixed recyclers (including Whiskey Outposts') and added the possibility
+      to recycle crates with them.
+  - bugfix: Standardized "vend to table" functionality of vendors, enabling it to
+      work for Whiskey Outpost's Reqs.
+  - rscadd: Whiskey Outpost vendors now contain the same items as Almayer's. WO still
+      has spare specialist ammo on top of that.
+  - rscadd: Readded delivery chute, wrap and tagger to Whiskey Outpost Reqs, letting
+      you pack and send crates and items via disposals again.
+  - balance: Whiskey Outpost supply drops should now be more interesting and impactful.
+  - rscadd: Added missing Synth vendors on WO.
+2023-11-07:
+  567Turtle:
+  - soundadd: New whistle sound effect
+  Alexguinea:
+  - rscadd: Added toners to the rec vendor
+  AndroBetel:
+  - spellcheck: Fixed a typo in RO rules sign.
+  - spellcheck: RO mention is no more, replaced with QM.
+  BeagleGaming1:
+  - code_imp: Tents now hold the datum directly, instead of the typepath
+  - admin: Added a proc for staff to change tent dmm's
+  Blundir:
+  - rscadd: added shotgun tube toggle hotkey
+  Doubleumc:
+  - bugfix: vehicle interiors can hear exterior noises
+  Drathek:
+  - bugfix: Fixed various job's entry messages having broken links to the wiki
+  Firartix and Frans_Feiffer:
+  - rscadd: Readded Halloween pumpkin helmets.
+  IowaPotatoFarmer:
+  - rscadd: Added new survivor presets for New Varadero to make them more visually
+      distinct and unique to the map.
+  - rscdel: Removed the ability to build ground structures or anchor wall girders
+      on top of xeno tunnels.
+  - bugfix: Fixed wall girders being anchorable on shuttle tiles.
+  Morrow, Zonespace:
+  - rscadd: Added objectives to hijack. You now must hold different sections of the
+      ship to successfully launch lifeboats or pods
+  - rscadd: The areas that contribute to hijack objectives are the lifeboat pumps,
+      astronav, and engineering
+  - rscadd: Fuel pumps now have red alert sentries
+  - rscadd: Corporate liaison evac shuttle now can be launched at any time even if
+      evac has not been called
+  - rscadd: You can now self-destruct the ship by overloading the fusion generators
+      in engineering once lifeboat fuel is at 100%.
+  - rscdel: Removed auto launch of lifeboats and pods
+  - code_imp: Refactored EvacuationAuthority into SShijack
+  Releasethesea:
+  - balance: Makes it so that Pill packets fit in helmets
+  SpartanBobby:
+  - maptweak: Alot of changes to big reds admin area, including new windows, prop
+      placement, room detailing, new doors
+  Steelpoint:
+  - rscadd: Corpsman can chose to optionally vend a set of armoured sterile gloves
+      as a alternative to regular gloves. They provide full glove protection, but
+      are otherwise an aesthetic choice.
+  TopHatPenguin:
+  - rscadd: Adds a mostly built communications office nightmare insert to Kutjevo
+      which attaches onto the sensor tower.
+  - rscadd: Re-adds the Kutjevo blackbox.
+  Xander3359:
+  - bugfix: Fixes being able to create ghost tanks from a Broiler-T unit.
+  blackdragonTOW:
+  - imageadd: Changed nanotrasen cashcard icon to W-Y
+  fira:
+  - rscdel: Removed unused magnet and mass driver legacy SS13 machinery.
+  - bugfix: Fixed being able to put anything in your boots. You're not wizards!
+  - admin: Added better logging for orbital bombardment.
+  realforest2001:
+  - rscadd: Added a big line to Nightmare survivor spawns that indicates hostility.
+2023-11-08:
+  BeagleGaming1:
+  - rscadd: Added CBRN ERT with new CBRN MOPP equipment. (Sprites by DrMacCool and
+      Esselnek, names and descriptions by TopHatPenguin and Kaga)
+  - rscadd: ERT Squads (Marine Raider and new CBRN) get assigned to their squad even
+      if spawned as an ERT, and do not automatically unlock it for overwatch
+  - balance: Tool Webbing can now only hold tools, instead of just being a better
+      webbing
+  - spellcheck: Corrected spelling of "Intercepted Transmission" for ERTs
+  - bugfix: USCM faction squads that are not default marine squads should no longer
+      cause a crew manifest runtime
+  Birdtalon:
+  - rscadd: Xeno tacmap icons for hive core and clusters.
+  Drathek:
+  - bugfix: Fix the ColMarTechAutomated Munition Vendor in req not vending to the
+      table.
+  - bugfix: Fix the first use of a USCM equipment preset (such as cryo marines) not
+      properly loading rank and other values
+  QuickLode:
+  - rscadd: adds another Colony Synthetic variant, changes up some existing ones(trucker,CMB)
+  - bugfix: fixes a small problem with WY-Colony Synthetic access(thx forest), adds
+      WY subtype of Synthetics for admin building/faxes
+  - bugfix: fixes problems with organic spawning ferret industries Trucker Synthetic
+  Releasethesea:
+  - rscadd: Makes it so cigars fit in helmets.
+  Skye.:
+  - maptweak: Tweaks a Cabinet in the SW mines of Solaris Ridge
+  - bugfix: On account of it being propped up on the floor like a cardboard cutout.
+  fira:
+  - bugfix: Spawned bottles now use all 4 of their sprites as intended rather than
+      always the same.
+  zzzmike:
+  - spellcheck: fixed a typo
+2023-11-09:
+  fira:
+  - bugfix: Fixed incorrect signals causing malfunctions in tgui_say for ASAY and
+      MentorSay channel hotkeys.
+  - admin: VV "Update Transform" will now properly compound with other sources of
+      transform (eg. lying down)
+  - bugfix: Density effects should now properly update when stacked and unstacked.
+  - rscadd: You can now use package wrap to change standard crates visuals.
+  - rscadd: You can now label crate with package wrap, which will also be shown during
+      overwatch supply drop alert.
+  - mapadd: Added more packaging wrap to Requisitions.
+2023-11-10:
+  Drathek:
+  - bugfix: Fixed fax template images in CDN mode
+  - bugfix: Fixed imaginary friend merge ability preventing hearing if ghost ears
+      are set to only nearby.
+  - bugfix: Fixed imaginary friend hide ability not updating its icons.
+  MorrowWolf:
+  - bugfix: Fixed Pumpkins appearing past season.
+  MrDas:
+  - bugfix: You can no longer see through solid rear drop ship doors.
+  - code_imp: Moved filler turf logic from almayer airlocks to its parent door.
+  SpartanBobby:
+  - maptweak: fixes conflicting tiles on USS Almayer squad bunks
+  - maptweak: updates multiple bedrooms and closet area detailing
+2023-11-11:
+  QuickLode:
+  - rscadd: SUPERLIGHT armor category.
+  - balance: M4 Synthetic Armor slows by 10% to justify having 1 extra storage slot.
+  - spellcheck: Clarifies M4 Synthetic Armor description that it does not have any
+      armor whatsoever.
+2023-11-12:
+  SpartanBobby Tophatpenguin:
+  - maptweak: redetails a room on the upper deck of the USS Almayer, places a few
+      L42As in this room
+2023-11-14:
+  BeagleGaming1:
+  - rscdel: Removes icon baking on surfaces (primarily seen on tables)
+  Birdtalon:
+  - bugfix: Boiler acid shroud now works on hotkey 5
+  - code_imp: Replaces single letter vars and removes unused code for boiler.
+  - code_imp: Replaces burrow var from Xenomorph with burrowed trait
+  - code_imp: Starts refactoring some vars on xenomorph class
+  - rscadd: Observer with Security HUD enabled can examine and read security records.
+  - rscadd: Toggle HUD button to ghost UI
+  BraveMole, Zonespace:
+  - bugfix: Guns should no longer very rarely jam mid-burst.
+  Ediblebomb:
+  - qol: Changed "Subject is brain-dead." to "Subject has taken extreme amounts of
+      brain damage." when scanning somebody with 100 brain damage.
+  Releasethesea:
+  - bugfix: Fixxed the improperly area'd hull south of construction site, adds fire
+      shutters to north fueling pod to make it mirror the south one
+  - rscadd: Adds Colonial Space Grunts to rec vend aswell as several pens and Dice
+      for playing the game.
+  - rscadd: Adds functional bedrolls to the game.
+  SpartanBobby:
+  - maptweak: fixes broken sidewalk on bigred
+  Steelpoint:
+  - rscadd: Less powerful variants of the Commando ERTs (Marsoc, WY Whiteout, UPP
+      Commandos) have been added for admin use.
+  - admin: The powerful versions of commando ERTs are denoted with (!DEATHSQUAD!)
+      in the distress call and equipment preset menus.
+  fira:
+  - bugfix: Fixed ghost droppods appearing when launching crates by Echo pad.
+  - bugfix: Fixed an issue in traits backend update causing among others leadership
+      action buttons to be missing.
+2023-11-15:
+  Birdtalon:
+  - code_imp: Replaced single letter vars in runner code.
+2023-11-16:
+  fira:
+  - bugfix: Rooting effects should now properly update when stacked and unstacked.
+2023-11-17:
+  Birdtalon:
+  - bugfix: Lurker can no longer tail jab through doors/structures.
+  - code_imp: Var disambiguation, cleanup and removal of redundant typechecks in lurker
+      code.
+  - bugfix: Adds missing newline when viewing sec records as observer.
+  - bugfix: Fixes posters in CL office displaying IO description.
+  - code_imp: Replaces single letter var in hivelord code
+  - code_imp: Replaces single letter vars in ravager code
+  - code_imp: Refactors vending machine global scope procs
+  Doubleumc:
+  - rscadd: vehicles can be followed by ghosts
+  SpartanBobby, GDS Pathe:
+  - maptweak: Updates bigred floortiles
+  - maptweak: Re-adds reactor to bigred
+  Steelpoint:
+  - maptweak: LV-624's Caves have had an aesthetic change regarding jungle tiles and
+      flora.
+  casperr04:
+  - bugfix: Removes the ability to fulton bodies that can still be revived
+  fira:
+  - admin: VV 'Modify Transform' can now be used to flip objects.
+  - bugfix: Horizontal Almayer walls no longer change icon randomly, and now properly
+      display damage overlays.
+  realforest2001:
+  - rscadd: Faxes sent from HighCom fax machines now appear in their correct category.
+  sleepynecrons:
+  - imageadd: fixes biosuit body sprite not properly covering mobs
+2023-11-18:
+  Cthulhu80, Drathek:
+  - rscadd: Adds drawing to tactical maps, viewable via stat panel for marines and
+      xeno tacmap for xenos.
+  - bugfix: Corrupted (and other hives) now have separate tactical maps.
+  fira:
+  - admin: Moderators are now immune to inactivity kick, much like Admins.
+  - bugfix: Fixed the tank driving through vehicle blockers and accessing "deep" parts
+      of the map it wasn't intended to push.
+  - bugfix: Tentatively fixed some visual bugs with turret based vehicles.
+  - bugfix: Fixed using the tank coupon as first vehicle spawn causing Gear Vendor
+      to still give out APC gear.
+  - admin: Added an APC coupon in same vein as Tank Coupon for Admins to use.
+  - admin: Tank/APC Coupons now spawn broken down versions of the vehicles, for the
+      full VC experience. You want a ready to use one, just spawn it.
+  - admin: Tank/APC coupons do not spawn VC pamphlets in ASRS anymore.
+  - admin: Added a vehicle_flag for tanks to bypass blockers (in a legit fashion this
+      time). Abuse at your discretion.
+  ihatethisengine:
+  - rscadd: Cloaked lurker devouring now shows a message to target again.
+2023-11-20:
+  Zonespace27:
+  - bugfix: Jump-to-area verb will now warn you if there aren't any turfs in the given
+      area.
+2023-11-21:
+  hislittlecuzingames:
+  - code_imp: Added ability to have looping sounds from further away
+2023-11-22:
+  AnturK:
+  - server: the server now supports auto-profiling
+  Birdtalon:
+  - code_imp: Removes some istype(src)
+  Morrow:
+  - rscadd: Mess tech positions now scale from 1 to 2 after 70 marines are in the
+      game
+  hislittlecuzingames:
+  - rscadd: Launch Announcement Alarm for dropships to notify ground forces of departure.
+2023-11-23:
+  Birdtalon:
+  - rscdel: Lesser drones die upon ghosting and are not offered to observers.
+  - rscadd: Explosion handling logic to experimental sensor tower.
+  - bugfix: Explosions no longer delete experimental sensor tower.
+  - bugfix: Pylons now differentiated in the input list with a (1) if in the same
+      area.
+  Drathek:
+  - bugfix: Resin doors will now close on dead mobs that are merged with weeds (currently
+      only human).
+  - bugfix: Resin doors will now restart their closing timer each open making the
+      delay to close consistent.
+  - code_imp: Added a TRAIT_MERGED_WITH_WEEDS that is set whenever the mob is currently
+      merged with weeds.
+  - bugfix: 'Fixed buried larva spawn grace period at start of round if there is a
+      queue: Now join as xeno when there''s a queue will only prevent buried larva
+      spawns if there is no core.'
+  - bugfix: 'Tweaked larva queue spawning: Now spawns as many larva as possible each
+      cycle rather than one.'
+  LC4492:
+  - maptweak: 'Changes to the CO office: The bathroom now faces into the CO''s bedroom,
+      and not to his main office. Victory cabinet have been moved to the Officer''s
+      mess because of logical issues. Extra-detail to the office, including an exclusive
+      stamp, table flags and others. The safe is now inside the CO''s bedroom, and
+      not in his office. The energy APC is now inside the CO''s bedroom, and not in
+      his office. Jones finally have a BED again, or something like that. Other minor
+      changes to objects, such the addition of a cane, a box of glasses for serving
+      guests, etc.'
+  QuickLode:
+  - rscadd: Damage to Synthetic's internal causes debuffs, eventual powercell failure.(death)
+  - bugfix: Synthetic's should no longer lose blood.
+  - code_imp: moves blood proc to human.dm from blood.dm with above changes.
+  SortieEnMer:
+  - qol: Match Unlock Time in Nuke Timelock Message with Nuke Techtree Description
+  Steelpoint:
+  - maptweak: Secure Storage on LV-624 has been broken open, making it far less defendable
+      but easier to access.
+  fira:
+  - bugfix: The Thunderdome floor is now explosion-proof.
+  - balance: Default Web Music Player volume is now 20% down from 50%. It was found
+      too effective against new players.
+  - admin: '"Play Internet Sound" is now "Play Admin Sound" and optionally allow to
+      hide the track name.'
+  - admin: '"Play Admin Sound" can now be used with uploaded tracks, which use CDN
+      delivery and the in-chat music player, granting players more control over them.'
+  - admin: Removed "Play Midi Sound".
+  ihatethisengine:
+  - balance: Oppressor no longer can abduct big xenos.
+  zzzmike:
+  - qol: ARES hijack announcement specifies that pods will not crash at 100% fuel
+  - qol: Location name standardization. So, North is now Starboard. This is already
+      how it is for everything except pumps.
+2023-11-25:
+  BadAtThisGame302:
+  - bugfix: fixed corporate supervisor burst corpse landmark
+  Birdtalon:
+  - bugfix: Fixes defender headbutt bug while fortified.
+  - bugfix: Lifeboats fire extinguisher runtime.
+  Doubleumc:
+  - imageadd: 2-wide dropship side doors
+  - maptweak: changed dropship side doors to a lone doublewide door
+  - qol: directions in trackers and messages are more accurate
+  HeresKozmos:
+  - bugfix: fixed a nonsensical window facing a solid rock wall
+  - rscadd: Added pizza and pizza cutter to Req
+  - rscdel: Deleted a random kepler crisps bag
+  - bugfix: deleted random raised edges from inside rock wall
+  Releasethesea:
+  - bugfix: fixes the XM43E1s name (previously named XM42B) and sprite, fixes the
+      M42C and XM43E1s barrel, correctly names several items relating to the XM43E1
+  SabreML:
+  - ui: Tweaked the colour of the 'Maintainer' category in staffwho.
+  ihatethisengine:
+  - rscadd: Locking down dropship's doors closes them before locking.
+  realforest2001:
+  - rscadd: Telephones now list the last attempted caller, above the DND button.
+2023-11-26:
+  Birdtalon:
+  - code_imp: Replaces single letter vars removes redundant abilitiesin warrior code.
+  - bugfix: Warriors can no longer behead caps if they start limb ripping before embryo
+      is inserted.
+  - code_imp: Refactors warrior limb proc to the warrior class.
+  Huffie56:
+  - rscadd: Added a new section to role squad vendors called binoculars except specialist.
+  - qol: moved NVG and medical hud into helmet optics section for SL and just NVG
+      for TL
+  Nanu308:
+  - rscdel: Removed the Pizza Cutter.
+2023-11-27:
+  Birdtalon:
+  - bugfix: "Fixes vendor sprites not updating icon when fully repaired\n/\U0001F191"
+  - bugfix: Fix lesser drone crash on getting gibbed.
+  Doubleumc:
+  - bugfix: CORSAT poddoors no longer have extra sprites overlaid on them
+  - maptweak: CORSAT LZs can be used by shuttles
+  HeresKozmos:
+  - rscadd: Added eight new tunnels to Sorokyne
+  - rscdel: Removed the original five tunnels on Sorokyne
+  SabreML:
+  - rscadd: Made the character preview in the character creation menu show the 'Preferred
+      Armor' setting.
+  - bugfix: Fixed 'Padded' armour being replaced by the user's armour style preference
+      when vended.
+  - qol: Made the squad prep attachments vendors vend items into the user's hands.
+  Zonespace27:
+  - bugfix: The Self Destruct timer in the status panel will now stop once SD has
+      gone off.
+  hislittlecuzingames:
+  - bugfix: Disables launch announcment alarm if it's sounding when queen hijacks
+2023-11-28:
+  Birdtalon:
+  - rscadd: Eggsac carrier can now place eggs on normal weeds to a maximum of 4 eggs.
+  - rscadd: Eggsac carrier eggs on normal weeds have an expiry date.
+  fira:
+  - code_imp: Ported basic /tg/ Status Backend.
+  - rscadd: Human transform changes such as lying down, knock down, buckling, are
+      now animated.
+  - bugfix: Some statuses will now take effect immediately instead of waiting for
+      a life tick, notably Resting.
+  - balance: Many interaction requirements were changed to eg. fail upon stuns rather
+      than if lying down.
+  stalkerino:
+  - rscadd: readds skull facepaint and skull balaclava (blue and black)
+2023-11-29:
+  realforest2001:
+  - rscdel: Whiskey Outpost no longer rolls pred rounds naturally.
+2023-11-30:
+  Birdtalon:
+  - code_imp: Refactiors xenomorph initialize & removes some duplicate proc calls
+  HeresKozmos:
+  - mapadd: added a new spring area to kutjevo's south caves
+  Huffie56:
+  - rscadd: Added a lot's of food boxes for that hold the basic ingredients for cooking.
+  - rscadd: Added a file to handle the fridges in almayer kitchen.
+  - rscadd: Added a vendor in the kitchen that sell boxes of ingredients.
+  - rscadd: Added a a food crate called surplus boxes ingredient containing random
+      boxes of ingredients.
+  - rscadd: Added a version of this crate that will be freely given via the ASR system.
+  SabreML:
+  - bugfix: Fixed a few space tiles under a window in Kutjevo Refinery.
+  harryob:
+  - bugfix: the health indicator in the tooltip and colorbox is still present when
+      a POI has 0 health
+  - bugfix: admins can refresh the orbit menu without runtimes

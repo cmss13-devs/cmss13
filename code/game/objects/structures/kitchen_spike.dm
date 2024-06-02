@@ -6,7 +6,7 @@
 	icon_state = "spike"
 	desc = "A spike for collecting meat from animals"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	var/meat = 0
 	var/occupied = 0
 	var/meattype = 0 // 0 - Nothing, 1 - Monkey, 2 - Xeno
@@ -16,7 +16,7 @@
 		return
 	to_chat(user, SPAN_DANGER("They are too big for the spike, try something smaller!"))
 
-// MouseDrop_T(var/atom/movable/C, mob/user)
+// MouseDrop_T(atom/movable/C, mob/user)
 // if(istype(C, /obj/mob/carbon/monkey)
 // else if(istype(C, /obj/mob/carbon/alien))
 // else if(istype(C, /obj/livestock/spesscarp

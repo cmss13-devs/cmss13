@@ -1,13 +1,12 @@
 /obj/structure/closet/secure_closet/warden
 	name = "Warden's Locker"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
-	icon_state = "wardensecure1"
-	icon_closed = "wardensecure"
-	icon_locked = "wardensecure1"
-	icon_opened = "wardensecureopen"
-	icon_broken = "wardensecurebroken"
-	icon_off = "wardensecureoff"
-
+	icon_state = "secure_locked_warden"
+	icon_closed = "secure_unlocked_warden"
+	icon_locked = "secure_locked_warden"
+	icon_opened = "secure_open_warden"
+	icon_broken = "secure_broken_warden"
+	icon_off = "secure_closed_warden"
 /obj/structure/closet/secure_closet/warden/Initialize()
 	. = ..()
 	if(prob(50))
@@ -23,7 +22,7 @@
 	new /obj/item/storage/box/flashbangs(src)
 	new /obj/item/storage/belt/security(src)
 	new /obj/item/reagent_container/spray/pepper(src)
-	new /obj/item/weapon/melee/baton/loaded(src)
+	new /obj/item/weapon/baton/loaded(src)
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/storage/box/holobadge(src)
 	new /obj/item/clothing/head/beret/sec/warden(src)
@@ -69,7 +68,7 @@
 	new /obj/item/device/flash(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/explosive/grenade/flashbang(src)
-	new /obj/item/weapon/melee/baton/loaded(src)
+	new /obj/item/weapon/baton/loaded(src)
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/clothing/glasses/sunglasses/sechud(src)
 	new /obj/item/device/hailer(src)
@@ -97,7 +96,7 @@
 	new /obj/item/device/flash(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/explosive/grenade/flashbang(src)
-	new /obj/item/weapon/melee/baton/loaded(src)
+	new /obj/item/weapon/baton/loaded(src)
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/clothing/glasses/sunglasses/sechud(src)
 	new /obj/item/device/hailer(src)
@@ -106,7 +105,7 @@
 	new /obj/item/clothing/head/ushanka(src)
 	new /obj/item/clothing/mask/rebreather/scarf(src)
 	new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(src)
-	new /obj/item/storage/belt/gun/type47/NY(src)
+	new /obj/item/storage/belt/gun/type47/t73(src)
 
 
 
@@ -183,7 +182,7 @@
 
 /obj/structure/closet/secure_closet/injection
 	name = "Lethal Injections"
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SENIOR)
 
 /obj/structure/closet/secure_closet/injection/Initialize()
 	. = ..()
@@ -196,6 +195,59 @@
 	anchored = TRUE
 	locked = TRUE
 	var/id = null
+
+/obj/structure/closet/secure_closet/brig/prisoner
+
+/obj/structure/closet/secure_closet/brig/prisoner/Initialize()
+	. = ..()
+	new /obj/item/clothing/under/color/orange(src)
+	new /obj/item/clothing/shoes/orange(src)
+	new /obj/item/device/radio/headset(src)
+
+/obj/structure/closet/secure_closet/brig/prison_uni
+	name = "Spare Prison Uniforms"
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	anchored = TRUE
+	locked = TRUE
+
+
+/obj/structure/closet/secure_closet/brig/prison_uni/Initialize()
+	. = ..()
+	new /obj/item/clothing/shoes/orange(src)
+	new /obj/item/clothing/shoes/orange(src)
+	new /obj/item/clothing/shoes/orange(src)
+	new /obj/item/clothing/shoes/orange(src)
+	new /obj/item/clothing/shoes/orange(src)
+	new /obj/item/clothing/under/color/orange(src)
+	new /obj/item/clothing/under/color/orange(src)
+	new /obj/item/clothing/under/color/orange(src)
+	new /obj/item/clothing/under/color/orange(src)
+	new /obj/item/clothing/under/color/orange(src)
+	new /obj/item/device/radio/headset(src)
+	new /obj/item/device/radio/headset(src)
+	new /obj/item/device/radio/headset(src)
+	new /obj/item/device/radio/headset(src)
+	new /obj/item/device/radio/headset(src)
+
+/obj/structure/closet/secure_closet/brig/restraints
+	name = "Spare Restraints"
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	anchored = TRUE
+	locked = TRUE
+
+
+/obj/structure/closet/secure_closet/brig/restraints/Initialize()
+	. = ..()
+	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/glasses/sunglasses/blindfold(src)
+	new /obj/item/clothing/glasses/sunglasses/blindfold(src)
+	new /obj/item/clothing/glasses/sunglasses/blindfold(src)
+	new /obj/item/clothing/glasses/sunglasses/blindfold(src)
+	new /obj/item/clothing/glasses/sunglasses/blindfold(src)
 
 /obj/structure/closet/secure_closet/brig/Initialize()
 	. = ..()
@@ -224,15 +276,15 @@
 	new /obj/item/storage/briefcase(src)
 
 /obj/structure/closet/secure_closet/wall
-	name = "wall locker"
+	name = "security wall locker"
 	req_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
-	icon_state = "wall-locker1"
+	icon_state = "security_wall_locked"
 	density = TRUE
-	icon_closed = "wall-locker"
-	icon_locked = "wall-locker1"
-	icon_opened = "wall-lockeropen"
-	icon_broken = "wall-lockerbroken"
-	icon_off = "wall-lockeroff"
+	icon_closed = "security_wall_closed"
+	icon_locked = "security_wall_locked"
+	icon_opened = "security_wall_open"
+	icon_broken = "security_wall_spark"
+	icon_off = "security_wall_off"
 
 	//too small to put a man in
 	large = 0

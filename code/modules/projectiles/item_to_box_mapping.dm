@@ -15,7 +15,7 @@
 	var/list/datum/item_box_pairing/box_to_item_list = list()
 
 //Adding an item-box pairing
-/datum/item_to_box_mapping/proc/add_pairing(var/datum/item_box_pairing/item_box_pairing)
+/datum/item_to_box_mapping/proc/add_pairing(datum/item_box_pairing/item_box_pairing)
 	//Box always maps to one item
 	box_to_item_list[item_box_pairing.box] = item_box_pairing
 
@@ -29,7 +29,7 @@
 
 /datum/item_to_box_mapping/New()
 	//Ammo magazine boxes, minus loose ammo boxes
-	for(var/obj/item/ammo_box/magazine/ammo_box as anything in typesof(/obj/item/ammo_box/magazine))
+	for(var/obj/item/ammo_box/magazine/ammo_box as anything in typesof(/obj/item/ammo_box/magazine) - /obj/item/ammo_box/magazine/misc)
 		if(initial(ammo_box.empty))
 			//Ignore all the empty boxes
 			continue
@@ -84,11 +84,11 @@
 	..()
 
 //For fetching item->boxes mapping
-/datum/item_to_box_mapping/proc/get_item_to_box_mapping(var/I)
+/datum/item_to_box_mapping/proc/get_item_to_box_mapping(I)
 	return item_to_box_list[I]
 
 //For fetching box->item mapping
-/datum/item_to_box_mapping/proc/get_box_to_item_mapping(var/I)
+/datum/item_to_box_mapping/proc/get_box_to_item_mapping(I)
 	return box_to_item_list[I]
 
 

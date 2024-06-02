@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - bugfix: "Fixes all monkeys being unknown."

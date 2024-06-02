@@ -3,7 +3,7 @@
 
 Headache
 
-	Noticable.
+	Noticeable.
 	Highly resistant.
 	Increases stage speed.
 	Not transmittable.
@@ -25,7 +25,7 @@ BONUS
 	transmittable = 0
 	level = 1
 
-/datum/symptom/headache/Activate(var/datum/disease/advance/A)
+/datum/symptom/headache/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/M = A.affected_mob

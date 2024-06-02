@@ -2,13 +2,17 @@
     "map_name": "Kutjevo Refinery",
     "map_path": "map_files/Kutjevo",
     "map_file": "Kutjevo.dmm",
+    "webmap_url": "Kutjevo",
+
     "survivor_types": [
         "/datum/equipment_preset/survivor/doctor/kutjevo",
         "/datum/equipment_preset/survivor/chaplain/kutjevo",
         "/datum/equipment_preset/survivor/engineer/kutjevo",
         "/datum/equipment_preset/survivor/colonial_marshal/kutjevo",
         "/datum/equipment_preset/survivor/trucker/kutjevo",
-        "/datum/equipment_preset/survivor/security/kutjevo"
+        "/datum/equipment_preset/survivor/security/kutjevo",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
     ],
     "defcon_triggers": [
         4250,
@@ -25,6 +29,7 @@
 	],
 	"traits": [{ "Ground": true }],
     "nightmare_path": "maps/Nightmare/maps/Kutjevo/",
+    "camouflage": "desert",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

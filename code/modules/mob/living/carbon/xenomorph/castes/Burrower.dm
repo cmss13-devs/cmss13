@@ -9,7 +9,6 @@
 	max_health = XENO_HEALTH_TIER_6
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_6
-	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
@@ -34,10 +33,14 @@
 	widen_cooldown = 70
 	tremor_cooldown = 450
 
-/mob/living/carbon/Xenomorph/Burrower
+	minimum_evolve_time = 7 MINUTES
+
+	minimap_icon = "burrower"
+
+/mob/living/carbon/xenomorph/burrower
 	caste_type = XENO_CASTE_BURROWER
 	name = XENO_CASTE_BURROWER
-	desc = "A beefy, alien with sharp claws."
+	desc = "A beefy alien with sharp claws."
 	icon = 'icons/mob/xenos/burrower.dmi'
 	icon_size = 64
 	icon_state = "Burrower Walking"
@@ -49,6 +52,7 @@
 	base_pixel_x = 0
 	base_pixel_y = -20
 	tier = 2
+
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -61,55 +65,45 @@
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
+		/datum/action/xeno_action/onclick/tacmap,
 		)
+
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
-		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
-		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
-		)
-	mutation_type = BURROWER_NORMAL
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
+	)
 
 	icon_xeno = 'icons/mob/xenos/burrower.dmi'
 	icon_xenonid = 'icons/mob/xenonids/burrower.dmi'
 
-/mob/living/carbon/Xenomorph/Burrower/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Burrower_1","Burrower_2","Burrower_3")
+	weed_food_states_flipped = list("Burrower_1","Burrower_2","Burrower_3")
+
+/mob/living/carbon/xenomorph/burrower/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
 	sight |= SEE_TURFS
 
-/mob/living/carbon/Xenomorph/Burrower/update_canmove()
+/mob/living/carbon/xenomorph/burrower/ex_act(severity)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		return
+	..()
+
+/mob/living/carbon/xenomorph/burrower/attack_hand()
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		return
+	..()
+
+/mob/living/carbon/xenomorph/burrower/attackby()
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		return
+	..()
+
+/mob/living/carbon/xenomorph/burrower/get_projectile_hit_chance()
 	. = ..()
-	if(burrow)
-		density = FALSE
-		canmove = FALSE
-		return canmove
-
-/mob/living/carbon/Xenomorph/Burrower/ex_act(severity)
-	if(burrow)
-		return
-	..()
-
-/mob/living/carbon/Xenomorph/Burrower/attack_hand()
-	if(burrow)
-		return
-	..()
-
-/mob/living/carbon/Xenomorph/Burrower/attackby()
-	if(burrow)
-		return
-	..()
-
-/mob/living/carbon/Xenomorph/Burrower/get_projectile_hit_chance()
-	. = ..()
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return 0
 
 /datum/behavior_delegate/burrower_base
 	name = "Base Burrower Behavior Delegate"
-
-/datum/behavior_delegate/burrower_base/on_update_icons()
-	if(bound_xeno.stat == DEAD)
-		return
-
-	if(bound_xeno.burrow)
-		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state] Burrower Burrowed"
-		return TRUE

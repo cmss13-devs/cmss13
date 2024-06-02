@@ -47,7 +47,7 @@
 
 		add_underlay(T, dir)
 
-/obj/structure/pipes/trinary/filter/hide(var/invis)
+/obj/structure/pipes/trinary/filter/hide(invis)
 	update_underlays()
 
 /obj/structure/pipes/trinary/filter/m_filter
@@ -82,7 +82,7 @@
 	. = ..()
 	icon_state = ""
 
-/obj/structure/pipes/trinary/mixer/update_icon(var/safety = 0)
+/obj/structure/pipes/trinary/mixer/update_icon(safety = 0)
 	if(length(connected_to))
 		icon_state += "on"
 	else
@@ -107,7 +107,7 @@
 
 		add_underlay(T, dir)
 
-/obj/structure/pipes/trinary/mixer/hide(var/invis)
+/obj/structure/pipes/trinary/mixer/hide(invis)
 	update_underlays()
 
 

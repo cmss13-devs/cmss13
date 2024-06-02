@@ -180,7 +180,22 @@
 /turf/open/floor/plating/plating_catwalk/shiva
 	icon = 'icons/turf/floors/ice_colony/shiva_floor.dmi'
 
+/turf/open/floor/plating/plating_catwalk/aicore
+	icon = 'icons/turf/floors/aicore.dmi'
+	icon_state = "ai_plating_catwalk"
 
+/turf/open/floor/plating/plating_catwalk/aicore/update_icon()
+	. = ..()
+	if(covered)
+		overlays += image(icon, src, "ai_catwalk", CATWALK_LAYER)
+
+/turf/open/floor/plating/plating_catwalk/aicore/white
+	icon_state = "w_ai_plating_catwalk"
+
+/turf/open/floor/plating/plating_catwalk/aicore/white/update_icon()
+	. = ..()
+	if(covered)
+		overlays += image(icon, src, "w_ai_catwalk", CATWALK_LAYER)
 
 /turf/open/floor/plating/ironsand
 	name = "Iron Sand"
@@ -203,10 +218,17 @@
 	icon_state = "default"
 	plating_type = /turf/open/floor/plating/almayer
 
-//Cargo elevator
+/// Admin level thunderdome floor. Doesn't get damaged by explosions and such for pristine testing
+/turf/open/floor/tdome
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "plating"
+	plating_type = /turf/open/floor/tdome
+	hull_floor = TRUE
+
+/// Base type of the requisitions and vehicle bay elevator pits.
 /turf/open/floor/almayer/empty
-	name = "empty space"
-	desc = "There seems to be an awful lot of machinery down below"
+	name = "\proper empty space"
+	desc = "There seems to be an awful lot of machinery down below..."
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
 
@@ -222,36 +244,67 @@
 /turf/open/floor/almayer/empty/attackby() //This should fix everything else. No cables, etc
 	return
 
-/turf/open/floor/almayer/empty/Entered(var/atom/movable/AM)
+/turf/open/floor/almayer/empty/Entered(atom/movable/AM)
 	..()
-	if(!isobserver(AM))
+	if(!isobserver(AM) && !istype(AM, /obj/effect/elevator) && !istype(AM, /obj/docking_port))
 		addtimer(CALLBACK(src, PROC_REF(enter_depths), AM), 0.2 SECONDS)
 
-/turf/open/floor/almayer/empty/proc/enter_depths(var/atom/movable/AM)
+/// Returns a list of turfs to be used as a destination for anyone unfortunate enough to fall into the pit.
+/turf/open/floor/almayer/empty/proc/get_depths_turfs()
+	// Empty proc to be overridden.
+	return
+
+/turf/open/floor/almayer/empty/proc/enter_depths(atom/movable/AM)
 	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/almayer/empty))
 		AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
-		for(var/i in GLOB.disposal_retrieval_list)
-			var/obj/structure/disposaloutlet/retrieval/R = i
-			if(R.z != src.z) continue
-			var/obj/structure/disposalholder/H = new()
-			AM.forceMove(H)
-			sleep(10)
-			H.forceMove(R)
-			for(var/mob/living/M in H)
-				M.take_overall_damage(100, 0, "Blunt Trauma")
-			sleep(20)
-			for(var/mob/living/M in H)
-				M.take_overall_damage(20, 0, "Blunt Trauma")
-			for(var/obj/effect/decal/cleanable/C in contents) //get rid of blood
-				qdel(C)
-			R.expel(H)
+		if(!ishuman(AM))
+			qdel(AM)
 			return
+		var/mob/living/carbon/human/thrown_human = AM
+		for(var/atom/computer as anything in GLOB.supply_controller.bound_supply_computer_list)
+			computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
 
-		qdel(AM)
+		var/list/depths_turfs = get_depths_turfs()
+		if(!length(depths_turfs))
+			// If this ever happens, something went wrong.
+			CRASH("get_depths_turfs() didn't return anything!")
+
+		thrown_human.forceMove(pick(depths_turfs))
+
+		var/timer = 0.5 SECONDS
+		for(var/index in 1 to 10)
+			timer += 0.5 SECONDS
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), thrown_human), timer)
+		return
 
 	else
-		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
+		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid-flight
 			qdel(C)
+
+/// Requisitions pit.
+/turf/open/floor/almayer/empty/requisitions
+
+/turf/open/floor/almayer/empty/requisitions/Initialize(mapload, ...)
+	. = ..()
+	GLOB.asrs_empty_space_tiles_list += src
+
+/turf/open/floor/almayer/empty/requisitions/Destroy(force)
+	GLOB.asrs_empty_space_tiles_list -= src
+	return ..()
+
+/turf/open/floor/almayer/empty/requisitions/get_depths_turfs()
+	var/area/elevator_area = GLOB.supply_controller.shuttle?.get_location_area()
+
+	var/turf_list = list()
+	for(var/turf/turf in elevator_area)
+		turf_list |= turf
+	return turf_list
+
+/// Vehicle bay pit.
+/turf/open/floor/almayer/empty/vehicle_bay
+
+/turf/open/floor/almayer/empty/vehicle_bay/get_depths_turfs()
+	return SSshuttle.vehicle_elevator.return_turfs()
 
 //Others
 /turf/open/floor/almayer/uscm
@@ -261,7 +314,39 @@
 /turf/open/floor/almayer/uscm/directional
 	icon_state = "logo_directional"
 
+/turf/open/floor/almayer/no_build
+	allow_construction = FALSE
+	hull_floor = TRUE
 
+/turf/open/floor/almayer/aicore
+	icon = 'icons/turf/floors/aicore.dmi'
+	icon_state = "ai_floor1"
+
+/turf/open/floor/almayer/aicore/glowing
+	icon_state = "ai_floor2"
+	light_color = "#d69c46"
+	light_range = 3
+
+/turf/open/floor/almayer/aicore/glowing/Initialize(mapload, ...)
+	. = ..()
+	set_light_on(TRUE)
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_AICORE_LOCKDOWN, PROC_REF(start_emergency_light_on))
+	RegisterSignal(SSdcs, COMSIG_GLOB_AICORE_LIFT, PROC_REF(start_emergency_light_off))
+
+/turf/open/floor/almayer/aicore/glowing/proc/start_emergency_light_on()
+	set_light(l_color = "#c70f0f")
+
+/turf/open/floor/almayer/aicore/glowing/proc/start_emergency_light_off()
+	set_light(l_color = "#d69c46")
+
+/turf/open/floor/almayer/aicore/no_build
+	allow_construction = FALSE
+	hull_floor = TRUE
+
+/turf/open/floor/almayer/aicore/glowing/no_build
+	allow_construction = FALSE
+	hull_floor = TRUE
 
 // RESEARCH STUFF
 /turf/open/floor/almayer/research/containment/entrance
@@ -439,7 +524,7 @@
 
 /turf/open/floor/grass/LateInitialize()
 	. = ..()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		if(istype(get_step(src,direction),/turf/open/floor))
 			var/turf/open/floor/FF = get_step(src,direction)
 			FF.update_icon() //so siding get updated properly
@@ -484,7 +569,7 @@
 	if(!broken && !burnt)
 		if(icon_state != "carpetsymbol")
 			var/connectdir = 0
-			for(var/direction in cardinal)
+			for(var/direction in GLOB.cardinals)
 				if(istype(get_step(src, direction), /turf/open/floor))
 					var/turf/open/floor/FF = get_step(src, direction)
 					if(FF.is_carpet_floor())
@@ -525,11 +610,14 @@
 			icon_state = "carpet[connectdir]-[diagonalconnect]"
 
 /turf/open/floor/carpet/make_plating()
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		if(istype(get_step(src, direction), /turf/open/floor))
 			var/turf/open/floor/FF = get_step(src,direction)
 			FF.update_icon() // So siding get updated properly
 	return ..()
+
+/turf/open/floor/carpet/edge
+	icon_state = "carpetside"
 
 // Start Prison tiles
 

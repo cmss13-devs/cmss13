@@ -21,12 +21,13 @@
 #define ITEM_EQUIP_VOLUME 50
 
 //Reserved channels
+#define SOUND_CHANNEL_NOTIFY 1016
 #define SOUND_CHANNEL_VOX    1017
 #define SOUND_CHANNEL_MUSIC 1018
 #define SOUND_CHANNEL_AMBIENCE 1019
 #define SOUND_CHANNEL_WALKMAN 1020
 #define SOUND_CHANNEL_SOUNDSCAPE 1021
-#define SOUND_CHANNEL_ADMIN_MIDI 1022
+//#define SOUND_CHANNEL_ADMIN_MIDI 1022
 #define SOUND_CHANNEL_LOBBY 1023
 #define SOUND_CHANNEL_Z 1024
 
@@ -71,6 +72,7 @@
 #define AMBIENCE_ALMAYER 'sound/ambience/almayerambience.ogg'
 #define AMBIENCE_LV624 'sound/ambience/ambienceLV624.ogg'
 #define AMBIENCE_BIGRED 'sound/ambience/desert.ogg'
+#define AMBIENCE_NV 'sound/ambience/ambienceNV.ogg'
 #define AMBIENCE_PRISON 'sound/ambience/shipambience.ogg'
 #define AMBIENCE_TRIJENT 'sound/ambience/desert.ogg'
 
@@ -81,7 +83,7 @@
 #define SCAPE_PL_ELEVATOR_MUSIC list('sound/soundscape/medbay1.ogg','sound/soundscape/medbay2.ogg', 'sound/soundscape/medbay3.ogg')
 #define SCAPE_PL_THUNDER list('sound/soundscape/thunderclap1.ogg', 'sound/soundscape/thunderclap2.ogg')
 #define SCAPE_PL_DESERT_STORM list('sound/soundscape/thunderclap1.ogg', 'sound/soundscape/thunderclap2.ogg', 'sound/soundscape/wind1.ogg','sound/soundscape/wind2.ogg')
-#define SCAPE_PL_CIC list('sound/soundscape/cicamb1.ogg', 'sound/soundscape/cicamb2.ogg', 'sound/soundscape/cicamb3.ogg', 'sound/soundscape/cicamb4.ogg', 'sound/soundscape/cicamb5.ogg', 'sound/soundscape/cicamb6.ogg', )
+#define SCAPE_PL_CIC list('sound/soundscape/cicamb2.ogg', 'sound/soundscape/cicamb3.ogg', 'sound/soundscape/cicamb4.ogg', 'sound/soundscape/cicamb5.ogg', 'sound/soundscape/cicamb6.ogg', )
 #define SCAPE_PL_ENG list('sound/soundscape/engamb1.ogg', 'sound/soundscape/engamb2.ogg', 'sound/soundscape/engamb3.ogg', 'sound/soundscape/engamb4.ogg', 'sound/soundscape/engamb5.ogg', 'sound/soundscape/engamb6.ogg', 'sound/soundscape/engamb7.ogg', )
 #define SCAPE_PL_HANGAR list('sound/soundscape/hangaramb1.ogg', 'sound/soundscape/hangaramb2.ogg', 'sound/soundscape/hangaramb3.ogg', 'sound/soundscape/hangaramb4.ogg', 'sound/soundscape/hangaramb5.ogg', 'sound/soundscape/hangaramb6.ogg', 'sound/soundscape/hangaramb7.ogg', 'sound/soundscape/hangaramb8.ogg', 'sound/soundscape/hangaramb9.ogg', 'sound/soundscape/hangaramb10.ogg', )
 #define SCAPE_PL_ARES list('sound/soundscape/mother.ogg')

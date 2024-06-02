@@ -17,6 +17,16 @@
 	health_max = 150
 	display_additional_stats = TRUE
 
+	has_camera = FALSE
+
+	choice_categories = list(
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, FACTION_WEYLAND, FACTION_HUMAN),
+	)
+
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_MARINE,
+	)
+
 
 /obj/structure/machinery/defenses/tesla_coil/Initialize()
 	. = ..()
@@ -39,12 +49,12 @@
 		overlays += image(icon, icon_state = "[defense_type] tesla_coil", pixel_y = 3)
 
 /obj/structure/machinery/defenses/tesla_coil/power_on_action()
-	SetLuminosity(7)
+	set_light(7)
 	start_processing()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a short zap, as it awakens.")]")
 
 /obj/structure/machinery/defenses/tesla_coil/power_off_action()
-	SetLuminosity(0)
+	set_light(0)
 	stop_processing()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] dies out with a last spark.")]")
 
@@ -61,7 +71,7 @@
 	targets = list()
 
 	for(var/mob/living/M in oview(tesla_range, src))
-		if(M.stat == DEAD || isrobot(M))
+		if(M.stat == DEAD)
 			continue
 		if(HAS_TRAIT(M, TRAIT_CHARGING))
 			to_chat(M, SPAN_WARNING("You ignore some weird noises as you charge."))
@@ -76,7 +86,7 @@
 		if(D.turned_on)
 			targets += D
 
-/obj/structure/machinery/defenses/tesla_coil/proc/fire(var/atoms)
+/obj/structure/machinery/defenses/tesla_coil/proc/fire(atoms)
 	if(!(world.time - last_fired >= fire_delay) || !turned_on)
 		return
 
@@ -107,15 +117,15 @@
 
 	targets = null
 
-/obj/structure/machinery/defenses/tesla_coil/proc/apply_debuff(var/mob/living/M)
+/obj/structure/machinery/defenses/tesla_coil/proc/apply_debuff(mob/living/M)
 	M.apply_effect(TESLA_COIL_DAZE_EFFECT, DAZE)
 	M.apply_effect(TESLA_COIL_SLOW_EFFECT, SUPERSLOW)
 
-/obj/structure/machinery/defenses/tesla_coil/proc/check_path(var/mob/living/M)
+/obj/structure/machinery/defenses/tesla_coil/proc/check_path(mob/living/M)
 	if(!istype(M))
 		return FALSE
 
-	var/list/turf/path = getline2(src, M, include_from_atom = FALSE)
+	var/list/turf/path = get_line(src, M, include_start_atom = FALSE)
 
 	var/blocked = FALSE
 	for(var/turf/T in path)
@@ -145,7 +155,6 @@
 	if(targets)
 		targets = null
 
-	SetLuminosity(0)
 	. = ..()
 
 #define TESLA_COIL_STUN_FIRE_DELAY 3 SECONDS
@@ -157,7 +166,7 @@
 	handheld_type = /obj/item/defenses/handheld/tesla_coil/stun
 	defense_type = "Stun"
 
-/obj/structure/machinery/defenses/tesla_coil/stun/apply_debuff(var/mob/living/M)
+/obj/structure/machinery/defenses/tesla_coil/stun/apply_debuff(mob/living/M)
 	if(M.mob_size >= MOB_SIZE_BIG)
 		M.set_effect(TESLA_COIL_SLOW_EFFECT, SUPERSLOW)
 	else
@@ -175,7 +184,7 @@
 	density = FALSE
 	defense_type = "Micro"
 
-/obj/structure/machinery/defenses/tesla_coil/micro/apply_debuff(var/mob/living/M)
+/obj/structure/machinery/defenses/tesla_coil/micro/apply_debuff(mob/living/M)
 	M.set_effect(TESLA_COIL_SLOW_EFFECT, SUPERSLOW) // Only applies slowness
 
 #undef TESLA_COIL_MICRO_FIRE_DELAY

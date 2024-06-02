@@ -5,7 +5,6 @@
 	name = "body scanner"
 	icon_state = "body_scanner"
 
-
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 60
 	active_power_usage = 10000 //10 kW. It's a big all-body scanner.
@@ -47,7 +46,7 @@
 		return
 	go_out()
 
-/obj/structure/machinery/medical_pod/bodyscanner/ex_act(var/severity, var/datum/cause_data/cause_data)
+/obj/structure/machinery/medical_pod/bodyscanner/ex_act(severity, datum/cause_data/cause_data)
 	for(var/atom/movable/A as mob|obj in src)
 		A.forceMove(loc)
 		A.ex_act(severity, , cause_data)
@@ -63,8 +62,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 #ifdef OBJECTS_PROXY_SPEECH
 // Transfers speech to occupant
@@ -125,8 +122,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/machinery/body_scanconsole/power_change()
 	..()
@@ -144,7 +139,7 @@
 /obj/structure/machinery/body_scanconsole/attack_remote(user as mob)
 	return src.attack_hand(user)
 
-/obj/structure/machinery/body_scanconsole/attack_hand(var/mob/living/user)
+/obj/structure/machinery/body_scanconsole/attack_hand(mob/living/user)
 	if(..())
 		return
 	if(inoperable())
@@ -209,7 +204,7 @@
 		"toxloss" = H.getToxLoss(),
 		"cloneloss" = H.getCloneLoss(),
 		"brainloss" = H.getBrainLoss(),
-		"knocked_out" = H.knocked_out,
+		"knocked_out" = H.GetKnockOutDuration(),
 		"bodytemp" = H.bodytemperature,
 		"inaprovaline_amount" = H.reagents.get_reagent_amount("inaprovaline"),
 		"dexalin_amount" = H.reagents.get_reagent_amount("dexalin"),
@@ -228,7 +223,7 @@
 	return occupant_data
 
 
-/obj/structure/machinery/body_scanconsole/proc/format_occupant_data(var/list/occ)
+/obj/structure/machinery/body_scanconsole/proc/format_occupant_data(list/occ)
 	var/dat = "<html><head><style>"
 	dat += "table {border: 2px solid; border-collapse: collapse;}"
 	dat += "td, th {border: 1px solid; padding-left: 5 px; padding-right: 5px;}"
@@ -268,7 +263,7 @@
 	s_class = occ["brainloss"] < 1 ? INTERFACE_GOOD : INTERFACE_BAD
 	dat += "[SET_CLASS("&nbsp&nbspApprox. Brain Damage:", INTERFACE_PINK)] [SET_CLASS("[occ["brainloss"]]%", s_class)]<br><br>"
 
-	dat += "[SET_CLASS("Knocked Out Summary:", "#40628a")] [occ["knocked_out"]]% ([round(occ["knocked_out"] / 4)] seconds left!)<br>"
+	dat += "[SET_CLASS("Knocked Out Summary:", "#40628a")] [occ["knocked_out"]]% (approximately [floor(occ["knocked_out"] * GLOBAL_STATUS_MULTIPLIER / (1 SECONDS))] seconds left!)<br>"
 	dat += "[SET_CLASS("Body Temperature:", "#40628a")] [occ["bodytemp"]-T0C]&deg;C ([occ["bodytemp"]*1.8-459.67]&deg;F)<br><HR>"
 
 	s_class = occ["blood_amount"] > 448 ? INTERFACE_OKAY : INTERFACE_BAD

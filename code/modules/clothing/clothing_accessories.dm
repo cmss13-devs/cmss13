@@ -13,10 +13,10 @@
 		var/tmp_icon_state = overlay_state? overlay_state : icon_state
 		if(icon_override && ("[tmp_icon_state]_tie" in icon_states(icon_override)))
 			inv_overlay = image(icon = icon_override, icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
-		else if("[tmp_icon_state]_tie" in icon_states(default_onmob_icons[WEAR_ACCESSORY]))
-			inv_overlay = image(icon = default_onmob_icons[WEAR_ACCESSORY], icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
+		else if("[tmp_icon_state]_tie" in icon_states(GLOB.default_onmob_icons[WEAR_ACCESSORY]))
+			inv_overlay = image(icon = GLOB.default_onmob_icons[WEAR_ACCESSORY], icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
 		else
-			inv_overlay = image(icon = default_onmob_icons[WEAR_ACCESSORY], icon_state = tmp_icon_state, dir = SOUTH)
+			inv_overlay = image(icon = GLOB.default_onmob_icons[WEAR_ACCESSORY], icon_state = tmp_icon_state, dir = SOUTH)
 	inv_overlay.color = color
 	return inv_overlay
 
@@ -47,7 +47,7 @@
 		else
 			return overlay_image(use_sprite_sheet, tmp_icon_state, color, RESET_COLOR)
 
-/obj/item/clothing/attackby(var/obj/item/I, var/mob/user)
+/obj/item/clothing/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/clothing/accessory))
 
 		if(!valid_accessory_slots || !valid_accessory_slots.len)
@@ -71,10 +71,10 @@
 
 	..()
 
-/obj/item/clothing/attack_hand(var/mob/user, mods)
+/obj/item/clothing/attack_hand(mob/user, mods)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)
 	if(LAZYLEN(accessories) && src.loc == user)
-		var/delegated //So that accessories don't block attack_hands unless they actually did something. Specifically meant for armour vests with medals, but can't hurt in general.
+		var/delegated //So that accessories don't block attack_hands unless they actually did something. Specifically meant for armor vests with medals, but can't hurt in general.
 		for(var/obj/item/clothing/accessory/A in accessories)
 			if(A.attack_hand(user, mods))
 				delegated = TRUE
@@ -83,7 +83,7 @@
 	return ..()
 
 
-/obj/item/clothing/clicked(var/mob/user, var/list/mods)
+/obj/item/clothing/clicked(mob/user, list/mods)
 	if(mods["alt"] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
 		for(var/V in verbs)
 			if(V == /obj/item/clothing/suit/storage/verb/toggle_draw_mode) //So that alt-clicks are only intercepted for clothing items with internal storage and toggleable draw modes.
@@ -91,7 +91,7 @@
 	. = ..()
 
 
-/obj/item/clothing/get_examine_text(var/mob/user)
+/obj/item/clothing/get_examine_text(mob/user)
 	. = ..()
 	for(var/obj/item/clothing/accessory/A in accessories)
 		. += "[icon2html(A, user)] \A [A] is attached to it[A.additional_examine_text()]" //The spacing of the examine text proc is deliberate. By default it returns ".".
@@ -102,7 +102,7 @@
  *  user is the user doing the attaching. Can be null, such as when attaching
  *  items on spawn
  */
-/obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A, var/silent)
+/obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A, silent)
 	if(!A.can_attach_to(user, src))
 		return
 
@@ -148,7 +148,7 @@
 		verbs -= /obj/item/clothing/proc/removetie_verb
 
 /obj/item/clothing/emp_act(severity)
+	. = ..()
 	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
 			A.emp_act(severity)
-	..()

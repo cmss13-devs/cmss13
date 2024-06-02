@@ -10,7 +10,7 @@
 	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 	//opacity = TRUE
 	unslashable = TRUE
@@ -47,25 +47,13 @@ Global river status var, maybe
 Each var depends on others
 
 
-var/global/riverend_west = 0
-var/global/riverend_north = 0
-var/global/river_central = 0
-var/global/cannal = 0
-var/global/dam_underpass = 0
-var/global/south_river = 0
-var/global/south_filtration = 0
-var/global/east_river = 0
-var/global/east_filtration = 0
-var/global/south_riverstart = 0
-var/global/east_riverstart = 0
-
 /proc/filtration_check()
 	if(east_filtration)
 
 */
 
 /obj/effect/blocker/toxic_water
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
 	unacidable = TRUE
@@ -125,7 +113,7 @@ var/global/east_riverstart = 0
 
 
 
-/obj/effect/blocker/toxic_water/Crossed(var/atom/A)
+/obj/effect/blocker/toxic_water/Crossed(atom/A)
 	if(toxic == 0)
 		return
 
@@ -136,14 +124,14 @@ var/global/east_riverstart = 0
 	else
 		return
 
-	if(ismob(A))
+	if(isliving(A))
 		var/mob/living/M = A
 
 		// Inside a xeno for example
 		if(!istype(M.loc, /turf))
 			return
 
-		if(isXeno(M))
+		if(isxeno(M))
 			if(M.pulling)
 				to_chat(M, SPAN_WARNING("The current forces you to release [M.pulling]!"))
 				M.stop_pulling()
@@ -190,15 +178,15 @@ var/global/east_riverstart = 0
 	if(M.stat == DEAD)
 		return
 	M.last_damage_data = create_cause_data("toxic water")
-	if(isXenoLarva(M))
+	if(islarva(M))
 		M.apply_damage(2,BURN)
-	else if(isXeno(M) && !isXenoLarva(M))
+	else if(isxeno(M) && !islarva(M))
 		M.apply_damage(34,BURN)
-	else if(isYautja(M))
+	else if(isyautja(M))
 		M.apply_damage(0.5,BURN)
 	else
 		var/dam_amount = 3
-		if(M.lying)
+		if(M.body_position == LYING_DOWN)
 			M.apply_damage(dam_amount,BURN)
 			M.apply_damage(dam_amount,BURN)
 			M.apply_damage(dam_amount,BURN)
@@ -211,15 +199,15 @@ var/global/east_riverstart = 0
 			M.apply_damage(dam_amount,BURN,"r_foot")
 			M.apply_damage(dam_amount,BURN,"groin")
 		M.apply_effect(20,IRRADIATE,0)
-		if( !isSynth(M) ) to_chat(M, SPAN_DANGER("The water burns!"))
+		if( !issynth(M) ) to_chat(M, SPAN_DANGER("The water burns!"))
 	playsound(M, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 
-/obj/effect/blocker/toxic_water/proc/disperse_spread(var/from_dir = 0)
+/obj/effect/blocker/toxic_water/proc/disperse_spread(from_dir = 0)
 	if(dispersing || !toxic)
 		return
 
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		if(direction == from_dir) continue //doesn't check backwards
 
 		var/effective_spread_delay
@@ -280,7 +268,7 @@ var/global/east_riverstart = 0
 	desc = "Activates the filtration mechanism."
 	var/id = null
 	var/active = 0
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
@@ -303,7 +291,7 @@ var/global/east_riverstart = 0
 	//var/area/A = get_area(src)
 	//A.ambience_exterior = 'sound/ambience/ambiatm1.ogg'
 
-	for(var/obj/structure/machinery/dispersal_initiator/M in machines)
+	for(var/obj/structure/machinery/dispersal_initiator/M in GLOB.machines)
 		if (M.id == src.id)
 			M.initiate()
 
@@ -319,7 +307,7 @@ var/global/east_riverstart = 0
 
 /*
 /obj/effect/blocker/toxic_water/connector
-	icon_state = "null"
+	icon_state = null
 
 //something to stop this stuff from killing people
 

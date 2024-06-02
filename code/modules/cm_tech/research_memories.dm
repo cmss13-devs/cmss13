@@ -14,13 +14,13 @@
 	clue_category["name"] = "Analyze Chemicals"
 	clue_category["icon"] = "scroll"
 	clue_category["clues"] = list()
-	for (var/chemid in chemical_data.chemical_not_completed_objective_list)
-		clue_category["clues"] += list(chemical_data.get_tgui_data(chemid))
+	for (var/chemid in GLOB.chemical_data.chemical_not_completed_objective_list)
+		clue_category["clues"] += list(GLOB.chemical_data.get_tgui_data(chemid))
 	clue_categories += list(clue_category)
 
 	return clue_categories
 
-/datum/research_objective_memory_interface/proc/get_objective(var/label, var/completed, var/instances, var/points_earned, var/custom_color = FALSE, var/custom_status = FALSE)
+/datum/research_objective_memory_interface/proc/get_objective(label, completed, instances, points_earned, custom_color = FALSE, custom_status = FALSE)
 	var/list/objective = list()
 	objective["label"] = label
 	objective["content_credits"] = (points_earned ? "([points_earned])" : "")
@@ -51,7 +51,7 @@
 		"Analyze Chemicals",
 		SSobjectives.statistics["chemicals_completed"],
 		FALSE,
-		chemical_data.rsc_credits,
+		GLOB.chemical_data.rsc_credits,
 		"white"
 	))
 
@@ -60,9 +60,9 @@
 /datum/research_objective_memory_interface/ui_data(mob/user)
 	. = list()
 
-	.["research_credits"] = chemical_data.rsc_credits
-	var/clearance = "[chemical_data.clearance_level]"
-	if(chemical_data.clearance_x_access)
+	.["research_credits"] = GLOB.chemical_data.rsc_credits
+	var/clearance = "[GLOB.chemical_data.clearance_level]"
+	if(GLOB.chemical_data.clearance_x_access)
 		clearance +="X"
 	.["clearance"] = clearance
 	.["objectives"] = get_objectives(user)

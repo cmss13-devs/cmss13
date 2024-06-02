@@ -23,7 +23,7 @@
 /area/corsat/gamma/airlock/north)
 "e" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"

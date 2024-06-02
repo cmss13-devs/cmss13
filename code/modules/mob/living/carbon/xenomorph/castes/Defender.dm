@@ -18,15 +18,20 @@
 	deevolves_to = list("Larva")
 	can_vent_crawl = 0
 
+	available_strains = list(/datum/xeno_strain/steel_crest)
 	behavior_delegate_type = /datum/behavior_delegate/defender_base
 
 	tackle_min = 2
 	tackle_max = 4
 
-/mob/living/carbon/Xenomorph/Defender
+	minimum_evolve_time = 4 MINUTES
+
+	minimap_icon = "defender"
+
+/mob/living/carbon/xenomorph/defender
 	caste_type = XENO_CASTE_DEFENDER
 	name = XENO_CASTE_DEFENDER
-	desc = "A alien with an armored head crest."
+	desc = "A alien with an armored crest."
 	icon = 'icons/mob/xenos/defender.dmi'
 	icon_size = 64
 	icon_state = "Defender Walking"
@@ -34,6 +39,7 @@
 	pixel_x = -16
 	old_x = -16
 	tier = 1
+
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -43,27 +49,31 @@
 		/datum/action/xeno_action/activable/headbutt,
 		/datum/action/xeno_action/onclick/tail_sweep,
 		/datum/action/xeno_action/activable/fortify,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
-	mutation_icon_state = DEFENDER_NORMAL
-	mutation_type = DEFENDER_NORMAL
+
 	icon_xeno = 'icons/mob/xenos/defender.dmi'
 	icon_xenonid = 'icons/mob/xenonids/defender.dmi'
 
-/mob/living/carbon/Xenomorph/Defender/handle_special_state()
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Defender_1","Defender_2","Defender_3")
+	weed_food_states_flipped = list("Defender_1","Defender_2","Defender_3")
+
+/mob/living/carbon/xenomorph/defender/handle_special_state()
 	if(fortify)
 		return TRUE
 	if(crest_defense)
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/Xenomorph/Defender/handle_special_wound_states(severity)
+/mob/living/carbon/xenomorph/defender/handle_special_wound_states(severity)
 	. = ..()
 	if(fortify)
 		return "Defender_fortify_[severity]"
 	if(crest_defense)
 		return "Defender_crest_[severity]"
 
-/mob/living/carbon/Xenomorph/Defender/handle_special_backpack_states()
+/mob/living/carbon/xenomorph/defender/handle_special_backpack_states()
 	. = ..()
 	if(fortify)
 		return " Fortify"
@@ -78,8 +88,8 @@
 		return
 
 	if(bound_xeno.fortify && bound_xeno.health > 0)
-		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Defender Fortify"
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Defender Fortify"
 		return TRUE
 	if(bound_xeno.crest_defense && bound_xeno.health > 0)
-		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Defender Crest"
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Defender Crest"
 		return TRUE

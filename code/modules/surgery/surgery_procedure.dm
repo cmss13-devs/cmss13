@@ -90,7 +90,7 @@
 			to_chat(user, SPAN_WARNING("You can't operate on [target], \he is being carried by [target.pulledby]!"))
 		return FALSE
 
-	if(lying_required && !target.lying)
+	if(lying_required && target.body_position != LYING_DOWN)
 		to_chat(user, SPAN_WARNING("[user == target ? "You need" : "[target] needs"] to be lying down for this operation!"))
 		return FALSE
 

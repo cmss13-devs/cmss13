@@ -177,7 +177,7 @@
 	viewed_report.incident.status |= BRIG_SENTENCE_PARDONED
 	viewed_report.name += " (PARDONED)"
 
-	message_staff("[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) has pardoned [viewed_report.incident.criminal_name].")
+	message_admins("[key_name(user, 1)][ADMIN_JMP_USER(user)] has pardoned [viewed_report.incident.criminal_name].")
 	log_admin("[key_name(user)] pardoned [viewed_report.incident.criminal_name] for [viewed_report.incident.charges_to_string()].")
 	ai_silent_announcement("BRIG REPORT: [viewed_report.incident.criminal_name] has been pardoned for [viewed_report.incident.charges_to_string()].")
 
@@ -227,7 +227,7 @@
 	incident.status &= ~BRIG_SENTENCE_ACTIVE
 	incident.time_served = (incident.brig_sentence * 600) - (incident.time_to_release - REALTIMEOFDAY)
 
-	message_staff("[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) has paused the jail timer of [incident.criminal_name].")
+	message_admins("[key_name(user, 1)][ADMIN_JMP_USER(user)] has paused the jail timer of [incident.criminal_name].")
 	log_admin("[key_name(user)] paused the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
 
 	active_report = null
@@ -246,7 +246,7 @@
 	incident.status |= BRIG_SENTENCE_SERVED
 
 	if (user)
-		message_staff("[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) has prematurely ended the jail timer of [incident.criminal_name].")
+		message_admins("[key_name(user, 1)][ADMIN_JMP_USER(user)] has prematurely ended the jail timer of [incident.criminal_name].")
 		log_admin("[key_name(user)] prematurely ended the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
 
 	active_report = null
@@ -266,7 +266,7 @@
 	incident.status &= ~BRIG_SENTENCE_PARDONED
 	incident.status &= ~BRIG_SENTENCE_SERVED
 
-	message_staff("[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) has reset the jail timer of [incident.criminal_name].")
+	message_admins("[key_name(user, 1)][ADMIN_JMP_USER(user)] has reset the jail timer of [incident.criminal_name].")
 	log_admin("[key_name(user)] reset the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
 	ai_silent_announcement("BRIG REPORT: [incident.criminal_name] had their jail time reset by [user].", ":p")
 
@@ -279,7 +279,7 @@
 		var/obj/item/card/id/id_card = human.get_idcard()
 
 		if (id_card)
-			if ((id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.highcom_paygrades) || (id_card.paygrade == "PvI"))
+			if ((id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.uscm_highcom_paygrades))
 				return TRUE
 
 	return FALSE
@@ -290,15 +290,15 @@
 	addtimer(CALLBACK(src, PROC_REF(search_for_components)), 20)
 
 /obj/structure/machinery/brig_cell/proc/search_for_components()
-	for(var/obj/structure/machinery/door/window/brigdoor/M in machines)
+	for(var/obj/structure/machinery/door/window/brigdoor/M in GLOB.machines)
 		if(M.id == id)
 			targets += M
 
-	for(var/obj/structure/machinery/flasher/F in machines)
+	for(var/obj/structure/machinery/flasher/F in GLOB.machines)
 		if(F.id == id)
 			targets += F
 
-	for(var/obj/structure/machinery/door/poddoor/almayer/locked/P in machines)
+	for(var/obj/structure/machinery/door/poddoor/almayer/locked/P in GLOB.machines)
 		if(P.id == id)
 			targets += P
 
@@ -389,6 +389,14 @@
 /obj/structure/machinery/brig_cell/cell_4
 	name = "Cell 4"
 	id = "Cell 4"
+
+/obj/structure/machinery/brig_cell/cell_5
+	name = "Cell 5"
+	id = "Cell 5"
+
+/obj/structure/machinery/brig_cell/cell_6
+	name = "Cell 6"
+	id = "Cell 6"
 
 /obj/structure/machinery/brig_cell/perma_1
 	name = "Perma 1"

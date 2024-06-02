@@ -39,6 +39,10 @@
 
 /obj/item/storage/internal/accessory/black_vest/acid_harness
 	storage_slots = 2
+	can_hold = list(
+		/obj/item/reagent_container/glass/beaker,
+		/obj/item/cell,
+	)
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness
 	name = "A.C.I.D. Harness"
@@ -158,13 +162,13 @@
 
 	switch(action)
 		if("set_inject_amount")
-			var/inject = round(text2num(params["value"]))
+			var/inject = floor(text2num(params["value"]))
 			if(inject < 1)
 				inject = 1
 			acid_core.inject_amount = inject
 			. = TRUE
 		if("set_inject_damage_threshold")
-			acid_core.inject_damage_threshold = round(text2num(params["value"]))
+			acid_core.inject_damage_threshold = floor(text2num(params["value"]))
 			. = TRUE
 		if("inject_logic")
 			if(acid_core.inject_logic == ACID_LOGIC_OR)
@@ -251,7 +255,7 @@
 	to_chat(user, text)
 	boot_status++
 
-/obj/structure/machinery/acid_core/proc/voice(var/voiceline, var/report_vitals = FALSE)
+/obj/structure/machinery/acid_core/proc/voice(voiceline, report_vitals = FALSE)
 	if(!user)
 		return
 	var/text = SPAN_HELPFUL("A.C.I.D. states: ")
@@ -317,7 +321,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/acid_core/proc/check_battery(var/obj/item/cell/battery)
+/obj/structure/machinery/acid_core/proc/check_battery(obj/item/cell/battery)
 	battery.charge = max(battery.charge - 10, 0)
 	var/charge = battery.charge / battery.maxcharge * 100
 	if(charge + 20 < battery_level || charge > battery_level)
@@ -439,10 +443,10 @@
 	else if(inject_conditions & ACID_SCAN_CONDITION_DEFIB && vitals_scan < ACID_VITALS_DEAD && last_vitals_scan & ACID_SCAN_CONDITION_DEATH)
 		condition_scan |= ACID_SCAN_CONDITION_DEFIB //If we were previously dead and are now alive, we assume we got defibbed
 
-	if(inject_conditions & ACID_SCAN_CONDITION_CONCUSSION && (user.knocked_down || user.knocked_out))
+	if(inject_conditions & ACID_SCAN_CONDITION_CONCUSSION && (HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || HAS_TRAIT(src, TRAIT_FLOORED)))
 		condition_scan |= ACID_SCAN_CONDITION_CONCUSSION
 
-	if(inject_conditions & ACID_SCAN_CONDITION_INTOXICATION && (user.dazed || user.slowed || user.confused || user.drowsyness || user.dizziness || user.druggy))
+	if(inject_conditions & ACID_SCAN_CONDITION_INTOXICATION && (HAS_TRAIT(src, TRAIT_DAZED) || user.slowed || user.confused || user.drowsyness || user.dizziness || user.druggy))
 		condition_scan |= ACID_SCAN_CONDITION_INTOXICATION
 
 	//Compare
@@ -458,7 +462,7 @@
 	last_condition_scan = condition_scan
 	last_vitals_scan = vitals_scan
 
-/obj/structure/machinery/acid_core/proc/compare_scans(var/damage_scan = 0, var/condition_scan = 0)
+/obj/structure/machinery/acid_core/proc/compare_scans(damage_scan = 0, condition_scan = 0)
 	if(inject_logic == ACID_LOGIC_OR) //OR logic
 		if(~last_damage_scan & damage_scan || ~last_condition_scan & condition_scan) //If there's a new bit flagged, vitals has worsened
 			inject()

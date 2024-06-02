@@ -25,7 +25,7 @@
 // I'm not sure everyone will react the emag's features so please say what your opinions are of it.
 //
 // When emagged it will rig every light it replaces, which will explode when the light is on.
-// This is VERY noticable, even the device's name changes when you emag it so if anyone
+// This is VERY noticeable, even the device's name changes when you emag it so if anyone
 // examines you when you're holding it in your hand, you will be discovered.
 // It will also be very obvious who is setting all these lights off, since only Janitor Borgs and Janitors have easy
 // access to them, and only one of them can emag their device.
@@ -100,28 +100,28 @@
 	icon_state = "lightreplacer0"
 
 
-/obj/item/device/lightreplacer/proc/Use(var/mob/user)
+/obj/item/device/lightreplacer/proc/Use(mob/user)
 
 	playsound(src.loc, 'sound/machines/click.ogg', 25, 1)
 	AddUses(-1)
 	return 1
 
 // Negative numbers will subtract
-/obj/item/device/lightreplacer/proc/AddUses(var/amount = 1)
+/obj/item/device/lightreplacer/proc/AddUses(amount = 1)
 	uses = min(max(uses + amount, 0), max_uses)
 
-/obj/item/device/lightreplacer/proc/Charge(var/mob/user)
+/obj/item/device/lightreplacer/proc/Charge(mob/user)
 	charge++
 	if(charge > 7)
 		AddUses(1)
 		charge = 1
 
-/obj/item/device/lightreplacer/proc/ReplaceLight(var/obj/structure/machinery/light/target, var/mob/living/U)
+/obj/item/device/lightreplacer/proc/ReplaceLight(obj/structure/machinery/light/target, mob/living/U)
 
 	if(target.status != LIGHT_OK)
 		if(CanUse(U))
 			if(!Use(U)) return
-			to_chat(U, SPAN_NOTICE("You replace the [target.fitting] with the [src]."))
+			to_chat(U, SPAN_NOTICE("You replace the [target.fitting] with [src]."))
 
 			if(target.status != LIGHT_EMPTY)
 
@@ -159,7 +159,7 @@
 
 //Can you use it?
 
-/obj/item/device/lightreplacer/proc/CanUse(var/mob/living/user)
+/obj/item/device/lightreplacer/proc/CanUse(mob/living/user)
 	src.add_fingerprint(user)
 	//Not sure what else to check for. Maybe if clumsy?
 	if(uses > 0)

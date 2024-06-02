@@ -10,7 +10,7 @@
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -23,8 +23,8 @@
 		/obj/item/weapon/gun/,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
-		/obj/item/weapon/melee/baton,
-		/obj/item/handcuffs,
+		/obj/item/weapon/baton,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 		/obj/item/storage/belt/gun/m4a3,
@@ -53,7 +53,7 @@
 	set category = "Object"
 	set src in usr
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+	if(usr.is_mob_incapacitated())
 		return 0
 
 	if(src.buttoned == TRUE)
@@ -136,9 +136,10 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress
-	name = "marine dress jacket"
+	name = "marine formal service jacket"
 	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
-	icon_state = "marine_formal"
+	icon_state = "coat_formal"
+	initial_icon_state = "coat_formal"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -148,11 +149,13 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_atom = NO_SNOW_TYPE
+	has_buttons = TRUE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer
 	name = "marine officer dress jacket"
 	desc = "Dress Jacket worn by Commanding Officers of the USCM."
 	icon_state = "co_jacket"
+	has_buttons = FALSE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
@@ -178,6 +181,11 @@
 	desc = "A Navy regulation dress blues coat for high-ranking officers. For those who wish for style and authority."
 	icon_state = "co_suit"
 
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon
+	name = "commanding officer falcon jacket"
+	desc = "A refurbished jacket liner tailor made for a senior officer. This liner has become more of a proper piece of attire, with a new layer of fabric, wrist cuffs, front pockets, and a custom embroidered falcon on the back. This jacket will keep its wearer warm no matter the circumstance, from a cool Sunday drive to chilly autumn's eve."
+	icon_state = "co_falcon"
+
 /obj/item/clothing/suit/storage/jacket/marine/dress/general
 	name = "general's jacket"
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a General. Has quite a few pockets."
@@ -187,6 +195,7 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi'
 	)
 	item_state = "general_jacket"
+	has_buttons = FALSE
 	storage_slots = 4
 	armor_melee = CLOTHING_ARMOR_HIGHPLUS
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
@@ -197,10 +206,12 @@
 /obj/item/clothing/suit/storage/jacket/marine/dress/general/executive
 	name = "director's jacket"
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a Director. Has quite a few pockets."
+	has_buttons = FALSE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat
 	name = "bridge coat"
 	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is a Dressy Blue for a Commanding officer."
+	has_buttons = FALSE
 	item_state = "bridge_coat"
 	icon_state = "bridge_coat"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
@@ -208,39 +219,39 @@
 /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey
 	name = "bridge coat"
 	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is Black."
+	has_buttons = FALSE
 	item_state = "bridge_coat_grey"
 	icon_state = "bridge_coat_grey"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
 
+/obj/item/clothing/suit/storage/jacket/marine/service/aso
+	name = "auxiliary support officer jacket"
+	desc = "A comfortable vest for officers who are expected to work long hours staring at rows of numbers and inspecting equipment from knives to torpedos to entire dropships."
+	icon_state = "aso_jacket"
+	blood_overlay_type = "coat"
+	flags_armor_protection = BODY_FLAG_CHEST
+	has_buttons = FALSE
 
 
 //=========================//PROVOST\\================================\\
 //=======================================================================\\
+
 /obj/item/clothing/suit/storage/jacket/marine/provost
-	name = "\improper Provost Coat"
-	desc = "The crisp coat of a Provost Officer."
+	name = "\improper Provost Jacket"
+	desc = "A crisp jacket with the Provost sigil."
+	icon_state = "provost_jacket"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
-	icon_state = "provost_coat"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/advisor
-	name = "\improper Provost Advisor Jacket"
-	desc = "The crisp jacket of a Provost Advisor."
-	icon_state = "provost_jacket"
+/obj/item/clothing/suit/storage/jacket/marine/provost/coat
+	name = "\improper Provost Coat"
+	desc = "The crisp coat of a Provost Officer."
+	icon_state = "provost_coat"
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/inspector
-	name = "\improper Provost Inspector Jacket"
-	desc = "The crisp jacket of a Provost Inspector."
-	icon_state = "provost_jacket"
+/obj/item/clothing/suit/storage/jacket/marine/provost/coat/marshal
+	name = "\improper Provost Marshal Coat"
+	icon_state = "provost_coat_marshal"
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/marshal
-	name = "\improper Provost Marshal Jacket"
-	desc = "The crisp jacket of a Provost Marshal."
-	icon_state = "provost_jacket"
-
-/obj/item/clothing/suit/storage/jacket/marine/provost/marshal/chief
-	name = "\improper Provost Chief Marshal Jacket"
-	desc = "The crisp jacket of the Provost Chief Marshal."
 
 //=========================//DRESS BLUES\\================================\\
 //=======================================================================\\
@@ -251,6 +262,7 @@
 	icon = 'icons/mob/humans/onmob/contained/marinedressblues.dmi'
 	icon_state = "e_jacket"
 	item_state = "e_jacket"
+	has_buttons = FALSE
 	item_state_slots = null
 	contained_sprite = TRUE
 
@@ -265,3 +277,109 @@
 	desc = "The jacket of the legendary Marine dress blues, virtually unchanged since the 19th century. Features the sleek dark design of the uniform worn by a commissioned officer."
 	icon_state = "o_jacket"
 	item_state = "o_jacket"
+
+//==================Combat Correspondent==================\\
+
+/obj/item/clothing/suit/storage/jacket/marine/reporter
+	name = "combat correspondent jacket"
+	desc = "A jacket for the most fashionable war correspondents."
+	icon_state = "cc_brown"
+	item_state = "cc_brown"
+	flags_atom = NO_SNOW_TYPE
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/reporter/green
+	icon_state = "cc_green"
+	item_state = "cc_green"
+
+
+/obj/item/clothing/suit/storage/jacket/marine/reporter/black
+	icon_state = "cc_black"
+	item_state = "cc_black"
+
+/obj/item/clothing/suit/storage/jacket/marine/reporter/blue
+	icon_state = "cc_blue"
+	item_state = "cc_blue"
+
+
+//==================Corporate Liaison==================\\
+
+/obj/item/clothing/suit/storage/jacket/marine/vest
+	name = "brown vest"
+	desc = "A casual brown vest."
+	icon_state = "vest_brown"
+	item_state = "vest_brown"
+	flags_atom = NO_SNOW_TYPE
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/vest/tan
+	name = "tan vest"
+	desc = "A casual tan vest."
+	icon_state = "vest_tan"
+	item_state = "vest_tan"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/vest/grey
+	name = "grey vest"
+	desc = "A casual grey vest."
+	icon_state = "vest_grey"
+	item_state = "vest_grey"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/corporate
+	name = "khaki suit jacket"
+	desc = "A khaki suit jacket."
+	icon_state = "corporate_ivy"
+	item_state = "corporate_ivy"
+	flags_atom = NO_SNOW_TYPE
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/corporate/formal
+	name = "formal suit jacket"
+	desc = "An ivory suit jacket; a Weyland-Yutani corporate badge is attached to the right lapel."
+	icon_state = "corporate_formal"
+	item_state = "corporate_formal"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/corporate/black
+	name = "black suit jacket"
+	desc = "A black suit jacket."
+	icon_state = "corporate_black"
+	item_state = "corporate_black"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/corporate/brown
+	name = "brown suit jacket"
+	desc = "A brown suit jacket."
+	icon_state = "corporate_brown"
+	item_state = "corporate_brown"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/corporate/blue
+	name = "blue suit jacket"
+	desc = "A blue suit jacket."
+	icon_state = "corporate_blue"
+	item_state = "corporate_blue"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/bomber
+	name = "khaki bomber jacket"
+	desc = "A khaki bomber jacket popular among stationeers and blue-collar workers everywhere."
+	icon_state = "jacket_khaki"
+	item_state = "jacket_khaki"
+	flags_atom = NO_SNOW_TYPE
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/bomber/red
+	name = "red bomber jacket"
+	desc = "A reddish-brown bomber jacket popular among stationeers and blue-collar workers everywhere."
+	icon_state = "jacket_red"
+	item_state = "jacket_red"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/bomber/grey
+	name = "grey bomber jacket"
+	desc = "A blue-grey bomber jacket popular among stationeers and blue-collar workers everywhere."
+	icon_state = "jacket_grey"
+	item_state = "jacket_grey"
+	has_buttons = FALSE

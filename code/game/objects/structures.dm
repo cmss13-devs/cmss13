@@ -11,11 +11,11 @@
 	var/unslashable = FALSE
 	var/wrenchable = FALSE
 	health = 100
-	anchored = 1
+	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	can_block_movement = TRUE
 
-/obj/structure/Initialize()
+/obj/structure/Initialize(mapload, ...)
 	. = ..()
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
@@ -84,7 +84,7 @@
 
 	do_climb(target)
 
-/obj/structure/proc/can_climb(var/mob/living/user)
+/obj/structure/proc/can_climb(mob/living/user)
 	if(!climbable || !can_touch(user))
 		return FALSE
 
@@ -108,7 +108,7 @@
 
 	return TRUE
 
-/obj/structure/proc/do_climb(var/mob/living/user, mods)
+/obj/structure/proc/do_climb(mob/living/user, mods)
 	if(!can_climb(user))
 		return
 
@@ -138,13 +138,20 @@
 			climb_string = "[user] tactically vaults over \the [src]!"
 	user.visible_message(SPAN_WARNING(climb_string))
 
+	var/list/grabbed_things = list()
+	for(var/obj/item/grab/grabbing in list(user.l_hand, user.r_hand))
+		grabbed_things += grabbing.grabbed_thing
+		grabbing.grabbed_thing.forceMove(user.loc)
 	user.forceMove(TT)
+	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
+		thing.forceMove(TT)
 
 /obj/structure/proc/structure_shaken()
 
 	for(var/mob/living/M in get_turf(src))
 
-		if(M.lying) return //No spamming this on people.
+		if(HAS_TRAIT(M, TRAIT_FLOORED))
+			return //No spamming this on people.
 
 		M.apply_effect(5, WEAKEN)
 		to_chat(M, SPAN_WARNING("You topple as \the [src] moves under you!"))
@@ -185,7 +192,7 @@
 			H.updatehealth()
 	return
 
-/obj/structure/proc/can_touch(mob/user)
+/obj/structure/proc/can_touch(mob/living/user)
 	if(!user)
 		return 0
 	if(!Adjacent(user) || !isturf(user.loc))
@@ -193,7 +200,7 @@
 	if(user.is_mob_restrained() || user.buckled)
 		to_chat(user, SPAN_NOTICE("You need your hands and legs free for this."))
 		return 0
-	if(user.is_mob_incapacitated(TRUE) || user.lying)
+	if(user.is_mob_incapacitated(TRUE) || user.body_position == LYING_DOWN)
 		return 0
 	if(isRemoteControlling(user))
 		to_chat(user, SPAN_NOTICE("You need hands for this."))
@@ -202,7 +209,7 @@
 
 /obj/structure/proc/toggle_anchored(obj/item/W, mob/user)
 	if(!wrenchable)
-		to_chat(user, SPAN_WARNING("The [src] cannot be [anchored ? "un" : ""]anchored."))
+		to_chat(user, SPAN_WARNING("[src] cannot be [anchored ? "un" : ""]anchored."))
 		return FALSE
 	else
 		// Wrenching is faster if we are better at engineering
@@ -212,8 +219,12 @@
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			if(anchored)
 				user.visible_message(SPAN_NOTICE("[user] anchors [src] into place."),SPAN_NOTICE("You anchor [src] into place."))
+				for(var/obj/medlink in loc)
+					SEND_SIGNAL(medlink, COMSIG_STRUCTURE_WRENCHED, src)
 			else
 				user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
+				for(var/obj/medlink in loc)
+					SEND_SIGNAL(medlink, COMSIG_STRUCTURE_UNWRENCHED, src)
 			return TRUE
 
 /obj/structure/get_applying_acid_time()

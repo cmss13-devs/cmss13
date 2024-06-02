@@ -14,7 +14,7 @@
 		/datum/surgery_step/peel_skin,
 		/datum/surgery_step/reattach_head,
 		/datum/surgery_step/mend_connections,
-		/datum/surgery_step/cauterize/reposition_flesh
+		/datum/surgery_step/cauterize/reposition_flesh,
 	)
 	requires_bodypart = FALSE
 	requires_bodypart_type = LIMB_DESTROYED
@@ -49,8 +49,9 @@
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_SUBOPTIMAL,
 		/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_AWFUL
-		)
+		/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
+		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_AWFUL,
+	)
 	time = 4 SECONDS
 
 /datum/surgery_step/peel_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -97,7 +98,7 @@
 	surgery.patient_head = tool
 
 	user.drop_inv_item_to_loc(surgery.patient_head, target)
-	surgery.affected_limb.robotize(TRUE)
+	surgery.affected_limb.robotize(surgery_in_progress = TRUE, uncalibrated = FALSE, synth_skin = TRUE)
 	target.updatehealth()
 	target.regenerate_icons()
 

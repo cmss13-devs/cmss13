@@ -9,11 +9,15 @@
 	docking_program = new/datum/computer/file/embedded_program/docking/simple(src)
 	program = docking_program
 
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/Destroy()
+	QDEL_NULL(docking_program)
+	return ..()
+
 //A docking controller program for a simple door based docking port
 /datum/computer/file/embedded_program/docking/simple
 	var/tag_door
 
-/datum/computer/file/embedded_program/docking/simple/New(var/obj/structure/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/docking/simple/New(obj/structure/machinery/embedded_controller/M)
 	..(M)
 	memory["door_status"] = list(state = "closed", lock = "locked") //assume closed and locked in case the doors dont report in
 
@@ -52,13 +56,13 @@
 				enable_override()
 
 
-/datum/computer/file/embedded_program/docking/simple/proc/signal_door(var/command)
+/datum/computer/file/embedded_program/docking/simple/proc/signal_door(command)
 	var/datum/signal/signal = new
 	signal.data["tag"] = tag_door
 	signal.data["command"] = command
 	post_signal(signal, RADIO_AIRLOCK)
 
-///datum/computer/file/embedded_program/docking/simple/proc/signal_mech_sensor(var/command)
+///datum/computer/file/embedded_program/docking/simple/proc/signal_mech_sensor(command)
 // signal_door(command)
 // return
 

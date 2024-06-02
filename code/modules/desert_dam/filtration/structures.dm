@@ -37,7 +37,7 @@
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "anti_air_cannon"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	layer = LADDER_LAYER
 	bound_width = 128
 	bound_height = 64
@@ -52,7 +52,7 @@
 	//bound_x = 96
 	//bound_y = 96
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	bound_width = 32
 	bound_height = 32
 
@@ -67,7 +67,7 @@
 /obj/structure/filtration/machine_32x64
 	icon = 'icons/obj/structures/props/32x64.dmi'
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	bound_width = 32
 	bound_height = 64
 
@@ -84,7 +84,7 @@
 	//bound_x = 96
 	//bound_y = 96
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	bound_width = 96
 	bound_height = 96
 
@@ -101,7 +101,7 @@
 	//bound_x = 96
 	//bound_y = 96
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	bound_width = 64
 	bound_height = 96
 
@@ -118,7 +118,7 @@
 	//bound_x = 96
 	//bound_y = 96
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	bound_width = 64
 	bound_height = 128
 
@@ -158,18 +158,25 @@
 	bound_height = 32
 	bound_width = 64
 
-/obj/structure/filtration/machine/distribution
-	name = "Distribution"
+/obj/structure/filtration/machine_96x96
+	icon = 'icons/obj/structures/props/96x96.dmi'
+
+/obj/structure/filtration/machine_96x96/distribution
+	name = "Waste Distribution System"
+	desc = "This machine separates the leftover waste from the purification processes to be discarded into space, recycled for supplies, or used for research."
 	icon_state = "distribution"
 
-/obj/structure/filtration/machine/sedementation
-	name = "Sedementation"
-	icon_state = "sedementation"
+/obj/structure/filtration/machine_96x96/sedimentation
+	name = "Sedimentation Filter"
+	desc = "A water filter specifically designed to capture and remove sediment, such as sand, silt, dirt, and rust, from water without removing the nutritious minerals for that crisp, clean taste every time."
+	icon_state = "sedimentation"
 
-/obj/structure/filtration/machine/filtration
-	name = "Filtration"
+/obj/structure/filtration/machine_96x96/filtration
+	name = "Water Filtration System"
+	desc = "A water filter that separates both organic and inorganic matter, hazardous waste, and corrosive acids from water so it may be further processed."
 	icon_state = "filtration"
 
-/obj/structure/filtration/machine/disinfection
-	name = "Disinfection"
+/obj/structure/filtration/machine_96x96/disinfection
+	name = "Disinfection Filter"
+	desc = "A water filter specifically designed to separate micro-organisms, such as viruses and bacteria, from water."
 	icon_state = "disinfection"

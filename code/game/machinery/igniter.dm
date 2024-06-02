@@ -5,8 +5,8 @@
 	icon_state = "igniter1"
 	plane = FLOOR_PLANE
 	var/id = null
-	var/on = 1.0
-	anchored = 1.0
+	var/on = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
@@ -53,17 +53,17 @@
 	var/disable = 0
 	var/last_spark = 0
 	var/base_state = "migniter"
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/machinery/sparker/power_change()
 	..()
 	if ( !(stat & NOPOWER) && disable == 0 )
 
 		icon_state = "[base_state]"
-// src.sd_SetLuminosity(2)
+// src.sd_set_light(2)
 	else
 		icon_state = "[base_state]-p"
-// src.sd_SetLuminosity(0)
+// src.sd_set_light(0)
 
 /obj/structure/machinery/sparker/attackby(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
@@ -105,11 +105,10 @@
 	return 1
 
 /obj/structure/machinery/sparker/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	ignite()
-	..(severity)
 
 /obj/structure/machinery/ignition_switch/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -125,11 +124,11 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/structure/machinery/sparker/M in machines)
+	for(var/obj/structure/machinery/sparker/M in GLOB.machines)
 		if (M.id == src.id)
 			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/sparker, ignite))
 
-	for(var/obj/structure/machinery/igniter/M in machines)
+	for(var/obj/structure/machinery/igniter/M in GLOB.machines)
 		if(M.id == src.id)
 			use_power(50)
 			M.on = !( M.on )

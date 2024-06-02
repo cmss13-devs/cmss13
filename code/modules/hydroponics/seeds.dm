@@ -5,7 +5,6 @@
 	icon_state = "seed"
 	flags_atom = NO_FLAGS
 	w_class = SIZE_TINY
-
 	var/seed_type
 	var/datum/seed/seed
 	var/modified = 0
@@ -51,8 +50,8 @@
 
 //Grabs the appropriate seed datum from the global list.
 /obj/item/seeds/proc/update_seed()
-	if(!seed && seed_type && !isnull(seed_types) && seed_types[seed_type])
-		seed = seed_types[seed_type]
+	if(!seed && seed_type && !isnull(GLOB.seed_types) && GLOB.seed_types[seed_type])
+		seed = GLOB.seed_types[seed_type]
 	update_appearance()
 
 //Updates strings and icon appropriately based on seed datum.
@@ -73,7 +72,8 @@
 
 /obj/item/seeds/cutting/update_appearance()
 	..()
-	src.name = "packet of [seed.seed_name] cuttings"
+
+	name = "packet of [seed.seed_name] cuttings"
 
 /obj/item/seeds/poppyseed
 	seed_type = "poppies"

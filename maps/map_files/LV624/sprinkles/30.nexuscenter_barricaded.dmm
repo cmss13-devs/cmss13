@@ -57,8 +57,7 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/main_hall)
 "ai" = (
@@ -107,7 +106,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "ap" = (
-/obj/item/weapon/melee/twohanded/fireaxe,
+/obj/item/weapon/twohanded/fireaxe,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -169,6 +168,7 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -425,10 +425,6 @@
 /area/lv624/lazarus/main_hall)
 "bc" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/surface/table{
-	dir = 4;
-	flipped = 1
-	},
 /obj/structure/surface/table{
 	flipped = 1
 	},
@@ -713,10 +709,6 @@
 /obj/structure/surface/table{
 	flipped = 1
 	},
-/obj/structure/surface/table{
-	dir = 8;
-	flipped = 1
-	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -877,7 +869,7 @@
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "Fu" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	density = 0;
 	icon_state = "door_open";
 	name = "\improper Nexus Cargo Storage"
@@ -903,8 +895,7 @@
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor{
 	dir = 9;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/main_hall)
 "Hf" = (
@@ -1022,8 +1013,7 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/main_hall)
 "Mf" = (
@@ -1037,15 +1027,14 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/main_hall)
 "Nk" = (
 /turf/closed/wall,
 /area/lv624/lazarus/kitchen)
 "NT" = (
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Marshal Office"
 	},
@@ -1066,7 +1055,7 @@
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "ON" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Nexus Dome Canteen"
 	},
 /turf/open/floor{

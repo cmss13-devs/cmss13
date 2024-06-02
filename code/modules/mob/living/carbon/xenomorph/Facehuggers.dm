@@ -14,9 +14,10 @@
 	flags_inventory = COVEREYES|ALLOWINTERNALS|COVERMOUTH|ALLOWREBREATH|CANTSTRIP
 	flags_armor_protection = BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_atom = NO_FLAGS
-	flags_item = NOBLUDGEON|NOTABLEMERGE
+	flags_item = NOBLUDGEON
 	throw_range = 1
 	layer = FACEHUGGER_LAYER
+	black_market_value = 20
 
 	var/stat = CONSCIOUS //UNCONSCIOUS is the idle state in this case
 	var/sterile = FALSE
@@ -37,6 +38,9 @@
 	/// the nearest human before dying
 	var/jumps_left = 2
 
+	var/time_to_live = 30 SECONDS
+	var/death_timer
+
 	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
 	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
 
@@ -53,6 +57,9 @@
 	icon = new_icon
 	set_hive_data(src, hivenumber)
 	go_active()
+
+	if (hivenumber != XENO_HIVE_TUTORIAL)
+		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
 
 /obj/item/clothing/mask/facehugger/Destroy()
@@ -74,8 +81,15 @@
 	if(QDESTROYING(src))
 		return
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
+
+	if(!death_timer && hivenumber != XENO_HIVE_TUTORIAL)
+		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
+
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
 		go_idle()
+	if(attached)
+		attached = FALSE
+		die()
 
 /obj/item/clothing/mask/facehugger/proc/check_turf()
 	var/count = 0
@@ -87,17 +101,17 @@
 			qdel(src)
 			return
 
-/obj/item/clothing/mask/facehugger/attack_hand(var/mob/user)
+/obj/item/clothing/mask/facehugger/attack_hand(mob/user)
 	if(stat != DEAD)
 		if(!sterile && can_hug(user, hivenumber))
 			attach(user)
 		//If we're alive, don't let them pick us up, even if attach fails. Just return.
-		if(!isXeno(user))
+		if(!isxeno(user))
 			return
 	return ..()
 
 //Deal with picking up facehuggers. "attack_alien" is the universal 'xenos click something while unarmed' proc.
-/obj/item/clothing/mask/facehugger/attack_alien(mob/living/carbon/Xenomorph/user)
+/obj/item/clothing/mask/facehugger/attack_alien(mob/living/carbon/xenomorph/user)
 	if(user.hivenumber != hivenumber)
 		user.animation_attack_on(src)
 		user.visible_message(SPAN_XENOWARNING("[user] crushes \the [src]"), SPAN_XENOWARNING("You crush \the [src]"))
@@ -112,8 +126,8 @@
 			attack_hand(user)//Not a carrier, or already full? Just pick it up.
 		return XENO_NO_DELAY_ACTION
 
-/obj/item/clothing/mask/facehugger/attack(mob/M, mob/user)
-	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.lying || M.buckled && !isYautja(M)))
+/obj/item/clothing/mask/facehugger/attack(mob/living/M, mob/user)
+	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.body_position == LYING_DOWN || M.buckled && !isyautja(M)))
 		to_chat(user, SPAN_WARNING("The facehugger refuses to attach."))
 		..()
 		return
@@ -126,7 +140,7 @@
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
 
-		if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.lying || M.buckled))
+		if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.body_position == LYING_DOWN || M.buckled))
 			return
 
 	attach(M)
@@ -136,8 +150,8 @@
 /obj/item/clothing/mask/facehugger/attack_self(mob/user)
 	..()
 
-	if(isXenoCarrier(user))
-		var/mob/living/carbon/Xenomorph/Carrier/C = user
+	if(iscarrier(user))
+		var/mob/living/carbon/xenomorph/carrier/C = user
 		C.store_hugger(src)
 
 /obj/item/clothing/mask/facehugger/get_examine_text(mob/user)
@@ -155,7 +169,7 @@
 		return
 	die()
 
-/obj/item/clothing/mask/facehugger/bullet_act(obj/item/projectile/P)
+/obj/item/clothing/mask/facehugger/bullet_act(obj/projectile/P)
 	..()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & (AMMO_XENO))
@@ -169,10 +183,18 @@
 	if(exposed_temperature > 300)
 		die()
 
-/obj/item/clothing/mask/facehugger/equipped(mob/M)
+/obj/item/clothing/mask/facehugger/equipped(mob/holder)
 	SHOULD_CALL_PARENT(FALSE) // ugh equip sounds
-	// So getting hugged or picking up a hugger does not
-	// prematurely kill the hugger
+	// So picking up a hugger does not prematurely kill it
+	if (!isxeno(holder))
+		return
+
+	var/mob/living/carbon/xenomorph/xeno = holder
+
+	if ((xeno.caste.hugger_nurturing || hivenumber == XENO_HIVE_TUTORIAL) && death_timer)
+		deltimer(death_timer)
+		death_timer = null
+
 	go_idle()
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
@@ -187,10 +209,10 @@
 		return TRUE
 	return FALSE
 
-/obj/item/clothing/mask/facehugger/launch_towards(var/datum/launch_metadata/LM)
-	..()
+/obj/item/clothing/mask/facehugger/launch_towards(datum/launch_metadata/LM)
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"
+	..()
 
 /obj/item/clothing/mask/facehugger/launch_impact(atom/hit_atom)
 	. = ..()
@@ -205,6 +227,11 @@
 
 	if(stat == UNCONSCIOUS)
 		return
+
+	// Force reset throw now because [/atom/movable/proc/launch_impact] only does that later on
+	// If we DON'T, step()'s move below can collide, rebound, trigger this proc again, into infinite recursion
+	throwing = FALSE
+	rebounding = FALSE
 
 	if(leaping && can_hug(L, hivenumber))
 		attach(L)
@@ -232,49 +259,67 @@
 	if(!target)
 		return FALSE
 
-	target.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [target]!"), \
-	SPAN_WARNING("The scuttling [src] leaps at [target]!"))
+	target.visible_message(SPAN_WARNING("[src] leaps at [target]!"), \
+	SPAN_WARNING("[src] leaps at [target]!"))
 	leaping = TRUE
 	throw_atom(target, 3, SPEED_FAST)
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M, var/silent = FALSE, var/knockout_mod = 1)
-	if(attached || !can_hug(M, hivenumber))
+/obj/item/clothing/mask/facehugger/proc/attach(mob/living/living_mob, silent = FALSE, knockout_mod = 1, mob/living/carbon/xenomorph/facehugger/hugger)
+	if(attached || !can_hug(living_mob, hivenumber))
 		return FALSE
 
 	// This is always going to be valid because of the can_hug check above
-	var/mob/living/carbon/human/H = M
-	attached = TRUE
+	var/mob/living/carbon/human/human = living_mob
 	if(!silent)
-		H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
+		human.visible_message(SPAN_DANGER("[src] leaps at [human]'s face!"))
 
-	if(isXeno(loc)) //Being carried? Drop it
-		var/mob/living/carbon/Xenomorph/X = loc
+	if(isxeno(loc)) //Being carried? Drop it
+		var/mob/living/carbon/xenomorph/X = loc
 		X.drop_inv_item_on_ground(src)
 
-	if(isturf(H.loc))
-		forceMove(H.loc)//Just checkin
+	if(isturf(human.loc))
+		forceMove(human.loc)//Just checkin
 
-	if(!H.handle_hugger_attachment(src))
+	if(!human.handle_hugger_attachment(src, hugger))
 		return FALSE
 
-	forceMove(H)
-	icon_state = initial(icon_state)
-	H.equip_to_slot(src, WEAR_FACE)
-	H.update_inv_wear_mask()
-	H.disable_lights()
-	H.disable_special_items()
-	if(isHumanStrict(H))
-		playsound(loc, H.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
-	if(!sterile)
-		if(!H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
-			H.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
+	attached = TRUE
 
-	addtimer(CALLBACK(src, PROC_REF(impregnate), H), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
+	forceMove(human)
+	icon_state = initial(icon_state)
+	human.equip_to_slot(src, WEAR_FACE)
+	human.update_inv_wear_mask()
+	human.disable_lights()
+	human.disable_special_items()
+	if(ishuman_strict(human))
+		playsound(loc, human.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
+	else if(isyautja(human))
+		playsound(loc, 'sound/voice/pred_facehugged.ogg', 65, FALSE)
+	if(!sterile)
+		if(!human.species || !(human.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
+			human.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
+
+	var/area/hug_area = get_area(src)
+	var/name = hugger ? "[hugger]" : "\a [src]"
+	if(hivenumber != XENO_HIVE_TUTORIAL) // prevent hugs from any tutorial huggers from showing up in dchat
+		if(hug_area)
+			notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name] at [hug_area]!", source = human, action = NOTIFY_ORBIT)
+			to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b>"))
+		else
+			notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name]!", source = human, action = NOTIFY_ORBIT)
+			to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b>"))
+
+	if(hug_area)
+		xeno_message(SPAN_XENOMINORWARNING("We sense that [name] has facehugged a host at \the [hug_area]!"), 1, hivenumber)
+	else
+		xeno_message(SPAN_XENOMINORWARNING("We sense that [name] has facehugged a host!"), 1, hivenumber)
+
+	addtimer(CALLBACK(src, PROC_REF(impregnate), human, hugger?.client?.ckey), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/impregnate(mob/living/carbon/human/target)
+/obj/item/clothing/mask/facehugger/proc/impregnate(mob/living/carbon/human/target, hugger_ckey = null)
 	if(!target || target.wear_mask != src) //Was taken off or something
 		return
 	if(SEND_SIGNAL(target, COMSIG_HUMAN_IMPREGNATE, src) & COMPONENT_NO_IMPREGNATE)
@@ -289,6 +334,8 @@
 		if(!embryos)
 			var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
 			embryo.hivenumber = hivenumber
+			embryo.hugger_ckey = hugger_ckey
+			GLOB.player_embryo_list += embryo
 
 			embryo.flags_embryo = flags_embryo
 			flags_embryo = NO_FLAGS
@@ -303,8 +350,8 @@
 	else
 		target.visible_message(SPAN_DANGER("[src] violates [target]'s face!"))
 
-	if(round_statistics && ishuman(target))
-		round_statistics.total_huggers_applied++
+	if(GLOB.round_statistics && ishuman(target))
+		GLOB.round_statistics.total_huggers_applied++
 
 /obj/item/clothing/mask/facehugger/proc/go_active()
 	if(stat == DEAD)
@@ -333,8 +380,8 @@
 	if(stat != CONSCIOUS || isnull(loc)) //Make sure we're conscious and not idle or dead.
 		return
 
-	if(isXeno(loc))
-		var/mob/living/carbon/Xenomorph/X = loc
+	if(isxeno(loc))
+		var/mob/living/carbon/xenomorph/X = loc
 		if(X.caste.hugger_nurturing) // caste can prevent hugger death
 			return
 
@@ -372,9 +419,16 @@
 	if(stat == DEAD)
 		return
 
+	if(attached && !impregnated)
+		return
+
 	if(jump_timer)
 		deltimer(jump_timer)
 	jump_timer = null
+
+	if(death_timer)
+		deltimer(death_timer)
+	death_timer = null
 
 	if(!impregnated)
 		icon_state = "[initial(icon_state)]_dead"
@@ -384,19 +438,22 @@
 	playsound(src.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 
 	if(ismob(loc)) //Make it fall off the person so we can update their icons. Won't update if they're in containers thou
-		var/mob/M = loc
-		M.drop_inv_item_on_ground(src)
+		var/mob/holder_mob = loc
+		holder_mob.drop_inv_item_on_ground(src)
 
-	layer = BELOW_MOB_LAYER //so dead hugger appears below live hugger if stacked on same tile.
+	layer = TURF_LAYER //so dead hugger appears below live hugger if stacked on same tile. (and below nested hosts)
 
-	addtimer(CALLBACK(src, PROC_REF(decay)), 3 MINUTES)
+	if(hivenumber == XENO_HIVE_TUTORIAL)
+		addtimer(CALLBACK(src, PROC_REF(decay)), 5 SECONDS)
+	else
+		addtimer(CALLBACK(src, PROC_REF(decay)), 3 MINUTES)
 
 /obj/item/clothing/mask/facehugger/proc/decay()
 	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] decays into a mass of acid and chitin.</span>")
 	qdel(src)
 
-/proc/can_hug(mob/living/carbon/M, var/hivenumber)
-	if(!istype(M) || isXeno(M) || isSynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || (M.huggable == FALSE))
+/proc/can_hug(mob/living/carbon/M, hivenumber)
+	if(!istype(M) || isxeno(M) || issynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || !M.huggable)
 		return FALSE
 
 	if(M.ally_of_hivenumber(hivenumber))
@@ -434,15 +491,14 @@
 /**
  * Human hugger handling
  */
-
-/mob/living/carbon/human/proc/handle_hugger_attachment(obj/item/clothing/mask/facehugger/hugger)
+/mob/living/carbon/human/proc/handle_hugger_attachment(obj/item/clothing/mask/facehugger/hugger, mob/living/carbon/xenomorph/facehugger/mob_hugger)
 	var/can_infect = TRUE
 	if(!has_limb("head"))
 		hugger.visible_message(SPAN_WARNING("[hugger] looks for a face to hug on [src], but finds none!"))
 		hugger.go_idle()
 		return FALSE
 
-	if(species && !species.handle_hugger_attachment(src, hugger))
+	if(species && !species.handle_hugger_attachment(src, hugger, mob_hugger))
 		return FALSE
 
 	if(head && !(head.flags_item & NODROP))
@@ -489,14 +545,14 @@
 
 	return can_infect
 
-/datum/species/proc/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger)
+/datum/species/proc/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger, mob/living/carbon/xenomorph/facehugger/mob_hugger)
 	return TRUE
 
-/datum/species/yautja/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger)
+/datum/species/yautja/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger,  mob/living/carbon/xenomorph/facehugger/mob_hugger)
 	var/catch_chance = 50
-	if(target.dir == reverse_dir[hugger.dir])
+	if(target.dir == GLOB.reverse_dir[hugger.dir])
 		catch_chance += 20
-	if(target.lying)
+	if(target.body_position == LYING_DOWN)
 		catch_chance -= 50
 	catch_chance -= ((target.maxHealth - target.health) / 3)
 	if(target.get_active_hand())
@@ -506,7 +562,10 @@
 
 	if(!target.stat && target.dir != hugger.dir && prob(catch_chance)) //Not facing away
 		target.visible_message(SPAN_NOTICE("[target] snatches [hugger] out of the air and squashes it!"))
-		hugger.die()
+		if(mob_hugger)
+			mob_hugger.death(create_cause_data("squished"))
+		else
+			hugger.die()
 		return FALSE
 
 	return TRUE

@@ -1,11 +1,11 @@
-/client/proc/cmd_admin_select_mob_rank(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+/client/proc/cmd_admin_select_mob_rank(mob/living/carbon/human/H in GLOB.human_mob_list)
 	set category = null
 	set name = "Select Rank"
 	if(!istype(H))
 		alert("Invalid mob")
 		return
 
-	var/rank_list = list("Custom", "Weyland-Yutani") + RoleAuthority.roles_by_name
+	var/rank_list = list("Custom", "Weyland-Yutani") + GLOB.RoleAuthority.roles_by_name
 
 	var/newrank = tgui_input_list(usr, "Select new rank for [H]", "Change the mob's rank and skills", rank_list)
 	if (!newrank)
@@ -14,8 +14,8 @@
 		return
 	var/obj/item/card/id/I = H.wear_id
 
-	if(RoleAuthority.roles_by_name[newrank])
-		var/datum/job/J = RoleAuthority.roles_by_name[newrank]
+	if(GLOB.RoleAuthority.roles_by_name[newrank])
+		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[newrank]
 		H.comm_title = J.get_comm_title()
 		H.set_skills(J.get_skills())
 		if(istype(I))
@@ -40,35 +40,18 @@
 	else
 		switch(newrank)
 			if("Weyland-Yutani")
-				var/code = "WY-"
-
-				var/divisions = get_named_wy_ranks("division_code")
-				var/div = tgui_input_list(usr, "Select the Division at which they belong to.", "Division", divisions)
-
-				if(!div)
-					return
-				code += divisions[div]
-
-				var/ranks = get_named_wy_ranks("job_code")
-				var/rank = tgui_input_list(usr, "Select the Rank at which they are at.", "Rank", ranks)
-
-				if(!rank)
-					return
-				code += ranks[rank]
-
-				H.apply_wy_rank_code(code)
 
 				H.faction = FACTION_WY
 				H.faction_group = FACTION_LIST_WY
 
-				var/newskillset = tgui_input_list(usr, "Select a skillset", "Skill Set", (list("Keep Skillset") +RoleAuthority.roles_by_name))
+				var/newskillset = tgui_input_list(usr, "Select a skillset", "Skill Set", (list("Keep Skillset") +GLOB.RoleAuthority.roles_by_name))
 				if(!newskillset || newskillset == "Keep Skillset")
 					return
 
 				if(!H)
 					return
 
-				var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
+				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[newskillset]
 				H.set_skills(J.get_skills())
 
 			if("Custom")
@@ -105,23 +88,23 @@
 					new_faction = FACTION_NEUTRAL
 				H.faction = new_faction
 
-				var/newskillset = tgui_input_list(usr, "Select a skillset", "Skill Set", RoleAuthority.roles_by_name)
+				var/newskillset = tgui_input_list(usr, "Select a skillset", "Skill Set", GLOB.RoleAuthority.roles_by_name)
 				if(!newskillset)
 					return
 
 				if(!H)
 					return
 
-				var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
+				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[newskillset]
 				H.set_skills(J.get_skills())
 
-/client/proc/cmd_admin_dress(var/mob/M)
+/client/proc/cmd_admin_dress(mob/M)
 	set category = null
 	set name = "Select Equipment"
 
 	cmd_admin_dress_human(M)
 
-/client/proc/cmd_admin_dress_human(var/mob/living/carbon/human/M in GLOB.human_mob_list, var/datum/equipment_preset/dresscode, var/no_logs = 0, var/count_participant = FALSE)
+/client/proc/cmd_admin_dress_human(mob/living/carbon/human/M in GLOB.human_mob_list, datum/equipment_preset/dresscode, no_logs = 0, count_participant = FALSE)
 	if (!no_logs)
 		dresscode = tgui_input_list(usr, "Select dress for [M]", "Robust quick dress shop", GLOB.gear_name_presets_list)
 
@@ -147,7 +130,7 @@
 
 	arm_equipment(M, dresscode, FALSE, count_participant)
 	if(!no_logs)
-		message_staff("[key_name_admin(usr)] changed the equipment of [key_name_admin(M)] to [dresscode].")
+		message_admins("[key_name_admin(usr)] changed the equipment of [key_name_admin(M)] to [dresscode].")
 	return
 
 /client/proc/cmd_admin_dress_all()
@@ -164,11 +147,11 @@
 	for(var/mob/living/carbon/human/M in GLOB.human_mob_list)
 		src.cmd_admin_dress_human(M, dresscode, 1)
 
-	message_staff("[key_name_admin(usr)] changed the equipment of ALL HUMANS to [dresscode].")
+	message_admins("[key_name_admin(usr)] changed the equipment of ALL HUMANS to [dresscode].")
 
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.
-/proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE, var/count_participant = FALSE, var/client/mob_client, var/show_job_gear = TRUE)
+/proc/arm_equipment(mob/living/carbon/human/M, dresscode, randomise = FALSE, count_participant = FALSE, client/mob_client, show_job_gear = TRUE)
 	if(ispath(dresscode))
 		if(!GLOB.gear_path_presets_list)
 			CRASH("arm_equipment !gear_path_presets_list")

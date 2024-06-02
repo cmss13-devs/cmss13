@@ -1,25 +1,77 @@
 /obj/item/device/professor_dummy_tablet
 	icon = 'icons/obj/items/devices.dmi'
-	name = "Professor DUMMY tablet"
+	name = "\improper Professor DUMMY tablet"
 	desc = "A Professor DUMMY Control Tablet."
 	suffix = "\[3\]"
 	icon_state = "Cotablet"
 	item_state = "Cotablet"
 
 	var/mob/living/carbon/human/linked_dummy
+	///Should the dummy be destroyed on hijack?
+	var/dust_on_hijack = FALSE
+
+/obj/item/device/professor_dummy_tablet/Initialize()
+	. = ..()
+	var/turf/actual_location = get_turf(src)
+	if(is_mainship_level(actual_location.z))
+		dust_on_hijack = TRUE
+	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_dummy_upon_hijack))
+
+/obj/item/device/professor_dummy_tablet/proc/destroy_dummy_upon_hijack()
+	SIGNAL_HANDLER
+
+	if(!dust_on_hijack)
+		return
+	if(!linked_dummy)
+		return
+	linked_dummy.visible_message(SPAN_WARNING("The [linked_dummy] suddenly disintegrates!"))
+	linked_dummy.dust(create_cause_data("hijack autodelete"))
 
 /obj/item/device/professor_dummy_tablet/Destroy()
+	UnregisterSignal(src, COMSIG_GLOB_HIJACK_LANDED)
 	linked_dummy = null
 	. = ..()
 
-/obj/item/device/professor_dummy_tablet/proc/link_mob(mob/living/carbon/human/H)
-	linked_dummy = H
+/**
+ * Checks if the user is adjacent to the dummy
+ *
+ * Returns TRUE if the user is adjacent to the dummy, FALSE otherwise
+ *
+ * * arg-1: The user
+ */
+/obj/item/device/professor_dummy_tablet/proc/is_adjacent_to_dummy(mob/user)
+	if (get_dist(linked_dummy, user) > 1)
+		to_chat(user, SPAN_WARNING("You are too far away from the dummy to use its tablet."))
+		return FALSE
+	return TRUE
+
+/obj/item/device/professor_dummy_tablet/proc/link_dummy(mob/living/carbon/human/dummy_to_link)
+	if(dummy_to_link)
+		linked_dummy = dummy_to_link
+		RegisterSignal(linked_dummy, COMSIG_PARENT_QDELETING, PROC_REF(self_delete))
+		return
+
+/obj/item/device/professor_dummy_tablet/proc/self_delete()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(linked_dummy, COMSIG_PARENT_QDELETING)
+	linked_dummy = null
+	if(isstorage(loc))
+		var/obj/item/storage/storage = loc
+		storage.remove_from_storage(src, get_turf(src))
+	qdel(src)
 
 /obj/item/device/professor_dummy_tablet/attack_self(mob/user as mob)
 	..()
 	interact(user)
 
 /obj/item/device/professor_dummy_tablet/interact(mob/user as mob)
+	if(isnull(linked_dummy))
+		return
+
+	if(!is_adjacent_to_dummy(user))
+		return
+
 	user.set_interaction(src)
 	var/dat = "<head><title>Professor DUMMY Control Tablet</title></head><body>"
 
@@ -35,8 +87,8 @@
 	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=reset'>Reset</A> \]"
 	dat += "<BR><hr>"
 
-	show_browser(user, dat, "Professor DUMMY Control Tablet", window_options="size=400x500")
-	onclose(user, "communications")
+	show_browser(user, dat, "Professor DUMMY Control Tablet", "dummytablet", window_options="size=400x500")
+	onclose(user, "dummytablet")
 	updateDialog()
 	return
 
@@ -90,9 +142,11 @@
 
 /obj/item/device/professor_dummy_tablet/Topic(href, href_list)
 	if(..()) return FALSE
+
+	if (!is_adjacent_to_dummy(usr))
+		return FALSE
+
 	usr.set_interaction(src)
-
-
 
 	switch(href_list["operation"])
 		if ("brute_damage_organ")

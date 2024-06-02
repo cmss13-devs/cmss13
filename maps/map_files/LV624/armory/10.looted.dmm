@@ -79,7 +79,6 @@
 	},
 /area/lv624/lazarus/main_hall)
 "l" = (
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "platingdmg3"
 	},
@@ -136,11 +135,8 @@
 	},
 /area/lv624/lazarus/security)
 "u" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Secure Vault APC";
-	pixel_x = -28;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "cult"
@@ -179,21 +175,9 @@
 	},
 /area/lv624/lazarus/armory)
 "B" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Armory"
-	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"K" = (
-/obj/item/stack/sheet/metal,
-/obj/structure/machinery/door_control{
-	id = "secure_inner_blast";
-	name = "Inner Blast Door";
-	pixel_x = 25;
-	pixel_y = 5
 	},
 /turf/open/floor{
 	icon_state = "cult"
@@ -273,7 +257,7 @@ i
 w
 w
 w
-K
+w
 p
 i
 "}

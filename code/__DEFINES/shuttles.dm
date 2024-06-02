@@ -5,6 +5,7 @@
 #define SHUTTLE_CALL    "called"
 #define SHUTTLE_DOCKED  "docked"
 #define SHUTTLE_STRANDED   "stranded"
+#define SHUTTLE_CRASHED   "crashed"
 #define SHUTTLE_ESCAPE  "escape"
 #define SHUTTLE_ENDGAME "endgame: game over"
 #define SHUTTLE_RECHARGING "recharging"
@@ -35,12 +36,12 @@
 #define GAMEMODE_IMMUNE (1<<0)
 
 // Ripples, effects that signal a shuttle's arrival
-#define SHUTTLE_RIPPLE_TIME 100
+#define SHUTTLE_RIPPLE_TIME 5 SECONDS
 
 #define TRANSIT_REQUEST 1
 #define TRANSIT_READY 2
 
-#define SHUTTLE_TRANSIT_BORDER 8
+#define SHUTTLE_TRANSIT_BORDER 16
 
 #define PARALLAX_LOOP_TIME 25
 #define HYPERSPACE_END_TIME 5
@@ -94,7 +95,50 @@
 #define MOBILE_SHUTTLE_ID_ERT1 "ert_response_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT2 "ert_pmc_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT3 "ert_upp_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT4 "ert_twe_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT_SMALL "ert_small_shuttle_north"
+#define MOBILE_SHUTTLE_ID_ERT_BIG "ert_shuttle_big"
+
+#define MOBILE_TRIJENT_ELEVATOR "trijentshuttle2"
+#define STAT_TRIJENT_EMPTY "trijent_empty"
+#define STAT_TRIJENT_OCCUPIED "trijent_occupied"
+#define STAT_TRIJENT_LZ1 "trijent_lz1"
+#define STAT_TRIJENT_LZ2 "trijent_lz2"
+#define STAT_TRIJENT_ENGI "trijent_engineering"
+#define STAT_TRIJENT_OMEGA "trijent_omega"
 
 #define MOBILE_SHUTTLE_LIFEBOAT_PORT "lifeboat-port"
 #define MOBILE_SHUTTLE_LIFEBOAT_STARBOARD "lifeboat-starboard"
 #define MOBILE_SHUTTLE_VEHICLE_ELEVATOR "vehicle_elevator"
+
+#define DROPSHIP_ALAMO "dropship_alamo"
+#define DROPSHIP_NORMANDY "dropship_normandy"
+
+#define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
+#define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"
+
+#define DROPSHIP_FLYBY_ID "special_flight"
+#define DROPSHIP_LZ1 "dropship-lz1"
+#define DROPSHIP_LZ2 "dropship-lz2"
+
+#define ESCAPE_SHUTTLE "escape-shuttle"
+#define ESCAPE_SHUTTLE_EAST "escape_shuttle_e"
+#define ESCAPE_SHUTTLE_EAST_CL "escape_shuttle_e_cl"
+#define ESCAPE_SHUTTLE_WEST "escape_shuttle_w"
+#define ESCAPE_SHUTTLE_NORTH "escape_shuttle_n"
+#define ESCAPE_SHUTTLE_SOUTH "escape_shuttle_s"
+
+#define ESCAPE_SHUTTLE_WEST_PREFIX "escape_shuttle_w"
+#define ESCAPE_SHUTTLE_EAST_PREFIX "escape_shuttle_e"
+#define ESCAPE_SHUTTLE_NORTH_PREFIX "escape_shuttle_n"
+#define ESCAPE_SHUTTLE_SOUTH_PREFIX "escape_shuttle_s"
+
+#define ESCAPE_SHUTTLE_DOCK_PREFIX "almayer-hangar-escape-shuttle-"
+
+#define ERT_SHUTTLE_DEFAULT_RECHARGE 90 SECONDS
+
+#define ADMIN_LANDING_PAD_1 "base-ert1"
+#define ADMIN_LANDING_PAD_2 "base-ert2"
+#define ADMIN_LANDING_PAD_3 "base-ert3"
+#define ADMIN_LANDING_PAD_4 "base-ert4"
+#define ADMIN_LANDING_PAD_5 "base-ert5"

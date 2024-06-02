@@ -9,7 +9,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
 
-/obj/structure/machinery/biogenerator/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/biogenerator/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -24,7 +24,7 @@
 	idle_power_usage = 20
 	active_power_usage = 50
 
-/obj/structure/machinery/computer3/New(var/L, var/built = 0)
+/obj/structure/machinery/computer3/New(L, built = 0)
 	..()
 	spawn(2)
 		power_change()
@@ -32,7 +32,7 @@
 	update_icon()
 	start_processing()
 
-/obj/structure/machinery/computer3/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/computer3/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -68,7 +68,7 @@
 	anchored = TRUE
 	density = TRUE
 
-/obj/structure/machinery/lapvend/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/lapvend/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -80,7 +80,7 @@
 	icon = 'icons/obj/structures/props/mech.dmi'
 	icon_state = "recharge_port"
 
-/obj/structure/machinery/mech_bay_recharge_port/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/mech_bay_recharge_port/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -96,7 +96,7 @@
 	idle_power_usage = 20
 	active_power_usage = 5000
 
-/obj/structure/machinery/mecha_part_fabricator/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/mecha_part_fabricator/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM

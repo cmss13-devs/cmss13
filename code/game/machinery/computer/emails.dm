@@ -22,7 +22,7 @@
 		email_list += new path()
 
 /obj/structure/machinery/computer/emails/Destroy()
-	email_list = null
+	QDEL_NULL_LIST(email_list)
 	. = ..()
 
 

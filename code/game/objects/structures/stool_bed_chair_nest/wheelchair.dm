@@ -2,7 +2,7 @@
 	name = "wheelchair"
 	desc = "You sit in this. Either by will or force."
 	icon_state = "wheelchair"
-	anchored = 0
+	anchored = FALSE
 	drag_delay = 1 //pulling something on wheels is easy
 	picked_up_item = null
 	var/bloodiness = 0
@@ -20,7 +20,7 @@
 	if(world.time <= l_move_time + move_delay)
 		return
 	// Redundant check?
-	if(user.is_mob_incapacitated() || user.lying)
+	if(user.is_mob_incapacitated())
 		return
 
 	if(propelled) //can't manually move it mid-propelling.
@@ -81,7 +81,7 @@
 		occupant.apply_effect(6, STUTTER)
 		occupant.apply_damage(10, BRUTE, def_zone)
 		playsound(src.loc, 'sound/weapons/punch1.ogg', 25, 1)
-		if(ishuman(A) && !isYautja(A))
+		if(ishuman(A) && !isyautja(A))
 			var/mob/living/victim = A
 			def_zone = rand_zone()
 			victim.apply_effect(6, STUN)
@@ -103,3 +103,8 @@
 			newdir = EAST
 		B.setDir(newdir)
 	bloodiness--
+
+/obj/structure/bed/chair/wheelchair/do_buckle(mob/target, mob/user)
+	if(ishuman(target) && ishuman(user))
+		ADD_TRAIT(target, TRAIT_USING_WHEELCHAIR, TRAIT_SOURCE_BUCKLE)
+	. = ..()

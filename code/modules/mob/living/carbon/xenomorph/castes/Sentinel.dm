@@ -25,8 +25,11 @@
 	tacklestrength_max = 4
 
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
+	minimap_icon = "sentinel"
 
-/mob/living/carbon/Xenomorph/Sentinel
+	minimum_evolve_time = 5 MINUTES
+
+/mob/living/carbon/xenomorph/sentinel
 	caste_type = XENO_CASTE_SENTINEL
 	name = XENO_CASTE_SENTINEL
 	desc = "A slithery, spitting kind of alien."
@@ -45,14 +48,18 @@
 		/datum/action/xeno_action/activable/slowing_spit, //first macro
 		/datum/action/xeno_action/activable/scattered_spit, //second macro
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	mutation_type = SENTINEL_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/sentinel.dmi'
 	icon_xenonid = 'icons/mob/xenonids/sentinel.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
+	weed_food_states = list("Drone_1","Drone_2","Drone_3")
+	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
 /datum/behavior_delegate/sentinel_base
 	name = "Base Sentinel Behavior Delegate"
@@ -66,7 +73,7 @@
 	if (!next_slash_buffed)
 		return original_damage
 
-	if (!isXenoOrHuman(carbon_target))
+	if (!isxeno_human(carbon_target))
 		return original_damage
 
 	if(skillcheck(carbon_target, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))
@@ -80,9 +87,9 @@
 			next_slash_buffed = FALSE
 			return //species like zombies or synths are immune to neurotoxin
 	if (next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You add neurotoxin into your attack, [carbon_target] is about to fall over paralyzed!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We add neurotoxin into our attack, [carbon_target] is about to fall over paralyzed!"))
 		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
-		carbon_target.sway_jitter(times = 3, steps = round(NEURO_TOUCH_DELAY/3))
+		carbon_target.sway_jitter(times = 3, steps = floor(NEURO_TOUCH_DELAY/3))
 		carbon_target.apply_effect(4, DAZE)
 		addtimer(CALLBACK(src, PROC_REF(paralyzing_slash), carbon_target), NEURO_TOUCH_DELAY)
 		next_slash_buffed = FALSE
@@ -95,5 +102,6 @@
 #undef NEURO_TOUCH_DELAY
 
 /datum/behavior_delegate/sentinel_base/proc/paralyzing_slash(mob/living/carbon/human/human_target)
-	human_target.apply_effect(2, WEAKEN)
+	human_target.KnockDown(2)
+	human_target.Stun(2)
 	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the toxin!"))

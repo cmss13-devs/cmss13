@@ -19,14 +19,43 @@
 
 /datum/food_processor_process/process(loc, what)
 	if (src.output && loc)
-		new src.output(loc)
+		var/obj/item/reagent_container/food/snacks/created_food = new src.output(loc)
+		var/obj/item/reagent_container/food/snacks/original_food = what
+		if(original_food.made_from_player)
+			created_food.made_from_player = original_food.made_from_player
+			created_food.name = (created_food.made_from_player + created_food.name)
 	if (what)
 		qdel(what)
 
+/datum/food_processor_process/proc/can_use(mob/user)
+	// By default, anyone can do it.
+	return TRUE
+
 	/* objs */
+
+/datum/food_processor_process/xenomeat
+	input = /obj/item/reagent_container/food/snacks/meat/xenomeat
+	output = /obj/item/reagent_container/food/snacks/meat/xenomeat/processed
+
+/datum/food_processor_process/xenomeat/can_use(mob/user)
+	if(!skillcheck(user, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
+		to_chat(user, SPAN_DANGER("You aren't trained to remove dangerous substances from food!"))
+		return FALSE
+	return TRUE	
+
 /datum/food_processor_process/meat
 	input = /obj/item/reagent_container/food/snacks/meat
 	output = /obj/item/reagent_container/food/snacks/rawmeatball
+
+/datum/food_processor_process/carpmeat
+	input = /obj/item/reagent_container/food/snacks/carpmeat
+	output = /obj/item/reagent_container/food/snacks/carpmeat/processed
+
+/datum/food_processor_process/carpmeat/can_use(mob/user)
+	if(!skillcheck(user, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
+		to_chat(user, SPAN_DANGER("You aren't trained to remove dangerous substances from food!"))
+		return FALSE
+	return TRUE	
 
 /datum/food_processor_process/potato
 	input = /obj/item/reagent_container/food/snacks/grown/potato
@@ -56,12 +85,12 @@
 /datum/food_processor_process/mob/process(loc, what)
 	..()
 
-/obj/structure/machinery/processor/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/processor/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
-/obj/structure/machinery/processor/proc/select_recipe(var/X)
+/obj/structure/machinery/processor/proc/select_recipe(X)
 	for (var/Type in typesof(/datum/food_processor_process) - /datum/food_processor_process - /datum/food_processor_process/mob)
 		var/datum/food_processor_process/P = new Type()
 		if (!istype(X, P.input))
@@ -69,7 +98,7 @@
 		return P
 	return 0
 
-/obj/structure/machinery/processor/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/processor/attackby(obj/item/O as obj, mob/user as mob)
 	if(processing)
 		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
 		return 1
@@ -88,12 +117,14 @@
 	if (!P)
 		to_chat(user, SPAN_DANGER("That probably won't blend."))
 		return 1
+	if(!P.can_use(user))
+		return 1
 	user.visible_message("[user] put [what] into [src].", \
-		"You put the [what] into [src].")
+		"You put [what] into [src].")
 	user.drop_held_item()
 	what.forceMove(src)
 
-/obj/structure/machinery/processor/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/processor/attack_hand(mob/user as mob)
 	if (src.stat != 0) //NOPOWER etc
 		return
 	if(src.processing)
@@ -118,4 +149,3 @@
 		src.processing = 0
 	src.visible_message(SPAN_NOTICE("\the [src] finished processing."), \
 		"You hear the food processor stopping/")
-

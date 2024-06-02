@@ -6,6 +6,7 @@
 	circuit = /obj/item/circuitboard/computer/arcade
 	unacidable = FALSE
 	density = TRUE
+	black_market_value = 35 //mendoza likes games
 	var/enemy_name = "Fury Fuhrer"
 	var/temp = "Sponsored by Weyland-Yutani and the United States Colonial Marines" //Temporary message, for attack messages, etc
 	var/player_hp = 30 //Player health/attack points
@@ -164,8 +165,8 @@
 	return
 
 /obj/structure/machinery/computer/arcade/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	var/empprize = null
 	var/num_of_prizes = 0
@@ -177,5 +178,3 @@
 	for(num_of_prizes; num_of_prizes > 0; num_of_prizes--)
 		empprize = pickweight(prizes)
 		new empprize(src.loc)
-
-	..(severity)

@@ -114,3 +114,21 @@
 /datum/config_entry/string/nightmare_path
 	config_entry_value = "maps/Nightmare/"
 
+/datum/config_entry/flag/events_disallowed
+	config_entry_value = FALSE
+
+
+///Used to determine how many extra larva you want per burst. Supports fractions. See /datum/hive_status/proc/increase_larva_after_burst()
+/datum/config_entry/number/extra_larva_per_burst
+	config_entry_value = 1
+	integer = FALSE
+
+/datum/config_entry/number/embryo_burst_timer
+	min_val = 1
+	config_entry_value = 450
+	integer = TRUE
+
+/datum/config_entry/number/whiskey_required_players
+	min_val = 0
+	config_entry_value = 140
+	integer = TRUE

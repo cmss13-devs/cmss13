@@ -2,8 +2,8 @@
 ##Path/can_vv_get(var_name){\
 	return FALSE;\
 }\
-##Path/is_datum_protected(){\
-	return TRUE;\
+##Path/vv_edit_var(var_name, var_value){\
+	return FALSE;\
 }\
 ##Path/CanProcCall(procname){\
 	return FALSE;\

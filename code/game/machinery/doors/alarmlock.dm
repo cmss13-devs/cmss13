@@ -17,8 +17,12 @@
 	. = ..()
 	SSradio.remove_object(src, air_frequency)
 	air_connection = SSradio.add_object(src, air_frequency, RADIO_TO_AIRALARM)
-	open()
+	INVOKE_ASYNC(src, PROC_REF(open))
 
+/obj/structure/machinery/door/airlock/alarmlock/Destroy()
+	SSradio.remove_object(src, air_frequency)
+	air_connection = null
+	return ..()
 
 /obj/structure/machinery/door/airlock/alarmlock/receive_signal(datum/signal/signal)
 	..()
@@ -29,8 +33,6 @@
 	var/alert = signal.data["alert"]
 
 	var/area/our_area = get_area(src)
-	if (our_area.master)
-		our_area = our_area.master
 
 	if(alarm_area == our_area.name)
 		switch(alert)

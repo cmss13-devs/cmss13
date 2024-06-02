@@ -1,4 +1,4 @@
-var/list/department_radio_keys = list(
+GLOBAL_LIST_INIT(department_radio_keys, list(
 	":i" = RADIO_CHANNEL_INTERCOM, ".i" = RADIO_CHANNEL_INTERCOM, "#i" = RADIO_CHANNEL_INTERCOM,
 	":h" = RADIO_CHANNEL_DEPARTMENT, ".h" = RADIO_CHANNEL_DEPARTMENT, "#h" = RADIO_CHANNEL_DEPARTMENT,
 	":w" = RADIO_MODE_WHISPER, ".w" = RADIO_MODE_WHISPER, "#w" = RADIO_MODE_WHISPER,
@@ -22,6 +22,8 @@ var/list/department_radio_keys = list(
 	":o" = RADIO_CHANNEL_COLONY, ".o" = RADIO_CHANNEL_COLONY, "#o" = RADIO_CHANNEL_PMC_CCT,
 	":z" = RADIO_CHANNEL_HIGHCOM, ".z" = RADIO_CHANNEL_HIGHCOM, "#z" = RADIO_CHANNEL_PMC_CMD,
 	":k" = SQUAD_SOF, ".k" = SQUAD_SOF, "#k" = RADIO_CHANNEL_WY_WO,
+	":q" = RADIO_CHANNEL_ROYAL_MARINE, ".q" = RADIO_CHANNEL_ROYAL_MARINE,
+	":r" = RADIO_CHANNEL_PROVOST, ".r" = RADIO_CHANNEL_PROVOST, "#r" = RADIO_CHANNEL_PROVOST,
 
 	":I" = RADIO_CHANNEL_INTERCOM, ".I" = RADIO_CHANNEL_INTERCOM, "#I" = RADIO_CHANNEL_INTERCOM,
 	":H" = RADIO_CHANNEL_DEPARTMENT, ".H" = RADIO_CHANNEL_DEPARTMENT, "#H" = RADIO_CHANNEL_DEPARTMENT,
@@ -45,18 +47,20 @@ var/list/department_radio_keys = list(
 	":O" = RADIO_CHANNEL_COLONY, ".O" = RADIO_CHANNEL_COLONY, "#O" = RADIO_CHANNEL_PMC_CCT,
 	":Z" = RADIO_CHANNEL_HIGHCOM, ".Z" = RADIO_CHANNEL_HIGHCOM, "#Z" = RADIO_CHANNEL_PMC_CMD,
 	":K" = SQUAD_SOF, ".K" = SQUAD_SOF, "#K" = RADIO_CHANNEL_WY_WO,
-)
+	":Q" = RADIO_CHANNEL_ROYAL_MARINE, ".Q" = RADIO_CHANNEL_ROYAL_MARINE,
+	":R" = RADIO_CHANNEL_PROVOST, ".R" = RADIO_CHANNEL_PROVOST, "#R" = RADIO_CHANNEL_PROVOST,
+))
 
 /proc/channel_to_prefix(channel)
 	var/channel_key
-	for(var/key in department_radio_keys)
-		if(department_radio_keys[key] == channel)
+	for(var/key in GLOB.department_radio_keys)
+		if(GLOB.department_radio_keys[key] == channel)
 			channel_key = key
 			break
 	return channel_key
 
 /proc/prefix_to_channel(prefix)
-	return department_radio_keys[prefix]
+	return GLOB.department_radio_keys[prefix]
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
 /mob/living/proc/show_speech_bubble(bubble_name, bubble_type = bubble_icon)
@@ -69,12 +73,10 @@ var/list/department_radio_keys = list(
 
 	addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
-/mob/living/proc/remove_speech_bubble(var/mutable_appearance/speech_bubble, var/list_of_mobs)
+/mob/living/proc/remove_speech_bubble(mutable_appearance/speech_bubble, list_of_mobs)
 	overlays -= speech_bubble
 
-	speech_bubble = null
-
-/mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
+/mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = GLOB.world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
 	var/turf/T
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
@@ -92,7 +94,7 @@ var/list/department_radio_keys = list(
 		if (speaking)
 			if (speaking.flags & NONVERBAL)
 				if (prob(30))
-					src.custom_emote(1, "[pick(speaking.signlang_verb)].")
+					manual_emote(pick(speaking.signlang_verb))
 
 			if (speaking.flags & SIGNLANG)
 				say_signlang(message, pick(speaking.signlang_verb), speaking)
@@ -100,6 +102,12 @@ var/list/department_radio_keys = list(
 
 		var/list/listening = list()
 		var/list/listening_obj = list()
+
+		if(HAS_TRAIT(src, TRAIT_LISPING))
+			var/old_message = message
+			message = lisp_replace(message)
+			if(old_message != message)
+				verb = "lisps"
 
 		if(T)
 			var/list/hearturfs = list()
@@ -110,6 +118,13 @@ var/list/department_radio_keys = list(
 					listening += M
 					hearturfs += M.locs[1]
 					for(var/obj/O in M.contents)
+						var/obj/item/clothing/worn_item = O
+						if((O.flags_atom & USES_HEARING) || ((istype(worn_item) && worn_item.accessories)))
+							listening_obj |= O
+				else if(istype(I, /obj/structure/surface))
+					var/obj/structure/surface/table = I
+					hearturfs += table.locs[1]
+					for(var/obj/O in table.contents)
 						if(O.flags_atom & USES_HEARING)
 							listening_obj |= O
 				else if(istype(I, /obj/))
@@ -126,18 +141,16 @@ var/list/department_radio_keys = list(
 					listening |= M
 
 		var/speech_bubble_test = say_test(message)
-		var/image/speech_bubble = image(icon = 'icons/mob/effects/talk.dmi', loc = src, icon_state = "[bubble_type][speech_bubble_test]")
-		speech_bubble.plane = ABOVE_GAME_PLANE
+		var/image/speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_type][speech_bubble_test]", FLY_LAYER)
 
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)
 			langchat_speech(message, listening, speaking)
 		for(var/mob/M as anything in listening)
-			if(not_dead_speaker)
-				M << speech_bubble
 			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
+		overlays += speech_bubble
 
-		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble, listening), 30)
+		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
 		for(var/obj/O as anything in listening_obj)
 			if(O) //It's possible that it could be deleted in the meantime.
@@ -152,15 +165,15 @@ var/list/department_radio_keys = list(
 		if(message_mode) // we are talking into a radio
 			if(message_mode == "headset") // default value, means general
 				message_mode = "General"
-			log_say("[name != "Unknown" ? name : "([real_name])"] \[[message_mode]\]: [message] (CKEY: [key]) (JOB: [job])")
+			log_say("[name != "Unknown" ? name : "([real_name])"] \[[message_mode]\]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
 		else // we talk normally
-			log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key]) (JOB: [job])")
+			log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
 	else
-		log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key])")
+		log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key]) (AREA: [get_area_name(loc)])")
 
 	return 1
 
-/mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)
+/mob/living/proc/say_signlang(message, verb="gestures", datum/language/language)
 	for (var/mob/O in viewers(src, null))
 		O.hear_signlang(message, verb, language, src)
 

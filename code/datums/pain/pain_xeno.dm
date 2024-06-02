@@ -9,5 +9,5 @@
 	threshold_severe = null
 	threshold_horrible = null
 
-/datum/pain/xeno/apply_pain(var/amount = 0, var/type = BRUTE)
+/datum/pain/xeno/apply_pain(amount = 0, type = BRUTE)
 	return FALSE

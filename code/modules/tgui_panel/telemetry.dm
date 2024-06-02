@@ -86,7 +86,7 @@
 
 		// Check for a malformed history object
 		if (!row || row.len < 3 || (!row["ckey"] || !row["address"] || !row["computer_id"]))
-			return
+			continue
 
 		/* TODO - Reintroduce this when we get a proper round ID tracking,
 			and we want to log it to database
@@ -103,7 +103,7 @@
 			continue
 		*/
 
-		if (world.IsBanned(row["ckey"], row["address"], row["computer_id"], real_bans_only = TRUE))
+		if (world.IsBanned(row["ckey"], row["address"], row["computer_id"], real_bans_only = TRUE, is_telemetry = TRUE))
 			found = row
 			break
 
@@ -112,6 +112,6 @@
 	// This fucker has a history of playing on a banned account.
 	if(found)
 		var/msg = "[key_name(client)] has a banned account in connection history! (Matched: [found["ckey"]], [found["address"]], [found["computer_id"]])"
-		message_staff(msg)
+		message_admins(msg)
 		log_admin_private(msg)
 		//log_suspicious_login(msg, access_log_mirror = FALSE)

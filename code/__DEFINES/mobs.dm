@@ -1,24 +1,25 @@
+/// Multiplier for Stun/KD/KO/etc durations in new backend, due to old system being based on life ticks
+#define GLOBAL_STATUS_MULTIPLIER 20 // each in-code unit is worth 20ds of duration
+
 #define HEALTH_THRESHOLD_DEAD -100
 #define HEALTH_THRESHOLD_CRIT -50
 
 //Some mob defines below
 #define AI_CAMERA_LUMINOSITY 6
 
-#define BORGMESON 1
-#define BORGTHERM 2
-#define BORGXRAY  4
+#define BORGMESON (1<<0)
+#define BORGTHERM (1<<1)
+#define BORGXRAY  (1<<2)
 
 #define OVEREAT_TIME 200
 
 //=================================================
-#define ALIEN_SELECT_AFK_BUFFER 1 // How many minutes that a person can be AFK before not being allowed to be an alien.
-
 #define HEAT_DAMAGE_LEVEL_1 2 //Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 4 //Amount of damage applied when your body temperature passes the 400K point
 #define HEAT_DAMAGE_LEVEL_3 8 //Amount of damage applied when your body temperature passes the 1000K point
 
 #define COLD_DAMAGE_LEVEL_1 0.2 //Amount of damage applied when your body temperature just passes the 260.15k safety point
-#define COLD_DAMAGE_LEVEL_2 1.0 //Amount of damage applied when your body temperature passes the 200K point
+#define COLD_DAMAGE_LEVEL_2 1 //Amount of damage applied when your body temperature passes the 200K point
 #define COLD_DAMAGE_LEVEL_3 2 //Amount of damage applied when your body temperature passes the 120K point
 
 //Note that gas heat damage is only applied once every FOUR ticks.
@@ -45,12 +46,10 @@
 //=================================================
 
 //disabilities
-#define NEARSIGHTED 1
-#define EPILEPSY 2
-#define COUGHING 4
-#define TOURETTES 8
-#define NERVOUS 16
-#define OPIATE_RECEPTOR_DEFICIENCY 32
+#define NEARSIGHTED (1<<0)
+
+#define NERVOUS (1<<4)
+#define OPIATE_RECEPTOR_DEFICIENCY (1<<5)
 //=================================================
 
 //sdisabilities
@@ -90,18 +89,20 @@
 #define DAZE "daze"
 #define SLOW "slow"
 #define SUPERSLOW "superslow"
+#define ROOT "root"
+
 //=================================================
 
 //I hate adding defines like this but I'd much rather deal with bitflags than lists and string searches
-#define BRUTELOSS 1
-#define FIRELOSS 2
-#define TOXLOSS 4
-#define OXYLOSS 8
+#define BRUTELOSS (1<<0)
+#define FIRELOSS (1<<1)
+#define TOXLOSS (1<<2)
+#define OXYLOSS (1<<3)
 //=================================================
 
 //Bitflags defining which status effects could be or are inflicted on a mob
 
-#define STATUS_FLAGS_DEBILITATE (CANSTUN|CANKNOCKOUT|CANDAZE|CANSLOW)
+#define STATUS_FLAGS_DEBILITATE (CANSTUN|CANKNOCKOUT|CANDAZE|CANSLOW|CANROOT)
 
 #define CANSTUN (1<<0)
 #define CANKNOCKDOWN (1<<1)
@@ -109,6 +110,7 @@
 #define CANPUSH (1<<3)
 #define LEAPING (1<<4)
 #define PASSEMOTES (1<<5) //holders inside of mob that need to see emotes.
+#define CANROOT (1<<6)
 #define GODMODE (1<<12)
 #define FAKEDEATH (1<<13) //Replaces stuff like changeling.changeling_fakedeath
 #define DISFIGURED (1<<14) //I'll probably move this elsewhere if I ever get wround to writing a bitflag mob-damage system
@@ -118,6 +120,7 @@
 #define CANDAZE (1<<18)
 #define CANSLOW (1<<19)
 #define NO_PERMANENT_DAMAGE (1<<20)
+#define CORRUPTED_ALLY (1<<21)
 
 // =============================
 // hive types
@@ -133,8 +136,11 @@
 #define XENO_HIVE_MUTATED "xeno_hive_mutated"
 #define XENO_HIVE_FORSAKEN "xeno_hive_forsaken"
 #define XENO_HIVE_YAUTJA "xeno_hive_yautja"
+#define XENO_HIVE_RENEGADE "xeno_hive_renegade"
 
-#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA)
+#define XENO_HIVE_TUTORIAL "xeno_hive_tutorial"
+
+#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA, XENO_HIVE_RENEGADE, XENO_HIVE_TUTORIAL)
 
 //=================================================
 
@@ -142,8 +148,8 @@
 // slowdowns
 #define XENO_SLOWED_AMOUNT 0.7
 #define XENO_SUPERSLOWED_AMOUNT 1.5
-#define HUMAN_SLOWED_AMOUNT 2.0
-#define HUMAN_SUPERSLOWED_AMOUNT 4.0
+#define HUMAN_SLOWED_AMOUNT 2
+#define HUMAN_SUPERSLOWED_AMOUNT 4
 
 // Adds onto HUMAN_*****_AMOUNT
 #define YAUTJA_SLOWED_AMOUNT -1.25 // 0.75s slowdown
@@ -187,30 +193,30 @@
 //=================================================
 
 //Language flags.
-#define WHITELISTED 1 // Language is available if the speaker is whitelisted.
-#define RESTRICTED 2 // Language can only be accquired by spawning or an admin.
-#define NONVERBAL 4 // Language has a significant non-verbal component. Speech is garbled without line-of-sight
-#define SIGNLANG 8 // Language is completely non-verbal. Speech is displayed through emotes for those who can understand.
-#define HIVEMIND 16  // Broadcast to all mobs with this language.
+#define WHITELISTED (1<<0) // Language is available if the speaker is whitelisted.
+#define RESTRICTED (1<<1) // Language can only be accquired by spawning or an admin.
+#define NONVERBAL (1<<2) // Language has a significant non-verbal component. Speech is garbled without line-of-sight
+#define SIGNLANG (1<<3) // Language is completely non-verbal. Speech is displayed through emotes for those who can understand.
+#define HIVEMIND (1<<4)  // Broadcast to all mobs with this language.
 //=================================================
 
 //Species flags.
-#define NO_BLOOD  (1<<0)
-#define NO_BREATHE    (1<<1)
+#define NO_BLOOD (1<<0)
+#define NO_BREATHE (1<<1)
 #define NO_CLONE_LOSS (1<<2)
-#define NO_SLIP   (1<<3)
+#define NO_SLIP (1<<3)
 #define NO_POISON (1<<4)
-#define NO_CHEM_METABOLIZATION   (1<<5) //Prevents reagents from acting on_mob_life().
+#define NO_CHEM_METABOLIZATION (1<<5) //Prevents reagents from acting on_mob_life().
 #define HAS_SKIN_TONE (1<<6)
-#define HAS_SKIN_COLOR    (1<<7)
-#define HAS_LIPS  (1<<8)
+#define HAS_SKIN_COLOR (1<<7)
+#define HAS_LIPS (1<<8)
 #define HAS_UNDERWEAR (1<<9)
-#define IS_WHITELISTED    (1<<10)
-#define IS_SYNTHETIC  (1<<11)
-#define NO_NEURO  (1<<12)
+#define IS_WHITELISTED (1<<10)
+#define IS_SYNTHETIC (1<<11)
+#define NO_NEURO (1<<12)
 #define SPECIAL_BONEBREAK (1<<13) //species do not get their bonebreak chance modified by endurance
-#define NO_SHRAPNEL   (1<<14)
-#define HAS_HARDCRIT  (1<<15)
+#define NO_SHRAPNEL (1<<14)
+#define HAS_HARDCRIT (1<<15)
 
 //=================================================
 
@@ -223,6 +229,7 @@
 //Mob sizes
 #define MOB_SIZE_SMALL 0
 #define MOB_SIZE_HUMAN 1
+#define MOB_SIZE_XENO_VERY_SMALL 1.5
 #define MOB_SIZE_XENO_SMALL 2
 #define MOB_SIZE_XENO 3
 #define MOB_SIZE_BIG 4
@@ -303,75 +310,7 @@
 #define CAN_HOLD_TWO_HANDS 1
 #define CAN_HOLD_ONE_HAND 2
 
-// ------------ //
-// STRAIN FLAGS //
-// ------------ //
-
-// Queen strain flags
-#define QUEEN_NORMAL "Normal"
-
-// Drone strain flags
-#define DRONE_NORMAL "Normal"
-#define DRONE_HEALER "Healer"
-#define DRONE_GARDENER "Gardener"
-
-// Hivelord strain flags
-#define HIVELORD_NORMAL "Normal"
-#define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
-
-// Carrier strain flags
-#define CARRIER_NORMAL "Normal"
-#define CARRIER_SHAMAN "Shaman"
-#define CARRIER_EGGSAC "Eggsac"
-
-// Burrower strain flags
-#define BURROWER_NORMAL "Normal"
-#define BURROWER_TREMOR "Tremor"
-
-// Sentinel strain flags
-#define SENTINEL_NORMAL "Normal"
-
-// Spitter strain flags
-#define SPITTER_NORMAL "Normal"
-
-// Boiler strain flags
-#define BOILER_NORMAL "Normal"
-#define BOILER_TRAPPER "Trapper"
-
-// Runner strain flags
-#define RUNNER_NORMAL "Normal"
-#define RUNNER_ACIDER "Acider"
-
-// Lurker strain flags
-#define LURKER_NORMAL "Normal"
-#define LURKER_VAMPIRE   "Vampire"
-// Ravager strain flags
-#define RAVAGER_NORMAL "Normal"
-#define RAVAGER_HEDGEHOG "Hedgehog"
-#define RAVAGER_BERSERKER   "Berserker"
-
-// Defender strain flags
-#define DEFENDER_NORMAL "Normal"
-#define DEFENDER_STEELCREST "Steelcrest"
-
-// Warrior strain flags
-#define WARRIOR_NORMAL "Normal"
-
-// Crusher strain flags
-#define CRUSHER_NORMAL "Normal"
-#define CRUSHER_CHARGER "Charger"
-
-// Praetorian strain flags
-#define PRAETORIAN_NORMAL   "Normal"
-#define PRAETORIAN_VANGUARD "Vanguard"
-#define PRAETORIAN_DANCER   "Dancer"
-#define PRAETORIAN_WARDEN   "Warden"
-#define PRAETORIAN_OPPRESSOR  "Oppressor"
-
-// Hellhound strain flags
-#define HELLHOUND_NORMAL "Normal"
-
-var/list/default_onmob_icons = list(
+GLOBAL_LIST_INIT(default_onmob_icons, list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/belt.dmi',
@@ -390,17 +329,17 @@ var/list/default_onmob_icons = list(
 		WEAR_HANDS = 'icons/mob/humans/onmob/hands.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/suit_slot.dmi',
 		WEAR_ACCESSORIES = 'icons/mob/humans/onmob/ties.dmi'
-		)
+		))
 
-var/list/default_xeno_onmob_icons = list(
-		/mob/living/carbon/Xenomorph/Runner = 'icons/mob/xenos/onmob/runner.dmi',
-		/mob/living/carbon/Xenomorph/Praetorian = 'icons/mob/xenos/onmob/praetorian.dmi',
-		/mob/living/carbon/Xenomorph/Drone = 'icons/mob/xenos/onmob/drone.dmi',
-		/mob/living/carbon/Xenomorph/Warrior = 'icons/mob/xenos/onmob/warrior.dmi',
-		/mob/living/carbon/Xenomorph/Defender = 'icons/mob/xenos/onmob/defender.dmi',
-		/mob/living/carbon/Xenomorph/Sentinel = 'icons/mob/xenos/onmob/sentinel.dmi',
-		/mob/living/carbon/Xenomorph/Spitter = 'icons/mob/xenos/onmob/spitter.dmi'
-		)
+GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
+		/mob/living/carbon/xenomorph/runner = 'icons/mob/xenos/onmob/runner.dmi',
+		/mob/living/carbon/xenomorph/praetorian = 'icons/mob/xenos/onmob/praetorian.dmi',
+		/mob/living/carbon/xenomorph/drone = 'icons/mob/xenos/onmob/drone.dmi',
+		/mob/living/carbon/xenomorph/warrior = 'icons/mob/xenos/onmob/warrior.dmi',
+		/mob/living/carbon/xenomorph/defender = 'icons/mob/xenos/onmob/defender.dmi',
+		/mob/living/carbon/xenomorph/sentinel = 'icons/mob/xenos/onmob/sentinel.dmi',
+		/mob/living/carbon/xenomorph/spitter = 'icons/mob/xenos/onmob/spitter.dmi'
+		))
 
 // species names
 #define SPECIES_HUMAN "Human"
@@ -414,3 +353,32 @@ var/list/default_xeno_onmob_icons = list(
 #define HANDLING_LIMBS list("l_arm","l_hand", "r_arm", "r_hand")
 #define EXTREMITY_LIMBS list("l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
 #define CORE_LIMBS list("chest","head","groin")
+
+#define SYMPTOM_ACTIVATION_PROB 3
+
+// Body position defines.
+/// Mob is standing up, usually associated with lying_angle value of 0.
+#define STANDING_UP 0
+/// Mob is lying down, usually associated with lying_angle values of 90 or 270.
+#define LYING_DOWN 1
+
+/// Possible value of [/atom/movable/buckle_lying]. If set to a different (positive-or-zero) value than this, the buckling thing will force a lying angle on the buckled.
+#define NO_BUCKLE_LYING -1
+
+// ====================================
+// /mob/living  /tg/  mobility_flags
+// These represent in what capacity the mob is capable of moving
+// Because porting this is underway, NOT ALL FLAGS ARE CURRENTLY IN.
+
+/// can move
+#define MOBILITY_MOVE (1<<0)
+/// can, and is, standing up
+#define MOBILITY_STAND (1<<1)
+/// can rest
+#define MOBILITY_REST (1<<7)
+/// can lie down
+#define MOBILITY_LIEDOWN (1<<8)
+
+#define MOBILITY_FLAGS_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND)
+#define MOBILITY_FLAGS_CARBON_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
+#define MOBILITY_FLAGS_REST_CAPABLE_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)

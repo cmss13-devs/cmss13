@@ -89,7 +89,7 @@
 		tgui_interact(user)
 		return
 	if(output_container)
-		to_chat(user, SPAN_NOTICE("You remove the [output_container] from the [src]."))
+		to_chat(user, SPAN_NOTICE("You remove [output_container] from the [src]."))
 		user.put_in_active_hand(output_container)
 		output_container = null
 		if(input_container)
@@ -97,7 +97,7 @@
 		else
 			icon_state = "centrifuge_empty_open"
 	else if(input_container)
-		to_chat(user, SPAN_NOTICE("You remove the [input_container] from the [src]."))
+		to_chat(user, SPAN_NOTICE("You remove [input_container] from the [src]."))
 		user.put_in_active_hand(input_container)
 		input_container = null
 		icon_state = "centrifuge_empty_open"
@@ -208,7 +208,7 @@
 			else
 				A.name = "autoinjector (" + A.reagents.reagent_list[1].name + ")"
 			var/numberOfUses = A.reagents.total_volume / A.amount_per_transfer_from_this
-			A.uses_left = round(numberOfUses) == numberOfUses ? numberOfUses : round(numberOfUses) + 1
+			A.uses_left = floor(numberOfUses) == numberOfUses ? numberOfUses : floor(numberOfUses) + 1
 			A.update_icon()
 		else
 			if(autolabel)
@@ -223,7 +223,7 @@
 	output_container.contents = vials
 
 
-/obj/structure/machinery/centrifuge/proc/split(var/obj/item/source_container, var/list/vials)
+/obj/structure/machinery/centrifuge/proc/split(obj/item/source_container, list/vials)
 //Split reagent types best possible, if we have move volume that types available, split volume best possible
 	for(var/datum/reagent/R in source_container.reagents.reagent_list)
 
@@ -257,7 +257,7 @@
 			V.update_icon()
 
 
-/obj/structure/machinery/centrifuge/proc/distribute(var/obj/item/source_container, var/list/vials)
+/obj/structure/machinery/centrifuge/proc/distribute(obj/item/source_container, list/vials)
 	for(var/obj/item/reagent_container/V in vials)
 		if(source_container.reagents.total_volume <= 0) //We're out
 			break

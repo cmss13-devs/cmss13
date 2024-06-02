@@ -564,6 +564,8 @@
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/get_examine_text(mob/user)
 	. = ..()
 	switch(battery_state)
+		if(TURRET_BATTERY_STATE_OK)
+			. += "Its battery indictor is green, fully charged."
 		if(TURRET_BATTERY_STATE_LOW)
 			. += "Its battery indictor is flashing yellow."
 		if(TURRET_BATTERY_STATE_CRITICAL)

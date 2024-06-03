@@ -238,6 +238,12 @@
 /area/shiva/interior/warehouse
 	name = "Shiva's Snowball - Blue Warehouse"
 	icon_state = "hangars1"
+	is_landing_zone = TRUE
+
+/area/shiva/interior/warehouse/caves
+	name = "Shiva's Snowball - Blue Warehouse Ice Cave"
+	icon_state = "caves1"
+	is_landing_zone = FALSE
 
 /area/shiva/interior/valley_huts
 	name = "Shiva's Snowball - Valley Bunker 1"
@@ -250,10 +256,6 @@
 /area/shiva/interior/valley_huts/disposals
 	name = "Shiva's Snowball - Valley Disposals"
 	icon_state = "hangars3"
-
-/area/shiva/interior/warehouse/caves
-	name = "Shiva's Snowball - Blue Warehouse Ice Cave"
-	icon_state = "caves1"
 
 /area/shiva/interior/garage
 	name = "Shiva's Snowball - Cargo Tug Repair Station"

@@ -4,6 +4,7 @@
 	objectives = "Handle whatever threat is present. Further orders may be provided."
 	home_base = /datum/lazy_template/ert/weyland_station
 	probability = 0
+	mob_min = 3
 	mob_max = 6
 
 	max_heavies = 1
@@ -48,6 +49,7 @@
 
 /datum/emergency_call/forecon/platoon
 	name = "FORECON (Platoon)"
+	mob_min = 6
 	mob_max = 30
 	probability = 0
 	max_medics = 6

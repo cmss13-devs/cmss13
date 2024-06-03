@@ -99,7 +99,7 @@
 		var/obj/effect/particle_effect/smoke/smoke = new type(cur_turf, amount, cause_data)
 		smoke.setDir(pick(GLOB.cardinals))
 		smoke.time_to_live = time_to_live
-		if(smoke.amount>0)
+		if(smoke.amount > 0)
 			smoke.spread_smoke()
 
 
@@ -620,7 +620,7 @@
 
 		smoke.setDir(pick(GLOB.cardinals))
 		smoke.time_to_live = time_to_live
-		if(smoke.amount>0)
+		if(smoke.amount > 0)
 			smoke.spread_smoke()
 
 
@@ -658,7 +658,7 @@
 	var/obj/effect/particle_effect/smoke/smoke = new smoke_type(location, amount+1, cause_data)
 	if(lifetime)
 		smoke.time_to_live = lifetime
-	if(smoke.amount)
+	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
 
 /datum/effect_system/smoke_spread/bad
@@ -707,5 +707,5 @@
 
 	if(lifetime)
 		smoke.time_to_live = lifetime
-	if(smoke.amount)
+	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)

@@ -6,7 +6,6 @@ United States Colonial Marines
 
 /datum/skills/pfc
 	name = "Private"
-	skills = list()
 	//same as default
 
 /datum/skills/pfc/crafty

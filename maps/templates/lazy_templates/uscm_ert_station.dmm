@@ -42,12 +42,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
-"bq" = (
-/turf/open/space,
-/turf/closed/shuttle{
-	icon_state = "diagonalWall3"
-	},
-/area/adminlevel/ert_station/uscm_station)
 "bv" = (
 /obj/structure/platform{
 	dir = 4
@@ -1522,13 +1516,6 @@
 	dir = 1
 	},
 /area/adminlevel/ert_station/uscm_station)
-"Mw" = (
-/turf/open/space,
-/turf/closed/shuttle{
-	dir = 8;
-	icon_state = "diagonalWall3"
-	},
-/area/adminlevel/ert_station/uscm_station)
 "MB" = (
 /obj/structure/filingcabinet/security,
 /obj/structure/sign/poster/art{
@@ -1909,13 +1896,6 @@
 	dir = 8
 	},
 /area/adminlevel/ert_station/uscm_station)
-"ZJ" = (
-/turf/open/space,
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "diagonalWall3"
-	},
-/area/adminlevel/ert_station/uscm_station)
 
 (1,1,1) = {"
 Zp
@@ -2040,7 +2020,7 @@ Zp
 Zp
 Zp
 Zp
-Mw
+kZ
 zK
 zK
 zK
@@ -2050,7 +2030,7 @@ zK
 zK
 zK
 zK
-bq
+Zp
 Zp
 Zp
 Zp
@@ -2076,7 +2056,7 @@ Zp
 Zp
 Zp
 Zp
-Mw
+Zp
 zK
 zK
 tE
@@ -2354,7 +2334,7 @@ kZ
 kZ
 kZ
 zK
-bq
+Zp
 Zp
 Zp
 Zp
@@ -2392,7 +2372,7 @@ kZ
 kZ
 zK
 zK
-bq
+Zp
 Zp
 Zp
 Zp
@@ -2430,7 +2410,7 @@ kZ
 zK
 zK
 zK
-bq
+Zp
 Zp
 Zp
 Zp
@@ -2626,7 +2606,7 @@ Zp
 Zp
 Zp
 Zp
-Mw
+Zp
 zK
 qI
 mD
@@ -2912,7 +2892,7 @@ qI
 qI
 Fq
 zK
-bq
+Zp
 Zp
 Zp
 "}
@@ -3585,7 +3565,7 @@ kZ
 (46,1,1) = {"
 Zp
 Zp
-ZJ
+zK
 zK
 zK
 zK
@@ -3697,7 +3677,7 @@ kZ
 Zp
 Zp
 Zp
-ZJ
+zK
 zK
 zK
 ji
@@ -4255,7 +4235,7 @@ Zp
 Zp
 Zp
 Zp
-ZJ
+zK
 zK
 zK
 zK

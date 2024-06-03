@@ -29275,7 +29275,7 @@
 	id = "ARES StairsUpper";
 	name = "Stairway Shutters";
 	pixel_x = 36;
-	req_one_access_txt = "90;91;92";
+	req_one_access_txt = "31;92";
 	pixel_y = -2
 	},
 /obj/structure/machinery/door_control{
@@ -29283,7 +29283,7 @@
 	name = "Corridor Shutters";
 	pixel_x = 36;
 	pixel_y = 4;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "31;92"
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
@@ -29291,7 +29291,7 @@
 	name = "Core Shutters";
 	pixel_x = 36;
 	pixel_y = 10;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "31;92"
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Railing";
@@ -29299,7 +29299,7 @@
 	name = "Core Railings";
 	needs_power = 0;
 	pixel_x = 28;
-	req_one_access_txt = "91;92";
+	req_one_access_txt = "31;92";
 	pixel_y = 7
 	},
 /obj/structure/machinery/door_control{
@@ -29307,7 +29307,7 @@
 	name = "Records Room Shutters";
 	pixel_x = 28;
 	pixel_y = 1;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "31;92"
 	},
 /turf/open/floor/almayer/aicore/no_build{
 	icon_state = "w_ai_floor1"

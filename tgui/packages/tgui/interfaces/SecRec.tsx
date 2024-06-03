@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useBackend } from '../../backend';
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -11,9 +11,9 @@ import {
   Section,
   Stack,
   Tabs,
-} from '../../components';
-import { Window } from '../../layouts';
-import { CompCommon, GeneralRecord, GenericStat } from './types';
+} from '../components';
+import { Window } from '../layouts';
+import { CompCommon, GeneralRecord, GenericStat } from './Records/types';
 
 // Security Record Type
 type SecurityRec = {
@@ -121,7 +121,7 @@ const GeneralNotes = ({ act, notes }) => (
               placeholder={'New entry...'}
               onChange={(e, value) => {
                 act('updateStatRecord', {
-                  stat_type: notes.statt_type,
+                  record_type: notes.record_type,
                   stat: notes.stat,
                   new_value: value,
                 });

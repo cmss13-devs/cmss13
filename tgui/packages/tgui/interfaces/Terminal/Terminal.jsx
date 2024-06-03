@@ -1,4 +1,4 @@
-// TODO: migrate to  tsx
+// TODO: migrate to tsx
 
 import React, { useState } from 'react';
 

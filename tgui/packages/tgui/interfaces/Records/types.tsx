@@ -1,4 +1,5 @@
 // Generic types so far used only by SecRec and ModRec
+import { BooleanLike } from 'common/react';
 
 // all mutable stats from dm are passed in this format.
 export type GenericStat = {
@@ -17,7 +18,7 @@ export type GeneralRecord = {
 // ui is very similar for both record systems.
 export type CompCommon = {
   // shared
-  authenticated: boolean;
+  authenticated: BooleanLike;
   selected_target_name: string;
   id_name: string;
 

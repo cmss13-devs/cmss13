@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 
-import { useBackend } from '../../backend';
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -11,9 +11,9 @@ import {
   Section,
   Stack,
   Tabs,
-} from '../../components';
-import { Window } from '../../layouts';
-import { CompCommon, GeneralRecord, GenericStat } from './types';
+} from '../components';
+import { Window } from '../layouts';
+import { CompCommon, GeneralRecord, GenericStat } from './Records/types';
 
 // Medical Record Type
 type MedicalRec = {

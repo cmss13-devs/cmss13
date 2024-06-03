@@ -2091,7 +2091,7 @@
 	bound_height = 32
 	density = FALSE
 	anchored = TRUE
-	layer = FACEHUGGER_LAYER
+	layer = BILLBOARD_LAYER
 /obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1
 	icon_state = "roadsign_1"
 /obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2

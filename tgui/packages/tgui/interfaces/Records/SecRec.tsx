@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
-import { useBackend } from '../backend';
+
+import { useBackend } from '../../backend';
 import {
   Box,
   Button,
-  Section,
-  Tabs,
+  Dropdown,
   Flex,
   Icon,
-  Stack,
-  Dropdown,
   Input,
-} from '../components';
-import { Window } from '../layouts';
+  Section,
+  Stack,
+  Tabs,
+} from '../../components';
+import { Window } from '../../layouts';
+import { CompCommon, GeneralRecord, GenericStat } from './types';
+
+// Security Record Type
+type SecurityRec = {
+  incident: GenericStat;
+  notes: GenericStat;
+  general_record: GeneralRecord[];
+  crime_stat: GenericStat;
+  comp: CompCommon;
+};
 
 export const SecRec = (props) => {
-  const { act, data } = useBackend();
-  const { authenticated, selected_target_name } = data;
+  const { data } = useBackend<SecurityRec>();
+  const { authenticated, selected_target_name } = data.comp;
   const [selectedTab, setSelectedTab] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -23,7 +34,7 @@ export const SecRec = (props) => {
     <Window width={450} height={520}>
       <Window.Content scrollable>
         <Box>
-          <Tabs fluid={1}>
+          <Tabs fluid>
             <Tabs.Tab
               selected={selectedTab === 1}
               onClick={() => setSelectedTab(1)}
@@ -65,7 +76,7 @@ export const SecRec = (props) => {
   );
 };
 const CrimeHist = (props) => {
-  const { act, data } = useBackend();
+  const { data, act } = useBackend<SecurityRec>();
   const [selectedTab, setSelectedTab] = useState(1);
   const { incident, notes } = data;
 
@@ -99,18 +110,18 @@ const GeneralNotes = ({ act, notes }) => (
     <Stack vertical align="start">
       <Stack.Item>{notes.message}</Stack.Item>
       <Stack.Item>
-        <Box fluid={1}>{notes.value}</Box>
+        <Box>{notes.value}</Box>
       </Stack.Item>
       <Stack.Item>
         <Stack vertical py={5}>
           <Stack.Item>New note entry:</Stack.Item>
           <Stack.Item>
             <Input
-              fluid={1}
+              fluid
               placeholder={'New entry...'}
-              onChange={(e) => {
-                const value = e.target.value;
+              onChange={(e, value) => {
                 act('updateStatRecord', {
+                  stat_type: notes.statt_type,
                   stat: notes.stat,
                   new_value: value,
                 });
@@ -137,8 +148,9 @@ const IncidentReport = ({ incident }) => (
 );
 
 const CrewManifest = ({ searchQuery, setSearchQuery }) => {
-  const { act, data } = useBackend();
-  const { human_mob_list, selected_target_name, authenticated, id_name } = data;
+  const { act, data } = useBackend<SecurityRec>();
+  const { human_mob_list, selected_target_name, authenticated, id_name } =
+    data.comp;
 
   return (
     <>
@@ -158,10 +170,10 @@ const CrewManifest = ({ searchQuery, setSearchQuery }) => {
       {!!authenticated && (
         <Section>
           <Input
-            fluid={1}
+            fluid
             placeholder="Search..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e, value) => setSearchQuery(value)}
           />
           {human_mob_list
             .filter((record) =>
@@ -173,7 +185,6 @@ const CrewManifest = ({ searchQuery, setSearchQuery }) => {
                 color={'blue'}
                 align={'stretch'}
                 justify={'space-between'}
-                fluid={1}
                 py={2}
                 px={5}
               >
@@ -200,7 +211,7 @@ const CrewManifest = ({ searchQuery, setSearchQuery }) => {
 };
 
 const CrimeStat = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<SecurityRec>();
   const { general_record, crime_stat } = data;
 
   return (
@@ -209,12 +220,12 @@ const CrimeStat = (props) => {
         <Flex direction="row" align="start" justify="space-between" fill>
           <Flex.Item>
             <Dropdown
-              noscroll={1}
               options={crimeStatusOptions}
               selected={crime_stat.value}
               color={colors[crime_stat.value]}
               onSelected={(value) =>
                 act('updateStatRecord', {
+                  record_type: crime_stat.record_type,
                   stat: crime_stat.stat,
                   new_value: value,
                 })

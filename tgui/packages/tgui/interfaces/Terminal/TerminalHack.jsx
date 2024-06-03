@@ -1,7 +1,9 @@
+// TODO- migrate to tsx
+
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Box } from '../components';
-import { Window } from '../layouts';
+import { Box } from '../../components';
+import { Window } from '../../layouts';
 
 const generateRandomFileHierarchy = () => {
   const levels = [

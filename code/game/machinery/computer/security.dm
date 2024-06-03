@@ -1,8 +1,4 @@
-
-#define SECURITY 1
-#define GENERAL 0
-
-/obj/structure/machinery/computer/secure_data//TODO:MIGRATE THIS SHIT TO TGUI.
+/obj/structure/machinery/computer/secure_data
 	name = "Security Records"
 	desc = "Used to view and edit personnel's security records"
 	icon_state = "security"
@@ -107,16 +103,19 @@
 		)
 
 	crime_stat = list(
+		record_type = RECORD_TYPE_SECURITY,
 		stat = MOB_CRIMINAL_STATUS,
 		value = target_sec_record?.fields[MOB_CRIMINAL_STATUS],
 		message = "Criminal Status: "
 	)
 	incident = list(
+		record_type = RECORD_TYPE_SECURITY,
 		stat = MOB_INCIDENTS,
 		value = target_sec_record?.fields[MOB_INCIDENTS],
 		message = "Incidents: "
 	)
 	notes = list(
+		record_type = RECORD_TYPE_SECURITY,
 		stat = MOB_SECURITY_NOTES,
 		value = target_sec_record?.fields[MOB_SECURITY_NOTES],
 		message ="Security Notes: "
@@ -256,7 +255,7 @@
 
 			return TRUE
 		if("updateStatRecord")
-			if(!insert_record_stat(mob_name = target_mob, record_type = RECORD_TYPE_SECURITY, stat_type = params["stat"], new_stat = params["new_value"]))
+			if(!insert_record_stat(mob_name = target_mob, record_type = params["record_type"], stat_type = params["stat"], new_stat = params["new_value"]))
 				visible_message("[SPAN_BOLD("[src]")] states, \"DATACORE FAILURE: Unable to update relevant database logs.\"")
 				return
 			retrieve_target_record(target_mob)
@@ -285,6 +284,3 @@
 	data["authenticated"] = authenticated
 
 	return data
-
-#undef SECURITY
-#undef GENERAL

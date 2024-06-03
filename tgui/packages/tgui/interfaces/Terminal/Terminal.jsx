@@ -1,7 +1,9 @@
+// TODO: migrate to  tsx
+
 import React, { useState } from 'react';
 
-import { Box } from '../components';
-import { Window } from '../layouts';
+import { Box } from '../../components';
+import { Window } from '../../layouts';
 
 export const Terminal = (props) => {
   const [input, setInput] = useState('');

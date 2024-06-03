@@ -1,9 +1,4 @@
 
-
-// the type of record
-#define MEDICAL 1
-#define GENERAL 0
-
 // I hate the printing sound effect.
 #define PRINT_COOLDOWN_TIME 2 MINUTES
 
@@ -133,10 +128,8 @@
 					return TRUE
 			return FALSE
 		if("updateStatRecord")
-			if(params["stat_type"] == MEDICAL)
-				target_record_medical.fields[params["stat"]] = params["new_value"]
-			else
-				target_record_general.fields[params["stat"]] = params["new_value"]
+			if(!insert_record_stat(mob_name = target_id_card.name, record_type = params["stat_type"], stat_type = params["stat"], new_stat = params["new_value"]))
+				visible_message("[SPAN_BOLD("[src]")] states, \"DATACORE FAILURE: Unable to update relevant database logs.\"")
 			return TRUE
 		if("submitReport")
 			if(!target_record_medical.fields[MOB_CAUSE_OF_DEATH])
@@ -182,6 +175,7 @@
 
 /obj/structure/machinery/computer/double_id/med_data/ui_static_data(mob/user)
 	var/list/data = list()
+	// immutable data
 	data["general_record"] = list(
 		list(
 			value = target_record_general?.fields[MOB_NAME],
@@ -208,42 +202,42 @@
 
 	data["medical_record"] = list(
 		list(
-			stat_type = MEDICAL,
+			record_type = RECORD_TYPE_MEDICAL,
 			stat = MOB_MEDICAL_NOTES,
 			value = target_record_medical?.fields[MOB_MEDICAL_NOTES],
 			message = "General Notes: "
 			),
 			list(
-				stat_type = GENERAL,
+				record_type = RECORD_TYPE_GENERAL,
 				stat = MOB_MENTAL_STATUS,
 				value = target_record_general?.fields[MOB_MENTAL_STATUS],
 				message = "Psychiatric History: "
 				),
 			list(
-				stat_type = MEDICAL,
+				record_type = RECORD_TYPE_MEDICAL,
 				stat = MOB_DISEASES,
 				value = target_record_medical?.fields[MOB_DISEASES],
 				message = "Disease History: "
 				),
 			list(
-				stat_type = MEDICAL,
+				record_type = RECORD_TYPE_MEDICAL,
 				stat = MOB_DISABILITIES,
 				value = target_record_medical?.fields[MOB_DISABILITIES],
 				message = "Disability History: "
 				)
 		)
 	data["death"] = list(
-		stat_type = MEDICAL,
+		record_type = RECORD_TYPE_MEDICAL,
 		stat = MOB_CAUSE_OF_DEATH,
 		value = target_record_medical?.fields[MOB_CAUSE_OF_DEATH],
 		message = "Cause Of Death: ")
 	data["health"] = list(
-		stat_type = GENERAL,
+		record_type = RECORD_TYPE_GENERAL,
 		stat = MOB_HEALTH_STATUS,
 		value = target_record_general?.fields[MOB_HEALTH_STATUS],
 		message = "Health Status: ")
 	data["autopsy"] = list(
-		stat_type = MEDICAL,
+		record_type = RECORD_TYPE_MEDICAL,
 		stat = MOB_AUTOPSY_NOTES,
 		value = target_record_medical?.fields[MOB_AUTOPSY_NOTES],
 		message = "Autopsy Notes: ")
@@ -253,6 +247,3 @@
 	data["id_name"] = target_id_card ? target_id_card.name : "-----"
 
 	return data
-
-#undef MEDICAL
-#undef GENERAL

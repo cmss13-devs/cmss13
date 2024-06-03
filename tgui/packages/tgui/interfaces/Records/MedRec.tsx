@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 
-import { useBackend } from '../backend';
+import { useBackend } from '../../backend';
 import {
   Box,
   Button,
@@ -11,16 +11,28 @@ import {
   Section,
   Stack,
   Tabs,
-} from '../components';
-import { Window } from '../layouts';
+} from '../../components';
+import { Window } from '../../layouts';
+import { CompCommon, GeneralRecord, GenericStat } from './types';
+
+// Medical Record Type
+type MedicalRec = {
+  medical_record: GenericStat[];
+  general_record: GeneralRecord[];
+  health: GenericStat;
+  autopsy: GenericStat;
+  existingReport: GenericStat;
+  death: GenericStat;
+  comp: CompCommon;
+};
 
 export const MedRec = (props) => {
   const [selectedTab, setSelectedTab] = useState(1);
   return (
-    <Window width={450} height={520} resizable>
+    <Window width={450} height={520}>
       <Window.Content>
         <Box>
-          <Tabs fluid={1}>
+          <Tabs fluid>
             <Tabs.Tab
               selected={selectedTab === 1}
               onClick={() => setSelectedTab(1)}
@@ -43,9 +55,9 @@ export const MedRec = (props) => {
 };
 
 const MedicalRecord = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<MedicalRec>();
   const [selectedTab, setSelectedTab] = useState(1);
-  const { authenticated, has_id } = data;
+  const { authenticated, has_id } = data.comp;
 
   return (
     <>
@@ -80,7 +92,7 @@ const MedicalRecord = (props) => {
 };
 
 const MedicalNotes = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<MedicalRec>();
   const { medical_record } = data;
 
   return (
@@ -92,10 +104,10 @@ const MedicalNotes = (props) => {
             <Stack.Item>
               <Input
                 value={record.value}
-                fluid={1}
+                fluid
                 onChange={(e, value) =>
                   act('updateStatRecord', {
-                    stat_type: record.stat_type,
+                    record_type: record.record_type,
                     stat: record.stat,
                     new_value: value,
                   })
@@ -110,9 +122,9 @@ const MedicalNotes = (props) => {
 };
 
 const AutopsyReport = (props) => {
-  const { act, data } = useBackend();
-  const { health, autopsy, existingReport, death, id_name } = data;
-
+  const { act, data } = useBackend<MedicalRec>();
+  const { health, autopsy, existingReport, death } = data;
+  const { id_name } = data.comp;
   return (
     <Section>
       <Stack justify="space-between" vertical>
@@ -123,10 +135,10 @@ const AutopsyReport = (props) => {
               <Stack.Item>
                 <Input
                   value={autopsy.value}
-                  fluid={1}
+                  fluid
                   onChange={(e, value) =>
                     act('updateStatRecord', {
-                      stat_type: autopsy.stat_type,
+                      record_type: autopsy.record_type,
                       stat: autopsy.stat,
                       new_value: value,
                     })
@@ -140,13 +152,12 @@ const AutopsyReport = (props) => {
                       <Stack.Item>{death.message}</Stack.Item>
                       <Stack.Item>
                         <Dropdown
-                          noscroll={1}
                           options={deathOptions}
                           selected={death.value}
                           color={'red'}
                           onSelected={(value) =>
                             act('updateStatRecord', {
-                              stat_type: death.stat_type,
+                              record_type: death.record_type,
                               stat: death.stat,
                               new_value: value,
                             })
@@ -199,8 +210,9 @@ const AutopsyReport = (props) => {
 };
 
 const HealthStatus = (props) => {
-  const { act, data } = useBackend();
-  const { authenticated, has_id, id_name, general_record, health } = data;
+  const { act, data } = useBackend<MedicalRec>();
+  const { general_record, health } = data;
+  const { authenticated, has_id, id_name } = data.comp;
 
   return (
     <>
@@ -230,13 +242,12 @@ const HealthStatus = (props) => {
             <Flex direction="row" align="start" justify="space-between" fill>
               <Flex.Item>
                 <Dropdown
-                  noscroll={1}
                   options={healthStatusOptions}
                   selected={health.value}
                   color={colors[health.value]}
                   onSelected={(value) =>
                     act('updateStatRecord', {
-                      stat_type: health.stat_type,
+                      record_type: health.record_type,
                       stat: health.stat,
                       new_value: value,
                     })

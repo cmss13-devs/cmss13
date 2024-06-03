@@ -998,6 +998,7 @@
 	desc = "A cheap uniform made for Synthetic labor. Tomorrow, Together."
 	icon_state = "working_joe"
 	worn_state = "working_joe"
+	flags_item = NO_CRYO_STORE
 	var/obj/structure/machinery/camera/camera
 
 /obj/item/clothing/under/rank/synthetic/joe/Initialize()

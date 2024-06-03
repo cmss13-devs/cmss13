@@ -216,6 +216,7 @@
 /area/desert_dam/building/substation/northwest
 	name = "Command Substation"
 	icon_state = "northewestern_ss"
+	is_landing_zone = TRUE
 /area/desert_dam/building/substation/northeast
 	name = "Command Substation"
 	icon_state = "northeastern_ss"

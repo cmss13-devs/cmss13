@@ -79,7 +79,7 @@
 	item_reference = /obj/item/research_upgrades/credits
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-	change_purchase = 1000
+	change_purchase = 500
 	maximum_price = 5000
 	clearance_req = 5
 

@@ -565,13 +565,13 @@
 	. = ..()
 	switch(battery_state)
 		if(TURRET_BATTERY_STATE_OK)
-			. += "Its battery indictor is green, fully charged."
+			. += SPAN_INFO("Its battery indictor is green, fully charged.")
 		if(TURRET_BATTERY_STATE_LOW)
-			. += "Its battery indictor is flashing yellow."
+			. += SPAN_INFO("Its battery indictor is flashing yellow.")
 		if(TURRET_BATTERY_STATE_CRITICAL)
-			. += "Its battery indictor is flashing red."
+			. += SPAN_INFO("Its battery indictor is flashing red.")
 		if(TURRET_BATTERY_STATE_DEAD)
-			. += "It appears to be offline."
+			. += SPAN_INFO("It appears to be offline.")
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/proc/set_battery_state(state)
 	battery_state = state

@@ -81,7 +81,7 @@
 	if(ishuman(user))
 		message += SPAN_INFO("A multitool can be used to disassemble it.")
 		message += "\n"
-		message += SPAN_INFO("The turret is currently [locked? "locked" : "unlocked"] to non-engineers.")
+		message += SPAN_INFO("It is currently [locked? "locked" : "unlocked"] to non-engineers.")
 		message += "\n"
 		message += SPAN_INFO("It has [SPAN_HELPFUL("[health]/[health_max]")] health.")
 	message += "\n"

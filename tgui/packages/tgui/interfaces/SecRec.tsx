@@ -16,17 +16,16 @@ import { Window } from '../layouts';
 import { CompCommon, GeneralRecord, GenericStat } from './Records/types';
 
 // Security Record Type
-type SecurityRec = {
+interface SecurityRec extends CompCommon {
   incident: GenericStat;
   notes: GenericStat;
   general_record: GeneralRecord[];
   crime_stat: GenericStat;
-  comp: CompCommon;
-};
+}
 
 export const SecRec = (props) => {
   const { data } = useBackend<SecurityRec>();
-  const { authenticated, selected_target_name } = data.comp;
+  const { authenticated, selected_target_name } = data;
   const [selectedTab, setSelectedTab] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -149,8 +148,7 @@ const IncidentReport = ({ incident }) => (
 
 const CrewManifest = ({ searchQuery, setSearchQuery }) => {
   const { act, data } = useBackend<SecurityRec>();
-  const { human_mob_list, selected_target_name, authenticated, id_name } =
-    data.comp;
+  const { human_mob_list, selected_target_name, authenticated, id_name } = data;
 
   return (
     <>

@@ -16,15 +16,14 @@ import { Window } from '../layouts';
 import { CompCommon, GeneralRecord, GenericStat } from './Records/types';
 
 // Medical Record Type
-type MedicalRec = {
+interface MedicalRec extends CompCommon {
   medical_record: GenericStat[];
   general_record: GeneralRecord[];
   health: GenericStat;
   autopsy: GenericStat;
   existingReport: GenericStat;
   death: GenericStat;
-  comp: CompCommon;
-};
+}
 
 export const MedRec = (props) => {
   const [selectedTab, setSelectedTab] = useState(1);
@@ -57,8 +56,7 @@ export const MedRec = (props) => {
 const MedicalRecord = (props) => {
   const { act, data } = useBackend<MedicalRec>();
   const [selectedTab, setSelectedTab] = useState(1);
-  const { authenticated, has_id } = data.comp;
-
+  const { authenticated, has_id } = data;
   return (
     <>
       <Section
@@ -123,8 +121,7 @@ const MedicalNotes = (props) => {
 
 const AutopsyReport = (props) => {
   const { act, data } = useBackend<MedicalRec>();
-  const { health, autopsy, existingReport, death } = data;
-  const { id_name } = data.comp;
+  const { health, autopsy, existingReport, death, id_name } = data;
   return (
     <Section>
       <Stack justify="space-between" vertical>
@@ -211,8 +208,7 @@ const AutopsyReport = (props) => {
 
 const HealthStatus = (props) => {
   const { act, data } = useBackend<MedicalRec>();
-  const { general_record, health } = data;
-  const { authenticated, has_id, id_name } = data.comp;
+  const { general_record, health, authenticated, has_id, id_name } = data;
 
   return (
     <>

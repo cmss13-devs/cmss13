@@ -14,6 +14,7 @@
 	flags_area = AREA_NOTUNNEL
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
+	base_lighting_alpha = 0
 
 /area/shuttle/drop1/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
@@ -71,6 +72,7 @@
 	flags_area = AREA_NOTUNNEL
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
+	base_lighting_alpha = 0
 
 /area/shuttle/drop2/sulaco
 	name = "\improper Dropship Normandy"

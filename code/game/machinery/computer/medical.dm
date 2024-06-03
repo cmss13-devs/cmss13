@@ -128,7 +128,7 @@
 					return TRUE
 			return FALSE
 		if("updateStatRecord")
-			if(!insert_record_stat(mob_name = target_id_card.name, record_type = params["record_type"], stat_type = params["stat"], new_stat = params["new_value"]))
+			if(!insert_record_stat(mob_name = target_id_card.registered_name, mob_ref = target_id_card.registered_ref, record_type = params["record_type"], stat_type = params["stat"], new_stat = params["new_value"]))
 				visible_message("[SPAN_BOLD("[src]")] states, \"DATACORE FAILURE: Unable to update relevant database logs.\"")
 			return TRUE
 		if("submitReport")
@@ -244,6 +244,6 @@
 	data["existingReport"] = target_record_medical?.fields[MOB_AUTOPSY_SUBMISSION]
 	data["authenticated"] = authenticated
 	data["has_id"] = !!target_id_card
-	data["id_name"] = target_id_card ? target_id_card.name : "-----"
+	data["id_name"] = target_id_card ? target_id_card.registered_name : "-----"
 
 	return data

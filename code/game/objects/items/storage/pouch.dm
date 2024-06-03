@@ -425,7 +425,7 @@
 	desc = "It can carry pistol magazines and revolver speedloaders."
 	max_w_class = SIZE_SMALL
 	icon_state = "pistol_mag"
-	storage_slots = 3
+	storage_slots = 4
 
 	can_hold = list(
 		/obj/item/ammo_magazine/pistol,

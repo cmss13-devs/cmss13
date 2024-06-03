@@ -118,12 +118,13 @@
 
 	A.on_removed(user, src)
 	LAZYREMOVE(accessories, A)
-	var/list/removables = list()
+
+	var/any_removable = FALSE
 	for(var/obj/item/clothing/accessory/accessory in accessories)
 		if(accessory.removable)
-			removables += accessory
-
-	if(!LAZYLEN(removables))
+			any_removable = TRUE
+			break
+	if(!any_removable)
 		verbs -= /obj/item/clothing/proc/removetie_verb
 
 	update_clothing_icon()

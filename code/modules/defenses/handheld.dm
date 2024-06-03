@@ -157,6 +157,28 @@
 	defense_type = /obj/structure/machinery/defenses/sentry/mini/wy
 	deployment_time = 2 SECONDS
 
+/obj/item/defenses/handheld/sentry/wy/heavy
+	name = "handheld WY 2-ADT-A3 heavy sentry"
+	icon = 'icons/obj/structures/machinery/defenses/wy_heavy.dmi'
+	icon_state = "Heavy wy_sentry_handheld"
+	defense_type = /obj/structure/machinery/defenses/sentry/dmr/wy
+	deployment_time = 10 SECONDS
+
+/obj/item/defenses/handheld/sentry/upp
+	name = "handheld UPP SDS-R3 sentry gun"
+	desc = "A compact version of the UPP defense sentry SDS-R1. Designed for deployment in the field."
+	icon = 'icons/obj/structures/machinery/defenses/upp_defenses.dmi'
+	icon_state = "Normal upp_sentry_handheld"
+	defense_type = /obj/structure/machinery/defenses/sentry/upp
+	deployment_time = 5 SECONDS
+
+/obj/item/defenses/handheld/sentry/upp/light
+	name = "handheld UPP SDS-R8 light sentry"
+	desc = "A compact version of the UPP defense sentry SDS-R7. Designed for deployment in the field."
+	icon_state = "Light upp_sentry_handheld"
+	defense_type = /obj/structure/machinery/defenses/sentry/upp/light
+	deployment_time = 2 SECONDS
+
 // FLAMER BASE AND UPGRADES
 /obj/item/defenses/handheld/sentry/flamer
 	name = "handheld UA 42-F sentry flamer"
@@ -223,6 +245,15 @@
 	defense_type = /obj/structure/machinery/defenses/sentry/flamer/wy
 	deployment_time = 5 SECONDS
 	ammo_convert = /obj/item/ammo_magazine/sentry_flamer/wy
+
+/obj/item/defenses/handheld/sentry/flamer/upp
+	name = "handheld UPP SDS-R5 sentry flamer"
+	desc = "A compact version of the UPP defenses. Designed for deployment in the field."
+	icon = 'icons/obj/structures/machinery/defenses/upp_defenses.dmi'
+	icon_state = "Normal upp_flamer_handheld"
+	defense_type = /obj/structure/machinery/defenses/sentry/flamer/upp
+	deployment_time = 5 SECONDS
+	ammo_convert = /obj/item/ammo_magazine/sentry_flamer/upp
 
 
 // TESLA BASE AND UPGRADES
@@ -329,4 +360,12 @@
 	icon_state = "WY planted_flag_handheld"
 	deployment_time = 3 SECONDS
 	defense_type = /obj/structure/machinery/defenses/planted_flag/wy
+
+/obj/item/defenses/handheld/planted_flag/upp
+	name = "handheld UPP planted flag"
+	desc = "A compact version of the UPP defenses. Designed for deployment in the field."
+	icon = 'icons/obj/structures/machinery/defenses/upp_defenses.dmi'
+	icon_state = "UPP planted_flag_handheld"
+	deployment_time = 5 SECONDS
+	defense_type = /obj/structure/machinery/defenses/planted_flag/upp
 

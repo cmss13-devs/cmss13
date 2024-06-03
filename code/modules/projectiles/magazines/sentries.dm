@@ -45,6 +45,14 @@
 	caliber = "10x12mm"
 	max_rounds = 1000
 
+/obj/item/ammo_magazine/sentry/upp
+	name = "SR32 ammo drum (10x32mm Caseless)"
+	desc = "An ammo drum of 200 10x32mm caseless rounds for the UPP SDS-R3 Sentry Gun. Just feed it into the sentry gun's ammo port when its ammo is depleted."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "uppsds4"
+	caliber = "10x42mm"
+	max_rounds = 200
+
 // FLAMER Sentry
 /obj/item/ammo_magazine/sentry_flamer
 	name = "sentry incinerator tank"
@@ -76,3 +84,12 @@
 	caliber = "Sticky Napalm"
 	max_rounds = 200
 	default_ammo = /datum/ammo/flamethrower/sentry_flamer/wy
+
+/obj/item/ammo_magazine/sentry_flamer/upp
+	name = "upp sentry incinerator tank"
+	desc = "A fuel tank of Ultra Thick Gel Napthal Fuel, used in the UPP SDS-R5 Sentry Flamer."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "uppsds4"
+	caliber = "Sticky Napalm"
+	max_rounds = 200
+	default_ammo = /datum/ammo/flamethrower/sentry_flamer/upp

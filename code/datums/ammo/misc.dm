@@ -100,6 +100,10 @@
 	flamer_reagent_id = "stickynapalm"
 	shell_speed = AMMO_SPEED_TIER_4
 
+/datum/ammo/flamethrower/sentry_flamer/upp
+	name = "gel fire"
+	flamer_reagent_id = "napalmgel"
+
 /datum/ammo/flare
 	name = "flare"
 	ping = null //no bounce off.

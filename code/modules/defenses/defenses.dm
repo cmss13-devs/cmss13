@@ -144,6 +144,8 @@
 			faction_group = FACTION_LIST_HUMANOID
 		if(FACTION_COLONY)
 			faction_group = list(FACTION_MARINE, FACTION_COLONIST)
+		if(FACTION_UPP)
+			faction_group = FACTION_LIST_UPP
 
 
 /obj/structure/machinery/defenses/start_processing()

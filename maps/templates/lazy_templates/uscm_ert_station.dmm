@@ -5,7 +5,22 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"af" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"ag" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "ak" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	icon_state = "warnplate";
 	dir = 5
@@ -13,6 +28,7 @@
 /area/adminlevel/ert_station/uscm_station)
 "au" = (
 /obj/structure/largecrate/random,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "aw" = (
@@ -40,6 +56,7 @@
 /area/adminlevel/ert_station/uscm_station)
 "bc" = (
 /obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "bv" = (
@@ -66,6 +83,23 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
+	},
+/area/adminlevel/ert_station/uscm_station)
+"bV" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"bX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/uscm_station)
 "ci" = (
@@ -108,8 +142,23 @@
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
+"dK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "cargo_arrow"
+	},
+/area/adminlevel/ert_station/uscm_station)
+"dW" = (
+/obj/structure/machinery/door/airlock/almayer/generic/corporate{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
 "ej" = (
 /obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "ep" = (
@@ -120,8 +169,19 @@
 	icon_state = "red"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"er" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "es" = (
 /obj/effect/decal/warning_stripes,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
@@ -168,6 +228,7 @@
 	},
 /area/adminlevel/ert_station/uscm_station)
 "fi" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "sterile_green_side"
@@ -193,6 +254,7 @@
 /obj/item/ammo_magazine/pistol/incendiary,
 /obj/item/ammo_magazine/pistol/m1911,
 /obj/structure/surface/rack,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "red";
 	dir = 6
@@ -249,6 +311,7 @@
 	},
 /area/adminlevel/ert_station/uscm_station)
 "hk" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/uscm/directional{
 	dir = 4
 	},
@@ -297,6 +360,10 @@
 "hz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -352,6 +419,11 @@
 	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"ir" = (
+/turf/open/floor/almayer{
+	icon_state = "cargo_arrow"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "iv" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/glass/beaker/large,
@@ -373,6 +445,20 @@
 /area/adminlevel/ert_station/uscm_station)
 "iF" = (
 /turf/open/floor/almayer/uscm/directional,
+/area/adminlevel/ert_station/uscm_station)
+"iK" = (
+/obj/structure/prop/broken_ladder,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
+"iP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ship_ammo/rocket/widowmaker,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/adminlevel/ert_station/uscm_station)
 "iS" = (
 /turf/open/floor/almayer{
@@ -457,6 +543,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/uscm_station)
 "kA" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	dir = 9;
 	icon_state = "warnplate"
@@ -469,6 +556,11 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	layer = 2.5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -497,6 +589,7 @@
 	},
 /area/adminlevel/ert_station/uscm_station)
 "lA" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	icon_state = "warnplate";
 	dir = 4
@@ -528,6 +621,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/uscm_station)
 "mk" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/uscm/directional{
 	dir = 8;
 	icon_state = "logo_c"
@@ -562,7 +656,17 @@
 /area/adminlevel/ert_station/uscm_station)
 "mv" = (
 /obj/effect/decal/cleanable/cobweb2,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"mw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/adminlevel/ert_station/uscm_station)
 "mx" = (
 /obj/structure/surface/table/almayer,
@@ -615,6 +719,14 @@
 	icon_state = "red";
 	dir = 4
 	},
+/area/adminlevel/ert_station/uscm_station)
+"nP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/uscm_station)
 "nY" = (
 /turf/open/floor/almayer{
@@ -690,6 +802,12 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"pP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "pR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -705,6 +823,13 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/uscm_station)
+"pX" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
 "qc" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
@@ -713,6 +838,7 @@
 /area/adminlevel/ert_station/uscm_station)
 "qi" = (
 /obj/structure/ore_box,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "qH" = (
@@ -721,6 +847,10 @@
 /area/adminlevel/ert_station/uscm_station)
 "qI" = (
 /turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"qL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/uscm_station)
 "qQ" = (
 /turf/open/floor/almayer{
@@ -840,6 +970,12 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"tD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "tE" = (
 /obj/structure/closet/secure_closet/securecom,
 /obj/item/weapon/gun/smartgun,
@@ -848,11 +984,27 @@
 	dir = 9
 	},
 /area/adminlevel/ert_station/uscm_station)
+"tM" = (
+/obj/structure/ship_ammo/minirocket{
+	pixel_y = 9;
+	layer = 3.1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "tP" = (
 /obj/vehicle/powerloader{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"us" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
 /area/adminlevel/ert_station/uscm_station)
 "uD" = (
 /obj/effect/decal/warning_stripes{
@@ -867,6 +1019,7 @@
 /area/adminlevel/ert_station/uscm_station)
 "uM" = (
 /obj/structure/largecrate/guns,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "uR" = (
@@ -899,7 +1052,14 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"vx" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "vy" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	icon_state = "warnplate";
 	dir = 8
@@ -950,6 +1110,13 @@
 	icon_state = "plating"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"wr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "redfull";
+	dir = 9
+	},
+/area/adminlevel/ert_station/uscm_station)
 "ws" = (
 /obj/structure/bookcase{
 	dir = 4
@@ -973,6 +1140,11 @@
 /obj/structure/bed/chair/comfy/orange,
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station/uscm_station)
+"xb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
 "xl" = (
 /turf/open/floor{
 	icon_state = "red";
@@ -981,6 +1153,7 @@
 /area/adminlevel/ert_station/uscm_station)
 "xu" = (
 /obj/structure/machinery/iv_drip,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side"
@@ -991,6 +1164,7 @@
 /obj/item/seeds/ambrosiavulgarisseed{
 	layer = 2.1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "xB" = (
@@ -1005,6 +1179,11 @@
 	pixel_y = 6
 	},
 /turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"xT" = (
+/obj/structure/janitorialcart,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "yg" = (
 /obj/structure/closet/emcloset,
@@ -1029,6 +1208,21 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"yx" = (
+/obj/structure/prop/dam/crane,
+/obj/structure/prop{
+	icon = 'icons/obj/structures/props/almayer_props64.dmi';
+	icon_state = "cooling_system";
+	name = "Damaged FS/ACS-9 cooling system";
+	desc = "A cooling system for the Tripoli. It produces additional cooling reducing delays between launch. The pipes are crooked and bent,  hoses are sliced open, and that's not even mentioning the bullet holes. Looks to be an older model as well.";
+	density = 1;
+	pixel_y = 16;
+	layer = 3.1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "yO" = (
 /obj/effect/decal/warning_stripes,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -1038,6 +1232,14 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"yR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/uscm_station)
 "zG" = (
 /obj/item/reagent_container/spray/cleaner{
@@ -1071,7 +1273,15 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"Am" = (
+/obj/structure/morgue,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "AA" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "red";
 	dir = 4
@@ -1112,6 +1322,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "Bs" = (
@@ -1180,6 +1391,10 @@
 	icon_state = "plating"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"DW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
 "Ei" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
@@ -1212,8 +1427,17 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"EL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
 "EN" = (
 /obj/structure/bed/chair/office/light,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -1290,6 +1514,7 @@
 	},
 /area/adminlevel/ert_station/uscm_station)
 "Gj" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	icon_state = "warnplate";
 	dir = 10
@@ -1327,6 +1552,7 @@
 /turf/closed/wall/almayer,
 /area/adminlevel/ert_station/uscm_station)
 "HE" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/uscm/directional{
 	dir = 8
 	},
@@ -1375,6 +1601,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station/uscm_station)
 "HT" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	icon_state = "warnplate";
 	dir = 6
@@ -1430,6 +1657,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/item/ammo_magazine/pistol/holdout,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "Je" = (
@@ -1472,10 +1700,31 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"KZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "cargo_arrow"
+	},
+/area/adminlevel/ert_station/uscm_station)
+"Lg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
 "Lq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Ly" = (
+/obj/structure/largecrate/random/case{
+	pixel_y = -5
+	},
+/obj/structure/largecrate/random/case{
+	pixel_y = 5
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/uscm_station)
@@ -1490,6 +1739,14 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 10
 	},
+/area/adminlevel/ert_station/uscm_station)
+"LJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/dam/crane/cargo{
+	dir = 4;
+	desc = "Standard cargo crane used by the USCM. Looks like this one has replacement parts for the Tripoli on it. You probably couldn't name half of these."
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/uscm_station)
 "LN" = (
 /turf/open/floor/almayer{
@@ -1516,6 +1773,11 @@
 	dir = 1
 	},
 /area/adminlevel/ert_station/uscm_station)
+"Mz" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
 "MB" = (
 /obj/structure/filingcabinet/security,
 /obj/structure/sign/poster/art{
@@ -1524,6 +1786,23 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/uscm_station)
 "MJ" = (
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
+"MN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ship_ammo/minirocket{
+	pixel_y = 9;
+	layer = 3.1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
+"MV" = (
+/obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -1564,6 +1843,12 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"OM" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "cargo_arrow"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "OR" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood{
 	req_access = null
@@ -1577,6 +1862,21 @@
 /obj/effect/vehicle_spawner/apc_cmd/fixed{
 	dir = 8
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
+"Pr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -1584,6 +1884,10 @@
 "Pt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -1594,6 +1898,7 @@
 	icon_state = "NE-out";
 	pixel_y = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -1636,7 +1941,15 @@
 	pixel_x = -9;
 	pixel_y = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"QL" = (
+/obj/structure/largecrate/supply/medicine/medkits,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/uscm_station)
 "QU" = (
 /obj/effect/vehicle_spawner/van/fixed{
@@ -1660,8 +1973,21 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"Rl" = (
+/obj/structure/ship_ammo/rocket/napalm,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "Rv" = (
 /turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"RP" = (
+/obj/structure/bed/roller,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/adminlevel/ert_station/uscm_station)
 "Sj" = (
 /turf/open/floor/wood/ship,
@@ -1734,6 +2060,17 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"TX" = (
+/obj/structure/prop/invuln{
+	desc = "big pile energy.";
+	icon = 'icons/obj/structures/props/ice_colony/barrel_yard.dmi';
+	icon_state = "pile_0";
+	name = "barrel pile";
+	pixel_y = -16
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
 "Uc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -1752,7 +2089,19 @@
 	icon_state = "plating"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"Uh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side"
+	},
+/area/adminlevel/ert_station/uscm_station)
+"Ui" = (
+/obj/structure/largecrate/supply/weapons/m56d,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
 "UH" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
@@ -1773,6 +2122,13 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station/uscm_station)
+"Vt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/ert_station/uscm_station)
 "VO" = (
@@ -1796,6 +2152,19 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"Wv" = (
+/obj/structure/largecrate/random/case{
+	pixel_y = 11
+	},
+/obj/structure/largecrate/random/case,
+/obj/structure/largecrate/random/case{
+	pixel_y = 5
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/uscm_station)
 "WU" = (
 /obj/effect/decal/warning_stripes{
@@ -1829,6 +2198,13 @@
 	icon_state = "plating"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"Xb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "sterile_green_side"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "Xd" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/liaison_suit,
@@ -1844,6 +2220,22 @@
 /obj/item/book/manual/engineering_hacking,
 /obj/item/book/manual/nuclear,
 /turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"Xz" = (
+/obj/structure/largecrate/random,
+/obj/item/ammo_magazine/pistol/holdout{
+	layer = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"XU" = (
+/obj/vehicle/powerloader{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/adminlevel/ert_station/uscm_station)
 "Yb" = (
 /obj/structure/machinery/cryopod/right,
@@ -1870,8 +2262,15 @@
 	},
 /area/adminlevel/ert_station/uscm_station)
 "Ys" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	dir = 4;
+	icon_state = "sterile_green_side"
+	},
+/area/adminlevel/ert_station/uscm_station)
+"YJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/ert_station/uscm_station)
@@ -2097,9 +2496,9 @@ zK
 zK
 zK
 wx
-Bn
-Bn
-Bn
+wr
+wr
+wr
 Bn
 Bn
 ep
@@ -2128,10 +2527,10 @@ Zp
 Zp
 zK
 ej
-qI
-qI
-qI
-qI
+DW
+DW
+DW
+DW
 Lz
 xl
 aF
@@ -2164,7 +2563,7 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 mD
 mD
 fN
@@ -2201,10 +2600,10 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 mD
 LO
-LN
+Uh
 ym
 tC
 mD
@@ -2238,7 +2637,7 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 mD
 Qt
 CO
@@ -2248,9 +2647,9 @@ Kl
 CL
 IN
 mD
-Rv
-Rv
-Rv
+qL
+qL
+qL
 zK
 kZ
 kZ
@@ -2275,7 +2674,7 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 mD
 aw
 CO
@@ -2285,8 +2684,8 @@ mD
 jk
 cU
 mD
-Dp
-Rv
+Lg
+qL
 Dp
 zK
 kZ
@@ -2312,7 +2711,7 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 mD
 WU
 Ik
@@ -2349,7 +2748,7 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 mD
 hY
 fY
@@ -2386,15 +2785,15 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 mD
 Oh
 CO
 CO
-CO
-CO
+pP
+pP
 Vm
-Er
+YJ
 rP
 Dp
 Rv
@@ -2423,13 +2822,13 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 mD
 FB
 VO
 BF
 Ys
-iS
+Xb
 Rg
 Yq
 mD
@@ -2445,7 +2844,7 @@ kZ
 kZ
 zK
 GT
-qI
+DW
 zK
 zK
 Zp
@@ -2460,7 +2859,7 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 mD
 mD
 mD
@@ -2470,7 +2869,7 @@ aw
 Er
 mD
 mD
-MJ
+tD
 MJ
 yg
 zK
@@ -2482,7 +2881,7 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 Hc
 zK
 Zp
@@ -2497,7 +2896,7 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 mD
 IP
 sL
@@ -2507,9 +2906,9 @@ aw
 fi
 OR
 mD
-Dp
-Rv
-Dp
+Lg
+qL
+Lg
 zK
 kZ
 kZ
@@ -2519,7 +2918,7 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 uM
 zK
 Zp
@@ -2534,9 +2933,9 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 sj
-aw
+Vt
 CO
 Er
 ja
@@ -2544,9 +2943,9 @@ aw
 CO
 bU
 mD
-Dp
-Rv
-Dp
+Lg
+qL
+Lg
 zK
 kZ
 kZ
@@ -2556,8 +2955,8 @@ kZ
 kZ
 zK
 GT
-qI
-qI
+DW
+DW
 zK
 Zp
 Zp
@@ -2571,7 +2970,7 @@ Zp
 Zp
 Zp
 zK
-qI
+DW
 mD
 Ra
 xu
@@ -2593,8 +2992,8 @@ kZ
 kZ
 kZ
 zK
-qI
-Fq
+DW
+Xz
 zK
 Zp
 Zp
@@ -2608,7 +3007,7 @@ Zp
 Zp
 Zp
 zK
-qI
+DW
 mD
 mD
 vG
@@ -2620,7 +3019,7 @@ mD
 mD
 MJ
 Hc
-MJ
+tD
 zK
 kZ
 kZ
@@ -2630,7 +3029,7 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 Hc
 zK
 Zp
@@ -2645,19 +3044,19 @@ Zp
 Zp
 zK
 zK
-qI
+DW
 xA
 mD
 lz
 LN
 LN
-LN
+Uh
 LN
 Tr
 vG
 Rv
 Rv
-Rv
+qL
 zK
 kZ
 kZ
@@ -2667,7 +3066,7 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 Hc
 zK
 Zp
@@ -2681,20 +3080,20 @@ Zp
 Zp
 Zp
 zK
-qI
-qI
+DW
+DW
 au
 mD
 Fz
 fn
+pP
 CO
-CO
-CO
+pP
 Er
 in
 Dp
 Rv
-Dp
+Lg
 ra
 zK
 kZ
@@ -2704,7 +3103,7 @@ kZ
 kZ
 kZ
 zK
-qI
+DW
 om
 zK
 Zp
@@ -2718,7 +3117,7 @@ Zp
 Zp
 Zp
 zK
-qI
+DW
 mD
 mD
 mD
@@ -2731,7 +3130,7 @@ iv
 vG
 Dp
 Rv
-Dp
+Lg
 zK
 zK
 zK
@@ -2741,7 +3140,7 @@ zK
 zK
 zK
 zK
-qI
+DW
 GL
 zK
 Zp
@@ -2755,7 +3154,7 @@ Zp
 Zp
 Zp
 zK
-qI
+DW
 mD
 mD
 mD
@@ -2767,8 +3166,8 @@ mD
 mD
 mD
 Dp
-Rv
-Dp
+qL
+Lg
 Hc
 kA
 vy
@@ -2778,7 +3177,7 @@ vy
 vy
 Gj
 Hc
-qI
+DW
 Fq
 zK
 Zp
@@ -2792,7 +3191,7 @@ Zp
 Zp
 Zp
 zK
-qI
+DW
 mD
 ac
 ac
@@ -2804,7 +3203,7 @@ ac
 vF
 mD
 Dp
-Rv
+qL
 QI
 to
 ak
@@ -2815,7 +3214,7 @@ lA
 lA
 HT
 Hc
-qI
+DW
 Hc
 zK
 Zp
@@ -2834,15 +3233,15 @@ mD
 MJ
 MJ
 MJ
-MJ
-MJ
+tD
+tD
 MJ
 Rv
 Rv
 TF
 Dp
-Rv
-Dp
+qL
+Lg
 Hc
 Hc
 Hc
@@ -2852,7 +3251,7 @@ Hc
 Hc
 UH
 Hc
-qI
+DW
 Hc
 zK
 Zp
@@ -2877,8 +3276,8 @@ Rv
 Rv
 MJ
 mD
-Dp
-Rv
+Lg
+qL
 Dp
 Hc
 Hc
@@ -2888,9 +3287,9 @@ es
 UH
 Hc
 UH
-qI
-qI
-Fq
+DW
+DW
+Xz
 zK
 Zp
 Zp
@@ -2914,8 +3313,8 @@ pF
 pF
 MJ
 mD
-MJ
-MJ
+tD
+tD
 MJ
 Hc
 Hc
@@ -2926,8 +3325,8 @@ Hc
 Hc
 Hc
 Hc
-qI
-Fq
+DW
+Xz
 zK
 zK
 Zp
@@ -2945,14 +3344,14 @@ Rv
 ac
 ac
 ac
-Rv
-ac
-ac
-ac
+qL
+Am
+Am
+Am
 MJ
 mD
-MJ
-MJ
+tD
+tD
 MJ
 Hc
 Hc
@@ -2961,11 +3360,11 @@ Hc
 Hc
 Hc
 IV
-qI
-qI
-qI
-qI
-qI
+DW
+DW
+DW
+DW
+DW
 zK
 Zp
 Zp
@@ -2979,17 +3378,17 @@ Zp
 ji
 Qf
 Rv
+tD
 MJ
 MJ
-MJ
-Rv
-MJ
-MJ
-MJ
+qL
+tD
+tD
+tD
 MJ
 mD
 Dp
-Rv
+qL
 Dp
 Hc
 Hc
@@ -3015,6 +3414,7 @@ Zp
 Zp
 ji
 Rv
+qL
 Rv
 Rv
 Rv
@@ -3022,11 +3422,10 @@ Rv
 Rv
 Rv
 Rv
-Rv
-Rv
+qL
 TF
 Dp
-Rv
+qL
 Dp
 EY
 Bs
@@ -3099,8 +3498,8 @@ mD
 mD
 mD
 mD
-Dp
-Rv
+Lg
+qL
 Dp
 Hc
 Sj
@@ -3122,22 +3521,22 @@ Zp
 Zp
 Zp
 zK
-Rv
+Ly
 Rv
 MJ
-MJ
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
+tD
+qL
+qL
+qL
+qL
+qL
+qL
 Rv
 MJ
 yg
 Hc
-Dp
-Rv
+Lg
+qL
 Dp
 vc
 Sj
@@ -3159,7 +3558,7 @@ Zp
 Zp
 Zp
 zK
-Rv
+Wv
 hz
 lP
 lP
@@ -3167,14 +3566,14 @@ lP
 hW
 lP
 lP
-lP
+mw
 Px
-Rv
+LJ
 MJ
-MJ
+tD
 lE
-Dp
-Rv
+Lg
+qL
 pS
 Hc
 Sj
@@ -3196,23 +3595,23 @@ Zp
 Zp
 Zp
 mR
-MJ
-Pt
+dK
+bX
 qI
 qI
 qI
 qI
 qI
 qI
-qI
-pR
-Rv
-MJ
+DW
+er
+qL
+tD
 MJ
 ot
 Dp
 Rv
-pS
+us
 Hc
 AT
 AT
@@ -3233,8 +3632,8 @@ Zp
 Zp
 Zp
 mR
-MJ
-Pt
+dK
+bX
 qI
 qI
 qI
@@ -3249,7 +3648,7 @@ MJ
 Hc
 Dp
 Rv
-Dp
+Lg
 EY
 AT
 AT
@@ -3270,7 +3669,7 @@ Zp
 Zp
 Zp
 mR
-Rv
+dK
 Pt
 qI
 qI
@@ -3295,7 +3694,7 @@ AT
 AT
 Hc
 Hc
-dz
+dW
 zK
 zK
 zK
@@ -3307,7 +3706,7 @@ Zp
 Zp
 Zp
 mR
-Rv
+dK
 Pt
 qI
 qI
@@ -3317,8 +3716,8 @@ qI
 qI
 qI
 Lq
-Rv
-MJ
+qL
+tD
 yg
 Hc
 MJ
@@ -3332,7 +3731,7 @@ Sj
 qH
 Hc
 bc
-qI
+DW
 zK
 Zp
 Zp
@@ -3344,7 +3743,7 @@ Zp
 Zp
 Zp
 mR
-Rv
+OM
 Pt
 qI
 qI
@@ -3354,8 +3753,8 @@ qI
 qI
 qI
 pR
-Rv
-MJ
+qL
+tD
 Hc
 Hc
 Rv
@@ -3368,8 +3767,8 @@ Hc
 Hc
 Hc
 Hc
-qI
-qI
+DW
+DW
 zK
 Zp
 Zp
@@ -3381,7 +3780,7 @@ Zp
 Zp
 Zp
 mR
-MJ
+OM
 Pt
 qI
 qI
@@ -3391,21 +3790,21 @@ qI
 qI
 qI
 pR
-Rv
-MJ
+qL
+tD
 EY
 rd
 Dp
 Rv
 Dp
-rd
+iK
 Hc
 au
 au
 qi
-om
+af
 Hc
-qI
+DW
 Hc
 zK
 Zp
@@ -3418,7 +3817,7 @@ Zp
 Zp
 Zp
 mR
-MJ
+OM
 Pt
 qI
 qI
@@ -3428,22 +3827,22 @@ qI
 qI
 qI
 pR
-Rv
-MJ
+qL
+tD
 EY
 rd
 YP
 HE
 LH
-rd
+iK
 Hc
 au
-qI
-qI
-qI
-qI
-qI
-qI
+DW
+DW
+DW
+DW
+DW
+DW
 zK
 Zp
 Zp
@@ -3455,32 +3854,32 @@ Zp
 Zp
 Zp
 zK
-Rv
+QL
 lf
-Dz
+ag
 Dz
 Dz
 su
-Dz
-Dz
-Dz
-yr
-Rv
-MJ
+ag
+ag
+ag
+Pr
+qL
+tD
 EY
 MJ
 Cj
 mk
 iF
-MJ
+tD
 Hc
-qI
-qI
-qI
-qI
+DW
+DW
+DW
+DW
 Hc
 mv
-qI
+DW
 zK
 Zp
 Zp
@@ -3492,18 +3891,18 @@ Zp
 Zp
 Zp
 zK
-Rv
+Ui
 MJ
 MJ
 MJ
 Rv
 Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-MJ
+qL
+qL
+qL
+qL
+qL
+tD
 EY
 rd
 wF
@@ -3511,13 +3910,13 @@ hk
 NQ
 MJ
 Hc
-GL
-qI
-qI
-qI
+xT
+DW
+DW
+DW
 Hc
 Hc
-qI
+DW
 zK
 Zp
 Zp
@@ -3531,7 +3930,7 @@ Zp
 zK
 Rv
 Rv
-MJ
+XU
 mD
 mD
 mD
@@ -3547,14 +3946,14 @@ Dp
 Rv
 Dp
 MJ
-to
-qI
-qI
+pX
+DW
+DW
 bc
 bc
 Hc
-qI
-qI
+DW
+DW
 zK
 Zp
 kZ
@@ -3614,21 +4013,21 @@ CO
 Er
 mD
 Rv
-MJ
-MJ
-Rv
-MJ
-MJ
+tD
+tD
+qL
+tD
+tD
 MJ
 Rv
 st
-yg
-st
-MJ
+MV
+RP
+tD
 iW
 MJ
 MJ
-yg
+MJ
 MJ
 zK
 kZ
@@ -3651,22 +4050,22 @@ CO
 zW
 uR
 Rv
+qL
+qL
+qL
+qL
+qL
+qL
+qL
+qL
 Rv
 Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-MJ
+qL
+qL
+qL
+xb
+qL
+tD
 zK
 kZ
 kZ
@@ -3688,20 +4087,20 @@ fc
 uR
 mD
 Rv
+tD
+tD
+qL
+tD
+tD
+tD
+qL
+tD
 MJ
-MJ
-Rv
-MJ
-MJ
-MJ
-Rv
-MJ
-MJ
-MJ
-MJ
-MJ
-MJ
-MJ
+Rl
+MN
+iP
+tM
+tD
 Rv
 MJ
 zK
@@ -3718,8 +4117,8 @@ Zp
 Zp
 Zp
 zK
-MJ
-MJ
+tD
+tD
 Rv
 Rv
 Rv
@@ -3733,12 +4132,12 @@ MJ
 MJ
 Rv
 MJ
+tD
+tD
+MN
 MJ
-MJ
-MJ
-MJ
-MJ
-MJ
+tM
+tD
 Rv
 MJ
 zK
@@ -3755,8 +4154,8 @@ Zp
 Zp
 Zp
 zK
-MJ
-MJ
+lP
+Px
 Rv
 MJ
 MJ
@@ -3775,9 +4174,9 @@ Yo
 Yo
 ho
 sH
-MJ
-Rv
-MJ
+tD
+nP
+lP
 zK
 kZ
 kZ
@@ -3792,8 +4191,8 @@ Zp
 Zp
 kZ
 mR
-Rv
-MJ
+dK
+pR
 Rv
 QU
 Rv
@@ -3813,8 +4212,8 @@ qI
 IH
 uD
 Rv
-Rv
-Rv
+yR
+ir
 mR
 kZ
 kZ
@@ -3829,11 +4228,11 @@ Zp
 Zp
 kZ
 mR
+dK
+er
+qL
 MJ
-MJ
-Rv
-MJ
-MJ
+tD
 Ie
 qI
 qI
@@ -3850,8 +4249,8 @@ qI
 qI
 WZ
 MJ
-Rv
-MJ
+yR
+ir
 mR
 kZ
 kZ
@@ -3866,11 +4265,11 @@ Zp
 Zp
 kZ
 mR
+dK
+er
+qL
 MJ
-MJ
-Rv
-MJ
-MJ
+tD
 Ie
 qI
 qI
@@ -3885,10 +4284,10 @@ qI
 qI
 qI
 qI
+tD
 MJ
-MJ
-Rv
-MJ
+yR
+ir
 mR
 kZ
 kZ
@@ -3903,11 +4302,11 @@ Zp
 Zp
 kZ
 mR
-Rv
+dK
+er
+qL
 MJ
-Rv
-MJ
-Rv
+qL
 Ie
 qI
 qI
@@ -3922,10 +4321,10 @@ qI
 qI
 qI
 qI
+tD
 MJ
-MJ
-Rv
-MJ
+yR
+ir
 mR
 Zp
 Zp
@@ -3940,11 +4339,11 @@ Zp
 Zp
 kZ
 mR
+KZ
+er
+qL
 MJ
-MJ
-Rv
-MJ
-MJ
+tD
 Ie
 qI
 qI
@@ -3961,8 +4360,8 @@ qI
 qI
 MJ
 MJ
-Rv
-MJ
+yR
+ir
 mR
 Zp
 Zp
@@ -3977,9 +4376,9 @@ Zp
 Zp
 kZ
 mR
-MJ
-MJ
-Rv
+dK
+er
+qL
 MJ
 MJ
 Ie
@@ -3997,9 +4396,9 @@ qI
 qI
 qI
 hv
-MJ
-Rv
-MJ
+tD
+yR
+ir
 mR
 Zp
 Zp
@@ -4014,9 +4413,9 @@ Zp
 Zp
 kZ
 mR
-Rv
+dK
 OU
-Rv
+qL
 MJ
 Rv
 Ie
@@ -4034,9 +4433,9 @@ qI
 qI
 qI
 uD
-Rv
-Rv
-Rv
+qL
+yR
+ir
 mR
 Zp
 Zp
@@ -4051,8 +4450,8 @@ Zp
 Zp
 kZ
 zK
-MJ
-MJ
+ag
+yr
 Rv
 MJ
 MJ
@@ -4071,9 +4470,9 @@ Ey
 Ey
 bv
 DG
-MJ
-Rv
-MJ
+tD
+EL
+Dz
 zK
 Zp
 Zp
@@ -4088,6 +4487,17 @@ Zp
 Zp
 Zp
 zK
+tD
+tD
+Rv
+MJ
+tD
+tD
+MJ
+MJ
+MJ
+Rv
+MJ
 MJ
 MJ
 Rv
@@ -4095,22 +4505,11 @@ MJ
 MJ
 MJ
 MJ
-MJ
-MJ
+tD
+tD
+tD
 Rv
-MJ
-MJ
-MJ
-Rv
-MJ
-MJ
-MJ
-MJ
-MJ
-MJ
-MJ
-Rv
-MJ
+tD
 zK
 Zp
 Zp
@@ -4125,29 +4524,29 @@ Zp
 Zp
 Zp
 zK
-MJ
-MJ
+tD
+tD
 Rv
 Rv
-Rv
-Rv
+qL
+qL
 MJ
 MJ
 MJ
-Rv
+qL
+tD
+tD
+tD
+qL
+tD
+tD
 MJ
 MJ
-MJ
-Rv
-MJ
-MJ
-MJ
-MJ
-MJ
-MJ
-MJ
+tD
+tD
+tD
 oe
-MJ
+tD
 zK
 Zp
 Zp
@@ -4169,19 +4568,19 @@ zK
 MJ
 Rv
 Rv
+bV
+TX
+Mz
+qL
+qL
+qL
+qL
+qL
+qL
 Rv
 Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
-Rv
+qL
+qL
 Rv
 tP
 qc
@@ -4206,15 +4605,15 @@ zK
 MJ
 MJ
 MJ
+vx
+vx
+vx
+tD
+tD
 MJ
+tD
 MJ
-MJ
-MJ
-MJ
-MJ
-MJ
-MJ
-MJ
+yx
 MJ
 if
 MJ
@@ -4243,13 +4642,13 @@ zK
 yO
 yO
 zK
+vx
+vx
+vx
 MJ
 MJ
 MJ
-MJ
-MJ
-MJ
-MJ
+tD
 MJ
 MJ
 zK
@@ -4412,4 +4811,78 @@ Zp
 Zp
 Zp
 Zp
+"}
+(69,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(70,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
 "}

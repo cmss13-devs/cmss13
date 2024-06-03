@@ -43,11 +43,13 @@
 	name = "Nova Medica Hospital Complex - Emergency Response Landing Zone One - Flight Control Room"
 	icon_state = "hybrisa"
 	ceiling = CEILING_METAL
+	is_landing_zone = TRUE
 /area/lv759/indoors/landing_zone_1/lz1_console
 	name = "Nova Medica Hospital Complex - Emergency Response Landing Zone One - Dropship Alamo Console"
 	icon_state = "hybrisa"
 	requires_power = FALSE
 	ceiling = CEILING_METAL
+	is_landing_zone = TRUE
 
 // Landing Zone 2
 /area/lv759/outdoors/landing_zone_2
@@ -104,6 +106,11 @@
 	icon_state = "mining"
 	ceiling = CEILING_METAL
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south
+	name = "KMCC Interstellar Freight Hub - Cargo Processing Center - Main Entrance & South Unloading Platform"
+	icon_state = "mining"
+	ceiling = CEILING_NONE
+	minimap_color = MINIMAP_AREA_COLONY
 
 // Derelict Ship
 /area/lv759/indoors/derelict_ship
@@ -276,6 +283,11 @@
 /area/lv759/outdoors/colony_streets/north_east_street
 	name = "Colony Streets - Northeast"
 	icon_state = "colonystreets_northeast"
+
+/area/lv759/outdoors/colony_streets/north_east_street_LZ
+	name = "Colony Streets - Northeast"
+	icon_state = "colonystreets_northeast"
+	is_landing_zone = TRUE
 
 /area/lv759/outdoors/colony_streets/north_street
 	name = "Colony Streets - North"
@@ -554,19 +566,19 @@
 	name = "KMCC - Mining Outpost - Northeast"
 	icon_state = "mining"
 /area/lv759/indoors/mining_outpost/south
-	name = "KMCC - Mining Outpost - South"
+	name = "KMCC - Mining Outpost - Southeast"
 	icon_state = "mining"
 /area/lv759/indoors/mining_outpost/vehicledeployment
-	name = "KMCC - Mining Vehicle Deployment South"
+	name = "KMCC - Mining Outpost - South - Vehicle Deployment"
 	icon_state = "mining"
 /area/lv759/indoors/mining_outpost/processing
-	name = "KMCC - Mining Processing & Storage"
+	name = "KMCC - Mining Outpost - South - Processing & Storage"
 	icon_state = "mining"
 /area/lv759/indoors/mining_outpost/east
 	name = "KMCC - Mining Outpost - East"
 	icon_state = "mining"
 /area/lv759/indoors/mining_outpost/east_dorms
-	name = "KMCC - Mining Outpost - East Dorms"
+	name = "KMCC - Mining Outpost - East - Dorms"
 	icon_state = "mining"
 /area/lv759/indoors/mining_outpost/east_deploymentbay
 	name = "KMCC - Mining Outpost - East - Deployment Bay"
@@ -577,6 +589,11 @@
 /area/lv759/indoors/mining_outpost/cargo_maint
 	name = "KMCC - Mining Outpost - East - Maintenance"
 	icon_state = "mining"
+/area/lv759/outdoors/mining_outpost/south_entrance
+	name = "KMCC - Mining Outpost - South - Vehicle Deployment Entrance"
+	icon_state = "mining"
+	ceiling = CEILING_NONE
+	minimap_color = MINIMAP_AREA_COLONY
 
 // Electrical Substations
 

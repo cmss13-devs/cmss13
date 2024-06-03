@@ -29268,7 +29268,47 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/maint/hull/upper/u_a_p)
 "fVh" = (
-/obj/structure/machinery/sentry_holder/almayer/mini/aicore,
+/obj/structure/machinery/sentry_holder/almayer/mini/aicore{
+	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	id = "ARES StairsUpper";
+	name = "Stairway Shutters";
+	pixel_x = 36;
+	req_one_access_txt = "90;91;92";
+	pixel_y = -2
+	},
+/obj/structure/machinery/door_control{
+	id = "ARES StairsLower";
+	name = "Corridor Shutters";
+	pixel_x = 36;
+	pixel_y = 4;
+	req_one_access_txt = "90;91;92"
+	},
+/obj/structure/machinery/door_control{
+	id = "ARES Interior";
+	indestructible = 1;
+	name = "Core Shutters";
+	pixel_x = 36;
+	pixel_y = 10;
+	req_one_access_txt = "90;91;92"
+	},
+/obj/structure/machinery/door_control{
+	id = "ARES Railing";
+	indestructible = 1;
+	name = "Core Railings";
+	needs_power = 0;
+	pixel_x = 28;
+	req_one_access_txt = "91;92";
+	pixel_y = 7
+	},
+/obj/structure/machinery/door_control{
+	id = "ARES Operations Left";
+	name = "Records Room Shutters";
+	pixel_x = 28;
+	pixel_y = 1;
+	req_one_access_txt = "90;91;92"
+	},
 /turf/open/floor/almayer/aicore/no_build{
 	icon_state = "w_ai_floor1"
 	},
@@ -36390,7 +36430,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic/glass{
 	name = "\improper AIST Office";
 	dir = 1;
-	req_one_access_txt = "90;91;92";
 	masterkey_resist = 1
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build{
@@ -56716,7 +56755,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door_control{
 	id = "ARES AIST";
-	name = "ARES Core Lockdown";
+	name = "Privacy Shutters";
 	pixel_x = 24;
 	pixel_y = 8;
 	req_one_access_txt = "31;92"
@@ -61506,6 +61545,14 @@
 	pixel_y = 9
 	},
 /obj/structure/machinery/aicore_lockdown{
+	pixel_x = -5;
+	req_one_access_txt = "31;92"
+	},
+/obj/structure/machinery/door_control{
+	id = "ARES AIST";
+	name = "Privacy Shutters";
+	pixel_y = 11;
+	req_one_access_txt = "31;92";
 	pixel_x = -5
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build{
@@ -78743,7 +78790,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES AIST";
-	name = "ARES Core Lockdown";
+	name = "Privacy Shutters";
 	pixel_x = 24;
 	pixel_y = -8;
 	req_one_access_txt = "31;92"
@@ -83281,8 +83328,7 @@
 "yaV" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	name = "\improper AIST Office";
-	req_access = null;
-	req_one_access_txt = "90;91;92"
+	req_access = null
 	},
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/no_build{

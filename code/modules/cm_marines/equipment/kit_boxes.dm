@@ -71,7 +71,7 @@
 
 /obj/item/storage/box/spec/sniper/anti_materiel/fill_preset_inventory()
 	name = "\improper AMR equipment case"
-	desc = "A large case containing an experimental XM43E1, a set of M45 ghillie armor and helmet, a M42 scout sight, ammunition, spotter equipment, and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "A large case containing an experimental XM43E1, a set of M45 ghillie armor and helmet, an M42 scout sight, ammunition, a set of spotter gear, and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	new /obj/item/clothing/suit/storage/marine/ghillie(src)
 	new /obj/item/clothing/head/helmet/marine/ghillie(src)
 	new /obj/item/clothing/glasses/night/m42_night_goggles(src)

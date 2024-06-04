@@ -1630,7 +1630,7 @@
 /area/adminlevel/ert_station/uscm_station)
 "IH" = (
 /obj/docking_port/stationary/emergency_response/idle_port6{
-	name = "USS Narcissus Landing Pad"
+	name = "USS Kurtz Landing Pad"
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)

@@ -934,7 +934,7 @@
 	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
 
 
-/obj/item/ammo_box/magazine/mk45/empty
+/obj/item/ammo_box/magazine/kt42/empty
 	empty = TRUE
 
 //-----------------------Beretta 92FS Pistol Mag Box-----------------------
@@ -1012,7 +1012,7 @@
 //-----------------------MAR50 Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/mar50
-	name = "\improper magazine box (MAR30/40 Ext x 8)"
+	name = "\improper magazine box (MAR50 x 8)"
 	icon_state = "base_mar"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -1027,5 +1027,5 @@
 	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
 	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
 
-/obj/item/ammo_box/magazine/mar50
+/obj/item/ammo_box/magazine/mar50/empty
 	empty = TRUE

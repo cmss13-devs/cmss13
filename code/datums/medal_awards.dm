@@ -479,6 +479,10 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 			continue
 		recipient_ranks[recipient_name] = record.fields["rank"]
 		possible_recipients += recipient_name
+	if(length(possible_recipients) == 0)
+		to_chat(recommendation_giver, SPAN_WARNING("It's not possible to give medals when the ship is empty. Tough luck, partner..."))
+		return FALSE
+
 	var/chosen_recipient = tgui_input_list(recommendation_giver, "Who do you want to recommend a medal for?", "Medal Recommendation", possible_recipients)
 	if(!chosen_recipient)
 		return FALSE

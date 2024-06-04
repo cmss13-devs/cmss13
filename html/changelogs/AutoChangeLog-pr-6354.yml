@@ -1,0 +1,4 @@
+author: "coldironwarrior"
+delete-after: True
+changes:
+  - rscadd: "Doctors will spawn in dark blue scrubs by default; Setting your preferred job title to \"Surgeon\" for doctor roles will now spawn you in green scrubs"

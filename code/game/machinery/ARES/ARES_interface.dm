@@ -405,7 +405,7 @@
 			log.name = "ASRS Audit Log"
 			log.info += contents
 			log.icon_state = "paper_uscm_words"
-			visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
+			visible_message(SPAN_NOTICE("[src] prints out a paper."))
 
 		// -- Delete Button -- //
 		if("delete_record")

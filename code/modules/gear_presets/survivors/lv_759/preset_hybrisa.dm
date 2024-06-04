@@ -28,13 +28,11 @@
 	var/choice = rand(1,10)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/CMB_officer, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/hybrisa/CMB_vest, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/CMB_peaked_cap, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
@@ -46,33 +44,34 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/tactical, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5, WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 		if(6 to 7)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/CMB_cap_new, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/hybrisa/CMB_vest, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat/guard, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge/rubber, WEAR_IN_BACK)
 		if(8 to 10)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/hybrisa/CMB_vest, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/CMB_peaked_cap_gold, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower/black, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge/rubber, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5, WEAR_J_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
@@ -100,13 +99,13 @@
 	paygrade = PAY_SHORT_CDOC
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Nova Medica - Paramedic"
-	skills = /datum/skills/civilian/survivor/doctor
+	skills = /datum/skills/civilian/hybrisa_paramedic
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 
 /datum/equipment_preset/survivor/hybrisa/hybrisa_paramedic/load_gear(mob/living/carbon/human/new_human)
 
-	var/choice = rand(1,12)
+	var/choice = rand(1,25)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/med, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
@@ -118,32 +117,34 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
 
 	switch(choice)
-		if(1 to 5)
+		if(1 to 9)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/hybrisa/EMT_red_utility, WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower, WEAR_L_HAND)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_R_STORE)
-		if(6 to 10)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/hybrisa/EMT_green_utility, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/paramedic/red, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/merc, WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit, WEAR_R_STORE)
+		if(10 to 19)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/hybrisa/EMT_green_utility, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/paramedic, WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower, WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_R_STORE)
-		if(11)
+		if(20 to 24)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/paramedic, WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/medical_green, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe, WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_defib_and_analyzer, WEAR_WAIST)
-		if(12)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/heavy, WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/heavy, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/heavy, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/heavy, WEAR_IN_R_STORE)
+		if(25)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/hybrisa/EMT_red_utility, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/paramedic/red, WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/hybrisa/medtech, WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/tactical, WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40, WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_R_STORE)
@@ -179,7 +180,7 @@
 	..()
 
 /datum/equipment_preset/survivor/engineer/hybrisa/hydro
-	name = "Survivor - Hybrisa Electrical Engineer"
+	name = "Survivor - Hybrisa - Electrical Engineer"
 	assignment = "Electrical Engineer"
 
 /datum/equipment_preset/survivor/engineer/hybrisa/hydro/load_gear(mob/living/carbon/human/new_human)
@@ -205,8 +206,8 @@
 // Weyland Yutani Corpo
 
 /datum/equipment_preset/survivor/corporate/hybrisa
-	name = "Survivor - Hybrisa Corporate Liaison"
-	assignment = "Hybrisa Corporate Liaison"
+	name = "Survivor - Hybrisa - Corporate Liaison"
+	assignment = "Corporate Liaison"
 
 /datum/equipment_preset/survivor/corporate/hybrisa/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/ivy(new_human), WEAR_BODY)
@@ -218,7 +219,7 @@
 // WY Goons
 
 /datum/equipment_preset/survivor/security/hybrisa
-	name = "Survivor - Hybrisa Weyland-Yutani Corporate Security Guard"
+	name = "Survivor - Hybrisa - Weyland-Yutani Corporate Security Guard"
 	assignment = "Weyland-Yutani Corporate Security Guard"
 
 /datum/equipment_preset/survivor/security/hybrisa/load_gear(mob/living/carbon/human/new_human)

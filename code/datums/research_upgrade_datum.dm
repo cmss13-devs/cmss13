@@ -32,21 +32,21 @@
 
 /datum/research_upgrades/machinery/autodoc/internal_bleed
 	name = "AutoDoc Internal Bleeding Repair"
-	desc = "A data and instruction set for the Autodoc, making it capable of rapidly fixing internal bleeding."
+	desc = "A data and instruction set for the AutoDoc, making it capable of rapidly fixing internal bleeding."
 	behavior = RESEARCH_UPGRADE_TIER_1
 	value_upgrade = 200
 	clearance_req = 1
 
 /datum/research_upgrades/machinery/autodoc/broken_bone
 	name = "AutoDoc Bone Fracture Repair"
-	desc = "A data instruction set for the Autodoc, making it capable of setting fractures and applying bonegel."
+	desc = "A data instruction set for the AutoDoc, making it capable of setting fractures and applying bonegel."
 	behavior = RESEARCH_UPGRADE_TIER_2
 	value_upgrade = 2000
 	clearance_req = 3
 
 /datum/research_upgrades/machinery/autodoc/organ_damage
 	name = "AutoDoc Broken Organ Repair"
-	desc = "A data and instruction set for the Autodoc, making it capable of fixing organ damage."
+	desc = "A data and instruction set for the AutoDoc, making it capable of fixing organ damage."
 	behavior = RESEARCH_UPGRADE_TIER_3
 	value_upgrade = 1500
 	clearance_req = 2

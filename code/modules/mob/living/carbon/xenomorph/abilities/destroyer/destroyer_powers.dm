@@ -38,7 +38,7 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
-	playsound(xeno.loc, 'sound/voice/deep_alien_screech2.ogg', 75, 0, status = 0)
+	playsound(xeno, 'sound/voice/deep_alien_screech2.ogg', 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an raspy guttural roar!"))
 	xeno.create_shriekwave()
 

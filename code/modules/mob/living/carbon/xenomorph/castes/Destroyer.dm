@@ -81,7 +81,7 @@
 				carbon.apply_armoured_damage(20)
 				carbon.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
 		
-		playsound(src.loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+		playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 
 /datum/behavior_delegate/destroyer_base
 	name = "Base Destroyer Behavior Delegate"

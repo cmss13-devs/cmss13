@@ -177,9 +177,15 @@
 
 /obj/effect/particle_effect/smoke/miasma/process()
 	. = ..()
-	for(var/obj/structure/closet/container in get_turf(src))
+	var/turf/turf = get_turf(src)
+	for(var/obj/structure/closet/container in turf)
 		for(var/mob/living/carbon/mob in container)
 			affect(mob)
+	var/obj/vehicle/multitile/car = locate() in turf
+	var/datum/interior/car_interior = car?.interior
+	var/list/passengers = car_interior?.get_passengers()
+	for(var/mob/living/mob as anything in passengers)
+		affect(mob)
 
 /obj/effect/particle_effect/smoke/miasma/affect(mob/living/carbon/affected_mob)
 	. = ..()

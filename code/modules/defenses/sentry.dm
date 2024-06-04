@@ -550,16 +550,19 @@
 	name = "\improper UA-577 Spaceborn Gauss Turret"
 	fire_delay = 2
 	omni_directional = TRUE
-	var/battery_low = 7 MINUTES
-	var/battery_critical = 9 MINUTES
-	var/battery_dead = 10 MINUTES
+	/// How long the battery for this turret lasts. Will warn low at 70% and critical at 90% use.
+	var/battery_duration = 10 MINUTES
+	/// The current battery state
 	var/battery_state = TURRET_BATTERY_STATE_OK
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_LOW), battery_low)
-	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_CRITICAL), battery_critical)
-	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_DEAD), battery_dead)
+
+	var/low_battery_time = ceil(battery_duration * 0.7)
+	var/critical_battery_time = ceil(battery_duration * 0.9)
+	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_LOW), low_battery_time)
+	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_CRITICAL), critical_battery_time)
+	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_DEAD), battery_duration)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/get_examine_text(mob/user)
 	. = ..()

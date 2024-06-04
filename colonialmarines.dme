@@ -1559,6 +1559,7 @@
 #include "code\modules\clothing\clothing.dm"
 #include "code\modules\clothing\clothing_accessories.dm"
 #include "code\modules\clothing\clothing_helpers.dm"
+#include "code\modules\clothing\hybrisa_clothing.dm"
 #include "code\modules\clothing\officer_stuff.dm"
 #include "code\modules\clothing\glasses\glasses.dm"
 #include "code\modules\clothing\glasses\hud.dm"

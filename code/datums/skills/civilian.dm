@@ -212,3 +212,18 @@ CIVILIAN
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 	)
+
+/datum/skills/civilian/wy_pilot
+	name = "Weyland Yutani - Pilot"
+	skills = list(
+		SKILL_PILOT = SKILL_PILOT_EXPERT,
+	)
+
+/datum/skills/civilian/hybrisa_paramedic
+	name = "Nova Medica - Paramedic"
+	skills = list(
+		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+	)

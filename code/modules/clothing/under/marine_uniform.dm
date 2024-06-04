@@ -1199,25 +1199,3 @@
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 	hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced
 
-///////////////////////
-/////// HYBRISA ///////
-///////////////////////
-
-// HYBRISA - GOONS
-
-/obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa
-	name = "\improper WY corporate security uniform"
-	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by what are known as 'goons'."
-	icon = 'icons/mob/humans/onmob/contained/hybrisa_goons.dmi'
-	icon_state = "uniform_hybrisa"
-	item_state = "uniform_hybrisa"
-	worn_state = "uniform_hybrisa"
-	contained_sprite = TRUE
-	item_state_slots = null
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-
-/obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa/lead
-	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
-	icon_state = "lead_uniform_hybrisa"
-	item_state = "lead_uniform_hybrisa"
-	worn_state = "lead_uniform_hybrisa"

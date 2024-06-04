@@ -211,8 +211,8 @@
 
 	if(F && !(projectile_flags & PROJECTILE_SHRAPNEL))
 		permutated |= F //Don't hit the shooter (firer)
-	else if (S && (projectile_flags & PROJECTILE_SHRAPNEL))
-		permutated |= S
+	if (S)
+		permutated |= get_atom_on_turf(S) //Don't hit the originating object
 
 	permutated |= src //Don't try to hit self.
 	shot_from = S
@@ -357,8 +357,14 @@
 	if((speed * world.tick_lag) >= get_dist(current_turf, target_turf))
 		SEND_SIGNAL(src, COMSIG_BULLET_TERMINAL)
 
+
+	var/list/ignore_list
+	var/obj/item/hardpoint/hardpoint = shot_from
+	if(istype(hardpoint))
+		LAZYOR(ignore_list, hardpoint.owner) //if fired from a vehicle, exclude the vehicle's body from the adjacency check
+
 	// Check we can reach the turf at all based on pathed grid
-	if(check_canhit(current_turf, next_turf))
+	if(check_canhit(current_turf, next_turf, ignore_list))
 		return TRUE
 
 	// Actually move
@@ -594,9 +600,9 @@
 	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, L, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
 
-/obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf)
+/obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf, list/ignore_list)
 	var/proj_dir = get_dir(current_turf, next_turf)
-	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf))
+	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf, ignore_list = ignore_list))
 		ammo.on_hit_turf(current_turf, src)
 		current_turf.bullet_act(src)
 		return TRUE

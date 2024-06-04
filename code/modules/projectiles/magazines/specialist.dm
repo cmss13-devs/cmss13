@@ -254,9 +254,15 @@
 			user.put_in_hands(fuel)
 			fuel = null
 		update_icon()
-		desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
 		return
 	. = ..()
+
+/obj/item/ammo_magazine/rocket/custom/get_examine_text(mob/user)
+	. = ..()
+	if(fuel)
+		. += SPAN_NOTICE("Contains fuel.")
+	if(warhead)
+		. += SPAN_NOTICE("Contains a warhead.")
 
 /obj/item/ammo_magazine/rocket/custom/attackby(obj/item/W as obj, mob/user as mob)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -284,7 +290,6 @@
 			W.forceMove(src)
 			fuel = W
 			to_chat(user, SPAN_DANGER("You add [W] to [name]."))
-			desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
 			playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 	else if(istype(W,/obj/item/explosive/warhead/rocket) && !locked)
 		if(warhead)
@@ -298,7 +303,6 @@
 		W.forceMove(src)
 		warhead = W
 		to_chat(user, SPAN_DANGER("You add [W] to [name]."))
-		desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 	update_icon()
 

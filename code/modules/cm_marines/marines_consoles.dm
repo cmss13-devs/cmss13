@@ -22,7 +22,7 @@
 	name = "Computer"
 	desc = "Terminal that takes a user and target ID"
 	// user who is modifying the target
-    var/obj/item/card/id/user_id_card
+	var/obj/item/card/id/user_id_card
 	// the poor soul whos status needs to be updated as deceased.
 	var/obj/item/card/id/target_id_card
 	// if we are currently authenticated and logged in.
@@ -129,13 +129,13 @@
 	var/list/factions = list(FACTION_MARINE)
 	var/printing
 	var/is_centcom = FALSE
-    var/is_weyland = FALSE
+	var/is_weyland = FALSE
 
 /obj/structure/machinery/computer/double_id/card/wey_yu
 	is_weyland = TRUE
 	req_access = list(ACCESS_WY_DATABASE)
 	factions = list(FACTION_WY, FACTION_PMC)
-  
+
 /obj/structure/machinery/computer/double_id/card/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)

@@ -547,11 +547,12 @@
 	composite_icon = FALSE
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone
-	name = "\improper UA-577 Spaceborn Gauss Turret"
+	name = "\improper UA-577 Spaceborne Gauss Turret"
 	fire_delay = 2
+	sentry_range = 10
 	omni_directional = TRUE
 	/// How long the battery for this turret lasts. Will warn low at 70% and critical at 90% use.
-	var/battery_duration = 10 MINUTES
+	var/battery_duration = 20 MINUTES
 	/// The current battery state
 	var/battery_state = TURRET_BATTERY_STATE_OK
 
@@ -590,6 +591,23 @@
 			turned_on = FALSE
 			power_off_action()
 			update_icon()
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/set_range()
+	var/range = sentry_range - 1
+	var/dbl_range = range * 2
+
+	if(omni_directional)
+		range_bounds = RECT(x, y, dbl_range, dbl_range)
+		return
+	switch(dir)
+		if(EAST)
+			range_bounds = RECT(x+range, y, dbl_range, dbl_range)
+		if(WEST)
+			range_bounds = RECT(x-range, y, dbl_range, dbl_range)
+		if(NORTH)
+			range_bounds = RECT(x, y+range, dbl_range, dbl_range)
+		if(SOUTH)
+			range_bounds = RECT(x, y-range, dbl_range, dbl_range)
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship

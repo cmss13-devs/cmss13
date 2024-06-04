@@ -19,10 +19,10 @@ export type GeneralRecord = {
 export type CompCommon = {
   // shared
   authenticated: BooleanLike;
-  selected_target_name: string;
   id_name: string;
 
-  // not shared but future record UI might have it too, so we will put it here.
+  // not shared but future record UI will most likely have it as well, I think it's fine to keep it here.
   has_id: boolean;
+  selected_target_name: string;
   human_mob_list: string[];
 };

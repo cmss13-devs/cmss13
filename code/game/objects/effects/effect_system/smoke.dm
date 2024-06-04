@@ -295,9 +295,7 @@
 	var/effect_amt = floor(6 + amount*6)
 
 	if(xeno_creature)
-		if(xeno_creature.interference < 4)
-			to_chat(xeno_creature, SPAN_XENOHIGHDANGER("Your awareness dims to a small area!"))
-		xeno_creature.interference = 10
+		xeno_creature.AddComponent(/datum/component/status_effect/interference, 10, 10)
 		xeno_creature.blinded = TRUE
 	else
 		creature.apply_damage(12, OXY)

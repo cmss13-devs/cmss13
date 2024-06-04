@@ -87,8 +87,8 @@
 	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=reset'>Reset</A> \]"
 	dat += "<BR><hr>"
 
-	show_browser(user, dat, "Professor DUMMY Control Tablet", window_options="size=400x500")
-	onclose(user, "communications")
+	show_browser(user, dat, "Professor DUMMY Control Tablet", "dummytablet", window_options="size=400x500")
+	onclose(user, "dummytablet")
 	updateDialog()
 	return
 

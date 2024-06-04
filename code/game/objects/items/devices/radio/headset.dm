@@ -417,8 +417,14 @@
 	var/obj/item/card/id/id_card = wearer.wear_id?.GetID()
 	if(!istype(id_card))
 		return
-	if(!(id_card.rank in list(JOB_SO, JOB_XO, JOB_SQUAD_LEADER)))
-		to_chat(wearer, SPAN_WARNING("Only Staff Officers, Executive Officers and Squad Leaders are permitted to give medal recommendations!"))
+	
+	var/datum/paygrade/paygrade_actual = GLOB.paygrades[id_card.paygrade]
+	if(!paygrade_actual)
+		return
+	if(!istype(paygrade_actual, /datum/paygrade/marine)) //We only want marines to be able to recommend for medals
+		return
+	if(paygrade_actual.ranking < 3) //E1 starts at 0, so anyone above Corporal (ranking = 3) can recommend for medals
+		to_chat(wearer, SPAN_WARNING("Only officers or NCO's (ME4+) can recommend medals!"))
 		return
 	if(add_medal_recommendation(usr))
 		to_chat(usr, SPAN_NOTICE("Recommendation successfully submitted."))

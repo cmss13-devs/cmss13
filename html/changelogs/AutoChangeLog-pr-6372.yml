@@ -1,0 +1,9 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Changing an Identification Computer to is_weyland (formerly is_centcom) now works correctly and allows assignment of corporate accesses or presets."
+  - code_imp: "Added two procs for interpreting WY access information in the UI."
+  - code_imp: "Added separate role groups for PMC and Corporate job defines."
+  - rscadd: "Added ACCESS_WY_DATABASE as a requirement to use the WY subtype console."
+  - rscadd: "Added a WY subtype for crew monitor."
+  - code_imp: "Renamed the faction defines explicitly relating to static defences due to confusion over FACTION_WY and FACTION_WEYLAND."

@@ -1219,6 +1219,7 @@ const Requisitions = (props) => {
     last_page,
     current_menu,
     records_requisition,
+    printer_cooldown,
   } = data;
 
   return (
@@ -1261,6 +1262,19 @@ const Requisitions = (props) => {
 
       <Section>
         <h1 align="center">ASRS Audit Log</h1>
+        <h4 align="center">
+          <Button
+            icon="print"
+            px="2rem"
+            textAlign="center"
+            tooltip="Print Audit Log"
+            onClick={() => act('print_req')}
+            disabled={printer_cooldown}
+          >
+            Print Audit Log
+          </Button>
+        </h4>
+
         {!!records_requisition.length && (
           <Flex
             className="candystripe"

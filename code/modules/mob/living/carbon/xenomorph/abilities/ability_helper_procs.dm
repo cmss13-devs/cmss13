@@ -106,6 +106,10 @@
 			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
 			return
 
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)) //Checked again to account for people trying to place acid while channeling the burrow ability
+		to_chat(src, SPAN_WARNING("We can't melt [O] from here!"))
+		return
+
 	if(!check_state())
 		return
 

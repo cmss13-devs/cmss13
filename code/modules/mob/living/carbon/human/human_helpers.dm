@@ -170,7 +170,7 @@
 		body_size_icon = body_size
 		body_type_icon = body_type
 
-	for(var/obj/limb/L in limbs)
+	for(var/obj/limb/L as anything in limbs)
 		L.icon_name = get_limb_icon_name(species, body_size_icon, body_type_icon, gender, L.display_name, skin_color_icon)
 
 /mob/living/carbon/human/can_inject(mob/user, error_msg, target_zone)

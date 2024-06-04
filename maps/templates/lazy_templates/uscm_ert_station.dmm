@@ -1127,6 +1127,15 @@
 	icon_state = "warnplate"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"kE" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "test_floor5"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "kX" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer{
@@ -1482,6 +1491,7 @@
 /obj/structure/sign/safety/rewire{
 	pixel_x = 32
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange"
@@ -1836,6 +1846,7 @@
 	pixel_x = 32;
 	pixel_y = -8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5"
 	},
@@ -2499,6 +2510,13 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/uscm_station)
+"xF" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
 "xK" = (
 /obj/structure/sign/safety/ladder{
 	pixel_x = 32
@@ -2798,6 +2816,7 @@
 /area/adminlevel/ert_station/uscm_station)
 "Ad" = (
 /obj/item/tool/warning_cone,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "cargo_arrow"
@@ -3001,6 +3020,16 @@
 	icon_state = "plating"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"CC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "orangefull"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "CF" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -3063,6 +3092,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "orangefull"
 	},
@@ -4136,6 +4166,7 @@
 	},
 /area/adminlevel/ert_station/uscm_station)
 "Od" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "cargo_arrow"
@@ -4630,14 +4661,6 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/uscm_station)
-"Tf" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/adminlevel/ert_station/uscm_station)
 "Th" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8
@@ -5046,6 +5069,7 @@
 	pixel_y = 5;
 	pixel_x = -13
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/uscm_station)
 "XM" = (
@@ -5072,6 +5096,7 @@
 	dir = 4;
 	name = "ship-grade camera"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/uscm_station)
 "Yb" = (
@@ -5125,6 +5150,11 @@
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
+/area/adminlevel/ert_station/uscm_station)
+"YM" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/uscm_station)
 "YP" = (
 /turf/open/floor/almayer/uscm/directional{
@@ -5726,7 +5756,7 @@ zK
 HU
 OM
 ks
-Dp
+Lg
 MJ
 zK
 kZ
@@ -6507,7 +6537,7 @@ nS
 XC
 XX
 CF
-Dp
+Lg
 WO
 CR
 kZ
@@ -6557,8 +6587,8 @@ zK
 Od
 Qv
 nH
-nH
-NE
+YM
+xF
 FZ
 zK
 CR
@@ -6608,9 +6638,9 @@ kZ
 zK
 Ks
 lY
-lY
+kE
 rw
-Dp
+Lg
 Dp
 zK
 kZ
@@ -6715,7 +6745,7 @@ wt
 zK
 fe
 Dg
-lP
+mw
 zK
 kZ
 kZ
@@ -6762,11 +6792,11 @@ kZ
 kZ
 zK
 hN
-RJ
-RJ
+rs
+rs
 JP
 RJ
-Tf
+Po
 LG
 zK
 kZ
@@ -6818,7 +6848,7 @@ nN
 cy
 zK
 lG
-HM
+CC
 ux
 zK
 kZ

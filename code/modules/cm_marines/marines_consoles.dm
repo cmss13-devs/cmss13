@@ -126,7 +126,7 @@
 	req_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/card
 	// What factions we are able to modify
-	var/list/factions = list(FACTION_MARINE)
+	factions = list(FACTION_MARINE)
 	var/printing
 	var/is_centcom = FALSE
 	var/is_weyland = FALSE

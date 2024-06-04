@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - maptweak: "remove emergency shutter that aren't on the frontier between two areas."
+  - maptweak: "added emergency shutter that are missing on the frontier between two areas."

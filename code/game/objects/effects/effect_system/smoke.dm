@@ -222,6 +222,9 @@
 		to_chat(affected_mob, SPAN_DANGER("Something is not right here..."))
 	return TRUE
 
+/obj/effect/particle_effect/smoke/miasma/ex_act(severity)
+	return
+
 /////////////////////////////////////////////
 // Sleep smoke
 /////////////////////////////////////////////

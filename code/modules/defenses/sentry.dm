@@ -773,7 +773,7 @@
 	handheld_type = /obj/item/defenses/handheld/sentry/wy
 	ammo = new /obj/item/ammo_magazine/sentry/wy
 	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_WEYLAND,
+		SENTRY_CATEGORY_IFF = SENRTY_FACTION_WEYLAND,
 	)
 
 /obj/structure/machinery/defenses/sentry/mini/wy
@@ -790,7 +790,7 @@
 	handheld_type = /obj/item/defenses/handheld/sentry/wy/mini
 	ammo = new /obj/item/ammo_magazine/sentry/wy/mini
 	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_WEYLAND,
+		SENTRY_CATEGORY_IFF = SENRTY_FACTION_WEYLAND,
 	)
 
 /obj/structure/machinery/defenses/sentry/dmr/wy
@@ -809,7 +809,7 @@
 	handheld_type = /obj/item/defenses/handheld/sentry/wy
 	ammo = new /obj/item/ammo_magazine/sentry/wy
 	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_WEYLAND,
+		SENTRY_CATEGORY_IFF = SENRTY_FACTION_WEYLAND,
 	)
 
 /obj/structure/machinery/defenses/sentry/upp

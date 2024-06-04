@@ -185,7 +185,7 @@
 	var/obj/structure/droppod/equipment/sentry_holder/droppod = new(target, /obj/structure/machinery/sentry_holder/landing_zone)
 	droppod.special_structures_to_damage = structures_to_break
 	droppod.special_structure_damage = 500
-	droppod.drop_time = 5 SECONDS
+	droppod.drop_time = 0
 	droppod.launch(target)
 
 ///Creates an OB warning at each LZ to warn of the miasma and then spawns the miasma

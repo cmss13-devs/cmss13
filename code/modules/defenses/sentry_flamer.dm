@@ -117,7 +117,7 @@
 	handheld_type = /obj/item/defenses/handheld/sentry/flamer/wy
 	selected_categories = list(
 		SENTRY_CATEGORY_ROF = ROF_SINGLE,
-		SENTRY_CATEGORY_IFF = SENRTY_FACTION_WEYLAND,
+		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
 	)
 
 /obj/structure/machinery/defenses/sentry/flamer/wy/destroyed_action()

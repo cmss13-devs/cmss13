@@ -127,7 +127,7 @@
 	handheld_type = /obj/item/defenses/handheld/planted_flag/wy
 	defense_type = "WY"
 	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_WEYLAND,
+		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
 	)
 
 /obj/structure/machinery/defenses/planted_flag/wy/apply_buff_to_player(mob/living/carbon/human/H)

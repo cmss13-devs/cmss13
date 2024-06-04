@@ -1,6 +1,6 @@
 /datum/emergency_call/cbrn
 	name = "CBRN (Squad)"
-	arrival_message = "A CBRN squad has been dispatched to your ship. Stand by."
+	arrival_message = "[MAIN_SHIP_NAME] this is the USS Kurtz, we have dispatched a CBRN squad to your ship per your distress call. Stand by for arrival."
 	objectives = "Handle the chemical, biological, radiological, or nuclear threat. Further orders may be provided."
 	home_base = /datum/lazy_template/ert/uscm_station
 	mob_min = 3

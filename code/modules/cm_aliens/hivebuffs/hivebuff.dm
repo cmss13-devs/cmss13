@@ -275,7 +275,7 @@
 		return TRUE
 
 	for(var/datum/hivebuff/buff as anything in hive.used_hivebuffs)
-		if(src.type == buff.type)
+		if(type == buff.type)
 			return FALSE
 
 	return TRUE

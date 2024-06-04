@@ -27,7 +27,7 @@
 	var/obj/item/card/id/target_id_card
 	// if we are currently authenticated and logged in.
 	var/authenticated = FALSE
-    // What factions we are able to modify
+	// What factions we are able to modify
 	var/list/factions = list(FACTION_MARINE)
 
 /obj/structure/machinery/computer/double_id/proc/authenticate(mob/user, obj/item/card/id/id_card)

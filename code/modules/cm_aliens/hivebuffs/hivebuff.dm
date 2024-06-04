@@ -293,7 +293,7 @@
 	var/mob/living/queen = hive.living_xeno_queen
 	var/queen_response = tgui_alert(queen, "[purchasing_mob] is trying to Purchase [name] at a cost of [cost] [BUFF_POINTS_NAME]. Our hive has [hive.buff_points] [BUFF_POINTS_NAME]. Do you want to approve it?", "Approve Hive Buff", list("Yes", "No"), 20 SECONDS)
 
-	if(queen_response && queen_response == "Yes")
+	if(queen_response == "Yes")
 		return TRUE
 	else
 		return FALSE

@@ -1522,5 +1522,5 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	owner.visible_message("[owner]'s [owner_helmet] goes flying off from the impact!", SPAN_USERDANGER("Your [owner_helmet] goes flying off from the impact!"))
 	owner.drop_inv_item_on_ground(owner_helmet)
-	INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
+	INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(range(1, get_turf(loc))), 1, SPEED_FAST)
 	playsound(owner, 'sound/effects/helmet_noise.ogg', 100)

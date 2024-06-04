@@ -94,7 +94,7 @@
 
 /datum/research_upgrades/item/incision_management
 	name = "Incision Management System"
-	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
+	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision, allowing for the immediate commencement of therapeutic steps."
 	value_upgrade = 3000
 	item_reference = /obj/item/tool/surgery/scalpel/manager
 	behavior = RESEARCH_UPGRADE_TIER_1
@@ -138,7 +138,7 @@
 
 /datum/research_upgrades/armor/emergency_injector
 	name = "Medical Emergency Injector"
-	desc = "A medical plate with two buttons on the sides with hefty chemical tank. Attached to uniform and on simultanious press injects emergency dose of medical chemicals much larger than a normal emergency autoinjector. Single time use and is recycled in biomass printer. Features overdose protection"
+	desc = "A medical plate with two buttons on the sides and a hefty chemical tank. Attached to a uniform and on a simultaneous press, it injects an emergency dose of medical chemicals much larger than a normal emergency autoinjector. Single time use and is recycled in biomass printer. Features overdose protection."
 	value_upgrade = 250
 	clearance_req = 1
 	behavior = RESEARCH_UPGRADE_TIER_1
@@ -168,7 +168,4 @@
 	change_purchase = -100
 	minimum_price = 100
 	item_reference = /obj/item/clothing/accessory/health/research_plate/anti_decay
-
-
-
 

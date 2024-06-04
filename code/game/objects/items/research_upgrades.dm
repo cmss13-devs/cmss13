@@ -26,8 +26,6 @@
 
 //prop items end
 
-
-
 //previously file holding left over stuff that never got finished from 8 years ago, it was boring though, so we change that.
 /obj/item/research_upgrades
 	name = "Research upgrade"
@@ -46,22 +44,22 @@
 /obj/item/research_upgrades/autodoc/Initialize(mapload, value)
 	. = ..()
 	src.value = value
-	desc = "Research upgrade for AutoDoc, Technology on this disk is used [get_upgrade_text()] Insert it in the autodoc to use it."
+	desc = "Research upgrade for an AutoDoc. The technology on this disk is used [get_upgrade_text()]. Insert it in an AutoDoc to use it."
 
 /obj/item/research_upgrades/autodoc/proc/get_upgrade_text()
 	switch(value)
 		if(RESEARCH_UPGRADE_TIER_1)
 			return "for stitching up internal bleedings"
 		if(RESEARCH_UPGRADE_TIER_2)
-			return "for fixing broken bones."
+			return "for fixing broken bones"
 		if(RESEARCH_UPGRADE_TIER_3)
-			return "for treating internal organ damage."
+			return "for treating internal organ damage"
 		if(RESEARCH_UPGRADE_TIER_4)
-			return "for extracting unknown parasites."
+			return "for extracting unknown parasites"
 
 /obj/item/research_upgrades/sleeper
 	name = "Research Upgrade (Sleeper)"
-	desc = "Research upgrade for sleeper system, Technology on this disk is used on a sleeper to allow wider spectrum of chemicals to be administered"
+	desc = "Research upgrade for a sleeper system. The technology on this disk is used on a sleeper to allow a wider spectrum of chemicals to be administered."
 
 
 /obj/item/research_upgrades/credits
@@ -71,4 +69,4 @@
 /obj/item/research_upgrades/credits/Initialize(mapload, ...)
 	. = ..()
 	credit_value = rand(8, 9)
-	desc = "Research disk containing all bits of data the analyzer could salvage, insert this into research computer in order to sell the data and acquire [credit_value] points"
+	desc = "Research disk containing all the bits of data the analyzer could salvage, insert this into a research computer in order to sell the data and acquire [credit_value] points."

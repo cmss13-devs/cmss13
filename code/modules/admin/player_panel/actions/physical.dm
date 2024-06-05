@@ -113,9 +113,12 @@
 		GLOB.data_core.medical[mob_cryo.record_id_ref] = null
 		GLOB.data_core.general[mob_cryo.record_id_ref] = null
 		GLOB.data_core.security[mob_cryo.record_id_ref] = null
-		QDEL_NULL(medical)
-		QDEL_NULL(general)
-		QDEL_NULL(security)
+		if (medical)
+			QDEL_NULL(medical)
+		if (general)
+			QDEL_NULL(general)
+		if (security)
+			QDEL_NULL(security)
 
 	if(target.key)
 		target.ghostize(FALSE)

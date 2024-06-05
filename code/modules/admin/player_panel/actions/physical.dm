@@ -110,7 +110,7 @@
 		var/datum/data/record/medical = GLOB.data_core.medical[mob_cryo.record_id_ref]
 		var/datum/data/record/general = GLOB.data_core.general[mob_cryo.record_id_ref]
 		var/datum/data/record/security = GLOB.data_core.security[mob_cryo.record_id_ref]
-		GLOB.data_core.medica[mob_cryo.record_id_ref] = null
+		GLOB.data_core.medical[mob_cryo.record_id_ref] = null
 		GLOB.data_core.general[mob_cryo.record_id_ref] = null
 		GLOB.data_core.security[mob_cryo.record_id_ref] = null
 		QDEL_NULL(medical)

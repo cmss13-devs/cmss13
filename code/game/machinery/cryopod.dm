@@ -358,9 +358,9 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		var/datum/data/record/medical = GLOB.data_core.medical[cryo_pod.record_id_ref]
 		var/datum/data/record/general = GLOB.data_core.general[cryo_pod.record_id_ref]
 		var/datum/data/record/security = GLOB.data_core.security[cryo_pod.record_id_ref]
-		GLOB.data_core.medical -= cryo_pod.record_id_ref
-		GLOB.data_core.general -= cryo_pod.record_id_ref
-		GLOB.data_core.security -= cryo_pod.record_id_ref
+		GLOB.data_core.medical[cryo_pod.record_id_ref] = null
+		GLOB.data_core.general[cryo_pod.record_id_ref] = null
+		GLOB.data_core.security[cryo_pod.record_id_ref] = null
 		QDEL_NULL(medical)
 		QDEL_NULL(general)
 		QDEL_NULL(security)

@@ -829,6 +829,7 @@
 #include "code\game\jobs\job\special\provost.dm"
 #include "code\game\jobs\job\special\uaac.dm"
 #include "code\game\jobs\job\special\uscm.dm"
+#include "code\game\jobs\job\special\weyland_yutani.dm"
 #include "code\game\machinery\aicore_lockdown.dm"
 #include "code\game\machinery\air_alarm.dm"
 #include "code\game\machinery\air_sensor.dm"

@@ -107,9 +107,15 @@
 		mob_cryo = target
 
 	if(mob_cryo)
-		qdel(GLOB.data_core.general[mob_cryo.record_id_ref])
-		qdel(GLOB.data_core.medical[mob_cryo.record_id_ref])
-		qdel(GLOB.data_core.security[mob_cryo.record_id_ref])
+		var/datum/data/record/medical = GLOB.data_core.medical[mob_cryo.record_id_ref]
+		var/datum/data/record/general = GLOB.data_core.general[mob_cryo.record_id_ref]
+		var/datum/data/record/security = GLOB.data_core.security[mob_cryo.record_id_ref]
+		GLOB.data_core.medical -= mob_cryo.record_id_ref
+		GLOB.data_core.general -= mob_cryo.record_id_ref
+		GLOB.data_core.security -= mob_cryo.record_id_ref
+		QDEL_NULL(medical)
+		QDEL_NULL(general)
+		QDEL_NULL(security)
 
 	if(target.key)
 		target.ghostize(FALSE)

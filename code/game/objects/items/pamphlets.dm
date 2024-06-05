@@ -200,10 +200,6 @@
 		to_chat(user, SPAN_WARNING("You know this already!"))
 		return FALSE
 
-	if(user.job != JOB_SQUAD_MARINE)
-		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
-		return FALSE
-
 	if(user.has_used_pamphlet && !bypass_pamphlet_limit)
 		to_chat(user, SPAN_WARNING("You've already used a pamphlet!"))
 		return FALSE

@@ -361,9 +361,9 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		GLOB.data_core.medical -= cryo_pod.record_id_ref
 		GLOB.data_core.general -= cryo_pod.record_id_ref
 		GLOB.data_core.security -= cryo_pod.record_id_ref
-		qdel(medical)
-		qdel(general)
-		qdel(security)
+		QDEL_NULL(medical)
+		QDEL_NULL(general)
+		QDEL_NULL(security)
 
 	icon_state = "body_scanner_open"
 	set_light(0)

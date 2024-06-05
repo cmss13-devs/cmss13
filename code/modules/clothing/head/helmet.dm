@@ -1490,29 +1490,3 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 #undef HELMET_GARB_RELAY_ICON_STATE
-
-///////////////////////
-/////// HYBRISA ///////
-///////////////////////
-
-// HYBRISA - GOONS
-
-/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
-	name = "\improper WY corporate security helmet"
-	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
-	icon = 'icons/mob/humans/onmob/contained/hybrisa_goons.dmi'
-	icon_state = "helmet_black"
-	item_state = "helmet_black"
-	contained_sprite = TRUE
-
-/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/lead
-	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
-	icon_state = "lead_helmet_black"
-	item_state = "lead_helmet_black"
-
-/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/brown
-	name = "\improper WY corporate security helmet"
-	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
-	icon_state = "helmet_brown"
-	item_state = "helmet_brown"
-	contained_sprite = TRUE

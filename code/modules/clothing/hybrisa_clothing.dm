@@ -12,16 +12,17 @@
 	name = "\improper WY corporate security uniform"
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by what are known as 'goons'."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_goons.dmi'
-	icon_state = "uniform_hybrisa"
-	item_state = "uniform_hybrisa_un"
+	icon_state = "hybrisa_uniform"
+	worn_state = "hybrisa_uniform"
 	contained_sprite = TRUE
 	item_state_slots = null
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa/lead
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
-	icon_state = "lead_uniform_hybrisa"
-	item_state = "lead_uniform_hybrisa_un"
+	icon_state = "lead_hybrisa_uniform"
+	worn_state = "lead_hybrisa_uniform"
+	contained_sprite = TRUE
 
 // CMB Police Officer
 
@@ -29,8 +30,9 @@
 	name = "\improper Colonial Marshal uniform"
 	desc = "A pair of grey slacks and a blue button-down shirt with a black tie; a non-standard uniform of the Colonial Marshals, specific to more urbanized colonies, resembling a uniform worn by more traditional policing forces on Earth."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "police_uniform_obj"
-	item_state = "police_uniform"
+	icon_state = "police_uniform"
+	worn_state = "police_uniform"
+	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -39,7 +41,6 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
 
 // WY - Pilot
 
@@ -47,8 +48,9 @@
 	name = "\improper Weyland-Yutani Pilot uniform"
 	desc = "A pair of grey slacks and a white button-down shirt with a dark-grey tie and golden epaulettes signifying rank; a standard uniform for a commercial grade Weyland-Yutani affiliated Pilot."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "civilian_pilot_uniform_obj"
-	item_state = "civilian_pilot_uniform"
+	icon_state = "civilian_pilot_uniform"
+	worn_state = "civilian_pilot_uniform"
+	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -65,8 +67,9 @@
 	name = "\improper Nova Medica - EMT - Paramedic uniform"
 	desc = "A set of Nova-Medica EMT - Paramedic fatigues, this one is green."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "paramedic_green_uniform_obj"
-	item_state = "paramedic_green_uniform"
+	icon_state = "paramedic_green_uniform"
+	worn_state = "paramedic_green_uniform"
+	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -75,14 +78,14 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
 
 /obj/item/clothing/under/hybrisa/paramedic/red
 	name = "\improper Nova Medica - EMT - Paramedic uniform"
 	desc = "A set of Nova-Medica EMT - Paramedic fatigues, this one is red."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "paramedic_redblack_uniform_obj"
-	item_state = "paramedic_redblack_uniform"
+	icon_state = "paramedic_redblack_uniform"
+	worn_state = "paramedic_redblack_uniform"
+	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -91,7 +94,6 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
 
 // Sanitation Worker
 
@@ -99,8 +101,9 @@
 	name = "\improper Weyland-Yutani RFF - Sanitation uniform"
 	desc = "A set of Weyland-Yutani RFF - Sanitation fatigues, a green pair of work slacks and a grey polo-shirt with green reflecting stripes."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "sanitation_worker_uniform_obj"
-	item_state = "sanitation_worker_uniform"
+	icon_state = "sanitation_worker_uniform"
+	worn_state = "sanitation_worker_uniform"
+	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -117,8 +120,9 @@
 	name = "\improper Kelland-Mining uniform"
 	desc = "A set of Kelland-Mining fatigues, a yellow pair of utility work slacks and a light-grey polo-shirt with red reflecting stripes."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "kellandmining_uniform_obj"
-	item_state = "kellandmining_uniform"
+	icon_state = "kellandmining_uniform"
+	worn_state = "kellandmining_uniform"
+	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -135,8 +139,9 @@
 	name = "\improper Weymart uniform"
 	desc = "A pair of dark-grey slacks and an orange button-down shirt; a standard uniform for the Weyland-Yutani branded supermarket 'Weymart'."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "weymart_uniform_obj"
-	item_state = "weymart_uniform"
+	icon_state = "weymart_uniform"
+	worn_state = "weymart_uniform"
+	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -176,8 +181,9 @@
 	name = "\improper Weyland-Yutani cap"
 	desc = "A dark cap enscribed with the Weyland-Yutani 'Wings' logo' representing corporate justice."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "newcorpo_cap_obj"
+	icon_state = "newcorpo_cap"
 	item_state = "newcorpo_cap"
+	contained_sprite = TRUE
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -196,8 +202,9 @@
 	name = "\improper Colonial Marshal Bureau cap"
 	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "cmb_cap_obj"
+	icon_state = "cmb_cap"
 	item_state = "cmb_cap"
+	contained_sprite = TRUE
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -214,8 +221,9 @@
 	name = "\improper Colonial Marshal Bureau cap"
 	desc = "A dark peaked cap enscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "police_cap_norim_obj"
+	icon_state = "police_cap_norim"
 	item_state = "police_cap_norim"
+	contained_sprite = TRUE
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -232,8 +240,9 @@
 	name = "\improper Colonial Marshal Bureau cap"
 	desc = "A dark peaked cap enscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "police_cap_obj"
+	icon_state = "police_cap"
 	item_state = "police_cap"
+	contained_sprite = TRUE
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -252,8 +261,9 @@
 	name = "\improper Weyland-Yutani Pilots cap"
 	desc = "A dark peaked cap enscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civillian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "civilian_pilot_cap_obj"
+	icon_state = "civilian_pilot_cap"
 	item_state = "civilian_pilot_cap"
+	contained_sprite = TRUE
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -272,8 +282,9 @@
 	name = "orange cap"
 	desc = "It's a baseball style cap in the 'Weymart' orange color, with the 'Weymart' logo on the front."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "weymart_cap_obj"
+	icon_state = "weymart_cap"
 	item_state = "weymart_cap"
+	contained_sprite = TRUE
 
 // Helmets
 
@@ -281,16 +292,17 @@
 
 /obj/item/clothing/head/helmet/hybrisa/medtech
 	name = "MT-SHIELD-X 525 helmet"
-	desc = "The MT-SHIELD-X 525 (MedTech - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protect the user from toxic fume inhalation. This helmet was designed by Hyperdyne Systems, in collabaration with MedTech."
+	desc = "The MT-SHIELD-X 525 (MedTech - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protects the user from potential biohazards. This helmet was designed by Hyperdyne Systems, in collabaration with MedTech."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "firefighter_helmet_obj"
+	icon_state = "firefighter_helmet"
 	item_state = "firefighter_helmet"
+	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
@@ -300,8 +312,9 @@
 	name = "HS-SHIELD-X 500 helmet"
 	desc = "The HS-SHIELD-X 500 (Hyperdyne Systems - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in high heat environments and protect the user from smoke inhalation. It has a built in semi-closed breathing system. This helmet was designed by Hyperdyne Systems."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "firefighter_helmet_alt_obj"
-	item_state = "firefighter_helmet_alt"
+	icon_state = "firefighter_alt_helmet"
+	item_state = "firefighter_alt_helmet"
+	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -319,13 +332,14 @@
 	name = "HS-KM-SHIELD-X 550 helmet"
 	desc = "The HS-KM-SHIELD-X 550 (Hyperdyne Systems - Kelland Mining - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protect the user from toxic fume inhalation. It has a built in semi-closed breathing system. This helmet was designed by Hyperdyne Systems, in collabaration with Kelland-Mining."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "kelland_mining_helmet_obj"
+	icon_state = "kelland_mining_helmet"
 	item_state = "kelland_mining_helmet"
+	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_MEDIUM
-	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
@@ -339,8 +353,9 @@
 
 /obj/item/clothing/suit/fire/hybrisa_firefighter
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "firefighter_oversuit_obj"
+	icon_state = "firefighter_oversuit"
 	item_state = "firefighter_oversuit"
+	contained_sprite = TRUE
 
 // Kelland Mining
 
@@ -348,8 +363,9 @@
 	name = "\improper Kelland-Mining utility uniform"
 	desc = "A set of standard issue Kelland-Mining utility fatigues, a yellow pair of utility work slacks and a black collard heavy padded jacket, which protects against various environmental hazards."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "kellandminingalt_oversuit_obj"
+	icon_state = "kellandminingalt_oversuit"
 	item_state = "kellandminingalt_oversuit"
+	contained_sprite = TRUE
 
 // EMT - Paramedic
 
@@ -357,15 +373,17 @@
 	name = "\improper Nova Medica - EMT - Paramedic utility fatigues"
 	desc = "A set of Nova-Medica EMT - Paramedic utility fatigues, this one is green."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "paramedic_green_oversuit_obj"
+	icon_state = "paramedic_green_oversuit"
 	item_state = "paramedic_green_oversuit"
+	contained_sprite = TRUE
 
 /obj/item/clothing/suit/hybrisa/EMT_red_utility
 	name = "\improper Nova Medica - EMT - Paramedic utility fatigues"
 	desc = "A set of Nova-Medica EMT - Paramedic utility fatigues, this one is red."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "paramedic_redblackalt_oversuit_obj"
+	icon_state = "paramedic_redblack_oversuit"
 	item_state = "paramedic_redblack_oversuit"
+	contained_sprite = TRUE
 
 // Sanitation
 
@@ -373,17 +391,19 @@
 	name = "\improper Sanitation utility uniform"
 	desc = "A Sanitation utility uniform, used by the clean-up crews of the more prosperous colonies."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "sanitation_worker_oversuit_obj"
+	icon_state = "sanitation_worker_oversuit"
 	item_state = "sanitation_worker_oversuit"
+	contained_sprite = TRUE
 
 // WY Pilot
 
-/obj/item/clothing/suit/hybrisa/WY_Pilot
-	name = "\improper Sanitation utility uniform"
+/obj/item/clothing/suit/storage/hybrisa/WY_Pilot
+	name = "\improper Weyland-Yutani Pilot formal-jacket"
 	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civillian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "civilian_pilot_jacket_obj"
+	icon_state = "civilian_pilot_jacket"
 	item_state = "civilian_pilot_jacket"
+	contained_sprite = TRUE
 
 // CMB Police Jackets & Armor
 
@@ -393,8 +413,9 @@
 	name = "\improper CMB Marshal jacket"
 	desc = "A black polyester jacket with a Marshal's badge pinned to it. Representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "police_jacket_obj"
+	icon_state = "police_jacket"
 	item_state = "police_jacket"
+	contained_sprite = TRUE
 
 // CMB Vest
 
@@ -402,8 +423,9 @@
 	name = "CMB armored vest"
 	desc = "An CMB armored vest that protects against some damage."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "police_ballistic_vest_obj"
-	item_state = "police_ballistic_vest"
+	icon_state = "police_ballistic_armor"
+	item_state = "police_ballistic_armor"
+	contained_sprite = TRUE
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -418,8 +440,9 @@
 	name = "armored vest"
 	desc = "An civilian, unmarked armored vest that protects against some damage."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "generic_ballistic_vest_obj"
-	item_state = "generic_ballistic_vest"
+	icon_state = "generic_ballistic_armor"
+	item_state = "generic_ballistic_armor"
+	contained_sprite = TRUE
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -436,36 +459,41 @@
 	name = "EMT - green hazard vest"
 	desc = "A green and white EMT high-visibility hazard vest used in work zones."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "medicalhazard_green_obj"
+	icon_state = "medicalhazard_green"
 	item_state = "medicalhazard_green"
+	contained_sprite = TRUE
 
 /obj/item/clothing/suit/storage/hazardvest/medical_red
 	name = "EMT - red hazard vest"
 	desc = "A red and white EMT high-visibility hazard vest used in work zones."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "medicalhazard_white_obj"
+	icon_state = "medicalhazard_white"
 	item_state = "medicalhazard_white"
+	contained_sprite = TRUE
 
 /obj/item/clothing/suit/storage/hazardvest/kelland_mining
 	name = "Kelland-Mining orange hazard vest"
 	desc = "A blue high-visibility vest used in work zones."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "kellandmining_hazard_obj"
+	icon_state = "kellandmining_hazard"
 	item_state = "kellandmining_hazard"
+	contained_sprite = TRUE
 
 /obj/item/clothing/suit/storage/hazardvest/sanitation
 	name = "green hazard vest"
 	desc = "A green and white high-visibility vest used in work zones."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "sanitation_hazard_obj"
+	icon_state = "sanitation_hazard"
 	item_state = "sanitation_hazard"
+	contained_sprite = TRUE
 
 /obj/item/clothing/suit/storage/hazardvest/weymart
 	name = "Weymart vest"
 	desc = "A blue 'Weymart' employee vest, with name tag and all."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "weymart_vest_obj"
+	icon_state = "weymart_vest"
 	item_state = "weymart_vest"
+	contained_sprite = TRUE
 
 // Civilian Coats
 
@@ -473,40 +501,46 @@
 	name = "dark blue worn Parka"
 	desc = "An old worn blue Parka, has seen better days..."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "hobocoat_blue_obj"
+	icon_state = "hobocoat_blue"
 	item_state = "hobocoat_blue"
+	contained_sprite = TRUE
 
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/parka_brown
 	name = "dark brown worn Parka"
 	desc = "An old worn brown Parka, has seen better days..."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "hobocoat_brown_obj"
+	icon_state = "hobocoat_brown"
 	item_state = "hobocoat_brown"
+	contained_sprite = TRUE
 
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/parka_green
 	name = "dark green worn Parka"
 	desc = "An old worn green Parka, has seen better days..."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "hobocoat_green_obj"
+	icon_state = "hobocoat_green"
 	item_state = "hobocoat_green"
+	contained_sprite = TRUE
 
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/polyester_jacket_brown
 	name = "dark brown worn polyester jacket"
 	desc = "An old worn brown polyester jacket, has seen better days..."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "hobocoat_dark_obj"
+	icon_state = "hobocoat_dark"
 	item_state = "hobocoat_dark"
+	contained_sprite = TRUE
 
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/polyester_jacket_blue
 	name = "dark blue worn polyester jacket"
 	desc = "An old worn blue polyester jacket, has seen better days..."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "hobocoat_darkblue_obj"
+	icon_state = "hobocoat_darkblue"
 	item_state = "hobocoat_darkblue"
+	contained_sprite = TRUE
 
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/polyester_jacket_red
 	name = "dark red worn polyester jacket"
 	desc = "An old worn red polyester jacket, has seen better days..."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "hobocoat_darkred_obj"
+	icon_state = "hobocoat_darkred"
 	item_state = "hobocoat_darkred"
+	contained_sprite = TRUE

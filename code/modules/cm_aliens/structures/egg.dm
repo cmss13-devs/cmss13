@@ -56,7 +56,7 @@
 	if(isxeno(user) && status == EGG_GROWN)
 		. += "Ctrl + Click egg to retrieve child into your empty hand if you can carry it."
 	if(isobserver(user) && status == EGG_GROWN)
-		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+		var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 		. += "Current facehugger limit: <b>[hive.current_hugger_count]/[hive.playable_hugger_limit]</b>"
 
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)

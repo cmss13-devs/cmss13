@@ -125,7 +125,6 @@ const GeneralInformation = (props) => {
     burrowed_larva,
     evilution_level,
     pylon_status,
-    royal_resin,
   } = data;
 
   return (

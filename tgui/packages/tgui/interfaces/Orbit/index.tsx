@@ -129,17 +129,25 @@ const ObservableSearch = () => {
 const xenoSplitter = (members: Array<Observable>) => {
   const primeHive: Array<Observable> = [];
   const corruptedHive: Array<Observable> = [];
+  const forsakenHive: Array<Observable> = [];
+  const otherHives: Array<Observable> = [];
 
   members.forEach((x) => {
-    if (x.full_name?.includes('Corrupted')) {
-      corruptedHive.push(x);
-    } else {
+    if (x.hivenumber?.includes('normal')) {
       primeHive.push(x);
+    } else if (x.hivenumber?.includes('corrupted')) {
+      corruptedHive.push(x);
+    } else if (x.hivenumber?.includes('forsaken')) {
+      forsakenHive.push(x);
+    } else {
+      otherHives.push(x);
     }
   });
   const squads = [
     buildSquadObservable('Prime', 'xeno', primeHive),
     buildSquadObservable('Corrupted', 'green', corruptedHive),
+    buildSquadObservable('Forsaken', 'grey', forsakenHive),
+    buildSquadObservable('Other', 'light-grey', otherHives),
   ];
   return squads;
 };

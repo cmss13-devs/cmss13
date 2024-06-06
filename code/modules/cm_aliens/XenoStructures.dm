@@ -874,7 +874,7 @@
 /obj/effect/alien/resin/destroyer_cocoon/Initialize(mapload, pylon)
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
-	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 	for(var/mob/current_mob as anything in humans_other)
 		if(current_mob.stat != CONSCIOUS || isyautja(current_mob))
@@ -899,7 +899,7 @@
 	if(length(hive.active_endgame_pylons) < 2)
 		qdel(src)
 	
-	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/start_growing()

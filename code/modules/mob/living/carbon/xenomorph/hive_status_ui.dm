@@ -154,6 +154,7 @@
 	.["hive_location"] = hive_location
 	.["burrowed_larva"] = burrowed_larva
 	.["evilution_level"] = evilution_level
+	.["royal_resin"] = buff_points
 	.["pylon_status"] = pylon_status
 
 	var/mob/living/carbon/xenomorph/queen/Q = user

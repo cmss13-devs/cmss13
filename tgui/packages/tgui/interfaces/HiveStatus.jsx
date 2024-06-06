@@ -125,6 +125,7 @@ const GeneralInformation = (props) => {
     burrowed_larva,
     evilution_level,
     pylon_status,
+    royal_resin,
   } = data;
 
   return (
@@ -154,6 +155,9 @@ const GeneralInformation = (props) => {
       <Flex.Item>
         <i>Evilution: {evilution_level}</i>
       </Flex.Item>
+      <Flex.item>
+        <i>Royal Resin: {royal_resin}</i>
+      </Flex.item>
       {pylon_status && (
         <Flex.Item>
           <i>{pylon_status}</i>

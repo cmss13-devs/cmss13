@@ -158,11 +158,6 @@
 	if(QDELETED(purchased_pylon) || QDELETED(purchasing_mob) && !purchasing_mob.check_state())
 		return FALSE
 
-	// Check again in case of multiple people buying it at the same time
-	if(!_check_can_afford_buff())
-		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive cannot afford [name]! [hive.buff_points] / [cost] points."))
-		return FALSE
-
 	// Actually process the buff and apply effects - If the buff succeeds engage_message will return TRUE, if it fails there should be an engage_failure_message set.
 	if(!on_engage(purchased_pylon))
 		if(engage_failure_message && istext(engage_failure_message))
@@ -176,7 +171,8 @@
 	// All checks have passed.
 
 	// Purchase and deduct funds only after we're sure the buff has engaged
-	_purchase_and_deduct()
+	if(!_purchase_and_deduct(purchasing_mob))
+		return
 
 	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
 		if(apply_on_new_xeno)
@@ -286,7 +282,10 @@
 	return TRUE
 
 /// Deducts points from the hive buff points equal to the cost of the buff
-/datum/hivebuff/proc/_purchase_and_deduct()
+/datum/hivebuff/proc/_purchase_and_deduct(var/purchasing_mob)
+	if(!_check_can_afford_buff())
+		to_chat(purchasing_mob, SPAN_XENONOTICE("Something went wrong, try again."))
+		return FALSE
 
 	hive.buff_points -= cost
 	return TRUE

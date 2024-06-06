@@ -38,6 +38,7 @@
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_IMMOBILE
+	mob_size = MOB_SIZE_IMMOBILE
 	tier = 4
 	small_explosives_stun = FALSE
 	counts_for_slots = FALSE

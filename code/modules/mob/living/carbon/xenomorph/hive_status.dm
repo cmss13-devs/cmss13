@@ -1,7 +1,3 @@
-var/current_hugger_count = 0
-/// How many huggers can the hive support
-var/playable_hugger_limit = 0
-
 /datum/hive_status
 	var/name = "Normal Hive"
 
@@ -118,6 +114,8 @@ var/playable_hugger_limit = 0
 	//Joining as Facehugger vars
 	/// When can huggers join the round
 	var/hugger_timelock = 15 MINUTES
+	/// How many huggers can the hive support
+	var/playable_hugger_limit = 0
 	/// Minimum number of huggers available at any hive size
 	var/playable_hugger_minimum = 2
 	/// This number divides the total xenos counted for slots to give the max number of facehuggers
@@ -860,6 +858,7 @@ var/playable_hugger_limit = 0
 
 	update_hugger_limit()
 
+	var/current_hugger_count = 0
 	for(var/mob/mob as anything in totalXenos)
 		if(isfacehugger(mob))
 			current_hugger_count++

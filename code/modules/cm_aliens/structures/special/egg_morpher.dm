@@ -45,10 +45,6 @@
 	if(isxeno(user) || isobserver(user))
 		. += "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow (reserved: [huggers_reserved])."
 	if(isobserver(user))
-		var/current_hugger_count = 0
-		for(var/mob/mob as anything in totalXenos)
-			if(isfacehugger(mob))
-				current_hugger_count++
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		. += "Current facehugger limit: <b>[hive.current_hugger_count]/[hive.playable_hugger_limit]</b>"
 

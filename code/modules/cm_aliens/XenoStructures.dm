@@ -854,7 +854,7 @@
 	// The mob picked as a candidate to be the destroyer
 	var/mob/chosen_candidate
 	var/list/humans_other
-	var/list/humans_uscm
+	var/list/humans_uscm = list()
 
 /obj/effect/alien/resin/destroyer_cocoon/Destroy()
 	announcement_helper("ALERT.\n\nUNSUAL ENERGY BUILDUP IN [get_area_name(loc)] HAS BEEN STOPPED.", "[MAIN_AI_SYSTEM] Biological Tracker", humans_uscm, 'sound/misc/notice1.ogg')

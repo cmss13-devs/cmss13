@@ -855,12 +855,15 @@
 	var/mob/chosen_candidate
 	// To prevent hard delete errors
 	var/timer
+	var/pylon_timer
 
 	var/list/humans_other
 	var/list/humans_uscm = list()
 
 /obj/effect/alien/resin/destroyer_cocoon/Destroy()
 	deltimer(timer)
+	deltimer(pylon_timer)
+	pylon_timer = null
 	timer = null
 	chosen_candidate = null
 	announcement_helper("ALERT.\n\nUNSUAL ENERGY BUILDUP IN [get_area_name(loc)] HAS BEEN STOPPED.", "[MAIN_AI_SYSTEM] Biological Tracker", humans_uscm, 'sound/misc/notice1.ogg')
@@ -870,7 +873,7 @@
 		hive = GLOB.hive_datum[hivenumber]
 		if(!hive.totalXenos.len)
 			return
-		xeno_announcement(SPAN_XENOANNOUNCE("THE COCOON WAS DESTROYED! VENGANCE!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+		xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! VENGANCE!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 	humans_other = null
 	humans_uscm = null
 	. = ..()
@@ -879,7 +882,7 @@
 	. = ..()
 
 	timer = addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
-	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	pylon_timer = addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 	for(var/mob/current_mob as anything in humans_other)
 		if(current_mob.stat != CONSCIOUS || isyautja(current_mob))
@@ -905,7 +908,7 @@
 		qdel(src)
 		return
 	
-	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	pylon_timer = addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/start_growing()

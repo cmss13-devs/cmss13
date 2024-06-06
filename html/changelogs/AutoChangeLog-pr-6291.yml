@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - balance: "Latejoin marines to larva ratio changed to 1:4 for the first 15 minutes, going back to 1:2.5 afterwards."

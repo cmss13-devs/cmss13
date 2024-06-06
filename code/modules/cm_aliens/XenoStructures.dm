@@ -853,16 +853,10 @@
 
 	// The mob picked as a candidate to be the destroyer
 	var/mob/chosen_candidate
-	// To prevent hard delete errors
-	var/timer
-
 	var/list/humans_other
 	var/list/humans_uscm
 
 /obj/effect/alien/resin/destroyer_cocoon/Destroy()
-	deltimer(timer)
-	timer = null
-	chosen_candidate = null
 	announcement_helper("ALERT.\n\nUNSUAL ENERGY BUILDUP IN [get_area_name(loc)] HAS BEEN STOPPED.", "[MAIN_AI_SYSTEM] Biological Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 	announcement_helper("ALERT.\n\nUNSUAL ENERGY BUILDUP IN [get_area_name(loc)] HAS BEEN STOPPED.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
@@ -878,7 +872,7 @@
 /obj/effect/alien/resin/destroyer_cocoon/Initialize(mapload, pylon)
 	. = ..()
 
-	timer = addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 	for(var/mob/current_mob as anything in humans_other)
@@ -910,7 +904,7 @@
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/start_growing()
 	icon_state = "growing"
-	timer = addtimer(CALLBACK(src, PROC_REF(announce_halfway)), 5 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(announce_halfway)), 5 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/announce_halfway()
 	announcement_helper("ALERT.\n\nUNSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - 5 MINUTES.", "[MAIN_AI_SYSTEM] Biological Tracker", humans_uscm, 'sound/misc/notice1.ogg')
@@ -921,7 +915,7 @@
 		if(!hive.totalXenos.len)
 			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The destroyer will hatch in approximately 5 minutes."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
-	timer = addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/roll_candidates()
 	// First, Let the Queen choose
@@ -978,7 +972,7 @@
 		if(!hive.totalXenos.len)
 			return
 		xeno_announcement(SPAN_XENOANNOUNCE("The destroyer will hatch in approximately one minute."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
-	timer = addtimer(CALLBACK(src, PROC_REF(animate_hatch_destroyer)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(animate_hatch_destroyer)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/animate_hatch_destroyer()
 	flick("hatching", src)

@@ -56,7 +56,7 @@
 	if(isxeno(user) && status == EGG_GROWN)
 		. += "Ctrl + Click egg to retrieve child into your empty hand if you can carry it."
 	if(isobserver(user) && status == EGG_GROWN)
-		#include "code/modules/mob/living/carbon/xenomorph/hive_status.dm"
+		#include "code\modules\mob\living\carbon\xenomorph\hive_status.dm"
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		. += "Current facehugger limit: <b>[hive.current_hugger_count]/[hive.playable_hugger_limit]</b>"
 

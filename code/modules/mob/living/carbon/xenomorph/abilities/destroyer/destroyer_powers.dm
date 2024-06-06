@@ -105,7 +105,7 @@
 		if(xeno_in_aoe.hivenumber != xeno.hivenumber)
 			continue
 		start_shield(xeno_in_aoe)
-		// xeno.beam(xeno_in_aoe, "purple_lightning", time = 4 SECONDS)
+		xeno.beam(xeno_in_aoe, "purple_lightning", time = 4 SECONDS)
 
 	apply_cooldown()
 	return ..()

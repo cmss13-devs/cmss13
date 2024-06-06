@@ -871,7 +871,7 @@
 
 /obj/effect/alien/resin/destroyer_cocoon/Initialize(mapload, pylon)
 	. = ..()
-
+	chosen_candidate = null
 	addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	humans_other = GLOB.human_mob_list + GLOB.dead_mob_list

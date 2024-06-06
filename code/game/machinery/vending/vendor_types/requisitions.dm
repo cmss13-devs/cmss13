@@ -247,11 +247,26 @@
 		list("M2C Box Magazine", floor(scale * 2), /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
 		list("XM51 Magazine (16g)", floor(scale * 3), /obj/item/ammo_magazine/rifle/xm51, VENDOR_ITEM_REGULAR),
 
-		list("SHOTGUN SHELL BOXES", -1, null, null),
+		list("MAGAZINE BOXES", -1, null, null),
+		list("Magazine Box (88 Mod 4 AP x 16)", 0, /obj/item/ammo_box/magazine/mod88, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (AP L42A x 16)", 0, /obj/item/ammo_box/magazine/l42a/ap, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (AP M39 x 12)", 0, /obj/item/ammo_box/magazine/m39/ap, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (AP M41A x 10)", 0, /obj/item/ammo_box/magazine/ap, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (Ext M39 x 10)", 0, /obj/item/ammo_box/magazine/m39/ext, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (Ext M41A x 8)", 0, /obj/item/ammo_box/magazine/ext, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (L42A x 16)", 0, /obj/item/ammo_box/magazine/l42a, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (M39 x 12)", 0, /obj/item/ammo_box/magazine/m39, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (M41A x 10)", 0, /obj/item/ammo_box/magazine, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (M4A3 x 16)", 0, /obj/item/ammo_box/magazine/m4a3, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (SU-6 x 16)", 0, /obj/item/ammo_box/magazine/su6, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (VP78 x 16)", 0, /obj/item/ammo_box/magazine/vp78, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Box (Buckshot x 100)", 0, /obj/item/ammo_box/magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Box (Flechette x 100)", 0, /obj/item/ammo_box/magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Box (Slugs x 100)", 0, /obj/item/ammo_box/magazine/shotgun, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Box (16g) (Breaching x 120)", 1, /obj/item/ammo_box/magazine/shotgun/light/breaching, VENDOR_ITEM_REGULAR),
+		list("Speed Loaders Box (M44 x 16)", 0, /obj/item/ammo_box/magazine/m44, VENDOR_ITEM_REGULAR),
+		list("Speed Loaders Box (Marksman M44 x 16)", 0, /obj/item/ammo_box/magazine/m44/marksman, VENDOR_ITEM_REGULAR),
+		list("Speed Loaders Box (Heavy M44 x 16)", 0, /obj/item/ammo_box/magazine/m44/heavy, VENDOR_ITEM_REGULAR),
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/stock(obj/item/item_to_stock, mob/user)

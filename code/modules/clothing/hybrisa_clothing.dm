@@ -333,7 +333,7 @@
 	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
@@ -346,11 +346,11 @@
 	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
 	armor_energy = CLOTHING_ARMOR_MEDIUM
-	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_LOW
-	armor_rad = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
@@ -386,10 +386,10 @@
 	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
 	armor_energy = CLOTHING_ARMOR_MEDIUM
-	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
@@ -407,10 +407,19 @@
 	icon_state = "firefighter_oversuit"
 	item_state = "firefighter_oversuit"
 	contained_sprite = TRUE
+	uniform_restricted = null
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
 	fire_intensity_resistance = BURN_LEVEL_TIER_1
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	allowed = list(
 		/obj/item/tool/extinguisher,
 
@@ -450,9 +459,37 @@
 	name = "\improper Kelland-Mining utility uniform"
 	desc = "A set of standard issue Kelland-Mining utility fatigues, a yellow pair of utility work slacks and a black collard heavy padded jacket, which protects against various environmental hazards."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "kellandminingalt_oversuit"
-	item_state = "kellandminingalt_oversuit"
+	icon_state = "kellandmining_oversuit"
+	item_state = "kellandmining_oversuit"
 	contained_sprite = TRUE
+	uniform_restricted = null
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/suit/storage/hybrisa_kelland_alt
+	name = "\improper Kelland-Mining utility uniform"
+	desc = "A set of standard issue Kelland-Mining utility fatigues, a yellow pair of utility work slacks and a black collard heavy padded jacket, which protects against various environmental hazards."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "kellandmining_alt_oversuit"
+	item_state = "kellandmining_alt_oversuit"
+	contained_sprite = TRUE
+	uniform_restricted = null
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 // EMT - Paramedic
 
@@ -463,6 +500,7 @@
 	icon_state = "paramedic_green_oversuit"
 	item_state = "paramedic_green_oversuit"
 	contained_sprite = TRUE
+	uniform_restricted = null
 
 /obj/item/clothing/suit/hybrisa/EMT_red_utility
 	name = "\improper Nova Medica - EMT - Paramedic utility fatigues"
@@ -471,6 +509,7 @@
 	icon_state = "paramedic_redblack_oversuit"
 	item_state = "paramedic_redblack_oversuit"
 	contained_sprite = TRUE
+	uniform_restricted = null
 
 // Sanitation
 
@@ -481,6 +520,7 @@
 	icon_state = "sanitation_worker_oversuit"
 	item_state = "sanitation_worker_oversuit"
 	contained_sprite = TRUE
+	uniform_restricted = null
 
 // WY Pilot
 
@@ -491,6 +531,7 @@
 	icon_state = "civilian_pilot_jacket"
 	item_state = "civilian_pilot_jacket"
 	contained_sprite = TRUE
+	uniform_restricted = null
 
 // CMB Police Jackets & Armor
 
@@ -503,6 +544,7 @@
 	icon_state = "police_jacket"
 	item_state = "police_jacket"
 	contained_sprite = TRUE
+	uniform_restricted = null
 
 // CMB Vest
 
@@ -513,6 +555,7 @@
 	icon_state = "police_ballistic_armor"
 	item_state = "police_ballistic_armor"
 	contained_sprite = TRUE
+	uniform_restricted = null
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -530,6 +573,7 @@
 	icon_state = "generic_ballistic_armor"
 	item_state = "generic_ballistic_armor"
 	contained_sprite = TRUE
+	uniform_restricted = null
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -559,7 +603,7 @@
 	contained_sprite = TRUE
 
 /obj/item/clothing/suit/storage/hazardvest/kelland_mining
-	name = "Kelland-Mining orange hazard vest"
+	name = "Kelland-Mining hazard vest"
 	desc = "A blue high-visibility vest used in work zones."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "kellandmining_hazard"

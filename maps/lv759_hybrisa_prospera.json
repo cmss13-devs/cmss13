@@ -7,16 +7,21 @@
 
     "weather_holder": "/datum/weather_ss_map_holder/lv759_hybrisa_prospera",
     "survivor_types": [
-        "/datum/equipment_preset/survivor/civilian_hybrisa",
-        "/datum/equipment_preset/survivor/doctor/hybrisa",
-        "/datum/equipment_preset/survivor/hybrisa/hybrisa_paramedic",
-        "/datum/equipment_preset/survivor/scientist/hybrisa",
-        "/datum/equipment_preset/survivor/colonial_marshal/hybrisa",
-        "/datum/equipment_preset/survivor/engineer/hybrisa",
-        "/datum/equipment_preset/survivor/trucker/hybrisa",
-        "/datum/equipment_preset/survivor/miner/kelland",
-        "/datum/equipment_preset/survivor/security/hybrisa",
-        "/datum/equipment_preset/survivor/corporate/hybrisa/Wey_PO",
+        "/datum/equipment_preset/survivor/hybrisa/civilian",
+        "/datum/equipment_preset/survivor/hybrisa/civilian_office",
+        "/datum/equipment_preset/survivor/hybrisa/weymart",
+        "/datum/equipment_preset/survivor/hybrisa/sanitation",
+        "/datum/equipment_preset/survivor/hybrisa/pizza_galaxy",
+        "/datum/equipment_preset/survivor/hybrisa/fire_fighter",
+        "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
+        "/datum/equipment_preset/survivor/hybrisa/doctor",
+        "/datum/equipment_preset/survivor/hybrisa/paramedic",
+        "/datum/equipment_preset/survivor/hybrisa/scientist",
+        "/datum/equipment_preset/survivor/hybrisa/cmb_officer",
+        "/datum/equipment_preset/survivor/hybrisa/electrical_engineer",
+        "/datum/equipment_preset/survivor/hybrisa/heavy_vehicle_operator",
+        "/datum/equipment_preset/survivor/hybrisa/corporate_goon",
+        "/datum/equipment_preset/survivor/hybrisa/wy_pilot",
         "/datum/equipment_preset/survivor/clf"
     ],
 	"synth_survivor_types": [
@@ -26,8 +31,8 @@
         "/datum/equipment_preset/survivor/forecon/major"
     ],
     "defcon_triggers": [
-        3300,
-        2100,
+        3750,
+        2600,
         1450,
         580,
         0.0

@@ -962,12 +962,14 @@
 	icon_state = "dropshipfrontwhite1"
 	unslashable = TRUE
 	unacidable = TRUE
+	density = TRUE
 
 /obj/structure/prop/hybrisa/airport/dropshipnosecone
 	name = "nose cone"
 	icon_state = "dropshipfrontwhite1"
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
+	density = TRUE
 
 /obj/structure/prop/hybrisa/airport/dropshipwingleft
 	name = "wing"

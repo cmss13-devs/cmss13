@@ -214,16 +214,26 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/wy_pilot
-	name = "Weyland Yutani - Pilot"
+	name = "Survivor - Weyland Yutani - Pilot"
 	skills = list(
 		SKILL_PILOT = SKILL_PILOT_EXPERT,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 	)
 
 /datum/skills/civilian/survivor/paramedic
-	name = "Nova Medica - Paramedic"
+	name = "Survivor - Paramedic"
 	skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
 		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+	)
+
+/datum/skills/civilian/survivor/fire_fighter
+	name = "Survivor - Fire Protection Specialist"
+	additional_skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 	)

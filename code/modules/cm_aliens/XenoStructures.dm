@@ -855,10 +855,12 @@
 	var/mob/chosen_candidate
 	var/list/humans_other
 	var/list/humans_uscm = list()
+	var/hive_number = XENO_HIVE_NORMAL
 
 /obj/effect/alien/resin/destroyer_cocoon/Destroy()
 	announcement_helper("ALERT.\n\nUNSUAL ENERGY BUILDUP IN [get_area_name(loc)] HAS BEEN STOPPED.", "[MAIN_AI_SYSTEM] Biological Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 	announcement_helper("ALERT.\n\nUNSUAL ENERGY BUILDUP IN [get_area_name(loc)] HAS BEEN STOPPED.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
+	GLOB.hive_datum[hive_number].has_hatchery = FALSE
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
@@ -871,6 +873,7 @@
 
 /obj/effect/alien/resin/destroyer_cocoon/Initialize(mapload, pylon)
 	. = ..()
+	GLOB.hive_datum[hive_number].has_hatchery = TRUE
 	chosen_candidate = null
 	addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)

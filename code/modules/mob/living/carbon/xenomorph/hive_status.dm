@@ -152,6 +152,9 @@
 	*/
 	var/static/list/evolution_menu_images
 
+	/// Has a destroyer hatchery
+	var/has_hatchery = FALSE
+
 /datum/hive_status/New()
 	hive_ui = new(src)
 	mark_ui = new(src)

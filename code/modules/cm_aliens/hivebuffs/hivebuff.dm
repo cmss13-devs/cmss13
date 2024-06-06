@@ -69,6 +69,8 @@
 	/// Apply the buff effect to new xenomorphs who spawn or evolve.
 	var/apply_on_new_xeno = TRUE
 
+	/// Special fail message
+	var/special_fail_message = ""
 
 /datum/hivebuff/New(datum/hive_status/xenohive)
 	. = ..()
@@ -148,6 +150,10 @@
 		to_chat(purchasing_mob, SPAN_XENONOTICE("[name] cannot be used with other active buffs! Wait for those to end first. Active buffs: [active_buffs]"))
 		return FALSE
 
+	if(!handle_special_checks())
+		to_chat(purchasing_mob, SPAN_XENONOTICE(special_fail_message))
+		return FALSE
+
 	log_admin("[purchasing_mob] of [hive.hivenumber] is attempting to purchase a hive buff: [name].")
 
 	if(!_seek_queen_approval(purchasing_mob))
@@ -188,10 +194,10 @@
 
 	// Register signal to check if the pylon is ever destroyed.
 
-	for(var/obj/effect/alien/resin/special/pylon/endgame/pylon_to_register in pylons_to_use)
-		LAZYADD(sustained_pylons, purchased_pylon)
-		pylon_to_register.sustain_hivebuff(src)
-		RegisterSignal(pylon_to_register, COMSIG_PARENT_QDELETING, PROC_REF(_on_pylon_deletion))
+	// for(var/obj/effect/alien/resin/special/pylon/endgame/pylon_to_register in pylons_to_use)
+	// 	LAZYADD(sustained_pylons, purchased_pylon)
+	// 	pylon_to_register.sustain_hivebuff(src)
+	// 	RegisterSignal(pylon_to_register, COMSIG_PARENT_QDELETING, PROC_REF(_on_pylon_deletion))
 
 	// Announce to our hive that we've completed.
 	_announce_buff_engage()
@@ -343,6 +349,9 @@
 /datum/hivebuff/proc/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
 	return
 
+/datum/hivebuff/proc/handle_special_checks()
+	return TRUE
+
 ////////////////////////////////
 //		BUFFS
 ////////////////////////////////
@@ -363,10 +372,10 @@
 
 /datum/hivebuff/extra_life
 	name = "Boon of Plenty"
-	desc = "Increases all xenomorph health by 5% for 10 seconds"
+	desc = "Increases all xenomorph health by 5% for 10 minutes"
 	tier = HIVEBUFF_TIER_MINOR
 	engage_flavourmessage = "The Queen has imbued us with greater fortitude."
-	duration = 10 SECONDS
+	duration = 10 MINUTES
 	number_of_required_pylons = 1
 
 /datum/hivebuff/extra_life/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
@@ -398,8 +407,16 @@
 	tier = HIVEBUFF_TIER_MAJOR
 	is_unique = TRUE
 	is_reusable = TRUE
-	cost = 10
+	cost = 0
+	special_fail_message = "Only one hatchery may exist at a time."
 	number_of_required_pylons = 2
+	roundtime_to_enable = 1 HOURS + 50 MINUTES
+
+/datum/hivebuff/game_ender_caste/handle_special_checks()
+	if(hive.has_hatchery)
+		return FALSE
+
+	return TRUE
 
 /datum/hivebuff/game_ender_caste/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
 	var/turf/spawn_turf

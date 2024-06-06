@@ -158,6 +158,11 @@
 	if(QDELETED(purchased_pylon) || QDELETED(purchasing_mob) && !purchasing_mob.check_state())
 		return FALSE
 
+	// Check again in case of multiple people buying it at the same time
+	if(!_check_can_afford_buff())
+		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive cannot afford [name]! [hive.buff_points] / [cost] points."))
+		return FALSE
+
 	// Actually process the buff and apply effects - If the buff succeeds engage_message will return TRUE, if it fails there should be an engage_failure_message set.
 	if(!on_engage(purchased_pylon))
 		if(engage_failure_message && istext(engage_failure_message))

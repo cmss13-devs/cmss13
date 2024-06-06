@@ -124,7 +124,7 @@
 	else if(assoc_hive.hit_larva_pylon_limit)
 		pylon_status = "The hive's power has surpassed what the pylons can provide."
 	else
-		pylon_status = "Pylons are strengthening our numbers!"
+		pylon_status = "Pylons are providing us with royal resin!"
 	if(send_update)
 		SStgui.update_uis(src)
 

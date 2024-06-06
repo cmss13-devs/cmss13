@@ -1002,7 +1002,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 					break
 			if(!item_found)
 				//We will be adding this box item at the end of the list
-				box_list += tmp_item
+				box_list += list(tmp_item)
 
 	//Putting Ammo and other boxes on the bottom of the list if they haven't been accounted for already
 	if(box_list.len > 0)

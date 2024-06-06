@@ -121,7 +121,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), 2 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), 3 MINUTES)
 
 	return ..()
 

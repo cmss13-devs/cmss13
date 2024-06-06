@@ -38,6 +38,7 @@ export type Observable = {
   nickname?: string;
   orbiters?: number;
   ref: string;
+  hivenumber: string;
 };
 
 export type SquadObservable = {

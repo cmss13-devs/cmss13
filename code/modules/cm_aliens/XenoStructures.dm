@@ -869,7 +869,7 @@
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
 		if(!hive.totalXenos.len)
-			return
+			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! VENGANCE!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 	humans_other = null
 	humans_uscm = null
@@ -895,7 +895,7 @@
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
 		if(!hive.totalXenos.len)
-			return
+			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The destroyer is growing at [get_area_name(loc)]. Protect it at all costs!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 	
 /obj/effect/alien/resin/destroyer_cocoon/proc/check_pylons()
@@ -919,7 +919,7 @@
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
 		if(!hive.totalXenos.len)
-			return
+			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The destroyer will hatch in approximately 5 minutes."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 	timer = addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 

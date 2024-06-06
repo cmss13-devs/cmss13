@@ -7,6 +7,7 @@
 	var/base_icon_state = "regular2"
 
 	slot = ACCESSORY_SLOT_ARMOR_C
+	w_class = SIZE_MEDIUM
 	/// is it *armor* or something different & irrelevant and always passes damage & doesnt take damage to itself?
 	var/is_armor = TRUE
 	var/armor_health = 10
@@ -23,7 +24,6 @@
 	)
 
 	var/scrappable = TRUE
-
 	var/armor_hitsound = 'sound/effects/metalhit.ogg'
 	var/armor_shattersound = 'sound/effects/metal_shatter.ogg'
 

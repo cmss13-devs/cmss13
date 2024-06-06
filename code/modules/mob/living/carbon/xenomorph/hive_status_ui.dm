@@ -11,6 +11,7 @@
 	var/hive_location
 	var/burrowed_larva
 	var/evilution_level
+	var/buff_points
 	var/pylon_status
 
 	var/data_initialized = FALSE
@@ -43,6 +44,12 @@
 
 	// Also update the amount of T2/T3 slots
 	tier_slots = assoc_hive.get_tier_slots()
+
+/datum/hive_status_ui/proc/update_buff_points(send_update = TRUE)
+	buff_points = assoc_hive.buff_points
+
+	if(send_update)
+		SStgui.update_uis(src)
 
 // Updates the hive location using the area name of the defined hive location turf
 /datum/hive_status_ui/proc/update_hive_location(send_update = TRUE)
@@ -106,6 +113,7 @@
 	update_xeno_keys(FALSE)
 	update_xeno_info(FALSE)
 	update_pylon_status(FALSE)
+	update_buff_points()
 
 	if(send_update)
 		SStgui.update_uis(src)

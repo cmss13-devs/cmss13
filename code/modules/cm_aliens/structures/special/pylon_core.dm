@@ -219,6 +219,7 @@
 		return
 
 	linked_hive.buff_points += 1
+	linked_hive.update_buff_points()
 
 /// APPLYING HIVE BUFFS ///
 

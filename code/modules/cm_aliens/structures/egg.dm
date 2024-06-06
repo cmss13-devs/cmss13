@@ -55,6 +55,8 @@
 	. = ..()
 	if(isxeno(user) && status == EGG_GROWN)
 		. += "Ctrl + Click egg to retrieve child into your empty hand if you can carry it."
+	if(isobserver(user) && status == EGG_GROWN)
+		. += "Current facehugger limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"
 
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
 	if(status == EGG_BURST || status == EGG_DESTROYED)

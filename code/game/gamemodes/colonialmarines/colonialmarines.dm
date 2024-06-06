@@ -165,7 +165,7 @@
 ///Returns a list of non-dense turfs using the given block arguments ignoring the provided structure types
 /datum/game_mode/colonialmarines/proc/get_valid_sentry_turfs(left, bottom, z, width, height, list/structures_to_ignore)
 	var/valid_turfs = list()
-	for(var/turf/turf in block(left, bottom, z, left+width-1, bottom+height-1))
+	for(var/turf/turf as anything in block(left, bottom, z, left+width-1, bottom+height-1))
 		if(turf.density)
 			continue
 		var/structure_blocking = FALSE

@@ -25,10 +25,15 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/particle_effect/smoke/Initialize(mapload, oldamount, new_cause_data)
+/obj/effect/particle_effect/smoke/Initialize(mapload, oldamount, datum/cause_data/new_cause_data)
 	. = ..()
 	if(oldamount)
 		amount = oldamount - 1
+	if(!istype(new_cause_data))
+		if(new_cause_data)
+			new_cause_data = create_cause_data(new_cause_data)
+		else
+			new_cause_data = create_cause_data(name)
 	cause_data = new_cause_data
 	time_to_live += rand(-1,1)
 	START_PROCESSING(SSeffects, src)
@@ -166,26 +171,37 @@
 	opacity = FALSE
 	alpha = 75
 	color = "#301934"
+	/// How much damage to deal per affect()
 	var/burn_damage = 4
+	/// Multiplier to burn_damage for xenos and yautja
 	var/xeno_yautja_multiplier = 3
+	/// Time required for damage to actually apply
+	var/active_time
 
-/obj/effect/particle_effect/smoke/miasma/Initialize(mapload, oldamount, new_cause_data)
+/obj/effect/particle_effect/smoke/miasma/Initialize(mapload, oldamount, datum/cause_data/new_cause_data)
 	. = ..()
 	// Mimic dispersal without actually doing spread logic
 	alpha = 0
+	active_time = world.time + 6 SECONDS
 	addtimer(VARSET_CALLBACK(src, alpha, initial(alpha)), rand(1, 6) SECONDS)
 
-/obj/effect/particle_effect/smoke/miasma/process()
-	. = ..()
-	var/turf/turf = get_turf(src)
-	for(var/obj/structure/closet/container in turf)
+/obj/effect/particle_effect/smoke/miasma/apply_smoke_effect(turf/cur_turf)
+	..()
+	// coffins
+	for(var/obj/structure/closet/container in cur_turf)
 		for(var/mob/living/carbon/mob in container)
 			affect(mob)
-	var/obj/vehicle/multitile/car = locate() in turf
+
+	// vehicles
+	var/obj/vehicle/multitile/car = locate() in cur_turf
 	var/datum/interior/car_interior = car?.interior
-	var/list/passengers = car_interior?.get_passengers()
-	for(var/mob/living/mob as anything in passengers)
-		affect(mob)
+	if(car_interior)
+		var/list/bounds = car_interior.get_bound_turfs()
+		for(var/turf/car_turf as anything in block(bounds[1], bounds[2]))
+			var/obj/effect/particle_effect/smoke/miasma/smoke = locate() in car_turf
+			if(!smoke)
+				smoke = new(car_turf)
+			smoke.time_to_live = rand(7, 12)
 
 /obj/effect/particle_effect/smoke/miasma/affect(mob/living/carbon/affected_mob)
 	. = ..()
@@ -194,7 +210,8 @@
 	if(affected_mob.stat == DEAD)
 		return FALSE
 
-	var/damage = burn_damage
+	var/active = world.time > active_time
+	var/damage = active ? burn_damage : 0 // A little buffer time to get out of it
 	if(isxeno(affected_mob))
 		damage *= xeno_yautja_multiplier
 	else if(isyautja(affected_mob))

@@ -282,7 +282,7 @@
 	return TRUE
 
 /// Deducts points from the hive buff points equal to the cost of the buff
-/datum/hivebuff/proc/_purchase_and_deduct(var/purchasing_mob)
+/datum/hivebuff/proc/_purchase_and_deduct(mob/purchasing_mob)
 	if(!_check_can_afford_buff())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Something went wrong, try again."))
 		return FALSE

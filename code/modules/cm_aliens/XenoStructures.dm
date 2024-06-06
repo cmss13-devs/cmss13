@@ -872,7 +872,6 @@
 	. = ..()
 
 /obj/effect/alien/resin/destroyer_cocoon/Initialize(mapload, pylon)
-	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
@@ -892,7 +891,8 @@
 		if(!hive.totalXenos.len)
 			return
 		xeno_announcement(SPAN_XENOANNOUNCE("The destroyer is growing at [get_area_name(loc)]. Protect it at all costs!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
-
+	. = ..()
+	
 /obj/effect/alien/resin/destroyer_cocoon/proc/check_pylons()
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	

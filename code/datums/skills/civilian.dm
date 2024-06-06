@@ -213,13 +213,13 @@ CIVILIAN
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 	)
 
-/datum/skills/civilian/wy_pilot
+/datum/skills/civilian/survivor/wy_pilot
 	name = "Weyland Yutani - Pilot"
 	skills = list(
 		SKILL_PILOT = SKILL_PILOT_EXPERT,
 	)
 
-/datum/skills/civilian/hybrisa_paramedic
+/datum/skills/civilian/survivor/paramedic
 	name = "Nova Medica - Paramedic"
 	skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,

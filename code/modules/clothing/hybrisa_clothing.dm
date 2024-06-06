@@ -59,7 +59,7 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
 // Paramedic
 
@@ -112,7 +112,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
 //  Kelland Mining
 
@@ -131,11 +131,11 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
 // Weymart
 
-/obj/item/clothing/under/hybrisa/Weymart
+/obj/item/clothing/under/hybrisa/weymart
 	name = "\improper Weymart uniform"
 	desc = "A pair of dark-grey slacks and an orange button-down shirt; a standard uniform for the Weyland-Yutani branded supermarket 'Weymart'."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -150,7 +150,26 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
+
+// Pizza Galaxy
+
+/obj/item/clothing/under/hybrisa/pizza_galaxy
+	name = "\improper Pizza Galaxy uniform"
+	desc = "A pair of red slacks and a white button-down shirt with a large 'Pizza Galaxy' logo on the back; a standard uniform for a Pizza Galaxy employee. Pizza Galaxy! To infinity and beyond!"
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "new_pizza_uniform"
+	worn_state = "new_pizza_uniform"
+	contained_sprite = TRUE
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
 /////////////////////// Hats & Helmets ///////////////////////
 /////////////////////////////////////////////////////////////
@@ -286,6 +305,16 @@
 	item_state = "weymart_cap"
 	contained_sprite = TRUE
 
+// Pizza Galaxy Cap
+
+/obj/item/clothing/head/soft/hybrisa/pizza_galaxy
+	name = "pizza galaxy red cap"
+	desc = "It's a baseball style cap in a red color, with the 'Pizza Galaxy' logo on the front."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "pizzagalaxy_cap"
+	item_state = "pizzagalaxy_cap"
+	contained_sprite = TRUE
+
 // Helmets
 
 // Firefighter
@@ -346,20 +375,78 @@
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
+// Pizza Galaxy (Rare Helmet)
+
+/obj/item/clothing/head/helmet/hybrisa/pizza_galaxy
+	name = "HS-PG-SHIELD-X 575 helmet"
+	desc = "The HS-PG-SHIELD-X 575 (Hyperdyne Systems - Pizza Galaxy - Safety Helmet Integrated for Extreme Danger). A closed prototype helmet was designed to protect the wearer from hazardous environments, this specific model is designed to be effective in low atmosphere environments. It has a built in closed breathing system. This helmet was designed by Hyperdyne Systems in collaboration with Pizza Galaxy."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "pizza_galaxy_helmet"
+	item_state = "pizza_galaxy_helmet"
+	contained_sprite = TRUE
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	flags_inventory = COVEREYES|BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
+
 /////////////////////// Oversuits ///////////////////////
 ////////////////////////////////////////////////////////
 
 // Fire-Fighter
 
-/obj/item/clothing/suit/fire/hybrisa_firefighter
+/obj/item/clothing/suit/fire_light
+	name = "firesuit"
+	desc = "A high-tech light-weight suit that protects against fire and heat."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "firefighter_oversuit"
 	item_state = "firefighter_oversuit"
 	contained_sprite = TRUE
+	gas_transfer_coefficient = 0.90
+	permeability_coefficient = 0.50
+	fire_intensity_resistance = BURN_LEVEL_TIER_1
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
+	allowed = list(
+		/obj/item/tool/extinguisher,
+
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
+	slowdown = 1
+	flags_inventory = NOPRESSUREDMAGE
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
+
+/obj/item/clothing/suit/fire_light/equipped(mob/user, slot)
+	if(slot == WEAR_JACKET)
+		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
+	..()
+
+/obj/item/clothing/suit/fire_light/dropped(mob/user)
+	UnregisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED)
+	..()
+
+/obj/item/clothing/suit/fire_light/proc/flamer_fire_crossed_callback(mob/living/L, datum/reagent/R)
+	SIGNAL_HANDLER
+
+	if(R.fire_penetrating)
+		return
+
+	return COMPONENT_NO_IGNITE
 
 // Kelland Mining
 
-/obj/item/clothing/suit/fire/hybrisa_kelland
+/obj/item/clothing/suit/storage/hybrisa_kelland
 	name = "\improper Kelland-Mining utility uniform"
 	desc = "A set of standard issue Kelland-Mining utility fatigues, a yellow pair of utility work slacks and a black collard heavy padded jacket, which protects against various environmental hazards."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -544,3 +631,26 @@
 	icon_state = "hobocoat_darkred"
 	item_state = "hobocoat_darkred"
 	contained_sprite = TRUE
+
+/////////////////////// MISC ///////////////////////////
+////////////////////////////////////////////////////////
+
+// Glasses
+
+/obj/item/clothing/glasses/sunglasses/aviator_silver
+	name = "aviator shades"
+	desc = "A pair of silver tinted sunglasses. You can faintly hear 80's music playing while wearing these."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "aviator_silver"
+	item_state = "aviator_silver"
+	contained_sprite = TRUE
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
+
+/obj/item/clothing/glasses/sunglasses/sechud_blue
+	name = "Security HUD-Glasses"
+	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "sunhud_blue"
+	contained_sprite = TRUE
+	eye_protection = EYE_PROTECTION_FLASH
+	hud_type = MOB_HUD_SECURITY_ADVANCED

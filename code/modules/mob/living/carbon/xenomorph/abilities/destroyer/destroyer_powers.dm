@@ -43,13 +43,13 @@
 	xeno.create_shriekwave()
 
 	var/datum/effect_system/smoke_spread/destroyer_doom/smoke_gas = new /datum/effect_system/smoke_spread/destroyer_doom
-	smoke_gas.set_up(3, 0, get_turf(xeno), null, 6)
+	smoke_gas.set_up(7, 0, get_turf(xeno), null, 6)
 	smoke_gas.start()
 
 	// Turn off lights for items in the area dependant on distance.
 	for(var/obj/item/device/potential_lightsource in orange(extinguish_light_range, owner))
 
-		var/time_to_extinguish = get_dist(owner, potential_lightsource) SECONDS
+		var/time_to_extinguish = get_dist(owner, potential_lightsource) DECISECONDS
 
 		//Flares
 		if(istype(potential_lightsource, /obj/item/device/flashlight/flare))

@@ -1,3 +1,5 @@
+var/current_hugger_count = 0
+
 /datum/hive_status
 	var/name = "Normal Hive"
 
@@ -858,7 +860,6 @@
 
 	update_hugger_limit()
 
-	var/current_hugger_count = 0
 	for(var/mob/mob as anything in totalXenos)
 		if(isfacehugger(mob))
 			current_hugger_count++

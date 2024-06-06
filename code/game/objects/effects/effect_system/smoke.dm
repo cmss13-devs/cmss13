@@ -659,5 +659,10 @@
 	if(S.amount)
 		S.spread_smoke(direction)
 
+/obj/effect/particle_effect/smoke/destroyer
+	opacity = FALSE
+	color = "#595757"
+	
+
 /datum/effect_system/smoke_spread/destroyer_doom
-	smoke_type = /obj/effect/particle_effect/smoke
+	smoke_type = /obj/effect/particle_effect/smoke/destroyer

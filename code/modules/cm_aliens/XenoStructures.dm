@@ -867,6 +867,8 @@
 		if(!hive.totalXenos.len)
 			return
 		xeno_announcement(SPAN_XENOANNOUNCE("THE COCOON WAS DESTROYED! VENGANCE!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+	humans_other = null
+	humans_uscm = null
 	. = ..()
 
 /obj/effect/alien/resin/destroyer_cocoon/Initialize(mapload, pylon)

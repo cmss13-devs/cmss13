@@ -37,7 +37,6 @@
 /obj/item/storage/box/pride
 	name = "box of prideful crayons"
 	desc = "A box of every flavor of pride."
-	icon_state = "pridebox"
 	storage_slots = 8
 	can_hold = list(/obj/item/toy/crayon/pride)
 

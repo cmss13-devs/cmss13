@@ -249,12 +249,10 @@
 
 		list("MAGAZINE BOXES", -1, null, null),
 		list("Magazine Box (88 Mod 4 AP x 16)", 0, /obj/item/ammo_box/magazine/mod88, VENDOR_ITEM_REGULAR),
-		list("Magazine Box (AP L42A x 16)", 0, /obj/item/ammo_box/magazine/l42a/ap, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (AP M39 x 12)", 0, /obj/item/ammo_box/magazine/m39/ap, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (AP M41A x 10)", 0, /obj/item/ammo_box/magazine/ap, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (Ext M39 x 10)", 0, /obj/item/ammo_box/magazine/m39/ext, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (Ext M41A x 8)", 0, /obj/item/ammo_box/magazine/ext, VENDOR_ITEM_REGULAR),
-		list("Magazine Box (L42A x 16)", 0, /obj/item/ammo_box/magazine/l42a, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (M39 x 12)", 0, /obj/item/ammo_box/magazine/m39, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (M41A x 10)", 0, /obj/item/ammo_box/magazine, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (M4A3 x 16)", 0, /obj/item/ammo_box/magazine/m4a3, VENDOR_ITEM_REGULAR),

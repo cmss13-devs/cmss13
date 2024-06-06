@@ -208,9 +208,9 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(scale)
 	listed_products = list(
 		list("REGULAR AMMUNITION", -1, null, null),
-		list("Box Of Buckshot Shells", floor(scale * 40), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
-		list("Box Of Flechette Shells", floor(scale * 40), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
-		list("Box Of Shotgun Slugs", floor(scale * 40), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
+		list("Box Of Buckshot Shells", floor(scale * 56), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
+		list("Box Of Flechette Shells", floor(scale * 56), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
+		list("Box Of Shotgun Slugs", floor(scale * 56), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
 		list("M4RA Magazine (10x24mm)", floor(scale * 60), /obj/item/ammo_magazine/rifle/m4ra, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 Magazine (10x24mm)", floor(scale * 100), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
 		list("M39 HV Magazine (10x20mm)", floor(scale * 100), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
@@ -248,9 +248,9 @@
 		list("XM51 Magazine (16g)", floor(scale * 3), /obj/item/ammo_magazine/rifle/xm51, VENDOR_ITEM_REGULAR),
 
 		list("SHOTGUN SHELL BOXES", -1, null, null),
-		list("Shotgun Shell Box (Buckshot x 100)", floor(scale * 4), /obj/item/ammo_box/magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
-		list("Shotgun Shell Box (Flechette x 100)", floor(scale * 4), /obj/item/ammo_box/magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
-		list("Shotgun Shell Box (Slugs x 100)", floor(scale * 4), /obj/item/ammo_box/magazine/shotgun, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Buckshot x 100)", 0, /obj/item/ammo_box/magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Flechette x 100)", 0, /obj/item/ammo_box/magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Slugs x 100)", 0, /obj/item/ammo_box/magazine/shotgun, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Box (16g) (Breaching x 120)", 1, /obj/item/ammo_box/magazine/shotgun/light/breaching, VENDOR_ITEM_REGULAR),
 		)
 

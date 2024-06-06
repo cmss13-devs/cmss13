@@ -898,6 +898,7 @@
 	
 	if(length(hive.active_endgame_pylons) < 2)
 		qdel(src)
+		return
 	
 	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 

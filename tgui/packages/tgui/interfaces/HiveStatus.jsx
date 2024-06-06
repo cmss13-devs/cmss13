@@ -155,9 +155,6 @@ const GeneralInformation = (props) => {
       <Flex.Item>
         <i>Evilution: {evilution_level}</i>
       </Flex.Item>
-      <Flex.item>
-        <i>Royal Resin: {royal_resin}</i>
-      </Flex.item>
       {pylon_status && (
         <Flex.Item>
           <i>{pylon_status}</i>

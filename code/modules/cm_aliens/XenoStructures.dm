@@ -915,15 +915,16 @@
 		if(!hive.totalXenos.len)
 			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The destroyer will hatch in approximately 5 minutes."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
-	addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 4 MINUTES SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/roll_candidates()
 	// First, Let the Queen choose
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	var/mob/living/carbon/xenomorph/choice = tgui_input_list(hive.living_xeno_queen, "Choose a xenomorph to become the destroyer", "Choose a xeno", hive.totalXenos - hive.living_xeno_queen)
+	if(length(hive.totalXenos - hive.living_xeno_queen) > 0)
+		var/mob/living/carbon/xenomorph/choice = tgui_input_list(hive.living_xeno_queen, "Choose a xenomorph to become the destroyer", "Choose a xeno", hive.totalXenos - hive.living_xeno_queen)
 
-	if(choice)
-		return choice
+		if(choice)
+			return choice
 
 	// Then ask all the living xenos
 	var/list/total_xenos_copy = shuffle(hive.totalXenos.Copy())
@@ -932,7 +933,7 @@
 		if (get_job_playtime(candidate.client, JOB_XENO_ROLES) < 25 HOURS)
 			continue
 
-		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", list("Yes", "No"), 10 SECONDS)
+		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", "Choice", list("Yes", "No"), 10 SECONDS)
 
 		if(pick == "Yes")
 			return candidate
@@ -942,20 +943,20 @@
 		if (get_job_playtime(candidate.client, JOB_XENO_ROLES) < 25 HOURS)
 			continue
 
-		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", list("Yes", "No"), 10 SECONDS)
+		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", "Choice", list("Yes", "No"), 10 SECONDS)
 
 		if(pick == "Yes")
 			return candidate
 	
 	// Lastly all of the above again, without playtime requirements
 	for(var/mob/living/carbon/xenomorph/candidate in total_xenos_copy)
-		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", list("Yes", "No"), 10 SECONDS)
+		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", "Choice", list("Yes", "No"), 10 SECONDS)
 
 		if(pick == "Yes")
 			return candidate
 
 	for(var/mob/candidate in GLOB.observer_list)
-		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", list("Yes", "No"), 10 SECONDS)
+		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", "Choice", list("Yes", "No"), 10 SECONDS)
 
 		if(pick == "Yes")
 			return candidate
@@ -970,7 +971,7 @@
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
 		if(!hive.totalXenos.len)
-			return
+			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The destroyer will hatch in approximately one minute."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 	addtimer(CALLBACK(src, PROC_REF(animate_hatch_destroyer)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
@@ -982,7 +983,7 @@
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
 		if(!hive.totalXenos.len)
-			return
+			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The destroyer has hatched."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 	addtimer(CALLBACK(src, PROC_REF(hatch_destroyer)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 

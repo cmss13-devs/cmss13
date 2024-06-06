@@ -875,11 +875,11 @@
 	return TRUE
 
 /datum/hive_status/proc/get_current_playable_facehugger_count()
-    var/count = 0
-    for(var/mob/mob as anything in totalXenos)
-        if(isfacehugger(mob))
-            count++
-    return count
+	var/count = 0
+	for(var/mob/mob as anything in totalXenos)
+		if(isfacehugger(mob))
+			count++
+	return count
 endproc
 
 /datum/hive_status/proc/spawn_as_hugger(mob/dead/observer/user, atom/A)

@@ -65,7 +65,7 @@
 		return FALSE
 	return TRUE
 	*/
-/datum/tgui_bug_report_form/ui_act(action, list/params, datum/tgui/ui, list/params)
+/datum/tgui_bug_report_form/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if (.)
 		return

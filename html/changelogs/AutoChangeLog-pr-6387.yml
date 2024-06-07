@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed larva and hugger emotes performing no stat or muted or cooldown checks"

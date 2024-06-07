@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 /obj/structure/machinery/door/airlock/Destroy()
 	QDEL_NULL_LIST(attached_signallers)
-	QDEL_NULL(closeOther)
+	closeOther = null
 	QDEL_NULL(electronics)
 	return ..()
 

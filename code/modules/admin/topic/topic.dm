@@ -2254,7 +2254,7 @@
 
 		var/datum/tgui_bug_report_form/bug_report = locate(href_list["view_bug_report"])
 		if(!bug_report)
-			to_chat(usr, SPAN_WARNING("This record is no longer available"))
+			to_chat(usr, SPAN_WARNING("This bug report is no longer available"))
 			return
 
 		bug_report.tgui_interact(usr)

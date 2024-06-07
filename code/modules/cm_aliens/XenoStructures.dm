@@ -1033,7 +1033,7 @@
 /obj/effect/alien/resin/destroyer_cocoon/proc/hatch_destroyer()
 	hatched = TRUE
 	var/mob/living/carbon/xenomorph/destroyer/destroyer = new(locate(x + 2, y + 2, z))
-	if(chosen_candidate.mob)
+	if(chosen_candidate?.mob)
 		chosen_candidate.mob.mind.transfer_to(destroyer)
 	else
 		destroyer.free_for_ghosts(TRUE)

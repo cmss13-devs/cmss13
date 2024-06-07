@@ -274,7 +274,7 @@
 /datum/hivebuff/proc/_check_pass_combineable()
 	if(is_combineable)
 		return TRUE
-	for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)
+	for(var/datum/hivebuff/active_hivebuff in hive.active_hivebuffs)
 		if(!active_hivebuff.is_combineable)
 			return FALSE
 	return TRUE

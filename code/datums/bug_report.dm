@@ -78,7 +78,7 @@
 
 // proc that creates a ticket for an admin to approve or deny a bug report request
 /datum/tgui_bug_report_form/proc/bug_report_request()
-	to_chat(initial_user, SPAN_WARNING("Your bug report has been submitted, Thank you!"))
+	to_chat(initial_user, SPAN_WARNING("Your bug report has been submitted, thank you!"))
 
 	GLOB.bug_reports += src
 	var/general_message = "[initial_user.ckey] has created a bug report, you may modify the report to your liking before submitting it to Github"

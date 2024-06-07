@@ -138,7 +138,28 @@
 		list("Engineering Pamphlet", floor(scale * 1), /obj/item/pamphlet/skill/engineer, VENDOR_ITEM_REGULAR),
 		list("Powerloader Certification", 0.75, /obj/item/pamphlet/skill/powerloader, VENDOR_ITEM_REGULAR),
 		list("Spare PDT/L Battle Buddy Kit", floor(scale * 4), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),
-		list("W-Y brand rechargeable mini-battery", floor(scale * 3), /obj/item/cell/crap, VENDOR_ITEM_REGULAR)
+		list("W-Y brand rechargeable mini-battery", floor(scale * 3), /obj/item/cell/crap, VENDOR_ITEM_REGULAR),
+
+		list("EXPLOSIVES BOXES", -1, null, null),
+		list("M15 Fragmentation Grenade Packet", 0, /obj/item/storage/box/packet/m15, VENDOR_ITEM_REGULAR),
+		list("M40 HEDP Grenade Packet", 0, /obj/item/storage/box/packet/high_explosive, VENDOR_ITEM_REGULAR),
+		list("M40 HEDP Grenade Box", 0, /obj/item/storage/box/nade_box, VENDOR_ITEM_REGULAR),
+		list("M40 HIDP Grenade Packet", 0, /obj/item/storage/box/packet/incendiary, VENDOR_ITEM_REGULAR),
+		list("M40 HPDP Grenade Box", 0, /obj/item/storage/box/nade_box/phophorus, VENDOR_ITEM_REGULAR),
+		list("M40 HSDP Grenade Packet", 0, /obj/item/storage/box/packet/smoke, VENDOR_ITEM_REGULAR),
+		list("M40 HIRR Baton Slug Packet", 0, /obj/item/storage/box/packet/baton_slug, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Airburst Grenade Packet", 0, /obj/item/storage/box/packet/airburst_he, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-F grenade box", 0, /obj/item/storage/box/nade_box/airburst, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Airburst Incendiary Grenade Packet", 0, /obj/item/storage/box/packet/airburst_incen, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Airburst Smoke Grenade Packet", 0, /obj/item/storage/box/packet/airburst_smoke, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-S Star Shell Packet", 0, /obj/item/storage/box/packet/flare, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-H Hornet Shell Packet", 0, /obj/item/storage/box/packet/hornet, VENDOR_ITEM_REGULAR),
+		list("M20 mine box", 0, /obj/item/storage/box/explosive_mines, VENDOR_ITEM_REGULAR),
+
+		list("OTHER BOXES", -1, null, null),
+		list("Box of M94 Marking Flare Packs", 0, /obj/item/ammo_box/magazine/misc/flares, VENDOR_ITEM_REGULAR),
+		list("Box of M89 Signal Flare Packs", 0, /obj/item/ammo_box/magazine/misc/flares/signal, VENDOR_ITEM_REGULAR),
+		list("Box of High-Capacity Power Cells", 0, /obj/item/ammo_box/magazine/misc/power_cell, VENDOR_ITEM_REGULAR)
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/stock(obj/item/item_to_stock, mob/user)

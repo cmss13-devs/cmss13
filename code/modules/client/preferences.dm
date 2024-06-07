@@ -154,8 +154,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/g_eyes = 0 //Eye color
 	var/b_eyes = 0 //Eye color
 	var/species = "Human"    //Species datum to use.
-	var/ethnicity = "Western" // Ethnicity
-	var/body_type = "Mesomorphic (Average)" // Body Type
+	var/ethnicity = "Western" //Legacy, kept to update save files
+	var/skin_color = "Pale 2" // Skin color
+	var/body_size = "Average" // Body Size
+	var/body_type = "Lean" // Body Type
 	var/language = "None" //Secondary language
 	var/list/gear //Custom/fluff item loadout.
 	var/preferred_squad = "None"
@@ -337,8 +339,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<a href='?_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
 			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
-			dat += "<b>Ethnicity:</b> <a href='?_src_=prefs;preference=ethnicity;task=input'><b>[ethnicity]</b></a><br>"
-			dat += "<b>Body Type:</b> <a href='?_src_=prefs;preference=body_type;task=input'><b>[body_type]</b></a><br>"
+			dat += "<b>Skin Color:</b> <a href='?_src_=prefs;preference=skin_color;task=input'><b>[skin_color]</b></a><br>"
+			dat += "<b>Body Size:</b> <a href='?_src_=prefs;preference=body_size;task=input'><b>[body_size]</b></a><br>"
+			dat += "<b>Body Muscularity:</b> <a href='?_src_=prefs;preference=body_type;task=input'><b>[body_type]</b></a><br>"
 			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits;task=open'><b>Character Traits</b></a>"
 			dat += "<br>"
 
@@ -1182,10 +1185,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					real_name = character_origin.generate_human_name(gender)
 				if ("age")
 					age = rand(AGE_MIN, AGE_MAX)
-				if ("ethnicity")
-					ethnicity = random_ethnicity()
+				if ("skin_color")
+					skin_color = random_skin_color()
 				if ("body_type")
 					body_type = random_body_type()
+				if ("body_size")
+					body_size = random_body_size()
 				if ("hair")
 					r_hair = rand(0,255)
 					g_hair = rand(0,255)
@@ -1556,14 +1561,20 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(new_h_gradient_style)
 						grad_style = new_h_gradient_style
 
-				if ("ethnicity")
-					var/new_ethnicity = tgui_input_list(user, "Choose your character's ethnicity:", "Character Preferences", GLOB.ethnicities_list)
+				if ("skin_color")
+					var/new_skin_color = tgui_input_list(user, "Choose your character's skin color:", "Character Preferences", GLOB.skin_color_list)
 
-					if (new_ethnicity)
-						ethnicity = new_ethnicity
+					if (new_skin_color)
+						skin_color = new_skin_color
+
+				if ("body_size")
+					var/new_body_size = tgui_input_list(user, "Choose your character's body size:", "Character Preferences", GLOB.body_size_list)
+
+					if (new_body_size)
+						body_size = new_body_size
 
 				if ("body_type")
-					var/new_body_type = tgui_input_list(user, "Choose your character's body type:", "Character Preferences", GLOB.body_types_list)
+					var/new_body_type = tgui_input_list(user, "Choose your character's body type:", "Character Preferences", GLOB.body_type_list)
 
 					if (new_body_type)
 						body_type = new_body_type
@@ -2067,8 +2078,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	character.age = age
 	character.gender = gender
-	character.ethnicity = ethnicity
+	character.skin_color = skin_color
 	character.body_type = body_type
+	character.body_size = body_size
 
 	character.r_eyes = r_eyes
 	character.g_eyes = g_eyes
@@ -2140,15 +2152,16 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			message_admins("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
 			character.gender = MALE
 
-// Transfers the character's physical characteristics (age, gender, ethnicity, etc) to the mob
+// Transfers the character's physical characteristics (age, gender, skin_color, etc) to the mob
 /datum/preferences/proc/copy_appearance_to(mob/living/carbon/human/character, safety = 0)
 	if(!istype(character))
 		return
 
 	character.age = age
 	character.gender = gender
-	character.ethnicity = ethnicity
+	character.skin_color = skin_color
 	character.body_type = body_type
+	character.body_size = body_size
 
 	character.r_eyes = r_eyes
 	character.g_eyes = g_eyes

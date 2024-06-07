@@ -437,6 +437,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Seized Items",
 		"Shipside Contraband",
 		"Surplus Equipment",
+		"Contraband Ammo",
 		"Deep Storage",
 		"Miscellaneous"
 		)

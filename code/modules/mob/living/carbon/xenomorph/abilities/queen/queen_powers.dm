@@ -401,7 +401,7 @@
 			clear_personal_allies()
 		if("Purchase Buffs")
 			purchase_buffs()
-			
+
 /datum/action/xeno_action/onclick/manage_hive/proc/purchase_buffs()
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 
@@ -417,7 +417,6 @@
 			if(initial(buff.tier) == HIVEBUFF_TIER_MAJOR)
 				major_available = TRUE
 
-
 	if(!length(buffs))
 		to_chat(xeno, SPAN_XENONOTICE("No boons are available to us!"))
 		return
@@ -425,7 +424,7 @@
 	var/selection
 	var/list/radial_images_tiers = list(HIVEBUFF_TIER_MINOR = image('icons/ui_icons/hivebuff_radial.dmi', "minor"), HIVEBUFF_TIER_MAJOR = image('icons/ui_icons/hivebuff_radial.dmi', "major"))
 
-	if((xeno.client.prefs && xeno.client.prefs.no_radials_preference))
+	if(xeno.client?.prefs?.no_radials_preference)
 		selection = tgui_input_list(xeno, "Pick a buff.", "Select Buff", names)
 	else
 		var/tier = HIVEBUFF_TIER_MINOR
@@ -453,24 +452,21 @@
 		to_chat(xeno, "This selection is impossible!")
 		return FALSE
 
-
-	if(buffs[selection].can_select_pylon)
+	if(buffs[selection].must_select_pylon)
 		var/list/pylon_to_area_dictionary = list()
 		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon as anything in xeno.hive.active_endgame_pylons)
 			pylon_to_area_dictionary[get_area_name(pylon.loc)] = pylon
 
-		var/choice = tgui_alert(xeno, "Select a pylon for the buff:", "Choice", pylon_to_area_dictionary, 1 MINUTES)
-		
+		var/choice = tgui_input_list(xeno, "Select a pylon for the buff:", "Choice", pylon_to_area_dictionary, 1 MINUTES)
+
 		if(!choice)
 			to_chat(xeno, "You must choose a pylon.")
 			return FALSE
 
 		xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pylon_to_area_dictionary[choice])
-
 		return TRUE
 
 	xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pick(xeno.hive.active_endgame_pylons))
-
 	return TRUE
 
 /datum/action/xeno_action/onclick/manage_hive/proc/add_personal_ally()

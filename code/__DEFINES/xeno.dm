@@ -174,7 +174,10 @@
 /// The time when xenos can start taking over comm towers
 #define XENO_COMM_ACQUISITION_TIME (55 MINUTES)
 
-/// The time it takes for a pylon to give one larva while activated
+/// The time when xenos can grow a destroyer
+#define XENO_DESTROYER_ACQUISITION_TIME (1 HOURS + 50 MINUTES)
+
+/// The time it takes for a pylon to give one royal resin while activated
 #define XENO_PYLON_ACTIVATION_COOLDOWN (5 MINUTES)
 
 /// The time until you can re-corrupt a comms relay after the last pylon was destroyed

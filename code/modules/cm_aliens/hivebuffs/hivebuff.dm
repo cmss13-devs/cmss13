@@ -1,7 +1,7 @@
 ///GLOBAL DEFINES///
 
 #define HIVE_STARTING_BUFFPOINTS 0
-#define HIVE_MAX_BUFFPOINTS 0
+#define HIVE_MAX_BUFFPOINTS 10
 #define BUFF_POINTS_NAME "Royal resin"
 
 ///LOCAL DEFINES///
@@ -24,8 +24,6 @@
 	var/_timer_id
 	/// The hive that this buff is applied to.
 	var/datum/hive_status/hive
-	/// List of pylons sustaining the hive buff, can be one or two pylons
-	var/list/sustained_pylons
 	///Name of the buff, short and to the point
 	var/name = "Hivebuff"
 	/// Description of what the buff does.
@@ -38,9 +36,9 @@
 	var/roundtime_to_enable = 0 HOURS
 
 	/// Flavour message to announce to the hive on buff application. Narrated to all players in the hive.
-	var/engage_flavourmessage = "The Queen has purchased a buff!"
+	var/engage_flavourmessage
 	/// Flavour message to announce to the hive on buff expiry. Narrated to all players in the hive.
-	var/cease_flavourmessage = "The buff has expired."
+	var/cease_flavourmessage
 
 	/// Minor or Major buff. Governs announcements made and importance.
 	var/tier = HIVEBUFF_TIER_MINOR
@@ -49,7 +47,7 @@
 	///If this buff can be used with others
 	var/is_combineable = TRUE
 	///If this buff can be used more than once a round.
-	var/is_reusable = FALSE
+	var/is_reusable = TRUE
 	/// Time that the buff is active for if it is a timed buff.
 	var/duration
 	/// Cost of the buff
@@ -57,9 +55,6 @@
 
 	/// Message to send to the user and queen if we fail for any reason during on_engage()
 	var/engage_failure_message
-
-	/// TRUE when buff has been ended via sustained_pylon Pylon qdeletion
-	var/ended_via_pylon_qdeletion = FALSE
 
 	/// Flavour message to give to the marines on buff engage
 	var/marine_flavourmessage
@@ -71,7 +66,7 @@
 	var/special_fail_message = ""
 
 	/// Ask the buyer where to put the buff
-	var/can_select_pylon = FALSE
+	var/must_select_pylon = FALSE
 
 /datum/hivebuff/New(datum/hive_status/xenohive)
 	. = ..()
@@ -80,63 +75,35 @@
 		return FALSE
 	hive = xenohive
 
+	if(!engage_flavourmessage)
+		engage_flavourmessage = "The Queen has purchased [name]."
+	if(!cease_flavourmessage)
+		cease_flavourmessage = "The [name] has expired."
+
 	return TRUE
 
 /datum/hivebuff/Destroy(force, ...)
 	LAZYREMOVE(hive.active_hivebuffs, src)
 	hive = null
-	sustained_pylons = null
+	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
 	. = ..()
 
-/// If the pylon sustaining this hive buff is destroyed for any reason
-/datum/hivebuff/proc/_on_pylon_deletion(obj/effect/alien/resin/special/pylon/sustained_pylon)
-	SIGNAL_HANDLER
-	ended_via_pylon_qdeletion = TRUE
-	if(_timer_id)
-		deltimer(_timer_id)
-	UnregisterSignal(sustained_pylon, COMSIG_PARENT_QDELETING)
-	announce_buff_loss(sustained_pylon)
-	sustained_pylons =- src
-	// If this is also being sustained by the other pylon(s) clear any references to this
-	if(LAZYLEN(sustained_pylons))
-		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon in sustained_pylons)
-			pylon.remove_hivebuff()
-	_on_cease()
-
-/datum/hivebuff/proc/announce_buff_loss(obj/effect/alien/resin/special/pylon/sustained_pylon)
-	xeno_announcement("Our pylon at [sustained_pylon.loc] has been destroyed! Our hive buff [name] has waned...", hive.hivenumber, "Hive Buff Wanes!")
-
 ///Wrapper for on_engage(), handles checking if the buff can be actually purchased as well as adding buff to the active_hivebuffs and used_hivebuffs for the hive.
-/datum/hivebuff/proc/_on_engage(mob/living/carbon/xenomorph/purchasing_mob, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
-	var/list/pylons_to_use = list()
-
+/datum/hivebuff/proc/_on_engage(mob/living/carbon/xenomorph/purchasing_mob, obj/effect/alien/resin/special/pylon/purchased_pylon)
 	if(!_roundtime_check())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive is not mature enough yet to purchase this!"))
 		return
 
-	if(!_check_num_required_pylons(purchased_pylon))
+	if(!_check_num_required_pylons())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
 		return FALSE
-	//Add purchasing pylon to list of pylons to use.
-	pylons_to_use += purchased_pylon
-	//If we need more pylons then add them to the list to handle setting up the buffs later
-	if(number_of_required_pylons > 1)
-		for(var/obj/effect/alien/resin/special/pylon/endgame/potential_pylon in hive.active_endgame_pylons)
-			// Already in the list, move onto the next pylon
-			if(potential_pylon == purchased_pylon)
-				continue
-			// We have enough pylons already break the loop
-			if(length(pylons_to_use) == number_of_required_pylons)
-				break
-			// Add the pylon to the list
-			pylons_to_use += potential_pylon
 
 	if(!_check_can_afford_buff())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive cannot afford [name]! [hive.buff_points] / [cost] points."))
 		return FALSE
 
 	if(!_check_pass_active())
-		to_chat(purchasing_mob, SPAN_XENONOTICE("[name] is already active in our hive!"))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive can't benefit from [name] yet!"))
 		return FALSE
 
 	if(!_check_pass_reusable())
@@ -161,7 +128,7 @@
 		return FALSE
 
 	// _seek_queen_approval() includes a 20 second timeout so we check that everything still exists that we need.
-	if(QDELETED(purchased_pylon) || QDELETED(purchasing_mob) && !purchasing_mob.check_state())
+	if(QDELETED(purchasing_mob) && !purchasing_mob.check_state())
 		return FALSE
 
 	// Actually process the buff and apply effects - If the buff succeeds engage_message will return TRUE, if it fails there should be an engage_failure_message set.
@@ -192,13 +159,6 @@
 	LAZYADD(hive.used_hivebuffs, src)
 	LAZYADD(hive.active_hivebuffs, src)
 
-	// Register signal to check if the pylon is ever destroyed.
-
-	// for(var/obj/effect/alien/resin/special/pylon/endgame/pylon_to_register in pylons_to_use)
-	// 	LAZYADD(sustained_pylons, purchased_pylon)
-	// 	pylon_to_register.sustain_hivebuff(src)
-	// 	RegisterSignal(pylon_to_register, COMSIG_PARENT_QDELETING, PROC_REF(_on_pylon_deletion))
-
 	// Announce to our hive that we've completed.
 	_announce_buff_engage()
 
@@ -216,39 +176,19 @@
 /datum/hivebuff/proc/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
 	return TRUE
 
-/// Wrapper for on_cease(), calls qdel(src) after on_cease() behaviour.
+/// Wrapper for on_cease()
 /datum/hivebuff/proc/_on_cease()
 	_announce_buff_cease()
-	/// Clear refernces to this buff and unregister signal
 	on_cease()
-	if(!ended_via_pylon_qdeletion)
-		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon_to_clear in sustained_pylons)
-			pylon_to_clear.remove_hivebuff()
-			// UnregisterSignal(pylon_to_clear, COMSIG_PARENT_QDELETING)
 	LAZYREMOVE(hive.active_hivebuffs, src)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
 
-
 /// Checks the number of pylons required and if the hive posesses them
-/datum/hivebuff/proc/_check_num_required_pylons(obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
-	var/list/viable_pylons = list()
-	if(number_of_required_pylons > 1)
-		for(var/obj/effect/alien/resin/special/pylon/endgame/potential_pylon in hive.active_endgame_pylons)
-			if(potential_pylon == purchased_pylon)
-				continue
-
-			// Pylons can only sustain one buff at a time
-			if(potential_pylon.sustained_buff)
-				continue
-			viable_pylons += potential_pylon
-
-		if(length(viable_pylons) >= (number_of_required_pylons - 1))
-			return TRUE
-		return FALSE
-	return TRUE
+/datum/hivebuff/proc/_check_num_required_pylons()
+	return number_of_required_pylons >= hive.active_endgame_pylons
 
 /datum/hivebuff/proc/_roundtime_check()
-	if(ROUND_TIME > (SSticker.round_start_time + roundtime_to_enable))
+	if(ROUND_TIME > roundtime_to_enable)
 		return TRUE
 	return FALSE
 
@@ -261,8 +201,11 @@
 
 /// Checks if this buff is already active in the hive. Returns TRUE if passed FALSE if not.
 /datum/hivebuff/proc/_check_pass_active()
+	// Prevent the same lineage of buff (e.g. no minor and major health allowed)
 	for(var/datum/hivebuff/buff as anything in hive.active_hivebuffs)
-		if(src.type == buff.type)
+		if(istype(src, buff.type))
+			return FALSE
+		if(istype(buff, type))
 			return FALSE
 
 	return TRUE
@@ -294,6 +237,7 @@
 		return FALSE
 
 	hive.buff_points -= cost
+	hive.check_if_hit_larva_from_pylon_limit()
 	return TRUE
 
 /datum/hivebuff/proc/_seek_queen_approval(mob/living/purchasing_mob)
@@ -314,21 +258,20 @@
 
 /datum/hivebuff/proc/_announce_buff_engage()
 	if(engage_flavourmessage)
-		if(tier > HIVEBUFF_TIER_MINOR)
-			xeno_announcement(engage_flavourmessage, hive.hivenumber, "Buff Purchased")
 		for(var/mob/xenomorph as anything in hive.totalXenos)
 			if(!xenomorph.client)
 				continue
 			xenomorph.play_screen_text(engage_flavourmessage, override_color = "#740064")
-			if(tier <= HIVEBUFF_TIER_MINOR)
-				to_chat(xenomorph, SPAN_XENO(engage_flavourmessage))
+			to_chat(xenomorph, SPAN_XENO(engage_flavourmessage))
+			playsound_client(xenomorph.client, 'sound/voice/alien_distantroar_3.ogg', xenomorph.loc, 25, FALSE)
+
 	if(marine_flavourmessage)
 		marine_announcement(marine_flavourmessage, COMMAND_ANNOUNCE, 'sound/AI/bioscan.ogg')
 
 /datum/hivebuff/proc/_announce_buff_cease()
 	if(!duration)
 		return
-		
+
 	for(var/mob/living/xenomorph as anything in hive.totalXenos)
 		if(!xenomorph.client)
 			continue
@@ -372,7 +315,7 @@
 	number_of_required_pylons = 1
 	is_reusable = FALSE
 
-/datum/hivebuff/extra_larva/on_engage()
+/datum/hivebuff/extra_larva/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
 	hive.stored_larva += 5
 	return TRUE
 
@@ -409,17 +352,18 @@
 
 /datum/hivebuff/game_ender_caste
 	name = "Boon of Destruction"
-	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike."
+	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space to grow."
 	tier = HIVEBUFF_TIER_MAJOR
 	is_reusable = TRUE
 	cost = 0
 	special_fail_message = "Only one hatchery may exist at a time."
 	number_of_required_pylons = 2
-	roundtime_to_enable = 1 HOURS + 50 MINUTES
-	can_select_pylon = TRUE
+	roundtime_to_enable = XENO_DESTROYER_ACQUISITION_TIME
+	must_select_pylon = TRUE
 
 /datum/hivebuff/game_ender_caste/handle_special_checks()
-	for(var/mob/living/carbon/xenomorph/destoryer in hive.totalXenos)
+	if(locate(/mob/living/carbon/xenomorph/destroyer) in hive.totalXenos)
+		special_fail_message = "Only one destroyer may exist at a time."
 		return FALSE
 
 	return !hive.has_hatchery
@@ -431,20 +375,23 @@
 		for(var/x_offset in 0 to 3)
 			for(var/y_offset in 0 to 3)
 				var/turf/turf_to_check = locate(potential_turf.x + x_offset, potential_turf.y + y_offset, potential_turf.z)
-
 				if(turf_to_check.density)
 					failed = TRUE
 					break
 				var/area/target_area = get_area(turf_to_check)
 				if(target_area.flags_area & AREA_NOTUNNEL)
-					failed = TRUE		
-					break			
+					failed = TRUE
+					break
+				for(var/obj/structure/struct in turf_to_check)
+					if(struct.density)
+						failed = TRUE
+					break
 		if(!failed)
 			spawn_turf = potential_turf
 			break
 
 	if(!spawn_turf)
-		engage_failure_message = "Unable to find a viable spawn point for the Destroyer"
+		engage_failure_message = "Unable to find a viable spawn point for the destroyer."
 		return FALSE
 
 	new /obj/effect/alien/resin/destroyer_cocoon(spawn_turf)

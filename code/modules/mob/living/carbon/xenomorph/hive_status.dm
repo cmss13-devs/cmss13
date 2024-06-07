@@ -1391,18 +1391,13 @@
 /datum/hive_status/proc/get_available_hivebuffs()
 	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
 
-	var/num_of_free_pylons = 0
-	// First check if we have available pylons which are capable of supporting hivebuffs
-	for(var/obj/effect/alien/resin/special/pylon/endgame/pylon in active_endgame_pylons)
-		if(!pylon.sustained_buff)
-			num_of_free_pylons++
-
-	if(!num_of_free_pylons)
+	// First check if we any pylons which are capable of supporting hivebuffs
+	if(!LAZYLEN(active_endgame_pylons))
 		return
 
 	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
 		// Round isn't old enough yet
-		if(ROUND_TIME < SSticker.round_start_time + initial(possible_hivebuff.roundtime_to_enable))
+		if(ROUND_TIME < initial(possible_hivebuff.roundtime_to_enable))
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
@@ -1410,8 +1405,16 @@
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
-		//If this hive has buffs already active, check against other currently active hivebuffs
-		if(locate(possible_hivebuff) in active_hivebuffs)
+		// Prevent the same lineage of buff in active hivebuffs (e.g. no minor and major health allowed)
+		var/already_active = FALSE
+		for(var/datum/hivebuff/buff as anything in active_hivebuffs)
+			if(istype(buff, possible_hivebuff))
+				already_active = TRUE
+				break
+			if(ispath(possible_hivebuff, buff.type))
+				already_active = TRUE
+				break
+		if(already_active)
 			potential_hivebuffs -= possible_hivebuff
 			continue
 

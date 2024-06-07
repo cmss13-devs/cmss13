@@ -13,6 +13,7 @@
 	armor_deflection = XENO_ARMOR_FACTOR_TIER_5
 	speed = XENO_SPEED_TIER_1
 
+	minimum_evolve_time = XENO_DESTROYER_ACQUISITION_TIME // Just for the notification
 	evolves_to = null
 	deevolves_to = null
 	evolution_allowed = FALSE
@@ -78,7 +79,7 @@
 			if(carbon.stat != DEAD)
 				carbon.apply_armoured_damage(20)
 				carbon.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
-		
+
 		playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 
 /datum/behavior_delegate/destroyer_base

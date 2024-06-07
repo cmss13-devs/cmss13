@@ -2,6 +2,7 @@
 /datum/xeno_shield/destroyer_shield
 	duration = 10 SECONDS
 	decay_amount_per_second = 100
+	/// The maximum damage multiplier of max health to apply in a hit
 	var/percent_maxhealth_damagecap = 0.1
 
 /datum/xeno_shield/destroyer_shield/on_hit(damage)

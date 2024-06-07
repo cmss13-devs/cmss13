@@ -247,10 +247,7 @@
 	var/mob/living/queen = hive.living_xeno_queen
 	var/queen_response = tgui_alert(queen, "You are trying to Purchase [name] at a cost of [cost] [BUFF_POINTS_NAME]. Our hive has [hive.buff_points] [BUFF_POINTS_NAME]. Are you sure you want to purchase it? Description: [desc]", "Approve Hive Buff", list("Yes", "No"), 20 SECONDS)
 
-	if(queen_response == "Yes")
-		return TRUE
-	else
-		return FALSE
+	return queen_response == "Yes"
 
 /// Any effects which need to be ended or ceased gracefully, called when a buff expires.
 /datum/hivebuff/proc/on_cease()

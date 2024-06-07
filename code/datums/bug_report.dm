@@ -35,6 +35,10 @@
 /datum/tgui_bug_report_form/ui_close(mob/user)
 	. = ..()
 
+/datum/tgui_bug_report_form/proc/Destroy()
+	GLOB.bug_reports -= src
+	return ..()
+
 // used by the admin to create the issue via the github api.
 /datum/tgui_bug_report_form/proc/submit_form(mob/ui_user)
 	if(awaiting_admin_approval) // already submitted, and is approved by an admin
@@ -72,7 +76,7 @@
 		return TRUE
 		*/
 		message_admins("[ui_user.key] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
-		qdel(src) // approved and submitted, we no longer need the datum.
+		qdel(src)// approved and submitted, we no longer need the datum.
 
 // proc that creates a ticket for an admin to approve or deny a bug report request
 /datum/tgui_bug_report_form/proc/bug_report_request()
@@ -113,5 +117,4 @@
 	if(!CLIENT_IS_STAFF(user.client))
 		return
 	message_admins("[user.key] has rejected a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
-	GLOB.bug_reports -= src
 	qdel(src)

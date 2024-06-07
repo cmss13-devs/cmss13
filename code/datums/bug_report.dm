@@ -35,7 +35,7 @@
 /datum/tgui_bug_report_form/ui_close(mob/user)
 	. = ..()
 
-/datum/tgui_bug_report_form/proc/Destroy()
+/datum/tgui_bug_report_form/Destroy()
 	GLOB.bug_reports -= src
 	. = ..()
 

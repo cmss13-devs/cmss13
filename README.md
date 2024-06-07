@@ -64,10 +64,10 @@ This guide will get you set up with a Visual Studio Code development environment
 - ## [Contributing Rules](.github/CONTRIBUTING.md)
 This is our canonical, maintainer-maintained contributing guide, which contains information on our maintainer team structure and pull request rules.
 
-- ## [Code Standards](github/guides/STANDARDS.md)
+- ## [Code Standards](.github/guides/STANDARDS.md)
 Our standards documents details how to structure your code to comply with CM-SS13 code standards, and provides some information on DreamMaker quirks.
 
-- ## [Code Style](github/guides/STYLES.md)
+- ## [Code Style](.github/guides/STYLES.md)
 The styles document tells you how to style your code to match the rest of the code in our codebase.
 
 - ## [tgui README](tgui/README.md)

@@ -248,12 +248,9 @@
 			return TRUE
 
 /obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
-	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", GLOB.available_specialist_kit_boxes)
+	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", GLOB.available_specialist_kit_boxes, 10 SECONDS)
 	if(!selection || QDELETED(src))
 		return FALSE
-	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-		to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
-		return
 	if(!GLOB.available_specialist_kit_boxes[selection] || GLOB.available_specialist_kit_boxes[selection] <= 0)
 		to_chat(user, SPAN_WARNING("No more kits of this type may be chosen!"))
 		return FALSE

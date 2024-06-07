@@ -550,7 +550,6 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 /datum/gear/toy/pride
 	display_name = "Box of Prideful Crayons"
 	path = /obj/item/storage/box/pride
-	cost = 0
 
 /datum/gear/plush
 	category = "Plushies"

@@ -145,11 +145,6 @@
 	/// Hivebuff being sustained by this pylon
 	var/datum/hivebuff/sustained_buff
 
-	var/list/players_on_buff_cooldown = list()
-
-	/// Cooldown between trying to activate a hive buff
-	COOLDOWN_DECLARE(buff_cooldown)
-
 /obj/effect/alien/resin/special/pylon/endgame/Initialize(mapload, mob/builder)
 	. = ..()
 	LAZYADD(linked_hive.active_endgame_pylons, src)
@@ -222,80 +217,6 @@
 		linked_hive.buff_points += 1
 
 	linked_hive.check_if_hit_larva_from_pylon_limit()
-
-/// APPLYING HIVE BUFFS ///
-
-/obj/effect/alien/resin/special/pylon/endgame/attack_alien(mob/living/carbon/xenomorph/xeno)
-	// if(!damaged && health == maxhealth && xeno.a_intent == INTENT_HELP && xeno.hivenumber == linked_hive.hivenumber && (IS_XENO_LEADER(xeno)|| isqueen(xeno)))
-	// 	if(!LAZYISIN(players_on_buff_cooldown, xeno))
-	// 		choose_hivebuff(xeno)
-	// 		return
-	// 	else
-	// 		to_chat(xeno, SPAN_XENONOTICE("We cannot choose a hive buff just yet. Try again later."))
-	// 		return ..()
-	// else
-	// 	..() 
-	return ..()
-
-/// To choose a hivebuff
-/obj/effect/alien/resin/special/pylon/endgame/proc/choose_hivebuff(mob/living/carbon/xenomorph/xeno)
-	if(!COOLDOWN_FINISHED(src, buff_cooldown))
-		to_chat(xeno, SPAN_XENONOTICE("We can't do that again yet!"))
-		return
-	var/list/buffs = list()
-	var/list/names = list()
-	var/list/radial_images = list()
-	var/major_available = FALSE
-	for(var/datum/hivebuff/buff as anything in linked_hive.get_available_hivebuffs())
-		var/buffname = initial(buff.name)
-		names += buffname
-		buffs[buffname] = buff
-		if(!major_available)
-			if(initial(buff.tier) == HIVEBUFF_TIER_MAJOR)
-				major_available = TRUE
-
-
-	if(!length(buffs))
-		to_chat(xeno, SPAN_XENONOTICE("No boons are available to us!"))
-		return
-
-	var/selection
-	var/list/radial_images_tiers = list(HIVEBUFF_TIER_MINOR = image('icons/ui_icons/hivebuff_radial.dmi', "minor"), HIVEBUFF_TIER_MAJOR = image('icons/ui_icons/hivebuff_radial.dmi', "major"))
-
-	if((xeno.client.prefs && xeno.client.prefs.no_radials_preference))
-		selection = tgui_input_list(xeno, "Pick a buff.", "Select Buff", names)
-	else
-		var/tier = HIVEBUFF_TIER_MINOR
-		if(major_available)
-			tier = show_radial_menu(xeno, src, radial_images_tiers, require_near = TRUE)
-
-		if(tier == HIVEBUFF_TIER_MAJOR)
-			for(var/filtered_buffname as anything in buffs)
-				var/datum/hivebuff/filtered_buff = buffs[filtered_buffname]
-				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MAJOR)
-					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
-		else
-			for(var/filtered_buffname as anything in buffs)
-				var/datum/hivebuff/filtered_buff = buffs[filtered_buffname]
-				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MINOR)
-					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
-
-		selection = show_radial_menu(xeno, src, radial_images, radius = 72, require_near = TRUE, tooltips = TRUE)
-	if(!selection || !Adjacent(xeno))
-		return
-
-	if(!buffs[selection])
-		to_chat(xeno, "This selection is impossible!")
-		return FALSE
-
-	xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, src)
-	COOLDOWN_START(src, buff_cooldown, 30 SECONDS)
-	players_on_buff_cooldown += xeno
-	addtimer(CALLBACK(src, PROC_REF(remove_buff_cooldown), xeno), 30 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
-	return TRUE
-
-/obj/effect/alien/resin/special/pylon/endgame/proc/remove_buff_cooldown(mob/living/carbon/xenomorph/xeno)
-	players_on_buff_cooldown -= xeno
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

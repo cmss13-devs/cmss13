@@ -1,0 +1,4 @@
+author: "coldironwarrior"
+delete-after: True
+changes:
+  - rscdel: "removes the nazi jacket sprite from suits.dmi"

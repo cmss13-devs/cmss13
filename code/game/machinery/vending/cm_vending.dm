@@ -993,8 +993,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 	//For every item that goes into a box, check if the box is already listed in the vendor and if so, update its amount
 	var/list/box_list = list()
 	if(tmp_list.len > 0)
-		var/item_found = FALSE
 		for(var/list/tmp_item as anything in tmp_list)
+			var/item_found = FALSE
 			for(var/list/LP as anything in listed_products)
 				if(tmp_item[3] == LP[3]) //We found a box we already have!
 					LP[2] = tmp_item[2] //Update box amount

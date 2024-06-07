@@ -888,7 +888,6 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
 	)
-
 /obj/item/clothing/under/marine/reporter/black
 	icon_state = "cc_black"
 	worn_state = "cc_black"
@@ -998,7 +997,7 @@
 	worn_state = "working_joe_engi"
 	flags_inventory = CANTSTRIP
 	armor_melee = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_HIGH

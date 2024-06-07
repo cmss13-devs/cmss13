@@ -2251,11 +2251,12 @@
 	if(href_list["view_bug_report"])
 		if(!check_rights(R_ADMIN|R_MOD))
 			return
+
 		var/datum/tgui_bug_report_form/bug_report = locate(href_list["view_bug_report"])
 		if(!bug_report)
 			to_chat(usr, SPAN_WARNING("This record is no longer available"))
 			return
-		to_chat(usr, SPAN_WARNING(bug_report))
+
 		bug_report.tgui_interact(usr)
 		return
 

@@ -75,10 +75,10 @@
 			bug_report_data = params
 			ui_close(src)
 			if(!submit_form())
-				message_admins("[user.key] has attempted to submit a bug report at [worldtime2text()].")
+				message_admins("[user.key] has attempted to submit a bug report at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 				external_link_prompt()
 			to_chat(user, SPAN_WARNING("Bug report has successfully been submitted, thank you!"))
-			message_admins("[user.key] has submitted a bug report at [worldtime2text()].")
+			message_admins("[user.key] has submitted a bug report at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 		if("cancel")
 			ui_close(src)
 	. = TRUE

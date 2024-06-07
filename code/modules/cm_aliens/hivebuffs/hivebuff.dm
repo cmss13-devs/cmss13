@@ -1,13 +1,3 @@
-/*****************************
-*
-*	HIVE BUFFS	- XENOMORPH ENDGAME
-*	Contains all the class definitons and code for applying hivebuffs to xeno hives.
-*	Each buff consists of a /datum/hivebuff
-*	And associated on_engage and on_cease procs to handle behaviour of activating and ending the buffs
-*	Buffs are divided into 2 tiers, minor and major.
-*
-*****************************/
-
 ///GLOBAL DEFINES///
 
 #define HIVE_STARTING_BUFFPOINTS 0
@@ -20,8 +10,15 @@
 #define HIVEBUFF_TIER_MAJOR "Major"
 
 
-/////////////////////////////
-
+/**
+ *
+ *	HIVE BUFFS - XENOMORPH ENDGAME
+ *	Contains all the class definitons and code for applying hivebuffs to xeno hives.
+ *	Each buff consists of a /datum/hivebuff
+ *	And associated on_engage and on_cease procs to handle behaviour of activating and ending the buffs
+ *	Buffs are divided into 2 tiers, minor and major.
+ *
+ */
 /datum/hivebuff
 	/// Timer id to call on_cease() if neccessary to end the effects.
 	var/_timer_id
@@ -50,7 +47,7 @@
 	/// Number of pylons required to buy the buff
 	var/number_of_required_pylons = 1
 	///If this buff can be used with others
-	var/is_unique = TRUE
+	var/is_combineable = TRUE
 	///If this buff can be used more than once a round.
 	var/is_reusable = FALSE
 	/// Time that the buff is active for if it is a timed buff.
@@ -107,7 +104,7 @@
 	_on_cease()
 
 /datum/hivebuff/proc/announce_buff_loss(obj/effect/alien/resin/special/pylon/sustained_pylon)
-	xeno_announcement("Our pylon at [sustained_pylon.loc] has been destroyed!! Our hive buff [name] has waned...", hive.hivenumber, "Hive Buff Wanes!")
+	xeno_announcement("Our pylon at [sustained_pylon.loc] has been destroyed! Our hive buff [name] has waned...", hive.hivenumber, "Hive Buff Wanes!")
 
 ///Wrapper for on_engage(), handles checking if the buff can be actually purchased as well as adding buff to the active_hivebuffs and used_hivebuffs for the hive.
 /datum/hivebuff/proc/_on_engage(mob/living/carbon/xenomorph/purchasing_mob, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
@@ -146,7 +143,7 @@
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive has already used [name] and cannot use it again!"))
 		return FALSE
 
-	if(!_check_pass_unique())
+	if(!_check_pass_combineable())
 		var/active_buffs = ""
 		for(var/buff in hive.active_hivebuffs)
 			active_buffs += buff + " "
@@ -273,14 +270,13 @@
 
 	return TRUE
 
-/// Checks if the buff is unique if other buffs are already in use. Return TRUE if passed FALSE if not.
-/datum/hivebuff/proc/_check_pass_unique()
-	if(!is_unique)
+/// Checks if the buff is combineable if other buffs are already in use. Return TRUE if passed FALSE if not.
+/datum/hivebuff/proc/_check_pass_combineable()
+	if(is_combineable)
 		return TRUE
-
-	if(LAZYLEN(hive.active_hivebuffs))
-		return FALSE
-
+	for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)
+		if(!active_hivebuff.is_combineable)
+			return FALSE
 	return TRUE
 
 /// Checks if the buff is reusable and if it's already been used. Returns TRUE if passed, FALSE if not.
@@ -418,7 +414,6 @@
 	name = "Boon of Destruction"
 	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike."
 	tier = HIVEBUFF_TIER_MAJOR
-	is_unique = TRUE
 	is_reusable = TRUE
 	cost = 0
 	special_fail_message = "Only one hatchery may exist at a time."

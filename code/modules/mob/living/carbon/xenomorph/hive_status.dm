@@ -1411,29 +1411,24 @@
 			continue
 
 		//If this hive has buffs already active, check against other currently active hivebuffs
-		if(LAZYLEN(active_hivebuffs))
-			var/found
-			for(var/datum/hivebuff/active_buff in active_hivebuffs)
-				if(istype(active_buff, possible_hivebuff))
-					found = TRUE
-					break
-			if(found)
-				potential_hivebuffs -= possible_hivebuff
-				continue
-
-		//If this buff is unique, check if any other hivebuffs are active
-		if(initial(possible_hivebuff.is_unique) && LAZYLEN(active_hivebuffs))
+		if(locate(possible_hivebuff) in active_hivebuffs)
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
-		// If the buff is not reusable check against used hivebuffs.
-		if(!initial(possible_hivebuff.is_reusable) && LAZYLEN(used_hivebuffs))
-			var/found
-			for(var/datum/hivebuff/used_buff in used_hivebuffs)
-				if(istype(used_buff, possible_hivebuff))
-					found = TRUE
+		//If this buff isn't combineable, check if any other active hivebuffs aren't combineable
+		if(!initial(possible_hivebuff.is_combineable))
+			var/found_conflict = FALSE
+			for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)
+				if(!active_hivebuff.is_combineable)
+					found_conflict = TRUE
 					break
-			if(found)
+			if(found_conflict)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+		// If the buff is not reusable check against used hivebuffs.
+		if(!initial(possible_hivebuff.is_reusable))
+			if(locate(possible_hivebuff) in used_hivebuffs)
 				potential_hivebuffs -= possible_hivebuff
 				continue
 

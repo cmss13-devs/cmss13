@@ -1,9 +1,8 @@
 /datum/caste_datum/destroyer
 	caste_type = XENO_CASTE_DESTROYER
 	caste_desc = "The end of the line."
-	tier = 1
+	tier = 4
 
-	// All to change
 	melee_damage_lower = XENO_DAMAGE_TIER_6
 	melee_damage_upper = XENO_DAMAGE_TIER_8
 	melee_vehicle_damage = XENO_DAMAGE_TIER_5
@@ -16,12 +15,13 @@
 
 	evolves_to = null
 	deevolves_to = null
+	evolution_allowed = FALSE
 	can_vent_crawl = FALSE
 
 	behavior_delegate_type = /datum/behavior_delegate/destroyer_base
 
-	tackle_min = 2
-	tackle_max = 4
+	tackle_min = 6
+	tackle_max = 10
 
 	minimap_icon = "defender"
 
@@ -41,9 +41,6 @@
 	tier = 4
 	small_explosives_stun = FALSE
 	counts_for_slots = FALSE
-	tackle_min = 5
-	tackle_max = 8
-	tackle_chance = 10
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 	age = -1

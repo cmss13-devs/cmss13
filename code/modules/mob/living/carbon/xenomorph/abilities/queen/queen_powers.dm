@@ -373,7 +373,7 @@
 /datum/action/xeno_action/onclick/manage_hive/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/queen_manager = owner
 	plasma_cost = 0
-	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Purchase Buffs (0)")
+	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Purchase Buffs")
 	if(queen_manager.hive.hivenumber == XENO_HIVE_CORRUPTED)
 		var/datum/hive_status/corrupted/hive = queen_manager.hive
 		options += "Add Personal Ally"
@@ -399,7 +399,7 @@
 			remove_personal_ally()
 		if("Clear Personal Allies")
 			clear_personal_allies()
-		if("Purchase Buffs (0)")
+		if("Purchase Buffs")
 			purchase_buffs()
 			
 /datum/action/xeno_action/onclick/manage_hive/proc/purchase_buffs()

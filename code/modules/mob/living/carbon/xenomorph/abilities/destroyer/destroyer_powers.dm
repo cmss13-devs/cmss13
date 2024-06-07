@@ -128,8 +128,6 @@
 #define LEAP_DIRECTION_CHANGE_RANGE 5 //the range our x has to be within to not change the direction we slam from
 
 /datum/action/xeno_action/activable/destroy/use_ability(atom/target)
-	// TODO: Make sure we're not targetting a space tile or a wall etc!!!
-
 	var/mob/living/carbon/xenomorph/xeno = owner
 	XENO_ACTION_CHECK(xeno)
 
@@ -144,6 +142,10 @@
 		return
 
 	if(istype(target_turf, /turf/open/space))
+		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
+		return
+		
+	if(istype(target, /obj/vehicle/multitile))
 		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
 		return
 
@@ -217,8 +219,8 @@
 	owner.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	SLEEP_CHECK_DEATH(7, owner)
 
-	while(target && owner.loc != get_turf(target))
-		owner.forceMove(get_step(owner, get_dir(owner, target)))
+	while(target_turf && owner.loc != target_turf)
+		owner.forceMove(get_step(owner, get_dir(owner, target_turf)))
 		SLEEP_CHECK_DEATH(0.5, owner)
 
 	animate(owner, alpha = 100, transform = matrix()*0.7, time = 7)

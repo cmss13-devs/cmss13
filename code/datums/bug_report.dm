@@ -41,42 +41,40 @@
 
 // used by the admin to create the issue via the github api.
 /datum/tgui_bug_report_form/proc/submit_form(mob/ui_user)
-	if(awaiting_admin_approval) // already submitted, and is approved by an admin
-		if(!CLIENT_IS_STAFF(ui_user.client))
-			return
+	if(!awaiting_admin_approval || !CLIENT_IS_STAFF(ui_user.client))
+		return
+	/*var/desc = {"
 
-		/*var/desc = {"
+		### Testmerges
+		blah blah
 
-			### Testmerges
-			blah blah
+		### Round ID
+		[GLOB.round_id]
 
-			### Round ID
-			[GLOB.round_id]
+		### Description of the bug
+		[bug_report_data["description"]]
 
-			### Description of the bug
-			[bug_report_data["description"]]
+		### What's the difference with what should have happened?
+		[bug_report_data["expected_behavior"]]
 
-			### What's the difference with what should have happened?
-			[bug_report_data["expected_behavior"]]
-
-			### How do we reproduce this bug?
-			[bug_report_data["steps"]]
+		### How do we reproduce this bug?
+		[bug_report_data["steps"]]
 
 		"}
 
-		// rustg export, copy pasta from goon
-		var/api_response = some_proc("issue", list(
-			"title" = data["title"],
-			"body" = desc,
-		))
-		//
-		if(api_message != some_success_response)
-			tgui_alert(user, "There has been an issue with reporting your bug, please try again later!", "Issue not reported!")
-			return FALSE
-		return TRUE
-		*/
-		message_admins("[ui_user.key] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
-		qdel(src)// approved and submitted, we no longer need the datum.
+	// rustg export, copy pasta from goon
+	var/api_response = some_proc("issue", list(
+		"title" = data["title"],
+		"body" = desc,
+	))
+	//
+	if(api_message != some_success_response)
+		tgui_alert(user, "There has been an issue with reporting your bug, please try again later!", "Issue not reported!")
+		return FALSE
+	return TRUE
+	*/
+	message_admins("[ui_user.key] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
+	qdel(src)// approved and submitted, we no longer need the datum.
 
 // proc that creates a ticket for an admin to approve or deny a bug report request
 /datum/tgui_bug_report_form/proc/bug_report_request()

@@ -158,7 +158,6 @@
 	log_admin("[purchasing_mob] of [hive.hivenumber] is attempting to purchase a hive buff: [name].")
 
 	if(!_seek_queen_approval(purchasing_mob))
-		to_chat(purchasing_mob, SPAN_XENONOTICE("Our queen did not approve the purchase of [name]."))
 		return FALSE
 
 	// _seek_queen_approval() includes a 20 second timeout so we check that everything still exists that we need.

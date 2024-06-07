@@ -1,7 +1,7 @@
 //general stuff
 /proc/sanitize_integer(number, min=0, max=1, default=0)
 	if(isnum(number))
-		number = round(number)
+		number = floor(number)
 		if(min <= number && number <= max)
 			return number
 	return default
@@ -45,15 +45,21 @@
 			else return default
 	return default
 
-/proc/sanitize_ethnicity(ethnicity, default = "Western")
-	if (ethnicity in GLOB.ethnicities_list)
-		return ethnicity
+/proc/sanitize_skin_color(skin_color, default = "Pale 2")
+	if(skin_color in GLOB.skin_color_list)
+		return skin_color
 
 	return default
 
-/proc/sanitize_body_type(body_type, default = "Mesomorphic (Average)")
-	if (body_type in GLOB.body_types_list)
+/proc/sanitize_body_type(body_type, default = "Lean")
+	if(body_type in GLOB.body_type_list)
 		return body_type
+
+	return default
+
+/proc/sanitize_body_size(body_size, default = "Average")
+	if(body_size in GLOB.body_size_list)
+		return body_size
 
 	return default
 

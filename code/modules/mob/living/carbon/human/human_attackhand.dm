@@ -193,12 +193,6 @@
 /mob/living/carbon/human/help_shake_act(mob/living/carbon/M)
 	//Target is us
 	if(src == M)
-		if(holo_card_color) //if we have a triage holocard printed on us, we remove it.
-			holo_card_color = null
-			update_targeted()
-			visible_message(SPAN_NOTICE("[src] removes the holo card on [gender==MALE?"himself":"herself"]."), \
-				SPAN_NOTICE("You remove the holo card on yourself."), null, 3)
-			return
 		check_for_injuries()
 		return
 
@@ -215,7 +209,10 @@
 		if(client)
 			sleeping = max(0,src.sleeping-5)
 		if(!sleeping)
-			set_resting(FALSE)
+			if(is_dizzy)
+				to_chat(M, SPAN_WARNING("[src] looks dizzy. Maybe you should let [t_him] rest a bit longer."))
+			else
+				set_resting(FALSE)
 		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
 			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
 	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))

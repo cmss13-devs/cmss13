@@ -1761,8 +1761,6 @@ Defined in conflicts.dm of the #defines folder.
 	//but at the same time you are slow when 2 handed
 	aim_speed_mod = CONFIG_GET(number/slowdown_med)
 
-	matter = list("wood" = 2000)
-
 	select_gamemode_skin(type)
 
 /obj/item/attachable/stock/double
@@ -2502,7 +2500,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg/collapsible/brace/apply_on_weapon(obj/item/weapon/gun/G)
 	if(stock_activated)
-		G.flags_item |= NODROP
+		G.flags_item |= NODROP|FORCEDROP_CONDITIONAL
 		accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
 		scatter_mod = SCATTER_AMOUNT_TIER_8
 		recoil_mod = RECOIL_AMOUNT_TIER_2 //Hurts pretty bad if it's wielded.
@@ -2513,7 +2511,7 @@ Defined in conflicts.dm of the #defines folder.
 		icon_state = "smg_brace_on"
 		attach_icon = "smg_brace_a_on"
 	else
-		G.flags_item &= ~NODROP
+		G.flags_item &= ~(NODROP|FORCEDROP_CONDITIONAL)
 		accuracy_mod = 0
 		scatter_mod = 0
 		recoil_mod = 0
@@ -3221,6 +3219,14 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("\The [gun] doesn't have enough fuel to launch a projectile!"))
 		return
 
+	if(istype(flamer_reagent, /datum/reagent/foaming_agent/stabilized))
+		to_chat(user, SPAN_WARNING("This chemical will clog the nozzle!"))
+		return
+
+	if(istype(gun.current_mag, /obj/item/ammo_magazine/flamer_tank/smoke)) // you can't fire smoke like a projectile!
+		to_chat(user, SPAN_WARNING("[src] can't be used with this fuel tank!"))
+		return
+
 	gun.last_fired = world.time
 	gun.current_mag.reagents.remove_reagent(flamer_reagent.id, FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)
 
@@ -3235,7 +3241,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/turf/user_turf = get_turf(user)
 	playsound(user_turf, pick(fire_sounds), 50, TRUE)
 
-	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(gun.current_mag.get_ammo_percent())]</b>% fuel remaining!"))
+	to_chat(user, SPAN_WARNING("The gauge reads: <b>[floor(gun.current_mag.get_ammo_percent())]</b>% fuel remaining!"))
 
 /obj/item/attachable/verticalgrip
 	name = "vertical grip"

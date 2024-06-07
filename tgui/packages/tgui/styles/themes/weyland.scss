@@ -11,12 +11,12 @@ $weyland: #af7f38;
 @use '../colors.scss' with (
   $primary: #000000,
   $fg-map-keys: (),
-  $bg-map-keys: (),
+  $bg-map-keys: ()
 );
 @use '../base.scss' with (
   $color-bg: #252832,
   $color-bg-grad-spread: 0%,
-  $border-radius: 0,
+  $border-radius: 0
 );
 
 .theme-weyland {

@@ -17,12 +17,10 @@
 #define NOTE_ADMIN 1
 ///This note is used by staff for positive record keeping.
 #define NOTE_MERIT 2
-///These notes are used by respective whitelist councils for record keeping.
-#define NOTE_COMMANDER 3
-#define NOTE_SYNTHETIC 4
-#define NOTE_YAUTJA 5
+///These notes are automatically applied by the Whitelist Panel.
+#define NOTE_WHITELIST 3
 ///Note categories in text form, in order of their numerical #defines.
-GLOBAL_LIST_INIT(note_categories, list("Admin", "Merit", "Commanding Officer", "Synthetic", "Yautja"))
+GLOBAL_LIST_INIT(note_categories, list("Admin", "Merit", "Whitelist"))
 
 #define ADMIN_FLW(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservefollow=[REF(user)]'>FLW</a>)"
 #define ADMIN_PP(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=[REF(user)]'>PP</a>)"

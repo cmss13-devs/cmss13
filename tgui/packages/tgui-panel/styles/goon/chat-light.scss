@@ -524,6 +524,11 @@ h2.alert {
   font-size: 90%;
 }
 
+.bolditalic {
+  font-style: italic;
+  font-weight: bold;
+}
+
 .boldnotice {
   color: #000099;
   font-weight: bold;
@@ -841,6 +846,10 @@ h2.alert {
   font-size: 2.5em;
 }
 
+.hugeicon {
+  font-size: 5em;
+}
+
 .memo {
   color: #638500;
   text-align: center;
@@ -881,6 +890,15 @@ h2.alert {
 
 .resonate {
   color: #298f85;
+}
+
+.upside_down {
+  display: inline;
+  -moz-transform: scale(-1, -1);
+  -webkit-transform: scale(-1, -1);
+  -o-transform: scale(-1, -1);
+  -ms-transform: scale(-1, -1);
+  transform: scale(-1, -1);
 }
 
 .monkeyhive {

@@ -167,7 +167,7 @@
 		))
 
 	data["resistance_data"] = resist_data_list
-	data["integrity"] = round(100 * health / initial(health))
+	data["integrity"] = floor(100 * health / initial(health))
 	data["door_locked"] = door_locked
 	data["total_passenger_slots"] = interior.passengers_slots
 	data["total_taken_slots"] = interior.passengers_taken_slots

@@ -35,7 +35,7 @@
 /proc/listgetindex(list/list,index)
 	if(istype(list) && list.len)
 		if(isnum(index))
-			if(InRange(index,1,list.len))
+			if(ISINRANGE(index,1,list.len))
 				return list[index]
 		else if(list[index])
 			return list[index]
@@ -597,7 +597,7 @@
 	if(L.len <= 1)
 		return L
 
-	var/middle = Floor(L.len / 2)
+	var/middle = floor(L.len / 2)
 	var/list/left = custom_mergesort(L.Copy(1, middle + 1))
 	var/list/right = custom_mergesort(L.Copy(middle + 1))
 	var/list/result = list()

@@ -824,6 +824,7 @@
 		/obj/item/roller = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/bodybag = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/reagent_container/blood = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/tool/surgery/FixOVein = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 	)
 	can_hold_skill_only = TRUE
 
@@ -937,7 +938,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(obj/item/reagent_container/hypospray/autoinjector/autoinjector)
 	var/max_uses = autoinjector.volume / autoinjector.amount_per_transfer_from_this
-	max_uses = round(max_uses) == max_uses ? max_uses : round(max_uses) + 1
+	max_uses = floor(max_uses) == max_uses ? max_uses : floor(max_uses) + 1
 	if(inner && inner.reagents.total_volume > 0 && (autoinjector.uses_left < max_uses))
 		inner.reagents.trans_to(autoinjector, autoinjector.volume)
 		autoinjector.update_uses_left()
@@ -1270,6 +1271,21 @@
 	new /obj/item/tool/wrench(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
+
+/obj/item/storage/pouch/tools/tactical/upp
+	name = "synthetic tools pouch"
+	desc = "Special issue tools pouch for UPP synthetics. Due to the enhanced strength of the synthetic and its inability to feel discomfort, this pouch is designed to maximize internal space with no concern for its wearer's comfort."
+	icon_state = "tools"
+	storage_slots = 7
+
+/obj/item/storage/pouch/tools/tactical/upp/fill_preset_inventory()
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/device/multitool(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/stack/cable_coil(src)
 
 /obj/item/storage/pouch/tools/uppsynth/fill_preset_inventory()
 	new /obj/item/tool/crowbar(src)

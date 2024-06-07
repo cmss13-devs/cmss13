@@ -19,11 +19,17 @@
 	var/sniper_beam_icon = "laser_beam"
 	var/skill_locked = TRUE
 
+	/// Variables for Focus Fire and alternate icons for lockon and laser.
+	var/enable_aimed_shot_icon_alt = FALSE
+	var/sniper_lockon_icon_max = "sniper_lockon_intense"
+	var/sniper_beam_icon_max = "laser_beam_intense"
+
+
 /obj/item/weapon/gun/rifle/sniper/get_examine_text(mob/user)
 	. = ..()
 	if(!has_aimed_shot)
 		return
-	. += SPAN_NOTICE("This weapon has an unique ability, Aimed Shot, allowing it to deal great damage after a windup.<br><b> Additionally, the aimed shot can be sped up with a tracking laser, which is enabled by default but may be disabled.</b>")
+	. += SPAN_NOTICE("This weapon has a special ability, Aimed Shot, allowing it to deal increased damage and inflict additional crippling effects after a windup, depending on the ammunition used.<br><b> Additionally, the aimed shot can be sped up with a spotter or by using the tracking laser, which is enabled by default but may be disabled.</b>")
 
 /obj/item/weapon/gun/rifle/sniper/Initialize(mapload, spawn_empty)
 	if(has_aimed_shot)
@@ -98,7 +104,7 @@
 	human.face_atom(target)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
-	var/distance = round(get_dist(target, human) * 0.5)
+	var/distance = floor(get_dist(target, human) * 0.5)
 	var/f_aiming_time = sniper_rifle.aiming_time + distance
 
 	var/aim_multiplier = 1
@@ -117,7 +123,24 @@
 
 	f_aiming_time *= aim_multiplier
 
-	var/image/lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = sniper_rifle.sniper_lockon_icon)
+	var/beam
+	var/lockon
+
+	if(istype(sniper_rifle, /obj/item/weapon/gun/rifle/sniper/XM43E1))
+		var/obj/item/weapon/gun/rifle/sniper/XM43E1/amr = sniper_rifle
+		if((amr.focused_fire_counter >= 1 && amr.focused_fire_counter < 3) && (target == amr.focused_fire_target?.resolve()))
+			sniper_rifle.enable_aimed_shot_icon_alt = TRUE
+		else
+			sniper_rifle.enable_aimed_shot_icon_alt = FALSE
+
+	if(sniper_rifle.enable_aimed_shot_icon_alt)
+		beam = sniper_rifle.sniper_beam_icon_max
+		lockon = sniper_rifle.sniper_lockon_icon_max
+	else
+		beam = sniper_rifle.sniper_beam_icon
+		lockon = sniper_rifle.sniper_lockon_icon
+
+	var/image/lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = lockon)
 
 	var/x_offset =  -target.pixel_x + target.base_pixel_x
 	var/y_offset = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
@@ -128,7 +151,7 @@
 
 	var/image/lockon_direction_icon
 	if(!sniper_rifle.enable_aimed_shot_laser)
-		lockon_direction_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = "[sniper_rifle.sniper_lockon_icon]_direction", dir = get_cardinal_dir(target, human))
+		lockon_direction_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = "[lockon]_direction", dir = get_cardinal_dir(target, human))
 		lockon_direction_icon.pixel_x = x_offset
 		lockon_direction_icon.pixel_y = y_offset
 		target.overlays += lockon_direction_icon
@@ -138,7 +161,7 @@
 
 	var/datum/beam/laser_beam
 	if(sniper_rifle.enable_aimed_shot_laser)
-		laser_beam = target.beam(human, sniper_rifle.sniper_beam_icon, 'icons/effects/beam.dmi', (f_aiming_time + 1 SECONDS), beam_type = sniper_rifle.sniper_beam_type)
+		laser_beam = target.beam(human, beam, 'icons/effects/beam.dmi', (f_aiming_time + 1 SECONDS), beam_type = sniper_rifle.sniper_beam_type)
 		laser_beam.visuals.alpha = 0
 		animate(laser_beam.visuals, alpha = initial(laser_beam.visuals.alpha), f_aiming_time, easing = SINE_EASING|EASE_OUT)
 
@@ -204,12 +227,12 @@
 
 	var/blocked = FALSE
 	for(var/turf/T in path)
-		if(T.density || T.opacity)
+		if(T.density && T.opacity)
 			blocked = TRUE
 			break
 
 		for(var/obj/O in T)
-			if(O.get_projectile_hit_boolean(P))
+			if(O.get_projectile_hit_boolean(P) && O.opacity)
 				blocked = TRUE
 				break
 
@@ -330,7 +353,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_7*3)
+	set_fire_delay(FIRE_DELAY_TIER_SNIPER)
 	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -339,12 +362,16 @@
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1
 	name = "\improper XM43E1 experimental anti-materiel rifle"
-	desc = "An experimental anti-materiel rifle produced by Armat Systems, recently reacquired from the deep storage of an abandoned prototyping facility. This one in particular is currently undergoing field testing. Chambered in 10x99mm Caseless."
+	desc = "An experimental anti-materiel rifle produced by Armat Systems, recently reacquired from the deep storage of an abandoned prototyping facility. This one in particular is currently undergoing field testing. Chambered in 10x99mm Caseless.\n\nThis weapon can punch through thin metal plating and walls, though it'll lose most of its lethality in the process. It can even work for demolitions, with experienced users known to disassemble segments of solid, reinforced walls in the field with just a single standard magazine of 10x99mm. In lieu of explosives or an engineer, they instead use each of the 8 shots to break down vital structural supports, taking the wall apart in the process."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "xm43e1"
 	item_state = "xm43e1"
 	unacidable = TRUE
 	indestructible = 1
+	aiming_time = 2 SECONDS
+	aimed_shot_cooldown_delay = 4.5 SECONDS
+	var/focused_fire_counter = 0
+	var/datum/weakref/focused_fire_target = null
 
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/anti_materiel //Renamed from anti-tank to align with new identity/description. Other references have been changed as well. -Kaga
@@ -354,9 +381,9 @@
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/pmc_sniperbarrel)
-	sniper_beam_type = /obj/effect/ebeam/laser/intense
-	sniper_beam_icon = "laser_beam_intense"
-	sniper_lockon_icon = "sniper_lockon_intense"
+	sniper_beam_type = /obj/effect/ebeam/laser
+	sniper_beam_icon = "laser_beam"
+	sniper_lockon_icon = "sniper_lockon"
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/handle_starting_attachment()
 	..()
@@ -374,8 +401,9 @@
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_6 * 6 )//Big boy damage, but it takes a lot of time to fire a shot.
-	//Kaga: Adjusted from 56 (Tier 4, 7*8) -> 30 (Tier 6, 5*6) ticks. 95 really wasn't big-boy damage anymore, although I updated it to 125 to remain consistent with the other 10x99mm caliber weapon (M42C). Now takes only twice as long as the M42A.
+	set_fire_delay(FIRE_DELAY_TIER_AMR)//Big boy damage, but it takes a lot of time to fire a shot.
+	//Kaga: Fixed back to half the M42A's firerate (3 seconds), using a new define.
+	//This outright deals less DPS than the normal sniper rifle, 125 vs 140 per 3s.
 	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10 //Who coded this like this, and why? It just calculates out to 1+1=2. Leaving a note here to check back later.
 	scatter = SCATTER_AMOUNT_TIER_10
@@ -385,10 +413,11 @@
 /obj/item/weapon/gun/rifle/sniper/XM43E1/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating),
 		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 11, GLOB.damage_boost_turfs),
 		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 11, GLOB.damage_boost_breaching),
-		//At 1375 per shot it'll take 1 shot to break resin turfs, and a full mag of 8 to break reinforced walls.
+		//At 1375 per shot it'll take 1 shot to break resin turfs usually (thick resin at 1350, RNG may vary), and a full mag of 8 to break reinforced walls.
+		//However, the second wall it hits will only take 550 damage, unable to even kill a full-health normal resin wall (900).
+		//Much more effective at breaking resin doors and membranes, which have less HP and slow down the projectile less.
 		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 6, GLOB.damage_boost_pylons)
 		//At 750 per shot it'll take 3 to break a Pylon (1800 HP). No Damage Boost vs other xeno structures yet, those will require a whole new list w/ the damage_boost trait.
 	))

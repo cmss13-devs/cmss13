@@ -351,31 +351,38 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/icon/icobase = H.species.icobase
 	var/icon/temp
 
-	var/datum/ethnicity/ET = GLOB.ethnicities_list[H.ethnicity]
-	var/datum/body_type/B = GLOB.body_types_list[H.body_type]
+	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[H.skin_color]
+	var/datum/body_type/set_body_type = GLOB.body_type_list[H.body_type]
+	var/datum/body_size/set_body_size = GLOB.body_size_list[H.body_size]
 
-	var/e_icon
-	var/b_icon
+	var/skin_color_icon
+	var/body_type_icon
+	var/body_size_icon
 
-	if (!ET)
-		e_icon = "western"
+	if(!set_skin_color)
+		skin_color_icon = "pale2"
 	else
-		e_icon = ET.icon_name
+		skin_color_icon = set_skin_color.icon_name
 
-	if (!B)
-		b_icon = "mesomorphic"
+	if(!set_body_type)
+		body_type_icon = "lean"
 	else
-		b_icon = B.icon_name
+		body_type_icon = set_body_type.icon_name
 
-	preview_icon = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "torso", e_icon))
-	temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "groin", e_icon))
+	if(!set_body_size)
+		body_size_icon = "avg"
+	else
+		body_size_icon = set_body_size.icon_name
+
+	preview_icon = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, "torso", skin_color_icon))
+	temp = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, "groin", skin_color_icon))
 	preview_icon.Blend(temp, ICON_OVERLAY)
-	temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "head", e_icon))
+	temp = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, "head", skin_color_icon))
 	preview_icon.Blend(temp, ICON_OVERLAY)
 
 	for(var/obj/limb/E in H.limbs)
 		if(E.status & LIMB_DESTROYED) continue
-		temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, E.name, e_icon))
+		temp = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, E.name, skin_color_icon))
 		if(E.status & LIMB_ROBOT)
 			temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 		preview_icon.Blend(temp, ICON_OVERLAY)

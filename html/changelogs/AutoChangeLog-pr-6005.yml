@@ -1,8 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - rscadd: "Hazard Joes now have their own emotes"
-  - code_imp: "Hazard Joes now a seperate species"
-  - code_imp: "Updated isworkingjoe and new ishazardjoe define"
-  - refactor: "Working Joe emotes and emote categories now a globally defined list"
-  - soundadd: "New Hazard Joe voicelines"

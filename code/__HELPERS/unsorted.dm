@@ -3,8 +3,6 @@
  */
 
 // GLOBAL DEFINES //
-#define is_hot(I) (I?:heat_source)
-
 //Whether or not the given item counts as sharp in terms of dealing damage
 #define is_sharp(I) (isitem(I) && I?:sharp && I?:edge)
 
@@ -16,9 +14,6 @@
 #define can_puncture(W) (isitem(W) && (W.sharp || W.heat_source >= 400 || \
 							HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || istype(W, /obj/item/tool/pen ) || istype(W, /obj/item/tool/shovel)) \
 						)
-
-//Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
-#define between(low, middle, high) (max(min(middle, high), low))
 
 //Offuscate x for coord system
 #define obfuscate_x(x) ((x) + GLOB.obfs_x)
@@ -40,15 +35,15 @@
 #define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled((skill), (req_level), TRUE)))
 
 // Ensure the frequency is within bounds of what it should be sending/receiving at
-// Sets f within bounds via `clamp(round(f), 1441, 1489)`
+// Sets f within bounds via `clamp(floor(f), 1441, 1489)`
 // If f is even, adds 1 to its value to make it odd
-#define sanitize_frequency(f) ((clamp(round(f), 1441, 1489) % 2) == 0 ? \
-									clamp(round(f), 1441, 1489) + 1 : \
-									clamp(round(f), 1441, 1489) \
+#define sanitize_frequency(f) ((clamp(floor(f), 1441, 1489) % 2) == 0 ? \
+									clamp(floor(f), 1441, 1489) + 1 : \
+									clamp(floor(f), 1441, 1489) \
 								)
 
 //Turns 1479 into 147.9
-#define format_frequency(f) "[round((f) / 10)].[(f) % 10]"
+#define format_frequency(f) "[floor((f) / 10)].[(f) % 10]"
 
 #define reverse_direction(direction) ( \
 											( dir & (NORTH|SOUTH) ? ~dir & (NORTH|SOUTH) : 0 ) | \
@@ -60,16 +55,6 @@
 
 
 // GLOBAL PROCS //
-
-//Returns the middle-most value
-/proc/dd_range(low, high, num)
-	return max(low,min(high,num))
-
-//Returns whether or not A is the middle most value
-/proc/InRange(A, lower, upper)
-	if(A < lower) return 0
-	if(A > upper) return 0
-	return 1
 
 /// Gives X position on pixel grid of an object, accounting for offsets
 /proc/get_pixel_position_x(atom/subject, relative = FALSE)
@@ -245,9 +230,6 @@
 
 
 
-/proc/sign(x)
-	return x!=0?x/abs(x):0
-
 //Returns whether or not a player is a guest using their ckey as an input
 /proc/IsGuestKey(key)
 	if (findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
@@ -295,61 +277,6 @@
 					search_id = 0
 	return 1
 
-
-
-//Generalised helper proc for letting mobs rename themselves. Used to be clname() and ainame()
-//Last modified by Carn
-/mob/proc/rename_self(role, allow_numbers=0)
-	var/oldname = real_name
-	var/time_passed = world.time
-
-	var/newname
-	for(var/i=1,i<=3,i++) //we get 3 attempts to pick a suitable name.
-		newname = input(src,"You are a [role]. Would you like to change your name to something else?", "Name change",oldname) as text
-		if((world.time-time_passed)>300)
-			return //took too long
-		newname = reject_bad_name(newname,allow_numbers) //returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
-		for(var/mob/living/M in GLOB.alive_mob_list)
-			if(M == src)
-				continue
-
-			if(!newname || M.real_name == newname)
-				newname = null
-				break
-
-		if(newname)
-			break //That's a suitable name!
-		to_chat(src, "Sorry, that [role]-name wasn't appropriate, please try another. It's possibly too long/short, has bad characters or is already taken.")
-
-	if(!newname) //we'll stick with the oldname then
-		return
-
-	fully_replace_character_name(oldname,newname)
-
-/proc/get_sorted_mobs()
-	var/list/old_list = getmobs()
-	var/list/Dead_list = list()
-	var/list/keyclient_list = list()
-	var/list/key_list = list()
-	var/list/logged_list = list()
-	for(var/named in old_list)
-		var/mob/M = old_list[named]
-		if(isobserver(M) || M.stat == 2)
-			Dead_list |= M
-		else if(M.key && M.client)
-			keyclient_list |= M
-		else if(M.key)
-			key_list |= M
-		else
-			logged_list |= M
-		old_list.Remove(named)
-	var/list/new_list = list()
-	new_list += keyclient_list
-	new_list += key_list
-	new_list += logged_list
-	new_list += Dead_list
-	return new_list
-
 //Returns a list of all mobs with their name
 /proc/getmobs()
 	var/list/mobs = sortmobs()
@@ -361,150 +288,6 @@
 		if(M.invisibility == INVISIBILITY_MAXIMUM && M.alpha == 0)
 			continue
 
-		var/name = M.name
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
-			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
-			name += " \[ghost\]"
-		creatures[name] = M
-
-	return creatures
-
-/proc/getxenos()
-	var/list/mobs = sortxenos()
-	var/list/names = list()
-	var/list/creatures = list()
-	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		var/name = M.name
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		if(isobserver(M))
-			name += " \[ghost\]"
-		else if(M.stat == DEAD)
-			name += " \[dead\]"
-		creatures[name] = M
-	return creatures
-
-/proc/getpreds()
-	var/list/mobs = sortpreds()
-	var/list/names = list()
-	var/list/creatures = list()
-	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(!isyautja(M)) continue
-		var/name = M.name
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
-			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
-			name += " \[ghost\]"
-		creatures[name] = M
-
-	return creatures
-
-/proc/gethumans()
-	var/list/mobs = sorthumans()
-	var/list/names = list()
-	var/list/creatures = list()
-	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(isyautja(M)) continue
-		if(iszombie(M)) continue
-		var/name = M.name
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
-			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
-			name += " \[ghost\]"
-		creatures[name] = M
-
-	return creatures
-
-/proc/getsurvivors()
-	var/list/mobs = sortsurvivors()
-	var/list/names = list()
-	var/list/creatures = list()
-	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(isyautja(M)) continue
-		if(iszombie(M)) continue
-		var/name = M.name
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
-			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
-			name += " \[ghost\]"
-		creatures[name] = M
-
-	return creatures
-
-/proc/getertmembers()
-	var/list/mobs = sortertmembers()
-	var/list/names = list()
-	var/list/creatures = list()
-	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(isyautja(M)) continue
-		if(iszombie(M)) continue
-		var/name = M.name
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
-			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
-			name += " \[ghost\]"
-		creatures[name] = M
-
-	return creatures
-
-/proc/getsynths()
-	var/list/mobs = sortsynths()
-	var/list/names = list()
-	var/list/creatures = list()
-	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(isyautja(M)) continue
-		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -548,22 +331,6 @@
 
 	return vehicles
 
-/proc/get_holograms()
-	var/list/holograms = list()
-	var/list/namecounts = list()
-	for(var/i in GLOB.hologram_list)
-		var/mob/hologram/H = i
-		var/name = H.name
-		if(name in namecounts)
-			namecounts[name]++
-			name = "[name] #([namecounts[name]])"
-		else
-			namecounts[name] = 1
-
-		holograms[name] = H
-
-	return holograms
-
 //Orders mobs by type then by name
 /proc/sortmobs()
 	var/list/moblist = list()
@@ -589,62 +356,6 @@
 	for(var/mob/camera/imaginary_friend/friend in sortmob)
 		moblist += friend
 	return moblist
-
-/proc/sortxenos()
-	var/list/xenolist = list()
-	var/list/sortmob = sortAtom(GLOB.xeno_mob_list)
-	for(var/mob/living/carbon/xenomorph/M in sortmob)
-		if(!M.client)
-			continue
-		xenolist.Add(M)
-	return xenolist
-
-/proc/sortpreds()
-	var/list/predlist = list()
-	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || !M.species.name == "Yautja")
-			continue
-		predlist.Add(M)
-	return predlist
-
-/proc/sorthumans()
-	var/list/humanlist = list()
-	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || M.species.name == "Yautja")
-			continue
-		humanlist.Add(M)
-	return humanlist
-
-/proc/sortsurvivors()
-	var/list/survivorlist = list()
-	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || M.species.name == "Yautja")
-			continue
-		if(M.faction == FACTION_SURVIVOR)
-			survivorlist.Add(M)
-	return survivorlist
-
-/proc/sortertmembers()
-	var/list/ertmemberlist = list()
-	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client)
-			continue
-		if(M.faction in FACTION_LIST_ERT)
-			ertmemberlist.Add(M)
-	return ertmemberlist
-
-/proc/sortsynths()
-	var/list/synthlist = list()
-	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || !issynth(M))
-			continue
-		synthlist.Add(M)
-	return synthlist
 
 /proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1)
 	var/mob/M
@@ -729,8 +440,7 @@
 	if(orange)
 		turfs -= get_turf(center)
 	. = list()
-	for(var/V in turfs)
-		var/turf/T = V
+	for(var/turf/T as anything in turfs)
 		. += T
 		. += T.contents
 		if(areas)
@@ -1060,7 +770,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 
 	var/cur_user_zone_sel = busy_user.zone_selected
 	var/cur_target_zone_sel
-	var/delayfraction = Ceiling(delay/numticks)
+	var/delayfraction = ceil(delay/numticks)
 	var/user_orig_loc = busy_user.loc
 	var/user_orig_turf = get_turf(busy_user)
 	var/target_orig_loc
@@ -1562,7 +1272,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
-		. += Ceiling(i*DELTA_CALC)
+		. += ceil(i*DELTA_CALC)
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
@@ -1602,89 +1312,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 					return TRUE
 	return FALSE
 
-// Returns only the perimeter of the block given by the min and max turfs
-/proc/blockhollow(turf/min, turf/max)
-	var/list/perimeter_turfs = list()
-
-	// Upper/lower perimeters
-	for(var/x_coord = min.x to max.x)
-		perimeter_turfs += locate(x_coord, min.y, min.z)
-		perimeter_turfs += locate(x_coord, max.y, min.z)
-
-	// Left/right perimeters
-	for(var/y_coord = min.y + 1 to max.y - 1)
-		perimeter_turfs += locate(min.x, y_coord, min.z)
-		perimeter_turfs += locate(max.x, y_coord, min.z)
-
-	return perimeter_turfs
-
 /proc/flick_overlay(atom/target, overlay, time)
 	target.overlays += overlay
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_timed_overlay), target, overlay), time)
 
 /proc/remove_timed_overlay(atom/target, overlay)
 	target.overlays -= overlay
-
-/*
-	Returns a list of random-looking, zero-sum variances.
-
-	Imagine a straight line divided up into n segments,
-	then divide each segment into 2 subsegments again, so each original segment gets "its own point" that divides the subsegments
-	Then displace the first segment's dividing point by e.g. 5.
-	Then displace the second segment's dividing point by -5.
-	Then displace the third segment's dividing point by 5, and so on, alternating between a displacement of 5 and -5
-	(If there's an odd number of segments just don't displace the last point at all)
-
-	At the end, you'll have a zig-zaggy line. You then go through each segment end and
-	take away/add some random amount of displacement from its point. If you keep track of how much
-	net displacement has been added/removed, you can distribute it among other points
-	and end up with net 0 displacement (i.e. 0 total variance)
-
-	Basically, this is what happens: https://i.imgur.com/AuY7HHd.png
-*/
-/proc/get_random_zero_sum_variances(amount, max_variance)
-	// Displace each "point" to max variance
-	var/list/variances[amount]
-	for(var/i in 1 to variances.len)
-		if(i == variances.len && (variances.len % 2))
-			variances[i] = 0
-		else
-			variances[i] = (i % 2 ? 1 : -1) * max_variance
-
-	// Jiggle each variance a random amount towards the "center line"/0 variance
-	var/net_displacement = 0
-	for(var/i in 1 to variances.len)
-		var/to_redistribute = (i % 2 ? -1 : 1) * rand(0, max_variance/2)
-
-		net_displacement += to_redistribute
-		variances[i] += to_redistribute
-
-	// Lucky! Everything jiggled towards 0 in a way that left 0 net displacement
-	if(!net_displacement)
-		return variances
-
-	// Redistribute the net displacement evenly on the side of the center line that needs it
-	// Only half the points are gonna be affected.
-	var/to_redistribute = abs(Ceiling(net_displacement / (variances.len/2)))
-	for(var/i in 1 to variances.len)
-		if(!net_displacement)
-			break
-
-		// Positive net displacement, only distribute to points that were given negative variance to begin with
-		if(net_displacement > 0 && !(i % 2))
-			variances[i] -= min(abs(net_displacement), to_redistribute)
-			net_displacement -= to_redistribute
-		// Negative net displacement, only distribute to points that were given positive variance to begin with
-		else if(net_displacement < 0 && i % 2)
-			variances[i] += min(abs(net_displacement), to_redistribute)
-			net_displacement += to_redistribute
-
-	return variances
-
-/proc/check_bitflag(flag, bit)
-	if(flag & bit)
-		return TRUE
-	return FALSE
 
 // A proc purely for a callback that returns TRUE (and does nothing else)
 /proc/_callback_true()
@@ -1767,8 +1400,8 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		pixel_y_offset += ((AMiconheight/world.icon_size)-1)*(world.icon_size*0.5)
 
 	//DY and DX
-	var/rough_x = round(round(pixel_x_offset,world.icon_size)/world.icon_size)
-	var/rough_y = round(round(pixel_y_offset,world.icon_size)/world.icon_size)
+	var/rough_x = floor(round(pixel_x_offset,world.icon_size)/world.icon_size)
+	var/rough_y = floor(round(pixel_y_offset,world.icon_size)/world.icon_size)
 
 	//Find coordinates
 	var/turf/T = get_turf(AM) //use AM's turfs, as it's coords are the same as AM's AND AM's coords are lost if it is inside another atom
@@ -1868,11 +1501,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 #define UNTIL(X) while(!(X)) stoplag()
 
-/proc/IsValidSrc(datum/D)
-	if(istype(D))
-		return !QDELETED(D)
-	return FALSE
-
 //Repopulates sortedAreas list
 /proc/repopulate_sorted_areas()
 	GLOB.sorted_areas = list()
@@ -1950,12 +1578,6 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		M.overlays.Cut()
 		M.regenerate_icons()
 	return O
-
-/proc/convert_to_json_text(json_file_string)
-	var/json_file = file(json_file_string)
-	json_file = file2text(json_file)
-	json_file = json_decode(json_file)
-	return json_file
 
 ///Returns a list of all items of interest with their name
 /proc/getpois(mobs_only = FALSE, skip_mindless = FALSE, specify_dead_role = TRUE)

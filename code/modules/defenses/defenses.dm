@@ -138,11 +138,11 @@
 	switch(selection)
 		if(FACTION_MARINE)
 			faction_group = FACTION_LIST_MARINE
-		if(FACTION_WEYLAND)
+		if(SENTRY_FACTION_WEYLAND)
 			faction_group = FACTION_LIST_MARINE_WY
-		if(FACTION_HUMAN)
+		if(SENTRY_FACTION_HUMAN)
 			faction_group = FACTION_LIST_HUMANOID
-		if(FACTION_COLONY)
+		if(SENTRY_FACTION_COLONY)
 			faction_group = list(FACTION_MARINE, FACTION_COLONIST)
 
 
@@ -456,9 +456,9 @@
 	visible_message(SPAN_WARNING("[src] is hit by [P]!"))
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_ACIDIC) //Fix for xenomorph spit doing baby damage.
-		update_health(round(P.damage/3))
+		update_health(floor(P.damage/3))
 	else
-		update_health(round(P.damage/10))
+		update_health(floor(P.damage/10))
 	return TRUE
 // DAMAGE HANDLING OVER
 

@@ -20,6 +20,7 @@
 	var/expand = 1
 	animate_movement = 0
 	var/metal = FOAM_NOT_METAL
+	var/time_to_solidify = 4 SECONDS
 
 
 /obj/effect/particle_effect/foam/Initialize(mapload, ismetal=0)
@@ -28,7 +29,7 @@
 	metal = ismetal
 	playsound(src, 'sound/effects/bubbles2.ogg', 25, 1, 5)
 	addtimer(CALLBACK(src, PROC_REF(foam_react)), 3 + metal*3)
-	addtimer(CALLBACK(src, PROC_REF(foam_metal_final_react)), 40)
+	addtimer(CALLBACK(src, PROC_REF(foam_metal_final_react)), time_to_solidify)
 
 /obj/effect/particle_effect/foam/proc/foam_react()
 	process()
@@ -211,7 +212,7 @@
 	return FALSE
 
 /obj/structure/foamed_metal/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
-	var/damage = ((round((X.melee_damage_lower+X.melee_damage_upper)/2)) + dam_bonus)
+	var/damage = ((floor((X.melee_damage_lower+X.melee_damage_upper)/2)) + dam_bonus)
 
 	//Frenzy bonus
 	if(X.frenzy_aura > 0)

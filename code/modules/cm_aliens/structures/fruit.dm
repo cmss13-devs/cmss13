@@ -131,6 +131,7 @@
 	playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
 	mature = FALSE
 	picked = TRUE
+	recipient.clear_debuffs() // all froots clear debuffs
 	icon_state = consumed_icon_state
 	update_icon()
 	if(!QDELETED(bound_xeno))

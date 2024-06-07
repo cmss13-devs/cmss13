@@ -93,3 +93,14 @@
 	flick("desk_bell_activate", src)
 	times_rang++
 	return TRUE
+
+/obj/item/desk_bell/ares
+	name = "AI core reception bell"
+	desc = "The cornerstone of any customer service job. This one is linked to ARES and will notify any active Working Joes upon being rung."
+	ring_cooldown_length = 60 SECONDS // Prevents spam
+
+/obj/item/desk_bell/ares/ring_bell(mob/living/user)
+	if(broken_ringer)
+		return FALSE
+	ares_apollo_talk("Attendence requested at AI Core Reception.")
+	return ..()

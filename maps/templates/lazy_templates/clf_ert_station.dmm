@@ -804,7 +804,7 @@
 "sx" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "sC" = (
@@ -954,6 +954,9 @@
 /area/adminlevel/ert_station/clf_station)
 "vE" = (
 /obj/structure/largecrate/supply/weapons/shotgun,
+/obj/structure/platform/kutjevo{
+	dir = 8
+	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "vI" = (
@@ -1203,7 +1206,7 @@
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
 	name = "\improper Strange Temple"
 	},
-/turf/open/space/basic,
+/turf/open/floor/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)
 "BP" = (
 /obj/structure/surface/table/reinforced,
@@ -1814,8 +1817,8 @@
 "Ro" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "Rr" = (
@@ -1924,9 +1927,6 @@
 	dir = 8
 	},
 /turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"Ub" = (
-/turf/closed/wall/mineral/sandstone/runed/decor,
 /area/adminlevel/ert_station/clf_station)
 "Uj" = (
 /obj/structure/closet/crate,
@@ -2179,14 +2179,14 @@ ax
 ax
 ax
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (2,1,1) = {"
 ax
@@ -2221,14 +2221,14 @@ vI
 ZO
 LO
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (3,1,1) = {"
 ax
@@ -2261,16 +2261,16 @@ Rg
 Rg
 Rg
 tJ
-Ub
+LO
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (4,1,1) = {"
 ax
@@ -2305,14 +2305,14 @@ vI
 vI
 BC
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (5,1,1) = {"
 ax
@@ -2345,16 +2345,16 @@ ax
 Rg
 Rg
 iO
-Ub
+LO
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (6,1,1) = {"
 ax
@@ -2389,14 +2389,14 @@ Rg
 ZO
 LO
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (7,1,1) = {"
 ax
@@ -2431,14 +2431,14 @@ Rg
 ax
 ax
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (8,1,1) = {"
 KT
@@ -2472,15 +2472,15 @@ HI
 ax
 ax
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (9,1,1) = {"
 KT
@@ -2516,13 +2516,13 @@ ax
 KT
 KT
 KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (10,1,1) = {"
 KT
@@ -2559,12 +2559,12 @@ KT
 KT
 KT
 KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (11,1,1) = {"
 KT
@@ -2602,11 +2602,11 @@ KT
 KT
 KT
 KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
 "}
 (12,1,1) = {"
 KT
@@ -2645,10 +2645,10 @@ iG
 KT
 KT
 KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
 "}
 (13,1,1) = {"
 KT
@@ -2687,10 +2687,10 @@ pk
 pk
 KT
 KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
 "}
 (14,1,1) = {"
 DN
@@ -2729,10 +2729,10 @@ ON
 pk
 pk
 KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
 "}
 (15,1,1) = {"
 DN
@@ -2773,8 +2773,8 @@ pk
 ax
 ax
 ax
-KT
-KT
+ax
+ax
 "}
 (16,1,1) = {"
 KT
@@ -2815,8 +2815,8 @@ xL
 pk
 ax
 ax
-KT
-KT
+ax
+ax
 "}
 (17,1,1) = {"
 ax

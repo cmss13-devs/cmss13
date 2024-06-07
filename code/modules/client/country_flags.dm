@@ -13,16 +13,13 @@
 		var/page_content = http_response["CONTENT"]
 		if(page_content)
 			var/list/geodata = json_decode(html_decode(file2text(page_content)))
-			if(geodata["countryCode"] == "GB")
-				if((geodata["regionName"] == "Scotland") || (geodata["regionName"] == "Wales"))
-					origin?.country = geodata["regionName"]
-					return geodata["regionName"]
-				else
-					origin?.country = geodata["countryCode"]
-					return geodata["countryCode"]
+			if(geodata["countryCode"] == "GB" && ((geodata["regionName"] == "Scotland") || (geodata["regionName"] == "Wales")))
+				origin?.country = geodata["regionName"]
+			else if(geodata["countryCode"] == "CA" && (geodata["regionName"] == "Quebec"))
+				origin?.country = geodata["regionName"]
 			else
 				origin?.country = geodata["countryCode"]
-				return geodata["countryCode"]
+			return geodata["countryCode"]
 	else //null response, ratelimited most likely. Try again in 60s
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ip2country), ipaddr, origin), 60 SECONDS)
 

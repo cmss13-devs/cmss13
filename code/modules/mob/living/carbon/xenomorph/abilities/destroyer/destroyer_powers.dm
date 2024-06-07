@@ -100,6 +100,8 @@
 
 	// Add other xeno's shields in AoE range
 	for(var/mob/living/carbon/xenomorph/xeno_in_aoe in range(area_of_effect, xeno))
+		if(xeno_in_aoe == xeno)
+			continue
 		if(xeno_in_aoe.stat == DEAD)
 			continue
 		if(xeno_in_aoe.hivenumber != xeno.hivenumber)

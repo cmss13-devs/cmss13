@@ -218,7 +218,10 @@
 	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
 
-	linked_hive.buff_points += 1
+	if (linked_hive.buff_points < linked_hive.max_buff_points)
+		linked_hive.buff_points += 1
+
+	linked_hive.check_if_hit_larva_from_pylon_limit()
 
 /// APPLYING HIVE BUFFS ///
 

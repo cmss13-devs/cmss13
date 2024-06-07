@@ -405,7 +405,7 @@
 /datum/action/xeno_action/onclick/manage_hive/proc/purchase_buffs()
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 
-	var/list/buffs = list()
+	var/list/datum/hivebuff/buffs = list()
 	var/list/names = list()
 	var/list/radial_images = list()
 	var/major_available = FALSE
@@ -445,9 +445,29 @@
 
 		selection = show_radial_menu(xeno, xeno, radial_images, radius = 72, require_near = TRUE, tooltips = TRUE)
 
+	if(!selection)
+		to_chat(xeno, "No buff was selected.")
+		return FALSE
+
 	if(!buffs[selection])
 		to_chat(xeno, "This selection is impossible!")
 		return FALSE
+
+
+	if(buffs[selection].can_select_pylon)
+		var/list/pylon_to_area_dictionary = list()
+		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon as anything in xeno.hive.active_endgame_pylons)
+			pylon_to_area_dictionary[get_area_name(pylon.loc)] = pylon
+
+		var/choice = tgui_alert(xeno, "Select a pylon for the buff:", "Choice", pylon_to_area_dictionary, 1 MINUTES)
+		
+		if(!choice)
+			to_chat(xeno, "You must choose a pylon.")
+			return FALSE
+
+		xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pylon_to_area_dictionary[choice])
+
+		return TRUE
 
 	xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pick(xeno.hive.active_endgame_pylons))
 

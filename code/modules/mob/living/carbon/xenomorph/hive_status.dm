@@ -136,6 +136,7 @@
 
 	/// Hive buffs
 	var/buff_points = HIVE_STARTING_BUFFPOINTS
+	var/max_buff_points = HIVE_MAX_BUFFPOINTS
 
 	/// List of references to the currently active hivebuffs
 	var/list/active_hivebuffs

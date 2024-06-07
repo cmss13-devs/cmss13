@@ -11,6 +11,7 @@
 ///GLOBAL DEFINES///
 
 #define HIVE_STARTING_BUFFPOINTS 0
+#define HIVE_MAX_BUFFPOINTS 0
 #define BUFF_POINTS_NAME "Royal resin"
 
 ///LOCAL DEFINES///
@@ -71,6 +72,9 @@
 
 	/// Special fail message
 	var/special_fail_message = ""
+
+	/// Ask the buyer where to put the buff
+	var/can_select_pylon = FALSE
 
 /datum/hivebuff/New(datum/hive_status/xenohive)
 	. = ..()
@@ -154,10 +158,11 @@
 		to_chat(purchasing_mob, SPAN_XENONOTICE(special_fail_message))
 		return FALSE
 
-	log_admin("[purchasing_mob] of [hive.hivenumber] is attempting to purchase a hive buff: [name].")
+	if(!istype(purchasing_mob, /mob/living/carbon/xenomorph/queen))
+		log_admin("[purchasing_mob] of [hive.hivenumber] is attempting to purchase a hive buff: [name].")
 
 	if(!_seek_queen_approval(purchasing_mob))
-		to_chat(purchasing_mob, SPAN_XENONOTICE("Our queen has not approved the purchase of [name]."))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("Our queen did not approve the purchase of [name]."))
 		return FALSE
 
 	// _seek_queen_approval() includes a 20 second timeout so we check that everything still exists that we need.
@@ -181,9 +186,10 @@
 		return
 
 	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
-		if(apply_on_new_xeno)
-			RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(_handle_xenomorph_new))
 		apply_buff_effects(xeno)
+
+	if(apply_on_new_xeno)
+		RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(_handle_xenomorph_new))
 
 
 	log_admin("[purchasing_mob] and [hive.living_xeno_queen] of [hive.hivenumber] have purchased a hive buff: [name].")
@@ -224,8 +230,9 @@
 	if(!ended_via_pylon_qdeletion)
 		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon_to_clear in sustained_pylons)
 			pylon_to_clear.remove_hivebuff()
-			UnregisterSignal(pylon_to_clear, COMSIG_PARENT_QDELETING)
+			// UnregisterSignal(pylon_to_clear, COMSIG_PARENT_QDELETING)
 	LAZYREMOVE(hive.active_hivebuffs, src)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
 
 
 /// Checks the number of pylons required and if the hive posesses them
@@ -301,7 +308,7 @@
 		return FALSE
 
 	var/mob/living/queen = hive.living_xeno_queen
-	var/queen_response = tgui_alert(queen, "[purchasing_mob] is trying to Purchase [name] at a cost of [cost] [BUFF_POINTS_NAME]. Our hive has [hive.buff_points] [BUFF_POINTS_NAME]. Do you want to approve it?", "Approve Hive Buff", list("Yes", "No"), 20 SECONDS)
+	var/queen_response = tgui_alert(queen, "You are trying to Purchase [name] at a cost of [cost] [BUFF_POINTS_NAME]. Our hive has [hive.buff_points] [BUFF_POINTS_NAME]. Are you sure you want to purchase it? Description: [desc]", "Approve Hive Buff", list("Yes", "No"), 20 SECONDS)
 
 	if(queen_response == "Yes")
 		return TRUE
@@ -326,6 +333,9 @@
 		marine_announcement(marine_flavourmessage, COMMAND_ANNOUNCE, 'sound/AI/bioscan.ogg')
 
 /datum/hivebuff/proc/_announce_buff_cease()
+	if(!duration)
+		return
+		
 	for(var/mob/living/xenomorph as anything in hive.totalXenos)
 		if(!xenomorph.client)
 			continue
@@ -333,9 +343,12 @@
 		to_chat(xenomorph, SPAN_XENO(cease_flavourmessage))
 
 ///Signal handler for new xenomorphs joining the hive
-/datum/hivebuff/proc/_handle_xenomorph_new(mob/living/carbon/xenomorph/new_xeno)
+/datum/hivebuff/proc/_handle_xenomorph_new(datum/source, mob/living/carbon/xenomorph/new_xeno)
 	SIGNAL_HANDLER
 	if(!apply_on_new_xeno)
+		return
+
+	if(!(src in hive.active_hivebuffs))
 		return
 	// If we're the same hive as the buff
 	if(new_xeno.hive == hive)
@@ -377,12 +390,14 @@
 	engage_flavourmessage = "The Queen has imbued us with greater fortitude."
 	duration = 10 MINUTES
 	number_of_required_pylons = 1
+	var/buffed_amount = 0
 
 /datum/hivebuff/extra_life/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.maxHealth *= 1.05
+	var/buffed_amount = 1.05 * (xeno.maxHealth + xeno.health_modifier)
+	xeno.health_modifier += buffed_amount
 
 /datum/hivebuff/extra_life/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.maxHealth = initial(xeno.caste.max_health)
+	xeno.health_modifier -= buffed_amount
 
 /datum/hivebuff/extra_life/major
 	name = "Major Boon of Plenty"
@@ -396,10 +411,8 @@
 	radial_icon = "health_m"
 
 /datum/hivebuff/extra_life/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.maxHealth *= 1.1
-
-/datum/hivebuff/extra_life/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.maxHealth = initial(xeno.caste.max_health)
+	var/buffed_amount = 1.1 * (xeno.maxHealth + xeno.health_modifier)
+	xeno.health_modifier += buffed_amount
 
 /datum/hivebuff/game_ender_caste
 	name = "Boon of Destruction"
@@ -411,12 +424,13 @@
 	special_fail_message = "Only one hatchery may exist at a time."
 	number_of_required_pylons = 2
 	roundtime_to_enable = 1 HOURS + 50 MINUTES
+	can_select_pylon = TRUE
 
 /datum/hivebuff/game_ender_caste/handle_special_checks()
-	if(hive.has_hatchery)
+	for(var/mob/living/carbon/xenomorph/destoryer in hive.totalXenos)
 		return FALSE
 
-	return TRUE
+	return !hive.has_hatchery
 
 /datum/hivebuff/game_ender_caste/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
 	var/turf/spawn_turf
@@ -454,12 +468,14 @@
 	duration = 5 MINUTES
 	number_of_required_pylons = 1
 	radial_icon = "shield"
+	var/buffed_amount = 0
 
 /datum/hivebuff/defence/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_deflection += 0.05 * xeno.armor_deflection
+	buffed_amount = 0.05 * (xeno.armor_deflection + xeno.armor_modifier)
+	xeno.armor_modifier += buffed_amount
 
 /datum/hivebuff/defence/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_deflection = initial(xeno.armor_deflection)
+	xeno.armor_modifier -= buffed_amount
 
 /datum/hivebuff/defence/major
 	name = "Major Boon of Defence"
@@ -473,10 +489,8 @@
 	radial_icon = "shield_m"
 
 /datum/hivebuff/defence/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_deflection += 0.1 * xeno.armor_deflection
-
-/datum/hivebuff/defence/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_deflection = initial(xeno.armor_deflection)
+	buffed_amount = 0.1 * (xeno.armor_deflection + xeno.armor_modifier)
+	xeno.armor_modifier += buffed_amount
 
 /datum/hivebuff/attack
 	name = "Boon of Aggression"
@@ -487,14 +501,14 @@
 	duration = 5 MINUTES
 	number_of_required_pylons = 1
 	radial_icon = "slash"
+	var/buffed_amount = 0
 
 /datum/hivebuff/attack/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.melee_damage_lower += 0.05 * xeno.melee_damage_lower
-	xeno.melee_damage_upper += 0.05 * xeno.melee_damage_upper
+	buffed_amount = 0.05 * ((xeno.melee_damage_lower + xeno.melee_damage_upper) / 2 + xeno.damage_modifier)
+	xeno.damage_modifier += buffed_amount
 
 /datum/hivebuff/attack/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.melee_damage_lower += initial(xeno.melee_damage_lower)
-	xeno.melee_damage_upper += initial(xeno.melee_damage_upper)
+	xeno.damage_modifier -= buffed_amount
 
 /datum/hivebuff/attack/major
 	name = "Major Boon of Aggression"
@@ -508,10 +522,6 @@
 	radial_icon = "slash_m"
 
 /datum/hivebuff/attack/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.melee_damage_lower += 0.1 * xeno.melee_damage_lower
-	xeno.melee_damage_upper += 0.1 * xeno.melee_damage_upper
-
-/datum/hivebuff/attack/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.melee_damage_lower += initial(xeno.melee_damage_lower)
-	xeno.melee_damage_upper += initial(xeno.melee_damage_upper)
+	buffed_amount = 0.1 * ((xeno.melee_damage_lower + xeno.melee_damage_upper) / 2 + xeno.damage_modifier)
+	xeno.damage_modifier += buffed_amount
 

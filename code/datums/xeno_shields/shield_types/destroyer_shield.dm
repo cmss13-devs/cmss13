@@ -1,4 +1,4 @@
-// Shield can be equal to a maximum of percent_maxhealth_damagecap of the receiver's max hp
+/// Shield can be equal to a maximum of percent_maxhealth_damagecap of the receiver's max hp
 /datum/xeno_shield/destroyer_shield
 	duration = 10 SECONDS
 	decay_amount_per_second = 100

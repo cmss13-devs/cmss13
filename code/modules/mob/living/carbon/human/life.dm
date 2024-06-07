@@ -102,4 +102,4 @@
 	if (HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || stat == UNCONSCIOUS)
 		new /datum/effects/execute_tag(src, src, ttl = 35)
 
-	src.update_execute_hud()
+	update_execute_hud()

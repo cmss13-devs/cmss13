@@ -188,8 +188,8 @@
 	if(apply_on_new_xeno)
 		RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(_handle_xenomorph_new))
 
-
-	log_admin("[purchasing_mob] and [hive.living_xeno_queen] of [hive.hivenumber] have purchased a hive buff: [name].")
+	if(!istype(purchasing_mob, /mob/living/carbon/xenomorph/queen))
+		log_admin("[purchasing_mob] and [hive.living_xeno_queen] of [hive.hivenumber] have purchased a hive buff: [name].")
 
 	// Add to the relevant hive lists.
 	LAZYADD(hive.used_hivebuffs, src)

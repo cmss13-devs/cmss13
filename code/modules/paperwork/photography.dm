@@ -357,6 +357,57 @@
 	pictures_max = 20
 	w_class = SIZE_HUGE
 	flags_equip_slot = NO_FLAGS //cannot be equiped
+	var/obj/structure/machinery/camera/correspondent/linked_cam
+
+/obj/item/device/camera/broadcasting/Initialize(mapload, ...)
+	. = ..()
+	linked_cam = new(loc, src)
+	linked_cam.status = FALSE
+	RegisterSignal(src, COMSIG_COMPONENT_ADDED, PROC_REF(handle_rename))
+
+/obj/item/device/camera/broadcasting/Destroy()
+	clear_broadcast()
+	return ..()
+
+/obj/item/device/camera/broadcasting/wield(mob/user)
+	. = ..()
+	if(!.)
+		return
+	flags_atom |= (USES_HEARING|USES_SEEING)
+	if(!linked_cam || QDELETED(linked_cam))
+		linked_cam = new(loc, src)
+	else
+		linked_cam.status = TRUE
+		linked_cam.forceMove(loc)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
+	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
+
+/obj/item/device/camera/broadcasting/unwield(mob/user)
+	. = ..()
+	flags_atom &= ~(USES_HEARING|USES_SEEING)
+	linked_cam.status = FALSE
+
+/obj/item/device/camera/broadcasting/proc/handle_rename(obj/item/camera, datum/component/label)
+	SIGNAL_HANDLER
+	if(!istype(label, /datum/component/label))
+		return
+	linked_cam.c_tag = get_broadcast_name()
+
+/obj/item/device/camera/broadcasting/proc/clear_broadcast()
+	if(!QDELETED(linked_cam))
+		QDEL_NULL(linked_cam)
+
+/obj/item/device/camera/broadcasting/proc/get_broadcast_name()
+	var/datum/component/label/src_label_component = GetComponent(/datum/component/label)
+	if(src_label_component)
+		return src_label_component.label_name
+	return "Broadcast [serial_number]"
+
+/obj/item/device/camera/broadcasting/hear_talk(mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_HEAR_TALK, sourcemob, message, verb, language, italics, get_dist(sourcemob, src) < 3)
+
+/obj/item/device/camera/broadcasting/see_emote(mob/living/sourcemob, emote, audible = FALSE)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, get_dist(sourcemob, src) < 3 && audible)
 
 /obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]

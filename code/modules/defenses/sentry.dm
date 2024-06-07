@@ -45,7 +45,7 @@
 	/// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
 		// SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_BURST, ROF_FULL_AUTO),
-		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
 	)
 
 	selected_categories = list(
@@ -365,7 +365,7 @@
 				targets.Remove(A)
 				continue
 
-			if(M.get_target_lock(faction_group) || M.invisibility || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED))
+			if(M.get_target_lock(faction_group) || M.invisibility || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED) || M.is_ventcrawling)
 				if(M == target)
 					target = null
 				targets.Remove(M)
@@ -523,12 +523,29 @@
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
 	. = ..()
-	choice_categories[SENTRY_CATEGORY_IFF] = list(FACTION_COLONY, FACTION_WEYLAND)
-	selected_categories[SENTRY_CATEGORY_IFF] = FACTION_COLONY
+	choice_categories[SENTRY_CATEGORY_IFF] = list(SENTRY_FACTION_COLONY, SENTRY_FACTION_WEYLAND)
+	selected_categories[SENTRY_CATEGORY_IFF] = SENTRY_FACTION_COLONY
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer
-	fire_delay = 4
+	name = "UA-635C Static Gauss Turret"
+	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed and modified for UA warship use."
+	fire_delay = 0.4 SECONDS
 	omni_directional = TRUE
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini
+	name = "UA 512-S mini sentry"
+	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M30 Autocannon and an internal belt feed and modified for UA warship use."
+	defense_type = "Mini"
+	fire_delay = 0.25 SECONDS
+	health = 150
+	health_max = 150
+	damage_mult = 0.6
+	density = FALSE
+	layer = BELOW_MOB_LAYER
+	disassemble_time = 0.75 SECONDS
+	handheld_type = /obj/item/defenses/handheld/sentry/mini
+	composite_icon = FALSE
+
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship
@@ -562,7 +579,7 @@
 	handheld_type = /obj/item/defenses/handheld/sentry/dmr
 
 	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
 	)
 
 	selected_categories = list(

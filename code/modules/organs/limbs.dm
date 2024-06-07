@@ -71,11 +71,14 @@
 	var/status = LIMB_ORGANIC
 	var/processing = FALSE
 
-	/// ethnicity of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
-	var/ethnicity = "western"
+	/// skin color of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
+	var/skin_color = "Pale 2"
 
-	/// body type of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
-	var/body_type = "mesomorphic"
+	/// body size of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
+	var/body_size = "Average"
+
+	/// body muscularity of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
+	var/body_type = "Lean"
 
 	/// species of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
 	var/datum/species/species
@@ -367,7 +370,7 @@
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
 	var/no_bone_break = owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE
 	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage && !no_bone_break)
-		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier))
+		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && (status & LIMB_BROKEN))
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
 				limb_delimb(damage_source)
@@ -689,22 +692,29 @@ This function completely restores a damaged organ to perfect condition.
 /obj/limb/proc/update_limb()
 	SHOULD_CALL_PARENT(TRUE)
 
-	var/datum/ethnicity/owner_ethnicity = GLOB.ethnicities_list[owner?.ethnicity]
+	var/datum/skin_color/owner_skin_color = GLOB.skin_color_list[owner?.skin_color]
 
-	if(owner_ethnicity)
-		ethnicity = owner_ethnicity.icon_name
+	if(owner_skin_color)
+		skin_color = owner_skin_color.icon_name
 	else
-		ethnicity = "western"
+		skin_color = "pale2"
 
-	var/datum/body_type/owner_body_type = GLOB.body_types_list[owner?.body_type]
+	var/datum/body_type/owner_body_type = GLOB.body_type_list[owner?.body_type]
 
 	if(owner_body_type)
 		body_type = owner_body_type.icon_name
 	else
-		body_type = "mesomorphic"
+		body_type = "lean"
+
+	var/datum/body_type/owner_body_size = GLOB.body_size_list[owner?.body_size]
+
+	if(owner_body_size)
+		body_size = owner_body_size.icon_name
+	else
+		body_size = "avg"
 
 	if(isspeciesyautja(owner))
-		ethnicity = owner.ethnicity
+		skin_color = owner.skin_color
 		body_type = owner.body_type
 
 	species = owner?.species ? owner.species : GLOB.all_species[SPECIES_HUMAN]
@@ -734,7 +744,7 @@ This function completely restores a damaged organ to perfect condition.
 		return
 
 	limb.icon = species.icobase
-	limb.icon_state = "[get_limb_icon_name(species, body_type, limb_gender, icon_name, ethnicity)]"
+	limb.icon_state = "[get_limb_icon_name(species, body_size, body_type, limb_gender, icon_name, skin_color)]"
 
 	. += limb
 
@@ -744,7 +754,7 @@ This function completely restores a damaged organ to perfect condition.
 /obj/limb/proc/get_limb_icon_key()
 	SHOULD_CALL_PARENT(TRUE)
 
-	return "[species.name]-[body_type]-[limb_gender]-[icon_name]-[ethnicity]-[status]"
+	return "[species.name]-[body_size]-[body_type]-[limb_gender]-[icon_name]-[skin_color]-[status]"
 
 // new damage icon system
 // returns just the brute/burn damage code
@@ -1513,7 +1523,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 /obj/limb/head/limb_delimb(damage_source)
 	var/obj/item/clothing/head/helmet/owner_helmet = owner.head
 
-	if(!istype(owner_helmet) || !owner.allow_gun_usage)
+	if(!istype(owner_helmet) || (issynth(owner) && !owner.allow_gun_usage))
 		droplimb(0, 0, damage_source)
 		return
 

@@ -440,7 +440,7 @@
 									return
 							if(CLAN_LIMIT_SIZE)
 								var/list/datum/view_record/clan_playerbase_view/clan_players = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_COMP("clan_id", DB_EQUALS, target.clan_id))
-								var/available_slots = Ceiling(clan_players.len / chosen_rank.limit)
+								var/available_slots = ceil(clan_players.len / chosen_rank.limit)
 
 								if(players_in_rank >= available_slots)
 									to_chat(src, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] per player in the clan, currently [available_slots])"))

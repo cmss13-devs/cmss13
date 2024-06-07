@@ -13,6 +13,7 @@
 	w_class = SIZE_MEDIUM //making sure you can't sneak this onto your belt.
 	gun_type = /obj/item/weapon/gun/flamer
 	caliber = "UT-Napthal Fuel" //Ultra Thick Napthal Fuel, from the lore book.
+	var/custom = FALSE //accepts custom fuels if true
 
 	var/flamer_chem = "utnapthal"
 	flags_magazine = AMMUNITION_HIDE_AMMO
@@ -90,7 +91,11 @@
 		to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
 		return
 
-	if(!to_add.intensityfire)
+	if(istype(to_add, /datum/reagent/generated) && !custom)
+		to_chat(user, SPAN_WARNING("[src] cannot accept custom fuels!"))
+		return
+
+	if(!to_add.intensityfire && to_add.id != "stablefoam" && !istype(src, /obj/item/ammo_magazine/flamer_tank/smoke))
 		to_chat(user, SPAN_WARNING("This chemical is not potent enough to be used in a flamethrower!"))
 		return
 
@@ -161,6 +166,7 @@
 	max_rounds = 100
 	max_range = 5
 	fuel_pressure = 1
+	custom = TRUE
 
 /obj/item/ammo_magazine/flamer_tank/custom/verb/set_fuel_pressure()
 	set name = "Change Fuel Pressure"
@@ -236,3 +242,10 @@
 	max_intensity = 60
 	max_range = 8
 	max_duration = 50
+
+/obj/item/ammo_magazine/flamer_tank/smoke
+	name = "Custom incinerator smoke tank"
+	desc = "A tank holding powdered smoke that expands when exposed to an open flame and carries any chemicals along with it."
+	matter = list("metal" = 3750)
+	flamer_chem = null
+	custom = TRUE

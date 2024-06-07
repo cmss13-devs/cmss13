@@ -33,7 +33,7 @@
 			return
 
 /obj/item/clothing/accessory/health/proc/get_damage_status()
-	var/percentage = round(armor_health / armor_maxhealth * 100)
+	var/percentage = floor(armor_health / armor_maxhealth * 100)
 	switch(percentage)
 		if(0)
 			. = "It is broken."

@@ -136,7 +136,7 @@
 		data["property_data_list"] = list()
 		for(var/datum/chem_property/P in GLOB.chemical_data.research_property_data)
 			data["property_codings"][P.name] = P.code
-			if(template_filter && !check_bitflag(P.category, template_filter))
+			if(template_filter && !HAS_FLAG(P.category, template_filter))
 				continue
 			data["property_data_list"][P.name] = P.level
 			data["property_data_list"] = sortAssoc(data["property_data_list"])
@@ -144,18 +144,18 @@
 		data["target_property_list"] = list()
 		for(var/datum/chem_property/P in creation_template)
 			data["target_property_list"][P.name] = P.level
-			if(template_filter && !check_bitflag(P.category, template_filter))
+			if(template_filter && !HAS_FLAG(P.category, template_filter))
 				continue
 			//Override the editor level with the enabled property level
 			data["property_data_list"][P.name] = P.level
 
 		data["template_filter"] = list(
-				"MED" = list(check_bitflag(template_filter, PROPERTY_TYPE_MEDICINE), PROPERTY_TYPE_MEDICINE),
-				"TOX" = list(check_bitflag(template_filter, PROPERTY_TYPE_TOXICANT), PROPERTY_TYPE_TOXICANT),
-				"STI" = list(check_bitflag(template_filter, PROPERTY_TYPE_STIMULANT), PROPERTY_TYPE_STIMULANT),
-				"REA" = list(check_bitflag(template_filter, PROPERTY_TYPE_REACTANT), PROPERTY_TYPE_REACTANT),
-				"IRR" = list(check_bitflag(template_filter, PROPERTY_TYPE_IRRITANT), PROPERTY_TYPE_IRRITANT),
-				"MET" = list(check_bitflag(template_filter, PROPERTY_TYPE_METABOLITE), PROPERTY_TYPE_METABOLITE)
+				"MED" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_MEDICINE), PROPERTY_TYPE_MEDICINE),
+				"TOX" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_TOXICANT), PROPERTY_TYPE_TOXICANT),
+				"STI" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_STIMULANT), PROPERTY_TYPE_STIMULANT),
+				"REA" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_REACTANT), PROPERTY_TYPE_REACTANT),
+				"IRR" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_IRRITANT), PROPERTY_TYPE_IRRITANT),
+				"MET" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_METABOLITE), PROPERTY_TYPE_METABOLITE)
 			)
 
 	else if(target && target.data && target.completed)
@@ -441,8 +441,8 @@
 	min_creation_cost += slots_used - 2
 	for(var/datum/chem_property/P in creation_template)
 		creation_cost += max(abs(P.value), 1) * P.level
-		if(P.level > 5) // a penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
-			creation_cost += P.level - 6 + Ceiling((P.level - 5) / 2)
+		if(P.level > 5 && P.cost_penalty) // a penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
+			creation_cost += P.level - 6 + ceil((P.level - 5) / 2)
 	creation_cost += ((new_od_level - 10) / 5) * 3 //3 cost for every 5 units above 10
 	for(var/rarity in creation_complexity)
 		switch(rarity)

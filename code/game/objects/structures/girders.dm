@@ -332,7 +332,7 @@
 	if(P.ammo.damage_type == BURN)
 		dmg = P.damage
 	else
-		dmg = round(P.damage * 0.5)
+		dmg = floor(P.damage * 0.5)
 	if(dmg)
 		health -= dmg
 		take_damage(dmg)

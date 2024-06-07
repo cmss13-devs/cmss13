@@ -77,6 +77,7 @@
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2
 
+#define LATEJOIN_MARINES_PER_LATEJOIN_LARVA_EARLY 4
 #define LATEJOIN_MARINES_PER_LATEJOIN_LARVA 2.5
 
 //=================================================
@@ -91,6 +92,15 @@
 #define PAIN_OVERLAY_LEGACY 2 //Creates a legacy blurring effect over your screen if you have any eye_blur at all. Not recommended.
 //=================================================
 
+//=================================================
+#define FLASH_OVERLAY_WHITE 0 //Flashes your screen white.
+#define FLASH_OVERLAY_DARK 1 //Flashes your screen a dark grey.
+//=================================================
+
+//=================================================
+#define CRIT_OVERLAY_WHITE 0 //Overlays your screen white.
+#define CRIT_OVERLAY_DARK 1 //Overlays your screen a dark grey.
+//=================================================
 
 /// Number of weighted marine players for 1 gear_scale. gear_scale is clamped to 1 minimum
 #define MARINE_GEAR_SCALING_NORMAL 50

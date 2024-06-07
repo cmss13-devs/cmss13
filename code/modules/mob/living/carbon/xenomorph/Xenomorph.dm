@@ -52,6 +52,8 @@
 	gender = NEUTER
 	icon_size = 48
 	black_market_value = KILL_MENDOZA
+	///How much to horizontally adjust the sprites of held item onmobs by. Based on icon size. Most xenos have hands about the same height as a human's.
+	var/xeno_inhand_item_offset
 	dead_black_market_value = 50
 	light_system = MOVABLE_LIGHT
 	var/obj/item/clothing/suit/wear_suit = null
@@ -220,7 +222,6 @@
 	var/list/xeno_shields = list() // List of /datum/xeno_shield that holds all active shields on the Xeno.
 	var/acid_splash_cooldown = 5 SECONDS //Time it takes between acid splash retaliate procs
 	var/acid_splash_last //Last recorded time that an acid splash procced
-	var/interference = 0 // Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
 	var/mob/living/carbon/xenomorph/observed_xeno // Overwatched xeno for xeno hivemind vision
 	var/need_weeds = TRUE // Do we need weeds to regen HP?
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
@@ -429,7 +430,7 @@
 
 	GLOB.living_xeno_list += src
 	GLOB.xeno_mob_list += src
-
+	xeno_inhand_item_offset = (icon_size - 32) * 0.5
 	// More setup stuff for names, abilities etc
 	update_icon_source()
 	generate_name()
@@ -855,7 +856,7 @@
 	if(health < maxHealth)
 		currentHealthRatio = health / maxHealth
 	maxHealth = new_max_health
-	health = round(maxHealth * currentHealthRatio + 0.5)//Restore our health ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	health = floor(maxHealth * currentHealthRatio + 0.5)//Restore our health ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(health > maxHealth)
 		health = maxHealth
 
@@ -869,7 +870,7 @@
 		return
 	var/plasma_ratio = plasma_stored / plasma_max
 	plasma_max = new_plasma_max
-	plasma_stored = round(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	plasma_stored = floor(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(plasma_stored > plasma_max)
 		plasma_stored = plasma_max
 
@@ -882,7 +883,7 @@
 
 /mob/living/carbon/xenomorph/proc/recalculate_armor()
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
-	armor_deflection = armor_modifier + round(100 - (100 - caste.armor_deflection))
+	armor_deflection = armor_modifier + floor(100 - (100 - caste.armor_deflection))
 	armor_explosive_buff = explosivearmor_modifier
 
 /mob/living/carbon/xenomorph/proc/recalculate_damage()
@@ -989,7 +990,7 @@
 	next_move = world.time + 10 SECONDS
 	last_special = world.time + 1 SECONDS
 
-	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
+	var/displaytime = max(1, floor(breakouttime / 600)) //Minutes
 	visible_message(SPAN_DANGER("<b>[src] attempts to remove [legcuffed]!</b>"),
 		SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute\s and we must stand still)"))
 	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND ^ INTERRUPT_RESIST, BUSY_ICON_HOSTILE))

@@ -219,7 +219,7 @@
 	if(reagents && reagents.total_volume)
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-20")
 
-		var/percent = round((reagents.total_volume / volume) * 100)
+		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
 			if(0) filling.icon_state = null
 			if(1 to 20) filling.icon_state = "[icon_state]-20"
@@ -307,7 +307,7 @@
 	overlays.Cut()
 	if(reagents && reagents.total_volume)
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
-		var/percent = round((reagents.total_volume / volume) * 100)
+		var/percent = floor((reagents.total_volume / volume) * 100)
 		var/round_percent = 0
 		if(percent > 24) round_percent = round(percent, 25)
 		else round_percent = 10
@@ -364,6 +364,14 @@
 	flags_atom = FPRINT|OPENCONTAINER
 	ground_offset_x = 9
 	ground_offset_y = 8
+
+/obj/item/reagent_container/glass/beaker/vial/epinephrine
+	name = "epinephrine vial"
+
+/obj/item/reagent_container/glass/beaker/vial/epinephrine/Initialize()
+	. = ..()
+	reagents.add_reagent("adrenaline", 30)
+	update_icon()
 
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 	name = "tricordrazine vial"
@@ -611,7 +619,7 @@
 	if(reagents && reagents.total_volume)
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-00-65")
 
-		var/percent = round((reagents.total_volume / volume) * 100)
+		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
 			if(0 to 33) filling.icon_state = "[icon_state]-00-33"
 			if(34 to 65) filling.icon_state = "[icon_state]-34-65"

@@ -110,7 +110,7 @@
 
 		if(isliving(M))
 			var/mob/living/player = M
-			serialized["health"] = Floor(player.health / player.maxHealth * 100)
+			serialized["health"] = floor(player.health / player.maxHealth * 100)
 
 			if(isxeno(player))
 				var/mob/living/carbon/xenomorph/xeno = player
@@ -118,6 +118,7 @@
 					var/datum/caste_datum/caste = xeno.caste
 					serialized["caste"] = caste.caste_type
 					serialized["icon"] = caste.minimap_icon
+					serialized["hivenumber"] = xeno.hivenumber
 				xenos += list(serialized)
 				continue
 
@@ -126,7 +127,7 @@
 				var/obj/item/card/id/id_card = human.get_idcard()
 				var/datum/species/human_species = human.species
 				var/max_health = human_species.total_health != human.maxHealth ? human_species.total_health : human.maxHealth
-				serialized["health"] = Floor(player.health / max_health * 100)
+				serialized["health"] = floor(player.health / max_health * 100)
 
 				serialized["job"] = id_card?.assignment ? id_card.assignment : human.job
 				serialized["nickname"] = human.real_name

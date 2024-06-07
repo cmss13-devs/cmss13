@@ -1,7 +1,7 @@
 /datum/xeno_strain/acider
 	name = RUNNER_ACIDER
 	description = "At the cost of a little bit of your speed and all of your current abilities, you gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time. Your Tail Stab and slashes apply acid to living lifeforms that slowly burns them, and slashes against targets with acid stacks fill your acid glands. You also gain Corrosive Acid equivalent to that of a boiler that you can deploy more quickly than any other caste, at the cost of a chunk of your acid reserves with each use. Finally, after a twenty second windup, you can force your body to explode, covering everything near you with acid. The more acid you have stored, the more devastating the explosion will be, but during those twenty seconds before detonation you are slowed and give off several warning signals which give talls an opportunity to end you before you can detonate. If you successfully explode, you will reincarnate as a larva again!"
-	flavor_description = "Burn their walls, maim their faces! Your life, for The Hive!"
+	flavor_description = "This one will be the last thing they hear. A martyr."
 	icon_state_prefix = "Acider"
 
 	actions_to_remove = list(
@@ -140,7 +140,7 @@
 			dist = (0.934*dx) + (0.427*dy)
 		else
 			dist = (0.427*dx) + (0.934*dy)
-		var/damage = round((burn_range - dist) * max_burn_damage / burn_range)
+		var/damage = floor((burn_range - dist) * max_burn_damage / burn_range)
 		if(isxeno(target_living))
 			damage *= XVX_ACID_DAMAGEMULT
 

@@ -19,28 +19,28 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/populate_product_list(scale)
 	listed_products = list(
 		list("EQUIPMENT", -1, null, null),
-		list("Combat Flashlight", round(scale * 2), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
-		list("Hardhat", round(scale * 2), /obj/item/clothing/head/hardhat, VENDOR_ITEM_REGULAR),
-		list("Insulated Gloves", round(scale * 2), /obj/item/clothing/gloves/yellow, VENDOR_ITEM_REGULAR),
-		list("Utility Tool Belt", round(scale * 2), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
-		list("Welding Goggles", round(scale * 2), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
-		list("Welding Helmet", round(scale * 2), /obj/item/clothing/head/welding, VENDOR_ITEM_REGULAR),
-		list("Engineer Kit", round(scale * 2), /obj/item/storage/toolkit/empty, VENDOR_ITEM_REGULAR),
+		list("Combat Flashlight", floor(scale * 2), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
+		list("Hardhat", floor(scale * 2), /obj/item/clothing/head/hardhat, VENDOR_ITEM_REGULAR),
+		list("Insulated Gloves", floor(scale * 2), /obj/item/clothing/gloves/yellow, VENDOR_ITEM_REGULAR),
+		list("Utility Tool Belt", floor(scale * 2), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
+		list("Welding Goggles", floor(scale * 2), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
+		list("Welding Helmet", floor(scale * 2), /obj/item/clothing/head/welding, VENDOR_ITEM_REGULAR),
+		list("Engineer Kit", floor(scale * 2), /obj/item/storage/toolkit/empty, VENDOR_ITEM_REGULAR),
 
 		list("SCANNERS", -1, null, null),
-		list("Atmos Scanner", round(scale * 2), /obj/item/device/analyzer, VENDOR_ITEM_REGULAR),
-		list("Demolitions Scanner", round(scale * 1), /obj/item/device/demo_scanner, VENDOR_ITEM_REGULAR),
-		list("Meson Scanner", round(scale * 2), /obj/item/clothing/glasses/meson, VENDOR_ITEM_REGULAR),
-		list("Reagent Scanner", round(scale * 2), /obj/item/device/reagent_scanner, VENDOR_ITEM_REGULAR),
-		list("T-Ray Scanner", round(scale * 2), /obj/item/device/t_scanner, VENDOR_ITEM_REGULAR),
+		list("Atmos Scanner", floor(scale * 2), /obj/item/device/analyzer, VENDOR_ITEM_REGULAR),
+		list("Demolitions Scanner", floor(scale * 1), /obj/item/device/demo_scanner, VENDOR_ITEM_REGULAR),
+		list("Meson Scanner", floor(scale * 2), /obj/item/clothing/glasses/meson, VENDOR_ITEM_REGULAR),
+		list("Reagent Scanner", floor(scale * 2), /obj/item/device/reagent_scanner, VENDOR_ITEM_REGULAR),
+		list("T-Ray Scanner", floor(scale * 2), /obj/item/device/t_scanner, VENDOR_ITEM_REGULAR),
 
 		list("TOOLS", -1, null, null),
-		list("Blowtorch", round(scale * 4), /obj/item/tool/weldingtool, VENDOR_ITEM_REGULAR),
-		list("Crowbar", round(scale * 4), /obj/item/tool/crowbar, VENDOR_ITEM_REGULAR),
-		list("ME3 Hand Welder", round(scale * 2), /obj/item/tool/weldingtool/simple, VENDOR_ITEM_REGULAR),
-		list("Screwdriver", round(scale * 4), /obj/item/tool/screwdriver, VENDOR_ITEM_REGULAR),
-		list("Wirecutters", round(scale * 4), /obj/item/tool/wirecutters, VENDOR_ITEM_REGULAR),
-		list("Wrench", round(scale * 4), /obj/item/tool/wrench, VENDOR_ITEM_REGULAR)
+		list("Blowtorch", floor(scale * 4), /obj/item/tool/weldingtool, VENDOR_ITEM_REGULAR),
+		list("Crowbar", floor(scale * 4), /obj/item/tool/crowbar, VENDOR_ITEM_REGULAR),
+		list("ME3 Hand Welder", floor(scale * 2), /obj/item/tool/weldingtool/simple, VENDOR_ITEM_REGULAR),
+		list("Screwdriver", floor(scale * 4), /obj/item/tool/screwdriver, VENDOR_ITEM_REGULAR),
+		list("Wirecutters", floor(scale * 4), /obj/item/tool/wirecutters, VENDOR_ITEM_REGULAR),
+		list("Wrench", floor(scale * 4), /obj/item/tool/wrench, VENDOR_ITEM_REGULAR)
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/comtech_tools
@@ -52,19 +52,19 @@
 /obj/structure/machinery/cm_vending/sorted/tech/comtech_tools/populate_product_list(scale)
 	listed_products = list(
 		list("EQUIPMENT", -1, null, null),
-		list("Utility Tool Belt", round(scale * 4), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
-		list("Cable Coil", round(scale * 4), /obj/item/stack/cable_coil/random, VENDOR_ITEM_REGULAR),
-		list("Welding Goggles", round(scale * 2), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
-		list("Engineer Kit", round(scale * 2), /obj/item/storage/toolkit/empty, VENDOR_ITEM_REGULAR),
+		list("Utility Tool Belt", floor(scale * 4), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
+		list("Cable Coil", floor(scale * 4), /obj/item/stack/cable_coil/random, VENDOR_ITEM_REGULAR),
+		list("Welding Goggles", floor(scale * 2), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
+		list("Engineer Kit", floor(scale * 2), /obj/item/storage/toolkit/empty, VENDOR_ITEM_REGULAR),
 
 		list("TOOLS", -1, null, null),
-		list("Blowtorch", round(scale * 4), /obj/item/tool/weldingtool, VENDOR_ITEM_REGULAR),
-		list("Crowbar", round(scale * 4), /obj/item/tool/crowbar, VENDOR_ITEM_REGULAR),
-		list("Screwdriver", round(scale * 4), /obj/item/tool/screwdriver, VENDOR_ITEM_REGULAR),
-		list("Wirecutters", round(scale * 4), /obj/item/tool/wirecutters, VENDOR_ITEM_REGULAR),
-		list("Wrench", round(scale * 4), /obj/item/tool/wrench, VENDOR_ITEM_REGULAR),
-		list("Multitool", round(scale * 4), /obj/item/device/multitool, VENDOR_ITEM_REGULAR),
-		list("ME3 Hand Welder", round(scale * 2), /obj/item/tool/weldingtool/simple, VENDOR_ITEM_REGULAR),
+		list("Blowtorch", floor(scale * 4), /obj/item/tool/weldingtool, VENDOR_ITEM_REGULAR),
+		list("Crowbar", floor(scale * 4), /obj/item/tool/crowbar, VENDOR_ITEM_REGULAR),
+		list("Screwdriver", floor(scale * 4), /obj/item/tool/screwdriver, VENDOR_ITEM_REGULAR),
+		list("Wirecutters", floor(scale * 4), /obj/item/tool/wirecutters, VENDOR_ITEM_REGULAR),
+		list("Wrench", floor(scale * 4), /obj/item/tool/wrench, VENDOR_ITEM_REGULAR),
+		list("Multitool", floor(scale * 4), /obj/item/device/multitool, VENDOR_ITEM_REGULAR),
+		list("ME3 Hand Welder", floor(scale * 2), /obj/item/tool/weldingtool/simple, VENDOR_ITEM_REGULAR),
 
 		list("UTILITY", -1, null, null),
 		list("Sentry Gun Network Laptop", 4, /obj/item/device/sentry_computer, VENDOR_ITEM_REGULAR),
@@ -92,6 +92,7 @@
 		list("Auxiliar Power Storage Unit", 2, /obj/item/circuitboard/machine/ghettosmes, VENDOR_ITEM_REGULAR),
 		list("Air Alarm Electronics", 2, /obj/item/circuitboard/airalarm, VENDOR_ITEM_REGULAR),
 		list("Security Camera Monitor", 2, /obj/item/circuitboard/computer/cameras, VENDOR_ITEM_REGULAR),
+		list("Television Set", 4, /obj/item/circuitboard/computer/cameras/tv, VENDOR_ITEM_REGULAR),
 		list("Station Alerts", 2, /obj/item/circuitboard/computer/stationalert, VENDOR_ITEM_REGULAR),
 		list("Arcade", 2, /obj/item/circuitboard/computer/arcade, VENDOR_ITEM_REGULAR),
 		list("Atmospheric Monitor", 2, /obj/item/circuitboard/computer/air_management, VENDOR_ITEM_REGULAR),
@@ -109,16 +110,16 @@
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/populate_product_list(scale)
 	listed_products = list(
 		list("TOOLS", -1, null, null),
-		list("Cable Coil", round(scale * 3), /obj/item/stack/cable_coil/random, VENDOR_ITEM_REGULAR),
-		list("Multitool", round(scale * 2), /obj/item/device/multitool, VENDOR_ITEM_REGULAR),
+		list("Cable Coil", floor(scale * 3), /obj/item/stack/cable_coil/random, VENDOR_ITEM_REGULAR),
+		list("Multitool", floor(scale * 2), /obj/item/device/multitool, VENDOR_ITEM_REGULAR),
 
 		list("CIRCUITBOARDS", -1, null, null),
-		list("Airlock Circuit Board", round(scale * 4), /obj/item/circuitboard/airlock, VENDOR_ITEM_REGULAR),
-		list("APC Circuit Board", round(scale * 4), /obj/item/circuitboard/apc, VENDOR_ITEM_REGULAR),
+		list("Airlock Circuit Board", floor(scale * 4), /obj/item/circuitboard/airlock, VENDOR_ITEM_REGULAR),
+		list("APC Circuit Board", floor(scale * 4), /obj/item/circuitboard/apc, VENDOR_ITEM_REGULAR),
 
 		list("BATTERIES", -1, null, null),
-		list("High-Capacity Power Cell", round(scale * 3), /obj/item/cell/high, VENDOR_ITEM_REGULAR),
-		list("Low-Capacity Power Cell", round(scale * 7), /obj/item/cell, VENDOR_ITEM_REGULAR),
+		list("High-Capacity Power Cell", floor(scale * 3), /obj/item/cell/high, VENDOR_ITEM_REGULAR),
+		list("Low-Capacity Power Cell", floor(scale * 7), /obj/item/cell, VENDOR_ITEM_REGULAR),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag
@@ -133,22 +134,22 @@
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage/populate_product_list(scale)
 	listed_products = list(
 		list("ASSEMBLY COMPONENTS", -1, null, null),
-		list("Igniter", round(scale * 8), /obj/item/device/assembly/igniter, VENDOR_ITEM_REGULAR),
-		list("Timer", round(scale * 4), /obj/item/device/assembly/timer, VENDOR_ITEM_REGULAR),
-		list("Proximity Sensor", round(scale * 4), /obj/item/device/assembly/prox_sensor, VENDOR_ITEM_REGULAR),
-		list("Signaller", round(scale * 4), /obj/item/device/assembly/signaller, VENDOR_ITEM_REGULAR),
+		list("Igniter", floor(scale * 8), /obj/item/device/assembly/igniter, VENDOR_ITEM_REGULAR),
+		list("Timer", floor(scale * 4), /obj/item/device/assembly/timer, VENDOR_ITEM_REGULAR),
+		list("Proximity Sensor", floor(scale * 4), /obj/item/device/assembly/prox_sensor, VENDOR_ITEM_REGULAR),
+		list("Signaller", floor(scale * 4), /obj/item/device/assembly/signaller, VENDOR_ITEM_REGULAR),
 
 		list("CONTAINERS", -1, null, null),
-		list("Bucket", round(scale * 6), /obj/item/reagent_container/glass/bucket, VENDOR_ITEM_REGULAR),
-		list("Mop Bucket", round(scale * 2), /obj/item/reagent_container/glass/bucket/mopbucket, VENDOR_ITEM_REGULAR),
+		list("Bucket", floor(scale * 6), /obj/item/reagent_container/glass/bucket, VENDOR_ITEM_REGULAR),
+		list("Mop Bucket", floor(scale * 2), /obj/item/reagent_container/glass/bucket/mopbucket, VENDOR_ITEM_REGULAR),
 
 		list("STOCK PARTS", -1, null, null),
-		list("Console Screen", round(scale * 4), /obj/item/stock_parts/console_screen, VENDOR_ITEM_REGULAR),
-		list("Matter Bin", round(scale * 4), /obj/item/stock_parts/matter_bin, VENDOR_ITEM_REGULAR),
-		list("Micro Laser", round(scale * 4), /obj/item/stock_parts/micro_laser , VENDOR_ITEM_REGULAR),
-		list("Micro Manipulator", round(scale * 4), /obj/item/stock_parts/manipulator, VENDOR_ITEM_REGULAR),
-		list("Scanning Module", round(scale * 4), /obj/item/stock_parts/scanning_module, VENDOR_ITEM_REGULAR),
-		list("Capacitor", round(scale * 3), /obj/item/stock_parts/capacitor, VENDOR_ITEM_REGULAR)
+		list("Console Screen", floor(scale * 4), /obj/item/stock_parts/console_screen, VENDOR_ITEM_REGULAR),
+		list("Matter Bin", floor(scale * 4), /obj/item/stock_parts/matter_bin, VENDOR_ITEM_REGULAR),
+		list("Micro Laser", floor(scale * 4), /obj/item/stock_parts/micro_laser , VENDOR_ITEM_REGULAR),
+		list("Micro Manipulator", floor(scale * 4), /obj/item/stock_parts/manipulator, VENDOR_ITEM_REGULAR),
+		list("Scanning Module", floor(scale * 4), /obj/item/stock_parts/scanning_module, VENDOR_ITEM_REGULAR),
+		list("Capacitor", floor(scale * 3), /obj/item/stock_parts/capacitor, VENDOR_ITEM_REGULAR)
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag
@@ -171,11 +172,11 @@
 		list("Scientist's Jumpsuit", 2, /obj/item/clothing/under/rank/scientist, VENDOR_ITEM_REGULAR),
 
 		list("ASSEMBLY COMPONENTS", -1, null, null),
-		list("Igniter", round(scale * 8), /obj/item/device/assembly/igniter, VENDOR_ITEM_REGULAR),
-		list("Proximity Sensor", round(scale * 4), /obj/item/device/assembly/prox_sensor, VENDOR_ITEM_REGULAR),
-		list("Signaller", round(scale * 4), /obj/item/device/assembly/signaller, VENDOR_ITEM_REGULAR),
-		list("Tank Transfer Valve", round(scale * 4), /obj/item/device/transfer_valve, VENDOR_ITEM_REGULAR),
-		list("Timer", round(scale * 4), /obj/item/device/assembly/timer, VENDOR_ITEM_REGULAR),
+		list("Igniter", floor(scale * 8), /obj/item/device/assembly/igniter, VENDOR_ITEM_REGULAR),
+		list("Proximity Sensor", floor(scale * 4), /obj/item/device/assembly/prox_sensor, VENDOR_ITEM_REGULAR),
+		list("Signaller", floor(scale * 4), /obj/item/device/assembly/signaller, VENDOR_ITEM_REGULAR),
+		list("Tank Transfer Valve", floor(scale * 4), /obj/item/device/transfer_valve, VENDOR_ITEM_REGULAR),
+		list("Timer", floor(scale * 4), /obj/item/device/assembly/timer, VENDOR_ITEM_REGULAR),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/robotics

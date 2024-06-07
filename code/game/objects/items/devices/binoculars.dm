@@ -354,13 +354,16 @@
 /obj/item/device/binoculars/range/designator/scout
 	name = "scout laser designator"
 	desc = "An improved laser designator, issued to USCM scouts, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
+	unacidable = TRUE
+	indestructible = TRUE
 	cooldown_duration = 80
 	target_acquisition_delay = 30
 
 /obj/item/device/binoculars/range/designator/spotter
 	name = "spotter's laser designator"
 	desc = "A specially-designed laser designator, issued to USCM spotters, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes. Additionally, a trained spotter can laze targets for a USCM marksman, increasing the speed of target acquisition. A targeting beam will connect the binoculars to the target, but it may inherit the user's cloak, if possible."
-
+	unacidable = TRUE
+	indestructible = TRUE
 	var/is_spotting = FALSE
 	var/spotting_time = 10 SECONDS
 	var/spotting_cooldown_delay = 5 SECONDS
@@ -445,7 +448,7 @@
 	human.face_atom(target)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
-	var/distance = round(get_dist(target, human) * 0.5)
+	var/distance = floor(get_dist(target, human) * 0.5)
 	var/f_spotting_time = designator.spotting_time + distance
 
 	designator.is_spotting = TRUE

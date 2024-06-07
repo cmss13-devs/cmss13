@@ -160,7 +160,16 @@
 	add_highlight(hugger, COLOR_YELLOW)
 	message_to_player("This is a facehugger, highlighted in yellow. Pick up the facehugger by clicking it.")
 	message_to_player("Stand next to the downed human and click them to apply the facehugger. Or drop the facehugger near them to see it leap onto their face automatically.")
-	RegisterSignal(human_dummy, COMSIG_HUMAN_IMPREGNATE, PROC_REF(nest_cap_phase))
+	RegisterSignal(hugger, COMSIG_PARENT_QDELETING, PROC_REF(on_hugger_deletion))
+	RegisterSignal(human_dummy, COMSIG_HUMAN_IMPREGNATE, PROC_REF(nest_cap_phase), override = TRUE)
+
+/datum/tutorial/xenomorph/basic/proc/on_hugger_deletion(hugger)
+	SIGNAL_HANDLER
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/effect/alien/resin/special/eggmorph, morpher)
+	morpher.stored_huggers = 1
+	add_highlight(morpher, COLOR_YELLOW)
+	message_to_player("Click the egg morpher to take a <b>facehugger</b>.")
+	RegisterSignal(xeno, COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER, PROC_REF(take_facehugger_phase))
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase()
 	SIGNAL_HANDLER
@@ -168,6 +177,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/mask/facehugger, hugger)
 	UnregisterSignal(human_dummy, COMSIG_MOB_TAKE_DAMAGE)
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_IMPREGNATE)
+	UnregisterSignal(hugger, COMSIG_PARENT_QDELETING)
 	remove_highlight(hugger)
 
 	message_to_player("We should nest the infected human to make sure they don't get away.")

@@ -359,7 +359,7 @@
 	name = "USCM Cargo Technician (CT)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
-	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_PREP)
+	access = list(ACCESS_MARINE_CARGO)
 	assignment = JOB_CARGO_TECH
 	rank = JOB_CARGO_TECH
 	paygrade = PAY_SHORT_ME2
@@ -466,6 +466,16 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(new_human), WEAR_L_STORE)
 	if(kit)
 		new_human.equip_to_slot_or_del(new kit(new_human), WEAR_IN_BACK)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/commander/visitor
+	name = "USCM Observer (Major) (VO)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = JOB_USCM_OBSV
+	rank = JOB_USCM_OBSV
+	role_comm_title = "VO"
 
 //*****************************************************************************************************/
 

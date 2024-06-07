@@ -64,7 +64,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 /datum/unit_test/Destroy()
 	QDEL_LIST(allocated)
 	// clear the test area
-	for (var/turf/turf in block(locate(1, 1, run_loc_floor_bottom_left.z), locate(world.maxx, world.maxy, run_loc_floor_bottom_left.z)))
+	for (var/turf/turf as anything in Z_TURFS(run_loc_floor_bottom_left.z))
 		for (var/content in turf.contents)
 			if (istype(content, /obj/effect/landmark))
 				continue

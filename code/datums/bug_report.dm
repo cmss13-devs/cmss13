@@ -98,7 +98,7 @@
 				bug_report_request()
 				awaiting_admin_approval = TRUE
 			else // otherwise it's been approved
-				submit_form()
+				submit_form(user)
 
 		if("cancel")
 			ui.close()

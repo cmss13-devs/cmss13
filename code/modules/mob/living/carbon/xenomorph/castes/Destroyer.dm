@@ -61,6 +61,8 @@
 	weed_food_states = list()
 	weed_food_states_flipped = list()
 
+	bubble_icon = "alienroyal"
+
 /mob/living/carbon/xenomorph/destroyer/Initialize()
 	. = ..()
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")

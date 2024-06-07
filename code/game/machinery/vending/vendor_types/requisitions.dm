@@ -286,6 +286,21 @@
 		list("Speed Loaders Box (M44 x 16)", 0, /obj/item/ammo_box/magazine/m44, VENDOR_ITEM_REGULAR),
 		list("Speed Loaders Box (Marksman M44 x 16)", 0, /obj/item/ammo_box/magazine/m44/marksman, VENDOR_ITEM_REGULAR),
 		list("Speed Loaders Box (Heavy M44 x 16)", 0, /obj/item/ammo_box/magazine/m44/heavy, VENDOR_ITEM_REGULAR),
+
+		list("Magazine Box (M4RA x 16)", 0, /obj/item/ammo_box/magazine/m4ra, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (AP M4RA x 16)", 0, /obj/item/ammo_box/magazine/m4ra/ap, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (M4A3 x 16)", 0, /obj/item/ammo_box/magazine/m4a3, VENDOR_ITEM_REGULAR),
+		list("Drum Box (M56B x 8)", 0, /obj/item/ammo_box/magazine/m56b, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (HP M4A3 x 16)", 0, /obj/item/ammo_box/magazine/m4a3/hp, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (AP M4A3 x 16)", 0, /obj/item/ammo_box/magazine/m4a3/ap, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (M41AE2 Holo-Target x 8)", 0, /obj/item/ammo_box/magazine/m41ae2/holo, VENDOR_ITEM_REGULAR),
+		list("Flamer Tank Box (UT-Napthal Fuel x 8)", 0, /obj/item/ammo_box/magazine/flamer, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (M41AE2 x 8)", 0, /obj/item/ammo_box/magazine/m41ae2, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (M41A MK1 x 8)", 0, /obj/item/ammo_box/magazine/mk1, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (M41A MK1 AP x 8)", 0, /obj/item/ammo_box/magazine/mk1/ap, VENDOR_ITEM_REGULAR),
+		list("Drum Box (M56D x 8)", 0, /obj/item/ammo_box/magazine/m56d, VENDOR_ITEM_REGULAR),
+		list("Ammo Box (M2C x 8)", 0, /obj/item/ammo_box/magazine/m2c, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (XM51 x 8)", 0, /obj/item/ammo_box/magazine/xm51, VENDOR_ITEM_REGULAR),
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/stock(obj/item/item_to_stock, mob/user)

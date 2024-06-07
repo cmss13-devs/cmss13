@@ -41,3 +41,14 @@
   vero5123:
   - bugfix: Fixes overwatch console coordinate comment UI crash
   - bugfix: Fixes chat UI crash after entering a custom font
+2024-06-07:
+  Blundir:
+  - rscadd: contraband ammo selection in black market
+  - rscadd: tons of new ammo boxes
+  GrrrKitten:
+  - rscadd: replaces the old ethnicity system with a new skintone system
+  - imageadd: Resprites humans, adds 9 new mix and match body options to replace the
+      old 3 options
+  - rscadd: resprites dogtags and adds an accessory dogtag that can be made visible
+      via attaching to suit/armor
+  - imageadd: Touches up a lot of the underwear sprites

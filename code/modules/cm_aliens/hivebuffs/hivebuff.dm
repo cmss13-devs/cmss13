@@ -155,8 +155,7 @@
 		to_chat(purchasing_mob, SPAN_XENONOTICE(special_fail_message))
 		return FALSE
 
-	if(!istype(purchasing_mob, /mob/living/carbon/xenomorph/queen))
-		log_admin("[purchasing_mob] of [hive.hivenumber] is attempting to purchase a hive buff: [name].")
+	log_admin("[purchasing_mob] of [hive.hivenumber] is attempting to purchase a hive buff: [name].")
 
 	if(!_seek_queen_approval(purchasing_mob))
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our queen did not approve the purchase of [name]."))
@@ -188,8 +187,7 @@
 	if(apply_on_new_xeno)
 		RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(_handle_xenomorph_new))
 
-	if(!istype(purchasing_mob, /mob/living/carbon/xenomorph/queen))
-		log_admin("[purchasing_mob] and [hive.living_xeno_queen] of [hive.hivenumber] have purchased a hive buff: [name].")
+	log_admin("[purchasing_mob] and [hive.living_xeno_queen] of [hive.hivenumber] have purchased a hive buff: [name].")
 
 	// Add to the relevant hive lists.
 	LAZYADD(hive.used_hivebuffs, src)

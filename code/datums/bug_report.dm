@@ -37,7 +37,7 @@
 
 /datum/tgui_bug_report_form/proc/Destroy()
 	GLOB.bug_reports -= src
-	return ..()
+	. = ..()
 
 // used by the admin to create the issue via the github api.
 /datum/tgui_bug_report_form/proc/submit_form(mob/ui_user)

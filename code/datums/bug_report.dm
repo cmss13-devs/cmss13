@@ -15,7 +15,7 @@
 	src.user = user
 
 /datum/tgui_bug_report_form/proc/external_link_prompt()
-	tgui_alert(user, "Unable to create a bug report at this time, please create the issue directly through our github repository instead")
+	tgui_alert(user, "Unable to create a bug report at this time, please create the issue directly through our GitHub repository instead")
 
 	if(tgui_alert(user, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) == "Yes")
 		user << link(CONFIG_GET(string/githuburl))

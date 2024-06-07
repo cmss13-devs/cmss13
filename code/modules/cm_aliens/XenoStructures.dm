@@ -957,6 +957,9 @@
 				banished = TRUE
 				break
 
+		if(banished)
+			continue
+
 		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", "Choice", list("Yes", "No"), 10 SECONDS)
 
 		if(pick == "Yes")
@@ -990,6 +993,9 @@
 			if(hive.banished_ckeys[mob_name] == candidate.ckey)
 				banished = TRUE
 				break
+		
+		if(banished)
+			continue
 
 		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", "Choice", list("Yes", "No"), 10 SECONDS)
 

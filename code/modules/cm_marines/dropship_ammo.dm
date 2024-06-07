@@ -244,7 +244,7 @@
 /obj/structure/ship_ammo/laser_battery/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	set waitfor = 0
 	var/list/turf_list = list()
-	for(var/turf/T in range(impact, 3)) //This is its area of effect
+	for(var/turf/T in range(3, impact)) //This is its area of effect
 		turf_list += T
 	playsound(impact, 'sound/effects/pred_vision.ogg', 20, 1)
 	for(var/i=1 to 16) //This is how many tiles within that area of effect will be randomly ignited

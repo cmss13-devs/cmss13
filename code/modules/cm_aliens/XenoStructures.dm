@@ -951,6 +951,12 @@
 		if (get_job_playtime(candidate.client, JOB_XENO_ROLES) < 25 HOURS)
 			continue
 
+		var/banished = FALSE
+		for(var/mob_name in hive.banished_ckeys)
+			if(hive.banished_ckeys[mob_name] == candidate.ckey)
+				banished = TRUE
+				break
+
 		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", "Choice", list("Yes", "No"), 10 SECONDS)
 
 		if(pick == "Yes")
@@ -978,6 +984,12 @@
 	for(var/mob/candidate in observer_list_copy)
 		if (get_job_playtime(candidate.client, JOB_XENO_ROLES) >= 25 HOURS)
 			continue
+
+		var/banished = FALSE
+		for(var/mob_name in hive.banished_ckeys)
+			if(hive.banished_ckeys[mob_name] == candidate.ckey)
+				banished = TRUE
+				break
 
 		var/pick = tgui_alert(candidate, "Would you like to become the destroyer?", "Choice", list("Yes", "No"), 10 SECONDS)
 

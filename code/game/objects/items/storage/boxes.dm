@@ -38,6 +38,7 @@
 	name = "box of prideful crayons"
 	desc = "A box of every flavor of pride."
 	storage_slots = 8
+	w_class = SIZE_SMALL
 	can_hold = list(/obj/item/toy/crayon/pride)
 
 /obj/item/storage/box/pride/fill_preset_inventory()

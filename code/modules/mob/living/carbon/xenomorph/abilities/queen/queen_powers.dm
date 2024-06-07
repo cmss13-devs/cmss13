@@ -445,7 +445,6 @@
 		selection = show_radial_menu(xeno, xeno, radial_images, radius = 72, require_near = TRUE, tooltips = TRUE)
 
 	if(!selection)
-		to_chat(xeno, "No buff was selected.")
 		return FALSE
 
 	if(!buffs[selection])

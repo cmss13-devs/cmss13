@@ -21,7 +21,7 @@
 	unacidable = TRUE
 	var/should_track_build = FALSE
 	var/datum/cause_data/construction_data
-	var/list/blocks = list()
+	var/list/blockers = list()
 	var/block_range = 0
 
 /obj/effect/alien/resin/Initialize(mapload, mob/builder)
@@ -29,17 +29,12 @@
 	if(istype(builder) && should_track_build)
 		construction_data = create_cause_data(initial(name), builder)
 	if(block_range)
-		for(var/turf/T in range(block_range, src))
-			var/obj/effect/build_blocker/SP = new(T)
-			SP.linked_structure = src
-			blocks.Add(SP)
+		for(var/turf/turf in range(block_range, src))
+			var/obj/effect/build_blocker/blocker = new(turf, src)
+			blockers.Add(blocker)
 
 /obj/effect/alien/resin/Destroy()
-	if(block_range)
-		for(var/obj/effect/build_blocker/SP as anything in blocks)
-			blocks -= SP
-			SP.linked_structure = null
-			qdel(SP)
+	QDEL_LIST(blockers)
 	return ..()
 
 /obj/effect/alien/resin/proc/healthcheck()
@@ -133,14 +128,20 @@
 
 /obj/effect/build_blocker
 	health = 500000
-
 	unacidable = TRUE
 	indestructible = TRUE
 	invisibility = 101
-
 	alpha = 0
+	/// The atom we are blocking for
+	var/atom/linked_structure
 
-	var/obj/effect/alien/resin/linked_structure
+/obj/effect/build_blocker/New(loc, linked_structure)
+	. = ..()
+	src.linked_structure = linked_structure
+
+/obj/effect/build_blocker/Destroy(force)
+	linked_structure = null
+	return ..()
 
 /obj/effect/alien/resin/sticky
 	name = "sticky resin"
@@ -849,7 +850,10 @@
 	desc = "A large pulsating cocoon."
 	icon = 'icons/obj/structures/alien/xenoDestroyerHatchery.dmi'
 	icon_state = "static"
-	health = 3600
+	health = 4000
+	pixel_x = -48
+	pixel_y = -64
+	density = TRUE
 	plane = FLOOR_PLANE
 
 	/// The mob picked as a candidate to be the destroyer
@@ -879,6 +883,12 @@
 	. = ..()
 	GLOB.hive_datum[hive_number].has_hatchery = TRUE
 	chosen_candidate = null
+
+	for(var/x_offset in -1 to 1)
+		for(var/y_offset in -1 to 1)
+			var/turf/turf_to_block = locate(x + x_offset, y + y_offset, z)
+			var/obj/effect/build_blocker/blocker = new(turf_to_block, src)
+			blockers += blocker
 
 	addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME|TIMER_LOOP)
@@ -995,7 +1005,9 @@
 	icon_state = "hatched"
 	hatched = TRUE
 
-	var/mob/living/carbon/xenomorph/destroyer/destroyer = new(locate(x + 2, y + 2, z))
+	QDEL_LIST(blockers)
+
+	var/mob/living/carbon/xenomorph/destroyer/destroyer = new(get_turf(src))
 	if(chosen_candidate?.mob)
 		var/mob/old_mob = chosen_candidate.mob
 		old_mob.mind.transfer_to(destroyer)

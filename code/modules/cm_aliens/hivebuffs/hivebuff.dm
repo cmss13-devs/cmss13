@@ -1,14 +1,13 @@
-///GLOBAL DEFINES///
+//GLOBAL DEFINES//
 
 #define HIVE_STARTING_BUFFPOINTS 0
 #define HIVE_MAX_BUFFPOINTS 10
 #define BUFF_POINTS_NAME "Royal resin"
 
-///LOCAL DEFINES///
+//LOCAL DEFINES//
 
 #define HIVEBUFF_TIER_MINOR "Minor"
 #define HIVEBUFF_TIER_MAJOR "Major"
-
 
 /**
  *
@@ -20,8 +19,8 @@
  *
  */
 /datum/hivebuff
-	/// Timer id to call on_cease() if neccessary to end the effects.
-	var/_timer_id
+	/// Timer id for cooldown duration
+	var/_timer_id_cooldown = TIMER_ID_NULL
 	/// The hive that this buff is applied to.
 	var/datum/hive_status/hive
 	///Name of the buff, short and to the point
@@ -50,6 +49,8 @@
 	var/is_reusable = TRUE
 	/// Time that the buff is active for if it is a timed buff.
 	var/duration
+	/// Time that the buff is on cooldown after ending
+	var/cooldown_duration
 	/// Cost of the buff
 	var/cost = 1
 
@@ -84,9 +85,11 @@
 
 /datum/hivebuff/Destroy(force, ...)
 	LAZYREMOVE(hive.active_hivebuffs, src)
+	LAZYREMOVE(hive.used_hivebuffs, src)
+	LAZYREMOVE(hive.cooldown_hivebuffs, src)
 	hive = null
 	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
-	. = ..()
+	return ..()
 
 ///Wrapper for on_engage(), handles checking if the buff can be actually purchased as well as adding buff to the active_hivebuffs and used_hivebuffs for the hive.
 /datum/hivebuff/proc/_on_engage(mob/living/carbon/xenomorph/purchasing_mob, obj/effect/alien/resin/special/pylon/purchased_pylon)
@@ -110,6 +113,11 @@
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive has already used [name] and cannot use it again!"))
 		return FALSE
 
+	var/datum/hivebuff/cooldown_buff = locate(type) in hive.cooldown_hivebuffs
+	if(cooldown_buff)
+		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive has already used [name] recently! Wait [DisplayTimeText(timeleft(cooldown_buff._timer_id_cooldown))]."))
+		return FALSE
+
 	if(!_check_pass_combineable())
 		var/active_buffs = ""
 		for(var/buff in hive.active_hivebuffs)
@@ -122,7 +130,7 @@
 		to_chat(purchasing_mob, SPAN_XENONOTICE(special_fail_message))
 		return FALSE
 
-	log_admin("[purchasing_mob] of [hive.hivenumber] is attempting to purchase a hive buff: [name].")
+	log_admin("[key_name(purchasing_mob)] of [hive.hivenumber] is attempting to purchase a hive buff: [name].")
 
 	if(!_seek_queen_approval(purchasing_mob))
 		return FALSE
@@ -153,7 +161,8 @@
 	if(apply_on_new_xeno)
 		RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(_handle_xenomorph_new))
 
-	log_admin("[purchasing_mob] and [hive.living_xeno_queen] of [hive.hivenumber] have purchased a hive buff: [name].")
+	var/involved = purchasing_mob == hive.living_xeno_queen ? "[key_name_admin(purchasing_mob)]" : "[key_name_admin(purchasing_mob)] and [key_name_admin(hive.living_xeno_queen)]"
+	message_admins("[involved] of [hive.hivenumber] has purchased a hive buff: [name].")
 
 	// Add to the relevant hive lists.
 	LAZYADD(hive.used_hivebuffs, src)
@@ -165,7 +174,7 @@
 	// If we need a timer to call _on_cease() we add it here and store the id, used for deleting the timer if we Destroy().
 	// If we have no duration to the buff then we call _on_cease() immediately.
 	if(duration)
-		_timer_id = addtimer(CALLBACK(src, PROC_REF(_on_cease)), duration, TIMER_STOPPABLE)
+		addtimer(CALLBACK(src, PROC_REF(_on_cease)), duration, TIMER_STOPPABLE|TIMER_DELETE_ME)
 	else
 		_on_cease()
 	return TRUE
@@ -181,7 +190,15 @@
 	_announce_buff_cease()
 	on_cease()
 	LAZYREMOVE(hive.active_hivebuffs, src)
+	LAZYADD(hive.cooldown_hivebuffs, src)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
+	if(cooldown_duration)
+		_timer_id_cooldown = addtimer(CALLBACK(src, PROC_REF(_on_cooldown_end)), cooldown_duration, TIMER_STOPPABLE|TIMER_DELETE_ME)
+
+/// Handler for the end of a cooldown
+/datum/hivebuff/proc/_on_cooldown_end()
+	LAZYREMOVE(hive.cooldown_hivebuffs, src)
+	_timer_id_cooldown = TIMER_ID_NULL
 
 /// Checks the number of pylons required and if the hive posesses them
 /datum/hivebuff/proc/_check_num_required_pylons()
@@ -298,9 +315,8 @@
 /datum/hivebuff/proc/handle_special_checks()
 	return TRUE
 
-////////////////////////////////
-//		BUFFS
-////////////////////////////////
+
+// BUFFS //
 
 /datum/hivebuff/extra_larva
 	name = "Surge of Larva"
@@ -351,9 +367,11 @@
 	name = "Boon of Destruction"
 	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space to grow."
 	tier = HIVEBUFF_TIER_MAJOR
+
 	is_reusable = TRUE
 	cost = 0
 	special_fail_message = "Only one hatchery may exist at a time."
+	cooldown_duration = 15 MINUTES // This buff ceases instantly so we need to incorporation the spawning time too
 	number_of_required_pylons = 2
 	roundtime_to_enable = XENO_DESTROYER_ACQUISITION_TIME
 	must_select_pylon = TRUE
@@ -369,10 +387,13 @@
 	var/turf/spawn_turf
 	for(var/turf/potential_turf in orange(5, purchased_pylon))
 		var/failed = FALSE
-		for(var/x_offset in 0 to 3)
-			for(var/y_offset in 0 to 3)
+		for(var/x_offset in -1 to 1)
+			for(var/y_offset in -1 to 1)
 				var/turf/turf_to_check = locate(potential_turf.x + x_offset, potential_turf.y + y_offset, potential_turf.z)
 				if(turf_to_check.density)
+					failed = TRUE
+					break
+				if(!turf_to_check.is_weedable())
 					failed = TRUE
 					break
 				var/area/target_area = get_area(turf_to_check)
@@ -460,4 +481,3 @@
 /datum/hivebuff/attack/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
 	buffed_amount = 0.1 * ((xeno.melee_damage_lower + xeno.melee_damage_upper) / 2 + xeno.damage_modifier)
 	xeno.damage_modifier += buffed_amount
-

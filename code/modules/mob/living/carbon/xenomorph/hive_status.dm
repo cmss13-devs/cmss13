@@ -142,6 +142,8 @@
 	var/list/active_hivebuffs
 	/// List of references to used hivebuffs
 	var/list/used_hivebuffs
+	/// List of references to used hivebuffs currently on cooldown
+	var/list/cooldown_hivebuffs
 
 	/// List of references to hive pylons active in the game world
 	var/list/active_endgame_pylons

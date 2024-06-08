@@ -78,7 +78,7 @@
 
 // the real deal, we are sending the request through the api.
 /datum/tgui_bug_report_form/proc/send_request(payload_body, client/user)
-	// for any future changes see https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#create-an-issue
+	// for any future changes see https://docs.github.com/en/rest/issues/issues
 	var/repo_name = CONFIG_GET(string/repo_name)
 	var/org = CONFIG_GET(string/org)
 	var/token = CONFIG_GET(string/github_app_api)

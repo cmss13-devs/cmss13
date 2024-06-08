@@ -1,4 +1,4 @@
-// Datum for handling bug reports, giving Harry the motivation to set up the config to get this functional.
+// Datum for handling bug reports
 #define STATUS_SUCCESS 200
 
 /datum/tgui_bug_report_form

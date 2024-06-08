@@ -1,5 +1,5 @@
 import { BooleanLike } from 'common/react';
-import React, { createRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useBackend } from '../backend';
 import { Flex, Section } from '../components';
@@ -41,11 +41,6 @@ export const BugReportForm = (props) => {
     report_details?.expected_behavior || '',
   );
 
-  const titleRef = createRef<HTMLInputElement>();
-  const stepsRef = createRef<HTMLTextAreaElement>();
-  const descriptionRef = createRef<HTMLInputElement>();
-  const expectedBehaviorRef = createRef<HTMLInputElement>();
-
   const submit = () => {
     if (!title || !description || !expected_behavior || !steps || !checkBox) {
       alert('Please fill out all required fields!');
@@ -79,7 +74,6 @@ export const BugReportForm = (props) => {
               <InputTitle required>{'Title'}</InputTitle>
               <input
                 width="100%"
-                ref={titleRef}
                 className="textarea"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -90,7 +84,6 @@ export const BugReportForm = (props) => {
               {'Give a short description of the bug'}
               <input
                 width="100%"
-                ref={descriptionRef}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className="textarea"
@@ -103,7 +96,6 @@ export const BugReportForm = (props) => {
               {'Give a short description of what you expected to happen'}
               <input
                 width="100%"
-                ref={expectedBehaviorRef}
                 value={expected_behavior}
                 onChange={(e) => setExpectedBehavior(e.target.value)}
                 className="textarea"
@@ -124,7 +116,6 @@ export const BugReportForm = (props) => {
                 }}
                 value={steps}
                 onChange={(e) => setSteps(e.target.value)}
-                ref={stepsRef}
                 placeholder="1.\n2.\n3."
               />
             </Flex.Item>

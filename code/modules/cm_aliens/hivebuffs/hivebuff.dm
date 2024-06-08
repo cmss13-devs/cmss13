@@ -385,6 +385,18 @@
 		special_fail_message = "Only one destroyer may exist at a time."
 		return FALSE
 
+	var/groundside_humans = 0
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
+
+		var/turf/turf = get_turf(current_human)
+		if(is_ground_level(turf?.z))
+			groundside_humans += 1
+
+	if(groundside_humans < 12)
+		special_fail_message = "There is too little damage to warrant a destroyer."
+
 	return !hive.has_hatchery
 
 /datum/hivebuff/game_ender_caste/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)

@@ -1,5 +1,5 @@
 // Datum for handling bug reports, giving Harry the motivation to set up the config to get this functional.
-#define STATUS_SUCCESSFUL 200
+#define STATUS_SUCCESS 200
 
 /datum/tgui_bug_report_form
 	// contains all the body text for the bug report.
@@ -107,7 +107,7 @@
 	UNTIL(request.is_complete())
 	var/datum/http_response/response = request.into_response()
 
-	if(response.errored || response.status_code != STATUS_SUCCESSFUL)
+	if(response.errored || response.status_code != STATUS_SUCCESS)
 		external_link_prompt(admin_user)
 	else
 		message_admins("[admin_user.ckey] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
@@ -157,4 +157,4 @@
 	message_admins("[admin_user.ckey] has rejected a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 	qdel(src)
 
-#undef STATUS_SUCCESSFUL
+#undef STATUS_SUCCESS

@@ -519,7 +519,7 @@
 	var/spread = floor(sqrt(size)*1.5)
 
 	var/list/turfs = list()
-	for(var/turf/open/floor/F in range(src,spread))
+	for(var/turf/open/floor/F in range(spread, src))
 		turfs += F
 
 	switch(A.ceiling)

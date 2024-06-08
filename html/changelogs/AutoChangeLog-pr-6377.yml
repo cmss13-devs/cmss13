@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixed the USCM Observer icon not displaying. Forest dumb."

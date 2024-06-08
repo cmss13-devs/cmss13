@@ -435,7 +435,7 @@
 
 /datum/hivebuff/defence
 	name = "Boon of Defence"
-	desc = "Increases all xenomorph armour by a flat 5% for 5 minutes"
+	desc = "Increases all xenomorph armour by 2.5 for 5 minutes"
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The Queen has imbued us with greater chitin."
@@ -444,16 +444,16 @@
 	radial_icon = "shield"
 
 /datum/hivebuff/defence/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
+	xeno.armor_modifier += XENO_ARMOR_MOD_TINY
 	xeno.recalculate_armor()
 
 /datum/hivebuff/defence/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
+	xeno.armor_modifier -= XENO_ARMOR_MOD_TINY
 	xeno.recalculate_armor()
 
 /datum/hivebuff/defence/major
 	name = "Major Boon of Defence"
-	desc = "Increases all xenomorph armour by a flat 10% for 10 minutes"
+	desc = "Increases all xenomorph armour by 5 for 10 minutes"
 	tier = HIVEBUFF_TIER_MAJOR
 
 	engage_flavourmessage = "The Queen has imbued us with even greater chitin."
@@ -463,11 +463,11 @@
 	radial_icon = "shield_m"
 
 /datum/hivebuff/defence/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_modifier += XENO_ARMOR_MOD_SMALL
+	xeno.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
 	xeno.recalculate_armor()
 
 /datum/hivebuff/defence/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_modifier -= XENO_ARMOR_MOD_SMALL
+	xeno.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
 	xeno.recalculate_armor()
 
 /datum/hivebuff/attack

@@ -1,5 +1,5 @@
 // Datum for handling bug reports, giving Harry the motivation to set up the config to get this functional.
-#define STATUS_SUCESSFUL "200"
+#define STATUS_SUCCESSFUL "200"
 
 /datum/tgui_bug_report_form
 	// contains all the body text for the bug report.
@@ -157,4 +157,4 @@
 	message_admins("[admin_user.ckey] has rejected a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 	qdel(src)
 
-#undef STATUS_SUCESSFUL
+#undef STATUS_SUCCESSFUL

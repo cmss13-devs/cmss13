@@ -52,7 +52,7 @@
 		qdel(src)
 	admin_user = null
 	selected_confirm = FALSE
-	seleted_cancel = FALSE
+	selected_cancel = FALSE
 
 /datum/tgui_bug_report_form/Destroy()
 	GLOB.bug_reports -= src

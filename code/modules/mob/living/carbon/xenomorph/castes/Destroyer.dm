@@ -1,5 +1,5 @@
 /datum/caste_datum/destroyer
-	caste_type = XENO_CASTE_DESTROYER
+	caste_type = XENO_CASTE_KING
 	caste_desc = "The end of the line."
 	tier = 4
 
@@ -29,8 +29,8 @@
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 
 /mob/living/carbon/xenomorph/destroyer
-	caste_type = XENO_CASTE_DESTROYER
-	name = XENO_CASTE_DESTROYER
+	caste_type = XENO_CASTE_KING
+	name = XENO_CASTE_KING
 	desc = "A massive alien covered in spines and armoured plates."
 	icon = 'icons/mob/xenos/destroyer.dmi'
 	icon_size = 64

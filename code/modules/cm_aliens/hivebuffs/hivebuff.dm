@@ -429,7 +429,7 @@
 		engage_failure_message = "Unable to find a viable spawn point for the destroyer."
 		return FALSE
 
-	new /obj/effect/alien/resin/destroyer_cocoon(spawn_turf)
+	new /obj/effect/alien/resin/king_cocoon(spawn_turf)
 
 	return TRUE
 

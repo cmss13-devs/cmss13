@@ -845,7 +845,7 @@
 
 	return ..()
 
-/obj/effect/alien/resin/destroyer_cocoon
+/obj/effect/alien/resin/king_cocoon
 	name = "alien cocoon"
 	desc = "A large pulsating cocoon."
 	icon = 'icons/obj/structures/alien/xenoDestroyerHatchery.dmi'
@@ -863,7 +863,7 @@
 	/// Whether the cocoon has hatched
 	var/hatched = FALSE
 
-/obj/effect/alien/resin/destroyer_cocoon/Destroy()
+/obj/effect/alien/resin/king_cocoon/Destroy()
 	if(!hatched)
 		marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP IN [get_area_name(loc)] HAS BEEN STOPPED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 		var/datum/hive_status/hive
@@ -879,7 +879,7 @@
 	GLOB.hive_datum[hive_number].has_hatchery = FALSE
 	. = ..()
 
-/obj/effect/alien/resin/destroyer_cocoon/Initialize(mapload, pylon)
+/obj/effect/alien/resin/king_cocoon/Initialize(mapload, pylon)
 	. = ..()
 	GLOB.hive_datum[hive_number].has_hatchery = TRUE
 	chosen_candidate = null
@@ -900,22 +900,22 @@
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("The destroyer is growing at [get_area_name(loc)]. Protect it at all costs!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("The King is growing at [get_area_name(loc)]. Protect it at all costs!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's destroyer is growing at [get_area_name(loc)]."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King is growing at [get_area_name(loc)]."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
-/obj/effect/alien/resin/destroyer_cocoon/proc/check_pylons()
+/obj/effect/alien/resin/king_cocoon/proc/check_pylons()
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 
 	if(length(hive.active_endgame_pylons) < 2)
 		qdel(src)
 		return
 
-/obj/effect/alien/resin/destroyer_cocoon/proc/start_growing()
+/obj/effect/alien/resin/king_cocoon/proc/start_growing()
 	icon_state = "growing"
 	addtimer(CALLBACK(src, PROC_REF(announce_halfway)), 5 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
-/obj/effect/alien/resin/destroyer_cocoon/proc/announce_halfway()
+/obj/effect/alien/resin/king_cocoon/proc/announce_halfway()
 	addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 	marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - 5 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
@@ -925,28 +925,28 @@
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("The destroyer will hatch in approximately 5 minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately 5 minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's destroyer will hatch in approximately 5 minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately 5 minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
-#define DESTROYER_PLAYTIME_HOURS (50 HOURS)
+#define KING_PLAYTIME_HOURS (50 HOURS)
 
-/obj/effect/alien/resin/destroyer_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
+/obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
 	if(!candidate.client)
 		return FALSE
 	if(playtime_restricted)
-		if(candidate.client.get_total_xeno_playtime() < DESTROYER_PLAYTIME_HOURS)
+		if(candidate.client.get_total_xeno_playtime() < KING_PLAYTIME_HOURS)
 			return FALSE
-	else if(candidate.client.get_total_xeno_playtime() >= DESTROYER_PLAYTIME_HOURS)
+	else if(candidate.client.get_total_xeno_playtime() >= KING_PLAYTIME_HOURS)
 		return FALSE // We do this under the assumption we tried it the other way already so don't ask twice
 	for(var/mob_name in hive.banished_ckeys)
 		if(hive.banished_ckeys[mob_name] == candidate.ckey)
 			return FALSE
-	return tgui_alert(candidate, "Would you like to become the destroyer?", "Choice", list("Yes", "No"), 10 SECONDS) == "Yes"
+	return tgui_alert(candidate, "Would you like to become the King?", "Choice", list("Yes", "No"), 10 SECONDS) == "Yes"
 
-#undef DESTROYER_PLAYTIME_HOURS
+#undef KING_PLAYTIME_HOURS
 
-/obj/effect/alien/resin/destroyer_cocoon/proc/roll_candidates()
+/obj/effect/alien/resin/king_cocoon/proc/roll_candidates()
 	// Ask all the living xenos
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 	var/list/total_xenos_copy = shuffle(hive.totalXenos.Copy() - hive.living_xeno_queen)
@@ -966,10 +966,10 @@
 	for(var/mob/candidate in observer_list_copy)
 		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
 			return candidate.client
-	message_admins("Failed to find a client for the destroyer, releasing as freed mob.")
+	message_admins("Failed to find a client for the King, releasing as freed mob.")
 	return null
 
-/obj/effect/alien/resin/destroyer_cocoon/proc/choose_candidate()
+/obj/effect/alien/resin/king_cocoon/proc/choose_candidate()
 	chosen_candidate = roll_candidates()
 
 	marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - 1 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
@@ -979,16 +979,16 @@
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("The destroyer will hatch in approximately one minute."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately one minute."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's destroyer will hatch in approximately one minute."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately one minute."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 	// Technically slow players will delay us so its not just 10 minutes
-	addtimer(CALLBACK(src, PROC_REF(animate_hatch_destroyer)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(animate_hatch_king)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
-/obj/effect/alien/resin/destroyer_cocoon/proc/animate_hatch_destroyer()
+/obj/effect/alien/resin/king_cocoon/proc/animate_hatch_king()
 	flick("hatching", src)
-	addtimer(CALLBACK(src, PROC_REF(hatch_destroyer)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
+	addtimer(CALLBACK(src, PROC_REF(hatch_king)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 	marine_announcement("ALERT.\n\nEXTREME ENERGY INFLUX DETECTED IN [get_area_name(loc)].\n\nCAUTION IS ADVISED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
@@ -997,11 +997,11 @@
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("The destroyer has hatched!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("All hail the King."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's destroyer has hatched!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King has hatched!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
-/obj/effect/alien/resin/destroyer_cocoon/proc/hatch_destroyer()
+/obj/effect/alien/resin/king_cocoon/proc/hatch_king()
 	icon_state = "hatched"
 	hatched = TRUE
 

@@ -8,7 +8,7 @@
 	xeno_required_num = 1 //Need at least one xeno.
 	monkey_amount = 5
 	corpses_to_spawn = 0
-	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
+	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN|MODE_SUNSET
 	static_comms_amount = 1
 	var/round_status_flags
 
@@ -312,6 +312,10 @@
 		else
 			SSticker.roundend_check_paused = TRUE
 			round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
+			if(!GLOB.sunrise_starting_time)
+				(GLOB.sunrise_starting_time = ROUND_TIME)
+			for(var/mob/lighting_mob as anything in GLOB.player_list)
+				lighting_mob.sunrise()
 			ares_conclude()
 			addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 	else if(!num_humans && !num_xenos)
@@ -336,6 +340,10 @@
 			round_finished = MODE_INFESTATION_M_MAJOR
 		else
 			round_finished = MODE_INFESTATION_M_MINOR
+		if(!GLOB.sunrise_starting_time)
+			(GLOB.sunrise_starting_time = ROUND_TIME)
+		for(var/mob/lighting_mob as anything in GLOB.player_list)
+			lighting_mob.sunrise()
 
 ///////////////////////////////
 //Checks if the round is over//

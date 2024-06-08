@@ -111,7 +111,7 @@
 		external_link_prompt(admin_user)
 	else
 		message_admins("[admin_user.ckey] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
-		to_chat(initial_user, SPAN_WARNING("An admin has sucessfully submitted your report and it should now be visible on GitHub, Thanks again!"))
+		to_chat(initial_user, SPAN_WARNING("An admin has successfully submitted your report and it should now be visible on GitHub, Thanks again!"))
 	qdel(src)// approved and submitted, we no longer need the datum.
 
 // proc that creates a ticket for an admin to approve or deny a bug report request

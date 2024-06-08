@@ -192,6 +192,10 @@
 	LAZYREMOVE(hive.active_hivebuffs, src)
 	LAZYADD(hive.cooldown_hivebuffs, src)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
+	
+	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
+		remove_buff_effects(xeno)
+
 	if(cooldown_duration)
 		_timer_id_cooldown = addtimer(CALLBACK(src, PROC_REF(_on_cooldown_end)), cooldown_duration, TIMER_STOPPABLE|TIMER_DELETE_ME)
 

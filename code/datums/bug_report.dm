@@ -35,7 +35,7 @@
 
 /datum/tgui_bug_report_form/tgui_interact(mob/user, datum/tgui/ui)
 	if(initial_user && !admin_user)
-		admin_user = user
+		admin_user = user.client
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -58,8 +58,11 @@
 
 // whether or not an admin can access the record at a given time.
 /datum/tgui_bug_report_form/proc/admin_can_access(mob/user)
-	if(user.client != admin_user && admin_user)
-		to_chat(usr, SPAN_WARNING("Another administrator is currently accessing this report, please wait for them to finish before making any changes."))
+	if(admin_user)
+		if(user.client == admin_user)
+			to_chat(usr, SPAN_WARNING("Bug report is already accessed by you."))
+		else
+			to_chat(usr, SPAN_WARNING("Another administrator is currently accessing this report, please wait for them to finish before making any changes."))
 		return FALSE
 
 	return TRUE

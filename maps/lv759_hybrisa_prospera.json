@@ -13,6 +13,7 @@
         "/datum/equipment_preset/survivor/hybrisa/sanitation",
         "/datum/equipment_preset/survivor/hybrisa/pizza_galaxy",
         "/datum/equipment_preset/survivor/hybrisa/fire_fighter",
+        "/datum/equipment_preset/survivor/hybrisa/cuppa_joes",
         "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
         "/datum/equipment_preset/survivor/hybrisa/doctor",
         "/datum/equipment_preset/survivor/hybrisa/paramedic",
@@ -20,8 +21,9 @@
         "/datum/equipment_preset/survivor/hybrisa/cmb_officer",
         "/datum/equipment_preset/survivor/hybrisa/electrical_engineer",
         "/datum/equipment_preset/survivor/hybrisa/heavy_vehicle_operator",
+        "/datum/equipment_preset/survivor/hybrisa/corporate_liaison",
+        "/datum/equipment_preset/survivor/hybrisa/wey_po",
         "/datum/equipment_preset/survivor/hybrisa/corporate_goon",
-        "/datum/equipment_preset/survivor/hybrisa/wy_pilot",
         "/datum/equipment_preset/survivor/clf"
     ],
 	"synth_survivor_types": [

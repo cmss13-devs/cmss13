@@ -1003,7 +1003,7 @@
 // Hybrisa Goon
 
 /datum/equipment_preset/corpse/pmc/hybrisa_goon
-	name = "Corpse - Weyland-Yutani Corporate (Goon)"
+	name = "Corpse - Weyland-Yutani - Corporate Security"
 	languages = list(LANGUAGE_ENGLISH)
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
@@ -1024,7 +1024,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
 
 /datum/equipment_preset/corpse/pmc/hybrisa_goon/burst
-	name = "Corpse - Burst Weyland-Yutani Corporate Security (Goon)"
+	name = "Corpse - Burst Weyland-Yutani - Corporate Security (Goon)"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -1032,7 +1032,7 @@
 // Hybrisa Lead Goon
 
 /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead
-	name = "Corpse - Weyland-Yutani Corporate Security Lead (Goon Lead)"
+	name = "Corpse - Weyland-Yutani - Corporate Security Lead"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON_LEAD
 	rank = JOB_WY_GOON_LEAD
@@ -1053,5 +1053,5 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
 
 /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/burst
-	name = "Corpse - Burst Weyland-Yutani Corporate Security Lead (Goon Lead)"
+	name = "Corpse - Burst Weyland-Yutani - Corporate Security Lead (Goon Lead)"
 	xenovictim = TRUE

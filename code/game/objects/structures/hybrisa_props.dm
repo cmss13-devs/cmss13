@@ -954,6 +954,15 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
+/obj/item/hybrisa/engineer_helmet
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	name = "strange alien helmet"
+	desc = "A strange alien helmet, it's huge, what could've worn such a thing?"
+	icon_state = "alien_helmet"
+	force = 15
+	throwforce = 12
+	w_class = SIZE_HUGE
+
 // Airport
 
 /obj/structure/prop/hybrisa/airport
@@ -962,7 +971,6 @@
 	icon_state = "dropshipfrontwhite1"
 	unslashable = TRUE
 	unacidable = TRUE
-	density = TRUE
 
 /obj/structure/prop/hybrisa/airport/dropshipnosecone
 	name = "nose cone"

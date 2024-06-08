@@ -26,7 +26,7 @@
 
 // CMB Police Officer
 
-/obj/item/clothing/under/hybrisa/CMB_officer
+/obj/item/clothing/under/hybrisa/cmb_officer
 	name = "\improper Colonial Marshal uniform"
 	desc = "A pair of grey slacks and a blue button-down shirt with a black tie; a non-standard uniform of the Colonial Marshals, specific to more urbanized colonies, resembling a uniform worn by more traditional policing forces on Earth."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -44,7 +44,7 @@
 
 // WY - Pilot
 
-/obj/item/clothing/under/hybrisa/WY_pilot
+/obj/item/clothing/under/hybrisa/wy_pilot
 	name = "\improper Weyland-Yutani Pilot uniform"
 	desc = "A pair of grey slacks and a white button-down shirt with a dark-grey tie and golden epaulettes signifying rank; a standard uniform for a commercial grade Weyland-Yutani affiliated Pilot."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -171,6 +171,25 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
+// Cuppa Joe's
+
+/obj/item/clothing/under/hybrisa/cuppa_joes
+	name = "\improper Cuppa Joe's uniform"
+	desc = "A pair of black slacks and a white short-sleeved button-down shirt; a standard uniform for a Cuppa Joe's employee. Have You Got The CuppaJoe Smile?"
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "cuppajoes_uniform"
+	worn_state = "cuppajoes_uniform"
+	contained_sprite = TRUE
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
+
 /////////////////////// Hats & Helmets ///////////////////////
 /////////////////////////////////////////////////////////////
 
@@ -196,7 +215,7 @@
 	item_state = "helmet_brown"
 	contained_sprite = TRUE
 
-/obj/item/clothing/head/hybrisa/WY_cap
+/obj/item/clothing/head/hybrisa/wy_cap
 	name = "\improper Weyland-Yutani cap"
 	desc = "A dark cap enscribed with the Weyland-Yutani 'Wings' logo' representing corporate justice."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -217,7 +236,7 @@
 
 // CMB Police Hats
 
-/obj/item/clothing/head/hybrisa/CMB_cap_new
+/obj/item/clothing/head/hybrisa/cmb_cap_new
 	name = "\improper Colonial Marshal Bureau cap"
 	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -236,7 +255,7 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NO_FLAGS
 
-/obj/item/clothing/head/hybrisa/CMB_peaked_cap
+/obj/item/clothing/head/hybrisa/cmb_peaked_cap
 	name = "\improper Colonial Marshal Bureau cap"
 	desc = "A dark peaked cap enscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -255,7 +274,7 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NO_FLAGS
 
-/obj/item/clothing/head/hybrisa/CMB_peaked_cap_gold
+/obj/item/clothing/head/hybrisa/cmb_peaked_cap_gold
 	name = "\improper Colonial Marshal Bureau cap"
 	desc = "A dark peaked cap enscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -276,7 +295,7 @@
 
 // WY-Pilot Cap
 
-/obj/item/clothing/head/hybrisa/WY_PO_cap
+/obj/item/clothing/head/hybrisa/wy_po_cap
 	name = "\improper Weyland-Yutani Pilots cap"
 	desc = "A dark peaked cap enscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civillian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -400,9 +419,10 @@
 
 // Fire-Fighter
 
-/obj/item/clothing/suit/fire_light
-	name = "firesuit"
-	desc = "A high-tech light-weight suit that protects against fire and heat."
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light
+
+	name = "PT-LT firesuit"
+	desc = "The 'PyroTex LT' is an advanced, lightweight firesuit developed by 'Watatsumi'. It provides protection against fire and heat, while also offering a degree of protection from blunt force trauma."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "firefighter_oversuit"
 	item_state = "firefighter_oversuit"
@@ -422,30 +442,49 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	allowed = list(
 		/obj/item/tool/extinguisher,
-
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
+		/obj/item/weapon/gun,
+		/obj/item/prop/prop_gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/storage/bible,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/belt/gun/type47,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/storage/belt/gun/flaregun,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+		/obj/item/storage/belt/gun/m39,
+		/obj/item/storage/belt/gun/xm51,
 	)
+	valid_accessory_slots = list(ACCESSORY_SLOT_PONCHO)
 	slowdown = 1
 	flags_inventory = NOPRESSUREDMAGE
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 
-/obj/item/clothing/suit/fire_light/equipped(mob/user, slot)
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/equipped(mob/user, slot)
 	if(slot == WEAR_JACKET)
 		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
 	..()
 
-/obj/item/clothing/suit/fire_light/dropped(mob/user)
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/dropped(mob/user)
 	UnregisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED)
 	..()
 
-/obj/item/clothing/suit/fire_light/proc/flamer_fire_crossed_callback(mob/living/L, datum/reagent/R)
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/proc/flamer_fire_crossed_callback(mob/living/L, datum/reagent/R)
 	SIGNAL_HANDLER
 
 	if(R.fire_penetrating)
@@ -455,7 +494,7 @@
 
 // Kelland Mining
 
-/obj/item/clothing/suit/storage/hybrisa_kelland
+/obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland
 	name = "\improper Kelland-Mining utility uniform"
 	desc = "A set of standard issue Kelland-Mining utility fatigues, a yellow pair of utility work slacks and a black collard heavy padded jacket, which protects against various environmental hazards."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -472,8 +511,30 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/prop/prop_gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/storage/bible,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/belt/gun/type47,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/storage/belt/gun/flaregun,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+		/obj/item/storage/belt/gun/m39,
+		/obj/item/storage/belt/gun/xm51,
+	)
+	valid_accessory_slots = list(ACCESSORY_SLOT_PONCHO)
 
-/obj/item/clothing/suit/storage/hybrisa_kelland_alt
+/obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt
 	name = "\improper Kelland-Mining utility uniform"
 	desc = "A set of standard issue Kelland-Mining utility fatigues, a yellow pair of utility work slacks and a black collard heavy padded jacket, which protects against various environmental hazards."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -490,6 +551,28 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/prop/prop_gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/storage/bible,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/belt/gun/type47,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/storage/belt/gun/flaregun,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+		/obj/item/storage/belt/gun/m39,
+		/obj/item/storage/belt/gun/xm51,
+	)
+	valid_accessory_slots = list(ACCESSORY_SLOT_PONCHO)
 
 // EMT - Paramedic
 
@@ -524,7 +607,7 @@
 
 // WY Pilot
 
-/obj/item/clothing/suit/storage/hybrisa/WY_Pilot
+/obj/item/clothing/suit/storage/hybrisa/wy_Pilot
 	name = "\improper Weyland-Yutani Pilot formal-jacket"
 	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civillian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -537,7 +620,7 @@
 
 // CMB Jacket
 
-/obj/item/clothing/suit/storage/CMB/hybrisa
+/obj/item/clothing/suit/storage/cmb/hybrisa
 	name = "\improper CMB Marshal jacket"
 	desc = "A black polyester jacket with a Marshal's badge pinned to it. Representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -548,7 +631,7 @@
 
 // CMB Vest
 
-/obj/item/clothing/suit/armor/vest/hybrisa/CMB_vest
+/obj/item/clothing/suit/armor/vest/hybrisa/cmb_vest
 	name = "CMB armored vest"
 	desc = "An CMB armored vest that protects against some damage."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -604,7 +687,7 @@
 
 /obj/item/clothing/suit/storage/hazardvest/kelland_mining
 	name = "Kelland-Mining hazard vest"
-	desc = "A blue high-visibility vest used in work zones."
+	desc = "A black high-visibility vest used in work zones."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "kellandmining_hazard"
 	item_state = "kellandmining_hazard"
@@ -674,6 +757,16 @@
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "hobocoat_darkred"
 	item_state = "hobocoat_darkred"
+	contained_sprite = TRUE
+
+// Cuppa Joe's Apron
+
+/obj/item/clothing/suit/apron/cuppa_joes
+	name = "Cuppa Joe's apron"
+	desc = "A basic red apron."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "cuppajoes_apron"
+	item_state = "cuppajoes_apron"
 	contained_sprite = TRUE
 
 /////////////////////// MISC ///////////////////////////

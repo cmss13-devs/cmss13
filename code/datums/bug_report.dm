@@ -14,6 +14,10 @@
 	// value to determine if the bug report is submitted and awaiting admin approval, used for state purposes in tgui.
 	var/awaiting_admin_approval = FALSE
 
+	// for garbage collection purposes.
+	var/selected_cancel = FALSE
+	var/selected_confirm = FALSE
+
 /datum/tgui_bug_report_form/New(mob/user)
 	if(!user.client) // nope.
 		qdel(src)
@@ -44,9 +48,11 @@
 
 /datum/tgui_bug_report_form/ui_close(mob/user)
 	. = ..()
-	if(initial_user && !admin_user) // they closed the ui before making a report
+	if((initial_user && !admin_user) && (!selected_cancel && !selected_confirm)) // they closed the ui and didn't select close or confirm
 		qdel(src)
 	admin_user = null
+	selected_confirm = FALSE
+	seleted_cancel = FALSE
 
 /datum/tgui_bug_report_form/Destroy()
 	GLOB.bug_reports -= src
@@ -150,6 +156,7 @@
 	var/mob/user = ui.user
 	switch(action)
 		if("confirm")
+			selected_confirm = TRUE
 			bug_report_data = sanitize_payload(params)
 			ui.close()
 			// bug report request is now waiting for admin approval
@@ -162,6 +169,7 @@
 				var/payload_body = create_form()
 				send_request(payload_body, user.client)
 		if("cancel")
+			selected_cancel = TRUE
 			ui.close()
 			if(awaiting_admin_approval) // admin has chosen to reject the bug report
 				reject(user.client)

@@ -84,7 +84,7 @@
 	var/token = CONFIG_GET(string/github_app_api)
 
 	if(!token || !org || !repo_name)
-		tgui_alert(user, "The configuration is not set for the external api", "Issue not reported!")
+		tgui_alert(user, "The configuration is not set for the external API.", "Issue not reported!")
 		external_link_prompt(user)
 		qdel(src)
 		return
@@ -96,7 +96,7 @@
 	headers["Content-Type"] = "text/markdown; charset=utf-8"
 	headers["Accept"] = "application/vnd.github+json"
 
-	var/datum/http_request/request = new
+	var/datum/http_request/request = new()
 
 	var/list/payload = list(
 		"title" = bug_report_data["title"],
@@ -112,7 +112,7 @@
 		external_link_prompt(user)
 	else
 		message_admins("[user.ckey] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
-		to_chat(initial_user, SPAN_WARNING("An admin has successfully submitted your report and it should now be visible on GitHub, Thanks again!"))
+		to_chat(initial_user, SPAN_WARNING("An admin has successfully submitted your report and it should now be visible on GitHub. Thanks again!"))
 	qdel(src)// approved and submitted, we no longer need the datum.
 
 // proc that creates a ticket for an admin to approve or deny a bug report request
@@ -120,7 +120,7 @@
 	to_chat(initial_user, SPAN_WARNING("Your bug report has been submitted, thank you!"))
 
 	GLOB.bug_reports += src
-	var/general_message = "[initial_user.ckey] has created a bug report, you may modify the report to your liking before submitting it to Github"
+	var/general_message = "[initial_user.ckey] has created a bug report, you may modify the report to your liking before submitting it to GitHub."
 	GLOB.admin_help_ui_handler.perform_adminhelp(initial_user, general_message, urgent = FALSE)
 	var/href_message = ADMIN_VIEW_BUG_REPORT(src)
 	initial_user.current_ticket.AddInteraction(href_message)

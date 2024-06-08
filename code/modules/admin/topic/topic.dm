@@ -2254,11 +2254,11 @@
 
 		var/datum/tgui_bug_report_form/bug_report = locate(href_list["view_bug_report"])
 		if(QDELETED(bug_report))
-			to_chat(usr, SPAN_WARNING("This bug report is no longer available"))
+			to_chat(usr, SPAN_WARNING("This bug report is no longer available."))
 			return
 
 		if(bug_report.admin_user)
-			to_chat(usr, SPAN_WARNING("Another administrator is currently accessing this report, please wait for them to finish before making any changes"))
+			to_chat(usr, SPAN_WARNING("Another administrator is currently accessing this report, please wait for them to finish before making any changes."))
 			return
 
 		bug_report.tgui_interact(usr)

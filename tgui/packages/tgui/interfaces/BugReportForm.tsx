@@ -67,7 +67,7 @@ export const BugReportForm = (props) => {
                 rel="noreferrer"
                 className="link"
               >
-                Github Repository
+                GitHub Repository
               </a>
             </Flex.Item>
             <Flex.Item>

@@ -1,5 +1,6 @@
 #define HIJACK_EXPLOSION_COUNT 5
-#define MARINE_MAJOR_ROUND_END_DELAY 3 MINUTES
+#define MARINE_MAJOR_ROUND_END_DELAY (3 MINUTES)
+#define LZ_HAZARD_START (3 MINUTES)
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
@@ -121,7 +122,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), 3 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), LZ_HAZARD_START)
 
 	return ..()
 

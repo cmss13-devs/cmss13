@@ -114,6 +114,9 @@
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_JUNGLE
 
+/area/varadero/exterior/pontoon_beach/lz
+	is_landing_zone = TRUE
+
 /area/varadero/exterior/eastbeach
 	name = "New Varadero - East Beach"
 	is_resin_allowed = FALSE

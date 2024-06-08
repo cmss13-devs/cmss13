@@ -50,6 +50,12 @@
 	GLOB.bug_reports -= src
 	return ..()
 
+/datum/tgui_bug_report_form/proc/sanitize_payload(list/params)
+	for(var/param in params)
+		params[param] = sanitize(params[param], list("\t"=" ","�"=" "))
+
+	return params
+
 // returns the body payload
 /datum/tgui_bug_report_form/proc/create_form()
 	var/list/testmerges = world.TgsTestMerges()
@@ -59,10 +65,10 @@
 
 	var/desc = {"
 ### Testmerges
-[text_output_tm]
+[text_output_tm ? text_output_tm : "N/A"]
 
 ### Round ID
-[GLOB.round_id]
+[GLOB.round_id ? GLOB.round_id : "N/A"]
 
 ### Description of the bug
 [bug_report_data["description"]]
@@ -132,7 +138,7 @@
 	var/mob/user = ui.user
 	switch(action)
 		if("confirm")
-			bug_report_data = params
+			bug_report_data = sanitize_payload(params)
 			ui.close()
 			// bug report request is now waiting for admin approval
 			if(!awaiting_admin_approval)

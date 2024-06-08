@@ -2253,7 +2253,7 @@
 			return
 
 		var/datum/tgui_bug_report_form/bug_report = locate(href_list["view_bug_report"])
-		if(QDELETED(bug_report))
+		if(!istype(bug_report) || QDELETED(bug_report))
 			to_chat(usr, SPAN_WARNING("This bug report is no longer available."))
 			return
 

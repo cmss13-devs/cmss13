@@ -11,17 +11,21 @@
 	var/awaiting_admin_approval = FALSE
 
 /datum/tgui_bug_report_form/New(mob/user)
-	// we should also test if the api is functional here, once the maintainers get the api is token.
 	if(!user.client) // nope.
 		qdel(src)
 		return
 	initial_user = user.client
 
-/datum/tgui_bug_report_form/proc/external_link_prompt()
+/datum/tgui_bug_report_form/proc/external_link_prompt(user)
 	tgui_alert(initial_user, "Unable to create a bug report at this time, please create the issue directly through our GitHub repository instead")
+	var/url = CONFIG_GET(string/githuburl)
+
+	if(!url)
+		to_chat(user, SPAN_WARNING("The configuration is not properly set, unable to open external link"))
+		return
 
 	if(tgui_alert(initial_user, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) == "Yes")
-		initial_user << link(CONFIG_GET(string/githuburl))
+		initial_user << link(url)
 
 /datum/tgui_bug_report_form/ui_state()
 	return GLOB.always_state
@@ -39,45 +43,69 @@
 	GLOB.bug_reports -= src
 	return ..()
 
-// used by the admin to create the issue via the github api.
-/datum/tgui_bug_report_form/proc/submit_form(mob/ui_user)
-	if(!awaiting_admin_approval || !CLIENT_IS_STAFF(ui_user.client))
-		return
+// returns the body payload
+/datum/tgui_bug_report_form/proc/create_form()
 	var/list/testmerges = world.TgsTestMerges()
 	var/text_output_tm = ""
 	for(var/tm in testmerges)
 		text_output_tm += "[tm]"
-	/*var/desc = {"
 
-		### Testmerges
-		text_output_tm
+	var/desc = {"
+### Testmerges
+[text_output_tm]
 
-		### Round ID
-		[GLOB.round_id]
+### Round ID
+[GLOB.round_id]
 
-		### Description of the bug
-		[bug_report_data["description"]]
+### Description of the bug
+[bug_report_data["description"]]
 
-		### What's the difference with what should have happened?
-		[bug_report_data["expected_behavior"]]
+### What's the difference with what should have happened?
+[bug_report_data["expected_behavior"]]
 
-		### How do we reproduce this bug?
-		[bug_report_data["steps"]]
+### How do we reproduce this bug?
+[bug_report_data["steps"]]
+	"}
 
-		"}
+	return desc
 
-	// rustg export, copy pasta from goon
-	var/api_response = some_proc("issue", list(
-		"title" = data["title"],
-		"body" = desc,
-	))
-	//
-	if(api_message != some_success_response)
+// the real deal, we are sending the request through the api.
+/datum/tgui_bug_report_form/proc/send_request(payload_body, mob/user)
+	var/repo_name = CONFIG_GET(string/repo_name)
+	var/org = CONFIG_GET(string/org)
+	var/token = CONFIG_GET(string/github_app_api)
+
+	if(!token || !org || !repo_name)
+		tgui_alert(user, "The configuration is not set for the external api", "Issue not reported!")
+		external_link_prompt(user)
+		qdel(src)
+		return
+
+	var/url = "https://api.github.com/repos/[org]/[repo_name]/issues"
+	var/list/headers = list()
+
+	headers["Authorization"] = "Bearer [token]"
+	headers["Content-Type"] = "text/markdown; charset=utf-8"
+	headers["Accept"] = "application/vnd.github+json"
+
+	var/datum/http_request/request = new
+
+	var/list/payload = list(
+		"title" = bug_report_data["title"],
+		"body" = payload_body,
+	)
+
+	request.prepare(RUSTG_HTTP_METHOD_POST, url, json_encode(payload), headers)
+	request.begin_async()
+	UNTIL(request.is_complete())
+	var/datum/http_response/response = request.into_response()
+
+	if(response.errored)
 		tgui_alert(user, "There has been an issue with reporting your bug, please try again later!", "Issue not reported!")
-		return FALSE
-	return TRUE
-	*/
-	message_admins("[ui_user.key] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
+		external_link_prompt(user)
+	else
+		message_admins("[user.key] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
+
 	qdel(src)// approved and submitted, we no longer need the datum.
 
 // proc that creates a ticket for an admin to approve or deny a bug report request
@@ -104,8 +132,10 @@
 				bug_report_request()
 				awaiting_admin_approval = TRUE
 			else // otherwise it's been approved
-				submit_form(user)
-
+				if(!CLIENT_IS_STAFF(user.client))
+					return
+				var/payload_body = create_form()
+				send_request(payload_body, user)
 		if("cancel")
 			ui.close()
 			if(awaiting_admin_approval) // admin has chosen to reject the bug report
@@ -118,7 +148,5 @@
 	.["awaiting_admin_approval"] = awaiting_admin_approval
 
 /datum/tgui_bug_report_form/proc/reject(mob/user)
-	if(!CLIENT_IS_STAFF(user.client))
-		return
 	message_admins("[user.key] has rejected a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 	qdel(src)

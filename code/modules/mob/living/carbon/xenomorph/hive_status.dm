@@ -880,7 +880,6 @@
 		if(isfacehugger(mob))
 			count++
 	return count
-endproc
 
 /datum/hive_status/proc/spawn_as_hugger(mob/dead/observer/user, atom/A)
 	var/mob/living/carbon/xenomorph/facehugger/hugger = new /mob/living/carbon/xenomorph/facehugger(A.loc, null, hivenumber)

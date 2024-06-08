@@ -60,7 +60,7 @@
 /datum/tgui_bug_report_form/proc/admin_can_access(mob/user)
 	if(admin_user)
 		if(user.client == admin_user)
-			to_chat(usr, SPAN_WARNING("Bug report is already accessed by you."))
+			to_chat(usr, SPAN_WARNING("Bug report is already opened and accessed by you."))
 		else
 			to_chat(usr, SPAN_WARNING("Another administrator is currently accessing this report, please wait for them to finish before making any changes."))
 		return FALSE

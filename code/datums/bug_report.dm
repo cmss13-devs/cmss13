@@ -8,7 +8,7 @@
 	// client of user who created the initial report, immutable, set on init.
 	var/client/initial_user = null
 
-	// client of the admin who is accessing the report, mutable depending on who is currently looking.
+	// client of the admin who is accessing the report, we don't want multiple admins unknowingly making changes at the same time.
 	var/client/admin_user = null
 
 	// value to determine if the bug report is submitted and awaiting admin approval, used for state purposes in tgui.
@@ -77,14 +77,14 @@
 	return desc
 
 // the real deal, we are sending the request through the api.
-/datum/tgui_bug_report_form/proc/send_request(payload_body)
+/datum/tgui_bug_report_form/proc/send_request(payload_body, client/user)
 	var/repo_name = CONFIG_GET(string/repo_name)
 	var/org = CONFIG_GET(string/org)
 	var/token = CONFIG_GET(string/github_app_api)
 
 	if(!token || !org || !repo_name)
-		tgui_alert(admin_user, "The configuration is not set for the external api", "Issue not reported!")
-		external_link_prompt(admin_user)
+		tgui_alert(user, "The configuration is not set for the external api", "Issue not reported!")
+		external_link_prompt(user)
 		qdel(src)
 		return
 
@@ -107,11 +107,10 @@
 	UNTIL(request.is_complete())
 	var/datum/http_response/response = request.into_response()
 
-	to_chat(world, SPAN_WARNING(response.status_code))
 	if(response.errored || response.status_code != STATUS_SUCCESS)
-		external_link_prompt(admin_user)
+		external_link_prompt(user)
 	else
-		message_admins("[admin_user.ckey] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
+		message_admins("[user.ckey] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 		to_chat(initial_user, SPAN_WARNING("An admin has successfully submitted your report and it should now be visible on GitHub, Thanks again!"))
 	qdel(src)// approved and submitted, we no longer need the datum.
 
@@ -142,11 +141,11 @@
 				if(!CLIENT_IS_STAFF(user.client))
 					return
 				var/payload_body = create_form()
-				send_request(payload_body)
+				send_request(payload_body, user.client)
 		if("cancel")
 			ui.close()
 			if(awaiting_admin_approval) // admin has chosen to reject the bug report
-				reject()
+				reject(user.client)
 	. = TRUE
 
 /datum/tgui_bug_report_form/ui_data(mob/user)
@@ -154,8 +153,8 @@
 	.["report_details"] = bug_report_data // only filled out once the user as submitted the form
 	.["awaiting_admin_approval"] = awaiting_admin_approval
 
-/datum/tgui_bug_report_form/proc/reject()
-	message_admins("[admin_user.ckey] has rejected a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
+/datum/tgui_bug_report_form/proc/reject(client/user)
+	message_admins("[user.ckey] has rejected a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 	qdel(src)
 
 #undef STATUS_SUCCESS

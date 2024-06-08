@@ -1,11 +1,15 @@
 // Datum for handling bug reports, giving Harry the motivation to set up the config to get this functional.
+#define STATUS_SUCESSFUL "200"
 
 /datum/tgui_bug_report_form
 	// contains all the body text for the bug report.
 	var/list/bug_report_data = null
 
-	// client of user who created the initial report
+	// client of user who created the initial report, immutable, set on init.
 	var/client/initial_user = null
+
+	// client of the admin who is accessing the report, mutable depending on who is currently looking.
+	var/client/admin_user = null
 
 	// value to determine if the bug report is submitted and awaiting admin approval, used for state purposes in tgui.
 	var/awaiting_admin_approval = FALSE
@@ -16,27 +20,30 @@
 		return
 	initial_user = user.client
 
-/datum/tgui_bug_report_form/proc/external_link_prompt(user)
-	tgui_alert(initial_user, "Unable to create a bug report at this time, please create the issue directly through our GitHub repository instead")
+/datum/tgui_bug_report_form/proc/external_link_prompt(client/user)
+	tgui_alert(user, "Unable to create a bug report at this time, please create the issue directly through our GitHub repository instead")
 	var/url = CONFIG_GET(string/githuburl)
-
 	if(!url)
 		to_chat(user, SPAN_WARNING("The configuration is not properly set, unable to open external link"))
 		return
 
-	if(tgui_alert(initial_user, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) == "Yes")
-		initial_user << link(url)
+	if(tgui_alert(user, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) == "Yes")
+		user << link(url)
 
 /datum/tgui_bug_report_form/ui_state()
 	return GLOB.always_state
 
 /datum/tgui_bug_report_form/tgui_interact(mob/user, datum/tgui/ui)
+	if(initial_user && !admin_user)
+		admin_user = user
+
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "BugReportForm")
 		ui.open()
 
 /datum/tgui_bug_report_form/ui_close(mob/user)
+	admin_user = null
 	. = ..()
 
 /datum/tgui_bug_report_form/Destroy()
@@ -70,14 +77,14 @@
 	return desc
 
 // the real deal, we are sending the request through the api.
-/datum/tgui_bug_report_form/proc/send_request(payload_body, mob/user)
+/datum/tgui_bug_report_form/proc/send_request(payload_body)
 	var/repo_name = CONFIG_GET(string/repo_name)
 	var/org = CONFIG_GET(string/org)
 	var/token = CONFIG_GET(string/github_app_api)
 
 	if(!token || !org || !repo_name)
-		tgui_alert(user, "The configuration is not set for the external api", "Issue not reported!")
-		external_link_prompt(user)
+		tgui_alert(admin_user, "The configuration is not set for the external api", "Issue not reported!")
+		external_link_prompt(admin_user)
 		qdel(src)
 		return
 
@@ -100,12 +107,11 @@
 	UNTIL(request.is_complete())
 	var/datum/http_response/response = request.into_response()
 
-	if(response.errored)
-		tgui_alert(user, "There has been an issue with reporting your bug, please try again later!", "Issue not reported!")
-		external_link_prompt(user)
+	if(response.errored || response["status_code"] != STATUS_SUCESSFUL)
+		external_link_prompt(admin_user)
 	else
-		message_admins("[user.key] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
-
+		message_admins("[admin_user.ckey] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
+		to_chat(initial_user, "An admin has sucessfully submitted your report and it should now be visible on GitHub, Thanks again!")
 	qdel(src)// approved and submitted, we no longer need the datum.
 
 // proc that creates a ticket for an admin to approve or deny a bug report request
@@ -135,11 +141,11 @@
 				if(!CLIENT_IS_STAFF(user.client))
 					return
 				var/payload_body = create_form()
-				send_request(payload_body, user)
+				send_request(payload_body)
 		if("cancel")
 			ui.close()
 			if(awaiting_admin_approval) // admin has chosen to reject the bug report
-				reject(user)
+				reject()
 	. = TRUE
 
 /datum/tgui_bug_report_form/ui_data(mob/user)
@@ -147,6 +153,8 @@
 	.["report_details"] = bug_report_data // only filled out once the user as submitted the form
 	.["awaiting_admin_approval"] = awaiting_admin_approval
 
-/datum/tgui_bug_report_form/proc/reject(mob/user)
-	message_admins("[user.key] has rejected a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
+/datum/tgui_bug_report_form/proc/reject()
+	message_admins("[admin_user.ckey] has rejected a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 	qdel(src)
+
+#undef STATUS_SUCESSFUL

@@ -1,5 +1,5 @@
 // Datum for handling bug reports, giving Harry the motivation to set up the config to get this functional.
-#define STATUS_SUCCESSFUL "200"
+#define STATUS_SUCCESSFUL 200
 
 /datum/tgui_bug_report_form
 	// contains all the body text for the bug report.

@@ -118,7 +118,7 @@
 		S.file = get_sfx(soundin)
 
 	if(random_freq)
-		if(random_freq == GET_RANDOM_FREQ_MINOR)
+		if(random_freq == "minor")
 			S.frequency = GET_RANDOM_FREQ_MINOR
 		else
 			S.frequency = GET_RANDOM_FREQ

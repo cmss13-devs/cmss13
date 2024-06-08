@@ -368,7 +368,7 @@
 	xeno.recalculate_health()
 
 /datum/hivebuff/game_ender_caste
-	name = "Boon of Destruction"
+	name = "His Grace"
 	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space to grow."
 	tier = HIVEBUFF_TIER_MAJOR
 

@@ -201,7 +201,7 @@
 	for(var/mob/groundmob as anything in GLOB.player_list)
 		if(is_ground_level(groundmob.z) && !isxeno(groundmob))
 			if(initial_screech)
-				playsound_client(groundmob.client, 'sound/voice/alien_echoroar_1.ogg', groundmob.loc, 70, FALSE) //boosted a lot cause quiet audio
+				playsound_client(groundmob.client, 'sound/voice/alien_echoroar_1.ogg', groundmob.loc, 65, FALSE) //boosted a lot cause quiet audio
 				if(ishuman(groundmob))
 					to_chat(groundmob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up...  something new is with you in this colony."))
 				if(issynth(groundmob))
@@ -211,9 +211,9 @@
 			var/area/queen_area = get_area(living_xeno_queen)
 			if(!initial_screech)
 				if(CEILING_IS_PROTECTED(queen_area?.ceiling, CEILING_PROTECTION_TIER_3) || !queen_area)
-					playsound_client(groundmob.client, 'sound/voice/alien_echoroar_2.ogg', groundmob.loc, 70, FALSE) //if queen is underground or there is no queen
+					playsound_client(groundmob.client, 'sound/voice/alien_echoroar_2.ogg', groundmob.loc, 70, GET_RANDOM_FREQ_MINOR) //if queen is underground or there is no queen
 				else
-					playsound_client(groundmob.client, 'sound/voice/alien_echoroar_3.ogg', groundmob.loc, 80, FALSE) //if queen is outside
+					playsound_client(groundmob.client, 'sound/voice/alien_echoroar_3.ogg', groundmob.loc, 75, FALSE) //if queen is outside
 
 // Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/X)

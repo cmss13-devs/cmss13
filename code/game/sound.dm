@@ -118,7 +118,10 @@
 		S.file = get_sfx(soundin)
 
 	if(random_freq)
-		S.frequency = GET_RANDOM_FREQ
+		if(random_freq == GET_RANDOM_FREQ_MINOR)
+			S.frequency = GET_RANDOM_FREQ_MINOR
+		else
+			S.frequency = GET_RANDOM_FREQ
 	S.volume = vol
 	S.volume_cat = vol_cat
 	S.channel = channel

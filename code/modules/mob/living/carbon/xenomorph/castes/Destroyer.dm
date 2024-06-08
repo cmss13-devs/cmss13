@@ -56,7 +56,7 @@
 		/datum/action/xeno_action/activable/doom,
 		/datum/action/xeno_action/activable/destroy,
 		/datum/action/xeno_action/onclick/destroyer_shield,
-		/datum/action/xeno_action/onclick/emit_pheromones
+		/datum/action/xeno_action/onclick/emit_pheromones,
 	)
 
 	icon_xeno = 'icons/mob/xenos/destroyer.dmi'

@@ -19,7 +19,7 @@
 	action_icon_state = "screech"
 	ability_name = "doom"
 	macro_path = /datum/action_xeno_action/verb/verb_doom
-	xeno_cooldown = 90 SECONDS
+	xeno_cooldown = 45 SECONDS
 	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
@@ -36,7 +36,7 @@
 	ability_name = "destroy"
 	macro_path = /datum/action/xeno_action/verb/verb_destroy
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 90 SECONDS // 90 SECONDS
+	xeno_cooldown = 60 SECONDS
 	plasma_cost = 0
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
@@ -50,7 +50,7 @@
 	ability_name = "legion_shield"
 	macro_path = /datum/action_xeno_action/verb/destroyer_shield
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 180 SECONDS
+	xeno_cooldown = 60 SECONDS
 	plasma_cost = 0
 	ability_primacy = XENO_PRIMARY_ACTION_4
 

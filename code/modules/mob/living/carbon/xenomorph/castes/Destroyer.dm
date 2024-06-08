@@ -45,6 +45,7 @@
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 	age = -1
+	aura_strength = 6
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -55,6 +56,7 @@
 		/datum/action/xeno_action/activable/doom,
 		/datum/action/xeno_action/activable/destroy,
 		/datum/action/xeno_action/onclick/destroyer_shield,
+		/datum/action/xeno_action/onclick/emit_pheromones
 	)
 
 	icon_xeno = 'icons/mob/xenos/destroyer.dmi'

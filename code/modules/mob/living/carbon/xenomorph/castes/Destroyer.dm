@@ -34,7 +34,7 @@
 	desc = "A massive alien covered in spines and armoured plates."
 	icon = 'icons/mob/xenos/destroyer.dmi'
 	icon_size = 64
-	icon_state = "Destroyer Walking"
+	icon_state = "King Walking"
 	plasma_types = list(PLASMA_CHITIN)
 	pixel_x = -16
 	old_x = -16

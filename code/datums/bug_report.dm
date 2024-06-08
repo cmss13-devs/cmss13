@@ -43,10 +43,14 @@
 /datum/tgui_bug_report_form/proc/submit_form(mob/ui_user)
 	if(!awaiting_admin_approval || !CLIENT_IS_STAFF(ui_user.client))
 		return
+	var/list/testmerges = world.TgsTestMerges()
+	var/text_output_tm = ""
+	for var/tm in testmerges
+		text_output_tm += "[tm]"
 	/*var/desc = {"
 
 		### Testmerges
-		blah blah
+		text_output_tm
 
 		### Round ID
 		[GLOB.round_id]

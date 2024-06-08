@@ -45,7 +45,7 @@
 		return
 	var/list/testmerges = world.TgsTestMerges()
 	var/text_output_tm = ""
-	for var/tm in testmerges
+	for(var/tm in testmerges)
 		text_output_tm += "[tm]"
 	/*var/desc = {"
 

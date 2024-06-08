@@ -56,6 +56,13 @@
 
 	return params
 
+// whether or not an admin can access the record at a given time.
+/datum/tgui_bug_report_form/proc/admin_can_access(mob/user)
+	if(user.client != admin_user && admin_user)
+		to_chat(usr, SPAN_WARNING("Another administrator is currently accessing this report, please wait for them to finish before making any changes."))
+		return FALSE
+
+	return TRUE
 // returns the body payload
 /datum/tgui_bug_report_form/proc/create_form()
 	var/list/testmerges = world.TgsTestMerges()

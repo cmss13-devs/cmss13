@@ -334,23 +334,23 @@
 
 /datum/hivebuff/extra_life
 	name = "Boon of Plenty"
-	desc = "Increases all xenomorph health by 5% for 10 minutes"
+	desc = "Increases all xenomorph health by 20 for 5 minutes"
 	tier = HIVEBUFF_TIER_MINOR
 	engage_flavourmessage = "The Queen has imbued us with greater fortitude."
-	duration = 10 MINUTES
+	duration = 5 MINUTES
 	number_of_required_pylons = 1
-	var/buffed_amount = 0
 
 /datum/hivebuff/extra_life/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	var/buffed_amount = 1.05 * (xeno.maxHealth + xeno.health_modifier)
-	xeno.health_modifier += buffed_amount
+	xeno.health_modifier += XENO_HEALTH_MOD_VERY_SMALL
+	xeno.recalculate_health()
 
 /datum/hivebuff/extra_life/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.health_modifier -= buffed_amount
+	xeno.health_modifier -= XENO_HEALTH_MOD_VERY_SMALL
+	xeno.recalculate_health()
 
 /datum/hivebuff/extra_life/major
 	name = "Major Boon of Plenty"
-	desc = "Increases all xenomorph health by 10% for 10 minutes"
+	desc = "Increases all xenomorph health by 40 for 10 minutes"
 	tier = HIVEBUFF_TIER_MAJOR
 
 	engage_flavourmessage = "The Queen has imbued us with greater fortitude."
@@ -360,8 +360,12 @@
 	radial_icon = "health_m"
 
 /datum/hivebuff/extra_life/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	var/buffed_amount = 1.1 * (xeno.maxHealth + xeno.health_modifier)
-	xeno.health_modifier += buffed_amount
+	xeno.health_modifier += XENO_HEALTH_MOD_SMALL
+	xeno.recalculate_health()
+
+/datum/hivebuff/extra_life/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.health_modifier -= XENO_HEALTH_MOD_SMALL
+	xeno.recalculate_health()
 
 /datum/hivebuff/game_ender_caste
 	name = "Boon of Destruction"
@@ -418,25 +422,25 @@
 
 /datum/hivebuff/defence
 	name = "Boon of Defence"
-	desc = "Increases all xenomorph armour by 5% for 5 minutes"
+	desc = "Increases all xenomorph armour by a flat 5% for 5 minutes"
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The Queen has imbued us with greater chitin."
 	duration = 5 MINUTES
 	number_of_required_pylons = 1
 	radial_icon = "shield"
-	var/buffed_amount = 0
 
 /datum/hivebuff/defence/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	buffed_amount = 0.05 * (xeno.armor_deflection + xeno.armor_modifier)
-	xeno.armor_modifier += buffed_amount
+	xeno.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
+	xeno.recalculate_armor()
 
 /datum/hivebuff/defence/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_modifier -= buffed_amount
+	xeno.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
+	xeno.recalculate_armor()
 
 /datum/hivebuff/defence/major
 	name = "Major Boon of Defence"
-	desc = "Increases all xenomorph armour by 10% for 10 minutes"
+	desc = "Increases all xenomorph armour by a flat 10% for 10 minutes"
 	tier = HIVEBUFF_TIER_MAJOR
 
 	engage_flavourmessage = "The Queen has imbued us with even greater chitin."
@@ -446,30 +450,34 @@
 	radial_icon = "shield_m"
 
 /datum/hivebuff/defence/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	buffed_amount = 0.1 * (xeno.armor_deflection + xeno.armor_modifier)
-	xeno.armor_modifier += buffed_amount
+	xeno.armor_modifier += XENO_ARMOR_MOD_SMALL
+	xeno.recalculate_armor()
+
+/datum/hivebuff/defence/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.armor_modifier -= XENO_ARMOR_MOD_SMALL
+	xeno.recalculate_armor()
 
 /datum/hivebuff/attack
 	name = "Boon of Aggression"
-	desc = "Increases all xenomorph damage by 5% for 5 minutes"
+	desc = "Increases all xenomorph damage by 5 for 5 minutes"
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The Queen has imbued us with slarp claws."
 	duration = 5 MINUTES
 	number_of_required_pylons = 1
 	radial_icon = "slash"
-	var/buffed_amount = 0
 
 /datum/hivebuff/attack/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	buffed_amount = 0.05 * ((xeno.melee_damage_lower + xeno.melee_damage_upper) / 2 + xeno.damage_modifier)
-	xeno.damage_modifier += buffed_amount
+	xeno.damage_modifier += XENO_DAMAGE_MOD_VERY_SMALL
+	xeno.recalculate_damage()
 
 /datum/hivebuff/attack/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.damage_modifier -= buffed_amount
+	xeno.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
+	xeno.recalculate_damage()
 
 /datum/hivebuff/attack/major
 	name = "Major Boon of Aggression"
-	desc = "Increases all xenomorph damage by 10% for 10 minutes"
+	desc = "Increases all xenomorph damage by 10 for 10 minutes"
 	tier = HIVEBUFF_TIER_MAJOR
 
 	engage_flavourmessage = "The Queen has imbued us with razer sharp claws."
@@ -479,5 +487,9 @@
 	radial_icon = "slash_m"
 
 /datum/hivebuff/attack/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	buffed_amount = 0.1 * ((xeno.melee_damage_lower + xeno.melee_damage_upper) / 2 + xeno.damage_modifier)
-	xeno.damage_modifier += buffed_amount
+	xeno.damage_modifier += XENO_DAMAGE_MOD_SMALL
+	xeno.recalculate_damage()
+
+/datum/hivebuff/attack/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.damage_modifier -= XENO_DAMAGE_MOD_SMALL
+	xeno.recalculate_damage()

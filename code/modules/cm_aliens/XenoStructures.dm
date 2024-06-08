@@ -929,15 +929,15 @@
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's destroyer will hatch in approximately 5 minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
-#define DESTROYER_PLAYTIME_HOURS (25 HOURS)
+#define DESTROYER_PLAYTIME_HOURS (50 HOURS)
 
 /obj/effect/alien/resin/destroyer_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
 	if(!candidate.client)
 		return FALSE
 	if(playtime_restricted)
-		if(get_job_playtime(candidate.client, JOB_XENO_ROLES) < DESTROYER_PLAYTIME_HOURS)
+		if(candidate.client.get_total_xeno_playtime() < DESTROYER_PLAYTIME_HOURS)
 			return FALSE
-	else if(get_job_playtime(candidate.client, JOB_XENO_ROLES) >= DESTROYER_PLAYTIME_HOURS)
+	else if(candidate.client.get_total_xeno_playtime() >= DESTROYER_PLAYTIME_HOURS)
 		return FALSE // We do this under the assumption we tried it the other way already so don't ask twice
 	for(var/mob_name in hive.banished_ckeys)
 		if(hive.banished_ckeys[mob_name] == candidate.ckey)

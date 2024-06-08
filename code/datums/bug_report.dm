@@ -1,5 +1,5 @@
 // Datum for handling bug reports
-#define STATUS_SUCCESS 200
+#define STATUS_SUCCESS 201
 
 /datum/tgui_bug_report_form
 	// contains all the body text for the bug report.
@@ -107,6 +107,7 @@
 	UNTIL(request.is_complete())
 	var/datum/http_response/response = request.into_response()
 
+	to_chat(world, SPAN_WARNING(response.status_code))
 	if(response.errored || response.status_code != STATUS_SUCCESS)
 		external_link_prompt(admin_user)
 	else

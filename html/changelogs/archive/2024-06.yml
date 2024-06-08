@@ -52,3 +52,17 @@
   - rscadd: resprites dogtags and adds an accessory dogtag that can be made visible
       via attaching to suit/armor
   - imageadd: Touches up a lot of the underwear sprites
+2024-06-08:
+  Drathek:
+  - bugfix: Fixed larva and hugger emotes performing no stat or muted or cooldown
+      checks
+  - bugfix: Fixed round time having the wrong timezone offset because of an engine
+      change to time2text
+  - bugfix: Fixed linked airlocks destroying their linked airlock incorrectly
+  Drulikar:
+  - bugfix: Fixed some usages of the proc range such as for delimbing
+  TheGamerdk:
+  - bugfix: Your prayers have been received by the gods will now only be said once
+      per prayer
+  coldironwarrior:
+  - rscdel: removes the nazi jacket sprite from suits.dmi

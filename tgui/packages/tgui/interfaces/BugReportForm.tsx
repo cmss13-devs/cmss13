@@ -127,7 +127,7 @@ export const BugReportForm = (props) => {
                 }}
               >
                 {awaiting_admin_approval
-                  ? 'I confirm that this bug report follows all TOS'
+                  ? 'I confirm that this bug report follows all GitHub TOS'
                   : "I couldn't find an existing issue about this on GitHub"}
                 {!checkBox && (
                   <span className="input-title-required">{' *'}</span>

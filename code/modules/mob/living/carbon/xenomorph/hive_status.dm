@@ -71,6 +71,9 @@
 
 	var/see_humans_on_tacmap = FALSE
 
+	/// Used to track the initial screech for groundside mobs
+	var/initial_screech = TRUE
+
 	var/list/hive_inherant_traits
 
 	// Cultist Info
@@ -191,6 +194,26 @@
 	xeno_message(SPAN_XENOANNOUNCE("The Hive is now strong enough to support: [castes]"))
 	xeno_maptext("The Hive can now support: [castes]", "Hive Strengthening")
 
+	if(SSticker.mode.flags_round_type & MODE_INFESTATION) //checks if gamemode is a xeno gamemode before calling, will roar with no queen cause of implied queen existence
+		zlevel_evo_echo()
+
+/datum/hive_status/proc/zlevel_evo_echo()
+	for(var/mob/groundmob as anything in GLOB.player_list)
+		if(is_ground_level(groundmob.z) && !isxeno(groundmob))
+			if(initial_screech)
+				playsound_client(groundmob.client, 'sound/voice/alien_echoroar_1.ogg', groundmob.loc, 70, FALSE) //boosted a lot cause quiet audio
+				if(ishuman(groundmob))
+					to_chat(groundmob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up...  something new is with you in this colony."))
+				if(issynth(groundmob))
+					to_chat(groundmob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))
+				initial_screech = FALSE
+				return
+			var/area/queen_area = get_area(living_xeno_queen)
+			if(!initial_screech)
+				if(CEILING_IS_PROTECTED(queen_area?.ceiling, CEILING_PROTECTION_TIER_3) || !queen_area)
+					playsound_client(groundmob.client, 'sound/voice/alien_echoroar_2.ogg', groundmob.loc, 70, FALSE) //if queen is underground or there is no queen
+				else
+					playsound_client(groundmob.client, 'sound/voice/alien_echoroar_3.ogg', groundmob.loc, 80, FALSE) //if queen is outside
 
 // Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/X)

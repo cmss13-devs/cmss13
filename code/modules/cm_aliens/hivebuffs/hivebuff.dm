@@ -395,7 +395,8 @@
 			groundside_humans += 1
 
 	if(groundside_humans < 12)
-		special_fail_message = "There is too little damage to warrant a destroyer."
+		special_fail_message = "There is too little threat to warrant a destroyer."
+		return FALSE
 
 	return !hive.has_hatchery
 

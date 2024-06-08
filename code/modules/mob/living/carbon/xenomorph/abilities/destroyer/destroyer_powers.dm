@@ -291,7 +291,7 @@
 
 /obj/effect/temp_visual/destroyer_leap
 	icon = 'icons/mob/xenos/destroyer.dmi'
-	icon_state = "Norrmal King Charging"
+	icon_state = "Normal King Charging"
 	layer = 4.7
 	plane = -4
 	pixel_x = -32
@@ -309,7 +309,7 @@
 	else
 		animate(src, pixel_x = LEAP_HEIGHT*0.1, pixel_z = LEAP_HEIGHT*0.15, time = 3, easing = BOUNCE_EASING)
 	sleep(0.3 SECONDS)
-	icon_state = "Norrmal King Charging"
+	icon_state = "Normal King Charging"
 	if(negative)
 		animate(src, pixel_x = -LEAP_HEIGHT, pixel_z = LEAP_HEIGHT, time = 7)
 	else

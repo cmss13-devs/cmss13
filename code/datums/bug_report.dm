@@ -43,8 +43,10 @@
 		ui.open()
 
 /datum/tgui_bug_report_form/ui_close(mob/user)
-	admin_user = null
 	. = ..()
+	if(initial_user && !admin_user) // they closed the ui before making a report
+		qdel(src)
+	admin_user = null
 
 /datum/tgui_bug_report_form/Destroy()
 	GLOB.bug_reports -= src

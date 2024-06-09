@@ -62,10 +62,9 @@
 	set name = "Submit Bug"
 	set desc = "Submit a bug."
 	set hidden = TRUE
-
-	var/datum/tgui_bug_report_form/report = new()
-	if(!report.can_create_bug_report(usr))
+	if(!usr)
 		return
+	var/datum/tgui_bug_report_form/report = new()
 
 	report.tgui_interact(usr)
 	return

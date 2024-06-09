@@ -54,19 +54,8 @@
 
 	return params
 
-// whether or not a user can create a bug report
-/datum/tgui_bug_report_form/proc/can_create_bug_report(mob/user)
-	if(!user.client)
-		to_chat(user, SPAN_WARNING("Unable to create a bug report at this time."))
-		qdel(src)
-		return FALSE
-
-	initial_user = user.client
-	return TRUE
-
-
 // whether or not an admin can access the record at a given time.
-/datum/tgui_bug_report_form/proc/admin_can_review(mob/user)
+/datum/tgui_bug_report_form/proc/assign_admin(mob/user)
 	if(!initial_user)
 		to_chat(user, SPAN_WARNING("Unable to identify the author of the bug report."))
 		return FALSE

@@ -2257,7 +2257,7 @@
 			to_chat(usr, SPAN_WARNING("This bug report is no longer available."))
 			return
 
-		if(!bug_report.admin_can_review(usr))
+		if(!bug_report.assign_admin(usr))
 			return
 
 		bug_report.tgui_interact(usr)

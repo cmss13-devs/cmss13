@@ -283,7 +283,6 @@
 	var/create_new_lighting_timer = p_create_new_lighting_timer /// used to prevent timer dupes, keep this as
 	var/lighting_deactivates = p_lighting_deactivates /// If the lighting deactivates
 
-
 	var/lighting_stage = clamp((floor((ROUND_TIME + stage_time - special_start_time - startup_delay)/stage_time)), 0, max_stages) /// the current stage of the lighting, ticks up by 1 every stagetime after startup_delay + start_time
 	//uses formula (x + y - w - z)/(y) with x = round_time, y = stage_time, w = special_start_time, and z being startup_delay
 
@@ -380,9 +379,6 @@
 /mob/proc/special_lighting_sunrise(lighting_stage)
 
 	var/lighting_color = "#000" /// used in the animation, set by the special_lighting_type
-
-	if(!GLOB.sunrise_starting_time) //failsafe incase sunrise gets called without a sunrise time set
-		(GLOB.sunrise_starting_time = ROUND_TIME)
 
 	switch(lighting_stage)
 		if(0)

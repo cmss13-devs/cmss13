@@ -862,6 +862,10 @@
 	var/hive_number = XENO_HIVE_NORMAL
 	/// Whether the cocoon has hatched
 	var/hatched = FALSE
+	/// Current running timer
+	var/timer
+	/// Is currently rolling candidates
+	var/rolling_candidates = FALSE
 
 /obj/effect/alien/resin/king_cocoon/Destroy()
 	if(!hatched)
@@ -894,7 +898,7 @@
 			var/obj/effect/build_blocker/blocker = new(turf_to_block, src)
 			blockers += blocker
 
-	addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	timer = addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME|TIMER_LOOP)
 
 	marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - 10 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
@@ -915,12 +919,36 @@
 		qdel(src)
 		return
 
+	var/groundside_humans = 0
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
+
+		var/turf/turf = get_turf(current_human)
+		if(is_ground_level(turf?.z))
+			groundside_humans += 1
+
+	// If marines evacuate, Hatch it instantly to prevent delay
+	if(groundside_humans < 12)
+		return
+		
+	if(icon_state == "hatching" || icon_state == "hatched" )
+		return
+
+	if(chosen_candidate || rolling_candidates)
+		return
+
+	deltimer(timer)
+
+	choose_candidate(TRUE)
+
+
 /obj/effect/alien/resin/king_cocoon/proc/start_growing()
 	icon_state = "growing"
-	addtimer(CALLBACK(src, PROC_REF(announce_halfway)), 5 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	timer = addtimer(CALLBACK(src, PROC_REF(announce_halfway)), 5 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /obj/effect/alien/resin/king_cocoon/proc/announce_halfway()
-	addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	timer = addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 	marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - 5 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
@@ -937,6 +965,8 @@
 
 /obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
 	if(!candidate.client)
+		return FALSE
+	if(istype(candidate, /mob/living/carbon/xenomorph/lesser_drone) || istype(candidate, /mob/living/carbon/xenomorph/facehugger))
 		return FALSE
 	if(playtime_restricted)
 		if(candidate.client.get_total_xeno_playtime() < KING_PLAYTIME_HOURS)
@@ -973,9 +1003,15 @@
 	message_admins("Failed to find a client for the King, releasing as freed mob.")
 	return null
 
-/obj/effect/alien/resin/king_cocoon/proc/choose_candidate()
+/obj/effect/alien/resin/king_cocoon/proc/choose_candidate(expedite = FALSE)
+	rolling_candidates = TRUE
 	chosen_candidate = roll_candidates()
-
+	rolling_candidates = FALSE
+	
+	if(expedite)
+		animate_hatch_king()
+		return
+	
 	marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - 1 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
@@ -988,7 +1024,9 @@
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately one minute."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 	// Technically slow players will delay us so its not just 10 minutes
-	addtimer(CALLBACK(src, PROC_REF(animate_hatch_king)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	timer = addtimer(CALLBACK(src, PROC_REF(animate_hatch_king)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	
+
 
 /obj/effect/alien/resin/king_cocoon/proc/animate_hatch_king()
 	flick("hatching", src)

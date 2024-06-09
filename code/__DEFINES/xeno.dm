@@ -175,7 +175,7 @@
 #define XENO_COMM_ACQUISITION_TIME (55 MINUTES)
 
 /// The time when xenos can grow a destroyer
-#define XENO_KING_ACQUISITION_TIME (1 HOURS + 50 MINUTES)
+#define XENO_KING_ACQUISITION_TIME (1 HOURS + 30 MINUTES + rand(0, 25) MINUTES)
 
 /// The time it takes for a pylon to give one royal resin while activated
 #define XENO_PYLON_ACTIVATION_COOLDOWN (5 MINUTES)

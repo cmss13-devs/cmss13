@@ -13,7 +13,6 @@
 	armor_deflection = XENO_ARMOR_FACTOR_TIER_5
 	speed = XENO_SPEED_TIER_1
 
-	minimum_evolve_time = XENO_KING_ACQUISITION_TIME // Just for the notification
 	evolves_to = null
 	deevolves_to = null
 	evolution_allowed = FALSE
@@ -28,6 +27,11 @@
 
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 
+/datum/caste_datum/king/New()
+	minimum_evolve_time = XENO_KING_ACQUISITION_TIME
+
+	return ..()
+	
 /mob/living/carbon/xenomorph/king
 	caste_type = XENO_CASTE_KING
 	name = XENO_CASTE_KING

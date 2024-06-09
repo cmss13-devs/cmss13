@@ -381,8 +381,12 @@
 	special_fail_message = "Only one hatchery may exist at a time."
 	cooldown_duration = 15 MINUTES // This buff ceases instantly so we need to incorporation the spawning time too
 	number_of_required_pylons = 2
-	roundtime_to_enable = XENO_KING_ACQUISITION_TIME
 	must_select_pylon = TRUE
+
+/datum/hivebuff/game_ender_caste/New()
+	roundtime_to_enable = XENO_KING_ACQUISITION_TIME
+
+	return ..()
 
 /datum/hivebuff/game_ender_caste/handle_special_checks()
 	if(locate(/mob/living/carbon/xenomorph/king) in hive.totalXenos)

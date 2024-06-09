@@ -734,7 +734,7 @@
 //-------------------------------------------------------
 //P90, a classic SMG (TWE version).
 
-/obj/item/weapon/gun/smg/p90_twe
+/obj/item/weapon/gun/smg/p90/p90_twe
 	name = "\improper FN-TWE P90 submachinegun"
 	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts the AP variation of the 5.7×28mm rounds."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
@@ -742,7 +742,7 @@
 	item_state = "p90_twe"
 
 	fire_sound = 'sound/weapons/p90.ogg'
-	current_mag = /obj/item/ammo_magazine/smg/p90_twe
+	current_mag = /obj/item/ammo_magazine/smg/p90/p90_twe
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor, // Barrel
 		/obj/item/attachable/extended_barrel,

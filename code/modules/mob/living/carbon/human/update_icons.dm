@@ -346,6 +346,8 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		wear_id.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_id, hud_used.ui_datum.ui_id)
 
 	var/obj/item/card/id/card = get_idcard()
+	if(!card)
+		return
 	if(!card.pinned_on_uniform || (w_uniform && w_uniform.displays_id && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)))
 		var/image/id_overlay = card.get_mob_overlay(src, WEAR_ID)
 		id_overlay.layer = -ID_LAYER

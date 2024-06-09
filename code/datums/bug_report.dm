@@ -49,6 +49,7 @@
 	. = ..()
 	if(!selected_confirm) // they closed the ui and didn't select confirm or approve
 		qdel(src)
+		return
 	admin_user = null
 	selected_confirm = FALSE
 

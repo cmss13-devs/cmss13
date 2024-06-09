@@ -36,8 +36,6 @@
 	return GLOB.always_state
 
 /datum/tgui_bug_report_form/tgui_interact(mob/user, datum/tgui/ui)
-	if(initial_user && !admin_user)
-		admin_user = user.client
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -73,6 +71,8 @@
 	if(!CLIENT_IS_STAFF(user.client))
 		message_admins("[user.ckey] has attempted to review [initial_user.ckey]'s bug report titled [bug_report_data["title"]] without proper authorization at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 		return FALSE
+	if(initial_user && !admin_user)
+		admin_user = user.client
 	return TRUE
 
 // returns the body payload

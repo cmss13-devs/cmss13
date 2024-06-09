@@ -574,8 +574,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 								to_chat(user, SPAN_WARNING("That set is already taken."))
 								vend_fail()
 								return FALSE
-							var/obj/item/card/id/ID = human_user.wear_id
-							if(!istype(ID) || !ID.check_biometrics(user))
+							var/obj/item/card/id/card = human_user.get_idcard()
+							if(!card?.check_biometrics(user))
 								to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
 								return FALSE
 							var/specialist_assignment
@@ -604,8 +604,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 									to_chat(user, SPAN_WARNING("<b>Something bad occurred with [src], tell a Dev.</b>"))
 									vend_fail()
 									return FALSE
-							ID.set_assignment((human_user.assigned_squad ? (human_user.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
-							GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
+							card.set_assignment((human_user.assigned_squad ? (human_user.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+							GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), card.assignment)
 							GLOB.available_specialist_sets -= p_name
 						else if(vendor_role.Find(JOB_SYNTH))
 							if(user.job != JOB_SYNTH)
@@ -807,8 +807,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 			return FALSE
 
 		var/mob/living/carbon/human/human_user = user
-		var/obj/item/card/id/idcard = human_user.wear_id
-		if(!istype(idcard))
+		var/obj/item/card/id/idcard = human_user.get_idcard()
+		if(!idcard)
 			if(display)
 				to_chat(user, SPAN_WARNING("Access denied. No ID card detected"))
 				vend_fail()
@@ -1404,10 +1404,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	if(vend_flags & VEND_UNIFORM_RANKS)
 		if(insignas_override)
 			var/obj/item/clothing/under/underclothes = new_item
+			var/obj/item/card/id/card = user.get_idcard()
 
 			//Gives ranks to the ranked
-			if(istype(underclothes) && user.wear_id && user.wear_id.paygrade)
-				var/rankpath = get_rank_pins(user.wear_id.paygrade)
+			if(istype(underclothes) && card?.paygrade)
+				var/rankpath = get_rank_pins(card.paygrade)
 				if(rankpath)
 					var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
 					var/obj/item/clothing/accessory/patch/uscmpatch = new()

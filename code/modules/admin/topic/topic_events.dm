@@ -165,8 +165,8 @@
 		alert("Select fewer paths, (max 1)")
 		return
 
-	var/humans_to_spawn = dd_range(1, 100, text2num(href_list["object_count"]))
-	var/range_to_spawn_on = dd_range(0, 10, text2num(href_list["object_range"]))
+	var/humans_to_spawn = clamp(text2num(href_list["object_count"]), 1, 100)
+	var/range_to_spawn_on = clamp(text2num(href_list["object_range"]), 0, 10)
 
 	var/free_the_humans = FALSE
 	var/offer_as_ert = FALSE
@@ -191,7 +191,7 @@
 
 		var/turf/spawn_turf
 		if(range_to_spawn_on)
-			for(spawn_turf in range(initial_turf, range_to_spawn_on))
+			for(spawn_turf in range(range_to_spawn_on, initial_turf))
 				if(!spawn_turf || istype(spawn_turf, /turf/closed))
 					continue
 				turfs += spawn_turf
@@ -299,8 +299,8 @@
 		alert("Select fewer xeno paths, (max 1)")
 		return
 
-	var/xenos_to_spawn = dd_range(1, 100, text2num(href_list["object_count"]))
-	var/range_to_spawn_on = dd_range(0, 10, text2num(href_list["object_range"]))
+	var/xenos_to_spawn = clamp(text2num(href_list["object_count"]), 1, 100)
+	var/range_to_spawn_on = clamp(text2num(href_list["object_range"]), 0, 10)
 
 	var/free_the_xenos = FALSE
 	var/offer_as_ert = FALSE
@@ -317,7 +317,7 @@
 
 		var/turf/spawn_turf
 		if(range_to_spawn_on)
-			for(spawn_turf in range(initial_turf, range_to_spawn_on))
+			for(spawn_turf in range(range_to_spawn_on, initial_turf))
 				if(!spawn_turf || istype(spawn_turf, /turf/closed))
 					continue
 				turfs += spawn_turf

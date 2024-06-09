@@ -141,7 +141,7 @@
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];quick_create_object=1'>Quick Create Object</A><br>
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];create_turf=1'>Create Turf</A><br>
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];create_mob=1'>Create Mob</A><br>
-		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Inmediately Send Tip</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Immediately Send Tip</A><br>
 		"}
 
 	show_browser(usr, dat, "Game Panel", "admin2", "size=210x280")

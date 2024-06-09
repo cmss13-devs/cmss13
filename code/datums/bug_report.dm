@@ -19,8 +19,7 @@
 
 /datum/tgui_bug_report_form/New(mob/user)
 	if(!user.client) // nope.
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL
 	initial_user = user.client
 
 /datum/tgui_bug_report_form/proc/external_link_prompt(client/user)

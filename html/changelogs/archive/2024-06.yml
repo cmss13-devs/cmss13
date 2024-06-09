@@ -66,3 +66,10 @@
       per prayer
   coldironwarrior:
   - rscdel: removes the nazi jacket sprite from suits.dmi
+2024-06-09:
+  harryob:
+  - bugfix: predators are not missing the space between their torso and legs
+  hislittlecuzingames:
+  - balance: Set CT free plasteel to 40 and added APC Circuit board
+  realforest2001:
+  - bugfix: Fixed the USCM Observer icon not displaying. Forest dumb.

@@ -848,7 +848,7 @@
 /obj/effect/alien/resin/king_cocoon
 	name = "alien cocoon"
 	desc = "A large pulsating cocoon."
-	icon = 'icons/obj/structures/alien/xenoDestroyerHatchery.dmi'
+	icon = 'icons/obj/structures/alien/xenoKingHatchery.dmi'
 	icon_state = "static"
 	health = 4000
 	pixel_x = -48
@@ -856,7 +856,7 @@
 	density = TRUE
 	plane = FLOOR_PLANE
 
-	/// The mob picked as a candidate to be the destroyer
+	/// The mob picked as a candidate to be the King
 	var/client/chosen_candidate
 	/// The hive associated with this cocoon
 	var/hive_number = XENO_HIVE_NORMAL
@@ -876,7 +876,11 @@
 			else
 				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
-	GLOB.hive_datum[hive_number].has_hatchery = FALSE
+	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
+	hive.has_hatchery = FALSE
+	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
+		pylon.protection_level = initial(pylon.protection_level)
+		
 	. = ..()
 
 /obj/effect/alien/resin/king_cocoon/Initialize(mapload, pylon)
@@ -1007,16 +1011,24 @@
 
 	QDEL_LIST(blockers)
 
-	var/mob/living/carbon/xenomorph/destroyer/destroyer = new(get_turf(src))
+	var/mob/living/carbon/xenomorph/king/king = new(get_turf(src))
 	if(chosen_candidate?.mob)
 		var/mob/old_mob = chosen_candidate.mob
-		old_mob.mind.transfer_to(destroyer)
+		old_mob.mind.transfer_to(king)
 		old_mob.free_for_ghosts(TRUE)
 	else
-		destroyer.free_for_ghosts(TRUE)
+		king.free_for_ghosts(TRUE)
 	playsound(src, 'sound/voice/alien_queen_command.ogg', 75, 0)
 
 	chosen_candidate = null
+
+	// Gives some time for the King to get their barings before it can be OBed
+	addtimer(CALLBACK(src, PROC_REF(remove_ob_protection)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+
+/obj/effect/alien/resin/king_cocoon/proc/remove_ob_protection()
+	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
+for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
+		pylon.protection_level = initial(pylon.protection_level)
 
 /obj/item/explosive/grenade/alien
 	name = "alien grenade"

@@ -44,11 +44,11 @@
 	var/leaping = FALSE
 
 /// Shield ability, limits the amount of damage from a single instance of damage to 10% of the xenomorph's max health.
-/datum/action/xeno_action/onclick/destroyer_shield
+/datum/action/xeno_action/onclick/king_shield
 	name = "Bulwark of the Hive"
 	action_icon_state = "soak"
 	ability_name = "legion_shield"
-	macro_path = /datum/action_xeno_action/verb/destroyer_shield
+	macro_path = /datum/action_xeno_action/verb/king_shield
 	action_type = XENO_ACTION_ACTIVATE
 	xeno_cooldown = 60 SECONDS
 	plasma_cost = 0

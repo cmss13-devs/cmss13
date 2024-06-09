@@ -139,7 +139,7 @@
 
 /obj/effect/alien/resin/special/pylon/endgame
 	cover_range = WEED_RANGE_CORE
-	protection_level = TURF_PROTECTION_OB
+	protection_level = TURF_PROTECTION_CAS
 	var/activated = FALSE
 
 /obj/effect/alien/resin/special/pylon/endgame/Initialize(mapload, mob/builder)

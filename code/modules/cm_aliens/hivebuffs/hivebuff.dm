@@ -381,12 +381,12 @@
 	special_fail_message = "Only one hatchery may exist at a time."
 	cooldown_duration = 15 MINUTES // This buff ceases instantly so we need to incorporation the spawning time too
 	number_of_required_pylons = 2
-	roundtime_to_enable = XENO_DESTROYER_ACQUISITION_TIME
+	roundtime_to_enable = XENO_KING_ACQUISITION_TIME
 	must_select_pylon = TRUE
 
 /datum/hivebuff/game_ender_caste/handle_special_checks()
-	if(locate(/mob/living/carbon/xenomorph/destroyer) in hive.totalXenos)
-		special_fail_message = "Only one destroyer may exist at a time."
+	if(locate(/mob/living/carbon/xenomorph/king) in hive.totalXenos)
+		special_fail_message = "Only one King may exist at a time."
 		return FALSE
 
 	var/groundside_humans = 0
@@ -399,7 +399,7 @@
 			groundside_humans += 1
 
 	if(groundside_humans < 12)
-		special_fail_message = "There is too little threat to warrant a destroyer."
+		special_fail_message = "There is too little threat to warrant a King."
 		return FALSE
 
 	return !hive.has_hatchery
@@ -430,8 +430,11 @@
 			break
 
 	if(!spawn_turf)
-		engage_failure_message = "Unable to find a viable spawn point for the destroyer."
+		engage_failure_message = "Unable to find a viable spawn point for the King."
 		return FALSE
+
+	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
+		pylon.protection_level = TURF_PROTECTION_OB
 
 	new /obj/effect/alien/resin/king_cocoon(spawn_turf)
 

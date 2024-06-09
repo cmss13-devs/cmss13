@@ -155,7 +155,7 @@
 	*/
 	var/static/list/evolution_menu_images
 
-	/// Has a destroyer hatchery
+	/// Has a King hatchery
 	var/has_hatchery = FALSE
 
 /datum/hive_status/New()

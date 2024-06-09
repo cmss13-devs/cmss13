@@ -1,6 +1,6 @@
 /*
 	REND ABILITY
-	3x3 aoe damage centred on the destroyer. Basic ability, spammable, low damage.
+	3x3 aoe damage centred on the King. Basic ability, spammable, low damage.
 */
 
 /datum/action/xeno_action/onclick/rend/use_ability()
@@ -30,7 +30,7 @@
 
 /*
 	DOOM ABILITY
-	Destroyer channels for a while shrieks which turns off all lights in the vicinity and applies a mild daze
+	King channels for a while shrieks which turns off all lights in the vicinity and applies a mild daze
 	Medium cooldown soft CC
 */
 
@@ -42,7 +42,7 @@
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an raspy guttural roar!"))
 	xeno.create_shriekwave()
 
-	var/datum/effect_system/smoke_spread/destroyer_doom/smoke_gas = new /datum/effect_system/smoke_spread/destroyer_doom
+	var/datum/effect_system/smoke_spread/king_doom/smoke_gas = new /datum/effect_system/smoke_spread/king_doom
 	smoke_gas.set_up(7, 0, get_turf(xeno), null, 6)
 	smoke_gas.start()
 
@@ -88,7 +88,7 @@
 	Long cooldown defensive ability, provides a shield which caps damage taken to 10% of the xeno's max health per individual source of damage.
 */
 
-/datum/action/xeno_action/onclick/destroyer_shield/use_ability()
+/datum/action/xeno_action/onclick/king_shield/use_ability()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
@@ -112,15 +112,15 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/onclick/destroyer_shield/proc/start_shield(mob/living/carbon/xenomorph/xeno)
-	var/datum/xeno_shield/shield = xeno.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_DESTROYER_BULWARKSPELL, /datum/xeno_shield/destroyer_shield)
+/datum/action/xeno_action/onclick/king_shield/proc/start_shield(mob/living/carbon/xenomorph/xeno)
+	var/datum/xeno_shield/shield = xeno.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_KING_BULWARKSPELL, /datum/xeno_shield/king_shield)
 	if(shield)
 		xeno.create_shield(shield_duration, "purple_animated_shield_full")
 
 
 /*
 	DESTROY ABILITY
-	Destroyer leaps into the air and crashes down damaging cades and mobs in a 3x3 area centred on him.
+	King leaps into the air and crashes down damaging cades and mobs in a 3x3 area centred on him.
 	Long cooldown high damage ability, massive damage against cades, highly telegraphed.
 */
 
@@ -196,8 +196,8 @@
 	owner.emote("roar")
 
 	//Initial visual
-	var/obj/effect/temp_visual/destroyer_leap/leap_visual = new(owner.loc, negative, owner.dir)
-	new /obj/effect/xenomorph/xeno_telegraph/destroyer_attack_template(template_turf, 20)
+	var/obj/effect/temp_visual/king_leap/leap_visual = new(owner.loc, negative, owner.dir)
+	new /obj/effect/xenomorph/xeno_telegraph/king_attack_template(template_turf, 20)
 
 	negative = !negative //invert it for the descent later
 
@@ -233,7 +233,7 @@
 		if(ISINRANGE(owner.x, initial_x - LEAP_DIRECTION_CHANGE_RANGE, initial_x - 1))
 			negative = TRUE
 
-	new /obj/effect/temp_visual/destroyer_leap/end(owner.loc, negative, owner.dir)
+	new /obj/effect/temp_visual/king_leap/end(owner.loc, negative, owner.dir)
 
 	SLEEP_CHECK_DEATH(descentTime, owner)
 	animate(owner, alpha = 255, transform = oldtransform, descentTime)
@@ -287,10 +287,10 @@
 	..()
 
 /datum/action/xeno_action/activable/destroy/proc/second_template(turf/template_turf)
-	new /obj/effect/xenomorph/xeno_telegraph/destroyer_attack_template(template_turf, 10)
+	new /obj/effect/xenomorph/xeno_telegraph/king_attack_template(template_turf, 10)
 
-/obj/effect/temp_visual/destroyer_leap
-	icon = 'icons/mob/xenos/destroyer.dmi'
+/obj/effect/temp_visual/king_leap
+	icon = 'icons/mob/xenos/king.dmi'
 	icon_state = "Normal King Charging"
 	layer = 4.7
 	plane = -4
@@ -298,12 +298,12 @@
 	duration = 10
 	randomdir = FALSE
 
-/obj/effect/temp_visual/destroyer_leap/Initialize(mapload, negative, dir)
+/obj/effect/temp_visual/king_leap/Initialize(mapload, negative, dir)
 	. = ..()
 	setDir(dir)
 	INVOKE_ASYNC(src, PROC_REF(flight), negative)
 
-/obj/effect/temp_visual/destroyer_leap/proc/flight(negative)
+/obj/effect/temp_visual/king_leap/proc/flight(negative)
 	if(negative)
 		animate(src, pixel_x = -LEAP_HEIGHT*0.1, pixel_z = LEAP_HEIGHT*0.15, time = 3, easing = BOUNCE_EASING)
 	else
@@ -315,22 +315,22 @@
 	else
 		animate(src, pixel_x = LEAP_HEIGHT, pixel_z = LEAP_HEIGHT, time = 7)
 
-/obj/effect/temp_visual/destroyer_leap/end
+/obj/effect/temp_visual/king_leap/end
 	pixel_x = LEAP_HEIGHT
 	pixel_z = LEAP_HEIGHT
 	duration = 10
 
-/obj/effect/temp_visual/destroyer_leap/end/flight(negative)
+/obj/effect/temp_visual/king_leap/end/flight(negative)
 	if(negative)
 		pixel_x = -LEAP_HEIGHT
 		animate(src, pixel_x = -16, pixel_z = 0, time = 5)
 	else
 		animate(src, pixel_x = -16, pixel_z = 0, time = 5)
 
-/obj/effect/xenomorph/xeno_telegraph/destroyer_attack_template
+/obj/effect/xenomorph/xeno_telegraph/king_attack_template
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "xenolandingpink"
 	layer = BELOW_MOB_LAYER
 
-/obj/effect/xenomorph/xeno_telegraph/destroyer_attack_template/yellow
+/obj/effect/xenomorph/xeno_telegraph/king_attack_template/yellow
 	icon_state = "xenolandingyellow"

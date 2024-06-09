@@ -633,7 +633,7 @@
 
 // XENO SMOKES
 
-/obj/effect/particle_effect/smoke/destroyer
+/obj/effect/particle_effect/smoke/king
 	opacity = FALSE
 	color = "#000000"
 	icon = 'icons/effects/effects.dmi'
@@ -646,8 +646,8 @@
 	pixel_x = 0
 	pixel_y = 0
 
-/datum/effect_system/smoke_spread/destroyer_doom
-	smoke_type = /obj/effect/particle_effect/smoke/destroyer
+/datum/effect_system/smoke_spread/king_doom
+	smoke_type = /obj/effect/particle_effect/smoke/king
 
 /datum/effect_system/smoke_spread/xeno_acid
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_burn

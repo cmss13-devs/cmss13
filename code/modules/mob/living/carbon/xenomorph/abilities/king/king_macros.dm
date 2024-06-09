@@ -19,7 +19,7 @@
 	var/action_name = "Doom"
 	handle_xeno_macro(src, action_name)
 
-/datum/action_xeno_action/verb/destroyer_shield()
+/datum/action_xeno_action/verb/king_shield()
 	set category = "Alien"
 	set name = "Bulwark"
 	set hidden = TRUE

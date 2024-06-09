@@ -105,3 +105,7 @@
 	icon_state = "hardhat0_dblue"
 	hardhat_color = "dblue"
 
+/obj/item/clothing/head/hardhat/red/kelland
+	icon_state = "hardhat0_red"
+	hardhat_color = "red"
+	name = "kelland-mining hard hat"

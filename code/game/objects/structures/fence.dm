@@ -303,3 +303,13 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 /obj/structure/fence/electrified/ex_act(severity)
 	health -= severity/2
 	healthcheck(make_hit_sound = FALSE, create_debris = TRUE)
+
+/obj/structure/fence/dark
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/dark_fence.dmi'
+
+/obj/structure/fence/dark/warning
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/electric_fence.dmi'

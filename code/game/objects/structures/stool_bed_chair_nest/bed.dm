@@ -450,7 +450,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	var/body_icon_state = "bigroller"
 	var/raised_with_body = TRUE
 	var/mob/living/carbon/human/body
-	var/datum/equipment_preset/body_preset = /datum/equipment_preset/corpse/colonist/random
+	var/datum/equipment_preset/body_preset = /datum/equipment_preset/corpse/hybrisa/civilian
 
 /obj/structure/bed/roller/hospital/Initialize(mapload, ...)
 	. = ..()
@@ -514,7 +514,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 /obj/structure/bed/roller/hospital/bloody
 	base_bed_icon = "bigrollerbloodempty"
 	body_icon_state = "bigrollerblood"
-	body_preset = /datum/equipment_preset/corpse/colonist/random/burst
+	body_preset = /datum/equipment_preset/corpse/hybrisa/civilian/burst
 
 /obj/structure/bed/roller/hospital_empty
 	icon_state = "bigrollerempty2_down"

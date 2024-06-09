@@ -234,3 +234,77 @@
 /obj/effect/landmark/corpsespawner/hybrisa_goon/lead/burst
 	name = "Burst Weyland-Yutani Corporate Security Lead"
 	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/burst
+
+//*****************************************************************************************************/
+
+// Civilian
+
+/obj/effect/landmark/corpsespawner/hybrisa/civilian
+	name = "Corpse - Civilian"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/civilian
+
+/obj/effect/landmark/corpsespawner/hybrisa/civilian/burst
+	name = "Corpse - Burst - Civilian"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/civilian/burst
+
+/obj/effect/landmark/corpsespawner/hybrisa/civilian_office
+	name = "Corpse - Civilian - Office Worker"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/civilian_office
+
+/obj/effect/landmark/corpsespawner/hybrisa/civilian_office/burst
+	name = "Corpse - Burst - Civilian - Office Worker"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/civilian_office/burst
+
+// Weymart
+
+/obj/effect/landmark/corpsespawner/hybrisa/weymart
+	name = "Corpse - Civilian - Weymart Employee"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/weymart
+
+/obj/effect/landmark/corpsespawner/hybrisa/weymart/burst
+	name = "Corpse - Burst - Civilian - Weymart Employee"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/weymart/burst
+
+// Sanitation
+
+/obj/effect/landmark/corpsespawner/hybrisa/sanitation
+	name = "Corpse - Civilian - Material Reprocessing Technician"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/sanitation
+
+/obj/effect/landmark/corpsespawner/hybrisa/sanitation/burst
+	name = "Corpse - Burst - Civilian - Material Reprocessing Technician"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/sanitation/burst
+
+// Pizza Galaxy
+
+/obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy
+	name = "Corpse - Civilian - Pizza Galaxy Delivery Driver"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/pizza_galaxy
+
+/obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy/burst
+	name = "Corpse - Burst - Civilian - Pizza Galaxy Delivery Driver"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/pizza_galaxy/burst
+
+//*****************************************************************************************************/
+
+// Colonial Marshals
+
+/obj/effect/landmark/corpsespawner/hybrisa/cmb_officer
+	name = "Corpse - CMB Police Officer"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/cmb_officer
+
+/obj/effect/landmark/corpsespawner/hybrisa/cmb_officer/burst
+	name = "Corpse - Burst - CMB Police Officer"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/cmb_officer/burst
+
+//*****************************************************************************************************/
+
+// KMCC Mining
+
+/obj/effect/landmark/corpsespawner/hybrisa/kelland_miner
+	name = "Corpse - KMCC - Miner"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/kelland_miner
+
+/obj/effect/landmark/corpsespawner/hybrisa/kelland_miner/burst
+	name = "Corpse - Burst - KMCC - Miner"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/kelland_miner/burst

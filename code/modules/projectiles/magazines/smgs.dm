@@ -260,3 +260,28 @@
 	w_class = SIZE_SMALL
 	max_rounds = 48
 	gun_type = /obj/item/weapon/gun/smg/nailgun
+
+//-------------------------------------------------------
+//P90, a classic SMG.
+
+/obj/item/ammo_magazine/smg/p90
+	name = "\improper FN P90 magazine (5.7×28mm)"
+	desc = "A 9mm magazine for the MP5."
+	default_ammo = /datum/ammo/bullet/smg
+	caliber = "5.7×28mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon_state = "p90"
+	gun_type = /obj/item/weapon/gun/smg/p90
+	max_rounds = 50
+//-------------------------------------------------------
+//P90, a classic SMG.
+
+/obj/item/ammo_magazine/smg/p90_twe
+	name = "\improper FN-TWE P90 AP magazine (5.7×28mm)"
+	desc = "A 9mm magazine for the MP5."
+	default_ammo = /datum/ammo/bullet/smg/p90_twe_ap
+	caliber = "5.7×28mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/twe_ammo.dmi'
+	icon_state = "p90_twe"
+	gun_type = /obj/item/weapon/gun/smg/p90_twe
+	max_rounds = 50

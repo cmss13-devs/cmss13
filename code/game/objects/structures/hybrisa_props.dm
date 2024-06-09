@@ -364,25 +364,14 @@
 	icon_state = "mining_crawler_fuel"
 
 // Car Pileup
-/obj/structure/prop/hybrisa/crashedcarsleft
-	name = "car pileup"
-	desc = "Burned out wrecked vehicles block your path."
-	icon = 'icons/obj/structures/props/crashedcars.dmi'
-	icon_state = "crashedcarsleft"
-	bound_height = 64
-	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
-	density = TRUE
-	layer = 5
 
-/obj/structure/prop/hybrisa/crashedcarsright
-	name = "car pileup"
-	desc = "Burned out wrecked vehicles block your path."
-	icon = 'icons/obj/structures/props/crashedcars.dmi'
-	icon_state = "crashedcarsright"
-	bound_height = 64
-	bound_width = 64
+/obj/structure/prop/hybrisa/vehicles/car_pileup
+	name = "burned out vehicle pileup"
+	desc = "Burned-out vehicles block your path, their charred frames and shattered glass hinting at recent chaos. The acrid smell of smoke lingers."
+	icon = 'icons/obj/structures/props/car_pileup.dmi'
+	icon_state = "car_pileup"
+	bound_height = 128
+	bound_width = 128
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
@@ -786,27 +775,16 @@
 	icon_state = "xenocellcrackedegg"
 	density = TRUE
 
-/obj/structure/prop/hybrisa/xenobiology/big
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics2.dmi'
-	name = "specimen containment cell"
-	desc = "A giant tube with a hulking monstrosity inside, is this thing alive?"
-	icon_state = "bigqueencryo1"
+/obj/structure/prop/hybrisa/xenobiology/giant_cryo
+	icon = 'icons/obj/structures/props/xeno_cyro_giant.dmi'
+	name = "collosal cryogenic chamber"
+	desc = "A giant cryogenic tube with yellow-tinted glass towers before you, housing a hulking, monstrous entity. Is it alive, or in a deep slumber? Cold mist swirls around the base as a low hum fills the air."
+	icon_state = "giant_xeno_cryo"
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
 	density = TRUE
-	layer = ABOVE_MOB_LAYER
-/obj/structure/prop/hybrisa/xenobiology/big/bigleft
-	icon_state = "bigqueencryo1"
-
-/obj/structure/prop/hybrisa/xenobiology/big/bigright
-	icon_state = "bigqueencryo2"
-
-/obj/structure/prop/hybrisa/xenobiology/big/bigbottomleft
-	icon_state = "bigqueencryo3"
-
-/obj/structure/prop/hybrisa/xenobiology/big/bigbottomright
-	icon_state = "bigqueencryo4"
+	layer = ABOVE_XENO_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/misc
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
@@ -824,8 +802,8 @@
 	icon_state = "spacejockey"
 
 /obj/structure/prop/hybrisa/engineer/spacejockey
-	name = "Giant Pilot"
-	desc = "A Giant Alien life form. Looks like it's been dead a long time. Fossilized. Looks like it's growing out of the chair. Bones are bent outward, like it exploded from inside."
+	name = "giant pilot"
+	desc = "A colossal enigma looms before you—a titan of alien origin, frozen in time and death. Its massive form appears fossilized, hinting at eons spent entombed within the bowels of the derelict alien vessel. The creature seems fused with the grandeur of its chair, as if emerging from the very essence of the ship itself. Bones, twisted and contorted, protrude outward in a macabre display, as if violently expelled from within by some unimaginable force. It's a harrowing encounter with an enigmatic being from a bygone era—a silent witness to mysteries that may never be unraveled."
 	icon = 'icons/obj/structures/props/engineerJockey.dmi'
 	icon_state = "spacejockey"
 	unslashable = TRUE
@@ -834,8 +812,8 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/engineer/giantpodbroken
-	name = "Giant Hypersleep Chamber"
-	desc = "What looks to be a Giant Hypersleep Chamber, this one appears to contain a Alien life form. it looks like it's been dead for a long time, Fossilized. From what you can see it's bones are bent outwards, the chambers outer shell has holes melted, pushing outwards. "
+	name = "giant hypersleep chamber"
+	desc = "Before you lies a behemoth of what looks like a 'hypersleep chamber', dwarfing everything around it. Within, a fossilized alien presence lies dormant. The chamber itself bears the scars of a violent past, with holes melted in its outer shell, as if something within had erupted outwards with some unknown force. The desiccated remains of the occupant are twisted and contorted, suggesting a violent demise that occurred long ago."
 	icon = 'icons/obj/structures/props/engineerPod.dmi'
 	icon_state = "pod_broken"
 	bound_height = 96
@@ -847,8 +825,8 @@
 	density = TRUE
 
 /obj/structure/prop/hybrisa/engineer/giantpod
-	name = "Giant Hypersleep Chamber"
-	desc = "What looks to be a Giant Hypersleep Chamber, a strange alien design, unlike anything you've ever seen before. It's empty."
+	name = "giant hypersleep chamber"
+	desc = "Before you stands an imposing structure, what looks like a colossal 'hypersleep chamber' of alien design, unlike anything you've ever encountered. Its intricate patterns and unfamiliar symbols hint at technologies far beyond human comprehension. Yet, despite its grandeur, the chamber is empty, devoid of any sign of life."
 	icon = 'icons/obj/structures/props/engineerPod.dmi'
 	icon_state = "pod"
 	bound_height = 96
@@ -859,8 +837,8 @@
 	density = TRUE
 
 /obj/structure/prop/hybrisa/engineer/giantconsole
-	name = "Giant Alien Console"
-	desc = "A Giant Alien console of some kind, unlike anything you've ever seen before. Who knows the purpose of this strange technology..."
+	name = "giant alien console"
+	desc = "Before you looms a towering alien console, its design defying all familiarity and logic. It's a marvel of unknown technology, adorned with intricate patterns and pulsating lights that dance with otherworldly energy. What purpose does this enigmatic device serve? The answer eludes you..."
 	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "engineerconsole"
 	bound_height = 32
@@ -907,7 +885,7 @@
 /obj/structure/blackgoocontainer
 	name = "strange container"
 	icon_state = "blackgoocontainer1"
-	desc = "A strange alien container, it appears to be completely empty."
+	desc = "A strange alien container. It exudes an aura of otherworldly mystery, its sleek surface bearing no hint of its previous contents. It appears to be completely empty."
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	density = TRUE
 	anchored = TRUE
@@ -957,7 +935,7 @@
 /obj/item/hybrisa/engineer_helmet
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	name = "strange alien helmet"
-	desc = "A strange alien helmet, it's huge, what could've worn such a thing?"
+	desc = "The alien helmet takes on a bizarre form reminiscent of an elongated elephant's trunk, adorned with insectoid-like eyes that peer out from its weathered surface. Its purpose and origins shrouded in mystery. As you behold this strange relic, you can't help but ponder the beings who once wore such unconventional headgear and the ancient secrets it may hold..."
 	icon_state = "alien_helmet"
 	force = 15
 	throwforce = 12
@@ -1864,7 +1842,7 @@
 	icon_state = "smallwallvent3"
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer
-	name = "machinery"
+	name = "computer"
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "zcomputermachine"
 	density = TRUE
@@ -2026,7 +2004,7 @@
 	health = 1000
 /obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards
 	name = "billboard"
-	desc = "A advertisement billboard."
+	desc = "An advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard_bigger"
 	bound_width = 64
@@ -2069,25 +2047,25 @@
 
 /obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1
 	name = "billboard"
-	desc = "A advertisement billboard."
+	desc = "An advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard1"
 
 /obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2
 	name = "billboard"
-	desc = "A advertisement billboard."
+	desc = "An advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard2"
 
 /obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3
 	name = "billboard"
-	desc = "A advertisement billboard."
+	desc = "An advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard3"
 
 /obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4
 	name = "billboard"
-	desc = "A advertisement billboard."
+	desc = "An advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard4"
 
@@ -2114,7 +2092,7 @@
 	icon_state = "factory_roboticarm"
 
 /obj/structure/prop/hybrisa/Factory/Robotic_arm
-	name = "Robotic arm"
+	name = "robotic arm"
 	desc = "A robotic arm used in the construction of 'Meridian' Automobiles."
 	icon_state = "factory_roboticarm"
 	bound_width = 64
@@ -2132,8 +2110,8 @@
 
 // Hybrisa Lattice
 /obj/structure/prop/hybrisa/lattice_prop
-	desc = "A support lattice."
 	name = "lattice"
+	desc = "A support lattice."
 	icon = 'icons/obj/structures/props/hybrisa_lattice.dmi'
 	icon_state = "lattice1"
 	density = FALSE

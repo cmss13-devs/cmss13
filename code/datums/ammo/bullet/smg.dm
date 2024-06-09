@@ -145,3 +145,23 @@
 	penetration = ARMOR_PENETRATION_TIER_4
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	scatter = SCATTER_AMOUNT_TIER_6
+
+/datum/ammo/bullet/smg/p90
+	name = "submachinegun bullet"
+
+	damage = 22
+	accurate_range = 5
+	effective_range_max = 8
+	penetration = ARMOR_PENETRATION_TIER_4
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_6
+
+/datum/ammo/bullet/smg/p90_twe_ap
+	name = "armor-piercing submachinegun bullet"
+
+	damage = 24
+	accurate_range = 5
+	effective_range_max = 8
+	penetration = ARMOR_PENETRATION_TIER_6
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_6

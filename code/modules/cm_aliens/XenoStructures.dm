@@ -880,7 +880,7 @@
 	hive.has_hatchery = FALSE
 	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
 		pylon.protection_level = initial(pylon.protection_level)
-		
+
 	. = ..()
 
 /obj/effect/alien/resin/king_cocoon/Initialize(mapload, pylon)
@@ -1027,7 +1027,7 @@
 
 /obj/effect/alien/resin/king_cocoon/proc/remove_ob_protection()
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
-for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
+	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
 		pylon.protection_level = initial(pylon.protection_level)
 
 /obj/item/explosive/grenade/alien

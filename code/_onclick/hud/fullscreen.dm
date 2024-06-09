@@ -465,7 +465,7 @@
 	var/mob/lighting_mob = src
 	var/special_call = "area_change"
 
-	if(!lighting_mob.special_lighting || lighting_mob.special_lighting == "pre_sunset")
+	if(!lighting_mob.special_lighting || lighting_mob.special_lighting == "pre_round")
 		return
 
 	var/area/mob_old_area = old_area

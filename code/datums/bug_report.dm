@@ -46,7 +46,7 @@
 
 /datum/tgui_bug_report_form/ui_close(mob/user)
 	. = ..()
-	if(!selected_confirm) // they closed the ui and didn't select confirm or approve, send_request will handle qdel for approval.
+	if(!admin_user && user.client == initial_user && !selected_confirm) // user closes the ui without selecting confirm or approve.
 		qdel(src)
 		return
 	admin_user = null
@@ -168,6 +168,7 @@
 		if("cancel")
 			if(awaiting_admin_approval) // admin has chosen to reject the bug report
 				reject(user.client)
+			qdel(src)
 	ui.close()
 	. = TRUE
 

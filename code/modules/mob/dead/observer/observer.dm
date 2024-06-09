@@ -496,7 +496,7 @@ Works together with spawning an observer, noted above.
 	else if(persistent_ckey)
 		var/datum/player_details/details = GLOB.player_details[persistent_ckey]
 		if(details)
-			details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+			details.larva_queue_time = max(details.larva_queue_time, new_tod)
 
 	ghost.set_huds_from_prefs()
 

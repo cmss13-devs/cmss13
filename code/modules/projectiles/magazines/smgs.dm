@@ -266,7 +266,7 @@
 
 /obj/item/ammo_magazine/smg/p90
 	name = "\improper FN P90 magazine (5.7×28mm)"
-	desc = "A 9mm magazine for the MP5."
+	desc = "A 5.7×28mm magazine for the FN P90."
 	default_ammo = /datum/ammo/bullet/smg/p90
 	caliber = "5.7×28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
@@ -274,11 +274,11 @@
 	gun_type = /obj/item/weapon/gun/smg/p90
 	max_rounds = 50
 //-------------------------------------------------------
-//P90, a classic SMG.
+//P90, a classic SMG.(TWE version)
 
 /obj/item/ammo_magazine/smg/p90/p90_twe
 	name = "\improper FN-TWE P90 AP magazine (5.7×28mm)"
-	desc = "A 9mm magazine for the MP5."
+	desc = "A 5.7×28mm (AP) magazine for the FN-TWE P90."
 	default_ammo = /datum/ammo/bullet/smg/p90/p90_twe_ap
 	caliber = "5.7×28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/twe_ammo.dmi'

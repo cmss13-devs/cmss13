@@ -2,16 +2,16 @@
 #define STATUS_SUCCESS 201
 
 /datum/tgui_bug_report_form
-	// contains all the body text for the bug report.
+	/// contains all the body text for the bug report.
 	var/list/bug_report_data = null
 
-	// client of user who created the initial report, immutable, set on init.
+	/// client of user who created the initial report, immutable, set on init.
 	var/client/initial_user = null
 
-	// client of the admin who is accessing the report, we don't want multiple admins unknowingly making changes at the same time.
+	/// client of the admin who is accessing the report, we don't want multiple admins unknowingly making changes at the same time.
 	var/client/admin_user = null
 
-	// value to determine if the bug report is submitted and awaiting admin approval, used for state purposes in tgui.
+	/// value to determine if the bug report is submitted and awaiting admin approval, used for state purposes in tgui.
 	var/awaiting_admin_approval = FALSE
 
 	// for garbage collection purposes.
@@ -36,7 +36,6 @@
 	return GLOB.always_state
 
 /datum/tgui_bug_report_form/tgui_interact(mob/user, datum/tgui/ui)
-
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "BugReportForm")

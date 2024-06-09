@@ -998,6 +998,31 @@
 	desc = "A cheap uniform made for Synthetic labor. Tomorrow, Together."
 	icon_state = "working_joe"
 	worn_state = "working_joe"
+	flags_item = NO_CRYO_STORE
+	var/obj/structure/machinery/camera/camera
+
+/obj/item/clothing/under/rank/synthetic/joe/Initialize()
+	. = ..()
+	camera = new /obj/structure/machinery/camera/autoname/almayer/containment/ares(src)
+
+/obj/item/clothing/under/rank/synthetic/joe/Destroy()
+	QDEL_NULL(camera)
+	return ..()
+
+/obj/item/clothing/under/rank/synthetic/joe/equipped(mob/living/carbon/human/mob, slot)
+	if(camera)
+		camera.c_tag = mob.name
+	..()
+
+/obj/item/clothing/under/rank/synthetic/joe/dropped(mob/living/carbon/human/mob)
+	if(camera)
+		camera.c_tag = "3RR0R"
+	..()
+
+/obj/item/clothing/under/rank/synthetic/joe/get_examine_text(mob/user)
+	. = ..()
+	if(camera)
+		. += SPAN_ORANGE("There is a small camera mounted to the front.")
 
 /obj/item/clothing/under/rank/synthetic/joe/engi
 	name = "\improper Working Joe Hazardous Uniform"

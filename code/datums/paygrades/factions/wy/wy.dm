@@ -1,7 +1,7 @@
 /datum/paygrade/wy_ranks
 	name = "WYC Paygrade"
 	pay_multiplier = 1
-	default_faction = FACTION_WEYLAND
+	default_faction = FACTION_WY
 
 /datum/paygrade/wy_ranks/wyc1
 	paygrade = PAY_SHORT_WYC1

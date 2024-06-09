@@ -100,6 +100,7 @@
 	behavior = RESEARCH_UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	clearance_req = 4
+
 /datum/research_upgrades/item/nanosplints
 	name = "Reinforced Fiber Splints"
 	desc = "A set of splints made from durable carbon fiber sheets reinforced with flexible titanium lattice, comes in a stack of five."
@@ -110,6 +111,26 @@
 	item_reference = /obj/item/stack/medical/splint/nano/research
 	behavior = RESEARCH_UPGRADE_TIER_5 //adjust this to change amount of nanosplints in a stack, cant be higher than five, go change max_amount in the nanosplint itself, then change it.
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
+
+/datum/research_upgrades/item/flamer_tank
+	name = "Upgraded Incinerator Tank"
+	desc = "An upgraded incinerator tank, with larger capacity and able to handle stronger fuels."
+	value_upgrade = 500
+	clearance_req = 1
+	change_purchase = -100
+	minimum_price = 100
+	item_reference = /obj/item/ammo_magazine/flamer_tank/custom/upgraded
+	behavior = null
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
+
+/datum/research_upgrades/item/flamer_tank/smoke
+	name = "Upgraded Incinerator Smoke Tank"
+	desc = "An upgraded incinerator smoke tank with a larger capacity."
+	value_upgrade = 100 //not useful enough to be expensive
+	clearance_req = 1
+	item_reference = /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
+	change_purchase = 0
+	minimum_price = 0
 
 /datum/research_upgrades/armor
 	name = "Armor"

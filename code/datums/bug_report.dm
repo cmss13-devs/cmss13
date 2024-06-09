@@ -75,6 +75,7 @@
 		message_admins("[user.ckey] has attempted to review [initial_user.ckey]'s bug report titled [bug_report_data["title"]] without proper authorization at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 		return FALSE
 	return TRUE
+
 // returns the body payload
 /datum/tgui_bug_report_form/proc/create_form()
 	var/list/testmerges = world.TgsTestMerges()
@@ -116,13 +117,11 @@
 
 	var/url = "https://api.github.com/repos/[org]/[repo_name]/issues"
 	var/list/headers = list()
-
 	headers["Authorization"] = "Bearer [token]"
 	headers["Content-Type"] = "text/markdown; charset=utf-8"
 	headers["Accept"] = "application/vnd.github+json"
 
 	var/datum/http_request/request = new()
-
 	var/list/payload = list(
 		"title" = bug_report_data["title"],
 		"body" = payload_body,
@@ -131,8 +130,8 @@
 	request.prepare(RUSTG_HTTP_METHOD_POST, url, json_encode(payload), headers)
 	request.begin_async()
 	UNTIL(request.is_complete())
-	var/datum/http_response/response = request.into_response()
 
+	var/datum/http_response/response = request.into_response()
 	if(response.errored || response.status_code != STATUS_SUCCESS)
 		external_link_prompt(user)
 	else
@@ -143,10 +142,11 @@
 // proc that creates a ticket for an admin to approve or deny a bug report request
 /datum/tgui_bug_report_form/proc/bug_report_request()
 	to_chat(initial_user, SPAN_WARNING("Your bug report has been submitted, thank you!"))
-
 	GLOB.bug_reports += src
+
 	var/general_message = "[initial_user.ckey] has created a bug report, you may modify the report to your liking before submitting it to GitHub."
 	GLOB.admin_help_ui_handler.perform_adminhelp(initial_user, general_message, urgent = FALSE)
+
 	var/href_message = ADMIN_VIEW_BUG_REPORT(src)
 	initial_user.current_ticket.AddInteraction(href_message)
 

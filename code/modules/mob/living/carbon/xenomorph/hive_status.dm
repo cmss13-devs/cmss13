@@ -211,7 +211,7 @@
 			var/area/queen_area = get_area(living_xeno_queen)
 			if(!initial_screech)
 				if(CEILING_IS_PROTECTED(queen_area?.ceiling, CEILING_PROTECTION_TIER_3) || !queen_area)
-					playsound_client(groundmob.client, 'sound/voice/alien_echoroar_2.ogg', groundmob.loc, 70, GET_RANDOM_FREQ_MINOR) //if queen is underground or there is no queen
+					playsound_client(groundmob.client, 'sound/voice/alien_echoroar_2.ogg', groundmob.loc, 70, "minor") //if queen is underground or there is no queen
 				else
 					playsound_client(groundmob.client, 'sound/voice/alien_echoroar_3.ogg', groundmob.loc, 75, FALSE) //if queen is outside
 

@@ -47,7 +47,7 @@
 
 /datum/tgui_bug_report_form/ui_close(mob/user)
 	. = ..()
-	if((initial_user && !admin_user) && !selected_confirm) // they closed the ui and didn't select confirm
+	if(!selected_confirm) // they closed the ui and didn't select confirm
 		qdel(src)
 	admin_user = null
 	selected_confirm = FALSE
@@ -154,9 +154,8 @@
 	var/mob/user = ui.user
 	switch(action)
 		if("confirm")
-			selected_confirm = TRUE
 			bug_report_data = sanitize_payload(params)
-			ui.close()
+			selected_confirm = TRUE
 			// bug report request is now waiting for admin approval
 			if(!awaiting_admin_approval)
 				bug_report_request()
@@ -167,9 +166,9 @@
 				var/payload_body = create_form()
 				send_request(payload_body, user.client)
 		if("cancel")
-			ui.close()
 			if(awaiting_admin_approval) // admin has chosen to reject the bug report
 				reject(user.client)
+	ui.close()
 	. = TRUE
 
 /datum/tgui_bug_report_form/ui_data(mob/user)
@@ -179,6 +178,5 @@
 
 /datum/tgui_bug_report_form/proc/reject(client/user)
 	message_admins("[user.ckey] has rejected a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
-	qdel(src)
 
 #undef STATUS_SUCCESS

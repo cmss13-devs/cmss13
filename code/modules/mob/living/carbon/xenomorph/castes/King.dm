@@ -97,7 +97,7 @@
 	icon = 'icons/mob/xenos/roguedamage.dmi'
 
 /mob/living/carbon/xenomorph/king/rogue/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-	..()
+	. = ..()
 	vis_contents -= wound_icon_holder
 	wound_icon_holder = new /atom/movable/vis_obj/xeno_wounds/rogue(null, src)
 	vis_contents += wound_icon_holder

@@ -62,17 +62,20 @@
 
 // whether or not an admin can access the record at a given time.
 /datum/tgui_bug_report_form/proc/admin_can_access(mob/user)
+	if(!initial_user)
+		to_chat(user, SPAN_WARNING("Unable to identify the author of the bug report."))
+		return FALSE
 	if(admin_user)
 		if(user.client == admin_user)
-			to_chat(usr, SPAN_WARNING("This bug report review is already opened and accessed by you."))
+			to_chat(user, SPAN_WARNING("This bug report review is already opened and accessed by you."))
 		else
-			to_chat(usr, SPAN_WARNING("Another administrator is currently accessing this report, please wait for them to finish before making any changes."))
+			to_chat(user, SPAN_WARNING("Another administrator is currently accessing this report, please wait for them to finish before making any changes."))
 		return FALSE
 	if(!CLIENT_IS_STAFF(user.client))
 		message_admins("[user.ckey] has attempted to review [initial_user.ckey]'s bug report titled [bug_report_data["title"]] without proper authorization at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 		return FALSE
-	if(initial_user && !admin_user)
-		admin_user = user.client
+
+	admin_user = user.client
 	return TRUE
 
 // returns the body payload

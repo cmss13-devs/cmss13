@@ -47,7 +47,7 @@
 
 /datum/tgui_bug_report_form/ui_close(mob/user)
 	. = ..()
-	if(!selected_confirm) // they closed the ui and didn't select confirm
+	if(!selected_confirm) // they closed the ui and didn't select confirm or approve
 		qdel(src)
 	admin_user = null
 	selected_confirm = FALSE

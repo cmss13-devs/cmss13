@@ -711,6 +711,11 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is KIA.")]")
 		return
 
+	card = transfer_marine.get_idcard()
+	if(!card)
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [transfer_marine] isn't wearing an ID.")]")
+		return
+
 	var/datum/squad/old_squad = transfer_marine.assigned_squad
 	if(new_squad == old_squad)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is already in [new_squad]!")]")

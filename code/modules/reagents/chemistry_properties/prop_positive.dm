@@ -492,7 +492,7 @@
 		var/obj/item/alien_embryo/embryo = content
 		if(embryo && istype(embryo))
 			if(embryo.counter > 0)
-				embryo.counter = embryo.counter - potency*delta_time
+				embryo.counter = embryo.counter - (potency * delta_time)
 				current_human.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
 			else
 				embryo.stage--

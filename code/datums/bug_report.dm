@@ -17,6 +17,9 @@
 	// for garbage collection purposes.
 	var/selected_confirm = FALSE
 
+/datum/tgui_bug_report_form/New(mob/user)
+	initial_user = user.client
+
 /datum/tgui_bug_report_form/proc/external_link_prompt(client/user)
 	tgui_alert(user, "Unable to create a bug report at this time, please create the issue directly through our GitHub repository instead")
 	var/url = CONFIG_GET(string/githuburl)

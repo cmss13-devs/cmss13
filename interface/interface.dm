@@ -64,7 +64,7 @@
 	set hidden = TRUE
 	if(!usr)
 		return
-	var/datum/tgui_bug_report_form/report = new()
+	var/datum/tgui_bug_report_form/report = new(usr)
 
 	report.tgui_interact(usr)
 	return

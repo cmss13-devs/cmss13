@@ -3,8 +3,10 @@
 /mob
 	var/list/fullscreens = list()
 
-	///If a type of special lighting such as a sunset or lightning is currently active, dont have more than one of these without a special fullscreen framework
+	///The type of special lighting such as a sunset or lightning is currently active, dont have more than one of these without a special fullscreen framework
 	var/special_lighting = null
+	///A var to check if there is currently an active special lighting timer already set in order to prevent dupes
+	var/special_lighting_active_timer = FALSE
 
 /mob/proc/overlay_fullscreen(category, type, severity)
 	var/atom/movable/screen/fullscreen/screen = fullscreens[category]
@@ -69,15 +71,23 @@
 		if(special_lighting)
 			return
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(initialize_special_lighting)))
-		debug_msg("sunset call has been called on [src] but delayed to roundstart")
-		special_lighting = "sunset"	// technically setting it early, but it shouldnt effect anything
+		special_lighting = "pre_round"	// do not let a special_lighting get called before roundstart
 		return
 	if(SSticker.mode.flags_round_type & MODE_SUNSET)
-		if(fullscreens.len == 0)
+		if(!fullscreens["lighting_backdrop"] || special_lighting == "sunset")
 			return
-		addtimer(CALLBACK(src, PROC_REF(sunset)), 3 SECONDS) // 3 seconds for them to spawn in and other lighting stuff to load
 		special_lighting = "sunset"
-		debug_msg("sunset proc will be called on [src] in 3 seconds")
+		if(ROUND_TIME < 4 SECONDS) //if you're in before full setup, dont let special lightings get called prior, it gets messy
+			addtimer(CALLBACK(src, PROC_REF(sunset)), 3 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(special_lighting_register_signals)), 3 SECONDS)
+		else if(ROUND_TIME < 280 SECONDS)
+			sunset(0.1, TRUE) //if you're in otherwise
+			special_lighting_register_signals()
+		return
+	if(GLOB.sunrise_starting_time)
+		sunrise(0.1, TRUE)
+		debug_msg("sunrise proc got called be called on [src] instantly cause sunrise_starting_time was set")
+		special_lighting_register_signals() //sunrise is permanent, you wont need to unregister
 
 
 /atom/movable/screen/fullscreen
@@ -246,14 +256,11 @@
 	blend_mode = BLEND_ADD
 
 
-/mob/proc/sunset(special_stage_time = null, special_call = FALSE)
+/mob/proc/sunset(special_stage_time = null, special_call = FALSE, deactivate_special_lighting_timer = FALSE)
 
 	var/atom/movable/screen/fullscreen/screen = fullscreens["lighting_backdrop"]
 	var/mob/lighting_mob = src
 	var/area/lighting_mob_area = get_area(lighting_mob)
-
-	if(!lighting_mob.client)
-		return
 
 	var/sun_color = "#000" /// used in the animation, set by sun stage and maptype
 	var/stage_time = 30 SECONDS /// how long each stage lasts, don't edit this if you want smooth movement, use special_stage_time instead
@@ -266,8 +273,13 @@
 
 	var/time_til_next_suncall = (sun_stage * stage_time) + startup_delay - ROUND_TIME /// how long until the next sunstage occurs
 
-	if(special_call)
+	if(deactivate_special_lighting_timer)
+		lighting_mob.special_lighting_active_timer = FALSE
+
+	if(special_call && sun_stage != 0)
 		sun_stage = clamp((sun_stage + 1), 0, max_stages) //you gotta start at the next stage if you come in during the duration of one in order to prevent advantages, more stages make this look better
+		if(time_til_next_suncall < special_stage_time)
+			time_til_next_suncall = special_stage_time + special_stage_time //delays main anims until the special call is done
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD || ZTRAIT_IN_SPACE] || SSmapping.configs[GROUND_MAP].map_name == MAP_LV522_CHANCES_CLAIM) //if its cold or in space (or chances claim)
 		switch(sun_stage) //for sun stages, the more you have the better it looks when special called, I recommend choosing cinematic 4 colors then using a gradient tool to pick out the rest
@@ -276,15 +288,15 @@
 				special_stage_time = 0.5 SECONDS
 				time_til_next_suncall = startup_delay
 			if(1)
-				sun_color = "#718faf"
+				sun_color = "#7a9abb"
 			if(2)
-				sun_color = "#5e71a0"
+				sun_color = "#6679a8"
 			if(3)
-				sun_color = "#414b70"
+				sun_color = "#516a8b"
 			if(4)
-				sun_color = "#303e61"
+				sun_color = "#38486e"
 			if(5)
-				sun_color = "#292b48"
+				sun_color = "#2c2f4d"
 			if(6)
 				sun_color = "#211b36"
 			if(7)
@@ -318,23 +330,16 @@
 			if(9)
 				sun_color = "#000"
 
-	debug_msg("sunset has been called")
+	if(!lighting_mob.special_lighting_active_timer)
+		if(sun_stage < max_stages) // calls for the next sunset
+			addtimer(CALLBACK(lighting_mob, PROC_REF(sunset), null, FALSE, TRUE), time_til_next_suncall, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
+		if(sun_stage == max_stages) // deactives special lighting when the sun hits #000
+			addtimer(CALLBACK(lighting_mob, PROC_REF(special_lighting_unregister_signals)), time_til_next_suncall, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
+		lighting_mob.special_lighting_active_timer = TRUE
 
-
-	debug_msg("(sun_stage * stage_time) + startup_delay - ROUND_TIME = ([(sun_stage * stage_time)/10]) + [startup_delay/10] - [ROUND_TIME/10]")
-	debug_msg("*------*")
-
-	debug_msg("roundtime = [ROUND_TIME/10] seconds, sun_stage = [sun_stage], ")
-
-	if(sun_stage < max_stages) // calls for the next sunset
-		debug_msg("next suncall in [time_til_next_suncall/10] seconds")
-		addtimer(CALLBACK(lighting_mob, PROC_REF(sunset)), time_til_next_suncall, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
-	if(sun_stage == max_stages) // deactives special lighting when the sun hits #000
-		addtimer(VARSET_CALLBACK(lighting_mob, special_lighting, null), time_til_next_suncall)
-
-	if(CEILING_IS_PROTECTED(lighting_mob_area.ceiling, CEILING_PROTECTION_TIER_2)) //if underground, don't animate
+	if(CEILING_IS_PROTECTED(lighting_mob_area?.ceiling, CEILING_PROTECTION_TIER_2)) //if underground, don't animate, this is needed in combo with the area check
 		return
-	if(!is_ground_level(lighting_mob.z)) // dont animate if not groundlevel
+	if(!is_ground_level(lighting_mob.z) && special_call != "z_change") // dont animate if not groundlevel
 		return
 
 	if(special_stage_time)
@@ -343,110 +348,145 @@
 	animate(screen, color = sun_color, time = stage_time)
 
 
-/mob/proc/sunrise(special_stage_time = null, special_call = FALSE)
+/mob/proc/sunrise(special_stage_time = null, special_call = FALSE, deactivate_special_lighting_timer = FALSE)
 
 	var/atom/movable/screen/fullscreen/screen = fullscreens["lighting_backdrop"]
 	var/mob/lighting_mob = src
 	var/area/lighting_mob_area = get_area(lighting_mob)
 
-	if(!lighting_mob.client || lighting_mob.special_lighting == "sunset")
-		return //failsafes
+	if(lighting_mob.special_lighting == "sunset")
+		return //failsafe
 
 	if(!GLOB.sunrise_starting_time) //failsafe incase sunrise gets called without a sunrise time set
 		(GLOB.sunrise_starting_time = ROUND_TIME)
 
-	var/sun_color = "#000" //saftey
-	var/stage_time = 60 SECONDS
-	var/max_stages = 3
+	debug_msg("GLOB.sunrise_starting_time = [GLOB.sunrise_starting_time]")
 
-	var/current_time = ROUND_TIME
+	var/sun_color = "#000" /// used in the animation
+	var/stage_time = 30 SECONDS  /// how long each stage lasts
+	var/max_stages = 6 /// how many stages of sunset there are, starts at 0
 
-	var/sun_stage = clamp((floor((GLOB.sunrise_starting_time - current_time)/stage_time)), 0, max_stages)
+	var/sun_stage = clamp((floor((ROUND_TIME - GLOB.sunrise_starting_time)/stage_time)), 0, max_stages)
 
-	if(special_call)
+	var/time_til_next_suncall = ((1 + sun_stage) * stage_time) + GLOB.sunrise_starting_time - ROUND_TIME
+
+//80 seconds, sunset at 13, next stage at 103 | (80 - 13 = 67/30 = 2) | 3 * 30 = 90 + 13 = 103
+
+	if(deactivate_special_lighting_timer)
+		lighting_mob.special_lighting_active_timer = FALSE
+
+	if(special_call  && sun_stage != 0)
 		sun_stage = clamp((sun_stage - 1), 0, max_stages) //you gotta start at the next stage if you come in during the duration of one in order to prevent advantages
+		if(time_til_next_suncall < special_stage_time)
+			time_til_next_suncall = special_stage_time + special_stage_time //delays main anims until the special call is done
 
 	switch(sun_stage)
 		if(0)
-			special_stage_time = 0.5 SECONDS //DONT FORGET TO ADD MORE STAGES, 4 IS NOT ENOUGH
-			sun_color = "#000" //a special confirmation to make sure that sunrise starts on full black
+			sun_color = "#000"
+			special_stage_time = 0.5 SECONDS
+			time_til_next_suncall = 1 SECONDS
 		if(1)
-			sun_color = "#111322"
+			sun_color = "#040712"
 		if(2)
-			sun_color = "#4e333d"
+			sun_color = "#111322"
 		if(3)
-			sun_color = "#bb542b" //it ends on very orange for cinematics
+			sun_color = "#422535"
+		if(4)
+			sun_color = "#6a2e37"
+		if(5)
+			sun_color = "#a73d3b"
+		if(6)
+			sun_color = "#bd502a" //it ends on very orange for cinematics
 
-	lighting_mob.special_lighting = "sunrise" //sunrise is called a few different places instead of a single place so its easier to set it internally
+	lighting_mob.special_lighting = "sunrise"
 
-	if(sun_stage == 0) //get ddone with the first one fast then instantly call back
-		addtimer(CALLBACK(lighting_mob, PROC_REF(sunset)), special_stage_time, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
-	else if(sun_stage < max_stages)
-		addtimer(CALLBACK(lighting_mob, PROC_REF(sunrise)), (((stage_time * sun_stage)) - GLOB.sunrise_starting_time), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
-	if(sun_stage == max_stages) // deactives special lighting when the sun hits #bb542b
-		addtimer(VARSET_CALLBACK(lighting_mob, special_lighting, null), stage_time)
+	if(!lighting_mob.special_lighting_active_timer)
+		if(sun_stage < max_stages)
+			addtimer(CALLBACK(lighting_mob, PROC_REF(sunrise), null, FALSE, TRUE), time_til_next_suncall, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
+			lighting_mob.special_lighting_active_timer = TRUE
+		if(sun_stage == max_stages) // deactives special lighting when the sun hits #bb542b
+			addtimer(VARSET_CALLBACK(lighting_mob, special_lighting_active_timer, FALSE), time_til_next_suncall)
 
-	if(CEILING_IS_PROTECTED(lighting_mob_area?.ceiling, CEILING_PROTECTION_TIER_2)) //if underground, don't animate
+	if(CEILING_IS_PROTECTED(lighting_mob_area?.ceiling, CEILING_PROTECTION_TIER_2)) //if underground, don't animate, this is needed in combo with the area check
 		return
-	if(!is_ground_level(lighting_mob.z)) // dont animate if not groundlevel
+	if(!is_ground_level(lighting_mob.z) && special_call != "z_change") // dont animate if not groundlevel
 		return
 
 	if(special_stage_time)
 		stage_time = special_stage_time
 
+	debug_msg("sunrise animating for [src] to sunstage = [sun_stage], next call in [time_til_next_suncall/10] seconds.")
+
 	animate(screen, color = sun_color, time = stage_time)
 
 
-/mob/proc/special_lighting_listeners()
-	SIGNAL_HANDLER
+/mob/proc/special_lighting_register_signals()
 
 	var/mob/signaling_mob = src
-	if(signaling_mob.special_lighting && signaling_mob.client)
-		RegisterSignal(signaling_mob, COMSIG_MOVABLE_MOVED, PROC_REF(special_lighting_change))
+
+	RegisterSignal(signaling_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(special_lighting_z_change), TRUE)
+	RegisterSignal(signaling_mob, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(special_lighting_area_change), TRUE)
 
 
+/mob/proc/special_lighting_unregister_signals()
+
+	var/mob/signaling_mob = src
+
+	signaling_mob.special_lighting = null //clears special lighting
+
+	UnregisterSignal(signaling_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(special_lighting_z_change))
+	UnregisterSignal(signaling_mob, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(special_lighting_area_change))
 
 
-/mob/proc/special_lighting_change()
+/mob/proc/special_lighting_z_change(atom/source, old_z, new_z)
+	SIGNAL_HANDLER
 
 	var/atom/movable/screen/fullscreen/screen = fullscreens["lighting_backdrop"]
 	var/mob/lighting_mob = src
+	var/special_call = "z_change"
 
-	var/oldloc_z = oldloc.z
-	var/newloc_z = lighting_mob.z
+	if(!lighting_mob.special_lighting || lighting_mob.special_lighting == "pre_round")
+		return
 
-	if(!oldloc_z == newloc_z)
-		if(!is_ground_level(newloc_z))
-			animate(screen, color = "#000", time = 0.2 SECONDS, easing = QUAD_EASING | EASE_OUT) //its gotta be fast but not sudden
-		else if(is_ground_level(newloc_z))
-			switch(lighting_mob.special_lighting)
-				if("sunset")
-					lighting_mob.sunset(0.2 SECONDS, TRUE)
-				if("sunrise")
-					lighting_mob.sunrise(0.2 SECONDS, TRUE)
+	if(is_ground_level(new_z))
+		switch(lighting_mob.special_lighting)
+			if("sunset")
+				lighting_mob.sunset(0.1 SECONDS, special_call)
+			if("sunrise")
+				lighting_mob.sunrise(0.1 SECONDS, special_call)
+	if(!is_ground_level(new_z))
+		animate(screen, color = "#000", time = 0.1 SECONDS) //its gotta be fast but not sudden
 
-	var/oldloc_area = get_area(oldloc)
-	var/newloc_area = get_area(lighting_mob)
 
-	if(!oldloc_area == newloc_area) //dont gotta continue if its the same area
+/mob/proc/special_lighting_area_change(atom/source, old_area, new_area)
+	SIGNAL_HANDLER
 
-		var/oldloc_incave
-		var/newloc_incave
+	var/atom/movable/screen/fullscreen/screen = fullscreens["lighting_backdrop"]
+	var/mob/lighting_mob = src
+	var/special_call = "area_change"
 
-		if(CEILING_IS_PROTECTED(oldloc_area?.ceiling, CEILING_PROTECTION_TIER_2))
-			oldloc_incave = TRUE
-		if(CEILING_IS_PROTECTED(newloc_area?.ceiling, CEILING_PROTECTION_TIER_2))
-			newloc_incave = TRUE
+	if(!lighting_mob.special_lighting || lighting_mob.special_lighting == "pre_sunset")
+		return
 
-		if(newloc_incave && !oldloc_incave)
-			animate(screen, color = "#000", time = 5 SECONDS, easing = QUAD_EASING | EASE_OUT) // 6 seconds no matter sunrise or sunset
-		else if(oldloc_incave && !newloc_incave)
-			switch(lighting_mob.special_lighting)
-				if("sunset")
-					lighting_mob.sunset(6 SECONDS, TRUE)
-				if("sunrise")
-					lighting_mob.sunrise(6 SECONDS, TRUE)
+	var/area/mob_old_area = old_area
+	var/area/mob_new_area = new_area
 
+	var/oldloc_incave = null
+	var/newloc_incave = null
+
+	if(CEILING_IS_PROTECTED(mob_old_area?.ceiling, CEILING_PROTECTION_TIER_2))
+		oldloc_incave = TRUE
+	if(CEILING_IS_PROTECTED(mob_new_area?.ceiling, CEILING_PROTECTION_TIER_2))
+		newloc_incave = TRUE
+
+	if(newloc_incave && !oldloc_incave) //handles both null old loc and false oldloc
+		animate(screen, color = "#000", time = 4 SECONDS, easing = QUAD_EASING | EASE_OUT)
+	else if(oldloc_incave && !newloc_incave)
+		switch(lighting_mob.special_lighting)
+			if("sunset")
+				lighting_mob.sunset(4 SECONDS, special_call)
+			if("sunrise")
+				lighting_mob.sunrise(4 SECONDS, special_call)
 
 
 /atom/movable/screen/fullscreen/see_through_darkness

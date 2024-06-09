@@ -83,7 +83,7 @@
 		plane_masters["[instance.plane]"] = instance
 		if(owner.client)
 			instance.backdrop(mymob)
-			if(!istype(mymob, /mob/new_player)) //if they have a client but arent on the title screen
+			if(!isnewplayer(mymob) && !mymob.special_lighting) //if they have a client but arent on the title screen
 				mymob.initialize_special_lighting()
 
 	for(var/mytype in subtypesof(/atom/movable/plane_master_controller))

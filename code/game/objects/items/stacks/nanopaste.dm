@@ -1,7 +1,7 @@
 /obj/item/stack/nanopaste
-	name = "nanopaste"
-	singular_name = "nanite swarm"
-	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery."
+	name = "Polymer tape"
+	singular_name = "Polymer tape"
+	desc = "A roll of tape made of self bonding polymer , used for repair of synthetic and metalic instruments on the field."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "tube"
 
@@ -11,28 +11,26 @@
 	w_class = SIZE_SMALL
 	stack_id = "nanopaste"
 	black_market_value = 25
+	var/healing_time = 3 SECONDS
 
-/obj/item/stack/nanopaste/attack(mob/living/M as mob, mob/user as mob)
-	if (!istype(M) || !istype(user))
-		return 0
-
-	if (istype(M,/mob/living/carbon/human)) //Repairing robolimbs
-		var/mob/living/carbon/human/H = M
-		if(isspeciessynth(H) && M == user && !H.allow_gun_usage)
-			to_chat(H, SPAN_WARNING("Your programming forbids you from self-repairing with \the [src]."))
-			return
-		var/obj/limb/S = H.get_limb(user.zone_selected)
-
-		if (S && (S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
-			if(S.get_damage())
-				S.heal_damage(15, 15, robo_repair = 1)
-				H.pain.recalculate_pain()
-				H.updatehealth()
+/obj/item/stack/nanopaste/attack(mob/living/target_living, mob/user as mob)
+	if(!ishuman(target_living) || !ishuman(user))
+		return
+	var/mob/living/carbon/human/humanus = target_living
+	var/obj/limb/target_limb = humanus.get_limb(user.zone_selected)
+	if(target_limb && (target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
+		if(user == target_living)
+			healing_time += 3 SECONDS //self healing penalty
+		if(do_after(user, max(1 SECONDS, healing_time - (user.skills.get_skill_level(SKILL_ENGINEER)SECONDS)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+			if(target_limb.get_damage())
+				target_limb.heal_damage(20, 20, TRUE)
+				target_living.pain.recalculate_pain()
+				target_living.updatehealth()
 				use(1)
-				var/others_msg = "\The [user] applies some nanite paste at[user != M ? " \the [M]'s" : " the"] [S.display_name] with \the [src]." // Needs to create vars for these messages because macro doesn't work otherwise
-				var/user_msg = "You apply some nanite paste at [user == M ? "your" : "[M]'s"] [S.display_name]."
-				user.visible_message(SPAN_NOTICE("[others_msg]"),\
-					SPAN_NOTICE("[user_msg]"))
+				user.affected_message(user,
+					SPAN_HELPFUL("You apply a piece of [src] to [target_living]'s [target_limb.display_name]"),
+					SPAN_HELPFUL("[user] repairs your [target_limb.display_name] with the [src]"),
+					SPAN_NOTICE("[user] repairs [target_living]'s [target_limb.display_name]"))
+				playsound(user, 'sound/handling/bandage.ogg', 25, 1, 2)
 			else
 				to_chat(user, SPAN_NOTICE("Nothing to fix here."))
-

@@ -22,6 +22,7 @@
 	attack_speed = 3
 	ground_offset_x = 2
 	ground_offset_y = 2
+	var/healing_time = 4 SECONDS
 
 /obj/item/stack/cable_coil/Initialize(mapload, length = MAXCOIL, param_color = null)
 	. = ..()
@@ -63,9 +64,9 @@
 	set name = "Make Cable Restraints"
 	set category = "Object"
 	set src in usr
-	var/mob/M = usr
+	var/mob/target_mob = usr
 
-	if(ishuman(M) && !M.is_mob_incapacitated())
+	if(ishuman(target_mob) && !target_mob.is_mob_incapacitated())
 		if(!istype(usr.loc,/turf)) return
 		if(src.amount <= 14)
 			to_chat(usr, SPAN_WARNING("You need at least 15 lengths to make restraints!"))
@@ -304,34 +305,28 @@
 	. = ..()
 	color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_WHITE, COLOR_MAGENTA, COLOR_YELLOW, COLOR_CYAN)
 
-/obj/item/stack/cable_coil/attack(mob/M as mob, mob/user as mob)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-
-		var/obj/limb/S = H.get_limb(user.zone_selected)
-		if(!(S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
+/obj/item/stack/cable_coil/attack(mob/target_mob as mob, mob/user as mob)
+	if(ishuman(target_mob))
+		var/mob/living/carbon/human/humanus = target_mob
+		var/obj/limb/target_limb = humanus.get_limb(user.zone_selected)
+		if(!(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
 			return ..()
-
 		if(user.action_busy)
 			return
-		var/self_fixing = FALSE
-
-		if(H.species.flags & IS_SYNTHETIC && M == user)
-			self_fixing = TRUE
-
-		if(S.burn_dam > 0 && use(1))
-			if(self_fixing)
-				user.visible_message(SPAN_WARNING("\The [user] begins fixing some burn damage on their [S.display_name]."), \
-					SPAN_WARNING("You begin to carefully patch some burn damage on your [S.display_name] so as not to void your warranty."))
-				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-					return
-
-			S.heal_damage(0, 15, TRUE)
-			H.pain.recalculate_pain()
-			user.visible_message(SPAN_DANGER("\The [user] repairs some burn damage on \the [M]'s [S.display_name] with \the [src]."))
+		if(target_limb.burn_dam && use(5))
+			if(user == humanus)
+				user.visible_message(SPAN_WARNING("\The [user] begins fixing some burns on from its [target_limb.display_name]."), \
+				SPAN_WARNING("You try to patch some burns on your [target_limb.display_name] by yourself"))
+				healing_time += 3 SECONDS
+			if(!do_after(user, max(healing_time - (user.skills.get_skill_level(SKILL_ENGINEER)SECONDS)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+				return
+			target_limb.heal_damage(0, 15, TRUE)
+			humanus.updatehealth()
+			humanus.pain.recalculate_pain()
+			user.visible_message(SPAN_DANGER("\The [user] repairs some damage on \the [target_mob]'s [target_limb.display_name] with \the [src]."))
 			return
 		else
-			to_chat(user, "Nothing to fix!")
+			to_chat(user, "There is nothing to fix!")
 
 	else
 		return ..()

@@ -189,6 +189,7 @@
 	/// Used to slowly deplete the fuel when the tool is left on.
 	var/weld_tick = 0
 	var/has_welding_screen = FALSE
+	var/healing_time = 4 SECONDS
 
 /obj/item/tool/weldingtool/Initialize()
 	. = ..()
@@ -217,43 +218,32 @@
 	else //should never be happening, but just in case
 		toggle(TRUE)
 
-/obj/item/tool/weldingtool/attack(mob/target, mob/user)
-
-	if(ishuman(target))
-		var/mob/living/carbon/human/human = target
-		var/obj/limb/limb = human.get_limb(user.zone_selected)
-
-		if (!limb) return
-		if(!(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
+/obj/item/tool/weldingtool/attack(mob/target_mob, mob/user)
+	if(ishuman(target_mob))
+		var/mob/living/carbon/human/humanus = target_mob
+		var/obj/limb/target_limb = humanus.get_limb(user.zone_selected)
+		if(!(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
 			return ..()
-
 		if(user.action_busy)
 			return
-		var/self_fixing = FALSE
-
-		if(human.species.flags & IS_SYNTHETIC && target == user)
-			self_fixing = TRUE
-
-		if(limb.brute_dam && welding)
+		if(target_limb.brute_dam && welding)
 			remove_fuel(1,user)
-			if(self_fixing)
-				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on their [limb.display_name]."), \
-					SPAN_WARNING("You begin to carefully patch some dents on your [limb.display_name] so as not to void your warranty."))
-				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-					return
-
-			limb.heal_damage(15, 0, TRUE)
-			human.pain.recalculate_pain()
-			human.UpdateDamageIcon()
-			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [human]'s [limb.display_name] with \the [src]."), \
-								SPAN_WARNING("You patch some dents on \the [human]'s [limb.display_name] with \the [src]."))
+			if(user == humanus)
+				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on from its [target_limb.display_name]."), \
+				SPAN_WARNING("You try to patch some dents on your [target_limb.display_name] by yourself"))
+				healing_time += 3 SECONDS
+			if(!do_after(user, max(healing_time - (user.skills.get_skill_level(SKILL_ENGINEER)SECONDS)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+				return
+			remove_fuel(1,user)
+			target_limb.heal_damage(15, 0, TRUE)
+			humanus.updatehealth()
+			humanus.pain.recalculate_pain()
+			user.visible_message(SPAN_DANGER("\The [user] repairs some damage on \the [target_mob]'s [target_limb.display_name] with \the [src]."))
 			return
 		else
-			to_chat(user, SPAN_WARNING("Nothing to fix!"))
+			to_chat(user, "There is nothing to fix!")
 
 	else
-		if(ismob(target))
-			remove_fuel(1)
 		return ..()
 
 /obj/item/tool/weldingtool/afterattack(obj/target, mob/user, proximity)
@@ -445,7 +435,7 @@
 /obj/item/tool/weldingtool/simple
 	name = "\improper ME3 hand welder"
 	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full-sized technician's blowtorch."
-	max_fuel = 5
+	max_fuel = 10
 	has_welding_screen = TRUE
 	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
 	icon_state = "welder_b"

@@ -16,8 +16,8 @@
 
 	total_health = 150 //more health than regular humans
 
-	brute_mod = 0.5
-	burn_mod = 0.9 //a small bit of resistance
+	brute_mod = 0.9
+	burn_mod = 0.9
 
 	cold_level_1 = -1
 	cold_level_2 = -1

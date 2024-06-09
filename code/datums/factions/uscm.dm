@@ -75,6 +75,9 @@
 			if(JOB_CO)
 				marine_rk = "co"
 				border_rk = "command"
+			if(JOB_USCM_OBSV)
+				marine_rk = "vo"
+				border_rk = "command"
 			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"

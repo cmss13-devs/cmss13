@@ -191,7 +191,7 @@ GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())
 
 /proc/setup_xeno_evolve_times()
 	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
-		if(caste.caste_type == XENO_CASTE_KING)
+		if(initial(caste.caste_type) == XENO_CASTE_KING)
 			LAZYADDASSOCLIST(., num2text(GLOB.king_acquisition_time), caste)
 		else
 			LAZYADDASSOCLIST(., num2text(initial(caste.minimum_evolve_time)), caste)

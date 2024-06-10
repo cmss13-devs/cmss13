@@ -144,7 +144,7 @@
 	to_chat(initial_user, SPAN_WARNING("Your bug report has been submitted, thank you!"))
 	GLOB.bug_reports += src
 
-	var/general_message = "[initial_user.ckey] has created a bug report, you may modify the report to your liking before submitting it to GitHub."
+	var/general_message = "[initial_user.ckey] has created a bug report, you may find this report directly in the ticket panel. Feel free modify the issue to your liking before submitting it to GitHub."
 	GLOB.admin_help_ui_handler.perform_adminhelp(initial_user, general_message, urgent = FALSE)
 
 	var/href_message = ADMIN_VIEW_BUG_REPORT(src)

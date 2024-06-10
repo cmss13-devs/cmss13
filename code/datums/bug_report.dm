@@ -78,9 +78,16 @@
 // returns the body payload
 /datum/tgui_bug_report_form/proc/create_form()
 
+	var/list/testmerges = world.TgsTestMerges()
+	var/text_output_tm = ""
+	for(var/tm in testmerges)
+		var/datum/tgs_revision_information/test_merge/tm = line
+		text_output_tm += "<a href=\"[CONFIG_GET(string/githuburl)]/pull/[tm.number]\">#[tm.number]</a><br>"
+		text_output_tm += ": '" + html_encode(tm.title) + "' by " + html_encode(tm.author)
+
 	var/desc = {"
 ### Testmerges
-[GLOB.current_tms ? GLOB.current_tms : "N/A"]
+[text_output_tm ? text_output_tm : "N/A"]
 
 ### Round ID
 [GLOB.round_id ? GLOB.round_id : "N/A"]

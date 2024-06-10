@@ -200,6 +200,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("USCM Engineering Officers Uniform", 12, /obj/item/clothing/under/marine/officer/engi, null, VENDOR_ITEM_REGULAR),
 	list("USCM Military Police Uniform", 12, /obj/item/clothing/under/marine/mp/standard, null, VENDOR_ITEM_REGULAR),
 	list("USCM Military Police Uniform (Darker)", 12, /obj/item/clothing/under/marine/mp/darker, null, VENDOR_ITEM_REGULAR),
+	list("USCM Dress Blues", 12, /obj/item/clothing/under/marine/dress/blues/senior, null, VENDOR_ITEM_REGULAR),
+	list("USCM Operations Uniform", 12, /obj/item/clothing/under/marine/officer/boiler, null, VENDOR_ITEM_REGULAR),
 
 	list("NON-STANDARD UNIFORMS", 0, null, null, null),
 	list("White T-Shirt and Brown Jeans", 12, /obj/item/clothing/under/tshirt/w_br, null, VENDOR_ITEM_REGULAR),
@@ -218,6 +220,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Blue Suit Pants", 12, /obj/item/clothing/under/liaison_suit/blue, null, VENDOR_ITEM_REGULAR),
 	list("Brown Suit Pants", 12, /obj/item/clothing/under/liaison_suit/brown, null, VENDOR_ITEM_REGULAR),
 	list("White Suit Pants", 12, /obj/item/clothing/under/liaison_suit/corporate_formal, null, VENDOR_ITEM_REGULAR),
+	list("Colonial Marshal Uniform", 12, /obj/item/clothing/under/CM_uniform, null, VENDOR_ITEM_REGULAR),
 	list("Working Joe Uniform", 36, /obj/item/clothing/under/rank/synthetic/joe, null, VENDOR_ITEM_REGULAR),
 
 	list("GLASSES", 0, null, null, null),
@@ -262,6 +265,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Officer Cap", 12, /obj/item/clothing/head/cmcap/bridge, null, VENDOR_ITEM_REGULAR),
 	list("Bio Hood", 12, /obj/item/clothing/head/bio_hood/synth, null, VENDOR_ITEM_REGULAR),
 	list("Fedora", 12, /obj/item/clothing/head/fedora, null, VENDOR_ITEM_REGULAR),
+	list("Colonial Marshal Cap", 12, /obj/item/clothing/head/CMB, null, VENDOR_ITEM_REGULAR),
 
 	list("HELMET", 0, null, null, null),
 	list("Marine Helmet (Mission-Specific Camo)", 12, /obj/item/clothing/head/helmet/marine, null, VENDOR_ITEM_REGULAR),
@@ -300,6 +304,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Brown Vest", 12, /obj/item/clothing/suit/storage/jacket/marine/vest, null, VENDOR_ITEM_REGULAR),
 	list("Tan Vest", 12, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, null, VENDOR_ITEM_REGULAR),
 	list("Grey Vest", 12, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, null, VENDOR_ITEM_REGULAR),
+	list("Colonial Marshal Jacket", 12, /obj/item/clothing/suit/storage/CMB, null, VENDOR_ITEM_REGULAR),
 	list("USCM Poncho (Mission-Specific Camo)", 12, /obj/item/clothing/accessory/poncho, null, VENDOR_ITEM_REGULAR),
 	list("USCM Poncho (Green)", 12, /obj/item/clothing/accessory/poncho/green, null, VENDOR_ITEM_REGULAR),
 	list("USCM Poncho (Brown)", 12, /obj/item/clothing/accessory/poncho/brown, null, VENDOR_ITEM_REGULAR),
@@ -319,6 +324,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("USCM Welderpack", 12, /obj/item/storage/backpack/marine/engineerpack, null, VENDOR_ITEM_REGULAR),
 	list("USCM Weldersatchel", 12, /obj/item/storage/backpack/marine/engineerpack/satchel, null, VENDOR_ITEM_REGULAR),
 	list("USCM Welder Chestrig", 12, /obj/item/storage/backpack/marine/engineerpack/welder_chestrig, null, VENDOR_ITEM_REGULAR),
+	list("Security Satchel", 12, /obj/item/storage/backpack/satchel/sec, null, VENDOR_ITEM_REGULAR),
 
 	list("OTHER", 0, null, null, null),
 	list("Red Armband", 6, /obj/item/clothing/accessory/armband, null, VENDOR_ITEM_REGULAR),
@@ -326,6 +332,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Yellow Armband", 6, /obj/item/clothing/accessory/armband/engine, null, VENDOR_ITEM_REGULAR),
 	list("Green Armband", 6, /obj/item/clothing/accessory/armband/medgreen, null, VENDOR_ITEM_REGULAR),
 	list("Dress Gloves", 6, /obj/item/clothing/gloves/marine/dress, null, VENDOR_ITEM_REGULAR),
+	list("Holobadge", 6, /obj/item/clothing/accessory/holobadge/cord, null, VENDOR_ITEM_REGULAR),
+	list("Marshal Duty Belt", 6, /obj/item/storage/belt/security/MP/CMB/synth, null, VENDOR_ITEM_REGULAR),
 
 ))
 

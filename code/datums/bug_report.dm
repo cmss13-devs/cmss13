@@ -82,7 +82,6 @@
 	var/text_output_tm = ""
 	for(var/line in testmerges)
 		var/datum/tgs_revision_information/test_merge/tm = line
-		text_output_tm += "<a href=\"[CONFIG_GET(string/githuburl)]/pull/[tm.number]\">#[tm.number]</a>"
 		text_output_tm += ": '" + html_encode(tm.title) + "' by " + html_encode(tm.author)
 
 	var/desc = {"

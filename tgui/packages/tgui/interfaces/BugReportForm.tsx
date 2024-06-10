@@ -116,7 +116,7 @@ export const BugReportForm = (props) => {
                 }}
                 value={steps}
                 onChange={(e) => setSteps(e.target.value)}
-                placeholder="1.\n2.\n3."
+                placeholder={'1) Step 1\n2) Step 2\n3) Step 3\n'}
               />
             </Flex.Item>
             <Flex.Item my={2} className={'text-center'}>

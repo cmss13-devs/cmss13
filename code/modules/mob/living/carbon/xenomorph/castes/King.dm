@@ -27,11 +27,6 @@
 
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 
-/datum/caste_datum/king/New()
-	minimum_evolve_time = XENO_KING_ACQUISITION_TIME
-
-	return ..()
-	
 /mob/living/carbon/xenomorph/king
 	caste_type = XENO_CASTE_KING
 	name = XENO_CASTE_KING

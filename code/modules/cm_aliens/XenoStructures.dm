@@ -919,6 +919,12 @@
 		qdel(src)
 		return
 
+	if(chosen_candidate || rolling_candidates)
+		return
+
+	if(icon_state == "hatching" || icon_state == "hatched")
+		return
+
 	var/groundside_humans = 0
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
@@ -927,21 +933,17 @@
 		var/turf/turf = get_turf(current_human)
 		if(is_ground_level(turf?.z))
 			groundside_humans += 1
+			
+			if(groundside_humans > 12)
+				break
 
 	// If marines evacuate, Hatch it instantly to prevent delay
-	if(groundside_humans < 12)
-		return
-		
-	if(icon_state == "hatching" || icon_state == "hatched" )
-		return
-
-	if(chosen_candidate || rolling_candidates)
+	if(groundside_humans > 12)
 		return
 
 	deltimer(timer)
 
 	choose_candidate(TRUE)
-
 
 /obj/effect/alien/resin/king_cocoon/proc/start_growing()
 	icon_state = "growing"
@@ -966,7 +968,7 @@
 /obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
 	if(!candidate.client)
 		return FALSE
-	if(istype(candidate, /mob/living/carbon/xenomorph/lesser_drone) || istype(candidate, /mob/living/carbon/xenomorph/facehugger))
+	if(isfacehugger(candidate) || islesserdrone(candidate))
 		return FALSE
 	if(playtime_restricted)
 		if(candidate.client.get_total_xeno_playtime() < KING_PLAYTIME_HOURS)

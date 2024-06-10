@@ -384,7 +384,7 @@
 	must_select_pylon = TRUE
 
 /datum/hivebuff/game_ender_caste/New()
-	roundtime_to_enable = XENO_KING_ACQUISITION_TIME
+	roundtime_to_enable = GLOB.king_acquisition_time
 
 	return ..()
 

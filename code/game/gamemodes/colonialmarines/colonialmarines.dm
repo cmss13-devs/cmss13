@@ -315,7 +315,7 @@
 			if(!GLOB.sunrise_starting_time)
 				(GLOB.sunrise_starting_time = ROUND_TIME)
 				for(var/mob/lighting_mob as anything in GLOB.player_list)
-					if(!lighting_mob.special_lighting || lighting_mob.fullscreens["lighting_backdrop"])
+					if(!lighting_mob.special_lighting && lighting_mob.fullscreens["lighting_backdrop"])
 						lighting_mob.special_lighting = "sunrise"
 						lighting_mob.special_lighting_active_timer = TRUE
 						lighting_mob.special_lighting_animate("sunrise", 30 SECONDS, 6, 10 SECONDS, GLOB.sunrise_starting_time, null, -1, FALSE, TRUE, FALSE)
@@ -346,7 +346,7 @@
 		if(!GLOB.sunrise_starting_time) //putting a sunset call here too
 			(GLOB.sunrise_starting_time = ROUND_TIME)
 			for(var/mob/lighting_mob as anything in GLOB.player_list)
-				if(!lighting_mob.special_lighting || lighting_mob.fullscreens["lighting_backdrop"])
+				if(!lighting_mob.special_lighting && lighting_mob.fullscreens["lighting_backdrop"])
 					lighting_mob.special_lighting = "sunrise"
 					lighting_mob.special_lighting_active_timer = TRUE
 					lighting_mob.special_lighting_animate("sunrise", 30 SECONDS, 6, 10 SECONDS, GLOB.sunrise_starting_time, null, -1, FALSE, TRUE, FALSE)

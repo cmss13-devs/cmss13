@@ -196,6 +196,8 @@
 
 	if(SSticker.mode.flags_round_type & MODE_INFESTATION) //checks if gamemode is a xeno gamemode before calling, will roar with no queen cause of implied queen existence
 		zlevel_evo_echo()
+		if(initial_screech)
+			initial_screech = FALSE
 
 /datum/hive_status/proc/zlevel_evo_echo()
 	for(var/mob/groundmob as anything in GLOB.player_list)
@@ -206,7 +208,6 @@
 					to_chat(groundmob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up...  something new is with you in this colony."))
 				if(issynth(groundmob))
 					to_chat(groundmob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))
-				initial_screech = FALSE
 				return
 			var/area/queen_area = get_area(living_xeno_queen)
 			if(!initial_screech)

@@ -77,14 +77,10 @@
 
 // returns the body payload
 /datum/tgui_bug_report_form/proc/create_form()
-	var/list/testmerges = world.TgsTestMerges()
-	var/text_output_tm = ""
-	for(var/tm in testmerges)
-		text_output_tm += "[tm]"
 
 	var/desc = {"
 ### Testmerges
-[text_output_tm ? text_output_tm : "N/A"]
+[GLOB.current_tms ? GLOB.current_tms : "N/A"]
 
 ### Round ID
 [GLOB.round_id ? GLOB.round_id : "N/A"]

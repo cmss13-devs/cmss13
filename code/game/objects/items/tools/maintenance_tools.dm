@@ -227,7 +227,8 @@
 		if(user.action_busy)
 			return
 		if(target_limb.brute_dam && welding)
-			remove_fuel(1,user)
+			if(!remove_fuel(1,user))
+				return
 			if(user == humanus)
 				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on from its [target_limb.display_name]."), \
 				SPAN_WARNING("You try to patch some dents on your [target_limb.display_name] by yourself"))

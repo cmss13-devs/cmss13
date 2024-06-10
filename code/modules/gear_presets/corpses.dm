@@ -529,7 +529,7 @@
 
 //Colonial Supervisor
 
-/datum/equipment_preset/corpse/wy/manager
+/datum/equipment_preset/corpse/wy_manager
 	name = "Corpse - Corporate Supervisor"
 	assignment = "Colony Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -549,7 +549,7 @@
 		ACCESS_ILLEGAL_PIRATE,
 	)
 
-/datum/equipment_preset/corpse/wy/manager/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/corpse/wy_manager/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison(new_human), WEAR_BACK)
@@ -562,7 +562,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 	add_random_cl_survivor_loot(new_human)
 
-/datum/equipment_preset/corpse/wy/manager/burst
+/datum/equipment_preset/corpse/wy_manager/burst
 	name = "Corpse - Burst Corporate Supervisor"
 	xenovictim = TRUE
 

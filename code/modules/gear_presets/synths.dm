@@ -143,14 +143,6 @@
 	. = ..()
 	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH //Access to civillians stuff + medbay stuff + engineering stuff + research
 
-/datum/equipment_preset/synth/survivor/pmc/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_WY_PMC)
-
-/datum/equipment_preset/synth/survivor/wy/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH + ACCESS_WY_GENERAL // for WY synths - admin building and wy fax machines access
-
 /datum/equipment_preset/synth/survivor/load_gear(mob/living/carbon/human/new_human)
 	for(var/equipment in equipment_to_spawn)
 		var/equipment_path = islist(equipment_to_spawn[equipment]) ? pick(equipment_to_spawn[equipment]) : equipment_to_spawn[equipment]
@@ -267,6 +259,9 @@
 	)
 
 	survivor_variant = ENGINEERING_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/corporate_synth
+	name = "Survivor - Synthetic - Corporate Synth"
 
 /datum/equipment_preset/synth/survivor/corporate_synth/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -451,7 +446,7 @@
 
 	survivor_variant = SECURITY_SURVIVOR
 
-/datum/equipment_preset/synth/survivor/wy/security_synth
+/datum/equipment_preset/synth/survivor/wy_security_synth
 	name = "Survivor - Synthetic - Corporate Security Synth"
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
@@ -474,7 +469,11 @@
 
 	survivor_variant = SECURITY_SURVIVOR
 
-/datum/equipment_preset/synth/survivor/wy/protection_synth
+/datum/equipment_preset/synth/survivor/wy_security_synth/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH + ACCESS_WY_GENERAL // for WY synths - admin building and wy fax machines access
+
+/datum/equipment_preset/synth/survivor/wy_protection_synth
 	name = "Survivor - Synthetic - Corporate Protection Synth"
 	idtype = /obj/item/card/id/pmc
 	role_comm_title = "WY Syn"
@@ -496,7 +495,11 @@
 
 	survivor_variant = SECURITY_SURVIVOR
 
-/datum/equipment_preset/synth/survivor/wy/corporate_synth
+/datum/equipment_preset/synth/survivor/wy_protection_synth/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH + ACCESS_WY_GENERAL // for WY synths - admin building and wy fax machines access
+
+/datum/equipment_preset/synth/survivor/wy_corporate_synth
 	name = "Survivor - Synthetic - Corporate Clerical Synth"
 	idtype = /obj/item/card/id/data
 	role_comm_title = "WY Syn"
@@ -517,6 +520,10 @@
 	)
 
 	survivor_variant = CORPORATE_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/wy_corporate_synth/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH + ACCESS_WY_GENERAL // for WY synths - admin building and wy fax machines access
 
 /datum/equipment_preset/synth/survivor/icc_synth
 	name = "Survivor - Synthetic - Interstellar Commerce Commission Synthetic"

@@ -968,4 +968,5 @@
 		new_human.nutrition = NUTRITION_LOW
 
 /datum/equipment_preset/tutorial/fed
+	name = "Tutorial (Fed)"
 	underfed = FALSE

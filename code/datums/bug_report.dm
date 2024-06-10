@@ -77,10 +77,14 @@
 
 // returns the body payload
 /datum/tgui_bug_report_form/proc/create_form()
+	var/datum/getrev/revdata = GLOB.revdata
+	var/test_merges
+	if(length(revdata.testmerge))
+		test_merges = revdata.GetTestMergeInfo(header = FALSE)
 
 	var/desc = {"
 ### Testmerges
-[GLOB.current_tms ? GLOB.current_tms : "N/A"]
+[test_merges ? test_merges : "N/A"]
 
 ### Round ID
 [GLOB.round_id ? GLOB.round_id : "N/A"]

@@ -315,8 +315,10 @@
 			if(!GLOB.sunrise_starting_time)
 				(GLOB.sunrise_starting_time = ROUND_TIME)
 			for(var/mob/lighting_mob as anything in GLOB.player_list)
-				lighting_mob.special_lighting = "sunrise"
-				lighting_mob.special_lighting_animate("sunrise", 30 SECONDS, 6, 0, GLOB.sunrise_starting_time, null, -1, FALSE, TRUE, FALSE)
+				if(!lighting_mob.special_lighting || lighting_mob.fullscreens["lighting_backdrop"])
+					lighting_mob.special_lighting = "sunrise"
+					lighting_mob.special_lighting_active_timer = TRUE
+					lighting_mob.special_lighting_animate("sunrise", 30 SECONDS, 6, 10 SECONDS, GLOB.sunrise_starting_time, null, -1, FALSE, TRUE, FALSE)
 			ares_conclude()
 			addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 	else if(!num_humans && !num_xenos)
@@ -341,11 +343,6 @@
 			round_finished = MODE_INFESTATION_M_MAJOR
 		else
 			round_finished = MODE_INFESTATION_M_MINOR
-		if(!GLOB.sunrise_starting_time)
-			(GLOB.sunrise_starting_time = ROUND_TIME)
-		for(var/mob/lighting_mob as anything in GLOB.player_list)
-			lighting_mob.special_lighting = "sunrise"
-			lighting_mob.special_lighting_animate("sunrise", 30 SECONDS, 6, 0, GLOB.sunrise_starting_time, null, -1, FALSE, TRUE, FALSE)
 
 ///////////////////////////////
 //Checks if the round is over//

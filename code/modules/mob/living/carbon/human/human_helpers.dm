@@ -9,71 +9,65 @@
 		g = "f"
 	return g
 
-/proc/get_limb_icon_name(datum/species/S, body_type, gender, limb_name, ethnicity)
-	if(S.uses_ethnicity)
+/proc/get_limb_icon_name(datum/species/S, body_size, body_type, gender, limb_name, skin_color)
+	if(S.uses_skin_color)
+		if(S.special_body_types)
+			switch(limb_name)
+				if("torso")
+					return "[skin_color]_torso_[body_size]_[body_type]"
+				if("chest")
+					return "[skin_color]_torso_[body_size]_[body_type]"
+				if("head")
+					return "[skin_color]_[limb_name]"
+				if("groin")
+					return "[skin_color]_[limb_name]_[body_size]"
+
+		if(!S.special_body_types)
+			switch(limb_name)
+				if("torso")
+					return "[skin_color]_torso_[body_type]_[get_gender_name(gender)]"
+				if("chest")
+					return "[skin_color]_torso_[body_type]_[get_gender_name(gender)]"
+				if("head")
+					return "[skin_color]_[limb_name]_[get_gender_name(gender)]"
+				if("groin")
+					return "[skin_color]_[limb_name]_[body_type]_[get_gender_name(gender)]"
+
 		switch(limb_name)
-			if ("torso")
-				return "[ethnicity]_torso_[body_type]_[get_gender_name(gender)]"
-
-			if ("chest")
-				return "[ethnicity]_torso_[body_type]_[get_gender_name(gender)]"
-
-			if ("head")
-				return "[ethnicity]_[limb_name]_[get_gender_name(gender)]"
-
-			if ("groin")
-				return "[ethnicity]_[limb_name]_[get_gender_name(gender)]"
-
 			if("synthetic head")
 				return "head_[get_gender_name(gender)]"
-
-			if ("r_arm")
-				return "[ethnicity]_right_arm"
-
-			if ("right arm")
-				return "[ethnicity]_right_arm"
-
-			if ("l_arm")
-				return "[ethnicity]_left_arm"
-
-			if ("left arm")
-				return "[ethnicity]_left_arm"
-
-			if ("r_leg")
-				return "[ethnicity]_right_leg"
-
-			if ("right leg")
-				return "[ethnicity]_right_leg"
-
-			if ("l_leg")
-				return "[ethnicity]_left_leg"
-
-			if ("left leg")
-				return "[ethnicity]_left_leg"
-
-			if ("r_hand")
-				return "[ethnicity]_right_hand"
-
-			if ("right hand")
-				return "[ethnicity]_right_hand"
-
-			if ("l_hand")
-				return "[ethnicity]_left_hand"
-
-			if ("left hand")
-				return "[ethnicity]_left_hand"
-
-			if ("r_foot")
-				return "[ethnicity]_right_foot"
-
-			if ("right foot")
-				return "[ethnicity]_right_foot"
-
-			if ("l_foot")
-				return "[ethnicity]_left_foot"
-
-			if ("left foot")
-				return "[ethnicity]_left_foot"
+			if("r_arm")
+				return "[skin_color]_right_arm"
+			if("right arm")
+				return "[skin_color]_right_arm"
+			if("l_arm")
+				return "[skin_color]_left_arm"
+			if("left arm")
+				return "[skin_color]_left_arm"
+			if("r_leg")
+				return "[skin_color]_right_leg"
+			if("right leg")
+				return "[skin_color]_right_leg"
+			if("l_leg")
+				return "[skin_color]_left_leg"
+			if("left leg")
+				return "[skin_color]_left_leg"
+			if("r_hand")
+				return "[skin_color]_right_hand"
+			if("right hand")
+				return "[skin_color]_right_hand"
+			if("l_hand")
+				return "[skin_color]_left_hand"
+			if("left hand")
+				return "[skin_color]_left_hand"
+			if("r_foot")
+				return "[skin_color]_right_foot"
+			if("right foot")
+				return "[skin_color]_right_foot"
+			if("l_foot")
+				return "[skin_color]_left_foot"
+			if("left foot")
+				return "[skin_color]_left_foot"
 
 			else
 				message_admins("DEBUG: Something called get_limb_icon_name() incorrectly, they use the name [limb_name]")
@@ -147,28 +141,37 @@
 				return null
 
 /mob/living/carbon/human/proc/set_limb_icons()
-	var/datum/ethnicity/E = GLOB.ethnicities_list[ethnicity]
-	var/datum/body_type/B = GLOB.body_types_list[body_type]
+	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[skin_color]
+	var/datum/body_size/set_body_size = GLOB.body_size_list[body_size]
+	var/datum/body_type/set_body_type = GLOB.body_type_list[body_type]
 
-	var/e_icon
-	var/b_icon
+	var/skin_color_icon
+	var/body_size_icon
+	var/body_type_icon
 
-	if (!E)
-		e_icon = "western"
+	if(!set_skin_color)
+		skin_color_icon = "pale2"
 	else
-		e_icon = E.icon_name
+		skin_color_icon = set_skin_color.icon_name
 
-	if (!B)
-		b_icon = "mesomorphic"
+	if(!set_body_size)
+		body_size_icon = "avg"
 	else
-		b_icon = B.icon_name
+		body_size_icon = set_body_size.icon_name
+
+
+	if(!set_body_type)
+		body_type_icon = "lean"
+	else
+		body_type_icon = set_body_type.icon_name
 
 	if(isspeciesyautja(src))
-		e_icon = src.ethnicity
-		b_icon = src.body_type
+		skin_color_icon = skin_color
+		body_size_icon = body_size
+		body_type_icon = body_type
 
-	for(var/obj/limb/L in limbs)
-		L.icon_name = get_limb_icon_name(species, b_icon, gender, L.display_name, e_icon)
+	for(var/obj/limb/L as anything in limbs)
+		L.icon_name = get_limb_icon_name(species, body_size_icon, body_type_icon, gender, L.display_name, skin_color_icon)
 
 /mob/living/carbon/human/can_inject(mob/user, error_msg, target_zone)
 	if(species?.flags & IS_SYNTHETIC)

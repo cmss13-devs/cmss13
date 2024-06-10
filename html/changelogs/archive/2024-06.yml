@@ -1,0 +1,86 @@
+2024-06-01:
+  Zonespace27:
+  - balance: Lifeboats now support surgery.
+2024-06-04:
+  AndroBetel:
+  - qol: Added radial menu to accessory removal
+  Huffie56:
+  - balance: for burrower in whiskey outpost add the ability to make tunnel but remove
+      the ability to burrow.
+  - balance: add C4 to the wo weapon vendor.
+  - balance: updating the clothing surplus vendor on to be as close as main mode as
+      possible.
+  realforest2001:
+  - admin: Added ckey log to ordering ASRS.
+2024-06-05:
+  Huffie56:
+  - maptweak: remove emergency shutter that aren't on the frontier between two areas.
+  - maptweak: added emergency shutter that are missing on the frontier between two
+      areas.
+  TheGamerdk:
+  - rscadd: All officers and NCO's can now recommend people for medals.
+  coldironwarrior:
+  - rscadd: Doctors will spawn in dark blue scrubs by default; Setting your preferred
+      job title to "Surgeon" for doctor roles will now spawn you in green scrubs
+  realforest2001:
+  - rscadd: Added a print button to the ASRS audit log.
+  - bugfix: Changing an Identification Computer to is_weyland (formerly is_centcom)
+      now works correctly and allows assignment of corporate accesses or presets.
+  - code_imp: Added two procs for interpreting WY access information in the UI.
+  - code_imp: Added separate role groups for PMC and Corporate job defines.
+  - rscadd: Added ACCESS_WY_DATABASE as a requirement to use the WY subtype console.
+  - rscadd: Added a WY subtype for crew monitor.
+  - code_imp: Renamed the faction defines explicitly relating to static defences due
+      to confusion over FACTION_WY and FACTION_WEYLAND.
+  - rscadd: Added Forsaken sub category to orbit menu. Also adds an "Other" sub category
+      for xeno hives, to split the main hive on its own.
+  - code_imp: Changed xenoSplitter to pull the hivenumber rather than base things
+      on the name.
+  - rscadd: Adds USCM Observer preset, a copy of CO with a different name.
+  - rscadd: Added cameras to Working Joe uniforms.
+  vero5123:
+  - bugfix: Fixes overwatch console coordinate comment UI crash
+  - bugfix: Fixes chat UI crash after entering a custom font
+2024-06-07:
+  Blundir:
+  - rscadd: contraband ammo selection in black market
+  - rscadd: tons of new ammo boxes
+  GrrrKitten:
+  - rscadd: replaces the old ethnicity system with a new skintone system
+  - imageadd: Resprites humans, adds 9 new mix and match body options to replace the
+      old 3 options
+  - rscadd: resprites dogtags and adds an accessory dogtag that can be made visible
+      via attaching to suit/armor
+  - imageadd: Touches up a lot of the underwear sprites
+2024-06-08:
+  Drathek:
+  - bugfix: Fixed larva and hugger emotes performing no stat or muted or cooldown
+      checks
+  - bugfix: Fixed round time having the wrong timezone offset because of an engine
+      change to time2text
+  - bugfix: Fixed linked airlocks destroying their linked airlock incorrectly
+  Drulikar:
+  - bugfix: Fixed some usages of the proc range such as for delimbing
+  TheGamerdk:
+  - bugfix: Your prayers have been received by the gods will now only be said once
+      per prayer
+  coldironwarrior:
+  - rscdel: removes the nazi jacket sprite from suits.dmi
+2024-06-09:
+  harryob:
+  - bugfix: predators are not missing the space between their torso and legs
+  hislittlecuzingames:
+  - balance: Set CT free plasteel to 40 and added APC Circuit board
+  realforest2001:
+  - bugfix: Fixed the USCM Observer icon not displaying. Forest dumb.
+2024-06-10:
+  Kivts, SubjectD9341, Zenith.:
+  - rscadd: Xenomorph Harvesting Surgery. Allows research to operate dead xenomorphs
+      to take out their organ.
+  - rscadd: The Xenomorph analyzer, uses organs extracted from dead xenomorphs, which
+      when processed gives points to spend on physical upgrades.
+  - rscadd: a number of machinery upgrades for autodoc, sleeper, and other upgrades
+      or bonuses research can decide to spend their points on
+  - rscdel: passive generation increase of research credits is removed
+  ThePiachu:
+  - spellcheck: Fixed a typo in Admin Game Panel

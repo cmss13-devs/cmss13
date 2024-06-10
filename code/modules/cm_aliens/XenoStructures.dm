@@ -935,11 +935,7 @@
 			groundside_humans += 1
 			
 			if(groundside_humans > 12)
-				break
-
-	// If marines evacuate, Hatch it instantly to prevent delay
-	if(groundside_humans > 12)
-		return
+				return
 
 	deltimer(timer)
 

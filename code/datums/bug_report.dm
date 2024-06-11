@@ -101,6 +101,7 @@
 ## Report details
 Author: [initial_user]
 Admin: [admin_user]
+
 	"}
 
 	return desc

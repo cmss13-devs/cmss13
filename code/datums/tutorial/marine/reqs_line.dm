@@ -12,6 +12,7 @@
 /datum/tutorial/marine/reqs_line
 	name = "Marine - Requistions Line"
 	desc = "Learn how to tend to the requisitions line as a Cargo Technician."
+	icon_state = "cargotech"
 	tutorial_id = "requisitions_line"
 	tutorial_template = /datum/map_template/tutorial/reqs_line
 
@@ -89,8 +90,8 @@
 		/obj/item/device/binoculars/range/designator = list("LD", "Designator", "Laser Designator", "Tac Binos"),
 		/obj/item/pamphlet/skill/jtac = list("JTAC Pamphlet"),
 		/* Explosives */
-		/obj/item/explosive/grenade/high_explosive = list("M40", "HEDP"),
-		/obj/item/explosive/grenade/incendiary = list("HIDP", "Incendiary nade", "Incendiary grenade", "HIDP", "Fire grenade"),
+		/obj/item/explosive/grenade/high_explosive = list("M40 HEDP", "HEDP"),
+		/obj/item/explosive/grenade/incendiary = list("M40 HIDP", "Incendiary nade", "Incendiary grenade", "HIDP", "Fire grenade"),
 		/obj/item/explosive/plastic = list("C4", "C4", "plastic", "plastic explosives"),
 		/obj/item/explosive/plastic/breaching_charge = list("Breaching", "breach charge", "breaching charge"),
 		/* AMMO */
@@ -100,12 +101,12 @@
 	)
 
 /datum/tutorial/marine/reqs_line/Destroy(force)
-	. = ..()
 	STOP_PROCESSING(SSfastobj, src)
 	kill_timers()
 	active_agent = null
 	loser_agent = null
 	QDEL_LIST(agents)
+	return ..()
 
 /datum/tutorial/marine/reqs_line/init_map()
 	var/obj/structure/machinery/cm_vending/sorted/attachments/blend/tutorial/attachies_vendor = new(loc_from_corner(2, 7))
@@ -278,6 +279,7 @@
 		if(COOLDOWN_FINISHED(src, confused_cooldown))
 			COOLDOWN_START(src, confused_cooldown, 5 SECONDS)
 			active_agent.say("Huh?")
+		QDEL_IN(item, 30 SECONDS)
 		return
 
 	request -= item_type
@@ -469,3 +471,12 @@
 
 /obj/structure/machinery/cm_vending/sorted/attachments/blend/tutorial
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES | VEND_PROPS
+
+
+#undef TUTORIAL_REQS_LINE_STAGE_STARTING
+#undef TUTORIAL_REQS_LINE_STAGE_ATTACHIES
+#undef TUTORIAL_REQS_LINE_STAGE_GEARBOX
+#undef TUTORIAL_REQS_LINE_STAGE_MIXED
+#undef TUTORIAL_REQS_LINE_STAGE_SURVIVAL
+
+#undef TUTORIAL_REQS_LINE_SURVIVAL_DIFFICULTY

@@ -1,7 +1,0 @@
-author: "Zonespace27"
-delete-after: True
-changes:
-  - balance: "All squad roles can now use M707 pamphlets"
-  - bugfix: "Skillless M707 spotting scopes now consistently work."
-  - bugfix: "M707 magazine overlay no longer disappears when the gun is empty with an inserted magazine"
-  - bugfix: "Fixed M707 being usable without the correct trait"

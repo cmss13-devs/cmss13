@@ -84,3 +84,10 @@
   - rscdel: passive generation increase of research credits is removed
   ThePiachu:
   - spellcheck: Fixed a typo in Admin Game Panel
+2024-06-11:
+  Zonespace27:
+  - balance: All squad roles can now use M707 pamphlets
+  - bugfix: Skillless M707 spotting scopes now consistently work.
+  - bugfix: M707 magazine overlay no longer disappears when the gun is empty with
+      an inserted magazine
+  - bugfix: Fixed M707 being usable without the correct trait

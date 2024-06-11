@@ -1501,6 +1501,17 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 #define UNTIL(X) while(!(X)) stoplag()
 
+#define UNTIL_OR_TIMEOUT(X, __time) \
+	do {\
+		var/__start_time = world.time;\
+		while(!(X)) {;\
+			stoplag();\
+			if(__start_time + __time <= world.time) {;\
+				CRASH("UNTIL_OR_TIMEOUT hit timeout limit of [__time]");\
+			};\
+		};\
+	} while(FALSE)
+
 //Repopulates sortedAreas list
 /proc/repopulate_sorted_areas()
 	GLOB.sorted_areas = list()

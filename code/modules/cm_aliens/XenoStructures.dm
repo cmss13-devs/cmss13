@@ -998,6 +998,7 @@
 /obj/effect/alien/resin/king_cocoon/proc/roll_candidates()
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 	
+	// First, let the living xenos choose
 	var/list/mob/living/carbon/xenomorph/voting_candidates = hive.totalXenos.Copy() - hive.living_xeno_queen
 
 	for(var/mob/living/carbon/xenomorph/voting_candidate in voting_candidates)
@@ -1020,12 +1021,13 @@
 
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			return candidate.client
+		
+		voting_candidates -= candidate
 
 		index++
 
 	// Ask all the living xenos
-	var/list/total_xenos_copy = shuffle(hive.totalXenos.Copy() - hive.living_xeno_queen)
-	for(var/mob/living/carbon/xenomorph/candidate in total_xenos_copy)
+	for(var/mob/living/carbon/xenomorph/candidate in voting_candidates)
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			return candidate.client
 	// Then observers
@@ -1035,7 +1037,7 @@
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			return candidate.client
 	// Lastly all of the above again, without playtime requirements
-	for(var/mob/living/carbon/xenomorph/candidate in total_xenos_copy)
+	for(var/mob/living/carbon/xenomorph/candidate in voting_candidates)
 		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
 			return candidate.client
 	for(var/mob/candidate in observer_list_copy)

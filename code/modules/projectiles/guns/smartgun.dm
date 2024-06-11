@@ -178,6 +178,7 @@
 //---ability actions--\\
 
 /datum/action/item_action/smartgun/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	if(!ishuman(owner))
 		return
@@ -595,6 +596,7 @@
 // ID lock action \\
 
 /datum/action/item_action/co_sg/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/smartgun/co/protag_gun = holder_item
 	if(!ishuman(owner))
 		return

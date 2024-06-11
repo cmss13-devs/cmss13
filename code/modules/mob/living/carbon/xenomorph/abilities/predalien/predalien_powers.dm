@@ -117,7 +117,7 @@
 		xeno.anchored = FALSE
 		unroot_human(carbon, TRAIT_SOURCE_ABILITY("Devastate"))
 
-		return ..()
+	return ..()
 
 
 /datum/action/xeno_action/onclick/feralrush/use_ability(atom/A)
@@ -149,6 +149,7 @@
 	predatoralien.recalculate_armor()
 	playsound(predatoralien, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
 	apply_cooldown()
+	return ..()
 
 
 /datum/action/xeno_action/onclick/feralrush/proc/remove_rush_effects()

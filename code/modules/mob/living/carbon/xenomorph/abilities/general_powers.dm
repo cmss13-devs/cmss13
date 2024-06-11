@@ -911,7 +911,7 @@
 		to_chat(stabbing_xeno, SPAN_XENOWARNING("We must be above ground to do this."))
 		return
 
-	if(!stabbing_xeno.check_state())
+	if(!stabbing_xeno.check_state() || stabbing_xeno.cannot_slash)
 		return FALSE
 
 	var/pre_result = pre_ability_act(stabbing_xeno, targetted_atom)

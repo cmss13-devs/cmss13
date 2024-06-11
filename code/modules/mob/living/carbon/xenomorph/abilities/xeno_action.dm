@@ -51,6 +51,7 @@
 // Any strain or caste-specific state should be stored on behavior_delegate objects
 // which use_ability invocations can modify using typechecks and typecasts where appropriate.
 /datum/action/xeno_action/proc/use_ability(atom/target)
+	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
 		return FALSE
 	track_xeno_ability_stats()
@@ -129,10 +130,16 @@
 /// A wrapper for use_ability that sends a signal
 /datum/action/xeno_action/proc/use_ability_wrapper(...)
 	// TODO: make hidden a part of can_use_action
-	if(!hidden && can_use_action() && use_ability(arglist(args)))
+	if(!can_use_action())
+		return FALSE
+
+	SEND_SIGNAL(src, COMSIG_XENO_PRE_ACTION_USED, owner)
+
+	if(!hidden && use_ability(arglist(args)))
 		SEND_SIGNAL(src, COMSIG_XENO_ACTION_USED, owner)
 		return TRUE
 
+	SEND_SIGNAL(src, COMSIG_XENO_FAILED_ACTION_USED, owner)
 	return FALSE
 
 // For actions that do something on each life tick
@@ -150,6 +157,7 @@
 // For non-activable Xeno actions, this is used to
 // actually DO the action.
 /datum/action/xeno_action/activable/action_activate()
+	. = ..()
 	if(!owner)
 		return
 	if(hidden)
@@ -201,6 +209,7 @@
 	no_cooldown_msg = TRUE
 
 /datum/action/xeno_action/onclick/action_activate()
+	. = ..()
 	use_ability_wrapper(null)
 
 // Adds a cooldown to this
@@ -420,6 +429,7 @@
 	return FALSE
 
 /datum/action/xeno_action/active_toggle/action_activate()
+	. = ..()
 	toggle_toggle()
 
 /datum/action/xeno_action/active_toggle/life_tick()

@@ -1054,6 +1054,7 @@ Defined in conflicts.dm of the #defines folder.
 	button.name = name
 
 /datum/action/item_action/toggle_zoom_level/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/G = holder_item
 	var/obj/item/attachable/scope/variable_zoom/S = G.attachments["rail"]
 	S.toggle_zoom_level()
@@ -1674,6 +1675,7 @@ Defined in conflicts.dm of the #defines folder.
 /datum/action/item_action/vulture
 
 /datum/action/item_action/vulture/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/gun_holder = holder_item
 	var/obj/item/attachable/vulture_scope/scope = gun_holder.attachments["rail"]
 	if(!istype(scope))
@@ -3515,6 +3517,7 @@ Defined in conflicts.dm of the #defines folder.
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/bipod/toggle_full_auto_switch/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/holder_gun = holder_item
 	var/obj/item/attachable/bipod/attached_bipod = holder_gun.attachments["under"]
 

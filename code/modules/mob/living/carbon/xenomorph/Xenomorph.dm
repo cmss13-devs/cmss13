@@ -248,6 +248,11 @@
 
 	// Life reduction variables.
 	var/life_slow_reduction = -1.5
+	//Research organ harvesting.
+	var/organ_removed = FALSE
+	/// value of organ in each caste, e.g. 10k is autodoc larva removal. runner is 500
+	var/organ_value = 0
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -262,6 +267,7 @@
 	// an easily modularizable way. So, here you go.
 	//
 	//////////////////////////////////////////////////////////////////
+
 	var/tunnel = FALSE
 	/// for check on lurker invisibility
 	var/stealth = FALSE
@@ -343,6 +349,13 @@
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
+	//putting the organ in for research
+	if(organ_value != 0)
+		var/obj/item/organ/xeno/organ = new() //give
+		organ.forceMove(src)
+		organ.research_value = organ_value
+		organ.caste_origin = caste_type
+		organ.icon_state = get_organ_icon()
 
 	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
 
@@ -663,6 +676,8 @@
 
 	if(iff_tag)
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
+	if(organ_removed)
+		. += "It seems to have its carapace cut open."
 
 /mob/living/carbon/xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
@@ -981,6 +996,9 @@
 
 	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
+
+/mob/living/carbon/xenomorph/proc/get_organ_icon()
+	return "heart_t[tier]"
 
 /mob/living/carbon/xenomorph/resist_restraints()
 	if(!legcuffed)

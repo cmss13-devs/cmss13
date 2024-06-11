@@ -266,6 +266,9 @@
 	if(istype(bullet.ammo, /datum/ammo/xeno/boiler_gas))
 		take_damage(floor(50 * burn_multiplier))
 
+	else if(istype(bullet.ammo, /datum/ammo/xeno/sapper_stone))
+		take_damage(bullet.damage * 4)
+
 	else if(bullet.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
 		take_damage(bullet.damage * ANTISTRUCT_DMG_MULT_BARRICADES)
 

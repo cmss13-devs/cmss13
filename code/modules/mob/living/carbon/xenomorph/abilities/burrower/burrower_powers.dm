@@ -340,7 +340,6 @@
 	xeno.animation_attack_on(carbon)
 	xeno.flick_attack_overlay(carbon, "punch")
 	shake_camera(carbon, 2, 1)
-	step_away(carbon, xeno, 2)
 
 /datum/action/xeno_action/onclick/earthquake/use_ability()
 	var/mob/living/carbon/xenomorph/sapper = owner
@@ -378,11 +377,11 @@
 	SPAN_XENODANGER("We leap forward into the air and slam the ground with all our might, causing an incredibly violent quake!"))
 	create_stomp()
 
-	for(var/mob/living/carbon/carbon_target in range(7, loc))
+	for(var/mob/living/carbon/carbon_target in range(6, loc))
 		to_chat(carbon_target, SPAN_WARNING("You struggle to remain on your feet as the ground shakes violently beneath your feet!"))
 		shake_camera(carbon_target, 2, 3)
 		carbon_target.apply_effect(1, SLOW)
-		if(get_dist(loc, carbon_target) <= 3 && !src.can_not_harm(carbon_target))
+		if(get_dist(loc, carbon_target) <= 4 && !src.can_not_harm(carbon_target))
 			if(carbon_target.mob_size >= MOB_SIZE_BIG)
 				carbon_target.apply_effect(1, SLOW)
 				to_chat(carbon_target, SPAN_WARNING("The violent quake causes the ground beneath you to shift, making it hard to remain upright!"))
@@ -413,7 +412,7 @@
 		return
 
 	sapper.face_atom(rock_target)
-	sapper.visible_message(SPAN_XENOWARNING("[sapper] starts tearing a piece of the ground up!"), SPAN_XENOHIGHDANGER("We start tearing a piece of the ground below us!"))
+	sapper.visible_message(SPAN_XENOWARNING("[sapper] starts vomiting resin and tearing the ground up!"), SPAN_XENOHIGHDANGER("We vomit special resin and tear up the ground to create a boulder!"))
 	if(!do_after(sapper, 5 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		return
 
@@ -422,7 +421,7 @@
 
 	behavior_del.modify_tension(-behavior_del.boulder_cost)
 
-	sapper.visible_message(SPAN_XENOWARNING("After lifting it above it, [sapper] throws a boulder at [atom]!"), SPAN_XENOWARNING("We heave a large boulder above us and throw it at [atom]!"))
+	sapper.visible_message(SPAN_XENOWARNING("[sapper] heaves a newly made boulder above it and hurls it at [atom]!"), SPAN_XENOWARNING("We heave our finished boulder above us and hurl it at [atom]!"))
 	sapper.emote("roar")
 
 	var/datum/ammo/ammo_datum = GLOB.ammo_list[ammo_type]

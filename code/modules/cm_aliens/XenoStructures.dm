@@ -1037,7 +1037,7 @@
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			return candidate.client
 	// Lastly all of the above again, without playtime requirements
-	for(var/mob/living/carbon/xenomorph/candidate in voting_candidates)
+	for(var/mob/living/carbon/xenomorph/candidate in shuffle(hive.totalXenos.Copy() - hive.living_xeno_queen))
 		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
 			return candidate.client
 	for(var/mob/candidate in observer_list_copy)

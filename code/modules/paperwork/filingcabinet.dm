@@ -103,28 +103,28 @@
 
 
 /obj/structure/filingcabinet/security/proc/populate()
-	if(virgin)
-		for(var/record_name in GLOB.data_core.general)
-			var/datum/data/record/G = GLOB.data_core.general[record_name] // yeah I know single letter vars, but like plz.
-			var/datum/data/record/S
-			for(var/record_id in GLOB.data_core.security)
-				var/datum/data/record/R = GLOB.data_core.security[record_id]
-				if((R.fields["name"] == G.fields["name"]))
-					S = R
-					break
-			if(S)
-				var/obj/item/paper/P = new /obj/item/paper(src)
-				P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
-				P.info += "Name: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nSex: [G.fields["sex"]]<BR>\nAge: [G.fields["age"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
-				P.info += "<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: [S.fields["criminal"]]<BR>\n<BR>\nIncidents: [S.fields["incident"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
-				var/counter = 1
-				while(S.fields["com_[counter]"])
-					P.info += "[S.fields["com_[counter]"]]<BR>"
-					counter++
-				P.info += "</TT>"
-				P.name = "Security Record ([G.fields["name"]])"
-			virgin = 0 //tabbing here is correct- it's possible for people to try and use it
-						//before the records have been generated, so we do this inside the loop.
+	if(!virgin)
+		return
+	for(var/record_name in GLOB.data_core.general)
+		var/datum/data/record/G = GLOB.data_core.general[record_name] // yeah I know single letter vars, but like plz.
+		var/datum/data/record/S
+		for(var/record_id in GLOB.data_core.security)
+			var/datum/data/record/R = GLOB.data_core.security[record_id]
+			if((R.fields["name"] == G.fields["name"]))
+				S = R
+				break
+		if(S)
+			var/obj/item/paper/P = new /obj/item/paper(src)
+			P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
+			P.info += "Name: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nSex: [G.fields["sex"]]<BR>\nAge: [G.fields["age"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
+			P.info += "<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: [S.fields["criminal"]]<BR>\n<BR>\nIncidents: [S.fields["incident"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
+			var/counter = 1
+			while(S.fields["com_[counter]"])
+				P.info += "[S.fields["com_[counter]"]]<BR>"
+				counter++
+			P.info += "</TT>"
+			P.name = "Security Record ([G.fields["name"]])"
+			virgin = 0 //tabbing here is correct- it's possible for people to try and use it before the records have been generated, so we do this inside the loop.
 
 /obj/structure/filingcabinet/security/attack_hand()
 	populate()
@@ -137,28 +137,28 @@
 	var/virgin = 1
 
 /obj/structure/filingcabinet/medical/proc/populate()
-	if(virgin)
-		for(var/record in GLOB.data_core.general)
-			var/datum/data/record/G = GLOB.data_core.general[record]
-			var/datum/data/record/M
-			for(var/record_name in GLOB.data_core.medical)
-				var/datum/data/record/R = GLOB.data_core.medical[record_name]
-				if((R.fields[MOB_NAME] == G.fields[MOB_NAME]))
-					M = R
-					break
-			if(M)
-				var/obj/item/paper/P = new /obj/item/paper(src)
-				P.info = "<CENTER><B>Medical Record</B></CENTER><BR>"
-				P.info += "Name: [G.fields[MOB_NAME]] ID: [G.fields["id"]]<BR>\nSex: [G.fields["sex"]]<BR>\nAge: [G.fields["age"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
-				P.info += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: [M.fields["b_type"]]<BR>\n<BR>\nMinor Disabilities: [M.fields["mi_dis"]]<BR>\nDetails: [M.fields["mi_dis_d"]]<BR>\n<BR>\nMajor Disabilities: [M.fields["ma_dis"]]<BR>\nDetails: [M.fields["ma_dis_d"]]<BR>\n<BR>\nAllergies: [M.fields["alg"]]<BR>\nDetails: [M.fields["alg_d"]]<BR>\n<BR>\nCurrent Diseases: [M.fields["cdi"]] (per disease info placed in log/comment section)<BR>\nDetails: [M.fields["cdi_d"]]<BR>\n<BR>\nImportant Notes:<BR>\n\t[M.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
-				var/counter = 1
-				while(M.fields["com_[counter]"])
-					P.info += "[M.fields["com_[counter]"]]<BR>"
-					counter++
-				P.info += "</TT>"
-				P.name = "Medical Record ([G.fields["name"]])"
-			virgin = 0 //tabbing here is correct- it's possible for people to try and use it
-						//before the records have been generated, so we do this inside the loop.
+	if(!virgin)
+		return
+	for(var/record in GLOB.data_core.general)
+		var/datum/data/record/G = GLOB.data_core.general[record]
+		var/datum/data/record/M
+		for(var/record_name in GLOB.data_core.medical)
+			var/datum/data/record/R = GLOB.data_core.medical[record_name]
+			if((R.fields[MOB_NAME] == G.fields[MOB_NAME]))
+				M = R
+				break
+		if(M)
+			var/obj/item/paper/P = new /obj/item/paper(src)
+			P.info = "<CENTER><B>Medical Record</B></CENTER><BR>"
+			P.info += "Name: [G.fields[MOB_NAME]] ID: [G.fields["id"]]<BR>\nSex: [G.fields["sex"]]<BR>\nAge: [G.fields["age"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
+			P.info += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: [M.fields["b_type"]]<BR>\n<BR>\nMinor Disabilities: [M.fields["mi_dis"]]<BR>\nDetails: [M.fields["mi_dis_d"]]<BR>\n<BR>\nMajor Disabilities: [M.fields["ma_dis"]]<BR>\nDetails: [M.fields["ma_dis_d"]]<BR>\n<BR>\nAllergies: [M.fields["alg"]]<BR>\nDetails: [M.fields["alg_d"]]<BR>\n<BR>\nCurrent Diseases: [M.fields["cdi"]] (per disease info placed in log/comment section)<BR>\nDetails: [M.fields["cdi_d"]]<BR>\n<BR>\nImportant Notes:<BR>\n\t[M.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
+			var/counter = 1
+			while(M.fields["com_[counter]"])
+				P.info += "[M.fields["com_[counter]"]]<BR>"
+				counter++
+			P.info += "</TT>"
+			P.name = "Medical Record ([G.fields["name"]])"
+		virgin = 0 //tabbing here is correct- it's possible for people to try and use it before the records have been generated, so we do this inside the loop.
 
 /obj/structure/filingcabinet/medical/attack_hand()
 	populate()

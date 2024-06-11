@@ -637,7 +637,7 @@
 		if(!modified)
 			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
-/* removed for now, will be modified in the future.
+/* TODO: refactor in the future as part of the new medical record system
 	if(href_list["medrecord"])
 		if(hasHUD(usr,"medical"))
 			var/perpref = null

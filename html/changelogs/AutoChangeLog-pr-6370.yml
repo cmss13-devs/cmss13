@@ -1,5 +1,0 @@
-author: "vero5123"
-delete-after: True
-changes:
-  - bugfix: "Fixes overwatch console coordinate comment UI crash"
-  - bugfix: "Fixes chat UI crash after entering a custom font"

@@ -244,6 +244,9 @@
 	if(hive_ref)
 		hive_ref.set_hive_location(src, linked_hive.hivenumber)
 
+/obj/effect/alien/resin/special/pylon/core/update_icon()
+	icon_state = "core"
+
 /obj/effect/alien/resin/special/pylon/core/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
 	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(linked_hive?.hivenumber), "core")

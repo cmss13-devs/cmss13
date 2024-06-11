@@ -866,6 +866,8 @@
 	var/timer
 	/// Is currently rolling candidates
 	var/rolling_candidates = FALSE
+	/// Voting for King
+	var/list/mob/living/carbon/xenomorph/votes = list()
 
 /obj/effect/alien/resin/king_cocoon/Destroy()
 	if(!hatched)
@@ -960,7 +962,7 @@
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately 5 minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
-#define KING_PLAYTIME_HOURS (200 HOURS)
+#define KING_PLAYTIME_HOURS (50 HOURS)
 
 /obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
 	if(!candidate.client)
@@ -979,9 +981,36 @@
 
 #undef KING_PLAYTIME_HOURS
 
+/obj/effect/alien/resin/king_cocoon/proc/make_vote(mob/candidate, datum/hive_status/hive)
+	var/mob/living/carbon/xenomorph/choice = tgui_input_list(candidate, "Vote for a sister you wish to become the King.", "Choose a xeno", hive.totalXenos - hive.living_xeno_queen , 20 SECONDS)
+
+	if(votes[choice])
+		votes[choice] += 1
+	else
+		votes[choice] = 1
+
 /obj/effect/alien/resin/king_cocoon/proc/roll_candidates()
-	// Ask all the living xenos
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
+
+	for(var/mob/living/carbon/xenomorph/candidate in hive.totalXenos)
+		INVOKE_ASYNC(src, PROC_REF(make_vote), candidate, hive)
+	
+	sleep(20 SECONDS)
+	votes = sortAssoc(votes)
+	var/index = 0
+	for(var/mob/living/carbon/xenomorph/candidate in votes)
+		if(index == 0 && prob(50) && length(votes) > 1)
+			continue
+
+		if(index > 1)
+			break
+
+		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
+			return candidate.client
+
+		index++
+
+	// Ask all the living xenos
 	var/list/total_xenos_copy = shuffle(hive.totalXenos.Copy() - hive.living_xeno_queen)
 	for(var/mob/living/carbon/xenomorph/candidate in total_xenos_copy)
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))

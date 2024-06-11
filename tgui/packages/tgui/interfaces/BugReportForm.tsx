@@ -56,7 +56,7 @@ export const BugReportForm = (props) => {
   };
 
   return (
-    <Window title={'Bug Report Form'} width={600} height={600}>
+    <Window title={'Bug Report Form'} width={700} height={700}>
       <Window.Content>
         <Section fill scrollable>
           <Flex direction="column" height="100%">
@@ -71,6 +71,13 @@ export const BugReportForm = (props) => {
               </a>
             </Flex.Item>
             <Flex.Item>
+              <h2 className="tip">
+                {
+                  'TIP: please be as descriptive as possible, it really does help tremendously'
+                }
+              </h2>
+            </Flex.Item>
+            <Flex.Item>
               <InputTitle required>{'Title'}</InputTitle>
               <input
                 width="100%"
@@ -81,31 +88,43 @@ export const BugReportForm = (props) => {
             </Flex.Item>
             <Flex.Item my={2}>
               <InputTitle required>{'Description'}</InputTitle>
-              {'Give a short description of the bug'}
-              <input
-                width="100%"
+              {'Give a description of the bug'}
+              <textarea
+                rows={3}
+                className="textarea"
+                onInput={(e) => {
+                  const target = e.target as HTMLTextAreaElement;
+                  target.style.height = 'auto';
+                  target.style.height = `${target.scrollHeight}px`;
+                }}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="textarea"
               />
             </Flex.Item>
             <Flex.Item my={2}>
               <InputTitle required>
                 {"What's the difference with what should have happened?"}
               </InputTitle>
-              {'Give a short description of what you expected to happen'}
-              <input
-                width="100%"
+              {'Give a description of what you expected to happen'}
+              <textarea
+                rows={3}
+                className="textarea"
+                onInput={(e) => {
+                  const target = e.target as HTMLTextAreaElement;
+                  target.style.height = 'auto';
+                  target.style.height = `${target.scrollHeight}px`;
+                }}
                 value={expected_behavior}
                 onChange={(e) => setExpectedBehavior(e.target.value)}
-                className="textarea"
               />
             </Flex.Item>
             <Flex.Item my={2}>
               <InputTitle required>
                 {'How do we reproduce this bug?'}
               </InputTitle>
-              {'Give a list of steps to reproduce this issue'}
+              {
+                'Give a list of steps to reproduce this issue, the more details the better'
+              }
               <textarea
                 rows={4}
                 className="textarea"

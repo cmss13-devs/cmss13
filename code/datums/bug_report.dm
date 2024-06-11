@@ -97,6 +97,10 @@
 
 ### How do we reproduce this bug?
 [bug_report_data["steps"]]
+
+## Report details
+Author: [initial_user]
+Admin: [admin_user]
 	"}
 
 	return desc
@@ -180,6 +184,6 @@
 
 /datum/tgui_bug_report_form/proc/reject(client/user)
 	message_admins("[user.ckey] has rejected a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
-	to_chat(initial_user, SPAN_WARNING("An admin has rejected your bug report, this can happen for several reasons. They will most likely get back to you shortly about your issue."))
+	to_chat(initial_user, SPAN_WARNING("An admin has rejected your bug report, this can happen for several reasons. They will most likely get back to you shortly regarding your issue."))
 
 #undef STATUS_SUCCESS

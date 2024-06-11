@@ -964,7 +964,7 @@
 
 #define KING_PLAYTIME_HOURS (50 HOURS)
 
-/obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
+/obj/effect/alien/resin/king_cocoon/proc/is_candidate_valid(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
 	if(!candidate.client)
 		return FALSE
 	if(isfacehugger(candidate) || islesserdrone(candidate))
@@ -977,12 +977,18 @@
 	for(var/mob_name in hive.banished_ckeys)
 		if(hive.banished_ckeys[mob_name] == candidate.ckey)
 			return FALSE
+	return TRUE
+
+/obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
+	if(!is_candidate_valid(hive, candidate, playtime_restricted))
+		return FALSE
+	
 	return tgui_alert(candidate, "Would you like to become the King?", "Choice", list("Yes", "No"), 10 SECONDS) == "Yes"
 
 #undef KING_PLAYTIME_HOURS
 
-/obj/effect/alien/resin/king_cocoon/proc/make_vote(mob/candidate, datum/hive_status/hive)
-	var/mob/living/carbon/xenomorph/choice = tgui_input_list(candidate, "Vote for a sister you wish to become the King.", "Choose a xeno", hive.totalXenos - hive.living_xeno_queen , 20 SECONDS)
+/obj/effect/alien/resin/king_cocoon/proc/make_vote(mob/candidate, list/mob/living/carbon/xenomorph/voting_candidates)
+	var/mob/living/carbon/xenomorph/choice = tgui_input_list(candidate, "Vote for a sister you wish to become the King.", "Choose a xeno", voting_candidates , 20 SECONDS)
 
 	if(votes[choice])
 		votes[choice] += 1
@@ -991,9 +997,16 @@
 
 /obj/effect/alien/resin/king_cocoon/proc/roll_candidates()
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
+	
+	var/list/mob/living/carbon/xenomorph/voting_candidates = hive.totalXenos.Copy() - hive.living_xeno_queen
+
+	for(var/mob/living/carbon/xenomorph/voting_candidate in voting_candidates)
+		if(!is_candidate_valid(hive, voting_candidate))
+			voting_candidates -= voting_candidate
 
 	for(var/mob/living/carbon/xenomorph/candidate in hive.totalXenos)
-		INVOKE_ASYNC(src, PROC_REF(make_vote), candidate, hive)
+		if(is_candidate_valid(hive, candidate, FALSE))
+			INVOKE_ASYNC(src, PROC_REF(make_vote), candidate, voting_candidates)
 	
 	sleep(20 SECONDS)
 	votes = sortAssoc(votes)

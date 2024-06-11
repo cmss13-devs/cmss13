@@ -979,8 +979,8 @@
 			return FALSE
 	return TRUE
 
-/obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE, skip_playtime=TRUE)
-	if(!is_candidate_valid(hive, candidate, playtime_restricted, skip_playtime))
+/obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
+	if(!is_candidate_valid(hive, candidate, playtime_restricted))
 		return FALSE
 	
 	return tgui_alert(candidate, "Would you like to become the King?", "Choice", list("Yes", "No"), 10 SECONDS) == "Yes"

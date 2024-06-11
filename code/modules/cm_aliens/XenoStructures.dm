@@ -964,7 +964,7 @@
 
 #define KING_PLAYTIME_HOURS (50 HOURS)
 
-/obj/effect/alien/resin/king_cocoon/proc/is_candidate_valid(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
+/obj/effect/alien/resin/king_cocoon/proc/is_candidate_valid(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE, skip_playtime=TRUE)
 	if(!candidate.client)
 		return FALSE
 	if(isfacehugger(candidate) || islesserdrone(candidate))
@@ -972,15 +972,15 @@
 	if(playtime_restricted)
 		if(candidate.client.get_total_xeno_playtime() < KING_PLAYTIME_HOURS)
 			return FALSE
-	else if(candidate.client.get_total_xeno_playtime() >= KING_PLAYTIME_HOURS)
+	else if(candidate.client.get_total_xeno_playtime() >= KING_PLAYTIME_HOURS && skip_playtime)
 		return FALSE // We do this under the assumption we tried it the other way already so don't ask twice
 	for(var/mob_name in hive.banished_ckeys)
 		if(hive.banished_ckeys[mob_name] == candidate.ckey)
 			return FALSE
 	return TRUE
 
-/obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
-	if(!is_candidate_valid(hive, candidate, playtime_restricted))
+/obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE, skip_playtime=TRUE)
+	if(!is_candidate_valid(hive, candidate, playtime_restricted, skip_playtime))
 		return FALSE
 	
 	return tgui_alert(candidate, "Would you like to become the King?", "Choice", list("Yes", "No"), 10 SECONDS) == "Yes"
@@ -1006,7 +1006,7 @@
 			voting_candidates -= voting_candidate
 
 	for(var/mob/living/carbon/xenomorph/candidate in hive.totalXenos)
-		if(is_candidate_valid(hive, candidate, FALSE))
+		if(is_candidate_valid(hive, candidate, FALSE, FALSE))
 			INVOKE_ASYNC(src, PROC_REF(make_vote), candidate, voting_candidates)
 	
 	sleep(20 SECONDS)

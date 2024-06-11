@@ -1,3 +1,4 @@
+//mode datums at the bottom.
 #define MODE_AMPLIFY 1
 #define MODE_SUPPRESS 2
 #define MODE_RELATE 3
@@ -101,7 +102,78 @@
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
-	ui_interact(user)
+	tgui_interact(user)
+
+/obj/structure/machinery/chem_simulator/tgui_interact(mob/user, datum/tgui/ui) //death to the chem simulator! All Hail the chem simulator!
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChemSimulator", "Chemical Simulator")
+		ui.open()
+
+/obj/structure/machinery/chem_simulator/ui_data(mob/user)
+	. = ..()
+	var/list/data = list()
+	data["clearance"] = GLOB.chemical_data.clearance_level
+	data["credits"] = GLOB.chemical_data.rsc_credits
+	data["status"] = status_bar
+	ready = check_ready()
+	data["can_simulate"] = ready
+	data["can_eject_target"] = ((target ? TRUE : FALSE) && simulating == SIMULATION_STAGE_OFF)
+	data["can_eject_reference"] = ((reference ? TRUE : FALSE) && simulating == SIMULATION_STAGE_OFF)
+	if(target)
+		if(length(target?.data?.properties))
+			for(var/datum/chem_property/target_property_data in target.data.properties)
+				data["target_data"] += list(list(
+					"code" = target_property_data.code,
+					"level" = target_property_data.level,
+					"name" = target_property_data.name,
+					"desc" = target_property_data.description,
+				))
+	else
+		data["target_data"] = null
+	return data
+
+/obj/structure/machinery/chem_simulator/ui_static_data(mob/user)
+	. = ..()
+	var/list/static_data = list()
+	for(var/modes in subtypesof(/datum/chemical_simulator_modes))
+		var/datum/chemical_simulator_modes/modes_datum = modes
+		static_data["mode_data"] += list(list(
+			"name" = modes_datum.name,
+			"desc" = modes_datum.desc,
+			"mode_id" = modes_datum.mode_id,
+		))
+	return static_data
+
+/obj/structure/machinery/chem_simulator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("change_mode")
+			mode = params["mode_id"]
+		if("eject_target")
+			if(target)
+				if(!usr.put_in_active_hand(target))
+					target.forceMove(loc)
+				target = null
+			target_property = null
+			stop_processing()
+			simulating = SIMULATION_STAGE_OFF
+			flick("[icon_state]_printing",src)
+		if("eject_reference")
+			if(!target || simulating != SIMULATION_STAGE_OFF)
+				return
+			if(!usr.put_in_active_hand(reference))
+				reference.forceMove(loc)
+			reference = null
+			reference_property = null
+			stop_processing()
+			flick("[icon_state]_printing",src)
+
+
+
+
 
 /obj/structure/machinery/chem_simulator/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/list/data = list(
@@ -188,7 +260,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/structure/machinery/chem_simulator/Topic(href, href_list)
+/*/obj/structure/machinery/chem_simulator/Topic(href, href_list)
 	. = ..()
 	if(.)
 		return
@@ -351,7 +423,7 @@
 	ready = check_ready()
 	playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)
 	SSnano.nanomanager.update_uis(src)
-
+*/
 /obj/structure/machinery/chem_simulator/process()
 	if(inoperable())
 		return
@@ -713,6 +785,36 @@
 	R.add_to_filtered_list()
 	status_bar = "SIMULATION COMPLETE"
 	print(C.id, TRUE)
+
+/datum/chemical_simulator_modes
+	var/name
+	var/desc
+	var/mode_id
+	var/icon
+
+/datum/chemical_simulator_modes/create
+	name = "CREATE"
+	desc = "Create a new custom chemical from the known properties discovered earlier"
+	mode_id = MODE_CREATE
+	icon = "minus"
+
+/datum/chemical_simulator_modes/supress
+	name = "SUPRESS"
+	desc = "Supress one level in the choosen property. This decreases the OD level."
+	mode_id = MODE_SUPPRESS
+	icon = "minus"
+
+/datum/chemical_simulator_modes/amplify
+	name = "AMPLIFY"
+	desc = "Amplify one level in the choosen property. This decreases the OD level"
+	mode_id = MODE_AMPLIFY
+	icon = "plus"
+
+/datum/chemical_simulator_modes/relate
+	name = "RELATE"
+	desc = "Use the reference chemical to replace one choosen property in the target chemical. The target and reference target property level must be equal."
+	mode_id = MODE_RELATE
+	icon = "minus"
 
 #undef SIMULATION_FAILURE
 #undef SIMULATION_STAGE_OFF

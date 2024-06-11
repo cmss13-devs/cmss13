@@ -28,7 +28,7 @@ $weyland: #af7f38;
     '../components/Button.scss',
     $with: (
       'color-default': $weyland,
-      'color-selected': #9d0808,
+      'color-selected': #d6b480,
       'color-caution': #be6209,
       'color-danger': #9a9d00,
       'color-transparent-text': color.scale($weyland, $lightness: 30%)
@@ -55,6 +55,9 @@ $weyland: #af7f38;
     outline: base.em(1px) solid #161613;
   }
 
+  .Button--color--danger {
+    background-color: #d16c0e;
+  }
   .Layout__content {
     background-color: #252832;
     background-image: url('../../assets/bg-weyland.png');

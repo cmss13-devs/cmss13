@@ -41,6 +41,7 @@
 	tier = 4
 	small_explosives_stun = FALSE
 	counts_for_slots = FALSE
+	organ_value = 50000
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 	age = -1
@@ -63,6 +64,9 @@
 	weed_food_states_flipped = list()
 
 	bubble_icon = "alienroyal"
+
+/mob/living/carbon/xenomorph/king/get_organ_icon()
+	return "heart_t3"
 
 /mob/living/carbon/xenomorph/king/Initialize()
 	. = ..()
@@ -89,7 +93,7 @@
 	name = "Base King Behavior Delegate"
 
 /mob/living/carbon/xenomorph/king/rogue
-	icon_xeno = "icons/mob/xenos/rogueking.dmi"
+	icon_xeno = 'icons/mob/xenos/rogueking.dmi'
 	icon = 'icons/mob/xenos/rogueking.dmi'
 
 /atom/movable/vis_obj/xeno_wounds/rogue

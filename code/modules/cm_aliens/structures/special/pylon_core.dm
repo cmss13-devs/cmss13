@@ -28,6 +28,13 @@
 
 	plane = FLOOR_PLANE
 
+/obj/effect/alien/resin/special/pylon/update_icon()
+	if(protection_level == TURF_PROTECTION_OB)
+		icon_state = "pylon_active"
+		return
+
+	icon_state = "pylon"
+
 /obj/effect/alien/resin/special/pylon/Initialize(mapload, hive_ref)
 	. = ..()
 

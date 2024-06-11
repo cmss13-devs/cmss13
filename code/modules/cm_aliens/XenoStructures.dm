@@ -876,7 +876,7 @@
 			if(!length(hive.totalXenos))
 				continue
 			if(cur_hive_num == hive_number)
-				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! VENGANCE!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! VENGENCE!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 			else
 				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
@@ -884,6 +884,7 @@
 	hive.has_hatchery = FALSE
 	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
 		pylon.protection_level = initial(pylon.protection_level)
+		pylon.update_icon()
 
 	. = ..()
 
@@ -959,7 +960,7 @@
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately 5 minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
-#define KING_PLAYTIME_HOURS (50 HOURS)
+#define KING_PLAYTIME_HOURS (200 HOURS)
 
 /obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
 	if(!candidate.client)
@@ -1010,7 +1011,7 @@
 		animate_hatch_king()
 		return
 	
-	marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - 1 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+	marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - ONE MINUTE.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
@@ -1051,7 +1052,9 @@
 	if(chosen_candidate?.mob)
 		var/mob/old_mob = chosen_candidate.mob
 		old_mob.mind.transfer_to(king)
-		old_mob.free_for_ghosts(TRUE)
+
+		if(isliving(old_mob) && old_mob.stat != DEAD)
+			old_mob.free_for_ghosts(TRUE)
 	else
 		king.free_for_ghosts(TRUE)
 	playsound(src, 'sound/voice/alien_queen_command.ogg', 75, 0)
@@ -1065,6 +1068,7 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
 		pylon.protection_level = initial(pylon.protection_level)
+		pylon.update_icon()
 
 /obj/item/explosive/grenade/alien
 	name = "alien grenade"

@@ -16,6 +16,7 @@ type FormDetails = {
   title: string;
   description: string;
   expected_behavior: string;
+  admin_note: string;
 };
 
 const InputTitle = (props) => {
@@ -40,6 +41,7 @@ export const BugReportForm = (props) => {
   const [expected_behavior, setExpectedBehavior] = useState(
     report_details?.expected_behavior || '',
   );
+  const [admin_note, setAdminNote] = useState(report_details?.admin_note || '');
 
   const submit = () => {
     if (!title || !description || !expected_behavior || !steps || !checkBox) {
@@ -51,12 +53,17 @@ export const BugReportForm = (props) => {
       steps,
       description,
       expected_behavior,
+      admin_note,
     };
     act('confirm', updatedReportDetails);
   };
 
   return (
-    <Window title={'Bug Report Form'} width={700} height={700}>
+    <Window
+      title={'Bug Report Form'}
+      width={700}
+      height={awaiting_admin_approval ? 900 : 700}
+    >
       <Window.Content>
         <Section fill scrollable>
           <Flex direction="column" height="100%">
@@ -138,6 +145,23 @@ export const BugReportForm = (props) => {
                 placeholder={'1) Step 1\n2) Step 2\n3) Step 3\n'}
               />
             </Flex.Item>
+            {!!awaiting_admin_approval && (
+              <Flex.Item my={2}>
+                <InputTitle>{'Admin note'}</InputTitle>
+                {"Any additional notes to submit with the author's bug report"}
+                <textarea
+                  rows={4}
+                  className="textarea"
+                  onInput={(e) => {
+                    const target = e.target as HTMLTextAreaElement;
+                    target.style.height = 'auto';
+                    target.style.height = `${target.scrollHeight}px`;
+                  }}
+                  value={admin_note}
+                  onChange={(e) => setAdminNote(e.target.value)}
+                />
+              </Flex.Item>
+            )}
             <Flex.Item my={2} className={'text-center'}>
               <ButtonCheckbox
                 checked={checkBox}

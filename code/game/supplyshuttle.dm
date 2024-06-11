@@ -316,6 +316,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
+	if(crate.opened)
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The crate is not secure on the drop pad. Please close it!")]")
+		return
+
 	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
 	current_squad.send_message("'[crate.name]' supply drop incoming. Heads up!")
 	current_squad.send_maptext(crate.name, "Incoming Supply Drop:")
@@ -433,6 +437,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Seized Items",
 		"Shipside Contraband",
 		"Surplus Equipment",
+		"Contraband Ammo",
 		"Deep Storage",
 		"Miscellaneous"
 		)
@@ -1065,7 +1070,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					temp = "Thank you for your order.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 					supply_order.approvedby = usr.name
-					msg_admin_niche("[usr] confirmed supply order of [supply_pack.name].")
+					msg_admin_niche("[key_name(usr)] confirmed supply order of [supply_pack.name].")
 					if(GLOB.supply_controller.black_market_heat == 100)
 						GLOB.supply_controller.black_market_investigation()
 					var/pack_source = "Cargo Hold"

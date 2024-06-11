@@ -747,3 +747,16 @@
 /// Handler callback to reset immobilization status after a successful [/mob/living/carbon/xenomorph/proc/throw_carbon]
 /mob/living/carbon/xenomorph/proc/throw_carbon_end(mob/living/carbon/target)
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
+
+/// snowflake proc to clear effects from research warcrimes
+/mob/living/carbon/xenomorph/proc/clear_debuffs()
+	SEND_SIGNAL(src, COMSIG_XENO_DEBUFF_CLEANSE)
+	SetKnockOut(0)
+	SetStun(0)
+	SetKnockDown(0)
+	SetDaze(0)
+	SetSlow(0)
+	SetSuperslow(0)
+	SetRoot(0)
+	SetEyeBlur(0)
+	updatehealth()

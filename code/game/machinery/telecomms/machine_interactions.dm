@@ -160,7 +160,7 @@
 	dat += "</font>"
 	temp = ""
 	show_browser(user, dat, "[src] Access", "tcommachine", "size=520x500;can_resize=0")
-	onclose(user, "dormitory")
+	onclose(user, "tcommachine")
 
 
 // Off-Site Relays

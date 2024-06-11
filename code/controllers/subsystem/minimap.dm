@@ -88,8 +88,8 @@ SUBSYSTEM_DEF(minimaps)
 				else if(yval < smallest_y)
 					smallest_y = yval
 
-		minimaps_by_z["[level]"].x_offset = Floor((SCREEN_PIXEL_SIZE-largest_x-smallest_x) / MINIMAP_SCALE)
-		minimaps_by_z["[level]"].y_offset = Floor((SCREEN_PIXEL_SIZE-largest_y-smallest_y) / MINIMAP_SCALE)
+		minimaps_by_z["[level]"].x_offset = floor((SCREEN_PIXEL_SIZE-largest_x-smallest_x) / MINIMAP_SCALE)
+		minimaps_by_z["[level]"].y_offset = floor((SCREEN_PIXEL_SIZE-largest_y-smallest_y) / MINIMAP_SCALE)
 
 		icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset)
 		icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset)
@@ -765,7 +765,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = TRUE
 	data["canViewCanvas"] = FALSE
-	data["isXeno"] = FALSE
+	data["isxeno"] = FALSE
 
 	return data
 
@@ -781,7 +781,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/is_xeno = istype(xeno)
 	var/faction = is_xeno ? xeno.hivenumber : user.faction
 
-	data["isXeno"] = is_xeno
+	data["isxeno"] = is_xeno
 	data["canViewTacmap"] = is_xeno
 	data["canViewCanvas"] = faction == FACTION_MARINE || faction == XENO_HIVE_NORMAL
 
@@ -799,7 +799,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
-	data["isXeno"] = FALSE
+	data["isxeno"] = FALSE
 
 	return data
 
@@ -811,7 +811,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
-	data["isXeno"] = TRUE
+	data["isxeno"] = TRUE
 
 	return data
 

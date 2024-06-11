@@ -12,3 +12,6 @@
 
 /datum/lazy_template/ert/weyland_station
 	map_name = "weyland_ert_station"
+
+/datum/lazy_template/ert/pizza_station
+	map_name = "pizza_ert_station"

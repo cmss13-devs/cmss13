@@ -96,6 +96,7 @@
 	force = 10
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
+	demolition_mod = 0.1
 	w_class = SIZE_TINY
 	throwforce = 5
 	flags_item = CAN_DIG_SHRAPNEL
@@ -531,8 +532,8 @@ t. optimisticdude
 					to_chat(usr, "This is difficult, you probably shouldn't move")
 					return
 				to_chat(usr, "You've cut through the outer layers of Chitin")
-				new /obj/item/XenoBio/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
-				new /obj/item/XenoBio/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
+				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
+				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				T.butchery_progress++
 				active = 0
 		if(1)
@@ -541,7 +542,7 @@ t. optimisticdude
 					to_chat(usr, "This is difficult, you probably shouldn't move.")
 					return
 				to_chat(usr, "You've cut into the chest cavity and retreived a sample of blood.")
-				new /obj/item/XenoBio/Blood(T.loc)//This will be a sample of blood eventually
+				new /obj/item/oldresearch/Blood(T.loc)//This will be a sample of blood eventually
 				T.butchery_progress++
 				active = 0
 		if(2)
@@ -551,7 +552,7 @@ t. optimisticdude
 					return
 				//to_chat(usr, "You've cut out an intact organ.")
 				to_chat(usr, "You've cut out some Biomass...")
-				new /obj/item/XenoBio/Resin(T.loc)//This will be an organ eventually, based on the caste.
+				new /obj/item/oldresearch/Resin(T.loc)//This will be an organ eventually, based on the caste.
 				T.butchery_progress++
 				active = 0
 		if(3)
@@ -561,6 +562,6 @@ t. optimisticdude
 					return
 				to_chat(usr, "You scrape out the remaining biomass.")
 				active = 0
-				new /obj/item/XenoBio/Resin(T.loc)
+				new /obj/item/oldresearch/Resin(T.loc)
 				new /obj/effect/decal/remains/xeno(T.loc)
 				qdel(T)

@@ -45,7 +45,10 @@
 	if(orbiting)
 		orbiting.end_orbit(src)
 		orbiting = null
-	vis_contents.Cut()
+
+	vis_locs = null //clears this atom out of all viscontents
+	if(length(vis_contents))
+		vis_contents.Cut()
 	. = ..()
 	moveToNullspace() //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
 

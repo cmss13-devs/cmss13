@@ -828,9 +828,6 @@
 		if (!X.Adjacent(A))
 			to_chat(X, SPAN_XENODANGER("We must be within touching distance of [targetXeno]!"))
 			return
-		if(istype(targetXeno.strain, /datum/xeno_strain/warden))
-			to_chat(X, SPAN_XENODANGER("We cannot heal a sister of the same strain!"))
-			return
 		if (SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 			to_chat(X, SPAN_XENOWARNING("We cannot heal this xeno!"))
 			return
@@ -847,13 +844,21 @@
 		if (!behavior.use_internal_hp_ability(bonus_heal))
 			bonus_heal = 0
 
-		to_chat(X, SPAN_XENODANGER("We heal [targetXeno]!"))
+		to_chat(X, SPAN_XENOHIGHDANGER("We heal [targetXeno]!"))
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("We are healed by [X]!"))
-		targetXeno.gain_health(heal_amount + bonus_heal)
+		//Amount to heal in this cast of the ability
+		var/quantity_healed = heal_amount
+		if(istype(targetXeno.strain, /datum/xeno_strain/warden))
+			// Half the healing if warden
+			quantity_healed = quantity_healed / 2
+		else
+			quantity_healed = quantity_healed + bonus_heal
+
+		targetXeno.gain_health(quantity_healed)
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] places its claws on [targetXeno], and its wounds are quickly sealed!")) //marines probably should know if a xeno gets healed
 		X.gain_health(heal_amount*0.5 + bonus_heal*0.5)
 		X.flick_heal_overlay(3 SECONDS, "#00B800")
-		behavior.transferred_healing += heal_amount
+		behavior.transferred_healing += quantity_healed
 		use_plasma = TRUE //it's already hard enough to gauge health without hp showing on the mob
 		targetXeno.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
 
@@ -869,17 +874,12 @@
 		if (!behavior.use_internal_hp_ability(debuff_cost))
 			return
 
-		to_chat(X, SPAN_XENODANGER("We rejuvenate [targetXeno]!"))
+		to_chat(X, SPAN_XENOHIGHDANGER("We rejuvenate [targetXeno]!"))
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("We are rejuvenated by [X]!"))
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it spasms as it recuperates unnaturally quickly!")) //marines probably should know if a xeno gets rejuvenated
 		targetXeno.xeno_jitter(1 SECONDS) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating
 		targetXeno.flick_heal_overlay(3 SECONDS, "#F5007A") //therefore making the Praetorian a priority target
-		targetXeno.set_effect(0, PARALYZE)
-		targetXeno.set_effect(0, STUN)
-		targetXeno.set_effect(0, WEAKEN)
-		targetXeno.set_effect(0, DAZE)
-		targetXeno.set_effect(0, SLOW)
-		targetXeno.set_effect(0, SUPERSLOW)
+		targetXeno.clear_debuffs()
 		use_plasma = TRUE
 	if (use_plasma)
 		use_plasma_owner()

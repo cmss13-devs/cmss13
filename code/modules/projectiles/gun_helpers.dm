@@ -312,7 +312,7 @@ DEFINES in setup.dm, referenced here.
 			var/tac_reload_time = 15
 			if(user.skills)
 				tac_reload_time = max(15 - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
-			if(do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && magazine.loc == old_mag_loc && !current_mag)
+			if(do_after(user,tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY) && magazine.loc == old_mag_loc && !current_mag)
 				if(isstorage(magazine.loc))
 					var/obj/item/storage/master_storage = magazine.loc
 					master_storage.remove_from_storage(magazine)
@@ -460,9 +460,9 @@ DEFINES in setup.dm, referenced here.
 		else attack_verb = list("slashed", "stabbed", "speared", "torn", "punctured", "pierced", "gored") //Greater than 35
 
 /obj/item/weapon/gun/proc/get_active_firearm(mob/user, restrictive = TRUE)
-	if(!ishuman(usr))
-		return
 	if(user.is_mob_incapacitated() || !isturf(usr.loc))
+		return
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(user, SPAN_WARNING("Not right now."))
 		return
 
@@ -517,11 +517,11 @@ DEFINES in setup.dm, referenced here.
 		return FALSE
 
 	if(istype(slot) && (slot.storage_flags & STORAGE_ALLOW_QUICKDRAW))
-		for(var/obj/cycled_weapon in slot.return_inv())
-			if(isweapon(cycled_weapon))
+		for(var/obj/cycled_object in slot.return_inv())
+			if(cycled_object.flags_atom & QUICK_DRAWABLE)
 				return slot
 
-	if(isweapon(slot)) //then check for weapons
+	if(slot.flags_atom & QUICK_DRAWABLE)
 		return slot
 
 	return FALSE
@@ -765,7 +765,6 @@ DEFINES in setup.dm, referenced here.
 
 	unique_action(usr)
 
-
 /obj/item/weapon/gun/verb/toggle_gun_safety()
 	set category = "Weapons"
 	set name = "Toggle Gun Safety"
@@ -782,7 +781,7 @@ DEFINES in setup.dm, referenced here.
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
-	if(!ishuman(usr))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(usr.is_mob_incapacitated() || !usr.loc || !isturf(usr.loc))
@@ -932,6 +931,15 @@ DEFINES in setup.dm, referenced here.
 	if(!istype(target, /atom/movable/screen/click_catcher))
 		return null
 	return params2turf(modifiers["screen-loc"], get_turf(user), user.client)
+
+/// check if the gun contains any light source that is currently turned on.
+/obj/item/weapon/gun/proc/light_sources()
+	var/obj/item/attachable/flashlight/torch
+	for(var/slot in attachments)
+		torch = attachments[slot]
+		if(istype(torch) && torch.light_on == TRUE)
+			return TRUE // an attachment has light enabled.
+	return FALSE
 
 /// If this gun has a relevant flashlight attachable attached, (de)activate it
 /obj/item/weapon/gun/proc/force_light(on)

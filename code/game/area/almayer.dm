@@ -366,8 +366,12 @@
 	name = "\improper Upper Deck Aft Hallway"
 	icon_state = "aft"
 
-/area/almayer/hallways/upper/stern_hallway
-	name = "\improper Upper Deck Stern Hallway"
+/area/almayer/hallways/upper/fore_hallway
+	name = "\improper Upper Deck Fore Hallway"
+	icon_state = "stern"
+
+/area/almayer/hallways/upper/midship_hallway
+	name = "\improper Upper Deck Midship Hallway"
 	icon_state = "stern"
 
 /area/almayer/hallways/upper/port
@@ -424,6 +428,18 @@
 
 /area/almayer/maint/upper/u_m_s
 	name = "\improper Upper Deck Starboard-Midship Maintenance"
+
+/area/almayer/maint/upper/u_f_p
+	name = "\improper Upper Deck Port-Fore Maintenance"
+
+/area/almayer/maint/upper/u_f_s
+	name = "\improper Upper Deck Starboard-Fore Maintenance"
+
+/area/almayer/maint/upper/u_a_p
+	name = "\improper Upper Deck Port-Aft Maintenance"
+
+/area/almayer/maint/upper/u_a_s
+	name = "\improper Upper Deck Starboard-Aft Maintenance"
 
 // hull areas
 /area/almayer/maint/hull

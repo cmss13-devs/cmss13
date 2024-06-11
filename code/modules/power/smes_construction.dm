@@ -39,7 +39,7 @@
 			capacity += C.ChargeCapacity
 			input_level_max += C.IOCapacity
 			output_level_max += C.IOCapacity
-		charge = between(0, charge, capacity)
+		charge = clamp(charge, 0, capacity)
 		return 1
 	else
 		return 0
@@ -199,7 +199,7 @@
 			return
 
 		// Probability of failure if safety circuit is disabled (in %)
-		var/failure_probability = round((charge / capacity) * 100)
+		var/failure_probability = floor((charge / capacity) * 100)
 
 		// If failure probability is below 5% it's usually safe to do modifications
 		if (failure_probability < 5)

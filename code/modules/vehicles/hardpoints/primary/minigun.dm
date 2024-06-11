@@ -9,8 +9,6 @@
 	health = 350
 	firing_arc = 90
 
-	origins = list(0, -3)
-
 	ammo = new /obj/item/ammo_magazine/hardpoint/ltaaap_minigun
 	max_clips = 1
 
@@ -77,8 +75,8 @@
 		return
 	spin_stage = clamp(spin_stage, 1, stage_rate_len)
 
-	var/old_stage_rate = stage_rate[Floor(old_spin_stage)]
-	var/new_stage_rate = stage_rate[Floor(spin_stage)]
+	var/old_stage_rate = stage_rate[floor(old_spin_stage)]
+	var/new_stage_rate = stage_rate[floor(spin_stage)]
 
 	if(old_stage_rate != new_stage_rate)
 		stage_delay_mult = 1 / new_stage_rate

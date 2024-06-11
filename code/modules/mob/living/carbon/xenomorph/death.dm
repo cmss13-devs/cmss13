@@ -36,7 +36,7 @@
 				XQ.dismount_ovipositor(TRUE)
 
 			if(GLOB.hive_datum[hivenumber].stored_larva)
-				GLOB.hive_datum[hivenumber].stored_larva = round(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
+				GLOB.hive_datum[hivenumber].stored_larva = floor(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
 
 				var/list/players_with_xeno_pref = get_alien_candidates(GLOB.hive_datum[hivenumber])
 				if(players_with_xeno_pref && istype(GLOB.hive_datum[hivenumber].hive_location, /obj/effect/alien/resin/special/pylon/core))

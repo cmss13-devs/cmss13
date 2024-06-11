@@ -5,7 +5,7 @@
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "egg_item"
 	w_class = SIZE_MASSIVE
-	flags_atom = OPENCONTAINER
+	flags_atom = FPRINT|OPENCONTAINER
 	flags_item = NOBLUDGEON
 	throw_range = 1
 	layer = MOB_LAYER

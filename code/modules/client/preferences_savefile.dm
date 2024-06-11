@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 22
+#define SAVEFILE_VERSION_MAX 23
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -95,6 +95,53 @@
 		sound_toggles |= SOUND_OBSERVER_ANNOUNCEMENTS
 		S["toggles_sound"] << sound_toggles
 
+	if(savefile_version < 23)
+		var/ethnicity
+		var/skin_color = "pale2"
+		S["ethnicity"] >> ethnicity
+		switch(ethnicity)
+			if("anglo")
+				skin_color = "pale2"
+			if("western")
+				skin_color = "tan2"
+			if("germanic")
+				skin_color = "pale2"
+			if("scandinavian")
+				skin_color = "pale3"
+			if("baltic")
+				skin_color = "pale3"
+			if("sinoorient")
+				skin_color = "pale1"
+			if("southorient")
+				skin_color = "tan1"
+			if("indian")
+				skin_color = "tan3"
+			if("sino")
+				skin_color = "tan1"
+			if("mesoamerican")
+				skin_color = "tan3"
+			if("northamerican")
+				skin_color = "tan3"
+			if("southamerican")
+				skin_color = "tan2"
+			if("circumpolar")
+				skin_color = "tan1"
+			if("northafrican")
+				skin_color = "tan3"
+			if("centralafrican")
+				skin_color = "dark1"
+			if("costalafrican")
+				skin_color = "dark3"
+			if("persian")
+				skin_color = "tan3"
+			if("levant")
+				skin_color = "tan3"
+			if("australasian")
+				skin_color = "dark2"
+			if("polynesian")
+				skin_color = "tan3"
+		S["skin_color"] << skin_color
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -150,6 +197,8 @@
 	S["UI_style_alpha"] >> UI_style_alpha
 	S["item_animation_pref_level"] >> item_animation_pref_level
 	S["pain_overlay_pref_level"] >> pain_overlay_pref_level
+	S["flash_overlay_pref"] >> flash_overlay_pref
+	S["crit_overlay_pref"] >> crit_overlay_pref
 	S["stylesheet"] >> stylesheet
 	S["window_skin"] >> window_skin
 	S["fps"] >> fps
@@ -233,6 +282,8 @@
 	UI_style_alpha = sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	item_animation_pref_level = sanitize_integer(item_animation_pref_level, SHOW_ITEM_ANIMATIONS_NONE, SHOW_ITEM_ANIMATIONS_ALL, SHOW_ITEM_ANIMATIONS_ALL)
 	pain_overlay_pref_level = sanitize_integer(pain_overlay_pref_level, PAIN_OVERLAY_BLURRY, PAIN_OVERLAY_LEGACY, PAIN_OVERLAY_BLURRY)
+	flash_overlay_pref = sanitize_integer(flash_overlay_pref, FLASH_OVERLAY_WHITE, FLASH_OVERLAY_DARK)
+	crit_overlay_pref = sanitize_integer(crit_overlay_pref, CRIT_OVERLAY_WHITE, CRIT_OVERLAY_DARK)
 	window_skin = sanitize_integer(window_skin, 0, SHORT_REAL_LIMIT, initial(window_skin))
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
@@ -327,6 +378,8 @@
 	S["tgui_say"] << tgui_say
 	S["item_animation_pref_level"] << item_animation_pref_level
 	S["pain_overlay_pref_level"] << pain_overlay_pref_level
+	S["flash_overlay_pref"] << flash_overlay_pref
+	S["crit_overlay_pref"] << crit_overlay_pref
 	S["stylesheet"] << stylesheet
 	S["be_special"] << be_special
 	S["default_slot"] << default_slot
@@ -423,7 +476,9 @@
 	S["gender"] >> gender
 	S["age"] >> age
 	S["ethnicity"] >> ethnicity
+	S["skin_color"] >> skin_color
 	S["body_type"] >> body_type
+	S["body_size"] >> body_size
 	S["language"] >> language
 	S["spawnpoint"] >> spawnpoint
 
@@ -502,8 +557,9 @@
 	be_random_body = sanitize_integer(be_random_body, 0, 1, initial(be_random_body))
 	gender = sanitize_gender(gender)
 	age = sanitize_integer(age, AGE_MIN, AGE_MAX, initial(age))
-	ethnicity = sanitize_ethnicity(ethnicity)
+	skin_color = sanitize_skin_color(skin_color)
 	body_type = sanitize_body_type(body_type)
+	body_size = sanitize_body_size(body_size)
 	r_hair = sanitize_integer(r_hair, 0, 255, initial(r_hair))
 	g_hair = sanitize_integer(g_hair, 0, 255, initial(g_hair))
 	b_hair = sanitize_integer(b_hair, 0, 255, initial(b_hair))
@@ -574,7 +630,9 @@
 	S["gender"] << gender
 	S["age"] << age
 	S["ethnicity"] << ethnicity
+	S["skin_color"] << skin_color
 	S["body_type"] << body_type
+	S["body_size"] << body_size
 	S["language"] << language
 	S["hair_red"] << r_hair
 	S["hair_green"] << g_hair

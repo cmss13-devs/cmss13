@@ -48,7 +48,7 @@
 					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
 		var/obj/item/I = user.get_active_hand()
 		if(I && I.force)
-			var/d = rand(round(I.force / 4), I.force)
+			var/d = rand(floor(I.force / 4), I.force)
 			if(istype(src, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = src
 				var/organ = H.get_limb("chest")
@@ -110,7 +110,7 @@
 			var/obj/O = A
 			if(O.unacidable)
 				O.forceMove(get_turf(loc))
-				O.throw_atom(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
+				O.throw_atom(pick(range(1, get_turf(loc))), 1, SPEED_FAST)
 
 	. = ..(cause)
 
@@ -398,23 +398,6 @@
 	..()
 	bodytemperature = max(bodytemperature, BODYTEMP_HEAT_DAMAGE_LIMIT+10)
 	recalculate_move_delay = TRUE
-
-
-/mob/living/carbon/show_inv(mob/living/carbon/user as mob)
-	user.set_interaction(src)
-	var/dat = {"
-	<B><HR><FONT size=3>[name]</FONT></B>
-	<BR><HR>
-	<BR><B>Head(Mask):</B> <A href='?src=\ref[src];item=face'>[(wear_mask ? wear_mask : "Nothing")]</A>
-	<BR><B>Left Hand:</B> <A href='?src=\ref[src];item=l_hand'>[(l_hand ? l_hand  : "Nothing")]</A>
-	<BR><B>Right Hand:</B> <A href='?src=\ref[src];item=r_hand'>[(r_hand ? r_hand : "Nothing")]</A>
-	<BR><B>Back:</B> <A href='?src=\ref[src];item=back'>[(back ? back : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank) && !( internal )) ? " <A href='?src=\ref[src];internal=1'>Set Internal</A>" : "")]
-	<BR>[(handcuffed ? "<A href='?src=\ref[src];item=handcuffs'>Handcuffed</A>" : "<A href='?src=\ref[src];item=handcuffs'>Not Handcuffed</A>")]
-	<BR>[(internal ? "<A href='?src=\ref[src];internal=1'>Remove Internal</A>" : "")]
-	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
-	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
-	<BR>"}
-	show_browser(user, dat, name, "mob[name]")
 
 /**
  * Called by [/mob/dead/observer/proc/do_observe] when a carbon mob is observed by a ghost with [/datum/preferences/var/auto_observe] enabled.

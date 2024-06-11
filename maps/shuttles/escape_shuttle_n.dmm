@@ -50,7 +50,7 @@
 /obj/structure/machinery/cryopod/evacuation,
 /obj/structure/sign/safety/cryo{
 	pixel_x = 8;
-	pixel_y = -35
+	pixel_y = -28
 	},
 /turf/open/shuttle/escapepod{
 	icon_state = "floor4"

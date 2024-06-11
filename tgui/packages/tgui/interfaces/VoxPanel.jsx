@@ -1,6 +1,8 @@
-import { useBackend, useLocalState } from '../backend';
-import { Button, Flex, Section, Tabs, Box, Input, Slider } from '../components';
 import { KEY_CTRL, KEY_SHIFT } from 'common/keycodes';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Box, Button, Flex, Input, Section, Slider, Tabs } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = [
@@ -21,7 +23,7 @@ const PAGES = [
 export const VoxPanel = (props) => {
   const { data } = useBackend();
 
-  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 0);
+  const [pageIndex, setPageIndex] = useState(0);
 
   const PageComponent = PAGES[pageIndex].component();
 
@@ -40,7 +42,8 @@ export const VoxPanel = (props) => {
                 color={page.color}
                 selected={i === pageIndex}
                 icon={page.icon}
-                onClick={() => setPageIndex(i)}>
+                onClick={() => setPageIndex(i)}
+              >
                 {page.title}
               </Tabs.Tab>
             );
@@ -61,28 +64,28 @@ const SendVOX = (props) => {
   for (let i = 0; i < vox_keys.length; i++) {
     const key = vox_keys[i];
     let regexString =
-      '\\b' + Object.keys(glob_vox_types[key]).join('\\b|\\b') + '\\b';
-    regexString = regexString.replace(/!/g, '');
+      '(^|[^!-/:-@[-`])\\b' + // I'd prefer negative look behind...
+      Object.keys(glob_vox_types[key]).join(
+        '(?![!-+\\-/:-@[-`])\\b|(^|[^!-/:-@[-`])\\b',
+      ) +
+      '(?![!-+\\-/:-@[-`])\\b';
+    regexString = regexString.replace(/\\b!/g, '\\B!'); // sfx cause a different word boundary to occur
     regexString = regexString.replace(/\./g, '\\.');
-    voxRegexes[key] = new RegExp(regexString, 'g');
+    voxRegexes[key] = new RegExp(regexString, 'gi');
   }
 
-  const [voxRegex, setVoxRegex] = useLocalState('voxRegex', null);
-
-  const [voxType, setVoxType] = useLocalState('voxType', null);
-
-  const [message, setMessage] = useLocalState('message', '');
-
-  const [volume, setVolume] = useLocalState('volume', 100);
-
-  const [currentFaction, setCurrentFaction] = useLocalState('currentFaction', {
+  const [voxRegex, setVoxRegex] = useState(voxRegexes[vox_keys[0]]);
+  const [voxType, setVoxType] = useState(vox_keys[0]);
+  const [message, setMessage] = useState('');
+  const [volume, setVolume] = useState(100);
+  const [currentFaction, setCurrentFaction] = useState({
     [factions[0]]: true,
   });
 
   const handleFactionSet = (val, keysDown) => {
     if (keysDown[KEY_CTRL]) {
       currentFaction[val] = true;
-      setCurrentFaction(currentFaction);
+      setCurrentFaction({ ...currentFaction });
     } else if (keysDown[KEY_SHIFT]) {
       let [startSelecting, foundClickedValue, finishedSelecting] =
         (false, false, false);
@@ -119,21 +122,21 @@ const SendVOX = (props) => {
       for (let i = 0; i < toSelect.length; i++) {
         currentFaction[toSelect[i]] = true;
       }
-      setCurrentFaction(currentFaction);
+      setCurrentFaction({ ...currentFaction });
     } else {
       setCurrentFaction({ [val]: true });
     }
   };
 
-  const [validWords, setValidWords] = useLocalState('valid_words', []);
+  const [validWords, setValidWords] = useState([]);
 
-  const handleSetMessage = (msg) => {
+  const handleSetMessage = (msg, regex) => {
     setMessage(msg);
 
-    if (!voxRegex) return;
+    if (!regex) return;
 
     // matchAll not available on ie :clap:
-    const foundWords = msg.match(voxRegex);
+    const foundWords = msg.match(regex);
     setValidWords(foundWords || []);
   };
 
@@ -146,16 +149,18 @@ const SendVOX = (props) => {
             fill
             buttons={
               <Button
-                content="Select All"
                 color="transparent"
                 onClick={() => {
                   for (let i = 0; i < factions.length; i++) {
                     currentFaction[factions[i]] = true;
                   }
-                  setCurrentFaction(currentFaction);
+                  setCurrentFaction({ ...currentFaction });
                 }}
-              />
-            }>
+              >
+                Select All
+              </Button>
+            }
+          >
             <ComboBox
               buttons={factions}
               selected={currentFaction}
@@ -172,6 +177,7 @@ const SendVOX = (props) => {
               onSelected={(val, keysDown) => {
                 setVoxRegex(voxRegexes[val]);
                 setVoxType(val);
+                handleSetMessage(message, voxRegexes[val]);
               }}
               height={15}
             />
@@ -184,7 +190,7 @@ const SendVOX = (props) => {
             <Input
               fluid
               value={message}
-              onInput={(e, val) => handleSetMessage(val)}
+              onInput={(e, val) => handleSetMessage(val, voxRegex)}
             />
           </Flex.Item>
           <Flex.Item mt={1}>
@@ -195,7 +201,8 @@ const SendVOX = (props) => {
               stepPixelSize={20}
               minValue={0}
               maxValue={100}
-              fluid>
+              fluid
+            >
               Volume: {volume}
             </Slider>
           </Flex.Item>
@@ -203,7 +210,6 @@ const SendVOX = (props) => {
             <Flex>
               <Flex.Item grow={1}>
                 <Button
-                  content="Send to Self"
                   fluid
                   onClick={() =>
                     act('play_to_self', {
@@ -212,11 +218,12 @@ const SendVOX = (props) => {
                       volume: volume,
                     })
                   }
-                />
+                >
+                  Send to Self
+                </Button>
               </Flex.Item>
               <Flex.Item ml={1} grow={1}>
                 <Button
-                  content="Send to Factions"
                   fluid
                   onClick={() =>
                     act('play_to_players', {
@@ -226,7 +233,9 @@ const SendVOX = (props) => {
                       volume: volume,
                     })
                   }
-                />
+                >
+                  Send to Factions
+                </Button>
               </Flex.Item>
             </Flex>
           </Flex.Item>
@@ -248,13 +257,12 @@ const SoundList = (props) => {
   const { act, data } = useBackend();
   const { glob_vox_types } = data;
 
-  const [voxType, setVoxType] = useLocalState('voxFilesType', null);
-
-  const [currentSearch, setCurrentSearch] = useLocalState('current_search', '');
+  const [voxType, setVoxType] = useState(null);
+  const [currentSearch, setCurrentSearch] = useState('');
 
   return (
     <Flex direction="column">
-      <Flex.Item grow={1}>
+      <Flex.Item>
         <Section title="VOX Type Select" fill>
           <ComboBox
             buttons={Object.keys(glob_vox_types)}
@@ -265,7 +273,7 @@ const SoundList = (props) => {
         </Section>
       </Flex.Item>
       {!!voxType && (
-        <Flex.Item mt={1}>
+        <Flex.Item grow={1} mt={1}>
           <Section title="Sound Files">
             <Input
               fluid
@@ -278,14 +286,15 @@ const SoundList = (props) => {
                 .map((val) => (
                   <Flex.Item key={val} ml={1} mt={1}>
                     <Button
-                      content={val}
                       onClick={() =>
                         act('play_to_self', {
                           vox_type: voxType,
                           message: val,
                         })
                       }
-                    />
+                    >
+                      {val}
+                    </Button>
                   </Flex.Item>
                 ))}
             </Flex>
@@ -336,21 +345,23 @@ export const ComboBox = (props) => {
             tabIndex={0}
             onKeyDown={handleCombos}
             onKeyUp={handleCombos}
-            onSelectStart={() => false}>
+            onSelectStart={() => false}
+          >
             <Flex direction="column">
               {buttons.map((val) => (
                 <Flex.Item key={val}>
                   <Button
                     color="transparent"
                     fluid
-                    content={val}
                     selected={
                       typeof selected === 'object' && selected
                         ? selected[val]
                         : selected === val
                     }
                     onClick={(e) => handleOnClick(e, val)}
-                  />
+                  >
+                    {val}
+                  </Button>
                 </Flex.Item>
               ))}
             </Flex>

@@ -134,7 +134,7 @@
 	if(!length(monkey_types))
 		return
 
-	var/amount_to_spawn = round(GLOB.players_preassigned * MONKEYS_TO_TOTAL_RATIO)
+	var/amount_to_spawn = floor(GLOB.players_preassigned * MONKEYS_TO_TOTAL_RATIO)
 
 	for(var/i in 0 to min(amount_to_spawn, length(GLOB.monkey_spawns)))
 		var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
@@ -332,7 +332,7 @@
 			if(HS.living_xeno_queen && !should_block_game_interaction(HS.living_xeno_queen.loc))
 				//Some Queen is alive, we shouldn't end the game yet
 				return
-		if (HS.totalXenos <= 3)
+		if(length(HS.totalXenos) <= 3)
 			round_finished = MODE_INFESTATION_M_MAJOR
 		else
 			round_finished = MODE_INFESTATION_M_MINOR

@@ -97,11 +97,13 @@
 	if(!(placed||static))
 		return FALSE
 
+	msg_admin_niche("[key_name(usr)] turned on [src] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
 	turned_on = TRUE
 	power_on_action()
 	update_icon()
 
 /obj/structure/machinery/defenses/proc/power_off()
+	msg_admin_niche("[key_name(usr)] turned off [src] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
 	turned_on = FALSE
 	power_off_action()
 	update_icon()
@@ -113,6 +115,7 @@
  * @param selection: configuration value for category.
  */
 /obj/structure/machinery/defenses/proc/update_choice(mob/user, category, selection)
+	msg_admin_niche("[key_name(user)] changed the [category] of [src] at [get_location_in_text(src)] to [selection] [ADMIN_JMP(loc)]")
 	if(category in selected_categories)
 		selected_categories[category] = selection
 		switch(category)
@@ -124,7 +127,6 @@
 	switch(category)
 		if("nickname")
 			nickname = selection
-			message_admins("[key_name_admin(user)] has labelled structure to [nickname]", user.x, user.y, user.z)
 			return TRUE
 	return FALSE
 
@@ -136,11 +138,11 @@
 	switch(selection)
 		if(FACTION_MARINE)
 			faction_group = FACTION_LIST_MARINE
-		if(FACTION_WEYLAND)
+		if(SENTRY_FACTION_WEYLAND)
 			faction_group = FACTION_LIST_MARINE_WY
-		if(FACTION_HUMAN)
+		if(SENTRY_FACTION_HUMAN)
 			faction_group = FACTION_LIST_HUMANOID
-		if(FACTION_COLONY)
+		if(SENTRY_FACTION_COLONY)
 			faction_group = list(FACTION_MARINE, FACTION_COLONIST)
 
 
@@ -454,9 +456,9 @@
 	visible_message(SPAN_WARNING("[src] is hit by [P]!"))
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_ACIDIC) //Fix for xenomorph spit doing baby damage.
-		update_health(round(P.damage/3))
+		update_health(floor(P.damage/3))
 	else
-		update_health(round(P.damage/10))
+		update_health(floor(P.damage/10))
 	return TRUE
 // DAMAGE HANDLING OVER
 

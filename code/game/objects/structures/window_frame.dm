@@ -184,6 +184,11 @@
 	basestate = "w_ai_window"
 	window_type = /obj/structure/window/framed/almayer/aicore/white
 
+/obj/structure/window_frame/almayer/aicore/black
+	icon_state = "alm_window0_frame"
+	basestate = "alm_window"
+	window_type = /obj/structure/window/framed/almayer/aicore/black
+
 /obj/structure/window_frame/almayer/requisitions/attackby(obj/item/W, mob/living/user)
 	if(istype(W, sheet_type))
 		to_chat(user, SPAN_WARNING("You can't repair this window."))

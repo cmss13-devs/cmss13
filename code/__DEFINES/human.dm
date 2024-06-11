@@ -187,6 +187,7 @@
 #define SYNTH_COMBAT "Combat Synthetic"
 #define SYNTH_INFILTRATOR "Infiltrator Synthetic"
 #define SYNTH_WORKING_JOE "Working Joe"
+#define SYNTH_HAZARD_JOE "Hazard Joe"
 #define SYNTH_GEN_ONE "First Generation Synthetic"
 #define SYNTH_GEN_TWO "Second Generation Synthetic"
 #define SYNTH_GEN_THREE "Third Generation Synthetic"

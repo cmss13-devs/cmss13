@@ -139,7 +139,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/legcuffs/beartrap{
+/obj/item/restraint/legcuffs/beartrap{
 	pixel_x = -1;
 	pixel_y = 8
 	},
@@ -312,12 +312,6 @@
 "rI" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
-	},
-/obj/item/XenoItem/AntiAcid{
-	pixel_x = -6
-	},
-/obj/item/XenoItem/AntiAcid{
-	pixel_x = 4
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";

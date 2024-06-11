@@ -6,8 +6,9 @@
 		else
 			gender = FEMALE
 
-	ethnicity = random_ethnicity()
+	skin_color = random_skin_color()
 	body_type = random_body_type()
+	body_size = random_body_size()
 
 	h_style = random_hair_style(gender, species)
 	f_style = random_facial_hair_style(gender, species)
@@ -257,8 +258,10 @@
 			return /datum/equipment_preset/uscm_ship/auxiliary_officer
 		if(JOB_INTEL)
 			return /datum/equipment_preset/uscm/intel/full
-		if(JOB_PILOT)
-			return /datum/equipment_preset/uscm_ship/po/full
+		if(JOB_CAS_PILOT)
+			return /datum/equipment_preset/uscm_ship/gp/full
+		if(JOB_DROPSHIP_PILOT)
+			return /datum/equipment_preset/uscm_ship/dp/full
 		if(JOB_DROPSHIP_CREW_CHIEF)
 			return /datum/equipment_preset/uscm_ship/dcc/full
 		if(JOB_CORPORATE_LIAISON)

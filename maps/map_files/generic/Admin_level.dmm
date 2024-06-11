@@ -1264,7 +1264,7 @@
 "Dw" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/item/book/manual/marine_law,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red"

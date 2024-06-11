@@ -708,7 +708,7 @@
 
 /datum/action/xeno_action/activable/place_construction/proc/spacecheck(mob/living/carbon/xenomorph/X, turf/T, datum/construction_template/xenomorph/tem)
 	if(tem.block_range)
-		for(var/turf/TA in range(T, tem.block_range))
+		for(var/turf/TA in range(tem.block_range, T))
 			if(!X.check_alien_construction(TA, FALSE, TRUE))
 				to_chat(X, SPAN_WARNING("We need more open space to build here."))
 				qdel(tem)
@@ -1015,6 +1015,9 @@
 		// The xeno flips around for a second to impale the target with their tail. These look awsome.
 		stab_direction = turn(get_dir(stabbing_xeno, target), 180)
 		stab_overlay = "tail"
+	log_attack("[key_name(stabbing_xeno)] tailstabbed [key_name(target)] at [get_area_name(stabbing_xeno)]")
+	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was tailstabbed by [key_name(stabbing_xeno)]</font>")
+	stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>tailstabbed [key_name(target)]</font>")
 
 	stabbing_xeno.setDir(stab_direction)
 	stabbing_xeno.emote("tail")

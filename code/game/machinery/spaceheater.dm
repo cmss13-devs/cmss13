@@ -127,7 +127,7 @@
 				var/value = text2num(href_list["val"])
 
 				// limit to 0-90 degC
-				set_temperature = dd_range(T0C, T0C + 90, set_temperature + value)
+				set_temperature = clamp(set_temperature + value, T0C, T0C + 90)
 
 			if("cellremove")
 				if(open && cell && !usr.get_active_hand())
@@ -162,7 +162,7 @@
 		if(isturf(loc) && cell && cell.charge)
 			for(var/mob/living/carbon/human/H in range(2, src))
 				if(H.bodytemperature < T20C)
-					H.bodytemperature += min(round(T20C - H.bodytemperature)*0.7, 25)
+					H.bodytemperature += min(floor(T20C - H.bodytemperature)*0.7, 25)
 					H.recalculate_move_delay = TRUE
 
 

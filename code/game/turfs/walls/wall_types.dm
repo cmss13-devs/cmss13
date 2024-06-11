@@ -1036,7 +1036,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	SPAN_XENONOTICE("You claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
 	if (M.hivenumber == hivenumber)
-		take_damage(Ceiling(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
+		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
 		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
 	return XENO_ATTACK_ACTION
@@ -1044,7 +1044,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /obj/structure/alien/movable_wall/attackby(obj/item/W, mob/living/user)
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
-		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER, user)
+		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
 		playsound(src, "alien_resin_break", 25)
 	else
 		return attack_hand(user)
@@ -1252,7 +1252,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	SPAN_XENONOTICE("We claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
 	if (M.hivenumber == hivenumber)
-		take_damage(Ceiling(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
+		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
 		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
 	return XENO_ATTACK_ACTION
@@ -1280,7 +1280,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
-		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER, user)
+		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
 		playsound(src, "alien_resin_break", 25)
 	else
 		return attack_hand(user)

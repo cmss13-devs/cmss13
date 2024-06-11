@@ -25,8 +25,9 @@
 	var/g_eyes = 0
 	var/b_eyes = 0
 
-	var/ethnicity = "Western" // Ethnicity
-	var/body_type = "Mesomorphic (Average)" // Body Type
+	var/skin_color = "Pale 2" // Skin color
+	var/body_size = "Average" // Body Size
+	var/body_type = "Lean" // Body Buffness
 
 	//Skin color
 	var/r_skin = 0
@@ -136,7 +137,7 @@
 	var/last_chew = 0
 
 	//taken from human.dm
-	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_CLAN, HUNTER_HUD, FACTION_HUD)
+	hud_possible = list(HEALTH_HUD, STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_CLAN, HUNTER_HUD, FACTION_HUD, HOLOCARD_HUD)
 	var/embedded_flag //To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/allow_gun_usage = TRUE
 	var/melee_allowed = TRUE
@@ -166,6 +167,9 @@
 
 	/// static associated list of limb key -> image to avoid unnecessary overlay generation
 	var/static/list/icon_render_image_cache = list()
+
+	/// Stored image references associated with focus-fire.
+	var/image/focused_fire_marker
 
 /client/var/cached_human_playtime
 

@@ -63,7 +63,7 @@
 			S.frequency = GET_RANDOM_FREQ // Same frequency for everybody
 
 	if(!sound_range)
-		sound_range = round(0.25*vol) //if no specific range, the max range is equal to a quarter of the volume.
+		sound_range = floor(0.25*vol) //if no specific range, the max range is equal to a quarter of the volume.
 	S.range = sound_range
 
 	var/turf/turf_source = get_turf(source)

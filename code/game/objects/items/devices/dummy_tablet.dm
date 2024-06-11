@@ -7,8 +7,28 @@
 	item_state = "Cotablet"
 
 	var/mob/living/carbon/human/linked_dummy
+	///Should the dummy be destroyed on hijack?
+	var/dust_on_hijack = FALSE
+
+/obj/item/device/professor_dummy_tablet/Initialize()
+	. = ..()
+	var/turf/actual_location = get_turf(src)
+	if(is_mainship_level(actual_location.z))
+		dust_on_hijack = TRUE
+	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_dummy_upon_hijack))
+
+/obj/item/device/professor_dummy_tablet/proc/destroy_dummy_upon_hijack()
+	SIGNAL_HANDLER
+
+	if(!dust_on_hijack)
+		return
+	if(!linked_dummy)
+		return
+	linked_dummy.visible_message(SPAN_WARNING("The [linked_dummy] suddenly disintegrates!"))
+	linked_dummy.dust(create_cause_data("hijack autodelete"))
 
 /obj/item/device/professor_dummy_tablet/Destroy()
+	UnregisterSignal(src, COMSIG_GLOB_HIJACK_LANDED)
 	linked_dummy = null
 	. = ..()
 
@@ -67,8 +87,8 @@
 	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=reset'>Reset</A> \]"
 	dat += "<BR><hr>"
 
-	show_browser(user, dat, "Professor DUMMY Control Tablet", window_options="size=400x500")
-	onclose(user, "communications")
+	show_browser(user, dat, "Professor DUMMY Control Tablet", "dummytablet", window_options="size=400x500")
+	onclose(user, "dummytablet")
 	updateDialog()
 	return
 

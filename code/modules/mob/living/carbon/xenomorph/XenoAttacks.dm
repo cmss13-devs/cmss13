@@ -78,7 +78,11 @@
 				damage += attack.damage > 5 ? attack.damage : 0
 
 				playsound(loc, attack.attack_sound, 25, 1)
-				visible_message(SPAN_DANGER("[M] [pick(attack.attack_verb)]ed [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
+				var/picked_verb = pick(attack.attack_verb)
+				visible_message(SPAN_DANGER("[M] [picked_verb]ed [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
+				log_attack("[key_name(M)] [picked_verb]ed [key_name(src)] at [get_area_name(M)]")
+				attack_log += text("\[[time_stamp()]\] <font color='orange'>was [picked_verb]ed by [key_name(M)]</font>")
+				M.attack_log += text("\[[time_stamp()]\] <font color='red'>[picked_verb]ed [key_name(src)]</font>")
 				apply_damage(damage, BRUTE)
 				updatehealth()
 			else

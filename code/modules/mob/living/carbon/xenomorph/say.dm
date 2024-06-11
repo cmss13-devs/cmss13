@@ -16,10 +16,6 @@
 	if(stat == UNCONSCIOUS)
 		return //Unconscious? Nope.
 
-	if(HAS_TRAIT(src, TRAIT_DAZED))
-		to_chat(src, SPAN_WARNING("You are too dazed to talk."))
-		return
-
 	if(copytext(message, 1, 2) == "*")
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
 			return emote(lowertext(copytext(message, 2)), intentional = TRUE)
@@ -94,8 +90,8 @@
 
 //General proc for hivemind. Lame, but effective.
 /mob/living/carbon/xenomorph/proc/hivemind_talk(message)
-	if(interference)
-		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_HIVEMIND_TALK, message) & COMPONENT_OVERRIDE_HIVEMIND_TALK)

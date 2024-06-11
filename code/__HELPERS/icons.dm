@@ -561,7 +561,7 @@ world
 	while (gap > 1 || swapped)
 		swapped = 0
 		if(gap > 1)
-			gap = round(gap / 1.3) // 1.3 is the emperic comb sort coefficient
+			gap = floor(gap / 1.3) // 1.3 is the emperic comb sort coefficient
 		if(gap < 1)
 			gap = 1
 		for(var/i = 1; gap + i <= result.len; i++)
@@ -919,8 +919,9 @@ world
 		// From /datum/preferences/proc/copy_appearance_to
 		body.age = original.age
 		body.gender = original.gender
-		body.ethnicity = original.ethnicity
+		body.skin_color = original.skin_color
 		body.body_type = original.body_type
+		body.body_size = original.body_size
 
 		body.r_eyes = original.r_eyes
 		body.g_eyes = original.g_eyes

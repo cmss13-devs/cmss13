@@ -67,7 +67,7 @@
 	return GLOB.alldirs
 
 /datum/flameshape/star/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
-	fire_spread_amount = Floor(fire_spread_amount * 1.5) // branch 'length'
+	fire_spread_amount = floor(fire_spread_amount * 1.5) // branch 'length'
 	var/turf/source_turf = get_turf(F.loc)
 
 	var/list/dirs = dirs_to_use()

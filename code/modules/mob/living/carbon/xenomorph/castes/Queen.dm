@@ -270,6 +270,7 @@
 	hive_pos = XENO_QUEEN
 	small_explosives_stun = FALSE
 	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
+	organ_value = 8000 // queen is expensive
 
 	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
@@ -359,6 +360,10 @@
 
 /mob/living/carbon/xenomorph/queen/can_destroy_special()
 	return TRUE
+
+
+/mob/living/carbon/xenomorph/queen/get_organ_icon()
+	return "heart_t3"
 
 /mob/living/carbon/xenomorph/queen/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
@@ -943,3 +948,11 @@
 /mob/living/carbon/xenomorph/queen/alter_ghost(mob/dead/observer/ghost)
 	ghost.icon = queen_standing_icon
 	return ..()
+
+/mob/living/carbon/xenomorph/queen/point_to_atom(atom/target_atom, turf/target_turf)
+	recently_pointed_to = world.time + 1 SECONDS
+
+	var/obj/effect/overlay/temp/point/big/greyscale/point = new(target_turf, src, target_atom)
+	point.color = "#a800a8"
+
+	visible_message("<b>[src]</b> points to [target_atom]", null, null, 5)

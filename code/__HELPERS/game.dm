@@ -190,7 +190,7 @@
 		if(X1<X2)
 			b+=m
 		while(X1!=X2 || Y1!=Y2)
-			if(round(m*X1+b-Y1))
+			if(floor(m*X1+b-Y1))
 				Y1+=signY //Line exits tile vertically
 			else
 				X1+=signX //Line exits tile horizontally
@@ -263,7 +263,7 @@
 			continue
 
 		// Mods with larva protection cannot be drafted
-		if((cur_obs.client.admin_holder && (cur_obs.client.admin_holder.rights & R_MOD)) && !cur_obs.adminlarva)
+		if(check_client_rights(cur_obs.client, R_MOD, FALSE) && cur_obs.admin_larva_protection)
 			continue
 
 		if(hive)

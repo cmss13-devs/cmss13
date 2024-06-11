@@ -43,8 +43,6 @@
 	return ..()
 
 /obj/vehicle/multitile/apc/command/process()
-	. = ..()
-
 	var/turf/apc_turf = get_turf(src)
 	if(health == 0 || !visible_in_tacmap || !is_ground_level(apc_turf.z))
 		return

@@ -211,6 +211,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		"chargingStatus" = charging,
 		"totalLoad" = display_power(lastused_total),
 		"coverLocked" = coverlocked,
+		"siliconUser" = FALSE,
 
 		"powerChannels" = list(
 			list(
@@ -1372,3 +1373,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	crash_break_probability = 0
 
 #undef APC_UPDATE_ICON_COOLDOWN
+
+// apc that start at zero charge.
+/obj/structure/machinery/power/apc/nocharge
+	start_charge = 0

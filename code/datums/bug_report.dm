@@ -98,7 +98,8 @@
 ### How do we reproduce this bug?
 [bug_report_data["steps"]]
 
-## Additional details
+
+### Additional details
 - Author: [initial_user]
 - Admin: [admin_user]
 - Note: [bug_report_data["admin_note"] ? bug_report_data["admin_note"] : "None"]

@@ -314,6 +314,8 @@
 	if(observe_target_mob)
 		clean_observe_target()
 
+	set_huds_from_prefs()
+
 /mob/dead/observer/Destroy(force)
 	GLOB.observer_list -= src
 	QDEL_NULL(orbit_menu)

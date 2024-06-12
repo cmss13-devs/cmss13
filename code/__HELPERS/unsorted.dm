@@ -1503,7 +1503,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 /// Macro for cases where an UNTIL() may go on forever (such as for an http request)
 #define UNTIL_OR_TIMEOUT(X, __time) \
-	if(__time < 0) {;\
+	if(__time <= 0) {;\
 		CRASH("UNTIL_OR_TIMEOUT invalid timeout amount");\
 	} \
 	var/start_time = world.time;\

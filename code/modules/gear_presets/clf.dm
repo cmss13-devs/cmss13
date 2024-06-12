@@ -170,7 +170,6 @@
 
 	spawn_rebel_suit(new_human)
 	spawn_rebel_shoes(new_human)
-	spawn_rebel_gloves(new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)

@@ -164,23 +164,21 @@ export const BugReportForm = (props) => {
                 />
               </Flex.Item>
             )}
-            {!!awaiting_admin_approval && (
-              <Flex.Item my={2}>
-                <InputTitle>{'Logs'}</InputTitle>
-                {'Please paste any relevant logs here'}
-                <textarea
-                  rows={4}
-                  className="textarea"
-                  onInput={(e) => {
-                    const target = e.target as HTMLTextAreaElement;
-                    target.style.height = 'auto';
-                    target.style.height = `${target.scrollHeight}px`;
-                  }}
-                  value={log}
-                  onChange={(e) => setLog(e.target.value)}
-                />
-              </Flex.Item>
-            )}
+            <Flex.Item my={2}>
+              <InputTitle>{'Logs'}</InputTitle>
+              {'Please paste any relevant logs here'}
+              <textarea
+                rows={4}
+                className="textarea"
+                onInput={(e) => {
+                  const target = e.target as HTMLTextAreaElement;
+                  target.style.height = 'auto';
+                  target.style.height = `${target.scrollHeight}px`;
+                }}
+                value={log}
+                onChange={(e) => setLog(e.target.value)}
+              />
+            </Flex.Item>
             <Flex.Item my={2} className={'text-center'}>
               <ButtonCheckbox
                 checked={checkBox}

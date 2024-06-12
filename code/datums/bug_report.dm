@@ -98,6 +98,11 @@
 ## How do we reproduce this bug?
 [bug_report_data["steps"]]
 
+## Attached Log
+```
+[bug_report_data["log"] ? bug_report_data["log"] : "N/A"]
+```
+
 ## Additional details
 - Author: [initial_user]
 - Admin: [admin_user]

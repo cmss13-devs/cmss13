@@ -42,6 +42,7 @@ export const BugReportForm = (props) => {
     report_details?.expected_behavior || '',
   );
   const [admin_note, setAdminNote] = useState(report_details?.admin_note || '');
+  const [log, setLog] = useState(report_details?.admin_note || '');
 
   const submit = () => {
     if (!title || !description || !expected_behavior || !steps || !checkBox) {
@@ -54,6 +55,7 @@ export const BugReportForm = (props) => {
       description,
       expected_behavior,
       admin_note,
+      log,
     };
     act('confirm', updatedReportDetails);
   };
@@ -62,7 +64,7 @@ export const BugReportForm = (props) => {
     <Window
       title={'Bug Report Form'}
       width={700}
-      height={awaiting_admin_approval ? 900 : 700}
+      height={awaiting_admin_approval ? 1000 : 700}
     >
       <Window.Content>
         <Section fill scrollable>
@@ -148,9 +150,7 @@ export const BugReportForm = (props) => {
             {!!awaiting_admin_approval && (
               <Flex.Item my={2}>
                 <InputTitle>{'Admin note'}</InputTitle>
-                {
-                  "Any additional notes to submit with the author's bug report, could be relevant logs, context, etc.."
-                }
+                {"Any additional notes to submit with the author's bug report "}
                 <textarea
                   rows={4}
                   className="textarea"
@@ -161,6 +161,23 @@ export const BugReportForm = (props) => {
                   }}
                   value={admin_note}
                   onChange={(e) => setAdminNote(e.target.value)}
+                />
+              </Flex.Item>
+            )}
+            {!!awaiting_admin_approval && (
+              <Flex.Item my={2}>
+                <InputTitle>{'Logs'}</InputTitle>
+                {'Please paste any relevant logs here'}
+                <textarea
+                  rows={4}
+                  className="textarea"
+                  onInput={(e) => {
+                    const target = e.target as HTMLTextAreaElement;
+                    target.style.height = 'auto';
+                    target.style.height = `${target.scrollHeight}px`;
+                  }}
+                  value={log}
+                  onChange={(e) => setLog(e.target.value)}
                 />
               </Flex.Item>
             )}

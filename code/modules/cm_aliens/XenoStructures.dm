@@ -1036,10 +1036,10 @@
 		if(is_candidate_valid(hive, candidate, playtime_restricted = FALSE, skip_playtime = FALSE))
 			INVOKE_ASYNC(src, PROC_REF(cast_vote), candidate, voting_candidates)
 
-	addtimer(CALLBACK(src, PROC_REF(roll_candidates)), 20 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(roll_candidates), voting_candidates), 20 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /// Finalizes the vote for King. Will perform several fallbacks in case a candidate declined working through the living hive and then eventually observers.	
-/obj/effect/alien/resin/king_cocoon/proc/roll_candidates()
+/obj/effect/alien/resin/king_cocoon/proc/roll_candidates(var/list/mob/living/carbon/xenomorph/voting_candidates)
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 	
 	votes = sortAssoc(votes)

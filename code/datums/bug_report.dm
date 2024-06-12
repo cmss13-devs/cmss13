@@ -134,7 +134,7 @@
 
 	request.prepare(RUSTG_HTTP_METHOD_POST, url, json_encode(payload), headers)
 	request.begin_async()
-	UNTIL(request.is_complete())
+	UNTIL_OR_TIMEOUT(request.is_complete(), 5 SECONDS)
 
 	var/datum/http_response/response = request.into_response()
 	if(response.errored || response.status_code != STATUS_SUCCESS)

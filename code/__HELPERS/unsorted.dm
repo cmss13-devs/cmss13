@@ -1503,16 +1503,17 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 /// Macro for cases where an UNTIL() may go on forever (such as for an http request)
 #define UNTIL_OR_TIMEOUT(X, __time) \
+	if(__time < 0) {;\
+		CRASH("UNTIL_OR_TIMEOUT invalid timeout amount");\
+	} \
+	var/start_time = world.time;\
 	do {\
-		__time = max(__time, 0);\
-		var/__start_time = world.time;\
-		while(!(X)) {;\
+		if(start_time + __time <= world.time) {;\
+			CRASH("UNTIL_OR_TIMEOUT hit timeout limit of [__time]");\
+		} else {\
 			stoplag();\
-			if(__start_time + __time <= world.time) {;\
-				CRASH("UNTIL_OR_TIMEOUT hit timeout limit of [__time]");\
-			};\
-		};\
-	} while(FALSE)
+		}\
+	} while(!(X))
 
 //Repopulates sortedAreas list
 /proc/repopulate_sorted_areas()

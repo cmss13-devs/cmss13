@@ -1501,8 +1501,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 #define UNTIL(X) while(!(X)) stoplag()
 
+/// Macro for cases where an UNTIL() may go on forever (such as for an http request)
 #define UNTIL_OR_TIMEOUT(X, __time) \
 	do {\
+		__time = max(__time, 0);\
 		var/__start_time = world.time;\
 		while(!(X)) {;\
 			stoplag();\

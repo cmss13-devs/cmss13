@@ -964,7 +964,16 @@
 
 #define KING_PLAYTIME_HOURS (50 HOURS)
 
-/obj/effect/alien/resin/king_cocoon/proc/is_candidate_valid(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE, skip_playtime=TRUE)
+/**
+ * Returns TRUE is the candidate passed is valid: Returns TRUE is the candidate passed is valid: Has client, not facehugger, not lesser drone, not banished, and conditionally on playtime.
+ *
+ * Arguments:
+ * * hive: The hive_status to check banished ckeys against
+ * * candidate: The mob that we want to check
+ * * playtime_restricted: Determines whether being below KING_PLAYTIME_HOURS makes the candidate invalid
+ * * skip_playtime: Determines whether being above KING_PLAYTIME_HOURS makes the candidate invalid (does nothing unless playtime_restricted is FALSE)
+ */
+/obj/effect/alien/resin/king_cocoon/proc/is_candidate_valid(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE, skip_playtime = TRUE)
 	if(!candidate.client)
 		return FALSE
 	if(isfacehugger(candidate) || islesserdrone(candidate))
@@ -979,6 +988,14 @@
 			return FALSE
 	return TRUE
 
+/**
+ * Returns TRUE if a valid candidate accepts a TGUI alert asking them to be King.
+ * 
+ * Arguments:
+ * * hive: The hive_status to check banished ckeys against
+ * * candidate: The mob that we want to ask
+ * * playtime_restricted: Determines whether being below KING_PLAYTIME_HOURS makes the candidate invalid (otherwise above)
+ */
 /obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
 	if(!is_candidate_valid(hive, candidate, playtime_restricted))
 		return FALSE
@@ -987,7 +1004,14 @@
 
 #undef KING_PLAYTIME_HOURS
 
-/obj/effect/alien/resin/king_cocoon/proc/make_vote(mob/candidate, list/mob/living/carbon/xenomorph/voting_candidates)
+/**
+ * Tallies up votes by asking the passed candidate who they wish to vote for King.
+ * 
+ * Arguments:
+ * * candidate: The mob that was want to ask
+ * * voting_candidates: A list of xenomorph mobs that are candidates
+ */
+/obj/effect/alien/resin/king_cocoon/proc/cast_vote(mob/candidate, list/mob/living/carbon/xenomorph/voting_candidates)
 	var/mob/living/carbon/xenomorph/choice = tgui_input_list(candidate, "Vote for a sister you wish to become the King.", "Choose a xeno", voting_candidates , 20 SECONDS)
 
 	if(votes[choice])
@@ -1006,8 +1030,8 @@
 			voting_candidates -= voting_candidate
 
 	for(var/mob/living/carbon/xenomorph/candidate in hive.totalXenos)
-		if(is_candidate_valid(hive, candidate, FALSE, FALSE))
-			INVOKE_ASYNC(src, PROC_REF(make_vote), candidate, voting_candidates)
+		if(is_candidate_valid(hive, candidate, playtime_restricted = FALSE, skip_playtime = FALSE))
+			INVOKE_ASYNC(src, PROC_REF(cast_vote), candidate, voting_candidates)
 	
 	sleep(20 SECONDS)
 	votes = sortAssoc(votes)
@@ -1026,8 +1050,8 @@
 
 		index++
 
-	// Ask all the living xenos
-	for(var/mob/living/carbon/xenomorph/candidate in voting_candidates)
+	// Otherwise ask all the living xenos (minus the player(s) who got voted on earlier)
+	for(var/mob/living/carbon/xenomorph/candidate in shuffle(voting_candidates))
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			return candidate.client
 	// Then observers

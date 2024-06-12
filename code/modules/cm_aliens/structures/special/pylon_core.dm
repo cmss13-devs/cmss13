@@ -28,7 +28,7 @@
 
 	plane = FLOOR_PLANE
 
-/obj/effect/alien/resin/special/pylon/update_icon()
+/obj/effect/alien/resin/special/pylon/endgame/update_icon()
 	if(protection_level == TURF_PROTECTION_OB)
 		icon_state = "pylon_active"
 		return
@@ -243,9 +243,6 @@
 
 	if(hive_ref)
 		hive_ref.set_hive_location(src, linked_hive.hivenumber)
-
-/obj/effect/alien/resin/special/pylon/core/update_icon()
-	icon_state = "core"
 
 /obj/effect/alien/resin/special/pylon/core/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)

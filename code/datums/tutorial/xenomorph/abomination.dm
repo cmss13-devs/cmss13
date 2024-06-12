@@ -24,7 +24,8 @@
 
 /datum/tutorial/xenomorph/abomination/proc/how_to_be_abom()
 	message_to_player("You can become an Abomination in-game by chestbursting from a Predator. Be aware that you are kill-on-sight to all Predators forever, and will very likely need to defend yourself against multiple.")
-	addtimer(CALLBACK(src, PROC_REF(feral_rush_tutorial)), 6 SECONDS)
+	message_to_player("Keep in mind this role is very rare, so be sure to stick close to other xenomorphs or over-extend. While you may be stronger than many, you don't have enough health or armor to go out on your own.")
+	addtimer(CALLBACK(src, PROC_REF(feral_rush_tutorial)), 10.5 SECONDS)
 
 /datum/tutorial/xenomorph/abomination/proc/feral_rush_tutorial()
 	var/datum/action/rush = give_action(xeno, /datum/action/xeno_action/onclick/feralrush)

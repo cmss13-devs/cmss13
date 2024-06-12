@@ -19,8 +19,9 @@
 	xeno.lock_evolve = TRUE
 
 	message_to_player("Welcome to the tutorial for the Abomination xenomorph. As an Abomination, you are a frontline powerhouse whose damage scales with your kill count.")
+	message_to_player("Your kill count scales when you kill humans with your slash attack, up to 10 kills. Ability kills (including Tail Stab) do not count towards this.")
 
-	addtimer(CALLBACK(src, PROC_REF(how_to_be_abom)), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(how_to_be_abom)), 10.5 SECONDS)
 
 /datum/tutorial/xenomorph/abomination/proc/how_to_be_abom()
 	message_to_player("You can become an Abomination in-game by chestbursting from a Predator. Be aware that you are kill-on-sight to all Predators forever, and will very likely need to defend yourself against multiple.")

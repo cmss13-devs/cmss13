@@ -888,12 +888,14 @@
 		pylon.protection_level = initial(pylon.protection_level)
 		pylon.update_icon()
 
+	votes = null
+	chosen_candidate = null
+
 	. = ..()
 
 /obj/effect/alien/resin/king_cocoon/Initialize(mapload, pylon)
 	. = ..()
 	GLOB.hive_datum[hive_number].has_hatchery = TRUE
-	chosen_candidate = null
 
 	for(var/x_offset in -1 to 1)
 		for(var/y_offset in -1 to 1)
@@ -1019,10 +1021,11 @@
 	else
 		votes[choice] = 1
 
-/obj/effect/alien/resin/king_cocoon/proc/roll_candidates()
+/// Initiates a vote that will end in 20 seconds to vote for the King.
+/obj/effect/alien/resin/king_cocoon/proc/start_vote()
+	rolling_candidates = TRUE
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
-	
-	// First, let the living xenos choose
+
 	var/list/mob/living/carbon/xenomorph/voting_candidates = hive.totalXenos.Copy() - hive.living_xeno_queen
 
 	for(var/mob/living/carbon/xenomorph/voting_candidate in voting_candidates)
@@ -1032,8 +1035,13 @@
 	for(var/mob/living/carbon/xenomorph/candidate in hive.totalXenos)
 		if(is_candidate_valid(hive, candidate, playtime_restricted = FALSE, skip_playtime = FALSE))
 			INVOKE_ASYNC(src, PROC_REF(cast_vote), candidate, voting_candidates)
+
+	addtimer(CALLBACK(src, PROC_REF(roll_candidates)), 20 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+
+/// Finalizes the vote for King. Will perform several fallbacks in case a candidate declined working through the living hive and then eventually observers.	
+/obj/effect/alien/resin/king_cocoon/proc/roll_candidates()
+	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 	
-	sleep(20 SECONDS)
 	votes = sortAssoc(votes)
 	var/index = 0
 	for(var/mob/living/carbon/xenomorph/candidate in votes)
@@ -1044,7 +1052,9 @@
 			break
 
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
-			return candidate.client
+			chosen_candidate = candidate.client
+			rolling_candidates = FALSE
+			return
 		
 		voting_candidates -= candidate
 
@@ -1053,27 +1063,32 @@
 	// Otherwise ask all the living xenos (minus the player(s) who got voted on earlier)
 	for(var/mob/living/carbon/xenomorph/candidate in shuffle(voting_candidates))
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
-			return candidate.client
+			chosen_candidate = candidate.client
+			rolling_candidates = FALSE
+			return
 	// Then observers
 	var/list/observer_list_copy = shuffle(get_alien_candidates(hive))
 
 	for(var/mob/candidate in observer_list_copy)
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
-			return candidate.client
+			chosen_candidate = candidate.client
+			rolling_candidates = FALSE
+			return
 	// Lastly all of the above again, without playtime requirements
 	for(var/mob/living/carbon/xenomorph/candidate in shuffle(hive.totalXenos.Copy() - hive.living_xeno_queen))
 		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
-			return candidate.client
+			chosen_candidate = candidate.client
+			rolling_candidates = FALSE
+			return
 	for(var/mob/candidate in observer_list_copy)
 		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
-			return candidate.client
+			chosen_candidate = candidate.client
+			rolling_candidates = FALSE
+			return
 	message_admins("Failed to find a client for the King, releasing as freed mob.")
-	return null
 
 /obj/effect/alien/resin/king_cocoon/proc/choose_candidate(expedite = FALSE)
-	rolling_candidates = TRUE
-	chosen_candidate = roll_candidates()
-	rolling_candidates = FALSE
+	start_vote()
 	
 	if(expedite)
 		animate_hatch_king()
@@ -1090,10 +1105,7 @@
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately one minute."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
-	// Technically slow players will delay us so its not just 10 minutes
 	timer = addtimer(CALLBACK(src, PROC_REF(animate_hatch_king)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
-	
-
 
 /obj/effect/alien/resin/king_cocoon/proc/animate_hatch_king()
 	flick("hatching", src)

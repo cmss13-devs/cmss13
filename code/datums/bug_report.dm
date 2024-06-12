@@ -138,7 +138,7 @@
 
 	var/datum/http_response/response = request.into_response()
 	if(response.errored || response.status_code != STATUS_SUCCESS)
-		message_admins(SPAN_ADMINNOTICE("The GitHub API has failed to create the bug report titled [bug_report_data["title"]] approved by [admin_user], status code:[response.status_code]"))
+		message_admins(SPAN_ADMINNOTICE("The GitHub API has failed to create the bug report titled [bug_report_data["title"]] approved by [admin_user], status code:[response.status_code]. Please paste this error code into the development channel on discord."))
 		external_link_prompt(user)
 	else
 		message_admins("[user.ckey] has approved a bug report from [initial_user.ckey] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")

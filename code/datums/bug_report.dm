@@ -83,22 +83,22 @@
 		test_merges = revdata.GetTestMergeInfo(header = FALSE)
 
 	var/desc = {"
-### Testmerges
+## Testmerges
 [test_merges ? test_merges : "N/A"]
 
-### Round ID
+## Round ID
 [GLOB.round_id ? GLOB.round_id : "N/A"]
 
-### Description of the bug
+## Description of the bug
 [bug_report_data["description"]]
 
-### What's the difference with what should have happened?
+## What's the difference with what should have happened?
 [bug_report_data["expected_behavior"]]
 
-### How do we reproduce this bug?
+## How do we reproduce this bug?
 [bug_report_data["steps"]]
 
-### Additional details
+## Additional details
 - Author: [initial_user]
 - Admin: [admin_user]
 - Note: [bug_report_data["admin_note"] ? bug_report_data["admin_note"] : "None"]

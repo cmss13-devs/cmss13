@@ -154,7 +154,7 @@
 
 	RegisterSignal(frenzy, COMSIG_XENO_ACTION_USED, PROC_REF(frenzy_tutorial_5))
 
-/datum/tutorial/xenomorph/abomination/proc/frenzy_tutorial_5(datum/action/source, mob/owner)
+/datum/tutorial/xenomorph/abomination/proc/frenzy_tutorial_5(datum/action/xeno_action/source, mob/owner)
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, marine)
@@ -162,16 +162,35 @@
 		return
 
 	UnregisterSignal(source, COMSIG_XENO_ACTION_USED)
+	var/datum/action/frenzy = get_action(xeno, /datum/action/xeno_action/activable/feralfrenzy)
+	remove_highlight(frenzy.button)
+	var/datum/action/frenzy_toggle = give_action(xeno, /datum/action/xeno_action/onclick/toggle_gut_targeting)
+	add_highlight(frenzy_toggle.button)
+	message_to_player("Good, now toggle <b>Feral Frenzy</b>'s AOE mode with the newly available <b>Toggle Gutting Type</b> ability.")
+	update_objective("Use the Toggle Gutting Type ability to change your frenzy mode.")
+
+	RegisterSignal(frenzy_toggle, COMSIG_XENO_ACTION_USED, PROC_REF(frenzy_tutorial_6))
+
+/datum/tutorial/xenomorph/abomination/proc/frenzy_tutorial_6(datum/action/xeno_action/source, mob/owner)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(source, COMSIG_XENO_ACTION_USED)
+	remove_highlight(source.button)
+	source.plasma_cost = INFINITY // slightly scuffed way of disabling the switch button
+	source.update_button_icon()
+
 	message_to_player("<b>Feral Frenzy</b> has now been changed into AOE mode. Use <b>Feral Frenzy</b> again anywhere within 2 tiles of the marine.")
 	update_objective("Use Feral Frenzy within 2 tiles of the marine.")
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, marine)
 	marine.rejuvenate()
 	var/datum/action/xeno_action/activable/feralfrenzy/frenzy = get_action(xeno, /datum/action/xeno_action/activable/feralfrenzy)
 	frenzy.targeting = AOETARGETGUT
 	frenzy.reduce_cooldown(frenzy.xeno_cooldown)
 	add_highlight(frenzy.button)
-	RegisterSignal(frenzy, COMSIG_XENO_ACTION_USED, PROC_REF(frenzy_tutorial_6))
 
-/datum/tutorial/xenomorph/abomination/proc/frenzy_tutorial_6(datum/action/source)
+	RegisterSignal(frenzy, COMSIG_XENO_ACTION_USED, PROC_REF(frenzy_tutorial_7))
+
+/datum/tutorial/xenomorph/abomination/proc/frenzy_tutorial_7(datum/action/source)
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, marine)
@@ -183,9 +202,9 @@
 	UnregisterSignal(frenzy, COMSIG_XENO_ACTION_USED)
 	remove_highlight(frenzy.button)
 	message_to_player("Good. As you may have noticed, the AOE version of <b>Feral Frenzy</b> takes longer to wind up, in addition to doing less overall damage.")
-	addtimer(CALLBACK(src, PROC_REF(frenzy_tutorial_7)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(frenzy_tutorial_8)), 5 SECONDS)
 
-/datum/tutorial/xenomorph/abomination/proc/frenzy_tutorial_7()
+/datum/tutorial/xenomorph/abomination/proc/frenzy_tutorial_8()
 	message_to_player("This is the end of the Abomination tutorial. One last thing to note is that you are able to put yourself out when on fire far faster than other xenomorphs. The tutorial will end itself shortly.")
 	mark_completed() // just in case people exit early
 	tutorial_end_in(8 SECONDS, TRUE)

@@ -249,7 +249,7 @@
 	else
 		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("We couldn't grab our target. Wait a moment to try again."))
 
-	return TRUE
+	return ..()
 
 /mob/living/carbon/xenomorph/predalien/stop_pulling()
 	if(isliving(pulling) && smashing)

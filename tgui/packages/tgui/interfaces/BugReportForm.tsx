@@ -148,7 +148,9 @@ export const BugReportForm = (props) => {
             {!!awaiting_admin_approval && (
               <Flex.Item my={2}>
                 <InputTitle>{'Admin note'}</InputTitle>
-                {"Any additional notes to submit with the author's bug report"}
+                {
+                  "Any additional notes to submit with the author's bug report, could be relevant logs, context, etc.."
+                }
                 <textarea
                   rows={4}
                   className="textarea"

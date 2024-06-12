@@ -4,8 +4,10 @@ import { useBackend, useSharedState } from '../backend';
 import {
   Box,
   Button,
+  Dimmer,
   Divider,
   Flex,
+  Icon,
   NoticeBox,
   ProgressBar,
   Section,
@@ -52,22 +54,40 @@ export const InfoPanel = () => {
 export const Controls = (props) => {
   const { act, data } = useBackend();
   const { selectedMode, setSelectedMode } = props;
-  const { mode_data, can_simulate, can_eject_target, can_eject_reference } =
-    data;
+  const {
+    mode_data,
+    can_simulate,
+    can_eject_target,
+    can_eject_reference,
+    can_cancel_simulation,
+  } = data;
   return (
     <Flex>
       <Flex.Item mr={1} fontSize={1.2} height={12} width={13}>
         <Stack vertical>
           <Stack.Item>
-            <Button
-              fluid
-              onClick={() => {
-                act('simulate');
-              }}
-              disabled={!can_simulate}
-            >
-              SIMULATE
-            </Button>
+            {can_cancel_simulation ? (
+              <Button
+                fluid
+                onClick={() => {
+                  act('simulate');
+                }}
+                disabled={!can_simulate}
+              >
+                SIMULATE
+              </Button>
+            ) : (
+              <Button
+                fluid
+                icon={'fill-circle-xmark'}
+                color={'red'}
+                onClick={() => {
+                  act('cancel_simulation');
+                }}
+              >
+                CANCEL
+              </Button>
+            )}
           </Stack.Item>
           <Stack.Item>
             <Button
@@ -120,80 +140,111 @@ export const Controls = (props) => {
   );
 };
 
-export const ModeChange = (props) => {
+export const RecipeOptions = (props) => {
   const { act, data } = useBackend();
-  const { selectedMode } = props;
-  const { target_data } = data;
-  const [selectedProperty, setSelectedProperty] = useSharedState(false);
+  const [selectedRecipe, setSelectedRecipe] = useSharedState(false);
+  const { reagent_option_data } = data;
   return (
-    (target_data && (
-      <Flex ml={3} fontSize={1.2} width={50} height={20} mt={5}>
-        <Flex.Item>
-          {map(target_data, (property, key) =>
-            key <= 3 ? (
-              <Stack vertical>
-                <Stack.Item mx={2} my={0.5}>
-                  <Button
-                    width={10}
-                    textAlign={'center'}
-                    onClick={() => {
-                      act('select_property', {
-                        property_code: property.code,
-                      });
-                      setSelectedProperty(property.code);
-                    }}
-                    selected={selectedProperty === property.code ? true : false}
-                  >
-                    {property.code} {property.level}
-                  </Button>
-                </Stack.Item>
-              </Stack>
-            ) : (
-              false
-            ),
-          )}
-        </Flex.Item>
-        <Flex.Item>
-          {map(target_data, (property, key) =>
-            key > 3 ? (
-              <Stack vertical>
-                <Stack.Item mx={2} my={0.5}>
-                  <Button
-                    width={10}
-                    textAlign={'center'}
-                    onClick={() => {
-                      act('select_property', {
-                        property_code: property.code,
-                      });
-                      setSelectedProperty(property.code);
-                    }}
-                    selected={selectedProperty === property.code ? true : false}
-                  >
-                    {property.code} {property.level}
-                  </Button>
-                </Stack.Item>
-              </Stack>
-            ) : (
-              false
-            ),
-          )}
-        </Flex.Item>
-        <Flex.Item ml={3}>
-          {map(
-            target_data,
-            (property, key) =>
-              property.code === selectedProperty && (
-                <Section title={property.name}>{property.desc}</Section>
-              ),
-          )}
-        </Flex.Item>
-      </Flex>
-    )) || (
-      <Box my={3} mx={3}>
-        <NoticeBox>No data inserted!</NoticeBox>
-      </Box>
-    )
+    <Stack vertical>
+      <Stack.Item>
+        <Button
+          verticalAlignContent={'middle'}
+          bold
+          textAlign={'center'}
+          width={28}
+          height={3}
+          fluid
+          onClick={() => {
+            act('submit_recipe_pick', { reagent_picked: selectedRecipe });
+          }}
+        >
+          <h3>FINALIZE</h3>
+        </Button>
+        {map(reagent_option_data, (recipe, id) => (
+          <Button
+            my={0.1}
+            lineHeight={1.5}
+            bold
+            textAlign={'center'}
+            key={id}
+            width={28}
+            height={3}
+            fluid
+            onClick={() => {
+              setSelectedRecipe(recipe.id);
+            }}
+            selected={selectedRecipe === recipe.id}
+          >
+            <h3>{recipe.name}</h3>
+          </Button>
+        ))}
+      </Stack.Item>
+    </Stack>
   );
+};
+
+export const ModeChange = () => {
+  const { act, data } = useBackend();
+  const { target_data, lock_target_control, is_ready, status } = data;
+  const [selectedProperty, setSelectedProperty] = useSharedState(false);
+  if (is_ready) {
+    return (
+      <Section height={20} mx={2}>
+        <Dimmer fontSize="24px" height={20}>
+          <Icon name="exclamation-triangle" />
+          {status}
+        </Dimmer>
+      </Section>
+    );
+  } else {
+    return (
+      (target_data && (
+        <Flex ml={3} fontSize={1.2} width={60} height={20} mt={5}>
+          <Flex.Item width={30}>
+            {map(target_data, (property, key) => (
+              <Button
+                bold
+                mx={1}
+                my={1}
+                width={10}
+                textAlign={'center'}
+                onClick={() => {
+                  act('select_target_property', {
+                    property_code: property.code,
+                  });
+                  setSelectedProperty(property.code);
+                }}
+                selected={selectedProperty === property.code ? true : false}
+                disabled={lock_target_control}
+              >
+                {property.code} {property.level}
+              </Button>
+            ))}
+          </Flex.Item>
+          <Flex.Item width={30}>
+            {map(
+              target_data,
+              (property, key) =>
+                property.code === selectedProperty && (
+                  <Stack vertical>
+                    <Stack.Item>
+                      <Section title={property.name}>{property.desc}</Section>
+                    </Stack.Item>
+                    <Stack.Item>
+                      Price of the operation : {property.cost}
+                    </Stack.Item>
+                  </Stack>
+                ),
+            )}
+          </Flex.Item>
+        </Flex>
+      )) || (
+        <Box m={3}>
+          <NoticeBox>No data inserted!</NoticeBox>
+        </Box>
+      )
+    );
+  }
 };
 
 export const ModeRelate = (props) => {
@@ -206,32 +257,39 @@ export const ModeRelate = (props) => {
 export const ModeCreate = (props) => {
   const { act, data } = useBackend();
   const { selectedMode } = props;
-  const { mode_data, can_simulate, can_eject_target, can_eject_reference } =
-    data;
+  const {
+    mode_data,
+    can_simulate,
+    can_eject_target,
+    can_eject_reference,
+    is_picking_recipe,
+  } = data;
   return <Box>Create here</Box>;
 };
 
 export const ChemSimulator = () => {
   const { act, data } = useBackend();
-  const { clearance, credits, status } = data;
+  const { clearance, credits, status, is_picking_recipe, is_ready } = data;
   const [selectedMode, setSelectedMode] = useSharedState(1);
   return (
     <Window width={800} height={450} theme={'weyland'}>
-      <Window.Content scrollable>
+      <Window.Content>
         <Flex m={1}>
           <Flex.Item>
             <InfoPanel />
           </Flex.Item>
           <Flex.Item mx={2}>
-            <Controls
-              selectedMode={selectedMode}
-              setSelectedMode={setSelectedMode}
-            />
+            {(!is_picking_recipe && (
+              <Controls
+                selectedMode={selectedMode}
+                setSelectedMode={setSelectedMode}
+              />
+            )) || <RecipeOptions />}
           </Flex.Item>
         </Flex>
         <Divider />
-        {selectedMode === 1 && <ModeChange selectedMode={selectedMode} />}
-        {selectedMode === 2 && <ModeChange selectedMode={selectedMode} />}
+        {selectedMode === 1 && <ModeChange />}
+        {selectedMode === 2 && <ModeChange />}
         {selectedMode === 3 && <ModeRelate />}
         {selectedMode === 4 && <ModeCreate />}
       </Window.Content>

@@ -47,7 +47,7 @@
 /obj/structure/machinery/recycler/proc/recycle(obj/item/I)
 	var/turf/T = get_turf(I)
 
-	for(var/forbidden_path in igno	red_items)
+	for(var/forbidden_path in ignored_items)
 		if(istype(I, forbidden_path))
 			I.forceMove(loc)
 			return

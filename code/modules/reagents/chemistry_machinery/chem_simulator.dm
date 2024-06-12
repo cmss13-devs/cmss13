@@ -93,8 +93,7 @@
 	user.drop_inv_item_to_loc(B, src)
 	to_chat(user, SPAN_NOTICE("You insert [B] into [src]."))
 	flick("[icon_state]_reading",src)
-	update_costs()
-	SSnano.nanomanager.update_uis(src) // update all UIs attached to src
+	update_costs()// update all UIs attached to src
 
 /obj/structure/machinery/chem_simulator/attack_hand(mob/user as mob)
 	if(inoperable())
@@ -117,18 +116,29 @@
 	data["credits"] = GLOB.chemical_data.rsc_credits
 	data["status"] = status_bar
 	ready = check_ready()
-	data["can_simulate"] = ready
+	data["is_ready"] = !ready
+	data["can_simulate"] = (ready && simulating == SIMULATION_STAGE_OFF)
 	data["can_eject_target"] = ((target ? TRUE : FALSE) && simulating == SIMULATION_STAGE_OFF)
 	data["can_eject_reference"] = ((reference ? TRUE : FALSE) && simulating == SIMULATION_STAGE_OFF)
-	if(target)
-		if(length(target?.data?.properties))
-			for(var/datum/chem_property/target_property_data in target.data.properties)
-				data["target_data"] += list(list(
-					"code" = target_property_data.code,
-					"level" = target_property_data.level,
-					"name" = target_property_data.name,
-					"desc" = target_property_data.description,
-				))
+	data["is_picking_recipe"] = (simulating == SIMULATION_STAGE_FINAL && mode != MODE_CREATE)
+	data["lock_target_control"] = (simulating != SIMULATION_STAGE_OFF)
+	data["can_cancel_simulation"] = (simulating <= SIMULATION_STAGE_WAIT)
+	if(simulating == SIMULATION_STAGE_FINAL)
+		for(var/reagent_id in recipe_targets)
+			var/datum/reagent/recipe_option = GLOB.chemical_reagents_list[reagent_id]
+			data["reagent_option_data"] += list(list(
+				"id" = recipe_option.id,
+				"name" = recipe_option.name,
+			))
+	if(target && length(target?.data?.properties))
+		for(var/datum/chem_property/target_property_data in target.data.properties)
+			data["target_data"] += list(list(
+				"code" = target_property_data.code,
+				"level" = target_property_data.level,
+				"name" = target_property_data.name,
+				"desc" = target_property_data.description,
+				"cost" = property_costs[target_property_data.name]
+			))
 	else
 		data["target_data"] = null
 	return data
@@ -152,6 +162,7 @@
 	switch(action)
 		if("change_mode")
 			mode = params["mode_id"]
+			update_costs()
 		if("eject_target")
 			if(target)
 				if(!usr.put_in_active_hand(target))
@@ -170,6 +181,38 @@
 			reference_property = null
 			stop_processing()
 			flick("[icon_state]_printing",src)
+		if("select_target_property")
+			if(!target)
+				return
+			for(var/datum/chem_property/target_prop in target.data.properties)
+				if(target_prop.code != params["property_code"])
+					continue
+				target_property = target_prop
+			if(!target_property)
+				to_chat(usr, SPAN_WARNING("The [src] makes a suspcious vail."))
+				return
+		if("simulate")
+			if(!ready)
+				return
+			simulating = SIMULATION_STAGE_BEGIN
+			status_bar = "COMMENCING SIMULATION"
+			icon_state = "modifier_running"
+			recipe_targets = list() //reset
+			start_processing()
+			if(mode == MODE_CREATE)
+				msg_admin_niche("[key_name(usr)] has created the chemical: [creation_name]")
+		if("submit_recipe_pick")
+			if(recipe_target)
+				return
+			if(params["reagent_picked"] in recipe_targets)
+				recipe_target = params["reagent_picked"]
+				finalize_simulation(chem_cache)
+			recipe_target = null
+		if("cancel_simulation")
+			stop_processing()
+			icon_state = "modifier"
+			simulating = SIMULATION_STAGE_OFF
+
 
 
 
@@ -637,7 +680,8 @@
 	else if(!target)
 		status_bar = "NO TARGET INSERTED"
 		return FALSE
-	status_bar = "READY"
+	if(simulating == SIMULATION_STAGE_OFF)
+		status_bar = "READY"
 	return TRUE
 
 /obj/structure/machinery/chem_simulator/proc/print(id, is_new)

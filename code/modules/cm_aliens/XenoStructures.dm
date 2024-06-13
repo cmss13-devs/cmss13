@@ -1088,7 +1088,6 @@
 			rolling_candidates = FALSE
 			return
 	message_admins("Failed to find a client for the King, releasing as freed mob.")
-	rolling_candidates = FALSE
 
 /obj/effect/alien/resin/king_cocoon/proc/choose_candidate(expedite = FALSE)
 	start_vote()

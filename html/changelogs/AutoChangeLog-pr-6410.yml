@@ -1,6 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - balance: "dropship fabricator extra budget price 12 -> 6 , 2500 -> 2000 points"
-  - balance: "supply extra budget 15 -> 7, 10k -> 5k"
-  - balance: "all OB 10 -> 5 intel points, one shell and five fuel"

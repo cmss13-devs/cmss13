@@ -5,8 +5,9 @@
 	/// contains all the body text for the bug report.
 	var/list/bug_report_data = null
 
-	/// client is used to set the ticket, and we use the key value for everything else
+	/// client of the bug report author, needed for to create the ticket
 	var/client/initial_user = null
+	// ckey of the author
 	var/initial_key = null // just incase they leave after creating the bug report
 
 	/// client of the admin who is accessing the report, we don't want multiple admins unknowingly making changes at the same time.

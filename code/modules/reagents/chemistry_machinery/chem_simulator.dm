@@ -81,7 +81,7 @@
 			target = B
 			ready = check_ready()
 		else if(mode == MODE_RELATE && !reference)
-			target_property = ""
+			target_property = null
 			reference = B
 			ready = check_ready()
 		else
@@ -132,15 +132,43 @@
 			))
 	if(target && length(target?.data?.properties))
 		for(var/datum/chem_property/target_property_data in target.data.properties)
+			var/is_locked = FALSE
+			var/conflicting_tooltip = null
+			if(!isnull(reference_property))
+				if(LAZYACCESS(GLOB.conflicting_properties, reference_property.name) == target_property_data.name || LAZYACCESS(GLOB.conflicting_properties, target_property_data.name) == reference_property.name )
+					is_locked = TRUE
+					conflicting_tooltip = "This property conflicts with the selected reference property!"
 			data["target_data"] += list(list(
 				"code" = target_property_data.code,
 				"level" = target_property_data.level,
 				"name" = target_property_data.name,
 				"desc" = target_property_data.description,
-				"cost" = property_costs[target_property_data.name]
+				"cost" = property_costs[target_property_data.name],
+				"is_locked" = is_locked,
+				"tooltip" = conflicting_tooltip,
 			))
 	else
 		data["target_data"] = null
+
+	if(reference && length(reference?.data?.properties))
+		for(var/datum/chem_property/reference_property_data in reference.data.properties)
+			var/is_locked = FALSE
+			var/conflicting_tooltip = null
+			if(!isnull(target_property))
+				if(LAZYACCESS(GLOB.conflicting_properties, target_property.name) == reference_property_data.name || LAZYACCESS(GLOB.conflicting_properties, reference_property_data.name) == target_property.name )
+					is_locked = TRUE
+					conflicting_tooltip = "This property conflicts with the selected target property!"
+			data["reference_data"] += list(list(
+				"code" = reference_property_data.code,
+				"level" = reference_property_data.level,
+				"name" = reference_property_data.name,
+				"desc" = reference_property_data.description,
+				"cost" = property_costs[reference_property_data.name],
+				"is_locked" = is_locked,
+				"tooltip" = conflicting_tooltip,
+			))
+	else
+		data["reference_data"] = null
 	return data
 
 /obj/structure/machinery/chem_simulator/ui_static_data(mob/user)
@@ -173,11 +201,10 @@
 			simulating = SIMULATION_STAGE_OFF
 			flick("[icon_state]_printing",src)
 		if("eject_reference")
-			if(!target || simulating != SIMULATION_STAGE_OFF)
-				return
-			if(!usr.put_in_active_hand(reference))
-				reference.forceMove(loc)
-			reference = null
+			if(reference)
+				if(!usr.put_in_active_hand(reference))
+					reference.forceMove(loc)
+				reference = null
 			reference_property = null
 			stop_processing()
 			flick("[icon_state]_printing",src)
@@ -189,6 +216,16 @@
 					continue
 				target_property = target_prop
 			if(!target_property)
+				to_chat(usr, SPAN_WARNING("The [src] makes a suspcious vail."))
+				return
+		if("select_reference_property")
+			if(!reference)
+				return
+			for(var/datum/chem_property/reference_prop in reference.data.properties)
+				if(reference_prop.code != params["property_code"])
+					continue
+				reference_property = reference_prop
+			if(!reference_property)
 				to_chat(usr, SPAN_WARNING("The [src] makes a suspcious vail."))
 				return
 		if("simulate")

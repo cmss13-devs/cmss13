@@ -4,10 +4,8 @@ import { useBackend, useSharedState } from '../backend';
 import {
   Box,
   Button,
-  Dimmer,
   Divider,
   Flex,
-  Icon,
   NoticeBox,
   ProgressBar,
   Section,
@@ -185,73 +183,136 @@ export const RecipeOptions = (props) => {
 
 export const ModeChange = () => {
   const { act, data } = useBackend();
-  const { target_data, lock_target_control, is_ready, status } = data;
+  const { target_data, lock_target_control } = data;
   const [selectedProperty, setSelectedProperty] = useSharedState(false);
-  if (is_ready) {
-    return (
-      <Section height={20} mx={2}>
-        <Dimmer fontSize="24px" height={20}>
-          <Icon name="exclamation-triangle" />
-          {status}
-        </Dimmer>
-      </Section>
-    );
-  } else {
-    return (
-      (target_data && (
-        <Flex ml={3} fontSize={1.2} width={60} height={20} mt={5}>
-          <Flex.Item width={30}>
-            {map(target_data, (property, key) => (
-              <Button
-                bold
-                mx={1}
-                my={1}
-                width={10}
-                textAlign={'center'}
-                onClick={() => {
-                  act('select_target_property', {
-                    property_code: property.code,
-                  });
-                  setSelectedProperty(property.code);
-                }}
-                selected={selectedProperty === property.code ? true : false}
-                disabled={lock_target_control}
-              >
-                {property.code} {property.level}
-              </Button>
-            ))}
-          </Flex.Item>
-          <Flex.Item width={30}>
-            {map(
-              target_data,
-              (property, key) =>
-                property.code === selectedProperty && (
-                  <Stack vertical>
-                    <Stack.Item>
-                      <Section title={property.name}>{property.desc}</Section>
-                    </Stack.Item>
-                    <Stack.Item>
-                      Price of the operation : {property.cost}
-                    </Stack.Item>
-                  </Stack>
-                ),
-            )}
-          </Flex.Item>
-        </Flex>
-      )) || (
-        <Box m={3}>
-          <NoticeBox>No data inserted!</NoticeBox>
-        </Box>
-      )
-    );
-  }
+  return (
+    (target_data && (
+      <Flex ml={5} fontSize={1.2} width={60} height={20} mt={5}>
+        <Flex.Item width={20}>
+          {map(target_data, (property, key) => (
+            <Button
+              bold
+              m={0.6}
+              width={8}
+              textAlign={'center'}
+              onClick={() => {
+                act('select_target_property', {
+                  property_code: property.code,
+                });
+                setSelectedProperty(property.code);
+              }}
+              selected={selectedProperty === property.code ? true : false}
+              disabled={lock_target_control}
+            >
+              {property.code} {property.level}
+            </Button>
+          ))}
+        </Flex.Item>
+        <Flex.Item width={30}>
+          {map(
+            target_data,
+            (property, key) =>
+              property.code === selectedProperty && (
+                <Stack vertical>
+                  <Stack.Item>
+                    <Section title={property.name}>{property.desc}</Section>
+                  </Stack.Item>
+                  <Stack.Item>
+                    Price of the operation : {property.cost}
+                  </Stack.Item>
+                </Stack>
+              ),
+          )}
+        </Flex.Item>
+      </Flex>
+    )) || (
+      <Box m={3}>
+        <NoticeBox>No data inserted!</NoticeBox>
+      </Box>
+    )
+  );
 };
 
-export const ModeRelate = (props) => {
+export const ModeRelate = () => {
   const { act, data } = useBackend();
-  const { selectedMode } = props;
-  const { target_data } = data;
-  return <Box>relate</Box>;
+  const { target_data, reference_data, lock_target_control } = data;
+  const [selectedTargetProperty, setSelectedTargetProperty] = useSharedState(
+    'target',
+    false,
+  );
+  const [selectedReferenceProperty, setSelectedReferenceProperty] =
+    useSharedState('reference', false);
+  const [InfoPanel, setInfoPanel] = useSharedState('panel', false);
+  return (
+    (target_data && reference_data && (
+      <Flex ml={3} fontSize={1.2} width={70} height={20} mt={5}>
+        <Flex.Item width={20}>
+          {map(target_data, (property) => (
+            <Button
+              bold
+              m={0.6}
+              width={8}
+              textAlign={'center'}
+              onClick={() => {
+                act('select_target_property', {
+                  property_code: property.code,
+                });
+                setSelectedTargetProperty(property.code);
+              }}
+              selected={selectedTargetProperty === property.code ? true : false}
+              disabled={lock_target_control || property.is_locked}
+              tooltip={property.tooltip}
+            >
+              {property.code} {property.level} {selectedTargetProperty}
+            </Button>
+          ))}
+        </Flex.Item>
+        <Flex.Item width={20}>
+          {map(reference_data, (property) => (
+            <Button
+              bold
+              m={0.6}
+              width={8}
+              textAlign={'center'}
+              onClick={() => {
+                act('select_reference_property', {
+                  property_code: property.code,
+                });
+                setSelectedReferenceProperty(property.code);
+              }}
+              selected={
+                selectedReferenceProperty === property.code ? true : false
+              }
+              disabled={lock_target_control || property.is_locked}
+              tooltip={property.tooltip}
+            >
+              {property.code} {property.level} {selectedReferenceProperty}
+            </Button>
+          ))}
+        </Flex.Item>
+        <Flex.Item ml={40}>
+          {map(
+            target_data,
+            (property, key) =>
+              property.code === selectedTargetProperty && (
+                <Stack vertical>
+                  <Stack.Item>
+                    <Section title={property.name}>{property.desc}</Section>
+                  </Stack.Item>
+                  <Stack.Item>
+                    Price of the operation : {property.cost}
+                  </Stack.Item>
+                </Stack>
+              ),
+          )}
+        </Flex.Item>
+      </Flex>
+    )) || (
+      <Box m={3}>
+        <NoticeBox>No data insertsed!</NoticeBox>
+      </Box>
+    )
+  );
 };
 
 export const ModeCreate = (props) => {

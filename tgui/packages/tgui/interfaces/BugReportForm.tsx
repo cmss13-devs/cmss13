@@ -17,6 +17,7 @@ type FormDetails = {
   description: string;
   expected_behavior: string;
   admin_note: string;
+  log: string;
 };
 
 const InputTitle = (props) => {
@@ -42,7 +43,7 @@ export const BugReportForm = (props) => {
     report_details?.expected_behavior || '',
   );
   const [admin_note, setAdminNote] = useState(report_details?.admin_note || '');
-  const [log, setLog] = useState(report_details?.admin_note || '');
+  const [log, setLog] = useState(report_details?.log || '');
 
   const submit = () => {
     if (!title || !description || !expected_behavior || !steps || !checkBox) {

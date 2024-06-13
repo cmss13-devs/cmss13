@@ -1060,7 +1060,7 @@
 
 		index++
 
-	votes.cut()
+	votes.Cut()
 
 	// Otherwise ask all the living xenos (minus the player(s) who got voted on earlier)
 	for(var/mob/living/carbon/xenomorph/candidate in shuffle(voting_candidates))

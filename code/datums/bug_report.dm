@@ -7,7 +7,7 @@
 
 	/// client is used to set the ticket, and we use the key value for everything else
 	var/client/initial_user = null
-	var/user_key = null // just incase they leave after creating the bug report
+	var/initial_key = null // just incase they leave after creating the bug report
 
 	/// client of the admin who is accessing the report, we don't want multiple admins unknowingly making changes at the same time.
 	var/client/admin_user = null
@@ -20,7 +20,7 @@
 
 /datum/tgui_bug_report_form/New(mob/user)
 	initial_user = user.client
-	user_key = user.client.key
+	initial_key = user.client.key
 
 /datum/tgui_bug_report_form/proc/external_link_prompt(client/user)
 	tgui_alert(user, "Unable to create a bug report at this time, please create the issue directly through our GitHub repository instead")
@@ -61,7 +61,7 @@
 
 // whether or not an admin can access the record at a given time.
 /datum/tgui_bug_report_form/proc/assign_admin(mob/user)
-	if(!user_key)
+	if(!initial_key)
 		to_chat(user, SPAN_WARNING("Unable to identify the author of the bug report."))
 		return FALSE
 	if(admin_user)
@@ -71,7 +71,7 @@
 			to_chat(user, SPAN_WARNING("Another administrator is currently accessing this report, please wait for them to finish before making any changes."))
 		return FALSE
 	if(!CLIENT_IS_STAFF(user.client))
-		message_admins("[user.ckey] has attempted to review [user_key]'s bug report titled [bug_report_data["title"]] without proper authorization at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
+		message_admins("[user.ckey] has attempted to review [initial_key]'s bug report titled [bug_report_data["title"]] without proper authorization at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 		return FALSE
 
 	admin_user = user.client
@@ -106,7 +106,7 @@
 ```
 
 ## Additional details
-- Author: [user_key]
+- Author: [initial_key]
 - Admin: [admin_user]
 - Note: [bug_report_data["admin_note"] ? bug_report_data["admin_note"] : "None"]
 	"}
@@ -148,7 +148,7 @@
 		message_admins(SPAN_ADMINNOTICE("The GitHub API has failed to create the bug report titled [bug_report_data["title"]] approved by [admin_user], status code:[response.status_code]. Please paste this error code into the development channel on discord."))
 		external_link_prompt(user)
 	else
-		message_admins("[user.ckey] has approved a bug report from [user_key] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
+		message_admins("[user.ckey] has approved a bug report from [initial_key] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 		to_chat(initial_user, SPAN_WARNING("An admin has successfully submitted your report and it should now be visible on GitHub. Thanks again!"))
 	qdel(src)// approved and submitted, we no longer need the datum.
 
@@ -157,7 +157,7 @@
 	to_chat(initial_user, SPAN_WARNING("Your bug report has been submitted, thank you!"))
 	GLOB.bug_reports += src
 
-	var/general_message = "[user_key] has created a bug report, you may find this report directly in the ticket panel. Feel free modify the issue to your liking before submitting it to GitHub."
+	var/general_message = "[initial_key] has created a bug report, you may find this report directly in the ticket panel. Feel free modify the issue to your liking before submitting it to GitHub."
 	GLOB.admin_help_ui_handler.perform_adminhelp(initial_user, general_message, urgent = FALSE)
 
 	var/href_message = ADMIN_VIEW_BUG_REPORT(src)
@@ -192,7 +192,7 @@
 	.["awaiting_admin_approval"] = awaiting_admin_approval
 
 /datum/tgui_bug_report_form/proc/reject(client/user)
-	message_admins("[user.ckey] has rejected a bug report from [user_key] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
+	message_admins("[user.ckey] has rejected a bug report from [initial_key] titled [bug_report_data["title"]] at [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")].")
 	to_chat(initial_user, SPAN_WARNING("An admin has rejected your bug report, this can happen for several reasons. They will most likely get back to you shortly regarding your issue."))
 
 #undef STATUS_SUCCESS

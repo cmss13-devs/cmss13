@@ -551,6 +551,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	// Sell crates.
 	for(var/obj/structure/closet/crate/C in area_shuttle)
+		if(!C.can_sell)
+			continue
 		points += points_per_crate
 		qdel(C)
 

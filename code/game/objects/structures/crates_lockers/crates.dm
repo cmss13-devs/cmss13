@@ -12,6 +12,7 @@
 	throwpass = 1 //prevents moving crates by hurling things at them
 	store_mobs = FALSE
 	var/rigged = 0
+	var/can_sell = TRUE
 	/// Types this crate can be made into
 	var/list/crate_customizing_types = list(
 		"Plain" = /obj/structure/closet/crate,
@@ -340,6 +341,7 @@
 	icon_state = "closed_trashcart"
 	icon_opened = "open_trashcart"
 	icon_closed = "closed_trashcart"
+	can_sell = FALSE
 
 /obj/structure/closet/crate/weapon
 	name = "weapons crate"

@@ -1384,7 +1384,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 /obj/structure/machinery/cm_vending/proc/vendor_successful_vend_one(prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override, stack_amount)
 	var/obj/item/new_item
-	if(ispath(prod_type, /obj/item))
+	if(vend_flags & VEND_PROPS)
+		new_item = new /obj/item/prop/replacer(target_turf, prod_type)
+	else if(ispath(prod_type, /obj/item))
 		if(ispath(prod_type, /obj/item/weapon/gun))
 			new_item = new prod_type(target_turf, TRUE)
 		else

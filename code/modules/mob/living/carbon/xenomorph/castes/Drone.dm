@@ -54,6 +54,7 @@
 	icon_state = "Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
 	tier = 1
+	organ_value = 800
 	pixel_x = -12
 	old_x = -12
 	base_actions = list(

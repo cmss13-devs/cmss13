@@ -200,7 +200,7 @@
 		to_chat(user, SPAN_WARNING("You know this already!"))
 		return FALSE
 
-	if(user.job != JOB_SQUAD_MARINE)
+	if(!(user.job in JOB_SQUAD_ROLES_LIST))
 		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
 		return FALSE
 

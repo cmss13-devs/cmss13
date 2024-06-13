@@ -39,6 +39,7 @@
 	pixel_x = -12
 	old_x = -12
 	tier = 2
+	organ_value = 2000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,

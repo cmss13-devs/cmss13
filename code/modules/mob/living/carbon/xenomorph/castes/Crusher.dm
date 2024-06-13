@@ -52,7 +52,7 @@
 	base_pixel_y = -16
 
 	rebounds = FALSE // no more fucking pinball crooshers
-
+	organ_value = 3000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,

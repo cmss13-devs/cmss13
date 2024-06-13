@@ -119,6 +119,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define JOB_MARINE "USCM Marine" //generic marine
 #define JOB_COLONEL "USCM Colonel"
+#define JOB_USCM_OBSV "USCM Observer"
 #define JOB_GENERAL "USCM General"
 #define JOB_ACMC "Assistant Commandant of the Marine Corps"
 #define JOB_CMC "Commandant of the Marine Corps"
@@ -171,25 +172,25 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 //------------------------------------
 
 //-------- PMC --------//
-#define JOB_PMC_STANDARD "Weyland-Yutani PMC (Standard)"
+#define JOB_PMC_STANDARD "PMC Operator"
 #define JOB_PMC_ENGINEER "PMC Corporate Technician"
 #define JOB_PMC_MEDIC "PMC Corporate Medic"
 #define JOB_PMC_DOCTOR "PMC Trauma Surgeon"
 #define JOB_PMC_INVESTIGATOR "PMC Medical Investigator"
-#define JOB_PMC_DETAINER "Weyland-Yutani PMC (Detainer)"
-#define JOB_PMC_ELITE "PMC Elite"
+#define JOB_PMC_DETAINER "PMC Security Enforcer"
 #define JOB_PMC_GUNNER "PMC Support Weapons Specialist" //Renamed from Specialist to Support Specialist as it only has SG skills.
 #define JOB_PMC_SNIPER "PMC Weapons Specialist" //Renamed from Sharpshooter to specialist as it uses specialist skills.
-#define JOB_PMC_CREWMAN "Weyland-Yutani PMC (Crewman)"
-#define JOB_PMC_NINJA "PMC Ninja"
+#define JOB_PMC_CREWMAN "PMC Vehicle Crewman"
 #define JOB_PMC_XENO_HANDLER "PMC Xeno Handler"
-#define JOB_PMC_COMMANDO "PMC Commando"
 #define JOB_PMC_LEADER "PMC Leader"
 #define JOB_PMC_LEAD_INVEST "PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR "PMC Site Director"
 #define JOB_PMC_SYNTH "PMC Support Synthetic"
 
-#define JOB_PMC_GRUNT_LIST list(JOB_PMC_STANDARD, JOB_PMC_ENGINEER, JOB_PMC_MEDIC, JOB_PMC_INVESTIGATOR, JOB_PMC_DETAINER, JOB_PMC_ELITE, JOB_PMC_GUNNER, JOB_PMC_SNIPER, JOB_PMC_CREWMAN, JOB_PMC_NINJA, JOB_PMC_XENO_HANDLER, JOB_PMC_COMMANDO, JOB_PMC_LEADER, JOB_PMC_LEAD_INVEST)
+#define ROLES_WY_PMC list(JOB_PMC_LEADER, JOB_PMC_SNIPER, JOB_PMC_GUNNER, JOB_PMC_ENGINEER, JOB_PMC_MEDIC, JOB_PMC_STANDARD)
+#define ROLES_WY_PMC_AUX list(JOB_PMC_SYNTH, JOB_PMC_CREWMAN, JOB_PMC_XENO_HANDLER, JOB_PMC_DOCTOR)
+#define ROLES_WY_PMC_INSPEC list(JOB_PMC_LEAD_INVEST, JOB_PMC_INVESTIGATOR, JOB_PMC_DETAINER)
+#define ROLES_WY_PMC_ALL ROLES_WY_PMC + ROLES_WY_PMC_AUX + ROLES_WY_PMC_INSPEC
 
 //-------- WY --------//
 
@@ -204,13 +205,16 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_CHIEF_EXECUTIVE "Corporate Chief Executive"
 #define JOB_DIRECTOR "W-Y Director"
 
+#define ROLES_WY_CORPORATE list(JOB_EXECUTIVE_SUPERVISOR, JOB_EXECUTIVE_SPECIALIST, JOB_SENIOR_EXECUTIVE, JOB_EXECUTIVE, JOB_JUNIOR_EXECUTIVE, JOB_TRAINEE)
+#define ROLES_WY_LEADERSHIP list(JOB_DIRECTOR, JOB_PMC_DIRECTOR, JOB_CHIEF_EXECUTIVE, JOB_DIVISION_MANAGER, JOB_ASSISTANT_MANAGER)
+
 //-------- WY Goons --------//
 #define JOB_WY_GOON "WY Corporate Security"
 #define JOB_WY_GOON_TECH "WY Corporate Security Technician"
 #define JOB_WY_GOON_LEAD "WY Corporate Security Lead"
 #define JOB_WY_GOON_RESEARCHER "WY Research Consultant"
 
-#define JOB_WY_GOON_LIST list(JOB_WY_GOON, JOB_WY_GOON_LEAD)
+#define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON)
 
 //---- Contractors ----//
 #define JOB_CONTRACTOR "VAIPO Mercenary"
@@ -385,4 +389,4 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 ///For denying certain traits being applied to people. ie. bad leg
 ///'Grunt' lists are for people who wouldn't logically get the bad leg trait, ie. UPP marine counterparts.
-#define JOB_ERT_GRUNT_LIST list(DUTCH_JOB_LIST, RIOT_JOB_LIST, PROVOST_JOB_LIST, CMB_GRUNT_LIST, CLF_JOB_LIST, UPP_JOB_GRUNT_LIST, UPP_COMMANDO_JOB_LIST, CONTRACTOR_JOB_LIST, JOB_WY_GOON_LIST, JOB_PMC_GRUNT_LIST)
+#define JOB_ERT_GRUNT_LIST list(DUTCH_JOB_LIST, RIOT_JOB_LIST, PROVOST_JOB_LIST, CMB_GRUNT_LIST, CLF_JOB_LIST, UPP_JOB_GRUNT_LIST, UPP_COMMANDO_JOB_LIST, CONTRACTOR_JOB_LIST, ROLES_WY_GOONS, ROLES_WY_PMC_ALL)

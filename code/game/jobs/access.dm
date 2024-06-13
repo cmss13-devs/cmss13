@@ -212,6 +212,7 @@
 				ACCESS_WY_PMC_TL,
 				ACCESS_WY_ARMORY,
 				ACCESS_WY_SECRETS,
+				ACCESS_WY_DATABASE,
 				ACCESS_WY_LEADERSHIP,
 				ACCESS_WY_SENIOR_LEAD,
 			) + get_access(ACCESS_LIST_COLONIAL_ALL)
@@ -236,6 +237,7 @@
 				ACCESS_WY_PMC,
 				ACCESS_WY_PMC_TL,
 				ACCESS_WY_ARMORY,
+				ACCESS_WY_DATABASE,
 				ACCESS_WY_LEADERSHIP,
 				ACCESS_WY_SENIOR_LEAD,
 			) + get_access(ACCESS_LIST_COLONIAL_ALL)
@@ -446,6 +448,40 @@
 		if(ACCESS_ARES_DEBUG)
 			return "AI Debug"
 
+/proc/get_region_accesses_wy(code)
+	switch(code)
+		if(0)//Everything
+			return get_access(ACCESS_LIST_WY_ALL)
+		if(1)//Corporate General
+			return list(ACCESS_WY_GENERAL, ACCESS_WY_COLONIAL, ACCESS_WY_EXEC)
+		if(2)//Corporate Security
+			return list(ACCESS_WY_SECURITY, ACCESS_WY_ARMORY)
+		if(3)//Corporate Departments
+			return list(ACCESS_WY_MEDICAL, ACCESS_WY_ENGINEERING, ACCESS_WY_FLIGHT, ACCESS_WY_RESEARCH)
+		if(4)//Corporate Leadership
+			return list(ACCESS_WY_LEADERSHIP, ACCESS_WY_SENIOR_LEAD, ACCESS_WY_SECRETS, ACCESS_WY_DATABASE)
+		if(5)//PMCs
+			return list(ACCESS_WY_PMC, ACCESS_WY_PMC_TL, ACCESS_WY_ARMORY)
+		if(6)//Civilian
+			return get_access(ACCESS_LIST_COLONIAL_ALL)
+
+/proc/get_region_accesses_name_wy(code)
+	switch(code)
+		if(0)
+			return "All"
+		if(1)
+			return "Corporate" // Security
+		if(2)
+			return "Corporate Security" // Medbay
+		if(3)
+			return "Corporate Departments" // Research
+		if(4)
+			return "Corporate Leadership" // Engineering
+		if(5)
+			return "Corporate PMCs" // Command
+		if(6)
+			return "Civilian" // Civilian
+
 /proc/get_weyland_access_desc(A)
 	switch(A)
 		if(ACCESS_WY_GENERAL)
@@ -463,7 +499,7 @@
 		if(ACCESS_WY_RESEARCH)
 			return "Wey-Yu Research"
 		if(ACCESS_WY_EXEC)
-			return "Wey-Yu Corporate"
+			return "Wey-Yu Executive"
 		if(ACCESS_WY_PMC)
 			return "Wey-Yu PMC"
 		if(ACCESS_WY_PMC_TL)
@@ -472,7 +508,23 @@
 			return "Wey-Yu Armory"
 		if(ACCESS_WY_SECRETS)
 			return "Wey-Yu HighSec"
+		if(ACCESS_WY_DATABASE)
+			return "Wey-Yu Database"
 		if(ACCESS_WY_LEADERSHIP)
 			return "Wey-Yu Leadership"
 		if(ACCESS_WY_SENIOR_LEAD)
 			return "Wey-Yu Senior Leadership"
+		if(ACCESS_CIVILIAN_RESEARCH)
+			return "Civilian Research"
+		if(ACCESS_CIVILIAN_COMMAND)
+			return "Civilian Command"
+		if(ACCESS_CIVILIAN_MEDBAY)
+			return "Civilian Medbay"
+		if(ACCESS_CIVILIAN_LOGISTICS)
+			return "Civilian Logistics"
+		if(ACCESS_CIVILIAN_ENGINEERING)
+			return "Civilian Engineering"
+		if(ACCESS_CIVILIAN_BRIG)
+			return "Civilian Brig"
+		if(ACCESS_CIVILIAN_PUBLIC)
+			return "Civilian"

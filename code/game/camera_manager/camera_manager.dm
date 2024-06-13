@@ -188,9 +188,9 @@
 	var/cam_location = current
 	if(isliving(current.loc) || isVehicle(current.loc))
 		cam_location = current.loc
-	else if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
-		cam_location = helmet.loc
+	else if(istype(current.loc, /obj/item/clothing))
+		var/obj/item/clothing/clothing = current.loc
+		cam_location = clothing.loc
 
 	// If we're not forcing an update for some reason and the cameras are in the same location,
 	// we don't need to update anything.

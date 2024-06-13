@@ -689,6 +689,7 @@
 	return FALSE
 
 //-------------------------------------------------------
+
 //P90, a classic SMG.
 
 /obj/item/weapon/gun/smg/p90
@@ -732,6 +733,7 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 //-------------------------------------------------------
+
 //P90, a classic SMG (TWE version).
 
 /obj/item/weapon/gun/smg/p90/p90_twe

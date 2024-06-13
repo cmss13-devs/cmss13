@@ -308,3 +308,47 @@
 /obj/effect/landmark/corpsespawner/hybrisa/kelland_miner/burst
 	name = "Corpse - Burst - KMCC - Miner"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/kelland_miner/burst
+
+//*****************************************************************************************************/
+
+// Medical
+
+/obj/effect/landmark/corpsespawner/hybrisa/medical_doctor_corpse
+
+	name = "Corpse - Civilian - Medical Doctor"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/medical_doctor_corpse
+
+/obj/effect/landmark/corpsespawner/hybrisa/medical_doctor_corpse/burst
+
+	name = "Corpse - Burst - Civilian - Medical Doctor"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/medical_doctor_corpse/burst
+
+//*****************************************************************************************************/
+
+// Science
+
+// Xenobiologist
+
+/obj/effect/landmark/corpsespawner/hybrisa/scientist_xenobiologist
+
+	name = "Corpse - Civilian - Xenobiologist"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenobiologist
+
+/obj/effect/landmark/corpsespawner/hybrisa/scientist_xenobiologist/burst
+
+	name = "Corpse - Burst - Civilian - Xenobiologist"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenobiologist/burst
+
+// Xenoarchaeologist
+
+/obj/effect/landmark/corpsespawner/hybrisa/scientist_xenoarchaeologist
+
+	name = "Corpse - Civilian - Xenoarchaeologist"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenoarchaeologist
+
+/obj/effect/landmark/corpsespawner/hybrisa/scientist_xenoarchaeologist/burst
+
+	name = "Corpse - Burst - Civilian - Xenoarchaeologist"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenoarchaeologist/burst
+
+//*****************************************************************************************************/

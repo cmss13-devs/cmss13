@@ -17,20 +17,24 @@
         "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
         "/datum/equipment_preset/survivor/hybrisa/doctor",
         "/datum/equipment_preset/survivor/hybrisa/paramedic",
-        "/datum/equipment_preset/survivor/hybrisa/scientist",
+        "/datum/equipment_preset/survivor/hybrisa/scientist_xenobiologist",
+        "/datum/equipment_preset/survivor/hybrisa/scientist_xenoarchaeologist",
         "/datum/equipment_preset/survivor/hybrisa/cmb_officer",
         "/datum/equipment_preset/survivor/hybrisa/electrical_engineer",
+        "/datum/equipment_preset/survivor/hybrisa/construction_worker",
         "/datum/equipment_preset/survivor/hybrisa/heavy_vehicle_operator",
-        "/datum/equipment_preset/survivor/hybrisa/corporate_liaison",
+        "/datum/equipment_preset/survivor/hybrisa/wy_exec",
         "/datum/equipment_preset/survivor/hybrisa/wey_po",
         "/datum/equipment_preset/survivor/hybrisa/corporate_goon",
         "/datum/equipment_preset/survivor/clf"
     ],
 	"synth_survivor_types": [
-        "/datum/equipment_preset/synth/survivor/forecon"
-    ],
-	"CO_survivor_types": [
-        "/datum/equipment_preset/survivor/forecon/major"
+        "/datum/equipment_preset/synth/survivor/hybrisa/engineer_survivor",
+        "/datum/equipment_preset/synth/survivor/hybrisa/detective",
+        "/datum/equipment_preset/synth/survivor/hybrisa/xenoarchaeologist",
+        "/datum/equipment_preset/synth/survivor/hybrisa/civilian",
+        "/datum/equipment_preset/synth/survivor/hybrisa/paramedic",
+        "/datum/equipment_preset/synth/survivor/hybrisa/exec_bodyguard"
     ],
     "defcon_triggers": [
         3750,

@@ -61,6 +61,32 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
+// Detective Suit
+
+/obj/item/clothing/under/hybrisa/detective_synth_uniform
+	name = "\improper worn suit"
+	desc = "A washed out white shirt with a black tie and brown slacks."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "synth_detective_uniform"
+	worn_state = "synth_detective_uniform"
+	contained_sprite = TRUE
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/hybrisa/detective_synth_uniform/alt
+	name = "\improper worn suit"
+	desc = "A washed out white shirt with a red tie and black slacks."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "synth_detective_uniform_alt"
+	worn_state = "synth_detective_uniform_alt"
+
 // Paramedic
 
 /obj/item/clothing/under/hybrisa/paramedic
@@ -113,6 +139,32 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
+
+// Engineer Worker Uniform
+
+/obj/item/clothing/under/hybrisa/engineering_utility
+	name = "\improper Weyland-Yutani engineering utility uniform"
+	desc = "A set of Weyland-Yutani engineering utility workers uniform, a orange pair of work slacks and a grey polo-shirt with orange reflecting stripes."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "engineer_worker_uniform"
+	worn_state = "engineer_worker_uniform"
+	contained_sprite = TRUE
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/hybrisa/engineering_utility/alt
+	name = "\improper Weyland-Yutani engineering utility uniform"
+	desc = "A set of Weyland-Yutani engineering utility workers uniform, a blue pair of work slacks and a grey polo-shirt with yellow reflecting stripes."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "engineer_worker_alt_uniform"
+	worn_state = "engineer_worker_alt_uniform"
 
 //  Kelland Mining
 
@@ -189,6 +241,64 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
+
+// Science
+
+/obj/item/clothing/under/rank/scientist/hybrisa
+	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as a scientist."
+	name = "scientist's utility jumpsuit"
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "science_outfit"
+	worn_state = "science_outfit"
+	contained_sprite = TRUE
+	permeability_coefficient = 0.50
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+
+// WY-Exec Expensive Suits
+
+// Detective Suit
+
+/obj/item/clothing/under/hybrisa/wy_exec_suit_uniform
+	name = "\improper expensive suit"
+	desc = "A luxurious designer suit, beyond the reach of the average person. It's an exclusive choice for high-level executives and the affluent elite."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "wy_exec_suit_uniform"
+	worn_state = "wy_exec_suit_uniform"
+	contained_sprite = TRUE
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/jacket
+	icon_state = "wy_exec_suit_3_uniform"
+	worn_state = "wy_exec_suit_3_uniform"
+
+/obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/brown
+
+	icon_state = "wy_exec_suit_2_uniform"
+	worn_state = "wy_exec_suit_2_uniform"
+
+/obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/brown/jacket
+	icon_state = "wy_exec_suit_4_uniform"
+	worn_state = "wy_exec_suit_4_uniform"
+
+/obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/jacket_only
+	icon_state = "wy_exec_suit_5_uniform"
+	worn_state = "wy_exec_suit_5_uniform"
+
 
 /////////////////////// Hats & Helmets ///////////////////////
 /////////////////////////////////////////////////////////////
@@ -296,7 +406,7 @@
 // WY-Pilot Cap
 
 /obj/item/clothing/head/hybrisa/wy_po_cap
-	name = "\improper Weyland-Yutani Pilots cap"
+	name = "\improper Weyland-Yutani Pilot cap"
 	desc = "A dark peaked cap enscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civillian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "civilian_pilot_cap"
@@ -316,7 +426,7 @@
 
 // Weymart Cap
 
-/obj/item/clothing/head/soft/hybrisa/weymart
+/obj/item/clothing/head/hybrisa/weymart
 	name = "orange cap"
 	desc = "It's a baseball style cap in the 'Weymart' orange color, with the 'Weymart' logo on the front."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -326,13 +436,40 @@
 
 // Pizza Galaxy Cap
 
-/obj/item/clothing/head/soft/hybrisa/pizza_galaxy
-	name = "pizza galaxy red cap"
+/obj/item/clothing/head/hybrisa/pizza_galaxy
+	name = "Pizza Galaxy red cap"
 	desc = "It's a baseball style cap in a red color, with the 'Pizza Galaxy' logo on the front."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "pizzagalaxy_cap"
 	item_state = "pizzagalaxy_cap"
 	contained_sprite = TRUE
+
+// Detective Hat
+
+/obj/item/clothing/head/hybrisa/synth_detective_hat
+	name = "\improper worn fedora"
+	desc = "A brown classic fedora."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "synth_detective_hat"
+	item_state = "synth_detective_hat"
+	contained_sprite = TRUE
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
+
+/obj/item/clothing/head/hybrisa/synth_detective_hat/alt
+	name = "\improper worn fedora"
+	desc = "A black classic fedora."
+	icon_state = "synth_detective_hat_alt"
+	item_state = "synth_detective_hat_alt"
 
 // Helmets
 
@@ -413,6 +550,59 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
+
+// Biosuits
+
+/obj/item/clothing/head/bio_hood/wy_bio
+	name = "WY-TSS MK II - bio hood"
+	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK II'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "sci_expedition_helmet"
+	item_state = "sci_expedition_helmet"
+	contained_sprite = TRUE
+
+/obj/item/clothing/head/bio_hood/wy_bio/alt
+	name = "WY-TSS MK I - bio hood"
+	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants."
+	icon_state = "sci_expedition_helmet_alt"
+	item_state = "sci_expedition_helmet_alt"
+	contained_sprite = TRUE
+
+/obj/item/clothing/suit/bio_suit/wy_bio
+	name = "WY-TSS MK I - bio suit"
+	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a suit that protects against biological contamination."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "sci_expedition"
+	item_state = "sci_expedition"
+	contained_sprite = TRUE
+	slowdown = 0
+	uniform_restricted = null
+
+// Synth Bio
+
+/obj/item/clothing/head/bio_hood/synth/wy_bio
+	name = "WY-TSS MK II - bio hood"
+	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK II'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants, synthetic compliant. Offers no real protection."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "sci_expedition_helmet"
+	item_state = "sci_expedition_helmet"
+	contained_sprite = TRUE
+
+/obj/item/clothing/head/bio_hood/synth/wy_bio/alt
+	name = "WY-TSS MK I - bio hood"
+	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants, synthetic compliant. Offers no real protection."
+	icon_state = "sci_expedition_helmet_synth"
+	item_state = "sci_expedition_helmet_synth"
+	contained_sprite = TRUE
+
+/obj/item/clothing/suit/storage/synthbio/wy_bio
+	name = "WY-TSS MK I - bio suit"
+	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. A Synthetic compliant bio-hazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "sci_expedition_synth"
+	item_state = "sci_expedition_synth"
+	contained_sprite = TRUE
+	uniform_restricted = null
 
 /////////////////////// Oversuits ///////////////////////
 ////////////////////////////////////////////////////////
@@ -605,6 +795,21 @@
 	contained_sprite = TRUE
 	uniform_restricted = null
 
+// Engineer Utility Oversuit
+
+/obj/item/clothing/suit/hybrisa/engineering_utility_oversuit
+	name = "\improper Weyland-Yutani engineer utility uniform"
+	desc = "A Weyland-Yutani engineer utility uniform. Used as a general purpose utility oversuit by Weyland-Yutani colony engineers."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "engineer_worker_oversuit"
+	item_state = "engineer_worker_oversuit"
+	contained_sprite = TRUE
+	uniform_restricted = null
+
+/obj/item/clothing/suit/hybrisa/engineering_utility_oversuit/alt
+	icon_state = "engineer_worker_alt_oversuit"
+	item_state = "engineer_worker_alt_oversuit"
+
 // WY Pilot
 
 /obj/item/clothing/suit/storage/hybrisa/wy_Pilot
@@ -615,6 +820,39 @@
 	item_state = "civilian_pilot_jacket"
 	contained_sprite = TRUE
 	uniform_restricted = null
+
+// Detective Trench-coat
+
+/obj/item/clothing/suit/storage/cmb/hybrisa/detective_coat
+	name = "\improper worn beige trench-coat"
+	desc = "A worn beige old style trench-coat, a classic noir style - piece of outerwear."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "synth_detective_jacket"
+	item_state = "synth_detective_jacket"
+	contained_sprite = TRUE
+	uniform_restricted = null
+
+/obj/item/clothing/suit/storage/cmb/hybrisa/detective_coat/alt
+	name = "\improper worn grey trench-coat"
+	desc = "A worn grey old style trench-coat, a classic noir style - piece of outerwear."
+	icon_state = "synth_detective_jacket_alt"
+	item_state = "synth_detective_jacket_alt"
+
+// Executive Trench-coat
+
+/obj/item/clothing/suit/storage/cmb/hybrisa/fur_lined_trench_coat
+	name = "\improper expensive fur-lined trench-coat"
+	desc = "A luxurious fur-lined, antique-styled trench coat that exudes classic noir elegance. This exquisite garment is far beyond the average person's budget, accessible only to high-level executives and elite military personnel."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "wy_expensive_fur_trenchcoat"
+	item_state = "wy_expensive_fur_trenchcoat"
+	contained_sprite = TRUE
+	uniform_restricted = null
+
+/obj/item/clothing/suit/storage/cmb/hybrisa/fur_lined_trench_coat/alt
+	icon_state = "wy_expensive_fur_trenchcoat_alt"
+	item_state = "wy_expensive_fur_trenchcoat_alt"
+
 
 // CMB Police Jackets & Armor
 
@@ -762,7 +1000,7 @@
 // Cuppa Joe's Apron
 
 /obj/item/clothing/suit/apron/cuppa_joes
-	name = "Cuppa Joe's apron"
+	name = "red apron"
 	desc = "A basic red apron."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "cuppajoes_apron"
@@ -772,22 +1010,34 @@
 /////////////////////// MISC ///////////////////////////
 ////////////////////////////////////////////////////////
 
-// Glasses
+// Closets
 
-/obj/item/clothing/glasses/sunglasses/aviator_silver
-	name = "aviator shades"
-	desc = "A pair of silver tinted sunglasses. You can faintly hear 80's music playing while wearing these."
-	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "aviator_silver"
-	item_state = "aviator_silver"
-	contained_sprite = TRUE
-	flags_equip_slot = SLOT_EYES|SLOT_FACE
+/obj/structure/closet/hybrisa/wy_bio
+	icon_state = "bio_general"
+	icon_closed = "bio_general"
+	icon_opened = "bio_generalopen"
 
-/obj/item/clothing/glasses/sunglasses/sechud_blue
-	name = "Security HUD-Glasses"
-	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
-	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "sunhud_blue"
-	contained_sprite = TRUE
-	eye_protection = EYE_PROTECTION_FLASH
-	hud_type = MOB_HUD_SECURITY_ADVANCED
+/obj/structure/closet/hybrisa/wy_bio/Initialize()
+	. = ..()
+	contents = list()
+	new /obj/item/clothing/suit/bio_suit/wy_bio( src )
+	new /obj/item/clothing/head/bio_hood/wy_bio/alt( src )
+
+/obj/structure/closet/secure_closet/hybrisa/marshal
+	name = "Sentinel-Outpost Equipment Locker"
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	icon_state = "secure_locked_warrant"
+	icon_closed = "secure_unlocked_warrant"
+	icon_locked = "secure_locked_warrant"
+	icon_opened = "secure_open_warrant"
+	icon_broken = "secure_locked_warrant"
+	icon_off = "secure_closed_warrant"
+
+
+/obj/structure/closet/secure_closet/hybrisa/marshal/Initialize()
+	. = ..()
+	new /obj/item/clothing/suit/armor/vest/hybrisa/cmb_vest(src)
+	new /obj/item/clothing/under/hybrisa/cmb_officer(src)
+	new /obj/item/storage/backpack/security(src)
+	new /obj/item/storage/belt/security(src)
+	new /obj/item/clothing/shoes/jackboots(src)

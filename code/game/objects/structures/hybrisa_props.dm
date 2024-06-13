@@ -939,7 +939,7 @@
 	icon_state = "alien_helmet"
 	force = 15
 	throwforce = 12
-	w_class = SIZE_HUGE
+	w_class = SIZE_MEDIUM
 
 // Airport
 
@@ -1229,9 +1229,14 @@
 	name = "meter"
 	icon_state = "redmeter"
 
-/obj/structure/prop/hybrisa/misc/trashbagfullprop
-	name = "trash bag"
+/obj/item/hybrisa/misc/trash_bag_full_prop
+	name = "full trash bag"
+	desc = "It's the heavy-duty black polymer kind. It's full of old trash, you don't want to touch it."
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "ztrashbag"
+	force = 15
+	throwforce = 3
+	w_class = SIZE_MEDIUM
 
 /obj/structure/prop/hybrisa/misc/slotmachine
 	name = "slot machine"

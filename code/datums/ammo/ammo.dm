@@ -89,6 +89,9 @@
 	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
 
+	/// How much fire delay to add to the weapon after firing this kind of ammo
+	var/fire_delay_modifier = 0
+
 /datum/ammo/New()
 	set_bullet_traits()
 

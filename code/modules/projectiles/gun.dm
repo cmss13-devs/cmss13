@@ -1142,6 +1142,8 @@ and you're good to go.
 		flags_gun_features &= ~GUN_BURST_FIRING
 		return NONE
 
+	var/ammo_fire_delay = projectile_to_fire.ammo.fire_delay_modifier // Save this early because projectile_to_fire is going to be nulled
+
 	apply_bullet_effects(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
 	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 
@@ -1204,7 +1206,7 @@ and you're good to go.
 		if(check_for_attachment_fire)
 			active_attachable.last_fired = world.time
 		else
-			last_fired = world.time
+			last_fired = world.time + ammo_fire_delay
 			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 			if(fire_delay_group && delay_left > 0)
 				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)

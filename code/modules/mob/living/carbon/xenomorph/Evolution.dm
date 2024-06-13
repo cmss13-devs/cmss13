@@ -133,7 +133,6 @@
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
 		qdel(organ)
->>>>>>> b0e1823542dad884e25cf9d72dfa67e1744b6883
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new M(get_turf(src), src)
 

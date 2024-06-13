@@ -341,14 +341,14 @@
 	if(xeno.action_busy)
 		return
 
-	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively."), \
-	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively."))
-
 	if(target_carbon.status_flags & XENO_HOST)
 		for(var/obj/item/alien_embryo/embryo in target_carbon)
 			if(HIVE_ALLIED_TO_HIVE(xeno.hivenumber, embryo.hivenumber))
 				to_chat(xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
 				return
+
+	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively."), \
+	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively."))
 
 	if(!do_after(xeno, 0.8 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
 		return

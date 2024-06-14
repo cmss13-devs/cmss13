@@ -195,13 +195,16 @@
 	can_hold = list(/obj/item/weapon/gun/flamer/M240T)
 	has_gamemode_skin = TRUE
 
-/obj/item/storage/large_holster/fuelpack/Initialize()
+/obj/item/storage/large_holster/fuelpack/Initialize(mapload, obj/item/weapon/gun/flamer/M240T/linked_flamer)
 	. = ..()
 	fuel = new /obj/item/ammo_magazine/flamer_tank/large()
 	fuelB = new /obj/item/ammo_magazine/flamer_tank/large/B()
 	fuelX = new /obj/item/ammo_magazine/flamer_tank/large/X()
 	active_fuel = fuel
 	flamer_overlay = overlay_image('icons/obj/items/clothing/backpacks.dmi', "+m240t")
+	if(linked_flamer)
+		linked_flamer.fuelpack = src
+		src.linked_flamer = linked_flamer
 
 /obj/item/storage/large_holster/fuelpack/Destroy()
 	QDEL_NULL(active_fuel)

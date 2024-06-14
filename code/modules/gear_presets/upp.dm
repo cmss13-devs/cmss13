@@ -418,7 +418,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //.33
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //.66
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked, WEAR_IN_BACK) //1.66
-	new_human.equip_to_slot_or_del(new /obj/item/defenses/handheld/sentry/mini, WEAR_IN_BACK) //2.66
+	new_human.equip_to_slot_or_del(new /obj/item/defenses/handheld/sentry/upp/light, WEAR_IN_BACK) //2.66
 	//face
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/cct, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
@@ -491,9 +491,9 @@
 		list("Essential Sapper Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("HANDHELD DEFENSE (CHOOSE 1)", 0, null, null, null),
-		list("JIMA Planted Flag", 0, /obj/item/defenses/handheld/planted_flag, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
-		list("UA 42-F Sentry Flamer", 0, /obj/item/defenses/handheld/sentry/flamer, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
-		list("UA 571-C Sentry Gun", 0, /obj/item/defenses/handheld/sentry, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("UPP Planted Flag", 0, /obj/item/defenses/handheld/planted_flag/upp, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("UPP SDS-R5 Sentry Flamer", 0, /obj/item/defenses/handheld/sentry/flamer/upp, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("UPP SDS-R3 Sentry Gun", 0, /obj/item/defenses/handheld/sentry/upp, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Airlock Circuit Board", 2, /obj/item/circuitboard/airlock, null, VENDOR_ITEM_REGULAR),
@@ -2566,8 +2566,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92, WEAR_IN_BACK) //1.3
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92, WEAR_IN_BACK) //1.6
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92, WEAR_IN_BACK) //2
-	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked, WEAR_IN_BACK) //3
-	new_human.equip_to_slot_or_del(new /obj/item/defenses/handheld/sentry/mini, WEAR_IN_BACK) //4
+	new_human.equip_to_slot_or_del(new /obj/item/defenses/handheld/sentry/upp/light, WEAR_IN_BACK) //3
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked, WEAR_IN_BACK) //4
 	//face
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/cct, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)

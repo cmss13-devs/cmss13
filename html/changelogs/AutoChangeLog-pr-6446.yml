@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Added preference for toggling the fax machine received sound as an observer"

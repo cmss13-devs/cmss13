@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - bugfix: "Pyro spec flamer should be linked to its tank more consistently."

@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 23
+#define SAVEFILE_VERSION_MAX 24
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -141,6 +141,12 @@
 			if("polynesian")
 				skin_color = "tan3"
 		S["skin_color"] << skin_color
+
+	if(savefile_version < 24) // adds fax machine sounds on by default
+		var/sound_toggles
+		S["toggles_sound"] >> sound_toggles
+		sound_toggles |= (SOUND_FAX_MACHINE)
+		S["toggles_sound"] << sound_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

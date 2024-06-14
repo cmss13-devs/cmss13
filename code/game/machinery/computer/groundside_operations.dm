@@ -362,7 +362,7 @@
 
 //returns the helmet camera the human is wearing
 /obj/structure/machinery/computer/groundside_operations/proc/get_camera_from_target(mob/living/carbon/human/H)
-	if(current_squad)
+	if(current_squad || show_command_squad)
 		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
 			var/obj/item/clothing/head/helmet/marine/helm = H.head
 			return helm.camera
@@ -389,5 +389,9 @@
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
 	minimap_type = MINIMAP_FLAG_PMC
+
+/obj/structure/machinery/computer/groundside_operations/arc
+	icon = 'icons/obj/vehicles/interiors/arc.dmi'
+	icon_state = "groundsideop_computer"
 
 #undef COMMAND_SQUAD

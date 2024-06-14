@@ -131,16 +131,17 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 
 	// Create an actual medal item
 	if(medal_location)
+		var/turf/turf_location = get_turf(medal_location)
 		var/obj/item/clothing/accessory/medal/medal
 		switch(medal_type)
 			if(MARINE_CONDUCT_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/bronze/conduct(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/bronze/conduct(turf_location)
 			if(MARINE_BRONZE_HEART_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/bronze/heart(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/bronze/heart(turf_location)
 			if(MARINE_VALOR_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/silver/valor(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/silver/valor(turf_location)
 			if(MARINE_HEROISM_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/gold/heroism(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/gold/heroism(turf_location)
 			else
 				return FALSE
 		medal.recipient_name = chosen_recipient
@@ -223,16 +224,17 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 
 	// Create an actual medal item
 	if(medal_location)
+		var/turf/turf_location = get_turf(medal_location)
 		var/obj/item/clothing/accessory/medal/medal
 		switch(medal_type)
 			if(MARINE_CONDUCT_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/bronze/conduct(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/bronze/conduct(turf_location)
 			if(MARINE_BRONZE_HEART_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/bronze/heart(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/bronze/heart(turf_location)
 			if(MARINE_VALOR_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/silver/valor(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/silver/valor(turf_location)
 			if(MARINE_HEROISM_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/gold/heroism(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/gold/heroism(turf_location)
 			else
 				return FALSE
 		medal.recipient_name = chosen_recipient
@@ -606,7 +608,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 
 	switch(action)
 		if("grant_new_medal")
-			if(give_medal_award(get_turf(actual_loc)))
+			if(give_medal_award(actual_loc))
 				actual_loc.visible_message(SPAN_NOTICE("[actual_loc] prints a medal."))
 			. = TRUE
 
@@ -631,7 +633,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			if(confirm_choice != "Yes")
 				return
 
-			if(give_medal_award_prefilled(get_turf(actual_loc), user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name))
+			if(give_medal_award_prefilled(actual_loc, user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name))
 				GLOB.medal_recommendations -= recommendation
 				qdel(recommendation)
 				user.visible_message(SPAN_NOTICE("[actual_loc] prints a medal."))

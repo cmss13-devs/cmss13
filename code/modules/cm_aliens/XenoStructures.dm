@@ -917,6 +917,7 @@
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King is growing at [get_area_name(loc)]."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
+/// Callback for a repeating 10s timer to ensure both pylons are active (otherwise delete) and counts the number of marines groundside (would cause hatching to expedite).
 /obj/effect/alien/resin/king_cocoon/proc/check_pylons()
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 
@@ -942,14 +943,16 @@
 			if(groundside_humans > 12)
 				return
 
+	// Too few marines are now groundside, hatch immediately
 	deltimer(timer)
-
 	start_vote(expedite = TRUE)
 
+/// Causes the cocoon to change visually for growing and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/start_growing()
 	icon_state = "growing"
 	timer = addtimer(CALLBACK(src, PROC_REF(announce_halfway)), 5 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
+/// Causes the halfway announcements and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/announce_halfway()
 	timer = addtimer(CALLBACK(src, PROC_REF(start_vote)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
@@ -1127,6 +1130,7 @@
 
 	timer = addtimer(CALLBACK(src, PROC_REF(animate_hatch_king)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
+/// Causes the cocoon to change visually for hatching and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/animate_hatch_king()
 	flick("hatching", src)
 	addtimer(CALLBACK(src, PROC_REF(hatch_king)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
@@ -1142,6 +1146,7 @@
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King has hatched!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
+/// Actually hatches the King transferring the candidate into the spawned mob and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/hatch_king()
 	icon_state = "hatched"
 	hatched = TRUE
@@ -1164,6 +1169,7 @@
 	// Gives some time for the King to get their barings before it can be OBed
 	addtimer(CALLBACK(src, PROC_REF(remove_ob_protection)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
+/// The final step in the cocoon sequence: Resets pylon protection levels
 /obj/effect/alien/resin/king_cocoon/proc/remove_ob_protection()
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)

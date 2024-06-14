@@ -201,10 +201,10 @@
 	if((I.flags_item & NODROP) && !force)
 		return FALSE //u_equip() only fails if item has NODROP
 	var/slot = get_slot_by_item(I)
-	if (I == r_hand)
+	if (slot == r_hand)
 		r_hand = null
 		update_inv_r_hand()
-	else if (I == l_hand)
+	else if (slot == l_hand)
 		l_hand = null
 		update_inv_l_hand()
 

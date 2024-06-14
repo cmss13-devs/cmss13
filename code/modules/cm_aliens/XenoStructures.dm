@@ -1106,7 +1106,6 @@
 			start_hatching(expedite)
 			return
 	message_admins("Failed to find a client for the King, releasing as freed mob.")
-	rolling_candidates = FALSE
 	start_hatching(expedite)
 
 /// Starts the hatching in one minute, otherwise immediately if expedited

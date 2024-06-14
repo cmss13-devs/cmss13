@@ -681,9 +681,16 @@
 	icon_state = "cnailgun"
 	item_state = "nailgun"
 	w_class = SIZE_SMALL
+	flags_gun_features = GUN_NO_DESCRIPTION
 
 /obj/item/weapon/gun/smg/nailgun/compact/able_to_fire(mob/living/user)
 	. = ..()
-	if(.)
-		click_empty(user)
 	return FALSE
+
+/obj/item/weapon/gun/smg/nailgun/compact/tactical
+	name = "tactical compact nailgun"
+	desc = "A carpentry tool, used to drive nails into tough surfaces. This one is military grade, it's olive drab and tacticool. Cannot fire nails as a projectile."
+	icon_state = "tnailgun"
+	item_state = "tnailgun"
+	w_class = SIZE_SMALL
+

@@ -613,7 +613,7 @@
 		SA.remove_from_hud(M)
 		var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 		XI.remove_from_hud(M)
-		if(!silent)
+		if(!instant)
 			anim(M.loc,M,'icons/mob/mob.dmi',,"cloak",,M.dir)
 
 	var/datum/action/predator_action/bracer/cloak/cloak_action

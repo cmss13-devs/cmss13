@@ -117,7 +117,7 @@ You must still listen to the queen.
 	should_announce_spawn = FALSE
 
 /mob/living/carbon/xenomorph/predalien/tutorial/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
-	death(cause, 1)
+	death(cause, gibbed = TRUE)
 
 
 /datum/behavior_delegate/predalien_base

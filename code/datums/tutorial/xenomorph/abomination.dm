@@ -1,6 +1,6 @@
 /datum/tutorial/xenomorph/abomination
-	name = "Xenomorph - Abomination"
-	desc = "A tutorial to teach you how to play the Abomination xenomorph caste. Completing this is required to be able to play an Abomination."
+	name = "Xenomorph - Predalien"
+	desc = "A tutorial to teach you how to play the \"Predalien\", also known as Abomination, xenomorph caste. Completing this is required to be able to play an Abomination."
 	icon_state = "predalien"
 	tutorial_id = "xeno_abom_1"
 	tutorial_template = /datum/map_template/tutorial/s7x7
@@ -14,11 +14,9 @@
 		return
 
 	init_mob()
-	xeno.melee_damage_lower = 40
-	xeno.melee_damage_upper = 40
 	xeno.lock_evolve = TRUE
 
-	message_to_player("Welcome to the tutorial for the Abomination xenomorph. As an Abomination, you are a frontline powerhouse whose damage scales with your kill count.")
+	message_to_player("Welcome to the tutorial for the Abomination (or \"Predalien\") xenomorph. As an Abomination, you are a frontline powerhouse whose damage scales with your kill count.")
 	message_to_player("Your kill count scales when you kill humans with your slash attack, up to 10 kills. Ability kills (including Tail Stab) do not count towards this.")
 
 	addtimer(CALLBACK(src, PROC_REF(how_to_be_abom)), 10.5 SECONDS)

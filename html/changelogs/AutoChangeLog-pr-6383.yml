@@ -1,0 +1,9 @@
+author: "Zonespace, Zydras"
+delete-after: True
+changes:
+  - bugfix: "Vehicle elevator no longer incorrectly rotates vehicles"
+  - rscadd: "New ARC exterior and interior"
+  - balance: "ARC now fits 5 humans instead of 7"
+  - balance: "ARC now fits 4 xenos intead of 5"
+  - balance: "ARC's RE700 turret armor pen 10->15"
+  - balance: "On account of the smaller size, the ARC no longer has a nanomed."

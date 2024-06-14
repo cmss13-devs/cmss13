@@ -944,7 +944,7 @@
 
 	deltimer(timer)
 
-	start_vote(TRUE)
+	start_vote(expedite = TRUE)
 
 /obj/effect/alien/resin/king_cocoon/proc/start_growing()
 	icon_state = "growing"
@@ -1021,8 +1021,8 @@
 	else
 		votes[choice] = 1
 
-/// Initiates a vote that will end in 20 seconds to vote for the King.
-/obj/effect/alien/resin/king_cocoon/proc/start_vote()
+/// Initiates a vote that will end in 20 seconds to vote for the King. Hatching will then begin in 1 minute unless expedited.
+/obj/effect/alien/resin/king_cocoon/proc/start_vote(expedite = FALSE)
 	rolling_candidates = TRUE
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 
@@ -1036,10 +1036,23 @@
 		if(is_candidate_valid(hive, candidate, playtime_restricted = FALSE, skip_playtime = FALSE))
 			INVOKE_ASYNC(src, PROC_REF(cast_vote), candidate, voting_candidates)
 
-	addtimer(CALLBACK(src, PROC_REF(roll_candidates), voting_candidates), 20 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(roll_candidates), voting_candidates, expedite), 20 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
-/// Finalizes the vote for King. Will perform several fallbacks in case a candidate declined working through the living hive and then eventually observers.	
-/obj/effect/alien/resin/king_cocoon/proc/roll_candidates(list/mob/living/carbon/xenomorph/voting_candidates)
+/**
+ * Finalizes the vote for King opting to use a series of fallbacks in case a candidate declines.
+ * 
+ * First is a vote where the first and or second top picked is asked.
+ * Then all other living xenos meeting the playtime requirement are asked.
+ * Then all xeno observer candidates meeting the playtime requirement are asked.
+ * Then all other living xenos not meeting the playtime requirement are asked.
+ * Then all other xeno observer candidates not meeting the playtime requirement are asked.
+ * Then finally if after all that, the search is given up and will ultimately result in a freed King mob.
+ * 
+ * Arguments:
+ * * voting_candidates: A list of xenomorphs that are valid candidates to vote on.
+ * * expedite: Whether hatching should begin in a minute or immediately after a candidate is found.
+ */
+/obj/effect/alien/resin/king_cocoon/proc/roll_candidates(list/mob/living/carbon/xenomorph/voting_candidates, expedite = FALSE)
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 	
 	votes = sortAssoc(votes)
@@ -1054,7 +1067,7 @@
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
-			choose_candidate()
+			start_hatching(expedite)
 			return
 		
 		voting_candidates -= candidate
@@ -1068,7 +1081,7 @@
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
-			choose_candidate()
+			start_hatching(expedite)
 			return
 	// Then observers
 	var/list/observer_list_copy = shuffle(get_alien_candidates(hive))
@@ -1077,25 +1090,27 @@
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
-			choose_candidate()
+			start_hatching(expedite)
 			return
 	// Lastly all of the above again, without playtime requirements
 	for(var/mob/living/carbon/xenomorph/candidate in shuffle(hive.totalXenos.Copy() - hive.living_xeno_queen))
 		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
-			choose_candidate()
+			start_hatching(expedite)
 			return
 	for(var/mob/candidate in observer_list_copy)
 		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
-			choose_candidate()
+			start_hatching(expedite)
 			return
 	message_admins("Failed to find a client for the King, releasing as freed mob.")
 
-/obj/effect/alien/resin/king_cocoon/proc/choose_candidate(expedite = FALSE)	
+/// Starts the hatching in one minute, otherwise immediately if expedited
+/obj/effect/alien/resin/king_cocoon/proc/start_hatching(expedite = FALSE)	
 	if(expedite)
+		deltimer(timer)
 		animate_hatch_king()
 		return
 	

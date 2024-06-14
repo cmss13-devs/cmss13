@@ -280,7 +280,6 @@
 
 /datum/action/xeno_action/activable/healer_sacrifice/action_activate()
 	. = ..()
-	..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.selected_ability != src)
 		return

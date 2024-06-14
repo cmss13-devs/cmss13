@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "the preview window in character setup now remains visible when looking at it as a ghost"

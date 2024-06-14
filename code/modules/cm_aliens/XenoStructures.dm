@@ -1110,7 +1110,6 @@
 /// Starts the hatching in one minute, otherwise immediately if expedited
 /obj/effect/alien/resin/king_cocoon/proc/start_hatching(expedite = FALSE)	
 	if(expedite)
-		deltimer(timer)
 		animate_hatch_king()
 		return
 	

@@ -69,6 +69,9 @@
 	/// Ask the buyer where to put the buff
 	var/must_select_pylon = FALSE
 
+	/// _on_cease timer id
+	var/cease_timer_id
+
 /datum/hivebuff/New(datum/hive_status/xenohive)
 	. = ..()
 	if(!xenohive || !istype(xenohive))
@@ -174,7 +177,7 @@
 	// If we need a timer to call _on_cease() we add it here and store the id, used for deleting the timer if we Destroy().
 	// If we have no duration to the buff then we call _on_cease() immediately.
 	if(duration)
-		addtimer(CALLBACK(src, PROC_REF(_on_cease)), duration, TIMER_STOPPABLE|TIMER_DELETE_ME)
+		ceaser_timer_id = addtimer(CALLBACK(src, PROC_REF(_on_cease)), duration, TIMER_STOPPABLE|TIMER_DELETE_ME)
 	else
 		_on_cease()
 	return TRUE
@@ -187,6 +190,9 @@
 
 /// Wrapper for on_cease()
 /datum/hivebuff/proc/_on_cease()
+	if(ceaser_timer_id)
+		deltimer(cease_timer_id)
+	
 	_announce_buff_cease()
 	on_cease()
 	LAZYREMOVE(hive.active_hivebuffs, src)
@@ -347,9 +353,6 @@
 	return TRUE
 
 /datum/hivebuff/evo_buff/on_cease()
-	if(SSxevolution.get_evolution_boost_power(hive.hivenumber) == XENO_HIJACK_EVILUTION_BUFF)
-		return
-
 	hive.override_evilution(value_before_buff, TRUE)
 
 /datum/hivebuff/evo_buff/major

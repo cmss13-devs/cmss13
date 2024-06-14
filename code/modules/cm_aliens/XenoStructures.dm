@@ -1106,6 +1106,8 @@
 			start_hatching(expedite)
 			return
 	message_admins("Failed to find a client for the King, releasing as freed mob.")
+	rolling_candidates = FALSE
+	start_hatching(expedite)
 
 /// Starts the hatching in one minute, otherwise immediately if expedited
 /obj/effect/alien/resin/king_cocoon/proc/start_hatching(expedite = FALSE)	

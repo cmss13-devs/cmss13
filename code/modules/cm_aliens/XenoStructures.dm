@@ -944,14 +944,14 @@
 
 	deltimer(timer)
 
-	choose_candidate(TRUE)
+	start_vote(TRUE)
 
 /obj/effect/alien/resin/king_cocoon/proc/start_growing()
 	icon_state = "growing"
 	timer = addtimer(CALLBACK(src, PROC_REF(announce_halfway)), 5 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /obj/effect/alien/resin/king_cocoon/proc/announce_halfway()
-	timer = addtimer(CALLBACK(src, PROC_REF(choose_candidate)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	timer = addtimer(CALLBACK(src, PROC_REF(start_vote)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 	marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - 5 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
@@ -1054,6 +1054,7 @@
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
+			choose_candidate()
 			return
 		
 		voting_candidates -= candidate
@@ -1067,6 +1068,7 @@
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
+			choose_candidate()
 			return
 	// Then observers
 	var/list/observer_list_copy = shuffle(get_alien_candidates(hive))
@@ -1075,23 +1077,24 @@
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
+			choose_candidate()
 			return
 	// Lastly all of the above again, without playtime requirements
 	for(var/mob/living/carbon/xenomorph/candidate in shuffle(hive.totalXenos.Copy() - hive.living_xeno_queen))
 		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
+			choose_candidate()
 			return
 	for(var/mob/candidate in observer_list_copy)
 		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
+			choose_candidate()
 			return
 	message_admins("Failed to find a client for the King, releasing as freed mob.")
 
-/obj/effect/alien/resin/king_cocoon/proc/choose_candidate(expedite = FALSE)
-	start_vote()
-	
+/obj/effect/alien/resin/king_cocoon/proc/choose_candidate(expedite = FALSE)	
 	if(expedite)
 		animate_hatch_king()
 		return

@@ -22,12 +22,13 @@
 
 			if (!L.is_xeno_grabbable() || L == src) //Xenos never attack themselves.
 				continue
-			if(!isxeno(L))
+			var/isxeno = isxeno(L)
+			if(!isxeno)
 				non_xeno_target = L
 			if (L.body_position == LYING_DOWN)
 				alt = L
 				continue
-			else if (!isxeno(L))
+			else if (!isxeno)
 				break
 			target = L
 		if (target == T && alt)

@@ -46,9 +46,17 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/list/faction_options = list(FACTION_MARINE, FACTION_WY, "USCM-WY", FACTION_ARES)
 	var/list/core_sentries = list()
 
+	var/code_apollo = 1
+	var/code_interface = 1
+	var/code_debug = 1
+
 /datum/ares_link/New()
 	admin_interface = new
 	datacore = GLOB.ares_datacore
+
+	code_apollo = "[pick(GLOB.alphabet_uppercase)][rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"
+	code_interface = "[pick(GLOB.alphabet_uppercase)][rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"
+	code_debug = "X[rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"
 
 /datum/ares_link/Destroy()
 	qdel(admin_interface)

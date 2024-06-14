@@ -390,4 +390,8 @@
 	has_squad_overwatch = FALSE
 	minimap_type = MINIMAP_FLAG_PMC
 
+/obj/structure/machinery/computer/groundside_operations/arc
+	icon = 'icons/obj/vehicles/interiors/arc.dmi'
+	icon_state = "groundsideop_computer"
+
 #undef COMMAND_SQUAD

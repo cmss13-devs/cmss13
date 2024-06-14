@@ -27,6 +27,8 @@
 			if (L.body_position == LYING_DOWN)
 				alt = L
 				continue
+			else if (!isxeno(L))
+				break
 			target = L
 		if (target == T && alt)
 			target = alt

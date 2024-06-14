@@ -66,3 +66,45 @@
       per prayer
   coldironwarrior:
   - rscdel: removes the nazi jacket sprite from suits.dmi
+2024-06-09:
+  harryob:
+  - bugfix: predators are not missing the space between their torso and legs
+  hislittlecuzingames:
+  - balance: Set CT free plasteel to 40 and added APC Circuit board
+  realforest2001:
+  - bugfix: Fixed the USCM Observer icon not displaying. Forest dumb.
+2024-06-10:
+  Kivts, SubjectD9341, Zenith.:
+  - rscadd: Xenomorph Harvesting Surgery. Allows research to operate dead xenomorphs
+      to take out their organ.
+  - rscadd: The Xenomorph analyzer, uses organs extracted from dead xenomorphs, which
+      when processed gives points to spend on physical upgrades.
+  - rscadd: a number of machinery upgrades for autodoc, sleeper, and other upgrades
+      or bonuses research can decide to spend their points on
+  - rscdel: passive generation increase of research credits is removed
+  ThePiachu:
+  - spellcheck: Fixed a typo in Admin Game Panel
+2024-06-11:
+  Zonespace27:
+  - balance: All squad roles can now use M707 pamphlets
+  - bugfix: Skillless M707 spotting scopes now consistently work.
+  - bugfix: M707 magazine overlay no longer disappears when the gun is empty with
+      an inserted magazine
+  - bugfix: Fixed M707 being usable without the correct trait
+2024-06-13:
+  Drathek:
+  - bugfix: Fixed some jobs having no minimap icon in orbit menu
+  - bugfix: Fixed ghost huds resetting settings if you were ghostized while disconnected
+  - bugfix: Fixed larva queue time of death not getting recorded if client is missing
+  TheGamerdk:
+  - bugfix: Command can now access the helmet cameras of any deploying command staff
+  ThePiachu:
+  - bugfix: CLF Engineers now properly spawn with insulated gloves again.
+  Zonespace27:
+  - admin: Potentially laggy uses of the drop-bomb verb now have a confirmation warning.
+  cuberound:
+  - balance: dropship fabricator extra budget price 12 -> 6 , 2500 -> 2000 points
+  - balance: supply extra budget 15 -> 7, 10k -> 5k
+  - balance: all OB 10 -> 5 intel points, one shell and five fuel
+  fira:
+  - rscadd: Added a Tutorial for tending to the Requisitions Line

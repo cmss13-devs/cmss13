@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - bugfix: "predators are not missing the space between their torso and legs"

@@ -47,6 +47,7 @@
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	tier = 1
+	organ_value = 20000
 	age = XENO_NO_AGE //Predaliens are already in their ultimate form, they don't get even better
 	show_age_prefix = FALSE
 	small_explosives_stun = FALSE
@@ -95,6 +96,9 @@ You must still listen to the queen.
 <span class='role_body'>|______________________|</span>
 "})
 	emote("roar")
+
+/mob/living/carbon/xenomorph/predalien/get_organ_icon()
+	return "heart_t3"
 
 
 /mob/living/carbon/xenomorph/predalien/resist_fire()

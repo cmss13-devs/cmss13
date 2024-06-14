@@ -7,7 +7,6 @@
 /proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/affecting, mob/living/user)
 	if(!tool && !(affecting.status & LIMB_UNCALIBRATED_PROSTHETIC))
 		return FALSE
-
 	var/target_zone = user.zone_selected
 	var/list/available_surgeries = list()
 	var/list/valid_steps = list() //Steps that could be performed, if we had the right tool.
@@ -45,6 +44,7 @@
 		//Lying and self-surgery checks.
 		if(surgeryloop.lying_required && target.body_position != LYING_DOWN)
 			continue
+
 		if(!surgeryloop.self_operable && target == user)
 			continue
 
@@ -58,19 +58,22 @@
 				if(affecting.status & LIMB_DESTROYED)
 					continue
 			else
-				if(!(affecting.status & LIMB_DESTROYED))
-					continue
-				if(affecting.parent && affecting.parent.status & LIMB_DESTROYED)
-					continue
+				if(ishuman(target))//otherwise breaks when trying to op xeno
+					if(!(affecting.status & LIMB_DESTROYED) && ishuman(target))
+						continue
+
+					if(affecting.parent && affecting.parent.status & LIMB_DESTROYED && ishuman(target))
+						continue
+
 			if(surgeryloop.requires_bodypart_type && !(affecting.status & surgeryloop.requires_bodypart_type))
 				continue
+
 		else if(surgeryloop.requires_bodypart) //mob with no limb in surgery zone when we need a limb
 			continue
 
 		//Surgery-specific requirements.
 		if(!surgeryloop.can_start(user, target, affecting, tool))
 			continue
-
 
 		//Tool checks.
 		var/datum/surgery_step/current_step = GLOB.surgery_step_list[surgeryloop.steps[1]]
@@ -84,9 +87,7 @@
 					continue
 			else
 				continue
-
 		available_surgeries[surgeryloop.name] = surgeryloop //Add it to the list.
-
 	if(!length(available_surgeries))
 		if(!tool)
 			return FALSE
@@ -96,15 +97,16 @@
 				to_chat(user, SPAN_WARNING("You can't perform surgery on the same \
 					[target_zone == "r_hand"||target_zone == "l_hand" ? "hand":"arm"] you're using!"))
 				return FALSE
-
 			if(!length(valid_steps))
-				var/limbname = affecting?.status & LIMB_DESTROYED ? "the stump of [target]'s [affecting.display_name]" : "[target]'s [parse_zone(target_zone)]"
-				if(target.incision_depths[target_zone] != SURGERY_DEPTH_SURFACE)
-					to_chat(user, SPAN_WARNING("You don't know of any operations you could perform in the [target.incision_depths[target_zone]] incision on [limbname]."))
-				else
-					to_chat(user, SPAN_WARNING("You don't know of any operations you could begin on [limbname]."))
-				return FALSE
-
+				if(ishuman(target))
+					var/limbname = affecting?.status & LIMB_DESTROYED ? "the stump of [target]'s [affecting.display_name]" : "[target]'s [parse_zone(target_zone)]"
+					if(target.incision_depths[target_zone] != SURGERY_DEPTH_SURFACE)
+						to_chat(user, SPAN_WARNING("You don't know of any operations you could perform in the [target.incision_depths[target_zone]] incision on [limbname]."))
+					else
+						to_chat(user, SPAN_WARNING("You don't know of any operations you could begin on [limbname]."))
+					return FALSE
+				if(isxeno(target))
+					to_chat(user, SPAN_WARNING("You don't know any operations you could perform on this body part of a xenomorph."))
 			var/hint_msg
 			for(var/datum/surgery_step/current_step as anything in valid_steps)
 				if(hint_msg)
@@ -114,7 +116,8 @@
 						hint_msg += ", [current_step.desc]"
 				else
 					hint_msg = "You can't [current_step.desc] with \the [tool]"
-			to_chat(user, SPAN_WARNING("[hint_msg]."))
+			if(!isnull(hint_msg))
+				to_chat(user, SPAN_WARNING("[hint_msg]."))
 		return FALSE
 
 	var/datum/surgery/surgeryinstance
@@ -159,7 +162,6 @@
 			return TRUE
 		if(!surgeryinstance.can_start(user, target, affecting, tool))
 			return TRUE
-
 	var/datum/surgery/procedure = new surgeryinstance.type(target, target_zone, affecting)
 	#ifdef DEBUG_SURGERY_INIT
 	message_admins("[procedure.name] started.")

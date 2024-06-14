@@ -12,6 +12,7 @@
 	throwpass = 1 //prevents moving crates by hurling things at them
 	store_mobs = FALSE
 	var/rigged = 0
+	// whether or not it's sellable for req points
 	var/can_sell = TRUE
 	/// Types this crate can be made into
 	var/list/crate_customizing_types = list(
@@ -341,6 +342,14 @@
 	icon_state = "closed_trashcart"
 	icon_opened = "open_trashcart"
 	icon_closed = "closed_trashcart"
+	can_sell = FALSE
+
+/obj/structure/closet/crate/woodencrate
+	name = "wooden crate"
+	desc = "A wooden crate. Shoddily assembled, spacious and worthless on the ASRS"
+	icon_state = "closed_woodcrate"
+	icon_opened = "open_woodcrate"
+	icon_closed = "closed_woodcrate"
 	can_sell = FALSE
 
 /obj/structure/closet/crate/weapon

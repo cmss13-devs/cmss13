@@ -141,7 +141,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "dm" = (
-/obj/structure/closet/coffin/woodencrate,
+/obj/structure/closet/crate/woodencrate,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 8
@@ -769,7 +769,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "nW" = (
-/obj/structure/closet/coffin/woodencrate,
+/obj/structure/closet/crate/woodencrate,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

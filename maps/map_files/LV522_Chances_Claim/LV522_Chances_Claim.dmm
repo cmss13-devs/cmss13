@@ -9043,7 +9043,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "efT" = (
-/obj/structure/closet/coffin/woodencrate,
+/obj/structure/closet/crate/woodencrate,
 /obj/item/clothing/mask/cigarette/weed,
 /obj/item/clothing/mask/cigarette/weed,
 /obj/item/clothing/mask/cigarette/weed,

@@ -38314,7 +38314,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "taV" = (
-/obj/structure/closet/coffin/woodencrate,
+/obj/structure/closet/crate/woodencrate,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 1;

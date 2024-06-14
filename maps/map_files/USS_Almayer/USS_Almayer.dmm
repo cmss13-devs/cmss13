@@ -42432,7 +42432,7 @@
 	},
 /area/almayer/engineering/laundry)
 "kxL" = (
-/obj/structure/closet/coffin/woodencrate,
+/obj/structure/closet/crate/woodencrate,
 /obj/structure/largecrate/random/mini/wooden{
 	pixel_x = 4;
 	pixel_y = 6
@@ -70295,7 +70295,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
 "tXj" = (
-/obj/structure/closet/coffin/woodencrate,
+/obj/structure/closet/crate/woodencrate,
 /obj/item/storage/box/m94,
 /obj/item/storage/box/m94,
 /obj/item/storage/box/m94,
@@ -81371,7 +81371,7 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/laundry)
 "xCa" = (
-/obj/structure/closet/coffin/woodencrate,
+/obj/structure/closet/crate/woodencrate,
 /obj/item/frame/table/wood/poor,
 /obj/item/frame/table/wood/poor,
 /turf/open/floor/almayer{

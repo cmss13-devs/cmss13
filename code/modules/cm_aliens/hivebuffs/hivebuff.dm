@@ -177,7 +177,7 @@
 	// If we need a timer to call _on_cease() we add it here and store the id, used for deleting the timer if we Destroy().
 	// If we have no duration to the buff then we call _on_cease() immediately.
 	if(duration)
-		ceaser_timer_id = addtimer(CALLBACK(src, PROC_REF(_on_cease)), duration, TIMER_STOPPABLE|TIMER_DELETE_ME)
+		cease_timer_id = addtimer(CALLBACK(src, PROC_REF(_on_cease)), duration, TIMER_STOPPABLE|TIMER_DELETE_ME)
 	else
 		_on_cease()
 	return TRUE
@@ -190,7 +190,7 @@
 
 /// Wrapper for on_cease()
 /datum/hivebuff/proc/_on_cease()
-	if(ceaser_timer_id)
+	if(cease_timer_id)
 		deltimer(cease_timer_id)
 	
 	_announce_buff_cease()
@@ -353,7 +353,7 @@
 	return TRUE
 
 /datum/hivebuff/evo_buff/on_cease()
-	hive.override_evilution(value_before_buff, TRUE)
+	hive.override_evilution(value_before_buff, FALSE)
 
 /datum/hivebuff/evo_buff/major
 	name = "Major Boon of Evolution"

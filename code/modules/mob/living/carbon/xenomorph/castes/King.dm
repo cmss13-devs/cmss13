@@ -68,6 +68,11 @@
 /mob/living/carbon/xenomorph/king/get_organ_icon()
 	return "heart_t3"
 
+/mob/living/carbon/xenomorph/king/Destroy()
+	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
+
+	return ..()
+
 /mob/living/carbon/xenomorph/king/Initialize()
 	. = ..()
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")

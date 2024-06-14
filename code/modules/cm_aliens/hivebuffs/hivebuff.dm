@@ -276,12 +276,7 @@
 
 /datum/hivebuff/proc/_announce_buff_engage()
 	if(engage_flavourmessage)
-		for(var/mob/xenomorph as anything in hive.totalXenos)
-			if(!xenomorph.client)
-				continue
-			xenomorph.play_screen_text(engage_flavourmessage, override_color = "#740064")
-			to_chat(xenomorph, SPAN_XENO(engage_flavourmessage))
-			playsound_client(xenomorph.client, 'sound/voice/alien_distantroar_3.ogg', xenomorph.loc, 25, FALSE)
+		xeno_announcement(SPAN_XENOANNOUNCE(engage_flavourmessage), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 
 	if(marine_flavourmessage)
 		marine_announcement(marine_flavourmessage, COMMAND_ANNOUNCE, 'sound/AI/bioscan.ogg')
@@ -336,38 +331,54 @@
 	hive.stored_larva += 5
 	return TRUE
 
-/datum/hivebuff/extra_life
-	name = "Boon of Plenty"
-	desc = "Increases all xenomorph health by 20 for 5 minutes"
+/datum/hivebuff/evo_buff
+	name = "Boon of Evolution"
+	desc = "Doubles evolution speed for 5 minutes."
 	tier = HIVEBUFF_TIER_MINOR
-	engage_flavourmessage = "The Queen has imbued us with greater fortitude."
+	engage_flavourmessage = "The Queen has blessed us with faster evolution."
 	duration = 5 MINUTES
 	number_of_required_pylons = 1
+	var/value_before_buff
 
-/datum/hivebuff/extra_life/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.health_modifier += XENO_HEALTH_MOD_VERY_SMALL
-	xeno.recalculate_health()
+/datum/hivebuff/evo_buff/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
+	var/value_before_buff = SSxevolution.get_evolution_boost_power(hive.hivenumber)
+	hive.override_evilution(value_before_buff * 2, TRUE)
 
-/datum/hivebuff/extra_life/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.health_modifier -= XENO_HEALTH_MOD_VERY_SMALL
-	xeno.recalculate_health()
+	return TRUE
 
-/datum/hivebuff/extra_life/major
-	name = "Major Boon of Plenty"
-	desc = "Increases all xenomorph health by 40 for 10 minutes"
+/datum/hivebuff/evo_buff/on_cease()
+	if(SSxevolution.get_evolution_boost_power(hive.hivenumber) == XENO_HIJACK_EVILUTION_BUFF)
+		return
+
+	hive.override_evilution(value_before_buff, TRUE)
+
+/datum/hivebuff/evo_buff/major
+	name = "Major Boon of Evolution"
+	desc = "Doubles evolution speed for 10 minutes and allows evolution progress without an ovipositor."
 	tier = HIVEBUFF_TIER_MAJOR
 
-	engage_flavourmessage = "The Queen has imbued us with greater fortitude."
+	engage_flavourmessage = "The Queen has blessed us with faster evolution."
 	duration = 10 MINUTES
 	cost = 2
 	number_of_required_pylons = 2
 	radial_icon = "health_m"
 
-/datum/hivebuff/extra_life/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
+/datum/hivebuff/evo_buff/major/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
+	hive.allow_no_queen_evo = TRUE
+
+	return ..()
+
+/datum/hivebuff/evo_buff/major/on_cease()
+	. = ..()
+	hive.allow_no_queen_evo = FALSE
+
+
+
+/datum/hivebuff/evo_buff/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
 	xeno.health_modifier += XENO_HEALTH_MOD_SMALL
 	xeno.recalculate_health()
 
-/datum/hivebuff/extra_life/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+/datum/hivebuff/evo_buff/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
 	xeno.health_modifier -= XENO_HEALTH_MOD_SMALL
 	xeno.recalculate_health()
 

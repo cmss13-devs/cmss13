@@ -372,16 +372,6 @@
 	. = ..()
 	hive.allow_no_queen_evo = FALSE
 
-
-
-/datum/hivebuff/evo_buff/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.health_modifier += XENO_HEALTH_MOD_SMALL
-	xeno.recalculate_health()
-
-/datum/hivebuff/evo_buff/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.health_modifier -= XENO_HEALTH_MOD_SMALL
-	xeno.recalculate_health()
-
 /datum/hivebuff/game_ender_caste
 	name = "His Grace"
 	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space to grow."

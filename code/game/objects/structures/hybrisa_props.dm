@@ -780,6 +780,8 @@
 	name = "collosal cryogenic chamber"
 	desc = "A giant cryogenic tube with yellow-tinted glass towers before you, housing a hulking, monstrous entity. Is it alive, or in a deep slumber? Cold mist swirls around the base as a low hum fills the air."
 	icon_state = "giant_xeno_cryo"
+	bound_height = 128
+	bound_width = 64
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
@@ -1213,17 +1215,54 @@
 	desc = "a small cabinet with drawers."
 	icon_state = "sidecabinet"
 
-/obj/structure/prop/hybrisa/misc/trash/green
+
+
+/obj/structure/prop/hybrisa/misc/trash
 	name = "trash bin"
 	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
-	icon_state = "trashgreen"
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon_state = "trashblue"
+	health = 250
 	density = TRUE
 
+/obj/structure/prop/hybrisa/misc/trash/bullet_act(obj/projectile/P)
+	var/damage = P.damage
+	health -= damage
+	..()
+	healthcheck()
+	return TRUE
+
+/obj/structure/prop/hybrisa/misc/trash/proc/explode()
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/trash/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hybrisa/misc/trash/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/trash/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
+
+/obj/structure/prop/hybrisa/misc/trash/green
+	icon_state = "trashgreen"
+
 /obj/structure/prop/hybrisa/misc/trash/blue
-	name = "trash bin"
-	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
 	icon_state = "trashblue"
-	density = TRUE
 
 /obj/structure/prop/hybrisa/misc/redmeter
 	name = "meter"
@@ -1911,10 +1950,46 @@
 /obj/structure/prop/hybrisa/misc/firehydrant
 	name = "fire hydrant"
 	desc = "A fire hydrant public water outlet, designed for quick access to water."
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "firehydrant"
 	density = TRUE
 	anchored = TRUE
-/obj/structure/prop/hybrisa/misc/bench
+	health = 250
+
+/obj/structure/prop/hybrisa/misc/firehydrant/bullet_act(obj/projectile/P)
+	var/damage = P.damage
+	health -= damage
+	..()
+	healthcheck()
+	return TRUE
+
+/obj/structure/prop/hybrisa/misc/firehydrant/proc/explode()
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/firehydrant/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hybrisa/misc/firehydrant/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/firehydrant/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
+
+/obj/structure/bed/sofa/hybrisa/misc/bench
 	name = "bench"
 	desc = "A metal frame, with seats that are fitted with synthetic leather, they've faded in time."
 	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
@@ -1923,7 +1998,7 @@
 	bound_height = 64
 	layer = BELOW_MOB_LAYER
 	density = FALSE
-	health = 1500
+	health = 1250
 	anchored = TRUE
 
 // Phonebox Prop (Doesn't actually work a locker)

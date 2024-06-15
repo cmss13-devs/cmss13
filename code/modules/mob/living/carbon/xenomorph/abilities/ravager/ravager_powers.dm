@@ -374,6 +374,8 @@
 		xeno.emote("roar")
 		xeno.spin_circle()
 
+		var/hit_count = 0
+
 		for (var/mob/living/carbon/human in orange(xeno, range))
 			if(!isxeno_human(human) || xeno.can_not_harm(human))
 				continue
@@ -394,6 +396,10 @@
 				playsound(get_turf(human), "alien_claw_flesh", 30, 1)
 
 			human.apply_armoured_damage(get_xeno_damage_slash(human, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+			hit_count++
+
+			if(hit_count >= 10)
+				playsound(xeno, 'sound/misc/monster_kill.ogg', 50, FALSE)
 
 	var/valid_count = 0
 	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)

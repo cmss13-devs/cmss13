@@ -41,3 +41,96 @@
   vero5123:
   - bugfix: Fixes overwatch console coordinate comment UI crash
   - bugfix: Fixes chat UI crash after entering a custom font
+2024-06-07:
+  Blundir:
+  - rscadd: contraband ammo selection in black market
+  - rscadd: tons of new ammo boxes
+  GrrrKitten:
+  - rscadd: replaces the old ethnicity system with a new skintone system
+  - imageadd: Resprites humans, adds 9 new mix and match body options to replace the
+      old 3 options
+  - rscadd: resprites dogtags and adds an accessory dogtag that can be made visible
+      via attaching to suit/armor
+  - imageadd: Touches up a lot of the underwear sprites
+2024-06-08:
+  Drathek:
+  - bugfix: Fixed larva and hugger emotes performing no stat or muted or cooldown
+      checks
+  - bugfix: Fixed round time having the wrong timezone offset because of an engine
+      change to time2text
+  - bugfix: Fixed linked airlocks destroying their linked airlock incorrectly
+  Drulikar:
+  - bugfix: Fixed some usages of the proc range such as for delimbing
+  TheGamerdk:
+  - bugfix: Your prayers have been received by the gods will now only be said once
+      per prayer
+  coldironwarrior:
+  - rscdel: removes the nazi jacket sprite from suits.dmi
+2024-06-09:
+  harryob:
+  - bugfix: predators are not missing the space between their torso and legs
+  hislittlecuzingames:
+  - balance: Set CT free plasteel to 40 and added APC Circuit board
+  realforest2001:
+  - bugfix: Fixed the USCM Observer icon not displaying. Forest dumb.
+2024-06-10:
+  Kivts, SubjectD9341, Zenith.:
+  - rscadd: Xenomorph Harvesting Surgery. Allows research to operate dead xenomorphs
+      to take out their organ.
+  - rscadd: The Xenomorph analyzer, uses organs extracted from dead xenomorphs, which
+      when processed gives points to spend on physical upgrades.
+  - rscadd: a number of machinery upgrades for autodoc, sleeper, and other upgrades
+      or bonuses research can decide to spend their points on
+  - rscdel: passive generation increase of research credits is removed
+  ThePiachu:
+  - spellcheck: Fixed a typo in Admin Game Panel
+2024-06-11:
+  Zonespace27:
+  - balance: All squad roles can now use M707 pamphlets
+  - bugfix: Skillless M707 spotting scopes now consistently work.
+  - bugfix: M707 magazine overlay no longer disappears when the gun is empty with
+      an inserted magazine
+  - bugfix: Fixed M707 being usable without the correct trait
+2024-06-13:
+  Drathek:
+  - bugfix: Fixed some jobs having no minimap icon in orbit menu
+  - bugfix: Fixed ghost huds resetting settings if you were ghostized while disconnected
+  - bugfix: Fixed larva queue time of death not getting recorded if client is missing
+  TheGamerdk:
+  - bugfix: Command can now access the helmet cameras of any deploying command staff
+  ThePiachu:
+  - bugfix: CLF Engineers now properly spawn with insulated gloves again.
+  Zonespace27:
+  - admin: Potentially laggy uses of the drop-bomb verb now have a confirmation warning.
+  cuberound:
+  - balance: dropship fabricator extra budget price 12 -> 6 , 2500 -> 2000 points
+  - balance: supply extra budget 15 -> 7, 10k -> 5k
+  - balance: all OB 10 -> 5 intel points, one shell and five fuel
+  fira:
+  - rscadd: Added a Tutorial for tending to the Requisitions Line
+2024-06-15:
+  AndroBetel:
+  - balance: Pistol mag pouch now has 4 slots instead of 3.
+  Blundir:
+  - imageadd: resprite of spearhead cmb revolver
+  Comxy:
+  - rscadd: Adds W-Y branded sentries.
+  - imageadd: Adds W-Y defenses sprites.
+  Drathek:
+  - bugfix: Fixed Queen Mother being unable to award a Queen
+  - rscadd: Added preference for toggling the fax machine received sound as an observer
+  TheGamerdk:
+  - bugfix: Fixes small issue allowing medals to teleport
+  Zonespace, Zydras:
+  - bugfix: Vehicle elevator no longer incorrectly rotates vehicles
+  - rscadd: New ARC exterior and interior
+  - balance: ARC now fits 5 humans instead of 7
+  - balance: ARC now fits 4 xenos intead of 5
+  - balance: ARC's RE700 turret armor pen 10->15
+  - balance: On account of the smaller size, the ARC no longer has a nanomed.
+  Zonespace27:
+  - bugfix: Pyro spec flamer should be linked to its tank more consistently.
+  - qol: Added some missing objectives to the xenomorph - basic tutorial.
+  harryob:
+  - bugfix: the preview window in character setup now remains visible when looking
+      at it as a ghost

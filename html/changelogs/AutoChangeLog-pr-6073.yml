@@ -1,7 +1,0 @@
-author: "GrrrKitten"
-delete-after: True
-changes:
-  - rscadd: "replaces the old ethnicity system with a new skintone system"
-  - imageadd: "Resprites humans, adds 9 new mix and match body options to replace the old 3 options"
-  - rscadd: "resprites dogtags and adds an accessory dogtag that can be made visible via attaching to suit/armor"
-  - imageadd: "Touches up a lot of the underwear sprites"

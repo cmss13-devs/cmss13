@@ -773,7 +773,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	playsound(user.loc, "rustle", 15, TRUE, 6)
 	return TRUE
 
-/obj/item/storage/Initialize()
+/obj/item/storage/Initialize(mapload, ...)
 	. = ..()
 	if (!(storage_flags & STORAGE_QUICK_GATHER))
 		verbs -= /obj/item/storage/verb/toggle_gathering_mode

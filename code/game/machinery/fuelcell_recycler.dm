@@ -5,9 +5,6 @@
 	icon_state = "recycler"
 	density = TRUE
 	active_power_usage = 15000
-	unslashable = TRUE
-	unacidable = TRUE
-	indestructible = TRUE
 
 	///How much to recharge the cells per process
 	var/recharge_amount = 5
@@ -150,11 +147,6 @@
 		icon_state = "recycler"
 		return
 	icon_state = "recycler_on"
-
-/obj/structure/machinery/fuelcell_recycler/ex_act(severity)
-	if(indestructible)
-		return
-	. = ..()
 
 /obj/structure/machinery/fuelcell_recycler/proc/turn_off()
 	visible_message(SPAN_NOTICE("[src] stops whirring as it turns off."))

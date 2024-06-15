@@ -26,6 +26,7 @@
 	var/notify_sounds = TRUE
 	COOLDOWN_DECLARE(printer_cooldown)
 	var/access_code = 0
+	var/set_ui = "AresAccessCode"
 
 /obj/item/device/ai_tech_pda/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
@@ -49,7 +50,12 @@
 		link = null
 	datacore = null
 
-/obj/item/device/ai_tech_pda/proc/enter_code()
+/obj/item/device/ai_tech_pda/verb/enter_code()
+	set name = "Enter Access Code"
+	set desc = "Enter an access code. Duh."
+	set category = "Object.AIDT"
+	set src in usr
+
 	if(access_code)
 		to_chat(usr, SPAN_WARNING("An access code has already been entered!"))
 		playsound(src, 'sound/machines/terminal_error.ogg', 15, TRUE)
@@ -63,12 +69,22 @@
 		return FALSE
 	access_code = new_access_code
 
-/obj/item/device/ai_tech_pda/proc/clear_code()
+/obj/item/device/ai_tech_pda/verb/clear_code()
+	set name = "Clear Access Code"
+	set desc = "Take a guess."
+	set category = "Object.AIDT"
+	set src in usr
+
 	var/mob/living/carbon/human/user
 	if(ishuman(usr))
 		user = usr
 	else
 		return FALSE
+
+	if(!access_code)
+		to_chat(user, SPAN_WARNING("You can't clear an already cleared code..."))
+		return FALSE
+
 	var/obj/item/card/id/card = user.wear_id
 	if(!card || !card.check_biometrics(user))
 		to_chat(user, SPAN_WARNING("You require an authenticated ID card to access this device!"))
@@ -106,7 +122,6 @@
 		to_chat(user, SPAN_WARNING("ARES DATA LINK FAILED"))
 		return FALSE
 	ui = SStgui.try_update_ui(user, src, ui)
-	var/set_ui = "AresAccessCode"
 	if(access_code == GLOB.ares_link.code_apollo)
 		set_ui = "WorkingJoe"
 	else if(access_code == GLOB.ares_link.code_interface)

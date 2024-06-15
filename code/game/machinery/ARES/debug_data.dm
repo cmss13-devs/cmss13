@@ -14,7 +14,15 @@
 	data["logged_in"] = link.interface.last_login
 	data["sudo"] = link.interface.sudo_holder ? TRUE : FALSE
 
-	data["access_text"] = "[link.interface.sudo_holder ? "(SUDO)," : ""] access level [link.interface.authentication], [link.interface.ares_auth_to_text(link.interface.authentication)]."
+
+	var/admin_remote_access_text = "[link.interface.sudo_holder ? "(SUDO)," : ""] access level [link.interface.authentication], [link.interface.ares_auth_to_text(link.interface.authentication)]."
+	if(set_ui = "AresAdmin")
+		data["access_text"] = admin_remote_access_text
+	else if(set_ui = "WorkingJoe")
+		data["access_text"] = " access level [authentication], [ares_auth_to_text(authentication)]."
+	else if(set_ui = "AresInterface")
+		data["access_text"] = " access level [authentication], [ares_auth_to_text(authentication)]."
+
 	data["access_level"] = link.interface.authentication
 
 	data["alert_level"] = GLOB.security_level
@@ -204,6 +212,9 @@
 	data["access_tickets"] = logged_access
 
 	data["notify_sounds"] = notify_sounds
+	data["security_vents"] = link.get_ares_vents()
+	data["sentry_setting"] = link.faction_label
+	data["faction_options"] = link.faction_options
 
 	return data
 

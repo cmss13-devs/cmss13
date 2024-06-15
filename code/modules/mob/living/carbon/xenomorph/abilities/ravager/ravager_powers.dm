@@ -399,7 +399,7 @@
 			hit_count++
 
 			if(hit_count >= 10)
-				playsound(xeno, 'sound/misc/monster_kill.ogg', 50, FALSE)
+				playsound(xeno.loc, 'sound/misc/monster_kill.ogg', 50, FALSE)
 
 	var/valid_count = 0
 	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)

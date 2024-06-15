@@ -106,7 +106,9 @@
 /obj/structure/machinery/prop/almayer/CICmap/computer
 	name = "map terminal"
 	desc = "A terminal that displays a map of the current operation location."
-	icon_state = "security"
+	icon = 'icons/obj/vehicles/interiors/arc.dmi'
+	icon_state = "cicmap_computer"
+	density = FALSE
 
 /obj/structure/machinery/prop/almayer/CICmap/upp
 	minimap_type = MINIMAP_FLAG_UPP

@@ -172,7 +172,7 @@
 	switch(action)
 		if("confirm")
 			if(selected_confirm) // prevent someone from spamming the approve button
-				to_chat(user, SPAN_WARNING("you have already confirmed the submission, please wait a moment for API request to process"))
+				to_chat(user, SPAN_WARNING("you have already confirmed the submission, please wait a moment for the API to process your submission"))
 				return
 			bug_report_data = sanitize_payload(params)
 			selected_confirm = TRUE

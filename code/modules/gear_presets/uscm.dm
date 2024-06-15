@@ -35,13 +35,13 @@
 	if(!GLOB.data_core.manifest_modify(new_human.real_name, WEAKREF(new_human), assignment, rank))
 		GLOB.data_core.manifest_inject(new_human)
 
-	var/obj/item/card/id/ID = new_human.wear_id
+	var/obj/item/card/id/ID = new_human.get_idcard()
 	var/datum/money_account/acct = create_account(new_human, rand(30, 50), GLOB.paygrades[ID.paygrade])
 	ID.associated_account_number = acct.account_number
 
 	var/datum/squad/auto_squad = get_squad_by_name(auto_squad_name)
 	if(auto_squad)
-		transfer_marine_to_squad(new_human, auto_squad, new_human.assigned_squad, new_human.wear_id)
+		transfer_marine_to_squad(new_human, auto_squad, new_human.assigned_squad, ID)
 	if(!ert_squad && !auto_squad.active)
 		auto_squad.engage_squad(FALSE)
 

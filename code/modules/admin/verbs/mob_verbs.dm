@@ -370,7 +370,7 @@
 	message_admins("[key_name(src)] changed hivenumber of [H] to [H.hivenumber].")
 
 
-/client/proc/cmd_admin_change_their_name(mob/living/carbon/X)
+/client/proc/cmd_admin_change_their_name(mob/living/carbon/carbon)
 	set name = "Change Name"
 	set category = null
 
@@ -378,19 +378,20 @@
 	if(!newname)
 		return
 
-	if(!X)
+	if(!carbon)
 		to_chat(usr, "This mob no longer exists")
 		return
 
-	var/old_name = X.name
-	X.change_real_name(X, newname)
-	if(istype(X, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = X
-		if(H.wear_id)
-			H.wear_id.name = "[H.real_name]'s ID Card"
-			H.wear_id.registered_name = "[H.real_name]"
-			if(H.wear_id.assignment)
-				H.wear_id.name += " ([H.wear_id.assignment])"
+	var/old_name = carbon.name
+	carbon.change_real_name(carbon, newname)
+	if(ishuman(carbon))
+		var/mob/living/carbon/human/human = carbon
+		var/obj/item/card/id/card = human.get_idcard()
+		if(card)
+			card.name = "[human.real_name]'s ID Card"
+			card.registered_name = "[human.real_name]"
+			if(card.assignment)
+				card.name += " ([card.assignment])"
 
 	message_admins("[key_name(src)] changed name of [old_name] to [newname].")
 

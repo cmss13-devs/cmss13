@@ -1,4 +1,6 @@
 
+#define Z_CHANGE_CALL "z_change"
+#define AREA_CHANGE_CALL "area_change"
 
 /mob
 	var/list/fullscreens = list()
@@ -71,28 +73,28 @@
 		if(special_lighting)
 			return
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(initialize_special_lighting)))
-		special_lighting = "pre_round"	// do not let a special_lighting get called before roundstart
+		special_lighting = SPECIAL_LIGHTING_PREROUND	// do not let a special_lighting get called before roundstart
 		return
 	if(SSticker.mode.flags_round_type & MODE_SUNSET)
-		if(!fullscreens["lighting_backdrop"] || special_lighting == "sunset" || special_lighting_active_timer)
+		if(!fullscreens["lighting_backdrop"] || special_lighting == SPECIAL_LIGHTING_SUNSET || special_lighting_active_timer)
 			return
-		special_lighting = "sunset"
+		special_lighting = SPECIAL_LIGHTING_SUNSET
 		special_lighting_active_timer = TRUE
 		if(ROUND_TIME < 4 SECONDS) //if you're in before full setup, dont let special lightings get called prior, it gets messy
-			addtimer(CALLBACK(src, PROC_REF(special_lighting_animate), "sunset", 30 SECONDS, 9, 10 SECONDS, 0, null, 1, FALSE, TRUE, TRUE), 3 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(special_lighting_animate), SPECIAL_LIGHTING_SUNSET, 30 SECONDS, 9, 10 SECONDS, 0, null, 1, FALSE, TRUE, TRUE), 3 SECONDS)
 			addtimer(CALLBACK(src, PROC_REF(special_lighting_register_signals)), 3 SECONDS)
 		else if(ROUND_TIME < 280 SECONDS)
-			special_lighting = "sunset"
+			special_lighting = SPECIAL_LIGHTING_SUNSET
 			special_lighting_active_timer = TRUE
-			special_lighting_animate("sunset", 30 SECONDS, 9, 10 SECONDS, 0, 0.1 SECONDS, 1, TRUE, TRUE, TRUE)
+			special_lighting_animate(SPECIAL_LIGHTING_SUNSET, 30 SECONDS, 9, 10 SECONDS, 0, 0.1 SECONDS, 1, TRUE, TRUE, TRUE)
 			special_lighting_register_signals()
 		return
 	if(GLOB.sunrise_starting_time)
-		if(!fullscreens["lighting_backdrop"] || special_lighting == "sunrise" || special_lighting == "sunset" || special_lighting_active_timer)
+		if(!fullscreens["lighting_backdrop"] || special_lighting == SPECIAL_LIGHTING_SUNRISE || special_lighting == SPECIAL_LIGHTING_SUNSET || special_lighting_active_timer)
 			return
-		special_lighting = "sunrise"
+		special_lighting = SPECIAL_LIGHTING_SUNRISE
 		special_lighting_active_timer = TRUE
-		special_lighting_animate("sunrise", 30 SECONDS, 6, 1 SECONDS, 0.1 SECONDS, -1, TRUE, TRUE, FALSE)
+		special_lighting_animate(SPECIAL_LIGHTING_SUNRISE, 30 SECONDS, 6, 1 SECONDS, 0.1 SECONDS, -1, TRUE, TRUE, FALSE)
 		special_lighting_register_signals() //sunrise is permanent, you wont need to unregister
 
 
@@ -265,10 +267,9 @@
 /mob/proc/special_lighting_animate(p_special_lighting_type = null, p_stage_time, p_max_stages, p_startup_delay = 1 SECONDS, p_special_start_time = 0, p_special_stage_time = null, p_special_tick_dir, p_special_call = FALSE, p_create_new_lighting_timer = FALSE, p_lighting_deactivates = TRUE)
 
 	var/atom/movable/screen/fullscreen/screen = fullscreens["lighting_backdrop"]
-	var/mob/lighting_mob = src
-	var/area/lighting_mob_area = get_area(lighting_mob)
+	var/area/lighting_mob_area = get_area(src)
 
-	if(p_special_lighting_type != lighting_mob.special_lighting)
+	if(p_special_lighting_type != special_lighting)
 		return
 
 	var/lighting_color = "#000" /// used in the animation, set by the special_lighting_type
@@ -297,28 +298,28 @@
 		if(time_til_next_lighting_call < special_stage_time)
 			time_til_next_lighting_call = time_til_next_lighting_call + special_stage_time //delays main anims until the special call anim is done
 
-	if(lighting_mob.special_lighting == "sunset")
-		lighting_color = lighting_mob.special_lighting_sunset(lighting_stage)
-	if(lighting_mob.special_lighting == "sunrise")
-		lighting_color = lighting_mob.special_lighting_sunrise(lighting_stage)
+	if(special_lighting == SPECIAL_LIGHTING_SUNSET)
+		lighting_color = special_lighting_sunset(lighting_stage)
+	if(special_lighting == SPECIAL_LIGHTING_SUNRISE)
+		lighting_color = special_lighting_sunrise(lighting_stage)
 
 	if(lighting_stage == 0) //there aren't any cases you won't want these coming up fast
 		special_stage_time = 0.5 SECONDS
 		time_til_next_lighting_call = startup_delay + special_start_time - ROUND_TIME
 
 	if(create_new_lighting_timer) // if create_new_lighting_timer = TRUE, a new timer gets set
-		lighting_mob.special_lighting_active_timer = FALSE
+		special_lighting_active_timer = FALSE
 
-	if(!lighting_mob.special_lighting_active_timer)
+	if(!special_lighting_active_timer)
 		if(lighting_stage < max_stages)
-			addtimer(CALLBACK(lighting_mob, PROC_REF(special_lighting_animate), special_lighting, stage_time, max_stages, startup_delay, special_start_time, null, special_tick_dir, FALSE, TRUE, lighting_deactivates), time_til_next_lighting_call, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
-			lighting_mob.special_lighting_active_timer = TRUE
+			addtimer(CALLBACK(src, PROC_REF(special_lighting_animate), special_lighting, stage_time, max_stages, startup_delay, special_start_time, null, special_tick_dir, FALSE, TRUE, lighting_deactivates), time_til_next_lighting_call, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
+			special_lighting_active_timer = TRUE
 		if(lighting_stage == max_stages && lighting_deactivates) // deactives special lighting when the sun hits #000
-			addtimer(CALLBACK(lighting_mob, PROC_REF(special_lighting_unregister_signals)), time_til_next_lighting_call, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
+			addtimer(CALLBACK(src, PROC_REF(special_lighting_unregister_signals)), time_til_next_lighting_call, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
 
 	if(CEILING_IS_PROTECTED(lighting_mob_area?.ceiling, CEILING_PROTECTION_TIER_2)) //if underground, don't animate, this is needed in combo with the special area check
 		return
-	if(!is_ground_level(lighting_mob.z) && special_call != "z_change") // dont animate if not groundlevel
+	if(!is_ground_level(z) && special_call != Z_CHANGE_CALL) // dont animate if not groundlevel
 		return
 
 	if(special_stage_time)
@@ -405,20 +406,16 @@
 
 /mob/proc/special_lighting_register_signals()
 
-	var/mob/signaling_mob = src
-
-	RegisterSignal(signaling_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(special_lighting_z_change), TRUE)
-	RegisterSignal(signaling_mob, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(special_lighting_area_change), TRUE)
+	RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(special_lighting_z_change), TRUE)
+	RegisterSignal(src, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(special_lighting_area_change), TRUE)
 
 
 /mob/proc/special_lighting_unregister_signals()
 
-	var/mob/signaling_mob = src
+	special_lighting = null //clears special lighting
 
-	signaling_mob.special_lighting = null //clears special lighting
-
-	UnregisterSignal(signaling_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(special_lighting_z_change))
-	UnregisterSignal(signaling_mob, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(special_lighting_area_change))
+	UnregisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(special_lighting_z_change))
+	UnregisterSignal(src, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(special_lighting_area_change))
 
 
 /mob/proc/special_lighting_z_change(atom/source, old_z, new_z)
@@ -432,18 +429,18 @@
 	var/special_start_time = 0
 	var/special_stage_time = 0.1 SECONDS
 	var/special_tick_dir = 0
-	var/special_call = "z_change"
+	var/special_call = Z_CHANGE_CALL
 	var/create_new_lighting_timer = FALSE
 	var/lighting_deactivates = TRUE
 
-	if(!special_lighting || special_lighting == "pre_round")
+	if(!special_lighting || special_lighting == SPECIAL_LIGHTING_PREROUND)
 		return
 
 	switch(special_lighting) //figure out a way of handling this better if possible
-		if("sunset")
+		if(SPECIAL_LIGHTING_SUNSET)
 			max_stages = 9
 			special_tick_dir = 1
-		if("sunrise")
+		if(SPECIAL_LIGHTING_SUNRISE)
 			max_stages = 6
 			special_start_time = GLOB.sunrise_starting_time
 			special_tick_dir = -1
@@ -467,19 +464,19 @@
 	var/special_start_time = 0
 	var/special_stage_time = 4 SECONDS
 	var/special_tick_dir = 0
-	var/special_call = "area_change"
+	var/special_call = AREA_CHANGE_CALL
 	var/create_new_lighting_timer = FALSE
 	var/lighting_deactivates = TRUE
 
 
-	if(!special_lighting || special_lighting == "pre_round")
+	if(!special_lighting || special_lighting == SPECIAL_LIGHTING_PREROUND)
 		return
 
 	switch(special_lighting)
-		if("sunset")
+		if(SPECIAL_LIGHTING_SUNSET)
 			max_stages = 9
 			special_tick_dir = 1
-		if("sunrise")
+		if(SPECIAL_LIGHTING_SUNRISE)
 			max_stages = 6
 			special_start_time = GLOB.sunrise_starting_time
 			special_tick_dir = -1
@@ -509,3 +506,6 @@
 	layer = LIGHTING_PRIMARY_LAYER
 	blend_mode = BLEND_ADD
 	show_when_dead = TRUE
+
+#undef Z_CHANGE_CALL
+#undef AREA_CHANGE_CALL

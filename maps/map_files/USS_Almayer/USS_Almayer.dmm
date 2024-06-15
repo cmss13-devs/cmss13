@@ -17809,6 +17809,19 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/upper/starboard)
+"chc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/body_scanconsole{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/medical_science)
 "chf" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -25584,7 +25597,7 @@
 	},
 /area/almayer/maint/hull/lower/l_m_p)
 "eBO" = (
-/obj/structure/bed,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -45503,8 +45516,8 @@
 	},
 /area/almayer/maint/upper/u_m_s)
 "lzA" = (
-/obj/structure/machinery/sleep_console{
-	dir = 8
+/obj/structure/bed/chair/comfy{
+	dir = 5
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -49800,10 +49813,12 @@
 	},
 /area/almayer/living/briefing)
 "naR" = (
-/obj/structure/machinery/iv_drip,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
+	},
+/obj/structure/machinery/sleep_console{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -58126,10 +58141,10 @@
 	},
 /area/almayer/living/offices)
 "pRn" = (
-/obj/structure/bed,
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
 	},
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -79692,9 +79707,6 @@
 	},
 /area/almayer/squads/req)
 "wWR" = (
-/obj/structure/machinery/medical_pod/bodyscanner{
-	dir = 8
-	},
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
@@ -80659,10 +80671,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_m_s)
 "xqp" = (
-/obj/structure/machinery/body_scanconsole{
-	dir = 8;
-	layer = 3.1
-	},
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
@@ -80673,6 +80681,7 @@
 	name = "Requisitions Delivery Unit";
 	pixel_y = 28
 	},
+/obj/structure/machinery/xenoanalyzer,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -82900,14 +82909,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
-"ycj" = (
-/obj/structure/machinery/medical_pod/sleeper{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/medical_science)
 "ycl" = (
 /turf/open/floor/plating,
 /area/almayer/maint/hull/lower/l_m_s)
@@ -114929,7 +114930,7 @@ wPz
 jeq
 rQy
 wWR
-ycj
+vti
 vkp
 cfT
 hec
@@ -115136,7 +115137,7 @@ vdO
 vkp
 aoM
 kBo
-kBP
+chc
 naR
 vOy
 hrn

@@ -129,8 +129,8 @@
 /obj/item/storage/box/spec/pyro/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M35(src)
 	new /obj/item/clothing/head/helmet/marine/pyro(src)
-	new /obj/item/storage/large_holster/fuelpack(src)
-	new /obj/item/weapon/gun/flamer/M240T(src)
+	var/obj/item/weapon/gun/flamer/M240T/flamer = new(src)
+	new /obj/item/storage/large_holster/fuelpack(src, flamer)
 	new /obj/item/ammo_magazine/flamer_tank/large(src)
 	new /obj/item/storage/pouch/flamertank(src)
 	new /obj/item/tool/extinguisher(src)
@@ -257,8 +257,8 @@
 	if(!GLOB.available_specialist_kit_boxes[selection] || GLOB.available_specialist_kit_boxes[selection] <= 0)
 		to_chat(user, SPAN_WARNING("No more kits of this type may be chosen!"))
 		return FALSE
-	var/obj/item/card/id/ID = user.wear_id
-	if(!istype(ID) || ID.registered_ref != WEAKREF(user))
+	var/obj/item/card/id/card = user.get_idcard()
+	if(!card || card.registered_ref != WEAKREF(user))
 		to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("ID card")] or [SPAN_INFO("dog tags")] to select a specialization!"))
 		return
 	var/turf/T = get_turf(loc)

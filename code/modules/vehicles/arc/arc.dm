@@ -17,11 +17,10 @@
 
 	interior_map = /datum/map_template/interior/arc
 
-	passengers_slots = 3
-	xenos_slots = 5
+	passengers_slots = 2 // 5 total. Reserved slots are added to passenger slots.
+	xenos_slots = 4
 
 	entrances = list(
-		"left" = list(2, 0),
 		"right" = list(-2, 0),
 	)
 

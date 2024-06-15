@@ -56,6 +56,7 @@
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 2
+	organ_value = 1500
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

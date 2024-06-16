@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - rscadd: "Special insert synthetics on most maps will now be able to gain access to synthetic equipment vendors, provided they're given access by USCM command staff. (Synth access on their ID)"

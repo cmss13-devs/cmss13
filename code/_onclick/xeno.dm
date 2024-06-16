@@ -54,7 +54,7 @@
 					var/turf/target_turf = target
 					for(var/obj/flamer_fire/fire in target_turf)
 						firepatted = TRUE
-						if(!(src.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE))
+						if(!(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire.tied_reagent.fire_penetrating)
 							apply_damage(fire.burnlevel, BURN,fire)
 						if((fire.firelevel > fire_level_to_extinguish) && (!fire.fire_variant)) //If fire_variant = 0, default fire extinguish behavior.
 							fire.firelevel -= fire_level_to_extinguish

@@ -83,39 +83,56 @@
 /obj/structure/flag/plantable
 	name = "flag"
 	desc = "A flag of something. This one looks like you could dismantle it."
-	icon = 'icons/obj/structures/props/mining.dmi'
-	icon_state = "yellowflag"
+	icon = 'icons/obj/structures/plantable_flag.dmi'
 	layer = ABOVE_MOB_LAYER
 
-/obj/structure/flag/attack_hand(mob/user)
+	var/flag_type = /obj/item/flag/plantable
+
+/obj/structure/flag/plantable/attack_hand(mob/user)
+	..()
+	disassemble(user, flag_type)
+
+/obj/structure/flag/proc/disassemble(mob/user, flag_type)
 	if(user.action_busy)
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] starts taking [src] down..."), SPAN_NOTICE("You start taking [src] down..."))
-	if(!do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+
+	playsound(user, 'sound/effects/flag_raising.ogg', 30)
+	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
 
 	playsound(user, 'sound/effects/flag_raised.ogg', 30)
-	new /obj/item/flag/plantable/ua(src.loc)
+	user.visible_message(SPAN_NOTICE("[user] starts takes [src] down!"), SPAN_NOTICE("You take [src] down!"))
+	var/obj/item/flag/plantable/flag_item = new flag_type(src.loc)
+	user.put_in_hands(flag_item)
 	qdel(src)
 
 /obj/structure/flag/plantable/ua
 	name = "\improper United Americas flag"
-	desc = "A flag of the United Americas. This one looks like you could take it down."
-	icon = 'icons/obj/structures/plantable_flag.dmi'
+	desc = "Your forefathers died for this. Are you ready to do the same?"
 	icon_state = "flag_ua"
+	flag_type = /obj/item/flag/plantable/ua
 
 /obj/item/flag/plantable
 	name = "plantable flag"
 	desc = "A flag of something. This one looks ready to be planted into the ground."
-	icon = 'icons/obj/structures/props/mining.dmi'
-	icon_state = "yellowflag"
-	var/flag_type = /obj/structure/flag/plantable
-	var/obj/structure/flag/plantable/planted_flag
-	var/play_warcry = FALSE
-	var/warcry_sound = null
+	w_class = SIZE_LARGE
+	icon = 'icons/obj/structures/plantable_flag.dmi'
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_64.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'
+		)
 
-/obj/item/flag/plantable/proc/plant_flag(mob/user, play_warcry = FALSE, warcry_type)
+	var/flag_type = /obj/structure/flag/plantable
+	var/faction //Used to check if nearby mobs belong to a faction when calculating for the rallying cry.
+	var/play_warcry = FALSE
+	var/warcry_sound
+	var/warcry_extra_sound
+
+/obj/item/flag/plantable/proc/plant_flag(mob/user, play_warcry = FALSE, warcry_sound, warcry_extra_sound, faction)
 	if(user.action_busy)
 		return
 
@@ -129,33 +146,51 @@
 			to_chat(usr, SPAN_WARNING("You need a clear, open area to plant [src], something is blocking the way in front of you!"))
 			return
 
-	playsound(user, 'sound/effects/flag_raising.ogg', 30)
 	user.visible_message(SPAN_NOTICE("[user] starts planting [src] into the ground..."), SPAN_NOTICE("You start planting [src] into the ground..."))
+	playsound(user, 'sound/effects/flag_raising.ogg', 30)
 	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
 
-	playsound(user, 'sound/effects/flag_raised.ogg', 30)
+	//If there are more than 14 allies nearby, play a stronger rallying cry.
+	var/allies_nearby = 0
 	if(play_warcry)
-		playsound(user, warcry_sound)
+		for (var/mob/living/carbon/human in orange(user, 7))
+			if (human.stat == DEAD)
+				continue
+			if (human.faction != faction)
+				continue
+			allies_nearby++
+			if (prob(33))
+				human.emote("warcry")
+
+		if(allies_nearby > 14)
+			playsound(user, warcry_extra_sound, 30)
+		else
+			playsound(user, warcry_sound, 30)
+	else
+		playsound(user, 'sound/effects/flag_raised.ogg', 30)
+
 
 	user.visible_message(SPAN_NOTICE("[user] plants [src] into the ground!"), SPAN_NOTICE("You plant [src] into the ground!"))
-	planted_flag = new flag_type(turf_to_plant)
+	var/obj/structure/flag/plantable/planted_flag = new flag_type(turf_to_plant)
 	planted_flag.pixel_x += 9
 	qdel(src)
 
 /obj/item/flag/plantable/attack_self(mob/user)
 	..()
-	plant_flag(user, play_warcry, warcry_sound)
+	plant_flag(user, play_warcry, warcry_sound, warcry_extra_sound, faction)
 
 /obj/item/flag/plantable/attack(mob/user)
 	..()
-	plant_flag(user, play_warcry, warcry_sound)
+	plant_flag(user, play_warcry, warcry_sound, warcry_extra_sound, faction)
 
 /obj/item/flag/plantable/ua
 	name = "\improper United Americas flag"
-	desc = "A flag of the United Americas. This one looks ready to be planted into the ground."
-	icon = 'icons/obj/structures/props/mining.dmi'
-	icon_state = "yellowflag"
+	desc = "A flag of the United Americas. Your forefathers died to raise this flag. Are you ready to do the same?"
+	icon = 'icons/obj/structures/plantable_flag.dmi'
+	icon_state = "flag_ua"
 	flag_type = /obj/structure/flag/plantable/ua
+	faction = FACTION_MARINE
 	play_warcry = TRUE
 	warcry_sound = 'sound/effects/flag_warcry_ua.ogg'
+	warcry_extra_sound = 'sound/effects/flag_warcry_ua_extra.ogg'

@@ -5,6 +5,8 @@
 	tutorial_id = "xeno_abom_1"
 	tutorial_template = /datum/map_template/tutorial/s7x7
 	starting_xenomorph_type = /mob/living/carbon/xenomorph/predalien/tutorial
+	/// How many marines in the kill_marines stage have been killed
+	var/ending_marines_killed = 0
 
 // START OF SCRITPING
 
@@ -98,7 +100,6 @@
 
 	var/mob/living/carbon/human/marine = new(loc_from_corner(4, 2))
 	add_to_tracking_atoms(marine)
-	marine.create_hud()
 	arm_equipment(marine, /datum/equipment_preset/uscm/private_equipped)
 
 /datum/tutorial/xenomorph/abomination/proc/frenzy_tutorial_1(datum/action/source, mob/owner)
@@ -132,7 +133,7 @@
 	addtimer(CALLBACK(src, PROC_REF(frenzy_tutorial_3)), 2 SECONDS)
 
 /datum/tutorial/xenomorph/abomination/proc/frenzy_tutorial_3()
-	hide_action(xeno, /datum/action/xeno_action/activable/feral_smash)
+	remove_action(xeno, /datum/action/xeno_action/activable/feral_smash)
 	message_to_player("Good. Your final ability is <b>Feral Frenzy</b>, a strong ability that can alternate between hitting a single target or all within a large radius. However, it locks you in place while it winds up.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, marine)
@@ -143,7 +144,6 @@
 
 /datum/tutorial/xenomorph/abomination/proc/frenzy_tutorial_4()
 	var/mob/living/carbon/human/marine = new(loc_from_corner(4, 2))
-	marine.create_hud()
 	add_to_tracking_atoms(marine)
 	arm_equipment(marine, /datum/equipment_preset/uscm/private_equipped)
 
@@ -202,11 +202,44 @@
 	UnregisterSignal(frenzy, COMSIG_XENO_ACTION_USED)
 	remove_highlight(frenzy.button)
 	message_to_player("Good. As you may have noticed, the AOE version of <b>Feral Frenzy</b> takes longer to wind up, in addition to doing less overall damage.")
-	addtimer(CALLBACK(src, PROC_REF(frenzy_tutorial_8)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(kill_marines)), 6 SECONDS)
 
-/datum/tutorial/xenomorph/abomination/proc/frenzy_tutorial_8()
-	message_to_player("This is the end of the Abomination tutorial. One last thing to note is that you are able to put yourself out when on fire far faster than other xenomorphs. The tutorial will end itself shortly.")
-	mark_completed() // just in case people exit early
-	tutorial_end_in(8 SECONDS, TRUE)
+/datum/tutorial/xenomorph/abomination/proc/kill_marines()
+	message_to_player("To finish the tutorial, kill the three newly-spawned marines using any of your attacks or abilities.")
+
+	// Spawn/rejuv the dummies
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, marine) // we can reuse this one though
+	marine.rejuvenate()
+	marine.forceMove(loc_from_corner(4, 2))
+	RegisterSignal(marine, COMSIG_MOB_DEATH, PROC_REF(kill_marines_2))
+
+	var/mob/living/carbon/human/marine_2 = new(loc_from_corner(2, 2))
+	arm_equipment(marine_2, /datum/equipment_preset/uscm/private_equipped)
+	RegisterSignal(marine_2, COMSIG_MOB_DEATH, PROC_REF(kill_marines_2))
+
+	var/mob/living/carbon/human/marine_3 = new(loc_from_corner(0, 2))
+	arm_equipment(marine_3, /datum/equipment_preset/uscm/private_equipped)
+	RegisterSignal(marine_3, COMSIG_MOB_DEATH, PROC_REF(kill_marines_2))
+
+	// Arrange the actions about how they'd be in an actual game
+	remove_action(xeno, /datum/action/xeno_action/activable/feralfrenzy)
+	remove_action(xeno, /datum/action/xeno_action/onclick/toggle_gut_targeting)
+
+	give_action(xeno, /datum/action/xeno_action/activable/tail_stab)
+	give_action(xeno, /datum/action/xeno_action/onclick/feralrush)
+	give_action(xeno, /datum/action/xeno_action/onclick/predalien_roar)
+	give_action(xeno, /datum/action/xeno_action/activable/feral_smash)
+	give_action(xeno, /datum/action/xeno_action/activable/feralfrenzy)
+	give_action(xeno, /datum/action/xeno_action/onclick/toggle_gut_targeting)
+
+/datum/tutorial/xenomorph/abomination/proc/kill_marines_2(datum/source)
+	SIGNAL_HANDLER
+
+	if(ending_marines_killed < 2)
+		ending_marines_killed++
+		return
+
+	message_to_player("Good work. The tutorial will end shortly.")
+	tutorial_end_in(7 SECONDS, TRUE)
 
 // END OF SCRIPTING

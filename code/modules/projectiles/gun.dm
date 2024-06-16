@@ -872,6 +872,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	if(!current_mag || QDELETED(current_mag) || (current_mag.loc != src && !loc_override))
 		cock(user)
+		current_mag = null
+		update_icon()
 		return
 
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.

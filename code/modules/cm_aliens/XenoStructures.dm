@@ -1176,6 +1176,11 @@
 		pylon.protection_level = initial(pylon.protection_level)
 		pylon.update_icon()
 
+/obj/effect/alien/resin/king_cocoon/attack_alien(mob/living/carbon/xenomorph/M)
+    if(M.can_destroy_special() || hatched)
+        return ..()
+    return XENO_NO_DELAY_ACTION
+
 /obj/item/explosive/grenade/alien
 	name = "alien grenade"
 	desc = "an alien grenade."

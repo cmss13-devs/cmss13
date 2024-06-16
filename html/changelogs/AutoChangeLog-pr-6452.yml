@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - bugfix: "The game no longer tricks predators and synths into thinking they're more damaged than they actually are."

@@ -3,12 +3,13 @@
 //Read the documentation in multitile.dm before trying to decipher this stuff
 
 /obj/vehicle/multitile/box_van
-	name = "Colony Van"
-	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides."
+	name = "\improper box-van"
+	desc = "A small box-type van. It's a compact vehicle with a rectangular cargo area, typically designed for transporting goods or small equipment. It features a high roof and straight sides, providing ample vertical space for storage. Its size makes it maneuverable and ideal for urban driving and tight spaces."
 	layer = ABOVE_XENO_LAYER
 
 	icon = 'icons/obj/vehicles/box_van.dmi'
 	icon_state = "van_base"
+	pixel_y = 8
 
 	bound_width = 64
 	bound_height = 64
@@ -27,7 +28,7 @@
 
 	vehicle_flags = VEHICLE_CLASS_WEAK
 
-	passengers_slots = 8
+	passengers_slots = 4
 	xenos_slots = 2
 
 	misc_multipliers = list(
@@ -83,23 +84,23 @@
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_LOGGED_IN, PROC_REF(add_default_image))
 
-	for(var/I in GLOB.player_list)
-		add_default_image(SSdcs, I)
+	for(var/icon in GLOB.player_list)
+		add_default_image(SSdcs, icon)
 
 /obj/vehicle/multitile/box_van/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(mover in mobs_under) //can't collide with the thing you're buckled to
 		return NO_BLOCKED_MOVEMENT
 
 	if(isliving(mover))
-		var/mob/living/M = mover
-		if(M.mob_flags & SQUEEZE_UNDER_VEHICLES)
-			add_under_van(M)
+		var/mob/living/mob = mover
+		if(mob.mob_flags & SQUEEZE_UNDER_VEHICLES)
+			add_under_van(mob)
 			return NO_BLOCKED_MOVEMENT
 
-		if(M.body_position == LYING_DOWN)
+		if(mob.body_position == LYING_DOWN)
 			return NO_BLOCKED_MOVEMENT
 
-		if(M.mob_size >= MOB_SIZE_IMMOBILE && next_push < world.time)
+		if(mob.mob_size >= MOB_SIZE_IMMOBILE && next_push < world.time)
 			if(try_move(target_dir, force=TRUE))
 				next_push = world.time + push_delay
 				return NO_BLOCKED_MOVEMENT
@@ -112,58 +113,58 @@
 /obj/vehicle/multitile/box_van/pre_movement()
 	. = ..()
 
-	for(var/I in mobs_under)
-		var/mob/M = I
-		if(!(M.loc in locs))
-			remove_under_van(M)
+	for(var/icon in mobs_under)
+		var/mob/mob = icon
+		if(!(mob.loc in locs))
+			remove_under_van(mob)
 
-/obj/vehicle/multitile/box_van/proc/add_under_van(mob/living/L)
-	if(L in mobs_under)
+/obj/vehicle/multitile/box_van/proc/add_under_van(mob/living/living)
+	if(living in mobs_under)
 		return
 
-	mobs_under += L
-	RegisterSignal(L, COMSIG_PARENT_QDELETING, PROC_REF(remove_under_van))
-	RegisterSignal(L, COMSIG_MOB_LOGGED_IN, PROC_REF(add_client))
-	RegisterSignal(L, COMSIG_MOVABLE_MOVED, PROC_REF(check_under_van))
+	mobs_under += living
+	RegisterSignal(living, COMSIG_PARENT_QDELETING, PROC_REF(remove_under_van))
+	RegisterSignal(living, COMSIG_MOB_LOGGED_IN, PROC_REF(add_client))
+	RegisterSignal(living, COMSIG_MOVABLE_MOVED, PROC_REF(check_under_van))
 
-	if(L.client)
-		add_client(L)
+	if(living.client)
+		add_client(living)
 
-/obj/vehicle/multitile/box_van/proc/remove_under_van(mob/living/L)
+/obj/vehicle/multitile/box_van/proc/remove_under_van(mob/living/living)
 	SIGNAL_HANDLER
-	mobs_under -= L
+	mobs_under -= living
 
-	if(L.client)
-		L.client.images -= under_image
-		add_default_image(SSdcs, L)
+	if(living.client)
+		living.client.images -= under_image
+		add_default_image(SSdcs, living)
 
-	UnregisterSignal(L, list(
+	UnregisterSignal(living, list(
 		COMSIG_PARENT_QDELETING,
 		COMSIG_MOB_LOGGED_IN,
 		COMSIG_MOVABLE_MOVED,
 	))
 
-/obj/vehicle/multitile/box_van/proc/check_under_van(mob/M, turf/oldloc, direction)
+/obj/vehicle/multitile/box_van/proc/check_under_van(mob/mob, turf/oldloc, direction)
 	SIGNAL_HANDLER
-	if(!(M.loc in locs))
-		remove_under_van(M)
+	if(!(mob.loc in locs))
+		remove_under_van(mob)
 
-/obj/vehicle/multitile/box_van/proc/add_client(mob/living/L)
+/obj/vehicle/multitile/box_van/proc/add_client(mob/living/living)
 	SIGNAL_HANDLER
-	L.client.images += under_image
-	L.client.images -= normal_image
+	living.client.images += under_image
+	living.client.images -= normal_image
 
-/obj/vehicle/multitile/box_van/proc/add_default_image(subsystem, mob/M)
+/obj/vehicle/multitile/box_van/proc/add_default_image(subsystem, mob/mob)
 	SIGNAL_HANDLER
-	M.client.images += normal_image
+	mob.client.images += normal_image
 
 /obj/vehicle/multitile/box_van/Destroy()
-	for(var/I in mobs_under)
-		remove_under_van(I)
+	for(var/icon in mobs_under)
+		remove_under_van(icon)
 
-	for(var/I in GLOB.player_list)
-		var/mob/M = I
-		M.client.images -= normal_image
+	for(var/icon in GLOB.player_list)
+		var/mob/mob = icon
+		mob.client.images -= normal_image
 
 	QDEL_NULL(lighting_holder)
 
@@ -185,14 +186,14 @@
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
-		var/obj/item/hardpoint/H
+		var/obj/item/hardpoint/health
 		for(var/obj/item/hardpoint/potential_hardpoint in hardpoints)
 			if(potential_hardpoint.health < initial(potential_hardpoint.health))
-				H = potential_hardpoint
+				health = potential_hardpoint
 				break
 
-		if(H)
-			H.handle_repair(O, user)
+		if(health)
+			health.handle_repair(O, user)
 			update_icon()
 			return
 
@@ -258,7 +259,7 @@
 
 //PRESET: no hardpoints
 /obj/effect/vehicle_spawner/box_van/spawn_vehicle()
-	var/obj/vehicle/multitile/van/VAN = new (loc)
+	var/obj/vehicle/multitile/box_van/VAN = new (loc)
 
 	load_misc(VAN)
 	handle_direction(VAN)

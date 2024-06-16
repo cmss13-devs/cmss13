@@ -582,8 +582,7 @@
 	health = 1000
 
 /obj/structure/prop/hybrisa/furniture/tables/bullet_act(obj/projectile/P)
-	var/damage = P.damage
-	health -= damage
+	health -= P.damage
 	..()
 	healthcheck()
 	return TRUE
@@ -900,8 +899,7 @@
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY
 
 /obj/structure/blackgoocontainer/bullet_act(obj/projectile/P)
-	var/damage = P.damage
-	health -= damage
+	health -= P.damage
 	..()
 	healthcheck()
 	return TRUE
@@ -1226,8 +1224,7 @@
 	density = TRUE
 
 /obj/structure/prop/hybrisa/misc/trash/bullet_act(obj/projectile/P)
-	var/damage = P.damage
-	health -= damage
+	health -= P.damage
 	..()
 	healthcheck()
 	return TRUE
@@ -1322,8 +1319,7 @@
 	opacity = FALSE
 
 /obj/structure/machinery/big_computers/bullet_act(obj/projectile/P)
-	var/damage = P.damage
-	health -= damage
+	health -= P.damage
 	..()
 	healthcheck()
 	return TRUE
@@ -1425,8 +1421,7 @@
 	health = 250
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/bullet_act(obj/projectile/P)
-	var/damage = P.damage
-	health -= damage
+	health -= P.damage
 	..()
 	healthcheck()
 	return TRUE
@@ -1754,7 +1749,7 @@
 
 // Greeblies
 /obj/structure/prop/hybrisa/misc/buildinggreeblies
-	name = "machinery"
+	name = "\improper machinery"
 	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "buildingventbig1"
 	bound_width = 64
@@ -1765,8 +1760,7 @@
 	layer = ABOVE_XENO_LAYER
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/bullet_act(obj/projectile/P)
-	var/damage = P.damage
-	health -= damage
+	health -= P.damage
 	..()
 	healthcheck()
 	return TRUE
@@ -1845,8 +1839,7 @@
 	health = 1000
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/bullet_act(obj/projectile/P)
-	var/damage = P.damage
-	health -= damage
+	health -= P.damage
 	..()
 	healthcheck()
 	return TRUE
@@ -1957,8 +1950,7 @@
 	health = 250
 
 /obj/structure/prop/hybrisa/misc/firehydrant/bullet_act(obj/projectile/P)
-	var/damage = P.damage
-	health -= damage
+	health -= P.damage
 	..()
 	healthcheck()
 	return TRUE
@@ -2025,7 +2017,7 @@
 	icon_state = "jacksopen_on"
 	bound_height = 64
 	bound_width = 64
-	layer = ABOVE_XENO_LAYER
+	layer = BILLBOARD_LAYER
 
 /obj/structure/prop/hybrisa/signs/casniosign
 	name = "casino sign"
@@ -2093,8 +2085,7 @@
 	anchored = TRUE
 
 /obj/structure/prop/hybrisa/billboardsandsigns/bullet_act(obj/projectile/P)
-	var/damage = P.damage
-	health -= damage
+	health -= P.damage
 	..()
 	healthcheck()
 	return TRUE

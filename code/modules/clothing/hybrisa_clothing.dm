@@ -204,11 +204,11 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
-// Pizza Galaxy
+// Pizza-Galaxy
 
 /obj/item/clothing/under/hybrisa/pizza_galaxy
-	name = "\improper Pizza Galaxy uniform"
-	desc = "A pair of red slacks and a white button-down shirt with a large 'Pizza Galaxy' logo on the back; a standard uniform for a Pizza Galaxy employee. Pizza Galaxy! To infinity and beyond!"
+	name = "\improper Pizza-Galaxy uniform"
+	desc = "A pair of red slacks and a white button-down shirt with a large 'Pizza-Galaxy' logo on the back; a standard uniform for a Pizza-Galaxy employee. Pizza-Galaxy! To infinity and beyond!"
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "new_pizza_uniform"
 	worn_state = "new_pizza_uniform"
@@ -434,11 +434,11 @@
 	item_state = "weymart_cap"
 	contained_sprite = TRUE
 
-// Pizza Galaxy Cap
+// Pizza-Galaxy Cap
 
 /obj/item/clothing/head/hybrisa/pizza_galaxy
-	name = "Pizza Galaxy red cap"
-	desc = "It's a baseball style cap in a red color, with the 'Pizza Galaxy' logo on the front."
+	name = "Pizza-Galaxy red cap"
+	desc = "It's a baseball style cap in a red color, with the 'Pizza-Galaxy' logo on the front."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "pizzagalaxy_cap"
 	item_state = "pizzagalaxy_cap"
@@ -531,11 +531,11 @@
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
-// Pizza Galaxy (Rare Helmet)
+// Pizza-Galaxy (Rare Helmet)
 
 /obj/item/clothing/head/helmet/hybrisa/pizza_galaxy
 	name = "HS-PG-SHIELD-X 575 helmet"
-	desc = "The HS-PG-SHIELD-X 575 (Hyperdyne Systems - Pizza Galaxy - Safety Helmet Integrated for Extreme Danger). A closed prototype helmet was designed to protect the wearer from hazardous environments, this specific model is designed to be effective in low atmosphere environments. It has a built in closed breathing system. This helmet was designed by Hyperdyne Systems in collaboration with Pizza Galaxy."
+	desc = "The HS-PG-SHIELD-X 575 (Hyperdyne Systems - Pizza-Galaxy - Safety Helmet Integrated for Extreme Danger). A closed prototype helmet was designed to protect the wearer from hazardous environments, this specific model is designed to be effective in low atmosphere environments. It has a built in closed breathing system. This helmet was designed by Hyperdyne Systems in collaboration with Pizza-Galaxy."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "pizza_galaxy_helmet"
 	item_state = "pizza_galaxy_helmet"
@@ -1041,3 +1041,32 @@
 	new /obj/item/storage/backpack/security(src)
 	new /obj/item/storage/belt/security(src)
 	new /obj/item/clothing/shoes/jackboots(src)
+
+// Miner Closet
+
+/obj/structure/closet/secure_closet/hybrisa/miner
+	name = "miner's equipment"
+	icon_state = "miningsec1"
+	icon_closed = "miningsec"
+	icon_locked = "miningsec1"
+	icon_opened = "miningsecopen"
+	icon_broken = "miningsecbroken"
+	icon_off = "miningsecoff"
+	req_access = list(ACCESS_CIVILIAN_PUBLIC)
+
+/obj/structure/closet/secure_closet/hybrisa/miner/Initialize()
+	. = ..()
+	if(prob(50))
+		new /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland(src)
+	else
+		new /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt(src)
+// new /obj/item/device/radio/headset/almayer/ct(src)
+	new /obj/item/clothing/under/hybrisa/kelland_mining(src)
+	new /obj/item/clothing/gloves/black(src)
+	new /obj/item/clothing/shoes/jackboots(src)
+	new /obj/item/device/analyzer(src)
+	new /obj/item/storage/bag/ore(src)
+	new /obj/item/device/flashlight/lantern(src)
+	new /obj/item/tool/shovel(src)
+	new /obj/item/tool/pickaxe(src)
+	new /obj/item/storage/backpack/satchel/eng(src)

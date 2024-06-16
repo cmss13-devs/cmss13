@@ -167,7 +167,7 @@
 "M" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
-	exit_type = /obj/structure/interior_exit/vehicle/pizza/backleft;
+	exit_type = /obj/structure/interior_exit/vehicle/pizza_van/backleft;
 	name = "back left entrance marker";
 	pixel_x = -32;
 	tag = "back_left"

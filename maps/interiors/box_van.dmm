@@ -26,9 +26,6 @@
 	tag = "back_right"
 	},
 /obj/structure/largecrate,
-/obj/structure/largecrate/random/mini{
-	pixel_y = 12
-	},
 /turf/open/shuttle/vehicle/med{
 	color = "#495462"
 	},
@@ -65,8 +62,8 @@
 	},
 /obj/structure/largecrate/random/mini{
 	pixel_y = 12;
-	layer = 4;
-	pixel_x = -11
+	pixel_x = -11;
+	layer = 3.3
 	},
 /obj/effect/vehicle_roof/box_van{
 	icon_state = "roof_3"
@@ -150,7 +147,10 @@
 	alpha = 100;
 	pixel_y = -2
 	},
-/obj/structure/largecrate/random/barrel/purewhite,
+/obj/structure/largecrate/random/barrel/purewhite{
+	pixel_x = -4;
+	pixel_y = 2
+	},
 /turf/open/shuttle/vehicle/med{
 	color = "#495462"
 	},

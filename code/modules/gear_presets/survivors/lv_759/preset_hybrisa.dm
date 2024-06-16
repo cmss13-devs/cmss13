@@ -597,7 +597,9 @@
 	survivor_variant = ENGINEERING_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/heavy_vehicle_operator/load_gear(mob/living/carbon/human/new_human)
+
 	var/choice = rand(1,6)
+	new_human.equip_to_slot_or_del(new /obj/item/hardpoint/locomotion/van_wheels(new_human), WEAR_R_HAND)
 	switch(choice)
 		if(1)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beanie/tan, WEAR_HEAD)

@@ -117,29 +117,34 @@
 	unacidable = TRUE
 
 // Hybrisa Shutters
+
 /obj/structure/machinery/door/poddoor/hybrisa
 	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	icon_state = "almayer_pdoor1"
 	base_icon_state = "almayer_pdoor"
 	openspeed = 4
 
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters/Initialize()
+/obj/structure/machinery/door/poddoor/almayer/hybrisa/open_shutters/Initialize()
 	. = ..()
 	if(opacity)
 		set_opacity(0)
 
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters
+/obj/structure/machinery/door/poddoor/almayer/hybrisa/open_shutters
 	name = "\improper Shutters"
 	desc = null
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	icon_state = "almayer_pdoor1"
 	base_icon_state = "almayer_pdoor"
 	opacity = FALSE
+	vehicle_resistant = FALSE
 
-/obj/structure/machinery/door/poddoor/hybrisa/shutters
+/obj/structure/machinery/door/poddoor/almayer/hybrisa/shutters
 	name = "\improper Shutters"
 	desc = null
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	icon_state = "shutter1"
 	base_icon_state = "shutter"
+	vehicle_resistant = FALSE
 
 /obj/structure/machinery/door/poddoor/hybrisa/white
 	name = null
@@ -153,10 +158,3 @@
 	icon_state = "pdoor1"
 	base_icon_state = "pdoor"
 	unslashable = TRUE
-
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters
-	name = "\improper Shutters"
-	desc = null
-	icon_state = "almayer_pdoor1"
-	base_icon_state = "almayer_pdoor"
-	opacity = FALSE

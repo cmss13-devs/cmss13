@@ -300,14 +300,16 @@
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 
 /obj/structure/platform/hybrisa/metalplatformstair1
-	icon_state = "hybrisaplatform_stair"
+	icon_state = "hybrisaplatform_stair" //icon will be honked in all dirs except (1), that's because the behavior breaks if it ain't (1)
 	name = "raised metal platform"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	dir = 1
 
 /obj/structure/platform/hybrisa/metalplatformstair2
 	icon_state = "hybrisaplatform_stair_alt"
 	name = "raised metal platform"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	dir = 1
 
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6
 	icon_state = "hybrisaplatform_deco3"

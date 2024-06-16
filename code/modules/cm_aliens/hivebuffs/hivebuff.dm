@@ -347,7 +347,7 @@
 	var/value_before_buff
 
 /datum/hivebuff/evo_buff/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
-	var/value_before_buff = hive.evolution_bonus
+	value_before_buff = hive.evolution_bonus
 	hive.override_evilution(value_before_buff * 2, TRUE)
 
 	return TRUE

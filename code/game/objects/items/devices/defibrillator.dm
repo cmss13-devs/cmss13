@@ -213,10 +213,10 @@
 		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
 		if(heart && heart.organ_status >= ORGAN_BROKEN)
 			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised."))
-			msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(H)] with [src] because of heart damage.")
+			msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src] because of heart damage.")
 			return
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving."))
-		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(H)] with [src].")
+		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src].")
 		return
 
 	if(!target.client) //Freak case, no client at all. This is a braindead mob (like a colonist)
@@ -243,7 +243,7 @@
 				break
 	if(target.health > HEALTH_THRESHOLD_DEAD)
 		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
-		msg_admin_niche("[key_name_admin(user)] successfully revived [key_name_admin(H)] with [src].")
+		msg_admin_niche("[key_name_admin(user)] successfully revived [key_name_admin(target)] with [src].")
 		playsound(get_turf(src), 'sound/items/defib_success.ogg', 25, 0)
 		user.track_life_saved(user.job)
 		user.life_revives_total++
@@ -256,7 +256,7 @@
 			window_flash(target.client)
 	else
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.")) //Freak case
-		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(H)] with [src] because of weak vitals.")
+		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src] because of weak vitals.")
 		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
 		if(heart && prob(25))
 			heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences

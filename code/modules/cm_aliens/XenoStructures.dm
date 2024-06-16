@@ -1178,8 +1178,8 @@
 
 /obj/effect/alien/resin/king_cocoon/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.can_destroy_special() || hatched)
-    	return	..()
-    
+		return	..()
+
 	return XENO_NO_DELAY_ACTION
 
 /obj/item/explosive/grenade/alien

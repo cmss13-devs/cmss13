@@ -1,0 +1,4 @@
+author: "coldironwarrior"
+delete-after: True
+changes:
+  - bugfix: "incen OB fire now makes blue light."

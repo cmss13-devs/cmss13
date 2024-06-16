@@ -162,7 +162,7 @@
 
 /proc/get_action(mob/action_mob, action_path)
 	for(var/datum/action/action in action_mob.actions)
-		if(action.type == action_path)
+		if(istype(action, action_path))
 			return action
 
 /datum/action/item_action

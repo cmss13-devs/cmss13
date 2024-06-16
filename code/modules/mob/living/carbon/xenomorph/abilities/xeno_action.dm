@@ -131,6 +131,7 @@
 /datum/action/xeno_action/proc/use_ability_wrapper(...)
 	// TODO: make hidden a part of can_use_action
 	if(!can_use_action())
+		SEND_SIGNAL(src, COMSIG_XENO_FAILED_ACTION_USED, owner)
 		return FALSE
 
 	SEND_SIGNAL(src, COMSIG_XENO_PRE_ACTION_USED, owner)
@@ -370,17 +371,6 @@
 		return
 	deltimer(charge_timer_id)
 	charge_timer_id = TIMER_ID_NULL
-
-// Helper proc to get an action on a target Xeno by type.
-// Used to interact with abilities from the outside
-/proc/get_xeno_action_by_type(mob/living/carbon/xenomorph/X, typepath)
-	if (!istype(X))
-		CRASH("xeno_action.dm: get_xeno_action_by_type invoked with non-xeno first argument.")
-
-	for (var/datum/action/xeno_action/XA in X.actions)
-		if (istype(XA, typepath))
-			return XA
-	return null
 
 // Helper proc to check if there is anything blocking the way from mob M to the atom A
 // Max distance can be supplied to check some of the way instead of the whole way.

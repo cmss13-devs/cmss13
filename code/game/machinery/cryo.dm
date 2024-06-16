@@ -196,7 +196,7 @@
 /obj/structure/machinery/cryo_cell/Destroy()
 	if(occupant)
 		go_out()
-	..()
+	. = ..()
 
 /obj/structure/machinery/cryo_cell/proc/process_occupant()
 	if(!occupant)

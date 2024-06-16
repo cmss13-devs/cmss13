@@ -134,3 +134,7 @@
   harryob:
   - bugfix: the preview window in character setup now remains visible when looking
       at it as a ghost
+2024-06-16:
+  Drathek:
+  - bugfix: Fixed wallets as IDs breaking many things
+  - admin: Added niche logging for revival attempts

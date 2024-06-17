@@ -68,6 +68,8 @@
 		playsound(src, 'sound/machines/terminal_error.ogg', 15, TRUE)
 		return FALSE
 	access_code = new_access_code
+	playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 15, TRUE)
+	to_chat(usr, SPAN_HELPFUL("New access code detected. Please reload your device."))
 
 /obj/item/device/ai_tech_pda/verb/clear_code()
 	set name = "Clear Access Code"
@@ -91,6 +93,8 @@
 		playsound(src, 'sound/machines/terminal_error.ogg', 15, TRUE)
 		return FALSE
 	access_code = 0
+	last_menu = "off"
+	current_menu = "login"
 
 /obj/item/device/ai_tech_pda/Destroy()
 	delink()
@@ -130,7 +134,7 @@
 		set_ui = "AresAdmin"
 	else
 		access_code = 0
-		playsound(src, 'sound/machines/terminal_error.ogg', 15, TRUE)
+		set_ui = "AresAccessCode"
 	if(!ui)
 		ui = new(user, src, set_ui, name)
 		ui.open()
@@ -931,6 +935,29 @@
 			log.info += contents
 			log.icon_state = "paper_uscm_words"
 			visible_message(SPAN_NOTICE("[src] prints out a paper."))
+
+		if("enter_code")
+			enter_code()
+			return
+
+		if("page_logins")
+			last_menu = current_menu
+			current_menu = "login_records"
+		if("page_request")
+			last_menu = current_menu
+			current_menu = "access_requests"
+		if("page_report")
+			last_menu = current_menu
+			current_menu = "maint_reports"
+		if("page_tickets")
+			last_menu = current_menu
+			current_menu = "access_tickets"
+		if("page_maintenance")
+			last_menu = current_menu
+			current_menu = "maint_claim"
+		if("page_core_gas")
+			last_menu = current_menu
+			current_menu = "core_security_gas"
 
 	if(playsound)
 		var/sound = pick('sound/machines/pda_button1.ogg', 'sound/machines/pda_button2.ogg')

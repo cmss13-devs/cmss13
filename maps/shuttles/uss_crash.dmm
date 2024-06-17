@@ -1,0 +1,3951 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/space/basic,
+/area/space)
+"ab" = (
+/turf/closed/shuttle/crash{
+	icon_state = "31"
+	},
+/area/shuttle/uss_crash)
+"ac" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/backpack/marine/marsoc,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"ad" = (
+/obj/item/defenses/handheld/sentry,
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/sentry,
+/obj/item/ammo_magazine/sentry,
+/obj/item/engi_upgrade_kit,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/plasteel/large_stack,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"ae" = (
+/obj/structure/machinery/recharge_station,
+/obj/effect/landmark/start/synthetic,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"af" = (
+/turf/closed/shuttle/crash{
+	icon_state = "engine"
+	},
+/area/shuttle/uss_crash)
+"ag" = (
+/turf/open/floor/almayer/uscm/directional{
+	dir = 1
+	},
+/area/shuttle/uss_crash)
+"ah" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = null;
+	vend_x_offset = 0;
+	vend_y_offset = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"ai" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/pouch/medkit,
+/obj/item/storage/pouch/medkit,
+/obj/item/storage/pouch/medical,
+/obj/item/storage/pouch/medical,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/structure/machinery/cell_charger,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/obj/item/bodybag/cryobag,
+/obj/item/bodybag/cryobag,
+/obj/item/bodybag/cryobag,
+/obj/item/bodybag/cryobag,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"aj" = (
+/obj/structure/machinery/cm_vending/clothing/synth,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"ak" = (
+/turf/open/floor/almayer/uscm/directional,
+/area/shuttle/uss_crash)
+"al" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"am" = (
+/turf/open/floor/almayer/uscm/directional{
+	dir = 8
+	},
+/area/shuttle/uss_crash)
+"an" = (
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"ao" = (
+/turf/closed/shuttle/crash{
+	icon_state = "25"
+	},
+/area/shuttle/uss_crash)
+"ap" = (
+/obj/item/defenses/handheld/sentry/flamer,
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/sentry_flamer,
+/obj/item/ammo_magazine/sentry_flamer,
+/obj/item/stack/sandbags/large_stack,
+/obj/item/stack/barbed_wire{
+	amount = 20
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aq" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
+/obj/item/reagent_container/blood/OMinus,
+/obj/item/reagent_container/blood/AMinus,
+/obj/item/reagent_container/blood/APlus,
+/obj/item/reagent_container/blood/BMinus,
+/obj/item/reagent_container/blood/BPlus,
+/obj/item/reagent_container/blood/OPlus,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"ar" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"as" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"at" = (
+/obj/item/defenses/handheld/sentry/flamer,
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/sentry_flamer,
+/obj/item/ammo_magazine/sentry_flamer,
+/obj/item/stack/sandbags/large_stack,
+/obj/item/stack/barbed_wire{
+	amount = 20
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"au" = (
+/obj/structure/machinery/cm_vending/own_points/experimental_tools,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"av" = (
+/obj/structure/machinery/vending/sovietsoda,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aw" = (
+/obj/item/defenses/handheld/sentry,
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/sentry,
+/obj/item/ammo_magazine/sentry,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/plasteel/large_stack,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"ax" = (
+/obj/item/defenses/handheld/sentry/flamer,
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/sentry_flamer,
+/obj/item/ammo_magazine/sentry_flamer,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/obj/item/stack/sandbags/large_stack,
+/obj/item/stack/barbed_wire{
+	amount = 20
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"ay" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/obj/item/storage/backpack/jima,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"az" = (
+/obj/structure/machinery/vending/snack/packaged,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aA" = (
+/obj/structure/closet/secure_closet/medical2,
+/obj/item/storage/box/gloves{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/structure/transmitter{
+	dir = 8;
+	name = "Medical Telephone";
+	phone_category = "USS Save Ship";
+	phone_id = "Medical";
+	pixel_x = 23
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"aB" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aC" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aD" = (
+/obj/structure/machinery/sleep_console,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"aE" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aG" = (
+/obj/item/storage/surgical_tray,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/storage/pouch/pressurized_reagent_canister/revival,
+/obj/structure/machinery/recharger,
+/obj/item/device/defibrillator,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"aI" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/shuttle/uss_crash)
+"aJ" = (
+/turf/closed/shuttle/crash{
+	icon_state = "26"
+	},
+/area/shuttle/uss_crash)
+"aK" = (
+/obj/structure/machinery/prop/almayer/CICmap,
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aL" = (
+/obj/structure/machinery/vending/cigarette/free,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aM" = (
+/obj/structure/machinery/washing_machine,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aO" = (
+/obj/structure/machinery/computer/crew,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"aP" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
+/obj/item/reagent_container/blood/OMinus,
+/obj/item/reagent_container/blood/AMinus,
+/obj/item/reagent_container/blood/AMinus,
+/obj/item/reagent_container/blood/APlus,
+/obj/item/reagent_container/blood/BMinus,
+/obj/item/reagent_container/blood/BPlus,
+/obj/item/reagent_container/blood/OPlus,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"aR" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = null;
+	vend_x_offset = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aS" = (
+/obj/structure/machinery/cm_vending/clothing/smartgun/alpha{
+	req_access = null;
+	req_one_access = null;
+	squad_tag = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aT" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/backpack/marine/satchel/tech,
+/obj/item/storage/toolbox/electrical,
+/obj/item/cell/infinite,
+/obj/item/cell/infinite,
+/obj/item/circuitboard/apc,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/structure/machinery/power/apc/almayer/hardened{
+	dir = 1;
+	powernet = "crash";
+	cell_type = /obj/item/cell/hyper
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aU" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/shuttle/shuttle_control/uss_crash,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aV" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/pouch/medkit,
+/obj/item/storage/pouch/medkit,
+/obj/item/storage/pouch/medical,
+/obj/item/storage/pouch/medical,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/structure/machinery/cell_charger,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"aX" = (
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aY" = (
+/obj/structure/machinery/cm_vending/clothing/marine/alpha{
+	req_access = null;
+	req_one_access = null;
+	squad_tag = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"aZ" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/obj/structure/machinery/cm_vending/gear/smartgun{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"ba" = (
+/obj/structure/machinery/cm_vending/clothing/commanding_officer,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bb" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bc" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bd" = (
+/obj/structure/machinery/medical_pod/sleeper,
+/obj/structure/prop/almayer/ship_memorial{
+	pixel_y = 28
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"be" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"bf" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"bg" = (
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"bh" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bi" = (
+/obj/structure/machinery/cm_vending/clothing/tl/alpha{
+	req_access = null;
+	req_one_access = null;
+	squad_tag = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bj" = (
+/obj/structure/machinery/cm_vending/sorted/attachments/squad{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = null;
+	vend_y_offset = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bk" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bl" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/shuttle/uss_crash)
+"bm" = (
+/obj/structure/machinery/autodoc_console,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"bn" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"bo" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/obj/structure/machinery/cm_vending/gear/tl{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bp" = (
+/obj/structure/machinery/keycard_auth{
+	pixel_x = -23
+	},
+/obj/structure/machinery/cm_vending/clothing/dress,
+/turf/open/floor/almayer/uscm/directional{
+	dir = 10
+	},
+/area/shuttle/uss_crash)
+"bq" = (
+/turf/closed/shuttle/crash{
+	icon_state = "17"
+	},
+/area/shuttle/uss_crash)
+"br" = (
+/turf/closed/shuttle/crash{
+	icon_state = "5"
+	},
+/area/shuttle/uss_crash)
+"bs" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/beer_pack,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bt" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/storage/bag/trash,
+/obj/item/storage/bag/trash,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bu" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/backpack/marine/engineerpack,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
+/obj/item/circuitboard/apc,
+/obj/item/clothing/accessory/storage/black_vest/brown_vest,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bv" = (
+/obj/structure/machinery/cm_vending/clothing/leader/alpha{
+	req_access = null;
+	req_one_access = null;
+	squad_tag = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bw" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/cm_vending/sorted/marine_food,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bx" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 4
+	},
+/obj/effect/landmark/start/captain,
+/turf/open/floor/almayer/uscm/directional{
+	dir = 8;
+	icon_state = "logo_c"
+	},
+/area/shuttle/uss_crash)
+"by" = (
+/obj/structure/machinery/cryopod,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bz" = (
+/obj/structure/transmitter{
+	dir = 8;
+	name = "Command Center Telephone";
+	phone_category = "USS Save Ship";
+	phone_id = "Command Center";
+	pixel_x = 23;
+	pixel_y = 0
+	},
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/pinpointer/nuke,
+/obj/item/pamphlet/skill/engineer,
+/obj/item/pamphlet/skill/engineer,
+/obj/item/pamphlet/skill/intel,
+/obj/item/pamphlet/skill/intel,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/medical,
+/obj/item/pamphlet/skill/medical,
+/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/skill/powerloader,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bA" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/obj/structure/machinery/cm_vending/gear/synth,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bB" = (
+/obj/effect/landmark/start/marine,
+/turf/open/floor/almayer,
+/area/shuttle/uss_crash)
+"bC" = (
+/obj/structure/machinery/computer/card{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bD" = (
+/obj/structure/machinery/door_control{
+	id = "CIC Lockdown";
+	name = "CIC Lockdown";
+	pixel_x = -21;
+	pixel_y = 9;
+	req_access_txt = "1"
+	},
+/obj/structure/machinery/keycard_auth{
+	pixel_x = -23
+	},
+/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
+/turf/open/floor/almayer/uscm/directional{
+	dir = 9
+	},
+/area/shuttle/uss_crash)
+"bE" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 2;
+	id = "sshiplockdown";
+	name = "\improper Ship Lockdown"
+	},
+/obj/structure/machinery/door/poddoor/almayer/blended/crash{
+	dir = 2;
+	id = "crash_pod1";
+	indestructible = 1;
+	unacidable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bF" = (
+/obj/structure/machinery/door/poddoor/almayer/blended/crash{
+	dir = 2;
+	id = "crash_pod1";
+	indestructible = 1;
+	unacidable = 1
+	},
+/turf/closed/shuttle/crash/window{
+	icon_state = "37"
+	},
+/area/shuttle/uss_crash)
+"bG" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "sshiplockdown";
+	name = "\improper Ship Lockdown"
+	},
+/obj/structure/machinery/door/poddoor/almayer/blended/crash{
+	dir = 4;
+	id = "crash_pod1";
+	indestructible = 1;
+	unacidable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bH" = (
+/obj/structure/closet/secure_closet/medical_doctor,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"bI" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bJ" = (
+/obj/structure/machinery/cm_vending/clothing/engi/alpha{
+	req_access = null;
+	req_one_access = null;
+	squad_tag = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bK" = (
+/obj/structure/machinery/cm_vending/gear/leader{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bL" = (
+/obj/structure/machinery/cm_vending/gear/engi{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bM" = (
+/obj/structure/machinery/cm_vending/clothing/specialist/alpha{
+	req_access = null;
+	req_one_access = null;
+	squad_tag = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bN" = (
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bO" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/cm_vending/clothing/medic/alpha{
+	req_access = null;
+	req_one_access = null;
+	squad_tag = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bP" = (
+/obj/structure/machinery/cm_vending/gear/spec{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bQ" = (
+/turf/closed/shuttle/crash{
+	icon_state = "6"
+	},
+/area/shuttle/uss_crash)
+"bR" = (
+/obj/structure/machinery/cm_vending/gear/medic{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bS" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bT" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/shuttle/uss_crash)
+"bU" = (
+/turf/closed/shuttle/crash{
+	icon_state = "3"
+	},
+/area/shuttle/uss_crash)
+"bV" = (
+/obj/item/storage/surgical_tray,
+/obj/structure/surface/table/almayer,
+/obj/item/storage/pouch/pressurized_reagent_canister/bicaridine,
+/obj/structure/machinery/recharger,
+/obj/item/device/defibrillator,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/bodybag,
+/obj/item/clothing/accessory/storage/surg_vest,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"bW" = (
+/obj/effect/landmark/late_join,
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/start/marine/smartgunner,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"bX" = (
+/obj/effect/landmark/start/marine,
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/uss_crash)
+"bY" = (
+/turf/closed/shuttle/crash{
+	icon_state = "22"
+	},
+/area/shuttle/uss_crash)
+"bZ" = (
+/turf/closed/shuttle/crash{
+	icon_state = "1"
+	},
+/area/shuttle/uss_crash)
+"ca" = (
+/turf/closed/shuttle/crash{
+	icon_state = "8"
+	},
+/area/shuttle/uss_crash)
+"cb" = (
+/turf/closed/shuttle/crash{
+	icon_state = "10"
+	},
+/area/shuttle/uss_crash)
+"cc" = (
+/turf/closed/shuttle/crash{
+	icon_state = "11"
+	},
+/area/shuttle/uss_crash)
+"cd" = (
+/turf/closed/shuttle/crash{
+	icon_state = "35"
+	},
+/area/shuttle/uss_crash)
+"ce" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/cm_vending/gear/commanding_officer,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"cf" = (
+/turf/closed/shuttle/crash{
+	icon_state = "9"
+	},
+/area/shuttle/uss_crash)
+"cg" = (
+/turf/closed/shuttle/crash{
+	icon_state = "12"
+	},
+/area/shuttle/uss_crash)
+"ch" = (
+/turf/closed/shuttle/crash{
+	icon_state = "19"
+	},
+/area/shuttle/uss_crash)
+"ci" = (
+/turf/closed/shuttle/crash{
+	icon_state = "23"
+	},
+/area/shuttle/uss_crash)
+"cj" = (
+/turf/closed/shuttle/crash{
+	icon_state = "24"
+	},
+/area/shuttle/uss_crash)
+"ck" = (
+/turf/closed/shuttle/crash{
+	icon_state = "27"
+	},
+/area/shuttle/uss_crash)
+"cl" = (
+/turf/closed/shuttle/crash{
+	icon_state = "20"
+	},
+/area/shuttle/uss_crash)
+"cm" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"cn" = (
+/turf/closed/shuttle/crash/window{
+	icon_state = "37"
+	},
+/area/shuttle/uss_crash)
+"co" = (
+/obj/structure/machinery/chem_dispenser/soda,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "sshiplockdown";
+	name = "\improper Ship Lockdown"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"cp" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "sshiplockdown";
+	name = "\improper Ship Lockdown"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/uss_crash)
+"cq" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"cr" = (
+/turf/closed/shuttle/crash{
+	icon_state = "18"
+	},
+/area/shuttle/uss_crash)
+"cs" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
+	},
+/obj/structure/machinery/door/airlock/almayer/command{
+	indestructible = 1;
+	name = "\improper Ship Control Room";
+	no_panel = 1;
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/almayer,
+/area/shuttle/uss_crash)
+"ct" = (
+/obj/item/defenses/handheld/sentry,
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/sentry,
+/obj/item/ammo_magazine/sentry,
+/obj/item/engi_upgrade_kit,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/plasteel/large_stack,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"cu" = (
+/turf/closed/shuttle/crash{
+	icon_state = "30"
+	},
+/area/shuttle/uss_crash)
+"cv" = (
+/obj/structure/machinery/door/poddoor/almayer/blended/crash{
+	dir = 8;
+	id = "crash_pod1";
+	indestructible = 1;
+	unacidable = 1
+	},
+/turf/closed/shuttle/crash/window,
+/area/shuttle/uss_crash)
+"cw" = (
+/turf/closed/shuttle/crash{
+	icon_state = "34"
+	},
+/area/shuttle/uss_crash)
+"cx" = (
+/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "sshiplockdown";
+	name = "\improper Ship Lockdown"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"cy" = (
+/obj/structure/machinery/door/poddoor/almayer/blended/crash{
+	id = "crash_pod1";
+	indestructible = 1;
+	unacidable = 1
+	},
+/turf/closed/shuttle/crash/window{
+	icon_state = "36"
+	},
+/area/shuttle/uss_crash)
+"cz" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 2;
+	id = "sshiplockdown";
+	name = "\improper Ship Lockdown"
+	},
+/obj/structure/machinery/door/poddoor/almayer/blended/crash{
+	id = "crash_pod1";
+	indestructible = 1;
+	unacidable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"cB" = (
+/obj/structure/machinery/computer/squad_changer{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"cC" = (
+/obj/structure/machinery/constructable_frame/porta_comms,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"cD" = (
+/obj/structure/machinery/computer/groundside_operations{
+	dir = 8
+	},
+/obj/structure/machinery/door_control{
+	id = "sshiplockdown";
+	name = "Ship Lockdow";
+	pixel_x = -7;
+	pixel_y = 9;
+	req_access_txt = "1"
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"cE" = (
+/obj/structure/bed/chair/dropship/pilot,
+/obj/effect/landmark/start/engineering,
+/turf/open/floor/almayer,
+/area/shuttle/uss_crash)
+"cF" = (
+/obj/item/circuitboard/machine/telecomms/relay/tower,
+/obj/structure/closet/crate/construction,
+/obj/item/stock_parts/subspace/filter,
+/obj/item/stock_parts/subspace/filter,
+/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/manipulator,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"cG" = (
+/obj/structure/machinery/computer/communications{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"cH" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/disk_reader{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"cI" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/intel{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/shuttle/uss_crash)
+"dp" = (
+/obj/structure/machinery/medical_pod/autodoc,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"dr" = (
+/obj/structure/machinery/optable,
+/obj/item/tank/anesthetic,
+/obj/item/clothing/mask/breath/medical,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"ds" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"dz" = (
+/obj/structure/surface/table/almayer,
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/structure/machinery/cell_charger,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"dA" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"dC" = (
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"dF" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner"
+	},
+/area/shuttle/uss_crash)
+"dG" = (
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "sterile_green_side"
+	},
+/area/shuttle/uss_crash)
+"dH" = (
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/shuttle/uss_crash)
+"dI" = (
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "sterile_green_side"
+	},
+/area/shuttle/uss_crash)
+"dL" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/uss_crash)
+"dM" = (
+/obj/structure/machinery/autolathe,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"dN" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 2;
+	id = "sshiplockdown";
+	name = "\improper Ship Lockdown"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"dP" = (
+/obj/structure/machinery/power/reactor{
+	fail_rate = 5
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"dR" = (
+/turf/open/floor/almayer,
+/area/shuttle/uss_crash)
+"dS" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner"
+	},
+/area/shuttle/uss_crash)
+"dT" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "sterile_green_side"
+	},
+/area/shuttle/uss_crash)
+"dU" = (
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "sterile_green_side"
+	},
+/area/shuttle/uss_crash)
+"dV" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"dW" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"ef" = (
+/obj/structure/bed/chair/vehicle,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"ej" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 1;
+	name = "\improper Engineering Bay";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"el" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"eu" = (
+/obj/structure/bed/chair/vehicle,
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"ex" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "sshiplockdown";
+	name = "\improper Ship Lockdown"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"eC" = (
+/obj/docking_port/mobile/crashmode,
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/uss_crash)
+"fe" = (
+/obj/effect/landmark/observer_start,
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/uss_crash)
+"fg" = (
+/obj/structure/machinery/cryopod/right,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"hW" = (
+/obj/effect/landmark/start/marine/engineer,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"re" = (
+/obj/structure/machinery/gel_refiller,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+"sR" = (
+/obj/effect/landmark/start/marine/engineer,
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/uss_crash)
+"uY" = (
+/obj/effect/landmark/start/marine/medic,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"zB" = (
+/obj/effect/landmark/start/marine/leader,
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/uss_crash)
+"zC" = (
+/turf/template_noop,
+/area/space)
+"BN" = (
+/obj/effect/landmark/start/marine/medic,
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/uss_crash)
+"Ci" = (
+/obj/effect/landmark/start/marine/medic,
+/turf/open/floor/almayer,
+/area/shuttle/uss_crash)
+"FP" = (
+/obj/effect/landmark/late_join,
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/start/marine/spec,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/shuttle/uss_crash)
+"Jq" = (
+/obj/effect/landmark/late_join,
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/start/marine,
+/turf/open/floor/almayer,
+/area/shuttle/uss_crash)
+"Ym" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 4
+	},
+/obj/effect/landmark/start/professor,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/shuttle/uss_crash)
+
+(1,1,1) = {"
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+"}
+(2,1,1) = {"
+ao
+af
+af
+af
+af
+af
+cj
+zC
+zC
+zC
+zC
+zC
+ao
+af
+af
+af
+af
+af
+cj
+"}
+(3,1,1) = {"
+aJ
+ci
+ci
+ci
+ci
+ci
+ck
+zC
+zC
+zC
+zC
+zC
+aJ
+ci
+ci
+ci
+ci
+ci
+ck
+"}
+(4,1,1) = {"
+ca
+bd
+be
+dp
+Ym
+aO
+cl
+bG
+bG
+bG
+bG
+bG
+br
+aS
+fg
+bv
+fg
+bM
+cf
+"}
+(5,1,1) = {"
+ca
+aD
+dF
+bm
+dS
+re
+ca
+at
+dC
+dC
+dC
+aw
+ca
+aZ
+bW
+bK
+FP
+bP
+cf
+"}
+(6,1,1) = {"
+ca
+dr
+dG
+an
+dT
+aq
+bq
+cg
+ex
+ex
+ex
+cg
+br
+aX
+bB
+zB
+bB
+bw
+cf
+"}
+(7,1,1) = {"
+ca
+ds
+dH
+bf
+dH
+dH
+cm
+dC
+dL
+dL
+dL
+dC
+cq
+bX
+bX
+aR
+bB
+bc
+cf
+"}
+(8,1,1) = {"
+ca
+ai
+dH
+bg
+dH
+dH
+an
+dC
+dR
+dL
+dR
+dC
+dC
+bB
+bB
+bj
+bB
+bc
+cf
+"}
+(9,1,1) = {"
+ca
+aG
+dH
+dH
+dH
+aP
+ca
+aC
+dR
+dL
+dR
+aE
+ca
+bh
+bB
+bX
+Jq
+fg
+cf
+"}
+(10,1,1) = {"
+ca
+aV
+dI
+dH
+dU
+bn
+cn
+ef
+dR
+dL
+dR
+el
+cn
+aY
+bB
+bX
+Jq
+by
+cf
+"}
+(11,1,1) = {"
+ca
+bV
+bH
+aA
+dV
+dV
+cn
+ef
+dR
+dL
+dR
+el
+cn
+aY
+bB
+aR
+bB
+bI
+cf
+"}
+(12,1,1) = {"
+bq
+cg
+cg
+cg
+cg
+cg
+br
+ef
+dR
+dL
+dR
+el
+ca
+bj
+bB
+bj
+bB
+bI
+cf
+"}
+(13,1,1) = {"
+ca
+aT
+bk
+ae
+dW
+bu
+ca
+eu
+dR
+dL
+dR
+el
+ca
+ah
+bB
+aR
+Ci
+bO
+cf
+"}
+(14,1,1) = {"
+ca
+dz
+dL
+dL
+dL
+bu
+ca
+ef
+dR
+dL
+dR
+el
+ca
+hW
+sR
+sR
+BN
+uY
+cf
+"}
+(15,1,1) = {"
+ca
+dA
+dM
+dP
+dL
+dL
+ej
+dL
+dL
+eC
+dR
+el
+ca
+bo
+bi
+bL
+bJ
+bR
+cf
+"}
+(16,1,1) = {"
+bY
+cb
+ab
+cg
+ab
+cg
+bQ
+ef
+dR
+dL
+dR
+el
+cr
+cg
+ab
+cg
+cu
+cb
+bU
+"}
+(17,1,1) = {"
+zC
+zC
+bE
+ad
+ca
+bb
+dC
+dC
+dR
+fe
+dR
+dC
+dC
+bS
+ca
+ct
+cz
+zC
+zC
+"}
+(18,1,1) = {"
+zC
+zC
+bE
+dC
+dN
+dL
+dL
+dL
+dL
+dL
+dL
+dL
+dL
+dL
+dN
+dC
+cz
+zC
+zC
+"}
+(19,1,1) = {"
+zC
+zC
+bE
+dC
+dN
+dR
+dR
+dR
+dR
+dL
+dR
+dR
+dR
+dR
+dN
+dC
+cz
+zC
+zC
+"}
+(20,1,1) = {"
+zC
+zC
+bE
+ap
+ca
+al
+dC
+dC
+aL
+dL
+ar
+dC
+cC
+cF
+ca
+ax
+cz
+zC
+zC
+"}
+(21,1,1) = {"
+ch
+cc
+cd
+cg
+cd
+cg
+cg
+cg
+co
+cp
+cx
+cg
+cg
+cg
+cd
+cg
+cw
+cc
+bZ
+"}
+(22,1,1) = {"
+ca
+ac
+as
+aI
+bT
+bT
+bT
+aI
+dR
+dL
+dR
+aI
+bT
+bT
+bT
+aI
+as
+bs
+cf
+"}
+(23,1,1) = {"
+ca
+ay
+bt
+ah
+ah
+aR
+aR
+az
+av
+dL
+aB
+aM
+aM
+bI
+bI
+bN
+bN
+au
+cf
+"}
+(24,1,1) = {"
+bY
+cb
+cb
+cb
+cb
+ab
+cg
+cg
+cg
+cs
+cg
+cg
+cg
+cu
+cb
+cb
+cb
+cb
+bU
+"}
+(25,1,1) = {"
+zC
+zC
+zC
+zC
+zC
+ca
+bA
+aj
+bD
+am
+bp
+ba
+ce
+cf
+zC
+zC
+zC
+zC
+zC
+"}
+(26,1,1) = {"
+zC
+zC
+zC
+zC
+zC
+bF
+aU
+bl
+ag
+bx
+ak
+cE
+cH
+cy
+zC
+zC
+zC
+zC
+zC
+"}
+(27,1,1) = {"
+zC
+zC
+zC
+zC
+zC
+ca
+bz
+bC
+cB
+aK
+cD
+cG
+cI
+cf
+zC
+zC
+zC
+zC
+zC
+"}
+(28,1,1) = {"
+zC
+zC
+zC
+zC
+zC
+bY
+cb
+cv
+cv
+cv
+cv
+cv
+cb
+bU
+zC
+zC
+zC
+zC
+zC
+"}
+(29,1,1) = {"
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+zC
+"}
+
+(1,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(9,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(10,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(11,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(12,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(13,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(14,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(15,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(16,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(17,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(18,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(19,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(20,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(21,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(22,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(23,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(24,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(25,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(26,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(27,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(28,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(29,1,2) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+
+(1,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(9,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(10,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(11,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(12,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(13,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(14,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(15,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(16,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(17,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(18,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(19,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(20,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(21,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(22,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(23,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(24,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(25,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(26,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(27,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(28,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(29,1,3) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+
+(1,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(9,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(10,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(11,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(12,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(13,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(14,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(15,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(16,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(17,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(18,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(19,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(20,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(21,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(22,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(23,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(24,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(25,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(26,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(27,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(28,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(29,1,4) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

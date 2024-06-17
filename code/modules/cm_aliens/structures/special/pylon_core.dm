@@ -271,6 +271,7 @@
 			// Update everyone's queue status
 			message_alien_candidates(players_with_xeno_pref, dequeued = count_spawned)
 
+/*
 		if(linked_hive.hijack_burrowed_surge && (last_surge_time + surge_cooldown) < world.time)
 			last_surge_time = world.time
 			linked_hive.stored_larva++
@@ -282,6 +283,20 @@
 			if(linked_hive.hijack_burrowed_left < 1)
 				linked_hive.hijack_burrowed_surge = FALSE
 				xeno_message(SPAN_XENOANNOUNCE("The hive's power wanes. We will no longer gain pooled larva over time."), 3, linked_hive.hivenumber)
+*/
+//RUCM START
+		if((linked_hive.hijack_burrowed_surge || crash_mode) && (last_surge_time + surge_cooldown) < world.time)
+			last_surge_time = world.time
+			linked_hive.stored_larva++
+			linked_hive.hijack_burrowed_left--
+			if(GLOB.xeno_queue_candidate_count < 1 + count_spawned)
+				notify_ghosts(header = "Claim Xeno", message = "The Hive has gained another burrowed larva! Click to take it.", source = src, action = NOTIFY_JOIN_XENO, enter_link = "join_xeno=1")
+			if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
+				surge_cooldown -= surge_incremental_reduction //ramps up over time
+			if(!crash_mode && linked_hive.hijack_burrowed_left < 1)
+				linked_hive.hijack_burrowed_surge = FALSE
+				xeno_message(SPAN_XENOANNOUNCE("The hive's power wanes. We will no longer gain pooled larva over time."), 3, linked_hive.hivenumber)
+//RUCM END
 
 	// Hive core can repair itself over time
 	if(health < maxhealth && last_healed <= world.time)

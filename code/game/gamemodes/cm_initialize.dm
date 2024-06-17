@@ -443,6 +443,7 @@ Additional game mode variables.
 			if(picked_hive.stored_larva)
 				if(!xeno_bypass_timer)
 					var/deathtime = world.time - xeno_candidate.timeofdeath
+/*
 					if(isnewplayer(xeno_candidate))
 						deathtime = XENO_JOIN_DEAD_LARVA_TIME //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
 					if(deathtime < XENO_JOIN_DEAD_LARVA_TIME && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
@@ -450,6 +451,16 @@ Additional game mode variables.
 						to_chat(xeno_candidate, message)
 						to_chat(xeno_candidate, SPAN_WARNING("You must wait 2 minutes and 30 seconds before rejoining the game as a buried larva!"))
 						return FALSE
+*/
+//RUCM START
+					if(isnewplayer(xeno_candidate))
+						deathtime = world.time //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
+
+					else if(deathtime < GLOB.xeno_join_dead_larva_time && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
+						to_chat(xeno_candidate, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]."))
+						to_chat(xeno_candidate, SPAN_WARNING("You must wait [DisplayTimeText(GLOB.xeno_join_dead_larva_time - deathtime)] before rejoining the game as a buried larva!"))
+						return FALSE
+//RUCM END
 
 				for(var/mob_name in picked_hive.banished_ckeys)
 					if(picked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
@@ -484,6 +495,7 @@ Additional game mode variables.
 
 		if(!xeno_bypass_timer)
 			var/deathtime = world.time - xeno_candidate.timeofdeath
+/*
 			if(istype(xeno_candidate, /mob/new_player))
 				deathtime = XENO_JOIN_DEAD_TIME //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
 			if(deathtime < XENO_JOIN_DEAD_TIME && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
@@ -492,6 +504,17 @@ Additional game mode variables.
 				to_chat(xeno_candidate, message)
 				to_chat(xeno_candidate, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))
 				return FALSE
+*/
+//RUCM START
+			if(istype(xeno_candidate, /mob/new_player))
+				deathtime = GLOB.xeno_join_dead_time //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
+			if(deathtime < GLOB.xeno_join_dead_time && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
+				var/message = "You have been dead for [DisplayTimeText(deathtime)]."
+				message = SPAN_WARNING("[message]")
+				to_chat(xeno_candidate, message)
+				to_chat(xeno_candidate, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))
+				return FALSE
+//RUCM END
 			if((!islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA))
 				var/to_wait = XENO_LEAVE_TIMER - new_xeno.away_timer
 				if(islarva(new_xeno))

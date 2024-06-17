@@ -226,7 +226,12 @@ SUBSYSTEM_DEF(mapping)
 		ground_base_path = "data/"
 	Loadground(FailedZs, ground_map.map_name, ground_map.map_path, ground_map.map_file, ground_map.traits, ZTRAITS_GROUND, override_map_path = ground_base_path)
 
+/*
 	if(!ground_map.disable_ship_map)
+*/
+//RUCM START
+	if(!ground_map.disable_ship_map && !MODE_HAS_FLAG(MODE_NO_SHIP_MAP))
+//RUCM END
 		var/datum/map_config/ship_map = configs[SHIP_MAP]
 		var/ship_base_path = "maps/"
 		if(ship_map.override_map)

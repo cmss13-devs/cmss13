@@ -27294,6 +27294,12 @@
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/asteroidplating,
 /area/bigredv2/outside/space_port_lz2)
+"qNM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = crash
+	},
+/turf/open/space,
+/area/space)
 "qNP" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -31670,7 +31676,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+qNM
 "}
 (2,1,1) = {"
 aaa

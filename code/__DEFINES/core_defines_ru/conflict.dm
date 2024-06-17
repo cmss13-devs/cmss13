@@ -1,0 +1,1 @@
+#define AMMO_IGNORE_XENO_IFF (1<<23)

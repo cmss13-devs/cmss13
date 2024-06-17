@@ -51,7 +51,12 @@
 		return
 
 	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
+/*
 		if(!hardcore)
+*/
+//RUCM START
+		if(!hardcore && hive.allow_queen_evolve)
+//RUCM END
 			if(SSticker.mode && hive.xeno_queen_timer > world.time)
 				to_chat(src, SPAN_WARNING("We must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
 				return

@@ -25,6 +25,9 @@
 			if(JOB_CAS_PILOT) marine_rk = "gp"
 			if(JOB_DROPSHIP_PILOT) marine_rk = "dp"
 			if(JOB_TANK_CREW) marine_rk = "tc"
+//RUCM START
+			if(JOB_WALKER) marine_rk = "tc"
+//RUCM END
 			if(JOB_INTEL) marine_rk = "io"
 			if(JOB_DROPSHIP_CREW_CHIEF) marine_rk = "dcc"
 			if(JOB_MARINE_RAIDER) marine_rk = "soc"
@@ -102,6 +105,10 @@
 				marine_rk = "mp"
 			if(JOB_TANK_CREW)
 				marine_rk = "tc"
+//RUCM START
+			if(JOB_WALKER)
+				marine_rk = "tc"
+//RUCM END
 			if(JOB_WARDEN)
 				marine_rk = "warden"
 				border_rk = "command"

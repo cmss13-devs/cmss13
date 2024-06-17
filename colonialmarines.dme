@@ -2490,6 +2490,7 @@
 #include "code\modules\vox\vox_tgui.dm"
 #include "code\modules\vox\vox_sounds\vox.dm"
 #include "code\modules\vox\vox_sounds\vox_military.dm"
+#include "core_ru\code\includes.dm"
 #include "interface\fonts.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"

@@ -512,7 +512,7 @@ K9 SCANNER
 
 /obj/item/device/k9_scanner/attack_self(mob/user)
 	. = ..()
-	if (tracked_k9 == null)
+	if (!tracked_k9)
 		to_chat(user, SPAN_WARNING("ERROR: No K9 unit currently tracked. Use scanner on K9 unit to track them."))
 		return
 

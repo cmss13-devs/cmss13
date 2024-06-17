@@ -180,6 +180,8 @@
 		else
 			playsound(user, warcry_sound, 30)
 			user.say("*me shouts an inspiring cry!")
+			// Ditto. If the cooldown isn't finished we have to transfer the leftover time to the structure.
+			COOLDOWN_START(planted_flag, warcry_cooldown_struc, COOLDOWN_TIMELEFT(src, warcry_cooldown_item))
 	else
 		playsound(user, 'sound/effects/flag_raised.ogg', 30)
 

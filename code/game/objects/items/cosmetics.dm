@@ -148,7 +148,7 @@
 		force = 0
 
 /obj/item/k9_name_changer
-	name = "K9 Name Implanter"
+	name = "K9 name implanter"
 	desc = "Syncs the implanted W-Y Serial Chip to the unit's prefered name."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "efundcard"

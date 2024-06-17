@@ -34,15 +34,13 @@
 		return
 	else
 		var/light = -1
-		var/flash = -1
 
-		light = max(-1, amount/8)
-		if (flash && flashing_factor) flash = light + 1
+		var/power = 120
+		var/falloff = (power*8)/amount
 
 		for(var/mob/M as anything in viewers(8, location))
 			to_chat(M, SPAN_WARNING("The solution violently explodes."))
-
-		explosion(location, -1, -1, light, flash)
+		cell_explosion(location, power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 		if(light > 0)
 			return TRUE
 

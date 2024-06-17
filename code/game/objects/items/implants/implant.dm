@@ -187,21 +187,21 @@ Implant Specifics:<BR>"}
 						istype(part,/obj/limb/groin) || \
 						istype(part,/obj/limb/head))
 						part.createwound(BRUISE, 60) //mangle them instead
-						explosion(get_turf(imp_in), -1, -1, 2, 3)
+						cell_explosion(get_turf(imp_in), 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 						qdel(src)
 					else
-						explosion(get_turf(imp_in), -1, -1, 2, 3)
+						cell_explosion(get_turf(imp_in), 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 						part.droplimb(0, 0, "dismemberment")
 						qdel(src)
 			if (elevel == "Destroy Body")
-				explosion(get_turf(T), -1, 0, 1, 6)
+				cell_explosion(get_turf(imp_in), 120, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 				T.gib()
 			if (elevel == "Full Explosion")
-				explosion(get_turf(T), 0, 1, 3, 6)
+				cell_explosion(get_turf(imp_in), 120, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 				T.gib()
 
 		else
-			explosion(get_turf(imp_in), 0, 1, 3, 6)
+			cell_explosion(get_turf(imp_in), 220, 44, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 
 	if(need_gib)
 		imp_in.gib()
@@ -255,7 +255,7 @@ Implant Specifics:<BR>"}
 					part.createwound(BRUISE, 60) //mangle them instead
 				else
 					part.droplimb(0, 0, "dismemberment")
-			explosion(get_turf(imp_in), -1, -1, 2, 3)
+			cell_explosion(get_turf(imp_in), 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 			qdel(src)
 
 /obj/item/implant/chem

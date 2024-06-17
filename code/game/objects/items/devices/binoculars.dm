@@ -662,14 +662,16 @@
 			las_b = 0
 			return 0
 		lasertarget.icon_state = "laslock_b"
-		var/HE_power = 0
-		var/con_power = 0
+		var/explosion_power = 140
+		var/falloff = 25
 		if(!plane_toggle)
-			con_power = 5
-			HE_power = 1
+			explosion_power = 170
+			falloff = 25
 		else
-			con_power = 3
-			HE_power = 3
+
+			explosion_power = 220
+			falloff = 44
+
 		var/turf/target = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
 		var/turf/target_2 = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
 		var/turf/target_3 = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
@@ -677,10 +679,11 @@
 			qdel(lasertarget)
 			var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)
 			explosion(target, -1, HE_power, con_power, con_power, , , , cause_data) //Kaboom!
+			cell_explosion(target, explosion_power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null,cause_date)
 			sleep(rand(15,30)) //This is all better done in a for loop, but I am mad lazy
-			explosion(target_2, -1, HE_power, con_power, con_power, , , , cause_data)
+			cell_explosion(target, explosion_power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null,cause_date)
 			sleep(rand(15,30))
-			explosion(target_3, -1, HE_power, con_power, con_power, , , , cause_data)
+			cell_explosion(target, explosion_power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null,cause_date)
 			lasing = FALSE
 			las_b = 1
 			addtimer(VARSET_CALLBACK(src, las_b, FALSE), 5 MINUTES)

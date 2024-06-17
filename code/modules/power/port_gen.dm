@@ -229,7 +229,7 @@ display floor(lastgen) and phorontank amount
 		src.updateDialog()
 
 /obj/structure/machinery/power/port_gen/pacman/proc/overheat()
-	explosion(src.loc, 2, 5, 2, -1)
+	cell_explosion(src.loc, 320, 43, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
 /obj/structure/machinery/power/port_gen/pacman/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, sheet_path))
@@ -364,7 +364,7 @@ display floor(lastgen) and phorontank amount
 	board_path = /obj/item/circuitboard/machine/pacman/super
 
 /obj/structure/machinery/power/port_gen/pacman/super/overheat()
-	explosion(src.loc, 3, 3, 3, -1)
+	cell_explosion(src.loc, 400, 80, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 
 /obj/structure/machinery/power/port_gen/pacman/mrs
 	name = "M.R.S.P.A.C.M.A.N.-type Portable Generator"
@@ -375,4 +375,4 @@ display floor(lastgen) and phorontank amount
 	board_path = /obj/item/circuitboard/machine/pacman/mrs
 
 /obj/structure/machinery/power/port_gen/pacman/mrs/overheat()
-	explosion(src.loc, 4, 4, 4, -1)
+	cell_explosion(src.loc, 500, 70, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)

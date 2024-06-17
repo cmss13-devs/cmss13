@@ -615,9 +615,11 @@
 // explode the light
 
 /obj/structure/machinery/light/proc/explode()
-	var/turf/T = get_turf(src.loc)
+	var/turf/turf = get_turf(src.loc)
 	spawn(0)
 		broken() // break it first to give a warning
+		sleep(2)
+		cell_explosion(turf, 50, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 		sleep(1)
 		qdel(src)
 

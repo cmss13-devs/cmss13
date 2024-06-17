@@ -39,8 +39,7 @@
 		for(var/mob/M as anything in viewers(8, location))
 			to_chat(M, SPAN_WARNING("The solution violently explodes."))
 		cell_explosion(location, power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
-		if(light > 0)
-			return TRUE
+		return TRUE
 
 /datum/effect_system/reagents_explosion/proc/holder_damage(atom/holder)
 	if(holder)

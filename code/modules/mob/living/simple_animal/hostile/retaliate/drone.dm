@@ -147,7 +147,6 @@
 		spawn(rand(50,150))
 			if(!disabled && exploding)
 				cell_explosion(src.loc, 220, 37, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
-				//proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1)
 	..()
 
 //ion rifle!

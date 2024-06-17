@@ -229,7 +229,7 @@ display floor(lastgen) and phorontank amount
 		src.updateDialog()
 
 /obj/structure/machinery/power/port_gen/pacman/proc/overheat()
-	cell_explosion(src.loc, 320, 43, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+	cell_explosion(src.loc, 320, 43, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 
 /obj/structure/machinery/power/port_gen/pacman/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, sheet_path))

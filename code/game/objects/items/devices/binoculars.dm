@@ -678,11 +678,11 @@
 		if(target && istype(target))
 			qdel(lasertarget)
 			var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)
-			cell_explosion(target, explosion_power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null,cause_date)
+			cell_explosion(target, explosion_power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null,cause_data)
 			sleep(rand(15,30)) //This is all better done in a for loop, but I am mad lazy
-			cell_explosion(target, explosion_power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null,cause_date)
+			cell_explosion(target, explosion_power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null,cause_data)
 			sleep(rand(15,30))
-			cell_explosion(target, explosion_power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null,cause_date)
+			cell_explosion(target, explosion_power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null,cause_data)
 			lasing = FALSE
 			las_b = 1
 			addtimer(VARSET_CALLBACK(src, las_b, FALSE), 5 MINUTES)

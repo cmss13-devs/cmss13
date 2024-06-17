@@ -1,4 +1,4 @@
-/datum/equipment_preset/synth_k9/
+/datum/equipment_preset/synth_k9
 	name = "K9 Synthetic"
 	uses_special_name = TRUE
 	languages = ALL_SYNTH_LANGUAGES

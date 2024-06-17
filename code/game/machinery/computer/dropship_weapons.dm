@@ -621,7 +621,8 @@
 	. = list()
 	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 	for(var/datum/cas_signal/LT as anything in cas_group.cas_signals)
-		if(!istype(LT) || !LT.valid_signal())
+		var/obj/object = LT.signal_loc
+		if(!istype(LT) || !LT.valid_signal() || !is_ground_level(object.z))
 			continue
 		var/area/laser_area = get_area(LT.signal_loc)
 		. += list(

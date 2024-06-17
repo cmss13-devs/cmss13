@@ -11041,6 +11041,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
+"bjZ" = (
+/obj/structure/machinery/cm_vending/clothing/marine/snowflake,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/living/gym)
 "bkb" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -12003,12 +12009,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/lower/starboard_fore_hallway)
-"bqm" = (
-/obj/structure/closet/boxinggloves,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/gym)
 "bqF" = (
 /obj/structure/dropship_equipment/fuel/fuel_enhancer,
 /turf/open/floor/almayer{
@@ -25272,6 +25272,19 @@
 	icon_state = "cargo"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
+"evC" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	id = "civ_uniforms";
+	name = "Uniform Vendor Lockdown";
+	pixel_x = -24;
+	pixel_y = -7;
+	req_access_txt = "31"
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/gym)
 "evM" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -26713,8 +26726,7 @@
 	icon_state = "ramptop"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "ai_floor3";
-	light_range = 3
+	icon_state = "ai_floor3"
 	},
 /area/almayer/command/airoom)
 "eXD" = (
@@ -41900,6 +41912,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_p)
+"kox" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors{
+	dir = 4;
+	id = "civ_uniforms"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "cargo_arrow"
+	},
+/area/almayer/living/gym)
 "koB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -44832,6 +44854,9 @@
 	icon_state = "silvercorner"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
+"lnu" = (
+/turf/closed/wall/almayer/reinforced/temphull,
+/area/almayer/living/gym)
 "lnP" = (
 /obj/structure/machinery/vending/cola,
 /obj/structure/window/reinforced,
@@ -50510,8 +50535,7 @@
 	vector_y = -61
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "ai_floor3";
-	light_range = 3
+	icon_state = "ai_floor3"
 	},
 /area/almayer/command/airoom)
 "nkX" = (
@@ -55841,8 +55865,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "ai_floor3";
-	light_range = 3
+	icon_state = "ai_floor3"
 	},
 /area/almayer/command/airoom)
 "oZp" = (
@@ -55963,8 +55986,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "ai_floor3";
-	light_range = 3
+	icon_state = "ai_floor3"
 	},
 /area/almayer/command/airoom)
 "paI" = (
@@ -69646,8 +69668,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "ai_floor3";
-	light_range = 3
+	icon_state = "ai_floor3"
 	},
 /area/almayer/command/airoom)
 "tIF" = (
@@ -73729,10 +73750,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/lower_medical_medbay)
-"vhY" = (
-/obj/structure/sign/goldenplaque,
-/turf/closed/wall/almayer,
-/area/almayer/living/gym)
 "vif" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
@@ -108719,11 +108736,11 @@ sZc
 abj
 mUE
 coo
-eWs
-aRu
-aRu
-aRu
-aRu
+lnu
+lnu
+lnu
+lnu
+lnu
 aRu
 aRu
 bcm
@@ -108922,12 +108939,12 @@ iOX
 kIl
 jmz
 hsK
-wfE
-wfE
-wfE
-wfE
-wfE
-wfE
+lnu
+bjZ
+bjZ
+bjZ
+lnu
+sGU
 wfE
 wfE
 yap
@@ -109126,10 +109143,10 @@ wfE
 wfE
 wfE
 wfE
-sGU
-vhY
+kox
+kox
+kox
 wfE
-bqm
 bsD
 btr
 wfE
@@ -109328,11 +109345,11 @@ jOo
 wrC
 mHx
 pqX
-pqX
+evC
 xbk
 wFR
-bmF
 wFR
+bmF
 wFR
 xbk
 aWw
@@ -110337,7 +110354,7 @@ aad
 sGw
 xzB
 dvD
-wfE
+sGU
 iYx
 opD
 xbk

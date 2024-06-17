@@ -414,10 +414,10 @@
 	var/mob/living/carbon/human/wearer = usr
 	if(!istype(wearer))
 		return
-	var/obj/item/card/id/id_card = wearer.wear_id?.GetID()
-	if(!istype(id_card))
+	var/obj/item/card/id/id_card = wearer.get_idcard()
+	if(!id_card)
 		return
-	
+
 	var/datum/paygrade/paygrade_actual = GLOB.paygrades[id_card.paygrade]
 	if(!paygrade_actual)
 		return

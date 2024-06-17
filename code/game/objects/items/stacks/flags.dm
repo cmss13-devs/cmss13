@@ -115,6 +115,7 @@
 	name = "plantable flag"
 	desc = "A flag of something. This one looks ready to be planted into the ground."
 	w_class = SIZE_LARGE
+	throw_range = 2
 	icon = 'icons/obj/structures/plantable_flag.dmi'
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
@@ -168,7 +169,7 @@
 				if (human.faction != faction)
 					continue
 				allies_nearby++
-				if (prob(33) && human != user)
+				if (prob(40) && human != user)
 					human.emote("warcry")
 
 		user.show_speech_bubble("warcry")

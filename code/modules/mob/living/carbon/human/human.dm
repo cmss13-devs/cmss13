@@ -21,6 +21,13 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
+	RegisterSignal(src, COMSIG_MOB_MOVE_SUCCESS, PROC_REF(on_move_success))
+
+/mob/living/carbon/human/proc/on_move_success()
+	SIGNAL_HANDLER
+	if(embedded_items.len > 0)
+		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
+
 /mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -90,6 +97,8 @@
 	assigned_squad = null
 	selected_ability = null
 	remembered_dropped_objects = null
+
+	UnregisterSignal(src, COMSIG_MOB_MOVE_SUCCESS)
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()

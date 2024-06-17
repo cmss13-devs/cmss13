@@ -10,9 +10,6 @@
 	if(species.slowdown)
 		. += species.slowdown
 
-	if(embedded_items.len > 0)
-		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
-
 	var/reducible_tally = 0 //Tally elements that can be reduced are put here, then we apply MST effects
 	var/wear_slowdown_reduction = 0
 

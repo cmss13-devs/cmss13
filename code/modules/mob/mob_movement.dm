@@ -100,6 +100,8 @@
 	if(living_mob && living_mob.body_position == LYING_DOWN && mob.crawling)
 		return
 
+	var/turf/old_turf = get_turf(mob)
+
 	next_move_dir_add = 0
 	next_move_dir_sub = 0
 
@@ -210,13 +212,14 @@
 
 			if (mob.tile_contents)
 				mob.tile_contents = list()
-		if(.)
+		if(get_turf(mob) != old_turf) // If we actually moved
 			mob.track_steps_walked()
 			mob.life_steps_total++
 			if(mob.clone != null)
 				mob.update_clone()
 
 			next_movement = world.time + move_delay
+			SEND_SIGNAL(mob, COMSIG_MOB_MOVE_SUCCESS)
 		mob.move_intentionally = FALSE
 		moving = FALSE
 

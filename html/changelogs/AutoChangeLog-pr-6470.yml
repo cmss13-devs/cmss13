@@ -1,4 +1,0 @@
-author: "GrrrKitten"
-delete-after: True
-changes:
-  - bugfix: "fixes a bug that fully jammed guns being used in akimbo"

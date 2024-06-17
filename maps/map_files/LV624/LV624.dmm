@@ -15405,6 +15405,12 @@
 	icon_state = "brown"
 	},
 /area/lv624/lazarus/comms)
+"gLH" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = crash
+	},
+/turf/open/space,
+/area/space)
 "gMe" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "lv-rightsidepass"
@@ -25270,7 +25276,7 @@ aac
 aaa
 aaa
 aaa
-aaa
+gLH
 "}
 (2,1,1) = {"
 aac

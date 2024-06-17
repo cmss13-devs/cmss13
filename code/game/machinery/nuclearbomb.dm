@@ -105,11 +105,22 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		to_chat(usr, SPAN_YAUTJABOLD("A human Purification Device. Primitive and bulky, but effective. You don't have time to try figure out their counterintuitive controls. Better leave the hunting grounds before it detonates."))
 
 	if(deployable)
+/*
 		if(!ishuman(user) && !isqueen(user))
+
+*/
+//RUCM START
+		if(!ishuman(user) && (!isqueen(user) && (!isxeno(user) && !crash_nuke)))
+//RUCM END
 			to_chat(usr, SPAN_INFO("You don't have the dexterity to do this!"))
 			return
 
+/*
 		if(isqueen(user))
+*/
+//RUCM START
+		if(isxeno(user))
+//RUCM END
 			if(timing && GLOB.bomb_set)
 				user.visible_message(SPAN_INFO("[user] begins engulfing \the [src] with resin."), SPAN_INFO("You start regurgitating and engulfing the \the [src] with resin... stopping the electronics from working, this will take some time..."))
 				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -169,7 +180,12 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			if(!ishuman(ui.user))
 				return
 
+/*
 			if(!allowed(ui.user))
+*/
+//RUCM START
+			if(!allowed(ui.user) || (crash_nuke && !has_auth))
+//RUCM END
 				to_chat(ui.user, SPAN_INFO("Access denied!"))
 				return
 
@@ -211,7 +227,12 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			. = TRUE
 
 		if("toggleSafety")
+/*
 			if(!allowed(ui.user))
+*/
+//RUCM START
+			if(!allowed(ui.user) || (crash_nuke && !has_auth))
+//RUCM END
 				to_chat(ui.user, SPAN_INFO("Access denied!"))
 				return
 			if(timing)
@@ -237,7 +258,12 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		if("toggleCommandLockout")
 			if(!ishuman(ui.user))
 				return
+/*
 			if(!allowed(ui.user))
+*/
+//RUCM START
+			if(!allowed(ui.user) || (crash_nuke && !has_auth))
+//RUCM END
 				to_chat(ui.user, SPAN_INFO("Access denied!"))
 				return
 			if(command_lockout)
@@ -290,7 +316,12 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	set name = "Make Deployable"
 	set src in oview(1)
 
+/*
 	if(usr.is_mob_incapacitated() || being_used || timing)
+*/
+//RUCM START
+	if(usr.is_mob_incapacitated() || being_used || timing || (crash_nuke && !has_auth))
+//RUCM END
 		return
 
 	if(!ishuman(usr))

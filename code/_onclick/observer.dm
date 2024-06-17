@@ -45,6 +45,7 @@
 						return FALSE
 
 					var/deathtime = world.time - timeofdeath
+/*
 					if(deathtime < XENO_JOIN_DEAD_LARVA_TIME)
 						var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 						message = SPAN_WARNING("[message]")
@@ -52,6 +53,14 @@
 						to_chat(src, SPAN_WARNING("You must wait at least 2.5 minutes before rejoining the game!"))
 						do_observe(target)
 						return FALSE
+*/
+//RUCM START
+					if(deathtime < GLOB.xeno_join_dead_larva_time)
+						to_chat(src, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]."))
+						to_chat(src, SPAN_WARNING("You must wait [DisplayTimeText(GLOB.xeno_join_dead_larva_time - deathtime)] minutes before rejoining the game!"))
+						do_observe(target)
+						return FALSE
+//RUCM END
 
 				if(xeno.hive)
 					for(var/mob_name in xeno.hive.banished_ckeys)

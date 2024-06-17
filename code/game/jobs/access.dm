@@ -391,6 +391,10 @@
 			return "[MAIN_SHIP_NAME] Command"
 		if(ACCESS_MARINE_CREWMAN)
 			return "Vehicle Crewman"
+//RUCM START
+		if(ACCESS_MARINE_WALKER)
+			return "Walker Crewman"
+//RUCM END
 		if(ACCESS_MARINE_PREP)
 			return "Marine Prep"
 		if(ACCESS_MARINE_ENGPREP)

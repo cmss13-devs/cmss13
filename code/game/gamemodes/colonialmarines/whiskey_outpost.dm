@@ -97,6 +97,11 @@
 	for(var/obj/effect/landmark/whiskey_outpost/supplydrops/S)
 		supply_spawns += S.loc
 
+//RUCM START
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	hive.allow_queen_evolve = FALSE
+	hive.allow_no_queen_actions = TRUE
+//RUCM END
 
 	//  WO waves
 	var/list/paths = typesof(/datum/whiskey_outpost_wave) - /datum/whiskey_outpost_wave - /datum/whiskey_outpost_wave/random

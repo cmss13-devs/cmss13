@@ -638,13 +638,13 @@
 		sleep(50) //AWW YEAH
 		var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)
 		flame_radius(cause_data, 3, target, , , , , )
-		explosion(target,  -1, 2, 3, 5, , , , cause_data)
+		cell_explosion(target, 220, 45, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		flame_radius(cause_data, 3, target_2, , , , , )
-		explosion(target_2,  -1, 2, 3, 5, , , , cause_data)
+		cell_explosion(target, 220, 45, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		flame_radius(cause_data, 3, target_3, , , , , )
-		explosion(target_3,  -1, 2, 3, 5, , , , cause_data)
+		cell_explosion(target, 220, 45, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		flame_radius(cause_data, 3, target_4, , , , , )
-		explosion(target_4,  -1, 2, 3, 5, , , , cause_data)
+		cell_explosion(target_4, 220, 45, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		sleep(1)
 		qdel(lasertarget)
 		lasing = FALSE

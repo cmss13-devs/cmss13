@@ -100,7 +100,7 @@
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
 
 /obj/item/pamphlet/skill/k9_handler
-	name = "K9 Handler instructional pamphlet"
+	name = "K9 handler instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a Synthetic K9 Rescue unit on it."
 	icon_state = "pamphlet_k9_handler"
 	trait = /datum/character_trait/skills/k9_handler

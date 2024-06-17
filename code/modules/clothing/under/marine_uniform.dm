@@ -941,7 +941,7 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/synthetic/synth_k9
-	name = "\improper W-Y K9 Serial Identification Collar"
+	name = "\improper W-Y K9 serial identification collar"
 	desc = "Contains a serialized manufacturing number related to this unit's manufacturing date and time."
 	icon = 'icons/mob/humans/species/synth_k9/onmob/synth_k9_overlays.dmi'
 	flags_item = NODROP

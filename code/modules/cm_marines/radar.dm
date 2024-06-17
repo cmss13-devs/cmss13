@@ -235,3 +235,34 @@
 			if(uniform.has_sensor && uniform.sensor_mode >= SENSOR_MODE_LOCATION) // Suit sensors must be on maximum
 				return TRUE
 	return FALSE
+
+
+//Synthetic K9 Scent Tracking, allows K9s to track CLF, UPP, etc as well as Preds... optic camo can't hide the fact you stink!
+/datum/radar/scenttracker/find_atom()
+	return locate(selected) in GLOB.human_mob_list
+
+/datum/radar/scenttracker/scan()
+	. = ..()
+	objects = list()
+	for(var/i in GLOB.human_mob_list)
+		var/mob/living/carbon/human/humanoid = i
+		var/crewmember_name = "Unknown"
+		var/crewmember_rank = "Unknown"
+		if(humanoid.wear_id)
+			var/obj/item/card/id/ID = humanoid.wear_id.GetID()
+			if(ID?.registered_name)
+				crewmember_name = ID.registered_name
+			if(ID?.assignment)
+				crewmember_rank = ID.assignment
+		switch(humanoid.stat)
+			if(CONSCIOUS)
+				crewmember_name = "[crewmember_name] ([crewmember_rank]) (Conscious)"
+			if(UNCONSCIOUS)
+				crewmember_name = "[crewmember_name] ([crewmember_rank]) (Unconscious)"
+			if(DEAD)
+				crewmember_name = "[crewmember_name] ([crewmember_rank]) (DEAD)"
+		var/list/crewinfo = list(
+			ref = REF(humanoid),
+			name = crewmember_name,
+			)
+		objects += list(crewinfo)

@@ -146,3 +146,35 @@
 		sharp = FALSE
 		edge = FALSE
 		force = 0
+
+/obj/item/k9_name_changer/
+	name = "K9 Name Implanter"
+	desc = "Syncs the implanted W-Y Serial Chip to the unit's prefered name."
+	icon = 'icons/obj/items/items.dmi'
+	icon_state = "efundcard"
+	w_class = SIZE_TINY
+
+/obj/item/k9_name_changer/attack_self(mob/user)
+	. = ..()
+	var/newname = capitalize(input(usr, "What do you wish to be named?", "Name:") as null|text)
+	if(!newname)
+		return
+
+	var/verify = input("Are you SURE you wish to be named: [newname]?") in list("yes","no")
+
+	if(verify == "yes")
+		user.change_real_name(user, newname)
+		if(istype(user, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = user
+			if(H.wear_id)
+				H.wear_id.name = "[H.real_name]'s ID Card"
+				H.wear_id.registered_name = "[H.real_name]"
+				if(H.wear_id.assignment)
+					H.wear_id.name += " ([H.wear_id.assignment])"
+
+		var/genderswap = input("Which gender?") in list("male","female")
+
+		user.gender = genderswap
+		qdel(src)
+	else
+		return

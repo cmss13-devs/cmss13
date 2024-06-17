@@ -577,6 +577,18 @@
 	new /obj/item/device/binoculars/range/designator/spotter(src)
 	new /obj/item/pamphlet/skill/spotter(src)
 
+/obj/item/storage/box/kit/k9_handler
+	name = "\improper K9 Handler Kit"
+	desc = "Contains the equipment needed for a K9 Handler to perform their duties."
+	pro_case_overlay = "k9_handler"
+
+/obj/item/storage/box/kit/k9_handler/fill_preset_inventory()
+	new /obj/item/device/k9_scanner(src)
+	new /obj/item/storage/firstaid/synth(src)
+	new /obj/item/device/helmet_visor/welding_visor(src)
+	new /obj/item/device/binoculars(src)
+	new /obj/item/pamphlet/skill/k9_handler(src)
+
 /obj/item/storage/box/kit/engineering_supply_kit
 	name = "\improper Engineering Supply Kit"
 

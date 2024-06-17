@@ -27,7 +27,7 @@
 
 /datum/equipment_preset/synth_k9/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = "Rex"
-	if(new_human.client && new_human.client.prefs)
+	if(new_human.client?.prefs)
 		final_name = new_human.client.prefs.synthetic_name
 		if(!final_name || final_name == "Undefined")
 			final_name = "Rex"

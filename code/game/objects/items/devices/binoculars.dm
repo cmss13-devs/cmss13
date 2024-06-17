@@ -678,7 +678,6 @@
 		if(target && istype(target))
 			qdel(lasertarget)
 			var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)
-			explosion(target, -1, HE_power, con_power, con_power, , , , cause_data) //Kaboom!
 			cell_explosion(target, explosion_power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null,cause_date)
 			sleep(rand(15,30)) //This is all better done in a for loop, but I am mad lazy
 			cell_explosion(target, explosion_power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null,cause_date)

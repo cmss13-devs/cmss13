@@ -44,7 +44,7 @@
 
 /datum/equipment_preset/survivor/pmc/medic
 	name = "Survivor - PMC Medic"
-	assignment = "JOB_PMC_MEDIC"
+	assignment = JOB_PMC_MEDIC
 	paygrade = PAY_SHORT_PMC_MS
 	skills = /datum/skills/civilian/survivor/pmc/medic
 
@@ -63,7 +63,7 @@
 
 /datum/equipment_preset/survivor/pmc/engineer
 	name = "Survivor - PMC Engineer"
-	assignment = "JOB_PMC_ENGINEER"
+	assignment = JOB_PMC_ENGINEER
 	paygrade = PAY_SHORT_PMC_TEC
 	skills = /datum/skills/civilian/survivor/pmc/engineer
 

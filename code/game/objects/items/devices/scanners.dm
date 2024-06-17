@@ -509,7 +509,6 @@ K9 SCANNER
 	tracked_k9 = attacked_mob
 	icon_state = "tracking1"
 	to_chat(user, SPAN_BOLDWARNING("[src] Is Now Synced To: [attacked_mob]."))
-	return
 
 /obj/item/device/k9_scanner/attack_self(mob/user)
 	. = ..()

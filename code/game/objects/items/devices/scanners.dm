@@ -497,23 +497,23 @@ K9 SCANNER
 	var/tracked_k9
 
 /obj/item/device/k9_scanner/attack(mob/attacked_mob as mob, mob/user as mob)
-	if(!istype(attacked_mob, /mob/living/carbon/human))
+	if(!istype(ishuman))
 		to_chat(user, SPAN_BOLDWARNING("ERROR: Cannot Sync To This."))
 		return
 	var/mob/living/carbon/human/attacked_human = attacked_mob
 
-	if(!istype(attacked_human.species, /datum/species/synthetic/synth_k9))
+	if(!istype(isk9synth))
 		to_chat(user, SPAN_BOLDWARNING("ERROR: Cannot Sync To This."))
 		return
 	//we now know the attacked mob is a k9
 	tracked_k9 = attacked_mob
 	icon_state = "tracking1"
-	to_chat(user, SPAN_BOLDWARNING("[src] Is Now Synced To: [attacked_mob]."))
+	to_chat(user, SPAN_WARNING("[src] is now synced to: [attacked_mob]."))
 
 /obj/item/device/k9_scanner/attack_self(mob/user)
 	. = ..()
 	if (tracked_k9 == null)
-		to_chat(user, SPAN_BOLDWARNING("ERROR: No K9 Unit Currently Tracked. Use Scanner on K9 Unit to track them."))
+		to_chat(user, SPAN_WARNING("ERROR: No K9 unit currently tracked. Use scanner on K9 unit to track them."))
 		return
 
 	var/turf/self_turf = get_turf(src)
@@ -522,7 +522,7 @@ K9 SCANNER
 	var/area/scanner_area = get_area(scanner_turf)
 
 	if(self_turf.z != scanner_turf.z || self_area.fake_zlevel != scanner_area.fake_zlevel)
-		to_chat(user, SPAN_BOLDWARNING("The [src] lights up: <b>UNABLE TO FIND LINKED K9 UNIT ON THIS LEVEL!<b>"))
+		to_chat(user, SPAN_BOLDWARNING("The [src] lights up: <b>UNABLE TO REACH LINKED K9!<b>"))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 		return
 

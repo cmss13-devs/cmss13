@@ -1954,6 +1954,7 @@
 #include "code\modules\mob\living\carbon\human\powers\human_powers.dm"
 #include "code\modules\mob\living\carbon\human\powers\issue_order.dm"
 #include "code\modules\mob\living\carbon\human\species\emote-monkey.dm"
+#include "code\modules\mob\living\carbon\human\species\emote-synth_k9.dm"
 #include "code\modules\mob\living\carbon\human\species\human.dm"
 #include "code\modules\mob\living\carbon\human\species\monkey.dm"
 #include "code\modules\mob\living\carbon\human\species\species.dm"

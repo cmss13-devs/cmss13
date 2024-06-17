@@ -191,7 +191,7 @@
 
 		var/turf/spawn_turf
 		if(range_to_spawn_on)
-			for(spawn_turf in range(initial_turf, range_to_spawn_on))
+			for(spawn_turf in range(range_to_spawn_on, initial_turf))
 				if(!spawn_turf || istype(spawn_turf, /turf/closed))
 					continue
 				turfs += spawn_turf
@@ -317,7 +317,7 @@
 
 		var/turf/spawn_turf
 		if(range_to_spawn_on)
-			for(spawn_turf in range(initial_turf, range_to_spawn_on))
+			for(spawn_turf in range(range_to_spawn_on, initial_turf))
 				if(!spawn_turf || istype(spawn_turf, /turf/closed))
 					continue
 				turfs += spawn_turf

@@ -257,27 +257,6 @@
 /obj/effect/alien/egg/forsaken
 	hivenumber = XENO_HIVE_FORSAKEN
 
-/obj/effect/alien/egg/attack_ghost(mob/dead/observer/user)
-	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
-	if(is_mainship_level(src) && !SSticker.mode.is_in_endgame) // if we're not in hijack don't allow this
-		to_chat(user, SPAN_WARNING("The hive's influence doesn't reach that far!"))
-		return
-	if(status == EGG_GROWING)
-		to_chat(user, SPAN_WARNING("\The [src] is still growing, give it some time!"))
-		return
-	if(status != EGG_GROWN)
-		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
-		return
-
-	if(!GLOB.hive_datum[hivenumber].can_spawn_as_hugger(user))
-		return
-	//Need to check again because time passed due to the confirmation window
-	if(status != EGG_GROWN)
-		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
-		return
-	GLOB.hive_datum[hivenumber].spawn_as_hugger(user, src)
-	Burst(FALSE, FALSE, null, TRUE)
-
 //The invisible traps around the egg to tell it there's a mob right next to it.
 /obj/effect/egg_trigger
 	name = "egg trigger"

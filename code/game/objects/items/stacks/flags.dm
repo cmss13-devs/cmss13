@@ -84,15 +84,17 @@
 	name = "flag"
 	desc = "A flag of something. This one looks like you could dismantle it."
 	icon = 'icons/obj/structures/plantable_flag.dmi'
+	pixel_x = 9 // All flags need to be offset to the right by 9 to be centered.
 	layer = ABOVE_MOB_LAYER
 
-	var/flag_type = /obj/item/flag/plantable
+	var/flag_type = /obj/item/flag/plantable /// The typepath for the flag item that gets spawned when the flag is taken down.
+	COOLDOWN_DECLARE(warcry_cooldown_struc) /// Used to limit the spam of the warcry_extra_sound
 
 /obj/structure/flag/plantable/attack_hand(mob/user)
 	..()
 	disassemble(user, flag_type)
 
-/obj/structure/flag/proc/disassemble(mob/user, flag_type)
+/obj/structure/flag/plantable/proc/disassemble(mob/user, flag_type)
 	if(user.action_busy)
 		return
 
@@ -106,13 +108,8 @@
 	user.visible_message(SPAN_NOTICE("[user] starts takes [src] down!"), SPAN_NOTICE("You take [src] down!"))
 	var/obj/item/flag/plantable/flag_item = new flag_type(src.loc)
 	user.put_in_hands(flag_item)
+	COOLDOWN_START(flag_item, warcry_cooldown_item, COOLDOWN_TIMELEFT(src, warcry_cooldown_struc))
 	qdel(src)
-
-/obj/structure/flag/plantable/ua
-	name = "\improper United Americas flag"
-	desc = "Your forefathers died for this. Are you ready to do the same?"
-	icon_state = "flag_ua"
-	flag_type = /obj/item/flag/plantable/ua
 
 /obj/item/flag/plantable
 	name = "plantable flag"
@@ -126,13 +123,19 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'
 		)
 
-	var/flag_type = /obj/structure/flag/plantable
-	var/faction //Used to check if nearby mobs belong to a faction when calculating for the rallying cry.
-	var/play_warcry = FALSE
-	var/warcry_sound
-	var/warcry_extra_sound
+	var/flag_type = /obj/structure/flag/plantable /// The typepath of the flag structure that gets spawned when the flag is planted.
+	var/faction /// Used to check if nearby mobs belong to a faction when calculating for the stronger warcry.
+	var/play_warcry = FALSE /// Does the flag play a unique warcry when planted? (Only while on harm intent.)
+	var/warcry_sound /// The warcry's sound path.
+	var/warcry_extra_sound /// When there are more than 14 allies nearby, play this stronger warcry.
+	COOLDOWN_DECLARE(warcry_cooldown_item) /// Used to limit the spam of the warcry_extra_sound
 
-/obj/item/flag/plantable/proc/plant_flag(mob/user, play_warcry = FALSE, warcry_sound, warcry_extra_sound, faction)
+/obj/item/flag/plantable/get_examine_text()
+	. = ..()
+	if(play_warcry)
+		. += SPAN_NOTICE("Planting the flag while in <b>HARM</b> intent will cause you to bellow out a rallying warcry!")
+
+/obj/item/flag/plantable/proc/plant_flag(mob/living/user, play_warcry = FALSE, warcry_sound, warcry_extra_sound, faction)
 	if(user.action_busy)
 		return
 
@@ -151,42 +154,47 @@
 	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
 
-	//If there are more than 14 allies nearby, play a stronger rallying cry.
-	var/allies_nearby = 0
-	if(play_warcry)
-		for (var/mob/living/carbon/human in orange(user, 7))
-			if (human.stat == DEAD)
-				continue
-			if (human.faction != faction)
-				continue
-			allies_nearby++
-			if (prob(33))
-				human.emote("warcry")
+	user.visible_message(SPAN_NOTICE("[user] plants [src] into the ground!"), SPAN_NOTICE("You plant [src] into the ground!"))
+	var/obj/structure/flag/plantable/planted_flag = new flag_type(turf_to_plant)
 
+	// If there are more than 14 allies nearby, play a stronger rallying cry.
+	// Otherwise, play the default warcry sound if there is one. If not, play a generic flag raising sfx.
+	if(play_warcry && user.faction == faction && user.a_intent == INTENT_HARM)
+		var/allies_nearby = 0
+		if(COOLDOWN_FINISHED(src, warcry_cooldown_item))
+			for (var/mob/living/carbon/human in orange(planted_flag, 7))
+				if (human.stat == DEAD)
+					continue
+				if (human.faction != faction)
+					continue
+				allies_nearby++
+				if (prob(33) && human != user)
+					human.emote("warcry")
+
+		user.show_speech_bubble("warcry")
 		if(allies_nearby > 14)
 			playsound(user, warcry_extra_sound, 30)
+			// Start a cooldown on the flag structure. This way we can keep track of the cooldown when the flag is hoisted and taken down.
+			COOLDOWN_START(planted_flag, warcry_cooldown_struc, 90 SECONDS)
+			user.say("*me shouts an invigorating rallying cry!")
 		else
 			playsound(user, warcry_sound, 30)
+			user.say("*me shouts an inspiring cry!")
 	else
 		playsound(user, 'sound/effects/flag_raised.ogg', 30)
 
-
-	user.visible_message(SPAN_NOTICE("[user] plants [src] into the ground!"), SPAN_NOTICE("You plant [src] into the ground!"))
-	var/obj/structure/flag/plantable/planted_flag = new flag_type(turf_to_plant)
-	planted_flag.pixel_x += 9
 	qdel(src)
 
 /obj/item/flag/plantable/attack_self(mob/user)
 	..()
 	plant_flag(user, play_warcry, warcry_sound, warcry_extra_sound, faction)
 
-/obj/item/flag/plantable/attack(mob/user)
-	..()
-	plant_flag(user, play_warcry, warcry_sound, warcry_extra_sound, faction)
+// UNITED AMERICAS FLAG //
+//////////////////////////
 
 /obj/item/flag/plantable/ua
 	name = "\improper United Americas flag"
-	desc = "A flag of the United Americas. Your forefathers died to raise this flag. Are you ready to do the same?"
+	desc = "The flag of the United Americas. Your forefathers died to raise this flag. Are you ready to do the same?"
 	icon = 'icons/obj/structures/plantable_flag.dmi'
 	icon_state = "flag_ua"
 	flag_type = /obj/structure/flag/plantable/ua
@@ -194,3 +202,9 @@
 	play_warcry = TRUE
 	warcry_sound = 'sound/effects/flag_warcry_ua.ogg'
 	warcry_extra_sound = 'sound/effects/flag_warcry_ua_extra.ogg'
+
+/obj/structure/flag/plantable/ua
+	name = "\improper United Americas flag"
+	desc = "The flag of the United Americas. Semper fi, marine."
+	icon_state = "flag_ua_planted"
+	flag_type = /obj/item/flag/plantable/ua

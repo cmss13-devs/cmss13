@@ -239,5 +239,5 @@
 	prefix = "2ndLt Combat Lifesaver"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o1
 	ranking = 12
-	pay_multiplier = 1
+	pay_multiplier = 0
 	officer_grade = GRADE_OFFICER

@@ -1244,6 +1244,15 @@
 "aFZ" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/medbay)
+"aGD" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/obj/item/reagent_container/glass/bucket/janibucket,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/civres_blue)
 "aGF" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/window/reinforced{
@@ -2821,6 +2830,7 @@
 "bxV" = (
 /obj/item/clothing/head/cmcap,
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/wood,
 /area/fiorina/station/chapel)
 "bya" = (
@@ -9039,9 +9049,7 @@
 	},
 /area/fiorina/station/civres_blue)
 "eJN" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
+/obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/wood,
 /area/fiorina/station/chapel)
 "eJQ" = (
@@ -13212,6 +13220,14 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
+"gVh" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "exposed01-supply"
+	},
+/obj/structure/machinery/door/airlock/prison_hatch/autoname,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/chapel)
 "gVs" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/plating/prison,
@@ -18979,8 +18995,8 @@
 	},
 /area/fiorina/station/research_cells)
 "jPR" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -23521,6 +23537,9 @@
 	},
 /obj/item/card/id/guest,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
 /turf/open/floor/prison{
 	icon_state = "redfull"
 	},
@@ -24246,15 +24265,14 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "myi" = (
-/obj/item/reagent_container/glass/bucket/janibucket,
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4;
-	icon_state = "exposed01-supply"
+	dir = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/fiorina/station/civres_blue)
+/turf/open/floor/prison,
+/area/fiorina/station/security)
 "myj" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating/prison,
@@ -28275,6 +28293,12 @@
 /obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/wood,
 /area/fiorina/station/park)
+"oyI" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/chapel)
 "oyJ" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_29";
@@ -33935,10 +33959,10 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "rDZ" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "rEr" = (
@@ -35554,11 +35578,11 @@
 /area/fiorina/oob)
 "ssM" = (
 /obj/structure/janitorialcart,
-/obj/item/tool/mop,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	icon_state = "exposed01-supply"
 	},
+/obj/item/tool/mop,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -36220,7 +36244,9 @@
 /area/fiorina/station/lowsec)
 "sJB" = (
 /obj/item/stack/folding_barricade,
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "sJN" = (
@@ -40186,6 +40212,10 @@
 "uNm" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/random/gun/rifle/highchance,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "exposed01-supply"
+	},
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "uNp" = (
@@ -67450,7 +67480,7 @@ oEi
 hoo
 bNE
 cOj
-myi
+mBh
 rja
 rja
 eXp
@@ -67874,7 +67904,7 @@ wQb
 bNE
 bNE
 cOj
-seh
+aGD
 rja
 eXp
 rKA
@@ -67909,7 +67939,7 @@ ycC
 trS
 dzf
 rDZ
-ycC
+oyI
 bis
 bis
 wMi
@@ -68121,7 +68151,7 @@ ycC
 aUf
 bis
 bis
-wlG
+gVh
 bis
 nOz
 lqq
@@ -74971,7 +75001,7 @@ qHQ
 kWv
 gIB
 mdH
-rVV
+myi
 uLQ
 ihB
 hsC
@@ -75182,7 +75212,7 @@ nWv
 qHQ
 iIE
 gIB
-ubP
+qHQ
 gKg
 ubP
 iPz
@@ -75394,7 +75424,7 @@ wHA
 rwM
 mNc
 gIB
-gag
+sdv
 aTx
 uGY
 gIB
@@ -75606,7 +75636,7 @@ ubP
 qHQ
 bZY
 uGY
-uxv
+gAs
 uGY
 uGY
 ihB

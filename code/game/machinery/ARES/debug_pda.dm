@@ -344,11 +344,12 @@
 
 /obj/item/device/ai_tech_pda/ui_close(mob/user)
 	. = ..()
-	current_menu = "login"
-	last_menu = "off"
-	if(logged_in)
+	if(set_ui == "AresAdmin")
 		access_list += "[logged_in] logged out at [worldtime2text()]."
 		logged_in = null
+		authentication = 0
+		current_menu = "login"
+		last_menu = "off"
 	update_icon()
 
 /obj/item/device/ai_tech_pda/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -357,6 +358,9 @@
 		return
 	var/mob/living/carbon/human/user = ui.user
 	var/playsound = TRUE
+
+	if(set_ui == "AresAdmin" && !check_security(user))
+		return FALSE
 
 	switch(action)
 		if("go_back")
@@ -367,16 +371,34 @@
 			last_menu = temp_holder
 
 		if("login")
-			var/obj/item/card/id/card = user.wear_id
-			if(!card || !card.check_biometrics(user))
+			var/failed = FALSE
+			var/obj/item/card/id/idcard = user.get_active_hand()
+			if(!istype(idcard))
+				if(user.wear_id)
+					idcard = user.wear_id
+					if(!istype(idcard))
+						failed = TRUE
+			if(!idcard.check_biometrics(user))
+				failed = TRUE
+			if(failed)
 				to_chat(user, SPAN_WARNING("You require an authenticated ID card to access this device!"))
 				playsound(src, 'sound/machines/terminal_error.ogg', 15, TRUE)
 				return FALSE
-			logged_in = user.real_name
-			access_list += "[logged_in] at [worldtime2text()]."
-			current_menu = "main"
+
+			switch(set_ui)
+				if("AresInterface", "AresAdmin")
+					authentication = get_ares_access(idcard)
+				if("WorkingJoe")
+					authentication = get_apollo_access(idcard)
+
+			if(authentication)
+				logged_in = idcard.registered_name
+				access_list += "[logged_in] at [worldtime2text()]."
+				current_menu = "main"
 
 		if("sudo")
+			if(!check_security(user) || set_ui == "AresAdmin")
+				return FALSE
 			var/new_user = tgui_input_text(user, "Enter Sudo Username", "Sudo User", encode = FALSE)
 			if(new_user)
 				if(new_user == link.interface.sudo_holder)
@@ -392,6 +414,8 @@
 				datacore.interface_access_list += "[link.interface.last_login] at [worldtime2text()], Sudo Access."
 				return TRUE
 		if("sudo_logout")
+			if(!check_security(user))
+				return FALSE
 			datacore.interface_access_list += "[link.interface.last_login] at [worldtime2text()], Sudo Logout."
 			link.interface.last_login = link.interface.sudo_holder
 			link.interface.sudo_holder = null
@@ -479,10 +503,14 @@
 			datacore.records_talking -= conversation
 
 		if("fake_message_ares")
+			if(!check_security(user))
+				return FALSE
 			var/message = tgui_input_text(user, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)
 			if(message)
 				link.interface.message_ares(message, user, params["active_convo"], TRUE)
 		if("ares_reply")
+			if(!check_security(user))
+				return FALSE
 			var/message = tgui_input_text(user, "What do you wish to reply with?", "ARES Response", encode = FALSE)
 			if(message)
 				link.interface.response_from_ares(message, params["active_convo"])
@@ -522,6 +550,8 @@
 			return claim
 
 		if("auth_access")
+			if(!check_security(user))
+				return FALSE
 			playsound = FALSE
 			var/datum/ares_ticket/access/access_ticket = locate(params["ticket"])
 			if(!access_ticket)
@@ -626,6 +656,8 @@
 			return TRUE
 
 		if("delete_record")
+			if(!check_security(user))
+				return FALSE
 			playsound = FALSE
 			var/datum/ares_record/record = locate(params["record"])
 			if(record.record_name == ARES_RECORD_DELETED)
@@ -667,6 +699,8 @@
 			playsound(src, 'sound/machines/terminal_error.ogg', 15, TRUE)
 
 		if("general_quarters")
+			if(!check_security(user))
+				return FALSE
 			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
 				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
@@ -681,6 +715,8 @@
 			. = TRUE
 
 		if("evacuation_start")
+			if(!check_security(user))
+				return FALSE
 			if(GLOB.security_level < SEC_LEVEL_RED)
 				to_chat(user, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
@@ -702,6 +738,8 @@
 			. = TRUE
 
 		if("distress")
+			if(!check_security(user))
+				return FALSE
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 			if(world.time < DISTRESS_TIME_LOCK)
@@ -730,6 +768,8 @@
 			return TRUE
 
 		if("nuclearbomb")
+			if(!check_security(user))
+				return FALSE
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 			if(world.time < NUCLEAR_TIME_LOCK)
@@ -760,6 +800,8 @@
 			return TRUE
 
 		if("bioscan")
+			if(!check_security(user))
+				return FALSE
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 			if(world.time < FORCE_SCAN_LOCK)
@@ -778,6 +820,8 @@
 			return TRUE
 
 		if("trigger_vent")
+			if(!check_security(user))
+				return FALSE
 			playsound = FALSE
 			var/obj/structure/pipes/vents/pump/no_boom/gas/sec_vent = locate(params["vent"])
 			if(!istype(sec_vent) || sec_vent.welded)
@@ -797,6 +841,8 @@
 			log_admin("[key_name(user)] released nerve gas from Vent '[sec_vent.vent_tag]' via ARES.")
 
 		if("security_lockdown")
+			if(!check_security(user))
+				return FALSE
 			if(!COOLDOWN_FINISHED(datacore, aicore_lockdown))
 				to_chat(user, SPAN_BOLDWARNING("AI Core Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(datacore, aicore_lockdown)] seconds!"))
 				return FALSE
@@ -804,6 +850,8 @@
 			return TRUE
 
 		if("update_sentries")
+			if(!check_security(user))
+				return FALSE
 			playsound = FALSE
 			var/new_iff = params["chosen_iff"]
 			if(!new_iff)
@@ -877,7 +925,8 @@
 
 			contents += "</center></tbody></table>"
 
-			var/obj/item/paper/log = new(loc)
+			var/location = get_turf(loc)
+			var/obj/item/paper/log = new(location)
 			log.name = "ASRS Audit Log"
 			log.info += contents
 			log.icon_state = "paper_uscm_words"
@@ -886,3 +935,27 @@
 	if(playsound)
 		var/sound = pick('sound/machines/pda_button1.ogg', 'sound/machines/pda_button2.ogg')
 		playsound(src, sound, 15, TRUE)
+
+/obj/item/device/ai_tech_pda/proc/check_security(mob/living/carbon/human/user)
+	if(user.real_name != logged_in)
+		playsound(src, 'sound/machines/lockdownalarm.ogg', 15, TRUE)
+		audible_message(SPAN_ALERTWARNING("[src] blares a security alarm."))
+
+		current_menu = "login"
+		last_menu = "off"
+		logged_in = null
+		authentication = 0
+		access_code = 0
+
+		if(set_ui == "AresAdmin")
+			set_ui = "AresAccessCode"
+
+		var/message1 = "ATTENTION! CORE SECURITY ALERT! UNAUTHORIZED USE OF DIAGNOSTIC TABLET DETECTED!"
+		var/message2 = "ASSOCIATED FINGERPRINT: [user.real_name]. ASSOCIATED LOCATION: [get_area_name(user)]."
+
+		ares_apollo_talk(message1)
+		ares_apollo_talk(message2)
+		ai_silent_announcement(message1, ":p")
+		ai_silent_announcement(message2, ":p")
+		return FALSE
+	return TRUE

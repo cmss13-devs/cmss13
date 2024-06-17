@@ -368,9 +368,9 @@
 /obj/structure/prop/hybrisa/vehicles/car_pileup
 	name = "burned out vehicle pileup"
 	desc = "Burned-out vehicles block your path, their charred frames and shattered glass hinting at recent chaos. The acrid smell of smoke lingers."
-	icon = 'icons/obj/structures/props/car_pileup.dmi'
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/car_pileup.dmi'
 	icon_state = "car_pileup"
-	bound_height = 128
+	bound_height = 96
 	bound_width = 128
 	unslashable = TRUE
 	unacidable = TRUE

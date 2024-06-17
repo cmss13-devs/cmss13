@@ -326,9 +326,7 @@
 	var/viewsize = 12
 	var/tileoffset = 11
 
-	if(is_zoomed)
-		return
-	if(!client)
+	if(is_zoomed || !client)
 		return
 	is_zoomed = TRUE
 	RegisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(disable_zoom))

@@ -3241,6 +3241,7 @@
 /obj/item/device/radio/marine,
 /obj/item/device/radio/marine,
 /obj/item/folded_tent/cmd,
+/obj/item/flag/plantable/ua,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},

@@ -24,10 +24,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 	var/daze_length_seconds = 1
-	var/slow_length_seconds = 2
-
-	var/extinguish_light_range = 7
-
+	var/slow_length_seconds = 4
 
 /// Leap ability, crashing down dealing major damage to mobs and structures in the area.
 /datum/action/xeno_action/activable/destroy

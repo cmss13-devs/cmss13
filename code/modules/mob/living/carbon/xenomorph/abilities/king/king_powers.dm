@@ -47,7 +47,7 @@
 	smoke_gas.start()
 
 	// Turn off lights for items in the area dependant on distance.
-	for(var/obj/item/device/potential_lightsource in orange(extinguish_light_range, owner))
+	for(var/obj/item/device/potential_lightsource in view(owner))
 
 		var/time_to_extinguish = get_dist(owner, potential_lightsource) DECISECONDS
 
@@ -67,10 +67,15 @@
 			addtimer(CALLBACK(marinearmour, TYPE_PROC_REF(/atom, turn_light), null, FALSE), time_to_extinguish)
 
 	// "Confuse" and slow humans in the area and turn off their armour lights.
-	for(var/mob/living/carbon/human/human in orange(extinguish_light_range, owner))
+	for(var/mob/living/carbon/human/human in view(owner))
 		human.EyeBlur(daze_length_seconds)
 		human.Daze(daze_length_seconds)
 		human.Superslow(slow_length_seconds)
+		human.add_client_color_matrix("nvg_visor", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#eeeeee")))
+		human.overlay_fullscreen("nvg_visor", /atom/movable/screen/fullscreen/flash/noise/nvg)
+		addtimer(CALLBACK(human, TYPE_PROC_REF(/mob, remove_client_color_matrix), "nvg_visor", 1 SECONDS), 5 SECONDS)
+		addtimer(CALLBACK(human, TYPE_PROC_REF(/mob, clear_fullscreen), "nvg_visor", 0.5 SECONDS), 5 SECONDS)
+
 		to_chat(human, SPAN_HIGHDANGER("[xeno]'s roar overwhelms your entire being!"))
 		shake_camera(human, 6, 1)
 
@@ -79,6 +84,18 @@
 		if(istype(suit, /obj/item/clothing/suit/storage/marine))
 			var/obj/item/clothing/suit/storage/marine/armour = suit
 			addtimer(CALLBACK(armour, TYPE_PROC_REF(/atom, turn_light), null, FALSE), time_to_extinguish)
+
+
+	// Temporary blackout
+	for(var/atom/potential_light_source in view(owner))
+		var/power = potential_light_source.light_power
+		if(power > 0)
+			if(potential_light_source.light_system != MOVABLE_LIGHT)
+				potential_light_source.set_light(l_range=0)
+				addtimer(CALLBACK(potential_light_source, TYPE_PROC_REF(/atom, set_light), power), 10 SECONDS)
+			else
+				potential_light_source.set_light_range(0)
+				addtimer(CALLBACK(potential_light_source, TYPE_PROC_REF(/atom, set_light_range), power), 10 SECONDS)
 
 	apply_cooldown()
 	..()

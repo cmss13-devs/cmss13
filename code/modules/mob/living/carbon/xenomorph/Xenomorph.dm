@@ -503,7 +503,14 @@
 	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
+	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_door))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
+
+/mob/living/carbon/xenomorph/proc/check_door(mob/xeno, turf/new_loc)
+	SIGNAL_HANDLER
+	for(var/obj/structure/mineral_door/resin/door in new_loc.contents)
+		if(door.hivenumber == hivenumber)
+			door.Open()
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	SIGNAL_HANDLER

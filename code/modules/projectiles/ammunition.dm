@@ -199,7 +199,7 @@ They're all essentially identical when it comes to getting the job done.
 		var/severity = floor(current_rounds / 50)
 		//the more ammo inside, the faster and harder it cooks off
 		if(severity > 0)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, ((severity > 4) ? 0 : -1), clamp(severity, 0, 1), clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), loc, -1, ((severity > 4) ? 20 : 10), 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, flame_cause_data), max(5 - severity, 2))
 
 	if(!QDELETED(src))
 		qdel(src)

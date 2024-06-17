@@ -257,8 +257,8 @@
 	if(!GLOB.available_specialist_kit_boxes[selection] || GLOB.available_specialist_kit_boxes[selection] <= 0)
 		to_chat(user, SPAN_WARNING("No more kits of this type may be chosen!"))
 		return FALSE
-	var/obj/item/card/id/ID = user.wear_id
-	if(!istype(ID) || ID.registered_ref != WEAKREF(user))
+	var/obj/item/card/id/card = user.get_idcard()
+	if(!card || card.registered_ref != WEAKREF(user))
 		to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("ID card")] or [SPAN_INFO("dog tags")] to select a specialization!"))
 		return
 	var/turf/T = get_turf(loc)
@@ -297,8 +297,8 @@
 				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
 	if(specialist_assignment)
 		user.put_in_hands(spec_box)
-		ID.set_assignment((user.assigned_squad && squad_assignment_update ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")
-		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
+		card.set_assignment((user.assigned_squad && squad_assignment_update ? (user.assigned_squad.name + " ") : "") + card.assignment + " ([specialist_assignment])")
+		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), card.assignment)
 		return TRUE
 	return FALSE
 

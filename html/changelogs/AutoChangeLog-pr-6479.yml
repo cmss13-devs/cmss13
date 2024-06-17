@@ -1,0 +1,4 @@
+author: "coldironwarrior"
+delete-after: True
+changes:
+  - bugfix: "fixed corpsmen gloves and the map being mutually exclusive in the corpsman vendor"

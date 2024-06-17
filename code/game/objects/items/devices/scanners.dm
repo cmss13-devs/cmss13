@@ -479,7 +479,7 @@ K9 SCANNER
 	inherent_traits = list(TRAIT_TOOL_TRADEBAND)
 
 /obj/item/device/k9_scanner
-	name = "\improper K9 Tracking Device"
+	name = "\improper K9 tracking device"
 	desc = "A small handheld tool used to track Synthetic K9 helpers, they tend to run off to strange places at inopportune times..."
 	icon_state = "tracking0"
 	item_state = "tracking1"

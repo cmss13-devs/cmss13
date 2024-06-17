@@ -19,11 +19,6 @@
 	icon = 'icons/obj/vehicles/pizza_van.dmi'
 	icon_state = "van_base"
 
-/obj/effect/vehicle_spawner/box_van/pizza_van/Initialize()
-	. = ..()
-	spawn_vehicle()
-	qdel(src)
-
 //PRESET: no hardpoints
 /obj/effect/vehicle_spawner/box_van/pizza_van/spawn_vehicle()
 
@@ -49,5 +44,5 @@
 	handle_direction(PIZZA)
 	PIZZA.update_icon()
 
-/obj/effect/vehicle_spawner/pizza_van/fixed/load_hardpoints(obj/vehicle/multitile/box_van/pizza_van/V)
+/obj/effect/vehicle_spawner/box_van/pizza_van/fixed/load_hardpoints(obj/vehicle/multitile/box_van/pizza_van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)

@@ -33,8 +33,6 @@
 				M.apply_effect(rand(1,5), WEAKEN)
 		return
 	else
-		var/light = -1
-
 		var/power = 120
 		var/falloff = (power*8)/amount
 

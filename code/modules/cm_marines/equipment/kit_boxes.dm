@@ -578,7 +578,7 @@
 	new /obj/item/pamphlet/skill/spotter(src)
 
 /obj/item/storage/box/kit/k9_handler
-	name = "\improper K9 Handler Kit"
+	name = "\improper K9 handler Kit"
 	desc = "Contains the equipment needed for a K9 Handler to perform their duties."
 	pro_case_overlay = "k9_handler"
 

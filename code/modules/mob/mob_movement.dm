@@ -215,9 +215,11 @@
 			mob.life_steps_total++
 			if(mob.clone != null)
 				mob.update_clone()
+
+			next_movement = world.time + move_delay
 		mob.move_intentionally = FALSE
 		moving = FALSE
-		next_movement = world.time + move_delay
+
 	return
 
 ///Process_Spacemove

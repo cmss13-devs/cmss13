@@ -87,13 +87,16 @@
 	pixel_x = 9 // All flags need to be offset to the right by 9 to be centered.
 	layer = ABOVE_MOB_LAYER
 
-	var/flag_type = /obj/item/flag/plantable /// The typepath for the flag item that gets spawned when the flag is taken down.
-	COOLDOWN_DECLARE(warcry_cooldown_struc) /// Used to limit the spam of the warcry_extra_sound
+	/// The typepath for the flag item that gets spawned when the flag is taken down.
+	var/flag_type = /obj/item/flag/plantable
+	/// Used to limit the spam of the warcry_extra_sound
+	COOLDOWN_DECLARE(warcry_cooldown_struc)
 
 /obj/structure/flag/plantable/attack_hand(mob/user)
 	..()
 	disassemble(user, flag_type)
 
+/// Proc for dismantling the flag into an item that can be picked up.
 /obj/structure/flag/plantable/proc/disassemble(mob/user, flag_type)
 	if(user.action_busy)
 		return
@@ -106,7 +109,7 @@
 
 	playsound(user, 'sound/effects/flag_raised.ogg', 30)
 	user.visible_message(SPAN_NOTICE("[user] starts takes [src] down!"), SPAN_NOTICE("You take [src] down!"))
-	var/obj/item/flag/plantable/flag_item = new flag_type(src.loc)
+	var/obj/item/flag/plantable/flag_item = new flag_type(loc)
 	user.put_in_hands(flag_item)
 	COOLDOWN_START(flag_item, warcry_cooldown_item, COOLDOWN_TIMELEFT(src, warcry_cooldown_struc))
 	qdel(src)
@@ -124,18 +127,26 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'
 		)
 
-	var/flag_type = /obj/structure/flag/plantable /// The typepath of the flag structure that gets spawned when the flag is planted.
-	var/faction /// Used to check if nearby mobs belong to a faction when calculating for the stronger warcry.
-	var/play_warcry = FALSE /// Does the flag play a unique warcry when planted? (Only while on harm intent.)
-	var/warcry_sound /// The warcry's sound path.
-	var/warcry_extra_sound /// When there are more than 14 allies nearby, play this stronger warcry.
-	COOLDOWN_DECLARE(warcry_cooldown_item) /// Used to limit the spam of the warcry_extra_sound
+	/// The typepath of the flag structure that gets spawned when the flag is planted.
+	var/flag_type = /obj/structure/flag/plantable
+	/// Used to check if nearby mobs belong to a faction when calculating for the stronger warcry.
+	var/faction
+	/// Does the flag play a unique warcry when planted? (Only while on harm intent.)
+	var/play_warcry = FALSE
+	/// The warcry's sound path.
+	var/warcry_sound
+	/// When there are more than 14 allies nearby, play this stronger warcry.
+	var/warcry_extra_sound
+	/// Used to limit the spam of the warcry_extra_sound
+	COOLDOWN_DECLARE(warcry_cooldown_item)
 
 /obj/item/flag/plantable/get_examine_text()
 	. = ..()
 	if(play_warcry)
 		. += SPAN_NOTICE("Planting the flag while in <b>HARM</b> intent will cause you to bellow out a rallying warcry!")
 
+
+/// Proc for turning the flag item into a structure.
 /obj/item/flag/plantable/proc/plant_flag(mob/living/user, play_warcry = FALSE, warcry_sound, warcry_extra_sound, faction)
 	if(user.action_busy)
 		return
@@ -145,6 +156,15 @@
 		return
 
 	var/turf/turf_to_plant = get_step(user, user.dir)
+	if(istype(turf_to_plant, /turf/open))
+		var/turf/open/floor = turf_to_plant
+		if(!floor.allow_construction || istype(floor, /turf/open/space))
+			to_chat(user, SPAN_WARNING("You cannot deploy [src] here, find a more secure surface!"))
+			return
+	else
+		to_chat(user, SPAN_WARNING("[turf_to_plant] is blocking you from deploying [src]!"))
+		return
+
 	for(var/obj/object in turf_to_plant)
 		if(object.density)
 			to_chat(usr, SPAN_WARNING("You need a clear, open area to plant [src], something is blocking the way in front of you!"))
@@ -164,9 +184,7 @@
 		var/allies_nearby = 0
 		if(COOLDOWN_FINISHED(src, warcry_cooldown_item))
 			for (var/mob/living/carbon/human in orange(planted_flag, 7))
-				if (human.stat == DEAD)
-					continue
-				if (human.faction != faction)
+				if (human.is_dead() || human.faction != faction)
 					continue
 				allies_nearby++
 				if (prob(40) && human != user)

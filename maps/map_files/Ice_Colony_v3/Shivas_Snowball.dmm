@@ -20878,6 +20878,11 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
+"qbD" = (
+/obj/structure/bed,
+/obj/item/toy/plush/shark,
+/turf/open/floor/wood,
+/area/shiva/interior/colony/botany)
 "qbF" = (
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -47208,7 +47213,7 @@ vNJ
 hmQ
 rBH
 gKQ
-wZW
+qbD
 rBH
 ejt
 ejt

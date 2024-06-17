@@ -7823,6 +7823,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/spider/spiderling/nogrow,
+/obj/item/toy/plush/shark,
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/executive)
 "dFz" = (

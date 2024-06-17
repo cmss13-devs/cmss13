@@ -8837,6 +8837,7 @@
 /area/kutjevo/interior/complex/botany)
 "mbR" = (
 /obj/structure/closet/crate/trashcart,
+/obj/item/toy/plush/shark,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/construction)
 "mbS" = (

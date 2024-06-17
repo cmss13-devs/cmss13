@@ -33189,6 +33189,16 @@
 	icon_state = "darkyellow2"
 	},
 /area/bigredv2/outside/filtration_plant)
+"lTr" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown{
+	layer = 3.1
+	},
+/obj/item/toy/plush/shark,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/admin_building)
 "lTC" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -62158,7 +62168,7 @@ aNL
 aOM
 szi
 aof
-aNQ
+lTr
 aOO
 aOO
 aOO

@@ -24934,6 +24934,7 @@
 /obj/item/bedsheet{
 	layer = 3.1
 	},
+/obj/item/toy/plush/shark,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "pYI" = (

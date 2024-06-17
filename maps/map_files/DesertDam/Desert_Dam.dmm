@@ -61582,6 +61582,13 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"iUm" = (
+/obj/structure/bed,
+/obj/item/toy/plush/shark,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/desert_dam/building/dorms/hallway_westwing)
 "iVN" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal9"
@@ -107788,7 +107795,7 @@ ebb
 dZz
 dBr
 xzc
-dEt
+iUm
 dBr
 dTs
 dTs

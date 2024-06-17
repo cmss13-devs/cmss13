@@ -4653,6 +4653,7 @@
 /area/lv624/lazarus/robotics)
 "axo" = (
 /obj/structure/closet/cabinet,
+/obj/item/toy/plush/shark,
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
 	},

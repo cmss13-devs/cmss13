@@ -1,4 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - mapadd: "Civilian Clothing Storage Vendors have been added to the Gym on the USS Almayer. These allow anyone to vend civilian clothes. These vendors require CIC access to unlock however."

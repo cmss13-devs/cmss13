@@ -126,7 +126,7 @@ Implant Specifics:<BR>"}
 
 /obj/item/implant/dexplosive/activate(cause)
 	if((!cause) || (!src.imp_in)) return 0
-	explosion(src, -1, 0, 2, 3, 0)//This might be a bit much, dono will have to see.
+	cell_explosion(src, 120, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 	if(src.imp_in)
 		src.imp_in.gib()
 

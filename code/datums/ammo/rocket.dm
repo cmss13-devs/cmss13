@@ -261,19 +261,19 @@
 
 /datum/ammo/rocket/wp/quad/on_hit_mob(mob/mob, obj/projectile/projectile)
 	drop_flame(get_turf(mob), projectile.weapon_cause_data)
-	cell_explosion(epicenter, 200, 32, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	cell_explosion(projectile.loc, 200, 32, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/quad/on_hit_obj(obj/object, obj/projectile/projectile)
 	drop_flame(get_turf(object), projectile.weapon_cause_data)
-	cell_explosion(epicenter, 200, 32, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	cell_explosion(projectile.loc, 200, 32, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/quad/on_hit_turf(turf/turf, obj/projectile/projectile)
 	drop_flame(turf, projectile.weapon_cause_data)
-	cell_explosion(epicenter, 200, 32, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	cell_explosion(projectile.loc, 200, 32, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/quad/do_at_max_range(obj/projectile/projectile)
 	drop_flame(get_turf(projectile), projectile.weapon_cause_data)
-	cell_explosion(epicenter, 200, 32, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	cell_explosion(projectile.loc, 200, 32, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 
 /datum/ammo/rocket/custom
 	name = "custom rocket"

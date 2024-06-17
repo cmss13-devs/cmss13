@@ -534,4 +534,3 @@ K9 SCANNER
 		to_chat(user, SPAN_BOLDNOTICE("[src] lights up: <b>--><--</b>"))
 	playsound(src, 'sound/machines/ping.ogg', 15, TRUE)
 
-	return

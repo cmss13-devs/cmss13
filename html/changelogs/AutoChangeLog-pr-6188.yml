@@ -1,7 +1,0 @@
-author: "Kivts, SubjectD9341, Zenith."
-delete-after: True
-changes:
-  - rscadd: "Xenomorph Harvesting Surgery. Allows research to operate dead xenomorphs to take out their organ."
-  - rscadd: "The Xenomorph analyzer, uses organs extracted from dead xenomorphs, which when processed gives points to spend on physical upgrades."
-  - rscadd: "a number of machinery upgrades for autodoc, sleeper, and other upgrades or bonuses research can decide to spend their points on"
-  - rscdel: "passive generation increase of research credits is removed"

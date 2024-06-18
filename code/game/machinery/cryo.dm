@@ -193,6 +193,11 @@
 	var/is_on = on && operable()
 	icon_state = "[icon_state]-[is_on ? "on" : "off"]-[occupant ? "occupied" : "empty"]"
 
+/obj/structure/machinery/cryo_cell/Destroy()
+	if(occupant)
+		go_out()
+	. = ..()
+
 /obj/structure/machinery/cryo_cell/proc/process_occupant()
 	if(!occupant)
 		return

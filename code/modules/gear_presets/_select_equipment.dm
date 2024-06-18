@@ -50,8 +50,7 @@
 
 	var/list/uniform_sets = null
 
-	///Contains the path for the deepest abstract type currently
-	var/abstract_type = /datum/equipment_preset
+
 
 /datum/equipment_preset/New()
 	uniform_sets = list(

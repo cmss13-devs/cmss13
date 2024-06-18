@@ -87,6 +87,16 @@
 	for(var/icon in GLOB.player_list)
 		add_default_image(SSdcs, icon)
 
+/obj/vehicle/multitile/box_van/crew_mousedown(datum/source, atom/object, turf/location, control, params)
+	var/list/modifiers = params2list(params)
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK]) //don't step on examine, point, etc
+		return
+
+	switch(get_mob_seat(source))
+		if(VEHICLE_DRIVER)
+			if(modifiers[LEFT_CLICK] && modifiers[CTRL_CLICK])
+				activate_horn()
+
 /obj/vehicle/multitile/box_van/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(mover in mobs_under) //can't collide with the thing you're buckled to
 		return NO_BLOCKED_MOVEMENT

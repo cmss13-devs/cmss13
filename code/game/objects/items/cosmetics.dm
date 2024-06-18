@@ -156,25 +156,25 @@
 
 /obj/item/k9_name_changer/attack_self(mob/user)
 	. = ..()
-	var/newname = capitalize(input(usr, "What do you wish to be named?", "Name:") as null|text)
+	var/newname = capitalize(tgui_input_text(user, "What do you wish to be named", "Name:", encode = FALSE))
 	if(!newname)
 		return
 
-	var/verify = input("Are you SURE you wish to be named: [newname]?") in list("yes","no")
-
-	if(verify == "yes")
-		user.change_real_name(user, newname)
-		if(istype(user, /mob/living/carbon/human))
-			var/mob/living/carbon/human/altered_human = user
-			if(altered_human.wear_id)
-				altered_human.wear_id.name = "[altered_human.real_name]'s ID Card"
-				altered_human.wear_id.registered_name = "[altered_human.real_name]"
-				if(altered_human.wear_id.assignment)
-					altered_human.wear_id.name += " ([altered_human.wear_id.assignment])"
-
-		var/genderswap = input("Which gender?") in list("male","female")
-
-		user.gender = genderswap
-		qdel(src)
-	else
+	var/verify = tgui_input_list(usr, "Are you SURE you wish to be named: [newname]?", "Randomize", list("yes", "no"))
+	if(verify != "yes")
 		return
+
+	user.change_real_name(user, newname)
+	if(istype(user, /mob/living/carbon/human))
+		var/mob/living/carbon/human/altered_human = user
+		if(altered_human.wear_id)
+			altered_human.wear_id.name = "[altered_human.real_name]'s ID Card"
+			altered_human.wear_id.registered_name = "[altered_human.real_name]"
+			if(altered_human.wear_id.assignment)
+				altered_human.wear_id.name += " ([altered_human.wear_id.assignment])"
+
+	var/genderswap = tgui_input_list(usr, "Which Gender?", "Randomize", list("male", "female"))
+	if(!genderswap)
+		return
+	user.gender = genderswap
+	qdel(src)

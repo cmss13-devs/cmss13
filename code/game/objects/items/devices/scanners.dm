@@ -494,15 +494,13 @@ K9 SCANNER
 
 	matter = list("metal" = 50,"glass" = 20)
 
-	var/tracked_k9
+	var/mob/living/carbon/human/tracked_k9
+
+/obj/item/device/k9_scanner/Destroy()
+	tracked_k9 = null
 
 /obj/item/device/k9_scanner/attack(mob/attacked_mob as mob, mob/user as mob)
-	if(!istype(ishuman))
-		to_chat(user, SPAN_BOLDWARNING("ERROR: Cannot Sync To This."))
-		return
-	var/mob/living/carbon/human/attacked_human = attacked_mob
-
-	if(!istype(isk9synth))
+	if(!isk9synth(attacked_mob))
 		to_chat(user, SPAN_BOLDWARNING("ERROR: Cannot Sync To This."))
 		return
 	//we now know the attacked mob is a k9

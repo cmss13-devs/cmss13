@@ -614,7 +614,7 @@ cases. Override_icon_state should be a list.*/
 					return FALSE
 				return TRUE
 			if(WEAR_ID)
-				if(human.wear_id)
+				if(human.get_idcard())
 					return FALSE
 				if(!(flags_equip_slot & SLOT_ID))
 					return FALSE

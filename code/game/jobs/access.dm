@@ -8,7 +8,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		//if they are holding or wearing a card that has access, that works
-		if(check_access(H.get_active_hand()) || check_access(H.wear_id))
+		if(check_access(H.get_active_hand()) || check_access(H.get_idcard()))
 			return TRUE
 		return check_yautja_access(H)
 	if(istype(M, /mob/living/carbon/xenomorph))

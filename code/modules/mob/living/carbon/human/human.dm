@@ -369,6 +369,7 @@
 
 //gets ID card object from special clothes slot or null.
 /mob/living/carbon/human/proc/get_idcard()
+	RETURN_TYPE(/obj/item)
 	if(wear_id)
 		return wear_id.GetID()
 

@@ -47,7 +47,7 @@
 
 	if(zombie.l_hand) zombie.drop_inv_item_on_ground(zombie.l_hand, FALSE, TRUE)
 	if(zombie.r_hand) zombie.drop_inv_item_on_ground(zombie.r_hand, FALSE, TRUE)
-	if(zombie.wear_id) qdel(zombie.wear_id)
+	if(zombie.get_idcard()) qdel(zombie.get_idcard())
 	if(zombie.gloves) zombie.drop_inv_item_on_ground(zombie.gloves, FALSE, TRUE)
 	if(zombie.head) zombie.drop_inv_item_on_ground(zombie.head, FALSE, TRUE)
 	if(zombie.glasses) zombie.drop_inv_item_on_ground(zombie.glasses, FALSE, TRUE)

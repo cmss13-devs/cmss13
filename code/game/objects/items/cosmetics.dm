@@ -160,7 +160,7 @@
 	if(!newname)
 		return
 
-	var/verify = tgui_input_list(usr, "Are you SURE you wish to be named: [newname]?", "Randomize", list("yes", "no"))
+	var/verify = tgui_input_list(usr, "Are you SURE you wish to be named: [newname]?", "Confirm", list("yes", "no"))
 	if(verify != "yes")
 		return
 
@@ -173,7 +173,7 @@
 			if(altered_human.wear_id.assignment)
 				altered_human.wear_id.name += " ([altered_human.wear_id.assignment])"
 
-	var/genderswap = tgui_input_list(usr, "Which Gender?", "Randomize", list("male", "female"))
+	var/genderswap = tgui_input_list(usr, "Which Gender?", "Gender", list("male", "female"))
 	if(!genderswap)
 		return
 	user.gender = genderswap

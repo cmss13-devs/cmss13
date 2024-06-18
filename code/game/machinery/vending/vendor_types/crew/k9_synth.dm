@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_k9_synth, list(
 
 		list("HANDLER KIT (CHOOSE 1)", 0, null, null, null),
 		list("Squad Corpsman -> K9 Handler", 0, /obj/item/storage/box/kit/k9_handler/corpsman, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
-		list("Military Police -> K9 Handler", 0, /obj/item/storage/box/kit/k9_handler, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
+		list("Military Police -> K9 Handler", 0, /obj/item/storage/box/kit/k9_handler/mp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 
 		list("CARRYPACK (CHOOSE 1)", 0, null, null, null),
 		list("Medical Carry Harness", 0, /obj/item/storage/backpack/marine/k9_synth/medicalpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),

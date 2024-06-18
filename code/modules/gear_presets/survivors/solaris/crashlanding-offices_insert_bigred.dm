@@ -151,10 +151,6 @@
 	rank = JOB_PMC_SYNTH
 	role_comm_title = "WY Syn"
 
-/datum/equipment_preset/synth/survivor/pmc/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_WY_PMC)
-
 /datum/equipment_preset/synth/survivor/pmc/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_GEN_THREE)
 

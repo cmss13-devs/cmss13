@@ -83,8 +83,11 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 
-// cmb synth
-/datum/equipment_preset/synth/survivor/cmb_synth
+// cmb synth (of note /datum/equipment_preset/synth/survivor/cmb_synth also exists)
+/datum/equipment_preset/synth/survivor/cmb
+	flags = EQUIPMENT_PRESET_STUB
+
+/datum/equipment_preset/synth/survivor/cmb/synth
 	name = "Survivor - Synthetic - CMB Investigative Synthetic(Riot Response)"
 	paygrade = PAY_SHORT_CMBS
 	idtype = /obj/item/card/id/deputy
@@ -95,10 +98,10 @@
 	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/synthetic/cmb
 
-/datum/equipment_preset/synth/survivor/cmb_synth/load_race(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/survivor/cmb/synth/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_COLONY)
 
-/datum/equipment_preset/synth/survivor/cmb_synth/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/survivor/cmb/synth/load_gear(mob/living/carbon/human/new_human)
 	//backpack
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/security, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb/normalpoint, WEAR_IN_BACK)
@@ -224,7 +227,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 
 // ua synth
-/datum/equipment_preset/synth/survivor/cmb_ua_synth
+/datum/equipment_preset/synth/survivor/cmb/ua_synth
 	name = "Survivor - Synthetic - UA Police Synthetic(Riot Response)"
 	paygrade = PAY_SHORT_CMBS
 	role_comm_title = "UA Syn"
@@ -234,10 +237,10 @@
 	skills = /datum/skills/colonial_synthetic
 	idtype = /obj/item/card/id/silver
 
-/datum/equipment_preset/synth/survivor/cmb_ua_synth/load_race(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/survivor/cmb/ua_synth/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_COLONY)
 
-/datum/equipment_preset/synth/survivor/cmb_ua_synth/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/survivor/cmb/ua_synth/load_gear(mob/living/carbon/human/new_human)
 	//backpack
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)

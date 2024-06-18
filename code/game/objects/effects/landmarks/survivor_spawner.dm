@@ -88,7 +88,7 @@
 
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl
 	equipment = /datum/equipment_preset/survivor/wy/executive
-	synth_equipment = /datum/equipment_preset/synth/survivor/wy_security_synth
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are the last alive Executive of Lazarus Landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
@@ -98,7 +98,7 @@
 
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon
 	equipment = /datum/equipment_preset/survivor/goon
-	synth_equipment = /datum/equipment_preset/synth/survivor/wy_security_synth
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Officer!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
@@ -160,7 +160,7 @@
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_cl
 	equipment = /datum/equipment_preset/survivor/wy/asstmanager
-	synth_equipment = /datum/equipment_preset/synth/survivor/wy_corporate_synth
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/corporate_synth
 	intro_text = list("<h2>You are the last alive Senior Administrator on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
@@ -202,7 +202,7 @@
 
 /obj/effect/landmark/survivor_spawner/fiorina_armory_cmb
 	equipment = /datum/equipment_preset/survivor/cmb/standard
-	synth_equipment = /datum/equipment_preset/synth/survivor/cmb_synth
+	synth_equipment = /datum/equipment_preset/synth/survivor/cmb/synth
 	intro_text = list("<h2>You are a CMB Deputy!</h2>",\
 	"<span class='notice'>You are aware of the 'alien' threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the infestation.</span>")
@@ -212,7 +212,7 @@
 
 /obj/effect/landmark/survivor_spawner/fiorina_armory_riot_control
 	equipment = /datum/equipment_preset/survivor/cmb/ua
-	synth_equipment = /datum/equipment_preset/synth/survivor/cmb_ua_synth
+	synth_equipment = /datum/equipment_preset/synth/survivor/cmb/ua_synth
 	intro_text = list("<h2>You are a United Americas Riot Control Officer!</h2>",\
 	"<span class='notice'>You are aware of the 'alien' threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the infestation.</span>")

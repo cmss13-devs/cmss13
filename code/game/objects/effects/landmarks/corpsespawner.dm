@@ -124,11 +124,11 @@
 
 /obj/effect/landmark/corpsespawner/wy/manager
 	name = "Corporate Supervisor"
-	equip_path = /datum/equipment_preset/corpse/wy_manager
+	equip_path = /datum/equipment_preset/corpse/wy/manager
 
 /obj/effect/landmark/corpsespawner/wy/manager/burst
 	name = "Burst Corporate Supervisor"
-	equip_path = /datum/equipment_preset/corpse/wy_manager/burst
+	equip_path = /datum/equipment_preset/corpse/wy/manager/burst
 
 
 ///////////Faction Specific Corpses//////////////////////

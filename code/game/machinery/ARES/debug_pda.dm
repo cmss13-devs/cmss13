@@ -964,7 +964,7 @@
 		playsound(src, sound, 15, TRUE)
 
 /obj/item/device/ai_tech_pda/proc/check_security(mob/living/carbon/human/user)
-	if(user.real_name != logged_in)
+	if(logged_in && (user.real_name != logged_in))
 		playsound(src, 'sound/machines/lockdownalarm.ogg', 15, TRUE)
 		audible_message(SPAN_ALERTWARNING("[src] blares a security alarm."))
 

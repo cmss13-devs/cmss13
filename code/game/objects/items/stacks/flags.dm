@@ -85,7 +85,9 @@
 	desc = "A flag of something. This one looks like you could dismantle it."
 	icon = 'icons/obj/structures/plantable_flag.dmi'
 	pixel_x = 9 // All flags need to be offset to the right by 9 to be centered.
-	layer = ABOVE_MOB_LAYER
+	layer = ABOVE_XENO_LAYER
+	health = 150
+	unacidable = TRUE
 
 	/// The typepath for the flag item that gets spawned when the flag is taken down.
 	var/flag_type = /obj/item/flag/plantable
@@ -103,16 +105,62 @@
 
 	user.visible_message(SPAN_NOTICE("[user] starts taking [src] down..."), SPAN_NOTICE("You start taking [src] down..."))
 
-	playsound(user, 'sound/effects/flag_raising.ogg', 30)
+	playsound(loc, 'sound/effects/flag_raising.ogg', 30)
 	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
 
-	playsound(user, 'sound/effects/flag_raised.ogg', 30)
+	playsound(loc, 'sound/effects/flag_raised.ogg', 30)
 	user.visible_message(SPAN_NOTICE("[user] starts takes [src] down!"), SPAN_NOTICE("You take [src] down!"))
 	var/obj/item/flag/plantable/flag_item = new flag_type(loc)
 	user.put_in_hands(flag_item)
 	COOLDOWN_START(flag_item, warcry_cooldown_item, COOLDOWN_TIMELEFT(src, warcry_cooldown_struc))
 	qdel(src)
+
+/// Proc for when the flag gets forcefully dismantled (due to general damage, explosions, etc.)
+/obj/structure/flag/plantable/proc/demolish(flag_type)
+	playsound(loc, 'sound/effects/flag_raised.ogg', 30)
+	visible_message(SPAN_WARNING("[src] crumples to the ground!"))
+	var/obj/item/flag/plantable/flag_item = new flag_type(loc)
+	COOLDOWN_START(flag_item, warcry_cooldown_item, COOLDOWN_TIMELEFT(src, warcry_cooldown_struc))
+	qdel(src)
+
+// Procs for handling damage.
+/obj/structure/flag/plantable/update_health(damage)
+	if(damage)
+		health -= damage
+	if(health <= 0)
+		demolish(flag_type)
+
+/obj/structure/flag/plantable/ex_act(severity)
+	if(health <= 0)
+		return
+	update_health(severity)
+
+/obj/structure/flag/plantable/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.a_intent == INTENT_HARM)
+		if(unslashable)
+			return
+		xeno.animation_attack_on(src)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		xeno.visible_message(SPAN_DANGER("[xeno] slashes [src]!"), SPAN_DANGER("We slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		update_health(rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
+		return XENO_ATTACK_ACTION
+	else
+		to_chat(xeno, SPAN_WARNING("We stare at [src] cluelessly."))
+		return XENO_NONCOMBAT_ACTION
+
+/obj/structure/flag/plantable/bullet_act(obj/projectile/bullet)
+	bullet_ping(bullet)
+	visible_message(SPAN_DANGER("[src] is hit by [bullet]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+	update_health(bullet.damage)
+	return TRUE
+
+/obj/structure/flag/plantable/attackby(obj/item/weapon, mob/living/user)
+	if(!indestructible)
+		visible_message(SPAN_DANGER("[src] has been hit by [user] with [weapon]!"), null, 5, CHAT_TYPE_MELEE_HIT)
+		user.animation_attack_on(src)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		update_health(weapon.force * weapon.demolition_mod)
 
 /obj/item/flag/plantable
 	name = "plantable flag"
@@ -122,6 +170,7 @@
 	icon = 'icons/obj/structures/plantable_flag.dmi'
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
+	unacidable = TRUE
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_64.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'
@@ -140,11 +189,10 @@
 	/// Used to limit the spam of the warcry_extra_sound
 	COOLDOWN_DECLARE(warcry_cooldown_item)
 
-/obj/item/flag/plantable/get_examine_text()
+/obj/item/flag/plantable/get_examine_text(mob/user)
 	. = ..()
-	if(play_warcry)
+	if(play_warcry && user.faction == faction)
 		. += SPAN_NOTICE("Planting the flag while in <b>HARM</b> intent will cause you to bellow out a rallying warcry!")
-
 
 /// Proc for turning the flag item into a structure.
 /obj/item/flag/plantable/proc/plant_flag(mob/living/user, play_warcry = FALSE, warcry_sound, warcry_extra_sound, faction)
@@ -192,7 +240,7 @@
 
 		user.show_speech_bubble("warcry")
 		if(allies_nearby > 14)
-			playsound(user, warcry_extra_sound, 30)
+			playsound(user, warcry_extra_sound, 40)
 			// Start a cooldown on the flag structure. This way we can keep track of the cooldown when the flag is hoisted and taken down.
 			COOLDOWN_START(planted_flag, warcry_cooldown_struc, 90 SECONDS)
 			user.say("*me shouts an invigorating rallying cry!")
@@ -202,7 +250,7 @@
 			// Ditto. If the cooldown isn't finished we have to transfer the leftover time to the structure.
 			COOLDOWN_START(planted_flag, warcry_cooldown_struc, COOLDOWN_TIMELEFT(src, warcry_cooldown_item))
 	else
-		playsound(user, 'sound/effects/flag_raised.ogg', 30)
+		playsound(loc, 'sound/effects/flag_raised.ogg', 30)
 
 	qdel(src)
 
@@ -215,7 +263,7 @@
 
 /obj/item/flag/plantable/ua
 	name = "\improper United Americas flag"
-	desc = "The flag of the United Americas. Your forefathers died to raise this flag. Are you ready to do the same?"
+	desc = "The flag of the United Americas. This one looks ready to be planted into the ground."
 	icon = 'icons/obj/structures/plantable_flag.dmi'
 	icon_state = "flag_ua"
 	flag_type = /obj/structure/flag/plantable/ua
@@ -226,6 +274,6 @@
 
 /obj/structure/flag/plantable/ua
 	name = "\improper United Americas flag"
-	desc = "The flag of the United Americas. Semper fi, marine."
+	desc = "The flag of the United Americas. Semper fi."
 	icon_state = "flag_ua_planted"
 	flag_type = /obj/item/flag/plantable/ua

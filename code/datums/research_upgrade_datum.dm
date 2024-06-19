@@ -132,7 +132,8 @@
 	minimum_price = 100
 	maximum_price = 1000
 	item_reference = /obj/item/ammo_magazine/flamer_tank/custom/upgraded
-	behavior = RESEARCH_UPGRADE_NULL
+	on_init_argument = RESEARCH_UPGRADE_NOTHING_TO_PASS
+	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 
 /datum/research_upgrades/item/flamer_tank/smoke

@@ -3,7 +3,7 @@
 	var/name = "Upgrade."
 	///name of upgrades, not items. Items are at research_upgrades.dm somewhere in item folder.
 	var/desc = "something is broken. yippee!!"
-	///which behavior should this type follow. Should this be completely excluded from the buy menu? should it be one of the dropdown options?
+	///which behavior should this type follow. Should this be completely excluded from the buy menu? should it be one of the dropdown options? or a normal item?
 	var/behavior = RESEARCH_UPGRADE_EXCLUDE_BUY // should this be on the list?
 	//This is what gets passed to the initizialize of an item, RESEARCH_UPGRADE_NOTHING_TO_PASS to not pass anything.
 	var/on_init_argument = RESEARCH_UPGRADE_NOTHING_TO_PASS

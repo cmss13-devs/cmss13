@@ -21,9 +21,9 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
-	RegisterSignal(src, COMSIG_MOB_STATCHANGE, PROC_REF(on_stat_change))
+	RegisterSignal(src, COMSIG_MOB_DEATH, PROC_REF(on_stat_change))
 
-/mob/living/carbon/human/proc/on_stat_change()
+/mob/living/carbon/human/proc/on_death()
 	SIGNAL_HANDLER
 	update_execute_hud()
 
@@ -97,7 +97,7 @@
 	selected_ability = null
 	remembered_dropped_objects = null
 
-	UnregisterSignal(src, COMSIG_MOB_STATCHANGE)
+	UnregisterSignal(src, COMSIG_MOB_DEATH)
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()

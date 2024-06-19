@@ -317,15 +317,65 @@ export const ModeRelate = () => {
 
 export const ModeCreate = (props) => {
   const { act, data } = useBackend();
-  const { selectedMode } = props;
-  const {
-    mode_data,
-    can_simulate,
-    can_eject_target,
-    can_eject_reference,
-    is_picking_recipe,
-  } = data;
-  return <Box>Create here</Box>;
+  const { complexityMenu } = props;
+  const { known_properties } = data;
+  return (
+    <Flex direction={'column'}>
+      <Flex.Item>
+        <CreateControl />
+      </Flex.Item>
+      <Flex.Item>
+        <Flex ml={1} mt={2} mr={1}>
+          {map(known_properties, (property, key) => (
+            <Flex.Item ml={1} grow mr={1} bold fontSize={'14px'}>
+              <Button fluid textAlign={'center'}>
+                {property.code}
+              </Button>
+            </Flex.Item>
+          ))}
+        </Flex>
+      </Flex.Item>
+    </Flex>
+  );
+};
+
+export const CreateControl = () => {
+  const { act, data } = useBackend();
+  const { template_filters } = data;
+  return (
+    <Flex width={64.5} height={2} ml={1}>
+      <Flex.Item ml={2}>
+        <Button width={10} fontSize={'14px'} bold>
+          Set OD
+        </Button>
+      </Flex.Item>
+      <Flex.Item ml={2}>
+        <Button width={10} fontSize={'14px'} bold>
+          Set Name
+        </Button>
+      </Flex.Item>
+      <Flex.Item ml={2} bold>
+        <Button fontSize={'14px'}>Set LEVEL</Button>
+      </Flex.Item>
+      {map(template_filters, (flag, name) => (
+        <Flex.Item ml={1} width={5}>
+          <Button
+            fluid
+            onClick={() => {
+              act('toogle_flag', {
+                flag_id: flag[1],
+              });
+            }}
+            fontSize={'14px'}
+            selected={flag[0]}
+            bold
+          >
+            {name}
+          </Button>
+        </Flex.Item>
+      ))}
+    </Flex>
+  );
 };
 
 export const ChemSimulator = () => {

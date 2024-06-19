@@ -116,7 +116,7 @@
 	data["credits"] = GLOB.chemical_data.rsc_credits
 	data["status"] = status_bar
 	ready = check_ready()
-	data["is_ready"] = !ready
+	data["is_ready"] = ready
 	data["can_simulate"] = (ready && simulating == SIMULATION_STAGE_OFF)
 	data["can_eject_target"] = ((target ? TRUE : FALSE) && simulating == SIMULATION_STAGE_OFF)
 	data["can_eject_reference"] = ((reference ? TRUE : FALSE) && simulating == SIMULATION_STAGE_OFF)
@@ -169,6 +169,22 @@
 			))
 	else
 		data["reference_data"] = null
+	data["template_filters"] = list(
+		"MED" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_MEDICINE), PROPERTY_TYPE_MEDICINE),
+		"TOX" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_TOXICANT), PROPERTY_TYPE_TOXICANT),
+		"STI" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_STIMULANT), PROPERTY_TYPE_STIMULANT),
+		"REA" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_REACTANT), PROPERTY_TYPE_REACTANT),
+		"IRR" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_IRRITANT), PROPERTY_TYPE_IRRITANT),
+		"MET" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_METABOLITE), PROPERTY_TYPE_METABOLITE)
+	)
+	if(mode == MODE_CREATE)
+		for(var/datum/chem_property/known_properties in GLOB.chemical_data.research_property_data)
+			data["known_properties"] += list(list(
+				"code" = known_properties.code,
+				"level" = known_properties.level,
+				"name" = known_properties.name,
+				"desc" = known_properties.description,
+			))
 	return data
 
 /obj/structure/machinery/chem_simulator/ui_static_data(mob/user)
@@ -249,11 +265,12 @@
 			stop_processing()
 			icon_state = "modifier"
 			simulating = SIMULATION_STAGE_OFF
-
-
-
-
-
+		if("toogle_flag")
+			var/flag_value = params["flag_id"]
+			if(template_filter & flag_value)
+				template_filter &= ~flag_value
+			else
+				template_filter |= flag_value
 
 /obj/structure/machinery/chem_simulator/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/list/data = list(

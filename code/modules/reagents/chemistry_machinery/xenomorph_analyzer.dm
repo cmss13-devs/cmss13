@@ -178,5 +178,8 @@
 
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, variation)
 	busy = FALSE
-	new produce_path(get_turf(src), variation)
+	if(!isnull(variation))
+		new produce_path(get_turf(src), variation)
+		return
+	new produce_path(get_turf(src))
 

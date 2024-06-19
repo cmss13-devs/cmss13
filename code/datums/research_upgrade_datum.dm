@@ -3,7 +3,7 @@
 	var/name = "Upgrade."
 	///name of upgrades, not items. Items are at research_upgrades.dm somewhere in item folder.
 	var/desc = "something is broken. yippee!!"
-	///which behavior should this type follow. Should this be completely excluded from the buy menu? should it be one of the dropdown options? This is also what gets passed to the initizialize of an item, this can be any number *but* it cannot be -1 or -2, as it messes with the buy menu.
+	///which behavior should this type follow. Should this be completely excluded from the buy menu? should it be one of the dropdown options? This is also what gets passed to the initizialize of an item, this can be any number *but* it cannot be -1 or -2, as it messes with the buy menu. null to not pass anything.
 	var/behavior = RESEARCH_UPGRADE_EXCLUDE_BUY // should this be on the list?
 	/// the price of the upgrade, refer to this: 500 is a runner, 8k is queen. T3 is usually 3k, woyer is 2k.
 	var/value_upgrade = 1000

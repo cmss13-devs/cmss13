@@ -46,7 +46,7 @@
 		. += "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow (reserved: [huggers_reserved])."
 	if(isobserver(user))
 		var/current_hugger_count = linked_hive.get_current_playable_facehugger_count();
-		. += "Current facehugger limit: <b>[current_hugger_count]/[linked_hive.playable_hugger_limit]</b>"
+		. += "There are currently [SPAN_NOTICE("[current_hugger_count]")] facehuggers in the hive. The hive can support [SPAN_NOTICE("[linked_hive.playable_hugger_limit]")] facehuggers."
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/grab))

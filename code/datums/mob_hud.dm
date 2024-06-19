@@ -788,7 +788,7 @@ GLOBAL_DATUM(hud_icon_hudfocus, /image)
 	execute_holder.icon_state = "hudblank"
 	execute_holder.overlays.Cut()
 
-	if(stat == UNCONSCIOUS || HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+	if(stat == UNCONSCIOUS || (stat != DEAD && HAS_TRAIT(src, TRAIT_KNOCKEDOUT)))
 		execute_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
 
 // Xeno "hostile" HUD

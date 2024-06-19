@@ -1,6 +1,0 @@
-author: "wshuwshuwshi"
-delete-after: True
-changes:
-  - bugfix: "Adds a 1.5x modifier to the amount taken from larva timer based on chem property level"
-  - bugfix: "swaps the 1.5 multiplier for a delta_time multiplier"
-  - bugfix: "improved the formatting of the code to have proper spacing"

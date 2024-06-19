@@ -1,4 +1,0 @@
-author: "Diegoflores31"
-delete-after: True
-changes:
-  - bugfix: "Fixes CO being unable to award medals."

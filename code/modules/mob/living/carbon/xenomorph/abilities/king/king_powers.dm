@@ -46,56 +46,52 @@
 	smoke_gas.set_up(7, 0, get_turf(xeno), null, 6)
 	smoke_gas.start()
 
-	// Turn off lights for items in the area dependant on distance.
-	for(var/obj/item/device/potential_lightsource in view(owner))
+	for(var/atom/current_atom in view(owner))
+		if(istype(current_atom, /obj/item/device))
+			var/obj/item/device/potential_lightsource = current_atom
 
-		var/time_to_extinguish = get_dist(owner, potential_lightsource) DECISECONDS
+			var/time_to_extinguish = get_dist(owner, potential_lightsource) DECISECONDS
 
-		//Flares
-		if(istype(potential_lightsource, /obj/item/device/flashlight/flare))
-			var/obj/item/device/flashlight/flare/flare = potential_lightsource
-			addtimer(CALLBACK(flare, TYPE_PROC_REF(/obj/item/device/flashlight/flare/, burn_out)), time_to_extinguish)
+			//Flares
+			if(istype(potential_lightsource, /obj/item/device/flashlight/flare))
+				var/obj/item/device/flashlight/flare/flare = potential_lightsource
+				addtimer(CALLBACK(flare, TYPE_PROC_REF(/obj/item/device/flashlight/flare/, burn_out)), time_to_extinguish)
 
-		//Flashlights
-		if(istype(potential_lightsource, /obj/item/device/flashlight))
-			var/obj/item/device/flashlight/flashlight = potential_lightsource
-			addtimer(CALLBACK(flashlight, TYPE_PROC_REF(/obj/item/device/flashlight, turn_off_light)), time_to_extinguish)
+			//Flashlights
+			if(istype(potential_lightsource, /obj/item/device/flashlight))
+				var/obj/item/device/flashlight/flashlight = potential_lightsource
+				addtimer(CALLBACK(flashlight, TYPE_PROC_REF(/obj/item/device/flashlight, turn_off_light)), time_to_extinguish)
 
-		//Armour lights
-		if(istype(potential_lightsource, /obj/item/clothing/suit/storage/marine))
-			var/obj/item/clothing/suit/storage/marine/marinearmour = potential_lightsource
-			addtimer(CALLBACK(marinearmour, TYPE_PROC_REF(/atom, turn_light), null, FALSE), time_to_extinguish)
+		else if(ishuman(current_atom))
+			// "Confuse" and slow humans in the area and turn off their armour lights.
+			var/mob/living/carbon/human/human = current_atom
 
-	// "Confuse" and slow humans in the area and turn off their armour lights.
-	for(var/mob/living/carbon/human/human in view(owner))
-		human.EyeBlur(daze_length_seconds)
-		human.Daze(daze_length_seconds)
-		human.Superslow(slow_length_seconds)
-		human.add_client_color_matrix("nvg_visor", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#eeeeee")))
-		human.overlay_fullscreen("nvg_visor", /atom/movable/screen/fullscreen/flash/noise/nvg)
-		addtimer(CALLBACK(human, TYPE_PROC_REF(/mob, remove_client_color_matrix), "nvg_visor", 1 SECONDS), 5 SECONDS)
-		addtimer(CALLBACK(human, TYPE_PROC_REF(/mob, clear_fullscreen), "nvg_visor", 0.5 SECONDS), 5 SECONDS)
+			human.EyeBlur(daze_length_seconds)
+			human.Daze(daze_length_seconds)
+			human.Superslow(slow_length_seconds)
+			human.add_client_color_matrix("nvg_visor", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#eeeeee")))
+			human.overlay_fullscreen("nvg_visor", /atom/movable/screen/fullscreen/flash/noise/nvg)
+			addtimer(CALLBACK(human, TYPE_PROC_REF(/mob, remove_client_color_matrix), "nvg_visor", 1 SECONDS), 5 SECONDS)
+			addtimer(CALLBACK(human, TYPE_PROC_REF(/mob, clear_fullscreen), "nvg_visor", 0.5 SECONDS), 5 SECONDS)
 
-		to_chat(human, SPAN_HIGHDANGER("[xeno]'s roar overwhelms your entire being!"))
-		shake_camera(human, 6, 1)
+			to_chat(human, SPAN_HIGHDANGER("[xeno]'s roar overwhelms your entire being!"))
+			shake_camera(human, 6, 1)
 
-		var/time_to_extinguish = get_dist(owner, human) SECONDS
-		var/obj/item/clothing/suit/suit = human.get_item_by_slot(WEAR_JACKET)
-		if(istype(suit, /obj/item/clothing/suit/storage/marine))
-			var/obj/item/clothing/suit/storage/marine/armour = suit
-			addtimer(CALLBACK(armour, TYPE_PROC_REF(/atom, turn_light), null, FALSE), time_to_extinguish)
-
-
-	// Temporary blackout
-	for(var/atom/potential_light_source in view(owner))
-		var/power = potential_light_source.light_power
+			var/time_to_extinguish = get_dist(owner, human) SECONDS
+			var/obj/item/clothing/suit/suit = human.get_item_by_slot(WEAR_JACKET)
+			if(istype(suit, /obj/item/clothing/suit/storage/marine))
+				var/obj/item/clothing/suit/storage/marine/armour = suit
+				addtimer(CALLBACK(armour, TYPE_PROC_REF(/atom, turn_light), null, FALSE), time_to_extinguish)
+		
+		var/power = current_atom.light_power
 		if(power > 0)
-			if(potential_light_source.light_system != MOVABLE_LIGHT)
-				potential_light_source.set_light(l_range=0)
-				addtimer(CALLBACK(potential_light_source, TYPE_PROC_REF(/atom, set_light), power), 10 SECONDS)
+			if(current_atom.light_system != MOVABLE_LIGHT)
+				current_atom.set_light(l_range=0)
+				addtimer(CALLBACK(current_atom, TYPE_PROC_REF(/atom, set_light), power), 10 SECONDS)
 			else
-				potential_light_source.set_light_range(0)
-				addtimer(CALLBACK(potential_light_source, TYPE_PROC_REF(/atom, set_light_range), power), 10 SECONDS)
+				current_atom.set_light_range(0)
+				addtimer(CALLBACK(current_atom, TYPE_PROC_REF(/atom, set_light_range), power), 10 SECONDS)
+		
 
 	apply_cooldown()
 	..()

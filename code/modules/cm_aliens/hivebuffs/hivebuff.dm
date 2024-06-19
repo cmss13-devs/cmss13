@@ -492,7 +492,7 @@
 	desc = "Increases all xenomorph damage by 5 for 5 minutes"
 	tier = HIVEBUFF_TIER_MINOR
 
-	engage_flavourmessage = "The Queen has imbued us with slarp claws."
+	engage_flavourmessage = "The Queen has imbued us with sharp claws."
 	duration = 5 MINUTES
 	number_of_required_pylons = 1
 	radial_icon = "slash"

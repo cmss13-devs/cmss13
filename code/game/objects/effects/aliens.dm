@@ -107,7 +107,7 @@
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
 
-			if(!(M == cause_data.resolve_mob()))
+			if(M != cause_data.resolve_mob())
 				M.ExtinguishMob()
 
 			if(M.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.

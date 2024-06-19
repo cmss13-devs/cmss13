@@ -51,6 +51,8 @@
 /datum/ammo/flamethrower/tank_flamer
 	flamer_reagent_id = "napalmx"
 
+	max_range = 8
+
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
 	flamer_reagent_id = "napalmx"
@@ -94,6 +96,15 @@
 	var/datum/reagent/napalm/ut/R = new()
 	R.durationfire = BURN_TIME_INSTANT
 	new /obj/flamer_fire(T, cause_data, R, 0)
+
+/datum/ammo/flamethrower/sentry_flamer/wy
+	name = "sticky fire"
+	flamer_reagent_id = "stickynapalm"
+	shell_speed = AMMO_SPEED_TIER_4
+
+/datum/ammo/flamethrower/sentry_flamer/upp
+	name = "gel fire"
+	flamer_reagent_id = "napalmgel"
 
 /datum/ammo/flare
 	name = "flare"
@@ -266,6 +277,9 @@
 	name = "smoke grenade shell"
 	nade_type = /obj/item/explosive/grenade/smokebomb
 	icon_state = "smoke_shell"
+
+/datum/ammo/grenade_container/tank_glauncher
+	max_range = 8
 
 /datum/ammo/hugger_container
 	name = "hugger shell"

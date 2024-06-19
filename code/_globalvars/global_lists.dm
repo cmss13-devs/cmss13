@@ -198,10 +198,11 @@ GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
 GLOBAL_LIST_INIT(poster_designs, subtypesof(/datum/poster))
 
 //Preferences stuff
-	// Ethnicities
-GLOBAL_REFERENCE_LIST_INDEXED(ethnicities_list, /datum/ethnicity, name) // Stores /datum/ethnicity indexed by name
-	// Body Types
-GLOBAL_REFERENCE_LIST_INDEXED(body_types_list, /datum/body_type, name) // Stores /datum/body_type indexed by name
+	// Skin colors
+GLOBAL_REFERENCE_LIST_INDEXED(skin_color_list, /datum/skin_color, name) // Stores /datum/skin_color indexed by name
+	// Body
+GLOBAL_REFERENCE_LIST_INDEXED(body_type_list, /datum/body_type, name) // Stores /datum/body_type indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(body_size_list, /datum/body_size, name) // Stores /datum/body_size indexed by name
 	//Hairstyles
 GLOBAL_REFERENCE_LIST_INDEXED(hair_styles_list, /datum/sprite_accessory/hair, name) //stores /datum/sprite_accessory/hair indexed by name
 GLOBAL_REFERENCE_LIST_INDEXED(facial_hair_styles_list, /datum/sprite_accessory/facial_hair, name) //stores /datum/sprite_accessory/facial_hair indexed by name
@@ -310,6 +311,9 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 		rkey++
 		var/datum/species/S = new T
 		S.race_key = rkey //Used in mob icon caching.
+		var/datum/species/existing = all_species[S.name]
+		if(existing)
+			stack_trace("[S.name] from [T] overlaps with [existing.type]! It must have a unique name for lookup!")
 		all_species[S.name] = S
 	return all_species
 
@@ -352,6 +356,9 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 		if (!initial(EP.flags))
 			continue
 		EP = new T
+		var/datum/equipment_preset/existing = gear_path_presets_list[EP.name]
+		if(existing)
+			stack_trace("[EP.name] from [T] overlaps with [existing.type]! It must have a unique name for lookup!")
 		gear_path_presets_list[EP.name] = EP
 	return sortAssoc(gear_path_presets_list)
 
@@ -463,7 +470,11 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 /proc/setup_yautja_capes()
 	var/list/cape_list = list()
 	for(var/obj/item/clothing/yautja_cape/cape_type as anything in typesof(/obj/item/clothing/yautja_cape))
-		cape_list[initial(cape_type.name)] = cape_type
+		var/cape_name = initial(cape_type.name)
+		var/obj/item/clothing/yautja_cape/existing = cape_list[cape_name]
+		if(existing)
+			stack_trace("[cape_name] from [cape_type] overlaps with [existing.type]! It must have a unique name for lookup!")
+		cape_list[cape_name] = cape_type
 	return cape_list
 
 

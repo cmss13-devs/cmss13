@@ -25,8 +25,9 @@
 	var/g_eyes = 0
 	var/b_eyes = 0
 
-	var/ethnicity = "Western" // Ethnicity
-	var/body_type = "Mesomorphic (Average)" // Body Type
+	var/skin_color = "Pale 2" // Skin color
+	var/body_size = "Average" // Body Size
+	var/body_type = "Lean" // Body Buffness
 
 	//Skin color
 	var/r_skin = 0
@@ -59,7 +60,7 @@
 	var/obj/item/head = null
 	var/obj/item/wear_l_ear = null
 	var/obj/item/wear_r_ear = null
-	var/obj/item/card/id/wear_id = null
+	var/obj/item/wear_id = null
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
 	var/obj/item/s_store = null

@@ -18,7 +18,7 @@
 	var/fire_delay = 4
 	var/immobile = FALSE //Used for prebuilt ones.
 	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
-	var/sentry_type = "sentry" //Used for the icon
+	var/sentry_type = "uac_sentry" //Used for the icon
 	display_additional_stats = TRUE
 	/// Light strength when turned on
 	var/luminosity_strength = 5
@@ -45,7 +45,7 @@
 	/// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
 		// SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_BURST, ROF_FULL_AUTO),
-		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN, FACTION_UPP),
 	)
 
 	selected_categories = list(
@@ -115,16 +115,16 @@
 
 	overlays.Cut()
 	if(stat == DEFENSE_DAMAGED)
-		overlays += "[defense_type] uac_[sentry_type]_destroyed"
+		overlays += "[defense_type] [sentry_type]_destroyed"
 		return
 
 	if(!ammo || ammo && !ammo.current_rounds)
-		overlays += "[defense_type] uac_[sentry_type]_noammo"
+		overlays += "[defense_type] [sentry_type]_noammo"
 		return
 	if(turned_on)
-		overlays += "[defense_type] uac_[sentry_type]_on"
+		overlays += "[defense_type] [sentry_type]_on"
 	else
-		overlays += "[defense_type] uac_[sentry_type]"
+		overlays += "[defense_type] [sentry_type]"
 
 
 /obj/structure/machinery/defenses/sentry/attack_hand_checks(mob/user)
@@ -523,12 +523,46 @@
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
 	. = ..()
-	choice_categories[SENTRY_CATEGORY_IFF] = list(FACTION_COLONY, FACTION_WEYLAND)
-	selected_categories[SENTRY_CATEGORY_IFF] = FACTION_COLONY
+	choice_categories[SENTRY_CATEGORY_IFF] = list(SENTRY_FACTION_COLONY, SENTRY_FACTION_WEYLAND)
+	selected_categories[SENTRY_CATEGORY_IFF] = SENTRY_FACTION_COLONY
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/wy
+	name = "WY 5-GSE3 Static Turret"
+	desc = "An old static, semi-automated turret with AI targeting capabilities from Weyland-Yutani."
+	icon = 'icons/obj/structures/machinery/defenses/wy_static.dmi'
+	defense_type = "Static"
+	sentry_type = "wy_sentry"
+	health = 350
+	health_max = 350
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_WY)
+	fire_delay = 0.6 SECONDS
+	damage_mult = 2
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/wy/Initialize()
+	. = ..()
+	choice_categories[SENTRY_CATEGORY_IFF] = list(SENTRY_FACTION_COLONY, SENTRY_FACTION_WEYLAND)
+	selected_categories[SENTRY_CATEGORY_IFF] = SENTRY_FACTION_COLONY
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer
-	fire_delay = 4
+	name = "UA-635C Static Gauss Turret"
+	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed and modified for UA warship use."
+	fire_delay = 0.4 SECONDS
 	omni_directional = TRUE
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini
+	name = "UA 512-S mini sentry"
+	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M30 Autocannon and an internal belt feed and modified for UA warship use."
+	defense_type = "Mini"
+	fire_delay = 0.25 SECONDS
+	health = 150
+	health_max = 150
+	damage_mult = 0.6
+	density = FALSE
+	layer = BELOW_MOB_LAYER
+	disassemble_time = 0.75 SECONDS
+	handheld_type = /obj/item/defenses/handheld/sentry/mini
+	composite_icon = FALSE
+
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship
@@ -562,7 +596,7 @@
 	handheld_type = /obj/item/defenses/handheld/sentry/dmr
 
 	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
 	)
 
 	selected_categories = list(
@@ -722,6 +756,87 @@
 		new /obj/item/stack/sheet/metal/medium_stack(loc)
 		new /obj/item/stack/sheet/plasteel/medium_stack(loc)
 	return ..()
+
+/obj/structure/machinery/defenses/sentry/wy
+	name = "WY 202-GMA1 Smart Sentry"
+	desc = "A deployable, fully-automated turret with AI targeting capabilities used by the PMC."
+	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
+	sentry_type = "wy_sentry"
+	fire_delay = 2 SECONDS
+	health = 350
+	health_max = 350
+	damage_mult = 3.5
+	disassemble_time = 5 SECONDS
+	hack_time = 25 SECONDS
+	sentry_range = 6
+	omni_directional = TRUE
+	handheld_type = /obj/item/defenses/handheld/sentry/wy
+	ammo = new /obj/item/ammo_magazine/sentry/wy
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
+	)
+
+/obj/structure/machinery/defenses/sentry/mini/wy
+	name = "WY 14-GRA2 Mini Sentry"
+	desc = "A deployable, semi-automated turret with AI targeting capabilities used by the PMC."
+	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
+	sentry_type = "wy_sentry"
+	fire_delay = 0.08 SECONDS
+	health = 200
+	health_max = 200
+	damage_mult = 0.3
+	disassemble_time = 2 SECONDS
+	hack_time = 25 SECONDS
+	handheld_type = /obj/item/defenses/handheld/sentry/wy/mini
+	ammo = new /obj/item/ammo_magazine/sentry/wy/mini
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
+	)
+
+/obj/structure/machinery/defenses/sentry/dmr/wy
+	name = "WY 2-ADT-A3 Heavy Sentry"
+	desc = "A deployable, semi-automated turret with AI targeting capabilities used by the PMC."
+	defense_type = "Heavy"
+	icon = 'icons/obj/structures/machinery/defenses/wy_heavy.dmi'
+	sentry_type = "wy_sentry"
+	fire_delay = 4 SECONDS
+	health = 600
+	health_max = 600
+	damage_mult = 5
+	disassemble_time = 10 SECONDS
+	hack_time = 25 SECONDS
+	sentry_range = 8
+	handheld_type = /obj/item/defenses/handheld/sentry/wy
+	ammo = new /obj/item/ammo_magazine/sentry/wy
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
+	)
+
+/obj/structure/machinery/defenses/sentry/upp
+	name = "UPP SDS-R3 Sentry Gun"
+	desc = "A deployable, fully-automated turret with AI targeting capabilities used by the UPP."
+	icon = 'icons/obj/structures/machinery/defenses/upp_defenses.dmi'
+	sentry_type = "upp_sentry"
+	health = 300
+	health_max = 300
+	damage_mult = 1.2
+	disassemble_time = 5 SECONDS
+	handheld_type = /obj/item/defenses/handheld/sentry/upp
+	ammo = new /obj/item/ammo_magazine/sentry/upp
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_UPP,
+	)
+
+/obj/structure/machinery/defenses/sentry/upp/light
+	name = "UPP SDS-R8 Light Sentry"
+	defense_type = "Light"
+	fire_delay = 0.3 SECONDS
+	health = 200
+	health_max = 200
+	disassemble_time = 2 SECONDS
+	sentry_range = 3
+	omni_directional = TRUE
+	handheld_type = /obj/item/defenses/handheld/sentry/upp/light
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE

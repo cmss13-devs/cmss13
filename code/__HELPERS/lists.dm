@@ -35,7 +35,7 @@
 /proc/listgetindex(list/list,index)
 	if(istype(list) && list.len)
 		if(isnum(index))
-			if(InRange(index,1,list.len))
+			if(ISINRANGE(index,1,list.len))
 				return list[index]
 		else if(list[index])
 			return list[index]

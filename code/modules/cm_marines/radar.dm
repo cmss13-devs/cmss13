@@ -205,12 +205,12 @@
 			continue
 		var/crewmember_name = "Unknown"
 		var/crewmember_rank = "Unknown"
-		if(humanoid.wear_id)
-			var/obj/item/card/id/ID = humanoid.wear_id.GetID()
-			if(ID?.registered_name)
-				crewmember_name = ID.registered_name
-			if(ID?.assignment)
-				crewmember_rank = ID.assignment
+		var/obj/item/card/id/card = humanoid.get_idcard()
+		if(card)
+			if(card.registered_name)
+				crewmember_name = card.registered_name
+			if(card.assignment)
+				crewmember_rank = card.assignment
 		switch(humanoid.stat)
 			if(CONSCIOUS)
 				crewmember_name = "[crewmember_name] ([crewmember_rank]) (Conscious)"

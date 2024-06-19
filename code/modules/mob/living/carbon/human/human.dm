@@ -21,6 +21,11 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
+	RegisterSignal(src, COMSIG_MOB_STATCHANGE, PROC_REF(on_stat_change))
+
+/mob/living/carbon/human/proc/on_stat_change()
+	update_execute_hud()
+
 /mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -90,6 +95,8 @@
 	assigned_squad = null
 	selected_ability = null
 	remembered_dropped_objects = null
+
+	UnregisterSignal(src, COMSIG_MOB_STATCHANGE)
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
@@ -1708,8 +1715,8 @@
 /mob/living/carbon/human/on_knockedout_trait_gain(datum/source)
 	SIGNAL_HANDLER
 	. = ..()
-	if(!length(hud_list[XENO_EXECUTE].overlays))
-		update_execute_hud(show=TRUE)
+	
+	update_execute_hud()
 	
 	return .
 
@@ -1717,8 +1724,7 @@
 	SIGNAL_HANDLER
 	. = ..()
 
-	if(stat != UNCONSCIOUS && length(hud_list[XENO_EXECUTE].overlays))
-		update_execute_hud(show=FALSE)
+	update_execute_hud()
 	
 	return .
 	

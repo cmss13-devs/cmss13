@@ -95,8 +95,3 @@
 	// Remove this once effects have been ported to trait signals (blinded, dazed, etc)
 	if(stat != .)
 		handle_regular_hud_updates()
-
-	if(stat == UNCONSCIOUS && !length(hud_list[XENO_EXECUTE].overlays))
-		update_execute_hud(show=TRUE)
-	else if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && length(hud_list[XENO_EXECUTE].overlays))
-		update_execute_hud(show=FALSE)

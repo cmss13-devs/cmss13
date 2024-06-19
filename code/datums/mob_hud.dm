@@ -782,13 +782,13 @@ GLOBAL_DATUM(hud_icon_hudfocus, /image)
 	holder.icon_state = holo_card_color ? "holo_card_[holo_card_color]" : "hudblank"
 
 // Vampire Execute HUD
-/mob/living/carbon/human/proc/update_execute_hud(show)
+/mob/living/carbon/human/proc/update_execute_hud()
 	var/image/execute_holder = hud_list[XENO_EXECUTE]
 	
 	execute_holder.icon_state = "hudblank"
 	execute_holder.overlays.Cut()
 
-	if(show)
+	if(stat == UNCONSCIOUS || HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 		execute_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
 
 // Xeno "hostile" HUD

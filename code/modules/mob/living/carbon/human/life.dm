@@ -96,10 +96,7 @@
 	if(stat != .)
 		handle_regular_hud_updates()
 
-	for (var/datum/effects/execute_tag/target_tag in src.effects_list)
-		qdel(target_tag)
-
-	if (HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || stat == UNCONSCIOUS)
-		new /datum/effects/execute_tag(src, src, ttl = 35)
-
-	update_execute_hud()
+	if(stat == UNCONSCIOUS && !length(hud_list[XENO_EXECUTE].overlays))
+		update_execute_hud(show=TRUE)
+	else if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && length(hud_list[XENO_EXECUTE].overlays))
+		update_execute_hud(show=FALSE)

@@ -1704,3 +1704,21 @@
 			item.showoff(src)
 			return TRUE
 	return ..()
+
+/mob/living/carbon/human/on_knockedout_trait_gain(datum/source)
+	SIGNAL_HANDLER
+	. = ..()
+	if(!length(hud_list[XENO_EXECUTE].overlays))
+		update_execute_hud(show=TRUE)
+	
+	return .
+
+/mob/living/carbon/human/on_knockedout_trait_loss(datum/source)
+	SIGNAL_HANDLER
+	. = ..()
+
+	if(stat != UNCONSCIOUS && length(hud_list[XENO_EXECUTE].overlays))
+		update_execute_hud(show=FALSE)
+	
+	return .
+	

@@ -129,8 +129,7 @@
 	value_upgrade = 100 //not useful enough to be expensive
 	clearance_req = 1
 	item_reference = /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
-	change_purchase = -100
-	minimum_price = 100
+	change_purchase = 0
 
 /datum/research_upgrades/armor
 	name = "Armor"

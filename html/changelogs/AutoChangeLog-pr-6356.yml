@@ -1,0 +1,4 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - soundadd: "The M44 combat revolver has had its firing sound changed."

@@ -21,7 +21,7 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
-	RegisterSignal(src, COMSIG_MOB_DEATH, PROC_REF(on_stat_change))
+	RegisterSignal(src, COMSIG_MOB_DEATH, PROC_REF(on_death))
 
 /mob/living/carbon/human/proc/on_death()
 	SIGNAL_HANDLER

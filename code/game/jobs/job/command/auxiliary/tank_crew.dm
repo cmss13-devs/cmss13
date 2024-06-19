@@ -16,6 +16,8 @@
 		spawn_positions = 0
 
 /datum/job/command/tank_crew/get_total_positions(latejoin = FALSE)
+	if(SStechtree.trees[TREE_MARINE].get_node(/datum/tech/arc).unlocked)
+		return 0
 	if(length(GLOB.clients) >= 200 || total_positions_so_far > 0)
 		return 2
 

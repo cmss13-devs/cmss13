@@ -497,6 +497,7 @@ K9 SCANNER
 	var/mob/living/carbon/human/tracked_k9
 
 /obj/item/device/k9_scanner/Destroy()
+	. = ..()
 	tracked_k9 = null
 
 /obj/item/device/k9_scanner/attack(mob/attacked_mob as mob, mob/user as mob)

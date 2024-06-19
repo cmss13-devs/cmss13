@@ -107,12 +107,12 @@
 	bypass_pamphlet_limit = TRUE
 
 /obj/item/pamphlet/skill/k9_handler/can_use(mob/living/carbon/human/user)
-	if(issynthk9(user))
+	if(isk9synth(user))
 		to_chat(user, SPAN_WARNING("You don't need to use this! Give it to another marine to make them your handler."))
 		return FALSE
 
-	if(user.job != JOB_SQUAD_MEDIC)
-		to_chat(user, SPAN_WARNING("Only squad corpsmen can use this."))
+	if(user.job != JOB_SQUAD_MEDIC && user.job != JOB_POLICE)
+		to_chat(user, SPAN_WARNING("This is not meant for you."))
 		return
 
 	var/obj/item/card/id/ID = user.wear_id

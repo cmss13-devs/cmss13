@@ -748,10 +748,10 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		return
 	var/fire_sprite_sheet
 	var/fire_sprite_prefix
-	if (istype(species, /datum/species/monkey)) //Point towards burning sprites for monkeys
+	if (ismonkey(src)) //Point towards burning sprites for monkeys
 		fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
 		fire_sprite_prefix = "monkey"
-	else if (istype(species, /datum/species/synthetic/synth_k9)) //Point towards burning sprites for k9_synths
+	else if (isk9synth(src)) //Point towards burning sprites for k9_synths
 		fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
 		fire_sprite_prefix = "k9"
 	else //Default to human shaped fire sprites

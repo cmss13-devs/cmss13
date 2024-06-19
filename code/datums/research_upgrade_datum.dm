@@ -120,7 +120,7 @@
 	change_purchase = -100
 	minimum_price = 100
 	item_reference = /obj/item/ammo_magazine/flamer_tank/custom/upgraded
-	behavior = null
+	behavior = RESEARCH_UPGRADE_NULL
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 
 /datum/research_upgrades/item/flamer_tank/smoke

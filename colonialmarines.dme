@@ -332,6 +332,7 @@
 #include "code\datums\ASRS.dm"
 #include "code\datums\beam.dm"
 #include "code\datums\browser.dm"
+#include "code\datums\bug_report.dm"
 #include "code\datums\callback.dm"
 #include "code\datums\changelog.dm"
 #include "code\datums\combat_personalized.dm"

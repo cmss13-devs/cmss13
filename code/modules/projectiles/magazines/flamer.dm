@@ -259,8 +259,8 @@
 	max_rounds = 200
 	max_range = 7
 	fuel_pressure = 1
-	max_duration = 100 //if you manage to reach these caps I will be impressed
-	max_intensity = 100
+	max_duration = 50
+	max_intensity = 60
 	custom = TRUE
 
 /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
@@ -269,4 +269,4 @@
 	matter = list("metal" = 50) //no free metal
 	flamer_chem = null
 	custom = TRUE
-	max_rounds = 200
+	max_rounds = 150

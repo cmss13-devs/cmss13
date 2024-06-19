@@ -83,7 +83,10 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 
-// cmb synth
+// cmb synth (of note /datum/equipment_preset/synth/survivor/cmb_synth also exists)
+/datum/equipment_preset/synth/survivor/cmb
+	flags = EQUIPMENT_PRESET_STUB
+
 /datum/equipment_preset/synth/survivor/cmb/synth
 	name = "Survivor - Synthetic - CMB Investigative Synthetic(Riot Response)"
 	paygrade = PAY_SHORT_CMBS

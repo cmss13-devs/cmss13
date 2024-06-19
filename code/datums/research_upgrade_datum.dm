@@ -62,7 +62,7 @@
 /datum/research_upgrades/machinery/sleeper
 	name = "Sleeper Upgrade"
 	desc = "Research upgrade for Sleeper system, technology on this disk is used on a sleeper to allow wider spectrum of chemicals to be administered, as well as upgrading dialysis software."
-	behavior = RESEARCH_UPGRADE_TIER_1
+	behavior = null
 	value_upgrade = 500
 	item_reference = /obj/item/research_upgrades/sleeper
 	upgrade_type = ITEM_MACHINERY_UPGRADE
@@ -77,7 +77,7 @@
 	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team for 8 or 9 points."
 	value_upgrade = 2000
 	item_reference = /obj/item/research_upgrades/credits
-	behavior = RESEARCH_UPGRADE_TIER_1
+	behavior = null
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	change_purchase = 500
 	maximum_price = 5000
@@ -88,7 +88,7 @@
 	desc = "An advanced, robust version of the normal scalpel, allowing it to pierce through thick skin and chitin alike with extreme ease."
 	value_upgrade = 3000
 	item_reference = /obj/item/tool/surgery/scalpel/laser/advanced
-	behavior = RESEARCH_UPGRADE_TIER_1
+	behavior = null
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	clearance_req = 3
 
@@ -97,7 +97,7 @@
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision, allowing for the immediate commencement of therapeutic steps."
 	value_upgrade = 3000
 	item_reference = /obj/item/tool/surgery/scalpel/manager
-	behavior = RESEARCH_UPGRADE_TIER_1
+	behavior = null
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	clearance_req = 4
 /datum/research_upgrades/item/nanosplints
@@ -119,7 +119,7 @@
 	name = "Universal Translator Plate"
 	desc = "A uniform-attachable plate capable of translating any unknown language heard by the wearer."
 	value_upgrade = 2000
-	behavior = RESEARCH_UPGRADE_TIER_1
+	behavior = null
 	clearance_req = 6
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	item_reference = /obj/item/clothing/accessory/health/research_plate/translator
@@ -129,7 +129,7 @@
 	name = "Active Blood Coagulator Plate"
 	desc = "A uniform-attachable plate capable of coagulating any bleeding wounds the user possesses."
 	value_upgrade = 1200
-	behavior = RESEARCH_UPGRADE_TIER_1
+	behavior = null
 	clearance_req = 2
 	change_purchase = -200
 	minimum_price = 200
@@ -141,7 +141,7 @@
 	desc = "A medical plate with two buttons on the sides and a hefty chemical tank. Attached to a uniform and on a simultaneous press, it injects an emergency dose of medical chemicals much larger than a normal emergency autoinjector. Single time use and is recycled in biomass printer. Features overdose protection."
 	value_upgrade = 250
 	clearance_req = 1
-	behavior = RESEARCH_UPGRADE_TIER_1
+	behavior = null
 	change_purchase = -100
 	minimum_price = 100
 	upgrade_type = ITEM_ARMOR_UPGRADE
@@ -152,7 +152,7 @@
 	desc = "A strong trauma plate, able to protect the user from a large amount of bullets. Completely useless against sharp objects."
 	value_upgrade = 500
 	clearance_req = 4
-	behavior = RESEARCH_UPGRADE_TIER_1
+	behavior = null
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	change_purchase = -50
 	minimum_price = 200
@@ -163,7 +163,7 @@
 	desc = "preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead, due to small tank of preservatives, it needs to be replaced on each death. Extends time to permadeath by around four minutes."
 	value_upgrade = 500
 	clearance_req = 4
-	behavior = RESEARCH_UPGRADE_TIER_1
+	behavior = null
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	change_purchase = -100
 	minimum_price = 100

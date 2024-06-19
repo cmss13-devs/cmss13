@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - qol: "examining eggs/morphers tells you current number of huggers and the limit"

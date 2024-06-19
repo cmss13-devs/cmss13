@@ -24,6 +24,7 @@
 	RegisterSignal(src, COMSIG_MOB_STATCHANGE, PROC_REF(on_stat_change))
 
 /mob/living/carbon/human/proc/on_stat_change()
+	SIGNAL_HANDLER
 	update_execute_hud()
 
 /mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)

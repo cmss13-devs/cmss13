@@ -1,0 +1,11 @@
+author: "Drathek cuberound"
+delete-after: True
+changes:
+  - balance: "After three minutes from round start, landing zones will be covered in a deadly gas"
+  - balance: "First dropship deployment will clear gas, and first dropship arrival will deploy 4 sentries that last 20 minutes"
+  - refactor: "Refactored smoke code"
+  - maptweak: "Expanded LZ areas on Trijent Dam and Kutjevo Refinery"
+  - maptweak: "Shrunk LZ1 on Shivas Snowball and LZ2 on LV624 slightly"
+  - maptweak: "Removed fog on Chances Claim since it will be replaced by smoke and tweaked southern tunnel area to not be considered a LZ"
+  - bugfix: "Fixed weird LZ lighting on some maps"
+  - spellcheck: "Replaced/removed synth coughing emotes in smoke"

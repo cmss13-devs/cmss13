@@ -1,0 +1,4 @@
+author: "Nomoresolvalou"
+delete-after: True
+changes:
+  - rscadd: "Added masks to synth snowflake vendor"

@@ -73,3 +73,21 @@
   - balance: Set CT free plasteel to 40 and added APC Circuit board
   realforest2001:
   - bugfix: Fixed the USCM Observer icon not displaying. Forest dumb.
+2024-06-10:
+  Kivts, SubjectD9341, Zenith.:
+  - rscadd: Xenomorph Harvesting Surgery. Allows research to operate dead xenomorphs
+      to take out their organ.
+  - rscadd: The Xenomorph analyzer, uses organs extracted from dead xenomorphs, which
+      when processed gives points to spend on physical upgrades.
+  - rscadd: a number of machinery upgrades for autodoc, sleeper, and other upgrades
+      or bonuses research can decide to spend their points on
+  - rscdel: passive generation increase of research credits is removed
+  ThePiachu:
+  - spellcheck: Fixed a typo in Admin Game Panel
+2024-06-11:
+  Zonespace27:
+  - balance: All squad roles can now use M707 pamphlets
+  - bugfix: Skillless M707 spotting scopes now consistently work.
+  - bugfix: M707 magazine overlay no longer disappears when the gun is empty with
+      an inserted magazine
+  - bugfix: Fixed M707 being usable without the correct trait

@@ -1993,7 +1993,7 @@
 	health = 1250
 	anchored = TRUE
 
-// Phonebox Prop (Doesn't actually work a locker)
+// Phonebox Prop (Doesn't actually work as a locker)
 /obj/structure/prop/hybrisa/misc/phonebox
 	name = "wrecked phonebox"
 	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, the glass is smashed, hiding inside would be pointless."
@@ -2056,6 +2056,7 @@
 	icon_state = "barsign_on"
 
 // Small Sign
+
 /obj/structure/prop/hybrisa/signs/high_voltage
 	name = "warning sign"
 	desc = "DANGER - HIGH VOLTAGE - DEATH!."
@@ -2073,12 +2074,11 @@
 /// Alien Isolation - posters used as reference (direct downscale of the image for some) If anyone wants to name the billboards individually ///
 
 /obj/structure/prop/hybrisa/billboardsandsigns
-	health = 1000
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards
 	name = "billboard"
 	desc = "An advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard_bigger"
+	health = 1000
 	bound_width = 64
 	bound_height = 32
 	density = FALSE
@@ -2116,31 +2116,26 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
+/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards
+	icon_state = "billboard_bigger"
+
 /obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1
-	name = "billboard"
-	desc = "An advertisement billboard."
-	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard1"
 
 /obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2
-	name = "billboard"
-	desc = "An advertisement billboard."
-	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard2"
 
 /obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3
-	name = "billboard"
-	desc = "An advertisement billboard."
-	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard3"
 
 /obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4
-	name = "billboard"
-	desc = "An advertisement billboard."
-	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard4"
 
+/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard5
+	icon_state = "billboard5"
+
 // Big Road Signs
+
 /obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns
 	name = "road sign"
 	desc = "A road sign."
@@ -2151,8 +2146,10 @@
 	density = FALSE
 	anchored = TRUE
 	layer = BILLBOARD_LAYER
+
 /obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1
 	icon_state = "roadsign_1"
+
 /obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2
 	icon_state = "roadsign_2"
 

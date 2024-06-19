@@ -37,8 +37,8 @@
 		"cooldown" = 1
 	)
 
-	movement_sound = 'sound/vehicles/tank_driving.ogg'
-	honk_sound = 'sound/vehicles/honk_2_truck.ogg'
+	movement_sound = 'sound/vehicles/box_van_driving.ogg'
+	honk_sound = 'sound/vehicles/box_van_horn.ogg'
 
 	vehicle_light_range = 8
 
@@ -221,7 +221,7 @@
 
 		overdrive_next = world.time + overdrive_cooldown
 		to_chat(user, SPAN_NOTICE("You activate overdrive."))
-		playsound(src, 'sound/vehicles/overdrive_activate.ogg', 75, FALSE)
+		playsound(src, 'sound/vehicles/box_van_overdrive.ogg', 75, FALSE)
 		return
 
 	return ..()

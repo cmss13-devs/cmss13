@@ -1714,7 +1714,6 @@
 	return ..()
 
 /mob/living/carbon/human/on_knockedout_trait_gain(datum/source)
-	SIGNAL_HANDLER
 	. = ..()
 	
 	update_execute_hud()
@@ -1722,7 +1721,6 @@
 	return .
 
 /mob/living/carbon/human/on_knockedout_trait_loss(datum/source)
-	SIGNAL_HANDLER
 	. = ..()
 
 	update_execute_hud()

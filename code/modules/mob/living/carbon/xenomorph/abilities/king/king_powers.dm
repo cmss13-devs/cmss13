@@ -46,7 +46,7 @@
 	smoke_gas.set_up(7, 0, get_turf(xeno), null, 6)
 	smoke_gas.start()
 
-	for(var/atom/current_atom in view(owner))
+	for(var/atom/current_atom as anything in view(owner))
 		if(istype(current_atom, /obj/item/device))
 			var/obj/item/device/potential_lightsource = current_atom
 

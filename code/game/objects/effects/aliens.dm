@@ -116,7 +116,6 @@
 				var/mob/living/carbon/C = M
 				if (C.ally_of_hivenumber(hivenumber))
 					continue
-				
 				apply_spray(M)
 				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 

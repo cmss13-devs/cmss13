@@ -115,7 +115,7 @@
 		to_chat(user, SPAN_WARNING("This is not meant for you."))
 		return
 
-	var/obj/item/card/id/ID = user.wear_id
+	var/obj/item/card/id/ID = user.get_idcard()
 	if(!istype(ID)) //not wearing an ID
 		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
 		return FALSE
@@ -132,7 +132,7 @@
 	user.assigned_equipment_preset.minimap_icon = "medic_k9"
 	user.update_minimap_icon()
 
-	var/obj/item/card/id/ID = user.wear_id
+	var/obj/item/card/id/ID = user.get_idcard()
 	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "K9 Handler")
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "K9 Handler")
 

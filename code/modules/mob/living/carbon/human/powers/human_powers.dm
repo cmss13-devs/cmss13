@@ -297,7 +297,7 @@
 	if(usr.is_mob_incapacitated())
 		return
 
-	if(!istype(species,/datum/species/synthetic/synth_k9))
+	if(!isk9synth(usr))
 		return
 
 	var/datum/species/synthetic/synth_k9/speciesk9 = species

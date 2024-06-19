@@ -244,12 +244,11 @@
 /datum/radar/scenttracker/scan()
 	. = ..()
 	objects = list()
-	for(var/i in GLOB.human_mob_list)
-		var/mob/living/carbon/human/humanoid = i
+	for(var/mob/living/carbon/human/humanoid as anything in GLOB.human_mob_list)
 		var/crewmember_name = "Unknown"
 		var/crewmember_rank = "Unknown"
-		if(humanoid.wear_id)
-			var/obj/item/card/id/ID = humanoid.wear_id.GetID()
+		if(humanoid.get_idcard())
+			var/obj/item/card/id/ID = humanoid.get_idcard()
 			if(ID?.registered_name)
 				crewmember_name = ID.registered_name
 			if(ID?.assignment)

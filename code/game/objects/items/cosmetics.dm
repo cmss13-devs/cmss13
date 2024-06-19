@@ -167,11 +167,12 @@
 	user.change_real_name(user, newname)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/altered_human = user
-		if(altered_human.wear_id)
-			altered_human.wear_id.name = "[altered_human.real_name]'s ID Card"
-			altered_human.wear_id.registered_name = "[altered_human.real_name]"
-			if(altered_human.wear_id.assignment)
-				altered_human.wear_id.name += " ([altered_human.wear_id.assignment])"
+		var/obj/item/card/id/ID = altered_human.get_idcard()
+		if(ID)
+			ID.name = "[altered_human.real_name]'s ID Card"
+			ID.registered_name = "[altered_human.real_name]"
+			if(ID.assignment)
+				ID.name += " ([ID.assignment])"
 
 	var/genderswap = tgui_input_list(usr, "Which Gender?", "Gender", list("male", "female"))
 	if(!genderswap)

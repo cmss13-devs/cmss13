@@ -7485,12 +7485,6 @@
 "kjk" = (
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/colony_central)
-"kjo" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/desert/desert_shore/desert_shore1{
-	dir = 4
-	},
-/area/kutjevo/exterior/scrubland)
 "kkB" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/kutjevo/colors/cyan,
@@ -12834,11 +12828,6 @@
 	dir = 4
 	},
 /area/kutjevo/interior/colony_South/power2)
-"rsV" = (
-/turf/open/desert/desert_shore/desert_shore1{
-	dir = 8
-	},
-/area/kutjevo/exterior/scrubland)
 "rte" = (
 /obj/structure/prop/dam/boulder/boulder2,
 /turf/open/auto_turf/sand/layer0,
@@ -23082,7 +23071,7 @@ dxF
 dxF
 dxF
 mbh
-rsV
+uMg
 xYt
 dxF
 tlN
@@ -23416,7 +23405,7 @@ dxF
 dxF
 dxF
 gxs
-kjo
+bMo
 umQ
 bXl
 fFH

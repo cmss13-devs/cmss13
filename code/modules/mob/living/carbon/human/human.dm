@@ -91,8 +91,6 @@
 	selected_ability = null
 	remembered_dropped_objects = null
 
-	UnregisterSignal(src, COMSIG_MOB_DEATH)
-
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
 

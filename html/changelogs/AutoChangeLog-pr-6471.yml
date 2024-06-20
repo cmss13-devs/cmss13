@@ -1,0 +1,6 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - balance: "Fence health nerfed, now can be 2 tapped by xenos"
+  - qol: "Fuel cell recyclers no longer block movement"
+  - qol: "Showcases are now slashable by xenos"

@@ -159,7 +159,7 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * After leaving reviews on an open pull request, maintainers should convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
 
-* We ask that you refain from pinging staff about getting your pull request reviewed until after it is automatically marked stale pending review. If it ends up stale exempt, give it a week, but usually this situation will be explained such as when a relevant maintainer is currently unavailable.
+* We ask that you refrain from pinging staff about getting your pull request reviewed until after it is automatically marked stale pending review. If it ends up stale exempt, give it a week, but usually this situation will be explained such as when a relevant maintainer is currently unavailable.
 
 * Whenever sprites are added, please include screenshots or video(s) of them in game in the pull request description.
 
@@ -241,9 +241,9 @@ The following list is non-exhaustive, but should give you a good idea of what we
 - Prior denied content/PRs (without approval)
 
 ### Frozen
-- See pinned [issues](https://github.com/cmss13-devs/cmss13/issues) for anything that requires explict permission.
+- See pinned [issues](https://github.com/cmss13-devs/cmss13/issues) for anything that requires explicit permission.
 
-Remember that the the list is not exhaustive. And you can freely contribute an PR with content that can be shuffled into the “What we don’t want” category, and still get it merged. It is just unlikely without prior talk/approval from a maintainer.
+Remember that the list is not exhaustive. And you can freely contribute an PR with content that can be shuffled into the “What we don’t want” category, and still get it merged. It is just unlikely without prior talk/approval from a maintainer.
 
 ## Banned content
 Do not add any of the following in a Pull Request or risk getting the PR closed:

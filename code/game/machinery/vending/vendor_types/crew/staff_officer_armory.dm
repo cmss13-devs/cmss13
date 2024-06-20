@@ -80,6 +80,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer_armory, list(
 		list("Fulton Recovery Device", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("Space Cleaner", 2, /obj/item/reagent_container/spray/cleaner, null, VENDOR_ITEM_REGULAR),
+		list("Blowtorch", 5, /obj/item/tool/weldingtool, null, VENDOR_ITEM_REGULAR),
+		list("Wrench", 1, /obj/item/tool/wrench, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", 5, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR)
 	))

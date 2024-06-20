@@ -8,7 +8,7 @@
 
 	slot = HDPT_TREADS
 
-	health = 500
+	health = 300
 
 	//with this settings, takes 3 tiles to reach top speed
 	move_delay = 3.8
@@ -20,7 +20,7 @@
 	name = "Reinforced Treads"
 	desc = "These treads are made of a tougher material and are more durable. However, the extra weight slows the tank down slightly."
 
-	health = 750
+	health = 500
 	acid_resistant = TRUE
 
 	move_max_momentum = 5 //same top speed, but takes 5 tiles to reach it

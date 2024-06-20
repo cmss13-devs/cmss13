@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - balance: "Queen will now briefly shove xenos if they are in a tile she is trying to move to, preventing bodyblock."

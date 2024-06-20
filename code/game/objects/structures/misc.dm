@@ -7,6 +7,20 @@
 	anchored = TRUE
 	health = 250
 
+/obj/structure/showcase/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.a_intent == INTENT_HARM)
+		if(unslashable)
+			return
+		xeno.animation_attack_on(src)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
+		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		deconstruct(FALSE)
+		return XENO_ATTACK_ACTION
+	else
+		attack_hand(xeno)
+		return XENO_NONCOMBAT_ACTION
+
 /obj/structure/showcase/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -273,7 +287,7 @@
 	. = ..()
 	if(over_object != usr || !Adjacent(usr))
 		return
-		
+
 	if(!ishuman(usr))
 		return
 

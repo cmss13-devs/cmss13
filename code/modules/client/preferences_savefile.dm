@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 22
+#define SAVEFILE_VERSION_MAX 24
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -93,6 +93,59 @@
 		var/sound_toggles
 		S["toggles_sound"] >> sound_toggles
 		sound_toggles |= SOUND_OBSERVER_ANNOUNCEMENTS
+		S["toggles_sound"] << sound_toggles
+
+	if(savefile_version < 23)
+		var/ethnicity
+		var/skin_color = "pale2"
+		S["ethnicity"] >> ethnicity
+		switch(ethnicity)
+			if("anglo")
+				skin_color = "pale2"
+			if("western")
+				skin_color = "tan2"
+			if("germanic")
+				skin_color = "pale2"
+			if("scandinavian")
+				skin_color = "pale3"
+			if("baltic")
+				skin_color = "pale3"
+			if("sinoorient")
+				skin_color = "pale1"
+			if("southorient")
+				skin_color = "tan1"
+			if("indian")
+				skin_color = "tan3"
+			if("sino")
+				skin_color = "tan1"
+			if("mesoamerican")
+				skin_color = "tan3"
+			if("northamerican")
+				skin_color = "tan3"
+			if("southamerican")
+				skin_color = "tan2"
+			if("circumpolar")
+				skin_color = "tan1"
+			if("northafrican")
+				skin_color = "tan3"
+			if("centralafrican")
+				skin_color = "dark1"
+			if("costalafrican")
+				skin_color = "dark3"
+			if("persian")
+				skin_color = "tan3"
+			if("levant")
+				skin_color = "tan3"
+			if("australasian")
+				skin_color = "dark2"
+			if("polynesian")
+				skin_color = "tan3"
+		S["skin_color"] << skin_color
+
+	if(savefile_version < 24) // adds fax machine sounds on by default
+		var/sound_toggles
+		S["toggles_sound"] >> sound_toggles
+		sound_toggles |= (SOUND_FAX_MACHINE)
 		S["toggles_sound"] << sound_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX
@@ -429,7 +482,9 @@
 	S["gender"] >> gender
 	S["age"] >> age
 	S["ethnicity"] >> ethnicity
+	S["skin_color"] >> skin_color
 	S["body_type"] >> body_type
+	S["body_size"] >> body_size
 	S["language"] >> language
 	S["spawnpoint"] >> spawnpoint
 
@@ -508,8 +563,9 @@
 	be_random_body = sanitize_integer(be_random_body, 0, 1, initial(be_random_body))
 	gender = sanitize_gender(gender)
 	age = sanitize_integer(age, AGE_MIN, AGE_MAX, initial(age))
-	ethnicity = sanitize_ethnicity(ethnicity)
+	skin_color = sanitize_skin_color(skin_color)
 	body_type = sanitize_body_type(body_type)
+	body_size = sanitize_body_size(body_size)
 	r_hair = sanitize_integer(r_hair, 0, 255, initial(r_hair))
 	g_hair = sanitize_integer(g_hair, 0, 255, initial(g_hair))
 	b_hair = sanitize_integer(b_hair, 0, 255, initial(b_hair))
@@ -580,7 +636,9 @@
 	S["gender"] << gender
 	S["age"] << age
 	S["ethnicity"] << ethnicity
+	S["skin_color"] << skin_color
 	S["body_type"] << body_type
+	S["body_size"] << body_size
 	S["language"] << language
 	S["hair_red"] << r_hair
 	S["hair_green"] << g_hair

@@ -840,8 +840,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/XenoItem/ChitinPlate,
-/obj/item/XenoItem/ChitinPlate,
 /obj/item/stack/sheet/xenochitin,
 /obj/item/stack/sheet/xenochitin,
 /turf/open/floor/corsat{
@@ -1742,18 +1740,6 @@
 	},
 /turf/open/floor/holofloor{
 	icon_state = "cult"
-	},
-/area/yautja)
-"fB" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/XenoItem/AntiAcid,
-/obj/item/XenoItem/AntiAcid,
-/obj/item/XenoItem/AntiAcid,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
 	},
 /area/yautja)
 "fF" = (
@@ -4840,7 +4826,7 @@ bj
 cP
 cP
 bj
-fB
+ZM
 bL
 bL
 bL

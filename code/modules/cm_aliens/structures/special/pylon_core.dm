@@ -62,6 +62,9 @@
 /obj/effect/alien/resin/special/pylon/get_examine_text(mob/user)
 	. = ..()
 
+	if(!isobserver(user) && !isxeno(user))
+		return
+
 	var/lesser_count = 0
 	for(var/mob/living/carbon/xenomorph/lesser_drone/lesser in linked_hive.totalXenos)
 		lesser_count++

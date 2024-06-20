@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - bugfix: "more survivors now listed in survivor category on observe menu"

@@ -127,6 +127,7 @@
 
 	return TRUE
 
+/// Whether the client passes requirements for the scenario
 /datum/job/proc/can_play_role_in_scenario(client/client)
 	return TRUE
 

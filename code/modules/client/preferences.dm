@@ -650,6 +650,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
 			dat += "<b>Spawn as Hostile:</b> <a href='?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_HOSTILE ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Non-Hostile:</b> <a href='?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_NON_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_NON_HOSTILE ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"
 
 	dat += "</div></body>"
@@ -1901,6 +1902,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("toggles_survivor")
 					var/flag = text2num(href_list["flag"])
 					toggles_survivor ^= flag
+					if(!HAS_FLAG(toggles_survivor, PLAY_SURVIVOR_HOSTILE|PLAY_SURVIVOR_NON_HOSTILE))
+						// Neither hostile nor non-hostile: Invert the other
+						if(flag == PLAY_SURVIVOR_NON_HOSTILE)
+							toggles_survivor ^= PLAY_SURVIVOR_HOSTILE
+						else
+							toggles_survivor ^= PLAY_SURVIVOR_NON_HOSTILE
 
 				if("ambientocclusion")
 					toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION

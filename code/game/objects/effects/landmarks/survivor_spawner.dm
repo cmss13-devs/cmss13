@@ -30,6 +30,8 @@
 		return FALSE
 	if(hostile && !HAS_FLAG(survivor.client?.prefs?.toggles_survivor, PLAY_SURVIVOR_HOSTILE))
 		return FALSE
+	if(!hostile && !HAS_FLAG(survivor.client?.prefs?.toggles_survivor, PLAY_SURVIVOR_NON_HOSTILE))
+		return FALSE
 	return TRUE
 
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf

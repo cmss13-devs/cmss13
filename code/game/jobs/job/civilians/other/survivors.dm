@@ -39,6 +39,8 @@
 
 	if(SSnightmare.get_scenario_is_hostile_survivor())
 		return HAS_FLAG(client.prefs?.toggles_survivor, PLAY_SURVIVOR_HOSTILE)
+	else
+		return HAS_FLAG(client.prefs?.toggles_survivor, PLAY_SURVIVOR_NON_HOSTILE)
 
 /datum/job/civilian/survivor/spawn_in_player(mob/new_player/NP)
 	. = ..()

@@ -1068,6 +1068,10 @@
 
 // Civilian
 
+
+/datum/equipment_preset/corpse/hybrisa
+	flags = EQUIPMENT_PRESET_STUB
+
 /datum/equipment_preset/corpse/hybrisa/civilian
 	name = "Corpse - Civilian"
 	assignment = "Civilian"

@@ -2009,6 +2009,17 @@
 	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, covered in blood and the glass is smashed. Hiding inside would be pointless."
 	icon_state = "phonebox_bloody_off_broken"
 
+/obj/structure/prop/hybrisa/misc/urinal
+	name = "urinal"
+	desc = "A urinal."
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon_state = "small_urinal"
+	density = FALSE
+	anchored = TRUE
+
+/obj/structure/prop/hybrisa/misc/urinal/dark
+	icon_state = "small_urinal_dark"
+
 // Signs
 
 /obj/structure/prop/hybrisa/signs

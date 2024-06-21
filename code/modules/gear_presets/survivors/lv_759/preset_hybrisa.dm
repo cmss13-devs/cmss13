@@ -1012,10 +1012,14 @@
 //////////////// SNYTHETICS /////////////////////////
 ////////////////////////////////////////////////////
 
+/datum/equipment_preset/synth/survivor/hybrisa
+	flags = EQUIPMENT_PRESET_STUB
+
 // Civilian
 
 /datum/equipment_preset/synth/survivor/hybrisa/civilian
 	name = "Survivor - Hybrisa - Synthetic - Civilian"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
@@ -1099,6 +1103,7 @@
 
 /datum/equipment_preset/synth/survivor/hybrisa/engineer_survivor
 	name = "Survivor - Hybrisa - Synthetic - Engineer"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
@@ -1169,6 +1174,7 @@
 
 /datum/equipment_preset/synth/survivor/hybrisa/paramedic
 	name = "Survivor - Hybrisa - Synthetic - Emergency Medical Technician - Paramedic"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = MEDICAL_SURVIVOR
 
@@ -1204,6 +1210,7 @@
 
 /datum/equipment_preset/synth/survivor/hybrisa/detective
 	name = "Survivor - Hybrisa - Synthetic - Detective"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -1242,6 +1249,7 @@
 
 /datum/equipment_preset/synth/survivor/hybrisa/exec_bodyguard
 	name = "Survivor - Hybrisa - Synthetic - Executive Bodyguard"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = CORPORATE_SURVIVOR
 
@@ -1300,6 +1308,7 @@
 
 /datum/equipment_preset/synth/survivor/hybrisa/xenoarchaeologist
 	name = "Survivor - Hybrisa - Synthetic - Xenoarchaeologist"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = SCIENTIST_SURVIVOR
 

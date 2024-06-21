@@ -1065,10 +1065,10 @@
 
 	for(var/mob/living/carbon/xenomorph/candidate in votes)
 		if(votes[candidate] > primary_votes)
-			priamry_votes = votes[candidate]
+			primary_votes = votes[candidate]
 			primary_candidate = candidate
 		else if(votes[candidate > secondary_votes])
-			secondary_candidate = votes[candidate]
+			secondary_votes = votes[candidate]
 			secondary_candidate = candidate
 
 	votes.Cut()

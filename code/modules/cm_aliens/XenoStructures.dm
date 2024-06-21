@@ -1058,26 +1058,37 @@
 /obj/effect/alien/resin/king_cocoon/proc/roll_candidates(list/mob/living/carbon/xenomorph/voting_candidates, expedite = FALSE)
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 	
-	votes = sortAssoc(votes)
-	var/index = 0
+	var/primary_votes = 0
+	var/mob/living/carbon/xenomorph/primary_candidate
+	var/secondary_votes = 0
+	var/mob/living/carbon/xenomorph/secondary_candidate
+
 	for(var/mob/living/carbon/xenomorph/candidate in votes)
-		if(index == 0 && prob(50) && length(votes) > 1)
-			continue
-
-		if(index > 1)
-			break
-
-		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
-			chosen_candidate = candidate.client
-			rolling_candidates = FALSE
-			start_hatching(expedite)
-			return
-		
-		voting_candidates -= candidate
-
-		index++
+		if(votes[candidate] > primary_votes)
+			priamry_votes = votes[candidate]
+			primary_candidate = candidate
+		else if(votes[candidate > secondary_votes])
+			secondary_candidate = votes[candidate]
+			secondary_candidate = candidate
 
 	votes.Cut()
+
+	if(prob(50) && try_roll_candidate(hive, primary_candidate, playtime_restricted = TRUE))
+		chosen_candidate = primary_candidate.client
+		rolling_candidates = FALSE
+		start_hatching(expedite)
+		return
+		
+	voting_candidates -= primary_candidate
+
+	
+	if(try_roll_candidate(hive, secondary_candidate, playtime_restricted = TRUE))
+		chosen_candidate = secondary_candidate.client
+		rolling_candidates = FALSE
+		start_hatching(expedite)
+		return
+
+	voting_candidates -= secondary_candidate
 
 	// Otherwise ask all the living xenos (minus the player(s) who got voted on earlier)
 	for(var/mob/living/carbon/xenomorph/candidate in shuffle(voting_candidates))

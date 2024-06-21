@@ -979,7 +979,7 @@
  * * skip_playtime: Determines whether being above KING_PLAYTIME_HOURS makes the candidate invalid (does nothing unless playtime_restricted is FALSE)
  */
 /obj/effect/alien/resin/king_cocoon/proc/is_candidate_valid(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE, skip_playtime = TRUE)
-	if(!candidate.client)
+	if(!candidate?.client)
 		return FALSE
 	if(isfacehugger(candidate) || islesserdrone(candidate))
 		return FALSE

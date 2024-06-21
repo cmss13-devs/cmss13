@@ -1,5 +1,5 @@
 /obj/item/hardpoint/primary/minigun
-	name = "LTAA-AP Minigun"
+	name = "\improper LTAA-AP Minigun"
 	desc = "A primary weapon for tanks that spews bullets"
 
 	icon_state = "ltaaap_minigun"

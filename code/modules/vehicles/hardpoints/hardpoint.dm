@@ -132,6 +132,12 @@
 //------GENERAL PROCS----------
 //-----------------------------
 
+/obj/item/hardpoint/p_s(temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	if(temp_gender == PLURAL)
+		. = "s"
+
 /obj/item/hardpoint/Initialize()
 	. = ..()
 	set_bullet_traits()

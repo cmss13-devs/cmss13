@@ -284,8 +284,7 @@
 	playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
 
 	var/direction = Get_Compass_Dir(xeno, targeted_atom) //More precise than get_dir.
-	if(!direction) //Same tile.
-		return
+
 	if(!step(hit_target, direction))
 		playsound(hit_target.loc, "punch", 25, 1)
 		hit_target.visible_message(SPAN_DANGER("[hit_target] slams into an obstacle!"),

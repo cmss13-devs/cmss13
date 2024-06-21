@@ -1,0 +1,5 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - balance: "Vampire tail jab now only stuns if you knockback an enemy into an obstacle."
+  - spellcheck: "Vampire lurkers no longer \"throw it back\" after hitting somebody with their Tail Jab"

@@ -56,6 +56,8 @@
 	black_market_value = 25
 	dead_black_market_value = 0
 
+	mobility_flags = MOBILITY_FLAGS_LYING_CAPABLE_DEFAULT
+
 /mob/living/simple_animal/Initialize()
 	. = ..()
 	SSmob.living_misc_mobs += src

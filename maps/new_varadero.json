@@ -14,8 +14,7 @@
         "/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/nv",
         "/datum/equipment_preset/survivor/security/nv",
         "/datum/equipment_preset/survivor/beachbum",
-        "/datum/equipment_preset/survivor/miner",
-        "/datum/equipment_preset/survivor/clf"
+        "/datum/equipment_preset/survivor/miner"
     ],
 	"CO_survivor_types": [
         "/datum/equipment_preset/survivor/new_varadero/commander"

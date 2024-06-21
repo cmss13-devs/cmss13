@@ -212,3 +212,18 @@
   - ui: New bug report system ui
   zzzmike:
   - qol: examining eggs/morphers tells you current number of huggers and the limit
+2024-06-21:
+  Drathek:
+  - bugfix: Fixed the core showing lesser drone counts to humans when examined
+  Git-Nivrak:
+  - balance: You can no longer extinguish yourself with your own acid spray.
+  - balance: Queen will now briefly shove xenos if they are in a tile she is trying
+      to move to, preventing bodyblock.
+  cuberound:
+  - balance: patting fire on ground harms the xeno, more intense fire means more harm
+  iloveloopers:
+  - balance: Fence health nerfed, now can be 2 tapped by xenos
+  - qol: Fuel cell recyclers no longer block movement
+  - qol: Showcases are now slashable by xenos
+  zzzmike:
+  - bugfix: more survivors now listed in survivor category on observe menu

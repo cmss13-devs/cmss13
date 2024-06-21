@@ -127,6 +127,9 @@
 
 	return TRUE
 
+/datum/job/proc/can_play_role_in_scenario(client/client)
+	return TRUE
+
 /datum/job/proc/get_role_requirements(client/C)
 	var/list/return_requirements = list()
 	for(var/prereq in minimum_playtimes)

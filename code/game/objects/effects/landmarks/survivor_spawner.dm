@@ -26,6 +26,10 @@
 	// prevents stacking survivors on top of eachother
 	if(locate(/mob/living/carbon/human) in loc)
 		return FALSE
+	if(!survivor)
+		return FALSE
+	if(hostile && !HAS_FLAG(survivor.client?.prefs?.toggles_survivor, PLAY_SURVIVOR_HOSTILE))
+		return FALSE
 	return TRUE
 
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf

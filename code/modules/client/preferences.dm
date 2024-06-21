@@ -62,6 +62,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
 	var/toggles_flashing = TOGGLES_FLASHING_DEFAULT
 	var/toggles_ert = TOGGLES_ERT_DEFAULT
+	var/toggles_survivor = TOGGLES_SURVIVOR_DEFAULT
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
 	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
@@ -644,6 +645,11 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			if(owner.check_whitelist_status(WHITELIST_SYNTHETIC))
 				dat += "<b>Spawn as Synth:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_SYNTH]'><b>[toggles_ert & PLAY_SYNTH ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Miscellaneous:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_MISC]'><b>[toggles_ert & PLAY_MISC ? "Yes" : "No"]</b></a><br>"
+			dat += "</div>"
+
+			dat += "<div id='column2'>"
+			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
+			dat += "<b>Spawn as Hostile:</b> <a href='?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_HOSTILE ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"
 
 	dat += "</div></body>"
@@ -1891,6 +1897,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("toggles_ert")
 					var/flag = text2num(href_list["flag"])
 					toggles_ert ^= flag
+
+				if("toggles_survivor")
+					var/flag = text2num(href_list["flag"])
+					toggles_survivor ^= flag
 
 				if("ambientocclusion")
 					toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION

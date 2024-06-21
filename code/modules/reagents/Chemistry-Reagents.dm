@@ -83,9 +83,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	for(var/datum/chem_property/P in properties)
 		P.post_update_reagent()
 
-	if(intensityfire >= 50)
-		burncolor = "#ffffff"
-
 /datum/reagent/proc/reaction_mob(mob/M, method=TOUCH, volume, permeable) //By default we have a chance to transfer some
 	if(!istype(M, /mob/living))
 		return FALSE

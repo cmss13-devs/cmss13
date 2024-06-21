@@ -333,7 +333,7 @@
 	var/lighting_color = "#000" /// used in the animation, set by the special_lighting_type
 
 	//if its cold or in space (or chances claim)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD || ZTRAIT_IN_SPACE] || SSmapping.configs[GROUND_MAP].map_name == MAP_LV522_CHANCES_CLAIM)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] || SSmapping.configs[GROUND_MAP].map_name == MAP_LV522_CHANCES_CLAIM || MAP_PRISON_STATION_V3)
 		switch(lighting_stage) //for sun stages, the more you have the better it looks when special called, I recommend choosing cinematic 4 colors then using a gradient tool to pick out the rest
 			if(0)
 				lighting_color = "#a8c3cf"

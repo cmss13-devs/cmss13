@@ -629,21 +629,3 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 
 	decrypting = FALSE
 	announce_to_players()
-
-/obj/structure/machinery/nuclearbomb/tech/attackby(obj/item/nuke_disk as obj, mob/user as mob)
-	var/reduction_multiplier = 0.7 //30% reduction
-	if(!istype(nuke_disk, /obj/item/disk/nuclear))
-		attack_hand(user)
-		to_chat(user, SPAN_WARNING("You probably shouldn't hit it with \the [src]..."))
-		return
-	if(!decrypting)
-		to_chat(user, SPAN_WARNING("It needs to be decrypting first!"))
-		return
-	if(decryption_time <= 0)
-		to_chat(user, SPAN_WARNING("Decryption is already complete..."))
-		return
-	decryption_end_time = LERP(world.time, decryption_end_time, reduction_multiplier)
-	decryption_time = decryption_end_time - world.time
-	to_chat(user, SPAN_WARNING("The decryption process begins using the disk's data..."))
-	announce_to_players() //Let everyone know the new time
-	qdel(nuke_disk)

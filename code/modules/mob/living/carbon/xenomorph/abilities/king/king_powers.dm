@@ -83,14 +83,15 @@
 				var/obj/item/clothing/suit/storage/marine/armour = suit
 				addtimer(CALLBACK(armour, TYPE_PROC_REF(/atom, turn_light), null, FALSE), time_to_extinguish)
 		
-		var/power = current_atom.light_power
-		if(power > 0)
-			if(current_atom.light_system != MOVABLE_LIGHT)
-				current_atom.set_light(l_range=0)
-				addtimer(CALLBACK(current_atom, TYPE_PROC_REF(/atom, set_light), power), 10 SECONDS)
-			else
-				current_atom.set_light_range(0)
-				addtimer(CALLBACK(current_atom, TYPE_PROC_REF(/atom, set_light_range), power), 10 SECONDS)
+		if(!istype(current_atom, /mob/dead))
+			var/power = current_atom.light_power
+			if(power > 0)
+				if(current_atom.light_system != MOVABLE_LIGHT)
+					current_atom.set_light(l_range=0)
+					addtimer(CALLBACK(current_atom, TYPE_PROC_REF(/atom, set_light), power), 10 SECONDS)
+				else
+					current_atom.set_light_range(0)
+					addtimer(CALLBACK(current_atom, TYPE_PROC_REF(/atom, set_light_range), power), 10 SECONDS)
 		
 
 	apply_cooldown()

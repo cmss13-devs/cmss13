@@ -225,7 +225,11 @@
 			continue
 		for(var/turf/turf in area)
 			if(turf.density)
-				continue
+				if(!istype(turf, /turf/closed/wall))
+					continue
+				var/turf/closed/wall/wall = turf
+				if(wall.hull)
+					continue
 			lz_smoke += new /obj/effect/particle_effect/smoke/miasma(turf, null, new_cause_data)
 
 ///Clears miasma smoke in landing zones

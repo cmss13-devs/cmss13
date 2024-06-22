@@ -880,8 +880,8 @@
 	if(!lastpuke)
 		lastpuke = 1
 		to_chat(src, SPAN_WARNING("You feel nauseous..."))
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "You feel like you are about to throw up!"), 15 SECONDS)
-		addtimer(CALLBACK(src, PROC_REF(do_vomit)), 25 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "You feel like you are about to throw up!"), 10 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(do_vomit)), 15 SECONDS)
 
 /mob/living/carbon/human/proc/do_vomit()
 	apply_effect(5, STUN)
@@ -894,9 +894,14 @@
 	if(istype(location, /turf))
 		location.add_vomit_floor(src, 1)
 
+	if(reagents.reagent_list.len)
+		var/purge_percent = 0.7 //30%
+		for(var/datum/reagent/ingested_chem in reagents.reagent_list)
+			ingested_chem.volume = (ingested_chem.volume * purge_percent)
+
 	nutrition -= 40
 	apply_damage(-3, TOX)
-	addtimer(VARSET_CALLBACK(src, lastpuke, FALSE), 35 SECONDS)
+	addtimer(VARSET_CALLBACK(src, lastpuke, FALSE), 15 SECONDS)
 
 /mob/living/carbon/human/proc/get_visible_gender()
 	if(wear_suit && wear_suit.flags_inv_hide & HIDEJUMPSUIT && ((head && head.flags_inv_hide & HIDEMASK) || wear_mask))
@@ -1707,15 +1712,15 @@
 
 /mob/living/carbon/human/on_knockedout_trait_gain(datum/source)
 	. = ..()
-	
+
 	update_execute_hud()
-	
+
 	return .
 
 /mob/living/carbon/human/on_knockedout_trait_loss(datum/source)
 	. = ..()
 
 	update_execute_hud()
-	
+
 	return .
-	
+

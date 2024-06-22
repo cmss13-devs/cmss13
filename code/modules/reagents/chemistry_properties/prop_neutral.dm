@@ -381,7 +381,7 @@
 	category = PROPERTY_TYPE_IRRITANT
 
 /datum/chem_property/neutral/emetic/process(mob/living/M, potency = 1, delta_time)
-	if(prob(0.5 * holder.volume * potency * delta_time) && ishuman(M))
+	if(prob(2.5 * holder.volume * potency * delta_time) && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.vomit() //vomit() already has a timer on in
 

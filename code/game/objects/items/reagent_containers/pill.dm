@@ -269,3 +269,8 @@
 /obj/item/reagent_container/pill/stimulant
 	pill_initial_reagents = list("antag_stimulant" = 10)
 	pill_icon_class = "stim"
+
+/obj/item/reagent_container/pill/ipicac
+	pill_desc = "An Ipicac pill. Used to induce vomiting to eject toxic substances."
+	pill_initial_reagents = list("ipicac" = 10)
+	pill_icon_class = "ipi"

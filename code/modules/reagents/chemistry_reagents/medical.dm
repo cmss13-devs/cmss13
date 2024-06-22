@@ -411,3 +411,12 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	data = 0
 	properties = list(PROPERTY_CURING = 2)
+
+/datum/reagent/medical/ipicac
+	name = "Ipicac"
+	id = "ipicac"
+	description = "A rapid acting emetic made from the ipecacuanha plant."
+	reagent_state = LIQUID
+	color = "#DEAD00"
+	data = 0
+	properties = list(PROPERTY_EMETIC = 1)

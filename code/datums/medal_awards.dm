@@ -256,7 +256,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 	return TRUE
 
 /proc/open_medal_panel(mob/living/carbon/human/user, obj/printer)
-	var/obj/item/card/id/card = user.wear_id
+	var/obj/item/card/id/card = user?.get_idcard()
 	if(!card)
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
 		return
@@ -580,8 +580,8 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/user = usr
-	var/obj/item/card/id/card = user.wear_id
+	var/mob/living/carbon/human/user = ui.user
+	var/obj/item/card/id/card = user?.get_idcard()
 	if(!card)
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
 		return

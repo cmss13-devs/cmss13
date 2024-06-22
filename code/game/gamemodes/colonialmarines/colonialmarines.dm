@@ -1,5 +1,6 @@
 #define HIJACK_EXPLOSION_COUNT 5
-#define MARINE_MAJOR_ROUND_END_DELAY 3 MINUTES
+#define MARINE_MAJOR_ROUND_END_DELAY (3 MINUTES)
+#define LZ_HAZARD_START (3 MINUTES)
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
@@ -16,6 +17,7 @@
 	var/next_research_allocation = 0
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()
+	var/list/lz_smoke = list()
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -120,8 +122,121 @@
 
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), LZ_HAZARD_START)
 
 	return ..()
+
+/datum/game_mode/colonialmarines/ds_first_landed(obj/docking_port/stationary/marine_dropship)
+	. = ..()
+	clear_lz_hazards() // This shouldn't normally do anything, but is here just in case
+
+	// Assumption: Shuttle origin is its center
+	// Assumption: dwidth is atleast 2 and dheight is atleast 4 otherwise there will be overlap
+	var/list/options = list()
+	var/list/structures_to_break = list(/obj/structure/barricade, /obj/structure/surface/table, /obj/structure/bed)
+	var/bottom = marine_dropship.y - marine_dropship.dheight - 2
+	var/top = marine_dropship.y + marine_dropship.dheight + 2
+	var/left = marine_dropship.x - marine_dropship.dwidth - 2
+	var/right = marine_dropship.x + marine_dropship.dwidth + 2
+	var/z = marine_dropship.z
+
+	// Bottom left
+	options += get_valid_sentry_turfs(left, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
+	options += get_valid_sentry_turfs(left, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	spawn_lz_sentry(pick(options), structures_to_break)
+
+	// Bottom right
+	options.Cut()
+	options += get_valid_sentry_turfs(right-4, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
+	options += get_valid_sentry_turfs(right-1, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	spawn_lz_sentry(pick(options), structures_to_break)
+
+	// Top left
+	options.Cut()
+	options += get_valid_sentry_turfs(left, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
+	options += get_valid_sentry_turfs(left, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	spawn_lz_sentry(pick(options), structures_to_break)
+
+	// Top right
+	options.Cut()
+	options += get_valid_sentry_turfs(right-4, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
+	options += get_valid_sentry_turfs(right-1, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	spawn_lz_sentry(pick(options), structures_to_break)
+
+///Returns a list of non-dense turfs using the given block arguments ignoring the provided structure types
+/datum/game_mode/colonialmarines/proc/get_valid_sentry_turfs(left, bottom, z, width, height, list/structures_to_ignore)
+	var/valid_turfs = list()
+	for(var/turf/turf as anything in block(left, bottom, z, left+width-1, bottom+height-1))
+		if(turf.density)
+			continue
+		var/structure_blocking = FALSE
+		for(var/obj/structure/existing_structure in turf)
+			if(!existing_structure.density)
+				continue
+			if(!is_type_in_list(existing_structure, structures_to_ignore))
+				structure_blocking = TRUE
+				break
+		if(structure_blocking)
+			continue
+		valid_turfs += turf
+	return valid_turfs
+
+///Spawns a droppod with a temporary defense sentry at the given turf
+/datum/game_mode/colonialmarines/proc/spawn_lz_sentry(turf/target, list/structures_to_break)
+	var/obj/structure/droppod/equipment/sentry_holder/droppod = new(target, /obj/structure/machinery/sentry_holder/landing_zone)
+	droppod.special_structures_to_damage = structures_to_break
+	droppod.special_structure_damage = 500
+	droppod.drop_time = 0
+	droppod.launch(target)
+
+///Creates an OB warning at each LZ to warn of the miasma and then spawns the miasma
+/datum/game_mode/colonialmarines/proc/start_lz_hazards()
+	if(SSobjectives.first_drop_complete)
+		return // Just for sanity
+	INVOKE_ASYNC(src, PROC_REF(warn_lz_hazard), locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+	INVOKE_ASYNC(src, PROC_REF(warn_lz_hazard), locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
+	addtimer(CALLBACK(src, PROC_REF(spawn_lz_hazards)), OB_TRAVEL_TIMING + 1 SECONDS)
+
+///Creates an OB warning at each LZ to warn of the incoming miasma
+/datum/game_mode/colonialmarines/proc/warn_lz_hazard(lz)
+	if(!lz)
+		return
+	var/turf/target = get_turf(lz)
+	if(!target)
+		return
+	var/obj/structure/ob_ammo/warhead/explosive/warhead = new
+	warhead.name = "\improper CN20-X miasma warhead"
+	warhead.clear_power = 0
+	warhead.clear_falloff = 400
+	warhead.standard_power = 0
+	warhead.standard_falloff = 30
+	warhead.clear_delay = 3
+	warhead.double_explosion_delay = 6
+	warhead.warhead_impact(target) // This is a blocking call
+	playsound(target, 'sound/effects/smoke.ogg', vol=50, vary=1, sound_range=75)
+
+///Spawns miasma smoke in landing zones
+/datum/game_mode/colonialmarines/proc/spawn_lz_hazards()
+	var/datum/cause_data/new_cause_data = create_cause_data("CN20-X miasma")
+	for(var/area/area in GLOB.all_areas)
+		if(!area.is_landing_zone)
+			continue
+		if(!is_ground_level(area.z))
+			continue
+		for(var/turf/turf in area)
+			if(turf.density)
+				if(!istype(turf, /turf/closed/wall))
+					continue
+				var/turf/closed/wall/wall = turf
+				if(wall.hull)
+					continue
+			lz_smoke += new /obj/effect/particle_effect/smoke/miasma(turf, null, new_cause_data)
+
+///Clears miasma smoke in landing zones
+/datum/game_mode/colonialmarines/proc/clear_lz_hazards()
+	for(var/obj/effect/particle_effect/smoke/miasma/smoke as anything in lz_smoke)
+		smoke.time_to_live = rand(1, 5)
+	lz_smoke.Cut()
 
 #define MONKEYS_TO_TOTAL_RATIO 1/32
 
@@ -289,6 +404,7 @@
 /datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
 	add_current_round_status_to_end_results("First Drop")
+	clear_lz_hazards()
 
 ///////////////////////////
 //Checks to see who won///

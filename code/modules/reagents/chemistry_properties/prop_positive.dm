@@ -492,7 +492,7 @@
 		var/obj/item/alien_embryo/embryo = content
 		if(embryo && istype(embryo))
 			if(embryo.counter > 0)
-				embryo.counter = embryo.counter - potency
+				embryo.counter = embryo.counter - (potency * delta_time)
 				current_human.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
 			else
 				embryo.stage--
@@ -727,6 +727,11 @@
 	holder.rangefire = max(holder.rangefire, 1)
 	holder.durationfire = max(holder.durationfire, 1)
 	holder.intensityfire = max(holder.intensityfire, 1)
+
+	if(holder.intensityfire >= 50 && istype(holder, /datum/reagent/generated))
+		holder.burncolor = "#ffffff"
+	else
+		holder.burncolor = holder.color
 
 /datum/chem_property/positive/fire/fueling
 	name = PROPERTY_FUELING

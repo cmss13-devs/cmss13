@@ -1,0 +1,4 @@
+author: "ihatethisengine2"
+delete-after: True
+changes:
+  - bugfix: "simple animals don't block projectiles after death anymore"

@@ -6,7 +6,7 @@
 	disp_icon = "tank"
 	disp_icon_state = "snowplow"
 
-	health = 600
+	health = 150
 	activatable = 1
 
 /obj/item/hardpoint/armor/snowplow/livingmob_interact(mob/living/M)

@@ -140,7 +140,9 @@
 "cN" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2";
-	dir = 4
+	dir = 4;
+	density = 1;
+	closed = 0
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1410,14 +1412,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
-"Bj" = (
-/obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_3"
-	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/lv624/lazarus/crashed_ship)
 "Bm" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer{
@@ -1497,7 +1491,9 @@
 "Ci" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_3";
-	dir = 1
+	dir = 1;
+	closed = 0;
+	density = 1
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -1666,7 +1662,9 @@
 "Fy" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_3";
-	dir = 1
+	dir = 1;
+	closed = 0;
+	density = 1
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
@@ -1824,8 +1822,10 @@
 /area/lv624/lazarus/crashed_ship)
 "Ik" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
-	dir = 8
+	icon_state = "plasteel_3";
+	dir = 8;
+	closed = 0;
+	density = 1
 	},
 /turf/open/floor{
 	icon_state = "panelscorched"
@@ -2167,7 +2167,9 @@
 "NJ" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_3";
-	dir = 1
+	dir = 1;
+	closed = 0;
+	density = 1
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -2175,7 +2177,9 @@
 /area/shiva/interior/colony/deck)
 "NY" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2"
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -3387,7 +3391,7 @@ QH
 pa
 xq
 Zw
-Bj
+NY
 TT
 rV
 yl

@@ -333,8 +333,10 @@
 /area/lv624/lazarus/crashed_ship)
 "fQ" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_3";
-	dir = 4
+	icon_state = "plasteel_2";
+	dir = 4;
+	density = 1;
+	closed = 0
 	},
 /turf/open/floor{
 	icon_state = "panelscorched"
@@ -927,7 +929,9 @@
 "pY" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_3";
-	dir = 1
+	dir = 1;
+	closed = 0;
+	density = 1
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/central_ring)
@@ -1093,14 +1097,6 @@
 "sA" = (
 /obj/structure/girder/reinforced,
 /turf/open/floor/plating,
-/area/lv624/lazarus/crashed_ship)
-"sB" = (
-/obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_3"
-	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
 /area/lv624/lazarus/crashed_ship)
 "sR" = (
 /obj/structure/barricade/metal/wired{
@@ -1470,7 +1466,9 @@
 /area/fiorina/station/central_ring)
 "AU" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2"
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -2316,7 +2314,9 @@
 "RI" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_3";
-	dir = 1
+	dir = 1;
+	closed = 0;
+	density = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/central_ring)
@@ -2493,7 +2493,9 @@
 	},
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_3";
-	dir = 1
+	dir = 1;
+	closed = 0;
+	density = 1
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/central_ring)
@@ -3285,7 +3287,7 @@ Te
 zk
 JB
 ID
-sB
+AU
 SB
 iZ
 aN

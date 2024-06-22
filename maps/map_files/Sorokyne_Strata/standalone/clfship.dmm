@@ -1797,6 +1797,10 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -1808,6 +1812,10 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8;
 	id_tag = "mining_outpost_pump"
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
@@ -1985,8 +1993,10 @@
 	dir = 4
 	},
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
-	dir = 8
+	icon_state = "plasteel_3";
+	dir = 8;
+	closed = 0;
+	density = 1
 	},
 /turf/open/floor/strata{
 	icon_state = "blue1"
@@ -2529,7 +2539,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_3";
-	dir = 1
+	dir = 1;
+	closed = 0;
+	density = 1
 	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -2829,14 +2841,6 @@
 	icon_state = "darkyellowfull2"
 	},
 /area/strata/ag/interior/outpost/engi)
-"Kq" = (
-/obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_3"
-	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/lv624/lazarus/crashed_ship)
 "Kt" = (
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/strata_outpost,
@@ -3629,7 +3633,9 @@
 /area/lv624/lazarus/crashed_ship)
 "VY" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2"
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -4698,7 +4704,7 @@ Yu
 rC
 BF
 Rg
-Kq
+VY
 CQ
 AL
 yj

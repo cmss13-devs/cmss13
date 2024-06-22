@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - qol: "Added an hud icon for vampires that lets them know when an enemy can be executed."

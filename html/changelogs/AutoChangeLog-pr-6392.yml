@@ -1,5 +1,0 @@
-author: "vero5123"
-delete-after: True
-changes:
-  - rscadd: "Adds the ability for users to make bug reports in-game"
-  - ui: "New bug report system ui"

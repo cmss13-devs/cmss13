@@ -1,7 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - balance: "Re-adds Vehicle Crewmen"
-  - balance: "Tank now unlocks at 200 pop."
-  - balance: "Re-adds tank and its attachements back to the tank-bay."
-  - balance: "You can no longer have the ARC & TANK in the same round. if the arc is bought the tank is unavailable and vice versa."

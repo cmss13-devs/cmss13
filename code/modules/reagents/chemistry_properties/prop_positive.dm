@@ -728,6 +728,11 @@
 	holder.durationfire = max(holder.durationfire, 1)
 	holder.intensityfire = max(holder.intensityfire, 1)
 
+	if(holder.intensityfire >= 50 && istype(holder, /datum/reagent/generated))
+		holder.burncolor = "#ffffff"
+	else
+		holder.burncolor = holder.color
+
 /datum/chem_property/positive/fire/fueling
 	name = PROPERTY_FUELING
 	code = "FUL"

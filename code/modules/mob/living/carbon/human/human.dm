@@ -894,7 +894,7 @@
 	if(istype(location, /turf))
 		location.add_vomit_floor(src, 1)
 
-	if(reagents.reagent_list.length())
+	if(length(reagents.reagent_list))
 		for(var/datum/reagent/ingested_chem as anything in reagents.reagent_list)
 			ingested_chem.volume = (ingested_chem.volume * 0.7)
 

@@ -227,3 +227,8 @@
   - qol: Showcases are now slashable by xenos
   zzzmike:
   - bugfix: more survivors now listed in survivor category on observe menu
+2024-06-22:
+  Red-byte3D:
+  - balance: Vampire tail jab now only stuns if you knockback an enemy into an obstacle.
+  - spellcheck: Vampire lurkers no longer "throw it back" after hitting somebody with
+      their Tail Jab

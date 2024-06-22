@@ -1067,7 +1067,7 @@
 		if(votes[candidate] > primary_votes)
 			primary_votes = votes[candidate]
 			primary_candidate = candidate
-		else if(votes[candidate > secondary_votes])
+		else if(votes[candidate] > secondary_votes)
 			secondary_votes = votes[candidate]
 			secondary_candidate = candidate
 

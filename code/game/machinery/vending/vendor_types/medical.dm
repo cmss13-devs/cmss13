@@ -503,7 +503,7 @@
 		list("Pill Bottle (Kelotane)", floor(scale * 4), /obj/item/storage/pill_bottle/kelotane, VENDOR_ITEM_REGULAR),
 		list("Pill Bottle (Peridaxon)", floor(scale * 3), /obj/item/storage/pill_bottle/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Pill Bottle (Tramadol)", floor(scale * 4), /obj/item/storage/pill_bottle/tramadol, VENDOR_ITEM_REGULAR),
-		list("Pill Packet (Ipicac)", floor(scale * 4), /obj/item/storage/pill_bottle/packet/ipicac, VENDOR_ITEM_REGULAR),
+		list("Pill Packet (Ipecac)", floor(scale * 4), /obj/item/storage/pill_bottle/packet/ipecac, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL UTILITIES", -1, null, null),
 		list("Emergency Defibrillator", floor(scale * 3), /obj/item/device/defibrillator, VENDOR_ITEM_REGULAR),

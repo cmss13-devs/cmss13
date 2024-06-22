@@ -412,9 +412,9 @@
 	data = 0
 	properties = list(PROPERTY_CURING = 2)
 
-/datum/reagent/medical/ipicac
-	name = "Ipicac"
-	id = "ipicac"
+/datum/reagent/medical/ipecac
+	name = "Ipecac"
+	id = "ipecac"
 	description = "A rapid acting emetic made from the ipecacuanha plant."
 	reagent_state = LIQUID
 	color = "#DEAD00"

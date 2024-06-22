@@ -894,10 +894,9 @@
 	if(istype(location, /turf))
 		location.add_vomit_floor(src, 1)
 
-	if(reagents.reagent_list.len)
-		var/purge_percent = 0.7 //30%
-		for(var/datum/reagent/ingested_chem in reagents.reagent_list)
-			ingested_chem.volume = (ingested_chem.volume * purge_percent)
+	if(reagents.reagent_list.length())
+		for(var/datum/reagent/ingested_chem as anything in reagents.reagent_list)
+			ingested_chem.volume = (ingested_chem.volume * 0.7)
 
 	nutrition -= 40
 	apply_damage(-3, TOX)

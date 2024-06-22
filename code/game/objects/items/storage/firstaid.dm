@@ -790,8 +790,8 @@
 	desc = "This packet contains oxycodone pills. A highly effective painkiller. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone
 
-/obj/item/storage/pill_bottle/packet/ipicac
-	name = "ipicac pill packet"
-	icon_state = "ipicac_packet"
-	desc = "This packet contains ipicac pills. A fast acting emetic. Once you take them out, they don't go back in."
-	pill_type_to_fill = /obj/item/reagent_container/pill/ipicac
+/obj/item/storage/pill_bottle/packet/ipecac
+	name = "ipecac pill packet"
+	icon_state = "ipecac_packet"
+	desc = "This packet contains ipecac pills. A fast acting emetic. Once you take them out, they don't go back in."
+	pill_type_to_fill = /obj/item/reagent_container/pill/ipecac

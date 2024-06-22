@@ -1,0 +1,4 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - balance: "Custom research chemicals with an intensityfire above or equal to 50 will now burn white."

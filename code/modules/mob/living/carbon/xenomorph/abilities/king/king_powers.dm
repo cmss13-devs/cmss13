@@ -85,13 +85,14 @@
 		
 		if(!istype(current_atom, /mob/dead))
 			var/power = current_atom.light_power
-			if(power > 0)
+			var/range = current_atom.light_range
+			if(power > 0 && range > 0)
 				if(current_atom.light_system != MOVABLE_LIGHT)
 					current_atom.set_light(l_range=0)
-					addtimer(CALLBACK(current_atom, TYPE_PROC_REF(/atom, set_light), power), 10 SECONDS)
+					addtimer(CALLBACK(current_atom, TYPE_PROC_REF(/atom, set_light), range, power), 10 SECONDS)
 				else
 					current_atom.set_light_range(0)
-					addtimer(CALLBACK(current_atom, TYPE_PROC_REF(/atom, set_light_range), power), 10 SECONDS)
+					addtimer(CALLBACK(current_atom, TYPE_PROC_REF(/atom, set_light_range), range), 10 SECONDS)
 		
 
 	apply_cooldown()

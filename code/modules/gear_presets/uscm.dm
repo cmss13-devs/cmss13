@@ -105,7 +105,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
 	rank = JOB_SQUAD_SMARTGUN
-	paygrade = PAY_SHORT_ME3
+	paygrade = PAY_SHORT_ME4
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
@@ -281,7 +281,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
-	paygrade = PAY_SHORT_ME3
+	paygrade = PAY_SHORT_ME4
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 
@@ -368,14 +368,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/tl
-	name = "USCM Fireteam Leader"
+	name = "USCM Squad Leader"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_TL_PREP)
 	assignment = JOB_SQUAD_TEAM_LEADER
 	rank = JOB_SQUAD_TEAM_LEADER
-	paygrade = PAY_SHORT_ME4
-	role_comm_title = "FTL"
+	paygrade = PAY_SHORT_ME5
+	role_comm_title = "SL"
 	skills = /datum/skills/tl
 
 	minimap_icon = "tl"
@@ -432,14 +432,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/leader
-	name = "USCM Squad Leader"
+	name = "USCM Platoon Sergeant"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_TL_PREP)
 	assignment = JOB_SQUAD_LEADER
 	rank = JOB_SQUAD_LEADER
-	paygrade = PAY_SHORT_ME5
-	role_comm_title = "SL"
+	paygrade = PAY_SHORT_ME6
+	role_comm_title = "PSGT"
 	minimum_age = 27
 	skills = /datum/skills/SL
 
@@ -521,8 +521,8 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
 	rank = JOB_SQUAD_LEADER
-	paygrade = PAY_SHORT_ME5
-	role_comm_title = "SL"
+	paygrade = PAY_SHORT_ME6
+	role_comm_title = "PSGT"
 	minimum_age = 27
 	skills = /datum/skills/SL
 
@@ -563,7 +563,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
 	rank = JOB_SQUAD_SMARTGUN
-	paygrade = PAY_SHORT_ME3
+	paygrade = PAY_SHORT_ME4
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
@@ -706,7 +706,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
-	paygrade = PAY_SHORT_ME3
+	paygrade = PAY_SHORT_ME4
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 
@@ -772,14 +772,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/tl_equipped
-	name = "USCM Fireteam Leader (Equipped)"
+	name = "USCM Squad Leader (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_TL_PREP)
 	assignment = JOB_SQUAD_TEAM_LEADER
 	rank = JOB_SQUAD_TEAM_LEADER
-	paygrade = PAY_SHORT_ME4
-	role_comm_title = "TL"
+	paygrade = PAY_SHORT_ME5
+	role_comm_title = "SL"
 	skills = /datum/skills/tl
 
 	minimap_icon = "tl"

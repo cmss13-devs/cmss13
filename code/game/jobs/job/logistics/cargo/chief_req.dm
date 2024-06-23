@@ -1,5 +1,7 @@
 /datum/job/logistics/requisition
 	title = JOB_CHIEF_REQUISITION
+	total_positions = 0
+	spawn_positions = 0
 	selection_class = "job_qm"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/qm

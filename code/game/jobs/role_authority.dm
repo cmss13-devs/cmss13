@@ -701,7 +701,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 						else if(S.num_smartgun < lowest.num_smartgun)
 							lowest = S
 		if(!lowest)
-			var/ranpick = rand(1,4)
+			var/ranpick = rand(1,3)
 			lowest = mixed_squads[ranpick]
 		if(lowest) lowest.put_marine_in_squad(H)
 		else to_chat(H, "Something went badly with randomize_squad()! Tell a coder!")

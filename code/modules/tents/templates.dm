@@ -21,3 +21,15 @@
 /datum/map_template/tent/reqs
 	name = "Reqs Tent"
 	map_id = "tent_reqs"
+
+/datum/map_template/tent/cmda
+	name = "CMD Tent alpha"
+	map_id = "tent_cmd_alpha"
+
+/datum/map_template/tent/cmdb
+	name = "CMD Tent bravo"
+	map_id = "tent_cmd_bravo"
+
+/datum/map_template/tent/cmdc
+	name = "CMD Tent charlie"
+	map_id = "tent_cmd_charlie"

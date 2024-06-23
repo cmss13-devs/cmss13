@@ -13,5 +13,8 @@ Format:
 endmap
 
 map almayer
+endmap
+
+map fiveo
 	default
 endmap

@@ -396,13 +396,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/commander
-	name = "USCM Commanding Officer (CO)"
+	name = "USCM Company Commander (CO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_CO
 	rank = JOB_CO
-	paygrade = PAY_SHORT_MO4
+	paygrade = PAY_SHORT_MO3
 	role_comm_title = "CO"
 	minimum_age = 30
 	skills = /datum/skills/commander
@@ -517,7 +517,7 @@
 	idtype = /obj/item/card/id/silver
 	assignment = JOB_XO
 	rank = JOB_XO
-	paygrade = PAY_SHORT_MO3
+	paygrade = PAY_SHORT_MO2
 	role_comm_title = "XO"
 	minimum_age = 35
 	skills = /datum/skills/XO
@@ -549,7 +549,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/so
-	name = "USCM Staff Officer (SO)"
+	name = "USCM Platoon Commander (PCDR)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -557,7 +557,7 @@
 	assignment = JOB_SO
 	rank = JOB_SO
 	paygrade = PAY_SHORT_MO1
-	role_comm_title = "SO"
+	role_comm_title = "PCDR"
 	minimum_age = 25
 	skills = /datum/skills/SO
 
@@ -628,14 +628,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/auxiliary_officer
-	name = "USCM Auxiliary Support Officer (ASO)"
+	name = "USCM Logistics Officer (LO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
 	assignment = JOB_AUXILIARY_OFFICER
 	rank = JOB_AUXILIARY_OFFICER
-	paygrade = PAY_SHORT_MO2
-	role_comm_title = "ASO"
+	paygrade = PAY_SHORT_MO1
+	role_comm_title = "LO"
 	minimum_age = 27
 	skills = /datum/skills/auxiliary_officer
 

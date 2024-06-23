@@ -1,6 +1,8 @@
 // Warden
 /datum/job/command/warden
 	title = JOB_WARDEN
+	total_positions = 0
+	spawn_positions = 0
 	selection_class = "job_mp"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	supervisors = "the Chief MP"

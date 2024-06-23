@@ -3,8 +3,7 @@
 	title = JOB_CO
 	supervisors = "USCM high command"
 	selection_class = "job_co"
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
-	flags_whitelist = WHITELIST_COMMANDER
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY
 	gear_preset = /datum/equipment_preset/uscm_ship/commander
 
 /datum/job/command/commander/New()

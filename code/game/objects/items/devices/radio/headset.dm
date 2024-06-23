@@ -547,6 +547,11 @@
 	maximum_keys = 5
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl)
 
+/obj/item/device/radio/headset/almayer/mcl/aist
+	name = "corporate AI service technician headset"
+	desc = "A standard issue corporate liaison headset, modified for AIST responsibilities. Allows the wearer to listen to, and broadcast over, the APOLLO Link. (Use :+)"
+	initial_keys = list(/obj/item/device/encryptionkey/binary, /obj/item/device/encryptionkey/mcom/cl)
+
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"
 	desc = "Used by the combat correspondent to get the scoop. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
@@ -564,6 +569,11 @@
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 	volume = RADIO_VOLUME_CRITICAL
+
+/obj/item/device/radio/headset/almayer/mcom/cdrcom/aist
+	name = "marine AI service technician headset"
+	desc = "A modified senior command headset issued to USCM AISTs. Allows the wearer to listen to, and broadcast over, the APOLLO Link. (Use :+)"
+	initial_keys = list(/obj/item/device/encryptionkey/binary, /obj/item/device/encryptionkey/cmpcom/cdrcom)
 
 /obj/item/device/radio/headset/almayer/mcom/synth
 	name = "marine synth headset"

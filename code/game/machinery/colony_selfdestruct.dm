@@ -27,16 +27,16 @@
 	playsound(loc, 'sound/items/Deconstruct.ogg', 100, 1)
 	explosiontime = world.time + timeleft
 	start_processing()
-	announcement_helper("Colony low-yield nuclear self-destruct mechanism has been activated in [get_area_name(loc)]. Detonation in T-[floor(timeleft/10)] seconds.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
-	xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have activated self-boom rock at [get_area_name(loc)]! Avoid it!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+	marine_announcement("Colony low-yield nuclear self-destruct mechanism has been activated in [get_area_name(loc)]. Detonation in T-[floor(timeleft/10)] seconds.", "[MAIN_AI_SYSTEM] Nuclear Tracker", 'sound/misc/notice1.ogg')
+	xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have activated self-boom rock at [get_area_name(loc)]! Avoid it!"), "everything", XENO_GENERAL_ANNOUNCE)
 
 /obj/structure/machinery/colony_selfdestruct/proc/disable()
 	var/turf/nuke_turf = get_turf(src)
 	dat_disk.forceMove(nuke_turf)
 	timeleft = initial(timeleft)
 	explosiontime = null
-	announcement_helper("Colony low-yield nuclear self-destruct mechanism has been deactivated in [get_area_name(loc)]. Detonation averted.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
-	xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have deactivated self-boom rock at [get_area_name(loc)]! The area is safe now."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+	marine_announcement("Colony low-yield nuclear self-destruct mechanism has been deactivated in [get_area_name(loc)]. Detonation averted.", "[MAIN_AI_SYSTEM] Nuclear Tracker", 'sound/misc/notice1.ogg')
+	xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have deactivated self-boom rock at [get_area_name(loc)]! The area is safe now."), "everything", XENO_GENERAL_ANNOUNCE)
 	stop_processing()
 
 /obj/structure/machinery/colony_selfdestruct/proc/explode()

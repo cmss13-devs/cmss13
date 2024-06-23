@@ -73,7 +73,7 @@
 // Armored Truck - Damage States
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck
 	name = "heavy-loader truck"
-	desc = "Seems to be broken down."
+	desc = "It's locked and seems to be broken down, forget driving this."
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/armored_truck_wy_black.dmi'
 	icon_state = "armored_truck_wy_black"
 	bound_height = 64
@@ -106,7 +106,7 @@
 // Ambulance - Damage States
 /obj/structure/prop/hybrisa/vehicles/Ambulance
 	name = "ambulance"
-	desc = "Seems to be broken down."
+	desc = "It's locked and seems to be broken down, forget driving this."
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/ambulance.dmi'
 	icon_state = "ambulance"
 	bound_height = 64
@@ -117,7 +117,7 @@
 // Long Hauler Truck - Damage States
 /obj/structure/prop/hybrisa/vehicles/Long_Truck
 	name = "long-hauler truck"
-	desc = "Seems to be broken down."
+	desc = "It's locked and seems to be broken down, forget driving this."
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/long_truck_wy_blue.dmi'
 	icon_state = "longtruck_wy_blue"
 	bound_height = 64
@@ -155,7 +155,7 @@
 // Small Truck - Damage States
 /obj/structure/prop/hybrisa/vehicles/Small_Truck
 	name = "small truck"
-	desc = "Seems to be broken down."
+	desc = "It's locked and seems to be broken down, forget driving this."
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/small_truck_turquoise_cargo.dmi'
 	icon_state = "small_truck_turquoise_cargo"
 	bound_height = 32
@@ -218,7 +218,7 @@
 // Box Vans - Damage States
 /obj/structure/prop/hybrisa/vehicles/Box_Vans
 	name = "box van"
-	desc = "Seems to be broken down."
+	desc = "It's locked and seems to be broken down, forget driving this."
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/box_van_hyperdyne.dmi'
 	icon_state = "box_van_hyperdyne"
 	bound_height = 32
@@ -325,7 +325,7 @@
 // Colony Crawlers - Damage States
 /obj/structure/prop/hybrisa/vehicles/Colony_Crawlers
 	name = "colony crawler"
-	desc = "Seems to be broken down."
+	desc = "It's locked and seems to be broken down, forget driving this."
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/crawler_wy_1.dmi'
 	icon_state = "crawler_wy_1"
 	bound_height = 32
@@ -2019,6 +2019,21 @@
 
 /obj/structure/prop/hybrisa/misc/urinal/dark
 	icon_state = "small_urinal_dark"
+
+/obj/structure/prop/hybrisa/misc/deco_edging
+	name = "decorative concrete edging"
+	desc = "Decorative edging for bordering stuff, very fancy."
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon_state = "stone_edging"
+	density = FALSE
+	anchored = TRUE
+	layer = TURF_LAYER
+
+/obj/structure/prop/hybrisa/misc/deco_edging/corner
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon_state = "stone_edging_deco"
+	density = FALSE
+	anchored = TRUE
 
 // Signs
 

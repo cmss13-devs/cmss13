@@ -232,3 +232,11 @@
   - balance: Vampire tail jab now only stuns if you knockback an enemy into an obstacle.
   - spellcheck: Vampire lurkers no longer "throw it back" after hitting somebody with
       their Tail Jab
+2024-06-23:
+  Drathek:
+  - bugfix: Fixed LZ gas not penetrating destructible walls
+  ihatethisengine2:
+  - bugfix: simple animals don't block projectiles after death anymore
+  iloveloopers:
+  - balance: Custom research chemicals with an intensityfire above or equal to 50
+      will now burn white.

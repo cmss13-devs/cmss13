@@ -1323,9 +1323,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	circuit = /obj/item/circuitboard/computer/supplycomp/vehicle
 	// Can only retrieve one vehicle per round
-	var/spent = TRUE
-	var/tank_unlocked = FALSE
-	var/list/allowed_roles = list(JOB_CREWMAN)
+	var/spent = FALSE
+	var/tank_unlocked = TRUE
+	var/list/allowed_roles = list(JOB_TANK_CREW)
 
 	var/list/vehicles
 
@@ -1384,9 +1384,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	. = ..()
 
 	vehicles = list(
-		new /datum/vehicle_order/apc(),
-		new /datum/vehicle_order/apc/med(),
-		new /datum/vehicle_order/apc/cmd(),
+		new /datum/vehicle_order/tank/plain
 	)
 
 	if(!GLOB.VehicleElevatorConsole)
@@ -1477,7 +1475,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		if(VO?.has_vehicle_lock())
 			return
-
 		spent = TRUE
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))

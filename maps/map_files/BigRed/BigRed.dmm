@@ -13578,7 +13578,7 @@
 "aOl" = (
 /obj/structure/surface/table,
 /obj/item/paper_bin,
-/obj/item/disk/nuclear,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkblue2"
@@ -24918,17 +24918,24 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bBv" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/plating,
-/area/bigredv2/caves/eta/storage)
-"bBx" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Eta Lab Maintenance Storage"
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform{
+	dir = 4
 	},
 /turf/open/floor{
-	icon_state = "delivery"
+	icon_state = "darkish"
 	},
-/area/bigredv2/caves/eta/storage)
+/area/bigredv2/caves/eta/research)
+"bBx" = (
+/turf/open/floor{
+	icon_state = "darkish"
+	},
+/area/bigredv2/caves/eta/research)
 "bBA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -24987,13 +24994,18 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bBN" = (
-/obj/structure/closet/firecloset,
-/turf/open/floor/plating,
-/area/bigredv2/caves/eta/storage)
+/obj/structure/stairs,
+/turf/open/floor{
+	icon_state = "darkish"
+	},
+/area/bigredv2/caves/eta/research)
 "bBO" = (
-/obj/structure/closet/toolcloset,
-/turf/open/floor/plating,
-/area/bigredv2/caves/eta/storage)
+/obj/structure/closet/secure_closet/security,
+/obj/effect/spawner/random/gun/shotgun,
+/turf/open/floor{
+	icon_state = "darkish"
+	},
+/area/bigredv2/caves/eta/research)
 "bBP" = (
 /turf/open/floor{
 	icon_state = "darkredcorners2"
@@ -25543,7 +25555,6 @@
 	dir = 1
 	},
 /obj/structure/closet/cabinet,
-/obj/item/disk/nuclear,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor{
@@ -25972,7 +25983,10 @@
 /area/bigredv2/caves/eta/living)
 "bEB" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/door_control{
+	id = "sd";
+	name = "Self Destruct Lockdown"
+	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkblue2"
@@ -27170,9 +27184,18 @@
 /turf/open/mars,
 /area/bigredv2/outside/filtration_plant)
 "dmO" = (
-/obj/structure/machinery/fuelcell_recycler,
-/turf/open/floor/plating,
-/area/bigredv2/caves/eta/storage)
+/obj/structure/machinery/door/airlock/almayer/secure/reinforced/colony{
+	name = "\improper Self Destruct Mechanism"
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	name = "Self Destruct Lockdown";
+	id = "sd"
+	},
+/turf/open/floor{
+	icon_state = "darkish"
+	},
+/area/bigredv2/caves/eta/research)
 "dnV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -27639,6 +27662,16 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"dOV" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown{
+	layer = 3.1
+	},
+/obj/item/disk/nuclear,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/admin_building)
 "dOZ" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
@@ -27974,6 +28007,10 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves/mining)
+"elD" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/living)
 "elM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28147,6 +28184,9 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"ezZ" = (
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/living)
 "eAU" = (
 /turf/open/floor{
 	dir = 4;
@@ -28198,6 +28238,10 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"eEU" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/living)
 "eFh" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5"
@@ -29816,6 +29860,10 @@
 	icon_state = "darkyellow2"
 	},
 /area/bigredv2/outside/engineering)
+"gZU" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/living)
 "hah" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -29946,9 +29994,12 @@
 	},
 /area/bigredv2/caves_sw)
 "hkv" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/plating,
-/area/bigredv2/caves/eta/storage)
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor{
+	icon_state = "darkish"
+	},
+/area/bigredv2/caves/eta/research)
 "hkY" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -30219,9 +30270,16 @@
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/oob)
 "hHG" = (
-/obj/structure/machinery/power/reactor/colony,
-/turf/open/floor/plating,
-/area/bigredv2/caves/eta/storage)
+/obj/structure/machinery/light/small{
+	dir = 1;
+	light_color = "#8B0000";
+	color = "#8B0000"
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/bigredv2/caves/eta/research)
 "hJH" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor{
@@ -32791,6 +32849,13 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/lz1_telecomm_cas)
+"lrO" = (
+/obj/structure/machinery/colony_selfdestruct,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/bigredv2/caves/eta/research)
 "lrW" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A pipe.";
@@ -34409,6 +34474,10 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigred/ground/garage_workshop)
+"nMO" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/living)
 "nMZ" = (
 /obj/structure/machinery/door/poddoor/almayer/closed,
 /obj/structure/cable,
@@ -36473,6 +36542,12 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"qGw" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	name = "\improper Eta Lab Maintenance Storage"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/living)
 "qGY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -37796,6 +37871,10 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"sqX" = (
+/obj/structure/machinery/fuelcell_recycler,
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/living)
 "sso" = (
 /obj/structure/bed/chair,
 /turf/open/mars_cave{
@@ -41736,6 +41815,10 @@
 	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/caves/mining)
+"xVk" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/living)
 "xWl" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -62158,7 +62241,7 @@ aNL
 aOM
 szi
 aof
-aNQ
+dOV
 aOO
 aOO
 aOO
@@ -63994,10 +64077,10 @@ aCH
 vty
 aCH
 aCe
-aao
-aao
-aao
-aao
+aDY
+aDY
+aDY
+aDY
 uXW
 jrD
 jrD
@@ -64187,10 +64270,10 @@ aBE
 byM
 ycP
 rTq
-aBE
-dmO
-bww
-bww
+aBA
+hHG
+bBN
+bBx
 hkv
 aCL
 bCi
@@ -64211,10 +64294,10 @@ fWw
 bDe
 fWw
 aCe
-aao
-aao
-aao
-aao
+sqX
+ezZ
+elD
+aDY
 uXW
 aao
 aao
@@ -64404,11 +64487,11 @@ aBQ
 aNx
 bAA
 bDi
-aBE
-hHG
+aBA
+lrO
 bBv
-bww
-bBN
+bBx
+hkv
 aCL
 bCj
 aKi
@@ -64428,10 +64511,10 @@ fWw
 fWw
 fWw
 aCe
-aao
-aao
-aao
-aao
+xVk
+gZU
+eEU
+aDY
 aao
 aao
 aao
@@ -64621,10 +64704,10 @@ aBQ
 ofJ
 aOP
 aOP
-aBE
+aBA
 hHG
-bww
-bww
+bBN
+bBx
 bBO
 aCL
 bCk
@@ -64645,10 +64728,10 @@ dPs
 cxi
 bDe
 aCe
-aao
-aao
-aao
-aao
+xVk
+ezZ
+nMO
+aDY
 aao
 aao
 aao
@@ -64838,11 +64921,11 @@ aBE
 aBQ
 aBQ
 aBQ
-aBE
-aBE
-bBx
-aBE
-aBE
+aBA
+aBA
+aBA
+dmO
+aBA
 aCL
 aCL
 aDj
@@ -64863,7 +64946,7 @@ aCe
 aCe
 aCe
 aDY
-aDY
+qGw
 aDY
 aDY
 aDY
@@ -65057,9 +65140,9 @@ bAB
 sEi
 bxY
 bxY
-xpl
-bxY
-bxY
+bBR
+bBR
+bBR
 bBT
 bCl
 bzT

@@ -9,3 +9,4 @@
 	desc = "Better keep this safe."
 	icon_state = "nucleardisk"
 	w_class = SIZE_TINY
+	unacidable = TRUE

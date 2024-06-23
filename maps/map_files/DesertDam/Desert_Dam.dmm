@@ -8354,7 +8354,6 @@
 "ayV" = (
 /obj/structure/surface/table,
 /obj/item/paper_bin,
-/obj/item/disk/nuclear,
 /turf/open/floor/prison{
 	dir = 10
 	},
@@ -8428,6 +8427,10 @@
 "azg" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/door_control{
+	id = "sd";
+	name = "Self Destruct Lockdown"
+	},
 /turf/open/floor/prison{
 	dir = 10
 	},
@@ -18606,6 +18609,7 @@
 "bfx" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/clothing/mask/cigarette/cigar,
+/obj/item/disk/nuclear,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/overseer_office)
 "bfy" = (
@@ -29388,6 +29392,12 @@
 	icon_state = "sterile_white"
 	},
 /area/desert_dam/interior/dam_interior/workshop)
+"bPS" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredcorners2"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "bPT" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/effect/landmark/objective_landmark/close,
@@ -60937,6 +60947,12 @@
 	icon_state = "rock3"
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
+"gKz" = (
+/obj/effect/landmark/corpsespawner/wygoon/lead/burst,
+/turf/open/floor/prison{
+	icon_state = "darkred2"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "gLb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	dir = 2
@@ -61485,6 +61501,19 @@
 	dir = 10
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
+"ilf" = (
+/obj/structure/machinery/door/airlock/almayer/secure/reinforced/colony{
+	name = "\improper Self Destruct Mechanism"
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	name = "Self Destruct Lockdown";
+	id = "sd"
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "ilq" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt{
@@ -62101,6 +62130,12 @@
 	icon_state = "whitegreen"
 	},
 /area/desert_dam/building/medical/virology_wing)
+"kEX" = (
+/turf/open/floor/prison{
+	icon_state = "darkred2";
+	dir = 8
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "kFW" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
@@ -63369,6 +63404,12 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/valley_hydro)
+"oJG" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkredcorners2"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "oJT" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/desert/dirt,
@@ -63790,6 +63831,12 @@
 	icon_state = "cement_sunbleached14"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
+"pYM" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkred2"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "qbC" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor/wood,
@@ -64449,6 +64496,12 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"scs" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkred2"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "scv" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -65116,6 +65169,13 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
+"tZI" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkredcorners2"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "tZQ" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/exterior/rock)
@@ -65158,6 +65218,14 @@
 "ufW" = (
 /turf/closed/wall/mineral/sandstone/runed,
 /area/desert_dam/exterior/rock)
+"ugP" = (
+/obj/structure/machinery/colony_selfdestruct{
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "uhf" = (
 /turf/open/desert/desert_shore/desert_shore1{
 	dir = 1
@@ -66525,6 +66593,13 @@
 "yeL" = (
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/exterior/telecomm/lz2_tcomms)
+"yfb" = (
+/obj/effect/spawner/random/gun/shotgun,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkredcorners2"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "yfp" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/cement_sunbleached{
@@ -106386,11 +106461,11 @@ dTs
 dTs
 dTs
 dTs
-dTs
-dTs
-dTs
-dTs
-dTs
+akL
+bPS
+pYM
+tZI
+akL
 dTs
 dTs
 akL
@@ -106620,11 +106695,11 @@ dTs
 dTs
 dTs
 dTs
-dTs
-dTs
-dTs
-dTs
-dTs
+akL
+gKz
+ugP
+scs
+akL
 dTs
 dTs
 akL
@@ -106854,11 +106929,11 @@ dTs
 dTs
 dTs
 dTs
-dTs
-dTs
-dTs
-dTs
-dTs
+akL
+yfb
+kEX
+oJG
+akL
 dTs
 akL
 akL
@@ -107090,7 +107165,7 @@ dTs
 akL
 akL
 akL
-akL
+ilf
 akL
 akL
 akL
@@ -107323,9 +107398,9 @@ dTs
 dTs
 aah
 anV
-ajO
-ajO
-ajO
+alD
+akO
+apf
 ajO
 amG
 ajO

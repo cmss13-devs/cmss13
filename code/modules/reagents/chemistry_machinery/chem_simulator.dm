@@ -121,7 +121,7 @@
 	data["can_eject_target"] = ((target ? TRUE : FALSE) && simulating == SIMULATION_STAGE_OFF)
 	data["can_eject_reference"] = ((reference ? TRUE : FALSE) && simulating == SIMULATION_STAGE_OFF)
 	data["is_picking_recipe"] = (simulating == SIMULATION_STAGE_FINAL && mode != MODE_CREATE)
-	data["lock_target_control"] = (simulating != SIMULATION_STAGE_OFF)
+	data["lock_control"] = (simulating != SIMULATION_STAGE_OFF)
 	data["can_cancel_simulation"] = (simulating <= SIMULATION_STAGE_WAIT)
 	if(simulating == SIMULATION_STAGE_FINAL)
 		for(var/reagent_id in recipe_targets)
@@ -179,11 +179,26 @@
 	)
 	if(mode == MODE_CREATE)
 		for(var/datum/chem_property/known_properties in GLOB.chemical_data.research_property_data)
+			var/datum/chem_property/template_property
+			var/is_locked = FALSE //fix me
+			var/conflicting_tooltip = null
+			for(var/template in creation_template)
+				template_property = template
+				if(LAZYACCESS(GLOB.conflicting_properties, template_property.name) == known_properties.name)
+					is_locked = TRUE
+					conflicting_tooltip = "This property conflicts with [template_properties.code]!"
+				if(template_property.code == known_properties.code)
+					break
+				template_property = null
+
 			data["known_properties"] += list(list(
 				"code" = known_properties.code,
-				"level" = known_properties.level,
+				"level" = (isnull(template_property) ? 0 : template_property.level) ,
 				"name" = known_properties.name,
 				"desc" = known_properties.description,
+				"is_enabled" = LAZYISIN(creation_template, known_properties)
+				"is_locked" = is_locked
+				"conflicting_tooltip" = conflicting_tooltip
 			))
 	return data
 
@@ -225,14 +240,15 @@
 			stop_processing()
 			flick("[icon_state]_printing",src)
 		if("select_target_property")
-			if(!target)
-				return
-			for(var/datum/chem_property/target_prop in target.data.properties)
-				if(target_prop.code != params["property_code"])
-					continue
-				target_property = target_prop
-			if(!target_property)
-				to_chat(usr, SPAN_WARNING("The [src] makes a suspcious vail."))
+			if(mode != MODE_CREATE)
+				if(!target)
+					return
+				for(var/datum/chem_property/target_prop in target.data.properties)
+					if(target_prop.code != params["property_code"])
+						continue
+					target_property = target_prop
+				if(!target_property)
+					to_chat(usr, SPAN_WARNING("The [src] makes a suspcious vail."))
 				return
 		if("select_reference_property")
 			if(!reference)
@@ -271,6 +287,42 @@
 				template_filter &= ~flag_value
 			else
 				template_filter |= flag_value
+		if("select_create_property")
+			if(mode == MODE_CREATE)
+				if(target_property?.code == params["property_code"])
+					if(LAZYISIN(creation_template, target_property))
+						target_property.level = 0
+						LAZYREMOVE(creation_template, target_property)
+					else
+						target_property.level = 1
+						LAZYADD(creation_template, target_property)
+				else
+					for(var/datum/chem_property/known_prop in GLOB.chemical_data.research_property_data)
+						if(known_prop.code != params["property_code"])
+							continue
+						target_property = known_prop
+				if(!target_property)
+					to_chat(usr, SPAN_WARNING("The [src] makes a suspcious vail."))
+					return
+		if("select_overdose")
+			if(mode == SIMULATION_STAGE_OFF && mode == MODE_CREATE)
+				var/od_to_set = tgui_input_list(usr, "Set new OD:", "[src]", list(5,10,15,20,25,30,35,40,45,50,55,60))
+				if(!od_to_set)
+					return
+				new_od_level = od_to_set
+				creation_od_level = od_to_set
+				calculate_creation_cost()
+		if("change_name")
+			if(mode == SIMULATION_STAGE_OFF && mode == MODE_CREATE)
+				var/newname = input("Set name for template (2-20 characters)","[src]") as text
+				newname = reject_bad_name(newname, TRUE, 20, FALSE)
+				if(isnull(newname))
+					to_chat(user, "Bad name.")
+				else if(GLOB.chemical_reagents_list[newname])
+					to_chat(user, "Name already taken.")
+				else
+					creation_name = newname
+
 
 /obj/structure/machinery/chem_simulator/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/list/data = list(

@@ -183,7 +183,7 @@ export const RecipeOptions = (props) => {
 
 export const ModeChange = () => {
   const { act, data } = useBackend();
-  const { target_data, lock_target_control } = data;
+  const { target_data, lock_control } = data;
   const [selectedProperty, setSelectedProperty] = useSharedState(false);
   return (
     (target_data && (
@@ -202,7 +202,7 @@ export const ModeChange = () => {
                 setSelectedProperty(property.code);
               }}
               selected={selectedProperty === property.code ? true : false}
-              disabled={lock_target_control}
+              disabled={lock_control}
             >
               {property.code} {property.level}
             </Button>
@@ -235,7 +235,7 @@ export const ModeChange = () => {
 
 export const ModeRelate = () => {
   const { act, data } = useBackend();
-  const { target_data, reference_data, lock_target_control } = data;
+  const { target_data, reference_data, lock_control } = data;
   const [selectedTargetProperty, setSelectedTargetProperty] = useSharedState(
     'target',
     false,
@@ -260,7 +260,7 @@ export const ModeRelate = () => {
                 setSelectedTargetProperty(property.code);
               }}
               selected={selectedTargetProperty === property.code ? true : false}
-              disabled={lock_target_control || property.is_locked}
+              disabled={lock_control || property.is_locked}
               tooltip={property.tooltip}
             >
               {property.code} {property.level} {selectedTargetProperty}
@@ -283,7 +283,7 @@ export const ModeRelate = () => {
               selected={
                 selectedReferenceProperty === property.code ? true : false
               }
-              disabled={lock_target_control || property.is_locked}
+              disabled={lock_control || property.is_locked}
               tooltip={property.tooltip}
             >
               {property.code} {property.level} {selectedReferenceProperty}
@@ -319,6 +319,7 @@ export const ModeCreate = (props) => {
   const { act, data } = useBackend();
   const { complexityMenu } = props;
   const { known_properties } = data;
+  const [selectedProperty, setSelectedProperty] = useSharedState(false);
   return (
     <Flex direction={'column'}>
       <Flex.Item>
@@ -328,8 +329,20 @@ export const ModeCreate = (props) => {
         <Flex ml={1} mt={2} mr={1}>
           {map(known_properties, (property, key) => (
             <Flex.Item ml={1} grow mr={1} bold fontSize={'14px'}>
-              <Button fluid textAlign={'center'}>
-                {property.code}
+              <Button
+                fluid
+                textAlign={'center'}
+                onClick={() => {
+                  act('select_create_property', {
+                    property_code: property.code,
+                  });
+                  setSelectedProperty(property.code);
+                }}
+                selected={
+                  property.is_enabled || selectedProperty === property.code
+                }
+              >
+                {property.code} {property.level}
               </Button>
             </Flex.Item>
           ))}
@@ -341,21 +354,45 @@ export const ModeCreate = (props) => {
 
 export const CreateControl = () => {
   const { act, data } = useBackend();
-  const { template_filters } = data;
+  const { template_filters, lock_control } = data;
   return (
     <Flex width={64.5} height={2} ml={1}>
       <Flex.Item ml={2}>
-        <Button width={10} fontSize={'14px'} bold>
+        <Button
+          width={10}
+          fontSize={'14px'}
+          bold
+          onClick={() => {
+            act('select_overdose');
+          }}
+          disabled={lock_control}
+        >
           Set OD
         </Button>
       </Flex.Item>
       <Flex.Item ml={2}>
-        <Button width={10} fontSize={'14px'} bold>
+        <Button
+          width={10}
+          fontSize={'14px'}
+          bold
+          disabled={lock_control}
+          onClick={() => {
+            act('change_name');
+          }}
+        >
           Set Name
         </Button>
       </Flex.Item>
       <Flex.Item ml={2} bold>
-        <Button fontSize={'14px'}>Set LEVEL</Button>
+        <Button
+          fontSize={'14px'}
+          disabled={lock_control}
+          onClick={() => {
+            act('change_create_target_level');
+          }}
+        >
+          Set LEVEL
+        </Button>
       </Flex.Item>
       {map(template_filters, (flag, name) => (
         <Flex.Item ml={1} width={5}>

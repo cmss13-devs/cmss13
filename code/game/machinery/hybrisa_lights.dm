@@ -48,7 +48,7 @@
 	name = "colony streetlight"
 	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "street_off"
-	layer = ABOVE_XENO_LAYER
+	layer = BILLBOARD_LAYER
 
 /obj/structure/machinery/colony_floodlight/street/update_icon()
 	if(damaged)
@@ -69,7 +69,7 @@
 	bound_height = 32
 	density = TRUE
 	health = 200
-	layer = ABOVE_XENO_LAYER
+	layer = BILLBOARD_LAYER
 
 /obj/structure/machinery/colony_floodlight/traffic/update_icon()
 	if(damaged)
@@ -89,7 +89,7 @@
 	bound_height = 32
 	density = TRUE
 	health = 200
-	layer = ABOVE_XENO_LAYER
+	layer = BILLBOARD_LAYER
 
 /obj/structure/machinery/colony_floodlight/traffic_alt/update_icon()
 	if(damaged)

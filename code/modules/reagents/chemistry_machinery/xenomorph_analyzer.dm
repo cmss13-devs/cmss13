@@ -30,9 +30,6 @@
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
-	if(user.job != JOB_RESEARCHER)
-		to_chat(user, SPAN_WARNING("Access denied."))
-		return
 	tgui_interact(user)
 
 /obj/structure/machinery/xenoanalyzer/tgui_interact(mob/user, datum/tgui/ui)

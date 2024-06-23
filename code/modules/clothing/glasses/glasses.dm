@@ -166,8 +166,8 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	toggleable = TRUE
 	flags_inventory = COVEREYES
-	req_skill = SKILL_RESEARCH
-	req_skill_level = SKILL_RESEARCH_TRAINED
+	req_skill = SKILL_MEDICAL
+	req_skill_level = SKILL_MEDICAL_DOCTOR
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
 
 /obj/item/clothing/glasses/science/prescription

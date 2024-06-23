@@ -881,8 +881,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/dogtag
-	assignment = JOB_CREWMAN
-	rank = JOB_CREWMAN
+	assignment = JOB_TANK_CREW
+	rank = JOB_TANK_CREW
 	paygrade = PAY_SHORT_ME4
 	role_comm_title = "CRMN"
 	minimum_age = 30
@@ -968,6 +968,7 @@
 		new_human.nutrition = NUTRITION_LOW
 
 /datum/equipment_preset/tutorial/fed
+	name = "Tutorial (Fed)"
 	underfed = FALSE
 
 

@@ -11,7 +11,7 @@
 	var/explosiontime
 	var/explosionpower = 1200
 
-/obj/structure/machinery/colony_selfdestruct/attack_hand(mob/user as mob)
+/obj/structure/machinery/colony_selfdestruct/attack_hand(mob/user)
 	if(user.is_mob_incapacitated() || get_dist(src, user) > 1 || isRemoteControlling(user))
 		return
 

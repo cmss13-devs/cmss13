@@ -63,10 +63,10 @@
 					if(!GLOB.chemical_data.DDI_experiment_done)
 						GLOB.chemical_data.DDI_experiment_done = TRUE
 
-						ai_announcement("Notice: XX-121 entity created at research containment through unknown means, analyzing data...")
+						ai_announcement("Notice: Unidentified lifesign detected at research containment, analyzing data...")
 						sleep(10 SECONDS)
 						GLOB.chemical_data.update_credits(20)
 						var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 						tree.add_points(20)
-						ai_announcement("Notice: DNA Disintegrating research data logged. 20 tech points and research credits awarded.")
+						ai_announcement("Notice: Lifesign concluded to be the product of DNA Disintegrating, research data logged. 20 tech points and research credits awarded.")
 

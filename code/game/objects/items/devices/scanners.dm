@@ -343,7 +343,7 @@ FORENSIC SCANNER
 
 	if(istype(O, /obj/item/ammo_magazine/flamer_tank))
 		var/obj/item/ammo_magazine/flamer_tank/tank = O
-		if(tank.reagents.reagent_list.len < 1)
+		if(!length(tank.reagents.reagent_list))
 			to_chat(user, SPAN_NOTICE("No fuel detected in [O]"))
 			return
 		var/result

@@ -53,6 +53,11 @@ SUBSYSTEM_DEF(ticker)
 	var/tutorial_disabled = FALSE
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
+//RUCM START
+	if(!SSmapping.configs)
+		SSmapping.HACK_LoadMapConfig()
+//RUCM END
+
 	load_mode()
 
 	var/all_music = CONFIG_GET(keyed_list/lobby_music)
@@ -358,13 +363,28 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/load_mode()
+/*
 	var/mode = trim(file2text("data/mode.txt"))
 	if(mode)
 		GLOB.master_mode = SSmapping.configs[GROUND_MAP].force_mode ? SSmapping.configs[GROUND_MAP].force_mode : mode
 	else
 		GLOB.master_mode = "Extended"
 	log_game("Saved mode is '[GLOB.master_mode]'")
+*/
+//RUCM START
+	var/cfg_mode = trim(file2text("data/mode.txt"))
+	if(SSmapping?.configs?[GROUND_MAP].force_mode)
+		GLOB.master_mode = SSmapping.configs[GROUND_MAP].force_mode
+	else if(cfg_mode)
+		GLOB.master_mode = cfg_mode
+	else
+		GLOB.master_mode = "Extended"
 
+	mode = config.pick_mode(GLOB.master_mode)
+	mode.setup_round_stats()
+
+	log_game("Saved mode is '[GLOB.master_mode]'")
+//RUCM END
 
 /datum/controller/subsystem/ticker/proc/save_mode(the_mode)
 	fdel("data/mode.txt")

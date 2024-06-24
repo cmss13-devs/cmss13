@@ -24,22 +24,26 @@
 			index = findtext(t, char)
 	return t
 
+/* RUCM CHANGE
 //Removes a few problematic characters
 /proc/sanitize_simple(text, list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
 	for(var/char in repl_chars)
 		text = replacetext(text, char, repl_chars[char])
 	return text
+*/
 
 ///Helper for only alphanumeric characters plus common punctuation, spaces, underscore and hyphen _ -.
 /proc/replace_non_alphanumeric_plus(text)
 	var/regex/alphanumeric = regex(@{"[^a-z0-9 ,.?!\-_&]"}, "gi")
 	return alphanumeric.Replace(text, "")
 
+/* RUCM CHANGE
 /proc/readd_quotes(text)
 	var/list/repl_chars = list("&#34;" = "\"", "&#39;" = "'")
 	for(var/char in repl_chars)
 		text = replacetext(text, char, repl_chars[char])
 	return text
+*/
 
 //Runs byond's sanitization proc along-side sanitize_simple
 /proc/sanitize(input, list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
@@ -56,6 +60,7 @@
 	var/static/regex/whitelistedWords = regex(@{"([^\u0020-\u8000]+)"}, "g")
 	return whitelistedWords.Replace(text, "")
 
+/* RUCM CHANGE
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's html_encode()
 /proc/strip_html(text, limit=MAX_MESSAGE_LEN)
@@ -65,6 +70,7 @@
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' that html_encode() would cause
 /proc/adminscrub(text, limit=MAX_MESSAGE_LEN)
 	return copytext((html_encode(strip_html_simple(text))), 1, limit)
+*/
 
 //Returns null if there is any bad text in the string
 /proc/reject_bad_text(text, max_length=512)
@@ -223,9 +229,11 @@
 /proc/trim(text)
 	return trim_left(trim_right(text))
 
+/* RUCM CHANGE
 //Returns a string with the first element of the string capitalized.
 /proc/capitalize(t as text)
 	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
+*/
 
 /proc/stringpercent(text,character = "*")
 //This proc returns the number of chars of the string that is the character
@@ -256,8 +264,10 @@
 	else
 		return "[copytext(string, 1, len - 3)]..."
 
+/* RUCM CHANGE
 /proc/strip_improper(input_text)
 	return replacetext(replacetext(input_text, "\proper", ""), "\improper", "")
+*/
 
 // Used to remove the string shortcuts for a clean transfer
 /proc/sanitize_filename(t)

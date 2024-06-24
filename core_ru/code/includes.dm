@@ -1,5 +1,6 @@
 // RUCM CORE INCLUDES
 #include "supplyshuttle.dm"
+#include "__HELPERS\text.dm"
 #include "_globalvars\global_lists.dm"
 #include "_globalvars\misc.dm"
 #include "controllers\subsystem\who.dm"

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Stack, Collapsible } from '../components';
+import { Button, Collapsible, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const StaffWho = (props, context) => {
@@ -16,7 +16,8 @@ export const StaffWho = (props, context) => {
                 <StaffWhoCollapsible
                   key={x.index}
                   title={x.category + ' - ' + x.category_administrators}
-                  color={x.category_color}>
+                  color={x.category_color}
+                >
                   {x.admins.map((x, index) => (
                     <GetAdminInfo
                       key={x.index}
@@ -54,11 +55,12 @@ const GetAdminInfo = (props, context) => {
         'border-color': color,
         'border-style': 'solid',
         'border-width': '1px',
-        'color': color,
+        color: color,
       }}
       tooltip={text}
-      tooltipPosition="bottom-start">
-      <b style={{ 'color': color }}>{content}</b>
+      tooltipPosition="bottom-start"
+    >
+      <b style={{ color: color }}>{content}</b>
     </Button>
   ) : (
     <Button
@@ -67,8 +69,9 @@ const GetAdminInfo = (props, context) => {
         'border-color': '#2185d0',
         'border-style': 'solid',
         'border-width': '1px',
-        'color': 'white',
-      }}>
+        color: 'white',
+      }}
+    >
       {content}
     </Button>
   );

@@ -153,7 +153,7 @@
 	dat += "</body></html>"
 	show_browser(usr, dat, "Who", "who", "size=600x800")
 
-
+/* RUCM CHANGE
 /client/verb/staffwho()
 	set name = "Staffwho"
 	set category = "Admin"
@@ -207,3 +207,4 @@
 			dat += "<BR>"
 	dat += "</body></html>"
 	show_browser(usr, dat, "Staffwho", "staffwho", "size=600x800")
+*/

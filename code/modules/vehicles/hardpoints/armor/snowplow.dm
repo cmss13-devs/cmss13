@@ -9,6 +9,7 @@
 	health = 600
 	activatable = 1
 
+/* RUCM CHANGE
 /obj/item/hardpoint/armor/snowplow/livingmob_interact(mob/living/M)
 	var/turf/targ = get_step(M, owner.dir)
 	targ = get_step(M, owner.dir)
@@ -42,3 +43,4 @@
 			S.changing_layer(0)
 		else
 			continue
+*/

@@ -51,22 +51,16 @@
 				var/turf/turf = get_turf(affected_mob)
 				var/area/area = get_area(turf)
 				gibs(turf)
+				var/mob/living/carbon/xenomorph/drone/xeno = new()
+				xeno.forceMove(turf)
+				xeno.set_hive_and_update(XENO_HIVE_FERAL)
 				if(ismonkey(affected_mob))
-					new /mob/living/simple_animal/hostile/alien/ravager(turf)
-					qdel(affected_mob)
+					xeno.free_for_ghosts(TRUE)
 				else
-					var/mob/living/carbon/human/H = affected_mob
-					H.Alienize(XENO_T3_CASTES)
+					affected_mob.mind.transfer_to(xeno, TRUE)
+
 				src.cure()
+				qdel(affected_mob)
 
 				if(istype(area, /area/almayer/medical/containment))
-					if(!GLOB.chemical_data.DDI_experiment_done)
-						GLOB.chemical_data.DDI_experiment_done = TRUE
-
-						ai_announcement("Notice: Unidentified lifesign detected at research containment, analyzing data...")
-						sleep(10 SECONDS)
-						GLOB.chemical_data.update_credits(20)
-						var/datum/techtree/tree = GET_TREE(TREE_MARINE)
-						tree.add_points(20)
-						ai_announcement("Notice: Lifesign concluded to be the product of DNA Disintegrating, research data logged. 20 tech points and research credits awarded.")
-
+					GLOB.ddi_experiment.trigger(xeno)

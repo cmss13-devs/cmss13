@@ -995,9 +995,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(tmp_list.len > 0)
 		for(var/list/tmp_item as anything in tmp_list)
 			var/item_found = FALSE
-			for(var/list/LP as anything in listed_products)
-				if(tmp_item[3] == LP[3]) //We found a box we already have!
-					LP[2] = tmp_item[2] //Update box amount
+			for(var/list/product as anything in listed_products)
+				if(tmp_item[3] == product[3]) //We found a box we already have!
+					product[2] = tmp_item[2] //Update box amount
 					item_found = TRUE
 					break
 			if(!item_found)

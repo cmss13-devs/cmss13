@@ -253,7 +253,7 @@
 	hardpoints = list(
 		/obj/item/hardpoint/primary/arc_sentry,
 		/obj/item/hardpoint/support/arc_antenna,
-		/obj/item/hardpoint/locomotion/arc_wheels
+		/obj/item/hardpoint/locomotion/arc_wheels,
 	)
 
 /obj/effect/vehicle_spawner/arc/spawn_vehicle(obj/vehicle/multitile/spawning)

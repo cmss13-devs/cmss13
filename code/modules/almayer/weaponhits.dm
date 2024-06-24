@@ -32,7 +32,7 @@
 	name = "Railgun"
 	possibly_ammunition = list(
 		/datum/space_weapon_ammo/rail_gun,
-		/datum/space_weapon_ammo/rail_gun/stronk
+		/datum/space_weapon_ammo/rail_gun/stronk,
 	)
 
 /datum/space_weapon/rail_gun/shot_message(quantity, hit_eta)
@@ -42,7 +42,7 @@
 	name = "Rocket Launcher"
 	possibly_ammunition = list(
 		/datum/space_weapon_ammo/rocket_launcher,
-		/datum/space_weapon_ammo/rocket_launcher/swing_rockets
+		/datum/space_weapon_ammo/rocket_launcher/swing_rockets,
 	)
 
 /datum/space_weapon/rocket_launcher/shot_message(quantity, hit_eta)

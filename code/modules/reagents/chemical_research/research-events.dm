@@ -2,15 +2,22 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 
 /datum/research_event/ddi_experiment
 	var/DDI_experiment_triggered = FALSE
-	var/DDI_experiment_xeno = null
+	var/mob/living/carbon/xenomorph/linked_xeno = null
+	var/client/player = null
 	var/timer
 	var/total_points_given = 0
+
+/datum/research_event/ddi_experiment/proc/get_mind(mob/living/new_xeno)
+	SIGNAL_HANDLER
+	player = new_xeno.client
 
 /datum/research_event/ddi_experiment/proc/trigger(xeno)
 	if(DDI_experiment_triggered)
 		return
 	DDI_experiment_triggered = TRUE
-	DDI_experiment_xeno = xeno
+	linked_xeno = xeno
+	if(linked_xeno.client)
+		player = linked_xeno.client
 
 	ai_announcement("Notice: Unidentified lifesign detected at research containment created through DNA disintegration, analyzing data...")
 	sleep(5 SECONDS)
@@ -18,6 +25,7 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 
 	timer = world.time
 	START_PROCESSING(SSprocessing, src)
+	RegisterSignal(linked_xeno, COMSIG_MOB_NEW_MIND, PROC_REF(get_mind)) //this works as long as the client is not forcefully set by admins
 
 /datum/research_event/ddi_experiment/process(delta_time)
 	if(total_points_given >= 20)
@@ -25,12 +33,18 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 		ai_announcement("Notice: Lifeform biostructural data fully analyzed, 20 total tech points and research credits awarded. Recommend termination of lifeform.")
 		return
 
-	var/mob/living/carbon/xenomorph/xeno = DDI_experiment_xeno
-	var/area/xeno_loc = get_area(xeno.loc)
+	if(QDELETED(linked_xeno)) //they must have evolved
+		if(QDELETED(player.mob)) //no new mob? they got deleted
+			ai_announcement("Notice: Lifeform terminated or missing, biostructural data not fully analyzed. Only [total_points_given] out of [20] tech and research points awarded.")
+			STOP_PROCESSING(SSprocessing, src)
+			return
+		linked_xeno = player.mob //get the updated mob from the client
 
-	if(!xeno || xeno.stat == DEAD || !istype(xeno_loc, /area/almayer/medical/containment))
+	var/area/xeno_loc = get_area(linked_xeno.loc)
+
+	if(linked_xeno.stat == DEAD || !istype(xeno_loc, /area/almayer/medical/containment)) //you let it escape or die. idiot
 		if(total_points_given < 20)
-			ai_announcement("Notice: Lifeform terminated or missing, biostructrual data not fully analyzed. Only [total_points_given] out of [20] tech and research points awarded.")
+			ai_announcement("Notice: Lifeform terminated or missing, biostructural data not fully analyzed. Only [total_points_given] out of [20] tech and research points awarded.")
 			STOP_PROCESSING(SSprocessing, src)
 			return
 

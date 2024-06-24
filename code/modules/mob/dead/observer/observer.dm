@@ -628,7 +628,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/value = SStechtree.trees[1]
 
-	if(trees.len > 1)
+	if(length(trees) > 1)
 		value = tgui_input_list(src, "Choose which tree to enter", "Enter Tree", trees)
 
 	if(!value)
@@ -655,7 +655,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for(var/turf/T in get_area_turfs(thearea.type))
 		L+=T
 
-	if(!L || !L.len)
+	if(!LAZYLEN(L))
 		to_chat(src, "<span style='color: red;'>No area available.</span>")
 		return
 
@@ -879,7 +879,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len > 0)
+		if(length(hive.totalXenos) > 0)
 			hives += list("[hive.name]" = hive.hivenumber)
 			last_hive_checked = hive
 

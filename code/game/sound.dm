@@ -405,4 +405,4 @@
 	set category = "Debug"
 
 	for(var/sound/S in SoundQuery())
-		UNLINT(to_chat(src, "channel#[S.channel]: [S.status] - [S.file] - len=[S.len], wait=[S.wait], offset=[S.offset], repeat=[S.repeat]")) // unlint until spacemandmm suite-1.7
+		UNLINT(to_chat(src, "channel#[S.channel]: [S.status] - [S.file] - len=[length(S)], wait=[S.wait], offset=[S.offset], repeat=[S.repeat]")) // unlint until spacemandmm suite-1.7

@@ -815,11 +815,11 @@ DEFINES in setup.dm, referenced here.
 		if(attachment && (attachment.flags_attach_features & ATTACH_ACTIVATION) )
 			usable_attachments += attachment
 
-	if(!usable_attachments.len) //No usable attachments.
+	if(!length(usable_attachments)) //No usable attachments.
 		to_chat(usr, SPAN_WARNING("[src] does not have any usable attachments!"))
 		return
 
-	if(usable_attachments.len == 1) //Activates the only attachment if there is only one.
+	if(length(usable_attachments) == 1) //Activates the only attachment if there is only one.
 		chosen_attachment = usable_attachments[1]
 	else
 		chosen_attachment = tgui_input_list(usr, "Which attachment to activate?", "Activate attachment", usable_attachments)

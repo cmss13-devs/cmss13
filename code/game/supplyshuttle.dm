@@ -1437,7 +1437,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
 		return
 
-	if(isturf(loc) && (in_range(src, usr) || ishighersilicon(usr)))
+	if(isturf(loc) && (in_range(src, usr) || isSilicon(usr)))
 		usr.set_interaction(src)
 
 	if(href_list["lower_platform"])
@@ -1462,7 +1462,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		in_stock -= order
 
-		var/obj/effect/vehicle_spawner/vehicle_spawner = new order.ordered_vehicle(middle_turf, faction_to_get, TRUE)
+		var/obj/effect/vehicle_spawner/vehicle_spawner = new order.ordered_vehicle(middle_turf)
 		var/obj/vehicle/multitile/ordered_vehicle = vehicle_spawner.spawn_vehicle()
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))
 

@@ -57,15 +57,15 @@
 
 	if(istype(ordered, /obj/vehicle/multitile/tank))
 		selected_vehicle = "TANK"
-		gearcomp.available_categories = VEHICLE_ALL_AVAILABLE
+		available_categories = VEHICLE_ALL_AVAILABLE
+
+	else if(istype(ordered, /obj/vehicle/multitile/arc))
+		selected_vehicle = "ARC"
+		available_categories = VEHICLE_ALL_AVAILABLE
 
 	else if(istype(ordered, /obj/vehicle/multitile/apc))
 		selected_vehicle = "APC"
-		gearcomp.available_categories = VEHICLE_PRIMARY_AVAILABLE|VEHICLE_SECONDARY_AVAILABLE|VEHICLE_SUPPORT_AVAILABLE|VEHICLE_TREADS_AVAILABLE
-
-	else if(istype(ordered, /obj/vehicle/multitile/arc))
-		gearcomp.selected_vehicle = "ARC"
-		gearcomp.available_categories = VEHICLE_ALL_AVAILABLE
+		available_categories = VEHICLE_PRIMARY_AVAILABLE|VEHICLE_SECONDARY_AVAILABLE|VEHICLE_SUPPORT_AVAILABLE|VEHICLE_TREADS_AVAILABLE
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_listed_products(mob/user)
 	var/list/display_list = list()
@@ -82,7 +82,7 @@
 	else if(selected_vehicle == "ARC")
 		display_list = GLOB.cm_vending_vehicle_crew_arc
 
-	else if(selected_vehicle == "TANK")
+	else if(selected_vehicle == "APC")
 		if(available_categories)
 			display_list = GLOB.cm_vending_vehicle_crew_apc
 		else //APC stuff costs more to prevent 4000 points spent on shitton of ammunition

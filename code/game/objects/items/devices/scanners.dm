@@ -348,6 +348,7 @@ FORENSIC SCANNER
 			return
 		var/result
 		var/datum/reagent/chem = tank.reagents.reagent_list[1]
+		result += SPAN_BLUE("Fuel Statistics:")
 		result += SPAN_BLUE("<br>Intensity: [min(chem.intensityfire, tank.max_intensity)]")
 		result += SPAN_BLUE("<br>Duration: [min(chem.durationfire, tank.max_duration)]")
 		result += SPAN_BLUE("<br>Range: [min(chem.rangefire, tank.max_range)]")

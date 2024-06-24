@@ -349,9 +349,9 @@
 	if(!xeno.check_state())
 		return
 
-	var/damage = base_damage
-	var/range = 1
-	var/windup_reduction = 0
+	var/damage
+	var/range
+	var/windup_reduction
 	var/lifesteal_per_marine = 50
 	var/max_lifesteal = 250
 	var/lifesteal_range =  1

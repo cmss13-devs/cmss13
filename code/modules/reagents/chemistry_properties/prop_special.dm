@@ -75,7 +75,7 @@
 
 /datum/chem_property/special/DNA_Disintegrating/process(mob/living/M, potency = 1)
 	M.adjustCloneLoss(POTENCY_MULTIPLIER_EXTREME * potency)
-	if(ishuman(M) || ismonkey(M) && M.cloneloss >= 190)
+	if(ishuman(M) && M.cloneloss >= 150)
 		var/mob/living/carbon/human/H = M
 		H.contract_disease(new /datum/disease/xeno_transformation(0),1) //This is the real reason PMCs are being sent to retrieve it.
 

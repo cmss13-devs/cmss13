@@ -5,6 +5,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/clearance_level = 1
 	var/clearance_x_access = FALSE
 	var/reached_x_access = FALSE
+	var/DDI_experiment_done = FALSE
 	var/has_new_properties = FALSE
 	var/research_allocation_amount = 5
 	var/list/research_documents = list()

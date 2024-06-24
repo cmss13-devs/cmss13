@@ -52,7 +52,7 @@
 				var/area/area = get_area(turf)
 				gibs(turf)
 				for(var/obj/item/items in affected_mob)
-					affected_mob.drop_inv_item_on_ground()
+					affected_mob.drop_inv_item_on_ground(items)
 				var/mob/living/carbon/xenomorph/drone/xeno = new()
 				xeno.forceMove(turf)
 				xeno.set_hive_and_update(XENO_HIVE_FERAL)

@@ -69,6 +69,7 @@
 #include "modules\gear_presets\usmc.dm"
 #include "modules\mob\mod_defines.dm"
 #include "modules\mob\say.dm"
+#include "modules\mob\living\carbon\human\species\working_joe\russian.dm
 #include "modules\mob\living\carbon\xenomorph\hive_status.dm"
 #include "modules\mob\living\carbon\xenomorph\xeno_helpers.dm"
 #include "modules\mob\living\carbon\xenomorph\xeno_verbs.dm"

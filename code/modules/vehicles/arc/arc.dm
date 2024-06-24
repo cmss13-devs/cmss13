@@ -50,6 +50,17 @@
 
 	mob_size_required_to_hit = MOB_SIZE_XENO
 
+	actions_list = list(
+		"global" = list(
+		/obj/vehicle/multitile/proc/get_status_info,
+		/obj/vehicle/multitile/arc/proc/open_arc_controls_guide,
+		/obj/vehicle/multitile/proc/toggle_door_lock,
+		/obj/vehicle/multitile/proc/activate_horn,
+		/obj/vehicle/multitile/proc/name_vehicle,
+		/obj/vehicle/multitile/arc/proc/toggle_antenna
+		)
+	)
+
 	dmg_multipliers = list(
 		"all" = 1,
 		"acid" = 1.8,
@@ -173,26 +184,12 @@
 /obj/vehicle/multitile/arc/add_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
-	add_verb(M.client, list(
-		/obj/vehicle/multitile/proc/get_status_info,
-		/obj/vehicle/multitile/arc/proc/open_arc_controls_guide,
-		/obj/vehicle/multitile/proc/toggle_door_lock,
-		/obj/vehicle/multitile/proc/activate_horn,
-		/obj/vehicle/multitile/proc/name_vehicle,
-		/obj/vehicle/multitile/arc/proc/toggle_antenna,
-	))
+	add_verb(M.client, actions_list["global"])
 
 /obj/vehicle/multitile/arc/remove_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
-	remove_verb(M.client, list(
-		/obj/vehicle/multitile/proc/get_status_info,
-		/obj/vehicle/multitile/arc/proc/open_arc_controls_guide,
-		/obj/vehicle/multitile/proc/toggle_door_lock,
-		/obj/vehicle/multitile/proc/activate_horn,
-		/obj/vehicle/multitile/proc/name_vehicle,
-		/obj/vehicle/multitile/arc/proc/toggle_antenna,
-	))
+	remove_verb(M.client, actions_list["global"])
 	SStgui.close_user_uis(M, src)
 
 /obj/vehicle/multitile/arc/initialize_cameras(change_tag = FALSE)

@@ -50,17 +50,35 @@
 		/obj/item/hardpoint/armor/paladin,
 		/obj/item/hardpoint/armor/snowplow,
 		/obj/item/hardpoint/locomotion/treads,
-		/obj/item/hardpoint/locomotion/treads/robust,
+		/obj/item/hardpoint/locomotion/treads/robust
 	)
 
 	seats = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null,
+		VEHICLE_GUNNER = null
 	)
 
 	active_hp = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null,
+		VEHICLE_GUNNER = null
+	)
+
+	actions_list = list(
+		"global" = list(
+			/obj/vehicle/multitile/proc/get_status_info,
+			/obj/vehicle/multitile/proc/switch_hardpoint,
+			/obj/vehicle/multitile/proc/open_controls_guide,
+			/obj/vehicle/multitile/proc/name_vehicle
+		),
+		VEHICLE_DRIVER = list(
+			/obj/vehicle/multitile/proc/toggle_door_lock,
+			/obj/vehicle/multitile/proc/activate_horn
+		),
+		VEHICLE_GUNNER = list(
+			/obj/vehicle/multitile/proc/cycle_hardpoint,
+			/obj/vehicle/multitile/proc/toggle_gyrostabilizer,
+			/obj/vehicle/multitile/proc/toggle_shift_click
+		)
 	)
 
 	dmg_multipliers = list(
@@ -100,46 +118,15 @@
 /obj/vehicle/multitile/tank/add_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
-	add_verb(M.client, list(
-		/obj/vehicle/multitile/proc/switch_hardpoint,
-		/obj/vehicle/multitile/proc/get_status_info,
-		/obj/vehicle/multitile/proc/open_controls_guide,
-		/obj/vehicle/multitile/proc/name_vehicle,
-	))
-	if(seat == VEHICLE_DRIVER)
-		add_verb(M.client, list(
-			/obj/vehicle/multitile/proc/toggle_door_lock,
-			/obj/vehicle/multitile/proc/activate_horn,
-		))
-	else if(seat == VEHICLE_GUNNER)
-		add_verb(M.client, list(
-			/obj/vehicle/multitile/proc/cycle_hardpoint,
-			/obj/vehicle/multitile/proc/toggle_gyrostabilizer,
-			/obj/vehicle/multitile/proc/toggle_shift_click,
-		))
-
+	add_verb(M.client, actions_list["global"])
+	add_verb(M.client, actions_list[seat])
 
 /obj/vehicle/multitile/tank/remove_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
-	remove_verb(M.client, list(
-		/obj/vehicle/multitile/proc/get_status_info,
-		/obj/vehicle/multitile/proc/open_controls_guide,
-		/obj/vehicle/multitile/proc/name_vehicle,
-		/obj/vehicle/multitile/proc/switch_hardpoint,
-	))
+	remove_verb(M.client, actions_list["global"])
+	remove_verb(M.client, actions_list[seat])
 	SStgui.close_user_uis(M, src)
-	if(seat == VEHICLE_DRIVER)
-		remove_verb(M.client, list(
-			/obj/vehicle/multitile/proc/toggle_door_lock,
-			/obj/vehicle/multitile/proc/activate_horn,
-		))
-	else if(seat == VEHICLE_GUNNER)
-		remove_verb(M.client, list(
-			/obj/vehicle/multitile/proc/cycle_hardpoint,
-			/obj/vehicle/multitile/proc/toggle_gyrostabilizer,
-			/obj/vehicle/multitile/proc/toggle_shift_click,
-		))
 
 //Called when players try to move vehicle
 //Another wrapper for try_move()

@@ -266,7 +266,7 @@
 //PRESET: wheels installed, destroyed
 /obj/effect/vehicle_spawner/van/decrepit
 	hardpoints = list(
-		/obj/item/hardpoint/locomotion/van_wheels
+		/obj/item/hardpoint/locomotion/van_wheels,
 	)
 
 /obj/effect/vehicle_spawner/van/decrepit/spawn_vehicle(obj/vehicle/multitile/spawning)
@@ -279,7 +279,7 @@
 //PRESET: wheels installed
 /obj/effect/vehicle_spawner/van/fixed
 	hardpoints = list(
-		/obj/item/hardpoint/locomotion/van_wheels
+		/obj/item/hardpoint/locomotion/van_wheels,
 	)
 
 /obj/effect/vehicle_spawner/van/fixed/spawn_vehicle(obj/vehicle/multitile/spawning)

@@ -25,7 +25,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		"right" = list(-2, 0),
 		"rear left" = list(1, 2),
 		"rear center" = list(0, 2),
-		"rear right" = list(-1, 2)
+		"rear right" = list(-1, 2),
 	)
 
 	entrance_speed = 0.5 SECONDS
@@ -65,22 +65,22 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		"global" = list(
 			/obj/vehicle/multitile/proc/get_status_info,
 			/obj/vehicle/multitile/proc/open_controls_guide,
-			/obj/vehicle/multitile/proc/name_vehicle
+			/obj/vehicle/multitile/proc/name_vehicle,
 		),
 		VEHICLE_DRIVER = list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
-			/obj/vehicle/multitile/proc/activate_horn
+			/obj/vehicle/multitile/proc/activate_horn,
 		),
 		VEHICLE_GUNNER = list(
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
-			/obj/vehicle/multitile/proc/toggle_shift_click
+			/obj/vehicle/multitile/proc/toggle_shift_click,
 		),
 		VEHICLE_SUPPORT_GUNNER_ONE = list(
-			/obj/vehicle/multitile/proc/reload_firing_port_weapon
+			/obj/vehicle/multitile/proc/reload_firing_port_weapon,
 		),
 		VEHICLE_SUPPORT_GUNNER_TWO = list(
-			/obj/vehicle/multitile/proc/reload_firing_port_weapon
+			/obj/vehicle/multitile/proc/reload_firing_port_weapon,
 		)
 	)
 
@@ -203,7 +203,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 //PRESET: only wheels installed
 /obj/effect/vehicle_spawner/apc/plain
 	hardpoints = list(
-		/obj/item/hardpoint/locomotion/apc_wheels
+		/obj/item/hardpoint/locomotion/apc_wheels,
 	)
 
 //PRESET: default hardpoints, destroyed
@@ -212,7 +212,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		/obj/item/hardpoint/primary/dualcannon,
 		/obj/item/hardpoint/secondary/frontalcannon,
 		/obj/item/hardpoint/support/flare_launcher,
-		/obj/item/hardpoint/locomotion/apc_wheels
+		/obj/item/hardpoint/locomotion/apc_wheels,
 		)
 
 /obj/effect/vehicle_spawner/apc/decrepit/spawn_vehicle(obj/vehicle/multitile/spawning)
@@ -234,7 +234,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		/obj/item/hardpoint/primary/dualcannon,
 		/obj/item/hardpoint/secondary/frontalcannon,
 		/obj/item/hardpoint/support/flare_launcher,
-		/obj/item/hardpoint/locomotion/apc_wheels
+		/obj/item/hardpoint/locomotion/apc_wheels,
 	)
 
 //fpw

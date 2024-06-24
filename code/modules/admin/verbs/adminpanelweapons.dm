@@ -19,7 +19,7 @@
 		var/list/datum/space_weapon_ammo/potential_ammo = list()
 		for(var/ammo_to_get in potential_weapons[weapon_type].possibly_ammunition)
 			var/datum/space_weapon_ammo/ammo_to_set = GLOB.space_weapons_ammo[ammo_to_get]
-			LAZYSET(potential_ammo, ammo_to_set.name, ammo_to_set)
+			LAZYSET(potential_ammo, ammo_to_set.name, ammo_to_get)
 
 		while(length(potential_ammo))
 			var/additional_ammo = tgui_input_list(src, "Choose ammo", "Ammo selector", potential_ammo, 20 SECONDS)

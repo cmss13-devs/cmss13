@@ -145,7 +145,7 @@
 	var/list/misc_multipliers = list(
 		"move" = 1.0,
 		"accuracy" = 1.0,
-		"cooldown" = 1
+		"cooldown" = 1,
 	)
 
 	//Changes how much damage the vehicle takes
@@ -156,7 +156,8 @@
 		"bullet" = 1.0,
 		"explosive" = 1.0,
 		"blunt" = 1.0,
-		"abstract" = 1.0) //abstract for when you just want to hurt it
+		"abstract" = 1.0,
+	) //abstract for when you just want to hurt it
 
 	// This is more important than you think.
 	// Explosive waves can propagate through the vehicle and hit it multiple times

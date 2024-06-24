@@ -50,7 +50,7 @@
 		/obj/item/hardpoint/armor/paladin,
 		/obj/item/hardpoint/armor/snowplow,
 		/obj/item/hardpoint/locomotion/treads,
-		/obj/item/hardpoint/locomotion/treads/robust
+		/obj/item/hardpoint/locomotion/treads/robust,
 	)
 
 	seats = list(
@@ -68,16 +68,16 @@
 			/obj/vehicle/multitile/proc/get_status_info,
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 			/obj/vehicle/multitile/proc/open_controls_guide,
-			/obj/vehicle/multitile/proc/name_vehicle
+			/obj/vehicle/multitile/proc/name_vehicle,
 		),
 		VEHICLE_DRIVER = list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
-			/obj/vehicle/multitile/proc/activate_horn
+			/obj/vehicle/multitile/proc/activate_horn,
 		),
 		VEHICLE_GUNNER = list(
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
 			/obj/vehicle/multitile/proc/toggle_gyrostabilizer,
-			/obj/vehicle/multitile/proc/toggle_shift_click
+			/obj/vehicle/multitile/proc/toggle_shift_click,
 		)
 	)
 
@@ -88,7 +88,7 @@
 		"bullet" = 0.4,
 		"explosive" = 0.8,
 		"blunt" = 0.8,
-		"abstract" = 1
+		"abstract" = 1,
 	)
 
 	explosive_resistance = 400
@@ -198,7 +198,7 @@
 	vehicle_type = /obj/vehicle/multitile/tank
 
 	hardpoints = list(
-		/obj/item/hardpoint/holder/tank_turret
+		/obj/item/hardpoint/holder/tank_turret,
 	)
 
 	var/list/turret_hardpoints = list()
@@ -221,7 +221,7 @@
 /obj/effect/vehicle_spawner/tank/plain
 	hardpoints = list(
 		/obj/item/hardpoint/holder/tank_turret,
-		/obj/item/hardpoint/locomotion/treads
+		/obj/item/hardpoint/locomotion/treads,
 	)
 
 //PRESET: no hardpoints
@@ -239,12 +239,12 @@
 		/obj/item/hardpoint/support/artillery_module,
 		/obj/item/hardpoint/armor/paladin,
 		/obj/item/hardpoint/holder/tank_turret,
-		/obj/item/hardpoint/locomotion/treads
+		/obj/item/hardpoint/locomotion/treads,
 	)
 
 	turret_hardpoints = list(
 		/obj/item/hardpoint/primary/cannon,
-		/obj/item/hardpoint/secondary/m56cupola
+		/obj/item/hardpoint/secondary/m56cupola,
 	)
 
 /obj/effect/vehicle_spawner/tank/decrepit/spawn_vehicle(obj/vehicle/multitile/spawning)
@@ -260,12 +260,12 @@
 		/obj/item/hardpoint/support/artillery_module,
 		/obj/item/hardpoint/armor/paladin,
 		/obj/item/hardpoint/holder/tank_turret,
-		/obj/item/hardpoint/locomotion/treads
+		/obj/item/hardpoint/locomotion/treads,
 	)
 
 	turret_hardpoints = list(
 		/obj/item/hardpoint/primary/cannon,
-		/obj/item/hardpoint/secondary/m56cupola
+		/obj/item/hardpoint/secondary/m56cupola,
 	)
 
 //PRESET: minigun kit
@@ -274,12 +274,12 @@
 		/obj/item/hardpoint/support/weapons_sensor,
 		/obj/item/hardpoint/armor/ballistic,
 		/obj/item/hardpoint/holder/tank_turret,
-		/obj/item/hardpoint/locomotion/treads
+		/obj/item/hardpoint/locomotion/treads,
 	)
 
 	turret_hardpoints = list(
 		/obj/item/hardpoint/primary/minigun,
-		/obj/item/hardpoint/secondary/small_flamer
+		/obj/item/hardpoint/secondary/small_flamer,
 	)
 
 //PRESET: dragon flamer kit
@@ -288,12 +288,12 @@
 		/obj/item/hardpoint/support/overdrive_enhancer,
 		/obj/item/hardpoint/armor/ballistic,
 		/obj/item/hardpoint/holder/tank_turret,
-		/obj/item/hardpoint/locomotion/treads
+		/obj/item/hardpoint/locomotion/treads,
 	)
 
 	turret_hardpoints = list(
 		/obj/item/hardpoint/primary/flamer,
-		/obj/item/hardpoint/secondary/grenade_launcher
+		/obj/item/hardpoint/secondary/grenade_launcher,
 	)
 
 //PRESET: autocannon kit
@@ -302,10 +302,10 @@
 		/obj/item/hardpoint/support/artillery_module,
 		/obj/item/hardpoint/armor/ballistic,
 		/obj/item/hardpoint/holder/tank_turret,
-		/obj/item/hardpoint/locomotion/treads
+		/obj/item/hardpoint/locomotion/treads,
 	)
 
 	turret_hardpoints = list(
 		/obj/item/hardpoint/primary/autocannon,
-		/obj/item/hardpoint/secondary/towlauncher
+		/obj/item/hardpoint/secondary/towlauncher,
 	)

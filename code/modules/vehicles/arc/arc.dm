@@ -57,7 +57,7 @@
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
 			/obj/vehicle/multitile/proc/name_vehicle,
-			/obj/vehicle/multitile/arc/proc/toggle_antenna
+			/obj/vehicle/multitile/arc/proc/toggle_antenna,
 		)
 	)
 

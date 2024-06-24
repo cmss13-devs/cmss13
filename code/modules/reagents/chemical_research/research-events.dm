@@ -18,6 +18,7 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 	linked_xeno = xeno
 	if(linked_xeno.client)
 		player = linked_xeno.client
+	RegisterSignal(linked_xeno, COMSIG_MOB_NEW_MIND, PROC_REF(get_mind)) //this works as long as the client is not forcefully set by admins
 
 	ai_announcement("Notice: Unidentified lifesign detected at research containment created through DNA disintegration, analyzing data...")
 	sleep(5 SECONDS)
@@ -25,7 +26,6 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 
 	timer = world.time
 	START_PROCESSING(SSprocessing, src)
-	RegisterSignal(linked_xeno, COMSIG_MOB_NEW_MIND, PROC_REF(get_mind)) //this works as long as the client is not forcefully set by admins
 
 /datum/research_event/ddi_experiment/process(delta_time)
 	if(total_points_given >= 20)

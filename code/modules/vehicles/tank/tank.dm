@@ -41,6 +41,9 @@
 	// Rest (all the guns) is handled by the tank turret hardpoint
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/holder/tank_turret,
+//RUCM START
+		/obj/item/hardpoint/holder/tank_turret/flares,
+//RUCM END
 		/obj/item/hardpoint/support/weapons_sensor,
 		/obj/item/hardpoint/support/overdrive_enhancer,
 		/obj/item/hardpoint/support/artillery_module,
@@ -110,6 +113,9 @@
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+//RUCM START
+			/obj/vehicle/multitile/proc/use_megaphone,
+//RUCM END
 		))
 	else if(seat == VEHICLE_GUNNER)
 		add_verb(M.client, list(
@@ -133,6 +139,9 @@
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+//RUCM START
+			/obj/vehicle/multitile/proc/use_megaphone,
+//RUCM END
 		))
 	else if(seat == VEHICLE_GUNNER)
 		remove_verb(M.client, list(

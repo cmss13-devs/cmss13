@@ -43,6 +43,10 @@
 	return ..()
 
 /obj/vehicle/multitile/apc/command/process()
+//RUCM START
+	. = ..()
+//RUCM END
+
 	var/turf/apc_turf = get_turf(src)
 	if(health == 0 || !visible_in_tacmap || !is_ground_level(apc_turf.z))
 		return
@@ -96,6 +100,9 @@
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+//RUCM START
+			/obj/vehicle/multitile/proc/use_megaphone,
+//RUCM END
 		))
 	else if(seat == VEHICLE_GUNNER)
 		add_verb(M.client, list(
@@ -117,6 +124,9 @@
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+//RUCM START
+			/obj/vehicle/multitile/proc/use_megaphone,
+//RUCM END
 		))
 	else if(seat == VEHICLE_GUNNER)
 		remove_verb(M.client, list(

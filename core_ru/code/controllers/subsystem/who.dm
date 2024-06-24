@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(who)
 /datum/player_list/proc/update_data()
 	var/list/new_list_data = list()
 	var/list/new_mobs_ckey = list()
-	var/list/additiona_data = list(
+	var/list/additional_data = list(
 		"lobby" = 0,
 		"admin_observers" = 0,
 		"observers" = 0,
@@ -46,16 +46,16 @@ SUBSYSTEM_DEF(who)
 		if(client_mob)
 			if(istype(client_mob, /mob/new_player))
 				client_payload["text"] += " - in Lobby"
-				additiona_data["lobby"]++
+				additional_data["lobby"]++
 				new_list_data["total_players"] += list(client_payload)
 				continue
 
 			if(isobserver(client_mob))
 				client_payload["text"] += " - Playing as [client_mob.real_name]"
 				if(CLIENT_IS_STAFF(client))
-					additiona_data["admin_observers"]++
+					additional_data["admin_observers"]++
 				else
-					additiona_data["observers"]++
+					additional_data["observers"]++
 
 				var/mob/dead/observer/observer = client_mob
 				if(observer.started_as_observer)
@@ -89,72 +89,72 @@ SUBSYSTEM_DEF(who)
 						else if(client_mob.faction == FACTION_YAUTJA)
 							client_payload["color"] += "#7ABA19"
 							client_payload["text"] += " - Yautja"
-							additiona_data["yautja"]++
+							additional_data["yautja"]++
 							if(client_mob.status_flags & XENO_HOST)
-								additiona_data["infected_preds"]++
+								additional_data["infected_preds"]++
 						else
-							additiona_data["humans"]++
+							additional_data["humans"]++
 							if(client_mob.status_flags & XENO_HOST)
-								additiona_data["infected_humans"]++
+								additional_data["infected_humans"]++
 							if(client_mob.faction == FACTION_MARINE)
-								additiona_data["uscm"]++
+								additional_data["uscm"]++
 								if(client_mob.job in (GLOB.ROLES_MARINES))
-									additiona_data["uscm_marines"]++
+									additional_data["uscm_marines"]++
 							else
 								counted_factions[client_mob.faction]++
 
 		new_list_data["total_players"] += list(client_payload)
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "in Lobby: [additiona_data["lobby"]]",
+		"content" = "in Lobby: [additional_data["lobby"]]",
 		"color" = "#777",
 		"text" = "Player in lobby",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Spectators: [additiona_data["observers"]] Players",
+		"content" = "Spectators: [additional_data["observers"]] Players",
 		"color" = "#777",
 		"text" = "Spectating players",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Spectators: [additiona_data["admin_observers"]] Administrators",
+		"content" = "Spectators: [additional_data["admin_observers"]] Administrators",
 		"color" = "#777",
 		"text" = "Spectating administrators",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Humans: [additiona_data["humans"]]",
+		"content" = "Humans: [additional_data["humans"]]",
 		"color" = "#2C7EFF",
 		"text" = "Players playing as Human",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Infected Humans: [additiona_data["infected_humans"]]",
+		"content" = "Infected Humans: [additional_data["infected_humans"]]",
 		"color" = "#F00",
 		"text" = "Players playing as Infected Human",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "USS `Almayer` Personnel: [additiona_data["uscm"]]",
+		"content" = "USS `Almayer` Personnel: [additional_data["uscm"]]",
 		"color" = "#3e26c8",
 		"text" = "Players playing as USS `Almayer` Personnel",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Marines: [additiona_data["uscm_marines"]]",
+		"content" = "Marines: [additional_data["uscm_marines"]]",
 		"color" = "#3e26c8",
 		"text" = "Players playing as Marines",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Yautjes: [additiona_data["yautja"]]",
+		"content" = "Yautjes: [additional_data["yautja"]]",
 		"color" = "#7ABA19",
 		"text" = "Players playing as Yautja",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Infected Yautjes: [additiona_data["infected_preds"]]",
+		"content" = "Infected Predators: [additional_data["infected_preds"]]",
 		"color" = "#7ABA19",
 		"text" = "Players playing as Infected Yautja",
 	))
@@ -207,7 +207,8 @@ SUBSYSTEM_DEF(who)
 
 	switch(action)
 		if("get_player_panel")
-			GLOB.admin_datums[usr.client.ckey].show_player_panel(mobs_ckey[params["ckey"]])
+			if(mobs_ckey[params["ckey"]])
+				GLOB.admin_datums[usr.client.ckey].show_player_panel(mobs_ckey[params["ckey"]])
 
 /datum/player_list/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE

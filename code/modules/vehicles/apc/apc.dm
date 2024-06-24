@@ -40,6 +40,9 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		/obj/item/hardpoint/primary/dualcannon,
 		/obj/item/hardpoint/secondary/frontalcannon,
 		/obj/item/hardpoint/support/flare_launcher,
+//RUCM START
+		/obj/item/hardpoint/support/flare_launcher/smoke_launcher,
+//RUCM END
 		/obj/item/hardpoint/locomotion/apc_wheels,
 	)
 
@@ -108,6 +111,9 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+//RUCM START
+			/obj/vehicle/multitile/proc/use_megaphone,
+//RUCM END
 			/obj/vehicle/multitile/proc/name_vehicle
 		))
 	else if(seat == VEHICLE_GUNNER)
@@ -135,6 +141,9 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+//RUCM START
+			/obj/vehicle/multitile/proc/use_megaphone,
+//RUCM END
 			/obj/vehicle/multitile/proc/name_vehicle,
 		))
 	else if(seat == VEHICLE_GUNNER)
@@ -178,7 +187,9 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	V.add_hardpoint(FPW)
 	FPW.dir = turn(V.dir, 90)
 	FPW.name = "Left "+ initial(FPW.name)
-	FPW.origins = list(1, 0)
+//RUCM START
+	FPW.origins = list(2, 0)
+//RUCM END
 	FPW.muzzle_flash_pos = list(
 		"1" = list(-18, 14),
 		"2" = list(18, -42),
@@ -191,7 +202,9 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	V.add_hardpoint(FPW)
 	FPW.dir = turn(V.dir, -90)
 	FPW.name = "Right "+ initial(FPW.name)
-	FPW.origins = list(-1, 0)
+//RUCM START
+	FPW.origins = list(-2, 0)
+//RUCM END
 	FPW.muzzle_flash_pos = list(
 		"1" = list(16, 14),
 		"2" = list(-18, -42),

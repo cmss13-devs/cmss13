@@ -1,7 +1,13 @@
-import { filter } from 'common/collections';
-import { flow } from 'common/fp';
 import { useBackend, useLocalState } from '../backend';
-import { Button, Collapsible, Box, Stack, Section, Input, Icon } from '../components';
+import {
+  Box,
+  Button,
+  Collapsible,
+  Icon,
+  Input,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
 export const Who = (props, context) => {
@@ -17,18 +23,10 @@ export const Who = (props, context) => {
 
   const [searchQuery, setSearchQuery] = useLocalState('searchQuery', '');
 
-  const MostRelevant = (searchQuery) => {
-    const mostRelevant = flow([
-      filter((player) => isMatch(player, searchQuery)),
-    ])(total_players)[0];
-    if (mostRelevant !== undefined) {
-      act('get_player_panel', { ckey: mostRelevant.ckey });
-    }
-  };
+  const searchPlayers = () =>
+    total_players.filter((player) => isMatch(player, searchQuery));
 
-  const filtered_total_players = flow([
-    filter((player) => isMatch(player, searchQuery)),
-  ])(total_players);
+  const filteredTotalPlayers = searchPlayers();
 
   return (
     <Window resizable width={800} height={600}>
@@ -44,7 +42,11 @@ export const Who = (props, context) => {
                   <Input
                     autoFocus
                     fluid
-                    onEnter={(e, value) => MostRelevant(value)}
+                    onEnter={(e, value) =>
+                      act('get_player_panel', {
+                        ckey: searchPlayers()?.[0].ckey,
+                      })
+                    }
                     onInput={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search..."
                     value={searchQuery}
@@ -56,17 +58,10 @@ export const Who = (props, context) => {
           <Stack.Item mt={0.2} grow>
             <Section>
               <WhoCollapsible title={'Players - ' + all_clients} color="good">
-                {filtered_total_players.length ? (
+                {filteredTotalPlayers.length ? (
                   <Box>
-                    {filtered_total_players.map((x, index) => (
-                      <GetPlayerInfo
-                        key={index}
-                        admin={admin}
-                        ckey={x.ckey}
-                        ckey_color={x.ckey_color}
-                        color={x.color}
-                        text={x.text}
-                      />
+                    {filteredTotalPlayers.map((x) => (
+                      <GetPlayerInfo key={x.ckey} admin={admin} player={x} />
                     ))}
                   </Box>
                 ) : null}
@@ -78,33 +73,33 @@ export const Who = (props, context) => {
                   <Box direction="column">
                     {additional_info.length
                       ? additional_info.map((x, index) => (
-                        <GetAddInfo
-                          key={index}
-                          content={x.content}
-                          color={x.color}
-                          text={x.text}
-                        />
-                      ))
+                          <GetAddInfo
+                            key={index}
+                            content={x.content}
+                            color={x.color}
+                            text={x.text}
+                          />
+                        ))
                       : null}
                     {factions.length
                       ? factions.map((x, index) => (
-                        <GetAddInfo
-                          key={index}
-                          content={x.content}
-                          color={x.color}
-                          text={x.text}
-                        />
-                      ))
+                          <GetAddInfo
+                            key={index}
+                            content={x.content}
+                            color={x.color}
+                            text={x.text}
+                          />
+                        ))
                       : null}
                     {xenomorphs.length
                       ? xenomorphs.map((x, index) => (
-                        <GetAddInfo
-                          key={index}
-                          content={x.content}
-                          color={x.color}
-                          text={x.text}
-                        />
-                      ))
+                          <GetAddInfo
+                            key={index}
+                            content={x.content}
+                            color={x.color}
+                            text={x.text}
+                          />
+                        ))
                       : null}
                   </Box>
                 </WhoCollapsible>
@@ -137,10 +132,11 @@ const GetAddInfo = (props, context) => {
         'border-color': color,
         'border-style': 'solid',
         'border-width': '1px',
-        'color': color,
+        color: color,
       }}
       tooltip={text}
-      tooltipPosition="bottom-start">
+      tooltipPosition="bottom-start"
+    >
       {content}
     </Button>
   );
@@ -148,7 +144,10 @@ const GetAddInfo = (props, context) => {
 
 const GetPlayerInfo = (props, context) => {
   const { act } = useBackend(context);
-  const { admin, ckey, ckey_color, color, text } = props;
+  const {
+    admin,
+    player: { ckey, ckey_color, color, text },
+  } = props;
   return admin !== 0 ? (
     <Button
       color={'transparent'}
@@ -156,11 +155,12 @@ const GetPlayerInfo = (props, context) => {
         'border-color': admin ? color : '#2185d0',
         'border-style': 'solid',
         'border-width': '1px',
-        'color': admin ? color : ckey_color,
+        color: admin ? color : ckey_color,
       }}
       onClick={() => act('get_player_panel', { ckey: ckey })}
       tooltip={text}
-      tooltipPosition="bottom-start">
+      tooltipPosition="bottom-start"
+    >
       <div color={ckey_color}>{ckey}</div>
     </Button>
   ) : (
@@ -170,8 +170,9 @@ const GetPlayerInfo = (props, context) => {
         'border-color': '#2185d0',
         'border-style': 'solid',
         'border-width': '1px',
-        'color': ckey_color,
-      }}>
+        color: ckey_color,
+      }}
+    >
       <div color={ckey_color}>{ckey}</div>
     </Button>
   );

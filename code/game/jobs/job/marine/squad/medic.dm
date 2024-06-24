@@ -12,6 +12,7 @@
 		if(sq)
 			sq.max_medics = medic_slot_formula(count)
 
+/* RUCM CHANGE
 /datum/job/marine/medic/get_total_positions(latejoin=0)
 	var/slots = medic_slot_formula(get_total_marines())
 
@@ -26,6 +27,7 @@
 				sq.max_medics = slots
 
 	return (slots*4)
+*/
 
 /datum/job/marine/medic/whiskey
 	title = JOB_WO_SQUAD_MEDIC

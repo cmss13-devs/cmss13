@@ -113,7 +113,6 @@
 	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
 	var/prepend_squad_name_to_assignment = TRUE
 
-
 /datum/squad/marine
 	name = "Root"
 	usable = TRUE
@@ -436,6 +435,7 @@
 
 
 
+/* RUCM MOVE
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.
 //So it does not check if the squad is too full already, or randomize it, etc.
@@ -563,6 +563,7 @@
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
 
 	forget_marine_in_squad(M)
+*/
 
 //gracefully remove a marine from squad system, alive, dead or otherwise
 /datum/squad/proc/forget_marine_in_squad(mob/living/carbon/human/M)
@@ -637,9 +638,11 @@
 				R.keys -= key
 				qdel(key)
 			R.recalculateChannels()
-		var/obj/item/card/id/card = old_lead.get_idcard()
-		if(card)
-			card.access -= ACCESS_MARINE_LEADER
+//RUCM START
+		if(istype(old_lead.wear_id, /obj/item/card/id))
+			var/obj/item/card/id/ID = old_lead.wear_id
+			ID.access -= ACCESS_MARINE_LEADER
+//RUCM END
 	REMOVE_TRAITS_IN(old_lead, TRAIT_SOURCE_SQUAD_LEADER)
 	old_lead.hud_set_squad()
 	old_lead.update_inv_head() //updating marine helmet leader overlays

@@ -1,4 +1,4 @@
-// RUCM CORE DEFINES INCLUDES
+//RUCM CORE DEFINES INCLUDES
 
 #include "core_defines_ru\access.dm"
 #include "core_defines_ru\conflict.dm"

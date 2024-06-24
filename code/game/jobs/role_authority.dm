@@ -61,7 +61,6 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 											/datum/job/special/uaac,
 											/datum/job/special/uaac/tis,
 											/datum/job/special/uscm,
-											/datum/job/command/tank_crew //Rip VC
 											)
 	var/squads_all[] = typesof(/datum/squad) - /datum/squad
 	var/castes_all[] = subtypesof(/datum/caste_datum)
@@ -376,6 +375,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		J.current_positions--
 		return 1
 
+/* RUCM CHANGE
 /datum/authority/branch/role/proc/free_role_admin(datum/job/J, latejoin = 1, user) //Specific proc that used for admin "Free Job Slots" verb (round tab)
 	if(!istype(J) || J.total_positions == -1)
 		return
@@ -435,6 +435,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	J.current_positions--
 	message_admins("[key_name(user)] freed the [J.title] job slot[sq ? " in [sq.name] Squad" : ""].")
 	return 1
+*/
 
 /datum/authority/branch/role/proc/modify_role(datum/job/J, amount)
 	if(!istype(J))
@@ -532,6 +533,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	SEND_SIGNAL(new_human, COMSIG_POST_SPAWN_UPDATE)
 	SSround_recording.recorder.track_player(new_human)
 
+/* RUCM CHANGE
 //Find which squad has the least population. If all 4 squads are equal it should just use a random one
 /datum/authority/branch/role/proc/get_lowest_squad(mob/living/carbon/human/H)
 	if(!squads.len) //Something went wrong, our squads aren't set up.
@@ -714,6 +716,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			to_chat(H, "Something went wrong with randomize_squad()! Tell a coder!")
 			return
 		given_squad.put_marine_in_squad(H) //Found one, finish up
+*/
 
 /datum/authority/branch/role/proc/get_caste_by_text(name)
 	var/mob/living/carbon/xenomorph/M

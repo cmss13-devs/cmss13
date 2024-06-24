@@ -12,6 +12,7 @@
 		if(sq)
 			sq.max_engineers = engi_slot_formula(count)
 
+/* RUCM CHANGE
 /datum/job/marine/engineer/get_total_positions(latejoin=0)
 	var/slots = engi_slot_formula(get_total_marines())
 
@@ -26,6 +27,7 @@
 				sq.max_engineers = slots
 
 	return (slots*4)
+*/
 
 /datum/job/marine/engineer/whiskey
 	title = JOB_WO_SQUAD_ENGINEER

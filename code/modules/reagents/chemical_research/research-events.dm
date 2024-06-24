@@ -14,7 +14,7 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 
 	ai_announcement("Notice: Unidentified lifesign detected at research containment created through DNA disintegration, analyzing data...")
 	sleep(5 SECONDS)
-	ai_announcement("Notice: Lifeform biostructural data can be analyzed further for tech point reward at a rate of 1 tech point per minute.")
+	ai_announcement("Notice: Lifeform biostructural data can be analyzed further for tech point and research credit reward at a rate of 1 point per minute.")
 
 	timer = world.time
 	START_PROCESSING(SSprocessing, src)

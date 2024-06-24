@@ -51,15 +51,21 @@
 			malfunction()
 			return
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, obj/vehicle/multitile/V)
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, obj/vehicle/multitile/ordered)
 	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
 
-	if(!selected_vehicle)
-		selected_vehicle = "TANK" // The whole thing seems to be based upon the assumption you unlock tank as an override, defaulting to APC
-	if(selected_vehicle == "TANK")
-		available_categories &= ~(VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
-		marine_announcement("A tank is being sent up to reinforce this operation.")
+	if(istype(ordered, /obj/vehicle/multitile/tank))
+		selected_vehicle = "TANK"
+		gearcomp.available_categories = VEHICLE_ALL_AVAILABLE
+
+	else if(istype(ordered, /obj/vehicle/multitile/apc))
+		selected_vehicle = "APC"
+		gearcomp.available_categories = VEHICLE_PRIMARY_AVAILABLE|VEHICLE_SECONDARY_AVAILABLE|VEHICLE_SUPPORT_AVAILABLE|VEHICLE_TREADS_AVAILABLE
+
+	else if(istype(ordered, /obj/vehicle/multitile/arc))
+		gearcomp.selected_vehicle = "ARC"
+		gearcomp.available_categories = VEHICLE_ALL_AVAILABLE
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_listed_products(mob/user)
 	var/list/display_list = list()

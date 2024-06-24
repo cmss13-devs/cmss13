@@ -248,20 +248,16 @@
 	pixel_x = -48
 	pixel_y = -48
 
-/obj/effect/vehicle_spawner/arc/Initialize()
-	. = ..()
-	spawn_vehicle()
-	return INITIALIZE_HINT_QDEL
+	vehicle_type = /obj/vehicle/multitile/arc
 
-/obj/effect/vehicle_spawner/arc/spawn_vehicle()
-	var/obj/vehicle/multitile/arc/ARC = new (loc)
+	hardpoints = list(
+		/obj/item/hardpoint/primary/arc_sentry,
+		/obj/item/hardpoint/support/arc_antenna,
+		/obj/item/hardpoint/locomotion/arc_wheels
+	)
 
-	load_misc(ARC)
-	load_hardpoints(ARC)
-	handle_direction(ARC)
-	ARC.update_icon()
-
-/obj/effect/vehicle_spawner/arc/load_hardpoints(obj/vehicle/multitile/arc/vehicle)
-	vehicle.add_hardpoint(new /obj/item/hardpoint/locomotion/arc_wheels)
-	vehicle.add_hardpoint(new /obj/item/hardpoint/primary/arc_sentry)
-	vehicle.add_hardpoint(new /obj/item/hardpoint/support/arc_antenna)
+/obj/effect/vehicle_spawner/arc/spawn_vehicle(obj/vehicle/multitile/spawning)
+	load_misc(spawning)
+	load_hardpoints(spawning)
+	handle_direction(spawning)
+	spawning.update_icon()

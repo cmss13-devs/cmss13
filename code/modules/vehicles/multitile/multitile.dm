@@ -404,7 +404,7 @@
 		vehicle_type = override_type
 
 	spawn_vehicle(new vehicle_type(loc))
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 //Main proc which handles spawning and adding hardpoints/damaging the vehicle
 /obj/effect/vehicle_spawner/proc/spawn_vehicle(obj/vehicle/multitile/spawning)

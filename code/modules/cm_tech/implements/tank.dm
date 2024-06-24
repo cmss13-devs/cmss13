@@ -12,7 +12,6 @@
 	icon_state = "pamphlet_written"
 	item_state = "pamphlet_written"
 	var/vehicle_type = /datum/vehicle_order/apc/empty
-	var/vehicle_category = "APC"
 
 /obj/item/vehicle_coupon/tank
 	name = "tank coupon"
@@ -38,20 +37,15 @@
 		return
 
 	. = TRUE
-	comp.spent = FALSE
-	QDEL_NULL_LIST(comp.vehicles)
-	comp.vehicles = list(
-		new vehicle_type(),
-	)
+	comp.vehicles += new vehicle_type()
+
 	comp.allowed_roles = null
+
 	comp.req_access = list()
 	comp.req_one_access = list()
-	comp.spent = FALSE
 
 	gearcomp.req_access = list()
 	gearcomp.req_one_access = list()
 	gearcomp.vendor_role = list()
-	gearcomp.selected_vehicle = vehicle_category
-	gearcomp.available_categories = VEHICLE_ALL_AVAILABLE
 
 	return TRUE

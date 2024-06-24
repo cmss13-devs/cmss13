@@ -161,21 +161,21 @@
 /*
 ** PRESETS SPAWNERS
 */
-/obj/effect/vehicle_spawner/apc/med
+/obj/effect/vehicle_spawner/apc/cmd
 	icon_state = "apc_base_com"
 	vehicle_type = /obj/vehicle/multitile/apc/command
 
-/obj/effect/vehicle_spawner/apc/plain/med
+/obj/effect/vehicle_spawner/apc/plain/cmd
 	icon_state = "apc_base_com"
 	vehicle_type = /obj/vehicle/multitile/apc/command
 
-/obj/effect/vehicle_spawner/apc/decrepit/med
+/obj/effect/vehicle_spawner/apc/decrepit/cmd
 	icon_state = "apc_base_com"
 	vehicle_type = /obj/vehicle/multitile/apc/command
 
-/obj/effect/vehicle_spawner/apc/decrepit/med/empty
+/obj/effect/vehicle_spawner/apc/decrepit/cmd/empty
 	hardpoints = list()
 
-/obj/effect/vehicle_spawner/apc/fixed/med
+/obj/effect/vehicle_spawner/apc/fixed/cmd
 	icon_state = "apc_base_com"
 	vehicle_type = /obj/vehicle/multitile/apc/command

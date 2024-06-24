@@ -177,7 +177,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	var/obj/item/hardpoint/special/firing_port_weapon/fpw_hardpoint = new
 	fpw_hardpoint.allowed_seat = VEHICLE_SUPPORT_GUNNER_ONE
 	spawning.add_hardpoint(fpw_hardpoint)
-	fpw_hardpoint.dir = turn(V.dir, 90)
+	fpw_hardpoint.dir = turn(spawning.dir, 90)
 	fpw_hardpoint.name = "Left "+ initial(fpw_hardpoint.name)
 	fpw_hardpoint.origins = list(2, 0)
 	fpw_hardpoint.muzzle_flash_pos = list(
@@ -190,7 +190,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	fpw_hardpoint = new
 	fpw_hardpoint.allowed_seat = VEHICLE_SUPPORT_GUNNER_TWO
 	spawning.add_hardpoint(fpw_hardpoint)
-	fpw_hardpoint.dir = turn(V.dir, -90)
+	fpw_hardpoint.dir = turn(spawning.dir, -90)
 	fpw_hardpoint.name = "Right "+ initial(fpw_hardpoint.name)
 	fpw_hardpoint.origins = list(-2, 0)
 	fpw_hardpoint.muzzle_flash_pos = list(
@@ -212,7 +212,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		/obj/item/hardpoint/primary/dualcannon,
 		/obj/item/hardpoint/secondary/frontalcannon,
 		/obj/item/hardpoint/support/flare_launcher,
-			/obj/item/hardpoint/locomotion/apc_wheels
+		/obj/item/hardpoint/locomotion/apc_wheels
 		)
 
 /obj/effect/vehicle_spawner/apc/decrepit/spawn_vehicle(obj/vehicle/multitile/spawning)

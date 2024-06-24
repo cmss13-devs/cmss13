@@ -1322,12 +1322,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	desc = "A console for an Automated Storage and Retrieval System. This one is tied to a deep storage unit for vehicles."
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	circuit = /obj/item/circuitboard/computer/supplycomp/vehicle
-	// Can only retrieve one vehicle per round
-	var/spent = FALSE
-	var/tank_unlocked = TRUE
-	var/list/allowed_roles = list(JOB_TANK_CREW)
 
-	var/list/vehicles
+	var/list/allowed_roles = list(JOB_TANK_CREW)
+	var/list/in_stock
 
 /datum/vehicle_order
 	var/name = "vehicle order"
@@ -1337,17 +1334,14 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/failure_message = "<font color=\"red\"><b>Not enough resources were allocated to repair this vehicle during this operation.</b></font><br>"
 
 /datum/vehicle_order/proc/has_vehicle_lock()
-	return FALSE
+	return !unlocked
 
-/datum/vehicle_order/proc/on_created(obj/vehicle/V)
+/datum/vehicle_order/proc/on_created(obj/vehicle/order)
 	return
 
 /datum/vehicle_order/tank
 	name = "M34A2 Longstreet Light Tank"
 	ordered_vehicle = /obj/effect/vehicle_spawner/tank/decrepit
-
-/datum/vehicle_order/tank/has_vehicle_lock()
-	return
 
 /datum/vehicle_order/tank/broken
 	name = "Smashed M34A2 Longstreet Light Tank"
@@ -1359,33 +1353,26 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /datum/vehicle_order/apc
 	name = "M577 Armored Personnel Carrier"
-	ordered_vehicle = /obj/effect/vehicle_spawner/apc/decrepit
+	ordered_vehicle = /obj/effect/vehicle_spawner/apc/decrepit/fpw
 
 /datum/vehicle_order/apc/med
 	name = "M577-MED Armored Personnel Carrier"
-	ordered_vehicle = /obj/effect/vehicle_spawner/apc_med/decrepit
+	ordered_vehicle = /obj/effect/vehicle_spawner/apc/decrepit/med
 
 /datum/vehicle_order/apc/cmd
 	name = "M577-CMD Armored Personnel Carrier"
-	ordered_vehicle = /obj/effect/vehicle_spawner/apc_cmd/decrepit
+	ordered_vehicle = /obj/effect/vehicle_spawner/apc/decrepit/cmd
 
 /datum/vehicle_order/apc/empty
 	name = "Barebones M577 Armored Personal Carrier"
-	ordered_vehicle = /obj/effect/vehicle_spawner/apc/unarmed/broken
+	ordered_vehicle = /obj/effect/vehicle_spawner/apc/decrepit/empty
 
 /datum/vehicle_order/arc
 	name = "M540-B Armored Recon Carrier"
 	ordered_vehicle = /obj/effect/vehicle_spawner/arc
 
-/datum/vehicle_order/arc/has_vehicle_lock()
-	return
-
 /obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
 	. = ..()
-
-	vehicles = list(
-		new /datum/vehicle_order/tank/plain
-	)
 
 	if(!GLOB.VehicleElevatorConsole)
 		GLOB.VehicleElevatorConsole = src
@@ -1398,7 +1385,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(inoperable())
 		return
 
-	if(LAZYLEN(allowed_roles) && !allowed_roles.Find(H.job)) //replaced Z-level restriction with role restriction.
+	if(length(allowed_roles) && !allowed_roles.Find(H.job))
 		to_chat(H, SPAN_WARNING("This console isn't for you."))
 		return
 
@@ -1415,29 +1402,25 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	dat += "Platform position: "
-	if (SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
+	if(SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 		dat += "Moving"
 	else
 		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
-			dat += "Raised"
-			if(!spent)
-				dat += "<br>\[<a href='?src=\ref[src];lower_elevator=1'>Lower</a>\]"
+			dat += "Raised<br>"
+			dat += "<a href='?src=\ref[src];lower_platform=1'>Lower platform</a><br>"
 		else
 			dat += "Lowered"
-	dat += "<br><hr>"
+			dat += "<br><hr>"
 
-	if(spent)
-		dat += "No vehicles are available for retrieval."
-	else
-		dat += "Available vehicles:<br>"
-
-		for(var/d in vehicles)
-			var/datum/vehicle_order/VO = d
-
-			if(VO.has_vehicle_lock())
-				dat += VO.failure_message
+			if(in_stock)
+				dat += "Available vehicles:<br>"
+				for(var/datum/vehicle_order/order as anything in in_stock)
+					if(order.has_vehicle_lock())
+						dat += order.failure_message
+					else
+						dat += "<a href='?src=\ref[src];get_vehicle=\ref[order]'>[order.name]</a><br>"
 			else
-				dat += "<a href='?src=\ref[src];get_vehicle=\ref[VO]'>[VO.name]</a><br>"
+				dat += "No vehicles are available for retrieval."
 
 	show_browser(H, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
 
@@ -1445,49 +1428,47 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	. = ..()
 	if(.)
 		return
-	if(!is_mainship_level(z))
-		return
-	if(spent)
-		return
+
 	if(!GLOB.supply_controller)
 		world.log << "## ERROR: Eek. The GLOB.supply_controller controller datum is missing somehow."
 		return
 
-	if (!SSshuttle.vehicle_elevator)
+	if(!SSshuttle.vehicle_elevator)
 		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
 		return
 
-	if(isturf(loc) && ( in_range(src, usr) || isSilicon(usr) ) )
+	if(isturf(loc) && (in_range(src, usr) || ishighersilicon(usr)))
 		usr.set_interaction(src)
 
-	if(href_list["get_vehicle"])
-		if(is_mainship_level(SSshuttle.vehicle_elevator.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
-			to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up!"))
-			return
-		// dunno why the +1 is needed but the vehicles spawn off-center
-		var/turf/middle_turf = get_turf(SSshuttle.vehicle_elevator)
-
-		var/obj/vehicle/multitile/ordered_vehicle
-
-		var/datum/vehicle_order/VO = locate(href_list["get_vehicle"])
-		if(!(VO in vehicles))
-			return
-
-		if(VO?.has_vehicle_lock())
-			return
-		spent = TRUE
-		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
-		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))
-
-		VO.on_created(ordered_vehicle)
-
-		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VEHICLE_ORDERED, ordered_vehicle)
-
-	else if(href_list["lower_elevator"])
+	if(href_list["lower_platform"])
 		if(!is_mainship_level(SSshuttle.vehicle_elevator.z))
 			return
-
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("adminlevel vehicle"))
+
+	if(!is_admin_level(SSshuttle.vehicle_elevator.z))
+		return
+
+	if(href_list["get_vehicle"])
+		if(!is_admin_level(SSshuttle.vehicle_elevator.z))
+			return
+
+		var/turf/middle_turf = get_turf(SSshuttle.vehicle_elevator)
+		var/datum/vehicle_order/order = locate(href_list["get_vehicle"])
+		if(!order)
+			return
+
+		if(order.has_vehicle_lock())
+			return
+
+		in_stock -= order
+
+		var/obj/effect/vehicle_spawner/vehicle_spawner = new order.ordered_vehicle(middle_turf, faction_to_get, TRUE)
+		var/obj/vehicle/multitile/ordered_vehicle = vehicle_spawner.spawn_vehicle()
+		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))
+
+		order.on_created(ordered_vehicle)
+
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VEHICLE_ORDERED, ordered_vehicle)
 
 	add_fingerprint(usr)
 	updateUsrDialog()

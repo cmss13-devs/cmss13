@@ -59,8 +59,8 @@
 				else
 					affected_mob.mind.transfer_to(xeno, TRUE)
 
-				src.cure()
 				qdel(affected_mob)
+				cure()
 
 				if(istype(area, /area/almayer/medical/containment))
 					GLOB.ddi_experiment.trigger(xeno)

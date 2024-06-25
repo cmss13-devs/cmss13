@@ -175,7 +175,7 @@
 /obj/structure/closet/crate/plastic{
 	pixel_y = 8
 	},
-/obj/item/pizzabox/mystery/stack{
+/obj/item/pizzabox/pizza_galaxy/mystery/stack{
 	pixel_y = 12
 	},
 /obj/item/stack/sheet/cardboard{

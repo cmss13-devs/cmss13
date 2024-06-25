@@ -52,6 +52,7 @@
 	gender = NEUTER
 	icon_size = 48
 	black_market_value = KILL_MENDOZA
+	base_walk = 3 // Base stalk(walking) speed
 	///How much to horizontally adjust the sprites of held item onmobs by. Based on icon size. Most xenos have hands about the same height as a human's.
 	var/xeno_inhand_item_offset
 	dead_black_market_value = 50
@@ -95,7 +96,7 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 	var/cooldown_reduction_percentage = 0 // By what % cooldown are reduced by. 1 => No cooldown. Should normally be clamped at 50%
-
+	var/can_vent_crawl = FALSE
 	var/death_fontsize = 3
 
 	var/small_explosives_stun = TRUE // Have to put this here, otherwise it can't be strain specific

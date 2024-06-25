@@ -11,6 +11,7 @@
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_MEDIUM
 	speed = XENO_SPEED_TIER_7
+	walk_modifier = XENO_SPEED_HELLHOUND // no penalty to crawling
 
 	available_strains = list(
 		/datum/xeno_strain/gardener,
@@ -50,7 +51,7 @@
 	desc = "An alien drone"
 	icon = 'icons/mob/xenos/drone.dmi'
 	icon_size = 48
-	icon_state = "Drone Walking"
+	icon_state = "Drone Running"
 	plasma_types = list(PLASMA_PURPLE)
 	tier = 1
 	organ_value = 800

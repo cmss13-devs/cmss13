@@ -12,6 +12,8 @@
 	var/evasion = XENO_EVASION_NONE
 
 	var/speed = XENO_SPEED_TIER_10
+	var/walk_modifier = 0
+	var/run_modifier = 0
 
 	var/plasma_max = 10
 	var/plasma_gain = 5
@@ -97,7 +99,7 @@
 	var/can_be_queen_healed = TRUE
 	var/can_be_revived = TRUE
 
-	var/can_vent_crawl = 1
+	var/can_vent_crawl = TRUE
 
 	var/caste_luminosity = 0
 

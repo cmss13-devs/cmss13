@@ -43,6 +43,10 @@
 	var/recalculate_move_delay = TRUE // Whether move delay needs to be recalculated, on by default so that new mobs actually get movement delay calculated upon creation
 	var/crawling = FALSE
 	var/can_crawl = TRUE
+	var/base_walk = 4 // Base walking speed
+	var/base_run = 2 // Base running speed
+	var/walk_modifier = 0 // speed modifier for Walk mode
+	var/run_modifier = 0 // speed modifier for Run mode
 	var/monkeyizing = null //Carbon
 	var/hand = null
 

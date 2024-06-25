@@ -1,8 +1,8 @@
 /datum/caste_datum/facehugger
 	caste_type = XENO_CASTE_FACEHUGGER
 	tier = 0
-	plasma_gain = 0.1
-	plasma_max = 10
+	plasma_gain = XENO_PLASMA_GAIN_TIER_1
+	plasma_max = XENO_NO_PLASMA
 	melee_damage_lower = 5
 	melee_damage_upper = 5
 	max_health = XENO_HEALTH_LARVA
@@ -249,6 +249,14 @@
 
 /datum/behavior_delegate/facehugger_base
 	name = "Base Facehugger Behavior Delegate"
+
+/mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE)
+	. = ..()
+	if(. && !aghosted)
+		gib()
+
+/mob/living/carbon/xenomorph/facehugger/handle_ghost_message()
+	return
 
 /datum/behavior_delegate/facehugger_base/on_life()
 	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))

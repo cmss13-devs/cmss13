@@ -250,15 +250,6 @@
 /datum/behavior_delegate/facehugger_base
 	name = "Base Facehugger Behavior Delegate"
 
-/mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE)
-	. = ..()
-	if(. && !aghosted)
-		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
-		qdel(src)
-
-/mob/living/carbon/xenomorph/facehugger/handle_ghost_message()
-	return
-
 /datum/behavior_delegate/facehugger_base/on_life()
 	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
 		bound_xeno.adjustBruteLoss(1)

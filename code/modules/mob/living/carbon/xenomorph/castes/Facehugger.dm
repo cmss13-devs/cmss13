@@ -253,7 +253,8 @@
 /mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE)
 	. = ..()
 	if(. && !aghosted)
-		gib()
+		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
+		qdel(src)
 
 /mob/living/carbon/xenomorph/facehugger/handle_ghost_message()
 	return

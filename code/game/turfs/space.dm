@@ -77,7 +77,13 @@
 
 /turf/open/space/Entered(atom/movable/A)
 	..()
+/*
 	if ((!(A) || src != A.loc)) return
+*/
+//RUCM START
+	if((!(A) || src != A.loc) || istype(A, /obj/effect/step_trigger/teleporter/random))
+		return
+//RUCM END
 
 	inertial_drift(A)
 

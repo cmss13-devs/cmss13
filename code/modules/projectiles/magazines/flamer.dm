@@ -257,10 +257,9 @@
 	matter = list("metal" = 50) // no free metal
 	flamer_chem = null
 	max_rounds = 200
-	max_range = 7
+	max_range = 6
 	fuel_pressure = 1
 	max_duration = 50
-	max_intensity = 60
 	custom = TRUE
 
 /obj/item/ammo_magazine/flamer_tank/smoke/upgraded

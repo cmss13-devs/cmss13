@@ -96,7 +96,6 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 	var/cooldown_reduction_percentage = 0 // By what % cooldown are reduced by. 1 => No cooldown. Should normally be clamped at 50%
-	var/can_vent_crawl = FALSE
 	var/death_fontsize = 3
 
 	var/small_explosives_stun = TRUE // Have to put this here, otherwise it can't be strain specific

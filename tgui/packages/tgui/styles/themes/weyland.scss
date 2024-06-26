@@ -47,10 +47,14 @@ $weyland: #af7f38;
     '../layouts/TitleBar.scss',
     $with: ('background-color': color.scale(#252832, $lightness: -25%))
   );
+  @include meta.load-css(
+    '../components/Divider.scss',
+    $with: ('color': rgba(0, 0, 0, 0.685), 'thickness': base.em(4px))
+  );
 
   .Button {
     font-family: consolas;
-    color: #131613;
+    color: #161613;
     border: base.em(2px) outset #e8e4c9;
     outline: base.em(1px) solid #161613;
   }

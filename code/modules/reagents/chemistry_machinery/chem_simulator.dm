@@ -123,6 +123,13 @@
 	data["is_picking_recipe"] = (simulating == SIMULATION_STAGE_FINAL && mode != MODE_CREATE)
 	data["lock_control"] = (simulating != SIMULATION_STAGE_OFF)
 	data["can_cancel_simulation"] = (simulating <= SIMULATION_STAGE_WAIT)
+	data["estimated_cost"] = (mode == MODE_CREATE ? creation_cost : (!target_property ? "NULL" : property_costs[target_property.name]))
+	data["od_level"] = (mode == MODE_CREATE ? creation_od_level : new_od_level)
+	data["chemical_name"] = (mode == MODE_CREATE ? (creation_name == "" ? "NAME NOT SET" : creation_name) : (isnull(target) ? "CHEMICAL DATA NOT INSERTED" : target.data.name))
+
+	if(mode == MODE_CREATE && GLOB.chemical_data.has_new_properties)
+		update_costs()
+
 	if(simulating == SIMULATION_STAGE_FINAL)
 		for(var/reagent_id in recipe_targets)
 			var/datum/reagent/recipe_option = GLOB.chemical_reagents_list[reagent_id]
@@ -147,6 +154,7 @@
 				"is_locked" = is_locked,
 				"tooltip" = conflicting_tooltip,
 			))
+			data["target_data"] = sortAssoc(data["target_data"])
 	else
 		data["target_data"] = null
 
@@ -182,11 +190,13 @@
 			var/datum/chem_property/template_property
 			var/is_locked = FALSE //fix me
 			var/conflicting_tooltip = null
+			if(template_filter && !HAS_FLAG(known_properties.category, template_filter))
+				continue
 			for(var/template in creation_template)
 				template_property = template
-				if(LAZYACCESS(GLOB.conflicting_properties, template_property.name) == known_properties.name)
+				if(LAZYACCESS(GLOB.conflicting_properties, template_property.name) == known_properties.name || LAZYACCESS(GLOB.conflicting_properties, known_properties.name) == template_property.name)
 					is_locked = TRUE
-					conflicting_tooltip = "This property conflicts with [template_properties.code]!"
+					conflicting_tooltip = "This property conflicts with [template_property.code]!"
 				if(template_property.code == known_properties.code)
 					break
 				template_property = null
@@ -196,10 +206,14 @@
 				"level" = (isnull(template_property) ? 0 : template_property.level) ,
 				"name" = known_properties.name,
 				"desc" = known_properties.description,
-				"is_enabled" = LAZYISIN(creation_template, known_properties)
-				"is_locked" = is_locked
-				"conflicting_tooltip" = conflicting_tooltip
+				"is_enabled" = LAZYISIN(creation_template, known_properties),
+				"is_locked" = is_locked,
+				"conflicting_tooltip" = conflicting_tooltip,
 			))
+		if(!length(data["known_properties"]))
+			data["known_properties"] = null
+		data["complexity_list"] += complexity_to_string_list()
+
 	return data
 
 /obj/structure/machinery/chem_simulator/ui_static_data(mob/user)
@@ -304,8 +318,9 @@
 				if(!target_property)
 					to_chat(usr, SPAN_WARNING("The [src] makes a suspcious vail."))
 					return
+				calculate_creation_cost()
 		if("select_overdose")
-			if(mode == SIMULATION_STAGE_OFF && mode == MODE_CREATE)
+			if(simulating == SIMULATION_STAGE_OFF && mode == MODE_CREATE)
 				var/od_to_set = tgui_input_list(usr, "Set new OD:", "[src]", list(5,10,15,20,25,30,35,40,45,50,55,60))
 				if(!od_to_set)
 					return
@@ -313,17 +328,49 @@
 				creation_od_level = od_to_set
 				calculate_creation_cost()
 		if("change_name")
-			if(mode == SIMULATION_STAGE_OFF && mode == MODE_CREATE)
+			if(simulating == SIMULATION_STAGE_OFF && mode == MODE_CREATE)
 				var/newname = input("Set name for template (2-20 characters)","[src]") as text
 				newname = reject_bad_name(newname, TRUE, 20, FALSE)
 				if(isnull(newname))
-					to_chat(user, "Bad name.")
+					to_chat(usr, SPAN_WARNING("This name is not permited."))
 				else if(GLOB.chemical_reagents_list[newname])
-					to_chat(user, "Name already taken.")
+					to_chat(usr, SPAN_WARNING("This name is already occupied"))
 				else
 					creation_name = newname
-
-
+		if("change_create_target_level")
+			var/level_to_set = 1
+			if(GLOB.chemical_data.clearance_level <= 2)
+				level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4))
+			else if(GLOB.chemical_data.clearance_level <= 4)
+				level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8))
+			else
+				level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8,9,10))
+			if(!level_to_set)
+				return
+			if(!LAZYISIN(creation_template, target_property))
+				LAZYADD(creation_template, target_property)
+			target_property.level = level_to_set
+			if(target_property.max_level && target_property.level > target_property.max_level)
+				target_property.level = target_property.max_level
+				to_chat(usr, "Max level for [target_property.name] is [target_property.max_level].")
+			calculate_creation_cost()
+		if("change_complexity")
+			var/slot = params["complexity_slot"]
+			var/new_rarity = tgui_input_list(usr, "Set chemical rarity for complexity slot [slot]:","[src]", list("BASIC (+7)","COMMON (+4)","UNCOMMON (1)","RARE (-5)"))
+			if(!new_rarity)
+				return
+			switch(new_rarity)
+				if("BASIC (+7)")
+					creation_complexity[slot] = CHEM_CLASS_BASIC
+				if("COMMON (+4)")
+					creation_complexity[slot] = CHEM_CLASS_COMMON
+				if("UNCOMMON (1)")
+					creation_complexity[slot] = CHEM_CLASS_UNCOMMON
+				if("RARE (-5)")
+					creation_complexity[slot] = CHEM_CLASS_RARE
+			calculate_creation_cost()
+	playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)
+/*
 /obj/structure/machinery/chem_simulator/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/list/data = list(
 		"rsc_credits" = GLOB.chemical_data.rsc_credits,
@@ -408,7 +455,7 @@
 		ui = new(user, src, ui_key, "chem_simulator.tmpl", "Synthesis Simulator", 800, 550)
 		ui.set_initial_data(data)
 		ui.open()
-
+*/
 /*/obj/structure/machinery/chem_simulator/Topic(href, href_list)
 	. = ..()
 	if(.)

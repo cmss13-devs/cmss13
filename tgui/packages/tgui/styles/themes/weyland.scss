@@ -50,7 +50,7 @@ $weyland: #af7f38;
 
   .Button {
     font-family: consolas;
-    color: #161613;
+    color: #131613;
     border: base.em(2px) outset #e8e4c9;
     outline: base.em(1px) solid #161613;
   }
@@ -62,7 +62,7 @@ $weyland: #af7f38;
     background-color: #252832;
     background-image: url('../../assets/bg-weyland.png');
     background-position: top;
-    background-size: contain;
+    background-size: auto;
     background-repeat: repeat no-repeat;
   }
 

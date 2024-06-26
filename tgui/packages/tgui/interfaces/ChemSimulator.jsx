@@ -15,11 +15,24 @@ import { Window } from '../layouts';
 
 export const InfoPanel = () => {
   const { data } = useBackend();
-  const { clearance, credits, status } = data;
+  const {
+    clearance,
+    credits,
+    status,
+    od_level,
+    chemical_name,
+    estimated_cost,
+    is_ready,
+  } = data;
   return (
     <Box height={12} width={35} fontSize={0.5}>
       <Section fill>
-        <Flex direction={'column'} wrap={'wrap'} color={'#cfcfcf'}>
+        <Flex
+          direction={'column'}
+          wrap={'wrap'}
+          color={'#cfcfcf'}
+          maxHeight={40}
+        >
           <Flex.Item>
             <ProgressBar
               value={credits}
@@ -34,14 +47,20 @@ export const InfoPanel = () => {
               <h4>RESEARCH CREDITS: {credits}</h4>
             </ProgressBar>
           </Flex.Item>
-          <Flex.Item>
-            <h3>STATUS: {status}</h3>
+          <Flex.Item fontSize={'18px'} bold mt={1}>
+            STATUS: {status}
           </Flex.Item>
-          <Flex.Item>
-            <h3>RESEARCH CLEARANCE: {clearance}</h3>
+          <Flex.Item fontSize={'14px'}>
+            RESEARCH CLEARANCE: {clearance}
           </Flex.Item>
-          <Flex.Item>
-            <h3>RESEARCH CLEARANCE: {clearance}</h3>
+          <Flex.Item fontSize={'14px'}>
+            ESTIMATED SIMULATIONG COST: {estimated_cost}
+          </Flex.Item>
+          <Flex.Item fontSize={'14px'}>
+            CHEMICAL NAME: {chemical_name}
+          </Flex.Item>
+          <Flex.Item fontSize={'14px'}>
+            OVERDOSE LEVEL AFTER SIMULATION: {od_level}
           </Flex.Item>
         </Flex>
       </Section>
@@ -51,7 +70,8 @@ export const InfoPanel = () => {
 
 export const Controls = (props) => {
   const { act, data } = useBackend();
-  const { selectedMode, setSelectedMode } = props;
+  const { selectedMode, setSelectedMode, complexityMenu, setComplexityMenu } =
+    props;
   const {
     mode_data,
     can_simulate,
@@ -110,7 +130,15 @@ export const Controls = (props) => {
             </Button>
           </Stack.Item>
           <Stack.Item>
-            <Button fluid>COMPLEXITY</Button>
+            <Button
+              fluid
+              onClick={() => {
+                setComplexityMenu(!complexityMenu);
+              }}
+              selected={!complexityMenu}
+            >
+              COMPLEXITY
+            </Button>
           </Stack.Item>
         </Stack>
       </Flex.Item>
@@ -323,15 +351,32 @@ export const ModeCreate = (props) => {
   return (
     <Flex direction={'column'}>
       <Flex.Item>
-        <CreateControl />
+        <CreateControl complexityMenu={complexityMenu} />
       </Flex.Item>
       <Flex.Item>
-        <Flex ml={1} mt={2} mr={1}>
-          {map(known_properties, (property, key) => (
-            <Flex.Item ml={1} grow mr={1} bold fontSize={'14px'}>
+        <Stack
+          ml={1}
+          mt={2}
+          mr={1}
+          width={65}
+          height={7}
+          wrap="wrap"
+          align="start"
+        >
+          {map(known_properties, (property) => (
+            <Stack.Item
+              ml={0.5}
+              mr={0.5}
+              my={0.5}
+              bold
+              grow
+              fontSize={'14px'}
+              minWidth={5}
+              maxHeight={2}
+            >
               <Button
-                fluid
                 textAlign={'center'}
+                fluid
                 onClick={() => {
                   act('select_create_property', {
                     property_code: property.code,
@@ -344,27 +389,37 @@ export const ModeCreate = (props) => {
               >
                 {property.code} {property.level}
               </Button>
-            </Flex.Item>
+            </Stack.Item>
           ))}
-        </Flex>
+        </Stack>
+      </Flex.Item>
+      <Flex.Item>
+        {map(
+          known_properties,
+          (property) =>
+            property.code === selectedProperty && (
+              <Section title={property.name} textAlign={'center'}>
+                <h4>{property.desc}</h4>
+              </Section>
+            ),
+        )}
       </Flex.Item>
     </Flex>
   );
 };
 
-export const CreateControl = () => {
+export const CreateControl = (props) => {
   const { act, data } = useBackend();
-  const { template_filters, lock_control } = data;
-  return (
+  const { template_filters, lock_control, complexity_list } = data;
+  const { complexityMenu } = props;
+  return complexityMenu ? (
     <Flex width={64.5} height={2} ml={1}>
       <Flex.Item ml={2}>
         <Button
           width={10}
           fontSize={'14px'}
           bold
-          onClick={() => {
-            act('select_overdose');
-          }}
+          onClick={() => act('select_overdose')}
           disabled={lock_control}
         >
           Set OD
@@ -412,6 +467,25 @@ export const CreateControl = () => {
         </Flex.Item>
       ))}
     </Flex>
+  ) : (
+    <Flex width={64.5} height={2} ml={1}>
+      {map(complexity_list, (rarity, id) => (
+        <Flex.Item ml={1} width={15}>
+          <Button
+            fluid
+            onClick={() => {
+              act('change_complexity', {
+                complexity_slot: id + 1,
+              });
+            }}
+            fontSize={'14px'}
+            bold
+          >
+            {rarity}
+          </Button>
+        </Flex.Item>
+      ))}
+    </Flex>
   );
 };
 
@@ -419,18 +493,21 @@ export const ChemSimulator = () => {
   const { act, data } = useBackend();
   const { clearance, credits, status, is_picking_recipe, is_ready } = data;
   const [selectedMode, setSelectedMode] = useSharedState(1);
+  const [complexityMenu, setComplexityMenu] = useSharedState(2, false);
   return (
     <Window width={800} height={450} theme={'weyland'}>
       <Window.Content>
         <Flex m={1}>
           <Flex.Item>
-            <InfoPanel />
+            <InfoPanel selectedMode={selectedMode} />
           </Flex.Item>
           <Flex.Item mx={2}>
             {(!is_picking_recipe && (
               <Controls
                 selectedMode={selectedMode}
                 setSelectedMode={setSelectedMode}
+                complexityMenu={complexityMenu}
+                setComplexityMenu={setComplexityMenu}
               />
             )) || <RecipeOptions />}
           </Flex.Item>
@@ -439,7 +516,7 @@ export const ChemSimulator = () => {
         {selectedMode === 1 && <ModeChange />}
         {selectedMode === 2 && <ModeChange />}
         {selectedMode === 3 && <ModeRelate />}
-        {selectedMode === 4 && <ModeCreate />}
+        {selectedMode === 4 && <ModeCreate complexityMenu={complexityMenu} />}
       </Window.Content>
     </Window>
   );

@@ -522,7 +522,7 @@
 /datum/chem_property/neutral/encephalophrasive
 	name = PROPERTY_ENCEPHALOPHRASIVE
 	code = "ESP"
-	description = "Drastically increases the amplitude of Gamma and Beta brain waves, allowing the host to broadcast their mind. Higher potency increases the clarity of broadcasts"
+	description = "Drastically increases the amplitude of Gamma and Beta brain waves, allowing the host to broadcast their mind."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_STIMULANT
 	value = 8

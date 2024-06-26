@@ -238,7 +238,7 @@ export const ModeChange = () => {
                   <Stack.Item>
                     <Section title={property.name}>{property.desc}</Section>
                   </Stack.Item>
-                  <Stack.Item bold backgroundColor={'#252832'}>
+                  <Stack.Item bold backgroundColor={'#191b22'} p={1}>
                     Price of the operation : {property.cost}
                   </Stack.Item>
                 </Stack>
@@ -265,8 +265,8 @@ export const ModeRelate = () => {
     useSharedState('reference', false);
   return (
     (target_data && reference_data && (
-      <Flex ml={3} fontSize={1.2} width={70} height={20} mt={5}>
-        <Flex.Item width={20}>
+      <Flex ml={3} fontSize={1.2} maxWidth={70} height={20} mt={5}>
+        <Flex.Item maxWidth={18}>
           {map(target_data, (property) => (
             <Button
               bold
@@ -283,11 +283,14 @@ export const ModeRelate = () => {
               disabled={lock_control || property.is_locked}
               tooltip={property.tooltip}
             >
-              {property.code} {property.level} {selectedTargetProperty}
+              {property.code} {property.level}
             </Button>
           ))}
         </Flex.Item>
-        <Flex.Item width={20}>
+        <Flex.Item maxWidth={1} mr={2.2} height={15}>
+          <Divider vertical />
+        </Flex.Item>
+        <Flex.Item maxWidth={18}>
           {map(reference_data, (property) => (
             <Button
               bold
@@ -306,11 +309,11 @@ export const ModeRelate = () => {
               disabled={lock_control || property.is_locked}
               tooltip={property.tooltip}
             >
-              {property.code} {property.level} {selectedReferenceProperty}
+              {property.code} {property.level}
             </Button>
           ))}
         </Flex.Item>
-        <Flex.Item ml={40}>
+        <Flex.Item ml={1} maxWidth={20}>
           {map(
             target_data,
             (property, key) =>
@@ -319,7 +322,7 @@ export const ModeRelate = () => {
                   <Stack.Item>
                     <Section title={property.name}>{property.desc}</Section>
                   </Stack.Item>
-                  <Stack.Item>
+                  <Stack.Item bold backgroundColor={'#191b22'} p={1}>
                     Price of the operation : {property.cost}
                   </Stack.Item>
                 </Stack>

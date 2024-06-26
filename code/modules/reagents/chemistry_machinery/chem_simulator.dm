@@ -153,7 +153,6 @@
 				"is_locked" = is_locked,
 				"tooltip" = conflicting_tooltip,
 			))
-			data["target_data"] = sortAssoc(data["target_data"])
 	else
 		data["target_data"] = null
 
@@ -557,6 +556,9 @@
 					return FALSE
 		if(target && length(target.data.properties) < 2)
 			status_bar = "TARGET COMPLEXITY IMPROPER FOR RELATION"
+			return FALSE
+		if(mode == MODE_RELATE && isnull(reference))
+			status_bar = "NO REFERENCE DATA DETECTED"
 			return FALSE
 		if(reference && target)
 			if(!reference.completed)

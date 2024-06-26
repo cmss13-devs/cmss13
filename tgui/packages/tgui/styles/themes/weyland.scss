@@ -49,7 +49,7 @@ $weyland: #af7f38;
   );
   @include meta.load-css(
     '../components/Divider.scss',
-    $with: ('color': rgba(0, 0, 0, 0.685), 'thickness': base.em(4px))
+    $with: ('color': rgba(28, 30, 32, 0.932), 'thickness': base.em(4px))
   );
 
   .Button {

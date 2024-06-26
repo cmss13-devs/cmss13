@@ -560,21 +560,22 @@
 		if(mode == MODE_RELATE && isnull(reference))
 			status_bar = "NO REFERENCE DATA DETECTED"
 			return FALSE
-		if(reference && target)
-			if(!reference.completed)
-				status_bar = "INCOMPLETE DATA DETECTED IN REFERENCE"
-				return FALSE
-			if(reference_property)
-				if(target.data.get_property(reference_property.name))
-					status_bar = "REFERENCE PROPERTY ALREADY IN TARGET"
+		if(mode == MODE_RELATE)
+			if(reference && target)
+				if(!reference.completed)
+					status_bar = "INCOMPLETE DATA DETECTED IN REFERENCE"
 					return FALSE
-				if(target_property)
-					if(target_property.level != reference_property.level)
-						status_bar = "REFERENCE AND TARGET PROPERTY MUST BE OF EQUAL LEVELS"
+				if(reference_property)
+					if(target.data.get_property(reference_property.name))
+						status_bar = "REFERENCE PROPERTY ALREADY IN TARGET"
 						return FALSE
-					if(reference_property.category & PROPERTY_TYPE_UNADJUSTABLE)
-						status_bar = "REFERENCE PROPERTY CAN NOT BE SIMULATED"
-						return FALSE
+					if(target_property)
+						if(target_property.level != reference_property.level)
+							status_bar = "REFERENCE AND TARGET PROPERTY MUST BE OF EQUAL LEVELS"
+							return FALSE
+						if(reference_property.category & PROPERTY_TYPE_UNADJUSTABLE)
+							status_bar = "REFERENCE PROPERTY CAN NOT BE SIMULATED"
+							return FALSE
 	if(mode == MODE_CREATE)
 		if(!LAZYLEN(creation_template))
 			status_bar = "TEMPLATE IS EMPTY"

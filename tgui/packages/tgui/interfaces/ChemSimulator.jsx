@@ -40,19 +40,19 @@ export const InfoPanel = () => {
             <h4>RESEARCH CREDITS: {credits}</h4>
           </ProgressBar>
         </Flex.Item>
-        <Flex.Item fontSize={'16px'} bold mt={1}>
+        <Flex.Item fontSize={'13px'} bold mt={1}>
           STATUS: {status}
         </Flex.Item>
-        <Flex.Item fontSize={'14px'} mt={0.5}>
+        <Flex.Item fontSize={'13px'} mt={0.5}>
           ESTIMATED SIMULATIONG COST: {estimated_cost}
         </Flex.Item>
-        <Flex.Item fontSize={'14px'} mt={0.5}>
+        <Flex.Item fontSize={'13px'} mt={0.5}>
           TARGET NAME: {chemical_name}
         </Flex.Item>
-        <Flex.Item fontSize={'14px'} mt={0.5}>
+        <Flex.Item fontSize={'13px'} mt={0.5}>
           REFERENCE NAME: {reference_name}
         </Flex.Item>
-        <Flex.Item fontSize={'14px'} mt={0.5}>
+        <Flex.Item fontSize={'13px'} mt={0.5}>
           OVERDOSE LEVEL AFTER SIMULATION: {od_level}
         </Flex.Item>
       </Flex>

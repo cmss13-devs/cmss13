@@ -28540,7 +28540,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;16;18;21";
+	req_one_access_txt = "15;16;17;18;21";
 	vend_x_offset = 0
 	},
 /turf/open/floor/almayer{
@@ -54183,7 +54183,7 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;16;18;21";
+	req_one_access_txt = "15;16;17;18;21";
 	vend_y_offset = 0
 	},
 /turf/open/floor/almayer{
@@ -64760,7 +64760,7 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;16;18;21";
+	req_one_access_txt = "15;16;17;18;21";
 	vend_y_offset = 0
 	},
 /turf/open/floor/almayer{
@@ -74605,7 +74605,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;16;18;21";
+	req_one_access_txt = "15;16;17;18;21";
 	vend_x_offset = 0;
 	vend_y_offset = 0
 	},
@@ -76422,7 +76422,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;16;18;21";
+	req_one_access_txt = "15;16;17;18;21";
 	vend_x_offset = 0;
 	vend_y_offset = 0
 	},
@@ -84939,7 +84939,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;16;18;21";
+	req_one_access_txt = "15;16;17;18;21";
 	vend_x_offset = 0
 	},
 /turf/open/floor/almayer{

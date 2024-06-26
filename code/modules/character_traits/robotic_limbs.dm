@@ -13,7 +13,7 @@
 /datum/character_trait/robo_limb/New()
 	..()
 	trait_name = "Prosthetic [robo_limb_name]"
-	trait_desc = "Has their [robo_limb_name] replaced with a prosthetic. [additional_description]"
+	trait_desc = "Has their [robo_limb_name] replaced with a prosthetic."
 
 /datum/character_trait/robo_limb/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
 	var/obj/limb/limb = target.get_limb(code_limb)

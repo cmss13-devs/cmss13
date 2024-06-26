@@ -519,6 +519,31 @@
 /datum/chem_property/neutral/hyperthrottling/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(potency * delta_time, PARALYZE)
 
+/datum/chem_property/neutral/encephalophrasive
+	name = PROPERTY_ENCEPHALOPHRASIVE
+	code = "ESP"
+	description = "Drastically increases the amplitude of Gamma and Beta brain waves, allowing the host to broadcast their mind. Higher potency increases the clarity of broadcasts"
+	rarity = PROPERTY_LEGENDARY
+	category = PROPERTY_TYPE_STIMULANT
+	value = 8
+
+/datum/chem_property/neutral/encephalophrasive/on_delete(mob/living/M)
+	..()
+
+	M.pain.recalculate_pain()
+	remove_verb(M, /mob/living/carbon/human/proc/psychic_whisper)
+	to_chat(M, SPAN_NOTICE("The pain in your head subsides, and you are left feeling strangely alone."))
+
+/datum/chem_property/neutral/encephalophrasive/process(mob/living/M, potency = 1, delta_time)
+	M.pain.apply_pain(1 * potency)
+	add_verb(M, /mob/living/carbon/human/proc/psychic_whisper)
+
+/datum/chem_property/neutral/encephalophrasive/process_overdose(mob/living/M, potency = 1, delta_time)
+	M.apply_damage(0.5 * potency * POTENCY_MULTIPLIER_VHIGH * delta_time, BRAIN)
+
+/datum/chem_property/neutral/encephalophrasive/process_overdose(mob/living/M, potency = 1, delta_time)
+	M.apply_effect(20, PARALYZE)
+
 /datum/chem_property/neutral/viscous
 	name = PROPERTY_VISCOUS
 	code = "VIS"

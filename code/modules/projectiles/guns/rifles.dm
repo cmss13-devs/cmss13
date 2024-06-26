@@ -1569,13 +1569,15 @@
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_9)
-	set_burst_amount(0)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 
 /obj/item/weapon/gun/rifle/m4ra/handle_starting_attachment()
 	..()

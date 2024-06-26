@@ -16,55 +16,47 @@ import { Window } from '../layouts';
 export const InfoPanel = () => {
   const { data } = useBackend();
   const {
-    clearance,
     credits,
     status,
     od_level,
     chemical_name,
     estimated_cost,
-    is_ready,
+    reference_name,
   } = data;
   return (
-    <Box height={12} width={35} fontSize={0.5}>
-      <Section fill>
-        <Flex
-          direction={'column'}
-          wrap={'wrap'}
-          color={'#cfcfcf'}
-          maxHeight={40}
-        >
-          <Flex.Item>
-            <ProgressBar
-              value={credits}
-              minValue={1}
-              maxValue={60}
-              ranges={{
-                good: [40, Infinity],
-                average: [15, 40],
-                bad: [-Infinity, 15],
-              }}
-            >
-              <h4>RESEARCH CREDITS: {credits}</h4>
-            </ProgressBar>
-          </Flex.Item>
-          <Flex.Item fontSize={'18px'} bold mt={1}>
-            STATUS: {status}
-          </Flex.Item>
-          <Flex.Item fontSize={'14px'}>
-            RESEARCH CLEARANCE: {clearance}
-          </Flex.Item>
-          <Flex.Item fontSize={'14px'}>
-            ESTIMATED SIMULATIONG COST: {estimated_cost}
-          </Flex.Item>
-          <Flex.Item fontSize={'14px'}>
-            CHEMICAL NAME: {chemical_name}
-          </Flex.Item>
-          <Flex.Item fontSize={'14px'}>
-            OVERDOSE LEVEL AFTER SIMULATION: {od_level}
-          </Flex.Item>
-        </Flex>
-      </Section>
-    </Box>
+    <Section fill height={12} width={35} fontSize={0.5}>
+      <Flex direction={'column'} wrap={'wrap'} color={'#cfcfcf'} maxHeight={40}>
+        <Flex.Item>
+          <ProgressBar
+            value={credits}
+            minValue={0}
+            maxValue={100}
+            ranges={{
+              good: [60, Infinity],
+              average: [15, 40],
+              bad: [-Infinity, 15],
+            }}
+          >
+            <h4>RESEARCH CREDITS: {credits}</h4>
+          </ProgressBar>
+        </Flex.Item>
+        <Flex.Item fontSize={'16px'} bold mt={1}>
+          STATUS: {status}
+        </Flex.Item>
+        <Flex.Item fontSize={'14px'} mt={0.5}>
+          ESTIMATED SIMULATIONG COST: {estimated_cost}
+        </Flex.Item>
+        <Flex.Item fontSize={'14px'} mt={0.5}>
+          TARGET NAME: {chemical_name}
+        </Flex.Item>
+        <Flex.Item fontSize={'14px'} mt={0.5}>
+          REFERENCE NAME: {reference_name}
+        </Flex.Item>
+        <Flex.Item fontSize={'14px'} mt={0.5}>
+          OVERDOSE LEVEL AFTER SIMULATION: {od_level}
+        </Flex.Item>
+      </Flex>
+    </Section>
   );
 };
 
@@ -133,9 +125,10 @@ export const Controls = (props) => {
             <Button
               fluid
               onClick={() => {
+                act('keyboard_sound');
                 setComplexityMenu(!complexityMenu);
               }}
-              selected={!complexityMenu}
+              selected={complexityMenu}
             >
               COMPLEXITY
             </Button>
@@ -239,13 +232,13 @@ export const ModeChange = () => {
         <Flex.Item width={30}>
           {map(
             target_data,
-            (property, key) =>
+            (property) =>
               property.code === selectedProperty && (
                 <Stack vertical>
                   <Stack.Item>
                     <Section title={property.name}>{property.desc}</Section>
                   </Stack.Item>
-                  <Stack.Item>
+                  <Stack.Item bold backgroundColor={'#252832'}>
                     Price of the operation : {property.cost}
                   </Stack.Item>
                 </Stack>
@@ -270,7 +263,6 @@ export const ModeRelate = () => {
   );
   const [selectedReferenceProperty, setSelectedReferenceProperty] =
     useSharedState('reference', false);
-  const [InfoPanel, setInfoPanel] = useSharedState('panel', false);
   return (
     (target_data && reference_data && (
       <Flex ml={3} fontSize={1.2} width={70} height={20} mt={5}>
@@ -336,8 +328,8 @@ export const ModeRelate = () => {
         </Flex.Item>
       </Flex>
     )) || (
-      <Box m={3}>
-        <NoticeBox>No data insertsed!</NoticeBox>
+      <Box m={3} height={10}>
+        <NoticeBox bold>No data inserted!</NoticeBox>
       </Box>
     )
   );
@@ -365,9 +357,7 @@ export const ModeCreate = (props) => {
         >
           {map(known_properties, (property) => (
             <Stack.Item
-              ml={0.5}
-              mr={0.5}
-              my={0.5}
+              m={0.5}
               bold
               grow
               fontSize={'14px'}
@@ -414,7 +404,7 @@ export const CreateControl = (props) => {
   const { act, data } = useBackend();
   const { template_filters, lock_control, complexity_list } = data;
   const { complexityMenu } = props;
-  return complexityMenu ? (
+  return !complexityMenu ? (
     <Flex width={64.5} height={2} ml={1}>
       <Flex.Item ml={2}>
         <Button

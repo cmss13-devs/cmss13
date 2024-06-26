@@ -386,6 +386,8 @@ export const ModeCreate = (props) => {
                 selected={
                   property.is_enabled || selectedProperty === property.code
                 }
+                disabled={property.is_locked}
+                tooltip={property.conflicting_tooltip}
               >
                 {property.code} {property.level}
               </Button>

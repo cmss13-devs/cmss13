@@ -22,7 +22,7 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 
 	ai_announcement("Notice: Unidentified lifesign detected at research containment created through DNA disintegration, analyzing data...")
 	sleep(5 SECONDS)
-	ai_announcement("Notice: Lifeform biostructural data can be analyzed further for tech point and research credit reward at a rate of 1 point per minute.")
+	ai_announcement("Notice: Lifeform biostructural data can be analyzed further for tech point reward at a rate of 1 point per minute.")
 
 	timer = world.time
 	START_PROCESSING(SSprocessing, src)
@@ -30,12 +30,12 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 /datum/research_event/ddi_experiment/process(delta_time)
 	if(total_points_given >= 20)
 		STOP_PROCESSING(SSprocessing, src)
-		ai_announcement("Notice: Lifeform biostructural data fully analyzed, 20 total tech points and research credits awarded. Recommend termination of lifeform.")
+		ai_announcement("Notice: Lifeform biostructural data fully analyzed, 20 total tech points awarded. Recommend termination of lifeform.")
 		return
 
 	if(QDELETED(linked_xeno)) //they must have evolved
 		if(QDELETED(player.mob)) //no new mob? they got deleted
-			ai_announcement("Notice: Lifeform terminated or missing, biostructural data not fully analyzed. Only [total_points_given] out of [20] tech and research points awarded.")
+			ai_announcement("Notice: Lifeform terminated or missing, biostructural data not fully analyzed. Only [total_points_given] out of [20] tech points awarded.")
 			STOP_PROCESSING(SSprocessing, src)
 			return
 		linked_xeno = player.mob //get the updated mob from the client
@@ -44,13 +44,12 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 
 	if(linked_xeno.stat == DEAD || !istype(xeno_loc, /area/almayer/medical/containment)) //you let it escape or die. idiot
 		if(total_points_given < 20)
-			ai_announcement("Notice: Lifeform terminated or missing, biostructural data not fully analyzed. Only [total_points_given] out of [20] tech and research points awarded.")
+			ai_announcement("Notice: Lifeform terminated or missing, biostructural data not fully analyzed. Only [total_points_given] out of [20] tech points awarded.")
 			STOP_PROCESSING(SSprocessing, src)
 			return
 
 	if(world.time >= timer + 1 MINUTES)
 		timer = world.time
-		GLOB.chemical_data.update_credits(1)
 		var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 		tree.add_points(1)
 		total_points_given++

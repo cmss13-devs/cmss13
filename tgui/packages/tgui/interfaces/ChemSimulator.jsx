@@ -266,7 +266,7 @@ export const ModeRelate = () => {
   return (
     (target_data && reference_data && (
       <Flex ml={3} fontSize={1.2} maxWidth={70} height={20} mt={5}>
-        <Flex.Item maxWidth={18}>
+        <Flex.Item maxWidth={18} minWidth={18} textAlign="center" height={10}>
           {map(target_data, (property) => (
             <Button
               bold
@@ -287,10 +287,13 @@ export const ModeRelate = () => {
             </Button>
           ))}
         </Flex.Item>
-        <Flex.Item maxWidth={1} mr={2.2} height={15}>
-          <Divider vertical />
-        </Flex.Item>
-        <Flex.Item maxWidth={18}>
+        <Flex.Item
+          maxWidth={18}
+          minWidth={18}
+          textAlign="center"
+          height={10}
+          mr={1}
+        >
           {map(reference_data, (property) => (
             <Button
               bold
@@ -313,7 +316,7 @@ export const ModeRelate = () => {
             </Button>
           ))}
         </Flex.Item>
-        <Flex.Item ml={1} maxWidth={20}>
+        <Flex.Item maxWidth={25}>
           {map(
             target_data,
             (property, key) =>

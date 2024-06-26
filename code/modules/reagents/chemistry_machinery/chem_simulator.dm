@@ -167,7 +167,7 @@
 			data["reference_data"] += list(list(
 				"code" = reference_property_data.code,
 				"level" = reference_property_data.level,
-				"name" = reference_property_data.name,
+				"name" = capitalize_first_letters(reference_property_data.name),
 				"desc" = reference_property_data.description,
 				"cost" = property_costs[reference_property_data.name],
 				"is_locked" = is_locked,
@@ -202,7 +202,7 @@
 			data["known_properties"] += list(list(
 				"code" = known_properties.code,
 				"level" = (isnull(template_property) ? 0 : template_property.level) ,
-				"name" = known_properties.name,
+				"name" = capitalize_first_letters(known_properties.name),
 				"desc" = known_properties.description,
 				"is_enabled" = LAZYISIN(creation_template, known_properties),
 				"is_locked" = is_locked,
@@ -261,7 +261,7 @@
 					target_property = target_prop
 				if(!target_property)
 					to_chat(usr, SPAN_WARNING("The [src] makes a suspcious vail."))
-				return
+					return
 		if("select_reference_property")
 			if(!reference)
 				return

@@ -50,8 +50,21 @@
 
 /datum/ammo/flamethrower/tank_flamer
 	flamer_reagent_id = "napalmx"
-
 	max_range = 8
+	icon_state = "pulse1"
+
+/datum/ammo/flamethrower/tank_flamer/drop_flame(turf/turf, datum/cause_data/cause_data)
+	if(!istype(turf))
+		return
+
+	var/datum/reagent/napalm/blue/reagent = new()
+	reagent.durationfire = BURN_TIME_TIER_1
+	new /obj/flamer_fire(turf, cause_data, reagent, 2)
+
+	var/datum/effect_system/smoke_spread/landingsmoke = new /datum/effect_system/smoke_spread
+	landingsmoke.set_up(2, 0, turf, null, 4, cause_data)
+	landingsmoke.start()
+	landingsmoke = null
 
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME

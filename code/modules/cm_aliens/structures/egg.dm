@@ -58,7 +58,7 @@
 	if(isobserver(user) && status == EGG_GROWN)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		var/current_hugger_count = hive.get_current_playable_facehugger_count();
-		. += "There are currently [SPAN_NOTICE("[current_hugger_count]")] facehuggers in the hive. The hive can support a total of [SPAN_NOTICE("[hive.playable_hugger_limit]")] facehuggers."
+		. += "There are currently [SPAN_NOTICE("[current_hugger_count]")] facehuggers in the hive. The hive can support a total of [SPAN_NOTICE("[hive.playable_hugger_limit]")] facehuggers at present."
 
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
 	if(status == EGG_BURST || status == EGG_DESTROYED)

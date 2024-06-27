@@ -471,6 +471,8 @@
 	desc = "A long shelf filled with various foodstuffs"
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	density = TRUE
+	projectile_coverage = 20
+	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty
 	name = "shelf"
@@ -576,6 +578,9 @@
 	icon = 'icons/obj/structures/props/hybrisatables.dmi'
 	icon_state = "blackmetaltable"
 	health = 1000
+	projectile_coverage = 20
+	throwpass = TRUE
+
 /obj/structure/prop/hybrisa/furniture/tables
 	icon = 'icons/obj/structures/props/hybrisatables.dmi'
 	icon_state = "table_pool"
@@ -894,6 +899,8 @@
 	anchored = TRUE
 	unslashable = FALSE
 	health = 150
+	projectile_coverage = 20
+	throwpass = TRUE
 
 /obj/structure/blackgoocontainer/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -1218,6 +1225,8 @@
 	name = "cabinet"
 	desc = "a small cabinet with drawers."
 	icon_state = "sidecabinet"
+	projectile_coverage = 20
+	throwpass = TRUE
 
 
 
@@ -1228,6 +1237,8 @@
 	icon_state = "trashblue"
 	health = 250
 	density = TRUE
+	projectile_coverage = 20
+	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/misc/trash/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -1909,6 +1920,8 @@
 	health = 2000
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
+	projectile_coverage = 20
+	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty
 	name = "concrete planter"
@@ -1938,6 +1951,8 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
+	projectile_coverage = 20
+	throwpass = TRUE
 	var/id = 1
 	var/range = 15
 
@@ -1957,6 +1972,8 @@
 	density = TRUE
 	anchored = TRUE
 	health = 250
+	projectile_coverage = 20
+	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/misc/firehydrant/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -2003,6 +2020,7 @@
 	anchored = TRUE
 
 // Phonebox Prop (Doesn't actually work as a locker)
+
 /obj/structure/prop/hybrisa/misc/phonebox
 	name = "wrecked phonebox"
 	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, the glass is smashed, hiding inside would be pointless."
@@ -2013,6 +2031,7 @@
 	bound_height = 32
 	density = TRUE
 	anchored = TRUE
+
 /obj/structure/prop/hybrisa/misc/phonebox/bloody
 	name = "wrecked phonebox"
 	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, covered in blood and the glass is smashed. Hiding inside would be pointless."

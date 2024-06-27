@@ -1372,6 +1372,46 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	desc = "A control terminal for the area electrical systems. This one is hardened against sudden power fluctuations caused by electrical grid damage."
 	crash_break_probability = 0
 
+//------Groundsite APCs ------//
+/obj/structure/machinery/power/apc/groundsite
+	name = "area power controller"
+
+/obj/structure/machinery/power/apc/groundsite/no_power
+	start_charge = 0
+
+/obj/structure/machinery/power/apc/groundsite/no_power/north
+	pixel_y = 24
+	dir = 1
+
+/obj/structure/machinery/power/apc/groundsite/no_power/south
+	pixel_y = -24
+
+/obj/structure/machinery/power/apc/groundsite/no_power/east
+	pixel_x = 24
+	dir = 4
+
+/obj/structure/machinery/power/apc/groundsite/no_power/west
+	pixel_x = -24
+	dir = 8
+
+// Powered APCs with directions
+/obj/structure/machinery/power/apc/groundsite/power
+
+/obj/structure/machinery/power/apc/groundsite/power/north
+	pixel_y = 24
+	dir = 1
+
+/obj/structure/machinery/power/apc/groundsite/power/south
+	pixel_y = -24
+
+/obj/structure/machinery/power/apc/groundsite/power/east
+	pixel_x = 24
+	dir = 4
+
+/obj/structure/machinery/power/apc/groundsite/power/west
+	pixel_x = -24
+	dir = 8
+
 #undef APC_UPDATE_ICON_COOLDOWN
 
 // apc that start at zero charge.

@@ -150,6 +150,11 @@
 			overlays += image('icons/obj/objects.dmi', "statn_c100")
 
 /obj/structure/machinery/recharge_station/proc/process_occupant()
+	//RUCM START
+	if (hacky_override)
+		process_occupant_localized()
+		return
+	//RUCM END
 	if(src.occupant)
 		var/doing_stuff = FALSE
 		if (issynth(occupant))

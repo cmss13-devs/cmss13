@@ -5,6 +5,7 @@
 	icon_state = "weylandyutanilogo1"
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 //Roadlines
 

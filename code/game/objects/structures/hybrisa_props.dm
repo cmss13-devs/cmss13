@@ -668,23 +668,24 @@
 	debris = list(/obj/item/stack/sheet/wood)
 
 // Chairs
-/obj/structure/bed/hybrisa/chairs
+
+/obj/structure/bed/chair/comfy/hybrisa
 	name = "expensive chair"
 	desc = "A expensive looking chair"
 
-/obj/structure/bed/hybrisa/chairs/black
+/obj/structure/bed/chair/comfy/hybrisa/black
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "comfychair_hybrisablack"
 
-/obj/structure/bed/hybrisa/chairs/red
+/obj/structure/bed/chair/comfy/hybrisa/red
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "comfychair_hybrisared"
 
-/obj/structure/bed/hybrisa/chairs/blue
+/obj/structure/bed/chair/comfy/hybrisa/blue
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "comfychair_hybrisablue"
 
-/obj/structure/bed/hybrisa/chairs/brown
+/obj/structure/bed/chair/comfy/hybrisa/brown
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "comfychair_hybrisabrown"
 
@@ -693,6 +694,7 @@
 /obj/structure/bed/hybrisa
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "hybrisa"
+	buckling_y = 8
 
 /obj/structure/bed/hybrisa/prisonbed
 	name = "bunk bed"
@@ -776,8 +778,8 @@
 
 /obj/structure/prop/hybrisa/xenobiology/giant_cryo
 	icon = 'icons/obj/structures/props/xeno_cyro_giant.dmi'
-	name = "collosal cryogenic chamber"
-	desc = "A giant cryogenic tube with yellow-tinted glass towers before you, housing a hulking, monstrous entity. Is it alive, or in a deep slumber? Cold mist swirls around the base as a low hum fills the air."
+	name = "colossal specimen containment cell"
+	desc = "A colossal cryogenic tube with yellow-tinted glass towers before you, housing a hulking, monstrous entity. Is it alive, or in a deep slumber? Cold mist swirls around the base as a low hum fills the air."
 	icon_state = "giant_xeno_cryo"
 	bound_height = 128
 	bound_width = 64
@@ -826,7 +828,7 @@
 	density = TRUE
 
 /obj/structure/prop/hybrisa/engineer/giantpod
-	name = "giant hypersleep chamber"
+	name = "colossal hypersleep chamber"
 	desc = "Before you stands an imposing structure, what looks like a colossal 'hypersleep chamber' of alien design, unlike anything you've ever encountered. Its intricate patterns and unfamiliar symbols hint at technologies far beyond human comprehension. Yet, despite its grandeur, the chamber is empty, devoid of any sign of life."
 	icon = 'icons/obj/structures/props/engineerPod.dmi'
 	icon_state = "pod"
@@ -838,7 +840,7 @@
 	density = TRUE
 
 /obj/structure/prop/hybrisa/engineer/giantconsole
-	name = "giant alien console"
+	name = "colossal alien console"
 	desc = "Before you looms a towering alien console, its design defying all familiarity and logic. It's a marvel of unknown technology, adorned with intricate patterns and pulsating lights that dance with otherworldly energy. What purpose does this enigmatic device serve? The answer eludes you..."
 	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "engineerconsole"
@@ -1005,6 +1007,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
+	gender = PLURAL
 
 /obj/structure/prop/hybrisa/airport/dropshipenginedamagenofire
 	name = "dropship damage"
@@ -1016,6 +1019,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
+	gender = PLURAL
 
 /obj/structure/prop/hybrisa/airport/refuelinghose
 	name = "refueling hose"
@@ -1122,6 +1126,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	breakable = TRUE
+	gender = PLURAL
 
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti1
 	icon_state = "zgraffiti1"
@@ -1153,6 +1158,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	breakable = TRUE
+	gender = PLURAL
 
 /obj/structure/prop/hybrisa/misc/blood/blood1
 	icon_state = "wallblood_floorblood"
@@ -1204,7 +1210,7 @@
 	icon_state = "pictureframe"
 
 /obj/structure/prop/hybrisa/misc/commandosuitemptyprop
-	name = "Weyland-Yutani 'Ape-Suit' Showcase"
+	name = "Weyland-Yutani 'Ape-Suit' showcase"
 	desc = "A display model of the Weyland-Yutani 'Apesuit', shame it's only a model..."
 	icon_state = "dogcatchersuitempty1"
 
@@ -1307,6 +1313,7 @@
 	icon_state = "coffee_cup"
 
 // Big Computer Units 32x32
+
 /obj/structure/machinery/big_computers
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	name = "computer"
@@ -1405,7 +1412,7 @@
 	icon_state = "blacksensor_comp3"
 
 /obj/structure/machinery/big_computers/messaging_server
-	name = "Messaging Server"
+	name = "messaging server"
 	icon_state = "messageserver_black"
 /obj/structure/machinery/big_computers/messaging_server/black
 	icon_state = "messageserver_black"
@@ -1707,12 +1714,12 @@
 	icon_state = "emptymedicalright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/kelland_left
-	name = "Kelland Mining Company Cargo Container"
+	name = "Kelland Mining Company cargo container"
 	desc = "A small industrial shipping container.\nYou haven't heard much about Kelland Mining, besides the incident at LV-178's mining operation."
 	icon_state = "kelland_alt_l"
 
 /obj/structure/cargo_container/hybrisa/containersextended/kelland_right
-	name = "Kelland Mining Company Cargo Container"
+	name = "Kelland Mining Company cargo container"
 	desc = "A small industrial shipping container.\nYou haven't heard much about Kelland Mining, besides the incident at LV-178's mining operation."
 	icon_state = "kelland_alt_r"
 
@@ -1758,6 +1765,7 @@
 	health = 1500
 	anchored = TRUE
 	layer = ABOVE_XENO_LAYER
+	gender = PLURAL
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -1832,7 +1840,6 @@
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall
 	name = "wall vent"
-	name = "wall vent"
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "smallwallvent1"
 	density = FALSE
@@ -1901,6 +1908,7 @@
 	density = TRUE
 	health = 2000
 	anchored = TRUE
+	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty
 	name = "concrete planter"
@@ -1919,6 +1927,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
+	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/misc/detonator
 	name = "detonator"

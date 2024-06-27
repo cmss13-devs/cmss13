@@ -446,7 +446,7 @@
 		pylon.protection_level = TURF_PROTECTION_OB
 		pylon.update_icon()
 
-	new /obj/effect/alien/resin/king_cocoon(spawn_turf)
+	new /obj/effect/alien/resin/king_cocoon(spawn_turf, hive.hivenumber)
 
 	return TRUE
 

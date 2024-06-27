@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed a crash in the Hotkey menu when searching by key when filtered"
+  - bugfix: "Fixed/Added support for various keys (e.g. keypad and media keys)"

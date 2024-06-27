@@ -1,0 +1,4 @@
+author: "kiVts"
+delete-after: True
+changes:
+  - code_imp: "Prevented potential unintended behavior with research upgrade items on initialize"

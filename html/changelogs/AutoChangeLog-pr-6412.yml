@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed larva queue time of death not getting recorded if client is missing"

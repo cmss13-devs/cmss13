@@ -9,6 +9,9 @@ GLOBAL_LIST_EMPTY(CLFFaxes)
 GLOBAL_LIST_EMPTY(GeneralFaxes) //Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if source paper is deleted
 
+// for all of our various bugs and runtimes
+GLOBAL_LIST_EMPTY(bug_reports)
+
 //datum containing a reference to the flattend map png url, the actual png is stored in the user's cache.
 GLOBAL_LIST_EMPTY(uscm_flat_tacmap_data)
 GLOBAL_LIST_EMPTY(xeno_flat_tacmap_data)
@@ -311,6 +314,9 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 		rkey++
 		var/datum/species/S = new T
 		S.race_key = rkey //Used in mob icon caching.
+		var/datum/species/existing = all_species[S.name]
+		if(existing)
+			stack_trace("[S.name] from [T] overlaps with [existing.type]! It must have a unique name for lookup!")
 		all_species[S.name] = S
 	return all_species
 
@@ -353,6 +359,9 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 		if (!initial(EP.flags))
 			continue
 		EP = new T
+		var/datum/equipment_preset/existing = gear_path_presets_list[EP.name]
+		if(existing)
+			stack_trace("[EP.name] from [T] overlaps with [existing.type]! It must have a unique name for lookup!")
 		gear_path_presets_list[EP.name] = EP
 	return sortAssoc(gear_path_presets_list)
 
@@ -464,7 +473,11 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 /proc/setup_yautja_capes()
 	var/list/cape_list = list()
 	for(var/obj/item/clothing/yautja_cape/cape_type as anything in typesof(/obj/item/clothing/yautja_cape))
-		cape_list[initial(cape_type.name)] = cape_type
+		var/cape_name = initial(cape_type.name)
+		var/obj/item/clothing/yautja_cape/existing = cape_list[cape_name]
+		if(existing)
+			stack_trace("[cape_name] from [cape_type] overlaps with [existing.type]! It must have a unique name for lookup!")
+		cape_list[cape_name] = cape_type
 	return cape_list
 
 

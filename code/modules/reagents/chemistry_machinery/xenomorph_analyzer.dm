@@ -96,7 +96,7 @@
 		data["upgrades"] += list(list(
 			"name" = capitalize_first_letters(upgrade.name),
 			"desc" = upgrade.desc,
-			"vari" = upgrade.behavior,
+			"vari" = upgrade.on_init_argument,
 			"cost" = price_adjustment,
 			"ref" = upgrade.item_reference,
 			"category" = upgrade.upgrade_type,
@@ -158,7 +158,7 @@
 		upgrade = datum_upgrades
 		if(upgrade.behavior == RESEARCH_UPGRADE_CATEGORY || upgrade.behavior == RESEARCH_UPGRADE_EXCLUDE_BUY)
 			continue
-		if(produce_path == upgrade.item_reference && upgrade.behavior == variation)
+		if(produce_path == upgrade.item_reference && upgrade.on_init_argument == variation)
 			path_exists = TRUE
 			break
 	if(!path_exists)
@@ -178,5 +178,8 @@
 
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, variation)
 	busy = FALSE
-	new produce_path(get_turf(src), variation)
+	if(variation != RESEARCH_UPGRADE_NOTHING_TO_PASS)
+		new produce_path(get_turf(src), variation)
+		return
+	new produce_path(get_turf(src))
 

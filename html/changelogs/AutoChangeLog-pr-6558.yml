@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - qol: "Facehuggers no longer show as having any plasma"

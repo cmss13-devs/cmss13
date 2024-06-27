@@ -499,8 +499,8 @@
 		if(random_names)
 			var/random_name = "[lowertext(H.species.name)] ([rand(1, 999)])"
 			H.change_real_name(H, random_name)
-			if(H.wear_id)
-				var/obj/item/card/id/card = H.wear_id
+			var/obj/item/card/id/card = H.get_idcard()
+			if(card)
 				card.registered_name = H.real_name
 				card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 

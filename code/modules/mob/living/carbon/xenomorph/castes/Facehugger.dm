@@ -1,8 +1,8 @@
 /datum/caste_datum/facehugger
 	caste_type = XENO_CASTE_FACEHUGGER
 	tier = 0
-	plasma_gain = 0.1
-	plasma_max = 10
+	plasma_gain = XENO_PLASMA_GAIN_TIER_1
+	plasma_max = XENO_NO_PLASMA
 	melee_damage_lower = 5
 	melee_damage_upper = 5
 	max_health = XENO_HEALTH_LARVA

@@ -1106,6 +1106,9 @@
 /turf/open/engineership/ship_hull/is_weedable()
 	return NOT_WEEDABLE
 
+/turf/open/engineership/ship_hull/non_weedable_hull
+	icon_state = "outerhull_dir"
+
 // Carpet
 
 

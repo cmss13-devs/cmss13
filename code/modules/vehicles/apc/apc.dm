@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 /obj/vehicle/multitile/apc/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
 	RRS.category_name = "Crewmen"
-	RRS.roles = list(JOB_CREWMAN, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
+	RRS.roles = list(JOB_TANK_CREW, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
 	RRS.total = 2
 	role_reserved_slots += RRS
 

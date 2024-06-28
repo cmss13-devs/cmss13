@@ -1,15 +1,76 @@
 /datum/faction/upp
-	name = "Union of Progressive Peoples"
-	faction_tag = FACTION_UPP
+	name = NAME_FACTION_UPP
+	desc = "A wide-reaching and powerful socialist authoritarian state. The UPP acts as the political and ideological rival of the United States and the UA. Though they have a relatively large presence on Earth (particularly in the Eastern sphere), the UPP is also largely active in colonizing the frontier. \
+	While the United Americas have never engaged the UPP in an official war, hostilities broke out between a USCM Task Force and a UPP Expeditionary Force during Operation Canton in mid 2165. The engagement ended in a ceasefire. The reason was fears that the conflict would spread to the more densely populated Sol System. \
+	The incident greatly enraged many senior officials in the UPP, who viewed the battle of Canton as an attempt by the United States to annex UPP sovereign territory. “Such an insult (referring to Canton) can only be repaid in American blood. Mark my words, this will happen”, Kolonel Ganbaatar of the UPP Armed Forces was quoted saying in May 2168."
 
-/datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+	faction_name = FACTION_UPP
+	faction_tag = SIDE_FACTION_UPP
+	relations_pregen = RELATIONS_FACTION_UPP
+	faction_iff_tag_type = /obj/item/faction_tag/upp
+
+	role_mappings = list(
+		MODE_NAME_EXTENDED = list(),
+		MODE_NAME_DISTRESS_SIGNAL = list(),
+		MODE_NAME_FACTION_CLASH = list(),
+		MODE_NAME_HUMAN_WARS = list(
+			/datum/job/civilian/liaison/combat_reporter/upp = JOB_UPP_CORPORATE_LIAISON
+		),
+		MODE_NAME_CRASH = list(),
+		MODE_NAME_WISKEY_OUTPOST = list(),
+		MODE_NAME_HUNTER_GAMES = list(),
+		MODE_NAME_HIVE_WARS = list(),
+		MODE_NAME_INFECTION = list()
+	)
+	roles_list = list(
+		MODE_NAME_EXTENDED = list(),
+		MODE_NAME_DISTRESS_SIGNAL = list(),
+		MODE_NAME_FACTION_CLASH = UPP_JOB_LIST,
+		MODE_NAME_HUMAN_WARS = UPP_JOB_LIST,
+		MODE_NAME_CRASH = list(),
+		MODE_NAME_WISKEY_OUTPOST = list(),
+		MODE_NAME_HUNTER_GAMES = list(),
+		MODE_NAME_HIVE_WARS = list(),
+		MODE_NAME_INFECTION = list()
+	)
+	coefficient_per_role = list(
+		JOB_UPP_KOL_OFFICER = 2.5,
+		JOB_UPP_MAY_OFFICER = 1.75,
+		JOB_UPP_SRLT_OFFICER = 1.5,
+		JOB_UPP_LT_OFFICER = 1.25,
+		JOB_UPP_INTEL = 1,
+		JOB_UPP_CREWMAN = 4,
+		JOB_UPP_POLICE = 0.5,
+		JOB_UPP_CORPORATE_LIAISON = 0.25,
+		JOB_UPP_COMBAT_SYNTH = 6,
+		JOB_UPP_LT_DOKTOR = 2,
+		JOB_UPP_LEADER = 1.75,
+		JOB_UPP_CONSCRIPT = 1.5,
+		JOB_UPP_SPECIALIST = 3,
+		JOB_UPP_MEDIC = 2.25,
+		JOB_UPP_ENGI = 2,
+		JOB_UPP = 1.25
+	)
+	weight_act = list(
+		MODE_NAME_EXTENDED = FALSE,
+		MODE_NAME_DISTRESS_SIGNAL = FALSE,
+		MODE_NAME_FACTION_CLASH = TRUE,
+		MODE_NAME_HUMAN_WARS = TRUE,
+		MODE_NAME_CRASH = FALSE,
+		MODE_NAME_WISKEY_OUTPOST = FALSE,
+		MODE_NAME_HUNTER_GAMES = FALSE,
+		MODE_NAME_HIVE_WARS = FALSE,
+		MODE_NAME_INFECTION = FALSE
+	)
+
+/datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/hud_icon_state
-	var/obj/item/card/id/ID = H.get_idcard()
+	var/obj/item/card/id/id_card = human.get_idcard()
 	var/_role
-	if(H.mind)
-		_role = H.job
-	else if(ID)
-		_role = ID.rank
+	if(human.mind)
+		_role = human.job
+	else if(id_card)
+		_role = id_card.rank
 	switch(_role)
 		if(JOB_UPP_MEDIC)
 			hud_icon_state = "med"

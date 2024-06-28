@@ -1166,7 +1166,7 @@
 
 	QDEL_LIST(blockers)
 
-	var/mob/living/carbon/xenomorph/king/king = new(get_turf(src))
+	var/mob/living/carbon/xenomorph/king/king = new(get_turf(src), hivenumber=hive_number)
 	if(chosen_candidate?.mob)
 		var/mob/old_mob = chosen_candidate.mob
 		old_mob.mind.transfer_to(king)

@@ -546,7 +546,7 @@
 	. += "Pooled Larvae: [stored_larvae]"
 	. += "Leaders: [xeno_leader_num] / [hive?.queen_leader_limit]"
 	if(!queen_aged && queen_age_timer_id != TIMER_ID_NULL)
-		var/time_left = time2text(timeleft(queen_age_timer_id) + 1 MINUTES, "mm") // We add a minute so that it basically ceilings the value.
+		var/time_left = time2text(timeleft(queen_age_timer_id), "mm:ss")
 		. += "Maturity: [time_left == 1? "[time_left] minute" : "[time_left] minutes"] remaining"
 
 /mob/living/carbon/xenomorph/queen/proc/set_orders()

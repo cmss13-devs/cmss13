@@ -262,10 +262,10 @@
 	SSticker.mode.latejoin_update(player_rank)
 	SSticker.mode.update_gear_scale()
 
-	for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
-		if(sq)
-			sq.max_engineers = engi_slot_formula(GLOB.clients.len)
-			sq.max_medics = medic_slot_formula(GLOB.clients.len)
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(target_squad)
+			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(length(GLOB.clients))
+			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(length(GLOB.clients))
 
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
 

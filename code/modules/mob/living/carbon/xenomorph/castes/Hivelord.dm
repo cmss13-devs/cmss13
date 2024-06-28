@@ -83,13 +83,9 @@
 	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'
 
-
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Hivelord_1","Hivelord_2","Hivelord_3")
 	weed_food_states_flipped = list("Hivelord_1","Hivelord_2","Hivelord_3")
-
-/mob/living/carbon/xenomorph/hivelord/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
-	. = ..()
 
 /datum/behavior_delegate/hivelord_base
 	name = "Base Hivelord Behavior Delegate"

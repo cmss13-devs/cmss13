@@ -17,12 +17,13 @@
 	~ BMC777
 */
 
-/client/Click(atom/A, location, control, params)
+/client/Click(atom/A, location, control, params, mouse_down=FALSE)
+	to_world("Mouse Down: [mouse_down] Ignore Next Click: [ignore_next_click]")
 	if (control && !ignore_next_click) // No .click macros allowed, and only one click per mousedown.
 		ignore_next_click = TRUE
-		return usr.do_click(A, location, params)
+		return usr.do_click(A, location, params, mouse_down)
 
-/mob/proc/do_click(atom/A, location, params)
+/mob/proc/do_click(atom/A, location, params, mouse_down)
 	// We'll be sending a lot of signals and things later on, this will save time.
 	if(!client)
 		return
@@ -130,9 +131,10 @@
 		return
 
 	next_move = world.time
-	// If standing next to the atom clicked.
+	// Ontop or right next to us
 	if(A.Adjacent(src))
-		click_adjacent(A, W, mods)
+		if(mouse_down)
+			click_adjacent(A, W, mods)
 		return
 
 	// If not standing next to the atom clicked.

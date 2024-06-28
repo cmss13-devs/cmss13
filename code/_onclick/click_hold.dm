@@ -55,6 +55,9 @@
 
 		Click(A, T, skin_ctl, params)
 
+	if(A.Adjacent(mob))
+		Click(A, T, skin_ctl, params, TRUE)
+
 /client/MouseUp(atom/A, turf/T, skin_ctl, params)
 	if(!A)
 		return

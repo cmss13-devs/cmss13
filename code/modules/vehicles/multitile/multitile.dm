@@ -145,7 +145,7 @@
 	var/list/misc_multipliers = list(
 		"move" = 1.0,
 		"accuracy" = 1.0,
-		"cooldown" = 1
+		"cooldown" = 1,
 	)
 
 	//Changes how much damage the vehicle takes
@@ -156,7 +156,8 @@
 		"bullet" = 1.0,
 		"explosive" = 1.0,
 		"blunt" = 1.0,
-		"abstract" = 1.0) //abstract for when you just want to hurt it
+		"abstract" = 1.0,
+	) //abstract for when you just want to hurt it
 
 	// This is more important than you think.
 	// Explosive waves can propagate through the vehicle and hit it multiple times
@@ -303,8 +304,8 @@
 		health = max(0, health - floor(damage * get_dmg_multi(type) / 10))
 
 	if(ismob(attacker))
-		var/mob/M = attacker
-		log_attack("[src] took [damage] [type] damage from [M] ([M.client ? M.client.ckey : "disconnected"]).")
+		var/mob/attacker_mob = attacker
+		log_attack("[src] took [damage] [type] damage from [attacker_mob] ([attacker_mob.client ? attacker_mob.client.ckey : "disconnected"]).")
 	else
 		log_attack("[src] took [damage] [type] damage from [attacker].")
 	update_icon()
@@ -316,29 +317,29 @@
 	return ..()
 
 // Add/remove verbs that should be given when a mob sits down or unbuckles here
-/obj/vehicle/multitile/proc/add_seated_verbs(mob/living/M, seat)
+/obj/vehicle/multitile/proc/add_seated_verbs(mob/living/sitting, seat)
 	return
 
-/obj/vehicle/multitile/proc/remove_seated_verbs(mob/living/M, seat)
+/obj/vehicle/multitile/proc/remove_seated_verbs(mob/living/sitting, seat)
 	return
 
-/obj/vehicle/multitile/set_seated_mob(seat, mob/living/M)
+/obj/vehicle/multitile/set_seated_mob(seat, mob/living/sitting)
 	// Give/remove verbs
-	if(QDELETED(M))
-		var/mob/living/L = seats[seat]
-		remove_seated_verbs(L, seat)
+	if(QDELETED(sitting))
+		var/mob/living/old_sitting = seats[seat]
+		remove_seated_verbs(old_sitting, seat)
 	else
-		add_seated_verbs(M, seat)
+		add_seated_verbs(sitting, seat)
 
-	seats[seat] = M
+	seats[seat] = sitting
 
 	// Checked here because we want to be able to null the mob in a seat
-	if(!istype(M))
+	if(!istype(sitting))
 		return FALSE
 
-	M.set_interaction(src)
-	M.reset_view(src)
-	give_action(M, /datum/action/human_action/vehicle_unbuckle)
+	sitting.set_interaction(src)
+	sitting.reset_view(src)
+	give_action(sitting, /datum/action/human_action/vehicle_unbuckle)
 	return TRUE
 
 /// Get crewmember of seat.
@@ -346,9 +347,9 @@
 	return seats[seat]
 
 /// Get seat of crewmember.
-/obj/vehicle/multitile/proc/get_mob_seat(mob/M)
+/obj/vehicle/multitile/proc/get_mob_seat(mob/sitting)
 	for(var/seat in seats)
-		if(seats[seat] == M)
+		if(seats[seat] == sitting)
 			return seat
 	return null
 
@@ -395,50 +396,62 @@
 /obj/effect/vehicle_spawner
 	name = "Vehicle Spawner"
 
+	var/vehicle_type
+	var/list/hardpoints = list()
+
+/obj/effect/vehicle_spawner/Initialize(mapload, override_type)
+	. = ..()
+	if(override_type)
+		vehicle_type = override_type
+
+	spawn_vehicle(new vehicle_type(loc))
+	return INITIALIZE_HINT_QDEL
+
 //Main proc which handles spawning and adding hardpoints/damaging the vehicle
-/obj/effect/vehicle_spawner/proc/spawn_vehicle()
+/obj/effect/vehicle_spawner/proc/spawn_vehicle(obj/vehicle/multitile/spawning)
 	return
 
 //Installation of modules kit
-/obj/effect/vehicle_spawner/proc/load_hardpoints(obj/vehicle/multitile/V)
-	return
+/obj/effect/vehicle_spawner/proc/load_hardpoints(obj/vehicle/multitile/spawning)
+	for(var/obj in hardpoints)
+		spawning.add_hardpoint(new obj)
 
 //Miscellaneous additions
-/obj/effect/vehicle_spawner/proc/load_misc(obj/vehicle/multitile/V)
+/obj/effect/vehicle_spawner/proc/load_misc(obj/vehicle/multitile/spawning)
 
-	V.load_role_reserved_slots()
-	V.initialize_cameras()
+	spawning.load_role_reserved_slots()
+	spawning.initialize_cameras()
 	//transfer mapped in edits
 	if(color)
-		V.color = color
+		spawning.color = color
 	if(name != initial(name))
-		V.name = name
+		spawning.name = name
 	if(desc)
-		V.desc = desc
+		spawning.desc = desc
 
 //Dealing enough damage to destroy the vehicle
-/obj/effect/vehicle_spawner/proc/load_damage(obj/vehicle/multitile/V)
-	V.take_damage_type(1e8, "abstract")
-	V.take_damage_type(1e8, "abstract")
-	V.healthcheck()
+/obj/effect/vehicle_spawner/proc/load_damage(obj/vehicle/multitile/spawning)
+	spawning.take_damage_type(1e8, "abstract")
+	spawning.take_damage_type(1e8, "abstract")
+	spawning.healthcheck()
 
-/obj/effect/vehicle_spawner/proc/handle_direction(obj/vehicle/multitile/M)
+/obj/effect/vehicle_spawner/proc/handle_direction(obj/vehicle/multitile/spawning)
 	switch(dir)
 		if(EAST)
-			M.try_rotate(90)
+			spawning.try_rotate(90)
 		if(WEST)
-			M.try_rotate(-90)
+			spawning.try_rotate(-90)
 		if(NORTH)
-			M.try_rotate(90)
-			M.try_rotate(90)
+			spawning.try_rotate(90)
+			spawning.try_rotate(90)
 
 /obj/vehicle/multitile/get_applying_acid_time()
 	return 3 SECONDS
 
 //handling dangerous acidic environment, like acidic spray or toxic waters, maybe toxic vapor in future
-/obj/vehicle/multitile/proc/handle_acidic_environment(atom/A)
-	for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
-		Loco.handle_acid_damage(A)
+/obj/vehicle/multitile/proc/handle_acidic_environment(atom/hazard)
+	for(var/obj/item/hardpoint/locomotion/loco in hardpoints)
+		loco.handle_acid_damage(hazard)
 
 /atom/movable/vehicle_light_holder
 	light_system = MOVABLE_LIGHT

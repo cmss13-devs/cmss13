@@ -255,40 +255,35 @@
 	pixel_x = -16
 	pixel_y = -16
 
-/obj/effect/vehicle_spawner/van/Initialize()
-	. = ..()
-	spawn_vehicle()
-	qdel(src)
+	vehicle_type = /obj/vehicle/multitile/van
 
 //PRESET: no hardpoints
-/obj/effect/vehicle_spawner/van/spawn_vehicle()
-	var/obj/vehicle/multitile/van/VAN = new (loc)
-
-	load_misc(VAN)
-	handle_direction(VAN)
-	VAN.update_icon()
+/obj/effect/vehicle_spawner/van/spawn_vehicle(obj/vehicle/multitile/spawning)
+	load_misc(spawning)
+	handle_direction(spawning)
+	spawning.update_icon()
 
 //PRESET: wheels installed, destroyed
-/obj/effect/vehicle_spawner/van/decrepit/spawn_vehicle()
-	var/obj/vehicle/multitile/van/VAN = new (loc)
+/obj/effect/vehicle_spawner/van/decrepit
+	hardpoints = list(
+		/obj/item/hardpoint/locomotion/van_wheels,
+	)
 
-	load_misc(VAN)
-	load_hardpoints(VAN)
-	handle_direction(VAN)
-	load_damage(VAN)
-	VAN.update_icon()
-
-/obj/effect/vehicle_spawner/van/decrepit/load_hardpoints(obj/vehicle/multitile/van/V)
-	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
+/obj/effect/vehicle_spawner/van/decrepit/spawn_vehicle(obj/vehicle/multitile/spawning)
+	load_misc(spawning)
+	load_hardpoints(spawning)
+	handle_direction(spawning)
+	load_damage(spawning)
+	spawning.update_icon()
 
 //PRESET: wheels installed
-/obj/effect/vehicle_spawner/van/fixed/spawn_vehicle()
-	var/obj/vehicle/multitile/van/VAN = new (loc)
+/obj/effect/vehicle_spawner/van/fixed
+	hardpoints = list(
+		/obj/item/hardpoint/locomotion/van_wheels,
+	)
 
-	load_misc(VAN)
-	load_hardpoints(VAN)
-	handle_direction(VAN)
-	VAN.update_icon()
-
-/obj/effect/vehicle_spawner/van/fixed/load_hardpoints(obj/vehicle/multitile/van/V)
-	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
+/obj/effect/vehicle_spawner/van/fixed/spawn_vehicle(obj/vehicle/multitile/spawning)
+	load_misc(spawning)
+	load_hardpoints(spawning)
+	handle_direction(spawning)
+	spawning.update_icon()

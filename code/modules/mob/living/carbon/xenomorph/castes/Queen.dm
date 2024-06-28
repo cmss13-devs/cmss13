@@ -547,7 +547,7 @@
 	. += "Leaders: [xeno_leader_num] / [hive?.queen_leader_limit]"
 	if(!queen_aged && queen_age_timer_id != TIMER_ID_NULL) // Idk, bug or not, but when timer ends, it leave just "2", this is soft solution to polution
 		var/time_left = time2text(timeleft(queen_age_timer_id), "mm:ss")
-		. += "Maturity: [time_left == 1? "[time_left] minute" : "[time_left] minutes"] remaining"
+		. += "Maturity: [time2text(timeleft(queen_age_timer_id), "mm:ss")] remaining"
 
 /mob/living/carbon/xenomorph/queen/proc/set_orders()
 	set category = "Alien"

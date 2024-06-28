@@ -50,6 +50,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
 		list("Night Vision Optic", 25, /obj/item/device/helmet_visor/night_vision, null, VENDOR_ITEM_RECOMMENDED),
 
+//RUCM START
+		list("PAMPHLETS", 0, null, null, null),
+		list("Medical Pamphlet", 15, /obj/item/pamphlet/skill/medical, null, VENDOR_ITEM_RECOMMENDED),
+//RUCM END
+
 		list("RADIO KEYS", 0, null, null, null),
 		list("Intel Radio Encryption Key", 5, /obj/item/device/encryptionkey/intel, null, VENDOR_ITEM_REGULAR),
 	))

@@ -897,7 +897,10 @@
 	. = ..()
 	if(hivenumber)
 		hive_number = hivenumber
-	GLOB.hive_datum[hive_number].has_hatchery = TRUE
+	
+	var/datum/hive_status/hatchery_hive = GLOB.hive_datum[hive_number]
+	hatchery_hive.has_hatchery = TRUE
+	color = hatchery_hive.color
 
 	for(var/x_offset in -1 to 1)
 		for(var/y_offset in -1 to 1)
@@ -1166,7 +1169,7 @@
 
 	QDEL_LIST(blockers)
 
-	var/mob/living/carbon/xenomorph/king/king = new(get_turf(src), hivenumber=hive_number)
+	var/mob/living/carbon/xenomorph/king/king = new(get_turf(src), null, hive_number)
 	if(chosen_candidate?.mob)
 		var/mob/old_mob = chosen_candidate.mob
 		old_mob.mind.transfer_to(king)

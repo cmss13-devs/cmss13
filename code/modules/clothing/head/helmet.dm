@@ -199,6 +199,30 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	siemens_coefficient = 0.7
 
+/obj/item/clothing/head/helmet/caustic
+	name = "\improper M10 pattern marine helmet"
+	desc = "A standard M10 Pattern Helmet. The inside label, along with washing information, reads, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'. There is a built-in camera on the right side."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "caustic_H"
+	item_state = "caustic_H"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	health = 5
+	force = 15
+	throwforce = 15 // https://i.imgur.com/VW09I4B.gif
+	attack_verb = list("whacked", "hit", "smacked", "beaten", "battered")
+	var/obj/structure/machinery/camera/camera
+	var/helmet_overlays[]
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NONE
+	var/flags_marine_helmet = HELMET_SQUAD_OVERLAY|HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
+	var/helmet_bash_cooldown = 0
 
 //===========================//MARINES HELMETS\\=================================\\
 //=======================================================================\\

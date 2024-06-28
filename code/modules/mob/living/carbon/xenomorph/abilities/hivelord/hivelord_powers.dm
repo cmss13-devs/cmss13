@@ -30,3 +30,11 @@
 		return
 
 	xeno.recalculate_move_delay = TRUE
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision/enable_toggle()
+	. = ..()
+	owner.sight |= SEE_TURFS
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision/disable_toggle()
+	. = ..()
+	owner.sight &= ~SEE_TURFS

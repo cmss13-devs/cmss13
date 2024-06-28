@@ -66,6 +66,7 @@
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
+		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 		/datum/action/xeno_action/onclick/tacmap,
 		)
 
@@ -84,7 +85,6 @@
 
 /mob/living/carbon/xenomorph/burrower/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
-	sight |= SEE_TURFS
 
 /mob/living/carbon/xenomorph/burrower/ex_act(severity)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))

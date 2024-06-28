@@ -32,3 +32,10 @@
 	if(hivelord_delegate.resin_walker == TRUE)
 		button.icon_state = "template_active"
 		action_active = TRUE
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision
+	name = "Toggle Meson Vision"
+	action_icon_state = "project_xeno"
+	plasma_cost = 0
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_5

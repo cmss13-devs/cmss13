@@ -71,6 +71,7 @@
 		/datum/action/xeno_action/activable/secrete_resin/hivelord, //third macro
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // to be consistent with drone placement
 		/datum/action/xeno_action/active_toggle/toggle_speed, //fourth macro
+		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 		/datum/action/xeno_action/onclick/tacmap,
 		)
 
@@ -82,13 +83,13 @@
 	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'
 
+
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Hivelord_1","Hivelord_2","Hivelord_3")
 	weed_food_states_flipped = list("Hivelord_1","Hivelord_2","Hivelord_3")
 
 /mob/living/carbon/xenomorph/hivelord/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
-	sight |= SEE_TURFS
 
 /datum/behavior_delegate/hivelord_base
 	name = "Base Hivelord Behavior Delegate"

@@ -895,7 +895,8 @@
 
 /obj/effect/alien/resin/king_cocoon/Initialize(mapload, hivenumber)
 	. = ..()
-	hive_number = hivenumber
+	if(hivenumber)
+		hive_number = hivenumber
 	GLOB.hive_datum[hive_number].has_hatchery = TRUE
 
 	for(var/x_offset in -1 to 1)

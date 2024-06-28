@@ -57,8 +57,6 @@
 		return
 
 	var/datum/reagent/napalm/high_damage/reagent = new()
-	//This weapon originally fired Napalm X. To keep the same damage output as before, we'll change the intensity.
-	reagent.intensityfire = BURN_LEVEL_TIER_7
 	new /obj/flamer_fire(turf, cause_data, reagent, 1)
 
 	var/datum/effect_system/smoke_spread/landingsmoke = new /datum/effect_system/smoke_spread

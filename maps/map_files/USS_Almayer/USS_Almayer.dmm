@@ -49367,6 +49367,12 @@
 	name = "AI Core Intercom";
 	pixel_y = 32
 	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 32;
+	pixel_x = 14
+	},
 /turf/open/floor/almayer/aicore/no_build{
 	icon_state = "w_ai_floor1"
 	},
@@ -54405,6 +54411,11 @@
 	pixel_y = 6
 	},
 /obj/item/tool/pen,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 28
+	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "ouw" = (

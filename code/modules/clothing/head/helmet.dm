@@ -216,11 +216,11 @@
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-	fire_intensity_resistance = BURN_LEVEL_TIER_1
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_cold_protection = BODY_FLAG_HEAD
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.9
+	siemens_coefficient = 0.9
 	flags_inventory = BLOCKSHARPOBJ|COVERMOUTH|COVEREYES|ALLOWINTERNALS|BLOCKGASEFFECT|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR|HIDEMASK|HIDELOWHAIR|HIDEFACE
 	force = 15

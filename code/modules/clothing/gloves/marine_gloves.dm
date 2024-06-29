@@ -227,7 +227,7 @@
 	desc = "A pair of Z-210-C Gloves. Their insides are incredibly soft and cool to the touch."
 	icon_state = "caustic_H"
 	item_state = "caustic_H"
-	siemens_coefficient = 0.4
+	siemens_coefficient = 0.9
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -236,4 +236,3 @@
 	armor_rad = CLOTHING_ARMOR_HIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	adopts_squad_color = FALSE
-	fire_intensity_resistance = BURN_LEVEL_TIER_1

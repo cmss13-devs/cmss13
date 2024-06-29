@@ -654,7 +654,7 @@
 /obj/item/clothing/under/marine/caustic
 	name = "\improper ANCW Unifrom"
 	desc = "A modified version of standart issue USMC uniform. Lacking Kevlar, it possses soft gel pads instead. It almost feels like wearing a pyjama."
-	siemens_coefficient = 0.4
+	siemens_coefficient = 0.9
 	icon_state = "caustic_H"
 	worn_state = "caustic_H"
 	armor_melee = CLOTHING_ARMOR_LOW

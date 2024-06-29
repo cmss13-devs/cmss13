@@ -123,25 +123,42 @@
 	icon_state = "almayer_pdoor1"
 	base_icon_state = "almayer_pdoor"
 	openspeed = 4
+	/// Whether this can be destroyed by a vehicle bump
+	var/vehicle_resistant = TRUE
 
-/obj/structure/machinery/door/poddoor/almayer/hybrisa/open_shutters/Initialize()
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters/Initialize()
 	. = ..()
 	if(opacity)
 		set_opacity(0)
 
-/obj/structure/machinery/door/poddoor/almayer/hybrisa/open_shutters
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters/open()
+	if(operating) //doors can still open when emag-disabled
+		return
+
+	if(!density) // We check density instead of opacity
+		return TRUE
+
+	operating = TRUE
+
+	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
+	flick("[base_icon_state]c0", src)
+	icon_state = "[base_icon_state]0"
+	set_opacity(0)
+
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
+	return TRUE
+
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters
 	name = "\improper Shutters"
 	desc = null
-	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	icon_state = "almayer_pdoor1"
 	base_icon_state = "almayer_pdoor"
 	opacity = FALSE
 	vehicle_resistant = FALSE
 
-/obj/structure/machinery/door/poddoor/almayer/hybrisa/shutters
+/obj/structure/machinery/door/poddoor/hybrisa/shutters
 	name = "\improper Shutters"
 	desc = null
-	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	icon_state = "shutter1"
 	base_icon_state = "shutter"
 	vehicle_resistant = FALSE

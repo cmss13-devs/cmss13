@@ -80,6 +80,24 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	spawn_item_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/marine/caustic
+	name = "\improper ANCW combat boots"
+	desc = "A pair of Z-210-C Boots. Their insides are cushioned with soft gell pads to fit your feet perfectly. You wish you had a pair like this at home."
+	icon_state = "caustic_H"
+	item_state = "caustic_H"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
+	siemens_coefficient = 0.4
+	fire_intensity_resistance = BURN_LEVEL_TIER_1
+
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
 	desc = "Pre-polished fancy dress shoes. You can see your reflection in them."

@@ -200,29 +200,37 @@
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/head/helmet/caustic
-	name = "\improper M10 pattern marine helmet"
-	desc = "A standard M10 Pattern Helmet. The inside label, along with washing information, reads, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'. There is a built-in camera on the right side."
+	name = "\improper ANCW Helmet"
+	desc = "It's a Z-210-C Helmet. Its fitted with an integrated gasmask and visor. The inside is cushioned with cool gelpads, to protect against harsh temperature changes and heavy impacts."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "caustic_H"
 	item_state = "caustic_H"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
 	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	health = 5
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	fire_intensity_resistance = BURN_LEVEL_TIER_1
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_cold_protection = BODY_FLAG_HEAD
+	gas_transfer_coefficient = 0.01
+	permeability_coefficient = 0.9
+	flags_inventory = BLOCKSHARPOBJ|COVERMOUTH|COVEREYES|ALLOWINTERNALS|BLOCKGASEFFECT|ALLOWREBREATH|ALLOWCPR
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR|HIDEMASK|HIDELOWHAIR|HIDEFACE
 	force = 15
 	throwforce = 15 // https://i.imgur.com/VW09I4B.gif
 	attack_verb = list("whacked", "hit", "smacked", "beaten", "battered")
-	var/obj/structure/machinery/camera/camera
-	var/helmet_overlays[]
-	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = NONE
-	var/flags_marine_helmet = HELMET_SQUAD_OVERLAY|HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
+	var/flags_marine_helmet = HELMET_SQUAD_OVERLAY|HELMET_DAMAGE_OVERLAY
 	var/helmet_bash_cooldown = 0
+	var/gas_filter_strength = 1 //For gas mask filters
+	var/list/filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
+	unacidable = TRUE
 
 //===========================//MARINES HELMETS\\=================================\\
 //=======================================================================\\

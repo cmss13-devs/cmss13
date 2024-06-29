@@ -177,6 +177,7 @@
 #define ITEM_MACHINERY_UPGRADE "Machinery" //*must* be same as category name.
 #define ITEM_ACCESSORY_UPGRADE "Items"
 #define ITEM_ARMOR_UPGRADE "Armor"
+#define ITEM_EX_ARMOR_UPGRADE "Experimental Armor"
 
 //injector plate stuff
 #define EMERGENCY_PLATE_OD_PROTECTION_OFF 0

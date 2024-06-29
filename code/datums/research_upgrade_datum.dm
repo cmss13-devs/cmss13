@@ -219,7 +219,8 @@
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	item_reference = list(
 		/obj/item/clothing/suit/storage/marine/caustic,
-		/obj/item/clothing/head/helmet/caustic,
+		/obj/item/clothing/head/helmet/marine/caustic,
 		/obj/item/clothing/gloves/marine/caustic,
 		/obj/item/clothing/shoes/marine/caustic,
-		/obj/item/clothing/under/marine/causti)
+		/obj/item/clothing/under/marine/caustic
+	)

@@ -217,6 +217,7 @@
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_HEAD
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.9

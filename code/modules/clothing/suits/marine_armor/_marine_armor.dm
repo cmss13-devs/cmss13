@@ -689,6 +689,7 @@
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	unacidable = TRUE
 	storage_slots = 2
 	siemens_coefficient = 0.9

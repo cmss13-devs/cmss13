@@ -212,7 +212,7 @@
 /datum/research_upgrades/armor/ancw
 	name = "Z-210-C Body Armor"
 	desc = "Part of an experimental armor set using the ANCW system to withstand acid."
-	value_upgrade = 7500
+	value_upgrade = 8500
 	on_init_argument = RESEARCH_UPGRADE_NOTHING_TO_PASS
 	behavior = RESEARCH_UPGRADE_ITEM
 	clearance_req = 5

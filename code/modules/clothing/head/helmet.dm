@@ -802,7 +802,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/medic/white
 	name = "\improper M10 white corpsman helmet"
-	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Painted in medical white and has red cross painted on its front."
+	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Painted in medical white and has white cross in a red square painted in on its front."
 	icon_state = "med_helmet_white"
 	specialty = "M10 pattern medic white"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE

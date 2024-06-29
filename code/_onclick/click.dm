@@ -18,7 +18,6 @@
 */
 
 /client/Click(atom/A, location, control, params, mouse_down=FALSE)
-	to_world("Mouse Down: [mouse_down] Ignore Next Click: [ignore_next_click]")
 	if (control && !ignore_next_click) // No .click macros allowed, and only one click per mousedown.
 		ignore_next_click = TRUE
 		return usr.do_click(A, location, params, mouse_down)

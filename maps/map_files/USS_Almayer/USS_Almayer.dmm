@@ -17183,6 +17183,10 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/obj/item/device/radio/intercom{
+	frequency = 1500;
+	name = "AI Core Intercom"
+	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "ccs" = (
@@ -19976,6 +19980,17 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
+"cKF" = (
+/obj/item/device/radio/intercom{
+	frequency = 1500;
+	name = "AI Core Intercom";
+	pixel_x = -32
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "silver"
+	},
+/area/almayer/hallways/upper/midship_hallway)
 "cKJ" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -29497,6 +29512,11 @@
 	phone_id = "AI Core";
 	pixel_x = 8;
 	pixel_y = -8
+	},
+/obj/item/device/radio/intercom{
+	frequency = 1500;
+	name = "AI Core Intercom";
+	pixel_x = 28
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -49341,6 +49361,11 @@
 /obj/structure/machinery/computer/view_objectives{
 	pixel_x = 12;
 	pixel_y = 6
+	},
+/obj/item/device/radio/intercom{
+	frequency = 1500;
+	name = "AI Core Intercom";
+	pixel_y = 32
 	},
 /turf/open/floor/almayer/aicore/no_build{
 	icon_state = "w_ai_floor1"
@@ -121193,7 +121218,7 @@ rpV
 cGO
 cGO
 cGO
-cGO
+cKF
 cGO
 kaO
 cGO

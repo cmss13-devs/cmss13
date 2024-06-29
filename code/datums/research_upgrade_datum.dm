@@ -222,5 +222,5 @@
 		/obj/item/clothing/head/helmet/marine/caustic,
 		/obj/item/clothing/gloves/marine/caustic,
 		/obj/item/clothing/shoes/marine/caustic,
-		/obj/item/clothing/under/marine/caustic
-	)
+		/obj/item/clothing/under/marine/caustic,
+    )

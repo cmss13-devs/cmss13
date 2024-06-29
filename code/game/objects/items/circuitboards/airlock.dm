@@ -58,7 +58,7 @@
 	t1 += text("<p><a href='?src=\ref[];close=1'>Close</a></p>\n", src)
 
 	show_browser(user, t1, "Access Control", "airlock_electronics")
-	onclose(user, "airlock")
+	onclose(user, "airlock_electronics")
 
 
 /obj/item/circuitboard/airlock/Topic(href, href_list)

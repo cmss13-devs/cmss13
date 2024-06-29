@@ -1726,3 +1726,18 @@
 			item.showoff(src)
 			return TRUE
 	return ..()
+
+/mob/living/carbon/human/on_knockedout_trait_gain(datum/source)
+	. = ..()
+	
+	update_execute_hud()
+	
+	return .
+
+/mob/living/carbon/human/on_knockedout_trait_loss(datum/source)
+	. = ..()
+
+	update_execute_hud()
+	
+	return .
+	

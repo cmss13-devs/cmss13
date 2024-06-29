@@ -30513,9 +30513,6 @@
 	icon_state = "darkyellowfull2"
 	},
 /area/strata/ag/exterior/research_decks)
-"eqV" = (
-/turf/closed/wall/wood,
-/area/strata/ag/interior/mountain)
 "era" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -30535,9 +30532,6 @@
 /obj/structure/barricade/snow,
 /turf/open/auto_turf/ice/layer2,
 /area/strata/ag/exterior/north_lz_caves)
-"esJ" = (
-/turf/open/auto_turf/snow/brown_base/layer4,
-/area/strata/ag/interior/mountain)
 "euc" = (
 /obj/structure/platform_decoration/strata{
 	dir = 4
@@ -46384,8 +46378,8 @@ aac
 aac
 aac
 aac
-esJ
-eqV
+byi
+lAc
 mhc
 qxi
 wfE

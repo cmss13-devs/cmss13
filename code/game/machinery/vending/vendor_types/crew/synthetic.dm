@@ -5,7 +5,7 @@
 	desc = "An automated gear rack hooked up to a colossal storage of various medical and engineering supplies. Can be accessed only by synthetic units."
 	icon_state = "gear"
 	req_access = list(ACCESS_MARINE_SYNTH)
-	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR)
+	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR, JOB_UPP_SUPPORT_SYNTH, JOB_CMB_SYN, JOB_PMC_SYNTH)
 
 	listed_products = list(
 		list("ENGINEER SUPPLIES", 0, null, null, null),
@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	name = "\improper ColMarTech Synthetic Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of various equipment. Can be accessed only by synthetic units."
 	req_access = list(ACCESS_MARINE_SYNTH)
-	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR)
+	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR, JOB_UPP_SUPPORT_SYNTH, JOB_CMB_SYN, JOB_PMC_SYNTH)
 
 /obj/structure/machinery/cm_vending/clothing/synth/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_synth
@@ -273,6 +273,27 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Corpsman Helmet", 12, /obj/item/clothing/head/helmet/marine/medic, null, VENDOR_ITEM_REGULAR),
 	list("Attachable Helmet Shield", 12, /obj/item/prop/helmetgarb/riot_shield, null, VENDOR_ITEM_REGULAR),
 
+	list("MASK", 0, null, null, null),
+	list("Surgical Mask", 12, /obj/item/clothing/mask/surgical, null, VENDOR_ITEM_REGULAR),
+	list("Rebreather", 12, /obj/item/clothing/mask/rebreather, null, VENDOR_ITEM_REGULAR),
+	list("Skull Balaclava, Blue", 12, /obj/item/clothing/mask/rebreather/skull, null, VENDOR_ITEM_REGULAR),
+	list("Skull balaclava, Black", 12, /obj/item/clothing/mask/rebreather/skull/black, null, VENDOR_ITEM_REGULAR),
+	list("Balaclava", 12, /obj/item/clothing/mask/rebreather/scarf, null, VENDOR_ITEM_REGULAR),
+	list("Balaclava (Green)", 12, /obj/item/clothing/mask/rebreather/scarf/green, null, VENDOR_ITEM_REGULAR),
+	list("Balaclava (Tan)", 12, /obj/item/clothing/mask/rebreather/scarf/tan, null, VENDOR_ITEM_REGULAR),
+	list("Balaclava (Grey)", 12, /obj/item/clothing/mask/rebreather/scarf/gray, null, VENDOR_ITEM_REGULAR),
+	list("Wrap (Grey)", 12, /obj/item/clothing/mask/rebreather/scarf/tacticalmask, null, VENDOR_ITEM_REGULAR),
+	list("Wrap (Red)", 12, /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red, null, VENDOR_ITEM_REGULAR),
+	list("Wrap (Green)", 12, /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, null, VENDOR_ITEM_REGULAR),
+	list("Wrap (Tan)", 12, /obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan, null, VENDOR_ITEM_REGULAR),
+	list("Wrap (Black)", 12, /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black, null, VENDOR_ITEM_REGULAR),
+	list("Scarf", 12, /obj/item/clothing/mask/tornscarf, null, VENDOR_ITEM_REGULAR),
+	list("Scarf (Green)", 12, /obj/item/clothing/mask/tornscarf/green, null, VENDOR_ITEM_REGULAR),
+	list("Scarf (Snow)", 12, /obj/item/clothing/mask/tornscarf/snow, null, VENDOR_ITEM_REGULAR),
+	list("Scarf (Desert)", 12, /obj/item/clothing/mask/tornscarf/desert, null, VENDOR_ITEM_REGULAR),
+	list("Scarf (Urban)", 12, /obj/item/clothing/mask/tornscarf/urban, null, VENDOR_ITEM_REGULAR),
+	list("Scarf (Black)", 12, /obj/item/clothing/mask/tornscarf/black, null, VENDOR_ITEM_REGULAR),
+
 	list("SUIT", 0, null, null, null),
 	list("Bomber Jacket, Brown", 12, /obj/item/clothing/suit/storage/bomber, null, VENDOR_ITEM_REGULAR),
 	list("Bomber Jacket, Black", 12, /obj/item/clothing/suit/storage/bomber/alt, null, VENDOR_ITEM_REGULAR),
@@ -337,7 +358,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	use_snowflake_points = TRUE
 	vendor_theme = VENDOR_THEME_COMPANY
 	req_access = list(ACCESS_MARINE_SYNTH)
-	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR, JOB_WORKING_JOE)
+	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR, JOB_WORKING_JOE, JOB_UPP_SUPPORT_SYNTH, JOB_CMB_SYN, JOB_PMC_SYNTH)
 
 	vend_delay = 1 SECONDS
 
@@ -387,4 +408,5 @@ GLOBAL_LIST_INIT(cm_vending_synth_tools, list(
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/ammo_magazine/smg/nailgun,
 		/obj/item/ammo_magazine/smg/nailgun,
+		/obj/item/storage/belt/gun/m4a3/nailgun,
 	)

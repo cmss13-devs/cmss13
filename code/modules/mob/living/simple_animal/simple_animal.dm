@@ -56,6 +56,8 @@
 	black_market_value = 25
 	dead_black_market_value = 0
 
+	mobility_flags = MOBILITY_FLAGS_LYING_CAPABLE_DEFAULT
+
 /mob/living/simple_animal/Initialize()
 	. = ..()
 	SSmob.living_misc_mobs += src
@@ -210,6 +212,7 @@
 	SSmob.living_misc_mobs -= src
 	icon_state = icon_dead
 	black_market_value = dead_black_market_value
+	set_body_position(LYING_DOWN)
 
 
 /mob/living/simple_animal/gib(datum/cause_data/cause = create_cause_data("gibbing", src))

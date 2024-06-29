@@ -81,8 +81,8 @@
 				if(ACCESS_MARINE_SENIOR in I.access)
 					authenticated = 2
 			else
-				I = C.wear_id
-				if(istype(I))
+				I = C.get_idcard()
+				if(I)
 					if(check_access(I)) authenticated = 1
 					if(ACCESS_MARINE_SENIOR in I.access)
 						authenticated = 2
@@ -117,8 +117,8 @@
 				var/obj/item/card/id/idcard = human_user.get_active_hand()
 				var/bio_fail = FALSE
 				if(!istype(idcard))
-					idcard = human_user.wear_id
-				if(!istype(idcard))
+					idcard = human_user.get_idcard()
+				if(idcard)
 					bio_fail = TRUE
 				else if(!idcard.check_biometrics(human_user))
 					bio_fail = TRUE
@@ -171,8 +171,8 @@
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
-				idcard = human_user.wear_id
-			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
 				bio_fail = TRUE
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE

@@ -240,3 +240,19 @@
   iloveloopers:
   - balance: Custom research chemicals with an intensityfire above or equal to 50
       will now burn white.
+2024-06-28:
+  Drathek:
+  - bugfix: Fixed a crash in the Hotkey menu when searching by key when filtered
+  - bugfix: Fixed/Added support for various keys (e.g. keypad and media keys)
+  Git-Nivrak:
+  - bugfix: Fixes being able to draw weapons when knocked down
+  HeresKozmos:
+  - maptweak: Filled in a hole in the map.
+  - maptweak: Fixed an area in the easter egg section of Sorokyne
+  coldironwarrior:
+  - spellcheck: fixed a few typos in the xeno bioscan announcement
+  kiVts:
+  - code_imp: Prevented potential unintended behavior with research upgrade items
+      on initialize
+  private-tristan:
+  - qol: Facehuggers no longer show as having any plasma

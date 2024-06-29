@@ -15,7 +15,7 @@
 	if(!admin_holder) return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
-	to_chat(usr,SPAN_BOLDNOTICE( "You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
+	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
 
 /client/proc/toggleprayers()
 	set name = "Show/Hide Prayers"
@@ -32,6 +32,14 @@
 	prefs.toggles_sound ^= SOUND_OBSERVER_ANNOUNCEMENTS
 	prefs.save_preferences()
 	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "now" : "no longer"] hear announcement sounds as an observer."))
+
+/client/verb/toggle_fax_machine_sounds()
+	set name = "Hear/Silence Ghost Fax Machines"
+	set category = "Preferences.Sound"
+	set desc = "Toggle hearing a notification of faxes while being an observer."
+	prefs.toggles_sound ^= SOUND_FAX_MACHINE
+	prefs.save_preferences()
+	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_FAX_MACHINE) ? "now" : "no longer"] hear a fax sounds as an observer."))
 
 /client/verb/toggletitlemusic()
 	set name = "Hear/Silence LobbyMusic"

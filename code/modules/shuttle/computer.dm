@@ -382,7 +382,13 @@
 					return
 
 				var/mob/living/carbon/human/human_user = user
-				if(!(ACCESS_MARINE_SENIOR in human_user.wear_id?.access) && !(ACCESS_MARINE_DROPSHIP in human_user.wear_id?.access))
+				var/obj/item/card/id/card = human_user.get_idcard()
+
+				if(!card)
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
+					return
+
+				if(!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 

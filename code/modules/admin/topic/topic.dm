@@ -2248,6 +2248,21 @@
 			return
 		return remove_tagged_datum(datum_to_remove)
 
+	if(href_list["view_bug_report"])
+		if(!check_rights(R_ADMIN|R_MOD))
+			return
+
+		var/datum/tgui_bug_report_form/bug_report = locate(href_list["view_bug_report"])
+		if(!istype(bug_report) || QDELETED(bug_report))
+			to_chat(usr, SPAN_WARNING("This bug report is no longer available."))
+			return
+
+		if(!bug_report.assign_admin(usr))
+			return
+
+		bug_report.tgui_interact(usr)
+		return
+
 	if(href_list["show_tags"])
 		if(!check_rights(R_ADMIN))
 			return

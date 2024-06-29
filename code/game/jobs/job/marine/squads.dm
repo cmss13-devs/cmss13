@@ -452,7 +452,7 @@
 
 	var/obj/item/card/id/C = ID
 	if(!C)
-		C = M.wear_id
+		C = M.get_idcard()
 	if(!C)
 		C = M.get_active_hand()
 	if(!istype(C))
@@ -554,7 +554,7 @@
 		return //not assigned to the correct squad
 	var/obj/item/card/id/C = ID
 	if(!istype(C))
-		C = M.wear_id
+		C = M.get_idcard()
 	if(!istype(C))
 		return FALSE //Abort, no ID found
 
@@ -637,9 +637,9 @@
 				R.keys -= key
 				qdel(key)
 			R.recalculateChannels()
-		if(istype(old_lead.wear_id, /obj/item/card/id))
-			var/obj/item/card/id/ID = old_lead.wear_id
-			ID.access -= ACCESS_MARINE_LEADER
+		var/obj/item/card/id/card = old_lead.get_idcard()
+		if(card)
+			card.access -= ACCESS_MARINE_LEADER
 	REMOVE_TRAITS_IN(old_lead, TRAIT_SOURCE_SQUAD_LEADER)
 	old_lead.hud_set_squad()
 	old_lead.update_inv_head() //updating marine helmet leader overlays

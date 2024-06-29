@@ -46,7 +46,8 @@
 /obj/item/device/cotablet/attack_self(mob/living/carbon/human/user as mob)
 	..()
 
-	if(src.allowed(user) && user.wear_id?.check_biometrics(user))
+	var/obj/item/card/id/card = user.get_idcard()
+	if(allowed(user) && card?.check_biometrics(user))
 		tgui_interact(user)
 	else
 		to_chat(user, SPAN_DANGER("Access denied."))
@@ -109,8 +110,8 @@
 			var/signed = null
 			if(ishuman(user))
 				var/mob/living/carbon/human/human_user = user
-				var/obj/item/card/id/id = human_user.wear_id
-				if(istype(id))
+				var/obj/item/card/id/id = human_user.get_idcard()
+				if(id)
 					var/paygrade = get_paygrades(id.paygrade, FALSE, human_user.gender)
 					signed = "[paygrade] [id.registered_name]"
 

@@ -19,6 +19,13 @@ SUBSYSTEM_DEF(chat)
 	/// Assosciates a ckey with their next sequence number.
 	var/list/client_to_sequence_number = list()
 
+	/// Keeps track of resends to see how often chat bugs out
+	var/resends = 0
+
+/datum/controller/subsystem/chat/stat_entry(msg)
+	msg = "Messages resent: [resends]"
+	return ..()
+
 /datum/controller/subsystem/chat/proc/generate_payload(client/target, message_data)
 	var/sequence = client_to_sequence_number[target.ckey]
 	client_to_sequence_number[target.ckey] += 1
@@ -85,4 +92,5 @@ SUBSYSTEM_DEF(chat)
 		return
 
 	payload.resends += 1
+	resends += 1
 	send_payload_to_client(client, client_history[sequence])

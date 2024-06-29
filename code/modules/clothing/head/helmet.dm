@@ -201,7 +201,7 @@
 
 /obj/item/clothing/head/helmet/caustic
 	name = "\improper ANCW Helmet"
-	desc = "It's a Z-210-C Helmet. Its fitted with an integrated gasmask and visor. The inside is cushioned with cool gelpads, to protect against harsh temperature changes and heavy impacts."
+	desc = "It's a Z-210-C Helmet. Its fitted with an integrated gasmask and visor. The inside is cushioned with cool gelpads to protect against harsh temperature changes and heavy impacts."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "caustic_H"
 	item_state = "caustic_H"

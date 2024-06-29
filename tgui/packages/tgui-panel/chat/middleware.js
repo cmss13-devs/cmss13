@@ -105,7 +105,7 @@ export const chatMiddleware = (store) => {
       loadChatFromStorage(store);
     }
     if (type === 'chat/message') {
-      var payload_obj;
+      let payload_obj;
       try {
         payload_obj = JSON.parse(payload);
       } catch {

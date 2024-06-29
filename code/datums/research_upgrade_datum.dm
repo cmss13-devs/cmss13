@@ -209,58 +209,17 @@
 	minimum_price = 100
 	item_reference = /obj/item/clothing/accessory/health/research_plate/anti_decay
 
-// Caustic Armor \\
-
-/datum/research_upgrades/ex_armor
-	name = "Experimental Armor"
-	behavior = RESEARCH_UPGRADE_CATEGORY
-
-/datum/research_upgrades/ex_armor/chest
+/datum/research_upgrades/armor/ancw
 	name = "Z-210-C Body Armor"
-	desc = "Part of an experimental armor using the ANCW system to withstand acid."
-	value_upgrade = 6000
+	desc = "Part of an experimental armor set using the ANCW system to withstand acid."
+	value_upgrade = 7500
 	on_init_argument = RESEARCH_UPGRADE_NOTHING_TO_PASS
 	behavior = RESEARCH_UPGRADE_ITEM
 	clearance_req = 5
-	upgrade_type = ITEM_EX_ARMOR_UPGRADE
-	item_reference = /obj/item/clothing/suit/storage/marine/caustic
-
-/datum/research_upgrades/ex_armor/helmet
-	name = "Z-210-C Helmet"
-	desc = "Part of an experimental armor using the ANCW system to withstand acid."
-	value_upgrade = 4000
-	on_init_argument = RESEARCH_UPGRADE_NOTHING_TO_PASS
-	behavior = RESEARCH_UPGRADE_ITEM
-	clearance_req = 5
-	upgrade_type = ITEM_EX_ARMOR_UPGRADE
-	item_reference = /obj/item/clothing/head/helmet/caustic
-
-/datum/research_upgrades/ex_armor/gloves
-	name = "Z-210-C Gloves"
-	desc = "Part of an experimental armor using the ANCW system to withstand acid."
-	value_upgrade = 1000
-	on_init_argument = RESEARCH_UPGRADE_NOTHING_TO_PASS
-	behavior = RESEARCH_UPGRADE_ITEM
-	clearance_req = 5
-	upgrade_type = ITEM_EX_ARMOR_UPGRADE
-	item_reference = /obj/item/clothing/gloves/marine/caustic
-
-/datum/research_upgrades/ex_armor/shoes
-	name = "Z-210-C Boots"
-	desc = "Part of an experimental armor using the ANCW system to withstand acid."
-	value_upgrade = 1000
-	on_init_argument = RESEARCH_UPGRADE_NOTHING_TO_PASS
-	behavior = RESEARCH_UPGRADE_ITEM
-	clearance_req = 5
-	upgrade_type = ITEM_EX_ARMOR_UPGRADE
-	item_reference = /obj/item/clothing/shoes/marine/caustic
-
-/datum/research_upgrades/ex_armor/under
-	name = "Z-210-C Uniform"
-	desc = "An experimental uniform using CN-Gel to withstand acid."
-	value_upgrade = 1000
-	on_init_argument = RESEARCH_UPGRADE_NOTHING_TO_PASS
-	behavior = RESEARCH_UPGRADE_ITEM
-	clearance_req = 5
-	upgrade_type = ITEM_EX_ARMOR_UPGRADE
-	item_reference = /obj/item/clothing/under/marine/caustic
+	upgrade_type = ITEM_ARMOR_UPGRADE
+	item_reference = list(
+		/obj/item/clothing/suit/storage/marine/caustic,
+		/obj/item/clothing/head/helmet/caustic,
+		/obj/item/clothing/gloves/marine/caustic,
+		/obj/item/clothing/shoes/marine/caustic,
+		/obj/item/clothing/under/marine/causti)

@@ -421,9 +421,6 @@
 	dir = 8
 	},
 /area/desert_dam/exterior/valley/valley_labs)
-"abt" = (
-/turf/open/desert/rock,
-/area/desert_dam/exterior/rock)
 "abu" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge{
@@ -57199,9 +57196,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_south)
-"dTI" = (
-/turf/open/desert/rock,
-/area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "dTK" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached{
@@ -92967,8 +92961,8 @@ dTs
 dTs
 dTs
 dTs
-dTI
-dTI
+dTs
+dTs
 cPL
 cTk
 cTO
@@ -93201,8 +93195,8 @@ dTs
 dTs
 dTs
 dTs
-dTI
-dTI
+dTs
+dTs
 cPL
 cTl
 cTO
@@ -93436,7 +93430,7 @@ dTs
 dTs
 dTs
 dTs
-abt
+dTs
 cPL
 cTm
 cTO

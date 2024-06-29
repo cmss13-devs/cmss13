@@ -92,10 +92,16 @@ export const KeyBinds = (props) => {
                           if (!targetEntry) {
                             return;
                           }
-                          // If a keybind was found, scroll to the first match.
-                          document
-                            .getElementById(targetEntry[0])
-                            .scrollIntoView();
+                          // If a keybind was found, scroll to the first match currently rendered.
+                          for (let i = 0; i < targetEntry.length; i++) {
+                            const element = document.getElementById(
+                              targetEntry[i],
+                            );
+                            if (element) {
+                              element.scrollIntoView();
+                              break;
+                            }
+                          }
                         }}
                       />
                     </Flex.Item>

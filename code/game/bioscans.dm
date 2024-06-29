@@ -151,7 +151,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	var/planet_location = "[marines_on_planet && marine_planet_location ? ", including one in [marine_planet_location]" : ""]"
 
 	var/title = SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away.")
-	var/content = SPAN_XENOANNOUNCE("To my children and their Queen. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location].")
+	var/content = SPAN_XENOANNOUNCE("To my children and their Queen: I sense [metalhive_hosts] host[plural] in the metal hive[metalhive_location] and [planet_hosts] scattered elsewhere[planet_location].")
 
 	log_game("BIOSCAN: Queen Mother bioscan completed. [content]")
 	/// Shout it at everyone

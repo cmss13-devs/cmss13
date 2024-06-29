@@ -529,6 +529,9 @@
 
 //Colonial Supervisor
 
+/datum/equipment_preset/corpse/wy
+	flags = EQUIPMENT_PRESET_STUB
+
 /datum/equipment_preset/corpse/wy/manager
 	name = "Corpse - Corporate Supervisor"
 	assignment = "Colony Supervisor"

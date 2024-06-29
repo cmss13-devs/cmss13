@@ -145,6 +145,9 @@
 	. = ..()
 	access = get_access(ACCESS_LIST_WY_PMC)
 
+/datum/equipment_preset/synth/survivor/wy
+	flags = EQUIPMENT_PRESET_STUB
+
 /datum/equipment_preset/synth/survivor/wy/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH + ACCESS_WY_GENERAL // for WY synths - admin building and wy fax machines access
@@ -265,6 +268,9 @@
 	)
 
 	survivor_variant = ENGINEERING_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/corporate_synth
+	name = "Survivor - Synthetic - Corporate Synth"
 
 /datum/equipment_preset/synth/survivor/corporate_synth/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -471,6 +477,7 @@
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/synth/survivor/wy/protection_synth
 	name = "Survivor - Synthetic - Corporate Protection Synth"
@@ -493,6 +500,7 @@
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/synth/survivor/wy/corporate_synth
 	name = "Survivor - Synthetic - Corporate Clerical Synth"
@@ -515,6 +523,7 @@
 	)
 
 	survivor_variant = CORPORATE_SURVIVOR
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/synth/survivor/icc_synth
 	name = "Survivor - Synthetic - Interstellar Commerce Commission Synthetic"

@@ -104,10 +104,6 @@
 
 	new_human.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
 
-/datum/equipment_preset/uscm_event/general/o7
-	name = "USCM O-7 - Brigadier General (High Command)"
-	paygrades = list(PAY_SHORT_MO7 = JOB_PLAYTIME_TIER_0)
-
 /datum/equipment_preset/uscm_event/general/o8
 	name = "USCM O-8 - Major General (High Command)"
 	paygrades = list(PAY_SHORT_MO8 = JOB_PLAYTIME_TIER_0)

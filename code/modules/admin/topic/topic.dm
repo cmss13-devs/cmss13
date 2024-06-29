@@ -1950,7 +1950,7 @@
 			alert("Removed:\n" + jointext(removed_paths, "\n"))
 
 		var/list/offset = splittext(href_list["offset"],",")
-		var/number = dd_range(1, 100, text2num(href_list["object_count"]))
+		var/number = clamp(text2num(href_list["object_count"]), 1, 100)
 		var/X = offset.len > 0 ? text2num(offset[1]) : 0
 		var/Y = offset.len > 1 ? text2num(offset[2]) : 0
 		var/Z = offset.len > 2 ? text2num(offset[3]) : 0
@@ -2247,6 +2247,21 @@
 		if(!datum_to_remove)
 			return
 		return remove_tagged_datum(datum_to_remove)
+
+	if(href_list["view_bug_report"])
+		if(!check_rights(R_ADMIN|R_MOD))
+			return
+
+		var/datum/tgui_bug_report_form/bug_report = locate(href_list["view_bug_report"])
+		if(!istype(bug_report) || QDELETED(bug_report))
+			to_chat(usr, SPAN_WARNING("This bug report is no longer available."))
+			return
+
+		if(!bug_report.assign_admin(usr))
+			return
+
+		bug_report.tgui_interact(usr)
+		return
 
 	if(href_list["show_tags"])
 		if(!check_rights(R_ADMIN))

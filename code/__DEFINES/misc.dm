@@ -25,6 +25,7 @@
 #define SMOKE_RANK_MED 3
 #define SMOKE_RANK_HIGH 4
 #define SMOKE_RANK_BOILER 5
+#define SMOKE_RANK_MAX 6
 
 // What kind of function to use for Explosions falling off.
 
@@ -155,10 +156,37 @@
 #define ASSEMBLY_UNLOCKED 1
 #define ASSEMBLY_LOCKED 2
 
+// RESEARCH UPGRADES DEFINES //
+
 // Matrix CAS Upgrades
 #define MATRIX_DEFAULT 0
 #define MATRIX_NVG 1
 #define MATRIX_WIDE 2
+
+#define RESEARCH_UPGRADE_NOTHING_TO_PASS null
+#define RESEARCH_UPGRADE_EXCLUDE_BUY -2
+#define RESEARCH_UPGRADE_CATEGORY -1 //lord forgive me
+#define RESEARCH_UPGRADE_ITEM 1
+#define RESEARCH_UPGRADE_TIER_1 1
+#define RESEARCH_UPGRADE_TIER_2 2
+#define RESEARCH_UPGRADE_TIER_3 3
+#define RESEARCH_UPGRADE_TIER_4 4
+#define RESEARCH_UPGRADE_TIER_5 5
+//Value define
+
+#define ITEM_MACHINERY_UPGRADE "Machinery" //*must* be same as category name.
+#define ITEM_ACCESSORY_UPGRADE "Items"
+#define ITEM_ARMOR_UPGRADE "Armor"
+
+//injector plate stuff
+#define EMERGENCY_PLATE_OD_PROTECTION_OFF 0
+#define EMERGENCY_PLATE_OD_PROTECTION_STRICT 1
+#define EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC 2
+#define EMERGENCY_PLATE_OD_WARNING 1
+#define EMERGENCY_PLATE_ADJUSTED_WARNING 2
+
+
+// RESEARCH UPGRADES DEFINES END
 
 // Statistics defines
 #define STATISTIC_XENO "xeno"

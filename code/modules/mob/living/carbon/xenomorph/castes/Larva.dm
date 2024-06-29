@@ -160,6 +160,20 @@
 	if(act == "me")
 		return ..()
 
+	switch(stat)
+		if(UNCONSCIOUS)
+			to_chat(src, SPAN_WARNING("You cannot emote while unconscious!"))
+			return FALSE
+		if(DEAD)
+			to_chat(src, SPAN_WARNING("You cannot emote while dead!"))
+			return FALSE
+	if(client)
+		if(client.prefs.muted & MUTE_IC)
+			to_chat(src, SPAN_DANGER("You cannot emote (muted)."))
+			return FALSE
+		if(!client.attempt_talking())
+			return FALSE
+
 	// Otherwise, ""roar""!
 	playsound(loc, "alien_roar_larva", 15)
 	return TRUE

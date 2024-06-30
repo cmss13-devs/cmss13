@@ -44,7 +44,7 @@ export const InfoPanel = () => {
           STATUS: {status}
         </Flex.Item>
         <Flex.Item fontSize={'13px'} mt={0.5}>
-          ESTIMATED SIMULATIONG COST: {estimated_cost}
+          ESTIMATED SIMULATING COST: {estimated_cost}
         </Flex.Item>
         <Flex.Item fontSize={'13px'} mt={0.5}>
           TARGET NAME: {chemical_name}
@@ -459,6 +459,7 @@ export const ModeCreate = (props) => {
                 }
                 disabled={property.is_locked}
                 tooltip={property.conflicting_tooltip}
+                tooltipPosition="bottom"
               >
                 {property.code} {property.level}
               </Button>
@@ -563,7 +564,7 @@ export const CreateControl = (props) => {
 };
 
 export const ChemSimulator = () => {
-  const { act, data } = useBackend();
+  const { data } = useBackend();
   const { is_picking_recipe } = data;
   const [selectedMode, setSelectedMode] = useSharedState('modes');
   const [complexityMenu, setComplexityMenu] = useSharedState(

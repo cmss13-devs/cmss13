@@ -116,7 +116,7 @@
 /area/lv759/indoors/derelict_ship
 	name = "Derelict Ship"
 	icon_state = "derelictship"
-	ceiling = CEILING_DEEP_UNDERGROUND
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 	flags_area = AREA_NOTUNNEL
 	ambience_exterior = AMBIENCE_DERELICT
 	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP

@@ -196,6 +196,7 @@
 	item_state = "flametank_large"
 	max_rounds = 250
 	gun_type = /obj/item/weapon/gun/flamer/M240T
+	custom = TRUE
 
 	max_intensity = 80
 	max_range = 5

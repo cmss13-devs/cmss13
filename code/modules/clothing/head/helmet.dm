@@ -986,9 +986,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor/night_vision/marine_raider, new /obj/item/device/helmet_visor/security)
 	start_down_visor_type = /obj/item/device/helmet_visor/night_vision/marine_raider
 
+// Reserach \\
+
 /obj/item/clothing/head/helmet/marine/caustic
-	name = "\improper ANCW Helmet"
-	desc = "It's a Z-210-C Helmet. Its fitted with an integrated gasmask and visor. The inside is cushioned with cool gelpads to protect against harsh temperature changes and heavy impacts."
+	name = "\improper Z-210 Helmet"
+	desc = "It's a ANCW Helmet. Its fitted with an integrated gasmask and visor. The inside is cushioned with cool gelpads to protect against harsh temperature changes and heavy impacts."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "caustic_H"
 	item_state = "caustic_H"
@@ -996,7 +998,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_VERYLOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM

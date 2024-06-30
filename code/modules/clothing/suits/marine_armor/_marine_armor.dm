@@ -670,9 +670,9 @@
 // Research Armor \\
 
 /obj/item/clothing/suit/storage/marine/caustic
-	name = "\improper ANCW Armor"
-	desc = "A a ligth weigth, piece of Z-210 ANCW Armor. It has incredibly soft cushioning on the inside, thanks to the gel pads. a truck could hit you and you be fine in this."
-	desc_lore = "A special pice of armormend developed against the Xenomporh threat by the USMC top scientists. Based on the design of the Z-110 Acid Neutralizing Combat Wardrobe by Grant Corp, this armor system has been modified to allow soldiers to perform unrestricted in battle. It uses CN-Gel to neutalize even the heaviest of xenomoprh acidcs, and turn their PH level to that of water, wich drips rigth of the superhydrophobicsurface of the armor plates. Its insides are lined with gel cushioning, serving as a storage for the CN-Gel, and to protect the user of heavy impacts. CN-Gel also serves as a great insulator, protecting the user from from the harshest of colds, to the blazing sun. Allowing the user to perform in any enviorment. The original Z-110 was to heavy for active combat, so the new Z-210-C version has been striped down tremendously, barley leaving room for any form of protection against projectiles. Making it unsuitable for combat against human combatance. Grant Corp's openly avilabel NutraGel has been studied by WY and USMC scientist to creat a version of the gel to use xenomorph XX-121 biomatter as a base for Compunt NutraGel, or CN-Gel. Making it clearer, thermoinsulating, thicker, and overall more economic. Allowing a Z-210-C Armor system to be fully operational for weeks before needing to be refilled."
+	name = "\improper Z-210 Armor"
+	desc = "A a ligth weigth, piece of Z-210 ANCW Armor. It has incredibly soft cushioning on the inside, thanks to the gel pads. A truck could hit you and you be fine in this."
+	desc_lore = "A special piece of armormend developed against the Xenomporh threat by the USMC top scientists. Based on the design of the Z-110 Acid Neutralizing Combat Wardrobe by Grant Corp, this armor system has been modified to allow soldiers to perform unrestricted in battle. It uses CN-Gel to neutalize even the heaviest of xenomoprh acidcs, and turn their PH level to that of water, wich glides rigth of the superhydrophobicsurface of the armor plates. Its insides are lined with a combination of fiber and gel cushioning, serving as a storage for the CN-Gel, and to protect the user of heavy impacts. CN-Gel also serves as a great insulator, protecting the user from from the harshest of colds, to the blazing sun. Allowing the user to perform in any enviorment. The original Z-110 was to heavy for active combat so the new Z-210 version has been striped down tremendously, barley leaving room for any form of protection against projectiles. Making it unsuitable for combat against human combatance. Grant Corp's openly avilabel NutraGel has been studied by WY and USMC scientist to creat a version of the gel to use xenomorph XX-121 biomatter, primarily their saliva, as a base for Compound NutraGel, or CN-Gel. Making it clearer, thermoinsulating, thicker, and overall more economic. Allowing a Z-210 Armor system to be fully operational for weeks before needing to be refilled."
 	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	icon_state = "caustic_H"
 	item_state = "caustic_H"
@@ -682,7 +682,7 @@
 	blood_overlay_type = "armor"
 	flags_atom = parent_type::flags_atom | NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_VERYLOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH

@@ -1324,7 +1324,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	circuit = /obj/item/circuitboard/computer/supplycomp/vehicle
 
 	var/list/allowed_roles = list(JOB_TANK_CREW)
-	var/list/in_stock
+	var/list/in_stock = list()
 
 /datum/vehicle_order
 	var/name = "vehicle order"

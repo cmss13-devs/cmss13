@@ -62,7 +62,6 @@
 	..()
 	if(inoperable())
 		icon_state = "modifier_off"
-	SSnano.nanomanager.update_uis(src) // update all UIs attached to src
 
 /obj/structure/machinery/chem_simulator/attackby(obj/item/B, mob/living/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))

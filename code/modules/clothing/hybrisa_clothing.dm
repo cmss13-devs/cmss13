@@ -823,7 +823,7 @@
 
 // Detective Trench-coat
 
-/obj/item/clothing/suit/storage/cmb/hybrisa/detective_coat
+/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat
 	name = "\improper worn beige trench-coat"
 	desc = "A worn beige old style trench-coat, a classic noir style - piece of outerwear."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -832,7 +832,7 @@
 	contained_sprite = TRUE
 	uniform_restricted = null
 
-/obj/item/clothing/suit/storage/cmb/hybrisa/detective_coat/alt
+/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/alt
 	name = "\improper worn grey trench-coat"
 	desc = "A worn grey old style trench-coat, a classic noir style - piece of outerwear."
 	icon_state = "synth_detective_jacket_alt"
@@ -840,7 +840,7 @@
 
 // Executive Trench-coat
 
-/obj/item/clothing/suit/storage/cmb/hybrisa/fur_lined_trench_coat
+/obj/item/clothing/suit/storage/CMB/hybrisa/fur_lined_trench_coat
 	name = "\improper expensive fur-lined trench-coat"
 	desc = "A luxurious fur-lined, antique-styled trench coat that exudes classic noir elegance. This exquisite garment is far beyond the average person's budget, accessible only to high-level executives and elite military personnel."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
@@ -849,7 +849,7 @@
 	contained_sprite = TRUE
 	uniform_restricted = null
 
-/obj/item/clothing/suit/storage/cmb/hybrisa/fur_lined_trench_coat/alt
+/obj/item/clothing/suit/storage/CMB/hybrisa/fur_lined_trench_coat/alt
 	icon_state = "wy_expensive_fur_trenchcoat_alt"
 	item_state = "wy_expensive_fur_trenchcoat_alt"
 
@@ -858,7 +858,7 @@
 
 // CMB Jacket
 
-/obj/item/clothing/suit/storage/cmb/hybrisa
+/obj/item/clothing/suit/storage/CMB/hybrisa
 	name = "\improper CMB Marshal jacket"
 	desc = "A black polyester jacket with a Marshal's badge pinned to it. Representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'

@@ -327,7 +327,6 @@
 
 	name = "Survivor - Hybrisa - CMB Police Officer"
 	assignment = "CMB Affiliated Officer"
-	role_comm_title = "CMB DEP"
 	paygrade = PAY_SHORT_CMBD
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -349,7 +348,7 @@
 	switch(choice)
 		if(1 to 5)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/cmb_peaked_cap, WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/cmb/hybrisa, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
@@ -397,7 +396,6 @@
 /datum/equipment_preset/survivor/hybrisa/doctor
 	name = "Survivor - Hybrisa - Medical Doctor"
 	assignment = "Doctor"
-	role_comm_title = "DOC"
 	skills = /datum/skills/civilian/survivor/doctor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge
@@ -434,7 +432,6 @@
 /datum/equipment_preset/survivor/hybrisa/paramedic
 	name = "Survivor - Hybrisa - Emergency Medical Technician - Paramedic"
 	assignment = "Emergency Medical Technician - Paramedic"
-	role_comm_title = "PARA"
 	paygrade = PAY_SHORT_CPARA
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "EMT - Paramedic"
@@ -485,7 +482,6 @@
 /datum/equipment_preset/survivor/hybrisa/scientist_xenoarchaeologist
 	name = "Survivor - Hybrisa - Xenoarchaeologist"
 	assignment = "Xenoarchaeologist"
-	role_comm_title = "WY-SCI"
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
@@ -542,7 +538,6 @@
 /datum/equipment_preset/survivor/hybrisa/scientist_xenobiologist
 	name = "Survivor - Hybrisa - Xenobiologist"
 	assignment = "Xenobiologist"
-	role_comm_title = "WY-SCI"
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
@@ -588,7 +583,6 @@
 /datum/equipment_preset/survivor/hybrisa/heavy_vehicle_operator
 	name = "Survivor - Hybrisa - Heavy Vehicle Operator"
 	assignment = "Heavy Vehicle Operator"
-	role_comm_title = "H-VEH"
 	skills = /datum/skills/civilian/survivor/trucker
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
@@ -658,7 +652,6 @@
 /datum/equipment_preset/survivor/hybrisa/electrical_engineer
 	name = "Survivor - Hybrisa - Electrical Engineer"
 	assignment = "Electrical Engineer"
-	role_comm_title = "E-ENG"
 	skills = /datum/skills/civilian/survivor/engineer
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
@@ -709,7 +702,6 @@
 /datum/equipment_preset/survivor/hybrisa/construction_worker
 	name = "Survivor - Hybrisa - Construction Worker"
 	assignment = "Construction Worker"
-	role_comm_title = "CON-WRK"
 	skills = /datum/skills/civilian/survivor/engineer
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
@@ -779,7 +771,7 @@
 	var/choice = rand(1,45)
 	switch(choice)
 		if(1 to 10)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/cmb/hybrisa/fur_lined_trench_coat/alt, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/fur_lined_trench_coat/alt, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big, WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform, WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
@@ -788,7 +780,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clipboard(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/spacecash/c1000(new_human), WEAR_IN_BACK)
 		if(10 to 20)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/cmb/hybrisa/fur_lined_trench_coat, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/fur_lined_trench_coat, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big, WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/jacket, WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
@@ -799,7 +791,7 @@
 		if(20 to 30)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/brown, WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black, WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/cmb/hybrisa/fur_lined_trench_coat/alt, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/fur_lined_trench_coat/alt, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable, WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup, WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky, WEAR_IN_BACK)
@@ -807,7 +799,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/spacecash/c1000, WEAR_IN_BACK)
 		if(30 to 40)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/brown/jacket, WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/cmb/hybrisa/fur_lined_trench_coat/alt, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/fur_lined_trench_coat/alt, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable, WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky, WEAR_IN_BACK)
@@ -820,7 +812,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/mod88/penetrating, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/mod88/penetrating, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/jacket_only, WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/cmb/hybrisa/fur_lined_trench_coat, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/fur_lined_trench_coat, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm, WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
@@ -836,9 +828,9 @@
 /datum/equipment_preset/survivor/hybrisa/corporate_goon
 	name = "Survivor - Hybrisa - Weyland-Yutani - Corporate Security Guard"
 	assignment = "Weyland-Yutani - Corporate Security Guard"
-	role_comm_title = "WY-SEC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction_group = FACTION_LIST_SURVIVOR_WY
+	skills = /datum/skills/civilian/survivor/goon
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_EXEC,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL)
 
@@ -905,7 +897,6 @@
 	name = "Survivor - Hybrisa - Weyland-Yutani - Commercial Pilot"
 	assignment = "Weyland-Yutani - Commercial Pilot"
 	skills = /datum/skills/civilian/survivor/wy_pilot
-	role_comm_title = "WY-PO"
 	paygrade = PAY_SHORT_WYPO2
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/captains_spare
@@ -940,7 +931,6 @@
 	name = "Survivor - Hybrisa - KMCC - Miner"
 	assignment = "KMCC - Miner"
 	skills = /datum/skills/civilian/survivor/miner
-	role_comm_title = "KMCC-M"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
@@ -1220,7 +1210,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/synth_detective_hat, WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/blue, WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/detective_synth_uniform, WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/cmb/hybrisa/detective_coat, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black, WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
@@ -1233,7 +1223,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/synth_detective_hat/alt, WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/detective_synth_uniform/alt, WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/cmb/hybrisa/detective_coat/alt, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/alt, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black, WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)

@@ -1301,7 +1301,7 @@
 	switch(choice)
 		if(1 to 5)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/cmb_peaked_cap, WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/cmb/hybrisa, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)

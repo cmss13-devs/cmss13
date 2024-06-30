@@ -819,17 +819,12 @@
 	indestructible = TRUE
 	layer = ABOVE_MOB_LAYER
 
-/obj/structure/prop/hybrisa/engineer/giantpodbroken
+/obj/structure/prop/hybrisa/engineer/giantpod/broken
 	name = "giant hypersleep chamber"
 	desc = "Before you lies a behemoth of what looks like a 'hypersleep chamber', dwarfing everything around it. Within, a fossilized alien presence lies dormant. The chamber itself bears the scars of a violent past, with holes melted in its outer shell, as if something within had erupted outwards with some unknown force. The desiccated remains of the occupant are twisted and contorted, suggesting a violent demise that occurred long ago."
 	icon = 'icons/obj/structures/props/engineerPod.dmi'
 	icon_state = "pod_broken"
 	bound_height = 96
-	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
-	indestructible = TRUE
-	layer = ABOVE_MOB_LAYER
 	density = TRUE
 
 /obj/structure/prop/hybrisa/engineer/giantpod
@@ -841,8 +836,43 @@
 	bound_width = 64
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
 	density = TRUE
+	layer = ABOVE_MOB_LAYER
+	health = 12000
+
+/obj/structure/prop/hybrisa/engineer/giantpod/bullet_act(obj/projectile/P)
+	health -= P.damage
+	..()
+	healthcheck()
+	return TRUE
+
+/obj/structure/prop/hybrisa/engineer/giantpod/proc/explode()
+	visible_message(SPAN_DANGER("[src] crumbles!"), max_distance = 1)
+	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
+
+	deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/engineer/giantpod/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hybrisa/engineer/giantpod/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/engineer/giantpod/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metal_close.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/hybrisa/engineer/giantconsole
 	name = "colossal alien console"

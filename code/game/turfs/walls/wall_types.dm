@@ -1340,9 +1340,18 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	name = "strange metal wall"
 	desc = "Nigh indestructible walls that make up the hull of an unknown ancient ship."
 	icon = 'icons/turf/walls/engineership.dmi'
-	icon_state = "metal"//DMI specific name
+	icon_state = "metal"
 	walltype = WALL_HUNTERSHIP
 	hull = TRUE
+
+/turf/closed/wall/engineership/destructible
+	name = "strange metal wall"
+	desc = "Nigh indestructible walls that make up the hull of an unknown ancient ship."
+	icon = 'icons/turf/walls/engineership.dmi'
+	icon_state = "metal_des"
+	walltype = WALL_HUNTERSHIP
+	hull = 0
+	damage_cap = HEALTH_WALL_ULTRA_REINFORCED
 
 // Rock
 /turf/closed/wall/hybrisa/rock

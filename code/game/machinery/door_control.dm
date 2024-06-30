@@ -263,6 +263,8 @@
 	name = "Quarter Windows Shutters"
 	id = "cl_quarter_windows"
 
+// Hybrisa lockdown announcements
+
 /obj/structure/machinery/door_control/colony_lockdown
 	var/used = FALSE
 
@@ -270,5 +272,17 @@
 	if(used)
 		return
 	. = ..()
-	marine_announcement("The colony-wide lockdown is lifted")
+	marine_announcement("Colony-Wide Lockdown Protocols have been Lifted.")
+	used = TRUE
+
+// Research
+
+/obj/structure/machinery/door_control/research_lockdown
+	var/used = FALSE
+
+/obj/structure/machinery/door_control/research_lockdown/use_button(mob/living/user, force)
+	if(used)
+		return
+	. = ..()
+	marine_announcement("WY-Research Facility Lockdown Protocols have been lifted.")
 	used = TRUE

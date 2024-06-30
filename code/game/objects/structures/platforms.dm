@@ -226,17 +226,19 @@
 	name = "raised metal edge"
 	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
 	climb_delay = 10
+	layer = TURF_LAYER
 
 /obj/structure/platform_decoration/hybrisa/engineer_corner
 	name = "raised metal corner"
 	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
 	icon_state = "engineer_platform_deco"
+	layer = TURF_LAYER
 
 /obj/structure/platform_decoration/hybrisa/engineer_cornerbits
 	name = "raised metal corner"
 	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
 	icon_state = "engineer_platform_platformcorners"
-
+	layer = TURF_LAYER
 
 /obj/structure/platform/hybrisa/rockdark
 	icon_state = "kutjevo_rockdark"

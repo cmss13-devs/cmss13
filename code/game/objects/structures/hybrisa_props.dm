@@ -1462,6 +1462,39 @@
 /obj/structure/machinery/big_computers/messaging_server/brown
 	icon_state = "messageserver_brown"
 
+// Science Computer Stuff
+
+/obj/structure/machinery/big_computers/science_big
+	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
+	name = "synthesis simulator"
+	icon_state = "modifier"
+	bound_width = 64
+	bound_height = 32
+	anchored = TRUE
+	density = TRUE
+	health = 500
+	opacity = FALSE
+
+/obj/structure/machinery/big_computers/science_big/synthesis_simulator
+	name = "synthesis simulator"
+	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
+	icon_state = "modifier"
+
+/obj/structure/machinery/big_computers/science_big/protolathe
+	name = "chemical storage system"
+	desc = 	desc = "Storage system for a large supply of chemicals, which slowly recharges."
+	icon_state = "protolathe"
+
+/obj/structure/machinery/big_computers/science_big/operator_machine
+	name = "synthesis simulator"
+	desc = 	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
+	icon_state = "operator"
+
+/obj/structure/machinery/big_computers/science_big/operator_machine_open
+	name = "synthesis simulator"
+	desc = 	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
+	icon_state = "operator_open"
+
 // Monitors
 
 /obj/structure/prop/hybrisa/misc/machinery/screens

@@ -62,14 +62,21 @@ export const InfoPanel = () => {
 
 export const Controls = (props) => {
   const { act, data } = useBackend();
-  const { selectedMode, setSelectedMode, complexityMenu, setComplexityMenu } =
-    props;
+  const {
+    selectedMode,
+    setSelectedMode,
+    complexityMenu,
+    setComplexityMenu,
+    setSelectedReferenceProperty,
+    setSelectedTargetProperty,
+  } = props;
   const {
     mode_data,
     can_simulate,
     can_eject_target,
     can_eject_reference,
     can_cancel_simulation,
+    lock_control,
   } = data;
   return (
     <Flex>
@@ -83,13 +90,14 @@ export const Controls = (props) => {
                   act('simulate');
                 }}
                 disabled={!can_simulate}
+                icon={'radiation'}
               >
                 SIMULATE
               </Button>
             ) : (
               <Button
                 fluid
-                icon={'fill-circle-xmark'}
+                icon={'circle-xmark'}
                 color={'red'}
                 onClick={() => {
                   act('cancel_simulation');
@@ -104,8 +112,10 @@ export const Controls = (props) => {
               fluid
               onClick={() => {
                 act('eject_target');
+                setSelectedTargetProperty(null);
               }}
-              disabled={!can_eject_target}
+              disabled={!can_eject_target || lock_control}
+              icon={can_eject_target ? 'eject' : 'file-import'}
             >
               EJECT TARGET
             </Button>
@@ -115,8 +125,10 @@ export const Controls = (props) => {
               fluid
               onClick={() => {
                 act('eject_reference');
+                setSelectedReferenceProperty(null);
               }}
-              disabled={!can_eject_reference}
+              disabled={!can_eject_reference || lock_control}
+              icon={can_eject_reference ? 'eject' : 'file-import'}
             >
               EJECT REFERENCE
             </Button>
@@ -129,6 +141,7 @@ export const Controls = (props) => {
                 setComplexityMenu(!complexityMenu);
               }}
               selected={complexityMenu}
+              icon={'hard-drive'}
             >
               COMPLEXITY
             </Button>
@@ -146,8 +159,9 @@ export const Controls = (props) => {
                   setSelectedMode(mode_data.mode_id);
                 }}
                 tooltip={mode_data.desc}
-                icon={mode_data.icon}
-                disabled={mode_data.mode_id === selectedMode}
+                icon={mode_data.icon_type}
+                disabled={mode_data.mode_id === selectedMode || lock_control}
+                tooltipPosition="bottom"
               >
                 {mode_data.name}
               </Button>
@@ -159,9 +173,9 @@ export const Controls = (props) => {
   );
 };
 
-export const RecipeOptions = (props) => {
+export const RecipeOptions = () => {
   const { act, data } = useBackend();
-  const [selectedRecipe, setSelectedRecipe] = useSharedState(false);
+  const [selectedRecipe, setSelectedRecipe] = useSharedState('recipe', null);
   const { reagent_option_data } = data;
   return (
     <Stack vertical>
@@ -171,17 +185,20 @@ export const RecipeOptions = (props) => {
           bold
           textAlign={'center'}
           width={28}
-          height={3}
+          height={2.6}
           fluid
+          disabled={selectedRecipe === null}
+          mb={'5px'}
           onClick={() => {
             act('submit_recipe_pick', { reagent_picked: selectedRecipe });
+            setSelectedRecipe(null);
           }}
         >
           <h3>FINALIZE</h3>
         </Button>
         {map(reagent_option_data, (recipe, id) => (
           <Button
-            my={0.1}
+            my={0.2}
             lineHeight={1.5}
             bold
             textAlign={'center'}
@@ -202,38 +219,55 @@ export const RecipeOptions = (props) => {
   );
 };
 
-export const ModeChange = () => {
+export const ModeChange = (props) => {
   const { act, data } = useBackend();
   const { target_data, lock_control } = data;
-  const [selectedProperty, setSelectedProperty] = useSharedState(false);
+  const { selectedTargetProperty, setSelectedTargetProperty } = props;
   return (
     (target_data && (
       <Flex ml={5} fontSize={1.2} width={60} height={20} mt={5}>
-        <Flex.Item width={20}>
-          {map(target_data, (property, key) => (
-            <Button
-              bold
-              m={0.6}
-              width={8}
-              textAlign={'center'}
-              onClick={() => {
-                act('select_target_property', {
-                  property_code: property.code,
-                });
-                setSelectedProperty(property.code);
-              }}
-              selected={selectedProperty === property.code ? true : false}
-              disabled={lock_control}
-            >
-              {property.code} {property.level}
-            </Button>
-          ))}
-        </Flex.Item>
-        <Flex.Item width={30}>
+        <Stack vertical>
+          <Stack.Item
+            bold
+            backgroundColor={'#232429'}
+            py={0.5}
+            opacity={0.7}
+            mx={1}
+            textAlign="center"
+          >
+            Target Data
+          </Stack.Item>
+          <Stack.Item>
+            <Flex.Item width={20} textAlign="center">
+              {map(target_data, (property) => (
+                <Button
+                  bold
+                  m={0.6}
+                  width={8}
+                  textAlign={'center'}
+                  onClick={() => {
+                    act('select_target_property', {
+                      property_code: property.code,
+                    });
+                    setSelectedTargetProperty(property.code);
+                  }}
+                  selected={
+                    selectedTargetProperty === property.code ? true : false
+                  }
+                  disabled={lock_control}
+                >
+                  {property.code} {property.level}
+                </Button>
+              ))}
+            </Flex.Item>
+          </Stack.Item>
+        </Stack>
+
+        <Flex.Item width={30} grow>
           {map(
             target_data,
             (property) =>
-              property.code === selectedProperty && (
+              property.code === selectedTargetProperty && (
                 <Stack vertical>
                   <Stack.Item>
                     <Section title={property.name}>{property.desc}</Section>
@@ -254,39 +288,60 @@ export const ModeChange = () => {
   );
 };
 
-export const ModeRelate = () => {
+export const ModeRelate = (props) => {
   const { act, data } = useBackend();
   const { target_data, reference_data, lock_control } = data;
-  const [selectedTargetProperty, setSelectedTargetProperty] = useSharedState(
-    'target',
-    false,
-  );
-  const [selectedReferenceProperty, setSelectedReferenceProperty] =
-    useSharedState('reference', false);
+  const {
+    setSelectedTargetProperty,
+    setSelectedReferenceProperty,
+    selectedReferenceProperty,
+    selectedTargetProperty,
+  } = props;
   return (
     (target_data && reference_data && (
       <Flex ml={3} fontSize={1.2} maxWidth={70} height={20} mt={5}>
-        <Flex.Item maxWidth={18} minWidth={18} textAlign="center" height={10}>
-          {map(target_data, (property) => (
-            <Button
-              bold
-              m={0.6}
-              width={8}
-              textAlign={'center'}
-              onClick={() => {
-                act('select_target_property', {
-                  property_code: property.code,
-                });
-                setSelectedTargetProperty(property.code);
-              }}
-              selected={selectedTargetProperty === property.code ? true : false}
-              disabled={lock_control || property.is_locked}
-              tooltip={property.tooltip}
+        <Stack vertical>
+          <Stack.Item
+            bold
+            backgroundColor={'#232429'}
+            py={1}
+            opacity={0.7}
+            mx={1}
+            textAlign="center"
+          >
+            Target Data
+          </Stack.Item>
+          <Stack.Item>
+            <Flex.Item
+              maxWidth={18}
+              minWidth={18}
+              textAlign="center"
+              height={10}
             >
-              {property.code} {property.level}
-            </Button>
-          ))}
-        </Flex.Item>
+              {map(target_data, (property) => (
+                <Button
+                  bold
+                  m={0.6}
+                  width={8}
+                  textAlign={'center'}
+                  onClick={() => {
+                    act('select_target_property', {
+                      property_code: property.code,
+                    });
+                    setSelectedTargetProperty(property.code);
+                  }}
+                  selected={
+                    selectedTargetProperty === property.code ? true : false
+                  }
+                  disabled={lock_control || property.is_locked}
+                  tooltip={property.tooltip}
+                >
+                  {property.code} {property.level}
+                </Button>
+              ))}
+            </Flex.Item>
+          </Stack.Item>
+        </Stack>
         <Flex.Item
           maxWidth={18}
           minWidth={18}
@@ -294,32 +349,52 @@ export const ModeRelate = () => {
           height={10}
           mr={1}
         >
-          {map(reference_data, (property) => (
-            <Button
+          <Stack vertical>
+            <Stack.Item
               bold
-              m={0.6}
-              width={8}
-              textAlign={'center'}
-              onClick={() => {
-                act('select_reference_property', {
-                  property_code: property.code,
-                });
-                setSelectedReferenceProperty(property.code);
-              }}
-              selected={
-                selectedReferenceProperty === property.code ? true : false
-              }
-              disabled={lock_control || property.is_locked}
-              tooltip={property.tooltip}
+              backgroundColor={'#232429'}
+              py={1}
+              opacity={0.8}
+              textAlign="center"
             >
-              {property.code} {property.level}
-            </Button>
-          ))}
+              Reference Data
+            </Stack.Item>
+            <Stack.Item>
+              <Flex.Item
+                maxWidth={18}
+                minWidth={18}
+                textAlign="center"
+                height={10}
+              >
+                {map(reference_data, (property) => (
+                  <Button
+                    bold
+                    m={0.6}
+                    width={8}
+                    textAlign={'center'}
+                    onClick={() => {
+                      act('select_reference_property', {
+                        property_code: property.code,
+                      });
+                      setSelectedReferenceProperty(property.code);
+                    }}
+                    selected={
+                      selectedReferenceProperty === property.code ? true : false
+                    }
+                    disabled={lock_control || property.is_locked}
+                    tooltip={property.tooltip}
+                  >
+                    {property.code} {property.level}
+                  </Button>
+                ))}
+              </Flex.Item>
+            </Stack.Item>
+          </Stack>
         </Flex.Item>
-        <Flex.Item maxWidth={25}>
+        <Flex.Item maxWidth={25} grow>
           {map(
             target_data,
-            (property, key) =>
+            (property) =>
               property.code === selectedTargetProperty && (
                 <Stack vertical>
                   <Stack.Item>
@@ -489,9 +564,18 @@ export const CreateControl = (props) => {
 
 export const ChemSimulator = () => {
   const { act, data } = useBackend();
-  const { clearance, credits, status, is_picking_recipe, is_ready } = data;
-  const [selectedMode, setSelectedMode] = useSharedState(1);
-  const [complexityMenu, setComplexityMenu] = useSharedState(2, false);
+  const { is_picking_recipe } = data;
+  const [selectedMode, setSelectedMode] = useSharedState('modes');
+  const [complexityMenu, setComplexityMenu] = useSharedState(
+    'complexity_flip',
+    false,
+  );
+  const [selectedTargetProperty, setSelectedTargetProperty] = useSharedState(
+    'target',
+    false,
+  );
+  const [selectedReferenceProperty, setSelectedReferenceProperty] =
+    useSharedState('reference_relate', false);
   return (
     <Window width={800} height={450} theme={'weyland'}>
       <Window.Content>
@@ -506,14 +590,33 @@ export const ChemSimulator = () => {
                 setSelectedMode={setSelectedMode}
                 complexityMenu={complexityMenu}
                 setComplexityMenu={setComplexityMenu}
+                setSelectedTargetProperty={setSelectedTargetProperty}
+                setSelectedReferenceProperty={setSelectedReferenceProperty}
               />
             )) || <RecipeOptions />}
           </Flex.Item>
         </Flex>
         <Divider />
-        {selectedMode === 1 && <ModeChange />}
-        {selectedMode === 2 && <ModeChange />}
-        {selectedMode === 3 && <ModeRelate />}
+        {selectedMode === 1 && (
+          <ModeChange
+            setSelectedTargetProperty={setSelectedTargetProperty}
+            selectedTargetProperty={selectedTargetProperty}
+          />
+        )}
+        {selectedMode === 2 && (
+          <ModeChange
+            setSelectedTargetProperty={setSelectedTargetProperty}
+            selectedTargetProperty={selectedTargetProperty}
+          />
+        )}
+        {selectedMode === 3 && (
+          <ModeRelate
+            setSelectedTargetProperty={setSelectedTargetProperty}
+            selectedTargetProperty={selectedTargetProperty}
+            setSelectedReferenceProperty={setSelectedReferenceProperty}
+            selectedReferenceProperty={selectedReferenceProperty}
+          />
+        )}
         {selectedMode === 4 && <ModeCreate complexityMenu={complexityMenu} />}
       </Window.Content>
     </Window>

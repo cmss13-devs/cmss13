@@ -186,7 +186,7 @@
 	if(mode == MODE_CREATE)
 		for(var/datum/chem_property/known_properties in GLOB.chemical_data.research_property_data)
 			var/datum/chem_property/template_property
-			var/is_locked = FALSE //fix me
+			var/is_locked = FALSE
 			var/conflicting_tooltip = null
 			if(template_filter && !HAS_FLAG(known_properties.category, template_filter))
 				continue
@@ -223,6 +223,7 @@
 			"name" = modes_datum.name,
 			"desc" = modes_datum.desc,
 			"mode_id" = modes_datum.mode_id,
+			"icon_type" = modes_datum.icon_type
 		))
 	return static_data
 
@@ -554,6 +555,9 @@
 				if(target_property.level >= GLOB.chemical_data.clearance_level*TECHTREE_LEVEL_MULTIPLIER + 2 && GLOB.chemical_data.clearance_level < 5)
 					status_bar = "CLEARANCE INSUFFICIENT FOR AMPLIFICATION"
 					return FALSE
+		else
+			status_bar = "TARGET NOT SELECTED"
+			return FALSE
 		if(target && length(target.data.properties) < 2)
 			status_bar = "TARGET COMPLEXITY IMPROPER FOR RELATION"
 			return FALSE
@@ -576,6 +580,9 @@
 						if(reference_property.category & PROPERTY_TYPE_UNADJUSTABLE)
 							status_bar = "REFERENCE PROPERTY CAN NOT BE SIMULATED"
 							return FALSE
+				else
+					status_bar = "REFERENCE PROPERTY NOT SELECTED"
+					return FALSE
 	if(mode == MODE_CREATE)
 		if(!LAZYLEN(creation_template))
 			status_bar = "TEMPLATE IS EMPTY"
@@ -743,31 +750,31 @@
 	var/name
 	var/desc
 	var/mode_id
-	var/icon
+	var/icon_type
 
 /datum/chemical_simulator_modes/create
 	name = "CREATE"
 	desc = "Create a new custom chemical from the known properties discovered earlier"
 	mode_id = MODE_CREATE
-	icon = "minus"
+	icon_type = "bolt"
 
 /datum/chemical_simulator_modes/supress
 	name = "SUPRESS"
 	desc = "Supress one level in the choosen property. This decreases the OD level."
 	mode_id = MODE_SUPPRESS
-	icon = "minus"
+	icon_type = "square-minus"
 
 /datum/chemical_simulator_modes/amplify
 	name = "AMPLIFY"
 	desc = "Amplify one level in the choosen property. This decreases the OD level"
 	mode_id = MODE_AMPLIFY
-	icon = "plus"
+	icon_type = "square-plus"
 
 /datum/chemical_simulator_modes/relate
 	name = "RELATE"
 	desc = "Use the reference chemical to replace one choosen property in the target chemical. The target and reference target property level must be equal."
 	mode_id = MODE_RELATE
-	icon = "minus"
+	icon_type = "repeat"
 
 #undef SIMULATION_FAILURE
 #undef SIMULATION_STAGE_OFF

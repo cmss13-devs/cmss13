@@ -51,82 +51,13 @@
 	var/latejoin_enabled = TRUE
 	var/force_spawning = FALSE
 
-/////////////
-//XENO DEFS//
-/////////////
-	var/mob/living/carbon/xenomorph/queen/living_xeno_queen
-	var/egg_planting_range = 15
-	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
-	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
-	var/destruction_allowed = XENO_LEADER //Who can destroy special structures
-	var/unnesting_allowed = TRUE
-	var/queen_leader_limit = 2
-	var/lesser_drone_limit = 0 //How many lesser drones the hive can support
-	var/lesser_drone_minimum = 2 //Slots available for lesser drones will never go below this number
-	var/playable_lesser_drones_max_divisor = 3 //This number divides the total xenos counted for slots to give the max number of lesser drones
-	var/list/open_xeno_leader_positions = list(1, 2) //Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
-	var/list/xeno_leader_list[2] //Ordered list (i.e. index n holds the nth xeno leader)
-	var/partial_larva = 0
-	var/stored_larva = 0
-	var/list/free_slots = list(
-		/datum/caste_datum/burrower = 1,
-		/datum/caste_datum/hivelord = 1,
-		/datum/caste_datum/carrier = 1
-	) //Assoc list of free slots available to specific castes
-	var/list/used_slots = list() //Assoc list of slots currently used by specific castes (for calculating free_slot usage)
-	var/list/tier_2_xenos = list() //list of living tier2 xenos
-	var/list/tier_3_xenos = list() //list of living tier3 xenos
-	var/xeno_queen_timer
-	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
-	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
-	var/obj/effect/alien/resin/special/pylon/core/faction_location = null //Set to ref every time a core is built, for defining the hive location.
-	var/crystal_stored = 0 //How much stockpiled material is stored for the hive to use.
-	var/datum/mutator_set/hive_mutations/mutators = new
-	var/tier_slot_multiplier = 1.0
-	var/larva_gestation_multiplier = 1.0
-	var/bonus_larva_spawn_chance = 1.0
-	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of pooled
-	var/hijack_burrowed_left = 0 //how many burrowed is going to spawn during larva surge
-	var/ignore_slots = FALSE
-	var/dynamic_evolution = TRUE
-	var/evolution_rate = 3 //Only has use if dynamic_evolution is false
-	var/evolution_bonus = 0
-	var/allow_no_queen_actions = FALSE
-	var/evolution_without_ovipositor = TRUE //Temporary for the roundstart.
-	var/allow_queen_evolve = TRUE //Set to true if you want to prevent evolutions into Queens
-	var/hardcore = FALSE //Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
-	var/list/hive_inherant_traits
-	var/mob/living/carbon/leading_cult_sl //Cultist Info
-	var/list/faction_structures_limit = list(
-		XENO_STRUCTURE_CORE = 1,
-		XENO_STRUCTURE_PYLON = 2,
-		XENO_STRUCTURE_CLUSTER = 8,
-		XENO_STRUCTURE_POOL = 1,
-		XENO_STRUCTURE_EGGMORPH = 6,
-		XENO_STRUCTURE_EVOPOD = 2,
-		XENO_STRUCTURE_RECOVERY = 6,
-	) //List of how many maximum of each special structure you can have
-	var/global/list/faction_structure_types = list(
-		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
-		XENO_STRUCTURE_PYLON = /datum/construction_template/xenomorph/pylon,
-		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
-		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
-		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery
-	)
-	var/list/list/faction_structures = list() //Stringref list of structures that have been built
-	var/list/list/faction_constructions = list() //Stringref list of structures that are being built
+
 	var/datum/mark_menu_ui/mark_ui
 	var/datum/hive_status_ui/faction_ui
 	var/datum/faction_task_ui/task_interface
 	var/datum/objective_memory_storage/objective_memory
 	var/datum/objective_memory_interface/objective_interface
 	var/datum/research_objective_memory_interface/research_objective_interface
-	var/list/tunnels = list()
-	var/list/resin_marks = list()
-	var/list/banished_ckeys = list()
-	var/hivecore_cooldown = FALSE
-	var/hugger_timelock = 15 MINUTES //When can huggers join the round
-	var/playable_hugger_limit = 0 //How many huggers can the hive support
 
 //////////////
 /datum/faction/New()

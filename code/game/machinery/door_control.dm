@@ -262,3 +262,13 @@
 /obj/structure/machinery/door_control/cl/quarter/windows
 	name = "Quarter Windows Shutters"
 	id = "cl_quarter_windows"
+
+/obj/structure/machinery/door_control/colony_lockdown
+	var/used = FALSE
+
+/obj/structure/machinery/door_control/colony_lockdown/use_button(mob/living/user, force)
+	if(used)
+		return
+	. = ..()
+	marine_announcement("The colony-wide lockdown is lifted")
+	used = TRUE

@@ -57,9 +57,8 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "am" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached14"
 	},
 /area/bigredv2/outside/se)
 "an" = (
@@ -121,9 +120,8 @@
 /area/bigredv2/outside/filtration_plant)
 "av" = (
 /obj/item/tool/warning_cone,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached4"
 	},
 /area/bigredv2/outside/se)
 "aw" = (
@@ -132,9 +130,8 @@
 	},
 /area/bigredv2/outside/se)
 "ax" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached4"
 	},
 /area/bigredv2/outside/se)
 "ay" = (
@@ -195,9 +192,8 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "aG" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached15"
 	},
 /area/bigredv2/outside/se)
 "aH" = (
@@ -209,11 +205,6 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/filtration_plant)
-"aJ" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/se)
 "aK" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_3"
@@ -786,6 +777,11 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/filtration_plant)
+"pg" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/bigredv2/outside/se)
 "qi" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -853,6 +849,9 @@
 	icon_state = "mars_cave_7"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
+"zP" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/se)
 "Ap" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -907,6 +906,16 @@
 	icon_state = "darkyellow2"
 	},
 /area/bigredv2/outside/filtration_plant)
+"LG" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached1"
+	},
+/area/bigredv2/outside/se)
+"LR" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/bigredv2/outside/se)
 "Ms" = (
 /obj/structure/machinery/computer3/server/rack,
 /obj/effect/decal/warning_stripes{
@@ -969,6 +978,11 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/filtration_plant)
+"Uw" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached2"
+	},
+/area/bigredv2/outside/se)
 "UH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner"
@@ -1465,10 +1479,10 @@ bO
 bO
 "}
 (17,1,1) = {"
-am
-am
-am
-am
+Uw
+LR
+LR
+LR
 am
 aY
 Ee
@@ -1493,10 +1507,10 @@ bO
 "}
 (18,1,1) = {"
 av
-am
-am
-am
-am
+zP
+zP
+zP
+pg
 et
 bW
 bW
@@ -1520,10 +1534,10 @@ bO
 "}
 (19,1,1) = {"
 ax
-am
-am
-am
-am
+zP
+zP
+zP
+pg
 et
 bW
 bW
@@ -1547,10 +1561,10 @@ bO
 "}
 (20,1,1) = {"
 ax
-am
-am
-am
-am
+zP
+zP
+zP
+pg
 et
 FI
 FI
@@ -1574,9 +1588,9 @@ bO
 "}
 (21,1,1) = {"
 ax
-am
-am
-aG
+zP
+zP
+LG
 aG
 aY
 qi
@@ -1600,9 +1614,9 @@ bO
 bO
 "}
 (22,1,1) = {"
-am
-am
-aJ
+zP
+zP
+pg
 aw
 aK
 aY
@@ -1627,9 +1641,9 @@ bO
 bO
 "}
 (23,1,1) = {"
-am
-am
-aJ
+zP
+zP
+pg
 aK
 bK
 bK
@@ -1654,9 +1668,9 @@ bO
 bO
 "}
 (24,1,1) = {"
-am
-am
-aJ
+zP
+zP
+pg
 aK
 bK
 bK

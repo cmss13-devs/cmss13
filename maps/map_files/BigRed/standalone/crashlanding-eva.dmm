@@ -71,7 +71,11 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "aL" = (
-/obj/structure/machinery/washing_machine,
+/obj/item/clothing/under/darkred{
+	pixel_y = 7;
+	pixel_x = 10
+	},
+/obj/structure/surface/rack,
 /obj/item/clothing/under/darkred,
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -329,15 +333,28 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bK" = (
-/obj/structure/machinery/washing_machine,
-/obj/item/clothing/under/lightbrown,
+/obj/structure/surface/table,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/item/prop/helmetgarb/spent_buckshot{
+	pixel_x = 9;
+	pixel_y = -10
+	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
 /area/bigredv2/outside/general_offices)
 "bL" = (
-/obj/structure/machinery/washing_machine,
-/obj/item/clothing/under/brown,
+/obj/structure/surface/table,
+/obj/item/clothing/under/brown{
+	pixel_y = 7;
+	pixel_x = 12
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 8
+	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -407,13 +424,6 @@
 /turf/open/floor{
 	icon_state = "wall_thermite"
 	},
-/area/bigredv2/outside/general_offices)
-"bV" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/tool,
-/obj/effect/spawner/random/tool,
-/obj/effect/spawner/random/tool,
-/turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "bW" = (
 /obj/structure/machinery/light{
@@ -499,8 +509,6 @@
 /area/bigredv2/outside/general_offices)
 "cl" = (
 /obj/structure/surface/rack,
-/obj/effect/spawner/random/tool,
-/obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "cm" = (
@@ -1032,15 +1040,63 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/general_offices)
+"uV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/general_offices)
+"vJ" = (
+/obj/structure/surface/table,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_y = -7;
+	pixel_x = 8
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_y = 3;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/general_offices)
+"xf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/general_offices)
 "xT" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_6"
 	},
 /area/bigredv2/caves_north)
+"CP" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/general_offices)
+"DF" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/general_offices)
 "EO" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy20"
+	},
+/area/bigredv2/outside/general_offices)
+"Ig" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/tool,
+/turf/open/floor{
+	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/general_offices)
 "IB" = (
@@ -1055,10 +1111,58 @@
 	icon_state = "panelscorched"
 	},
 /area/bigredv2/outside/general_offices)
+"Na" = (
+/obj/structure/bed/bedroll,
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/general_offices)
+"Pf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/general_offices)
+"XF" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/general_offices)
+"XR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/chef,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/general_offices)
+"Yo" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/general_offices)
 "Zt" = (
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle/dropship/can_surgery/dark_grey,
+/area/bigredv2/outside/general_offices)
+"ZN" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/under/lightbrown{
+	pixel_x = 10;
+	pixel_y = -5
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
 /area/bigredv2/outside/general_offices)
 
 (1,1,1) = {"
@@ -1227,11 +1331,11 @@ eF
 aB
 aL
 bd
-bd
+CP
 bd
 bK
 aB
-bV
+cl
 cl
 cl
 aB
@@ -1256,15 +1360,15 @@ eF
 eF
 eF
 aB
-aM
+ZN
+uV
+XF
 bd
-bd
-bd
-aM
+vJ
 aB
 bW
 bl
-aO
+Yo
 aB
 cF
 aK
@@ -1287,10 +1391,10 @@ eF
 eF
 eF
 aB
-aM
 bd
-bd
-bd
+Pf
+XF
+uV
 bL
 aB
 bX
@@ -1320,15 +1424,15 @@ eF
 aB
 aM
 be
-bd
+Na
 bd
 bf
 bT
 bY
-bl
+Ig
 aO
 bU
-bl
+xf
 aO
 dd
 aB
@@ -1390,8 +1494,8 @@ aO
 bl
 bl
 aK
-bl
-aO
+XR
+DF
 aX
 aB
 dp

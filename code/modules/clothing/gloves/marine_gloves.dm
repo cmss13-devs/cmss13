@@ -227,7 +227,7 @@
 	desc = "A pair of ANCW Gloves. Their insides are incredibly soft and cool to the touch."
 	icon_state = "caustic_H"
 	item_state = "caustic_H"
-	siemens_coefficient = 0.9
+	siemens_coefficient = 1
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_VERYLOW
 	armor_laser = CLOTHING_ARMOR_LOW

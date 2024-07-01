@@ -692,5 +692,5 @@
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	unacidable = TRUE
 	storage_slots = 2
-	siemens_coefficient = 0.9
+	siemens_coefficient = 1
 	slowdown = SLOWDOWN_ARMOR_LIGHT

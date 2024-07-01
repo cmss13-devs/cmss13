@@ -95,7 +95,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
-	siemens_coefficient = 0.9
+	siemens_coefficient = 1
 
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"

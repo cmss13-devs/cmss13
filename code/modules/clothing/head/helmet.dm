@@ -986,7 +986,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor/night_vision/marine_raider, new /obj/item/device/helmet_visor/security)
 	start_down_visor_type = /obj/item/device/helmet_visor/night_vision/marine_raider
 
-// Reserach \\
+//=============================//Research\\==================================\\
 
 /obj/item/clothing/head/helmet/marine/caustic
 	name = "\improper Z-210 Helmet"
@@ -1008,9 +1008,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_HEAD
-	gas_transfer_coefficient = 0.01
+	gas_transfer_coefficient = 0.1
 	permeability_coefficient = 0.9
-	siemens_coefficient = 0.9
+	siemens_coefficient = 1
 	flags_inventory = BLOCKSHARPOBJ|COVERMOUTH|COVEREYES|ALLOWINTERNALS|BLOCKGASEFFECT|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR|HIDEMASK|HIDELOWHAIR|HIDEFACE
 	unacidable = TRUE

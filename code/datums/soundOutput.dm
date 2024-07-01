@@ -4,6 +4,9 @@
 	var/list/soundscape_playlist = list() //Updated on changing areas
 	var/ambience = null //The file currently being played as ambience
 	var/status_flags = 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
+	var/list/echo
+	var/list/current_sounds = list()
+	var/list/source_sounds = list()
 
 	/// Currently applied environmental reverb.
 	VAR_PROTECTED/owner_environment = SOUND_ENVIRONMENT_NONE
@@ -24,7 +27,7 @@
 	owner = null
 	return ..()
 
-#define SMOOTHING 1 // How much smoothing when moving between tiles, smaller is more smoothing
+#define SMOOTHING 1 // How much smoothing when moving between tiles, smaller value means more smoothing
 
 /datum/soundOutput/proc/update_sounds(atom/user, direction)
 	SIGNAL_HANDLER
@@ -40,6 +43,22 @@
 					process_sound(current_sounds[channel], TRUE, -1+i/32)
 				if(8)
 					process_sound(current_sounds[channel], TRUE, 1-i/32, 0)
+
+/datum/soundOutput/proc/update_sounds_from_source(atom/source, direction)
+	SIGNAL_HANDLER
+	for(var/channel in source_sounds[source])
+		for(var/i in 0 to round(32/SMOOTHING))
+			i = i * SMOOTHING
+			switch(direction)
+				if(1)
+					process_sound(current_sounds[channel], TRUE, 0, 1+i/32)
+				if(2)
+					process_sound(current_sounds[channel], TRUE, 0, -1-i/32)
+				if(4)
+					process_sound(current_sounds[channel], TRUE, 1+i/32)
+				if(8)
+					process_sound(current_sounds[channel], TRUE, -1-i/32, 0)
+
 /datum/soundOutput/proc/remove_sound(channel)
 	current_sounds -= channel
 
@@ -54,12 +73,16 @@
 	S.falloff = T.falloff
 	S.status = update ? SOUND_UPDATE : T.status 
 	if(!update)
-		S.params = list("on-end" = ".soundend [S.channel]")
+		S.params = list("on-end" = ".soundend [S.channel] [T.source]")
 
 
 	var/turf/source_turf
 	if(!QDELETED(T.source))
 		source_turf = get_turf(T.source)
+
+		if(!update && istype(T.source, /atom/movable))
+			source_sounds[T.source] = T
+			RegisterSignal(T.source, COMSIG_MOVABLE_MOVED, PROC_REF(update_sounds))
 	else
 		source_turf = locate(T.x, T.y, T.z)
 
@@ -87,10 +110,14 @@
 		current_sounds[num2text(S.channel)] = T
 	sound_to(owner, S)
 
-/client/verb/sound_ended(channel as num)
+/client/verb/sound_ended(channel as num, source as atom)
 	set name = ".soundend"
 
 	soundOutput.remove_sound(num2text(channel))
+
+	if(soundOutput.source_sounds[source])
+		soundOutput.source_sounds -= source
+		UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
 	
 
 /datum/soundOutput/proc/update_ambience(area/target_area, ambience_override, force_update = FALSE)

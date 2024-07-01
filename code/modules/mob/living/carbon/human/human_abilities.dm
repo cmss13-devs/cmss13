@@ -347,7 +347,7 @@ CULT
 
 	H.put_in_any_hand_if_possible(new /obj/item/device/flashlight, FALSE, TRUE)
 
-	playsound(H.loc, 'sound/voice/scream_horror1.ogg', 25)
+	playsound(H, 'sound/voice/scream_horror1.ogg', 25)
 
 	H.visible_message(SPAN_HIGHDANGER("[H] puts on their robes."), SPAN_WARNING("You put on your robes."))
 	for(var/datum/action/human_action/activable/cult/obtain_equipment/O in H.actions)

@@ -80,9 +80,9 @@
 
 /datum/species/zombie/handle_unique_behavior(mob/living/carbon/human/zombie)
 	if(prob(5))
-		playsound(zombie.loc, basic_moan, 15, basic_variance)
+		playsound(zombie, basic_moan, 15, basic_variance)
 	else if(prob(5))
-		playsound(zombie.loc, rare_moan, 15, rare_variance)
+		playsound(zombie, rare_moan, 15, rare_variance)
 
 /datum/species/zombie/handle_death(mob/living/carbon/human/zombie, gibbed)
 	set waitfor = FALSE

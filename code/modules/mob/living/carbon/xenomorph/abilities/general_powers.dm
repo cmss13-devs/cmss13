@@ -757,7 +757,7 @@
 	if(xeno.ammo.spit_windup)
 		spitting = TRUE
 		if(xeno.ammo.pre_spit_warn)
-			playsound(xeno.loc,"alien_drool", 55, 1)
+			playsound(xeno, "alien_drool", 55, 1)
 		to_chat(xeno, SPAN_WARNING("We begin to prepare a large spit!"))
 		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),\
 		SPAN_WARNING("We begin to spit [xeno.ammo.name]!"))
@@ -775,7 +775,7 @@
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"), \
 
 	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )
-	playsound(xeno.loc, sound_to_play, 25, 1)
+	playsound(xeno, sound_to_play, 25, 1)
 
 	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
 	proj.generate_bullet(xeno.ammo)

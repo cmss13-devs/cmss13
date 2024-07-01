@@ -10,7 +10,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	playsound(xeno.loc, pick(predalien_roar), 75, 0, status = 0)
+	playsound(xeno, pick(predalien_roar), 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
 	xeno.create_shriekwave(7) //Adds the visual effect. Wom wom wom, 7 shriekwaves
 	for(var/mob/living/carbon/carbon in view(7, xeno))

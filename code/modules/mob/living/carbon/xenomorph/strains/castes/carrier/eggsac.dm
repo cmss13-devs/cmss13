@@ -24,7 +24,7 @@
 	carrier.recalculate_pheromones()
 
 	if(carrier.huggers_cur)
-		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, TRUE)
+		playsound(carrier, 'sound/voice/alien_facehugger_dies.ogg', 25, TRUE)
 	carrier.huggers_cur = 0
 	carrier.huggers_max = 0
 	carrier.update_hugger_overlays()
@@ -80,7 +80,7 @@
 		my_egg.start_unstoppable_decay()
 
 	M.visible_message(SPAN_XENOWARNING("[M] throes as its eggsac bursts into a mess of acid!"))
-	playsound(M.loc, 'sound/effects/alien_egg_burst.ogg', 25, TRUE)
+	playsound(M, 'sound/effects/alien_egg_burst.ogg', 25, TRUE)
 
 ///Remove all references to src in eggs_sustained
 /datum/behavior_delegate/carrier_eggsac/Destroy()

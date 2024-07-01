@@ -138,7 +138,7 @@
 		R.take_damage_type(40 / A.acid_delay, "acid", src)
 		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
 			SPAN_XENOWARNING("We vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
-		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
+		playsound(O, "sound/bullets/acid_impact1.ogg", 25)
 		QDEL_IN(A, 20)
 		return
 
@@ -158,7 +158,7 @@
 		attack_log += text("\[[time_stamp()]\] <font color='green'>Spat acid on [O]</font>")
 	visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), \
 	SPAN_XENOWARNING("We vomit globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
-	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
+	playsound(O, "sound/bullets/acid_impact1.ogg", 25)
 
 /proc/unroot_human(mob/living/carbon/H, trait_source)
 	if (!isxeno_human(H))

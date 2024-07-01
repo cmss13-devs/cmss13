@@ -18,6 +18,7 @@
 	var/z
 	var/y_s_offset // Vertical sound offset
 	var/x_s_offset // Horizontal sound offset
+	var/atom/source
 
 /proc/get_free_channel()
 	var/static/cur_chan = 1
@@ -72,6 +73,7 @@
 	S.x = turf_source.x
 	S.y = turf_source.y
 	S.z = turf_source.z
+	S.source = source
 
 	if(!SSinterior)
 		SSsound.queue(S)

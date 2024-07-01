@@ -160,7 +160,7 @@
 				if(M != src)
 					M.show_message(SPAN_NOTICE("[src] talks into [length(used_radios) ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
 			if(ishumansynth_strict(src))
-				playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
+				playsound(src, 'sound/effects/radiostatic.ogg', 15, 1)
 
 			italics = 1
 			message_range = 2

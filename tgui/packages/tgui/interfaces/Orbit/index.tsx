@@ -295,7 +295,6 @@ const ObservableContent = () => {
   return (
     <Stack vertical>
       <ObservableSection
-        searchQuery={searchQuery}
         color="xeno"
         section={special_mobs}
         title="Special Mobs"

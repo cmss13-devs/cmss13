@@ -99,14 +99,14 @@
 	name = "clan armor"
 	desc = "A suit of armor with light padding. It looks old, yet functional."
 
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bomb = CLOTHING_ARMOR_HIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_VERYHIGHPLUS
+	armor_laser = CLOTHING_ARMOR_HIGHPLUS
+	armor_energy = CLOTHING_ARMOR_HIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
+	armor_bio = CLOTHING_ARMOR_VERYHIGHPLUS
+	armor_rad = CLOTHING_ARMOR_VERYHIGHPLUS
+	armor_internaldamage = CLOTHING_ARMOR_VERYHIGHPLUS
 
 
 /obj/item/clothing/suit/armor/yautja/hunter/full
@@ -115,14 +115,14 @@
 	icon_state = "fullarmor_ebony"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HEAD|BODY_FLAG_LEGS
 	flags_item = ITEM_PREDATOR
-	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bullet = CLOTHING_ARMOR_HIGH
-	armor_laser = CLOTHING_ARMOR_HIGH
-	armor_energy = CLOTHING_ARMOR_HIGH
-	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
-	armor_bio = CLOTHING_ARMOR_HIGH
-	armor_rad = CLOTHING_ARMOR_HIGH
-	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	armor_melee = CLOTHING_ARMOR_GIGAHIGH
+	armor_bullet = CLOTHING_ARMOR_GIGAHIGH
+	armor_laser = CLOTHING_ARMOR_GIGAHIGH
+	armor_energy = CLOTHING_ARMOR_GIGAHIGH
+	armor_bomb = CLOTHING_ARMOR_GIGAHIGH
+	armor_bio = CLOTHING_ARMOR_GIGAHIGH
+	armor_rad = CLOTHING_ARMOR_GIGAHIGH
+	armor_internaldamage = CLOTHING_ARMOR_GIGAHIGH
 	slowdown = 1
 	var/speed_timer = 0
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
@@ -134,7 +134,7 @@
 		/obj/item/storage/backpack/yautja,
 		/obj/item/weapon/twohanded/yautja,
 	)
-	fire_intensity_resistance = 20
+	fire_intensity_resistance = 30
 
 /obj/item/clothing/suit/armor/yautja/hunter/full/Initialize(mapload, armor_number, armor_material = "ebony")
 	. = ..(mapload, 0)
@@ -176,7 +176,7 @@
 /obj/item/clothing/yautja_cape/ceremonial
 	name = PRED_YAUTJA_CEREMONIAL_CAPE
 	icon_state = "ceremonialcape"
-	clan_rank_required = CLAN_RANK_ELDER_INT
+	clan_rank_required = CLAN_RANK_ELITE_INT
 
 /obj/item/clothing/yautja_cape/third
 	name = PRED_YAUTJA_THIRD_CAPE
@@ -223,11 +223,11 @@
 	)
 
 
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_laser = CLOTHING_ARMOR_MEDIUM
-	armor_energy = CLOTHING_ARMOR_MEDIUM
-	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
@@ -251,7 +251,7 @@
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
 
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH

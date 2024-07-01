@@ -62,7 +62,7 @@
 	if((src.loc) && isturf(src.loc))
 		if(stat != DEAD)
 			if(++miaow_counter >= rand(20, 30)) //Increase the meow variable each tick. Play it at random intervals.
-				playsound(loc, "cat_meow", 15, 1, 4)
+				playsound(src, "cat_meow", 15, 1, 4)
 				miaow_counter = 0 //Reset the counter
 		if(!stat && !resting && !buckled)
 			for(var/mob/prey in view(1,src))

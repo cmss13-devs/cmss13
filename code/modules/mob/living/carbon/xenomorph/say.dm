@@ -76,7 +76,7 @@
 
 	if(forced)
 		if(speaking_noise)
-			playsound(loc, speaking_noise, 25, 1)
+			playsound(src, speaking_noise, 25, 1)
 		..(message, speaking, verb, null, null, message_range, null)
 	else
 		hivemind_talk(message)

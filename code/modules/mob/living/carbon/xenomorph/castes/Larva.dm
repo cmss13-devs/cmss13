@@ -175,7 +175,7 @@
 			return FALSE
 
 	// Otherwise, ""roar""!
-	playsound(loc, "alien_roar_larva", 15)
+	playsound(src, "alien_roar_larva", 15)
 	return TRUE
 
 /mob/living/carbon/xenomorph/larva/is_xeno_grabbable()

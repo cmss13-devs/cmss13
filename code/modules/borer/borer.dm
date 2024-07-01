@@ -62,6 +62,12 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 	impulse_broadcast("The Cortical Directive has changed.")
 	impulse_broadcast(new_directive, size = "Small")
 
+/obj/item/holder/borer
+	name = "cortical borer"
+	desc = "Gross..."
+	icon = 'icons/mob/brainslug.dmi'
+	icon_state = "Borer Dead"
+
 /mob/living/captive_brain
 	name = "captive mind"
 	real_name = "captive mind"

@@ -13,7 +13,7 @@
 		qdel(src)
 		return
 	owner = C
-	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(update_sounds))
+	RegisterSignal(owner, COMSIG_CLIENT_MOB_MOVED, PROC_REF(update_sounds))
 	. = ..()
 
 #define SMOOTHING 1 // How much smoothing when moving between tiles, smaller value means more smoothing

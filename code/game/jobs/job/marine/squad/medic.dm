@@ -10,7 +10,7 @@
 /datum/job/marine/medic/set_spawn_positions(count)
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 		if(target_squad)
-			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(count)
+			target_squad.roles_cap[title] = medic_slot_formula(count)
 
 /datum/job/marine/medic/get_total_positions(latejoin=0)
 	var/slots = medic_slot_formula(get_total_marines())
@@ -23,7 +23,7 @@
 	if(latejoin)
 		for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 			if(target_squad)
-				target_squad.roles_cap[JOB_SQUAD_MEDIC] = slots
+				target_squad.roles_cap[title] = slots
 
 	return (slots*4)
 

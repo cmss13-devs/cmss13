@@ -10,7 +10,7 @@
 /datum/job/marine/engineer/set_spawn_positions(count)
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 		if(target_squad)
-			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(count)
+			target_squad.roles_cap[title] = engi_slot_formula(count)
 
 /datum/job/marine/engineer/get_total_positions(latejoin=0)
 	var/slots = engi_slot_formula(get_total_marines())
@@ -23,7 +23,7 @@
 	if(latejoin)
 		for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 			if(target_squad)
-				target_squad.roles_cap[JOB_SQUAD_ENGI] = slots
+				target_squad.roles_cap[title] = slots
 
 	return (slots*4)
 

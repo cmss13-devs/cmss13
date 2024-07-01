@@ -2954,7 +2954,6 @@
 	phone_color = "red";
 	phone_id = "Marshal Office"
 	},
-/obj/structure/surface/table,
 /obj/item/restraint/handcuffs,
 /turf/open/floor{
 	icon_state = "dark"

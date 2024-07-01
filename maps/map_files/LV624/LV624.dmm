@@ -17330,10 +17330,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
-"kxo" = (
-/obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
 "kxv" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 1
@@ -22591,6 +22587,10 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
+"tLe" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/north_west_jungle)
 "tLQ" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
@@ -30912,7 +30912,7 @@ avo
 aFQ
 xTM
 aAl
-aDv
+aAl
 aAp
 aAp
 nmO
@@ -31140,7 +31140,7 @@ auf
 aFm
 aAl
 wXg
-aDv
+aAl
 aAp
 nmO
 aXX
@@ -31368,7 +31368,7 @@ auf
 aFm
 aAl
 aAl
-aDv
+aAl
 aAp
 aXX
 aRG
@@ -32507,7 +32507,7 @@ tka
 lCG
 cDQ
 oTJ
-nuW
+aAp
 aAp
 cIL
 nmO
@@ -33191,7 +33191,7 @@ oTJ
 oTJ
 oTJ
 oTJ
-nuW
+aAp
 aAp
 nmO
 aXX
@@ -35709,7 +35709,7 @@ aDv
 aDv
 aRx
 aXX
-kxo
+aXX
 aXX
 aXX
 aXX
@@ -38432,7 +38432,7 @@ nuW
 psh
 psh
 psh
-psh
+tLe
 psh
 tLQ
 ado

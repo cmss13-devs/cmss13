@@ -385,7 +385,7 @@
 	. = ..()
 	var/pills_amount = contents.len
 	if(pills_amount)
-		var/percentage_filled = round(pills_amount/max_storage_space * 100)
+		var/percentage_filled = floor(pills_amount/max_storage_space * 100)
 		switch(percentage_filled)
 			if(80 to 101)
 				. += SPAN_INFO("The [name] seems fairly full.")
@@ -683,8 +683,8 @@
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return FALSE
 
-	var/obj/item/card/id/idcard = human_user.wear_id
-	if(!istype(idcard)) //not wearing an ID
+	var/obj/item/card/id/idcard = human_user.get_idcard()
+	if(!idcard) //not wearing an ID
 		to_chat(human_user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return FALSE
 

@@ -3223,6 +3223,10 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("This chemical will clog the nozzle!"))
 		return
 
+	if(istype(gun.current_mag, /obj/item/ammo_magazine/flamer_tank/smoke)) // you can't fire smoke like a projectile!
+		to_chat(user, SPAN_WARNING("[src] can't be used with this fuel tank!"))
+		return
+
 	gun.last_fired = world.time
 	gun.current_mag.reagents.remove_reagent(flamer_reagent.id, FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)
 
@@ -3231,13 +3235,13 @@ Defined in conflicts.dm of the #defines folder.
 	ammo_datum.flamer_reagent_id = flamer_reagent.id
 	P.generate_bullet(ammo_datum)
 	P.icon_state = "naptha_ball"
-	P.color = flamer_reagent.color
+	P.color = flamer_reagent.burncolor
 	P.hit_effect_color = flamer_reagent.burncolor
 	P.fire_at(target, user, user, max_range, AMMO_SPEED_TIER_2, null)
 	var/turf/user_turf = get_turf(user)
 	playsound(user_turf, pick(fire_sounds), 50, TRUE)
 
-	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(gun.current_mag.get_ammo_percent())]</b>% fuel remaining!"))
+	to_chat(user, SPAN_WARNING("The gauge reads: <b>[floor(gun.current_mag.get_ammo_percent())]</b>% fuel remaining!"))
 
 /obj/item/attachable/verticalgrip
 	name = "vertical grip"

@@ -107,7 +107,7 @@
 						knock_chance += 2 * attacking_xeno.frenzy_aura
 					if(attacking_xeno.caste && attacking_xeno.caste.is_intelligent)
 						knock_chance += 2
-					knock_chance += min(round(damage * 0.25), 10) //Maximum of 15% chance.
+					knock_chance += min(floor(damage * 0.25), 10) //Maximum of 15% chance.
 					if(prob(knock_chance))
 						playsound(loc, "alien_claw_metal", 25, 1)
 						attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] smashes off [src]'s [wear_mask.name]!"), \
@@ -504,7 +504,7 @@
 //Slashing fences
 /obj/structure/fence/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
-	var/damage_dealt = 5
+	var/damage_dealt = 25
 	M.visible_message(SPAN_DANGER("[M] mangles [src]!"), \
 	SPAN_DANGER("We mangle [src]!"), \
 	SPAN_DANGER("We hear twisting metal!"), 5, CHAT_TYPE_XENO_COMBAT)
@@ -925,7 +925,7 @@
 		to_chat(M, SPAN_WARNING("Our claws aren't sharp enough to damage [src]."))
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)
-	health -= round(rand(M.melee_damage_lower, M.melee_damage_upper) * 0.5)
+	health -= floor(rand(M.melee_damage_lower, M.melee_damage_upper) * 0.5)
 	if(health <= 0)
 		M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)

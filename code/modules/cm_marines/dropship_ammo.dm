@@ -231,12 +231,12 @@
 
 /obj/structure/ship_ammo/laser_battery/get_examine_text(mob/user)
 	. = ..()
-	. += "It's at [round(100*ammo_count/max_ammo_count)]% charge."
+	. += "It's at [floor(100*ammo_count/max_ammo_count)]% charge."
 
 
 /obj/structure/ship_ammo/laser_battery/show_loaded_desc(mob/user)
 	if(ammo_count)
-		return "It's loaded with \a [src] at [round(100*ammo_count/max_ammo_count)]% charge."
+		return "It's loaded with \a [src] at [floor(100*ammo_count/max_ammo_count)]% charge."
 	else
 		return "It's loaded with an empty [name]."
 
@@ -244,7 +244,7 @@
 /obj/structure/ship_ammo/laser_battery/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	set waitfor = 0
 	var/list/turf_list = list()
-	for(var/turf/T in range(impact, 3)) //This is its area of effect
+	for(var/turf/T in range(3, impact)) //This is its area of effect
 		turf_list += T
 	playsound(impact, 'sound/effects/pred_vision.ogg', 20, 1)
 	for(var/i=1 to 16) //This is how many tiles within that area of effect will be randomly ignited

@@ -102,7 +102,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/reporter
-	name = "Combat Correspondent"
+	name = "Combat Correspondent (Press)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(
@@ -469,6 +469,16 @@
 
 //*****************************************************************************************************/
 
+/datum/equipment_preset/uscm_ship/commander/visitor
+	name = "USCM Observer (Major) (VO)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = JOB_USCM_OBSV
+	rank = JOB_USCM_OBSV
+	role_comm_title = "VO"
+
+//*****************************************************************************************************/
+
 /datum/equipment_preset/uscm_ship/commander/council
 	name = "USCM Commanding Officer (CO+)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
@@ -576,7 +586,6 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
-	access
 	assignment = JOB_SEA
 	rank = JOB_SEA
 	paygrade = PAY_SHORT_ME7

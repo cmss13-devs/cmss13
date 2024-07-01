@@ -425,7 +425,7 @@
 	desc = "It can carry pistol magazines and revolver speedloaders."
 	max_w_class = SIZE_SMALL
 	icon_state = "pistol_mag"
-	storage_slots = 3
+	storage_slots = 4
 
 	can_hold = list(
 		/obj/item/ammo_magazine/pistol,
@@ -938,7 +938,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(obj/item/reagent_container/hypospray/autoinjector/autoinjector)
 	var/max_uses = autoinjector.volume / autoinjector.amount_per_transfer_from_this
-	max_uses = round(max_uses) == max_uses ? max_uses : round(max_uses) + 1
+	max_uses = floor(max_uses) == max_uses ? max_uses : floor(max_uses) + 1
 	if(inner && inner.reagents.total_volume > 0 && (autoinjector.uses_left < max_uses))
 		inner.reagents.trans_to(autoinjector, autoinjector.volume)
 		autoinjector.update_uses_left()

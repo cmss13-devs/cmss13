@@ -45,10 +45,10 @@
 
 	. += ""
 
-	. += "Health: [round(health)]/[round(maxHealth)]"
-	. += "Armor: [round(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[round(armor_deflection)]"
-	. += "Plasma: [round(plasma_stored)]/[round(plasma_max)]"
-	. += "Slash Damage: [round((melee_damage_lower+melee_damage_upper)/2)]"
+	. += "Health: [floor(health)]/[floor(maxHealth)]"
+	. += "Armor: [floor(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[floor(armor_deflection)]"
+	. += "Plasma: [floor(plasma_stored)]/[floor(plasma_max)]"
+	. += "Slash Damage: [floor((melee_damage_lower+melee_damage_upper)/2)]"
 
 	var/shieldtotal = 0
 	for (var/datum/xeno_shield/XS in xeno_shields)
@@ -67,7 +67,7 @@
 
 	. += ""
 
-	var/stored_evolution = round(evolution_stored)
+	var/stored_evolution = floor(evolution_stored)
 	var/evolve_progress
 
 	if(caste && caste.evolution_allowed)
@@ -747,3 +747,16 @@
 /// Handler callback to reset immobilization status after a successful [/mob/living/carbon/xenomorph/proc/throw_carbon]
 /mob/living/carbon/xenomorph/proc/throw_carbon_end(mob/living/carbon/target)
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
+
+/// snowflake proc to clear effects from research warcrimes
+/mob/living/carbon/xenomorph/proc/clear_debuffs()
+	SEND_SIGNAL(src, COMSIG_XENO_DEBUFF_CLEANSE)
+	SetKnockOut(0)
+	SetStun(0)
+	SetKnockDown(0)
+	SetDaze(0)
+	SetSlow(0)
+	SetSuperslow(0)
+	SetRoot(0)
+	SetEyeBlur(0)
+	updatehealth()

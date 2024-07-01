@@ -84,8 +84,8 @@
 			recharge_duration = recharge_duration * SHUTTLE_COOLING_FACTOR_RECHARGE
 
 
-	dropship.callTime = round(flight_duration)
-	dropship.rechargeTime = round(recharge_duration)
+	dropship.callTime = floor(flight_duration)
+	dropship.rechargeTime = floor(recharge_duration)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -101,7 +101,7 @@
 	if(disabled)
 		return UI_UPDATE
 	if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
-		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
+		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 		return UI_CLOSE
 	if(dropship_control_lost)
 		var/remaining_time = timeleft(door_control_cooldown) / 10

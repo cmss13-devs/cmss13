@@ -708,7 +708,7 @@
 
 /datum/action/xeno_action/activable/place_construction/proc/spacecheck(mob/living/carbon/xenomorph/X, turf/T, datum/construction_template/xenomorph/tem)
 	if(tem.block_range)
-		for(var/turf/TA in range(T, tem.block_range))
+		for(var/turf/TA in range(tem.block_range, T))
 			if(!X.check_alien_construction(TA, FALSE, TRUE))
 				to_chat(X, SPAN_WARNING("We need more open space to build here."))
 				qdel(tem)

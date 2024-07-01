@@ -1482,17 +1482,17 @@
 
 /obj/structure/machinery/big_computers/science_big/protolathe
 	name = "chemical storage system"
-	desc = 	desc = "Storage system for a large supply of chemicals, which slowly recharges."
+	desc = "Storage system for a large supply of chemicals, which slowly recharges."
 	icon_state = "protolathe"
 
 /obj/structure/machinery/big_computers/science_big/operator_machine
 	name = "synthesis simulator"
-	desc = 	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
+	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
 	icon_state = "operator"
 
 /obj/structure/machinery/big_computers/science_big/operator_machine_open
 	name = "synthesis simulator"
-	desc = 	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
+	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
 	icon_state = "operator_open"
 
 // Monitors

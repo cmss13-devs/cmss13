@@ -110,7 +110,7 @@
 		current_sounds[num2text(S.channel)] = T
 	sound_to(owner, S)
 
-/client/verb/sound_ended(channel as num, source as atom)
+/client/verb/sound_ended(channel as num, source as mob|obj|turf)
 	set name = ".soundend"
 
 	soundOutput.remove_sound(num2text(channel))

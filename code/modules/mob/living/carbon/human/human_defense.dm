@@ -115,7 +115,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
 
 		var/obj/item/weapon/I = l_hand
-		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - round(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
+		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - floor(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
 			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
 			return TRUE
 
@@ -139,7 +139,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				return TRUE
 
 		var/obj/item/weapon/I = r_hand
-		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - round(damage / 3)))) // other shields. Don't doublecheck activable here.
+		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - floor(damage / 3)))) // other shields. Don't doublecheck activable here.
 			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
 			return TRUE
 

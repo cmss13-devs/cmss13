@@ -515,27 +515,35 @@
 	is_resin_allowed = FALSE
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_LOW
+	is_landing_zone = TRUE
 
 /area/bigredv2/outside/telecomm/lz2_cave
 	name = "\improper Central Grounds Communications Relay"
+	is_landing_zone = FALSE
 
 /area/bigredv2/outside/telecomm/n_cave
 	name = "\improper North Cave Communications Relay"
+	is_landing_zone = FALSE
 
 /area/bigredv2/outside/telecomm/warehouse
 	name = "\improper Warehouse Communications Relay"
+	is_landing_zone = FALSE
 
 /area/bigredv2/outside/telecomm/security
 	name = "\improper Security Communications Relay"
+	is_landing_zone = FALSE
 
 /area/bigredv2/outside/telecomm/store
 	name = "\improper General Store Communications Relay"
+	is_landing_zone = FALSE
 
 /area/bigredv2/outside/telecomm/admin
 	name = "\improper Administrative Communications Relay"
+	is_landing_zone = FALSE
 
 /area/bigredv2/outside/telecomm/engi
 	name = "\improper Engineering Communications Relay"
+	is_landing_zone = FALSE
 
 
 /area/bigredv2/outside/engineering

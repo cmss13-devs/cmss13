@@ -595,16 +595,16 @@
 				slots[TIER_3][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
 
 	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
-	var/effective_total = round(burrowed_factor)
+	var/effective_total = floor(burrowed_factor)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(xeno.counts_for_slots)
 			effective_total++
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
+	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
-	slots[TIER_2][OPEN_SLOTS] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
+	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
 
 	return slots
 
@@ -726,7 +726,7 @@
 		if(is_mainship_level(turf?.z))
 			shipside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
 	hijack_burrowed_surge = TRUE
-	hijack_burrowed_left = max(Ceiling(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
+	hijack_burrowed_left = max(ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
@@ -844,7 +844,7 @@
 		to_chat(user, SPAN_WARNING("The hive cannot support facehuggers yet..."))
 		return FALSE
 	if(world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
-		var/time_left = round((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
+		var/time_left = floor((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
 	if(totalXenos.len <= 0)
@@ -874,6 +874,13 @@
 
 	return TRUE
 
+/datum/hive_status/proc/get_current_playable_facehugger_count()
+	var/count = 0
+	for(var/mob/mob as anything in totalXenos)
+		if(isfacehugger(mob))
+			count++
+	return count
+
 /datum/hive_status/proc/spawn_as_hugger(mob/dead/observer/user, atom/A)
 	var/mob/living/carbon/xenomorph/facehugger/hugger = new /mob/living/carbon/xenomorph/facehugger(A.loc, null, hivenumber)
 	user.mind.transfer_to(hugger, TRUE)
@@ -899,7 +906,7 @@
 		return FALSE
 
 	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
-		var/time_left = round((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
+		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until 30 seconds have passed ([time_left] seconds remaining)."))
 		return FALSE
 

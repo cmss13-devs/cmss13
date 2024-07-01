@@ -139,7 +139,7 @@
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
-				idcard = human_user.wear_id
+				idcard = human_user.get_idcard()
 			if(!istype(idcard))
 				bio_fail = TRUE
 			else if(!idcard.check_biometrics(human_user))
@@ -198,8 +198,8 @@
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
-				idcard = human_user.wear_id
-			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
 				bio_fail = TRUE
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE

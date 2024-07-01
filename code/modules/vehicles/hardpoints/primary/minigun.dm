@@ -9,8 +9,6 @@
 	health = 350
 	firing_arc = 90
 
-	origins = list(0, -3)
-
 	ammo = new /obj/item/ammo_magazine/hardpoint/ltaaap_minigun
 	max_clips = 1
 

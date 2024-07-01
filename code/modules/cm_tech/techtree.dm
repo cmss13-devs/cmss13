@@ -94,7 +94,7 @@
 
 		y_offset += 3
 
-	entrance = locate(Ceiling((longest_tier*2 + 1)*0.5), 2, zlevel.z_value)
+	entrance = locate(ceil((longest_tier*2 + 1)*0.5), 2, zlevel.z_value)
 
 /datum/techtree/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -180,6 +180,7 @@
 
 /// `tech`: a typepath to a tech
 /datum/techtree/proc/get_node(tech)
+	RETURN_TYPE(/datum/tech)
 	return techs_by_type[tech]
 
 /datum/techtree/proc/on_node_gained(obj/structure/resource_node/RN)

@@ -113,7 +113,7 @@ GLOBAL_DATUM_INIT(sortInstance, /datum/sortInstance, new())
 		//[lo, left) elements <= pivot < [right, start) elements
 		//in other words, find where the pivot element should go using bisection search
 		while(left < right)
-			var/mid = (left + right) >> 1 //round((left+right)/2)
+			var/mid = (left + right) >> 1 //floor((left+right)/2)
 			if(call(cmp)(fetchElement(L,mid), pivot) > 0)
 				right = mid
 			else

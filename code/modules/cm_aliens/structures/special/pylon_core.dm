@@ -32,7 +32,7 @@
 	. = ..()
 
 	node = place_node()
-	for(var/turf/A in range(round(cover_range*PYLON_COVERAGE_MULT), loc))
+	for(var/turf/A in range(floor(cover_range*PYLON_COVERAGE_MULT), loc))
 		LAZYADD(A.linked_pylons, src)
 		linked_turfs += A
 
@@ -61,6 +61,9 @@
 
 /obj/effect/alien/resin/special/pylon/get_examine_text(mob/user)
 	. = ..()
+
+	if(!isobserver(user) && !isxeno(user))
+		return
 
 	var/lesser_count = 0
 	for(var/mob/living/carbon/xenomorph/lesser_drone/lesser in linked_hive.totalXenos)

@@ -1,4 +1,4 @@
-/datum/component/toxic_buildup
+/datum/component/status_effect/toxic_buildup
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 	var/toxic_buildup = 0
 	var/toxic_buildup_dissipation = AMOUNT_PER_TIME(5, 10 SECONDS)
@@ -7,13 +7,14 @@
 	var/max_alpha = 35
 	var/glow_color = "#00ff00"
 
-/datum/component/toxic_buildup/Initialize(toxic_buildup, toxic_buildup_dissipation = AMOUNT_PER_TIME(1, 3 SECONDS), max_buildup = 75)
+/datum/component/status_effect/toxic_buildup/Initialize(toxic_buildup, toxic_buildup_dissipation = AMOUNT_PER_TIME(1, 3 SECONDS), max_buildup = 75)
 	. = ..()
 	src.toxic_buildup = toxic_buildup
 	src.toxic_buildup_dissipation = toxic_buildup_dissipation
 	src.max_buildup = max_buildup
+	to_chat(parent, SPAN_XENOHIGHDANGER("The toxic substance damages our armor!"))
 
-/datum/component/toxic_buildup/InheritComponent(datum/component/toxic_buildup/C, i_am_original, toxic_buildup)
+/datum/component/status_effect/toxic_buildup/InheritComponent(datum/component/status_effect/toxic_buildup/C, i_am_original, toxic_buildup)
 	. = ..()
 	if(!C)
 		src.toxic_buildup += toxic_buildup
@@ -22,7 +23,12 @@
 
 	src.toxic_buildup = min(src.toxic_buildup, max_buildup)
 
-/datum/component/toxic_buildup/process(delta_time)
+/datum/component/status_effect/toxic_buildup/process(delta_time)
+	var/atom/parent_atom = parent
+	if(has_immunity)
+		parent_atom.remove_filter("toxic_buildup")
+		return ..()
+
 	toxic_buildup = max(toxic_buildup - toxic_buildup_dissipation * delta_time, 0)
 
 	if(ishuman(parent))
@@ -37,10 +43,9 @@
 	color += num2text(max_alpha*intensity, 2, 16)
 
 	if(parent)
-		var/atom/A = parent
-		A.add_filter("toxic_buildup", 2, list("type" = "outline", "color" = color, "size" = 1))
+		parent_atom.add_filter("toxic_buildup", 2, list("type" = "outline", "color" = color, "size" = 1))
 
-/datum/component/toxic_buildup/RegisterWithParent()
+/datum/component/status_effect/toxic_buildup/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
 	RegisterSignal(parent, list(
 		COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE,
@@ -48,7 +53,7 @@
 	), PROC_REF(apply_toxic_buildup))
 	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(stat_append))
 
-/datum/component/toxic_buildup/UnregisterFromParent()
+/datum/component/status_effect/toxic_buildup/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)
 	UnregisterSignal(parent, list(
 		COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE,
@@ -58,10 +63,15 @@
 	var/atom/A = parent
 	A.remove_filter("toxic_buildup")
 
-/datum/component/toxic_buildup/proc/stat_append(mob/M, list/L)
+/datum/component/status_effect/toxic_buildup/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER
+	if(has_immunity)
+		L += "Toxin Buildup immunity [grace_period]/[initial(grace_period)]"
+		return
 	L += "Toxin Buildup: [toxic_buildup]/[max_buildup]"
 
-/datum/component/toxic_buildup/proc/apply_toxic_buildup(mob/living/carbon/xenomorph/X, list/damagedata)
+/datum/component/status_effect/toxic_buildup/proc/apply_toxic_buildup(mob/living/carbon/xenomorph/X, list/damagedata)
 	SIGNAL_HANDLER
+	if(has_immunity)
+		return
 	damagedata["armor"] = max(damagedata["armor"] - toxic_buildup, 0)

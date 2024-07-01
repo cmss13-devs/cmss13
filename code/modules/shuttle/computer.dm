@@ -382,7 +382,13 @@
 					return
 
 				var/mob/living/carbon/human/human_user = user
-				if(!(ACCESS_MARINE_SENIOR in human_user.wear_id?.access) && !(ACCESS_MARINE_DROPSHIP in human_user.wear_id?.access))
+				var/obj/item/card/id/card = human_user.get_idcard()
+
+				if(!card)
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
+					return
+
+				if(!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 
@@ -440,6 +446,8 @@
 			lifeboat.status = LIFEBOAT_LOCKED
 			lifeboat.available = FALSE
 			lifeboat.set_mode(SHUTTLE_IDLE)
+			lifeboat.alarm_sound_loop?.stop()
+			lifeboat.playing_launch_announcement_alarm = FALSE
 			var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
 			lifeboat_dock.open_dock()
 			xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)

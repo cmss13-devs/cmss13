@@ -314,6 +314,8 @@
 	if(observe_target_mob)
 		clean_observe_target()
 
+	set_huds_from_prefs()
+
 /mob/dead/observer/Destroy(force)
 	GLOB.observer_list -= src
 	QDEL_NULL(orbit_menu)
@@ -471,6 +473,12 @@ Works together with spawning an observer, noted above.
 
 	mind = null
 
+	// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+	var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+
+	// if they died as facehugger or lesser drone, bypass typical TOD checks
+	ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
+
 	if(ghost.client)
 		ghost.client.init_verbs()
 		ghost.client.change_view(GLOB.world_view_size) //reset view range to default
@@ -485,13 +493,12 @@ Works together with spawning an observer, noted above.
 		if(ghost.client.player_data)
 			ghost.client.player_data.load_timestat_data()
 
-		// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
-		var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 
-		// if they died as facehugger or lesser drone, bypass typical TOD checks
-		ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
-
-		ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+	else if(persistent_ckey)
+		var/datum/player_details/details = GLOB.player_details[persistent_ckey]
+		if(details)
+			details.larva_queue_time = max(details.larva_queue_time, new_tod)
 
 	ghost.set_huds_from_prefs()
 
@@ -655,7 +662,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.forceMove(pick(L))
 	following = null
 
-/mob/dead/observer/proc/scan_health(mob/living/target in oview())
+/mob/dead/observer/proc/scan_health(mob/living/target in view(src.client))
 	set name = "Scan Health"
 
 	if(!istype(target))
@@ -1191,7 +1198,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!SSticker.HasRoundStarted())
 		var/time_remaining = SSticker.GetTimeLeft()
 		if(time_remaining > 0)
-			. += "Time To Start: [round(time_remaining)]s[SSticker.delay_start ? " (DELAYED)" : ""]"
+			. += "Time To Start: [floor(time_remaining)]s[SSticker.delay_start ? " (DELAYED)" : ""]"
 		else if(time_remaining == -10)
 			. += "Time To Start: DELAYED"
 		else

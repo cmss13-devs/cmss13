@@ -1,11 +1,13 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Flex, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
 export const StatbrowserOptions = (props) => {
   const { act, data } = useBackend();
   const { current_fontsize } = data;
-  const [fontsize, setFontsize] = useLocalState('fontsize', current_fontsize);
+  const [fontsize, setFontsize] = useState(current_fontsize);
 
   return (
     <Window title="Statbrowser Options" width={300} height={120}>
@@ -18,7 +20,7 @@ export const StatbrowserOptions = (props) => {
             maxValue={30}
             step={0.5}
             format={(value) => value + 'px'}
-            onChange={(_, value) => {
+            onChange={(value) => {
               setFontsize(value);
               act('change_fontsize', { new_fontsize: value });
             }}
@@ -38,8 +40,8 @@ const Options = (props) => {
         {!Array.isArray(children)
           ? children
           : children.map((option, i) => (
-            <Flex.Item key={i}>{option}</Flex.Item>
-          ))}
+              <Flex.Item key={i}>{option}</Flex.Item>
+            ))}
       </Flex>
     </Section>
   );

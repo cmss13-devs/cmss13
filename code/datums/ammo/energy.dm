@@ -229,7 +229,7 @@
 	if(isxeno(hit_mob))
 		var/mob/living/carbon/xenomorph/xeno = hit_mob
 		xeno.apply_damage(damage * 0.75, BURN)
-		xeno.interference = 30
+		xeno.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /datum/ammo/energy/yautja/rifle/bolt/set_bullet_traits()
 	. = ..()

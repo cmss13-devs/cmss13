@@ -95,7 +95,7 @@
 	if(ismob(src))
 		var/mob/moved = src
 		if(moved.client)
-			SEND_SIGNAL(moved.client, COMSIG_MOVABLE_MOVED, direction)
+			SEND_SIGNAL(moved.client, COMSIG_CLIENT_MOB_MOVED, direction)
 	for(var/datum/dynamic_light_source/light as anything in hybrid_light_sources)
 		light.source_atom.update_light()
 		if(!isturf(loc))

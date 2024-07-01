@@ -19,11 +19,13 @@
 	RegisterSignal(owner.mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_mob_moved))
 	RegisterSignal(owner.mob, COMSIG_MOB_LOGOUT, PROC_REF(on_mob_logout))
 	RegisterSignal(owner, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(on_client_mob_logged_in))
+	RegisterSignal(owner, COMSIG_CLIENT_MOB_MOVED, PROC_REF(update_sounds))
 	return ..()
 
 /datum/soundOutput/Destroy()
 	UnregisterSignal(owner.mob, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_LOGOUT))
 	UnregisterSignal(owner, COMSIG_CLIENT_MOB_LOGGED_IN)
+	UnregisterSignal(owner, COMSIG_CLIENT_MOB_MOVED)
 	owner = null
 	return ..()
 

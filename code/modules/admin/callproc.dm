@@ -230,7 +230,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 	to_chat(usr, SPAN_BOLDWARNING("Warning: Force attempt has been logged."))
 	message_admins("[key_name(usr)] has attempted to execute a restricted proc. ([procname])")
 
-/client/proc/callproc_datum(datum/called_datum as null|area|mob|obj|turf)
+/client/proc/callproc_datum(datum/called_datum as null|area|mob|obj|turf in view(src))
 	set category = "Debug"
 	set name = "Datum ProcCall"
 	set waitfor = FALSE

@@ -111,7 +111,30 @@
 	name = "\improper United Americas flag"
 	desc = "A flag of the United Americas. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
 	icon_state = "uaflag"
-
+/obj/structure/sign/banners/colonial_marines_flag
+	name = "\improper United States Colonial Marine Corps flag"
+	desc = "A flag of the United States Colonial Marine Corps. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "cmflag"
+/obj/structure/sign/banners/colonial_marines_flag_worn
+	name = "\improper Worn United States Colonial Marine Corps flag"
+	desc = "A very worn flag of the United States Colonial Marine Corps. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "cmflag_worn"
+/obj/structure/sign/banners/twe_flag
+	name = "\improper Three World Empire flag"
+	desc = "A flag of the Three World Empire. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "tweflag"
+/obj/structure/sign/banners/twe_worn
+	name = "\improper Worn Three World Empire flag"
+	desc = "A very worn flag of the Three World Empire. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "tweflag_worn"
+/obj/structure/sign/banners/upp_flag
+	name = "\improper Union of Progressive Peoples flag"
+	desc = "A flag of the Union of Progressive Peoples. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "uppflag"
+/obj/structure/sign/banners/upp_worn
+	name = "\improper Worn Union of Progressive Peoples flag"
+	desc = "A very worn flag of the Union of Progressive Peoples. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "uppflag_worn"
 //=====================//
 // SEMIOTIC STANDARD  //
 //===================//

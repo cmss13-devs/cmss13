@@ -15,7 +15,6 @@
 			return
 
 	if(msg == "")
-		to_chat(user, SPAN_WARNING("No [faction] custom event message has been found. Either no custom event is taking place, admin hasn't properly set this or deemed it unnecessary to be set."))
 		return
 
 	var/dat

@@ -155,4 +155,3 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	clue["text"] = chem.name
 
 	return clue
-

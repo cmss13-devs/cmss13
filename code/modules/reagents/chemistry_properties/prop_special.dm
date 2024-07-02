@@ -75,16 +75,14 @@
 
 /datum/chem_property/special/DNA_Disintegrating/process(mob/living/M, potency = 1)
 	M.adjustCloneLoss(POTENCY_MULTIPLIER_EXTREME * potency)
-	if(ishuman(M) && M.cloneloss >= 190)
+	if(ishuman(M) && M.cloneloss >= 150)
 		var/mob/living/carbon/human/H = M
 		H.contract_disease(new /datum/disease/xeno_transformation(0),1) //This is the real reason PMCs are being sent to retrieve it.
 
 /datum/chem_property/special/DNA_Disintegrating/trigger()
 	SSticker.mode.get_specific_call(/datum/emergency_call/goon/chem_retrieval, TRUE, FALSE, holder.name) // "Weyland-Yutani Goon (Chemical Investigation Squad)"
 	GLOB.chemical_data.update_credits(10)
-	message_admins("The research department has discovered DNA_Disintegrating in [holder.name] adding 10 bonus tech points.")
-	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
-	tree.add_points(10)
+	message_admins("The research department has discovered DNA_Disintegrating in [holder.name] adding 10 research credits.")
 	ai_announcement("NOTICE: Encrypted data transmission received from USCSS Royce. Shuttle inbound.")
 
 /datum/chem_property/special/ciphering

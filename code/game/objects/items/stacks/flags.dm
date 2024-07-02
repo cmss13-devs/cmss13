@@ -243,10 +243,10 @@
 			playsound(user, warcry_extra_sound, 40)
 			// Start a cooldown on the flag structure. This way we can keep track of the cooldown when the flag is hoisted and taken down.
 			COOLDOWN_START(planted_flag, warcry_cooldown_struc, 90 SECONDS)
-			user.say("*me shouts an invigorating rallying cry!")
+			user.manual_emote("shouts an invigorating rallying cry!")
 		else
 			playsound(user, warcry_sound, 30)
-			user.say("*me shouts an inspiring cry!")
+			user.manual_emote("shouts an inspiring cry!")
 			// Ditto. If the cooldown isn't finished we have to transfer the leftover time to the structure.
 			COOLDOWN_START(planted_flag, warcry_cooldown_struc, COOLDOWN_TIMELEFT(src, warcry_cooldown_item))
 	else

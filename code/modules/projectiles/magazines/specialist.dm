@@ -35,6 +35,7 @@
 	caliber = "10x99mm"
 	default_ammo = /datum/ammo/bullet/sniper/anti_materiel
 	gun_type = /obj/item/weapon/gun/rifle/sniper/XM43E1
+	icon_state = "xm43e1"
 
 //M42C magazine
 

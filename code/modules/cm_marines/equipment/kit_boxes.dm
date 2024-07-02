@@ -483,6 +483,7 @@
 	new /obj/item/storage/box/m94/signal(src)
 	new /obj/item/device/binoculars/range/designator(src)
 	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/storage/backpack/marine/satchel/rto(src)
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"
@@ -493,7 +494,7 @@
 	new /obj/item/device/encryptionkey/intel(src)
 	new /obj/item/pamphlet/skill/intel(src)
 	new /obj/item/device/motiondetector/intel(src)
-	new /obj/item/storage/pouch/document/small(src)
+	new /obj/item/storage/pouch/document(src)
 
 /obj/item/storage/box/kit/mini_grenadier
 	name = "\improper Frontline M40 Grenadier Kit"

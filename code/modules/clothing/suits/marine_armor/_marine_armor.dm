@@ -667,7 +667,7 @@
 	icon_state = "cc_armor"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
-// Research Armor \\
+//==================Research Armor==================\\
 
 /obj/item/clothing/suit/storage/marine/caustic
 	name = "\improper Z-210 Armor"

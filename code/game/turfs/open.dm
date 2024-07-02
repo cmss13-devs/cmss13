@@ -168,6 +168,7 @@
 /turf/open/river
 	can_bloody = FALSE
 	supports_surgery = FALSE
+	var/toxic = 0
 
 // Prison grass
 /turf/open/organic/grass
@@ -605,6 +606,7 @@
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
+	toxic = 0
 
 /turf/open/gm/coast/north
 

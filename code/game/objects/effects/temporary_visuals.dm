@@ -21,6 +21,19 @@
 	. = ..()
 	deltimer(timerid)
 
+//-----------------------------------------
+//HEAVY IMPACT
+//-----------------------------------------
+
+/obj/effect/temp_visual/heavy_impact
+	icon = 'icons/effects/heavyimpact.dmi'
+	icon_state = "heavyimpact"
+	duration = 1.3 SECONDS
+
+/obj/effect/temp_visual/heavyimpact/Initialize(mapload)
+	. = ..()
+	flick("heavyimpact", src)
+
 /obj/effect/temp_visual/dir_setting
 	randomdir = FALSE
 

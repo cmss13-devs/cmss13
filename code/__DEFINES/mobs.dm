@@ -160,6 +160,9 @@
 /*   MOVE DEFINES   */
 #define MOVE_INTENT_WALK 1
 #define MOVE_INTENT_RUN  2
+// same but for xenos
+#define MOVE_INTENT_STALK 1
+#define MOVE_INTENT_HUNT  2
 
 /*   INTERNAL ORGAN DEFINES   */
 #define ORGAN_ASSISTED 1

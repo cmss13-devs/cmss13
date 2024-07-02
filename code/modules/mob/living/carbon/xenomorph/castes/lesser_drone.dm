@@ -11,6 +11,7 @@
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_TIER_6
+	walk_modifier = XENO_SPEED_HELLHOUND
 
 	evolution_allowed = FALSE
 	can_be_revived = FALSE

@@ -71,6 +71,8 @@
 	if(!owner)
 		return FALSE
 	var/mob/living/carbon/xenomorph/X = owner
+	if(X.m_intent == MOVE_INTENT_STALK && X.tier < 2)
+		return FALSE
 	if(X && !X.is_mob_incapacitated() && !HAS_TRAIT(X, TRAIT_DAZED) && X.body_position == STANDING_UP && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 

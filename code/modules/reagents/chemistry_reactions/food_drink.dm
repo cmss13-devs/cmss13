@@ -131,15 +131,6 @@
 /datum/chemical_reaction/machosauce/infinite/pineapple
 	required_reagents = list("machosauce" = 1, "pineapple" = 1)
 
-/datum/chemical_reaction/machosauce/weaksauce
-	required_reagents = list("machosauce" = 1, "water" = 1)
-
-/datum/chemical_reaction/machosauce/weaksauce/infinite
-	required_reagents = list("machosauce" = 1, "weaksauce" = 1)
-
-/datum/chemical_reaction/machosauce/weaksauce/infinite/water
-	required_reagents = list("water" = 1, "weaksauce" = 1)
-
 /datum/chemical_reaction/sodiumchloride
 	name = "Sodium Chloride"
 	id = "sodiumchloride"

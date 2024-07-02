@@ -187,6 +187,7 @@
 #define PROPERTY_NEUROSHIELDING "neuroshielding"
 #define PROPERTY_ANTIADDICTIVE "anti-addictive"
 #define PROPERTY_ADDICTIVE "addictive"
+#define PROPERTY_ENCEPHALOPHRASIVE "encephalophrasive"
 //Legendary, only in gen_tier 3+
 #define PROPERTY_HYPERGENETIC "hypergenetic"
 #define PROPERTY_BOOSTING "boosting"

@@ -27174,6 +27174,16 @@
 	icon_state = "darkbrownfull2"
 	},
 /area/fiorina/tumor/aux_engi)
+"qzU" = (
+/obj/structure/bed{
+	icon_state = "psychbed"
+	},
+/obj/item/toy/plush/shark,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "greenfull"
+	},
+/area/fiorina/tumor/servers)
 "qzZ" = (
 /obj/structure/barricade/sandbags{
 	dir = 8;
@@ -47013,7 +47023,7 @@ tbG
 ach
 jXz
 peA
-tbG
+qzU
 jXz
 cPs
 xHV

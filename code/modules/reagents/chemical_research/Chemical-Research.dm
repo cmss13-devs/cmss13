@@ -87,8 +87,8 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		if(P.category & PROPERTY_TYPE_UNADJUSTABLE || P.category & PROPERTY_TYPE_ANOMALOUS)
 			continue
 		property_names += P.name
-	for(var/name in research_property_data)
-		property_names -= name
+	for(var/datum/chem_property/property in research_property_data)
+		property_names -= property.name
 	if(LAZYLEN(property_names))
 		has_new_properties = TRUE
 		for(var/name in property_names)

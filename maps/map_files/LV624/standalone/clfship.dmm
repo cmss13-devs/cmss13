@@ -585,7 +585,9 @@
 /area/lv624/lazarus/crashed_ship)
 "oO" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_3"
+	icon_state = "plasteel_3";
+	density = 1;
+	closed = 0
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -1021,7 +1023,9 @@
 /area/lv624/lazarus/crashed_ship)
 "AT" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2"
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
@@ -1838,7 +1842,9 @@
 /area/lv624/ground/caves/south_west_caves)
 "UD" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2"
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -3510,7 +3516,7 @@ Hj
 Ab
 Ab
 Ab
-jz
+Ab
 Ab
 Ab
 Ab

@@ -892,10 +892,6 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/medseceng)
-"adZ" = (
-/obj/vehicle/train/cargo/trolley,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/cp_colony_grounds)
 "aea" = (
 /obj/structure/machinery/alarm{
 	dir = 4;
@@ -12536,10 +12532,6 @@
 	dir = 1
 	},
 /area/shiva/exterior/lz2_fortress)
-"hDs" = (
-/obj/vehicle/train/cargo/engine,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/cp_colony_grounds)
 "hDw" = (
 /obj/structure/machinery/light/double{
 	dir = 1;
@@ -19109,6 +19101,12 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/aerodrome)
+"okt" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfship"
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/cp_colony_grounds)
 "okz" = (
 /obj/effect/decal/cleanable/blood{
 	layer = 3
@@ -51070,7 +51068,7 @@ eOM
 sYu
 sYu
 sYu
-sYu
+okt
 sYu
 lwo
 lwo
@@ -52022,8 +52020,8 @@ bsp
 bsp
 bsp
 rAF
-adZ
-adZ
+sYu
+sYu
 sYu
 lwo
 eOM
@@ -52184,7 +52182,7 @@ tzH
 tzH
 tzH
 vJh
-adZ
+sYu
 eOM
 aec
 lwo
@@ -52346,7 +52344,7 @@ cKb
 cKb
 cKb
 cKb
-hDs
+sYu
 iXS
 sLs
 lwo

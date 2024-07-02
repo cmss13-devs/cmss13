@@ -15572,6 +15572,14 @@
 /obj/structure/prop/rock/brown,
 /turf/open/gm/coast/west,
 /area/varadero/exterior/farocean)
+"kdO" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfship"
+	},
+/turf/open/gm/dirt{
+	icon_state = "desert1"
+	},
+/area/varadero/exterior/monsoon)
 "kdV" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -65255,7 +65263,7 @@ bGU
 bGU
 bGU
 rvD
-pYK
+kdO
 bGU
 bGU
 bGU

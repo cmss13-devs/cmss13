@@ -9,30 +9,6 @@
 "ae" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/admin_building)
-"af" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkredcorners2"
-	},
-/area/bigredv2/outside/admin_building)
-"ag" = (
-/obj/effect/spawner/random/toolbox,
-/obj/structure/platform_decoration,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
-"ai" = (
-/obj/effect/landmark/survivor_spawner,
-/obj/structure/platform_decoration{
-	dir = 1
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
 "aj" = (
 /turf/open/floor{
 	icon_state = "darkred2"
@@ -51,28 +27,6 @@
 /turf/open/floor{
 	icon_state = "delivery"
 	},
-/area/bigredv2/outside/admin_building)
-"am" = (
-/obj/structure/platform,
-/obj/structure/flora/jungle/planttop1{
-	pixel_y = 10
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
-"an" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
-"ap" = (
-/obj/structure/flora/jungle/plantbot1{
-	pixel_y = 10
-	},
-/turf/open/jungle,
 /area/bigredv2/outside/admin_building)
 "ar" = (
 /obj/structure/machinery/light{
@@ -102,15 +56,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/admin_building)
-"aw" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
 "ay" = (
 /turf/open/floor{
 	icon_state = "dark"
@@ -137,23 +82,6 @@
 /obj/effect/acid_hole,
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/admin_building)
-"aG" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "darkredcorners2"
-	},
-/area/bigredv2/outside/admin_building)
-"aH" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
 "aJ" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 4
@@ -173,21 +101,6 @@
 "aL" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/carpet,
-/area/bigredv2/outside/admin_building)
-"aM" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/barricade/sandbags/wired,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
-"aN" = (
-/obj/structure/barricade/sandbags/wired,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkred2"
-	},
 /area/bigredv2/outside/admin_building)
 "aO" = (
 /obj/item/storage/secure/briefcase,
@@ -212,22 +125,6 @@
 	},
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
-"aT" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
-"aU" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/item/storage/toolbox/syndicate,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
 "aV" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/rifle/rubber,
@@ -237,20 +134,6 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/tool/weldingtool,
 /turf/open/floor/carpet,
-/area/bigredv2/outside/admin_building)
-"aX" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
-"aY" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkred2"
-	},
 /area/bigredv2/outside/admin_building)
 "aZ" = (
 /obj/structure/machinery/light{
@@ -306,43 +189,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/admin_building)
-"be" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
-"bf" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
-"bg" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
-"bh" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/command/colony{
-	name = "\improper Operations Office"
-	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/admin_building)
 "bi" = (
 /obj/item/ammo_box/magazine/ext{
 	num_of_magazines = 1
@@ -356,45 +202,9 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/admin_building)
-"bm" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
-"bn" = (
-/turf/open/floor{
-	dir = 10;
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
-"bo" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_x = 30
-	},
-/turf/open/floor{
-	dir = 6;
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
 "bp" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor,
-/area/bigredv2/outside/admin_building)
-"bs" = (
-/obj/structure/window/framed/solaris/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Operations";
-	name = "\improper Operations Shutters"
-	},
-/turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
 "dp" = (
 /obj/item/ammo_magazine/rifle/rubber{
@@ -475,30 +285,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/admin_building)
-"vH" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
-"vO" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
-"yf" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
 "za" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -521,20 +307,6 @@
 /obj/structure/surface/table,
 /obj/item/storage/firstaid/regular/empty,
 /turf/open/floor/carpet,
-/area/bigredv2/outside/admin_building)
-"ND" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
-"Pk" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
 /area/bigredv2/outside/admin_building)
 "QR" = (
 /obj/structure/barricade/metal/wired{
@@ -649,54 +421,6 @@ ad
 ad
 ae
 za
-ae
-ae
-"}
-(9,1,1) = {"
-af
-bm
-an
-be
-aM
-an
-aX
-ND
-bn
-bs
-"}
-(10,1,1) = {"
-ag
-vO
-aw
-bf
-ay
-aT
-ay
-bf
-ay
-bs
-"}
-(11,1,1) = {"
-am
-ap
-Pk
-aG
-aN
-aU
-aY
-bg
-bo
-bs
-"}
-(12,1,1) = {"
-ai
-vH
-yf
-aH
-ae
-ae
-ae
-bh
 ae
 ae
 "}

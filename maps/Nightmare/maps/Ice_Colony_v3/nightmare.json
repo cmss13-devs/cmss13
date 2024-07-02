@@ -103,5 +103,12 @@
 		"chance": 0.5,
 		"path": "standalone/panic_room_hold.dmm",
         "when": { "panic_room": "full" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "clfship",
+		"chance": 1.0,
+		"path": "standalone/clfship.dmm",
+        "when": { "panic_room": "clfship" }
 	}
 ]

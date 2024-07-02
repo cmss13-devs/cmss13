@@ -8,7 +8,6 @@
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
 	access = list(ACCESS_CIVILIAN_PUBLIC)
-	survivor_variant = HOSTILE_SURVIVOR
 
 /datum/equipment_preset/survivor/clf/load_gear(mob/living/carbon/human/new_human)
 

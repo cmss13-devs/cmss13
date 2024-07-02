@@ -393,6 +393,7 @@
 	return TRUE
 
 /datum/action/show_round_statistics/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 

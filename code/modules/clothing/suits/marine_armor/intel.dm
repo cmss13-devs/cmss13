@@ -18,6 +18,7 @@
 	update_icon()
 
 /datum/action/item_action/intel/action_activate()
+	. = ..()
 	if(!ishuman(owner))
 		return
 

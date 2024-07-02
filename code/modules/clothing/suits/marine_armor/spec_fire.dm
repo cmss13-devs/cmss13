@@ -145,6 +145,7 @@
 		return TRUE
 
 /datum/action/item_action/specialist/fire_shield/action_activate()
+	. = ..()
 	var/obj/item/clothing/suit/storage/marine/M35/armor = holder_item
 	if (!istype(armor))
 		return

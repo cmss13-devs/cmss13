@@ -597,7 +597,7 @@
 
 		total_hits++
 
-	var/datum/action/xeno_action/activable/boiler_trap/trap = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
+	var/datum/action/xeno_action/activable/boiler_trap/trap = get_action(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
 
 	trap.reduce_cooldown(total_hits*4 SECONDS)
 

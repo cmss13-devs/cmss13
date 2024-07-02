@@ -130,6 +130,7 @@
 	name = "Start Charging"
 
 /datum/action/item_action/techweb_railgun_start_charge/action_activate()
+	. = ..()
 	if (target)
 		var/obj/item/weapon/gun/rifle/techweb_railgun/TR = target
 		TR.start_charging(owner)
@@ -138,6 +139,7 @@
 	name = "Abort Charge"
 
 /datum/action/item_action/techweb_railgun_abort_charge/action_activate()
+	. = ..()
 	if (target)
 		var/obj/item/weapon/gun/rifle/techweb_railgun/TR = target
 		TR.abort_charge(owner)

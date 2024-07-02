@@ -102,6 +102,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	var/mob/hologram/linked_hologram
 
 /datum/action/leave_hologram/action_activate()
+	. = ..()
 	qdel(src)
 
 /datum/action/leave_hologram/Destroy()

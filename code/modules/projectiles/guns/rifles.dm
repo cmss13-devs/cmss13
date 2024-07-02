@@ -557,6 +557,7 @@
 //---ability actions--\\
 
 /datum/action/item_action/m46c/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/rifle/m46c/protag_gun = holder_item
 	if(!ishuman(owner))
 		return

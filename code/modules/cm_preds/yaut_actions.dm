@@ -49,6 +49,7 @@
 	return TRUE
 
 /datum/action/predator_action/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return FALSE
 
@@ -248,6 +249,7 @@
 	action_icon_state = "looc_toggle"
 
 /datum/action/yautja_emote_panel/action_activate()
+	. = ..()
 	var/mob/living/carbon/human/human_owner = owner
 	var/datum/species/yautja/yautja_species = human_owner.species
 	yautja_species.open_emote_panel()

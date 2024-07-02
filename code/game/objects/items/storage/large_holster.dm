@@ -375,6 +375,7 @@
 		return TRUE
 
 /datum/action/item_action/specialist/toggle_fuel/action_activate()
+	. = ..()
 	var/obj/item/storage/large_holster/fuelpack/FP = holder_item
 	if (!istype(FP))
 		return

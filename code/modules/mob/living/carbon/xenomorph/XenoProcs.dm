@@ -264,7 +264,7 @@
 
 /mob/living/carbon/xenomorph/proc/pounced_mob(mob/living/L)
 	// This should only be called back by a mob that has pounce, so no need to check
-	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
+	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce.
 	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
@@ -336,7 +336,7 @@
 	pounced_mob(L)
 
 /mob/living/carbon/xenomorph/proc/pounced_obj(obj/O)
-	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
+	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce
 	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))

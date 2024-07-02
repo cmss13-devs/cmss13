@@ -13,7 +13,7 @@
 		break
 
 	if(found)
-		var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_xeno_action_by_type(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+		var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 		if(lurker_invis)
 			lurker_invis.invisibility_off() // Full cooldown
 

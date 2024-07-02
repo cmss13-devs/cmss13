@@ -208,6 +208,7 @@
 		return TRUE
 
 /datum/action/item_action/hover/action_activate()
+	. = ..()
 	var/mob/living/carbon/human/H = owner
 	if(H.selected_ability == src)
 		to_chat(H, "You will no longer use [name] with \

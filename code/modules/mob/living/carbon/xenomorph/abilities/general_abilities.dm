@@ -485,6 +485,7 @@
 	listen_signal = COMSIG_KB_XENO_EVOLVE
 
 /datum/action/xeno_action/onclick/evolve/action_activate()
+	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.do_evolve()
 

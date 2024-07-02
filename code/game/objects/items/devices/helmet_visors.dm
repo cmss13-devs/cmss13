@@ -146,6 +146,7 @@
 			return
 
 /datum/action/item_action/view_publications/helmet_visor/action_activate()
+	. = ..()
 	var/obj/item/device/helmet_visor/medical/advanced/medical_visor = locate() in holder_item
 
 	if(!medical_visor)

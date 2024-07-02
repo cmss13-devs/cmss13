@@ -117,7 +117,7 @@
 		xeno.anchored = FALSE
 		unroot_human(carbon, TRAIT_SOURCE_ABILITY("Devastate"))
 
-		return ..()
+	return ..()
 
 
 /datum/action/xeno_action/onclick/feralrush/use_ability(atom/A)
@@ -149,6 +149,7 @@
 	predatoralien.recalculate_armor()
 	playsound(predatoralien, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
 	apply_cooldown()
+	return ..()
 
 
 /datum/action/xeno_action/onclick/feralrush/proc/remove_rush_effects()
@@ -180,7 +181,7 @@
 	if(!xeno.check_state())
 		return
 
-	var/datum/action/xeno_action/activable/feralfrenzy/guttype = get_xeno_action_by_type(xeno, /datum/action/xeno_action/activable/feralfrenzy)
+	var/datum/action/xeno_action/activable/feralfrenzy/guttype = get_action(xeno, /datum/action/xeno_action/activable/feralfrenzy)
 	if(!guttype)
 		return
 
@@ -248,7 +249,7 @@
 	else
 		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("We couldn't grab our target. Wait a moment to try again."))
 
-	return TRUE
+	return ..()
 
 /mob/living/carbon/xenomorph/predalien/stop_pulling()
 	if(isliving(pulling) && smashing)

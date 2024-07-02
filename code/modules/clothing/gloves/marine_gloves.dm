@@ -228,8 +228,8 @@
 	icon_state = "caustic_H"
 	item_state = "caustic_H"
 	siemens_coefficient = 1
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_VERYLOW
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_HIGH
 	armor_bio = CLOTHING_ARMOR_HIGHPLUS

@@ -32740,6 +32740,15 @@
 "idW" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
+"ifM" = (
+/obj/item/lightstick/red/planted,
+/obj/structure/bed/chair/office{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "darkpurple2"
+	},
+/area/strata/ag/exterior/tcomms/tcomms_deck)
 "ifU" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
@@ -37306,7 +37315,10 @@
 	pixel_x = -23;
 	start_charge = 0
 	},
-/turf/open/auto_turf/snow/brown_base/layer2,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkpurple2"
+	},
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "pGt" = (
 /turf/closed/shuttle/ert{
@@ -39961,6 +39973,11 @@
 	},
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh/center)
+"tYY" = (
+/turf/open/floor/prison{
+	icon_state = "darkpurple2"
+	},
+/area/strata/ag/exterior/tcomms/tcomms_deck)
 "tZF" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -41442,6 +41459,12 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+"wuD" = (
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "darkpurple2"
+	},
+/area/strata/ag/exterior/tcomms/tcomms_deck)
 "wuE" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -56673,7 +56696,7 @@ aac
 aac
 aac
 aac
-btu
+ifM
 btv
 btq
 aac
@@ -56868,7 +56891,7 @@ aac
 aac
 aac
 qmw
-btq
+tYY
 btq
 buN
 aac
@@ -57063,7 +57086,7 @@ aac
 aac
 aac
 pGf
-btv
+wuD
 btq
 xre
 aac

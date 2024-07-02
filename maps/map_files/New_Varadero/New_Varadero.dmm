@@ -6366,7 +6366,7 @@
 	pixel_y = 9;
 	pixel_x = -8
 	},
-/turf/open/gm/coast/beachcorner2/north_west,
+/turf/open/gm/coast/beachcorner2/can_surgery,
 /area/varadero/exterior/lz2_near)
 "eia" = (
 /obj/effect/overlay/palmtree_r{
@@ -10705,6 +10705,11 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance)
+"gSB" = (
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 8
+	},
+/area/varadero/exterior/lz2_near)
 "gSC" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating/icefloor{
@@ -11827,6 +11832,9 @@
 	icon_state = "wood-broken"
 	},
 /area/varadero/interior/court)
+"hJb" = (
+/turf/open/gm/coast/beachcorner/can_surgery,
+/area/varadero/exterior/lz2_near)
 "hJl" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
@@ -17544,6 +17552,11 @@
 	icon_state = "red"
 	},
 /area/varadero/interior/administration)
+"lrs" = (
+/turf/open/gm/coast/can_surgery{
+	dir = 1
+	},
+/area/varadero/exterior/lz2_near)
 "lrR" = (
 /obj/structure/girder/displaced,
 /turf/open/floor/plating/icefloor{
@@ -18181,6 +18194,9 @@
 	icon_state = "wred"
 	},
 /area/varadero/interior/medical)
+"lJq" = (
+/turf/open/gm/river/can_surgery,
+/area/varadero/exterior/lz2_near)
 "lKI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/glass/beaker/ethanol{
@@ -18671,6 +18687,11 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior_protected/maintenance/south)
+"lYR" = (
+/turf/open/gm/coast/can_surgery{
+	dir = 8
+	},
+/area/varadero/exterior/lz2_near)
 "lZa" = (
 /obj/structure/prop/structure_lattice{
 	density = 0;
@@ -30131,7 +30152,7 @@
 /area/varadero/interior/medical)
 "tez" = (
 /obj/item/toy/bikehorn/rubberducky,
-/turf/open/gm/coast/beachcorner/north_west,
+/turf/open/gm/coast/beachcorner/can_surgery,
 /area/varadero/exterior/lz2_near)
 "teH" = (
 /obj/structure/window/framed/colony,
@@ -34297,6 +34318,11 @@
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
+"vOp" = (
+/turf/open/gm/coast/can_surgery{
+	dir = 4
+	},
+/area/varadero/exterior/lz2_near)
 "vOr" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -37543,6 +37569,11 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
+"xRg" = (
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 1
+	},
+/area/varadero/exterior/lz2_near)
 "xRt" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -37972,6 +38003,11 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
+"yeP" = (
+/turf/open/gm/coast/beachcorner/can_surgery{
+	dir = 4
+	},
+/area/varadero/exterior/lz2_near)
 "yeR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/stack/tile/plasteel{
@@ -62289,8 +62325,8 @@ aQN
 sKz
 wlB
 tez
-tmZ
-rXk
+vOp
+gSB
 wlB
 aQN
 hmh
@@ -62469,10 +62505,10 @@ wlB
 jwX
 wlB
 wlB
-qNX
+hJb
 ehY
-urD
-nsN
+lJq
+lrs
 lTg
 aQN
 aQN
@@ -62651,10 +62687,10 @@ wlB
 wlB
 mdg
 wlB
-beK
-cVq
-cVq
-mtT
+xRg
+lYR
+lYR
+yeP
 wlB
 aQN
 aQN

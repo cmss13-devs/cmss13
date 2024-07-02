@@ -41,6 +41,10 @@
 		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Authority confirmation card is missing!\"")
 		return FALSE
 
+	if(!istype(id_card) || !id_card.check_biometrics(user))
+		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Biometrics failure! You require an authenticated ID card to perform this action!\"")
+		return FALSE
+
 	if(check_access(id_card))
 		authenticated = TRUE
 		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGIN: Welcome, [id_card.registered_name]. Access granted.\"")

@@ -18,20 +18,17 @@
 	name = "\improper Spaceport"
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
 "ah" = (
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
 "ai" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
@@ -43,7 +40,6 @@
 	dir = 8
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
@@ -53,8 +49,7 @@
 /area/bigredv2/outside/space_port)
 "am" = (
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
@@ -68,14 +63,12 @@
 	start_charge = 0
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
 "ap" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
@@ -84,7 +77,6 @@
 	dir = 4
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
@@ -98,25 +90,21 @@
 	},
 /obj/item/tool/pen,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
 "at" = (
 /obj/structure/machinery/disposal,
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
 "au" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
@@ -126,7 +114,6 @@
 	dir = 4
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
@@ -145,7 +132,6 @@
 	dir = 4
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/landing/console)
@@ -153,7 +139,6 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
@@ -174,7 +159,6 @@
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
@@ -182,7 +166,6 @@
 /obj/structure/bed/chair/office/dark,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
@@ -191,7 +174,6 @@
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
@@ -216,7 +198,6 @@
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
@@ -225,14 +206,12 @@
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
 "aK" = (
 /obj/structure/machinery/computer/cameras,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
@@ -240,13 +219,11 @@
 /obj/item/shard,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
 "aM" = (
 /turf/open/floor{
-	dir = 2;
 	icon_state = "darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
@@ -280,42 +257,36 @@
 /area/bigredv2/outside/space_port)
 "aT" = (
 /obj/structure/machinery/light{
-	dir = 1;
-	icon_state = "tube1"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aU" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "asteroidplating"
 	},
 /area/bigredv2/outside/space_port)
 "aV" = (
 /turf/open/floor/plating{
-	dir = 2;
 	icon_state = "warnplate"
 	},
 /area/bigredv2/outside/space_port)
 "aW" = (
 /obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/plating{
-	dir = 2;
 	icon_state = "warnplate"
 	},
 /area/bigredv2/outside/space_port)
 "aX" = (
 /obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/plating{
-	dir = 2;
 	icon_state = "warnplate"
 	},
 /area/bigredv2/outside/space_port)
 "aY" = (
 /obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating{
-	dir = 2;
 	icon_state = "warnplate"
 	},
 /area/bigredv2/outside/space_port)
@@ -340,7 +311,9 @@
 /area/bigredv2/outside/space_port)
 "bh" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
 /area/bigredv2/outside/space_port)
 "bi" = (
 /obj/structure/cargo_container/grant/left,
@@ -356,7 +329,9 @@
 /area/bigredv2/outside/space_port)
 "bl" = (
 /obj/structure/cargo_container/arious/leftmid,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
 /area/bigredv2/outside/space_port)
 "bm" = (
 /obj/structure/cargo_container/arious/rightmid,
@@ -365,6 +340,85 @@
 "bn" = (
 /obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"eb" = (
+/obj/structure/cargo_container/grant/rightmid,
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
+"js" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/bigredv2/outside/space_port)
+"qb" = (
+/obj/structure/cargo_container/arious/leftmid,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/bigredv2/outside/space_port)
+"rE" = (
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/bigredv2/outside/space_port)
+"Dy" = (
+/obj/structure/cargo_container/grant/right,
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
+"EG" = (
+/obj/structure/cargo_container/watatsumi/rightmid,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/bigredv2/outside/space_port)
+"Hz" = (
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/bigredv2/outside/space_port)
+"Id" = (
+/obj/structure/cargo_container/watatsumi/leftmid,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/bigredv2/outside/space_port)
+"KJ" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
+"Mn" = (
+/obj/structure/cargo_container/arious/right,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/bigredv2/outside/space_port)
+"Qt" = (
+/obj/structure/cargo_container/grant/left,
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
+"RP" = (
+/obj/structure/cargo_container/watatsumi/rightmid,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/bigredv2/outside/space_port)
+"RV" = (
+/obj/structure/cargo_container/watatsumi/leftmid,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/bigredv2/outside/space_port)
+"TE" = (
+/obj/structure/cargo_container/arious/rightmid,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/bigredv2/outside/space_port)
+"YK" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
 /area/bigredv2/outside/space_port)
 
 (1,1,1) = {"
@@ -396,14 +450,14 @@ ac
 ac
 ac
 aV
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+rE
+rE
+rE
+KJ
+KJ
+rE
+rE
+js
 "}
 (3,1,1) = {"
 ac
@@ -415,14 +469,14 @@ ac
 ac
 ac
 aV
-ac
-ac
-ac
-ac
-ac
-ac
-aA
-ac
+rE
+js
+rE
+KJ
+KJ
+rE
+Id
+rE
 "}
 (4,1,1) = {"
 ac
@@ -434,13 +488,13 @@ ac
 ac
 ac
 aV
-ac
-ac
-ac
-ac
-ac
-ac
-aB
+rE
+rE
+rE
+KJ
+KJ
+rE
+RP
 bl
 "}
 (5,1,1) = {"
@@ -456,8 +510,8 @@ aW
 ac
 ac
 ac
-ac
-ac
+KJ
+KJ
 ac
 aC
 bm
@@ -473,12 +527,12 @@ ac
 ac
 aX
 ac
-ac
-ac
-ac
-ac
-ac
-ac
+Hz
+Hz
+KJ
+KJ
+Hz
+Hz
 bn
 "}
 (7,1,1) = {"
@@ -492,12 +546,12 @@ ac
 ac
 aY
 ac
-ac
-ac
-ac
-ac
-ac
-ac
+Hz
+YK
+KJ
+KJ
+Hz
+Hz
 ac
 "}
 (8,1,1) = {"
@@ -511,12 +565,12 @@ ac
 ac
 aV
 ac
-ac
-ac
-ac
-bi
-ac
-ac
+Hz
+Hz
+KJ
+Qt
+Hz
+Hz
 ac
 "}
 (9,1,1) = {"
@@ -532,8 +586,8 @@ aV
 ac
 bg
 ac
-ac
-bj
+KJ
+eb
 ac
 ac
 ac
@@ -549,12 +603,12 @@ an
 ac
 aV
 ac
-ac
-ac
-ac
-bk
-ac
-ac
+Hz
+Hz
+KJ
+Dy
+Hz
+Hz
 ac
 "}
 (11,1,1) = {"
@@ -568,12 +622,12 @@ an
 aT
 aV
 ac
-ac
-ac
-ac
-ac
-ac
-ac
+Hz
+Hz
+KJ
+KJ
+Hz
+Hz
 ac
 "}
 (12,1,1) = {"
@@ -587,12 +641,12 @@ aP
 ac
 aV
 ac
-ac
+Hz
 bh
-ac
-ac
-ac
-ac
+KJ
+KJ
+Hz
+YK
 ac
 "}
 (13,1,1) = {"
@@ -608,8 +662,8 @@ aV
 ac
 ac
 ac
-ac
-ac
+KJ
+KJ
 ac
 ac
 bi
@@ -625,12 +679,12 @@ an
 ac
 aV
 bd
-ac
-ac
-ac
-ac
-ac
-bl
+Hz
+Hz
+KJ
+KJ
+Hz
+qb
 bj
 "}
 (15,1,1) = {"
@@ -644,12 +698,12 @@ aQ
 ac
 aV
 be
-aA
-ac
-ac
-ac
-ac
-bm
+RV
+Hz
+KJ
+KJ
+Hz
+TE
 bk
 "}
 (16,1,1) = {"
@@ -663,12 +717,12 @@ aR
 ac
 aV
 ac
-aB
-ac
-ac
-ac
-ac
-bn
+EG
+Hz
+KJ
+KJ
+Hz
+Mn
 ac
 "}
 (17,1,1) = {"
@@ -684,8 +738,8 @@ aV
 ac
 aC
 ac
-ac
-ac
+KJ
+KJ
 ac
 ac
 ac

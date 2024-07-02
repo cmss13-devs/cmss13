@@ -565,6 +565,21 @@
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 	volume = RADIO_VOLUME_CRITICAL
 
+/obj/item/device/radio/headset/almayer/mcom/sea
+	name = "marine senior enlisted advisor headset"
+	desc = "Issued only to senior enlisted advisors. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
+	icon_state = "mco_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
+	volume = RADIO_VOLUME_CRITICAL
+	misc_tracking = TRUE
+	locate_setting = TRACKER_CO
+
+	inbuilt_tracking_options = list(
+		"Commanding Officer" = TRACKER_CO,
+		"Executive Officer" = TRACKER_XO,
+		"Chief MP" = TRACKER_CMP
+	)
+
 /obj/item/device/radio/headset/almayer/mcom/synth
 	name = "marine synth headset"
 	desc = "Issued only to USCM synthetics. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"

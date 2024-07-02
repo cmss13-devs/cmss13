@@ -21,7 +21,6 @@
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
-		/obj/item/tool/pen,
 	)
 //Captain
 /obj/item/clothing/suit/captunic
@@ -55,7 +54,6 @@
 		/obj/item/weapon/gun/,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
-		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/storage/bible,
 		/obj/item/attachable/bayonet,
@@ -111,7 +109,6 @@
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
-		/obj/item/tool/pen,
 	)
 
 //Chef
@@ -131,7 +128,6 @@
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
-		/obj/item/tool/pen,
 	)
 
 //Security
@@ -167,9 +163,7 @@
 	allowed = list(
 		/obj/item/device/analyzer,
 		/obj/item/device/multitool,
-		/obj/item/device/pipe_painter,
 		/obj/item/device/radio,
-		/obj/item/device/t_scanner,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/weldingtool,
@@ -179,10 +173,8 @@
 
 		/obj/item/weapon/gun,
 		/obj/item/ammo_magazine,
-		/obj/item/ammo_casing,
 		/obj/item/weapon/baton,
 		/obj/item/restraint/handcuffs,
-		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
 		/obj/item/restraint/handcuffs,
@@ -196,11 +188,7 @@
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/taperecorder,
-		/obj/item/device/radio,
-		/obj/item/tank/emergency_oxygen,
-		/obj/item/tool/crowbar,
 		/obj/item/tool/crew_monitor,
-		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/storage/large_holster/katana,
 		/obj/item/device/motiondetector,
@@ -228,9 +216,7 @@
 	allowed = list(
 		/obj/item/device/analyzer,
 		/obj/item/device/multitool,
-		/obj/item/device/pipe_painter,
 		/obj/item/device/radio,
-		/obj/item/device/t_scanner,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/weldingtool,
@@ -239,11 +225,9 @@
 		/obj/item/clothing/mask/gas,
 
 		/obj/item/weapon/gun,
-		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
 		/obj/item/ammo_magazine,
-		/obj/item/ammo_casing,
 		/obj/item/weapon/baton,
 		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
@@ -256,11 +240,7 @@
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/taperecorder,
-		/obj/item/device/radio,
-		/obj/item/tank/emergency_oxygen,
-		/obj/item/tool/crowbar,
 		/obj/item/tool/crew_monitor,
-		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/storage/large_holster/katana,
 		/obj/item/device/motiondetector,
@@ -296,9 +276,7 @@
 	allowed = list (
 		/obj/item/device/analyzer,
 		/obj/item/device/multitool,
-		/obj/item/device/pipe_painter,
 		/obj/item/device/radio,
-		/obj/item/device/t_scanner,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/weldingtool,
@@ -307,7 +285,6 @@
 		/obj/item/clothing/mask/gas,
 
 		/obj/item/weapon/gun,
-		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
 		/obj/item/restraint/handcuffs,
@@ -320,11 +297,7 @@
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
-		/obj/item/device/radio,
-		/obj/item/tank/emergency_oxygen,
-		/obj/item/tool/crowbar,
 		/obj/item/tool/crew_monitor,
-		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/storage/large_holster/katana,
 		/obj/item/device/motiondetector,
@@ -351,18 +324,47 @@
 	item_state = "hazard_black"
 
 //Lawyer
-/obj/item/clothing/suit/storage/lawyer/bluejacket
-	name = "Blue Suit Jacket"
+/obj/item/clothing/suit/storage/lawyer
+	name = "blue suit jacket"
 	desc = "A snappy dress jacket."
 	icon_state = "suitjacket_blue_open"
 	item_state = "suitjacket_blue_open"
 	blood_overlay_type = "coat"
+	allowed = list (
+		/obj/item/device/analyzer,
+		/obj/item/device/multitool,
+		/obj/item/device/radio,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/wirecutters,
+		/obj/item/tool/wrench,
+		/obj/item/clothing/mask/gas,
+
+		/obj/item/weapon/gun,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/baton,
+		/obj/item/restraint/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
+		/obj/item/storage/belt/gun/smartpistol,
+
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/tool/crew_monitor,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
+		/obj/item/device/motiondetector,
+	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/lawyer/purpjacket
-	name = "Purple Suit Jacket"
+	name = "purple suit jacket"
 	desc = "A snappy dress jacket."
 	icon_state = "suitjacket_purp"
 	item_state = "suitjacket_purp"
@@ -371,7 +373,7 @@
 
 //Internal Affairs
 /obj/item/clothing/suit/storage/internalaffairs
-	name = "Internal Affairs Jacket"
+	name = "internal affairs jacket"
 	desc = "A smooth black jacket."
 	icon_state = "ia_jacket_open"
 	item_state = "ia_jacket"
@@ -406,7 +408,6 @@
 	desc = "This shouldn't be here..."
 	blood_overlay_type = "armor"
 	allowed = list(
-		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
 		/obj/item/restraint/handcuffs,
@@ -425,7 +426,6 @@
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/crew_monitor,
-		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/storage/large_holster/katana,
 		/obj/item/device/motiondetector,

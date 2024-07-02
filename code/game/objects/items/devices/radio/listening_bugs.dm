@@ -72,7 +72,7 @@
 			if(!ishuman(usr))
 				return
 			var/mob/living/carbon/human/user = usr
-			if(!check_access(user.wear_id) && !check_access(user.get_active_hand()))
+			if(!check_access(user.get_idcard()) && !check_access(user.get_active_hand()))
 				to_chat(user, SPAN_WARNING("You need an authenticated ID card to change this function!"))
 				return
 			if(subspace_switchable)

@@ -248,8 +248,8 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 				//Check if they have command access
 				var/list/acc = list()
 				var/mob/living/carbon/human/H = ui.user
-				if(H.wear_id)
-					acc += H.wear_id.GetAccess()
+				if(H.get_idcard())
+					acc += H.get_idcard().GetAccess()
 				if(H.get_active_hand())
 					acc += H.get_active_hand().GetAccess()
 				if(!(ACCESS_MARINE_COMMAND in acc))

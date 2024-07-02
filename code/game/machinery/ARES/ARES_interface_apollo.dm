@@ -174,7 +174,7 @@
 			if(istype(idcard))
 				authentication = get_ares_access(idcard)
 				last_login = idcard.registered_name
-			else if(user.wear_id)
+			else if(user.get_idcard())
 				idcard = user.get_idcard()
 				if(idcard)
 					authentication = get_ares_access(idcard)
@@ -316,7 +316,7 @@
 			var/has_id = FALSE
 			if(istype(idcard))
 				has_id = TRUE
-			else if(user.wear_id)
+			else if(user.get_idcard())
 				idcard = user.get_idcard()
 				if(idcard)
 					has_id = TRUE

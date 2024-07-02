@@ -114,6 +114,7 @@
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
 		if(0)
+			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
 		if(-1)
 			set_light(1)
@@ -198,6 +199,7 @@
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
 		if(0)
+			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
 		if(-1)
 			set_light(1)
@@ -222,6 +224,7 @@
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
 		if(0)
+			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
 		if(-1)
 			set_light(1)

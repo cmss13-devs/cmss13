@@ -244,7 +244,7 @@
 	max_duration = 50
 
 /obj/item/ammo_magazine/flamer_tank/smoke
-	name = "Custom incinerator smoke tank"
+	name = "custom incinerator smoke tank"
 	desc = "A tank holding powdered smoke that expands when exposed to an open flame and carries any chemicals along with it."
 	matter = list("metal" = 3750)
 	flamer_chem = null
@@ -252,7 +252,7 @@
 
 //tanks printable by the research biomass machine
 /obj/item/ammo_magazine/flamer_tank/custom/upgraded
-	name = "Upgraded custom incinerator tank"
+	name = "upgraded custom incinerator tank"
 	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. This one has been modified with a larger and more sophisticated internal propellant tank, allowing for bigger capacity and stronger fuels."
 	matter = list("metal" = 50) // no free metal
 	flamer_chem = null
@@ -264,7 +264,7 @@
 	custom = TRUE
 
 /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
-	name = "Large custom incinerator smoke tank"
+	name = "large custom incinerator smoke tank"
 	desc = "A tank holding powdered smoke that expands when exposed to an open flame and carries any chemicals along with it. This one has been outfitted with an upgraded internal compressor, allowing for bigger capacity."
 	matter = list("metal" = 50) //no free metal
 	flamer_chem = null

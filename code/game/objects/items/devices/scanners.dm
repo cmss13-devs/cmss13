@@ -340,6 +340,21 @@ FORENSIC SCANNER
 	ex_potential = 0
 	int_potential = 0
 	rad_potential = 0
+
+	if(istype(O, /obj/item/ammo_magazine/flamer_tank))
+		var/obj/item/ammo_magazine/flamer_tank/tank = O
+		if(!length(tank.reagents.reagent_list))
+			to_chat(user, SPAN_NOTICE("No fuel detected in [O]"))
+			return
+		var/result
+		var/datum/reagent/chem = tank.reagents.reagent_list[1]
+		result += SPAN_BLUE("Fuel Statistics:")
+		result += SPAN_BLUE("<br>Intensity: [min(chem.intensityfire, tank.max_intensity)]")
+		result += SPAN_BLUE("<br>Duration: [min(chem.durationfire, tank.max_duration)]")
+		result += SPAN_BLUE("<br>Range: [min(chem.rangefire, tank.max_range)]")
+		to_chat(user, SPAN_NOTICE("[result]"))
+		return
+
 	if(istype(O,/obj/item/explosive))
 		var/obj/item/explosive/E = O
 		if(!E.customizable)

@@ -584,3 +584,14 @@
 	new /obj/item/storage/pouch/construction/low_grade_full(src)
 	new /obj/item/storage/pouch/electronics/full(src)
 	new /obj/item/clothing/glasses/welding(src)
+
+/obj/item/storage/box/kit/caustic
+	name = "\improper Z-210 Armor Kit"
+	pro_case_overlay = "haz"
+
+/obj/item/storage/box/kit/caustic/fill_preset_inventory()
+	new /obj/item/clothing/suit/storage/marine/caustic(src)
+	new /obj/item/clothing/head/helmet/marine/caustic(src)
+	new /obj/item/clothing/gloves/marine/caustic(src)
+	new /obj/item/clothing/shoes/marine/caustic(src)
+	new /obj/item/clothing/under/marine/caustic(src)

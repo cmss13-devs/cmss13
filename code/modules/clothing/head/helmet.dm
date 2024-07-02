@@ -199,7 +199,6 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	siemens_coefficient = 0.7
 
-
 //===========================//MARINES HELMETS\\=================================\\
 //=======================================================================\\
 
@@ -986,6 +985,37 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_atom = NO_SNOW_TYPE
 	built_in_visors = list(new /obj/item/device/helmet_visor/night_vision/marine_raider, new /obj/item/device/helmet_visor/security)
 	start_down_visor_type = /obj/item/device/helmet_visor/night_vision/marine_raider
+
+//=============================//Research\\==================================\\
+
+/obj/item/clothing/head/helmet/marine/caustic
+	name = "\improper Z-210 Helmet"
+	desc = "It's a ANCW Helmet. Its fitted with an integrated gasmask and visor. The inside is cushioned with cool gelpads to protect against harsh temperature changes and heavy impacts."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "caustic_H"
+	item_state = "caustic_H"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
+	flags_cold_protection = BODY_FLAG_HEAD
+	gas_transfer_coefficient = 0.1
+	permeability_coefficient = 0.9
+	siemens_coefficient = 1
+	flags_inventory = BLOCKSHARPOBJ|COVERMOUTH|COVEREYES|ALLOWINTERNALS|BLOCKGASEFFECT|ALLOWREBREATH|ALLOWCPR
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR|HIDEMASK|HIDELOWHAIR|HIDEFACE
+	unacidable = TRUE
+	var/gas_filter_strength = 1 //For gas mask filters
+	var/list/filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
 
 //=============================//PMCS\\==================================\\
 //=======================================================================\\

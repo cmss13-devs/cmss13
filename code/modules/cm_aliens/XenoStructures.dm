@@ -924,7 +924,7 @@
 
 /// Callback for a repeating 10s timer to ensure both pylons are active (otherwise delete) and counts the number of marines groundside (would cause hatching to expedite).
 /obj/effect/alien/resin/king_cocoon/proc/check_pylons()
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 
 	if(length(hive.active_endgame_pylons) < 2)
 		qdel(src)

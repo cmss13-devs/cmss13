@@ -27,6 +27,7 @@
 #define HUNTER_CLAN "25" //Displays a colored icon to represent ingame Hunter Clans
 #define HUNTER_HUD "26" //Displays various statuses on mobs for Hunters to identify targets
 #define HOLOCARD_HUD "27" //Displays the holocards set by medical personnel
+#define HUD_BRAINWORM "28" //Displays infested HUD for brainworms.
 
 //data HUD (medhud, sechud) defines
 #define MOB_HUD_SECURITY_BASIC 1
@@ -47,6 +48,7 @@
 #define MOB_HUD_HUNTER 16
 #define MOB_HUD_HUNTER_CLAN 17
 #define MOB_HUD_EXECUTE 18
+#define MOB_HUD_BRAINWORM 19
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"

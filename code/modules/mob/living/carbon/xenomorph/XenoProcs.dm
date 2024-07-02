@@ -145,6 +145,26 @@
 		else
 			. += "Hive Orders: -"
 
+	var/mob/living/carbon/cortical_borer/B = has_brain_worms()
+	if(B && (B.borer_flags_status & BORER_STATUS_CONTROLLING))
+
+		var/CR = "Yes"
+		if(!B.can_reproduce)
+			CR = "Forbidden"
+		else if((B.enzymes < BORER_LARVAE_COST))
+			CR = "No"
+
+		. += ""
+		. += "Cortical Directive: [GLOB.brainlink.cortical_directive]"
+		. += "Borer: CONTROLLING"
+		. += "Name: [B.real_name]"
+		. += "Can Reproduce: [CR]"
+		. += "Enzymes: [round(B.enzymes)]/[round(B.max_enzymes)]"
+		. += "Health: [B.health]/[B.maxHealth]"
+		. += "Injuries: Brute:[round(B.getBruteLoss())] Burn:[round(B.getFireLoss())] Toxin:[round(B.getToxLoss())]"
+		. += ""
+		. += "Host Plasma: [plasma_stored]/[plasma_max]"
+		. += "Host Integrity: [health]/[maxHealth]"
 	. += ""
 
 //A simple handler for checking your state. Used in pretty much all the procs.

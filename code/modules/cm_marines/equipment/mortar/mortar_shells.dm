@@ -30,18 +30,18 @@
 	desc = "An 80mm mortar shell, loaded with a high explosive charge."
 	icon_state = "mortar_ammo_he"
 
-/obj/item/mortar_shell/he/detonate(turf/T)
-	explosion(T, 0, 3, 5, 7, explosion_cause_data = cause_data)
+/obj/item/mortar_shell/he/detonate(turf/epicenter)
+	cell_explosion(epicenter, 240, 34, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
 /obj/item/mortar_shell/frag
 	name = "\improper 80mm fragmentation mortar shell"
 	desc = "An 80mm mortar shell, loaded with a fragmentation charge."
 	icon_state = "mortar_ammo_frag"
 
-/obj/item/mortar_shell/frag/detonate(turf/T)
-	create_shrapnel(T, 60, cause_data = cause_data)
+/obj/item/mortar_shell/frag/detonate(turf/epicenter)
+	create_shrapnel(epicenter, 60, cause_data = cause_data)
 	sleep(2)
-	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+	cell_explosion(epicenter, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
 /obj/item/mortar_shell/incendiary
 	name = "\improper 80mm incendiary mortar shell"
@@ -53,10 +53,10 @@
 	var/flameshape = FLAMESHAPE_DEFAULT
 	var/fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
-/obj/item/mortar_shell/incendiary/detonate(turf/T)
-	explosion(T, 0, 2, 4, 7, explosion_cause_data = cause_data)
-	flame_radius(cause_data, radius, T, flame_level, burn_level, flameshape, null, fire_type)
-	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+/obj/item/mortar_shell/incendiary/detonate(turf/epicenter)
+	cell_explosion(epicenter, 200, 33, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+	flame_radius(cause_data, radius, epicenter, flame_level, burn_level, flameshape, null, fire_type)
+	playsound(epicenter, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 
 /obj/item/mortar_shell/flare
 	name = "\improper 80mm flare/camera mortar shell"

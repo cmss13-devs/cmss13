@@ -399,7 +399,7 @@
 	if(!should_block_game_interaction(src))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 		notify_ghosts(header = "New Queen", message = "A new Queen has risen.", source = src, action = NOTIFY_ORBIT)
-	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
+	playsound(src, 'sound/voice/alien_queen_command.ogg', 75, 0)
 	set_resin_build_order(GLOB.resin_build_order_drone)
 	for(var/datum/action/xeno_action/action in actions)
 		// Also update the choose_resin icon since it resets
@@ -522,7 +522,7 @@
 
 	if(stat != DEAD)
 		if(++breathing_counter >= rand(22, 27)) //Increase the breathing variable each tick. Play it at random intervals.
-			playsound(loc, pick('sound/voice/alien_queen_breath1.ogg', 'sound/voice/alien_queen_breath2.ogg'), 15, 1, 4)
+			playsound(src, pick('sound/voice/alien_queen_breath1.ogg', 'sound/voice/alien_queen_breath2.ogg'), 15, 1, 4)
 			breathing_counter = 0 //Reset the counter
 
 		if(observed_xeno)

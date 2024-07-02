@@ -27,3 +27,6 @@
 
 /// Called when something is removed from a client's screen : /client/proc/remove_from_screen(screen_remove)
 #define COMSIG_CLIENT_SCREEN_REMOVE "client_screen_remove"
+
+/// From movement.dm: /atom/movable/proc/Moved(atom/oldloc, direction, Forced = FALSE)
+#define COMSIG_CLIENT_MOB_MOVED "client_mob_moved"

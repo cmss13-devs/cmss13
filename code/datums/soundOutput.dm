@@ -5,14 +5,53 @@
 	var/ambience = null //The file currently being played as ambience
 	var/status_flags = 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
 	var/list/echo
+	var/list/current_sounds = list()
+	var/list/source_sounds = list()
+
 /datum/soundOutput/New(client/C)
 	if(!C)
 		qdel(src)
 		return
 	owner = C
+	RegisterSignal(owner, COMSIG_CLIENT_MOB_MOVED, PROC_REF(update_sounds))
 	. = ..()
 
-/datum/soundOutput/proc/process_sound(datum/sound_template/T)
+#define SMOOTHING 1 // How much smoothing when moving between tiles, smaller value means more smoothing
+
+/datum/soundOutput/proc/update_sounds(atom/user, direction)
+	SIGNAL_HANDLER
+	for(var/channel in current_sounds)
+		for(var/i in 0 to round(32/SMOOTHING))
+			i = i * SMOOTHING
+			switch(direction)
+				if(1)
+					process_sound(current_sounds[channel], TRUE, 0, -1+i/32)
+				if(2)
+					process_sound(current_sounds[channel], TRUE, 0, 1-i/32)
+				if(4)
+					process_sound(current_sounds[channel], TRUE, -1+i/32)
+				if(8)
+					process_sound(current_sounds[channel], TRUE, 1-i/32, 0)
+
+/datum/soundOutput/proc/update_sounds_from_source(atom/source, direction)
+	SIGNAL_HANDLER
+	for(var/channel in source_sounds[source])
+		for(var/i in 0 to round(32/SMOOTHING))
+			i = i * SMOOTHING
+			switch(direction)
+				if(1)
+					process_sound(current_sounds[channel], TRUE, 0, 1+i/32)
+				if(2)
+					process_sound(current_sounds[channel], TRUE, 0, -1-i/32)
+				if(4)
+					process_sound(current_sounds[channel], TRUE, 1+i/32)
+				if(8)
+					process_sound(current_sounds[channel], TRUE, -1-i/32, 0)
+
+/datum/soundOutput/proc/remove_sound(channel)
+	current_sounds -= channel
+
+/datum/soundOutput/proc/process_sound(datum/sound_template/T, update=FALSE, offset_x = 0, offset_y = 0)
 	var/sound/S = sound(T.file, T.wait, T.repeat)
 	S.volume = owner.volume_preferences[T.volume_cat] * T.volume
 	if(T.channel == 0)
@@ -21,34 +60,59 @@
 		S.channel = T.channel
 	S.frequency = T.frequency
 	S.falloff = T.falloff
-	S.status = T.status
+	S.status = update ? SOUND_UPDATE : T.status 
 	S.echo = T.echo
-	if(T.x && T.y && T.z)
-		var/turf/owner_turf = get_turf(owner.mob)
-		if(owner_turf)
-			// We're in an interior and sound came from outside
-			if(SSinterior.in_interior(owner_turf) && owner_turf.z != T.z)
-				var/datum/interior/VI = SSinterior.get_interior_by_coords(owner_turf.x, owner_turf.y, owner_turf.z)
-				if(VI && VI.exterior)
-					var/turf/candidate = get_turf(VI.exterior)
-					if(candidate.z != T.z)
-						return // Invalid location
-					S.falloff /= 2
-					owner_turf = candidate
-			S.x = T.x - owner_turf.x
-			S.y = 0
-			S.z = T.y - owner_turf.y
-			var/area/A = owner_turf.loc
-			S.environment = A.sound_environment
-		S.y += T.y_s_offset
-		S.x += T.x_s_offset
+	if(!update)
+		S.params = list("on-end" = ".soundend [S.channel] [T.source]")
+
+
+	var/turf/source_turf
+	if(!QDELETED(T.source))
+		source_turf = get_turf(T.source)
+
+		if(!update && istype(T.source, /atom/movable))
+			source_sounds[T.source] = T
+			RegisterSignal(T.source, COMSIG_MOVABLE_MOVED, PROC_REF(update_sounds))
+	else
+		source_turf = locate(T.x, T.y, T.z)
+
+	var/turf/owner_turf = get_turf(owner.mob)
+	if(owner_turf)
+		// We're in an interior and sound came from outside
+		if(SSinterior.in_interior(owner_turf) && owner_turf.z != T.z)
+			var/datum/interior/VI = SSinterior.get_interior_by_coords(owner_turf.x, owner_turf.y, owner_turf.z)
+			if(VI && VI.exterior)
+				var/turf/candidate = get_turf(VI.exterior)
+				if(candidate.z != T.z)
+					return // Invalid location
+				S.falloff /= 2
+				owner_turf = candidate
+		S.x = source_turf.x - owner_turf.x + offset_x
+		S.y = 0
+		S.z = source_turf.y - owner_turf.y + offset_y
+		var/area/A = owner_turf.loc
+		S.environment = A.sound_environment
+	S.y += T.y_s_offset
+	S.x += T.x_s_offset
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 
 	if(owner.mob.sound_environment_override != SOUND_ENVIRONMENT_NONE)
 		S.environment = owner.mob.sound_environment_override
 
-	sound_to(owner,S)
+	if(!update)
+		current_sounds[num2text(S.channel)] = T
+	sound_to(owner, S)
+
+/client/verb/sound_ended(channel as num, source as mob|obj|turf)
+	set name = ".soundend"
+
+	soundOutput.remove_sound(num2text(channel))
+
+	if(soundOutput.source_sounds[source])
+		soundOutput.source_sounds -= source
+		UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
+	
 
 /datum/soundOutput/proc/update_ambience(area/target_area, ambience_override, force_update = FALSE)
 	var/status_flags = SOUND_STREAM

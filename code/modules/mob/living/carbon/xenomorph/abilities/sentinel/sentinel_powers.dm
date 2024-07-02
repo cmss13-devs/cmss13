@@ -18,7 +18,7 @@
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [target]!"), \
 	SPAN_XENOWARNING("You spit at [target]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
-	playsound(xeno.loc, sound_to_play, 25, 1)
+	playsound(xeno, sound_to_play, 25, 1)
 
 	xeno.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin]
 	var/obj/projectile/projectile = new /obj/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
@@ -50,7 +50,7 @@
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [target]!"), \
 	SPAN_XENOWARNING("You spit at [target]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
-	playsound(xeno.loc, sound_to_play, 25, 1)
+	playsound(xeno, sound_to_play, 25, 1)
 
 	xeno.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin/shotgun]
 	var/obj/projectile/projectile = new /obj/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))

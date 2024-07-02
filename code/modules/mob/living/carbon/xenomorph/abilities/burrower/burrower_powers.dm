@@ -44,7 +44,7 @@
 				COMSIG_LIVING_FLAMER_FLAMED,
 		), PROC_REF(flamer_crossed_immune))
 	add_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
-	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
+	playsound(src, 'sound/effects/burrowing_b.ogg', 25)
 	update_icons()
 	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	burrow_timer = world.time + 90 // How long we can be burrowed

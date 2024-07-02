@@ -12,6 +12,7 @@
 	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
+	var/set_light //this remove or enable light (0 to disable)
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
@@ -168,7 +169,7 @@
 /turf/open/river
 	can_bloody = FALSE
 	supports_surgery = FALSE
-	var/toxic = 0
+	set_light = 0
 
 // Prison grass
 /turf/open/organic/grass
@@ -606,7 +607,7 @@
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
-	var/toxic = 0
+	set_light = 0
 
 /turf/open/gm/coast/north
 

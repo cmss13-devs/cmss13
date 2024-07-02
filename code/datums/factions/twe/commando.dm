@@ -1,15 +1,17 @@
-/datum/faction/royal_marines_commando
-	name = "Royal Marines Commando"
+/datum/faction/twe/royal_commando
+	name = NAME_FACTION_TWE
+	desc = "No information given, please update your local data."
+
 	faction_tag = FACTION_TWE
 
-/datum/faction/royal_marines_commando/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+/datum/faction/twe/royal_commando/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/hud_icon_state
-	var/obj/item/card/id/dogtag/ID = H.get_idcard()
+	var/obj/item/card/id/id_card = human.get_idcard()
 	var/_role
-	if(H.mind)
-		_role = H.job
-	else if(ID)
-		_role = ID.rank
+	if(human.mind)
+		_role = human.job
+	else if(id_card)
+		_role = id_card.rank
 	switch(_role)
 		if(JOB_TWE_RMC_LIEUTENANT)
 			hud_icon_state = "lieutenant"
@@ -26,7 +28,7 @@
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "rmc_[hud_icon_state]")
 
-/datum/faction/royal_marines_commando/get_antag_guns_snowflake_equipment()
+/datum/faction/twe/royal_commando/get_antag_guns_snowflake_equipment()
 	return list(
 		list("PRIMARY FIREARMS", 0, null, null, null),
 		list("F903A1 Rifle", 20, /obj/item/weapon/gun/rifle/rmc_f90, null, VENDOR_ITEM_REGULAR),
@@ -65,7 +67,7 @@
 		list("L5 bayonet", 3, /obj/item/attachable/bayonet/rmc, null, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/faction/royal_marines_commando/get_antag_guns_sorted_equipment()
+/datum/faction/twe/royal_commando/get_antag_guns_sorted_equipment()
 	return list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("F903A1 Rifle", 20, /obj/item/weapon/gun/rifle/rmc_f90, null, VENDOR_ITEM_REGULAR),

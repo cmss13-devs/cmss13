@@ -1,6 +1,9 @@
 //from base of atom/movable/onTransitZ(): (old_z, new_z)
 #define COMSIG_MOVABLE_Z_CHANGED "movable_ztransit"
 
+//from base of /area/Entered(): (/atom, old_area, new_area)
+#define COMSIG_MOVABLE_ENTERED_AREA "movable_entered_area"
+
 /// From /atom/movable/proc/launch_towards
 #define COMSIG_MOVABLE_PRE_THROW "movable_pre_throw"
 	#define COMPONENT_CANCEL_THROW (1<<0)

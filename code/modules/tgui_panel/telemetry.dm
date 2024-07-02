@@ -85,7 +85,7 @@
 		var/list/row = telemetry_connections[i]
 
 		// Check for a malformed history object
-		if (!row || row.len < 3 || (!row["ckey"] || !row["address"] || !row["computer_id"]))
+		if (LAZYLEN(row) < 3 || (!row["ckey"] || !row["address"] || !row["computer_id"]))
 			continue
 
 		/* TODO - Reintroduce this when we get a proper round ID tracking,

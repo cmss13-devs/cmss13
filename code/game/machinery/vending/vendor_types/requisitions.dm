@@ -438,13 +438,13 @@
 			//Marine armor handling
 			if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
 				var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
-				if(AR.pockets && AR.pockets.contents.len)
+				if(AR.pockets && length(AR.pockets.contents))
 					to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
 					return
 			//Marine helmet handling
 			else if(istype(item_to_stock, /obj/item/clothing/head/helmet/marine))
 				var/obj/item/clothing/head/helmet/marine/H = item_to_stock
-				if(H.pockets && H.pockets.contents.len)
+				if(H.pockets && length(H.pockets.contents))
 					to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
 					return
 

@@ -369,7 +369,7 @@
 
 /mob/living/carbon/human/proc/has_foreign_object()
 	for(var/obj/limb/L in limbs)
-		if(L.implants && L.implants.len > 0)
+		if(LAZYLEN(L.implants) > 0)
 			return TRUE
 	for(var/obj/item/alien_embryo/A in contents)
 		return TRUE

@@ -104,7 +104,7 @@
 /datum/soundOutput/proc/update_soundscape()
 	scape_cooldown--
 	if(scape_cooldown <= 0)
-		if(soundscape_playlist.len)
+		if(length(soundscape_playlist))
 			var/sound/S = sound()
 			S.file = pick(soundscape_playlist)
 			S.volume = 100 * owner.volume_preferences[VOLUME_AMB]

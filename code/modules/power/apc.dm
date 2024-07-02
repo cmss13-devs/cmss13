@@ -457,13 +457,13 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			icon_state = "apcewires"
 
 	if(!(update_state & UPSTATE_ALLGOOD))
-		if(overlays.len)
+		if(length(overlays))
 			overlays = 0
 			return
 
 	if(update & 2)
 
-		if(overlays.len)
+		if(length(overlays))
 			overlays = 0
 
 		if(!(stat & (BROKEN|MAINT)) && update_state & UPSTATE_ALLGOOD)

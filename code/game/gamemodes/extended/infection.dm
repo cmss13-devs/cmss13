@@ -71,16 +71,16 @@
 		possible_synth_survivors -= A
 
 	possible_survivors = shuffle(possible_survivors) //Shuffle them up a bit
-	if(possible_survivors.len) //We have some, it looks like.
+	if(length(possible_survivors)) //We have some, it looks like.
 		for(var/datum/mind/A in possible_survivors) //Strip out any xenos first so we don't double-dip.
 			if(A.roundstart_picked)
 				possible_survivors -= A
 
-		if(possible_survivors.len) //We may have stripped out all the contendors, so check again.
+		if(length(possible_survivors)) //We may have stripped out all the contendors, so check again.
 			var/i = surv_starting_num
 			var/datum/mind/new_survivor
 			while(i > 0)
-				if(!possible_survivors.len)
+				if(!length(possible_survivors))
 					break  //Ran out of candidates! Can't have a null pick(), so just stick with what we have.
 				new_survivor = pick(possible_survivors)
 				if(!new_survivor)
@@ -123,7 +123,7 @@
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
 		GLOB.round_statistics.log_round_statistics()
 
 	declare_completion_announce_xenomorphs()

@@ -33,7 +33,7 @@
 // Return a type that can be initialized into the next weather event.
 // Feel free to override this
 /datum/weather_ss_map_holder/proc/get_new_event()
-	if (potential_weather_events && potential_weather_events.len != 0)
+	if (LAZYLEN(potential_weather_events) != 0)
 		return pick(potential_weather_events)
 	else
 		log_debug("Weather subsystem map holder [src] is improperly configured. Code: WSSMH03")

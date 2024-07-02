@@ -289,7 +289,7 @@
 	for(var/turf/T in turflist)
 		distance++
 
-		if(!prev_turf && turflist.len > 1)
+		if(!prev_turf && length(turflist) > 1)
 			prev_turf = get_turf(src)
 			continue //So we don't burn the tile we be standin on
 

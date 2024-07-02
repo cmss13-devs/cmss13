@@ -24,10 +24,10 @@
 	for(var/obj/structure/pipes/vents/V in range(1))
 		if(Adjacent(V) && !V.welded)
 			pipes |= V
-	if(!pipes || !pipes.len)
+	if(!LAZYLEN(pipes))
 		to_chat(src, SPAN_WARNING("There are no pipes that we can ventcrawl into within range!"))
 		return
-	if(pipes.len == 1)
+	if(length(pipes) == 1)
 		pipe = pipes[1]
 	else
 		pipe = tgui_input_list(usr, "Crawl Through Vent", "Pick a pipe", pipes)

@@ -397,7 +397,7 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		if(!languages.len)
+		if(!length(languages))
 			to_chat(usr, "This mob knows no languages.")
 			return
 

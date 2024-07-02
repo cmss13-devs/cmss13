@@ -69,7 +69,7 @@
 		current_mob.apply_armoured_damage(get_xeno_damage_slash(current_mob, damage), ARMOR_MELEE, BRUTE, null, 20)
 		playsound(current_mob, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
-	if (target_mobs.len >= shield_regen_threshold)
+	if (length(target_mobs) >= shield_regen_threshold)
 		var/datum/behavior_delegate/praetorian_vanguard/behavior = source_xeno.behavior_delegate
 		if (istype(behavior))
 			behavior.regen_shield()
@@ -133,7 +133,7 @@
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
 		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
-	if (target_mobs.len >= shield_regen_threshold)
+	if (length(target_mobs) >= shield_regen_threshold)
 		var/datum/behavior_delegate/praetorian_vanguard/behavior = X.behavior_delegate
 		if (istype(behavior))
 			behavior.regen_shield()

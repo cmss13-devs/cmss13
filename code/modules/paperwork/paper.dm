@@ -687,7 +687,7 @@
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 				var/U = G.required_reagents[I]
 				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-			if(G.required_catalysts && G.required_catalysts.len)
+			if(LAZYLEN(G.required_catalysts))
 				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
 				for(var/I in G.required_catalysts)
 					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
@@ -835,17 +835,16 @@
 			else
 				var/U = C.required_reagents[I]
 				info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-		if(C.required_catalysts)
-			if(C.required_catalysts.len)
-				info += "<BR>Reaction would require the following catalysts:<BR>\n"
-				for(var/I in C.required_catalysts)
-					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-					if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
-						info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
-						completed = FALSE
-					else
-						var/U = C.required_catalysts[I]
-						info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+		if(LAZYLEN(C.required_catalysts))
+			info += "<BR>Reaction would require the following catalysts:<BR>\n"
+			for(var/I in C.required_catalysts)
+				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
+				if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
+					info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
+					completed = FALSE
+				else
+					var/U = C.required_catalysts[I]
+					info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 	else if(GLOB.chemical_gen_classes_list["C1"].Find(S.id))
 		info += "<font size = \"2\"><I> - [S.name]</I></font><BR>\n"
 	else

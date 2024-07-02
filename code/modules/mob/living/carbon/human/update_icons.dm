@@ -476,7 +476,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 					apply_overlay(HEAD_SQUAD_LAYER)
 
 			var/num_helmet_overlays = 0
-			for(var/i in 1 to marine_helmet.helmet_overlays.len)
+			for(var/i in 1 to length(marine_helmet.helmet_overlays))
 				// Add small numbers to the head garb layer so we don't have a layer conflict
 				// the i-1 bit is to make it 0-based, not 1-based like BYOND wants
 				overlays_standing[HEAD_GARB_LAYER + (i-1)] = image('icons/mob/humans/onmob/helmet_garb.dmi', src, marine_helmet.helmet_overlays[i])
@@ -537,7 +537,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 					overlays_standing[SUIT_SQUAD_LAYER] = squad_overlay
 					apply_overlay(SUIT_SQUAD_LAYER)
 
-			if(marine_armor.armor_overlays.len)
+			if(length(marine_armor.armor_overlays))
 				var/image/K
 				var/image/IMG
 				for(var/i in marine_armor.armor_overlays)

@@ -89,7 +89,7 @@
 			new type_to_spawn(T)
 
 	//desert river test
-	if(!round_toxic_river.len)
+	if(!length(round_toxic_river))
 		round_toxic_river = null //No tiles?
 	else
 		round_time_river = rand(-100,100)
@@ -100,7 +100,7 @@
 	var/obj/structure/tunnel/T
 	var/i = 0
 	var/turf/t
-	while(GLOB.xeno_tunnels.len && i++ < 3)
+	while(length(GLOB.xeno_tunnels) && i++ < 3)
 		t = get_turf(pick_n_take(GLOB.xeno_tunnels))
 		T = new(t)
 		T.id = "hole[i]"
@@ -522,7 +522,7 @@
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
 		GLOB.round_statistics.round_result = round_finished
-		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
 
 		GLOB.round_statistics.log_round_statistics()
 
@@ -641,7 +641,7 @@
 			total_marines += squad_marines_job_report[job_type]
 			total_squad_marines += squad_marines_job_report[job_type]
 			incrementer++
-			if(incrementer < squad_marines_job_report.len)
+			if(incrementer < length(squad_marines_job_report))
 				squad_marine_job_text += ", "
 
 		var/auxiliary_marine_job_text = ""
@@ -651,7 +651,7 @@
 			auxiliary_marine_job_text += "[job_type]: [auxiliary_marines_job_report[job_type]]"
 			total_marines += auxiliary_marines_job_report[job_type]
 			incrementer++
-			if(incrementer < auxiliary_marines_job_report.len)
+			if(incrementer < length(auxiliary_marines_job_report))
 				auxiliary_marine_job_text += ", "
 
 		var/total_non_standard = 0
@@ -662,7 +662,7 @@
 			non_standard_job_text += "[job_type]: [non_standard_job_report[job_type]]"
 			total_non_standard += non_standard_job_report[job_type]
 			incrementer++
-			if(incrementer < non_standard_job_report.len)
+			if(incrementer < length(non_standard_job_report))
 				non_standard_job_text += ", "
 
 		var/list/hive_xeno_numbers = list()
@@ -676,7 +676,7 @@
 				hive_caste_text += "[hive_caste]: [per_hive_status[hive_caste]]"
 				hive_amount += per_hive_status[hive_caste]
 				incrementer++
-				if(incrementer < per_hive_status.len)
+				if(incrementer < length(per_hive_status))
 					hive_caste_text += ", "
 			if(hive_amount)
 				hive_xeno_numbers[hive] = hive_amount

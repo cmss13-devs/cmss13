@@ -69,8 +69,8 @@
 		var/list/L = value
 		var/list/items = list()
 
-		if (L.len > 0 && !(name == "underlays" || name == "overlays" || L.len > (IS_NORMAL_LIST(L) ? VV_NORMAL_LIST_NO_EXPAND_THRESHOLD : VV_SPECIAL_LIST_NO_EXPAND_THRESHOLD)))
-			for (var/i in 1 to L.len)
+		if (length(L) > 0 && !(name == "underlays" || name == "overlays" || length(L) > (IS_NORMAL_LIST(L) ? VV_NORMAL_LIST_NO_EXPAND_THRESHOLD : VV_SPECIAL_LIST_NO_EXPAND_THRESHOLD)))
+			for (var/i in 1 to length(L))
 				var/key = L[i]
 				var/val
 				if (IS_NORMAL_LIST(L) && !isnum(key))
@@ -81,9 +81,9 @@
 
 				items += debug_variable(key, val, level + 1, sanitize = sanitize)
 
-			item = "[name_part] = <a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>/list ([L.len])</a><ul>[items.Join()]</ul>"
+			item = "[name_part] = <a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>/list ([length(L)])</a><ul>[items.Join()]</ul>"
 		else
-			item = "[name_part] = <a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>/list ([L.len])</a>"
+			item = "[name_part] = <a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>/list ([length(L)])</a>"
 
 	else if (name in GLOB.bitfields)
 		var/list/flags = list()

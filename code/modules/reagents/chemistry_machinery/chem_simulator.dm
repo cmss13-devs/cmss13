@@ -679,7 +679,7 @@
 	R.make_alike(assoc_R)
 
 	if(mode != MODE_CREATE)
-		if(R.required_reagents.len > 2 && !recipe_targets[recipe_target]) //we only replace if the recipe isn't small and the target is not set TRUE to being elevated
+		if(length(R.required_reagents) > 2 && !recipe_targets[recipe_target]) //we only replace if the recipe isn't small and the target is not set TRUE to being elevated
 			LAZYREMOVE(R.required_reagents, pick(R.required_reagents))
 		R.add_component(recipe_target)
 

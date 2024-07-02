@@ -300,8 +300,8 @@
 		if(death_data["death_stats_list"])
 			new_death_list = death_data["death_stats_list"]
 		new_death_list.Insert(1, death)
-		if(new_death_list.len > STATISTICS_DEATH_LIST_LEN)
-			new_death_list.Cut(STATISTICS_DEATH_LIST_LEN+1, new_death_list.len)
+		if(length(new_death_list) > STATISTICS_DEATH_LIST_LEN)
+			new_death_list.Cut(STATISTICS_DEATH_LIST_LEN+1, length(new_death_list))
 		death_data["death_stats_list"] = new_death_list
 	track_dead_participant(new_death.faction_name)
 

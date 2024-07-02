@@ -222,8 +222,8 @@
 	. = ..()
 	if((isobserver(user) || ishuman(user)) && GLOB.fallen_list)
 		var/faltext = ""
-		for(var/i = 1 to GLOB.fallen_list.len)
-			if(i != GLOB.fallen_list.len)
+		for(var/i = 1 to length(GLOB.fallen_list))
+			if(i != length(GLOB.fallen_list))
 				faltext += "[GLOB.fallen_list[i]], "
 			else
 				faltext += GLOB.fallen_list[i]

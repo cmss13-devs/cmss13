@@ -65,7 +65,7 @@
 /obj/item/clothing/suit/space/proc/check_limb_support()
 
 	// If this isn't set, then we don't need to care.
-	if(!supporting_limbs || !supporting_limbs.len)
+	if(!LAZYLEN(supporting_limbs))
 		return
 
 	var/mob/living/carbon/human/H = src.loc

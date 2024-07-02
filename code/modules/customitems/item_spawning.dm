@@ -10,10 +10,10 @@ GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
 	for(var/line in GLOB.custom_items)
 		// split & clean up
 		var/list/Entry = splittext(line, ":")
-		for(var/i = 1 to Entry.len)
+		for(var/i = 1 to length(Entry))
 			Entry[i] = trim(Entry[i])
 
-		if(Entry.len < 2)
+		if(length(Entry) < 2)
 			continue;
 
 		if(Entry[1] == M.ckey)

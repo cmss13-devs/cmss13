@@ -109,33 +109,33 @@
 	//Speaking
 	if(!client && speak_chance)
 		if(rand(0,200) < speak_chance)
-			if(speak && speak.len)
-				if((emote_hear && emote_hear.len) || (emote_see && emote_see.len))
-					var/length = speak.len
-					if(emote_hear && emote_hear.len)
-						length += emote_hear.len
-					if(emote_see && emote_see.len)
-						length += emote_see.len
+			if(LAZYLEN(speak))
+				if(LAZYLEN(emote_hear) || LAZYLEN(emote_see))
+					var/length = length(speak)
+					if(LAZYLEN(emote_hear))
+						length += length(emote_hear)
+					if(LAZYLEN(emote_see))
+						length += length(emote_see)
 					var/randomValue = rand(1,length)
-					if(randomValue <= speak.len)
+					if(randomValue <= length(speak))
 						INVOKE_ASYNC(src, PROC_REF(say), pick(speak))
 					else
-						randomValue -= speak.len
-						if(emote_see && randomValue <= emote_see.len)
+						randomValue -= length(speak)
+						if(emote_see && randomValue <= length(emote_see))
 							INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
 						else
 							INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
 				else
 					INVOKE_ASYNC(src, PROC_REF(say), pick(speak))
 			else
-				if(!(emote_hear && emote_hear.len) && (emote_see && emote_see.len))
+				if(!LAZYLEN(emote_hear) && LAZYLEN(emote_see))
 					INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
-				if((emote_hear && emote_hear.len) && !(emote_see && emote_see.len))
+				if(LAZYLEN(emote_hear) && !LAZYLEN(emote_see))
 					INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
-				if((emote_hear && emote_hear.len) && (emote_see && emote_see.len))
-					var/length = emote_hear.len + emote_see.len
+				if(LAZYLEN(emote_hear) && LAZYLEN(emote_see))
+					var/length = length(emote_hear) + length(emote_see)
 					var/pick = rand(1,length)
-					if(pick <= emote_see.len)
+					if(pick <= length(emote_see))
 						INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
 					else
 						INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
@@ -352,7 +352,7 @@
 
 	var/verb = "says"
 
-	if(speak_emote.len)
+	if(length(speak_emote))
 		verb = pick(speak_emote)
 
 	message = capitalize(trim_left(message))

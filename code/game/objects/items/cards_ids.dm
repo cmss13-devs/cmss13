@@ -391,7 +391,7 @@
 /obj/item/dogtag/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/dogtag))
 		var/obj/item/dogtag/D = I
-		to_chat(user, SPAN_NOTICE("You join the [fallen_names.len>1 ? "tags":"two tags"] together."))
+		to_chat(user, SPAN_NOTICE("You join the [length(fallen_names)>1 ? "tags":"two tags"] together."))
 		name = "information dog tags"
 		if(D.fallen_names)
 			fallen_names += D.fallen_names
@@ -404,11 +404,11 @@
 
 /obj/item/dogtag/get_examine_text(mob/user)
 	. = ..()
-	if(ishuman(user) && fallen_names && fallen_names.len)
-		var/msg = "There [fallen_names.len>1 ? \
-			"are [fallen_names.len] tags.<br>They read":\
+	if(ishuman(user) && LAZYLEN(fallen_names))
+		var/msg = "There [length(fallen_names)>1 ? \
+			"are [length(fallen_names)] tags.<br>They read":\
 			"is one ID tag.<br>It reads"]:"
-		for (var/i=1 to fallen_names.len)
+		for (var/i=1 to length(fallen_names))
 			msg += "<br>[i]. \"[fallen_names[i]] - [fallen_assgns[i]] - [fallen_blood_types[i]]\""
 		. += SPAN_NOTICE("[msg]")
 

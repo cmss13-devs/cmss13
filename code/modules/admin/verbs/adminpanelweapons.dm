@@ -108,13 +108,13 @@
 			picked_area = pick(GLOB.ship_areas)
 			for(var/turf/my_turf in picked_area)
 				turfs_of_area += my_turf
-			if(turfs_of_area.len > 0)
+			if(length(turfs_of_area) > 0)
 				picked_atom = pick(turfs_of_area)
 				if (picked_atom != null)
 					targets += picked_atom
 					break
 
-	if(targets.len < turfquantity)
+	if(length(targets) < turfquantity)
 		return null
 	else
 		return targets

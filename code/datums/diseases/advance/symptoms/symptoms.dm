@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(dictionary_symptoms)
 
 /datum/symptom/New()
 	var/list/S = GLOB.list_symptoms
-	for(var/i = 1; i <= S.len; i++)
+	for(var/i = 1; i <= length(S); i++)
 		if(src.type == S[i])
 			id = "[i]"
 			return

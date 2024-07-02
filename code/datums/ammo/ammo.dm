@@ -212,7 +212,7 @@
 
 		M.apply_damage(damage,damage_type)
 
-		if(XNO && XNO.xeno_shields.len)
+		if(XNO && length(XNO.xeno_shields))
 			P.play_shielded_hit_effect(M)
 		else
 			P.play_hit_effect(M)

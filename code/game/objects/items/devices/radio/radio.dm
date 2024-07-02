@@ -196,7 +196,7 @@
 		return radio_connection
 
 	// Otherwise, if a channel is specified, look for it.
-	if(channels && channels.len)
+	if(LAZYLEN(channels))
 		if (message_mode == RADIO_CHANNEL_DEPARTMENT ) // Department radio shortcut
 			message_mode = channels[1]
 

@@ -22,14 +22,14 @@
 
 	var/datum/language/speaking = null
 	if(length(message) >= 2)
-		if(can_hivemind_speak && copytext(message,1,2) == ";" && languages.len)
+		if(can_hivemind_speak && copytext(message,1,2) == ";" && length(languages))
 			for(var/datum/language/L in languages)
 				if(L.flags & HIVEMIND)
 					verb = L.speech_verb
 					speaking = L
 					break
 		var/channel_prefix = copytext(message, 1, 3)
-		if(languages.len)
+		if(length(languages))
 			for(var/datum/language/L in languages)
 				if(lowertext(channel_prefix) == ":[L.key]" || lowertext(channel_prefix) == ".[L.key]")
 					verb = L.speech_verb

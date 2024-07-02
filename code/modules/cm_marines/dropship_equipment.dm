@@ -1216,7 +1216,7 @@
 
 	var/list/possible_fultons = get_targets()
 
-	if(!possible_fultons.len)
+	if(!length(possible_fultons))
 		to_chat(user, SPAN_WARNING("No active balloons detected."))
 		return
 

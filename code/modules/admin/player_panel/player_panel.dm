@@ -338,7 +338,7 @@
 				dat += "<td><a href='?src=\ref[src];[HrefToken()];adminplayeropts=\ref[H]'>PP</a></td>"
 		dat += "</table>"
 
-	if(SSticker.mode.survivors.len)
+	if(length(SSticker.mode.survivors))
 		dat += "<br><table cellspacing=5><tr><td><B>Survivors</B></td><td></td><td></td></tr>"
 		for(var/datum/mind/L in SSticker.mode.survivors)
 			var/mob/M = L.current
@@ -350,7 +350,7 @@
 				dat += "<td><A href='?src=\ref[src];[HrefToken()];adminplayeropts=\ref[M]'>PP</A></td></TR>"
 		dat += "</table>"
 
-	if(SSticker.mode.xenomorphs.len)
+	if(length(SSticker.mode.xenomorphs))
 		dat += "<br><table cellspacing=5><tr><td><B>Aliens</B></td><td></td><td></td></tr>"
 		for(var/datum/mind/L in SSticker.mode.xenomorphs)
 			var/mob/M = L.current
@@ -362,7 +362,7 @@
 				dat += "<td><A href='?src=\ref[src];[HrefToken()];adminplayeropts=\ref[M]'>PP</A></td></TR>"
 		dat += "</table>"
 
-	if(SSticker.mode.survivors.len)
+	if(length(SSticker.mode.survivors))
 		dat += "<br><table cellspacing=5><tr><td><B>Survivors</B></td><td></td><td></td></tr>"
 		for(var/datum/mind/L in SSticker.mode.survivors)
 			var/mob/M = L.current

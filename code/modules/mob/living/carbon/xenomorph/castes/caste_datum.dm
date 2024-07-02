@@ -21,6 +21,10 @@
 	var/evolution_allowed = 1
 	///Threshold to next evolution
 	var/evolution_threshold = 0
+	///How much evolution is stored
+	var/evolution_stored = 0
+	///How much caste cost in evo points
+	var/evolution_cost = 0
 	/// whether they can get evo points without needing an ovi queen
 	var/evolve_without_queen = FALSE
 	///This is where you add castes to evolve into. "Separated", "by", "commas"

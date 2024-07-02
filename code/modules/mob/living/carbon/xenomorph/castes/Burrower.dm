@@ -34,6 +34,7 @@
 	tremor_cooldown = 450
 
 	minimum_evolve_time = 7 MINUTES
+	evolution_cost = 200
 
 	minimap_icon = "burrower"
 

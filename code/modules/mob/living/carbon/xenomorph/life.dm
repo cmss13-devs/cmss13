@@ -57,11 +57,31 @@
 				evolution_stored -= progress_amount
 				return
 
+		if(evolution_stored >= evolution_cost)
+			if(!got_evolution_message)
+				early_evolve_message()
+				got_evolution_message = TRUE
+
+			if(ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
+				evolution_stored += progress_amount
+				return
+
+			if(evolution_stored > evolution_threshold + progress_amount)
+				evolution_stored -= progress_amount
+				return
+
 		else
 			evolution_stored += progress_amount
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
-	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
+	to_chat(src, SPAN_XENODANGER("Our carapace crackles and we become matured. We are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
+	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
+
+	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
+	evolve_action.give_to(src)
+
+/mob/living/carbon/xenomorph/proc/early_evolve_message()
+	to_chat(src, SPAN_XENODANGER("Your tendons strengthen, you can now <a href='?src=\ref[src];evolve=1;'>evolve</a> to young castes!")) //Placeholder evo message, someone can improve it.
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()

@@ -28,6 +28,7 @@
 	minimap_icon = "sentinel"
 
 	minimum_evolve_time = 5 MINUTES
+	evolution_cost = 30
 
 /mob/living/carbon/xenomorph/sentinel
 	caste_type = XENO_CASTE_SENTINEL

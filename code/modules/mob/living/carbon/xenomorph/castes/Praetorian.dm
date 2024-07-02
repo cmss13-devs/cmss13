@@ -35,6 +35,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 
 	minimum_evolve_time = 15 MINUTES
+	evolution_cost = 500
 
 	minimap_icon = "praetorian"
 

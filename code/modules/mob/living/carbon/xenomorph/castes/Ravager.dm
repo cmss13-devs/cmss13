@@ -33,6 +33,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base
 
 	minimum_evolve_time = 15 MINUTES
+	evolution_cost = 500
 
 	minimap_icon = "ravager"
 

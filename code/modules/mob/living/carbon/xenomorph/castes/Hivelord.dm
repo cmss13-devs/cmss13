@@ -35,6 +35,7 @@
 	aura_strength = 2.5
 
 	minimum_evolve_time = 3 MINUTES
+	evolution_cost = 200
 
 	minimap_icon = "hivelord"
 

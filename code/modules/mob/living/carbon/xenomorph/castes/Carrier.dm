@@ -39,6 +39,7 @@
 	egg_cooldown = 250
 
 	minimum_evolve_time = 5 MINUTES
+	evolution_cost = 200
 
 	minimap_icon = "carrier"
 

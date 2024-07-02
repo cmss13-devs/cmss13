@@ -25,6 +25,7 @@
 	tackle_max = 4
 
 	minimum_evolve_time = 4 MINUTES
+	evolution_cost = 30
 
 	minimap_icon = "defender"
 

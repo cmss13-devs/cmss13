@@ -28,6 +28,7 @@
 	tacklestrength_max = 5
 
 	minimum_evolve_time = 9 MINUTES
+	evolution_cost = 200
 
 	minimap_icon = "spitter"
 

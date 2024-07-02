@@ -185,3 +185,6 @@
 #define COMSIG_MOB_END_TUTORIAL "mob_end_tutorial"
 
 #define COMSIG_MOB_NESTED "mob_nested"
+
+/// When a mob successfully moves to a different tile (wasn't blocked) : (client/Move(n, direct))
+#define COMSIG_MOB_MOVE_SUCCESS "mob_move_success"

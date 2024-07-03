@@ -26,6 +26,10 @@ SUBSYSTEM_DEF(chat)
 	msg = "Messages resent: [resends]"
 	return ..()
 
+/datum/controller/subsystem/chat/Shutdown()
+	log_world("SSchat shutting down, Number of messages resent: [resends]")
+	return ..()
+
 /datum/controller/subsystem/chat/proc/generate_payload(client/target, message_data)
 	var/sequence = client_to_sequence_number[target.ckey]
 	client_to_sequence_number[target.ckey] += 1

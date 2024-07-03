@@ -126,7 +126,7 @@
 		return
 
 	xeno.visible_message(SPAN_XENONOTICE("[xeno] rises from [carbon]'s corpse."), SPAN_XENOWARNING("We finish our harvest, digesting the harvested limbs into flesh resin!"))
-	reaper.flesh_resin += 10
+	reaper.flesh_resin += 35
 	apply_cooldown(cooldown_mult)
 	return ..()
 
@@ -173,9 +173,10 @@
 				return
 			reaper.flesh_bolstered = TRUE
 			xeno.visible_message(SPAN_WARNING("A rancid-smelling sludge oozes out of the wing-like claws on [xeno]'s back!"), \
-			SPAN_WARNING("We absorb some of our stored flesh resin and channel it to our claws, bolstering their next strike!"))
+			SPAN_WARNING("We absorb some of our stored flesh resin and channel it to our claws, bolstering their next strike and hardening our exoskeleton!"))
 			playsound(xeno, "alien_egg_move.ogg", 25, TRUE)
 			reaper.flesh_resin -= resin_cost
+			reaper.armor_modifier += XENO_ARMOR_MOD_MED
 			addtimer(CALLBACK(src, PROC_REF(unbolster_self)), self_duration)
 			apply_cooldown()
 			return ..()
@@ -203,6 +204,7 @@
 			return
 		reaper.flesh_bolstered = FALSE
 
+	reaper.armor_modifier -= XENO_ARMOR_MOD_MED
 	to_chat(xeno, SPAN_XENOWARNING("We feel the power bestowed to our claws fade as resin sloughs off them!"))
 
 /mob/living/carbon/xenomorph/proc/bolster_with_flesh(mob/living/carbon/xenomorph/fren, fren_heal = 150)
@@ -314,6 +316,10 @@
 		if(barrier != path_turf)
 			to_chat(xeno, SPAN_WARNING("There's something blocking our strike!"))
 			return
+		for(var/obj/structure/current_structure in path_turf)
+			if(current_structure.density && !current_structure.throwpass)
+				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
+				return
 
 	if(carbon.stat == DEAD)
 		return
@@ -331,7 +337,7 @@
 	if(reaper.flesh_bolstered)
 		xeno.visible_message(SPAN_XENOWARNING("The foul ooze on [xeno]'s wing-like claws twists and extends as it swings at [carbon], striking them in the [target_limb ? target_limb.display_name : "chest"]!"), \
 		SPAN_XENOWARNING("We strike [carbon] in the [target_limb ? target_limb.display_name : "chest"], bending the resin on our claws to strike even further!"))
-		carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest", 10)
+		carbon.apply_armoured_damage(damage + 15, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest", 15)
 		reaper.flesh_bolstered = FALSE
 		strike_range -= 2
 		apply_cooldown()

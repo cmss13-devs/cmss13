@@ -18,7 +18,7 @@
 	xeno_cooldown = 15 SECONDS
 	plasma_cost = 100
 	var/resin_cost = 100
-	var/self_duration = 10 SECONDS
+	var/self_duration = 30 SECONDS
 	var/max_range = 4
 	var/fren_heal = 150
 

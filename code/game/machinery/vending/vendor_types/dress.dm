@@ -197,11 +197,11 @@
 		if(findtext("[path]", item))
 			matches += path
 
-	if(matches.len==0)
+	if(length(matches)==0)
 		return
 
 	var/obj/item/chosen
-	if(matches.len==1)
+	if(length(matches)==1)
 		chosen = matches[1]
 	else
 		//If we have multiple options, let them select which one they meant

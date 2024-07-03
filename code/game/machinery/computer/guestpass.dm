@@ -165,7 +165,7 @@
 				if (giver)
 					var/number = add_zero("[rand(0,9999)]", 4)
 					var/entry = "\[[worldtime2text()]\] Pass #[number] issued by [giver.registered_name] ([giver.assignment]) to [giv_name]. Reason: [reason]. Grants access to following areas: "
-					for (var/i=1 to accesses.len)
+					for (var/i=1 to length(accesses))
 						var/A = accesses[i]
 						if (A)
 							var/area = get_access_desc(A)

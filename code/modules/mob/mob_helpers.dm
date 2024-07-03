@@ -229,11 +229,11 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	var/list/split_phrase = text2list(phrase," ") //Split it up into words.
 	var/list/unstuttered_words = split_phrase.Copy()
 
-	var/max_stutter = min(strength, split_phrase.len)
+	var/max_stutter = min(strength, length(split_phrase))
 	var/stutters = rand(max(max_stutter - 3, 1), max_stutter)
 
 	for(var/i = 0, i < stutters, i++)
-		if (!unstuttered_words.len)
+		if (!length(unstuttered_words))
 			break
 
 		var/word = pick(unstuttered_words)
@@ -268,7 +268,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 				else // normal stutter
 					word = R.Replace(word, "$1$2-$2$3$4")
 
-		if(prob(3 * strength) && index != unstuttered_words.len - 1) // stammer / pause - don't pause at the end of sentences!
+		if(prob(3 * strength) && index != length(unstuttered_words) - 1) // stammer / pause - don't pause at the end of sentences!
 			word = R.Replace(word, "$0 ...")
 
 		split_phrase[index] = word

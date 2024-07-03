@@ -138,6 +138,7 @@
 	clear_active_explosives()
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	ADD_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	ADD_TRAIT(src, TRAIT_NO_STRAY, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	var/image/cables = image('icons/obj/structures/droppod_32x64.dmi', src, "chute_cables_static")
 	overlays += cables
 	var/image/chute = image('icons/obj/structures/droppod_64x64.dmi', src, "chute_static")
@@ -163,6 +164,7 @@
 		return
 	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	REMOVE_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	REMOVE_TRAIT(src, TRAIT_NO_STRAY, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	overlays -= cables
 	overlays -= chute
 

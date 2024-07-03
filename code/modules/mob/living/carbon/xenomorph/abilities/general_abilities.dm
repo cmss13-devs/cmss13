@@ -20,6 +20,9 @@
 	var/plant_on_semiweedable = FALSE
 	var/node_type = /obj/effect/alien/weeds/node
 
+/datum/action/xeno_action/onclick/plant_weeds/not_primary // For those who can weed but might benefit having macros for other abilities
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
 	name = "Rest"
@@ -71,6 +74,9 @@
 /datum/action/xeno_action/onclick/choose_resin/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_4 //it's important that hivelord and drone have the same macros because their playstyle is similar, but it's not as important for queen since her playstyle is very different
 
+/datum/action/xeno_action/onclick/choose_resin/not_primary // For ones who can build something but aren't purposed around building
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
 	name = "Secrete Resin"
@@ -103,6 +109,11 @@
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Thick Resin"
 	thick = TRUE
+
+/datum/action/xeno_action/activable/secrete_resin/reaper
+	name = "Secrete Special Resin"
+	thick = TRUE
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 //resin marker
 /datum/action/xeno_action/activable/info_marker
@@ -475,6 +486,8 @@
 	charge_time = 1 SECONDS
 	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_TAIL_STAB
+	var/stabbing_with_noun = "tail"
+	var/stab_range = 2
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
 

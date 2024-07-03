@@ -926,7 +926,7 @@
 		return FALSE
 
 	var/distance = get_dist(stabbing_xeno, targetted_atom)
-	if(distance > 2)
+	if(distance > stab_range)
 		return FALSE
 
 	var/list/turf/path = get_line(stabbing_xeno, targetted_atom, include_start_atom = FALSE)
@@ -957,7 +957,7 @@
 		return ..()
 
 	if(!isxeno_human(targetted_atom))
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their [stabbing_with_noun] through the air!"), SPAN_XENOWARNING("You swipe your [stabbing_with_noun] through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)
 		playsound(stabbing_xeno, "alien_tail_swipe", 50, TRUE)
@@ -1019,13 +1019,12 @@
 	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was tailstabbed by [key_name(stabbing_xeno)]</font>")
 	stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>tailstabbed [key_name(target)]</font>")
 
-	stabbing_xeno.setDir(stab_direction)
-	stabbing_xeno.emote("tail")
-
-	/// Ditto.
-	var/new_dir = stabbing_xeno.dir
-
-	addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
+	if(last_dir != stab_direction)
+		stabbing_xeno.setDir(stab_direction)
+		stabbing_xeno.emote("tail")
+		/// Ditto.
+		var/new_dir = stabbing_xeno.dir
+		addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
 
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)

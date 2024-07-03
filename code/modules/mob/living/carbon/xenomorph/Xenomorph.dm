@@ -315,6 +315,7 @@
 	//
 	//////////////////////////////////////////////////////////////////
 	var/ignores_pheromones = FALSE // title, ignores ALL pheros
+	var/aura_plasma_cost = 5
 	var/current_aura = null //"claw", "armor", "regen", "speed"
 	var/frenzy_new = 0 // Tally vars used in Xeno Life() for Pheromones
 	var/warding_new = 0

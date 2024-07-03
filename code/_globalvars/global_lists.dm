@@ -108,6 +108,13 @@ GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
 	/datum/resin_construction/resin_obj/resin_spike
 ))
 
+GLOBAL_LIST_INIT(resin_build_order_reaper, list(
+	/datum/resin_construction/resin_obj/acid_pillar,
+	/datum/resin_construction/resin_obj/sticky_resin,
+	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/resin_spike
+))
+
 //Xeno Leader Mark Meanings
 GLOBAL_LIST_INIT_TYPED(resin_mark_meanings, /datum/xeno_mark_define, setup_resin_mark_meanings())
 

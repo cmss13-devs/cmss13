@@ -140,6 +140,6 @@
 	ADD_TRAIT(target, TRAIT_IRON_TEETH, ROUNDSTART_TRAIT)
 	..()
 
-/datum/character_trait/biology/lisp/unapply_trait(mob/living/carbon/human/target)
+/datum/character_trait/biology/iron_teeth/unapply_trait(mob/living/carbon/human/target)
 	REMOVE_TRAIT(target, TRAIT_IRON_TEETH, ROUNDSTART_TRAIT)
 	..()

@@ -126,10 +126,10 @@
 	if(src.loc != user) //feeling box weight in a distance is unnatural and bad
 		return
 	if(!handfuls)
-		if(contents.len < (num_of_magazines/3))
+		if(length(contents) < (num_of_magazines/3))
 			. += SPAN_INFO("It feels almost empty.")
 			return
-		if(contents.len < ((num_of_magazines*2)/3))
+		if(length(contents) < ((num_of_magazines*2)/3))
 			. += SPAN_INFO("It feels about half full.")
 			return
 		. += SPAN_INFO("It feels almost full.")

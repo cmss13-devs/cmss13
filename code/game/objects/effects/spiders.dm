@@ -144,7 +144,7 @@
 	//=================
 	if(prob(25))
 		var/list/nearby = oview(5, src)
-		if(nearby.len)
+		if(length(nearby))
 			var/target_atom = pick(nearby)
 			walk_to(src, target_atom, 5)
 			if(prob(25))
@@ -170,7 +170,7 @@
 	//=================
 	if(prob(25))
 		var/list/nearby = oview(5, src)
-		if(nearby.len)
+		if(length(nearby))
 			var/target_atom = pick(nearby)
 			walk_to(src, target_atom, 5)
 			if(prob(25))

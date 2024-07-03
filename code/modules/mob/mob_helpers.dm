@@ -484,7 +484,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
  * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
  * for why this isn't atom/verb/examine()
  */
-/mob/verb/examinate(atom/examinify as mob|obj|turf in view())
+/mob/verb/examinate(atom/examinify as mob|obj|turf in view(client))
 	set name = "Examine"
 	set category = "IC"
 

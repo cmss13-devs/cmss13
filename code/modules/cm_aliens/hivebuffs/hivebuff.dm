@@ -510,7 +510,7 @@
 	desc = "Increases all xenomorph damage by 10 for 10 minutes"
 	tier = HIVEBUFF_TIER_MAJOR
 
-	engage_flavourmessage = "The Queen has imbued us with razer sharp claws."
+	engage_flavourmessage = "The Queen has imbued us with razor-sharp claws."
 	duration = 10 MINUTES
 	number_of_required_pylons = 2
 	cost = 2

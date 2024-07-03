@@ -11,6 +11,9 @@
 	#define COMPONENT_CANCEL_MOVE (1<<0)
 /// From /turf/open/gm/river/Entered(): (turf/open/gm/river/river, covered)
 #define COMSIG_MOVABLE_ENTERED_RIVER "movable_entered_river"
+/// From /atom/Cross(): (atom)
+#define COMSIG_MOVABLE_PRE_CROSSED "movable_pre_cross"
+	#define COMPONENT_IGNORE_CROSS (1<<0)
 
 ///from /mob/living/carbon/xenomorph/start_pulling(): (mob/living/carbon/xenomorph/X)
 #define COMSIG_MOVABLE_XENO_START_PULLING "movable_xeno_start_pulling"

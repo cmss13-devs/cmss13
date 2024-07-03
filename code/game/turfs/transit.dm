@@ -136,9 +136,14 @@
 
 /atom/movable/proc/handle_paradrop(turf/target, dropship_name)
 	clear_active_explosives()
-	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	//ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	ADD_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	ADD_TRAIT(src, TRAIT_NO_STRAY, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	RegisterSignal(src, COMSIG_MOVABLE_PRE_CROSSED, PROC_REF(cancel_cross))
+	RegisterSignal(src, list(
+		COMSIG_LIVING_FLAMER_FLAMED,
+		COMSIG_LIVING_PREIGNITION
+	), PROC_REF(cancel_fire))
 	var/image/cables = image('icons/obj/structures/droppod_32x64.dmi', src, "chute_cables_static")
 	overlays += cables
 	var/image/chute = image('icons/obj/structures/droppod_64x64.dmi', src, "chute_static")
@@ -165,8 +170,14 @@
 	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	REMOVE_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	REMOVE_TRAIT(src, TRAIT_NO_STRAY, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	UnregisterSignal(src, COMSIG_MOVABLE_PRE_CROSSED)
+	UnregisterSignal(src, COMSIG_LIVING_FLAMER_FLAMED)
 	overlays -= cables
 	overlays -= chute
+	for(var/atom/movable/atom in loc)
+		if(atom == src)
+			continue
+		atom.Cross(src)
 
 /atom/movable/proc/clear_active_explosives()
 	for(var/obj/item/explosive/explosive in contents)
@@ -234,6 +245,13 @@
 		death(last_damage_data)
 	status_flags |= PERMANENTLY_DEAD
 
+/atom/movable/proc/cancel_cross()
+	SIGNAL_HANDLER
+	return COMPONENT_IGNORE_CROSS
+
+/atom/movable/proc/cancel_fire()
+	SIGNAL_HANDLER
+	return COMPONENT_NO_BURN
 
 /turf/open/space/transit/dropship/alamo
 	shuttle_tag = DROPSHIP_ALAMO

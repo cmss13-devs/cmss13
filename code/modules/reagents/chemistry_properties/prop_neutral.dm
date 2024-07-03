@@ -541,7 +541,7 @@
 /datum/chem_property/neutral/encephalophrasive/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * POTENCY_MULTIPLIER_VHIGH * delta_time, BRAIN)
 
-/datum/chem_property/neutral/encephalophrasive/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/encephalophrasive/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/viscous

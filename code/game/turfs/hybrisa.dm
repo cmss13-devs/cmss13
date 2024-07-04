@@ -15,62 +15,29 @@
 
 // Hybrisa auto-turf
 
-// Shale
+/turf/open/auto_turf/hybrisa_auto_turf
+	layer_name = list("aged igneous","weathered loam","volcanic plate rock","volcanic plate and rock")
+	icon = 'icons/turf/floors/hybrisa_auto_turf.dmi'
+	icon_prefix = "hybrisa"
 
-/turf/open/auto_turf/hybrisashale
-	layer_name = list("wind blown dirt", "volcanic plate rock", "volcanic plate and rock", "this layer does not exist")
-	icon = 'icons/turf/floors/auto_shaledesaturated.dmi'
-	icon_prefix = "shale"
-
-/turf/open/auto_turf/hybrisashale/ex_act(severity)
-	return
-
-/turf/open/auto_turf/hybrisashale/scorch(heat_level)
-	return
-
-/turf/open/auto_turf/hybrisashale/get_dirt_type()
-	return DIRT_TYPE_SHALE
-
-/turf/open/auto_turf/hybrisashale/layer0
-	icon_state = "shale_0"
-	bleed_layer = 0
-
-/turf/open/auto_turf/hybrisashale/layer0_plate //for inner plate shenanigans
-	icon_state = "shale_1_alt"
-	bleed_layer = 0
-
-/turf/open/auto_turf/hybrisashale/layer1
-	icon_state = "shale_1"
-	bleed_layer = 1
-
-/turf/open/auto_turf/hybrisashale/layer2
-	icon_state = "shale_2"
-	bleed_layer = 2
-
-// Dirt
-
-/turf/open/auto_turf/hybrisa_dirt
-	layer_name = list("aged igneous", "dirt", "warn a coder", "warn a coder", "warn a coder")
-	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
-	icon_state = "varadero_0"
-	icon_prefix = "varadero"
-
-/turf/open/auto_turf/hybrisa_dirt/ex_act(severity)
-	return
-
-/turf/open/auto_turf/hybrisa_dirt/scorch(heat_level)
-	return
-
-/turf/open/auto_turf/hybrisa_dirt/get_dirt_type()
+/turf/open/auto_turf/hybrisa_auto_turf/get_dirt_type()
 	return DIRT_TYPE_SAND
 
-/turf/open/auto_turf/hybrisa_dirt/layer0
-	icon_state = "varadero_0"
+/turf/open/auto_turf/hybrisa_auto_turf/layer0
+	icon_state = "hybrisa_0"
 	bleed_layer = 0
 
-/turf/open/auto_turf/hybrisa_dirt/layer1
-	icon_state = "varadero_1"
+/turf/open/auto_turf/hybrisa_auto_turf/layer1
+	icon_state = "hybrisa_1"
 	bleed_layer = 1
+
+/turf/open/auto_turf/hybrisa_auto_turf/layer2
+	icon_state = "hybrisa_2"
+	bleed_layer = 2
+
+/turf/open/auto_turf/hybrisa_auto_turf/layer3
+	icon_state = "hybrisa_3"
+	bleed_layer = 3
 
 // Street
 

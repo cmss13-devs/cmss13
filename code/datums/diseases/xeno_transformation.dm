@@ -54,7 +54,7 @@
 				for(var/obj/item/items in affected_mob)
 					affected_mob.drop_inv_item_on_ground(items)
 				var/mob/living/carbon/xenomorph/drone/xeno = new(turf)
-				xeno.set_hive_and_update(XENO_HIVE_FERAL)
+				xeno.set_hive_and_update(XENO_HIVE_MUTATED)
 				if(ismonkey(affected_mob))
 					xeno.free_for_ghosts(TRUE)
 				else

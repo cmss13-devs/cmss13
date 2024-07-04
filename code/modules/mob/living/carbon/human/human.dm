@@ -1000,8 +1000,8 @@
 
 	if(self)
 		var/list/L = get_broken_limbs() - list("chest","head","groin")
-		if(L.len > 0)
-			msg += "Your [english_list(L)] [L.len > 1 ? "are" : "is"] broken\n"
+		if(length(L) > 0)
+			msg += "Your [english_list(L)] [length(L) > 1 ? "are" : "is"] broken\n"
 	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself":"start analyzing [src]"]"))
 	if(toxloss > 20)
 		msg += "[self ? "Your" : "Their"] skin is slightly green\n"
@@ -1404,13 +1404,13 @@
 				to_splint.Add(l)
 
 		var/msg = "" // Have to use this because there are issues with the to_chat macros and text macros and quotation marks
-		if(to_splint.len)
+		if(length(to_splint))
 			if(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				var/can_reach_splints = TRUE
 				var/amount_removed = 0
 				if(wear_suit && istype(wear_suit,/obj/item/clothing/suit/space))
 					var/obj/item/clothing/suit/space/suit = target.wear_suit
-					if(suit.supporting_limbs && suit.supporting_limbs.len)
+					if(LAZYLEN(suit.supporting_limbs))
 						msg = "[user == target ? "your":"\proper [target]'s"]"
 						to_chat(user, SPAN_WARNING("You cannot remove the splints, [msg] [suit] is supporting some of the breaks."))
 						can_reach_splints = FALSE

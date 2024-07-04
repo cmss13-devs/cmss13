@@ -338,6 +338,8 @@
 				sound = pick('sound/effects/alien_resin_move1.ogg','sound/effects/alien_resin_move2.ogg')
 			if("alien_talk")
 				sound = pick('sound/voice/alien_talk.ogg','sound/voice/alien_talk2.ogg','sound/voice/alien_talk3.ogg')
+			if("larva_talk")
+				sound = pick('sound/voice/larva_talk1.ogg','sound/voice/larva_talk2.ogg','sound/voice/larva_talk3.ogg','sound/voice/larva_talk4.ogg')
 			if("hiss_talk")
 				sound = pick('sound/voice/hiss2.ogg','sound/voice/hiss3.ogg','sound/voice/hiss4.ogg')
 			if("alien_growl")
@@ -419,4 +421,4 @@
 	set category = "Debug"
 
 	for(var/sound/soundin in SoundQuery())
-		UNLINT(to_chat(src, "channel#[soundin.channel]: [soundin.status] - [soundin.file] - len=[soundin.len], wait=[soundin.wait], offset=[soundin.offset], repeat=[soundin.repeat]")) // unlint until spacemandmm suite-1.7
+		UNLINT(to_chat(src, "channel#[soundin.channel]: [soundin.status] - [soundin.file] - len=[length(soundin)], wait=[soundin.wait], offset=[soundin.offset], repeat=[soundin.repeat]")) // unlint until spacemandmm suite-1.7

@@ -31,7 +31,7 @@
 	var/used = 0
 	var/max_ammo = 0
 	if(weapon.ammo_equipped)
-		for(var/step = 1; step<=offsets.len; step++)
+		for(var/step = 1; step<=length(offsets); step++)
 			if(offsets[step]!=null && offsets[step]!="-")
 				used += weapon.ammo_equipped.ammo_used_per_firing
 		max_ammo = weapon.ammo_equipped.max_ammo_count

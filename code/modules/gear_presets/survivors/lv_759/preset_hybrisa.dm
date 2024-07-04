@@ -913,7 +913,7 @@
 	skills = /datum/skills/civilian/survivor/wy_pilot
 	paygrade = PAY_SHORT_WYPO2
 	faction_group = FACTION_LIST_SURVIVOR_WY
-	idtype = /obj/item/card/id/captains_spare
+	idtype = /obj/item/card/id/gold
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS,ACCESS_WY_FLIGHT,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL,ACCESS_WY_EXEC)
 

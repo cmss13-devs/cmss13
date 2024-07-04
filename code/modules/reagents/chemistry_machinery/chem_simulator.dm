@@ -121,7 +121,8 @@
 	data["lock_control"] = (simulating != SIMULATION_STAGE_OFF)
 	data["can_cancel_simulation"] = (simulating <= SIMULATION_STAGE_WAIT)
 	data["estimated_cost"] = (mode == MODE_CREATE ? creation_cost : (!target_property ? "NULL" : property_costs[target_property.name]))
-	data["od_level"] = (mode == MODE_CREATE ? creation_od_level : new_od_level)
+	calculate_new_od_level()
+	data["od_level"] = new_od_level
 	data["chemical_name"] = (mode == MODE_CREATE ? (creation_name == "" ? "NAME NOT SET" : creation_name) : (isnull(target) ? "CHEMICAL DATA NOT INSERTED" : target.data.name))
 	data["reference_name"] = (isnull(reference) ? "CHEMICAL DATA NOT INSERTED" : reference.data.name)
 
@@ -322,9 +323,9 @@
 				var/od_to_set = tgui_input_list(usr, "Set new OD:", "[src]", list(5,10,15,20,25,30,35,40,45,50,55,60))
 				if(!od_to_set)
 					return
-				new_od_level = od_to_set
 				creation_od_level = od_to_set
 				calculate_creation_cost()
+				calculate_new_od_level()
 		if("change_name")
 			if(simulating == SIMULATION_STAGE_OFF && mode == MODE_CREATE)
 				var/newname = input("Set name for template (2-20 characters)","[src]") as text

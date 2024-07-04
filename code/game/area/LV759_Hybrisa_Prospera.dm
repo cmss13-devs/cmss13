@@ -116,7 +116,7 @@
 /area/lv759/indoors/derelict_ship
 	name = "Derelict Ship"
 	icon_state = "derelictship"
-	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	ceiling = CEILING_REINFORCED_METAL
 	flags_area = AREA_NOTUNNEL
 	ambience_exterior = AMBIENCE_DERELICT
 	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP
@@ -556,15 +556,20 @@
 /area/lv759/indoors/mining_outpost
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_MINING
+
 /area/lv759/indoors/mining_outpost/north
 	name = "KMCC - Mining Outpost - North"
 	icon_state = "mining"
+
 /area/lv759/indoors/mining_outpost/north_maint
 	name = "KMCC - Mining Outpost - North - Maintenance"
 	icon_state = "mining"
+
 /area/lv759/indoors/mining_outpost/northeast
 	name = "KMCC - Mining Outpost - Northeast"
 	icon_state = "mining"
+	is_landing_zone = TRUE
+
 /area/lv759/indoors/mining_outpost/south
 	name = "KMCC - Mining Outpost - Southeast"
 	icon_state = "mining"
@@ -783,9 +788,12 @@
 
 /area/lv759/indoors/wy_security
 	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
+
 /area/lv759/indoors/wy_security/checkpoint_northeast
 	name = "Weyland-Yutani Security Checkpoint - North East"
 	icon_state = "security_checkpoint_northeast"
+	is_landing_zone = TRUE
+
 /area/lv759/indoors/wy_security/checkpoint_east
 	name = "Weyland-Yutani Security Checkpoint - East"
 	icon_state = "security_checkpoint_east"

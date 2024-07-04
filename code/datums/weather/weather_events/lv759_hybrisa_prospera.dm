@@ -3,7 +3,7 @@
 
 	display_name = "Light Rain"
 
-	length = 10 MINUTES
+	length = 15 MINUTES
 
 	lightning_chance = 4
 
@@ -22,7 +22,7 @@
 
 	display_name = "Very Light Rain"
 
-	length = 10 MINUTES
+	length = 15 MINUTES
 
 	lightning_chance = 2
 

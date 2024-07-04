@@ -714,23 +714,22 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
-
-
 /obj/item/weapon/gun/smg/p90/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 19, "under_x" = 23, "under_y" = 15, "stock_x" = 28, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 22, "rail_y" = 24, "under_x" = 23, "under_y" = 15, "stock_x" = 28, "stock_y" = 17)
 
 /obj/item/weapon/gun/smg/p90/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_12
 	burst_delay = FIRE_DELAY_TIER_12
 	burst_amount = BURST_AMOUNT_TIER_3
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
-	scatter = SCATTER_AMOUNT_TIER_6
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_4
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5
 
 //-------------------------------------------------------
 
@@ -758,20 +757,19 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
-
-
 /obj/item/weapon/gun/smg/p90_twe/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 19, "under_x" = 23, "under_y" = 15, "stock_x" = 28, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 22, "rail_y" = 24, "under_x" = 23, "under_y" = 15, "stock_x" = 28, "stock_y" = 17)
 
 /obj/item/weapon/gun/smg/p90_twe/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_12
 	burst_delay = FIRE_DELAY_TIER_12
 	burst_amount = BURST_AMOUNT_TIER_3
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
-	scatter = SCATTER_AMOUNT_TIER_6
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_4
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5

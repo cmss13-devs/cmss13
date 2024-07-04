@@ -267,27 +267,32 @@
 
 /obj/structure/machinery/door_control/colony_lockdown
 	var/used = FALSE
-	var/colony_lockdown_time = 30 MINUTES
+	var/colony_lockdown_time = 25 MINUTES
 
-/obj/structure/machinery/door_control/colony_lockdown/use_button(mob/living/user, force)
+/obj/structure/machinery/door_control/colony_lockdown/use_button(mob/living/user,force)
 	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
-		to_chat(user, SPAN_WARNING("The colony lockdown can not be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		to_chat(user, SPAN_WARNING("The colony-wide lockdown cannot be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
 		return
 	if(used)
-		to_chat(user, SPAN_WARNING("The colony lockdown has already been lifted."))
+		to_chat(user, SPAN_WARNING("The colony-wide lockdown has already been lifted."))
 		return
 	. = ..()
-	marine_announcement("Colony-Wide Lockdown Protocols have been Lifted.")
+	marine_announcement("The colony-wide lockdown protocols have been lifted.")
 	used = TRUE
 
 // Research
 
 /obj/structure/machinery/door_control/research_lockdown
 	var/used = FALSE
+	var/colony_lockdown_time = 10 MINUTES
 
-/obj/structure/machinery/door_control/research_lockdown/use_button(mob/living/user, force)
+/obj/structure/machinery/door_control/research_lockdown/use_button(mob/living/user,force)
+	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
+		to_chat(user, SPAN_WARNING("The WY-Research-Facility lockdown cannot be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		return
 	if(used)
+		to_chat(user, SPAN_WARNING("The WY-Research-Facility lockdown has already been lifted."))
 		return
 	. = ..()
-	marine_announcement("WY-Research Facility Lockdown Protocols have been lifted.")
+	marine_announcement("The WY-Research-Facility lockdown protocols have been lifted.")
 	used = TRUE

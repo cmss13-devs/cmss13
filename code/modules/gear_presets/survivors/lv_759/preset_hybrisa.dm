@@ -753,9 +753,8 @@
 // Weyland Yutani Corpo
 
 /datum/equipment_preset/survivor/hybrisa/wy_exec
-	name = "Survivor - Hybrisa - Executive"
-	assignment = JOB_EXECUTIVE
-	rank = JOB_EXECUTIVE
+	name = "Survivor - Hybrisa - Corporate Liaison"
+	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrade = PAY_SHORT_WYC3
@@ -766,6 +765,20 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 	survivor_variant = CORPORATE_SURVIVOR
+
+/datum/equipment_preset/survivor/hybrisa/wy_exec/load_rank(mob/living/carbon/human/new_human) // Higher teir by default on Hybrisa //
+	if(new_human.client)
+		var/playtime = get_job_playtime(new_human.client, JOB_CORPORATE_LIAISON)
+		if(new_human.client.prefs.playtime_perks)
+			if(playtime > JOB_PLAYTIME_TIER_4)
+				return PAY_SHORT_WYC6
+			else if(playtime > JOB_PLAYTIME_TIER_3)
+				return PAY_SHORT_WYC5
+			else if(playtime > JOB_PLAYTIME_TIER_2)
+				return PAY_SHORT_WYC4
+			else
+				return paygrade
+	return paygrade
 
 /datum/equipment_preset/survivor/hybrisa/wy_exec/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,45)
@@ -830,6 +843,7 @@
 	assignment = "Weyland-Yutani - Corporate Security Guard"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction_group = FACTION_LIST_SURVIVOR_WY
+	paygrade = PAY_SHORT_CPO
 	skills = /datum/skills/civilian/survivor/goon
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_EXEC,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL)

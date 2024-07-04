@@ -746,3 +746,27 @@
 	glass = FALSE
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+// Black Research Doors
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double
+	icon = 'icons/obj/structures/doors/2x1almayerdoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double/autoname
+	autoname = TRUE
+	opacity = FALSE
+	glass = TRUE
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double/solid
+	icon = 'icons/obj/structures/doors/2x1almayerdoor.dmi'
+	opacity = TRUE
+	glass = FALSE
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double/solid/autoname
+	autoname = TRUE
+	opacity = TRUE
+	glass = FALSE

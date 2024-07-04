@@ -459,3 +459,30 @@
 
 	qdel(src)
 	return TRUE
+
+// Empty
+
+/obj/structure/largecrate/supply/empty
+	name = "supplies crate"
+	icon_state = "densecrate"
+	supplies = null
+
+/obj/structure/largecrate/random/secure/empty
+	name = "secure supply crate"
+	desc = "A secure crate."
+	icon_state = "secure_crate_strapped"
+	stuff = null
+
+/obj/structure/largecrate/random/case/empty
+	name = "storage case"
+	desc = "A black storage case."
+	icon_state = "case"
+	stuff = null
+
+/obj/structure/largecrate/random/case/double/empty
+	name = "cases"
+	desc = "A stack of black storage cases."
+	icon_state = "case_double"
+	stuff = null
+
+//----------------------------------------------------//

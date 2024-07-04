@@ -16,7 +16,7 @@
 /obj/structure/prop/hybrisa/vehicles/attack_alien(mob/living/carbon/xenomorph/user)
 	user.animation_attack_on(src)
 	take_damage( rand(user.melee_damage_lower, user.melee_damage_upper) * brute_multiplier)
-	playsound(src, 'sound/effects/metalscrape.ogg', 25, 1)
+	playsound(src, 'sound/effects/metalscrape.ogg', 20, 1)
 	if(health <= 0)
 		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"), \
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -45,7 +45,7 @@
 
 /obj/structure/prop/hybrisa/vehicles/proc/explode(dam, mob/M)
 	visible_message(SPAN_DANGER("[src] blows apart!"), max_distance = 1)
-	playsound(loc, 'sound/effects/car_crush.ogg', 25)
+	playsound(loc, 'sound/effects/car_crush.ogg', 20)
 	var/turf/Tsec = get_turf(src)
 	new /obj/item/stack/rods(Tsec)
 	new /obj/item/stack/rods(Tsec)
@@ -577,14 +577,14 @@
 /obj/structure/prop/hybrisa/furniture
 	icon = 'icons/obj/structures/props/hybrisatables.dmi'
 	icon_state = "blackmetaltable"
-	health = 1000
+	health = 200
 	projectile_coverage = 20
 	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/furniture/tables
 	icon = 'icons/obj/structures/props/hybrisatables.dmi'
 	icon_state = "table_pool"
-	health = 1000
+	health = 200
 
 /obj/structure/prop/hybrisa/furniture/tables/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -928,7 +928,7 @@
 	density = TRUE
 	anchored = TRUE
 	unslashable = FALSE
-	health = 150
+	health = 100
 	projectile_coverage = 20
 	throwpass = TRUE
 
@@ -1265,7 +1265,7 @@
 	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "trashblue"
-	health = 250
+	health = 150
 	density = TRUE
 	projectile_coverage = 20
 	throwpass = TRUE
@@ -1363,7 +1363,7 @@
 	bound_height = 32
 	anchored = TRUE
 	density = TRUE
-	health = 500
+	health = 250
 	opacity = FALSE
 
 /obj/structure/machinery/big_computers/bullet_act(obj/projectile/P)
@@ -1472,7 +1472,7 @@
 	bound_height = 32
 	anchored = TRUE
 	density = TRUE
-	health = 500
+	health = 250
 	opacity = FALSE
 
 /obj/structure/machinery/big_computers/science_big/synthesis_simulator
@@ -1495,11 +1495,16 @@
 	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
 	icon_state = "operator_open"
 
+/obj/structure/machinery/big_computers/science_big/medilathe
+	name = "medilathe"
+	desc = "A specialized autolathe made for printing medical items."
+	icon_state = "medilathe"
+
 // Monitors
 
 /obj/structure/prop/hybrisa/misc/machinery/screens
 	name = "monitor"
-	health = 250
+	health = 150
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -1801,32 +1806,33 @@
 
 /obj/structure/prop/hybrisa/fakeplatforms
 	name = "platform"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "platform"
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
 
 /obj/structure/prop/hybrisa/fakeplatforms/platform1
 	icon_state = "engineer_platform"
-	unslashable = TRUE
-	unacidable = TRUE
-	indestructible = TRUE
 
 /obj/structure/prop/hybrisa/fakeplatforms/platform2
 	icon_state = "engineer_platform_platformcorners"
-	unslashable = TRUE
-	unacidable = TRUE
-	indestructible = TRUE
 
 /obj/structure/prop/hybrisa/fakeplatforms/platform3
 	icon_state = "platform"
-	unslashable = TRUE
-	unacidable = TRUE
-	indestructible = TRUE
 
 /obj/structure/prop/hybrisa/fakeplatforms/platform4
 	icon_state = "hybrisaplatform3"
-	unslashable = TRUE
-	unacidable = TRUE
-	indestructible = TRUE
+
+/obj/structure/prop/hybrisa/fakeplatforms/platform5
+	icon = 'icons/obj/structures/props/platforms.dmi'
+	icon_state = "hybrisaplatform"
+
+/obj/structure/prop/hybrisa/fakeplatforms/platform5/deco
+	name = "platform"
+	icon = 'icons/obj/structures/props/platforms.dmi'
+	icon_state = "hybrisaplatform_deco"
 
 // Greeblies
 /obj/structure/prop/hybrisa/misc/buildinggreeblies
@@ -1836,7 +1842,7 @@
 	bound_width = 64
 	bound_height = 32
 	density = TRUE
-	health = 1500
+	health = 750
 	anchored = TRUE
 	layer = ABOVE_XENO_LAYER
 	gender = PLURAL
@@ -1917,7 +1923,7 @@
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "smallwallvent1"
 	density = FALSE
-	health = 1000
+	health = 500
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -2079,7 +2085,6 @@
 	bound_height = 64
 	layer = BELOW_MOB_LAYER
 	density = FALSE
-	health = 1250
 	anchored = TRUE
 
 // Phonebox Prop (Doesn't actually work as a locker)

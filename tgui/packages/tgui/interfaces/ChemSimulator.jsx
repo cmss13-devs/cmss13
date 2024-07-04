@@ -448,7 +448,7 @@ export const ModeCreate = (props) => {
               <Button
                 textAlign={'center'}
                 fluid
-                px={"1px"}
+                px={'1px'}
                 italic={property.is_locked}
                 bold={property.is_locked}
                 onClick={() => {
@@ -470,7 +470,7 @@ export const ModeCreate = (props) => {
           ))}
         </Stack>
       </Flex.Item>
-      <Flex.Item mt={"18px"} width={65.5}>
+      <Flex.Item mt={'18px'} width={65.5}>
         {map(
           known_properties,
           (property) =>
@@ -539,7 +539,6 @@ export const CreateControl = (props) => {
             selected={flag[0]}
             bold
             italic={flag[0]}
-
           >
             {name}
           </Button>

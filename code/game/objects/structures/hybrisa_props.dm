@@ -2044,6 +2044,10 @@
 	projectile_coverage = 20
 	throwpass = TRUE
 
+/obj/structure/prop/hybrisa/misc/firehydrant/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/shimmy_around)
+
 /obj/structure/prop/hybrisa/misc/firehydrant/bullet_act(obj/projectile/P)
 	health -= P.damage
 	..()

@@ -50,6 +50,10 @@
 	icon_state = "street_off"
 	layer = BILLBOARD_LAYER
 
+/obj/structure/machinery/colony_floodlight/street/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/shimmy_around, east_offset = -15, west_offset = -15)
+
 /obj/structure/machinery/colony_floodlight/street/update_icon()
 	if(damaged)
 		icon_state = "street_dmg"
@@ -71,6 +75,10 @@
 	health = 200
 	layer = BILLBOARD_LAYER
 
+/obj/structure/machinery/colony_floodlight/traffic/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/shimmy_around, east_offset = -15, west_offset = -15)
+
 /obj/structure/machinery/colony_floodlight/traffic/update_icon()
 	if(damaged)
 		icon_state = "trafficlight_damaged"
@@ -79,19 +87,10 @@
 	else
 		icon_state = "trafficlight"
 
-/obj/structure/machinery/colony_floodlight/traffic_alt
-	lum_value = 0
-	name = "traffic light"
-	desc = "A traffic light"
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+/obj/structure/machinery/colony_floodlight/traffic/alt
 	icon_state = "trafficlight_alt"
-	bound_width = 32
-	bound_height = 32
-	density = TRUE
-	health = 200
-	layer = BILLBOARD_LAYER
 
-/obj/structure/machinery/colony_floodlight/traffic_alt/update_icon()
+/obj/structure/machinery/colony_floodlight/traffic/alt/update_icon()
 	if(damaged)
 		icon_state = "trafficlight_alt_damaged"
 	else if(is_on)

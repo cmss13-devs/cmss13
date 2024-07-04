@@ -1,0 +1,4 @@
+author: "GrrrKitten"
+delete-after: True
+changes:
+  - qol: "Makes screenshake look less low FPS/jumpy"

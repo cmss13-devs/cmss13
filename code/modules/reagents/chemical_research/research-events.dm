@@ -21,7 +21,7 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 		player = linked_xeno.client
 	RegisterSignal(linked_xeno, COMSIG_MOB_NEW_MIND, PROC_REF(get_mind)) //this works as long as the client is not forcefully set by admins
 
-	ai_announcement("Notice: Unidentified lifesign detected at research containment created through DNA disintegration, analyzing data...")
+	ai_announcement("Notice: Unidentified lifesign detected at research containment created through unknown means, analyzing data...")
 	sleep(5 SECONDS)
 	ai_announcement("Notice: Lifeform biostructural data can be analyzed further for tech point reward at a rate of 1 point per minute.")
 
@@ -31,12 +31,12 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 /datum/research_event/ddi_experiment/process(delta_time)
 	if(total_points_given >= MAX_POINTS)
 		STOP_PROCESSING(SSprocessing, src)
-		ai_announcement("Notice: Lifeform biostructural data fully analyzed, 20 total tech points awarded. Recommend termination of lifeform.")
+		ai_announcement("Notice: Lifeform biostructural data fully analyzed, 20 total tech points awarded.")
 		return
 
 	if(QDELETED(linked_xeno)) //they must have evolved
 		if(QDELETED(player.mob)) //no new mob? they got deleted
-			ai_announcement("Notice: Lifeform terminated or missing, biostructural data not fully analyzed. Only [total_points_given] out of [20] tech points awarded.")
+			ai_announcement("Notice: Lifeform terminated or missing, biostructural data not fully analyzed. Only [total_points_given] out of [MAX_POINTS] tech points awarded.")
 			STOP_PROCESSING(SSprocessing, src)
 			return
 		linked_xeno = player.mob //get the updated mob from the client
@@ -45,7 +45,7 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 
 	if(linked_xeno.stat == DEAD || !istype(xeno_loc, /area/almayer/medical/containment)) //you let it escape or die. idiot
 		if(total_points_given < MAX_POINTS)
-			ai_announcement("Notice: Lifeform terminated or missing, biostructural data not fully analyzed. Only [total_points_given] out of [20] tech points awarded.")
+			ai_announcement("Notice: Lifeform terminated or missing, biostructural data not fully analyzed. Only [total_points_given] out of [MAX_POINTS] tech points awarded.")
 			STOP_PROCESSING(SSprocessing, src)
 			return
 

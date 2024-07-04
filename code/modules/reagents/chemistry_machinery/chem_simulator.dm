@@ -753,25 +753,25 @@
 
 /datum/chemical_simulator_modes/create
 	name = "CREATE"
-	desc = "Create a new custom chemical from the known properties discovered earlier"
+	desc = "Create a new custom chemical from the known properties discovered earlier."
 	mode_id = MODE_CREATE
 	icon_type = "bolt"
 
 /datum/chemical_simulator_modes/supress
 	name = "SUPRESS"
-	desc = "Supress one level in the choosen property. This decreases the OD level."
+	desc = "Supress one level in the choosen property. This operation lowers the OD level."
 	mode_id = MODE_SUPPRESS
 	icon_type = "square-minus"
 
 /datum/chemical_simulator_modes/amplify
 	name = "AMPLIFY"
-	desc = "Amplify one level in the choosen property. This decreases the OD level"
+	desc = "Amplify one level in the choosen property. This operation lowers the OD level."
 	mode_id = MODE_AMPLIFY
 	icon_type = "square-plus"
 
 /datum/chemical_simulator_modes/relate
 	name = "RELATE"
-	desc = "Use the reference chemical to replace one choosen property in the target chemical. The target and reference target property level must be equal."
+	desc = "Use the reference chemical to replace one choosen property in the target chemical. The target and reference target property level must be equal, This operation lowers the OD level."
 	mode_id = MODE_RELATE
 	icon_type = "repeat"
 

@@ -429,7 +429,7 @@ export const ModeCreate = (props) => {
       <Flex.Item>
         <Stack
           ml={1}
-          mt={2}
+          mt={1}
           mr={1}
           width={65}
           height={7}
@@ -441,13 +441,16 @@ export const ModeCreate = (props) => {
               m={0.5}
               bold
               grow
-              fontSize={'14px'}
-              minWidth={5}
+              fontSize={'12px'}
+              minWidth={4}
               maxHeight={2}
             >
               <Button
                 textAlign={'center'}
                 fluid
+                px={"1px"}
+                italic={property.is_locked}
+                bold={property.is_locked}
                 onClick={() => {
                   act('select_create_property', {
                     property_code: property.code,
@@ -467,7 +470,7 @@ export const ModeCreate = (props) => {
           ))}
         </Stack>
       </Flex.Item>
-      <Flex.Item>
+      <Flex.Item mt={"18px"} width={65.5}>
         {map(
           known_properties,
           (property) =>
@@ -524,7 +527,7 @@ export const CreateControl = (props) => {
         </Button>
       </Flex.Item>
       {map(template_filters, (flag, name) => (
-        <Flex.Item ml={1} width={5}>
+        <Flex.Item ml={1} width={5} textAlign="center">
           <Button
             fluid
             onClick={() => {
@@ -535,6 +538,8 @@ export const CreateControl = (props) => {
             fontSize={'14px'}
             selected={flag[0]}
             bold
+            italic={flag[0]}
+
           >
             {name}
           </Button>

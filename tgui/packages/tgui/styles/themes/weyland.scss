@@ -28,7 +28,7 @@ $weyland: #af7f38;
     '../components/Button.scss',
     $with: (
       'color-default': $weyland,
-      'color-selected': #d6b480,
+      'color-selected': #e4c69a,
       'color-caution': #be6209,
       'color-danger': #9a9d00,
       'color-transparent-text': color.scale($weyland, $lightness: 30%)

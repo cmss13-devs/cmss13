@@ -29,7 +29,7 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 	START_PROCESSING(SSprocessing, src)
 
 /datum/research_event/ddi_experiment/process(delta_time)
-	if(total_points_given >= 20)
+	if(total_points_given >= MAX_POINTS)
 		STOP_PROCESSING(SSprocessing, src)
 		ai_announcement("Notice: Lifeform biostructural data fully analyzed, 20 total tech points awarded. Recommend termination of lifeform.")
 		return

@@ -53,13 +53,12 @@
 				gibs(turf)
 				for(var/obj/item/items in affected_mob)
 					affected_mob.drop_inv_item_on_ground(items)
-				var/mob/living/carbon/xenomorph/drone/xeno = new()
-				xeno.forceMove(turf)
+				var/mob/living/carbon/xenomorph/drone/xeno = new(turf)
 				xeno.set_hive_and_update(XENO_HIVE_FERAL)
 				if(ismonkey(affected_mob))
 					xeno.free_for_ghosts(TRUE)
 				else
-					affected_mob.mind.transfer_to(xeno, TRUE)
+					affected_mob.mind?.transfer_to(xeno, TRUE)
 
 				qdel(affected_mob)
 				cure()

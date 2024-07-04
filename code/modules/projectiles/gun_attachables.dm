@@ -2973,7 +2973,7 @@ Defined in conflicts.dm of the #defines folder.
 			current_rounds += transfered_rounds
 			FT.current_rounds -= transfered_rounds
 
-			var/amount_of_reagents = FT.reagents.reagent_list.len
+			var/amount_of_reagents = length(FT.reagents.reagent_list)
 			var/amount_removed_per_reagent = transfered_rounds / amount_of_reagents
 			for(var/datum/reagent/R in FT.reagents.reagent_list)
 				R.volume -= amount_removed_per_reagent

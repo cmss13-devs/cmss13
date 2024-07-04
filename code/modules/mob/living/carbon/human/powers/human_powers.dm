@@ -347,6 +347,7 @@
 			client.pixel_y = 0
 
 /mob/living/carbon/human/proc/disable_zoom()
+	SIGNAL_HANDLER
 	if(!client)
 		return
 	UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)

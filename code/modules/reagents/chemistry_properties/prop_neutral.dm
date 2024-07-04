@@ -527,22 +527,22 @@
 	category = PROPERTY_TYPE_STIMULANT
 	value = 8
 
-/datum/chem_property/neutral/encephalophrasive/on_delete(mob/living/M)
+/datum/chem_property/neutral/encephalophrasive/on_delete(mob/living/chem_host)
 	..()
 
-	M.pain.recalculate_pain()
-	remove_verb(M, /mob/living/carbon/human/proc/psychic_whisper)
-	to_chat(M, SPAN_NOTICE("The pain in your head subsides, and you are left feeling strangely alone."))
+	chem_host.pain.recalculate_pain()
+	remove_verb(chem_host, /mob/living/carbon/human/proc/psychic_whisper)
+	to_chat(chem_host, SPAN_NOTICE("The pain in your head subsides, and you are left feeling strangely alone."))
 
-/datum/chem_property/neutral/encephalophrasive/process(mob/living/M, potency = 1, delta_time)
-	M.pain.apply_pain(1 * potency)
-	add_verb(M, /mob/living/carbon/human/proc/psychic_whisper)
+/datum/chem_property/neutral/encephalophrasive/process(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.pain.apply_pain(1 * potency)
+	add_verb(chem_host, /mob/living/carbon/human/proc/psychic_whisper)
 
-/datum/chem_property/neutral/encephalophrasive/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.apply_damage(0.5 * potency * POTENCY_MULTIPLIER_VHIGH * delta_time, BRAIN)
+/datum/chem_property/neutral/encephalophrasive/process_overdose(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.apply_damage(0.5 * potency * POTENCY_MULTIPLIER_VHIGH * delta_time, BRAIN)
 
-/datum/chem_property/neutral/encephalophrasive/process_critical(mob/living/M, potency = 1, delta_time)
-	M.apply_effect(20, PARALYZE)
+/datum/chem_property/neutral/encephalophrasive/process_critical(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/viscous
 	name = PROPERTY_VISCOUS

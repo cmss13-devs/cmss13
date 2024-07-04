@@ -93,46 +93,46 @@
 	icon_state = "sidewalk"
 
 /turf/open/hybrisa/street/sidewalk/south
-    dir = SOUTH
+	dir = SOUTH
 
 /turf/open/hybrisa/street/sidewalk/north
-    dir = NORTH
+	dir = NORTH
 
 /turf/open/hybrisa/street/sidewalk/west
-    dir = WEST
+	dir = WEST
 
 /turf/open/hybrisa/street/sidewalk/east
-    dir = EAST
+	dir = EAST
 
 /turf/open/hybrisa/street/sidewalk/northeast
-    dir = NORTHEAST
+	dir = NORTHEAST
 
 /turf/open/hybrisa/street/sidewalk/southwest
-    dir = SOUTHWEST
+	dir = SOUTHWEST
 
 /turf/open/hybrisa/street/sidewalk/northwest
-    dir = NORTHWEST
+	dir = NORTHWEST
 
 /turf/open/hybrisa/street/sidewalk/southeast
-    dir = SOUTHEAST
+	dir = SOUTHEAST
 
 
 // Center
 
 /turf/open/hybrisa/street/sidewalkcenter
-    icon_state = "sidewalkcenter"
+	icon_state = "sidewalkcenter"
 
 /turf/open/hybrisa/street/sidewalkcenter/south
-    dir = SOUTH
+	dir = SOUTH
 
 /turf/open/hybrisa/street/sidewalkcenter/north
-    dir = NORTH
+	dir = NORTH
 
 /turf/open/hybrisa/street/sidewalkcenter/west
-    dir = WEST
+	dir = WEST
 
 /turf/open/hybrisa/street/sidewalkcenter/east
-    dir = EAST
+	dir = EAST
 
 //-------------------------------------//
 
@@ -286,43 +286,43 @@
 	icon_state = "green_bigtile"
 
 /turf/open/floor/hybrisa/tile/green_bigtile/south
-    dir = SOUTH
+	dir = SOUTH
 
 /turf/open/floor/hybrisa/tile/green_bigtile/north
-    dir = NORTH
+	dir = NORTH
 
 /turf/open/floor/hybrisa/tile/green_bigtile/west
-    dir = WEST
+	dir = WEST
 
 /turf/open/floor/hybrisa/tile/green_bigtile/east
-    dir = EAST
+	dir = EAST
 
 /turf/open/floor/hybrisa/tile/green_bigtile/northeast
-    dir = NORTHEAST
+	dir = NORTHEAST
 
 /turf/open/floor/hybrisa/tile/green_bigtile/southwest
-    dir = SOUTHWEST
+	dir = SOUTHWEST
 
 /turf/open/floor/hybrisa/tile/green_bigtile/northwest
-    dir = NORTHWEST
+	dir = NORTHWEST
 
 /turf/open/floor/hybrisa/tile/green_bigtile/southeast
-    dir = SOUTHEAST
+	dir = SOUTHEAST
 
 /turf/open/floor/hybrisa/tile/greencorner_bigtile
 	icon_state = "greencorner_bigtile"
 
 /turf/open/floor/hybrisa/tile/greencorner_bigtile/south
-    dir = SOUTH
+	dir = SOUTH
 
 /turf/open/floor/hybrisa/tile/greencorner_bigtile/north
-    dir = NORTH
+	dir = NORTH
 
 /turf/open/floor/hybrisa/tile/greencorner_bigtile/west
-    dir = WEST
+	dir = WEST
 
 /turf/open/floor/hybrisa/tile/greencorner_bigtile/east
-    dir = EAST
+	dir = EAST
 
 //
 

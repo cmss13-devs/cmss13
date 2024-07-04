@@ -1,4 +1,5 @@
 GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
+#define MAX_POINTS 20
 
 /datum/research_event/ddi_experiment
 	var/DDI_experiment_triggered = FALSE
@@ -43,7 +44,7 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 	var/area/xeno_loc = get_area(linked_xeno.loc)
 
 	if(linked_xeno.stat == DEAD || !istype(xeno_loc, /area/almayer/medical/containment)) //you let it escape or die. idiot
-		if(total_points_given < 20)
+		if(total_points_given < MAX_POINTS)
 			ai_announcement("Notice: Lifeform terminated or missing, biostructural data not fully analyzed. Only [total_points_given] out of [20] tech points awarded.")
 			STOP_PROCESSING(SSprocessing, src)
 			return
@@ -53,3 +54,5 @@ GLOBAL_DATUM_INIT(ddi_experiment, /datum/research_event/ddi_experiment, new)
 		var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 		tree.add_points(1)
 		total_points_given++
+
+#undef MAX_POINTS

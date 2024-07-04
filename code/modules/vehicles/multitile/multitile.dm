@@ -382,9 +382,11 @@
 		toggle_cameras_status()
 		handle_all_modules_broken()
 
-	//vehicle is dead, no more lights
-	if(health <= 0 && lighting_holder.light_range)
-		lighting_holder.set_light_on(FALSE)
+	if(lighting_holder)
+		if (health)
+			lighting_holder.set_light_on(TRUE)
+		else
+			lighting_holder.set_light_on(TRUE)
 	update_icon()
 
 /*

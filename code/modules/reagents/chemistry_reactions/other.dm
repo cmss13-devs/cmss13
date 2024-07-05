@@ -174,13 +174,6 @@
 	holder.trigger_volatiles = TRUE
 	return
 
-/datum/chemical_reaction/custom/sticky
-	name = "Sticky-Napalm"
-	id = "stickynapalm"
-	result = "stickynapalm"
-	required_reagents = list("napalm" = 1, "fuel" = 1)
-	result_amount = 2
-
 /datum/chemical_reaction/custom/high_damage
 	name = "High-Combustion Napalm Fuel"
 	id = "highdamagenapalm"

@@ -67,7 +67,7 @@
 		return FALSE
 
 	// Check turf + atoms on the other side too
-	if(can_move_internal(user, get_step(parent_structure, direction), direction))
+	if(can_move_internal(user, get_step(parent_structure, direction), direction, ignore_exit = TRUE))
 		return TRUE
 
 	// Determine the alternate directions
@@ -75,51 +75,47 @@
 	var/tertiary_direction = 0
 	switch(direction)
 		if(NORTH)
-			if(north_offset > 0)
-				alt_direction = EAST
-			else if(north_offset < 0)
+			if(north_offset < 0)
 				alt_direction = WEST
+				tertiary_direction = EAST
 			else
 				alt_direction = EAST
 				tertiary_direction = WEST
 		if(SOUTH)
-			if(south_offset > 0)
-				alt_direction = EAST
-			else if(south_offset < 0)
+			if(south_offset < 0)
 				alt_direction = WEST
+				tertiary_direction = EAST
 			else
 				alt_direction = EAST
 				tertiary_direction = WEST
 		if(EAST)
-			if(east_offset > 0)
-				alt_direction = NORTH
-			else if(east_offset < 0)
+			if(east_offset < 0)
 				alt_direction = SOUTH
+				tertiary_direction = NORTH
 			else
 				alt_direction = NORTH
 				tertiary_direction = SOUTH
 		if(WEST)
-			if(west_offset > 0)
-				alt_direction = NORTH
-			else if(west_offset < 0)
+			if(west_offset < 0)
 				alt_direction = SOUTH
+				tertiary_direction = NORTH
 			else
 				alt_direction = NORTH
 				tertiary_direction = SOUTH
 
 	// Try an alternate direction
-	if(can_move_internal(user, get_step(parent_structure, alt_direction), alt_direction))
+	if(can_move_internal(user, get_step(parent_structure, alt_direction), alt_direction, ignore_exit = TRUE))
 		if(can_move_internal(user, parent_turf, alt_direction))
 			return TRUE
 
-	// Try a tertiary direction if possible
-	if(tertiary_direction && can_move_internal(user, get_step(parent_structure, tertiary_direction), tertiary_direction))
+	// Try a tertiary direction
+	if(can_move_internal(user, get_step(parent_structure, tertiary_direction), tertiary_direction, ignore_exit = TRUE))
 		if(can_move_internal(user, parent_turf, tertiary_direction))
 			return TRUE
 
 	return FALSE
 
-/datum/component/shimmy_around/proc/can_move_internal(mob/living/user, turf/turf, direction)
+/datum/component/shimmy_around/proc/can_move_internal(mob/living/user, turf/turf, direction, ignore_exit)
 	if(turf.density)
 		return FALSE
 
@@ -136,11 +132,11 @@
 			if(!moveable_exit_atom.anchored)
 				continue
 
-		if(exit_atom.BlockedExitDirs(user, direction))
+		if(exit_atom.BlockedPassDirs(user, direction))
 			return FALSE
 
-		if(exit_atom.BlockedPassDirs(user, direction))
-			return FALSE // I don't know why this catches some things that ExitDirs doesn't...
+		if(!ignore_exit && exit_atom.BlockedExitDirs(user, direction))
+			return FALSE
 
 	return TRUE
 
@@ -220,28 +216,54 @@
 	SIGNAL_HANDLER
 
 	var/mob/living/mob = source
-
+	var/animate_time = min(mob.move_delay + extra_delay, MAX_ANIMATE_TIME)
 	var/new_direction = get_dir(mob, new_loc)
 	var/offset_x = mob.pixel_x - initial(mob.pixel_x)
 	var/offset_y = mob.pixel_y - initial(mob.pixel_y)
+	if(additional_offset)
+		// compensate for any additional adjustment we made
+		if(offset_x)
+			offset_x -= parent_structure.pixel_x
+		else if(offset_y)
+			offset_y -= parent_structure.pixel_y
+
+	// Block movement into parent, but swing around instead
 	if(offset_x)
 		if(offset_x > 0)
 			if(new_direction & WEST)
-				source.dir = new_direction
-				return COMPONENT_CANCEL_MOVE
+				var/extra_offset = additional_offset ? parent_structure.pixel_y : 0
+				animate(mob, time = animate_time, pixel_x = initial(mob.pixel_x), pixel_y = mob.pixel_y + west_offset + extra_offset)
+				. = COMPONENT_CANCEL_MOVE
 		else
 			if(new_direction & EAST)
-				source.dir = new_direction
-				return COMPONENT_CANCEL_MOVE
+				var/extra_offset = additional_offset ? parent_structure.pixel_y : 0
+				animate(mob, time = animate_time, pixel_x = initial(mob.pixel_x), pixel_y = mob.pixel_y + east_offset + extra_offset)
+				. = COMPONENT_CANCEL_MOVE
 	else if(offset_y)
 		if(offset_y > 0)
 			if(new_direction & SOUTH)
-				source.dir = new_direction
-				return COMPONENT_CANCEL_MOVE
+				var/extra_offset = additional_offset ? parent_structure.pixel_x : 0
+				animate(mob, time = animate_time, pixel_y = initial(mob.pixel_y), pixel_x = mob.pixel_x + south_offset + extra_offset)
+				. = COMPONENT_CANCEL_MOVE
 		else
 			if(new_direction & NORTH)
-				source.dir = new_direction
-				return COMPONENT_CANCEL_MOVE
+				var/extra_offset = additional_offset ? parent_structure.pixel_x : 0
+				animate(mob, time = animate_time, pixel_y = initial(mob.pixel_y), pixel_x = mob.pixel_x + north_offset + extra_offset)
+				. = COMPONENT_CANCEL_MOVE
+
+	// If we are swinging them around, so set dir, delay, and layer as needed
+	if(. == COMPONENT_CANCEL_MOVE)
+		source.dir = new_direction
+		if(extra_delay && mob.client)
+			mob.client.move_delay += extra_delay
+		var/desired_layer = round(parent_structure.layer + 0.05, 0.01) // Byond floats are garbage
+		var/layer_changing = mob.plane == parent_structure.plane && (new_direction & approach_dirs_layer_override) && initial(mob.layer) < desired_layer
+		if(layer_changing)
+			mob.layer = desired_layer
+		else
+			mob.layer = initial(mob.layer)
+
+	return .
 
 /// Signal handler for COMSIG_MOVABLE_MOVED to reset their pixel offsets
 /datum/component/shimmy_around/proc/on_mob_move(atom/movable/source, atom/old_loc, dir, forced)

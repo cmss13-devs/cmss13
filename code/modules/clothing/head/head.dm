@@ -373,6 +373,9 @@
 	icon_state = "booniehattan"
 	flags_atom = FPRINT|NO_SNOW_TYPE
 
+/obj/item/clothing/head/cmcap/boonie/black
+	icon_state = "s_booniehat"
+
 /obj/item/clothing/head/cmcap/co
 	name = "\improper USCM Commanding officer cap"
 	icon_state = "cocap"

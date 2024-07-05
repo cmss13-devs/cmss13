@@ -249,6 +249,10 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "USCM boonie hat, tan"
 	path = /obj/item/clothing/head/cmcap/boonie/tan
 
+/datum/gear/headwear/uscm/boonie_black
+    display_name = "USCM boonie hat, black"
+    path = /obj/item/clothing/head/cmcap/boonie/black
+
 /datum/gear/headwear/uscm/cap
 	display_name = "USCM cap"
 	path = /obj/item/clothing/head/cmcap

@@ -131,3 +131,14 @@
 	base_icon_state = "ballisticshield"
 	passive_block = 60
 	readied_block = 90
+
+/obj/item/weapon/shield/riot/clfb
+	name = "steel slab"
+	desc = "A thick slab of steel with two leather straps bolted on the \"back\" of it. Cumbersome, but definitely able to stop a bullet or two"
+	icon_state = "riotclfb"
+	item_state = "riotclfb"
+	base_icon_state = "riotclfb"
+	passive_block = 40
+	readied_block = 80
+	readied_slowdown = 0.4
+	throw_range = 2

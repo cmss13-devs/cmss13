@@ -346,7 +346,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 			R = new P.type()
 			break
 		i++
-		if(i > properties.len)
+		if(i > length(properties))
 			return FALSE
 	R.level = new_level
 	R.holder = src

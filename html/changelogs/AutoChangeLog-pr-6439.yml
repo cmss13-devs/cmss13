@@ -1,5 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - soundadd: "larva talking sounds"
-  - imageadd: "larva moving sprites, tweak of standing ones"

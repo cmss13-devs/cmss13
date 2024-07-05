@@ -96,7 +96,7 @@
 		var/amplitude = 50 + 50 * (caboom_timer - caboom_left) / caboom_timer
 		playsound(bound_xeno, caboom_sound[caboom_loop], amplitude, FALSE, 10)
 		caboom_loop++
-		if(caboom_loop > caboom_sound.len)
+		if(caboom_loop > length(caboom_sound))
 			caboom_loop = 1
 	if(caboom_left <= 0)
 		caboom_trigger = FALSE

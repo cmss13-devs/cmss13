@@ -184,7 +184,7 @@
 				. = FALSE
 			else if (O.anchored)
 				visible_message(SPAN_DANGER("[src] crushes [O]!"), SPAN_XENODANGER("We crush [O]!"))
-				if(O.contents.len) //Hopefully won't auto-delete things inside crushed stuff.
+				if(length(O.contents)) //Hopefully won't auto-delete things inside crushed stuff.
 					var/turf/T = get_turf(src)
 					for(var/atom/movable/S in T.contents) S.forceMove(T)
 

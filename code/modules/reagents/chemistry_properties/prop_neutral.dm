@@ -534,9 +534,11 @@
 	remove_verb(chem_host, /mob/living/carbon/human/proc/psychic_whisper)
 	to_chat(chem_host, SPAN_NOTICE("The pain in your head subsides, and you are left feeling strangely alone."))
 
+/datum/chem_property/neutral/encephalophrasive/reaction_mob(mob/chem_host, method=INGEST, volume, potency)
+	add_verb(chem_host, /mob/living/carbon/human/proc/psychic_whisper)
+
 /datum/chem_property/neutral/encephalophrasive/process(mob/living/chem_host, potency = 1, delta_time)
 	chem_host.pain.apply_pain(1 * potency)
-	add_verb(chem_host, /mob/living/carbon/human/proc/psychic_whisper)
 
 /datum/chem_property/neutral/encephalophrasive/process_overdose(mob/living/chem_host, potency = 1, delta_time)
 	chem_host.apply_damage(0.5 * potency * POTENCY_MULTIPLIER_VHIGH * delta_time, BRAIN)

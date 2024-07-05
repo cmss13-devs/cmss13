@@ -178,7 +178,7 @@
 		ripping_limb = FALSE
 
 
-/// Warrior Rip Limb - called by pull_power()
+///  Rip Limb - called by pull_power()
 /mob/living/carbon/xenomorph/warrior/proc/rip_limb(mob/mob)
 	if(!istype(mob, /mob/living/carbon/human))
 		return FALSE
@@ -193,13 +193,10 @@
 		to_chat(src, SPAN_XENOWARNING("We can't harm this host!"))
 		return
 
-	if(!limb || limb.body_part == BODY_FLAG_CHEST || limb.body_part == BODY_FLAG_GROIN || (limb.status & LIMB_DESTROYED)) //Only limbs and head.
+	if(!limb || limb.body_part == BODY_FLAG_CHEST || limb.body_part == BODY_FLAG_GROIN || limb.body_part == BODY_FLAG_HEAD || (limb.status & LIMB_DESTROYED)) //Only limbs.
 		to_chat(src, SPAN_XENOWARNING("We can't rip off that limb."))
 		return FALSE
 	var/limb_time = rand(40,60)
-
-	if(limb.body_part == BODY_FLAG_HEAD)
-		limb_time = rand(90,110)
 
 	visible_message(SPAN_XENOWARNING("[src] begins pulling on [mob]'s [limb.display_name] with incredible strength!"), \
 	SPAN_XENOWARNING("We begin to pull on [mob]'s [limb.display_name] with incredible strength!"))

@@ -15,6 +15,8 @@
 			hud_icon_state = "engi"
 		if(JOB_CLF_MEDIC)
 			hud_icon_state = "med"
+		if(JOB_CLF_BREACHER)
+			hud_icon_state = "breacher"
 		if(JOB_CLF_SPECIALIST)
 			hud_icon_state = "spec"
 		if(JOB_CLF_LEADER)

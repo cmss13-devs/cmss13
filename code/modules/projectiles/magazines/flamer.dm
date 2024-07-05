@@ -78,7 +78,7 @@
 	if(!istype(target, /obj/structure/reagent_dispensers/fueltank) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack))
 		return ..()
 
-	if(!target.reagents || target.reagents.reagent_list.len < 1)
+	if(!target.reagents || length(target.reagents.reagent_list) < 1)
 		to_chat(user, SPAN_WARNING("[target] is empty!"))
 		return
 
@@ -133,7 +133,7 @@
 /obj/item/ammo_magazine/flamer_tank/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It contains:")
-	if(reagents && reagents.reagent_list.len)
+	if(reagents && length(reagents.reagent_list))
 		for(var/datum/reagent/R in reagents.reagent_list)
 			. += SPAN_NOTICE(" [R.volume] units of [R.name].")
 	else

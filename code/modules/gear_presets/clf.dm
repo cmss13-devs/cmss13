@@ -559,6 +559,48 @@
 
 //*****************************************************************************************************/
 
+/datum/equipment_preset/clf/breacher
+	name = "CLF Breacher"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_CLF_BREACHER
+	rank = JOB_CLF_BREACHER
+	role_comm_title = "BRC"
+	skills = /datum/skills/clf/breacher
+
+/datum/equipment_preset/clf/breacher/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_CLF_BASE) + list(ACCESS_CLF_ARMORY)
+
+/datum/equipment_preset/clf/breacher/load_gear(mob/living/carbon/human/new_human)
+
+	//jumpsuit and their webbing
+	var/obj/item/clothing/under/colonist/clf/CLF = new()
+	var/obj/item/clothing/accessory/storage/webbing/five_slots/W = new()
+	CLF.attach_accessory(new_human, W)
+	new_human.equip_to_slot_or_del(CLF, WEAR_BODY)
+	//clothing
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia/clfb(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/militia/bucket/clfb(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/full/random(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night(new_human), WEAR_EYES)
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct(new_human), WEAR_L_EAR)
+	//:)
+	new_human.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/family_photo(new_human), WEAR_IN_JACKET)
+	//specialist backpack stuff
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/shield/riot/clfb(new_human), WEAR_BACK)
+	//storage items
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+	//gun
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/merc(new_human), WEAR_J_STORE)
+
+
+//*****************************************************************************************************/
+
 /datum/equipment_preset/clf/leader
 	name = "CLF Leader"
 	flags = EQUIPMENT_PRESET_EXTRA

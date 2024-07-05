@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - spellcheck: "Fix grammar and plurality for vehicles and their hardpoints"

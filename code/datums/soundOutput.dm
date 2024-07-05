@@ -48,18 +48,18 @@
 
 /datum/soundOutput/proc/update_sounds_from_source(atom/source, direction)
 	SIGNAL_HANDLER
-	for(var/channel in source_sounds[source])
+	for(var/datum/sound_template/template in source_sounds[source])
 		for(var/i in 0 to round(32/SMOOTHING))
 			i = i * SMOOTHING
 			switch(direction)
 				if(1)
-					process_sound(current_sounds[channel], TRUE, 0, 1+i/32)
+					process_sound(template, TRUE, 0, 1+i/32)
 				if(2)
-					process_sound(current_sounds[channel], TRUE, 0, -1-i/32)
+					process_sound(template, TRUE, 0, -1-i/32)
 				if(4)
-					process_sound(current_sounds[channel], TRUE, 1+i/32)
+					process_sound(template, TRUE, 1+i/32)
 				if(8)
-					process_sound(current_sounds[channel], TRUE, -1-i/32, 0)
+					process_sound(template, TRUE, -1-i/32, 0)
 
 /datum/soundOutput/proc/remove_sound(channel)
 	current_sounds -= channel

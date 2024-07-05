@@ -386,7 +386,7 @@ nanoui is used to open and update nano browser uis
 		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(file)]'> "
 
 	var/template_data_json = "{}" // An empty JSON object
-	if (templates.len > 0)
+	if (length(templates) > 0)
 		template_data_json = strip_improper(json_encode(templates))
 
 	var/url_parameters_json = json_encode(list("src" = "\ref[src]"))

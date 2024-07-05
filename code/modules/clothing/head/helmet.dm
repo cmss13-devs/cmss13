@@ -1008,14 +1008,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_HEAD
-	gas_transfer_coefficient = 0.1
-	permeability_coefficient = 0.9
 	siemens_coefficient = 1
 	flags_inventory = BLOCKSHARPOBJ|COVERMOUTH|COVEREYES|ALLOWINTERNALS|BLOCKGASEFFECT|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR|HIDEMASK|HIDELOWHAIR|HIDEFACE
 	unacidable = TRUE
-	var/gas_filter_strength = 1 //For gas mask filters
-	var/list/filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
 
 //=============================//PMCS\\==================================\\
 //=======================================================================\\

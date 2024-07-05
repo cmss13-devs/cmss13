@@ -1,5 +1,5 @@
 /obj/item/hardpoint/locomotion/treads
-	name = "Treads"
+	name = "\improper Treads"
 	desc = "Integral to the movement of the vehicle."
 
 	icon_state = "treads"
@@ -17,7 +17,7 @@
 	move_turn_momentum_loss_factor = 0.6
 
 /obj/item/hardpoint/locomotion/treads/robust
-	name = "Reinforced Treads"
+	name = "\improper Reinforced Treads"
 	desc = "These treads are made of a tougher material and are more durable. However, the extra weight slows the tank down slightly."
 
 	health = 500

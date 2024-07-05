@@ -718,6 +718,31 @@
 	name = "bucket"
 	desc = "This metal bucket appears to have been modified with padding and chin-straps, plus an eye-slit carved into the \"front\". Presumably, it is intended to be worn on the head, possibly for protection."
 	icon_state = "bucket"
+	siemens_coefficient = 2
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	vision_impair = VISION_IMPAIR_MED
+
+/obj/item/clothing/head/militia/bucket/clfb
+	name = "tool steel helm"
+	desc = "This intensely uncomfortable helmet has been painstakingly bolted and welded together from sheets of tool steel, salvaged or procured, the end result is the same. A resilient piece of headwear, that's liable to survive longer than you will."
+	icon_state = "clfb_helm"
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
+	vision_impair = VISION_IMPAIR_STRONG
 
 /obj/item/clothing/head/general
 	name = "\improper armored General cap"

@@ -1,0 +1,4 @@
+author: "Contrabang"
+delete-after: True
+changes:
+  - rscadd: "Re-added a fax machine to the WY ERT station"

@@ -174,7 +174,7 @@
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/M, obj/projectile/P)
-	knockback(M, P, 10) // Can knockback basically at max range max range is 24 tiles...
+	knockback(M, P, 12) //lowerd range to with in 2x scope
 
 /datum/ammo/bullet/rifle/m4ra/impact/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))

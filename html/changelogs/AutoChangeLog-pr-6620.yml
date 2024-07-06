@@ -1,0 +1,4 @@
+author: "Doubleumc"
+delete-after: True
+changes:
+  - code_imp: "environmental reverb applies more reliably and only to positional sounds"

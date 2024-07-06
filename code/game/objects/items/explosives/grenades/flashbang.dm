@@ -136,7 +136,7 @@
 		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
 
 	M.apply_effect(weaken_amount, STUN)
-	M.apply_effect(weaken_amount, KNOCKDOWN)	
+	M.apply_effect(weaken_amount, WEAKEN)	
 	M.apply_effect(paralyze_amount, PARALYZE)
 	if(deafen_amount)
 		M.SetEarDeafness(max(M.ear_deaf, deafen_amount))

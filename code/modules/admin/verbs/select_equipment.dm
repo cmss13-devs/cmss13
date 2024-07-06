@@ -98,7 +98,7 @@
 				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[newskillset]
 				H.set_skills(J.get_skills())
 
-/client/proc/cmd_admin_dress(mob/M)
+/client/proc/cmd_admin_dress(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Select Equipment"
 

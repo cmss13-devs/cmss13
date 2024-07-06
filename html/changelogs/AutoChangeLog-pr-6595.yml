@@ -1,0 +1,6 @@
+author: "Doubleumc"
+delete-after: True
+changes:
+  - imageadd: "adds CMP tracker sprites"
+  - rscadd: "adds a SEA headset, can track CO, XO, CMP"
+  - rscadd: "adds handheld crew monitor in SEATech vendor"

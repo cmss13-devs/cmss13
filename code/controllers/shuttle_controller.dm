@@ -215,7 +215,7 @@
 			dock_controller_map[shuttle.docking_controller_tag] = shuttle
 
 	//search for the controllers, if we have one.
-	if(dock_controller_map.len)
+	if(length(dock_controller_map))
 		for(var/obj/structure/machinery/embedded_controller/radio/C in GLOB.machines) //only radio controllers are supported at the moment
 			if (istype(C.program, /datum/computer/file/embedded_program/docking))
 				if(dock_controller_map[C.id_tag])
@@ -226,7 +226,7 @@
 
 	//sanity check
 	//NO SANITY
-// if (dock_controller_map.len || dock_controller_map_station.len || dock_controller_map_offsite.len)
+// if (length(dock_controller_map) || length(dock_controller_map_station) || length(dock_controller_map_offsite))
 // var/dat = ""
 // for (var/dock_tag in dock_controller_map + dock_controller_map_station + dock_controller_map_offsite)
 // dat += "\"[dock_tag]\", "

@@ -289,7 +289,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/get_examine_text(mob/user)
 	. = ..()
-	if(reagents && reagents.reagent_list.len)
+	if(reagents && length(reagents.reagent_list))
 		. += SPAN_NOTICE("It is currently loaded.")
 	else if(!uses_left)
 		. += SPAN_NOTICE("It is spent.")

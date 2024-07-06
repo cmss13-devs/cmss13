@@ -435,7 +435,7 @@
 	if(tgui_alert(src, "Do you want to strip yourself as well?", "Confirmation", list("Yes", "No")) == "Yes")
 		strip_self = TRUE
 
-	for(var/mob/living/current_mob in view())
+	for(var/mob/living/current_mob in view(src))
 		if(!strip_self && usr == current_mob)
 			continue
 		for (var/obj/item/current_item in current_mob)
@@ -458,7 +458,7 @@
 	if(alert("This will rejuvenate ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/M in view())
+	for(var/mob/living/M in view(src))
 		M.rejuvenate(FALSE)
 
 	message_admins(WRAP_STAFF_LOG(usr, "ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
@@ -476,7 +476,7 @@
 	if(alert("This will rejuvenate ALL humans within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/human/M in view())
+	for(var/mob/living/carbon/human/M in view(src))
 		M.rejuvenate(FALSE)
 
 	message_admins(WRAP_STAFF_LOG(usr, "ahealed all humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
@@ -493,7 +493,7 @@
 	if(alert("This will rejuvenate ALL revivable humans within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/human/M in view())
+	for(var/mob/living/carbon/human/M in view(src))
 		if(!ishuman_strict(M) && !ishumansynth_strict(M))
 			continue
 
@@ -519,7 +519,7 @@
 	if(alert("This will rejuvenate ALL xenos within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/xenomorph/X in view())
+	for(var/mob/living/carbon/xenomorph/X in view(src))
 		X.rejuvenate(FALSE)
 
 	message_admins(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)

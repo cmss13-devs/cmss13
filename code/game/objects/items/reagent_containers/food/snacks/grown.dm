@@ -591,7 +591,7 @@
 		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius) continue
 		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius) continue
 		turfs += T
-	if(!turfs.len)
+	if(!length(turfs))
 		var/list/turfs_to_pick_from = list()
 		for(var/turf/T in orange(M,outer_teleport_radius))
 			if(!(T in orange(M,inner_teleport_radius)))

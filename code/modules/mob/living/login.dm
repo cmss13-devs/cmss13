@@ -6,7 +6,7 @@
 
 	..()
 
-	if(pipes_shown && pipes_shown.len) //ventcrawling, need to reapply pipe vision
+	if(LAZYLEN(pipes_shown)) //ventcrawling, need to reapply pipe vision
 		var/obj/structure/pipes/A = loc
 		if(istype(A)) //a sanity check just to be safe
 			remove_ventcrawl()

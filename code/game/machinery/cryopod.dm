@@ -103,7 +103,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	else if(href_list["item"])
 
-		if(frozen_items_for_type.len == 0)
+		if(length(frozen_items_for_type) == 0)
 			to_chat(user, SPAN_WARNING("There is nothing to recover from storage."))
 			return
 
@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	else if(href_list["allitems"])
 
-		if(frozen_items_for_type.len == 0)
+		if(length(frozen_items_for_type) == 0)
 			to_chat(user, SPAN_WARNING("There is nothing to recover from storage."))
 			return
 

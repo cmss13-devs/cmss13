@@ -1,0 +1,5 @@
+author: "GrrrKitten"
+delete-after: True
+changes:
+  - ui: "Swaps TM and MOTD order so that people actually see the MOTD"
+  - admin: "Removes the message for when no event info is input"

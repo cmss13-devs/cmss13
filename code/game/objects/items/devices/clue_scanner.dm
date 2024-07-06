@@ -52,4 +52,4 @@
 	if(!newlyfound)
 		to_chat(user, SPAN_INFO("No new print sets found!"))
 	else
-		to_chat(user, SPAN_INFO("New print sets found: [newlyfound], total stored amount: [print_list.len]"))
+		to_chat(user, SPAN_INFO("New print sets found: [newlyfound], total stored amount: [length(print_list)]"))

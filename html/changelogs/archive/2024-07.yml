@@ -1,0 +1,25 @@
+2024-07-03:
+  Blundir:
+  - soundadd: larva talking sounds
+  - imageadd: larva moving sprites, tweak of standing ones
+2024-07-04:
+  Doubleumc:
+  - qol: ghost health scan & follow right-click actions work at any range
+  - admin: '"InView" procs use your current view range (e.g. ghost zoom)'
+  Nomoresolvalou:
+  - balance: The headset in the synthetic equipment vendor has been replaced with
+      a synthetic headset as opposed to a senior command headset
+  zzzmike:
+  - spellcheck: more clarity for facehugger/lesser drone text
+2024-07-05:
+  AndroBetel:
+  - rscadd: Adds "Iron teeth" trait.
+  GrrrKitten:
+  - qol: Makes screenshake look less low FPS/jumpy
+  Venuska1117:
+  - bugfix: Make non-toxic water stop glowing.
+  coldironwarrior:
+  - spellcheck: fixed the medical rig belt's description
+2024-07-06:
+  Drathek:
+  - spellcheck: Fix grammar and plurality for vehicles and their hardpoints

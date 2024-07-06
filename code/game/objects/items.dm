@@ -244,9 +244,9 @@ cases. Override_icon_state should be a list.*/
 	var/new_icon_state
 	var/new_protection
 	var/new_item_state
-	if(override_icon_state && override_icon_state.len)
+	if(LAZYLEN(override_icon_state))
 		new_icon_state = override_icon_state[SSmapping.configs[GROUND_MAP].map_name]
-	if(override_protection && override_protection.len)
+	if(LAZYLEN(override_protection))
 		new_protection = override_protection[SSmapping.configs[GROUND_MAP].map_name]
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("snow")
@@ -277,7 +277,7 @@ cases. Override_icon_state should be a list.*/
 			size = "huge"
 		if(SIZE_MASSIVE)
 			size = "massive"
-	. += "This is a [blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item."
+	. += "[p_are() == "are" ? "These are " : "This is a "][blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. [p_they(TRUE)] [p_are()] a [size] item."
 	if(desc)
 		. += desc
 	if(desc_lore)

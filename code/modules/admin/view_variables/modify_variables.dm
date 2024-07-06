@@ -21,16 +21,15 @@ GLOBAL_PROTECT(VVpixelmovement)
 	if (!ispath(type))
 		return
 	var/list/subtypes = subtypesof(type)
-	if (!subtypes || !subtypes.len)
+	if (!LAZYLEN(subtypes))
 		return FALSE
-	if (subtypes?.len)
-		switch(tgui_alert(usr,"Strict object type detection?", "Type detection", list("Strictly this type","This type and subtypes", "Cancel")))
-			if("Strictly this type")
-				return FALSE
-			if("This type and subtypes")
-				return TRUE
-			else
-				return
+	switch(tgui_alert(usr,"Strict object type detection?", "Type detection", list("Strictly this type","This type and subtypes", "Cancel")))
+		if("Strictly this type")
+			return FALSE
+		if("This type and subtypes")
+			return TRUE
+		else
+			return
 
 /client/proc/vv_reference_list(type, subtypes)
 	. = list()
@@ -115,14 +114,14 @@ GLOBAL_PROTECT(VVpixelmovement)
 		to_chat(src, "Not a List.", confidential = TRUE)
 		return
 
-	if(L.len > 1000)
+	if(length(L) > 1000)
 		var/confirm = tgui_alert(usr, "The list you're trying to edit is very long, continuing may crash the server.", "Warning", list("Continue", "Abort"))
 		if(confirm != "Continue")
 			return
 
 	var/is_normal_list = IS_NORMAL_LIST(L)
 	var/list/names = list()
-	for (var/i in 1 to L.len)
+	for (var/i in 1 to length(L))
 		var/key = L[i]
 		var/value
 		if (is_normal_list && !isnum(key))

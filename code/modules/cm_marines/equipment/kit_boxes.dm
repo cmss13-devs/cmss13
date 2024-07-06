@@ -323,7 +323,7 @@
 		overlays += image('icons/obj/items/storage.dmi', "+[pro_case_overlay]")
 
 /obj/item/storage/box/kit/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		qdel(src)
 /obj/item/storage/box/kit/mou53_sapper
 	name = "\improper M-OU53 Field Test Kit"

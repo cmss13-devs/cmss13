@@ -222,7 +222,7 @@
 
 /datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(mob/firer, mob/target, obj/projectile/P)
 	var/list/turf/path = get_line(firer, target, include_start_atom = FALSE)
-	if(!path.len || get_dist(firer, target) > P.ammo.max_range)
+	if(!length(path) || get_dist(firer, target) > P.ammo.max_range)
 		return TRUE
 
 	var/blocked = FALSE

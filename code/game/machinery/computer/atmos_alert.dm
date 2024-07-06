@@ -62,10 +62,10 @@
 	..()
 	if(inoperable())
 		return
-	if(priority_alarms.len)
+	if(length(priority_alarms))
 		icon_state = "alert:2"
 
-	else if(minor_alarms.len)
+	else if(length(minor_alarms))
 		icon_state = "alert:1"
 
 	else
@@ -77,13 +77,13 @@
 	var/priority_text
 	var/minor_text
 
-	if(priority_alarms.len)
+	if(length(priority_alarms))
 		for(var/zone in priority_alarms)
 			priority_text += "<FONT color='red'><B>[zone]</B></FONT>  <A href='?src=\ref[src];priority_clear=[ckey(zone)]'>X</A><BR>"
 	else
 		priority_text = "No priority alerts detected.<BR>"
 
-	if(minor_alarms.len)
+	if(length(minor_alarms))
 		for(var/zone in minor_alarms)
 			minor_text += "<B>[zone]</B>  <A href='?src=\ref[src];minor_clear=[ckey(zone)]'>X</A><BR>"
 	else

@@ -130,3 +130,17 @@
 /datum/character_trait/biology/hardcore/unapply_trait(mob/living/carbon/human/target)
 	REMOVE_TRAIT(target, TRAIT_HARDCORE, ROUNDSTART_TRAIT)
 	..()
+
+/datum/character_trait/biology/iron_teeth
+	trait_name = "Iron Teeth"
+	trait_desc = "You've got iron teeth or really good dental insurance. Items in your face slot won't fall out when you go down."
+	applyable = TRUE
+	cost = 1
+
+/datum/character_trait/biology/iron_teeth/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
+	ADD_TRAIT(target, TRAIT_IRON_TEETH, ROUNDSTART_TRAIT)
+	..()
+
+/datum/character_trait/biology/iron_teeth/unapply_trait(mob/living/carbon/human/target)
+	REMOVE_TRAIT(target, TRAIT_IRON_TEETH, ROUNDSTART_TRAIT)
+	..()

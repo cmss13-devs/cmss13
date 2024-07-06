@@ -262,10 +262,10 @@ Quick adjacency (to turf):
 	// Make sure pass flags are removed
 	A.remove_temp_pass_flags(pass_flags)
 
-	if ((fd1 && !blockers["fd1"].len) || (fd2 && !blockers["fd2"].len)) // This means that for a given direction it did not have a blocker
+	if ((fd1 && !length(blockers["fd1"])) || (fd2 && !length(blockers["fd2"]))) // This means that for a given direction it did not have a blocker
 		return src
 
-	if (blockers["fd1"].len || blockers["fd2"].len)
+	if (length(blockers["fd1"]) || length(blockers["fd2"]))
 		var/guaranteed_hit = 0 // indicates whether there is a guaranteed hit (aka there is not chance to bypass blocker). 0 = nothing
 		var/list/cur_dense_blockers = list()
 		for (var/atom/blocker in blockers["fd1"])

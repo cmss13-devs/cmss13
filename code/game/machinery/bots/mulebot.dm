@@ -105,12 +105,12 @@
 	var/list/orders = list("0","1","2","3","4","5","6","7","8","9")
 	wire_text = list()
 	wire_order = list()
-	while(colours.len > 0)
-		var/color = colours[ rand(1,colours.len) ]
+	while(length(colours) > 0)
+		var/color = colours[ rand(1,length(colours)) ]
 		wire_text += color
 		colours -= color
 
-		var/order = orders[ rand(1,orders.len) ]
+		var/order = orders[ rand(1,length(orders)) ]
 		wire_order += text2num(order)
 		orders -= order
 
@@ -584,7 +584,7 @@
 				at_target()
 				return
 
-			else if(path.len > 0 && target) // valid path
+			else if(length(path) > 0 && target) // valid path
 
 				var/turf/next = path[1]
 				reached_target = 0
@@ -645,7 +645,7 @@
 
 							spawn(2)
 								calc_path(next)
-								if(path.len > 0)
+								if(length(path) > 0)
 									src.visible_message("[src] makes a delighted ping!", "You hear a ping.")
 									playsound(src.loc, 'sound/machines/ping.ogg', 25, 0)
 								mode = 4
@@ -667,7 +667,7 @@
 
 				calc_path()
 
-				if(path.len > 0)
+				if(length(path) > 0)
 					blockcount = 0
 					mode = 4
 					src.visible_message("[src] makes a delighted ping!", "You hear a ping.")

@@ -31,7 +31,7 @@
 	if(morgue_open)
 		icon_state = "[morgue_type]0"
 	else
-		if(contents.len > 1) //not counting the morgue tray
+		if(length(contents) > 1) //not counting the morgue tray
 			icon_state = "[morgue_type]2"
 		else
 			icon_state = "[morgue_type]1"
@@ -217,7 +217,7 @@
 	if(cremating)
 		return
 
-	if(contents.len <= 1) //1 because the tray is inside.
+	if(length(contents) <= 1) //1 because the tray is inside.
 		visible_message(SPAN_DANGER("You hear a hollow crackle."))
 	else
 		visible_message(SPAN_DANGER("You hear a roar as the crematorium activates."))

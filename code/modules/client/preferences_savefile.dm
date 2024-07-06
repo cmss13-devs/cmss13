@@ -57,9 +57,8 @@
 	if(savefile_version < 17) //remove omniglots
 		var/list/language_traits = list()
 		S["traits"] >> language_traits
-		if(language_traits)
-			if(language_traits.len > 1)
-				language_traits = null
+		if(LAZYLEN(language_traits) > 1)
+			language_traits = null
 		S["traits"] << language_traits
 
 	if(savefile_version < 18) // adds ambient occlusion by default
@@ -594,7 +593,7 @@
 	b_eyes = sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
 	underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 	undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
-	backbag = sanitize_integer(backbag, 1, GLOB.backbaglist.len, initial(backbag))
+	backbag = sanitize_integer(backbag, 1, length(GLOB.backbaglist), initial(backbag))
 	preferred_armor = sanitize_inlist(preferred_armor, GLOB.armor_style_list, "Random")
 	//b_type = sanitize_text(b_type, initial(b_type))
 

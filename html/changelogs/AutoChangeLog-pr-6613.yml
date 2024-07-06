@@ -1,0 +1,4 @@
+author: "Doubleumc"
+delete-after: True
+changes:
+  - bugfix: "right-click Examine no longer appears for interface buttons"

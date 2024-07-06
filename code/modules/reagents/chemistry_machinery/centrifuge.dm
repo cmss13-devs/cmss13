@@ -176,17 +176,17 @@
 		cleanup()
 		return FALSE
 
-	if(status == 0 && input_source == INPUT_TURING && connected_turing && connected_turing.outputmode == 2 && (connected_turing.programs[1].len || connected_turing.programs[2].len))
+	if(status == 0 && input_source == INPUT_TURING && connected_turing && connected_turing.outputmode == 2 && (length(connected_turing.programs[1]) || length(connected_turing.programs[2])))
 		return TRUE
 	return FALSE
 
 /obj/structure/machinery/centrifuge/proc/centrifuge()
-	if(!output_container.contents.len) return //Is output empty?
+	if(!length(output_container.contents)) return //Is output empty?
 
 	var/obj/item/reagent_container/source_container = input_container
 	if(input_source == INPUT_TURING)
 		source_container = connected_turing
-	var/initial_reagents = source_container.reagents.reagent_list.len
+	var/initial_reagents = length(source_container.reagents.reagent_list)
 	var/list/vials = list()
 	for(var/obj/item/reagent_container/V in output_container.contents)
 		vials += V
@@ -203,7 +203,7 @@
 			var/obj/item/reagent_container/hypospray/autoinjector/A = V
 			if(autolabel)
 				A.name = "autoinjector ([autolabel])"
-			else if(!(A.reagents.reagent_list.len))
+			else if(!length(A.reagents.reagent_list))
 				A.name = "autoinjector"
 			else
 				A.name = "autoinjector (" + A.reagents.reagent_list[1].name + ")"
@@ -213,7 +213,7 @@
 		else
 			if(autolabel)
 				V.name = "vial ([autolabel])"
-			else if(!(V.reagents.reagent_list.len) || (V.reagents.reagent_list.len > 1))
+			else if(!length(V.reagents.reagent_list) || (length(V.reagents.reagent_list) > 1))
 				V.name = "vial"
 			else
 				V.name = "vial (" + V.reagents.reagent_list[1].name + ")"

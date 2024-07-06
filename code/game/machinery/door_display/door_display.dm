@@ -35,7 +35,7 @@
 		if (D.id == id)
 			targets += D
 
-	if(targets.len == 0)
+	if(length(targets) == 0)
 		stat |= BROKEN
 	update_icon()
 

@@ -104,7 +104,7 @@
 			M << speech_bubble
 		M.hear_say(message, verb, speaking, alt_name, italics, src)
 
-	if (eavesdropping.len)
+	if (length(eavesdropping))
 		var/new_message = stars(message) //hopefully passing the message twice through stars() won't hurt... I guess if you already don't understand the language, when they speak it too quietly to hear normally you would be able to catch even less.
 		for(var/mob/M in eavesdropping)
 			if(not_dead_speaker)
@@ -120,7 +120,7 @@
 			for(var/mob/M in eavesdropping)
 				if(M.client) M.client.images -= speech_bubble
 
-	if (watching.len)
+	if (length(watching))
 		var/rendered = "<span class='game say'><span class='name'>[src.name]</span> whispers something.</span>"
 		for (var/mob/M in watching)
 			M.show_message(rendered, SHOW_MESSAGE_AUDIBLE)

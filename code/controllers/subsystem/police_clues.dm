@@ -8,15 +8,15 @@ SUBSYSTEM_DEF(clues)
 	var/list/prints_list = list()
 
 /datum/controller/subsystem/clues/stat_entry(msg)
-	msg = "P:[prints_list.len]"
+	msg = "P:[length(prints_list)]"
 	return ..()
 
 /datum/controller/subsystem/clues/fire(resumed = FALSE)
 	if(!resumed && length(prints_list))
 		currentrun = prints_list.Copy()
 
-	while(currentrun.len)
-		var/obj/effect/decal/prints/P = currentrun[currentrun.len]
+	while(length(currentrun))
+		var/obj/effect/decal/prints/P = currentrun[length(currentrun)]
 		currentrun.len--
 
 		if(!P || QDELETED(P))

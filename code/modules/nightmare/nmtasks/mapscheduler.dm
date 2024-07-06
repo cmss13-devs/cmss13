@@ -16,7 +16,7 @@
 
 /datum/nmtask/scheduler/mapload/proc/register_tainted_bounds(datum/nmtask/task, list/bounds)
 	tainted_bounds.len++
-	tainted_bounds[tainted_bounds.len] = bounds
+	tainted_bounds[length(tainted_bounds)] = bounds
 
 /datum/nmtask/scheduler/mapload/proc/patch_lighting()
 	var/list/tainted = list()

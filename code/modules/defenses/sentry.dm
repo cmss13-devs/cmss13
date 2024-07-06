@@ -85,7 +85,7 @@
 	if(!targets)
 		return FALSE
 
-	if(!target && targets.len)
+	if(!target && length(targets))
 		target = pick(targets)
 
 	get_target(target)
@@ -290,7 +290,7 @@
 		if(actual_fire(A))
 			break
 
-	if(targets.len)
+	if(length(targets))
 		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
 
 	if(!engaged_timer)
@@ -350,7 +350,7 @@
 	if(!targets.Find(new_target))
 		targets.Add(new_target)
 
-	if(!targets.len)
+	if(!length(targets))
 		return
 
 	var/list/conscious_targets = list()
@@ -405,7 +405,7 @@
 				continue
 
 		var/list/turf/path = get_line(src, A, include_start_atom = FALSE)
-		if(!path.len || get_dist(src, A) > sentry_range)
+		if(!length(path) || get_dist(src, A) > sentry_range)
 			if(A == target)
 				target = null
 			targets.Remove(A)
@@ -457,9 +457,9 @@
 			else
 				conscious_targets += M
 
-	if(conscious_targets.len)
+	if(length(conscious_targets))
 		target = pick(conscious_targets)
-	else if(unconscious_targets.len)
+	else if(length(unconscious_targets))
 		target = pick(unconscious_targets)
 
 	if(!target) //No targets, don't bother firing

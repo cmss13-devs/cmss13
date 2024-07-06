@@ -188,7 +188,7 @@
 		dat += "<BR><B>Current [category] ([length(listings[category])]):<BR></B>\n"
 		for(var/client/entry in listings[category])
 			dat += "\t[entry.key] is \a [entry.admin_holder.rank]"
-			if(entry.admin_holder.extra_titles?.len)
+			if(LAZYLEN(entry.admin_holder.extra_titles))
 				for(var/srank in entry.admin_holder.extra_titles)
 					dat += " & [srank]"
 			if(CLIENT_IS_STAFF(src))

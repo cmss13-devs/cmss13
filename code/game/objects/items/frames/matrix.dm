@@ -18,7 +18,7 @@
 /obj/item/frame/matrix_frame/attackby(obj/item/W, mob/user as mob)
 	switch(state)
 		if(ASSEMBLY_EMPTY)
-			if(istype(W, /obj/item/reagent_container/glass/beaker/vial) && W.reagents.total_volume == 30 && W.reagents.reagent_list.len == 1)
+			if(istype(W, /obj/item/reagent_container/glass/beaker/vial) && W.reagents.total_volume == 30 && length(W.reagents.reagent_list) == 1)
 				user.drop_held_item(W)
 				W.forceMove(src)
 				state = ASSEMBLY_UNLOCKED
@@ -45,7 +45,7 @@
 			else if(W.reagents.total_volume < 30)
 				to_chat(user, SPAN_WARNING("The testing indicator lights up with red! The container requires to be fully filled!"))
 				return
-			else if (W.reagents.reagent_list.len > 1)
+			else if (length(W.reagents.reagent_list) > 1)
 				to_chat(user, SPAN_WARNING("The testing indicator lights up with red! The container requires a pure sample!"))
 
 		if(ASSEMBLY_UNLOCKED)

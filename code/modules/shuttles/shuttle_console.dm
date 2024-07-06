@@ -238,7 +238,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			return
 		if(istype(shuttle, /datum/shuttle/ferry/marine))
 			var/datum/shuttle/ferry/marine/s = shuttle
-			if(!s.locs_land.len && !s.transit_gun_mission)
+			if(!length(s.locs_land) && !s.transit_gun_mission)
 				to_chat(usr, SPAN_WARNING("There is no suitable LZ for this shuttle. Flight configuration changed to fire-mission."))
 				s.transit_gun_mission = 1
 		if(shuttle.moving_status == SHUTTLE_IDLE) //Multi consoles, hopefully this will work

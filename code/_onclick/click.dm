@@ -199,7 +199,7 @@
 
 	if (mods["alt"])
 		var/turf/T = get_turf(src)
-		if(T && user.TurfAdjacent(T) && T.contents.len)
+		if(T && user.TurfAdjacent(T) && length(T.contents))
 			user.set_listed_turf(T)
 
 		return TRUE

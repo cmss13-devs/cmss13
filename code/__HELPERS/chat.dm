@@ -22,7 +22,7 @@
 		if((!admin_only || channel.is_admin_channel) && (channel_tag in applicable_tags))
 			channels_to_use += channel
 
-	if(channels_to_use.len)
+	if(length(channels_to_use))
 		world.TgsChatBroadcast(message, channels_to_use)
 
 /**

@@ -1,3 +1,5 @@
+/sound
+	echo = SOUND_ECHO_REVERB_OFF //disable enviroment reverb by default, soundOutput re-enables for positional sounds
 
 /datum/sound_template //Basically a sound datum, but only serves as a way to carry info to soundOutput
 	var/file //The sound itself

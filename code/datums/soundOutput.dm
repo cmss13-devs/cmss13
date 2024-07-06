@@ -15,15 +15,10 @@
 		qdel(src)
 		return
 	owner = client
-	RegisterSignal(owner.mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_mob_moved))
-	RegisterSignal(owner.mob, COMSIG_MOB_LOGOUT, PROC_REF(on_mob_logout))
-	RegisterSignal(owner, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(on_client_mob_logged_in))
-	RegisterSignal(owner, COMSIG_CLIENT_MOB_MOVED, PROC_REF(update_sounds))
+	RegisterSignal(owner, COMSIG_CLIENT_MOB_MOVED, PROC_REF(on_mob_moved))
 	return ..()
 
 /datum/soundOutput/Destroy()
-	UnregisterSignal(owner.mob, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_LOGOUT))
-	UnregisterSignal(owner, COMSIG_CLIENT_MOB_LOGGED_IN)
 	UnregisterSignal(owner, COMSIG_CLIENT_MOB_MOVED)
 	owner = null
 	return ..()
@@ -47,21 +42,25 @@
 
 /datum/soundOutput/proc/update_sounds_from_source(atom/source, direction)
 	SIGNAL_HANDLER
-	for(var/datum/sound_template/template in source_sounds[source])
-		for(var/i in 0 to round(32/SMOOTHING))
-			i = i * SMOOTHING
-			switch(direction)
-				if(1)
-					process_sound(template, TRUE, 0, 1+i/32)
-				if(2)
-					process_sound(template, TRUE, 0, -1-i/32)
-				if(4)
-					process_sound(template, TRUE, 1+i/32)
-				if(8)
-					process_sound(template, TRUE, -1-i/32, 0)
+	for(var/channel in source_sounds)
+		if(source_sounds[channel] == source)
+			var/datum/sound_template/template = current_sounds[channel]
+			for(var/i in 0 to round(32/SMOOTHING))
+				i = i * SMOOTHING
+				switch(direction)
+					if(1)
+						process_sound(template, TRUE, 0, 1+i/32)
+					if(2)
+						process_sound(template, TRUE, 0, -1-i/32)
+					if(4)
+						process_sound(template, TRUE, 1+i/32)
+					if(8)
+						process_sound(template, TRUE, -1-i/32, 0)
+			break
 
 /datum/soundOutput/proc/remove_sound(channel)
 	current_sounds -= channel
+	source_sounds -= channel
 
 /datum/soundOutput/proc/process_sound(datum/sound_template/T, update=FALSE, offset_x = 0, offset_y = 0)
 	var/sound/S = sound(T.file, T.wait, T.repeat)
@@ -72,19 +71,21 @@
 		S.channel = T.channel
 	S.frequency = T.frequency
 	S.falloff = T.falloff
-	S.status = update ? SOUND_UPDATE : T.status 
+
 	if(!update)
-		S.params = list("on-end" = ".soundend [S.channel] [T.source]")
-
-
+		S.params = list("on-end" = ".soundend [S.channel]")
+		S.status = T.status
+	else
+		S.status = SOUND_UPDATE 		
+	
 	var/positonal_sound = FALSE
 	var/turf/source_turf
-	if(!QDELETED(T.source))
+	if(T.source && !QDELETED(T.source))
 		source_turf = get_turf(T.source)
 
 		if(!update && istype(T.source, /atom/movable))
-			source_sounds[T.source] = T
-			RegisterSignal(T.source, COMSIG_MOVABLE_MOVED, PROC_REF(update_sounds))
+			source_sounds[num2text(T.channel)] = T.source
+			RegisterSignal(T.source, COMSIG_MOVABLE_MOVED, PROC_REF(update_sounds_from_source))
 	else if (T.x && T.y && T.z)
 		positonal_sound = TRUE
 		source_turf = locate(T.x, T.y, T.z)
@@ -112,19 +113,14 @@
 			current_sounds[num2text(S.channel)] = T
 
 	if(owner.mob.ear_deaf > 0)
-		S.status |= SOUND_MUTE
-		
+		S.status |= SOUND_MUTE		
+
 	sound_to(owner, S)
 
-/client/verb/sound_ended(channel as num, source as mob|obj|turf)
+/client/verb/sound_ended(channel as num)
 	set name = ".soundend"
 
 	soundOutput.remove_sound(num2text(channel))
-
-	if(soundOutput.source_sounds[source])
-		soundOutput.source_sounds -= source
-		UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
-	
 
 /datum/soundOutput/proc/update_ambience(area/target_area, ambience_override, force_update = FALSE)
 	var/status_flags = SOUND_STREAM
@@ -236,17 +232,8 @@
 
 /datum/soundOutput/proc/on_mob_moved(datum/source, atom/oldloc, direction, Forced)
 	SIGNAL_HANDLER //COMSIG_MOVABLE_MOVED
+	update_sounds()
 	update_area_environment()
-
-/datum/soundOutput/proc/on_mob_logout(datum/source)
-	SIGNAL_HANDLER //COMSIG_MOB_LOGOUT
-	UnregisterSignal(owner.mob, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_LOGOUT))
-
-/datum/soundOutput/proc/on_client_mob_logged_in(datum/source, mob/new_mob)
-	SIGNAL_HANDLER //COMSIG_CLIENT_MOB_LOGGED_IN
-	RegisterSignal(owner.mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_mob_moved))
-	RegisterSignal(owner.mob, COMSIG_MOB_LOGOUT, PROC_REF(on_mob_logout))
-	update_mob_environment_override()
 
 /client/proc/adjust_volume_prefs(volume_key, prompt = "", channel_update = 0)
 	volume_preferences[volume_key] = (tgui_input_number(src, prompt, "Volume", volume_preferences[volume_key]*100)) / 100

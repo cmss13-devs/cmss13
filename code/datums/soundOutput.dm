@@ -77,6 +77,7 @@
 		S.params = list("on-end" = ".soundend [S.channel] [T.source]")
 
 
+	var/positonal_sound = FALSE
 	var/turf/source_turf
 	if(!QDELETED(T.source))
 		source_turf = get_turf(T.source)
@@ -84,27 +85,29 @@
 		if(!update && istype(T.source, /atom/movable))
 			source_sounds[T.source] = T
 			RegisterSignal(T.source, COMSIG_MOVABLE_MOVED, PROC_REF(update_sounds))
-	else
+	else if (T.x && T.y && T.z)
+		positonal_sound = TRUE
 		source_turf = locate(T.x, T.y, T.z)
 
-	var/turf/owner_turf = get_turf(owner.mob)
-	if(owner_turf)
-		// We're in an interior and sound came from outside
-		if(SSinterior.in_interior(owner_turf) && owner_turf.z != T.z)
-			var/datum/interior/VI = SSinterior.get_interior_by_coords(owner_turf.x, owner_turf.y, owner_turf.z)
-			if(VI && VI.exterior)
-				var/turf/candidate = get_turf(VI.exterior)
-				if(candidate.z != T.z)
-					return // Invalid location
-				S.falloff /= 2
-				owner_turf = candidate
-		S.x = source_turf.x - owner_turf.x + offset_x
-		S.y = 0
-		S.z = source_turf.y - owner_turf.y + offset_y
-	S.y += T.y_s_offset
-	S.x += T.x_s_offset
-	if(source_turf.x && source_turf.y && source_turf.z)
+	if(positonal_sound)
+		var/turf/owner_turf = get_turf(owner.mob)
+		if(owner_turf)
+			// We're in an interior and sound came from outside
+			if(SSinterior.in_interior(owner_turf) && owner_turf.z != T.z)
+				var/datum/interior/VI = SSinterior.get_interior_by_coords(owner_turf.x, owner_turf.y, owner_turf.z)
+				if(VI && VI.exterior)
+					var/turf/candidate = get_turf(VI.exterior)
+					if(candidate.z != T.z)
+						return // Invalid location
+					S.falloff /= 2
+					owner_turf = candidate
+			S.x = source_turf.x - owner_turf.x + offset_x
+			S.y = 0
+			S.z = source_turf.y - owner_turf.y + offset_y
+		S.y += T.y_s_offset
+		S.x += T.x_s_offset
 		S.echo = SOUND_ECHO_REVERB_ON
+
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 

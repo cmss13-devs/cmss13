@@ -434,6 +434,19 @@
 
 //list of emotes that can't be called by players but only by code
 
+/datum/emote/living/carbon/human/acidglob
+	key = "acidglob"
+	message = "falls to the ground coated in acid."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/badlung
+	key = "badlung"
+	message = "inhales with an awful rattling noise."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+	emote_type = EMOTE_AUDIBLE
+
 /datum/emote/living/carbon/human/bloodcough
 	key = "bloodcough"
 	message = "coughs up blood."
@@ -452,6 +465,12 @@
 	stat_allowed = CONSCIOUS|UNCONSCIOUS
 	only_forced = TRUE
 
+/datum/emote/living/carbon/human/electrocuted
+	key = "electrocuted"
+	message = "convulses as the electricity enters their body."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
 /datum/emote/living/carbon/human/eyebleed
 	key = "eyebleed"
 	message = "bleeds profusley from their eyes."
@@ -462,14 +481,9 @@
 	user.drip(10)
 	return ..()
 
-/datum/emote/living/carbon/human/stumble
-	key = "stumble"
-	message = "stumbles around in confusion."
-	only_forced = TRUE
-
-/datum/emote/living/carbon/human/seize
-	key = "seize"
-	message = "violently convulses."
+/datum/emote/living/carbon/human/eyescratch
+	key = "eyescratch"
+	message = "scratches at their eyes."
 	stat_allowed = CONSCIOUS|UNCONSCIOUS
 	only_forced = TRUE
 
@@ -479,93 +493,21 @@
 	stat_allowed = CONSCIOUS|UNCONSCIOUS
 	only_forced = TRUE
 
-/datum/emote/living/carbon/human/foamfall
-	key = "foamfall"
-	message = "falls to the ground and begins foaming at the mouth."
-	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	only_forced = TRUE
-
-/datum/emote/living/carbon/human/paralyzed
-	key = "paralyzed"
-	message = "falls to the ground paralyzed."
-	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	only_forced = TRUE
-
-/datum/emote/living/carbon/human/eyescratch
-	key = "eyescratch"
-	message = "scratches at their eyes."
-	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	only_forced = TRUE
-
-
-
 /datum/emote/living/carbon/human/foamchoke
 	key = "foamchoke"
 	message = "spasms as they suffocate from the foam."
 	stat_allowed = CONSCIOUS|UNCONSCIOUS
 	only_forced = TRUE
 
-
-/datum/emote/living/carbon/human/wheeze
-	key = "wheeze"
-	message = "raspily wheezes."
-	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	emote_type = EMOTE_AUDIBLE
-	only_forced = TRUE
-
-/datum/emote/living/carbon/human/thrash
-	key = "trash"
-	message = "thrashes about wildly."
-	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	only_forced = TRUE
-
-/datum/emote/living/carbon/human/acidglob
-	key = "acidglob"
-	message = "falls to the ground coated in acid."
+/datum/emote/living/carbon/human/foamfall
+	key = "foamfall"
+	message = "falls to the ground and begins foaming at the mouth."
 	stat_allowed = CONSCIOUS|UNCONSCIOUS
 	only_forced = TRUE
 
 /datum/emote/living/carbon/human/neuroglob
 	key = "neuroglob"
 	message = "falls to the ground coasted in the neurotoxic liquid."
-	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	only_forced = TRUE
-
-/datum/emote/living/carbon/human/electrocuted
-	key = "electrocuted"
-	message = "convulses as the electricity enters their body."
-	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	only_forced = TRUE
-
-/datum/emote/living/carbon/human/shake
-	key = "shake"
-	message = "shakes uncontrollably!"
-	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	only_forced = TRUE
-
-/datum/emote/living/carbon/human/vomit
-	key = "vomit"
-	message = "vomits profusely!"
-	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	only_forced = TRUE
-
-/datum/emote/living/carbon/human/badlung
-	key = "badlung"
-	message = "breathes with an awful rattling noise."
-	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	only_forced = TRUE
-	emote_type = EMOTE_AUDIBLE
-
-/datum/emote/living/carbon/human/pale
-	key = "pale"
-	message = "goes pale."
-	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	only_forced = TRUE
-
-
-/datum/emote/living/carbon/human/tremors
-	key = "tremors"
-	message = "tremors."
 	stat_allowed = CONSCIOUS|UNCONSCIOUS
 	only_forced = TRUE
 
@@ -580,3 +522,56 @@
 	stat_allowed = CONSCIOUS|UNCONSCIOUS
 	only_forced = TRUE
 
+/datum/emote/living/carbon/human/pale
+	key = "pale"
+	message = "goes pale."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/paralyzed
+	key = "paralyzed"
+	message = "falls to the ground paralyzed."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/seize
+	key = "seize"
+	message = "violently convulses."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/shake
+	key = "shake"
+	message = "shakes uncontrollably!"
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/stumble
+	key = "stumble"
+	message = "stumbles around in confusion."
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/thrash
+	key = "trash"
+	message = "thrashes about wildly."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/tremors
+	key = "tremors"
+	message = "tremors."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/vomit
+	key = "vomit"
+	message = "vomits profusely!"
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/wheeze
+	key = "wheeze"
+	message = "raspily wheezes."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	emote_type = EMOTE_AUDIBLE
+	only_forced = TRUE

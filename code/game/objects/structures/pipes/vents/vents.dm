@@ -72,7 +72,6 @@
 
 /obj/structure/pipes/vents/MouseDrop_T(obj/structure/pipes/vents/dropvent, mob/living/carbon/xenomorph/user)
 	if(!isxeno(user) || !user.check_state() || !user.can_ventcrawl())
-		debug_msg("hit the return")
 		return
 	if(dropvent in range(1))
 		user.handle_ventcrawl(dropvent)

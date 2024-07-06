@@ -1752,7 +1752,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/technician/get_antag_gear_equipment()
 	return list(
 		list("TECHNICIAN SET (MANDATORY)", 0, null, null, null),
-		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi/basic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("HANDHELD DEFENSE (CHOOSE 1)", 0, null, null, null),
 		list("WY Planted Flag", 0, /obj/item/defenses/handheld/planted_flag/wy, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),

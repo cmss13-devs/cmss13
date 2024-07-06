@@ -2,7 +2,12 @@
 
 GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("ENGINEER SET (MANDATORY)", 0, null, null, null),
-		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Essential Engineer Set (Most Versatile)", 0, /obj/effect/essentials_set/engi/basic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("FOB Construction Set (Most Metal)", 0, /obj/effect/essentials_set/engi/fob, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("FOB Defense Set (Extra Sentry, Little Metal)", 0, /obj/effect/essentials_set/engi/fob_defenses, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Rapid Deployment Set (Fast Cades, Little Resiliance)", 0, /obj/effect/essentials_set/engi/rapid_deployment, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Frontline Supply Set (Keep Your Team Supplied)", 0, /obj/effect/essentials_set/engi/frontline_supply, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Demolitions Set (Equipped To Level The Place)", 0, /obj/effect/essentials_set/engi/demolitions, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("HANDHELD DEFENSE (CHOOSE 1)", 0, null, null, null),
 		list("21S Tesla Coil", 0, /obj/item/defenses/handheld/tesla_coil, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
@@ -154,6 +159,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
+		list("Tool Webbing", 0, /obj/item/clothing/accessory/storage/tool_webbing/equipped, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
@@ -200,12 +206,81 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 
 //------------ESSENTIAL SETS---------------
 
-/obj/effect/essentials_set/engi
+/obj/effect/essentials_set/engi/basic
 	spawned_gear_list = list(
 		/obj/item/explosive/plastic,
 		/obj/item/stack/sandbags_empty = 25,
 		/obj/item/stack/sheet/metal/large_stack,
 		/obj/item/stack/sheet/plasteel/med_large_stack,
+		/obj/item/circuitboard/apc,
+		/obj/item/cell/high,
+		/obj/item/tool/shovel/etool/folded,
+		/obj/item/device/lightreplacer,
+	)
+
+/obj/effect/essentials_set/engi/fob
+	spawned_gear_list = list(
+		/obj/item/stack/sheet/metal/large_stack,
+		/obj/item/stack/sheet/metal/large_stack,
+		/obj/item/stack/barbed_wire/full_stack,
+		/obj/item/stack/sheet/plasteel/med_large_stack,
+		/obj/item/circuitboard/apc,
+		/obj/item/cell/high,
+		/obj/item/tool/shovel/etool/folded,
+		/obj/item/device/lightreplacer,
+	)
+
+/obj/effect/essentials_set/engi/fob_defenses
+	spawned_gear_list = list(
+		/obj/item/stack/sheet/metal/large_stack,
+		/obj/item/stack/barbed_wire/full_stack,
+		/obj/item/defenses/handheld/sentry,
+		/obj/item/storage/box/explosive_mines,
+		/obj/item/circuitboard/apc,
+		/obj/item/cell/high,
+		/obj/item/tool/shovel/etool/folded,
+		/obj/item/device/lightreplacer,
+	)
+
+/obj/effect/essentials_set/engi/rapid_deployment
+	spawned_gear_list = list(
+		/obj/item/storage/pouch/folding_barricade,
+		/obj/item/storage/pouch/folding_barricade,
+		/obj/item/stack/folding_barricade/three,
+		/obj/item/stack/folding_barricade/three,
+		/obj/item/stack/folding_barricade/three,
+		/obj/item/stack/sandbags/large_stack,
+		/obj/item/stack/sandbags/large_stack,
+		/obj/item/stack/barbed_wire/full_stack,
+		/obj/item/explosive/grenade/metal_foam,
+		/obj/item/explosive/grenade/metal_foam,
+		/obj/item/explosive/grenade/metal_foam,
+		/obj/item/circuitboard/apc,
+		/obj/item/cell/high,
+		/obj/item/tool/shovel/etool/folded,
+		/obj/item/device/lightreplacer,
+		/obj/item/reagent_container/hypospray/autoinjector/emergency,
+	)
+
+/obj/effect/essentials_set/engi/frontline_supply
+	spawned_gear_list = list(
+		/obj/item/stack/sheet/metal/large_stack,
+		/obj/item/stack/sheet/plasteel/small_stack = 16,
+		/obj/item/stack/barbed_wire/small_stack,
+		/obj/item/ammo_box/rounds,
+		/obj/item/circuitboard/apc,
+		/obj/item/cell/high,
+		/obj/item/tool/shovel/etool/folded,
+		/obj/item/device/lightreplacer,
+	)
+
+/obj/effect/essentials_set/engi/demolitions
+	spawned_gear_list = list(
+		/obj/item/explosive/plastic,
+		/obj/item/explosive/plastic,
+		/obj/item/storage/box/explosive_mines,
+		/obj/item/storage/box/packet/high_explosive,
+		/obj/item/stack/sheet/metal/large_stack,
 		/obj/item/circuitboard/apc,
 		/obj/item/cell/high,
 		/obj/item/tool/shovel/etool/folded,

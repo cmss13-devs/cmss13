@@ -1177,6 +1177,21 @@
 		/obj/item/weapon/gun/smg/nailgun/compact,
 	)
 
+/obj/item/storage/pouch/folding_barricade
+	name = "folding barricade pouch"
+	desc = "It's designed to hold folding barricades, sandbags, crowbars, and barbed wire. It also has two hooks for an entrenching tool and crowbar. Best for engineers that want to quickly setup defenses."
+	storage_slots = 3
+	max_w_class = SIZE_LARGE
+	icon_state = "construction"
+	can_hold = list(
+		/obj/item/stack/folding_barricade,
+		/obj/item/stack/sandbags_empty,
+		/obj/item/stack/sandbags,
+		/obj/item/stack/barbed_wire,
+		/obj/item/tool/shovel/etool,
+		/obj/item/tool/crowbar,
+	)
+
 /obj/item/storage/pouch/construction/full/fill_preset_inventory()
 	new /obj/item/stack/sheet/plasteel(src, 50)
 	new /obj/item/stack/sheet/metal(src, 50)

@@ -488,7 +488,7 @@
 /datum/equipment_preset/upp/sapper/get_antag_gear_equipment()
 	return list(
 		list("SAPPER SET (MANDATORY)", 0, null, null, null),
-		list("Essential Sapper Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Essential Sapper Set", 0, /obj/effect/essentials_set/engi/basic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("HANDHELD DEFENSE (CHOOSE 1)", 0, null, null, null),
 		list("UPP Planted Flag", 0, /obj/item/defenses/handheld/planted_flag/upp, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),

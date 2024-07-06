@@ -4,7 +4,6 @@
 	var/list/soundscape_playlist = list() //Updated on changing areas
 	var/ambience = null //The file currently being played as ambience
 	var/status_flags = 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
-	var/list/echo
 	var/list/current_sounds = list()
 	var/list/source_sounds = list()
 

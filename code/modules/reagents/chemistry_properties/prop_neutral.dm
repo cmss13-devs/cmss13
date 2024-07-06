@@ -536,7 +536,7 @@
 
 /datum/chem_property/neutral/encephalophrasive/reaction_mob(mob/chem_host, method=INGEST, volume, potency)
 	add_verb(chem_host, /mob/living/carbon/human/proc/psychic_whisper)
-	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, it feels like your brain is trying to squeeze its way out of your skull!"))
+	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, and suddenly it feels as though your mind is outside of your skull."))
 
 /datum/chem_property/neutral/encephalophrasive/process(mob/living/chem_host, potency = 1, delta_time)
 	chem_host.pain.apply_pain(1 * potency)

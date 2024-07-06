@@ -39,7 +39,9 @@
 	var/sound
 	/// Used for the honk borg emote.
 	var/vary = FALSE
-	/// Can only code call this event instead of the player.
+	/// Can only code call this emote
+	var/only_forced = FALSE
+	/// Can only code call this audio instead of the player.
 	var/only_forced_audio = FALSE
 	/// The cooldown between the uses of the emote.
 	var/cooldown = 0.8 SECONDS
@@ -119,38 +121,46 @@
 				continue
 			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTSIGHT && !(ghost in viewers(user_turf, null)))
 				ghost.show_message(formatted_message)
-	if(emote_type & EMOTE_AUDIBLE) //emote is audible
-		var/formatted_deaf_message = "<b>[paygrade][user]</b> [alt_message ? alt_message : key_third_person] silently."
-		user.audible_message(formatted_message, deaf_message = formatted_deaf_message)
-	else if(emote_type & EMOTE_VISIBLE)	//emote is visible
-		user.visible_message(formatted_message, blind_message = SPAN_EMOTE("You see how <b>[user]</b> [msg]"))
 	if(emote_type & EMOTE_IMPORTANT)
 		for(var/mob/living/viewer in viewers())
 			if(is_blind(viewer) && isdeaf(viewer))
 				to_chat(viewer, msg)
 
-	if(intentional)
-		if(emote_type & EMOTE_VISIBLE)
-			var/list/viewers = get_mobs_in_view(7, user)
-			for(var/mob/current_mob in viewers)
-				for(var/obj/object in current_mob.contents)
-					if((object.flags_atom & USES_SEEING))
-						seeing_obj |= object
-				if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
-					viewers -= current_mob
-			run_langchat(user, viewers)
-		else if(emote_type & EMOTE_AUDIBLE)
-			var/list/heard = get_mobs_in_view(7, user)
-			for(var/mob/current_mob in heard)
-				for(var/obj/object in current_mob.contents)
-					if((object.flags_atom & USES_HEARING))
-						seeing_obj |= object
-				if(current_mob.ear_deaf)
-					heard -= current_mob
-					continue
-				if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
-					heard -= current_mob
-			run_langchat(user, heard)
+	if(emote_type & EMOTE_VISIBLE && emote_type & EMOTE_AUDIBLE)
+		var/list/viewers = get_mobs_in_view(7, user)
+		for(var/mob/current_mob in viewers)
+			for(var/obj/object in current_mob.contents)
+				if((object.flags_atom & USES_SEEING))
+					seeing_obj |= object
+			if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) || current_mob.stat == UNCONSCIOUS)
+				viewers -= current_mob
+		var/formatted_deaf_message = "<b>[paygrade][user]</b> [alt_message ? alt_message : key_third_person] but you can't hear a thing."
+		user.audible_message(formatted_message, deaf_message = formatted_deaf_message)
+		run_langchat(user, viewers)
+	else if(emote_type & EMOTE_VISIBLE)
+		var/list/viewers = get_mobs_in_view(7, user)
+		for(var/mob/current_mob in viewers)
+			for(var/obj/object in current_mob.contents)
+				if((object.flags_atom & USES_SEEING))
+					seeing_obj |= object
+			if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) || current_mob.stat == UNCONSCIOUS)
+				viewers -= current_mob
+			if(is_blind(current_mob) && user != current_mob) //no emote if they blind
+				viewers -= current_mob
+		user.ranged_message(formatted_message)
+		run_langchat(user, viewers)
+	else if(emote_type & EMOTE_AUDIBLE)
+		var/list/hearers = get_mobs_in_view(7, user)
+		for(var/mob/current_mob in hearers)
+			for(var/obj/object in current_mob.contents)
+				if((object.flags_atom & USES_HEARING))
+					seeing_obj |= object
+			if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) || current_mob.stat == UNCONSCIOUS)
+				hearers -= current_mob
+			if(isdeaf(current_mob)) //no emote if they deaf
+				hearers -= current_mob
+		user.audible_message(formatted_message)
+		run_langchat(user, hearers)
 
 	for(var/obj/object as anything in seeing_obj)
 		object.see_emote(user, msg, (emote_type & EMOTE_AUDIBLE))

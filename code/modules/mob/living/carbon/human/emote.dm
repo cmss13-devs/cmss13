@@ -42,7 +42,7 @@
 	key = "chuckle"
 	key_third_person = "chuckles"
 	message = "chuckles."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE|EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/clap
 	key = "clap"
@@ -66,11 +66,13 @@
 	key = "cough"
 	key_third_person = "coughs"
 	message = "coughs!"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/cry
 	key = "cry"
 	key_third_person = "cries"
 	message = "cries."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/eyebrow
 	key = "eyebrow"
@@ -99,6 +101,9 @@
 	key = "gasp"
 	key_third_person = "gasps"
 	message = "gasps!"
+	emote_type = EMOTE_AUDIBLE
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+
 
 /datum/emote/living/carbon/human/giggle
 	key = "giggle"
@@ -130,6 +135,7 @@
 	key = "grumble"
 	key_third_person = "grumbles"
 	message = "grumbles."
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/handshake
 	key = "handshake"
@@ -174,15 +180,18 @@
 	var/medic_message = pick("Corpsman!", "Doc!", "Help!")
 	user.langchat_speech(medic_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_bolded"))
 
-/datum/emote/living/carbon/human/moan
-	key = "moan"
-	key_third_person = "moans"
-	message = "moans."
+/datum/emote/living/carbon/human/groan
+	key = "groan"
+	message = "groans."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	emote_type = EMOTE_AUDIBLE
+
 
 /datum/emote/living/carbon/human/mumble
 	key = "mumble"
 	key_third_person = "mumbles"
 	message = "mumbles."
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/nod
 	key = "nod"
@@ -219,6 +228,12 @@
 
 	var/pain_message = pick("OW!!", "AGH!!", "ARGH!!", "OUCH!!", "ACK!!", "OUF!")
 	user.langchat_speech(pain_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
+
+/datum/emote/living/carbon/human/eyerub
+	key = "eyerub"
+	key_third_person = "rubeyes"
+	message = "rubs their eyes."
+
 /datum/emote/living/carbon/human/salute
 	key = "salute"
 	key_third_person = "salutes"
@@ -294,7 +309,8 @@
 	key = "snore"
 	key_third_person = "snores"
 	message = "snores."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/stare
 	key = "stare"
@@ -320,6 +336,11 @@
 	message = "holds out an open palm, gesturing to stop."
 	hands_use_check = TRUE
 
+/datum/emote/living/carbon/human/squint
+	key = "squint"
+	key_third_person = "squints"
+	message = "squints their eyes."
+
 /datum/emote/living/carbon/human/thumbsup
 	key = "thumbsup"
 	message = "gives a thumbs up."
@@ -340,10 +361,22 @@
 	key_third_person = "waves"
 	message = "waves."
 
+/datum/emote/living/carbon/human/wince
+	key = "wince"
+	key_third_person = "winces"
+	message = "winces."
+
+/datum/emote/living/carbon/human/writhe
+	key = "writhe"
+	key_third_person = "writhes"
+	message = "writhes in pain!"
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+
 /datum/emote/living/carbon/human/yawn
 	key = "yawn"
 	key_third_person = "yawns"
 	message = "yawns."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/warcry
 	key = "warcry"
@@ -375,6 +408,7 @@
 	key = "whimper"
 	key_third_person = "whimpers"
 	message = "whimpers."
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/whimper/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
@@ -382,3 +416,173 @@
 		return
 
 	user.show_speech_bubble("scream")
+
+//list of emotes that can't be called by players but only by code
+
+/datum/emote/living/carbon/human/bloodcough
+	key = "bloodcough"
+	message = "coughs up blood."
+	alt_message = "is coughing up something."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	emote_type = EMOTE_VISIBLE|EMOTE_AUDIBLE
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/bloodcough/run_emote(mob/living/carbon/user, params, type_override, intentional)
+	user.drip(10)
+	return ..()
+
+/datum/emote/living/carbon/human/eyebleed
+	key = "eyebleed"
+	message = "bleeds profusley from their eyes."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/eyebleed/run_emote(mob/living/carbon/user, params, type_override, intentional)
+	user.drip(10)
+	return ..()
+
+/datum/emote/living/carbon/human/stumble
+	key = "stumble"
+	message = "stumbles around in confusion."
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/seize
+	key = "seize"
+	message = "violently convulses."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/foam
+	key = "foam"
+	message = "foams at the mouth."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/foamfall
+	key = "foamfall"
+	message = "falls to the ground and begins foaming at the mouth."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/paralyzed
+	key = "paralyzed"
+	message = "falls to the ground paralyzed."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/eyescratch
+	key = "eyescratch"
+	message = "scratches at their eyes."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/drool
+	key = "drool"
+	message = "drools."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/foamchoke
+	key = "foamchoke"
+	message = "spasms as they suffocate from the foam."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+
+/datum/emote/living/carbon/human/wheeze
+	key = "wheeze"
+	message = "raspily wheezes."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	emote_type = EMOTE_AUDIBLE
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/thrash
+	key = "trash"
+	message = "thrashes about wildly."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/acidglob
+	key = "acidglob"
+	message = "falls to the ground coated in acid."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/neuroglob
+	key = "neuroglob"
+	message = "falls to the ground coasted in the neurotoxic liquid."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/electrocuted
+	key = "electrocuted"
+	message = "convulses as the electricity enters their body."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/shake
+	key = "shake"
+	message = "shakes uncontrollably!"
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/vomit
+	key = "vomit"
+	message = "vomits profusely!"
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/badlung
+	key = "badlung"
+	message = "breathes with an awful rattling noise."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/pale
+	key = "pale"
+	message = "goes pale."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/clutchstomach
+	key = "stomachclutch"
+	message = "clutches at their stomach!"
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/clutchchest
+	key = "chestclutch"
+	message = "clutches at their chest!"
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/tremors
+	key = "tremors"
+	message = "tremors."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/clutchhead
+	key = "headclutch"
+	message = "clutches at their head!"
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/pain/legcollapse
+	key = "legcollapse"
+	message = "yells out in pain and collapses as their legs buckle."
+	only_forced = TRUE
+
+/datum/emote/living/carbon/human/paincollapse
+	key = "paincollapse"
+	message = "writhes in pain, unable to go on."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
+
+/*
+
+/datum/emote/living/carbon/human/
+	key = "
+	message = "
+	only_forced = TRUE
+
+*/

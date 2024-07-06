@@ -15,7 +15,7 @@
 
 /obj/item/holder/process()
 
-	if(istype(loc,/turf) || !(contents.len))
+	if(istype(loc,/turf) || !(length(contents)))
 
 		for(var/mob/M in contents)
 

@@ -103,7 +103,7 @@
 		player_coords = list(p_coords)
 		return TRUE
 
-	else if(!final_divide && player_coords.len >= QUADTREE_CAPACITY)
+	else if(!final_divide && length(player_coords) >= QUADTREE_CAPACITY)
 		if(!is_divided)
 			subdivide()
 		if(nw_branch.insert_player(p_coords))

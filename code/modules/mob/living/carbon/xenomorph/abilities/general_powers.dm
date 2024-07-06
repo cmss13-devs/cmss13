@@ -111,9 +111,9 @@
 	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
 		return
-	for(var/i in 1 to X.caste.spit_types.len)
+	for(var/i in 1 to length(X.caste.spit_types))
 		if(X.ammo == GLOB.ammo_list[X.caste.spit_types[i]])
-			if(i == X.caste.spit_types.len)
+			if(i == length(X.caste.spit_types))
 				X.ammo = GLOB.ammo_list[X.caste.spit_types[1]]
 			else
 				X.ammo = GLOB.ammo_list[X.caste.spit_types[i+1]]
@@ -132,7 +132,7 @@
 		to_chat(X, SPAN_WARNING("We cannot regurgitate here."))
 		return
 
-	if(X.stomach_contents.len)
+	if(length(X.stomach_contents))
 		for(var/mob/living/M in X.stomach_contents)
 			// Also has good reason to be a proc on all Xenos
 			X.regurgitate(M, TRUE)
@@ -367,7 +367,7 @@
 		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
 
-	if(isqueen(src) && hive && hive.xeno_leader_list.len && anchored)
+	if(isqueen(src) && hive && length(hive.xeno_leader_list) && anchored)
 		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
 

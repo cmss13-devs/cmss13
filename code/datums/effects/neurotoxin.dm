@@ -12,8 +12,8 @@
 	var/stumble = TRUE
 	/// Probability of stumbling per proc. Changed by code.
 	var/stumble_prob = 0
-	/// Chance of blood_cough per proc (damaging)
-	var/bloodcough_prob = 0
+	/// Chance of emote_prob per proc (damaging)
+	var/emote_prob = 0
 	/// Whether or not we hallucinate. (small rng stun chance)
 	var/hallucinate = TRUE
 	// Tick-based chat cooldown so it doesn't get too spammy
@@ -40,7 +40,7 @@
 
 	if(issynth(affected_atom))
 		return
-	
+
 // General effects
 	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_stamina_damage(stam_dam)
@@ -48,24 +48,23 @@
 
 // Effect levels (shit that doesn't stack)
 	switch(duration)
-
 		if(0 to 9)
 			msg = initial(msg)
-			bloodcough_prob = initial(bloodcough_prob)
+			emote_prob = initial(emote_prob)
 			stumble_prob = initial(stumble_prob)
 
 		if(10 to 14) // 2 ticks in smoke
 			msg = SPAN_DANGER("You body starts feeling numb, you can't feel your fingers!")
-			bloodcough_prob = 10
+			emote_prob = 10
 
 		if(15 to 19) // 3 ticks in smoke
 			msg = pick(SPAN_BOLDNOTICE("Why am I here?"),SPAN_HIGHDANGER("Your entire body feels numb!"), SPAN_HIGHDANGER("You notice your movement is erratic!"), SPAN_HIGHDANGER("You panic as numbness takes over your body!"))
-			bloodcough_prob = 20
+			emote_prob = 20
 			stumble_prob = 5
 
 		if(20 to 24) // 4 ticks in smoke
 			msg = SPAN_DANGER("Your eyes sting, you can't see!")
-			bloodcough_prob = 25
+			emote_prob = 25
 			stumble_prob = 25
 
 		if(25 to INFINITY) // 5+ ticks in smoke
@@ -95,28 +94,34 @@
 		affected_mob.SetEarDeafness(max(affected_mob.ear_deaf, floor(strength*1.5))) //Paralysis of hearing system, aka deafness
 
 	if(duration >= 50) // 10+ ticks, apply some semi-perm damage and end their suffering if they are somehow still alive by now
+		affected_mob.emote("foamchoke")
 		affected_mob.apply_internal_damage(10,"liver")
 		affected_mob.apply_damage(150,OXY)
+
 	// Applying additonal effects and messages
-	if(prob(stumble_prob) && stumble)
-		if(affected_mob.is_mob_incapacitated())
-			return
-		affected_mob.visible_message(SPAN_DANGER("[affected_mob] misteps in their confusion!")
-						,SPAN_HIGHDANGER("You stumble!"))
+	if(prob(stumble_prob) && stumble &! affected_mob.is_mob_incapacitated())
+		affected_mob.emote("stumble")
 		step(affected_mob, pick(CARDINAL_ALL_DIRS))
 		affected_mob.apply_effect(5, DAZE) // Unable to talk and weldervision
 		affected_mob.make_jittery(25)
 		affected_mob.make_dizzy(55)
-		affected_mob.emote("pain")
 		stumble = FALSE
 		addtimer(VARSET_CALLBACK(src,stumble,TRUE),3 SECONDS)
 		duration++
 
-	if(prob(bloodcough_prob))
-		affected_mob.emote("cough")
+	if(prob(emote_prob))
 		affected_mob.Slow(1)
-		affected_mob.apply_damage(5,BRUTE, "chest")
-		to_chat(affected_mob, SPAN_DANGER("You cough up blood!"))
+		affected_mob.apply_damage(5, BRUTE, "chest")
+		switch(duration)
+			if(0 to 19)
+				if(affected_mob.is_mob_incapacitated())
+					affected_mob.emote(pick("seize", "thrash", "shake", "bloodcough", ))
+				else
+					affected_mob.emote(pick("bloodcough", "headclutch", "wheeze"))
+			if(20 to 27)
+				affected_mob.emote(pick("seize", "eyescratch", "bloodcough"))
+			if(28 to INFINITY)
+				affected_mob.emote(pick("seize", "thrash", "shake", "foam", "eyescratch"))
 
 	if(chat_cd <= 0)
 		to_chat(affected_mob,msg)
@@ -150,7 +155,7 @@
 			to_chat(victim,SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [pick(SPAN_UNDERLINE("TOWARDS THE [pick("WEST","EAST","SOUTH","NORTH")]"),SPAN_UNDERLINE("RIGHT ONTOP OF YOU!"))]!"))
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/weapons/gun_mortar_travel.ogg'), 1 SECONDS)
 		if(43 to 69)
-			victim.emote(pick("twitch","drool","moan","giggle"))
+			victim.emote(pick("twitch", "drool"," groan", "giggle", "rapidblink", "stare"))
 			victim.hallucination = 3
 			victim.druggy = 3
 		if(70 to 100) // sound based hallucination

@@ -321,11 +321,11 @@
 		if("select_overdose")
 			if(simulating == SIMULATION_STAGE_OFF && mode == MODE_CREATE)
 				var/od_to_set = tgui_input_list(usr, "Set new OD:", "[src]", list(5,10,15,20,25,30,35,40,45,50,55,60))
-				if(!od_to_set)
+				if(!od_to_set || simulating != SIMULATION_STAGE_OFF)
 					return
 				creation_od_level = od_to_set
-				calculate_creation_cost()
 				calculate_new_od_level()
+				calculate_creation_cost()
 		if("change_name")
 			if(simulating == SIMULATION_STAGE_OFF && mode == MODE_CREATE)
 				var/newname = input("Set name for template (2-20 characters)","[src]") as text
@@ -356,7 +356,7 @@
 		if("change_complexity")
 			var/slot = params["complexity_slot"]
 			var/new_rarity = tgui_input_list(usr, "Set chemical rarity for complexity slot [slot]:","[src]", list("BASIC (+7)","COMMON (+4)","UNCOMMON (1)","RARE (-5)"))
-			if(!new_rarity)
+			if(!new_rarity || simulating != SIMULATION_STAGE_OFF)
 				return
 			switch(new_rarity)
 				if("BASIC (+7)")

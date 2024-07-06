@@ -103,7 +103,8 @@
 		S.z = source_turf.y - owner_turf.y + offset_y
 	S.y += T.y_s_offset
 	S.x += T.x_s_offset
-	S.echo = SOUND_ECHO_REVERB_ON
+	if(source_turf.x && source_turf.y && source_turf.z)
+		S.echo = SOUND_ECHO_REVERB_ON
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 

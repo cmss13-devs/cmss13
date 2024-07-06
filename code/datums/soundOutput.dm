@@ -108,11 +108,12 @@
 		S.x += T.x_s_offset
 		S.echo = SOUND_ECHO_REVERB_ON
 
+		if(!update)
+			current_sounds[num2text(S.channel)] = T
+
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
-
-	if(!update)
-		current_sounds[num2text(S.channel)] = T
+		
 	sound_to(owner, S)
 
 /client/verb/sound_ended(channel as num, source as mob|obj|turf)

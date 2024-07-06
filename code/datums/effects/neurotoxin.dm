@@ -117,7 +117,7 @@
 				if(affected_mob.is_mob_incapacitated())
 					affected_mob.emote(pick("seize", "thrash", "shake", "bloodcough", ))
 				else
-					affected_mob.emote(pick("bloodcough", "headclutch", "wheeze"))
+					affected_mob.emote(pick("bloodcough", "clutchhead", "wheeze"))
 			if(20 to 27)
 				affected_mob.emote(pick("seize", "eyescratch", "bloodcough"))
 			if(28 to INFINITY)

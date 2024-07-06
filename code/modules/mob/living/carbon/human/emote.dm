@@ -53,6 +53,21 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	sound = 'sound/misc/clap.ogg'
 
+/datum/emote/living/carbon/human/clutchchest
+	key = "clutchchest"
+	key_third_person = "clutcheschest"
+	message = "clutches at their chest!"
+
+/datum/emote/living/carbon/human/clutchhead
+	key = "clutchhead"
+	key_third_person = "clutcheshead"
+	message = "clutches at their head!"
+
+/datum/emote/living/carbon/human/clutchstomach
+	key = "clutchstomach"
+	key_third_person = "clutchesstomach"
+	message = "clutches at their stomach!"
+
 /datum/emote/living/carbon/human/collapse
 	key = "collapse"
 	key_third_person = "collapses"
@@ -431,6 +446,12 @@
 	user.drip(10)
 	return ..()
 
+/datum/emote/living/carbon/human/drool
+	key = "drool"
+	message = "drools."
+	stat_allowed = CONSCIOUS|UNCONSCIOUS
+	only_forced = TRUE
+
 /datum/emote/living/carbon/human/eyebleed
 	key = "eyebleed"
 	message = "bleeds profusley from their eyes."
@@ -476,11 +497,7 @@
 	stat_allowed = CONSCIOUS|UNCONSCIOUS
 	only_forced = TRUE
 
-/datum/emote/living/carbon/human/drool
-	key = "drool"
-	message = "drools."
-	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	only_forced = TRUE
+
 
 /datum/emote/living/carbon/human/foamchoke
 	key = "foamchoke"
@@ -545,25 +562,11 @@
 	stat_allowed = CONSCIOUS|UNCONSCIOUS
 	only_forced = TRUE
 
-/datum/emote/living/carbon/human/clutchstomach
-	key = "stomachclutch"
-	message = "clutches at their stomach!"
-	only_forced = TRUE
-
-/datum/emote/living/carbon/human/clutchchest
-	key = "chestclutch"
-	message = "clutches at their chest!"
-	only_forced = TRUE
 
 /datum/emote/living/carbon/human/tremors
 	key = "tremors"
 	message = "tremors."
 	stat_allowed = CONSCIOUS|UNCONSCIOUS
-	only_forced = TRUE
-
-/datum/emote/living/carbon/human/clutchhead
-	key = "headclutch"
-	message = "clutches at their head!"
 	only_forced = TRUE
 
 /datum/emote/living/carbon/human/pain/legcollapse
@@ -577,12 +580,3 @@
 	stat_allowed = CONSCIOUS|UNCONSCIOUS
 	only_forced = TRUE
 
-
-/*
-
-/datum/emote/living/carbon/human/
-	key = "
-	message = "
-	only_forced = TRUE
-
-*/

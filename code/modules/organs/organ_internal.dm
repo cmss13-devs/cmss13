@@ -218,7 +218,7 @@
 		else if(organ_status >= ORGAN_BROKEN && prob(50))
 			owner.apply_damage(0.3 * (damage/2), TOX)
 			if(prob(10))
-				owner.emote(pick("groan", "stomachclutch", "wince", "tremors", "pain"))
+				owner.emote(pick("groan", "clutchstomach", "wince", "tremors", "pain"))
 
 
 /datum/internal_organ/liver/prosthetic
@@ -241,7 +241,7 @@
 	else if(organ_status >= ORGAN_BROKEN && prob(50))
 		owner.apply_damage(0.2 * (damage/3), TOX)
 		if(prob(10))
-			owner.emote(pick("groan", "chestclutch", "gasp",))
+			owner.emote(pick("groan", "clutchchest", "gasp",))
 
 
 /datum/internal_organ/kidneys/prosthetic
@@ -274,7 +274,7 @@
 		owner.apply_effect(1, PARALYZE)
 		if(owner.jitteriness < 100)
 			owner.make_jittery(50)
-		owner.emote(pick("headclutch", "foam", "seizes", "shake", "thrash"))
+		owner.emote(pick("clutchhead", "foam", "seizes", "shake", "thrash"))
 		to_chat(owner, SPAN_DANGER("Your body seizes up!"))
 
 /datum/internal_organ/brain/prosthetic //used by synthetic species
@@ -303,7 +303,7 @@
 	if(organ_status >= ORGAN_BROKEN)
 		owner.SetEyeBlind(20)
 		if(prob(8))
-			owner.emote(pick("rapidblink", "eyerub", "headclutch"))
+			owner.emote(pick("rapidblink", "eyerub", "clutchhead"))
 
 /datum/internal_organ/eyes/prosthetic
 	robotic = ORGAN_ROBOT

@@ -222,11 +222,11 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcemob.stat == DEAD || sourcemob.health < HEALTH_THRESHOLD_CRIT) && !sourcemob.get_target_lock(user.faction_group))
 		to_chat(user, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 		return
-	if(!istype(sourcemob.get_idcard(), /obj/item/card/id/dogtag))
+	if(!istype(sourcemob.get_wear_id(), /obj/item/card/id/dogtag))
 		return
 	if (!sourcemob.undefibbable && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		return
-	var/obj/item/card/id/dogtag/tag = sourcemob.get_idcard()
+	var/obj/item/card/id/dogtag/tag = sourcemob.get_wear_id()
 	if(tag.dogtag_taken)
 		to_chat(user, SPAN_WARNING("Someone's already taken [sourcemob]'s information tag."))
 		return

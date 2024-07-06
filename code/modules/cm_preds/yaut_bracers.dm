@@ -1106,10 +1106,10 @@
 		to_chat(usr, SPAN_WARNING("You do not know how to use this."))
 		return
 
-	if(H.get_idcard() == embedded_id)
+	if(H.get_wear_id() == embedded_id)
 		to_chat(H, SPAN_NOTICE("You retract your ID chip."))
 		move_chip_to_bracer()
-	else if(H.get_idcard())
+	else if(H.get_wear_id())
 		to_chat(H, SPAN_WARNING("Something is obstructing the deployment of your ID chip!"))
 	else
 		to_chat(H, SPAN_NOTICE("You expose your ID chip."))

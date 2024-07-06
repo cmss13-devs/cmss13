@@ -369,9 +369,14 @@
 
 //gets ID card object from special clothes slot or null.
 /mob/living/carbon/human/proc/get_idcard()
-	RETURN_TYPE(/obj/item)
+	RETURN_TYPE(/obj/item/card/id)
 	if(wear_id)
 		return wear_id.GetID()
+
+/// Getter for human wear_id. Use get_idcard() if you ONLY want an ID card, not their wallet or whatever else they may have in the ID slot
+/mob/living/carbon/human/proc/get_wear_id()
+	RETURN_TYPE(/obj/item)
+	return wear_id
 
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default

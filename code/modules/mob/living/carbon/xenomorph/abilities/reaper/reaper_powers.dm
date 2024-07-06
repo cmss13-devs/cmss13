@@ -16,9 +16,6 @@
 	if(!xeno.check_state())
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
-
 	var/distance = get_dist(xeno, carbon)
 	if(distance > 2)
 		return
@@ -26,15 +23,23 @@
 	if(!xeno.Adjacent(carbon))
 		return
 
+	if(reaper.harvesting)
+		to_chat(xeno, SPAN_XENOWARNING("We are already harvesting!"))
+		return
+
 	if(issynth(carbon))
 		to_chat(xeno, SPAN_XENOWARNING("This one is a damnable fake, we get nothing from it!"))
+		return
 
 	if(!carbon.stat == DEAD)
 		to_chat(xeno, SPAN_XENOWARNING("This one still lives, they squirm too much to be suitable."))
 		return
 
-	if(!victim.chestburst == 2 || victim.is_revivable())
+	if(victim.is_revivable(FALSE) || victim.check_tod() || !victim.chestburst == 2) // Are these excessive? Maybe. I don't care. Only far-gone nuggets, please.
 		to_chat(xeno, SPAN_XENOWARNING("This one is too warm, not yet suitable."))
+		return
+
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/limb_remove_start = pick('sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg')
@@ -45,6 +50,7 @@
 
 	xeno.face_atom(carbon)
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] crouches over [carbon]'s corpse, saliva dripping from it's mouth!"), SPAN_XENOWARNING("This one is ripe for harvesting!"))
+	reaper.harvesting = TRUE
 
 	if(victim.has_limb("r_leg"))
 		do_after(xeno, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE)
@@ -127,6 +133,7 @@
 
 	xeno.visible_message(SPAN_XENONOTICE("[xeno] rises from [carbon]'s corpse."), SPAN_XENOWARNING("We finish our harvest, digesting the harvested limbs into flesh resin!"))
 	reaper.flesh_resin += 35
+	reaper.harvesting = FALSE
 	apply_cooldown(cooldown_mult)
 	return ..()
 
@@ -173,10 +180,10 @@
 				return
 			reaper.flesh_bolstered = TRUE
 			xeno.visible_message(SPAN_WARNING("A rancid-smelling sludge oozes out of the wing-like claws on [xeno]'s back!"), \
-			SPAN_WARNING("We absorb some of our stored flesh resin and channel it to our claws, bolstering their next strike and hardening our exoskeleton!"))
+			SPAN_WARNING("We absorb some of our stored flesh resin, bolstering our claws and exoskeleton!"))
 			playsound(xeno, "alien_egg_move.ogg", 25, TRUE)
 			reaper.flesh_resin -= resin_cost
-			reaper.armor_modifier += XENO_ARMOR_MOD_MED
+			xeno.armor_modifier += XENO_ARMOR_MOD_MED
 			addtimer(CALLBACK(src, PROC_REF(unbolster_self)), self_duration)
 			apply_cooldown()
 			return ..()
@@ -196,22 +203,21 @@
 
 /datum/action/xeno_action/activable/flesh_bolster/proc/unbolster_self()
 	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
 	if (!istype(xeno))
 		return
-	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
 	if (istype(reaper))
 		if (!reaper.flesh_bolstered)
 			return
 		reaper.flesh_bolstered = FALSE
 
-	reaper.armor_modifier -= XENO_ARMOR_MOD_MED
+	xeno.armor_modifier -= XENO_ARMOR_MOD_MED
 	to_chat(xeno, SPAN_XENOWARNING("We feel the power bestowed to our claws fade as resin sloughs off them!"))
 
 /mob/living/carbon/xenomorph/proc/bolster_with_flesh(mob/living/carbon/xenomorph/fren, fren_heal = 150)
 	var/mob/living/carbon/xenomorph/xeno = src
 
 	if(!can_not_harm(fren))
-		to_chat(xeno, SPAN_XENOWARNING("[fren] is hostile to our hive!"))
 		return
 
 	// The following is shamelessly nabbed and modified where appropriate from Healer's Apply Salve
@@ -225,60 +231,6 @@
 	xeno.visible_message(SPAN_WARNING("[xeno] points a razor-sharp finger at [fren], causing it to emanate a foul smell as it's wounds to close!"), \
 	SPAN_XENOWARNING("We absorb some of our stored flesh resin and channel energy to force [fren]'s wounds to shut themselves!"))
 	playsound(fren, "alien_drool", 25, TRUE)
-
-/datum/action/xeno_action/activable/meat_shield/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/xeno = owner
-	var/mob/living/carbon/xenomorph/fren = target
-	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
-
-	if(!istype(xeno))
-		return
-
-	if(!isxeno(fren))
-		return
-
-	if(!xeno.check_state())
-		return
-
-	if(!xeno.can_not_harm(fren))
-		to_chat(xeno, SPAN_XENOWARNING("[fren] is hostile to our hive!"))
-		return
-
-	if(fren.stat == DEAD)
-		to_chat(xeno, SPAN_XENOWARNING("[fren] is dead!"))
-		return
-
-	if(reaper.flesh_resin < resin_cost)
-		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh resin!"))
-		return
-
-	if(!can_see(xeno, fren, max_range))
-		return
-
-	var/distance = get_dist(xeno, fren)
-	if(distance > max_range)
-		to_chat(xeno, SPAN_XENOWARNING("They are too far away to bolster!"))
-		return
-
-	if(!check_and_use_plasma_owner())
-		return
-
-	reaper.flesh_resin -= resin_cost
-	fren.emote("roar")
-	fren.create_shield()
-	fren.add_xeno_shield(150, XENO_SHIELD_SOURCE_REAPER, /datum/xeno_shield/reaper, 1, 2, FALSE, 150)
-	fren.overlay_shields()
-	if(fren == xeno)
-		xeno.visible_message(SPAN_WARNING("[xeno] starts to ooze a foul-smelling resin from it's carapace! It seems to drip off as it ages!"), \
-		SPAN_XENOWARNING("We absorb some of our stored flesh resin and excrete a defensive resin, granting us a protective barrier!"))
-		apply_cooldown()
-		return ..()
-	else
-		to_chat(fren, SPAN_XENOWARNING("We feel our exoskeleton start to ooze a resin, forming a protective barrier!"))
-		xeno.visible_message(SPAN_WARNING("[xeno] points a razor-sharp finger at [fren], causing it to ooze a foul-smelling resin from it's carapace! It seems to drip off as it ages!"), \
-		SPAN_XENOWARNING("We absorb some of our stored flesh resin and channel energy to force [fren] to excrete defensive resin!"))
-		apply_cooldown(2)
-		return ..()
 
 /datum/action/xeno_action/activable/claw_strike/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -299,7 +251,7 @@
 	if(reaper.flesh_bolstered == TRUE)
 		strike_range += 2
 	if(distance > strike_range)
-		to_chat(xeno; SPAN_WARNING("They are too far!"))
+		to_chat(xeno, SPAN_WARNING("They are too far!"))
 		return
 
 	var/list/turf/path = get_line(xeno, carbon, include_start_atom = FALSE)
@@ -349,3 +301,133 @@
 		carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
 		apply_cooldown()
 		return ..()
+
+/datum/action/xeno_action/activable/raise_servant/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
+
+	if(!xeno.check_state())
+		return
+	if(!action_cooldown_check())
+		return
+	if(making_servant == TRUE)
+		to_chat(xeno, SPAN_XENOWARNING("We are already making a servant!"))
+		return
+	if(length(reaper.servants) >= reaper.servant_max)
+		to_chat(xeno, SPAN_XENOWARNING("We cannot maintain more servants!"))
+		return
+	if(reaper.flesh_resin < resin_cost)
+		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh resin!"))
+		return
+	if(!check_and_use_plasma_owner())
+		return
+	create_servant()
+	reaper.flesh_resin -= resin_cost
+	apply_cooldown()
+
+/datum/action/xeno_action/activable/raise_servant/proc/create_servant(datum/action/xeno_action/activable/raise_servant/action_def, atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
+		return
+
+	if(!istype(xeno))
+		return
+
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] bends over and starts spewing large amounts of rancid ooze at it's feet, grasping at it as it cascades down!"), \
+	SPAN_XENOWARNING("We regurgitate a mix of plasma and stored flesh resin, moulding it into a loyal servant!"))
+	making_servant = TRUE
+
+	if(!do_after(xeno, creattime, INTERRUPT_ALL, ACTION_PURPLE_POWER_UP))
+		making_servant = FALSE
+		return
+
+	xeno.visible_message(SPAN_XENOWARNING("As [xeno] rises, the lump of decomposing sludge shudders and grows, animating into a melting xenomorph!"), \
+	SPAN_XENOWARNING("After much focusing, we compel the mound of flesh resin to take shape and rises!"))
+	var/mob/living/simple_animal/hostile/alien/rotdrone/rotxeno = new(xeno.loc, xeno)
+	servant_rise(rotxeno)
+	new_servant(rotxeno)
+	making_servant = FALSE
+
+/datum/action/xeno_action/activable/proc/servant_rise(mob/living/simple_animal/hostile/alien/rotdrone/servant)
+	if(!istype(servant))
+		return
+	servant.alpha = 0
+	animate(servant, alpha = 255, time = 2 SECONDS, easing = QUAD_EASING)
+	playsound(servant, 'sound/voice/alien_roar_unused.ogg', 50, TRUE)
+
+/datum/action/xeno_action/activable/raise_servant/proc/new_servant(mob/living/simple_animal/hostile/alien/rotdrone/new_servant)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
+	RegisterSignal(new_servant, list(COMSIG_MOB_DEATH, COMSIG_PARENT_QDELETING), PROC_REF(remove_servant))
+	reaper.servants += new_servant
+
+/datum/action/xeno_action/activable/raise_servant/proc/remove_servant(datum/source)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
+	SIGNAL_HANDLER
+	reaper.servants -= source
+	UnregisterSignal(source, list(COMSIG_MOB_DEATH, COMSIG_PARENT_QDELETING))
+
+/datum/action/xeno_action/activable/command_servants/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
+	var/mob/living/carbon/carbtarg = target
+	var/turf/turftarg = target
+
+	for(var/mob/living/simple_animal/hostile/alien/rotdrone/rotxeno in reaper.servants)
+		if(!can_see(xeno, target, 8))
+			return
+		if(target == xeno)
+			servant_recall(rotxeno, xeno)
+			to_chat(xeno, SPAN_XENONOTICE("We recall our servants."))
+			return
+		else if(turftarg)
+			to_chat(xeno, SPAN_XENONOTICE("We order our servants to go to [turftarg]."))
+			servant_moveto(rotxeno, turftarg)
+			return
+		else if(carbtarg)
+			if(carbtarg.stat == DEAD)
+				to_chat(xeno, SPAN_XENONOTICE("They are dead, why do we want send our servants to them?"))
+				return
+			if(!xeno.can_not_harm(carbtarg))
+				to_chat(xeno, SPAN_XENOWARNING("We order our servants to attack [carbtarg]!"))
+				servant_attack(rotxeno, carbtarg)
+				return
+			else
+				to_chat(xeno, SPAN_XENONOTICE("We order our servants to escort [carbtarg]."))
+				servant_escort(rotxeno, carbtarg)
+				return
+		else
+			to_chat(xeno, SPAN_XENOWARNING("We fail to give orders."))
+			return
+
+/datum/action/xeno_action/activable/command_servants/proc/servant_recall(mob/living/simple_animal/hostile/alien/rotdrone/servant, mob/living/carbon/xenomorph/master)
+	if(!istype(servant))
+		return
+	servant.got_orders = FALSE
+	servant.is_fighting = FALSE
+	servant.fighting_override = FALSE
+	walk_to(servant, master, rand(1, 2), 4)
+
+/datum/action/xeno_action/activable/command_servants/proc/servant_attack(mob/living/simple_animal/hostile/alien/rotdrone/servant, mob/living/carbon/target)
+	if(!istype(servant))
+		return
+	servant.got_orders = TRUE
+	walk_to(servant, target, 1, 4)
+	servant.is_fighting = TRUE
+	servant.fighting_override = TRUE
+
+/datum/action/xeno_action/activable/command_servants/proc/servant_escort(mob/living/simple_animal/hostile/alien/rotdrone/servant, mob/living/carbon/target)
+	if(!istype(servant))
+		return
+	servant.got_orders = TRUE
+	servant.escorting = TRUE
+	servant.escort = target
+	walk_to(servant, servant.escort, rand(1, 2), 4)
+
+/datum/action/xeno_action/activable/command_servants/proc/servant_moveto(mob/living/simple_animal/hostile/alien/rotdrone/servant, turf/target)
+	if(!istype(servant))
+		return
+	servant.got_orders = TRUE
+	walk_to(servant, target, rand(1, 2), 4)
+

@@ -237,6 +237,12 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 			continue
 		hud.add_to_hud(src)
 
+/mob/living/simple_animal/hostile/alien/rotdrone/add_to_all_mob_huds()
+	for(var/datum/mob_hud/hud in GLOB.huds)
+		if(!istype(hud, /datum/mob_hud/xeno))
+			continue
+		hud.add_to_hud(src)
+
 
 /mob/proc/remove_from_all_mob_huds()
 	return
@@ -268,7 +274,10 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		var/datum/mob_hud/execute = GLOB.huds[MOB_HUD_EXECUTE]
 		execute.remove_hud_from(src, src)
 
-
+/mob/living/simple_animal/hostile/alien/rotdrone/remove_from_all_mob_huds()
+	for(var/datum/mob_hud/hud in GLOB.huds)
+		if(istype(hud, /datum/mob_hud/xeno))
+			hud.remove_from_hud(src)
 
 /mob/proc/refresh_huds(mob/source_mob)
 	var/mob/M = source_mob ? source_mob : src
@@ -784,7 +793,7 @@ GLOBAL_DATUM(hud_icon_hudfocus, /image)
 // Vampire Execute HUD
 /mob/living/carbon/human/proc/update_execute_hud()
 	var/image/execute_holder = hud_list[XENO_EXECUTE]
-	
+
 	execute_holder.icon_state = "hudblank"
 	execute_holder.overlays.Cut()
 

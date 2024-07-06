@@ -238,7 +238,8 @@
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		apply_damage(damage, BRUTE)
+		face_atom(src)
+		apply_armoured_damage(damage) // Before they just did apply_damage and ignored armor. No wonder simple_mob Ravagers were so dangerous
 
 
 /mob/living/simple_animal/attack_hand(mob/living/carbon/human/M as mob)

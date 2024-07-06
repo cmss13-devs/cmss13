@@ -3,7 +3,7 @@
 	caste_desc = "A flexible frontline supporter."
 	tier = 3
 
-	melee_damage_lower = XENO_DAMAGE_TIER_4
+	melee_damage_lower = XENO_DAMAGE_TIER_2
 	melee_damage_upper = XENO_DAMAGE_TIER_4
 	melee_vehicle_damage = XENO_DAMAGE_TIER_6
 	max_health = XENO_HEALTH_TIER_9
@@ -12,7 +12,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_TIER_4
+	speed = XENO_SPEED_TIER_3
 
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_CARRIER)
@@ -24,12 +24,12 @@
 	max_build_dist = 1
 
 	tackle_min = 2
-	tackle_max = 4
-	tackle_chance = 50
+	tackle_max = 5
+	tackle_chance = 35
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-	aura_strength = 4
+	aura_strength = 3
 
 	minimum_evolve_time = 15 MINUTES
 
@@ -67,8 +67,9 @@
 		/datum/action/xeno_action/activable/secrete_resin/reaper,
 		/datum/action/xeno_action/activable/flesh_harvest, //first macro
 		/datum/action/xeno_action/activable/flesh_bolster, //second macro
-		/datum/action/xeno_action/activable/meat_shield, //third macro
-		/datum/action/xeno_action/activable/claw_strike, //fourth macro
+		/datum/action/xeno_action/activable/claw_strike, //third macro
+		/datum/action/xeno_action/activable/raise_servant, //fourth macro
+		/datum/action/xeno_action/activable/command_servants, //fith macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
@@ -89,6 +90,9 @@
 	var/flesh_resin = 0
 	var/flesh_resin_max = 1000
 	var/flesh_bolstered = FALSE
+	var/harvesting = FALSE // So you can't harvest multiple corpses at once
+	var/list/mob/living/simple_animal/hostile/alien/rotdrone/servants = list() // List of active rotdrones
+	var/servant_max = 3 // How many rotdrones one Reaper can have at once
 
 /datum/behavior_delegate/base_reaper/append_to_stat()
 	. = ..()
@@ -96,7 +100,7 @@
 
 /datum/behavior_delegate/base_reaper/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
 	if(iscarbon(target_mob))
-		target_mob.apply_damage(round(flesh_resin * 0.01 * 0.7), TOX)
+		target_mob.apply_damage(flesh_resin * 0.01, TOX)
 
 /datum/behavior_delegate/base_reaper/on_life()
 	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]

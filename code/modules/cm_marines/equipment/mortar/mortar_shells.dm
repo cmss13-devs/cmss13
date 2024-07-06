@@ -171,9 +171,9 @@
 		return
 	burning = TRUE
 	cause_data = create_cause_data("Burning Mortar Shell", flame_cause_data.resolve_mob(), src)
-	handle_fire()
+	handle_fire(cause_data)
 
-/obj/item/mortar_shell/proc/handle_fire()
+/obj/item/mortar_shell/proc/handle_fire(cause_data)
 	visible_message(SPAN_WARNING("[src] catches on fire and starts cooking off! It's gonna blow!"))
 	anchored = TRUE // don't want other explosions launching it elsewhere
 
@@ -182,8 +182,11 @@
 	sparks.start()
 	new /obj/effect/warning/explosive(loc, 5 SECONDS)
 
-	addtimer(CALLBACK(src, PROC_REF(detonate), loc), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(explode), cause_data), 5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.5 SECONDS)
+
+/obj/item/mortar_shell/proc/explode(flame_cause_data, severity=2)
+	explosion(get_turf(src),  -1, ((severity > 2) ? 0 : -1), severity - 1, severity + 1, 1, 0, 0, flame_cause_data)
 
 /obj/structure/closet/crate/secure/mortar_ammo
 	name = "\improper M402 mortar ammo crate"

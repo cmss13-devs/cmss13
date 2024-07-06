@@ -189,7 +189,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		to_chat(target, SPAN_DANGER("The pain was too much, you couldn't hold still!"))
 		if(failure(user, target, target_zone, tool, tool_type, surgery)) //Failure returns TRUE if the step should complete anyway.
 			advance = TRUE
-		target.emote("pain")
+		target.emote(pick("wince", "pain", "write", "scream"))
 		play_failure_sound(user, target, target_zone, tool, surgery)
 
 	else if(prob(surgery_failure_chance))
@@ -199,7 +199,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		SPAN_DANGER("You are struggling to perform the surgery with these tools and conditions!"))
 		if(failure(user, target, target_zone, tool, tool_type, surgery)) //Failure returns TRUE if the step should complete anyway.
 			advance = TRUE
-		target.emote("pain")
+		target.emote(pick("wince", "pain", "write", "scream"))
 		play_failure_sound(user, target, target_zone, tool, surgery)
 		msg_admin_niche("[user] failed a [surgery] step on [target] because of [failure_penalties] failure possibility penalties ([surgery_failure_chance]%)")
 

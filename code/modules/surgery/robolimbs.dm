@@ -47,6 +47,7 @@
 		SPAN_NOTICE("[user] replaces your severed [parse_zone(target_zone)] with \the [tool]."),
 		SPAN_NOTICE("[user] replaces [target]'s severed [parse_zone(target_zone)] with \the [tool]."))
 
+	user.emote("me", 1, "replaces [target]'s [target]'s severed [parse_zone(target_zone)] with \the [tool].")
 	surgery.affected_limb.robotize(surgery_in_progress = TRUE, uncalibrated = TRUE, synth_skin = issynth(target))
 	target.update_body()
 	target.pain.recalculate_pain()
@@ -61,6 +62,7 @@
 		SPAN_WARNING("[user] slips, damaging your stump!"),
 		SPAN_WARNING("[user] slips, damaging [target]'s stump!"))
 
+	user.emote("me", 1, "slips, damaging [target]'s stump!")
 	target.apply_damage(10, BRUTE, surgery.affected_limb.parent)
 	log_interact(user, target, "[key_name(user)] failed to begin attaching a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name], aborting [surgery].")
 	return FALSE
@@ -91,6 +93,7 @@
 		SPAN_NOTICE("[user] firmly attaches the prosthesis to your body."),
 		SPAN_NOTICE("[user] firmly attaches the prosthesis to [target]'s body."))
 
+	user.emote("me", 1, "firmly attaches the prosthesis to [target].")
 	log_interact(user, target, "[key_name(user)] finished tightening a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name].")
 
 /datum/surgery_step/strenghten_prosthesis_connection/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -99,6 +102,7 @@
 		SPAN_WARNING("[user] slips while trying to tighten the prosthesis, pinching your stump painfully!"),
 		SPAN_WARNING("[user] slips while trying to tighten [target]'s prosthesis, pinching \his stump painfully!"))
 
+	user.emote("me", 1, "slips, damaging [target]'s [surgery.affected_limb.display_name]!")
 	log_interact(user, target, "[key_name(user)] failed to tighten a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name].")
 	return FALSE
 
@@ -129,6 +133,7 @@
 		SPAN_NOTICE("[user] finishes calibrating your prosthesis, and it now moves as you command."),
 		SPAN_NOTICE("[user] finishes calibrating [target]'s prosthesis, and it now moves as \he commands."))
 
+	user.emote("me", 1, "calibrates [target]'s prosthesis.")
 	log_interact(user, target, "[key_name(user)] calibrated a prosthesis on [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 	surgery.affected_limb.calibrate_prosthesis()
 

@@ -96,6 +96,8 @@
 /datum/surgery_step/cut_larval_pseudoroots/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips and a jet of acid spurts as \he slices the larva with \the [tool]!"),
 		SPAN_WARNING("Your hand slips and a jet of acid spurts as you slice the larva with \the [tool]!"))
+	user.emote("me", 1, "slips, cutting open a psuedoroot!")
+
 
 	if(target.stat == CONSCIOUS)
 		target.emote("scream")
@@ -168,6 +170,7 @@
 			A.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST
 
+		user.emote("me", 1, "pries out the embryo from [target]'s [surgery.affected_limb.display_name].")
 		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with [tool ? "\the [tool]" : "their hands"], ending [surgery].")
 
 /datum/surgery_step/remove_larva/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -176,6 +179,7 @@
 		SPAN_WARNING("[user]'s hand slips, bruising your organs and spilling acid in your [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s organs and spilling acid in \his [surgery.affected_limb.cavity]!"))
 
+	user.emote("me", 1, "slips, leaking acid everywhere insided [target]!")
 	var/datum/internal_organ/I = pick(surgery.affected_limb.internal_organs)
 	I.take_damage(5,0)
 	if(target.stat == CONSCIOUS)

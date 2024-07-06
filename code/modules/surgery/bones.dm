@@ -120,6 +120,7 @@
 				SPAN_NOTICE("[user] crudely reinforces the bones in your [surgery.affected_limb.display_name] like [improvised_desc]."),
 				SPAN_NOTICE("[user] crudely reinforces the bones in [target]'s [surgery.affected_limb.display_name] like [improvised_desc]."))
 
+	user.emote("me", 1, "mends the bones in [target]'s [surgery.affected_limb.display_name].")
 	log_interact(user, target, "[key_name(user)] successfully began repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], starting [surgery].")
 
 /datum/surgery_step/mend_bones/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
@@ -134,6 +135,7 @@
 			SPAN_WARNING("[user]'s hand slips, damaging the bones in your [surgery.affected_limb.display_name] even more!"),
 			SPAN_WARNING("[user]'s hand slips, damaging the bones in [target]'s [surgery.affected_limb.display_name] even more!"))
 
+	user.emote("me", 1, "slips, damaging [target]'s [surgery.affected_limb.display_name]!")
 	target.apply_damage(10, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to begin repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], aborting [surgery].")
 
@@ -198,6 +200,7 @@
 			SPAN_NOTICE("[user] sets the bones in your [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] sets the bones in [target]'s [surgery.affected_limb.display_name]."))
 
+	user.emote("me", 1, "sets the bones in [target]'s [surgery.affected_limb.display_name].")
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BONES)
 	if(surgery.affected_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
 		new /obj/item/stack/medical/splint/nano(get_turf(target), 1)
@@ -218,6 +221,7 @@
 			SPAN_WARNING("[user]'s hand slips, damaging the bones in your [surgery.affected_limb.display_name] with \the [tool]!"),
 			SPAN_WARNING("[user]'s hand slips, damaging the bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"))
 
+	user.emote("me", 1, "slips, damaging [target]'s [surgery.affected_limb.display_name]!")
 	target.apply_damage(10, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to set bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 	return FALSE

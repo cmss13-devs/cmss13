@@ -62,6 +62,7 @@
 	target.jitteriness = 0
 	target.pain.recalculate_pain()
 
+	user.emote("me", 1, "picks the bone fragments out of [target]'s brain.")
 	log_interact(user, target, "[key_name(user)] finished taking bone chips out of [key_name(target)]'s brain with \the [tool], finishing [surgery].")
 
 /datum/surgery_step/remove_bone_chips/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -72,6 +73,7 @@
 
 	log_interact(user, target, "[key_name(user)] failed to take the bone chips out of [key_name(target)]'s brain with \the [tool], possibly aborting [surgery].")
 
+	user.emote("me", 1, "slips, damaging [target]'s [surgery.affected_limb.display_name]!")
 	var/datum/wound/internal_bleeding/I = new (0)
 	surgery.affected_limb.add_bleeding(I, TRUE)
 	surgery.affected_limb.wounds += I
@@ -100,6 +102,7 @@
 		SPAN_NOTICE("[user] finishes mending the hematoma in your brain."),
 		SPAN_NOTICE("[user] finishes mending the hematoma in [target]'s brain."))
 
+	user.emote("me", 1, "mends the hematoma in [target]'s brain.")
 	log_interact(user, target, "[key_name(user)] finished mending a hematoma in [key_name(target)]'s brain with \the [tool], beginning [surgery].")
 
 	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
@@ -115,6 +118,7 @@
 		SPAN_WARNING("[user]'s hand slips, bruising your brain with \the [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s brain with \the [tool]!"))
 
+	user.emote("me", 1, "slips, damaging [target]'s [surgery.affected_limb.display_name]!")
 	log_interact(user, target, "[key_name(user)] failed to mend the hematoma in [key_name(target)]'s brain with \the [tool], aborting [surgery].")
 
 	target.apply_damage(15, BRUTE, target_zone)

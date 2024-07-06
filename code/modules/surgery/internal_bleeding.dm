@@ -51,6 +51,7 @@
 			surgery.affected_limb.remove_all_bleeding(FALSE, TRUE)
 			surgery.affected_limb.update_damages()
 
+	user.emote("me", 1, "repairs the damaged veins in [target]'s [surgery.affected_limb.display_name].")
 	if(prob(40))
 		user.add_blood(target.get_blood_color(), BLOOD_HANDS)
 	target.pain.recalculate_pain()
@@ -68,6 +69,7 @@
 			SPAN_WARNING("[user]'s hand slips, damaging the incision in your [surgery.affected_limb.display_name] with \the [tool]!"),
 			SPAN_WARNING("[user]'s hand slips, damaging the incision in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"))
 
+	user.emote("me", 1, "slips, damaging [target]'s [surgery.affected_limb.display_name]!")
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS)
 	target.apply_damage(10, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to repair internal bleeding in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")

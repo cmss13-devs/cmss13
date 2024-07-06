@@ -43,6 +43,7 @@
 		SPAN_NOTICE("[user] finishes opening incisions on your face and neck."),
 		SPAN_NOTICE("[user] finishes opening incisions on [target]'s face and neck."))
 
+	user.emote("me", 1, "makes an incision [target]'s face and neck.")
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	log_interact(user, target, "[key_name(user)] cut open [key_name(target)]'s face and neck with \the [tool].")
 
@@ -52,6 +53,7 @@
 		SPAN_DANGER("[user]'s hand slips, slicing [target]'s throat wth \the [tool]!"),
 		SPAN_DANGER("[user]'s hand slips, slicing [target]'s throat wth \the [tool]!"))
 
+	user.emote("me", 1, "slips, slicing [target]'s throat!")
 	log_interact(user, target, "[key_name(user)] failed to cut open [key_name(target)]'s face and neck with \the [tool].")
 
 	target.apply_damage(40, BRUTE, target_zone)
@@ -82,6 +84,7 @@
 		SPAN_NOTICE("[user] mends your vocal cords."),
 		SPAN_NOTICE("[user] mends [target]'s vocal cords."))
 
+	user.emote("me", 1, "mends [target]'s vocal chords.")
 	log_interact(user, target, "[key_name(user)] mended [key_name(target)]'s vocal cords with \the [tool].")
 
 /datum/surgery_step/mend_vocals/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -118,6 +121,7 @@
 		SPAN_NOTICE("[user] reconstructs your facial features."),
 		SPAN_NOTICE("[user] reconstructs [target]'s facial features."))
 
+	user.emote("me", 1, "reconstructs [target]'s facial features.")
 	log_interact(user, target, "[key_name(user)] pulled the skin on [key_name(target)]'s face back in place with \the [tool].")
 
 /datum/surgery_step/pull_skin/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -126,6 +130,7 @@
 		SPAN_WARNING("[user]'s hand slips, tearing skin on your face with \the [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, tearing skin on [target]'s face with \the [tool]!"))
 
+	user.emote("me", 1, "slips, damaging [target]'s [surgery.affected_limb.display_name]!")
 	log_interact(user, target, "[key_name(user)] failed to pull the skin on [key_name(target)]'s face back in place with \the [tool].")
 
 	target.apply_damage(10, BRUTE, target_zone)
@@ -154,6 +159,8 @@
 		SPAN_NOTICE("[user] cauterizes the incisions on your face and neck."),
 		SPAN_NOTICE("[user] cauterizes the incision on [target]'s face and neck."))
 
+	user.emote("me", 1, "cauterizes the incision on [target]'s facial features.")
+
 	log_interact(user, target, "[key_name(user)] cauterized [key_name(target)]'s face and neck with \the [tool], ending [surgery].")
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
@@ -168,6 +175,7 @@
 		SPAN_WARNING("[user]'s hand slips, leaving a small burn on your face!"),
 		SPAN_WARNING("[user]'s hand slips, leaving a small burn on [target]'s face!"))
 
+	user.emote("me", 1, "slips, damaging [target]'s [surgery.affected_limb.display_name]!")
 	log_interact(user, target, "[key_name(user)] failed to cauterize [key_name(target)]'s face and neck with \the [tool].")
 
 	target.apply_damage(5, BURN, target_zone)

@@ -50,6 +50,7 @@
 		SPAN_NOTICE("[user] has separated your corneas."),
 		SPAN_NOTICE("[user] has separated [target]'s corneas."))
 
+	user.emote("me", 1, "seperates [target]'s corneas.")
 	log_interact(user, target, "[key_name(user)] separated the cornea on [key_name(target)]'s eyes with \the [tool], starting [surgery].")
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
@@ -61,6 +62,7 @@
 		SPAN_WARNING("[user]'s hand slips, slicing your eyes with \the [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, slicing [target]'s eyes with \the [tool]!"))
 
+	user.emote("me", 1, "slips, damaging [target]'s [surgery.affected_limb.display_name]!")
 	log_interact(user, target, "[key_name(user)] failed to separate the cornea on [key_name(target)]'s eyes with \the [tool], aborting [surgery].")
 
 	target.apply_damage(10, BRUTE, target_zone)
@@ -89,6 +91,7 @@
 		SPAN_NOTICE("[user] has lifted your corneas."),
 		SPAN_NOTICE("[user] has lifted [target]'s corneas."))
 
+	user.emote("me", 1, "lifts [target]'s corneas.")
 	log_interact(user, target, "[key_name(user)] lifted the cornea from [key_name(target)]'s eyes with \the [tool].")
 
 /datum/surgery_step/lift_eyes/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eye_repair/surgery)
@@ -97,6 +100,7 @@
 		SPAN_WARNING("[user]'s hand slips, damaging your eyes with \the [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, damaging [target]'s eyes with \the [tool]!"))
 
+	user.emote("me", 1, "slips, damaging [target]'s [surgery.affected_limb.display_name]!")
 	log_interact(user, target, "[key_name(user)] failed to lift the cornea from [key_name(target)]'s eyes with \the [tool].")
 
 	target.apply_damage(10, BRUTE, target_zone)
@@ -125,6 +129,7 @@
 		SPAN_NOTICE("[user] mends the nerves and lenses in your eyes."),
 		SPAN_NOTICE("[user] mends the nerves and lenses in [target]'s eyes."))
 
+	user.emote("me", 1, "mends the nerves and lenses in [target]'s eyes.")
 	log_interact(user, target, "[key_name(user)] mended the nerves and lenses in [key_name(target)]'s eyes with \the [tool].")
 
 /datum/surgery_step/mend_eyes/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eye_repair/surgery)
@@ -133,6 +138,7 @@
 		SPAN_WARNING("[user]'s hand slips, damaging your eyes with \the [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, damaging [target]'s eyes with \the [tool]!"))
 
+	user.emote("me", 1, "slips, damaging [target]'s [surgery.affected_limb.display_name]!")
 	log_interact(user, target, "[key_name(user)] failed to mend the nerves and lenses in [key_name(target)]'s eyes with \the [tool].")
 
 	target.apply_damage(10, BRUTE, target_zone, sharp = 1)
@@ -161,6 +167,7 @@
 		SPAN_NOTICE("[user] reattaches your corneas."),
 		SPAN_NOTICE("[user] reattaches [target]'s corneas."))
 
+	user.emote("me", 1, "reattatches [target]'s corneas.")
 	log_interact(user, target, "[key_name(user)] cauterized the incision around [key_name(target)]'s eyes with \the [tool], ending [surgery].")
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
@@ -176,6 +183,7 @@
 		SPAN_WARNING("[user]'s hand slips, searing your eyes with \the [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, searing [target]'s eyes with \the [tool]!"))
 
+	user.emote("me", 1, "slips, damaging [target]'s [surgery.affected_limb.display_name]!")
 	log_interact(user, target, "[key_name(user)] failed to cauterize the incision around [key_name(target)]'s eyes with \the [tool].")
 
 	target.apply_damage(15, BURN, target_zone)

@@ -82,6 +82,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 				SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
 				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
 
+			user.emote("me", 1, "mends [target]'s  damaged [I.name].")
 			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 			I.rejuvenate()
 			target.pain.recalculate_pain()
@@ -106,6 +107,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 		if(I && I.damage > 0)
 			I.take_damage(dam_amt,0)
 
+	user.emote("me", 1, "slips, damaging [target]'s organs!")
 	log_interact(user, target, "[key_name(user)] failed to mend organs in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 	return FALSE
 

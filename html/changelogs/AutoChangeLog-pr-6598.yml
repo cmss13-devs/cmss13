@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - admin: "Mentors no longer receive debug logs as a result of being in GLOB.admins"

@@ -35,7 +35,7 @@
 			living_mob.apply_effect(2, SLOW)
 			to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
 			if(ishuman(living_mob))
-				living_mob.emote("me", 1, "is knocked off their feet by the [src]")
+				living_mob.emote("me", message = "is knocked off their feet by the [src]")
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
 /datum/ammo/bullet/shotgun/beanbag
@@ -262,7 +262,7 @@
 			living_mob.apply_effect(2, SLOW)
 			to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
 			if(ishuman(living_mob))
-				living_mob.emote("me", 1, "is knocked off their feet by the [src]")
+				living_mob.emote("me", message = "is knocked off their feet by the [src]")
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
 /datum/ammo/bullet/shotgun/heavy/beanbag

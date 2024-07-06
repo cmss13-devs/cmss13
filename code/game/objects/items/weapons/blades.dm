@@ -172,14 +172,14 @@
 			SPAN_NOTICE("[user] begins to examine your body for shrapnel to dig out. Hold still, this will probably hurt..."),
 			SPAN_NOTICE("[user] begins to examine [embedded_human]'s body for shrapnel."))
 		address_mode = "out of [embedded_human]'s" //includes "out of " to prevent capital-T 'The unknown'.
-		user.emote("me", 1, "begins examining [embedded_human]'s body for shrapnel.")
+		user.emote("me", message = "begins examining [embedded_human]'s body for shrapnel.")
 		if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, embedded_human, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			to_chat(user, SPAN_NOTICE("You were interrupted!"))
 			return
 	else
 		user.visible_message(SPAN_NOTICE("[user] starts checking \his body for shrapnel."), \
 			SPAN_NOTICE("You begin searching your body for shrapnel."))
-		user.emote("me", 1, "begins to check their body for shrapnel.")
+		user.emote("me", message = "begins to check their body for shrapnel.")
 		address_mode = "out of your"
 		if(!do_after(embedded_human, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			to_chat(user, SPAN_NOTICE("You were interrupted!"))

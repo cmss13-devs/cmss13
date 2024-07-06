@@ -51,7 +51,7 @@
 
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], ending [surgery].")
 
-	user.emote("me", 1, "sutures closed the incision on [target]'s [surgery.affected_limb.display_name].")
+	user.emote("me", message = "sutures closed the incision on [target]'s [surgery.affected_limb.display_name].")
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 
 /datum/surgery_step/suture_incision/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

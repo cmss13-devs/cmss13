@@ -169,7 +169,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 			SPAN_HELPFUL("[user] [description_verb]s some of the [description_wounds] on your [target_limb.display_name]."),
 			SPAN_NOTICE("[user] [description_verb]s some of the [description_wounds] on [possessive_their] [target_limb.display_name]."))
 
-		user.emote("me", 1, "[description_verb]s some of the [description_wounds] on [possessive_their] [target_limb.display_name].")
+		user.emote("me", message = "[description_verb]s some of the [description_wounds] on [possessive_their] [target_limb.display_name].")
 		suture(suturing_item, user, target, target_limb, TRUE) //Loop - untreated wounds remain.
 
 ////////////////////////////////////

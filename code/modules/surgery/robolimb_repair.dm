@@ -46,7 +46,7 @@
 		SPAN_NOTICE("[user] finishes recalibrating your prosthesis, and it now moves as you command once again."),
 		SPAN_NOTICE("[user] finishes recalibrating [target]'s prosthesis, and it now moves as \he commands once again."))
 
-	user.emote("me", 1, "recalibrates [target]'s prosthesis.")
+	user.emote("me", message = "recalibrates [target]'s prosthesis.")
 	log_interact(user, target, "[key_name(user)] recalibrated a prosthesis on [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 	if(surgery.affected_limb.parent.status & LIMB_UNCALIBRATED_PROSTHETIC)
 		surgery.affected_limb.parent.calibrate_prosthesis()

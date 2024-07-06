@@ -47,7 +47,7 @@
 		SPAN_HIGHDANGER("[user] aims \the [fired_from] directly at your head!"),
 		SPAN_DANGER("[user] aims \the [fired_from] at [execution_target]'s head!"))
 
-	user.emote("me", 1, "aims [fired_from] at [execution_target]'s head!")
+	user.emote("me", message = "aims [fired_from] at [execution_target]'s head!")
 
 	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
 

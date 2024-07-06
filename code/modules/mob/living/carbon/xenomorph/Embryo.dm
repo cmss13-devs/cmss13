@@ -332,7 +332,7 @@
 
 	for(var/mob/living/carbon/xenomorph/larva/larva_embryo in victim)
 		var/datum/hive_status/hive = GLOB.hive_datum[larva_embryo.hivenumber]
-		larva_embryo.emote("me", 1, "rips their way out from inside the chest of [victim]")
+		larva_embryo.emote("me", message = "rips their way out from inside the chest of [victim]")
 		larva_embryo.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
 		playsound(larva_embryo, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
 

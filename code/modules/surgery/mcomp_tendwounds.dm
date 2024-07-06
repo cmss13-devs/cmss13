@@ -70,13 +70,13 @@
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] finishes stabilizing the wounds on their body with [tool]."),
 			SPAN_HELPFUL("You finish stabilizing your wounds with [tool]."))
-		user.emote("me", 1, "stabilizes their wound with [tool]")
+		user.emote("me", message = "stabilizes their wound with [tool]")
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You finish stabilizing [target]'s wounds with [tool]."),
 			SPAN_HELPFUL("[user] finished stabilizing your wounds with [tool]."),
 			SPAN_NOTICE("[user] finished treating [target]'s wounds with [tool]."))
-		user.emote("me", 1, "stabilizes [target]'s wound with [tool]")
+		user.emote("me", message = "stabilizes [target]'s wound with [tool]")
 
 
 	log_interact(user, target, "[key_name(user)] stabilized some of [key_name(target)]'s wounds with [tool].")
@@ -130,13 +130,13 @@
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] finishes treating the stabilized wounds on their body with [tool]."),
 			SPAN_HELPFUL("You finish treating the stabilized wounds on your body with [tool]."))
-		user.emote("me", 1, "treats their stabilized wounds with [tool]")
+		user.emote("me", message = "treats their stabilized wounds with [tool]")
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You finish treating [target]'s stabilized wounds with [tool]."),
 			SPAN_HELPFUL("[user] finished treating your stabilized wounds with [tool]."),
 			SPAN_NOTICE("[user] finished treating [target]'s stabilized wounds with [tool]."))
-		user.emote("me", 1, "treats [target]'s stabilized wounds with [tool]")
+		user.emote("me", message = "treats [target]'s stabilized wounds with [tool]")
 
 
 	if(!istype(tool, /obj/item/tool/surgery/healing_gun))
@@ -178,14 +178,14 @@
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their body with [tool]."),
 			SPAN_HELPFUL("You finish closing the treated wounds on your body with [tool]"))
-		user.emote("me", 1, "clamps their wounds shut with [tool]")
+		user.emote("me", message = "clamps their wounds shut with [tool]")
 
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You finish closing [target]'s treated wounds with [tool]."),
 			SPAN_HELPFUL("[user] finished closing your treated wounds with [tool]."),
 			SPAN_NOTICE("[user] finished closing [target]'s treated wounds with [tool]."))
-		user.emote("me", 1, "clamps [target]'s wounds shut with [tool]")
+		user.emote("me", message = "clamps [target]'s wounds shut with [tool]")
 
 
 	if(isyautja(target))

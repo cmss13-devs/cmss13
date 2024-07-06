@@ -258,7 +258,7 @@
 		L.add_bleeding(I, TRUE)
 		L.wounds += I
 	if(prob(POTENCY_MULTIPLIER_VHIGH * potency))
-		spawn L.owner.emote("me", 1, "coughs up blood!")
+		spawn L.owner.emote("me", message = "coughs up blood!")
 		L.owner.drip(10)
 
 /datum/chem_property/negative/hemorrhaging/process_overdose(mob/living/M, potency = 1, delta_time)

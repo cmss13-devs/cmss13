@@ -50,7 +50,7 @@
 
 	if(!gibbed)
 		visible_message("<b>\The [src.name]</b> [deathmessage]")
-		emote("me", 1, "[deathmessage]")
+		emote("me", message = "[deathmessage]")
 
 	if(cause_data && !istype(cause_data))
 		stack_trace("death called with string cause ([cause_data]) instead of datum")

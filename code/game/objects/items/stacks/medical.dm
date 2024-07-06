@@ -303,7 +303,7 @@
 				SPAN_HELPFUL("You <b>start splinting</b> [possessive] <b>[affecting.display_name]</b>."),
 				SPAN_HELPFUL("[user] <b>starts splinting</b> your <b>[affecting.display_name]</b>."),
 				SPAN_NOTICE("[user] starts splinting [possessive_their] [affecting.display_name]."))
-			user.emote("me", 1, "begins splinting [M]'s [affecting.display_name].")
+			user.emote("me", message = "begins splinting [M]'s [affecting.display_name].")
 		else
 			if((!user.hand && (affecting.name in list("r_arm", "r_hand"))) || (user.hand && (affecting.name in list("l_arm", "l_hand"))))
 				to_chat(user, SPAN_WARNING("You can't apply a splint to the \
@@ -314,7 +314,7 @@
 				SPAN_HELPFUL("You <b>start splinting</b> your <b>[affecting.display_name]</b>."),
 				,
 				SPAN_NOTICE("[user] starts splinting \his [affecting.display_name]."))
-			user.emote("me", 1, "begins splinting their [affecting.display_name].")
+			user.emote("me", message = "begins splinting their [affecting.display_name].")
 
 
 		if(affecting.apply_splints(src, user, M, indestructible_splints)) // Referenced in external organ helpers.

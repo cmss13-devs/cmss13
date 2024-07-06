@@ -20,3 +20,6 @@
   - bugfix: Make non-toxic water stop glowing.
   coldironwarrior:
   - spellcheck: fixed the medical rig belt's description
+2024-07-06:
+  Drathek:
+  - spellcheck: Fix grammar and plurality for vehicles and their hardpoints

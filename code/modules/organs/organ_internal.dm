@@ -145,12 +145,15 @@
 	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 		return
 	if(organ_status >= ORGAN_BRUISED)
-		if(prob(2))
-			spawn owner.emote("me", 1, "coughs up blood!")
-			owner.drip(10)
-		if(prob(4))
-			spawn owner.emote("me", 1, "gasps for air!")
+		if(prob(5))
+			owner.emote(pick("bloodcough", "gasp", "wheeze"))
 			owner.losebreath += 15
+	if(organ_status >= ORGAN_BROKEN)
+		if(prob(12))
+			owner.emote("badlung")
+		else if(prob(10))
+			owner.emote(pick("bloodcough", "wheeze", "gasp", "clutchchest", "pale"))
+
 
 /datum/internal_organ/lungs/rejuvenate()
 	owner.losebreath = 0
@@ -214,6 +217,9 @@
 			owner.apply_damage(0.1 * (damage/2), TOX)
 		else if(organ_status >= ORGAN_BROKEN && prob(50))
 			owner.apply_damage(0.3 * (damage/2), TOX)
+			if(prob(10))
+				owner.emote(pick("groan", "stomachclutch", "wince", "tremors", "pain"))
+
 
 /datum/internal_organ/liver/prosthetic
 	robotic = ORGAN_ROBOT
@@ -234,6 +240,9 @@
 		owner.apply_damage(0.1 * (damage/3), TOX)
 	else if(organ_status >= ORGAN_BROKEN && prob(50))
 		owner.apply_damage(0.2 * (damage/3), TOX)
+		if(prob(10))
+			owner.emote(pick("groan", "chestclutch", "gasp",))
+
 
 /datum/internal_organ/kidneys/prosthetic
 	robotic = ORGAN_ROBOT
@@ -258,12 +267,14 @@
 		owner.drop_held_items()
 		if(!owner.buckled && owner.stat == CONSCIOUS)
 			owner.Move(get_step(get_turf(owner), dir_choice))
+			owner.emote(pick("rapidblink", "tremors", "stumble"))
 		to_chat(owner, SPAN_DANGER("Your mind wanders and goes blank for a moment..."))
 
 	if(organ_status >= ORGAN_BROKEN && prob(5 * delta_time))
 		owner.apply_effect(1, PARALYZE)
 		if(owner.jitteriness < 100)
 			owner.make_jittery(50)
+		owner.emote(pick("headclutch", "foam", "seizes", "shake", "thrash"))
 		to_chat(owner, SPAN_DANGER("Your body seizes up!"))
 
 /datum/internal_organ/brain/prosthetic //used by synthetic species
@@ -287,8 +298,12 @@
 		return
 	if(organ_status >= ORGAN_BRUISED)
 		owner.SetEyeBlur(20)
+		if(prob(3))
+			owner.emote(pick("blink", "eyerub", "squint"))
 	if(organ_status >= ORGAN_BROKEN)
 		owner.SetEyeBlind(20)
+		if(prob(8))
+			owner.emote(pick("rapidblink", "eyerub", "headclutch"))
 
 /datum/internal_organ/eyes/prosthetic
 	robotic = ORGAN_ROBOT

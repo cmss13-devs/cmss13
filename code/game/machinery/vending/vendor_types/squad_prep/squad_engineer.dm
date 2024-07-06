@@ -3,10 +3,9 @@
 GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("ENGINEER SET (MANDATORY)", 0, null, null, null),
 		list("Essential Engineer Set (Most Versatile)", 0, /obj/effect/essentials_set/engi/basic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("FOB Construction Set (Most Metal)", 0, /obj/effect/essentials_set/engi/fob, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("FOB Defense Set (Extra Sentry, Little Metal)", 0, /obj/effect/essentials_set/engi/fob_defenses, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("Rapid Deployment Set (Fast Cades, Little Resiliance)", 0, /obj/effect/essentials_set/engi/rapid_deployment, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("Frontline Supply Set (Keep Your Team Supplied)", 0, /obj/effect/essentials_set/engi/frontline_supply, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("FOB Construction Set (Most Metal)", 25, /obj/effect/essentials_set/engi/fob, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("FOB Defense Set (Extra Sentry, Little Metal)", 40, /obj/effect/essentials_set/engi/fob_defenses, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Rapid Repair Set (Best for Repairing Under Fire)", 0, /obj/effect/essentials_set/engi/rapid_repair, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 		list("Demolitions Set (Equipped To Level The Place)", 0, /obj/effect/essentials_set/engi/demolitions, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("HANDHELD DEFENSE (CHOOSE 1)", 0, null, null, null),
@@ -206,55 +205,55 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 
 //------------ESSENTIAL SETS---------------
 
-/obj/effect/essentials_set/engi/basic
+/obj/effect/essentials_set/engi/basic // 66~ points = Free to buy.
 	spawned_gear_list = list(
-		/obj/item/explosive/plastic,
-		/obj/item/stack/sandbags_empty = 25,
-		/obj/item/stack/sheet/metal/large_stack,
-		/obj/item/stack/sheet/plasteel/med_large_stack,
+		/obj/item/explosive/plastic, // 3
+		/obj/item/stack/sandbags_empty = 25, // 10
+		/obj/item/stack/sheet/metal/large_stack, // 25
+		/obj/item/stack/sheet/plasteel/med_large_stack, // 28
 		/obj/item/circuitboard/apc,
 		/obj/item/cell/high,
 		/obj/item/tool/shovel/etool/folded,
 		/obj/item/device/lightreplacer,
 	)
 
-/obj/effect/essentials_set/engi/fob
+/obj/effect/essentials_set/engi/fob // 91 points = 25 points to buy; 25 points more than basic.
 	spawned_gear_list = list(
-		/obj/item/stack/sheet/metal/large_stack,
-		/obj/item/stack/sheet/metal/large_stack,
-		/obj/item/stack/barbed_wire/full_stack,
-		/obj/item/stack/sheet/plasteel/med_large_stack,
+		/obj/item/device/encryptionkey/req, // 3
+		/obj/item/stack/sheet/metal/large_stack, // 25
+		/obj/item/stack/sheet/metal/large_stack, // 25
+		/obj/item/stack/barbed_wire/full_stack, // 10
+		/obj/item/stack/sheet/plasteel/med_large_stack, // 28
 		/obj/item/circuitboard/apc,
 		/obj/item/cell/high,
 		/obj/item/tool/shovel/etool/folded,
 		/obj/item/device/lightreplacer,
 	)
 
-/obj/effect/essentials_set/engi/fob_defenses
+/obj/effect/essentials_set/engi/fob_defenses // 80? 85 + turret = 40 points to buy. 14 points more + turret. 26 points turret? - want com techs to be able to get SOMETHING...
 	spawned_gear_list = list(
-		/obj/item/stack/sheet/metal/large_stack,
-		/obj/item/stack/barbed_wire/full_stack,
-		/obj/item/defenses/handheld/sentry,
-		/obj/item/storage/box/explosive_mines,
+		/obj/item/stack/sheet/metal/large_stack, // 25
+		/obj/item/stack/sheet/plasteel/med_small_stack = 24, //14... 16 points
+		/obj/item/stack/barbed_wire/full_stack, // 10
+		/obj/item/defenses/handheld/sentry, // unknown
+		/obj/item/storage/box/explosive_mines, // 18
+		/obj/item/storage/box/explosive_mines, // 18 - no one cares about mines anyway...
 		/obj/item/circuitboard/apc,
 		/obj/item/cell/high,
 		/obj/item/tool/shovel/etool/folded,
 		/obj/item/device/lightreplacer,
 	)
 
-/obj/effect/essentials_set/engi/rapid_deployment
+/obj/effect/essentials_set/engi/rapid_repair // 65?.. okay...  works for me! - only way to get nailgun AND new pouch. FREE!!
 	spawned_gear_list = list(
-		/obj/item/storage/pouch/folding_barricade,
-		/obj/item/storage/pouch/folding_barricade,
+		/obj/item/storage/pouch/folding_barricade, // new pouchy pouch
 		/obj/item/stack/folding_barricade/three,
 		/obj/item/stack/folding_barricade/three,
-		/obj/item/stack/folding_barricade/three,
-		/obj/item/stack/sandbags/large_stack,
-		/obj/item/stack/sandbags/large_stack,
-		/obj/item/stack/barbed_wire/full_stack,
-		/obj/item/explosive/grenade/metal_foam,
-		/obj/item/explosive/grenade/metal_foam,
-		/obj/item/explosive/grenade/metal_foam,
+		/obj/item/stack/sandbags/large_stack, // 10
+		/obj/item/stack/barbed_wire/full_stack, // 10
+		/obj/item/stack/sheet/metal/large_stack, // 5 * 5 = 25
+		/obj/item/explosive/grenade/metal_foam, // 5 points
+		/obj/item/weapon/gun/smg/nailgun/compact, // 15 points
 		/obj/item/circuitboard/apc,
 		/obj/item/cell/high,
 		/obj/item/tool/shovel/etool/folded,
@@ -262,25 +261,17 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 		/obj/item/reagent_container/hypospray/autoinjector/emergency,
 	)
 
-/obj/effect/essentials_set/engi/frontline_supply
+/obj/effect/essentials_set/engi/demolitions // 49... 59 wit breachers... 69... nice. Free cuz 3 points more and... no one cares about the 6 points for Extinguisher and whistle otherwise it'd be 75 points, but c'mon...
 	spawned_gear_list = list(
-		/obj/item/stack/sheet/metal/large_stack,
-		/obj/item/stack/sheet/plasteel/small_stack = 16,
-		/obj/item/stack/barbed_wire/small_stack,
-		/obj/item/ammo_box/rounds,
-		/obj/item/circuitboard/apc,
-		/obj/item/cell/high,
-		/obj/item/tool/shovel/etool/folded,
-		/obj/item/device/lightreplacer,
-	)
-
-/obj/effect/essentials_set/engi/demolitions
-	spawned_gear_list = list(
-		/obj/item/explosive/plastic,
-		/obj/item/explosive/plastic,
-		/obj/item/storage/box/explosive_mines,
-		/obj/item/storage/box/packet/high_explosive,
-		/obj/item/stack/sheet/metal/large_stack,
+		/obj/item/explosive/plastic, // 3
+		/obj/item/explosive/plastic, // 3
+		/obj/item/explosive/plastic/breaching_charge, // 5
+		/obj/item/explosive/plastic/breaching_charge, // 5
+		/obj/item/storage/box/packet/high_explosive, // 18?
+		/obj/item/stack/sheet/metal/large_stack, // 25
+		/obj/item/tool/extinguisher/mini, // 3 ... cmon this is free basically anyway...
+		/obj/item/device/whistle, // 3 ... no one would ever buy this...
+		/obj/item/stack/sandbags_empty = 25, // 10 points ... fuck it, sandbags
 		/obj/item/circuitboard/apc,
 		/obj/item/cell/high,
 		/obj/item/tool/shovel/etool/folded,

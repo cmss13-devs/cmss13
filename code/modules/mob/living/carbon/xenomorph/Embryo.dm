@@ -109,6 +109,7 @@
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"), \
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
+					affected_mob.emote("tremor")
 					affected_mob.apply_effect(1, PARALYZE)
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
@@ -130,6 +131,7 @@
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
+					affected_mob.emote(pick("tremor", "shake"))
 					affected_mob.apply_effect(2, PARALYZE)
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
@@ -148,6 +150,7 @@
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
 					affected_mob.apply_effect(3, PARALYZE)
 					affected_mob.make_jittery(105)
+					affected_mob.emote(pick("seize", "tremor","shake"))
 					affected_mob.take_limb_damage(1)
 		if(5)
 			become_larva()
@@ -329,6 +332,7 @@
 
 	for(var/mob/living/carbon/xenomorph/larva/larva_embryo in victim)
 		var/datum/hive_status/hive = GLOB.hive_datum[larva_embryo.hivenumber]
+		larva_embryo.emote("me", 1, "rips their way out from inside the chest of [victim]")
 		larva_embryo.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
 		playsound(larva_embryo, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
 

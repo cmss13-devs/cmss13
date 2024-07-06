@@ -192,7 +192,7 @@
 
 /datum/chem_property/neutral/hallucinogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(5 * delta_time))
-		M.emote(pick("twitch","drool","moan","giggle"))
+		M.emote(pick("twitch","drool","groan","giggle"))
 	if(potency > CREATE_MAX_TIER_1)
 		M.hallucination = min(M.hallucination + potency, potency * 10)
 		M.make_jittery(5)

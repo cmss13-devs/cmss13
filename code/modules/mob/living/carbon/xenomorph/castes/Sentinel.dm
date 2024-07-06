@@ -92,6 +92,7 @@
 		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
 		carbon_target.sway_jitter(times = 3, steps = floor(NEURO_TOUCH_DELAY/3))
 		carbon_target.apply_effect(4, DAZE)
+		carbon_target.emote(pick("drool","tremor","rapidblink","stumble"))
 		addtimer(CALLBACK(src, PROC_REF(paralyzing_slash), carbon_target), NEURO_TOUCH_DELAY)
 		next_slash_buffed = FALSE
 	if(!next_slash_buffed)
@@ -105,4 +106,5 @@
 /datum/behavior_delegate/sentinel_base/proc/paralyzing_slash(mob/living/carbon/human/human_target)
 	human_target.KnockDown(2)
 	human_target.Stun(2)
+	human_target.emote("paralyzed")
 	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the toxin!"))

@@ -82,6 +82,7 @@
 			return
 
 		visible_message(SPAN_NOTICE("[src] begins climbing into [vent_found]."), SPAN_NOTICE("We begin climbing into [vent_found]."))
+		emote("me", 1, "begins crawling into [vent_found].")
 		vent_found.animate_ventcrawl()
 		if(!do_after(src, 45, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			vent_found.animate_ventcrawl_reset()

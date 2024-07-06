@@ -44,6 +44,7 @@
 
 			attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> starts performing <b>CPR</b> on <b>[src]</b>."),
 				SPAN_HELPFUL("You start <b>performing CPR</b> on <b>[src]</b>."))
+			attacking_mob.emote("me", 1, "begins performing CPR on [src]")
 
 			cpr_attempt_timer = world.time + HUMAN_STRIP_DELAY * attacking_mob.get_skill_duration_multiplier(SKILL_MEDICAL)
 			if(do_after(attacking_mob, HUMAN_STRIP_DELAY * attacking_mob.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))

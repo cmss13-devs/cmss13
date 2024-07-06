@@ -888,6 +888,7 @@
 	if(stat == 2) //One last corpse check
 		return
 	src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)
+	emote("vomit")
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1, 7)
 
 	var/turf/location = loc
@@ -1707,15 +1708,12 @@
 
 /mob/living/carbon/human/on_knockedout_trait_gain(datum/source)
 	. = ..()
-	
 	update_execute_hud()
-	
 	return .
 
 /mob/living/carbon/human/on_knockedout_trait_loss(datum/source)
 	. = ..()
 
 	update_execute_hud()
-	
 	return .
-	
+

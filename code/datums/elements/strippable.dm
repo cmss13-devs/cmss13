@@ -99,6 +99,8 @@
 		SPAN_NOTICE("[user] tries to put [equipping] on [source]."),
 		SPAN_NOTICE("[user] tries to put [equipping] on you.")
 	)
+	user.emote("me", 1, "begins to put [equipping] on [source].")
+
 
 	if (ismob(source))
 		var/mob/sourcemob = source
@@ -152,6 +154,7 @@
 		SPAN_WARNING("[user] tries to remove [source]'s [item]."),
 		SPAN_DANGER("[user] tries to remove your [item].")
 	)
+	user.emote("me", 1, "begins to remove [item] from [source].")
 
 	if (ismob(source))
 		var/mob/sourcemob = source

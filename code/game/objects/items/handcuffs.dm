@@ -43,6 +43,7 @@
 		msg_admin_attack("[key_name(user)] attempted to handcuff [key_name(human_mob)] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
 
 		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [human_mob]."))
+		user.emote("me", 1, "attempts to put [src] on [human_mob].")
 		if(do_after(user, cuff_delay, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, human_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(src == user.get_active_hand() && !human_mob.handcuffed && Adjacent(user))
 				if(iscarbon(human_mob))
@@ -55,6 +56,7 @@
 					user.count_niche_stat(STATISTICS_NICHE_HANDCUFF)
 
 	else if(ismonkey(target))
+		user.emote("me", 1, "attempts to put [src] on [target].")
 		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [target]."))
 		if(do_after(user, 30, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(src == user.get_active_hand() && !target.handcuffed && Adjacent(user))

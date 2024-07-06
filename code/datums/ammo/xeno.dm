@@ -69,6 +69,7 @@
 			if(M.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
 				M.KnockDown(power)
 				M.Stun(power)
+				M.emote("foamfall")
 				M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /proc/apply_scatter_neuro(mob/living/M)
@@ -252,6 +253,7 @@
 	neuro_effect.duration += 5
 	moob.apply_effect(3, DAZE)
 	to_chat(moob, SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended
+	INVOKE_ASYNC(moob, TYPE_PROC_REF(/mob, emote), "neuroglob")
 	drop_nade(get_turf(proj), proj,TRUE)
 
 /datum/ammo/xeno/boiler_gas/on_hit_obj(obj/outbacksteakhouse, obj/projectile/proj)
@@ -298,7 +300,7 @@
 			return
 	to_chat(moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
 	playsound(moob,"acid_strike",75,1)
-	INVOKE_ASYNC(moob, TYPE_PROC_REF(/mob, emote), "pain") // why do I need this bullshit
+	INVOKE_ASYNC(moob, TYPE_PROC_REF(/mob, emote), "acidglob") // why do I need this bullshit
 	new /datum/effects/acid(moob, proj.firer)
 	drop_nade(get_turf(proj), proj,TRUE)
 

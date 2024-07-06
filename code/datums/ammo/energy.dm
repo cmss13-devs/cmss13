@@ -38,6 +38,7 @@
 		var/mob/living/carbon/human/humanus = mobs
 		humanus.disable_special_items() // Disables scout cloak
 		humanus.make_jittery(40)
+		humanus.emote("electrocuted")
 
 /datum/ammo/energy/taser/precise
 	name = "precise taser bolt"

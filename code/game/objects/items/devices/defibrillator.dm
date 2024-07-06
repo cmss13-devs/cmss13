@@ -172,6 +172,7 @@
 
 	user.visible_message(SPAN_NOTICE("[user] starts setting up the paddles on [H]'s chest"), \
 		SPAN_HELPFUL("You start <b>setting up</b> the paddles on <b>[H]</b>'s chest."))
+	user.emote("me", 1, "starts setting up the paddles on [H]'s chest.")
 	playsound(get_turf(src),'sound/items/defib_charge.ogg', 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 
 	//Taking square root not to make defibs too fast...

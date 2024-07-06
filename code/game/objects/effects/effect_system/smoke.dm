@@ -156,7 +156,7 @@
 	if(affected_mob.coughedtime < world.time && !affected_mob.stat)
 		affected_mob.coughedtime = world.time + 2 SECONDS
 		if(ishuman(affected_mob)) //Humans only to avoid issues
-			affected_mob.emote("cough")
+			affected_mob.emote(pick("cough", "squint"))
 	return TRUE
 
 /////////////////////////////////////////////
@@ -300,7 +300,7 @@
 	if(creature.coughedtime < world.time && !creature.stat)
 		creature.coughedtime = world.time + 2 SECONDS
 		if(ishuman(creature)) //Humans only to avoid issues
-			creature.emote("gasp")
+			creature.emote(pick("gasp", "squint", "eyebleed", "bloodcough"))
 	return TRUE
 
 /////////////////////////////////////////////
@@ -346,7 +346,7 @@
 				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),\
 				SPAN_DANGER("Your skin is sloughing off!"))
 			else
-				affected_mob.emote("cough")
+				affected_mob.emote(pick("gasp", "squint", "eyebleed", "bloodcough"))
 
 	if(isyautja(affected_mob) || isxeno(affected_mob))
 		damage *= xeno_yautja_reduction
@@ -427,9 +427,7 @@
 	if(human_creature && creature.coughedtime < world.time && !creature.stat) //Coughing/gasping
 		creature.coughedtime = world.time + 1.5 SECONDS
 		if(prob(50))
-			creature.emote("cough")
-		else
-			creature.emote("gasp")
+			creature.emote(pick("cough", "bloodcough", "squint", "gasp"))
 
 	var/stun_chance = 20
 	if(xeno_affecting)

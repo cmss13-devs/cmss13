@@ -225,8 +225,8 @@
 /obj/item/clothing/gloves/marine/caustic
 	name = "\improper Z-210 Gloves"
 	desc = "A pair of ANCW Gloves. Their insides are incredibly soft and cool to the touch."
-	icon_state = "caustic_H"
-	item_state = "caustic_H"
+	icon_state = "caustic_h"
+	item_state = "caustic_h"
 	siemens_coefficient = 1
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_LOW

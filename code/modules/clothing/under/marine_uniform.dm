@@ -655,8 +655,8 @@
 	name = "\improper ANCW Unifrom"
 	desc = "A modified version of standart issue USMC uniform. Lacking Kevlar, it possses soft gel pads instead. It almost feels like wearing a pyjama."
 	siemens_coefficient = 0.9
-	icon_state = "caustic_H"
-	worn_state = "caustic_H"
+	icon_state = "caustic_h"
+	worn_state = "caustic_h"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE

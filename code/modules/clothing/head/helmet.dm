@@ -1000,8 +1000,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper Z-210 Helmet"
 	desc = "It's a ANCW Helmet. Its fitted with an integrated gasmask and visor. The inside is cushioned with cool gelpads to protect against harsh temperature changes and heavy impacts."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	icon_state = "caustic_H"
-	item_state = "caustic_H"
+	icon_state = "caustic_h"
+	item_state = "caustic_h"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)

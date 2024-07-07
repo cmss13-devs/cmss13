@@ -146,8 +146,9 @@
 		return
 	if(organ_status >= ORGAN_BRUISED)
 		if(prob(5))
-			owner.emote(pick("bloodcough", "gasp", "wheeze"))
 			owner.losebreath += 15
+			if(prob(10))
+				owner.emote(pick("bloodcough", "gasp", "wheeze"))
 	if(organ_status >= ORGAN_BROKEN)
 		if(prob(12))
 			owner.emote("badlung")

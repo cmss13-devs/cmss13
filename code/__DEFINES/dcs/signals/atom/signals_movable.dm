@@ -12,7 +12,7 @@
 /// From /turf/open/gm/river/Entered(): (turf/open/gm/river/river, covered)
 #define COMSIG_MOVABLE_ENTERED_RIVER "movable_entered_river"
 /// From /atom/movable/proc/doMove: I think it only works with forceMove so watch out
-#define COMSIG_MOVABLE_PRE_CROSSED "movable_pre_cross"
+#define COMSIG_MOVABLE_FORCEMOVE_PRE_CROSSED "movable_forcemove_pre_crossed"
 	#define COMPONENT_IGNORE_CROSS (1<<0)
 
 ///from /mob/living/carbon/xenomorph/start_pulling(): (mob/living/carbon/xenomorph/X)

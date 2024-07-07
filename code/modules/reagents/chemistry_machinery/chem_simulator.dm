@@ -68,22 +68,23 @@
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
 	if(istype(B, /obj/item/paper/research_notes))
-		var/obj/item/paper/research_notes/N = B
+		var/obj/item/paper/research_notes/note = B
 		if(!target || (mode == MODE_RELATE && !reference))
-			B = N.convert_to_chem_report()
+			B = note.convert_to_chem_report()
 		else
 			to_chat(user, SPAN_WARNING("Chemical data already inserted."))
 			return
 	if(istype(B, /obj/item/paper/research_report))
-		if(!target)
+		var/obj/item/paper/research_report/note = B
+		if(!target && note.data)
 			target = B
 			ready = check_ready()
-		else if(mode == MODE_RELATE && !reference)
+		else if(mode == MODE_RELATE && !reference && note.data)
 			target_property = null
 			reference = B
 			ready = check_ready()
 		else
-			to_chat(user, SPAN_WARNING("Chemical data already inserted."))
+			to_chat(user, SPAN_WARNING("Chemical data [note.data ? "is already inserted" : "is refused"]"))
 			return
 	else
 		to_chat(user, SPAN_WARNING("[src] refuses [B]."))
@@ -110,7 +111,6 @@
 /obj/structure/machinery/chem_simulator/ui_data(mob/user)
 	. = ..()
 	var/list/data = list()
-	data["credits"] = GLOB.chemical_data.rsc_credits
 	data["status"] = status_bar
 	ready = check_ready()
 	data["is_ready"] = ready
@@ -225,6 +225,7 @@
 			"mode_id" = modes_datum.mode_id,
 			"icon_type" = modes_datum.icon_type
 		))
+	static_data["credits"] = GLOB.chemical_data.rsc_credits
 	return static_data
 
 /obj/structure/machinery/chem_simulator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

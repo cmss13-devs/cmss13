@@ -45,12 +45,13 @@
 	return
 
 /mob/proc/death(datum/cause_data/cause_data, gibbed = 0, deathmessage = "seizes up and falls limp...")
+	emote("me", message = "[deathmessage]")
+	
 	if(stat == DEAD)
 		return 0
 
 	if(!gibbed)
 		visible_message("<b>\The [src.name]</b> [deathmessage]")
-		emote("me", message = "[deathmessage]")
 
 	if(cause_data && !istype(cause_data))
 		stack_trace("death called with string cause ([cause_data]) instead of datum")

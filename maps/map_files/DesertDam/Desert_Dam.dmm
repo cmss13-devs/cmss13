@@ -28816,7 +28816,7 @@
 /area/desert_dam/building/security/warden)
 "bNS" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas/swat,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "darkred2"
@@ -29958,7 +29958,7 @@
 /area/desert_dam/building/security/prison)
 "bRE" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas/swat,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkred2"
@@ -37651,7 +37651,7 @@
 "cqm" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/clothing/head/beret/sec/warden,
+/obj/item/clothing/head/CMB/beret,
 /turf/open/floor/prison{
 	icon_state = "darkred2"
 	},
@@ -43876,8 +43876,13 @@
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cJr" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/suit/armor/riot,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/obj/item/clothing/head/helmet/marine/veteran/cmb{
+	pixel_x = -7;
+	pixel_y = 13
+	},
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -61620,6 +61625,15 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
+"iEI" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/desert_dam/building/security/armory)
 "iHF" = (
 /turf/open/desert/dirt{
 	dir = 10;
@@ -78680,7 +78694,7 @@ bRF
 bRF
 bRF
 cyH
-cJr
+iEI
 bNw
 bZL
 bZJ

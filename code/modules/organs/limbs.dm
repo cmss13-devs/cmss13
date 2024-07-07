@@ -1424,7 +1424,6 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	has_stump_icon = TRUE
 	splint_icon_amount = 4
 	bandage_icon_amount = 4
-	var/disfigured = 0 //whether the head is disfigured.
 
 	var/eyes_r
 	var/eyes_g
@@ -1462,25 +1461,6 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 							mob/attack_source = null,\
 							brute_reduced_by = -1, burn_reduced_by = -1)
 	. = ..()
-	if (!disfigured)
-		if (brute_dam > 50 || brute_dam > 40 && prob(50))
-			disfigure("brute")
-		if (burn_dam > 40)
-			disfigure("burn")
-
-/obj/limb/head/proc/disfigure(type = "brute")
-	if (disfigured)
-		return
-	if(type == "brute")
-		owner.visible_message(SPAN_DANGER("You hear a sickening cracking sound coming from \the [owner]'s face."), \
-		SPAN_DANGER("<b>Your face becomes an unrecognizible mangled mess!</b>"), \
-		SPAN_DANGER("You hear a sickening crack."))
-	else
-		owner.visible_message(SPAN_DANGER("[owner]'s face melts away, turning into a mangled mess!"), \
-		SPAN_DANGER("<b>Your face melts off!</b>"), \
-		SPAN_DANGER("You hear a sickening sizzle."))
-	disfigured = 1
-	owner.name = owner.get_visible_name()
 
 /obj/limb/head/reset_limb_surgeries()
 	for(var/zone in list("head", "eyes", "mouth"))

@@ -2888,6 +2888,8 @@
 /area/bigredv2/outside/marshal_office)
 "aiE" = (
 /obj/structure/closet/secure_closet/marshal,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -2927,7 +2929,7 @@
 "aiI" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/clothing/head/beret/sec/warden,
+/obj/item/clothing/head/CMB/beret,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -3473,8 +3475,7 @@
 /area/bigredv2/outside/marshal_office)
 "akk" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/suit/armor/riot,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -27945,6 +27946,13 @@
 	icon_state = "mars_dirt_7"
 	},
 /area/bigredv2/caves/mining)
+"ejw" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshal_office)
 "ejP" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/se)
@@ -60801,7 +60809,7 @@ acp
 aiI
 afT
 afT
-akk
+ejw
 aer
 agz
 ajL

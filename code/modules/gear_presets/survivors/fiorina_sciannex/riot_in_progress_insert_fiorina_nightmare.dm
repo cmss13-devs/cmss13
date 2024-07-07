@@ -12,32 +12,35 @@
 
 //*************************************************CMB****************************************************/
 
-/datum/equipment_preset/survivor/cmb/standard
-	name = "Survivor - Colonial Marshal Deputy(Riot Response)"
-	paygrade = PAY_SHORT_CMBD
-	role_comm_title = "CMB DEP"
+/datum/equipment_preset/survivor/cmb/riot
+	name = "Survivor - CMB Riot Control Officer"
+	paygrade = PAY_SHORT_CMBR
+	role_comm_title = "CMB RCO"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "CMB Deputy"
-	rank = JOB_CMB
+	faction = FACTION_MARSHAL
+	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
+	assignment = "CMB Riot Control Officer"
+	rank = JOB_CMB_RIOT
 	skills = /datum/skills/cmb
 
-/datum/equipment_preset/survivor/cmb/standard/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/cmb/riot/load_gear(mob/living/carbon/human/new_human)
 
 	var/choice = rand(1,10)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/cmb, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette, WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/swat, WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/cmb, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/holdout, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15/rubber, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/CMB/full, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/cmb, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/mgoggles/cmb_riot_shield, WEAR_IN_HELMET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/tactical, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera, WEAR_IN_BACK)
@@ -87,21 +90,24 @@
 /datum/equipment_preset/synth/survivor/cmb
 	flags = EQUIPMENT_PRESET_STUB
 
-/datum/equipment_preset/synth/survivor/cmb/synth
-	name = "Survivor - Synthetic - CMB Investigative Synthetic(Riot Response)"
-	paygrade = PAY_SHORT_CMBS
-	idtype = /obj/item/card/id/deputy
+/datum/equipment_preset/synth/survivor/cmb/riotsynth
+	name = "Survivor - Synthetic - CMB Riot Control Synthetic"
+	paygrade = PAY_SHORT_CMBRS
+	idtype = /obj/item/card/id/deputy/riot
 	role_comm_title = "CMB Syn"
+	faction = FACTION_MARSHAL
+	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "CMB Investigative Synthetic"
-	rank = JOB_CMB_SYN
+	assignment = "CMB Riot Control Synthetic"
+	rank = JOB_CMB_RSYN
 	languages = ALL_SYNTH_LANGUAGES
+	idtype = /obj/item/card/id/deputy/riot
 	skills = /datum/skills/synthetic/cmb
 
-/datum/equipment_preset/synth/survivor/cmb/synth/load_race(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/survivor/cmb/riotsynth/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_COLONY)
 
-/datum/equipment_preset/synth/survivor/cmb/synth/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/survivor/cmb/riotsynth/load_gear(mob/living/carbon/human/new_human)
 	//backpack
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/security, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb/normalpoint, WEAR_IN_BACK)
@@ -117,9 +123,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/pen, WEAR_R_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB/beret, WEAR_HEAD)
 	//uniform
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/cmb, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_ACCESSORY)

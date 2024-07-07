@@ -241,7 +241,7 @@
 /datum/equipment_preset/clf/engineer/get_antag_gear_equipment()
 	return list(
 		list("MECHANIC SET (MANDATORY)", 0, null, null, null),
-		list("Essential Mechanic Set", 0, /obj/effect/essentials_set/engi/basic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Basic Mechanic Set", 0, /obj/effect/essentials_set/engi/basic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Airlock Circuit Board", 2, /obj/item/circuitboard/airlock, null, VENDOR_ITEM_REGULAR),

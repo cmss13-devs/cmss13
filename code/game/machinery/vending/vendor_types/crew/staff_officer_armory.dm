@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer_armory, list(
 		list("Aviator Shades", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 
 		list("SPECIALISATION KIT (CHOOSE 1)", 0, null, null, null),
-		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi/basic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
+		list("Basic Engineer Set", 0, /obj/effect/essentials_set/engi/basic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
 		list("Essential Medical Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),

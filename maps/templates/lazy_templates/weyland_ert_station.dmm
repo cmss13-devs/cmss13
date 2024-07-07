@@ -1932,6 +1932,11 @@
 	icon_state = "squares"
 	},
 /area/adminlevel/ert_station/weyland_station)
+"yi" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/corporate,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/weyland_station)
 "yj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
@@ -5361,7 +5366,7 @@ fX
 NR
 He
 fl
-Yb
+yi
 fl
 He
 Pk

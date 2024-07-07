@@ -26,9 +26,9 @@
 	for(var/obj/item/clothing/accessory/accessory in accessories)
 		if(accessory.high_visibility)
 			ties += "\a [accessory.get_examine_line(user)]"
-	if(ties.len)
+	if(length(ties))
 		.+= " with [english_list(ties)] attached"
-	if(LAZYLEN(accessories) > ties.len)
+	if(LAZYLEN(accessories) > length(ties))
 		.+= ". <a href='?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
 
 /obj/item/clothing/Topic(href, href_list)
@@ -284,7 +284,7 @@
 			tankcheck = list(C.r_hand, C.l_hand, C.back)
 		var/best = 0
 		var/bestpressure = 0
-		for(var/i=1, i<tankcheck.len+1, ++i)
+		for(var/i=1, i<length(tankcheck)+1, ++i)
 			if(istype(tankcheck[i], /obj/item/tank))
 				var/obj/item/tank/t = tankcheck[i]
 				var/goodtank

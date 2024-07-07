@@ -213,8 +213,8 @@
 /datum/emergency_call/cmb/riot_control
 	name = "CMB - Colonial Marshals Riot Control Unit (Friendly)"
 	mob_max = 6
-	mob_min = 0
-	probability = 10
+	mob_min = 2
+	probability = 20
 	home_base = /datum/lazy_template/ert/weyland_station
 	max_medics = 1
 	max_synths = 1

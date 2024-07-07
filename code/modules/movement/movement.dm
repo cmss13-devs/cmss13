@@ -140,7 +140,7 @@
 			destination.Entered(src, oldloc)
 			if(destarea && (old_area != destarea || !isturf(oldloc)))
 				destarea.Entered(src, oldloc)
-			if(!(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_CROSSED) & COMPONENT_IGNORE_CROSS))
+			if(!(SEND_SIGNAL(src, COMSIG_MOVABLE_FORCEMOVE_PRE_CROSSED) & COMPONENT_IGNORE_CROSS))
 				for(var/atom/movable/AM in destination)
 					if(AM == src)
 						continue

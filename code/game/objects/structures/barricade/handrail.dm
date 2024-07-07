@@ -40,6 +40,11 @@
 		if(E.icon_path && E.obj_icon_state_path)
 			overlays += image(E.icon_path, icon_state = E.obj_icon_state_path)
 
+/obj/structure/barricade/handrail/Collided(atom/movable/AM)
+	if(ismob(AM))
+		do_climb(AM)
+	..()
+
 /obj/structure/barricade/handrail/get_examine_text(mob/user)
 	. = ..()
 	switch(build_state)

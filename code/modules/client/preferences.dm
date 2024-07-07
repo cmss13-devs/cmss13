@@ -404,7 +404,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 			if(length(gear))
 				dat += "<br>"
-				for(var/i = 1; i <= gear.len; i++)
+				for(var/i = 1; i <= length(gear); i++)
 					var/datum/gear/G = GLOB.gear_datums_by_name[gear[i]]
 					if(G)
 						total_cost += G.cost
@@ -416,7 +416,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 			if(total_cost < MAX_GEAR_COST)
 				dat += " <a href='byond://?src=\ref[user];preference=loadout;task=input'><b>Add</b></a>"
-				if(gear && gear.len)
+				if(LAZYLEN(gear))
 					dat += " <a href='byond://?src=\ref[user];preference=loadout;task=clear'><b>Clear</b></a>"
 
 			dat += "</div>"
@@ -596,6 +596,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Sounds:</b> <a href='?_src_=prefs;preference=hear_admin_sounds'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play Announcement Sounds As Ghost:</b> <a href='?_src_=prefs;preference=hear_observer_announcements'><b>[(toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Play Fax Sounds As Ghost:</b> <a href='?_src_=prefs;preference=hear_faxes'><b>[(toggles_sound & SOUND_FAX_MACHINE) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Toggle Meme or Atmospheric Sounds:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle</a><br>"
 			dat += "<b>Set Eye Blur Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
 			dat += "<b>Set Flash Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set</a><br>"
@@ -666,7 +667,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
  * * width - Screen' width.
  * * height - Screen's height.
  */
-/datum/preferences/proc/SetChoices(mob/user, limit = 20, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
+/datum/preferences/proc/SetChoices(mob/user, limit = 21, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -784,7 +785,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
  * * width - Screen' width.
  * * height - Screen's height.
  */
-/datum/preferences/proc/set_job_slots(mob/user, limit = 20, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
+/datum/preferences/proc/set_job_slots(mob/user, limit = 21, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -1040,7 +1041,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/datum/gear/G
 					if(isnull(gear) || !islist(gear))
 						gear = list()
-					if(gear.len)
+					if(length(gear))
 						for(var/gear_name in gear)
 							G = GLOB.gear_datums_by_name[gear_name]
 							total_cost += G?.cost
@@ -1055,7 +1056,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("remove")
 					var/i_remove = text2num(href_list["gear"])
-					if(i_remove < 1 || i_remove > gear.len) return
+					if(i_remove < 1 || i_remove > length(gear)) return
 					gear.Cut(i_remove, i_remove + 1)
 
 				if("clear")
@@ -1849,6 +1850,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("hear_observer_announcements")
 					toggles_sound ^= SOUND_OBSERVER_ANNOUNCEMENTS
+
+				if("hear_faxes")
+					toggles_sound ^= SOUND_FAX_MACHINE
 
 				if("lobby_music")
 					toggles_sound ^= SOUND_LOBBY

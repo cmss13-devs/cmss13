@@ -80,7 +80,7 @@
 
 /datum/cas_fire_mission/proc/check(obj/structure/machinery/computer/dropship_weapons/linked_console)
 	error_weapon = null
-	if(records.len == 0)
+	if(length(records) == 0)
 		return FIRE_MISSION_ALL_GOOD //I mean yes... but why?
 
 	for(var/datum/cas_fire_mission_record/record in records)
@@ -105,7 +105,7 @@
 		var/i
 		if(!record.offsets)
 			continue
-		for(i=1,i<=record.offsets.len,i++)
+		for(i=1,i<=length(record.offsets),i++)
 			if(cd > 0)
 				cd--
 			if(record.offsets[i] == null || record.offsets[i] == "-")
@@ -192,7 +192,7 @@
 				envelope.change_current_loc(current_turf)
 		var/datum/cas_fire_mission_record/item
 		for(item in records)
-			if(item.offsets.len < step || item.offsets[step] == null || item.offsets[step]=="-")
+			if(length(item.offsets) < step || item.offsets[step] == null || item.offsets[step]=="-")
 				continue
 			var/offset = item.offsets[step]
 			if (current_turf == null)

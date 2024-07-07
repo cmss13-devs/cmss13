@@ -345,8 +345,11 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		client.add_to_screen(wear_id)
 		wear_id.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_id, hud_used.ui_datum.ui_id)
 
-	if(!wear_id.pinned_on_uniform || (w_uniform && w_uniform.displays_id && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)))
-		var/image/id_overlay = wear_id.get_mob_overlay(src, WEAR_ID)
+	var/obj/item/card/id/card = get_idcard()
+	if(!card)
+		return
+	if(!card.pinned_on_uniform || (w_uniform && w_uniform.displays_id && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)))
+		var/image/id_overlay = card.get_mob_overlay(src, WEAR_ID)
 		id_overlay.layer = -ID_LAYER
 		overlays_standing[ID_LAYER] = id_overlay
 		apply_overlay(ID_LAYER)
@@ -473,7 +476,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 					apply_overlay(HEAD_SQUAD_LAYER)
 
 			var/num_helmet_overlays = 0
-			for(var/i in 1 to marine_helmet.helmet_overlays.len)
+			for(var/i in 1 to length(marine_helmet.helmet_overlays))
 				// Add small numbers to the head garb layer so we don't have a layer conflict
 				// the i-1 bit is to make it 0-based, not 1-based like BYOND wants
 				overlays_standing[HEAD_GARB_LAYER + (i-1)] = image('icons/mob/humans/onmob/helmet_garb.dmi', src, marine_helmet.helmet_overlays[i])
@@ -534,7 +537,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 					overlays_standing[SUIT_SQUAD_LAYER] = squad_overlay
 					apply_overlay(SUIT_SQUAD_LAYER)
 
-			if(marine_armor.armor_overlays.len)
+			if(length(marine_armor.armor_overlays))
 				var/image/K
 				var/image/IMG
 				for(var/i in marine_armor.armor_overlays)

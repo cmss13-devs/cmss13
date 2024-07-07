@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(sound)
 			if(MC_TICK_CHECK)
 				return
 		while(length(run_hearers)) // Output sound to hearers
-			var/client/C = run_hearers[run_hearers.len]
+			var/client/C = run_hearers[length(run_hearers)]
 			run_hearers.len--
 			if(C && C.soundOutput)
 				C.soundOutput.process_sound(run_template)
@@ -40,6 +40,6 @@ SUBSYSTEM_DEF(sound)
 		for(var/datum/interior/VI in extra_interiors)
 			if(VI?.ready)
 				var/list/bounds = VI.get_middle_coords()
-				if(bounds.len >= 2)
+				if(length(bounds) >= 2)
 					hearers |= SSquadtree.players_in_range(RECT(bounds[1], bounds[2], VI.map_template.width, VI.map_template.height), bounds[3])
 	template_queue[template] = hearers

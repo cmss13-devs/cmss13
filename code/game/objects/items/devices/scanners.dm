@@ -277,7 +277,7 @@ K9 SCANNER
 
 	if(!QDELETED(O.reagents))
 		var/dat = ""
-		if(O.reagents.reagent_list.len > 0)
+		if(length(O.reagents.reagent_list) > 0)
 			var/one_percent = O.reagents.total_volume / 100
 			for (var/datum/reagent/R in O.reagents.reagent_list)
 				if(prob(reliability))
@@ -382,7 +382,7 @@ K9 SCANNER
 /obj/item/device/demo_scanner/proc/scan(obj/O)
 	if(QDELETED(O.reagents))
 		return
-	if(O.reagents.reagent_list.len > 0)
+	if(length(O.reagents.reagent_list) > 0)
 		for(var/datum/reagent/R in O.reagents.reagent_list)
 			dat += SPAN_BLUE("<br>[R.name]: [R.volume]u")
 			if(R.explosive)

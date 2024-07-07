@@ -269,7 +269,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 /world/proc/load_tm_message()
 	var/datum/getrev/revdata = GLOB.revdata
-	if(revdata.testmerge.len)
+	if(length(revdata.testmerge))
 		GLOB.current_tms = revdata.GetTestMergeInfo()
 
 /world/proc/update_status()

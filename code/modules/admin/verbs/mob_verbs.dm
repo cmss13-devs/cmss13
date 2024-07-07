@@ -203,7 +203,7 @@
 		else
 			return
 
-/client/proc/cmd_admin_object_narrate(obj/selected)
+/client/proc/cmd_admin_object_narrate(obj/selected in view(src))
 	set name = "Object Narrate"
 	set category = null
 
@@ -234,7 +234,7 @@
 	log_admin("[key_name(src)] sent an Object Narrate with message [message].")
 	message_admins("[key_name(src)] sent an Object Narrate with message [message].")
 
-/client/proc/cmd_admin_direct_narrate(mob/M)
+/client/proc/cmd_admin_direct_narrate(mob/M in GLOB.mob_list)
 	set name = "Narrate"
 	set category = null
 
@@ -330,7 +330,7 @@
 
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
 
-/client/proc/cmd_admin_change_their_hivenumber(mob/living/carbon/H)
+/client/proc/cmd_admin_change_their_hivenumber(mob/living/carbon/H in GLOB.living_mob_list)
 	set name = "Change Hivenumber"
 	set category = null
 
@@ -370,7 +370,7 @@
 	message_admins("[key_name(src)] changed hivenumber of [H] to [H.hivenumber].")
 
 
-/client/proc/cmd_admin_change_their_name(mob/living/carbon/carbon)
+/client/proc/cmd_admin_change_their_name(mob/living/carbon/carbon in GLOB.living_mob_list)
 	set name = "Change Name"
 	set category = null
 

@@ -129,8 +129,8 @@
 /obj/item/storage/box/spec/pyro/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M35(src)
 	new /obj/item/clothing/head/helmet/marine/pyro(src)
-	var/obj/item/weapon/gun/flamer/M240T/flamer = new(src)
-	new /obj/item/storage/large_holster/fuelpack(src, flamer)
+	new /obj/item/storage/large_holster/fuelpack(src)
+	new /obj/item/weapon/gun/flamer/M240T(src)
 	new /obj/item/ammo_magazine/flamer_tank/large(src)
 	new /obj/item/storage/pouch/flamertank(src)
 	new /obj/item/tool/extinguisher(src)
@@ -323,7 +323,7 @@
 		overlays += image('icons/obj/items/storage.dmi', "+[pro_case_overlay]")
 
 /obj/item/storage/box/kit/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		qdel(src)
 /obj/item/storage/box/kit/mou53_sapper
 	name = "\improper M-OU53 Field Test Kit"

@@ -435,7 +435,7 @@
 		if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			L.take_damage(0, potency)
 			return
-		if(L.implants && L.implants.len > 0)
+		if(LAZYLEN(L.implants) > 0)
 			var/obj/implanted_object = pick(L.implants)
 			if(implanted_object)
 				L.implants -= implanted_object
@@ -727,6 +727,11 @@
 	holder.rangefire = max(holder.rangefire, 1)
 	holder.durationfire = max(holder.durationfire, 1)
 	holder.intensityfire = max(holder.intensityfire, 1)
+
+	if(holder.intensityfire >= 50 && istype(holder, /datum/reagent/generated))
+		holder.burncolor = "#ffffff"
+	else
+		holder.burncolor = holder.color
 
 /datum/chem_property/positive/fire/fueling
 	name = PROPERTY_FUELING

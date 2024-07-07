@@ -805,7 +805,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		ui.open()
 
 /datum/crewmonitor/proc/show(mob/M, source)
-	if(!ui_sources.len)
+	if(!length(ui_sources))
 		START_PROCESSING(SSprocessing, src)
 	ui_sources[M] = source
 	tgui_interact(M)
@@ -823,7 +823,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 /datum/crewmonitor/ui_close(mob/M)
 	. = ..()
 	ui_sources -= M
-	if(!ui_sources.len)
+	if(!length(ui_sources))
 		STOP_PROCESSING(SSprocessing, src)
 
 /datum/crewmonitor/ui_host(mob/user)
@@ -942,6 +942,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_DROPSHIP_PILOT = 23,
 				JOB_DROPSHIP_CREW_CHIEF = 24,
 				JOB_INTEL = 25,
+				JOB_TANK_CREW = 26,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
 				JOB_PROVOST_TML = 30,

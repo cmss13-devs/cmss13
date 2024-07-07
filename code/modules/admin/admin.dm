@@ -67,7 +67,7 @@
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
-	if(!infos || !infos.len) return 0
+	if(!LAZYLEN(infos)) return 0
 	else return 1
 
 /datum/admins/proc/player_notes_all(key as text)
@@ -179,11 +179,11 @@
 		if(findtext("[path]", object))
 			matches += path
 
-	if(matches.len==0)
+	if(length(matches)==0)
 		return
 
 	var/chosen
-	if(matches.len==1)
+	if(length(matches)==1)
 		chosen = matches[1]
 	else
 		chosen = tgui_input_list(usr, "Select an atom type", "Spawn Atom", matches)

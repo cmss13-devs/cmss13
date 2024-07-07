@@ -106,6 +106,8 @@
 	active_agent = null
 	loser_agent = null
 	QDEL_LIST(agents)
+	var/obj/effect/landmark/tutorial/reqs_line_cleaner/line_cleaner = locate() in GLOB.landmarks_list
+	qdel(line_cleaner)
 	return ..()
 
 /datum/tutorial/marine/reqs_line/init_map()

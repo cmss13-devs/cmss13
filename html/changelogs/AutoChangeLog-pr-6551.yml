@@ -1,0 +1,4 @@
+author: "blackdragonTOW"
+delete-after: True
+changes:
+  - code_imp: "log the map name at round start"

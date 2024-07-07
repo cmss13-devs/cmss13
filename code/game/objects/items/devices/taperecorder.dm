@@ -67,7 +67,7 @@
 	if(!playing && !recording)
 		icons_available += list("Record" = image(radial_icon_file,"record"))
 		icons_available += list("Play" = image(radial_icon_file,"play"))
-		if(canprint && mytape?.storedinfo.len)
+		if(canprint && length(mytape?.storedinfo))
 			icons_available += list("Print Transcript" = image(radial_icon_file,"print"))
 
 	if(playing || recording)
@@ -241,7 +241,7 @@
 	if(playing)
 		return
 
-	if(mytape.storedinfo.len < 1)
+	if(length(mytape.storedinfo) < 1)
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] Tape has no data."))
 		return
 
@@ -257,7 +257,7 @@
 			break
 		if(playing == FALSE)
 			break
-		if(mytape.storedinfo.len < i)
+		if(length(mytape.storedinfo) < i)
 			audible_message(SPAN_MAROON("[icon2html(src, usr)] End of recording."))
 			break
 
@@ -265,7 +265,7 @@
 		langchat_speech(mytape.storedinfo[i], heard, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
 
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] [mytape.storedinfo[i]]"))//We want to display this properly, don't double encode
-		if(mytape.storedinfo.len < i + 1)
+		if(length(mytape.storedinfo) < i + 1)
 			playsleepseconds = 1
 			sleep(1 SECONDS)
 		else
@@ -310,7 +310,7 @@
 	set name = "Print Transcript"
 	set category = "Object"
 
-	if(!mytape.storedinfo.len)
+	if(!length(mytape.storedinfo))
 		return
 	if(!can_use(usr))
 		return
@@ -326,7 +326,7 @@
 	playsound(src, 'sound/items/taperecorder/taperecorder_print.ogg', 50, FALSE)
 	var/obj/item/paper/sheet_of_paper = new /obj/item/paper(get_turf(src))
 	var/t1 = "<B>Transcript:</B><BR><BR>"
-	for(var/i in 1 to mytape.storedinfo.len)
+	for(var/i in 1 to length(mytape.storedinfo))
 		t1 += "[mytape.storedinfo[i]]<BR>"
 	sheet_of_paper.info = t1
 	var/tapename = mytape.name

@@ -6,6 +6,11 @@
 	icon_state = "hair_crewcut"
 	gender = MALE
 
+/datum/sprite_accessory/hair/close_cut
+	name = "Closecut"
+	icon_state = "hair_close_cut"
+	gender = MALE
+
 /datum/sprite_accessory/hair/bald
 	name = "Bald"
 	icon_state = "bald"
@@ -96,6 +101,10 @@
 	name = "Pompadour"
 	icon_state = "hair_pompadour"
 	gender = MALE
+
+/datum/sprite_accessory/hair/firecracker
+	name = "Firecracker"
+	icon_state = "hair_firecracker"
 
 /datum/sprite_accessory/hair/cleancut
 	name = "Gentleman's Cut"
@@ -211,6 +220,11 @@
 	icon_state = "hair_sargeant"
 	gender = MALE
 	selectable = 0
+
+/datum/sprite_accessory/hair/slimtop
+	name = "Slim Top"
+	icon_state = "hair_slim_top"
+	gender = MALE
 
 /datum/sprite_accessory/hair/emo
 	name = "Emo"
@@ -526,6 +540,16 @@
 	icon_state = "hair_ponytail7"
 	gender = FEMALE
 
+/datum/sprite_accessory/hair/ponytail9
+	name = "Ponytail 9"
+	icon_state = "hair_ponytail_9"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/ponytail10
+	name = "Ponytail 10"
+	icon_state = "hair_top_ponytail"
+	gender = FEMALE
+
 /datum/sprite_accessory/hair/shorthair3
 	name = "Short Hair 3"
 	icon_state = "hair_shorthair3"
@@ -539,9 +563,34 @@
 	name = "Bun 2"
 	icon_state = "hair_bun2"
 
+/datum/sprite_accessory/hair/bun3
+	name = "Bun"
+	icon_state = "hair_space_buns"
+	gender = FEMALE
+
 /datum/sprite_accessory/hair/shortbangs
 	name = "Short Bangs"
 	icon_state = "hair_shortbangs"
+
+/datum/sprite_accessory/hair/shortbangs2
+	name = "Short Bangs 2"
+	icon_state = "hair_short_bangs"
+
+/datum/sprite_accessory/hair/bangs
+	name = "Long Bangs"
+	icon_state = "hair_bangs"
+
+/datum/sprite_accessory/hair/bangsreversed
+	name = "Long Bangs (Reversed)"
+	icon_state = "hair_reversed_bangs"
+
+/datum/sprite_accessory/hair/flowey
+	name = "Flowey Sides"
+	icon_state = "hair_flowey_sides"
+
+/datum/sprite_accessory/hair/twirly
+	name = "Twirly Hair"
+	icon_state = "hair_twirly"
 
 /datum/sprite_accessory/hair/shavedbun
 	name = "Shaved Bun"

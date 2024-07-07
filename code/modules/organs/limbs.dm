@@ -948,6 +948,7 @@ This function completely restores a damaged organ to perfect condition.
 		if(delete_limb)
 			qdel(organ)
 		else
+			owner.emote("me", message = "screams in pain as their [display_name] flies off in an arc!")
 			owner.visible_message(SPAN_WARNING("[owner.name]'s [display_name] flies off in an arc!"),
 			SPAN_HIGHDANGER("<b>Your [display_name] goes flying off!</b>"),
 			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)

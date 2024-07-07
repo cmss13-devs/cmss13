@@ -114,8 +114,8 @@
 	var/active = 0
 
 /obj/item/weapon/shield/riot/metal
-	name = "metal shield"
-	name = "A metal riot shield effective, but heavy."
+	name = "metal riot shield"
+	desc = "A metal riot shield effective, but heavy."
 	icon_state = "riotmetal"
 	item_state = "riotmetal"
 	base_icon_state = "riotmetal"

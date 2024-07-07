@@ -9,7 +9,7 @@
 	material = MATERIAL_METAL
 	anchored = TRUE
 	layer = BETWEEN_OBJECT_ITEM_LAYER
-	exit_stun = 0 //no stun because it's a (glass) 'locker'
+	exit_stun = 1
 	health = 750
 
 	open_sound = 'sound/effects/metal_door_open.ogg'
@@ -21,7 +21,8 @@
 		icon_state = "phonebox_on_empty_closed"
 		for(var/mob/M in src)
 			icon_state = "phonebox_on_full_closed"
-/obj/structure/closet/phonebox_off
+
+/obj/structure/closet/phonebox/off
 	name = "phonebox"
 	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, the bulb has been smashed and it seems the line is down."
 	icon = 'icons/obj/structures/props/phonebox.dmi'
@@ -33,18 +34,43 @@
 	anchored = TRUE
 	layer = BETWEEN_OBJECT_ITEM_LAYER
 	exit_stun = 0 //no stun because it's a (glass) 'locker'
-	health = 750
+	health = 250
 
 	open_sound = 'sound/effects/metal_door_open.ogg'
 	close_sound = 'sound/effects/metal_door_close.ogg'
 
-/obj/structure/closet/phonebox_off/update_icon()
+/obj/structure/closet/phonebox/off/update_icon()
 	icon_state = "phonebox_off_open"
 	if(!opened)
 		icon_state = "phonebox_off_empty_closed"
 		for(var/mob/M in src)
 			icon_state = "phonebox_off_full_closed"
 
+/obj/structure/closet/phonebox/proc/explode()
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	deconstruct(FALSE)
+
+/obj/structure/closet/phonebox/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/closet/phonebox/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/closet/phonebox/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 // Not currently working fully (don't use)
 /obj/structure/machinery/phonebox

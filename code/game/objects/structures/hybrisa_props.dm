@@ -43,6 +43,22 @@
 			damage_state = 5
 	icon_state = "[initial(icon_state)]_damage_[damage_state]"
 
+/obj/structure/prop/hybrisa/vehicles/get_examine_text(mob/user)
+	. = ..()
+	switch(health)
+		if(2500 to 3000)
+			. += SPAN_WARNING("It looks to be in good condition.")
+		if(2000 to 2500)
+			. += SPAN_WARNING("It looks slightly damaged.")
+		if(1500 to 2000)
+			. += SPAN_WARNING("It looks moderately damaged.")
+		if(1000 to 1500)
+			. += SPAN_DANGER("It looks heavily damaged.")
+		if(500 to 1000)
+			. += SPAN_DANGER("It looks very heavily damaged.")
+		if(0 to 500)
+			. += SPAN_DANGER("It looks like it's about break down into scrap.")
+
 /obj/structure/prop/hybrisa/vehicles/proc/explode(dam, mob/M)
 	visible_message(SPAN_DANGER("[src] blows apart!"), max_distance = 1)
 	playsound(loc, 'sound/effects/car_crush.ogg', 20)
@@ -1331,8 +1347,9 @@
 	anchored = TRUE
 	density = TRUE
 	layer = WINDOW_LAYER
+	health = 200
 
-/obj/structure/prop/hybrisa/misc/slotmachine_broken
+/obj/structure/prop/hybrisa/misc/slotmachine/broken
 	name = "slot machine"
 	desc = "A broken slot machine."
 	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
@@ -1342,6 +1359,38 @@
 	anchored = TRUE
 	density = TRUE
 	layer = WINDOW_LAYER
+
+/obj/structure/prop/hybrisa/misc/slotmachine/bullet_act(obj/projectile/P)
+	health -= P.damage
+	..()
+	healthcheck()
+	return TRUE
+
+/obj/structure/prop/hybrisa/misc/slotmachine/proc/explode()
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/slotmachine/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hybrisa/misc/slotmachine/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/slotmachine/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine1
 	name = "coffee machine"
@@ -1842,7 +1891,7 @@
 	bound_width = 64
 	bound_height = 32
 	density = TRUE
-	health = 750
+	health = 500
 	anchored = TRUE
 	layer = ABOVE_XENO_LAYER
 	gender = PLURAL
@@ -1923,7 +1972,7 @@
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "smallwallvent1"
 	density = FALSE
-	health = 500
+	health = 250
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -2080,6 +2129,34 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
+// Sofa Black
+
+/obj/structure/bed/sofa/hybrisa/sofa/black
+	name = "Couch"
+	desc = "Just like Space Ikea would have wanted"
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon_state = "sofa_black"
+	anchored = TRUE
+	can_buckle = FALSE
+
+// Sofa Red
+
+/obj/structure/bed/sofa/hybrisa/sofa/red
+	name = "Couch"
+	desc = "Just like Space Ikea would have wanted"
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon_state = "sofa_red"
+	anchored = TRUE
+	can_buckle = FALSE
+
+/obj/structure/prop/hybrisa/misc/pole
+	name = "pole"
+	desc = "For all of your 'pole' related activities."
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon_state = "pole"
+	density = FALSE
+	layer = BELOW_MOB_LAYER
+
 /obj/structure/bed/sofa/hybrisa/misc/bench
 	name = "bench"
 	desc = "A metal frame, with seats that are fitted with synthetic leather, they've faded in time."
@@ -2109,6 +2186,38 @@
 	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, covered in blood and the glass is smashed. Hiding inside would be pointless."
 	icon_state = "phonebox_bloody_off_broken"
 
+/obj/structure/prop/hybrisa/misc/phonebox/bullet_act(obj/projectile/P)
+	health -= P.damage
+	..()
+	healthcheck()
+	return TRUE
+
+/obj/structure/prop/hybrisa/misc/phonebox/proc/explode()
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/phonebox/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hybrisa/misc/phonebox/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/misc/phonebox/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
+
 /obj/structure/prop/hybrisa/misc/urinal
 	name = "urinal"
 	desc = "A urinal."
@@ -2120,7 +2229,7 @@
 /obj/structure/prop/hybrisa/misc/urinal/dark
 	icon_state = "small_urinal_dark"
 
-/obj/structure/prop/hybrisa/misc/deco_edging
+/obj/effect/hybrisa/decal/hybrisa/deco_edging
 	name = "decorative concrete edging"
 	desc = "Decorative edging for bordering stuff, very fancy."
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
@@ -2129,7 +2238,7 @@
 	anchored = TRUE
 	layer = TURF_LAYER
 
-/obj/structure/prop/hybrisa/misc/deco_edging/corner
+/obj/effect/hybrisa/decal/hybrisa/deco_edging/corner
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "stone_edging_deco"
 	density = FALSE
@@ -2144,6 +2253,39 @@
 	bound_height = 64
 	bound_width = 64
 	layer = BILLBOARD_LAYER
+	health = 250
+
+/obj/structure/prop/hybrisa/signs/bullet_act(obj/projectile/P)
+	health -= P.damage
+	..()
+	healthcheck()
+	return TRUE
+
+/obj/structure/prop/hybrisa/signs/proc/explode()
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/signs/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hybrisa/signs/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/signs/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/hybrisa/signs/casniosign
 	name = "casino sign"
@@ -2185,15 +2327,17 @@
 
 /obj/structure/prop/hybrisa/signs/high_voltage
 	name = "warning sign"
-	desc = "DANGER - HIGH VOLTAGE - DEATH!."
+	desc = null
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "shockyBig"
+	layer = WALL_OBJ_LAYER
 
 /obj/structure/prop/hybrisa/signs/high_voltage/small
 	name = "warning sign"
-	desc = "DANGER - HIGH VOLTAGE - DEATH!."
+	desc = null
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "shockyTiny"
+	layer = WALL_OBJ_LAYER
 
 // Billboards, Signs and Posters
 
@@ -2204,7 +2348,7 @@
 	desc = "An advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard_bigger"
-	health = 1000
+	health = 500
 	bound_width = 64
 	bound_height = 32
 	density = FALSE
@@ -2310,7 +2454,8 @@
 	icon_state = "lattice1"
 	density = FALSE
 	layer = ABOVE_XENO_LAYER
-	health = 6000
+	health = 1000
+
 /obj/structure/prop/hybrisa/lattice_prop/lattice_1
 	icon_state = "lattice1"
 /obj/structure/prop/hybrisa/lattice_prop/lattice_2

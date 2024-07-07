@@ -157,7 +157,7 @@
 	vehicle_resistant = FALSE
 	unslashable = FALSE
 	gender = PLURAL
-	health = 250
+	health = 200
 
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters/bullet_act(obj/projectile/P)
 	health -= P.damage

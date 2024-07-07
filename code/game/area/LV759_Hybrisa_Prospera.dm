@@ -245,6 +245,7 @@
 	icon_state = "colonystreets_north"
 	ceiling = CEILING_NONE
 	minimap_color = MINIMAP_AREA_COLONY_STREETS
+
 /area/lv759/outdoors/colony_streets/central_streets
 	name = "Central Street - West"
 	icon_state = "colonystreets_west"
@@ -268,12 +269,10 @@
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 
-/area/lv759/outdoors/colony_streets/south_west_street_comms
-	name = "Colony Streets - Southwest - WY Checkpoint Passthrough - Subspace Communications"
-	icon_state = "colonystreets_southwest"
+/area/lv759/outdoors/colony_streets/south_east_street_comms
+	name = "Colony Streets - Southeast - Subspace-Communications"
+	icon_state = "comms_1"
 	ceiling = CEILING_NONE
-	ambience_exterior = AMBIENCE_HYBRISA_CAVES
-	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	minimap_color = MINIMAP_AREA_COMMS
 
 /area/lv759/outdoors/colony_streets/north_west_street
@@ -521,6 +520,7 @@
 	name = "Nova Medica Hospital Complex - Chief Medical Officer's Office"
 /area/lv759/indoors/hospital/maintenance
 	name = "Nova Medica Hospital Complex - Subspace Communications & Electrical Systems"
+	icon_state = "comms_1"
 	minimap_color = MINIMAP_AREA_COMMS
 /area/lv759/indoors/hospital/pharmacy
 	name = "Nova Medica Hospital Complex - Pharmacy & Outgoing Foyer"
@@ -767,7 +767,7 @@
 
 //T-comms
 /area/lv759/indoors/tcomms_northwest
-	name = "Telecommunications Substation - Northwest"
+	name = "Telecommunications Substation - West"
 	icon_state = "comms_1"
 	minimap_color = MINIMAP_AREA_COMMS
 
@@ -821,7 +821,7 @@
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex"
 	icon_state = "wylab"
 	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
-	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	ceiling = CEILING_METAL
 
 /area/lv759/indoors/wy_research_complex/medical_annex
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Medical Annex Building"

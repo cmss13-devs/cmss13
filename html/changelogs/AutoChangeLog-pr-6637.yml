@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - bugfix: "converts flash, flashbang to TG effect system, fixing issue(s)"

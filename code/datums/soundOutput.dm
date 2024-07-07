@@ -16,10 +16,12 @@
 		return
 	owner = client
 	RegisterSignal(owner, COMSIG_CLIENT_MOB_MOVED, PROC_REF(on_mob_moved))
+	RegisterSignal(owner, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(on_client_mob_logged_in))
 	return ..()
 
 /datum/soundOutput/Destroy()
 	UnregisterSignal(owner, COMSIG_CLIENT_MOB_MOVED)
+	UnregisterSignal(owner, COMSIG_CLIENT_MOB_LOGGED_IN)
 	owner = null
 	return ..()
 
@@ -78,7 +80,7 @@
 	else
 		S.status = SOUND_UPDATE 		
 	
-	var/positonal_sound = FALSE
+	var/positional_sound = FALSE
 	var/turf/source_turf
 	if(T.source && !QDELETED(T.source))
 		source_turf = get_turf(T.source)
@@ -87,10 +89,10 @@
 			source_sounds[num2text(T.channel)] = T.source
 			RegisterSignal(T.source, COMSIG_MOVABLE_MOVED, PROC_REF(update_sounds_from_source))
 	else if (T.x && T.y && T.z)
-		positonal_sound = TRUE
+		positional_sound = TRUE
 		source_turf = locate(T.x, T.y, T.z)
 
-	if(positonal_sound)
+	if(positional_sound)
 		var/turf/owner_turf = get_turf(owner.mob)
 		if(owner_turf)
 			// We're in an interior and sound came from outside
@@ -121,6 +123,10 @@
 	set name = ".soundend"
 
 	soundOutput.remove_sound(num2text(channel))
+
+/datum/soundOutput/proc/on_client_mob_logged_in(datum/source, mob/new_mob)
+	SIGNAL_HANDLER //COMSIG_CLIENT_MOB_LOGGED_IN
+	update_mob_environment_override()
 
 /datum/soundOutput/proc/update_ambience(area/target_area, ambience_override, force_update = FALSE)
 	var/status_flags = SOUND_STREAM

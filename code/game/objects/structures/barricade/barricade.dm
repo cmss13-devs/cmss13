@@ -449,6 +449,10 @@
 	else
 		material = user.l_hand
 
+	if(material.amount < nailgun.material_per_repair)
+		to_chat(user, SPAN_WARNING("You'll need more adequate repair material in your other hand to patch up [src]!"))
+		return FALSE
+
 	if(!istype(material, /obj/item/stack/sheet/))
 		to_chat(user, SPAN_WARNING("You'll need some adequate repair material in your other hand to patch up [src]!"))
 		return FALSE
@@ -479,7 +483,7 @@
 	update_health(-repair_value*maxhealth)
 	to_chat(user, SPAN_WARNING("You nail [material] to [src], restoring some of its integrity!"))
 	update_damage_state()
-	material.use(1)
+	material.use(nailgun.material_per_repair)
 	nailgun.current_mag.current_rounds -= 3
 	nailgun.in_chamber = null
 	nailgun.load_into_chamber()

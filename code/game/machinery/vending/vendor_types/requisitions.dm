@@ -139,6 +139,8 @@
 		list("Powerloader Certification", 0.75, /obj/item/pamphlet/skill/powerloader, VENDOR_ITEM_REGULAR),
 		list("Spare PDT/L Battle Buddy Kit", floor(scale * 4), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),
 		list("W-Y brand rechargeable mini-battery", floor(scale * 3), /obj/item/cell/crap, VENDOR_ITEM_REGULAR),
+		list("Nailgun Magazine (7x45mm)", floor(scale * 4), /obj/item/ammo_magazine/smg/nailgun, VENDOR_ITEM_REGULAR),
+		list("Nailgun Magazine Box (7x45mm)", floor(scale * 2), /obj/item/ammo_box/magazine/nailgun, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES BOXES", -1, null, null),
 		list("M15 Fragmentation Grenade Packet", 0, /obj/item/storage/box/packet/m15, VENDOR_ITEM_REGULAR),

@@ -536,6 +536,22 @@ DEFINES in setup.dm, referenced here.
 
 	var/obj/item/active_hand = get_active_hand()
 	if(active_hand)
+		if(active_hand.preferred_storage)
+			for(var/storage in active_hand.preferred_storage)
+				var/list/items_in_slot
+				if(islist(get_item_by_slot(active_hand.preferred_storage[storage])))
+					items_in_slot = get_item_by_slot(active_hand.preferred_storage[storage])
+				else
+					items_in_slot = list(get_item_by_slot(active_hand.preferred_storage[storage]))
+				
+				for(var/item_in_slot in items_in_slot)
+					if(istype(item_in_slot, storage))
+						var/slot = active_hand.preferred_storage[storage]
+						if(slot == WEAR_ACCESSORY)
+							slot = WEAR_IN_ACCESSORY
+
+						if(equip_to_slot_if_possible(active_hand, slot, 1, 0, 1, 1))
+							return 1
 		if(w_uniform)
 			for(var/obj/accessory in w_uniform.accessories)
 				var/obj/item/storage/internal/accessory/holster/holster = accessory

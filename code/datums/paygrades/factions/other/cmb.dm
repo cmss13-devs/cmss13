@@ -17,6 +17,23 @@
 	paygrade = PAY_SHORT_CMBS
 	name = "CMB Investigative Synthetic"
 
+/datum/paygrade/cmb/syn/riot
+	paygrade = PAY_SHORT_CMBRS
+	name = "CMB Riot Control Synthetic"
+
+/datum/paygrade/cmb/riot
+	paygrade = PAY_SHORT_CMBR
+	name = "CMB Riot Control Officer"
+	prefix = "Off."
+
+/datum/paygrade/cmb/med
+	paygrade = PAY_SHORT_CMBMT
+	name = "CMB Medical Technician"
+
+/datum/paygrade/cmb/eng
+	paygrade = PAY_SHORT_CMBBT
+	name = "CMB Breaching Technician"
+
 /datum/paygrade/cmb/icc
 	paygrade = PAY_SHORT_ICCA
 	name = "Interstellar Commerce Commission Agent"

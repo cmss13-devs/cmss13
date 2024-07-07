@@ -192,6 +192,21 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
+/obj/item/weapon/gun/smg/mp5/tactical
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+	)
+	random_spawn_under = list(
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/grip,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+	)
+
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.
 

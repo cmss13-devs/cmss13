@@ -277,6 +277,11 @@
 	new /obj/item/storage/pill_bottle/imidazoline(src)
 	new /obj/item/storage/pill_bottle/alkysine(src)
 
+/obj/item/storage/belt/medical/lifesaver/full/dutch/black
+	icon_state = "s_medicbag"
+	item_state = "s_medicbag"
+	has_gamemode_skin = FALSE
+
 /obj/item/storage/belt/medical/lifesaver/upp
 	name = "\improper Type 41 pattern lifesaver bag"
 	desc = "The Type 41 load rig is the standard load-bearing equipment of the UPP military. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies, and is common among medics."
@@ -687,6 +692,12 @@
 		dump_ammo_to(M, user, M.transfer_handful_amount)
 	else
 		return ..()
+
+/obj/item/storage/belt/shotgun/black
+	icon_state = "s_shotgunbelt"
+	item_state = "s_marinebelt"
+	has_gamemode_skin = FALSE
+
 
 /obj/item/storage/belt/shotgun/upp
 	name = "\improper Type 42 pattern shotgun shell loading rig"
@@ -1209,6 +1220,10 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
 
+/obj/item/storage/belt/gun/m4a3/black
+	icon_state = "s_m4a3_holster"
+	has_gamemode_skin = FALSE
+
 /obj/item/storage/belt/gun/m4a3/nailgun
 	name = "customized nailgun holster"
 	desc = "Combination of a M276 pistol holster and engineering toolbelt that have been cannibalized into a unique belt that can holster a compact nailgun and two spare nailgun magazines."
@@ -1292,6 +1307,10 @@
 /obj/item/storage/belt/gun/xm51/on_stored_atom_del(atom/movable/item)
 	if(istype(item, /obj/item/ammo_magazine/rifle/xm51))
 		magazines--
+
+/obj/item/storage/belt/gun/xm51/black
+	icon_state = "s_xm51_holster"
+	has_gamemode_skin = FALSE
 
 #undef MAXIMUM_MAGAZINE_COUNT
 

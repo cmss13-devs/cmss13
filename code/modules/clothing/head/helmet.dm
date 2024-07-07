@@ -333,6 +333,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/accessory/patch/falcon = "falconspatch",
 	/obj/item/ammo_magazine/handful = "bullet",
 	/obj/item/prop/helmetgarb/riot_shield = "helmet_riot_shield",
+	/obj/item/clothing/glasses/mgoggles/cmb_riot_shield = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/attachable/flashlight = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/prop/helmetgarb/chaplain_patch = "chaplain_patch",
 	/obj/item/tool/pen/fountain = "fountainpen",
@@ -1085,6 +1086,27 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "Standard issued helmet for the workers of Kutjevo. Contains a small webbing to hold small items like pens, oil or even a photo of a loved one."
 	icon_state = "kutjevo_helmet"
 	item_state = "kutjevo_helmet"
+
+//=============================//CMB\\==================================\\
+//=======================================================================\\
+
+/obj/item/clothing/head/helmet/marine/veteran/cmb
+	name = "M11R pattern CMB Riot helmet"
+	desc = "A CMB variant of the standard M10 pattern. The front plate is reinforced. This one is a lot more tight fitting, also protects from flashbangs."
+	icon_state = "cmb_helmet"
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	built_in_visors = list(new /obj/item/device/helmet_visor/security)
+
+/obj/item/clothing/head/helmet/marine/veteran/cmb/engi
+	built_in_visors = list(new /obj/item/device/helmet_visor/security, new /obj/item/device/helmet_visor/welding_visor)
+
+
 
 //==========================//DISTRESS\\=================================\\
 //=======================================================================\\

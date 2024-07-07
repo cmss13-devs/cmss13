@@ -535,6 +535,15 @@
 
 	attached_item.update_icon()
 
+/obj/item/clothing/glasses/mgoggles/cmb_riot_shield
+	name = "\improper TC2 CMB riot shield"
+	desc = "Yellowish protective glass piece, can be lifted up when needed, makes you see everything in yellow."
+	icon_state = "swat_shield"
+	icon = 'icons/obj/items/helmet_garb.dmi'
+	active_icon_state = "swat_shield"
+	inactive_icon_state = "swat_shield_up"
+	flags_equip_slot = null
+
 //welding goggles
 
 /obj/item/clothing/glasses/welding

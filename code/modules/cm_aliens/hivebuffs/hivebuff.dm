@@ -103,6 +103,9 @@
 	if(!_check_num_required_pylons())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
 		return FALSE
+	
+	if(!_check_danger())
+		to_chat(purchasing_mob, SPAN_XENONOTICE("There is not enough danger to warrant hive buffs."))
 
 	if(!_check_can_afford_buff())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive cannot afford [name]! [hive.buff_points] / [cost] points."))
@@ -218,6 +221,21 @@
 	if(ROUND_TIME > roundtime_to_enable)
 		return TRUE
 	return FALSE
+
+/datum/hivebuff/proc/_check_danger()
+	var/groundside_humans = 0
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
+
+		var/turf/turf = get_turf(current_human)
+		if(is_ground_level(turf?.z))
+			groundside_humans += 1
+
+	if(groundside_humans < 12)
+		return FALSE
+
+	return TRUE
 
 /// Checks if the hive can afford to purchase the buff returns TRUE if they can purchase and FALSE if not.
 /datum/hivebuff/proc/_check_can_afford_buff()
@@ -396,19 +414,6 @@
 /datum/hivebuff/game_ender_caste/handle_special_checks()
 	if(locate(/mob/living/carbon/xenomorph/king) in hive.totalXenos)
 		special_fail_message = "Only one King may exist at a time."
-		return FALSE
-
-	var/groundside_humans = 0
-	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
-			continue
-
-		var/turf/turf = get_turf(current_human)
-		if(is_ground_level(turf?.z))
-			groundside_humans += 1
-
-	if(groundside_humans < 12)
-		special_fail_message = "There is too little threat to warrant a King."
 		return FALSE
 
 	return !hive.has_hatchery

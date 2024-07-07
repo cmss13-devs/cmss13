@@ -11,3 +11,32 @@
       a synthetic headset as opposed to a senior command headset
   zzzmike:
   - spellcheck: more clarity for facehugger/lesser drone text
+2024-07-05:
+  AndroBetel:
+  - rscadd: Adds "Iron teeth" trait.
+  GrrrKitten:
+  - qol: Makes screenshake look less low FPS/jumpy
+  Venuska1117:
+  - bugfix: Make non-toxic water stop glowing.
+  coldironwarrior:
+  - spellcheck: fixed the medical rig belt's description
+2024-07-06:
+  Drathek:
+  - spellcheck: Fix grammar and plurality for vehicles and their hardpoints
+2024-07-07:
+  Blundir:
+  - rscadd: white corpsman helmet
+  Contrabang:
+  - rscadd: Re-added a fax machine to the WY ERT station
+  Doubleumc:
+  - code_imp: environmental reverb applies more reliably and only to positional sounds
+  - imageadd: adds CMP tracker sprites
+  - rscadd: adds a SEA headset, can track CO, XO, CMP
+  - rscadd: adds handheld crew monitor in SEATech vendor
+  - bugfix: right-click Examine no longer appears for interface buttons
+  GrrrKitten:
+  - ui: Swaps TM and MOTD order so that people actually see the MOTD
+  - admin: Removes the message for when no event info is input
+  realforest2001:
+  - code_imp: Changes OOC color settings for donators/non mentor/staff.
+  - admin: Mentors no longer receive debug logs as a result of being in GLOB.admins

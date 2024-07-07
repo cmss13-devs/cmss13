@@ -55,6 +55,7 @@
 #define TRACKER_LZ "track_lz"
 #define TRACKER_CO "track_co"
 #define TRACKER_XO "track_xo"
+#define TRACKER_CMP "track_cmp"
 #define TRACKER_CL "track_cl"
 
 #define TRACKER_ASL "_asl" // Alpha Squad Leader

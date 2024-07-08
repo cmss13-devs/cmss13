@@ -5,9 +5,8 @@
 	icon_gib = null
 	speed = XENO_SPEED_TIER_2
 	harm_intent_damage = 5
-	melee_damage_lower = 10
-	melee_damage_upper = 10
-	// TUpper and lower damage are set to 10 instead of using xeno damage tiers since attack_animal uses apply_damage and for some fucking reason refuses to accept apply_armoured_damage
+	melee_damage_lower = XENO_DAMAGE_TIER_1
+	melee_damage_upper = XENO_DAMAGE_TIER_2
 	move_to_delay = 5
 	meat_type = null
 	unsuitable_atoms_damage = 5
@@ -53,7 +52,6 @@
 
 /mob/living/simple_animal/hostile/alien/rotdrone/proc/handle_escort_qdel()
 	SIGNAL_HANDLER
-	escort = null
 	escorting = FALSE
 
 /mob/living/simple_animal/hostile/alien/rotdrone/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -64,6 +62,8 @@
 
 /mob/living/simple_animal/hostile/alien/rotdrone/Life()
 	. = ..()
+	if(escort && escort.stat == DEAD)
+		escorting = FALSE
 	if(get_dist(src, xeno_master) > 3)
 		adjustBruteLoss(5)
 		if(is_fighting == FALSE)

@@ -200,7 +200,7 @@
 	if(ishuman(carbon))
 		var/mob/living/carbon/human/victim = carbon
 		to_chat(victim, SPAN_XENOWARNING("As [xeno]'s wing-like claws rip into your [target_limb ? target_limb.display_name : "chest"], your wounds suddenly start hurting badly!"))
-		victim.apply_effect(10, AGONY)
+		victim.apply_effect(5, AGONY)
 		victim.emote("pain")
 		if(victim.getToxLoss() >= 20)
 			victim.vomit()
@@ -247,15 +247,15 @@
 		return
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] bends over and starts spewing large amounts of rancid ooze at it's feet, grasping at it as it cascades down!"), \
-	SPAN_XENOWARNING("We regurgitate a mix of plasma and stored flesh resin, moulding it into a loyal servant!"))
+	SPAN_XENOWARNING("We regurgitate a mix of plasma and flesh resin, moulding it into a loyal servant!"))
 	making_servant = TRUE
 
 	if(!do_after(xeno, creattime, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, ACTION_PURPLE_POWER_UP))
 		making_servant = FALSE
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("As [xeno] rises, the lump of decomposing sludge shudders and grows, animating into a melting xenomorph!"), \
-	SPAN_XENOWARNING("After much focusing, we compel the mound of flesh resin to take shape and rises!"))
+	xeno.visible_message(SPAN_XENOWARNING("As [xeno] rises, the lump of decomposing sludge shudders and grows, animating into a melting, odd-looking Drone!"), \
+	SPAN_XENOWARNING("With much effort, we compel the mound of flesh resin to take shape and rise!"))
 	var/mob/living/simple_animal/hostile/alien/rotdrone/rotxeno = new(xeno.loc, xeno)
 	servant_rise(rotxeno)
 	new_servant(rotxeno)
@@ -286,15 +286,19 @@
 	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
 
 	for(var/mob/living/simple_animal/hostile/alien/rotdrone/rotxeno in reaper.servants)
-		if(!can_see(xeno, target, 8))
+		if(!can_see(xeno, target, 10))
 			return
 		if(target == xeno)
 			servant_recall(rotxeno, xeno)
 			to_chat(xeno, SPAN_XENONOTICE("We recall our servants."))
 			return
-		else if(isturf(target) || isStructure(target))
+		else if(isStructure(target))
+			servant_moveto_structure(rotxeno, target)
 			to_chat(xeno, SPAN_XENONOTICE("We order our servants to go to [target]."))
-			servant_moveto(rotxeno, target)
+			return
+		else if(isturf(target))
+			servant_moveto_turf(rotxeno, target)
+			to_chat(xeno, SPAN_XENONOTICE("We order our servants to go to [target]."))
 			return
 		else if(iscarbon(target))
 			var/mob/living/carbon/cartar = target
@@ -324,7 +328,7 @@
 	if(!istype(servant))
 		return
 	servant.got_orders = TRUE
-	walk_to(servant, target, 0, 4)
+	servant.target_mob = target
 	servant.is_fighting = TRUE
 	servant.fighting_override = TRUE
 
@@ -336,9 +340,14 @@
 	servant.escort = target
 	walk_to(servant, servant.escort, rand(1, 2), 4)
 
-/datum/action/xeno_action/activable/command_servants/proc/servant_moveto(mob/living/simple_animal/hostile/alien/rotdrone/servant, turf/target)
+/datum/action/xeno_action/activable/command_servants/proc/servant_moveto_turf(mob/living/simple_animal/hostile/alien/rotdrone/servant, turf/target)
 	if(!istype(servant))
 		return
 	servant.got_orders = TRUE
 	walk_to(servant, target, 0, 4)
 
+/datum/action/xeno_action/activable/command_servants/proc/servant_moveto_structure(mob/living/simple_animal/hostile/alien/rotdrone/servant, turf/target)
+	if(!istype(servant))
+		return
+	servant.got_orders = TRUE
+	walk_to(servant, target, 1, 4)

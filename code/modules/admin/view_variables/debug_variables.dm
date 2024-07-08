@@ -4,11 +4,12 @@
 	var/header
 	if(D)
 		if(islist(D))
+			var/list/var_list = D
 			var/index = name
 			if (value)
-				name = D[name] //name is really the index until this line
+				name = var_list[name] //name is really the index until this line
 			else
-				value = D[name]
+				value = var_list[name]
 			header = "<li style='backgroundColor:white'>[VV_HREF_TARGET_1V(D, VV_HK_LIST_EDIT, "E", index)][VV_HREF_TARGET_1V(D, VV_HK_LIST_CHANGE, "C", index)][VV_HREF_TARGET_1V(D, VV_HK_LIST_REMOVE, "-", index)] "
 		else
 			header = "<li style='backgroundColor:white'>[VV_HREF_TARGET_1V(D, VV_HK_BASIC_EDIT, "E", name)][VV_HREF_TARGET_1V(D, VV_HK_BASIC_CHANGE, "C", name)][VV_HREF_TARGET_1V(D, VV_HK_BASIC_MASSEDIT, "M", name)] "

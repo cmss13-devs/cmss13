@@ -41,7 +41,7 @@
 	if(!skillcheck(user, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
 		to_chat(user, SPAN_DANGER("You aren't trained to remove dangerous substances from food!"))
 		return FALSE
-	return TRUE	
+	return TRUE
 
 /datum/food_processor_process/meat
 	input = /obj/item/reagent_container/food/snacks/meat
@@ -55,7 +55,7 @@
 	if(!skillcheck(user, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
 		to_chat(user, SPAN_DANGER("You aren't trained to remove dangerous substances from food!"))
 		return FALSE
-	return TRUE	
+	return TRUE
 
 /datum/food_processor_process/potato
 	input = /obj/item/reagent_container/food/snacks/grown/potato
@@ -102,7 +102,7 @@
 	if(processing)
 		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
 		return 1
-	if(contents.len > 0) //TODO: several items at once? several different items?
+	if(length(contents) > 0) //TODO: several items at once? several different items?
 		to_chat(user, SPAN_DANGER("Something is already in the processing chamber."))
 		return 1
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
@@ -130,7 +130,7 @@
 	if(src.processing)
 		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
 		return 1
-	if(src.contents.len == 0)
+	if(length(src.contents) == 0)
 		to_chat(user, SPAN_DANGER("The processor is empty."))
 		return 1
 	for(var/O in src.contents)

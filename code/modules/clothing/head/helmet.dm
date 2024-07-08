@@ -557,7 +557,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	// the human sprite is the only thing that reliably renders things, so
 	// we have to add overlays to that.
 	helmet_overlays = list() // Rebuild our list every time
-	if(pockets && pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
+	if(pockets && length(pockets.contents) && (flags_marine_helmet & HELMET_GARB_OVERLAY))
 		var/list/above_band_layer = list()
 		var/list/below_band_layer = list()
 		var/has_helmet_band = FALSE
@@ -799,6 +799,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M10 pattern medic"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
+
+/obj/item/clothing/head/helmet/marine/medic/white
+	name = "\improper M10 white corpsman helmet"
+	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Painted in medical white and has white cross in a red square painted on its front."
+	icon_state = "med_helmet_white"
+	specialty = "M10 pattern medic white"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 
 /obj/item/clothing/head/helmet/marine/covert
 	name = "\improper M10 covert helmet"

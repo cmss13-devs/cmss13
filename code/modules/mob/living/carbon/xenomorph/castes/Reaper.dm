@@ -5,7 +5,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_2
 	melee_damage_upper = XENO_DAMAGE_TIER_4
-	melee_vehicle_damage = XENO_DAMAGE_TIER_6
+	melee_vehicle_damage = XENO_DAMAGE_TIER_4
 	max_health = XENO_HEALTH_TIER_9
 	plasma_gain = XENO_PLASMA_GAIN_TIER_6
 	plasma_max = XENO_PLASMA_TIER_5
@@ -41,7 +41,7 @@
 /mob/living/carbon/xenomorph/reaper
 	caste_type = XENO_CASTE_REAPER
 	name = XENO_CASTE_REAPER
-	desc = "A horrifying alien, like an angel of departure. A sickening stench follows it wherever it goes."
+	desc = "A horrifying alien, like a false angel. A sickening stench follows it wherever it goes."
 	icon_size = 64
 	icon_xeno = 'icons/mob/xenos/reaper.dmi'
 	icon_state = "Reaper Walking"
@@ -66,10 +66,9 @@
 		/datum/action/xeno_action/onclick/choose_resin/not_primary,
 		/datum/action/xeno_action/activable/secrete_resin/reaper,
 		/datum/action/xeno_action/activable/flesh_harvest, //first macro
-		/datum/action/xeno_action/activable/flesh_bolster, //second macro
-		/datum/action/xeno_action/activable/claw_strike, //third macro
-		/datum/action/xeno_action/activable/raise_servant, //fourth macro
-		/datum/action/xeno_action/activable/command_servants, //fith macro
+		/datum/action/xeno_action/activable/claw_strike, //second macro
+		/datum/action/xeno_action/onclick/raise_servant, //third macro
+		/datum/action/xeno_action/activable/command_servants, //fourth macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
@@ -89,7 +88,6 @@
 
 	var/flesh_resin = 0
 	var/flesh_resin_max = 1000
-	var/flesh_bolstered = FALSE
 	var/harvesting = FALSE // So you can't harvest multiple corpses at once
 	var/list/mob/living/simple_animal/hostile/alien/rotdrone/servants = list() // List of active rotdrones
 	var/servant_max = 3 // How many rotdrones one Reaper can have at once
@@ -99,6 +97,7 @@
 	. += "Flesh Resin: [flesh_resin]"
 
 /datum/behavior_delegate/base_reaper/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
+	flesh_resin += 5
 	if(iscarbon(target_mob))
 		target_mob.apply_damage(flesh_resin * 0.01, TOX)
 

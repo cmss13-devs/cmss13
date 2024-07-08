@@ -278,9 +278,7 @@
 			else
 				playsound(loc, M.slash_sound, 25, 1)
 			apply_damage(damage, BRUTE)
-			/*
-			M.animation_attack_on(src) // Because apparently everyoen thought xenos just telepathically damaging non-human mobs was chill
-			*/
+			M.animation_attack_on(src) // No more telepathically killing simplemobs
 
 		if(INTENT_DISARM)
 

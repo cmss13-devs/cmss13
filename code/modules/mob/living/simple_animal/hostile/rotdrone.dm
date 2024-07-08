@@ -3,18 +3,22 @@
 	desc = "A rotting... thing vaguely reminiscent of a drone. Smells absolutely awful."
 	icon = 'icons/mob/xenos/drone.dmi'
 	icon_gib = null
-	speed = XENO_SPEED_TIER_4
+	speed = XENO_SPEED_TIER_2
+	harm_intent_damage = 5
+	melee_damage_lower = 10
+	melee_damage_upper = 10
+	// TUpper and lower damage are set to 10 instead of using xeno damage tiers since attack_animal uses apply_damage and for some fucking reason refuses to accept apply_armoured_damage
 	move_to_delay = 5
 	meat_type = null
 	unsuitable_atoms_damage = 5
 	faction = FACTION_XENOMORPH
 	heat_damage_per_tick = 30
 	stop_automated_movement_when_pulled = 1
-	break_stuff_probability = 0
-	destroy_surroundings = 0
+	break_stuff_probability = 20
 	wall_smash = 0
 	wander = 0
 	stop_automated_movement = 1
+	break_stuff_probability = 0
 	hud_possible = list(XENO_BANISHED_HUD)
 	var/mob/living/carbon/xenomorph/xeno_master // The xeno that spawned the rotdrone
 	var/mob/living/carbon/xenomorph/escort // A xeno that they've been ordered to follow
@@ -60,13 +64,16 @@
 
 /mob/living/simple_animal/hostile/alien/rotdrone/Life()
 	. = ..()
-	if(get_dist(src, xeno_master) > 4)
+	if(get_dist(src, xeno_master) > 3)
 		adjustBruteLoss(5)
 		if(is_fighting == FALSE)
-			if(escort == TRUE && escorting == TRUE && get_dist(src, escort) > 4)
-				walk_to(src, escort, rand(1, 3), 4)
-			if(got_orders == FALSE && get_dist(src, xeno_master) > 4)
-				walk_to(src, xeno_master, rand(1, 3), 4)
+			if(escort == TRUE && escorting == TRUE && get_dist(src, escort) > 3)
+				walk_to(src, escort, rand(1, 2), 4)
+			if(got_orders == FALSE && get_dist(src, xeno_master) > 3)
+				walk_to(src, xeno_master, rand(1, 2), 4)
+
+	if(escorting == FALSE)
+		escort = null
 	if(got_orders == FALSE)
 		fighting_override = FALSE
 	if(fighting_override == TRUE || stance == HOSTILE_STANCE_ATTACKING)
@@ -74,8 +81,10 @@
 	else if(fighting_override == FALSE)
 		is_fighting = FALSE
 
-/mob/living/simple_animal/hostile/alien/death(cause, gibbed, deathmessage = "screeches and collapses as it's body melts back into an inert, rotting ooze...")
+/mob/living/simple_animal/hostile/alien/rotdrone/death(cause, gibbed, deathmessage = "screeches and collapses as it's body melts back into an inert, rotting ooze...")
 	. = ..()
+	if(!xeno_master == null)
+		to_chat(xeno_master, SPAN_XENOWARNING("We feel that one of our servants has perished!"))
 
 /mob/living/simple_animal/hostile/alien/rotdrone/Destroy()
 	remove_from_all_mob_huds()

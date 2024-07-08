@@ -11,9 +11,9 @@
 	hostility = TRUE
 
 /datum/emergency_call/upp_commando/print_backstory(mob/living/carbon/human/M)
-	to_chat(M, SPAN_BOLD("You grew up in relativly simple family in [pick_weight(list("Eurasia" = 75, "a famished UPP colony" = 25))
-	to_chat(M, SPAN_BOLD("The family you grew up with were [pick_weight(list("getting by" = 50, "impoverished" = 25, "starving" = 25, "two" = 10, "three" = 20, "four" = 20, "five" = 30, "six" = 20))
-	to_chat(M, SPAN_BOLD("You come from a long line of [pick_weight(list("crop-harvesters" = 40, "soldiers" = 20, "factory workers" = 20, "scientists" = 5, "engineers" = 15))
+	to_chat(M, SPAN_BOLD("You grew up in relativly simple family in [pick(75;"Eurasia", 25;"a famished UPP colony")] with few belongings or luxuries."))
+	to_chat(M, SPAN_BOLD("The family you grew up with were [pick(50;"getting by", 25;"impoverished", 25;"starving")] and you were one of [pick(10;"two", 20;"three", 20;"four", 30;"five", 20;"six")] children."))
+	to_chat(M, SPAN_BOLD("You come from a long line of [pick(40;"crop-harvesters", 20;"soldiers", 20;"factory workers", 5;"scientists", 15;"engineers")], and quickly enlisted to improve your living conditions."))
 	to_chat(M, SPAN_BOLD("Following your enlistment UPP military at the age of 17 you were assigned to the 17th 'Smoldering Sons' battalion (six hundred strong) under the command of Colonel Ganbaatar."))
 	to_chat(M, SPAN_BOLD("You were shipped off with the battalion to one of the UPP's most remote territories, a gas giant designated MV-35 in the Anglo-Japanese Arm, in the Neroid Sector."))
 	to_chat(M, SPAN_BOLD("For the past 14 months, you and the rest of the Smoldering Sons have been stationed at MV-35's only facility, the helium refinery, Altai Station."))

@@ -76,7 +76,7 @@
 			feet_ch = 25
 
 
-	var/target_zone = pick_weight(list(1 = head_ch, 2 = body_ch, 3 = hands_ch, 4 = feet_ch))//1 
+	var/target_zone = pick(head_ch;1,body_ch;2,hands_ch;3,feet_ch;4)//1 - head, 2 - body, 3 - hands, 4- feet
 
 	passed = check_disease_pass_clothes(target_zone)
 

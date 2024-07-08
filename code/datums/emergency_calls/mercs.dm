@@ -10,7 +10,7 @@
 
 /datum/emergency_call/mercs/New()
 	. = ..()
-	hostility = pick_weight(list(FALSE = 75, TRUE = 25))
+	hostility = pick(75;FALSE,25;TRUE)
 	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 	if(hostility)
 		objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Warlord says. Ensure your survival at all costs."
@@ -95,7 +95,7 @@
 
 /datum/emergency_call/heavy_mercs/New()
 	. = ..()
-	hostility = pick_weight(list(FALSE = 75, TRUE = 25))
+	hostility = pick(75;FALSE,25;TRUE)
 	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 	if(hostility)
 		objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."

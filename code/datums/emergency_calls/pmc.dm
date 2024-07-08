@@ -62,10 +62,10 @@
 
 /datum/emergency_call/pmc/print_backstory(mob/living/carbon/human/M)
 	if(ishuman_strict(M))
-		to_chat(M, SPAN_BOLD("You were born [pick_weight(list("in Europe" = 75, "in Asia" = 15, "on Mars" = 10, "well-off" = 75, "well-established" = 15, "average" = 10))
+		to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
 		to_chat(M, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
 		to_chat(M, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
-		to_chat(M, SPAN_BOLD("You are [pick_weight(list("unaware of the xenomorph threat" = 50, "acutely aware of the xenomorph threat" = 15, "well-informed of the xenomorph threat" = 10))
+		to_chat(M, SPAN_BOLD("You are [pick(50;"unaware of the xenomorph threat", 15;"acutely aware of the xenomorph threat", 10;"well-informed of the xenomorph threat")]"))
 	else
 		to_chat(M, SPAN_BOLD("You were brought online in a Weyland-Yutani synthetic production facility, knowing only your engineers for the first few weeks for your pseudo-life."))
 		to_chat(M, SPAN_BOLD("You were programmed with standard synthetic skills as per facility and geneva protocol."))

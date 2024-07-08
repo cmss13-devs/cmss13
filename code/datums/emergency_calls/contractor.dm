@@ -56,7 +56,7 @@
 
 /datum/emergency_call/contractors/print_backstory(mob/living/carbon/human/M)
 	if(ishuman_strict(M))
-		to_chat(M, SPAN_BOLD("You were born [pick_weight(list("in the United States" = 60, "on Earth" = 20, "on a colony" = 20, "average" = 75, "poor" = 15, "well-established" = 10))
+		to_chat(M, SPAN_BOLD("You were born [pick(60;"in the United States", 20;"on Earth", 20;"on a colony")] to a [pick(75;"average", 15;"poor", 10;"well-established")] family."))
 		to_chat(M, SPAN_BOLD("Joining the USCM gave you a lot of combat experience and useful skills but changed you."))
 		to_chat(M, SPAN_BOLD("After getting out, you couldn't hold a job with the things you saw and did, deciding to put your skills to use you joined a Military Contractor firm."))
 		to_chat(M, SPAN_BOLD("You are a skilled mercenary, making better pay than in the Corps."))
@@ -65,7 +65,7 @@
 		to_chat(M, SPAN_BOLD("You were programmed with all of the medical and engineering knowledge a military fighting force support asset required."))
 		to_chat(M, SPAN_BOLD("You were soon after bought by Vanguard's Arrow Incorporated(VAI) to act as support personnel."))
 		to_chat(M, SPAN_BOLD("Some months after your purchase, you were assigned to the USCSS Inheritor, a VAI transport vessel."))
-	to_chat(M, SPAN_BOLD("You are [pick_weight(list("unaware" = 80, "faintly aware" = 15, "knowledgeable" = 5))
+	to_chat(M, SPAN_BOLD("You are [pick(80;"unaware", 15;"faintly aware", 5;"knowledgeable")] of the xenomorph threat."))
 	to_chat(M, SPAN_BOLD("You are employed by Vanguard's Arrow Incorporated(VAI), as a member of VAI Primary Operations(VAIPO)"))
 	to_chat(M, SPAN_BOLD("You are stationed on-board the USCSS Inheritor, a part of VAIPO Task-Force Charlie."))
 	to_chat(M, SPAN_BOLD("Under the directive of the VAI executive board, you have been assist in riot control, military aid, and to assist USCMC forces wherever possible."))

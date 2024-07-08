@@ -13774,15 +13774,6 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/reactor_garage)
-"gbq" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/plating,
-/area/lv522/indoors/c_block/cargo)
 "gbz" = (
 /obj/item/prop/colony/used_flare,
 /obj/structure/barricade/deployable{
@@ -60711,17 +60702,6 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/indoors/a_block/bridges)
-"xwv" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
-/area/lv522/outdoors/colony_streets/south_east_street)
 "xwD" = (
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8
@@ -88335,7 +88315,7 @@ yhi
 yhi
 fxl
 six
-gbq
+jCU
 jwM
 jwM
 ild
@@ -93100,7 +93080,7 @@ icW
 eHI
 xvl
 xvl
-xwv
+otS
 hMz
 gBy
 mUr
@@ -94008,7 +93988,7 @@ icW
 oPW
 xvl
 xvl
-xwv
+otS
 hMz
 fWG
 uwT

@@ -20591,7 +20591,6 @@
 /area/shiva/interior/lz2_habs)
 "pMK" = (
 /obj/structure/machinery/processor,
-/obj/structure/machinery/processor,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -21268,10 +21267,6 @@
 	},
 /obj/item/clothing/head/fez{
 	pixel_y = 6
-	},
-/obj/structure/machinery/light/double{
-	dir = 8;
-	pixel_y = -5
 	},
 /turf/open/floor/shiva{
 	dir = 1

@@ -5187,11 +5187,6 @@
 	name = "astroturf"
 	},
 /area/fiorina/station/park)
-"deL" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/flight_deck)
 "deR" = (
 /obj/item/toy/crayon/red,
 /turf/open/floor/plating/prison,
@@ -33376,11 +33371,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
-"ukR" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/space/basic,
-/area/fiorina/lz/near_lzI)
 "ulc" = (
 /obj/item/paper,
 /turf/open/floor/prison{
@@ -85644,7 +85634,7 @@ vlU
 xSz
 uYi
 lRT
-deL
+dzl
 dzl
 dzl
 dzl
@@ -88367,10 +88357,10 @@ xDw
 lRT
 lRT
 lRT
-ukR
-ukR
-ukR
-ukR
+taY
+taY
+taY
+taY
 lRT
 lRT
 lRT

@@ -4100,24 +4100,6 @@
 "cFz" = (
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/varadero/interior/caves/east)
-"cFK" = (
-/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
-	id = "undergroundhangarsouth";
-	unacidable = 1;
-	name = "Pontoon South Door";
-	openspeed = 17
-	},
-/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
-	id = "undergroundhangarsouth";
-	unacidable = 1;
-	name = "Pontoon South Door";
-	openspeed = 17
-	},
-/turf/open/floor/plating/icefloor{
-	dir = 1;
-	icon_state = "warnplate"
-	},
-/area/varadero/interior/maintenance/north)
 "cFZ" = (
 /obj/structure/cargo_container/kelland/left,
 /turf/open/gm/dirt,
@@ -14020,13 +14002,6 @@
 "jcT" = (
 /turf/closed/wall,
 /area/varadero/interior/maintenance)
-"jcY" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/maintenance/security)
 "jdm" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/sand_white/layer1,
@@ -51032,7 +51007,7 @@ wMw
 wMw
 wMw
 pAp
-cFK
+aVs
 kdV
 gvM
 gvM
@@ -63993,7 +63968,7 @@ ryD
 xJZ
 iLc
 dUL
-jcY
+bPk
 sny
 xJZ
 xJZ

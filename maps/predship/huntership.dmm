@@ -655,10 +655,6 @@
 	dir = 4;
 	health = 80
 	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

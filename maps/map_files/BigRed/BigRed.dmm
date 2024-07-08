@@ -21142,15 +21142,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
-"bmU" = (
-/obj/structure/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/machinery/power/terminal{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
 "bmV" = (
 /obj/structure/machinery/power/terminal{
 	dir = 1
@@ -56757,7 +56748,7 @@ asK
 asK
 axX
 bmn
-bmU
+bmV
 bns
 hhK
 tTI

@@ -53137,9 +53137,6 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
 /turf/open/floor/corsat,
 /area/corsat/theta/airlock/west/id)
 "oVT" = (

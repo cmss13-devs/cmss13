@@ -21378,8 +21378,6 @@
 /area/strata/ag/interior/outpost/med)
 "bsx" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/gen/foyer)
 "bsy" = (

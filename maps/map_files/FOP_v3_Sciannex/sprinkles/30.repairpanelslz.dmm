@@ -141,11 +141,6 @@
 	},
 /turf/open/space,
 /area/template_noop)
-"C" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/floor/plating/prison,
-/area/template_noop)
 "D" = (
 /obj/item/trash/used_stasis_bag{
 	desc = "Wow, instant sand. They really have everything in space.";
@@ -284,7 +279,7 @@
 
 (1,1,1) = {"
 x
-C
+F
 F
 F
 F

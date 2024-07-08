@@ -6740,7 +6740,6 @@
 /area/almayer/living/captain_mess)
 "aJf" = (
 /obj/structure/machinery/floodlight,
-/obj/structure/machinery/floodlight,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

@@ -86,10 +86,6 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_7_1"
 	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 1;
-	faction_group = list("CLF")
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ca" = (

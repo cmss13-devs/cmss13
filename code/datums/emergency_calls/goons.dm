@@ -31,7 +31,7 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/goon/print_backstory(mob/living/carbon/human/M)
-	to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a poor family."))
+	to_chat(M, SPAN_BOLD("You were born [pick_weight(list("in Europe" = 75, "in Asia" = 15, "on Mars" = 10))
 	to_chat(M, SPAN_BOLD("Joining the ranks of Weyland-Yutani was all you could do to keep yourself and your loved ones fed."))
 	to_chat(M, SPAN_BOLD("You have no idea what a xenomorph is."))
 	to_chat(M, SPAN_BOLD("You are a simple security officer employed by Weyland-Yutani to guard their outposts and colonies."))
@@ -83,14 +83,14 @@
 
 /datum/emergency_call/goon/chem_retrieval/print_backstory(mob/living/carbon/human/backstory_human)
 	if(backstory_human.job == JOB_WY_GOON_RESEARCHER)
-		to_chat(backstory_human, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a wealthy family."))
+		to_chat(backstory_human, SPAN_BOLD("You were born [pick_weight(list("in Europe" = 75, "in Asia" = 15, "on Mars" = 10))
 		to_chat(backstory_human, SPAN_BOLD("Joining the ranks of Weyland-Yutani was the perfect way to further your research goals."))
 		to_chat(backstory_human, SPAN_BOLD("You have a very in depth understanding of xenomorphs."))
 		to_chat(backstory_human, SPAN_BOLD("You are a well educated scientist employed by Weyland-Yutani to study various non-humans."))
 		to_chat(backstory_human, SPAN_BOLD("You heard about the original distress signal ages ago, but you have only just gotten permission from corporate to enter the area."))
 		to_chat(backstory_human, SPAN_BOLD("Your only goal is to recover the chemical aboard the Almayer. Do whatever you have to do."))
 	else
-		to_chat(backstory_human, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a poor family."))
+		to_chat(backstory_human, SPAN_BOLD("You were born [pick_weight(list("in Europe" = 75, "in Asia" = 15, "on Mars" = 10))
 		to_chat(backstory_human, SPAN_BOLD("Joining the ranks of Weyland-Yutani was all you could do to keep yourself and your loved ones fed."))
 		to_chat(backstory_human, SPAN_BOLD("You have had a basic brief on xenomorphs."))
 		to_chat(backstory_human, SPAN_BOLD("You are a simple security officer employed by Weyland-Yutani to guard their outposts and colonies."))
@@ -129,7 +129,7 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/goon/bodyguard/print_backstory(mob/living/carbon/human/M)
-	to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a poor family."))
+	to_chat(M, SPAN_BOLD("You were born [pick_weight(list("in Europe" = 75, "in Asia" = 15, "on Mars" = 10))
 	to_chat(M, SPAN_BOLD("Joining the ranks of Weyland-Yutani was all you could do to keep yourself and your loved ones fed."))
 	to_chat(M, SPAN_BOLD("You have no idea what a xenomorph is."))
 	to_chat(M, SPAN_BOLD("You are a simple security officer employed by Weyland-Yutani to guard their Executives from all Divisions alike."))

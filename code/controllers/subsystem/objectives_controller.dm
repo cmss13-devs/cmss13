@@ -163,22 +163,22 @@ SUBSYSTEM_DEF(objectives)
 
 	//Intel
 	for(var/i=0;i<paper_scraps;i++)
-		var/dest = pick(20;"close", 5;"medium", 2;"far", 10;"science", 40*relative_document_ratio_close;"close_documents", 10*relative_document_ratio_medium;"medium_documents", 3*relative_document_ratio_far;"far_documents", 10*relative_document_ratio_science;"science_documents")
+		var/dest = pick_weight(list("close" = 20, "medium" = 5, "far" = 2, "science" = 10, "close_documents" = 40*relative_document_ratio_close, "medium_documents" = 10*relative_document_ratio_medium, "far_documents" = 3*relative_document_ratio_far, "science_documents" = 10*relative_document_ratio_science))
 		spawn_objective_at_landmark(dest, /obj/item/document_objective/paper)
 	for(var/i=0;i<progress_reports;i++)
-		var/dest = pick(10;"close", 55;"medium", 3;"far", 10;"science", 20*relative_document_ratio_close;"close_documents", 30*relative_document_ratio_medium;"medium_documents", 3*relative_document_ratio_far;"far_documents", 10*relative_document_ratio_science;"science_documents")
+		var/dest = pick_weight(list("close" = 10, "medium" = 55, "far" = 3, "science" = 10, "close_documents" = 20*relative_document_ratio_close, "medium_documents" = 30*relative_document_ratio_medium, "far_documents" = 3*relative_document_ratio_far, "science_documents" = 10*relative_document_ratio_science))
 		spawn_objective_at_landmark(dest, /obj/item/document_objective/report)
 	for(var/i=0;i<folders;i++)
-		var/dest = pick(20;"close", 5;"medium", 2;"far", 10;"science", 40*relative_document_ratio_close;"close_documents", 10*relative_document_ratio_medium;"medium_documents", 3*relative_document_ratio_far;"far_documents", 10*relative_document_ratio_science;"science_documents")
+		var/dest = pick_weight(list("close" = 20, "medium" = 5, "far" = 2, "science" = 10, "close_documents" = 40*relative_document_ratio_close, "medium_documents" = 10*relative_document_ratio_medium, "far_documents" = 3*relative_document_ratio_far, "science_documents" = 10*relative_document_ratio_science))
 		spawn_objective_at_landmark(dest, /obj/item/document_objective/folder)
 	for(var/i=0;i<technical_manuals;i++)
-		var/dest = pick(20;"close", 40;"medium", 20;"far", 20;"science")
+		var/dest = pick_weight(list("close" = 20, "medium" = 40, "far" = 20, "science" = 20))
 		spawn_objective_at_landmark(dest, /obj/item/document_objective/technical_manual)
 	for(var/i=0;i<disks;i++)
-		var/dest = pick(20;"close", 40;"medium", 20;"far", 20;"science")
+		var/dest = pick_weight(list("close" = 20, "medium" = 40, "far" = 20, "science" = 20))
 		spawn_objective_at_landmark(dest, /obj/item/disk/objective)
 	for(var/i=0;i<experimental_devices;i++)
-		var/dest = pick(10;"close", 20;"medium", 40;"far", 30;"science")
+		var/dest = pick_weight(list("close" = 10, "medium" = 20, "far" = 40, "science" = 30))
 		var/ex_dev = pick(
 			/obj/item/device/mass_spectrometer/adv/objective,
 			/obj/item/device/reagent_scanner/adv/objective,
@@ -189,10 +189,10 @@ SUBSYSTEM_DEF(objectives)
 
 	//Research
 	for(var/i=0;i<research_papers;i++)
-		var/dest = pick(10;"close", 8;"medium", 2;"far", 20;"science", 15;"close_documents", 12;"medium_documents", 3;"far_documents", 30;"science_documents")
+		var/dest = pick_weight(list("close" = 10, "medium" = 8, "far" = 2, "science" = 20, "close_documents" = 15, "medium_documents" = 12, "far_documents" = 3, "science_documents" = 30))
 		spawn_objective_at_landmark(dest, /obj/item/paper/research_notes)
 	for(var/i=0;i<vial_boxes;i++)
-		var/dest = pick(15;"close", 30;"medium", 5;"far", 50;"science")
+		var/dest = pick_weight(list("close" = 15, "medium" = 30, "far" = 5, "science" = 50))
 		spawn_objective_at_landmark(dest, /obj/item/storage/fancy/vials/random)
 
 // Populate the map with objective items.

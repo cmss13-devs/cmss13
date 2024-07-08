@@ -94,7 +94,7 @@
 		spawn(0)
 			var/obj/effect/particle_effect/expl_particles/expl = new /obj/effect/particle_effect/expl_particles(src.location)
 			var/direct = pick(GLOB.alldirs)
-			for(i=0, i<pick(1;25,2;50,3,4;200), i++)
+			for(i=0, i<pick_weight(list(25 = 1, 50 = 2, 200 = 4))
 				sleep(1)
 				step(expl,direct)
 

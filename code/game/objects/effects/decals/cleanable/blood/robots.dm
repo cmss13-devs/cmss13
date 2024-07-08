@@ -14,7 +14,7 @@
 
 /obj/effect/decal/cleanable/blood/gibs/robot/streak(list/directions)
 	var/direction = pick(directions)
-	for (var/i = 0, i < pick(1, 200; 2, 150; 3, 50; 4), i++)
+	for (var/i = 0, i < pick_weight(list( 2 = 200,  3 = 150,  4 = 50))
 		sleep(3)
 		if (i > 0)
 			if (prob(40))

@@ -604,7 +604,7 @@
 	if(source)
 		UnregisterSignal(source, COMSIG_POST_SPAWN_UPDATE)
 	var/turf/spawn_location = get_turf(src)
-	var/plush_list_variety = pick(60; plush_list, 40; therapy_plush_list)
+	var/plush_list_variety = pick_weight(list( plush_list = 60,  therapy_plush_list = 40))
 	var/random_plushie = pick(plush_list_variety)
 	var/obj/item/toy/plush/plush = new random_plushie(spawn_location) //Starts on floor by default
 	var/mob/living/carbon/human/user = source

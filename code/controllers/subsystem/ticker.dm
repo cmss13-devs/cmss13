@@ -468,7 +468,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/send_tip_of_the_round()
 	var/message
-	var/tip_file = pick("strings/xenotips.txt", "strings/marinetips.txt", "strings/metatips.txt", 15;"strings/memetips.txt")
+	var/tip_file = pick_weight(list("strings/xenotips.txt" = 100, "strings/marinetips.txt" = 100, "strings/metatips.txt" = 100, "strings/memetips.txt" = 15))
 	var/list/tip_list = file2list(tip_file)
 	if(length(tip_file))
 		message = pick(tip_list)

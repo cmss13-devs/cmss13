@@ -167,7 +167,7 @@
 			hearers += M.client
 	SSsound.queue(S, hearers)
 
-// The pick() proc has a built-in chance that can be added to any option by adding ,X; to the end of an option, where X is the % chance it will play.
+// The pick_weight(list( to the end of an option = X))// The pick
 /proc/get_sfx(S)
 	if(istext(S))
 		switch(S)

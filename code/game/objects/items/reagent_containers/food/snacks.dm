@@ -2640,7 +2640,7 @@
 	if(prob(60))
 		reagents.add_reagent("tomatojuice", 6)
 	for(var/i in 1 to 3)
-		var/ingredient = pick(200;"vegetable", 150;"meatprotein", "mushroom", "fish", "cheese", 80;"potato", 80;"egg", 50;"coco", 50;"fruit", 50;"soysauce", 50;"ketchup", 50;"tofu", 30;"noodles", 30;"honey", 30;"banana")
+		var/ingredient = pick_weight(list("vegetable" = 200, "meatprotein" = 150, "potato" = 80, "egg" = 80, "coco" = 50, "fruit" = 50, "soysauce" = 50, "ketchup" = 50, "tofu" = 50, "noodles" = 30, "honey" = 30, "banana" = 30))
 		reagents.add_reagent(ingredient, rand(6,12))
 
 /obj/item/reagent_container/food/snacks/mysteryslice

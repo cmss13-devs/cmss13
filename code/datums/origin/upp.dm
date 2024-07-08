@@ -18,7 +18,7 @@
 			first_name = "[pick(GLOB.first_names_female_upp)]"
 
 	if(prob(35))
-		last_name = "[capitalize(randomly_generate_chinese_word(pick(20;1, 80;2)))]"
+		last_name = "[capitalize(randomly_generate_chinese_word(pick_weight(list(1 = 20, 2 = 80))
 	else
 		last_name = "[pick(GLOB.last_names_upp)]"
 

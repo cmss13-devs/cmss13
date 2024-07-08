@@ -375,7 +375,8 @@
 		if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 			if(user.action_busy || override_being_removed)
 				return
-			else to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
+			else if(!override_being_removed)
+				to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
 				override_being_removed = TRUE
 				var/unhack_time = 1800
 				user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),

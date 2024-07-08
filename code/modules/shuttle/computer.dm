@@ -381,7 +381,7 @@
 				override_being_removed = TRUE
 				var/unhack_time = 1800
 				user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
-					SPAN_NOTICE("You try to take back the control over the lifeboat. It will take around 3 minutes."))
+					SPAN_NOTICE("You try to take back control over the lifeboat. It will take around 3 minutes."))
 				var/remaining_time = timeleft(unhack_time) / 10
 				while(remaining_time > 20)
 					if(!do_after(user, 20 SECONDS, INTERRUPT_ALL|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE, numticks = 20))
@@ -397,9 +397,9 @@
 					lifeboat.status = LIFEBOAT_ACTIVE
 					lifeboat.available = TRUE
 					user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
-						SPAN_NOTICE("You have successfully taken back the control over the lifeboat."))
+						SPAN_NOTICE("You have successfully taken back control over the lifeboat."))
 			return
-		else to_chat(user, SPAN_WARNING("[src] flickers with error messages and asks you to contact your pilot."))
+		else to_chat(user, SPAN_WARNING("[src] displays an error message and asks you to contact your pilot to resolve the problem."))
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)

@@ -1,7 +1,7 @@
 import re
 from typing import Optional
 
-from .common import Constant, Typepath
+from .common import Constant, Filename, Typepath
 from .dmm import DMM, Content
 from .error import MaplintError, MapParseError
 
@@ -204,30 +204,7 @@ class Rules:
 
         if self.banned_variables == True:
             if len(identified.var_edits) > 0:
-                typepath_suggestion = f"{identified.path}/"
-                var_count = 0
-                for var_name, var_value in identified.var_edits.items():
-                    var_count += 1
-                    if(var_count > 1):
-                        typepath_suggestion += "_"
-                    if(var_name == "dir"):
-                        typepath_suggestion += self.parse_direction(var_value)
-                    else:
-                        typepath_suggestion += f"{var_value}"
-                dm_suggestion = f"{typepath_suggestion}\n"
-                path_suggestion = f"{identified.path}{{"
-                for var_name, var_value in identified.var_edits.items():
-                    if(var_name == "dir"):
-                        dm_suggestion += f"\t{var_name} = {self.parse_direction(var_value).upper()}\n"
-                        path_suggestion += f"{var_name}={var_value};"
-                    elif(isinstance(var_value, str)):
-                        dm_suggestion += f"\t{var_name} = \"{var_value}\"\n"
-                        path_suggestion += f"{var_name}=\"{var_value}\";"
-                    else:
-                        dm_suggestion += f"\t{var_name} = {var_value}\n"
-                        path_suggestion += f"{var_name}={var_value};"
-                dm_suggestion  += "\n"
-                path_suggestion += f"}} : {typepath_suggestion}\n"
+                dm_suggestion, path_suggestion = self.parse_suggestion(identified)
                 failures.append(fail_content(identified, f"Typepath {identified.path} should not have any variable edits.", dm_suggestion, path_suggestion))
         else:
             assert isinstance(self.banned_variables, list)
@@ -239,6 +216,42 @@ class Rules:
                     failures.append(fail_content(identified, f"Typepath {identified.path} has a banned variable (set to {identified.var_edits[banned_variable.variable]}): {banned_variable.variable}. {ban_reason}"))
 
         return failures
+
+    def parse_suggestion(self, identified):
+        typepath_suggestion = f"{identified.path}/"
+        other_var_count = 0
+        dir_var = ""
+        for var_name, var_value in identified.var_edits.items():
+            if(var_name == "dir"):
+                dir_var = self.parse_direction(var_value)
+            else:
+                other_var_count += 1
+                if(other_var_count > 1):
+                    typepath_suggestion += "_"
+                typepath_suggestion += f"{var_value}"
+        if(dir_var):
+            if(other_var_count > 0):
+                typepath_suggestion += "/"
+            typepath_suggestion += dir_var
+        typepath_suggestion = typepath_suggestion.replace(" ", "_").replace("-", "_")
+        dm_suggestion = f"{typepath_suggestion}\n"
+        path_suggestion = f"{identified.path}{{"
+        for var_name, var_value in identified.var_edits.items():
+            if(var_name == "dir"):
+                dm_suggestion += f"\t{var_name} = {self.parse_direction(var_value).upper()}\n"
+                path_suggestion += f"{var_name}={var_value};"
+            elif(isinstance(var_value, Filename)):
+                dm_suggestion += f"\t{var_name} = \'{var_value.path}\'\n"
+                path_suggestion += f"{var_name}=\'{var_value.path}\';"
+            elif(isinstance(var_value, str)):
+                dm_suggestion += f"\t{var_name} = \"{var_value}\"\n"
+                path_suggestion += f"{var_name}=\"{var_value}\";"
+            else:
+                dm_suggestion += f"\t{var_name} = {var_value}\n"
+                path_suggestion += f"{var_name}={var_value};"
+        dm_suggestion  += "\n"
+        path_suggestion += f"}} : {typepath_suggestion}\n"
+        return path_suggestion, dm_suggestion
 
     def parse_direction(self, number):
         if(number == 1):
@@ -261,7 +274,7 @@ class Rules:
             return "up"
         if(number == 32):
             return "down"
-        self.raise_error(f"Unknown direction : {number}")
+        raise TypeError(f"Unknown direction : {number}")
 
 class Lint:
     help: Optional[str] = None

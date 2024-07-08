@@ -280,6 +280,9 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -373,6 +376,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/uscm_station)
+"dX" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
 	},
 /area/adminlevel/ert_station/uscm_station)
 "eb" = (
@@ -793,6 +805,7 @@
 	icon_state = "NE-out";
 	pixel_y = 1
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -1429,6 +1442,13 @@
 	icon_state = "plating_striped"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"nq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
 "nu" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -1524,6 +1544,19 @@
 	pixel_x = -7
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"nW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
 /area/adminlevel/ert_station/uscm_station)
 "nY" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -1783,6 +1816,16 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"qT" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 7;
+	pixel_x = 3
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "ra" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
@@ -1832,7 +1875,7 @@
 	dir = 4;
 	unacidable = 1
 	},
-/turf/closed/wall/almayer/outer,
+/turf/open/floor/almayer,
 /area/adminlevel/ert_station/uscm_station)
 "rw" = (
 /obj/structure/barricade/handrail{
@@ -2196,6 +2239,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -2621,6 +2667,13 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"yz" = (
+/obj/structure/largecrate/supply/ammo/m41a,
+/obj/structure/largecrate/supply/ammo/sentry{
+	pixel_y = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
 "yL" = (
 /obj/structure/largecrate/supply,
 /obj/effect/decal/cleanable/dirt,
@@ -2884,6 +2937,15 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"Bk" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "Bn" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor{
@@ -3015,6 +3077,9 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -3096,6 +3161,10 @@
 /turf/open/floor/almayer{
 	icon_state = "orangefull"
 	},
+/area/adminlevel/ert_station/uscm_station)
+"Dh" = (
+/obj/structure/largecrate/supply/explosives/mines,
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/uscm_station)
 "Dj" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -3486,6 +3555,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/uscm_station)
+"Gf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/explosives/grenades,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "Gg" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/sign/safety/ladder{
@@ -3793,6 +3872,7 @@
 /obj/structure/sign/safety/maint{
 	pixel_x = 32
 	},
+/obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -3980,6 +4060,10 @@
 	icon_state = "tcomms"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"Lo" = (
+/obj/structure/foamed_metal/iron,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
 "Lq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -4114,6 +4198,13 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/uscm_station)
+"MP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "MV" = (
 /obj/structure/closet/emcloset,
 /obj/effect/decal/cleanable/dirt,
@@ -4227,14 +4318,14 @@
 	},
 /area/adminlevel/ert_station/uscm_station)
 "OU" = (
-/obj/effect/vehicle_spawner/apc_cmd/fixed{
-	dir = 8
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/vehicle_spawner/arc{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -4457,13 +4548,6 @@
 /turf/open/floor/almayer{
 	allow_construction = 0
 	},
-/area/adminlevel/ert_station/uscm_station)
-"QF" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4;
-	unacidable = 1
-	},
-/turf/closed/wall/almayer/outer,
 /area/adminlevel/ert_station/uscm_station)
 "QI" = (
 /obj/item/tool/warning_cone,
@@ -4824,6 +4908,12 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/uscm_station)
+"Vk" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
 "Vm" = (
 /obj/item/storage/box/monkeycubes,
 /obj/structure/surface/table/reinforced/prison,
@@ -4881,6 +4971,14 @@
 "Wd" = (
 /obj/structure/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/uscm_station)
+"Wm" = (
+/obj/vehicle/powerloader{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -5081,14 +5179,6 @@
 /obj/structure/machinery/computer/telecomms/monitor,
 /turf/open/floor{
 	icon_state = "dark"
-	},
-/area/adminlevel/ert_station/uscm_station)
-"XU" = (
-/obj/vehicle/powerloader{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/uscm_station)
 "XX" = (
@@ -5493,11 +5583,11 @@ kZ
 kZ
 kZ
 kZ
-kZ
-kZ
-kZ
-kZ
-kZ
+zK
+zK
+zK
+zK
+zK
 kZ
 kZ
 kZ
@@ -5546,9 +5636,9 @@ kZ
 kZ
 zK
 zK
-QF
-QF
-QF
+GW
+GW
+GW
 zK
 zK
 kZ
@@ -5757,7 +5847,7 @@ HU
 OM
 ks
 Lg
-MJ
+Bk
 zK
 kZ
 kZ
@@ -5857,11 +5947,11 @@ kZ
 kZ
 kZ
 zK
-QF
-QF
-QF
+GW
+GW
+GW
 rt
-QF
+GW
 zK
 kZ
 kZ
@@ -5908,13 +5998,13 @@ kZ
 kZ
 kZ
 kZ
-kZ
-kZ
-kZ
-kZ
-kZ
-kZ
-kZ
+zK
+zK
+zK
+zK
+zK
+zK
+zK
 kZ
 kZ
 kZ
@@ -6667,7 +6757,7 @@ vv
 ks
 Dp
 Hc
-Hc
+Lo
 Hc
 RW
 es
@@ -6719,7 +6809,7 @@ tD
 fj
 MJ
 Hc
-Hc
+Lo
 Hc
 Hc
 wN
@@ -6771,8 +6861,8 @@ tD
 fj
 MJ
 Hc
-Hc
-Hc
+Lo
+Lo
 Hc
 Hc
 Hc
@@ -7483,7 +7573,7 @@ Zp
 zK
 QL
 lf
-ag
+Gf
 Dz
 Zs
 su
@@ -7535,7 +7625,7 @@ Zp
 zK
 Ui
 MJ
-MJ
+Wm
 MJ
 Qv
 nH
@@ -7585,9 +7675,9 @@ kZ
 Zp
 Zp
 zK
-Rv
-Rv
-XU
+yz
+Dh
+MJ
 mD
 mD
 mD
@@ -7638,8 +7728,8 @@ Zp
 Zp
 zK
 zK
-zK
-zK
+Hc
+Hc
 mD
 UU
 HG
@@ -7690,11 +7780,11 @@ Zp
 Zp
 ww
 zK
-zK
-zK
+Lo
+Hc
 mD
 NN
-CO
+IE
 gj
 CO
 Er
@@ -7710,12 +7800,12 @@ PD
 st
 MV
 RP
-tD
+MP
 iW
 PK
 MJ
-MJ
-MJ
+Vk
+qT
 zK
 kZ
 kZ
@@ -7742,8 +7832,8 @@ Zp
 Zp
 Zp
 zK
-zK
-zK
+Lo
+Hc
 mD
 Yb
 du
@@ -8387,7 +8477,7 @@ MJ
 MJ
 MJ
 MJ
-tD
+MP
 tD
 tD
 PD
@@ -8421,7 +8511,7 @@ Zp
 Zp
 qE
 zK
-tD
+MP
 tD
 Qv
 nH
@@ -8525,13 +8615,13 @@ Zp
 Zp
 qE
 zK
-Hc
-Hc
+Lo
+Lo
 Hc
 MJ
 Ky
 PH
-MJ
+Vk
 vx
 vx
 vx
@@ -8630,7 +8720,7 @@ kZ
 qE
 Bs
 mY
-zK
+RA
 Lu
 Dp
 Kn
@@ -8737,8 +8827,8 @@ Pa
 RA
 Ch
 fI
-lN
-Rv
+NE
+FZ
 oD
 FH
 Hc
@@ -8790,8 +8880,8 @@ RA
 Vc
 lN
 Rv
-Rv
-Lg
+Qv
+nq
 Lg
 Hc
 BH
@@ -8838,7 +8928,7 @@ kZ
 qE
 Bs
 Rh
-zK
+RA
 tw
 tw
 aD
@@ -8890,7 +8980,7 @@ kZ
 qE
 Bs
 Bs
-zK
+RA
 ah
 Gn
 fP
@@ -9155,8 +9245,8 @@ nd
 rC
 fP
 nJ
-cZ
-Bc
+nW
+dX
 Hc
 Hc
 Hc

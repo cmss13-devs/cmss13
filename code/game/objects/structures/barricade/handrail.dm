@@ -42,10 +42,12 @@
 			overlays += image(E.icon_path, icon_state = E.obj_icon_state_path)
 
 /obj/structure/barricade/handrail/Collided(atom/movable/movable)
-	if(ismob(movable && autoclimb))
+	if(ismob(movable) && autoclimb)
 		var/mob/living/climber = movable
 		if(climber.a_intent == INTENT_HARM)
-			do_climb(climber)
+			var/climbed = do_climb(climber)
+			if(climbed)
+				climber.apply_damage(15,BRUTE)
 	..()
 
 /obj/structure/barricade/handrail/get_examine_text(mob/user)

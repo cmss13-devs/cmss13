@@ -2187,8 +2187,18 @@
 	desc = "For all of your 'pole' related activities."
 	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "pole"
-	density = FALSE
-	layer = BELOW_MOB_LAYER
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
+	density = TRUE
+	anchored = TRUE
+	projectile_coverage = 20
+	throwpass = TRUE
+	layer = BILLBOARD_LAYER
+
+/obj/structure/prop/hybrisa/misc/pole/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/shimmy_around)
 
 /obj/structure/bed/sofa/hybrisa/misc/bench
 	name = "bench"

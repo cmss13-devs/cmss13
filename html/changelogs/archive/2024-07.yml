@@ -40,3 +40,30 @@
   realforest2001:
   - code_imp: Changes OOC color settings for donators/non mentor/staff.
   - admin: Mentors no longer receive debug logs as a result of being in GLOB.admins
+2024-07-08:
+  ThePiachu:
+  - qol: Shotgun ammo boxes now behave like other ammo boxes in the Requisitions'
+      vendors.
+  - code_imp: Ammo box maping code now handles pre-populated boxes in vendors, letting
+      devs order them more neatly than before.
+  Zonespace27:
+  - bugfix: Fixed a rare case of people on shuttles being inexplicably deleted.
+  blackdragonTOW:
+  - code_imp: log the map name at round start
+  coldironwarrior:
+  - rscadd: adds olive green and grey scrubs
+  - spellcheck: cleaned up scrub descriptions
+  wshuwshuwshi:
+  - rscadd: Adds the Encephalophrasive property for chemicals
+  - rscdel: Removed bit of description that falsely said that higher potency affected
+      clarity of messages
+  - bugfix: Removes focusing from the combination to prevent conflict between focusing
+      and nerve-stimulating, thus preventing encephalophrasive from forming
+  - bugfix: Revises the second overdose to be for critical overdoses, as it was intended
+      to be
+  - code_imp: Swaps 'M' variables for 'chem_host'
+  - code_imp: rehauled how ability 'giving' is handled, and is now only processed
+      upon initial ingestion of the chemical instead of every tick
+  - rscadd: Adds a brief piece of flavor text upon initial ingestion.
+  zzzmike:
+  - bugfix: converts flash, flashbang to TG effect system, fixing issue(s)

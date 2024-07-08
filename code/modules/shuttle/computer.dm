@@ -381,7 +381,7 @@
 						SPAN_NOTICE("You have successfully taken back the control over the lifeboat."))
 				return
 			else
-				to_chat(user, SPAN_WARNING("[src] flickers with error messages."))
+				to_chat(user, SPAN_WARNING("[src] flickers with error messages and asks you to contact your pilot."))
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)

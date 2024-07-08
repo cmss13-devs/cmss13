@@ -1571,10 +1571,7 @@
 	icon_state = "kurtz6";
 	name = "USS Kurtz"
 	},
-/turf/open/floor/almayer_hull{
-	dir = 4;
-	icon_state = "outerhull_dir"
-	},
+/turf/open/floor/almayer_hull,
 /area/space)
 "oe" = (
 /obj/structure/largecrate/random/case/double,

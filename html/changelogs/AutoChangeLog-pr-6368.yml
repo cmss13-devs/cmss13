@@ -1,0 +1,5 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - mapadd: "The USS Kurtz has been added as a USCM affiliated ERT station. The design off the USS Kurtz is based off of the USS Sulaco, from older versions of CM-SS13. The USS Kurtz features the entire lower-deck and a snapshot of the upper deck."
+  - mapadd: "The USCM CBRN ERT will use the USS Kurtz as their homebase."

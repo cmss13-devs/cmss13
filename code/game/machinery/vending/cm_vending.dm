@@ -990,10 +990,24 @@ GLOBAL_LIST_EMPTY(vending_products)
 		for(var/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
 			tmp_list += list(list(initial(IBP.box.name), floor(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
 
-	//Putting Ammo and other boxes on the bottom of the list as per player preferences
-	if(length(tmp_list) > 0)
+	//For every item that goes into a box, check if the box is already listed in the vendor and if so, update its amount
+	var/list/box_list = list()
+	if(length(tmp_list))
+		for(var/list/tmp_item as anything in tmp_list)
+			var/item_found = FALSE
+			for(var/list/product as anything in listed_products)
+				if(tmp_item[3] == product[3]) //We found a box we already have!
+					product[2] = tmp_item[2] //Update box amount
+					item_found = TRUE
+					break
+			if(!item_found)
+				//We will be adding this box item at the end of the list
+				box_list += list(tmp_item)
+
+	//Putting Ammo and other boxes on the bottom of the list if they haven't been accounted for already
+	if(length(box_list))
 		listed_products += list(list("BOXES", -1, null, null))
-		for(var/list/L as anything in tmp_list)
+		for(var/list/L as anything in box_list)
 			listed_products += list(L)
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)

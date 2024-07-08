@@ -1289,4 +1289,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
 
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717/harness
+	starting_attachment_types = list(/obj/item/attachable/stock/hg3712/m3717, /obj/item/attachable/magnetic_harness)
+
 //-------------------------------------------------------

@@ -191,7 +191,7 @@
 	category = PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/neutral/hallucinogenic/process(mob/living/M, potency = 1, delta_time)
-	if(prob(5 * delta_time))
+	if(prob(3 * delta_time))
 		M.emote(pick("twitch","drool","groan","giggle"))
 	if(potency > CREATE_MAX_TIER_1)
 		M.hallucination = min(M.hallucination + potency, potency * 10)
@@ -217,7 +217,7 @@
 
 /datum/chem_property/neutral/relaxing/process(mob/living/M, potency = 1, delta_time)
 	M.reagent_move_delay_modifier += potency
-	if(prob(5 * delta_time))
+	if(prob(2 * delta_time))
 		M.emote("yawn")
 	M.recalculate_move_delay = TRUE
 
@@ -245,7 +245,7 @@
 	volatile = TRUE
 
 /datum/chem_property/neutral/hyperthermic/process(mob/living/M, potency = 1, delta_time)
-	if(prob(5 * delta_time))
+	if(prob(2 * delta_time))
 		M.emote("gasp")
 		to_chat(M, SPAN_DANGER("<b>Your insides feel uncomfortably hot !</b>"))
 	M.bodytemperature = max(M.bodytemperature + POTENCY_MULTIPLIER_MEDIUM * potency,0)
@@ -269,7 +269,7 @@
 	category = PROPERTY_TYPE_METABOLITE
 
 /datum/chem_property/neutral/hypothermic/process(mob/living/M, potency = 1, delta_time)
-	if(prob(5 * delta_time))
+	if(prob(3 * delta_time))
 		M.emote("shiver")
 	M.bodytemperature = max(M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency,0)
 	M.recalculate_move_delay = TRUE

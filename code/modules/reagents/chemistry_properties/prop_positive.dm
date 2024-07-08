@@ -927,7 +927,7 @@
 	if(!ishuman(M)) //Critical overdose causes total blackout and heart damage. Too much stimulant
 		return
 	M.apply_internal_damage(0.25 * delta_time, "heart")
-	if(prob(5 * delta_time))
+	if(prob(3 * delta_time))
 		M.emote(pick("twitch","blink_r","shiver"))
 
 /datum/chem_property/positive/cardiostabilizing/reaction_mob(mob/M, method=TOUCH, volume, potency)

@@ -231,7 +231,7 @@
 	M.drowsyness = min(M.drowsyness + 0.5 * potency * delta_time, 15 * potency)
 	M.reagent_move_delay_modifier += potency
 	M.recalculate_move_delay = TRUE
-	if(prob(5 * delta_time))
+	if(prob(2 * delta_time))
 		M.emote(pick("yawn","gasp"))
 
 /datum/chem_property/negative/hemolytic/process_critical(mob/living/M, potency = 1)

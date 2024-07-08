@@ -238,7 +238,7 @@
 	rank = JOB_CMB_RIOT
 	paygrade = PAY_SHORT_CMBR
 	idtype = /obj/item/card/id/deputy/riot
-	xenovictim = TRUE
+	xenovictim = FALSE
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,

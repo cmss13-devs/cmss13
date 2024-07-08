@@ -366,19 +366,36 @@
 	breakable = FALSE
 	///If true, the lifeboat is in the process of launching, and so the code will not allow another launch.
 	var/launch_initiated = FALSE
+	var/override_being_removed = FALSE
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)
 	. = ..()
 	var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 	if(lifeboat.status == LIFEBOAT_LOCKED)
 		if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
-			user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
-				SPAN_NOTICE("You try to take back the control over the lifeboat. It will take around 3 minutes."))
-			if(do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-				lifeboat.status = LIFEBOAT_ACTIVE
-				lifeboat.available = TRUE
-				user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
-					SPAN_NOTICE("You have successfully taken back the control over the lifeboat."))
+			if(user.action_busy || override_being_removed)
+				return
+			else to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
+				override_being_removed = TRUE
+				var/unhack_time = 1800
+				user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
+					SPAN_NOTICE("You try to take back the control over the lifeboat. It will take around 3 minutes."))
+				var/remaining_time = timeleft(unhack_time) / 10
+				while(remaining_time > 20)
+					if(!do_after(user, 20 SECONDS, INTERRUPT_ALL|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE, numticks = 20))
+						to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))
+						override_being_removed = FALSE
+						return
+					remaining_time = timeleft(unhack_time) / 10 - 20
+					if(remaining_time > 0)
+						to_chat(user, SPAN_NOTICE("You partially bypass the lockout, only [remaining_time] seconds left."))
+				if(remaining_time <= 0)
+					to_chat(user, SPAN_NOTICE("You successfully removed the lockout!"))
+					playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
+					lifeboat.status = LIFEBOAT_ACTIVE
+					lifeboat.available = TRUE
+					user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
+						SPAN_NOTICE("You have successfully taken back the control over the lifeboat."))
 			return
 		else to_chat(user, SPAN_WARNING("[src] flickers with error messages and asks you to contact your pilot."))
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)

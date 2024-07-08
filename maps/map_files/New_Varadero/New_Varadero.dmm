@@ -694,9 +694,7 @@
 	},
 /area/varadero/interior/administration)
 "ayx" = (
-/obj/structure/prop/power_transformer{
-	dir = 0
-	},
+/obj/structure/prop/power_transformer,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -3257,9 +3255,7 @@
 	},
 /area/varadero/interior/maintenance/research)
 "cbI" = (
-/obj/item/cpr_dummy{
-	dir = 0
-	},
+/obj/item/cpr_dummy,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -7991,9 +7987,7 @@
 	},
 /area/varadero/interior_protected/maintenance/south)
 "fhu" = (
-/obj/structure/bed/chair{
-	dir = 3
-	},
+/obj/structure/bed/chair,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning"

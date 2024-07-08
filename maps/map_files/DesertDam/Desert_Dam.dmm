@@ -26931,7 +26931,6 @@
 /area/desert_dam/building/security/staffroom)
 "bHv" = (
 /turf/open/floor{
-	dir = 7;
 	icon_state = "warning"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)

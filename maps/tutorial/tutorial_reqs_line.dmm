@@ -38,9 +38,6 @@
 	},
 /turf/open/floor/almayer,
 /area/misc/tutorial)
-"o" = (
-/turf/closed/wall/almayer/outer,
-/area/misc/tutorial)
 "w" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/almayer,
@@ -134,7 +131,7 @@ a
 K
 n
 w
-o
+a
 a
 a
 a

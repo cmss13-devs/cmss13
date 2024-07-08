@@ -7918,9 +7918,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
 "aIX" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 3
-	},
+/obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aIY" = (
@@ -12883,9 +12881,7 @@
 	},
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "cac" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 3
-	},
+/obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "cag" = (
@@ -15060,9 +15056,7 @@
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/north_west_jungle)
 "gaw" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 3
-	},
+/obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "gbl" = (
@@ -19665,9 +19659,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "oAJ" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 3
-	},
+/obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "oAV" = (
@@ -20115,9 +20107,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/corporate_dome)
 "por" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 3
-	},
+/obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "pox" = (
@@ -20410,9 +20400,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/west_barrens)
 "pNa" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 3
-	},
+/obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "pNr" = (
@@ -21331,9 +21319,7 @@
 	},
 /area/lv624/lazarus/research)
 "ryY" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 3
-	},
+/obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "rze" = (
@@ -23151,9 +23137,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "uLW" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 3
-	},
+/obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
 "uMd" = (
@@ -24860,12 +24844,6 @@
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
-"xVo" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 3
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_east_jungle)
 "xVN" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/jungle/south_central_jungle)
@@ -53920,7 +53898,7 @@ cwV
 bit
 cpY
 cpY
-xVo
+tHc
 kip
 rck
 cpY
@@ -54148,7 +54126,7 @@ cwV
 vSG
 pba
 cpY
-xVo
+tHc
 kip
 kip
 ueZ
@@ -57788,7 +57766,7 @@ arS
 als
 arO
 oRH
-xVo
+tHc
 kip
 rck
 cpY

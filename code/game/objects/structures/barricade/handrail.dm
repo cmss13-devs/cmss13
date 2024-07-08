@@ -18,6 +18,7 @@
 	var/build_state = BARRICADE_BSTATE_SECURED
 	var/reinforced = FALSE //Reinforced to be a cade or not
 	var/can_be_reinforced = TRUE //can we even reinforce this handrail or not?
+	var/autoclimb = TRUE
 
 /obj/structure/barricade/handrail/update_icon()
 	overlays.Cut()
@@ -41,7 +42,7 @@
 			overlays += image(E.icon_path, icon_state = E.obj_icon_state_path)
 
 /obj/structure/barricade/handrail/Collided(atom/movable/movable)
-	if(ismob(movable))
+	if(ismob(movable && autoclimb))
 		var/mob/living/climber = movable
 		if(climber.a_intent == INTENT_HARM)
 			do_climb(climber)

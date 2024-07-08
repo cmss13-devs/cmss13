@@ -28,7 +28,7 @@
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_YAUTJA
 	flags_sight = SEE_MOBS
 	slowdown = -0.5
-	total_health = 175 //more health than regular humans
+	total_health = 200 //more health than regular humans
 	timed_hug = FALSE
 
 	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter

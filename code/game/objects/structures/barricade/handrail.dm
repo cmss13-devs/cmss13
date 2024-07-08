@@ -42,13 +42,19 @@
 			overlays += image(E.icon_path, icon_state = E.obj_icon_state_path)
 
 /obj/structure/barricade/handrail/Collided(atom/movable/movable)
-	if(ismob(movable) && autoclimb)
-		var/mob/living/climber = movable
-		if(climber.a_intent == INTENT_HARM)
-			var/climbed = do_climb(climber)
-			if(climbed)
-				climber.apply_damage(15,BRUTE)
-				climber.visible_message(SPAN_WARNING("You hit yourself as you vault over the [src]"))
+	if(istype(movable,/mob/living/carbon/xenomorph/ravager) || istype(movable,/mob/living/carbon/xenomorph/crusher))
+		var/mob/living/carbon/xenomorph/xenomorph = movable
+		if(!xenomorph.stat) //No dead xenos jumpin on the bed~
+			visible_message(SPAN_DANGER("[xenomorph] plows straight through [src]!"))
+			deconstruct(FALSE)
+	else
+		if(ismob(movable) && autoclimb)
+			var/mob/living/climber = movable
+			if(climber.a_intent == INTENT_HARM)
+				var/climbed = do_climb(climber)
+				if(climbed)
+					climber.apply_damage(15,BRUTE)
+					climber.visible_message(SPAN_WARNING("You hit yourself as you vault over the [src]"))
 	..()
 
 /obj/structure/barricade/handrail/get_examine_text(mob/user)

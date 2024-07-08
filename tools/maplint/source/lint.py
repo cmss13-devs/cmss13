@@ -204,7 +204,7 @@ class Rules:
 
         if self.banned_variables == True:
             if len(identified.var_edits) > 0:
-                dm_suggestion, path_suggestion = self.parse_suggestion(identified)
+                path_suggestion, dm_suggestion = self.parse_suggestion(identified)
                 failures.append(fail_content(identified, f"Typepath {identified.path} should not have any variable edits.", dm_suggestion, path_suggestion))
         else:
             assert isinstance(self.banned_variables, list)

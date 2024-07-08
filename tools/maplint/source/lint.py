@@ -9,9 +9,9 @@ def expect(condition, message):
     if not condition:
         raise MapParseError(message)
 
-"""Create an error linked to a specific content instance"""
-def fail_content(content: Content, message: str) -> MaplintError:
-    return MaplintError(message, content.filename, content.starting_line)
+def fail_content(content: Content, message: str, dm_suggestion = "", path_suggestion = "") -> MaplintError:
+    """Create an error linked to a specific content instance"""
+    return MaplintError(message, content.filename, content.starting_line, dm_suggestion, path_suggestion)
 
 class TypepathExtra:
     typepath: Typepath
@@ -204,7 +204,31 @@ class Rules:
 
         if self.banned_variables == True:
             if len(identified.var_edits) > 0:
-                failures.append(fail_content(identified, f"Typepath {identified.path} should not have any variable edits."))
+                typepath_suggestion = f"{identified.path}/"
+                var_count = 0
+                for var_name, var_value in identified.var_edits.items():
+                    var_count += 1
+                    if(var_count > 1):
+                        typepath_suggestion += "_"
+                    if(var_name == "dir"):
+                        typepath_suggestion += self.parse_direction(var_value)
+                    else:
+                        typepath_suggestion += f"{var_value}"
+                dm_suggestion = f"{typepath_suggestion}\n"
+                path_suggestion = f"{identified.path}{{"
+                for var_name, var_value in identified.var_edits.items():
+                    if(var_name == "dir"):
+                        dm_suggestion += f"\t{var_name} = {self.parse_direction(var_value).upper()}\n"
+                        path_suggestion += f"{var_name}={var_value};"
+                    elif(isinstance(var_value, str)):
+                        dm_suggestion += f"\t{var_name} = \"{var_value}\"\n"
+                        path_suggestion += f"{var_name}=\"{var_value}\";"
+                    else:
+                        dm_suggestion += f"\t{var_name} = {var_value}\n"
+                        path_suggestion += f"{var_name}={var_value};"
+                dm_suggestion  += "\n"
+                path_suggestion += f"}} : {typepath_suggestion}\n"
+                failures.append(fail_content(identified, f"Typepath {identified.path} should not have any variable edits.", dm_suggestion, path_suggestion))
         else:
             assert isinstance(self.banned_variables, list)
             for banned_variable in self.banned_variables:
@@ -215,6 +239,29 @@ class Rules:
                     failures.append(fail_content(identified, f"Typepath {identified.path} has a banned variable (set to {identified.var_edits[banned_variable.variable]}): {banned_variable.variable}. {ban_reason}"))
 
         return failures
+
+    def parse_direction(self, number):
+        if(number == 1):
+            return "north"
+        if(number == 2):
+            return "south"
+        if(number == 4):
+            return "east"
+        if(number == 8):
+            return "west"
+        if(number == 5):
+            return "northeast"
+        if(number == 6):
+            return "southeast"
+        if(number == 9):
+            return "northwest"
+        if(number == 10):
+            return "southwest"
+        if(number == 16):
+            return "up"
+        if(number == 32):
+            return "down"
+        self.raise_error(f"Unknown direction : {number}")
 
 class Lint:
     help: Optional[str] = None

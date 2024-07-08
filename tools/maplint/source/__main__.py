@@ -51,6 +51,36 @@ def print_maplint_error(error: MaplintError, github_error_style: bool):
         github_error_style,
     )
 
+def print_maplint_suggestions(all_failures: list[MaplintError], github_error_style: bool):
+    if(len(all_failures) == 0):
+        return
+
+    suggestions: dict[str, str] = {} # path_suggestion as key, dm_suggestion as value to remove dups
+    filename = all_failures[0].file_name # assumption: we only call this once per map
+
+    for failure in all_failures:
+        if(failure.path_suggestion == ""):
+            continue # assumption: we will always have a path_suggestion paired with a dm_suggestion
+        if(failure.path_suggestion not in suggestions):
+            suggestions[failure.path_suggestion] = failure.dm_suggestion
+
+    if(len(suggestions) == 0):
+        return
+
+    path_suggestions = ""
+    dm_suggestions = ""
+
+    for path_suggestion, dm_suggestion in suggestions.items():
+        path_suggestions += path_suggestion
+        dm_suggestions += dm_suggestion
+
+    if github_error_style:
+        print(f"::error file={filename},title=DMM Linter::UpdatePath suggestions for {filename}:\n{path_suggestions}")
+        print(f"::error file={filename},title=DMM Linter::Code suggestions for {filename}:\n{dm_suggestions}")
+    else:
+        print(red(f"- UpdatePath suggestions for {filename}:\n{path_suggestions}"))
+        print(red(f"- Code suggestions for {filename}:\n{dm_suggestions}"))
+
 def main(args):
     any_failed = False
     github_error_style = args.github
@@ -104,6 +134,8 @@ def main(args):
 
         for failure in all_failures:
             print_maplint_error(failure, github_error_style)
+
+        print_maplint_suggestions(all_failures, github_error_style)
 
     if any_failed:
         exit(1)

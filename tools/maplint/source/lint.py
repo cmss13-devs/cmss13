@@ -218,6 +218,7 @@ class Rules:
         return failures
 
     def parse_suggestion(self, identified):
+        #figure out what typepath we're going to suggest
         typepath_suggestion = f"{identified.path}/"
         other_var_count = 0
         dir_var = ""
@@ -229,11 +230,17 @@ class Rules:
                 if(other_var_count > 1):
                     typepath_suggestion += "_"
                 typepath_suggestion += f"{var_value}"
+
+        #always offer a unique dir as a subtype
         if(dir_var):
             if(other_var_count > 0):
                 typepath_suggestion += "/"
             typepath_suggestion += dir_var
+
+        #cleanup typepath
         typepath_suggestion = typepath_suggestion.replace(" ", "_").replace("-", "_")
+
+        #generate suggestion entries
         dm_suggestion = f"{typepath_suggestion}\n"
         path_suggestion = f"{identified.path}{{"
         for var_name, var_value in identified.var_edits.items():

@@ -41,9 +41,10 @@
 /datum/equipment_preset/survivor/colonial_marshal/fiorina
 	name = "Survivor - United Americas Riot Officer"
 	assignment = "United Americas Riot Officer"
+	paygrade = PAY_SHORT_CPO
 	idtype = /obj/item/card/id/silver
-	rank = "United Americas Riot Officer"
-	comm_title = "UA Off."
+	rank = JOB_SURVIVOR
+	role_comm_title = "UA RO"
 	faction = FACTION_SURVIVOR
 
 /datum/equipment_preset/survivor/colonial_marshal/fiorina/load_gear(mob/living/carbon/human/new_human)

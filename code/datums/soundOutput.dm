@@ -85,7 +85,7 @@
 	if(T.source && !QDELETED(T.source))
 		source_turf = get_turf(T.source)
 
-		if(!update && istype(T.source, /atom/movable))
+		if(!update && istype(T.source, /atom/movable) && T.source != owner.mob)
 			source_sounds[num2text(T.channel)] = T.source
 			RegisterSignal(T.source, COMSIG_MOVABLE_MOVED, PROC_REF(update_sounds_from_source))
 	else if (T.x && T.y && T.z)

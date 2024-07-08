@@ -248,7 +248,7 @@
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		var/dam_zone = pick("chest", "l_arm", "r_arm" "l_hand", "r_hand", "l_leg", "r_leg", "l_foot", "r_foot")
-		apply_damage(damage, BRUTE, dam_zone)
+		apply_armoured_damage(damage, BRUTE, dam_zone)
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.

@@ -366,6 +366,7 @@
 	breakable = FALSE
 	///If true, the lifeboat is in the process of launching, and so the code will not allow another launch.
 	var/launch_initiated = FALSE
+	///If true, the lifeboat is in the process of having the xeno override removed by the pilot.
 	var/override_being_removed = FALSE
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)

@@ -48,6 +48,7 @@
 			var/climbed = do_climb(climber)
 			if(climbed)
 				climber.apply_damage(15,BRUTE)
+				climber.visible_message(SPAN_WARNING("You hit yourself as you vault over the [src]"))
 	..()
 
 /obj/structure/barricade/handrail/get_examine_text(mob/user)

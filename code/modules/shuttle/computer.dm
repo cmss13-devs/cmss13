@@ -371,16 +371,16 @@
 	. = ..()
 	var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 	if(lifeboat.status == LIFEBOAT_LOCKED)
-			if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
-				user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
-					SPAN_NOTICE("You try to take back the control over the lifeboat. It will take around 3 minutes."))
-				if(do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-					lifeboat.status = LIFEBOAT_ACTIVE
-					lifeboat.available = TRUE
-					user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
-						SPAN_NOTICE("You have successfully taken back the control over the lifeboat."))
-				return
-			else to_chat(user, SPAN_WARNING("[src] flickers with error messages and asks you to contact your pilot."))
+		if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+			user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
+				SPAN_NOTICE("You try to take back the control over the lifeboat. It will take around 3 minutes."))
+			if(do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+				lifeboat.status = LIFEBOAT_ACTIVE
+				lifeboat.available = TRUE
+				user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
+					SPAN_NOTICE("You have successfully taken back the control over the lifeboat."))
+			return
+		else to_chat(user, SPAN_WARNING("[src] flickers with error messages and asks you to contact your pilot."))
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)

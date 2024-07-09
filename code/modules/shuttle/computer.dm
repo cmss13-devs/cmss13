@@ -383,7 +383,6 @@
 				override_being_removed = TRUE
 				user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
 					SPAN_NOTICE("You try to take back control over the lifeboat. It will take around 3 minutes."))
-				var/remaining_time = timeleft(unhack_time) / 10
 				while(remaining_time > 20)
 					if(!do_after(user, 20 SECONDS, INTERRUPT_ALL|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE, numticks = 20))
 						to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))

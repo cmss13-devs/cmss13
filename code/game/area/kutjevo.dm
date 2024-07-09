@@ -10,21 +10,12 @@
 	temperature = 308.7 //kelvin, 35c, 95f
 	minimap_color = MINIMAP_AREA_ENGI
 
-/area/shuttle/drop1/kutjevo
-	name = "Kutjevo - Dropship Alamo Landing Zone"
-	icon_state = "shuttle"
-	icon = 'icons/turf/area_kutjevo.dmi'
-
-/area/shuttle/drop2/kutjevo
-	name = "Kutjevo - Dropship Normandy Landing Zone"
-	icon_state = "shuttle2"
-	icon = 'icons/turf/area_kutjevo.dmi'
+//---===| Essential Areas |===---
 
 /area/kutjevo/exterior
 	name = "Kutjevo - Exterior"
 	ceiling = CEILING_NONE
 	icon_state = "ext"
-
 
 /area/kutjevo/interior
 	name = "Kutjevo - Interior"
@@ -45,7 +36,17 @@
 	flags_area = AREA_NOTUNNEL
 	icon_state = "kutjevo"
 
-//exterior map areas
+//---=== Landing Zones ===---
+
+/area/shuttle/drop1/kutjevo
+	name = "Kutjevo - Dropship Alamo Landing Zone"
+	icon_state = "shuttle"
+	icon = 'icons/turf/area_kutjevo.dmi'
+
+/area/shuttle/drop2/kutjevo
+	name = "Kutjevo - Dropship Normandy Landing Zone"
+	icon_state = "shuttle2"
+	icon = 'icons/turf/area_kutjevo.dmi'
 
 /area/kutjevo/exterior/lz_pad
 	name = "Kutjevo Auxilliary Landing Zone"
@@ -63,6 +64,8 @@
 	unlimited_power = 1//DS Computer
 	is_landing_zone = TRUE
 
+//---=== Exterior Areas ===---
+
 /area/kutjevo/exterior/lz_river
 	name = "Kutjevo - Power Station River"
 	icon_state = "lz_river"
@@ -72,8 +75,19 @@
 	icon_state = "lz_river"
 
 /area/kutjevo/exterior/scrubland
-	name = "Kutjevo - Scrubland"
-	icon_state = "scrubland"
+	name = "Do not use."
+
+/area/kutjevo/exterior/scrubland/north
+	name = "Kutjevo - North Scrubland"
+	icon_state = "scrubland1"
+
+/area/kutjevo/exterior/scrubland/center
+	name = "Kutjevo - Center Scrubland"
+	icon_state = "scrubland2"
+
+/area/kutjevo/exterior/scrubland/south
+	name = "Kutjevo - South Scrubland"
+	icon_state = "scrubland3"
 
 /area/kutjevo/exterior/stonyfields
 	name = "Kutjevo - Stony Fields"

@@ -1,5 +1,7 @@
 /obj/effect/landmark/survivor_spawner
 	name = "special survivor spawner"
+	icon = 'icons/mob/humans/human.dmi'
+	icon_state = "fatbody_s"
 	var/equipment = null
 	var/synth_equipment = null
 	var/CO_equipment = null

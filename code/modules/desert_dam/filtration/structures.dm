@@ -66,10 +66,11 @@
 
 /obj/structure/filtration/machine_32x64
 	icon = 'icons/obj/structures/props/32x64.dmi'
-	density = TRUE
+	density = FALSE
 	anchored = TRUE
 	bound_width = 32
 	bound_height = 64
+	layer = ABOVE_XENO_LAYER
 
 /obj/structure/filtration/machine_32x64/indestructible
 	unacidable = TRUE
@@ -92,6 +93,7 @@
 	unacidable = TRUE
 	unslashable = TRUE
 	breakable = FALSE
+	density = FALSE
 
 /obj/structure/filtration/machine_96x96/indestructible/ex_act(severity)
 	return

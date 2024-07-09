@@ -14,6 +14,7 @@ import {
 import { BoxProps } from '../components/Box';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
+import { map } from 'common/collections';
 
 export interface DocumentLog {
   ['XRF Scans']?: Array<DocumentRecord>;
@@ -536,7 +537,10 @@ const ErrorStack = () => {
 };
 
 const Contracts = () => {
-  const { data } = useBackend<TerminalProps>();
+  const { data, act } = useBackend<TerminalProps>();
+  const timeLeft = data.next_reroll - data.world_time;
+  const timeLeftPct = timeLeft / data.contract_cooldown;
+
   return (
     <Section>
       <Section title={'Chemical Contracts'}>
@@ -552,7 +556,7 @@ const Contracts = () => {
           </Box>
         </ProgressBar>
       </Section>
-      {map((value, key) => (
+      {map((key) => (
         <Flex grow direction="row">
           <Flex.Item grow={1}>
             <Section title={<span>{data.contract_chems[key].name}</span>} fill>

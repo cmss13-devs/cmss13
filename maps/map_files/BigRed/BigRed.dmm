@@ -4788,7 +4788,7 @@
 /area/bigredv2/outside/marshal_office)
 "aom" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/clothing/suit/storage/lawyer/bluejacket,
+/obj/item/clothing/suit/storage/lawyer,
 /turf/open/floor{
 	icon_state = "wood"
 	},

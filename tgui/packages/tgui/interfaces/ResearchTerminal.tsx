@@ -2,7 +2,15 @@ import { useState } from 'react';
 
 import { classes } from '../../common/react';
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Section, Stack, Tabs } from '../components';
+import {
+  Box,
+  Button,
+  Flex,
+  Section,
+  Stack,
+  Tabs,
+  ProgressBar,
+} from '../components';
 import { BoxProps } from '../components/Box';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
@@ -37,6 +45,11 @@ interface TerminalProps {
   clearance_x_access: number;
   photocopier_error: number;
   printer_toner: number;
+  is_contract_picked: number;
+  contract_chems: Chemical[];
+  world_time: number;
+  next_reroll: number;
+  contract_cooldown: number;
 }
 
 const PurchaseDocs = () => {
@@ -499,6 +512,7 @@ const ResearchManager = (props: {
         setConfirm={setConfirm}
       />
       <XClearanceConfirmation isConfirm={isConfirm} setConfirm={setConfirm} />
+      <Contracts />
     </Box>
   );
 };
@@ -518,6 +532,65 @@ const ErrorStack = () => {
         </Stack.Item>
       )}
     </Stack>
+  );
+};
+
+const Contracts = () => {
+  const { data } = useBackend<TerminalProps>();
+  return (
+    <Section>
+      <Section title={'Chemical Contracts'}>
+        <ProgressBar
+          width="100%"
+          value={timeLeftPct}
+          ranges={{
+            average: [-Infinity, Infinity],
+          }}
+        >
+          <Box textAlign="center">
+            Contracts Refresh in: {Math.ceil(timeLeft / 10)}
+          </Box>
+        </ProgressBar>
+      </Section>
+      {map((value, key) => (
+        <Flex grow direction="row">
+          <Flex.Item grow={1}>
+            <Section title={<span>{data.contract_chems[key].name}</span>} fill>
+              <span>
+                Difficulty:{' '}
+                {data.contract_chems[key].gen_tier === 1
+                  ? 'Easy'
+                  : data.contract_chems[key].gen_tier === 2
+                    ? 'Intermediate'
+                    : 'Hard'}
+              </span>
+              <Flex.Item>
+                Early assesment shows one part of the recipe is{' '}
+                {data.contract_chems[key].recipe_hint}
+              </Flex.Item>
+              <Flex.Item>
+                Early testing shows property of{' '}
+                {data.contract_chems[key].property_hint}
+              </Flex.Item>
+              <Button
+                fluid
+                icon="print"
+                disabled={data.is_contract_picked}
+                tooltip={
+                  'Taking this contract will put a 5 minute cooldown on new chemical. You can only pick one.'
+                }
+                tooltipPosition="top"
+                onClick={() =>
+                  act('take_contract', { id: data.contract_chems[key].id })
+                }
+              >
+                {data.is_contract_picked ? 'UNAVAILABLE' : 'Take Contract'}
+              </Button>
+            </Section>
+          </Flex.Item>
+        </Flex>
+      ))(data.contract_chems)}
+    </Section>
   );
 };
 

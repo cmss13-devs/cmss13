@@ -130,7 +130,7 @@
 /obj/item/map/lv759_map
 	name = "\improper LV-759 Map"
 	desc = "An overview of LV-759 schematics."
-	html_link = "images/b/bb/C_claim.png" //needs proper image still.
+	html_link = "images/6/60/LV759_Hybrisa_Prospera.png" //needs proper image still.
 	color = "#005eab"
 
 /obj/item/map/new_varadero

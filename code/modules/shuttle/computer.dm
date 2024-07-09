@@ -381,7 +381,6 @@
 			else if(!override_being_removed)
 				to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
 				override_being_removed = TRUE
-				var/unhack_time = 1800
 				user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
 					SPAN_NOTICE("You try to take back control over the lifeboat. It will take around 3 minutes."))
 				var/remaining_time = timeleft(unhack_time) / 10

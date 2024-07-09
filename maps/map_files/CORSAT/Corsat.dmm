@@ -27814,7 +27814,6 @@
 	name = "Secure Racks";
 	req_access_txt = "103"
 	},
-/obj/item/XenoItem/AntiAcid,
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"
 	},
@@ -27833,21 +27832,6 @@
 	icon_state = "retrosquareslight"
 	},
 /area/corsat/gamma/medbay)
-"bAt" = (
-/obj/structure/surface/rack,
-/obj/structure/window/reinforced/toughened{
-	dir = 8
-	},
-/obj/structure/machinery/door/window/eastright{
-	dir = 1;
-	name = "Secure Racks";
-	req_access_txt = "103"
-	},
-/obj/item/XenoItem/ResinPaste,
-/turf/open/floor/corsat{
-	icon_state = "purplewhite"
-	},
-/area/corsat/omega/complex)
 "bAu" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/corsat{
@@ -27882,7 +27866,7 @@
 /area/corsat/omega/complex)
 "bAy" = (
 /obj/structure/surface/rack,
-/obj/item/XenoBio/Resin,
+/obj/item/oldresearch/Resin,
 /obj/structure/window/reinforced/toughened{
 	dir = 8
 	},
@@ -28360,7 +28344,7 @@
 	name = "Secure Racks";
 	req_access_txt = "103"
 	},
-/obj/item/XenoBio/Blood,
+/obj/item/oldresearch/Blood,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhite"
@@ -28374,7 +28358,7 @@
 /area/corsat/omega/complex)
 "bBJ" = (
 /obj/structure/surface/rack,
-/obj/item/XenoBio/Chitin,
+/obj/item/oldresearch/Chitin,
 /obj/structure/window/reinforced/toughened{
 	dir = 8
 	},
@@ -76237,7 +76221,7 @@ crG
 aoc
 bBH
 bCv
-bAt
+bAq
 aoE
 bBO
 bUn

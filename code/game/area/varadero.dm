@@ -84,6 +84,7 @@
 	requires_power = FALSE
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
+	is_landing_zone = TRUE
 
 /area/varadero/exterior/lz1_console/two
 	name = "New Varadero - Palm Airfield"
@@ -98,18 +99,23 @@
 	icon_state = "lz1"
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
+	is_landing_zone = TRUE
 
 /area/varadero/exterior/lz2_near
 	name = "New Varadero - Palm Airfield"
 	icon_state = "lz2"
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
+	is_landing_zone = TRUE
 
 /area/varadero/exterior/pontoon_beach
 	name = "New Varadero - Rockabilly Beach"
 	icon_state = "varadero0"
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_JUNGLE
+
+/area/varadero/exterior/pontoon_beach/lz
+	is_landing_zone = TRUE
 
 /area/varadero/exterior/eastbeach
 	name = "New Varadero - East Beach"
@@ -157,6 +163,7 @@
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_JUNGLE
 	sound_environment = SOUND_ENVIRONMENT_ROOM
+	is_landing_zone = TRUE
 
 /area/varadero/interior/cargo
 	name = "New Varadero - Cargo"

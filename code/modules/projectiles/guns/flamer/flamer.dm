@@ -203,7 +203,7 @@
 /obj/item/weapon/gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
 	set waitfor = 0
 	last_fired = world.time
-	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
 		return
 
 	var/datum/reagent/R = current_mag.reagents.reagent_list[1]
@@ -234,7 +234,7 @@
 
 /obj/item/weapon/gun/flamer/proc/unleash_smoke(atom/target, mob/living/user)
 	last_fired = world.time
-	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
 		return
 
 	var/source_turf = get_turf(user)
@@ -251,7 +251,7 @@
 	var/turf/turfs[] = get_line(user, target, FALSE)
 	var/turf/first_turf = turfs[1]
 	var/turf/second_turf = turfs[2]
-	var/ammount_required = (min(turfs.len, smoke_range) * use_multiplier) // the ammount of units that this click requires
+	var/ammount_required = (min(length(turfs), smoke_range) * use_multiplier) // the ammount of units that this click requires
 	for(var/turf/turf in turfs)
 
 		if(chemical.volume < ammount_required)
@@ -277,7 +277,7 @@
 			var/datum/effect_system/smoke_spread/chem/smoke = new()
 			smoke.set_up(to_disperse, 1, loca = turf)
 			smoke.start()
-		sleep(2)
+		sleep(4)
 
 		distance++
 
@@ -294,7 +294,7 @@
 
 /obj/item/weapon/gun/flamer/proc/unleash_foam(atom/target, mob/living/user)
 	last_fired = world.time
-	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
 		return
 
 	var/source_turf = get_turf(user)
@@ -305,7 +305,7 @@
 
 	var/turf/turfs[] = get_line(user, target, FALSE)
 	var/turf/first_turf = turfs[1]
-	var/ammount_required = (min(turfs.len, foam_range) * use_multiplier) // the ammount of units that this click requires
+	var/ammount_required = (min(length(turfs), foam_range) * use_multiplier) // the ammount of units that this click requires
 	for(var/turf/turf in turfs)
 
 		if(chemical.volume < ammount_required)

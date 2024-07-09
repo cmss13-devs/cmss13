@@ -13,8 +13,8 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	table_name = "stickyban"
 	field_types = list(
 		"identifier" = DB_FIELDTYPE_STRING_LARGE,
-		"reason" = DB_FIELDTYPE_STRING_LARGE,
-		"message" = DB_FIELDTYPE_STRING_LARGE,
+		"reason" = DB_FIELDTYPE_STRING_MAX,
+		"message" = DB_FIELDTYPE_STRING_MAX,
 		"date" = DB_FIELDTYPE_STRING_LARGE,
 		"active" = DB_FIELDTYPE_INT,
 		"adminid" = DB_FIELDTYPE_BIGINT,

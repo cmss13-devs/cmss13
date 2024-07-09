@@ -201,7 +201,7 @@
 			blinded = TRUE
 			set_stat(UNCONSCIOUS)
 		else
-			if(!interference)//If their connection to hivemind is affected, their vision should be too.
+			if(!HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))//If their connection to hivemind is affected, their vision should be too.
 				blinded = FALSE
 			set_stat(CONSCIOUS)
 			if(regular_update && halloss > 0)
@@ -215,13 +215,12 @@
 				src.ReduceEyeBlur(1)
 
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
-			handle_interference()
 
 	return TRUE
 
 /mob/living/carbon/xenomorph/proc/handle_stomach_contents()
 	//Deal with dissolving/damaging stuff in stomach.
-	if(stomach_contents.len)
+	if(length(stomach_contents))
 		for(var/atom/movable/M in stomach_contents)
 			if(ishuman(M))
 				if(world.time > devour_timer - 50 && world.time < devour_timer - 30)
@@ -482,7 +481,7 @@ Make sure their actual health updates immediately.*/
 	if(status_flags & GODMODE)
 		health = maxHealth
 		set_stat(CONSCIOUS)
-	else if(xeno_shields.len != 0)
+	else if(length(xeno_shields) != 0)
 		overlay_shields()
 		health = maxHealth - getFireLoss() - getBruteLoss()
 	else
@@ -546,15 +545,6 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/GetDazeDuration(amount)
 	amount *= 2 / 3
 	return ..()
-
-/mob/living/carbon/xenomorph/proc/handle_interference()
-	if(interference)
-		interference = max(interference-2, 0)
-
-	if(observed_xeno && observed_xeno.interference)
-		overwatch(observed_xeno,TRUE)
-
-	return interference
 
 /mob/living/carbon/xenomorph/handle_slowed()
 	if(slowed)

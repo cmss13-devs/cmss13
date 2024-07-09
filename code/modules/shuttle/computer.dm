@@ -388,7 +388,7 @@
 						to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))
 						override_being_removed = FALSE
 						return
-					remaining_time = timeleft(unhack_time) / 10 - 20
+					remaining_time = remaining_time - 20 SECONDS 
 					if(remaining_time > 0)
 						to_chat(user, SPAN_NOTICE("You partially bypass the lockout, only [remaining_time] seconds left."))
 				if(remaining_time <= 0)

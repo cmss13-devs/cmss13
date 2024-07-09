@@ -33,7 +33,7 @@
 	group = "Restricted Equipment"
 
 /datum/supply_packs/jtac_kit
-	name = "JTAC Radio Kit crate (x1 full flare gun belt, x2 m94 signal flare packs, 1x laser designator, 1x jtac radio key, 1x radiopack)"
+	name = "JTAC Radio Kit crate (x1 full flare gun belt, x2 M89-S signal flare packs, 1x laser designator, 1x jtac radio key, 1x radiopack)"
 	contains = list(
 		/obj/item/storage/box/kit/mini_jtac,
 	)

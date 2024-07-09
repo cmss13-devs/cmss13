@@ -170,7 +170,10 @@
 		icon_path = 'icons/mob/xenos/xenomorph_48x48.dmi'
 	switch(caste.caste_type)
 		if(XENO_CASTE_RUNNER)
+			icon_path = 'icons/mob/xenos/xenomorph_64x64.dmi'
 			to_flick = "gibbed-a-runner"
+		if(XENO_CASTE_BOILER)
+			to_flick = "gibbed-a-boiler"
 		if(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA)
 			to_flick = "larva_gib"
 	new /obj/effect/overlay/temp/gib_animation/xeno(loc, src, to_flick, icon_path)

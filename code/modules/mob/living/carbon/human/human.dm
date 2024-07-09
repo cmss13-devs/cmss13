@@ -247,7 +247,7 @@
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		var/dam_zone = pick("chest", "l_arm", "r_arm" "l_hand", "r_hand", "l_leg", "r_leg", "l_foot", "r_foot")
+		var/dam_zone = pick("chest", "l_arm", "r_arm", "l_hand", "r_hand", "l_leg", "r_leg", "l_foot", "r_foot")
 		apply_armoured_damage(damage, BRUTE, dam_zone)
 
 
@@ -1711,15 +1711,15 @@
 
 /mob/living/carbon/human/on_knockedout_trait_gain(datum/source)
 	. = ..()
-	
+
 	update_execute_hud()
-	
+
 	return .
 
 /mob/living/carbon/human/on_knockedout_trait_loss(datum/source)
 	. = ..()
 
 	update_execute_hud()
-	
+
 	return .
-	
+

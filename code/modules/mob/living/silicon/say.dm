@@ -39,7 +39,7 @@
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
 			return emote(lowertext(copytext(message,2)))
 
-	//Must be concious to speak
+	//Must be conscious to speak
 	if (stat)
 		return
 

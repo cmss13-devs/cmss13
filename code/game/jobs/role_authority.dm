@@ -36,7 +36,6 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 	var/list/roles_by_path //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
 	var/list/roles_by_name //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
 	var/list/roles_for_mode //Derived list of roles only for the game mode, generated when the round starts.
-	var/list/roles_whitelist //Associated list of lists, by ckey. Checks to see if a person is whitelisted for a specific role.
 	var/list/castes_by_path //Master list generated when role aithority is created, listing every caste by path.
 	var/list/castes_by_name //Master list generated when role authority is created, listing every default caste by name.
 
@@ -62,7 +61,6 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 											/datum/job/special/uaac,
 											/datum/job/special/uaac/tis,
 											/datum/job/special/uscm,
-											/datum/job/command/tank_crew //Rip VC
 											)
 	var/squads_all[] = typesof(/datum/squad) - /datum/squad
 	var/castes_all[] = subtypesof(/datum/caste_datum)
@@ -115,57 +113,6 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 		var/datum/squad/S = new squad()
 		squads += S
 		squads_by_type[S.type] = S
-
-	load_whitelist()
-
-
-/datum/authority/branch/role/proc/load_whitelist(filename = "config/role_whitelist.txt")
-	var/L[] = file2list(filename)
-	var/P[]
-	var/W[] = new //We want a temporary whitelist list, in case we need to reload.
-
-	var/i
-	var/r
-	var/ckey
-	var/role
-	roles_whitelist = list()
-	for(i in L)
-		if(!i) continue
-		i = trim(i)
-		if(!length(i)) continue
-		else if (copytext(i, 1, 2) == "#") continue
-
-		P = splittext(i, "+")
-		if(!P.len) continue
-		ckey = ckey(P[1]) //Converting their key to canonical form. ckey() does this by stripping all spaces, underscores and converting to lower case.
-
-		role = NO_FLAGS
-		r = 1
-		while(++r <= P.len)
-			switch(ckey(P[r]))
-				if("yautja") 						role |= WHITELIST_YAUTJA
-				if("yautjalegacy") 					role |= WHITELIST_YAUTJA_LEGACY
-				if("yautjacouncil")					role |= WHITELIST_YAUTJA_COUNCIL
-				if("yautjacouncillegacy")			role |= WHITELIST_YAUTJA_COUNCIL_LEGACY
-				if("yautjaleader")					role |= WHITELIST_YAUTJA_LEADER
-				if("commander") 					role |= WHITELIST_COMMANDER
-				if("commandercouncil")				role |= WHITELIST_COMMANDER_COUNCIL
-				if("commandercouncillegacy")		role |= WHITELIST_COMMANDER_COUNCIL_LEGACY
-				if("commanderleader")				role |= WHITELIST_COMMANDER_LEADER
-				if("workingjoe")					role |= WHITELIST_JOE
-				if("synthetic") 					role |= (WHITELIST_SYNTHETIC|WHITELIST_JOE)
-				if("syntheticcouncil")				role |= WHITELIST_SYNTHETIC_COUNCIL
-				if("syntheticcouncillegacy")		role |= WHITELIST_SYNTHETIC_COUNCIL_LEGACY
-				if("syntheticleader")				role |= WHITELIST_SYNTHETIC_LEADER
-				if("advisor")						role |= WHITELIST_MENTOR
-				if("allgeneral")					role |= WHITELISTS_GENERAL
-				if("allcouncil")					role |= (WHITELISTS_COUNCIL|WHITELISTS_GENERAL)
-				if("alllegacycouncil")				role |= (WHITELISTS_LEGACY_COUNCIL|WHITELISTS_GENERAL)
-				if("everything", "allleader") 		role |= WHITELIST_EVERYTHING
-
-		W[ckey] = role
-
-	roles_whitelist = W
 
 //#undef FACTION_TO_JOIN
 
@@ -384,7 +331,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/i = 0
 		var/j
 		while(++i < 3) //Get two passes.
-			if(!roles_to_iterate.len || prob(65)) break //Base chance to become a marine when being assigned randomly, or there are no roles available.
+			if(!length(roles_to_iterate) || prob(65)) break //Base chance to become a marine when being assigned randomly, or there are no roles available.
 			j = pick(roles_to_iterate)
 			J = roles_to_iterate[j]
 
@@ -415,7 +362,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return FALSE
 	if(!J.can_play_role(M.client))
 		return FALSE
-	if(J.flags_startup_parameters & ROLE_WHITELISTED && !(roles_whitelist[M.ckey] & J.flags_whitelist))
+	if(!J.check_whitelist_status(M))
 		return FALSE
 	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
 		return FALSE
@@ -518,7 +465,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title])
 
 	var/job_whitelist = new_job.title
-	var/whitelist_status = new_job.get_whitelist_status(roles_whitelist, new_human.client)
+	var/whitelist_status = new_job.get_whitelist_status(new_human.client)
 
 	if(whitelist_status)
 		job_whitelist = "[new_job.title][whitelist_status]"
@@ -586,7 +533,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 //Find which squad has the least population. If all 4 squads are equal it should just use a random one
 /datum/authority/branch/role/proc/get_lowest_squad(mob/living/carbon/human/H)
-	if(!squads.len) //Something went wrong, our squads aren't set up.
+	if(!length(squads)) //Something went wrong, our squads aren't set up.
 		to_world("Warning, something messed up in get_lowest_squad(). No squads set up!")
 		return null
 
@@ -595,7 +542,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/list/squads_copy = squads.Copy()
 	var/list/mixed_squads = list()
 
-	for(var/i= 1 to squads_copy.len)
+	for(var/i= 1 to length(squads_copy))
 		var/datum/squad/S = pick_n_take(squads_copy)
 		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
 			mixed_squads += S
@@ -639,7 +586,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(!H)
 		return
 
-	if(!squads.len)
+	if(!length(squads))
 		to_chat(H, "Something went wrong with your squad randomizer! Tell a coder!")
 		return //Shit, where's our squad data
 
@@ -650,7 +597,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/list/squads_copy = squads.Copy()
 	var/list/mixed_squads = list()
 	// The following code removes non useable squads from the lists of squads we assign marines too.
-	for(var/i= 1 to squads_copy.len)
+	for(var/i= 1 to length(squads_copy))
 		var/datum/squad/S = pick_n_take(squads_copy)
 		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
 			mixed_squads += S

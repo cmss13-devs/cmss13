@@ -1,9 +1,9 @@
 import { useBackend } from '../backend';
-import { Button, ProgressBar, Box, Section } from '../components';
+import { Box, Button, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 import { createLogger } from '../logging';
-export const AltitudeControlConsole = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const AltitudeControlConsole = () => {
+  const { act, data } = useBackend();
   const logger = createLogger('Debug');
   logger.warn(data);
   return (
@@ -19,7 +19,8 @@ export const AltitudeControlConsole = (_props, context) => {
               ranges={{
                 good: [-Infinity, 50],
                 bad: [51, Infinity],
-              }}>
+              }}
+            >
               <Box textAlign="center">{data.temp}% to overheat</Box>
             </ProgressBar>
           </Box>
@@ -31,9 +32,10 @@ export const AltitudeControlConsole = (_props, context) => {
               textAlign="center"
               fluid
               disabled={data.alt === 0.5}
-              content="Set to: Low Altitude"
               onClick={() => act('low_alt')}
-            />
+            >
+              Set to: Low Altitude
+            </Button>
           }
           {
             <Button
@@ -41,9 +43,10 @@ export const AltitudeControlConsole = (_props, context) => {
               textAlign="center"
               fluid
               disabled={data.alt === 1}
-              content="Set to: Medium Altitude"
               onClick={() => act('med_alt')}
-            />
+            >
+              Set to: Medium Altitude
+            </Button>
           }
           {
             <Button
@@ -51,9 +54,10 @@ export const AltitudeControlConsole = (_props, context) => {
               textAlign="center"
               fluid
               disabled={data.alt === 1.5}
-              content="Set to: High Altitude"
               onClick={() => act('high_alt')}
-            />
+            >
+              Set to: High Altitude
+            </Button>
           }
         </Section>
       </Window.Content>

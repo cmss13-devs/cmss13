@@ -89,6 +89,7 @@
 	RegisterSignal(parent, COMSIG_CAMERA_SET_AREA, PROC_REF(set_camera_rect))
 	RegisterSignal(parent, COMSIG_CAMERA_SET_TARGET, PROC_REF(set_camera))
 	RegisterSignal(parent, COMSIG_CAMERA_CLEAR, PROC_REF(clear_camera))
+	RegisterSignal(parent, COMSIG_CAMERA_REFRESH, PROC_REF(refresh_camera))
 
 /datum/component/camera_manager/UnregisterFromParent()
 	. = ..()
@@ -99,6 +100,7 @@
 	UnregisterSignal(parent, COMSIG_CAMERA_SET_AREA)
 	UnregisterSignal(parent, COMSIG_CAMERA_SET_TARGET)
 	UnregisterSignal(parent, COMSIG_CAMERA_CLEAR)
+	UnregisterSignal(parent, COMSIG_CAMERA_REFRESH)
 
 /datum/component/camera_manager/proc/clear_camera()
 	SIGNAL_HANDLER
@@ -112,6 +114,13 @@
 	target_width = null
 	target_height = null
 	show_camera_static()
+
+/datum/component/camera_manager/proc/refresh_camera()
+	SIGNAL_HANDLER
+	if(render_mode == RENDER_MODE_AREA)
+		update_area_camera()
+		return
+	update_target_camera()
 
 /datum/component/camera_manager/proc/set_camera(source, atom/target, w, h)
 	SIGNAL_HANDLER
@@ -179,9 +188,9 @@
 	var/cam_location = current
 	if(isliving(current.loc) || isVehicle(current.loc))
 		cam_location = current.loc
-	else if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
-		cam_location = helmet.loc
+	else if(istype(current.loc, /obj/item/clothing))
+		var/obj/item/clothing/clothing = current.loc
+		cam_location = clothing.loc
 
 	// If we're not forcing an update for some reason and the cameras are in the same location,
 	// we don't need to update anything.

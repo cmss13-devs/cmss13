@@ -66,6 +66,9 @@
 
 	var/agility_speed_increase = 0 // this opens up possibilities for balancing
 
+	/// A list of strain typepaths that are able to be chosen by this caste.
+	var/list/available_strains = list()
+
 	// The type of mutator delegate to instantiate on the base caste. Will
 	// be replaced when the Xeno chooses a strain.
 	var/behavior_delegate_type = /datum/behavior_delegate

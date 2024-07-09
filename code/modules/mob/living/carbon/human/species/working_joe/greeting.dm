@@ -10,8 +10,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/good_day
 	key = "goodday"
 	sound = 'sound/voice/joe/good_day.ogg'
+	haz_sound = 'sound/voice/joe/good_day_haz.ogg'
 	say_message = "Good day."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_are_you
 	key = "howareyou"
@@ -22,8 +24,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_can_i_help
 	key = "howcanihelp"
 	sound = 'sound/voice/joe/how_can_i_help.ogg'
+	haz_sound = 'sound/voice/joe/how_can_i_help_haz.ogg'
 	say_message = "How can I help you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/need_to_know
 	key = "needtoknow"

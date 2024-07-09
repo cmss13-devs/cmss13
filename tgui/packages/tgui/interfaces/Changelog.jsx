@@ -1,44 +1,54 @@
 import { classes } from 'common/react';
-import { useBackend } from '../backend';
-import { Component, Fragment } from 'inferno';
-import { Box, Button, Dropdown, Icon, Section, Stack, Table } from '../components';
-import { Window } from '../layouts';
-import { resolveAsset } from '../assets';
 import dateformat from 'dateformat';
 import yaml from 'js-yaml';
+import { Component, Fragment } from 'react';
 
-const icons = {
-  bugfix: { icon: 'bug', color: 'green' },
-  fix: { icon: 'bug', color: 'green' },
-  wip: { icon: 'hammer', color: 'orange' },
-  qol: { icon: 'hand-holding-heart', color: 'green' },
-  soundadd: { icon: 'tg-sound-plus', color: 'green' },
-  sounddel: { icon: 'tg-sound-minus', color: 'red' },
-  add: { icon: 'check-circle', color: 'green' },
-  expansion: { icon: 'check-circle', color: 'green' },
-  rscadd: { icon: 'check-circle', color: 'green' },
-  rscdel: { icon: 'times-circle', color: 'red' },
-  imageadd: { icon: 'tg-image-plus', color: 'green' },
-  imagedel: { icon: 'tg-image-minus', color: 'red' },
-  spellcheck: { icon: 'spell-check', color: 'green' },
-  experiment: { icon: 'radiation', color: 'yellow' },
-  balance: { icon: 'balance-scale-right', color: 'yellow' },
-  code_imp: { icon: 'code', color: 'green' },
-  refactor: { icon: 'tools', color: 'green' },
-  config: { icon: 'cogs', color: 'purple' },
-  admin: { icon: 'user-shield', color: 'purple' },
-  server: { icon: 'server', color: 'purple' },
-  tgs: { icon: 'toolbox', color: 'purple' },
-  tweak: { icon: 'wrench', color: 'green' },
-  ui: { icon: 'desktop', color: 'blue' },
-  mapadd: { icon: 'earth-africa', color: 'yellow' },
-  maptweak: { icon: 'map-location-dot', color: 'green' },
-  unknown: { icon: 'info-circle', color: 'label' },
+import { resolveAsset } from '../assets';
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  Dropdown,
+  Icon,
+  Section,
+  Stack,
+  Table,
+  Tooltip,
+} from '../components';
+import { Window } from '../layouts';
+
+const changeTypes = {
+  bugfix: { icon: 'bug', color: 'green', desc: 'Fix' },
+  fix: { icon: 'bug', color: 'green', desc: 'Fix' },
+  wip: { icon: 'hammer', color: 'orange', desc: 'WIP' },
+  qol: { icon: 'hand-holding-heart', color: 'green', desc: 'QOL' },
+  soundadd: { icon: 'tg-sound-plus', color: 'green', desc: 'Sound add' },
+  sounddel: { icon: 'tg-sound-minus', color: 'red', desc: 'Sound del' },
+  add: { icon: 'check-circle', color: 'green', desc: 'Addition' },
+  expansion: { icon: 'check-circle', color: 'green', desc: 'Addition' },
+  rscadd: { icon: 'check-circle', color: 'green', desc: 'Addition' },
+  rscdel: { icon: 'times-circle', color: 'red', desc: 'Removal' },
+  imageadd: { icon: 'tg-image-plus', color: 'green', desc: 'Sprite add' },
+  imagedel: { icon: 'tg-image-minus', color: 'red', desc: 'Sprite del' },
+  spellcheck: { icon: 'spell-check', color: 'green', desc: 'Spellcheck' },
+  experiment: { icon: 'radiation', color: 'yellow', desc: 'Experiment' },
+  balance: { icon: 'balance-scale-right', color: 'yellow', desc: 'Balance' },
+  code_imp: { icon: 'code', color: 'green', desc: 'Code improvement' },
+  refactor: { icon: 'tools', color: 'green', desc: 'Code refactor' },
+  config: { icon: 'cogs', color: 'purple', desc: 'Config' },
+  admin: { icon: 'user-shield', color: 'purple', desc: 'Admin' },
+  server: { icon: 'server', color: 'purple', desc: 'Server' },
+  tgs: { icon: 'toolbox', color: 'purple', desc: 'Server (TGS)' },
+  tweak: { icon: 'wrench', color: 'green', desc: 'Tweak' },
+  ui: { icon: 'desktop', color: 'blue', desc: 'UI' },
+  mapadd: { icon: 'earth-africa', color: 'yellow', desc: 'Map add' },
+  maptweak: { icon: 'map-location-dot', color: 'green', desc: 'Map tweak' },
+  unknown: { icon: 'info-circle', color: 'label', desc: 'Unknown' },
 };
 
 export class Changelog extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: 'Loading changelog data...',
       selectedDate: '',
@@ -60,13 +70,13 @@ export class Changelog extends Component {
   }
 
   getData = (date, attemptNumber = 1) => {
-    const { act } = useBackend(this.context);
+    const { act } = useBackend();
     const self = this;
     const maxAttempts = 6;
 
     if (attemptNumber > maxAttempts) {
       return this.setData(
-        'Failed to load data after ' + maxAttempts + ' attempts'
+        'Failed to load data after ' + maxAttempts + ' attempts',
       );
     }
 
@@ -92,11 +102,11 @@ export class Changelog extends Component {
   componentDidMount() {
     const {
       data: { dates = [] },
-    } = useBackend(this.context);
+    } = useBackend();
 
     if (dates) {
       dates.forEach((date) =>
-        this.dateChoices.push(dateformat(date, 'mmmm yyyy', true))
+        this.dateChoices.push(dateformat(date, 'mmmm yyyy', true)),
       );
       this.setSelectedDate(this.dateChoices[0]);
       this.getData(dates[0]);
@@ -107,7 +117,7 @@ export class Changelog extends Component {
     const { data, selectedDate, selectedIndex } = this.state;
     const {
       data: { dates },
-    } = useBackend(this.context);
+    } = useBackend();
     const { dateChoices } = this;
 
     const dateDropdown = dateChoices.length > 0 && (
@@ -126,7 +136,7 @@ export class Changelog extends Component {
               window.scrollTo(
                 0,
                 document.body.scrollHeight ||
-                  document.documentElement.scrollHeight
+                  document.documentElement.scrollHeight,
               );
               return this.getData(dates[index]);
             }}
@@ -145,12 +155,12 @@ export class Changelog extends Component {
               window.scrollTo(
                 0,
                 document.body.scrollHeight ||
-                  document.documentElement.scrollHeight
+                  document.documentElement.scrollHeight,
               );
               return this.getData(dates[index]);
             }}
             selected={selectedDate}
-            width={'150px'}
+            width="150px"
           />
         </Stack.Item>
         <Stack.Item>
@@ -167,7 +177,7 @@ export class Changelog extends Component {
               window.scrollTo(
                 0,
                 document.body.scrollHeight ||
-                  document.documentElement.scrollHeight
+                  document.documentElement.scrollHeight,
               );
               return this.getData(dates[index]);
             }}
@@ -212,7 +222,8 @@ export class Changelog extends Component {
             href={
               'https://github.com/cmss13-devs/cmss13/commit/' +
               '9a001bf520f889b434acd295253a1052420860af'
-            }>
+            }
+          >
             commit 9a001bf520f889b434acd295253a1052420860af on 2020/14/9
           </a>
           {' is licensed under '}
@@ -236,7 +247,8 @@ export class Changelog extends Component {
             href={
               'https://github.com/tgstation/tgstation/blob/master' +
               '/code/__DEFINES/tgs.dm'
-            }>
+            }
+          >
             code/__DEFINES/tgs.dm
           </a>
           {' and '}
@@ -244,7 +256,8 @@ export class Changelog extends Component {
             href={
               'https://github.com/tgstation/tgstation/blob/master' +
               '/code/modules/tgs/LICENSE'
-            }>
+            }
+          >
             code/modules/tgs/LICENSE
           </a>
           {' for the MIT license.'}
@@ -273,29 +286,29 @@ export class Changelog extends Component {
                   <Box ml={3}>
                     <Table>
                       {changes.map((change) => {
-                        const changeType = Object.keys(change)[0];
+                        const changeKey = Object.keys(change)[0];
+                        const changeType =
+                          changeTypes[changeKey] || changeTypes['unknown'];
                         return (
-                          <Table.Row key={changeType + change[changeType]}>
+                          <Table.Row key={changeKey + change[changeKey]}>
                             <Table.Cell
                               className={classes([
                                 'Changelog__Cell',
                                 'Changelog__Cell--Icon',
-                              ])}>
-                              <Icon
-                                color={
-                                  icons[changeType]
-                                    ? icons[changeType].color
-                                    : icons['unknown'].color
-                                }
-                                name={
-                                  icons[changeType]
-                                    ? icons[changeType].icon
-                                    : icons['unknown'].icon
-                                }
-                              />
+                              ])}
+                            >
+                              <Tooltip
+                                position="right"
+                                content={changeType.desc}
+                              >
+                                <Icon
+                                  color={changeType.color}
+                                  name={changeType.icon}
+                                />
+                              </Tooltip>
                             </Table.Cell>
                             <Table.Cell className="Changelog__Cell">
-                              {change[changeType]}
+                              {change[changeKey]}
                             </Table.Cell>
                           </Table.Row>
                         );

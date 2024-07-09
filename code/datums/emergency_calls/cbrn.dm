@@ -2,6 +2,7 @@
 	name = "CBRN (Squad)"
 	arrival_message = "A CBRN squad has been dispatched to your ship. Stand by."
 	objectives = "Handle the chemical, biological, radiological, or nuclear threat. Further orders may be provided."
+	home_base = /datum/lazy_template/ert/weyland_station
 	mob_min = 3
 	mob_max = 5
 	max_heavies = 0

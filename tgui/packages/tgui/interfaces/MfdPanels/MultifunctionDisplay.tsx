@@ -1,10 +1,11 @@
+import { classes } from 'common/react';
+import { ReactNode } from 'react';
+
 import { useBackend } from '../../backend';
 import { Button, Flex } from '../../components';
-import { CrtPanel } from '../CrtPanel';
 import { Table, TableCell, TableRow } from '../../components/Table';
-import { InfernoNode } from 'inferno';
+import { CrtPanel } from '../CrtPanel';
 import { ButtonProps } from './types';
-import { classes } from 'common/react';
 
 export interface MfdProps {
   readonly panelStateId: string; // eslint-disable-line
@@ -12,12 +13,12 @@ export interface MfdProps {
   readonly leftButtons?: Array<ButtonProps>;
   readonly rightButtons?: Array<ButtonProps>;
   readonly bottomButtons?: Array<ButtonProps>;
-  readonly children?: InfernoNode;
+  readonly children?: ReactNode;
   readonly otherPanelStateId?: string; // eslint-disable-line
 }
 
-export const MfdButton = (props: ButtonProps, context) => {
-  const { act } = useBackend(context);
+export const MfdButton = (props: ButtonProps) => {
+  const { act } = useBackend();
   return (
     <Button
       onClick={() => {
@@ -29,7 +30,8 @@ export const MfdButton = (props: ButtonProps, context) => {
       className={classes([
         props.children && 'mfd_button_active',
         !props.children && 'mfd_button',
-      ])}>
+      ])}
+    >
       {props.children}
     </Button>
   );
@@ -39,15 +41,15 @@ export const EmptyMfdButton = () => {
   return <MfdButton />;
 };
 
-export const HorizontalPanel = (
-  props: { readonly buttons: Array<ButtonProps> },
-  context
-) => {
+export const HorizontalPanel = (props: {
+  readonly buttons: Array<ButtonProps>;
+}) => {
   return (
     <Flex
       justify="center"
       align="space-evenly"
-      className="HorizontalButtonPanel">
+      className="HorizontalButtonPanel"
+    >
       {props.buttons.map((x, i) => (
         <Flex.Item key={i}>
           {x ? <MfdButton {...x} /> : <EmptyMfdButton />}
@@ -57,16 +59,16 @@ export const HorizontalPanel = (
   );
 };
 
-export const VerticalPanel = (
-  props: { readonly buttons?: Array<ButtonProps> },
-  context
-) => {
+export const VerticalPanel = (props: {
+  readonly buttons?: Array<ButtonProps>;
+}) => {
   return (
     <Flex
       direction="column"
       justify="center"
       align="space-evenly"
-      className="VerticalButtonPanel">
+      className="VerticalButtonPanel"
+    >
       {props.buttons?.map((x, i) => (
         <Flex.Item key={i}>
           {x ? <MfdButton {...x} /> : <EmptyMfdButton />}
@@ -103,13 +105,13 @@ export const MfdPanel = (props: MfdProps) => {
 
   const topButtons = Array.from({ length: 5 }).map((_, i) => topProps[i] ?? {});
   const bottomButtons = Array.from({ length: 5 }).map(
-    (_, i) => botProps[i] ?? {}
+    (_, i) => botProps[i] ?? {},
   );
   const leftButtons = Array.from({ length: 5 }).map(
-    (_, i) => leftProps[i] ?? {}
+    (_, i) => leftProps[i] ?? {},
   );
   const rightButtons = Array.from({ length: 5 }).map(
-    (_, i) => rightProps[i] ?? {}
+    (_, i) => rightProps[i] ?? {},
   );
   return (
     <Table className="primarypanel">

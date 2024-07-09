@@ -10,6 +10,13 @@
 "d" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
+"e" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/lz1_north_cas)
 "f" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/plating,
@@ -218,7 +225,7 @@ c
 c
 c
 c
-j
+e
 "}
 (12,1,1) = {"
 c
@@ -235,7 +242,7 @@ c
 c
 c
 c
-j
+e
 "}
 (13,1,1) = {"
 c
@@ -252,7 +259,7 @@ c
 c
 c
 c
-j
+e
 "}
 (14,1,1) = {"
 c
@@ -269,7 +276,7 @@ c
 c
 c
 c
-j
+e
 "}
 (15,1,1) = {"
 c
@@ -286,5 +293,5 @@ c
 i
 c
 c
-j
+e
 "}

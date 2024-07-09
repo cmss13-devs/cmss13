@@ -515,7 +515,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/restraints,
+/obj/item/xeno_restraints,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1467,12 +1467,6 @@
 "Lg" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
-	},
-/obj/item/XenoItem/AntiAcid{
-	pixel_x = -6
-	},
-/obj/item/XenoItem/AntiAcid{
-	pixel_x = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/sandstone/runed,

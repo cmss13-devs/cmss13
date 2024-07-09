@@ -143,7 +143,7 @@
 		data["property_data_list"] = list()
 		for(var/datum/chem_property/P in GLOB.chemical_data.research_property_data)
 			data["property_codings"][P.name] = P.code
-			if(template_filter && !check_bitflag(P.category, template_filter))
+			if(template_filter && !HAS_FLAG(P.category, template_filter))
 				continue
 			data["property_data_list"][P.name] = P.level
 			data["property_data_list"] = sortAssoc(data["property_data_list"])
@@ -151,18 +151,18 @@
 		data["target_property_list"] = list()
 		for(var/datum/chem_property/P in creation_template)
 			data["target_property_list"][P.name] = P.level
-			if(template_filter && !check_bitflag(P.category, template_filter))
+			if(template_filter && !HAS_FLAG(P.category, template_filter))
 				continue
 			//Override the editor level with the enabled property level
 			data["property_data_list"][P.name] = P.level
 
 		data["template_filter"] = list(
-				"MED" = list(check_bitflag(template_filter, PROPERTY_TYPE_MEDICINE), PROPERTY_TYPE_MEDICINE),
-				"TOX" = list(check_bitflag(template_filter, PROPERTY_TYPE_TOXICANT), PROPERTY_TYPE_TOXICANT),
-				"STI" = list(check_bitflag(template_filter, PROPERTY_TYPE_STIMULANT), PROPERTY_TYPE_STIMULANT),
-				"REA" = list(check_bitflag(template_filter, PROPERTY_TYPE_REACTANT), PROPERTY_TYPE_REACTANT),
-				"IRR" = list(check_bitflag(template_filter, PROPERTY_TYPE_IRRITANT), PROPERTY_TYPE_IRRITANT),
-				"MET" = list(check_bitflag(template_filter, PROPERTY_TYPE_METABOLITE), PROPERTY_TYPE_METABOLITE)
+				"MED" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_MEDICINE), PROPERTY_TYPE_MEDICINE),
+				"TOX" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_TOXICANT), PROPERTY_TYPE_TOXICANT),
+				"STI" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_STIMULANT), PROPERTY_TYPE_STIMULANT),
+				"REA" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_REACTANT), PROPERTY_TYPE_REACTANT),
+				"IRR" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_IRRITANT), PROPERTY_TYPE_IRRITANT),
+				"MET" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_METABOLITE), PROPERTY_TYPE_METABOLITE)
 			)
 
 	else if(target && target.data && target.completed)
@@ -381,8 +381,7 @@
 							relate(C)
 					if(!C.original_id)
 						C.original_id = target.data.id
-					C.id = encode_reagent(C)
-					C.name = C.id
+					encode_reagent(C)
 					if(C.id in simulations)
 						//We've already simulated this before, so we don't need to continue
 						C = GLOB.chemical_reagents_list[C.id]
@@ -443,8 +442,8 @@
 	min_creation_cost += slots_used - 2
 	for(var/datum/chem_property/P in creation_template)
 		creation_cost += max(abs(P.value), 1) * P.level
-		if(P.level > 5) // a penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
-			creation_cost += P.level - 6 + Ceiling((P.level - 5) / 2)
+		if(P.level > 5 && P.cost_penalty) // a penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
+			creation_cost += P.level - 6 + ceil((P.level - 5) / 2)
 	creation_cost += ((new_od_level - 10) / 5) * 3 //3 cost for every 5 units above 10
 	for(var/rarity in creation_complexity)
 		switch(rarity)
@@ -578,8 +577,8 @@
 	var/obj/item/paper/research_report/report = new /obj/item/paper/research_report/(loc)
 	var/datum/reagent/D = GLOB.chemical_reagents_list[id]
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	report.name = "Simulation result for [D.name]"
-	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.name]</H2></center>"
+	report.name = "Simulation result for [D.id]"
+	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.id]</H2></center>"
 	report.generate(D)
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Synthesis Simulator.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[GLOB.game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
@@ -591,7 +590,9 @@
 	var/suffix = " "
 	for(var/datum/chem_property/P in C.properties)
 		suffix += P.code+"[P.level]"
-	return O.name + suffix
+	C.id = O.name + " " + copytext(md5(suffix),1,3) + suffix //Show random suffix AND real properties on research paper
+	C.name = O.name + " " + copytext(md5(suffix),1,3) //Show ONLY random suffix on health analyzers
+	return
 
 /obj/structure/machinery/chem_simulator/proc/complexity_to_string_list()
 	var/list/L = list()
@@ -679,7 +680,7 @@
 	R.make_alike(assoc_R)
 
 	if(mode != MODE_CREATE)
-		if(R.required_reagents.len > 2 && !recipe_targets[recipe_target]) //we only replace if the recipe isn't small and the target is not set TRUE to being elevated
+		if(length(R.required_reagents) > 2 && !recipe_targets[recipe_target]) //we only replace if the recipe isn't small and the target is not set TRUE to being elevated
 			LAZYREMOVE(R.required_reagents, pick(R.required_reagents))
 		R.add_component(recipe_target)
 

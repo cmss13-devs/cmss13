@@ -78,6 +78,7 @@
 
 	playsound(xeno.loc, "alien_resin_build", 25)
 	apply_cooldown()
+	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
 	return ..()
 
 /mob/living/carbon/xenomorph/lay_down()
@@ -110,9 +111,9 @@
 	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
 		return
-	for(var/i in 1 to X.caste.spit_types.len)
+	for(var/i in 1 to length(X.caste.spit_types))
 		if(X.ammo == GLOB.ammo_list[X.caste.spit_types[i]])
-			if(i == X.caste.spit_types.len)
+			if(i == length(X.caste.spit_types))
 				X.ammo = GLOB.ammo_list[X.caste.spit_types[1]]
 			else
 				X.ammo = GLOB.ammo_list[X.caste.spit_types[i+1]]
@@ -131,7 +132,7 @@
 		to_chat(X, SPAN_WARNING("We cannot regurgitate here."))
 		return
 
-	if(X.stomach_contents.len)
+	if(length(X.stomach_contents))
 		for(var/mob/living/M in X.stomach_contents)
 			// Also has good reason to be a proc on all Xenos
 			X.regurgitate(M, TRUE)
@@ -363,9 +364,10 @@
 		current_aura = pheromone
 		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."), \
 		SPAN_XENOWARNING("We begin to emit '[pheromone]' pheromones."), null, 5)
+		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
 
-	if(isqueen(src) && hive && hive.xeno_leader_list.len && anchored)
+	if(isqueen(src) && hive && length(hive.xeno_leader_list) && anchored)
 		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
 
@@ -481,7 +483,7 @@
 
 	// Build our list of target turfs based on
 	if (spray_type == ACID_SPRAY_LINE)
-		X.do_acid_spray_line(getline2(X, A, include_from_atom = FALSE), spray_effect_type, spray_distance)
+		X.do_acid_spray_line(get_line(X, A, include_start_atom = FALSE), spray_effect_type, spray_distance)
 
 	else if (spray_type == ACID_SPRAY_CONE)
 		X.do_acid_spray_cone(get_turf(A), spray_effect_type, spray_distance)
@@ -706,7 +708,7 @@
 
 /datum/action/xeno_action/activable/place_construction/proc/spacecheck(mob/living/carbon/xenomorph/X, turf/T, datum/construction_template/xenomorph/tem)
 	if(tem.block_range)
-		for(var/turf/TA in range(T, tem.block_range))
+		for(var/turf/TA in range(tem.block_range, T))
 			if(!X.check_alien_construction(TA, FALSE, TRUE))
 				to_chat(X, SPAN_WARNING("We need more open space to build here."))
 				qdel(tem)
@@ -927,7 +929,7 @@
 	if(distance > 2)
 		return FALSE
 
-	var/list/turf/path = getline2(stabbing_xeno, targetted_atom, include_from_atom = FALSE)
+	var/list/turf/path = get_line(stabbing_xeno, targetted_atom, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
 			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
@@ -1013,6 +1015,9 @@
 		// The xeno flips around for a second to impale the target with their tail. These look awsome.
 		stab_direction = turn(get_dir(stabbing_xeno, target), 180)
 		stab_overlay = "tail"
+	log_attack("[key_name(stabbing_xeno)] tailstabbed [key_name(target)] at [get_area_name(stabbing_xeno)]")
+	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was tailstabbed by [key_name(stabbing_xeno)]</font>")
+	stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>tailstabbed [key_name(target)]</font>")
 
 	stabbing_xeno.setDir(stab_direction)
 	stabbing_xeno.emote("tail")

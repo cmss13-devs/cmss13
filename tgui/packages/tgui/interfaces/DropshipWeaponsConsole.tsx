@@ -1,18 +1,18 @@
 import { useBackend } from '../backend';
-import { Window } from '../layouts';
 import { Box, Divider, Flex, Stack } from '../components';
+import { Window } from '../layouts';
 import { CasSim } from './CasSim';
-import { MfdPanel, MfdProps } from './MfdPanels/MultifunctionDisplay';
+import { Dpad } from './common/Dpad';
 import { CameraMfdPanel } from './MfdPanels/CameraPanel';
 import { EquipmentMfdPanel } from './MfdPanels/EquipmentPanel';
-import { MapMfdPanel } from './MfdPanels/MapPanel';
-import { WeaponMfdPanel } from './MfdPanels/WeaponPanel';
-import { SupportMfdPanel } from './MfdPanels/SupportPanel';
 import { FiremissionMfdPanel } from './MfdPanels/FiremissionPanel';
-import { TargetAquisitionMfdPanel } from './MfdPanels/TargetAquisition';
+import { MapMfdPanel } from './MfdPanels/MapPanel';
+import { MfdPanel, MfdProps } from './MfdPanels/MultifunctionDisplay';
 import { mfdState } from './MfdPanels/stateManagers';
 import { otherMfdState } from './MfdPanels/stateManagers';
-import { Dpad } from './common/Dpad';
+import { SupportMfdPanel } from './MfdPanels/SupportPanel';
+import { TargetAquisitionMfdPanel } from './MfdPanels/TargetAquisition';
+import { WeaponMfdPanel } from './MfdPanels/WeaponPanel';
 
 export interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -76,7 +76,7 @@ const DrawShipOutline = () => {
       x2={xLookup(pos1)}
       y2={yLookup(pos1)}
       stroke={OutlineColor}
-      stroke-width={OutlineWidth}
+      strokeWidth={OutlineWidth}
     />
   );
   return (
@@ -88,8 +88,8 @@ const DrawShipOutline = () => {
   );
 };
 
-const DrawWeapon = (props: { readonly weapon: DropshipEquipment }, context) => {
-  const { data, act } = useBackend<DropshipProps>(context);
+const DrawWeapon = (props: { readonly weapon: DropshipEquipment }) => {
+  const { data, act } = useBackend<DropshipProps>();
   const position = props.weapon.mount_point;
   const index = position - 1;
   const x = xLookup(index);
@@ -103,15 +103,16 @@ const DrawWeapon = (props: { readonly weapon: DropshipEquipment }, context) => {
         r={10}
         fill={data.selected_eqp === props.weapon.mount_point ? 'blue' : 'red'}
         onClick={() =>
-          act('select_equipment', { 'equipment_id': props.weapon.eqp_tag })
+          act('select_equipment', { equipment_id: props.weapon.eqp_tag })
         }
       />
       <text
         x={x + (index < 2 ? -25 : 25)}
         y={y}
-        text-anchor="middle"
+        textAnchor="middle"
         fontWeight="bold"
-        fill={OutlineColor}>
+        fill={OutlineColor}
+      >
         {props.weapon.shorthand}
       </text>
     </>
@@ -165,7 +166,8 @@ const DropshipWeaponsPanel = (props: {
           <Flex
             className="WeaponPanelLeft"
             direction="column"
-            justify="space-around">
+            justify="space-around"
+          >
             <Flex.Item>
               <WeaponStatsPanel
                 slot={2}
@@ -206,7 +208,8 @@ const DropshipWeaponsPanel = (props: {
           <Flex
             className="WeaponPanelRight"
             direction="column"
-            justify="space-around">
+            justify="space-around"
+          >
             <Flex.Item>
               <WeaponStatsPanel
                 slot={3}
@@ -229,8 +232,8 @@ const DropshipWeaponsPanel = (props: {
   );
 };
 
-const LcdPanel = (props, context) => {
-  const { data } = useBackend<DropshipProps>(context);
+const LcdPanel = (props) => {
+  const { data } = useBackend<DropshipProps>();
   return (
     <Box className="NavigationMenu">
       <DropshipWeaponsPanel equipment={data.equipment_data} />
@@ -238,7 +241,7 @@ const LcdPanel = (props, context) => {
   );
 };
 
-const FiremissionSimulationPanel = (props, context) => {
+const FiremissionSimulationPanel = (props) => {
   return (
     <Box className="NavigationMenu">
       <CasSim />
@@ -246,8 +249,8 @@ const FiremissionSimulationPanel = (props, context) => {
   );
 };
 
-const FiremissionsSimMfdPanel = (props: MfdProps, context) => {
-  const { setPanelState } = mfdState(context, props.panelStateId);
+const FiremissionsSimMfdPanel = (props: MfdProps) => {
+  const { setPanelState } = mfdState(props.panelStateId);
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -256,13 +259,14 @@ const FiremissionsSimMfdPanel = (props: MfdProps, context) => {
           children: 'BACK',
           onClick: () => setPanelState(''),
         },
-      ]}>
+      ]}
+    >
       <FiremissionSimulationPanel />
     </MfdPanel>
   );
 };
 
-const WeaponsMfdPanel = (props, context) => {
+const WeaponsMfdPanel = (props) => {
   return (
     <MfdPanel panelStateId={props.panelStateId}>
       <LcdPanel />
@@ -270,9 +274,9 @@ const WeaponsMfdPanel = (props, context) => {
   );
 };
 
-const BaseMfdPanel = (props: MfdProps, context) => {
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const { otherPanelState } = otherMfdState(context, props.otherPanelStateId);
+const BaseMfdPanel = (props: MfdProps) => {
+  const { setPanelState } = mfdState(props.panelStateId);
+  const { otherPanelState } = otherMfdState(props.otherPanelStateId);
 
   return (
     <MfdPanel
@@ -299,7 +303,8 @@ const BaseMfdPanel = (props: MfdProps, context) => {
           children: otherPanelState !== 'camera' ? 'CAMS' : undefined,
           onClick: () => setPanelState('camera'),
         },
-      ]}>
+      ]}
+    >
       <Box className="NavigationMenu">
         <div className="welcome-page">
           <h1>U.S.C.M.</h1>
@@ -312,8 +317,8 @@ const BaseMfdPanel = (props: MfdProps, context) => {
   );
 };
 
-const PrimaryPanel = (props: MfdProps, context) => {
-  const { panelState } = mfdState(context, props.panelStateId);
+const PrimaryPanel = (props: MfdProps) => {
+  const { panelState } = mfdState(props.panelStateId);
   switch (panelState) {
     case 'camera':
       return <CameraMfdPanel {...props} />;
@@ -343,7 +348,7 @@ export const DropshipWeaponsConsole = () => {
     <Window height={700} width={1420}>
       <Window.Content>
         <Box className="WeaponsConsoleBackground">
-          <Stack horizontal className="WeaponsConsole">
+          <Stack className="WeaponsConsole">
             <Stack.Item>
               <PrimaryPanel
                 panelStateId="left-screen"

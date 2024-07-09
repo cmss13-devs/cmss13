@@ -1,10 +1,11 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
+
 import { useBackend } from '../backend';
-import { Section, Button, Stack, LabeledList, NoticeBox } from '../components';
+import { Button, LabeledList, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
-export const BotanyEditor = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const BotanyEditor = () => {
+  const { act, data } = useBackend();
 
   const { disk, seed, degradation, sourceName, locus } = data;
 
@@ -19,24 +20,26 @@ export const BotanyEditor = (_props, context) => {
               <Button
                 fluid
                 icon="eject"
-                content={disk ? 'Eject ' + disk : 'Eject disk'}
                 disabled={!disk}
                 onClick={() => act('eject_disk')}
-              />
+              >
+                {disk ? 'Eject ' + disk : 'Eject disk'}
+              </Button>
             </Stack.Item>
             <Stack.Item>
               <Button
                 fluid
                 icon="eject"
-                content={seed ? 'Eject ' + seed : 'Eject target seeds'}
                 disabled={!seed}
                 onClick={() => act('eject_packet')}
-              />
+              >
+                {seed ? 'Eject ' + seed : 'Eject target seeds'}
+              </Button>
             </Stack.Item>
           </Stack>
         </Section>
         <Section title="Buffered Genetic Data">
-          <Fragment>
+          <>
             {!disk && (
               <NoticeBox danger>
                 No disk! Genetic data cannot be applied.
@@ -45,7 +48,7 @@ export const BotanyEditor = (_props, context) => {
             {!seed && (
               <NoticeBox danger>No seeds to apply genetic data to!</NoticeBox>
             )}
-          </Fragment>
+          </>
           {!!disk && (
             <LabeledList>
               <LabeledList.Item label="Source">{sourceName}</LabeledList.Item>
@@ -67,10 +70,11 @@ export const BotanyEditor = (_props, context) => {
                 <Button
                   fluid
                   icon="download"
-                  content="Apply gene mods"
                   disabled={!seed || degraded}
                   onClick={() => act('apply_gene')}
-                />
+                >
+                  Apply gene mods
+                </Button>
               </LabeledList.Item>
             </LabeledList>
           </Section>

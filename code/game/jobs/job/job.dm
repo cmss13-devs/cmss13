@@ -66,10 +66,7 @@
 		return ""
 	return "[CONFIG_GET(string/wikiarticleurl)]/[replacetext(title, " ", "_")]"
 
-/datum/job/proc/get_whitelist_status(list/roles_whitelist, client/player)
-	if(!roles_whitelist)
-		return FALSE
-
+/datum/job/proc/get_whitelist_status(client/player)
 	return WHITELIST_NORMAL
 
 /datum/timelock
@@ -179,7 +176,7 @@
 	var/datum/money_account/generated_account
 	//Give them an account in the database.
 	if(!(flags_startup_parameters & ROLE_NO_ACCOUNT))
-		var/obj/item/card/id/card = account_user.wear_id
+		var/obj/item/card/id/card = account_user.get_idcard()
 		var/user_has_preexisting_account = account_user.mind?.initial_account
 		if(card && !user_has_preexisting_account)
 			var/datum/paygrade/account_paygrade = GLOB.paygrades[card.paygrade]
@@ -191,7 +188,7 @@
 				remembered_info += "<b>Your account pin is:</b> [generated_account.remote_access_pin]<br>"
 				remembered_info += "<b>Your account funds are:</b> $[generated_account.money]<br>"
 
-				if(generated_account.transaction_log.len)
+				if(length(generated_account.transaction_log))
 					var/datum/transaction/T = generated_account.transaction_log[1]
 					remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
 				account_user.mind.store_memory(remembered_info)
@@ -252,7 +249,7 @@
 		var/mob/living/carbon/human/human = M
 
 		var/job_whitelist = title
-		var/whitelist_status = get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, human.client)
+		var/whitelist_status = get_whitelist_status(human.client)
 
 		if(whitelist_status)
 			job_whitelist = "[title][whitelist_status]"
@@ -314,3 +311,10 @@
 /// Intended to be overwritten to handle any requirements for specific job variations that can be selected
 /datum/job/proc/filter_job_option(mob/job_applicant)
 	return job_options
+
+/datum/job/proc/check_whitelist_status(mob/user)
+	if(!(flags_startup_parameters & ROLE_WHITELISTED))
+		return TRUE
+
+	if(user.client.check_whitelist_status(flags_whitelist))
+		return TRUE

@@ -79,6 +79,22 @@
 	name = "red tie"
 	icon_state = "redtie"
 
+/obj/item/clothing/accessory/green
+	name = "green tie"
+	icon_state = "greentie"
+
+/obj/item/clothing/accessory/black
+	name = "black tie"
+	icon_state = "blacktie"
+
+/obj/item/clothing/accessory/gold
+	name = "gold tie"
+	icon_state = "goldtie"
+
+/obj/item/clothing/accessory/purple
+	name = "purple tie"
+	icon_state = "purpletie"
+
 /obj/item/clothing/accessory/horrible
 	name = "horrible tie"
 	desc = "A neosilk clip-on tie. This one is disgusting."
@@ -138,18 +154,18 @@
 /obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
 	if(.)
-		RegisterSignal(S, COMSIG_ITEM_PICKUP, PROC_REF(remove_medal))
+		RegisterSignal(S, COMSIG_ITEM_EQUIPPED, PROC_REF(remove_medal))
 
-/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/C, mob/user)
+/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/C, mob/user, slot)
 	SIGNAL_HANDLER
-	if(user.real_name != recipient_name)
+	if(user.real_name != recipient_name && (slot == WEAR_BODY || slot == WEAR_JACKET))
 		C.remove_accessory(user, src)
 		user.drop_held_item(src)
 
 /obj/item/clothing/accessory/medal/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()
 	if(.)
-		UnregisterSignal(C, COMSIG_ITEM_PICKUP)
+		UnregisterSignal(C, COMSIG_ITEM_EQUIPPED)
 
 /obj/item/clothing/accessory/medal/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!(istype(H) && istype(user)))
@@ -342,6 +358,11 @@
 	desc = "An armband, worn by the crew to display which department they're assigned to. This one is white and green."
 	icon_state = "medgreen"
 
+/obj/item/clothing/accessory/armband/nurse
+	name = "nurse armband"
+	desc = "An armband, worn by the rookie nurses to display they are still not doctors. This one is dark red."
+	icon_state = "nurse"
+
 //patches
 /obj/item/clothing/accessory/patch
 	name = "USCM patch"
@@ -365,9 +386,27 @@
 	icon_state = "commandopatch"
 
 /obj/item/clothing/accessory/patch/upp
+	name = "UPP patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the Union of Progressive Peoples Armed Collective."
+	icon_state = "upppatch"
+
+/obj/item/clothing/accessory/patch/upp/airborne
 	name = "UPP Airborne Reconnaissance patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the 173rd Airborne Reconnaissance Platoon."
-	icon_state = "upppatch"
+	icon_state = "vdvpatch"
+
+/obj/item/clothing/accessory/patch/upp/naval
+	name = "UPP Naval Infantry patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the UPP Naval Infantry."
+	icon_state = "navalpatch"
+
+//misc
+
+/obj/item/clothing/accessory/dogtags
+	name = "Attachable Dogtags"
+	desc = "A robust pair of dogtags to be worn around the neck of the United States Colonial Marines, however due to a combination of budget reallocation, Marines losing their dogtags, and multiple incidents of marines swallowing their tags, they now attach to the uniform or armor."
+	icon_state = "dogtag"
+	slot = ACCESSORY_SLOT_MEDAL
 
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
@@ -377,7 +416,8 @@
 
 /obj/item/clothing/accessory/poncho/Initialize()
 	. = ..()
-	select_gamemode_skin(type)
+	// Only do this for the base type '/obj/item/clothing/accessory/poncho'.
+	select_gamemode_skin(/obj/item/clothing/accessory/poncho)
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
 	update_icon()
 
@@ -644,6 +684,25 @@
 /obj/item/clothing/accessory/storage/surg_vest/drop_green/equipped
 	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
 
+/obj/item/clothing/accessory/storage/surg_vest/drop_green/upp
+	hold = /obj/item/storage/internal/accessory/surg_vest/drop_green/upp
+
+/obj/item/storage/internal/accessory/surg_vest/drop_green/upp/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
+	new /obj/item/tool/surgery/cautery(src)
+	new /obj/item/tool/surgery/circular_saw(src)
+	new /obj/item/tool/surgery/surgicaldrill(src)
+	new /obj/item/tool/surgery/scalpel/pict_system(src)
+	new /obj/item/tool/surgery/bonesetter(src)
+	new /obj/item/tool/surgery/FixOVein(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/tool/surgery/bonegel(src)
+	new /obj/item/tool/surgery/bonegel(src)
+	new /obj/item/reagent_container/blood/OMinus(src)
+
 /obj/item/clothing/accessory/storage/surg_vest/drop_black
 	name = "black surgical drop pouch"
 	desc = "A tactical black synthcotton drop pouch purpose-made for holding surgical tools."
@@ -729,7 +788,7 @@
 	w_class = SIZE_LARGE //Allow storage containers that's medium or below
 	storage_slots = null
 	max_w_class = SIZE_MEDIUM
-	max_storage_space = 6 //weight system like backpacks, hold enough for 2 medium (normal) size items, or 3 small items, or 6 tiny items
+	max_storage_space = 8 //weight system like backpacks, hold enough for 2 medium (normal) size items, or 4 small items, or 8 tiny items
 	cant_hold = list( //Prevent inventory powergame
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible,

@@ -165,11 +165,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(message_mode) // we are talking into a radio
 			if(message_mode == "headset") // default value, means general
 				message_mode = "General"
-			log_say("[name != "Unknown" ? name : "([real_name])"] \[[message_mode]\]: [message] (CKEY: [key]) (JOB: [job])")
+			log_say("[name != "Unknown" ? name : "([real_name])"] \[[message_mode]\]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
 		else // we talk normally
-			log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key]) (JOB: [job])")
+			log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
 	else
-		log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key])")
+		log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key]) (AREA: [get_area_name(loc)])")
 
 	return 1
 

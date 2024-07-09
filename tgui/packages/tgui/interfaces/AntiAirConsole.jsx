@@ -1,9 +1,20 @@
-import { useBackend, useLocalState } from '../backend';
-import { Stack, Section, Tabs, Button, NoticeBox, Box, Dimmer, Icon } from '../components';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  Dimmer,
+  Icon,
+  NoticeBox,
+  Section,
+  Stack,
+  Tabs,
+} from '../components';
 import { Window } from '../layouts';
 
-export const AntiAirConsole = (props, context) => {
-  const { act, data } = useBackend(context);
+export const AntiAirConsole = (props) => {
+  const { act, data } = useBackend();
   return (
     <Window width={400} height={300}>
       <Window.Content>
@@ -13,16 +24,12 @@ export const AntiAirConsole = (props, context) => {
   );
 };
 
-const GeneralPanel = (props, context) => {
-  const { act, data } = useBackend(context);
+const GeneralPanel = (props) => {
+  const { act, data } = useBackend();
 
   const sections = data.sections;
 
-  const [selectedSection, setSelectedSection] = useLocalState(
-    context,
-    'selected_section',
-    null
-  );
+  const [selectedSection, setSelectedSection] = useState(null);
 
   return (
     <Section fill>
@@ -37,7 +44,7 @@ const GeneralPanel = (props, context) => {
       )}
       <Stack vertical fill>
         <Stack.Item grow>
-          <Section fill scrollable onComponentDidMount={(node) => node.focus()}>
+          <Section fill scrollable>
             <Tabs vertical>
               {sections.map((val) => {
                 return (
@@ -55,7 +62,8 @@ const GeneralPanel = (props, context) => {
                       document.activeElement
                         ? document.activeElement.blur()
                         : false
-                    }>
+                    }
+                  >
                     {(!!(val.section_id === data.protecting_section) && (
                       <Box color="good">{val.section_id}</Box>
                     )) || <Box>{val.section_id}</Box>}
@@ -67,20 +75,22 @@ const GeneralPanel = (props, context) => {
         </Stack.Item>
         <Stack.Item height="60px">
           <Button
-            content="Set as section to track"
             color="good"
             fluid
             textAlign="center"
             onClick={() => act('protect', { section_id: selectedSection })}
-          />
+          >
+            Set as section to track
+          </Button>
           {!!data.protecting_section && (
             <Button.Confirm
-              content="Stop tracking"
               color="bad"
               fluid
               textAlign="center"
               onClick={() => act('deactivate')}
-            />
+            >
+              Stop tracking
+            </Button.Confirm>
           )}
         </Stack.Item>
       </Stack>

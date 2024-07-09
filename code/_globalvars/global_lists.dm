@@ -3,8 +3,14 @@ GLOBAL_LIST_EMPTY(WYFaxes) //Departmental faxes
 GLOBAL_LIST_EMPTY(USCMFaxes)
 GLOBAL_LIST_EMPTY(ProvostFaxes)
 GLOBAL_LIST_EMPTY(CMBFaxes)
+GLOBAL_LIST_EMPTY(UPPFaxes)
+GLOBAL_LIST_EMPTY(TWEFaxes)
+GLOBAL_LIST_EMPTY(CLFFaxes)
 GLOBAL_LIST_EMPTY(GeneralFaxes) //Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if source paper is deleted
+
+// for all of our various bugs and runtimes
+GLOBAL_LIST_EMPTY(bug_reports)
 
 //datum containing a reference to the flattend map png url, the actual png is stored in the user's cache.
 GLOBAL_LIST_EMPTY(uscm_flat_tacmap_data)
@@ -33,6 +39,9 @@ GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 GLOBAL_LIST_EMPTY(minimap_icons)
 
 GLOBAL_LIST_EMPTY(mainship_pipes)
+
+/// List of all the maps that have been cached for /proc/load_map
+GLOBAL_LIST_EMPTY(cached_maps)
 
 /proc/initiate_minimap_icons()
 	var/list/icons = list()
@@ -164,9 +173,6 @@ GLOBAL_LIST_INIT(language_keys, setup_language_keys()) //table of say codes for 
 GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
 GLOBAL_LIST_INIT(player_origins, USCM_ORIGINS)
 
-//Xeno mutators
-GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
-
 //Xeno hives
 GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_NORMAL = new /datum/hive_status(),
@@ -181,6 +187,7 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
 	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
+	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
 ))
 
 GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())
@@ -195,10 +202,11 @@ GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
 GLOBAL_LIST_INIT(poster_designs, subtypesof(/datum/poster))
 
 //Preferences stuff
-	// Ethnicities
-GLOBAL_REFERENCE_LIST_INDEXED(ethnicities_list, /datum/ethnicity, name) // Stores /datum/ethnicity indexed by name
-	// Body Types
-GLOBAL_REFERENCE_LIST_INDEXED(body_types_list, /datum/body_type, name) // Stores /datum/body_type indexed by name
+	// Skin colors
+GLOBAL_REFERENCE_LIST_INDEXED(skin_color_list, /datum/skin_color, name) // Stores /datum/skin_color indexed by name
+	// Body
+GLOBAL_REFERENCE_LIST_INDEXED(body_type_list, /datum/body_type, name) // Stores /datum/body_type indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(body_size_list, /datum/body_size, name) // Stores /datum/body_size indexed by name
 	//Hairstyles
 GLOBAL_REFERENCE_LIST_INDEXED(hair_styles_list, /datum/sprite_accessory/hair, name) //stores /datum/sprite_accessory/hair indexed by name
 GLOBAL_REFERENCE_LIST_INDEXED(facial_hair_styles_list, /datum/sprite_accessory/facial_hair, name) //stores /datum/sprite_accessory/facial_hair indexed by name
@@ -273,6 +281,15 @@ GLOBAL_LIST_INIT(typecache_living, typecacheof(/mob/living))
 
 GLOBAL_LIST_INIT(emote_list, init_emote_list())
 
+/// list of categories for working joes
+GLOBAL_LIST_EMPTY(wj_categories)
+/// dict ("category" : (emotes)) of every wj emote typepath
+GLOBAL_LIST_INIT(wj_emotes, setup_working_joe_emotes())
+/// list of categories for hazard joes
+GLOBAL_LIST_EMPTY(hj_categories)
+/// dict ("category" : (emotes)) of every hj emote typepath
+GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
+
 /proc/cached_params_decode(params_data, decode_proc)
 	. = GLOB.paramslist_cache[params_data]
 	if(!.)
@@ -287,7 +304,7 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 
 /proc/number_list_decode(number_list_data)
 	var/list/L = params2list(number_list_data)
-	for(var/i in 1 to L.len)
+	for(var/i in 1 to length(L))
 		L[i] = text2num(L[i])
 	return L
 
@@ -298,6 +315,9 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 		rkey++
 		var/datum/species/S = new T
 		S.race_key = rkey //Used in mob icon caching.
+		var/datum/species/existing = all_species[S.name]
+		if(existing)
+			stack_trace("[S.name] from [T] overlaps with [existing.type]! It must have a unique name for lookup!")
 		all_species[S.name] = S
 	return all_species
 
@@ -340,6 +360,9 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 		if (!initial(EP.flags))
 			continue
 		EP = new T
+		var/datum/equipment_preset/existing = gear_path_presets_list[EP.name]
+		if(existing)
+			stack_trace("[EP.name] from [T] overlaps with [existing.type]! It must have a unique name for lookup!")
 		gear_path_presets_list[EP.name] = EP
 	return sortAssoc(gear_path_presets_list)
 
@@ -363,7 +386,7 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 	while(gap > 1 || swapped)
 		swapped = 0
 		if(gap > 1)
-			gap = round(gap / 1.247330950103979)
+			gap = floor(gap / 1.247330950103979)
 		if(gap < 1)
 			gap = 1
 		for(var/i = 1; gap + i <= length(surgeries); i++)
@@ -451,7 +474,11 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 /proc/setup_yautja_capes()
 	var/list/cape_list = list()
 	for(var/obj/item/clothing/yautja_cape/cape_type as anything in typesof(/obj/item/clothing/yautja_cape))
-		cape_list[initial(cape_type.name)] = cape_type
+		var/cape_name = initial(cape_type.name)
+		var/obj/item/clothing/yautja_cape/existing = cape_list[cape_name]
+		if(existing)
+			stack_trace("[cape_name] from [cape_type] overlaps with [existing.type]! It must have a unique name for lookup!")
+		cape_list[cape_name] = cape_type
 	return cape_list
 
 
@@ -478,6 +505,7 @@ GLOBAL_LIST_EMPTY(timelocks)
 GLOBAL_LIST_INIT(available_specialist_sets, list(
 			"Scout Set",
 			"Sniper Set",
+			"Anti-materiel Sniper Set",
 			"Demolitionist Set",
 			"Heavy Grenadier Set",
 			"Pyro Set"
@@ -490,6 +518,7 @@ GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 			"Sniper" = 2,
 			"Scout" = 2,
 			"Demo" = 2,
+			"Anti-materiel Sniper" = 2,
 			))
 
 /proc/init_global_referenced_datums()
@@ -513,6 +542,32 @@ GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 				.[E.key_third_person] = list(E)
 			else
 				.[E.key_third_person] |= E
+
+/// Setup for Working joe emotes and category list, returns data for wj_emotes
+/proc/setup_working_joe_emotes()
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
+		if(!(initial(emote.joe_flag) & WORKING_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
+			continue
+
+		if(!(initial(emote.category) in GLOB.wj_categories))
+			GLOB.wj_categories += initial(emote.category)
+
+		emotes_to_add += emote
+	return emotes_to_add
+
+/// Setup for Hazard joe emotes and category list, returns data for hj_emotes
+/proc/setup_hazard_joe_emotes()
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
+		if(!(initial(emote.joe_flag) & HAZARD_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
+			continue
+
+		if(!(initial(emote.category) in GLOB.hj_categories))
+			GLOB.hj_categories += initial(emote.category)
+
+		emotes_to_add += emote
+	return emotes_to_add
 
 GLOBAL_LIST_EMPTY(topic_tokens)
 GLOBAL_PROTECT(topic_tokens)

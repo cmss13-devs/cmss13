@@ -1,13 +1,13 @@
-import { MfdProps, MfdPanel } from './MultifunctionDisplay';
-import { ByondUi } from '../../components';
 import { useBackend } from '../../backend';
+import { ByondUi } from '../../components';
 import { Box } from '../../components';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { mfdState } from './stateManagers';
 import { CameraProps } from './types';
 
-export const CameraMfdPanel = (props: MfdProps, context) => {
-  const { act } = useBackend(context);
-  const { setPanelState } = mfdState(context, props.panelStateId);
+export const CameraMfdPanel = (props: MfdProps) => {
+  const { act } = useBackend();
+  const { setPanelState } = mfdState(props.panelStateId);
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -15,14 +15,15 @@ export const CameraMfdPanel = (props: MfdProps, context) => {
         { children: 'NV-ON', onClick: () => act('nvg-enable') },
         { children: 'NV-OFF', onClick: () => act('nvg-disable') },
       ]}
-      bottomButtons={[{ children: 'EXIT', onClick: () => setPanelState('') }]}>
+      bottomButtons={[{ children: 'EXIT', onClick: () => setPanelState('') }]}
+    >
       <CameraPanel />
     </MfdPanel>
   );
 };
 
-const CameraPanel = (_, context) => {
-  const { data } = useBackend<CameraProps>(context);
+const CameraPanel = () => {
+  const { data } = useBackend<CameraProps>();
   return (
     <Box className="NavigationMenu">
       <ByondUi

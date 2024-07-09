@@ -434,6 +434,14 @@
 	active_icon_state = "mgogglesblk_down"
 	inactive_icon_state = "mgogglesblk"
 
+/obj/item/clothing/glasses/mgoggles/black/prescription
+	name = "prescription black marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has black tinted lenses. ntop of that, these ones contain prescription lenses."
+	icon_state = "mgogglesblk"
+	active_icon_state = "mgogglesblk_down"
+	inactive_icon_state = "mgogglesblk"
+	prescription = TRUE
+
 /obj/item/clothing/glasses/mgoggles/orange
 	name = "orange marine ballistic goggles"
 	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has amber colored day lenses."
@@ -441,12 +449,28 @@
 	active_icon_state = "mgogglesorg_down"
 	inactive_icon_state = "mgogglesorg"
 
+/obj/item/clothing/glasses/mgoggles/orange/prescription
+	name = "prescription orange marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has amber colored day lenses."
+	icon_state = "mgogglesorg"
+	active_icon_state = "mgogglesorg_down"
+	inactive_icon_state = "mgogglesorg"
+	prescription = TRUE
+
 /obj/item/clothing/glasses/mgoggles/v2
 	name = "M1A1 marine ballistic goggles"
 	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
 	icon_state = "mgoggles2"
 	active_icon_state = "mgoggles2_down"
 	inactive_icon_state = "mgoggles2"
+
+/obj/item/clothing/glasses/mgoggles/v2/prescription
+	name = "prescription M1A1 marine ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	icon_state = "mgoggles2"
+	active_icon_state = "mgoggles2_down"
+	inactive_icon_state = "mgoggles2"
+	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/on_enter_storage(obj/item/storage/internal/S)
 	..()

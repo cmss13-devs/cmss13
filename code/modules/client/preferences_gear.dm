@@ -58,13 +58,25 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Ballistic goggles, black"
 	path = /obj/item/clothing/glasses/mgoggles/black
 
+/datum/gear/eyewear/goggles_black/prescription
+	display_name = "Prescription ballistic goggles, black"
+	path = /obj/item/clothing/glasses/mgoggles/black/prescription
+
 /datum/gear/eyewear/goggles_orange
 	display_name = "Ballistic goggles, orange"
 	path = /obj/item/clothing/glasses/mgoggles/orange
 
+/datum/gear/eyewear/goggles_orange/prescription
+	display_name = "Prescription ballistic goggles, orange"
+	path = /obj/item/clothing/glasses/mgoggles/orange/prescription
+
 /datum/gear/eyewear/goggles2
 	display_name = "Ballistic goggles, M1A1"
 	path = /obj/item/clothing/glasses/mgoggles/v2
+
+/datum/gear/eyewear/goggles2/prescription
+	display_name = "Prescription ballistic goggles, M1A1"
+	path = /obj/item/clothing/glasses/mgoggles/v2/prescription
 
 /datum/gear/eyewear/bimex_shades
 	display_name = "BiMex personal shades"
@@ -215,7 +227,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 
 /datum/gear/headwear/uscm/beret_green
 	display_name = "USCM beret, green"
-	path = /obj/item/clothing/head/beret/cm
+	path = /obj/item/clothing/head/beret/cm/green
 
 /datum/gear/headwear/uscm/beret_tan
 	display_name = "USCM beret, tan"
@@ -503,6 +515,10 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Card, Uno Reverse - yellow"
 	path = /obj/item/toy/handcard/uno_reverse_yellow
 
+/datum/gear/toy/card/trading_card
+	display_name = "Card, random WeyYu Trading"
+	path = /obj/item/toy/trading_card
+
 /datum/gear/toy/deck
 	display_name = "Deck of cards, regular"
 	path = /obj/item/toy/deck
@@ -510,6 +526,10 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 /datum/gear/toy/deck/uno
 	display_name = "Deck of cards, Uno"
 	path = /obj/item/toy/deck/uno
+
+/datum/gear/toy/trading_card
+	display_name = "Trading Card Packet"
+	path = /obj/item/storage/fancy/trading_card
 
 /datum/gear/toy/d6
 	display_name = "Die, 6 sides"
@@ -930,6 +950,13 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "USCM issue sunscreen"
 	path = /obj/item/facepaint/sunscreen_stick
 	cost = 1 //The cadmium poisoning pays for the discounted cost longterm
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/misc/dogtags
+	display_name = "Attachable Dogtags"
+	path = /obj/item/clothing/accessory/dogtags
+	cost = 1
+	slot = WEAR_IN_ACCESSORY
 	allowed_origins = USCM_ORIGINS
 
 /datum/gear/misc/patch_uscm

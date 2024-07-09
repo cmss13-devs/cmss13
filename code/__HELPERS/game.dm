@@ -58,7 +58,7 @@
 
 /proc/recursive_mob_check(atom/O, list/L = list(), recursion_limit = 3, client_check = 1, sight_check = 1, include_radio = 1)
 
-	//debug_mob += O.contents.len
+	//debug_mob += length(O.contents)
 	if(!recursion_limit)
 		return L
 	for(var/atom/A in O.contents)
@@ -190,7 +190,7 @@
 		if(X1<X2)
 			b+=m
 		while(X1!=X2 || Y1!=Y2)
-			if(round(m*X1+b-Y1))
+			if(floor(m*X1+b-Y1))
 				Y1+=signY //Line exits tile vertically
 			else
 				X1+=signX //Line exits tile horizontally
@@ -263,7 +263,7 @@
 			continue
 
 		// Mods with larva protection cannot be drafted
-		if((cur_obs.client.admin_holder && (cur_obs.client.admin_holder.rights & R_MOD)) && !cur_obs.adminlarva)
+		if(check_client_rights(cur_obs.client, R_MOD, FALSE) && cur_obs.admin_larva_protection)
 			continue
 
 		if(hive)
@@ -294,7 +294,7 @@
  * * cache_only - Whether to not actually send a to_chat message and instead only update larva_queue_cached_message
  */
 /proc/message_alien_candidates(list/candidates, dequeued, cache_only = FALSE)
-	for(var/i in (1 + dequeued) to candidates.len)
+	for(var/i in (1 + dequeued) to length(candidates))
 		var/mob/dead/observer/cur_obs = candidates[i]
 
 		// Generate the messages

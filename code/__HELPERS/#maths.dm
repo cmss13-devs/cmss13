@@ -8,8 +8,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 
 // MATH DEFINES
 
-#define Ceiling(x) (-round(-x))
-#define CLAMP01(x) (clamp(x, 0, 1))
+#define CLAMP01(x) (clamp((x), 0, 1))
 
 // cotangent
 #define Cot(x) (1 / tan(x))
@@ -17,36 +16,35 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 // cosecant
 #define Csc(x) (1 / sin(x))
 
-#define Default(a, b) (a ? a : b)
-#define Floor(x) (round(x))
+#define Default(a, b) ((a) ? (a) : (b))
 
 // Greatest Common Divisor - Euclid's algorithm
-#define Gcd(a, b) (b ? Gcd(b, a % b) : a)
+#define Gcd(a, b) ((b) ? Gcd((b), (a) % (b)) : (a))
 
-#define Inverse(x) (1 / x)
-#define IsEven(x) (x % 2 == 0)
+#define Inverse(x) (1 / (x))
+#define IsEven(x) ((x) % 2 == 0)
 
-#define IsInteger(x) (Floor(x) == x)
+#define IsInteger(x) (floor(x) == (x))
 #define IsOdd(x) (!IsEven(x))
-#define IsMultiple(x, y) (x % y == 0)
+#define IsMultiple(x, y) ((x) % (y) == 0)
 
 // Least Common Multiple
-#define Lcm(a, b) (abs(a) / Gcd(a, b) * abs(b))
+#define Lcm(a, b) (abs(a) / Gcd((a), (b)) * abs(b))
 
 // Returns the nth root of x.
-#define Root(n, x) (x ** (1 / n))
+#define NRoot(n, x) ((x) ** (1 / (n)))
 
 // secant
 #define Sec(x) (1 / cos(x))
 
 // 57.2957795 = 180 / Pi
-#define ToDegrees(radians) (radians * 57.2957795)
+#define ToDegrees(radians) ((radians) * 57.2957795)
 
 // 0.0174532925 = Pi / 180
-#define ToRadians(degrees) (degrees * 0.0174532925)
+#define ToRadians(degrees) ((degrees) * 0.0174532925)
 
 // min is inclusive, max is exclusive
-#define WRAP(val, min, max) clamp(( min == max ? min : (val) - (round(((val) - (min))/((max) - (min))) * ((max) - (min))) ),min,max)
+#define WRAP(val, min, max) clamp(( (min) == (max) ? (min) : (val) - (floor(((val) - (min))/((max) - (min))) * ((max) - (min))) ),(min),(max))
 
 
 // MATH PROCS
@@ -84,53 +82,6 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 		return "[round((powerused * 0.000001),0.001)] MW"
 	return "[round((powerused * 0.000000001),0.0001)] GW"
 
-/**
- * Get a list of turfs in a line from `starting_atom` to `ending_atom`.
- *
- * Uses the ultra-fast [Bresenham Line-Drawing Algorithm](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm).
- */
-/proc/get_line(atom/starting_atom, atom/ending_atom)
-	var/current_x_step = starting_atom.x//start at x and y, then add 1 or -1 to these to get every turf from starting_atom to ending_atom
-	var/current_y_step = starting_atom.y
-	var/starting_z = starting_atom.z
-
-	var/list/line = list(get_turf(starting_atom))//get_turf(atom) is faster than locate(x, y, z)
-
-	var/x_distance = ending_atom.x - current_x_step //x distance
-	var/y_distance = ending_atom.y - current_y_step
-
-	var/abs_x_distance = abs(x_distance)//Absolute value of x distance
-	var/abs_y_distance = abs(y_distance)
-
-	var/x_distance_sign = SIGN(x_distance) //Sign of x distance (+ or -)
-	var/y_distance_sign = SIGN(y_distance)
-
-	var/x = abs_x_distance >> 1 //Counters for steps taken, setting to distance/2
-	var/y = abs_y_distance >> 1 //Bit-shifting makes me l33t.  It also makes get_line() unnessecarrily fast.
-
-	if(abs_x_distance >= abs_y_distance) //x distance is greater than y
-		for(var/distance_counter in 0 to (abs_x_distance - 1))//It'll take abs_x_distance steps to get there
-			y += abs_y_distance
-
-			if(y >= abs_x_distance) //Every abs_y_distance steps, step once in y direction
-				y -= abs_x_distance
-				current_y_step += y_distance_sign
-
-			current_x_step += x_distance_sign //Step on in x direction
-			line += locate(current_x_step, current_y_step, starting_z)//Add the turf to the list
-	else
-		for(var/distance_counter in 0 to (abs_y_distance - 1))
-			x += abs_x_distance
-
-			if(x >= abs_y_distance)
-				x -= abs_y_distance
-				current_x_step += x_distance_sign
-
-			current_y_step += y_distance_sign
-			line += locate(current_x_step, current_y_step, starting_z)
-	return line
-
-
 ///chances are 1:value. anyprob(1) will always return true
 /proc/anyprob(value)
 	return (rand(1,value)==value)
@@ -146,7 +97,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 	var/static/list/units_prefix = list("", "un", "duo", "tre", "quattuor", "quin", "sex", "septen", "octo", "novem")
 	var/static/list/tens_prefix = list("", "decem", "vigin", "trigin", "quadragin", "quinquagin", "sexagin", "septuagin", "octogin", "nongen")
 	var/static/list/one_to_nine = list("monuple", "double", "triple", "quadruple", "quintuple", "sextuple", "septuple", "octuple", "nonuple")
-	number = round(number)
+	number = floor(number)
 	switch(number)
 		if(0)
 			return "empty tuple"
@@ -155,7 +106,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 		if(10 to 19)
 			return "[units_prefix[(number%10)+1]]decuple"
 		if(20 to 99)
-			return "[units_prefix[(number%10)+1]][tens_prefix[round((number % 100)/10)+1]]tuple"
+			return "[units_prefix[(number%10)+1]][tens_prefix[floor((number % 100)/10)+1]]tuple"
 		if(100)
 			return "centuple"
 		else //It gets too tedious to use latin prefixes from here.

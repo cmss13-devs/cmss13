@@ -62,7 +62,8 @@
 /area/template_noop)
 "l" = (
 /obj/item/limb/head/synth{
-	pixel_x = -9
+	pixel_x = -9;
+	icon_state = "scandinavian_head_m"
 	},
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
@@ -170,7 +171,7 @@
 	},
 /area/template_noop)
 "H" = (
-/obj/structure/reagent_dispensers/oxygentank,
+/obj/structure/reagent_dispensers/fueltank/oxygentank,
 /turf/open/space,
 /area/template_noop)
 "I" = (

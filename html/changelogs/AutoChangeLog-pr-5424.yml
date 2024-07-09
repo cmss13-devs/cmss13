@@ -1,5 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - rscdel: "deleting machinery called centrifuge in distillery/main.dm and deleted the distellery/main.dm file and folder."
-  - refactor: "move all the machinery of distillery/main.dm into machinery.dm and remove all their added functionality."

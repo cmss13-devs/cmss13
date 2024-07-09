@@ -1136,12 +1136,12 @@
 /area/yautja)
 "dk" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -1149,12 +1149,12 @@
 /area/yautja)
 "dl" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/legcuffs,
-/obj/item/legcuffs,
-/obj/item/legcuffs,
-/obj/item/legcuffs,
-/obj/item/legcuffs,
-/obj/item/legcuffs,
+/obj/item/restraint/legcuffs,
+/obj/item/restraint/legcuffs,
+/obj/item/restraint/legcuffs,
+/obj/item/restraint/legcuffs,
+/obj/item/restraint/legcuffs,
+/obj/item/restraint/legcuffs,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -1177,16 +1177,8 @@
 /area/yautja)
 "dp" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/XenoBio/Blood,
-/obj/item/XenoBio/Blood,
-/turf/open/floor/holofloor{
-	dir = 2;
-	icon_state = "cult"
-	},
-/area/yautja)
-"dq" = (
-/obj/structure/surface/table/reinforced,
-/obj/item/XenoItem,
+/obj/item/oldresearch/Blood,
+/obj/item/oldresearch/Blood,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -1202,8 +1194,8 @@
 /area/yautja)
 "dz" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/XenoBio/Resin,
-/obj/item/XenoBio/Resin,
+/obj/item/oldresearch/Resin,
+/obj/item/oldresearch/Resin,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -3112,7 +3104,7 @@ dd
 Zv
 Zv
 ZI
-dq
+cv
 cu
 Zv
 Zv

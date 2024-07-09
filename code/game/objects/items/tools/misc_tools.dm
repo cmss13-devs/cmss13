@@ -58,6 +58,10 @@
 	if(isturf(A))
 		to_chat(user, SPAN_WARNING("The label won't stick to that."))
 		return
+	if(istype(A, /obj/item/storage/pill_bottle))		
+		var/obj/item/storage/pill_bottle/target_pill_bottle = A
+		target_pill_bottle.choose_color(user)
+	
 	if(!label || !length(label))
 		remove_label(A, user)
 		return

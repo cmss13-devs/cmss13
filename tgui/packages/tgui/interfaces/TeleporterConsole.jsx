@@ -1,9 +1,19 @@
 import { useBackend } from '../backend';
-import { Button, Section, ProgressBar, NoticeBox, Box, Dimmer, Icon, Dropdown, LabeledList } from '../components';
+import {
+  Box,
+  Button,
+  Dimmer,
+  Dropdown,
+  Icon,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
 
-export const TeleporterConsole = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const TeleporterConsole = () => {
+  const { act, data } = useBackend();
 
   const timeLeft = data.next_teleport_time - data.worldtime;
   const timeLeftPct = timeLeft / data.cooldown_length;
@@ -15,7 +25,7 @@ export const TeleporterConsole = (_props, context) => {
     data.source === data.destination;
 
   return (
-    <Window width={500} height={300} theme="weyland">
+    <Window width={500} height={380} theme="weyland">
       <Window.Content scrollable>
         <NoticeBox textAlign="center">
           This teleporter is operating on the {data.name} network.
@@ -48,7 +58,8 @@ export const TeleporterConsole = (_props, context) => {
                 good: [-Infinity, 0.33],
                 average: [0.33, 0.67],
                 bad: [0.67, Infinity],
-              }}>
+              }}
+            >
               <Box textAlign="center">
                 {Math.ceil(timeLeft / 10)} seconds until capacitors have
                 recharged.
@@ -57,7 +68,7 @@ export const TeleporterConsole = (_props, context) => {
           )}
           <Box height="10px" />
           <LabeledList>
-            <LabeledList.Item label="Source">
+            <LabeledList.Item label="Source" verticalAlign="top">
               <Dropdown
                 displayText={data.source ? data.source : 'Select source'}
                 icon="right-from-bracket"
@@ -70,7 +81,7 @@ export const TeleporterConsole = (_props, context) => {
                 }}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Destination">
+            <LabeledList.Item label="Destination" verticalAlign="top">
               <Dropdown
                 displayText={
                   data.destination ? data.destination : 'Select destination'
@@ -91,11 +102,12 @@ export const TeleporterConsole = (_props, context) => {
             fontSize="20px"
             textAlign="center"
             disabled={!!cantFire}
-            fluid={1}
+            fluid
             icon="plane-departure"
-            content="Commence Teleportation Sequence"
             onClick={() => act('teleport')}
-          />
+          >
+            Commence Teleportation Sequence
+          </Button.Confirm>
         </Section>
         {!!data.teleporting && (
           <Dimmer fontSize="32px">

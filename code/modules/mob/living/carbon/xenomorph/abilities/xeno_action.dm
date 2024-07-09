@@ -218,7 +218,7 @@
 	/*
 		Debug log disabled due to our historical inability at doing anything meaningful about it
 		And to make room for ones that matter more in regard to our ability to fix.
-		The whole of ability code is fucked up, the 'SHOULD NEVER BE OVERRIDEN' note above is
+		The whole of ability code is fucked up, the 'SHOULD NEVER BE OVERRIDDEN' note above is
 		completely ignored as about 20 procs override it ALREADY...
 		This is broken beyond repair and should just be reimplemented
 		log_debug("Xeno action [src] tried to go on cooldown while already on cooldown.")
@@ -379,7 +379,7 @@
 	if(A.z != M.z)
 		return FALSE
 
-	var/list/turf/path = getline2(M, A, include_from_atom = FALSE)
+	var/list/turf/path = get_line(M, A, include_start_atom = FALSE)
 	var/distance = 0
 	for(var/turf/T in path)
 		if(distance >= max_distance)

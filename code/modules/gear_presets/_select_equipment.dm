@@ -149,9 +149,9 @@
 	load_skills(new_human, mob_client) //skills are set before equipment because of skill restrictions on certain clothes.
 	load_languages(new_human, mob_client)
 	load_age(new_human, mob_client)
+	load_id(new_human, mob_client)
 	if(show_job_gear)
 		load_gear(new_human, mob_client)
-	load_id(new_human, mob_client)
 	load_status(new_human, mob_client)
 	load_vanity(new_human, mob_client)
 	load_traits(new_human, mob_client)
@@ -201,7 +201,7 @@
 				qdel(R)
 
 	if(flags & EQUIPMENT_PRESET_MARINE)
-		var/playtime = get_job_playtime(new_human.client, assignment)
+		var/playtime = get_job_playtime(new_human.client, rank)
 		var/medal_type
 
 		switch(playtime)
@@ -220,7 +220,7 @@
 		if(medal_type)
 			var/obj/item/clothing/accessory/medal/medal = new medal_type()
 			medal.recipient_name = new_human.real_name
-			medal.recipient_rank = current_rank
+			medal.recipient_rank = assignment
 
 			if(new_human.wear_suit && new_human.wear_suit.can_attach_accessory(medal))
 				new_human.wear_suit.attach_accessory(new_human, medal, TRUE)

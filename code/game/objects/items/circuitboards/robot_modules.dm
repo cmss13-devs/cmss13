@@ -9,8 +9,6 @@
 	name = "medic robot module"
 /obj/item/circuitboard/robot_module/engineering
 	name = "engineering robot module"
-/obj/item/circuitboard/robot_module/security
-	name = "security robot module"
 /obj/item/circuitboard/robot_module/janitor
 	name = "janitorial robot module"
 /obj/item/circuitboard/robot_module/butler

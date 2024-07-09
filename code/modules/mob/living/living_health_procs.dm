@@ -127,6 +127,57 @@
 		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount)
 	return S
 
+/* ROOT (Immobilisation) */
+/// Overridable handler to adjust the numerical value of status effects. Expand as needed
+/mob/living/proc/GetRootDuration(amount)
+	return amount * GLOBAL_STATUS_MULTIPLIER
+
+/mob/living/proc/IsRoot() //If we're stunned
+	return has_status_effect(/datum/status_effect/incapacitating/immobilized)
+
+/mob/living/proc/AmountRoot() //How much time remain in our stun - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
+	var/datum/status_effect/incapacitating/immobilized/root = IsRoot()
+	if(root)
+		return root.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
+	return FALSE
+
+/mob/living/proc/Root(amount)
+	if(!(status_flags & CANROOT))
+		return
+	amount = GetRootDuration(amount)
+	var/datum/status_effect/incapacitating/immobilized/root = IsRoot()
+	if(root)
+		root.update_duration(amount, increment = TRUE)
+	else if(amount > 0)
+		root = apply_status_effect(/datum/status_effect/incapacitating/immobilized, amount)
+	return root
+
+/mob/living/proc/SetRoot(amount) //Sets remaining duration
+	if(!(status_flags & CANROOT))
+		return
+	amount = GetRootDuration(amount)
+	var/datum/status_effect/incapacitating/immobilized/root = IsRoot()
+	if(amount <= 0)
+		if(root)
+			qdel(root)
+	else
+		if(root)
+			root.update_duration(amount)
+		else
+			root = apply_status_effect(/datum/status_effect/incapacitating/immobilized, amount)
+	return root
+
+/mob/living/proc/AdjustRoot(amount) //Adds to remaining duration
+	if(!(status_flags & CANROOT))
+		return
+	amount = GetRootDuration(amount)
+	var/datum/status_effect/incapacitating/immobilized/root = IsRoot()
+	if(root)
+		root.adjust_duration(amount)
+	else if(amount > 0)
+		root = apply_status_effect(/datum/status_effect/incapacitating/immobilized, amount)
+	return root
+
 /* DAZE (Light incapacitation) */
 /// Overridable handler to adjust the numerical value of status effects. Expand as needed
 /mob/living/proc/GetDazeDuration(amount)
@@ -359,7 +410,7 @@
 
 	switch(client.prefs?.pain_overlay_pref_level)
 		if(PAIN_OVERLAY_IMPAIR)
-			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, Ceiling(clamp(eye_blurry * 0.3, 1, 6)))
+			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, ceil(clamp(eye_blurry * 0.3, 1, 6)))
 		if(PAIN_OVERLAY_LEGACY)
 			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/blurry)
 		else // PAIN_OVERLAY_BLURRY
@@ -445,7 +496,7 @@
 	src.updatehealth()
 
 // damage MANY limbs, in random order
-/mob/living/proc/take_overall_damage(brute, burn, used_weapon = null)
+/mob/living/proc/take_overall_damage(brute, burn, used_weapon = null, limb_damage_chance = 80)
 	if(status_flags & GODMODE) return 0 //godmode
 	apply_damage(brute, BRUTE)
 	apply_damage(burn, BURN)
@@ -474,6 +525,7 @@
 	hallucination = 0
 	jitteriness = 0
 	dizziness = 0
+	stamina.apply_damage(-stamina.max_stamina)
 
 	// restore all of a human's blood
 	if(ishuman(src))
@@ -499,7 +551,7 @@
 		tod = null
 		timeofdeath = 0
 
-	// restore us to conciousness
+	// restore us to consciousness
 	set_stat(CONSCIOUS)
 	regenerate_all_icons()
 

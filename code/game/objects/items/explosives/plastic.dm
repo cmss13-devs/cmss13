@@ -24,6 +24,9 @@
 	var/list/breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door , /obj/structure/cargo_container)
 	antigrief_protection = TRUE //Should it be checked by antigrief?
 
+	var/req_skill = SKILL_ENGINEER
+	var/req_skill_level = SKILL_ENGINEER_TRAINED
+
 /obj/item/explosive/plastic/Destroy()
 	disarm()
 	return ..()
@@ -65,7 +68,7 @@
 
 	if(user.action_busy || !flag)
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+	if(!skillcheck(user, req_skill, req_skill_level))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	if(!can_place(user, target))
@@ -363,6 +366,9 @@
 	overlay_image = "riot-active"
 	shrapnel_volume = 20
 	shrapnel_type = /datum/ammo/bullet/shrapnel/rubber
+	req_skill = SKILL_POLICE
+	req_skill_level = SKILL_POLICE_SKILLED
+	antigrief_protection = FALSE
 
 /obj/item/explosive/plastic/breaching_charge/plasma
 	name = "plasma charge"

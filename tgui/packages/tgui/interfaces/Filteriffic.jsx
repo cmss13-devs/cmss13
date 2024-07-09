@@ -1,21 +1,35 @@
 import { map } from 'common/collections';
 import { toFixed } from 'common/math';
-import { numberOfDecimalDigits } from 'common/math';
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Collapsible, ColorBox, Dropdown, Input, LabeledList, NoticeBox, NumberInput, Section } from '../components';
+import { useState } from 'react';
+
+import { numberOfDecimalDigits } from '../../common/math';
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  Collapsible,
+  ColorBox,
+  Dropdown,
+  Input,
+  LabeledList,
+  NoticeBox,
+  NumberInput,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
 
-const FilterIntegerEntry = (props, context) => {
+const FilterIntegerEntry = (props) => {
   const { value, name, filterName } = props;
-  const { act } = useBackend(context);
+  const { act } = useBackend();
   return (
     <NumberInput
       value={value}
       minValue={-500}
       maxValue={500}
+      step={1}
       stepPixelSize={5}
       width="39px"
-      onDrag={(e, value) =>
+      onDrag={(value) =>
         act('modify_filter_value', {
           name: filterName,
           new_data: {
@@ -27,10 +41,11 @@ const FilterIntegerEntry = (props, context) => {
   );
 };
 
-const FilterFloatEntry = (props, context) => {
+const FilterFloatEntry = (props) => {
   const { value, name, filterName } = props;
-  const { act } = useBackend(context);
-  const [step, setStep] = useLocalState(context, `${filterName}-${name}`, 0.01);
+  const { act } = useBackend();
+  const [step, setStep] = useState(0.01);
+
   return (
     <>
       <NumberInput
@@ -41,7 +56,7 @@ const FilterFloatEntry = (props, context) => {
         step={step}
         format={(value) => toFixed(value, numberOfDecimalDigits(step))}
         width="80px"
-        onDrag={(e, value) =>
+        onDrag={(value) =>
           act('transition_filter_value', {
             name: filterName,
             new_data: {
@@ -58,21 +73,21 @@ const FilterFloatEntry = (props, context) => {
         step={0.001}
         format={(value) => toFixed(value, 4)}
         width="70px"
-        onChange={(e, value) => setStep(value)}
+        onChange={(value) => setStep(value)}
       />
     </>
   );
 };
 
-const FilterTextEntry = (props, context) => {
+const FilterTextEntry = (props) => {
   const { value, name, filterName } = props;
-  const { act } = useBackend(context);
+  const { act } = useBackend();
 
   return (
     <Input
       value={value}
       width="250px"
-      onInput={(e, value) =>
+      onChange={(e, value) =>
         act('modify_filter_value', {
           name: filterName,
           new_data: {
@@ -84,9 +99,9 @@ const FilterTextEntry = (props, context) => {
   );
 };
 
-const FilterColorEntry = (props, context) => {
+const FilterColorEntry = (props) => {
   const { value, filterName, name } = props;
-  const { act } = useBackend(context);
+  const { act } = useBackend();
   return (
     <>
       <Button
@@ -101,7 +116,7 @@ const FilterColorEntry = (props, context) => {
       <Input
         value={value}
         width="90px"
-        onInput={(e, value) =>
+        onChange={(e, value) =>
           act('transition_filter_value', {
             name: filterName,
             new_data: {
@@ -114,9 +129,9 @@ const FilterColorEntry = (props, context) => {
   );
 };
 
-const FilterIconEntry = (props, context) => {
+const FilterIconEntry = (props) => {
   const { value, filterName } = props;
-  const { act } = useBackend(context);
+  const { act } = useBackend();
   return (
     <>
       <Button
@@ -134,16 +149,15 @@ const FilterIconEntry = (props, context) => {
   );
 };
 
-const FilterFlagsEntry = (props, context) => {
+const FilterFlagsEntry = (props) => {
   const { name, value, filterName, filterType } = props;
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend();
 
   const filterInfo = data.filter_info;
   const flags = filterInfo[filterType]['flags'];
-  return map((bitField, flagName) => (
+  return map(flags, (bitField, flagName) => (
     <Button.Checkbox
       checked={value & bitField}
-      content={flagName}
       onClick={() =>
         act('modify_filter_value', {
           name: filterName,
@@ -152,11 +166,14 @@ const FilterFlagsEntry = (props, context) => {
           },
         })
       }
-    />
-  ))(flags);
+      key={flagName}
+    >
+      {flagName}
+    </Button.Checkbox>
+  ));
 };
 
-const FilterDataEntry = (props, context) => {
+const FilterDataEntry = (props) => {
   const { name, value, hasValue, filterName } = props;
 
   const filterEntryTypes = {
@@ -197,15 +214,15 @@ const FilterDataEntry = (props, context) => {
   );
 };
 
-const FilterEntry = (props, context) => {
-  const { act, data } = useBackend(context);
+const FilterEntry = (props) => {
+  const { act, data } = useBackend();
   const { name, filterDataEntry } = props;
   const { type, priority, ...restOfProps } = filterDataEntry;
 
   const filterDefaults = data['filter_info'];
 
   const targetFilterPossibleKeys = Object.keys(
-    filterDefaults[type]['defaults']
+    filterDefaults[type]['defaults'],
   );
 
   return (
@@ -215,9 +232,10 @@ const FilterEntry = (props, context) => {
         <>
           <NumberInput
             value={priority}
+            step={1}
             stepPixelSize={10}
             width="60px"
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('change_priority', {
                 name: name,
                 new_priority: value,
@@ -225,7 +243,6 @@ const FilterEntry = (props, context) => {
             }
           />
           <Button.Input
-            content="Rename"
             placeholder={name}
             onCommit={(e, new_name) =>
               act('rename_filter', {
@@ -234,13 +251,16 @@ const FilterEntry = (props, context) => {
               })
             }
             width="90px"
-          />
+          >
+            Rename
+          </Button.Input>
           <Button.Confirm
             icon="minus"
             onClick={() => act('remove_filter', { name: name })}
           />
         </>
-      }>
+      }
+    >
       <Section level={2}>
         <LabeledList>
           {targetFilterPossibleKeys.map((entryName) => {
@@ -264,22 +284,15 @@ const FilterEntry = (props, context) => {
   );
 };
 
-export const Filteriffic = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Filteriffic = (props) => {
+  const { act, data } = useBackend();
   const name = data.target_name || 'Unknown Object';
   const filters = data.target_filter_data || {};
   const hasFilters = Object.keys(filters).length !== 0;
   const filterDefaults = data['filter_info'];
-  const [massApplyPath, setMassApplyPath] = useLocalState(
-    context,
-    'massApplyPath',
-    ''
-  );
-  const [hiddenSecret, setHiddenSecret] = useLocalState(
-    context,
-    'hidden',
-    false
-  );
+  const [massApplyPath, setMassApplyPath] = useState('');
+  const [hiddenSecret, setHiddenSecret] = useState(false);
+
   return (
     <Window title="Filteriffic" width={500} height={500}>
       <Window.Content scrollable>
@@ -297,16 +310,17 @@ export const Filteriffic = (props, context) => {
                 <Input
                   value={massApplyPath}
                   width="100px"
-                  onInput={(e, value) => setMassApplyPath(value)}
+                  onChange={(e, value) => setMassApplyPath(value)}
                 />
                 <Button.Confirm
-                  content="Apply"
                   confirmContent="ARE YOU SURE?"
                   onClick={() => act('mass_apply', { path: massApplyPath })}
-                />
+                >
+                  Apply
+                </Button.Confirm>
               </>
             ) : (
-              <Box inline onDblClick={() => setHiddenSecret(true)}>
+              <Box inline onDoubleClick={() => setHiddenSecret(true)}>
                 {name}
               </Box>
             )
@@ -314,8 +328,9 @@ export const Filteriffic = (props, context) => {
           buttons={
             <Dropdown
               icon="plus"
+              verticalAlign="bottom"
               displayText="Add Filter"
-              nochevron
+              noChevron
               options={Object.keys(filterDefaults)}
               onSelected={(value) =>
                 act('add_filter', {
@@ -325,13 +340,14 @@ export const Filteriffic = (props, context) => {
                 })
               }
             />
-          }>
+          }
+        >
           {!hasFilters ? (
             <Box>No filters</Box>
           ) : (
-            map((entry, key) => (
+            map(filters, (entry, key) => (
               <FilterEntry filterDataEntry={entry} name={key} key={key} />
-            ))(filters)
+            ))
           )}
         </Section>
       </Window.Content>

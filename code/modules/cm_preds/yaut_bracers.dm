@@ -569,7 +569,7 @@
 
 	if(HAS_TRAIT(caller, TRAIT_CLOAKED)) //Turn it off.
 		if(cloak_timer > world.time)
-			to_chat(M, SPAN_WARNING("Your cloaking device is busy! Time left: <B>[max(round((cloak_timer - world.time) / 10), 1)]</b> seconds."))
+			to_chat(M, SPAN_WARNING("Your cloaking device is busy! Time left: <B>[max(floor((cloak_timer - world.time) / 10), 1)]</b> seconds."))
 			return FALSE
 		decloak(caller)
 	else //Turn it on!
@@ -582,7 +582,7 @@
 			return FALSE
 
 		if(cloak_timer > world.time)
-			to_chat(M, SPAN_WARNING("Your cloaking device is still recharging! Time left: <B>[max(round((cloak_timer - world.time) / 10), 1)]</b> seconds."))
+			to_chat(M, SPAN_WARNING("Your cloaking device is still recharging! Time left: <B>[max(floor((cloak_timer - world.time) / 10), 1)]</b> seconds."))
 			return FALSE
 
 		if(!drain_power(M, 50))
@@ -774,7 +774,7 @@
 		to_chat(M, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
 		return
 	if(M.stat)
-		to_chat(M, SPAN_WARNING("Not while you're unconcious..."))
+		to_chat(M, SPAN_WARNING("Not while you're unconscious..."))
 		return
 
 	var/obj/item/grab/G = M.get_active_hand()
@@ -812,7 +812,7 @@
 				to_chat(M, SPAN_WARNING("Little too late for that now!"))
 				return
 			if(M.stat)
-				to_chat(M, SPAN_WARNING("Not while you're unconcious..."))
+				to_chat(M, SPAN_WARNING("Not while you're unconscious..."))
 				return
 			exploding = FALSE
 			to_chat(M, SPAN_NOTICE("Your bracers stop beeping."))
@@ -838,7 +838,7 @@
 			to_chat(M, SPAN_WARNING("Little too late for that now!"))
 			return
 		if(M.stat)
-			to_chat(M, SPAN_WARNING("Not while you're unconcious..."))
+			to_chat(M, SPAN_WARNING("Not while you're unconscious..."))
 			return
 		if(exploding)
 			return
@@ -1050,7 +1050,7 @@
 	if(!drain_power(caller, 50))
 		return
 
-	log_say("[caller.name != "Unknown" ? caller.name : "([caller.real_name])"] \[Yautja Translator\]: [msg] (CKEY: [caller.key]) (JOB: [caller.job])")
+	log_say("[caller.name != "Unknown" ? caller.name : "([caller.real_name])"] \[Yautja Translator\]: [msg] (CKEY: [caller.key]) (JOB: [caller.job]) (AREA: [get_area_name(caller)])")
 
 	var/list/heard = get_mobs_in_view(7, caller)
 	for(var/mob/M in heard)

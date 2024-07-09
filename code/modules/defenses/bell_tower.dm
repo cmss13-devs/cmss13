@@ -18,11 +18,11 @@
 	can_be_near_defense = TRUE
 
 	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
 	)
 
 	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_USCM,
+		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
 
@@ -110,7 +110,7 @@
 	if(M.get_target_lock(faction))
 		return
 
-	var/list/turf/path = getline2(src, linked_bell, include_from_atom = TRUE)
+	var/list/turf/path = get_line(src, linked_bell)
 	for(var/turf/PT in path)
 		if(PT.density)
 			return

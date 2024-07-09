@@ -1,26 +1,17 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Button, LabeledList, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
-export const Mortar = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Mortar = (props) => {
+  const { act, data } = useBackend();
   const { data_target_x, data_target_y, data_dial_x, data_dial_y } = data;
 
-  const [target_x, setTargetX] = useLocalState(
-    context,
-    'target_x',
-    data_target_x
-  );
-
-  const [target_y, setTargetY] = useLocalState(
-    context,
-    'target_y',
-    data_target_y
-  );
-
-  const [dial_x, setDialX] = useLocalState(context, 'dial_x', data_dial_x);
-
-  const [dial_y, setDialY] = useLocalState(context, 'dial_y', data_dial_y);
+  const [target_x, setTargetX] = useState(data_target_x);
+  const [target_y, setTargetY] = useState(data_target_y);
+  const [dial_x, setDialX] = useState(data_dial_x);
+  const [dial_y, setDialY] = useState(data_dial_y);
 
   return (
     <Window width={245} height={220}>
@@ -34,7 +25,7 @@ export const Mortar = (props, context) => {
                 minValue={-1000}
                 maxValue={1000}
                 value={target_x}
-                onChange={(_, value) => setTargetX(value)}
+                onChange={(value) => setTargetX(value)}
               />
             </LabeledList.Item>
             <LabeledList.Item label="Target Y">
@@ -44,16 +35,15 @@ export const Mortar = (props, context) => {
                 minValue={-1000}
                 maxValue={1000}
                 value={target_y}
-                onChange={(_, value) => setTargetY(value)}
+                onChange={(value) => setTargetY(value)}
               />
             </LabeledList.Item>
           </LabeledList>
           <Button
-            content="Set Target"
             icon="crosshairs"
             style={{
-              'margin-top': '5px',
-              'margin-left': '10px',
+              marginTop: '5px',
+              marginLeft: '10px',
             }}
             onClick={() =>
               act('set_target', {
@@ -61,26 +51,29 @@ export const Mortar = (props, context) => {
                 target_y: target_y,
               })
             }
-          />
+          >
+            Set Target
+          </Button>
           <Button
-            content="View Camera"
             style={{
-              'display': 'flex',
-              'position': 'absolute',
-              'top': '10px',
-              'right': '15px',
-              'height': '65px',
-              'width': '80px',
-              'white-space': 'normal',
-              'text-align': 'center',
-              'align-items': 'center',
+              display: 'flex',
+              position: 'absolute',
+              top: '10px',
+              right: '15px',
+              height: '65px',
+              width: '80px',
+              whiteSpace: 'normal',
+              textAlign: 'center',
+              alignItems: 'center',
             }}
             onClick={() =>
               act('operate_cam', {
                 camera: 1,
               })
             }
-          />
+          >
+            View Camera
+          </Button>
         </Section>
         <Section>
           <LabeledList>
@@ -92,7 +85,7 @@ export const Mortar = (props, context) => {
                 minValue={-10}
                 maxValue={10}
                 value={dial_x}
-                onChange={(_, value) => setDialX(value)}
+                onChange={(value) => setDialX(value)}
               />
             </LabeledList.Item>
             <LabeledList.Item label="Y Offset">
@@ -103,16 +96,15 @@ export const Mortar = (props, context) => {
                 minValue={-10}
                 maxValue={10}
                 value={dial_y}
-                onChange={(_, value) => setDialY(value)}
+                onChange={(value) => setDialY(value)}
               />
             </LabeledList.Item>
           </LabeledList>
           <Button
-            content="Dial Offset"
             icon="wrench"
             style={{
-              'margin-top': '5px',
-              'margin-left': '10px',
+              marginTop: '5px',
+              marginLeft: '10px',
             }}
             onClick={() =>
               act('set_offset', {
@@ -120,7 +112,9 @@ export const Mortar = (props, context) => {
                 dial_y: dial_y,
               })
             }
-          />
+          >
+            Dial Offset
+          </Button>
         </Section>
       </Window.Content>
     </Window>

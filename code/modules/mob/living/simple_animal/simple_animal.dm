@@ -56,6 +56,8 @@
 	black_market_value = 25
 	dead_black_market_value = 0
 
+	mobility_flags = MOBILITY_FLAGS_LYING_CAPABLE_DEFAULT
+
 /mob/living/simple_animal/Initialize()
 	. = ..()
 	SSmob.living_misc_mobs += src
@@ -107,33 +109,33 @@
 	//Speaking
 	if(!client && speak_chance)
 		if(rand(0,200) < speak_chance)
-			if(speak && speak.len)
-				if((emote_hear && emote_hear.len) || (emote_see && emote_see.len))
-					var/length = speak.len
-					if(emote_hear && emote_hear.len)
-						length += emote_hear.len
-					if(emote_see && emote_see.len)
-						length += emote_see.len
+			if(LAZYLEN(speak))
+				if(LAZYLEN(emote_hear) || LAZYLEN(emote_see))
+					var/length = length(speak)
+					if(LAZYLEN(emote_hear))
+						length += length(emote_hear)
+					if(LAZYLEN(emote_see))
+						length += length(emote_see)
 					var/randomValue = rand(1,length)
-					if(randomValue <= speak.len)
+					if(randomValue <= length(speak))
 						INVOKE_ASYNC(src, PROC_REF(say), pick(speak))
 					else
-						randomValue -= speak.len
-						if(emote_see && randomValue <= emote_see.len)
+						randomValue -= length(speak)
+						if(emote_see && randomValue <= length(emote_see))
 							INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
 						else
 							INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
 				else
 					INVOKE_ASYNC(src, PROC_REF(say), pick(speak))
 			else
-				if(!(emote_hear && emote_hear.len) && (emote_see && emote_see.len))
+				if(!LAZYLEN(emote_hear) && LAZYLEN(emote_see))
 					INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
-				if((emote_hear && emote_hear.len) && !(emote_see && emote_see.len))
+				if(LAZYLEN(emote_hear) && !LAZYLEN(emote_see))
 					INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
-				if((emote_hear && emote_hear.len) && (emote_see && emote_see.len))
-					var/length = emote_hear.len + emote_see.len
+				if(LAZYLEN(emote_hear) && LAZYLEN(emote_see))
+					var/length = length(emote_hear) + length(emote_see)
 					var/pick = rand(1,length)
-					if(pick <= emote_see.len)
+					if(pick <= length(emote_see))
 						INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
 					else
 						INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
@@ -210,6 +212,7 @@
 	SSmob.living_misc_mobs -= src
 	icon_state = icon_dead
 	black_market_value = dead_black_market_value
+	set_body_position(LYING_DOWN)
 
 
 /mob/living/simple_animal/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
@@ -349,7 +352,7 @@
 
 	var/verb = "says"
 
-	if(speak_emote.len)
+	if(length(speak_emote))
 		verb = pick(speak_emote)
 
 	message = capitalize(trim_left(message))

@@ -1,10 +1,19 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
+
 import { useBackend } from '../backend';
-import { Button, Flex, Icon, Section, NoticeBox, Stack, Box } from '../components';
+import {
+  Box,
+  Button,
+  Flex,
+  Icon,
+  NoticeBox,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
-export const FaxMachine = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const FaxMachine = () => {
+  const { act, data } = useBackend();
   const { idcard } = data;
   const body = idcard ? <FaxMain /> : <FaxEmpty />;
   const windowWidth = idcard ? 600 : 400;
@@ -17,7 +26,7 @@ export const FaxMachine = (_props, context) => {
   );
 };
 
-const FaxMain = (props, context) => {
+const FaxMain = (props) => {
   return (
     <>
       <FaxId />
@@ -26,8 +35,8 @@ const FaxMain = (props, context) => {
   );
 };
 
-const FaxId = (props, context) => {
-  const { act, data } = useBackend(context);
+const FaxId = (props) => {
+  const { act, data } = useBackend();
   const { department, network, idcard, authenticated } = data;
   return (
     <Section title="Authentication">
@@ -38,29 +47,27 @@ const FaxId = (props, context) => {
       </NoticeBox>
       <Stack>
         <Stack.Item>
-          <Button
-            icon="eject"
-            mb="0"
-            content={idcard}
-            onClick={() => act('ejectid')}
-          />
+          <Button icon="eject" mb="0" onClick={() => act('ejectid')}>
+            {idcard}
+          </Button>
         </Stack.Item>
         <Stack.Item grow>
           <Button
             icon="sign-in-alt"
             fluid
-            content={authenticated ? 'Log Out' : 'Log In'}
             selected={authenticated}
             onClick={() => act(authenticated ? 'logout' : 'auth')}
-          />
+          >
+            {authenticated ? 'Log Out' : 'Log In'}
+          </Button>
         </Stack.Item>
       </Stack>
     </Section>
   );
 };
 
-const FaxSelect = (props, context) => {
-  const { act, data } = useBackend(context);
+const FaxSelect = (props) => {
+  const { act, data } = useBackend();
   const {
     paper,
     paper_name,
@@ -79,18 +86,16 @@ const FaxSelect = (props, context) => {
         <Stack.Item>
           <Button
             icon="list"
-            content="Select department to send to"
             disabled={!authenticated}
             onClick={() => act('select')}
-          />
+          >
+            Select department to send to
+          </Button>
         </Stack.Item>
         <Stack.Item grow>
-          <Button
-            icon="building"
-            fluid
-            disabled={!authenticated}
-            content={'Currently sending to : ' + target_department + '.'}
-          />
+          <Button icon="building" fluid disabled={!authenticated}>
+            {'Currently sending to : ' + target_department + '.'}
+          </Button>
         </Stack.Item>
       </Stack>
       <Box width="600px" height="5px" />
@@ -99,31 +104,26 @@ const FaxSelect = (props, context) => {
           <Button
             icon="eject"
             fluid
-            content={
-              paper ? 'Currently sending : ' + paper_name : 'No paper loaded!'
-            }
             onClick={() => act(paper ? 'ejectpaper' : 'insertpaper')}
             color={paper ? 'default' : 'grey'}
-          />
+          >
+            {paper ? 'Currently sending : ' + paper_name : 'No paper loaded!'}
+          </Button>
         </Stack.Item>
         <Stack.Item grow>
           {(timeLeft < 0 && (
             <Button
               icon="paper-plane"
               fluid
-              content={paper ? 'Send' : 'No paper loaded!'}
               onClick={() => act('send')}
               disabled={timeLeft > 0 || !paper || !authenticated}
-            />
+            >
+              {paper ? 'Send' : 'No paper loaded!'}
+            </Button>
           )) || (
-            <Button
-              icon="window-close"
-              fluid
-              content={
-                'Transmitters realigning, ' + timeLeft / 10 + ' seconds left.'
-              }
-              disabled={1}
-            />
+            <Button icon="window-close" fluid disabled={1}>
+              {'Transmitters realigning, ' + timeLeft / 10 + ' seconds left.'}
+            </Button>
           )}
         </Stack.Item>
       </Stack>
@@ -131,11 +131,11 @@ const FaxSelect = (props, context) => {
   );
 };
 
-const FaxEmpty = (props, context) => {
-  const { act, data } = useBackend(context);
+const FaxEmpty = (props) => {
+  const { act, data } = useBackend();
   const { paper, paper_name } = data;
   return (
-    <Section textAlign="center" flexGrow="1" fill>
+    <Section textAlign="center" fill>
       <Flex height="100%">
         <Flex.Item grow="1" align="center" color="red">
           <Icon name="times-circle" mb="0.5rem" size="5" color="red" />
@@ -145,10 +145,11 @@ const FaxEmpty = (props, context) => {
           {paper && (
             <Button
               icon="eject"
-              content={'Eject ' + paper_name + '.'}
               onClick={() => act('ejectpaper')}
               disabled={!paper}
-            />
+            >
+              {'Eject ' + paper_name + '.'}
+            </Button>
           )}
         </Flex.Item>
       </Flex>

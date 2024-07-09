@@ -67,14 +67,14 @@
 	return GLOB.alldirs
 
 /datum/flameshape/star/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
-	fire_spread_amount = Floor(fire_spread_amount * 1.5) // branch 'length'
+	fire_spread_amount = floor(fire_spread_amount * 1.5) // branch 'length'
 	var/turf/source_turf = get_turf(F.loc)
 
 	var/list/dirs = dirs_to_use()
 
 	for(var/dirn in dirs)
 		var/endturf = get_ranged_target_turf(F, dirn, fire_spread_amount)
-		var/list/turfs = getline2(source_turf, endturf)
+		var/list/turfs = get_line(source_turf, endturf)
 
 		var/turf/prev_T = source_turf
 		for(var/turf/T in turfs)
@@ -124,7 +124,7 @@
 	var/distance = 1
 	var/stop_at_turf = FALSE
 
-	var/list/turfs = getline2(source_turf, F.target_clicked)
+	var/list/turfs = get_line(source_turf, F.target_clicked)
 	for(var/turf/T in turfs)
 		if(istype(T, /turf/open/space))
 			break
@@ -174,7 +174,7 @@
 		user = F.weapon_cause_data.resolve_mob()
 
 	var/unleash_dir = user.dir
-	var/list/turf/turfs = getline2(F, F.target_clicked)
+	var/list/turf/turfs = get_line(F, F.target_clicked)
 	var/distance = 1
 	var/hit_dense_atom_mid = FALSE
 	var/turf/prev_T = user.loc

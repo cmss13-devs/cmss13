@@ -14,6 +14,7 @@
 	speed = XENO_SPEED_TIER_2
 	heal_standing = 0.66
 
+	available_strains = list(/datum/xeno_strain/charger)
 	behavior_delegate_type = /datum/behavior_delegate/crusher_base
 
 	minimum_evolve_time = 15 MINUTES
@@ -50,7 +51,7 @@
 	base_pixel_y = -16
 
 	rebounds = FALSE // no more fucking pinball crooshers
-
+	organ_value = 3000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -63,8 +64,6 @@
 	)
 
 	claw_type = CLAW_TYPE_VERY_SHARP
-	mutation_icon_state = CRUSHER_NORMAL
-	mutation_type = CRUSHER_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/crusher.dmi'
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
@@ -185,7 +184,7 @@
 				. = FALSE
 			else if (O.anchored)
 				visible_message(SPAN_DANGER("[src] crushes [O]!"), SPAN_XENODANGER("We crush [O]!"))
-				if(O.contents.len) //Hopefully won't auto-delete things inside crushed stuff.
+				if(length(O.contents)) //Hopefully won't auto-delete things inside crushed stuff.
 					var/turf/T = get_turf(src)
 					for(var/atom/movable/S in T.contents) S.forceMove(T)
 
@@ -281,5 +280,5 @@
 
 /datum/behavior_delegate/crusher_base/on_update_icons()
 	if(bound_xeno.throwing || is_charging) //Let it build up a bit so we're not changing icons every single turf
-		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Crusher Charging"
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Crusher Charging"
 		return TRUE

@@ -191,6 +191,14 @@
 	if(ishuman(A.loc))
 		return A.loc
 
+/obj/item/device/motiondetector/xm4
+
+///Forces the blue blip to appear around the detected mob
+/obj/item/device/motiondetector/xm4/get_user()
+	var/atom/holder = loc
+	if(ishuman(holder.loc))
+		return holder.loc
+
 /obj/item/device/motiondetector/proc/apply_debuff(mob/M)
 	return
 
@@ -261,10 +269,10 @@
 		var/view_x_offset = 0
 		var/view_y_offset = 0
 		if(c_view > 7)
-			if(user.client.pixel_x >= 0) view_x_offset = round(user.client.pixel_x/32)
-			else view_x_offset = Ceiling(user.client.pixel_x/32)
-			if(user.client.pixel_y >= 0) view_y_offset = round(user.client.pixel_y/32)
-			else view_y_offset = Ceiling(user.client.pixel_y/32)
+			if(user.client.pixel_x >= 0) view_x_offset = floor(user.client.pixel_x/32)
+			else view_x_offset = ceil(user.client.pixel_x/32)
+			if(user.client.pixel_y >= 0) view_y_offset = floor(user.client.pixel_y/32)
+			else view_y_offset = ceil(user.client.pixel_y/32)
 
 		var/diff_dir_x = 0
 		var/diff_dir_y = 0

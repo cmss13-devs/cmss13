@@ -1,13 +1,19 @@
 import { range } from 'common/collections';
+
 import { useBackend } from '../../backend';
 import { Box, Icon, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdProps, MfdPanel } from './MultifunctionDisplay';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { mfdState, useWeaponState } from './stateManagers';
+import {
+  getLastTargetName,
+  lazeMapper,
+  TargetLines,
+  useTargetOffset,
+} from './TargetAquisition';
 import { LazeTarget } from './types';
-import { getLastTargetName, lazeMapper, TargetLines, useTargetOffset } from './TargetAquisition';
 
-const EmptyWeaponPanel = (props, context) => {
+const EmptyWeaponPanel = (props) => {
   return <div>Nothing Listed</div>;
 };
 interface EquipmentContext {
@@ -15,36 +21,36 @@ interface EquipmentContext {
   targets_data: Array<LazeTarget>;
 }
 
-const WeaponPanel = (
-  props: { readonly panelId: string; readonly equipment: DropshipEquipment },
-  context
-) => {
-  const { data } = useBackend<EquipmentContext>(context);
+const WeaponPanel = (props: {
+  readonly panelId: string;
+  readonly equipment: DropshipEquipment;
+}) => {
+  const { data } = useBackend<EquipmentContext>();
 
   return (
     <Stack>
       <Stack.Item>
         <svg height="501" width="100">
-          <text stroke="#00e94e" x={60} y={230} text-anchor="start">
+          <text stroke="#00e94e" x={60} y={230} textAnchor="start">
             ACTIONS
           </text>
           {true && (
             <path
-              fill-opacity="0"
+              fillOpacity="0"
               stroke="#00e94e"
               d="M 50 210 l -20 0 l -20 -180 l -40 0"
             />
           )}
           {false && (
             <path
-              fill-opacity="0"
+              fillOpacity="0"
               stroke="#00e94e"
               d="M 50 220 l -25 0 l -15 -90 l -40 0"
             />
           )}
           {false && (
             <path
-              fill-opacity="0"
+              fillOpacity="0"
               stroke="#00e94e"
               d="M 50 230 l -20 0 l -20 0 l -40 0"
             />
@@ -52,14 +58,14 @@ const WeaponPanel = (
 
           {false && (
             <path
-              fill-opacity="0"
+              fillOpacity="0"
               stroke="#00e94e"
               d="M 50 240 l -25 0 l -15 90 l -40 0"
             />
           )}
           {false && (
             <path
-              fill-opacity="0"
+              fillOpacity="0"
               stroke="#00e94e"
               d="M 50 250 l -20 0 l -20 180 l -40 0"
             />
@@ -91,16 +97,17 @@ const WeaponPanel = (
                 stroke="#00e94e"
                 x={-20}
                 y={210}
-                text-anchor="end"
+                textAnchor="end"
                 transform="rotate(-90 20 210)"
-                fontSize="2em">
+                fontSize="2em"
+              >
                 <tspan x={50} y={250} dy="1.2em">
                   NO TARGETS
                 </tspan>
               </text>
             )}
             {data.targets_data.length > 0 && (
-              <text stroke="#00e94e" x={20} y={190} text-anchor="end">
+              <text stroke="#00e94e" x={20} y={190} textAnchor="end">
                 <tspan x={40} dy="1.2em">
                   SELECT
                 </tspan>
@@ -131,17 +138,14 @@ const WeaponPanel = (
   );
 };
 
-export const WeaponMfdPanel = (props: MfdProps, context) => {
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const { weaponState } = useWeaponState(context, props.panelStateId);
-  const { data, act } = useBackend<EquipmentContext>(context);
-  const { targetOffset, setTargetOffset } = useTargetOffset(
-    context,
-    props.panelStateId
-  );
+export const WeaponMfdPanel = (props: MfdProps) => {
+  const { setPanelState } = mfdState(props.panelStateId);
+  const { weaponState } = useWeaponState(props.panelStateId);
+  const { data, act } = useBackend<EquipmentContext>();
+  const { targetOffset, setTargetOffset } = useTargetOffset(props.panelStateId);
   const weap = data.equipment_data.find((x) => x.mount_point === weaponState);
   const targets = range(targetOffset, targetOffset + 5).map((x) =>
-    lazeMapper(context, x)
+    lazeMapper(x),
   );
 
   return (
@@ -187,7 +191,8 @@ export const WeaponMfdPanel = (props: MfdProps, context) => {
           },
         },
       ]}
-      rightButtons={targets}>
+      rightButtons={targets}
+    >
       <Box className="NavigationMenu">
         {weap ? (
           <WeaponPanel equipment={weap} panelId={props.panelStateId} />

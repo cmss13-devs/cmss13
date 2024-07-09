@@ -38,7 +38,7 @@
 
 	var/node_plant_cooldown = 7 SECONDS
 	var/node_plant_plasma_cost = 300
-	var/turf_build_cooldown = 7 SECONDS
+	var/turf_build_cooldown = 10 SECONDS
 
 /datum/action/xeno_action/onclick/manage_hive
 	name = "Manage The Hive"
@@ -61,6 +61,10 @@
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/give_to(mob/L)
 	. = ..()
 	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(apply_queen_build_boost)))
+
+// queenos don't need weeds under them to build on ovi
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/can_remote_build()
+	return TRUE
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/apply_queen_build_boost()
 	var/boost_duration = 30 MINUTES

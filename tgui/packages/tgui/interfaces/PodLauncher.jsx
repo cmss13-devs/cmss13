@@ -1,17 +1,29 @@
 import { toFixed } from 'common/math';
 import { storage } from 'common/storage';
-import { multiline } from 'common/string';
 import { createUuid } from 'common/uuid';
-import { Component, Fragment } from 'inferno';
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, ByondUi, Divider, Input, Knob, LabeledControls, NumberInput, Section, Flex, Slider } from '../components';
+import { Component, Fragment, useState } from 'react';
+
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  ByondUi,
+  Divider,
+  Flex,
+  Input,
+  Knob,
+  LabeledControls,
+  NumberInput,
+  Section,
+  Slider,
+} from '../components';
 import { Window } from '../layouts';
 
 const pod_grey = {
   color: 'grey',
 };
 
-export const PodLauncher = (props, context) => {
+export const PodLauncher = (props) => {
   return (
     <Window title="Supply Pod Menu" width={730} height={500} resizable>
       <PodLauncherContent />
@@ -19,7 +31,8 @@ export const PodLauncher = (props, context) => {
   );
 };
 
-const PodLauncherContent = (props, context) => {
+const PodLauncherContent = (props) => {
+  const [tabPageIndex, setTabPageIndex] = useState(1);
   return (
     <Window.Content>
       <Flex direction="column" height="100%">
@@ -34,7 +47,10 @@ const PodLauncherContent = (props, context) => {
                   <PresetsPage />
                 </Flex.Item>
                 <Flex.Item>
-                  <ReverseMenu />
+                  <ReverseMenu
+                    tabPageIndex={tabPageIndex}
+                    setTabPageIndex={setTabPageIndex}
+                  />
                 </Flex.Item>
                 <Flex.Item>
                   <Section>
@@ -44,7 +60,10 @@ const PodLauncherContent = (props, context) => {
               </Flex>
             </Flex.Item>
             <Flex.Item grow={3}>
-              <ViewTabHolder />
+              <ViewTabHolder
+                tabPageIndex={tabPageIndex}
+                setTabPageIndex={setTabPageIndex}
+              />
             </Flex.Item>
             <Flex.Item basis="16em">
               <Flex height="100%" direction="column">
@@ -132,8 +151,8 @@ const EFFECTS_LOAD = [
     selected: (data) => {
       return data['launch_choice'] === data.glob_launch_options.LAUNCH_ALL;
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('set_launch_option', { launch_option: 'LAUNCH_ALL' });
     },
   },
@@ -143,8 +162,8 @@ const EFFECTS_LOAD = [
     selected: (data) => {
       return data['launch_choice'] === data.glob_launch_options.LAUNCH_RANDOM;
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('set_launch_option', { launch_option: 'LAUNCH_RANDOM' });
     },
   },
@@ -157,8 +176,8 @@ const EFFECTS_LOAD = [
     selected: (data) => {
       return !data['launch_random_item'];
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('launch_random_item', { should_do: false });
     },
   },
@@ -168,8 +187,8 @@ const EFFECTS_LOAD = [
     selected: (data) => {
       return data['launch_random_item'];
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('launch_random_item', { should_do: true });
     },
   },
@@ -180,8 +199,8 @@ const EFFECTS_LOAD = [
     title: 'Clone',
     icon: 'clone',
     selected: (data) => data['launch_clone'],
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('launch_clone', { should_do: !data['launch_clone'] });
     },
   },
@@ -189,8 +208,8 @@ const EFFECTS_LOAD = [
     title: 'Recall',
     icon: 'redo',
     selected: (data) => data['should_recall'],
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('set_should_recall', { should_do: !data['should_recall'] });
     },
   },
@@ -203,8 +222,8 @@ const EFFECTS_NORMAL = [
     selected: (data) => {
       return data['gib_on_land'];
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('set_gib_on_land', { should_do: !data['gib_on_land'] });
     },
   },
@@ -214,8 +233,8 @@ const EFFECTS_NORMAL = [
     selected: (data) => {
       return data['stealth'];
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('set_stealth', { should_do: !data['stealth'] });
     },
   },
@@ -225,8 +244,8 @@ const EFFECTS_NORMAL = [
     selected: (data) => {
       return data['can_be_opened'];
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('set_can_be_opened', { should_do: !data['can_be_opened'] });
     },
   },
@@ -237,7 +256,7 @@ const EFFECTS_ALL = [
     list: EFFECTS_LOAD,
     label: 'Load From',
     alt_label: 'Load',
-    tooltipPosition: 'right',
+    tooltipPosition: 'bottom',
   },
   {
     list: EFFECTS_NORMAL,
@@ -246,13 +265,9 @@ const EFFECTS_ALL = [
   },
 ];
 
-const ViewTabHolder = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [tabPageIndex, setTabPageIndex] = useLocalState(
-    context,
-    'tabPageIndex',
-    1
-  );
+const ViewTabHolder = (props) => {
+  const { act, data } = useBackend();
+  const { tabPageIndex, setTabPageIndex } = props;
   const { glob_tab_indexes, custom_dropoff, map_ref } = data;
   const TabPageComponent = TABPAGES[tabPageIndex].component();
   return (
@@ -314,24 +329,22 @@ const ViewTabHolder = (props, context) => {
           <Button
             icon="trash"
             color="transparent"
-            tooltip={multiline`
-            Clears everything
-            from the bay`}
-            tooltipOverrideLong
+            tooltip={`Clears everything from the bay`}
             tooltipPosition="top"
             onClick={() => act('clear_bay')}
           />
         </>
-      }>
+      }
+    >
       <Flex direction="column" height="100%">
         <Flex.Item>
           <TabPageComponent />
         </Flex.Item>
         <Flex.Item grow={1} mt={1}>
           <ByondUi
+            className="CameraPanel"
             height="100%"
             params={{
-              zoom: 0,
               id: map_ref,
               type: 'map',
             }}
@@ -342,7 +355,7 @@ const ViewTabHolder = (props, context) => {
   );
 };
 
-const TabPod = (props, context) => {
+const TabPod = (props) => {
   return (
     <Box color="label">
       Note: You can right click on this
@@ -352,46 +365,44 @@ const TabPod = (props, context) => {
   );
 };
 
-const TabBay = (props, context) => {
-  const { act, data } = useBackend(context);
+const TabBay = (props) => {
+  const { act, data } = useBackend();
   return (
     <>
+      <Button icon="street-view" onClick={() => act('goto_bay')}>
+        Teleport
+      </Button>
       <Button
-        content="Teleport"
-        icon="street-view"
-        onClick={() => act('goto_bay')}
-      />
-      <Button
-        content={data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
         disabled={!data.old_area}
         icon="undo-alt"
         onClick={() => act('goto_prev_turf')}
-      />
+      >
+        {data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
+      </Button>
     </>
   );
 };
 
-const TabDrop = (props, context) => {
-  const { act, data } = useBackend(context);
+const TabDrop = (props) => {
+  const { act, data } = useBackend();
   return (
     <>
+      <Button icon="street-view" onClick={() => act('goto_dropoff')}>
+        Teleport
+      </Button>
       <Button
-        content="Teleport"
-        icon="street-view"
-        onClick={() => act('goto_dropoff')}
-      />
-      <Button
-        content={data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
         disabled={!data.old_area}
         icon="undo-alt"
         onClick={() => act('goto_prev_turf')}
-      />
+      >
+        {data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
+      </Button>
     </>
   );
 };
 
-const PodStatusPage = (props, context) => {
-  const { act, data } = useBackend(context);
+const PodStatusPage = (props) => {
+  const { act, data } = useBackend();
   return (
     <Section fill width="100%">
       <Flex>
@@ -414,25 +425,25 @@ const PodStatusPage = (props, context) => {
                         <Button
                           tooltip={effect.title}
                           tooltipPosition={list.tooltipPosition}
-                          tooltipOverrideLong
                           icon={effect.icon}
-                          content={effect.content}
                           selected={
                             effect.selected ? effect.selected(data) : false
                           }
                           onClick={() => {
                             if (effect.onClick) {
-                              effect.onClick(context);
+                              effect.onClick();
                             }
                           }}
                           style={{
-                            'vertical-align': 'middle',
-                            'margin-left': j !== 0 ? '1px' : '0px',
-                            'margin-right':
+                            verticalAlign: 'middle',
+                            marginLeft: j !== 0 ? '1px' : '0px',
+                            marginRight:
                               j !== list.list.length - 1 ? '1px' : '0px',
-                            'border-radius': '5px',
+                            borderRadius: '5px',
                           }}
-                        />
+                        >
+                          {effect.content}
+                        </Button>
                       )}
                     </Flex.Item>
                   ))}
@@ -446,26 +457,18 @@ const PodStatusPage = (props, context) => {
   );
 };
 
-const ReverseMenu = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [tabPageIndex, setTabPageIndex] = useLocalState(
-    context,
-    'tabPageIndex',
-    1
-  );
+const ReverseMenu = (props) => {
+  const { act, data } = useBackend();
+  const { tabPageIndex, setTabPageIndex } = props;
   const { glob_tab_indexes, target_mode } = data;
   const { TARGET_MODE_DROPOFF, TARGET_MODE_NONE } = data.glob_target_mode;
   return (
     <Section fill height="100%" title="Reverse">
-      <Flex fill direction="column">
+      <Flex fill={1} direction="column">
         <Flex.Item maxHeight="20px">
           <Button
-            content="Dropoff Turf"
             selected={target_mode === TARGET_MODE_DROPOFF}
-            tooltip={multiline`
-              Where the pods
-              go after being recalled`}
-            tooltipOverrideLong
+            tooltip={`Where the pods go after being recalled`}
             tooltipPosition="bottom"
             onClick={() => {
               if (data.target_mode === TARGET_MODE_DROPOFF) {
@@ -478,15 +481,14 @@ const ReverseMenu = (props, context) => {
                 });
               }
             }}
-          />
+          >
+            Dropoff Turf
+          </Button>
           <Button
             inline
             icon="trash"
             disabled={!data.custom_dropoff}
-            tooltip={multiline`
-              Clears the custom dropoff
-              location.`}
-            tooltipOverrideLong
+            tooltip={`Clears the custom dropoff location.`}
             tooltipPosition="bottom"
             onClick={() => {
               act('clear_dropoff');
@@ -507,6 +509,10 @@ class PresetsPage extends Component {
     super();
     this.state = {
       presets: [],
+      presetIndex: 0,
+      settingName: 0,
+      newNameText: '',
+      hue: 0,
     };
   }
 
@@ -522,8 +528,8 @@ class PresetsPage extends Component {
     storage.set('cm_podlauncher_preset_' + id, data);
   }
 
-  async loadDataFromPreset(id, context) {
-    const { act } = useBackend(this.context);
+  async loadDataFromPreset(id) {
+    const { act } = useBackend();
     act('load_preset', {
       payload: await storage.get('cm_podlauncher_preset_' + id),
     });
@@ -558,26 +564,13 @@ class PresetsPage extends Component {
       }
     }
     storage.set('cm_podlauncher_presetlist', presets);
+    this.setState({
+      presets: presets,
+    });
   }
   render() {
-    const { presets } = this.state;
-    const { act, data } = useBackend(this.context);
-    const [presetIndex, setSelectedPreset] = useLocalState(
-      this.context,
-      'presetIndex',
-      0
-    );
-    const [settingName, setEditingNameStatus] = useLocalState(
-      this.context,
-      'settingName',
-      0
-    );
-    const [newNameText, setText] = useLocalState(
-      this.context,
-      'newNameText',
-      ''
-    );
-    const [hue, setHue] = useLocalState(this.context, 'hue', 0);
+    const { presets, presetIndex, settingName, newNameText, hue } = this.state;
+    const { act, data } = useBackend();
     return (
       <Section
         scrollable
@@ -590,25 +583,24 @@ class PresetsPage extends Component {
                 color="transparent"
                 icon="plus"
                 tooltip="New Preset"
-                onClick={() => setEditingNameStatus(1)}
+                tooltipPosition="bottom"
+                onClick={() => this.setState({ settingName: 1 })}
               />
             )}
             <Button
               inline
               color="transparent"
-              content=""
               icon="download"
               tooltip="Saves preset"
-              tooltipOverrideLong
               tooltipPosition="bottom"
               onClick={() => this.saveDataToPreset(presetIndex, data)}
             />
             <Button
               inline
               color="transparent"
-              content=""
               icon="upload"
               tooltip="Loads preset"
+              tooltipPosition="bottom"
               onClick={() => {
                 this.loadDataFromPreset(presetIndex);
               }}
@@ -622,7 +614,8 @@ class PresetsPage extends Component {
               onClick={() => this.deletePreset(presetIndex)}
             />
           </>
-        }>
+        }
+      >
         {settingName === 1 && (
           <>
             <Button
@@ -632,7 +625,7 @@ class PresetsPage extends Component {
               tooltipPosition="right"
               onClick={() => {
                 this.newPreset(newNameText, hue, data);
-                setEditingNameStatus(0);
+                this.setState({ settingName: 0 });
               }}
             />
             <Button
@@ -640,8 +633,7 @@ class PresetsPage extends Component {
               icon="window-close"
               tooltip="Cancel"
               onClick={() => {
-                setText('');
-                setEditingNameStatus(0);
+                this.setState({ newNameText: '', settingName: 0 });
               }}
             />
             <span color="label"> Hue: </span>
@@ -654,13 +646,13 @@ class PresetsPage extends Component {
               value={hue}
               minValue={0}
               maxValue={360}
-              onChange={(e, value) => setHue(value)}
+              onChange={(value) => this.setState({ hue: value })}
             />
             <Input
               inline
               autofocus
               placeholder="Preset Name"
-              onChange={(e, value) => setText(value)}
+              onChange={(e, value) => this.setState({ newNameText: value })}
             />
             <Divider horizontal />
           </>
@@ -673,46 +665,44 @@ class PresetsPage extends Component {
         )}
         {presets
           ? presets.map((preset, i) => (
-            <Button
-              key={i}
-              width="100%"
-              backgroundColor={`hsl(${preset.hue}, 50%, 50%)`}
-              onClick={() => setSelectedPreset(preset.id)}
-              content={preset.title}
-              style={
-                presetIndex === preset.id
-                  ? {
-                    'border-width': '1px',
-                    'border-style': 'solid',
-                    'border-color': `hsl(${preset.hue}, 80%, 80%)`,
-                  }
-                  : ''
-              }
-            />
-          ))
+              <Button
+                key={i}
+                width="100%"
+                backgroundColor={`hsl(${preset.hue}, 50%, 50%)`}
+                onClick={() =>
+                  this.setState({
+                    presetIndex: preset.id,
+                  })
+                }
+                style={
+                  presetIndex === preset.id
+                    ? {
+                        borderWidth: '1px',
+                        borderStyle: 'solid',
+                        borderColor: `hsl(${preset.hue}, 80%, 80%)`,
+                      }
+                    : ''
+                }
+              >
+                {preset.title}
+              </Button>
+            ))
           : ''}
       </Section>
     );
   }
 }
 
-const LaunchPage = (props, context) => {
-  const { act, data } = useBackend(context);
+const LaunchPage = (props) => {
+  const { act, data } = useBackend();
   const { TARGET_MODE_LAUNCH, TARGET_MODE_NONE } = data.glob_target_mode;
   return (
     <Button
       fluid
       textAlign="center"
-      tooltip={multiline`
-        Launches the droppod`}
-      tooltipOverrideLong
+      tooltip={`Launches the droppod`}
       selected={data.target_mode === TARGET_MODE_LAUNCH}
       tooltipPosition="top"
-      content={
-        <Box bold fontSize="1.4em" lineHeight={3}>
-          LAUNCH
-        </Box>
-      }
       onClick={() => {
         if (data.target_mode === TARGET_MODE_LAUNCH) {
           act('set_target_mode', {
@@ -724,12 +714,16 @@ const LaunchPage = (props, context) => {
           });
         }
       }}
-    />
+    >
+      <Box bold fontSize="1.4em" lineHeight={3}>
+        LAUNCH
+      </Box>
+    </Button>
   );
 };
 
-const Timing = (props, context) => {
-  const { act, data } = useBackend(context);
+const Timing = (props) => {
+  const { act, data } = useBackend();
   return (
     <Section
       fill
@@ -738,26 +732,24 @@ const Timing = (props, context) => {
         <Button
           icon="undo"
           color="transparent"
-          tooltip={multiline`
-          Reset all pod
-          timings/delays`}
-          tooltipOverrideLong
+          tooltip={`Reset all pod timings/delays`}
           tooltipPosition="top"
           onClick={() => {
             act('set_delays', {
-              'drop_time': 0,
-              'dropping_time': 35,
-              'open_time': 30,
-              'return_time': 300,
+              drop_time: 0,
+              dropping_time: 35,
+              open_time: 30,
+              return_time: 300,
             });
             act('set_reverse_delays', {
-              'drop_time': 0,
-              'dropping_time': 35,
-              'open_time': 30,
+              drop_time: 0,
+              dropping_time: 35,
+              open_time: 30,
             });
           }}
         />
-      }>
+      }
+    >
       <DelayHelper delay_list={DELAYS} title="Normal Timers" />
       {!!data.should_recall && (
         <>
@@ -773,8 +765,8 @@ const Timing = (props, context) => {
   );
 };
 
-const DelayHelper = (props, context) => {
-  const { act, data } = useBackend(context);
+const DelayHelper = (props) => {
+  const { act, data } = useBackend();
   const { delay_list, reverse = false, title } = props;
   return (
     <>
@@ -823,8 +815,8 @@ const DelayHelper = (props, context) => {
   );
 };
 
-const Damage = (props, context) => {
-  const { act, data } = useBackend(context);
+const Damage = (props) => {
+  const { act, data } = useBackend();
   return (
     <Section
       fill
@@ -834,15 +826,15 @@ const Damage = (props, context) => {
           icon="undo"
           color="transparent"
           tooltip="Reset damage"
-          tooltipOverrideLong
           tooltipPosition="top"
           onClick={() => {
             act('set_damage', {
-              'damage': 0,
+              damage: 0,
             });
           }}
         />
-      }>
+      }
+    >
       <Slider
         value={data.land_damage}
         ranges={{
@@ -860,13 +852,9 @@ const Damage = (props, context) => {
   );
 };
 
-const Explosion = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [enabled, setEnabled] = useLocalState(
-    context,
-    'explosion_enabled',
-    false
-  );
+const Explosion = (props) => {
+  const { act, data } = useBackend();
+  const [enabled, setEnabled] = useState(false);
   return (
     <Section
       fill
@@ -877,25 +865,25 @@ const Explosion = (props, context) => {
           selected={enabled}
           color="transparent"
           tooltip="Toggle explosion"
-          tooltipOverrideLong
           tooltipPosition="top"
           onClick={() => {
             if (enabled) {
               setEnabled(false);
               act('set_explosive_parameters', {
-                'power': 0,
-                'falloff': 75,
+                power: 0,
+                falloff: 75,
               });
             } else {
               setEnabled(true);
               act('set_explosive_parameters', {
-                'power': 50,
-                'falloff': 75,
+                power: 50,
+                falloff: 75,
               });
             }
           }}
         />
-      }>
+      }
+    >
       {!!enabled && (
         <>
           <Slider
@@ -937,8 +925,8 @@ const Explosion = (props, context) => {
   );
 };
 
-const Container = (props, context) => {
-  const { act, data } = useBackend(context);
+const Container = (props) => {
+  const { act, data } = useBackend();
   return (
     <Section fill title="Container">
       <Slider

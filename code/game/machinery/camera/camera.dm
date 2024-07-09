@@ -10,7 +10,6 @@
 
 	var/list/network = list(CAMERA_NET_MILITARY)
 	var/c_tag = null
-	var/c_tag_order = 999
 	var/status = 1
 	anchored = TRUE
 	var/panel_open = FALSE // 0 = Closed / 1 = Open
@@ -38,6 +37,10 @@
 	/// If this camera should have innate EMP-proofing
 	var/emp_proof = FALSE
 
+	///Autonaming
+	var/autoname = FALSE
+	var/autonumber = 0 //camera number in area
+
 GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 /obj/structure/machinery/camera/Initialize(mapload, ...)
 	. = ..()
@@ -49,16 +52,34 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 	if(colony_camera_mapload && mapload && is_ground_level(z))
 		network = list(CAMERA_NET_COLONY)
 
-	if(!src.network || src.network.len < 1)
+	if(LAZYLEN(src.network) < 1)
 		if(loc)
 			error("[src.name] in [get_area(src)] (x:[src.x] y:[src.y] z:[src.z]) has errored. [src.network?"Empty network list":"Null network list"]")
 		else
 			error("[src.name] in [get_area(src)]has errored. [src.network?"Empty network list":"Null network list"]")
 		ASSERT(src.network)
-		ASSERT(src.network.len > 0)
+		ASSERT(length(src.network) > 0)
 
 	set_pixel_location()
 	update_icon()
+
+	//This camera automatically sets it's name to whatever the area that it's in is called.
+	if(autoname)
+		autonumber = 1
+		var/area/my_area = get_area(src)
+		if(my_area)
+			for(var/obj/structure/machinery/camera/autoname/current_camera in GLOB.machines)
+				if(current_camera == src)
+					continue
+				var/area/current_camera_area = get_area(current_camera)
+				if(current_camera_area.type != my_area.type)
+					continue
+
+				if(!current_camera.autonumber)
+					continue
+
+				autonumber = max(autonumber, current_camera.autonumber + 1)
+			c_tag = "[my_area.name] #[autonumber]"
 
 /obj/structure/machinery/camera/Destroy()
 	GLOB.all_cameras -= src
@@ -277,6 +298,22 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 		SPAN_NOTICE("You weld [src]."))
 		return 1
 	return 0
+
+/obj/structure/machinery/camera/correspondent
+	network = list(CAMERA_NET_CORRESPONDENT)
+	invisibility = INVISIBILITY_ABSTRACT
+	invuln = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	colony_camera_mapload = FALSE
+	var/obj/item/device/camera/broadcasting/linked_broadcasting
+
+/obj/structure/machinery/camera/correspondent/Initialize(mapload, obj/item/device/camera/broadcasting/camera_item)
+	. = ..()
+	if(!camera_item)
+		return INITIALIZE_HINT_QDEL
+	linked_broadcasting = camera_item
+	c_tag = linked_broadcasting.get_broadcast_name()
 
 /obj/structure/machinery/camera/mortar
 	alpha = 0

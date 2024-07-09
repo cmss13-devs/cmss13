@@ -1,8 +1,18 @@
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
-import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from '../backend';
-import { Input, Button, Flex, Divider, Collapsible, Icon, NumberInput, Table } from '../components';
+import { Fragment, useState } from 'react';
+
+import { useBackend } from '../backend';
+import {
+  Button,
+  Collapsible,
+  Divider,
+  Flex,
+  Icon,
+  Input,
+  NumberInput,
+  Table,
+} from '../components';
 import { Window } from '../layouts';
 
 const redFont = {
@@ -77,8 +87,8 @@ const getFilter = (data) => {
   };
 };
 
-export const HiveStatus = (props, context) => {
-  const { data } = useBackend(context);
+export const HiveStatus = (props) => {
+  const { data } = useBackend();
   const { hive_name } = data;
 
   return (
@@ -87,7 +97,8 @@ export const HiveStatus = (props, context) => {
       theme="hive_status"
       resizable
       width={600}
-      height={680}>
+      height={680}
+    >
       <Window.Content scrollable>
         <XenoCollapsible title="General Hive Information">
           <GeneralInformation />
@@ -105,8 +116,8 @@ export const HiveStatus = (props, context) => {
   );
 };
 
-const GeneralInformation = (props, context) => {
-  const { data } = useBackend(context);
+const GeneralInformation = (props) => {
+  const { data } = useBackend();
   const {
     queen_location,
     hive_location,
@@ -152,8 +163,8 @@ const GeneralInformation = (props, context) => {
   );
 };
 
-const XenoCounts = (props, context) => {
-  const { data } = useBackend(context);
+const XenoCounts = (props) => {
+  const { data } = useBackend();
   const { xeno_counts, tier_slots, hive_color } = data;
 
   return (
@@ -179,8 +190,9 @@ const XenoCounts = (props, context) => {
                       <div>
                         <span
                           style={{
-                            'margin-right': '4px',
-                          }}>
+                            marginRight: '4px',
+                          }}
+                        >
                           {tier_slots[tier_str].open_slots}
                         </span>
                         remaining slot
@@ -193,8 +205,9 @@ const XenoCounts = (props, context) => {
                             <Fragment key={i}>
                               <span
                                 style={{
-                                  'margin-right': '4px',
-                                }}>
+                                  marginRight: '4px',
+                                }}
+                              >
                                 {
                                   tier_slots[tier_str].guaranteed_slots[
                                     caste_type
@@ -229,7 +242,8 @@ const XenoCounts = (props, context) => {
                           className="xenoCountCell"
                           backgroundColor={!!hive_color && hive_color}
                           textAlign="center"
-                          width={7}>
+                          width={7}
+                        >
                           {counts[caste]}
                         </Table.Cell>
                       ))}
@@ -245,15 +259,15 @@ const XenoCounts = (props, context) => {
   );
 };
 
-const XenoList = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [searchKey, setSearchKey] = useLocalState(context, 'searchKey', '');
-  const [searchFilters, setSearchFilters] = useLocalState(
-    context,
-    'searchFilters',
-    { name: true, strain: true, location: true }
-  );
-  const [maxHealth, setMaxHealth] = useLocalState(context, 'maxHealth', 100);
+const XenoList = (props) => {
+  const { act, data } = useBackend();
+  const [searchKey, setSearchKey] = useState('');
+  const [searchFilters, setSearchFilters] = useState({
+    name: true,
+    strain: true,
+    location: true,
+  });
+  const [maxHealth, setMaxHealth] = useState(100);
   const { xeno_keys, xeno_vitals, xeno_info, user_ref, is_in_ovi, hive_color } =
     data;
   const xeno_entries = filterXenos({
@@ -273,7 +287,6 @@ const XenoList = (props, context) => {
           <Flex.Item>
             <Button.Checkbox
               inline
-              content="Name"
               checked={searchFilters.name}
               backgroundColor={searchFilters.name && hive_color}
               onClick={() =>
@@ -282,10 +295,11 @@ const XenoList = (props, context) => {
                   name: !searchFilters.name,
                 })
               }
-            />
+            >
+              Name
+            </Button.Checkbox>
             <Button.Checkbox
               inline
-              content="Strain"
               checked={searchFilters.strain}
               backgroundColor={searchFilters.strain && hive_color}
               onClick={() =>
@@ -294,10 +308,11 @@ const XenoList = (props, context) => {
                   strain: !searchFilters.strain,
                 })
               }
-            />
+            >
+              Strain
+            </Button.Checkbox>
             <Button.Checkbox
               inline
-              content="Location"
               checked={searchFilters.location}
               backgroundColor={searchFilters.location && hive_color}
               onClick={() =>
@@ -306,7 +321,9 @@ const XenoList = (props, context) => {
                   location: !searchFilters.location,
                 })
               }
-            />
+            >
+              Location
+            </Button.Checkbox>
           </Flex.Item>
         </Flex>
       </Flex.Item>
@@ -322,14 +339,14 @@ const XenoList = (props, context) => {
               value={maxHealth}
               minValue={0}
               maxValue={100}
-              onChange={(_, value) => setMaxHealth(value)}
+              onChange={(value) => setMaxHealth(value)}
             />
           </Flex.Item>
         </Flex>
       </Flex.Item>
       <Flex.Item mb={2}>
         <Input
-          fluid={1}
+          fluid
           placeholder="Search..."
           onInput={(_, value) => setSearchKey(value)}
         />
@@ -348,7 +365,8 @@ const XenoList = (props, context) => {
         {xeno_entries.map((entry, i) => (
           <Table.Row
             key={i}
-            className={classes([entry.is_ssd ? 'ssdRow' : '', 'xenoListRow'])}>
+            className={classes([entry.is_ssd ? 'ssdRow' : '', 'xenoListRow'])}
+          >
             {/*
               Leader/SSD icon
               You might think using an image for rounded corners is stupid,
@@ -365,7 +383,7 @@ const XenoList = (props, context) => {
               {entry.health < 30 ? (
                 <b style={redFont}>{entry.health}%</b>
               ) : (
-                <Fragment>{entry.health}%</Fragment>
+                <>{entry.health}%</>
               )}
             </Table.Cell>
             <Table.Cell className="noPadCell" textAlign="center">
@@ -376,17 +394,19 @@ const XenoList = (props, context) => {
                   className="actionButton"
                   align="center"
                   justify="space-around"
-                  inline>
+                  inline
+                >
                   <Flex.Item>
                     <Button
-                      content="Watch"
                       color="xeno"
                       onClick={() =>
                         act('overwatch', {
                           target_ref: entry.ref,
                         })
                       }
-                    />
+                    >
+                      Watch
+                    </Button>
                   </Flex.Item>
                   {!!is_in_ovi && <QueenOviButtons target_ref={entry.ref} />}
                 </Flex>
@@ -399,7 +419,7 @@ const XenoList = (props, context) => {
   );
 };
 
-const StatusIcon = (props, context) => {
+const StatusIcon = (props) => {
   const { entry } = props;
   const { is_ssd, is_leader, is_queen } = entry;
 
@@ -414,8 +434,8 @@ const StatusIcon = (props, context) => {
   }
 };
 
-const XenoCollapsible = (props, context) => {
-  const { data } = useBackend(context);
+const XenoCollapsible = (props) => {
+  const { data } = useBackend();
   const { title, children } = props;
   const { hive_color } = data;
 
@@ -424,40 +444,43 @@ const XenoCollapsible = (props, context) => {
       title={title}
       backgroundColor={!!hive_color && hive_color}
       color={!hive_color && 'xeno'}
-      open>
+      open
+    >
       {children}
     </Collapsible>
   );
 };
 
-const QueenOviButtons = (props, context) => {
-  const { act, data } = useBackend(context);
+const QueenOviButtons = (props) => {
+  const { act, data } = useBackend();
   const { target_ref } = props;
 
   return (
-    <Fragment>
+    <>
       <Flex.Item>
         <Button
-          content="Heal"
           color="green"
           onClick={() =>
             act('heal', {
               target_ref: target_ref,
             })
           }
-        />
+        >
+          Heal
+        </Button>
       </Flex.Item>
       <Flex.Item>
         <Button
-          content="Give Plasma"
           color="blue"
           onClick={() =>
             act('give_plasma', {
               target_ref: target_ref,
             })
           }
-        />
+        >
+          Give Plasma
+        </Button>
       </Flex.Item>
-    </Fragment>
+    </>
   );
 };

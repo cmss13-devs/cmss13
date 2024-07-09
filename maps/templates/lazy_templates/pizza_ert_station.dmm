@@ -1,0 +1,6916 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/obj/structure/machinery/door_control{
+	id = "kitchen_pizza_time";
+	name = "Main Kitchen Shutters";
+	pixel_x = 28
+	},
+/obj/structure/safe/floor,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c10,
+/obj/item/spacecash/c10,
+/obj/item/spacecash/c10,
+/obj/item/spacecash/c10,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c50,
+/obj/item/spacecash/c50,
+/obj/item/spacecash/c50,
+/obj/item/spacecash/c50,
+/obj/item/spacecash/c50,
+/obj/item/spacecash/c500,
+/obj/item/spacecash/c500,
+/obj/item/spacecash/c500,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ah" = (
+/obj/structure/prop/invuln{
+	desc = "An inflated membrane. This one is puncture proof. Wow!";
+	icon = 'icons/obj/items/inflatable.dmi';
+	icon_state = "wall";
+	name = "Docking Umbilical"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer_hull,
+/area/adminlevel/ert_station/pizza_station)
+"am" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/pizza{
+	dir = 4;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/cherry{
+	pixel_x = -8;
+	layer = 2.97
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/cherry{
+	anchored = 1;
+	layer = 2.97
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/cherry{
+	pixel_x = 8;
+	layer = 2.97
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/cherry{
+	layer = 4.1;
+	pixel_x = -4;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/cherry{
+	layer = 4.1;
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/cherry{
+	layer = 4.2;
+	pixel_y = 36
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"an" = (
+/obj/structure/bed/chair/bolted{
+	dir = 1;
+	pixel_y = 12;
+	buckling_y = 12
+	},
+/turf/open/floor/prison,
+/area/adminlevel/ert_station/pizza_station)
+"ap" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/pipes/vents/scrubber{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"aq" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"aA" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/microwave{
+	pixel_y = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"aD" = (
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 32
+	},
+/obj/structure/sign/safety/manualopenclose{
+	pixel_y = 14;
+	pixel_x = 32
+	},
+/turf/open/floor/plating/prison,
+/area/adminlevel/ert_station/pizza_station)
+"aJ" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 1;
+	pixel_y = 9;
+	pixel_x = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"aP" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_y = 9
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 9
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"aS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out"
+	},
+/obj/structure/sign/safety/debark_lounge{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/landingzone{
+	pixel_y = -32;
+	pixel_x = 15
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"bd" = (
+/obj/structure/prop/invuln{
+	desc = "An inflated membrane. This one is puncture proof. Wow!";
+	icon = 'icons/obj/items/inflatable.dmi';
+	icon_state = "wall";
+	name = "Docking Umbilical"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer_hull,
+/area/adminlevel/ert_station/pizza_station)
+"bl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"bo" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"bB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"bT" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/recharger,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"bU" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Central Fridge";
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"cq" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 4
+	},
+/area/adminlevel/ert_station/pizza_station)
+"cr" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/trash/plate{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/item/trash/plate{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 4
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"cE" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/trash/ceramic_plate{
+	pixel_y = 4;
+	pixel_x = -2
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"cI" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"cK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"cL" = (
+/obj/structure/bed/chair/bolted{
+	dir = 8;
+	pixel_x = -7;
+	buckling_x = -7
+	},
+/turf/open/floor/prison,
+/area/adminlevel/ert_station/pizza_station)
+"cO" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/pizza{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 6
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"cP" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/trash/ceramic_plate{
+	pixel_y = 5
+	},
+/obj/item/trash/ceramic_plate{
+	pixel_y = 8
+	},
+/obj/item/trash/ceramic_plate{
+	pixel_y = 11
+	},
+/obj/item/trash/ceramic_plate{
+	pixel_y = 14
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"dc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 4
+	},
+/area/adminlevel/ert_station/pizza_station)
+"dh" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry{
+	pixel_y = 20;
+	layer = 3.03;
+	pixel_x = 4
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"dS" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Freezer"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ec" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/snacks/birthdaycakeslice,
+/obj/item/reagent_container/food/drinks/cans/dr_gibb{
+	pixel_x = -8;
+	pixel_y = -6
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ef" = (
+/obj/structure/surface/rack,
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"eh" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/snacks/omelette{
+	pixel_y = 2;
+	pixel_x = 1
+	},
+/obj/item/reagent_container/food/condiment/coldsauce{
+	pixel_y = 22;
+	pixel_x = -10
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_y = 2;
+	pixel_x = -8
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 13;
+	pixel_x = 5
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ei" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer_hull,
+/area/adminlevel/ert_station/pizza_station)
+"eo" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/item/reagent_container/food/condiment/coldsauce,
+/obj/item/reagent_container/food/condiment/coldsauce,
+/obj/structure/machinery/light/small/blue{
+	dir = 1;
+	pixel_y = 20;
+	pixel_x = 16
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"eD" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_x = -11;
+	pixel_y = -1
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"eI" = (
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/space/basic,
+/area/space)
+"eK" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_y = 9;
+	pixel_x = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 6
+	},
+/area/adminlevel/ert_station/pizza_station)
+"eQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"eW" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_11"
+	},
+/area/space)
+"fb" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/space,
+/area/space)
+"fg" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"fj" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"fu" = (
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/pizza_station)
+"fE" = (
+/obj/structure/bed/sofa/south/grey/right,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "yellowcorner"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"fH" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/space,
+/area/space)
+"fN" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/drinks/cans/souto/peach{
+	pixel_y = 14;
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/diet/lime{
+	pixel_y = 9
+	},
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"fO" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space)
+"gb" = (
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"gu" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/item/storage/box/drinkingglasses{
+	layer = 2.97;
+	pixel_x = 12
+	},
+/obj/item/reagent_container/food/drinks/shaker{
+	pixel_x = -11;
+	layer = 2.97;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/drinks/bottle/rum{
+	pixel_y = 2;
+	pixel_x = -2;
+	layer = 2.97
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"gy" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"gU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"gV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	pixel_x = 16;
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_y = 32
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ha" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/turf/open/space,
+/area/space)
+"hb" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 1;
+	pixel_y = 12
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"hc" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"hg" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellowcorner"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"hv" = (
+/obj/structure/closet/crate/freezer/cooler,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"hL" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"hR" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 4;
+	pixel_x = 7;
+	buckling_x = 7
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 6
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"hX" = (
+/obj/structure/bed/chair/bolted{
+	pixel_y = -1;
+	buckling_y = -1
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ic" = (
+/obj/item/trash/plate{
+	pixel_y = 4
+	},
+/obj/item/trash/plate{
+	pixel_y = 6
+	},
+/obj/item/trash/plate{
+	pixel_y = 8
+	},
+/obj/item/trash/plate{
+	pixel_y = 10
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_y = 14;
+	pixel_x = 11
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_y = 9;
+	pixel_x = 12
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"im" = (
+/obj/structure/bed/chair/janicart,
+/turf/open/floor/prison,
+/area/adminlevel/ert_station/pizza_station)
+"ir" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 4
+	},
+/area/adminlevel/ert_station/pizza_station)
+"iw" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/snacks/tofukabob,
+/obj/item/reagent_container/food/snacks/tofukabob{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/snacks/tofukabob{
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 6
+	},
+/area/adminlevel/ert_station/pizza_station)
+"iY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/obj/structure/sign/safety/debark_lounge{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/landingzone{
+	pixel_y = 32;
+	pixel_x = 15
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ja" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space,
+/area/space)
+"jb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 5
+	},
+/area/adminlevel/ert_station/pizza_station)
+"jf" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/item/trash/ceramic_plate{
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/snacks/toastedsandwich{
+	pixel_y = 11
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Kitchen Shutters";
+	id = "kitchen_pizza_time"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"jo" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"jq" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 12
+	},
+/obj/structure/mirror{
+	pixel_x = 29
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"jx" = (
+/obj/structure/bed/chair/bolted{
+	dir = 4;
+	pixel_x = 7;
+	pixel_y = -6;
+	buckling_x = 7;
+	buckling_y = -6
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"jy" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 6
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 9
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 12
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Kitchen Shutters";
+	id = "kitchen_pizza_time"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"jH" = (
+/turf/open/mars{
+	icon_state = "mars_cave_10"
+	},
+/area/space)
+"jT" = (
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"jV" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"kz" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Kitchen"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"kW" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 1;
+	pixel_y = 9
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"la" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor/almayer{
+	unacidable = 1
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	locked = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"lg" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"lv" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass/cola{
+	pixel_y = 8;
+	pixel_x = -2
+	},
+/obj/item/reagent_container/food/drinks/shaker{
+	pixel_y = 5;
+	pixel_x = -11
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"lw" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/condiment/coldsauce{
+	pixel_y = 22;
+	pixel_x = -10
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_x = 4;
+	pixel_y = 11
+	},
+/obj/item/ashtray/glass{
+	pixel_x = -6
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_y = 8
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"lx" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space/basic,
+/area/space)
+"ly" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/drinks/cans/souto/grape{
+	pixel_y = 16;
+	pixel_x = 9
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/lime{
+	pixel_y = 12;
+	pixel_x = 5
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"lB" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/pizza{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/item/storage/briefcase/stowaway{
+	pixel_y = 11;
+	layer = 4.11
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 6
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"lE" = (
+/obj/structure/machinery/vending/dinnerware,
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"lH" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "pizza_takeaway_out"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"lJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"lL" = (
+/turf/open/floor/almayer_hull,
+/area/adminlevel/ert_station/pizza_station)
+"lN" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ma" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/storage/donut_box{
+	pixel_y = 10;
+	pixel_x = 1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"me" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_8"
+	},
+/area/space)
+"mj" = (
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_x = 16;
+	pixel_y = 20
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"mk" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 4;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/pizza{
+	dir = 4;
+	pixel_y = 16
+	},
+/obj/structure/machinery/vending/snack{
+	layer = 4.15;
+	pixel_y = 3
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"mt" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 4;
+	pixel_x = 7;
+	buckling_x = 7
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 6
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"mP" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/sign/safety/fridge{
+	pixel_x = 32
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"nf" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan5"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"nl" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"np" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/pizzabox{
+	pixel_y = 5
+	},
+/obj/item/pizzabox{
+	pixel_y = 8
+	},
+/obj/item/pizzabox{
+	pixel_y = 11
+	},
+/obj/item/pizzabox{
+	pixel_y = 14
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ny" = (
+/obj/structure/closet/secure_closet/fridge/fish/stock,
+/obj/structure/machinery/light/small/blue{
+	pixel_x = 16
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"nA" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/item/reagent_container/food/drinks/cans/tonic{
+	pixel_x = -15;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/cans/tonic{
+	pixel_y = 6;
+	pixel_x = -15
+	},
+/obj/structure/machinery/computer/emails{
+	dir = 1;
+	pixel_y = 2;
+	pixel_x = 3;
+	layer = 2.97
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"nB" = (
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"nK" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/kitchen/tray,
+/obj/item/tool/kitchen/knife{
+	pixel_x = 3
+	},
+/obj/item/tool/kitchen/knife/butcher{
+	pixel_x = -8
+	},
+/obj/structure/machinery/firealarm{
+	pixel_x = -24
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"nU" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 1;
+	pixel_y = 9
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"nX" = (
+/obj/structure/bed/chair/bolted{
+	dir = 8;
+	pixel_x = -7;
+	buckling_x = -7
+	},
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"oh" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/supply,
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ok" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"oo" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ov" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"oy" = (
+/obj/structure/bedsheetbin{
+	icon_state = "linenbin-empty";
+	name = "solar lattice";
+	pixel_y = 6
+	},
+/turf/open/floor/almayer_hull,
+/area/space)
+"oD" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/maint{
+	locked = 1;
+	name = "STAFF ONLY";
+	req_one_access = null;
+	req_one_access_txt = "101"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"oG" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/prison,
+/area/adminlevel/ert_station/pizza_station)
+"oU" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 4
+	},
+/area/adminlevel/ert_station/pizza_station)
+"oX" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space/basic,
+/area/space)
+"pA" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_y = 18;
+	density = 0
+	},
+/obj/structure/machinery/alarm{
+	pixel_x = -32
+	},
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"pD" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_10"
+	},
+/area/space)
+"pE" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 12
+	},
+/obj/structure/mirror{
+	pixel_x = 29
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"pS" = (
+/obj/structure/bed/chair/bolted{
+	dir = 8;
+	pixel_x = -7;
+	buckling_x = -7
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"pT" = (
+/obj/structure/closet/crate/freezer/rations,
+/obj/item/reagent_container/food/snacks/meat/fish/crab,
+/obj/item/reagent_container/food/snacks/meat/fish/crab,
+/obj/item/reagent_container/food/snacks/meat/fish/squid,
+/obj/item/reagent_container/food/snacks/meat/fish/squid,
+/obj/item/reagent_container/food/snacks/meat/fish/squid,
+/obj/item/reagent_container/food/snacks/meat/fish/squid/alt,
+/obj/item/reagent_container/food/snacks/meat/fish/squid/alt,
+/obj/item/reagent_container/food/snacks/meat/fish/squid/alt,
+/obj/item/reagent_container/food/snacks/meat/fish,
+/obj/item/reagent_container/food/snacks/meat/fish,
+/obj/item/reagent_container/food/snacks/meat/fish,
+/obj/item/reagent_container/food/snacks/meat/fish,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"qb" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 1;
+	pixel_y = 9;
+	pixel_x = 2
+	},
+/obj/structure/pipes/vents/scrubber{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"qh" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_rightengine"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"qo" = (
+/obj/structure/closet{
+	pixel_y = 16;
+	density = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_x = 16;
+	pixel_y = 20
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"qq" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space)
+"qs" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/drinks/cans/souto/diet/classic{
+	pixel_x = -2
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"qt" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_6"
+	},
+/area/space)
+"qv" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/book/manual/chef_recipes,
+/obj/item/clothing/head/chefhat,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"qy" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/juicer{
+	pixel_y = 9
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"qA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"qU" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 4;
+	pixel_x = 7;
+	buckling_x = 7
+	},
+/obj/structure/machinery/alarm{
+	pixel_y = 25
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"qX" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
+"rj" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/trash/ceramic_plate{
+	pixel_y = 1;
+	pixel_x = 2
+	},
+/obj/item/reagent_container/food/snacks/meatpizzaslice{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = 9;
+	pixel_y = 14
+	},
+/obj/structure/machinery/light{
+	pixel_x = 16;
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"rk" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"rA" = (
+/obj/structure/bed/chair/bolted{
+	dir = 1;
+	pixel_y = 12;
+	buckling_y = 12
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"rK" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison,
+/area/adminlevel/ert_station/pizza_station)
+"rL" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor/almayer{
+	name = "\improper Umbillical Airlock";
+	unacidable = 1
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	locked = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"rO" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"sa" = (
+/obj/structure/pipes/vents/scrubber,
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"se" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom";
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"sk" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"sl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"sp" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/weapon/pizza_cutter,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"sx" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/adminlevel/ert_station/pizza_station)
+"sB" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_7"
+	},
+/area/space)
+"sI" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/tool/kitchen/tray{
+	pixel_y = 13;
+	pixel_x = 16
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 13;
+	pixel_x = 15
+	},
+/obj/item/trash/plate{
+	pixel_y = 3;
+	pixel_x = 1
+	},
+/obj/item/reagent_container/food/snacks/meatpizzaslice{
+	pixel_y = 3;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"sJ" = (
+/obj/structure/machinery/vending/ingredients,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"sW" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor/almayer{
+	name = "\improper Umbillical Airlock";
+	unacidable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"sY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"td" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/structure/pipes/vents/scrubber{
+	dir = 8
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"tp" = (
+/obj/structure/bed/chair/bolted{
+	dir = 4;
+	pixel_y = 17;
+	pixel_x = 10;
+	buckling_y = 17;
+	buckling_x = 10
+	},
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"tq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ty" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"tC" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 13;
+	pixel_y = 12
+	},
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = 7;
+	pixel_y = 17
+	},
+/obj/item/trash/plate{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/cheeseburger{
+	pixel_x = -1;
+	pixel_y = 9
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"tH" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	name = "\improper Umbillical Airlock";
+	id = "pizza_ert_arrival"
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Galaxy Pizza!"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"tM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"tT" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/space,
+/area/space)
+"tX" = (
+/obj/structure/machinery/disposal{
+	layer = 2.97
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ub" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "pizza_takeaway_out"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ug" = (
+/obj/structure/pipes/vents/scrubber,
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/adminlevel/ert_station/pizza_station)
+"uj" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/space,
+/area/space)
+"uo" = (
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/pizza_station)
+"uz" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_y = 9
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 6
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"uD" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/processor{
+	pixel_y = 10
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"uK" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	layer = 3.01
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	layer = 3.01
+	},
+/turf/open/space,
+/area/space)
+"uN" = (
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"uY" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/cups,
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_y = 4;
+	pixel_x = 11
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_y = 4;
+	pixel_x = 19
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Kitchen Shutters";
+	id = "kitchen_pizza_time"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"vi" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "redcorner";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"vq" = (
+/obj/structure/toilet{
+	pixel_y = 16
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"vr" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/adminlevel/ert_station/pizza_station)
+"vA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	pixel_x = 16;
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/adminlevel/ert_station/pizza_station)
+"vI" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/storage/backpack/marine/satchel{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag3";
+	name = "trash bag";
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/obj/item/storage/backpack/marine/satchel{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag3";
+	name = "trash bag";
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/obj/item/weapon/broken_bottle{
+	pixel_y = 7;
+	pixel_x = -12
+	},
+/turf/open/floor/prison,
+/area/adminlevel/ert_station/pizza_station)
+"vR" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/barricade/handrail/kutjevo{
+	layer = 3.01
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"vX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"wa" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"wb" = (
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/space,
+/area/space)
+"wi" = (
+/obj/structure/closet/secure_closet/fridge/meat/stock,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 9
+	},
+/area/adminlevel/ert_station/pizza_station)
+"wm" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/snacks/tomatomeat,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"wo" = (
+/obj/structure/bed/chair/bolted{
+	dir = 8;
+	pixel_x = -7;
+	buckling_x = -7
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "yellowcorner"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"wq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/adminlevel/ert_station/pizza_station)
+"wu" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/trash/ceramic_plate{
+	pixel_y = 4;
+	pixel_x = -2
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = 13;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/snacks/carrotcakeslice{
+	pixel_y = 6;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"wz" = (
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"wD" = (
+/obj/structure/platform_decoration/kutjevo,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"wP" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/pizza{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 6
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"wQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"wX" = (
+/obj/structure/closet/crate/freezer/cooler/oj,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"xc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"xe" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
+"xh" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = -10;
+	pixel_y = 12
+	},
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = -15;
+	pixel_y = 17
+	},
+/obj/item/trash/ceramic_plate{
+	pixel_y = 5;
+	pixel_x = 2
+	},
+/obj/item/reagent_container/food/snacks/applecakeslice{
+	pixel_y = 8;
+	pixel_x = 3
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"xl" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/tool/kitchen/tray{
+	pixel_y = 20
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 20
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"xp" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/disposalpipe/trunk,
+/obj/structure/barricade/handrail/kutjevo{
+	layer = 3.01
+	},
+/turf/open/space,
+/area/space)
+"xy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"xV" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "blue_plate"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"xX" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/trash/plate{
+	pixel_y = 3;
+	pixel_x = 1
+	},
+/obj/item/reagent_container/food/snacks/mushroompizzaslice{
+	pixel_y = 4
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"yg" = (
+/obj/structure/platform_decoration/kutjevo,
+/turf/open/space/basic,
+/area/space)
+"yo" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/prison{
+	icon_state = "greenbluecorner";
+	dir = 4
+	},
+/area/adminlevel/ert_station/pizza_station)
+"yr" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 10
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ys" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 4;
+	pixel_y = -3
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 8;
+	pixel_x = -7;
+	buckling_x = -7
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 9
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"yE" = (
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/trash/ceramic_plate{
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/snacks/toastedsandwich{
+	pixel_y = 17;
+	pixel_x = -1
+	},
+/obj/item/reagent_container/food/snacks/toastedsandwich{
+	pixel_y = 15;
+	pixel_x = 2
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"yG" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "blue_plate"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"yK" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 8
+	},
+/area/adminlevel/ert_station/pizza_station)
+"yM" = (
+/obj/structure/sign/safety/fridge{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/fridge{
+	pixel_x = 32
+	},
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"yP" = (
+/obj/structure/surface/rack,
+/obj/item/reagent_container/food/snacks/bigbiteburger{
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/snacks/bigbiteburger{
+	pixel_x = 3
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 10
+	},
+/area/adminlevel/ert_station/pizza_station)
+"zf" = (
+/obj/structure/sign/safety/galley{
+	pixel_x = -17
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"zh" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/adminlevel/ert_station/pizza_station)
+"zj" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = -4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"zl" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+	pixel_y = 28;
+	pixel_x = 16
+	},
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = 7;
+	pixel_y = 17
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 13;
+	pixel_y = 12
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_y = 4;
+	pixel_x = -3
+	},
+/obj/item/tool/kitchen/utensil/knife{
+	pixel_y = 4;
+	pixel_x = 3
+	},
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"zx" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/item/trash/ceramic_plate{
+	pixel_y = 2
+	},
+/obj/item/trash/ceramic_plate{
+	pixel_y = 4
+	},
+/obj/item/trash/ceramic_plate{
+	pixel_y = 6
+	},
+/obj/item/trash/ceramic_plate{
+	pixel_y = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"zz" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 4;
+	pixel_y = -3
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 8;
+	pixel_x = -7;
+	buckling_x = -7
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 9
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"zC" = (
+/obj/structure/bed/chair/bolted{
+	dir = 4;
+	pixel_x = 7;
+	buckling_x = 7
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"zE" = (
+/obj/structure/machinery/door_control/airlock{
+	id = "pizza_takeaway";
+	name = "Airlock - Inside";
+	pixel_x = 28;
+	pixel_y = 8
+	},
+/obj/structure/machinery/door_control/airlock{
+	id = "pizza_takeaway_out";
+	name = "Airlock - Out";
+	pixel_x = 28;
+	pixel_y = 18
+	},
+/turf/open/floor/plating/prison,
+/area/adminlevel/ert_station/pizza_station)
+"zM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "redcorner";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"zQ" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 4
+	},
+/area/adminlevel/ert_station/pizza_station)
+"zW" = (
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 4
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ab" = (
+/obj/structure/machinery/gibber{
+	pixel_y = 10
+	},
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ac" = (
+/obj/structure/closet/secure_closet/fridge/dry,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/sign/safety/galley{
+	pixel_x = -24
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Aj" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
+	},
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ao" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	pixel_x = 16;
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Au" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ax" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/condiment/hotsauce/franks{
+	pixel_y = -3;
+	pixel_x = 16
+	},
+/obj/item/ashtray/glass{
+	pixel_x = -4;
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/cigarette,
+/obj/item/clothing/mask/cigarette{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"AB" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"AD" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Central Fridge"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"AH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"AV" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"AW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/obj/structure/sign/safety/debark_lounge{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/landingzone{
+	pixel_y = -32;
+	pixel_x = 15
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Bu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"By" = (
+/obj/structure/machinery/suit_storage_unit/standard_unit{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/structure/sign/safety/suit_storage{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Bz" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/trash/plate{
+	pixel_y = 2
+	},
+/obj/item/trash/plate{
+	pixel_y = 4
+	},
+/obj/item/trash/plate{
+	pixel_y = 6
+	},
+/obj/item/trash/plate{
+	pixel_y = 8
+	},
+/obj/item/trash/plate{
+	pixel_y = 10
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"BC" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/pizzabox{
+	pixel_y = 5
+	},
+/obj/item/pizzabox{
+	pixel_y = 8
+	},
+/obj/item/pizzabox{
+	pixel_y = 11
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"BJ" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"BU" = (
+/obj/structure/bed/chair/bolted{
+	dir = 1;
+	pixel_y = 12;
+	buckling_y = 12
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ck" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/machinery/light/small{
+	pixel_x = 16
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"Cp" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = -6;
+	pixel_y = 14
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Cv" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/obj/item/reagent_container/food/condiment/enzyme,
+/obj/item/reagent_container/food/condiment/enzyme,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco,
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha,
+/obj/item/reagent_container/food/condiment/hotsauce/franks,
+/obj/item/reagent_container/food/condiment/hotsauce/cholula,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"CO" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"CP" = (
+/turf/open/floor/almayer_hull,
+/area/space)
+"CT" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/chem_dispenser/soda{
+	density = 0;
+	pixel_y = 30
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Db" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 4;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/pizza{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 9
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Dd" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 4
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Dx" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/snacks/sliceable/bread{
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/snacks/sliceable/bread{
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/snacks/sliceable/bread,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"DF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/chem_dispenser/soda/beer{
+	density = 0;
+	pixel_y = 31
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"DH" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/barricade/handrail/kutjevo{
+	layer = 3.01
+	},
+/turf/open/space/basic,
+/area/space)
+"DW" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ee" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	layer = 3.01
+	},
+/turf/open/space/basic,
+/area/space)
+"Eh" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_y = 9
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 6
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ei" = (
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/pizza_station)
+"Ep" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	name = "\improper Umbillical Airlock";
+	id = "pizza_ert_arrival"
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"EH" = (
+/obj/structure/machinery/vending/cigarette{
+	pixel_y = 18;
+	layer = 3.01;
+	density = 0
+	},
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"EK" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "pizza_takeaway"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"EO" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	name = "\improper Umbillical Airlock";
+	id = "pizza_ert_arrival"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"EZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Fd" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ff" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/trash/plate{
+	pixel_y = 10;
+	pixel_x = 1
+	},
+/obj/item/trash/plate{
+	pixel_y = -1
+	},
+/obj/item/reagent_container/food/snacks/hotdog{
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/condiment/coldsauce{
+	pixel_y = 11;
+	pixel_x = -7
+	},
+/obj/item/reagent_container/food/snacks/grilledcheese{
+	pixel_y = 6;
+	pixel_x = -1
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 2;
+	pixel_x = 8
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Fj" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/snacks/ricepudding,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Fp" = (
+/obj/structure/closet/crate/freezer,
+/obj/structure/machinery/light/blue,
+/obj/item/reagent_container/food/snacks/packaged_burrito,
+/obj/item/reagent_container/food/snacks/packaged_burrito,
+/obj/item/reagent_container/food/snacks/packaged_burrito,
+/obj/item/reagent_container/food/snacks/packaged_hdogs,
+/obj/item/reagent_container/food/snacks/packaged_hdogs,
+/obj/item/reagent_container/food/snacks/packaged_hdogs,
+/obj/item/reagent_container/food/snacks/packaged_burger,
+/obj/item/reagent_container/food/snacks/packaged_burger,
+/obj/item/reagent_container/food/snacks/packaged_burger,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Fz" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/kitchen/tray{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"FB" = (
+/obj/structure/machinery/light{
+	pixel_x = 16
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"FD" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "pizza_takeaway"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"FL" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1";
+	opacity = 0
+	},
+/area/adminlevel/ert_station/pizza_station)
+"FS" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"FY" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/pizza{
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/item/reagent_container/food/drinks/cans/cola{
+	pixel_y = 6;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/drinks/cans/cola{
+	pixel_y = 4;
+	pixel_x = -3
+	},
+/obj/item/reagent_container/food/drinks/cans/iced_tea{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/cans/iced_tea{
+	pixel_x = 11;
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Gd" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_y = 9
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 9
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Gh" = (
+/obj/structure/machinery/disposal{
+	layer = 2.97
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/structure/sign/poster{
+	desc = "Eat an EAT bar! ...Aren't they called MEAT bars?";
+	icon_state = "poster7";
+	name = "EAT - poster";
+	pixel_y = 30
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Gj" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Gm" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Gn" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space)
+"Gp" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/snacks/mushroomsoup{
+	pixel_y = 6
+	},
+/obj/item/tool/kitchen/utensil/spoon{
+	pixel_y = 4;
+	pixel_x = 7
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Gt" = (
+/obj/structure/machinery/atm{
+	pixel_y = 32;
+	pixel_x = 2
+	},
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"GB" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = 30
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"GM" = (
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/space/basic,
+/area/space)
+"Ha" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_leftengine"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Hd" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Hg" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/space,
+/area/space)
+"HL" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_y = 4;
+	pixel_x = 5
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_y = 2
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"HQ" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/trash/plate{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/bigbiteburger{
+	pixel_y = 10;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ib" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Iq" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/obj/item/trash/ceramic_plate{
+	pixel_y = 1
+	},
+/obj/item/reagent_container/food/snacks/meatpizzaslice{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ID" = (
+/turf/closed/wall/rock/red,
+/area/space)
+"IJ" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Jd" = (
+/obj/structure/closet{
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"Jl" = (
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Jm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/prison,
+/area/adminlevel/ert_station/pizza_station)
+"Jq" = (
+/obj/structure/closet/secure_closet/fridge/organic/stock,
+/turf/open/floor/prison{
+	icon_state = "greenblue"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"JP" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/kitchen/knife/butcher,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"JR" = (
+/obj/structure/bed/sofa/vert/grey/bot,
+/turf/open/floor/prison,
+/area/adminlevel/ert_station/pizza_station)
+"JU" = (
+/obj/structure/janitorialcart{
+	pixel_y = 15
+	},
+/obj/item/tool/wet_sign{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/item/tool/wet_sign{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 9
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"JV" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/bed/chair/bolted{
+	pixel_y = -1;
+	buckling_y = -1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Kb" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/pizza{
+	dir = 4;
+	pixel_y = -3
+	},
+/obj/item/corncob,
+/obj/item/corncob{
+	pixel_y = 7
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Kc" = (
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/door_control/airlock{
+	id = "pizza_takeaway_out";
+	name = "Airlock - Out";
+	pixel_x = 2;
+	pixel_y = 18
+	},
+/obj/structure/sign/safety/manualopenclose{
+	pixel_y = -3;
+	pixel_x = 7
+	},
+/turf/open/floor/almayer_hull,
+/area/adminlevel/ert_station/pizza_station)
+"Kd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Kv" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/sink/kitchen{
+	pixel_y = 12
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"KB" = (
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/washing_machine{
+	pixel_y = 10
+	},
+/obj/structure/sign/safety/water{
+	pixel_x = -17
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"KC" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 6
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"KY" = (
+/turf/open/floor/prison{
+	icon_state = "blue_plate"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"La" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/franks/macho{
+	pixel_y = 11;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/franks{
+	pixel_y = 11;
+	pixel_x = 6
+	},
+/obj/item/reagent_container/food/condiment/coldsauce{
+	pixel_y = 11
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+	pixel_y = 6
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Lk" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ln" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer{
+	icon_state = "security_det";
+	name = "Shuttle control deck";
+	pixel_y = 6
+	},
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_x = -11;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/prison,
+/area/adminlevel/ert_station/pizza_station)
+"Ly" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/pizza{
+	dir = 1;
+	pixel_y = 12
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"LH" = (
+/obj/structure/bed/chair/bolted{
+	dir = 1;
+	pixel_y = 12;
+	buckling_y = 12
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_y = 9
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Mj" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_x = -11;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/prison,
+/area/adminlevel/ert_station/pizza_station)
+"Mk" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_y = 12
+	},
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Mt" = (
+/obj/structure/bed/sofa/south/grey/left,
+/obj/item/storage/briefcase/stowaway,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Mz" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/space,
+/area/space)
+"MB" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/pizzabox/meat,
+/obj/item/weapon/pizza_cutter,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"MK" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/pizza{
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_y = 7;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/drinks/bottle/vermouth{
+	pixel_y = 5;
+	pixel_x = -2
+	},
+/obj/item/reagent_container/food/drinks/bottle/whiskey{
+	pixel_x = -4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"MS" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/machinery/light/small{
+	pixel_x = 16
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"MT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"MX" = (
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 9
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Nb" = (
+/obj/item/reagent_container/food/condiment/hotsauce/franks/macho{
+	pixel_y = 18;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/franks{
+	pixel_y = 18;
+	pixel_x = 6
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+	pixel_y = 16
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/condiment/coldsauce{
+	pixel_y = 13;
+	pixel_x = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Nl" = (
+/turf/open/floor/prison,
+/area/adminlevel/ert_station/pizza_station)
+"No" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison,
+/area/adminlevel/ert_station/pizza_station)
+"Nr" = (
+/obj/structure/machinery/vending/cola{
+	pixel_y = 12
+	},
+/obj/structure/sign/safety/coffee{
+	pixel_y = 32;
+	pixel_x = -13
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ny" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"NG" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"NH" = (
+/obj/structure/bed/sofa/vert/grey/top,
+/turf/open/floor/prison,
+/area/adminlevel/ert_station/pizza_station)
+"NJ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan20"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"NN" = (
+/obj/structure/closet/secure_closet/fridge/groceries/stock,
+/obj/structure/machinery/light/small/blue{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 9
+	},
+/area/adminlevel/ert_station/pizza_station)
+"NP" = (
+/obj/structure/sink/kitchen{
+	pixel_x = 11;
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/sign/safety/water{
+	pixel_x = 38
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"NT" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/turf/open/space,
+/area/space)
+"NV" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Showers & Bathroom";
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Og" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
+	pixel_y = -2;
+	pixel_x = -16
+	},
+/obj/item/trash/plate{
+	pixel_y = 8;
+	pixel_x = 3
+	},
+/obj/item/reagent_container/food/snacks/meatpizzaslice{
+	pixel_y = 8;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Oh" = (
+/obj/structure/prop/souto_land/streamer{
+	pixel_y = 9;
+	pixel_x = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"OE" = (
+/obj/structure/prop/souto_land/streamer{
+	pixel_y = 9;
+	pixel_x = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"OG" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/lattice,
+/turf/open/space,
+/area/space)
+"OJ" = (
+/turf/open/floor{
+	desc = "A sophisticated device that captures and converts light from the system's star into energy for the station.";
+	icon_state = "solarpanel";
+	name = "solarpanel"
+	},
+/area/space)
+"OK" = (
+/obj/structure/machinery/vending/cigarette{
+	pixel_y = 3;
+	layer = 4.15
+	},
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"OQ" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/barricade/handrail/pizza{
+	dir = 8;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_27";
+	pixel_y = 13;
+	pixel_x = -2;
+	layer = 4.11
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"OS" = (
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 4
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Pa" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Pi" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Pl" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 15;
+	layer = 4.11
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = -8;
+	pixel_y = 2;
+	layer = 4.12
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Pn" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/clothing/suit/chef/classic,
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/suit/chef/classic,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Pq" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"Ps" = (
+/obj/item/reagent_container/glass/bucket/janibucket{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/tool/mop{
+	pixel_x = -2;
+	pixel_y = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Py" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space,
+/area/space)
+"PF" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
+"PH" = (
+/obj/structure/surface/table/reinforced/cloth,
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"PL" = (
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer_hull,
+/area/adminlevel/ert_station/pizza_station)
+"Qe" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"QN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ra" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/trash/plate{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/snacks/vegetablepizzaslice{
+	pixel_y = 10;
+	pixel_x = -2
+	},
+/obj/item/reagent_container/food/drinks/cans/boda{
+	pixel_y = 16;
+	pixel_x = -11;
+	layer = 3.03
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Rf" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Rh" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/pizza_station)
+"RC" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/turf/open/space/basic,
+/area/space)
+"RG" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/space/basic,
+/area/space)
+"RN" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 1;
+	pixel_y = 12;
+	layer = 4.11
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"RP" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"RV" = (
+/obj/item/clothing/suit/chef/classic,
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/head/chefhat,
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Se" = (
+/obj/structure/bed/chair/bolted{
+	dir = 1;
+	pixel_y = 12;
+	buckling_y = 12
+	},
+/obj/structure/prop/souto_land/streamer{
+	pixel_y = 9
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Sg" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space,
+/area/space)
+"So" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Sp" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Sq" = (
+/obj/structure/kitchenspike,
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_y = -5
+	},
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison{
+	icon_state = "greenblue"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Sr" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_y = 1;
+	pixel_x = 5
+	},
+/obj/item/tool/kitchen/utensil/knife{
+	pixel_y = 3;
+	pixel_x = 9
+	},
+/obj/item/reagent_container/food/snacks/meatsteak{
+	pixel_y = 5;
+	pixel_x = 1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Sz" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"SL" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 28;
+	pixel_x = 3
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/diet/lime{
+	pixel_y = 15;
+	pixel_x = -8
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ST" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/sign/poster/ad{
+	icon_state = "poster41";
+	pixel_y = 32
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"SV" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Showers"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Te" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+	pixel_y = 28;
+	pixel_x = 16
+	},
+/obj/item/tool/kitchen/utensil/pknife{
+	pixel_x = 13;
+	pixel_y = 1
+	},
+/obj/item/tool/kitchen/utensil/pfork{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/chocolatecakeslice{
+	pixel_y = 2;
+	pixel_x = 2
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 13;
+	pixel_x = 5
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Tu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"TC" = (
+/turf/open/floor/prison{
+	icon_state = "yellowcorner"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"TD" = (
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"TE" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_3"
+	},
+/area/space)
+"TH" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/obj/item/storage/box/drinkingglasses{
+	layer = 2.97;
+	pixel_x = 14
+	},
+/obj/item/reagent_container/food/drinks/bottle/orangejuice{
+	layer = 2.97
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"TK" = (
+/turf/closed/shuttle/ert,
+/area/adminlevel/ert_station/pizza_station)
+"TQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1
+	},
+/obj/structure/pipes/standard/manifold/fourway/hidden/supply,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"TY" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Uu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/antag{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ux" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/bed/chair/bolted{
+	pixel_y = -1;
+	buckling_y = -1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"UB" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Vj" = (
+/obj/structure/closet/secure_closet/fridge/dry/stock,
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 5
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Vm" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/kitchen/tray{
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
+	pixel_y = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "greenbluecorner"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Vs" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/machinery/light{
+	pixel_x = 16;
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Vt" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan25"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Vv" = (
+/obj/docking_port/stationary/emergency_response/idle_port4,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/pizza_station)
+"Vx" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"VD" = (
+/obj/structure/barricade/handrail/pizza{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_x = -3;
+	pixel_y = 15;
+	layer = 4.03
+	},
+/obj/structure/surface/table/almayer{
+	layer = 4.02
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"VK" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"VN" = (
+/obj/structure/bed/chair/bolted{
+	dir = 8;
+	pixel_x = -7;
+	buckling_x = -7
+	},
+/obj/structure/sign/poster{
+	desc = "One of those hot, tanned babes back the beaches of good ol' Earth.";
+	icon_state = "poster12";
+	name = "Beach Babe Pinup";
+	pixel_x = 6;
+	pixel_y = 30;
+	serial_number = 12
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"VQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"VS" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/donut_box{
+	pixel_y = -8
+	},
+/turf/open/floor/prison,
+/area/adminlevel/ert_station/pizza_station)
+"VX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Wb" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	name = "\improper Umbillical Airlock";
+	id = "pizza_ert_arrival"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"WL" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/pizza_station)
+"WP" = (
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"WS" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating/prison,
+/area/adminlevel/ert_station/pizza_station)
+"WZ" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Kitchen and Cleaning"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Xa" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/structure/sign/safety/debark_lounge{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/landingzone{
+	pixel_y = 32;
+	pixel_x = 15
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Xg" = (
+/obj/structure/prop/souto_land/streamer{
+	pixel_y = 9;
+	pixel_x = 1
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Xj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/obj/structure/closet/crate/trashcart,
+/obj/item/storage/bag/trash,
+/obj/item/storage/bag/trash{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Xn" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/turf/open/space,
+/area/space)
+"Xq" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/light/small/blue{
+	pixel_x = 16
+	},
+/obj/item/reagent_container/food/snacks/bigbiteburger{
+	pixel_x = -2
+	},
+/obj/item/reagent_container/food/snacks/bigbiteburger{
+	pixel_x = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Xr" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Xw" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space)
+"Xx" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/snacks/sliceable/flatdough,
+/obj/item/tool/kitchen/rollingpin,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"XB" = (
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/pizza_station)
+"XD" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 5
+	},
+/area/adminlevel/ert_station/pizza_station)
+"XV" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 4;
+	pixel_y = 9
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"XZ" = (
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ya" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "STAFF ONLY"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Yf" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/condiment/hotsauce/franks/macho{
+	pixel_y = 18;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/franks{
+	pixel_y = 18;
+	pixel_x = 6
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+	pixel_y = 16
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_y = 1;
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_y = 3;
+	pixel_x = 6
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Yj" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/tool/kitchen/utensil/pknife{
+	pixel_x = -6
+	},
+/obj/item/tool/kitchen/utensil/pfork{
+	pixel_y = 3;
+	pixel_x = -3
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/blue{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = -2;
+	pixel_x = 16
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Ym" = (
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = -16
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/prison,
+/area/adminlevel/ert_station/pizza_station)
+"Yo" = (
+/turf/open/space,
+/area/space)
+"Yu" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"Yv" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Yw" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan27"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"Yy" = (
+/turf/open/space/basic,
+/area/space)
+"YD" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/kitchen/tray{
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 6
+	},
+/area/adminlevel/ert_station/pizza_station)
+"YF" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"YL" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	name = "\improper Umbillical Airlock";
+	id = "pizza_ert_arrival"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Galaxy Pizza!"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"YM" = (
+/obj/structure/prop/invuln{
+	desc = "An inflated membrane. This one is puncture proof. Wow!";
+	icon = 'icons/obj/items/inflatable.dmi';
+	icon_state = "wall";
+	name = "Docking Umbilical"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer_hull,
+/area/adminlevel/ert_station/pizza_station)
+"YO" = (
+/turf/closed/wall/almayer,
+/area/adminlevel/ert_station/pizza_station)
+"ZD" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	name = "\improper Umbillical Airlock";
+	id = "pizza_ert_arrival"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ZM" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/obj/item/reagent_container/food/condiment/enzyme,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco,
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha,
+/obj/item/reagent_container/food/condiment/hotsauce/franks,
+/obj/item/reagent_container/food/condiment/hotsauce/cholula,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 1
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ZR" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/adminlevel/ert_station/pizza_station)
+"ZV" = (
+/obj/structure/bed/sofa/vert/grey,
+/turf/open/floor/prison,
+/area/adminlevel/ert_station/pizza_station)
+"ZX" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/sign/poster/ad{
+	icon_state = "poster12";
+	pixel_y = 32
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 6
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 9
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 12
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/adminlevel/ert_station/pizza_station)
+
+(1,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(2,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yo
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yo
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(3,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+yg
+qq
+qq
+qX
+yg
+uj
+qq
+qq
+NT
+yg
+qq
+qq
+qX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(4,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+yg
+RG
+OJ
+OJ
+Sg
+eI
+OJ
+OJ
+OJ
+Sg
+wb
+OJ
+OJ
+Py
+NT
+Yy
+Yy
+Yy
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(5,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+Yy
+yg
+Xw
+OJ
+OJ
+OJ
+tT
+Xw
+OJ
+OJ
+OJ
+Gn
+Xw
+OJ
+OJ
+OJ
+OG
+Vx
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(6,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+eI
+OJ
+OJ
+OJ
+oy
+CP
+CP
+OJ
+OJ
+OJ
+CP
+CP
+oy
+OJ
+OJ
+tT
+rk
+Vx
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(7,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+Vx
+Pq
+OJ
+OJ
+oy
+CP
+fH
+fb
+OJ
+oy
+OJ
+ja
+Mz
+CP
+oy
+OJ
+OJ
+oX
+Yy
+Yy
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(8,1,1) = {"
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+Vx
+Yy
+RC
+PF
+xe
+CP
+lx
+Xn
+ID
+ID
+ID
+ID
+ID
+ha
+xe
+CP
+OJ
+OJ
+oX
+Yy
+Yy
+Vx
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(9,1,1) = {"
+Yy
+Yy
+Yy
+ID
+ID
+ID
+Yy
+Vx
+Yy
+Yy
+Yy
+eI
+CP
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+eI
+CP
+fH
+Hg
+fO
+Yy
+Vx
+Vx
+Yy
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(10,1,1) = {"
+Yy
+Yy
+Yy
+ID
+ID
+Vx
+Vx
+Vx
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+Ei
+Ei
+WL
+WL
+WL
+uo
+Ei
+Ei
+Vx
+Vx
+Vx
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(11,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+ID
+Yy
+Yy
+Vx
+yg
+qq
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+Ei
+Ei
+hX
+Ff
+rA
+uN
+Pl
+TY
+Ei
+Ei
+Vx
+Yy
+Yy
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(12,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Vx
+Yy
+Yy
+wD
+Yu
+jH
+ID
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Gh
+Ly
+Sp
+uN
+Sp
+RN
+jx
+FS
+Ei
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(13,1,1) = {"
+Yy
+Yy
+Yy
+Vx
+Vx
+Yy
+yg
+Yu
+jH
+pD
+Ei
+Ei
+nK
+RV
+Xx
+ef
+wm
+qy
+YO
+YO
+vA
+ug
+Au
+vr
+yr
+uN
+wu
+ly
+Rh
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(14,1,1) = {"
+Yy
+Yy
+Yy
+Vx
+wD
+qq
+Xw
+jH
+TE
+TE
+Ei
+Ac
+nB
+nB
+nB
+nB
+nB
+nB
+eD
+YO
+dc
+zQ
+oU
+vi
+Gm
+uN
+ec
+xh
+Rh
+Yy
+Yy
+Yy
+Yy
+Ei
+uo
+uo
+uo
+Ei
+uo
+uo
+uo
+Ei
+Yy
+Yy
+Yy
+"}
+(15,1,1) = {"
+Yy
+Yy
+Yy
+yg
+Yu
+pD
+pD
+TE
+pD
+qt
+Rh
+qv
+nB
+ZR
+MB
+cr
+Pn
+nB
+nB
+jy
+tq
+MK
+FY
+wz
+Gm
+hb
+pS
+pS
+Rh
+Yy
+Yy
+Yy
+Ei
+Ei
+Mt
+nl
+SL
+BU
+fj
+nl
+sk
+Ei
+Ei
+Yy
+Yy
+"}
+(16,1,1) = {"
+Yy
+Yy
+Yy
+eI
+pD
+TE
+pD
+sB
+TE
+TE
+Rh
+Dx
+nB
+jo
+np
+JP
+aA
+Lk
+nB
+uY
+tq
+WP
+TH
+wz
+uz
+cO
+KC
+mt
+Rh
+Yy
+Yy
+Ei
+Ei
+pA
+fE
+VS
+rK
+an
+Nl
+cL
+wo
+VK
+Ei
+Ei
+Yy
+"}
+(17,1,1) = {"
+Yy
+Yy
+Yy
+eI
+sB
+TE
+TE
+sB
+TE
+pD
+Rh
+Yf
+UB
+AB
+Pa
+NP
+Pa
+ov
+nB
+jf
+tq
+WP
+La
+wz
+nU
+uN
+Ax
+tC
+Rh
+Yy
+Yy
+Ei
+Ei
+Xa
+Jm
+Jm
+Jm
+Jm
+Jm
+Jm
+Jm
+aS
+Ei
+Ei
+Yy
+"}
+(18,1,1) = {"
+Yy
+Yy
+Yy
+eI
+NJ
+TK
+TK
+Ha
+lg
+sB
+Ei
+sJ
+jo
+nB
+ae
+YO
+uD
+Ab
+bT
+YO
+Ao
+WP
+lv
+wz
+OE
+uN
+HQ
+fN
+Ei
+Yy
+Yy
+Yy
+uo
+AH
+Vv
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+uo
+Yy
+Yy
+"}
+(19,1,1) = {"
+Yy
+Yy
+Yy
+eI
+Yw
+Ln
+Mj
+WS
+TE
+eW
+Ei
+YO
+Rf
+kz
+YO
+YO
+YO
+YO
+YO
+YO
+Uu
+WP
+nA
+sa
+aP
+Db
+zz
+ys
+Ei
+ah
+bd
+YM
+Ei
+cK
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+lJ
+Ei
+GM
+Yy
+"}
+(20,1,1) = {"
+Yy
+Yy
+Yy
+eI
+Vt
+nf
+nf
+qh
+FL
+TE
+uo
+Ps
+fg
+WP
+zf
+WZ
+TD
+Fd
+lN
+Ya
+bB
+WP
+lE
+wz
+Gm
+Jl
+Jl
+Jl
+tH
+IJ
+Jl
+Jl
+Ep
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+la
+Yy
+Yy
+"}
+(21,1,1) = {"
+Yy
+Yy
+Yy
+eI
+sB
+sB
+TE
+eW
+TE
+pD
+uo
+JU
+Tu
+CO
+CO
+NG
+mP
+ok
+Sz
+BJ
+vX
+WP
+yE
+wz
+hc
+ir
+ir
+ir
+Wb
+zQ
+ir
+Dd
+EO
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+sW
+Yy
+Yy
+"}
+(22,1,1) = {"
+Yy
+Yy
+Yy
+eI
+sB
+sB
+eW
+TE
+TE
+ID
+Ei
+cP
+tq
+WP
+Bz
+YO
+YO
+AD
+YO
+YO
+gV
+WP
+zx
+DW
+Eh
+lB
+mt
+hR
+Ei
+ah
+bd
+YM
+Ei
+cK
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+lJ
+Ei
+GM
+Yy
+"}
+(23,1,1) = {"
+Yy
+Yy
+Yy
+eI
+me
+TE
+TE
+pD
+ID
+ID
+Ei
+Kv
+EZ
+Qe
+BC
+YO
+wi
+yK
+yP
+YO
+VQ
+WP
+ic
+wz
+nU
+hb
+Iq
+xl
+Ei
+Yy
+Yy
+Yy
+uo
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+uo
+Yy
+Yy
+"}
+(24,1,1) = {"
+Yy
+Yy
+Yy
+RC
+xe
+me
+me
+ID
+ID
+ID
+Ei
+ZX
+tq
+WP
+Fz
+YO
+eo
+yG
+Xq
+YO
+CT
+WP
+HL
+wz
+XV
+uN
+pS
+tp
+Ei
+Yy
+Yy
+Yy
+uo
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+uo
+Yy
+Yy
+"}
+(25,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+RC
+uK
+PL
+Ei
+Ei
+Ei
+Ei
+Xj
+Xr
+WP
+sp
+YO
+ZM
+KY
+Sq
+YO
+DF
+WP
+gu
+wz
+OE
+hb
+qs
+dh
+Ei
+Yy
+Yy
+Yy
+uo
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+uo
+Yy
+Yy
+"}
+(26,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+xp
+ei
+ub
+oG
+Ym
+FD
+vI
+wa
+FB
+YO
+YO
+Cv
+KY
+Jq
+YO
+ST
+Kb
+am
+wz
+Gd
+Db
+zz
+ys
+Ei
+ah
+bd
+YM
+Ei
+cK
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+lJ
+Ei
+GM
+Yy
+"}
+(27,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+DH
+lL
+lH
+zE
+aD
+EK
+im
+sY
+fg
+YO
+NN
+yo
+KY
+ny
+YO
+Vs
+sx
+sx
+wq
+oh
+zh
+zh
+zh
+YL
+vr
+zh
+Ib
+Ep
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+rL
+Yy
+Yy
+"}
+(28,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+vR
+Kc
+Ei
+Ei
+Ei
+Ei
+By
+sl
+aq
+bU
+hL
+xV
+Vm
+iw
+YO
+OS
+OS
+OS
+zM
+Gm
+OS
+OS
+OS
+ZD
+cq
+OS
+OS
+EO
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+sW
+Yy
+Yy
+"}
+(29,1,1) = {"
+Yy
+Yy
+Vx
+Yy
+Yy
+YF
+Ee
+fO
+ID
+ID
+Ei
+Ei
+qA
+yM
+YO
+Vj
+zW
+YD
+YO
+YO
+Nr
+Mk
+OK
+wQ
+uz
+wP
+KC
+hR
+Ei
+ah
+bd
+YM
+Ei
+cK
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+lJ
+Ei
+GM
+Yy
+"}
+(30,1,1) = {"
+Yy
+Vx
+Vx
+Vx
+Vx
+Vx
+Yy
+Yy
+Yy
+ID
+ID
+Ei
+dS
+YO
+YO
+YO
+oD
+YO
+YO
+qU
+jV
+Gj
+mk
+wQ
+aJ
+hb
+PH
+zl
+Ei
+Yy
+Yy
+Yy
+uo
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+uo
+Yy
+Yy
+"}
+(31,1,1) = {"
+Yy
+Yy
+ID
+Yy
+Yy
+Vx
+Vx
+Vx
+Vx
+Vx
+Ei
+Ei
+bl
+pT
+YO
+mj
+ty
+MS
+YO
+rj
+ma
+uN
+MX
+Pi
+Xg
+hb
+Cp
+lw
+Rh
+Yy
+Yy
+Ei
+Ei
+iY
+No
+No
+No
+No
+No
+No
+No
+AW
+Ei
+Ei
+Yy
+"}
+(32,1,1) = {"
+Yy
+ID
+ID
+ID
+ID
+Vx
+Yy
+Yy
+Yy
+Yy
+Rh
+Fj
+td
+Fp
+YO
+XB
+MT
+bo
+YO
+Sr
+Ra
+uN
+jb
+xc
+qb
+uN
+pS
+pS
+Rh
+Yy
+Yy
+Ei
+Ei
+EH
+hg
+Nl
+NH
+ZV
+JR
+Nl
+TC
+rO
+Ei
+Ei
+Yy
+"}
+(33,1,1) = {"
+Yy
+ID
+ID
+ID
+ID
+Vx
+Yy
+Yy
+Yy
+Yy
+Rh
+wX
+tM
+hv
+YO
+YO
+SV
+YO
+YO
+VN
+pS
+XZ
+jT
+So
+Oh
+uN
+zC
+zC
+Rh
+Yy
+Yy
+Yy
+Ei
+Ei
+Gt
+Hd
+Hd
+GB
+Hd
+Hd
+oo
+Ei
+Ei
+Yy
+Yy
+"}
+(34,1,1) = {"
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Ei
+YO
+YO
+YO
+YO
+KB
+VX
+zj
+YO
+Aj
+RP
+gy
+gb
+XD
+eK
+hb
+Yj
+sI
+Rh
+Yy
+Yy
+Yy
+Yy
+Ei
+uo
+uo
+uo
+Ei
+uo
+uo
+uo
+Ei
+Yy
+Yy
+Yy
+"}
+(35,1,1) = {"
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+Vx
+Yy
+Yy
+Rh
+vq
+QN
+Yv
+se
+Bu
+TQ
+Bu
+NV
+AV
+cI
+OQ
+jV
+uN
+kW
+RN
+Og
+xX
+Rh
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(36,1,1) = {"
+Yy
+Yy
+Yy
+ID
+ID
+ID
+Vx
+Vx
+Vx
+Vx
+Rh
+vq
+ap
+Kd
+YO
+qo
+eQ
+Ck
+YO
+YO
+tX
+JV
+Gp
+Te
+Se
+hb
+pS
+nX
+Ei
+Yy
+Yy
+Vx
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(37,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Vx
+ID
+Ei
+Ei
+jq
+pE
+YO
+Jd
+xy
+Ny
+YO
+YO
+YO
+Ux
+cE
+eh
+LH
+VD
+Nb
+Ei
+Ei
+Vx
+Vx
+Vx
+Vx
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(38,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+Ei
+Ei
+Ei
+Ei
+WL
+WL
+WL
+Ei
+ID
+Ei
+Ei
+WL
+WL
+WL
+uo
+Ei
+Ei
+Vx
+Yy
+Yy
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(39,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Vx
+Vx
+Vx
+Yy
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(40,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+Vx
+Yy
+Yy
+Yy
+Vx
+Vx
+Yy
+Vx
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(41,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Vx
+Vx
+Vx
+Yy
+Yy
+Vx
+Yy
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(42,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Vx
+Vx
+Vx
+ID
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(43,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Vx
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(44,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(45,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}

@@ -1,10 +1,18 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
+
 import { useBackend } from '../backend';
-import { Section, Button, LabeledList, Box, Stack, NoticeBox } from '../components';
+import {
+  Box,
+  Button,
+  LabeledList,
+  NoticeBox,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
-export const BotanyExtractor = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const BotanyExtractor = () => {
+  const { act, data } = useBackend();
 
   const { disk, seed, geneMasks, degradation, hasGenetics, sourceName } = data;
 
@@ -19,37 +27,40 @@ export const BotanyExtractor = (_props, context) => {
               <Button
                 fluid
                 icon="eject"
-                content={disk ? 'Eject ' + disk : 'Eject disk'}
                 disabled={!disk}
                 onClick={() => act('eject_disk')}
-              />
+              >
+                {disk ? 'Eject ' + disk : 'Eject disk'}
+              </Button>
             </Stack.Item>
             <Stack.Item>
               <Button
                 fluid
                 icon="eject"
-                content={seed ? 'Eject ' + seed : 'Eject seed packet'}
                 disabled={!seed}
                 onClick={() => act('eject_packet')}
-              />
+              >
+                {seed ? 'Eject ' + seed : 'Eject seed packet'}
+              </Button>
             </Stack.Item>
             {!!seed && (
               <Stack.Item>
                 <Button.Confirm
                   fluid
                   icon="industry"
-                  content={'Process ' + seed + "'s genome"}
                   confirmContent="Are you sure? This will destroy the seeds."
                   disabled={!seed}
                   onClick={() => act('scan_genome')}
-                />
+                >
+                  {'Process ' + seed + "'s genome"}
+                </Button.Confirm>
               </Stack.Item>
             )}
           </Stack>
         </Section>
         <Section title="Buffered Genetic Data">
           {(!!hasGenetics && (
-            <Fragment>
+            <>
               {!disk && (
                 <NoticeBox danger>
                   No disk! Genetic data cannot be extracted.
@@ -69,11 +80,12 @@ export const BotanyExtractor = (_props, context) => {
                   return (
                     <LabeledList.Item label={entry.mask} key={entry}>
                       <Button
-                        content="Extract gene"
                         icon="download"
                         disabled={!disk || degraded}
                         onClick={() => act('get_gene', { gene: entry.tag })}
-                      />
+                      >
+                        Extract gene
+                      </Button>
                     </LabeledList.Item>
                   );
                 })}
@@ -82,11 +94,12 @@ export const BotanyExtractor = (_props, context) => {
               <Button.Confirm
                 fluid
                 icon="snowplow"
-                content="Clear buffer"
                 disabled={!hasGenetics}
                 onClick={() => act('clear_buffer')}
-              />
-            </Fragment>
+              >
+                Clear buffer
+              </Button.Confirm>
+            </>
           )) || <NoticeBox danger>No genetic data stored!</NoticeBox>}
         </Section>
       </Window.Content>

@@ -240,7 +240,7 @@
 
 /datum/equipment_preset/fun/santa
 	name = "Fun - Santa"
-	paygrade = PAY_SHORT_CIV
+	paygrade = PAY_SHORT_CDNM
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything
 	faction = FACTION_MARINE
@@ -289,6 +289,7 @@
 /datum/equipment_preset/upp/ivan
 	name = "Fun - Ivan"
 	flags = EQUIPMENT_PRESET_EXTRA
+	paygrade = PAY_SHORT_UE6
 	skills = /datum/skills/everything
 	assignment = "UPP Armsmaster"
 	rank = "UPP Armsmaster"
@@ -299,7 +300,7 @@
 	new_human.change_real_name(new_human, "Ivan")
 	new_human.f_style = "Shaved"
 	new_human.h_style = "Shaved Head"
-	new_human.ethnicity = "Scandinavian"
+	new_human.skin_color = "pale3"
 	new_human.r_hair = 165
 	new_human.g_hair = 42
 	new_human.b_hair = 42
@@ -362,7 +363,7 @@
 	new_human.b_facial = 51
 	new_human.h_style = "Mullet"
 	new_human.f_style = "Full English"
-	new_human.ethnicity = "Anglo"
+	new_human.skin_color = "pale2"
 	new_human.r_eyes = 102 //Brown eyes.
 	new_human.g_eyes = 51
 	new_human.b_eyes = 0

@@ -56,8 +56,8 @@
 	//biomass credits rewards
 	if(istype(B, /obj/item/research_upgrades/credits))
 		var/obj/item/research_upgrades/credits/cred = B
-		GLOB.chemical_data.update_credits(2)
-		visible_message(SPAN_NOTICE("[user] inserts [cred.name] in [src], collecting 2 points from sales."))
+		GLOB.chemical_data.update_credits(cred.credit_value)
+		visible_message(SPAN_NOTICE("[user] inserts [cred] in [src], collecting [cred.credit_value] points from sales."))
 		qdel(cred)
 	//Clearance Updating
 	if(!istype(B, /obj/item/card/id))
@@ -184,7 +184,6 @@
 					visible_message(SPAN_NOTICE("Clearance access increased to level [GLOB.chemical_data.clearance_level] for [cost] credits."))
 					msg_admin_niche("[key_name(user)] traded research credits to upgrade the clearance to level [GLOB.chemical_data.clearance_level].")
 					if(max_clearance < GLOB.chemical_data.clearance_level)
-						GLOB.chemical_data.update_income(1) //Bonus income and a paper for buying clearance instead of swiping it up
 						switch(GLOB.chemical_data.clearance_level)
 							if(2)
 								new /obj/item/paper/research_notes/unique/tier_two/(photocopier.loc)

@@ -36,7 +36,7 @@
 				XQ.dismount_ovipositor(TRUE)
 
 			if(GLOB.hive_datum[hivenumber].stored_larva)
-				GLOB.hive_datum[hivenumber].stored_larva = round(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
+				GLOB.hive_datum[hivenumber].stored_larva = floor(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
 
 				var/list/players_with_xeno_pref = get_alien_candidates(GLOB.hive_datum[hivenumber])
 				if(players_with_xeno_pref && istype(GLOB.hive_datum[hivenumber].hive_location, /obj/effect/alien/resin/special/pylon/core))
@@ -84,7 +84,8 @@
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)
 		var/area/A = get_area(src)
 		if(hive && hive.living_xeno_queen)
-			xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize_area(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", death_fontsize, hivenumber)
+			if(!HAS_TRAIT(src, TRAIT_TEMPORARILY_MUTED))
+				xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize_area(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", death_fontsize, hivenumber)
 
 	if(hive && IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)

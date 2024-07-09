@@ -23,7 +23,7 @@
 
 	That's it. There are some special rules, though, namely:
 
-		* If the explosion occured in a wall, the wave is strengthened
+		* If the explosion occurred in a wall, the wave is strengthened
 		with power *= reflection_multiplier and reflected back in the
 		direction it came from
 
@@ -281,6 +281,9 @@ as having entered the turf.
 	// something went wrong :(
 	if(QDELETED(E))
 		return
+
+	if(power >= 150) //shockwave for anything over 150 power
+		new /obj/effect/shockwave(epicenter, power/60)
 
 	E.power = power
 	E.power_falloff = falloff

@@ -73,7 +73,7 @@
 	icon_state = icon_name
 
 /obj/item/device/m2c_gun/proc/check_can_setup(mob/user, turf/rotate_check, turf/open/OT, list/ACR)
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return FALSE
 	if(broken_gun)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
@@ -131,23 +131,24 @@
 	if(!check_can_setup(user, rotate_check, OT, ACR))
 		return
 
-	var/obj/structure/machinery/m56d_hmg/auto/M =  new /obj/structure/machinery/m56d_hmg/auto(user.loc)
-	transfer_label_component(M)
-	M.setDir(user.dir) // Make sure we face the right direction
-	M.anchored = TRUE
-	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
-	to_chat(user, SPAN_NOTICE("You deploy [M]."))
-	M.rounds = rounds
-	M.overheat_value = overheat_value
-	M.health = health
-	M.update_icon()
+	var/obj/structure/machinery/m56d_hmg/auto/HMG = new(user.loc)
+	transfer_label_component(HMG)
+	HMG.setDir(user.dir) // Make sure we face the right direction
+	HMG.anchored = TRUE
+	playsound(HMG, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
+	to_chat(user, SPAN_NOTICE("You deploy [HMG]."))
+	HMG.rounds = rounds
+	HMG.overheat_value = overheat_value
+	HMG.health = health
+	HMG.update_damage_state()
+	HMG.update_icon()
 	qdel(src)
 
-	if(M.rounds > 0)
-		M.try_mount_gun(user)
+	if(HMG.rounds > 0)
+		HMG.try_mount_gun(user)
 
 /obj/item/device/m2c_gun/attackby(obj/item/O as obj, mob/user as mob)
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(!iswelder(O) || user.action_busy)
@@ -313,12 +314,13 @@
 	if(health <= 0)
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		visible_message(SPAN_WARNING("[src] has broken down completely!"))
-		var/obj/item/device/m2c_gun/HMG = new(src.loc)
+		var/obj/item/device/m2c_gun/HMG = new(loc)
 		HMG.rounds = rounds
 		HMG.broken_gun = TRUE
 		HMG.unacidable = FALSE
 		HMG.health = 0
 		HMG.update_icon()
+		transfer_label_component(HMG)
 		qdel(src)
 		return
 
@@ -328,7 +330,7 @@
 	update_icon()
 
 /obj/structure/machinery/m56d_hmg/auto/attackby(obj/item/O as obj, mob/user as mob)
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 	// RELOADING
 	if(istype(O, /obj/item/ammo_magazine/m2c))
@@ -367,7 +369,7 @@
 				return
 			user.visible_message(SPAN_NOTICE("[user] repairs some of the damage on [src]."), \
 					SPAN_NOTICE("You repair [src]."))
-			update_health(-round(health_max*0.2))
+			update_health(-floor(health_max*0.2))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		else
 			to_chat(user, SPAN_WARNING("You need more fuel in [WT] to repair damage to [src]."))
@@ -420,7 +422,7 @@
 /obj/structure/machinery/m56d_hmg/auto/proc/force_cooldown(mob/user)
 	user = operator
 
-	overheat_value = round((rand(M2C_LOW_COOLDOWN_ROLL, M2C_HIGH_COOLDOWN_ROLL) * overheat_threshold))
+	overheat_value = floor((rand(M2C_LOW_COOLDOWN_ROLL, M2C_HIGH_COOLDOWN_ROLL) * overheat_threshold))
 	playsound(src.loc, 'sound/weapons/hmg_cooling.ogg', 75, 1)
 	to_chat(user, SPAN_NOTICE("[src]'s barrel has cooled down enough to restart firing."))
 	emergency_cooling = FALSE
@@ -454,13 +456,12 @@
 // DISASSEMBLY
 
 /obj/structure/machinery/m56d_hmg/auto/MouseDrop(over_object, src_location, over_location)
-	if(!ishuman(usr))
-		return
-	var/mob/living/carbon/human/user = usr
+	var/mob/living/carbon/user = usr
 	// If the user is unconscious or dead.
 	if(user.stat)
 		return
-
+	if(!ishuman(user)  && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		return
 	if(over_object == user && in_range(src, user))
 		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))
 			playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
@@ -475,10 +476,10 @@
 				return
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),SPAN_NOTICE("You fold up the tripod for [src], disassembling it."))
 			playsound(src.loc, 'sound/items/m56dauto_setup.ogg', 75, 1)
-			var/obj/item/device/m2c_gun/HMG = new(src.loc)
+			var/obj/item/device/m2c_gun/HMG = new(loc)
 			transfer_label_component(HMG)
-			HMG.rounds = src.rounds
-			HMG.overheat_value = round(0.5 * src.overheat_value)
+			HMG.rounds = rounds
+			HMG.overheat_value = floor(0.5 * overheat_value)
 			if (HMG.overheat_value <= 10)
 				HMG.overheat_value = 0
 			HMG.update_icon()

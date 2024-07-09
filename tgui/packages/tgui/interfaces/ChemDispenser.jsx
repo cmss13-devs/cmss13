@@ -1,10 +1,19 @@
 import { toFixed } from 'common/math';
+
 import { useBackend } from '../backend';
-import { AnimatedNumber, Box, Button, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
+import {
+  AnimatedNumber,
+  Box,
+  Button,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
 
-export const ChemDispenser = (props, context) => {
-  const { act, data } = useBackend(context);
+export const ChemDispenser = (props) => {
+  const { act, data } = useBackend();
   const beakerTransferAmounts = data.beakerTransferAmounts || [];
   const beakerContents = data.beakerContents || [];
   return (
@@ -26,14 +35,16 @@ export const ChemDispenser = (props, context) => {
               key={amount}
               icon="plus"
               selected={amount === data.amount}
-              content={amount}
               onClick={() =>
                 act('amount', {
                   target: amount,
                 })
               }
-            />
-          ))}>
+            >
+              {amount}
+            </Button>
+          ))}
+        >
           <Box mr={-1}>
             {data.chemicals.map((chemical) => (
               <Button
@@ -41,13 +52,14 @@ export const ChemDispenser = (props, context) => {
                 icon="arrow-alt-circle-down"
                 width="129.5px"
                 lineHeight={1.75}
-                content={chemical.title}
                 onClick={() =>
                   act('dispense', {
                     reagent: chemical.id,
                   })
                 }
-              />
+              >
+                {chemical.title}
+              </Button>
             ))}
           </Box>
         </Section>
@@ -57,10 +69,12 @@ export const ChemDispenser = (props, context) => {
             <Button
               key={amount}
               icon="minus"
-              content={amount}
               onClick={() => act('remove', { amount })}
-            />
-          ))}>
+            >
+              {amount}
+            </Button>
+          ))}
+        >
           <LabeledList>
             <LabeledList.Item
               label="Beaker"
@@ -68,12 +82,14 @@ export const ChemDispenser = (props, context) => {
                 !!data.isBeakerLoaded && (
                   <Button
                     icon="eject"
-                    content="Eject"
                     disabled={!data.isBeakerLoaded}
                     onClick={() => act('eject')}
-                  />
+                  >
+                    Eject
+                  </Button>
                 )
-              }>
+              }
+            >
               {(data.isBeakerLoaded && (
                 <>
                   <AnimatedNumber

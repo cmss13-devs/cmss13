@@ -1,6 +1,6 @@
 /datum/equipment_preset/survivor/engineer/soro
-	name = "Survivor - Sorokyne Strata Political Prisoner"
-	assignment = "Sorokyne Strata Political Prisoner"
+	name = "Survivor - Sorokyne Strata State Contractor"
+	assignment = "Sorokyne Strata State Contractor"
 
 /datum/equipment_preset/survivor/engineer/soro/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(new_human), WEAR_BODY)

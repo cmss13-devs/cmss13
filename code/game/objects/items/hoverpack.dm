@@ -180,7 +180,7 @@
 	var/t_dist = get_dist(user, t_turf)
 	if(!(t_dist > max_distance))
 		return
-	var/list/turf/path = getline2(user, t_turf, FALSE)
+	var/list/turf/path = get_line(user, t_turf, FALSE)
 	warning.forceMove(path[max_distance])
 
 /obj/item/hoverpack/proc/can_use_hoverpack(mob/living/carbon/human/user)

@@ -87,9 +87,10 @@
 	parent_buckle = null
 
 /datum/component/weed_food/RegisterWithParent()
-	RegisterSignal(parent_mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
+	RegisterSignal(parent_mob, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(on_move))
 	RegisterSignal(parent_mob, list(COMSIG_LIVING_REJUVENATED, COMSIG_HUMAN_REVIVED), PROC_REF(on_rejuv))
 	RegisterSignal(parent_mob, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(on_update))
+	RegisterSignal(parent_mob, COMSIG_LIVING_PREIGNITION, PROC_REF(on_preignition))
 	RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(on_forsaken))
 	if(parent_turf)
 		RegisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(on_update))
@@ -97,22 +98,23 @@
 /datum/component/weed_food/UnregisterFromParent()
 	if(parent_mob)
 		UnregisterSignal(parent_mob, list(
-			COMSIG_MOVABLE_MOVED,
+			COMSIG_MOVABLE_TURF_ENTERED,
 			COMSIG_LIVING_REJUVENATED,
 			COMSIG_HUMAN_REVIVED,
 			COMSIG_HUMAN_SET_UNDEFIBBABLE,
+			COMSIG_LIVING_PREIGNITION,
 			))
 	if(absorbing_weeds)
 		UnregisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING)
 	if(parent_turf)
 		UnregisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH)
 	if(parent_buckle)
-		UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
+		UnregisterSignal(parent_buckle, COMSIG_OBJ_AFTER_BUCKLE)
 	if(parent_nest)
 		UnregisterSignal(parent_nest, COMSIG_PARENT_QDELETING)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
-/// SIGNAL_HANDLER for COMSIG_MOVABLE_MOVED
+/// SIGNAL_HANDLER for COMSIG_MOVABLE_TURF_ENTERED
 /datum/component/weed_food/proc/on_move()
 	SIGNAL_HANDLER
 
@@ -146,7 +148,7 @@
 
 	qdel(src)
 
-/// SIGNAL_HANDLER for COSMIG_OBJ_AFTER_BUCKLE
+/// SIGNAL_HANDLER for COMSIG_OBJ_AFTER_BUCKLE
 /datum/component/weed_food/proc/on_after_buckle(obj/source, mob/buckled)
 	SIGNAL_HANDLER
 
@@ -194,6 +196,13 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_FORSAKEN]
 	weed_appearance.color = hive.color
 
+/// SIGNAL_HANDLER for COMSIG_LIVING_PREIGNITION of weeds
+/datum/component/weed_food/proc/on_preignition()
+	SIGNAL_HANDLER
+
+	if(merged)
+		return COMPONENT_CANCEL_IGNITION
+
 /**
  * Try to start the process to turn into weeds
  * Returns TRUE if started successfully
@@ -211,12 +220,12 @@
 			return FALSE // Still buckled to the same thing
 		if(!istype(parent_mob.buckled, /obj/structure/bed/nest))
 			if(parent_buckle) // Still have a lingering reference somehow?
-				UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
+				UnregisterSignal(parent_buckle, COMSIG_OBJ_AFTER_BUCKLE)
 			parent_buckle = parent_mob.buckled
-			RegisterSignal(parent_mob.buckled, COSMIG_OBJ_AFTER_BUCKLE, PROC_REF(on_after_buckle))
+			RegisterSignal(parent_mob.buckled, COMSIG_OBJ_AFTER_BUCKLE, PROC_REF(on_after_buckle))
 			return FALSE
 	if(parent_buckle)
-		UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
+		UnregisterSignal(parent_buckle, COMSIG_OBJ_AFTER_BUCKLE)
 		parent_buckle = null
 
 	if(parent_mob.is_xeno_grabbable())
@@ -273,16 +282,16 @@
 			return FALSE // Still buckled to the same thing somehow?
 		if(!istype(parent_mob.buckled, /obj/structure/bed/nest))
 			if(parent_buckle) // Still have a lingering reference somehow?
-				UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
+				UnregisterSignal(parent_buckle, COMSIG_OBJ_AFTER_BUCKLE)
 			parent_buckle = parent_mob.buckled
-			RegisterSignal(parent_mob.buckled, COSMIG_OBJ_AFTER_BUCKLE, PROC_REF(on_after_buckle))
+			RegisterSignal(parent_mob.buckled, COMSIG_OBJ_AFTER_BUCKLE, PROC_REF(on_after_buckle))
 			return FALSE
 		else
 			parent_nest = parent_mob.buckled
 			RegisterSignal(parent_nest, COMSIG_PARENT_QDELETING, PROC_REF(on_nest_deletion))
 
 	if(parent_buckle)
-		UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
+		UnregisterSignal(parent_buckle, COMSIG_OBJ_AFTER_BUCKLE)
 		parent_buckle = null
 
 	if(SEND_SIGNAL(parent_mob, COMSIG_ATTEMPT_MOB_PULL) & COMPONENT_CANCEL_MOB_PULL)
@@ -304,6 +313,7 @@
 	if(!parent_nest)
 		parent_mob.plane = FLOOR_PLANE
 	parent_mob.remove_from_all_mob_huds()
+	parent_mob.ExtinguishMob()
 
 	if(!weed_appearance) // Make a new sprite if we aren't re-merging
 		var/is_flipped = parent_mob.transform.b == -1 // Technically we should check if d is 1 too, but corpses can only be rotated 90 or 270 (1/-1 or -1/1)

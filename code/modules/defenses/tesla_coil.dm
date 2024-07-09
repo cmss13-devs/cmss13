@@ -20,11 +20,11 @@
 	has_camera = FALSE
 
 	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
 	)
 
 	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_USCM,
+		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
 
@@ -125,7 +125,7 @@
 	if(!istype(M))
 		return FALSE
 
-	var/list/turf/path = getline2(src, M, include_from_atom = FALSE)
+	var/list/turf/path = get_line(src, M, include_start_atom = FALSE)
 
 	var/blocked = FALSE
 	for(var/turf/T in path)

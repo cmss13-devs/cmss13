@@ -57,8 +57,8 @@ nanoui is used to open and update nano browser uis
 	// the current status/visibility of the ui
 	var/status = STATUS_INTERACTIVE
 
-	// Only allow users with a certain user.stat to get updates. Defaults to 0 (concious)
-	var/allowed_user_stat = 0 // -1 = ignore, 0 = alive, 1 = unconcious or alive, 2 = dead concious or alive
+	// Only allow users with a certain user.stat to get updates. Defaults to 0 (conscious)
+	var/allowed_user_stat = 0 // -1 = ignore, 0 = alive, 1 = unconscious or alive, 2 = dead conscious or alive
 
 /**
 * Create a new nanoui instance.
@@ -386,7 +386,7 @@ nanoui is used to open and update nano browser uis
 		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(file)]'> "
 
 	var/template_data_json = "{}" // An empty JSON object
-	if (templates.len > 0)
+	if (length(templates) > 0)
 		template_data_json = strip_improper(json_encode(templates))
 
 	var/url_parameters_json = json_encode(list("src" = "\ref[src]"))

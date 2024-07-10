@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "VAISO Covert Operatives will now spawn with a Night Vision Optic in their helmet."

@@ -116,7 +116,8 @@
 		if(!offset_target)
 			offset_target = target // Welp the offsetting failed so...
 		crash_site.forceMove(offset_target)
-		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
+		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully engaged and destroyed.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
+		xeno_announcement(SPAN_XENOANNOUNCE("The Almayer's AA weapons are spinning up! OH NO! LOOK OUT!"), "everything", XENO_HIJACK_ANNOUNCE)
 		target_ship_section = new_target_ship_section
 		// TODO mobs not alerted
 		for(var/area/internal_area in shuttle.shuttle_areas)
@@ -126,8 +127,13 @@
 					to_chat(M, SPAN_DANGER("You feel the ship turning sharply as it adjusts its course!"))
 					shake_camera(M, 60, 2)
 			playsound_area(internal_area, 'sound/effects/antiair_explosions.ogg')
+		addtimer(CALLBACK(src, PROC_REF(aa_interception), shuttle), 5 SECONDS)
 
 	hijacked_bypass_aa = TRUE
+
+/datum/dropship_hijack/almayer/proc/aa_interception(/obj/docking_port/mobile/shuttle)
+	shuttle.intoTheSunset()
+	SSticker.mode.round_finished = MODE_INFESTATION_X_MINOR
 
 /datum/dropship_hijack/almayer/proc/check_final_approach()
 	// if our duration isn't far enough away

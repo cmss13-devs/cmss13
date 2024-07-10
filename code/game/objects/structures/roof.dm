@@ -92,6 +92,10 @@
 		for(var/obj/effect/roof_node/node in get_step(src,direction))
 			node.link_master(master)
 
+/obj/effect/roof_node/Destroy(force)
+	. = ..()
+	link_master = null
+
 
 
 /datum/roof_master_node //maintains one block of roof

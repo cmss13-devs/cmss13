@@ -25,7 +25,7 @@
 	owner = null
 	return ..()
 
-#define SMOOTHING 2 // [1, 32], 32 Means best sound most lag 1 Means worst sound least lag
+#define SMOOTHING 8 // [1, 32], 32 Means best sound most lag 1 Means worst sound least lag
 
 /datum/soundOutput/proc/update_sounds(atom/user, direction)
 	SIGNAL_HANDLER

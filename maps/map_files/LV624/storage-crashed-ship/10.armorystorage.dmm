@@ -12,7 +12,7 @@
 	pixel_x = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "d" = (
 /obj/item/tool/shovel,
@@ -47,7 +47,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "j" = (
 /turf/closed/wall,
@@ -64,7 +64,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "p" = (
 /turf/open/gm/dirt,
@@ -95,7 +95,7 @@
 "x" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/fp9000,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "y" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -106,7 +106,7 @@
 /obj/item/explosive/grenade/high_explosive/stick{
 	pixel_x = -6
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "z" = (
 /obj/structure/surface/rack,
@@ -117,7 +117,7 @@
 	pixel_y = -3
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "B" = (
 /obj/structure/closet/crate,
@@ -146,7 +146,7 @@
 /obj/item/weapon/gun/smg/mp27{
 	pixel_y = 6
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "I" = (
 /obj/structure/machinery/light{
@@ -165,7 +165,7 @@
 /obj/item/ammo_magazine/smg/mac15{
 	pixel_x = 6
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "K" = (
 /obj/effect/landmark/crap_item,
@@ -186,14 +186,14 @@
 /obj/item/weapon/gun/smg/mac15{
 	pixel_y = 6
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "Q" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond{
 	amount = 2
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "T" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
@@ -208,7 +208,7 @@
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/lmg,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "V" = (
 /obj/structure/surface/rack,
@@ -218,7 +218,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "X" = (
 /obj/effect/alien/weeds/node,
@@ -234,7 +234,7 @@
 	},
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 
 (1,1,1) = {"

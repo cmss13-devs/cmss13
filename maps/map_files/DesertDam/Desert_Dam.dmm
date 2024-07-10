@@ -1487,7 +1487,7 @@
 	name = "\improper Administration Control Room"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/administration/control_room)
 "afX" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
@@ -5134,7 +5134,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "atV" = (
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/substation/northeast)
 "atW" = (
 /obj/effect/blocker/toxic_water/Group_2,
@@ -5170,7 +5170,7 @@
 /obj/structure/machinery/power/terminal{
 	dir = 1
 	},
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/substation/northeast)
 "aub" = (
 /turf/open/floor/darkyellow2/east,
@@ -10638,7 +10638,7 @@
 /turf/open/floor/plating/warnplate/east,
 /area/desert_dam/building/substation/northwest)
 "aPF" = (
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/substation/northwest)
 "aPG" = (
 /obj/effect/blocker/toxic_water/Group_2,
@@ -11373,7 +11373,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	dir = 1
 	},
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/substation/northwest)
 "aSD" = (
 /obj/effect/blocker/toxic_water/Group_2,
@@ -12312,7 +12312,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/administration/hallway)
 "aWO" = (
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/administration/control_room)
 "aWQ" = (
 /obj/structure/machinery/power/apc{
@@ -23139,7 +23139,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bSx" = (
 /turf/open/floor/prison/darkred2/north,
@@ -23152,7 +23152,7 @@
 /area/desert_dam/building/security/armory)
 "bSz" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bSA" = (
 /turf/open/floor/prison/darkred2/northeast,
@@ -23323,11 +23323,11 @@
 /turf/open/floor/darkyellow2/west,
 /area/desert_dam/building/security/prison)
 "bTn" = (
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bTo" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bTp" = (
 /obj/structure/pipes/vents/pump{
@@ -23335,7 +23335,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bTq" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -24162,7 +24162,7 @@
 "bWM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bWN" = (
 /obj/structure/disposalpipe/segment{
@@ -24170,7 +24170,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bWO" = (
 /obj/item/reagent_container/food/drinks/flask/detflask,
@@ -24386,7 +24386,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bXF" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -24441,7 +24441,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bXP" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -24771,12 +24771,12 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bYT" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bYV" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -24790,7 +24790,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bYX" = (
 /obj/structure/machinery/conveyor{
@@ -25008,7 +25008,7 @@
 "bZG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/prisoner,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bZH" = (
 /obj/structure/machinery/light{
@@ -25022,7 +25022,7 @@
 	name = "\improper Rec Yard"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "bZJ" = (
 /turf/open/floor/prison,
@@ -25159,7 +25159,7 @@
 "cal" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "cam" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -30918,7 +30918,7 @@
 /area/desert_dam/building/medical/CMO)
 "cyt" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/desert_dam/building/mining/workshop)
 "cyv" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -34523,7 +34523,7 @@
 "cNr" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/vault/north,
+/turf/open/floor/vault2/north,
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "cNs" = (
 /obj/structure/prop/dam/gravestone,
@@ -37538,11 +37538,11 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/vault/north,
+/turf/open/floor/vault2/north,
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dcW" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
-/turf/open/floor/vault/north,
+/turf/open/floor/vault2/north,
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dcY" = (
 /turf/open/floor/prison,
@@ -37914,7 +37914,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics)
 "dey" = (
-/turf/open/floor/vault/north,
+/turf/open/floor/vault2/north,
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dez" = (
 /obj/structure/desertdam/decals/road_stop{
@@ -40222,7 +40222,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "dyW" = (
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/substation/central)
 "dyX" = (
 /obj/structure/machinery/disposal,
@@ -46352,7 +46352,7 @@
 "eTi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
 "eVk" = (
 /obj/effect/decal/warning_stripes{
@@ -47633,7 +47633,7 @@
 "jAr" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/vault/north,
+/turf/open/floor/vault2/north,
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "jAS" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -49604,7 +49604,7 @@
 /area/shuttle/trijent_shuttle/lz2)
 "rFz" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/substation/northwest)
 "rFU" = (
 /obj/effect/decal/warning_stripes{
@@ -51410,7 +51410,7 @@
 /area/desert_dam/building/mining/workshop)
 "xYc" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
-/turf/open/floor/vault/northeast,
+/turf/open/floor/vault2/northeast,
 /area/desert_dam/building/substation/central)
 "xZE" = (
 /obj/structure/desertdam/decals/road_edge{

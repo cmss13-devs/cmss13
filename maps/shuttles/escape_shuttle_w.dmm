@@ -34,6 +34,9 @@
 /obj/structure/machinery/cryopod/evacuation,
 /turf/open/shuttle/escapepod/floor4,
 /area/shuttle/escape_pod)
+"A" = (
+/turf/open/shuttle/escapepod/floor0/north,
+/area/shuttle/escape_pod)
 "B" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall10"
@@ -88,7 +91,7 @@ g
 F
 N
 O
-O
+A
 b
 "}
 (3,1,1) = {"

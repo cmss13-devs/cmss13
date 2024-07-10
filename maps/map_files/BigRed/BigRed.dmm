@@ -1279,7 +1279,7 @@
 /area/bigredv2/outside/marshal_office)
 "afl" = (
 /obj/structure/machinery/flasher/portable,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "afm" = (
 /obj/structure/closet/l3closet/security,
@@ -1287,22 +1287,22 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "afn" = (
 /obj/structure/closet/l3closet/security,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "afo" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/revolver/cmb,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "afp" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/revolver/cmb,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "afq" = (
 /obj/structure/surface/rack,
@@ -1310,7 +1310,7 @@
 	dir = 1
 	},
 /obj/item/ammo_magazine/revolver/cmb,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
@@ -1455,7 +1455,7 @@
 /area/bigredv2/outside/marshal_office)
 "afR" = (
 /obj/structure/machinery/deployable/barrier,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "afS" = (
 /turf/open/floor/dark,
@@ -1662,7 +1662,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/eastleft,
 /obj/item/weapon/shield/riot,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "agJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -2448,7 +2448,7 @@
 "ajF" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westright,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "ajG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2757,7 +2757,7 @@
 "akQ" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/southright,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "akR" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -4783,7 +4783,7 @@
 "asU" = (
 /obj/structure/closet/l3closet,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/general_offices)
 "asV" = (
 /obj/structure/sign/safety/airlock{
@@ -4793,7 +4793,7 @@
 /area/bigredv2/outside/general_offices)
 "asW" = (
 /obj/structure/closet/l3closet,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/general_offices)
 "asX" = (
 /obj/structure/surface/rack,
@@ -26104,7 +26104,7 @@
 "oDB" = (
 /obj/structure/closet/l3closet,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/general_offices)
 "oDW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -30971,7 +30971,7 @@
 /area/bigredv2/caves/mining)
 "xyu" = (
 /obj/structure/closet/l3closet/security,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "xyz" = (
 /obj/structure/girder,

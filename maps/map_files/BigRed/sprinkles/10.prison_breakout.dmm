@@ -143,32 +143,32 @@
 /area/bigredv2/outside/marshal_office)
 "aB" = (
 /obj/structure/machinery/flasher/portable,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "aC" = (
 /obj/structure/closet/l3closet/security,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "aD" = (
 /obj/structure/closet/l3closet/security,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "aE" = (
 /obj/structure/surface/rack,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "aF" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/revolver/cmb,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "aG" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/revolver/cmb,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "aH" = (
 /obj/structure/surface/rack,
@@ -176,7 +176,7 @@
 	dir = 1
 	},
 /obj/item/ammo_magazine/revolver/cmb,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "aI" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -206,7 +206,7 @@
 /area/bigredv2/outside/marshal_office)
 "aL" = (
 /obj/structure/machinery/deployable/barrier,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "aN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -258,7 +258,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/eastleft,
 /obj/item/weapon/shield/riot,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "aY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -472,7 +472,7 @@
 "bQ" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westright,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "bR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -604,7 +604,7 @@
 "cn" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/southright,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "co" = (
 /obj/structure/window_frame/solaris,

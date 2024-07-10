@@ -54,7 +54,7 @@
 	amount = 20
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "q" = (
 /obj/effect/landmark/crap_item,
@@ -86,7 +86,7 @@
 	amount = 30
 	},
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "C" = (
 /obj/structure/surface/rack,
@@ -97,12 +97,12 @@
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "D" = (
 /obj/structure/largecrate/supply,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "G" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/lmg,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "H" = (
 /obj/structure/machinery/light{
@@ -119,7 +119,7 @@
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = -3
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "M" = (
 /obj/structure/surface/rack,
@@ -145,7 +145,7 @@
 	pixel_y = 6
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "U" = (
 /obj/structure/closet/crate,

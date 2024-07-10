@@ -2912,10 +2912,10 @@
 /turf/open/floor/redcorner/north
 	dir = NORTH
 
-/turf/open/floor/vault
+/turf/open/floor/vault2
 	icon_state = "vault"
 
-/turf/open/floor/vault/north
+/turf/open/floor/vault2/north
 	dir = NORTH
 
 /turf/open/floor/warning/north
@@ -3104,7 +3104,7 @@
 /turf/open/floor/red/northeast
 	dir = NORTHEAST
 
-/turf/open/floor/vault/northeast
+/turf/open/floor/vault2/northeast
 	dir = NORTHEAST
 
 /turf/open/floor/warning/northeast
@@ -3338,7 +3338,7 @@
 /turf/open/floor/redcorner/west
 	dir = WEST
 
-/turf/open/floor/vault/west
+/turf/open/floor/vault2/west
 	dir = WEST
 
 /turf/open/floor/warning/west

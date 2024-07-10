@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/structure/surface/rack,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "f" = (
 /obj/structure/surface/rack,
@@ -31,7 +31,7 @@
 /obj/structure/surface/rack,
 /obj/item/clothing/accessory/storage/black_vest/brown_vest,
 /obj/item/clothing/accessory/storage/black_vest/brown_vest,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "C" = (
 /obj/structure/surface/rack,
@@ -46,7 +46,7 @@
 	},
 /obj/item/poster,
 /obj/item/clothing/glasses/sunglasses,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "E" = (
 /turf/open/floor/vault,
@@ -64,7 +64,7 @@
 /obj/effect/landmark/wo_supplies/storage/webbing,
 /obj/item/poster,
 /obj/item/clothing/glasses/sunglasses,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "V" = (
 /obj/structure/surface/rack,

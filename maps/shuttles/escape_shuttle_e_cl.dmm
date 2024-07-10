@@ -24,7 +24,7 @@
 	},
 /area/shuttle/escape_pod)
 "n" = (
-/turf/open/shuttle/escapepod/west,
+/turf/open/shuttle/escapepod/floor0/west,
 /area/shuttle/escape_pod)
 "s" = (
 /turf/closed/shuttle/escapepod{

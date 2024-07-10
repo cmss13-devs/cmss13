@@ -9125,12 +9125,12 @@
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 15
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aGe" = (
 /obj/structure/largecrate/random,
 /obj/effect/landmark/good_item,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aGf" = (
 /turf/closed/ice/end{
@@ -9251,15 +9251,15 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aGH" = (
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aGI" = (
 /obj/structure/closet/crate,
 /obj/item/tool/shovel/snow,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aGJ" = (
 /obj/structure/surface/table,
@@ -9361,7 +9361,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aHd" = (
 /obj/structure/machinery/door_control{
@@ -9372,7 +9372,7 @@
 	req_access_txt = "100";
 	specialfunctions = 4
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aHf" = (
 /turf/closed/ice/end{
@@ -9506,7 +9506,7 @@
 /area/ice_colony/exterior/surface/clearing/pass)
 "aHy" = (
 /obj/structure/machinery/floodlight,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aHz" = (
 /obj/structure/machinery/light{
@@ -9582,11 +9582,11 @@
 /area/ice_colony/surface/command/control/pv2)
 "aHP" = (
 /obj/item/storage/toolbox/emergency,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aHQ" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aHS" = (
 /obj/structure/ice/thin/straight,
@@ -9688,11 +9688,11 @@
 /area/ice_colony/exterior/surface/clearing/pass)
 "aIm" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aIn" = (
 /obj/structure/machinery/space_heater,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aIo" = (
 /obj/structure/ice/thin/corner,
@@ -9937,10 +9937,10 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJi" = (
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJj" = (
 /obj/structure/machinery/door_control{
@@ -9951,7 +9951,7 @@
 	req_access_txt = "100";
 	specialfunctions = 4
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJk" = (
 /obj/effect/landmark/hunter_secondary,
@@ -9967,11 +9967,11 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJp" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJq" = (
 /turf/closed/shuttle/elevator{
@@ -10030,7 +10030,7 @@
 "aJF" = (
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/crap_item,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJG" = (
 /obj/structure/tunnel{
@@ -10133,7 +10133,7 @@
 /area/ice_colony/exterior/surface/valley/southwest)
 "aKn" = (
 /obj/structure/machinery/floodlight,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aKo" = (
 /obj/structure/surface/rack,
@@ -10141,7 +10141,7 @@
 /obj/item/ammo_rcd,
 /obj/item/ammo_rcd,
 /obj/item/ammo_rcd,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aKp" = (
 /obj/structure/machinery/light/small{
@@ -10152,16 +10152,16 @@
 	icon_state = "ladderdown";
 	id = "research_storage_ladder"
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aKq" = (
 /obj/structure/surface/rack,
 /obj/item/tool/crowbar/red,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aKr" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aKs" = (
 /obj/structure/ice/thin/single,
@@ -10244,14 +10244,14 @@
 /area/ice_colony/surface/hangar/checkpoint)
 "aKQ" = (
 /obj/structure/machinery/space_heater,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aKR" = (
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aKS" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aKT" = (
 /obj/structure/ice/thin/corner{
@@ -10391,7 +10391,7 @@
 /area/ice_colony/exterior/surface/valley/southeast)
 "aLv" = (
 /obj/structure/machinery/power/port_gen/pacman,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aLw" = (
 /obj/structure/ice/thin/corner{
@@ -10458,14 +10458,14 @@
 	dir = 8
 	},
 /obj/item/tool/shovel/snow,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aLP" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aLQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -10628,7 +10628,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/hangar/checkpoint)
 "aMo" = (
 /obj/structure/disposalpipe/segment,
@@ -10783,7 +10783,7 @@
 /turf/open/floor/darkred2/west,
 /area/ice_colony/surface/hangar/checkpoint)
 "aMV" = (
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/hangar/checkpoint)
 "aMW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -10861,7 +10861,7 @@
 	pixel_y = -24;
 	start_charge = 0
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aNp" = (
 /obj/structure/machinery/door_control{
@@ -10872,13 +10872,13 @@
 	req_access_txt = "103";
 	specialfunctions = 4
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aNq" = (
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 15
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aNr" = (
 /obj/structure/ice/thin/corner{
@@ -15007,14 +15007,14 @@
 /area/ice_colony/underground/requesition)
 "bfm" = (
 /obj/structure/closet/crate,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/underground/requesition)
 "bfn" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/underground/requesition)
 "bfo" = (
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/underground/requesition)
 "bfp" = (
 /turf/open/floor/dark2,
@@ -15392,7 +15392,7 @@
 	dir = 4
 	},
 /obj/structure/closet/crate,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/underground/requesition)
 "bgZ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -15405,7 +15405,7 @@
 	dir = 4
 	},
 /obj/structure/largecrate/random,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/underground/requesition)
 "bhb" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
@@ -15610,7 +15610,7 @@
 /area/ice_colony/underground/requesition)
 "bhZ" = (
 /obj/structure/closet/crate/trashcart,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/underground/requesition)
 "bia" = (
 /obj/structure/disposalpipe/segment,
@@ -15870,13 +15870,13 @@
 /area/ice_colony/underground/requesition/sec_storage)
 "bjl" = (
 /obj/structure/closet/crate/secure,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/underground/requesition/sec_storage)
 "bjm" = (
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition/sec_storage)
 "bjn" = (
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/underground/requesition/sec_storage)
 "bjp" = (
 /obj/structure/machinery/light/small{
@@ -15923,7 +15923,7 @@
 /area/ice_colony/underground/requesition/sec_storage)
 "bjC" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/underground/requesition/sec_storage)
 "bjD" = (
 /turf/open/floor/darkbrown2/east,
@@ -27006,7 +27006,7 @@
 	id = "st_19";
 	name = "Research Storage Unit"
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "iBu" = (
 /obj/structure/surface/table/reinforced,
@@ -27029,7 +27029,7 @@
 	id = "st_17";
 	name = "Power Storage Unit"
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "iZc" = (
 /obj/structure/lz_sign/ice_sign{
@@ -27501,7 +27501,7 @@
 	id = "st_18";
 	name = "Disposals Storage Unit"
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/telecomms)
 "xkk" = (
 /obj/effect/landmark/queen_spawn,

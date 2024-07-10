@@ -1067,7 +1067,7 @@
 /turf/open/floor{dir=1;icon_state="rampbottom";} : /turf/open/floor/rampbottom/north
 /turf/open/floor{dir=1;icon_state="red";} : /turf/open/floor/red/north
 /turf/open/floor{dir=1;icon_state="redcorner";} : /turf/open/floor/redcorner/north
-/turf/open/floor{dir=1;icon_state="vault";} : /turf/open/floor/vault/north
+/turf/open/floor{dir=1;icon_state="vault";} : /turf/open/floor/vault2/north
 /turf/open/floor{dir=1;icon_state="warning";} : /turf/open/floor/warning/north
 /turf/open/floor{dir=1;icon_state="warningcorner";} : /turf/open/floor/warningcorner/north
 /turf/open/floor{dir=1;icon_state="warnwhite";} : /turf/open/floor/warnwhite/north
@@ -1123,7 +1123,7 @@
 /turf/open/floor{dir=5;icon_state="podhatch";} : /turf/open/floor/podhatch/northeast
 /turf/open/floor{dir=5;icon_state="purple";} : /turf/open/floor/purple/northeast
 /turf/open/floor{dir=5;icon_state="red";} : /turf/open/floor/red/northeast
-/turf/open/floor{dir=5;icon_state="vault";} : /turf/open/floor/vault/northeast
+/turf/open/floor{dir=5;icon_state="vault";} : /turf/open/floor/vault2/northeast
 /turf/open/floor{dir=5;icon_state="warning";} : /turf/open/floor/warning/northeast
 /turf/open/floor{dir=5;icon_state="warnwhite";} : /turf/open/floor/warnwhite/northeast
 /turf/open/floor{dir=5;icon_state="whiteblue";} : /turf/open/floor/whiteblue/northeast
@@ -1183,7 +1183,7 @@
 /turf/open/floor{dir=8;icon_state="purplecorner";} : /turf/open/floor/purplecorner/west
 /turf/open/floor{dir=8;icon_state="red";} : /turf/open/floor/red/west
 /turf/open/floor{dir=8;icon_state="redcorner";} : /turf/open/floor/redcorner/west
-/turf/open/floor{dir=8;icon_state="vault";} : /turf/open/floor/vault/west
+/turf/open/floor{dir=8;icon_state="vault";} : /turf/open/floor/vault2/west
 /turf/open/floor{dir=8;icon_state="warning";} : /turf/open/floor/warning/west
 /turf/open/floor{dir=8;icon_state="warningcorner";} : /turf/open/floor/warningcorner/west
 /turf/open/floor{dir=8;icon_state="warnwhite";} : /turf/open/floor/warnwhite/west
@@ -1278,7 +1278,7 @@
 /turf/open/floor{icon_state="red";} : /turf/open/floor/red
 /turf/open/floor{icon_state="redcorner";} : /turf/open/floor/redcorner
 /turf/open/floor{icon_state="redyellowfull";} : /turf/open/floor/redyellowfull
-/turf/open/floor{icon_state="vault";} : /turf/open/floor/vault
+/turf/open/floor{icon_state="vault";} : /turf/open/floor/vault2
 /turf/open/floor{icon_state="wall_thermite";} : /turf/open/floor/wall_thermite
 /turf/open/floor{icon_state="warning";} : /turf/open/floor/warning
 /turf/open/floor{icon_state="warnwhite";dir=1;} : /turf/open/floor/warnwhite/north
@@ -1414,9 +1414,6 @@
 /turf/open/shuttle/dropship{icon_state="rasputin6";} : /turf/open/shuttle/dropship/light_grey_top_left
 /turf/open/shuttle/dropship{icon_state="rasputin7";} : /turf/open/shuttle/dropship/light_grey_top_right
 /turf/open/shuttle/dropship{icon_state="rasputin8";} : /turf/open/shuttle/dropship/light_grey_bottom_right
-/turf/open/shuttle/escapepod{dir=1;} : /turf/open/shuttle/escapepod/north
-/turf/open/shuttle/escapepod{dir=4;} : /turf/open/shuttle/escapepod/east
-/turf/open/shuttle/escapepod{dir=8;} : /turf/open/shuttle/escapepod/west
 /turf/open/shuttle/escapepod{icon_state="floor0";dir=1;} : /turf/open/shuttle/escapepod/floor0/north
 /turf/open/shuttle/escapepod{icon_state="floor0";dir=8;} : /turf/open/shuttle/escapepod/floor0/west
 /turf/open/shuttle/escapepod{icon_state="floor0";} : /turf/open/shuttle/escapepod/floor0
@@ -1430,6 +1427,9 @@
 /turf/open/shuttle/escapepod{icon_state="floor7";} : /turf/open/shuttle/escapepod/floor7
 /turf/open/shuttle/escapepod{icon_state="floor8";} : /turf/open/shuttle/escapepod/floor8
 /turf/open/shuttle/escapepod{icon_state="floor9";} : /turf/open/shuttle/escapepod/floor9
+/turf/open/shuttle/escapepod{dir=1;} : /turf/open/shuttle/escapepod/north
+/turf/open/shuttle/escapepod{dir=4;} : /turf/open/shuttle/escapepod/east
+/turf/open/shuttle/escapepod{dir=8;} : /turf/open/shuttle/escapepod/west
 /turf/open/shuttle/lifeboat{dir=1;icon_state="plating_striped";} : /turf/open/shuttle/lifeboat/plating_striped/north
 /turf/open/shuttle/lifeboat{icon_state="plate";} : /turf/open/shuttle/lifeboat/plate
 /turf/open/shuttle/lifeboat{icon_state="plating_striped";} : /turf/open/shuttle/lifeboat/plating_striped

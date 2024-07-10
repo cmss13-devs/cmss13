@@ -217,7 +217,7 @@
 "abt" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/lmg,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "abv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -631,7 +631,7 @@
 /obj/item/stack/sheet/mineral/platinum{
 	pixel_x = -6
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adD" = (
 /obj/structure/surface/rack,
@@ -639,7 +639,7 @@
 	amount = 2
 	},
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adE" = (
 /obj/structure/surface/rack,
@@ -652,12 +652,12 @@
 	amount = 30
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adF" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adH" = (
 /obj/effect/decal/remains/xeno,
@@ -693,7 +693,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adP" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
@@ -711,7 +711,7 @@
 	pixel_x = -4
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adS" = (
 /obj/structure/xenoautopsy/tank/hugger,
@@ -722,7 +722,7 @@
 /obj/item/stack/sheet/mineral/silver{
 	amount = 20
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adU" = (
 /obj/effect/landmark/crap_item,
@@ -784,7 +784,7 @@
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = -3
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "aej" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -1194,7 +1194,7 @@
 	pixel_x = -6
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "agv" = (
 /turf/open/floor/plating/warnplate/east,
@@ -1551,7 +1551,7 @@
 	name = "Water Filtration Plant";
 	req_access_txt = "100"
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "aiM" = (
 /turf/open/floor/plating/warnplate/southwest,
@@ -1614,7 +1614,7 @@
 "ajd" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "ajg" = (
 /obj/structure/flora/bush/ausbushes,
@@ -3557,7 +3557,7 @@
 	pixel_x = 4;
 	pixel_y = -2
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "avX" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -3814,7 +3814,7 @@
 "awZ" = (
 /obj/structure/surface/rack,
 /obj/item/tool/crowbar,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "axa" = (
 /turf/open/floor/dark,
@@ -3841,13 +3841,13 @@
 	dir = 1;
 	pixel_y = 7
 	},
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "axi" = (
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
 "axj" = (
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "axk" = (
 /obj/structure/prop/mech/armor_booster,
@@ -3899,11 +3899,11 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
 "axC" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "axD" = (
 /obj/effect/decal/remains/human,
@@ -4021,11 +4021,11 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aym" = (
 /obj/structure/machinery/autolathe,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
 "ayn" = (
 /obj/structure/dispenser/oxygen,
@@ -4111,7 +4111,7 @@
 /area/lv624/lazarus/robotics)
 "ayG" = (
 /obj/effect/decal/remains/human,
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "ayI" = (
 /obj/structure/sink{
@@ -4206,32 +4206,32 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "ayZ" = (
 /obj/item/clothing/mask/gas,
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aza" = (
 /obj/effect/landmark/good_item,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
 "azc" = (
 /obj/structure/machinery/power/apc/nocharge{
 	dir = 1
 	},
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "azd" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aze" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "azf" = (
 /obj/structure/largecrate/random,
@@ -4343,11 +4343,11 @@
 /area/lv624/lazarus/robotics)
 "azG" = (
 /obj/structure/machinery/mecha_part_fabricator,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
 "azI" = (
 /obj/effect/decal/remains/human,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
 "azJ" = (
 /turf/open/floor/plating/warnplate/east,
@@ -4470,11 +4470,11 @@
 /area/lv624/lazarus/robotics)
 "aAi" = (
 /obj/structure/machinery/light/small,
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aAj" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aAl" = (
 /turf/open/gm/dirt,
@@ -4483,7 +4483,7 @@
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aAo" = (
 /obj/structure/sign/safety/analysis_lab{
@@ -4778,13 +4778,13 @@
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
 "aBs" = (
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aBt" = (
 /obj/structure/computerframe,
@@ -4897,7 +4897,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
 "aBT" = (
 /obj/structure/bed/chair/wheelchair,
@@ -4972,7 +4972,7 @@
 /area/lv624/lazarus/robotics)
 "aCm" = (
 /obj/structure/machinery/vending/coffee,
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aCn" = (
 /obj/structure/ore_box,
@@ -5993,7 +5993,7 @@
 /obj/structure/prop/mech/drill,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aGN" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
@@ -6886,7 +6886,7 @@
 /area/lv624/lazarus/robotics)
 "aLt" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aLv" = (
 /turf/open/gm/grass/grass2,
@@ -8214,7 +8214,7 @@
 "aSz" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aSA" = (
 /turf/open/floor/wood,
@@ -10052,7 +10052,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "bei" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -10263,7 +10263,7 @@
 /area/lv624/ground/caves/east_caves)
 "bvq" = (
 /obj/structure/prop/mech/parts/chassis/gygax,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
 "bvS" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
@@ -10569,7 +10569,7 @@
 /area/lv624/ground/jungle/central_jungle)
 "bZX" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "cac" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
@@ -11289,7 +11289,7 @@
 /obj/item/explosive/grenade/incendiary/molotov{
 	pixel_x = 8
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "dxy" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass{
@@ -11547,7 +11547,7 @@
 	pixel_x = -7
 	},
 /obj/item/reagent_container/food/drinks/cans/souto/classic,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "dWa" = (
 /obj/effect/landmark/objective_landmark/science,
@@ -11754,7 +11754,7 @@
 /area/lv624/ground/colony/south_medbay_road)
 "eot" = (
 /obj/structure/prop/mech/parts/gygax_torso,
-/turf/open/floor/vault,
+/turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "eoM" = (
 /turf/open/floor/whitebluecorner/east,
@@ -11931,7 +11931,7 @@
 "eGx" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/adv,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "eGD" = (
 /turf/open/gm/dirt,
@@ -12327,11 +12327,11 @@
 /area/lv624/ground/barrens/south_west_barrens)
 "fFA" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "fFM" = (
 /obj/structure/surface/rack,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "fFN" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -12906,7 +12906,7 @@
 	pixel_x = -3;
 	pixel_y = -3
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "gWE" = (
 /obj/effect/decal/grass_overlay/grass1{
@@ -13348,7 +13348,7 @@
 /obj/structure/reagent_dispensers/water_cooler{
 	pixel_x = -12
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "hRy" = (
 /turf/open/gm/dirt/desert3,
@@ -13967,7 +13967,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/east_jungle)
 "jiR" = (
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "jlh" = (
 /obj/structure/machinery/colony_floodlight,
@@ -14080,7 +14080,7 @@
 	pixel_x = -8;
 	pixel_y = 7
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "jzm" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -14519,7 +14519,7 @@
 /obj/item/storage/toolbox/electrical{
 	pixel_y = -3
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "ktf" = (
 /obj/structure/barricade/handrail/strata{
@@ -14654,7 +14654,7 @@
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	req_access = list(7,23,27)
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "kBq" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
@@ -15695,7 +15695,7 @@
 	pixel_x = 6;
 	pixel_y = -2
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "mNl" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
@@ -16094,7 +16094,7 @@
 "nDr" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "nEd" = (
 /turf/closed/wall/r_wall,
@@ -17878,7 +17878,7 @@
 "qXo" = (
 /obj/structure/surface/rack,
 /obj/item/explosive/grenade/incendiary/molotov,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "qXt" = (
 /obj/item/stack/rods,
@@ -17964,7 +17964,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "rfH" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -18420,7 +18420,7 @@
 	pixel_x = 10;
 	pixel_y = 5
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "sfg" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
@@ -19255,7 +19255,7 @@
 "tJb" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/mar40/carbine,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "tJh" = (
 /obj/structure/showcase{
@@ -19757,7 +19757,7 @@
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = 3
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "uFA" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -20175,7 +20175,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "vyz" = (
 /obj/structure/largecrate,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "vAg" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
@@ -20258,7 +20258,7 @@
 	amount = 10;
 	pixel_y = 3
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "vIt" = (
 /turf/open/gm/dirt/desert0,
@@ -20397,7 +20397,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "vVN" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "vWs" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -20868,7 +20868,7 @@
 /obj/item/storage/firstaid/fire{
 	pixel_x = -5
 	},
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "wSY" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -21288,7 +21288,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "xQy" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/vault/west,
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "xQI" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{

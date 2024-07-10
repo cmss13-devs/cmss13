@@ -20,7 +20,7 @@
 	},
 /area/shuttle/escape_pod)
 "q" = (
-/turf/open/shuttle/escapepod/north,
+/turf/open/shuttle/escapepod/floor0/north,
 /area/shuttle/escape_pod)
 "v" = (
 /turf/closed/shuttle/escapepod{
@@ -67,7 +67,7 @@
 /obj/structure/machinery/computer/shuttle/escape_pod_panel{
 	pixel_x = 30
 	},
-/turf/open/shuttle/escapepod/west,
+/turf/open/shuttle/escapepod/floor0/west,
 /area/shuttle/escape_pod)
 "Q" = (
 /turf/closed/shuttle/escapepod{

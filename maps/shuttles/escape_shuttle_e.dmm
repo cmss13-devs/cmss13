@@ -10,7 +10,7 @@
 	},
 /area/shuttle/escape_pod)
 "f" = (
-/turf/open/shuttle/escapepod/west,
+/turf/open/shuttle/escapepod/floor0/west,
 /area/shuttle/escape_pod)
 "i" = (
 /obj/structure/machinery/door/airlock/evacuation{

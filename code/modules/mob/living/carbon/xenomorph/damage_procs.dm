@@ -54,7 +54,7 @@
 
 	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
-	if(severity > EXPLOSION_THRESHOLD_LOW && stomach_contents.len)
+	if(severity > EXPLOSION_THRESHOLD_LOW && length(stomach_contents))
 		for(var/mob/M in stomach_contents)
 			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, last_damage_data, pierce)
 
@@ -170,7 +170,7 @@
 		return
 
 	var/shielded = FALSE
-	if(xeno_shields.len != 0 && damage > 0)
+	if(length(xeno_shields) != 0 && damage > 0)
 		shielded = TRUE
 		for(var/datum/xeno_shield/XS in xeno_shields)
 			damage = XS.on_hit(damage)

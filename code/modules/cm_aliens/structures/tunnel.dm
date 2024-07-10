@@ -129,7 +129,7 @@
 	if(isxeno(usr) && isfriendly(usr) && (usr.loc == src))
 		pick_tunnel(usr)
 	else
-		to_chat(usr, "You stare into the dark abyss" + "[contents.len ? ", making out what appears to be two little lights... almost like something is watching." : "."]")
+		to_chat(usr, "You stare into the dark abyss" + "[length(contents) ? ", making out what appears to be two little lights... almost like something is watching." : "."]")
 
 /obj/structure/tunnel/verb/exit_tunnel_verb()
 	set name = "Exit Tunnel"
@@ -177,7 +177,7 @@
 
 		var/obj/structure/tunnel/T = input_tunnels[pick]
 
-		if(T.contents.len > 2)// max 3 xenos in a tunnel
+		if(length(T.contents) > 2)// max 3 xenos in a tunnel
 			to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 			return FALSE
 		if(!T.loc)
@@ -236,11 +236,11 @@
 		to_chat(M, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
 		return XENO_NO_DELAY_ACTION
 
-	if(!hive.tunnels.len)
+	if(!length(hive.tunnels))
 		to_chat(M, SPAN_WARNING("[src] doesn't seem to lead anywhere."))
 		return XENO_NO_DELAY_ACTION
 
-	if(contents.len > 2)
+	if(length(contents) > 2)
 		to_chat(M, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 		return XENO_NO_DELAY_ACTION
 
@@ -263,7 +263,7 @@
 		to_chat(M, SPAN_WARNING("Our crawling was interrupted!"))
 		return XENO_NO_DELAY_ACTION
 
-	if(hive.tunnels.len) //Make sure other tunnels exist
+	if(length(hive.tunnels)) //Make sure other tunnels exist
 		M.forceMove(src) //become one with the tunnel
 		to_chat(M, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
 		pick_tunnel(M)

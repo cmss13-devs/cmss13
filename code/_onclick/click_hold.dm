@@ -88,7 +88,7 @@
 	if(mods["left"])
 		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_DRAG, src_obj, over_obj, params)
 
-	var/atom/last_atom = LAZYACCESS(mouse_trace_history, mouse_trace_history.len)
+	var/atom/last_atom = LAZYACCESS(mouse_trace_history, length(mouse_trace_history))
 	if(over_obj == last_atom)
 		return
 

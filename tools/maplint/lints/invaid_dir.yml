@@ -1,0 +1,15 @@
+help: "This dir doesn't exist. It will likely just default to south (2)."
+/obj:
+  banned_variables:
+    dir:
+      allow: [1, 2, 4, 5, 6, 8, 9, 10, 16, 32]
+
+/turf:
+  banned_variables:
+    dir:
+      allow: [1, 2, 4, 5, 6, 8, 9, 10, 16, 32]
+
+/mob:
+  banned_variables:
+    dir:
+      allow: [1, 2, 4, 5, 6, 8, 9, 10, 16, 32]

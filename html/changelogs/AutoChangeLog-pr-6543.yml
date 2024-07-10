@@ -1,0 +1,7 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "jtac and Intel kits to ASRS store"
+  - rscadd: "Intel kit to IO points vendor"
+  - balance: "intel kit now has large doc pouch instead of small"
+  - balance: "jtac kit now has radiopack"

@@ -1,5 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - qol: "Shotgun ammo boxes now behave like other ammo boxes in the Requisitions' vendors."
-  - code_imp: "Ammo box maping code now handles pre-populated boxes in vendors, letting devs order them more neatly than before."

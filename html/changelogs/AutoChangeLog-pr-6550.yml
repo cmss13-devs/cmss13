@@ -1,0 +1,4 @@
+author: "Unknownity"
+delete-after: True
+changes:
+  - bugfix: "Burrowers now see themselves as partly transparent when burrowed."

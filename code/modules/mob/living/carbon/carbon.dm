@@ -110,7 +110,7 @@
 			var/obj/O = A
 			if(O.unacidable)
 				O.forceMove(get_turf(loc))
-				O.throw_atom(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
+				O.throw_atom(pick(range(1, get_turf(loc))), 1, SPEED_FAST)
 
 	. = ..(cause)
 
@@ -482,7 +482,7 @@
 
 /mob/living/carbon/on_stored_atom_del(atom/movable/AM)
 	..()
-	if(stomach_contents.len && ismob(AM))
+	if(length(stomach_contents) && ismob(AM))
 		for(var/X in stomach_contents)
 			if(AM == X)
 				stomach_contents -= AM

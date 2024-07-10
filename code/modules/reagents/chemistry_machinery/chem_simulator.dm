@@ -136,7 +136,7 @@
 		data["property_data_list"] = list()
 		for(var/datum/chem_property/P in GLOB.chemical_data.research_property_data)
 			data["property_codings"][P.name] = P.code
-			if(template_filter && !check_bitflag(P.category, template_filter))
+			if(template_filter && !HAS_FLAG(P.category, template_filter))
 				continue
 			data["property_data_list"][P.name] = P.level
 			data["property_data_list"] = sortAssoc(data["property_data_list"])
@@ -144,18 +144,18 @@
 		data["target_property_list"] = list()
 		for(var/datum/chem_property/P in creation_template)
 			data["target_property_list"][P.name] = P.level
-			if(template_filter && !check_bitflag(P.category, template_filter))
+			if(template_filter && !HAS_FLAG(P.category, template_filter))
 				continue
 			//Override the editor level with the enabled property level
 			data["property_data_list"][P.name] = P.level
 
 		data["template_filter"] = list(
-				"MED" = list(check_bitflag(template_filter, PROPERTY_TYPE_MEDICINE), PROPERTY_TYPE_MEDICINE),
-				"TOX" = list(check_bitflag(template_filter, PROPERTY_TYPE_TOXICANT), PROPERTY_TYPE_TOXICANT),
-				"STI" = list(check_bitflag(template_filter, PROPERTY_TYPE_STIMULANT), PROPERTY_TYPE_STIMULANT),
-				"REA" = list(check_bitflag(template_filter, PROPERTY_TYPE_REACTANT), PROPERTY_TYPE_REACTANT),
-				"IRR" = list(check_bitflag(template_filter, PROPERTY_TYPE_IRRITANT), PROPERTY_TYPE_IRRITANT),
-				"MET" = list(check_bitflag(template_filter, PROPERTY_TYPE_METABOLITE), PROPERTY_TYPE_METABOLITE)
+				"MED" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_MEDICINE), PROPERTY_TYPE_MEDICINE),
+				"TOX" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_TOXICANT), PROPERTY_TYPE_TOXICANT),
+				"STI" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_STIMULANT), PROPERTY_TYPE_STIMULANT),
+				"REA" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_REACTANT), PROPERTY_TYPE_REACTANT),
+				"IRR" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_IRRITANT), PROPERTY_TYPE_IRRITANT),
+				"MET" = list(HAS_FLAG(template_filter, PROPERTY_TYPE_METABOLITE), PROPERTY_TYPE_METABOLITE)
 			)
 
 	else if(target && target.data && target.completed)
@@ -679,7 +679,7 @@
 	R.make_alike(assoc_R)
 
 	if(mode != MODE_CREATE)
-		if(R.required_reagents.len > 2 && !recipe_targets[recipe_target]) //we only replace if the recipe isn't small and the target is not set TRUE to being elevated
+		if(length(R.required_reagents) > 2 && !recipe_targets[recipe_target]) //we only replace if the recipe isn't small and the target is not set TRUE to being elevated
 			LAZYREMOVE(R.required_reagents, pick(R.required_reagents))
 		R.add_component(recipe_target)
 

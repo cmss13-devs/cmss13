@@ -460,9 +460,6 @@
 /datum/equipment_preset/uscm/cmb/leader
 	name = "USCM Anchorpoint Station Team Leader"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
-/datum/equipment_preset/uscm/cmb/leader/New()
-	. = ..()
-
 	assignment = "Anchorpoint Station Marine Team Leader"
 	rank = JOB_SQUAD_LEADER
 	paygrade = PAY_SHORT_ME6
@@ -505,9 +502,6 @@
 /datum/equipment_preset/uscm/cmb/rto
 	name = "USCM Anchorpoint Station Technical Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
-/datum/equipment_preset/uscm/cmb/rto/New()
-	. = ..()
-
 	assignment = "Anchorpoint Station Marine Technical Specialist"
 	rank = JOB_SQUAD_TEAM_LEADER
 	paygrade = PAY_SHORT_ME4
@@ -550,9 +544,6 @@
 /datum/equipment_preset/uscm/cmb/medic
 	name = "USCM Anchorpoint Station Corpsman"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
-/datum/equipment_preset/uscm/cmb/medic/New()
-	. = ..()
-
 	assignment = "Anchorpoint Station Hospital Corpsman"
 	rank = JOB_SQUAD_MEDIC
 	paygrade = PAY_SHORT_ME3
@@ -611,9 +602,6 @@
 /datum/equipment_preset/uscm/cmb/smartgunner
 	name = "USCM Anchorpoint Station Smartgunner"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
-/datum/equipment_preset/uscm/cmb/smartgunner/New()
-	. = ..()
-
 	assignment = "Anchorpoint Station Marine Smartgunner"
 	rank = JOB_SQUAD_SMARTGUN
 	paygrade = PAY_SHORT_ME3

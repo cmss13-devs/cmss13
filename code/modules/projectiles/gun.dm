@@ -471,7 +471,7 @@
 
 
 /obj/item/weapon/gun/proc/handle_starting_attachment()
-	if(starting_attachment_types && starting_attachment_types.len)
+	if(LAZYLEN(starting_attachment_types))
 		for(var/path in starting_attachment_types)
 			var/obj/item/attachable/A = new path(src)
 			A.Attach(src)
@@ -872,6 +872,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	if(!current_mag || QDELETED(current_mag) || (current_mag.loc != src && !loc_override))
 		cock(user)
+		current_mag = null
+		update_icon()
 		return
 
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.

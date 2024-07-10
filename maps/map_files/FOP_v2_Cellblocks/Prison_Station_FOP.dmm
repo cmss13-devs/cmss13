@@ -47113,6 +47113,12 @@
 	icon_state = "floor_plate"
 	},
 /area/prison/cellblock/highsec/south/north)
+"oHZ" = (
+/obj/structure/bed,
+/obj/item/bedsheet/purple,
+/obj/item/toy/plush/shark,
+/turf/open/floor/wood,
+/area/prison/quarters/research)
 "oIj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -91188,7 +91194,7 @@ aIb
 aED
 rtS
 aJU
-aCe
+oHZ
 ssJ
 aMy
 aNQ

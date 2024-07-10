@@ -5307,6 +5307,25 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
+"tg" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/toy/plush/shark,
+/turf/open/floor/almayer{
+	icon_state = "bluefull"
+	},
+/area/whiskey_outpost/inside/living)
 "th" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8
@@ -27644,7 +27663,7 @@ mT
 mT
 mT
 pq
-am
+tg
 am
 am
 rD

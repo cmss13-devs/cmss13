@@ -46803,6 +46803,12 @@
 	icon_state = "red"
 	},
 /area/corsat/sigma/airlock/east/id)
+"kog" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/obj/item/toy/plush/shark,
+/turf/open/floor/wood,
+/area/corsat/gamma/residential/east)
 "koh" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -78998,7 +79004,7 @@ aaq
 abs
 abs
 abD
-abv
+kog
 abs
 aaq
 abD

@@ -34390,6 +34390,11 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/research)
+"hzL" = (
+/obj/structure/bed,
+/obj/item/toy/plush/shark,
+/turf/open/floor/wood,
+/area/ice_colony/surface/dorms)
 "hAX" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
@@ -64744,7 +64749,7 @@ avW
 arE
 arP
 arQ
-ast
+hzL
 axl
 axL
 ayt

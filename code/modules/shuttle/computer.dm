@@ -399,9 +399,11 @@
 					user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
 						SPAN_NOTICE("You have successfully taken back control over the lifeboat."))
 					override_being_removed = FALSE
-			else to_chat(user, SPAN_WARNING("[src] displays an error message that an override removal is already in progress."))
+			else 
+				to_chat(user, SPAN_WARNING("[src] displays an error message that an override removal is already in progress."))
 			return
-		else to_chat(user, SPAN_WARNING("[src] displays an error message and asks you to contact your pilot to resolve the problem."))
+		else 
+			to_chat(user, SPAN_WARNING("[src] displays an error message and asks you to contact your pilot to resolve the problem."))
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)

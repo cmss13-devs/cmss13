@@ -148,6 +148,14 @@
 /datum/roof_master_node/proc/remove_roof(obj/structure/roof/roof) //roof tile got removed
 	connected_roof -= roof
 	if(!length(connected_roof))
-		for(var/obj/effect/roof_node/roof_node in connected_nodes)
-			roof_node.Destroy()
-		qdel(src)
+		Destroy()
+
+
+
+/datum/roof_master_node/Destroy(force, ...)
+	. = ..()
+	for(var/obj/effect/roof_node/roof_node in connected_nodes)
+		roof_node.Destroy()
+	for(var/obj/structure/roof/roof in location)
+		roof.Destroy()
+	qdel(src)

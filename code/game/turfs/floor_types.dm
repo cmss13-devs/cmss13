@@ -543,6 +543,7 @@
 
 /turf/open/floor/carpet
 	name = "carpet"
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft."
 	icon_state = "carpet"
 	tile_type = /obj/item/stack/tile/carpet
 	tool_flags = REMOVE_SCREWDRIVER

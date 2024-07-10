@@ -17,7 +17,6 @@
 "bp" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	icon_state = "door_locked";
-	locked = 0;
 	name = "\improper Checkpoint Office"
 	},
 /turf/open/floor,

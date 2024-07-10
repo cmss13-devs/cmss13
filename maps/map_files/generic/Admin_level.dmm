@@ -13,8 +13,7 @@
 /area/adminlevel/ert_station)
 "ad" = (
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome)
 "ae" = (
@@ -28,8 +27,7 @@
 	name = "\improper Observer Shutters"
 	},
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome)
 "aj" = (
@@ -64,8 +62,7 @@
 	icon_state = "W"
 	},
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome)
 "aA" = (
@@ -73,8 +70,7 @@
 	icon_state = "E"
 	},
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome)
 "aB" = (
@@ -629,7 +625,6 @@
 "pP" = (
 /obj/item/newspaper,
 /turf/open/floor/carpet{
-	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
 	name = "\improper carpet"
 	},
 /area/adminlevel/ert_station)
@@ -684,8 +679,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdomeobserve)
 "rf" = (
@@ -826,7 +820,6 @@
 	pixel_y = 27
 	},
 /turf/open/floor/carpet{
-	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
 	name = "\improper carpet"
 	},
 /area/adminlevel/ert_station)
@@ -860,7 +853,6 @@
 /area/adminlevel/ert_station/shuttle_dispatch)
 "vD" = (
 /turf/open/floor/carpet{
-	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
 	name = "\improper carpet"
 	},
 /area/adminlevel/ert_station)
@@ -922,8 +914,7 @@
 "wv" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdomeobserve)
 "wA" = (
@@ -1148,8 +1139,7 @@
 	icon_state = "E"
 	},
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdome2)
 "BO" = (
@@ -1164,8 +1154,7 @@
 	icon_state = "pottedplant_20"
 	},
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdomeobserve)
 "BV" = (
@@ -1284,8 +1273,7 @@
 "Ee" = (
 /obj/effect/landmark/thunderdome/one,
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdome1)
 "Ef" = (
@@ -1376,8 +1364,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigar,
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdomeobserve)
 "FB" = (
@@ -1739,8 +1726,7 @@
 	dir = 4
 	},
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdomeobserve)
 "LR" = (
@@ -1872,8 +1858,7 @@
 "NU" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdomeobserve)
 "NZ" = (
@@ -1938,8 +1923,7 @@
 	icon_state = "W"
 	},
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdome1)
 "OT" = (
@@ -1968,8 +1952,7 @@
 "PF" = (
 /obj/effect/landmark/thunderdome/two,
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdome2)
 "PJ" = (
@@ -2024,7 +2007,6 @@
 "Qz" = (
 /obj/item/prop/helmetgarb/rosary,
 /turf/open/floor/carpet{
-	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
 	name = "\improper carpet"
 	},
 /area/adminlevel/ert_station)
@@ -2166,8 +2148,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdomeobserve)
 "TD" = (
@@ -2314,8 +2295,7 @@
 "VD" = (
 /obj/structure/machinery/vending/cigarette/free,
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdomeobserve)
 "VI" = (
@@ -2484,8 +2464,7 @@
 /area/adminlevel/ert_station)
 "YP" = (
 /turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
+	dir = 5
 	},
 /area/tdome/tdomeobserve)
 "YU" = (

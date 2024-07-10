@@ -98,7 +98,6 @@
 /area/lv624/ground/river/central_river)
 "lY" = (
 /turf/open/floor/plating{
-	dir = 2;
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/river/central_river)

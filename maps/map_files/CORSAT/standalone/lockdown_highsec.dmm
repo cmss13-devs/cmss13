@@ -57,8 +57,7 @@
 /area/corsat/omega/checkpoint)
 "k" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -85,7 +84,6 @@
 "n" = (
 /obj/structure/window/framed/corsat/security,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	dir = 1;
 	id = "OmegaAccessC";
 	name = "Security Shutters"
 	},
@@ -108,15 +106,12 @@
 	id = "delta_gamma";
 	name = "Gamma Emergency Access";
 	pixel_x = -5;
-	unacidable = 1;
 	use_power = 0
 	},
 /obj/structure/machinery/door_control{
 	id = "delta_gamma2";
 	name = "Checkpoint Gamma";
 	pixel_x = 5;
-	pixel_y = 0;
-	unacidable = 1;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -127,8 +122,6 @@
 "r" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/cameras{
-	dir = 2;
-	icon_state = "cameras";
 	network = list("omega")
 	},
 /turf/open/floor/corsat{
@@ -215,7 +208,6 @@
 	req_access_txt = "3"
 	},
 /obj/structure/machinery/door/window/brigdoor/eastleft{
-	dir = 4;
 	name = "Identification Desk"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -253,7 +245,6 @@
 	req_access_txt = "3"
 	},
 /obj/structure/machinery/door/window/brigdoor/eastleft{
-	dir = 4;
 	name = "Identification Desk"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -277,14 +268,12 @@
 	id = "delta_omega";
 	name = "Checkpoint Omega";
 	pixel_x = -5;
-	unacidable = 1;
 	use_power = 0
 	},
 /obj/structure/machinery/door_control{
 	id = "delta_theta";
 	name = "Theta Emergency Access";
 	pixel_x = 5;
-	unacidable = 1;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -294,7 +283,6 @@
 "K" = (
 /obj/structure/machinery/computer/cameras{
 	dir = 1;
-	icon_state = "cameras";
 	network = list("omega")
 	},
 /obj/structure/surface/table/reinforced,
@@ -347,8 +335,7 @@
 /area/corsat/omega/checkpoint)
 "S" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"

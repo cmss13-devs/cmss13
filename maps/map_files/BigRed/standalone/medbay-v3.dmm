@@ -211,9 +211,7 @@
 "aK" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
-/obj/item/stack/sheet/metal{
-	amount = 1
-	},
+/obj/item/stack/sheet/metal,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged2"
@@ -1252,9 +1250,7 @@
 "dw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/obj/item/stack/sheet/metal{
-	amount = 1
-	},
+/obj/item/stack/sheet/metal,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},

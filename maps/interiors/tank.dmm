@@ -21,9 +21,7 @@
 /area/interior/vehicle/tank)
 "c" = (
 /obj/structure/prop/tank{
-	icon_state = "prop2";
-	layer = 3;
-	pixel_x = 0
+	icon_state = "prop2"
 	},
 /obj/effect/landmark/interior/spawn/weapons_loader{
 	layer = 2;
@@ -49,9 +47,7 @@
 	},
 /area/interior/vehicle/tank)
 "f" = (
-/obj/structure/prop/tank{
-	pixel_x = 0
-	},
+/obj/structure/prop/tank,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_1_1"
 	},
@@ -91,12 +87,10 @@
 /area/space)
 "u" = (
 /obj/structure/prop/tank{
-	icon_state = "prop5";
-	pixel_x = 0
+	icon_state = "prop5"
 	},
 /obj/structure/prop/tank{
 	icon_state = "prop7";
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/open/shuttle/vehicle{
@@ -140,20 +134,16 @@
 /obj/structure/prop/tank{
 	density = 0;
 	icon_state = "prop6";
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/structure/prop/tank{
 	density = 0;
 	icon_state = "prop8_extra";
-	layer = 4.12;
-	pixel_x = 0
+	layer = 4.12
 	},
 /obj/structure/prop/tank{
 	density = 0;
-	icon_state = "prop4";
-	layer = 3;
-	pixel_x = 0
+	icon_state = "prop4"
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_7"
@@ -169,8 +159,7 @@
 /area/space)
 "J" = (
 /obj/structure/prop/tank{
-	icon_state = "prop3";
-	pixel_x = 0
+	icon_state = "prop3"
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_4"
@@ -178,8 +167,7 @@
 /area/interior/vehicle/tank)
 "T" = (
 /obj/structure/prop/tank{
-	icon_state = "prop1";
-	pixel_x = 0
+	icon_state = "prop1"
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9"

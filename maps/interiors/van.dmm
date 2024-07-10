@@ -146,8 +146,7 @@
 	tag = "right"
 	},
 /obj/structure/bed/chair/comfy{
-	dir = 4;
-	icon_state = "comfychair"
+	dir = 4
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_12"

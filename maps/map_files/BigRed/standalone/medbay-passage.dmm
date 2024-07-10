@@ -4,7 +4,6 @@
 /area/template_noop)
 "c" = (
 /obj/structure/sign/safety/medical{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -29,7 +28,6 @@
 /area/bigredv2/outside/c)
 "f" = (
 /obj/structure/sign/safety/medical{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/open/floor{

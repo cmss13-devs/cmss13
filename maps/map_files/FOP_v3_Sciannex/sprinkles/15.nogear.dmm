@@ -30,7 +30,6 @@
 "i" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/prison,

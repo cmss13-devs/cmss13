@@ -44,9 +44,7 @@
 "h" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "GammaNorthS";
-	name = "Gamma North Airlock";
-	unacidable = 0;
-	use_power = 1
+	name = "Gamma North Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"

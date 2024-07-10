@@ -139,7 +139,6 @@
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	damage_cap = 4000;
 	dir = 1;
-	locked = 0;
 	name = "\improper Emergency Access";
 	req_access_txt = "100";
 	req_one_access = list()
@@ -332,8 +331,7 @@
 /area/corsat/sigma/biodome/gunrange)
 "gi" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0
+	name = "Floodlight"
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/corsat/sigma/biodome/ice)
@@ -413,7 +411,6 @@
 "hR" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	damage_cap = 4000;
-	locked = 0;
 	name = "\improper Emergency Access";
 	req_access_txt = "100";
 	req_one_access = list()
@@ -922,8 +919,7 @@
 /area/corsat/sigma/biodome/ice)
 "tm" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0
+	name = "Floodlight"
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/ice)
@@ -2648,8 +2644,7 @@
 /area/corsat/sigma/biodome/ice)
 "VF" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0
+	name = "Floodlight"
 	},
 /turf/open/floor{
 	dir = 1;

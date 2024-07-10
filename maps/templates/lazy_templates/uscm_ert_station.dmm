@@ -1479,17 +1479,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build,
 /area/adminlevel/ert_station/uscm_station)
-"rt" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4;
-	unacidable = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4;
-	unacidable = 1
-	},
-/turf/open/floor/almayer,
-/area/adminlevel/ert_station/uscm_station)
 "rw" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -4030,11 +4019,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
-"WN" = (
-/obj/structure/machinery/telecomms/bus,
-/obj/structure/machinery/telecomms/bus,
-/turf/open/floor/almayer/tcomms,
-/area/adminlevel/ert_station/uscm_station)
 "WO" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -4882,7 +4866,7 @@ zK
 GW
 GW
 GW
-rt
+GW
 GW
 zK
 kZ
@@ -4912,7 +4896,7 @@ Hc
 YZ
 OA
 qy
-WN
+Zx
 Zx
 OA
 hi
@@ -5117,7 +5101,7 @@ vI
 Ky
 yg
 Hc
-WN
+Zx
 OA
 Hc
 EY

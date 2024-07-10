@@ -5,7 +5,7 @@
 	{ "type": "map_variations",   "landmark": "storage-crashed-ship", "path": "storage-crashed-ship/",   "chance": 0.6 },
 	{ "type": "map_variations",   "landmark": "lv-medbay",       "path": "medbay/",                      "chance": 0.4 },
 	{ "type": "map_variations",   "landmark": "lv-hydro",        "path": "hydro/",                       "chance": 0.3 },
-	{ "type": "map_variations",   "landmark": "lv-science",      "path": "science/",                     "chance": 0.5 },
+	{ "type": "map_variations",   "landmark": "lv-science",      "path": "science/",                     "chance": 0.9 },
 	{ "type": "map_variations",   "landmark": "lv-gym",          "path": "gym/",                         "chance": 0.5 },
 	{ "type": "map_variations",   "landmark": "armory",          "path": "armory/",                      "chance": 0.4 },
 	{ "type": "map_variations",   "landmark": "maintemple",      "path": "maintemple/",                  "chance": 0.4 },

@@ -262,7 +262,7 @@
 						continue
 					target_property = target_prop
 				if(!target_property)
-					to_chat(usr, SPAN_WARNING("The [src] makes a suspcious vail."))
+					to_chat(usr, SPAN_WARNING("The [src] makes a suspicious wail."))
 					return
 		if("select_reference_property")
 			if(!reference)
@@ -272,7 +272,7 @@
 					continue
 				reference_property = reference_prop
 			if(!reference_property)
-				to_chat(usr, SPAN_WARNING("The [src] makes a suspcious vail."))
+				to_chat(usr, SPAN_WARNING("The [src] makes a suspicious wail."))
 				return
 		if("simulate")
 			if(!ready)

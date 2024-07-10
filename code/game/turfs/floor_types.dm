@@ -1142,6 +1142,9 @@
 	burnable_tile = FALSE
 	baseturfs = /turf/open/floor
 
+/turf/open/floor/engine/simulator_center
+	color = "#AAAAAA"
+
 /turf/open/floor/engine/make_plating()
 	return
 

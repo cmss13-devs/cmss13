@@ -10307,7 +10307,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_tcomms_road)
 "bzs" = (
-/turf/open/gm/dirtgrassborder/east,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/south_west_jungle/ceiling)
 "bzD" = (
 /obj/structure/largecrate/random,

@@ -923,7 +923,7 @@
 /area/adminlevel/ert_station)
 "Cc" = (
 /obj/effect/landmark/sim_camera,
-/turf/open/floor/engine,
+/turf/open/floor/engine/simulator_center,
 /area/adminlevel/simulation)
 "Cf" = (
 /turf/open/floor/almayer/sterile_green_side,

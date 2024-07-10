@@ -536,58 +536,43 @@
 	scorchable = "grass1"
 
 /turf/open/gm/dirtgrassborder/north
-	dir = NORTH
 
 /turf/open/gm/dirtgrassborder/south
-	dir = SOUTH
+	dir = 1
 
 /turf/open/gm/dirtgrassborder/west
-	dir = WEST
+	dir = 4
 
 /turf/open/gm/dirtgrassborder/east
-	dir = EAST
+	dir = 8
 
 /turf/open/gm/dirtgrassborder/grassdirt_corner
 	icon_state = "grassdirt_corner"
 
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north
-	dir = NORTH
-
-/turf/open/gm/dirtgrassborder/grassdirt_corner/east
-	dir = EAST
-
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west
-	dir = NORTHWEST
 
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east
-	dir = NORTHEAST
+	dir = 1
 
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east
-	dir = SOUTHEAST
+	dir = 4
 
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west
-	dir = SOUTHWEST
+	dir = 8
 
 /turf/open/gm/dirtgrassborder/grassdirt_corner2
 	icon_state = "grassdirt_corner2"
 
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/north
-	dir = NORTH
-
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/east
-	dir = EAST
-
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west
-	dir = NORTHWEST
 
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east
-	dir = SOUTHEAST
+	dir = 1
 
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east
-	dir = NORTHEAST
+	dir = 4
 
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west
-	dir = SOUTHWEST
+	dir = 8
 
 /turf/open/gm/dirtgrassborder/desert
 	icon_state = "desert"
@@ -817,55 +802,46 @@
 	supports_surgery = FALSE
 
 /turf/open/gm/coast/north
-	dir = NORTH
 
 /turf/open/gm/coast/south
-	dir = SOUTH
+	dir = 1
 
 /turf/open/gm/coast/west
-	dir = WEST
+	dir = 4
 
 /turf/open/gm/coast/east
-	dir = EAST
+	dir = 8
 
-/turf/open/gm/coast/north_west
-	dir = NORTHWEST
+/turf/open/gm/coast/south_east
+	dir = 9
 
 /turf/open/gm/coast/beachcorner
 	icon_state = "beachcorner"
 
-/turf/open/gm/coast/beachcorner/east
-	dir = EAST
-
 /turf/open/gm/coast/beachcorner/north_west
-	dir = NORTHWEST
 
 /turf/open/gm/coast/beachcorner/north_east
-	dir = NORTHEAST
+	dir = 1
 
 /turf/open/gm/coast/beachcorner/south_east
-	dir = SOUTHEAST
+	dir = 4
 
 /turf/open/gm/coast/beachcorner/south_west
-	dir = SOUTHWEST
+	dir = 8
 
 /turf/open/gm/coast/beachcorner2
 	icon_state = "beachcorner2"
 
-/turf/open/gm/coast/beachcorner2/west
-	dir = WEST
-
 /turf/open/gm/coast/beachcorner2/north_west
-	dir = NORTHWEST
 
 /turf/open/gm/coast/beachcorner2/north_east
-	dir = NORTHEAST
+	dir = 1
 
 /turf/open/gm/coast/beachcorner2/south_west
-	dir = SOUTHWEST
+	dir = 4
 
 /turf/open/gm/coast/beachcorner2/south_east
-	dir = SOUTHEAST
+	dir = 8
 
 /turf/open/gm/riverdeep
 	name = "river"

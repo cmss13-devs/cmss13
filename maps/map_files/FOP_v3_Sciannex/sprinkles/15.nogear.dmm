@@ -9,15 +9,6 @@
 "ac" = (
 /turf/open/floor/prison,
 /area/template_noop)
-"ad" = (
-/obj/structure/closet/secure_closet/guncabinet{
-	req_access = null
-	},
-/obj/item/clothing/under/color/orange,
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
-/area/template_noop)
 "ae" = (
 /turf/closed/wall/prison,
 /area/template_noop)
@@ -25,22 +16,8 @@
 /obj/item/clothing/under/color/orange,
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
-"ag" = (
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/template_noop)
 "ah" = (
 /turf/open/floor/prison/floor_plate,
-/area/template_noop)
-"ai" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1;
-	req_access = null;
-	req_one_access = null
-	},
-/turf/open/floor/plating/prison,
 /area/template_noop)
 "aj" = (
 /obj/structure/closet/secure_closet/guncabinet{
@@ -50,44 +27,6 @@
 	pixel_y = -9
 	},
 /turf/open/floor/prison/redfull,
-/area/template_noop)
-"ak" = (
-/obj/structure/closet/secure_closet/guncabinet{
-	req_access = null
-	},
-/obj/item/clothing/shoes/galoshes{
-	pixel_y = -6
-	},
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
-/area/template_noop)
-"al" = (
-/obj/structure/closet/secure_closet/guncabinet{
-	req_access = null
-	},
-/obj/item/clothing/shoes/dress/commander{
-	pixel_y = -9
-	},
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
-/area/template_noop)
-"am" = (
-/obj/structure/closet/secure_closet/security_empty,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/item/storage/box/flashbangs,
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
-/area/template_noop)
-"an" = (
-/obj/item/stack/folding_barricade,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
 /area/template_noop)
 "ao" = (
 /obj/structure/closet/secure_closet/security_empty,
@@ -106,53 +45,17 @@
 /obj/item/frame/rack,
 /turf/open/floor/prison/redfull,
 /area/template_noop)
-"ar" = (
-/obj/structure/reagent_dispensers/water_cooler,
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
-/area/template_noop)
-"as" = (
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
-/turf/open/floor/prison,
-/area/template_noop)
 "at" = (
 /obj/structure/window/reinforced,
 /turf/open/floor/prison,
-/area/template_noop)
-"au" = (
-/obj/structure/closet/secure_closet/security_empty,
-/obj/item/clothing/accessory/storage/holster,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
 /area/template_noop)
 "av" = (
 /obj/item/clothing/under/color/orange,
 /turf/open/floor/prison,
 /area/template_noop)
-"aw" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/template_noop)
 "ax" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison,
-/area/template_noop)
-"ay" = (
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
 /area/template_noop)
 "az" = (
 /obj/item/clothing/shoes/black{
@@ -165,15 +68,6 @@
 "aA" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/prison/redfull,
-/area/template_noop)
-"aB" = (
-/obj/item/tool/kitchen/knife{
-	pixel_x = -7;
-	pixel_y = -15
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
 /area/template_noop)
 "aC" = (
 /obj/structure/machinery/light/double/blue{
@@ -193,13 +87,6 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/prison,
 /area/template_noop)
-"aF" = (
-/obj/item/prop/helmetgarb/riot_shield,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/template_noop)
 "aG" = (
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
@@ -216,26 +103,11 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
-"aI" = (
-/obj/structure/closet/secure_closet/guncabinet{
-	req_access = null
-	},
-/obj/effect/spawner/random/gun/pistol/lowchance,
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
-/area/template_noop)
 "aJ" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/open/floor/prison,
-/area/template_noop)
-"aK" = (
-/obj/item/clothing/under/color/orange,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
 /area/template_noop)
 "aL" = (
 /obj/structure/window/framed/prison/reinforced,
@@ -293,32 +165,8 @@
 /obj/effect/spawner/random/gun/pistol/lowchance,
 /turf/open/floor/prison/redfull,
 /area/template_noop)
-"aU" = (
-/obj/effect/landmark/corpsespawner/ua_riot,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/template_noop)
 "aV" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
-"aW" = (
-/obj/structure/closet/secure_closet/guncabinet{
-	req_access = null
-	},
-/obj/item/clothing/shoes/black{
-	pixel_x = 2;
-	pixel_y = -9
-	},
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
-/area/template_noop)
-"aX" = (
-/obj/item/frame/rack,
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
 /area/template_noop)
 "aY" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{

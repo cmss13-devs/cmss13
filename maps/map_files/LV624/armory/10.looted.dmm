@@ -1,196 +1,21 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/main_hall)
-"ab" = (
-/obj/item/stack/sheet/wood,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/main_hall)
-"ac" = (
-/obj/item/stack/tile/plasteel,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellow"
-	},
-/area/lv624/lazarus/main_hall)
-"ad" = (
-/obj/item/phone{
-	desc = "A model of an ancient Earth communication device.";
-	force = 8
-	},
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/lv624/lazarus/main_hall)
-"ae" = (
-/obj/structure/barricade/wooden{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/main_hall)
-"af" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowcorner"
-	},
-/area/lv624/lazarus/main_hall)
-"ag" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteyellow"
-	},
-/area/lv624/lazarus/main_hall)
-"ah" = (
-/obj/structure/barricade/wooden{
-	dir = 8
-	},
-/obj/item/stack/tile/plasteel,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/main_hall)
 "ai" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/armory)
 "aj" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/security)
-"ak" = (
-/obj/structure/machinery/light/small,
-/obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "platingdmg3"
-	},
-/area/lv624/lazarus/main_hall)
-"al" = (
-/turf/open/floor{
-	icon_state = "platingdmg3"
-	},
-/area/lv624/lazarus/main_hall)
-"am" = (
-/obj/structure/target/syndicate,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "red"
-	},
-/area/lv624/lazarus/security)
-"an" = (
-/obj/structure/machinery/deployable/barrier,
-/obj/effect/decal/cleanable/cobweb,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"ao" = (
-/obj/item/stack/tile/plasteel,
-/turf/open/floor{
-	icon_state = "platingdmg3"
-	},
-/area/lv624/lazarus/main_hall)
-"ap" = (
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"aq" = (
-/turf/open/floor{
-	icon_state = "platingdmg3"
-	},
-/area/lv624/lazarus/armory)
-"ar" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "red"
-	},
-/area/lv624/lazarus/security)
-"as" = (
-/obj/structure/machinery/deployable/barrier,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"at" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "red"
-	},
-/area/lv624/lazarus/security)
-"au" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
 "av" = (
 /obj/structure/target/syndicate,
 /turf/open/floor/red/northeast,
 /area/lv624/lazarus/security)
-"aw" = (
-/obj/item/stack/sheet/metal,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
 "ax" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"ay" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/surface/table,
-/obj/item/weapon/gun/revolver/cmb,
-/obj/item/ammo_magazine/revolver/cmb,
-/obj/item/ammo_magazine/revolver/cmb,
-/obj/item/ammo_magazine/revolver/cmb,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "red"
-	},
-/area/lv624/lazarus/security)
 "az" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/east_central_jungle)
-"aA" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/item/stack/sheet/metal,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"aB" = (
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	locked = 1;
-	name = "\improper Nexus Dome Armory"
-	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
 "aC" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -278,17 +103,6 @@
 "aS" = (
 /turf/open/floor/platingdmg3,
 /area/lv624/lazarus/main_hall)
-"aT" = (
-/obj/structure/machinery/door_control{
-	id = "garage_blast";
-	name = "Garage Shutters";
-	pixel_x = -26;
-	range = 200
-	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
 "aU" = (
 /obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/cult,
@@ -306,12 +120,6 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
-"aY" = (
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/main_hall)
 "aZ" = (
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor/cult,

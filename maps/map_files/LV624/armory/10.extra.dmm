@@ -1,253 +1,23 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/main_hall)
-"ab" = (
-/obj/item/stack/sheet/wood,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/main_hall)
-"ac" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellow"
-	},
-/area/lv624/lazarus/main_hall)
-"ad" = (
-/obj/item/phone{
-	desc = "A model of an ancient Earth communication device.";
-	force = 8
-	},
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/lv624/lazarus/main_hall)
-"ae" = (
-/obj/structure/barricade/wooden{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/main_hall)
-"af" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowcorner"
-	},
-/area/lv624/lazarus/main_hall)
-"ag" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteyellow"
-	},
-/area/lv624/lazarus/main_hall)
-"ah" = (
-/obj/structure/machinery/light/small,
-/obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/main_hall)
 "ai" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/armory)
 "aj" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/security)
-"ak" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
-/obj/item/weapon/gun/shotgun/pump,
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/flechette,
-/obj/item/ammo_magazine/shotgun/incendiary,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"al" = (
-/obj/effect/decal/cleanable/cobweb2,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
-/obj/item/reagent_container/hypospray/autoinjector/dexalinp{
-	pixel_x = -2;
-	pixel_y = -2
-	},
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"am" = (
-/obj/structure/target/syndicate,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "red"
-	},
-/area/lv624/lazarus/security)
-"an" = (
-/obj/structure/machinery/deployable/barrier,
-/obj/effect/decal/cleanable/cobweb,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"ao" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
-/obj/item/weapon/gun/pistol/highpower,
-/obj/item/ammo_magazine/pistol/highpower,
-/obj/item/ammo_magazine/pistol/highpower,
-/obj/item/ammo_magazine/pistol/highpower,
-/obj/item/explosive/grenade/flashbang,
-/obj/item/explosive/grenade/flashbang,
-/obj/item/ammo_magazine/shotgun/beanbag,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"ap" = (
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"aq" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/crap_item,
-/obj/item/ammo_magazine/smg/m39/extended,
-/obj/item/weapon/gun/smg/m39,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"ar" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "red"
-	},
-/area/lv624/lazarus/security)
-"as" = (
-/obj/structure/machinery/deployable/barrier,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"at" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "red"
-	},
-/area/lv624/lazarus/security)
-"au" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
 "av" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/red/northeast,
 /area/lv624/lazarus/security)
-"aw" = (
-/obj/item/storage/toolbox/syndicate,
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/crap_item,
-/obj/item/ammo_magazine/smg/m39/extended,
-/obj/item/weapon/gun/smg/m39,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
 "ax" = (
 /obj/structure/target/syndicate,
 /turf/open/floor/red/northeast,
 /area/lv624/lazarus/security)
-"ay" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/surface/table,
-/obj/item/weapon/gun/revolver/cmb,
-/obj/item/ammo_magazine/revolver/cmb,
-/obj/item/ammo_magazine/revolver/cmb,
-/obj/item/ammo_magazine/revolver/cmb,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "red"
-	},
-/area/lv624/lazarus/security)
 "az" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/east_central_jungle)
-"aA" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"aB" = (
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	locked = 1;
-	name = "\improper Nexus Dome Armory"
-	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"aC" = (
-/obj/structure/surface/rack,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/structure/machinery/door_control{
-	id = "garage_blast";
-	name = "Garage Shutters";
-	pixel_x = -26;
-	range = 200
-	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
 "aD" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -282,12 +52,6 @@
 /obj/item/ammo_magazine/smg/m39/extended,
 /obj/item/weapon/gun/smg/m39,
 /turf/open/floor/cult,
-/area/lv624/lazarus/armory)
-"aH" = (
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "cult"
-	},
 /area/lv624/lazarus/armory)
 "aI" = (
 /obj/structure/barricade/wooden{

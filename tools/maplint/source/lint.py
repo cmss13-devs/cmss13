@@ -268,7 +268,7 @@ class Rules:
         if(typepath_dir_suggestion != ""):
             dm_sub_suggestion = dm_suggestion
             dm_suggestion = f"{typepath_dir_suggestion}\n"
-            dm_suggestion += f"\t{var_name} = {dir_var.upper()}\n\n"
+            dm_suggestion += f"\tdir = {dir_var.upper()}\n\n"
             path_suggestion += f"}} : {typepath_dir_suggestion}\n"
 
         return path_suggestion, dm_suggestion, dm_sub_suggestion

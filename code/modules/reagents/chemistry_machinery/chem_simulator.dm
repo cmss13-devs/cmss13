@@ -295,7 +295,7 @@
 			stop_processing()
 			icon_state = "modifier"
 			simulating = SIMULATION_STAGE_OFF
-		if("toogle_flag")
+		if("toggle_flag")
 			var/flag_value = params["flag_id"]
 			if(template_filter & flag_value)
 				template_filter &= ~flag_value
@@ -316,7 +316,7 @@
 							continue
 						target_property = known_prop
 				if(!target_property)
-					to_chat(usr, SPAN_WARNING("The [src] makes a suspcious vail."))
+					to_chat(usr, SPAN_WARNING("The [src] makes a suspicious wail."))
 					return
 				calculate_creation_cost()
 		if("select_overdose")
@@ -356,7 +356,7 @@
 			calculate_creation_cost()
 		if("change_complexity")
 			var/slot = params["complexity_slot"]
-			var/new_rarity = tgui_input_list(usr, "Set chemical rarity for complexity slot [slot]:","[src]", list("BASIC (+7)","COMMON (+4)","UNCOMMON (1)","RARE (-5)"))
+			var/new_rarity = tgui_input_list(usr, "Set chemical rarity for complexity slot [slot]:", "[src]", list("BASIC (+7)", "COMMON (+4)", "UNCOMMON (1)", "RARE (-5)"))
 			if(!new_rarity || simulating != SIMULATION_STAGE_OFF)
 				return
 			switch(new_rarity)

@@ -531,7 +531,7 @@ export const CreateControl = (props) => {
           <Button
             fluid
             onClick={() => {
-              act('toogle_flag', {
+              act('toggle_flag', {
                 flag_id: flag[1],
               });
             }}

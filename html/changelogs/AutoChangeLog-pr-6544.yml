@@ -1,0 +1,5 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - bugfix: "Demolitions scanner now properly works for incinerator tanks."
+  - spellcheck: "Fixed some capitalization with custom incinerator tanks."

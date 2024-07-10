@@ -1,0 +1,4 @@
+author: "blackdragonTOW"
+delete-after: True
+changes:
+  - soundadd: "Power Loader sounds have been normalized to -6db"

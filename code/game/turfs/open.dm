@@ -1260,7 +1260,7 @@
 	supports_surgery = TRUE
 
 /turf/open/shuttle/dropship/can_surgery/dark_grey_bottom
-	supports_surgery = TRUE
+	icon_state = "rasputin12"
 
 /turf/open/shuttle/dropship/can_surgery/light_grey_top
 	icon_state = "rasputin10"

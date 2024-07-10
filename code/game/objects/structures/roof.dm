@@ -149,5 +149,5 @@
 	connected_roof -= roof
 	if(!length(connected_roof))
 		for(var/obj/effect/roof_node/roof_node in connected_nodes)
-			roof_node.linked_master = null
+			roof_node.Destroy()
 		qdel(src)

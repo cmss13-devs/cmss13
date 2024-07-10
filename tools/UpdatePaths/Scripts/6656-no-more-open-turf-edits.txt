@@ -151,7 +151,7 @@
 /turf/open/floor/almayer_hull{dir=9;icon_state="outerhull_dir";} : /turf/open/floor/almayer_hull/outerhull_dir/northwest
 /turf/open/floor/almayer_hull{icon_state="outerhull_dir";} : /turf/open/floor/almayer_hull/outerhull_dir
 /turf/open/floor/almayer{allow_construction=0;icon_state="plate";} : /turf/open/floor/almayer/no_build/plate
-/turf/open/floor/almayer{allow_construction=0;} : /turf/open/floor/almayer//turf/open/floor/almayer/no_build
+/turf/open/floor/almayer{allow_construction=0;} : /turf/open/floor/almayer/no_build
 /turf/open/floor/almayer{desc="There's a hatch above it, presumably to allow pods to drop in.";icon_state="test_floor4";name="pod landing floor";} : /turf/open/floor/almayer/pod_landing_floor
 /turf/open/floor/almayer{dir=10;icon_state="blue";} : /turf/open/floor/almayer/blue/southwest
 /turf/open/floor/almayer{dir=10;icon_state="cargo";} : /turf/open/floor/almayer/cargo/southwest

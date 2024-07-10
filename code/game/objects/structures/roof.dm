@@ -6,10 +6,10 @@
 	density = FALSE
 	layer = ABOVE_XENO_LAYER
 	health = 6000
-	var/image/under_image
+	var/image/under_image //immage that is used when there is mob on connected node, displayed only to mobs under it not others
 	var/image/normal_image
 	var/datum/roof_master_node/linked_master
-	var/lazy_nodes = TRUE
+	var/lazy_nodes = TRUE //if roof should create nodes that watch around it on spawn
 
 
 /obj/structure/roof/Initialize()
@@ -25,7 +25,7 @@
 
 	for(var/icon in GLOB.player_list)
 		add_default_image(SSdcs, icon)
-	if(lazy_nodes)
+	if(lazy_nodes) //creates new node on each surounding tile if there is not one already
 		var/obj/effect/roof_node/neighbor = locate() in src.loc
 		if(!neighbor)
 			neighbor = new(src.loc)
@@ -36,15 +36,15 @@
 				neighbor = new(adjacent_loc)
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/structure/roof/LateInitialize()
+/obj/structure/roof/LateInitialize() //we use late init to allow for lazy nodes to spawn first on mapload
 	. = ..()
 	if(!linked_master)
-		for(var/direction in CARDINAL_ALL_DIRS)
+		for(var/direction in CARDINAL_ALL_DIRS) //this searches if there is lattice with master already, to work with runtime creation
 			for(var/obj/structure/roof/roof in get_step(src,direction))
 				if(roof.linked_master)
 					roof.linked_master.connect(loc)
 					return
-		var/datum/roof_master_node/roof_master_node = new(loc)
+		var/datum/roof_master_node/roof_master_node = new(loc) //no master and no lattice to connect to, create new master
 		roof_master_node.connect(loc)
 
 /obj/structure/roof/proc/add_default_image(subsystem, mob/mob)
@@ -53,12 +53,13 @@
 
 /obj/structure/roof/Destroy()
 	linked_master.remove_roof(src)
+	linked_master = null
 	for(var/icon in GLOB.player_list)
 		var/mob/mob = icon
 		mob.client.images -= normal_image
 	return ..()
 
-/obj/structure/roof/proc/link_master(datum/roof_master_node/master)
+/obj/structure/roof/proc/link_master(datum/roof_master_node/master) //performs bfs and connects to master
 	if(linked_master != null)
 		return
 	master.connected_roof += src
@@ -67,7 +68,7 @@
 		for(var/obj/structure/roof/roof in get_step(src,direction))
 			roof.link_master(master)
 
-/obj/effect/roof_node
+/obj/effect/roof_node //used for observing if mob is near the roof
 	name = "roof_node"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -82,7 +83,7 @@
 		var/mob/living/mob = mover
 		linked_master.add_under_roof(mob)
 
-/obj/effect/roof_node/proc/link_master(datum/roof_master_node/master)
+/obj/effect/roof_node/proc/link_master(datum/roof_master_node/master) //performs bfs and connects to master
 	if(linked_master != null)
 		return
 	master.connected_nodes += src
@@ -93,13 +94,13 @@
 
 
 
-/datum/roof_master_node
+/datum/roof_master_node //maintains one block of roof
 	var/list/connected_nodes = list()
 	var/list/connected_roof = list()
 	var/list/mobs_under = list()
 	var/location
 
-/datum/roof_master_node/proc/add_under_roof(mob/living/living)
+/datum/roof_master_node/proc/add_under_roof(mob/living/living) //mob crossed connected node
 	if(living in mobs_under)
 		return
 	mobs_under += living
@@ -116,7 +117,7 @@
 		mob.client.images -= roof.normal_image
 		mob.client.images += roof.under_image
 
-/datum/roof_master_node/proc/remove_under_roof(mob/living/living)
+/datum/roof_master_node/proc/remove_under_roof(mob/living/living) //mob is no longer under roof
 	SIGNAL_HANDLER
 	if(living.client)
 		for(var/obj/structure/roof/roof in connected_roof)
@@ -131,12 +132,11 @@
 
 
 
-/datum/roof_master_node/proc/check_under_roof(mob/living/living)
+/datum/roof_master_node/proc/check_under_roof(mob/living/living) //check if the mob is under connected roof
 	SIGNAL_HANDLER
 	for(var/obj/effect/roof_node/roof in connected_nodes)
 		if(living.loc == roof.loc)
 			return
-
 	remove_under_roof(living)
 
 /datum/roof_master_node/proc/connect(location)
@@ -145,7 +145,9 @@
 	for(var/obj/structure/roof/roof in location)
 		roof.link_master(src)
 
-/datum/roof_master_node/proc/remove_roof(obj/structure/roof/roof)
+/datum/roof_master_node/proc/remove_roof(obj/structure/roof/roof) //roof tile got removed
 	connected_roof -= roof
 	if(!length(connected_roof))
+		for(var/obj/effect/roof_node/roof_node in connected_nodes)
+			roof_node.linked_master = null
 		qdel(src)

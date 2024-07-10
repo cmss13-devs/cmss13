@@ -17,12 +17,12 @@
 	},
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
-"h" = (
-/obj/item/stack/sheet/metal/small_stack,
-/turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "multi_tiles"
-	},
+"g" = (
+/turf/open/floor/shiva/floor3,
+/area/shiva/exterior/lz2_fortress)
+"i" = (
+/obj/item/stack/snow,
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "k" = (
 /obj/item/stack/sheet/metal/small_stack,
@@ -35,39 +35,17 @@
 	},
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
-"o" = (
-/turf/open/floor/shiva{
-	dir = 1
-	},
+"m" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "p" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
-"q" = (
-/obj/structure/machinery/power/apc/directional/no_power/west,
-/turf/open/floor/plating,
-/area/shiva/exterior/cp_lz2)
-"r" = (
+"v" = (
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/exterior/lz2_fortress)
-"t" = (
-/turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "multi_tiles"
-	},
-/area/shiva/exterior/lz2_fortress)
-"u" = (
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = 12;
-	pixel_y = 25
-	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/exterior/lz2_fortress)
 "w" = (
 /obj/structure/machinery/landinglight/ds2/spoke{
@@ -76,6 +54,10 @@
 	},
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
+"y" = (
+/obj/structure/machinery/power/apc/directional/no_power/west,
+/turf/open/floor/plating,
+/area/shiva/exterior/cp_lz2)
 "z" = (
 /obj/structure/machinery/landinglight/ds2/spoke{
 	pixel_x = -2;
@@ -94,41 +76,41 @@
 "B" = (
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
+"C" = (
+/obj/structure/machinery/power/apc/directional/no_power/east,
+/turf/open/floor/shiva/north,
+/area/shiva/exterior/lz2_fortress)
 "D" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
-"F" = (
-/obj/item/stack/snow,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+"G" = (
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/exterior/lz2_fortress)
-"J" = (
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+"H" = (
+/obj/structure/foamed_metal,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
-"L" = (
+"I" = (
+/turf/open/floor/shiva/multi_tiles/east,
+/area/shiva/exterior/lz2_fortress)
+"N" = (
+/turf/open/floor/shiva/north,
+/area/shiva/exterior/lz2_fortress)
+"P" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 2.99;
 	pixel_x = 12;
 	pixel_y = 28
 	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
-"O" = (
-/obj/effect/decal/cleanable/ash,
-/turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "multi_tiles"
+"R" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 12;
+	pixel_y = 25
 	},
-/area/shiva/exterior/lz2_fortress)
-"Q" = (
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "T" = (
 /turf/open/auto_turf/snow/layer0,
@@ -136,37 +118,28 @@
 "V" = (
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
-"Y" = (
-/obj/structure/machinery/power/apc/directional/no_power/east,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/exterior/lz2_fortress)
-"Z" = (
-/obj/structure/foamed_metal,
-/obj/effect/decal/cleanable/ash,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+"X" = (
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/exterior/lz2_fortress)
 
 (1,1,1) = {"
-Y
-o
-L
-Q
-Q
-o
-u
-Z
+C
+N
+P
+g
+g
+N
+R
+H
 "}
 (2,1,1) = {"
 a
 w
-J
-h
-O
-J
+G
+X
+v
+G
 l
 a
 "}
@@ -183,20 +156,20 @@ a
 (4,1,1) = {"
 a
 a
-o
-o
-o
-o
+N
+N
+N
+N
 a
 a
 "}
 (5,1,1) = {"
 a
 a
-o
-o
-r
-F
+N
+N
+m
+i
 a
 a
 "}
@@ -213,15 +186,15 @@ a
 (7,1,1) = {"
 a
 z
-J
-O
-t
-J
+G
+v
+I
+G
 f
 a
 "}
 (8,1,1) = {"
-q
+y
 B
 A
 T

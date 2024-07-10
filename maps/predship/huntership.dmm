@@ -2,16 +2,6 @@
 "aa" = (
 /turf/open/space,
 /area/space)
-"ab" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/stack/sheet/animalhide/xeno/kinghide,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "ac" = (
 /obj/structure/shuttle/engine/propulsion/burst/right{
 	color = "#aba9a9";
@@ -119,80 +109,11 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
-"an" = (
-/obj/structure/machinery/medical_pod/autodoc{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"ao" = (
-/obj/item/clothing/yautja_cape/ceremonial{
-	anchored = 1;
-	color = "#292b29";
-	pixel_x = 2;
-	pixel_y = 32
-	},
-/obj/item/clothing/shoes/yautja/hunter{
-	anchored = 1;
-	color = "#FFE55C";
-	icon_state = "y-boots2";
-	pixel_y = 29
-	},
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1;
-	color = "#FFE55C";
-	icon_state = "halfarmor_elder_n";
-	pixel_y = 30
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	color = "#FFE55C";
-	icon_state = "pred_mask_elder_n";
-	pixel_y = 29
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "ap" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082"
 	},
 /turf/open/shuttle/predship,
-/area/yautja)
-"aq" = (
-/obj/item/clothing/yautja_cape/ceremonial{
-	anchored = 1;
-	color = "#292b29";
-	pixel_x = 2;
-	pixel_y = 32
-	},
-/obj/item/clothing/shoes/yautja/hunter{
-	anchored = 1;
-	color = "#FFE55C";
-	icon_state = "y-boots2";
-	pixel_y = 30
-	},
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1;
-	color = "#FFE55C";
-	icon_state = "halfarmor_elder_joshuu";
-	pixel_y = 30
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	color = "#FFE55C";
-	icon_state = "pred_mask_elder_joshuu";
-	pixel_y = 30
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
 /area/yautja)
 "ar" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
@@ -200,53 +121,6 @@
 	name = "\improper Wargear Storage"
 	},
 /turf/open/shuttle/predship,
-/area/yautja)
-"as" = (
-/obj/structure/pipes/standard/simple/hidden{
-	dir = 6
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"at" = (
-/obj/structure/machinery/cryo_cell,
-/obj/structure/pipes/standard/cap/hidden{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"au" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced{
-	dir = 1;
-	health = 80;
-	pixel_y = 16
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"av" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/device/flashlight/lamp,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
 /area/yautja)
 "aw" = (
 /obj/structure/curtain/red,
@@ -285,127 +159,6 @@
 /obj/item/clothing/under/chainshirt/thrall,
 /turf/open/floor/sandstone/runed,
 /area/yautja)
-"aB" = (
-/obj/structure/closet/crate/critter,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"aC" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"aD" = (
-/obj/structure/xenoautopsy/tank/hugger,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"aE" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/surgery/cautery/predatorcautery,
-/obj/item/tool/surgery/circular_saw/predatorbonesaw,
-/obj/item/tool/surgery/hemostat/predatorhemostat,
-/obj/item/tool/surgery/retractor/predatorretractor,
-/obj/item/tool/surgery/scalpel/predatorscalpel,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"aF" = (
-/obj/item/clothing/gloves/yautja/hunter{
-	anchored = 1;
-	can_block_movement = 1;
-	charge = 1;
-	charge_max = 1;
-	color = "#a8a7a5";
-	density = 1;
-	desc = "The ship's on-board self destruct system, let's hope you never have to use it.";
-	name = "Self Destruct System"
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"aG" = (
-/obj/structure/machinery/power/smes/magical{
-	capacity = 9e+008;
-	charge = 9e+008;
-	dir = 4;
-	name = "plasma power generator"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"aI" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 1
-	},
-/obj/item/device/flashlight/slime,
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"aK" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 1
-	},
-/obj/item/device/flashlight/slime,
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
-	dir = 4;
-	icon_state = "phoronrwindow"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"aL" = (
-/obj/structure/machinery/power/terminal{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"aN" = (
-/obj/structure/machinery/computer/cryopod/yautja,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "aP" = (
 /obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
@@ -413,127 +166,15 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"aQ" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/surgery/FixOVein/predatorFixOVein,
-/obj/item/tool/surgery/bonegel/predatorbonegel,
-/obj/item/tool/surgery/bonesetter/predatorbonesetter,
-/obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "aT" = (
 /obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Operation Room"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"aV" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/weapon/yautja/knife,
-/obj/item/reagent_container/hypospray/autoinjector/yautja,
-/obj/item/reagent_container/hypospray/autoinjector/yautja,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"aW" = (
-/obj/structure/machinery/optable,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"aX" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/effect/decal/remains/xeno{
-	pixel_x = -31
-	},
-/obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
-	dir = 4;
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "terminal";
-	name = "Radar Console";
-	pixel_x = -7
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"aY" = (
-/obj/structure/machinery/portable_atmospherics/canister/oxygen,
-/obj/structure/pipes/portables_connector{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"bb" = (
-/obj/structure/pipes/standard/simple/hidden{
-	dir = 4
-	},
-/obj/structure/machinery/computer/crew/alt/yautja{
-	pixel_y = 24
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"bc" = (
-/obj/structure/machinery/cryopod{
-	dir = 1
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
 "bd" = (
 /obj/effect/step_trigger/teleporter/yautja_ship,
 /turf/open/floor/light,
-/area/yautja)
-"be" = (
-/obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Blooded Teleporter"
-	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"bg" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
 /area/yautja)
 "bj" = (
 /turf/closed/wall/huntership,
@@ -550,29 +191,6 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"bn" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/weapon/harpoon/yautja,
-/obj/item/weapon/harpoon/yautja,
-/obj/item/weapon/harpoon/yautja,
-/obj/item/weapon/harpoon/yautja,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"bo" = (
-/obj/structure/machinery/body_scanconsole{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "bp" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
@@ -580,32 +198,9 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"bq" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/weapon/gun/energy/yautja/plasma_caster{
-	anchored = 1;
-	desc = "A powerful, shoulder-mounted energy weapon. This one is damaged beyond use.";
-	name = "damaged plasma caster"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "br" = (
 /obj/item/stool,
 /turf/open/shuttle/predship,
-/area/yautja)
-"bs" = (
-/obj/structure/machinery/medical_pod/bodyscanner{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
 /area/yautja)
 "bu" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
@@ -613,13 +208,6 @@
 	name = "\improper Burial Room"
 	},
 /turf/open/shuttle/predship,
-/area/yautja)
-"bv" = (
-/obj/structure/closet/coffin/predator,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
 /area/yautja)
 "bw" = (
 /obj/structure/pipes/standard/simple/hidden,
@@ -632,61 +220,6 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"by" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	name = "alien sarcophagus"
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	pixel_y = 20
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"bz" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"bA" = (
-/obj/structure/machinery/chem_dispenser{
-	req_skill_level = 2
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"bC" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/weapon/sword/machete/arnold{
-	anchored = 1;
-	desc = "Won by an Elder during their youthful hunting days. None are allowed to touch it.";
-	name = "\improper Dutch's Machete"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "bD" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
@@ -695,60 +228,17 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/yautja,
 /turf/open/shuttle/predship,
 /area/yautja)
-"bE" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "bG" = (
 /obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Cooler Room"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"bH" = (
-/obj/structure/closet,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"bI" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"bJ" = (
-/obj/structure/pipes/unary/freezer{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "bK" = (
 /obj/structure/pipes/standard/simple/hidden{
 	dir = 4
 	},
 /turf/open/shuttle/predship,
-/area/yautja)
-"bL" = (
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
 /area/yautja)
 "bM" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -761,29 +251,6 @@
 /turf/closed/wall/cult{
 	hull = 1;
 	name = "runed hull"
-	},
-/area/yautja)
-"bO" = (
-/obj/structure/bed/alien{
-	color = "#aba9a9"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"bQ" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/weapon/zombie_claws{
-	anchored = 1;
-	desc = "Claws from a creature that defies nature, you dare not touch it.";
-	force = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
 	},
 /area/yautja)
 "bS" = (
@@ -836,32 +303,6 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"bY" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/stack/sheet/xenochitin,
-/obj/item/stack/sheet/xenochitin,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"bZ" = (
-/obj/item/storage/fancy/candle_box,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"ca" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
-/turf/open/gm/dirtgrassborder/weedable{
-	icon_state = "grass1"
-	},
-/area/yautja)
 "cb" = (
 /obj/structure/machinery/door_control{
 	id = "Cell Lockdown 2";
@@ -880,16 +321,6 @@
 	dir = 1
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
-/area/yautja)
-"cd" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/effect/spawner/random/toy,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
 /area/yautja)
 "ce" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
@@ -935,23 +366,6 @@
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
-"cj" = (
-/obj/structure/machinery/medical_pod/sleeper,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cl" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/alienjar,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "cm" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Prisoner Cell 3";
@@ -976,29 +390,6 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"co" = (
-/obj/structure/machinery/gravity_generator,
-/obj/structure/window/phoronreinforced{
-	icon_state = "phoronrwindow"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cq" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "cr" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -1012,49 +403,6 @@
 	name = "\improper Fore Rooms"
 	},
 /turf/open/shuttle/predship,
-/area/yautja)
-"cu" = (
-/obj/item/reagent_container/food/snacks/stew{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/reagent_container/food/snacks/stew{
-	pixel_x = -4;
-	pixel_y = 3
-	},
-/obj/item/reagent_container/food/snacks/stew{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/reagent_container/food/snacks/stew{
-	pixel_x = -2;
-	pixel_y = 3
-	},
-/obj/item/reagent_container/food/snacks/stew{
-	pixel_y = 3
-	},
-/obj/item/reagent_container/food/snacks/stew{
-	pixel_y = 3
-	},
-/obj/structure/closet/secure_closet/freezer/fridge{
-	locked = 0
-	},
-/obj/item/reagent_container/food/snacks/xemeatpie{
-	name = "Elite Hunter's Xenopie"
-	},
-/obj/item/reagent_container/food/snacks/xemeatpie{
-	name = "Elite Hunter's Xenopie"
-	},
-/obj/item/reagent_container/food/snacks/xemeatpie{
-	name = "Elite Hunter's Xenopie"
-	},
-/obj/item/reagent_container/food/snacks/xemeatpie{
-	name = "Elite Hunter's Xenopie"
-	},
-/turf/open/floor{
-	dir = 10;
-	icon_state = "darkred2"
-	},
 /area/yautja)
 "cv" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1087,50 +435,6 @@
 /obj/item/clothing/mask/muzzle,
 /turf/open/shuttle/predship,
 /area/yautja)
-"cx" = (
-/obj/structure/machinery/autodoc_console,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cy" = (
-/obj/structure/machinery/gravity_generator,
-/obj/structure/window/phoronreinforced{
-	icon_state = "phoronrwindow"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4;
-	icon_state = "phoronrwindow"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cz" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/stack/sheet/animalhide/xeno{
-	color = "#7899ab";
-	desc = "A strange hide from an enigmatic creature.";
-	name = "deacon hide"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cA" = (
-/obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Elder Teleporter"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "cB" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
@@ -1138,139 +442,12 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"cC" = (
-/obj/structure/machinery/autolathe/yautja,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cE" = (
-/obj/structure/machinery/prop/almayer/CICmap/yautja,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "cF" = (
 /obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Engine Room"
 	},
 /turf/open/shuttle/predship,
-/area/yautja)
-"cG" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 9;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"cH" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/device/encryptionkey/yautja{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/device/encryptionkey/yautja{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/device/encryptionkey/yautja{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/device/encryptionkey/yautja{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/device/encryptionkey/yautja{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/device/encryptionkey/yautja{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/device/encryptionkey/yautja{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/device/encryptionkey/yautja{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/device/encryptionkey/yautja{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/device/encryptionkey/yautja{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/device/radio/headset/yautja{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/obj/item/device/radio/headset/yautja{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/obj/item/device/radio/headset/yautja{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/obj/item/device/radio/headset/yautja{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/obj/item/device/radio/headset/yautja{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/obj/item/device/radio/headset/yautja{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/obj/item/device/radio/headset/yautja{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/obj/item/device/radio/headset/yautja{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/obj/item/device/radio/headset/yautja{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/obj/item/device/radio/headset/yautja{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cI" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/weapon/twohanded/sledgehammer{
-	anchored = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
 /area/yautja)
 "cJ" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1338,142 +515,32 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"cN" = (
-/obj/structure/cryofeed,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cO" = (
-/obj/structure/cryofeed/right,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "cP" = (
 /turf/open/shuttle/predship,
 /area/yautja)
-"cQ" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cR" = (
+"da" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/effect/decal/remains/xeno{
-	pixel_x = 33
+/obj/structure/machinery/microwave{
+	pixel_y = 4
 	},
-/obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
-	dir = 8;
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "terminal";
-	name = "Radar Console";
-	pixel_x = 7
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/shuttle/predship,
 /area/yautja)
-"cS" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+"dm" = (
+/obj/structure/machinery/door_control{
+	id = "Cell Lockdown 5";
+	name = "Cell Lockdown 5";
+	pixel_x = -7;
+	pixel_y = 9;
+	req_one_access_txt = "390;391;392"
 	},
-/obj/item/clothing/shoes/combat,
-/obj/item/clothing/under/chainshirt/hunter,
-/obj/item/clothing/gloves/combat,
-/obj/item/clothing/head/helmet/gladiator,
-/obj/item/clothing/suit/armor/gladiator,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/closed/wall/huntership,
 /area/yautja)
-"cT" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/tool/pickaxe,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+"dw" = (
+/turf/open/gm/dirtgrassborder/south,
 /area/yautja)
-"cU" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/tool/extinguisher,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cV" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/weldingtool/hugetank,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cW" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/stack/cable_coil,
-/obj/item/tool/screwdriver{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cX" = (
+"dA" = (
 /obj/item/storage/backpack/yautja,
 /obj/item/storage/backpack/yautja,
 /obj/item/storage/backpack/yautja,
@@ -1494,156 +561,13 @@
 /obj/item/device/healthanalyzer/alien,
 /obj/item/device/healthanalyzer/alien,
 /obj/item/device/healthanalyzer/alien,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"cY" = (
-/obj/item/tool/kitchen/tray{
-	pixel_y = -3
-	},
-/obj/item/reagent_container/food/snacks/meat/corgi,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"cZ" = (
-/obj/structure/machinery/prop/almayer/CICmap/yautja,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"da" = (
+"dB" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/structure/machinery/microwave{
-	pixel_y = 4
-	},
-/turf/open/shuttle/predship,
-/area/yautja)
-"db" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/tool/pickaxe/jackhammer,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"dc" = (
-/obj/structure/machinery/door/airlock/yautja/secure{
-	dir = 1;
-	name = "\improper Research Containment"
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"de" = (
-/obj/structure/kitchenspike,
-/obj/item/reagent_container/food/snacks/meat/xenomeat,
-/obj/item/reagent_container/food/snacks/meat/xenomeat,
-/obj/item/reagent_container/food/snacks/meat/xenomeat,
-/obj/item/reagent_container/food/snacks/meat/xenomeat,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "darkred2"
-	},
-/area/yautja)
-"df" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"di" = (
-/obj/item/storage/fancy/egg_box,
-/obj/item/storage/fancy/egg_box,
-/obj/item/reagent_container/food/snacks/grown/tomato,
-/obj/item/reagent_container/food/snacks/grown/tomato,
-/obj/item/reagent_container/food/snacks/grown/tomato,
-/obj/item/reagent_container/food/snacks/grown/tomato,
-/obj/item/reagent_container/food/snacks/grown/tomato,
-/obj/item/reagent_container/food/snacks/grown/tomato,
-/obj/item/reagent_container/food/drinks/soymilk,
-/obj/item/reagent_container/food/drinks/soymilk,
-/obj/item/reagent_container/food/drinks/soymilk,
-/obj/item/reagent_container/food/drinks/soymilk,
-/obj/item/reagent_container/food/drinks/soymilk,
-/obj/item/reagent_container/food/drinks/soymilk,
-/obj/item/reagent_container/food/drinks/soymilk,
-/obj/item/reagent_container/food/drinks/soymilk,
-/obj/item/reagent_container/food/drinks/soymilk,
-/obj/item/reagent_container/food/drinks/soymilk,
-/obj/item/reagent_container/food/drinks/soymilk,
-/obj/structure/closet/secure_closet/freezer/fridge{
-	locked = 0
-	},
-/obj/item/reagent_container/food/snacks/xemeatpie{
-	name = "Elite Hunter's Xenopie"
-	},
-/obj/item/reagent_container/food/snacks/xemeatpie{
-	name = "Elite Hunter's Xenopie"
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkred2"
-	},
-/area/yautja)
-"dj" = (
-/obj/effect/alien/egg/forsaken,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"dk" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 10;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"dl" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"dm" = (
-/obj/structure/machinery/door_control{
-	id = "Cell Lockdown 5";
-	name = "Cell Lockdown 5";
-	pixel_x = -7;
-	pixel_y = 9;
-	req_one_access_txt = "390;391;392"
-	},
-/turf/closed/wall/huntership,
-/area/yautja)
-"dw" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "dI" = (
 /turf/open/space/basic,
@@ -1661,62 +585,7 @@
 /obj/structure/barricade/handrail/strata,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/yautja)
-"er" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 9;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"eS" = (
-/obj/item/stack/sheet/animalhide/xeno{
-	anchored = 1;
-	name = "Warrior Hide";
-	pixel_y = 30
-	},
-/turf/open/shuttle/predship,
-/area/yautja)
-"eT" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"eY" = (
-/obj/structure/bed/chair/hunter{
-	dir = 4
-	},
-/turf/open/shuttle/predship,
-/area/yautja)
-"fb" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkred2"
-	},
-/area/yautja)
-"fg" = (
-/obj/item/map/current_map,
-/obj/item/device/flashlight/lantern,
-/obj/structure/closet,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"fj" = (
-/obj/structure/machinery/cryopod,
-/turf/open/shuttle/predship,
-/area/yautja)
-"fo" = (
+"em" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
@@ -1729,18 +598,91 @@
 	health = 80
 	},
 /obj/item/storage/box/bracer,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"fq" = (
-/obj/structure/window/framed/colony/reinforced/hull{
-	color = "#aba9a9"
+"eq" = (
+/obj/structure/machinery/optable,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"eJ" = (
+/obj/structure/closet/crate/secure{
+	req_one_access_txt = "392";
+	color = "#6b675e";
+	name = "Secure Yautja crate"
 	},
-/turf/open/floor/holofloor{
-	icon_state = "cult"
+/obj/item/weapon/yautja/combistick,
+/obj/item/weapon/yautja/combistick{
+	pixel_x = -4;
+	pixel_y = 4
 	},
+/obj/item/weapon/twohanded/yautja/glaive/alt,
+/obj/item/weapon/yautja/chain,
+/obj/item/weapon/yautja/sword,
+/obj/item/weapon/yautja/scythe,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"eK" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/weldingtool/hugetank,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"eS" = (
+/obj/item/stack/sheet/animalhide/xeno{
+	anchored = 1;
+	name = "Warrior Hide";
+	pixel_y = 30
+	},
+/turf/open/shuttle/predship,
+/area/yautja)
+"eY" = (
+/obj/structure/bed/chair/hunter{
+	dir = 4
+	},
+/turf/open/shuttle/predship,
+/area/yautja)
+"fa" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/item/reagent_container/glass/rag/polishing_rag,
+/obj/item/reagent_container/glass/rag/polishing_rag{
+	pixel_x = 9
+	},
+/obj/item/reagent_container/glass/rag/polishing_rag{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"fj" = (
+/obj/structure/machinery/cryopod,
+/turf/open/shuttle/predship,
+/area/yautja)
+"fy" = (
+/obj/item/reagent_container/food/snacks/xenomeatbreadslice,
+/obj/item/reagent_container/food/snacks/xenomeatbreadslice,
+/obj/item/reagent_container/food/snacks/xenomeatbreadslice,
+/obj/item/reagent_container/food/snacks/xenomeatbreadslice,
+/obj/item/reagent_container/food/snacks/xenomeatbreadslice,
+/obj/item/reagent_container/food/snacks/tomatomeat,
+/obj/item/reagent_container/food/snacks/tomatomeat,
+/obj/item/reagent_container/food/snacks/tomatomeat,
+/obj/item/reagent_container/food/snacks/tomatomeat,
+/obj/item/reagent_container/food/snacks/tomatomeat,
+/obj/structure/closet/secure_closet/freezer/fridge{
+	locked = 0
+	},
+/turf/open/floor/darkred2/northwest,
 /area/yautja)
 "fF" = (
 /obj/structure/surface/rack{
@@ -1773,37 +715,281 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"fI" = (
+"fL" = (
+/obj/item/reagent_container/food/snacks/stew{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/snacks/stew{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/snacks/stew{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/snacks/stew{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/snacks/stew{
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/snacks/stew{
+	pixel_y = 3
+	},
+/obj/structure/closet/secure_closet/freezer/fridge{
+	locked = 0
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
+/turf/open/floor/darkred2/southwest,
+/area/yautja)
+"gB" = (
+/obj/structure/shuttle/window{
+	color = "#6b675e"
+	},
+/turf/open/floor/grey_dark2,
+/area/yautja)
+"gI" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/gm/dirtgrassborder/weedable/grass1,
+/area/yautja)
+"gJ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/stack/sheet/animalhide/xeno{
+	anchored = 1;
+	color = "#524e4e";
+	desc = "An old hide from a fearsome creature.";
+	name = "hunter hide"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"gK" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"gQ" = (
+/obj/item/map/current_map,
+/obj/item/device/flashlight/lantern,
+/obj/structure/closet,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"hf" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/flashlight/lamp,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"fS" = (
-/obj/structure/barricade/handrail/strata,
-/turf/open/gm/dirtgrassborder/weedable{
-	icon_state = "grass1"
+"hm" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
 	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"gb" = (
+"hu" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/darkred2/southwest,
+/area/yautja)
+"hx" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/weapon/yautja/knife,
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"hH" = (
+/obj/structure/machinery/medical_pod/bodyscanner{
+	dir = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"hK" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"hL" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/explosive/grenade/spawnergrenade/spesscarp{
+	anchored = 1;
+	desc = "A strange device taken from a far-off land. It looks incredibly fragile, best not to touch it."
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"hO" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"hQ" = (
+/obj/structure/prop/pred_flight,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"ih" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"iu" = (
+/obj/structure/closet/coffin/predator,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"jd" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/gm/dirtgrassborder/weedable/grass1,
+/area/yautja)
+"jl" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/stack/cable_coil,
+/obj/item/tool/screwdriver{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"jp" = (
+/obj/structure/closet,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"ju" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/tool/crowbar,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"jH" = (
+/turf/open/gm/dirtgrassborder/desert3,
+/area/yautja)
+"jJ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/effect/spawner/random/toy,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"jP" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/weapon/sword{
+	attack_speed = 12;
+	force = 25;
+	name = "duelling claymore"
+	},
+/obj/item/weapon/sword{
+	attack_speed = 12;
+	force = 25;
+	name = "duelling claymore";
+	pixel_x = -5
+	},
+/obj/item/weapon/sword{
+	attack_speed = 12;
+	force = 25;
+	name = "duelling claymore";
+	pixel_x = 5
+	},
+/obj/item/weapon/sword{
+	attack_speed = 12;
+	force = 25;
+	name = "duelling claymore";
+	pixel_x = 10
+	},
+/turf/open/shuttle/predship,
+/area/yautja)
+"kh" = (
+/turf/open/gm/dirtgrassborder/desert1,
+/area/yautja)
+"kw" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"kK" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/weapon/sword/ceremonial,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"kM" = (
+/turf/open/gm/dirtgrassborder/desert0,
+/area/yautja)
+"kQ" = (
+/obj/structure/machinery/computer/cryopod/yautja,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"ly" = (
 /obj/structure/closet/crate{
 	color = "#6b675e"
 	},
@@ -1837,309 +1023,119 @@
 /obj/item/stack/medical/advanced/ointment/predator{
 	pixel_x = -6
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"gp" = (
-/obj/structure/bed/chair/comfy/black,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+"mt" = (
+/obj/item/clothing/yautja_cape/ceremonial{
+	anchored = 1;
+	color = "#292b29";
+	pixel_x = 2;
+	pixel_y = 32
 	},
+/obj/item/clothing/shoes/yautja/hunter{
+	anchored = 1;
+	color = "#FFE55C";
+	icon_state = "y-boots2";
+	pixel_y = 29
+	},
+/obj/item/clothing/suit/armor/yautja/hunter{
+	anchored = 1;
+	color = "#FFE55C";
+	icon_state = "halfarmor_elder_n";
+	pixel_y = 30
+	},
+/obj/item/clothing/mask/gas/yautja/hunter{
+	anchored = 1;
+	color = "#FFE55C";
+	icon_state = "pred_mask_elder_n";
+	pixel_y = 29
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"gr" = (
-/obj/structure/closet/crate/secure{
-	req_one_access_txt = "392";
-	color = "#6b675e";
-	name = "Secure Yautja crate"
-	},
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"gG" = (
-/obj/structure/machinery/door_control{
-	id = "Yautja Armory";
-	name = "Armory Shutters";
-	needs_power = 0;
-	pixel_x = 24;
-	req_one_access_txt = "392"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"gN" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/stack/tile/carpet{
-	amount = 50
-	},
-/obj/item/stack/tile/carpet{
-	amount = 50
-	},
-/obj/item/stack/tile/carpet{
-	amount = 50
-	},
-/obj/item/stack/tile/carpet{
-	amount = 50
-	},
-/obj/item/stack/tile/carpet{
-	amount = 50
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"ha" = (
-/obj/structure/barricade/handrail/strata,
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/gm/dirtgrassborder/weedable{
-	icon_state = "grass1"
-	},
-/area/yautja)
-"hI" = (
-/obj/structure/shuttle/window{
-	color = "#6b675e"
-	},
-/turf/open/floor{
-	color = "#525151";
-	icon_state = "dark2"
-	},
-/area/yautja)
-"hJ" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
-/obj/structure/barricade/handrail/strata{
+"mI" = (
+/obj/structure/machinery/portable_atmospherics/canister/oxygen,
+/obj/structure/pipes/portables_connector{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder/weedable{
-	icon_state = "grass1"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"hY" = (
-/obj/structure/kitchenspike,
-/obj/item/reagent_container/food/snacks/meat,
-/obj/item/reagent_container/food/snacks/meat,
-/obj/item/reagent_container/food/snacks/meat,
-/obj/item/reagent_container/food/snacks/meat,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkred2"
-	},
-/area/yautja)
-"is" = (
-/obj/structure/kitchenspike,
-/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
-/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
-/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
-/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
-/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
-/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
-/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkred2"
-	},
-/area/yautja)
-"iV" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/trash/tray,
-/obj/item/tool/kitchen/utensil/fork{
-	pixel_x = 10;
-	pixel_y = 3
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"jP" = (
+"mS" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/sword{
-	attack_speed = 12;
-	force = 25;
-	name = "duelling claymore"
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"mT" = (
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"nI" = (
+/obj/item/stack/sheet/glass{
+	amount = 50
 	},
-/obj/item/weapon/sword{
-	attack_speed = 12;
-	force = 25;
-	name = "duelling claymore";
-	pixel_x = -5
+/obj/item/stack/sheet/glass{
+	amount = 50
 	},
-/obj/item/weapon/sword{
-	attack_speed = 12;
-	force = 25;
-	name = "duelling claymore";
-	pixel_x = 5
+/obj/item/stack/sheet/glass{
+	amount = 50
 	},
-/obj/item/weapon/sword{
-	attack_speed = 12;
-	force = 25;
-	name = "duelling claymore";
-	pixel_x = 10
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"nL" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/gm/dirtgrassborder/weedable/grass1,
+/area/yautja)
+"nQ" = (
+/obj/structure/pipes/standard/simple/hidden{
+	dir = 4
+	},
+/obj/structure/machinery/computer/crew/alt/yautja{
+	pixel_y = 24
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"nW" = (
+/obj/structure/pipes/standard/simple/hidden{
+	dir = 6
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"jR" = (
-/obj/structure/machinery/sleep_console,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+"ok" = (
+/obj/structure/machinery/power/smes/magical{
+	capacity = 9e+008;
+	charge = 9e+008;
+	dir = 4;
+	name = "plasma power generator"
 	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"jU" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"kA" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/weapon/twohanded/dualsaber{
-	force_wielded = 35
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"lr" = (
-/obj/structure/lamarr,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"lw" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert1"
-	},
-/area/yautja)
-"mn" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/device/flashlight/lantern{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/device/flashlight/lantern{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/device/flashlight/lantern{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/device/flashlight/lantern{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/device/flashlight/lantern{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/device/flashlight/lantern{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/device/flashlight/lantern{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/device/flashlight/lantern{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/device/flashlight/lantern{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/device/flashlight/lantern{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/device/flashlight/lantern{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"mv" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/storage/large_holster/katana,
-/obj/item/weapon/sword/katana,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"nd" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert0"
-	},
-/area/yautja)
-"nh" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"nv" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/structure/machinery/power/apc/almayer/directional/east{
-	pixel_y = 25
-	},
-/obj/item/weapon/twohanded/yautja/spear,
-/obj/item/weapon/twohanded/yautja/spear,
-/obj/item/weapon/twohanded/yautja/spear,
-/obj/item/weapon/twohanded/yautja/spear,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"nT" = (
+"oS" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
@@ -2152,103 +1148,252 @@
 	health = 80
 	},
 /obj/structure/machinery/door/window/southright,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"nW" = (
+"oU" = (
+/obj/structure/machinery/gravity_generator,
+/obj/structure/window/phoronreinforced{
+	icon_state = "phoronrwindow"
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8;
+	icon_state = "phoronrwindow"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"oZ" = (
+/turf/open/gm/dirtgrassborder/desert2,
+/area/yautja)
+"pc" = (
+/obj/structure/bed/chair/hunter{
+	dir = 8
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"ps" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"pG" = (
 /obj/structure/pipes/standard/simple/hidden{
 	dir = 6
 	},
-/turf/open/shuttle/predship,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"ob" = (
+"pL" = (
+/obj/structure/machinery/computer/crew/alt{
+	dir = 1;
+	name = "human monitoring computer"
+	},
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/effect/decal/remains/human{
-	pixel_y = -25
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"ov" = (
+"pN" = (
+/obj/effect/alien/weeds/node/forsaken,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"pP" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/obj/item/device/flashlight/slime,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 8;
+	icon_state = "phoronrwindow"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"qh" = (
+/obj/structure/bed/chair/hunter{
+	dir = 4
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"qk" = (
+/obj/item/weapon/yautja/knife{
+	color = "#FFE55C";
+	name = "sacred ceremonial dagger";
+	pixel_x = 25
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"qm" = (
+/turf/open/floor/dark2,
+/area/yautja)
+"qq" = (
+/obj/structure/window/framed/colony/reinforced/hull{
+	color = "#aba9a9"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"qr" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/stack/yautja_rope,
-/obj/item/stack/yautja_rope,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
 	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"oO" = (
-/obj/item/weapon/yautja/chain{
-	anchored = 1;
-	name = "Houndmaster's Discipline Whip";
-	pixel_x = -3;
-	pixel_y = 29
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"qj" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/tool/crowbar,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"qS" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/reagent_container/food/snacks/xemeatpie{
-	name = "Elite Hunter's Xenopie"
-	},
-/obj/item/tool/kitchen/utensil/fork{
-	pixel_x = 10;
-	pixel_y = 3
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"rt" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/storage/medicomp/full,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"rH" = (
+"qw" = (
 /obj/structure/shuttle/window{
 	color = "#6b675e"
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"rb" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
 	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"rD" = (
+/obj/structure/bed/chair/comfy/black,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"rU" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/weapon/gun/energy/yautja/plasma_caster{
+	anchored = 1;
+	desc = "A powerful, shoulder-mounted energy weapon. This one is damaged beyond use.";
+	name = "damaged plasma caster"
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "rY" = (
 /obj/structure/surface/rack{
@@ -2287,45 +1432,88 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"sx" = (
-/obj/structure/window/framed/colony/reinforced/hull{
-	color = "#aba9a9"
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"sS" = (
+"se" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/sheet/wood{
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"si" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/stack/sheet/metal{
 	amount = 50
 	},
-/obj/item/stack/sheet/wood{
+/obj/item/stack/sheet/metal{
 	amount = 50
 	},
-/obj/item/stack/sheet/wood{
+/obj/item/stack/sheet/metal{
 	amount = 50
 	},
-/obj/item/stack/sheet/wood{
+/obj/item/stack/sheet/metal{
 	amount = 50
 	},
-/obj/item/stack/sheet/wood{
+/obj/item/stack/sheet/metal{
 	amount = 50
 	},
-/obj/item/stack/sheet/wood{
+/obj/item/stack/sheet/metal{
 	amount = 50
 	},
-/obj/item/stack/sheet/wood{
+/obj/item/stack/sheet/metal{
 	amount = 50
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/obj/item/stack/sheet/metal{
+	amount = 50
 	},
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"sw" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"sO" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/effect/decal/remains/xeno{
+	pixel_x = -31
+	},
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	dir = 4;
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "terminal";
+	name = "Radar Console";
+	pixel_x = -7
+	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "sV" = (
 /obj/structure/machinery/door/airlock/yautja{
@@ -2334,78 +1522,26 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"te" = (
-/obj/structure/xenoautopsy/tank/alien,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+"tl" = (
+/obj/structure/machinery/prop/almayer/CICmap/yautja,
+/turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja)
-"ti" = (
-/obj/structure/shuttle/window{
-	color = "#6b675e"
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"tn" = (
+"tL" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/device/flashlight/lamp,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+/obj/item/weapon/zombie_claws{
+	anchored = 1;
+	desc = "Claws from a creature that defies nature, you dare not touch it.";
+	force = 1
 	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"tD" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
+"tN" = (
+/obj/structure/window/framed/colony/reinforced/hull{
+	color = "#aba9a9"
 	},
-/obj/item/stack/sheet/plasteel{
-	amount = 30
-	},
-/obj/item/stack/sheet/plasteel{
-	amount = 30
-	},
-/obj/item/stack/sheet/plasteel{
-	amount = 30
-	},
-/obj/item/stack/sheet/plasteel{
-	amount = 30
-	},
-/obj/item/stack/sheet/plasteel{
-	amount = 30
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"tR" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/frame/table/wood/poor,
-/obj/item/frame/table/wood/poor,
-/obj/item/frame/table/wood/poor,
-/obj/item/frame/table/wood/poor,
-/obj/item/frame/table/wood/poor,
-/obj/item/frame/table/wood/poor,
-/obj/item/frame/table/wood/poor,
-/obj/item/frame/table/wood/poor,
-/obj/item/frame/table/wood/poor,
-/obj/item/frame/table/wood/poor,
-/obj/item/frame/table/wood/poor,
-/obj/item/frame/table/wood/poor,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "uf" = (
 /obj/structure/barricade/handrail/strata{
@@ -2413,83 +1549,71 @@
 	},
 /turf/open/gm/dirtgrassborder/west,
 /area/yautja)
-"uj" = (
-/obj/structure/surface/rack{
+"uC" = (
+/obj/structure/stairs/perspective{
 	color = "#6b675e";
-	layer = 2.79
+	dir = 8;
+	icon_state = "p_stair_full"
 	},
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/obj/item/frame/table/gambling,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"um" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/storage/fancy/candle_box,
-/obj/item/storage/fancy/candle_box,
-/obj/item/storage/fancy/candle_box,
-/obj/item/storage/fancy/candle_box,
-/obj/item/storage/fancy/candle_box,
-/obj/item/storage/fancy/candle_box,
-/obj/item/storage/fancy/candle_box,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+"uH" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"uO" = (
-/obj/structure/bed/chair/hunter{
-	dir = 4
+"uK" = (
+/obj/item/tool/kitchen/tray{
+	pixel_y = -3
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/obj/item/reagent_container/food/snacks/meat/corgi,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"uZ" = (
+"uU" = (
+/obj/structure/cryofeed/right,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"vm" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/sword/ceremonial,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/obj/item/device/flashlight/slime{
+	anchored = 1
 	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"vO" = (
-/obj/structure/machinery/shower{
-	dir = 4
+"vs" = (
+/obj/structure/machinery/gibber,
+/turf/open/floor/darkred2/southeast,
+/area/yautja)
+"vC" = (
+/obj/structure/lamarr,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"vH" = (
+/obj/structure/machinery/door/airlock/yautja/secure{
+	name = "\improper Research Containment"
 	},
-/obj/structure/machinery/door/window/tinted,
-/obj/structure/window/reinforced/tinted,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"vZ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
+/obj/item/stack/sheet/animalhide/xeno{
+	anchored = 1;
+	color = "green";
+	desc = "The skin of a nightmare long thought lost to time.";
+	name = "corroder hide"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"wi" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/storage/medicomp/full,
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "ww" = (
 /obj/item/stack/sheet/animalhide/xeno{
@@ -2499,47 +1623,34 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"wH" = (
+"wM" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/reagent_container/food/snacks/flour,
-/obj/item/reagent_container/food/snacks/flour,
-/obj/item/reagent_container/food/snacks/flour,
-/obj/item/reagent_container/food/snacks/flour,
-/obj/item/reagent_container/food/snacks/flour,
-/obj/item/reagent_container/food/snacks/flour,
-/obj/item/reagent_container/food/snacks/flour,
-/obj/item/reagent_container/food/snacks/flour,
-/obj/item/reagent_container/food/snacks/flour,
-/obj/item/reagent_container/food/snacks/flour,
-/obj/item/reagent_container/food/condiment/sugar,
-/obj/item/reagent_container/food/condiment/sugar,
-/obj/item/reagent_container/food/condiment/sugar,
-/obj/item/reagent_container/food/condiment/sugar,
-/obj/item/reagent_container/food/condiment/sugar,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkred2"
-	},
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"wQ" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+"wP" = (
+/obj/structure/machinery/cryopod,
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "wW" = (
 /obj/structure/barricade/handrail/strata{
@@ -2548,45 +1659,295 @@
 /obj/structure/barricade/handrail/strata,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/yautja)
-"xn" = (
+"xa" = (
+/obj/structure/machinery/vending/dinnerware,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"xh" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/xeno_egg/forsaken,
-/obj/item/xeno_egg/forsaken,
-/obj/item/xeno_egg/forsaken,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/obj/item/weapon/chainofcommand,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"xO" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/stack/sheet/animalhide/xeno{
-	anchored = 1;
-	color = "#524e4e";
-	desc = "An old hide from a fearsome creature.";
-	name = "hunter hide"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+"xk" = (
+/turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja)
-"xQ" = (
+"xG" = (
+/turf/open/gm/dirtgrassborder/desert_dug,
+/area/yautja)
+"xT" = (
+/obj/structure/machinery/cryo_cell,
+/obj/structure/pipes/standard/cap/hidden{
+	dir = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"ye" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	dir = 10;
+	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"yr" = (
+"yw" = (
+/obj/item/clothing/yautja_cape/ceremonial{
+	anchored = 1;
+	color = "#292b29";
+	pixel_x = 2;
+	pixel_y = 32
+	},
+/obj/item/clothing/shoes/yautja/hunter{
+	anchored = 1;
+	color = "#FFE55C";
+	icon_state = "y-boots2";
+	pixel_y = 30
+	},
+/obj/item/clothing/suit/armor/yautja/hunter{
+	anchored = 1;
+	color = "#FFE55C";
+	icon_state = "halfarmor_elder_joshuu";
+	pixel_y = 30
+	},
+/obj/item/clothing/mask/gas/yautja/hunter{
+	anchored = 1;
+	color = "#FFE55C";
+	icon_state = "pred_mask_elder_joshuu";
+	pixel_y = 30
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"yA" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/gm/dirtgrassborder/weedable/grass1,
+/area/yautja)
+"yE" = (
+/obj/structure/kitchenspike,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
+/turf/open/floor/darkred2/northeast,
+/area/yautja)
+"yI" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"yM" = (
+/obj/structure/machinery/chem_dispenser{
+	req_skill_level = 2
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"zg" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/gm/dirtgrassborder/east,
+/area/yautja)
+"zm" = (
+/turf/open/floor/darkred2,
+/area/yautja)
+"zG" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"zW" = (
+/obj/structure/kitchenspike,
+/obj/item/reagent_container/food/snacks/meat/corgi,
+/obj/item/reagent_container/food/snacks/meat/corgi,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
+/turf/open/floor/darkred2/north,
+/area/yautja)
+"Af" = (
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Ao" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/surgery/cautery/predatorcautery,
+/obj/item/tool/surgery/circular_saw/predatorbonesaw,
+/obj/item/tool/surgery/hemostat/predatorhemostat,
+/obj/item/tool/surgery/retractor/predatorretractor,
+/obj/item/tool/surgery/scalpel/predatorscalpel,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"AE" = (
+/obj/structure/machinery/gravity_generator,
+/obj/structure/window/phoronreinforced{
+	icon_state = "phoronrwindow"
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4;
+	icon_state = "phoronrwindow"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"AU" = (
+/obj/structure/closet/crate/secure{
+	req_one_access_txt = "392";
+	color = "#6b675e";
+	name = "Secure Yautja crate"
+	},
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"AY" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/trash/tray,
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Ba" = (
+/obj/structure/machinery/prop/yautja/bubbler,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Be" = (
+/obj/structure/machinery/cryopod/right,
+/turf/open/shuttle/predship,
+/area/yautja)
+"Bt" = (
+/obj/structure/closet/secure_closet/freezer/fridge/groceries,
+/turf/open/floor/darkred2/southeast,
+/area/yautja)
+"BM" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"BO" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/trash/plate,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"BU" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"Cd" = (
+/obj/structure/machinery/prop/almayer/CICmap/yautja,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"Cm" = (
+/obj/structure/kitchenspike,
+/obj/item/reagent_container/food/snacks/meat,
+/obj/item/reagent_container/food/snacks/meat,
+/obj/item/reagent_container/food/snacks/meat,
+/obj/item/reagent_container/food/snacks/meat,
+/turf/open/floor/darkred2/west,
+/area/yautja)
+"Cu" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/storage/large_holster/katana,
+/obj/item/weapon/sword/katana,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"CH" = (
+/obj/item/tool/kitchen/tray{
+	pixel_y = -5
+	},
+/obj/item/reagent_container/food/snacks/bearmeat,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"CN" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Da" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Dr" = (
+/obj/structure/machinery/door/airlock/yautja/secure{
+	indestructible = 1;
+	locked = 1;
+	name = "\improper External Airlock"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/space,
+/area/yautja)
+"Dy" = (
+/obj/structure/machinery/cryopod{
+	dir = 1
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"DA" = (
+/obj/item/storage/fancy/candle_box,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"DL" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/gm/dirtgrassborder/weedable/grass1,
+/area/yautja)
+"DP" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/storage/medicomp/full,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Ef" = (
+/obj/structure/bed/chair/hunter,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Ez" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"EN" = (
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -2599,241 +1960,33 @@
 	color = "#6b675e"
 	},
 /obj/item/storage/box/bracer,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"yH" = (
-/obj/structure/closet/secure_closet/freezer/fridge/groceries,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkred2"
-	},
-/area/yautja)
-"yO" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/kitchen/tray{
-	color = "#FFE55C";
-	pixel_y = 4
-	},
-/obj/item/reagent_container/food/snacks/meatballsoup{
-	pixel_x = 1;
-	pixel_y = 4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"zg" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/turf/open/gm/dirtgrassborder/east,
-/area/yautja)
-"zA" = (
-/turf/open/floor{
-	icon_state = "dark2"
-	},
-/area/yautja)
-"zZ" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"AA" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"Be" = (
-/obj/structure/machinery/cryopod/right,
-/turf/open/shuttle/predship,
-/area/yautja)
-"Bg" = (
-/obj/structure/closet/crate/secure{
-	req_one_access_txt = "392";
-	color = "#6b675e";
-	name = "Secure Yautja crate"
-	},
-/obj/item/weapon/yautja/combistick,
-/obj/item/weapon/yautja/combistick{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/weapon/twohanded/yautja/glaive/alt,
-/obj/item/weapon/yautja/chain,
-/obj/item/weapon/yautja/sword,
-/obj/item/weapon/yautja/scythe,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"Br" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert2"
-	},
-/area/yautja)
-"BK" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/storage/medicomp/full,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"BS" = (
-/obj/structure/machinery/prop/yautja/bubbler,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"Cn" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/reagent_container/glass/beaker/silver,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"Cz" = (
-/obj/item/stack/sheet/animalhide/xeno{
+"EU" = (
+/obj/item/weapon/yautja/chain{
 	anchored = 1;
-	name = "Prime Empress Hide";
-	pixel_y = 30
+	name = "Houndmaster's Discipline Whip";
+	pixel_x = -3;
+	pixel_y = 29
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"CK" = (
-/obj/structure/surface/table/reinforced/prison{
+"EX" = (
+/obj/structure/shuttle/window{
 	color = "#6b675e"
 	},
-/obj/item/tool/kitchen/tray{
-	color = "#FFE55C";
-	pixel_y = 4
-	},
-/obj/item/reagent_container/food/snacks/meatsteak{
-	desc = "A chunk of meat taken from the most worthy foe that could be found in the known universe. Nothing more than a meal for a noble Elder.";
-	name = "Primordial Empress Steak";
-	pixel_y = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"Dk" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/device/flashlight/slime{
-	anchored = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"Dr" = (
-/obj/structure/machinery/door/airlock/yautja/secure{
-	indestructible = 1;
-	locked = 1;
-	name = "\improper External Airlock"
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/space,
-/area/yautja)
-"DF" = (
-/obj/item/reagent_container/food/snacks/xenomeatbreadslice,
-/obj/item/reagent_container/food/snacks/xenomeatbreadslice,
-/obj/item/reagent_container/food/snacks/xenomeatbreadslice,
-/obj/item/reagent_container/food/snacks/xenomeatbreadslice,
-/obj/item/reagent_container/food/snacks/xenomeatbreadslice,
-/obj/item/reagent_container/food/snacks/tomatomeat,
-/obj/item/reagent_container/food/snacks/tomatomeat,
-/obj/item/reagent_container/food/snacks/tomatomeat,
-/obj/item/reagent_container/food/snacks/tomatomeat,
-/obj/item/reagent_container/food/snacks/tomatomeat,
-/obj/structure/closet/secure_closet/freezer/fridge{
-	locked = 0
-	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "darkred2"
-	},
-/area/yautja)
-"DJ" = (
-/obj/structure/machinery/computer/crew/alt{
-	dir = 1;
-	name = "human monitoring computer"
-	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"Es" = (
-/obj/structure/bed/chair/hunter,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"Et" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"Fh" = (
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
+"Fo" = (
+/obj/structure/kitchenspike,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
+/turf/open/floor/darkred2/west,
 /area/yautja)
 "Ft" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -2842,51 +1995,32 @@
 /obj/item/storage/medicomp/full,
 /turf/open/shuttle/predship,
 /area/yautja)
-"Fx" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/showcase{
-	desc = "A console used by the Hunters for navigation purposes.";
-	dir = 8;
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "security_cam";
-	name = "Radar Console"
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"Fy" = (
-/obj/structure/window/framed/colony/reinforced/hull{
-	color = "#aba9a9"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+"FD" = (
+/obj/structure/machinery/autodoc_console,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "FG" = (
 /obj/effect/landmark/clan_spawn,
 /turf/open/shuttle/predship,
 /area/yautja)
+"FS" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/obj/item/device/flashlight/slime,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 4;
+	icon_state = "phoronrwindow"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
 "Gd" = (
 /obj/structure/machinery/door/airlock/yautja/secure,
 /turf/open/shuttle/predship,
 /area/yautja)
-"Gk" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/explosive/grenade/spawnergrenade/spesscarp{
-	anchored = 1;
-	desc = "A strange device taken from a far-off land. It looks incredibly fragile, best not to touch it."
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+"Gj" = (
+/turf/open/floor/darkred2/east,
 /area/yautja)
 "Gr" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -2918,26 +2052,27 @@
 /obj/item/restraint/handcuffs,
 /turf/open/shuttle/predship,
 /area/yautja)
-"GM" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert_dug"
+"Gv" = (
+/obj/structure/bed{
+	color = "#aba9a9"
 	},
+/obj/item/bedsheet/captain{
+	color = "#aba9a9"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"GD" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/alien_embryo,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "GP" = (
 /obj/structure/prop/brazier/torch{
 	pixel_y = -2
 	},
 /turf/closed/wall/mineral/sandstone/runed,
-/area/yautja)
-"GY" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/weapon/chainofcommand,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
 /area/yautja)
 "Ha" = (
 /obj/structure/surface/rack{
@@ -2956,28 +2091,7 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"Hp" = (
-/obj/structure/bed/chair/hunter{
-	dir = 8
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"Hv" = (
-/obj/structure/bed{
-	color = "#aba9a9"
-	},
-/obj/item/bedsheet/captain{
-	color = "#aba9a9"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"HD" = (
+"Hc" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	density = 0;
@@ -2991,41 +2105,29 @@
 /obj/item/weapon/gun/energy/yautja/plasmarifle{
 	pixel_y = 8
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"HN" = (
+"Hg" = (
+/obj/structure/closet/secure_closet/freezer/fridge/groceries,
+/turf/open/floor/darkred2/east,
+/area/yautja)
+"Hi" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"HG" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/structure/window/reinforced{
-	dir = 1;
-	health = 80;
-	pixel_y = 16
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"If" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/weapon/gun/energy/yautja/plasmapistol{
-	pixel_y = -8
-	},
-/obj/item/weapon/gun/energy/yautja/plasmapistol,
-/obj/item/weapon/gun/energy/yautja/plasmapistol{
-	pixel_y = 8
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/obj/item/tool/surgery/FixOVein/predatorFixOVein,
+/obj/item/tool/surgery/bonegel/predatorbonegel,
+/obj/item/tool/surgery/bonesetter/predatorbonesetter,
+/obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "Im" = (
 /obj/structure/surface/rack{
@@ -3057,23 +2159,22 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"Ip" = (
-/obj/structure/barricade/handrail/strata,
-/obj/structure/barricade/handrail/strata{
-	dir = 4
+"Iv" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/turf/open/gm/dirtgrassborder/weedable{
-	icon_state = "grass1"
+/obj/effect/decal/remains/xeno{
+	pixel_x = 33
 	},
-/area/yautja)
-"Iw" = (
-/obj/structure/machinery/door/airlock/yautja/secure{
-	name = "\improper Hellhound Quarters"
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "terminal";
+	name = "Radar Console";
+	pixel_x = 7
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "IC" = (
 /obj/structure/machinery/door/airlock/yautja/secure/elder{
@@ -3081,98 +2182,109 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"Je" = (
+"ID" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"JH" = (
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+"IF" = (
+/obj/structure/xenoautopsy/tank/alien,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"JL" = (
-/obj/item/weapon/yautja/knife{
-	color = "#FFE55C";
-	name = "sacred ceremonial dagger";
-	pixel_x = 25
+"II" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/obj/item/stack/sheet/plasteel{
+	amount = 30
 	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"KD" = (
+"IS" = (
+/obj/structure/machinery/door/airlock/yautja{
+	name = "\improper Blooded Teleporter"
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/yautja)
+"Jd" = (
+/obj/structure/xenoautopsy/tank/hugger,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Ji" = (
+/obj/structure/machinery/door/airlock/yautja{
+	name = "\improper Blooded Teleporter"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"Jl" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"Jz" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/window/reinforced{
+/obj/structure/showcase{
+	desc = "A console used by the Hunters for navigation purposes.";
 	dir = 8;
-	health = 80
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "security_cam";
+	name = "Radar Console"
 	},
-/obj/item/reagent_container/glass/rag/polishing_rag,
-/obj/item/reagent_container/glass/rag/polishing_rag{
-	pixel_x = 9
-	},
-/obj/item/reagent_container/glass/rag/polishing_rag{
-	pixel_x = 4;
-	pixel_y = 3
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"KI" = (
-/obj/item/tool/kitchen/tray{
-	pixel_y = -5
+"JB" = (
+/obj/structure/bed/alien{
+	color = "#aba9a9"
 	},
-/obj/item/reagent_container/food/snacks/bearmeat,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"JD" = (
+/obj/structure/machinery/sleep_console,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Km" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
 	},
+/obj/item/reagent_container/food/snacks/flour,
+/obj/item/reagent_container/food/snacks/flour,
+/obj/item/reagent_container/food/snacks/flour,
+/obj/item/reagent_container/food/snacks/flour,
+/obj/item/reagent_container/food/snacks/flour,
+/obj/item/reagent_container/food/snacks/flour,
+/obj/item/reagent_container/food/snacks/flour,
+/obj/item/reagent_container/food/snacks/flour,
+/obj/item/reagent_container/food/snacks/flour,
+/obj/item/reagent_container/food/snacks/flour,
+/obj/item/reagent_container/food/condiment/sugar,
+/obj/item/reagent_container/food/condiment/sugar,
+/obj/item/reagent_container/food/condiment/sugar,
+/obj/item/reagent_container/food/condiment/sugar,
+/obj/item/reagent_container/food/condiment/sugar,
+/turf/open/floor/darkred2/west,
 /area/yautja)
 "KK" = (
 /obj/effect/decal/remains/human{
@@ -3180,118 +2292,128 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"KV" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/trash/plate,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+"Lf" = (
+/obj/structure/closet/crate/critter,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"Lo" = (
-/obj/structure/machinery/vending/dinnerware,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"LX" = (
-/obj/structure/prop/pred_flight,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"Mb" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/stack/sheet/animalhide/xeno{
-	anchored = 1;
-	color = "green";
-	desc = "The skin of a nightmare long thought lost to time.";
-	name = "corroder hide"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"ME" = (
+"Mj" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	dir = 8;
+	dir = 10;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"MI" = (
-/obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Blooded Teleporter"
+"Mr" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+/obj/item/weapon/twohanded/sledgehammer{
+	anchored = 1
 	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"NA" = (
-/turf/open/floor{
-	icon_state = "darkred2"
-	},
-/area/yautja)
-"Ok" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert"
-	},
-/area/yautja)
-"OZ" = (
-/obj/structure/bed/chair/comfy/black{
+"MU" = (
+/obj/structure/machinery/body_scanconsole{
 	dir = 1
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"Pm" = (
-/obj/item/stack/sheet/glass{
-	amount = 50
+"MW" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/obj/item/stack/sheet/glass{
-	amount = 50
-	},
-/obj/item/stack/sheet/glass{
-	amount = 50
-	},
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/obj/item/reagent_container/food/snacks/stew,
+/obj/item/tool/kitchen/utensil/spoon,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"Pp" = (
-/obj/effect/alien/weeds/node/forsaken,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+"MX" = (
+/obj/structure/window/framed/colony/reinforced/hull{
+	color = "#aba9a9"
 	},
+/turf/open/floor/holofloor/cult,
 /area/yautja)
-"Pr" = (
-/obj/structure/machinery/door/airlock/yautja/secure{
-	name = "\improper Research Containment"
+"NS" = (
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/structure/closet/secure_closet/freezer/fridge{
+	locked = 0
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
 	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
+/turf/open/floor/darkred2/north,
+/area/yautja)
+"Om" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/tray{
+	color = "#FFE55C";
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/snacks/meatsteak{
+	desc = "A chunk of meat taken from the most worthy foe that could be found in the known universe. Nothing more than a meal for a noble Elder.";
+	name = "Primordial Empress Steak";
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Op" = (
+/obj/structure/machinery/prop/almayer/CICmap/yautja,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Ot" = (
+/obj/structure/machinery/power/terminal{
+	dir = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Pt" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/stack/sheet/xenochitin,
+/obj/item/stack/sheet/xenochitin,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Pv" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/glass/beaker/silver,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Pw" = (
+/obj/structure/machinery/door_control{
+	id = "Yautja Armory";
+	name = "Armory Shutters";
+	needs_power = 0;
+	pixel_x = 24;
+	req_one_access_txt = "392"
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "PN" = (
 /obj/item/stack/sheet/animalhide/xeno{
@@ -3301,77 +2423,145 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"Qi" = (
-/obj/structure/machinery/gibber,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "darkred2"
+"PV" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
+/obj/item/clothing/shoes/combat,
+/obj/item/clothing/under/chainshirt/hunter,
+/obj/item/clothing/gloves/combat,
+/obj/item/clothing/head/helmet/gladiator,
+/obj/item/clothing/suit/armor/gladiator,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"Qj" = (
-/obj/structure/kitchenspike,
-/obj/item/reagent_container/food/snacks/meat/corgi,
-/obj/item/reagent_container/food/snacks/meat/corgi,
-/obj/item/reagent_container/food/snacks/meat/xenomeat,
-/obj/item/reagent_container/food/snacks/meat/xenomeat,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkred2"
+"PX" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
 	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"Qs" = (
-/obj/structure/machinery/chem_master{
-	req_skill_level = 2
+"Qa" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"QF" = (
-/obj/item/weapon/yautja/knife{
-	color = "#FFE55C";
-	name = "sacred ceremonial dagger";
-	pixel_x = -25
+"QD" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/obj/item/weapon/twohanded/dualsaber{
+	force_wielded = 35
 	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"QK" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 1
+"QE" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
 	},
-/obj/structure/barricade/handrail/strata{
-	dir = 8
+/obj/item/stack/sheet/wood{
+	amount = 50
 	},
-/turf/open/gm/dirtgrassborder/weedable{
-	icon_state = "grass1"
+/obj/item/stack/sheet/wood{
+	amount = 50
 	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"Rq" = (
-/obj/structure/machinery/prop/almayer/CICmap/yautja,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+"QO" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
+/obj/item/stack/sheet/animalhide/xeno/kinghide,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"RE" = (
-/obj/structure/closet/secure_closet/freezer/fridge/groceries,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "darkred2"
+"QR" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
+/obj/structure/showcase{
+	desc = "A console used by the Hunters for navigation purposes.";
+	dir = 4;
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "security_cam";
+	name = "Radar Console"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"Rh" = (
+/obj/structure/machinery/door/airlock/yautja{
+	name = "\improper Elder Teleporter"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Ri" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/tray,
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "RS" = (
 /turf/open/gm/dirtgrassborder/north,
 /area/yautja)
-"Sx" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkred2"
+"Sf" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
 	},
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Sm" = (
+/obj/effect/alien/egg/forsaken,
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "SB" = (
 /obj/structure/bed/chair/hunter{
@@ -3379,37 +2569,90 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"Ut" = (
+"SS" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/obj/item/frame/table/wood,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Tq" = (
+/obj/structure/machinery/door/airlock/yautja/secure{
+	name = "\improper Hellhound Quarters"
 	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Ts" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/gm/dirtgrassborder/weedable/grass1,
+/area/yautja)
+"Tv" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"TG" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	health = 80;
+	pixel_y = 16
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"TI" = (
+/obj/structure/cryofeed,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"TL" = (
+/obj/structure/machinery/medical_pod/sleeper,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"TX" = (
+/obj/structure/machinery/medical_pod/autodoc{
+	dir = 4
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "Uv" = (
 /obj/effect/decal/remains/xeno{
@@ -3417,16 +2660,18 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"UR" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 5;
-	icon_state = "p_stair_full"
+"Uy" = (
+/obj/structure/machinery/autolathe/yautja,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"UJ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/obj/effect/decal/remains/human{
+	pixel_y = -25
 	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "UT" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -3440,31 +2685,45 @@
 /obj/item/xeno_restraints,
 /turf/open/shuttle/predship,
 /area/yautja)
-"VT" = (
+"Vi" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/tool/extinguisher,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Vl" = (
+/turf/open/floor/darkred2/west,
+/area/yautja)
+"Vs" = (
+/obj/structure/machinery/chem_master{
+	req_skill_level = 2
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"VO" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/structure/showcase{
-	desc = "A console used by the Hunters for navigation purposes.";
-	dir = 4;
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "security_cam";
-	name = "Radar Console"
+/obj/item/stack/sheet/animalhide/xeno{
+	color = "#7899ab";
+	desc = "A strange hide from an enigmatic creature.";
+	name = "deacon hide"
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"VY" = (
-/obj/structure/window/framed/colony/reinforced/hull{
-	color = "#aba9a9"
+"Wb" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	name = "alien sarcophagus"
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	dir = 10;
-	icon_state = "multi_tiles"
+/obj/item/clothing/mask/gas/yautja/hunter{
+	anchored = 1;
+	pixel_y = 20
 	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "We" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -3485,30 +2744,55 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"Ww" = (
+"Wp" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/reagent_container/food/snacks/stew,
-/obj/item/tool/kitchen/utensil/spoon,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
 	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"Xg" = (
+"WH" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Xe" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/tool/kitchen/tray,
-/obj/item/tool/kitchen/utensil/fork{
-	pixel_x = 10;
-	pixel_y = 3
+/obj/item/alienjar,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Xf" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
 	},
-/turf/open/floor/corsat{
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"Xl" = (
+/obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
-	icon_state = "squareswood"
+	name = "\improper Research Containment"
 	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"Xm" = (
+/obj/structure/pipes/unary/freezer{
+	dir = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "Xp" = (
 /obj/structure/surface/rack{
@@ -3552,19 +2836,96 @@
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/yautja)
-"XP" = (
-/obj/structure/machinery/cryopod,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+"Xu" = (
+/obj/item/weapon/yautja/knife{
+	color = "#FFE55C";
+	name = "sacred ceremonial dagger";
+	pixel_x = -25
 	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"Ys" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor{
-	dir = 10;
-	icon_state = "darkred2"
+"Xv" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
 	},
+/obj/item/tool/pickaxe,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Xy" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/tray{
+	color = "#FFE55C";
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/snacks/meatballsoup{
+	pixel_x = 1;
+	pixel_y = 4
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"XE" = (
+/obj/item/clothing/gloves/yautja/hunter{
+	anchored = 1;
+	can_block_movement = 1;
+	charge = 1;
+	charge_max = 1;
+	color = "#a8a7a5";
+	density = 1;
+	desc = "The ship's on-board self destruct system, let's hope you never have to use it.";
+	name = "Self Destruct System"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"XK" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"XM" = (
+/obj/structure/machinery/shower{
+	dir = 4
+	},
+/obj/structure/machinery/door/window/tinted,
+/obj/structure/window/reinforced/tinted,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"Yc" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/tool/pickaxe/jackhammer,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Ym" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	health = 80;
+	pixel_y = 16
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Yz" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "YL" = (
 /obj/structure/machinery/door/airlock/yautja{
@@ -3576,71 +2937,104 @@
 "YM" = (
 /turf/closed/wall/mineral/sandstone/runed/decor,
 /area/yautja)
-"Zi" = (
-/obj/structure/sink{
-	pixel_y = 25
-	},
-/turf/open/shuttle/predship,
-/area/yautja)
-"Zs" = (
+"YT" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Heavy Armory"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/yautja{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"Zu" = (
+"YU" = (
+/obj/structure/window/framed/colony/reinforced/hull{
+	color = "#aba9a9"
+	},
+/turf/open/floor/strata/grey_multi_tiles/southwest,
+/area/yautja)
+"Zi" = (
+/obj/structure/sink{
+	pixel_y = 25
+	},
+/turf/open/shuttle/predship,
+/area/yautja)
+"Zo" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/alien_embryo,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/obj/item/weapon/sword/machete/arnold{
+	anchored = 1;
+	desc = "Won by an Elder during their youthful hunting days. None are allowed to touch it.";
+	name = "\improper Dutch's Machete"
 	},
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"ZD" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"ZI" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert3"
-	},
-/area/yautja)
-"ZM" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"ZR" = (
+"Zx" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/yautja_rope,
-/obj/item/stack/yautja_rope,
-/obj/item/stack/yautja_rope,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/obj/structure/machinery/power/apc/almayer/directional/east{
+	pixel_y = 25
 	},
+/obj/item/weapon/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"Zz" = (
+/turf/open/gm/dirtgrassborder/desert,
+/area/yautja)
+"ZK" = (
+/obj/item/stack/sheet/animalhide/xeno{
+	anchored = 1;
+	name = "Prime Empress Hide";
+	pixel_y = 30
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"ZL" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/weapon/gun/energy/yautja/plasmapistol{
+	pixel_y = -8
+	},
+/obj/item/weapon/gun/energy/yautja/plasmapistol,
+/obj/item/weapon/gun/energy/yautja/plasmapistol{
+	pixel_y = 8
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"ZU" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 
 (1,1,1) = {"
@@ -4385,9 +3779,9 @@ aa
 aa
 aa
 bj
-sx
-sx
-sx
+qq
+qq
+qq
 bj
 aa
 aa
@@ -4457,9 +3851,9 @@ aa
 aa
 bj
 bj
-oO
-JH
-aB
+EU
+mT
+Lf
 bj
 bj
 aa
@@ -4528,11 +3922,11 @@ aa
 aa
 bj
 bj
-cY
-JH
-JH
-JH
-KI
+uK
+mT
+mT
+mT
+CH
 bj
 bj
 aa
@@ -4599,13 +3993,13 @@ aa
 aa
 bj
 bj
-aB
-JH
-JH
-JH
-JH
-JH
-aB
+Lf
+mT
+mT
+mT
+mT
+mT
+Lf
 bj
 bj
 aa
@@ -4675,7 +4069,7 @@ bj
 bj
 bj
 bj
-Iw
+Tq
 bj
 bj
 bj
@@ -4737,27 +4131,27 @@ aa
 ac
 bj
 bj
-as
-bJ
-aY
-ZM
-cj
-bL
-an
+pG
+Xm
+mI
+dB
+TL
+Af
+TX
 bj
 bj
-cT
-bL
-db
+Xv
+Af
+Yc
 bj
 cP
 cP
 bj
-bY
-cl
-lr
-aD
-te
+Pt
+Xe
+vC
+Jd
+IF
 bj
 bj
 bj
@@ -4809,30 +4203,30 @@ aa
 ae
 bj
 bj
-bb
+nQ
 nW
 bS
-bL
-jR
-bL
-cx
-rt
+Af
+JD
+Af
+FD
+DP
 bj
-cU
+Vi
 cP
-qj
+ju
 bj
 cP
 cP
 bj
-ZM
-bL
-bL
-bL
-bL
-sx
-dk
-JH
+dB
+Af
+Af
+Af
+Af
+qq
+Mj
+mT
 bj
 bj
 bj
@@ -4880,7 +4274,7 @@ aa
 aa
 ae
 af
-at
+xT
 bS
 bK
 cP
@@ -4890,9 +4284,9 @@ cP
 cP
 Ft
 bj
-cV
+eK
 cP
-AA
+uH
 bj
 cP
 cP
@@ -4902,11 +4296,11 @@ cP
 cP
 cP
 cP
-dc
-df
-JH
-xn
-xn
+Xl
+Jl
+mT
+BU
+BU
 bj
 bj
 bj
@@ -4952,7 +4346,7 @@ aa
 aa
 ae
 af
-at
+xT
 bw
 bS
 cP
@@ -4962,24 +4356,24 @@ cP
 cP
 cP
 bj
-bq
+rU
 br
 cP
 bx
 cP
 cP
 bj
-Zu
-cq
-Qs
-bL
-bL
-VY
-dl
-JH
-JH
-JH
-Et
+GD
+PX
+Vs
+Af
+Af
+YU
+Xf
+mT
+mT
+mT
+yI
 bj
 bj
 aa
@@ -5025,33 +4419,33 @@ aa
 ae
 bj
 bj
-bL
-bL
-bL
+Af
+Af
+Af
 bj
-bo
+MU
 cP
 cP
 cP
 bj
-cW
+jl
 cP
 cP
 bx
 cP
 cP
 bj
-Cn
-Cn
-bA
-aD
-te
+Pv
+Pv
+yM
+Jd
+IF
 bj
-JH
-JH
-JH
-JH
-JH
+mT
+mT
+mT
+mT
+mT
 bj
 bj
 bj
@@ -5097,18 +4491,18 @@ aa
 ad
 bj
 bj
-aE
-aW
-aQ
+Ao
+eq
+HG
 bj
-bs
-bL
+hH
+Af
 cP
 cP
 bj
-bL
+Af
 cP
-bL
+Af
 bj
 cP
 cP
@@ -5121,9 +4515,9 @@ bj
 bj
 bj
 bj
-sx
-Pr
-sx
+qq
+vH
+qq
 bj
 bj
 bj
@@ -5178,9 +4572,9 @@ bj
 aT
 aT
 bj
-bL
+Af
 cP
-bL
+Af
 bj
 cP
 cP
@@ -5193,9 +4587,9 @@ aa
 bj
 bj
 bj
-dj
-JH
-dj
+Sm
+mT
+Sm
 bj
 bj
 bj
@@ -5250,9 +4644,9 @@ bj
 cP
 cP
 bj
-cX
-aN
-cX
+dA
+kQ
+dA
 bj
 cP
 cP
@@ -5265,9 +4659,9 @@ aa
 aa
 bj
 bj
-dj
-Pp
-dj
+Sm
+pN
+Sm
 bj
 bj
 bj
@@ -5390,7 +4784,7 @@ aa
 aa
 aa
 bj
-wQ
+Wp
 cP
 cP
 cP
@@ -5400,7 +4794,7 @@ cP
 cP
 cP
 cP
-fo
+em
 bj
 bj
 aa
@@ -5462,17 +4856,17 @@ bj
 bj
 bj
 bj
-wQ
+Wp
 cP
 cP
-bz
-HN
-nh
-ZM
-au
+CN
+Ym
+Qa
+dB
+TG
 cP
 cP
-fo
+em
 bj
 bj
 bj
@@ -5522,29 +4916,29 @@ aa
 ac
 bj
 bN
-ZR
-aV
-bn
+ID
+hx
+ps
 bj
-av
-ZM
-bO
+BM
+dB
+JB
 bj
-av
-ZM
-bO
+BM
+dB
+JB
 bj
-wQ
+Wp
 cP
 cP
-wQ
+Wp
 bj
 bj
 bj
-wQ
+Wp
 cP
 cP
-fo
+em
 bj
 bj
 bj
@@ -5594,55 +4988,55 @@ aa
 ae
 bj
 bN
-aC
+hK
 cP
-bL
+Af
 bj
-bL
+Af
 SB
-bL
+Af
 bj
-bL
+Af
 SB
-bL
+Af
 bj
-wQ
+Wp
 cP
-bL
-wQ
-rH
+Af
+Wp
+EX
 bd
-rH
-wQ
-bL
+EX
+Wp
+Af
 cP
-fo
+em
 bj
 bj
 bj
 bj
 bj
 bj
-hY
-is
-cu
+Cm
+Fo
+fL
 bj
 cw
 Gr
 bj
-bL
-cS
+Af
+PV
 bj
-bL
-cS
+Af
+PV
 bj
-bL
-cS
+Af
+PV
 bj
 bj
 bj
-Fy
-Fy
+tN
+tN
 bj
 bj
 bj
@@ -5668,55 +5062,55 @@ bj
 ag
 GP
 cP
-bL
+Af
 bj
-bL
+Af
 cP
-bL
+Af
 bj
-bL
+Af
 cP
-bL
+Af
 bj
-KD
-bL
-JH
-JH
+fa
+Af
+mT
+mT
 bN
-be
+IS
 bN
-JH
-JH
-JH
-bL
-yr
+mT
+mT
+mT
+Af
+EN
 bj
 bj
 bj
 bj
-Qj
-zA
-zA
-NA
+zW
+qm
+qm
+zm
 bj
 UT
 cP
 bj
-bL
-bL
+Af
+Af
 bj
-bL
-bL
+Af
+Af
 bj
-bL
-bL
+Af
+Af
 bj
 bj
 bj
-GY
-CK
-QF
-Hv
+xh
+Om
+Xu
+Gv
 bj
 bj
 bj
@@ -5740,7 +5134,7 @@ bj
 ay
 ap
 cP
-bL
+Af
 bj
 eS
 cP
@@ -5750,42 +5144,42 @@ eS
 cP
 Uv
 bj
-BS
-JH
-JH
-bL
-bL
+Ba
+mT
+mT
+Af
+Af
 cP
-bL
-bL
-bL
-JH
-JH
-yr
+Af
+Af
+Af
+mT
+mT
+EN
 bj
 bM
 da
 bj
-de
-fb
-fb
-Qi
+yE
+Gj
+Gj
+vs
 bj
 We
 cP
 bj
 bW
-fq
+MX
 bj
 ce
-fq
+MX
 bj
 cm
-fq
+MX
 bj
 bj
 bj
-av
+BM
 SB
 cP
 cP
@@ -5812,28 +5206,28 @@ bj
 aA
 ap
 cP
-bL
+Af
 bj
-nT
+oS
 cP
-bL
+Af
 bj
-nT
+oS
 cP
-bL
+Af
 bj
-JH
-JH
-bL
-bL
-bL
+mT
+mT
+Af
+Af
+Af
 cP
-bL
-bL
-bL
-bZ
-JH
-yr
+Af
+Af
+Af
+DA
+mT
+EN
 bj
 cv
 cP
@@ -5857,16 +5251,16 @@ cP
 cg
 Ha
 bj
-Cz
+ZK
 cP
 cP
 KK
 bj
-cA
-cA
+Rh
+Rh
 bj
-cN
-cN
+TI
+TI
 bj
 bj
 bj
@@ -5884,52 +5278,52 @@ bj
 YM
 ap
 cP
-bL
+Af
 bj
-fg
+gQ
 cP
-bL
+Af
 bj
-fg
+gQ
 cP
-bL
+Af
 bj
-JH
-ab
-cI
-bL
-bL
+mT
+QO
+Mr
+Af
+Af
 cP
-bL
-bL
-mv
-xO
-JH
-yr
-bj
-cP
-cP
-cP
-cP
-cP
-cP
-cP
-cP
+Af
+Af
+Cu
+gJ
+mT
+EN
 bj
 cP
 cP
-bL
-bL
-bL
-bL
-bL
-bL
-bL
-bL
-bL
+cP
+cP
+cP
+cP
+cP
+cP
+bj
+cP
+cP
+Af
+Af
+Af
+Af
+Af
+Af
+Af
+Af
+Af
 jP
 bj
-aq
+yw
 cP
 cP
 cP
@@ -5942,7 +5336,7 @@ cP
 cP
 cP
 bj
-sx
+qq
 bj
 aa
 aa
@@ -5956,7 +5350,7 @@ bj
 ah
 ap
 cP
-bL
+Af
 bj
 bj
 aw
@@ -5966,8 +5360,8 @@ bj
 aw
 bj
 bj
-JH
-bQ
+mT
+tL
 cP
 cP
 cP
@@ -5975,22 +5369,22 @@ cP
 cP
 cP
 cP
-Dk
-JH
-yr
+vm
+mT
+EN
 bj
 cP
 cP
-bL
-bL
-bL
-bL
+Af
+Af
+Af
+Af
 cP
 cP
 bj
 cP
 cP
-bL
+Af
 cP
 cP
 cP
@@ -5998,10 +5392,10 @@ cP
 cP
 cP
 cP
-bL
+Af
 Xp
 bj
-fg
+gQ
 cP
 cP
 fj
@@ -6013,8 +5407,8 @@ cP
 cP
 cP
 cP
-aX
-ob
+sO
+UJ
 bj
 bj
 aa
@@ -6028,41 +5422,41 @@ bj
 ai
 ap
 cP
-bL
-bL
-ti
+Af
+Af
+qw
 FG
 cP
 cP
 cP
 FG
-ti
-JH
-JH
-bL
+qw
+mT
+mT
+Af
 cP
-bL
-bL
-bL
-bL
-bL
+Af
+Af
+Af
+Af
+Af
 cP
-bL
-JH
-JH
+Af
+mT
+mT
 bj
 cP
-bL
-gp
-iV
-Ww
-OZ
-bL
+Af
+rD
+AY
+MW
+Da
+Af
 cP
 bj
 cP
-bL
-bL
+Af
+Af
 cP
 cc
 uf
@@ -6070,8 +5464,8 @@ uf
 uf
 wW
 cP
-bL
-bL
+Af
+Af
 bj
 bj
 bj
@@ -6079,16 +5473,16 @@ IC
 bj
 bj
 cP
-bL
+Af
 bj
-bL
-bL
-bL
+Af
+Af
+Af
 cP
-Hp
-VT
-tn
-sx
+pc
+QR
+hO
+qq
 aa
 "}
 (35,1,1) = {"
@@ -6104,64 +5498,64 @@ cP
 cP
 ar
 cP
-Fh
-Fh
-Fh
+xk
+xk
+xk
 cP
 aP
 cP
 cP
 cP
 cP
-bL
-er
-ZD
-xQ
-bL
+Af
+sw
+WH
+Hi
+Af
 cP
 cP
 cP
 cP
 sV
 cP
-bL
-gp
-Ww
-KV
-OZ
-bL
+Af
+rD
+MW
+BO
+Da
+Af
 cP
 Wg
-bL
-bL
+Af
+Af
 cP
-QK
+Ts
 RS
-ZI
-Ok
-Br
+jH
+Zz
+oZ
 dw
-ha
+DL
 cP
-bL
-bL
+Af
+Af
 ct
 cP
-JH
+mT
 cP
 ct
 cP
-bL
-hI
-LX
-bL
-bL
+Af
+gB
+hQ
+Af
+Af
 cP
-bL
-Hp
-Et
-sx
-sx
+Af
+pc
+yI
+qq
+qq
 "}
 (36,1,1) = {"
 aa
@@ -6172,68 +5566,68 @@ bj
 dS
 ap
 cP
-bL
-bL
-ti
+Af
+Af
+qw
 cP
-Fh
-cZ
-Fh
+xk
+tl
+xk
 cP
-ti
-bL
-bL
-bL
-bL
-bL
-bI
-bC
-bE
-bL
-bL
-bL
-bL
-bL
+qw
+Af
+Af
+Af
+Af
+Af
+gK
+Zo
+Ez
+Af
+Af
+Af
+Af
+Af
 bj
-Lo
-bL
-gp
-qS
-iV
-OZ
-bL
-bL
+xa
+Af
+rD
+Yz
+AY
+Da
+Af
+Af
 bj
 cK
 cP
 cP
-ca
+jd
 RS
-Ok
-GM
-Ok
+Zz
+xG
+Zz
 dw
-fS
+nL
 cP
 cP
 cP
-ti
-JH
-Rq
-JH
-ti
+qw
+mT
+Cd
+mT
+qw
 cP
-bL
+Af
 bj
-cE
+Op
 cP
 cP
 cP
 cP
 cP
-Es
-DJ
-sx
+Ef
+pL
+qq
 "}
 (37,1,1) = {"
 aa
@@ -6248,64 +5642,64 @@ cP
 cP
 ar
 cP
-Fh
-Fh
-Fh
+xk
+xk
+xk
 cP
 aP
 cP
 cP
 cP
 cP
-bL
-UR
-eT
-jU
-bL
+Af
+XK
+hm
+ye
+Af
 cP
 cP
 cP
 cP
 sV
 cP
-bL
-gp
-KV
-Ww
-OZ
-bL
+Af
+rD
+BO
+MW
+Da
+Af
 cP
 Wg
-bL
-bL
+Af
+Af
 cP
-hJ
+gI
 RS
-lw
-Ok
-nd
+kh
+Zz
+kM
 dw
-Ip
+yA
 cP
-bL
-bL
+Af
+Af
 ct
 cP
-JH
+mT
 cP
 ct
 cP
-bL
-hI
-LX
-bL
-bL
+Af
+gB
+hQ
+Af
+Af
 cP
-bL
-uO
-Et
-sx
-sx
+Af
+qh
+yI
+qq
+qq
 "}
 (38,1,1) = {"
 aa
@@ -6316,41 +5710,41 @@ bj
 al
 ap
 cP
-bL
-bL
-ti
+Af
+Af
+qw
 FG
 cP
 cP
 cP
 FG
-ti
-JH
-JH
-bL
+qw
+mT
+mT
+Af
 cP
-bL
-bL
-bL
-bL
-bL
+Af
+Af
+Af
+Af
+Af
 cP
-bL
-JH
-JH
+Af
+mT
+mT
 bj
 cP
-bL
-gp
-Ww
-Xg
-OZ
-bL
+Af
+rD
+MW
+Ri
+Da
+Af
 cP
 bj
 cP
-bL
-bL
+Af
+Af
 cP
 Xs
 zg
@@ -6358,8 +5752,8 @@ zg
 zg
 eg
 cP
-bL
-bL
+Af
+Af
 bj
 bj
 bj
@@ -6367,16 +5761,16 @@ IC
 bj
 bj
 cP
-bL
+Af
 bj
-bL
-bL
-bL
+Af
+Af
+Af
 cP
-uO
-Fx
-tn
-sx
+qh
+Jz
+hO
+qq
 aa
 "}
 (39,1,1) = {"
@@ -6388,7 +5782,7 @@ bj
 am
 ap
 cP
-bL
+Af
 bj
 bj
 aw
@@ -6398,8 +5792,8 @@ bj
 aw
 bj
 bj
-JH
-cd
+mT
+jJ
 cP
 cP
 cP
@@ -6407,22 +5801,22 @@ cP
 cP
 cP
 cP
-Gk
-JH
-bL
+hL
+mT
+Af
 bj
 cP
 cP
-bL
-bL
-bL
-bL
+Af
+Af
+Af
+Af
 cP
 cP
 bj
 cP
 cP
-bL
+Af
 cP
 cP
 cP
@@ -6430,10 +5824,10 @@ cP
 cP
 cP
 cP
-bL
+Af
 Im
 bj
-fg
+gQ
 cP
 cP
 Be
@@ -6445,8 +5839,8 @@ cP
 cP
 cP
 cP
-cR
-ob
+Iv
+UJ
 bj
 bj
 aa
@@ -6460,52 +5854,52 @@ bj
 YM
 ap
 cP
-bL
+Af
 bj
-fg
+gQ
 cP
-bL
+Af
 bj
-fg
+gQ
 cP
-bL
+Af
 bj
-JH
-cz
-kA
-bL
-bL
+mT
+VO
+QD
+Af
+Af
 cP
-bL
-bL
-uZ
-Mb
-JH
-bL
-bj
-cP
-cP
-cP
-cP
-cP
-cP
-cP
-cP
+Af
+Af
+kK
+vZ
+mT
+Af
 bj
 cP
 cP
-bL
-bL
-bL
-bL
-bL
-bL
-bL
-bL
-bL
+cP
+cP
+cP
+cP
+cP
+cP
+bj
+cP
+cP
+Af
+Af
+Af
+Af
+Af
+Af
+Af
+Af
+Af
 fF
 bj
-ao
+mt
 cP
 cP
 cP
@@ -6518,7 +5912,7 @@ cP
 cP
 cP
 bj
-VY
+YU
 bj
 aa
 aa
@@ -6532,28 +5926,28 @@ bj
 ay
 ap
 cP
-bL
+Af
 bj
-nT
+oS
 cP
-bL
+Af
 bj
-nT
+oS
 cP
-bL
+Af
 bj
-JH
-JH
-bL
-bL
-bL
+mT
+mT
+Af
+Af
+Af
 cP
-bL
-bL
-bL
-bL
-JH
-bL
+Af
+Af
+Af
+Af
+mT
+Af
 bj
 cJ
 cP
@@ -6577,16 +5971,16 @@ cP
 cP
 rY
 bj
-Cz
+ZK
 cP
 cP
 Uv
 bj
-cA
-cA
+Rh
+Rh
 bj
-cO
-cO
+uU
+uU
 bj
 bj
 bj
@@ -6604,7 +5998,7 @@ bj
 aA
 ap
 cP
-bL
+Af
 bj
 ww
 cP
@@ -6614,42 +6008,42 @@ PN
 cP
 KK
 bj
-bL
-JH
-JH
-bL
-bL
+Af
+mT
+mT
+Af
+Af
 cP
-bL
-bL
-bL
-JH
-JH
-bL
+Af
+Af
+Af
+mT
+mT
+Af
 bj
 cL
 cr
 bj
-DF
-Sx
-wH
-Ys
+fy
+Vl
+Km
+hu
 bj
-vO
+XM
 cP
 bj
 bX
-fq
+MX
 bV
 cf
-fq
+MX
 dm
 cn
-fq
+MX
 ch
 bj
 bj
-av
+BM
 eY
 cP
 cP
@@ -6676,55 +6070,55 @@ bj
 ag
 GP
 cP
-bL
+Af
 bj
-bL
+Af
 cP
-bL
+Af
 bj
-bL
+Af
 cP
-bL
+Af
 bj
-bL
-bL
-JH
-JH
+Af
+Af
+mT
+mT
 bN
-MI
+Ji
 bN
-JH
-JH
-JH
-bL
-bL
+mT
+mT
+mT
+Af
+Af
 bj
 bj
 bj
 bj
-di
-zA
-zA
-NA
+NS
+qm
+qm
+zm
 bj
 Zi
 cP
 bj
-bL
-bL
+Af
+Af
 bj
-bL
-bL
+Af
+Af
 bj
-bL
-bL
+Af
+Af
 bj
 bj
 bj
-GY
-yO
-JL
-Hv
+xh
+Xy
+qk
+Gv
 bj
 bj
 bj
@@ -6746,55 +6140,55 @@ aa
 ae
 bj
 bN
-aC
+hK
 cP
-bL
+Af
 bj
-bL
+Af
 eY
-bL
+Af
 bj
-bL
+Af
 eY
-bL
+Af
 bj
-cQ
+Sf
 cP
-bL
-cH
-ti
+Af
+rb
+qw
 bd
-ti
-uj
-bL
+qw
+ZU
+Af
 cP
-tR
+SS
 bj
 bj
 bj
 bj
 bj
 bj
-yH
-yH
-RE
+Hg
+Hg
+Bt
 bj
-bH
-bH
+jp
+jp
 bj
-bL
-cS
+Af
+PV
 bj
-bL
-cS
+Af
+PV
 bj
-bL
-cS
+Af
+PV
 bj
 bj
 bj
-Fy
-Fy
+tN
+tN
 bj
 bj
 bj
@@ -6818,29 +6212,29 @@ aa
 ad
 bj
 bN
-ZR
-aV
-bn
+ID
+hx
+ps
 bj
-av
-ZM
-bO
+BM
+dB
+JB
 bj
-av
-ZM
-bO
+BM
+dB
+JB
 bj
-tD
+II
 cP
 cP
-bg
+hf
 bj
 bj
 bj
-Ut
+mS
 cP
 cP
-fI
+se
 bj
 bj
 bj
@@ -6902,17 +6296,17 @@ bj
 bj
 bj
 bj
-Je
+si
 cP
 cP
-Pm
-ov
-sS
-gN
-zZ
+nI
+kw
+QE
+Tv
+wM
 cP
 cP
-mn
+qr
 bj
 bj
 bj
@@ -6974,7 +6368,7 @@ aa
 aa
 aa
 bj
-cC
+Uy
 cP
 cP
 cP
@@ -6984,7 +6378,7 @@ cP
 cP
 cP
 cP
-um
+zG
 bj
 bj
 aa
@@ -7120,11 +6514,11 @@ aa
 aa
 bj
 bj
-bc
-bc
-bc
-bc
-bc
+Dy
+Dy
+Dy
+Dy
+Dy
 bj
 cP
 cP
@@ -7137,9 +6531,9 @@ aa
 aa
 bj
 bj
-HD
-JH
-If
+Hc
+mT
+ZL
 bj
 bj
 bj
@@ -7209,9 +6603,9 @@ aa
 bj
 bj
 bj
-HD
-JH
-If
+Hc
+mT
+ZL
 bj
 bj
 bj
@@ -7257,17 +6651,17 @@ aa
 ac
 bj
 bj
-aF
-JH
-JH
-JH
-bL
-bL
+XE
+mT
+mT
+mT
+Af
+Af
 cF
 cP
-bL
-bL
-bL
+Af
+Af
+Af
 cP
 bj
 cP
@@ -7281,9 +6675,9 @@ bj
 bj
 bj
 bj
-sx
-Zs
-sx
+qq
+YT
+qq
 bj
 bj
 bj
@@ -7329,33 +6723,33 @@ aa
 ae
 bj
 bj
-aG
-aL
-bL
-JH
-bL
-bL
+ok
+Ot
+Af
+mT
+Af
+Af
 bj
 cP
-XP
-XP
-XP
+wP
+wP
+wP
 cP
 bj
 cP
 cP
 bj
-bv
-bv
-bv
-bv
-bv
+iu
+iu
+iu
+iu
+iu
 bj
-gb
-JH
-JH
-JH
-Bg
+ly
+mT
+mT
+mT
+eJ
 bj
 bj
 bj
@@ -7401,33 +6795,33 @@ aa
 ae
 bj
 az
-aI
-co
-bL
-JH
-bL
-bL
+pP
+oU
+Af
+mT
+Af
+Af
 bj
 cP
-bc
-bc
-bc
+Dy
+Dy
+Dy
 cP
 bj
 cP
 cP
 bj
-bL
-bL
-bL
-bL
-bL
-Fy
-dk
-JH
-JH
-JH
-gr
+Af
+Af
+Af
+Af
+Af
+tN
+Mj
+mT
+mT
+mT
+AU
 bj
 bj
 aa
@@ -7473,17 +6867,17 @@ aa
 ae
 bj
 az
-aK
-cy
-bL
-JH
-bL
-bL
+FS
+AE
+Af
+mT
+Af
+Af
 cF
 cP
-bL
-bL
-bL
+Af
+Af
+Af
 cP
 bj
 cP
@@ -7495,10 +6889,10 @@ cP
 cP
 cP
 bD
-df
-JH
-BK
-BK
+Jl
+mT
+wi
+wi
 bj
 bj
 bj
@@ -7545,12 +6939,12 @@ aa
 ae
 bj
 bj
-aG
-aL
-bL
-JH
-bL
-bL
+ok
+Ot
+Af
+mT
+Af
+Af
 bj
 cP
 cP
@@ -7561,14 +6955,14 @@ YL
 cP
 cP
 bj
-bL
-bL
-bL
-gG
-bL
-Fy
-dl
-JH
+Af
+Af
+Af
+Pw
+Af
+tN
+Xf
+mT
 bj
 bj
 bj
@@ -7617,27 +7011,27 @@ aa
 ad
 bj
 bj
-nv
-JH
-JH
-JH
-bL
-bL
+Zx
+mT
+mT
+mT
+Af
+Af
 bj
-cG
-ME
-ME
-ME
-dk
+ih
+uC
+uC
+uC
+Mj
 bj
 cP
 cP
 bj
-by
+Wb
 bj
-by
+Wb
 bj
-by
+Wb
 bj
 bj
 bj
@@ -7767,13 +7161,13 @@ aa
 aa
 bj
 bj
-JH
-JH
-JH
-JH
-JH
-JH
-JH
+mT
+mT
+mT
+mT
+mT
+mT
+mT
 bj
 bj
 aa
@@ -7840,11 +7234,11 @@ aa
 aa
 bj
 bj
-JH
-JH
-JH
-JH
-JH
+mT
+mT
+mT
+mT
+mT
 bj
 bj
 aa
@@ -7913,9 +7307,9 @@ aa
 aa
 bj
 bj
-JH
-JH
-JH
+mT
+mT
+mT
 bj
 bj
 aa
@@ -7986,7 +7380,7 @@ aa
 aa
 bj
 Dr
-sx
+qq
 Dr
 bj
 aa

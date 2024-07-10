@@ -1,23 +1,23 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
+"aa" = (
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/lv624/lazarus/main_hall)
-"b" = (
+"ab" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/lv624/lazarus/main_hall)
-"c" = (
+"ac" = (
 /obj/item/stack/tile/plasteel,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellow"
 	},
 /area/lv624/lazarus/main_hall)
-"d" = (
+"ad" = (
 /obj/item/phone{
 	desc = "A model of an ancient Earth communication device.";
 	force = 8
@@ -36,7 +36,7 @@
 	icon_state = "wood"
 	},
 /area/lv624/lazarus/main_hall)
-"e" = (
+"ae" = (
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
@@ -44,19 +44,19 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/main_hall)
-"f" = (
+"af" = (
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner"
 	},
 /area/lv624/lazarus/main_hall)
-"g" = (
+"ag" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteyellow"
 	},
 /area/lv624/lazarus/main_hall)
-"h" = (
+"ah" = (
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
@@ -65,55 +65,55 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/main_hall)
-"i" = (
+"ai" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/armory)
-"j" = (
+"aj" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/security)
-"k" = (
+"ak" = (
 /obj/structure/machinery/light/small,
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/main_hall)
-"l" = (
+"al" = (
 /turf/open/floor{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/main_hall)
-"m" = (
+"am" = (
 /obj/structure/target/syndicate,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
-"n" = (
+"an" = (
 /obj/structure/machinery/deployable/barrier,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor{
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
-"o" = (
+"ao" = (
 /obj/item/stack/tile/plasteel,
 /turf/open/floor{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/main_hall)
-"p" = (
+"ap" = (
 /turf/open/floor{
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
-"q" = (
+"aq" = (
 /turf/open/floor{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/armory)
-"r" = (
+"ar" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -122,31 +122,41 @@
 	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
-"s" = (
+"as" = (
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor{
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
-"t" = (
+"at" = (
 /turf/open/floor{
 	dir = 5;
 	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
-"u" = (
-/obj/structure/machinery/power/apc/directional/no_power/west,
+"au" = (
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 8
+	},
 /turf/open/floor{
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
-"w" = (
+"av" = (
+/obj/structure/target/syndicate,
+/turf/open/floor/red/northeast,
+/area/lv624/lazarus/security)
+"aw" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor{
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
-"y" = (
+"ax" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"ay" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -160,10 +170,10 @@
 	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
-"z" = (
+"az" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/east_central_jungle)
-"A" = (
+"aA" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -172,7 +182,7 @@
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
-"B" = (
+"aB" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Armory"
@@ -181,7 +191,94 @@
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
-"T" = (
+"aC" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"aD" = (
+/obj/item/stack/tile/plasteel,
+/turf/open/floor/platingdmg3,
+/area/lv624/lazarus/main_hall)
+"aE" = (
+/turf/open/floor/red/northeast,
+/area/lv624/lazarus/security)
+"aF" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/cult,
+/area/lv624/lazarus/armory)
+"aG" = (
+/turf/open/floor/platingdmg3,
+/area/lv624/lazarus/armory)
+"aH" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/item/stack/tile/plasteel,
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"aI" = (
+/turf/open/floor/cult,
+/area/lv624/lazarus/armory)
+"aJ" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	locked = 1;
+	name = "\improper Nexus Dome Armory"
+	},
+/turf/open/floor/cult,
+/area/lv624/lazarus/armory)
+"aK" = (
+/obj/structure/machinery/light/small,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/platingdmg3,
+/area/lv624/lazarus/main_hall)
+"aL" = (
+/obj/structure/machinery/deployable/barrier,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/cult,
+/area/lv624/lazarus/armory)
+"aM" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"aN" = (
+/obj/structure/machinery/door_control{
+	id = "garage_blast";
+	name = "Garage Shutters";
+	pixel_x = -26;
+	range = 200
+	},
+/turf/open/floor/cult,
+/area/lv624/lazarus/armory)
+"aO" = (
+/obj/item/stack/tile/plasteel,
+/turf/open/floor/whiteyellow/east,
+/area/lv624/lazarus/main_hall)
+"aP" = (
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"aQ" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/surface/table,
+/obj/item/weapon/gun/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/turf/open/floor/red/northeast,
+/area/lv624/lazarus/security)
+"aR" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/red/northeast,
+/area/lv624/lazarus/security)
+"aS" = (
+/turf/open/floor/platingdmg3,
+/area/lv624/lazarus/main_hall)
+"aT" = (
 /obj/structure/machinery/door_control{
 	id = "garage_blast";
 	name = "Garage Shutters";
@@ -192,94 +289,132 @@
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
-"Y" = (
+"aU" = (
+/obj/structure/machinery/power/apc/directional/no_power/west,
+/turf/open/floor/cult,
+/area/lv624/lazarus/armory)
+"aV" = (
+/turf/open/floor/whiteyellow/north,
+/area/lv624/lazarus/main_hall)
+"aW" = (
+/turf/open/floor/whiteyellowcorner/east,
+/area/lv624/lazarus/main_hall)
+"aX" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/floor/cult,
+/area/lv624/lazarus/armory)
+"aY" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/lv624/lazarus/main_hall)
+"aZ" = (
+/obj/structure/machinery/deployable/barrier,
+/turf/open/floor/cult,
+/area/lv624/lazarus/armory)
+"CN" = (
+/obj/item/phone{
+	desc = "A model of an ancient Earth communication device.";
+	force = 8
+	},
+/obj/structure/surface/rack{
+	layer = 2.5
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/wood,
+/area/lv624/lazarus/main_hall)
 
 (1,1,1) = {"
-Y
-a
-a
-a
-i
-i
-i
-i
-z
-z
+aM
+aP
+aP
+aP
+ai
+ai
+ai
+ai
+az
+az
 "}
 (2,1,1) = {"
-b
-h
-e
-e
-i
-n
-s
-i
-i
-i
+ax
+aH
+aC
+aC
+ai
+aL
+aZ
+ai
+ai
+ai
 "}
 (3,1,1) = {"
-a
-a
-k
-i
-i
-A
-p
-u
-T
-i
+aP
+aP
+aK
+ai
+ai
+aX
+aI
+aU
+aN
+ai
 "}
 (4,1,1) = {"
-a
-a
-l
-q
-w
-p
-p
-p
-p
-i
+aP
+aP
+aS
+aG
+aF
+aI
+aI
+aI
+aI
+ai
 "}
 (5,1,1) = {"
-a
-a
-o
-i
-w
-w
-w
-w
-p
-i
+aP
+aP
+aD
+ai
+aF
+aF
+aF
+aF
+aI
+ai
 "}
 (6,1,1) = {"
-c
-f
-a
-i
-i
-i
-i
-i
-B
-i
+aO
+aW
+aP
+ai
+ai
+ai
+ai
+ai
+aJ
+ai
 "}
 (7,1,1) = {"
-d
-g
-a
-j
-m
-r
-t
-y
-t
-j
+CN
+aV
+aP
+aj
+av
+aR
+aE
+aQ
+aE
+aj
 "}

@@ -4,11 +4,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/auto_turf/sand/layer0,
 /area/template_noop)
-"cm" = (
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 8
-	},
-/area/template_noop)
 "cL" = (
 /obj/item/clothing/suit/storage/hazardvest/yellow,
 /turf/open/floor/kutjevo/tan,
@@ -16,15 +11,17 @@
 "cW" = (
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"di" = (
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 1
-	},
-/area/template_noop)
 "dl" = (
 /obj/structure/girder/displaced,
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/sand/layer0,
+/area/template_noop)
+"gj" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/west,
 /area/template_noop)
 "gD" = (
 /obj/item/stack/rods,
@@ -100,14 +97,6 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"qp" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_one_access = null
-	},
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 1
-	},
-/area/template_noop)
 "qM" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/blood/oil,
@@ -132,11 +121,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"sQ" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 1
-	},
+"sc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/template_noop)
+"sd" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/template_noop)
+"sP" = (
+/turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/template_noop)
 "uS" = (
 /obj/structure/surface/table/almayer,
@@ -202,7 +196,7 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"yQ" = (
+"yk" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -218,12 +212,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"Af" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 4
-	},
-/area/template_noop)
 "Ca" = (
 /obj/structure/window/framed/kutjevo,
 /obj/structure/barricade/handrail/kutjevo{
@@ -231,20 +219,12 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"Ci" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 1
-	},
+"Cz" = (
+/obj/item/clothing/head/hardhat/orange,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/template_noop)
-"DY" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1;
-	req_one_access = null
-	},
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 4
-	},
+"CY" = (
+/turf/open/floor/kutjevo/tan/grey_edge/east,
 /area/template_noop)
 "EK" = (
 /obj/structure/window/framed/kutjevo,
@@ -262,23 +242,14 @@
 /obj/item/paper/crumpled,
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"Jg" = (
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 4
-	},
-/area/template_noop)
-"Jz" = (
-/obj/item/stack/sheet/metal,
-/obj/item/stack/rods,
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 4
-	},
-/area/template_noop)
 "Ks" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"KA" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/template_noop)
 "KC" = (
 /obj/structure/bed/chair/comfy{
@@ -320,6 +291,10 @@
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
+"Mk" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/template_noop)
 "MV" = (
 /obj/structure/largecrate/random{
 	pixel_y = 1
@@ -344,6 +319,13 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
+"NY" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/template_noop)
 "Or" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey/plate,
@@ -351,6 +333,12 @@
 "Pp" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"QP" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/template_noop)
 "Re" = (
 /obj/effect/decal/cleanable/dirt,
@@ -366,6 +354,9 @@
 "RK" = (
 /turf/closed/wall/kutjevo/colony,
 /area/template_noop)
+"SE" = (
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/template_noop)
 "SZ" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/template_noop)
@@ -375,25 +366,23 @@
 	},
 /turf/open/floor/kutjevo/tan/grey_edge,
 /area/template_noop)
-"Um" = (
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 4
-	},
+"Vb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge/west,
 /area/template_noop)
 "Vc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/warning_cone,
 /turf/open/auto_turf/sand/layer0,
 /area/template_noop)
+"Wz" = (
+/obj/item/stack/sheet/metal,
+/obj/item/stack/rods,
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/template_noop)
 "Xi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/tan/grey_edge,
-/area/template_noop)
-"Xq" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 8
-	},
 /area/template_noop)
 "XS" = (
 /obj/structure/fence{
@@ -401,25 +390,10 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/template_noop)
-"Yo" = (
-/obj/item/clothing/head/hardhat/orange,
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 1
-	},
-/area/template_noop)
 "YG" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"YO" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1;
-	req_one_access = null
-	},
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 8
-	},
 /area/template_noop)
 "Zf" = (
 /obj/structure/window/framed/kutjevo,
@@ -434,7 +408,7 @@ SZ
 RK
 RK
 RK
-qp
+QP
 Ul
 RK
 RK
@@ -448,7 +422,7 @@ RK
 pP
 cW
 cW
-Ci
+sc
 zb
 Ca
 Pp
@@ -462,7 +436,7 @@ KD
 Nr
 Ks
 cW
-di
+sP
 Xi
 Zf
 uS
@@ -476,7 +450,7 @@ SZ
 MV
 Or
 rP
-Yo
+Cz
 zb
 lD
 LR
@@ -490,14 +464,14 @@ EK
 wC
 rG
 LO
-sQ
+KA
 cL
-cm
-Xq
-Xq
-cm
-cm
-YO
+SE
+Vb
+Vb
+SE
+SE
+gj
 "}
 (6,1,1) = {"
 EK
@@ -505,17 +479,17 @@ rm
 lZ
 nn
 Or
-Af
-Um
-Jg
-Um
-Jz
+sd
+CY
+Mk
+CY
+Wz
 wh
-DY
+NY
 "}
 (7,1,1) = {"
 SZ
-yQ
+yk
 oB
 wO
 gD

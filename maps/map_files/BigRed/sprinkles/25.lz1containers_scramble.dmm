@@ -1,10 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ab" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/space_port)
 "ac" = (
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
@@ -12,119 +6,12 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"af" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Spaceport"
-	},
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"ah" = (
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"ai" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"aj" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/toolbox,
-/obj/effect/spawner/random/tool,
-/obj/structure/machinery/camera/autoname{
-	dir = 8
-	},
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
 "al" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"am" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "an" = (
 /turf/closed/wall/solaris,
-/area/bigredv2/outside/space_port)
-"ao" = (
-/obj/structure/machinery/power/apc/directional/no_power/west,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"ap" = (
-/obj/effect/decal/cleanable/blood/gibs/up,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"aq" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"ar" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/toolbox,
-/obj/structure/machinery/door_control{
-	id = "Spaceport";
-	name = "Storm Shutters";
-	pixel_x = 32
-	},
-/obj/item/tool/pen,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"at" = (
-/obj/structure/machinery/disposal,
-/obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
-	},
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"au" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"av" = (
-/obj/structure/machinery/blackbox_recorder,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
 /area/bigredv2/outside/space_port)
 "ax" = (
 /obj/structure/window/framed/solaris,
@@ -134,24 +21,6 @@
 	name = "\improper Spaceport Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
-"ay" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/landing/console)
-"az" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/powercell,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
 /area/bigredv2/outside/space_port)
 "aA" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
@@ -165,94 +34,11 @@
 /obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"aD" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/tool,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"aE" = (
-/obj/structure/bed/chair/office/dark,
-/obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"aF" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/tool,
-/obj/effect/spawner/random/tech_supply,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
 "aG" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
-"aH" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/tool,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 10;
-	icon_state = "darkgreen2"
-	},
-/area/bigredv2/outside/space_port)
-"aI" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/bomb_supply,
-/obj/effect/spawner/random/technology_scanner,
-/obj/effect/spawner/random/tool,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "darkgreen2"
-	},
-/area/bigredv2/outside/space_port)
-"aJ" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/technology_scanner,
-/obj/effect/spawner/random/tool,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "darkgreen2"
-	},
-/area/bigredv2/outside/space_port)
-"aK" = (
-/obj/structure/machinery/computer/cameras,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "darkgreen2"
-	},
-/area/bigredv2/outside/space_port)
-"aL" = (
-/obj/item/shard,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "darkgreen2"
-	},
-/area/bigredv2/outside/space_port)
-"aM" = (
-/turf/open/floor{
-	dir = 2;
-	icon_state = "darkgreen2"
-	},
-/area/bigredv2/outside/space_port)
-"aN" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/tool,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "darkgreen2"
-	},
 /area/bigredv2/outside/space_port)
 "aP" = (
 /obj/structure/window/framed/solaris,
@@ -274,47 +60,6 @@
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"aT" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	icon_state = "tube1"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
-"aU" = (
-/obj/structure/machinery/floodlight/landing,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "asteroidplating"
-	},
-/area/bigredv2/outside/space_port)
-"aV" = (
-/turf/open/floor/plating{
-	dir = 2;
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/space_port)
-"aW" = (
-/obj/structure/cargo_container/arious/leftmid,
-/turf/open/floor/plating{
-	dir = 2;
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/space_port)
-"aX" = (
-/obj/structure/cargo_container/arious/rightmid,
-/turf/open/floor/plating{
-	dir = 2;
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/space_port)
-"aY" = (
-/obj/structure/cargo_container/arious/right,
-/turf/open/floor/plating{
-	dir = 2;
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/space_port)
 "bd" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
@@ -322,13 +67,6 @@
 "be" = (
 /obj/item/shard,
 /turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
-"bf" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
 /area/bigredv2/outside/space_port)
 "bg" = (
 /obj/effect/landmark/crap_item,
@@ -362,25 +100,194 @@
 /obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"dS" = (
+/obj/structure/cargo_container/arious/leftmid,
+/turf/open/floor/plating/warnplate,
+/area/bigredv2/outside/space_port)
+"ed" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/landing/console)
+"eo" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/spawner/random/tech_supply,
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"eU" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/darkgreen2/southwest,
+/area/bigredv2/outside/space_port)
+"eZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/outside/space_port)
+"iY" = (
+/turf/open/floor/darkgreen2,
+/area/bigredv2/outside/space_port)
+"jN" = (
+/obj/structure/machinery/disposal,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"lq" = (
+/obj/structure/cargo_container/arious/right,
+/turf/open/floor/plating/warnplate,
+/area/bigredv2/outside/space_port)
+"qQ" = (
+/turf/open/floor/plating/warnplate,
+/area/bigredv2/outside/space_port)
+"qY" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"sA" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/bomb_supply,
+/obj/effect/spawner/random/technology_scanner,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/darkgreen2,
+/area/bigredv2/outside/space_port)
+"vF" = (
+/obj/item/shard,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkgreen2,
+/area/bigredv2/outside/space_port)
+"vZ" = (
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/outside/space_port)
+"wH" = (
+/obj/structure/cargo_container/arious/rightmid,
+/turf/open/floor/plating/warnplate,
+/area/bigredv2/outside/space_port)
+"yC" = (
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"AA" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"Ca" = (
+/obj/structure/machinery/computer/cameras,
+/turf/open/floor/darkgreen2,
+/area/bigredv2/outside/space_port)
+"ER" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/technology_scanner,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/darkgreen2,
+/area/bigredv2/outside/space_port)
+"GZ" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"IV" = (
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor/asteroidplating,
+/area/bigredv2/outside/space_port)
+"Jz" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"Kf" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"Lk" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/toolbox,
+/obj/structure/machinery/door_control{
+	id = "Spaceport";
+	name = "Storm Shutters";
+	pixel_x = 32
+	},
+/obj/item/tool/pen,
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"LK" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Spaceport"
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"PG" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"Qr" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/toolbox,
+/obj/effect/spawner/random/tool,
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"QY" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"Sb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"UJ" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/darkgreen2/southeast,
+/area/bigredv2/outside/space_port)
+"WG" = (
+/obj/structure/machinery/power/apc/directional/no_power/west,
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"XY" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/powercell,
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"Zp" = (
+/obj/structure/bed/chair/office/dark,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
 
 (1,1,1) = {"
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-aU
-ab
-bf
-ab
-bf
-bf
-ab
-ab
-ab
+vZ
+vZ
+vZ
+vZ
+vZ
+vZ
+vZ
+vZ
+IV
+vZ
+eZ
+vZ
+eZ
+eZ
+vZ
+vZ
+vZ
 "}
 (2,1,1) = {"
 ac
@@ -391,7 +298,7 @@ ac
 ac
 ac
 ac
-aV
+qQ
 ac
 ac
 ac
@@ -410,7 +317,7 @@ aA
 ac
 ac
 ac
-aV
+qQ
 ac
 ac
 ac
@@ -429,7 +336,7 @@ aB
 ac
 ac
 ac
-aV
+qQ
 ac
 ac
 ac
@@ -448,7 +355,7 @@ aC
 ac
 ac
 ac
-aW
+dS
 ac
 ac
 ac
@@ -467,7 +374,7 @@ ac
 ac
 ac
 ac
-aX
+wH
 ac
 ac
 ac
@@ -486,7 +393,7 @@ ac
 aG
 ac
 ac
-aY
+lq
 ac
 ac
 ac
@@ -505,7 +412,7 @@ ac
 ac
 ac
 ac
-aV
+qQ
 ac
 ac
 ac
@@ -517,14 +424,14 @@ ac
 "}
 (9,1,1) = {"
 ac
-am
+PG
 ac
 ac
 ac
-am
+PG
 ac
 ac
-aV
+qQ
 ac
 bg
 ac
@@ -535,7 +442,7 @@ ac
 ac
 "}
 (10,1,1) = {"
-af
+LK
 an
 an
 ax
@@ -543,7 +450,7 @@ ax
 an
 an
 ac
-aV
+qQ
 ac
 ac
 ac
@@ -554,15 +461,15 @@ ac
 ac
 "}
 (11,1,1) = {"
-ai
-ao
-at
-ay
-aD
-aH
+Sb
+WG
+jN
+ed
+AA
+eU
 an
-aT
-aV
+Kf
+qQ
 ac
 ac
 ac
@@ -573,15 +480,15 @@ ac
 ac
 "}
 (12,1,1) = {"
-ah
-ah
-ah
-ah
-aE
-aI
+yC
+yC
+yC
+yC
+Zp
+sA
 aP
 ac
-aV
+qQ
 ac
 ac
 bh
@@ -592,15 +499,15 @@ ac
 ac
 "}
 (13,1,1) = {"
-ai
-ah
-ai
-ah
-ah
-aJ
+Sb
+yC
+Sb
+yC
+yC
+ER
 aP
 ac
-aV
+qQ
 ac
 ac
 ac
@@ -611,15 +518,15 @@ ac
 bi
 "}
 (14,1,1) = {"
-ai
-ap
-ai
-ai
-ah
-aK
+Sb
+GZ
+Sb
+Sb
+yC
+Ca
 an
 ac
-aV
+qQ
 bd
 ac
 ac
@@ -630,15 +537,15 @@ bl
 bj
 "}
 (15,1,1) = {"
-ah
-ah
-au
-ah
-ah
-aL
+yC
+yC
+Jz
+yC
+yC
+vF
 aQ
 ac
-aV
+qQ
 be
 aA
 ac
@@ -649,15 +556,15 @@ bm
 bk
 "}
 (16,1,1) = {"
-ah
-aq
-ah
-ah
-ai
-aM
+yC
+QY
+yC
+yC
+Sb
+iY
 aR
 ac
-aV
+qQ
 ac
 aB
 ac
@@ -668,15 +575,15 @@ bn
 ac
 "}
 (17,1,1) = {"
-aj
-ar
-av
-az
-aF
-aN
+Qr
+Lk
+qY
+XY
+eo
+UJ
 aP
 ac
-aV
+qQ
 ac
 aC
 ac

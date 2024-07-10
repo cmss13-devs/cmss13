@@ -8,10 +8,21 @@
 "ar" = (
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/sigma/biodome/gunrange)
+"az" = (
+/turf/open/floor/corsat/red/west,
+/area/corsat/sigma/airlock/control)
 "aB" = (
 /obj/structure/cargo_container/arious/right,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
+"aC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/biodome/ice)
+"aF" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
 "aI" = (
 /obj/item/tool/shovel,
 /turf/open/auto_turf/snow/layer2,
@@ -29,6 +40,9 @@
 /obj/effect/decal/mecha_wreckage/ripley/firefighter,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
+"aP" = (
+/turf/open/floor/corsat/yellow/east,
+/area/corsat/sigma/airlock/control)
 "aS" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -45,16 +59,6 @@
 /obj/item/tool/shovel,
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/sigma/biodome/gunrange)
-"aV" = (
-/obj/structure/machinery/light,
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/secure_data{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	icon_state = "red"
-	},
-/area/corsat/sigma/airlock/control)
 "ba" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -65,45 +69,29 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"bc" = (
+/obj/structure/flora/pottedplant,
+/turf/open/floor/corsat/blue,
+/area/corsat/sigma/airlock/control)
+"bd" = (
+/obj/structure/filingcabinet/filingcabinet,
+/turf/open/floor/corsat/red/east,
+/area/corsat/sigma/airlock/control)
 "be" = (
 /turf/open/auto_turf/snow/layer3,
 /area/corsat/sigma/biodome/ice)
-"bi" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Testing Grounds";
-	req_access_txt = "106";
-	use_power = 0
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/ice)
-"bo" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/suit/storage/snow_suit,
-/obj/item/clothing/suit/storage/snow_suit,
-/obj/item/clothing/suit/storage/snow_suit,
-/obj/item/clothing/suit/storage/snow_suit,
-/obj/item/clothing/suit/storage/snow_suit,
-/turf/open/floor/corsat{
-	icon_state = "sigma"
-	},
-/area/corsat/sigma/airlock/control)
-"bp" = (
-/obj/structure/surface/rack,
-/obj/item/tool/shovel/snow,
-/obj/item/tool/shovel/snow,
-/obj/item/tool/shovel/snow,
-/obj/item/tool/shovel/snow,
-/obj/item/tool/shovel/snow,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
+"bk" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/atmos_alert,
+/turf/open/floor/corsat/blue/northwest,
 /area/corsat/sigma/airlock/control)
 "bs" = (
 /turf/open/auto_turf/snow/layer0,
 /area/corsat/sigma/biodome/ice)
+"bt" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/yellowcorner/east,
+/area/corsat/sigma/airlock/control)
 "bx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer0,
@@ -112,21 +100,39 @@
 /obj/item/stack/snow,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
+"bA" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "Sigma Dome Control";
+	req_one_access = list(102)
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/yellow/east,
+/area/corsat/sigma/airlock/control)
 "bE" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/snow,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"bN" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+"bH" = (
+/obj/structure/machinery/computer/general_air_control/large_tank_control{
+	name = "CO2 Control"
 	},
-/area/corsat/sigma/biodome/gunrange)
+/obj/structure/surface/table/almayer{
+	dir = 4
+	},
+/turf/open/floor/corsat/yellow/southwest,
+/area/corsat/sigma/airlock/control)
+"bI" = (
+/turf/open/floor/corsat/yellowcorner/west,
+/area/corsat/sigma/airlock/control)
 "bT" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer3,
 /area/corsat/sigma/biodome/ice)
+"ca" = (
+/turf/open/floor/corsat/bluecorner,
+/area/corsat/sigma/airlock/control)
 "cb" = (
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer2,
@@ -135,31 +141,35 @@
 /obj/item/stack/sheet/metal,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"ci" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	damage_cap = 4000;
-	dir = 1;
-	locked = 0;
-	name = "\improper Emergency Access";
-	req_access_txt = "100";
-	req_one_access = list()
+"cj" = (
+/obj/structure/target/syndicate,
+/obj/structure/target/syndicate,
+/obj/structure/target/syndicate,
+/obj/structure/target/syndicate,
+/obj/structure/target/syndicate,
+/obj/structure/closet/crate{
+	desc = "A rectangular steel crate containing firing targets.";
+	name = "target crate"
 	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/biodome/ice)
-"cs" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidplating,
 /area/corsat/sigma/biodome/gunrange)
-"cv" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
+"cq" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 4
 	},
-/area/corsat/sigma/biodome/gunrange)
+/obj/structure/machinery/meter,
+/turf/open/floor/corsat/yellow/north,
+/area/corsat/sigma/airlock/control)
+"ct" = (
+/obj/structure/pipes/standard/simple/hidden/universal{
+	dir = 4
+	},
+/turf/open/floor/corsat/yellow,
+/area/corsat/sigma/airlock/control)
+"cy" = (
+/obj/structure/closet/wardrobe/atmospherics_yellow,
+/turf/open/floor/corsat/yellow/northwest,
+/area/corsat/sigma/airlock/control)
 "cA" = (
 /turf/open/auto_turf/snow/layer4,
 /area/corsat/sigma/biodome/scrapyard)
@@ -171,25 +181,16 @@
 /obj/vehicle/train/cargo/trolley,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"cJ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/gunrange)
+"cX" = (
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/airlock/control)
 "db" = (
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/inaccessible)
-"dd" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/gunrange)
+"dj" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
 "dn" = (
 /obj/structure/window/framed/corsat/hull,
 /obj/structure/pipes/standard/simple/visible{
@@ -198,15 +199,6 @@
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
 /area/corsat/inaccessible)
-"do" = (
-/obj/structure/machinery/camera/autoname{
-	network = list("sigma")
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/airlock/control)
 "dr" = (
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -219,6 +211,18 @@
 	icon_state = "NS-center"
 	},
 /turf/open/ice,
+/area/corsat/sigma/biodome/ice)
+"dF" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
+"dM" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/item/clothing/suit/storage/snow_suit,
+/turf/open/floor/asteroidfloor/north,
 /area/corsat/sigma/biodome/ice)
 "dO" = (
 /obj/effect/landmark{
@@ -239,15 +243,6 @@
 /obj/vehicle/train/cargo/engine,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"eb" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/gunrange)
 "ee" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -257,65 +252,76 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"er" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/gunrange)
 "ev" = (
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
 /area/corsat/inaccessible)
+"eD" = (
+/obj/structure/machinery/computer3,
+/turf/open/floor/corsat/blue,
+/area/corsat/sigma/airlock/control)
+"eF" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8;
+	network = list("sigma")
+	},
+/turf/open/floor/asteroidwarning/east,
+/area/corsat/sigma/biodome/scrapyard)
 "eG" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"eV" = (
-/obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+"eZ" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
-/area/corsat/sigma/biodome/ice)
+/turf/open/floor/corsat/redcorner/west,
+/area/corsat/sigma/airlock/control)
 "fc" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"fh" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
 "fk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer4,
 /area/corsat/sigma/biodome/ice)
+"fo" = (
+/turf/open/floor/corsat/bluecorner/east,
+/area/corsat/sigma/airlock/control)
 "fs" = (
 /turf/closed/wall/r_wall,
 /area/corsat/sigma/biodome/gunrange)
+"ft" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/corsat/blue/northeast,
+/area/corsat/sigma/airlock/control)
+"fu" = (
+/turf/open/floor/asteroidwarning/east,
+/area/corsat/sigma/biodome/ice)
 "fy" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"fz" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
-/area/corsat/sigma/biodome/ice)
 "fC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/ice)
+"fD" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
 "fM" = (
 /obj/structure/window/framed/corsat/hull,
 /obj/structure/pipes/standard/simple/visible,
@@ -326,29 +332,43 @@
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
+"fX" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
 "gd" = (
 /obj/item/tool/shovel,
 /turf/open/auto_turf/snow/layer4,
 /area/corsat/sigma/biodome/gunrange)
-"gi" = (
-/obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0
+"ge" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	name = "ID Checkpoint";
+	req_access_txt = "101"
 	},
-/turf/open/auto_turf/snow/layer0,
-/area/corsat/sigma/biodome/ice)
-"go" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
+"gm" = (
+/obj/structure/machinery/light{
+	dir = 1
 	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
+/turf/open/floor/corsat/yellow/north,
+/area/corsat/sigma/airlock/control)
+"gq" = (
+/turf/open/floor/corsat/blue/north,
 /area/corsat/sigma/airlock/control)
 "gr" = (
 /obj/structure/bed/nest,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"gu" = (
+/obj/structure/surface/table/almayer,
+/obj/item/folder/black_random,
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
 "gx" = (
 /obj/structure/bed/nest,
 /obj/effect/landmark/corpsespawner/engineer,
@@ -360,6 +380,13 @@
 	},
 /turf/open/auto_turf/snow/layer4,
 /area/corsat/sigma/biodome/ice)
+"gH" = (
+/turf/open/floor/corsat/blue/southeast,
+/area/corsat/sigma/airlock/control)
+"gI" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/corsat/plate,
+/area/corsat/emergency_access)
 "gP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -367,6 +394,20 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"hd" = (
+/obj/structure/surface/table/almayer,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
+"hf" = (
+/obj/structure/largecrate/supply/ammo/pistol{
+	desc = "An ammunition case containing six M44 speedloaders, and eight M4A3 magazines.";
+	name = "sidearm ammunition case (x14)";
+	supplies = list(/obj/item/ammo_magazine/revolver=6,/obj/item/ammo_magazine/pistol=8)
+	},
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
 "hn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -391,37 +432,45 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/corsat/sigma/biodome/ice)
-"hC" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
-/area/corsat/sigma/biodome/ice)
-"hH" = (
-/turf/open/floor{
+"hB" = (
+/obj/structure/filingcabinet/filingcabinet,
+/turf/open/floor/corsat/blue/north,
+/area/corsat/sigma/airlock/control)
+"hD" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	name = "Firing Range";
+	req_access_txt = "106";
+	use_power = 0
 	},
-/area/corsat/sigma/biodome/ice)
-"hQ" = (
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
+"hI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/asteroidfloor/north,
 /area/corsat/sigma/biodome/ice)
-"hR" = (
+"hJ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
+"hO" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	damage_cap = 4000;
-	locked = 0;
+	dir = 1;
 	name = "\improper Emergency Access";
 	req_access_txt = "100";
 	req_one_access = list()
 	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/biodome/ice)
+"hT" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
 	},
-/area/corsat/inaccessible)
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
 "hU" = (
 /obj/structure/barricade/wooden,
 /turf/open/ice,
@@ -436,37 +485,37 @@
 /obj/structure/cargo_container/grant/right,
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
-"ih" = (
-/obj/effect/landmark/corpsespawner/pmc,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+"ib" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8;
+	network = list("sigma")
 	},
-/area/corsat/sigma/biodome/gunrange)
+/turf/open/floor/corsat/blue/east,
+/area/corsat/sigma/airlock/control)
+"id" = (
+/obj/structure/machinery/light,
+/turf/open/floor/corsat/blue,
+/area/corsat/sigma/airlock/control)
+"ii" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	name = "Maintainence";
+	req_one_access = list()
+	},
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
 "io" = (
 /obj/effect/alien/weeds/node,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"iy" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
-/area/corsat/sigma/biodome/scrapyard)
+"it" = (
+/turf/open/floor/corsat/red/east,
+/area/corsat/sigma/airlock/control)
 "iK" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/sigma/biodome/ice)
-"iL" = (
-/obj/structure/surface/table/almayer,
-/obj/item/folder/black_random,
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/corsat/sigma/airlock/control)
 "iO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -477,74 +526,53 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"jb" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
 "jj" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/corsat/sigma/biodome/ice)
-"jm" = (
-/obj/structure/machinery/camera/autoname{
-	network = list("sigma")
+"js" = (
+/obj/structure/surface/rack,
+/obj/structure/window/reinforced/toughened{
+	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+/obj/structure/machinery/door/window/eastright{
+	name = "Weapon Rack"
 	},
-/area/corsat/sigma/biodome/ice)
-"jv" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
+/obj/item/weapon/gun/pistol/m4a3,
+/obj/item/weapon/gun/pistol/m4a3,
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
+"jG" = (
+/obj/structure/largecrate/supply/ammo/m39{
+	desc = "An ammunition case containing eight M39 magazines. This one has already been opened.";
+	name = "\improper M39 magazine case (x8)";
+	supplies = list(/obj/item/ammo_magazine/smg/m39=3)
 	},
-/area/corsat/sigma/biodome/ice)
-"jy" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/ice)
-"jL" = (
-/obj/structure/pipes/standard/simple/hidden/universal{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "yellow"
-	},
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
+"jN" = (
+/obj/structure/surface/rack,
+/obj/item/tank/air,
+/obj/item/tank/air,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/turf/open/floor/corsat/yellow,
 /area/corsat/sigma/airlock/control)
 "jT" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/auto_turf/snow/layer0,
 /area/corsat/sigma/biodome/ice)
-"kc" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/ice)
-"kl" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/ice)
-"km" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 8;
-	network = list("sigma")
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
-/area/corsat/sigma/biodome/scrapyard)
+"jV" = (
+/turf/open/floor/corsat/marked,
+/area/corsat/sigma/airlock/control)
 "kr" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -556,13 +584,14 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"kv" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+"kC" = (
+/obj/structure/machinery/door_control{
+	id = "SigmaBioAtmos";
+	name = "Access Shutters";
+	pixel_y = 24
 	},
-/area/corsat/sigma/biodome/ice)
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
 "kH" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -576,6 +605,9 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"kM" = (
+/turf/open/floor/asteroidwarning/west,
+/area/corsat/sigma/biodome/gunrange)
 "kO" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -597,10 +629,26 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"kW" = (
+/obj/structure/fence,
+/obj/structure/fence,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
 "lc" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/auto_turf/snow/layer0,
 /area/corsat/sigma/biodome/ice)
+"lh" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/bluecorner,
+/area/corsat/sigma/airlock/control)
+"li" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/technology_scanner,
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
 "ln" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -619,29 +667,22 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"lI" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/yellow/east,
+/area/corsat/sigma/airlock/control)
 "lN" = (
 /obj/structure/tunnel{
 	id = "hole4"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"lP" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	dir = 1;
-	name = "Sigma Dome Control";
-	req_one_access = list(102)
+"lO" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/airlock/control)
-"lY" = (
-/obj/structure/bed/chair/office/light,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
 "mm" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -654,53 +695,31 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"mU" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/suit/storage/snow_suit,
-/obj/item/clothing/suit/storage/snow_suit,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/ice)
-"mX" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
+"mw" = (
+/obj/structure/pipes/standard/simple/hidden/universal{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/ice)
-"mY" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
-/area/corsat/sigma/biodome/ice)
-"nb" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "blue"
-	},
+/turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
-"ng" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/turf/open/floor{
-	icon_state = "asteroidplating"
+"mE" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 4
 	},
-/area/corsat/sigma/biodome/gunrange)
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
 "nk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/corsat/sigma/biodome/ice)
+"nm" = (
+/obj/structure/pipes/standard/simple/hidden/universal{
+	dir = 4
+	},
+/turf/open/floor/corsat/yellow/north,
+/area/corsat/sigma/airlock/control)
 "np" = (
 /turf/closed/wall,
 /area/corsat/sigma/biodome/scrapyard)
@@ -708,12 +727,20 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
+"ns" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/camera,
+/turf/open/floor/corsat/blue/southeast,
+/area/corsat/sigma/airlock/control)
 "nu" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/template_noop,
 /area/template_noop)
+"nz" = (
+/turf/open/floor/asteroidwarning/north,
+/area/corsat/sigma/biodome/gunrange)
 "nB" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/landmark/corpsespawner/pmc,
@@ -726,12 +753,6 @@
 /area/corsat/sigma/biodome/ice)
 "nP" = (
 /turf/open/auto_turf/snow/layer3,
-/area/corsat/sigma/biodome/scrapyard)
-"nZ" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
 /area/corsat/sigma/biodome/scrapyard)
 "oa" = (
 /obj/structure/window/framed/corsat,
@@ -755,6 +776,14 @@
 /obj/item/tool/shovel,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
+"om" = (
+/obj/structure/machinery/computer/general_air_control/large_tank_control{
+	dir = 4;
+	name = "Mixed Air Control"
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/corsat/yellow/west,
+/area/corsat/sigma/airlock/control)
 "on" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -770,6 +799,20 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/ice)
+"oM" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
+"oN" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "Firing Range";
+	req_one_access = list(106,102,103);
+	use_power = 0
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
 "oS" = (
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/snow/layer1,
@@ -778,6 +821,17 @@
 /obj/structure/target/syndicate,
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/sigma/biodome/gunrange)
+"pb" = (
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
+"pc" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "Sigma Dome Control";
+	req_one_access = list(102)
+	},
+/turf/open/floor/corsat/yellow/west,
+/area/corsat/sigma/airlock/control)
 "pe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -788,15 +842,17 @@
 /obj/structure/window/framed/corsat/hull,
 /turf/open/floor/plating,
 /area/corsat/gamma/hallwaysouth)
+"pq" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
 "pz" = (
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/sigma/biodome/ice)
-"pC" = (
-/obj/structure/filingcabinet/filingcabinet,
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "red"
-	},
+"pK" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/technology_scanner,
+/turf/open/floor/corsat/yellow/southwest,
 /area/corsat/sigma/airlock/control)
 "pP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -807,20 +863,30 @@
 "pQ" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/gamma/hallwaysouth)
-"qd" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 5
+"pV" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
+"qi" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
 "qs" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"qw" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clipboard,
+/obj/item/paper,
+/obj/item/tool/pen/red,
+/turf/open/floor/corsat/blue,
+/area/corsat/sigma/airlock/control)
 "qC" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/inaccessible)
@@ -828,6 +894,25 @@
 /obj/structure/machinery/portable_atmospherics/canister/empty,
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
+"qQ" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
+"rc" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/firecloset,
+/turf/open/floor/corsat/red/west,
+/area/corsat/sigma/airlock/control)
+"ro" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/door/window/brigdoor/westleft,
+/obj/structure/machinery/door/window/brigdoor/eastleft,
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
 "rr" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -835,14 +920,37 @@
 /obj/structure/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
-"rH" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/door/window/northright{
-	name = "Firing Lane"
+"ru" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "asteroidwarning"
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
+"rv" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
+"rx" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/secure_data{
+	dir = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
+"ry" = (
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
+"rC" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
+"rD" = (
+/turf/open/floor/asteroidfloor/north,
 /area/corsat/sigma/biodome/gunrange)
 "rP" = (
 /obj/structure/surface/table/almayer,
@@ -851,17 +959,9 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/gunrange)
-"rQ" = (
-/obj/structure/machinery/m56d_hmg{
-	dir = 1
-	},
-/obj/structure/machinery/door/window/northright{
-	name = "Firing Lane"
-	},
-/obj/structure/surface/table/almayer,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+"rT" = (
+/obj/effect/landmark/corpsespawner/pmc,
+/turf/open/floor/asteroidfloor/north,
 /area/corsat/sigma/biodome/gunrange)
 "rW" = (
 /obj/structure/pipes/unary/outlet_injector{
@@ -869,31 +969,15 @@
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
+"rY" = (
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/scrapyard)
 "so" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"sp" = (
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"ss" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "asteroidwarning"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"sx" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/gunrange)
 "sA" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/ice,
@@ -910,43 +994,67 @@
 "sT" = (
 /turf/open/auto_turf/snow/layer3,
 /area/corsat/sigma/biodome/gunrange)
-"tc" = (
-/obj/structure/pipes/vents/pump,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/gunrange)
 "tg" = (
 /turf/open/auto_turf/snow/layer4,
 /area/corsat/sigma/biodome/ice)
-"tm" = (
-/obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0
-	},
-/turf/open/auto_turf/snow/layer2,
-/area/corsat/sigma/biodome/ice)
-"tH" = (
-/obj/structure/machinery/computer/general_air_control/large_tank_control{
-	dir = 4;
-	name = "Waste Tank Control"
-	},
-/obj/structure/surface/table/almayer,
-/turf/open/floor/corsat{
-	dir = 9;
-	icon_state = "yellow"
-	},
+"tr" = (
+/turf/open/floor/corsat/yellow/north,
 /area/corsat/sigma/airlock/control)
-"tM" = (
+"tx" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/asteroidwarning/east,
+/area/corsat/sigma/biodome/ice)
+"tz" = (
+/obj/structure/surface/table/almayer,
+/obj/item/explosive/grenade/high_explosive,
+/obj/item/explosive/grenade/high_explosive,
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
+"tA" = (
+/obj/effect/decal/cleanable/cobweb{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/corsat/emergency_access)
+"tD" = (
 /obj/structure/pipes/standard/simple/visible{
-	dir = 5
+	dir = 4
 	},
 /obj/structure/machinery/meter,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
+/turf/open/floor/corsat/yellow,
+/area/corsat/sigma/airlock/control)
+"tG" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/corsat/blue,
+/area/corsat/sigma/airlock/control)
+"tL" = (
+/obj/structure/machinery/light{
+	dir = 4
 	},
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
+"tN" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/corsat/blue/northeast,
+/area/corsat/sigma/airlock/control)
+"tT" = (
+/turf/open/floor/corsat/yellow/northeast,
+/area/corsat/sigma/airlock/control)
+"tV" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/corsat/yellow,
+/area/corsat/sigma/airlock/control)
+"tX" = (
+/obj/item/folder/black_random,
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/corsat/red/east,
 /area/corsat/sigma/airlock/control)
 "tZ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -954,81 +1062,39 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/corsat/sigma/biodome/ice)
-"ua" = (
-/obj/structure/pipes/binary/pump/on{
-	dir = 8
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellowcorner"
-	},
-/area/corsat/sigma/airlock/control)
-"uc" = (
-/obj/structure/pipes/standard/simple/hidden/universal{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"uk" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "Maintainence";
-	req_one_access = list()
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "SigmaBioAtmos";
-	name = "Access Shutter"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
 "ur" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"us" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight,
-/turf/open/floor/corsat{
-	dir = 6;
-	icon_state = "red"
-	},
-/area/corsat/sigma/airlock/control)
 "uy" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/ice)
-"uD" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"uO" = (
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/corsat/sigma/airlock/control)
-"uS" = (
+"uE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/corpsespawner/pmc,
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
+"uL" = (
+/obj/structure/closet/athletic_mixed,
+/turf/open/floor/asteroidfloor/north,
 /area/corsat/sigma/biodome/ice)
+"uO" = (
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
+/area/corsat/sigma/airlock/control)
+"uQ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/airlock/control)
 "ve" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NS-center"
@@ -1038,29 +1104,34 @@
 "vh" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/sigma/biodome/ice)
-"vB" = (
-/obj/structure/pipes/standard/simple/hidden/green{
+"vq" = (
+/obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
+"vt" = (
+/obj/structure/machinery/m56d_hmg{
+	dir = 1
 	},
+/obj/structure/machinery/door/window/northright{
+	name = "Firing Lane"
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/asteroidwarning,
 /area/corsat/sigma/biodome/gunrange)
-"vO" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/camera/autoname{
-	dir = 1;
-	network = list("sigma")
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/gunrange)
+"vv" = (
+/obj/structure/surface/rack,
+/obj/item/tool/shovel/snow,
+/obj/item/tool/shovel/snow,
+/obj/item/tool/shovel/snow,
+/obj/item/tool/shovel/snow,
+/obj/item/tool/shovel/snow,
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
+"vN" = (
+/turf/open/floor/corsat/redcorner,
+/area/corsat/sigma/airlock/control)
 "vU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -1080,111 +1151,59 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"ww" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"wD" = (
+"wz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
+	dir = 5
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
+"wQ" = (
+/obj/structure/machinery/floodlight{
+	name = "Floodlight"
 	},
-/area/corsat/sigma/biodome/gunrange)
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
+"wR" = (
+/obj/structure/pipes/vents/pump,
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/snow,
+/obj/item/clothing/shoes/snow,
+/obj/item/clothing/shoes/snow,
+/obj/item/clothing/shoes/snow,
+/obj/item/clothing/shoes/snow,
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
 "xk" = (
 /obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"xp" = (
+"xu" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/atmos_alert{
+/obj/item/device/flashlight,
+/turf/open/floor/corsat/red/southeast,
+/area/corsat/sigma/airlock/control)
+"xO" = (
+/obj/structure/pipes/trinary/mixer{
 	dir = 4
 	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "yellow"
-	},
+/turf/open/floor/corsat/yellow/southeast,
 /area/corsat/sigma/airlock/control)
-"xK" = (
-/obj/structure/machinery/light{
-	dir = 4
+"xU" = (
+/obj/structure/machinery/camera/autoname{
+	network = list("sigma")
 	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/corsat/sigma/airlock/control)
-"xM" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
-	name = "Maintainance";
-	req_one_access = list()
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "SigmaBioAtmos";
-	name = "Access Shutter"
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"xQ" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/station_alert{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/airlock/control)
-"xX" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/airlock/control)
-"xZ" = (
+"xY" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/corsat{
-	icon_state = "squares"
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
+"yc" = (
+/obj/structure/machinery/camera/autoname{
+	network = list("sigma")
 	},
-/area/corsat/sigma/airlock/control)
-"yh" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/emergency_access)
-"yj" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "Maintainence";
-	req_one_access = list()
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"yl" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "yellowcorner"
-	},
-/area/corsat/sigma/airlock/control)
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
 "yn" = (
 /obj/structure/window/reinforced,
 /obj/effect/decal/warning_stripes{
@@ -1196,15 +1215,6 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"yo" = (
-/obj/structure/pipes/standard/simple/hidden/universal{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/airlock/control)
 "yr" = (
 /obj/structure/window/reinforced,
 /obj/effect/decal/warning_stripes{
@@ -1215,35 +1225,9 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"yy" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/technology_scanner,
-/turf/open/floor/corsat{
-	dir = 10;
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/airlock/control)
-"yC" = (
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "yellowcorner"
-	},
-/area/corsat/sigma/airlock/control)
-"yG" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat{
-	icon_state = "yellowcorner"
-	},
-/area/corsat/sigma/airlock/control)
-"yJ" = (
-/obj/structure/surface/rack,
-/obj/item/tank/air,
-/obj/item/tank/air,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/turf/open/floor/corsat{
-	icon_state = "yellow"
-	},
+"yw" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
 "yL" = (
 /obj/structure/machinery/constructable_frame{
@@ -1251,6 +1235,12 @@
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/sigma/biodome/scrapyard)
+"yP" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
 "yQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NS-center"
@@ -1258,27 +1248,10 @@
 /obj/effect/decal/warning_stripes,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"yR" = (
-/obj/effect/decal/cleanable/cobweb{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/emergency_access)
 "yT" = (
 /obj/item/broken_device,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"yV" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/toolbox,
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/corsat{
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/airlock/control)
 "yX" = (
 /turf/template_noop,
 /area/template_noop)
@@ -1286,47 +1259,23 @@
 /obj/structure/cargo_container/watatsumi/right,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"zf" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+"zj" = (
+/turf/open/floor/asteroidwarning,
 /area/corsat/sigma/biodome/ice)
-"zh" = (
+"zn" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/door_control{
+	id = "SigmaWestD";
+	name = "Entrance Airlock Control";
+	pixel_x = -5;
+	use_power = 0
+	},
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
+"zH" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "yellowcorner"
-	},
-/area/corsat/sigma/airlock/control)
-"zo" = (
-/obj/structure/pipes/vents/pump{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"zJ" = (
-/obj/structure/pipes/standard/simple/visible{
-	dir = 4
-	},
-/obj/structure/machinery/meter,
-/turf/open/floor/corsat{
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/airlock/control)
-"zQ" = (
-/obj/structure/pipes/trinary/mixer{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 6;
-	icon_state = "yellow"
-	},
+/turf/open/floor/corsat/yellowcorner/west,
 /area/corsat/sigma/airlock/control)
 "zT" = (
 /obj/structure/pipes/unary/outlet_injector{
@@ -1335,71 +1284,30 @@
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
+"zV" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin,
+/obj/item/tool/pen/red,
+/turf/open/floor/corsat/red/southwest,
+/area/corsat/sigma/airlock/control)
+"Aa" = (
+/obj/structure/machinery/light,
+/obj/structure/closet/firecloset,
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
 "Ac" = (
 /obj/structure/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
-"Aj" = (
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"Al" = (
-/obj/structure/machinery/door_control{
-	id = "SigmaBioAtmos";
-	name = "Access Shutters";
-	pixel_y = 24
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"Ao" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
 "As" = (
 /obj/item/tool/shovel,
 /turf/open/auto_turf/snow/layer0,
 /area/corsat/sigma/biodome/ice)
-"At" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"AJ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/oil,
-/obj/effect/landmark/corpsespawner/pmc,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/scrapyard)
-"AS" = (
-/obj/structure/largecrate/supply/ammo/m39{
-	desc = "An ammunition case containing eight M39 magazines. This one has already been opened.";
-	name = "\improper M39 magazine case (x8)";
-	supplies = list(/obj/item/ammo_magazine/smg/m39=3)
-	},
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"AX" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
+"AE" = (
+/turf/open/floor/corsat/bluecorner/north,
+/area/corsat/sigma/airlock/control)
+"AV" = (
+/turf/open/floor/asteroidwarning/east,
 /area/corsat/sigma/biodome/gunrange)
 "Ba" = (
 /obj/effect/decal/warning_stripes{
@@ -1415,93 +1323,66 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"Bj" = (
-/obj/structure/surface/rack,
-/obj/structure/machinery/door/window/eastright{
-	name = "Weapon Rack"
-	},
-/obj/structure/window/reinforced/toughened{
-	dir = 1
-	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"Bn" = (
-/obj/structure/surface/rack,
-/obj/structure/machinery/door/window/westright{
-	name = "Weapon Rack"
-	},
-/obj/structure/window/reinforced/toughened{
-	dir = 1
-	},
-/obj/item/weapon/gun/flamer/M240T,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"Bv" = (
-/obj/structure/pipes/vents/pump{
+"Bg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+/turf/open/floor/corsat/marked,
+/area/corsat/sigma/airlock/control)
+"Bx" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "Testing Grounds";
+	req_access_txt = "106";
+	use_power = 0
 	},
-/area/corsat/sigma/biodome/gunrange)
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
+"BE" = (
+/obj/structure/fence,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
+"BH" = (
+/turf/open/floor/asteroidwarning/west,
+/area/corsat/sigma/biodome/ice)
+"BI" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("sigma")
+	},
+/turf/open/floor/asteroidwarning/east,
+/area/corsat/sigma/biodome/ice)
 "BM" = (
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/airlock/control)
-"BO" = (
-/obj/structure/machinery/computer/general_air_control/large_tank_control{
-	dir = 4;
-	name = "Mixed Air Control"
+"BR" = (
+/obj/structure/machinery/light{
+	dir = 8
 	},
-/obj/structure/surface/table/almayer,
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "yellow"
-	},
+/turf/open/floor/corsat/blue/west,
 /area/corsat/sigma/airlock/control)
-"BV" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning"
+"BS" = (
+/obj/structure/machinery/light{
+	dir = 8
 	},
-/area/corsat/sigma/biodome/ice)
-"Cd" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/corsat/yellow/west,
+/area/corsat/sigma/airlock/control)
+"Cb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/corsat/emergency_access)
+"Ci" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
+"Cx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/airlock/control)
-"Ce" = (
-/obj/structure/largecrate/supply/ammo/pistol{
-	desc = "An ammunition case containing six M44 speedloaders, and eight M4A3 magazines.";
-	name = "sidearm ammunition case (x14)";
-	supplies = list(/obj/item/ammo_magazine/revolver=6,/obj/item/ammo_magazine/pistol=8)
-	},
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"Ch" = (
-/obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/incendiary,
-/obj/item/explosive/grenade/incendiary,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"CA" = (
-/obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/smokebomb,
-/obj/item/explosive/grenade/smokebomb,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/corpsespawner/pmc,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/scrapyard)
 "CI" = (
 /obj/structure/window/reinforced,
 /obj/effect/decal/warning_stripes{
@@ -1512,39 +1393,24 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"CX" = (
+"CT" = (
+/obj/structure/largecrate/supply/ammo/m41a{
+	desc = "An ammunition case containing 10 M41A magazines.";
+	name = "\improper M41A magazine case (x10)";
+	supplies = list(/obj/item/ammo_magazine/rifle=10)
+	},
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
+"CY" = (
 /obj/structure/surface/rack,
 /obj/structure/window/reinforced/toughened{
 	dir = 1
 	},
-/obj/structure/machinery/door/window/eastright{
+/obj/structure/machinery/door/window/westright{
 	name = "Weapon Rack"
 	},
-/obj/item/weapon/gun/pistol/m4a3,
-/obj/item/weapon/gun/pistol/m4a3,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"Db" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "Firing Range";
-	req_access_txt = "106";
-	use_power = 0
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"Dd" = (
-/obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/high_explosive,
-/obj/item/explosive/grenade/high_explosive,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
+/obj/item/ammo_magazine/flamer_tank,
+/turf/open/floor/asteroidplating,
 /area/corsat/sigma/biodome/gunrange)
 "Df" = (
 /obj/structure/machinery/light{
@@ -1552,44 +1418,9 @@
 	},
 /turf/template_noop,
 /area/template_noop)
-"Dg" = (
-/obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/high_explosive/training,
-/obj/item/explosive/grenade/high_explosive/training,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"Dh" = (
-/obj/structure/target/syndicate,
-/obj/structure/target/syndicate,
-/obj/structure/target/syndicate,
-/obj/structure/target/syndicate,
-/obj/structure/target/syndicate,
-/obj/structure/closet/crate{
-	desc = "A rectangular steel crate containing firing targets.";
-	name = "target crate"
-	},
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"Dp" = (
-/obj/structure/closet/wardrobe/atmospherics_yellow,
-/turf/open/floor/corsat{
-	dir = 9;
-	icon_state = "yellow"
-	},
+"Do" = (
+/turf/open/floor/corsat/red/southwest,
 /area/corsat/sigma/airlock/control)
-"Ds" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/shoes/snow,
-/obj/item/clothing/shoes/snow,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/ice)
 "Dw" = (
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/biodome/ice)
@@ -1597,73 +1428,40 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/sigma/biodome/ice)
-"DI" = (
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/airlock/control)
-"DO" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/biodome/ice)
-"DT" = (
-/turf/open/floor/corsat{
-	dir = 5;
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/airlock/control)
-"DX" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	dir = 1;
-	name = "Sigma Dome Control";
-	req_one_access = list(102)
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat{
+"DA" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
-	icon_state = "yellow"
+	network = list("sigma")
 	},
+/turf/open/floor/corsat/red/west,
 /area/corsat/sigma/airlock/control)
-"Eg" = (
-/obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "CO2 Control"
-	},
-/obj/structure/surface/table/almayer{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 10;
-	icon_state = "yellow"
-	},
+"DR" = (
+/turf/open/floor/asteroidwarning/north,
+/area/corsat/sigma/biodome/ice)
+"DS" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/asteroidwarning,
+/area/corsat/sigma/biodome/ice)
+"Ea" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/corsat/blue/north,
 /area/corsat/sigma/airlock/control)
-"Ev" = (
-/obj/structure/largecrate/supply/ammo/m41a{
-	desc = "An ammunition case containing 10 M41A magazines.";
-	name = "\improper M41A magazine case (x10)";
-	supplies = list(/obj/item/ammo_magazine/rifle=10)
+"Ee" = (
+/turf/open/floor/corsat/sigma,
+/area/corsat/sigma/airlock/control)
+"Eh" = (
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
+"EA" = (
+/obj/structure/pipes/binary/pump/on{
+	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
+/turf/open/floor/corsat/yellowcorner/north,
+/area/corsat/sigma/airlock/control)
+"ED" = (
+/turf/open/floor/asteroidwarning/northeast,
 /area/corsat/sigma/biodome/gunrange)
-"EJ" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/slugs,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"EM" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "bluecorner"
-	},
-/area/corsat/sigma/airlock/control)
 "ES" = (
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/gunrange)
@@ -1676,136 +1474,80 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"Fe" = (
-/obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/flashbang,
-/obj/item/explosive/grenade/flashbang,
-/turf/open/floor{
-	icon_state = "asteroidplating"
+"Fa" = (
+/obj/structure/machinery/floodlight{
+	name = "Floodlight"
 	},
-/area/corsat/sigma/biodome/gunrange)
-"Fu" = (
-/obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/high_explosive/training,
-/turf/open/floor{
-	icon_state = "asteroidplating"
+/turf/open/auto_turf/snow/layer2,
+/area/corsat/sigma/biodome/ice)
+"Ff" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/cameras{
+	dir = 1;
+	network = list("sigma")
 	},
-/area/corsat/sigma/biodome/gunrange)
-"Fx" = (
-/obj/structure/pipes/standard/simple/visible{
+/turf/open/floor/corsat/blue/southwest,
+/area/corsat/sigma/airlock/control)
+"Fg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/meter,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
-	},
+/turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
-"Fy" = (
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellowcorner"
-	},
-/area/corsat/sigma/airlock/control)
-"Fz" = (
-/obj/structure/surface/rack,
-/obj/structure/window/reinforced/toughened{
-	dir = 1
-	},
-/obj/structure/machinery/door/window/eastright{
-	name = "Weapon Rack"
-	},
-/obj/item/weapon/gun/revolver/m44,
-/obj/item/weapon/gun/revolver/m44,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
 "FC" = (
 /obj/structure/cargo_container/arious/rightmid,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"FI" = (
-/turf/open/floor/corsat{
-	icon_state = "plate"
+"FQ" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	name = "Maintainence";
+	req_one_access = list()
 	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "SigmaBioAtmos";
+	name = "Access Shutter"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
-"Gd" = (
-/obj/structure/surface/rack,
-/obj/structure/window/reinforced/toughened{
+"Gx" = (
+/obj/structure/surface/table/almayer,
+/obj/item/explosive/grenade/incendiary,
+/obj/item/explosive/grenade/incendiary,
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
+"GA" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
+"GI" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/corsat/red/west,
+/area/corsat/sigma/airlock/control)
+"GL" = (
+/obj/structure/flora/pottedplant,
+/turf/open/floor/corsat/blue/north,
+/area/corsat/sigma/airlock/control)
+"GM" = (
+/obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/door/window/westright{
-	name = "Weapon Rack"
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
-/obj/item/ammo_magazine/flamer_tank,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"Gf" = (
-/obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/high_explosive/frag,
-/obj/item/explosive/grenade/high_explosive/frag,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"Gj" = (
-/obj/structure/target,
-/obj/structure/target,
-/obj/structure/target,
-/obj/structure/target,
-/obj/structure/target,
-/obj/structure/target,
-/obj/structure/closet/crate{
-	desc = "A rectangular steel crate containing firing targets.";
-	name = "target crate"
-	},
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/corsat/sigma/biodome/gunrange)
-"GJ" = (
-/obj/structure/machinery/power/apc/directional/no_power/west,
-/obj/structure/closet/wardrobe/atmospherics_yellow,
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "yellow"
-	},
+/turf/open/floor/corsat/yellowcorner/east,
 /area/corsat/sigma/airlock/control)
-"GK" = (
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/emergency_access)
-"GO" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"GW" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/technology_scanner,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/airlock/control)
-"GZ" = (
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/airlock/control)
-"Hh" = (
-/obj/structure/pipes/binary/pump/high_power/on{
+"Hq" = (
+/obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/open/floor/corsat{
-	dir = 5;
-	icon_state = "yellow"
-	},
+/turf/open/floor/corsat/yellowcorner/east,
+/area/corsat/sigma/airlock/control)
+"Hz" = (
+/turf/open/floor/corsat/redcorner/west,
 /area/corsat/sigma/airlock/control)
 "HB" = (
 /obj/effect/decal/warning_stripes{
@@ -1817,89 +1559,65 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"HK" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "Firing Range";
-	req_one_access = list(106,102,103);
-	use_power = 0
+"HG" = (
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
+"HJ" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 2;
+	name = "Maintainance";
+	req_one_access = list()
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "SigmaBioAtmos";
+	name = "Access Shutter"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
+"HR" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
+"HT" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
-/area/corsat/sigma/biodome/gunrange)
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
 "HV" = (
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
 /area/corsat/sigma/airlock/control)
-"HX" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/machinery/disposal,
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/airlock/control)
-"Ib" = (
+"Iu" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/emails{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/airlock/control)
-"Ih" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "yellowcorner"
-	},
-/area/corsat/sigma/airlock/control)
-"Im" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/airlock/control)
+/obj/item/explosive/grenade/high_explosive/training,
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
 "Iw" = (
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
-"ID" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/atmos_alert,
-/turf/open/floor/corsat{
-	dir = 9;
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
 "IJ" = (
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer3,
 /area/corsat/sigma/biodome/gunrange)
-"IR" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "yellowcorner"
+"IK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
+"IM" = (
+/turf/open/floor/corsat/yellowcorner/north,
 /area/corsat/sigma/airlock/control)
-"IV" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/station_alert,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "blue"
+"IW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
 	},
+/turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
 "Jm" = (
 /obj/effect/decal/warning_stripes{
@@ -1911,32 +1629,28 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"Jw" = (
-/obj/structure/surface/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/tool/pen/red,
-/obj/structure/machinery/camera/autoname{
-	network = list("sigma")
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "blue"
-	},
+"Jo" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/snow,
+/obj/item/clothing/shoes/snow,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
+"Jp" = (
+/turf/open/floor/corsat/plate,
+/area/corsat/emergency_access)
+"Ju" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
-"Jy" = (
-/obj/structure/filingcabinet/filingcabinet,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "blue"
+"JK" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	damage_cap = 4000;
+	name = "\improper Emergency Access";
+	req_access_txt = "100";
+	req_one_access = list()
 	},
-/area/corsat/sigma/airlock/control)
-"JQ" = (
-/obj/structure/machinery/photocopier,
-/turf/open/floor/corsat{
-	dir = 5;
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
+/turf/open/floor/corsat/plate,
+/area/corsat/inaccessible)
 "JT" = (
 /obj/structure/window/framed/corsat,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -1953,74 +1667,31 @@
 /obj/structure/barricade/wooden,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"Kj" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
-/area/corsat/sigma/biodome/ice)
-"Kq" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 8;
-	network = list("sigma")
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
-/area/corsat/sigma/biodome/ice)
-"Kr" = (
-/turf/open/floor/corsat{
-	icon_state = "sigma"
-	},
-/area/corsat/sigma/airlock/control)
-"Ku" = (
+"Ko" = (
 /obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/obj/structure/machinery/computer/station_alert{
+	dir = 4
 	},
+/turf/open/floor/corsat/yellow/west,
 /area/corsat/sigma/airlock/control)
-"Kw" = (
-/obj/structure/surface/table/almayer,
-/obj/item/folder/black_random,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
+"Ks" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/corsat/plate,
 /area/corsat/sigma/airlock/control)
-"KA" = (
+"KD" = (
 /obj/structure/surface/rack,
-/obj/item/tool/shovel,
-/obj/item/tool/shovel,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+/obj/structure/machinery/door/window/westright{
+	name = "Weapon Rack"
 	},
-/area/corsat/sigma/biodome/ice)
-"KF" = (
-/obj/structure/surface/table/almayer,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/obj/structure/window/reinforced/toughened{
+	dir = 1
 	},
-/area/corsat/sigma/airlock/control)
+/obj/item/weapon/gun/flamer/M240T,
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
 "KN" = (
 /turf/open/auto_turf/snow/layer4,
 /area/corsat/sigma/biodome/gunrange)
-"KR" = (
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
-"KU" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/airlock/control)
 "KV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -2030,51 +1701,10 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"Lb" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
-"Lg" = (
+"Lk" = (
 /obj/structure/surface/table/almayer,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
-"Lr" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp,
-/turf/open/floor/corsat{
-	dir = 5;
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
-"Ly" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"LC" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"LF" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
+/obj/item/device/flashlight,
+/turf/open/floor/corsat/plate,
 /area/corsat/sigma/airlock/control)
 "LH" = (
 /obj/effect/decal/warning_stripes{
@@ -2085,48 +1715,41 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"LI" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
 "LS" = (
 /obj/item/cell/super/empty,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"Ms" = (
-/obj/structure/fence,
-/obj/structure/fence,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+"LT" = (
+/obj/structure/surface/rack,
+/obj/item/tool/shovel,
+/obj/item/tool/shovel,
+/turf/open/floor/asteroidfloor/north,
 /area/corsat/sigma/biodome/ice)
-"MA" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/landmark/corpsespawner/pmc,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
+"MC" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/item_pool_spawner/corsat_bio_lock,
+/turf/open/floor/corsat/blue/east,
 /area/corsat/sigma/airlock/control)
-"ME" = (
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "blue"
-	},
+"MZ" = (
+/obj/structure/closet/secure_closet/security,
+/turf/open/floor/corsat/red/west,
 /area/corsat/sigma/airlock/control)
-"Nk" = (
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "bluecorner"
+"Nc" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/door/window/eastright{
+	name = "Weapon Rack"
 	},
-/area/corsat/sigma/airlock/control)
-"Nm" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/window/reinforced/toughened{
 	dir = 1
 	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
 "Nn" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -2134,35 +1757,16 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"Ns" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/landmark/item_pool_spawner/corsat_bio_lock,
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "blue"
-	},
+"NJ" = (
+/obj/structure/sign/safety/airlock,
+/turf/open/floor/asteroidwarning,
 /area/corsat/sigma/airlock/control)
-"NA" = (
-/obj/structure/fence,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+"NR" = (
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/opened{
+	id = "SigmaWestE";
+	name = "Sigma West Airlock"
 	},
-/area/corsat/sigma/biodome/ice)
-"NI" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/ice)
-"NQ" = (
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/corsat/marked,
 /area/corsat/sigma/airlock/control)
 "NS" = (
 /obj/effect/decal/warning_stripes{
@@ -2177,30 +1781,20 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"NT" = (
-/obj/structure/pipes/vents/pump{
-	dir = 1
+"Ob" = (
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/closet/crate{
+	desc = "A rectangular steel crate containing firing targets.";
+	name = "target crate"
 	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"Om" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"Ot" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "bluecorner"
-	},
-/area/corsat/sigma/airlock/control)
-"OI" = (
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
+"Od" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Sigma Dome Control";
@@ -2209,208 +1803,18 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "blue"
-	},
+/turf/open/floor/corsat/blue,
 /area/corsat/sigma/airlock/control)
-"OK" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"OR" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"OT" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/ice,
-/area/corsat/sigma/biodome/ice)
-"OW" = (
-/obj/item/device/binoculars,
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/door_control{
-	id = "SigmaControl";
-	name = "Observation Shutters";
-	pixel_y = 5;
-	use_power = 0
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
-"Po" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/auto_turf/snow/layer1,
-/area/corsat/sigma/biodome/ice)
-"Py" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1;
-	network = list("sigma")
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
-/area/corsat/sigma/biodome/ice)
-"PE" = (
-/obj/structure/window/reinforced,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/ice,
-/area/corsat/sigma/biodome/ice)
-"PH" = (
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "redcorner"
-	},
-/area/corsat/sigma/airlock/control)
-"PM" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/door_control{
-	id = "SigmaWestD";
-	name = "Entrance Airlock Control";
-	pixel_x = -5;
-	use_power = 0
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/airlock/control)
-"PY" = (
-/obj/item/cell/crap,
-/turf/open/ice,
-/area/corsat/sigma/biodome/scrapyard)
-"PZ" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/airlock/control)
-"Qd" = (
-/obj/structure/bed/chair/office/light,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/airlock/control)
-"Qf" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin,
-/obj/item/tool/pen/red,
-/turf/open/floor/corsat{
-	dir = 10;
-	icon_state = "red"
-	},
-/area/corsat/sigma/airlock/control)
-"Qi" = (
-/turf/open/floor/corsat{
-	icon_state = "bluecorner"
-	},
-/area/corsat/sigma/airlock/control)
-"Qm" = (
-/obj/structure/machinery/light,
-/turf/open/floor/corsat{
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
-"Qr" = (
-/obj/structure/flora/pottedplant,
-/turf/open/floor/corsat{
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
-"Qx" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clipboard,
-/obj/item/paper,
-/obj/item/tool/pen/red,
-/turf/open/floor/corsat{
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
-"QD" = (
-/obj/structure/cargo_container/grant/left,
-/turf/open/auto_turf/snow/layer2,
-/area/corsat/sigma/biodome/scrapyard)
-"QN" = (
-/obj/structure/target,
-/obj/item/clothing/suit/storage/militia,
-/turf/open/auto_turf/snow/layer1,
-/area/corsat/sigma/biodome/gunrange)
-"QU" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/camera,
-/turf/open/floor/corsat{
-	dir = 6;
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
-"Rb" = (
-/obj/structure/machinery/portable_atmospherics/canister/carbon_dioxide,
-/turf/open/floor/corsat,
-/area/corsat/inaccessible)
-"Rh" = (
-/obj/structure/machinery/light{
+"Oi" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/obj/structure/closet/firecloset,
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "red"
-	},
+/turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
-"Ri" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/corsat{
-	icon_state = "redcorner"
-	},
+"Oq" = (
+/turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
-"Rn" = (
-/obj/structure/machinery/light,
-/turf/open/floor/corsat{
-	icon_state = "red"
-	},
-/area/corsat/sigma/airlock/control)
-"Rp" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 8;
-	network = list("sigma")
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
-"Rq" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/cameras{
-	dir = 1;
-	network = list("sigma")
-	},
-/turf/open/floor/corsat{
-	dir = 10;
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
-"Rw" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/corsat/sigma/biodome/ice)
-"Rx" = (
+"Ou" = (
 /obj/structure/machinery/door_control{
 	id = "SigmaWestW";
 	name = "Airlock Control";
@@ -2424,17 +1828,125 @@
 	pixel_x = 5;
 	use_power = 0
 	},
-/turf/open/floor/corsat{
-	icon_state = "blue"
-	},
+/turf/open/floor/corsat/blue,
 /area/corsat/sigma/airlock/control)
-"RD" = (
-/obj/structure/surface/table/reinforced,
-/obj/item/device/flashlight/lamp,
-/turf/open/floor/corsat{
-	icon_state = "blue"
-	},
+"OM" = (
+/obj/structure/machinery/light,
+/turf/open/floor/corsat/red,
 /area/corsat/sigma/airlock/control)
+"OT" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/ice,
+/area/corsat/sigma/biodome/ice)
+"OU" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/bluecorner/west,
+/area/corsat/sigma/airlock/control)
+"Pj" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/airlock/control)
+"Po" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/auto_turf/snow/layer1,
+/area/corsat/sigma/biodome/ice)
+"PE" = (
+/obj/structure/window/reinforced,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/ice,
+/area/corsat/sigma/biodome/ice)
+"PU" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
+"PY" = (
+/obj/item/cell/crap,
+/turf/open/ice,
+/area/corsat/sigma/biodome/scrapyard)
+"Ql" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/door/window/northright{
+	name = "Firing Lane"
+	},
+/turf/open/floor/asteroidwarning,
+/area/corsat/sigma/biodome/gunrange)
+"QA" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	name = "ID Checkpoint";
+	req_access_txt = "101"
+	},
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
+"QC" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
+"QD" = (
+/obj/structure/cargo_container/grant/left,
+/turf/open/auto_turf/snow/layer2,
+/area/corsat/sigma/biodome/scrapyard)
+"QN" = (
+/obj/structure/target,
+/obj/item/clothing/suit/storage/militia,
+/turf/open/auto_turf/snow/layer1,
+/area/corsat/sigma/biodome/gunrange)
+"QZ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/asteroidwarning/west,
+/area/corsat/sigma/biodome/ice)
+"Rb" = (
+/obj/structure/machinery/portable_atmospherics/canister/carbon_dioxide,
+/turf/open/floor/corsat,
+/area/corsat/inaccessible)
+"Rk" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/item/clothing/suit/storage/snow_suit,
+/turf/open/floor/corsat/sigma,
+/area/corsat/sigma/airlock/control)
+"Rm" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8;
+	network = list("sigma")
+	},
+/turf/open/floor/asteroidwarning/north,
+/area/corsat/sigma/biodome/ice)
+"Rv" = (
+/obj/item/device/binoculars,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/door_control{
+	id = "SigmaControl";
+	name = "Observation Shutters";
+	pixel_y = 5;
+	use_power = 0
+	},
+/turf/open/floor/corsat/blue/east,
+/area/corsat/sigma/airlock/control)
+"Rw" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/corsat/sigma/biodome/ice)
+"RA" = (
+/turf/open/floor/corsat/blue/east,
+/area/corsat/sigma/airlock/control)
+"RF" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
 "RI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/oil,
@@ -2444,24 +1956,15 @@
 /obj/structure/powerloader_wreckage,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"RQ" = (
-/obj/structure/machinery/computer3,
-/turf/open/floor/corsat{
-	icon_state = "blue"
-	},
+"RN" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/station_alert,
+/turf/open/floor/corsat/blue/north,
 /area/corsat/sigma/airlock/control)
-"RR" = (
-/turf/open/floor/corsat{
-	dir = 6;
-	icon_state = "blue"
-	},
+"RX" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
-"Sg" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
-/area/corsat/sigma/biodome/ice)
 "Sh" = (
 /obj/structure/cargo_container/arious/leftmid,
 /turf/open/ice,
@@ -2470,54 +1973,57 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"Sm" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "red"
+"Sn" = (
+/obj/structure/machinery/floodlight{
+	name = "Floodlight"
 	},
+/turf/open/auto_turf/snow/layer0,
+/area/corsat/sigma/biodome/ice)
+"Sq" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
+"St" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
-"Ss" = (
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "red"
+"SG" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
 	},
-/area/corsat/sigma/airlock/control)
-"Su" = (
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/corsat/sigma/airlock/control)
-"Sy" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
+/turf/open/floor/corsat/yellowcorner,
 /area/corsat/sigma/airlock/control)
 "SK" = (
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer3,
 /area/corsat/sigma/biodome/scrapyard)
-"SQ" = (
-/obj/structure/machinery/light/small{
-	dir = 8
+"SL" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/tool/pen/red,
+/obj/structure/machinery/camera/autoname{
+	network = list("sigma")
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/ice)
-"To" = (
-/turf/open/floor/corsat{
-	dir = 10;
-	icon_state = "red"
-	},
+/turf/open/floor/corsat/blue/north,
 /area/corsat/sigma/airlock/control)
-"Tq" = (
-/turf/open/floor/corsat{
-	icon_state = "redcorner"
+"Tg" = (
+/obj/structure/surface/table/almayer,
+/obj/item/folder/black_random,
+/turf/open/floor/corsat/red/west,
+/area/corsat/sigma/airlock/control)
+"Ti" = (
+/turf/open/floor/asteroidwarning/west,
+/area/corsat/sigma/biodome/scrapyard)
+"Tr" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/secure_data{
+	dir = 1
 	},
+/turf/open/floor/corsat/red,
 /area/corsat/sigma/airlock/control)
 "Tw" = (
 /obj/effect/decal/warning_stripes{
@@ -2528,6 +2034,13 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"Ty" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 5
+	},
+/obj/structure/machinery/meter,
+/turf/open/floor/corsat/yellow/north,
+/area/corsat/sigma/airlock/control)
 "TA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -2545,39 +2058,29 @@
 /obj/structure/machinery/constructable_frame,
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/sigma/biodome/scrapyard)
-"TC" = (
-/turf/open/floor/corsat{
-	dir = 6;
-	icon_state = "red"
+"TG" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/atmos_alert{
+	dir = 4
 	},
+/turf/open/floor/corsat/yellow/west,
 /area/corsat/sigma/airlock/control)
-"TP" = (
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/corsat/sigma/airlock/control)
+"TI" = (
+/turf/open/floor/asteroidwarning/northwest,
+/area/corsat/sigma/biodome/gunrange)
 "TX" = (
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"TZ" = (
-/obj/structure/pipes/vents/pump,
-/obj/structure/surface/rack,
-/obj/item/clothing/shoes/snow,
-/obj/item/clothing/shoes/snow,
-/obj/item/clothing/shoes/snow,
-/obj/item/clothing/shoes/snow,
-/obj/item/clothing/shoes/snow,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+"Uc" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
-/area/corsat/sigma/airlock/control)
-"Uu" = (
-/obj/structure/closet/athletic_mixed,
-/turf/open/floor{
+/obj/structure/machinery/camera/autoname{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	network = list("sigma")
 	},
-/area/corsat/sigma/biodome/ice)
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
 "Uv" = (
 /obj/structure/bed/chair,
 /turf/open/floor/wood,
@@ -2589,37 +2092,16 @@
 /obj/effect/decal/mecha_wreckage/hoverpod,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
+"UK" = (
+/obj/structure/pipes/binary/pump/high_power/on{
+	dir = 8
+	},
+/turf/open/floor/corsat/yellow/northeast,
+/area/corsat/sigma/airlock/control)
 "UW" = (
 /obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
-"UX" = (
-/obj/effect/decal/cleanable/cobweb,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/emergency_access)
-"Vh" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "ID Checkpoint";
-	req_access_txt = "101"
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
-"Vi" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "ID Checkpoint";
-	req_access_txt = "101"
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/sigma/airlock/control)
 "Vq" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2628,30 +2110,22 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"Vt" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/corsat/sigma/airlock/control)
+"Vu" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/asteroidwarning/north,
+/area/corsat/sigma/biodome/ice)
 "Vz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/ice)
-"VF" = (
-/obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/biodome/ice)
+"VD" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
 "VJ" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 8;
@@ -2659,36 +2133,18 @@
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
-"VL" = (
-/obj/structure/closet/secure_closet/security,
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "red"
+"VQ" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
 	},
-/area/corsat/sigma/airlock/control)
-"VR" = (
-/obj/structure/bed/chair/comfy/black{
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
+"Wf" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/airlock/control)
-"Wd" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/door/window/brigdoor/westleft,
-/obj/structure/machinery/door/window/brigdoor/eastleft,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/airlock/control)
-"Wj" = (
-/obj/structure/flora/pottedplant,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "blue"
-	},
-/area/corsat/sigma/airlock/control)
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/ice)
 "Wk" = (
 /turf/closed/wall/strata_ice,
 /area/corsat/sigma/biodome/ice)
@@ -2702,42 +2158,48 @@
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/airlock/control)
-"Ww" = (
+"Wx" = (
+/obj/structure/surface/table/almayer,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
+"Wy" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
+"WG" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
+/turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
-"WL" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/corsat/sigma/airlock/control)
-"WW" = (
-/obj/item/folder/black_random,
-/obj/structure/surface/table/reinforced,
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/corsat/sigma/airlock/control)
-"WY" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/secure_data{
+"WT" = (
+/obj/structure/surface/rack,
+/obj/structure/window/reinforced/toughened{
 	dir = 1
 	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/obj/structure/machinery/door/window/eastright{
+	name = "Weapon Rack"
 	},
-/area/corsat/sigma/airlock/control)
-"Xm" = (
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
+/obj/item/weapon/gun/revolver/m44,
+/obj/item/weapon/gun/revolver/m44,
+/turf/open/floor/asteroidplating,
 /area/corsat/sigma/biodome/gunrange)
+"WZ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/explosive/grenade/smokebomb,
+/obj/item/explosive/grenade/smokebomb,
+/turf/open/floor/asteroidplating,
+/area/corsat/sigma/biodome/gunrange)
+"Xj" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/corsat/blue/north,
+/area/corsat/sigma/airlock/control)
 "Xv" = (
 /turf/open/floor/corsat,
 /area/corsat/emergency_access)
@@ -2758,43 +2220,29 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/corsat/sigma/biodome/ice)
-"XG" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+"XH" = (
+/obj/structure/machinery/light{
+	dir = 8
 	},
-/area/corsat/sigma/airlock/control)
-"XK" = (
-/obj/structure/machinery/light,
-/obj/structure/closet/firecloset,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/airlock/control)
-"XM" = (
-/obj/structure/sign/safety/airlock{
-	pixel_y = -32
-	},
-/turf/open/floor/corsat{
-	icon_state = "sigma"
-	},
+/obj/structure/surface/table/almayer,
+/obj/item/storage/donut_box,
+/obj/item/tool/lighter/random,
+/turf/open/floor/corsat/red/southwest,
 /area/corsat/sigma/airlock/control)
 "XN" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"XT" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/corsat/red/east,
+/area/corsat/sigma/airlock/control)
+"Yb" = (
+/turf/open/floor/corsat/red/southeast,
+/area/corsat/sigma/airlock/control)
 "Yd" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/emergency_access)
-"Yf" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/opened{
-	id = "SigmaWestW";
-	name = "Sigma West Airlock"
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/corsat/sigma/airlock/control)
 "Yn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -2804,23 +2252,22 @@
 "Yp" = (
 /turf/closed/wall,
 /area/corsat/sigma/biodome/gunrange)
-"Ys" = (
-/obj/structure/machinery/light,
-/obj/structure/pipes/vents/pump{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
+"Yq" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/yellowcorner,
 /area/corsat/sigma/airlock/control)
-"Yu" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/opened{
-	id = "SigmaWestE";
-	name = "Sigma West Airlock"
+"Yt" = (
+/obj/structure/machinery/power/apc/directional/no_power/west,
+/obj/structure/closet/wardrobe/atmospherics_yellow,
+/turf/open/floor/corsat/yellow/west,
+/area/corsat/sigma/airlock/control)
+"Yz" = (
+/obj/structure/machinery/computer/general_air_control/large_tank_control{
+	dir = 4;
+	name = "Waste Tank Control"
 	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/corsat/yellow/northwest,
 /area/corsat/sigma/airlock/control)
 "YC" = (
 /obj/effect/landmark/survivor_spawner,
@@ -2838,43 +2285,29 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
+"YJ" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/corsat/sigma/airlock/control)
 "YN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"YR" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras{
-	dir = 4;
-	network = list("sigma")
+"YP" = (
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/opened{
+	id = "SigmaWestW";
+	name = "Sigma West Airlock"
 	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/corsat/sigma/airlock/control)
-"YW" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
+/turf/open/floor/corsat/marked,
 /area/corsat/sigma/airlock/control)
 "YX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat,
 /area/corsat/emergency_access)
-"Zd" = (
-/obj/structure/machinery/photocopier,
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/corsat/sigma/airlock/control)
 "Zf" = (
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/ice)
@@ -2882,55 +2315,38 @@
 /obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
+"Zn" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/corsat/redcorner,
+/area/corsat/sigma/airlock/control)
 "Zr" = (
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"Zy" = (
-/obj/structure/sign/safety/airlock,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
+"Zz" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
 	},
-/area/corsat/sigma/airlock/control)
+/turf/open/floor/asteroidfloor/north,
+/area/corsat/sigma/biodome/gunrange)
 "ZB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"ZC" = (
-/obj/structure/machinery/light{
-	dir = 8
+"ZR" = (
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
 	},
+/turf/open/floor/corsat/sigma,
+/area/corsat/sigma/airlock/control)
+"ZY" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/donut_box,
-/obj/item/tool/lighter/random,
-/turf/open/floor/corsat{
-	dir = 10;
-	icon_state = "red"
-	},
-/area/corsat/sigma/airlock/control)
-"ZD" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	icon_state = "yellowcorner"
-	},
-/area/corsat/sigma/airlock/control)
-"ZH" = (
-/obj/structure/pipes/vents/pump{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "redcorner"
-	},
-/area/corsat/sigma/airlock/control)
-"ZL" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
+/obj/item/explosive/grenade/flashbang,
+/obj/item/explosive/grenade/flashbang,
+/turf/open/floor/asteroidplating,
 /area/corsat/sigma/biodome/gunrange)
 
 (1,1,1) = {"
@@ -2969,16 +2385,16 @@ uO
 uO
 uO
 uO
-Dp
-GJ
-HX
-Fy
-Ly
-Aj
-PH
-Rh
-Sm
-To
+cy
+Yt
+BS
+IM
+Fg
+Oq
+Hz
+rc
+GI
+Do
 uO
 uO
 uO
@@ -3045,26 +2461,26 @@ qC
 qC
 qC
 qC
-tH
-xp
-xQ
-yy
+Yz
+TG
+Ko
+pK
 BM
-DI
-FI
-FI
-Kr
-Ly
-Aj
-Kr
-FI
-FI
-PH
+tr
+pb
+pb
+Ee
+Fg
+Oq
+Ee
+pb
+pb
+Hz
 BM
-VL
-VL
-YR
-ZC
+MZ
+MZ
+DA
+XH
 uO
 uO
 uO
@@ -3126,29 +2542,29 @@ qC
 dr
 rW
 fM
-tM
-Aj
-Aj
-yC
-lP
-Fy
-Aj
-Aj
-Aj
-LC
-GO
-GO
-GO
-GO
-GO
-Vh
-GO
-GO
-YW
-ZH
-Su
-iL
-Qf
+Ty
+Oq
+Oq
+bI
+pc
+IM
+Oq
+Oq
+Oq
+YJ
+Ju
+Ju
+Ju
+Ju
+Ju
+ge
+Ju
+Ju
+rv
+eZ
+az
+Tg
+zV
 uO
 vh
 vh
@@ -3207,29 +2623,29 @@ db
 rr
 dr
 db
-ua
-Aj
-xZ
-yG
-DX
-IR
-GO
-GO
-GO
-LF
-Aj
-Aj
-Aj
-Aj
-Aj
-Vi
-Aj
-Aj
-Aj
-Aj
-Aj
-lY
-aV
+EA
+Oq
+St
+Yq
+bA
+bt
+Ju
+Ju
+Ju
+yw
+Oq
+Oq
+Oq
+Oq
+Oq
+QA
+Oq
+Oq
+Oq
+Oq
+Oq
+GA
+Tr
 BM
 Wk
 vh
@@ -3288,29 +2704,29 @@ db
 qN
 dr
 ev
-uc
-xK
-Aj
-yJ
+mw
+tL
+Oq
+jN
 BM
-DI
-GW
-Ib
-Ku
-Ly
-Aj
-Ku
-Ib
-Kw
-Tq
+tr
+li
+mE
+hJ
+Fg
+Oq
+hJ
+mE
+gu
+vN
 BM
-Ss
-WW
-Zd
-pC
-Ss
-Ss
-us
+it
+tX
+XT
+bd
+it
+it
+xu
 BM
 Wk
 Wk
@@ -3369,24 +2785,24 @@ db
 db
 db
 db
-uk
+FQ
 BM
-Al
-yV
+kC
+tV
 BM
-DT
-GZ
-Ih
-Kw
-LC
-NT
-PM
-Ri
-Ss
-TC
+tT
+aP
+Hq
+gu
+YJ
+dF
+zn
+Zn
+it
+Yb
 BM
-VR
-WY
+vq
+rx
 BM
 BM
 Wt
@@ -3452,21 +2868,21 @@ Zr
 Zr
 YN
 BM
-yj
+ii
 BM
 BM
 BM
 BM
-Im
-KF
-MA
-Aj
-PZ
-Rn
+gm
+Pj
+uE
+Oq
+Lk
+OM
 BM
 BM
 BM
-Wd
+ro
 Xw
 BM
 pz
@@ -3533,22 +2949,22 @@ Zr
 Zr
 YN
 BM
-Aj
-zh
-BO
-Eg
+Oq
+zH
+om
+bH
 BM
-DI
-Kr
-Ly
-Aj
-Kr
-PH
-Su
-Su
-Su
-Su
-Su
+tr
+Ee
+Fg
+Oq
+Ee
+Hz
+az
+az
+az
+az
+az
 BM
 Zf
 bs
@@ -3613,30 +3029,30 @@ Sl
 Sl
 Sl
 ur
-xM
-qd
-zo
-Aj
-yC
-lP
-Fy
-Aj
-Ly
-Om
-Om
-Aj
-Sy
-Aj
-Aj
-Aj
-XG
+HJ
+wz
+WG
+Oq
+bI
+pc
+IM
+Oq
+Fg
+fD
+fD
+Oq
+RX
+Oq
+Oq
+Oq
+Ks
 BM
 Zf
 bs
 bs
 bs
 bs
-gi
+Sn
 bs
 bs
 bs
@@ -3695,22 +3111,22 @@ Zr
 Zr
 Wk
 BM
-yl
-ZD
-Cd
-Cd
-DX
-IR
-GO
-Ao
-go
-GO
-GO
-GO
-GO
-qd
-Aj
-XK
+GM
+SG
+lI
+lI
+bA
+bt
+Ju
+ru
+Oi
+Ju
+Ju
+Ju
+Ju
+wz
+Oq
+Aa
 BM
 Zf
 bs
@@ -3756,7 +3172,7 @@ yX
 yX
 yX
 yX
-hR
+JK
 db
 Zr
 Zr
@@ -3776,22 +3192,22 @@ Zr
 Wk
 Wk
 BM
-yo
-jL
+nm
+ct
 db
 db
 db
-DT
-KR
-NQ
-EM
-KR
-Rp
-NQ
-Kr
-Ly
-Aj
-XM
+tT
+RA
+fo
+lh
+RA
+ib
+fo
+Ee
+Fg
+Oq
+ZR
 BM
 Zf
 bs
@@ -3857,22 +3273,22 @@ Wk
 Wk
 Wk
 BM
-Fx
-zJ
+cq
+tD
 ev
 Rb
 db
 BM
 BM
-ME
-OI
+gq
+Od
 BM
 BM
 BM
-TP
-Vt
-TP
-Yf
+jV
+Bg
+jV
+YP
 BM
 Zf
 tZ
@@ -3938,22 +3354,22 @@ Wk
 Wk
 Wk
 BM
-Hh
-zQ
+UK
+xO
 fM
 XB
 db
-ID
-nb
-Nk
-Ot
-nb
-Rq
+bk
+BR
+AE
+OU
+BR
+Ff
 BM
-bo
-Ly
-Aj
-Kr
+Rk
+Fg
+Oq
+Ee
 BM
 Zf
 ho
@@ -4024,17 +3440,17 @@ dn
 db
 db
 db
-IV
-KU
-Aj
-Ly
-Qd
-Rx
+RN
+qQ
+Oq
+Fg
+HR
+Ou
 HV
-TZ
-OK
-Aj
-FI
+wR
+yP
+Oq
+pb
 BM
 Zf
 ho
@@ -4105,17 +3521,17 @@ zT
 dr
 dr
 db
-Jw
-FI
-Aj
-Ly
-FI
-RD
+SL
+pb
+Oq
+Fg
+pb
+tG
 HV
-bp
-Aj
-Ww
-Ys
+vv
+Oq
+IW
+HT
 BM
 Zf
 ho
@@ -4186,17 +3602,17 @@ Ac
 Ac
 dr
 db
-Jy
-FI
-xZ
-OK
-FI
-RQ
+hB
+pb
+St
+yP
+pb
+eD
 BM
-Kr
-Aj
-Ly
-Kr
+Ee
+Oq
+Fg
+Ee
 BM
 pz
 ho
@@ -4267,17 +3683,17 @@ db
 db
 db
 db
-JQ
-NQ
-Aj
-Aj
-Qi
-RR
+ft
+fo
+Oq
+Oq
+ca
+gH
 BM
-TP
-TP
-Vt
-Yu
+jV
+jV
+Bg
+NR
 BM
 Zf
 ho
@@ -4349,17 +3765,17 @@ Zf
 pz
 db
 BM
-Lb
-Aj
-Aj
-Qm
+Xj
+Oq
+Oq
+id
 BM
 BM
-do
-WL
-xX
-WL
-Zy
+xU
+cX
+uQ
+cX
+NJ
 Zf
 ho
 pz
@@ -4430,17 +3846,17 @@ bs
 be
 tg
 JT
-Wj
-Aj
-Aj
-Qr
+GL
+Oq
+Oq
+bc
 JT
-SQ
-hH
-hH
-kl
-hH
-BV
+fX
+Eh
+Eh
+IK
+Eh
+zj
 Zf
 ho
 pz
@@ -4511,17 +3927,17 @@ bs
 bs
 pz
 JT
-Lg
-Nm
-OR
-Qx
+Ea
+QC
+jb
+qw
 JT
-hH
-hH
-hH
-NI
-hQ
-Sg
+Eh
+Eh
+Eh
+rC
+RF
+DS
 fk
 nk
 pz
@@ -4592,17 +4008,17 @@ bx
 hn
 pz
 JT
-Lr
-Ns
-OW
-QU
+tN
+MC
+Rv
+ns
 JT
-hH
-hH
-hH
-kl
-hH
-BV
+Eh
+Eh
+Eh
+IK
+Eh
+zj
 Zf
 bs
 Zf
@@ -4678,14 +4094,14 @@ oa
 oa
 oa
 oa
-hH
-hH
-hH
-kl
-hH
-BV
+Eh
+Eh
+Eh
+IK
+Eh
+zj
 Zf
-gi
+Sn
 Zf
 nq
 TX
@@ -4750,7 +4166,7 @@ tg
 bs
 dO
 bs
-gi
+Sn
 ho
 tg
 Zf
@@ -4759,12 +4175,12 @@ pz
 Zf
 Zf
 tg
-jv
-hH
-hH
-kl
-hH
-BV
+DR
+Eh
+Eh
+IK
+Eh
+zj
 Zf
 Zf
 Zf
@@ -4838,18 +4254,18 @@ bs
 bs
 bs
 bs
-gi
+Sn
 Zf
-jv
-hH
-hH
-kl
-hH
-hH
-hC
-hC
-hC
-iy
+DR
+Eh
+Eh
+IK
+Eh
+Eh
+BH
+BH
+BH
+Ti
 TX
 dT
 TX
@@ -4873,8 +4289,8 @@ hV
 Zf
 Zf
 Dw
-UX
-yh
+gI
+Cb
 YX
 "}
 (25,1,1) = {"
@@ -4921,16 +4337,16 @@ bx
 kH
 bx
 dP
-Kj
-hQ
-hQ
-kv
-hH
-hH
-hH
-hH
-hH
-nZ
+Vu
+RF
+RF
+dj
+Eh
+Eh
+Eh
+Eh
+Eh
+rY
 TX
 TX
 TX
@@ -4953,9 +4369,9 @@ Wk
 hV
 tg
 Zf
-ci
-DO
-yh
+hO
+aC
+Cb
 Xv
 "}
 (26,1,1) = {"
@@ -5002,16 +4418,16 @@ bs
 Vz
 Zf
 pz
-jv
-hH
-hH
-NI
-hQ
-hQ
-hQ
-hQ
-hQ
-AJ
+DR
+Eh
+Eh
+rC
+RF
+RF
+RF
+RF
+RF
+Cx
 oe
 oe
 RI
@@ -5083,16 +4499,16 @@ Zf
 gB
 Zf
 pz
-jv
-hH
-hH
-kl
-hH
-hH
-mY
-mY
-mY
-km
+DR
+Eh
+Eh
+IK
+Eh
+Eh
+fu
+fu
+fu
+eF
 bE
 Bf
 TX
@@ -5118,7 +4534,7 @@ Wk
 Wk
 Wk
 vh
-GK
+Jp
 "}
 (28,1,1) = {"
 yX
@@ -5164,12 +4580,12 @@ bs
 ho
 Zf
 pz
-jv
-hH
-hH
-kl
-hH
-BV
+DR
+Eh
+Eh
+IK
+Eh
+zj
 Zf
 tg
 Zf
@@ -5199,7 +4615,7 @@ Wk
 Wk
 Wk
 vh
-yR
+tA
 "}
 (29,1,1) = {"
 yX
@@ -5245,14 +4661,14 @@ jT
 lc
 Zf
 Zf
-jv
-hH
-hH
-kl
-hH
-BV
+DR
+Eh
+Eh
+IK
+Eh
+zj
 pz
-tm
+Fa
 Zf
 nq
 oK
@@ -5326,12 +4742,12 @@ bs
 ho
 bs
 Zf
-jv
-hH
-hH
-kl
-hH
-BV
+DR
+Eh
+Eh
+IK
+Eh
+zj
 pz
 Zf
 Zf
@@ -5407,12 +4823,12 @@ bs
 ho
 bs
 Zf
-jv
-hH
-hH
-kl
-hH
-BV
+DR
+Eh
+Eh
+IK
+Eh
+zj
 Zf
 Zf
 Zf
@@ -5488,12 +4904,12 @@ bs
 ho
 bs
 Zf
-jv
-hH
-hH
-kl
-hH
-BV
+DR
+Eh
+Eh
+IK
+Eh
+zj
 Zf
 be
 be
@@ -5569,12 +4985,12 @@ bs
 ho
 bs
 Zf
-jv
-hH
-hH
-kl
-hH
-BV
+DR
+Eh
+Eh
+IK
+Eh
+zj
 Zf
 pz
 pz
@@ -5650,12 +5066,12 @@ bx
 ln
 bx
 dP
-Kj
-hQ
-hQ
-kv
-hH
-BV
+Vu
+RF
+RF
+dj
+Eh
+zj
 pz
 pz
 be
@@ -5729,14 +5145,14 @@ bs
 bs
 bs
 bs
-gi
+Sn
 pz
-jv
-hH
-hH
-kl
-hH
-BV
+DR
+Eh
+Eh
+IK
+Eh
+zj
 Zf
 tg
 tg
@@ -5756,7 +5172,7 @@ bs
 bs
 bs
 bs
-gi
+Sn
 bs
 bs
 bs
@@ -5812,12 +5228,12 @@ Zf
 Zf
 pz
 pz
-jv
-hH
-hH
-kl
-hH
-BV
+DR
+Eh
+Eh
+IK
+Eh
+zj
 tg
 Zf
 Zf
@@ -5887,48 +5303,48 @@ cb
 cb
 fs
 fs
-hC
-hC
-hC
-hC
-hC
-hC
-hH
-hH
-hH
-kl
-hH
-hH
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-hC
-fz
-hC
-hC
-hC
-hC
-hC
-hC
+BH
+BH
+BH
+BH
+BH
+BH
+Eh
+Eh
+Eh
+IK
+Eh
+Eh
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+BH
+QZ
+BH
+BH
+BH
+BH
+BH
+BH
 "}
 (38,1,1) = {"
 vh
@@ -5959,57 +5375,57 @@ be
 ho
 Zf
 fs
-sp
-cs
-cs
-cs
-cs
-cs
-cs
-cs
+TI
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 fs
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-kl
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-kl
-hH
-hH
-hH
-hH
-hH
-hH
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+IK
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+IK
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
 "}
 (39,1,1) = {"
 vh
@@ -6040,57 +5456,57 @@ bs
 ho
 pz
 IJ
-ZL
-bN
-uD
-dd
-dd
-eb
-dd
-dd
-HK
-hQ
-hQ
-kc
-hQ
-hQ
-hQ
-hQ
-hQ
-kc
-mX
-hQ
-hQ
-hQ
-hQ
-hQ
-hQ
-hQ
-hQ
-hQ
-zf
-hQ
-hQ
-hQ
-hQ
-hQ
-hQ
-kc
-hQ
-hQ
-hQ
-hQ
-hQ
-hQ
-hQ
-hQ
-mX
-hQ
-kc
-hQ
-hQ
-hQ
-hQ
+nz
+rD
+Wy
+pq
+pq
+VQ
+pq
+pq
+oN
+RF
+RF
+hT
+RF
+RF
+RF
+RF
+RF
+hT
+Wf
+RF
+RF
+RF
+RF
+RF
+RF
+RF
+RF
+RF
+hI
+RF
+RF
+RF
+RF
+RF
+RF
+hT
+RF
+RF
+RF
+RF
+RF
+RF
+RF
+RF
+Wf
+RF
+hT
+RF
+RF
+RF
+RF
 "}
 (40,1,1) = {"
 vh
@@ -6121,57 +5537,57 @@ jT
 lc
 Zf
 IJ
-ZL
-bN
-cJ
-bN
-ih
-At
-bN
-bN
+nz
+rD
+lO
+rD
+rT
+fh
+rD
+rD
 fs
-hH
-hH
-kl
-hH
-hH
-hH
-hH
-hH
-kl
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-jy
-jy
-jy
-jy
-hH
-hH
-hH
-hH
-hH
-hH
-kl
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-kl
-hH
-hH
-hH
-hH
+Eh
+Eh
+IK
+Eh
+Eh
+Eh
+Eh
+Eh
+IK
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+aF
+aF
+aF
+aF
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+IK
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+IK
+Eh
+Eh
+Eh
+Eh
 "}
 (41,1,1) = {"
 vh
@@ -6202,57 +5618,57 @@ bs
 ho
 Zf
 IJ
-ZL
-bN
-cJ
-sx
-bN
-bN
-bN
-bN
-Db
-jy
-hH
-kl
-hH
-hH
-hH
-hH
-hH
-kl
-hH
-hH
-hH
-hH
-hH
-hH
-eV
-jy
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-kl
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-kl
-hH
-hH
-hH
-hH
+nz
+rD
+lO
+PU
+rD
+rD
+rD
+rD
+hD
+aF
+Eh
+IK
+Eh
+Eh
+Eh
+Eh
+Eh
+IK
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+HG
+aF
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+IK
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+IK
+Eh
+Eh
+Eh
+Eh
 "}
 (42,1,1) = {"
 vh
@@ -6283,57 +5699,57 @@ bx
 nk
 Zf
 IJ
-ZL
-bN
-vB
-bN
-bN
-bN
-bN
-bN
+nz
+rD
+Sq
+rD
+rD
+rD
+rD
+rD
 fs
-hH
-jy
-kl
-hH
-hH
-hH
-mY
-mY
-uS
-mY
-mY
-mY
-mY
-mY
-mY
-jy
-hH
-hH
-hH
-hH
-mY
-mY
-mY
-mY
-mY
-mY
-uS
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-uS
-mY
-mY
-mY
-Py
+Eh
+aF
+IK
+Eh
+Eh
+Eh
+fu
+fu
+tx
+fu
+fu
+fu
+fu
+fu
+fu
+aF
+Eh
+Eh
+Eh
+Eh
+fu
+fu
+fu
+fu
+fu
+fu
+tx
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+tx
+fu
+fu
+fu
+BI
 "}
 (43,1,1) = {"
 vh
@@ -6364,21 +5780,21 @@ bs
 bs
 Zf
 fs
-bN
-bN
-vO
+rD
+rD
+Uc
 Yp
 Yp
 Yp
 Yp
 Yp
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 pz
 Zf
 Vz
@@ -6388,11 +5804,11 @@ Zf
 tg
 Zf
 pz
-jv
-hH
-hH
-hH
-BV
+DR
+Eh
+Eh
+Eh
+zj
 Zf
 Zf
 pz
@@ -6445,21 +5861,21 @@ pz
 pz
 Zf
 fs
-bN
-bN
-cJ
-Xm
-Xm
-AS
-Ce
-Ev
+rD
+rD
+lO
+ry
+ry
+jG
+hf
+CT
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
 bs
 mm
@@ -6467,15 +5883,15 @@ bs
 bs
 bs
 bs
-gi
+Sn
 Zf
-jv
-hH
-hH
-hH
-BV
+DR
+Eh
+Eh
+Eh
+zj
 Zf
-gi
+Sn
 bs
 bs
 bs
@@ -6526,21 +5942,21 @@ fs
 IJ
 IJ
 fs
-bN
-sx
-cJ
-Xm
-Xm
-Xm
-Xm
-Xm
+rD
+PU
+lO
+ry
+ry
+ry
+ry
+ry
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
 bs
 bs
@@ -6550,11 +5966,11 @@ bs
 bs
 bs
 pz
-jv
-hH
-hH
-hH
-BV
+DR
+Eh
+Eh
+Eh
+zj
 tg
 bs
 bs
@@ -6606,22 +6022,22 @@ sT
 sT
 ar
 ar
-rH
-bN
-sx
-cJ
-Xm
-Xm
-AX
-ng
-EJ
+Ql
+rD
+PU
+lO
+ry
+ry
+qi
+VD
+LI
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
 pz
 Zf
@@ -6631,11 +6047,11 @@ pz
 Zf
 Zf
 Zf
-jv
-hH
-hH
-hH
-BV
+DR
+Eh
+Eh
+Eh
+zj
 Zf
 Zf
 Zf
@@ -6688,43 +6104,43 @@ ES
 oW
 ar
 rP
-bN
-sx
-cJ
-Xm
-Xm
+rD
+PU
+lO
+ry
+ry
 Yp
 Yp
 Yp
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 tg
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-bi
-bi
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+Bx
+Bx
 lw
-bi
-bi
-NA
-NA
-Ms
-Ms
-Ms
-NA
-NA
-NA
+Bx
+Bx
+BE
+BE
+kW
+kW
+kW
+BE
+BE
+BE
 Zf
 bs
 bs
@@ -6769,43 +6185,43 @@ ES
 aI
 ar
 rP
-bN
-ih
-cJ
-Xm
-Xm
-Xm
-Ch
-Fe
+rD
+rT
+lO
+ry
+ry
+ry
+Gx
+ZY
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
-NA
-VF
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-VF
-NA
+BE
+wQ
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+wQ
+BE
 Zf
 bs
 Zf
@@ -6850,43 +6266,43 @@ ES
 ES
 ES
 fs
-bN
-bN
-cJ
-Xm
-Xm
-Xm
-Xm
-Xm
+rD
+rD
+lO
+ry
+ry
+ry
+ry
+ry
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
-NA
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-NA
+BE
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+BE
 Zf
 Zf
 Wk
@@ -6930,27 +6346,27 @@ ES
 ES
 ar
 ar
-rH
-bN
-bN
-cJ
-Xm
-Xm
-Xm
-CA
-Fu
+Ql
+rD
+rD
+lO
+ry
+ry
+ry
+WZ
+Iu
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
-NA
-hH
-hH
-hH
+BE
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -6964,10 +6380,10 @@ aL
 UD
 Rw
 Rw
-hH
-hH
-hH
-NA
+Eh
+Eh
+Eh
+BE
 pz
 tg
 Wk
@@ -7011,27 +6427,27 @@ ES
 ES
 ES
 ar
-rH
-bN
-bN
-cJ
-Xm
-Xm
+Ql
+rD
+rD
+lO
+ry
+ry
 Yp
 Yp
 Yp
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
-NA
-hH
-hH
-hH
+BE
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -7045,10 +6461,10 @@ CI
 UD
 Rw
 Rw
-hH
-hH
-hH
-NA
+Eh
+Eh
+Eh
+BE
 pz
 pz
 Wk
@@ -7092,27 +6508,27 @@ ES
 ES
 ar
 ar
-rH
-bN
-bN
-cJ
-Xm
-Xm
-Bj
-CX
-Fz
+Ql
+rD
+rD
+lO
+ry
+ry
+Nc
+js
+WT
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 pz
-NA
-hH
-hH
-hH
+BE
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -7126,10 +6542,10 @@ yr
 UD
 Rw
 Rw
-hH
-hH
-hH
-NA
+Eh
+Eh
+Eh
+BE
 Zf
 pz
 Zf
@@ -7174,26 +6590,26 @@ fs
 IJ
 IJ
 fs
-bN
-tc
-ww
-Xm
-Xm
-Xm
-Xm
-Xm
+rD
+xY
+oM
+ry
+ry
+ry
+ry
+ry
 fs
-jm
-hH
-kl
-hH
-hH
-BV
+yc
+Eh
+IK
+Eh
+Eh
+zj
 pz
-NA
-hH
-hH
-hH
+BE
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -7207,10 +6623,10 @@ PE
 UD
 Rw
 Rw
-hH
-hH
-hH
-NA
+Eh
+Eh
+Eh
+BE
 Zf
 bs
 bs
@@ -7254,27 +6670,27 @@ sT
 QN
 ar
 ar
-rH
-bN
-bN
-cJ
-Xm
-Xm
-Bn
-Gd
-Gd
+Ql
+rD
+rD
+lO
+ry
+ry
+KD
+CY
+CY
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
-NA
-hH
-hH
-hH
+BE
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -7288,10 +6704,10 @@ PE
 UD
 Rw
 Rw
-hH
-hH
-hH
-NA
+Eh
+Eh
+Eh
+BE
 Zf
 Zf
 bs
@@ -7335,27 +6751,27 @@ sT
 ES
 ar
 ES
-rQ
-bN
-bN
-cJ
-Xm
-Xm
+vt
+rD
+rD
+lO
+ry
+ry
 Yp
 Yp
 Yp
 fs
-hH
-hH
-kl
-hH
-hH
-BV
-NA
-NA
-hH
-hH
-hH
+Eh
+Eh
+IK
+Eh
+Eh
+zj
+BE
+BE
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -7369,11 +6785,11 @@ PE
 UD
 Rw
 Rw
-hH
-hH
-hH
-NA
-NA
+Eh
+Eh
+Eh
+BE
+BE
 Zf
 tZ
 bx
@@ -7416,27 +6832,27 @@ ES
 ES
 ES
 ES
-rH
-bN
-bN
-cJ
-Xm
-Xm
-Xm
-Dd
-Gf
+Ql
+rD
+rD
+lO
+ry
+ry
+ry
+tz
+hd
 fs
-hH
-hH
-kl
-hH
-hH
-BV
-NA
-Uu
-hH
-hH
-hH
+Eh
+Eh
+IK
+Eh
+Eh
+zj
+BE
+uL
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -7450,11 +6866,11 @@ PE
 UD
 Rw
 Rw
-hH
-hH
-hH
-Ds
-NA
+Eh
+Eh
+Eh
+Jo
+BE
 pz
 ho
 bs
@@ -7498,26 +6914,26 @@ sT
 aU
 ar
 fs
-bN
-bN
-cJ
-Xm
-Xm
-Xm
-Xm
-Xm
+rD
+rD
+lO
+ry
+ry
+ry
+ry
+ry
 fs
-hH
-hH
-kl
-hH
-hH
-BV
-NA
-Uu
-hH
-hH
-hH
+Eh
+Eh
+IK
+Eh
+Eh
+zj
+BE
+uL
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -7531,11 +6947,11 @@ dA
 UD
 Rw
 Rw
-hH
-hH
-hH
-mU
-NA
+Eh
+Eh
+Eh
+dM
+BE
 pz
 ho
 pz
@@ -7578,27 +6994,27 @@ sT
 ES
 ar
 KN
-rH
-bN
-bN
-cJ
-Xm
-Xm
-Xm
-Dg
-Dg
+Ql
+rD
+rD
+lO
+ry
+ry
+ry
+Wx
+Wx
 fs
-hH
-hH
-kl
-hH
-hH
-BV
-NA
-mU
-hH
-hH
-hH
+Eh
+Eh
+IK
+Eh
+Eh
+zj
+BE
+dM
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -7612,11 +7028,11 @@ PE
 UD
 Rw
 Rw
-hH
-hH
-hH
-KA
-NA
+Eh
+Eh
+Eh
+LT
+BE
 pz
 ho
 Zf
@@ -7659,27 +7075,27 @@ ES
 sT
 ar
 ES
-rH
-bN
-bN
-cJ
-Xm
-Xm
+Ql
+rD
+rD
+lO
+ry
+ry
 Yp
 Yp
 Yp
 fs
-hH
-hH
-kl
-hH
-hH
-BV
-NA
-NA
-hH
-hH
-hH
+Eh
+Eh
+IK
+Eh
+Eh
+zj
+BE
+BE
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -7693,11 +7109,11 @@ PE
 UD
 Rw
 Rw
-hH
-hH
-hH
-NA
-NA
+Eh
+Eh
+Eh
+BE
+BE
 Zf
 ho
 bs
@@ -7740,27 +7156,27 @@ ES
 sT
 QN
 ES
-rH
-bN
-bN
-cJ
-Xm
-Xm
-Xm
-Dh
-Gj
+Ql
+rD
+rD
+lO
+ry
+ry
+ry
+cj
+Ob
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
-NA
-hH
-hH
-hH
+BE
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -7774,10 +7190,10 @@ PE
 UD
 Rw
 Rw
-hH
-hH
-hH
-NA
+Eh
+Eh
+Eh
+BE
 Zf
 tg
 ho
@@ -7822,26 +7238,26 @@ fs
 IJ
 IJ
 fs
-bN
-bN
-cJ
-Xm
-Xm
-Xm
-Xm
-Xm
+rD
+rD
+lO
+ry
+ry
+ry
+ry
+ry
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
-Ms
-hH
-hH
-hH
+kW
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -7855,10 +7271,10 @@ PE
 UD
 Rw
 Rw
-hH
-hH
-hH
-NA
+Eh
+Eh
+Eh
+BE
 Zf
 bs
 ho
@@ -7903,26 +7319,26 @@ Zf
 Zf
 pz
 fs
-bN
-bN
-cJ
-Xm
-Xm
-Xm
-Dh
-Gj
+rD
+rD
+lO
+ry
+ry
+ry
+cj
+Ob
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
-NA
-hH
-hH
-hH
+BE
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -7936,10 +7352,10 @@ yr
 UD
 Rw
 Rw
-hH
-hH
-hH
-NA
+Eh
+Eh
+Eh
+BE
 Zf
 bs
 ho
@@ -7984,26 +7400,26 @@ bx
 hn
 Zf
 fs
-bN
-bN
-vO
+rD
+rD
+Uc
 Yp
 Yp
 Yp
 Yp
 Yp
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 pz
-NA
-hH
-hH
-hH
+BE
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -8017,10 +7433,10 @@ yn
 UD
 Rw
 Rw
-hH
-hH
-hH
-NA
+Eh
+Eh
+Eh
+BE
 pz
 bs
 ho
@@ -8061,30 +7477,30 @@ pz
 bs
 bs
 bs
-gi
+Sn
 ho
 Zf
 IJ
-ZL
-bN
-cJ
-bN
-bN
-bN
-bN
-bN
+nz
+rD
+lO
+rD
+rD
+rD
+rD
+rD
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 pz
-NA
-hH
-hH
-hH
+BE
+Eh
+Eh
+Eh
 Uv
 Uv
 UD
@@ -8098,10 +7514,10 @@ aL
 UD
 Rw
 Rw
-hH
-hH
-hH
-NA
+Eh
+Eh
+Eh
+BE
 pz
 bs
 ho
@@ -8146,43 +7562,43 @@ bs
 ho
 Zf
 IJ
-ZL
-bN
-cJ
-bN
-bN
-bN
-bN
-bN
-Db
-hH
-hH
-kl
-hH
-hH
-BV
+nz
+rD
+lO
+rD
+rD
+rD
+rD
+rD
+hD
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
-NA
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-NA
+BE
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+BE
 uy
 bx
 nk
@@ -8227,43 +7643,43 @@ Zf
 ho
 pz
 IJ
-ZL
-bN
-cJ
-bN
-bN
-Bv
-bN
-bN
+nz
+rD
+lO
+rD
+rD
+pV
+rD
+rD
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
-NA
-VF
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-hH
-VF
-NA
+BE
+wQ
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+wQ
+BE
 Vz
 bs
 bs
@@ -8308,43 +7724,43 @@ Zf
 ho
 pz
 IJ
-ZL
-bN
-wD
-dd
-dd
-er
-dd
-dd
-HK
-hQ
-hQ
-kv
-hH
-hH
-BV
+nz
+rD
+Ci
+pq
+pq
+Zz
+pq
+pq
+oN
+RF
+RF
+dj
+Eh
+Eh
+zj
 Zf
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
-NA
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
+BE
 Vz
 bs
 vh
@@ -8389,21 +7805,21 @@ Zf
 ho
 Zf
 fs
-ss
-cv
-cv
-cv
-cv
-cv
-cv
-cv
+ED
+AV
+AV
+AV
+AV
+AV
+AV
+AV
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
 Zf
 Zf
@@ -8479,14 +7895,14 @@ IJ
 IJ
 fs
 fs
-hH
-hH
-kl
-hH
-hH
-BV
+Eh
+Eh
+IK
+Eh
+Eh
+zj
 Zf
-gi
+Sn
 bs
 bs
 bs
@@ -8560,12 +7976,12 @@ Zf
 Zf
 Zf
 tg
-jv
-hH
-NI
-hQ
-hQ
-Sg
+DR
+Eh
+rC
+RF
+RF
+DS
 dP
 bx
 bx
@@ -8641,12 +8057,12 @@ bx
 bx
 bx
 dP
-Kj
-hQ
-kv
-hH
-hH
-BV
+Vu
+RF
+dj
+Eh
+Eh
+zj
 pz
 bs
 Zf
@@ -8722,12 +8138,12 @@ bs
 bs
 bs
 Zf
-jv
-hH
-kl
-hH
-hH
-BV
+DR
+Eh
+IK
+Eh
+Eh
+zj
 pz
 pz
 Wk
@@ -8801,14 +8217,14 @@ Wk
 pz
 pz
 bs
-gi
+Sn
 be
-jv
-hH
-kl
-hH
-hH
-BV
+DR
+Eh
+IK
+Eh
+Eh
+zj
 Zf
 pz
 Zf
@@ -8884,12 +8300,12 @@ tg
 bs
 bs
 be
-jv
-hH
-kl
-hH
-hH
-BV
+DR
+Eh
+IK
+Eh
+Eh
+zj
 Zf
 bs
 Zf
@@ -8965,12 +8381,12 @@ pz
 bs
 bs
 be
-jv
-hH
-kl
-hH
-hH
-BV
+DR
+Eh
+IK
+Eh
+Eh
+zj
 Zf
 bs
 bs
@@ -9046,12 +8462,12 @@ bs
 bs
 bs
 Zf
-jv
-hH
-kl
-hH
-hH
-BV
+DR
+Eh
+IK
+Eh
+Eh
+zj
 Zf
 bs
 bs
@@ -9127,12 +8543,12 @@ bs
 bs
 bs
 pz
-jv
-hH
-kl
-hH
-hH
-BV
+DR
+Eh
+IK
+Eh
+Eh
+zj
 pz
 bs
 bs
@@ -9208,14 +8624,14 @@ vh
 vh
 bs
 pz
-Kq
-hH
-kl
-hH
-hH
-BV
+Rm
+Eh
+IK
+Eh
+Eh
+zj
 pz
-gi
+Sn
 vh
 vh
 vh

@@ -3,21 +3,37 @@
 /obj/structure/window/framed/prison,
 /turf/open/floor/plating/prison,
 /area/template_noop)
+"ar" = (
+/turf/open/floor/prison/darkbrowncorners2/north,
+/area/template_noop)
 "az" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
 /turf/open/floor/wood,
 /area/template_noop)
+"aF" = (
+/obj/item/trash/syndi_cakes{
+	pixel_x = -13;
+	pixel_y = -11
+	},
+/turf/open/floor/prison/darkbrown2/east,
+/area/template_noop)
+"bw" = (
+/obj/item/trash/semki{
+	pixel_x = 15
+	},
+/turf/open/floor/prison/darkbrown2/north,
+/area/template_noop)
 "bD" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
 /area/template_noop)
-"bO" = (
-/obj/item/storage/belt/marine/quackers,
-/turf/open/gm/river{
-	name = "pool"
-	},
+"bV" = (
+/turf/open/floor/prison/darkbrown2/west,
+/area/template_noop)
+"ca" = (
+/turf/open/floor/prison/darkbrown2/northeast,
 /area/template_noop)
 "cb" = (
 /obj/item/trash/barcardine{
@@ -29,15 +45,6 @@
 "ci" = (
 /obj/item/toy/gun,
 /turf/open/floor/wood,
-/area/template_noop)
-"cj" = (
-/obj/item/trash/crushed_cup{
-	pixel_y = -7;
-	pixel_x = -1
-	},
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
 /area/template_noop)
 "cq" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -51,96 +58,56 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"cK" = (
-/obj/structure/platform_decoration,
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
+"dF" = (
+/obj/item/trash/crushed_cup{
+	pixel_y = 5;
+	pixel_x = 11
 	},
+/turf/open/gm/river/pool,
 /area/template_noop)
-"cU" = (
-/obj/structure/machinery/power/apc/directional/no_power/south,
-/turf/open/floor/wood,
-/area/template_noop)
-"dB" = (
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"ef" = (
-/obj/item/toy/beach_ball,
-/turf/open/gm/river{
-	name = "pool"
-	},
-/area/template_noop)
-"el" = (
-/obj/structure/prop/souto_land/streamer{
-	dir = 6
-	},
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"fv" = (
-/obj/item/toy/crossbow_ammo{
-	pixel_x = -16
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrowncorners2"
-	},
-/area/template_noop)
-"fL" = (
-/obj/structure/grille,
-/obj/item/reagent_container/food/snacks/carpmeat{
-	pixel_x = -5;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/snacks/carpmeat{
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/obj/structure/prop/invuln/fire{
-	layer = 2.9
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrowncorners2"
-	},
-/area/template_noop)
-"fN" = (
+"dR" = (
 /obj/structure/platform{
-	dir = 4
+	dir = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+/turf/open/gm/river/pool,
+/area/template_noop)
+"eq" = (
+/obj/structure/platform_decoration{
+	dir = 8
 	},
+/turf/open/floor/prison/darkbrown2/east,
+/area/template_noop)
+"fp" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/darkbrowncorners2/north,
 /area/template_noop)
 "fX" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/template_noop)
-"gs" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrown2"
+"gg" = (
+/obj/structure/platform_decoration{
+	dir = 1
 	},
+/turf/open/floor/prison/darkbrown2,
 /area/template_noop)
 "gV" = (
 /turf/open/space,
 /area/template_noop)
-"hf" = (
-/turf/open/gm/river{
-	name = "pool"
+"hs" = (
+/obj/structure/platform_decoration{
+	dir = 1
 	},
+/turf/open/floor/prison/darkbrown2/southeast,
 /area/template_noop)
 "hP" = (
 /obj/structure/platform{
 	dir = 4
 	},
 /turf/open/floor/prison,
+/area/template_noop)
+"hV" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/darkbrown2/west,
 /area/template_noop)
 "hY" = (
 /obj/structure/machinery/light/double/blue{
@@ -158,46 +125,9 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"ik" = (
-/obj/item/trash/syndi_cakes{
-	pixel_x = -13;
-	pixel_y = -11
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"is" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"iC" = (
-/obj/item/tool/mop{
-	pixel_x = 11;
-	layer = 2.9;
-	pixel_y = 3
-	},
-/obj/item/reagent_container/glass/bucket/mopbucket{
-	pixel_x = 9;
-	pixel_y = -5
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"iK" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
+"iB" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison/darkbrown2,
 /area/template_noop)
 "iY" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -215,32 +145,61 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/wood,
 /area/template_noop)
-"jW" = (
+"jB" = (
+/obj/item/toy/crossbow_ammo{
+	pixel_x = -16
+	},
+/turf/open/floor/prison/darkbrowncorners2/west,
+/area/template_noop)
+"jQ" = (
+/obj/item/toy/crossbow_ammo{
+	pixel_x = 19;
+	pixel_y = 9
+	},
+/turf/open/floor/prison/darkbrown2,
+/area/template_noop)
+"kh" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/prison/darkbrowncorners2/east,
+/area/template_noop)
+"ks" = (
+/obj/item/toy/crossbow_ammo{
+	pixel_x = -17;
+	pixel_y = 41
+	},
+/turf/open/floor/prison/darkbrown2/north,
+/area/template_noop)
+"kv" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/prison/darkbrown2/west,
+/area/template_noop)
+"kC" = (
+/obj/item/trash/plate{
+	pixel_x = -9
+	},
+/turf/open/floor/prison/darkbrowncorners2,
+/area/template_noop)
+"kR" = (
+/obj/item/trash/crushed_cup{
+	pixel_y = -7;
+	pixel_x = -1
+	},
+/turf/open/floor/prison/darkbrown2,
+/area/template_noop)
+"kZ" = (
+/obj/item/trash/sosjerky{
+	pixel_x = -14;
+	pixel_y = -20
+	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/prison/darkbrown2/north,
+/area/template_noop)
+"la" = (
 /obj/item/trash/crushed_cup{
 	pixel_y = 6;
 	pixel_x = 6
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"kb" = (
-/obj/item/trash/crushed_cup{
-	pixel_y = -65;
-	pixel_x = 29
-	},
-/turf/open/gm/river{
-	name = "pool"
-	},
-/area/template_noop)
-"kA" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/darkbrown2/east,
 /area/template_noop)
 "lc" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -284,20 +243,9 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"mc" = (
-/obj/item/trash/kepler{
-	pixel_x = 13
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"mj" = (
-/obj/structure/prop/souto_land/pole,
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
+"mh" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/darkbrown2/southwest,
 /area/template_noop)
 "mk" = (
 /obj/structure/machinery/light/double/blue{
@@ -310,30 +258,40 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"mq" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrowncorners2"
-	},
-/area/template_noop)
 "mu" = (
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "nf" = (
 /turf/open/floor/wood,
 /area/template_noop)
-"ng" = (
-/obj/item/trash/cigbutt{
-	pixel_x = 31;
-	pixel_y = -16
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
 "ni" = (
 /turf/closed/wall/prison,
+/area/template_noop)
+"nl" = (
+/obj/item/trash/crushed_cup{
+	pixel_y = -6;
+	pixel_x = -8
+	},
+/turf/open/floor/prison/darkbrown2/east,
+/area/template_noop)
+"np" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/prop/souto_land/pole,
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_y = 24
+	},
+/obj/item/toy/plush/barricade{
+	pixel_x = 1;
+	pixel_y = -9
+	},
+/turf/open/floor/prison/darkbrown2/west,
 /area/template_noop)
 "nC" = (
 /obj/structure/stairs/perspective{
@@ -344,9 +302,27 @@
 	},
 /turf/open/floor/plating/prison,
 /area/template_noop)
+"nF" = (
+/turf/open/floor/prison/darkbrown2/north,
+/area/template_noop)
 "nS" = (
 /obj/structure/prop/souto_land/pole,
 /turf/open/floor/wood,
+/area/template_noop)
+"nU" = (
+/obj/structure/grille,
+/obj/item/reagent_container/food/snacks/carpmeat{
+	pixel_x = -5;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/snacks/carpmeat{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/structure/prop/invuln/fire{
+	layer = 2.9
+	},
+/turf/open/floor/prison/darkbrowncorners2/west,
 /area/template_noop)
 "or" = (
 /obj/structure/prop/souto_land/pole{
@@ -354,33 +330,21 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"ou" = (
-/obj/structure/platform,
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
 "oL" = (
 /obj/structure/lattice,
 /turf/open/space,
+/area/template_noop)
+"oN" = (
+/turf/open/floor/prison/darkbrown2/southeast,
+/area/template_noop)
+"pc" = (
+/turf/open/gm/river/pool,
 /area/template_noop)
 "pt" = (
 /obj/structure/bed/chair/comfy{
 	layer = 2.9
 	},
 /turf/open/floor/wood,
-/area/template_noop)
-"pB" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
 /area/template_noop)
 "pG" = (
 /obj/structure/stairs/perspective{
@@ -390,25 +354,15 @@
 /obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
 /area/template_noop)
-"pH" = (
+"pO" = (
+/obj/structure/prop/souto_land/pole,
+/turf/open/floor/prison/darkbrown2,
+/area/template_noop)
+"qe" = (
 /obj/structure/platform_decoration{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"ql" = (
-/obj/item/trash/sosjerky{
-	pixel_x = -14;
-	pixel_y = -20
-	},
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "qm" = (
 /obj/structure/stairs/perspective{
@@ -417,6 +371,22 @@
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
+/area/template_noop)
+"qB" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 9
+	},
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"qE" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/darkbrown2/north,
 /area/template_noop)
 "qG" = (
 /obj/item/trash/crushed_cup{
@@ -436,52 +406,9 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"ro" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/template_noop)
 "rp" = (
 /obj/item/reagent_container/glass/bucket/janibucket,
 /turf/open/floor/prison,
-/area/template_noop)
-"rq" = (
-/obj/item/trash/semki{
-	pixel_x = 15
-	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"rt" = (
-/obj/item/trash/crushed_cup{
-	pixel_x = -2;
-	pixel_y = 36
-	},
-/turf/open/gm/river{
-	name = "pool"
-	},
-/area/template_noop)
-"rU" = (
-/obj/structure/grille,
-/obj/item/reagent_container/food/snacks/bearmeat{
-	pixel_x = 6;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/snacks/meat/human{
-	pixel_x = -7;
-	pixel_y = 3
-	},
-/obj/structure/prop/invuln/fire{
-	layer = 2.9
-	},
-/turf/open/floor/prison{
-	icon_state = "darkbrowncorners2"
-	},
 /area/template_noop)
 "rW" = (
 /obj/structure/bed/chair/comfy{
@@ -492,6 +419,13 @@
 "so" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/wood,
+/area/template_noop)
+"sz" = (
+/obj/item/trash/crushed_cup{
+	pixel_y = -2;
+	pixel_x = -12
+	},
+/turf/open/floor/prison/darkbrown2/east,
 /area/template_noop)
 "tb" = (
 /obj/item/trash/wy_chips_pepper{
@@ -519,57 +453,23 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"tD" = (
-/obj/item/trash/plate{
-	pixel_x = -9
-	},
-/turf/open/floor/prison{
-	icon_state = "darkbrowncorners2"
-	},
-/area/template_noop)
-"tM" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrowncorners2"
-	},
-/area/template_noop)
 "tT" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/wood,
 /area/template_noop)
-"uw" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrowncorners2"
-	},
+"uf" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/darkbrown2/east,
 /area/template_noop)
-"vd" = (
-/obj/structure/prop/souto_land/pole,
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_y = 24
-	},
-/obj/item/toy/plush/barricade{
-	pixel_x = 1;
-	pixel_y = -9
-	},
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrown2"
-	},
+"uE" = (
+/obj/structure/machinery/power/apc/directional/no_power/south,
+/turf/open/floor/wood,
 /area/template_noop)
-"vf" = (
-/obj/structure/platform_decoration{
-	dir = 4
+"vt" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 9
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/darkbrown2/north,
 /area/template_noop)
 "vU" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -626,13 +526,20 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"wS" = (
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "darkbrown2"
-	},
+"we" = (
+/obj/item/storage/belt/marine/quackers,
+/turf/open/gm/river/pool,
 /area/template_noop)
-"wV" = (
+"wh" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/template_noop)
+"wI" = (
 /obj/structure/platform{
 	dir = 1
 	},
@@ -640,21 +547,28 @@
 	dir = 1;
 	pixel_y = 21
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"wQ" = (
+/obj/structure/platform_decoration{
+	dir = 4
 	},
+/turf/open/floor/prison/darkbrown2/west,
+/area/template_noop)
+"xe" = (
+/obj/structure/platform,
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison/darkbrown2,
+/area/template_noop)
+"xu" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/prison/darkbrown2/north,
 /area/template_noop)
 "xz" = (
 /obj/structure/prop/souto_land/streamer{
 	dir = 9
 	},
 /turf/open/floor/wood,
-/area/template_noop)
-"xQ" = (
-/obj/item/reagent_container/food/drinks/cans/beer,
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
 /area/template_noop)
 "xS" = (
 /obj/structure/platform{
@@ -666,12 +580,13 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"yx" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrown2"
-	},
+"xX" = (
+/obj/structure/platform_decoration,
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"yF" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/darkbrown2/east,
 /area/template_noop)
 "yL" = (
 /obj/structure/stairs/perspective{
@@ -683,16 +598,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/template_noop)
-"zc" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform,
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
 "zR" = (
 /obj/item/trash/cigbutt{
 	pixel_x = 10;
@@ -703,6 +608,13 @@
 "Aj" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison,
+/area/template_noop)
+"Am" = (
+/obj/item/toy/beach_ball/holoball{
+	pixel_x = -10;
+	pixel_y = -7
+	},
+/turf/open/floor/prison/darkbrown2/west,
 /area/template_noop)
 "Ao" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -717,28 +629,12 @@
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
 /area/template_noop)
-"Bj" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
+"Bu" = (
+/obj/item/trash/crushed_cup{
+	pixel_x = -13;
+	pixel_y = 48
 	},
-/area/template_noop)
-"Bm" = (
-/obj/structure/prop/souto_land/pole{
-	dir = 1
-	},
-/obj/structure/prop/souto_land/pole{
-	dir = 8;
-	pixel_y = 24
-	},
-/obj/item/toy/plush/barricade{
-	pixel_x = -3;
-	pixel_y = -9
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrown2"
-	},
+/turf/open/gm/river/pool,
 /area/template_noop)
 "Bv" = (
 /obj/structure/prop/souto_land/streamer{
@@ -749,12 +645,36 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
+"BB" = (
+/turf/open/floor/prison/darkbrown2,
+/area/template_noop)
 "BK" = (
 /obj/structure/prop/souto_land/pole,
 /obj/structure/prop/souto_land/streamer{
 	dir = 6
 	},
 /turf/open/floor/wood,
+/area/template_noop)
+"BW" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 1
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_y = 24
+	},
+/obj/item/toy/plush/barricade{
+	pixel_x = -1;
+	pixel_y = -9
+	},
+/turf/open/floor/prison/darkbrown2/east,
 /area/template_noop)
 "BY" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -773,6 +693,10 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
+"Cf" = (
+/obj/effect/landmark/corpsespawner/ua_riot/burst,
+/turf/open/floor/prison/darkbrown2/north,
+/area/template_noop)
 "Ci" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/beer_pack{
@@ -781,39 +705,16 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"Cq" = (
-/obj/item/toy/crossbow_ammo{
-	pixel_x = -17;
-	pixel_y = 41
-	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
 "Cx" = (
 /obj/item/weapon/baseballbat/metal,
 /turf/open/floor/wood,
 /area/template_noop)
-"Dd" = (
+"Ec" = (
 /obj/item/trash/crushed_cup{
-	pixel_x = -20
+	pixel_y = -65;
+	pixel_x = 29
 	},
-/turf/open/gm/river{
-	name = "pool"
-	},
-/area/template_noop)
-"DN" = (
-/obj/structure/platform_decoration,
-/turf/open/floor/prison{
-	icon_state = "darkbrowncorners2"
-	},
-/area/template_noop)
-"DT" = (
-/obj/structure/platform,
-/turf/open/gm/river{
-	name = "pool"
-	},
+/turf/open/gm/river/pool,
 /area/template_noop)
 "Fj" = (
 /obj/structure/platform_decoration{
@@ -827,23 +728,16 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/template_noop)
-"Fo" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrown2"
-	},
+"Fm" = (
+/obj/structure/platform,
+/turf/open/floor/prison/darkbrown2,
+/area/template_noop)
+"Fq" = (
+/obj/item/reagent_container/food/drinks/cans/beer,
+/turf/open/floor/prison/darkbrown2,
 /area/template_noop)
 "Fy" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
-"Fz" = (
-/obj/structure/prop/souto_land/streamer{
-	dir = 9
-	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
 /area/template_noop)
 "FD" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -860,14 +754,8 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"FN" = (
-/obj/item/toy/crossbow{
-	pixel_x = 11;
-	pixel_y = -8
-	},
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
+"FX" = (
+/turf/open/floor/prison/darkbrowncorners2/east,
 /area/template_noop)
 "Gi" = (
 /obj/structure/stairs/perspective{
@@ -903,39 +791,25 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"Gu" = (
-/obj/item/trash/crushed_cup{
-	pixel_y = -2;
-	pixel_x = -12
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"GO" = (
-/obj/item/toy/crossbow_ammo{
-	pixel_y = -14;
-	pixel_x = -15
-	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"Hn" = (
-/obj/structure/platform{
+"He" = (
+/obj/structure/prop/souto_land/pole{
 	dir = 1
 	},
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_y = 24
+	},
+/obj/item/toy/plush/barricade{
+	pixel_x = -3;
+	pixel_y = -9
+	},
+/turf/open/floor/prison/darkbrown2/east,
+/area/template_noop)
+"Hp" = (
 /obj/structure/platform{
 	dir = 4
 	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "HP" = (
 /obj/structure/prop/souto_land/streamer{
@@ -947,19 +821,26 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"ID" = (
-/obj/item/trash/crushed_cup{
-	pixel_y = -6;
-	pixel_x = -8
+"HT" = (
+/obj/item/toy/crossbow{
+	pixel_x = 11;
+	pixel_y = -8
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrown2"
-	},
+/turf/open/floor/prison/darkbrown2,
+/area/template_noop)
+"IF" = (
+/turf/open/floor/prison/darkbrown2/northwest,
+/area/template_noop)
+"IN" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/prison/darkbrowncorners2,
 /area/template_noop)
 "IU" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/wood,
+/area/template_noop)
+"IW" = (
+/turf/open/floor/prison/darkbrown2/east,
 /area/template_noop)
 "Jf" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -973,11 +854,25 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"Jr" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrowncorners2"
+"Jg" = (
+/obj/structure/platform,
+/obj/structure/platform{
+	dir = 8
 	},
+/obj/structure/platform_decoration{
+	dir = 10
+	},
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"Jn" = (
+/obj/structure/platform,
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 6
+	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "Jw" = (
 /obj/structure/machinery/light/double/blue{
@@ -990,26 +885,11 @@
 /obj/item/clipboard,
 /turf/open/floor/prison,
 /area/template_noop)
-"JR" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrown2"
+"JZ" = (
+/obj/item/trash/crushed_cup{
+	pixel_x = -20
 	},
-/area/template_noop)
-"Ke" = (
-/obj/item/toy/crossbow_ammo{
-	pixel_x = 19;
-	pixel_y = 9
-	},
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"Kx" = (
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/gm/river/pool,
 /area/template_noop)
 "KL" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1031,13 +911,6 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"KM" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
 "KO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/cup{
@@ -1051,13 +924,12 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"La" = (
-/obj/structure/platform{
-	dir = 1
+"Lk" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 31;
+	pixel_y = -16
 	},
-/turf/open/gm/river{
-	name = "pool"
-	},
+/turf/open/floor/prison/darkbrown2/west,
 /area/template_noop)
 "Ls" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1068,6 +940,13 @@
 	dir = 9
 	},
 /turf/open/floor/wood,
+/area/template_noop)
+"Lx" = (
+/obj/item/trash/crushed_cup{
+	pixel_x = -2;
+	pixel_y = 36
+	},
+/turf/open/gm/river/pool,
 /area/template_noop)
 "LI" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1097,107 +976,103 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"LW" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrown2"
-	},
+"LO" = (
+/turf/open/floor/prison/cell_stripe/east,
 /area/template_noop)
-"Mn" = (
-/obj/structure/platform,
+"Mm" = (
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure/platform_decoration{
-	dir = 10
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
-"MS" = (
+"Mz" = (
 /obj/structure/platform,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"NY" = (
+/obj/structure/prop/souto_land/streamer{
 	dir = 6
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/prison/darkbrown2/north,
 /area/template_noop)
-"ND" = (
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"NQ" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"Oz" = (
-/obj/item/trash/crushed_cup{
-	pixel_y = 5;
-	pixel_x = 11
-	},
-/turf/open/gm/river{
-	name = "pool"
-	},
-/area/template_noop)
-"PA" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"PR" = (
-/obj/item/device/flashlight/lamp/tripod,
-/turf/open/floor/prison{
-	icon_state = "darkbrowncorners2"
-	},
-/area/template_noop)
-"Qn" = (
-/turf/open/floor/prison,
-/area/template_noop)
-"QF" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrowncorners2"
-	},
-/area/template_noop)
-"QO" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"Rg" = (
-/obj/structure/prop/souto_land/pole{
-	dir = 1
-	},
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"Ro" = (
+"Ob" = (
 /obj/item/toy/bikehorn/rubberducky{
 	pixel_x = -2;
 	pixel_y = -15
 	},
-/turf/open/gm/river{
-	name = "pool"
+/turf/open/gm/river/pool,
+/area/template_noop)
+"Og" = (
+/obj/item/toy/crossbow_ammo{
+	pixel_y = -14;
+	pixel_x = -15
 	},
+/turf/open/floor/prison/darkbrown2/north,
+/area/template_noop)
+"OA" = (
+/obj/structure/platform,
+/obj/item/trash/crushed_cup{
+	pixel_y = 13;
+	pixel_x = 45
+	},
+/turf/open/gm/river/pool,
+/area/template_noop)
+"OF" = (
+/obj/structure/platform,
+/turf/open/gm/river/pool,
+/area/template_noop)
+"OS" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 1
+	},
+/turf/open/floor/prison/darkbrown2,
+/area/template_noop)
+"Pt" = (
+/obj/item/trash/kepler{
+	pixel_x = 13
+	},
+/turf/open/floor/prison/darkbrown2/west,
+/area/template_noop)
+"PO" = (
+/obj/item/tool/mop{
+	pixel_x = 11;
+	layer = 2.9;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/glass/bucket/mopbucket{
+	pixel_x = 9;
+	pixel_y = -5
+	},
+/turf/open/floor/prison/darkbrown2/east,
+/area/template_noop)
+"Qh" = (
+/obj/structure/platform_decoration{
+	dir = 1
+	},
+/turf/open/floor/prison/darkbrowncorners2/west,
+/area/template_noop)
+"Qn" = (
+/turf/open/floor/prison,
+/area/template_noop)
+"Qv" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/darkbrown2,
+/area/template_noop)
+"Qz" = (
+/obj/structure/platform_decoration,
+/turf/open/floor/prison/darkbrowncorners2,
+/area/template_noop)
+"QX" = (
+/turf/open/floor/prison/darkbrowncorners2/west,
+/area/template_noop)
+"QZ" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform,
+/turf/open/floor/prison/darkbrown2,
 /area/template_noop)
 "Rr" = (
 /obj/structure/stairs/perspective{
@@ -1205,11 +1080,6 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/plating/prison,
-/area/template_noop)
-"Rs" = (
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
 /area/template_noop)
 "RW" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1228,20 +1098,6 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"Sg" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrowncorners2"
-	},
-/area/template_noop)
-"SC" = (
-/obj/effect/landmark/corpsespawner/ua_riot/burst,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
 "SO" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
@@ -1258,40 +1114,9 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"SW" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/prop/souto_land/pole,
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_y = 24
-	},
-/obj/item/toy/plush/barricade{
-	pixel_x = 1;
-	pixel_y = -9
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"Th" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"Tq" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe"
-	},
+"Te" = (
+/obj/structure/platform_decoration,
+/turf/open/floor/prison/darkbrown2,
 /area/template_noop)
 "TO" = (
 /obj/structure/prop/souto_land/streamer{
@@ -1314,14 +1139,11 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
-"UN" = (
-/obj/item/trash/crushed_cup{
-	pixel_x = -13;
-	pixel_y = 48
+"UP" = (
+/obj/structure/platform_decoration{
+	dir = 4
 	},
-/turf/open/gm/river{
-	name = "pool"
-	},
+/turf/open/floor/prison/darkbrown2/northeast,
 /area/template_noop)
 "Vi" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1370,31 +1192,26 @@
 	},
 /turf/open/floor/prison,
 /area/template_noop)
-"Wh" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
+"Wp" = (
+/obj/structure/prop/souto_land/pole,
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_y = 24
 	},
+/obj/item/toy/plush/barricade{
+	pixel_x = 1;
+	pixel_y = -9
+	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/prison/darkbrown2/west,
 /area/template_noop)
-"Wx" = (
-/obj/structure/platform,
-/obj/item/trash/crushed_cup{
-	pixel_y = 13;
-	pixel_x = 45
-	},
-/turf/open/gm/river{
-	name = "pool"
-	},
-/area/template_noop)
-"WY" = (
-/obj/structure/platform_decoration{
+"Wr" = (
+/obj/structure/platform{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
-"Xn" = (
+"Xt" = (
 /obj/item/storage/belt/shotgun/full/quackers{
 	layer = 3.1
 	},
@@ -1406,66 +1223,11 @@
 	pixel_y = 4;
 	pixel_x = 1
 	},
-/turf/open/gm/river{
-	name = "pool"
-	},
-/area/template_noop)
-"Xu" = (
-/obj/structure/platform,
-/obj/structure/machinery/light/double/blue,
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"Xw" = (
-/obj/item/toy/beach_ball/holoball{
-	pixel_x = -10;
-	pixel_y = -7
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"XM" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrown2"
-	},
+/turf/open/gm/river/pool,
 /area/template_noop)
 "XS" = (
 /obj/effect/landmark/corpsespawner/prisoner,
 /turf/open/floor/wood,
-/area/template_noop)
-"XU" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/prop/souto_land/pole{
-	dir = 1
-	},
-/obj/structure/prop/souto_land/pole{
-	dir = 8;
-	pixel_y = 24
-	},
-/obj/item/toy/plush/barricade{
-	pixel_x = -1;
-	pixel_y = -9
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkbrown2"
-	},
-/area/template_noop)
-"XX" = (
-/obj/structure/platform_decoration,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
 /area/template_noop)
 "Yd" = (
 /obj/structure/machinery/light/double/blue,
@@ -1485,6 +1247,9 @@
 "YB" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/template_noop)
+"YF" = (
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
 "YG" = (
 /obj/structure/platform,
 /turf/open/floor/prison,
@@ -1496,19 +1261,32 @@
 /obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/template_noop)
+"Zh" = (
+/obj/structure/grille,
+/obj/item/reagent_container/food/snacks/bearmeat{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/snacks/meat/human{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/structure/prop/invuln/fire{
+	layer = 2.9
+	},
+/turf/open/floor/prison/darkbrowncorners2,
+/area/template_noop)
 "Zr" = (
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/wood,
 /area/template_noop)
-"ZB" = (
-/obj/structure/platform,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+"Zw" = (
+/obj/item/toy/beach_ball,
+/turf/open/gm/river/pool,
 /area/template_noop)
 
 (1,1,1) = {"
-Rs
+BB
 Qn
 Fl
 Qn
@@ -1517,8 +1295,8 @@ fX
 fX
 fX
 fX
-Wh
-cK
+nF
+Te
 hP
 hP
 ly
@@ -1527,17 +1305,17 @@ Qn
 Qn
 Aj
 Qn
-Wh
-Rs
+nF
+BB
 Fy
 "}
 (2,1,1) = {"
-Rs
+BB
 Qn
 JQ
 Qn
 VV
-fN
+Hp
 fX
 ni
 ni
@@ -1545,28 +1323,28 @@ YP
 TS
 ni
 ni
-kA
-Kx
-XX
+Wr
+YF
+xX
 hP
 hP
 ly
-Wh
-Rs
+nF
+BB
 so
 "}
 (3,1,1) = {"
-Rs
+BB
 Qn
 VV
-fN
-MS
+Hp
+Jn
 ni
 aj
 ni
 SO
-el
-mj
+NY
+pO
 hY
 ni
 YP
@@ -1574,23 +1352,23 @@ Rr
 TS
 ni
 ni
-kA
-Wh
-Rs
-dB
+Wr
+nF
+BB
+IF
 "}
 (4,1,1) = {"
-Rs
+BB
 Qn
-ZB
+Mz
 ni
 aj
 ni
 nf
 nf
 nf
-ql
-Rs
+kZ
+BB
 nf
 BK
 TO
@@ -1598,194 +1376,194 @@ HP
 nS
 Wa
 aj
-kA
-Wh
-Rs
+Wr
+nF
+BB
 mu
 "}
 (5,1,1) = {"
-Rs
+BB
 VV
-MS
+Jn
 aj
 jt
 az
-dB
-yx
-XM
-tM
-QF
-XM
-Xw
-NQ
+IF
+kv
+bV
+kh
+QX
+bV
+Am
+mh
 nf
 IU
 nf
 aj
-kA
-Wh
+Wr
+nF
 mu
 fX
 "}
 (6,1,1) = {"
-Rs
-ZB
+BB
+Mz
 ni
 ni
 XS
 nf
-GO
-PR
-Fo
-Fo
-jW
-Fo
-mq
-Ke
+Og
+IN
+IW
+IW
+la
+IW
+ar
+jQ
 lh
 nf
 Cx
 aj
-kA
-ND
-Fo
+Wr
+ca
+IW
 fX
 "}
 (7,1,1) = {"
-cK
-MS
+Te
+Jn
 aj
 nf
 tz
 nf
-Th
-Rs
+qE
+BB
 pG
 Gi
 Gi
 qm
-Wh
-Rs
+nF
+BB
 nf
 tz
 nf
 aj
-Hn
+qB
 Fj
 nf
 fX
 "}
 (8,1,1) = {"
-ou
+Fm
 ni
 ni
 Zr
 FD
 az
-Wh
-xQ
-La
-kb
-hf
-DT
-Wh
-Rs
+nF
+Fq
+dR
+Ec
+pc
+OF
+nF
+BB
 Zr
 Ci
 az
 ni
 ni
-kA
+Wr
 nf
-Wh
+nF
 "}
 (9,1,1) = {"
-Xu
+xe
 ni
 mk
 nf
 rW
 nf
-Cq
-Rs
-La
-Dd
-ef
-DT
-Wh
-Rs
+ks
+BB
+dR
+JZ
+Zw
+OF
+nF
+BB
 nf
 rW
 nf
 Yd
 ni
-wV
+wI
 nf
-Wh
+nF
 "}
 (10,1,1) = {"
-uw
-SW
-ng
-yx
-yx
-mc
-Jr
-Rs
-La
-bO
-rt
-DT
-Wh
-fL
-XM
-yx
-yx
-vd
-pB
-pH
-XM
-Jr
+Qh
+np
+Lk
+kv
+kv
+Pt
+FX
+BB
+dR
+we
+Lx
+OF
+nF
+nU
+bV
+kv
+kv
+Wp
+wh
+wQ
+bV
+FX
 "}
 (11,1,1) = {"
-DN
-XU
-JR
-Fo
-Fo
-Fo
-Sg
-Bj
-La
-hf
-UN
-Wx
-Wh
-rU
-KM
-Fo
-Gu
-Bm
+Qz
+BW
+uf
+IW
+IW
+IW
+fp
+iB
+dR
+pc
+Bu
+OA
+nF
+Zh
+yF
+IW
+sz
+He
 yL
-LW
-Fo
-Fo
+eq
+IW
+IW
 "}
 (12,1,1) = {"
-Xu
+xe
 ni
 Jw
 nf
 tz
 nf
-Wh
-Rs
-La
-Oz
-Xn
-DT
-SC
-Rs
+nF
+BB
+dR
+dF
+Xt
+OF
+Cf
+BB
 nf
 tz
 nf
@@ -1796,20 +1574,20 @@ nf
 nf
 "}
 (13,1,1) = {"
-ou
+Fm
 ni
 ni
 pt
 LI
 Vx
-Wh
-FN
-La
-Ro
-hf
-DT
-Wh
-cj
+nF
+HT
+dR
+Ob
+pc
+OF
+nF
+kR
 Zr
 BY
 az
@@ -1820,44 +1598,44 @@ Bf
 Bf
 "}
 (14,1,1) = {"
-WY
-Mn
+gg
+Jg
 aj
 nf
 rW
 nf
-rq
-Rs
+bw
+BB
 nC
 Rr
 Rr
 TS
-Wh
-QO
+nF
+Qv
 nf
 rW
 nf
-cU
+uE
 Fy
 gV
 gV
 gV
 "}
 (15,1,1) = {"
-Rs
-ZB
+BB
+Mz
 aj
 nf
 ij
 tT
-iK
-fv
-gs
-XM
-XM
-XM
-Jr
-Rs
+xu
+jB
+hV
+bV
+bV
+bV
+FX
+BB
 nf
 tb
 nf
@@ -1868,20 +1646,20 @@ Bf
 Bf
 "}
 (16,1,1) = {"
-Rs
+BB
 YG
 aj
 lc
 ci
 tT
-ND
-iC
-ID
-mq
-tD
-Fo
-ik
-wS
+ca
+PO
+nl
+ar
+kC
+IW
+aF
+oN
 iY
 cq
 RW
@@ -1892,7 +1670,7 @@ Gp
 Bf
 "}
 (17,1,1) = {"
-Rs
+BB
 YG
 aj
 Ls
@@ -1901,8 +1679,8 @@ Bv
 or
 zR
 nf
-Th
-Rs
+qE
+BB
 nf
 tw
 XS
@@ -1916,7 +1694,7 @@ lS
 Bf
 "}
 (18,1,1) = {"
-Rs
+BB
 YG
 ni
 ni
@@ -1925,8 +1703,8 @@ Gi
 qm
 ni
 vX
-Fz
-Rg
+vt
+OS
 Ao
 Fy
 nf
@@ -1940,17 +1718,17 @@ vU
 Bf
 "}
 (19,1,1) = {"
-Rs
+BB
 We
 ty
 ty
-vf
-Kx
-ZB
+qe
+YF
+Mz
 ni
 ni
 pG
-zc
+QZ
 ni
 Fy
 Zr
@@ -1964,18 +1742,18 @@ Bf
 Bf
 "}
 (20,1,1) = {"
-wS
+oN
 Qn
 Qn
 Qn
 Aj
 Qn
 We
-ro
-ro
-PA
-is
-ro
+Mm
+Mm
+UP
+hs
+Mm
 Fy
 nf
 Yh
@@ -1988,17 +1766,17 @@ gV
 gV
 "}
 (21,1,1) = {"
-Tq
+LO
 YB
 YB
-Tq
+LO
 YB
 YB
-Tq
+LO
 YB
 YB
-Tq
-Tq
+LO
+LO
 YB
 Fy
 Fy

@@ -38,7 +38,7 @@
 				if(2)
 					process_sound(current_sounds[channel], TRUE, 0, 1-i/32)
 				if(4)
-					process_sound(current_sounds[channel], TRUE, -1+i/32)
+					process_sound(current_sounds[channel], TRUE, -1+i/32, 0)
 				if(8)
 					process_sound(current_sounds[channel], TRUE, 1-i/32, 0)
 
@@ -55,7 +55,7 @@
 					if(2)
 						process_sound(template, TRUE, 0, -1-i/32)
 					if(4)
-						process_sound(template, TRUE, 1+i/32)
+						process_sound(template, TRUE, 1+i/32, 0)
 					if(8)
 						process_sound(template, TRUE, -1-i/32, 0)
 			break
@@ -80,7 +80,7 @@
 	else
 		S.status = SOUND_UPDATE 		
 	
-	var/positional_sound = FALSE
+	var/positional_sound = TRUE
 	var/turf/source_turf
 	if(T.source && !QDELETED(T.source))
 		source_turf = get_turf(T.source)
@@ -89,8 +89,9 @@
 			source_sounds[num2text(T.channel)] = T.source
 			RegisterSignal(T.source, COMSIG_MOVABLE_MOVED, PROC_REF(update_sounds_from_source))
 	else if (T.x && T.y && T.z)
-		positional_sound = TRUE
 		source_turf = locate(T.x, T.y, T.z)
+	else
+		positional_sound = FALSE
 
 	if(positional_sound)
 		var/turf/owner_turf = get_turf(owner.mob)
@@ -236,10 +237,10 @@
 
 	src.owner_environment = new_environment
 
-/datum/soundOutput/proc/on_mob_moved(datum/source, atom/oldloc, direction, Forced)
-	SIGNAL_HANDLER //COMSIG_MOVABLE_MOVED
-	update_sounds()
+/datum/soundOutput/proc/on_mob_moved(atom/source, direction)
+	SIGNAL_HANDLER //COMSIG_CLIENT_MOB_MOVED
 	update_area_environment()
+	update_sounds(source, direction)
 
 /client/proc/adjust_volume_prefs(volume_key, prompt = "", channel_update = 0)
 	volume_preferences[volume_key] = (tgui_input_number(src, prompt, "Volume", volume_preferences[volume_key]*100)) / 100

@@ -77,3 +77,18 @@
   - mapadd: The USCM CBRN ERT will use the USS Kurtz as their homebase.
   kirieee:
   - rscadd: Covert contractors added to the ERT pool
+2024-07-10:
+  Steelpoint:
+  - rscadd: Marine force reconnaissance gear presets have been added for admin use.
+  - rscadd: ERT force reconnaissance have functional squad settings, including a squad
+      colour (green) and a radio channel. These settings do not apply for survivor
+      force reconnaissance marines.
+  - rscadd: A marine force reconnaissance distress signal has been added. Spawning
+      either a 6-man squad, or a 30-man platoon. These are currently for admin use
+      only.
+  - rscadd: A set of customized M3-R armour has been added for force reconnaissance
+      marines. It has comparable defensive values to M3 armour but has the speed slowdown
+      of M3-L armour. Only ERT force reconnaissance marines will spawn with this.
+  hislittlecuzingames:
+  - rscadd: Multiple tools, and welding visor to SO Locker
+  - qol: Adds free bayonet to Staff Officer Locker

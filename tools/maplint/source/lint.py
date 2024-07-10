@@ -9,9 +9,9 @@ def expect(condition, message):
     if not condition:
         raise MapParseError(message)
 
-def fail_content(content: Content, message: str, dm_suggestion = "", path_suggestion = "") -> MaplintError:
+def fail_content(content: Content, message: str, path_suggestion = "", dm_suggestion = "", dm_sub_suggestion = "") -> MaplintError:
     """Create an error linked to a specific content instance"""
-    return MaplintError(message, content.filename, content.starting_line, dm_suggestion, path_suggestion)
+    return MaplintError(message, content.filename, content.starting_line, path_suggestion, dm_suggestion, dm_sub_suggestion)
 
 class TypepathExtra:
     typepath: Typepath
@@ -204,8 +204,8 @@ class Rules:
 
         if self.banned_variables == True:
             if len(identified.var_edits) > 0:
-                path_suggestion, dm_suggestion = self.parse_suggestion(identified)
-                failures.append(fail_content(identified, f"Typepath {identified.path} should not have any variable edits.", dm_suggestion, path_suggestion))
+                path_suggestion, dm_suggestion, dm_sub_suggestion = self.parse_suggestion(identified)
+                failures.append(fail_content(identified, f"Typepath {identified.path} should not have any variable edits.", path_suggestion, dm_suggestion, dm_sub_suggestion))
         else:
             assert isinstance(self.banned_variables, list)
             for banned_variable in self.banned_variables:
@@ -219,8 +219,8 @@ class Rules:
 
     def parse_suggestion(self, identified):
         #figure out what typepath we're going to suggest
-        typepath_suggestion = f"{identified.path}/"
         other_var_count = 0
+        typepath_suggestion = f"{identified.path}/"
         dir_var = ""
         for var_name, var_value in identified.var_edits.items():
             if(var_name == "dir"):
@@ -231,21 +231,24 @@ class Rules:
                     typepath_suggestion += "_"
                 typepath_suggestion += f"{var_value}"
 
+        #cleanup typepath
+        typepath_suggestion = typepath_suggestion.replace(" ", "_").replace("-", "_").replace(",", "_")
+
         #always offer a unique dir as a subtype
+        typepath_dir_suggestion = ""
         if(dir_var):
             if(other_var_count > 0):
-                typepath_suggestion += "/"
-            typepath_suggestion += dir_var
-
-        #cleanup typepath
-        typepath_suggestion = typepath_suggestion.replace(" ", "_").replace("-", "_")
+                typepath_dir_suggestion = f"{typepath_suggestion}/{dir_var}"
+            else:
+                typepath_suggestion += dir_var
 
         #generate suggestion entries
         dm_suggestion = f"{typepath_suggestion}\n"
         path_suggestion = f"{identified.path}{{"
         for var_name, var_value in identified.var_edits.items():
             if(var_name == "dir"):
-                dm_suggestion += f"\t{var_name} = {self.parse_direction(var_value).upper()}\n"
+                if(typepath_dir_suggestion == ""):
+                    dm_suggestion += f"\t{var_name} = {dir_var.upper()}\n"
                 path_suggestion += f"{var_name}={var_value};"
             elif(isinstance(var_value, Filename)):
                 dm_suggestion += f"\t{var_name} = \'{var_value.path}\'\n"
@@ -257,8 +260,18 @@ class Rules:
                 dm_suggestion += f"\t{var_name} = {var_value}\n"
                 path_suggestion += f"{var_name}={var_value};"
         dm_suggestion  += "\n"
-        path_suggestion += f"}} : {typepath_suggestion}\n"
-        return path_suggestion, dm_suggestion
+        if(typepath_dir_suggestion == ""):
+            path_suggestion += f"}} : {typepath_suggestion}\n"
+
+        #generate second dm suggestion if its a dir with other stuff
+        dm_sub_suggestion = ""
+        if(typepath_dir_suggestion != ""):
+            dm_sub_suggestion = dm_suggestion
+            dm_suggestion = f"{typepath_dir_suggestion}\n"
+            dm_suggestion += f"\t{var_name} = {dir_var.upper()}\n\n"
+            path_suggestion += f"}} : {typepath_dir_suggestion}\n"
+
+        return path_suggestion, dm_suggestion, dm_sub_suggestion
 
     def parse_direction(self, number):
         if(number == 1):

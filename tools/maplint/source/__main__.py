@@ -52,16 +52,24 @@ def print_maplint_error(error: MaplintError, github_error_style: bool):
     )
 
 def print_maplint_suggestions(all_suggestions: dict[str, MaplintError], github_error_style: bool):
+    # being a dict, we can already assume MaplintError were de-duped based on path_suggestions
     if(len(all_suggestions) == 0):
         return
 
+    # sort all suggestions so its easier for the user to verify
     suggestions = sorted(all_suggestions.items(), key=lambda x:str(x[1].path_suggestion))
 
+    # combine all suggestions into two strings, de-duping dm suggestions where necessary
     path_suggestions = ""
     dm_suggestions = ""
-    for key, failure in suggestions:
+    dm_sub_suggestions = set()
+    for key, failure in suggestions: # key is path_suggestion, but may as well be explicit
         path_suggestions += failure.path_suggestion
-        dm_suggestions += failure.dm_suggestion
+        if(failure.dm_sub_suggestion not in dm_sub_suggestions):
+            dm_sub_suggestions.add(failure.dm_sub_suggestion)
+            dm_suggestions += failure.dm_sub_suggestion
+        if(failure.dm_suggestion not in dm_sub_suggestions):
+            dm_suggestions += failure.dm_suggestion
 
     if github_error_style:
         print(f"::error title=DMM Linter::UpdatePath suggestions:\n{path_suggestions}")
@@ -124,6 +132,8 @@ def main(args):
 
         for failure in all_failures:
             print_maplint_error(failure, github_error_style)
+
+            # also collect any suggestions
             if(failure.path_suggestion == ""):
                 continue
             if(failure.path_suggestion not in all_suggestions):

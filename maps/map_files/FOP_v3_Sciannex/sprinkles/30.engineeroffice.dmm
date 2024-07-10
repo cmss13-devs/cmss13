@@ -21,7 +21,7 @@
 	},
 /area/template_noop)
 "n" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"

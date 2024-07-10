@@ -2124,9 +2124,7 @@
 /area/lv624/ground/river/east_river)
 "akh" = (
 /obj/item/trash/candy,
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/machinery/door_control{
 	id = "secure_outer_blast";
 	name = "Secure Outer Doors";
@@ -3237,9 +3235,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aru" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -4409,9 +4405,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "aww" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -5125,9 +5119,7 @@
 	},
 /area/lv624/lazarus/robotics)
 "azc" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "vault"
 	},
@@ -5620,9 +5612,7 @@
 	},
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -5633,9 +5623,7 @@
 /obj/item/toy/deck,
 /obj/item/storage/fancy/cigarettes/wypacket,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "bluecorner"
 	},
@@ -6476,9 +6464,7 @@
 	},
 /area/lv624/lazarus/sleep_female)
 "aDE" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "aDF" = (
@@ -6657,9 +6643,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -6754,9 +6738,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "chapel"
@@ -6888,9 +6870,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -7725,9 +7705,7 @@
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -8276,9 +8254,7 @@
 /area/lv624/lazarus/yggdrasil)
 "aKq" = (
 /obj/structure/flora/jungle/vines/light_1,
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/gm/grass/grass2,
 /area/lv624/lazarus/yggdrasil)
 "aKr" = (
@@ -8965,9 +8941,7 @@
 	},
 /area/lv624/lazarus/security)
 "aNR" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "red"
 	},
@@ -9109,9 +9083,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_central_jungle)
 "aOy" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -9733,9 +9705,7 @@
 	},
 /area/lv624/lazarus/kitchen)
 "aQQ" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor{
 	icon_state = "bar"
 	},
@@ -10083,9 +10053,7 @@
 	},
 /area/lv624/ground/caves/south_east_caves)
 "aSq" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -10433,10 +10401,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aTJ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 15
-	},
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor{
 	icon_state = "delivery"
 	},
@@ -10544,9 +10509,7 @@
 /area/lv624/lazarus/kitchen)
 "aUc" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -10759,10 +10722,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aUR" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 200
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aUS" = (
@@ -11498,9 +11458,7 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "aXs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "delivery"
 	},
@@ -14713,7 +14671,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "fqM" = (
-/obj/structure/machinery/power/apc/nocharge,
+/obj/structure/machinery/power/apc/directional/power/south,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning"
@@ -14884,7 +14842,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/engineering)
 "fFZ" = (
-/obj/structure/machinery/power/apc/nocharge,
+/obj/structure/machinery/power/apc/directional/power/south,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -16600,9 +16558,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "jcb" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "purple"
@@ -17040,9 +16996,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -20045,9 +19999,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/barrens/north_east_barrens)
 "pgf" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteblue"
@@ -23943,9 +23895,7 @@
 "whr" = (
 /obj/item/ammo_magazine/smg/mp5,
 /obj/item/ammo_magazine/smg/mp5,
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "whiteblue"

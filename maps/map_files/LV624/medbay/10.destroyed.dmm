@@ -48,9 +48,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "hW" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "white"
 	},

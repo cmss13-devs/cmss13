@@ -1299,11 +1299,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/gamma/residential/researcher)
 "adW" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -3708,11 +3704,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "akY" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -4082,11 +4074,7 @@
 	},
 /area/corsat/gamma/residential)
 "amc" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /obj/structure/closet/crate/trashcart,
 /turf/open/floor/corsat{
 	dir = 4;
@@ -4121,11 +4109,7 @@
 	},
 /area/corsat/sigma/dorms)
 "amg" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -5188,11 +5172,7 @@
 	},
 /area/prison/hangar_storage/research/shuttle)
 "apn" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "red"
@@ -5419,11 +5399,7 @@
 /turf/closed/wall/biodome,
 /area/corsat/gamma/airlock/north)
 "apU" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/flora/pottedplant,
 /turf/open/floor/corsat{
 	dir = 5;
@@ -6120,11 +6096,7 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "asj" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/power/west,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "bluegrey"
@@ -6890,11 +6862,7 @@
 /turf/open/floor/corsat,
 /area/corsat/sigma/southeast/generator)
 "auV" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -6974,11 +6942,7 @@
 	},
 /area/corsat/gamma/airlock/north)
 "ave" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/surface/table/almayer,
 /obj/item/evidencebag,
 /obj/item/evidencebag,
@@ -7004,11 +6968,7 @@
 	},
 /area/corsat/gamma/hangar/checkpoint)
 "avh" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "yellow"
@@ -7096,22 +7056,14 @@
 	},
 /area/corsat/gamma/hangar/security)
 "avx" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "whitebluefull"
 	},
 /area/corsat/gamma/residential/lavatory)
 "avy" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -7191,11 +7143,7 @@
 	},
 /area/corsat/omega/cargo)
 "avM" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "blue"
@@ -7385,11 +7333,7 @@
 	},
 /area/corsat/gamma/medbay/chemistry)
 "awn" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "greenwhitecorner"
@@ -8178,11 +8122,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "ayi" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "redcorner"
@@ -8366,11 +8306,7 @@
 	},
 /area/corsat/sigma/hangar/id)
 "ayG" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /obj/structure/closet/wardrobe/atmospherics_yellow,
 /turf/open/floor/corsat{
 	dir = 8;
@@ -8541,12 +8477,8 @@
 	},
 /area/corsat/sigma/airlock/east)
 "ayX" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
 /obj/structure/flora/pottedplant,
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "bluegrey"
@@ -8880,11 +8812,7 @@
 	},
 /area/corsat/sigma/south)
 "azQ" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /obj/structure/machinery/light,
 /obj/structure/closet/secure_closet{
 	name = "secure evidence locker";
@@ -9093,11 +9021,7 @@
 	},
 /area/corsat/sigma/airlock/south)
 "aAr" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "whitetan"
@@ -9252,11 +9176,7 @@
 	},
 /area/corsat/gamma/medbay/lobby)
 "aAM" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "greenwhitecorner"
@@ -9274,11 +9194,7 @@
 	},
 /area/corsat/gamma/hangar/checkpoint)
 "aAO" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "greenwhite"
@@ -9299,11 +9215,7 @@
 	},
 /area/corsat/sigma/hangar/checkpoint)
 "aAR" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
 	},
@@ -9683,11 +9595,7 @@
 	},
 /area/corsat/sigma/airlock/south)
 "aBZ" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "yellow"
@@ -9982,11 +9890,7 @@
 /turf/open/floor/corsat,
 /area/corsat/sigma/airlock/south)
 "aCL" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -10073,11 +9977,7 @@
 	},
 /area/corsat/sigma/hangar/checkpoint)
 "aCW" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -10213,11 +10113,7 @@
 	},
 /area/corsat/sigma/north)
 "aDo" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "whitebluefull"
@@ -10262,11 +10158,7 @@
 	},
 /area/corsat/sigma/laundry)
 "aDu" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "browncorner"
@@ -10302,11 +10194,7 @@
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
 "aDz" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
 "aDA" = (
@@ -10373,11 +10261,7 @@
 	},
 /area/corsat/theta/airlock/east)
 "aDG" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "whitebluefull"
@@ -10460,11 +10344,7 @@
 	},
 /area/corsat/gamma/hangar/arrivals)
 "aDQ" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "bluecorner"
@@ -10486,11 +10366,7 @@
 	},
 /area/corsat/gamma/hangar/arrivals)
 "aDT" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -11131,11 +11007,7 @@
 	},
 /area/corsat/gamma/foyer)
 "aFL" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "bluegreycorner"
@@ -11365,11 +11237,7 @@
 	},
 /area/corsat/gamma/cargo)
 "aGo" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -11648,11 +11516,7 @@
 	},
 /area/corsat/sigma/southeast/datalab)
 "aGX" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "blue"
@@ -12068,11 +11932,7 @@
 	},
 /area/corsat/gamma/hydroponics)
 "aHR" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -12677,11 +12537,7 @@
 	},
 /area/corsat/sigma/south)
 "aJA" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -12787,11 +12643,7 @@
 	},
 /area/corsat/gamma/cargo)
 "aJQ" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -13307,11 +13159,7 @@
 	},
 /area/corsat/omega/control)
 "aLw" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "red"
@@ -13346,11 +13194,7 @@
 	},
 /area/corsat/sigma/southeast/dataoffice)
 "aLD" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -13628,11 +13472,7 @@
 	},
 /area/corsat/sigma/south/security)
 "aMs" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/closet/wardrobe/medic_white,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -13677,11 +13517,7 @@
 /area/corsat/omega/airlocknorth/id)
 "aMx" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/machinery/computer/station_alert,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -13921,11 +13757,7 @@
 	},
 /area/corsat/sigma/southeast/dataoffice)
 "aNe" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "bluegrey"
@@ -13956,11 +13788,7 @@
 "aNj" = (
 /obj/structure/surface/rack,
 /obj/item/evidencebag,
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "red"
@@ -14080,11 +13908,7 @@
 	},
 /area/corsat/sigma/south/offices)
 "aNB" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -14303,11 +14127,7 @@
 	},
 /area/corsat/sigma/south)
 "aOh" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/power/east,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "red"
@@ -14610,11 +14430,7 @@
 	},
 /area/corsat/gamma/hangar/office)
 "aOY" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "bluegrey"
@@ -14653,10 +14469,7 @@
 	},
 /area/corsat/emergency_access)
 "aPd" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -14680,11 +14493,7 @@
 	},
 /area/corsat/gamma/security)
 "aPh" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -14818,11 +14627,7 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "aPz" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -15051,11 +14856,7 @@
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aQh" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "red"
@@ -17589,11 +17390,7 @@
 	},
 /area/corsat/sigma/south/complex)
 "aWC" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
 	},
@@ -18656,11 +18453,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "aZo" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -19336,11 +19129,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "baL" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/corsat{
 	icon_state = "omega"
 	},
@@ -22117,11 +21906,7 @@
 /area/corsat/omega/hallways)
 "biZ" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -22464,11 +22249,7 @@
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bjQ" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/surface/table/almayer,
 /obj/item/device/camera,
 /turf/open/floor/corsat{
@@ -23146,22 +22927,14 @@
 /turf/open/floor/corsat,
 /area/corsat/gamma/hangar/cargo)
 "blO" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
 	},
 /area/corsat/gamma/hangar/cargo)
 "blP" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "blue"
@@ -23219,11 +22992,7 @@
 	},
 /area/corsat/gamma/hangar/monorail/control)
 "bma" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "yellow"
@@ -23585,11 +23354,7 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/gamma/engineering/core)
 "bnm" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "browncorner"
@@ -23964,11 +23729,7 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/omega/hangar)
 "boK" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -25800,11 +25561,7 @@
 	},
 /area/corsat/gamma/hangar)
 "buL" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/closet/wardrobe/virology_white,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -26357,11 +26114,7 @@
 	},
 /area/corsat/sigma/south/engineering)
 "bww" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -26764,11 +26517,7 @@
 	},
 /area/corsat/sigma/south/engineering)
 "bxN" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/surface/rack,
 /obj/item/powerloader_clamp,
 /turf/open/floor/corsat{
@@ -27356,11 +27105,7 @@
 	},
 /area/corsat/omega/complex)
 "bzl" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "purplewhite"
@@ -29239,11 +28984,7 @@
 	},
 /area/corsat/gamma/administration)
 "bED" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
@@ -29826,10 +29567,7 @@
 	},
 /area/corsat/gamma/residential/maint)
 "bGp" = (
-/obj/structure/machinery/power/apc/hyper{
-	pixel_y = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -29843,11 +29581,7 @@
 	},
 /area/corsat/gamma/hangar/monorail/control)
 "bGr" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /obj/structure/closet/jcloset,
 /turf/open/floor/corsat{
 	dir = 8;
@@ -29872,11 +29606,7 @@
 	},
 /area/corsat/gamma/hangar/monorail/control)
 "bGu" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "darkgreen"
@@ -32097,11 +31827,7 @@
 	},
 /area/corsat/gamma/residential/maint)
 "bOH" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin,
 /turf/open/floor/corsat{
@@ -32480,11 +32206,7 @@
 	},
 /area/corsat/sigma/cargo)
 "bPM" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -32507,11 +32229,7 @@
 	},
 /area/corsat/gamma/engineering/atmos)
 "bPR" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "yellowcorner"
@@ -32604,11 +32322,7 @@
 	},
 /area/corsat/sigma/north)
 "bQe" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 15
@@ -32760,11 +32474,7 @@
 /turf/open/floor/plating,
 /area/corsat/inaccessible)
 "bQw" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/surface/rack,
 /obj/item/device/lightreplacer,
 /obj/item/storage/box/lights,
@@ -33358,11 +33068,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "bSr" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "red"
@@ -33675,11 +33381,7 @@
 	},
 /area/corsat/sigma/south/complex)
 "bTO" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /obj/structure/closet/l3closet/scientist,
 /turf/open/floor/corsat{
 	dir = 4;
@@ -34067,11 +33769,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "bVs" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /obj/structure/closet/wardrobe/atmospherics_yellow,
 /turf/open/floor/corsat{
 	dir = 4;
@@ -34087,11 +33785,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "bVw" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/closet/wardrobe/atmospherics_yellow,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -35480,11 +35174,7 @@
 	},
 /area/corsat/gamma/biodome/toxins)
 "bZK" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /obj/structure/closet/wardrobe/toxins_white,
 /turf/open/floor/corsat{
 	dir = 8;
@@ -35536,22 +35226,14 @@
 	},
 /area/corsat/theta/biodome/complex)
 "cah" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhitecorner"
 	},
 /area/corsat/theta/biodome/hydrowest)
 "cai" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "purplewhitecorner"
@@ -35621,22 +35303,14 @@
 	},
 /area/corsat/theta/biodome/hydroeast)
 "cau" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "purplewhite"
 	},
 /area/corsat/theta/biodome/complex)
 "caw" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -36835,11 +36509,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "cXt" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
@@ -37752,11 +37422,7 @@
 	},
 /area/corsat/gamma/foyer)
 "dEe" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat,
 /area/corsat/gamma/sigmaremote)
 "dET" = (
@@ -38554,11 +38220,7 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "eiQ" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "darkgreen"
@@ -39868,11 +39530,7 @@
 	},
 /area/corsat/gamma/residential/showers)
 "fgN" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -40903,11 +40561,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "fXE" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -42782,11 +42436,7 @@
 /turf/open/floor/corsat,
 /area/corsat/omega/complex)
 "hlC" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "redcorner"
@@ -44238,11 +43888,7 @@
 /area/corsat/theta/biodome)
 "iiS" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/corsat{
 	dir = 9;
@@ -45389,11 +45035,7 @@
 	},
 /area/corsat/theta/biodome/complex)
 "jee" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -45915,11 +45557,7 @@
 /area/corsat/sigma/hangar/security)
 "jAz" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "bluegrey"
@@ -45992,11 +45630,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "jFF" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -47329,11 +46963,7 @@
 	},
 /area/corsat/gamma/biodome/virology)
 "kKs" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/power/east,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -47737,10 +47367,7 @@
 	},
 /area/corsat/gamma/foyer)
 "kZy" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "red"
@@ -50662,11 +50289,7 @@
 	},
 /area/corsat/sigma/biodome)
 "ndF" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "whitebluefull"
@@ -52234,11 +51857,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/corsat/inaccessible)
 "ome" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "whitetan"
@@ -55497,11 +55116,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "qLo" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -56374,11 +55989,7 @@
 	},
 /area/corsat/gamma/sigmaremote)
 "rvC" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "redcorner"
@@ -58843,11 +58454,7 @@
 	},
 /area/corsat/gamma/freezer)
 "thv" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "whitebluefull"
@@ -59006,11 +58613,7 @@
 	},
 /area/corsat/gamma/medbay)
 "tpA" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigarettes/lucky_strikes,
 /turf/open/floor/corsat{
@@ -59095,11 +58698,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "ttJ" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -59155,11 +58754,7 @@
 	},
 /area/corsat/theta/airlock/control)
 "tvO" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "greencorner"
@@ -60329,11 +59924,7 @@
 	},
 /area/corsat/gamma/engineering/core)
 "upN" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -61514,11 +61105,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "vhS" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -64389,11 +63976,7 @@
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "xtO" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -64764,11 +64347,7 @@
 	},
 /area/corsat/sigma/south)
 "xJB" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "red"

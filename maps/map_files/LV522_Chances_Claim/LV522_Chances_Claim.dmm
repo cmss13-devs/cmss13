@@ -381,9 +381,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms/glass)
 "akk" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -1611,9 +1609,7 @@
 /area/lv522/indoors/a_block/security/glass)
 "aUN" = (
 /obj/item/stack/sheet/wood/large_stack,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2"
@@ -1972,9 +1968,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "bbL" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -5841,9 +5835,7 @@
 	},
 /area/lv522/indoors/c_block/casino)
 "cTf" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -7196,9 +7188,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 4;
@@ -7537,9 +7527,7 @@
 	pixel_y = 5
 	},
 /obj/item/tool/pen/blue/clicky,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -8057,9 +8045,7 @@
 /area/lv522/atmos/east_reactor/east)
 "dLf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -8543,9 +8529,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
 "dVU" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -9837,9 +9821,7 @@
 /area/lv522/landing_zone_1/tunnel/far)
 "evg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/weak{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -10814,9 +10796,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -11678,9 +11658,7 @@
 "fiG" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -12052,9 +12030,7 @@
 	},
 /area/lv522/atmos/west_reactor)
 "fsj" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -14157,9 +14133,7 @@
 /area/lv522/indoors/b_block/bar)
 "ghw" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2"
 	},
@@ -14563,9 +14537,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "gqf" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -14633,9 +14605,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/executive)
 "grZ" = (
@@ -14805,9 +14775,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "guZ" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "gvk" = (
@@ -15147,9 +15115,7 @@
 	pixel_x = 3;
 	pixel_y = 7
 	},
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
@@ -15580,9 +15546,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
 "gLd" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/organic/grass,
 /area/lv522/indoors/a_block/garden)
 "gLg" = (
@@ -16326,9 +16290,7 @@
 	},
 /area/lv522/indoors/a_block/dorm_north)
 "gZJ" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked"
@@ -17113,9 +17075,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -18700,9 +18660,7 @@
 	},
 /area/lv522/outdoors/nw_rockies)
 "hQE" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -20418,9 +20376,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "izT" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/mouse,
 /turf/open/floor/strata{
@@ -22300,9 +22256,7 @@
 /area/lv522/atmos/cargo_intake)
 "jjq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -23331,9 +23285,7 @@
 /area/lv522/indoors/a_block/fitness/glass)
 "jBu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -24434,9 +24386,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_2)
 "jVz" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -24595,9 +24545,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/engineering)
 "jYE" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -26072,9 +26020,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/garage)
 "kxz" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2"
 	},
@@ -26227,9 +26173,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "kAn" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -26859,9 +26803,7 @@
 /obj/structure/platform/stair_cut{
 	icon_state = "platform_stair_alt"
 	},
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/indoors/a_block/bridges/dorms_fitness)
 "kMr" = (
@@ -27634,9 +27576,7 @@
 /area/lv522/indoors/a_block/kitchen/damage)
 "lag" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -28902,9 +28842,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "lAk" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 1;
@@ -29473,9 +29411,7 @@
 /area/lv522/atmos/reactor_garage)
 "lLL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -33312,7 +33248,7 @@
 	},
 /area/lv522/outdoors/nw_rockies)
 "nky" = (
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/directional/power/south,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -34302,9 +34238,7 @@
 /area/lv522/landing_zone_1)
 "nFt" = (
 /obj/structure/pipes/vents/pump,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -35419,9 +35353,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "nYv" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "blue"
@@ -36031,9 +35963,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "ojw" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile2"
@@ -36206,9 +36136,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel/far)
 "ooG" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile2"
 	},
@@ -36563,9 +36491,7 @@
 	current_rounds = 0
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "ouI" = (
@@ -37249,9 +37175,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/mining)
 "oKm" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2"
@@ -38455,9 +38379,7 @@
 	pixel_x = 2;
 	pixel_y = 6
 	},
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2"
 	},
@@ -40076,9 +39998,7 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/bridges)
 "pQG" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 4;
@@ -40388,9 +40308,7 @@
 	},
 /area/lv522/indoors/a_block/security)
 "pWx" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -41225,9 +41143,7 @@
 	pixel_y = 10
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2"
 	},
@@ -41616,9 +41532,7 @@
 /obj/item/toy/dice,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -42056,9 +41970,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "qCd" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -47415,9 +47327,7 @@
 	},
 /area/lv522/indoors/a_block/dorms/glass)
 "syy" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2"
@@ -52456,9 +52366,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "uqe" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "uqo" = (
@@ -52641,9 +52549,7 @@
 	},
 /area/lv522/atmos/way_in_command_centre)
 "utR" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/science,
@@ -54170,9 +54076,7 @@
 	dir = 8
 	},
 /obj/item/ashtray/bronze,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2"
 	},
@@ -55045,9 +54949,7 @@
 	},
 /area/lv522/indoors/a_block/medical/glass)
 "vnq" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -55415,9 +55317,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/nw_rockies)
 "vtl" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -56197,9 +56097,7 @@
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/decal/cleanable/cobweb,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -56790,9 +56688,7 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/central_streets)
 "vSO" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -59485,9 +59381,7 @@
 /turf/open/floor/plating,
 /area/lv522/oob)
 "wVf" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/west_reactor)
 "wVo" = (
@@ -59688,9 +59582,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -62391,9 +62283,7 @@
 "yct" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2"
 	},

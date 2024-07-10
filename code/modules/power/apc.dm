@@ -56,18 +56,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 
 //NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
-/obj/structure/machinery/power/apc/weak
-	cell_type = /obj/item/cell
-
-/obj/structure/machinery/power/apc/high
-	cell_type = /obj/item/cell/high
-
-/obj/structure/machinery/power/apc/super
-	cell_type = /obj/item/cell/super
-
-/obj/structure/machinery/power/apc/hyper
-	cell_type = /obj/item/cell/hyper
-
 /obj/structure/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
@@ -1367,10 +1355,75 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/almayer
 	cell_type = /obj/item/cell/high
 
+/obj/structure/machinery/power/apc/almayer/directional/north
+	pixel_y = 24
+	dir = 1
+
+/obj/structure/machinery/power/apc/almayer/directional/south
+	pixel_y = -24
+
+/obj/structure/machinery/power/apc/almayer/directional/east
+	pixel_x = 24
+	dir = 4
+
+/obj/structure/machinery/power/apc/almayer/directional/west
+	pixel_x = -24
+	dir = 8
+
 /obj/structure/machinery/power/apc/almayer/hardened
 	name = "hardened area power controller"
 	desc = "A control terminal for the area electrical systems. This one is hardened against sudden power fluctuations caused by electrical grid damage."
 	crash_break_probability = 0
+
+/obj/structure/machinery/power/apc/almayer/hardened/directional/north
+	pixel_y = 24
+	dir = 1
+
+/obj/structure/machinery/power/apc/almayer/hardened/directional/south
+	pixel_y = -24
+
+/obj/structure/machinery/power/apc/almayer/hardened/directional/east
+	pixel_x = 24
+	dir = 4
+
+/obj/structure/machinery/power/apc/almayer/hardened/directional/west
+	pixel_x = -24
+	dir = 8
+
+//------ Directional APCs ------//
+/obj/structure/machinery/power/apc/directional/no_power
+	start_charge = 0
+
+/obj/structure/machinery/power/apc/directional/no_power/north
+	pixel_y = 24
+	dir = 1
+
+/obj/structure/machinery/power/apc/directional/no_power/south
+	pixel_y = -24
+
+/obj/structure/machinery/power/apc/directional/no_power/east
+	pixel_x = 24
+	dir = 4
+
+/obj/structure/machinery/power/apc/directional/no_power/west
+	pixel_x = -24
+	dir = 8
+
+// Powered APCs with directions
+/obj/structure/machinery/power/apc/directional/power/north
+	pixel_y = 24
+	dir = 1
+
+/obj/structure/machinery/power/apc/directional/power/south
+	pixel_y = -24
+
+/obj/structure/machinery/power/apc/directional/power/east
+	pixel_x = 24
+	dir = 4
+
+/obj/structure/machinery/power/apc/directional/power/west
+	pixel_x = -24
+	dir = 8
 
 #undef APC_UPDATE_ICON_COOLDOWN
 

@@ -1174,9 +1174,7 @@
 /turf/open/gm/grass/gbcorner/north_west,
 /area/whiskey_outpost/outside/lane/one_south)
 "eq" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/almayer/directional/north,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -1199,9 +1197,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "ev" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/almayer/directional/north,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "ex" = (
@@ -1228,9 +1224,7 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "eF" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/almayer/directional/north,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "eG" = (
@@ -2284,9 +2278,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "im" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/almayer/directional/east,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitegreen"
@@ -3497,9 +3489,7 @@
 	},
 /area/whiskey_outpost/outside/lane/four_north)
 "mC" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/almayer/directional/north,
 /turf/open/floor/prison,
 /area/whiskey_outpost)
 "mD" = (
@@ -4017,9 +4007,7 @@
 	},
 /area/whiskey_outpost/inside/supply)
 "ow" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/almayer/directional/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -4588,9 +4576,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "qC" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/almayer/directional/north,
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/prison{
 	dir = 10;
@@ -4740,9 +4726,7 @@
 	},
 /area/whiskey_outpost/outside/mortar_pit)
 "qW" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/almayer/directional/east,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/tunnel)
 "qX" = (
@@ -4759,9 +4743,7 @@
 /turf/open/gm/grass/grassbeach/west,
 /area/whiskey_outpost/outside/lane/one_south)
 "ra" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/almayer/directional/east,
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/bunker)
 "rb" = (
@@ -5834,9 +5816,7 @@
 	},
 /area/whiskey_outpost/inside/supply)
 "uP" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/almayer/directional/north,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -7076,7 +7056,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/whiskey_outpost/outside/north)
 "zl" = (
-/obj/structure/machinery/power/apc/almayer,
+/obj/structure/machinery/power/apc/almayer/directional/south,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -11600,9 +11580,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/outside/lane/two_south)
 "SG" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/almayer/directional/north,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -11847,7 +11825,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/hypospray,
 /obj/item/reagent_container/hypospray,
-/obj/structure/machinery/power/apc/almayer,
+/obj/structure/machinery/power/apc/almayer/directional/south,
 /turf/open/floor{
 	icon_state = "whitegreen"
 	},
@@ -12181,9 +12159,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/three_south)
 "UX" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/almayer/directional/north,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -12959,9 +12935,7 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/three_south)
 "XV" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/almayer/directional/north,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -13009,9 +12983,7 @@
 	},
 /area/whiskey_outpost/outside/north)
 "Yj" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/almayer/directional/north,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"

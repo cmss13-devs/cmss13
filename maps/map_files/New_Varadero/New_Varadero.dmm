@@ -933,19 +933,13 @@
 /area/varadero/exterior/lz2_near)
 "aCY" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/north)
 "aDu" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -2258,11 +2252,7 @@
 	},
 /area/varadero/interior/hall_SE)
 "bvE" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -2659,9 +2649,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -2985,9 +2973,7 @@
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/records)
 "bSD" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -3757,11 +3743,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
 "crC" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -3835,11 +3817,7 @@
 	},
 /area/varadero/interior/electrical)
 "cud" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellow"
@@ -4129,10 +4107,7 @@
 	},
 /area/varadero/interior/library)
 "cGd" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/shiva{
 	icon_state = "green"
 	},
@@ -4989,11 +4964,7 @@
 	},
 /area/varadero/interior_protected/maintenance/south)
 "diK" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /obj/item/stack/sheet/wood,
 /obj/item/tool/kitchen/knife/butcher{
 	pixel_x = -7;
@@ -8309,11 +8280,7 @@
 	},
 /area/varadero/interior/hall_NW)
 "fpe" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -8986,11 +8953,7 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "fPq" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -9362,11 +9325,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/pontoon_beach)
 "gan" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "green"
@@ -9762,9 +9721,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "gkw" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -10975,11 +10932,7 @@
 	},
 /area/varadero/interior/hall_N)
 "hcz" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -11024,11 +10977,7 @@
 /area/varadero/interior/mess)
 "heu" = (
 /obj/item/device/flashlight/lamp/tripod,
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "hfn" = (
@@ -13930,11 +13879,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "iZT" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -13995,11 +13940,7 @@
 	},
 /area/varadero/interior/technical_storage)
 "jcB" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva{
 	dir = 1;
@@ -14257,11 +14198,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "jjl" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/filingcabinet{
 	density = 0;
 	icon_state = "chestdrawer";
@@ -14921,11 +14858,7 @@
 	},
 /area/varadero/interior/maintenance/research)
 "jGz" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -16059,11 +15992,7 @@
 	},
 /area/varadero/interior/hall_SE)
 "kuE" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "kuO" = (
@@ -17143,11 +17072,7 @@
 /turf/open/gm/coast/beachcorner/north_east,
 /area/varadero/interior/caves/east)
 "ldJ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/wood{
 	icon_state = "wood-broken3"
 	},
@@ -20522,11 +20447,7 @@
 	},
 /area/varadero/interior/maintenance/research)
 "neU" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -21023,11 +20944,7 @@
 	},
 /area/varadero/interior/technical_storage)
 "nBl" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
@@ -21568,11 +21485,7 @@
 	},
 /area/varadero/interior/maintenance/north)
 "nRP" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/item/cell/high,
 /turf/open/floor/shiva{
 	dir = 1;
@@ -22167,11 +22080,7 @@
 	},
 /area/varadero/interior/maintenance/security)
 "ola" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -23210,11 +23119,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
 "oWr" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "oWs" = (
@@ -25909,11 +25814,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "qBR" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "qBU" = (
@@ -26497,11 +26398,7 @@
 	},
 /area/varadero/interior/comms3)
 "qSJ" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -28083,11 +27980,7 @@
 	},
 /area/varadero/exterior/lz1_near)
 "rSI" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/filingcabinet{
 	density = 0;
 	icon_state = "chestdrawer";
@@ -29378,11 +29271,7 @@
 	},
 /area/varadero/interior/research)
 "sDQ" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "wred"
@@ -31789,11 +31678,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
 "umA" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "red"
@@ -31803,11 +31688,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -32048,10 +31929,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "uuv" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -35735,11 +35613,7 @@
 /area/varadero/interior/cargo)
 "wGs" = (
 /obj/effect/landmark/hunter_primary,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"

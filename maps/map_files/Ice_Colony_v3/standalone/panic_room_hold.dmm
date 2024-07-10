@@ -381,10 +381,7 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "mC" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -798,10 +795,7 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "wY" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
 "xa" = (

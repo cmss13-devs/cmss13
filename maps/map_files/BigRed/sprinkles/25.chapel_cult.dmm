@@ -418,7 +418,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "bm" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},

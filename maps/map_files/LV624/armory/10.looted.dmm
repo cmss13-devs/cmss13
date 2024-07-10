@@ -135,9 +135,7 @@
 	},
 /area/lv624/lazarus/security)
 "u" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor{
 	icon_state = "cult"
 	},

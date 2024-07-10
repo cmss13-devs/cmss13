@@ -971,11 +971,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "adi" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "adj" = (
@@ -1278,11 +1274,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "aei" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "blue"
@@ -1426,11 +1418,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
 "aeD" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "aeE" = (
@@ -3336,11 +3324,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "akm" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkpurple2"
@@ -3912,11 +3896,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alS" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -4264,11 +4244,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/telecomm/lz1_valley)
 "amR" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "amS" = (
@@ -4310,11 +4286,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "amX" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkpurple2"
@@ -4455,11 +4427,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "anr" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -4681,11 +4649,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "anY" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -5329,11 +5293,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "aqe" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkred2"
@@ -5752,11 +5712,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "arl" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkredcorners2"
@@ -5805,11 +5761,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "arr" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkred2"
@@ -5921,10 +5873,7 @@
 /area/desert_dam/interior/dam_interior/garage)
 "arG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellow2"
@@ -6564,11 +6513,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "atG" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -6595,11 +6540,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "atK" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "red"
@@ -6696,11 +6637,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
 "atZ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
 "aua" = (
@@ -6730,11 +6667,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "aue" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "red"
@@ -6852,11 +6785,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "auw" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "darkpurple2"
@@ -6979,11 +6908,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auR" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteblue"
@@ -7403,11 +7328,7 @@
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "awb" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -8402,11 +8323,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "azd" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"
@@ -9899,11 +9816,7 @@
 	},
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDR" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/asphalt/cement{
 	icon_state = "cement15"
 	},
@@ -10139,11 +10052,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aEC" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -12214,11 +12123,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_one)
 "aLb" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -12777,11 +12682,7 @@
 	},
 /area/desert_dam/building/substation/northeast)
 "aMB" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellow2"
@@ -13951,11 +13852,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_one)
 "aQk" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrown2"
@@ -14427,11 +14324,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aRO" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached18"
 	},
@@ -15054,11 +14947,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "aTO" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellow2"
@@ -15595,11 +15484,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "aVQ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "aVR" = (
@@ -15910,11 +15795,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "aWQ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/office)
 "aWR" = (
@@ -16785,11 +16666,7 @@
 	},
 /area/desert_dam/building/administration/hallway)
 "aZB" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"
@@ -16907,11 +16784,7 @@
 	},
 /area/desert_dam/building/administration/archives)
 "aZX" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "dark2"
 	},
@@ -17030,11 +16903,7 @@
 	},
 /area/desert_dam/building/administration/lobby)
 "bar" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkred2"
@@ -17199,11 +17068,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "baN" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/surface/table,
 /obj/item/storage/donut_box,
 /turf/open/floor/prison,
@@ -17928,11 +17793,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
 "bdm" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
 "bdn" = (
@@ -18409,11 +18270,7 @@
 	},
 /area/desert_dam/building/water_treatment_two/hallway)
 "beS" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/purification)
 "beT" = (
@@ -19034,11 +18891,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_north)
 "bgV" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
 "bgW" = (
@@ -19124,11 +18977,7 @@
 	},
 /area/desert_dam/exterior/valley/north_valley_dam)
 "bhn" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /obj/structure/sink{
 	dir = 4;
 	pixel_x = 11
@@ -19258,11 +19107,7 @@
 	},
 /area/desert_dam/exterior/valley/north_valley_dam)
 "bhI" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/lobby)
 "bhL" = (
@@ -20185,11 +20030,7 @@
 	},
 /area/desert_dam/building/security/lobby)
 "blb" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkbrowncorners2"
@@ -20572,11 +20413,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -20808,11 +20645,7 @@
 	},
 /area/desert_dam/building/security/interrogation)
 "bmW" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
 "bmX" = (
@@ -20826,11 +20659,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bnb" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/marshals_office)
 "bnc" = (
@@ -21062,11 +20891,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bnP" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"
@@ -21250,11 +21075,7 @@
 	},
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "box" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -21473,11 +21294,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bph" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "redcorner"
@@ -22234,11 +22051,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "brE" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 10
 	},
@@ -22726,11 +22539,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "btr" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrown2"
@@ -22968,11 +22777,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bue" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkred2"
@@ -23629,11 +23434,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bwl" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellow2"
@@ -23769,11 +23570,7 @@
 	},
 /area/desert_dam/building/security/interrogation)
 "bwM" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -24012,11 +23809,7 @@
 	},
 /area/desert_dam/building/administration/hallway)
 "bxz" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -24452,11 +24245,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bzj" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 10
 	},
@@ -24635,11 +24424,7 @@
 	},
 /area/desert_dam/building/administration/overseer_office)
 "bzK" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -24748,11 +24533,7 @@
 	},
 /area/desert_dam/building/security/evidence)
 "bAa" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkred2"
@@ -24788,11 +24569,7 @@
 	},
 /area/desert_dam/building/administration/hallway)
 "bAp" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -25039,11 +24816,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bBk" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/overseer_office)
@@ -25097,11 +24870,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bBv" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -25263,11 +25032,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bCm" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
@@ -25300,11 +25065,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bCq" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1
 	},
@@ -25623,21 +25384,13 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bDu" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "neutral"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bDw" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellowcorners2"
@@ -25668,11 +25421,7 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "bDB" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "green"
@@ -26226,11 +25975,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bFl" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkred2"
@@ -26659,11 +26404,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/southern_hallway)
 "bGG" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/courtroom)
 "bGH" = (
@@ -26861,11 +26602,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "bHi" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -27173,11 +26910,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "bIm" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "darkyellow2"
@@ -29043,11 +28776,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bOK" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkred2"
@@ -29163,11 +28892,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bPg" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellow2"
@@ -29376,11 +29101,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bPR" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -29484,11 +29205,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "darkyellow2"
@@ -29611,11 +29328,7 @@
 	},
 /area/desert_dam/building/security/armory)
 "bQy" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowcorners2"
@@ -29721,11 +29434,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "bQR" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
@@ -29778,11 +29487,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bQZ" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -30229,11 +29934,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bSs" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkyellowcorners2"
@@ -31107,11 +30808,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "bVn" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -31214,11 +30911,7 @@
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
 "bVI" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkred2"
@@ -31946,11 +31639,7 @@
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "bXT" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -32405,11 +32094,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "bZg" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "whiteyellow"
@@ -32648,11 +32333,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bZL" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/execution_chamber)
 "bZM" = (
@@ -33748,11 +33429,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "cdd" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkred2"
@@ -33832,11 +33509,7 @@
 	},
 /area/desert_dam/building/bar/bar)
 "cdr" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -35611,11 +35284,7 @@
 	},
 /area/desert_dam/building/medical/break_room)
 "cjE" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/break_room)
 "cjF" = (
@@ -35651,11 +35320,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cjP" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -35755,11 +35420,7 @@
 	},
 /area/desert_dam/building/medical/morgue)
 "ckf" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2"
@@ -35920,11 +35581,7 @@
 /turf/closed/wall,
 /area/desert_dam/building/medical/chemistry)
 "ckE" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -37296,11 +36953,7 @@
 	},
 /area/desert_dam/building/warehouse/warehouse)
 "cpg" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkbrowncorners2"
@@ -37491,11 +37144,7 @@
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "cpN" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -38013,11 +37662,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "crG" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -38218,11 +37863,7 @@
 	},
 /area/desert_dam/exterior/telecomm/lz2_tcomms)
 "csp" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -38730,11 +38371,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/device/healthanalyzer,
 /obj/item/device/healthanalyzer,
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitegreen"
@@ -39133,11 +38770,7 @@
 	},
 /area/desert_dam/building/medical/surgury_observation)
 "cvd" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2"
@@ -39787,11 +39420,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "cxb" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "cxc" = (
@@ -40908,11 +40537,7 @@
 	},
 /area/desert_dam/building/medical/surgery_room_two)
 "cAv" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -40966,11 +40591,7 @@
 /turf/closed/wall,
 /area/desert_dam/building/medical/office2)
 "cAH" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-j2"
@@ -41221,11 +40842,7 @@
 	},
 /area/desert_dam/building/medical/primary_storage)
 "cBm" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "whitered"
@@ -41249,11 +40866,7 @@
 	},
 /area/desert_dam/building/medical/surgery_room_one)
 "cBq" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "whitered"
@@ -41632,11 +41245,7 @@
 /area/desert_dam/building/medical/office1)
 "cCC" = (
 /obj/structure/bed,
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitered"
@@ -41644,11 +41253,7 @@
 /area/desert_dam/building/medical/office1)
 "cCE" = (
 /obj/structure/bed,
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitered"
@@ -42246,11 +41851,7 @@
 /area/desert_dam/building/medical/treatment_room)
 "cEA" = (
 /obj/structure/machinery/iv_drip,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "whitegreen"
@@ -42305,11 +41906,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "cEI" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -42456,11 +42053,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "docstriping"
 	},
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -43981,11 +43574,7 @@
 /turf/closed/wall,
 /area/desert_dam/building/medical/virology_isolation)
 "cJH" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/east_wing_hallway)
 "cJI" = (
@@ -44291,11 +43880,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "cKI" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitegreen"
@@ -45248,11 +44833,7 @@
 	},
 /area/desert_dam/building/church)
 "cOe" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -45422,10 +45003,7 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "cOJ" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
 	},
@@ -45711,11 +45289,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cPH" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "darkyellow2"
@@ -46078,11 +45652,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/landing_pad_one)
 "cQN" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white"
@@ -46480,11 +46050,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "cSh" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -46914,11 +46480,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "cTM" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white"
@@ -47889,11 +47451,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/prison{
@@ -48564,11 +48122,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbF" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/machinery/microwave,
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
@@ -48778,10 +48332,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "dcq" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "dcs" = (
@@ -48824,11 +48375,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dcL" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison{
 	dir = 4;
@@ -49017,11 +48564,7 @@
 	},
 /area/desert_dam/building/cafeteria/cold_room)
 "ddu" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -49173,11 +48716,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "ddZ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "dea" = (
@@ -49514,11 +49053,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_south)
 "dfe" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dfh" = (
@@ -49607,11 +49142,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "dfv" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "dfw" = (
@@ -50565,11 +50096,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "dld" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 1;
@@ -51099,11 +50626,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dqu" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
@@ -51133,11 +50656,7 @@
 /area/desert_dam/building/water_treatment_one/lobby)
 "dqS" = (
 /obj/structure/bed/chair,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
 "dqT" = (
@@ -51391,11 +50910,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
 "dtt" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "dtu" = (
@@ -51531,11 +51046,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "duu" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/hallway)
 "duw" = (
@@ -51920,10 +51431,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "dxd" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/purification)
 "dxe" = (
@@ -52090,11 +51598,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dyi" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dyj" = (
@@ -52256,11 +51760,7 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/filtration_a)
 "dzi" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -52609,11 +52109,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dBj" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteyellowcorner"
@@ -53259,11 +52755,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "dEu" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "green"
@@ -53374,11 +52866,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/dorms/restroom)
 "dFj" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -53917,11 +53405,7 @@
 /area/desert_dam/building/warehouse/loading)
 "dHQ" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -54212,11 +53696,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dIR" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -55107,11 +54587,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dMY" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 150
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 1;
@@ -57803,11 +57279,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dVN" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
@@ -60983,11 +60455,7 @@
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
 "gRC" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 31;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/power/east,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "gTD" = (
@@ -61838,11 +61306,7 @@
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
 "jxq" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/power/west,
 /turf/open/floor{
 	icon_state = "delivery"
 	},
@@ -62808,11 +62272,7 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "mKZ" = (
 /obj/structure/flora/pottedplant,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -63461,11 +62921,7 @@
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "oYp" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/power/west,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -63994,11 +63450,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/landing_pad_one)
 "qJI" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz1_xenoflora)
 "qJU" = (
@@ -64367,11 +63819,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/power/east,
 /turf/open/floor{
 	icon_state = "asteroidplating"
 	},
@@ -66177,11 +65625,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "xkK" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 31;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/power/east,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_storage)
 "xls" = (

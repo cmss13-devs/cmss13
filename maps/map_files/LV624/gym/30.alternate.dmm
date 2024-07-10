@@ -658,9 +658,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
 "Wy" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"

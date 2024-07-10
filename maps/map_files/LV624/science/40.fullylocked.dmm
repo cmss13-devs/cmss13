@@ -450,9 +450,7 @@
 	},
 /area/lv624/lazarus/research)
 "Fm" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"

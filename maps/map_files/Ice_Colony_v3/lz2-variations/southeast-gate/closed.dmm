@@ -32,9 +32,7 @@
 	},
 /area/shiva/exterior/lz2_fortress)
 "m" = (
-/obj/structure/machinery/power/apc{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/plating,
 /area/shiva/exterior/cp_lz2)
 "o" = (
@@ -71,9 +69,7 @@
 	},
 /area/shiva/exterior/lz2_fortress)
 "v" = (
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/shiva{
 	dir = 1
 	},

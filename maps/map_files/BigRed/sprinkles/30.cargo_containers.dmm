@@ -384,9 +384,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "bk" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bm" = (

@@ -14,16 +14,14 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/servers)
 "aaq" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/organic/grass{
 	desc = "It'll get in your shoes no matter what you do.";
 	name = "astroturf"
 	},
 /area/fiorina/tumor/fiberbush)
 "aar" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/almayer,
 /area/fiorina/tumor/ship)
 "aas" = (
@@ -31,9 +29,7 @@
 	dir = 1;
 	pixel_y = 21
 	},
-/obj/structure/machinery/power/apc{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "aaR" = (
@@ -671,9 +667,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "ast" = (
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/directional/power/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
 "asz" = (
@@ -863,9 +857,7 @@
 	},
 /area/fiorina/station/medbay)
 "ayG" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "yellow"
@@ -8263,9 +8255,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/security/wardens)
 "eZi" = (
-/obj/structure/machinery/power/apc{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/power/west,
 /turf/open/floor/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "eZr" = (
@@ -9207,7 +9197,7 @@
 	},
 /area/fiorina/station/power_ring)
 "fEY" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/directional/power/south,
 /turf/open/floor{
 	icon_state = "delivery"
 	},
@@ -9495,9 +9485,7 @@
 	},
 /area/fiorina/station/power_ring)
 "fPl" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "yellow"
@@ -9894,9 +9882,7 @@
 	},
 /area/fiorina/station/security)
 "gaQ" = (
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "gbf" = (
@@ -12707,9 +12693,7 @@
 	},
 /area/fiorina/station/medbay)
 "hIX" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "green"
@@ -12834,7 +12818,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
 "hPq" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "blue_plate"
@@ -14874,7 +14858,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/central_ring)
 "iYJ" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -17514,7 +17498,7 @@
 	},
 /area/fiorina/station/research_cells)
 "kGo" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/prison{
 	icon_state = "whitepurple"
 	},
@@ -22035,9 +22019,7 @@
 "nqL" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/spray/cleaner,
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "nqN" = (
@@ -23264,9 +23246,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "obE" = (
-/obj/structure/machinery/power/apc{
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/prison,
 /area/fiorina/station/flight_deck)
 "obI" = (
@@ -23409,9 +23389,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "ofQ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/central_ring)
 "oga" = (
@@ -23792,7 +23770,7 @@
 	},
 /area/fiorina/station/power_ring)
 "ooF" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "ooO" = (
@@ -30478,7 +30456,7 @@
 	},
 /area/fiorina/station/medbay)
 "sBO" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull"
@@ -34222,9 +34200,7 @@
 	},
 /area/fiorina/lz/near_lzI)
 "uNG" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "uNI" = (
@@ -37270,9 +37246,7 @@
 	},
 /area/fiorina/station/lowsec)
 "wFM" = (
-/obj/structure/machinery/power/apc{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/power/west,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -37936,9 +37910,7 @@
 	},
 /area/fiorina/station/power_ring)
 "xbr" = (
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "green"
@@ -38309,9 +38281,7 @@
 	},
 /area/fiorina/station/central_ring)
 "xpw" = (
-/obj/structure/machinery/power/apc{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "xpx" = (
@@ -39296,9 +39266,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "xYo" = (
-/obj/structure/machinery/power/apc{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2"
 	},

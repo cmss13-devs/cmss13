@@ -2127,8 +2127,7 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4;
+/obj/structure/machinery/power/apc/almayer/directional/east{
 	pixel_y = 25
 	},
 /obj/item/weapon/twohanded/yautja/spear,

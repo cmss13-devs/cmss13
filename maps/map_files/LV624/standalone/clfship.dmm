@@ -1602,9 +1602,7 @@
 /area/lv624/lazarus/crashed_ship)
 "Px" = (
 /obj/structure/machinery/autolathe,
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "orange"

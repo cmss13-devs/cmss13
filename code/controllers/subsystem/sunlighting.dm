@@ -175,15 +175,15 @@ SUBSYSTEM_DEF(sunlighting)
 
 
 	//Add our weather particle obj to any new weather screens
-	if(SSparticle_weather.initialized)
+	if(SSweather_conditions.initialized)
 		for(worked_length in 1 to length(GLOB.weather_planes_need_vis))
 			var/atom/movable/screen/plane_master/weather_effect/effect_plane = GLOB.weather_planes_need_vis[worked_length]
 			if(effect_plane)
-				effect_plane.vis_contents = list(SSparticle_weather.get_weather_effect())
+				effect_plane.vis_contents = list(SSweather_conditions.get_weather_effect())
 			if(MC_TICK_CHECK)
 				break
 		if(worked_length)
-			weather_planes_need_vis.Cut(1, worked_length+1)
+			GLOB.weather_planes_need_vis.Cut(1, worked_length+1)
 			worked_length = 0
 
 	for(worked_length in 1 to length(GLOB.sunlight_queue_work))

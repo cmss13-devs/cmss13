@@ -139,11 +139,11 @@
 
 /atom/movable/screen/plane_master/weather_effect/Initialize(mapload)
 	. = ..()
-	SSsunlighting.weather_planes_need_vis |= src
+	GLOB.weather_planes_need_vis |= src
 
 /atom/movable/screen/plane_master/weather_effect/Destroy()
 	. = ..()
-	SSsunlighting.weather_planes_need_vis -= src
+	GLOB.weather_planes_need_vis -= src
 
 /**
  * Handles emissive overlays and emissive blockers.

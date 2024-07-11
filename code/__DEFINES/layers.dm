@@ -233,6 +233,8 @@
 /// Roof plane, disappearing when entering buildings
 #define ROOF_PLANE -4
 
+#define WEATHER_EFFECT_PLANE -3
+
 /// To keep from conflicts with SEE_BLACKNESS internals
 #define BLACKNESS_PLANE 0
 

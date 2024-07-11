@@ -124,8 +124,20 @@
 	icon_state = "asphalt_old_roadlines3"
 /turf/open/hybrisa/street/roadlines4
 	icon_state = "asphalt_old_roadlines4"
+
 /turf/open/hybrisa/street/CMB_4x4_emblem
 	icon_state = "marshallsemblem_concrete_2x2"
+	name = "Office of the Colonial Marshals - Concrete Emblem"
+	desc = "A small inscription reads - The laws of Earth stretch beyond the Sol. To live, to serve, wherever humanity roams."
+
+/turf/open/hybrisa/street/CMB_4x4_emblem/north
+	dir = NORTH
+
+/turf/open/hybrisa/street/CMB_4x4_emblem/east
+	dir = EAST
+
+/turf/open/hybrisa/street/CMB_4x4_emblem/west
+	dir = WEST
 
 // Unweedable
 
@@ -159,6 +171,27 @@
 
 /turf/open/floor/hybrisa/engineership/ship_hull/non_weedable_hull
 	icon_state = "outerhull_dir"
+
+/turf/open/floor/hybrisa/engineership/ship_hull/non_weedable_hull/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/engineership/ship_hull/non_weedable_hull/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/engineership/ship_hull/non_weedable_hull/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/engineership/ship_hull/non_weedable_hull/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/engineership/ship_hull/non_weedable_hull/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/hybrisa/engineership/ship_hull/non_weedable_hull/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/engineership/ship_hull/non_weedable_hull/northwest
+	dir = NORTHWEST
 
 // Carpet
 
@@ -245,14 +278,49 @@
 	icon_state = "yellow_bigtile"
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile
 	icon_state = "darkgrey_bigtile"
+
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile
 	icon_state = "darkbrown_bigtile"
+
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/northwest
+	dir = NORTHWEST
+
 /turf/open/floor/hybrisa/tile/darkbrowncorner_bigtile
 	icon_state = "darkbrowncorner_bigtile"
+
+/turf/open/floor/hybrisa/tile/darkbrowncorner_bigtile/west
+	dir = WEST
+
 /turf/open/floor/hybrisa/tile/asteroidfloor_bigtile
 	icon_state = "asteroidfloor_bigtile"
+
 /turf/open/floor/hybrisa/tile/asteroidwarning_bigtile
 	icon_state = "asteroidwarning_bigtile"
+
+/turf/open/floor/hybrisa/tile/asteroidwarning_bigtile/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/tile/asteroidwarning_bigtile/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/tile/asteroidwarning_bigtile/west
+	dir = WEST
+
 /turf/open/floor/hybrisa/tile/lightbeige_bigtile
 	icon_state = "lightbeige_bigtile"
 /turf/open/floor/hybrisa/tile/greencorner_bigtile
@@ -329,14 +397,67 @@
 
 /turf/open/floor/hybrisa/metal/bluemetal1
 	icon_state = "bluemetal1"
+
+/turf/open/floor/hybrisa/metal/bluemetal1/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/metal/bluemetal1/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/metal/bluemetal1/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/metal/bluemetal1/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/metal/bluemetal1/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/hybrisa/metal/bluemetal1/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/metal/bluemetal1/northwest
+	dir = NORTHWEST
+
 /turf/open/floor/hybrisa/metal/bluemetalfull
 	icon_state = "bluemetalfull"
+
 /turf/open/floor/hybrisa/metal/bluemetalcorner
 	icon_state = "bluemetalcorner"
+
+/turf/open/floor/hybrisa/metal/bluemetalcorner/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/metal/bluemetalcorner/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/metal/bluemetalcorner/west
+	dir = WEST
+
 /turf/open/floor/hybrisa/metal/orangelinecorner
 	icon_state = "orangelinecorner"
+
+/turf/open/floor/hybrisa/metal/orangelinecorner/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/metal/orangelinecorner/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/metal/orangelinecorner/west
+	dir = WEST
+
 /turf/open/floor/hybrisa/metal/orangeline
 	icon_state = "orangeline"
+
+/turf/open/floor/hybrisa/metal/orangeline/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/metal/orangeline/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/metal/orangeline/west
+	dir = WEST
+
 /turf/open/floor/hybrisa/metal/darkblackmetal1
 	icon_state = "darkblackmetal1"
 /turf/open/floor/hybrisa/metal/darkblackmetal2
@@ -345,24 +466,123 @@
 	icon_state = "darkredfull2"
 /turf/open/floor/hybrisa/metal/redcorner
 	icon_state = "zredcorner"
+
 /turf/open/floor/hybrisa/metal/grated
 	icon_state = "rampsmaller"
+
+/turf/open/floor/hybrisa/metal/grated/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/metal/grated/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/metal/grated/west
+	dir = WEST
+
 /turf/open/floor/hybrisa/metal/stripe_red
 	icon_state = "stripe_red"
+
+/turf/open/floor/hybrisa/metal/stripe_red/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/metal/stripe_red/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/metal/stripe_red/west
+	dir = WEST
+
 /turf/open/floor/hybrisa/metal/zbrownfloor1
 	icon_state = "zbrownfloor1"
+
+/turf/open/floor/hybrisa/metal/zbrownfloor1/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/metal/zbrownfloor1/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/metal/zbrownfloor1/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/metal/zbrownfloor1/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/metal/zbrownfloor1/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/hybrisa/metal/zbrownfloor1/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/metal/zbrownfloor1/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/hybrisa/metal/zbrownfloor2
+	icon_state = "zbrownfloor2"
+
+/turf/open/floor/hybrisa/metal/zbrownfloor2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/metal/zbrownfloor2/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/metal/zbrownfloor2/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/metal/zbrownfloor2/west
+	dir = WEST
+
 /turf/open/floor/hybrisa/metal/zbrownfloor_corner
 	icon_state = "zbrownfloorcorner1"
+
+/turf/open/floor/hybrisa/metal/zbrownfloor_corner/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/metal/zbrownfloor_corner/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/metal/zbrownfloor_corner/west
+	dir = WEST
+
 /turf/open/floor/hybrisa/metal/zbrownfloor_full
 	icon_state = "zbrownfloorfull1"
+
 /turf/open/floor/hybrisa/metal/greenmetal1
 	icon_state = "greenmetal1"
+
+/turf/open/floor/hybrisa/metal/greenmetal1/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/metal/greenmetal1/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/metal/greenmetal1/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/metal/greenmetal1/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/metal/greenmetal1/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/hybrisa/metal/greenmetal1/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/metal/greenmetal1/northwest
+	dir = NORTHWEST
+
 /turf/open/floor/hybrisa/metal/greenmetalfull
 	icon_state = "greenmetalfull"
 /turf/open/floor/hybrisa/metal/greenmetalcorner
 	icon_state = "greenmetalcorner"
 /turf/open/floor/hybrisa/metal/metalwhitefull
 	icon_state = "metalwhitefull"
+
+// Plating
+
+/turf/open/floor/plating/hybrisa
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
+
+/turf/open/floor/plating/hybrisa/darkredfull2
+	icon_state = "darkredfull2"
 
 // Misc
 
@@ -373,9 +593,34 @@
 
 /turf/open/floor/hybrisa/misc/marshallsemblem
 	icon_state = "marshallsemblem"
+	desc = "A small inscription reads - The laws of Earth stretch beyond the Sol. To live, to serve, wherever humanity roams."
+	name = "Office of the Colonial Marshals Emblem"
+
 /turf/open/floor/hybrisa/misc/wybiglogo
 	name = "Weyland-Yutani corp. - bulding better worlds."
 	icon_state = "big8x8wylogo"
+
+/turf/open/floor/hybrisa/misc/wybiglogo/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/misc/wybiglogo/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/misc/wybiglogo/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/misc/wybiglogo/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/misc/wybiglogo/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/hybrisa/misc/wybiglogo/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/misc/wybiglogo/northwest
+	dir = NORTHWEST
+
 /turf/open/floor/hybrisa/misc/wysmallleft
 	icon_state = "weylandyutanismall1"
 /turf/open/floor/hybrisa/misc/wysmallright
@@ -432,8 +677,16 @@
 	icon_state = "engineer_floor_2"
 /turf/open/floor/hybrisa/engineership/engineer_floor7
 	icon_state = "engineer_floor_1"
+
 /turf/open/floor/hybrisa/engineership/engineer_floor8
 	icon_state = "engineer_floor_5"
+
+/turf/open/floor/hybrisa/engineership/engineer_floor8/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/engineership/engineer_floor8/west
+	dir = WEST
+
 /turf/open/floor/hybrisa/engineership/engineer_floor9
 	icon_state = "engineer_metalfloor_4"
 /turf/open/floor/hybrisa/engineership/engineer_floor10
@@ -442,10 +695,30 @@
 	icon_state = "engineer_floor_corner2"
 /turf/open/floor/hybrisa/engineership/engineer_floor12
 	icon_state = "engineerwallfloor1"
+
 /turf/open/floor/hybrisa/engineership/engineer_floor13
 	icon_state = "outerhull_dir"
+
+/turf/open/floor/hybrisa/engineership/engineer_floor13/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/engineership/engineer_floor13/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/engineership/engineer_floor13/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/engineership/engineer_floor13/northwest
+	dir = NORTHWEST
+
 /turf/open/floor/hybrisa/engineership/engineer_floor14
 	icon_state = "engineer_floor_corner3"
+
+/turf/open/floor/hybrisa/engineership/engineer_floor14/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/engineership/engineer_floor14/west
+	dir = WEST
 
 // Pillars
 

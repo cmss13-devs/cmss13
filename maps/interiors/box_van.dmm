@@ -26,9 +26,7 @@
 	tag = "back_right"
 	},
 /obj/structure/largecrate,
-/turf/open/shuttle/vehicle/med{
-	color = "#495462"
-	},
+/turf/open/shuttle/vehicle/med/slate,
 /area/interior/vehicle/box_van)
 "i" = (
 /obj/effect/vehicle_roof/box_van{
@@ -68,9 +66,7 @@
 /obj/effect/vehicle_roof/box_van{
 	icon_state = "roof_3"
 	},
-/turf/open/shuttle/vehicle/med{
-	color = "#495462"
-	},
+/turf/open/shuttle/vehicle/med/slate,
 /area/interior/vehicle/box_van)
 "r" = (
 /obj/structure/interior_wall/box_van{
@@ -106,9 +102,7 @@
 /obj/effect/vehicle_roof/box_van{
 	icon_state = "front_roof_2"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_11"
-	},
+/turf/open/shuttle/vehicle/floor_3_11,
 /area/interior/vehicle/box_van)
 "v" = (
 /obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
@@ -138,9 +132,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_12"
-	},
+/turf/open/shuttle/vehicle/floor_3_12,
 /area/interior/vehicle/box_van)
 "G" = (
 /obj/effect/landmark/interior/spawn/interior_viewport/simple{
@@ -151,9 +143,7 @@
 	pixel_x = -4;
 	pixel_y = 2
 	},
-/turf/open/shuttle/vehicle/med{
-	color = "#495462"
-	},
+/turf/open/shuttle/vehicle/med/slate,
 /area/interior/vehicle/box_van)
 "J" = (
 /obj/structure/interior_wall/box_van{
@@ -179,9 +169,7 @@
 /obj/effect/vehicle_roof/box_van{
 	icon_state = "roof_2"
 	},
-/turf/open/shuttle/vehicle/med{
-	color = "#495462"
-	},
+/turf/open/shuttle/vehicle/med/slate,
 /area/interior/vehicle/box_van)
 "O" = (
 /turf/open/void/vehicle,

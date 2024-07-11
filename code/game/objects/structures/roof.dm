@@ -93,8 +93,9 @@
 			node.link_master(master)
 
 /obj/effect/roof_node/Destroy(force, ...)
-	.=..()
 	linked_master.connected_nodes -= src
+	.=..()
+
 
 
 

@@ -159,7 +159,7 @@
 		light_source.effect_str -= src
 	affecting = null
 
-	for(var/atom/movable/outdoor_effect/effect in glob_affect)
+	for(var/atom/movable/outdoor_effect/effect as anything  in glob_affect)
 		effect.affecting_corners -= src
 	glob_affect = null
 

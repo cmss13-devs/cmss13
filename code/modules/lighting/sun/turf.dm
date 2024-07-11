@@ -66,7 +66,7 @@ Sunlight System
 		if(corner.master_NW)
 			turf |= corner.master_NW
 	turf |= source_turf /* get our calculated indoor lighting */
-	GLOB.sunlight_queue_corner += turf
+	GLOB.sunlight_queue_corner |= turf
 
 	//Empty our affecting_corners list
 	affecting_corners = null
@@ -271,19 +271,10 @@ Sunlight System
 	if(lighting_corner_NE)
 		if(lighting_corner_NE.master_NE)
 			SunlightUpdates |= lighting_corner_NE.master_NE
-		for(effect in lighting_corner_NE.glob_affect)
-			SunlightUpdates |= effect.source_turf
-
 		if(lighting_corner_NE.master_SE)
 			SunlightUpdates |= lighting_corner_NE.master_SE
-		for(effect in lighting_corner_NE.glob_affect)
-			SunlightUpdates |= effect.source_turf
-
 		if(lighting_corner_NE.master_SW)
 			SunlightUpdates |= lighting_corner_NE.master_SW
-		for(effect in lighting_corner_NE.glob_affect)
-			SunlightUpdates |= effect.source_turf
-
 		if(lighting_corner_NE.master_NW)
 			SunlightUpdates |= lighting_corner_NE.master_NW
 		for(effect in lighting_corner_NE.glob_affect)
@@ -292,19 +283,10 @@ Sunlight System
 	if(lighting_corner_SE)
 		if(lighting_corner_SE.master_NE)
 			SunlightUpdates |= lighting_corner_SE.master_NE
-		for(effect in lighting_corner_SE.glob_affect)
-			SunlightUpdates |= effect.source_turf
-
 		if(lighting_corner_SE.master_SE)
 			SunlightUpdates |= lighting_corner_SE.master_SE
-		for(effect in lighting_corner_SE.glob_affect)
-			SunlightUpdates |= effect.source_turf
-
 		if(lighting_corner_SE.master_SW)
 			SunlightUpdates |= lighting_corner_SE.master_SW
-		for(effect in lighting_corner_SE.glob_affect)
-			SunlightUpdates |= effect.source_turf
-
 		if(lighting_corner_SE.master_NW)
 			SunlightUpdates |= lighting_corner_SE.master_NW
 		for(effect in lighting_corner_SE.glob_affect)
@@ -313,19 +295,10 @@ Sunlight System
 	if(lighting_corner_SW)
 		if(lighting_corner_SW.master_NE)
 			SunlightUpdates |= lighting_corner_SW.master_NE
-		for(effect in lighting_corner_SW.glob_affect)
-			SunlightUpdates |= effect.source_turf
-
 		if(lighting_corner_SW.master_SE)
 			SunlightUpdates |= lighting_corner_SW.master_SE
-		for(effect in lighting_corner_SW.glob_affect)
-			SunlightUpdates |= effect.source_turf
-
 		if(lighting_corner_SW.master_SW)
 			SunlightUpdates |= lighting_corner_SW.master_SW
-		for(effect in lighting_corner_SW.glob_affect)
-			SunlightUpdates |= effect.source_turf
-
 		if(lighting_corner_SW.master_NW)
 			SunlightUpdates |= lighting_corner_SW.master_NW
 		for(effect in lighting_corner_SW.glob_affect)
@@ -334,19 +307,10 @@ Sunlight System
 	if(lighting_corner_NW)
 		if(lighting_corner_NW.master_NE)
 			SunlightUpdates |= lighting_corner_NW.master_NE
-		for(effect in lighting_corner_NW.glob_affect)
-			SunlightUpdates |= effect.source_turf
-
 		if(lighting_corner_NW.master_SE)
 			SunlightUpdates |= lighting_corner_NW.master_SE
-		for(effect in lighting_corner_NW.glob_affect)
-			SunlightUpdates |= effect.source_turf
-
 		if(lighting_corner_NW.master_SW)
 			SunlightUpdates |= lighting_corner_NW.master_SW
-		for(effect in lighting_corner_NW.glob_affect)
-			SunlightUpdates |= effect.source_turf
-
 		if(lighting_corner_NW.master_NW)
 			SunlightUpdates |= lighting_corner_NW.master_NW
 		for(effect in lighting_corner_NW.glob_affect)

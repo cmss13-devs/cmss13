@@ -307,18 +307,18 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	tag = "LOBBYART"
 
 /proc/force_lobby_art(art_id)
-	displayed_lobby_art = art_id
+	GLOB.displayed_lobby_art = art_id
 	var/turf/closed/wall/indestructible/splashscreen/lobby_art = locate("LOBBYART")
 	var/list/lobby_arts = CONFIG_GET(str_list/lobby_art_images)
 	var/list/lobby_authors = CONFIG_GET(str_list/lobby_art_authors)
 	lobby_art.icon = 'icons/lobby/title.dmi'
-	lobby_art.icon_state = lobby_arts[displayed_lobby_art]
-	lobby_art.desc = "Artwork by [lobby_authors[displayed_lobby_art]]"
+	lobby_art.icon_state = lobby_arts[GLOB.displayed_lobby_art]
+	lobby_art.desc = "Artwork by [lobby_authors[GLOB.displayed_lobby_art]]"
 	lobby_art.pixel_x = -288
 	lobby_art.pixel_y = -288
 	for(var/client/player in GLOB.clients)
-		if(displayed_lobby_art != -1)
-			var/author = lobby_authors[displayed_lobby_art]
+		if(GLOB.displayed_lobby_art != -1)
+			var/author = lobby_authors[GLOB.displayed_lobby_art]
 			if(author != "Unknown")
 				to_chat_forced(player, SPAN_ROUNDBODY("<hr>В этом раунде лоби арт представлен вам by [author]<hr>"))
 

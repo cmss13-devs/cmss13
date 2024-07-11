@@ -15,7 +15,6 @@
 	var/reagent_recipe_hint = null
 	/// one consistent property hint picked from itself. Set when creating itself
 	var/property_hint = null
-	var/credit_reward = 2
 
 /datum/reagent/generated/New()
 	//Generate stats

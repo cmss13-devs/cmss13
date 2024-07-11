@@ -141,11 +141,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 	tree.add_points(chem.objective_value)
-	if(istype(chem, /datum/reagent/generated))
-		var/datum/reagent/generated/generated_chem = chem
-		GLOB.chemical_data.update_credits(generated_chem.credit_reward)
-	else
-		GLOB.chemical_data.update_credits(2)
+	GLOB.chemical_data.update_credits(chem.credit_reward)
 
 /datum/chemical_data/proc/add_chemical_objective(datum/reagent/chem)
 	chemical_objective_list[chem.id] = chem.objective_value

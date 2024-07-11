@@ -57,6 +57,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/list/datum/chem_property/properties = list() //Decides properties
 	var/original_id //For tracing back
 	var/flags = 0 // Flags for misc. stuff
+	var/credit_reward = 2 //credit reward for scanning
 
 	var/deleted = FALSE //If the reagent was deleted
 

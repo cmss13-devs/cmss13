@@ -52,24 +52,21 @@ Sunlight System
 		source_turf.outdoor_effect = null //No qdel_null force
 	source_turf.outdoor_effect = src
 
-/atom/movable/outdoor_effect/proc/extinguish()
-	return
-
 /atom/movable/outdoor_effect/proc/disable_sunlight()
-	var/turf/T = list()
-	for(var/datum/static_lighting_corner/C in affecting_corners)
-		LAZYREMOVE(C.glob_affect, src)
-		C.get_sunlight_falloff()
-		if(C.master_NE)
-			T |= C.master_NE
-		if(C.master_SE)
-			T |= C.master_SE
-		if(C.master_SW)
-			T |= C.master_SW
-		if(C.master_NW)
-			T |= C.master_NW
-	T |= source_turf /* get our calculated indoor lighting */
-	GLOB.sunlight_queue_corner += T
+	var/turf/turf = list()
+	for(var/datum/static_lighting_corner/corner in affecting_corners)
+		corner.glob_affect -= src
+		corner.get_sunlight_falloff()
+		if(corner.master_NE)
+			turf |= corner.master_NE
+		if(corner.master_SE)
+			turf |= corner.master_SE
+		if(corner.master_SW)
+			turf |= corner.master_SW
+		if(corner.master_NW)
+			turf |= corner.master_NW
+	turf |= source_turf /* get our calculated indoor lighting */
+	GLOB.sunlight_queue_corner += turf
 
 	//Empty our affecting_corners list
 	affecting_corners = null
@@ -117,7 +114,7 @@ Sunlight System
 	var/list/L = corners - affecting_corners
 	affecting_corners += L
 	for(C in L)
-		LAZYSET(C.glob_affect, src, SUN_FALLOFF(C,source_turf))
+		C.glob_affect[src] = SUN_FALLOFF(C, source_turf);
 		if(C.glob_affect[src] > C.sun_falloff) /* if are closer than current dist, update the corner */
 			C.sun_falloff = C.glob_affect[src]
 			if(C.master_NE)
@@ -360,8 +357,9 @@ Sunlight System
 		turf.reconsider_sunlight()
 
 /* corner fuckery */
-/datum/static_lighting_corner/var/list/glob_affect = list() /* list of sunlight objects affecting this corner */
-/datum/static_lighting_corner/var/sun_falloff = 0 /* smallest distance to sunlight turf, for sunlight falloff */
+/datum/static_lighting_corner
+	var/list/glob_affect = list() /* list of sunlight objects affecting this corner */
+	var/sun_falloff = 0 /* smallest distance to sunlight turf, for sunlight falloff */
 
 /* loop through and find our strongest sunlight value */
 /datum/static_lighting_corner/proc/get_sunlight_falloff()

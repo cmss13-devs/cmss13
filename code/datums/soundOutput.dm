@@ -42,7 +42,7 @@
 				if(8)
 					process_sound(current_sounds[channel], TRUE, 1-i/32, 0)
 
-/datum/soundOutput/proc/update_sounds_from_source(atom/source, direction)
+/datum/soundOutput/proc/update_sounds_from_source(datum/source, atom/oldloc, direction, Forced)
 	SIGNAL_HANDLER
 	for(var/channel in source_sounds)
 		if(source_sounds[channel] == source)
@@ -51,13 +51,13 @@
 				i = i * SMOOTHING
 				switch(direction)
 					if(1)
-						process_sound(template, TRUE, 0, 1+i/32)
+						process_sound(template, TRUE, 0, 1-i/32)
 					if(2)
-						process_sound(template, TRUE, 0, -1-i/32)
+						process_sound(template, TRUE, 0, -1+i/32)
 					if(4)
-						process_sound(template, TRUE, 1+i/32, 0)
+						process_sound(template, TRUE, 1-i/32, 0)
 					if(8)
-						process_sound(template, TRUE, -1-i/32, 0)
+						process_sound(template, TRUE, -1+i/32, 0)
 			break
 
 /datum/soundOutput/proc/remove_sound(channel)
@@ -73,9 +73,9 @@
 		S.channel = T.channel
 	S.frequency = T.frequency
 	S.falloff = T.falloff
-
+	S.params = list("on-end" = ".soundend [S.channel]")
+	
 	if(!update)
-		S.params = list("on-end" = ".soundend [S.channel]")
 		S.status = T.status
 	else
 		S.status = SOUND_UPDATE 		
@@ -112,7 +112,7 @@
 		S.x += T.x_s_offset
 		S.echo = SOUND_ECHO_REVERB_ON
 
-		if(!update)
+		if(!update && T.source && T.source != owner.mob)
 			current_sounds[num2text(S.channel)] = T
 
 	if(owner.mob.ear_deaf > 0)

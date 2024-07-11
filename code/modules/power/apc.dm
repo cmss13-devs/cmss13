@@ -124,7 +124,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/Initialize(mapload, ndir, building=0)
 	. = ..()
 
-	//Offset 24 pixels in direction of dir
+	//Offset apc depending on the dir
 	//This allows the APC to be embedded in a wall, yet still inside an area
 
 	if(building)

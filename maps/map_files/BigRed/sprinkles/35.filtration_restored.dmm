@@ -94,9 +94,7 @@
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
 "dS" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/se)
 "dV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -128,9 +126,7 @@
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "iw" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/se)
 "iZ" = (
 /turf/open/floor/delivery,
@@ -366,9 +362,7 @@
 /area/bigredv2/outside/filtration_plant)
 "yU" = (
 /obj/item/tool/warning_cone,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/se)
 "zD" = (
 /obj/structure/surface/table,
@@ -397,9 +391,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "Bd" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/se)
 "Bt" = (
 /obj/structure/cryofeed,
@@ -421,9 +413,7 @@
 /turf/open/floor/darkyellow2/southwest,
 /area/bigredv2/outside/filtration_plant)
 "Ce" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/se)
 "Cy" = (
 /turf/open/floor/darkyellowcorners2/north,
@@ -508,9 +498,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "IX" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/se)
 "Jc" = (
 /obj/structure/closet/firecloset/full,
@@ -589,9 +577,7 @@
 /turf/open/floor/darkyellow2/northeast,
 /area/bigredv2/outside/filtration_plant)
 "OG" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/se)
 "OX" = (
 /obj/structure/machinery/computer3/server/rack,
@@ -663,9 +649,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/filtration_cave_cas)
 "UB" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/se)
 "UD" = (
 /obj/structure/pipes/standard/simple/hidden/green{

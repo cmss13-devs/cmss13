@@ -2,12 +2,6 @@
 "ai" = (
 /turf/open/mars,
 /area/bigredv2/outside/e)
-"ao" = (
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/c)
 "ap" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/office_complex)
@@ -24,12 +18,6 @@
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
-"aA" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/e)
 "aC" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy20"
@@ -342,9 +330,7 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "eY" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/c)
 "fp" = (
 /obj/effect/decal/cleanable/dirt,
@@ -463,10 +449,7 @@
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "ny" = (
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/e)
 "nC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -564,9 +547,7 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "ut" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/e)
 "uw" = (
 /obj/structure/girder,
@@ -586,9 +567,7 @@
 /area/bigredv2/outside/office_complex)
 "va" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "ve" = (
 /turf/open/shuttle/dropship/can_surgery/light_grey_top,
@@ -746,9 +725,7 @@
 /turf/open/floor/warnwhite,
 /area/bigredv2/outside/office_complex)
 "BX" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/e)
 "Ct" = (
 /obj/effect/decal/cleanable/dirt,
@@ -891,14 +868,10 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "HP" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/e)
 "Ic" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/c)
 "Ik" = (
 /turf/open/floor/asteroidwarning/east,
@@ -912,9 +885,7 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/se)
 "Iz" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/e)
 "IZ" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
@@ -1229,9 +1200,7 @@
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
 "XS" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "Yd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1543,7 +1512,7 @@ Eq
 "}
 (11,1,1) = {"
 Ic
-ao
+tz
 SK
 SK
 SK
@@ -1841,7 +1810,7 @@ Na
 (22,1,1) = {"
 BX
 HP
-aA
+ka
 of
 Au
 ap
@@ -1868,7 +1837,7 @@ Na
 (23,1,1) = {"
 Iz
 ut
-aA
+ka
 of
 of
 ap

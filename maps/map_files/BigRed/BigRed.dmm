@@ -452,22 +452,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
-"ahP" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
-/area/bigredv2/outside/nw)
-"ahQ" = (
-/turf/open/floor{
-	dir = 10;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/nw)
 "ahT" = (
-/turf/open/floor{
-	dir = 6;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/nw)
 "ahX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -478,16 +464,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
-"aiA" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_10"
-	},
-/area/bigredv2/outside/nw)
-"aiB" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_14"
-	},
-/area/bigredv2/outside/nw)
 "aiO" = (
 /obj/structure/bed/chair,
 /turf/open/floor,
@@ -529,10 +505,7 @@
 /area/bigredv2/caves/lambda/breakroom)
 "ajo" = (
 /obj/structure/lz_sign/solaris_sign,
-/turf/open/floor{
-	dir = 10;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/nw)
 "ajL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -983,12 +956,6 @@
 "aoH" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/general_store)
-"aoO" = (
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/nw)
 "apc" = (
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -1117,11 +1084,6 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/hydroponics)
-"arl" = (
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
-/area/bigredv2/outside/medical)
 "ars" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -1144,12 +1106,6 @@
 "arK" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves_lambda)
-"arR" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/bigredv2/outside/medical)
 "arT" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
@@ -1258,9 +1214,7 @@
 /obj/structure/platform/kutjevo/rock{
 	dir = 4
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_14"
-	},
+/turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/outside/nw)
 "atw" = (
 /obj/structure/window/framed/solaris,
@@ -1378,10 +1332,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "auF" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/nw)
 "auO" = (
 /obj/structure/bed/chair{
@@ -1408,18 +1359,6 @@
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
-"avw" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
-/area/bigredv2/outside/medical)
-"avy" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
-/area/bigredv2/outside/medical)
 "avC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -1493,10 +1432,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "awd" = (
 /turf/closed/wall/solaris/reinforced,
@@ -1576,34 +1512,10 @@
 "awM" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/filtration_plant)
-"awN" = (
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
-/area/bigredv2/outside/medical)
-"awO" = (
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
-/area/bigredv2/outside/medical)
-"awP" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
-/area/bigredv2/outside/medical)
 "awQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/bigredv2/outside/medical)
-"awT" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "awY" = (
 /obj/structure/bed/chair{
@@ -1652,13 +1564,6 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
-"axB" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
-/area/bigredv2/outside/medical)
 "axG" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1685,12 +1590,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
-"axW" = (
-/turf/open/floor{
-	dir = 6;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/c)
 "axX" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/engineering)
@@ -1767,13 +1666,6 @@
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
-"ayR" = (
-/obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
-/area/bigredv2/outside/medical)
 "ayV" = (
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
@@ -1817,14 +1709,6 @@
 /obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw/ceiling)
-"azv" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/bigredv2/outside/medical)
 "azB" = (
 /obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -2084,13 +1968,6 @@
 /obj/effect/landmark/hunter_secondary,
 /turf/open/mars,
 /area/bigredv2/outside/c)
-"aCN" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/c)
 "aCY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2183,10 +2060,7 @@
 	pixel_y = 9;
 	pixel_x = 9
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/medical)
 "aEF" = (
 /turf/closed/wall/solaris/rock,
@@ -2260,19 +2134,11 @@
 "aFH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "aFL" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars,
-/area/bigredv2/outside/c)
-"aFM" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
 /area/bigredv2/outside/c)
 "aFN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2304,19 +2170,13 @@
 /area/bigredv2/caves/lambda/breakroom)
 "aGw" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "aGy" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "aGL" = (
 /obj/structure/machinery/biogenerator,
@@ -2332,17 +2192,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
-"aHC" = (
-/turf/open/floor{
-	dir = 10;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/c)
-"aHD" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/c)
 "aHE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/xeno,
@@ -2415,12 +2264,6 @@
 "aLI" = (
 /turf/open/floor/greengrid,
 /area/bigredv2/caves/lambda/research)
-"aMd" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/c)
 "aMl" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -2766,12 +2609,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves_north)
-"aSi" = (
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/e)
 "aSv" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -2798,12 +2635,6 @@
 /obj/structure/machinery/computer/general_air_control,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
-"aTr" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/e)
 "aTQ" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor,
@@ -2883,12 +2714,6 @@
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
-"aWI" = (
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/c)
 "aWL" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/mars,
@@ -2941,18 +2766,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
-"aXW" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/e)
-"aXY" = (
-/turf/open/floor{
-	dir = 10;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/w)
 "aYc" = (
 /obj/structure/machinery/light,
 /turf/open/floor/plating,
@@ -3696,9 +3509,7 @@
 /area/bigredv2/outside/cargo)
 "bgJ" = (
 /obj/structure/surface/table/reinforced,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "bhf" = (
 /obj/structure/machinery/power/apc{
@@ -3845,12 +3656,6 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/e)
-"bkb" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/s)
 "bkl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/science,
@@ -3863,11 +3668,6 @@
 "bkq" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars,
-/area/bigredv2/outside/s)
-"bkr" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_11"
-	},
 /area/bigredv2/outside/s)
 "bkv" = (
 /turf/open/floor/asteroidwarning/southeast,
@@ -3883,11 +3683,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
-"bkC" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_13"
-	},
-/area/bigredv2/outside/s)
 "bkQ" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/landmark/corpsespawner/engineer,
@@ -3982,12 +3777,6 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
-"blu" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/s)
 "blw" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -4064,9 +3853,7 @@
 /turf/open/floor/yellowfull,
 /area/bigredv2/outside/general_store)
 "boz" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement14"
-	},
+/turf/open/asphalt/cement/cement14,
 /area/bigredv2/outside/space_port)
 "boA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4128,9 +3915,7 @@
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
 "bqD" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
@@ -4187,9 +3972,7 @@
 /area/bigredv2/outside/lz2_south_cas)
 "btI" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/e)
 "buk" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4664,9 +4447,7 @@
 /area/bigredv2/outside/general_offices)
 "bLI" = (
 /obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/c)
 "bLU" = (
 /turf/open/mars_cave/mars_cave_10,
@@ -4719,9 +4500,7 @@
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves_sw)
 "bNu" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached19"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/bigredv2/outside/virology)
 "bNB" = (
 /obj/structure/surface/table/reinforced,
@@ -4739,9 +4518,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/n)
 "bNL" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement2"
-	},
+/turf/open/asphalt/cement/cement2,
 /area/bigredv2/outside/space_port)
 "bNN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -4851,9 +4628,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "bQV" = (
 /obj/structure/largecrate/guns,
@@ -4899,9 +4674,7 @@
 /turf/open/floor/darkgreencorners2/north,
 /area/bigredv2/caves/eta/research)
 "bSD" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/nw)
 "bSE" = (
 /obj/item/clothing/suit/storage/CMB{
@@ -4990,10 +4763,7 @@
 	pixel_x = -11;
 	pixel_y = 17
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "bWU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -5067,10 +4837,7 @@
 	dir = 10
 	},
 /obj/item/reagent_container/spray/cleaner,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/west,
 /area/bigredv2/outside/medical)
 "bZp" = (
 /obj/structure/bed/chair{
@@ -5208,10 +4975,7 @@
 /area/bigredv2/outside/medical)
 "cdI" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/medical)
 "cdK" = (
 /obj/structure/dispenser/oxygen,
@@ -5221,9 +4985,7 @@
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
 "cdP" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement1"
-	},
+/turf/open/asphalt/cement/cement1,
 /area/bigredv2/outside/lambda_cave_cas)
 "cdR" = (
 /obj/effect/decal/cleanable/blood{
@@ -5271,9 +5033,7 @@
 	dir = 1
 	},
 /obj/structure/flora/grass/desert/lightgrass_2,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "ceO" = (
 /obj/structure/fence,
@@ -5418,16 +5178,12 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "cjr" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement2"
-	},
+/turf/open/asphalt/cement/cement2,
 /area/bigredv2/outside/filtration_cave_cas)
 "cjx" = (
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "cjy" = (
 /obj/structure/machinery/light{
@@ -5446,9 +5202,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached17"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/bigredv2/outside/virology)
 "ckC" = (
 /obj/structure/machinery/autolathe,
@@ -5456,9 +5210,7 @@
 /area/bigredv2/outside/engineering)
 "ckF" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/nw)
 "ckH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -5481,9 +5233,7 @@
 	pixel_x = -7;
 	pixel_y = 13
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "ckP" = (
 /obj/effect/decal/warning_stripes{
@@ -5595,10 +5345,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "cpw" = (
 /obj/structure/barricade/wooden,
-/turf/open/floor{
-	dir = 10;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/c)
 "cpz" = (
 /obj/item/weapon/gun/boltaction,
@@ -5649,9 +5396,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "crA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5666,9 +5411,7 @@
 /area/bigredv2/outside/dorms)
 "crT" = (
 /obj/item/trash/cigbutt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "csg" = (
 /obj/structure/surface/table/woodentable{
@@ -5705,10 +5448,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "csW" = (
 /obj/structure/surface/table,
@@ -5743,9 +5483,7 @@
 /area/bigredv2/outside/admin_building)
 "cuH" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
 "cuN" = (
 /obj/effect/decal/cleanable/blood{
@@ -5834,9 +5572,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/s)
 "cwq" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "cwE" = (
 /obj/effect/decal/cleanable/generic,
@@ -5844,9 +5580,7 @@
 /area/bigredv2/outside/nw)
 "cwP" = (
 /obj/effect/decal/strata_decals/grime/grime2,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "cwS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5860,9 +5594,7 @@
 /area/bigredv2/outside/virology)
 "cxb" = (
 /obj/item/shard,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "cxg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -5968,9 +5700,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/e)
 "cza" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/space_port_lz2)
 "czc" = (
 /obj/structure/machinery/photocopier,
@@ -6187,9 +5917,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/nw)
 "cHs" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/nw)
 "cHy" = (
 /obj/item/device/flashlight,
@@ -6211,10 +5939,7 @@
 /area/bigredv2/outside/cargo)
 "cIX" = (
 /obj/structure/girder,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/office_complex)
 "cIY" = (
 /obj/structure/surface/table,
@@ -6225,9 +5950,7 @@
 /area/space)
 "cJg" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/filtration_plant)
 "cJq" = (
 /obj/structure/sign/safety/terminal{
@@ -6301,9 +6024,7 @@
 /area/bigredv2/caves/lambda/research)
 "cMU" = (
 /obj/structure/girder,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
 "cNm" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -6499,9 +6220,7 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
 "cVd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6528,9 +6247,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "cVK" = (
 /turf/open/floor/darkish,
@@ -6591,16 +6308,11 @@
 "cYt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
 "cYu" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement1";
-	dir = 1
-	},
+/turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/space_port)
 "cYA" = (
 /obj/structure/surface/table,
@@ -6716,10 +6428,7 @@
 /area/bigredv2/caves/mining)
 "dbE" = (
 /obj/effect/landmark/crap_item,
-/turf/open/asphalt/cement{
-	icon_state = "cement1";
-	dir = 1
-	},
+/turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/filtration_cave_cas)
 "dbH" = (
 /turf/open/floor/white,
@@ -6757,9 +6466,7 @@
 /turf/open/floor/darkyellow2/southwest,
 /area/bigredv2/outside/engineering)
 "deb" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached20"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
 /area/bigredv2/outside/nw)
 "deg" = (
 /turf/open/floor/whitebluefull/northeast,
@@ -6824,9 +6531,7 @@
 /area/bigredv2/outside/marshal_office)
 "dfD" = (
 /obj/item/tool/warning_cone,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/se)
 "dfF" = (
 /obj/effect/landmark/corpsespawner/scientist,
@@ -6980,9 +6685,7 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "djY" = (
 /obj/structure/machinery/washing_machine,
@@ -7025,9 +6728,7 @@
 /area/bigredv2/caves/eta/research)
 "dmr" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "dmt" = (
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -7036,9 +6737,7 @@
 /area/bigredv2/outside/engineering)
 "dmy" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
+/turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "dmA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -7121,9 +6820,7 @@
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 1
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "doP" = (
 /turf/open/mars_cave/mars_cave_19,
@@ -7209,9 +6906,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/hydroponics)
 "dsZ" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/se)
 "dtm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -7299,9 +6994,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "dvi" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement2"
-	},
+/turf/open/asphalt/cement/cement2,
 /area/bigredv2/caves_lambda)
 "dvs" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -7420,9 +7113,7 @@
 /area/bigredv2/outside/c)
 "dyG" = (
 /obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "dyJ" = (
 /obj/structure/machinery/light{
@@ -7447,9 +7138,7 @@
 /area/bigredv2/outside/general_offices)
 "dzb" = (
 /obj/item/tool/wrench,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "dzy" = (
 /obj/effect/decal/strata_decals/grime/grime1{
@@ -7490,10 +7179,7 @@
 /area/bigredv2/outside/se)
 "dBC" = (
 /obj/item/shard,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "dBG" = (
 /obj/structure/machinery/camera/autoname{
@@ -7515,9 +7201,7 @@
 /turf/open/floor/darkblue2/east,
 /area/bigredv2/outside/admin_building)
 "dCe" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "dCf" = (
 /obj/structure/filingcabinet/medical,
@@ -7601,9 +7285,7 @@
 /obj/item/trash/popcorn{
 	pixel_y = 9
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "dEc" = (
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -7837,9 +7519,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "dMp" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "dMH" = (
 /turf/open/floor/darkgreencorners2/west,
@@ -7872,9 +7552,7 @@
 "dOJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "dPi" = (
 /obj/structure/closet/wardrobe/medic_white,
@@ -8021,9 +7699,7 @@
 	pixel_y = 9;
 	pixel_x = 6
 	},
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "dTn" = (
 /turf/open/floor/asteroidfloor/north,
@@ -8042,9 +7718,7 @@
 /area/bigredv2/caves)
 "dTv" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
 "dTA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -8233,9 +7907,7 @@
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
 "dZD" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/space_port_lz2)
 "dZJ" = (
 /turf/open/mars_cave/mars_cave_7,
@@ -8444,9 +8116,7 @@
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 8
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "egS" = (
 /obj/structure/disposalpipe/segment,
@@ -8461,10 +8131,7 @@
 	pixel_y = 11;
 	pixel_x = -11
 	},
-/turf/open/floor{
-	dir = 10;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/southwest,
 /area/bigredv2/outside/medical)
 "egX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -8672,9 +8339,7 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
 "eoL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -8694,9 +8359,7 @@
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/caves/lambda/xenobiology)
 "eoW" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/s)
 "eoX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -8847,9 +8510,7 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/w)
 "etG" = (
 /obj/structure/machinery/light{
@@ -8946,17 +8607,13 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "evC" = (
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "evD" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/w)
 "evZ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -9045,9 +8702,7 @@
 /area/bigredv2/outside/general_store)
 "eyb" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/se)
 "eyc" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -9068,9 +8723,7 @@
 /turf/open/floor/white,
 /area/bigredv2/caves/lambda/xenobiology)
 "eAg" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
 "eAp" = (
 /obj/structure/machinery/light,
@@ -9092,15 +8745,11 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "eAW" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
 "eBa" = (
 /obj/effect/landmark/monkey_spawn,
@@ -9225,16 +8874,11 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "eFy" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
-	},
+/turf/open/gm/river/desert/deep/toxic,
 /area/bigredv2/outside/c)
 "eFz" = (
 /obj/effect/decal/cleanable/vomit,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "eFE" = (
 /obj/effect/landmark/objective_landmark/science,
@@ -9302,9 +8946,7 @@
 /area/bigredv2/outside/hydroponics)
 "eHO" = (
 /obj/effect/landmark/crap_item,
-/turf/open/asphalt/cement{
-	icon_state = "cement9"
-	},
+/turf/open/asphalt/cement/cement9,
 /area/bigredv2/outside/space_port)
 "eHQ" = (
 /obj/effect/decal/cleanable/blood,
@@ -9396,9 +9038,7 @@
 	pixel_y = 20;
 	layer = 3.1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "eLI" = (
 /obj/effect/decal/cleanable/blood{
@@ -9447,10 +9087,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "eMs" = (
 /obj/structure/machinery/teleport/station,
@@ -9521,9 +9158,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "ePg" = (
 /obj/structure/bed/chair{
@@ -9556,9 +9191,7 @@
 	layer = 2.8
 	},
 /obj/effect/decal/cleanable/generic,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_20"
-	},
+/turf/open/mars_cave/mars_cave_20,
 /area/bigredv2/outside/nw)
 "ePQ" = (
 /obj/structure/machinery/mech_bay_recharge_port,
@@ -9592,9 +9225,7 @@
 /area/bigredv2/caves/mining)
 "eQq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
 "eQx" = (
 /obj/structure/pipes/vents/pump{
@@ -9610,9 +9241,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
 "eQK" = (
 /obj/structure/flora/grass/desert/lightgrass_6,
@@ -9874,10 +9503,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 10;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/w)
 "eZa" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -9910,9 +9536,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/lambda_cave_cas)
 "faj" = (
 /obj/structure/closet/l3closet/scientist,
@@ -10045,9 +9669,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "fcD" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/virology)
 "fcI" = (
 /obj/structure/machinery/power/apc{
@@ -10081,17 +9703,13 @@
 	pixel_x = -10;
 	pixel_y = 16
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "fdl" = (
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "fdy" = (
 /turf/open/floor,
@@ -10141,9 +9759,7 @@
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 1
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/c)
 "ffv" = (
 /turf/open/floor/darkred2/west,
@@ -10264,9 +9880,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalleft"
 	},
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "fin" = (
 /turf/open/floor/plating,
@@ -10324,9 +9938,7 @@
 /area/bigredv2/caves_research)
 "fjb" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "fjd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -10400,10 +10012,7 @@
 /area/bigredv2/outside/medical)
 "fkr" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/s)
 "fkT" = (
 /obj/structure/surface/table,
@@ -10420,9 +10029,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "fln" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/se)
 "flP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -10436,9 +10043,7 @@
 /area/bigredv2/caves_sw)
 "fmX" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/space_port_lz2)
 "fnm" = (
 /turf/open/mars_cave/mars_cave_7,
@@ -10508,9 +10113,7 @@
 /area/bigredv2/outside/marshal_office)
 "foz" = (
 /obj/item/ammo_casing/bullet,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "foH" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
@@ -10535,9 +10138,7 @@
 /area/bigredv2/caves/mining)
 "fpc" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/w)
 "fpq" = (
 /obj/item/trash/eat{
@@ -10575,9 +10176,7 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "fqZ" = (
 /turf/open/mars_cave/mars_cave_6,
@@ -10718,9 +10317,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement1"
-	},
+/turf/open/asphalt/cement/cement1,
 /area/bigredv2/outside/lambda_cave_cas)
 "fwp" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -10758,9 +10355,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/caves_lambda)
 "fwV" = (
 /obj/structure/surface/table,
@@ -10835,9 +10430,7 @@
 	dir = 4;
 	health = 25000
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "fzR" = (
 /turf/closed/wall/solaris{
@@ -10899,9 +10492,7 @@
 /area/bigredv2/caves/mining)
 "fBV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "fCb" = (
 /turf/open/floor,
@@ -10962,9 +10553,7 @@
 /area/bigredv2/caves/eta/research)
 "fDs" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/w)
 "fDv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -10973,9 +10562,7 @@
 	pixel_x = -12;
 	pixel_y = 17
 	},
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "fDY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -11185,9 +10772,7 @@
 /area/bigredv2/outside/s)
 "fLU" = (
 /obj/item/shard,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner,
 /area/bigredv2/outside/medical)
 "fMr" = (
 /obj/structure/pipes/vents/pump{
@@ -11280,9 +10865,7 @@
 	},
 /obj/structure/bed/roller,
 /obj/structure/closet/bodybag,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "fPB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -11313,10 +10896,7 @@
 	pixel_x = -1;
 	pixel_y = 17
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement1";
-	dir = 1
-	},
+/turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/filtration_cave_cas)
 "fRG" = (
 /obj/structure/surface/table,
@@ -11336,9 +10916,7 @@
 /area/bigredv2/caves/eta/storage)
 "fSU" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/space_port_lz2)
 "fTc" = (
 /obj/structure/closet/secure_closet,
@@ -11347,9 +10925,7 @@
 /area/bigredv2/caves/eta/research)
 "fTf" = (
 /obj/effect/decal/cleanable/vomit,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
 "fTs" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -11380,9 +10956,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement14"
-	},
+/turf/open/asphalt/cement/cement14,
 /area/bigredv2/caves_lambda)
 "fUt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -11424,9 +10998,7 @@
 	dir = 8;
 	health = 25000
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/w)
 "fVG" = (
 /obj/structure/curtain/medical,
@@ -11443,9 +11015,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
 "fVS" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/s)
 "fWk" = (
 /obj/structure/surface/table,
@@ -11466,15 +11036,11 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_13"
-	},
+/turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/outside/nw)
 "fXk" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/se)
 "fXo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -11492,9 +11058,7 @@
 /obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "fXT" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -11552,10 +11116,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalleft"
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "fZG" = (
 /obj/structure/machinery/light{
@@ -11587,9 +11148,7 @@
 /area/bigredv2/caves_research)
 "gaA" = (
 /obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/e)
 "gaS" = (
 /turf/open/mars_cave/mars_dirt_4,
@@ -11732,9 +11291,7 @@
 	pixel_x = -6;
 	pixel_y = -9
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/nw)
 "gfB" = (
 /obj/structure/window/reinforced/toughened,
@@ -11764,9 +11321,7 @@
 /area/bigredv2/outside/marshal_office)
 "ggr" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "ggM" = (
 /obj/effect/decal/cleanable/dirt,
@@ -11790,9 +11345,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
 "ghX" = (
 /obj/structure/machinery/light{
@@ -11863,9 +11416,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "gjr" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/se)
 "gjw" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -11881,9 +11432,7 @@
 	dir = 4
 	},
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "gjQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -11971,9 +11520,7 @@
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "gnT" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -12010,9 +11557,7 @@
 /turf/open/mars_cave,
 /area/bigredv2/caves_east)
 "gpo" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/w)
 "gpG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -12043,9 +11588,7 @@
 /turf/open/gm/river,
 /area/bigredv2/outside/c)
 "gql" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/c)
 "gqo" = (
 /obj/structure/platform_decoration/shiva{
@@ -12064,9 +11607,7 @@
 	pixel_x = -2;
 	pixel_y = 5
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "gqD" = (
 /turf/open/mars_cave/mars_dirt_6,
@@ -12131,10 +11672,7 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 5
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "gsc" = (
 /obj/structure/pipes/vents/scrubber/on{
@@ -12220,9 +11758,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "guB" = (
 /obj/structure/tunnel{
@@ -12432,9 +11968,7 @@
 /area/bigredv2/outside/filtration_plant)
 "gCh" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "gCp" = (
 /obj/structure/closet/firecloset/full,
@@ -12514,10 +12048,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/north,
 /area/bigredv2/outside/medical)
 "gDV" = (
 /obj/item/storage/toolbox/mechanical,
@@ -12535,9 +12066,7 @@
 /area/bigredv2/outside/hydroponics)
 "gEy" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/c)
 "gEP" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
@@ -12556,9 +12085,7 @@
 /turf/open/floor/cult,
 /area/bigredv2/outside/marshal_office)
 "gGd" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/space_port)
 "gGe" = (
 /obj/structure/surface/table/reinforced,
@@ -12567,9 +12094,7 @@
 /turf/open/floor/whitegreen/southeast,
 /area/bigredv2/caves/lambda/virology)
 "gGT" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/e)
 "gGW" = (
 /turf/open/mars_cave/mars_cave_18,
@@ -12594,9 +12119,7 @@
 /area/bigredv2/outside/bar)
 "gIO" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement{
-	icon_state = "cement15"
-	},
+/turf/open/asphalt/cement/cement15,
 /area/bigredv2/outside/filtration_cave_cas)
 "gJw" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -12661,10 +12184,7 @@
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "gLy" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/north,
 /area/bigredv2/outside/medical)
 "gLB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -12702,9 +12222,7 @@
 	pixel_y = 14;
 	pixel_x = 15
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "gMy" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -12841,9 +12359,7 @@
 /area/bigredv2/caves/mining)
 "gSE" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "gSG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -12893,10 +12409,7 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/c)
 "gTJ" = (
 /obj/structure/machinery/autolathe,
@@ -12977,9 +12490,7 @@
 /area/bigredv2/outside/marshal_office)
 "gWg" = (
 /obj/structure/largecrate/random/barrel/red,
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
+/turf/open/floor/plating/platebotc,
 /area/bigredv2/outside/space_port)
 "gWi" = (
 /obj/structure/machinery/blackbox_recorder,
@@ -13005,10 +12516,7 @@
 /obj/structure/bed,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "gWN" = (
 /obj/structure/machinery/light{
@@ -13052,9 +12560,7 @@
 /area/bigredv2/outside/office_complex)
 "gZC" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
 "had" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -13081,9 +12587,7 @@
 /area/bigredv2/caves/mining)
 "haY" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/filtration_plant)
 "hbh" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -13128,9 +12632,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/n)
 "hcC" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/bigredv2/outside/nw)
 "hcM" = (
 /turf/open/floor/darkblue2/northwest,
@@ -13199,9 +12701,7 @@
 /area/bigredv2/outside/filtration_plant)
 "heK" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/nw)
 "heM" = (
 /obj/item/tool/shovel,
@@ -13243,15 +12743,11 @@
 	pixel_x = -1;
 	pixel_y = 17
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/se)
 "hgt" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/lambda_cave_cas)
 "hgA" = (
 /obj/structure/surface/table,
@@ -13278,9 +12774,7 @@
 /area/bigredv2/outside/engineering)
 "hgW" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/se)
 "hhT" = (
 /obj/structure/surface/table,
@@ -13300,9 +12794,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached20"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
 /area/bigredv2/outside/virology)
 "hiV" = (
 /turf/open/floor/asteroidwarning/north,
@@ -13378,9 +12870,7 @@
 /area/bigredv2/caves/eta/storage)
 "hkH" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/c)
 "hkL" = (
 /obj/structure/surface/rack,
@@ -13416,9 +12906,7 @@
 /area/bigredv2/outside/lambda_cave_cas)
 "hlU" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement1"
-	},
+/turf/open/asphalt/cement/cement1,
 /area/bigredv2/caves_lambda)
 "hlW" = (
 /obj/structure/filingcabinet/medical,
@@ -13456,10 +12944,7 @@
 "hnf" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/xtracks,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/east,
 /area/bigredv2/outside/medical)
 "hnk" = (
 /turf/open/floor/asteroidwarning/southwest,
@@ -13522,9 +13007,7 @@
 /turf/open/mars/mars_dirt_8,
 /area/bigredv2/outside/n)
 "hpQ" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/c)
 "hpU" = (
 /obj/structure/surface/table,
@@ -13592,9 +13075,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/nw)
 "hrn" = (
 /obj/item/trash/snack_bowl{
@@ -13651,16 +13132,11 @@
 /area/bigredv2/outside/marshal_office)
 "htG" = (
 /obj/structure/surface/table/reinforced,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "htP" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "hum" = (
 /obj/structure/surface/table,
@@ -13776,9 +13252,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/e)
 "hzc" = (
 /obj/structure/fence,
@@ -13954,10 +13428,7 @@
 /turf/open/mars_cave/mars_cave_20,
 /area/bigredv2/caves_north)
 "hFf" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement1";
-	dir = 1
-	},
+/turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/space_port)
 "hFp" = (
 /obj/effect/landmark/survivor_spawner,
@@ -13977,9 +13448,7 @@
 	pixel_x = -10;
 	pixel_y = 14
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "hFO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -13996,9 +13465,7 @@
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
 "hGp" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/caves_lambda)
 "hGq" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
@@ -14166,9 +13633,7 @@
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/marshal_office)
 "hOB" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/e)
 "hOI" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -14249,9 +13714,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/lambda_cave_cas)
 "hRL" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
 "hRX" = (
 /obj/structure/reagent_dispensers/beerkeg,
@@ -14279,9 +13742,7 @@
 	layer = 3.1
 	},
 /obj/effect/decal/cleanable/generic,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_19"
-	},
+/turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/outside/nw)
 "hSR" = (
 /obj/item/folder/yellow,
@@ -14311,9 +13772,7 @@
 /turf/open/floor/whitepurplefull,
 /area/bigredv2/caves/lambda/research)
 "hTy" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "hTH" = (
 /obj/effect/decal/cleanable/blood{
@@ -14386,9 +13845,7 @@
 	dir = 4
 	},
 /obj/item/trash/cigbutt/cigarbutt,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_13"
-	},
+/turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/outside/nw)
 "hWb" = (
 /obj/structure/surface/table,
@@ -14534,9 +13991,7 @@
 	pixel_y = 6;
 	pixel_x = 7
 	},
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "hZl" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -14551,9 +14006,7 @@
 /area/bigredv2/caves/mining)
 "hZn" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "hZq" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -14647,9 +14100,7 @@
 /area/bigredv2/outside/lz1_telecomm_cas)
 "ici" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached18"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/bigredv2/outside/virology)
 "icH" = (
 /obj/structure/fence,
@@ -14699,9 +14150,7 @@
 	pixel_y = 7;
 	pixel_x = -13
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/nw)
 "idY" = (
 /obj/structure/cargo_container/arious/leftmid,
@@ -14754,9 +14203,7 @@
 /area/bigredv2/outside/marshal_office)
 "ifV" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/se)
 "igl" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -14886,10 +14333,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 6;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/c)
 "ikh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -15419,9 +14863,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "iDq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "iDN" = (
 /obj/structure/machinery/pipedispenser,
@@ -15485,9 +14927,7 @@
 "iHd" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "iHn" = (
 /obj/structure/largecrate/random/secure{
@@ -15505,9 +14945,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/caves_lambda)
 "iHu" = (
 /obj/item/trash/cigbutt{
@@ -15659,9 +15097,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/nw)
 "iKv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -15706,16 +15142,11 @@
 "iLX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "iMw" = (
 /obj/effect/decal/strata_decals/grime/grime1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "iMz" = (
 /obj/structure/foamed_metal,
@@ -15739,9 +15170,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement14"
-	},
+/turf/open/asphalt/cement/cement14,
 /area/bigredv2/outside/space_port)
 "iMZ" = (
 /turf/open/floor/almayer/w_y1/north,
@@ -15770,9 +15199,7 @@
 /obj/effect/decal/cleanable/ash{
 	pixel_y = 19
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_14"
-	},
+/turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/outside/nw)
 "iOA" = (
 /obj/structure/surface/table,
@@ -15943,9 +15370,7 @@
 /area/bigredv2/outside/lambda_cave_cas)
 "iTR" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "iTW" = (
 /turf/open/floor/asteroidwarning/northwest,
@@ -15968,9 +15393,7 @@
 /area/bigredv2/outside/n)
 "iUR" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/w)
 "iUS" = (
 /obj/structure/closet/toolcloset,
@@ -16016,9 +15439,7 @@
 /area/bigredv2/outside/engineering)
 "iVx" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/e)
 "iVC" = (
 /obj/item/tool/extinguisher,
@@ -16075,9 +15496,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "iXR" = (
 /obj/structure/bed/chair{
@@ -16129,9 +15548,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_research)
 "iZn" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "iZp" = (
 /obj/effect/decal/cleanable/dirt,
@@ -16177,9 +15594,7 @@
 /area/bigredv2/outside/medical)
 "jal" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/c)
 "jaz" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -16312,9 +15727,7 @@
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 8
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "jdO" = (
 /obj/structure/toilet{
@@ -16359,9 +15772,7 @@
 	pixel_x = 7;
 	pixel_y = -24
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "jeN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -16385,10 +15796,7 @@
 	pixel_x = -6;
 	pixel_y = -1
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/east,
 /area/bigredv2/outside/medical)
 "jfj" = (
 /turf/open/mars_cave/mars_cave_5,
@@ -16463,9 +15871,7 @@
 /area/bigredv2/outside/dorms)
 "jiw" = (
 /obj/item/tool/warning_cone,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/se)
 "jiD" = (
 /turf/open/jungle/impenetrable,
@@ -16521,9 +15927,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/caves_lambda)
 "jkt" = (
 /turf/open/mars_cave/mars_cave_11,
@@ -16550,10 +15954,7 @@
 	pixel_x = -8
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "jlg" = (
 /obj/structure/machinery/light/small{
@@ -16762,17 +16163,13 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "jrc" = (
 /obj/effect/decal/cleanable/vomit{
 	icon_state = "vomit_4"
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "jri" = (
 /obj/effect/landmark/hunter_secondary,
@@ -16815,9 +16212,7 @@
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "jtu" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -16851,10 +16246,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/north,
 /area/bigredv2/outside/medical)
 "jue" = (
 /obj/effect/decal/warning_stripes{
@@ -16869,10 +16261,7 @@
 /obj/item/stack/sheet/wood{
 	pixel_x = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "juu" = (
 /turf/open/floor/freezerfloor,
@@ -16913,9 +16302,7 @@
 	dir = 4;
 	health = 25000
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/c)
 "jvE" = (
 /obj/item/weapon/shield/riot{
@@ -16961,9 +16348,7 @@
 /turf/open/mars_cave/mars_dirt_5,
 /area/bigredv2/caves/mining)
 "jxR" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/c)
 "jyl" = (
 /obj/item/trash/eat,
@@ -17068,9 +16453,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/caves/lambda/xenobiology)
 "jCA" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_6"
-	},
+/turf/open/mars/mars_dirt_6,
 /area/bigredv2/outside/nw)
 "jCZ" = (
 /obj/structure/surface/table/woodentable{
@@ -17172,9 +16555,7 @@
 "jGX" = (
 /obj/item/weapon/broken_bottle,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "jHx" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -17372,16 +16753,12 @@
 /area/bigredv2/outside/hydroponics)
 "jOA" = (
 /obj/structure/flora/grass/desert/lightgrass_3,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_20"
-	},
+/turf/open/mars_cave/mars_cave_20,
 /area/bigredv2/outside/nw)
 "jOP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/ammo_casing/bullet,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "jPb" = (
 /obj/structure/bed/chair/comfy/blue,
@@ -17425,9 +16802,7 @@
 /turf/open/floor/cult,
 /area/bigredv2/outside/chapel)
 "jQA" = (
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
+/turf/open/floor/plating/platebotc,
 /area/bigredv2/outside/space_port)
 "jQE" = (
 /obj/effect/decal/cleanable/blood,
@@ -17495,10 +16870,7 @@
 /area/bigredv2/caves/eta/living)
 "jTs" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "jTU" = (
 /obj/structure/flora/grass/desert/lightgrass_5,
@@ -17544,9 +16916,7 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/lambda_cave_cas)
 "jVK" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
@@ -17646,9 +17016,7 @@
 "jZK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
 "jZZ" = (
 /obj/structure/bed/roller,
@@ -17656,9 +17024,7 @@
 /area/bigredv2/outside/nw)
 "kad" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/nw)
 "kat" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -17821,9 +17187,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement1"
-	},
+/turf/open/asphalt/cement/cement1,
 /area/bigredv2/caves_lambda)
 "kfM" = (
 /obj/effect/decal/cleanable/blood,
@@ -17862,18 +17226,14 @@
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves_virology)
 "khg" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/se)
 "khr" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/virology)
 "khA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -17891,9 +17251,7 @@
 /area/bigredv2/outside/medical)
 "khX" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "kib" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -18026,9 +17384,7 @@
 "kmA" = (
 /obj/structure/bed/roller,
 /obj/structure/closet/bodybag,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "kmC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18196,9 +17552,7 @@
 /area/bigredv2/outside/marshal_office)
 "kru" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/caves_lambda)
 "krA" = (
 /turf/open/floor/redcorner,
@@ -18304,9 +17658,7 @@
 	pixel_y = 13;
 	pixel_x = 17
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/nw)
 "kuT" = (
 /obj/item/ore{
@@ -18355,12 +17707,6 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
-"kwQ" = (
-/turf/open/floor{
-	dir = 10;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/se)
 "kwU" = (
 /obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
@@ -18434,9 +17780,7 @@
 /area/bigredv2/outside/medical)
 "kzv" = (
 /obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/space_port_lz2)
 "kzC" = (
 /turf/open/floor/whitegreencorner/west,
@@ -18560,9 +17904,7 @@
 /turf/open/floor/redfull/northwest,
 /area/bigredv2/caves/eta/research)
 "kEn" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement14"
-	},
+/turf/open/asphalt/cement/cement14,
 /area/bigredv2/outside/filtration_cave_cas)
 "kEo" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -18766,9 +18108,7 @@
 /area/bigredv2/caves/eta/storage)
 "kJU" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/w)
 "kJW" = (
 /obj/structure/machinery/conveyor{
@@ -19020,9 +18360,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
 "kRZ" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/nw)
 "kSr" = (
 /obj/structure/barricade/wooden,
@@ -19049,9 +18387,7 @@
 "kTl" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/asphalt/cement{
-	icon_state = "cement15"
-	},
+/turf/open/asphalt/cement/cement15,
 /area/bigredv2/caves_lambda)
 "kTs" = (
 /obj/effect/decal/cleanable/blood,
@@ -19236,10 +18572,7 @@
 /obj/item/stack/sheet/metal{
 	amount = 3
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/medical)
 "lah" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19327,10 +18660,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottom"
 	},
-/turf/open/floor{
-	dir = 6;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/southeast,
 /area/bigredv2/outside/medical)
 "lcV" = (
 /turf/open/mars_cave/mars_dirt_6,
@@ -19352,21 +18682,15 @@
 /area/bigredv2/outside/medical)
 "lez" = (
 /obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "leN" = (
 /obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
+/turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "lfW" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/lambda_cave_cas)
 "lfZ" = (
 /obj/structure/machinery/light{
@@ -19378,9 +18702,7 @@
 /turf/open/floor/whiteblue/north,
 /area/bigredv2/outside/medical)
 "lgj" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/w)
 "lgY" = (
 /obj/effect/landmark/hunter_secondary,
@@ -19392,18 +18714,14 @@
 	dir = 9
 	},
 /obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/c)
 "lhG" = (
 /turf/open/floor/delivery,
 /area/bigredv2/outside/cargo)
 "lhK" = (
 /obj/item/tool/warning_cone,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/se)
 "lhP" = (
 /obj/structure/closet/l3closet/virology,
@@ -19412,15 +18730,11 @@
 /area/bigredv2/outside/virology)
 "lhR" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/space_port_lz2)
 "lhU" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/gm/river{
-	color = "#995555"
-	},
+/turf/open/gm/river/red,
 /area/bigredv2/outside/c)
 "lhZ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -19468,9 +18782,7 @@
 	pixel_x = -14;
 	pixel_y = 10
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "ljg" = (
 /obj/structure/surface/table/reinforced,
@@ -19502,9 +18814,7 @@
 /area/bigredv2/outside/n)
 "ljU" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/w)
 "lkf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19624,15 +18934,11 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/engineer,
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/gm/river{
-	color = "#990000"
-	},
+/turf/open/gm/river/darkred,
 /area/bigredv2/outside/c)
 "loR" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
 "lpb" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -19757,9 +19063,7 @@
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 1
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/nw)
 "ltW" = (
 /obj/effect/landmark/crap_item,
@@ -19803,9 +19107,7 @@
 /area/bigredv2/outside/space_port_lz2)
 "lwg" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/virology)
 "lwj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19877,9 +19179,7 @@
 /area/bigredv2/caves/eta/living)
 "lxA" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/medical)
 "lxB" = (
 /obj/structure/machinery/light{
@@ -19987,9 +19287,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "lAJ" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/lambda_cave_cas)
 "lBa" = (
 /turf/open/floor/wood,
@@ -20034,9 +19332,7 @@
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "lBX" = (
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
+/turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "lBY" = (
 /obj/effect/landmark/monkey_spawn,
@@ -20118,9 +19414,7 @@
 "lEk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "lEE" = (
 /turf/open/floor/darkyellow2/north,
@@ -20178,9 +19472,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "lGe" = (
 /obj/structure/machinery/light{
@@ -20251,10 +19543,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "lHl" = (
 /turf/open/floor/asteroidwarning/southwest,
@@ -20306,9 +19595,7 @@
 /area/bigredv2/outside/medical)
 "lJf" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/caves_lambda)
 "lJq" = (
 /mob/living/simple_animal/hostile/retaliate/clown{
@@ -20341,14 +19628,10 @@
 /area/bigredv2/outside/medical)
 "lJL" = (
 /obj/structure/prop/wooden_cross,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/nw)
 "lJQ" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement15"
-	},
+/turf/open/asphalt/cement/cement15,
 /area/bigredv2/outside/filtration_cave_cas)
 "lJT" = (
 /obj/effect/landmark/hunter_primary,
@@ -20374,9 +19657,7 @@
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 1
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "lLd" = (
 /turf/open/floor/dark,
@@ -20408,9 +19689,7 @@
 /obj/effect/decal/cleanable/ash{
 	pixel_y = -21
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "lLX" = (
 /obj/item/trash/cigbutt{
@@ -20439,9 +19718,7 @@
 	pixel_y = 13;
 	pixel_x = 14
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/nw)
 "lMF" = (
 /obj/structure/barricade/wooden{
@@ -20554,9 +19831,7 @@
 	pixel_x = -12;
 	pixel_y = -11
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "lPV" = (
 /obj/item/trash/cigbutt{
@@ -20571,9 +19846,7 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
 "lQj" = (
 /obj/structure/window/reinforced/toughened{
@@ -20670,9 +19943,7 @@
 /area/bigredv2/outside/admin_building)
 "lSq" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "lSK" = (
 /obj/effect/spawner/random/toolbox,
@@ -20689,18 +19960,13 @@
 /area/bigredv2/outside/filtration_plant)
 "lTJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "lTT" = (
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/c)
 "lTU" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/e)
 "lUj" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -20723,9 +19989,7 @@
 	pixel_x = -10;
 	pixel_y = 7
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "lUM" = (
 /obj/structure/machinery/power/reactor/colony,
@@ -20733,9 +19997,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "lUS" = (
 /obj/structure/window/framed/solaris,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "lVc" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -20764,9 +20026,7 @@
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "lVO" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached18"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/bigredv2/outside/virology)
 "lVR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -20797,10 +20057,7 @@
 	pixel_x = 6;
 	pixel_y = 9
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg2"
-	},
+/turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/outside/medical)
 "lXm" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
@@ -20889,9 +20146,7 @@
 	pixel_x = 5;
 	pixel_y = 6
 	},
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner,
 /area/bigredv2/outside/medical)
 "maz" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -20983,10 +20238,7 @@
 /area/bigredv2/caves/lambda/research)
 "mer" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/e)
 "mez" = (
 /obj/structure/bed/chair{
@@ -21088,9 +20340,7 @@
 /area/bigredv2/outside/office_complex)
 "mhI" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/w)
 "mhJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -21111,9 +20361,7 @@
 /area/bigredv2/outside/library)
 "mid" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/c)
 "mil" = (
 /obj/effect/decal/cleanable/vomit{
@@ -21188,10 +20436,7 @@
 "mjX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/wooden,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/north,
 /area/bigredv2/outside/medical)
 "mkb" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
@@ -21201,9 +20446,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "mko" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/w)
 "mkt" = (
 /obj/structure/cargo_container/kelland/right,
@@ -21413,9 +20656,7 @@
 /area/bigredv2/caves/lambda/virology)
 "mqG" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/c)
 "mqP" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
@@ -21472,9 +20713,7 @@
 /area/bigredv2/caves/eta/research)
 "msp" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "msw" = (
 /obj/structure/surface/table,
@@ -21491,9 +20730,7 @@
 "msW" = (
 /obj/effect/decal/strata_decals/grime/grime1,
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "msZ" = (
 /obj/structure/machinery/light{
@@ -21532,9 +20769,7 @@
 	pixel_x = -10;
 	pixel_y = 7
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/bigredv2/outside/nw)
 "mun" = (
 /obj/structure/machinery/light{
@@ -21559,18 +20794,14 @@
 /area/bigredv2/outside/space_port)
 "muG" = (
 /obj/structure/machinery/light,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "muM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/lambda_cave_cas)
 "muP" = (
 /turf/closed/wall/wood,
@@ -21620,9 +20851,7 @@
 "mwE" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/caves_lambda)
 "mwT" = (
 /obj/effect/landmark/crap_item,
@@ -21651,9 +20880,7 @@
 "mxH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/s)
 "mxM" = (
 /obj/structure/machinery/power/port_gen/pacman,
@@ -21665,10 +20892,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottom"
 	},
-/turf/open/floor{
-	dir = 10;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/southwest,
 /area/bigredv2/outside/medical)
 "mxW" = (
 /turf/open/mars_cave/mars_cave_8,
@@ -21870,9 +21094,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "mDx" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/filtration_plant)
 "mDy" = (
 /turf/open/floor/asteroidwarning,
@@ -21882,9 +21104,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/caves_lambda)
 "mEo" = (
 /obj/structure/closet/secure_closet/atmos_personal,
@@ -21950,9 +21170,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/se)
 "mGz" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/e)
 "mGC" = (
 /turf/open/mars_cave/mars_cave_5,
@@ -22163,9 +21381,7 @@
 /area/bigredv2/caves/mining)
 "mPc" = (
 /obj/structure/fence,
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
 "mPw" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -22181,9 +21397,7 @@
 /area/bigredv2/outside/nw)
 "mPN" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "mPR" = (
 /turf/open/floor/darkred2/southeast,
@@ -22197,9 +21411,7 @@
 "mQt" = (
 /obj/effect/decal/strata_decals/grime/grime2,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/space_port_lz2)
 "mQw" = (
 /obj/structure/machinery/light,
@@ -22209,9 +21421,7 @@
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/caves_research)
 "mRh" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
 "mRD" = (
 /obj/structure/surface/table,
@@ -22442,9 +21652,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "mYU" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_14"
-	},
+/turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/outside/nw)
 "mYZ" = (
 /obj/structure/machinery/light,
@@ -22497,9 +21705,7 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/e)
 "nbh" = (
 /obj/item/tool/pickaxe{
@@ -22546,9 +21752,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/nw)
 "nbW" = (
 /obj/structure/closet/l3closet/scientist,
@@ -22570,9 +21774,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/c)
 "ncn" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "ncp" = (
 /obj/effect/landmark/hunter_primary,
@@ -22587,9 +21789,7 @@
 /area/bigredv2/caves/lambda/breakroom)
 "ncA" = (
 /obj/effect/decal/remains/human,
-/turf/open/asphalt/cement{
-	icon_state = "cement2"
-	},
+/turf/open/asphalt/cement/cement2,
 /area/bigredv2/outside/lambda_cave_cas)
 "ncT" = (
 /obj/effect/landmark/crap_item,
@@ -22602,9 +21802,7 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/caves_lambda)
 "ndi" = (
 /turf/open/mars/mars_dirt_3,
@@ -22689,10 +21887,7 @@
 "nfh" = (
 /obj/structure/bed/roller,
 /obj/structure/closet/bodybag,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/west,
 /area/bigredv2/outside/medical)
 "nfu" = (
 /obj/structure/machinery/light{
@@ -22767,9 +21962,7 @@
 /area/bigredv2/outside/marshal_office)
 "nhJ" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "nhV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -22800,9 +21993,7 @@
 /area/bigredv2/outside/medical)
 "niC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "niJ" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -22873,9 +22064,7 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "nlW" = (
 /obj/structure/platform/kutjevo/rock,
@@ -22962,9 +22151,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "noG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
 "noQ" = (
 /turf/open/floor/darkyellow2/northwest,
@@ -23174,9 +22361,7 @@
 /obj/effect/decal/cleanable/ash{
 	pixel_y = 19
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_9"
-	},
+/turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/outside/nw)
 "nuu" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
@@ -23246,9 +22431,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "nwr" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
@@ -23311,9 +22494,7 @@
 	pixel_x = -7;
 	pixel_y = 13
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "nyW" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -23347,9 +22528,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/c)
 "nzX" = (
 /obj/structure/bookcase/manuals/engineering,
@@ -23591,9 +22770,7 @@
 "nGw" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "nHq" = (
 /turf/closed/wall/solaris{
@@ -23715,9 +22892,7 @@
 /area/bigredv2/caves/eta/research)
 "nKP" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/w)
 "nKS" = (
 /obj/structure/pipes/unary/freezer{
@@ -23743,9 +22918,7 @@
 /area/bigredv2/caves_lambda)
 "nLt" = (
 /obj/effect/decal/cleanable/vomit,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "nLB" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -23834,16 +23007,11 @@
 /obj/structure/sign/nosmoking_1{
 	pixel_x = -32
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "nNE" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "nNO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -23852,10 +23020,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "nOh" = (
 /obj/structure/surface/table/woodentable,
@@ -24064,9 +23229,7 @@
 /area/bigredv2/outside/office_complex)
 "nSo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "nSv" = (
 /obj/structure/machinery/door_control{
@@ -24079,9 +23242,7 @@
 /area/bigredv2/caves/eta/research)
 "nSz" = (
 /obj/structure/barricade/wooden,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "nSE" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -24120,9 +23281,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/se)
 "nUu" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/w)
 "nUG" = (
 /obj/structure/filingcabinet,
@@ -24212,9 +23371,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/n)
 "nYd" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/space_port)
 "nYg" = (
 /turf/open/mars_cave/mars_cave_2,
@@ -24310,10 +23467,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "oav" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/east,
 /area/bigredv2/outside/medical)
 "oaA" = (
 /turf/open/mars_cave/mars_cave_14,
@@ -24489,9 +23643,7 @@
 	pixel_x = -8
 	},
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "ohH" = (
 /obj/structure/xenoautopsy/tank/hugger,
@@ -24531,13 +23683,6 @@
 	},
 /turf/open/jungle/impenetrable,
 /area/bigredv2/caves/eta/research)
-"oju" = (
-/obj/structure/surface/table/reinforced,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/bigredv2/outside/medical)
 "ojD" = (
 /obj/structure/platform_decoration{
 	dir = 4
@@ -24567,9 +23712,7 @@
 /area/bigredv2/outside/medical)
 "okT" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "olB" = (
 /obj/structure/surface/table,
@@ -24827,10 +23970,7 @@
 	pixel_x = -2;
 	pixel_y = 10
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "oua" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -24908,9 +24048,7 @@
 /area/bigredv2/caves/mining)
 "owj" = (
 /obj/effect/decal/strata_decals/grime/grime2,
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "owr" = (
 /obj/structure/surface/rack,
@@ -24950,9 +24088,7 @@
 /area/bigred/ground/garage_workshop)
 "oxU" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
+/turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "oxZ" = (
 /turf/open/floor/darkyellow2/east,
@@ -25118,9 +24254,7 @@
 "oDz" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "oDH" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
@@ -25139,9 +24273,7 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/c)
 "oEk" = (
 /obj/structure/machinery/door_control{
@@ -25175,9 +24307,7 @@
 /area/bigredv2/outside/admin_building)
 "oFq" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "oFu" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25214,10 +24344,7 @@
 /area/bigredv2/outside/telecomm/n_cave)
 "oGY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/west,
 /area/bigredv2/outside/medical)
 "oHk" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
@@ -25226,13 +24353,6 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/cargo)
-"oHv" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
-/area/bigredv2/outside/medical)
 "oHP" = (
 /turf/open/mars_cave/mars_dirt_5,
 /area/bigredv2/outside/filtration_plant)
@@ -25307,9 +24427,7 @@
 /area/bigredv2/outside/dorms)
 "oJC" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "oJI" = (
 /obj/structure/window/reinforced/toughened{
@@ -25408,17 +24526,13 @@
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_3"
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_14"
-	},
+/turf/open/mars/mars_dirt_14,
 /area/bigredv2/outside/nw)
 "oMD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "oMG" = (
 /turf/open/mars_cave/mars_cave_17,
@@ -25452,9 +24566,7 @@
 	pixel_y = 8;
 	pixel_x = -7
 	},
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "oNr" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25489,9 +24601,7 @@
 /area/bigredv2/outside/c)
 "oOB" = (
 /obj/effect/landmark/crap_item,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/w)
 "oOI" = (
 /turf/open/asphalt/cement,
@@ -25521,9 +24631,7 @@
 	},
 /obj/item/reagent_container/food/drinks/cup,
 /obj/effect/decal/cleanable/generic,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_9"
-	},
+/turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/outside/nw)
 "oPu" = (
 /obj/item/prop{
@@ -25583,9 +24691,7 @@
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	health = 25000
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/c)
 "oRX" = (
 /obj/structure/flora/grass/desert/lightgrass_10,
@@ -25623,9 +24729,7 @@
 	pixel_x = 1;
 	pixel_y = 9
 	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/medical)
 "oTa" = (
 /turf/open/floor/whitepurple/east,
@@ -25684,9 +24788,7 @@
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/caves/lambda/virology)
 "oWh" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement14"
-	},
+/turf/open/asphalt/cement/cement14,
 /area/bigredv2/caves_lambda)
 "oWj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25713,9 +24815,7 @@
 /area/bigredv2/outside/chapel)
 "oXg" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/se)
 "oXk" = (
 /obj/structure/surface/table,
@@ -25725,9 +24825,7 @@
 /area/bigredv2/outside/engineering)
 "oXp" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/space_port)
 "oXq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
@@ -25775,9 +24873,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "oYu" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
@@ -25794,9 +24890,7 @@
 /area/bigredv2/caves/eta/research)
 "oYG" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/virology)
 "oYH" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -25847,9 +24941,7 @@
 /area/bigredv2/outside/eta)
 "paq" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/w)
 "pav" = (
 /obj/item/ore{
@@ -25871,9 +24963,7 @@
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
 "paO" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/filtration_plant)
 "paX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25974,9 +25064,7 @@
 /area/bigredv2/outside/lambda_cave_cas)
 "pei" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "pej" = (
 /obj/effect/decal/cleanable/blood,
@@ -26018,10 +25106,7 @@
 "pfu" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 10;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/southwest,
 /area/bigredv2/outside/medical)
 "pfB" = (
 /obj/structure/machinery/door_control{
@@ -26332,9 +25417,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/landmark/corpsespawner/colonist/random,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "ppp" = (
 /obj/structure/sign/safety/hazard,
@@ -26353,14 +25436,10 @@
 /area/bigredv2/caves/eta/research)
 "pqp" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/filtration_plant)
 "pqw" = (
-/turf/open/gm/river{
-	color = "#995555"
-	},
+/turf/open/gm/river/red,
 /area/bigredv2/outside/c)
 "pqy" = (
 /turf/open/floor/whitepurplecorner/east,
@@ -26423,9 +25502,7 @@
 /area/bigredv2/outside/admin_building)
 "psl" = (
 /obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/space_port_lz2)
 "psy" = (
 /turf/open/floor/asteroidwarning/north,
@@ -26441,9 +25518,7 @@
 /area/bigredv2/caves/mining)
 "pti" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
-/turf/open/mars{
-	icon_state = "mars_dirt_10"
-	},
+/turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/nw)
 "ptn" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -26484,9 +25559,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "pvm" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/space_port_lz2)
 "pvI" = (
 /turf/open/mars_cave/mars_cave_15,
@@ -26511,9 +25584,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/caves_lambda)
 "pxK" = (
 /obj/effect/landmark/monkey_spawn,
@@ -26563,9 +25634,7 @@
 /area/bigredv2/outside/filtration_plant)
 "pyW" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/se)
 "pyZ" = (
 /turf/open/floor/darkgreencorners2/west,
@@ -26648,9 +25717,7 @@
 /area/bigredv2/outside/general_offices)
 "pBM" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "pBQ" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -26706,9 +25773,7 @@
 /area/bigredv2/outside/medical)
 "pDM" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/w)
 "pDX" = (
 /obj/structure/surface/rack,
@@ -26757,9 +25822,7 @@
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/caves/mining)
 "pEJ" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/virology)
 "pEK" = (
 /turf/open/mars/mars_dirt_13,
@@ -26808,10 +25871,7 @@
 /area/bigredv2/outside/se)
 "pFo" = (
 /obj/item/frame/table,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg2"
-	},
+/turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/outside/office_complex)
 "pFu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -26857,9 +25917,7 @@
 /area/bigredv2/outside/filtration_plant)
 "pGG" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/c)
 "pGI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26909,9 +25967,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "pIE" = (
 /obj/item/clothing/shoes/galoshes{
@@ -26948,9 +26004,7 @@
 	pixel_x = -6;
 	pixel_y = -2
 	},
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "pJF" = (
 /obj/structure/machinery/shower{
@@ -26998,16 +26052,11 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "pLW" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement9"
-	},
+/turf/open/asphalt/cement/cement9,
 /area/bigredv2/outside/lambda_cave_cas)
 "pLY" = (
 /obj/item/bodybag/cryobag,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "pLZ" = (
 /obj/structure/flora/grass/desert/lightgrass_12,
@@ -27046,14 +26095,10 @@
 /area/bigredv2/outside/space_port_lz2)
 "pOj" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "pOu" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/space_port_lz2)
 "pOy" = (
 /turf/open/floor/asteroidfloor/north,
@@ -27148,10 +26193,7 @@
 /obj/structure/barricade/handrail/medical{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/nw)
 "pSI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -27198,10 +26240,7 @@
 /area/bigredv2/outside/e)
 "pTY" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/north,
 /area/bigredv2/outside/medical)
 "pUi" = (
 /obj/item/weapon/broken_bottle,
@@ -27209,9 +26248,7 @@
 /area/bigredv2/caves/mining)
 "pUz" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/se)
 "pUP" = (
 /obj/structure/curtain/medical,
@@ -27225,9 +26262,7 @@
 /area/bigredv2/outside/c)
 "pVl" = (
 /obj/effect/landmark/crap_item,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "pVo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -27245,10 +26280,7 @@
 	pixel_x = -2;
 	pixel_y = 10
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "pVt" = (
 /obj/effect/decal/cleanable/blood,
@@ -27328,9 +26360,7 @@
 /turf/open/floor/darkpurple2/east,
 /area/bigredv2/caves/lambda/research)
 "pYj" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/c)
 "pYq" = (
 /obj/effect/decal/warning_stripes{
@@ -27488,10 +26518,7 @@
 	pixel_x = 3;
 	pixel_y = 8
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/west,
 /area/bigredv2/outside/medical)
 "qcE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -27510,9 +26537,7 @@
 /area/bigredv2/outside/virology)
 "qdk" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/nw)
 "qdn" = (
 /turf/open/floor/whitepurple/northwest,
@@ -27650,9 +26675,7 @@
 /obj/effect/decal/cleanable/ash{
 	pixel_y = 19
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/nw)
 "qhF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -27856,9 +26879,7 @@
 	pixel_y = -9
 	},
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "qmj" = (
 /obj/effect/decal/cleanable/generic,
@@ -27885,10 +26906,7 @@
 /turf/open/floor/yellowfull,
 /area/bigredv2/outside/hydroponics)
 "qmX" = (
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/w)
 "qnl" = (
 /turf/open/mars_cave/mars_cave_7,
@@ -27935,9 +26953,7 @@
 /area/bigredv2/outside/office_complex)
 "qoA" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/space_port_lz2)
 "qoB" = (
 /obj/effect/landmark/hunter_primary,
@@ -28003,9 +27019,7 @@
 "qqY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/grass/desert/lightgrass_3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/w)
 "qrl" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -28088,9 +27102,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
 "qtL" = (
 /obj/item/reagent_container/spray/cleaner,
@@ -28134,9 +27146,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "quW" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/nw)
 "qvb" = (
 /obj/structure/surface/table,
@@ -28154,10 +27164,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/space_port_lz2)
 "qwj" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -28221,10 +27228,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "qxb" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "qxf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -28377,9 +27381,7 @@
 /area/bigredv2/outside/e)
 "qDo" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "qDT" = (
 /obj/structure/machinery/alarm{
@@ -28405,9 +27407,7 @@
 "qEp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/e)
 "qEy" = (
 /turf/open/mars_cave/mars_dirt_6,
@@ -28431,9 +27431,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/oob)
 "qFT" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "qGi" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
@@ -28455,10 +27453,7 @@
 	dir = 4;
 	health = 25000
 	},
-/turf/open/floor{
-	dir = 6;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/c)
 "qHh" = (
 /obj/structure/sink{
@@ -28491,9 +27486,7 @@
 	pixel_x = 8;
 	pixel_y = 12
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/w)
 "qIi" = (
 /obj/effect/landmark/crap_item,
@@ -28554,9 +27547,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
 "qJM" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28630,9 +27621,7 @@
 	pixel_x = -6;
 	pixel_y = -2
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
 "qLz" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -28703,9 +27692,7 @@
 /area/bigredv2/outside/w)
 "qNJ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/w)
 "qNK" = (
 /obj/structure/sign/safety/maint{
@@ -28721,9 +27708,7 @@
 /area/bigred/ground/garage_workshop)
 "qNR" = (
 /obj/structure/closet/crate/trashcart,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "qNS" = (
 /obj/structure/machinery/landinglight/ds2{
@@ -28773,9 +27758,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
 "qPz" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -28856,9 +27839,7 @@
 /obj/effect/decal/cleanable/ash{
 	pixel_y = 19
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "qRu" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -28901,9 +27882,7 @@
 	pixel_y = 7;
 	pixel_x = 12
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "qSN" = (
 /obj/structure/bed/chair{
@@ -28969,10 +27948,7 @@
 	pixel_y = 9;
 	pixel_x = 12
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "qVu" = (
 /obj/structure/surface/table,
@@ -29012,9 +27988,7 @@
 "qWl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/bigredv2/outside/medical)
 "qWL" = (
 /obj/structure/surface/table/woodentable,
@@ -29044,9 +28018,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "qXs" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/e)
 "qXD" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29073,10 +28045,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "qZl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -29110,9 +28079,7 @@
 	pixel_x = 3;
 	pixel_y = -11
 	},
-/turf/open/floor{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/panelscorched,
 /area/bigredv2/outside/medical)
 "raA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29238,9 +28205,7 @@
 /obj/item/trash/semki{
 	pixel_y = -14
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/virology)
 "rfx" = (
 /obj/item/ore/iron{
@@ -29258,9 +28223,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "rfU" = (
 /obj/structure/machinery/light,
@@ -29387,9 +28350,7 @@
 	pixel_x = -2;
 	pixel_y = 19
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "rkN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29401,9 +28362,7 @@
 	pixel_y = 8;
 	pixel_x = 9
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_9"
-	},
+/turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/outside/nw)
 "rlb" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -29517,9 +28476,7 @@
 /area/bigredv2/outside/admin_building)
 "rpd" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "rpu" = (
 /turf/open/mars_cave/mars_cave_2,
@@ -29631,9 +28588,7 @@
 /area/bigredv2/outside/eta)
 "rtq" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
+/turf/open/floor/plating/platebotc,
 /area/bigredv2/outside/space_port)
 "rtW" = (
 /obj/item/prop{
@@ -29744,9 +28699,7 @@
 	},
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "rvv" = (
 /obj/structure/barricade/deployable,
@@ -29903,9 +28856,7 @@
 	pixel_x = -10;
 	pixel_y = 16
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/c)
 "rAr" = (
 /obj/structure/bed,
@@ -29973,9 +28924,7 @@
 /turf/open/floor/darkred2/west,
 /area/bigredv2/outside/admin_building)
 "rDC" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "rDE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -30123,9 +29072,7 @@
 /area/bigredv2/outside/engineering)
 "rJY" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/space_port_lz2)
 "rKe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -30194,10 +29141,7 @@
 	pixel_x = 2;
 	pixel_y = -3
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/west,
 /area/bigredv2/outside/medical)
 "rLO" = (
 /obj/structure/machinery/recharge_station,
@@ -30241,9 +29185,7 @@
 /area/bigredv2/caves/mining)
 "rMY" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/limb,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/c)
 "rNc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -30391,9 +29333,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
 "rSP" = (
 /obj/structure/window/reinforced/toughened,
@@ -30569,9 +29509,7 @@
 /area/bigredv2/caves/eta/storage)
 "rWI" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "rWQ" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -30627,9 +29565,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "rYw" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/virology)
 "rYN" = (
 /obj/effect/decal/warning_stripes{
@@ -30719,9 +29655,7 @@
 /area/bigredv2/caves/mining)
 "sbP" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
 "sbT" = (
 /obj/item/trash/uscm_mre{
@@ -30781,10 +29715,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 10;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/e)
 "sei" = (
 /obj/structure/surface/table,
@@ -30797,9 +29728,7 @@
 /area/bigredv2/outside/general_store)
 "sek" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "ser" = (
 /obj/structure/bed/chair/wood/normal{
@@ -30834,9 +29763,7 @@
 /turf/open/floor/delivery,
 /area/bigred/ground/garage_workshop)
 "sfg" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/filtration_cave_cas)
 "sfl" = (
 /obj/effect/decal/cleanable/dirt,
@@ -30879,9 +29806,7 @@
 /area/bigredv2/outside/medical)
 "shj" = (
 /obj/effect/decal/strata_decals/grime/grime2,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/nw)
 "sht" = (
 /turf/open/floor/delivery,
@@ -30981,9 +29906,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
 "skR" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "smh" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -30997,9 +29920,7 @@
 /area/bigredv2/outside/c)
 "smv" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
 "smB" = (
 /turf/open/mars_cave/mars_cave_7,
@@ -31019,10 +29940,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/northwest,
 /area/bigredv2/outside/medical)
 "smY" = (
 /obj/structure/pipes/vents/pump{
@@ -31050,9 +29968,7 @@
 	pixel_y = -10
 	},
 /obj/effect/decal/cleanable/generic,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_19"
-	},
+/turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/outside/nw)
 "sov" = (
 /obj/effect/decal/warning_stripes{
@@ -31086,9 +30002,7 @@
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/c)
 "spJ" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/e)
 "spM" = (
 /turf/open/floor/delivery,
@@ -31168,9 +30082,7 @@
 "stG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "stO" = (
 /obj/structure/surface/table,
@@ -31232,9 +30144,7 @@
 "svr" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/caves_lambda)
 "svs" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -31444,15 +30354,11 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/virology)
 "sCM" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/virology)
 "sCP" = (
 /obj/structure/surface/table,
@@ -31502,18 +30408,14 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_se)
 "sEv" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/se)
 "sEF" = (
 /turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/caves/eta/xenobiology)
 "sEX" = (
 /obj/structure/barricade/wooden,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/c)
 "sFC" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -31536,10 +30438,7 @@
 	pixel_x = 32
 	},
 /obj/item/storage/box/gloves,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "sGa" = (
 /obj/effect/decal/cleanable/dirt,
@@ -31603,9 +30502,7 @@
 /area/bigredv2/outside/general_store)
 "sHX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "sIh" = (
 /obj/effect/landmark/nightmare{
@@ -31651,10 +30548,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "sIX" = (
 /obj/structure/machinery/light{
@@ -31737,9 +30631,7 @@
 /area/bigredv2/outside/cargo)
 "sMM" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
 "sMP" = (
 /obj/structure/barricade/wooden,
@@ -31876,9 +30768,7 @@
 /area/bigredv2/caves/mining)
 "sQr" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/space_port)
 "sRe" = (
 /obj/effect/decal/cleanable/dirt,
@@ -32104,9 +30994,7 @@
 /turf/open/floor/bcircuit,
 /area/bigredv2/outside/telecomm/lz2_cave)
 "tas" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement15"
-	},
+/turf/open/asphalt/cement/cement15,
 /area/bigredv2/outside/lambda_cave_cas)
 "tav" = (
 /obj/structure/transmitter/colony_net{
@@ -32245,9 +31133,7 @@
 "teW" = (
 /obj/effect/decal/strata_decals/grime/grime2,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/space_port)
 "tfq" = (
 /obj/structure/barricade/wooden{
@@ -32409,23 +31295,17 @@
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 8
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "tjQ" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/w)
 "tjS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "tjY" = (
 /obj/item/prop{
@@ -32569,9 +31449,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
 "tod" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/caves_lambda)
 "tol" = (
 /obj/effect/decal/cleanable/dirt,
@@ -32630,9 +31508,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigred/ground/garage_workshop)
 "tpA" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement1"
-	},
+/turf/open/asphalt/cement/cement1,
 /area/bigredv2/caves_lambda)
 "tpE" = (
 /obj/structure/machinery/light{
@@ -32737,9 +31613,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "tsn" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/space_port_lz2)
 "tso" = (
 /obj/structure/transmitter/colony_net{
@@ -32780,9 +31654,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "ttc" = (
 /obj/effect/decal/remains/human,
-/turf/open/asphalt/cement{
-	icon_state = "cement15"
-	},
+/turf/open/asphalt/cement/cement15,
 /area/bigredv2/caves_lambda)
 "tts" = (
 /turf/open/floor/warnwhite/west,
@@ -32856,9 +31728,7 @@
 	pixel_x = -6;
 	pixel_y = -9
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/space_port)
 "tvX" = (
 /obj/effect/landmark/crap_item,
@@ -32878,9 +31748,7 @@
 /area/bigredv2/outside/hydroponics)
 "twG" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/e)
 "twQ" = (
 /obj/structure/pipes/vents/pump,
@@ -32924,16 +31792,11 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/caves_lambda)
 "tza" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement{
-	icon_state = "cement1";
-	dir = 1
-	},
+/turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/filtration_cave_cas)
 "tze" = (
 /obj/item/folder/yellow,
@@ -33165,17 +32028,12 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "tHH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/e)
 "tHJ" = (
 /obj/item/clothing/under/brown{
@@ -33186,9 +32044,7 @@
 /area/bigredv2/outside/general_offices)
 "tHL" = (
 /obj/effect/landmark/crap_item,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/e)
 "tHO" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -33219,9 +32075,7 @@
 "tIy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
 "tIz" = (
 /turf/open/floor/asteroidwarning/north,
@@ -33344,10 +32198,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "tNh" = (
 /turf/open/mars/mars_dirt_10,
@@ -33384,10 +32235,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/e)
 "tOo" = (
 /obj/structure/pipes/vents/scrubber/on,
@@ -33429,9 +32277,7 @@
 /area/bigredv2/outside/general_offices)
 "tQb" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
 "tQg" = (
 /obj/structure/cargo_container/horizontal/blue/bottom,
@@ -33526,9 +32372,7 @@
 /obj/item/trash/semki{
 	pixel_y = -14
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "tVn" = (
 /obj/item/tool/lighter/zippo,
@@ -33578,15 +32422,11 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "tWx" = (
 /obj/item/trash/popcorn,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "tWT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -33636,9 +32476,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "tYN" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement9"
-	},
+/turf/open/asphalt/cement/cement9,
 /area/bigredv2/caves_lambda)
 "tYO" = (
 /obj/structure/bed/chair{
@@ -33846,9 +32684,7 @@
 /area/bigredv2/caves_research)
 "uhm" = (
 /obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "uhQ" = (
 /obj/structure/machinery/light{
@@ -33866,9 +32702,7 @@
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/generic,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_13"
-	},
+/turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/outside/nw)
 "uig" = (
 /obj/structure/window_frame/solaris,
@@ -33877,9 +32711,7 @@
 "uik" = (
 /obj/item/tool/warning_cone,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement{
-	icon_state = "cement9"
-	},
+/turf/open/asphalt/cement/cement9,
 /area/bigredv2/outside/filtration_cave_cas)
 "uiG" = (
 /obj/structure/machinery/door_control{
@@ -33906,10 +32738,7 @@
 	layer = 2.8
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "uji" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -33922,9 +32751,7 @@
 /area/bigredv2/caves/lambda/virology)
 "ujw" = (
 /obj/item/tool/wirecutters,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "ujF" = (
 /obj/structure/surface/table/woodentable,
@@ -33943,10 +32770,7 @@
 "ujL" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/north,
 /area/bigredv2/outside/medical)
 "ujZ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -33954,9 +32778,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "ulE" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/c)
 "ulG" = (
 /obj/structure/largecrate/random/case,
@@ -34119,9 +32941,7 @@
 /area/bigred/ground/garage_workshop)
 "upN" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/space_port)
 "uqd" = (
 /obj/structure/machinery/power/apc{
@@ -34311,9 +33131,7 @@
 /turf/open/floor/yellowfull,
 /area/bigredv2/outside/general_store)
 "uwG" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement9"
-	},
+/turf/open/asphalt/cement/cement9,
 /area/bigredv2/outside/filtration_cave_cas)
 "uwT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -34431,9 +33249,7 @@
 	pixel_x = -11;
 	pixel_y = -9
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/virology)
 "uBh" = (
 /obj/item/stack/rods{
@@ -34562,9 +33378,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "uFj" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/w)
 "uFp" = (
 /obj/structure/machinery/mill,
@@ -34581,9 +33395,7 @@
 "uFL" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/nw)
 "uFQ" = (
 /obj/structure/largecrate/random,
@@ -34691,10 +33503,7 @@
 	name = "Medbay Reception";
 	req_one_access_txt = "2;8;19"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "uIY" = (
 /turf/open/mars/mars_dirt_6,
@@ -34771,9 +33580,7 @@
 "uKZ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/asphalt/cement{
-	icon_state = "cement9"
-	},
+/turf/open/asphalt/cement/cement9,
 /area/bigredv2/caves_lambda)
 "uLi" = (
 /turf/open/mars_cave/mars_dirt_5,
@@ -34840,9 +33647,7 @@
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 8
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "uNF" = (
 /obj/structure/surface/table,
@@ -34864,9 +33669,7 @@
 	pixel_x = -10;
 	pixel_y = 16
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
 "uOo" = (
 /obj/effect/landmark/crap_item,
@@ -35033,9 +33836,7 @@
 /area/bigredv2/caves/lambda/virology)
 "uTR" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "uTT" = (
 /obj/structure/surface/table,
@@ -35061,9 +33862,7 @@
 /area/bigredv2/caves_north)
 "uUt" = (
 /obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
 "uUx" = (
 /obj/effect/decal/cleanable/dirt,
@@ -35306,10 +34105,7 @@
 /area/bigredv2/outside/engineering)
 "vaM" = (
 /obj/effect/decal/cleanable/blood/xtracks,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "vaQ" = (
 /turf/open/floor/chapel,
@@ -35399,9 +34195,7 @@
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "vei" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement14"
-	},
+/turf/open/asphalt/cement/cement14,
 /area/bigredv2/outside/lambda_cave_cas)
 "vel" = (
 /obj/structure/flora/grass/desert/lightgrass_4,
@@ -35413,9 +34207,7 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/se)
 "vex" = (
 /turf/closed/wall/wood,
@@ -35495,9 +34287,7 @@
 /area/bigredv2/outside/medical)
 "vfX" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached17"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/bigredv2/outside/nw)
 "vgb" = (
 /turf/open/floor/darkblue2/southwest,
@@ -35743,9 +34533,7 @@
 	pixel_x = -19;
 	pixel_y = -5
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "vmL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -35901,9 +34689,7 @@
 /area/bigredv2/outside/engineering)
 "vss" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/space_port_lz2)
 "vst" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -36001,10 +34787,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/s)
 "vvL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -36035,9 +34818,7 @@
 /obj/effect/decal/cleanable/vomit{
 	icon_state = "vomit_4"
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "vwI" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -36047,9 +34828,7 @@
 /area/bigredv2/caves/lambda/breakroom)
 "vwV" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/c)
 "vwZ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -36295,9 +35074,7 @@
 "vFb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "vFc" = (
 /obj/structure/barricade/wooden{
@@ -36491,9 +35268,7 @@
 /area/bigredv2/outside/medical)
 "vKw" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
 "vKA" = (
 /obj/item/device/radio/intercom{
@@ -36509,9 +35284,7 @@
 /area/bigredv2/outside/filtration_plant)
 "vLa" = (
 /obj/structure/machinery/light,
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/lambda_cave_cas)
 "vLd" = (
 /turf/open/floor,
@@ -36655,9 +35428,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "vQP" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
 "vQS" = (
 /obj/structure/machinery/deployable/barrier,
@@ -36697,9 +35468,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "vSi" = (
 /obj/structure/fence,
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/filtration_cave_cas)
 "vSv" = (
 /obj/structure/machinery/light{
@@ -36724,9 +35493,7 @@
 /area/bigredv2/caves/lambda/virology)
 "vSP" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/c)
 "vTA" = (
 /obj/item/stack/cable_coil/cut,
@@ -36765,9 +35532,7 @@
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "vVf" = (
 /obj/structure/barricade/wooden{
@@ -36789,9 +35554,7 @@
 /area/bigredv2/caves/mining)
 "vVU" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/e)
 "vVZ" = (
 /turf/closed/wall/solaris,
@@ -36986,9 +35749,7 @@
 "wbo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "wbs" = (
 /obj/structure/machinery/light{
@@ -37101,9 +35862,7 @@
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/e)
 "weU" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "wfd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -37154,9 +35913,7 @@
 	pixel_x = -13;
 	pixel_y = 12
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/space_port_lz2)
 "whp" = (
 /obj/effect/decal/cleanable/blood,
@@ -37166,10 +35923,7 @@
 "whq" = (
 /obj/structure/bed,
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "wig" = (
 /obj/structure/bed/chair/comfy/black{
@@ -37184,10 +35938,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "wij" = (
 /turf/open/mars_cave/mars_cave_20,
@@ -37240,10 +35991,7 @@
 	pixel_y = 32
 	},
 /obj/structure/bed,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "wjn" = (
 /obj/item/reagent_container/glass/bucket/mopbucket{
@@ -37254,9 +36002,7 @@
 /area/bigredv2/outside/office_complex)
 "wjp" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "wjx" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -37294,9 +36040,7 @@
 	pixel_x = 5;
 	pixel_y = 15
 	},
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "wkr" = (
 /obj/structure/bed/chair{
@@ -37305,9 +36049,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "wkE" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached16"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/bigredv2/outside/virology)
 "wkR" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -37381,9 +36123,7 @@
 	dir = 1
 	},
 /obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/space_port_lz2)
 "wnB" = (
 /obj/effect/landmark/good_item,
@@ -37478,9 +36218,7 @@
 /area/bigredv2/caves/eta/storage)
 "wqZ" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "wra" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
@@ -37540,10 +36278,7 @@
 /area/bigredv2/outside/c)
 "wsz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/southeast,
 /area/bigredv2/outside/medical)
 "wsD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -37578,9 +36313,7 @@
 /area/bigredv2/outside/e)
 "wuj" = (
 /obj/structure/girder,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/medical)
 "wuK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -37609,9 +36342,7 @@
 /area/bigredv2/caves/mining)
 "wvj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/virology)
 "wvq" = (
 /obj/structure/filingcabinet,
@@ -37685,9 +36416,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/e)
 "wyq" = (
 /obj/structure/bed/chair/office/light{
@@ -37831,9 +36560,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "wCs" = (
 /obj/structure/machinery/vending/cigarette/colony,
@@ -37905,9 +36632,7 @@
 /obj/structure/bed/bedroll{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "wEv" = (
 /obj/structure/platform/kutjevo/rock{
@@ -37919,9 +36644,7 @@
 /area/bigredv2/caves)
 "wEx" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/w)
 "wEI" = (
 /turf/open/mars_cave/mars_dirt_6,
@@ -38007,10 +36730,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg2"
-	},
+/turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/outside/medical)
 "wIr" = (
 /obj/effect/decal/cleanable/dirt,
@@ -38021,9 +36741,7 @@
 /area/bigredv2/outside/general_store)
 "wIs" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
 "wII" = (
 /obj/structure/bed/chair/office/dark{
@@ -38159,9 +36877,7 @@
 	pixel_y = -10;
 	pixel_x = 8
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/nw)
 "wNq" = (
 /obj/structure/closet/l3closet/scientist,
@@ -38233,9 +36949,7 @@
 "wOC" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "wOJ" = (
 /obj/structure/surface/table,
@@ -38272,9 +36986,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "wPH" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/space_port_lz2)
 "wPJ" = (
 /obj/structure/machinery/computer/cameras,
@@ -38348,9 +37060,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "wSj" = (
 /obj/structure/sign/safety/life_support,
@@ -38378,9 +37088,7 @@
 /area/bigredv2/caves/lambda/breakroom)
 "wUe" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "wUj" = (
 /obj/item/tool/pickaxe,
@@ -38538,10 +37246,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/n)
 "wYJ" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/northeast,
 /area/bigredv2/outside/medical)
 "wYK" = (
 /obj/effect/decal/warning_stripes{
@@ -38598,9 +37303,7 @@
 /turf/open/floor/darkred2/west,
 /area/bigredv2/outside/admin_building)
 "xax" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/space_port_lz2)
 "xaz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -38736,9 +37439,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/space_port)
 "xfe" = (
 /obj/structure/surface/table,
@@ -38790,9 +37491,7 @@
 "xhC" = (
 /obj/item/tool/warning_cone,
 /obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "xhJ" = (
 /turf/open/floor/delivery,
@@ -38898,10 +37597,7 @@
 /area/bigredv2/outside/ne)
 "xkZ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/se)
 "xlf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -39002,9 +37698,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement15"
-	},
+/turf/open/asphalt/cement/cement15,
 /area/bigredv2/outside/space_port)
 "xnL" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -39061,10 +37755,7 @@
 /area/bigredv2/outside/general_offices)
 "xqG" = (
 /obj/item/frame/table/reinforced,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "xqH" = (
 /obj/structure/largecrate/guns,
@@ -39113,9 +37804,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement15"
-	},
+/turf/open/asphalt/cement/cement15,
 /area/bigredv2/caves_lambda)
 "xrx" = (
 /obj/structure/machinery/shower{
@@ -39298,9 +37987,7 @@
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 1
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "xxr" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
@@ -39317,9 +38004,7 @@
 /obj/structure/platform/kutjevo/rock{
 	dir = 4
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17"
-	},
+/turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/nw)
 "xxE" = (
 /obj/effect/decal/cleanable/vomit,
@@ -39338,9 +38023,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/limb/head,
 /obj/effect/decal/cleanable/blood,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
 "xyw" = (
 /obj/effect/decal/cleanable/dirt,
@@ -39355,9 +38038,7 @@
 /area/bigredv2/outside/ne)
 "xze" = (
 /obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
+/turf/open/floor/plating/platebotc,
 /area/bigredv2/outside/space_port)
 "xzg" = (
 /obj/structure/noticeboard{
@@ -39424,10 +38105,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/west,
 /area/bigredv2/outside/medical)
 "xBH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -39445,9 +38123,7 @@
 	pixel_y = -13;
 	pixel_x = 24
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "xCg" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -39482,9 +38158,7 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/c)
 "xDq" = (
 /obj/effect/landmark/survivor_spawner,
@@ -39711,9 +38385,7 @@
 /area/bigredv2/caves/lambda/research)
 "xKf" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "xKn" = (
 /obj/effect/decal/cleanable/dirt,
@@ -39743,9 +38415,7 @@
 /area/bigredv2/caves/eta/research)
 "xLg" = (
 /obj/effect/landmark/crap_item,
-/turf/open/mars{
-	icon_state = "mars_dirt_8"
-	},
+/turf/open/mars/mars_dirt_8,
 /area/bigredv2/outside/s)
 "xLh" = (
 /obj/structure/machinery/botany/editor,
@@ -39854,10 +38524,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/caves_lambda)
 "xQb" = (
 /obj/structure/pipes/vents/pump/on,
@@ -39898,18 +38565,14 @@
 /area/bigredv2/caves_lambda)
 "xRW" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "xSD" = (
 /obj/effect/decal/cleanable/molten_item{
 	pixel_x = -5;
 	pixel_y = -11
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "xSF" = (
 /obj/structure/bed/chair{
@@ -39943,9 +38606,7 @@
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 8
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
 "xTG" = (
 /obj/structure/machinery/power/apc,
@@ -39960,9 +38621,7 @@
 /turf/open/floor/whitepurplecorner/east,
 /area/bigredv2/outside/medical)
 "xUb" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/se)
 "xUu" = (
 /obj/item/trash/snack_bowl{
@@ -39981,9 +38640,7 @@
 /obj/effect/decal/cleanable/ash{
 	pixel_y = 19
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_16"
-	},
+/turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/outside/nw)
 "xUJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -40001,9 +38658,7 @@
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves/mining)
 "xVs" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/se)
 "xVv" = (
 /obj/effect/landmark/crap_item,
@@ -40032,9 +38687,7 @@
 /area/bigredv2/outside/se)
 "xVZ" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/c)
 "xWe" = (
 /turf/open/mars/mars_dirt_11,
@@ -40050,10 +38703,7 @@
 /obj/item/stack/sheet/wood{
 	pixel_y = -7
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/whitegreencorner/east,
 /area/bigredv2/outside/medical)
 "xWr" = (
 /obj/item/ore/uranium{
@@ -40118,9 +38768,7 @@
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "xYa" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/se)
 "xYD" = (
 /obj/effect/decal/cleanable/blood,
@@ -40293,9 +38941,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
 "yfq" = (
 /obj/structure/surface/table,
@@ -40381,9 +39027,7 @@
 	pixel_x = -3
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "yiL" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -48351,7 +46995,7 @@ nlS
 qke
 iTW
 ouY
-ahQ
+hnk
 kRZ
 tjK
 bQM
@@ -49030,7 +47674,7 @@ aEu
 aEu
 aEu
 aEu
-aXY
+dqH
 qNJ
 evD
 qmX
@@ -49445,7 +48089,7 @@ avT
 avT
 avT
 anp
-ahQ
+hnk
 vLm
 vLm
 vLm
@@ -50953,7 +49597,7 @@ vLm
 gaS
 gaS
 gaS
-aoO
+iTW
 anp
 avT
 avT
@@ -52908,7 +51552,7 @@ sJy
 kMb
 xbg
 alu
-arl
+iNN
 gLy
 rkJ
 eLz
@@ -53975,9 +52619,9 @@ aeI
 orO
 aeI
 glp
-ahP
-ahP
-ahP
+gaS
+gaS
+gaS
 gje
 cwq
 skR
@@ -54193,9 +52837,9 @@ ouY
 hnk
 aeI
 pti
-ahP
+gaS
 qNR
-ahP
+gaS
 wqZ
 xRW
 gaS
@@ -54203,8 +52847,8 @@ iqe
 xmw
 alu
 htP
-avw
-avw
+pzh
+pzh
 vaM
 fOY
 amj
@@ -54409,7 +53053,7 @@ agy
 acp
 xJX
 aeI
-aiA
+pzY
 snK
 xUu
 oPi
@@ -54419,14 +53063,14 @@ hSQ
 nuo
 dSB
 alD
-ayR
+koY
 hNb
 oBo
 oBo
 kmA
 amj
 oDf
-awN
+pkz
 wih
 lcO
 wHF
@@ -54636,14 +53280,14 @@ ePM
 mYU
 dSB
 alD
-ayR
+koY
 dbH
 oBo
 nMX
 nfh
 amj
 pTY
-oHv
+eoj
 smS
 mxS
 cyY
@@ -54844,8 +53488,8 @@ acp
 hEF
 hnk
 aeI
-aiB
-ahP
+glp
+gaS
 gaS
 msp
 skR
@@ -55063,15 +53707,15 @@ hEF
 ouY
 ouY
 ouY
-ahQ
+hnk
 mPN
 wOi
 wUe
 qme
 bSD
 nQN
-awN
-avy
+pkz
+uXt
 otV
 oJC
 fLU
@@ -55291,7 +53935,7 @@ oGY
 jla
 gsb
 ujd
-awO
+siG
 ylF
 uVU
 foz
@@ -55728,7 +54372,7 @@ alu
 alu
 alu
 fZG
-awO
+siG
 pVq
 ste
 amj
@@ -55945,7 +54589,7 @@ lJb
 iNN
 amj
 gLy
-awO
+siG
 tHD
 xuQ
 alu
@@ -56000,7 +54644,7 @@ jvA
 fzN
 wBZ
 oRV
-aMd
+tUJ
 jiN
 jiN
 jiN
@@ -56379,7 +55023,7 @@ lBW
 iNN
 amj
 oav
-awO
+siG
 sIS
 oEk
 alu
@@ -56596,7 +55240,7 @@ alu
 alu
 alu
 nHK
-awO
+siG
 awa
 kzC
 soG
@@ -56813,7 +55457,7 @@ rXv
 jey
 alu
 gDS
-awO
+siG
 lHa
 pGZ
 daN
@@ -57035,7 +55679,7 @@ qxb
 umJ
 vUJ
 qIy
-awP
+mBh
 tNg
 hnH
 kGx
@@ -57913,7 +56557,7 @@ wIo
 lWy
 cdI
 qwj
-axB
+rQT
 jTs
 cyY
 rpa
@@ -58123,12 +56767,12 @@ alu
 koY
 cVt
 pLY
-awT
+kzC
 bWG
 ujL
 lac
 mjq
-oju
+uNN
 dTe
 lUS
 lUS
@@ -58169,7 +56813,7 @@ dbi
 kIL
 kIL
 gTz
-aHC
+wZJ
 gXc
 wlS
 sWU
@@ -58344,7 +56988,7 @@ xWk
 nQN
 cxb
 ayV
-azv
+dDe
 uNN
 xBi
 aGw
@@ -58564,8 +57208,8 @@ yiK
 iGT
 bgJ
 qeD
-arR
-awO
+oBo
+siG
 alu
 ceg
 ceg
@@ -58603,7 +57247,7 @@ dbi
 naO
 naO
 iee
-aHD
+fEO
 pGG
 qJA
 cuH
@@ -58772,16 +57416,16 @@ nYr
 eSO
 alu
 cri
-avy
+uXt
 nIf
 sFR
 wav
 csU
-avy
+uXt
 aGy
 uIX
-avy
-axB
+uXt
+rQT
 xXp
 alu
 ceg
@@ -58820,7 +57464,7 @@ dbi
 kLg
 qpZ
 dSH
-aHD
+fEO
 gql
 qPv
 noG
@@ -59904,8 +58548,8 @@ bhi
 bhi
 auW
 hxT
-aMd
-axW
+tUJ
+eOK
 hxT
 ofX
 ifv
@@ -60347,19 +58991,19 @@ jrG
 bjA
 bjA
 bjA
-bkC
-bkr
-bkr
-bkr
-bkr
-bkr
+gwW
+kQd
+kQd
+kQd
+kQd
+kQd
 xLg
 bjA
 bjA
 qVa
 bVb
 pqL
-blu
+sBj
 ayr
 tbh
 vzl
@@ -61010,7 +59654,7 @@ pKu
 pKu
 pKu
 pKu
-bkb
+pKu
 ayr
 wLC
 pTD
@@ -61206,8 +59850,8 @@ mhJ
 mhJ
 mhJ
 spC
-aFM
-aCN
+lTT
+cct
 cct
 cct
 jjQ
@@ -63141,10 +61785,10 @@ rqT
 rqT
 rqT
 rqT
-axW
+eOK
 jxR
 ulE
-aMd
+tUJ
 rqT
 rqT
 rqT
@@ -65737,7 +64381,7 @@ ftb
 xrL
 ftb
 anJ
-axW
+eOK
 gXc
 vUM
 rDC
@@ -67044,7 +65688,7 @@ stT
 stT
 djH
 ulE
-aWI
+mfJ
 ceg
 ceg
 ceg
@@ -68128,7 +66772,7 @@ sec
 cyr
 jZK
 mGz
-aSi
+nEK
 asH
 aXU
 aYt
@@ -69432,7 +68076,7 @@ uIq
 cyZ
 gGT
 lTU
-aTr
+psy
 wwm
 wwm
 asv
@@ -69649,7 +68293,7 @@ qXs
 qXs
 qXs
 iVx
-aTr
+psy
 wwm
 wwm
 asv
@@ -70321,7 +68965,7 @@ mkJ
 mKZ
 ckJ
 asv
-kwQ
+iUo
 sSk
 ndi
 bes
@@ -74419,7 +73063,7 @@ aqx
 eAg
 uji
 qEp
-aXW
+hjF
 gCJ
 gCJ
 gCJ

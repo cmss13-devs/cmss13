@@ -94,9 +94,7 @@
 /area/bigredv2/outside/space_port)
 "bu" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "bR" = (
 /obj/structure/cargo_container/grant/rightmid,
@@ -104,15 +102,11 @@
 /area/bigredv2/outside/space_port)
 "dj" = (
 /obj/structure/cargo_container/watatsumi/rightmid,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
+/turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "dS" = (
 /obj/structure/cargo_container/arious/leftmid,
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
+/turf/open/floor/plating/platebotc,
 /area/bigredv2/outside/space_port)
 "gE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -120,30 +114,22 @@
 /area/bigredv2/outside/space_port)
 "hi" = (
 /obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
+/turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "hs" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
+/turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "hR" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2,
 /area/bigredv2/outside/space_port)
 "ig" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "iu" = (
 /obj/structure/machinery/power/apc{
@@ -151,15 +137,11 @@
 	pixel_x = -32;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "jJ" = (
 /obj/structure/cargo_container/arious/leftmid,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
+/turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "jK" = (
 /obj/structure/cargo_container/grant/right,
@@ -167,29 +149,21 @@
 /area/bigredv2/outside/space_port)
 "jP" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "kb" = (
 /obj/structure/machinery/blackbox_recorder,
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "kB" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
+/turf/open/floor/plating/platebotc,
 /area/bigredv2/outside/space_port)
 "mD" = (
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2,
 /area/bigredv2/outside/space_port)
 "og" = (
 /obj/structure/cargo_container/grant/left,
@@ -197,21 +171,15 @@
 /area/bigredv2/outside/space_port)
 "oM" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "oZ" = (
 /obj/structure/machinery/computer/cameras,
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2,
 /area/bigredv2/outside/space_port)
 "ub" = (
 /obj/structure/cargo_container/arious/right,
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
 "uh" = (
 /turf/open/floor/asteroidwarning/east,
@@ -220,9 +188,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "vO" = (
 /obj/structure/surface/table,
@@ -231,15 +197,11 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "vW" = (
 /obj/structure/cargo_container/arious/rightmid,
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
 "xF" = (
 /obj/structure/machinery/light{
@@ -250,9 +212,7 @@
 "xH" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "xN" = (
 /obj/structure/surface/table,
@@ -263,46 +223,34 @@
 	pixel_x = 32
 	},
 /obj/item/tool/pen,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "zL" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tech_supply,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "AU" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/landing/console)
 "Bz" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/bigredv2/outside/space_port)
 "BG" = (
 /obj/structure/cargo_container/arious/rightmid,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
+/turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "BJ" = (
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
 "Ez" = (
 /obj/structure/cargo_container/watatsumi/rightmid,
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
+/turf/open/floor/plating/platebotc,
 /area/bigredv2/outside/space_port)
 "EW" = (
 /obj/structure/surface/table,
@@ -313,64 +261,44 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "Hy" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
+/turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "IY" = (
 /obj/item/shard,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2,
 /area/bigredv2/outside/space_port)
 "Ji" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "Js" = (
 /obj/structure/machinery/floodlight/landing,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
+/turf/open/floor/asteroidplating,
 /area/bigredv2/outside/space_port)
 "Ju" = (
 /obj/structure/cargo_container/arious/right,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
+/turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "Kx" = (
 /obj/structure/cargo_container/arious/leftmid,
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
 "KI" = (
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
+/turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "Os" = (
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
+/turf/open/floor/plating/platebotc,
 /area/bigredv2/outside/space_port)
 "PQ" = (
 /obj/structure/machinery/disposal,
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "Qf" = (
 /obj/structure/surface/table,
@@ -386,27 +314,21 @@
 /area/bigredv2/outside/space_port)
 "UU" = (
 /obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
+/turf/open/floor/plating/platebotc,
 /area/bigredv2/outside/space_port)
 "Yu" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2,
 /area/bigredv2/outside/space_port)
 "YS" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Spaceport"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 
 (1,1,1) = {"

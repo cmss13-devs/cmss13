@@ -40,9 +40,7 @@
 /area/bigredv2/outside/virology)
 "df" = (
 /obj/effect/landmark/crap_item,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "dk" = (
 /obj/effect/decal/cleanable/ash,
@@ -70,9 +68,7 @@
 	id = "viro";
 	name = "Virology Lockdown"
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "kt" = (
 /obj/structure/bed/roller,
@@ -87,27 +83,19 @@
 /area/bigredv2/outside/virology)
 "nR" = (
 /obj/structure/bed/roller,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/virology)
 "oe" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/virology)
 "ou" = (
 /obj/structure/surface/table/almayer,
 /obj/item/restraint/handcuffs,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/virology)
 "oM" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "oS" = (
 /obj/effect/decal/cleanable/ash,
@@ -115,15 +103,11 @@
 /area/bigredv2/outside/virology)
 "pG" = (
 /obj/structure/machinery/light,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "qc" = (
 /obj/structure/inflatable/door,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/virology)
 "qW" = (
 /obj/structure/inflatable/door,
@@ -139,55 +123,39 @@
 /obj/item/storage/syringe_case/regular{
 	pixel_y = 10
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "ru" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/structure/inflatable,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/virology)
 "rM" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "rP" = (
 /obj/structure/inflatable,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/virology)
 "sm" = (
 /obj/structure/inflatable/door,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/virology)
 "uC" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/virology)
 "uO" = (
 /obj/structure/inflatable/popped/door,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/virology)
 "vY" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/nw)
 "xm" = (
 /obj/effect/decal/cleanable/ash,
@@ -207,16 +175,12 @@
 /area/bigredv2/outside/virology)
 "As" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/virology)
 "AF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/virology)
 "Bq" = (
 /obj/structure/inflatable/popped,
@@ -236,14 +200,10 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/virology)
 "Ee" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/virology)
 "Et" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "ED" = (
 /obj/structure/inflatable/popped,
@@ -254,18 +214,14 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/virology)
 "Fb" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/virology)
 "FA" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/med_data/laptop{
 	dir = 8
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/virology)
 "FX" = (
 /obj/structure/closet/bodybag{
@@ -283,18 +239,14 @@
 "GP" = (
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/blood,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached2"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/virology)
 "GX" = (
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/virology)
 "HZ" = (
 /obj/structure/inflatable/popped,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/virology)
 "Ie" = (
 /obj/structure/inflatable,
@@ -302,9 +254,7 @@
 /area/bigredv2/outside/virology)
 "IZ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "KY" = (
 /obj/structure/inflatable/door,
@@ -319,9 +269,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached3"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/virology)
 "MQ" = (
 /obj/structure/fence,
@@ -337,24 +285,18 @@
 /area/bigredv2/outside/virology)
 "Pb" = (
 /obj/structure/inflatable,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/virology)
 "PU" = (
 /obj/structure/inflatable,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached17"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/bigredv2/outside/nw)
 "QV" = (
 /turf/open/mars/mars_dirt_14,
 /area/bigredv2/outside/virology)
 "RE" = (
 /obj/structure/inflatable,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached20"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
 /area/bigredv2/outside/nw)
 "RN" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
@@ -389,14 +331,10 @@
 	id = "viro";
 	name = "Virology Lockdown"
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/virology)
 "Wm" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "Xm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -424,9 +362,7 @@
 	dir = 4
 	},
 /obj/structure/inflatable,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached20"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
 /area/bigredv2/outside/virology)
 "Yn" = (
 /obj/effect/decal/cleanable/ash,

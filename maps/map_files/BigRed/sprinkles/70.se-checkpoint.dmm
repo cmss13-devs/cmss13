@@ -11,9 +11,7 @@
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
 "aF" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
 "aN" = (
 /obj/structure/surface/table/almayer,
@@ -37,10 +35,7 @@
 "bX" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement1";
-	dir = 1
-	},
+/turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/filtration_cave_cas)
 "el" = (
 /obj/structure/surface/table/almayer,
@@ -52,21 +47,15 @@
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "iQ" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/se)
 "ja" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement{
-	icon_state = "cement15"
-	},
+/turf/open/asphalt/cement/cement15,
 /area/bigredv2/outside/filtration_cave_cas)
 "jk" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement15"
-	},
+/turf/open/asphalt/cement/cement15,
 /area/bigredv2/outside/filtration_cave_cas)
 "jq" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -89,9 +78,7 @@
 /area/bigred/ground/security)
 "lQ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement2"
-	},
+/turf/open/asphalt/cement/cement2,
 /area/bigredv2/outside/filtration_cave_cas)
 "oT" = (
 /turf/closed/wall/solaris/reinforced,
@@ -102,9 +89,7 @@
 /turf/open/floor,
 /area/bigred/ground/security)
 "pW" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/filtration_cave_cas)
 "qy" = (
 /obj/item/device/radio,
@@ -122,9 +107,7 @@
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "rO" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement14"
-	},
+/turf/open/asphalt/cement/cement14,
 /area/bigredv2/outside/filtration_cave_cas)
 "uk" = (
 /obj/effect/decal/cleanable/dirt,
@@ -134,9 +117,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement2"
-	},
+/turf/open/asphalt/cement/cement2,
 /area/bigredv2/outside/filtration_cave_cas)
 "uF" = (
 /obj/structure/surface/table/almayer,
@@ -164,9 +145,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
 "xa" = (
 /turf/open/floor/greengrid,
@@ -188,9 +167,7 @@
 /area/bigred/ground/security)
 "xt" = (
 /obj/item/tool/warning_cone,
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
 "yq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -201,9 +178,7 @@
 /area/bigred/ground/security)
 "Bv" = (
 /obj/effect/decal/strata_decals/grime/grime2,
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "CI" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
@@ -219,23 +194,16 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "GC" = (
 /obj/effect/landmark/crap_item,
-/turf/open/asphalt/cement{
-	icon_state = "cement1";
-	dir = 1
-	},
+/turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/filtration_cave_cas)
 "GD" = (
 /obj/effect/landmark/hunter_primary,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement{
-	icon_state = "cement9"
-	},
+/turf/open/asphalt/cement/cement9,
 /area/bigredv2/outside/filtration_cave_cas)
 "GW" = (
 /obj/structure/machinery/camera/autoname,
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
 "IS" = (
 /obj/structure/filingcabinet,
@@ -251,9 +219,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/filtration_cave_cas)
 "Kr" = (
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/se)
 "KO" = (
 /obj/item/trash/sosjerky,
@@ -261,23 +227,16 @@
 /turf/open/floor,
 /area/bigred/ground/security)
 "LH" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "LJ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/filtration_cave_cas)
 "LW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement{
-	icon_state = "cement1";
-	dir = 1
-	},
+/turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/filtration_cave_cas)
 "LX" = (
 /obj/structure/machinery/light{
@@ -291,9 +250,7 @@
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "Nm" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement9"
-	},
+/turf/open/asphalt/cement/cement9,
 /area/bigredv2/outside/filtration_cave_cas)
 "NF" = (
 /obj/effect/decal/cleanable/generic,
@@ -315,9 +272,7 @@
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 1
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "Pf" = (
 /obj/effect/decal/cleanable/blood,
@@ -333,9 +288,7 @@
 /area/bigred/ground/security)
 "Qs" = (
 /obj/item/tool/warning_cone,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/se)
 "Sr" = (
 /obj/structure/machinery/camera/autoname{
@@ -351,15 +304,11 @@
 /area/bigred/ground/security)
 "Tl" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
 "UP" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "Vn" = (
 /obj/structure/surface/table/almayer,

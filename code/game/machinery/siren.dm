@@ -15,7 +15,7 @@
 
 /obj/structure/machinery/siren/Initialize()
 	. = ..()
-	GLOB.siren_objects["[siren_lt]"] |= list(src)
+	GLOB.siren_objects["[siren_lt]"] += list(src)
 
 /obj/structure/machinery/siren/Destroy()
 	. = ..()

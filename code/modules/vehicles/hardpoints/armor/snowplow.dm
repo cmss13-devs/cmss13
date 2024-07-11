@@ -1,6 +1,6 @@
 /obj/item/hardpoint/armor/snowplow
 	name = "\improper Snowplow"
-	desc = "Clears a path in the snow for friendlies"
+	desc = "Clears road for friendlies."
 
 	icon_state = "snowplow"
 	disp_icon = "tank"
@@ -26,19 +26,22 @@
 	var/turf/ahead = get_step(new_turf, move_dir)
 
 	var/list/turfs_ahead = list(ahead, get_step(ahead, turn(move_dir, 90)), get_step(ahead, turn(move_dir, -90)))
-	for(var/turf/T in turfs_ahead)
-		if(istype(T, /turf/open/snow))
-			var/turf/open/snow/ST = T
-			if(!ST || !ST.bleed_layer)
+	for(var/turf/turf_ahead in turfs_ahead)
+		if(istype(turf_ahead.snow))
+			var/obj/structure/snow/snow = turf_ahead.snow
+			if(!snow)
 				continue
-			new /obj/item/stack/snow(ST, ST.bleed_layer)
-			ST.bleed_layer = 0
-			ST.update_icon(1, 0)
-		else if(istype(T, /turf/open/auto_turf/snow))
-			var/turf/open/auto_turf/snow/S = T
-			if(!S || !S.bleed_layer)
-				continue
-			new /obj/item/stack/snow(S, S.bleed_layer)
-			S.changing_layer(0)
+			new /obj/item/stack/snow(snow.loc, snow.bleed_layer)
+			snow.changing_layer(0)
+		else if(istype(turf_ahead.weeds))
+			turf_ahead.weeds.Destroy()
+		else if(istype(turf_ahead, /turf/closed/wall))
+			var/turf/closed/wall/next_wall = turf_ahead
+			next_wall.take_damage(250)
+		else if(istype(turf_ahead, /turf/open))
+			for(var/atom/movable/atom in turf_ahead.contents)
+				if(atom.anchored)
+					continue
+				atom.throw_atom(get_step(turf_ahead, turn(move_dir, 90)), 4, SPEED_SLOW, src, TRUE, HIGH_LAUNCH)
 		else
 			continue

@@ -19,6 +19,7 @@
 	var/y_s_offset // Vertical sound offset
 	var/x_s_offset // Horizontal sound offset
 	var/atom/source
+	var/use_smoothing = TRUE
 
 /proc/get_free_channel()
 	var/static/cur_chan = 1
@@ -37,7 +38,7 @@
 //status: the regular 4 sound flags
 //falloff: max range till sound volume starts dropping as distance increases
 
-/proc/playsound(atom/source, soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1, y_s_offset,x_s_offset)
+/proc/playsound(atom/source, soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1, y_s_offset,x_s_offset, smoothing=TRUE)
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
 		return FALSE
@@ -57,6 +58,7 @@
 	S.volume_cat = vol_cat
 	S.y_s_offset = y_s_offset
 	S.x_s_offset = x_s_offset
+	S.use_smoothing = smoothing
 	if(vary != FALSE)
 		if(vary > 1)
 			S.frequency = vary

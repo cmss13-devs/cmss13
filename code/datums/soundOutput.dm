@@ -85,7 +85,7 @@
 	if(T.source && !QDELETED(T.source))
 		source_turf = get_turf(T.source)
 
-		if(!update && istype(T.source, /atom/movable) && T.source != owner.mob)
+		if(!update && istype(T.source, /atom/movable) && T.source != owner.mob && T.use_smoothing)
 			source_sounds[num2text(T.channel)] = T.source
 			RegisterSignal(T.source, COMSIG_MOVABLE_MOVED, PROC_REF(update_sounds_from_source))
 	else if (T.x && T.y && T.z)
@@ -112,7 +112,7 @@
 		S.x += T.x_s_offset
 		S.echo = SOUND_ECHO_REVERB_ON
 
-		if(!update && T.source && T.source != owner.mob)
+		if(!update && T.source && T.source != owner.mob && T.use_smoothing)
 			current_sounds[num2text(S.channel)] = T
 
 	if(owner.mob.ear_deaf > 0)

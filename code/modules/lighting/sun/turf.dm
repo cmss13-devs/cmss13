@@ -32,8 +32,10 @@ Sunlight System
 	var/list/datum/static_lighting_corner/affecting_corners
 
 /atom/movable/outdoor_effect/Destroy(force)
+/* CREATE AND DESTROY FUCKED UP? IDK
 	if(!force)
 		return QDEL_HINT_LETMELIVE
+*/
 
 	//If we are a source of light - disable it, to fix out corner refs
 	disable_sunlight()

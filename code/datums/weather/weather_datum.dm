@@ -205,8 +205,9 @@
 	var/turf/turf = get_turf(src)
 	if(!turf)
 		return
-	else if(turf != snowed_turf)
-		snowed_turf.snow = null
+	if(turf != snowed_turf)
+		if(snowed_turf)
+			snowed_turf.snow = null
 		snowed_turf = turf
 		snowed_turf.snow = src
 

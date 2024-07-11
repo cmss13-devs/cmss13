@@ -217,45 +217,44 @@
 
 	var/list/weeds = list()
 	for(var/dirn in GLOB.cardinals)
-		var/turf/T = get_step(src, dirn)
-		if(!istype(T))
+		var/turf/turf = get_step(src, dirn)
+		if(!istype(turf))
 			continue
-		var/is_weedable = T.is_weedable()
-		if(!is_weedable)
+		var/is_weedable = turf.is_weedable()
+		if(!turf.weedable || turf.snow)
 			continue
 		if(!spread_on_semiweedable && is_weedable < FULLY_WEEDABLE)
 			continue
 
 		var/obj/effect/alien/resin/fruit/old_fruit
 
-		var/obj/effect/alien/weeds/W = locate() in T
-		if(W)
-			if(W.indestructible)
+		if(turf.weeds)
+			if(turf.weeds.indestructible)
 				continue
-			else if(W.weed_strength >= WEED_LEVEL_HIVE)
+			else if(turf.weeds.weed_strength >= WEED_LEVEL_HIVE)
 				continue
-			else if (W.linked_hive == node.linked_hive && W.weed_strength >= node.weed_strength)
+			else if (turf.weeds.linked_hive == node.linked_hive && turf.weeds.weed_strength >= node.weed_strength)
 				continue
 
-			old_fruit = locate() in T
+			old_fruit = locate() in turf
 
 			if(old_fruit)
 				old_fruit.unregister_weed_expiration_signal()
 
-			qdel(W)
+			qdel(turf.weeds)
 
-		if(!istype(T, /turf/closed/wall/resin) && T.density)
-			if(istype(T, /turf/closed/wall))
-				weeds.Add(new /obj/effect/alien/weeds/weedwall(T, node))
+		if(!istype(turf, /turf/closed/wall/resin) && turf.density)
+			if(istype(turf, /turf/closed/wall))
+				weeds.Add(new /obj/effect/alien/weeds/weedwall(turf, node))
 				continue
-			else if( istype(T, /turf/closed))
-				weeds.Add(new /obj/effect/alien/weeds(T, node, TRUE, FALSE))
+			else if(istype(turf, /turf/closed))
+				weeds.Add(new /obj/effect/alien/weeds(turf, node, TRUE, FALSE))
 				continue
 
-		if(!weed_expand_objects(T, dirn))
+		if(!weed_expand_objects(turf, dirn))
 			continue
 
-		var/obj/effect/alien/weeds/new_weed = new(T, node)
+		var/obj/effect/alien/weeds/new_weed = new(turf, node)
 		weeds += new_weed
 
 		if(old_fruit)

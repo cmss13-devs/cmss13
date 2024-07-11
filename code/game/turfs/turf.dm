@@ -394,6 +394,9 @@
 
 	var/pylons = linked_pylons
 
+	var/old_weeds = weeds
+	var/old_snow = snow
+
 	var/list/old_baseturfs = baseturfs
 
 	//static lighting
@@ -420,6 +423,9 @@
 		W.baseturfs = old_baseturfs
 
 	W.linked_pylons = pylons
+
+	W.weeds = old_weeds
+	W.snow = old_snow
 
 	W.hybrid_lights_affecting = old_hybrid_lights_affecting
 	W.dynamic_lumcount = dynamic_lumcount

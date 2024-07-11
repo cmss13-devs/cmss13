@@ -6,6 +6,9 @@
 #define GLE_TAGE_FIVE		5
 #define GLE_STAGE_SIX		6
 
+/turf
+	var/obj/structure/snow/snow
+
 //SPECIAL EVENTS
 /datum/weather_event
 	var/name = ""
@@ -161,6 +164,7 @@
 	layer = BELOW_TABLE_LAYER
 	var/bleed_layer = 0
 	var/pts = 0
+	var/turf/snowed_turf
 	var/list/snows_connections = list(list("0", "0", "0", "0"), list("0", "0", "0", "0"), list("0", "0", "0", "0"))
 	var/list/diged = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
 
@@ -184,6 +188,8 @@
 
 /obj/structure/snow/Destroy(force)
 	STOP_PROCESSING(SSslowobj, src)
+	snowed_turf.snow = null
+	snowed_turf = null
 
 	. = ..()
 
@@ -199,10 +205,13 @@
 	var/turf/turf = get_turf(src)
 	if(!turf)
 		return
+	else if(turf != snowed_turf)
+		snowed_turf.snow = null
+		snowed_turf = turf
+		snowed_turf.snow = src
 
-	turf.snow = src
-	if(turf.weeds)
-		turf.weeds.Destroy()
+	if(snowed_turf.weeds)
+		snowed_turf.weeds.Destroy()
 
 	for(var/obj/structure/snow/bordered_snow in orange(src, 1))
 		if(!bordered_snow)
@@ -301,8 +310,6 @@
 	update_overlays()
 
 	if(!bleed_layer)
-		var/turf/turf = get_turf(src)
-		turf.snow = null
 		qdel(src)
 
 /obj/structure/snow/ex_act(severity)
@@ -379,6 +386,7 @@
 	var/max_severity = 100
 	var/max_severity_change = 20
 	var/severity_steps = 5
+	var/immunity_type = TRAIT_WEATHER_IMMUNE
 	var/probability = 0
 
 	var/target_trait = PARTICLEWEATHER_RAIN
@@ -492,6 +500,15 @@
 	return FALSE
 
 /datum/particle_weather/proc/can_weather_effect(mob/living/mob_to_check)
+
+	//If mob is not in a turf
+	var/turf/mob_turf = get_turf(mob_to_check)
+	var/atom/loc_to_check = mob_to_check.loc
+	while(loc_to_check != mob_turf)
+		if((immunity_type && HAS_TRAIT(loc_to_check, immunity_type)) || HAS_TRAIT(loc_to_check, TRAIT_WEATHER_IMMUNE))
+			return
+		loc_to_check = loc_to_check.loc
+
 	return TRUE
 
 /datum/particle_weather/proc/process_mob_effect(mob/living/L, delta_time)

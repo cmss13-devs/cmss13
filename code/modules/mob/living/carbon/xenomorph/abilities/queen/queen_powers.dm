@@ -659,13 +659,13 @@
 	if(!action_cooldown_check())
 		return
 
-	var/turf/T = get_turf(A)
+	var/turf/target_turf = get_turf(A)
 
-	if(!T || T.is_weedable() < FULLY_WEEDABLE || T.density || (T.z != X.z))
+	if(!target_turf || target_turf.weedable < FULLY_WEEDABLE || target_turf.snow || (target_turf.z != user_xeno.z))
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
 
-	var/area/AR = get_area(T)
+	var/area/AR = get_area(target_turf)
 	if(!AR.is_resin_allowed)
 		if(AR.flags_area & AREA_UNWEEDABLE)
 			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
@@ -673,29 +673,28 @@
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return
 
-	var/obj/effect/alien/weeds/located_weeds = locate() in T
-	if(located_weeds)
-		if(istype(located_weeds, /obj/effect/alien/weeds/node))
+	if(target_turf.weeds)
+		if(istype(target_turf.weeds, /obj/effect/alien/weeds/node))
 			return
 
-		if(located_weeds.weed_strength > X.weed_level)
+		if(target_turf.weeds.weed_strength > X.weed_level)
 			to_chat(X, SPAN_XENOWARNING("There's stronger weeds here already!"))
 			return
 
 		if (!check_and_use_plasma_owner(node_plant_plasma_cost))
 			return
 
-		to_chat(X, SPAN_XENONOTICE("You plant a node at [T]."))
-		new /obj/effect/alien/weeds/node(T, null, X)
-		playsound(T, "alien_resin_build", 35)
+		to_chat(X, SPAN_XENONOTICE("You plant a node at [target_turf]."))
+		new /obj/effect/alien/weeds/node(target_turf, null, X)
+		playsound(target_turf, "alien_resin_build", 35)
 		apply_cooldown_override(node_plant_cooldown)
 		return
 
 	var/obj/effect/alien/weeds/node/node
 	for(var/direction in GLOB.cardinals)
-		var/turf/weed_turf = get_step(T, direction)
+		var/turf/weed_turf = get_step(target_turf, direction)
 		var/obj/effect/alien/weeds/W = locate() in weed_turf
-		if(W && W.hivenumber == X.hivenumber && W.parent && !W.hibernate && !LinkBlocked(W, weed_turf, T))
+		if(W && W.hivenumber == X.hivenumber && W.parent && !W.hibernate && !LinkBlocked(W, weed_turf, target_turf))
 			node = W.parent
 			break
 
@@ -703,20 +702,20 @@
 		to_chat(X, SPAN_XENOWARNING("You can only plant weeds near weeds with a connected node!"))
 		return
 
-	if(T in recently_built_turfs)
+	if(target_turf in recently_built_turfs)
 		to_chat(X, SPAN_XENOWARNING("You've recently built here already!"))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
-	new /obj/effect/alien/weeds(T, node, FALSE)
-	playsound(T, "alien_resin_build", 35)
+	new /obj/effect/alien/weeds(target_turf, node, FALSE)
+	playsound(target_turf, "alien_resin_build", 35)
 
-	recently_built_turfs += T
-	addtimer(CALLBACK(src, PROC_REF(reset_turf_cooldown), T), turf_build_cooldown)
+	recently_built_turfs += target_turf
+	addtimer(CALLBACK(src, PROC_REF(reset_turf_cooldown), target_turf), turf_build_cooldown)
 
-	to_chat(X, SPAN_XENONOTICE("You plant weeds at [T]."))
+	to_chat(X, SPAN_XENONOTICE("You plant weeds at [target_turf]."))
 	apply_cooldown()
 	return ..()
 

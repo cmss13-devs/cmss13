@@ -47,10 +47,6 @@
 		var/datum/roof_master_node/roof_master_node = new(loc) //no master and no lattice to connect to, create new master
 		roof_master_node.connect(loc)
 
-/obj/structure/roof/proc/add_default_image(subsystem, mob/mob)
-	SIGNAL_HANDLER
-	mob.client.images += normal_image
-
 /obj/structure/roof/Destroy(force, ...)
 	if(linked_master)
 		linked_master.remove_roof(src)
@@ -58,6 +54,10 @@
 		var/mob/mob = icon
 		mob.client.images -= normal_image
 	return ..()
+
+/obj/structure/roof/proc/add_default_image(subsystem, mob/mob)
+	SIGNAL_HANDLER
+	mob.client.images += normal_image
 
 /obj/structure/roof/proc/link_master(datum/roof_master_node/master) //performs bfs and connects to master
 	if(linked_master != null)
@@ -67,6 +67,7 @@
 	for(var/direction in CARDINAL_ALL_DIRS)
 		for(var/obj/structure/roof/roof in get_step(src,direction))
 			roof.link_master(master)
+
 
 /obj/effect/roof_node //used for observing if mob is near the roof
 	name = "roof_node"
@@ -83,8 +84,14 @@
 		var/mob/living/mob = mover
 		linked_master.add_under_roof(mob)
 
+/obj/effect/roof_node/Destroy(force, ...)
+	if(linked_master)
+		if(linked_master.connected_nodes)
+			linked_master.connected_nodes -= src
+	.=..()
+
 /obj/effect/roof_node/proc/link_master(datum/roof_master_node/master) //performs bfs and connects to master
-	if(linked_master != null)
+	if(linked_master)
 		return
 	master.connected_nodes += src
 	linked_master = master
@@ -92,22 +99,21 @@
 		for(var/obj/effect/roof_node/node in get_step(src,direction))
 			node.link_master(master)
 
-/obj/effect/roof_node/Destroy(force, ...)
-	if(linked_master)
-		if(linked_master.connected_nodes)
-			linked_master.connected_nodes -= src
-	.=..()
-
-
-
-
-
 
 /datum/roof_master_node //maintains one block of roof
 	var/list/connected_nodes = list()
 	var/list/connected_roof = list()
 	var/list/mobs_under = list()
 	var/location
+
+/datum/roof_master_node/Destroy(force, ...)
+	if(connected_nodes)
+		for(var/obj/effect/roof_node/roof_node in connected_nodes)
+			roof_node.Destroy(1)
+	if(connected_nodes)
+		for(var/obj/structure/roof/roof in connected_roof)
+			roof.Destroy(1)
+	. = ..()
 
 /datum/roof_master_node/proc/add_under_roof(mob/living/living) //mob crossed connected node
 	if(living in mobs_under)
@@ -139,8 +145,6 @@
 		COMSIG_MOVABLE_MOVED,
 	))
 
-
-
 /datum/roof_master_node/proc/check_under_roof(mob/living/living) //check if the mob is under connected roof
 	SIGNAL_HANDLER
 	for(var/obj/effect/roof_node/roof in connected_nodes)
@@ -158,16 +162,3 @@
 	connected_roof -= roof
 	if(!length(connected_roof))
 		Destroy(1)
-
-
-
-/datum/roof_master_node/Destroy(force, ...)
-	if(connected_nodes)
-		for(var/obj/effect/roof_node/roof_node in connected_nodes)
-			roof_node.Destroy(1)
-	if(connected_nodes)
-		for(var/obj/structure/roof/roof in connected_roof)
-			roof.Destroy(1)
-	. = ..()
-
-

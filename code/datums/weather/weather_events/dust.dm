@@ -14,7 +14,6 @@
 	max_severity = 50
 	max_severity_change = 10
 	severity_steps = 20
-	immunity_type = TRAIT_DUSTSTORM_IMMUNE
 	probability = 1
 	target_trait = PARTICLEWEATHER_DUST
 

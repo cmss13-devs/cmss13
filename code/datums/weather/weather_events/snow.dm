@@ -14,7 +14,6 @@
 	max_severity = 10
 	max_severity_change = 5
 	severity_steps = 5
-	immunity_type = TRAIT_SNOWSTORM_IMMUNE
 	probability = 3
 	target_trait = PARTICLEWEATHER_SNOW
 
@@ -38,7 +37,6 @@
 	max_severity = 100
 	max_severity_change = 60
 	severity_steps = 10
-	immunity_type = TRAIT_SNOWSTORM_IMMUNE
 	probability = 2
 	target_trait = PARTICLEWEATHER_SNOW
 

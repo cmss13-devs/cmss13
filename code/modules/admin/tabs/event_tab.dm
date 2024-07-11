@@ -1004,40 +1004,41 @@
 	SSticker.set_clients_taskbar_icon(taskbar_icon)
 	message_admins("[key_name_admin(usr)] has changed the taskbar icon to [taskbar_icon].")
 
-/client/proc/change_weather()
-	set name = "Change Weather"
+/client/proc/run_particle_weather()
+	set name = "Run Particle Weather"
+	set desc = "Triggers a particle weather"
 	set category = "Admin.Events"
 
-	if(!check_rights(R_EVENT))
+	if(!check_rights(R_ADMIN))
 		return
 
-	if(!SSweather.map_holder)
-		to_chat(src, SPAN_WARNING("This map has no weather data."))
-		return
-
-	if(SSweather.is_weather_event_starting)
-		to_chat(src, SPAN_WARNING("A weather event is already starting. Please wait."))
-		return
-
-	if(SSweather.is_weather_event)
-		if(tgui_alert(src, "A weather event is already in progress! End it?", "Confirm", list("End", "Continue"), 10 SECONDS) == "Continue")
+	if(SSweather_conditions.running_weather)
+		if(tgui_alert(src, "A weather event is already in progress! End it?", "Confirm", list("End", "Continue"), 10 SECONDS) == "End")
+			if(SSweather_conditions.running_weather)
+				SSweather_conditions.running_weather.end()
 			return
-		if(SSweather.is_weather_event)
-			SSweather.end_weather_event()
 
-	var/list/mappings = list()
-	for(var/datum/weather_event/typepath as anything in subtypesof(/datum/weather_event))
-		mappings[initial(typepath.name)] = typepath
-	var/chosen_name = tgui_input_list(src, "Select a weather event to start", "Weather Selector", mappings)
-	var/chosen_typepath = mappings[chosen_name]
-	if(!chosen_typepath)
+	if(SSweather_conditions.next_hit)
+		switch(tgui_alert(src, "A next weather event is already in delay! What to do?", "Confirm", list("Start", "Change", "Cancel"), 10 SECONDS))
+			if(action == "Cancel")
+				return
+			if(action == "Start")
+				if(SSweather_conditions.next_hit)
+					SSweather_conditions.run_weather(next_hit, TRUE)
+				return
+
+	var/weather_type = tgui_input_list(src, "Select a weather event to start", "Weather Selector", sort_list(subtypesof(/datum/particle_weather), GLOBAL_PROC_REF(cmp_typepaths_asc)))
+	if(!weather_type)
 		return
 
-	var/retval = SSweather.setup_weather_event(chosen_typepath)
-	if(!retval)
-		to_chat(src, SPAN_WARNING("Could not start the weather event at present!"))
-		return
-	to_chat(src, SPAN_BOLDNOTICE("Success! The weather event should start shortly."))
+	if(tgui_alert(src, "A weather event is already in progress! End it?", "Confirm", list("Instant", "Delayed"), 10 SECONDS) == "Delayed")
+		SSweather_conditions.next_hit = new weather_type()
+		COOLDOWN_START(src, next_weather_start, rand(-3000, 3000) + initial(next_hit.weather_duration_upper) / 5)
+	else
+		SSweather_conditions.run_weather(new weather_type(), TRUE)
+
+	message_admins("[key_name_admin(usr)] started weather of type [weather_type]. What a cunt.")
+	log_admin("[key_name(usr)] started weather of type [weather_type]. What a cunt.")
 
 
 /client/proc/cmd_admin_create_bioscan()

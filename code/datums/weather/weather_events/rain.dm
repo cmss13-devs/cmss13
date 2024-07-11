@@ -13,7 +13,6 @@
 	max_severity = 10
 	max_severity_change = 5
 	severity_steps = 5
-	immunity_type = TRAIT_RAINSTORM_IMMUNE
 	probability = 5
 	target_trait = PARTICLEWEATHER_RAIN
 
@@ -38,7 +37,6 @@
 	max_severity = 150
 	max_severity_change = 50
 	severity_steps = 50
-	immunity_type = TRAIT_RAINSTORM_IMMUNE
 	probability = 3
 	target_trait = PARTICLEWEATHER_RAIN
 

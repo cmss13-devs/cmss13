@@ -366,7 +366,6 @@
 	var/max_severity = 100
 	var/max_severity_change = 20
 	var/severity_steps = 5
-	var/immunity_type = TRAIT_WEATHER_IMMUNE
 	var/probability = 0
 
 	var/target_trait = PARTICLEWEATHER_RAIN
@@ -480,15 +479,6 @@
 	return FALSE
 
 /datum/particle_weather/proc/can_weather_effect(mob/living/mob_to_check)
-
-	//If mob is not in a turf
-	var/turf/mob_turf = get_turf(mob_to_check)
-	var/atom/loc_to_check = mob_to_check.loc
-	while(loc_to_check != mob_turf)
-		if((immunity_type && HAS_TRAIT(loc_to_check, immunity_type)) || HAS_TRAIT(loc_to_check, TRAIT_WEATHER_IMMUNE))
-			return
-		loc_to_check = loc_to_check.loc
-
 	return TRUE
 
 /datum/particle_weather/proc/process_mob_effect(mob/living/L, delta_time)

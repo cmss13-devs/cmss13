@@ -152,12 +152,16 @@
 
 
 /datum/static_lighting_corner/Destroy(force)
-	if (!force)
+	if(!force)
 		return QDEL_HINT_LETMELIVE
 
 	for(var/datum/static_light_source/light_source as anything in affecting)
-		LAZYREMOVE(light_source.effect_str, src)
+		light_source.effect_str -= src
 	affecting = null
+
+	for(var/atom/movable/outdoor_effect/effect in glob_affect)
+		effect.affecting_corners -= src
+	glob_affect = null
 
 	if(master_NE)
 		master_NE.lighting_corner_SW = null
@@ -173,4 +177,5 @@
 		master_NW.lighting_corners_initialised = FALSE
 	if(needs_update)
 		SSlighting.corners_queue -= src
+
 	return ..()

@@ -32,10 +32,8 @@ Sunlight System
 	var/list/datum/static_lighting_corner/affecting_corners
 
 /atom/movable/outdoor_effect/Destroy(force)
-/* CREATE AND DESTROY FUCKED UP? IDK
 	if(!force)
 		return QDEL_HINT_LETMELIVE
-*/
 
 	//If we are a source of light - disable it, to fix out corner refs
 	disable_sunlight()
@@ -87,8 +85,8 @@ Sunlight System
 
 /atom/movable/outdoor_effect/proc/calc_sunlight_spread()
 	var/list/turf/turfs = list()
-	var/datum/static_lighting_corner/C
-	var/turf/T
+	var/datum/static_lighting_corner/corner
+	var/turf/turf
 	var/list/tempMasterList = list() /* to mimimize double ups */
 	var/list/corners  = list() /* corners we are currently affecting */
 
@@ -96,51 +94,52 @@ Sunlight System
 	var/oldLum = luminosity
 	luminosity = GLOB.global_light_range
 
-	for(T in view(CEILING(GLOB.global_light_range, 1), source_turf))
-		if(IS_OPAQUE_TURF(T)) /* get_corners used to do opacity checks for arse */
+	for(turf in view(CEILING(GLOB.global_light_range, 1), source_turf))
+		if(IS_OPAQUE_TURF(turf)) /* get_corners used to do opacity checks for arse */
 			continue
-		if (!T.lighting_corners_initialised)
-			T.static_generate_missing_corners()
-		corners |= T.lighting_corner_NE
-		corners |= T.lighting_corner_SE
-		corners |= T.lighting_corner_SW
-		corners |= T.lighting_corner_NW
-		turfs += T
+		if (!turf.lighting_corners_initialised)
+			turf.static_generate_missing_corners()
+		corners |= turf.lighting_corner_NE
+		corners |= turf.lighting_corner_SE
+		corners |= turf.lighting_corner_SW
+		corners |= turf.lighting_corner_NW
+		turfs += turf
 
 	//restore lum
 	luminosity = oldLum
 
 	/* fix up the lists */
 	/* add ourselves and our distance to the corner */
-	LAZYINITLIST(affecting_corners)
-	var/list/L = corners - affecting_corners
-	affecting_corners += L
-	for(C in L)
-		C.glob_affect[src] = SUN_FALLOFF(C, source_turf);
-		if(C.glob_affect[src] > C.sun_falloff) /* if are closer than current dist, update the corner */
-			C.sun_falloff = C.glob_affect[src]
-			if(C.master_NE)
-				tempMasterList |= C.master_NE
-			if(C.master_SE)
-				tempMasterList |= C.master_SE
-			if(C.master_SW)
-				tempMasterList |= C.master_SW
-			if(C.master_NW)
-				tempMasterList |= C.master_NW
+	if(!affecting_corners)
+		affecting_corners = list()
+	var/list/corners_list = corners - affecting_corners
+	affecting_corners += corners_list
+	for(corner in corners_list)
+		corner.glob_affect[src] = SUN_FALLOFF(corner, source_turf);
+		if(corner.glob_affect[src] > corner.sun_falloff) /* if are closer than current dist, update the corner */
+			corner.sun_falloff = corner.glob_affect[src]
+			if(corner.master_NE)
+				tempMasterList |= corner.master_NE
+			if(corner.master_SE)
+				tempMasterList |= corner.master_SE
+			if(corner.master_SW)
+				tempMasterList |= corner.master_SW
+			if(corner.master_NW)
+				tempMasterList |= corner.master_NW
 
-	L = affecting_corners - corners // Now-gone corners, remove us from the affecting.
-	affecting_corners -= L
-	for(C in L)
-		LAZYREMOVE(C.glob_affect, src)
-		C.get_sunlight_falloff()
-		if(C.master_NE)
-			tempMasterList |= C.master_NE
-		if(C.master_SE)
-			tempMasterList |= C.master_SE
-		if(C.master_SW)
-			tempMasterList |= C.master_SW
-		if(C.master_NW)
-			tempMasterList |= C.master_NW
+	corners_list = affecting_corners - corners // Now-gone corners, remove us from the affecting.
+	affecting_corners -= corners_list
+	for(corner in corners_list)
+		corner.glob_affect -= src
+		corner.get_sunlight_falloff()
+		if(corner.master_NE)
+			tempMasterList |= corner.master_NE
+		if(corner.master_SE)
+			tempMasterList |= corner.master_SE
+		if(corner.master_SW)
+			tempMasterList |= corner.master_SW
+		if(corner.master_NW)
+			tempMasterList |= corner.master_NW
 
 	GLOB.sunlight_queue_corner += tempMasterList /* update the boys */
 
@@ -148,8 +147,9 @@ Sunlight System
 /* I moved this here to consolidate sunlight changes as much as possible, so its easily disabled */
 
 /* turf fuckery */
-/turf/var/tmp/atom/movable/outdoor_effect/outdoor_effect /* a turf's sunlight overlay */
-/turf/var/turf/pseudo_roof /* our roof turf - may be a path for top z level, or a ref to the turf above*/
+/turf
+	var/tmp/atom/movable/outdoor_effect/outdoor_effect /* a turf's sunlight overlay */
+	var/turf/pseudo_roof /* our roof turf - may be a path for top z level, or a ref to the turf above*/
 
 /* check ourselves and neighbours to see what outdoor effects we need */
 /* turf won't initialize an outdoor_effect if sky_blocked*/
@@ -261,7 +261,7 @@ Sunlight System
 	if(pseudo_roof && !ispath(pseudo_roof))
 		pseudo_roof = null
 
-	var/atom/movable/outdoor_effect/S
+	var/atom/movable/outdoor_effect/effect
 	var/list/SunlightUpdates = list()
 
 	//Add ourselves (we might not have corners initialized, and this handles it)
@@ -271,86 +271,86 @@ Sunlight System
 	if(lighting_corner_NE)
 		if(lighting_corner_NE.master_NE)
 			SunlightUpdates |= lighting_corner_NE.master_NE
-		for(S in lighting_corner_NE.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_NE.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 		if(lighting_corner_NE.master_SE)
 			SunlightUpdates |= lighting_corner_NE.master_SE
-		for(S in lighting_corner_NE.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_NE.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 		if(lighting_corner_NE.master_SW)
 			SunlightUpdates |= lighting_corner_NE.master_SW
-		for(S in lighting_corner_NE.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_NE.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 		if(lighting_corner_NE.master_NW)
 			SunlightUpdates |= lighting_corner_NE.master_NW
-		for(S in lighting_corner_NE.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_NE.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 	if(lighting_corner_SE)
 		if(lighting_corner_SE.master_NE)
 			SunlightUpdates |= lighting_corner_SE.master_NE
-		for(S in lighting_corner_SE.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_SE.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 		if(lighting_corner_SE.master_SE)
 			SunlightUpdates |= lighting_corner_SE.master_SE
-		for(S in lighting_corner_SE.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_SE.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 		if(lighting_corner_SE.master_SW)
 			SunlightUpdates |= lighting_corner_SE.master_SW
-		for(S in lighting_corner_SE.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_SE.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 		if(lighting_corner_SE.master_NW)
 			SunlightUpdates |= lighting_corner_SE.master_NW
-		for(S in lighting_corner_SE.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_SE.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 	if(lighting_corner_SW)
 		if(lighting_corner_SW.master_NE)
 			SunlightUpdates |= lighting_corner_SW.master_NE
-		for(S in lighting_corner_SW.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_SW.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 		if(lighting_corner_SW.master_SE)
 			SunlightUpdates |= lighting_corner_SW.master_SE
-		for(S in lighting_corner_SW.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_SW.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 		if(lighting_corner_SW.master_SW)
 			SunlightUpdates |= lighting_corner_SW.master_SW
-		for(S in lighting_corner_SW.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_SW.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 		if(lighting_corner_SW.master_NW)
 			SunlightUpdates |= lighting_corner_SW.master_NW
-		for(S in lighting_corner_SW.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_SW.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 	if(lighting_corner_NW)
 		if(lighting_corner_NW.master_NE)
 			SunlightUpdates |= lighting_corner_NW.master_NE
-		for(S in lighting_corner_NW.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_NW.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 		if(lighting_corner_NW.master_SE)
 			SunlightUpdates |= lighting_corner_NW.master_SE
-		for(S in lighting_corner_NW.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_NW.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 		if(lighting_corner_NW.master_SW)
 			SunlightUpdates |= lighting_corner_NW.master_SW
-		for(S in lighting_corner_NW.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_NW.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 		if(lighting_corner_NW.master_NW)
 			SunlightUpdates |= lighting_corner_NW.master_NW
-		for(S in lighting_corner_NW.glob_affect)
-			SunlightUpdates |= S.source_turf
+		for(effect in lighting_corner_NW.glob_affect)
+			SunlightUpdates |= effect.source_turf
 
 	GLOB.sunlight_queue_work |= SunlightUpdates
 
@@ -367,9 +367,9 @@ Sunlight System
 /datum/static_lighting_corner/proc/get_sunlight_falloff()
 	sun_falloff = 0
 
-	var/atom/movable/outdoor_effect/S
-	for(S in glob_affect)
-		sun_falloff = sun_falloff < glob_affect[S] ? glob_affect[S] : sun_falloff
+	var/atom/movable/outdoor_effect/effect
+	for(effect in glob_affect)
+		sun_falloff = sun_falloff < glob_affect[effect] ? glob_affect[effect] : sun_falloff
 
 /* Effect Fuckery */
 /* these bits are to set the roof on a top-z level, as there is no turf above to act as a roof */

@@ -1357,10 +1357,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 /obj/structure/machinery/power/apc/almayer/directional/north
 	pixel_y = 32
-	dir = 1
 
 /obj/structure/machinery/power/apc/almayer/directional/south
-	dir = 2
+	dir = 1
 	pixel_y = -26
 
 /obj/structure/machinery/power/apc/almayer/directional/east
@@ -1377,19 +1376,19 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	crash_break_probability = 0
 
 /obj/structure/machinery/power/apc/almayer/hardened/directional/north
-	pixel_y = 24
-	dir = 1
+	pixel_y = 32
 
 /obj/structure/machinery/power/apc/almayer/hardened/directional/south
-	pixel_y = -24
+	dir = 1
+	pixel_y = -26
 
 /obj/structure/machinery/power/apc/almayer/hardened/directional/east
-	pixel_x = 24
-	dir = 4
+	pixel_x = 30
+	dir = 8
 
 /obj/structure/machinery/power/apc/almayer/hardened/directional/west
-	pixel_x = -24
-	dir = 8
+	pixel_x = -30
+	dir = 4
 
 //------ Directional APCs ------//
 /obj/structure/machinery/power/apc/directional/no_power

@@ -12,6 +12,22 @@
 	var/move_momentum_build_factor = 0
 	var/move_turn_momentum_loss_factor = 0
 
+/obj/item/hardpoint/locomotion/p_are(temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	. = "is"
+	if(temp_gender == PLURAL)
+		. = "are"
+
+/obj/item/hardpoint/locomotion/p_they(capitalized, temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	. = "it"
+	if(temp_gender == PLURAL)
+		. = "they"
+	if(capitalized)
+		. = capitalize(.)
+
 /obj/item/hardpoint/locomotion/deactivate()
 	owner.move_delay = initial(owner.move_delay)
 	owner.move_max_momentum = initial(owner.move_max_momentum)

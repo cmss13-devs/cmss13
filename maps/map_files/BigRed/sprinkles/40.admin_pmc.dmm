@@ -10,9 +10,7 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/admin_building)
 "aj" = (
-/turf/open/floor{
-	icon_state = "darkred2"
-	},
+/turf/open/floor/darkred2,
 /area/bigredv2/outside/admin_building)
 "ak" = (
 /obj/structure/window_frame/solaris,
@@ -24,9 +22,7 @@
 	dir = 1;
 	name = "\improper Operations Meeting Room"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/bigredv2/outside/admin_building)
 "ar" = (
 /obj/structure/machinery/light{
@@ -35,9 +31,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "at" = (
 /obj/structure/bed/chair/comfy/black,
@@ -52,20 +46,14 @@
 	dir = 4;
 	icon_state = "metal_2"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "ay" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aA" = (
 /obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aB" = (
 /obj/structure/surface/table,
@@ -110,9 +98,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aQ" = (
 /turf/open/floor/carpet,
@@ -147,9 +133,7 @@
 /obj/item/ammo_box/magazine/m4a3{
 	num_of_magazines = 2
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "ba" = (
 /obj/structure/surface/table,
@@ -185,22 +169,16 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bi" = (
 /obj/item/ammo_box/magazine/ext{
 	num_of_magazines = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bl" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bp" = (
 /obj/structure/machinery/vending/coffee,
@@ -218,9 +196,7 @@
 /obj/item/ammo_magazine/pistol/rubber{
 	current_rounds = 0
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "jq" = (
 /obj/item/weapon/gun/rifle/m41a/corporate{
@@ -236,9 +212,7 @@
 	current_rounds = 0;
 	pixel_y = 11
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "mq" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -253,9 +227,7 @@
 /obj/item/ammo_magazine/rifle{
 	current_rounds = 0
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "si" = (
 /obj/item/ammo_box/magazine{
@@ -271,9 +243,7 @@
 	pixel_x = 14;
 	pixel_y = 17
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "uv" = (
 /obj/item/ammo_magazine/rifle{
@@ -281,9 +251,7 @@
 	pixel_x = -9;
 	pixel_y = 7
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "za" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -315,9 +283,7 @@
 /obj/item/ammo_magazine/pistol/rubber{
 	current_rounds = 0
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "Sz" = (
 /obj/item/ammo_magazine/rifle/rubber{

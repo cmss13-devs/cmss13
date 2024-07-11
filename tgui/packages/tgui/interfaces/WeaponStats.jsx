@@ -1,7 +1,8 @@
 import { map } from 'common/collections';
 import { classes } from 'common/react';
+
 import { useBackend } from '../backend';
-import { ProgressBar, Section, Box, Flex, Table, Divider } from '../components';
+import { Box, Divider, Flex, ProgressBar, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 const GreedRedRange = {
@@ -137,7 +138,8 @@ const Recoil = (props) => {
           <Box height="5px" />
           <ProgressBar
             value={unwielded_recoil / recoil_max}
-            ranges={GreedRedRange}>
+            ranges={GreedRedRange}
+          >
             Unwielded recoil: {unwielded_recoil} / {recoil_max}
           </ProgressBar>
         </>
@@ -166,13 +168,15 @@ const Scatter = (props) => {
           <Box height="5px" />
           <ProgressBar
             value={unwielded_scatter / scatter_max}
-            ranges={GreedRedRange}>
+            ranges={GreedRedRange}
+          >
             Unwielded scatter: {unwielded_scatter} / {scatter_max}
           </ProgressBar>
           <Box height="5px" />
           <ProgressBar
             value={burst_scatter / scatter_max}
-            ranges={GreedRedRange}>
+            ranges={GreedRedRange}
+          >
             Burst scatter multiplier: {burst_scatter} / {scatter_max}
           </ProgressBar>
         </>
@@ -256,7 +260,8 @@ const Accuracy = (props) => {
           <Box height="5px" />
           <ProgressBar
             value={unwielded_accuracy / accuracy_max}
-            ranges={RedGreenRange}>
+            ranges={RedGreenRange}
+          >
             Unwielded accurate range: {unwielded_accuracy} / {accuracy_max}
           </ProgressBar>
         </>
@@ -323,30 +328,30 @@ const DamageTable = (props) => {
           <Table.Cell bold textAlign="left">
             Armour Value
           </Table.Cell>
-          {map((entry, i) => (
+          {map(damage_armor_profile_headers, (entry, i) => (
             <Table.Cell bold key={i}>
               {entry}
             </Table.Cell>
-          ))(damage_armor_profile_headers)}
+          ))}
         </Table.Row>
         <Table.Row>
           <Table.Cell textAlign="left">Bioform</Table.Cell>
-          {map((entry, i) => <Table.Cell key={i}>{entry}</Table.Cell>)(
-            damage_armor_profile_xeno
-          )}
+          {map(damage_armor_profile_xeno, (entry, i) => (
+            <Table.Cell key={i}>{entry}</Table.Cell>
+          ))}
         </Table.Row>
         <Table.Row>
           <Table.Cell textAlign="left">Humanoid</Table.Cell>
-          {map((entry, i) => <Table.Cell key={i}>{entry}</Table.Cell>)(
-            damage_armor_profile_marine
-          )}
+          {map(damage_armor_profile_marine, (entry, i) => (
+            <Table.Cell key={i}>{entry}</Table.Cell>
+          ))}
         </Table.Row>
         {!glob_armourbreak ? (
           <Table.Row>
             <Table.Cell textAlign="left">Armor break</Table.Cell>
-            {map((entry, i) => <Table.Cell key={i}>{entry}</Table.Cell>)(
-              damage_armor_profile_armorbreak
-            )}
+            {map(damage_armor_profile_armorbreak, (entry, i) => (
+              <Table.Cell key={i}>{entry}</Table.Cell>
+            ))}
           </Table.Row>
         ) : null}
       </Table>

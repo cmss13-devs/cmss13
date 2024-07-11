@@ -25,4 +25,8 @@
 	lurker.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 	lurker.attack_speed_modifier -= 2
 
+	var/datum/mob_hud/execute_hud = GLOB.huds[MOB_HUD_EXECUTE]
+	execute_hud.add_hud_to(lurker, lurker)
+	lurker.execute_hud = TRUE
+
 	lurker.recalculate_everything()

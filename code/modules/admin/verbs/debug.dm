@@ -200,14 +200,14 @@
 		return
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		if (H.wear_id)
-			var/obj/item/card/id/id = H.wear_id
+		var/obj/item/card/id/id = H.get_idcard()
+		if(id)
 			id.icon_state = "gold"
-			id:access = get_access(ACCESS_LIST_GLOBAL)
+			id.access = get_access(ACCESS_LIST_GLOBAL)
 		else
-			var/obj/item/card/id/id = new/obj/item/card/id(M);
+			id = new(M)
 			id.icon_state = "gold"
-			id:access = get_access(ACCESS_LIST_GLOBAL)
+			id.access = get_access(ACCESS_LIST_GLOBAL)
 			id.registered_name = H.real_name
 			id.registered_ref = WEAKREF(H)
 			id.assignment = "Captain"
@@ -266,7 +266,7 @@
 
 
 	var/datum/paygrade/account_paygrade = GLOB.paygrades[custom_paygrade]
-	var/obj/item/card/id/card = account_user.wear_id
+	var/obj/item/card/id/card = account_user.get_idcard()
 	generated_account = create_account(account_user.real_name, starting_amount, account_paygrade)
 	if(card)
 		card.associated_account_number = generated_account.account_number
@@ -277,7 +277,7 @@
 		remembered_info += "<b>Your account pin is:</b> [generated_account.remote_access_pin]<br>"
 		remembered_info += "<b>Your account funds are:</b> $[generated_account.money]<br>"
 
-		if(generated_account.transaction_log.len)
+		if(length(generated_account.transaction_log))
 			var/datum/transaction/T = generated_account.transaction_log[1]
 			remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
 		account_user.mind.store_memory(remembered_info)

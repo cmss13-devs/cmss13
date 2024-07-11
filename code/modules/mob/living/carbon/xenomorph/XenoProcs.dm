@@ -15,7 +15,7 @@
 		if(3)
 			fontsize_style = "large"
 
-	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
+	if(SSticker.mode && length(SSticker.mode.xenomorphs)) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/L in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/M = L.current
 			if(M && istype(M) && !M.stat && M.client && (!hivenumber || M.hivenumber == hivenumber)) //Only living and connected xenos
@@ -26,7 +26,7 @@
 	if(text == "" || !hivenumber)
 		return //Logic
 
-	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
+	if(SSticker.mode && length(SSticker.mode.xenomorphs)) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/living in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/xenomorph/xeno = living.current
 			if(istype(xeno) && !xeno.stat && xeno.client && xeno.hivenumber == hivenumber) //Only living and connected xenos
@@ -370,13 +370,13 @@
 
 //Bleuugh
 /mob/living/carbon/xenomorph/proc/empty_gut()
-	if(stomach_contents.len)
+	if(length(stomach_contents))
 		for(var/atom/movable/S in stomach_contents)
 			stomach_contents.Remove(S)
 			S.acid_damage = 0 //Reset the acid damage
 			S.forceMove(get_true_turf(src))
 
-	if(contents.len) //Get rid of anything that may be stuck inside us as well
+	if(length(contents)) //Get rid of anything that may be stuck inside us as well
 		for(var/atom/movable/A in contents)
 			A.forceMove(get_true_turf(src))
 
@@ -392,7 +392,7 @@
 	update_sight()
 
 /mob/living/carbon/xenomorph/proc/regurgitate(mob/living/victim, stuns = FALSE)
-	if(stomach_contents.len)
+	if(length(stomach_contents))
 		if(victim)
 			stomach_contents.Remove(victim)
 			victim.acid_damage = 0
@@ -747,3 +747,16 @@
 /// Handler callback to reset immobilization status after a successful [/mob/living/carbon/xenomorph/proc/throw_carbon]
 /mob/living/carbon/xenomorph/proc/throw_carbon_end(mob/living/carbon/target)
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
+
+/// snowflake proc to clear effects from research warcrimes
+/mob/living/carbon/xenomorph/proc/clear_debuffs()
+	SEND_SIGNAL(src, COMSIG_XENO_DEBUFF_CLEANSE)
+	SetKnockOut(0)
+	SetStun(0)
+	SetKnockDown(0)
+	SetDaze(0)
+	SetSlow(0)
+	SetSuperslow(0)
+	SetRoot(0)
+	SetEyeBlur(0)
+	updatehealth()

@@ -1,5 +1,5 @@
 /obj/item/hardpoint/secondary/m56cupola
-	name = "M56 Cupola"
+	name = "\improper M56 Cupola"
 	desc = "A secondary weapon for tanks that shoots bullets"
 
 	icon_state = "m56_cupola"
@@ -9,8 +9,6 @@
 
 	health = 350
 	firing_arc = 120
-
-	origins = list(0, -2)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/m56_cupola
 	max_clips = 1

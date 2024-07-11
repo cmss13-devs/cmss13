@@ -620,6 +620,6 @@
 		'sound/weather/rain/wind_4.ogg'=1,
 		'sound/weather/rain/wind_5.ogg'=1,
 		'sound/weather/rain/wind_6.ogg'=1,
-		)
+	)
 	mid_length = 30 SECONDS
 	volume = 150

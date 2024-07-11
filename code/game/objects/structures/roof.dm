@@ -92,8 +92,9 @@
 			node.link_master(master)
 
 /obj/effect/roof_node/Destroy(force)
-	. = ..()
 	linked_master.connected_nodes -= src
+	. = ..()
+
 
 
 
@@ -155,10 +156,10 @@
 
 
 
-/datum/roof_master_node/Destroy(force, ...)
-	. = ..()
+/datum/roof_master_node/Destroy()
 	for(var/obj/effect/roof_node/roof_node in connected_nodes)
 		roof_node.Destroy()
 	for(var/obj/structure/roof/roof in location)
 		roof.Destroy()
-	qdel(src)
+	. = ..()
+

@@ -9,6 +9,7 @@
 /datum/ammo/bullet/tank/flak
 	name = "flak autocannon bullet"
 	icon_state = "autocannon"
+	sound_hit  = list('sound/weapons/sting_boom_small1.ogg')
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
 	accurate_range_min = 4

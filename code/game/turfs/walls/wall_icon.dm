@@ -25,9 +25,9 @@
 			return
 
 	if(damage)
-		var/current_dmg_overlay = round(damage / damage_cap * damage_overlays.len) + 1
-		if(current_dmg_overlay > damage_overlays.len)
-			current_dmg_overlay = damage_overlays.len
+		var/current_dmg_overlay = round(damage / damage_cap * length(damage_overlays)) + 1
+		if(current_dmg_overlay > length(damage_overlays))
+			current_dmg_overlay = length(damage_overlays)
 
 		damage_overlay = current_dmg_overlay
 		overlays += damage_overlays[damage_overlay]
@@ -42,9 +42,9 @@
 #undef cur_increment
 
 /turf/closed/wall/proc/generate_damage_overlays()
-	var/alpha_inc = 256 / damage_overlays.len
+	var/alpha_inc = 256 / length(damage_overlays)
 
-	for(var/i = 1; i <= damage_overlays.len; i++)
+	for(var/i = 1; i <= length(damage_overlays); i++)
 		var/image/img = image(icon = 'icons/turf/walls/walls.dmi', icon_state = "overlay_damage")
 		img.blend_mode = BLEND_MULTIPLY
 		img.appearance_flags = NO_CLIENT_COLOR

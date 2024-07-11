@@ -374,6 +374,8 @@
 	var/can_move_docking_ports = FALSE //if this shuttle can move docking ports other than the one it is docked at
 	var/list/hidden_turfs = list()
 
+	var/custom_ceiling = /turf/open/floor/roof/ship_hull
+
 	var/crashing = FALSE
 
 	var/shuttle_flags = NONE

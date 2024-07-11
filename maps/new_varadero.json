@@ -3,8 +3,10 @@
     "map_path": "map_files/New_Varadero",
     "map_file": "New_Varadero.dmm",
     "webmap_url": "NewVaradero",
-    "weather_holder": "/datum/weather_ss_map_holder/new_varadero",
-
+    "weather": [
+        "weather_rain",
+        "weather_dust"
+    ],
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/nv",
         "/datum/equipment_preset/survivor/doctor/nv",
@@ -49,5 +51,18 @@
         "Hive Wars",
         "Faction Clash",
         "Infection"
-    ]
+    ],
+    "map_day_night_modificator": {
+        "Midnight": 1,
+        "Night": 0.083,
+        "Dawn": 0.16,
+        "Sunrise": 0.25,
+        "Sunrise-Morning": 0.29,
+        "Morning": 0.33,
+        "Daytime": 0.416,
+        "Evening": 0.66,
+        "Sunset": 0.7916,
+        "Dusk": 0.916
+    },
+    "custom_time_length": 1870272
 }

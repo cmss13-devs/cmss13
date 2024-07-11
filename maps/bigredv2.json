@@ -3,7 +3,9 @@
     "map_path": "map_files/BigRed",
     "map_file": "BigRed.dmm",
     "webmap_url": "Solaris",
-    "weather_holder": "/datum/weather_ss_map_holder/big_red",
+    "weather": [
+        "weather_dust"
+    ],
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/solaris",
         "/datum/equipment_preset/survivor/doctor/solaris",
@@ -45,5 +47,18 @@
         "Hive Wars",
         "Faction Clash",
         "Infection"
-    ]
+    ],
+    "map_day_night_modificator": {
+        "Midnight": 1,
+        "Night": 0.083,
+        "Dawn": 0.16,
+        "Sunrise": 0.25,
+        "Sunrise-Morning": 0.29,
+        "Morning": 0.33,
+        "Daytime": 0.416,
+        "Evening": 0.66,
+        "Sunset": 0.7916,
+        "Dusk": 0.916
+    },
+    "custom_time_length": 2422075
 }

@@ -66,8 +66,8 @@
 		new_hidden_turfs = list()
 		for(var/i in 1 to length(old_turfs))
 			CHECK_TICK
-			var/turf/oldT = old_turfs[i]
-			if(old_turfs[oldT] & MOVE_TURF)
+			var/turf/old_turf = old_turfs[i]
+			if(old_turfs[old_turf] & MOVE_TURF)
 				new_hidden_turfs += new_turfs[i]
 		SSshuttle.update_hidden_docking_ports(null, new_hidden_turfs)
 	/***************************************************************************************************************/
@@ -110,49 +110,49 @@
 /obj/docking_port/mobile/proc/preflight_check(list/old_turfs, list/new_turfs, list/areas_to_move, rotation)
 	for(var/i in 1 to length(old_turfs))
 		CHECK_TICK
-		var/turf/oldT = old_turfs[i]
-		var/turf/newT = new_turfs[i]
-		if(!newT)
+		var/turf/old_turf = old_turfs[i]
+		var/turf/new_turf = new_turfs[i]
+		if(!new_turf)
 			return DOCKING_NULL_DESTINATION
-		if(!oldT)
+		if(!old_turf)
 			return DOCKING_NULL_SOURCE
 
-		var/area/old_area = oldT.loc
+		var/area/old_area = old_turf.loc
 		var/move_mode = old_area.beforeShuttleMove(shuttle_areas) //areas
 
-		for(var/atom/movable/moving_atom as anything in oldT.contents)
+		for(var/atom/movable/moving_atom as anything in old_turf.contents)
 			CHECK_TICK
-			if(moving_atom.loc != oldT) //fix for multi-tile objects
+			if(moving_atom.loc != old_turf) //fix for multi-tile objects
 				continue
-			move_mode = moving_atom.beforeShuttleMove(newT, rotation, move_mode, src) //atoms
+			move_mode = moving_atom.beforeShuttleMove(new_turf, rotation, move_mode, src) //atoms
 
-		move_mode = oldT.fromShuttleMove(newT, move_mode) //turfs
-		move_mode = newT.toShuttleMove(oldT, move_mode, src) //turfs
+		move_mode = old_turf.fromShuttleMove(new_turf, move_mode) //turfs
+		move_mode = new_turf.toShuttleMove(old_turf, move_mode, src) //turfs
 
 		if(move_mode & MOVE_AREA)
 			areas_to_move[old_area] = TRUE
 
-		old_turfs[oldT] = move_mode
+		old_turfs[old_turf] = move_mode
 
 /obj/docking_port/mobile/proc/takeoff(list/old_turfs, list/new_turfs, list/moved_atoms, rotation, movement_direction, old_dock, area/underlying_old_area)
 	for(var/i in 1 to length(old_turfs))
-		var/turf/oldT = old_turfs[i]
-		var/turf/newT = new_turfs[i]
-		var/move_mode = old_turfs[oldT]
+		var/turf/old_turf = old_turfs[i]
+		var/turf/new_turf = new_turfs[i]
+		var/move_mode = old_turfs[old_turf]
 		if(move_mode & MOVE_CONTENTS)
-			for(var/k in oldT)
+			for(var/k in old_turf)
 				var/atom/movable/moving_atom = k
-				if(moving_atom.loc != oldT) //fix for multi-tile objects
+				if(moving_atom.loc != old_turf) //fix for multi-tile objects
 					continue
-				moving_atom.onShuttleMove(newT, oldT, movement_force, movement_direction, old_dock, src) //atoms
-				moved_atoms[moving_atom] = oldT
+				if(moving_atom.onShuttleMove(new_turf, old_turf, movement_force, movement_direction, old_dock, src)) //atoms
+					moved_atoms[moving_atom] = old_turf
 
 		if(move_mode & MOVE_TURF)
-			oldT.onShuttleMove(newT, movement_force, movement_direction) //turfs
+			old_turf.onShuttleMove(new_turf, movement_force, movement_direction, src) //turfs
 
 		if(move_mode & MOVE_AREA)
-			var/area/shuttle_area = oldT.loc
-			shuttle_area.onShuttleMove(oldT, newT, underlying_old_area) //areas
+			var/area/shuttle_area = old_turf.loc
+			shuttle_area.onShuttleMove(old_turf, new_turf, underlying_old_area) //areas
 
 /obj/docking_port/mobile/proc/cleanup_runway(obj/docking_port/stationary/new_dock, list/old_turfs, list/new_turfs, list/areas_to_move, list/moved_atoms, rotation, movement_direction, area/underlying_old_area)
 	underlying_old_area.afterShuttleMove()
@@ -170,18 +170,57 @@
 	for(var/i in 1 to length(old_turfs))
 		CHECK_TICK
 		if(!(old_turfs[old_turfs[i]] & MOVE_TURF))
+			GLOB.sunlight_queue_work |= old_turfs[i]
+			GLOB.sunlight_queue_work |= new_turfs[i]
 			continue
-		var/turf/oldT = old_turfs[i]
-		var/turf/newT = new_turfs[i]
-		newT.afterShuttleMove(oldT, rotation) //turfs
+
+		var/turf/old_turf = old_turfs[i]
+		var/turf/new_turf = new_turfs[i]
+//		var/turf/new_ceiling = get_step_multiz(new_turf, UP)
+		if(new_turf.outdoor_effect)
+			qdel(new_turf.outdoor_effect, TRUE)
+		if(old_turf.outdoor_effect)
+			qdel(old_turf.outdoor_effect, TRUE)
+//silent fix
+		new_turf.pseudo_roof = custom_ceiling
+/*
+		if(new_ceiling)
+			if(!new_ceiling.baseturfs || !(new_ceiling.turf_flags & TURF_WEATHER_PROOF))
+				new_ceiling.ChangeTurf(custom_ceiling)
+			else
+				if(length(new_ceiling.baseturfs) > 1)
+					new_ceiling.baseturfs = list(new_ceiling.baseturfs[1], custom_ceiling) + new_ceiling.baseturfs.Copy(2, length(new_ceiling.baseturfs))
+				else
+					new_ceiling.baseturfs = list(custom_ceiling) + new_ceiling.baseturfs
+		else
+			new_turf.pseudo_roof = custom_ceiling
+*/
+		new_turf.afterShuttleMove(old_turf, rotation)
+		GLOB.sunlight_queue_work |= new_turf
+
+//silent fix
+		var/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter/presetted_pseudo = locate(/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter) in old_turf
+		old_turf.pseudo_roof = presetted_pseudo ? presetted_pseudo.pseudo_roof : initial(old_turf.pseudo_roof)
+/*
+		var/turf/old_ceiling = get_step_multiz(old_turf, UP)
+		if(!old_ceiling)
+			var/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter/presetted_pseudo = locate(/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter) in old_turf
+			old_turf.pseudo_roof = presetted_pseudo ? presetted_pseudo.pseudo_roof : initial(old_turf.pseudo_roof)
+		else if(istype(old_ceiling, custom_ceiling))
+			var/turf/open/floor/roof/old_shuttle_ceiling = old_ceiling
+			old_shuttle_ceiling.ScrapeAway()
+		else
+			old_ceiling.baseturfs -= custom_ceiling
+*/
+		GLOB.sunlight_queue_work |= old_turf
 
 	for(var/i in 1 to length(moved_atoms))
 		CHECK_TICK
 		var/atom/movable/moved_object = moved_atoms[i]
 		if(QDELETED(moved_object))
 			continue
-		var/turf/oldT = moved_atoms[moved_object]
-		moved_object.afterShuttleMove(oldT, movement_force, dir, preferred_direction, movement_direction, rotation)//atoms
+		var/turf/old_turf = moved_atoms[moved_object]
+		moved_object.afterShuttleMove(old_turf, movement_force, dir, preferred_direction, movement_direction, rotation)//atoms
 
 	// lateShuttleMove (There had better be a really good reason for additional stages beyond this)
 
@@ -196,15 +235,15 @@
 		CHECK_TICK
 		if(!(old_turfs[old_turfs[i]] & MOVE_CONTENTS | MOVE_TURF))
 			continue
-		var/turf/oldT = old_turfs[i]
-		var/turf/newT = new_turfs[i]
-		newT.lateShuttleMove(oldT)
+		var/turf/old_turf = old_turfs[i]
+		var/turf/new_turf = new_turfs[i]
+		new_turf.lateShuttleMove(old_turf)
+		old_turf.get_sky_and_weather_states()
 
 	for(var/i in 1 to length(moved_atoms))
 		CHECK_TICK
 		var/atom/movable/moved_object = moved_atoms[i]
 		if(QDELETED(moved_object))
 			continue
-		var/turf/oldT = moved_atoms[moved_object]
-		moved_object.lateShuttleMove(oldT, movement_force, movement_direction)
-
+		var/turf/old_turf = moved_atoms[moved_object]
+		moved_object.lateShuttleMove(old_turf, movement_force, movement_direction)

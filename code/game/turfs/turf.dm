@@ -109,6 +109,8 @@
 	var/area/current_area = loc
 	if(current_area?.lighting_effect)
 		overlays += current_area.lighting_effect
+	else
+		GLOB.sunlight_queue_work |= src
 
 	if(opacity)
 		directional_opacity = ALL_CARDINALS

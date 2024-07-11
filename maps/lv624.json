@@ -3,7 +3,9 @@
     "map_path": "map_files/LV624",
     "map_file": "LV624.dmm",
     "webmap_url": "LV624",
-    "weather_holder": "/datum/weather_ss_map_holder/lv624",
+    "weather": [
+        "weather_rain"
+        ],
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",
         "/datum/equipment_preset/survivor/doctor/lv",
@@ -40,5 +42,18 @@
         "Hive Wars",
         "Faction Clash",
         "Infection"
-    ]
+    ],
+    "map_day_night_modificator": {
+        "Midnight": 1,
+        "Night": 0.083,
+        "Dawn": 0.16,
+        "Sunrise": 0.25,
+        "Sunrise-Morning": 0.29,
+        "Morning": 0.33,
+        "Daytime": 0.416,
+        "Evening": 0.66,
+        "Sunset": 0.7916,
+        "Dusk": 0.916
+    },
+    "custom_time_length": 533527
 }

@@ -94,8 +94,6 @@ SUBSYSTEM_DEF(sunlighting)
 
 	var/list/datum/time_of_day/steps = list()
 
-	var/allow_updates = TRUE
-	var/next_day = FALSE
 	var/current_color = ""
 	var/weather_blend_ammount = 0.3
 
@@ -103,7 +101,7 @@ SUBSYSTEM_DEF(sunlighting)
 	var/custom_time_offset = 0
 
 /datum/controller/subsystem/sunlighting/stat_entry(msg)
-	msg = "W:[GLOB.sunlight_queue_work.len]|U:[GLOB.sunlight_queue_update.len]|C:[GLOB.sunlight_queue_corner.len]"
+	msg = "W:[length(GLOB.sunlight_queue_work)]|U:[length(GLOB.sunlight_queue_update)]|C:[length(GLOB.sunlight_queue_corner)]"
 	return ..()
 
 /datum/controller/subsystem/sunlighting/Initialize(timeofday)
@@ -126,7 +124,8 @@ SUBSYSTEM_DEF(sunlighting)
 	custom_time_offset = new_value
 
 /datum/controller/subsystem/sunlighting/proc/game_time_offseted()
-	return (REALTIMEOFDAY + custom_time_offset) % game_time_length
+	return 0 // Idk, maintainers not alowed it and I don't asked, so some time later I'll ask 200%, rn just dead end for daytime change
+//	return (REALTIMEOFDAY + custom_time_offset) % game_time_length
 
 /datum/controller/subsystem/sunlighting/proc/create_steps()
 	for(var/path in typesof(/datum/time_of_day))

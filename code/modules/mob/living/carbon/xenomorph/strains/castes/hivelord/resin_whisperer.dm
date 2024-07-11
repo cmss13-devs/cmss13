@@ -70,6 +70,10 @@
 	var/turf/target_turf = get_turf(target_atom)
 	if(!target_turf)
 		return
+	
+	if(!(target_turf in view(10, owner)))
+		to_chat(owner, SPAN_XENONOTICE("We must have a direct line of sight!"))
+		return
 
 	/// Check if the target is a resin door and open or close it
 	if(istype(target_atom, /obj/structure/mineral_door/resin))

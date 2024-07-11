@@ -93,8 +93,9 @@
 			node.link_master(master)
 
 /obj/effect/roof_node/Destroy(force, ...)
-	if(linked_master.connected_nodes)
-		linked_master.connected_nodes -= src
+	if(linked_master)
+		if(linked_master.connected_nodes)
+			linked_master.connected_nodes -= src
 	.=..()
 
 

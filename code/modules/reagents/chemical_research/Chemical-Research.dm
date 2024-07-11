@@ -12,7 +12,6 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/list/research_publications = list()
 	var/list/research_property_data = list() //starter properties are stored here
 	var/list/contract_chems = list() //3 chemicals that you get to pick
-	var/reroll_timer_id = TIMER_ID_NULL // holds our timer id for rerolls
 	var/next_reroll = null//when will next reroll happen
 	var/list/chemical_networks = list()
 	var/list/shared_item_storage = list()
@@ -20,6 +19,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/list/chemical_objective_list = list() //List of all objective reagents indexed by ID associated with the objective value
 	var/list/chemical_not_completed_objective_list = list() //List of not completed objective reagents indexed by ID associated with the objective value
 	var/list/chemical_identified_list = list() //List of all identified objective reagents indexed by ID associated with the objective value
+	var/list/research_computers = list()
 
 /datum/chemical_data/proc/update_credits(change)
 	rsc_credits = max(0, rsc_credits + change)
@@ -133,7 +133,6 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	return TRUE
 
 /datum/chemical_data/proc/complete_chemical(datum/reagent/chem)
-	update_credits(2)
 	chemical_identified_list[chem.id] = chem.objective_value
 	chemical_not_completed_objective_list -= chem.id
 
@@ -142,7 +141,11 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 	tree.add_points(chem.objective_value)
-
+	if(istype(chem, /datum/reagent/generated))
+		var/datum/reagent/generated/generated_chem = chem
+		GLOB.chemical_data.update_credits(generated_chem.credit_reward)
+	else
+		GLOB.chemical_data.update_credits(2)
 
 /datum/chemical_data/proc/add_chemical_objective(datum/reagent/chem)
 	chemical_objective_list[chem.id] = chem.objective_value
@@ -159,19 +162,20 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		var/datum/reagent/generated/C = new /datum/reagent/generated
 		C.id = "contract-chem-[i]"//we dont actually give it proper id.
 		C.generate_name()
-		C.chemclass = CHEM_CLASS_RARE
-		C.gen_tier = rand(1,3)
+		C.gen_tier = rand(1,3) //easy, hard and medium
 		C.generate_stats()
 		var/roll = rand(1, 100)
 		switch(C.gen_tier) // pick a reagent hint.
 			if(1)
+				C.credit_reward = 3
 				if(roll<=80)
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C1"])
 				else if(roll<=55)
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
-				else if(roll<=35)
+				else
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
 			if(2)
+				C.credit_reward = 5
 				if(roll<=60)
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C1"])
 				else if(roll<=35)
@@ -181,6 +185,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 				else
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C4"])
 			if(3)
+				C.credit_reward = 7
 				if(roll<=50)
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
 				else if(roll<=70)
@@ -190,10 +195,19 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		C.property_hint = pick(C.properties)
 		contract_chems[C.id] = C
 	to_world("Contract chemical batch generated, names are [contract_chems[1]], [contract_chems[2]], and [contract_chems[3]] ")
-	reroll_timer_id = addtimer(CALLBACK(src, PROC_REF(reroll_chemicals)), 2 MINUTES, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) //if picked, we will bump(set, not add) it up to 5 minutes in research.dm (machinery)
 	next_reroll = world.time + 2 MINUTES
 	if(picked_chem)
 		picked_chem = FALSE
+	for(var/obj/structure/machinery/computer in research_computers)
+		var/list/heard = get_mobs_in_view(7, computer.loc)
+		var/message = "Chemical contracts have been updated!"
+		give_notification(computer, heard, message)
+		computer.update_static_data_for_all_viewers()
+
+/datum/chemical_data/proc/give_notification(obj/structure/machinery/comp, list/group, message)
+	comp.langchat_speech(message, group, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+	comp.visible_message("[icon2html(comp, viewers(comp))] \The <b>[comp]</b> speaks: [message]")
+	playsound(comp.loc, 'sound/machines/twobeep.ogg', 50, 1, 7)
 
 ///Adds coontract chemicals to global lists and given proper ID, aswell as removed from contract chems since those are qdelled on reroll. only used when we are 100% certain its in user hands and not going to be removed
 /datum/chemical_data/proc/legalize_chem(datum/reagent/generated/chem) // we dont actually create the recipe for it or give it a proper id, frankly that would be too much pain to remove when we reroll them

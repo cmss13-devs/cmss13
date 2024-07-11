@@ -6,15 +6,14 @@ import {
   Box,
   Button,
   Flex,
+  ProgressBar,
   Section,
   Stack,
   Tabs,
-  ProgressBar,
 } from '../components';
 import { BoxProps } from '../components/Box';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
-import { map } from 'common/collections';
 
 export interface DocumentLog {
   ['XRF Scans']?: Array<DocumentRecord>;
@@ -540,9 +539,12 @@ const Contracts = () => {
   const { data, act } = useBackend<TerminalProps>();
   const timeLeft = data.next_reroll - data.world_time;
   const timeLeftPct = timeLeft / data.contract_cooldown;
-
+  const contractKeys =
+    data.contract_chems.length === 0
+      ? []
+      : Array.from(Array(data.contract_chems.length).keys());
   return (
-    <Section>
+    <Box px={'7px'}>
       <Section title={'Chemical Contracts'}>
         <ProgressBar
           width="100%"
@@ -556,8 +558,8 @@ const Contracts = () => {
           </Box>
         </ProgressBar>
       </Section>
-      {map((key) => (
-        <Flex grow direction="row">
+      {contractKeys.map((value, key) => (
+        <Flex grow direction="row" key={key}>
           <Flex.Item grow={1}>
             <Section title={<span>{data.contract_chems[key].name}</span>} fill>
               <span>
@@ -593,8 +595,8 @@ const Contracts = () => {
             </Section>
           </Flex.Item>
         </Flex>
-      ))(data.contract_chems)}
-    </Section>
+      ))}
+    </Box>
   );
 };
 

@@ -24,6 +24,9 @@
 	return ..()
 
 /datum/game_mode/extended/process()
+	if(GLOB.chemical_data.next_reroll < world.time)
+		GLOB.chemical_data.reroll_chemicals()
+
 	. = ..()
 
 /datum/game_mode/extended/check_finished()

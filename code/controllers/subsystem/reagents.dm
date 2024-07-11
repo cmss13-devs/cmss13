@@ -45,15 +45,15 @@ SUBSYSTEM_DEF(reagents)
 			else if(isPositiveProperty(prop))
 				GLOB.chemical_properties_list["positive"][prop.name] = prop
 	//preparing combining properties
-	var/special_chemicals = subtypesof(/datum/chem_property/special)//preparing random generation for legendary properties
+	var/list/special_chemicals = subtypesof(/datum/chem_property/special)//preparing random generation for legendary properties
+	var/list/recipe = list()
 	for(var/property in special_chemicals)
-		var/datum/chem_property/prop = new property()
+		var/datum/chem_property/prop = property
 		if(prop.rarity == PROPERTY_LEGENDARY && prop.name != PROPERTY_CIPHERING && prop.category != PROPERTY_TYPE_ANOMALOUS)
-			var/list/recipe = list(GLOB.chemical_properties_list["positive"], GLOB.chemical_properties_list[pick("neutral", "positive", "negative")], GLOB.chemical_properties_list[pick("neutral", "negative")])
-			GLOB.combining_properties[prop.name] = recipe
+			recipe = list(pick(GLOB.chemical_properties_list["positive"]), pick(GLOB.chemical_properties_list[pick("neutral", "positive", "negative")]), pick(GLOB.chemical_properties_list[pick("neutral", "negative")]))
 		else if(prop.name == PROPERTY_CIPHERING)
-			var/list/recipe = list(GLOB.chemical_properties_list["positive"], GLOB.chemical_properties_list[pick("neutral", "positive", "negative")], GLOB.chemical_properties_list[pick("neutral", "negative")], PROPERTY_ENCRYPTED)
-			GLOB.combining_properties[prop.name] = recipe
+			recipe = list(pick(GLOB.chemical_properties_list["positive"]), pick(GLOB.chemical_properties_list[pick("neutral", "positive", "negative")]), pick(GLOB.chemical_properties_list[pick("neutral", "negative")]), PROPERTY_ENCRYPTED)
+		GLOB.combining_properties[prop.name] = recipe
 
 
 

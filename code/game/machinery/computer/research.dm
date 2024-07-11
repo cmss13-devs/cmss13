@@ -16,6 +16,7 @@
 /obj/structure/machinery/computer/research/Initialize()
 	. = ..()
 	photocopier = locate(/obj/structure/machinery/photocopier,get_step(src, NORTH))
+	GLOB.chemical_data.research_computers += src
 
 /obj/structure/machinery/computer/research/Destroy()
 	QDEL_NULL(photocopier)
@@ -101,23 +102,24 @@
 
 /obj/structure/machinery/computer/research/ui_static_data(mob/user)
 	var/list/contract = list()
-	for(var/i in GLOB.chemical_data.contract_chems)
-		var/datum/reagent/generated/contract_chem = i
+	for(var/i in 1 to length(GLOB.chemical_data.contract_chems))
+		var/datum/reagent/generated/contract_chem = GLOB.chemical_data.contract_chems["contract-chem-[i]"]
+		var/datum/reagent/temp = GLOB.chemical_reagents_list[contract_chem.reagent_recipe_hint]
 		contract += list(list(
-			"name" = contract_chem,
+			"name" = contract_chem.name,
 			"property_hint" = contract_chem.property_hint,
-			"recipe_hint" = GLOB.chemical_reagents_list[contract_chem.reagent_recipe_hint],
+			"recipe_hint" = temp.name,
 			"id" = contract_chem.id,
 			"gen_tier" = contract_chem.gen_tier,
 		))
-	var/list/data = list(
+	var/list/static_data = list(
 		"base_purchase_cost" = base_purchase_cost,
 		"main_terminal" = main_terminal,
 		"terminal_view" = TRUE,
 		"chems_generated" = isnull(GLOB.chemical_data.contract_chems),
 		"contract_chems" = contract,
 	)
-	return data
+	return static_data
 
 /obj/structure/machinery/computer/research/ui_data(mob/user)
 	var/list/data = list(
@@ -226,8 +228,5 @@
 				chemical.data = GLOB.chemical_reagents_list[new_id]
 				chemical.generate()
 				GLOB.chemical_data.picked_chem = TRUE
-				deltimer(GLOB.chemical_data.reroll_timer_id)
-				GLOB.chemical_data.reroll_timer_id = TIMER_ID_NULL
-				GLOB.chemical_data.reroll_timer_id = addtimer(CALLBACK(GLOB.chemical_data, TYPE_PROC_REF(/datum/chemical_data, reroll_chemicals)), 5 MINUTES, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) //we override the timer and set to 5 minutes.
 				GLOB.chemical_data.next_reroll = world.time + 5 MINUTES
 	playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)

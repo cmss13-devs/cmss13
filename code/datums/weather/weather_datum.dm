@@ -589,7 +589,7 @@
 				if(!affected_xeno.stat && affected_xeno.client && (affected_xeno.z in affected_zlevels))
 					playsound_client(affected_xeno.client, 'sound/voice/alien_distantroar_3.ogg', affected_xeno.loc, 25, FALSE)
 					affected_xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + message["xenomorph"], /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
-    return FALSE
+	return FALSE
 
 /datum/looping_sound/dust_storm
 	mid_sounds = 'sound/weather/dust/weather_dust.ogg'

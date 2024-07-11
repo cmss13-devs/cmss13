@@ -10,4 +10,4 @@
 
 /datum/game_mode/extended/faction_clash/post_setup()
 	. = ..()
-	SSweather.force_weather_holder(/datum/weather_ss_map_holder/faction_clash)
+//	SSweather.force_weather_holder(/datum/weather_ss_map_holder/faction_clash) replace with sunlight change and weather starting? idk do better later, rn this is sucks, I don't want mix here HVH gamemode port :uwu_face:

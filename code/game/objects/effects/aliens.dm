@@ -345,10 +345,10 @@
 	var/turf/turf = get_turf(src)
 
 	if(SSweather_conditions.running_weather && turf.turf_flags & TURF_WEATHER)
-		acid_strength = acid_strength + (SSweather_conditions.running_weather.fire_smothering_strength * 0.33) //smothering_strength is 1-10, acid strength is a multiplier
+		acid_delay = acid_delay + (SSweather_conditions.running_weather.fire_smothering_strength * 0.33) //smothering_strength is 1-10, acid strength is a multiplier
 		in_weather = SSweather_conditions.running_weather.fire_smothering_strength
 	else
-		acid_strength = initial(acid_strength)
+		acid_delay = initial(acid_delay)
 		in_weather = FALSE
 
 /obj/effect/xenomorph/acid/proc/handle_barricade()

@@ -121,8 +121,6 @@
 
 /// Returns the correct ambience sound track for a client in this area
 /area/proc/get_sound_ambience(client/target)
-	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src))
-		return SSweather.weather_event_instance.ambience
 	return ambience_exterior
 
 /area/proc/poweralert(state, obj/source as obj)

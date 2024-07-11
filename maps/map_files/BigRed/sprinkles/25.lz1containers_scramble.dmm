@@ -1,10 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ab" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/space_port)
 "ac" = (
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
@@ -12,110 +6,12 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"af" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Spaceport"
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"ah" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"ai" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"aj" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/toolbox,
-/obj/effect/spawner/random/tool,
-/obj/structure/machinery/camera/autoname{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
 "al" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"am" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "an" = (
 /turf/closed/wall/solaris,
-/area/bigredv2/outside/space_port)
-"ao" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -32;
-	start_charge = 0
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"ap" = (
-/obj/effect/decal/cleanable/blood/gibs/up,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"aq" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"ar" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/toolbox,
-/obj/structure/machinery/door_control{
-	id = "Spaceport";
-	name = "Storm Shutters";
-	pixel_x = 32
-	},
-/obj/item/tool/pen,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"at" = (
-/obj/structure/machinery/disposal,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"au" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"av" = (
-/obj/structure/machinery/blackbox_recorder,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
 /area/bigredv2/outside/space_port)
 "ax" = (
 /obj/structure/window/framed/solaris,
@@ -125,22 +21,6 @@
 	name = "\improper Spaceport Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
-"ay" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/landing/console)
-"az" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/powercell,
-/turf/open/floor{
-	icon_state = "dark"
-	},
 /area/bigredv2/outside/space_port)
 "aA" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
@@ -154,86 +34,11 @@
 /obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"aD" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/tool,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"aE" = (
-/obj/structure/bed/chair/office/dark,
-/obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
-"aF" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/tool,
-/obj/effect/spawner/random/tech_supply,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/space_port)
 "aG" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
-"aH" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/tool,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 10;
-	icon_state = "darkgreen2"
-	},
-/area/bigredv2/outside/space_port)
-"aI" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/bomb_supply,
-/obj/effect/spawner/random/technology_scanner,
-/obj/effect/spawner/random/tool,
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
-/area/bigredv2/outside/space_port)
-"aJ" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/technology_scanner,
-/obj/effect/spawner/random/tool,
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
-/area/bigredv2/outside/space_port)
-"aK" = (
-/obj/structure/machinery/computer/cameras,
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
-/area/bigredv2/outside/space_port)
-"aL" = (
-/obj/item/shard,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
-/area/bigredv2/outside/space_port)
-"aM" = (
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
-/area/bigredv2/outside/space_port)
-"aN" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/tool,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "darkgreen2"
-	},
 /area/bigredv2/outside/space_port)
 "aP" = (
 /obj/structure/window/framed/solaris,
@@ -255,41 +60,6 @@
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"aT" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
-"aU" = (
-/obj/structure/machinery/floodlight/landing,
-/turf/open/floor{
-	icon_state = "asteroidplating"
-	},
-/area/bigredv2/outside/space_port)
-"aV" = (
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/space_port)
-"aW" = (
-/obj/structure/cargo_container/arious/leftmid,
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/space_port)
-"aX" = (
-/obj/structure/cargo_container/arious/rightmid,
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/space_port)
-"aY" = (
-/obj/structure/cargo_container/arious/right,
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/space_port)
 "bd" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
@@ -298,22 +68,9 @@
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"bf" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/space_port)
 "bg" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
-"bh" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
 /area/bigredv2/outside/space_port)
 "bi" = (
 /obj/structure/cargo_container/grant/left,
@@ -327,12 +84,6 @@
 /obj/structure/cargo_container/grant/right,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"bl" = (
-/obj/structure/cargo_container/arious/leftmid,
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
-/area/bigredv2/outside/space_port)
 "bm" = (
 /obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/plating,
@@ -341,104 +92,341 @@
 /obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"eb" = (
+"bu" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/space_port)
+"bR" = (
 /obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/plating/plating_catwalk,
 /area/bigredv2/outside/space_port)
-"js" = (
-/obj/structure/largecrate/random/barrel/true_random,
+"dj" = (
+/obj/structure/cargo_container/watatsumi/rightmid,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/bigredv2/outside/space_port)
+"dS" = (
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
 /area/bigredv2/outside/space_port)
-"qb" = (
+"gE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/outside/space_port)
+"hi" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/bigredv2/outside/space_port)
+"hs" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/bigredv2/outside/space_port)
+"hR" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/technology_scanner,
+/obj/effect/spawner/random/tool,
+/turf/open/floor{
+	icon_state = "darkgreen2"
+	},
+/area/bigredv2/outside/space_port)
+"ig" = (
+/obj/structure/bed/chair/office/dark,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/space_port)
+"iu" = (
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = -32;
+	start_charge = 0
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/space_port)
+"jJ" = (
 /obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
 /area/bigredv2/outside/space_port)
-"rE" = (
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
-/area/bigredv2/outside/space_port)
-"Dy" = (
+"jK" = (
 /obj/structure/cargo_container/grant/right,
 /turf/open/floor/plating/plating_catwalk,
 /area/bigredv2/outside/space_port)
-"EG" = (
-/obj/structure/cargo_container/watatsumi/rightmid,
-/turf/open/floor/plating{
-	icon_state = "platebot"
+"jP" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor{
+	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
-"Hz" = (
-/turf/open/floor/plating{
-	icon_state = "platebot"
+"kb" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
-"Id" = (
+"kB" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
 /area/bigredv2/outside/space_port)
-"KJ" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/bigredv2/outside/space_port)
-"Mn" = (
-/obj/structure/cargo_container/arious/right,
-/turf/open/floor/plating{
-	icon_state = "platebot"
+"mD" = (
+/turf/open/floor{
+	icon_state = "darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
-"Qt" = (
+"og" = (
 /obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating/plating_catwalk,
 /area/bigredv2/outside/space_port)
-"RP" = (
-/obj/structure/cargo_container/watatsumi/rightmid,
-/turf/open/floor/plating{
-	icon_state = "platebotc"
+"oM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
-"RV" = (
-/obj/structure/cargo_container/watatsumi/leftmid,
-/turf/open/floor/plating{
-	icon_state = "platebot"
+"oZ" = (
+/obj/structure/machinery/computer/cameras,
+/turf/open/floor{
+	icon_state = "darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
-"TE" = (
+"ub" = (
+/obj/structure/cargo_container/arious/right,
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/bigredv2/outside/space_port)
+"uh" = (
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/outside/space_port)
+"vN" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/space_port)
+"vO" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/toolbox,
+/obj/effect/spawner/random/tool,
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/space_port)
+"vW" = (
+/obj/structure/cargo_container/arious/rightmid,
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/bigredv2/outside/space_port)
+"xF" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"xH" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/powercell,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/space_port)
+"xN" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/toolbox,
+/obj/structure/machinery/door_control{
+	id = "Spaceport";
+	name = "Storm Shutters";
+	pixel_x = 32
+	},
+/obj/item/tool/pen,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/space_port)
+"zL" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/spawner/random/tech_supply,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/space_port)
+"AU" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/landing/console)
+"Bz" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
+"BG" = (
 /obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
 /area/bigredv2/outside/space_port)
-"YK" = (
-/obj/structure/largecrate/random/barrel/true_random,
+"BJ" = (
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/bigredv2/outside/space_port)
+"Ez" = (
+/obj/structure/cargo_container/watatsumi/rightmid,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/bigredv2/outside/space_port)
+"EW" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/darkgreen2/southeast,
+/area/bigredv2/outside/space_port)
+"GR" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/space_port)
+"Hy" = (
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
 /area/bigredv2/outside/space_port)
+"IY" = (
+/obj/item/shard,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "darkgreen2"
+	},
+/area/bigredv2/outside/space_port)
+"Ji" = (
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/space_port)
+"Js" = (
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor{
+	icon_state = "asteroidplating"
+	},
+/area/bigredv2/outside/space_port)
+"Ju" = (
+/obj/structure/cargo_container/arious/right,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/bigredv2/outside/space_port)
+"Kx" = (
+/obj/structure/cargo_container/arious/leftmid,
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/bigredv2/outside/space_port)
+"KI" = (
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/bigredv2/outside/space_port)
+"Os" = (
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/bigredv2/outside/space_port)
+"PQ" = (
+/obj/structure/machinery/disposal,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/space_port)
+"Qf" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/darkgreen2/southwest,
+/area/bigredv2/outside/space_port)
+"UH" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"UU" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/bigredv2/outside/space_port)
+"Yu" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/bomb_supply,
+/obj/effect/spawner/random/technology_scanner,
+/obj/effect/spawner/random/tool,
+/turf/open/floor{
+	icon_state = "darkgreen2"
+	},
+/area/bigredv2/outside/space_port)
+"YS" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Spaceport"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/space_port)
 
 (1,1,1) = {"
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-aU
-ab
-bf
-ab
-bf
-bf
-ab
-ab
-ab
+uh
+uh
+uh
+uh
+uh
+uh
+uh
+uh
+Js
+uh
+gE
+uh
+gE
+gE
+uh
+uh
+uh
 "}
 (2,1,1) = {"
 ac
@@ -449,15 +437,15 @@ ac
 ac
 ac
 ac
-aV
-rE
-rE
-rE
-KJ
-KJ
-rE
-rE
-js
+BJ
+Os
+Os
+Os
+Bz
+Bz
+Os
+Os
+UU
 "}
 (3,1,1) = {"
 ac
@@ -468,15 +456,15 @@ aA
 ac
 ac
 ac
-aV
-rE
-js
-rE
-KJ
-KJ
-rE
-Id
-rE
+BJ
+Os
+UU
+Os
+Bz
+Bz
+Os
+kB
+Os
 "}
 (4,1,1) = {"
 ac
@@ -487,15 +475,15 @@ aB
 ac
 ac
 ac
-aV
-rE
-rE
-rE
-KJ
-KJ
-rE
-RP
-bl
+BJ
+Os
+Os
+Os
+Bz
+Bz
+Os
+Ez
+dS
 "}
 (5,1,1) = {"
 ac
@@ -506,12 +494,12 @@ aC
 ac
 ac
 ac
-aW
+Kx
 ac
 ac
 ac
-KJ
-KJ
+Bz
+Bz
 ac
 aC
 bm
@@ -525,14 +513,14 @@ ac
 ac
 ac
 ac
-aX
+vW
 ac
-Hz
-Hz
-KJ
-KJ
-Hz
-Hz
+KI
+KI
+Bz
+Bz
+KI
+KI
 bn
 "}
 (7,1,1) = {"
@@ -544,14 +532,14 @@ ac
 aG
 ac
 ac
-aY
+ub
 ac
-Hz
-YK
-KJ
-KJ
-Hz
-Hz
+KI
+hi
+Bz
+Bz
+KI
+KI
 ac
 "}
 (8,1,1) = {"
@@ -563,37 +551,37 @@ ac
 ac
 ac
 ac
-aV
+BJ
 ac
-Hz
-Hz
-KJ
-Qt
-Hz
-Hz
+KI
+KI
+Bz
+og
+KI
+KI
 ac
 "}
 (9,1,1) = {"
 ac
-am
+UH
 ac
 ac
 ac
-am
+UH
 ac
 ac
-aV
+BJ
 ac
 bg
 ac
-KJ
-eb
+Bz
+bR
 ac
 ac
 ac
 "}
 (10,1,1) = {"
-af
+YS
 an
 an
 ax
@@ -601,145 +589,145 @@ ax
 an
 an
 ac
-aV
+BJ
 ac
-Hz
-Hz
-KJ
-Dy
-Hz
-Hz
+KI
+KI
+Bz
+jK
+KI
+KI
 ac
 "}
 (11,1,1) = {"
-ai
-ao
-at
-ay
-aD
-aH
+oM
+iu
+PQ
+AU
+GR
+Qf
 an
-aT
-aV
+xF
+BJ
 ac
-Hz
-Hz
-KJ
-KJ
-Hz
-Hz
+KI
+KI
+Bz
+Bz
+KI
+KI
 ac
 "}
 (12,1,1) = {"
-ah
-ah
-ah
-ah
-aE
-aI
+Ji
+Ji
+Ji
+Ji
+ig
+Yu
 aP
 ac
-aV
+BJ
 ac
-Hz
-bh
-KJ
-KJ
-Hz
-YK
+KI
+hs
+Bz
+Bz
+KI
+hi
 ac
 "}
 (13,1,1) = {"
-ai
-ah
-ai
-ah
-ah
-aJ
+oM
+Ji
+oM
+Ji
+Ji
+hR
 aP
 ac
-aV
+BJ
 ac
 ac
 ac
-KJ
-KJ
+Bz
+Bz
 ac
 ac
 bi
 "}
 (14,1,1) = {"
-ai
-ap
-ai
-ai
-ah
-aK
+oM
+jP
+oM
+oM
+Ji
+oZ
 an
 ac
-aV
+BJ
 bd
-Hz
-Hz
-KJ
-KJ
-Hz
-qb
+KI
+KI
+Bz
+Bz
+KI
+jJ
 bj
 "}
 (15,1,1) = {"
-ah
-ah
-au
-ah
-ah
-aL
+Ji
+Ji
+bu
+Ji
+Ji
+IY
 aQ
 ac
-aV
+BJ
 be
-RV
-Hz
-KJ
-KJ
-Hz
-TE
+Hy
+KI
+Bz
+Bz
+KI
+BG
 bk
 "}
 (16,1,1) = {"
-ah
-aq
-ah
-ah
-ai
-aM
+Ji
+vN
+Ji
+Ji
+oM
+mD
 aR
 ac
-aV
+BJ
 ac
-EG
-Hz
-KJ
-KJ
-Hz
-Mn
+dj
+KI
+Bz
+Bz
+KI
+Ju
 ac
 "}
 (17,1,1) = {"
-aj
-ar
-av
-az
-aF
-aN
+vO
+xN
+kb
+xH
+zL
+EW
 aP
 ac
-aV
+BJ
 ac
 aC
 ac
-KJ
-KJ
+Bz
+Bz
 ac
 ac
 ac

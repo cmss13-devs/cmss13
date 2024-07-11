@@ -1,0 +1,5 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - balance: "Hivelords now have meson vision"
+  - rscadd: "Added a toggle for meson vision for hivelord and burrower"

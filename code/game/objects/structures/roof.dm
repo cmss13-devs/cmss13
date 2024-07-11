@@ -51,7 +51,7 @@
 	SIGNAL_HANDLER
 	mob.client.images += normal_image
 
-/obj/structure/roof/Destroy()
+/obj/structure/roof/Destroy(force, ...)
 	linked_master.remove_roof(src)
 	for(var/icon in GLOB.player_list)
 		var/mob/mob = icon
@@ -91,7 +91,7 @@
 		for(var/obj/effect/roof_node/node in get_step(src,direction))
 			node.link_master(master)
 
-/obj/effect/roof_node/Destroy(force)
+/obj/effect/roof_node/Destroy(force, ...)
 	linked_master.connected_nodes -= src
 	. = ..()
 
@@ -156,10 +156,11 @@
 
 
 
-/datum/roof_master_node/Destroy()
+/datum/roof_master_node/Destroy(force, ...)
 	for(var/obj/effect/roof_node/roof_node in connected_nodes)
 		roof_node.Destroy()
 	for(var/obj/structure/roof/roof in location)
 		roof.Destroy()
 	. = ..()
+
 

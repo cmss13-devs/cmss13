@@ -16,7 +16,6 @@ SUBSYSTEM_DEF(weather_conditions)
 	var/obj/weather_effect
 
 /datum/controller/subsystem/weather_conditions/stat_entry(msg)
-	for()
 	if(running_weather?.running)
 		var/time_left = COOLDOWN_SECONDSLEFT(running_weather, time_left)
 		if(running_weather?.display_name)

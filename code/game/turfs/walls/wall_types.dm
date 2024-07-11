@@ -320,7 +320,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 		if(GLOB.displayed_lobby_art != -1)
 			var/author = lobby_authors[GLOB.displayed_lobby_art]
 			if(author != "Unknown")
-				to_chat_forced(player, SPAN_ROUNDBODY("<hr>В этом раунде лоби арт представлен вам by [author]<hr>"))
+				to_chat_forced(player, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
 
 /turf/closed/wall/indestructible/other
 	icon_state = "r_wall"

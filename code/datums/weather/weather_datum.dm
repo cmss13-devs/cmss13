@@ -179,11 +179,15 @@
 
 	START_PROCESSING(SSslowobj, src)
 
-	return INITIALIZE_HINT_LATELOAD
+	if(mapload)
+		return INITIALIZE_HINT_LATELOAD
+
+	update_corners()
+	update_overlays()
 
 /obj/structure/snow/LateInitialize()
 	. = ..()
-	update_corners()
+	update_corners(TRUE)
 	update_overlays()
 
 /obj/structure/snow/Destroy(force)
@@ -236,7 +240,6 @@
 		snows_connections[deep] = dirs_to_corner_states(snow_dirs[deep])
 
 /obj/structure/snow/proc/update_overlays()
-//	. = ..()
 	if(overlays)
 		overlays.Cut()
 
@@ -252,8 +255,6 @@
 		if(diged[i] > world.time)
 			new_overlay += i
 	overlays += "[new_overlay]"
-	RemoveElement(/datum/element/mob_overlay_effect)
-	AddElement(/datum/element/mob_overlay_effect, bleed_layer * 2, bleed_layer * 3)
 
 /obj/structure/snow/proc/damage_act(damage)
 	if(pts > damage / 5)
@@ -296,6 +297,10 @@
 
 	bleed_layer = max(0, new_layer)
 
+	if(!bleed_layer)
+		qdel(src)
+		return
+
 	switch(bleed_layer)
 		if(1)
 			throwpass= TRUE
@@ -310,8 +315,8 @@
 	update_corners(TRUE)
 	update_overlays()
 
-	if(!bleed_layer)
-		qdel(src)
+	RemoveElement(/datum/element/mob_overlay_effect)
+	AddElement(/datum/element/mob_overlay_effect, bleed_layer * 2, bleed_layer * 3)
 
 /obj/structure/snow/ex_act(severity)
 	damage_act(severity)

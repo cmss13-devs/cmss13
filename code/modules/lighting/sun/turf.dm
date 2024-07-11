@@ -54,7 +54,7 @@ Sunlight System
 
 /atom/movable/outdoor_effect/proc/disable_sunlight()
 	var/turf/turf = list()
-	for(var/datum/static_lighting_corner/corner in affecting_corners)
+	for(var/datum/static_lighting_corner/corner as anything in affecting_corners)
 		corner.glob_affect -= src
 		corner.get_sunlight_falloff()
 		if(corner.master_NE)
@@ -217,12 +217,15 @@ Sunlight System
 		weathervisible = FALSE
 	else
 		//SILENCE FIX FOR MULTIZ
-		var/area/A = get_area(src)
-		if(A.ceiling < CEILING_GLASS)
-			skyvisible &= SKYVISIBLE
-			weathervisible &= WEATHERVISIBLE
-		else if(A.ceiling == CEILING_GLASS)
-			skyvisible &= SKYVISIBLE
+		var/area/area = get_area(src)
+		if(area.ceiling < CEILING_GLASS)
+			skyvisible = TRUE
+			weathervisible = TRUE
+		else if(area.ceiling == CEILING_GLASS)
+			skyvisible &= TRUE
+			weathervisible = FALSE
+		else
+			skyvisible = FALSE
 			weathervisible = FALSE
 		// EVERY turf must be transparent for sunlight - so &=
 		// ANY turf must be closed for TURF_WEATHER_PROOF - so |=

@@ -1,9 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ao" = (
 /obj/structure/fence,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
 "ar" = (
 /turf/closed/shuttle/ert{
@@ -18,9 +16,7 @@
 	pixel_x = 2;
 	pixel_y = -4
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/crashed_ship)
 "aO" = (
 /turf/closed/shuttle/ert{
@@ -34,45 +30,31 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "bv" = (
 /obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "emeraldcorner"
-	},
+/turf/open/floor/almayer/emeraldcorner/west,
 /area/lv624/lazarus/crashed_ship)
 "bO" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "bP" = (
 /obj/structure/girder/displaced,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "bZ" = (
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/east,
 /area/lv624/lazarus/crashed_ship)
 "cp" = (
 /obj/structure/cargo_container/arious/rightmid,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "cr" = (
 /obj/item/stool,
@@ -87,9 +69,7 @@
 /area/lv624/lazarus/crashed_ship)
 "cL" = (
 /obj/structure/cargo_container/arious/right,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "cM" = (
 /obj/item/ammo_casing/shell{
@@ -110,10 +90,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastocean)
 "da" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/north,
 /area/lv624/lazarus/crashed_ship)
 "de" = (
 /obj/structure/surface/table/almayer,
@@ -125,18 +102,14 @@
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "dg" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/monsoon)
 "dh" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "dl" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -157,43 +130,27 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "dA" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "emeraldcorner"
-	},
+/turf/open/floor/almayer/emeraldcorner/west,
 /area/lv624/lazarus/crashed_ship)
 "dH" = (
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "dK" = (
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "dV" = (
-/turf/open/gm/river{
-	name = "shallow ocean";
-	default_name = "shallow ocean"
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/lv624/lazarus/crashed_ship)
 "eb" = (
 /obj/effect/landmark/corpsespawner/clf,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "ef" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "eK" = (
 /turf/open/gm/coast/beachcorner/south_west,
@@ -210,10 +167,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "eS" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -233,19 +187,14 @@
 	pixel_x = 3;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/north,
 /area/lv624/lazarus/crashed_ship)
 "fr" = (
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastocean)
 "fw" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/almayer{
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green,
 /area/lv624/lazarus/crashed_ship)
 "fH" = (
 /turf/closed/shuttle/ert{
@@ -268,10 +217,7 @@
 /area/lv624/lazarus/crashed_ship)
 "gW" = (
 /obj/item/weapon/gun/rifle/sniper/svd,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "ha" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -289,9 +235,7 @@
 /obj/item/attachable/bayonet,
 /obj/item/attachable/bayonet,
 /obj/item/attachable/attached_gun/flamer,
-/turf/open/floor/almayer{
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner,
 /area/lv624/lazarus/crashed_ship)
 "hg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -324,10 +268,7 @@
 /area/lv624/lazarus/crashed_ship)
 "iC" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "emeraldcorner"
-	},
+/turf/open/floor/almayer/emeraldcorner/east,
 /area/lv624/lazarus/crashed_ship)
 "iH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
@@ -346,9 +287,7 @@
 	dir = 8;
 	name = "\improper Bridge"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "jb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
@@ -358,38 +297,24 @@
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "jt" = (
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
 "jI" = (
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/north,
 /area/lv624/lazarus/crashed_ship)
 "ka" = (
 /obj/item/stack/rods,
 /obj/item/ammo_magazine/smg/fp9000,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "kh" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orangecorner"
-	},
+/turf/open/floor/almayer/orangecorner/west,
 /area/lv624/lazarus/crashed_ship)
 "kF" = (
 /obj/structure/bed,
 /obj/item/bedsheet/yellow,
 /obj/item/toy/katana,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/west,
 /area/lv624/lazarus/crashed_ship)
 "kH" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -397,15 +322,10 @@
 /area/lv624/lazarus/crashed_ship)
 "kO" = (
 /obj/structure/girder,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "lc" = (
-/turf/open/gm/dirt{
-	icon_state = "desert1"
-	},
+/turf/open/gm/dirt/desert1,
 /area/varadero/exterior/monsoon)
 "le" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -430,10 +350,7 @@
 	pixel_x = 18;
 	pixel_y = 6
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/north,
 /area/lv624/lazarus/crashed_ship)
 "lj" = (
 /obj/structure/largecrate/random/barrel/blue,
@@ -449,18 +366,13 @@
 /area/varadero/exterior/eastbeach)
 "lz" = (
 /obj/structure/girder/reinforced,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "lN" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/crashed_ship)
 "mp" = (
 /obj/effect/decal/cleanable/blood,
@@ -470,15 +382,10 @@
 	closed = 0;
 	density = 1
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "mw" = (
-/turf/open/floor/plating{
-	dir = 5;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/northeast,
 /area/lv624/lazarus/crashed_ship)
 "mx" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -531,42 +438,25 @@
 /area/lv624/lazarus/crashed_ship)
 "nw" = (
 /obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "oi" = (
 /obj/item/stack/rods,
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/lv624/lazarus/crashed_ship)
 "ol" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/east,
 /area/lv624/lazarus/crashed_ship)
 "oV" = (
 /obj/item/stack/rods,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "oW" = (
 /obj/item/ammo_magazine/smg/fp9000,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "oZ" = (
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southwest,
 /area/lv624/lazarus/crashed_ship)
 "pc" = (
 /turf/closed/shuttle/ert{
@@ -574,33 +464,22 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "pd" = (
-/turf/open/gm/dirt{
-	icon_state = "desert1"
-	},
+/turf/open/gm/dirt/desert1,
 /area/varadero/exterior/eastocean)
 "ph" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/item/lightstick/variant/planted,
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "pp" = (
-/turf/open/floor/plating{
-	dir = 6;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southeast,
 /area/lv624/lazarus/crashed_ship)
 "pq" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/northwest,
 /area/lv624/lazarus/crashed_ship)
 "pr" = (
 /obj/structure/barricade/metal/wired{
@@ -609,9 +488,7 @@
 /obj/structure/machinery/m56d_hmg{
 	rounds = 700
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "py" = (
 /obj/effect/decal/cleanable/dirt,
@@ -621,18 +498,14 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "pI" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
 	name = "\improper Umbillical Airlock"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "pO" = (
 /obj/structure/machinery/computer/communications{
@@ -640,10 +513,7 @@
 	stat = 1
 	},
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/lv624/lazarus/crashed_ship)
 "pP" = (
 /turf/open/gm/coast/beachcorner/south_east,
@@ -653,10 +523,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/north,
 /area/lv624/lazarus/crashed_ship)
 "pV" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -666,10 +533,7 @@
 /obj/item/attachable/attached_gun/flamer,
 /obj/item/attachable/bayonet,
 /obj/item/attachable/bayonet,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/west,
 /area/lv624/lazarus/crashed_ship)
 "qy" = (
 /obj/structure/surface/rack,
@@ -679,10 +543,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "rc" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -692,36 +553,25 @@
 	pixel_y = 4
 	},
 /obj/item/storage/firstaid/regular,
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/northwest,
 /area/lv624/lazarus/crashed_ship)
 "rg" = (
 /obj/item/stack/rods,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "rq" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
 	pixel_x = -10
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/west,
 /area/lv624/lazarus/crashed_ship)
 "rr" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
 	name = "\improper Umbillical Airlock"
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "rz" = (
 /turf/open/gm/dirt,
@@ -732,17 +582,13 @@
 	density = 1;
 	closed = 0
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "rQ" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
 "sa" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "sc" = (
 /obj/structure/machinery/light/small{
@@ -750,35 +596,26 @@
 	pixel_y = 20
 	},
 /obj/structure/machinery/medical_pod/bodyscanner,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "sm" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
 	name = "\improper Umbillical Airlock"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "sn" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
 	icon_state = "metal_3"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "so" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "ss" = (
 /obj/structure/barricade/metal/wired{
@@ -787,9 +624,7 @@
 /obj/structure/machinery/m56d_hmg{
 	rounds = 700
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "st" = (
 /turf/open/gm/coast/beachcorner/north_west,
@@ -818,10 +653,7 @@
 /obj/item/ammo_magazine/rifle/m16{
 	pixel_x = -4
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "sE" = (
 /obj/effect/overlay/palmtree_r,
@@ -830,10 +662,7 @@
 "ti" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/tool/screwdriver,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "tF" = (
 /obj/structure/girder/reinforced,
@@ -845,10 +674,7 @@
 	phone_id = "Cargo Bay";
 	pixel_y = 32
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "tJ" = (
 /turf/closed/shuttle/ert{
@@ -861,25 +687,18 @@
 	department = "CLF - Cell 42"
 	},
 /obj/item/paper/prison_station/pirate_note/clfship,
-/turf/open/floor/almayer{
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald,
 /area/lv624/lazarus/crashed_ship)
 "tV" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
 	icon_state = "metal_3"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "um" = (
 /obj/item/stack/rods,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/crashed_ship)
 "uq" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -887,9 +706,7 @@
 /area/lv624/lazarus/crashed_ship)
 "ur" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/crashed_ship)
 "uM" = (
 /turf/closed/shuttle/ert{
@@ -903,9 +720,7 @@
 	stat = 1
 	},
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "uW" = (
 /obj/structure/barricade/metal/wired{
@@ -919,26 +734,17 @@
 /area/lv624/lazarus/crashed_ship)
 "vv" = (
 /obj/structure/girder/reinforced,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "vI" = (
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/lz2_near)
 "vM" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp{
 	pixel_y = 3
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/west,
 /area/lv624/lazarus/crashed_ship)
 "wc" = (
 /obj/structure/machinery/light/small{
@@ -946,19 +752,13 @@
 	pixel_x = -3;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orangecorner"
-	},
+/turf/open/floor/almayer/orangecorner/north,
 /area/lv624/lazarus/crashed_ship)
 "wI" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "wJ" = (
 /obj/effect/overlay/palmtree_r,
@@ -971,25 +771,17 @@
 /obj/item/storage/toolbox/electrical{
 	pixel_y = 9
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "wZ" = (
-/turf/open/gm/dirt{
-	icon_state = "desert2"
-	},
+/turf/open/gm/dirt/desert2,
 /area/varadero/exterior/monsoon)
 "xd" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "xv" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -1012,9 +804,7 @@
 /obj/item/device/radio{
 	pixel_x = 3
 	},
-/turf/open/floor/almayer{
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green,
 /area/lv624/lazarus/crashed_ship)
 "xQ" = (
 /obj/structure/machinery/body_scanconsole,
@@ -1024,10 +814,7 @@
 	phone_id = "Medical Bay";
 	pixel_y = 32
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "yg" = (
 /obj/structure/barricade/metal/wired{
@@ -1044,9 +831,7 @@
 /area/varadero/exterior/monsoon)
 "yo" = (
 /obj/structure/girder/reinforced,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "yw" = (
 /turf/open/gm/coast/west,
@@ -1057,18 +842,13 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "yB" = (
-/turf/open/gm/dirt{
-	icon_state = "desert0"
-	},
+/turf/open/gm/dirt/desert0,
 /area/varadero/exterior/monsoon)
 "yE" = (
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/varadero/exterior/eastocean)
 "yQ" = (
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/southwest,
 /area/lv624/lazarus/crashed_ship)
 "yS" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1086,10 +866,7 @@
 	pixel_y = 11
 	},
 /obj/item/clothing/glasses/welding,
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/southeast,
 /area/lv624/lazarus/crashed_ship)
 "yT" = (
 /obj/structure/surface/rack,
@@ -1100,10 +877,7 @@
 /obj/item/device/radio{
 	pixel_x = -3
 	},
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/southwest,
 /area/lv624/lazarus/crashed_ship)
 "yU" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -1115,10 +889,7 @@
 /area/lv624/lazarus/crashed_ship)
 "zn" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "emeraldcorner"
-	},
+/turf/open/floor/almayer/emeraldcorner/west,
 /area/lv624/lazarus/crashed_ship)
 "zK" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -1138,10 +909,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/southwest,
 /area/lv624/lazarus/crashed_ship)
 "zY" = (
 /obj/structure/largecrate/random/barrel/red,
@@ -1155,9 +923,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Al" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -1196,9 +962,7 @@
 	dir = 8;
 	faction_group = list("CLF")
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Bh" = (
 /obj/structure/surface/table/woodentable,
@@ -1212,9 +976,7 @@
 /area/lv624/lazarus/crashed_ship)
 "Bl" = (
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Bm" = (
 /obj/structure/surface/table/woodentable,
@@ -1245,16 +1007,11 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/east,
 /area/lv624/lazarus/crashed_ship)
 "BA" = (
 /obj/structure/window_frame/colony,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "BM" = (
 /obj/item/ammo_magazine/sniper/svd,
@@ -1266,9 +1023,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "BW" = (
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Ca" = (
 /obj/item/stack/rods,
@@ -1277,9 +1032,7 @@
 	dir = 8;
 	icon_state = "metal_2"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Cw" = (
 /turf/closed/shuttle/ert{
@@ -1287,10 +1040,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "CC" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/north,
 /area/lv624/lazarus/crashed_ship)
 "CJ" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -1299,24 +1049,16 @@
 	pixel_y = 24
 	},
 /obj/structure/window_frame/colony,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "CK" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/corpsespawner/clf,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "CY" = (
 /obj/structure/machinery/vending/coffee,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/north,
 /area/lv624/lazarus/crashed_ship)
 "Ds" = (
 /turf/closed/shuttle/ert{
@@ -1338,9 +1080,7 @@
 /turf/open/gm/coast/west,
 /area/varadero/exterior/eastocean)
 "DN" = (
-/turf/open/floor/almayer{
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner,
 /area/lv624/lazarus/crashed_ship)
 "DU" = (
 /obj/item/stack/sheet/metal{
@@ -1352,22 +1092,14 @@
 	dir = 8;
 	icon_state = "metal_1"
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/crashed_ship)
 "Ep" = (
 /obj/structure/largecrate/supply/ammo/m56d,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "EU" = (
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/eastocean)
 "EW" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1389,34 +1121,24 @@
 	dir = 4;
 	faction_group = list("CLF")
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Fl" = (
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "Fs" = (
 /obj/structure/machinery/floodlight,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "Fz" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "FH" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 8;
 	icon_state = "plasteel_closed_1"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "FN" = (
 /turf/closed/shuttle/ert{
@@ -1438,22 +1160,14 @@
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
 /obj/item/clothing/mask/breath/medical,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/southwest,
 /area/lv624/lazarus/crashed_ship)
 "Go" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/west,
 /area/lv624/lazarus/crashed_ship)
 "Gr" = (
 /obj/item/storage/bag/trash,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Gt" = (
 /obj/structure/barricade/metal/wired{
@@ -1462,10 +1176,7 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1"
 	},
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southwest,
 /area/lv624/lazarus/crashed_ship)
 "GB" = (
 /obj/structure/barricade/metal/wired{
@@ -1476,10 +1187,7 @@
 /area/varadero/exterior/eastocean)
 "GG" = (
 /obj/item/stack/rods,
-/turf/open/gm/river{
-	name = "shallow ocean";
-	default_name = "shallow ocean"
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/lv624/lazarus/crashed_ship)
 "GP" = (
 /obj/structure/toilet{
@@ -1489,9 +1197,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/crashed_ship)
 "Hb" = (
 /obj/structure/bed,
@@ -1501,19 +1207,13 @@
 	pixel_y = 4
 	},
 /obj/item/restraint/handcuffs,
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/southeast,
 /area/lv624/lazarus/crashed_ship)
 "Ho" = (
 /turf/open/gm/coast/west,
 /area/varadero/exterior/monsoon)
 "Hq" = (
-/turf/open/gm/river{
-	name = "shallow ocean";
-	default_name = "shallow ocean"
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/eastocean)
 "Hx" = (
 /obj/item/tool/shovel,
@@ -1535,16 +1235,10 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/eastbeach)
 "IJ" = (
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/lv624/lazarus/crashed_ship)
 "IM" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "IO" = (
 /turf/open/gm/dirt,
@@ -1559,9 +1253,7 @@
 /obj/item/storage/backpack/general_belt{
 	pixel_y = 3
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Jr" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -1582,9 +1274,7 @@
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = 9
 	},
-/turf/open/floor/almayer{
-	icon_state = "orangecorner"
-	},
+/turf/open/floor/almayer/orangecorner,
 /area/lv624/lazarus/crashed_ship)
 "JK" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -1598,10 +1288,7 @@
 	pixel_y = 20
 	},
 /obj/item/toy/plush/farwa,
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/northwest,
 /area/lv624/lazarus/crashed_ship)
 "JN" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -1621,17 +1308,12 @@
 	pixel_y = 7
 	},
 /obj/item/storage/backpack/general_belt,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "Kl" = (
 /obj/item/stool,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf_leader,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Km" = (
 /turf/open/gm/coast/beachcorner/south_west,
@@ -1645,18 +1327,14 @@
 	dir = 4;
 	icon_state = "metal_1"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "KJ" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
 	icon_state = "metal_3"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "KM" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1678,9 +1356,7 @@
 /area/varadero/exterior/lz2_near)
 "Lm" = (
 /obj/structure/largecrate/random/barrel/white,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Lp" = (
 /turf/open/gm/coast/north,
@@ -1693,10 +1369,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/eastbeach)
 "LU" = (
-/turf/open/gm/river{
-	name = "shallow ocean";
-	default_name = "shallow ocean"
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/monsoon)
 "Mg" = (
 /obj/structure/machinery/storm_siren{
@@ -1707,10 +1380,7 @@
 /area/varadero/exterior/eastbeach)
 "Mk" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/northeast,
 /area/lv624/lazarus/crashed_ship)
 "Mq" = (
 /turf/closed/shuttle/ert{
@@ -1720,26 +1390,20 @@
 "Ms" = (
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/stack/rods,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "MF" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 1;
 	faction_group = list("CLF")
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "MG" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
 "MH" = (
-/turf/open/floor/almayer{
-	icon_state = "emeraldcorner"
-	},
+/turf/open/floor/almayer/emeraldcorner,
 /area/lv624/lazarus/crashed_ship)
 "MS" = (
 /obj/structure/machinery/floodlight/landing{
@@ -1747,16 +1411,11 @@
 	name = "Construction Light"
 	},
 /obj/effect/decal/warning_stripes,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastocean)
 "Nc" = (
 /obj/structure/largecrate/supply/supplies/flares,
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southwest,
 /area/lv624/lazarus/crashed_ship)
 "Ny" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -1771,15 +1430,11 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Oh" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Op" = (
 /turf/closed/shuttle/ert{
@@ -1788,10 +1443,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "OA" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/east,
 /area/lv624/lazarus/crashed_ship)
 "OU" = (
 /obj/item/stack/sheet/metal{
@@ -1799,10 +1451,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/turf/open/floor/plating{
-	dir = 6;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southeast,
 /area/lv624/lazarus/crashed_ship)
 "Pg" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -1811,9 +1460,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastocean)
 "Pl" = (
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate,
 /area/lv624/lazarus/crashed_ship)
 "Pp" = (
 /obj/item/circuitboard/apc{
@@ -1827,10 +1474,7 @@
 /area/lv624/lazarus/crashed_ship)
 "Pq" = (
 /obj/item/stool,
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/lv624/lazarus/crashed_ship)
 "Px" = (
 /obj/structure/prop/rock/brown,
@@ -1846,22 +1490,14 @@
 	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
 	name = "\improper CLF Supply MRE crate (x50)"
 	},
-/turf/open/floor/plating{
-	dir = 9;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/northwest,
 /area/lv624/lazarus/crashed_ship)
 "PR" = (
 /obj/item/ammo_magazine/sniper/svd,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Qa" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/west,
 /area/lv624/lazarus/crashed_ship)
 "Qc" = (
 /obj/structure/transmitter/clf_net{
@@ -1869,10 +1505,7 @@
 	phone_id = "Armoury";
 	pixel_y = 32
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/north,
 /area/lv624/lazarus/crashed_ship)
 "Qe" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -1884,10 +1517,7 @@
 /area/lv624/lazarus/crashed_ship)
 "Qq" = (
 /obj/structure/cargo_container/arious/leftmid,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "Qs" = (
 /turf/closed/shuttle/ert{
@@ -1903,9 +1533,7 @@
 	phone_id = "Engineering"
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/almayer{
-	icon_state = "orangecorner"
-	},
+/turf/open/floor/almayer/orangecorner,
 /area/lv624/lazarus/crashed_ship)
 "QM" = (
 /turf/closed/shuttle/ert{
@@ -1917,10 +1545,7 @@
 /area/varadero/exterior/eastbeach)
 "QY" = (
 /obj/structure/machinery/power/smes/buildable/charged,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/north,
 /area/lv624/lazarus/crashed_ship)
 "Rg" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -1928,16 +1553,11 @@
 	pixel_x = 16;
 	pixel_y = -8
 	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "Rn" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/northeast,
 /area/lv624/lazarus/crashed_ship)
 "Rp" = (
 /obj/structure/barricade/metal/wired{
@@ -1951,10 +1571,7 @@
 	dir = 8;
 	faction_group = list("CLF")
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "Rs" = (
 /turf/closed/shuttle/ert{
@@ -1965,10 +1582,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/regular,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "RH" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -1986,10 +1600,7 @@
 "RS" = (
 /obj/item/stack/rods,
 /obj/structure/girder,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "RX" = (
 /obj/effect/vehicle_spawner/van/fixed{
@@ -1997,10 +1608,7 @@
 	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides. This one seems to be used by the CLF";
 	name = "CLF Van"
 	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/north,
 /area/lv624/lazarus/crashed_ship)
 "So" = (
 /obj/structure/barricade/metal/wired{
@@ -2011,16 +1619,11 @@
 	dir = 8;
 	icon_state = "metal_2"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "SA" = (
 /obj/structure/girder/displaced,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "SS" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -2039,10 +1642,7 @@
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/clothing/accessory/storage/webbing,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/northeast,
 /area/lv624/lazarus/crashed_ship)
 "Tg" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -2052,31 +1652,19 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "Tt" = (
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "TQ" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/eastocean)
 "TS" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "TZ" = (
 /obj/structure/girder/displaced,
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/lv624/lazarus/crashed_ship)
 "Ua" = (
 /obj/item/ammo_casing/shell{
@@ -2091,16 +1679,11 @@
 /area/lv624/lazarus/crashed_ship)
 "Uj" = (
 /obj/item/storage/toolbox/mechanical,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "Uy" = (
 /obj/item/weapon/gun/smg/fp9000,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "UJ" = (
 /turf/open/gm/dirt,
@@ -2114,18 +1697,13 @@
 	dir = 1;
 	icon_state = "metal_3"
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "UV" = (
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_2_1"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "UW" = (
 /turf/closed/shuttle/ert{
@@ -2140,20 +1718,14 @@
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/northeast,
 /area/lv624/lazarus/crashed_ship)
 "Vv" = (
 /obj/structure/bed,
 /obj/item/bedsheet/rd,
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/east,
 /area/lv624/lazarus/crashed_ship)
 "Vy" = (
 /obj/structure/surface/rack,
@@ -2172,10 +1744,7 @@
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = 6
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/northeast,
 /area/lv624/lazarus/crashed_ship)
 "VC" = (
 /obj/structure/surface/rack,
@@ -2184,26 +1753,19 @@
 	pixel_x = 3;
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald,
 /area/lv624/lazarus/crashed_ship)
 "VE" = (
 /obj/structure/machinery/autolathe,
 /obj/structure/machinery/power/apc{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/northwest,
 /area/lv624/lazarus/crashed_ship)
 "VL" = (
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate,
 /area/lv624/lazarus/crashed_ship)
 "VO" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
@@ -2220,25 +1782,17 @@
 "Wb" = (
 /obj/item/stack/rods,
 /obj/item/ammo_magazine/sniper/svd,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "Wf" = (
-/turf/open/floor/almayer{
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner,
 /area/lv624/lazarus/crashed_ship)
 "Wi" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "blue"
-	},
+/turf/open/floor/almayer/blue/north,
 /area/lv624/lazarus/crashed_ship)
 "Wl" = (
 /turf/closed/wall/rock/brown,
@@ -2248,10 +1802,7 @@
 /area/varadero/exterior/monsoon)
 "WP" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/north,
 /area/lv624/lazarus/crashed_ship)
 "WV" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -2276,10 +1827,7 @@
 	pixel_y = 6
 	},
 /obj/structure/surface/rack,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/north,
 /area/lv624/lazarus/crashed_ship)
 "Ye" = (
 /turf/open/auto_turf/sand_white/layer1,
@@ -2289,10 +1837,7 @@
 	pixel_y = 25
 	},
 /obj/item/storage/firstaid/regular/empty,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/north,
 /area/lv624/lazarus/crashed_ship)
 "Yu" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -2313,9 +1858,7 @@
 	icon_state = "plasteel_2";
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "YX" = (
 /obj/structure/surface/rack,
@@ -2323,10 +1866,7 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/southwest,
 /area/lv624/lazarus/crashed_ship)
 "Za" = (
 /obj/structure/machinery/floodlight,
@@ -2337,15 +1877,11 @@
 	dir = 1;
 	faction_group = list("CLF")
 	},
-/turf/open/gm/dirt{
-	icon_state = "desert1"
-	},
+/turf/open/gm/dirt/desert1,
 /area/varadero/exterior/eastbeach)
 "Zq" = (
 /obj/structure/girder,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Zr" = (
 /turf/open/gm/coast/beachcorner/north_west,
@@ -2355,9 +1891,7 @@
 	dir = 8;
 	icon_state = "metal_1"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "ZL" = (
 /obj/effect/landmark/corpsespawner/engineer,
@@ -2369,10 +1903,7 @@
 /area/lv624/lazarus/crashed_ship)
 "ZX" = (
 /obj/item/stack/rods,
-/turf/open/floor/plating{
-	dir = 9;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/northwest,
 /area/lv624/lazarus/crashed_ship)
 
 (1,1,1) = {"

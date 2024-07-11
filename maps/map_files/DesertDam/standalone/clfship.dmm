@@ -7,16 +7,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "ag" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_wing)
 "ak" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/break_room)
 "au" = (
 /turf/closed/shuttle/ert{
@@ -26,9 +21,7 @@
 /area/lv624/lazarus/crashed_ship)
 "av" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/virology_isolation)
 "aw" = (
 /turf/closed/shuttle/ert{
@@ -36,9 +29,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "az" = (
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/virology_isolation)
 "aJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -48,10 +39,7 @@
 	density = 1;
 	closed = 0
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/north_wing_hallway)
 "aK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -62,24 +50,16 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/east_wing_hallway)
 "aP" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/emergency_room)
 "aW" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/east_wing_hallway)
 "bf" = (
 /obj/structure/surface/rack,
@@ -90,16 +70,11 @@
 /obj/item/device/radio{
 	pixel_x = -3
 	},
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/southwest,
 /area/lv624/lazarus/crashed_ship)
 "bh" = (
 /obj/item/ammo_magazine/smg/fp9000,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "bu" = (
 /obj/structure/largecrate/random/barrel/blue,
@@ -107,9 +82,7 @@
 /area/lv624/lazarus/crashed_ship)
 "bx" = (
 /obj/item/ammo_magazine/sniper/svd,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "bM" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -120,9 +93,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/break_room)
 "bV" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/east_wing_hallway)
 "ce" = (
 /turf/closed/shuttle/ert{
@@ -131,61 +102,43 @@
 /area/lv624/lazarus/crashed_ship)
 "cw" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/emergency_room)
 "cC" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
 	icon_state = "metal_1"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "cD" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/backpack/general_belt{
 	pixel_y = 3
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "cI" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/emergency_room)
 "cO" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
 	name = "\improper Umbillical Airlock"
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "cY" = (
 /obj/structure/machinery/sleep_console,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/emergency_room)
 "dd" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /obj/structure/machinery/floodlight,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "dg" = (
 /obj/structure/barricade/metal/wired{
@@ -205,10 +158,7 @@
 	dir = 8;
 	icon_state = "metal_2"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "dC" = (
 /obj/structure/bed/stool,
@@ -224,18 +174,13 @@
 /obj/item/device/flashlight/lamp{
 	pixel_y = 3
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/west,
 /area/lv624/lazarus/crashed_ship)
 "dO" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottom"
 	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/west_wing_hallway)
 "dT" = (
 /obj/structure/surface/table/almayer,
@@ -243,9 +188,7 @@
 /obj/item/storage/bag/trash,
 /obj/item/tool/screwdriver,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "dY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -266,9 +209,7 @@
 	density = 1;
 	closed = 0
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "ew" = (
 /obj/structure/surface/table/woodentable,
@@ -284,10 +225,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Emergency Room"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/emergency_room)
 "eQ" = (
 /obj/item/stack/rods,
@@ -296,21 +234,13 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "eV" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "eW" = (
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/west_wing_hallway)
 "fk" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/east,
 /area/lv624/lazarus/crashed_ship)
 "fr" = (
 /obj/structure/surface/table/reinforced,
@@ -322,17 +252,11 @@
 	pixel_x = 9;
 	pixel_y = 8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/treatment_room)
 "fy" = (
 /obj/structure/girder/reinforced,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "fC" = (
 /turf/closed/wall/r_wall,
@@ -341,36 +265,24 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "fR" = (
-/turf/open/floor/almayer{
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner,
 /area/lv624/lazarus/crashed_ship)
 "fS" = (
 /obj/structure/girder,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "fX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/virology_wing)
 "fY" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/virology_wing)
 "gc" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -380,19 +292,13 @@
 	pixel_y = 4
 	},
 /obj/item/storage/firstaid/regular,
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/northwest,
 /area/lv624/lazarus/crashed_ship)
 "gj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/virology_wing)
 "gq" = (
 /obj/item/stack/sheet/metal{
@@ -400,10 +306,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/turf/open/floor/plating{
-	dir = 6;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southeast,
 /area/lv624/lazarus/crashed_ship)
 "gs" = (
 /obj/effect/decal/cleanable/dirt,
@@ -414,9 +317,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/west_wing_hallway)
 "gH" = (
 /obj/structure/machinery/power/apc{
@@ -424,10 +325,7 @@
 	pixel_x = 28;
 	start_charge = 0
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "gI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -453,19 +351,14 @@
 	dir = 8;
 	icon_state = "plasteel_closed_1"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "gN" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/morgue)
 "he" = (
 /obj/structure/surface/table/almayer,
@@ -485,10 +378,7 @@
 	pixel_y = 20
 	},
 /obj/structure/machinery/medical_pod/bodyscanner,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "hn" = (
 /obj/structure/barricade/metal/wired{
@@ -497,25 +387,17 @@
 /obj/structure/machinery/m56d_hmg{
 	rounds = 700
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "hv" = (
-/turf/open/floor/plating{
-	dir = 6;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southeast,
 /area/lv624/lazarus/crashed_ship)
 "hw" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "hy" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -533,42 +415,29 @@
 /obj/item/attachable/bayonet,
 /obj/item/attachable/bayonet,
 /obj/item/attachable/attached_gun/flamer,
-/turf/open/floor/almayer{
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner,
 /area/lv624/lazarus/crashed_ship)
 "hB" = (
 /obj/item/device/healthanalyzer,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/west_wing_hallway)
 "hD" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "emeraldcorner"
-	},
+/turf/open/floor/almayer/emeraldcorner/east,
 /area/lv624/lazarus/crashed_ship)
 "hN" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/central)
 "hP" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/east,
 /area/lv624/lazarus/crashed_ship)
 "hS" = (
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/central)
 "ib" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "ii" = (
 /turf/closed/shuttle/ert{
@@ -578,10 +447,7 @@
 "ij" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/extinguisher,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "ik" = (
 /obj/structure/machinery/vending/cigarette/colony,
@@ -597,10 +463,7 @@
 	dir = 1;
 	faction_group = list("CLF")
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "iB" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -621,41 +484,29 @@
 	pixel_x = 3;
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald,
 /area/lv624/lazarus/crashed_ship)
 "iX" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/med_data/laptop{
 	pixel_y = 3
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/treatment_room)
 "jj" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/north_wing_hallway)
 "jl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/floodlight,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/north_wing_hallway)
 "ju" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "jw" = (
 /obj/effect/decal/cleanable/blood,
@@ -675,17 +526,11 @@
 	dir = 4;
 	faction_group = list("CLF")
 	},
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/northeast,
 /area/desert_dam/building/medical/north_wing_hallway)
 "jF" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/west_wing_hallway)
 "jI" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -703,27 +548,20 @@
 	pixel_y = 11
 	},
 /obj/item/clothing/glasses/welding,
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/southeast,
 /area/lv624/lazarus/crashed_ship)
 "jK" = (
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/east_wing_hallway)
 "jQ" = (
-/turf/open/floor/almayer{
-	icon_state = "emeraldcorner"
-	},
+/turf/open/floor/almayer/emeraldcorner,
 /area/lv624/lazarus/crashed_ship)
 "jT" = (
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/west_wing_hallway)
 "ka" = (
 /obj/item/stool,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "kg" = (
 /obj/structure/disposalpipe/segment{
@@ -733,10 +571,7 @@
 	dir = 4;
 	icon_state = "metal_2"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/north_wing_hallway)
 "kk" = (
 /obj/structure/machinery/optable,
@@ -745,10 +580,7 @@
 "kl" = (
 /obj/structure/surface/table,
 /obj/item/bodybag,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/morgue)
 "km" = (
 /obj/structure/disposalpipe/segment{
@@ -758,29 +590,19 @@
 /area/desert_dam/building/medical/virology_isolation)
 "kp" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/west_wing_hallway)
 "kG" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/virology_wing)
 "kK" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "kN" = (
 /obj/structure/largecrate/supply/supplies/flares,
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southwest,
 /area/lv624/lazarus/crashed_ship)
 "kP" = (
 /obj/structure/surface/rack,
@@ -791,29 +613,18 @@
 /obj/item/device/radio{
 	pixel_x = 3
 	},
-/turf/open/floor/almayer{
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green,
 /area/lv624/lazarus/crashed_ship)
 "lf" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "emeraldcorner"
-	},
+/turf/open/floor/almayer/emeraldcorner/west,
 /area/lv624/lazarus/crashed_ship)
 "lg" = (
 /obj/structure/machinery/photocopier,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/treatment_room)
 "lj" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/north,
 /area/lv624/lazarus/crashed_ship)
 "lm" = (
 /turf/closed/wall/r_wall,
@@ -822,10 +633,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/yellow,
 /obj/item/toy/katana,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/west,
 /area/lv624/lazarus/crashed_ship)
 "ls" = (
 /turf/closed/shuttle/ert{
@@ -840,15 +648,10 @@
 /area/lv624/lazarus/crashed_ship)
 "lH" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/emergency_room)
 "lI" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/treatment_room)
 "lW" = (
 /obj/structure/machinery/light{
@@ -862,10 +665,7 @@
 	dir = 1;
 	icon_state = "metal_3"
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/north_wing_hallway)
 "lX" = (
 /obj/structure/surface/rack,
@@ -878,50 +678,35 @@
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = 9
 	},
-/turf/open/floor/almayer{
-	icon_state = "orangecorner"
-	},
+/turf/open/floor/almayer/orangecorner,
 /area/lv624/lazarus/crashed_ship)
 "mc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/north_wing_hallway)
 "mh" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "mo" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/virology_wing)
 "mx" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "mF" = (
 /obj/effect/landmark/corpsespawner/wysec,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "mM" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "mS" = (
 /obj/structure/surface/table/reinforced,
@@ -934,16 +719,10 @@
 	dir = 4
 	},
 /obj/item/clothing/glasses/meson,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_wing)
 "nj" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "nl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -952,10 +731,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/north_wing_hallway)
 "nn" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -973,9 +749,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/east_wing_hallway)
 "np" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1000,38 +774,23 @@
 	pixel_x = 18;
 	pixel_y = 6
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/north,
 /area/lv624/lazarus/crashed_ship)
 "ns" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "nx" = (
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/north,
 /area/lv624/lazarus/crashed_ship)
 "nB" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/treatment_room)
 "nF" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/north,
 /area/lv624/lazarus/crashed_ship)
 "nG" = (
 /obj/structure/surface/rack,
@@ -1043,16 +802,11 @@
 "nO" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/emergency_room)
 "nP" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/treatment_room)
 "nQ" = (
 /obj/structure/machinery/light/small{
@@ -1072,16 +826,11 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/northeast,
 /area/desert_dam/building/medical/emergency_room)
 "ot" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/crashed_ship)
 "ou" = (
 /obj/structure/machinery/door_control/brbutton{
@@ -1113,16 +862,11 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltopright"
 	},
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/emergency_room)
 "pc" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/east_wing_hallway)
 "pg" = (
 /turf/open/floor/plating,
@@ -1142,22 +886,15 @@
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2
 	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/east_wing_hallway)
 "pw" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/treatment_room)
 "pA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/virology_wing)
 "pD" = (
 /obj/structure/toilet{
@@ -1167,46 +904,32 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/crashed_ship)
 "pF" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/east_wing_hallway)
 "pH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/west_wing_hallway)
 "pL" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/northeast,
 /area/lv624/lazarus/crashed_ship)
 "pN" = (
 /obj/structure/machinery/medical_pod/sleeper,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/emergency_room)
 "pU" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
 	icon_state = "metal_3"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "pY" = (
 /obj/item/ammo_casing/shell{
@@ -1215,9 +938,7 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "pZ" = (
 /obj/structure/girder,
@@ -1231,17 +952,13 @@
 /obj/structure/machinery/m56d_hmg{
 	rounds = 700
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "ql" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docdecal2"
 	},
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/emergency_room)
 "qm" = (
 /obj/item/storage/pill_bottle/spaceacillin,
@@ -1251,14 +968,10 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/virology_isolation)
 "qq" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/substation/central)
 "qs" = (
 /obj/structure/bed/chair{
@@ -1271,25 +984,18 @@
 	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
 	name = "\improper CLF Supply MRE crate (x50)"
 	},
-/turf/open/floor/plating{
-	dir = 9;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/northwest,
 /area/lv624/lazarus/crashed_ship)
 "qy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_2"
 	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/north_wing_hallway)
 "qz" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/west_wing_hallway)
 "qA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1302,9 +1008,7 @@
 	dir = 8;
 	icon_state = "sandbag_2"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/north_wing_hallway)
 "qG" = (
 /obj/structure/surface/table/almayer,
@@ -1319,10 +1023,7 @@
 "qX" = (
 /obj/structure/closet/l3closet/virology,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_wing)
 "rc" = (
 /obj/structure/surface/table/almayer,
@@ -1342,10 +1043,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "rE" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -1358,10 +1056,7 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_3"
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "rF" = (
 /obj/effect/landmark/corpsespawner/engineer,
@@ -1369,16 +1064,11 @@
 /area/lv624/lazarus/crashed_ship)
 "rJ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/southeast,
 /area/desert_dam/building/medical/north_wing_hallway)
 "rO" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/east_wing_hallway)
 "rP" = (
 /obj/item/ammo_casing/shell{
@@ -1394,9 +1084,7 @@
 	pixel_x = 2;
 	pixel_y = -4
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/crashed_ship)
 "rY" = (
 /obj/item/device/healthanalyzer,
@@ -1417,9 +1105,7 @@
 /area/lv624/lazarus/crashed_ship)
 "sn" = (
 /obj/structure/cargo_container/arious/right,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "so" = (
 /turf/closed/shuttle/ert{
@@ -1432,39 +1118,26 @@
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "sq" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
+/turf/open/floor/prison/darkbrown2/north,
 /area/desert_dam/building/medical/break_room)
 "sH" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/virology_isolation)
 "sK" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
 	name = "\improper Umbillical Airlock"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "sL" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "sQ" = (
 /obj/structure/bed,
@@ -1474,33 +1147,23 @@
 	pixel_y = 4
 	},
 /obj/item/restraint/handcuffs,
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/southeast,
 /area/lv624/lazarus/crashed_ship)
 "sR" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/device/defibrillator,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/treatment_room)
 "tb" = (
 /obj/item/stack/rods,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "ti" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
 	dir = 8;
 	name = "\improper Bridge"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "tk" = (
 /obj/item/ammo_casing/shell{
@@ -1510,48 +1173,32 @@
 	dir = 4;
 	faction_group = list("CLF")
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "to" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "tv" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/crashed_ship)
 "ty" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/virology_wing)
 "tz" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf_medic,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "tP" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison/bright_clean2/southwest,
 /area/lv624/lazarus/crashed_ship)
 "tS" = (
 /obj/structure/surface/table,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/southwest,
 /area/desert_dam/building/medical/virology_isolation)
 "tT" = (
 /turf/closed/wall,
@@ -1573,19 +1220,14 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/morgue)
 "ux" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /obj/structure/machinery/floodlight,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "uy" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -1596,9 +1238,7 @@
 	dir = 2;
 	name = "\improper Surgery"
 	},
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/emergency_room)
 "uE" = (
 /obj/structure/surface/table/almayer,
@@ -1612,10 +1252,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "uP" = (
 /turf/closed/wall/r_wall,
@@ -1627,17 +1264,11 @@
 /area/lv624/lazarus/crashed_ship)
 "uU" = (
 /obj/item/stack/rods,
-/turf/open/floor/plating{
-	dir = 9;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/northwest,
 /area/lv624/lazarus/crashed_ship)
 "uW" = (
 /obj/item/alien_embryo,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/morgue)
 "uX" = (
 /turf/closed/shuttle/ert{
@@ -1645,31 +1276,20 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "va" = (
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/treatment_room)
 "vb" = (
 /obj/structure/machinery/vending/coffee,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/north,
 /area/lv624/lazarus/crashed_ship)
 "vd" = (
 /obj/structure/machinery/floodlight,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "vf" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/surface/table/reinforced,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/north,
 /area/desert_dam/building/medical/emergency_room)
 "vg" = (
 /obj/structure/machinery/power/apc{
@@ -1677,9 +1297,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/morgue)
 "vl" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -1694,10 +1312,7 @@
 	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides. This one seems to be used by the CLF";
 	name = "CLF Van"
 	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/north,
 /area/lv624/lazarus/crashed_ship)
 "vr" = (
 /turf/open/floor/plating,
@@ -1707,10 +1322,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "blue"
-	},
+/turf/open/floor/almayer/blue/north,
 /area/lv624/lazarus/crashed_ship)
 "vZ" = (
 /obj/item/stack/rods,
@@ -1721,10 +1333,7 @@
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
 /obj/item/clothing/mask/breath/medical,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/southwest,
 /area/lv624/lazarus/crashed_ship)
 "wk" = (
 /obj/structure/disposalpipe/segment{
@@ -1732,10 +1341,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "ws" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1747,9 +1353,7 @@
 /area/desert_dam/building/medical/north_wing_hallway)
 "wv" = (
 /obj/structure/largecrate/supply/ammo/m56d,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "wE" = (
 /obj/structure/bed,
@@ -1761,16 +1365,11 @@
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/clothing/accessory/storage/webbing,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/northeast,
 /area/lv624/lazarus/crashed_ship)
 "wF" = (
 /obj/item/weapon/gun/smg/fp9000,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "wT" = (
 /obj/structure/window/framed/colony,
@@ -1781,30 +1380,20 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/emergency_room)
 "wY" = (
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/treatment_room)
 "wZ" = (
 /obj/structure/machinery/computer/arcade,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
+/turf/open/floor/prison/darkbrown2/north,
 /area/desert_dam/building/medical/break_room)
 "xb" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/virology_wing)
 "xk" = (
 /obj/structure/surface/table/almayer,
@@ -1816,16 +1405,11 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_wing)
 "xr" = (
 /obj/effect/landmark/corpsespawner/clf,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "xu" = (
 /turf/closed/shuttle/ert{
@@ -1843,10 +1427,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/morgue)
 "xW" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/morgue)
 "xY" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -1854,19 +1435,14 @@
 /area/lv624/lazarus/crashed_ship)
 "xZ" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "yj" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
 	icon_state = "metal_3"
 	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/north_wing_hallway)
 "yl" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1875,16 +1451,11 @@
 	dir = 8;
 	icon_state = "metal_2"
 	},
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/west_wing_hallway)
 "yo" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/northeast,
 /area/lv624/lazarus/crashed_ship)
 "yp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1893,9 +1464,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/emergency_room)
 "yr" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1903,9 +1472,7 @@
 	department = "CLF - Cell 42"
 	},
 /obj/item/paper/prison_station/pirate_note/clfship,
-/turf/open/floor/almayer{
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald,
 /area/lv624/lazarus/crashed_ship)
 "yz" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1916,9 +1483,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "yF" = (
-/turf/open/floor/almayer{
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner,
 /area/lv624/lazarus/crashed_ship)
 "yG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1929,34 +1494,22 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/north_wing_hallway)
 "yJ" = (
 /obj/item/stack/rods,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/crashed_ship)
 "zd" = (
 /obj/item/weapon/gun/rifle/sniper/svd,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "zh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/virology_wing)
 "zj" = (
 /turf/closed/shuttle/ert{
@@ -1967,10 +1520,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "zt" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1980,9 +1530,7 @@
 "zx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/broken_bottle,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/break_room)
 "zz" = (
 /obj/structure/machinery/light{
@@ -1997,17 +1545,12 @@
 /area/lv624/lazarus/crashed_ship)
 "zI" = (
 /obj/item/stack/rods,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "zN" = (
 /obj/item/stack/rods,
 /obj/item/ammo_magazine/smg/fp9000,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "zP" = (
 /obj/structure/machinery/light{
@@ -2018,16 +1561,12 @@
 /area/desert_dam/building/medical/break_room)
 "Ab" = (
 /obj/structure/girder/reinforced,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Ae" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/break_room)
 "Aj" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2048,10 +1587,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Aq" = (
 /turf/closed/shuttle/ert{
@@ -2066,25 +1602,17 @@
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "AH" = (
 /obj/effect/landmark/corpsespawner/wysec,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/lv624/lazarus/crashed_ship)
 "AI" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/treatment_room)
 "AJ" = (
 /obj/structure/surface/rack,
@@ -2092,18 +1620,13 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/southwest,
 /area/lv624/lazarus/crashed_ship)
 "AM" = (
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_2_1"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "AQ" = (
 /obj/structure/largecrate/supply/ammo/m56d,
@@ -2134,47 +1657,32 @@
 /area/desert_dam/building/medical/west_wing_hallway)
 "Bt" = (
 /obj/item/trash/semki,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/treatment_room)
 "BH" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "BJ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/virology_isolation)
 "BY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/northeast,
 /area/desert_dam/building/medical/emergency_room)
 "BZ" = (
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/virology_isolation)
 "Ce" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/virology_wing)
 "Cj" = (
 /obj/effect/decal/cleanable/blood,
@@ -2182,17 +1690,12 @@
 	dir = 1;
 	icon_state = "metal_3"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Cm" = (
 /obj/structure/disposalpipe/trunk,
 /obj/structure/machinery/disposal,
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/northeast,
 /area/desert_dam/building/medical/virology_wing)
 "Cq" = (
 /obj/structure/surface/table/reinforced,
@@ -2202,10 +1705,7 @@
 	pixel_y = 10
 	},
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/treatment_room)
 "Cz" = (
 /obj/structure/bed/chair,
@@ -2237,17 +1737,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/north_wing_hallway)
 "CR" = (
 /obj/item/stack/rods,
 /obj/item/ammo_magazine/sniper/svd,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "CT" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -2255,10 +1750,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/virology_isolation)
 "CY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2266,10 +1758,7 @@
 	dir = 1;
 	icon_state = "metal_2"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "De" = (
 /obj/structure/surface/table/almayer,
@@ -2284,16 +1773,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/item/storage/box/pillbottles,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Dp" = (
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/southwest,
 /area/lv624/lazarus/crashed_ship)
 "Dq" = (
 /turf/closed/shuttle/ert{
@@ -2309,10 +1792,7 @@
 	phone_id = "Cargo Bay";
 	pixel_y = 32
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "DB" = (
 /obj/structure/machinery/body_scanconsole,
@@ -2322,24 +1802,15 @@
 	phone_id = "Medical Bay";
 	pixel_y = 32
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "DG" = (
 /obj/item/stack/rods,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "DH" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/west,
 /area/desert_dam/building/medical/virology_wing)
 "DQ" = (
 /turf/closed/shuttle/ert{
@@ -2351,10 +1822,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/virology_wing)
 "DX" = (
 /obj/structure/surface/rack,
@@ -2362,10 +1830,7 @@
 	pixel_y = 7
 	},
 /obj/item/storage/backpack/general_belt,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "DZ" = (
 /obj/structure/transmitter/clf_net{
@@ -2373,67 +1838,41 @@
 	phone_id = "Armoury";
 	pixel_y = 32
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/north,
 /area/lv624/lazarus/crashed_ship)
 "Ec" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/lv624/lazarus/crashed_ship)
 "Ep" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/east,
 /area/desert_dam/building/medical/emergency_room)
 "EB" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/virology_wing)
 "EK" = (
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/east,
 /area/lv624/lazarus/crashed_ship)
 "EO" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/morgue)
 "ET" = (
 /obj/structure/cargo_container/arious/leftmid,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "EU" = (
 /obj/structure/machinery/power/smes/buildable/charged,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/north,
 /area/lv624/lazarus/crashed_ship)
 "EV" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/northeast,
 /area/desert_dam/building/medical/emergency_room)
 "Fh" = (
 /obj/structure/surface/table/woodentable,
@@ -2446,15 +1885,11 @@
 /area/lv624/lazarus/crashed_ship)
 "Fi" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/break_room)
 "Fj" = (
 /obj/structure/machinery/light,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/break_room)
 "Fl" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -2465,9 +1900,7 @@
 	phone_id = "Engineering"
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/almayer{
-	icon_state = "orangecorner"
-	},
+/turf/open/floor/almayer/orangecorner,
 /area/lv624/lazarus/crashed_ship)
 "Fp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -2478,10 +1911,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/east,
 /area/lv624/lazarus/crashed_ship)
 "Fx" = (
 /turf/open/floor/plating,
@@ -2492,10 +1922,7 @@
 	pixel_x = 3;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/north,
 /area/lv624/lazarus/crashed_ship)
 "FQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2504,15 +1931,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/treatment_room)
 "Ga" = (
 /obj/structure/girder/reinforced,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Gd" = (
 /obj/effect/decal/medical_decals{
@@ -2525,16 +1948,11 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/emergency_room)
 "Gk" = (
 /obj/structure/machinery/light,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/east_wing_hallway)
 "Gn" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -2560,29 +1978,21 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/east_wing_hallway)
 "GI" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "GM" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/virology_isolation)
 "GS" = (
 /turf/closed/shuttle/ert{
@@ -2592,26 +2002,18 @@
 "GZ" = (
 /obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "emeraldcorner"
-	},
+/turf/open/floor/almayer/emeraldcorner/west,
 /area/lv624/lazarus/crashed_ship)
 "Hb" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
 /obj/item/storage/firstaid/regular/empty,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/north,
 /area/lv624/lazarus/crashed_ship)
 "Hf" = (
 /obj/structure/largecrate/random/barrel/white,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Hh" = (
 /obj/item/weapon/gun/smg/fp9000,
@@ -2619,54 +2021,37 @@
 /area/lv624/lazarus/crashed_ship)
 "Hn" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/morgue)
 "Hv" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/emergency_room)
 "Hw" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/virology_isolation)
 "HB" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8;
 	icon_state = "metal_2"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "HC" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/southeast,
 /area/desert_dam/building/medical/emergency_room)
 "HD" = (
 /obj/structure/machinery/vending/cola,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
+/turf/open/floor/prison/darkbrown2/north,
 /area/desert_dam/building/medical/break_room)
 "HG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/virology_isolation)
 "HX" = (
 /turf/open/floor/plating,
@@ -2684,16 +2069,11 @@
 /area/lv624/lazarus/crashed_ship)
 "It" = (
 /obj/item/clothing/gloves/latex,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/virology_wing)
 "Iv" = (
 /obj/structure/machinery/light,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/morgue)
 "Ix" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
@@ -2705,32 +2085,21 @@
 "IB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "IL" = (
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/virology_wing)
 "IN" = (
 /obj/item/stack/rods,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/lv624/lazarus/crashed_ship)
 "IO" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/emergency_room)
 "IR" = (
 /obj/structure/closet/l3closet/virology,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_wing)
 "IS" = (
 /obj/structure/machinery/power/apc{
@@ -2748,10 +2117,7 @@
 /obj/item/bedsheet/rd,
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/east,
 /area/lv624/lazarus/crashed_ship)
 "Jf" = (
 /obj/structure/machinery/light,
@@ -2764,17 +2130,11 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1"
 	},
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southwest,
 /area/lv624/lazarus/crashed_ship)
 "JC" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/north,
 /area/lv624/lazarus/crashed_ship)
 "JJ" = (
 /obj/structure/bed/chair,
@@ -2783,28 +2143,19 @@
 /area/lv624/lazarus/crashed_ship)
 "JM" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/virology_wing)
 "JR" = (
 /obj/structure/girder,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "JU" = (
 /obj/structure/closet/firecloset/full,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/virology_wing)
 "JV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/morgue)
 "JW" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf_engineer,
@@ -2814,10 +2165,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottom"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Kl" = (
 /obj/structure/disposalpipe/segment{
@@ -2826,10 +2174,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/glasses/hud/health,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Kv" = (
 /obj/structure/bed/chair{
@@ -2842,34 +2187,23 @@
 	dir = 8;
 	icon_state = "metal_1"
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Ky" = (
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/virology_wing)
 "KP" = (
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/lv624/lazarus/crashed_ship)
 "KR" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "emeraldcorner"
-	},
+/turf/open/floor/almayer/emeraldcorner/west,
 /area/lv624/lazarus/crashed_ship)
 "KZ" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "Lf" = (
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Lm" = (
 /obj/item/stack/sheet/metal{
@@ -2881,10 +2215,7 @@
 	dir = 8;
 	icon_state = "metal_1"
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/crashed_ship)
 "Ls" = (
 /turf/closed/shuttle/ert{
@@ -2897,29 +2228,21 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Lx" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/primary_storage)
 "Lz" = (
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/stack/rods,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "LC" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "LK" = (
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/primary_storage)
 "LL" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -2931,10 +2254,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/regular,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "LP" = (
 /turf/closed/shuttle/ert{
@@ -2945,30 +2265,20 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/virology_isolation)
 "LW" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "Md" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/southwest,
 /area/lv624/lazarus/crashed_ship)
 "Mk" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Mm" = (
 /obj/structure/machinery/computer/station_alert{
@@ -2976,9 +2286,7 @@
 	stat = 1
 	},
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Mr" = (
 /obj/structure/surface/rack,
@@ -2988,10 +2296,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "Mu" = (
 /turf/closed/wall,
@@ -3008,17 +2313,11 @@
 /area/desert_dam/building/medical/morgue)
 "MJ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/east_wing_hallway)
 "MM" = (
 /obj/structure/girder/displaced,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "MN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3026,9 +2325,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/north_wing_hallway)
 "MO" = (
 /turf/closed/wall,
@@ -3037,9 +2334,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/treatment_room)
 "MU" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3050,31 +2345,22 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_3"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Nc" = (
 /obj/structure/girder/displaced,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Ni" = (
 /obj/item/stool,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf_leader,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Nt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/virology_isolation)
 "Ny" = (
 /obj/structure/bed/chair{
@@ -3084,10 +2370,7 @@
 /area/desert_dam/building/medical/break_room)
 "NA" = (
 /obj/item/stack/rods,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison/bright_clean2/southwest,
 /area/lv624/lazarus/crashed_ship)
 "NE" = (
 /turf/open/floor/plating,
@@ -3098,16 +2381,11 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/prison{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner,
 /area/desert_dam/building/medical/west_wing_hallway)
 "NP" = (
 /obj/structure/morgue,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/morgue)
 "NR" = (
 /obj/structure/surface/table/reinforced,
@@ -3116,42 +2394,28 @@
 	pixel_x = 5;
 	pixel_y = 3
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/treatment_room)
 "NZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Or" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/west,
 /area/desert_dam/building/medical/east_wing_hallway)
 "Os" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/virology_isolation)
 "OB" = (
 /turf/closed/wall,
 /area/desert_dam/building/substation/central)
 "OF" = (
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/break_room)
 "OM" = (
 /obj/structure/surface/table/almayer,
@@ -3163,27 +2427,18 @@
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "ON" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/virology_isolation)
 "OQ" = (
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/north_wing_hallway)
 "OS" = (
-/turf/open/floor/plating{
-	dir = 5;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/northeast,
 /area/lv624/lazarus/crashed_ship)
 "OU" = (
 /turf/closed/wall/r_wall,
@@ -3195,17 +2450,11 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/north_wing_hallway)
 "Pa" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/north,
 /area/desert_dam/building/medical/virology_wing)
 "Pn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3215,10 +2464,7 @@
 	dir = 1;
 	icon_state = "pipe-j2"
 	},
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/northeast,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Po" = (
 /obj/structure/bed/chair{
@@ -3234,9 +2480,7 @@
 /area/lv624/lazarus/crashed_ship)
 "PC" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/east_wing_hallway)
 "PD" = (
 /obj/structure/machinery/light{
@@ -3248,18 +2492,14 @@
 	closed = 0;
 	density = 1
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/west_wing_hallway)
 "PE" = (
 /obj/structure/machinery/light,
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/north_wing_hallway)
 "PP" = (
 /obj/item/weapon/gun/rifle/m16,
@@ -3268,31 +2508,21 @@
 	pixel_y = 6
 	},
 /obj/structure/surface/rack,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/north,
 /area/lv624/lazarus/crashed_ship)
 "PU" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/roller,
 /obj/item/roller,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/emergency_room)
 "Qi" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Qk" = (
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/northwest,
 /area/desert_dam/building/medical/virology_wing)
 "QZ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3302,18 +2532,13 @@
 	dir = 8;
 	faction_group = list("CLF")
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Rk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Rm" = (
 /obj/structure/barricade/metal/wired{
@@ -3325,27 +2550,18 @@
 "Rv" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "RH" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/virology_isolation)
 "RT" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/morgue)
 "RU" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/corpsespawner/clf,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "RW" = (
 /obj/structure/machinery/power/apc{
@@ -3359,16 +2575,10 @@
 	},
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/emergency_room)
 "RX" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/east,
 /area/desert_dam/building/medical/virology_wing)
 "Si" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -3379,10 +2589,7 @@
 	dir = 8;
 	pixel_x = -10
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/west,
 /area/lv624/lazarus/crashed_ship)
 "Sr" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
@@ -3396,10 +2603,7 @@
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/west,
 /area/desert_dam/building/substation/central)
 "SA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3409,30 +2613,21 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/east_wing_hallway)
 "SE" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "SL" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/treatment_room)
 "SR" = (
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate,
 /area/lv624/lazarus/crashed_ship)
 "SZ" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/morgue)
 "Tb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3442,19 +2637,13 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Tc" = (
 /obj/structure/reagent_dispensers/virusfood{
 	pixel_x = -32
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/virology_wing)
 "Tg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3464,21 +2653,15 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/north_wing_hallway)
 "Ti" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Tj" = (
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/east_wing_hallway)
 "Tn" = (
 /obj/structure/bed/chair,
@@ -3493,10 +2676,7 @@
 	dir = 8;
 	icon_state = "metal_2"
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Tq" = (
 /obj/structure/barricade/metal/wired{
@@ -3538,23 +2718,15 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Ub" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/almayer{
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green,
 /area/lv624/lazarus/crashed_ship)
 "Ue" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/southeast,
 /area/desert_dam/building/medical/emergency_room)
 "Uk" = (
 /obj/structure/machinery/light{
@@ -3563,10 +2735,7 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_3"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Um" = (
 /obj/structure/window/framed/colony,
@@ -3577,9 +2746,7 @@
 /obj/item/device/autopsy_scanner,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/morgue)
 "Uw" = (
 /obj/item/stack/rods,
@@ -3587,10 +2754,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "Uz" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orangecorner"
-	},
+/turf/open/floor/almayer/orangecorner/west,
 /area/lv624/lazarus/crashed_ship)
 "UI" = (
 /turf/closed/shuttle/ert{
@@ -3603,10 +2767,7 @@
 	pixel_x = -3;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orangecorner"
-	},
+/turf/open/floor/almayer/orangecorner/north,
 /area/lv624/lazarus/crashed_ship)
 "UQ" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -3614,9 +2775,7 @@
 /area/desert_dam/building/medical/north_wing_hallway)
 "UU" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/treatment_room)
 "UW" = (
 /turf/closed/shuttle/ert{
@@ -3629,27 +2788,20 @@
 	id = "clf_umbilical_1";
 	name = "\improper Umbillical Airlock"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Vg" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Vh" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/prison/whitegreencorner/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Vw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/virology_isolation)
 "VO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3657,9 +2809,7 @@
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	faction_group = list("CLF")
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/west_wing_hallway)
 "VR" = (
 /turf/closed/shuttle/ert{
@@ -3668,33 +2818,23 @@
 /area/lv624/lazarus/crashed_ship)
 "VS" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "VY" = (
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate,
 /area/lv624/lazarus/crashed_ship)
 "Wk" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Medical"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Wn" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/emergency_room)
 "Ws" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -3704,10 +2844,7 @@
 /obj/item/attachable/attached_gun/flamer,
 /obj/item/attachable/bayonet,
 /obj/item/attachable/bayonet,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/west,
 /area/lv624/lazarus/crashed_ship)
 "Wx" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3725,22 +2862,14 @@
 /area/desert_dam/building/medical/west_wing_hallway)
 "WP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/virology_wing)
 "WQ" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/north_wing_hallway)
 "WR" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/virology_wing)
 "WS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3752,15 +2881,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/broken_bottle,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/east_wing_hallway)
 "WY" = (
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/southeast,
 /area/desert_dam/building/medical/emergency_room)
 "WZ" = (
 /obj/structure/largecrate/random/barrel/yellow,
@@ -3768,18 +2892,14 @@
 /area/lv624/lazarus/crashed_ship)
 "Xa" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/desert_dam/building/medical/east_wing_hallway)
 "Xp" = (
 /obj/structure/machinery/power/apc{
 	pixel_y = -24;
 	start_charge = 0
 	},
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/virology_isolation)
 "Xv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3789,10 +2909,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/northwest,
 /area/desert_dam/building/medical/west_wing_hallway)
 "XB" = (
 /obj/structure/barricade/sandbags/wired{
@@ -3804,9 +2921,7 @@
 "XG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/virology_wing)
 "XH" = (
 /turf/open/floor/plating,
@@ -3820,26 +2935,18 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "XW" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/north,
 /area/lv624/lazarus/crashed_ship)
 "Yd" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/west_wing_hallway)
 "Yu" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
@@ -3856,16 +2963,10 @@
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/northeast,
 /area/lv624/lazarus/crashed_ship)
 "Yz" = (
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southwest,
 /area/lv624/lazarus/crashed_ship)
 "YB" = (
 /obj/item/ammo_casing/shell{
@@ -3875,16 +2976,11 @@
 	dir = 8;
 	faction_group = list("CLF")
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "YF" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/virology_wing)
 "YG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3900,16 +2996,10 @@
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/northwest,
 /area/lv624/lazarus/crashed_ship)
 "YQ" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/west,
 /area/lv624/lazarus/crashed_ship)
 "YR" = (
 /obj/effect/decal/medical_decals{
@@ -3917,10 +3007,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "YS" = (
 /obj/structure/surface/rack,
@@ -3933,48 +3020,33 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
-	},
+/turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "YZ" = (
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "Zd" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Zf" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/west,
 /area/lv624/lazarus/crashed_ship)
 "Zp" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/substation/central)
 "Zr" = (
 /obj/structure/cargo_container/arious/rightmid,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "ZA" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/virology_isolation)
 "ZE" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottom"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/west_wing_hallway)
 "ZG" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -4000,18 +3072,12 @@
 /obj/item/ammo_magazine/rifle/m16{
 	pixel_x = -4
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "ZH" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/book/manual/medical_diagnostics_manual,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/treatment_room)
 "ZI" = (
 /obj/structure/bed,
@@ -4021,10 +3087,7 @@
 	pixel_y = 20
 	},
 /obj/item/toy/plush/farwa,
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "green"
-	},
+/turf/open/floor/almayer/green/northwest,
 /area/lv624/lazarus/crashed_ship)
 "ZP" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -4035,10 +3098,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/northwest,
 /area/lv624/lazarus/crashed_ship)
 "ZT" = (
 /obj/structure/surface/rack,
@@ -4057,19 +3117,14 @@
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = 6
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/northeast,
 /area/lv624/lazarus/crashed_ship)
 "ZV" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
 	icon_state = "metal_3"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/medical/north_wing_hallway)
 "ZZ" = (
 /obj/item/ammo_magazine/sniper/svd,

@@ -220,8 +220,11 @@ Sunlight System
 		//SILENCE FIX FOR MULTIZ
 		var/area/A = get_area(src)
 		if(A.ceiling < CEILING_GLASS)
-			skyvisible &= ceiling.ceiling_status & SKYVISIBLE
-			weathervisible &= ceiling.ceiling_status & WEATHERVISIBLE
+			skyvisible &= SKYVISIBLE
+			weathervisible &= WEATHERVISIBLE
+		else if(A.ceiling == CEILING_GLASS)
+			skyvisible &= SKYVISIBLE
+			weathervisible = FALSE
 		// EVERY turf must be transparent for sunlight - so &=
 		// ANY turf must be closed for TURF_WEATHER_PROOF - so |=
 /*

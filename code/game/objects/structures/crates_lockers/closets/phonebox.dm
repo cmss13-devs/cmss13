@@ -33,7 +33,7 @@
 	material = MATERIAL_METAL
 	anchored = TRUE
 	layer = BETWEEN_OBJECT_ITEM_LAYER
-	exit_stun = 0 //no stun because it's a (glass) 'locker'
+	exit_stun = 1
 	health = 250
 
 	open_sound = 'sound/effects/metal_door_open.ogg'

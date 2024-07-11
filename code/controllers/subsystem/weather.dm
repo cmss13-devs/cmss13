@@ -94,9 +94,9 @@ SUBSYSTEM_DEF(weather_conditions)
 		weather_effect.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	return weather_effect
 
-/datum/controller/subsystem/weather_conditions/proc/set_particle_effect(particles/P)
-	particle_effect = P
-	weather_effect.particles = particle_effect
+/datum/controller/subsystem/weather_conditions/proc/set_particle_effect(particles/new_particles)
+	particle_effect = new_particles
+	weather_effect.particles = new_particles
 
 /datum/controller/subsystem/weather_conditions/proc/stop_weather()
 	QDEL_NULL(weather_special_effect)

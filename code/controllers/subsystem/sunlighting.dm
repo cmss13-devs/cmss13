@@ -77,6 +77,7 @@ GLOBAL_VAR_INIT(global_light_range, 5)
 GLOBAL_LIST_EMPTY(sunlight_queue_work)
 GLOBAL_LIST_EMPTY(sunlight_queue_update)
 GLOBAL_LIST_EMPTY(sunlight_queue_corner)
+GLOBAL_LIST_EMPTY(weather_planes_need_vis)
 
 SUBSYSTEM_DEF(sunlighting)
 	name = "Sun Lighting"
@@ -171,7 +172,21 @@ SUBSYSTEM_DEF(sunlighting)
 
 	MC_SPLIT_TICK_INIT(3)
 	var/worked_length = 0
-	for(worked_length in 1 to GLOB.sunlight_queue_work.len)
+
+
+	//Add our weather particle obj to any new weather screens
+	if(SSparticle_weather.initialized)
+		for(worked_length in 1 to length(GLOB.weather_planes_need_vis))
+			var/atom/movable/screen/plane_master/weather_effect/effect_plane = GLOB.weather_planes_need_vis[worked_length]
+			if(effect_plane)
+				effect_plane.vis_contents = list(SSparticle_weather.get_weather_effect())
+			if(MC_TICK_CHECK)
+				break
+		if(worked_length)
+			weather_planes_need_vis.Cut(1, worked_length+1)
+			worked_length = 0
+
+	for(worked_length in 1 to length(GLOB.sunlight_queue_work))
 		var/turf/turf = GLOB.sunlight_queue_work[worked_length]
 		if(turf)
 			turf.get_sky_and_weather_states()
@@ -186,7 +201,7 @@ SUBSYSTEM_DEF(sunlighting)
 
 	MC_SPLIT_TICK
 
-	for(worked_length in 1 to GLOB.sunlight_queue_update.len)
+	for(worked_length in 1 to length(GLOB.sunlight_queue_update))
 		var/atom/movable/outdoor_effect/outdoor_effect = GLOB.sunlight_queue_update[worked_length]
 		if(outdoor_effect)
 			outdoor_effect.process_state()
@@ -201,7 +216,7 @@ SUBSYSTEM_DEF(sunlighting)
 
 	MC_SPLIT_TICK
 
-	for(worked_length in 1 to GLOB.sunlight_queue_corner.len)
+	for(worked_length in 1 to length(GLOB.sunlight_queue_corner))
 		var/turf/turf = GLOB.sunlight_queue_corner[worked_length]
 		var/atom/movable/outdoor_effect/outdoor_effect = turf.outdoor_effect
 

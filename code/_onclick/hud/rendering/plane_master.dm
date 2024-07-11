@@ -109,10 +109,41 @@
 	. = ..()
 	add_filter("emissives", 1, alpha_mask_filter(render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE))
 	add_filter("object_lighting", 2, alpha_mask_filter(render_source = O_LIGHTING_VISUAL_RENDER_TARGET, flags = MASK_INVERSE))
+	if(SSsunlighting.initialized)
+		vis_contents += SSsunlighting.sun_color
 
-/atom/movable/screen/plane_master/lighting/exterior
-	name = "exterior lighting plane master"
-	plane = EXTERIOR_LIGHTING_PLANE
+//Contains all sun light objects
+/atom/movable/screen/plane_master/s_light_visual
+	name = "sun light visual plane master"
+	plane = S_LIGHTING_VISUAL_PLANE
+	render_target = S_LIGHTING_VISUAL_RENDER_TARGET
+	render_relay_plane = null
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	blend_mode = BLEND_MULTIPLY
+
+//Contains all weather overlays
+/atom/movable/screen/plane_master/weather_overlay
+	name = "weather overlay master"
+	plane = WEATHER_OVERLAY_PLANE
+	render_target = WEATHER_RENDER_TARGET
+	render_relay_plane = null
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+//Contains the weather effect itself
+/atom/movable/screen/plane_master/weather_effect
+	name = "weather effect plane master"
+	plane = WEATHER_EFFECT_PLANE
+	appearance_flags = PLANE_MASTER
+	render_relay_plane = RENDER_PLANE_GAME
+	blend_mode = BLEND_OVERLAY
+
+/atom/movable/screen/plane_master/weather_effect/Initialize(mapload)
+	. = ..()
+	SSsunlighting.weather_planes_need_vis |= src
+
+/atom/movable/screen/plane_master/weather_effect/Destroy()
+	. = ..()
+	SSsunlighting.weather_planes_need_vis -= src
 
 /**
  * Handles emissive overlays and emissive blockers.

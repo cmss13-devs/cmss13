@@ -273,16 +273,23 @@
 
 	return TRUE //Nothing found to block so return success!
 
-/turf/Entered(atom/movable/A)
-	if(!istype(A))
+/turf/Entered(atom/movable/arrived, old_loc, list/old_locs)
+	if(!istype(arrived))
 		return
 
-	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, A)
-	SEND_SIGNAL(A, COMSIG_MOVABLE_TURF_ENTERED, src)
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, arrived)
+	SEND_SIGNAL(arrived, COMSIG_MOVABLE_TURF_ENTERED, src)
 
 	// Let explosions know that the atom entered
 	for(var/datum/automata_cell/explosion/E in autocells)
-		E.on_turf_entered(A)
+		E.on_turf_entered(arrived)
+
+/turf/Exited(atom/movable/gone, direction)
+	if(!istype(gone))
+		return
+
+	SEND_SIGNAL(src, COMSIG_TURF_EXITED, gone, direction)
+	SEND_SIGNAL(gone, COMSIG_MOVABLE_TURF_EXITED, src, direction)
 
 /turf/proc/is_plating()
 	return 0

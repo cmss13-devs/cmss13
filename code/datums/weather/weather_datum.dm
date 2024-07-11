@@ -162,7 +162,7 @@
 	var/bleed_layer = 0
 	var/pts = 0
 	var/list/snows_connections = list(list("0", "0", "0", "0"), list("0", "0", "0", "0"), list("0", "0", "0", "0"))
-	var/list/diged = list("2" = FALSE, "1" = FALSE, "8" = FALSE, "4" = FALSE)
+	var/list/diged = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
 
 /obj/structure/snow/Initialize(mapload, bleed_layers)
 	. = ..()
@@ -171,12 +171,28 @@
 	if(!bleed_layer)
 		bleed_layer = rand(1, 3)
 
-	update_corners(TRUE)
-	update_overlays()
+	AddElement(/datum/element/mob_overlay_effect, bleed_layer * 2, bleed_layer * 3)
 
-	AddElement(/datum/element/mob_overlay_effect, bleed_layer * 2, bleed_layer * 3, 255)
+	START_PROCESSING(SSslowobj, src)
 
 	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/snow/LateInitialize()
+	. = ..()
+	update_corners()
+	update_overlays()
+
+/obj/structure/snow/Destroy(force)
+	STOP_PROCESSING(SSslowobj, src)
+
+	. = ..()
+
+/obj/structure/snow/process(delta_time)
+	if(!weather_conditions.running_weather)
+		damage_act(3 * delta_time)
+	else if(!istype(weather_conditions.running_weather, /datum/weather_effect/snow))
+		damage_act(6 * delta_time)
+	update_overlays()
 
 /obj/structure/snow/proc/update_corners(propagate = FALSE)
 	var/list/snow_dirs = list(list(), list(), list())
@@ -223,11 +239,11 @@
 
 	var/new_overlay = ""
 	for(var/i in diged)
-		if(diged[i])
+		if(diged[i] > world.time)
 			new_overlay += i
 	overlays += "[new_overlay]"
 	RemoveElement(/datum/element/mob_overlay_effect)
-	AddElement(/datum/element/mob_overlay_effect)
+	AddElement(/datum/element/mob_overlay_effect, bleed_layer * 2, bleed_layer * 3)
 
 /obj/structure/snow/proc/damage_act(damage)
 	if(pts > damage / 5)
@@ -313,11 +329,8 @@
 		set_diged_ways(gone.dir)
 
 /obj/structure/snow/proc/set_diged_ways(dir)
-	diged["[dir]"] = TRUE
+	diged["[dir]"] = world.time + 1 MINUTES
 	update_overlays()
-	spawn(1 MINUTES)
-		diged["[dir]"] = FALSE
-		update_overlays()
 
 /obj/structure/snow/attack_alien(mob/living/carbon/xenomorph/xenomorph)
 	if(xenomorph.a_intent == INTENT_HARM) //Missed slash.

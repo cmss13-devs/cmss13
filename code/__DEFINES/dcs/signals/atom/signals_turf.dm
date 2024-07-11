@@ -5,6 +5,7 @@
 	#define COMPONENT_TURF_ALLOW_MOVEMENT (1<<0)
 	#define COMPONENT_TURF_DENY_MOVEMENT  (1<<1)
 #define COMSIG_TURF_ENTERED "turf_entered"
+#define COMSIG_TURF_EXITED "turf_exited"
 
 /// Called when a bullet hits a turf
 #define COMSIG_TURF_BULLET_ACT "turf_bullet_act"

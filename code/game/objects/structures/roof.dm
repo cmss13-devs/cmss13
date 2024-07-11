@@ -94,6 +94,7 @@
 
 /obj/effect/roof_node/Destroy(force)
 	. = ..()
+	linked_master.connected_nodes -= src
 	linked_master = null
 
 

@@ -1356,19 +1356,20 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	cell_type = /obj/item/cell/high
 
 /obj/structure/machinery/power/apc/almayer/directional/north
-	pixel_y = 24
+	pixel_y = 32
 	dir = 1
 
 /obj/structure/machinery/power/apc/almayer/directional/south
-	pixel_y = -24
+	dir = 2
+	pixel_y = -26
 
 /obj/structure/machinery/power/apc/almayer/directional/east
-	pixel_x = 24
-	dir = 4
+	pixel_x = 30
+	dir = 8
 
 /obj/structure/machinery/power/apc/almayer/directional/west
-	pixel_x = -24
-	dir = 8
+	pixel_x = -30
+	dir = 4
 
 /obj/structure/machinery/power/apc/almayer/hardened
 	name = "hardened area power controller"

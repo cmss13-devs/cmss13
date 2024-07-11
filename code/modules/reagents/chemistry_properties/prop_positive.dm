@@ -1004,22 +1004,7 @@
 /datum/chem_property/positive/anticarcinogenic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis
 
-/datum/chem_property/positive/regulating
-	name = PROPERTY_REGULATING
-	code = "REG"
-	description = "The chemical regulates its own metabolization, any amount overdosed is turned into sugar."
-	rarity = PROPERTY_COMMON
-	category = PROPERTY_TYPE_METABOLITE
-	max_level = 1
-	value = 1
 
-/datum/chem_property/positive/regulating/reset_reagent()
-	holder.flags = initial(holder.flags)
-	..()
-
-/datum/chem_property/positive/regulating/update_reagent()
-	holder.flags |= REAGENT_CANNOT_OVERDOSE
-	..()
 
 /datum/chem_property/positive/firepenetrating
 	name = PROPERTY_FIRE_PENETRATING

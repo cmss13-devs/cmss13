@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(who)
 	)
 	new_list_data["additional_info"] = list()
 	var/list/counted_factions = list()
-	for(var/client/client in sortTim(GLOB.clients, GLOBAL_PROC_REF(cmp_ckey_asc)))
+	for(var/client/client as anything in sortTim(GLOB.clients, GLOBAL_PROC_REF(cmp_ckey_asc)))
 		CHECK_TICK
 		new_list_data["all_clients"]++
 		var/list/client_payload = list()
@@ -157,7 +157,7 @@ SUBSYSTEM_DEF(who)
 		"text" = "Players playing as Infected Yautja",
 	))
 
-	for(var/i in 10 to length(counted_factions) - 2)
+	for(var/i = 1 to length(counted_factions))
 		if(counted_factions[counted_factions[i]])
 			new_list_data["factions"] += list(list(
 				"content" = "[counted_factions[i]]: [counted_factions[counted_factions[i]]]",
@@ -243,7 +243,7 @@ SUBSYSTEM_DEF(who)
 	for(var/category in mappings)
 		LAZYSET(listings, category, list())
 
-	for(var/client/client in GLOB.admins)
+	for(var/client/client as anything in GLOB.admins)
 		if(client.admin_holder?.fakekey && !CLIENT_IS_STAFF(client))
 			continue
 
@@ -254,7 +254,7 @@ SUBSYSTEM_DEF(who)
 
 	for(var/category in listings)
 		var/list/admins = list()
-		for(var/client/entry in listings[category])
+		for(var/client/entry as anything in listings[category])
 			var/list/admin = list()
 			var/rank = entry.admin_holder.rank
 			if(entry.admin_holder.extra_titles?.len)

@@ -194,9 +194,9 @@
 	. = ..()
 
 /obj/structure/snow/process(delta_time)
-	if(!weather_conditions.running_weather)
+	if(!SSweather_conditions.running_weather)
 		damage_act(3 * delta_time)
-	else if(!istype(weather_conditions.running_weather, /datum/weather_effect/snow))
+	else if(!istype(SSweather_conditions.running_weather, /datum/weather_effect/snow))
 		damage_act(6 * delta_time)
 	update_overlays()
 
@@ -234,8 +234,8 @@
 	for(var/deep = 1 to length(snow_dirs))
 		snows_connections[deep] = dirs_to_corner_states(snow_dirs[deep])
 
-/obj/structure/snow/update_overlays()
-	. = ..()
+/obj/structure/snow/proc/update_overlays()
+//	. = ..()
 	if(overlays)
 		overlays.Cut()
 
@@ -261,10 +261,10 @@
 		changing_layer(min(bleed_layer - round(damage / bleed_layer * 8, 1), MAX_LAYER_SNOW_LEVELS))
 		pts = 0
 
-/obj/structure/snow/get_projectile_hit_boolean(obj/item/projectile/proj)
+/obj/structure/snow/get_projectile_hit_boolean(obj/projectile/proj)
 	return FALSE
 
-/obj/structure/snow/bullet_act(obj/item/projectile/proj)
+/obj/structure/snow/bullet_act(obj/projectile/proj)
 	return FALSE
 
 /obj/structure/snow/flamer_fire_act(damage)
@@ -386,7 +386,6 @@
 	var/max_severity = 100
 	var/max_severity_change = 20
 	var/severity_steps = 5
-	var/immunity_type = TRAIT_WEATHER_IMMUNE
 	var/probability = 0
 
 	var/target_trait = PARTICLEWEATHER_RAIN
@@ -500,15 +499,6 @@
 	return FALSE
 
 /datum/particle_weather/proc/can_weather_effect(mob/living/mob_to_check)
-
-	//If mob is not in a turf
-	var/turf/mob_turf = get_turf(mob_to_check)
-	var/atom/loc_to_check = mob_to_check.loc
-	while(loc_to_check != mob_turf)
-		if((immunity_type && HAS_TRAIT(loc_to_check, immunity_type)) || HAS_TRAIT(loc_to_check, TRAIT_WEATHER_IMMUNE))
-			return
-		loc_to_check = loc_to_check.loc
-
 	return TRUE
 
 /datum/particle_weather/proc/process_mob_effect(mob/living/L, delta_time)

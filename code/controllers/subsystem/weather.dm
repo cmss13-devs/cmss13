@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(weather_conditions)
 	var/datum/weather_effect/weather_special_effect
 	var/obj/weather_effect
 
-/datum/controller/subsystem/particle_weather/stat_entry(msg)
+/datum/controller/subsystem/weather_conditions/stat_entry(msg)
 	for()
 	if(running_weather?.running)
 		var/time_left = COOLDOWN_SECONDSLEFT(running_weather, time_left)
@@ -33,14 +33,14 @@ SUBSYSTEM_DEF(weather_conditions)
 		msg = "P:No event"
 	return ..()
 
-/datum/controller/subsystem/particle_weather/Initialize(start_timeofday)
+/datum/controller/subsystem/weather_conditions/Initialize(start_timeofday)
 	for(var/i in subtypesof(/datum/particle_weather))
 		var/datum/particle_weather/particle_weather = new i
 		if(particle_weather.target_trait in SSmapping.configs[GROUND_MAP].weather)
 			elligble_weathers[i] = particle_weather.probability
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/particle_weather/fire()
+/datum/controller/subsystem/weather_conditions/fire()
 	if(!running_weather && next_hit && COOLDOWN_FINISHED(src, next_weather_start))
 		run_weather(next_hit)
 		CHECK_TICK
@@ -68,7 +68,7 @@ SUBSYSTEM_DEF(weather_conditions)
 					turf.apply_weather_effect(weather_special_effect)
 				CHECK_TICK
 
-/datum/controller/subsystem/particle_weather/proc/run_weather(datum/particle_weather/weather_datum_type, force = 0)
+/datum/controller/subsystem/weather_conditions/proc/run_weather(datum/particle_weather/weather_datum_type, force = 0)
 	if(running_weather)
 		if(force)
 			running_weather.end()
@@ -84,10 +84,10 @@ SUBSYSTEM_DEF(weather_conditions)
 	running_weather = weather_datum_type
 	running_weather.start()
 
-/datum/controller/subsystem/particle_weather/proc/make_eligible(datum/particle_weather/possible_weather, probability = 10)
+/datum/controller/subsystem/weather_conditions/proc/make_eligible(datum/particle_weather/possible_weather, probability = 10)
 	elligble_weathers[possible_weather] = probability
 
-/datum/controller/subsystem/particle_weather/proc/get_weather_effect()
+/datum/controller/subsystem/weather_conditions/proc/get_weather_effect()
 	if(!weather_effect)
 		weather_effect = new /obj()
 		weather_effect.particles = particle_effect
@@ -95,11 +95,11 @@ SUBSYSTEM_DEF(weather_conditions)
 		weather_effect.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	return weather_effect
 
-/datum/controller/subsystem/particle_weather/proc/set_particle_effect(particles/P)
+/datum/controller/subsystem/weather_conditions/proc/set_particle_effect(particles/P)
 	particle_effect = P
 	weather_effect.particles = particle_effect
 
-/datum/controller/subsystem/particle_weather/proc/stop_weather()
+/datum/controller/subsystem/weather_conditions/proc/stop_weather()
 	QDEL_NULL(weather_special_effect)
 	QDEL_NULL(running_weather)
 	QDEL_NULL(particle_effect)

@@ -78,7 +78,7 @@
 	if(!dirt_amt)
 		var/turf/turf = target
 		var/turfdirt = turf.get_dirt_type()
-		if(target.snow)
+		if(turf.snow)
 			turfdirt = DIRT_TYPE_SNOW
 		if(turfdirt)
 			to_chat(user, SPAN_NOTICE("You start digging."))
@@ -88,14 +88,14 @@
 				return
 
 			var/transfer_amount = dirt_amt_per_dig
-			if(target.snow)
-				snow.changing_layer(snow.bleed_layer - transfer_amount)
+			if(turf.snow)
+				turf.snow.changing_layer(turf.snow.bleed_layer - transfer_amount)
 			else if(istype(turf, /turf/open))
-				var/turf/open/OT = TURF
+				var/turf/open/OT = turf
 				if(OT.bleed_layer)
 					transfer_amount = min(OT.bleed_layer, dirt_amt_per_dig)
-					if(istype(TURF, /turf/open/auto_turf))
-						var/turf/open/auto_turf/AT = TURF
+					if(istype(turf, /turf/open/auto_turf))
+						var/turf/open/auto_turf/AT = turf
 						AT.changing_layer(AT.bleed_layer - transfer_amount)
 					else
 						OT.bleed_layer -= transfer_amount

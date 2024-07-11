@@ -221,7 +221,7 @@
 		if(!istype(turf))
 			continue
 		var/is_weedable = turf.is_weedable()
-		if(!turf.weedable || turf.snow)
+		if(!is_weedable || turf.snow)
 			continue
 		if(!spread_on_semiweedable && is_weedable < FULLY_WEEDABLE)
 			continue

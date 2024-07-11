@@ -188,7 +188,7 @@
 		DO_SOMETHING_IF_DEBUGGING_SHADOWS(culling_time += TICK_USAGE_TO_MS(temp_timer))
 		DO_SOMETHING_IF_DEBUGGING_SHADOWS(temp_timer = TICK_USAGE)
 
-		if(!LAZYLEN(culledlinegroup))
+		if(!length(culledlinegroup))
 			continue
 
 		var/list/triangles = calculate_triangle_vertices(culledlinegroup)

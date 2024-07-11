@@ -1,5 +1,6 @@
 ///from /turf/Entered
 #define COMSIG_MOVABLE_TURF_ENTERED "movable_turf_entered"
+#define COMSIG_MOVABLE_TURF_EXITED "movable_turf_exited"
 
 #define COMSIG_TURF_ENTER "turf_enter"
 	#define COMPONENT_TURF_ALLOW_MOVEMENT (1<<0)

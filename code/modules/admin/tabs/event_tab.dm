@@ -1020,11 +1020,11 @@
 
 	if(SSweather_conditions.next_hit)
 		switch(tgui_alert(src, "A next weather event is already in delay! What to do?", "Confirm", list("Start", "Change", "Cancel"), 10 SECONDS))
-			if(action == "Cancel")
+			if("Cancel")
 				return
-			if(action == "Start")
+			if("Start")
 				if(SSweather_conditions.next_hit)
-					SSweather_conditions.run_weather(next_hit, TRUE)
+					SSweather_conditions.run_weather(SSweather_conditions.next_hit, TRUE)
 				return
 
 	var/weather_type = tgui_input_list(src, "Select a weather event to start", "Weather Selector", sort_list(subtypesof(/datum/particle_weather), GLOBAL_PROC_REF(cmp_typepaths_asc)))
@@ -1033,7 +1033,7 @@
 
 	if(tgui_alert(src, "A weather event is already in progress! End it?", "Confirm", list("Instant", "Delayed"), 10 SECONDS) == "Delayed")
 		SSweather_conditions.next_hit = new weather_type()
-		COOLDOWN_START(src, next_weather_start, rand(-3000, 3000) + initial(next_hit.weather_duration_upper) / 5)
+		COOLDOWN_START(SSweather_conditions, SSweather_conditions.next_weather_start, rand(-3000, 3000) + initial(SSweather_conditions.next_hit.weather_duration_upper) / 5)
 	else
 		SSweather_conditions.run_weather(new weather_type(), TRUE)
 

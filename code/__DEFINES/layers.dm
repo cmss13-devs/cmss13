@@ -218,6 +218,9 @@
 /// NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
 #define LOWEST_EVER_PLANE -200
 
+#define WEATHER_OVERLAY_PLANE -80
+#define WEATHER_RENDER_TARGET "*WEATHER_OVERLAY_PLANE"
+
 /// Floor plane, self explanatory. Used for Ambient Occlusion filter
 #define FLOOR_PLANE -7
 /// Game Plane, where most of the game objects reside

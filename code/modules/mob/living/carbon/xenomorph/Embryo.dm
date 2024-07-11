@@ -90,7 +90,7 @@
 			if(stage < 5)
 				counter += 0.4 * hive.larva_gestation_multiplier * delta_time
 			if(stage == 4) // Stasis affects late-stage less
-				counter += 0.2 * hive.larva_gestation_multiplier * delta_time
+				counter += 0.04 * hive.larva_gestation_multiplier * delta_time
 		else
 			if(stage < 5)
 				counter += 1 * hive.larva_gestation_multiplier * delta_time

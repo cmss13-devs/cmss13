@@ -26,6 +26,11 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
+
+	var/turf_flags = TURF_WEATHER_PROOF|TURF_EFFECT_AFFECTABLE
+	var/ceiling_status = NO_FLAGS
+
+	var/base_icon = null
 	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
 	var/can_bloody = TRUE //Can blood spawn on this turf?
 	var/list/linked_pylons
@@ -46,8 +51,6 @@
 	var/changing_turf = FALSE
 	var/chemexploded = FALSE // Prevents explosion stacking
 
-	var/turf_flags = NO_FLAGS
-
 	/// Whether we've broken through the ceiling yet
 	var/ceiling_debrised = FALSE
 
@@ -62,6 +65,15 @@
 	var/directional_opacity = NONE
 	///Lazylist of movable atoms providing opacity sources.
 	var/list/atom/movable/opacity_sources
+
+	///Blending
+	var/list/wall_connections = list("0", "0", "0", "0")
+	var/neighbors_list = 0
+	var/special_icon = TRUE
+	var/list/blend_turfs = list()
+	var/list/noblend_turfs = list() //Turfs to avoid blending with
+	var/list/blend_objects = list() // Objects which to blend with
+	var/list/noblend_objects = list() //Objects to avoid blending with (such as children of listed blend objects.
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
@@ -135,10 +147,7 @@
 	. = ..()
 
 /turf/ex_act(severity)
-	return 0
-
-/turf/proc/update_icon() //Base parent. - Abby
-	return
+	return FALSE
 
 /// Call to move a turf from its current area to a new one
 /turf/proc/change_area(area/old_area, area/new_area)
@@ -394,6 +403,8 @@
 
 	var/pylons = linked_pylons
 
+	var/old_ceiling_status = ceiling_status
+
 	var/old_weeds = weeds
 	var/old_snow = snow
 
@@ -424,6 +435,8 @@
 
 	W.linked_pylons = pylons
 
+	W.ceiling_status = old_ceiling_status
+
 	W.weeds = old_weeds
 	W.snow = old_snow
 
@@ -451,6 +464,7 @@
 
 	if(W.directional_opacity != old_directional_opacity)
 		W.reconsider_lights()
+		W.reconsider_sunlight()
 
 	var/area/thisarea = get_area(W)
 	if(thisarea.lighting_effect)
@@ -873,3 +887,35 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T
+
+/turf/proc/on_atom_created(atom/created_atom)
+	return
+
+/turf/proc/handle_transpare_turf(is_openspace)
+/* FUTURE
+	layer = OPENSPACE_LAYER
+	if(is_openspace)
+		plane = OPENSPACE_PLANE
+	else
+		plane = TRANSPARENT_FLOOR_PLANE
+
+	var/turf/below_turf = below()
+	if(below_turf)
+		vis_contents += below_turf
+	update_multi_z()
+
+///Updates the viscontents or underlays below this tile.
+/turf/proc/update_multi_z()
+	var/turf/below_turf = below()
+	if(!below_turf)
+		vis_contents.Cut()
+		var/turf/path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || /turf/open/space
+		if(!ispath(path))
+			path = text2path(path)
+			if(!ispath(path))
+				warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
+				path = /turf/open/space
+		var/mutable_appearance/underlay_appearance = mutable_appearance(initial(path.icon), initial(path.icon_state), layer = TURF_LAYER-0.02, plane = PLANE_SPACE)
+		underlay_appearance.appearance_flags = RESET_ALPHA | RESET_COLOR
+		underlays += underlay_appearance
+*/

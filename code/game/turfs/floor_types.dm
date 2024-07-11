@@ -765,6 +765,7 @@
 	desc = "There seems to be an awful lot of machinery down below..."
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
+	turf_flags = TURF_WEATHER_PROOF
 
 /turf/open/floor/almayer/empty/is_weedable()
 	return NOT_WEEDABLE
@@ -1027,7 +1028,8 @@
 /turf/open/floor/roof/ship_hull
 	icon = 'icons/turf/roofs/roof_ship.dmi'
 	name = "hull"
-	turf_flags = TURF_MULTIZ|TURF_WEATHER_PROOF|TURF_EFFECT_AFFECTABLE|TURF_HULL
+	turf_flags = TURF_WEATHER_PROOF|TURF_EFFECT_AFFECTABLE
+	hull_floor = TRUE
 
 /turf/open/floor/roof/ship_hull/lab
 	icon = 'icons/turf/roofs/roof_lab_ship.dmi'

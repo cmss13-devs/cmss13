@@ -177,6 +177,7 @@
 /turf/open/desert/desert_shore
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shore1"
+	turf_flags = TURF_WEATHER_PROOF
 	var/toxic = 0
 	supports_surgery = FALSE
 

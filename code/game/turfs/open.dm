@@ -154,6 +154,7 @@
 	name = "void"
 	icon = 'icons/turf/floors/space.dmi'
 	icon_state = "black"
+	turf_flags = TURF_WEATHER_PROOF
 	mouse_opacity = FALSE
 	can_bloody = FALSE
 	supports_surgery = FALSE
@@ -166,6 +167,7 @@
 	return NOT_WEEDABLE
 
 /turf/open/river
+	turf_flags = TURF_WEATHER_PROOF
 	can_bloody = FALSE
 	supports_surgery = FALSE
 
@@ -359,6 +361,7 @@
 /turf/open/beach
 	name = "Beach"
 	icon = 'icons/turf/floors/beach.dmi'
+	turf_flags = TURF_WEATHER_PROOF
 	supports_surgery = FALSE
 
 /turf/open/beach/Entered(atom/movable/AM)
@@ -627,6 +630,7 @@
 /turf/open/gm/river
 	name = "river"
 	icon_state = "seashallow"
+	turf_flags = TURF_WEATHER_PROOF
 	can_bloody = FALSE
 	var/icon_overlay = "riverwater"
 	var/covered = 0
@@ -648,8 +652,8 @@
 	..()
 	update_overlays()
 
-/turf/open/gm/river/proc/update_overlays()
-	overlays.Cut()
+/turf/open/gm/river/update_overlays()
+	. = ..()
 	if(no_overlay)
 		return
 	if(covered)
@@ -798,6 +802,7 @@
 /turf/open/gm/coast
 	name = "coastline"
 	icon_state = "beach"
+	turf_flags = TURF_WEATHER_PROOF
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
 
@@ -846,6 +851,7 @@
 /turf/open/gm/riverdeep
 	name = "river"
 	icon_state = "seadeep"
+	turf_flags = TURF_WEATHER_PROOF
 	can_bloody = FALSE
 	baseturfs = /turf/open/gm/riverdeep
 	supports_surgery = FALSE
@@ -858,6 +864,7 @@
 	overlays += image("icon"='icons/turf/ground_map.dmi',"icon_state"="water","layer"=MOB_LAYER+0.1)
 
 /turf/open/gm/river/no_overlay
+	turf_flags = TURF_WEATHER_PROOF
 	no_overlay = TRUE
 	supports_surgery = FALSE
 
@@ -884,6 +891,7 @@
 	desc = "It's a long way down to the ocean from here."
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "seadeep"
+	turf_flags = TURF_WEATHER_PROOF
 	can_bloody = FALSE
 	supports_surgery = FALSE
 
@@ -1129,6 +1137,7 @@
 	icon = 'icons/turf/floors//beach.dmi'
 	icon_state = "water"
 	icon_spawn_state = "water"
+	turf_flags = TURF_WEATHER_PROOF
 	can_bloody = FALSE
 	supports_surgery = FALSE
 

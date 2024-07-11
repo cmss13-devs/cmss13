@@ -29,6 +29,7 @@
 // Used to get a scaled lumcount.
 /turf/proc/get_lumcount(minlum = 0, maxlum = 1)
 	var/totallums = 0
+	var/totalSunFalloff = 0
 	if(static_lighting_object)
 		var/datum/static_lighting_corner/L
 		L = lighting_corner_NE

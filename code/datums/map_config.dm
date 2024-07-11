@@ -65,6 +65,12 @@
 
 	var/nightmare_path
 
+	var/list/map_day_night_modificator = list()
+	var/list/custom_day_night_colors = list()
+	var/custom_time_length = list()
+
+	var/list/weather = list()
+
 	/// If truthy this is config for a round overridden map: search for override maps in data/, instead of using a path in maps/
 	var/override_map
 
@@ -347,12 +353,6 @@
 	if(json["infection_announce_text"])
 		infection_announce_text = json["infection_announce_text"]
 
-	if(json["weather_holder"])
-		weather_holder = text2path(json["weather_holder"])
-		if(!weather_holder)
-			log_world("map_config weather_holder is not a proper typepath!")
-			return
-
 	if(json["map_item_type"])
 		map_item_type = text2path(json["map_item_type"])
 		if(!map_item_type)
@@ -389,6 +389,29 @@
 		for(var/a in subtypesof(/datum/game_mode))
 			var/datum/game_mode/G = a
 			gamemodes += initial(G.config_tag)
+
+	if(islist(json["map_day_night_modificator"]))
+		if(!islist(json["map_day_night_modificator"]))
+			log_world("map_config custom day/night modificator is not a list!")
+			return
+		map_day_night_modificator = json["map_day_night_modificator"]
+
+	if(islist(json["custom_day_night_colors"]))
+		if(!islist(json["custom_day_night_colors"]))
+			log_world("map_config custom day/night colors is not a list!")
+			return
+		custom_day_night_colors = json["custom_day_night_colors"]
+
+	if(json["custom_time_length"])
+		custom_time_length = json["custom_time_length"]
+	else
+		custom_time_length = 24 HOURS
+
+	if(islist(json["weather"]))
+		weather = json["weather"]
+	else if(!isnull(json["weather"]))
+		log_world("map_config weather is not a list!")
+		return
 
 	defaulted = FALSE
 	return TRUE

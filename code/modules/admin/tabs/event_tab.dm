@@ -1033,7 +1033,7 @@
 
 	if(tgui_alert(src, "A weather event is already in progress! End it?", "Confirm", list("Instant", "Delayed"), 10 SECONDS) == "Delayed")
 		SSweather_conditions.next_hit = new weather_type()
-		COOLDOWN_START(SSweather_conditions, SSweather_conditions.next_weather_start, rand(-3000, 3000) + initial(SSweather_conditions.next_hit.weather_duration_upper) / 5)
+		COOLDOWN_START(SSweather_conditions, next_weather_start, rand(-3000, 3000) + initial(SSweather_conditions.next_hit.weather_duration_upper) / 5)
 	else
 		SSweather_conditions.run_weather(new weather_type(), TRUE)
 

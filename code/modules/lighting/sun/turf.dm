@@ -217,13 +217,20 @@ Sunlight System
 		skyvisible = FALSE
 		weathervisible = FALSE
 	else
+		//SILENCE FIX FOR MULTIZ
+		var/area/A = get_area(src)
+		if(A.ceiling < CEILING_GLASS)
+			skyvisible &= ceiling.ceiling_status & SKYVISIBLE
+			weathervisible &= ceiling.ceiling_status & WEATHERVISIBLE
 		// EVERY turf must be transparent for sunlight - so &=
 		// ANY turf must be closed for TURF_WEATHER_PROOF - so |=
+/*
 		var/turf/ceiling = get_step_multiz(src, UP)
 		if(ceiling)
 			ceiling.update_ceiling_status(TRUE) //Pass TRUE because we are now acting as a ceiling
 			skyvisible &= ceiling.ceiling_status & SKYVISIBLE
 			weathervisible &= ceiling.ceiling_status & WEATHERVISIBLE
+*/
 
 		ceiling_status = NO_FLAGS
 		if(skyvisible)
@@ -405,9 +412,9 @@ Sunlight System
 	// if(!mapload)
 	// 	log_mapping("[src] spawned outside of mapload!")
 	// 	return
-	if(isturf(loc) && !get_step_multiz(loc, UP))
-		var/turf/T = loc
-		T.pseudo_roof = pseudo_roof
+	if(isturf(loc))// && !get_step_multiz(loc, UP))
+		var/turf/our_turf = loc
+		our_turf.pseudo_roof = pseudo_roof
 
 
 

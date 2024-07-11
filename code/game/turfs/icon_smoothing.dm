@@ -19,6 +19,16 @@
 
 	return
 
+/turf/proc/update_overlays()
+	if(QDELETED(src))
+		return
+
+	SHOULD_CALL_PARENT(TRUE)
+	. = list()
+
+	if(turf_flags & TURF_WEATHER)
+		overlays += SSsunlighting.get_weather_overlay()
+
 /turf/proc/update_connections(propagate = 0)
 	var/list/turf_dirs = list()
 

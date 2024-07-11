@@ -661,7 +661,7 @@
 
 	var/turf/target_turf = get_turf(A)
 
-	if(!target_turf || T.is_weedable() < FULLY_WEEDABLE || target_turf.snow || (target_turf.z != X.z))
+	if(!target_turf || target_turf.is_weedable() < FULLY_WEEDABLE || target_turf.snow || (target_turf.z != X.z))
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
 

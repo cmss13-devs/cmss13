@@ -6980,7 +6980,7 @@
 	layer = 1
 	},
 /obj/structure/machinery/big_computers/computerblack/computer3,
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/meridian/meridian_factory)
 "bgU" = (
 /obj/effect/decal/warning_stripes{
@@ -8646,6 +8646,9 @@
 /obj/item/shard,
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_11"
+	},
+/obj/structure/curtain/red{
+	pixel_x = 32
 	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -11385,9 +11388,6 @@
 	pixel_x = 4;
 	pixel_y = 3;
 	layer = 4.12
-	},
-/obj/structure/curtain/red{
-	pixel_y = 32
 	},
 /turf/open/floor/hybrisa/carpet/carpetred,
 /area/lv759/indoors/casino)
@@ -15670,6 +15670,9 @@
 	},
 /obj/item/shard,
 /obj/item/trash/cigbutt,
+/obj/structure/curtain/red{
+	pixel_x = 32
+	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "cBP" = (
@@ -19090,7 +19093,7 @@
 /obj/item/storage/toolbox/mechanical{
 	pixel_y = 6
 	},
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/meridian/meridian_factory)
 "dck" = (
 /obj/structure/machinery/floodlight,
@@ -20878,9 +20881,6 @@
 	pixel_x = -1
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/curtain/red{
-	pixel_x = -32
-	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform4{
 	dir = 4;
 	icon = 'icons/obj/structures/props/platforms.dmi';
@@ -22200,7 +22200,7 @@
 	layer = 1
 	},
 /obj/structure/machinery/autolathe,
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/meridian/meridian_factory)
 "dCf" = (
 /obj/structure/machinery/big_computers/computerblack/computer1,
@@ -33495,6 +33495,9 @@
 	layer = 4
 	},
 /obj/effect/hybrisa/decal/dirt,
+/obj/structure/curtain/red{
+	pixel_x = -32
+	},
 /turf/open/floor/hybrisa/metal/grated,
 /area/lv759/outdoors/colony_streets/central_streets)
 "fvC" = (
@@ -40641,7 +40644,7 @@
 /obj/item/clothing/head/helmet/hybrisa/kelland_mining_helmet,
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland,
 /obj/effect/spawner/random/technology_scanner,
-/obj/effect/spawner/random/goggles/midchance,
+/obj/effect/spawner/random/goggles/highchance,
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/south)
 "gGc" = (
@@ -43360,7 +43363,7 @@
 	color = "#848484"
 	},
 /obj/effect/spawner/random/tool,
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/meridian/meridian_factory)
 "hdh" = (
 /obj/structure/surface/table,
@@ -48293,7 +48296,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "hRV" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
-/turf/open/floor/hybrisa/metal/zbrownfloor1/east,
+/turf/open/floor/hybrisa/metal/zbrownfloor2/southwest,
 /area/lv759/indoors/meridian/meridian_foyer)
 "hRY" = (
 /obj/structure/catwalk/prison,
@@ -54358,7 +54361,7 @@
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/dark,
-/turf/open/floor/hybrisa/metal/zbrownfloor1/east,
+/turf/open/floor/hybrisa/metal/zbrownfloor2/east,
 /area/lv759/indoors/meridian/meridian_foyer)
 "iSJ" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer3,
@@ -56087,6 +56090,9 @@
 /obj/structure/prop/cash_register/off{
 	pixel_y = 6;
 	layer = 4
+	},
+/obj/structure/curtain/red{
+	pixel_y = -32
 	},
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/lv759/indoors/casino)
@@ -63559,7 +63565,7 @@
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble2{
 	pixel_x = -4
 	},
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/meridian/meridian_factory)
 "ktn" = (
 /obj/item/trash/cigbutt{
@@ -69205,7 +69211,7 @@
 	color = "#848484"
 	},
 /obj/effect/spawner/random/tool,
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/meridian/meridian_factory)
 "lnP" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -74927,9 +74933,6 @@
 /obj/effect/hybrisa/decal/gold/line4{
 	pixel_x = -1
 	},
-/obj/structure/curtain/red{
-	pixel_x = -32
-	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/lv759/indoors/casino)
 "mkj" = (
@@ -77340,7 +77343,7 @@
 	dir = 1;
 	layer = 1
 	},
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/meridian/meridian_factory)
 "mET" = (
 /obj/structure/blocker/forcefield/vehicles,
@@ -81271,7 +81274,7 @@
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 30
 	},
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/meridian/meridian_factory)
 "npf" = (
 /obj/structure/disposalpipe/tagger{
@@ -93278,7 +93281,7 @@
 	color = "#848484"
 	},
 /obj/item/stack/sheet/metal,
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/meridian/meridian_factory)
 "pmi" = (
 /obj/structure/cargo_container/hd/mid,
@@ -98037,6 +98040,9 @@
 	pixel_y = 5
 	},
 /obj/item/trash/cigbutt,
+/obj/structure/curtain/red{
+	pixel_y = -32
+	},
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/lv759/indoors/casino)
 "pZF" = (
@@ -105202,9 +105208,6 @@
 /obj/structure/prop/hybrisa/misc/slotmachine{
 	pixel_x = 6;
 	layer = 4.12
-	},
-/obj/structure/curtain/red{
-	pixel_y = 32
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/casino)
@@ -112721,9 +112724,6 @@
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/lv759/indoors/meridian/meridian_office)
 "ssw" = (
-/obj/structure/curtain/red{
-	pixel_x = 32
-	},
 /obj/effect/hybrisa/decal/gold/line1{
 	pixel_y = -1
 	},
@@ -112733,6 +112733,9 @@
 /obj/structure/bed/sofa/hybrisa/sofa/black{
 	icon_state = "couch_vet1_red";
 	pixel_x = 14
+	},
+/obj/structure/curtain/red{
+	pixel_x = 32
 	},
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/lv759/indoors/casino)
@@ -112918,9 +112921,6 @@
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
 /area/lv759/indoors/apartment/westentertainment)
 "stn" = (
-/obj/structure/curtain/red{
-	pixel_x = 32
-	},
 /obj/effect/hybrisa/decal/gold/line2{
 	pixel_x = 1
 	},
@@ -112928,6 +112928,9 @@
 	icon_state = "couch_vet2_red";
 	pixel_x = 14;
 	layer = 2.9
+	},
+/obj/structure/curtain/red{
+	pixel_x = 32
 	},
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/lv759/indoors/casino)
@@ -117277,9 +117280,6 @@
 	icon_state = "stone";
 	color = "#c59f52"
 	},
-/obj/structure/curtain/red{
-	pixel_x = 32
-	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/lv759/indoors/casino)
 "tfa" = (
@@ -119148,6 +119148,9 @@
 	layer = 4
 	},
 /obj/effect/hybrisa/decal/dirt,
+/obj/structure/curtain/red{
+	pixel_x = -32
+	},
 /turf/open/floor/hybrisa/metal/grated,
 /area/lv759/outdoors/colony_streets/central_streets)
 "tun" = (
@@ -121234,7 +121237,7 @@
 	layer = 1
 	},
 /obj/structure/machinery/big_computers/computerblack/computer5,
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/meridian/meridian_factory)
 "tOs" = (
 /turf/open/floor/strata/multi_tiles/west,
@@ -128710,9 +128713,6 @@
 /obj/effect/hybrisa/decal/gold/line1{
 	pixel_y = -1
 	},
-/obj/structure/curtain/red{
-	pixel_x = 32
-	},
 /obj/structure/bed/sofa/hybrisa/sofa/black{
 	icon_state = "couch_vet3_red";
 	pixel_x = 14;
@@ -130668,7 +130668,7 @@
 	color = "#848484"
 	},
 /obj/item/clothing/suit/storage/hazardvest/blue,
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/meridian/meridian_factory)
 "vrl" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -131819,7 +131819,7 @@
 	pixel_x = 1;
 	pixel_y = 10
 	},
-/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/meridian/meridian_factory)
 "vBh" = (
 /obj/structure/surface/table/reinforced,

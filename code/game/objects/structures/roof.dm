@@ -94,7 +94,7 @@
 
 /obj/effect/roof_node/Destroy(force)
 	. = ..()
-	link_master = null
+	linked_master = null
 
 
 

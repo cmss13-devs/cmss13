@@ -117,7 +117,7 @@
 			offset_target = target // Welp the offsetting failed so...
 		crash_site.forceMove(offset_target)
 		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully engaged and destroyed.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
-		xeno_announcement(SPAN_XENOANNOUNCE("The Almayer's AA weapons are spinning up! OH NO! LOOK OUT!"), "everything", XENO_HIJACK_ANNOUNCE)
+		xeno_announcement(SPAN_XENOANNOUNCE("High caliber tracers begin ripping past the dropship!"), "everything", XENO_HIJACK_ANNOUNCE)
 		target_ship_section = new_target_ship_section
 		// TODO mobs not alerted
 		for(var/area/internal_area in shuttle.shuttle_areas)

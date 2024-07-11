@@ -2690,14 +2690,6 @@
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/prison/red/north,
 /area/lv759/indoors/wy_security/checkpoint_central)
-"axe" = (
-/obj/structure/window/framed/hybrisa/colony/office,
-/obj/structure/window/framed/hybrisa/colony/office,
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/weyyu_office/pressroom)
 "axf" = (
 /obj/structure/machinery/conveyor{
 	dir = 8;
@@ -49235,18 +49227,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
-"iap" = (
-/obj/structure/platform/strata/metal,
-/obj/structure/stairs{
-	color = "#a6aeab";
-	dir = 4
-	},
-/obj/structure/stairs{
-	color = "#a6aeab";
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/spaceport/docking_bay_2)
 "iat" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -56527,10 +56507,6 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "jkL" = (
-/obj/structure/window/reinforced{
-	dir = 1;
-	layer = 2
-	},
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2
@@ -81177,11 +81153,6 @@
 	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
 	id = "hybrisa_research_labs_lockdown"
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
-	dir = 4;
-	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
-	id = "hybrisa_research_labs_lockdown"
-	},
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/wy_research_complex/xenoarcheology)
 "nnZ" = (
@@ -89715,9 +89686,6 @@
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 8
 	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -104542,20 +104510,6 @@
 	},
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/wy_research_complex/mainlabs)
-"reA" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/stairs{
-	color = "#a6aeab";
-	dir = 1
-	},
-/obj/structure/stairs{
-	color = "#a6aeab";
-	dir = 1
-	},
-/turf/closed/wall/hybrisa/research/reinforced/hull,
-/area/lv759/oob)
 "reC" = (
 /obj/item/paper/crumpled,
 /obj/effect/hybrisa/decal/trash{
@@ -108068,10 +108022,6 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
 /area/lv759/indoors/landing_zone_1/flight_control_room)
 "rGw" = (
-/obj/structure/stairs{
-	color = "#a6aeab";
-	dir = 8
-	},
 /obj/structure/stairs{
 	color = "#a6aeab";
 	dir = 8
@@ -121110,11 +121060,6 @@
 	name = "reinforced metal wall"
 	},
 /area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
-"tMQ" = (
-/obj/structure/window/framed/hybrisa/marshalls/reinforced,
-/obj/structure/window/framed/hybrisa/marshalls/reinforced,
-/turf/open/floor/plating,
-/area/lv759/indoors/colonial_marshals/prisoners_foyer)
 "tMS" = (
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/spaceport/heavyequip)
@@ -159223,7 +159168,7 @@ pUl
 jqr
 xjm
 rGg
-reA
+lhG
 wOg
 wyE
 mXK
@@ -159531,7 +159476,7 @@ oAg
 oAg
 xzX
 uZx
-iap
+vdg
 oAg
 oAg
 oAg
@@ -163344,7 +163289,7 @@ lvm
 mtw
 mtw
 cPd
-axe
+cPd
 juu
 juu
 cPd
@@ -180801,7 +180746,7 @@ iEi
 qqY
 wrv
 kIi
-tMQ
+gRg
 tER
 ceO
 qqY

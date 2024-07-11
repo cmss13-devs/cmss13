@@ -102,7 +102,7 @@
 
 /obj/item/clothing/accessory/stethoscope
 	name = "stethoscope"
-	desc = "An outdated medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
+	desc = "An outdated, but still useful, medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
 	icon_state = "stethoscope"
 
 /obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/M, mob/living/user)
@@ -110,34 +110,53 @@
 		if(user.a_intent == INTENT_HELP)
 			var/body_part = parse_zone(user.zone_selected)
 			if(body_part)
-				var/their = "their"
-				switch(M.gender)
-					if(MALE) their = "his"
-					if(FEMALE) their = "her"
-
-				var/sound = "pulse"
-				var/sound_strength
-
+				var/sound = "try to listen closely, but you are unable to hear any useful sounds"
 				if(M.stat == DEAD || (M.status_flags&FAKEDEATH))
-					sound_strength = "cannot hear"
-					sound = "anything"
+					sound = "can't hear anything at all, they must have kicked the bucket"
 				else
-					sound_strength = "hear a weak"
 					switch(body_part)
 						if("chest")
-							if(M.oxyloss < 50)
-								sound_strength = "hear a healthy"
-							sound = "pulse and respiration"
+							if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC)) // only medical personnel can take advantage of it
+								if(!ishuman(M))
+									return // not a human; only humans have the variable internal_organs_by_name // "cast" it a human type since we confirmed it is one
+								if(isnull(M.internal_organs_by_name))
+									return // they have no organs somehow
+								var/datum/internal_organ/heart/heart = M.internal_organs_by_name["heart"]
+								if(heart)
+									switch(heart.organ_status)
+										if(ORGAN_BRUISED)
+											sound = "hear <font color='yellow'>deviant heart beating patterns</font>, result of possible <font color='yellow'>heart damage</font>"
+										if(ORGAN_BROKEN)
+											sound = "hear <font color='red'>irregular and additional heart beating patterns</font>, probably caused by impaired blood pumping, [M.p_their()] heart is probably <font color='red'>failing</font>"
+										else
+											sound = "hear <font color='green'>normal heart beating patterns</font>, [M.p_their()] heart is certainly <font color='green'>healthy</font>"
+								var/datum/internal_organ/lungs/lungs = M.internal_organs_by_name["lungs"]
+								if(lungs)
+									switch(lungs.organ_status)
+										if(ORGAN_BRUISED)
+											if(sound)
+												sound += ". You also hear <font color='yellow'>unusual respiration sounds</font> and a difficulty to breath, result of possible <font color='yellow'>lung damage</font>"
+											else
+												sound += "hear <font color='yellow'>abnormal respiration sounds</font>, result of possible <font color='yellow'>lung damage</font>"
+										if(ORGAN_BROKEN)
+											if(sound)
+												sound += ". You also <font color='red'>barely hear respiration sounds</font> and a lot of difficulty to breath, [M.p_their()] lungs are probably <font color='red'>failing</font>"
+											else
+												sound += "<font color='red'>barely hear respiration sounds</font>,  [M.p_their()] lungs are probably <font color='red'>failing</font>"
+										else
+											if(sound)
+												sound += ". You hear <font color='green'>normal respiration sounds</font> aswell, that means [M.p_their()] lungs are possibly <font color='green'>healthy</font>"
+											else
+												sound += "hear <font color='green'>normal respiration sounds</font>, that means lungs [M.p_their()] are possibly <font color='green'>healthy</font>"
+								else
+									sound = "can't hear. Really, anything at all, how weird"
+							else
+								sound = "hear a lot of sounds... it's quite hard to distinguish, really"
 						if("eyes","mouth")
-							sound_strength = "cannot hear"
-							sound = "anything"
-						else
-							sound_strength = "hear a weak"
-
-				user.visible_message("[user] places [src] against [M]'s [body_part] and listens attentively.", "You place [src] against [their] [body_part]. You [sound_strength] [sound].")
+							sound = "can't hear anything. Maybe that isn't the smartest idea"
+				user.visible_message("[user] places [src] against [M]'s [body_part] and listens attentively.", "You place [src] against [M.p_their()] [body_part] and... you [sound].")
 				return
 	return ..(M,user)
-
 
 //Medals
 /obj/item/clothing/accessory/medal

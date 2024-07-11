@@ -100,37 +100,40 @@
 	else
 		..()
 
-/obj/item/device/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
+/obj/item/device/flashlight/attack(mob/living/carbon/human/M as mob, mob/living/user as mob)
 	add_fingerprint(user)
 	if(on && user.zone_selected == "eyes")
 
 		if((user.getBrainLoss() >= 60) && prob(50)) //too dumb to use flashlight properly
 			return ..() //just hit them in the head
 
-		if((!ishuman(user) || SSticker) && SSticker.mode.name != "monkey") //don't have dexterity
+		if (!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey") //don't have dexterity
 			to_chat(user, SPAN_NOTICE("You don't have the dexterity to do this!"))
 			return
 
 		var/mob/living/carbon/human/H = M //mob has protective eyewear
 		if(ishuman(H) && ((H.head && H.head.flags_inventory & COVEREYES) || (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) || (H.glasses && H.glasses.flags_inventory & COVEREYES)))
-			to_chat(user, SPAN_NOTICE("You're going to need to remove that [(H.head && H.head.flags_inventory & COVEREYES) ? "helmet" : (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) ? "mask": "glasses"] first."))
+			to_chat(user, SPAN_NOTICE("You're going to need to remove [(H.head && H.head.flags_inventory & COVEREYES) ? "that helmet" : (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) ? "that mask": "those glasses"] first."))
 			return
 
 		if(M == user) //they're using it on themselves
 			M.flash_eyes()
 			M.visible_message(SPAN_NOTICE("[M] directs [src] to \his eyes."), \
-							SPAN_NOTICE("You wave the light in front of your eyes! Trippy!"))
+							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] directs [src] to [M]'s eyes."), \
 							SPAN_NOTICE("You direct [src] to [M]'s eyes."))
 
 		if(istype(M, /mob/living/carbon/human)) //robots and aliens are unaffected
-			if(M.stat == DEAD || M.sdisabilities & DISABILITY_BLIND) //mob is dead or fully blind
-				to_chat(user, SPAN_NOTICE("[M] pupils does not react to the light!"))
+			var/datum/internal_organ/eyes/eyes = M.internal_organs_by_name["eyes"]
+			var/datum/internal_organ/brain/brain = M.internal_organs_by_name["brain"]
+			if(M.stat == DEAD || M.sdisabilities & DISABILITY_BLIND || eyes.organ_status == ORGAN_BROKEN || brain.organ_status == ORGAN_BROKEN) //mob is dead, fully blind, or their eyes are
+				to_chat(user, SPAN_NOTICE("[M]'s pupils do not react to the light!"))
 			else //they're okay!
 				M.flash_eyes()
 				to_chat(user, SPAN_NOTICE("[M]'s pupils narrow."))
+				return
 	else
 		return ..()
 
@@ -147,13 +150,74 @@
 
 /obj/item/device/flashlight/pen
 	name = "penlight"
-	desc = "A pen-sized light, used by medical staff."
+	desc = "A pen-sized light, used by medical staff to check the condition of eyes, brain and cosncience of patients."
 	icon_state = "penlight"
 	item_state = ""
+	flags_equip_slot = SLOT_WAIST|SLOT_EAR|SLOT_SUIT_STORE
 	flags_atom = FPRINT|CONDUCT
 	light_range = 2
 	w_class = SIZE_TINY
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 15
+	matter = list("metal" = 10,"glass" = 5)
 	raillight_compatible = 0
+
+/obj/item/device/flashlight/pen/attack(mob/living/carbon/human/M as mob, mob/living/user as mob)
+	add_fingerprint(user)
+	if(on && user.zone_selected == "eyes")
+		if(istype(M, /mob/living/carbon/human)) //robots and aliens are unaffected
+			var/datum/internal_organ/eyes/eyes = M.internal_organs_by_name["eyes"]
+			var/datum/internal_organ/brain/brain = M.internal_organs_by_name["brain"]
+			var/reaction = "try to watch closely, but you see no difference in their eyes' reaction"
+			if(isnull(M.internal_organs_by_name))
+				reaction = "discover that indeed he has nothing to check"
+				return // they have no organs somehow
+			if(M == user) //they're using it on themselves
+				M.flash_eyes()
+				M.visible_message(SPAN_NOTICE("[M] directs [src] to \his eyes."), \
+							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
+				return
+			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+				if(eyes)
+					switch(eyes.organ_status)
+						if(ORGAN_BRUISED)
+							M.flash_eyes()
+							reaction = "notice that [M.p_their()] eyes are <font color='yellow'>reacting to the light</font>, but [M.p_their()] pupils seen to <font color='yellow'>react sluggishly and with significant delays</font>, [M.p_their()] vision is probably <font color='yellow'>impaired</font>"
+						if(ORGAN_BROKEN)
+							reaction = "notice that [M.p_their()] eyes are <font color='red'>not reacting to the light</font>, and the pupils of both eyes are <font color='red'>not constricting with the light</font> shine at all, [M.p_they()] is probably <font color='red'>blind</font>"
+						else
+							M.flash_eyes()
+							reaction = "notice that [M.p_their()] eyes and pupils are <font color='green'>normally reacting to the light</font>, [M.p_they()] is probably<font color='green'> seeing without problems</font>"
+				if(brain)
+					switch(brain.organ_status)
+						if(ORGAN_BRUISED)
+							M.flash_eyes()
+							if(reaction)
+								reaction += ". You also notice that the pupils are <font color='yellow'>not consensually constricting</font> when light is separately applied to each eye, meaning possible <font color='yellow'>brain damage</font>"
+							else
+								reaction += "notice that the pupils are <font color='yellow'>not consensually constricting</font> when light is separately applied to each eye, meaning possible <font color='yellow'>brain damage</font>"
+						if(ORGAN_BROKEN)
+							if(reaction)
+								reaction += ". You also notice that the pupils <font color='red'>have different sizes and are assymmetric</font>, [M.p_they()] possibly have <font color='red'>severe brain damage</font>"
+							else
+								reaction += "notice that the pupils have <font color='red'>different sizes and are assymmetric</font>, [M.p_they()] possibly have <font color='red'>severe brain damage</font>"
+						else
+							M.flash_eyes()
+							if(reaction)
+								reaction += ". You also notice that the pupils are <font color='green'>consensually and normally constricting</font> when light is separately applied to each eye, [M.p_their()] brain is <font color='green'>probably fine</font>"
+							else
+								reaction += "notice that the pupils are <font color='greeen'>consensually and normally constricting</font> when light is separately applied to each eye, [M.p_their()] brain is <font color='green'>probably fine</font>"
+				else
+					reaction = "can't see anything at all, weirdly enough"
+			else
+				M.flash_eyes()
+				reaction = "don't really know what you are looking for, you don't know anything about medicine"
+			user.visible_message("[user] directs [src] to [M]'s eyes.", "You point [src] to [M.p_their()] eyes to begin analysing them further and... you [reaction].")
+			return
+		else
+			return
+	else
+		return ..()
 
 /obj/item/device/flashlight/drone
 	name = "low-power flashlight"

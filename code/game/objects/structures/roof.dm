@@ -159,10 +159,12 @@
 
 
 /datum/roof_master_node/Destroy(force, ...)
-	for(var/obj/effect/roof_node/roof_node in connected_nodes)
-		roof_node.Destroy(1)
-	for(var/obj/structure/roof/roof in location)
-		roof.Destroy(1)
+	if(connected_nodes)
+		for(var/obj/effect/roof_node/roof_node in connected_nodes)
+			roof_node.Destroy(1)
+	if(connected_nodes)
+		for(var/obj/structure/roof/roof in connected_roof)
+			roof.Destroy(1)
 	. = ..()
 
 

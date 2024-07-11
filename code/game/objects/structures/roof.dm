@@ -52,7 +52,8 @@
 	mob.client.images += normal_image
 
 /obj/structure/roof/Destroy(force, ...)
-	linked_master.remove_roof(src)
+	if(linked_master)
+		linked_master.remove_roof(src)
 	for(var/icon in GLOB.player_list)
 		var/mob/mob = icon
 		mob.client.images -= normal_image

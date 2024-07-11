@@ -53,7 +53,6 @@
 
 /obj/structure/roof/Destroy()
 	linked_master.remove_roof(src)
-	linked_master = null
 	for(var/icon in GLOB.player_list)
 		var/mob/mob = icon
 		mob.client.images -= normal_image
@@ -74,7 +73,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE
-	var/datum/roof_master_node/linked_master = null
+	var/datum/roof_master_node/linked_master
 
 /obj/effect/roof_node/Crossed(atom/movable/mover, target_dir)
 	if(!linked_master)
@@ -95,7 +94,6 @@
 /obj/effect/roof_node/Destroy(force)
 	. = ..()
 	linked_master.connected_nodes -= src
-	linked_master = null
 
 
 

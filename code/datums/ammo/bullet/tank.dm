@@ -4,6 +4,8 @@
 //======
 */
 
+//Autocannon Ammo//
+
 /datum/ammo/bullet/tank/flak
 	name = "flak autocannon bullet"
 	icon_state = "autocannon"
@@ -72,3 +74,8 @@
 	for(var/mob/living/carbon/L in T)
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
+
+/datum/ammo/bullet/tank/flak/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))

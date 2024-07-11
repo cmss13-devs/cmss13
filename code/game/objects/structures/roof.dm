@@ -26,7 +26,7 @@
 	for(var/icon in GLOB.player_list)
 		add_default_image(SSdcs, icon)
 	if(lazy_nodes) //creates new node on each surounding tile if there is not one already
-		var/obj/effect/roof_node/neighbor = locate() in src.loc
+		var/obj/effect/roof_node/neighbor = locate() in loc
 		if(!neighbor)
 			neighbor = new(src.loc)
 		for(var/direction in CARDINAL_ALL_DIRS)

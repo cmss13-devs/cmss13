@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
-	icon = 'icons/obj/structures/machinery/power.dmi'
+	icon = 'icons/obj/structures/machinery/apc.dmi'
 	icon_state = "apc_mapicon"
 	anchored = TRUE
 	use_power = USE_POWER_NONE

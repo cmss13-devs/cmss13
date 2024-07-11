@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - maptweak: "Removed var edits from open turfs to fix ScrapeAway resetting the turf (e.g. xenos building resin walls) on basically all maps"
-  - maptweak: "Fixed bad dir var edits on various map"
-  - maptweak: "Fixed stacked structures on various maps"

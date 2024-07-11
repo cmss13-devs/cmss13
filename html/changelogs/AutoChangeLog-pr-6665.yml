@@ -1,4 +1,0 @@
-author: "Doubleumc"
-delete-after: True
-changes:
-  - imageadd: "adds CMP tracker sprites for all HUD options"

@@ -177,45 +177,46 @@
 				M.visible_message(SPAN_NOTICE("[M] directs [src] to \his eyes."), \
 							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
 				return
-			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-				if(eyes)
-					switch(eyes.organ_status)
-						if(ORGAN_BRUISED)
-							M.flash_eyes()
-							reaction = "notice that [M.p_their()] eyes are <font color='yellow'>reacting to the light</font>, but [M.p_their()] pupils seen to <font color='yellow'>react sluggishly and with significant delays</font>, [M.p_their()] vision is probably <font color='yellow'>impaired</font>"
-						if(ORGAN_BROKEN)
-							reaction = "notice that [M.p_their()] eyes are <font color='red'>not reacting to the light</font>, and the pupils of both eyes are <font color='red'>not constricting with the light</font> shine at all, [M.p_they()] is probably <font color='red'>blind</font>"
-						else
-							M.flash_eyes()
-							reaction = "notice that [M.p_their()] eyes and pupils are <font color='green'>normally reacting to the light</font>, [M.p_they()] is probably<font color='green'> seeing without problems</font>"
-				if(brain)
-					switch(brain.organ_status)
-						if(ORGAN_BRUISED)
-							M.flash_eyes()
-							if(reaction)
-								reaction += ". You also notice that the pupils are <font color='yellow'>not consensually constricting</font> when light is separately applied to each eye, meaning possible <font color='yellow'>brain damage</font>"
-							else
-								reaction += "notice that the pupils are <font color='yellow'>not consensually constricting</font> when light is separately applied to each eye, meaning possible <font color='yellow'>brain damage</font>"
-						if(ORGAN_BROKEN)
-							if(reaction)
-								reaction += ". You also notice that the pupils <font color='red'>have different sizes and are assymmetric</font>, [M.p_they()] possibly have <font color='red'>severe brain damage</font>"
-							else
-								reaction += "notice that the pupils have <font color='red'>different sizes and are assymmetric</font>, [M.p_they()] possibly have <font color='red'>severe brain damage</font>"
-						else
-							M.flash_eyes()
-							if(reaction)
-								reaction += ". You also notice that the pupils are <font color='green'>consensually and normally constricting</font> when light is separately applied to each eye, [M.p_their()] brain is <font color='green'>probably fine</font>"
-							else
-								reaction += "notice that the pupils are <font color='greeen'>consensually and normally constricting</font> when light is separately applied to each eye, [M.p_their()] brain is <font color='green'>probably fine</font>"
-				else
-					reaction = "can't see anything at all, weirdly enough"
+			if(M.stat == DEAD || (M.status_flags&FAKEDEATH))
+				sound = "conclude that [M.p_their()] eyes are completely lifeless, [M.p_they()] must have passed away"
 			else
-				M.flash_eyes()
-				reaction = "don't really know what you are looking for, you don't know anything about medicine"
-			user.visible_message("[user] directs [src] to [M]'s eyes.", "You point [src] to [M.p_their()] eyes to begin analysing them further and... you [reaction].")
-			return
-		else
-			return
+				if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+					if(eyes)
+						switch(eyes.organ_status)
+							if(ORGAN_BRUISED)
+								M.flash_eyes()
+								reaction = "notice that [M.p_their()] eyes are <font color='yellow'>reacting to the light</font>, but [M.p_their()] pupils seen to <font color='yellow'>react sluggishly and with significant delays</font>, [M.p_their()] vision is probably <font color='yellow'>impaired</font>"
+							if(ORGAN_BROKEN)
+								reaction = "notice that [M.p_their()] eyes are <font color='red'>not reacting to the light</font>, and the pupils of both eyes are <font color='red'>not constricting with the light</font> shine at all, [M.p_they()] is probably <font color='red'>blind</font>"
+							else
+								M.flash_eyes()
+								reaction = "notice that [M.p_their()] eyes and pupils are <font color='green'>normally reacting to the light</font>, [M.p_they()] is probably<font color='green'> seeing without problems</font>"
+					if(brain)
+						switch(brain.organ_status)
+							if(ORGAN_BRUISED)
+								M.flash_eyes()
+								if(reaction)
+									reaction += ". You also notice that the pupils are <font color='yellow'>not consensually constricting</font> when light is separately applied to each eye, meaning possible <font color='yellow'>brain damage</font>"
+								else
+									reaction += "notice that the pupils are <font color='yellow'>not consensually constricting</font> when light is separately applied to each eye, meaning possible <font color='yellow'>brain damage</font>"
+							if(ORGAN_BROKEN)
+								if(reaction)
+									reaction += ". You also notice that the pupils <font color='red'>have different sizes and are assymmetric</font>, [M.p_they()] possibly have <font color='red'>severe brain damage</font>"
+								else
+									reaction += "notice that the pupils have <font color='red'>different sizes and are assymmetric</font>, [M.p_they()] possibly have <font color='red'>severe brain damage</font>"
+							else
+								M.flash_eyes()
+								if(reaction)
+									reaction += ". You also notice that the pupils are <font color='green'>consensually and normally constricting</font> when light is separately applied to each eye, [M.p_their()] brain is <font color='green'>probably fine</font>"
+								else
+									reaction += "notice that the pupils are <font color='greeen'>consensually and normally constricting</font> when light is separately applied to each eye, [M.p_their()] brain is <font color='green'>probably fine</font>"
+					else
+					reaction = "can't see anything at all, weirdly enough"
+				else
+					M.flash_eyes()
+					reaction = "don't really know what you are looking for, you don't know anything about medicine"
+				user.visible_message("[user] directs [src] to [M]'s eyes.", "You point [src] to [M.p_their()] eyes to begin analysing them further and... you [reaction].")
+				return
 	else
 		return ..()
 

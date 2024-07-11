@@ -84,13 +84,13 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
-		if(affected_mob.in_stasis || affected_mob.bodytemperature < 170)
+		if(affected_mob.in_stasis == STASIS_IN_CRYO_CELL) //cryotube in medical bay stops growth
+			return
+		else if(affected_mob.in_stasis || affected_mob.bodytemperature < 170)
 			if(stage < 5)
-				counter += 0.33 * hive.larva_gestation_multiplier * delta_time
+				counter += 0.4 * hive.larva_gestation_multiplier * delta_time
 			if(stage == 4) // Stasis affects late-stage less
-				counter += 0.11 * hive.larva_gestation_multiplier * delta_time
-		else if(HAS_TRAIT(affected_mob, TRAIT_NESTED)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
-			counter += 1.5 * hive.larva_gestation_multiplier * delta_time //Currently twice as much, can be changed
+				counter += 0.2 * hive.larva_gestation_multiplier * delta_time
 		else
 			if(stage < 5)
 				counter += 1 * hive.larva_gestation_multiplier * delta_time

@@ -515,15 +515,6 @@
 	name = "\improper Marshal Office Prison";
 	icon_state = "door_open"
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	icon_state = "door_locked";
-	name = "\improper Marshal Office Prison"
-	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
 "qX" = (
@@ -956,21 +947,11 @@
 /turf/open/floor/plating/platingdmg1,
 /area/bigredv2/outside/marshal_office)
 "KR" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Marshal Office Prison"
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	icon_state = "door_locked";
-	name = "\improper Marshal Office Prison"
-	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
 "KY" = (

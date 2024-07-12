@@ -106,6 +106,7 @@
 	
 	if(!_check_danger())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("There is not enough danger to warrant hive buffs."))
+		return FALSE
 
 	if(!_check_can_afford_buff())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive cannot afford [name]! [hive.buff_points] / [cost] points."))

@@ -20,7 +20,7 @@
 	new /obj/item/clothing/head/soft(src)
 	return
 
-/obj/structure/closet/secure_closet/quartermaster/marine
+/obj/structure/closet/secure_closet/quartermaster_uscm
 	name = "Quartermaster's Locker"
 	req_access = list(ACCESS_MARINE_RO)
 	icon_state = "secureqm1"
@@ -30,7 +30,7 @@
 	icon_broken = "secureqmbroken"
 	icon_off = "secureqmoff"
 
-/obj/structure/closet/secure_closet/quartermaster/marine/Initialize()
+/obj/structure/closet/secure_closet/quartermaster_uscm/Initialize()
 	. = ..()
 	new /obj/item/clothing/under/rank/qm_suit(src)
 	new /obj/item/clothing/head/cmcap/req/ro(src)

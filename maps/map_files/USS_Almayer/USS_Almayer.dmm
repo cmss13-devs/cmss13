@@ -39086,7 +39086,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
 "mrM" = (
-/obj/structure/closet/secure_closet/quartermaster/marine,
+/obj/structure/closet/secure_closet/quartermaster_uscm,
 /turf/open/floor/almayer/green,
 /area/almayer/squads/req)
 "msg" = (

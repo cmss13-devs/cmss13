@@ -7,6 +7,8 @@
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+	minimap_background = "background_pmc"
+	minimap_background_color = FALSE
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/pmc
 
@@ -333,6 +335,9 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	assignment = JOB_PMC_MEDIC
 	rank = JOB_PMC_MEDIC
 	paygrade = PAY_SHORT_PMC_MS
+
+	minimap_icon = "pmc_md"
+
 	skills = /datum/skills/pmc/medic
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
 
@@ -508,6 +513,9 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	assignment = JOB_PMC_INVESTIGATOR
 	rank = JOB_PMC_INVESTIGATOR
 	paygrade = PAY_SHORT_PMC_MS //Fixed from PMC2 to PMC-MS to display properly.
+
+	minimap_icon = "pmc_td"
+
 	skills = /datum/skills/pmc/medic/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
 
@@ -688,6 +696,9 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	rank = JOB_PMC_LEADER
 	paygrade = PAY_SHORT_PMC_TL
 	role_comm_title = "SL"
+
+	minimap_icon = "pmc_ld"
+
 	skills = /datum/skills/pmc/SL
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
@@ -1488,6 +1499,9 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	rank = JOB_PMC_DOCTOR
 	paygrade = PAY_SHORT_PMC_DOC
 	role_comm_title = "SGN"
+
+	minimap_icon = "pmc_ld"
+
 	skills = /datum/skills/pmc/doctor
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
 
@@ -1662,6 +1676,9 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	rank = JOB_PMC_ENGINEER
 	paygrade = PAY_SHORT_PMC_TEC
 	role_comm_title = "TEC"
+
+	minimap_icon = "pmc_ct"
+
 	skills = /datum/skills/pmc/engineer
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
 
@@ -1839,18 +1856,21 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/synth
-		name = "Weyland-Yutani PMC (Support Synthetic)"
-		flags = EQUIPMENT_PRESET_EXTRA
+	name = "Weyland-Yutani PMC (Support Synthetic)"
+	flags = EQUIPMENT_PRESET_EXTRA
 
-		languages = ALL_SYNTH_LANGUAGES
+	languages = ALL_SYNTH_LANGUAGES
 
-		skills = /datum/skills/synthetic
-		idtype = /obj/item/card/id/pmc
-		assignment = JOB_PMC_SYNTH
-		rank = JOB_PMC_SYNTH
-		paygrade = PAY_SHORT_SYN
-		role_comm_title = "WY Syn"
-		headset_type = /obj/item/device/radio/headset/distress/pmc/command
+	skills = /datum/skills/synthetic
+	idtype = /obj/item/card/id/pmc
+	assignment = JOB_PMC_SYNTH
+	rank = JOB_PMC_SYNTH
+	paygrade = PAY_SHORT_SYN
+
+	minimap_icon = "pmc_syn"
+
+	role_comm_title = "WY Syn"
+	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
 
 /datum/equipment_preset/pmc/synth/load_name(mob/living/carbon/human/new_human, randomise)

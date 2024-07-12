@@ -585,7 +585,7 @@
 	idtype = /obj/item/card/id/silver/cl
 
 	minimap_icon = "surv"
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
+	minimap_background_color = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
 /datum/equipment_preset/wo/reporter/New()
 	. = ..()

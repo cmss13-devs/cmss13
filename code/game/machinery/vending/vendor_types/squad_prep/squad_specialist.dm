@@ -8,6 +8,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("Scout Set", 0, /obj/item/storage/box/spec/scout, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 		list("Sniper Set", 0, /obj/item/storage/box/spec/sniper, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
 		list("Anti-materiel Sniper Set", 0, /obj/item/storage/box/spec/sniper/anti_materiel, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
+//RUCM START
+		list("Stormtrooper Set", 0, /obj/item/storage/box/spec/stormtrooper, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
+//RUCM END
 
 		list("EXTRA SCOUT AMMUNITION", 0, null, null, null),
 		list("A19 High Velocity Impact Magazine (10x24mm)", 40, /obj/item/ammo_magazine/rifle/m4ra/custom/impact, null, VENDOR_ITEM_REGULAR),
@@ -38,6 +41,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("Large Incinerator Tank (B) (Green Flame)", 40, /obj/item/ammo_magazine/flamer_tank/large/B, null, VENDOR_ITEM_REGULAR),
 		list("Large Incinerator Tank (X) (Blue Flame)", 40, /obj/item/ammo_magazine/flamer_tank/large/X, null, VENDOR_ITEM_REGULAR),
 
+//RUCM START
+		list("EXTRA STORMTROOPER SPARKSHOTS", 0, null, null, null),
+		list("Extra sparkshots magazine", 40, /obj/item/ammo_magazine/rifle/xm52, null, VENDOR_ITEM_REGULAR),
+		list("Extra sparkshots shells", 40, /obj/item/ammo_magazine/shotgun/light/breaching/sparkshots, null, VENDOR_ITEM_REGULAR),
+//RUCM END
 	))
 
 /obj/structure/machinery/cm_vending/gear/spec

@@ -494,7 +494,13 @@ GLOBAL_LIST_INIT(available_specialist_sets, list(
 			"Anti-materiel Sniper Set",
 			"Demolitionist Set",
 			"Heavy Grenadier Set",
+/*
 			"Pyro Set"
+*/
+//RUCM START
+			"Pyro Set",
+			"Stormtrooper Set",
+//RUCM END
 			))
 
 //Similar thing, but used in /obj/item/spec_kit
@@ -505,6 +511,9 @@ GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 			"Scout" = 2,
 			"Demo" = 2,
 			"Anti-materiel Sniper" = 2,
+//RUCM START
+			"Stormtrooper" = 2,
+//RUCM END
 			))
 
 /proc/init_global_referenced_datums()

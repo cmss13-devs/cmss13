@@ -295,6 +295,16 @@
 			//this is to be able to use C4s that are coming with the kit
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+//RUCM START
+		if("Stormtrooper")
+			spec_box = new /obj/item/storage/box/spec/stormtrooper(T)
+			specialist_assignment = "Stormtrooper"
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ST)
+			user.skills.set_skill(SKILL_ENDURANCE, SKILL_ENDURANCE_MAX)
+			//this is to be able to use C4s that are coming with the kit
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+//RUCM END
 	if(specialist_assignment)
 		user.put_in_hands(spec_box)
 		card.set_assignment((user.assigned_squad && squad_assignment_update ? (user.assigned_squad.name + " ") : "") + card.assignment + " ([specialist_assignment])")

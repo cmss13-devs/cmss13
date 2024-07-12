@@ -170,7 +170,13 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, obj_name = src)
 	var/amount_to_transfer
 	if (current_rounds > 0)
+/*
 		var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+*/
+//RUCM START
+		var/datum/ammo/our_ammo = GLOB.ammo_list[default_ammo]
+		var/obj/item/ammo_magazine/handful/new_handful = new our_ammo.handful_type
+//RUCM END
 		amount_to_transfer = transfer_amount ? min(current_rounds, transfer_amount) : min(current_rounds, transfer_handful_amount)
 		new_handful.generate_handful(default_ammo, caliber, transfer_handful_amount, amount_to_transfer, gun_type)
 		current_rounds -= amount_to_transfer

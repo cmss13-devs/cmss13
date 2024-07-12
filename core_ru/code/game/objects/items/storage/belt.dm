@@ -37,9 +37,9 @@
 	icon = 'core_ru/icons/obj/items/nailgun.dmi'
 	icon_state = "nailgun_holster"
 	item_icons = list(
-		WEAR_WAIST = 'core_ru/icons/mob/human/onmob/belt.dmi',
-		WEAR_L_HAND = 'core_ru/icons/mob/human/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'core_ru/icons/mob/human/items_righthand_1.dmi'
+		WEAR_WAIST = 'core_ru/icons/mob/humans/onmob/belt.dmi',
+		WEAR_L_HAND = 'core_ru/icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'core_ru/icons/mob/humans/onmob/items_righthand_1.dmi'
 		)
 	item_state_slots = list(
 		WEAR_L_HAND = "utility",
@@ -140,3 +140,56 @@
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "F1X Nailgun Create"
 	group = "Weapons"
+
+// XM52 Belt
+/obj/item/storage/belt/gun/xm52
+	name = "\improper M276 pattern XM52 holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the XM52 breaching scattergun, allowing easier storage of the weapon. It features pouches for storing two magazines along with extra shells."
+	icon = 'core_ru/icons/obj/items/clothing/belts.dmi'
+	icon_state = "xm52_holster"
+	has_gamemode_skin = FALSE
+	gun_has_gamemode_skin = FALSE
+	storage_slots = 8
+	max_w_class = 5
+	can_hold = list(
+		/obj/item/weapon/gun/rifle/xm52,
+		/obj/item/ammo_magazine/rifle/xm52,
+		/obj/item/ammo_magazine/handful,
+	)
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = 10,
+			"icon_y" = -1))
+
+	//Keep a track of how many magazines are inside the belt.
+	var/magazines = 0
+	var/maxmag = 2
+
+/obj/item/storage/belt/gun/xm52/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/ammo_magazine/shotgun/light/breaching/sparkshots))
+		var/obj/item/ammo_magazine/shotgun/light/breaching/sparkshots/ammo_box = item
+		dump_ammo_to(ammo_box, user, ammo_box.transfer_handful_amount)
+	else
+		return ..()
+
+/obj/item/storage/belt/gun/xm52/can_be_inserted(obj/item/item, mob/user, stop_messages = FALSE)
+	. = ..()
+	if(magazines >= maxmag && istype(item, /obj/item/ammo_magazine/rifle/xm52))
+		if(!stop_messages)
+			to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))
+		return FALSE
+
+/obj/item/storage/belt/gun/xm52/handle_item_insertion(obj/item/item, prevent_warning = FALSE, mob/user)
+	. = ..()
+	if(istype(item, /obj/item/ammo_magazine/rifle/xm52))
+		magazines++
+
+/obj/item/storage/belt/gun/xm52/remove_from_storage(obj/item/item as obj, atom/new_location)
+	. = ..()
+	if(istype(item, /obj/item/ammo_magazine/rifle/xm52))
+		magazines--
+
+//If a magazine disintegrates due to acid or something else while in the belt, remove it from the count.
+/obj/item/storage/belt/gun/xm52/on_stored_atom_del(atom/movable/item)
+	if(istype(item, /obj/item/ammo_magazine/rifle/xm52))
+		magazines--

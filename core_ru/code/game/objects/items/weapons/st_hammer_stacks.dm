@@ -46,7 +46,7 @@
 
 	return ..()
 
-/datum/effects/hammer_stacks/proc/increment_stack_count(increment_number = 1, mob/living/carbon/human/attacker)
+/datum/effects/hammer_stacks/proc/increment_stack_count(increment_number = 1, mob/living/attacker)
 	stack_count = min(max_stacks, stack_count + increment_number)
 
 	if (!isxeno(affected_atom))
@@ -74,7 +74,9 @@
 			return
 
 		if (X.stat != DEAD)
-			attacker.apply_effect(1, STUN)
+			if(issynth(attacker)) // Test on synth
+				attacker.Stun(4)
+			attacker.Stun(1)
 
 		X.apply_effect(2, WEAKEN)
 		if (!X.anchored)

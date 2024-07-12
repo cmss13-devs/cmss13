@@ -733,7 +733,13 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 						//Hijacked from /obj/item/ammo_magazine/proc/create_handful because it had to be handled differently
 						//All this because shell types are instances and not their own objects :)
 
+/*
 						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+*/
+//RUCM START
+						var/datum/ammo/our_ammo = GLOB.ammo_list[ammo_dumping.default_ammo]
+						var/obj/item/ammo_magazine/handful/new_handful = new our_ammo.handful_type
+//RUCM END
 						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
 						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
 						ammo_dumping.current_rounds -= transferred_handfuls

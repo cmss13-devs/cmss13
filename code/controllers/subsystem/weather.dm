@@ -101,4 +101,6 @@ SUBSYSTEM_DEF(weather_conditions)
 /datum/controller/subsystem/weather_conditions/proc/stop_weather()
 	QDEL_NULL(weather_special_effect)
 	QDEL_NULL(running_weather)
+	if(weather_effect)
+		weather_effect.particles = null
 	QDEL_NULL(particle_effect)

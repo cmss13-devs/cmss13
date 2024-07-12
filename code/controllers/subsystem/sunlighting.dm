@@ -101,11 +101,14 @@ SUBSYSTEM_DEF(sunlighting)
 	var/game_time_length = 24 HOURS
 	var/custom_time_offset = 0
 
+	var/enabled = FALSE
+
 /datum/controller/subsystem/sunlighting/stat_entry(msg)
 	msg = "W:[length(GLOB.sunlight_queue_work)]|U:[length(GLOB.sunlight_queue_update)]|C:[length(GLOB.sunlight_queue_corner)]"
 	return ..()
 
 /datum/controller/subsystem/sunlighting/Initialize(timeofday)
+	enabled = CONFIG_GET(number/day_time_change)
 	game_time_length = SSmapping.configs[GROUND_MAP].custom_time_length
 	custom_time_offset = rand(0, game_time_length)
 	create_steps()
@@ -125,8 +128,9 @@ SUBSYSTEM_DEF(sunlighting)
 	custom_time_offset = new_value
 
 /datum/controller/subsystem/sunlighting/proc/game_time_offseted()
-	return 0 // Idk, maintainers not alowed it and I don't asked, so some time later I'll ask 200%, rn just dead end for daytime change
-//	return (REALTIMEOFDAY + custom_time_offset) % game_time_length
+	if(enabled)
+		return (REALTIMEOFDAY + custom_time_offset) % game_time_length
+	return 0
 
 /datum/controller/subsystem/sunlighting/proc/create_steps()
 	for(var/path in typesof(/datum/time_of_day))

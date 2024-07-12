@@ -460,6 +460,8 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 	min_val = 0
 	config_entry_value = 30 SECONDS
 
+/datum/config_entry/flag/day_time_change
+
 /datum/config_entry/flag/ghost_interaction
 
 /datum/config_entry/flag/allow_drone_spawn

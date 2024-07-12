@@ -18,7 +18,6 @@
 	var/repeats = 0
 	var/max_stages = 0
 	var/stage = GLE_STAGE_NONE
-	var/stage_processing = FALSE
 	var/datum/particle_weather/initiator_ref
 
 /datum/weather_event/New(datum/particle_weather/particle_weather)
@@ -47,7 +46,6 @@
 	repeats = rand(1, 3)
 	duration = duration + rand(-duration*5, duration*10)/10
 	SSsunlighting.weather_light_affecting_event = src
-	stage_processing = TRUE
 	stage_process()
 
 /datum/weather_event/thunder/stage_process()
@@ -90,7 +88,6 @@
 
 /datum/weather_event/wind/start_process()
 	duration = duration + rand(-duration, duration)
-	stage_processing = TRUE
 	stage_process()
 
 /datum/weather_event/wind/stage_process()
@@ -163,7 +160,7 @@
 	plane = GAME_PLANE
 	layer = BELOW_TABLE_LAYER
 	var/bleed_layer = 0
-	var/pts = 0
+	var/progression = 0
 	var/turf/snowed_turf
 	var/list/snows_connections = list(list("0", "0", "0", "0"), list("0", "0", "0", "0"), list("0", "0", "0", "0"))
 	var/list/diged = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
@@ -249,11 +246,11 @@
 	overlays += "[new_overlay]"
 
 /obj/structure/snow/proc/damage_act(damage)
-	if(pts > damage / 5)
-		pts -= damage / 5
+	if(progression > damage / 5)
+		progression -= damage / 5
 	else
-		changing_layer(min(bleed_layer - round(damage / bleed_layer * 8, 1), MAX_LAYER_SNOW_LEVELS))
-		pts = 0
+		changing_layer(min(bleed_layer - round(damage / (bleed_layer * 20), 1), MAX_LAYER_SNOW_LEVELS))
+		progression = bleed_layer * 4
 
 /obj/structure/snow/get_projectile_hit_boolean(obj/projectile/proj)
 	return FALSE
@@ -265,8 +262,8 @@
 	damage_act(damage)
 
 /obj/structure/snow/proc/weathered(datum/weather_effect/effect)
-	if(pts < bleed_layer * 8)
-		pts++
+	if(progression < bleed_layer * 8)
+		progression++
 	else
 		if(bleed_layer >= 3)
 			for(var/direction in GLOB.alldirs)
@@ -276,12 +273,12 @@
 					break
 
 				else if(turf.snow && turf.snow.bleed_layer != 3)
-					turf.snow.pts += pts
+					turf.snow.progression += progression
 					break
 		else
 			changing_layer(min(bleed_layer + 1, MAX_LAYER_SNOW_LEVELS))
 
-		pts = 0
+		progression = 0
 
 /obj/structure/snow/proc/changing_layer(new_layer)
 	if(isnull(new_layer) || new_layer == bleed_layer)

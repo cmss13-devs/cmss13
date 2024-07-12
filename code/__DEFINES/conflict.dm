@@ -54,6 +54,7 @@
 #define GUN_TRIGGER_SAFETY (1<<1)
 #define GUN_UNUSUAL_DESIGN (1<<2)
 #define GUN_SILENCED (1<<3)
+#define GUN_CANT_EXECUTE (1<<4)
 ///If checking for ammo with current.mag you have to check it against numerical values, as booleans will not trigger.
 #define GUN_INTERNAL_MAG (1<<4)
 #define GUN_AUTO_EJECTOR (1<<5)

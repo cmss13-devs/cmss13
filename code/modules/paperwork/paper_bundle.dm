@@ -44,8 +44,8 @@
 	else
 		if(HAS_TRAIT(W, TRAIT_TOOL_PEN) || istype(W, /obj/item/toy/crayon))
 			close_browser(usr, name) //Closes the dialog
-		if(page < contents.len)
-			page = contents.len
+		if(page < length(contents))
+			page = length(contents)
 		P = contents[page]
 		P.attackby(W, user)
 
@@ -148,8 +148,8 @@
 			page--
 			playsound(src.loc, "pageturn", 15, 1)
 		if(href_list["remove"])
-			if(contents.len < page)
-				page = contents.len
+			if(length(contents) < page)
+				page = length(contents)
 			var/obj/item/W = contents[page]
 			usr.put_in_hands(W)
 			to_chat(usr, SPAN_NOTICE("You remove the [W.name] from the bundle."))
@@ -175,6 +175,9 @@
 	else
 		to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
 
+/obj/item/paper_bundle/proc/operator[](index_num)
+	return contents[index_num]
+
 /obj/item/paper_bundle/verb/rename()
 	set name = "Rename bundle"
 	set category = "Object"
@@ -198,7 +201,7 @@
 	qdel(src)
 
 /obj/item/paper_bundle/update_icon()
-	if(contents.len)
+	if(length(contents))
 		var/obj/item/I = contents[1]
 		icon_state = I.icon_state
 		overlays = I.overlays

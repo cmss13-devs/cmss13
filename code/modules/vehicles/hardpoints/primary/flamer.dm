@@ -1,5 +1,5 @@
 /obj/item/hardpoint/primary/flamer
-	name = "DRG-N Offensive Flamer Unit"
+	name = "\improper DRG-N Offensive Flamer Unit"
 	desc = "A primary weapon for the tank that spews fire everywhere."
 
 	icon_state = "drgn_flamer"

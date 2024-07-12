@@ -102,8 +102,8 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 		currentrun = tables_unsorted.Copy()
 	if(!SSdatabase.connection.connection_ready())
 		return
-	while (currentrun.len)
-		var/datum/entity_meta/Q = currentrun[currentrun.len]
+	while (length(currentrun))
+		var/datum/entity_meta/Q = currentrun[length(currentrun)]
 		do_select(Q)
 		do_insert(Q)
 		do_update(Q)

@@ -5,25 +5,16 @@
 "ac" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 9;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/northwest,
 /area/lv624/ground/barrens/central_barrens)
 "ad" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/plating/asteroidwarning/north,
 /area/lv624/ground/barrens/central_barrens)
 "ae" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 5;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/northeast,
 /area/lv624/ground/barrens/central_barrens)
 "af" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -50,16 +41,10 @@
 "al" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/west,
 /area/lv624/ground/river/central_river)
 "am" = (
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "ao" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -80,10 +65,7 @@
 "au" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/east,
 /area/lv624/ground/river/central_river)
 "av" = (
 /obj/effect/landmark/crap_item,
@@ -128,10 +110,7 @@
 /area/lv624/ground/river/central_river)
 "aO" = (
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southwest,
 /area/lv624/ground/river/central_river)
 "aQ" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -148,17 +127,11 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
 "aW" = (
-/turf/open/floor/plating{
-	dir = 2;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/plating/asteroidwarning,
 /area/lv624/ground/river/central_river)
 "aX" = (
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 6;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southeast,
 /area/lv624/ground/river/central_river)
 "aZ" = (
 /turf/open/gm/coast/beachcorner/south_east,
@@ -254,10 +227,7 @@
 /area/lv624/ground/river/central_river)
 "Bv" = (
 /obj/effect/landmark/good_item,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "BA" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
@@ -272,10 +242,7 @@
 /area/lv624/ground/jungle/north_jungle)
 "GU" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "Hi" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -313,10 +280,7 @@
 /area/lv624/ground/river/central_river)
 "XY" = (
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/east,
 /area/lv624/ground/river/central_river)
 "YA" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -324,10 +288,7 @@
 /area/lv624/ground/river/central_river)
 "YL" = (
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/west,
 /area/lv624/ground/river/central_river)
 
 (1,1,1) = {"

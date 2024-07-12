@@ -190,7 +190,7 @@
 	. += "The IV drip is [mode ? "injecting" : "taking blood"]."
 
 	if(beaker)
-		if(beaker.reagents && beaker.reagents.reagent_list.len)
+		if(beaker.reagents && length(beaker.reagents.reagent_list))
 			. += SPAN_NOTICE(" Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.")
 		else
 			. += SPAN_NOTICE(" Attached is an empty [beaker].")

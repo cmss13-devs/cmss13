@@ -85,7 +85,7 @@
 	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
 		data["evac_eta"] = SShijack.get_evac_eta()
 
-	if(!messagetitle.len)
+	if(!length(messagetitle))
 		data["messages"] = null
 	else
 		for(var/i in 1 to length(messagetitle))

@@ -47,7 +47,7 @@
 	fire_smothering_strength = 4
 
 //Makes you a lot little chilly
-/datum/particle_weather/snow_storm/affect_mob_effect(mob/living/L, delta_time, calculated_damage)
+/datum/particle_weather/snow_storm/affect_mob_effect(mob/living/target_mob, delta_time, calculated_damage)
 	. = ..()
-	if(ishuman(L))
-		L.eye_blurry += 0.5
+	if(ishuman(target_mob))
+		target_mob.eye_blurry += 0.5

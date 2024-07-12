@@ -179,14 +179,6 @@
 
 	START_PROCESSING(SSslowobj, src)
 
-	if(mapload)
-		return INITIALIZE_HINT_LATELOAD
-
-	update_corners()
-	update_overlays()
-
-/obj/structure/snow/LateInitialize()
-	. = ..()
 	update_corners(TRUE)
 	update_overlays()
 
@@ -200,7 +192,7 @@
 /obj/structure/snow/process(delta_time)
 	if(!SSweather_conditions.running_weather)
 		damage_act(3 * delta_time)
-	else if(!istype(SSweather_conditions.running_weather, /datum/weather_effect/snow))
+	else if(SSweather_conditions.running_weather.weather_special_effect != /datum/weather_effect/snow)
 		damage_act(6 * delta_time)
 	update_overlays()
 
@@ -428,13 +420,13 @@
 			weather_additional_ongoing_events += new str(src)
 
 /datum/particle_weather/Destroy()
-	for(var/S in current_sounds)
-		var/datum/looping_sound/looping_sound = current_sounds[S]
+	for(var/sound in current_sounds)
+		var/datum/looping_sound/looping_sound = current_sounds[sound]
 		looping_sound.stop()
 		qdel(looping_sound)
 
-	for(var/S in current_wind_sounds)
-		var/datum/looping_sound/looping_sound = current_wind_sounds[S]
+	for(var/sound in current_wind_sounds)
+		var/datum/looping_sound/looping_sound = current_wind_sounds[sound]
 		looping_sound.stop()
 		qdel(looping_sound)
 
@@ -504,27 +496,33 @@
 
 	return FALSE
 
-/datum/particle_weather/proc/can_weather_effect(mob/living/mob_to_check)
-	return TRUE
+/datum/particle_weather/proc/can_weather_effect(mob/mob_to_check)
+	if(isliving(mob_to_check))
+		return TRUE
+	return FALSE
 
-/datum/particle_weather/proc/process_mob_effect(mob/living/L, delta_time)
-	if(can_weather(L) && running)
-		weather_sound_effect(L)
-		if(can_weather_effect(L))
-			if((last_message || weather_messages) && (!messaged_mobs[L] || world.time > messaged_mobs[L]))
-				weather_message(L)
-			affect_mob_effect(L, delta_time)
+/datum/particle_weather/proc/process_mob_effect(mob/target_mob, delta_time)
+	if(can_weather(target_mob) && running)
+		weather_sound_effect(target_mob)
+		if(can_weather_effect(target_mob))
+			if((last_message || weather_messages) && (!messaged_mobs[target_mob] || world.time > messaged_mobs[target_mob]))
+				weather_message(target_mob)
+			affect_mob_effect(target_mob, delta_time)
 	else
-		stop_weather_sound_effect(L)
-		messaged_mobs[L] = 0
+		stop_weather_sound_effect(target_mob)
+		messaged_mobs[target_mob] = 0
 
-/datum/particle_weather/proc/affect_mob_effect(mob/living/L, delta_time, calculated_damage)
+/datum/particle_weather/proc/affect_mob_effect(mob/living/target_mob, delta_time, calculated_damage)
 	if(damage_per_tick)
 		calculated_damage = damage_per_tick * delta_time
-		L.apply_damage(calculated_damage, damage_type)
+		target_mob.apply_damage(calculated_damage, damage_type)
 
-/datum/particle_weather/proc/weather_sound_effect(mob/living/L)
-	var/datum/looping_sound/current_sound = current_sounds[L]
+/datum/particle_weather/proc/weather_sound_effect(mob/target_mob)
+	var/client/target_client = target_mob.client
+	if(!target_client)
+		return
+
+	var/datum/looping_sound/current_sound = current_sounds[target_client]
 	if(current_sound)
 		//SET VOLUME
 		if(scale_vol_with_severity)
@@ -534,15 +532,15 @@
 		return
 
 	if(weather_sounds)
-		current_sound = new weather_sounds(L, FALSE, TRUE, FALSE, SOUND_CHANNEL_WEATHER)
-		current_sounds[L] = current_sound
+		current_sound = new weather_sounds(target_client, FALSE, TRUE, FALSE, SOUND_CHANNEL_WEATHER)
+		current_sounds[target_client] = current_sound
 		//SET VOLUME
 		if(scale_vol_with_severity)
 			current_sound.volume = initial(current_sound.volume) * severity_mod()
 		current_sound.start()
 
 	if(wind_severity && weather_sounds)
-		var/datum/looping_sound/current_wind_sound = current_wind_sounds[L]
+		var/datum/looping_sound/current_wind_sound = current_wind_sounds[target_client]
 		if(current_wind_sound)
 			//SET VOLUME
 			if(scale_vol_with_severity)
@@ -551,29 +549,33 @@
 				current_wind_sound.start()
 			return
 
-		var/temp_wind_sound = scale_range_pick(min_severity, max_severity, severity, wind_sounds)
+		var/temp_wind_sound = SAFEPICK(wind_sounds)
 		if(temp_wind_sound)
-			current_wind_sound = new temp_wind_sound(L, FALSE, TRUE, FALSE, SOUND_CHANNEL_WEATHER)
-			current_wind_sounds[L] = current_wind_sound
+			current_wind_sound = new temp_wind_sound(target_client, FALSE, TRUE, FALSE, SOUND_CHANNEL_WEATHER)
+			current_wind_sounds[target_client] = current_wind_sound
 			//SET VOLUME
 			if(scale_vol_with_severity)
 				current_wind_sound.volume = initial(current_wind_sound.volume) * severity_mod()
 			current_wind_sound.start()
 
 
-/datum/particle_weather/proc/stop_weather_sound_effect(mob/living/L)
-	var/datum/looping_sound/current_sound = current_sounds[L]
+/datum/particle_weather/proc/stop_weather_sound_effect(mob/target_mob)
+	var/client/target_client = target_mob.client
+	if(!target_client)
+		return
+
+	var/datum/looping_sound/current_sound = current_sounds[target_client]
 	if(current_sound)
 		current_sound.stop()
-	var/datum/looping_sound/current_wind_sound = current_wind_sounds[L]
+	var/datum/looping_sound/current_wind_sound = current_wind_sounds[target_client]
 	if(current_wind_sound)
 		current_wind_sound.stop()
 
-/datum/particle_weather/proc/weather_message(mob/living/L)
-	messaged_mobs[L] = world.time + WEATHER_MESSAGE_DELAY
-	last_message = scale_range_pick(min_severity, max_severity, severity, weather_messages)
+/datum/particle_weather/proc/weather_message(mob/living/target_mob)
+	messaged_mobs[target_mob] = world.time + WEATHER_MESSAGE_DELAY
+	last_message = SAFEPICK(weather_messages)
 	if(last_message)
-		to_chat(L, SPAN_DANGER(last_message))
+		to_chat(target_mob, SPAN_DANGER(last_message))
 
 /datum/particle_weather/proc/weather_warnings()
 	switch(weather_warnings)

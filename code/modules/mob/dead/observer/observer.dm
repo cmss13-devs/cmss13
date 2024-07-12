@@ -423,8 +423,13 @@ Works together with spawning an observer, noted above.
 
 /mob/dead/observer/Life(delta_time)
 	..()
-	if(!loc) return
-	if(!client) return 0
+	if(!loc)
+		return
+	if(!client)
+		return FALSE
+
+	if(SSweather_conditions.running_weather)
+		SSweather_conditions.running_weather.process_mob_effect(src, delta_time)
 
 	return TRUE
 

@@ -117,12 +117,6 @@
 
 	return return_list
 
-/proc/scale_range_pick(min, max, value, list/L)
-	if(!length(L))
-		return null
-	var/index = 1 + (value * (length(L) - 1)) / (max - min)
-	return L[index]
-
 /**
  * Picks a random element from a list based on a weighting system.
  * For example, given the following list:

@@ -22,10 +22,10 @@
 	fire_smothering_strength = 2
 
 //Makes you a little chilly
-/datum/particle_weather/dust_storm/affect_mob_effect(mob/living/L, delta_time, calculated_damage)
+/datum/particle_weather/dust_storm/affect_mob_effect(mob/living/target_mob, delta_time, calculated_damage)
 	. = ..()
-	if(ishuman(L))
-		var/mob/living/carbon/human/H = L
-		var/internal_damage = calculated_damage * (rand(1, 20) / 10) - H.get_eye_protection()
+	if(ishuman(target_mob))
+		var/mob/living/carbon/human/target_human = target_mob
+		var/internal_damage = calculated_damage * (rand(1, 20) / 10) - target_human.get_eye_protection()
 		if(internal_damage > 0)
-			H.apply_internal_damage(internal_damage, "eyes")
+			target_human.apply_internal_damage(internal_damage, "eyes")

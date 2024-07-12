@@ -174,6 +174,16 @@
 	containername = "\improper explosive M74 AGM-I grenades crate (WARNING)"
 	group = "Explosives"
 
+/datum/supply_packs/explosives_M74_AGM_I_box
+	name = "M74 Airburst Grenade Munition incendiary grenades box crate (x25)"
+	contains = list(
+		/obj/item/storage/box/nade_box/airburstincen,
+	)
+	cost = 100
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper M74 Airburst Grenade Munition incendiary grenades crate (WARNING)"
+	group = "Explosives"
+
 /datum/supply_packs/explosives_airburst_smoke
 	name = "M74 Airburst Grenade Munition smoke grenades crate (x6)"
 	contains = list(

@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/quartermaster
 	name = "Quartermaster's Locker"
-	req_access = list(ACCESS_MARINE_RO)
+	req_access = list(ACCESS_CIVILIAN_PUBLIC)
 	icon_state = "secureqm1"
 	icon_closed = "secureqm"
 	icon_locked = "secureqm1"
@@ -9,6 +9,28 @@
 	icon_off = "secureqmoff"
 
 /obj/structure/closet/secure_closet/quartermaster/Initialize()
+	. = ..()
+	new /obj/item/clothing/under/rank/cargo(src)
+	new /obj/item/clothing/shoes/brown(src)
+	new /obj/item/clothing/gloves/black(src)
+	new /obj/item/clothing/suit/fire/firefighter(src)
+	new /obj/item/tank/emergency_oxygen(src)
+	new /obj/item/clothing/mask/gas(src)
+	new /obj/item/clothing/glasses/meson(src)
+	new /obj/item/clothing/head/soft(src)
+	return
+
+/obj/structure/closet/secure_closet/quartermaster/marine
+	name = "Quartermaster's Locker"
+	req_access = list(ACCESS_MARINE_RO)
+	icon_state = "secureqm1"
+	icon_closed = "secureqm"
+	icon_locked = "secureqm1"
+	icon_opened = "secureqmopen"
+	icon_broken = "secureqmbroken"
+	icon_off = "secureqmoff"
+
+/obj/structure/closet/secure_closet/quartermaster/marine/Initialize()
 	. = ..()
 	new /obj/item/clothing/under/rank/qm_suit(src)
 	new /obj/item/clothing/head/cmcap/req/ro(src)

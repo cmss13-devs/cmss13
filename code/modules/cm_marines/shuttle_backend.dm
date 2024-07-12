@@ -107,7 +107,7 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 /proc/rotate_shuttle_turfs(list/L, deg = 0)
 
 	if((deg % 90) != 0) return //Not a right or straight angle, don't do anything
-	if(!istype(L) || !L.len) return null
+	if(!istype(L) || !length(L)) return null
 
 	var/i //iterator
 	var/x //Placeholder while we do math

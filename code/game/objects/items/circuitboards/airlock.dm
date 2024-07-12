@@ -48,7 +48,7 @@
 		for (var/acc in accesses)
 			var/aname = get_access_desc(acc)
 
-			if (!conf_access || !conf_access.len || !(acc in conf_access))
+			if (!LAZYLEN(conf_access) || !(acc in conf_access))
 				t1 += "<a href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
 			else if(one_access)
 				t1 += "<a style='color: green' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
@@ -107,7 +107,7 @@
 			conf_access += req
 		else
 			conf_access -= req
-			if (!conf_access.len)
+			if (!length(conf_access))
 				conf_access = null
 
 

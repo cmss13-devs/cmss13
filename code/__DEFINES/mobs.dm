@@ -166,8 +166,9 @@
 #define ORGAN_ROBOT 2
 
 #define ORGAN_HEALTHY 0
-#define ORGAN_BRUISED 1
-#define ORGAN_BROKEN 2
+#define ORGAN_LITTLE_BRUISED 1 //used by stethoscopes and penlights
+#define ORGAN_BRUISED 2
+#define ORGAN_BROKEN 3
 
 //=================================================
 

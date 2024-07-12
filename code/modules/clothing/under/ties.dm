@@ -124,30 +124,37 @@
 								var/datum/internal_organ/heart/heart = M.internal_organs_by_name["heart"]
 								if(heart)
 									switch(heart.organ_status)
+										if(ORGAN_LITTLE_BRUISED)
+											sound = "hear <font color='yellow'>small murmurs with each heart beat</font>, it is posisble that [M.p_their()] heart is <font color='yellow'>subtly damaged</font>"
 										if(ORGAN_BRUISED)
-											sound = "hear <font color='yellow'>deviant heart beating patterns</font>, result of possible <font color='yellow'>heart damage</font>"
+											sound = "hear <font color='orange'>deviant heart beating patterns</font>, result of probable <font color='orange'>heart damage</font>"
 										if(ORGAN_BROKEN)
-											sound = "hear <font color='red'>irregular and additional heart beating patterns</font>, probably caused by impaired blood pumping, [M.p_their()] heart is probably <font color='red'>failing</font>"
+											sound = "hear <font color='red'>irregular and additional heart beating patterns</font>, probably caused by impaired blood pumping, [M.p_their()] heart is certainly <font color='red'>failing</font>"
 										else
-											sound = "hear <font color='green'>normal heart beating patterns</font>, [M.p_their()] heart is certainly <font color='green'>healthy</font>"
+											sound = "hear <font color='green'>normal heart beating patterns</font>, [M.p_their()] heart is surely <font color='green'>healthy</font>"
 								var/datum/internal_organ/lungs/lungs = M.internal_organs_by_name["lungs"]
 								if(lungs)
 									switch(lungs.organ_status)
+										if(ORGAN_LITTLE_BRUISED)
+											if(sound)
+												sound += ". You also hear <font color='yellow'>some crackles when they breath</font>, they are possibly suffering from <font color='yellow'>a small damage to the lungs</font>"
+											else
+												sound += "hear <font color='yellow'>some crackles when they breath</font>, they are possibly suffering from a <font color='yellow'>small damage to the lungs</font>"
 										if(ORGAN_BRUISED)
 											if(sound)
-												sound += ". You also hear <font color='yellow'>unusual respiration sounds</font> and a difficulty to breath, result of possible <font color='yellow'>lung damage</font>"
+												sound += ". You also hear <font color='orange'>unusual respiration sounds</font> and noticeable difficulty to breath, possibly signalling <font color='orange'>ruptured lungs</font>"
 											else
-												sound += "hear <font color='yellow'>abnormal respiration sounds</font>, result of possible <font color='yellow'>lung damage</font>"
+												sound +=  "hear <font color='orange'>unusual respiration sounds</font> and a difficulty to breath, possibly signalling <font color='orange'>ruptured lungs</font>"
 										if(ORGAN_BROKEN)
 											if(sound)
-												sound += ". You also <font color='red'>barely hear respiration sounds</font> and a lot of difficulty to breath, [M.p_their()] lungs are probably <font color='red'>failing</font>"
+												sound += ". You also <font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, [M.p_their()] lungs are <font color='red'>heavily failing</font>"
 											else
 												sound += "<font color='red'>barely hear respiration sounds</font>,  [M.p_their()] lungs are probably <font color='red'>failing</font>"
 										else
 											if(sound)
-												sound += ". You hear <font color='green'>normal respiration sounds</font> aswell, that means [M.p_their()] lungs are possibly <font color='green'>healthy</font>"
+												sound += ". You hear <font color='green'>normal respiration sounds</font> aswell, that means [M.p_their()] lungs are <font color='green'>healthy</font>, probably"
 											else
-												sound += "hear <font color='green'>normal respiration sounds</font>, that means lungs [M.p_their()] are possibly <font color='green'>healthy</font>"
+												sound += "hear <font color='green'>normal respiration sounds</font> aswell, that means [M.p_their()] lungs are <font color='green'>healthy</font>, probably"
 								else
 									sound = "can't hear. Really, anything at all, how weird"
 							else

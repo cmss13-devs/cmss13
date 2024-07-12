@@ -30095,7 +30095,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "oxd" = (
-/obj/item/clothing/suit/storage/RO{
+/obj/item/clothing/suit/storage/jacket/marine/RO{
 	name = "\improper UA jacket"
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,

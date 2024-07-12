@@ -32,6 +32,7 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 	/obj/item/storage/box/packet/hornet,
 	/obj/item/storage/box/packet/incendiary,
 	/obj/item/storage/box/packet/smoke,
+	/obj/item/storage/box/packet/foam,
 	/obj/item/storage/box/packet/phosphorus,
 	/obj/item/storage/box/packet/phosphorus/upp,
 	/obj/item/storage/box/packet/m15,
@@ -81,6 +82,9 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 	icon_state = "hpdp_packet"
 	content_type = /obj/item/explosive/grenade/phosphorus/weak
 
+/obj/item/storage/box/packet/phosphorus/alt
+	content_type = /obj/item/explosive/grenade/phosphorus
+
 /obj/item/storage/box/packet/phosphorus/upp
 	name = "\improper Type 8 WP grenade packet"
 	desc = "It contains three type 8 white phosphorus grenades."
@@ -96,6 +100,12 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 	name = "toy HEFA grenade packet"
 	desc = "These little packets of joy were distributed in the 100th (Season 2) Issue of the Boots! magazine as commemorative rewards for subscribers. Nobody knows how anyone, at any point, never asked 'wait, is this a terrible idea?' during the process."
 	content_type = /obj/item/explosive/grenade/high_explosive/frag/toy
+
+/obj/item/storage/box/packet/foam
+	name = "\improper MFHS foam grenade packet"
+	desc = "It contains three MFHS metal-foam grenades."
+	icon_state = "mfhs_packet"
+	content_type = /obj/item/explosive/grenade/metal_foam
 
 /obj/item/storage/box/packet/m15
 	name = "\improper M15 fragmentation grenade packet"

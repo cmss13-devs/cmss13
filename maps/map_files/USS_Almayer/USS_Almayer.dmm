@@ -25531,7 +25531,12 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/firstaid/regular,
 /obj/item/clipboard,
-/obj/item/tool/pen,
+/obj/item/tool/pen{
+	pixel_y = -18
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = -16
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -40455,6 +40460,12 @@
 	pixel_y = 10;
 	req_one_access_txt = "1;21"
 	},
+/obj/item/paper_bin/uscm{
+	pixel_y = -2
+	},
+/obj/item/tool/pen{
+	pixel_y = -4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -42688,6 +42699,12 @@
 /obj/structure/largecrate/supply/ammo/shotgun,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_s)
+"kAD" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/squads/req)
 "kAL" = (
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer{
@@ -47754,6 +47771,7 @@
 	},
 /area/almayer/medical/morgue)
 "mrM" = (
+/obj/structure/closet/secure_closet/quartermaster,
 /turf/open/floor/almayer{
 	icon_state = "green"
 	},
@@ -51006,6 +51024,9 @@
 	},
 /obj/structure/sign/poster/propaganda{
 	pixel_y = 34
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_y = -10
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -63715,6 +63736,9 @@
 /area/almayer/maint/hull/upper/p_stern)
 "rHN" = (
 /obj/structure/pipes/vents/pump/on,
+/obj/structure/bed/chair{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "rIj" = (
@@ -70351,6 +70375,10 @@
 /obj/item/storage/box/m94,
 /obj/item/storage/box/m94,
 /obj/item/stack/sheet/mineral/plastic/small_stack,
+/obj/item/frame/rack,
+/obj/item/frame/rack,
+/obj/item/frame/rack,
+/obj/item/frame/rack,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -127230,7 +127258,7 @@ mww
 sZe
 bdl
 fgm
-bdj
+kAD
 rHN
 kuu
 mDj

@@ -141,6 +141,78 @@
 	group = "Weapons"
 */
 
+/datum/supply_packs/gun/m42a
+	contains = list(
+		/obj/item/weapon/gun/rifle/sniper/M42A,
+	)
+	name = "M42A scoped rifle (x1)"
+	cost = 80
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M42A scoped rifle crate"
+	group = "Weapons"
+
+/datum/supply_packs/gun/xm43e1
+	contains = list(
+		/obj/item/weapon/gun/rifle/sniper/XM43E1,
+	)
+	name = "XM43E1 experimental anti-materiel rifle (x1)"
+	cost = 80
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper XM43E1 experimental anti-materiel rifle crate"
+	group = "Weapons"
+
+/datum/supply_packs/gun/m92
+	contains = list(
+		/obj/item/weapon/gun/launcher/grenade/m92,
+	)
+	name = "M92 grenade launcher (x1)"
+	cost = 80
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M92 grenade launcher crate"
+	group = "Weapons"
+
+
+/datum/supply_packs/gun/m240t
+	contains = list(
+		/obj/item/weapon/gun/launcher/grenade/m92,
+	)
+	name = "M240-T incinerator unit (x1)"
+	cost = 80
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M240-T incinerator unit crate"
+	group = "Weapons"
+
+/datum/supply_packs/gun/m4ra_custom
+	contains = list(
+		/obj/item/weapon/gun/rifle/m4ra_custom,
+	)
+	name = "M4RA custom battle rifle (x1)"
+	cost = 80
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M4RA custom battle rifle crate"
+	group = "Weapons"
+
+/datum/supply_packs/gun/m4ra_custom
+	contains = list(
+		/obj/item/weapon/gun/rifle/m4ra_custom,
+	)
+	name = "M4RA custom battle rifle (x1)"
+	cost = 80
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M4RA custom battle rifle crate"
+	group = "Weapons"
+
+/datum/supply_packs/gun/m5rpg
+	contains = list(
+		/obj/item/weapon/gun/launcher/rocket,
+	)
+	name = "M5 RPG (x1)"
+	cost = 80
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M5 RPG crate"
+	group = "Weapons"
+
+
 /datum/supply_packs/gun/merc
 	contains = list()
 	name = "black market firearms (x1)"

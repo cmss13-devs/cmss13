@@ -15,10 +15,17 @@
 	/// Types this crate can be made into
 	var/list/crate_customizing_types = list(
 		"Plain" = /obj/structure/closet/crate,
+		"Plain (Green)" = /obj/structure/closet/crate/green,
 		"Weapons" = /obj/structure/closet/crate/weapon,
 		"Supply" = /obj/structure/closet/crate/supply,
 		"Ammo" = /obj/structure/closet/crate/ammo,
+		"Ammo (Black)" = /obj/structure/closet/crate/ammo/alt,
+		"Ammo (Flame)" = /obj/structure/closet/crate/ammo/alt/flame,
 		"Construction" = /obj/structure/closet/crate/construction,
+		"Science" = /obj/structure/closet/crate/science,
+		"Hydroponics" = /obj/structure/closet/crate/hydroponics,
+		"Medical" = /obj/structure/closet/crate/medical,
+		"Internals" = /obj/structure/closet/crate/internals,
 		"Explosives" = /obj/structure/closet/crate/explosives,
 		"Alpha" = /obj/structure/closet/crate/alpha,
 		"Bravo" = /obj/structure/closet/crate/bravo,

@@ -239,6 +239,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		/obj/item/tool/surgery/synthgraft,
 		/obj/item/storage/syringe_case,
 		/obj/item/storage/surgical_case/regular,
+		/obj/item/clothing/accessory/stethoscope,
+		/obj/item/device/flashlight/pen/,
+
 
 	)
 

@@ -178,7 +178,7 @@
 							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
 				return
 			if(M.stat == DEAD || (M.status_flags&FAKEDEATH))
-				sound = "conclude that [M.p_their()] eyes are completely lifeless, [M.p_they()] must have passed away"
+				reaction = "conclude that [M.p_their()] eyes are completely lifeless, [M.p_they()] must have passed away"
 			else
 				if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 					if(eyes)
@@ -211,12 +211,12 @@
 								else
 									reaction += "notice that the pupils are <font color='greeen'>consensually and normally constricting</font> when light is separately applied to each eye, [M.p_their()] brain is <font color='green'>probably fine</font>"
 					else
-					reaction = "can't see anything at all, weirdly enough"
+						reaction = "can't see anything at all, weirdly enough"
 				else
 					M.flash_eyes()
 					reaction = "don't really know what you are looking for, you don't know anything about medicine"
-				user.visible_message("[user] directs [src] to [M]'s eyes.", "You point [src] to [M.p_their()] eyes to begin analysing them further and... you [reaction].")
-				return
+			user.visible_message("[user] directs [src] to [M]'s eyes.", "You point [src] to [M.p_their()] eyes to begin analysing them further and... you [reaction].")
+			return
 	else
 		return ..()
 

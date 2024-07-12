@@ -14,24 +14,16 @@
 /turf/open/floor/wood,
 /area/interior/fancylocker)
 "d" = (
-/turf/open/floor/carpet/edge{
-	dir = 9
-	},
+/turf/open/floor/carpet/edge/northwest,
 /area/interior/fancylocker)
 "e" = (
-/turf/open/floor/carpet/edge{
-	dir = 1
-	},
+/turf/open/floor/carpet/edge/north,
 /area/interior/fancylocker)
 "f" = (
-/turf/open/floor/carpet/edge{
-	dir = 5
-	},
+/turf/open/floor/carpet/edge/northeast,
 /area/interior/fancylocker)
 "g" = (
-/turf/open/floor/carpet/edge{
-	dir = 8
-	},
+/turf/open/floor/carpet/edge/west,
 /area/interior/fancylocker)
 "h" = (
 /obj/structure/bed/sofa/south/white/left,
@@ -46,9 +38,7 @@
 /turf/open/floor/carpet,
 /area/interior/fancylocker)
 "k" = (
-/turf/open/floor/carpet/edge{
-	dir = 4
-	},
+/turf/open/floor/carpet/edge/east,
 /area/interior/fancylocker)
 "l" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -56,17 +46,13 @@
 /turf/open/floor/wood,
 /area/interior/fancylocker)
 "m" = (
-/turf/open/floor/carpet/edge{
-	dir = 10
-	},
+/turf/open/floor/carpet/edge/southwest,
 /area/interior/fancylocker)
 "n" = (
 /turf/open/floor/carpet/edge,
 /area/interior/fancylocker)
 "o" = (
-/turf/open/floor/carpet/edge{
-	dir = 6
-	},
+/turf/open/floor/carpet/edge/southeast,
 /area/interior/fancylocker)
 "p" = (
 /obj/structure/surface/table/woodentable/fancy,

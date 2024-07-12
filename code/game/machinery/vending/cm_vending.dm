@@ -1308,7 +1308,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		var/obj/item/item_ref = myprod[3]
 		var/priority = myprod[priority_index]
 		if(islist(item_ref)) // multi-vending
-			item_ref = item_ref[1]
+			var/list/ref_list = item_ref
+			item_ref = ref_list[1]
 
 		var/is_category = item_ref == null
 

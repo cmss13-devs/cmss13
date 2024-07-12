@@ -1283,10 +1283,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 	origin = get_turf(origin)
 	if(!origin)
 		return
-	var/list/turfs = list()
-	for(var/turf/T in orange(origin, outer_range))
-		if(!inner_range || get_dist(origin, T) >= inner_range)
-			turfs += T
+	var/list/turfs = (RANGE_TURFS(outer_range, origin) - RANGE_TURFS(inner_range - 1, origin))
 	if(length(turfs))
 		return pick(turfs)
 

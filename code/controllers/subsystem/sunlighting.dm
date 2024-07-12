@@ -108,7 +108,7 @@ SUBSYSTEM_DEF(sunlighting)
 	return ..()
 
 /datum/controller/subsystem/sunlighting/Initialize(timeofday)
-	enabled = CONFIG_GET(number/day_time_change)
+	enabled = CONFIG_GET(flag/day_time_change)
 	game_time_length = SSmapping.configs[GROUND_MAP].custom_time_length
 	custom_time_offset = rand(0, game_time_length)
 	create_steps()

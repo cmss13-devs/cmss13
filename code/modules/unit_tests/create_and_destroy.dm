@@ -18,7 +18,8 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 		/obj/item/explosive/grenade/flashbang/cluster/segment,
 		/obj/item/explosive/grenade/flashbang/cluster_piece,
 		/obj/effect/fake_attacker,
-		/atom/movable/outdoor_effect,
+		/atom/movable/outdoor_effect, //Something horrible happens, zero clues
+		/datum/static_lighting_corner, //With upper it's make runtimes
 		/atom/movable/lighting_mask, //leave it alone
 		//This is meant to fail extremely loud every single time it occurs in any environment in any context, and it falsely alarms when this unit test iterates it. Let's not spawn it in.
 		/obj/merge_conflict_marker,

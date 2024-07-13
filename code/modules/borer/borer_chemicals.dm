@@ -33,6 +33,14 @@
 	description = "A biosynthetic agent that mends damage tissue while creating a toxic byproduct."
 	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_TRANSFORMATIVE = 2, PROPERTY_INTRAVENOUS = 1)
 
+/datum/reagent/borer/super_brain
+	name = "Synaptic Boost"
+	id = "borersuperbrain"
+	description = "An unusual bio-agent that appears to enhance the brain function of subjects. Lethal in high doses."
+	color = "#076e4c"
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE
+	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_ENCEPHALOPHRASIVE = 1, PROPERTY_PAINKILLING = 1, PROPERTY_NEUROPEUTIC = 2)
 
 ////////////// BORER CHEM DATUMS USED IN THE SYNTHESISER MENU ///////////////////////
 
@@ -179,6 +187,15 @@
 	cost = 300
 	quantity = 5
 	category = BORER_CAT_PUNISH
+	impure = FALSE
+
+/datum/borer_chem/human/super_brain
+	chem_name = "Synaptic Boost"
+	chem_id = "borersuperbrain"
+	desc = "A biological agent that boosts a subject's brain function, repairing damage and causing a mild form of telepathy."
+	cost = 300
+	quantity = 3
+	category = BORER_CAT_STIM
 	impure = FALSE
 
 //Yautja chemicals

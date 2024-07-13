@@ -18,9 +18,9 @@
 			is_wired = 1
 			break
 	if(components)
-		switch(components.len)
+		switch(length(components))
 			if(0 to 8)
-				icon_state = "construct_[contents.len]_[is_wired]"
+				icon_state = "construct_[length(contents)]_[is_wired]"
 			else
 				icon_state = "construct_8_1"
 	else if(state)

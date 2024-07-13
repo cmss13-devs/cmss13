@@ -1115,7 +1115,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	else if (href_list["rreq"])
 		var/ordernum = text2num(href_list["rreq"])
 		temp = "Invalid Request.<BR>"
-		for(var/i=1, length(i<=GLOB.supply_controller.requestlist), i++)
+		for(var/i=1, i<=length(GLOB.supply_controller.requestlist), i++)
 			var/datum/supply_order/SO = GLOB.supply_controller.requestlist[i]
 			if(SO.ordernum == ordernum)
 				GLOB.supply_controller.requestlist.Cut(i,i+1)

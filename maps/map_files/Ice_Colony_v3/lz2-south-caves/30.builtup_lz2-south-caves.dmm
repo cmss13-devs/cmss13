@@ -5,9 +5,7 @@
 "b" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toy,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "c" = (
 /turf/open/auto_turf/snow/layer4,
@@ -17,9 +15,7 @@
 /area/shiva/interior/caves/s_lz2)
 "e" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/lz2_habs)
 "f" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname,
@@ -29,41 +25,29 @@
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/oob)
 "k" = (
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "l" = (
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/lz2_habs)
 "m" = (
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/lz2_habs)
 "n" = (
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "o" = (
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/interior/lz2_habs)
 "p" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/powercell,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "q" = (
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/interior/lz2_habs)
 "r" = (
 /turf/open/auto_turf/ice/layer2,
@@ -73,32 +57,24 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "t" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/ice_axe/red,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "v" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/sliceable/bananabread,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "w" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
 	pixel_y = -5
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/interior/lz2_habs)
 "x" = (
 /turf/open/auto_turf/ice/layer1,
@@ -118,9 +94,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "z" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -129,9 +103,7 @@
 	id = "nlz_shutters";
 	name = "\improper Bio-lab Shutters"
 	},
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "B" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -140,27 +112,21 @@
 	id = "nlz_shutters";
 	name = "\improper Bio-lab Shutters"
 	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/interior/lz2_habs)
 "C" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/interior/lz2_habs)
 "D" = (
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/s_lz2)
 "F" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/interior/lz2_habs)
 "G" = (
 /obj/item/shard{
@@ -178,32 +144,24 @@
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "K" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
 	},
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "L" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "P" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/interior/lz2_habs)
 "Q" = (
 /obj/item/clothing/shoes/snow,
@@ -218,10 +176,7 @@
 /obj/item/clothing/mask/rebreather,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/item/clothing/mask/rebreather,
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/interior/lz2_habs)
 "S" = (
 /obj/effect/decal/cleanable/dirt,
@@ -233,18 +188,14 @@
 "U" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "V" = (
 /obj/structure/surface/table,
 /obj/structure/largecrate/random/mini/chest/b{
 	pixel_x = -1
 	},
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "W" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
@@ -260,14 +211,10 @@
 	pixel_y = -5;
 	pixel_x = 2
 	},
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "Y" = (
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "Z" = (
 /obj/structure/machinery/light/double{
@@ -275,9 +222,7 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 
 (1,1,1) = {"

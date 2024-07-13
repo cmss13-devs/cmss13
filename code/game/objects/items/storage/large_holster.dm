@@ -195,16 +195,13 @@
 	can_hold = list(/obj/item/weapon/gun/flamer/M240T)
 	has_gamemode_skin = TRUE
 
-/obj/item/storage/large_holster/fuelpack/Initialize(mapload, obj/item/weapon/gun/flamer/M240T/linked_flamer)
+/obj/item/storage/large_holster/fuelpack/Initialize()
 	. = ..()
 	fuel = new /obj/item/ammo_magazine/flamer_tank/large()
 	fuelB = new /obj/item/ammo_magazine/flamer_tank/large/B()
 	fuelX = new /obj/item/ammo_magazine/flamer_tank/large/X()
 	active_fuel = fuel
 	flamer_overlay = overlay_image('icons/obj/items/clothing/backpacks.dmi', "+m240t")
-	if(linked_flamer)
-		linked_flamer.fuelpack = src
-		src.linked_flamer = linked_flamer
 
 /obj/item/storage/large_holster/fuelpack/Destroy()
 	QDEL_NULL(active_fuel)
@@ -335,7 +332,7 @@
 
 /obj/item/storage/large_holster/fuelpack/get_examine_text(mob/user)
 	. = ..()
-	if(contents.len)
+	if(length(contents))
 		. += "It is storing a M240-T incinerator unit."
 	if (get_dist(user, src) <= 1)
 		if(fuel)

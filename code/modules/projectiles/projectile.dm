@@ -298,7 +298,7 @@
 	var/pixel_x_source = vis_source.x * world.icon_size + vis_source_pixel_x
 	var/pixel_y_source = vis_source.y * world.icon_size + vis_source_pixel_y
 
-	var/turf/vis_target = path[path.len]
+	var/turf/vis_target = path[length(path)]
 	var/pixel_x_target = vis_target.x * world.icon_size + p_x
 	var/pixel_y_target = vis_target.y * world.icon_size + p_y
 
@@ -311,7 +311,7 @@
 
 	//Determine apparent position along visual path, then lerp between start and end positions
 
-	var/vis_length = vis_travelled + path.len
+	var/vis_length = vis_travelled + length(path)
 	var/vis_current = vis_travelled + speed * (time_carry * 0.1) //speed * (time_carry * 0.1) for remainder time movement, visually "catching up" to where it should be
 	var/vis_interpolant = vis_current / vis_length
 
@@ -1137,7 +1137,7 @@
 		handle_blood_splatter(get_dir(P.starting, loc))
 
 		apply_damage(damage_result,P.ammo.damage_type, P.def_zone) //Deal the damage.
-		if(xeno_shields.len)
+		if(length(xeno_shields))
 			P.play_shielded_hit_effect(src)
 		else
 			P.play_hit_effect(src)

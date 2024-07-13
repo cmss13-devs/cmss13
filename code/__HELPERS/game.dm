@@ -58,7 +58,7 @@
 
 /proc/recursive_mob_check(atom/O, list/L = list(), recursion_limit = 3, client_check = 1, sight_check = 1, include_radio = 1)
 
-	//debug_mob += O.contents.len
+	//debug_mob += length(O.contents)
 	if(!recursion_limit)
 		return L
 	for(var/atom/A in O.contents)
@@ -300,7 +300,7 @@
  * * cache_only - Whether to not actually send a to_chat message and instead only update larva_queue_cached_message
  */
 /proc/message_alien_candidates(list/candidates, dequeued, cache_only = FALSE)
-	for(var/i in (1 + dequeued) to candidates.len)
+	for(var/i in (1 + dequeued) to length(candidates))
 		var/mob/dead/observer/cur_obs = candidates[i]
 
 		// Generate the messages

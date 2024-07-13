@@ -162,3 +162,97 @@
   vero5123:
   - bugfix: fixes vampire being able to execute hugged marines
   - bugfix: fixes cas being able to target shipside signals
+2024-06-19:
+  Diegoflores31:
+  - bugfix: Fixes CO being unable to award medals.
+  Drathek:
+  - bugfix: Fixed various equipment_presets not getting cached or looked up correctly
+  Git-Nivrak:
+  - qol: Dir-assist will now prioritize non-xenos over xenos.
+  Red-byte3D:
+  - balance: Synthetic Protective Form now takes 150 charge instead of 50.
+  TheGamerdk:
+  - rscadd: Overwatch console shows dead marines by default.
+  VileBeggar:
+  - soundadd: The M44 combat revolver has had its firing sound changed.
+  wshuwshuwshi:
+  - bugfix: Adds a 1.5x modifier to the amount taken from larva timer based on chem
+      property level
+  - bugfix: swaps the 1.5 multiplier for a delta_time multiplier
+  - bugfix: improved the formatting of the code to have proper spacing
+2024-06-20:
+  Drathek cuberound:
+  - balance: After three minutes from round start, landing zones will be covered in
+      a deadly gas
+  - balance: First dropship deployment will clear gas, and first dropship arrival
+      will deploy 4 sentries that last 20 minutes
+  - refactor: Refactored smoke code
+  - maptweak: Expanded LZ areas on Trijent Dam and Kutjevo Refinery
+  - maptweak: Shrunk LZ1 on Shivas Snowball and LZ2 on LV624 slightly
+  - maptweak: Removed fog on Chances Claim since it will be replaced by smoke and
+      tweaked southern tunnel area to not be considered a LZ
+  - bugfix: Fixed weird LZ lighting on some maps
+  - spellcheck: Replaced/removed synth coughing emotes in smoke
+  Git-Nivrak:
+  - qol: Added an hud icon for vampires that lets them know when an enemy can be executed.
+  Nomoresolvalou:
+  - rscadd: Added masks to synth snowflake vendor
+  Red-byte3D:
+  - balance: Re-adds Vehicle Crewmen
+  - balance: Tank now unlocks at 200 pop.
+  - balance: Re-adds tank and its attachements back to the tank-bay.
+  - balance: You can no longer have the ARC & TANK in the same round. if the arc is
+      bought the tank is unavailable and vice versa.
+  Zonespace27:
+  - rscdel: Pyro flamers now start unlinked from their tanks again
+  iloveloopers:
+  - rscadd: Added new upgraded incinerator fuel tanks printable by the biomass analyzer.
+  vero5123:
+  - rscadd: Adds the ability for users to make bug reports in-game
+  - ui: New bug report system ui
+  zzzmike:
+  - qol: examining eggs/morphers tells you current number of huggers and the limit
+2024-06-21:
+  Drathek:
+  - bugfix: Fixed the core showing lesser drone counts to humans when examined
+  Git-Nivrak:
+  - balance: You can no longer extinguish yourself with your own acid spray.
+  - balance: Queen will now briefly shove xenos if they are in a tile she is trying
+      to move to, preventing bodyblock.
+  cuberound:
+  - balance: patting fire on ground harms the xeno, more intense fire means more harm
+  iloveloopers:
+  - balance: Fence health nerfed, now can be 2 tapped by xenos
+  - qol: Fuel cell recyclers no longer block movement
+  - qol: Showcases are now slashable by xenos
+  zzzmike:
+  - bugfix: more survivors now listed in survivor category on observe menu
+2024-06-22:
+  Red-byte3D:
+  - balance: Vampire tail jab now only stuns if you knockback an enemy into an obstacle.
+  - spellcheck: Vampire lurkers no longer "throw it back" after hitting somebody with
+      their Tail Jab
+2024-06-23:
+  Drathek:
+  - bugfix: Fixed LZ gas not penetrating destructible walls
+  ihatethisengine2:
+  - bugfix: simple animals don't block projectiles after death anymore
+  iloveloopers:
+  - balance: Custom research chemicals with an intensityfire above or equal to 50
+      will now burn white.
+2024-06-28:
+  Drathek:
+  - bugfix: Fixed a crash in the Hotkey menu when searching by key when filtered
+  - bugfix: Fixed/Added support for various keys (e.g. keypad and media keys)
+  Git-Nivrak:
+  - bugfix: Fixes being able to draw weapons when knocked down
+  HeresKozmos:
+  - maptweak: Filled in a hole in the map.
+  - maptweak: Fixed an area in the easter egg section of Sorokyne
+  coldironwarrior:
+  - spellcheck: fixed a few typos in the xeno bioscan announcement
+  kiVts:
+  - code_imp: Prevented potential unintended behavior with research upgrade items
+      on initialize
+  private-tristan:
+  - qol: Facehuggers no longer show as having any plasma

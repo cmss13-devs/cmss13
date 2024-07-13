@@ -102,7 +102,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/reporter
-	name = "Combat Correspondent"
+	name = "Combat Correspondent (Press)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(
@@ -586,7 +586,6 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
-	access
 	assignment = JOB_SEA
 	rank = JOB_SEA
 	paygrade = PAY_SHORT_ME7
@@ -610,7 +609,7 @@
 		back_item = /obj/item/storage/backpack/marine
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/sea(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m44/custom(new_human), WEAR_WAIST)

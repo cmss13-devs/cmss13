@@ -1100,11 +1100,25 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			else
 				air_master.tiles_to_update += T2*/
 
-/proc/get_cardinal_dir(atom/A, atom/B)
-	var/dx = abs(B.x - A.x)
-	var/dy = abs(B.y - A.y)
-	return get_dir(A, B) & (rand() * (dx+dy) < dy ? 3 : 12)
+/// Returns the cardinal dir between two atoms. Favors clockwise on perfect diagonals. Consistent and reversible.
+/proc/get_cardinal_dir(atom/start, atom/end)
+	var/dx = end.x - start.x
+	var/dy = end.y - start.y
+	if(!(dx|dy))
+		return NONE //returns 0 when on same tile, consistent with get_dir()
 
+	var/angle = arctan(dy, dx)
+	switch(angle)
+		if (135 to 180)
+			return SOUTH
+		if (45 to 135)
+			return EAST
+		if (-45 to 45)
+			return NORTH
+		if (-135 to -45)
+			return WEST
+		else
+			return SOUTH
 
 //Returns the 2 dirs perpendicular to the arg
 /proc/get_perpen_dir(dir)

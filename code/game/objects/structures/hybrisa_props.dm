@@ -276,6 +276,8 @@
 	bound_width = 64
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+	projectile_coverage = PROJECTILE_COVERAGE_LOW
+	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Red
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_red.dmi'

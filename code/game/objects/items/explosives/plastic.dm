@@ -294,6 +294,7 @@
 /obj/item/explosive/plastic/proc/delayed_prime(turf/target_turf)
 	prime(TRUE)
 
+
 /obj/item/explosive/plastic/custom
 	name = "custom plastic explosive"
 	desc = "A custom plastic explosive."

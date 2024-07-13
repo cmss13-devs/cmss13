@@ -978,7 +978,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_SQUAD_MARINE
 	rank = JOB_SQUAD_MARINE
-	paygrade = "ME2"
+	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc/crafty
 	minimap_icon = "private"

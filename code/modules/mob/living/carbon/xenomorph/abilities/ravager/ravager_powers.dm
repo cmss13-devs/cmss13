@@ -171,6 +171,11 @@
 				var/obj/structure/window/framed/framed_window = structure_blocker
 				if(!framed_window.unslashable)
 					framed_window.deconstruct(disassembled = FALSE)
+			if(istype(structure_blocker, /obj/structure/fence))
+				var/obj/structure/fence/fence = structure_blocker
+				if(!fence.unslashable)
+					fence.health -= 50
+					fence.healthcheck()
 
 			if(structure_blocker.opacity)
 				blocked = TRUE

@@ -3037,7 +3037,7 @@
 /area/adminlevel/ert_station/uscm_station)
 "IJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/vehicle_spawner/apc_cmd/decrepit{
+/obj/effect/vehicle_spawner/apc/decrepit/cmd{
 	dir = 8;
 	pixel_y = -34;
 	pixel_x = -32

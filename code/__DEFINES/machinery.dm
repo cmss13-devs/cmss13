@@ -16,3 +16,6 @@
 #define DEFENDER_MODE "Xenomorph Defenders"
 #define RAVAGER_MODE "Xenomorph Ravagers"
 #define CRUSHER_MODE "Xenomorph Crushers"
+#define WARRIOR_MODE "Xenomorph Warriors"
+#define PRAETORIAN_MODE "Xenomorph Praetorians"
+#define BOILER_MODE "Xenomorph Boilers"

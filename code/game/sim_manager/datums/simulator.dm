@@ -28,6 +28,9 @@
 		DEFENDER_MODE = /mob/living/carbon/xenomorph/defender,
 		RAVAGER_MODE = /mob/living/carbon/xenomorph/ravager,
 		CRUSHER_MODE = /mob/living/carbon/xenomorph/crusher,
+		WARRIOR_MODE = /mob/living/carbon/xenomorph/warrior,
+		PRAETORIAN_MODE = /mob/living/carbon/xenomorph/praetorian,
+		BOILER_MODE = /mob/living/carbon/xenomorph/boiler,
 	)
 
 /datum/simulator/proc/start_watching(mob/living/user)

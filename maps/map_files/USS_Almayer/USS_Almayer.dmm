@@ -14520,15 +14520,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/stern)
-"eUO" = (
-/obj/structure/stairs,
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
-	vector_x = 3;
-	vector_y = 1
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
-/area/almayer/command/aist_office)
 "eUV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -21104,6 +21095,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"hsm" = (
+/obj/structure/stairs,
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresUp";
+	vector_x = 3;
+	vector_y = 1
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
+/area/almayer/command/aist_office)
 "hsr" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
@@ -23693,9 +23693,7 @@
 	vector_x = 3;
 	vector_y = 1
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_floor3"
-	},
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
 /area/almayer/command/aist_office)
 "ipt" = (
 /obj/structure/disposalpipe/segment{
@@ -124753,8 +124751,8 @@ bdH
 aKQ
 lmz
 azS
-eUO
-eUO
+hsm
+hsm
 ipq
 uth
 jeW

@@ -26776,12 +26776,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/port_missiles)
-"jtj" = (
-/obj/effect/step_trigger/clone_cleaner,
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "ai_floor3"
-	},
-/area/almayer/command/airoom)
 "jtm" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
 	req_access = null;
@@ -125385,7 +125379,7 @@ lmz
 lmz
 lmz
 daz
-jtj
+vMp
 kRA
 kRA
 pPY

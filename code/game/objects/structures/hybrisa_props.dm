@@ -82,9 +82,10 @@
 			update_icon()
 
 /obj/structure/prop/hybrisa/vehicles/bullet_act(obj/projectile/P)
-	if(P.ammo.damage)
-		take_damage(P.ammo.damage)
-		update_icon()
+    if(P.ammo.damage)
+        take_damage(P.ammo.damage)
+        playsound(src, 'sound/effects/metalping.ogg', 35, 1)
+        update_icon()
 
 // Armored Truck - Damage States
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck
@@ -893,6 +894,7 @@
 
 /obj/structure/prop/hybrisa/engineer/giantpod/bullet_act(obj/projectile/P)
 	health -= P.damage
+	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
@@ -990,6 +992,7 @@
 
 /obj/structure/blackgoocontainer/bullet_act(obj/projectile/P)
 	health -= P.damage
+	playsound(src, 'sound/effects/thud.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
@@ -1323,6 +1326,7 @@
 
 /obj/structure/prop/hybrisa/misc/trash/bullet_act(obj/projectile/P)
 	health -= P.damage
+	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
@@ -1382,7 +1386,7 @@
 	anchored = TRUE
 	density = TRUE
 	layer = WINDOW_LAYER
-	health = 200
+	health = 450
 
 /obj/structure/prop/hybrisa/misc/slotmachine/broken
 	name = "slot machine"
@@ -1397,6 +1401,7 @@
 
 /obj/structure/prop/hybrisa/misc/slotmachine/bullet_act(obj/projectile/P)
 	health -= P.damage
+	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
@@ -1452,6 +1457,7 @@
 
 /obj/structure/machinery/big_computers/bullet_act(obj/projectile/P)
 	health -= P.damage
+	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
@@ -1592,6 +1598,7 @@
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/bullet_act(obj/projectile/P)
 	health -= P.damage
+	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
@@ -1933,6 +1940,7 @@
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/bullet_act(obj/projectile/P)
 	health -= P.damage
+	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
@@ -2011,6 +2019,7 @@
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/bullet_act(obj/projectile/P)
 	health -= P.damage
+	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
@@ -2134,6 +2143,7 @@
 
 /obj/structure/prop/hybrisa/misc/firehydrant/bullet_act(obj/projectile/P)
 	health -= P.damage
+	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
@@ -2233,6 +2243,7 @@
 
 /obj/structure/prop/hybrisa/misc/phonebox/bullet_act(obj/projectile/P)
 	health -= P.damage
+	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
@@ -2257,7 +2268,7 @@
 	if(unslashable)
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
-	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	playsound(src, 'sound/effects/Glasshit.ogg', 25, 1)
 	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
@@ -2302,6 +2313,7 @@
 
 /obj/structure/prop/hybrisa/signs/bullet_act(obj/projectile/P)
 	health -= P.damage
+	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
@@ -2401,6 +2413,7 @@
 
 /obj/structure/prop/hybrisa/billboardsandsigns/bullet_act(obj/projectile/P)
 	health -= P.damage
+	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE

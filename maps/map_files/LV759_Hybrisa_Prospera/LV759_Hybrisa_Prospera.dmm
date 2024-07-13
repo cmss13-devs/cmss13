@@ -74553,7 +74553,9 @@
 /area/lv759/indoors/wy_research_complex/weaponresearchlab)
 "mgC" = (
 /obj/structure/sign/goldenplaque{
-	pixel_x = 4
+	pixel_x = 4;
+	desc = "Special thanks to everyone who was instrumental in making this map possible: Mikoka Wei (aka Esselnek), Drulikar (aka Drathek), Cuberound. Additional thanks to Nanu, Almings, and Crowford, if I missed anyone, thank you too—you know who you are. Thanks also to those who playtested and reported any issues or bugs.";
+	name = "Golden Plaque of Gratitude"
 	},
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/lv759/oob)

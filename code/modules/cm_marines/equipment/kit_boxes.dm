@@ -296,6 +296,7 @@
 		user.put_in_hands(spec_box)
 		ID.set_assignment((user.assigned_squad && squad_assignment_update ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")
 		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
+		GLOB.available_specialist_kit_boxes[selection]--
 		return TRUE
 	return FALSE
 

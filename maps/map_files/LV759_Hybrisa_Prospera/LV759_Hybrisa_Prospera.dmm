@@ -3774,7 +3774,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/maintenance_jack,
 /obj/item/device/multitool,
-/turf/open/shuttle/escapepod/floor1,
+/turf/open/shuttle/escapepod/west,
 /area/lv759/indoors/electical_systems/substation2)
 "aGc" = (
 /obj/item/trash/cigbutt{
@@ -4727,7 +4727,7 @@
 	dir = 4;
 	start_charge = 0
 	},
-/turf/open/shuttle/escapepod/floor1/east,
+/turf/open/shuttle/escapepod/west,
 /area/lv759/indoors/power_plant/fusion_generators)
 "aOL" = (
 /obj/effect/landmark/monkey_spawn,
@@ -7467,7 +7467,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
 	},
-/turf/open/shuttle/escapepod/floor0/west,
+/turf/open/shuttle/escapepod/floor0/north,
 /area/lv759/indoors/power_plant/geothermal_generators)
 "blA" = (
 /turf/open/hybrisa/dropship/dropship3,
@@ -16230,7 +16230,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/shuttle/escapepod/floor1/east,
+/turf/open/shuttle/escapepod/west,
 /area/lv759/indoors/power_plant/geothermal_generators)
 "cGk" = (
 /obj/structure/girder,
@@ -24634,7 +24634,7 @@
 	pixel_x = 7
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/corsat,
+/turf/open/shuttle/escapepod/north,
 /area/lv759/oob)
 "dXM" = (
 /obj/structure/platform_decoration/strata/metal{
@@ -28492,7 +28492,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/turf/open/shuttle/escapepod/floor1/east,
+/turf/open/shuttle/escapepod/west,
 /area/lv759/indoors/power_plant/fusion_generators)
 "eEs" = (
 /obj/structure/barricade/handrail/hybrisa/handrail,
@@ -32201,7 +32201,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "fkb" = (
-/turf/open/shuttle/escapepod/floor1,
+/turf/open/shuttle/escapepod/north,
 /area/lv759/indoors/spaceport/engineering)
 "fke" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -33061,7 +33061,7 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/turf/open/shuttle/escapepod/floor1/east,
+/turf/open/shuttle/escapepod/east,
 /area/lv759/indoors/power_plant/geothermal_generators)
 "frt" = (
 /obj/item/trash/buritto,
@@ -33884,7 +33884,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/turf/open/shuttle/escapepod/floor1,
+/turf/open/shuttle/escapepod/north,
 /area/lv759/indoors/power_plant/geothermal_generators)
 "fyU" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -42001,7 +42001,7 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv759/indoors/hospital/virology)
 "gQW" = (
-/turf/open/shuttle/escapepod/floor1,
+/turf/open/shuttle/escapepod/floor1/east,
 /area/lv759/indoors/power_plant/fusion_generators)
 "gQZ" = (
 /turf/open/floor/almayer/cargo_arrow/east,
@@ -43451,7 +43451,7 @@
 /area/lv759/outdoors/power_plant/transformers_north)
 "hdU" = (
 /obj/structure/platform_decoration,
-/turf/open/shuttle/escapepod/floor0,
+/turf/open/shuttle/escapepod/floor2,
 /area/lv759/indoors/power_plant/geothermal_generators)
 "hdV" = (
 /obj/structure/barricade/handrail/strata{
@@ -47961,9 +47961,9 @@
 /area/lv759/indoors/hospital/cryo_room)
 "hPt" = (
 /obj/structure/platform{
-	dir = 8
+	dir = 4
 	},
-/turf/open/shuttle/escapepod/floor1,
+/turf/open/shuttle/escapepod/west,
 /area/lv759/indoors/power_plant/fusion_generators)
 "hPC" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -52592,7 +52592,7 @@
 	},
 /obj/structure/machinery/light/small/blue,
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/corsat,
+/turf/open/shuttle/escapepod/north,
 /area/lv759/oob)
 "iCB" = (
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
@@ -56282,7 +56282,7 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/turf/open/shuttle/escapepod/floor1,
+/turf/open/shuttle/escapepod/north,
 /area/lv759/indoors/power_plant/geothermal_generators)
 "jjz" = (
 /obj/effect/hybrisa/decal/road/road_edge,
@@ -69038,7 +69038,7 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/turf/open/shuttle/escapepod/floor1/east,
+/turf/open/shuttle/escapepod/west,
 /area/lv759/indoors/power_plant/geothermal_generators)
 "lnb" = (
 /obj/structure/largecrate/empty/secure,
@@ -75595,7 +75595,7 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
-/turf/open/shuttle/escapepod/floor1,
+/turf/open/shuttle/escapepod/north,
 /area/lv759/indoors/spaceport/engineering)
 "mqi" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
@@ -86602,9 +86602,9 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "ohh" = (
 /obj/structure/platform{
-	dir = 4
+	dir = 8
 	},
-/turf/open/shuttle/escapepod/floor1,
+/turf/open/shuttle/escapepod/west,
 /area/lv759/indoors/power_plant/fusion_generators)
 "ohi" = (
 /obj/structure/cable{
@@ -105001,7 +105001,7 @@
 /obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
-/turf/open/shuttle/escapepod/floor1,
+/turf/open/shuttle/escapepod/west,
 /area/lv759/indoors/electical_systems/substation2)
 "riy" = (
 /obj/effect/hybrisa/decal/road/roadmiddle{
@@ -113208,7 +113208,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
-/turf/open/shuttle/escapepod/floor0,
+/turf/open/shuttle/escapepod/floor2,
 /area/lv759/indoors/power_plant/geothermal_generators)
 "svV" = (
 /obj/effect/decal/cleanable/blood,
@@ -118132,6 +118132,12 @@
 /obj/item/smallDelivery,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
+"tme" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/shuttle/escapepod/east,
+/area/lv759/indoors/power_plant/geothermal_generators)
 "tmq" = (
 /obj/structure/machinery/vending/dinnerware,
 /turf/open/floor/corsat/officetiles,
@@ -123366,7 +123372,7 @@
 /area/lv759/indoors/mining_outpost/east)
 "uhq" = (
 /obj/structure/machinery/light/spot,
-/turf/open/shuttle/escapepod/floor1,
+/turf/open/shuttle/escapepod/west,
 /area/lv759/indoors/electical_systems/substation2)
 "uhs" = (
 /obj/item/tool/warning_cone{
@@ -127267,7 +127273,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
 	},
-/turf/open/shuttle/escapepod/floor0/north,
+/turf/open/shuttle/escapepod/floor0/west,
 /area/lv759/indoors/power_plant/geothermal_generators)
 "uNy" = (
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -142810,7 +142816,7 @@
 	dir = 1
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/corsat,
+/turf/open/shuttle/escapepod/north,
 /area/lv759/oob)
 "xqN" = (
 /obj/structure/toilet{
@@ -179728,8 +179734,8 @@ jzM
 ssL
 vsv
 mkM
+hPt
 kif
-ohh
 sFQ
 bIo
 jzM
@@ -180988,8 +180994,8 @@ wLi
 uAR
 lCv
 mkz
+ohh
 kVU
-hPt
 pER
 nvV
 acW
@@ -187301,7 +187307,7 @@ lxb
 cQH
 tSy
 muj
-cFZ
+tme
 mZl
 mZl
 awC

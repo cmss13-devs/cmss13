@@ -1,5 +1,5 @@
 /obj/item/hardpoint/secondary/frontalcannon
-	name = "Bleihagel RE-RE700 Frontal Cannon"
+	name = "\improper Bleihagel RE-RE700 Frontal Cannon"
 	desc = "The marketing department over at Bleihagel would have you believe that the RE-RE700 is an original design. However, experts who pried the cover off the cannon have discovered an object with a striking similarity to the popular M56 Cupola. It is still unknown why the cannon has two barrels."
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
 

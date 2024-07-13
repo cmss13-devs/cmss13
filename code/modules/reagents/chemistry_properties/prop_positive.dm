@@ -71,7 +71,7 @@
 /datum/chem_property/positive/repairing
 	name = PROPERTY_REPAIRING
 	code = "REP"
-	description = "Repairs cybernetic organs by <B>REDACTED</B>."
+	description = "Repairs cybernetic organs by the use of REDACTED property of REDACTED element."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_MEDICINE
 	value = 2
@@ -435,7 +435,7 @@
 		if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			L.take_damage(0, potency)
 			return
-		if(L.implants && L.implants.len > 0)
+		if(LAZYLEN(L.implants) > 0)
 			var/obj/implanted_object = pick(L.implants)
 			if(implanted_object)
 				L.implants -= implanted_object

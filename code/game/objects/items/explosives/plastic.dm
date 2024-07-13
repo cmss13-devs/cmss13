@@ -21,7 +21,7 @@
 	var/atom/plant_target = null //which atom the plstique explosive is planted on
 	var/overlay_image = "plastic-explosive2"
 	var/image/overlay
-	var/list/breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door , /obj/structure/cargo_container,/obj/structure/machinery/colony_floodlight, /mob/living)
+	var/list/breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door , /obj/structure/cargo_container,/obj/structure/machinery/colony_floodlight, /obj/structure/prop, /mob/living)
 	antigrief_protection = TRUE //Should it be checked by antigrief?
 
 	var/req_skill = SKILL_ENGINEER

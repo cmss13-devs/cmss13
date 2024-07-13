@@ -390,7 +390,7 @@
 	icon_state = "co_formalhat_black"
 
 /obj/item/clothing/head/cmcap/req/ro
-	name = "\improper USCM quartermaster cap"
+	name = "\improper USCM Requisitions Officer cap"
 	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "rocap"
 	flags_atom = NO_SNOW_TYPE
@@ -566,6 +566,15 @@
 	name = "logistics officer beret"
 	desc = "A beret with the lieutenant insignia emblazoned on it. It inspires a feeling of respect."
 	icon_state = "beret_badge"
+
+/obj/item/clothing/head/beret/marine/ro
+	name = "requisitions officer beret"
+	desc = "A beret with the lieutenant insignia emblazoned on it. It symbolizes hard work and shady business."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "ro_beret"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
 
 //==========================//PROTECTIVE\\===============================\\
 //=======================================================================\\

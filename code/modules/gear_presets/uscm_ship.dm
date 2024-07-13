@@ -310,8 +310,8 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/uscm_ship/qm
-	name = "USCM Quartermaster (QM)"
+/datum/equipment_preset/uscm_ship/ro
+	name = "USCM Requisitions Officer (RO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -327,25 +327,25 @@
 	)
 	assignment = JOB_CHIEF_REQUISITION
 	rank = JOB_CHIEF_REQUISITION
-	paygrade = PAY_SHORT_ME7
-	role_comm_title = "QM"
+	paygrade = PAY_SHORT_MO1
+	role_comm_title = "RO"
 	minimum_age = 27
 	skills = /datum/skills/RO
 
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 	minimap_icon = list("ct" = MINIMAP_ICON_COLOR_HEAD)
 
-	utility_under = list(/obj/item/clothing/under/rank/qm_suit)
+	utility_under = list(/obj/item/clothing/under/rank/ro_suit)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
-/datum/equipment_preset/uscm_ship/qm/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/uscm_ship/ro/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/industrial
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/qm(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/qm_suit(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/ro(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/ro_suit(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/req/ro(new_human), WEAR_HEAD)

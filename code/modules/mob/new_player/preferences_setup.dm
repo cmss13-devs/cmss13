@@ -290,7 +290,7 @@
 		if(JOB_MAINT_TECH)
 			return /datum/equipment_preset/uscm_ship/maint
 		if(JOB_CHIEF_REQUISITION)
-			return /datum/equipment_preset/uscm_ship/qm
+			return /datum/equipment_preset/uscm_ship/ro
 		if(JOB_CARGO_TECH)
 			return /datum/equipment_preset/uscm_ship/cargo
 		if(JOB_CMO)

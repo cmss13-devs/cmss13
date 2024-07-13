@@ -173,13 +173,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_req_officer, list(
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Insulated Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-		list("Quartermaster Uniform", 0, /obj/item/clothing/under/rank/qm_suit, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Headset", 0, /obj/item/device/radio/headset/almayer/qm, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+		list("Requisitions Officer Uniform", 0, /obj/item/clothing/under/rank/ro_suit, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("Headset", 0, /obj/item/device/radio/headset/almayer/ro, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel/tech, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-		list("Quartermaster Jacket", 0, /obj/item/clothing/suit/storage/RO, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+		list("Requisitions Officer Jacket", 0, /obj/item/clothing/suit/storage/RO, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
 		list("Headgear (CHOOSE 1)", 0, null, null, null),
-		list("Quartermaster Cap", 0, /obj/item/clothing/head/cmcap/req/ro, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+		list("Requisitions Officer Cap", 0, /obj/item/clothing/head/cmcap/req/ro, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+		list("Requisitions Officer Beret", 0, /obj/item/clothing/head/beret/marine/ro, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
 		list("Requisitions Cap", 0, /obj/item/clothing/head/cmcap/req, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
@@ -450,7 +451,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_auxiliary_officer, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Insulated Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Officer Uniform", 0, /obj/item/clothing/under/marine/officer/bridge, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Headset", 0, /obj/item/device/radio/headset/almayer/qm, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+		list("Headset", 0, /obj/item/device/radio/headset/almayer/ro, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Patrol Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 		list("Auxiliary Support Officer Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/service/aso, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 

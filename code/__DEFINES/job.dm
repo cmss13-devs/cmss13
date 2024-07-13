@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_ENGINEER_ROLES   /datum/timelock/engineer
 #define JOB_ENGINEER_ROLES_LIST  list(JOB_SQUAD_ENGI, JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CHIEF_ENGINEER)
 
-#define JOB_CHIEF_REQUISITION "Quartermaster"
+#define JOB_CHIEF_REQUISITION "Requisitions Officer"
 #define JOB_CARGO_TECH "Cargo Technician"
 #define JOB_REQUISITION_ROLES    /datum/timelock/requisition
 #define JOB_REQUISITION_ROLES_LIST   list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)

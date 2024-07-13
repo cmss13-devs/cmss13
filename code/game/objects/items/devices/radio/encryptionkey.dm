@@ -119,8 +119,8 @@
 
 // MARINE REQUISTIONS
 
-/obj/item/device/encryptionkey/qm
-	name = "Requisition Officer's Encryption Key"
+/obj/item/device/encryptionkey/ro
+	name = "Requisitions Officer's Encryption Key"
 	icon_state = "ce_key"
 	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = FALSE, RADIO_CHANNEL_MEDSCI = FALSE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
 

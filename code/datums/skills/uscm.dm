@@ -415,7 +415,7 @@ COMMAND STAFF
 	)
 
 /datum/skills/RO
-	name = "Requisition Officer"
+	name = "Requisitions Officer"
 	skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_LEADERSHIP = SKILL_LEAD_EXPERT,

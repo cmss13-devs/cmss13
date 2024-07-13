@@ -926,9 +926,9 @@
 	desc = "A formal white undersuit."
 	flags_jumpsuit = FALSE
 
-/obj/item/clothing/under/rank/qm_suit
-	name = "quartermaster suit"
-	desc = "A nicely-fitting military suit for a quartermaster. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+/obj/item/clothing/under/rank/ro_suit
+	name = "requisitions officer suit"
+	desc = "A nicely-fitting military suit for a Requisitions Officer. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "RO_jumpsuit"
 	worn_state = "RO_jumpsuit"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE

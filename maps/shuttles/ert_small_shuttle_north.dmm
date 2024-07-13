@@ -37,9 +37,7 @@
 	network = list("Military","Almayer");
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/shuttle/ert)
 "o" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
@@ -80,9 +78,7 @@
 	icon_state = "N";
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/shuttle/ert)
 "v" = (
 /obj/structure/closet/hydrant{
@@ -123,9 +119,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
 	pixel_x = 32
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/shuttle/ert)
 "C" = (
 /obj/docking_port/mobile/emergency_response/small,
@@ -135,16 +129,12 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/shuttle/ert)
 "E" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/shuttle/ert/small,
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/shuttle/ert)
 "F" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
@@ -168,9 +158,7 @@
 	pixel_x = -1;
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/shuttle/ert)
 "I" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname{
@@ -189,9 +177,7 @@
 "K" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/crew/alt,
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/shuttle/ert)
 "O" = (
 /turf/open/floor/plating/almayer,
@@ -201,9 +187,7 @@
 /obj/structure/machinery/computer/station_alert{
 	dir = 8
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/shuttle/ert)
 "W" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{

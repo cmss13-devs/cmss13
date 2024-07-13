@@ -28958,7 +28958,7 @@
 "cqm" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/clothing/head/beret/sec/warden,
+/obj/item/clothing/head/CMB/beret,
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/warden)
 "cqn" = (

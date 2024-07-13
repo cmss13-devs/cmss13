@@ -175,6 +175,9 @@
 	else
 		to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
 
+/obj/item/paper_bundle/proc/operator[](index_num)
+	return contents[index_num]
+
 /obj/item/paper_bundle/verb/rename()
 	set name = "Rename bundle"
 	set category = "Object"

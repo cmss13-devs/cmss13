@@ -114,6 +114,8 @@ class DMMParser:
 
     def parse_constant(self, constant):
         if (float_constant := self.safe_float(constant)) is not None:
+            if(constant.isdigit()):
+                return int(constant)
             return float_constant
         elif re.match(r'^/[/\w]+$', constant):
             return Typepath(constant)

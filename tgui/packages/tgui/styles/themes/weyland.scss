@@ -28,7 +28,7 @@ $weyland: #af7f38;
     '../components/Button.scss',
     $with: (
       'color-default': $weyland,
-      'color-selected': #9d0808,
+      'color-selected': #e4c69a,
       'color-caution': #be6209,
       'color-danger': #9a9d00,
       'color-transparent-text': color.scale($weyland, $lightness: 30%)
@@ -47,6 +47,10 @@ $weyland: #af7f38;
     '../layouts/TitleBar.scss',
     $with: ('background-color': color.scale(#252832, $lightness: -25%))
   );
+  @include meta.load-css(
+    '../components/Divider.scss',
+    $with: ('color': rgba(28, 30, 32, 0.932), 'thickness': base.em(4px))
+  );
 
   .Button {
     font-family: consolas;
@@ -59,7 +63,7 @@ $weyland: #af7f38;
     background-color: #252832;
     background-image: url('../../assets/bg-weyland.png');
     background-position: top;
-    background-size: contain;
+    background-size: auto;
     background-repeat: repeat no-repeat;
   }
 

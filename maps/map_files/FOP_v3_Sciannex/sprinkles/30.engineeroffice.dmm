@@ -6,35 +6,23 @@
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "h" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 "k" = (
 /obj/structure/sign/poster/hero/voteno{
 	pixel_y = 29
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 "n" = (
 /obj/structure/machinery/power/apc,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 "o" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/template_noop)
 "s" = (
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull/northwest,
 /area/template_noop)
 "t" = (
 /obj/structure/filingcabinet{
@@ -46,9 +34,7 @@
 	pixel_y = 4
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "x" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -60,10 +46,7 @@
 	layer = 2.8;
 	pixel_y = -7
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 "z" = (
 /obj/structure/coatrack,
@@ -77,10 +60,7 @@
 	pixel_x = -2;
 	pixel_y = 13
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 "D" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
@@ -89,10 +69,7 @@
 	pixel_x = 10;
 	pixel_y = -3
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 "E" = (
 /obj/structure/machinery/photocopier,
@@ -104,9 +81,7 @@
 /obj/item/paper{
 	desc = "The image appears to be someone's backside, the page number is labled as 259."
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "F" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -127,10 +102,7 @@
 /obj/item/weapon/butterfly{
 	pixel_x = 17
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 "O" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -138,10 +110,7 @@
 	icon_state = "mwo";
 	pixel_y = 6
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 "Q" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -154,15 +123,10 @@
 /obj/item/storage/firstaid/regular/empty{
 	pixel_x = 14
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 "T" = (
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "V" = (
 /obj/structure/filingcabinet{
@@ -175,9 +139,7 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/pamphlet/engineer,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "X" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
@@ -188,10 +150,7 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /obj/item/storage/backpack/marine/engineerpack/satchel,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 "Z" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -202,10 +161,7 @@
 /obj/item/book/manual/engineering_guide{
 	pixel_x = -4
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 
 (1,1,1) = {"

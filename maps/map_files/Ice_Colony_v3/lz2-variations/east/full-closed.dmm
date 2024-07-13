@@ -6,9 +6,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
 "l" = (
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "S" = (
 /obj/structure/flora/bush/snow{

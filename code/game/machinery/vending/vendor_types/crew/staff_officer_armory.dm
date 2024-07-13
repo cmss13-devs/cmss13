@@ -18,6 +18,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer_armory, list(
 		list("Marine Combat Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Aviator Shades", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("Bayonet", 0, /obj/item/attachable/bayonet, null, VENDOR_ITEM_REGULAR),
 
 		list("SPECIALISATION KIT (CHOOSE 1)", 0, null, null, null),
 		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
@@ -68,6 +69,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer_armory, list(
 
 		list("OTHER SUPPLIES", 0, null, null, null),
 		list("Medical Helmet Optic", 5, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_REGULAR),
+		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
 		list("Magnetic Harness", 12, /obj/item/attachable/magnetic_harness, null, VENDOR_ITEM_REGULAR),
 		list("Radio Telephone Pack", 15, /obj/item/storage/backpack/marine/satchel/rto, null, VENDOR_ITEM_RECOMMENDED),
 		list("Binoculars", 5,/obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
@@ -78,6 +80,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer_armory, list(
 		list("Fulton Recovery Device", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("Space Cleaner", 2, /obj/item/reagent_container/spray/cleaner, null, VENDOR_ITEM_REGULAR),
+		list("Blowtorch", 5, /obj/item/tool/weldingtool, null, VENDOR_ITEM_REGULAR),
+		list("Wrench", 1, /obj/item/tool/wrench, null, VENDOR_ITEM_REGULAR),
+		list("Crowbar", 1, /obj/item/tool/crowbar, null, VENDOR_ITEM_REGULAR),
+		list("Entrenching Tool", 1, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", 5, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR)
 	))

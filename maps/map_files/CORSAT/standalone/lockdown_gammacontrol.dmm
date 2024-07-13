@@ -1,14 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/obj/structure/closet/firecloset,
-/turf/open/floor/corsat{
-	icon_state = "red";
 	dir = 4
 	},
+/obj/structure/closet/firecloset,
+/turf/open/floor/corsat/red/east,
 /area/corsat/gamma/airlock/control)
 "b" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
@@ -18,84 +14,54 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/hallwaysouth)
 "d" = (
-/turf/open/floor/corsat{
-	icon_state = "redcorner";
-	dir = 4
-	},
+/turf/open/floor/corsat/redcorner/east,
 /area/corsat/gamma/airlock/control)
 "e" = (
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
+/turf/open/floor/corsat/marked,
 /area/corsat/gamma/airlock/control)
 "f" = (
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
+/turf/open/floor/corsat/plate,
 /area/corsat/gamma/hallwaysouth)
 "g" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
+/turf/open/floor/corsat/squares,
 /area/corsat/gamma/airlock/control)
 "h" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
+/turf/open/floor/corsat/marked,
 /area/corsat/gamma/airlock/control)
 "i" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "retrosquares"
-	},
+/turf/open/floor/corsat/retrosquares,
 /area/corsat/gamma/hallwaysouth)
 "j" = (
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
+/turf/open/floor/corsat/squares,
 /area/corsat/gamma/airlock/control)
 "k" = (
-/turf/open/floor/corsat{
-	icon_state = "retrosquares"
-	},
+/turf/open/floor/corsat/retrosquares,
 /area/corsat/gamma/hallwaysouth)
 "l" = (
-/turf/open/floor/corsat{
-	icon_state = "yellowcorner"
-	},
+/turf/open/floor/corsat/yellowcorner,
 /area/corsat/gamma/airlock/control)
 "m" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/opened{
 	id = "GammaWestD";
-	name = "Gamma Dome Airlock";
-	unacidable = 0;
-	use_power = 1
+	name = "Gamma Dome Airlock"
 	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
+/turf/open/floor/corsat/marked,
 /area/corsat/gamma/airlock/control)
 "n" = (
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/obj/structure/machinery/disposal,
-/turf/open/floor/corsat{
-	icon_state = "yellow";
 	dir = 4
 	},
+/obj/structure/machinery/disposal,
+/turf/open/floor/corsat/yellow/east,
 /area/corsat/gamma/airlock/control)
 
 (1,1,1) = {"

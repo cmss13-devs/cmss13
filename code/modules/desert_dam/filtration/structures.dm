@@ -3,6 +3,27 @@
 	icon = 'icons/turf/floors/filtration.dmi'
 	icon_state = "filtrationside"
 
+/turf/open/floor/filtrationside/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/filtrationside/north
+	dir = NORTH
+
+/turf/open/floor/filtrationside/east
+	dir = EAST
+
+/turf/open/floor/filtrationside/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/filtrationside/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/filtrationside/west
+	dir = WEST
+
+/turf/open/floor/filtrationside/northwest
+	dir = NORTHWEST
+
 /turf/open/floor/plating/catwalk/rusted
 	icon = 'icons/turf/floors/filtration.dmi'
 	icon_state = "grate"
@@ -13,6 +34,78 @@
 /turf/open/floor/coagulation
 	name = "coagulation"
 	icon = 'icons/turf/floors/coagulation.dmi'
+
+/turf/open/floor/coagulation/icon0_0
+	icon_state = "0,0"
+
+/turf/open/floor/coagulation/icon0_4
+	icon_state = "0,4"
+
+/turf/open/floor/coagulation/icon0_5
+	icon_state = "0,5"
+
+/turf/open/floor/coagulation/icon0_8
+	icon_state = "0,8"
+
+/turf/open/floor/coagulation/icon1_1
+	icon_state = "1,1"
+
+/turf/open/floor/coagulation/icon1_7
+	icon_state = "1,7"
+
+/turf/open/floor/coagulation/icon2_0
+	icon_state = "2,0"
+
+/turf/open/floor/coagulation/icon4_8
+	icon_state = "4,8"
+
+/turf/open/floor/coagulation/icon5_8
+	icon_state = "5,8"
+
+/turf/open/floor/coagulation/icon6_8
+	icon_state = "6,8"
+
+/turf/open/floor/coagulation/icon6_8_2
+	icon_state = "6,8-2"
+
+/turf/open/floor/coagulation/icon7_0
+	icon_state = "7,0"
+
+/turf/open/floor/coagulation/icon7_1
+	icon_state = "7,1"
+
+/turf/open/floor/coagulation/icon7_7
+	icon_state = "7,7"
+
+/turf/open/floor/coagulation/icon7_7_2
+	icon_state = "7,7-2"
+
+/turf/open/floor/coagulation/icon7_8
+	icon_state = "7,8"
+
+/turf/open/floor/coagulation/icon7_8_2
+	icon_state = "7,8-2"
+
+/turf/open/floor/coagulation/icon8_0
+	icon_state = "8,0"
+
+/turf/open/floor/coagulation/icon8_3
+	icon_state = "8,3"
+
+/turf/open/floor/coagulation/icon8_4
+	icon_state = "8,4"
+
+/turf/open/floor/coagulation/icon8_6
+	icon_state = "8,6"
+
+/turf/open/floor/coagulation/icon8_7
+	icon_state = "8,7"
+
+/turf/open/floor/coagulation/icon8_7_2
+	icon_state = "8,7-2"
+
+/turf/open/floor/coagulation/icon8_8
+	icon_state = "8,8"
 
 /obj/structure/filtration/coagulation
 	name = "coagulation"

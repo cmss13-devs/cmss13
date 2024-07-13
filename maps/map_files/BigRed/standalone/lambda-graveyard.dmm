@@ -3,33 +3,23 @@
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "e" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/se)
 "f" = (
 /obj/item/stool,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/se)
 "g" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_11"
-	},
+/turf/open/mars/mars_dirt_11,
 /area/bigredv2/outside/se)
 "h" = (
 /obj/structure/flora/bush/ausbushes{
 	cut_level = 1
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_14"
-	},
+/turf/open/mars/mars_dirt_14,
 /area/bigredv2/outside/se)
 "i" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_12"
-	},
+/turf/open/mars/mars_dirt_12,
 /area/bigredv2/outside/se)
 "j" = (
 /obj/item/trash/cigbutt{
@@ -50,19 +40,13 @@
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "l" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_8"
-	},
+/turf/open/mars/mars_dirt_8,
 /area/bigredv2/outside/se)
 "m" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_3"
-	},
+/turf/open/mars/mars_dirt_3,
 /area/bigredv2/outside/se)
 "n" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_9"
-	},
+/turf/open/mars/mars_dirt_9,
 /area/bigredv2/outside/se)
 "o" = (
 /turf/closed/wall/solaris/rock,

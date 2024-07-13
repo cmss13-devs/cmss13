@@ -6,10 +6,7 @@
 "cs" = (
 /obj/structure/surface/rack,
 /obj/item/device/motiondetector/hacked,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
 "cO" = (
 /obj/structure/surface/rack,
@@ -19,10 +16,7 @@
 /area/shiva/interior/colony/research_hab)
 "ei" = (
 /obj/structure/machinery/space_heater,
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull/north,
 /area/shiva/interior/colony/research_hab)
 "fs" = (
 /obj/structure/barricade/wooden{
@@ -36,10 +30,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "hG" = (
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull/north,
 /area/shiva/interior/colony/research_hab)
 "ip" = (
 /obj/structure/closet/crate/secure/weyland,
@@ -59,14 +50,11 @@
 	dir = 4;
 	pixel_y = 9
 	},
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "jW" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating,
@@ -78,15 +66,10 @@
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/storage/pill_bottle/kelotane/skillless,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "lA" = (
-/turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/interior/colony/research_hab)
 "lM" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -101,9 +84,7 @@
 	dir = 1;
 	pixel_y = 9
 	},
-/turf/open/floor/shiva{
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "mj" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
@@ -116,16 +97,11 @@
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/storage/pill_bottle/bicaridine/skillless,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "nn" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
 "nQ" = (
 /obj/structure/surface/table,
@@ -141,22 +117,15 @@
 /area/shiva/interior/colony/research_hab)
 "pr" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "pC" = (
 /obj/structure/closet/radiation,
-/turf/open/floor/shiva{
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "pI" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull/east,
 /area/shiva/interior/colony/research_hab)
 "qr" = (
 /obj/effect/decal/cleanable/dirt,
@@ -169,10 +138,7 @@
 "qH" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
 "rA" = (
 /obj/structure/machinery/space_heater,
@@ -201,10 +167,7 @@
 	name = "\improper Omicron Field Gear Storage"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/interior/colony/research_hab)
 "sS" = (
 /obj/structure/closet/crate,
@@ -213,17 +176,12 @@
 /area/shiva/interior/colony/research_hab)
 "sV" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/interior/colony/research_hab)
 "tr" = (
 /obj/structure/closet/radiation,
 /obj/effect/spawner/random/powercell,
-/turf/open/floor/shiva{
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "tL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -238,10 +196,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "uJ" = (
-/turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull/east,
 /area/shiva/interior/colony/research_hab)
 "vf" = (
 /obj/structure/window/framed/shiva,
@@ -258,15 +213,10 @@
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/storage/pill_bottle/inaprovaline/skillless,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "yZ" = (
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
 "zg" = (
 /obj/structure/filingcabinet{
@@ -277,9 +227,7 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
-/turf/open/floor/shiva{
-	icon_state = "yellowfull"
-	},
+/turf/open/floor/shiva/yellowfull,
 /area/shiva/interior/colony/research_hab)
 "AC" = (
 /turf/open/floor/plating,
@@ -291,15 +239,10 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname{
 	req_access_txt = "100"
 	},
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
 "GL" = (
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "Hk" = (
 /obj/structure/closet/radiation,
@@ -307,9 +250,7 @@
 	dir = 8;
 	pixel_y = -5
 	},
-/turf/open/floor/shiva{
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "Hm" = (
 /turf/open/auto_turf/snow/layer0,
@@ -330,9 +271,7 @@
 /area/shiva/interior/colony/research_hab)
 "JH" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "JI" = (
 /obj/structure/surface/rack,
@@ -342,9 +281,7 @@
 /area/shiva/interior/colony/research_hab)
 "JO" = (
 /obj/structure/machinery/light/double,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "KS" = (
 /turf/open/floor/shiva,
@@ -352,9 +289,7 @@
 "Lg" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/labcoat/researcher,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "Lk" = (
 /obj/structure/surface/rack,
@@ -378,10 +313,7 @@
 /area/shiva/interior/colony/research_hab)
 "Ov" = (
 /obj/structure/machinery/space_heater,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
 "OW" = (
 /obj/structure/surface/rack,
@@ -390,9 +322,7 @@
 	dir = 8;
 	pixel_y = 9
 	},
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "Pf" = (
 /obj/structure/machinery/door_control/brbutton{
@@ -425,9 +355,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/turf/open/floor/shiva{
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "Rd" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -442,9 +370,7 @@
 	},
 /obj/effect/spawner/random/attachment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "Vp" = (
 /obj/structure/surface/table,
@@ -453,9 +379,7 @@
 	pixel_y = 2
 	},
 /obj/effect/spawner/random/bomb_supply,
-/turf/open/floor/shiva{
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "Vv" = (
 /turf/open/auto_turf/ice/layer1,
@@ -467,21 +391,15 @@
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/storage/pill_bottle/dexalin/skillless,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "Xo" = (
-/turf/open/floor/shiva{
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "XI" = (
 /obj/structure/closet/radiation,
 /obj/effect/spawner/random/technology_scanner,
-/turf/open/floor/shiva{
-	icon_state = "purplefull"
-	},
+/turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "Yz" = (
 /obj/effect/decal/warning_stripes{
@@ -504,9 +422,7 @@
 "YZ" = (
 /obj/structure/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 
 (1,1,1) = {"

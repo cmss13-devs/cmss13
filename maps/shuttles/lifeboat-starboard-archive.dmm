@@ -195,9 +195,7 @@
 	},
 /area/shuttle/lifeboat)
 "AF" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "plating_striped"
-	},
+/turf/open/shuttle/lifeboat/plating_striped,
 /area/shuttle/lifeboat)
 "Bf" = (
 /turf/closed/shuttle/lifeboat/transparent{
@@ -416,9 +414,7 @@
 	},
 /area/shuttle/lifeboat)
 "VZ" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor8"
-	},
+/turf/open/shuttle/escapepod/floor8,
 /area/shuttle/lifeboat)
 "Xj" = (
 /turf/closed/shuttle/lifeboat{
@@ -426,9 +422,7 @@
 	},
 /area/shuttle/lifeboat)
 "XV" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "plate"
-	},
+/turf/open/shuttle/lifeboat/plate,
 /area/shuttle/lifeboat)
 "Zl" = (
 /turf/closed/shuttle/lifeboat{

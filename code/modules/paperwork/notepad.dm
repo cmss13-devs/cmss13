@@ -118,6 +118,9 @@
 	else
 		to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
 
+/obj/item/notepad/proc/operator[](index_num)
+	return contents[index_num]
+
 /obj/item/notepad/verb/rename()
 	set name = "Rename notepad"
 	set category = "Object"

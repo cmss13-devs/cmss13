@@ -13,62 +13,44 @@
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "e" = (
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
+/turf/open/floor/corsat/marked,
 /area/corsat/theta/airlock/east)
 "f" = (
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
+/turf/open/floor/corsat/plate,
 /area/corsat/theta/airlock/east)
 "g" = (
-/turf/open/floor/corsat{
-	icon_state = "retrosquares"
-	},
+/turf/open/floor/corsat/retrosquares,
 /area/corsat/theta/airlock/east)
 "h" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "i" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
+/turf/open/floor/corsat/marked,
 /area/corsat/theta/airlock/east)
 "j" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor/corsat{
-	icon_state = "retrosquares"
-	},
+/turf/open/floor/corsat/retrosquares,
 /area/corsat/theta/airlock/east)
 "k" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/opened{
 	id = "ThetaEastW";
-	name = "Theta East Airlock";
-	unacidable = 0;
-	use_power = 1
+	name = "Theta East Airlock"
 	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
+/turf/open/floor/corsat/marked,
 /area/corsat/theta/airlock/east)
 "l" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
+/turf/open/floor/corsat/plate,
 /area/corsat/theta/airlock/east)
 "m" = (
 /obj/structure/sign/safety/airlock{
@@ -79,7 +61,6 @@
 "n" = (
 /obj/structure/window/framed/corsat/security,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	dir = 1;
 	id = "ThetaIDEC2";
 	name = "Security Shutters"
 	},

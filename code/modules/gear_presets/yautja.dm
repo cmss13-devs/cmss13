@@ -94,6 +94,7 @@
 // YOUNG BLOOD
 /datum/equipment_preset/yautja/youngblood
 	name = "Yautja Young"
+	minimap_icon = "predator_young"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	clan_rank = CLAN_RANK_UNBLOODED_INT
 
@@ -112,6 +113,7 @@
 // ELITE
 /datum/equipment_preset/yautja/elite
 	name = "Yautja Elite"
+	minimap_icon = "predator_elite"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_HALF_CAPE
 	clan_rank = CLAN_RANK_ELITE_INT
@@ -124,6 +126,7 @@
 // ELDER
 /datum/equipment_preset/yautja/elder
 	name = "Yautja Elder"
+	minimap_icon = "predator_elder"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_THIRD_CAPE
 	clan_rank = CLAN_RANK_ELDER_INT
@@ -140,6 +143,7 @@
 // CLAN LEADER
 /datum/equipment_preset/yautja/leader
 	name = "Yautja Leader"
+	minimap_icon = "predator_leader"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_CAPE
 	clan_rank = CLAN_RANK_LEADER_INT
@@ -156,6 +160,7 @@
 // ANCIENT
 /datum/equipment_preset/yautja/ancient
 	name = "Yautja Ancient"
+	minimap_icon = "predator_ancient"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_PONCHO
 	clan_rank = CLAN_RANK_ADMIN_INT

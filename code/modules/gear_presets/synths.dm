@@ -5,7 +5,7 @@
 	skills = /datum/skills/synthetic
 	paygrade = PAY_SHORT_SYN
 
-	minimap_background = "background_clf"
+	minimap_background = "background_synth"
 	minimap_background_color = FALSE
 	minimap_icon = "synth"
 

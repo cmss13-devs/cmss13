@@ -113,6 +113,10 @@
 	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
 	var/prepend_squad_name_to_assignment = TRUE
 
+	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
+	var/background_icon = "background"
+
+
 
 /datum/squad/marine
 	name = "Root"
@@ -128,6 +132,7 @@
 	access = list(ACCESS_MARINE_ALPHA)
 	radio_freq = ALPHA_FREQ
 	minimap_color = MINIMAP_SQUAD_ALPHA
+	background_icon = "background_alpha"
 
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
@@ -136,6 +141,7 @@
 	access = list(ACCESS_MARINE_BRAVO)
 	radio_freq = BRAVO_FREQ
 	minimap_color = MINIMAP_SQUAD_BRAVO
+	background_icon = "background_bravo"
 
 /datum/squad/marine/charlie
 	name = SQUAD_MARINE_3
@@ -144,6 +150,7 @@
 	access = list(ACCESS_MARINE_CHARLIE)
 	radio_freq = CHARLIE_FREQ
 	minimap_color = MINIMAP_SQUAD_CHARLIE
+	background_icon = "background_charlie"
 
 /datum/squad/marine/delta
 	name = SQUAD_MARINE_4
@@ -152,6 +159,7 @@
 	access = list(ACCESS_MARINE_DELTA)
 	radio_freq = DELTA_FREQ
 	minimap_color = MINIMAP_SQUAD_DELTA
+	background_icon = "background_delta"
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5
@@ -161,6 +169,7 @@
 	radio_freq = ECHO_FREQ
 	omni_squad_vendor = TRUE
 	minimap_color = MINIMAP_SQUAD_ECHO
+	background_icon = "background_echo"
 
 	active = FALSE
 	roundstart = FALSE
@@ -172,6 +181,7 @@
 	chat_color = "#c47a50"
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	minimap_color = MINIMAP_SQUAD_FOXTROT
+	background_icon = "background_foxtrot"
 
 	omni_squad_vendor = TRUE
 	radio_freq = CRYO_FREQ
@@ -186,6 +196,7 @@
 	equipment_color = "#053818"
 	minimap_color = MINIMAP_SQUAD_INTEL
 	radio_freq = INTEL_FREQ
+	background_icon = "background_intel"
 
 	roundstart = FALSE
 	prepend_squad_name_to_assignment = FALSE

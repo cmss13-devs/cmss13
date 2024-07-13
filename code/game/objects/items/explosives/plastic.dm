@@ -268,10 +268,10 @@
 	var/datum/cause_data/temp_cause = create_cause_data(cause_data.cause_name, cause_data.weak_mob.resolve())
 	plant_target.ex_act(2000, dir, temp_cause)
 
-	for(var/turf/closed/wall/W in orange(1, target_turf))
-		if(W.hull)
+	for(var/turf/closed/wall/wall in orange(1, target_turf))
+		if(wall.hull)
 			continue
-		W.ex_act(1000 * penetration, , cause_data)
+		wall.ex_act(1000 * penetration, , cause_data)
 
 	for(var/obj/structure/window/W in orange(1, target_turf))
 		if(W.not_damageable)
@@ -282,7 +282,7 @@
 	for(var/obj/structure/machinery/door/D in orange(1, target_turf))
 		D.ex_act(1000 * penetration, , cause_data)
 
-	for(var/obj/structure/machinery/colony_floodlight/colony_floodlight in orange(1, target_turf))
+	for(var/obj/structure/machinery/colony_floodlight/colony_floodlight in range(1, target_turf)) //range so that it affects the light it is on
 		colony_floodlight.Destroy()
 
 	handle_explosion(target_turf, dir, temp_cause)

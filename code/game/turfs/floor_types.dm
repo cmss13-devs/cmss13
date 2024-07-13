@@ -485,22 +485,22 @@
 /turf/open/floor/almayer/sterile_green_side/north
 	dir = NORTH
 
-/turf/open/floor/almayer/w_y0
+/turf/open/floor/almayer/white/y0
 	icon_state = "w-y0"
 
-/turf/open/floor/almayer/w_y0/north
+/turf/open/floor/almayer/white/y0/north
 	dir = NORTH
 
-/turf/open/floor/almayer/w_y1
+/turf/open/floor/almayer/white/y1
 	icon_state = "w-y1"
 
-/turf/open/floor/almayer/w_y1/north
+/turf/open/floor/almayer/white/y1/north
 	dir = NORTH
 
-/turf/open/floor/almayer/w_y2
+/turf/open/floor/almayer/white/y2
 	icon_state = "w-y2"
 
-/turf/open/floor/almayer/w_y2/north
+/turf/open/floor/almayer/white/y2/north
 	dir = NORTH
 
 /turf/open/floor/almayer/green/south
@@ -726,22 +726,22 @@
 	plating_type = /turf/open/floor/tdome
 	hull_floor = TRUE
 
-/turf/open/floor/tdome/w_y0
+/turf/open/floor/tdome/white/y0
 	icon_state = "w-y0"
 
-/turf/open/floor/tdome/w_y0/north
+/turf/open/floor/tdome/white/y0/north
 	dir = NORTH
 
-/turf/open/floor/tdome/w_y1
+/turf/open/floor/tdome/white/y1
 	icon_state = "w-y1"
 
-/turf/open/floor/tdome/w_y1/north
+/turf/open/floor/tdome/white/y1/north
 	dir = NORTH
 
-/turf/open/floor/tdome/w_y2
+/turf/open/floor/tdome/white/y2
 	icon_state = "w-y2"
 
-/turf/open/floor/tdome/w_y2/north
+/turf/open/floor/tdome/white/y2/north
 	dir = NORTH
 
 /turf/open/floor/tdome/northeast
@@ -944,6 +944,45 @@
 /turf/open/floor/almayer/aicore/no_build/ai_plates
 	icon_state = "ai_plates"
 
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3
+	icon_state = "ai_floor3"
+
+/turf/open/floor/almayer/aicore/no_build/white/ai_plates
+	icon_state = "w_ai_plates"
+
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver
+	icon_state = "w_ai_silver"
+
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north
+	dir = NORTH
+
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/east
+	dir = EAST
+
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/west
+	dir = WEST
+
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/almayer/aicore/no_build/white/ai_cargo
+	icon_state = "w_ai_cargo"
+
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1
+	icon_state = "w_ai_floor1"
+
+/turf/open/floor/almayer/no_build/test_floor4
+	icon_state = "test_floor4"
+
 /turf/open/floor/almayer/aicore/glowing/no_build
 	allow_construction = FALSE
 	hull_floor = TRUE
@@ -954,6 +993,9 @@
 
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3
 	icon_state = "ai_floor3"
+
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3
+	icon_state = "w_ai_floor3"
 
 // RESEARCH STUFF
 /turf/open/floor/almayer/research/containment/entrance

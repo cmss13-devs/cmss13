@@ -536,10 +536,7 @@
 "afl" = (
 /obj/item/bedsheet/yellow,
 /obj/structure/bed,
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 1
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
 /area/almayer/command/aist_office)
 "afo" = (
 /obj/structure/sink{
@@ -6392,10 +6389,7 @@
 	req_one_access_txt = "1;92";
 	req_access = null
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 5
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/northeast,
 /area/almayer/command/aist_office)
 "bWC" = (
 /turf/open/floor/almayer/orange/east,
@@ -7149,9 +7143,7 @@
 /area/almayer/living/pilotbunks)
 "cit" = (
 /obj/structure/flora/pottedplant/random,
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
 /area/almayer/command/aist_office)
 "ciB" = (
 /obj/structure/disposalpipe/segment{
@@ -8003,9 +7995,7 @@
 	req_one_access_txt = "31;92";
 	pixel_x = -5
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
 /area/almayer/command/aist_office)
 "cxU" = (
 /obj/item/tool/weldingtool,
@@ -9808,10 +9798,7 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 1
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
 /area/almayer/command/aist_office)
 "dfo" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
@@ -10152,10 +10139,7 @@
 	dir = 1
 	},
 /obj/effect/step_trigger/clone_cleaner,
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 1
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
 /area/almayer/command/aist_office)
 "dpj" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
@@ -12691,10 +12675,7 @@
 /turf/open/floor/almayer/redcorner,
 /area/almayer/shipboard/brig/starboard_hallway)
 "elZ" = (
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 10
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/southwest,
 /area/almayer/command/aist_office)
 "emg" = (
 /obj/item/trash/c_tube{
@@ -12987,10 +12968,7 @@
 	pixel_x = 8;
 	layer = 2.2
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 1
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
 /area/almayer/command/aist_office)
 "eqH" = (
 /turf/open/floor/almayer/silver,
@@ -13469,9 +13447,7 @@
 /turf/open/floor/almayer/orange/northwest,
 /area/almayer/engineering/upper_engineering/port)
 "eyW" = (
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_floor3"
-	},
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
 /area/almayer/command/aist_office)
 "eyZ" = (
 /turf/open/floor/almayer/emeraldcorner/west,
@@ -15856,9 +15832,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/p_bow)
 "fsM" = (
-/turf/open/floor/almayer/aicore/no_build{
-	icon_state = "w_ai_floor1"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "fsR" = (
 /obj/structure/pipes/vents/pump{
@@ -16530,10 +16504,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 8
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/west,
 /area/almayer/command/aist_office)
 "fFA" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -21250,9 +21221,7 @@
 /obj/structure/pipes/vents/pump/no_boom{
 	dir = 1
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
 /area/almayer/command/aist_office)
 "htS" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -26021,9 +25990,7 @@
 	dir = 1;
 	masterkey_resist = 1
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_plates"
-	},
+/turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/aist_office)
 "jeY" = (
 /obj/structure/surface/table/almayer,
@@ -27320,10 +27287,7 @@
 	c_tag = "AI - AIST Office";
 	autoname = 0
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 8
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/west,
 /area/almayer/command/aist_office)
 "jDn" = (
 /obj/structure/machinery/cryopod/right{
@@ -27345,9 +27309,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/turf/open/floor/almayer/aicore/no_build{
-	icon_state = "w_ai_cargo"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_cargo,
 /area/almayer/command/aist_office)
 "jDM" = (
 /obj/structure/surface/rack{
@@ -27801,9 +27763,7 @@
 	dir = 8;
 	pixel_x = 29
 	},
-/turf/open/floor/almayer/aicore/no_build{
-	icon_state = "w_ai_floor1"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "jMq" = (
 /turf/open/floor/almayer/redcorner/west,
@@ -32014,9 +31974,7 @@
 	pixel_y = 1;
 	req_one_access_txt = "31;92"
 	},
-/turf/open/floor/almayer/aicore/no_build{
-	icon_state = "w_ai_floor1"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "lly" = (
 /obj/effect/decal/warning_stripes{
@@ -33199,9 +33157,7 @@
 	unacidable = 1;
 	unslashable = 1
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
 /area/almayer/command/aist_office)
 "lHk" = (
 /obj/structure/closet/firecloset,
@@ -34023,9 +33979,7 @@
 	req_access = null
 	},
 /obj/effect/step_trigger/clone_cleaner,
-/turf/open/floor/almayer/no_build{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
 "lXC" = (
 /obj/effect/decal/warning_stripes{
@@ -34227,10 +34181,7 @@
 /area/almayer/medical/operating_room_two)
 "mca" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 1
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
 /area/almayer/command/aist_office)
 "mci" = (
 /obj/structure/largecrate/random/barrel/red,
@@ -36275,9 +36226,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
-/turf/open/floor/almayer/aicore/no_build{
-	icon_state = "w_ai_floor1"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "mKW" = (
 /obj/structure/machinery/power/apc/almayer{
@@ -38596,9 +38545,7 @@
 /obj/item/tool/pen/fountain{
 	pixel_y = 9
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
 /area/almayer/command/aist_office)
 "nFK" = (
 /obj/structure/bed/chair{
@@ -39018,9 +38965,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 1
 	},
-/turf/open/floor/almayer/aicore/no_build{
-	icon_state = "w_ai_floor1"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "nPs" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -40487,9 +40432,7 @@
 /area/almayer/medical/morgue)
 "onL" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
-/turf/open/floor/almayer/aicore/no_build{
-	icon_state = "w_ai_floor1"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "onM" = (
 /obj/structure/machinery/light{
@@ -43675,9 +43618,7 @@
 	pixel_y = 32;
 	pixel_x = 14
 	},
-/turf/open/floor/almayer/aicore/no_build{
-	icon_state = "w_ai_floor1"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
 /area/almayer/command/aist_office)
 "prX" = (
 /obj/structure/ladder{
@@ -44558,9 +44499,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/general_equipment)
 "pHl" = (
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
 /area/almayer/command/aist_office)
 "pHp" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -47415,10 +47354,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
 "qDz" = (
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 6
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/southeast,
 /area/almayer/command/aist_office)
 "qDA" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -49403,10 +49339,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/auxiliary_officer_office)
 "rse" = (
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 8
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/west,
 /area/almayer/command/aist_office)
 "rsj" = (
 /turf/open/floor/almayer/blue/southwest,
@@ -49749,9 +49682,7 @@
 /obj/structure/pipes/vents/scrubber/no_boom{
 	dir = 1
 	},
-/turf/open/floor/almayer/aicore/no_build{
-	icon_state = "w_ai_floor1"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "rxI" = (
 /obj/structure/surface/table/almayer,
@@ -50064,10 +49995,7 @@
 /turf/open/floor/almayer/orange/northeast,
 /area/almayer/engineering/lower)
 "rCu" = (
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 4
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/east,
 /area/almayer/command/aist_office)
 "rCL" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
@@ -51144,10 +51072,7 @@
 "rVl" = (
 /obj/effect/landmark/late_join/aist,
 /obj/effect/landmark/start/aist,
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 1
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
 /area/almayer/command/aist_office)
 "rVp" = (
 /obj/structure/machinery/light{
@@ -53648,9 +53573,7 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "sQb" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_floor3"
-	},
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
 /area/almayer/command/aist_office)
 "sQd" = (
 /obj/structure/surface/rack,
@@ -54455,10 +54378,7 @@
 	pixel_x = -8;
 	pixel_y = 18
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 9
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/west,
 /area/almayer/command/aist_office)
 "teN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -55503,9 +55423,7 @@
 /area/almayer/maint/hull/lower/l_a_s)
 "twt" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/almayer/aicore/no_build{
-	icon_state = "w_ai_floor1"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "twQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -58397,9 +58315,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 6
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_floor3"
-	},
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
 /area/almayer/command/aist_office)
 "uAL" = (
 /obj/structure/bed/chair/wood/normal,
@@ -58587,9 +58503,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_floor3"
-	},
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
 /area/almayer/command/aist_office)
 "uDP" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -59537,10 +59451,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 10
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_silver";
-	dir = 4
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/east,
 /area/almayer/command/aist_office)
 "uUz" = (
 /obj/structure/window/framed/almayer,
@@ -60666,9 +60577,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 5
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_floor3"
-	},
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
 /area/almayer/command/aist_office)
 "vqi" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -64185,9 +64094,7 @@
 	req_one_access_txt = "31;92";
 	masterkey_resist = 1
 	},
-/turf/open/floor/almayer/aicore/no_build{
-	icon_state = "w_ai_floor1"
-	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "wAD" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -69196,9 +69103,7 @@
 	vent_tag = "AIST Office";
 	dir = 8
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "w_ai_floor3"
-	},
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
 /area/almayer/command/aist_office)
 "yiX" = (
 /obj/structure/machinery/camera/autoname/almayer{

@@ -10335,6 +10335,10 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec)
+"hQA" = (
+/obj/effect/landmark/corpsespawner/security/marshal/riot,
+/turf/open/floor/prison/whitegreen,
+/area/fiorina/tumor/ice_lab)
 "hQM" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -16063,7 +16067,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "mlg" = (
-/obj/effect/landmark/corpsespawner/ua_riot/burst,
+/obj/effect/landmark/corpsespawner/security/marshal/riot,
 /turf/open/floor/prison/whitepurple/north,
 /area/fiorina/station/research_cells)
 "mlu" = (
@@ -21895,14 +21899,17 @@
 /area/fiorina/tumor/fiberbush)
 "qJv" = (
 /obj/structure/closet/secure_closet/guncabinet{
-	req_access = null
+	req_access = null;
+	name = "CMB riot locker"
 	},
-/obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/clothing/under/marine/ua_riot,
-/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
-/obj/item/prop/helmetgarb/riot_shield,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/head/helmet/marine/veteran/cmb,
+/obj/item/clothing/glasses/mgoggles/cmb_riot_shield,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "qJK" = (
@@ -27664,12 +27671,13 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
 	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/clothing/under/marine/ua_riot,
 /obj/item/storage/pill_bottle/alkysine,
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "vhd" = (
@@ -58270,7 +58278,7 @@ sWb
 mvp
 mvp
 cer
-kpq
+hQA
 mvp
 ddL
 lXO

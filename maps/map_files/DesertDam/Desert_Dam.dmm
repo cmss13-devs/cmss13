@@ -22048,7 +22048,8 @@
 /area/desert_dam/building/security/warden)
 "bNS" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/mask/gas/swat,
 /turf/open/floor/prison/darkred2/northwest,
 /area/desert_dam/building/security/armory)
 "bNT" = (
@@ -22918,7 +22919,10 @@
 /area/desert_dam/building/security/prison)
 "bRE" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/mask/gas,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/building/security/armory)
 "bRF" = (
@@ -33643,8 +33647,12 @@
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cJr" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/suit/armor/riot,
+/obj/item/clothing/head/helmet/marine/veteran/cmb{
+	pixel_y = 12;
+	pixel_x = -6
+	},
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/armory)
 "cJs" = (
@@ -49874,6 +49882,12 @@
 "sAm" = (
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/desert_dam/exterior/landing_pad_two)
+"sAA" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
 "sAZ" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal7"
@@ -63598,7 +63612,7 @@ bRF
 bRF
 bRF
 cyH
-cJr
+sAA
 bNw
 bZL
 bZJ

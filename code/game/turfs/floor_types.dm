@@ -726,22 +726,22 @@
 	plating_type = /turf/open/floor/tdome
 	hull_floor = TRUE
 
-/turf/open/floor/almayer/w_y0
+/turf/open/floor/tdome/w_y0
 	icon_state = "w-y0"
 
-/turf/open/floor/almayer/w_y0/north
+/turf/open/floor/tdome/w_y0/north
 	dir = NORTH
 
-/turf/open/floor/almayer/w_y1
+/turf/open/floor/tdome/w_y1
 	icon_state = "w-y1"
 
-/turf/open/floor/almayer/w_y1/north
+/turf/open/floor/tdome/w_y1/north
 	dir = NORTH
 
-/turf/open/floor/almayer/w_y2
+/turf/open/floor/tdome/w_y2
 	icon_state = "w-y2"
 
-/turf/open/floor/almayer/w_y2/north
+/turf/open/floor/tdome/w_y2/north
 	dir = NORTH
 
 /turf/open/floor/tdome/northeast

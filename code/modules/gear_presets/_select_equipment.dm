@@ -103,6 +103,8 @@
 		playtime = JOB_PLAYTIME_TIER_1
 	else
 		playtime = get_job_playtime(mob_client, rank)
+		if((playtime >= JOB_PLAYTIME_TIER_1) && !mob_client.prefs.playtime_perks)
+			playtime = JOB_PLAYTIME_TIER_1
 	var/final_paygrade
 	for(var/current_paygrade as anything in paygrades)
 		var/required_time = paygrades[current_paygrade]
@@ -112,6 +114,7 @@
 	if(!final_paygrade)
 		. = "???"
 		CRASH("[key_name(new_human)] spawned with no valid paygrade.")
+
 	return final_paygrade
 
 /datum/equipment_preset/proc/load_gear(mob/living/carbon/human/new_human, client/mob_client)

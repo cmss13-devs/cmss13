@@ -21,7 +21,7 @@
 	var/atom/plant_target = null //which atom the plstique explosive is planted on
 	var/overlay_image = "plastic-explosive2"
 	var/image/overlay
-	var/list/breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door , /obj/structure/cargo_container,/obj/structure/machinery/colony_floodlight)
+	var/list/breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door , /obj/structure/cargo_container,/obj/structure/machinery/colony_floodlight, /mob/living)
 	antigrief_protection = TRUE //Should it be checked by antigrief?
 
 	var/req_skill = SKILL_ENGINEER
@@ -319,29 +319,6 @@
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/metal
 	var/explosion_strength = 60
 
-/obj/item/explosive/plastic/breaching_charge/can_place(mob/user, atom/target)
-	if(!is_type_in_list(target, breachable))//only items on the list are allowed
-		to_chat(user, SPAN_WARNING("You cannot plant [name] on [target]!"))
-		return FALSE
-
-	if(SSinterior.in_interior(target))// vehicle checks again JUST IN CASE
-		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy [src]."))
-		return FALSE
-
-	if(istype(target, /obj/structure/window))//no breaching charges on the briefing windows / brig / CIC e.e
-		var/obj/structure/window/window = target
-		if(window.not_damageable)
-			to_chat(user, SPAN_WARNING("[window] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
-			return FALSE
-
-	if(istype(target, /turf/closed/wall))
-		var/turf/closed/wall/targeted_wall = target
-		if(targeted_wall.hull)
-			to_chat(user, SPAN_WARNING("You are unable to stick [src] to [targeted_wall]!"))
-			return FALSE
-
-	return TRUE
-
 /obj/item/explosive/plastic/breaching_charge/handle_explosion(turf/target_turf, dir, cause_data)
 	var/explosion_target = get_step(target_turf, dir)
 	create_shrapnel(explosion_target, shrapnel_volume, dir, angle, shrapnel_type, cause_data)
@@ -375,6 +352,7 @@
 	deploying_time = 10
 	flags_item = NOBLUDGEON|ITEM_PREDATOR
 	shrapnel_volume = 10
+	breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door , /obj/structure/cargo_container,/obj/structure/machinery/colony_floodlight)
 	shrapnel_type = /datum/ammo/bullet/shrapnel/plasma
 	explosion_strength = 90
 

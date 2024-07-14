@@ -348,7 +348,7 @@
 				// Half-Loop 1: Start transfering
 				else if(!transfering)
 					transfering = min(transferable, 48) // Max per transfer
-					if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, dumping ? BUSY_ICON_HOSTILE : BUSY_ICON_FRIENDLY))
+					if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, dumping ? BUSY_ICON_HOSTILE : BUSY_ICON_FRIENDLY))
 						to_chat(user, SPAN_NOTICE("You stop transferring rounds."))
 						transferable = 0
 

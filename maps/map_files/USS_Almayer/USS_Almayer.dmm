@@ -41795,8 +41795,8 @@
 	pixel_x = 4;
 	pixel_y = 11
 	},
-/obj/structure/sign/poster/propaganda{
-	pixel_y = 34
+/obj/structure/sign/ROcreed{
+	pixel_y = 30
 	},
 /obj/item/device/flashlight/lamp{
 	pixel_y = -11;
@@ -47082,7 +47082,9 @@
 /area/almayer/engineering/lower)
 "pCr" = (
 /obj/structure/machinery/cm_vending/sorted/attachments/blend,
-/turf/open/floor/almayer/plate,
+/turf/closed/wall/almayer{
+	opacity = 0
+	},
 /area/almayer/squads/req)
 "pDh" = (
 /obj/structure/machinery/power/monitor{

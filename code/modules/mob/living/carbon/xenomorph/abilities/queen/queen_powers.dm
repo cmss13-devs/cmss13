@@ -431,7 +431,7 @@
 	else
 		var/tier = HIVEBUFF_TIER_MINOR
 		if(major_available)
-			tier = show_radial_menu(xeno, xeno, radial_images_tiers, require_near = TRUE)
+			tier = show_radial_menu(xeno, xeno?.client?.eye, radial_images_tiers)
 
 		if(tier == HIVEBUFF_TIER_MAJOR)
 			for(var/filtered_buffname as anything in buffs)
@@ -444,7 +444,7 @@
 				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MINOR)
 					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
 
-		selection = show_radial_menu(xeno, xeno, radial_images, radius = 72, require_near = TRUE, tooltips = TRUE)
+		selection = show_radial_menu(xeno, xeno?.client?.eye, radial_images, radius = 72, tooltips = TRUE)
 
 	if(!selection)
 		return FALSE

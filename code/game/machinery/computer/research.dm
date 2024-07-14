@@ -71,11 +71,12 @@
 		return
 
 	var/credits_to_add = max(card.credits_to_give - GLOB.chemical_data.credits_gained, 0)
-	GLOB.chemical_data.update_credits(credits_to_add)
-	GLOB.chemical_data.credits_gained = max(GLOB.chemical_data.credits_gained, card.credits_to_give)
+	if(credits_to_add)
+		GLOB.chemical_data.update_credits(credits_to_add)
+		GLOB.chemical_data.credits_gained += credits_to_add
 
-	visible_message(SPAN_NOTICE("[user] swipes their ID card on \the [src], granting [credits_to_add] credits."))
-	msg_admin_niche("[key_name(user)] has swiped a clearance card and given [credits_to_add] credits to research.")
+	visible_message(SPAN_NOTICE("[user] swipes their ID card on [src], granting [credits_to_add] credits."))
+	msg_admin_niche("[key_name(user)] has swiped a clearance card to give [credits_to_add] credits to research.")
 	return
 
 /obj/structure/machinery/computer/research/ui_state(mob/user)

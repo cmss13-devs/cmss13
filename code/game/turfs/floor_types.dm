@@ -1477,6 +1477,9 @@
 /turf/open/floor/prison/darkbrown3/southwest
 	dir = SOUTHWEST
 
+/turf/open/floor/prison/darkbrown3/southeast
+	dir = SOUTHEAST
+
 /turf/open/floor/prison/darkbrowncorners2
 	icon_state = "darkbrowncorners2"
 
@@ -2007,6 +2010,9 @@
 
 /turf/open/floor/prison/darkbrown3/northwest
 	dir = NORTHWEST
+
+/turf/open/floor/prison/darkbrown3/northeast
+	dir = NORTHEAST
 
 /turf/open/floor/prison/darkpurple2/northwest
 	dir = NORTHWEST

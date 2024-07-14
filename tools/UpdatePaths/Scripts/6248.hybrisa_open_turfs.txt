@@ -61,6 +61,11 @@
 /turf/open/floor/hybrisa/metal/stripe_red{dir=1;} : /turf/open/floor/hybrisa/metal/stripe_red/north
 /turf/open/floor/hybrisa/metal/stripe_red{dir=4;} : /turf/open/floor/hybrisa/metal/stripe_red/east
 /turf/open/floor/hybrisa/metal/stripe_red{dir=8;} : /turf/open/floor/hybrisa/metal/stripe_red/west
+/turf/open/floor/hybrisa/metal/zbrownfloor1{icon_state="zbrownfloor2";dir=10;} : /turf/open/floor/hybrisa/metal/zbrownfloor2/southwest
+/turf/open/floor/hybrisa/metal/zbrownfloor1{icon_state="zbrownfloor2";dir=1;} : /turf/open/floor/hybrisa/metal/zbrownfloor2/north
+/turf/open/floor/hybrisa/metal/zbrownfloor1{icon_state="zbrownfloor2";dir=4;} : /turf/open/floor/hybrisa/metal/zbrownfloor2/east
+/turf/open/floor/hybrisa/metal/zbrownfloor1{icon_state="zbrownfloor2";dir=8;} : /turf/open/floor/hybrisa/metal/zbrownfloor2/west
+/turf/open/floor/hybrisa/metal/zbrownfloor1{icon_state="zbrownfloor2";} : /turf/open/floor/hybrisa/metal/zbrownfloor2
 /turf/open/floor/hybrisa/metal/zbrownfloor1{dir=10;} : /turf/open/floor/hybrisa/metal/zbrownfloor1/southwest
 /turf/open/floor/hybrisa/metal/zbrownfloor1{dir=1;} : /turf/open/floor/hybrisa/metal/zbrownfloor1/north
 /turf/open/floor/hybrisa/metal/zbrownfloor1{dir=4;} : /turf/open/floor/hybrisa/metal/zbrownfloor1/east
@@ -68,11 +73,6 @@
 /turf/open/floor/hybrisa/metal/zbrownfloor1{dir=6;} : /turf/open/floor/hybrisa/metal/zbrownfloor1/southeast
 /turf/open/floor/hybrisa/metal/zbrownfloor1{dir=8;} : /turf/open/floor/hybrisa/metal/zbrownfloor1/west
 /turf/open/floor/hybrisa/metal/zbrownfloor1{dir=9;} : /turf/open/floor/hybrisa/metal/zbrownfloor1/northwest
-/turf/open/floor/hybrisa/metal/zbrownfloor1{icon_state="zbrownfloor2";dir=10;} : /turf/open/floor/hybrisa/metal/zbrownfloor2/southwest
-/turf/open/floor/hybrisa/metal/zbrownfloor1{icon_state="zbrownfloor2";dir=1;} : /turf/open/floor/hybrisa/metal/zbrownfloor2/north
-/turf/open/floor/hybrisa/metal/zbrownfloor1{icon_state="zbrownfloor2";dir=4;} : /turf/open/floor/hybrisa/metal/zbrownfloor2/east
-/turf/open/floor/hybrisa/metal/zbrownfloor1{icon_state="zbrownfloor2";dir=8;} : /turf/open/floor/hybrisa/metal/zbrownfloor2/west
-/turf/open/floor/hybrisa/metal/zbrownfloor1{icon_state="zbrownfloor2";} : /turf/open/floor/hybrisa/metal/zbrownfloor2
 /turf/open/floor/hybrisa/metal/zbrownfloor_corner{dir=1;} : /turf/open/floor/hybrisa/metal/zbrownfloor_corner/north
 /turf/open/floor/hybrisa/metal/zbrownfloor_corner{dir=4;} : /turf/open/floor/hybrisa/metal/zbrownfloor_corner/east
 /turf/open/floor/hybrisa/metal/zbrownfloor_corner{dir=8;} : /turf/open/floor/hybrisa/metal/zbrownfloor_corner/west

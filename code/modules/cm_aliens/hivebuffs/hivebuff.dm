@@ -231,12 +231,11 @@
 
 		var/turf/turf = get_turf(current_human)
 		if(is_ground_level(turf?.z))
-			groundside_humans += 1
+			groundside_humans++
+			if(groundside_humans >= 12)
+				return TRUE
 
-	if(groundside_humans < 12)
-		return FALSE
-
-	return TRUE
+	return FALSE
 
 /// Checks if the hive can afford to purchase the buff returns TRUE if they can purchase and FALSE if not.
 /datum/hivebuff/proc/_check_can_afford_buff()

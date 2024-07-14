@@ -60,8 +60,8 @@
 	/// Distance from the shape's topmost to bottommost extent.
 	var/bounds_y = 0
 
-/datum/shape/New()
-	set_shape(arglist(args))
+/datum/shape/New(center_x, center_y)
+	set_shape(center_x, center_y)
 
 /// Assign shape variables.
 /datum/shape/proc/set_shape(center_x, center_y)
@@ -80,9 +80,13 @@
 /datum/shape/proc/contains_atom(atom/atom)
 	return contains_xy(atom.x, atom.y)
 
+/// Returns TRUE if this shape's bounding box intersects the provided shape's bounding box, otherwise FALSE. Generally faster than a full intersection test.
+/datum/shape/proc/intersects_aabb(datum/shape/aabb)
+	return (abs(src.center_x - aabb.center_x) <= (src.bounds_x + aabb.bounds_x) * 0.5) && (abs(src.center_y - aabb.center_y) <= (src.bounds_x + aabb.bounds_x) * 0.5)
+
 /// Returns TRUE if this shape intersects the provided rectangle shape, otherwise FALSE.
-/datum/shape/proc/intersects_rect(datum/shape/rectangle/range)
-	return range.contains_xy(src.center_x, src.center_y)
+/datum/shape/proc/intersects_rect(datum/shape/rectangle/rect)
+	return rect.contains_xy(src.center_x, src.center_y)
 
 /// A simple geometric shape for testing collisions and intersections. This one is an axis-aligned rectangle.
 /datum/shape/rectangle
@@ -90,6 +94,9 @@
 	var/width = 0
 	/// Distance from the shape's topmost to bottommost extent.
 	var/height = 0
+
+/datum/shape/rectangle/New(center_x, center_y, width, height)
+	set_shape(center_x, center_y, width, height)
 
 /datum/shape/rectangle/set_shape(center_x, center_y, width, height)
 	..()
@@ -101,25 +108,20 @@
 /datum/shape/rectangle/contains_xy(x, y)
 	return (abs(center_x - x) <= width * 0.5) && (abs(center_y - y) <= height * 0.5)
 
-/datum/shape/rectangle/intersects_rect(datum/shape/rectangle/range)
-	return (abs(src.center_x - range.center_x) <= (src.width + range.width) * 0.5) && (abs(src.center_y - range.center_y) <= (src.height + range.height) * 0.5)
+/datum/shape/rectangle/intersects_rect(datum/shape/rectangle/rect)
+	return intersects_aabb(rect)
 
 /// A simple geometric shape for testing collisions and intersections. This one is an axis-aligned square.
-/datum/shape/square
+/datum/shape/rectangle/square
 	/// Distance between the shape's opposing extents.
 	var/length = 0
 
-/datum/shape/square/set_shape(center_x, center_y, length)
-	..()
-	src.bounds_x = length
-	src.bounds_y = length
+/datum/shape/rectangle/square/New(center_x, center_y, length)
+	set_shape(center_x, center_y, length)
+
+/datum/shape/rectangle/square/set_shape(center_x, center_y, length)
+	..(center_x, center_y, length, length)
 	src.length = length
-
-/datum/shape/square/contains_xy(x, y)
-	return (abs(center_x - x) <= length * 0.5) && (abs(center_y - y) <= length * 0.5)
-
-/datum/shape/square/intersects_rect(datum/shape/rectangle/range)
-	return (abs(src.center_x - range.center_x) <= (src.length + range.width)  * 0.5) && (abs(src.center_y - range.center_y) <= (src.length + range.height) * 0.5)
 
 /// A simple geometric shape for testing collisions and intersections. This one is an axis-aligned ellipse.
 /datum/shape/ellipse
@@ -129,6 +131,9 @@
 	var/height = 0
 	VAR_PROTECTED/_axis_x_sq = 0
 	VAR_PROTECTED/_axis_y_sq = 0
+
+/datum/shape/ellipse/New(center_x, center_y, width, height)
+	set_shape(center_x, center_y, width, height)
 
 /datum/shape/ellipse/set_shape(center_x, center_y, width, height)
 	..()
@@ -142,39 +147,26 @@
 /datum/shape/ellipse/contains_xy(x, y)
 	return ((center_x - x)**2 / _axis_x_sq + (center_y - y)**2 / _axis_y_sq <= 1)
 
-/datum/shape/ellipse/intersects_rect(datum/shape/rectangle/range)
-	if(range.contains_xy(src.center_x, src.center_y))
+/datum/shape/ellipse/intersects_rect(datum/shape/rectangle/rect)
+	if(..())
 		return TRUE
 
-	var/nearest_x = clamp(src.center_x, range.center_x - range.width * 0.5, range.center_x + range.width * 0.5)
-	var/nearest_y = clamp(src.center_y, range.center_y - range.height * 0.5, range.center_y + range.height * 0.5)
+	var/nearest_x = clamp(src.center_x, rect.center_x - rect.width * 0.5, rect.center_x + rect.width * 0.5)
+	var/nearest_y = clamp(src.center_y, rect.center_y - rect.height * 0.5, rect.center_y + rect.height * 0.5)
 
 	return src.contains_xy(nearest_x, nearest_y)
 
 /// A simple geometric shape for testing collisions and intersections. This one is a circle.
-/datum/shape/circle
+/datum/shape/ellipse/circle
 	/// Distance from the shape's center to edge.
 	var/radius = 0
-	VAR_PROTECTED/_radius_sq = 0
 
-/datum/shape/circle/set_shape(center_x, center_y, radius)
-	..()
-	src.bounds_x = radius * 2
-	src.bounds_y = radius * 2
+/datum/shape/ellipse/circle/New(center_x, center_y, radius)
+	set_shape(center_x, center_y, radius)
+
+/datum/shape/ellipse/circle/set_shape(center_x, center_y, radius)
+	..(center_x, center_y, radius * 2, radius * 2)
 	src.radius = radius
-	src._radius_sq = radius**2
-
-/datum/shape/circle/contains_xy(x, y)
-	return ((center_x - x)**2 + (center_y - y)**2 <= _radius_sq)
-
-/datum/shape/circle/intersects_rect(datum/shape/rectangle/range)
-	if(range.contains_xy(src.center_x, src.center_y))
-		return TRUE
-
-	var/nearest_x = clamp(src.center_x, range.center_x - range.width * 0.5, range.center_x + range.width * 0.5)
-	var/nearest_y = clamp(src.center_y, range.center_y - range.height * 0.5, range.center_y + range.height * 0.5)
-
-	return src.contains_xy(nearest_x, nearest_y)
 
 /datum/quadtree/proc/subdivide()
 	//Warning: this might give you eye cancer

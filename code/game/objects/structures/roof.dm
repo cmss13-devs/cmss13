@@ -113,7 +113,7 @@
 	if(connected_nodes)
 		for(var/obj/structure/roof/roof in connected_roof)
 			qdel(roof)
-	. = ..()
+	return ..()
 
 /datum/roof_master_node/proc/add_under_roof(mob/living/living) //mob crossed connected node
 	if(living in mobs_under)

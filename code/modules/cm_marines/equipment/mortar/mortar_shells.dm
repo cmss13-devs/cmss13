@@ -3,6 +3,7 @@
 	desc = "An unlabeled 80mm mortar shell, probably a casing."
 	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_ammo_cas"
+	throw_range = 1
 	w_class = SIZE_HUGE
 	flags_atom = FPRINT|CONDUCT
 	var/datum/cause_data/cause_data
@@ -193,6 +194,7 @@
 	icon_opened = "secure_open_mortar"
 	icon_locked = "secure_locked_mortar"
 	icon_unlocked = "secure_unlocked_mortar"
+	throw_range = 1
 	req_one_access = list(ACCESS_MARINE_OT, ACCESS_MARINE_CARGO, ACCESS_MARINE_ENGPREP)
 
 /obj/structure/closet/crate/secure/mortar_ammo/full/Initialize()

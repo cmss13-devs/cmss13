@@ -2400,7 +2400,7 @@
 
 /// Alien Isolation - posters used as reference (direct downscale of the image for some) If anyone wants to name the billboards individually ///
 
-/obj/structure/prop/hybrisa/billboardsandsigns
+/obj/structure/roof/hybrisa/billboardsandsigns
 	name = "billboard"
 	desc = "An advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_hybrisabillboards.dmi'
@@ -2411,22 +2411,22 @@
 	density = FALSE
 	anchored = TRUE
 
-/obj/structure/prop/hybrisa/billboardsandsigns/bullet_act(obj/projectile/P)
+/obj/structure/roof/hybrisa/billboardsandsigns/bullet_act(obj/projectile/P)
 	health -= P.damage
 	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
 
-/obj/structure/prop/hybrisa/billboardsandsigns/proc/explode()
+/obj/structure/roof/hybrisa/billboardsandsigns/proc/explode()
 	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
 	deconstruct(FALSE)
 
-/obj/structure/prop/hybrisa/billboardsandsigns/proc/healthcheck()
+/obj/structure/roof/hybrisa/billboardsandsigns/proc/healthcheck()
 	if(health <= 0)
 		explode()
 
-/obj/structure/prop/hybrisa/billboardsandsigns/ex_act(severity)
+/obj/structure/roof/hybrisa/billboardsandsigns/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
@@ -2434,7 +2434,7 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 
-/obj/structure/prop/hybrisa/billboardsandsigns/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+/obj/structure/roof/hybrisa/billboardsandsigns/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
@@ -2444,27 +2444,27 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards
+/obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards
 	icon_state = "billboard_bigger"
 
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1
 	icon_state = "billboard1"
 
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard2
 	icon_state = "billboard2"
 
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3
 	icon_state = "billboard3"
 
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard4
 	icon_state = "billboard4"
 
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard5
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5
 	icon_state = "billboard5"
 
 // Big Road Signs
 
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns
 	name = "road sign"
 	desc = "A road sign."
 	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
@@ -2475,10 +2475,10 @@
 	anchored = TRUE
 	layer = BILLBOARD_LAYER
 
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1
 	icon_state = "roadsign_1"
 
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2
 	icon_state = "roadsign_2"
 
 // Car Factory
@@ -2505,7 +2505,7 @@
 	density = FALSE
 
 // Hybrisa Lattice
-/obj/structure/prop/hybrisa/lattice_prop
+/obj/structure/roof/hybrisa/lattice_prop
 	name = "lattice"
 	desc = "A support lattice."
 	icon = 'icons/obj/structures/props/hybrisa_lattice.dmi'
@@ -2514,15 +2514,15 @@
 	layer = ABOVE_XENO_LAYER
 	health = 1000
 
-/obj/structure/prop/hybrisa/lattice_prop/lattice_1
+/obj/structure/roof/hybrisa/lattice_prop/lattice_1
 	icon_state = "lattice1"
-/obj/structure/prop/hybrisa/lattice_prop/lattice_2
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2
 	icon_state = "lattice2"
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3
 	icon_state = "lattice3"
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4
 	icon_state = "lattice4"
-/obj/structure/prop/hybrisa/lattice_prop/lattice_5
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5
 	icon_state = "lattice5"
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6
 	icon_state = "lattice6"

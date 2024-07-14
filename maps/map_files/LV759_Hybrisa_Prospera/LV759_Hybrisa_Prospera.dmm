@@ -33,7 +33,7 @@
 /turf/open/floor/prison/ramptop,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "aap" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -697,7 +697,7 @@
 /turf/open/floor/prison/red/southeast,
 /area/lv759/indoors/wy_security/checkpoint_west)
 "afW" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -2285,7 +2285,7 @@
 /turf/open/hybrisa/metal/underground_unweedable,
 /area/lv759/indoors/wy_research_complex/xenobiology)
 "atb" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -3020,9 +3020,10 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	pixel_x = -16;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer3,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -3076,11 +3077,11 @@
 /turf/open/floor/strata/red1,
 /area/lv759/indoors/wy_research_complex/securitycommand)
 "aAK" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	dir = 9;
 	layer = 9;
 	pixel_y = 18;
@@ -3104,11 +3105,12 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	icon_state = "billboard2";
 	pixel_y = 32;
 	layer = 9;
-	pixel_x = 16
+	pixel_x = 16;
+	lazy_nodes = 0
 	},
 /turf/open/floor/prison/cell_stripe,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -3976,9 +3978,10 @@
 	dir = 1
 	},
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark3,
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
 	dir = 6;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -4233,7 +4236,7 @@
 /turf/open/floor/almayer/black/west,
 /area/lv759/indoors/wy_research_complex/hallwayeast)
 "aJZ" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -4352,7 +4355,7 @@
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/apartment/eastfoyer)
 "aKY" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -4983,7 +4986,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "aRn" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_5{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -5447,7 +5450,7 @@
 /turf/open/floor/prison/ramptop/east,
 /area/lv759/indoors/meridian/meridian_factory)
 "aUr" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_1{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_1{
 	pixel_y = 16;
 	pixel_x = -26;
 	layer = 6
@@ -6050,7 +6053,7 @@
 /area/lv759/indoors/weyyu_office)
 "aZa" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -9101,7 +9104,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines4{
 	pixel_x = 4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -10877,7 +10880,7 @@
 /turf/open/floor/hybrisa/metal/stripe_red/west,
 /area/lv759/indoors/wy_research_complex/hallwaycentral)
 "bPR" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -12463,7 +12466,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/weymart)
 "cbu" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -12708,7 +12711,7 @@
 "cdy" = (
 /obj/effect/hybrisa/decal/road/road_edge,
 /obj/effect/hybrisa/decal/road/lines1,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -12888,7 +12891,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/girder/reinforced,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -13319,7 +13322,7 @@
 	pixel_y = 14;
 	layer = 5.3
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -13652,7 +13655,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines3{
 	pixel_y = -4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -13693,8 +13696,9 @@
 	dir = 1
 	},
 /obj/item/shard,
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
-	pixel_y = 34
+/obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b"
@@ -15636,11 +15640,11 @@
 /area/lv759/indoors/hospital/central_hallway)
 "cBE" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
 	dir = 10;
 	pixel_y = 18;
 	layer = 9;
@@ -17279,7 +17283,7 @@
 /turf/open/floor/hybrisa/tile/lightbeige_bigtile,
 /area/lv759/indoors/hospital/paramedics_garage)
 "cNH" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -17704,9 +17708,10 @@
 /turf/open/floor/prison,
 /area/lv759/indoors/garage_workshop)
 "cQx" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	dir = 1;
-	pixel_y = 32
+	pixel_y = 32;
+	lazy_nodes = 0
 	},
 /obj/item/trash/hybrisa/cuppa_joes/lid,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/north,
@@ -18932,7 +18937,7 @@
 "dba" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_2{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
 	pixel_x = -26
 	},
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
@@ -19254,8 +19259,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
-	pixel_y = 34
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -19768,11 +19774,11 @@
 /turf/open/floor/corsat/marked,
 /area/lv759/indoors/mining_outpost/northeast)
 "dhM" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	pixel_y = 14;
 	layer = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -20148,7 +20154,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -20297,7 +20303,7 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/effect/hybrisa/decal/road/lines4,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -20921,7 +20927,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "dqS" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -23634,7 +23640,7 @@
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/lv759/indoors/colonial_marshals/office)
 "dOs" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -23712,7 +23718,7 @@
 /turf/open/floor/prison/whitegreen,
 /area/lv759/indoors/hospital/cryo_room)
 "dPa" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -24071,7 +24077,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "dTi" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -25007,7 +25013,7 @@
 "eaG" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_2{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -25284,7 +25290,7 @@
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
 "edd" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_5{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -25730,7 +25736,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "egG" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -25919,9 +25925,10 @@
 	pixel_x = 5;
 	pixel_y = 7
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 6;
-	pixel_y = 32
+	pixel_y = 32;
+	lazy_nodes = 0
 	},
 /turf/open/floor/strata/orange_edge/north,
 /area/lv759/indoors/spaceport/hallway_east)
@@ -26157,7 +26164,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/wy_research_complex/cargo)
 "ekj" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -28419,11 +28426,11 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/bar/bathroom)
 "eDS" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	dir = 10;
 	pixel_y = 18;
 	layer = 9;
@@ -30008,9 +30015,10 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
 	dir = 8;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/north_east_street)
@@ -30144,9 +30152,10 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	dir = 4;
-	pixel_y = 32
+	pixel_y = 32;
+	lazy_nodes = 0
 	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -33570,7 +33579,7 @@
 /turf/open/floor/prison/red/southeast,
 /area/lv759/indoors/colonial_marshals/reception)
 "fvZ" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 8
 	},
@@ -35967,7 +35976,7 @@
 /turf/open/floor/plating,
 /area/lv759/outdoors/power_plant/transformers_south)
 "fRb" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_1{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_1{
 	pixel_y = 20;
 	pixel_x = -26;
 	layer = 6
@@ -36760,7 +36769,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -39827,7 +39836,7 @@
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/colonial_marshals/hallway_south)
 "gzt" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -40764,7 +40773,7 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -41454,7 +41463,7 @@
 /turf/open/floor/mech_bay_recharge_floor,
 /area/lv759/indoors/caves/south_west_caves)
 "gMC" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_5{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -41627,7 +41636,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/lv759/indoors/wy_research_complex/xenoarcheology)
 "gOw" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_2{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -42584,7 +42593,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -43221,7 +43230,7 @@
 "hbS" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -43926,12 +43935,12 @@
 /turf/open/floor/interior/wood,
 /area/lv759/indoors/jacks_surplus)
 "hih" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 4;
 	pixel_y = 14;
 	layer = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -44349,7 +44358,7 @@
 "hmk" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/strata_decals/grime/grime3,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 8
 	},
@@ -44459,9 +44468,10 @@
 	pixel_x = -21;
 	pixel_y = 3
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 6;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -44644,7 +44654,7 @@
 "hoI" = (
 /obj/effect/hybrisa/decal/road/road_edge,
 /obj/effect/hybrisa/decal/road/lines1,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -44941,12 +44951,12 @@
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	layer = 8;
 	pixel_y = 18;
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -46572,7 +46582,7 @@
 /area/lv759/indoors/caves/north_west_caves)
 "hEe" = (
 /obj/structure/platform/hybrisa/metalplatform1,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 4.2
 	},
@@ -48407,7 +48417,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines4{
 	pixel_x = 4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -49712,9 +49722,10 @@
 /turf/open/floor/strata/red3/east,
 /area/lv759/indoors/spaceport/security)
 "ieH" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 10;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/item/spacecash/ewallet{
 	pixel_y = 8
@@ -49739,9 +49750,10 @@
 /obj/item/hardpoint/locomotion/van_wheels{
 	unacidable = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 1;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -49749,12 +49761,12 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "ieY" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 4;
 	layer = 8;
 	pixel_y = 18
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -51115,12 +51127,12 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "irq" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 4;
 	layer = 8;
 	pixel_y = 18
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -52947,10 +52959,11 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 4;
 	pixel_x = -14;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/structure/sign/poster/ad{
 	layer = 4;
@@ -53511,11 +53524,11 @@
 /turf/open/floor/hybrisa/tile/tileblackcheckered,
 /area/lv759/indoors/casino)
 "iLj" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2{
 	pixel_y = 14;
 	layer = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -54126,7 +54139,7 @@
 /turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/mining_outpost/northeast)
 "iQQ" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -55385,7 +55398,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/caves/north_caves)
 "jbO" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -55533,7 +55546,7 @@
 /area/lv759/indoors/derelict_ship)
 "jcK" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -55997,7 +56010,7 @@
 	pixel_y = 4
 	},
 /obj/structure/prop/hybrisa/vehicles/car_pileup,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -56174,7 +56187,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -58504,9 +58517,10 @@
 /obj/structure/machinery/vending/coffee{
 	layer = 5
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 5;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/effect/hybrisa/decal/dirt_2,
 /turf/open/floor/prison/ramptop/east,
@@ -59125,7 +59139,7 @@
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "jHU" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_5{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -59482,7 +59496,7 @@
 /area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "jLN" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -59523,9 +59537,10 @@
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/wy_research_complex/securityarmory)
 "jMk" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 6;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -59578,7 +59593,7 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
 "jNd" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -59615,9 +59630,10 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/indoors/caves/central_caves)
 "jNz" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 1;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/spaceport/docking_bay_1)
@@ -59912,7 +59928,7 @@
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -60213,7 +60229,7 @@
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -60658,12 +60674,12 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
 "jVR" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	pixel_y = 18;
 	pixel_x = -8;
 	layer = 9
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -60946,7 +60962,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "jYA" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_5{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -61086,9 +61102,10 @@
 /turf/open/floor/plating/warnplate/east,
 /area/lv759/indoors/recycling_plant)
 "jZS" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	dir = 4;
-	pixel_y = 32
+	pixel_y = 32;
+	lazy_nodes = 0
 	},
 /turf/open/floor/hybrisa/metal/zbrownfloor1/north,
 /area/lv759/indoors/meridian/meridian_factory)
@@ -61812,7 +61829,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -61950,7 +61967,7 @@
 /turf/open/floor/corsat,
 /area/lv759/indoors/hospital/virology)
 "khF" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_5{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -63365,7 +63382,7 @@
 /turf/open/floor/prison/darkbrown2/north,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
 "krS" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -63909,10 +63926,11 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 5;
 	pixel_y = 34;
-	pixel_x = 12
+	pixel_x = 12;
+	lazy_nodes = 0
 	},
 /obj/structure/sign/poster/ad{
 	layer = 4;
@@ -64245,7 +64263,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/stack/sheet/metal,
 /obj/structure/girder/reinforced,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -65460,8 +65478,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
-	pixel_y = 32
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
+	pixel_y = 32;
+	lazy_nodes = 0
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/south_east_street)
@@ -66170,7 +66189,7 @@
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b"
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -66567,7 +66586,7 @@
 	pixel_y = 12
 	},
 /obj/effect/hybrisa/decal/trash,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -67025,7 +67044,7 @@
 	pixel_y = -12;
 	layer = 3.9
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -67142,7 +67161,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv759/indoors/electical_systems/substation3)
 "kXk" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_5{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -68955,7 +68974,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/indoors/caves/north_west_caves)
 "lmE" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -69495,10 +69514,11 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/lv759/outdoors/caveplateau)
 "lqS" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 1;
 	pixel_x = 16;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -70309,14 +70329,14 @@
 /area/lv759/indoors/mining_outpost/east_command)
 "lwO" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	pixel_y = 18;
 	pixel_x = 6;
 	layer = 9;
 	dir = 4
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -70521,7 +70541,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines4{
 	pixel_x = 4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -70746,7 +70766,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -70812,9 +70832,10 @@
 /turf/open/floor/corsat/marked,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "lAU" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 9;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -72378,7 +72399,7 @@
 /turf/open/hybrisa/street/sidewalk/northeast,
 /area/lv759/outdoors/colony_streets/central_streets)
 "lOs" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 4.2
 	},
@@ -72815,8 +72836,9 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/indoors/caves/south_east_caves)
 "lRu" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
-	pixel_y = 34
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -73120,11 +73142,11 @@
 	pixel_x = -11;
 	pixel_y = 6
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_2{
 	pixel_y = 14;
 	layer = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -74053,11 +74075,11 @@
 /turf/open/floor/prison/floor_marked,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "mbW" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	pixel_y = 14;
 	layer = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -74253,7 +74275,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/indoors/caves/north_east_caves)
 "meg" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_5{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -75529,12 +75551,12 @@
 /turf/open/floor/prison/sterile_white,
 /area/lv759/indoors/garage_restroom)
 "mpD" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 10;
 	layer = 8;
 	pixel_y = 18
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -75823,12 +75845,12 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/lv759/indoors/landing_zone_1/lz1_console)
 "mrU" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	pixel_y = 18;
 	layer = 8;
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -75979,7 +76001,7 @@
 /area/lv759/indoors/garage_workshop)
 "mtf" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -76021,7 +76043,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/caves/east_caves)
 "mtw" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_5{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -77090,7 +77112,7 @@
 /area/lv759/indoors/caves/south_caves)
 "mCY" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -77180,13 +77202,13 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	icon_state = "billboard2";
 	layer = 8;
 	pixel_y = 18;
 	dir = 9
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -77730,9 +77752,10 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/lv759/indoors/hospital/cryo_room)
 "mIq" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 8;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/structure/bed/chair{
 	pixel_y = 13
@@ -78142,9 +78165,10 @@
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 9;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/floor/prison/ramptop/east,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -78427,13 +78451,13 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 1;
 	icon_state = "billboard2";
 	layer = 8;
 	pixel_y = 18
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -78910,7 +78934,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/caves/west_caves)
 "mTf" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 8
 	},
@@ -78937,7 +78961,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines4{
 	pixel_x = 4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -80029,17 +80053,17 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
 "ncC" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 10;
 	layer = 9;
 	pixel_x = -16;
 	pixel_y = 18
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -80257,11 +80281,11 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "neO" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
 	dir = 6;
 	pixel_y = 18;
 	pixel_x = 8;
@@ -80299,7 +80323,7 @@
 /turf/open/floor/almayer/tcomms,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "nfh" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -80675,8 +80699,9 @@
 	dir = 1
 	},
 /obj/item/tool/warning_cone,
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
-	pixel_y = 34
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/east_central_street)
@@ -81172,7 +81197,7 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/effect/hybrisa/decal/road/lines4,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -82271,7 +82296,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/lv759/indoors/wy_research_complex/researchanddevelopment)
 "nyy" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 4.2
 	},
@@ -82983,7 +83008,7 @@
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "nEk" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_2{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
 	pixel_x = -26
 	},
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
@@ -83270,7 +83295,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines4{
 	pixel_x = 4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -83840,7 +83865,7 @@
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/wy_research_complex/reception)
 "nLY" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -84114,7 +84139,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "nNX" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -84495,7 +84520,7 @@
 /turf/open/floor/corsat/marked,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "nQZ" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -85004,7 +85029,7 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "nVl" = (
 /obj/structure/disposalpipe/junction,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -86308,7 +86333,7 @@
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
 "oeP" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -86321,9 +86346,10 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
 	dir = 9;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -86649,10 +86675,11 @@
 	dir = 1
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	icon_state = "billboard2";
 	pixel_y = 34;
-	dir = 10
+	dir = 10;
+	lazy_nodes = 0
 	},
 /turf/open/floor/hybrisa/metal/grated/north,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -88248,7 +88275,7 @@
 	pixel_x = -10;
 	pixel_y = 14
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 8
 	},
@@ -88609,10 +88636,11 @@
 /obj/structure/sign/poster/propaganda{
 	pixel_y = 32
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	dir = 5;
 	pixel_y = 32;
-	pixel_x = 16
+	pixel_x = 16;
+	lazy_nodes = 0
 	},
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
@@ -89633,7 +89661,7 @@
 /obj/structure/prop/hybrisa/misc/fire/fire1{
 	color = "#ffa700"
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -90497,7 +90525,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 8
 	},
@@ -91541,11 +91569,11 @@
 /turf/open/floor/strata/floor3/east,
 /area/lv759/indoors/wy_research_complex/mainlabs)
 "oXw" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
 	dir = 5;
 	pixel_y = 18;
 	layer = 9
@@ -93182,7 +93210,7 @@
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/apartment/westfoyer)
 "pls" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -93376,7 +93404,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -94067,7 +94095,7 @@
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "psD" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 4.2
 	},
@@ -94799,12 +94827,12 @@
 "pyE" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	layer = 8;
 	pixel_y = 18;
 	dir = 9
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -95601,7 +95629,7 @@
 /turf/open/floor/prison,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "pFy" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -96242,11 +96270,11 @@
 /turf/open/floor/strata/orange_edge/east,
 /area/lv759/indoors/wy_research_complex/hangarbay)
 "pKv" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	layer = 8;
 	pixel_y = 18
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -98376,7 +98404,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines4{
 	pixel_x = 4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -99324,7 +99352,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_1{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_1{
 	pixel_x = -26
 	},
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
@@ -101063,7 +101091,7 @@
 /turf/open/floor/hybrisa/metal/metalwhitefull,
 /area/lv759/indoors/spaceport/cuppajoes)
 "qAr" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_5{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -103111,7 +103139,7 @@
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown,
 /area/lv759/indoors/apartment/northapartments)
 "qRC" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -104572,7 +104600,7 @@
 	icon_state = "road_edge_decal4"
 	},
 /obj/effect/hybrisa/decal/road/lines2,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -106375,9 +106403,10 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/oob)
 "rvf" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 1;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -107255,7 +107284,7 @@
 /area/lv759/indoors/weyyu_office/floor)
 "rAY" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -109038,9 +109067,10 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 5;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/structure/sign/safety/landingzone{
 	pixel_x = -17;
@@ -109307,12 +109337,12 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 4;
 	pixel_y = 14;
 	layer = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -110299,13 +110329,13 @@
 /area/lv759/indoors/wy_research_complex/securitycommand)
 "rXQ" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 8;
 	pixel_y = 14;
 	layer = 8
 	},
 /obj/item/shard,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -111917,7 +111947,7 @@
 /obj/structure/girder/reinforced,
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -114187,7 +114217,7 @@
 /obj/effect/hybrisa/decal/road/road_edge,
 /obj/effect/hybrisa/decal/road/lines1,
 /obj/effect/hybrisa/decal/road/lines2,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -114464,7 +114494,7 @@
 	},
 /obj/effect/hybrisa/decal/road/lines4,
 /obj/effect/hybrisa/decal/road/lines2,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -114864,7 +114894,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_east_street_LZ)
 "sLy" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -115817,7 +115847,7 @@
 	dir = 8
 	},
 /obj/item/shard,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -117469,12 +117499,12 @@
 /turf/open/floor/strata/orange_edge/north,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "tgW" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 10;
 	layer = 8;
 	pixel_y = 18
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -118004,7 +118034,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -118604,7 +118634,7 @@
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_street)
 "tpx" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 4.2
 	},
@@ -119029,12 +119059,12 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 1;
 	pixel_y = 14;
 	layer = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -120361,7 +120391,7 @@
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/lv759/outdoors/colony_streets/north_street)
 "tGW" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -120634,7 +120664,7 @@
 	color = "#5d524b"
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -121001,12 +121031,12 @@
 /turf/open/floor/prison,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "tMl" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 8;
 	layer = 8;
 	pixel_y = 18
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -122066,11 +122096,11 @@
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "tWo" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
 	dir = 1;
 	pixel_y = 18;
 	layer = 9
@@ -122947,12 +122977,12 @@
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/meridian/meridian_factory)
 "udq" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 8;
 	pixel_y = 14;
 	layer = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -123402,7 +123432,7 @@
 /turf/open/floor/prison/red/north,
 /area/lv759/indoors/colonial_marshals/hallway_central)
 "uhV" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_1{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_1{
 	pixel_x = -26
 	},
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
@@ -123898,7 +123928,7 @@
 /obj/structure/girder/reinforced,
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -124579,7 +124609,7 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "urJ" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -124691,7 +124721,7 @@
 /area/lv759/indoors/hospital/east_hallway)
 "usJ" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -124815,11 +124845,11 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
 	dir = 4;
 	pixel_y = 18;
 	layer = 9
@@ -125782,7 +125812,7 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "uCx" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -126362,9 +126392,10 @@
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	pixel_y = 34;
-	dir = 8
+	dir = 8;
+	lazy_nodes = 0
 	},
 /turf/open/floor/strata/orange_edge,
 /area/lv759/indoors/spaceport/docking_bay_1)
@@ -127296,10 +127327,11 @@
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "uNP" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 4;
 	pixel_x = -12;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -129588,13 +129620,13 @@
 /turf/open/floor/strata/orange_edge/east,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "vhT" = (
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	pixel_y = 18;
 	layer = 9;
 	pixel_x = -6;
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -129698,7 +129730,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -131173,7 +131205,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines2{
 	pixel_y = 4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -131520,7 +131552,7 @@
 	color = "#ffa700";
 	layer = 7
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -133345,9 +133377,10 @@
 	dir = 1
 	},
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
 	dir = 6;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/floor/hybrisa/metal/grated/north,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -133489,7 +133522,7 @@
 /obj/effect/hybrisa/decal/road/road_stop{
 	icon_state = "stop_decal2"
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -133519,7 +133552,7 @@
 "vOX" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_2{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -133868,7 +133901,7 @@
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble4{
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_2{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -134000,10 +134033,11 @@
 	pixel_x = 4;
 	pixel_y = 32
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	icon_state = "billboard2";
 	pixel_y = 32;
-	dir = 1
+	dir = 1;
+	lazy_nodes = 0
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -135285,12 +135319,12 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 1;
 	pixel_y = 14;
 	layer = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -136654,9 +136688,10 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard2{
 	dir = 1;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -136951,7 +136986,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/lv759/indoors/hospital/pharmacy)
 "wsk" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -137305,9 +137340,10 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/bigbillboards{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 10;
-	pixel_y = 32
+	pixel_y = 32;
+	lazy_nodes = 0
 	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/south_east_street)
@@ -139119,9 +139155,10 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
 	dir = 1;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -139552,10 +139589,11 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	icon_state = "billboard2";
 	pixel_y = 32;
-	dir = 4
+	dir = 4;
+	lazy_nodes = 0
 	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -140259,7 +140297,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
+/obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns/road_sign_1{
 	dir = 1;
 	pixel_y = 14;
 	layer = 8
@@ -140267,7 +140305,7 @@
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b"
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -140312,7 +140350,7 @@
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "wUy" = (
 /obj/structure/platform/hybrisa/metalplatform1,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 4.2
 	},
@@ -141165,9 +141203,10 @@
 /obj/structure/bed/sofa{
 	icon_state = "couch_hori1"
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
 	dir = 6;
-	pixel_y = 34
+	pixel_y = 34;
+	lazy_nodes = 0
 	},
 /turf/open/floor/prison/red/southwest,
 /area/lv759/indoors/colonial_marshals/hallway_central)
@@ -142159,7 +142198,7 @@
 /turf/open/floor/prison/red/northeast,
 /area/lv759/indoors/colonial_marshals/hallway_central)
 "xkE" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -142524,7 +142563,7 @@
 /turf/open/floor/almayer,
 /area/lv759/indoors/spaceport/baggagehandling)
 "xou" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -143609,7 +143648,7 @@
 /turf/open/floor/hybrisa/metal/greenmetal1,
 /area/lv759/indoors/colonial_marshals/prisoners_recreation_area)
 "xwi" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -143885,7 +143924,7 @@
 "xxV" = (
 /obj/structure/girder/reinforced,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/prop/hybrisa/lattice_prop/lattice_3{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
 	layer = 6
 	},
@@ -144254,7 +144293,7 @@
 /turf/open/floor/plating/platingdmg1,
 /area/lv759/indoors/caves/central_caves)
 "xBh" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -146494,7 +146533,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/lv759/indoors/hospital/east_hallway)
 "xVu" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_4{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -147007,7 +147046,7 @@
 /obj/effect/hybrisa/decal/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -147135,7 +147174,7 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -147757,7 +147796,7 @@
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/lv759/indoors/wy_research_complex/xenobiology)
 "yfU" = (
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},
@@ -148023,9 +148062,10 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	dir = 1;
-	pixel_y = 32
+	pixel_y = 32;
+	lazy_nodes = 0
 	},
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -148324,9 +148364,10 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
 	dir = 8;
-	pixel_y = 32
+	pixel_y = 32;
+	lazy_nodes = 0
 	},
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -148405,7 +148446,7 @@
 	dir = 1;
 	pixel_x = -7
 	},
-/obj/structure/prop/hybrisa/lattice_prop/lattice_6{
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
 	layer = 6
 	},

@@ -6333,9 +6333,7 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
-/turf/open/floor/prison/darkbrown3/northwest{
-	dir = 6
-	},
+/turf/open/floor/prison/darkbrown3/southeast,
 /area/lv759/indoors/meridian/meridian_foyer)
 "bbJ" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -40763,9 +40761,7 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
-/turf/open/floor/prison/darkbrown3/northwest{
-	dir = 5
-	},
+/turf/open/floor/prison/darkbrown3/northeast,
 /area/lv759/indoors/meridian/meridian_factory)
 "gGX" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -58417,9 +58413,7 @@
 	alpha = 175;
 	pixel_y = 2
 	},
-/turf/open/floor/prison/darkbrown3/northwest{
-	dir = 5
-	},
+/turf/open/floor/prison/darkbrown3/northeast,
 /area/lv759/indoors/meridian/meridian_factory)
 "jBG" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -60167,9 +60161,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/caves/central_caves)
 "jRU" = (
-/turf/open/floor/prison/darkbrown3/northwest{
-	dir = 5
-	},
+/turf/open/floor/prison/darkbrown3/northeast,
 /area/lv759/indoors/meridian/meridian_factory)
 "jSb" = (
 /obj/structure/surface/rack,
@@ -85551,9 +85543,7 @@
 	dir = 8
 	},
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/prison/darkbrown3/northwest{
-	dir = 5
-	},
+/turf/open/floor/prison/darkbrown3/northeast,
 /area/lv759/indoors/caves/south_west_caves)
 "nYG" = (
 /obj/structure/surface/rack,
@@ -89087,9 +89077,7 @@
 /turf/open/floor/hybrisa/tile/beige_bigtile,
 /area/lv759/indoors/botany/botany_hallway)
 "oCM" = (
-/turf/open/floor/prison/darkbrown3/northwest{
-	dir = 6
-	},
+/turf/open/floor/prison/darkbrown3/southeast,
 /area/lv759/indoors/meridian/meridian_factory)
 "oCP" = (
 /obj/structure/barricade/handrail/medical{
@@ -107584,9 +107572,7 @@
 	pixel_y = 14;
 	pixel_x = 8
 	},
-/turf/open/floor/prison/darkbrown3/northwest{
-	dir = 6
-	},
+/turf/open/floor/prison/darkbrown3/southeast,
 /area/lv759/indoors/meridian/meridian_factory)
 "rDM" = (
 /obj/structure/cargo_container/hybrisa/containersextended/blackwyleft,
@@ -110266,9 +110252,7 @@
 /obj/structure/machinery/light/small/blue{
 	dir = 4
 	},
-/turf/open/floor/prison/darkbrown3/northwest{
-	dir = 6
-	},
+/turf/open/floor/prison/darkbrown3/southeast,
 /area/lv759/indoors/pizzaria)
 "rXv" = (
 /obj/structure/largecrate/random/mini/med{
@@ -111795,9 +111779,7 @@
 	icon_state = "E"
 	},
 /obj/item/reagent_container/glass/paint/remover,
-/turf/open/floor/prison/darkbrown3/northwest{
-	dir = 6
-	},
+/turf/open/floor/prison/darkbrown3/southeast,
 /area/lv759/indoors/meridian/meridian_factory)
 "skv" = (
 /obj/effect/hybrisa/decal/road/road_stop{
@@ -122104,9 +122086,7 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "tWq" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
-/turf/open/floor/prison/darkbrown3/northwest{
-	dir = 6
-	},
+/turf/open/floor/prison/darkbrown3/southeast,
 /area/lv759/indoors/caves/south_west_caves)
 "tWr" = (
 /obj/item/tool/extinguisher{
@@ -137383,9 +137363,7 @@
 	pixel_x = 10;
 	pixel_y = 10
 	},
-/turf/open/floor/prison/darkbrown3/northwest{
-	dir = 5
-	},
+/turf/open/floor/prison/darkbrown3/northeast,
 /area/lv759/indoors/meridian/meridian_foyer)
 "wvG" = (
 /obj/effect/hybrisa/decal/dirt,

@@ -28,7 +28,7 @@
 	if(lazy_nodes) //creates new node on each surounding tile if there is not one already
 		var/obj/effect/roof_node/neighbor = locate() in loc
 		if(!neighbor)
-			neighbor = new(src.loc)
+			neighbor = new(loc)
 		for(var/direction in CARDINAL_ALL_DIRS)
 			var/adjacent_loc = get_step(src, direction)
 			neighbor = locate() in adjacent_loc

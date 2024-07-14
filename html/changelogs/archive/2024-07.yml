@@ -67,3 +67,63 @@
   - rscadd: Adds a brief piece of flavor text upon initial ingestion.
   zzzmike:
   - bugfix: converts flash, flashbang to TG effect system, fixing issue(s)
+2024-07-09:
+  AndroBetel:
+  - qol: Made splint breaking message bigger
+  Steelpoint:
+  - mapadd: The USS Kurtz has been added as a USCM affiliated ERT station. The design
+      off the USS Kurtz is based off of the USS Sulaco, from older versions of CM-SS13.
+      The USS Kurtz features the entire lower-deck and a snapshot of the upper deck.
+  - mapadd: The USCM CBRN ERT will use the USS Kurtz as their homebase.
+  kirieee:
+  - rscadd: Covert contractors added to the ERT pool
+2024-07-10:
+  Steelpoint:
+  - rscadd: Marine force reconnaissance gear presets have been added for admin use.
+  - rscadd: ERT force reconnaissance have functional squad settings, including a squad
+      colour (green) and a radio channel. These settings do not apply for survivor
+      force reconnaissance marines.
+  - rscadd: A marine force reconnaissance distress signal has been added. Spawning
+      either a 6-man squad, or a 30-man platoon. These are currently for admin use
+      only.
+  - rscadd: A set of customized M3-R armour has been added for force reconnaissance
+      marines. It has comparable defensive values to M3 armour but has the speed slowdown
+      of M3-L armour. Only ERT force reconnaissance marines will spawn with this.
+  hislittlecuzingames:
+  - rscadd: Multiple tools, and welding visor to SO Locker
+  - qol: Adds free bayonet to Staff Officer Locker
+2024-07-11:
+  Blundir:
+  - rscadd: jtac and Intel kits to ASRS store
+  - rscadd: Intel kit to IO points vendor
+  - balance: intel kit now has large doc pouch instead of small
+  - balance: jtac kit now has radiopack
+  Diegoflores31:
+  - imageadd: changes xeno intent icon for a cooler one.
+  Doubleumc:
+  - imageadd: adds CMP tracker sprites for all HUD options
+  Drathek:
+  - maptweak: Removed var edits from open turfs to fix ScrapeAway resetting the turf
+      (e.g. xenos building resin walls) on basically all maps
+  - maptweak: Fixed bad dir var edits on various map
+  - maptweak: Fixed stacked structures on various maps
+  Git-Nivrak:
+  - balance: Hivelords now have meson vision
+  - rscadd: Added a toggle for meson vision for hivelord and burrower
+  Steelpoint:
+  - rscadd: VAISO Covert Operatives will now spawn with a Night Vision Optic in their
+      helmet.
+  Unknownity:
+  - bugfix: Burrowers now see themselves as partly transparent when burrowed.
+  blackdragonTOW:
+  - soundadd: Power Loader sounds have been normalized to -6db
+  iloveloopers:
+  - bugfix: Demolitions scanner now properly works for incinerator tanks.
+  - spellcheck: Fixed some capitalization with custom incinerator tanks.
+2024-07-12:
+  Kivts:
+  - ui: The Company spent some money to upgrade the chemical simulator to work on
+      the TGUI, Including a few prepaid features.
+2024-07-14:
+  kiVts:
+  - bugfix: Denied request on req is working again

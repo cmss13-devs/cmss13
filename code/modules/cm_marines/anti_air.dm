@@ -73,6 +73,8 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 		return UI_CLOSE
 	if(!allowed(user))
 		return UI_CLOSE
+	if(SShijack.hijack_status != HIJACK_OBJECTIVES_SHIP_INBOUND)
+		return UI_CLOSE
 
 /obj/structure/machinery/computer/aa_console/ui_static_data(mob/user)
 	var/list/data = list()
@@ -137,4 +139,8 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 
 	if(!allowed(user))
 		to_chat(user, SPAN_WARNING("You do not have access to this."))
+		return TRUE
+
+	if(SShijack.hijack_status != HIJACK_OBJECTIVES_SHIP_INBOUND)
+		to_chat(user, SPAN_WARNING("There is no current air threat."))
 		return TRUE

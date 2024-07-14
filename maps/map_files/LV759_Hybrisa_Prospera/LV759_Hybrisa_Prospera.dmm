@@ -4642,7 +4642,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
 "aOc" = (
-/obj/structure/machinery/power/reactor,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_x = -6;
 	pixel_y = 32
@@ -116532,7 +116532,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv759/indoors/caves/north_east_caves)
 "tac" = (
-/obj/structure/machinery/power/reactor,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
@@ -131718,7 +131718,7 @@
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "vAz" = (
-/obj/structure/machinery/power/reactor,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_y = 32;
 	pixel_x = 8
@@ -136786,7 +136786,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/indoors/caves/west_caves)
 "wpW" = (
-/obj/structure/machinery/power/reactor,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/corsat,
 /area/lv759/indoors/power_plant/geothermal_generators)
 "wpX" = (

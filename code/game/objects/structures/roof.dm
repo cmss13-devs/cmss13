@@ -109,10 +109,10 @@
 /datum/roof_master_node/Destroy(force, ...)
 	if(connected_nodes)
 		for(var/obj/effect/roof_node/roof_node in connected_nodes)
-			roof_node.Destroy(1)
+			qdel(roof_node)
 	if(connected_nodes)
 		for(var/obj/structure/roof/roof in connected_roof)
-			roof.Destroy(1)
+			qdel(roof)
 	. = ..()
 
 /datum/roof_master_node/proc/add_under_roof(mob/living/living) //mob crossed connected node
@@ -161,4 +161,4 @@
 /datum/roof_master_node/proc/remove_roof(obj/structure/roof/roof) //roof tile got removed
 	connected_roof -= roof
 	if(!length(connected_roof))
-		Destroy(1)
+		qdel(src)

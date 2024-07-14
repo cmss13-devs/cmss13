@@ -36185,9 +36185,7 @@
 /obj/structure/closet,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/hybrisa/tile/darkbrown_bigtile{
-	dir = 1
-	},
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/lv759/indoors/recycling_plant/garage)
 "fTd" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -38509,9 +38507,7 @@
 	pixel_x = -4;
 	pixel_y = 34
 	},
-/turf/open/floor/hybrisa/tile/darkbrown_bigtile{
-	dir = 1
-	},
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/lv759/indoors/recycling_plant/garage)
 "gnz" = (
 /obj/item/clothing/head/hardhat{
@@ -66898,7 +66894,6 @@
 /turf/open/floor/hybrisa/engineership/engineer_floor3,
 /area/lv759/indoors/derelict_ship)
 "kVv" = (
-/obj/effect/hybrisa/decal/dirt,
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = -11;
 	pixel_y = 1
@@ -66918,6 +66913,7 @@
 /obj/item/stack/sheet/cardboard{
 	layer = 1
 	},
+/obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/darkbrowncorner_bigtile/west,
 /area/lv759/indoors/recycling_plant/garage)
 "kVx" = (
@@ -118770,17 +118766,14 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv759/indoors/weyyu_office/vip)
 "tqZ" = (
-/obj/effect/hybrisa/decal/dirt,
 /obj/item/stack/sheet/metal/small_stack,
-/obj/item/shard,
 /obj/item/stack/sheet/cardboard/small_stack,
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_2";
 	pixel_y = 12
 	},
-/turf/open/floor/hybrisa/tile/darkbrowncorner_bigtile/west{
-	dir = 1
-	},
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/hybrisa/tile/darkbrowncorner_bigtile/north,
 /area/lv759/indoors/recycling_plant)
 "trg" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -122595,9 +122588,7 @@
 /obj/item/clothing/suit/storage/hazardvest/sanitation,
 /obj/item/clothing/suit/storage/hazardvest/sanitation,
 /obj/structure/pipes/standard/simple/hidden/dark,
-/turf/open/floor/hybrisa/tile/darkbrown_bigtile{
-	dir = 1
-	},
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/lv759/indoors/recycling_plant)
 "uac" = (
 /obj/structure/platform/hybrisa/rockdark{
@@ -125955,9 +125946,7 @@
 /obj/item/tool/mop{
 	pixel_x = -10
 	},
-/turf/open/floor/hybrisa/tile/darkbrown_bigtile{
-	dir = 1
-	},
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/lv759/indoors/recycling_plant/garage)
 "uDW" = (
 /obj/structure/bed/hybrisa/hospital/hospitaldivider,
@@ -129958,9 +129947,7 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 6
 	},
-/turf/open/floor/hybrisa/tile/darkbrown_bigtile{
-	dir = 1
-	},
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/lv759/indoors/recycling_plant)
 "vlh" = (
 /obj/effect/decal/warning_stripes{
@@ -134570,9 +134557,7 @@
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/turf/open/floor/hybrisa/tile/darkbrown_bigtile{
-	dir = 1
-	},
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/lv759/indoors/recycling_plant/garage)
 "vXi" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -143587,9 +143572,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/closet,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/hybrisa/tile/darkbrown_bigtile{
-	dir = 1
-	},
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/lv759/indoors/recycling_plant/garage)
 "xvZ" = (
 /obj/structure/machinery/door/window/brigdoor/northleft{

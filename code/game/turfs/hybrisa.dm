@@ -282,8 +282,14 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile
 	icon_state = "darkbrown_bigtile"
 
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/north
+	dir = NORTH
+
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/southwest
 	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/south
+	dir = SOUTH
 
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/east
 	dir = EAST
@@ -305,6 +311,15 @@
 
 /turf/open/floor/hybrisa/tile/darkbrowncorner_bigtile/west
 	dir = WEST
+
+/turf/open/floor/hybrisa/tile/darkbrowncorner_bigtile/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/tile/darkbrowncorner_bigtile/south
+	dir = SOUTH
+
+/turf/open/floor/hybrisa/tile/darkbrowncorner_bigtile/north
+	dir = NORTH
 
 /turf/open/floor/hybrisa/tile/asteroidfloor_bigtile
 	icon_state = "asteroidfloor_bigtile"

@@ -38,14 +38,15 @@
 
 /obj/structure/roof/LateInitialize() //we use late init to allow for lazy nodes to spawn first on mapload
 	. = ..()
-	if(!linked_master)
-		for(var/direction in CARDINAL_ALL_DIRS) //this searches if there is lattice with master already, to work with runtime creation
-			for(var/obj/structure/roof/roof in get_step(src,direction))
-				if(roof.linked_master)
-					roof.linked_master.connect(loc)
-					return
-		var/datum/roof_master_node/roof_master_node = new(loc) //no master and no lattice to connect to, create new master
-		roof_master_node.connect(loc)
+	if(linked_master)
+		return
+	for(var/direction in CARDINAL_ALL_DIRS) //this searches if there is lattice with master already, to work with runtime creation
+		for(var/obj/structure/roof/roof in get_step(src,direction))
+			if(roof.linked_master)
+				roof.linked_master.connect(loc)
+				return
+	var/datum/roof_master_node/roof_master_node = new(loc) //no master and no lattice to connect to, create new master
+	roof_master_node.connect(loc)
 
 /obj/structure/roof/Destroy(force, ...)
 	if(linked_master)

@@ -88,7 +88,7 @@
 	if(linked_master)
 		if(linked_master.connected_nodes)
 			linked_master.connected_nodes -= src
-	.=..()
+	return ..()
 
 /obj/effect/roof_node/proc/link_master(datum/roof_master_node/master) //performs bfs and connects to master
 	if(linked_master)

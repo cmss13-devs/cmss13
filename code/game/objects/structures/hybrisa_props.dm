@@ -82,10 +82,10 @@
 			update_icon()
 
 /obj/structure/prop/hybrisa/vehicles/bullet_act(obj/projectile/P)
-    if(P.ammo.damage)
-        take_damage(P.ammo.damage)
-        playsound(src, 'sound/effects/metalping.ogg', 35, 1)
-        update_icon()
+	if(P.ammo.damage)
+		take_damage(P.ammo.damage)
+		playsound(src, 'sound/effects/metalping.ogg', 35, 1)
+		update_icon()
 
 // Armored Truck - Damage States
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck

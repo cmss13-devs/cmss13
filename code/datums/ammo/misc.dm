@@ -51,6 +51,8 @@
 /datum/ammo/flamethrower/tank_flamer
 	flamer_reagent_id = "napalmx"
 
+	max_range = 8
+
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
 	flamer_reagent_id = "napalmx"
@@ -94,6 +96,15 @@
 	var/datum/reagent/napalm/ut/R = new()
 	R.durationfire = BURN_TIME_INSTANT
 	new /obj/flamer_fire(T, cause_data, R, 0)
+
+/datum/ammo/flamethrower/sentry_flamer/wy
+	name = "sticky fire"
+	flamer_reagent_id = "stickynapalm"
+	shell_speed = AMMO_SPEED_TIER_4
+
+/datum/ammo/flamethrower/sentry_flamer/upp
+	name = "gel fire"
+	flamer_reagent_id = "napalmgel"
 
 /datum/ammo/flare
 	name = "flare"
@@ -189,7 +200,7 @@
 	if(!M || M == P.firer) return
 	if(M.throw_mode && !M.get_active_hand()) //empty active hand and we're in throw mode. If so we catch the can.
 		if(!M.is_mob_incapacitated()) // People who are not able to catch cannot catch.
-			if(P.contents.len == 1)
+			if(length(P.contents) == 1)
 				for(var/obj/item/reagent_container/food/drinks/cans/souto/S in P.contents)
 					M.put_in_active_hand(S)
 					for(var/mob/O in viewers(GLOB.world_view_size, P)) //find all people in view.
@@ -203,7 +214,7 @@
 			H.apply_effect(15, DAZE)
 			H.apply_effect(15, SLOW)
 		shake_camera(H, 2, 1)
-		if(P.contents.len)
+		if(length(P.contents))
 			drop_can(P.loc, P) //We make a can at the location.
 
 /datum/ammo/souto/on_hit_obj(obj/O,obj/projectile/P)
@@ -219,7 +230,7 @@
 	drop_can(P.loc, P) //We make a can at the location.
 
 /datum/ammo/souto/proc/drop_can(loc, obj/projectile/P)
-	if(P.contents.len)
+	if(length(P.contents))
 		for(var/obj/item/I in P.contents)
 			I.forceMove(loc)
 	randomize_projectile(P)
@@ -266,6 +277,9 @@
 	name = "smoke grenade shell"
 	nade_type = /obj/item/explosive/grenade/smokebomb
 	icon_state = "smoke_shell"
+
+/datum/ammo/grenade_container/tank_glauncher
+	max_range = 8
 
 /datum/ammo/hugger_container
 	name = "hugger shell"

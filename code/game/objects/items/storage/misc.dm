@@ -30,7 +30,7 @@
 	to_chat(user, message)
 	open = !open
 	update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		..()
 	return
 
@@ -100,7 +100,7 @@
 		new /obj/item/reagent_container/food/drinks/cans/aspen(src)
 
 /obj/item/storage/beer_pack/update_icon()
-	if(contents.len == 1)
+	if(length(contents) == 1)
 		var/turf/T = get_turf(src)
 		var/obj/item/reagent_container/food/drinks/cans/aspen/B = new(T)
 		if(ishuman(loc))
@@ -109,7 +109,7 @@
 			H.put_in_inactive_hand(B)
 		qdel(src)
 	else
-		icon_state = "6_pack_[contents.len]"
+		icon_state = "6_pack_[length(contents)]"
 
 /obj/item/storage/box/clf
 	name = "D18-storing box"
@@ -119,6 +119,7 @@
 	w_class = SIZE_SMALL
 	max_w_class = SIZE_TINY
 	storage_slots = 2
+	can_hold = list(/obj/item/weapon/gun/pistol/clfpistol, /obj/item/ammo_magazine/pistol/clfpistol)
 
 /obj/item/storage/box/clf/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/clfpistol(src)
@@ -132,6 +133,7 @@
 	w_class = SIZE_MEDIUM
 	max_w_class = SIZE_MEDIUM
 	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/pistol/t73, /obj/item/ammo_magazine/pistol/t73)
 
 /obj/item/storage/box/upp/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/t73(src)
@@ -142,11 +144,11 @@
 	name = "M8 cartridge bayonet packaging"
 	desc = "Contains one M8 Cartridge Bayonet and two sister CO2 cartridges. Thanks for being a dedicated Boots magazine subscriber!"
 	icon_state = "co2_box"
-	can_hold = list(/obj/item/attachable/bayonet/co2, /obj/item/co2_cartridge)
 	foldable = TRUE
 	storage_slots = 3
 	w_class = SIZE_SMALL
 	max_w_class = SIZE_SMALL
+	can_hold = list(/obj/item/attachable/bayonet/co2, /obj/item/co2_cartridge)
 
 /obj/item/storage/box/co2_knife/fill_preset_inventory()
 	new /obj/item/attachable/bayonet/co2(src)

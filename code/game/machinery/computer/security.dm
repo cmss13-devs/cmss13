@@ -155,7 +155,7 @@
 					dat += text("<A href='?src=\ref[];choice=New Record (Security)'>New Security Record</A><BR><BR>", src)
 				dat += text("\n<A href='?src=\ref[];choice=Print Record'>Print Record</A><BR>\n<A href='?src=\ref[];choice=Return'>Back</A><BR>", src, src)
 			if(4.0)
-				if(!Perp.len)
+				if(!length(Perp))
 					dat += text("ERROR.  String could not be located.<br><br><A href='?src=\ref[];choice=Return'>Back</A>", src)
 				else
 					dat += {"
@@ -172,7 +172,7 @@
 <th>Rank</th>
 <th>Criminal Status</th>
 </tr> "}
-					for(var/i=1, i<=Perp.len, i += 2)
+					for(var/i=1, i<=length(Perp), i += 2)
 						var/crimstat = ""
 						var/datum/data/record/R = Perp[i]
 						if(istype(Perp[i+1],/datum/data/record/))
@@ -271,16 +271,16 @@ What a mess.*/
 				Perp = new/list()
 				t1 = lowertext(t1)
 				var/list/components = splittext(t1, " ")
-				if(components.len > 5)
+				if(length(components) > 5)
 					return //Lets not let them search too greedily.
 				for(var/datum/data/record/R in GLOB.data_core.general)
 					var/temptext = R.fields["name"] + " " + R.fields["id"] + " " + R.fields["rank"]
-					for(var/i = 1, i<=components.len, i++)
+					for(var/i = 1, i<=length(components), i++)
 						if(findtext(temptext,components[i]))
 							var/prelist = new/list(2)
 							prelist[1] = R
 							Perp += prelist
-				for(var/i = 1, i<=Perp.len, i+=2)
+				for(var/i = 1, i<=length(Perp), i+=2)
 					for(var/datum/data/record/E in GLOB.data_core.security)
 						var/datum/data/record/R = Perp[i]
 						if ((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))

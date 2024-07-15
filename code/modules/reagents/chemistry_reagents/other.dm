@@ -254,7 +254,7 @@
 	color = "#484848" // rgb: 72, 72, 72
 	overdose = REAGENTS_OVERDOSE
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_NEUROTOXIC = 4)
+	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_NEUROCRYOGENIC = 1, PROPERTY_DISRUPTING = 1)
 
 /datum/reagent/sulfur
 	name = "Sulfur"
@@ -310,7 +310,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_TOXIC = 1)
+	properties = list(PROPERTY_TOXIC = 1, PROPERTY_NEUTRALIZING = 1)
 
 /datum/reagent/sodium
 	name = "Sodium"
@@ -380,7 +380,7 @@
 	reagent_state = SOLID
 	color = "#C7C7C7" // rgb: 199,199,199
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_CARCINOGENIC = 2)
+	properties = list(PROPERTY_CARCINOGENIC = 2, PROPERTY_HEMORRAGING = 1)
 
 /datum/reagent/thermite
 	name = "Thermite"

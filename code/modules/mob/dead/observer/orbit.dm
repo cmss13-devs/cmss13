@@ -118,6 +118,7 @@
 					var/datum/caste_datum/caste = xeno.caste
 					serialized["caste"] = caste.caste_type
 					serialized["icon"] = caste.minimap_icon
+					serialized["hivenumber"] = xeno.hivenumber
 				xenos += list(serialized)
 				continue
 
@@ -132,6 +133,10 @@
 				serialized["nickname"] = human.real_name
 
 				var/icon = human.assigned_equipment_preset?.minimap_icon
+				if(islist(icon))
+					for(var/key in icon)
+						icon = key
+						break
 				serialized["icon"] = icon ? icon : "private"
 
 				if(human.assigned_squad)

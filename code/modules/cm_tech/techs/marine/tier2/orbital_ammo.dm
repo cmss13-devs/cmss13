@@ -2,7 +2,7 @@
 	name = "OB Ammo"
 	desc = "Purchase orbital bombardment ammo."
 
-	required_points = 10
+	required_points = 5
 	increase_per_purchase = 2
 
 	tier = /datum/tier/two

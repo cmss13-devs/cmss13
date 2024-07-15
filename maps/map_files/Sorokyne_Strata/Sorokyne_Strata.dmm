@@ -7801,9 +7801,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/paths/mining_outpost_exterior)
 "aEQ" = (
-/turf/open/floor/strata{
-	icon_state = "blue3"
-	},
+/turf/open/floor/strata/blue3,
 /area/strata/ag/interior/outpost/admin)
 "aER" = (
 /obj/structure/barricade/handrail/strata,
@@ -8829,10 +8827,7 @@
 /area/strata/ag/interior/outpost/engi)
 "aJc" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/strata{
-	dir = 10;
-	icon_state = "blue3"
-	},
+/turf/open/floor/strata/blue3/southwest,
 /area/strata/ag/interior/outpost/admin)
 "aJd" = (
 /obj/structure/sign/safety/terminal,
@@ -17145,8 +17140,6 @@
 /turf/open/floor/strata/white_cyan3/east,
 /area/strata/ag/interior/outpost/med)
 "bsx" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/foyer)
@@ -26361,7 +26354,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/underground_dorms/sec1)
 "ijf" = (
-/turf/open/floor/strata/blue4,
+/turf/open/floor/strata/blue4/east,
 /area/strata/ag/interior/outpost/admin)
 "ijo" = (
 /turf/closed/wall/strata_outpost/reinforced,

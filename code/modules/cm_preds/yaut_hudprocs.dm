@@ -442,3 +442,18 @@
 		T.hud_set_hunter()
 	else
 		to_chat(src, SPAN_YAUTJABOLD("You cannot undo the actions of a living brother or sister!"))
+
+/mob/living/carbon/human/proc/call_combi()
+	set name = "Yank combi-stick"
+	set category = "Yautja.Weapons"
+	set desc = "Yank on your combi-stick's chain, if it's in range. Otherwise... recover it yourself."
+
+	if(usr.is_mob_incapacitated())
+		return FALSE
+	call_combi_internal(usr)
+
+/mob/living/carbon/human/proc/call_combi_internal(mob/caller, forced = FALSE)
+	for(var/datum/effects/tethering/tether in caller.effects_list)
+		if(istype(tether.tethered.affected_atom, /obj/item/weapon/yautja/combistick))
+			var/obj/item/weapon/yautja/combistick/stick = tether.tethered.affected_atom
+			stick.recall()

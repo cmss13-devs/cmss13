@@ -3,47 +3,29 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/template_noop)
 "h" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/template_noop)
 "i" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
 /obj/structure/largecrate/supply/floodlights,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/template_noop)
 "j" = (
 /obj/structure/powerloader_wreckage,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/template_noop)
 "u" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/template_noop)
 "x" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/template_noop)
 "D" = (
 /turf/template_noop,
@@ -53,40 +35,28 @@
 	icon_state = "S"
 	},
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe"
-	},
+/turf/open/floor/prison/cell_stripe/east,
 /area/template_noop)
 "K" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "cell_stripe"
-	},
+/turf/open/floor/prison/cell_stripe/west,
 /area/template_noop)
 "L" = (
 /obj/structure/largecrate/random/case/small,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/template_noop)
 "O" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe"
-	},
+/turf/open/floor/prison/cell_stripe/east,
 /area/template_noop)
 "R" = (
-/obj/item/fuelCell{
+/obj/item/fuel_cell{
 	fuel_amount = 0;
 	icon_state = "cell-empty";
 	pixel_x = 7
 	},
-/obj/item/fuelCell{
+/obj/item/fuel_cell{
 	fuel_amount = 0;
 	icon_state = "cell-empty";
 	pixel_x = -7;
@@ -99,10 +69,7 @@
 /turf/template_noop,
 /area/template_noop)
 "Y" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "cell_stripe"
-	},
+/turf/open/floor/prison/cell_stripe/west,
 /area/template_noop)
 "Z" = (
 /obj/structure/largecrate/random/barrel,

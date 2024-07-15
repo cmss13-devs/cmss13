@@ -44,6 +44,10 @@
 #define USES_HEARING (1<<17)
 /// Should we use the initial icon for display? Mostly used by overlay only objects
 #define HTML_USE_INITAL_ICON (1<<18)
+// Whether or not the object sees emotes
+#define USES_SEEING (1<<19)
+// Can be quick drawn
+#define QUICK_DRAWABLE (1<<20)
 
 //==========================================================================================
 
@@ -82,6 +86,10 @@
 #define ANIMATED_SURGICAL_TOOL (1<<12)
 /// Has heat source but isn't 'on fire' and thus can be stored
 #define IGNITING_ITEM (1<<13)
+/// Overrides NODROP in some cases (stripping)
+#define FORCEDROP_CONDITIONAL (1<<14)
+/// Overrides smartgunner not being able to wear backpacks
+#define SMARTGUNNER_BACKPACK_OVERRIDE (1<<15)
 //==========================================================================================
 
 
@@ -194,11 +202,11 @@
 
 //===========================================================================================
 //Marine armor only, use for flags_marine_armor.
-#define ARMOR_SQUAD_OVERLAY 1
-#define ARMOR_LAMP_OVERLAY 2
-#define ARMOR_LAMP_ON 4
-#define ARMOR_IS_REINFORCED 8
-#define SYNTH_ALLOWED 16
+#define ARMOR_SQUAD_OVERLAY (1<<0)
+#define ARMOR_LAMP_OVERLAY (1<<1)
+#define ARMOR_LAMP_ON (1<<2)
+#define ARMOR_IS_REINFORCED (1<<3)
+#define SYNTH_ALLOWED (1<<4)
 //===========================================================================================
 
 //===========================================================================================

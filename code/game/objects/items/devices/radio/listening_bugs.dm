@@ -90,7 +90,7 @@
 	var/processed_verb = "[SPAN_RED("\[LSTN [nametag]\]")] [verb]"
 	if(broadcasting)
 		if(get_dist(src, M) <= 7)
-			talk_into(M, msg,null,processed_verb,speaking)
+			talk_into(M, msg, null, processed_verb, speaking, listening_device = TRUE)
 
 /obj/item/device/radio/listening_bug/afterattack(atom/target_atom, mob/user as mob, proximity)
 	if(!ready_to_disguise)
@@ -126,7 +126,7 @@
 				size = "small"
 			if(SIZE_MEDIUM)
 				size = "normal-sized"
-		. += "This is a [blood_color ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item."
+		. += "This is a [blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item."
 		if(desc)
 			. += desc
 		if(desc_lore)

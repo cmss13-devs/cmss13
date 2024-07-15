@@ -2,10 +2,13 @@
 /obj/item/clothing/head/helmet/space/santahat
 	name = "Santa's hat"
 	desc = "Ho ho ho. Merrry X-mas!"
-	icon_state = "santahat"
+	icon_state = "santa_hat_red"
 	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEYES
 	flags_armor_protection = BODY_FLAG_HEAD
+
+/obj/item/clothing/head/helmet/space/santahat/green
+	icon_state = "santa_hat_green"
 
 /obj/item/clothing/suit/space/santa
 	name = "Santa's suit"
@@ -40,7 +43,7 @@
 	icon_state = "pirate"
 	item_state = "pirate"
 	w_class = SIZE_MEDIUM
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/handcuffs,/obj/item/tank/emergency_oxygen)
+	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/restraint/handcuffs,/obj/item/tank/emergency_oxygen)
 	slowdown = 0
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -90,7 +93,7 @@
 /obj/item/clothing/suit/space/compression/uscm
 	name = "\improper MK.50 compression suit"
 	desc = "A heavy, bulky civilian space suit, fitted with armored plates. This specific suit has found its way into the ragtag inventory of the USCM's patrol boat requisitions system."
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/handcuffs,/obj/item/tank)
+	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/restraint/handcuffs,/obj/item/tank)
 
 // Souto man
 

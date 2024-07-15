@@ -37,6 +37,7 @@
 	crit_health = -25
 	gib_chance = 25
 	mob_size = MOB_SIZE_SMALL
+	speaking_noise = "larva_talk"
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
@@ -46,7 +47,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	mutation_type = "Normal"
 
 	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
 	var/state_override
@@ -157,7 +157,27 @@
 	return larva
 
 /mob/living/carbon/xenomorph/larva/emote(act, m_type, message, intentional, force_silence)
+	// Custom emote
+	if(act == "me")
+		return ..()
+
+	switch(stat)
+		if(UNCONSCIOUS)
+			to_chat(src, SPAN_WARNING("You cannot emote while unconscious!"))
+			return FALSE
+		if(DEAD)
+			to_chat(src, SPAN_WARNING("You cannot emote while dead!"))
+			return FALSE
+	if(client)
+		if(client.prefs.muted & MUTE_IC)
+			to_chat(src, SPAN_DANGER("You cannot emote (muted)."))
+			return FALSE
+		if(!client.attempt_talking())
+			return FALSE
+
+	// Otherwise, ""roar""!
 	playsound(loc, "alien_roar_larva", 15)
+	return TRUE
 
 /mob/living/carbon/xenomorph/larva/is_xeno_grabbable()
 	return TRUE

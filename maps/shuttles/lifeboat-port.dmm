@@ -21,10 +21,7 @@
 	},
 /area/shuttle/lifeboat)
 "dt" = (
-/turf/open/shuttle/lifeboat{
-	dir = 1;
-	icon_state = "plating_striped"
-	},
+/turf/open/shuttle/lifeboat/plating_striped/north,
 /area/shuttle/lifeboat)
 "en" = (
 /turf/closed/shuttle/lifeboat{
@@ -107,9 +104,7 @@
 	},
 /area/shuttle/lifeboat)
 "nn" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "plate"
-	},
+/turf/open/shuttle/lifeboat/plate,
 /area/shuttle/lifeboat)
 "on" = (
 /turf/closed/shuttle/lifeboat/transparent{
@@ -117,9 +112,7 @@
 	},
 /area/shuttle/lifeboat)
 "pH" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "plating_striped"
-	},
+/turf/open/shuttle/lifeboat/plating_striped,
 /area/shuttle/lifeboat)
 "qA" = (
 /turf/closed/shuttle/lifeboat{
@@ -251,9 +244,7 @@
 	id = "Boat1-D1";
 	throw_dir = 1
 	},
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "CI" = (
 /turf/template_noop,
@@ -319,9 +310,7 @@
 /turf/closed/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "Jg" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor8"
-	},
+/turf/open/shuttle/escapepod/floor1/east,
 /area/shuttle/lifeboat)
 "Jw" = (
 /turf/closed/shuttle/lifeboat{
@@ -344,14 +333,10 @@
 	id = "Boat1-D2";
 	throw_dir = 1
 	},
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "Nm" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "Ob" = (
 /turf/closed/shuttle/lifeboat{

@@ -19,13 +19,13 @@
 	if(RC.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
 		var/current_amount = length(built_structures[RC.build_path])
 		if(current_amount >= RC.max_per_xeno)
-			to_chat(src, SPAN_XENOWARNING("You've already built the maximum possible structures you can!"))
+			to_chat(src, SPAN_XENOWARNING("We've already built the maximum possible structures we can!"))
 			return SECRETE_RESIN_FAIL
 
 	var/turf/current_turf = get_turf(A)
 
 	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, A) > src.caste.max_build_dist + extra_build_dist) // Hivelords and eggsac carriers have max_build_dist of 1, drones and queens 0
-		to_chat(src, SPAN_XENOWARNING("You can't build from that far!"))
+		to_chat(src, SPAN_XENOWARNING("We can't build from that far!"))
 		return SECRETE_RESIN_FAIL
 	else if(thick) //hivelords can thicken existing resin structures.
 		var/thickened = FALSE
@@ -37,7 +37,7 @@
 				return SECRETE_RESIN_FAIL
 
 			for(var/datum/effects/xeno_structure_reinforcement/sf in WR.effects_list)
-				to_chat(src, SPAN_XENOWARNING("The extra resin is preventing you from reinforcing [WR]. Wait until it elapse."))
+				to_chat(src, SPAN_XENOWARNING("The extra resin is preventing us from reinforcing [WR]. Wait until it elapse."))
 				return SECRETE_RESIN_FAIL
 
 			if (WR.hivenumber != hivenumber)
@@ -62,7 +62,7 @@
 				return SECRETE_RESIN_FAIL
 
 			for(var/datum/effects/xeno_structure_reinforcement/sf in DR.effects_list)
-				to_chat(src, SPAN_XENOWARNING("The extra resin is preventing you from reinforcing [DR]. Wait until it elapse."))
+				to_chat(src, SPAN_XENOWARNING("The extra resin is preventing us from reinforcing [DR]. Wait until it elapse."))
 				return SECRETE_RESIN_FAIL
 
 			if(DR.hardness == 1.5) //non thickened
@@ -78,7 +78,7 @@
 		if(thickened)
 			if(message)
 				visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and thickens [A]."), \
-					SPAN_XENONOTICE("You regurgitate some resin and thicken [A], using [total_resin_cost] plasma."), null, 5)
+					SPAN_XENONOTICE("We regurgitate some resin and thicken [A], using [total_resin_cost] plasma."), null, 5)
 				if(use_plasma)
 					use_plasma(total_resin_cost)
 				playsound(loc, "alien_resin_build", 25)
@@ -132,7 +132,7 @@
 		use_plasma(total_resin_cost)
 	if(message)
 		visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [RC.construction_name]!"), \
-			SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [RC.construction_name][use_plasma ? " at the cost of a total [total_resin_cost] plasma" : ""]."), null, 5)
+			SPAN_XENONOTICE("We regurgitate some resin and shape it into \a [RC.construction_name][use_plasma ? " at the cost of a total [total_resin_cost] plasma" : ""]."), null, 5)
 		playsound(loc, "alien_resin_build", 25)
 
 	var/atom/new_resin = RC.build(current_turf, hivenumber, src)
@@ -164,8 +164,10 @@
 	new_structure.set_template(structure_template)
 	hive.add_construction(new_structure)
 
+	var/max_constructions = hive.hive_structures_limit[structure_template.name]
+	var/remaining_constructions = max_constructions - hive.get_structure_count(structure_template.name)
 	visible_message(SPAN_XENONOTICE("A thick substance emerges from the ground and shapes into \a [new_structure]."), \
-		SPAN_XENONOTICE("You designate a new [structure_template] construction."), null, 5)
+		SPAN_XENONOTICE("We designate a new [structure_template] construction. ([remaining_constructions]/[max_constructions] remaining)"), null, 5)
 	playsound(new_structure, "alien_resin_build", 25)
 
 	if(hive.living_xeno_queen)
@@ -176,11 +178,11 @@
 		return FALSE
 	var/found_weeds = FALSE
 	if(!selected_mark)
-		to_chat(src, SPAN_NOTICE("You must have a meaning for the mark before you can make it."))
+		to_chat(src, SPAN_NOTICE("We must have a meaning for the mark before you can make it."))
 		hive.mark_ui.open_mark_menu(src)
 		return FALSE
 	if(target_turf.z != src.z)
-		to_chat(src, SPAN_NOTICE("You have no psychic presence on that world."))
+		to_chat(src, SPAN_NOTICE("We have no psychic presence on that world."))
 		return FALSE
 	if(!(istype(target_turf)) || target_turf.density)
 		return FALSE
@@ -195,7 +197,7 @@
 	playsound(target_turf, "alien_resin_build", 25)
 
 	if(!found_weeds)
-		to_chat(src, SPAN_XENOMINORWARNING("You made the resin mark on ground with no weeds, it will break soon without any."))
+		to_chat(src, SPAN_XENOMINORWARNING("We made the resin mark on ground with no weeds, it will break soon without any."))
 
 	if(isqueen(src))
 		NM.color = "#7a21c4"

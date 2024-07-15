@@ -141,7 +141,7 @@
 	else if (O.potency == -1)
 		return 5
 	else
-		return round(5*sqrt(O.potency))
+		return floor(5*sqrt(O.potency))
 
 /obj/structure/machinery/juicer/proc/juice()
 	power_change() //it is a portable machine

@@ -173,33 +173,6 @@
 			stored_comms["plastic"]++
 			stored_comms["plastic"]++
 			return
-
-		else if(ismaintdrone(M) && !M.client)
-
-			var/mob/living/silicon/robot/drone/D = src.loc
-
-			if(!istype(D))
-				return
-
-			to_chat(D, SPAN_DANGER("You begin decompiling the other drone."))
-
-			if(!do_after(D, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-				to_chat(D, SPAN_DANGER("You need to remain still while decompiling such a large object."))
-				return
-
-			if(!M || !D) return
-
-			to_chat(D, SPAN_DANGER("You carefully and thoroughly decompile your downed fellow, storing as much of its resources as you can within yourself."))
-
-			qdel(M)
-			new/obj/effect/decal/cleanable/blood/oil(get_turf(src))
-
-			stored_comms["metal"] += 15
-			stored_comms["glass"] += 15
-			stored_comms["wood"] += 5
-			stored_comms["plastic"] += 5
-
-			return
 		else
 			continue
 

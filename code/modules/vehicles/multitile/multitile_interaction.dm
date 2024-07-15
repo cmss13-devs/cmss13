@@ -248,7 +248,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(X.mob_size < mob_size_required_to_hit)
-		to_chat(X, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		to_chat(X, SPAN_XENOWARNING("We're too small to do any significant damage to this vehicle!"))
 		return XENO_NO_DELAY_ACTION
 
 	var/damage = (X.melee_vehicle_damage + rand(-5,5)) * XENO_UNIVERSAL_VEHICLE_DAMAGEMULT
@@ -269,11 +269,11 @@
 	if(!damage)
 		playsound(X.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 		X.visible_message(SPAN_DANGER("\The [X] swipes at \the [src] to no effect!"), \
-		SPAN_DANGER("You swipe at \the [src] to no effect!"))
+		SPAN_DANGER("We swipe at \the [src] to no effect!"))
 		return XENO_ATTACK_ACTION
 
 	X.visible_message(SPAN_DANGER("\The [X] slashes \the [src]!"), \
-	SPAN_DANGER("You slash \the [src]!"))
+	SPAN_DANGER("We slash \the [src]!"))
 	playsound(X.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
 	take_damage_type(damage * damage_mult, "slash", X)
@@ -297,7 +297,7 @@
 
 	if(ammo_flags & AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE)
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
-		damage = round(damage*ANTISTRUCT_DMG_MULT_TANK)
+		damage = floor(damage*ANTISTRUCT_DMG_MULT_TANK)
 	if(ammo_flags & AMMO_ACIDIC)
 		dam_type = "acid"
 
@@ -420,9 +420,9 @@
 	else if(!entrance_used && !isxeno(M))
 		return
 
-	var/enter_msg = "You start climbing into \the [src]..."
+	var/enter_msg = "We start climbing into \the [src]..."
 	if(health <= 0 && isxeno(M))
-		enter_msg = "You start prying away loose plates, squeezing into \the [src]..."
+		enter_msg = "We start prying away loose plates, squeezing into \the [src]..."
 
 	// Check if drag anything
 	var/atom/dragged_atom
@@ -507,7 +507,7 @@
 
 	var/success = interior.enter(dragged_atom, entrance_used)
 	if(success)
-		to_chat(user, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
+		to_chat(user, SPAN_NOTICE("You successfully fit [dragged_atom] inside \the [src]."))
 	else
 		to_chat(user, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]! It's either too big or vehicle is out of space!"))
 	return

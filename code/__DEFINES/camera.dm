@@ -16,6 +16,7 @@
 #define CAMERA_NET_VEHICLE "Vehicle"
 #define CAMERA_NET_LANDING_ZONES "Landing Zones"
 #define CAMERA_NET_LASER_TARGETS "Laser Targets"
+#define CAMERA_NET_CORRESPONDENT "Combat Correspondent Live"
 
 #define CAMERA_NET_POWER_ALARMS "Power Alarms"
 #define CAMERA_NET_ATMOSPHERE_ALARMS "Atmosphere Alarms"

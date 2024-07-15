@@ -33,9 +33,10 @@
 			return FALSE
 	if(ishuman(passer))
 		var/mob/living/carbon/human/trespasser = passer
-		if(pass_accesses && (trespasser.wear_id))
+		var/obj/item/card/id/card = trespasser.get_idcard()
+		if(pass_accesses && card)
 			for(var/tag in pass_accesses)
-				if(tag in trespasser.wear_id.access)
+				if(tag in card.access)
 					return FALSE
 	Trigger(passer)
 	return TRUE
@@ -69,7 +70,7 @@
 		broadcast_message = "ALERT: Unauthorized movement detected in [area_name]!"
 
 	var/datum/ares_link/link = GLOB.ares_link
-	if(link.processor_apollo.inoperable())
+	if(!ares_can_apollo())
 		return FALSE
 
 	to_chat(passer, SPAN_BOLDWARNING("You hear a soft beeping sound as you cross the threshold."))
@@ -123,11 +124,9 @@
 	var/check_contents = TRUE
 	if(ishuman(passer))
 		var/mob/living/carbon/human/human_passer = passer
-		idcard = human_passer.wear_id
-		if(istype(idcard))
+		idcard = human_passer.get_idcard()
+		if(idcard)
 			check_contents = FALSE
-		else
-			idcard = null
 
 	if(istype(passer, /obj/item/card/id))
 		idcard = passer
@@ -154,7 +153,7 @@
 	var/broadcast_message = get_broadcast(passer, idcard, failure)
 
 	var/datum/ares_link/link = GLOB.ares_link
-	if(link.processor_apollo.inoperable())
+	if(!ares_can_apollo())
 		return FALSE
 
 	to_chat(passer, SPAN_BOLDWARNING("You hear a harsh buzzing sound as you cross the threshold!"))

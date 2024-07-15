@@ -19,6 +19,13 @@
 	if(L && istype(L))
 		limb = L
 
+/datum/effects/bleeding/Destroy()
+	if(limb)
+		SEND_SIGNAL(limb, COMSIG_LIMB_STOP_BLEEDING, TRUE, FALSE)
+		limb.bleeding_effects_list -= src
+		limb = null
+	return ..()
+
 /datum/effects/bleeding/validate_atom(atom/A)
 	if(isobj(A))
 		return FALSE
@@ -48,12 +55,6 @@
 		duration += damage * (blood_duration_multiplier / BLOOD_ADD_PENALTY)
 		blood_loss += damage / (blood_loss_divider * BLOOD_ADD_PENALTY) //Make the first hit count, adding on bleeding has a penalty
 
-/datum/effects/bleeding/Destroy()
-	if(limb)
-		limb.bleeding_effects_list -= src
-	return ..()
-
-
 /datum/effects/bleeding/external
 	var/buffer_blood_loss = 0
 
@@ -69,6 +70,11 @@
 		if(affected_mob.reagents) // Annoying QC check
 			if(affected_mob.reagents.get_reagent_amount("thwei"))
 				blood_loss -= THWEI_BLOOD_REDUCTION
+
+			if(affected_mob.bodytemperature < T0C && (affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
+				var/obj/structure/machinery/cryo_cell/cryo = affected_mob.loc
+				if(istype(cryo) && cryo.on && cryo.operable())
+					blood_loss -= CRYO_BLOOD_REDUCTION
 
 			var/mob/living/carbon/human/affected_human = affected_mob
 			if(istype(affected_human))
@@ -94,18 +100,19 @@
 	if(affected_mob.in_stasis == STASIS_IN_BAG)
 		return FALSE
 
-	if(affected_mob.bodytemperature < T0C && (affected_mob.reagents && affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
-		blood_loss -= CRYO_BLOOD_REDUCTION
-
 	if(affected_mob.reagents) // Annoying QC check
 		if(affected_mob.reagents.get_reagent_amount("thwei"))
 			blood_loss -= THWEI_BLOOD_REDUCTION
+
+		if(affected_mob.bodytemperature < T0C && (affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
+			blood_loss -= CRYO_BLOOD_REDUCTION
 
 		var/mob/living/carbon/human/affected_human = affected_mob
 		if(istype(affected_human))
 			if(affected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
 				return FALSE
 
+	blood_loss = max(blood_loss, 0) // Bleeding shouldn't give extra blood even if its only 1 tick
 	affected_mob.blood_volume = max(affected_mob.blood_volume - blood_loss, 0)
 
 	return TRUE

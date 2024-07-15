@@ -1,11 +1,14 @@
 #define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DISABILITY_DEAF) || A?:ear_deaf))
 #define xeno_hivenumber(A) (isxeno(A) ? A?:hivenumber : FALSE)
 
-/proc/random_ethnicity()
-	return pick(GLOB.ethnicities_list)
+/proc/random_skin_color()
+	return pick(GLOB.skin_color_list)
 
 /proc/random_body_type()
-	return pick(GLOB.body_types_list)
+	return pick(GLOB.body_type_list)
+
+/proc/random_body_size()
+	return pick(GLOB.body_size_list)
 
 /proc/random_hair_style(gender, species = "Human")
 	var/h_style = "Crewcut"
@@ -23,7 +26,7 @@
 			continue
 		valid_hairstyles[hairstyle] = GLOB.hair_styles_list[hairstyle]
 
-	if(valid_hairstyles.len)
+	if(length(valid_hairstyles))
 		h_style = pick(valid_hairstyles)
 
 	return h_style
@@ -45,7 +48,7 @@
 			continue
 		valid_facialhairstyles[facialhairstyle] = GLOB.facial_hair_styles_list[facialhairstyle]
 
-	if(valid_facialhairstyles.len)
+	if(length(valid_facialhairstyles))
 		f_style = pick(valid_facialhairstyles)
 
 		return f_style
@@ -73,6 +76,7 @@
 /mob/proc/change_real_name(mob/M, new_name)
 	if(!new_name)
 		return FALSE
+	var/old_name = M.real_name
 
 	M.real_name = new_name
 	M.name = new_name
@@ -83,6 +87,7 @@
 	// If we are humans, we need to update our voice as well
 	M.change_mob_voice(new_name)
 
+	SEND_SIGNAL(src, COMSIG_MOB_REAL_NAME_CHANGED, old_name, new_name)
 	return TRUE
 
 /mob/proc/change_mind_name(new_mind_name)

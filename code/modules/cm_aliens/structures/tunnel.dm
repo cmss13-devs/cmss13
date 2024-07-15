@@ -48,7 +48,21 @@
 	if(resin_trap)
 		qdel(resin_trap)
 
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
 	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(hivenumber), "xenotunnel")
+
+/obj/structure/tunnel/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hive.tunnels -= src
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+		hive = GLOB.hive_datum[XENO_HIVE_FORSAKEN]
+		hive.tunnels += src
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /obj/structure/tunnel/Destroy()
 	if(hive)
@@ -115,7 +129,7 @@
 	if(isxeno(usr) && isfriendly(usr) && (usr.loc == src))
 		pick_tunnel(usr)
 	else
-		to_chat(usr, "You stare into the dark abyss" + "[contents.len ? ", making out what appears to be two little lights... almost like something is watching." : "."]")
+		to_chat(usr, "You stare into the dark abyss" + "[length(contents) ? ", making out what appears to be two little lights... almost like something is watching." : "."]")
 
 /obj/structure/tunnel/verb/exit_tunnel_verb()
 	set name = "Exit Tunnel"
@@ -130,15 +144,17 @@
 	if(!istype(X) || X.is_mob_incapacitated(TRUE) || !isfriendly(X) || !hive)
 		return FALSE
 	if(X in contents)
-		var/list/tunnels = list()
-		for(var/obj/structure/tunnel/T in hive.tunnels)
+		var/list/input_tunnels = list()
+
+		var/list/sorted_tunnels = sort_list_dist(hive.tunnels, get_turf(X))
+		for(var/obj/structure/tunnel/T in sorted_tunnels)
 			if(T == src)
 				continue
 			if(!is_ground_level(T.z))
 				continue
 
-			tunnels += list(T.tunnel_desc = T)
-		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", tunnels, theme="hive_status")
+			input_tunnels += list(T.tunnel_desc = T)
+		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", input_tunnels, theme="hive_status")
 		if(!pick)
 			return FALSE
 
@@ -147,7 +163,7 @@
 			//No teleporting!
 			return FALSE
 
-		to_chat(X, SPAN_XENONOTICE("You begin moving to your destination."))
+		to_chat(X, SPAN_XENONOTICE("We begin moving to our destination."))
 
 		var/tunnel_time = TUNNEL_MOVEMENT_XENO_DELAY
 
@@ -159,17 +175,17 @@
 		if(!do_after(X, tunnel_time, INTERRUPT_NO_NEEDHAND, 0))
 			return FALSE
 
-		var/obj/structure/tunnel/T = tunnels[pick]
+		var/obj/structure/tunnel/T = input_tunnels[pick]
 
-		if(T.contents.len > 2)// max 3 xenos in a tunnel
+		if(length(T.contents) > 2)// max 3 xenos in a tunnel
 			to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 			return FALSE
 		if(!T.loc)
-			to_chat(X, SPAN_WARNING("The tunnel has collapsed before you reached its exit!"))
+			to_chat(X, SPAN_WARNING("The tunnel has collapsed before we reached its exit!"))
 			return FALSE
 
 		X.forceMove(T)
-		to_chat(X, SPAN_XENONOTICE("You have reached your destination."))
+		to_chat(X, SPAN_XENONOTICE("We have reached our destination."))
 		return TRUE
 
 /obj/structure/tunnel/proc/exit_tunnel(mob/living/carbon/xenomorph/X)
@@ -177,7 +193,7 @@
 	if(X in contents)
 		X.forceMove(loc)
 		visible_message(SPAN_XENONOTICE("\The [X] pops out of the tunnel!"), \
-		SPAN_XENONOTICE("You pop out through the other side!"))
+		SPAN_XENONOTICE("We pop out through the other side!"))
 		return TRUE
 
 //Used for controling tunnel exiting and returning
@@ -200,15 +216,15 @@
 
 	if(!isfriendly(M))
 		if(M.mob_size < MOB_SIZE_BIG)
-			to_chat(M, SPAN_XENOWARNING("You aren't large enough to collapse this tunnel!"))
+			to_chat(M, SPAN_XENOWARNING("We aren't large enough to collapse this tunnel!"))
 			return XENO_NO_DELAY_ACTION
 
 		M.visible_message(SPAN_XENODANGER("[M] begins to fill [src] with dirt."),\
-		SPAN_XENONOTICE("You begin to fill [src] with dirt using your massive claws."), max_distance = 3)
+		SPAN_XENONOTICE("We begin to fill [src] with dirt using our massive claws."), max_distance = 3)
 		xeno_attack_delay(M)
 
 		if(!do_after(M, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL_OUT_OF_RANGE, max_dist = 1))
-			to_chat(M, SPAN_XENOWARNING("You decide not to cave the tunnel in."))
+			to_chat(M, SPAN_XENOWARNING("We decide not to cave the tunnel in."))
 			return XENO_NO_DELAY_ACTION
 
 		src.visible_message(SPAN_XENODANGER("[src] caves in!"), max_distance = 3)
@@ -217,14 +233,14 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(M.anchored)
-		to_chat(M, SPAN_XENOWARNING("You can't climb through a tunnel while immobile."))
+		to_chat(M, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
 		return XENO_NO_DELAY_ACTION
 
-	if(!hive.tunnels.len)
-		to_chat(M, SPAN_WARNING("\The [src] doesn't seem to lead anywhere."))
+	if(!length(hive.tunnels))
+		to_chat(M, SPAN_WARNING("[src] doesn't seem to lead anywhere."))
 		return XENO_NO_DELAY_ACTION
 
-	if(contents.len > 2)
+	if(length(contents) > 2)
 		to_chat(M, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 		return XENO_NO_DELAY_ACTION
 
@@ -236,23 +252,23 @@
 		tunnel_time = TUNNEL_ENTER_LARVA_DELAY
 
 	if(M.mob_size >= MOB_SIZE_BIG)
-		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into \the [src]."), \
-		SPAN_XENONOTICE("You begin heaving your monstrous bulk into \the [src]</b>."))
+		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into [src]."),
+			SPAN_XENONOTICE("We begin heaving our monstrous bulk into [src] (<i>[tunnel_desc]</i>)."))
 	else
-		M.visible_message(SPAN_XENONOTICE("\The [M] begins crawling down into \the [src]."), \
-		SPAN_XENONOTICE("You begin crawling down into \the [src]</b>."))
+		M.visible_message(SPAN_XENONOTICE("[M] begins crawling down into [src]."),
+			SPAN_XENONOTICE("We begin crawling down into [src] (<i>[tunnel_desc]</i>)."))
 
 	xeno_attack_delay(M)
 	if(!do_after(M, tunnel_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		to_chat(M, SPAN_WARNING("Your crawling was interrupted!"))
+		to_chat(M, SPAN_WARNING("Our crawling was interrupted!"))
 		return XENO_NO_DELAY_ACTION
 
-	if(hive.tunnels.len) //Make sure other tunnels exist
+	if(length(hive.tunnels)) //Make sure other tunnels exist
 		M.forceMove(src) //become one with the tunnel
 		to_chat(M, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
 		pick_tunnel(M)
 	else
-		to_chat(M, SPAN_WARNING("\The [src] ended unexpectedly, so you return back up."))
+		to_chat(M, SPAN_WARNING("[src] ended unexpectedly, so we return back up."))
 	return XENO_NO_DELAY_ACTION
 
 /obj/structure/tunnel/maint_tunnel

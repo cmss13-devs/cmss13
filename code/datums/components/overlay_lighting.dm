@@ -175,7 +175,7 @@
 	LAZYINITLIST(affected_turfs)
 	if(range <= 2)
 		//Range here is 1 because actual range of lighting mask is 1 tile even if it says that range is 2
-		for(var/turf/lit_turf in RANGE_TURFS(1, current_holder.loc))
+		for(var/turf/lit_turf as anything in RANGE_TURFS(1, current_holder.loc))
 			lit_turf.dynamic_lumcount += lum_power
 			affected_turfs += lit_turf
 	else
@@ -194,7 +194,7 @@
 	get_new_turfs()
 
 
-///Adds the luminosity and source for the afected movable atoms to keep track of their visibility.
+///Adds the luminosity and source for the affected movable atoms to keep track of their visibility.
 /datum/component/overlay_lighting/proc/add_dynamic_lumi()
 	LAZYSET(current_holder.affected_movable_lights, src, lumcount_range + 1)
 	current_holder.underlays += visible_mask
@@ -202,7 +202,7 @@
 	if(directional)
 		current_holder.underlays += cone
 
-///Removes the luminosity and source for the afected movable atoms to keep track of their visibility.
+///Removes the luminosity and source for the affected movable atoms to keep track of their visibility.
 /datum/component/overlay_lighting/proc/remove_dynamic_lumi()
 	LAZYREMOVE(current_holder.affected_movable_lights, src)
 	current_holder.underlays -= visible_mask
@@ -262,6 +262,9 @@
 ///Used to determine the new valid current_holder from the parent's loc.
 /datum/component/overlay_lighting/proc/check_holder()
 	var/atom/movable/movable_parent = GET_PARENT
+	if(QDELETED(movable_parent))
+		set_holder(null)
+		return
 	if(isturf(movable_parent.loc))
 		set_holder(movable_parent)
 		return
@@ -270,13 +273,21 @@
 		set_holder(null)
 		return
 	if(isturf(inside.loc))
-		set_holder(inside)
+		// storage items block light, also don't be moving into a qdeleted item
+		if(QDELETED(inside) || istype(inside, /obj/item/storage))
+			set_holder(null)
+		else
+			set_holder(inside)
 		return
 	set_holder(null)
 
 
 ///Called when the current_holder is qdeleted, to remove the light effect.
 /datum/component/overlay_lighting/proc/on_holder_qdel(atom/movable/source, force)
+	SIGNAL_HANDLER
+	if(QDELETED(current_holder))
+		set_holder(null)
+		return
 	UnregisterSignal(current_holder, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
 	if(directional)
 		UnregisterSignal(current_holder, COMSIG_ATOM_DIR_CHANGE)
@@ -285,6 +296,7 @@
 
 ///Called when current_holder changes loc.
 /datum/component/overlay_lighting/proc/on_holder_moved(atom/movable/source, OldLoc, Dir, Forced)
+	SIGNAL_HANDLER
 	if(!(overlay_lighting_flags & LIGHTING_ON))
 		return
 	make_luminosity_update()
@@ -328,7 +340,7 @@
 		turn_off()
 	range = clamp(CEILING(new_range, 0.5), 1, 7)
 	var/pixel_bounds = ((range - 1) * 64) + 32
-	lumcount_range = CEILING(range, 1)
+	lumcount_range = ceil(range)
 	if(current_holder && overlay_lighting_flags & LIGHTING_ON)
 		current_holder.underlays -= visible_mask
 	visible_mask.icon = light_overlays["[pixel_bounds]"]
@@ -344,7 +356,7 @@
 	if(current_holder && overlay_lighting_flags & LIGHTING_ON)
 		current_holder.underlays += visible_mask
 	if(directional)
-		cast_range = clamp(round(new_range * 0.5), 1, 3)
+		cast_range = clamp(floor(new_range * 0.5), 1, 3)
 	if(overlay_lighting_flags & LIGHTING_ON)
 		make_luminosity_update()
 
@@ -443,8 +455,7 @@
 	. = lum_power
 	lum_power = new_lum_power
 	var/difference = . - lum_power
-	for(var/t in affected_turfs)
-		var/turf/lit_turf = t
+	for(var/turf/lit_turf as anything in affected_turfs)
 		lit_turf.dynamic_lumcount -= difference
 
 ///Here we append the behavior associated to changing lum_power.

@@ -88,3 +88,10 @@
 
 	if(!client && !mind && species)
 		species.handle_npc(src)
+
+/mob/living/carbon/human/set_stat(new_stat)
+	. = ..()
+	// Temporarily force triggering HUD updates so they apply immediately rather than on Life tick.
+	// Remove this once effects have been ported to trait signals (blinded, dazed, etc)
+	if(stat != .)
+		handle_regular_hud_updates()

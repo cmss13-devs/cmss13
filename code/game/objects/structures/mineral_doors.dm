@@ -32,9 +32,6 @@
 /obj/structure/mineral_door/attack_remote(mob/user as mob) //those aren't machinery, they're just big fucking slabs of a mineral
 	if(isRemoteControlling(user)) //so the AI can't open it
 		return
-	else if(isrobot(user)) //but cyborgs can
-		if(get_dist(user,src) <= 1) //not remotely though
-			return TryToSwitchState(user)
 
 /obj/structure/mineral_door/attack_hand(mob/user as mob)
 	return TryToSwitchState(user)
@@ -105,7 +102,7 @@
 			Dismantle()
 	else if(!(W.flags_item & NOBLUDGEON) && W.force)
 		user.animation_attack_on(src)
-		hardness -= W.force/100
+		hardness -= W.force/100 * W.demolition_mod
 		to_chat(user, "You hit the [name] with your [W.name]!")
 		CheckHardness()
 	else

@@ -128,7 +128,7 @@
 		/obj/item/ammo_magazine,
 		/obj/item/ammo_casing,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/device/taperecorder,
@@ -143,8 +143,8 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/apron/overalls
-	name = "coveralls"
-	desc = "A set of denim overalls."
+	name = "blue coveralls"
+	desc = "A pair of denim overalls. With a large pocket in the front these overalls are popular with workers of all kinds."
 	icon_state = "overalls"
 	item_state = "overalls"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
@@ -153,7 +153,7 @@
 		/obj/item/ammo_magazine,
 		/obj/item/ammo_casing,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/device/taperecorder,
@@ -166,6 +166,18 @@
 		/obj/item/tool/pen,
 	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
+
+/obj/item/clothing/suit/storage/apron/overalls/tan
+	name = "tan coveralls"
+	desc = "A pair of tan overalls. With a large pocket in the front these overalls are popular with workers of all kinds."
+	icon_state = "overalls_tan"
+	item_state = "overalls_tan"
+
+/obj/item/clothing/suit/storage/apron/overalls/red
+	name = "red coveralls"
+	desc = "A pair of reddish-brown overalls. With a large pocket in the front these overalls are popular with workers of all kinds."
+	icon_state = "overalls_red"
+	item_state = "overalls_red"
 
 /obj/item/clothing/suit/syndicatefake
 	name = "red space suit replica"
@@ -278,7 +290,7 @@
 	item_state = "webbing"
 	allowed = list(
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 
@@ -306,7 +318,7 @@
 	item_state = "synth_utility_vest"
 	allowed = list(
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 
@@ -443,7 +455,7 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 

@@ -197,7 +197,7 @@
 		return
 	if(L.stat == DEAD)
 		return
-	if(L.get_target_lock(iff_signal) || isrobot(L))
+	if(L.get_target_lock(iff_signal))
 		return
 	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
 		return
@@ -266,6 +266,8 @@
 
 /obj/effect/mine_tripwire/Destroy()
 	if(linked_claymore)
+		if(linked_claymore.tripwire == src)
+			linked_claymore.tripwire = null
 		linked_claymore = null
 	. = ..()
 

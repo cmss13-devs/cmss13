@@ -62,11 +62,11 @@
 
 /datum/ammo/bullet/pistol/ap/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
-	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+	M.AddComponent(/datum/component/status_effect/toxic_buildup, acid_per_hit)
 
 /datum/ammo/bullet/pistol/ap/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
-	if(T.flags_turf & TURF_ORGANIC)
+	if(T.turf_flags & TURF_ORGANIC)
 		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/pistol/ap/toxin/on_hit_obj(obj/O, obj/projectile/P)
@@ -180,6 +180,7 @@
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	debilitate = list(0,0,0,0,0,0,0,2)
 
+	effective_range_max = 3
 	accuracy = HIT_ACCURACY_TIER_4
 	damage = 45
 	penetration= ARMOR_PENETRATION_TIER_6
@@ -193,11 +194,11 @@
 
 /datum/ammo/bullet/pistol/squash/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
-	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+	M.AddComponent(/datum/component/status_effect/toxic_buildup, acid_per_hit)
 
 /datum/ammo/bullet/pistol/squash/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
-	if(T.flags_turf & TURF_ORGANIC)
+	if(T.turf_flags & TURF_ORGANIC)
 		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/pistol/squash/toxin/on_hit_obj(obj/O, obj/projectile/P)

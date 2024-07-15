@@ -23,7 +23,7 @@
 	faction = temp_list[faction]
 
 	if(!GLOB.custom_event_info_list[faction])
-		to_chat(usr, "Error has occured, [faction] category is not found.")
+		to_chat(usr, "Error has occurred, [faction] category is not found.")
 		return
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[faction]
@@ -81,6 +81,8 @@
 
 /client/proc/handle_bomb_drop(atom/epicenter)
 	var/custom_limit = 5000
+	var/power_warn_threshold = 500
+	var/falloff_warn_threshold = 0.05
 	var/list/choices = list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb")
 	var/list/falloff_shape_choices = list("CANCEL", "Linear", "Exponential")
 	var/choice = tgui_input_list(usr, "What size explosion would you like to produce?", "Drop Bomb", choices)
@@ -113,6 +115,11 @@
 
 			if(power > custom_limit)
 				return
+
+			if((power >= power_warn_threshold) && ((1 / (power / falloff)) <= falloff_warn_threshold) && (explosion_shape == EXPLOSION_FALLOFF_SHAPE_LINEAR)) // The lag can be a bit situational, but a large-power explosion with minimal (linear) falloff can absolutely bring the server to a halt in certain cases.
+				if(tgui_input_list(src, "This bomb has the potential to lag the server. Are you sure you wish to drop it?", "Drop confirm", list("Yes", "No")) != "Yes")
+					return
+
 			cell_explosion(epicenter, power, falloff, explosion_shape, null, cause_data)
 			message_admins("[key_name(src, TRUE)] dropped a custom cell bomb with power [power], falloff [falloff] and falloff_shape [shape_choice]!")
 	message_admins("[ckey] used 'Drop Bomb' at [epicenter.loc].")
@@ -322,7 +329,11 @@
 	if(!admin_holder)
 		return
 
-	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Press", "CMB", "Other", "Cancel")
+	var/list/options = list(
+		"Weyland-Yutani", "High Command", "Provost", "Press",
+		"Colonial Marshal Bureau", "Union of Progressive Peoples",
+		"Three World Empire", "Colonial Liberation Front",
+		"Other", "Cancel")
 	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
 	switch(answer)
 		if("Weyland-Yutani")
@@ -334,6 +345,7 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to Weyland-Yutani", "wyfaxviewer", "size=300x600")
+
 		if("High Command")
 			var/body = "<body>"
 
@@ -343,6 +355,7 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", "size=300x600")
+
 		if("Provost")
 			var/body = "<body>"
 
@@ -361,9 +374,9 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to Press organizations", "otherfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to Press organizations", "pressfaxviewer", "size=300x600")
 
-		if("CMB")
+		if("Colonial Marshal Bureau")
 			var/body = "<body>"
 
 			for(var/text in GLOB.CMBFaxes)
@@ -372,6 +385,36 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", "size=300x600")
+
+		if("Union of Progressive Peoples")
+			var/body = "<body>"
+
+			for(var/text in GLOB.UPPFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Union of Progressive Peoples", "uppfaxviewer", "size=300x600")
+
+		if("Three World Empire")
+			var/body = "<body>"
+
+			for(var/text in GLOB.TWEFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Three World Empire", "twefaxviewer", "size=300x600")
+
+		if("Colonial Liberation Front")
+			var/body = "<body>"
+
+			for(var/text in GLOB.CLFFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Colonial Liberation Front", "clffaxviewer", "size=300x600")
 
 		if("Other")
 			var/body = "<body>"
@@ -402,7 +445,7 @@
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len > 0 || hive.total_dead_xenos.len > 0)
+		if(length(hive.totalXenos) > 0 || length(hive.total_dead_xenos) > 0)
 			hives += list("[hive.name]" = hive.hivenumber)
 			last_hive_checked = hive
 
@@ -456,8 +499,8 @@
 		if(random_names)
 			var/random_name = "[lowertext(H.species.name)] ([rand(1, 999)])"
 			H.change_real_name(H, random_name)
-			if(H.wear_id)
-				var/obj/item/card/id/card = H.wear_id
+			var/obj/item/card/id/card = H.get_idcard()
+			if(card)
 				card.registered_name = H.real_name
 				card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 
@@ -570,7 +613,12 @@
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
-		return
+		return FALSE
+
+	if(!ares_is_active())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is destroyed, and cannot talk!"))
+		return FALSE
+
 	var/input = input(usr, "This is a standard message from the ship's AI. It uses Almayer General channel and won't be heard by humans without access to Almayer General channel (headset or intercom). Check with online staff before you send this. Do not use html.", "What?", "") as message|null
 	if(!input)
 		return FALSE
@@ -579,7 +627,7 @@
 		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
 		if(prompt == "No")
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
-			return
+			return FALSE
 
 	ai_announcement(input)
 	message_admins("[key_name_admin(src)] has created an AI comms report")
@@ -592,13 +640,17 @@
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
-		return
+		return FALSE
+
+	if(!ares_is_active())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is destroyed, and cannot talk!"))
+		return FALSE
+
 	var/input = tgui_input_text(usr, "This is a broadcast from the ship AI to Working Joes and Maintenance Drones. Do not use html.", "What?", "")
 	if(!input)
 		return FALSE
 
-	var/datum/ares_link/link = GLOB.ares_link
-	if(link.processor_apollo.inoperable())
+	if(!ares_can_apollo())
 		var/prompt = tgui_alert(src, "ARES APOLLO processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
 		if(prompt != "Yes")
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
@@ -714,7 +766,7 @@
 		<A href='?src=\ref[src];[HrefToken()];events=power'>Power ship SMESs and APCs</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=quickpower'>Power ship SMESs</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=powershipreactors'>Power all ship reactors</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=powershipreactors'>Repair and power all ship reactors</A><BR>
 		<BR>
 		<B>Events</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=blackout'>Break all lights</A><BR>
@@ -728,6 +780,7 @@
 		<A href='?src=\ref[src];[HrefToken()];events=nuke'>Spawn a nuke</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=xenothumbs'>Give or take opposable thumbs and gun permits from xenos</A><BR>
 		<BR>
 		"}
 
@@ -1007,10 +1060,11 @@
 			if("Xeno")
 				GLOB.bioscan_data.qm_bioscan(variance)
 			if("Marine")
-				var/force_check = tgui_alert(usr, "Do you wish to force ARES to display the bioscan?", "Display force", list("Yes", "No"), 20 SECONDS)
 				var/force_status = FALSE
-				if(force_check == "Yes")
-					force_status = TRUE
+				if(!ares_can_interface()) //proc checks if ARES is dead or if ARES cannot do announcements
+					var/force_check = tgui_alert(usr, "ARES is currently unable to properly display and/or perform the Bioscan, do you wish to force ARES to display the bioscan?", "Display force", list("Yes", "No"), 20 SECONDS)
+					if(force_check == "Yes")
+						force_status = TRUE
 				GLOB.bioscan_data.ares_bioscan(force_status, variance)
 			if("Yautja")
 				GLOB.bioscan_data.yautja_bioscan()

@@ -64,6 +64,7 @@
 	can_hold = list(
 		/obj/item/weapon/gun/shotgun/pump,
 		/obj/item/weapon/gun/shotgun/combat,
+		/obj/item/weapon/gun/shotgun/double/mou53,
 	)
 	has_gamemode_skin = TRUE
 
@@ -253,9 +254,12 @@
 		to_chat(user, SPAN_WARNING("[src] must be equipped before you can switch types."))
 		return
 
-	var/obj/item/weapon/gun/flamer/M240T/flamer = user.get_active_hand()
-	if(!istype(flamer))
-		to_chat(user, SPAN_WARNING("You must be holding [flamer] to use [src]."))
+	if(!linked_flamer)
+		to_chat(user, SPAN_WARNING("An incinerator unit must be linked in order to switch fuel types."))
+		return
+
+	if(user.get_active_hand() != linked_flamer)
+		to_chat(user, SPAN_WARNING("You must be holding [linked_flamer] to use [src]."))
 		return
 
 	if(!active_fuel)
@@ -276,8 +280,8 @@
 
 	to_chat(user, "You switch the fuel tank to <b>[active_fuel.caliber]</b>")
 	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
-	flamer.current_mag = active_fuel
-	flamer.update_icon()
+	linked_flamer.current_mag = active_fuel
+	linked_flamer.update_icon()
 
 	return TRUE
 
@@ -317,7 +321,7 @@
 		fuel.forceMove(get_turf(user))
 		fuel = new_fuel
 	visible_message("[user] swaps out the fuel tank in [src].","You swap out the fuel tank in [src] and drop the old one.")
-	to_chat(user, "The newly inserted [new_fuel.caliber] contains: [round(new_fuel.get_ammo_percent())]% fuel.")
+	to_chat(user, "The newly inserted [new_fuel.caliber] contains: [floor(new_fuel.get_ammo_percent())]% fuel.")
 	user.temp_drop_inv_item(new_fuel)
 	new_fuel.moveToNullspace() //necessary to not confuse the storage system
 	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
@@ -328,15 +332,15 @@
 
 /obj/item/storage/large_holster/fuelpack/get_examine_text(mob/user)
 	. = ..()
-	if(contents.len)
+	if(length(contents))
 		. += "It is storing a M240-T incinerator unit."
 	if (get_dist(user, src) <= 1)
 		if(fuel)
-			. += "The [fuel.caliber] currently contains: [round(fuel.get_ammo_percent())]% fuel."
+			. += "The [fuel.caliber] currently contains: [floor(fuel.get_ammo_percent())]% fuel."
 		if(fuelB)
-			. += "The [fuelB.caliber] currently contains: [round(fuelB.get_ammo_percent())]% fuel."
+			. += "The [fuelB.caliber] currently contains: [floor(fuelB.get_ammo_percent())]% fuel."
 		if(fuelX)
-			. += "The [fuelX.caliber] currently contains: [round(fuelX.get_ammo_percent())]% fuel."
+			. += "The [fuelX.caliber] currently contains: [floor(fuelX.get_ammo_percent())]% fuel."
 
 /datum/action/item_action/specialist/toggle_fuel
 	ability_primacy = SPEC_PRIMARY_ACTION_1

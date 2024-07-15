@@ -26,9 +26,9 @@
 	for(var/obj/item/clothing/accessory/accessory in accessories)
 		if(accessory.high_visibility)
 			ties += "\a [accessory.get_examine_line(user)]"
-	if(ties.len)
+	if(length(ties))
 		.+= " with [english_list(ties)] attached"
-	if(LAZYLEN(accessories) > ties.len)
+	if(LAZYLEN(accessories) > length(ties))
 		.+= ". <a href='?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
 
 /obj/item/clothing/Topic(href, href_list)
@@ -284,7 +284,7 @@
 			tankcheck = list(C.r_hand, C.l_hand, C.back)
 		var/best = 0
 		var/bestpressure = 0
-		for(var/i=1, i<tankcheck.len+1, ++i)
+		for(var/i=1, i<length(tankcheck)+1, ++i)
 			if(istype(tankcheck[i], /obj/item/tank))
 				var/obj/item/tank/t = tankcheck[i]
 				var/goodtank
@@ -336,41 +336,64 @@
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN
 	blood_overlay_type = "feet"
+	/// The currently inserted item.
 	var/obj/item/stored_item
-	var/list/items_allowed
+	/// List of item types that can be inserted.
+	var/list/allowed_items_typecache
+	/// An item which should be inserted when the shoes are spawned.
+	var/obj/item/spawn_item_type
 	var/shoes_blood_amt = 0
 
-///Checks if you can put the item inside of the shoes
-/obj/item/clothing/shoes/proc/attempt_insert_item(mob/user, obj/item/attacking_item, insert_after = FALSE)
-	if(!items_allowed)
-		return
-	if(stored_item)
-		return
-	var/allowed = FALSE
-	for(var/allowed_item in items_allowed)
-		if(istype(attacking_item, allowed_item))
-			allowed = TRUE
-			break
-	if(!allowed)
-		return
-	if(!insert_after)
-		return TRUE
-	insert_item(user, attacking_item)
+/obj/item/clothing/shoes/Initialize(mapload, ...)
+	. = ..()
+	if(allowed_items_typecache)
+		allowed_items_typecache = typecacheof(allowed_items_typecache)
+	if(spawn_item_type)
+		_insert_item(new spawn_item_type(src))
 
-///Puts the item inside of the shoe
-/obj/item/clothing/shoes/proc/insert_item(mob/user, obj/item/attacking_item)
-	stored_item = attacking_item
-	user.drop_inv_item_to_loc(attacking_item, src)
-	to_chat(user, SPAN_NOTICE("You slide [attacking_item] into [src]."))
-	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+/// Returns a boolean indicating if `item_to_insert` can be inserted into the shoes.
+/obj/item/clothing/shoes/proc/can_be_inserted(obj/item/item_to_insert)
+	// If the shoes can't actually hold an item.
+	if(allowed_items_typecache == null)
+		return FALSE
+	// If there's already an item inside.
+	if(stored_item)
+		return FALSE
+	// If `item_to_insert` isn't in the whitelist.
+	if(!is_type_in_typecache(item_to_insert, allowed_items_typecache))
+		return FALSE
+	// If all of those passed, `item_to_insert` can be inserted.
+	return TRUE
+
+/**
+ * Try to insert `item_to_insert` into the shoes.
+ *
+ * Returns `TRUE` if it succeeded, or `FALSE` if [/obj/item/clothing/shoes/proc/can_be_inserted] failed, or `user` couldn't drop the item.
+ */
+/obj/item/clothing/shoes/proc/attempt_insert_item(mob/user, obj/item/item_to_insert)
+	if(!can_be_inserted(item_to_insert))
+		return FALSE
+	// Try to drop the item and place it inside `src`.
+	if(!user.drop_inv_item_to_loc(item_to_insert, src))
+		return FALSE
+	_insert_item(item_to_insert)
+	to_chat(user, SPAN_NOTICE("You slide [item_to_insert] into [src]."))
+	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+	return TRUE
+
+/// Insert `item_to_insert` directly into the shoes without bothering with any checks.
+/// (In the majority of cases [/obj/item/clothing/shoes/proc/attempt_insert_item()] should be used instead of this.)
+/obj/item/clothing/shoes/proc/_insert_item(obj/item/item_to_insert)
+	PROTECTED_PROC(TRUE)
+	stored_item = item_to_insert
 	update_icon()
 
-///Removes the item from the shoes
+/// Remove `stored_item` from the shoes, and place it into the `user`'s active hand.
 /obj/item/clothing/shoes/proc/remove_item(mob/user)
-	if(!user.put_in_active_hand(stored_item))
+	if(!stored_item || !user.put_in_active_hand(stored_item))
 		return
 	to_chat(user, SPAN_NOTICE("You slide [stored_item] out of [src]."))
-	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	stored_item = null
 	update_icon()
 
@@ -380,10 +403,8 @@
 		user.update_inv_shoes()
 
 /obj/item/clothing/shoes/Destroy()
-	if(stored_item)
-		qdel(stored_item)
-		stored_item = null
-	. = ..()
+	QDEL_NULL(stored_item)
+	return ..()
 
 /obj/item/clothing/shoes/get_examine_text(mob/user)
 	. = ..()
@@ -391,17 +412,14 @@
 		. += "\nIt is storing \a [stored_item]."
 
 /obj/item/clothing/shoes/attack_hand(mob/living/user)
-	if(!stored_item) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
-		return ..()
-	if(user.is_mob_incapacitated())
-		return ..()
-	if(loc != user)
+	// Only allow someone to take out the `stored_item` if it's being worn or held, so that you can pick them up off the floor.
+	if(!stored_item || loc != user || user.is_mob_incapacitated())
 		return ..()
 	remove_item(user)
 
 /obj/item/clothing/shoes/attackby(obj/item/attacking_item, mob/living/user)
 	. = ..()
-	user.equip_to_slot_if_possible(attacking_item, WEAR_IN_SHOES)
+	attempt_insert_item(user, attacking_item)
 
 /obj/item/clothing/equipped(mob/user, slot, silent)
 	if(is_valid_slot(slot, TRUE)) //is it going to a matching clothing slot?

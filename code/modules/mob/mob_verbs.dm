@@ -32,7 +32,7 @@
 	return
 
 /mob/verb/view_stats()
-	set category = "OOC"
+	set category = "OOC.Records"
 	set name = "View Playtimes"
 	set desc = "View your playtimes."
 	if(!SSentity_manager.ready)
@@ -50,34 +50,33 @@
 	to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
 	return
 
-/mob/proc/point_to(atom/A in view())
+/mob/proc/point_to(atom/target in view())
 	//set name = "Point To"
 	//set category = "Object"
 
-	if(!isturf(src.loc) || !(A in view(src)))//target is no longer visible to us
-		return 0
+	if(!isturf(src.loc) || !(target in view(src)))//target is no longer visible to us
+		return FALSE
 
-	if(!A.mouse_opacity)//can't click it? can't point at it.
-		return 0
+	if(!target.mouse_opacity)//can't click it? can't point at it.
+		return FALSE
 
 	if(is_mob_incapacitated() || (status_flags & FAKEDEATH)) //incapacitated, can't point
-		return 0
+		return FALSE
 
-	var/tile = get_turf(A)
-	if (!tile)
-		return 0
+	var/tile = get_turf(target)
+	if(!tile)
+		return FALSE
 
 	if(recently_pointed_to > world.time)
-		return 0
+		return FALSE
+
+	if(SEND_SIGNAL(src, COMSIG_MOB_TRY_POINT, target) & COMPONENT_OVERRIDE_POINT)
+		return FALSE
 
 	next_move = world.time + 2
 
-	point_to_atom(A, tile)
-	return 1
-
-
-
-
+	point_to_atom(target, tile)
+	return TRUE
 
 /mob/verb/memory()
 	set name = "Notes"
@@ -122,7 +121,7 @@
 		return
 	else
 		var/deathtime = world.time - src.timeofdeath
-		var/deathtimeminutes = round(deathtime / 600)
+		var/deathtimeminutes = floor(deathtime / 600)
 		var/pluralcheck = "minute"
 		if(deathtimeminutes == 0)
 			pluralcheck = ""

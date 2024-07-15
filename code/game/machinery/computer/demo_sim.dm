@@ -55,7 +55,6 @@
 	var/list/data = list()
 
 	data["configuration"] = configuration
-	data["looking"] = simulation.looking_at_simulation
 	data["dummy_mode"] = simulation.dummy_mode
 
 	data["worldtime"] = world.time
@@ -104,8 +103,7 @@
 /obj/structure/machinery/computer/demo_sim/ui_close(mob/user)
 
 	. = ..()
-	if(simulation.looking_at_simulation)
-		simulation.stop_watching(user)
+	simulation.stop_watching(user)
 
 // DEMOLITIONS TGUI SHIT END \\
 

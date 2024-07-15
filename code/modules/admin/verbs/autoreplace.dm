@@ -32,7 +32,7 @@ GLOBAL_LIST_INIT_TYPED(admin_runtime_decorators, /datum/decorator/manual/admin_r
 
 	GLOB.admin_runtime_decorators.Add(SSdecorator.add_decorator(/datum/decorator/manual/admin_runtime, types, subtypes, field, value))
 
-	log_and_message_admins("[src] activated new decorator id: [GLOB.admin_runtime_decorators.len] set for [hint_text] `[types]` for field `[field]` set value `[value]`")
+	message_admins("[src] activated new decorator id: [length(GLOB.admin_runtime_decorators)] set for [hint_text] `[types]` for field `[field]` set value `[value]`")
 
 /client/proc/deactivate_autoreplacer()
 	set category = "Admin.Events"
@@ -49,7 +49,7 @@ GLOBAL_LIST_INIT_TYPED(admin_runtime_decorators, /datum/decorator/manual/admin_r
 
 	GLOB.admin_runtime_decorators[num_value].enabled = FALSE
 
-	log_and_message_admins("[src] deactivated decorator id: [num_value]")
+	message_admins("[src] deactivated decorator id: [num_value]")
 
 /client/proc/rerun_decorators()
 	set category = "Admin.Events"
@@ -65,4 +65,4 @@ GLOBAL_LIST_INIT_TYPED(admin_runtime_decorators, /datum/decorator/manual/admin_r
 
 	SSdecorator.force_update()
 
-	log_and_message_admins("[src] rerun all decorators.")
+	message_admins("[src] rerun all decorators.")

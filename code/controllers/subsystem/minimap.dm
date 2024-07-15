@@ -1,3 +1,6 @@
+#define CANVAS_COOLDOWN_TIME 4 MINUTES
+#define FLATTEN_MAP_COOLDOWN_TIME 3 MINUTES
+
 /**
  *  # Minimaps subsystem
  *
@@ -85,8 +88,8 @@ SUBSYSTEM_DEF(minimaps)
 				else if(yval < smallest_y)
 					smallest_y = yval
 
-		minimaps_by_z["[level]"].x_offset = FLOOR((SCREEN_PIXEL_SIZE-largest_x-smallest_x) / MINIMAP_SCALE, 1)
-		minimaps_by_z["[level]"].y_offset = FLOOR((SCREEN_PIXEL_SIZE-largest_y-smallest_y) / MINIMAP_SCALE, 1)
+		minimaps_by_z["[level]"].x_offset = floor((SCREEN_PIXEL_SIZE-largest_x-smallest_x) / MINIMAP_SCALE)
+		minimaps_by_z["[level]"].y_offset = floor((SCREEN_PIXEL_SIZE-largest_y-smallest_y) / MINIMAP_SCALE)
 
 		icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset)
 		icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset)
@@ -179,7 +182,7 @@ SUBSYSTEM_DEF(minimaps)
  * the raw lists are to speed up the Fire() of the subsystem so we dont have to filter through
  * WARNING!
  * There is a byond bug: http://www.byond.com/forum/post/2661309
- * That that forces us to use a seperate list ref when accessing the lists of this datum
+ * That that forces us to use a separate list ref when accessing the lists of this datum
  * Yea it hurts me too
  */
 /datum/hud_displays
@@ -438,11 +441,11 @@ SUBSYSTEM_DEF(minimaps)
 	if(faction == FACTION_MARINE)
 		if(!COOLDOWN_FINISHED(GLOB, uscm_flatten_map_icon_cooldown))
 			return FALSE
-		COOLDOWN_START(GLOB, uscm_flatten_map_icon_cooldown, flatten_map_cooldown_time)
+		COOLDOWN_START(GLOB, uscm_flatten_map_icon_cooldown, FLATTEN_MAP_COOLDOWN_TIME)
 	else if(faction == XENO_HIVE_NORMAL)
 		if(!COOLDOWN_FINISHED(GLOB, xeno_flatten_map_icon_cooldown))
 			return FALSE
-		COOLDOWN_START(GLOB, xeno_flatten_map_icon_cooldown, flatten_map_cooldown_time)
+		COOLDOWN_START(GLOB, xeno_flatten_map_icon_cooldown, FLATTEN_MAP_COOLDOWN_TIME)
 	else
 		return FALSE
 
@@ -499,6 +502,8 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		qdel(svg_store_overlay)
 		debug_log("SVG coordinates for [faction] are not implemented!")
+
+#define can_draw(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"
@@ -580,6 +585,8 @@ SUBSYSTEM_DEF(minimaps)
 		owner?.client?.remove_from_screen(map)
 		minimap_displayed = FALSE
 
+	UnregisterSignal(target, COMSIG_MOVABLE_Z_CHANGED)
+
 /**
  * Updates the map when the owner changes zlevel
  */
@@ -624,9 +631,6 @@ SUBSYSTEM_DEF(minimaps)
 	/// color selection for the tactical map canvas, defaults to black.
 	var/toolbar_color_selection = "black"
 	var/toolbar_updated_selection = "black"
-
-	var/canvas_cooldown_time = 4 MINUTES
-	var/flatten_map_cooldown_time = 3 MINUTES
 
 	/// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
 	var/updated_canvas = FALSE
@@ -681,6 +685,7 @@ SUBSYSTEM_DEF(minimaps)
 		user.client.register_map_obj(map_holder.map)
 		ui = new(user, src, "TacticalMap")
 		ui.open()
+		RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(on_mind_transferred))
 
 /datum/tacmap/drawing/tgui_interact(mob/user, datum/tgui/ui)
 	var/mob/living/carbon/xenomorph/xeno = user
@@ -688,6 +693,11 @@ SUBSYSTEM_DEF(minimaps)
 	var/faction = is_xeno ? xeno.hivenumber : user.faction
 	if(faction == FACTION_NEUTRAL && isobserver(user))
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
+
+	if(is_xeno && xeno.hive.see_humans_on_tacmap && targeted_ztrait != ZTRAIT_MARINE_MAIN_SHIP)
+		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_PMC|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
+		targeted_ztrait = ZTRAIT_MARINE_MAIN_SHIP
+		map_holder = null
 
 	new_current_map = get_unannounced_tacmap_data_png(faction)
 	old_map = get_tacmap_data_png(faction)
@@ -719,6 +729,7 @@ SUBSYSTEM_DEF(minimaps)
 			tacmap_ready_time = SSminimaps.next_fire + 2 SECONDS
 			addtimer(CALLBACK(src, PROC_REF(on_tacmap_fire), faction), SSminimaps.next_fire - world.time + 1 SECONDS)
 			user.client.register_map_obj(map_holder.map)
+			RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(on_mind_transferred))
 
 		ui = new(user, src, "TacticalMap")
 		ui.open()
@@ -740,7 +751,6 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		data["canvasCooldown"] = max(GLOB.uscm_canvas_cooldown - world.time, 0)
 
-	data["nextCanvasTime"] = canvas_cooldown_time
 	data["updatedCanvas"] = updated_canvas
 
 	data["lastUpdateTime"] = last_update_time
@@ -750,17 +760,19 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/ui_static_data(mob/user)
 	var/list/data = list()
+
 	data["mapRef"] = map_holder?.map_ref
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = TRUE
 	data["canViewCanvas"] = FALSE
-	data["isXeno"] = FALSE
+	data["isxeno"] = FALSE
 
 	return data
 
 /datum/tacmap/drawing/ui_static_data(mob/user)
 	var/list/data = list()
 
+	data["canvasCooldownDuration"] = CANVAS_COOLDOWN_TIME
 	data["mapRef"] = map_holder?.map_ref
 	data["canDraw"] = FALSE
 	data["mapFallback"] = wiki_map_fallback
@@ -769,11 +781,11 @@ SUBSYSTEM_DEF(minimaps)
 	var/is_xeno = istype(xeno)
 	var/faction = is_xeno ? xeno.hivenumber : user.faction
 
-	data["isXeno"] = is_xeno
+	data["isxeno"] = is_xeno
 	data["canViewTacmap"] = is_xeno
 	data["canViewCanvas"] = faction == FACTION_MARINE || faction == XENO_HIVE_NORMAL
 
-	if(faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || faction == XENO_HIVE_NORMAL && isqueen(user))
+	if(can_draw(faction, user))
 		data["canDraw"] = TRUE
 		data["canViewTacmap"] = TRUE
 
@@ -781,23 +793,30 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/drawing/status_tab_view/ui_static_data(mob/user)
 	var/list/data = list()
+
+	data["canvasCooldownDuration"] = CANVAS_COOLDOWN_TIME
 	data["mapFallback"] = wiki_map_fallback
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
-	data["isXeno"] = FALSE
+	data["isxeno"] = FALSE
 
 	return data
 
 /datum/tacmap/drawing/status_tab_view/xeno/ui_static_data(mob/user)
 	var/list/data = list()
+
+	data["canvasCooldownDuration"] = CANVAS_COOLDOWN_TIME
 	data["mapFallback"] = wiki_map_fallback
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
-	data["isXeno"] = TRUE
+	data["isxeno"] = TRUE
 
 	return data
+
+/datum/tacmap/ui_close(mob/user)
+	UnregisterSignal(user.mind, COMSIG_MIND_TRANSFERRED)
 
 /datum/tacmap/drawing/ui_close(mob/user)
 	. = ..()
@@ -814,16 +833,21 @@ SUBSYSTEM_DEF(minimaps)
 	var/mob/user = ui.user
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/faction = istype(xeno) ? xeno.hivenumber : user.faction
-	if(faction == FACTION_NEUTRAL && isobserver(user))
+	var/is_observer = isobserver(user)
+	if(faction == FACTION_NEUTRAL && is_observer)
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
+	var/drawing_allowed = !is_observer && can_draw(faction, user)
 
 	switch (action)
 		if ("menuSelect")
-			if(params["selection"] != "new canvas")
+			if(params["selection"] != "Canvas")
 				if(updated_canvas)
 					updated_canvas = FALSE
 					toolbar_updated_selection = toolbar_color_selection  // doing this if it == canvas can cause a latency issue with the stroke.
 			else
+				if(!drawing_allowed)
+					msg_admin_niche("[key_name(user)] made an unauthorized attempt to 'menuSelect' the 'new canvas' panel of the [faction] tacmap!")
+					return FALSE
 				distribute_current_map_png(faction)
 				last_update_time = world.time
 				// An attempt to get the image to load on first try in the interface, but doesn't seem always reliable
@@ -832,59 +856,67 @@ SUBSYSTEM_DEF(minimaps)
 			old_map = get_tacmap_data_png(faction)
 			current_svg = get_tacmap_data_svg(faction)
 
-		if ("updateCanvas")
-			// forces state change, this will export the svg.
+		if("updateCanvas")
 			toolbar_updated_selection = "export"
 			updated_canvas = TRUE
 			action_queue_change += 1
 
-		if ("clearCanvas")
+		if("clearCanvas")
 			toolbar_updated_selection = "clear"
 			updated_canvas = FALSE
 			action_queue_change += 1
 
-		if ("undoChange")
+		if("undoChange")
 			toolbar_updated_selection = "undo"
 			updated_canvas = FALSE
 			action_queue_change += 1
 
-		if ("selectColor")
+		if("selectColor")
 			var/newColor = params["color"]
 			if(newColor)
 				toolbar_color_selection = newColor
 				toolbar_updated_selection = newColor
 			action_queue_change += 1
 
-		if ("onDraw")
+		if("onDraw")
 			updated_canvas = FALSE
 
-		if ("selectAnnouncement")
+		if("selectAnnouncement")
+			if(!drawing_allowed)
+				msg_admin_niche("[key_name(user)] made an unauthorized attempt to 'selectAnnouncement' the [faction] tacmap!")
+				return FALSE
+
 			if(!istype(params["image"], /list)) // potentially very serious?
+				return FALSE
+
+			var/cooldown_satisfied = FALSE
+			if(faction == FACTION_MARINE)
+				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, uscm_canvas_cooldown)
+			else if(faction == XENO_HIVE_NORMAL)
+				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, xeno_canvas_cooldown)
+			if(!cooldown_satisfied)
+				msg_admin_niche("[key_name(user)] attempted to 'selectAnnouncement' the [faction] tacmap while it is still on cooldown!")
 				return FALSE
 
 			if(faction == FACTION_MARINE)
 				GLOB.uscm_flat_tacmap_data += new_current_map
+				COOLDOWN_START(GLOB, uscm_canvas_cooldown, CANVAS_COOLDOWN_TIME)
+				for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
+					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
+				var/mob/living/carbon/human/human_leader = user
+				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
+				playsound_client(human_leader.client, "sound/effects/data-transmission.ogg")
+				notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = owner)
 			else if(faction == XENO_HIVE_NORMAL)
 				GLOB.xeno_flat_tacmap_data += new_current_map
+				COOLDOWN_START(GLOB, xeno_canvas_cooldown, CANVAS_COOLDOWN_TIME)
+				xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", faction)
+				var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
+				notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_XENO_TACMAP, enter_link = "xeno_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
 
 			store_current_svg_coords(faction, params["image"], user)
 			current_svg = get_tacmap_data_svg(faction)
 			old_map = get_tacmap_data_png(faction)
-
-			if(faction == FACTION_MARINE)
-				COOLDOWN_START(GLOB, uscm_canvas_cooldown, canvas_cooldown_time)
-				var/mob/living/carbon/human/human_leader = user
-				for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
-				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
-				playsound_client(human_leader.client, "sound/effects/sos-morse-code.ogg")
-				notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/sos-morse-code.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = owner)
-
-			else if(faction == XENO_HIVE_NORMAL)
-				var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
-				COOLDOWN_START(GLOB, xeno_canvas_cooldown, canvas_cooldown_time)
-				xeno_maptext("The Queen has updated your hive mind map", "You sense something unusual...", faction)
-				notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_XENO_TACMAP, enter_link = "xeno_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
 
 			toolbar_updated_selection = toolbar_color_selection
 			message_admins("[key_name(user)] has updated the <a href='?tacmaps_panel=1'>tactical map</a> for [faction].")
@@ -913,6 +945,11 @@ SUBSYSTEM_DEF(minimaps)
 		return UI_CLOSE
 
 	return UI_INTERACTIVE
+
+// This gets removed when the player changes bodies (i.e. xeno evolution), so re-register it when that happens.
+/datum/tacmap/proc/on_mind_transferred(datum/mind/source, mob/previous_body)
+	SIGNAL_HANDLER
+	source.current.client.register_map_obj(map_holder.map)
 
 /datum/tacmap_holder
 	var/map_ref
@@ -995,3 +1032,7 @@ SUBSYSTEM_DEF(minimaps)
 		if(XENO_HIVE_RENEGADE)
 			return MINIMAP_FLAG_XENO_RENEGADE
 	return 0
+
+#undef CANVAS_COOLDOWN_TIME
+#undef FLATTEN_MAP_COOLDOWN_TIME
+#undef can_draw

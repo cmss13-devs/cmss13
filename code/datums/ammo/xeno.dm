@@ -49,8 +49,9 @@
 
 	if(!isxeno(M))
 		if(insta_neuro)
-			if(M.GetKnockDownValueNotADurationDoNotUse() < 3) // If they have less than somewhere random between 4 and 6 seconds KD left and assuming it doesnt get refreshed itnernally
-				M.adjust_effect(1 * power, WEAKEN)
+			if(M.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
+				M.KnockDown(power)
+				M.Stun(power)
 				return
 
 		if(ishuman(M))
@@ -65,8 +66,9 @@
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
-			if(M.GetKnockDownValueNotADurationDoNotUse() < 5) // If they have less than somewhere random between 8 and 10 seconds KD left and assuming it doesnt get refreshed itnernally
-				M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
+			if(M.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
+				M.KnockDown(power)
+				M.Stun(power)
 				M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /proc/apply_scatter_neuro(mob/living/M)
@@ -79,9 +81,9 @@
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
-		if(M.GetKnockDownValueNotADurationDoNotUse() < 0.7) // basically (knocked_down && prob(90))
-			M.apply_effect(0.7, WEAKEN)
-			M.visible_message(SPAN_DANGER("[M] falls prone."))
+		M.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
+		M.Stun(0.7)
+		M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
 	if(ishuman(M))
@@ -184,7 +186,7 @@
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
 	name = "acid scatter"
 
-	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
+	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5
 	accurate_range = 32
 	max_range = 4
@@ -361,7 +363,7 @@
 	name = "tail hook"
 	icon_state = "none"
 	ping = null
-	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER
 	damage_type = BRUTE
 
 	damage = XENO_DAMAGE_TIER_5
@@ -384,7 +386,8 @@
 	target.overlays += tail_image
 
 	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
-	target.apply_effect(0.5, STUN)
+
+	target.apply_effect(0.5, ROOT)
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/atom/movable, throw_atom), fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
 
 	qdel(tail_beam)

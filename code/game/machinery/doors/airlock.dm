@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 /obj/structure/machinery/door/airlock/Destroy()
 	QDEL_NULL_LIST(attached_signallers)
-	QDEL_NULL(closeOther)
+	closeOther = null
 	QDEL_NULL(electronics)
 	return ..()
 
@@ -677,9 +677,9 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					airlock_electronics = new/obj/item/circuitboard/airlock(loc)
 					if(!req_access || !req_one_access)
 						check_access()
-					if(req_access.len)
+					if(length(req_access))
 						airlock_electronics.conf_access = req_access
-					else if(req_one_access.len)
+					else if(length(req_one_access))
 						airlock_electronics.conf_access = req_one_access
 						airlock_electronics.one_access = TRUE
 				else
@@ -754,9 +754,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	for(var/turf/turf in locs)
 		for(var/mob/living/M in turf)
-			if(isborg(M))
-				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-			else if(HAS_TRAIT(M, TRAIT_SUPER_STRONG))
+			if(HAS_TRAIT(M, TRAIT_SUPER_STRONG))
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 			else
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
@@ -858,7 +856,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 1, src)
 		sparks.start()
-		xeno.apply_effect(1, WEAKEN)
+		xeno.KnockDown(1)
+		xeno.Stun(1)
 
 	playsound(src, 'sound/effects/metalhit.ogg', 50, TRUE)
 	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes \the [src] with its tail!"), SPAN_XENOWARNING("You strike \the [src] with your tail!"))

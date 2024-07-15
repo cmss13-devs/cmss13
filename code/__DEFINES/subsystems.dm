@@ -89,13 +89,13 @@
 //! ### SS initialization hints
 /**
  * Negative values incidate a failure or warning of some kind, positive are good.
- * 0 and 1 are unused so that TRUE and FALSE are guarenteed to be invalid values.
+ * 0 and 1 are unused so that TRUE and FALSE are guaranteed to be invalid values.
  */
 
 /// Subsystem failed to initialize entirely. Print a warning, log, and disable firing.
 #define SS_INIT_FAILURE -2
 
-/// The default return value which must be overriden. Will succeed with a warning.
+/// The default return value which must be overridden. Will succeed with a warning.
 #define SS_INIT_NONE -1
 
 /// Subsystem initialized sucessfully.
@@ -146,8 +146,9 @@
 #define SS_INIT_DATABASE   -27
 #define SS_INIT_ENTITYMANAGER   -28
 #define SS_INIT_PLAYTIME   -29
-#define SS_INIT_PREDSHIPS  -30
-#define SS_INIT_OBJECTIVES -31
+#define SS_INIT_STICKY -30
+#define SS_INIT_PREDSHIPS  -31
+#define SS_INIT_OBJECTIVES -32
 #define SS_INIT_MINIMAP    -34
 #define SS_INIT_STATPANELS -98
 #define SS_INIT_CHAT    -100 //Should be last to ensure chat remains smooth during init.
@@ -179,9 +180,11 @@
 #define SS_PRIORITY_FAST_OBJECTS   105
 #define SS_PRIORITY_OBJECTS 104
 #define SS_PRIORITY_DECORATOR    99
+#define SS_PRIORITY_EFFECTS        97
+#define SS_PRIORITY_FASTEFFECTS    96
 #define SS_PRIORITY_HIJACK 97
 #define SS_PRIORITY_POWER   95
-#define SS_PRIORITY_EFFECTS 92
+#define SS_PRIORITY_OLDEFFECTS 92
 #define SS_PRIORITY_MACHINERY   90
 #define SS_PRIORITY_FZ_TRANSITIONS 88
 #define SS_PRIORITY_ROUND_RECORDING 83

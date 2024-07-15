@@ -54,6 +54,16 @@
 			matching_procs += collision_callbacks[path]
 		return matching_procs
 
+/// Invoke end_throw_callbacks on this metadata.
+/// Takes argument of type /atom/movable
+/datum/launch_metadata/proc/invoke_end_throw_callbacks(atom/movable/movable_atom)
+	if(length(end_throw_callbacks))
+		for(var/datum/callback/callback as anything in end_throw_callbacks)
+			if(istype(callback, /datum/callback/dynamic))
+				callback.Invoke(movable_atom)
+			else
+				callback.Invoke()
+
 /atom/movable/var/datum/launch_metadata/launch_metadata = null
 
 //called when src is thrown into hit_atom
@@ -120,7 +130,7 @@
 	return TRUE
 
 // Proc for throwing items (should only really be used for throw)
-/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)
+/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks)
 	var/temp_pass_flags = pass_flags
 	switch (launch_type)
 		if (NORMAL_LAUNCH)
@@ -135,6 +145,10 @@
 	LM.speed = speed
 	LM.thrower = thrower
 	LM.spin = spin
+	if(end_throw_callbacks)
+		LM.end_throw_callbacks = end_throw_callbacks
+	if(collision_callbacks)
+		LM.collision_callbacks = collision_callbacks
 
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_LAUNCH, LM) & COMPONENT_LAUNCH_CANCEL)
 		return
@@ -160,7 +174,7 @@
 		animation_spin(5, 1 + min(1, LM.range/20))
 
 	var/old_speed = cur_speed
-	cur_speed = Clamp(LM.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
+	cur_speed = clamp(LM.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
 	var/delay = 10/cur_speed - 0.5 // scales delay back to deciseconds for when sleep is called
 	var/pass_flags = LM.pass_flags
 
@@ -169,7 +183,7 @@
 	add_temp_pass_flags(pass_flags)
 
 	var/turf/start_turf = get_step_towards(src, LM.target)
-	var/list/turf/path = getline2(start_turf, LM.target)
+	var/list/turf/path = get_line(start_turf, LM.target)
 	var/last_loc = loc
 
 	var/early_exit = FALSE
@@ -206,12 +220,7 @@
 		rebounding = FALSE
 		cur_speed = old_speed
 		remove_temp_pass_flags(pass_flags)
-		if(length(LM.end_throw_callbacks))
-			for(var/datum/callback/CB as anything in LM.end_throw_callbacks)
-				if(istype(CB, /datum/callback/dynamic))
-					CB.Invoke(src)
-				else
-					CB.Invoke()
+		LM.invoke_end_throw_callbacks(src)
 	QDEL_NULL(launch_metadata)
 
 /atom/movable/proc/throw_random_direction(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)

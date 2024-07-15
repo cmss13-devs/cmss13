@@ -3,8 +3,10 @@
 /datum/construction_template/xenomorph
 	name = "xenomorph structure"
 	build_type = /obj/effect/alien/resin/special
-	crystals_required = 45 * XENO_STRUCTURE_PLASMA_MULTIPLIER
-	var/datum/hive_status/hive_ref //Who gets what we build
+	plasma_required = 45 * XENO_STRUCTURE_PLASMA_MULTIPLIER
+	/// The hive that this structure belongs to.
+	var/datum/hive_status/hive_ref
+	/// The range around this structure which needs to be clear for it to be constructed.
 	var/block_range = 1
 
 /datum/construction_template/xenomorph/set_structure_image()
@@ -24,18 +26,20 @@
 
 /datum/construction_template/xenomorph/core
 	name = XENO_STRUCTURE_CORE
+	description = "Heart of the hive, grows hive weeds (which are necessary for other structures), stores larva, spawns lesser drones, and protects the hive from skyfire."
 	build_type = /obj/effect/alien/resin/special/pylon/core
 	build_icon_state = "core"
-	crystals_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
+	plasma_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	block_range = 0
 
 /datum/construction_template/xenomorph/cluster
 	name = XENO_STRUCTURE_CLUSTER
+	description = "Remote section of the hive, grows hive weeds, and morphs into a hive pylon when placed near a communications tower."
 	build_type = /obj/effect/alien/resin/special/cluster
 	build_icon_state = "hive_cluster"
 	pixel_y = -8
 	pixel_x = -8
-	crystals_required = 50 * XENO_STRUCTURE_PLASMA_MULTIPLIER
+	plasma_required = 50 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	block_range = 0
 
 /datum/construction_template/xenomorph/cluster/set_structure_image()
@@ -43,23 +47,27 @@
 
 /datum/construction_template/xenomorph/pylon
 	name = XENO_STRUCTURE_PYLON
+	description = "Remote section of the hive, grows hive weeds, spawns lesser drones, and protects sisters from air strikes."
 	build_type = /obj/effect/alien/resin/special/pylon
 	build_icon_state = "pylon"
-	crystals_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
+	plasma_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	block_range = 0
 
 /datum/construction_template/xenomorph/eggmorph
 	name = XENO_STRUCTURE_EGGMORPH
+	description = "Processes hatched hosts into new facehuggers."
 	build_type = /obj/effect/alien/resin/special/eggmorph
 	build_icon_state = "eggmorph_preview"
 
 /datum/construction_template/xenomorph/recovery
 	name = XENO_STRUCTURE_RECOVERY
+	description = "Hastily recovers the strength of sisters resting around it."
 	build_type = /obj/effect/alien/resin/special/recovery
 	build_icon_state = "recovery"
 
 /datum/construction_template/xenomorph/nest
 	name = XENO_STRUCTURE_NEST
+	description = "Strong enough to secure a headhunter for indeterminate durations."
 	build_type = /obj/effect/alien/resin/special/nest
 	build_icon_state = "reinforced_nest"
 
@@ -101,3 +109,5 @@
 	xeno_message(SPAN_XENOWARNING("This structure needs to be built directly next to an vertical surface."), 7, XENO_HIVE_NORMAL)
 	qdel(owner)
 	qdel(src)
+
+#undef XENO_STRUCTURE_PLASMA_MULTIPLIER

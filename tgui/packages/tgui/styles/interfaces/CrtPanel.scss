@@ -1,0 +1,74 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:meta';
+
+.panel-container {
+  $font-family: monospace;
+  $background-radial-opacity: 0.2 !default;
+
+  @mixin panel-crt($lightcolor, $dark) {
+    color: $lightcolor;
+
+    background-image: none;
+    background-color: $dark;
+    background: radial-gradient(
+      rgba($lightcolor, $background-radial-opacity),
+      rgba($lightcolor, math.div($background-radial-opacity, 5))
+    );
+
+    @include meta.load-css('../components/Divider.scss');
+    @include meta.load-css('../components/Stack.scss');
+
+    .Button {
+      font-family: $font-family;
+      font-weight: bold;
+      border: 1px solid $lightcolor;
+      &:hover,
+      &:focus,
+      &:visited,
+      &:target {
+        background-color: $lightcolor;
+        color: $dark;
+      }
+    }
+
+    ::after {
+      content: ' ';
+      background: rgba(18, 16, 16);
+      opacity: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    ::before {
+      content: ' ';
+      background: linear-gradient(
+          rgba(18, 16, 16, 0) 50%,
+          rgba(0, 0, 0, 0.25) 50%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 0, 0, 0.06),
+          rgba(0, 255, 0, 0.02),
+          rgba(0, 0, 255, 0.06)
+        );
+      z-index: 2;
+      background-size:
+        100% 2px,
+        3px 100%;
+      pointer-events: none;
+    }
+  }
+
+  .panel-crt-green {
+    @include panel-crt(#00e94e, #111100);
+  }
+
+  .panel-crt-yellow {
+    @include panel-crt(#ffbf00, #111100);
+  }
+
+  .panel-crt-blue {
+    @include panel-crt(#8ac8ff, #111100);
+  }
+}

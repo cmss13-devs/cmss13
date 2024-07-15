@@ -246,6 +246,7 @@ a.popt {
 .looc,
 .adminooc,
 .admin,
+.niche,
 .medal,
 .yell {
   font-weight: bold;
@@ -304,6 +305,11 @@ em {
 }
 
 .admin {
+  color: #4473ff;
+  font-weight: bold;
+}
+
+.niche {
   color: #4473ff;
   font-weight: bold;
 }
@@ -470,9 +476,9 @@ h2.alert {
   font-weight: bold;
 }
 
-.minorannounce {
+.bigannounce {
   font-weight: bold;
-  font-size: 185%;
+  font-size: 115%;
 }
 
 .greenannounce {
@@ -516,6 +522,11 @@ h2.alert {
   color: #000099;
   font-style: italic;
   font-size: 90%;
+}
+
+.bolditalic {
+  font-style: italic;
+  font-weight: bold;
 }
 
 .boldnotice {
@@ -835,6 +846,10 @@ h2.alert {
   font-size: 2.5em;
 }
 
+.hugeicon {
+  font-size: 5em;
+}
+
 .memo {
   color: #638500;
   text-align: center;
@@ -875,6 +890,15 @@ h2.alert {
 
 .resonate {
   color: #298f85;
+}
+
+.upside_down {
+  display: inline;
+  -moz-transform: scale(-1, -1);
+  -webkit-transform: scale(-1, -1);
+  -o-transform: scale(-1, -1);
+  -ms-transform: scale(-1, -1);
+  transform: scale(-1, -1);
 }
 
 .monkeyhive {
@@ -1133,7 +1157,7 @@ h2.alert {
 
 .xenoboldnotice {
   color: #2a623d;
-  font-style: italic;
+  font-weight: bold;
 }
 
 .xenowarning {

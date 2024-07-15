@@ -21,7 +21,7 @@
 	if(!isxeno(A))
 		qdel(src)
 
-	to_chat(A, SPAN_XENONOTICE("You feel empowered"))
+	to_chat(A, SPAN_XENONOTICE("We feel empowered"))
 
 	var/mob/living/carbon/xenomorph/X = A
 	X.melee_damage_lower += bonus_damage
@@ -47,7 +47,7 @@
 /datum/effects/xeno_buff/Destroy()
 
 	if(affected_atom)
-		to_chat(affected_atom, SPAN_XENONOTICE("You no longer feel empowered"))
+		to_chat(affected_atom, SPAN_XENONOTICE("We no longer feel empowered"))
 		var/mob/living/carbon/xenomorph/X = affected_atom
 		X.melee_damage_lower -= bonus_damage
 		X.melee_damage_upper -= bonus_damage

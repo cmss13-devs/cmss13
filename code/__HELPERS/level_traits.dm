@@ -1,4 +1,3 @@
-
 #define is_admin_level(z) SSmapping.level_trait(z, ZTRAIT_ADMIN)
 
 #define is_ground_level(z) SSmapping.level_trait(z, ZTRAIT_GROUND)

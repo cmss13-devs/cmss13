@@ -10,7 +10,6 @@
 	var/speak_exclamation = "declares"
 	var/speak_query = "queries"
 	var/pose //Yes, now AIs can pose too.
-	var/obj/item/device/camera/siliconcam/aiCamera = null //photography
 	var/local_transmit //If set, can only speak to others of the same type within a short range.
 
 	var/med_hud = MOB_HUD_MEDICAL_ADVANCED //Determines the med hud to use
@@ -61,18 +60,11 @@
 /mob/living/silicon/apply_effect(effect = 0, effecttype = STUN, blocked = 0)
 	return 0//The only effect that can hit them atm is flashes and they still directly edit so this works for now
 
-/proc/islinked(mob/living/silicon/robot/bot, mob/living/silicon/ai/ai)
-	if(!istype(bot) || !istype(ai))
-		return 0
-	if (bot.connected_ai == ai)
-		return 1
-	return 0
-
 
 // this function shows health in the Status panel
 /mob/living/silicon/proc/show_system_integrity()
 	if(!stat)
-		stat(null, text("System integrity: [round((health/maxHealth)*100)]%"))
+		stat(null, text("System integrity: [floor((health/maxHealth)*100)]%"))
 	else
 		stat(null, text("Systems nonfunctional"))
 
@@ -153,7 +145,7 @@
 			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 			HUD_nbr = 2
 		if("Squad HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_USCM]
+			H = GLOB.huds[MOB_HUD_FACTION_MARINE]
 			HUD_nbr = 3
 		else
 			return

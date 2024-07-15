@@ -362,7 +362,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			qdel(attached_to)
 		else
 			attached_to.attached_to = null
-			attached_to = null
+		attached_to = null
 
 	GLOB.transmitters -= src
 	SStgui.close_uis(src)

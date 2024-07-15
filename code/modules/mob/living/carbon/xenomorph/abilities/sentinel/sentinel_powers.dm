@@ -4,7 +4,7 @@
 		return
 
 	if(!action_cooldown_check())
-		to_chat(src, SPAN_WARNING("You must wait for your spit glands to refill."))
+		to_chat(src, SPAN_WARNING("We must wait for our spit glands to refill."))
 		return
 
 	var/turf/current_turf = get_turf(xeno)
@@ -35,11 +35,8 @@
 	if(!xeno.check_state())
 		return
 
-	if(xeno.mutation_type != SENTINEL_NORMAL)
-		return
-
 	if(!action_cooldown_check())
-		to_chat(src, SPAN_WARNING("You must wait for your spit glands to refill."))
+		to_chat(src, SPAN_WARNING("We must wait for your spit glands to refill."))
 		return
 
 	var/turf/current_turf = get_turf(xeno)
@@ -77,14 +74,11 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	if (xeno.mutation_type != SENTINEL_NORMAL)
-		return
-
 	var/datum/behavior_delegate/sentinel_base/behavior = xeno.behavior_delegate
 	if (istype(behavior))
 		behavior.next_slash_buffed = TRUE
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("Your next slash will apply neurotoxin!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("Our next slash will apply neurotoxin!"))
 	button.icon_state = "template_active"
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
@@ -103,5 +97,5 @@
 			return
 		behavior.next_slash_buffed = FALSE
 
-	to_chat(xeno, SPAN_XENODANGER("You have waited too long, your slash will no longer apply neurotoxin!"))
+	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer apply neurotoxin!"))
 	button.icon_state = "template"

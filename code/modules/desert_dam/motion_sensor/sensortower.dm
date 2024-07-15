@@ -65,7 +65,7 @@
 /obj/structure/machinery/sensortower/proc/add_xenos_to_minimap()
 	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
 		if(WEAKREF(current_xeno) in minimap_added)
-			return
+			continue
 
 		SSminimaps.remove_marker(current_xeno)
 		current_xeno.add_minimap_marker(MINIMAP_FLAG_USCM|get_minimap_flag_for_faction(current_xeno.hivenumber))

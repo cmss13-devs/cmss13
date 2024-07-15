@@ -128,6 +128,7 @@
 	attack_speed = 5
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_5
+	has_speed_bonus = FALSE
 
 /*#########################################
 ########### One Handed Weapons ############
@@ -146,7 +147,7 @@
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
 	icon_state = "whip"
 	item_state = "whip"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	embeddable = FALSE
@@ -165,13 +166,13 @@
 	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/yautja/sword
 	name = "clan sword"
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 	force = MELEE_FORCE_TIER_7
@@ -189,14 +190,14 @@
 	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/yautja/scythe
 	name = "dual war scythe"
 	desc = "A huge, incredibly sharp dual blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe"
 	item_state = "scythe_dual"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_TIER_6
@@ -213,7 +214,7 @@
 	..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 15
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 15, 15)
 
 	if(prob(15))
 		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
@@ -233,7 +234,7 @@
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon_state = "combistick"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED|ITEM_PREDATOR
 	w_class = SIZE_LARGE
@@ -248,14 +249,16 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 
-	var/on = 1
-	var/charged
+	var/on = TRUE
+	var/charged = FALSE
 
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
 	var/force_storage = MELEE_FORCE_TIER_1
 	/// Ref to the tether effect when thrown
 	var/datum/effects/tethering/chain
+	///The mob the chain is linked to
+	var/mob/living/linked_to
 
 /obj/item/weapon/yautja/combistick/Destroy()
 	cleanup_chain()
@@ -273,11 +276,13 @@
 	charged = FALSE
 	remove_filter("combistick_charge")
 	unwield(user) //Otherwise stays wielded even when thrown
-	if(on)
-		setup_chain(user)
 	return TRUE
 
 /obj/item/weapon/yautja/combistick/proc/setup_chain(mob/living/user)
+	give_action(user, /datum/action/predator_action/bracer/combistick)
+	add_verb(user, /mob/living/carbon/human/proc/call_combi)
+	linked_to = user
+
 	var/list/tether_effects = apply_tether(user, src, range = 6, resistable = FALSE)
 	chain = tether_effects["tetherer_tether"]
 	RegisterSignal(chain, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_chain))
@@ -293,6 +298,10 @@
 /// Clean up the chain, deleting/nulling/unregistering as needed
 /obj/item/weapon/yautja/combistick/proc/cleanup_chain()
 	SIGNAL_HANDLER
+	if(linked_to)
+		remove_action(linked_to, /datum/action/predator_action/bracer/combistick)
+		remove_verb(linked_to, /mob/living/carbon/human/proc/call_combi)
+
 	if(!QDELETED(chain))
 		QDEL_NULL(chain)
 
@@ -429,7 +438,7 @@
 		return
 	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 	if(target == user || target.stat == DEAD)
 		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
@@ -466,7 +475,7 @@
 	desc = "A viciously sharp dagger inscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
 	icon_state = "predknife"
 	item_state = "knife"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR|CAN_DIG_SHRAPNEL
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -750,7 +759,7 @@
 	throwforce = MELEE_FORCE_TIER_3
 	embeddable = FALSE //so predators don't lose their glaive when thrown.
 	sharp = IS_SHARP_ITEM_BIG
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
 
@@ -760,7 +769,7 @@
 		return
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/twohanded/yautja/glaive/alt
 	icon_state = "glaive_alt"
@@ -929,7 +938,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_6*2)
+	set_fire_delay(FIRE_DELAY_TIER_4*2)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -1123,7 +1132,7 @@
 	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
@@ -1238,6 +1247,13 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, SPAN_NOTICE("You deactivate your plasma caster."))
+
+	var/datum/action/predator_action/bracer/caster/caster_action
+	for(caster_action as anything in M.actions)
+		if(istypestrict(caster_action, /datum/action/predator_action/bracer/caster))
+			caster_action.update_button_icon(FALSE)
+			break
+
 	if(source)
 		forceMove(source)
 		source.caster_deployed = FALSE

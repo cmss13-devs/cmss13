@@ -81,8 +81,8 @@
 				if(ACCESS_MARINE_SENIOR in I.access)
 					authenticated = 2
 			else
-				I = C.wear_id
-				if(istype(I))
+				I = C.get_idcard()
+				if(I)
 					if(check_access(I)) authenticated = 1
 					if(ACCESS_MARINE_SENIOR in I.access)
 						authenticated = 2
@@ -113,6 +113,19 @@
 
 		if("announce")
 			if(authenticated == 2)
+				var/mob/living/carbon/human/human_user = usr
+				var/obj/item/card/id/idcard = human_user.get_active_hand()
+				var/bio_fail = FALSE
+				if(!istype(idcard))
+					idcard = human_user.get_idcard()
+				if(idcard)
+					bio_fail = TRUE
+				else if(!idcard.check_biometrics(human_user))
+					bio_fail = TRUE
+				if(bio_fail)
+					to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+					return FALSE
+
 				if(usr.client.prefs.muted & MUTE_IC)
 					to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
 					return
@@ -130,7 +143,7 @@
 				cooldown_message = world.time
 
 		if("award")
-			print_medal(usr, src)
+			open_medal_panel(usr, src)
 
 		if("evacuation_start")
 			if(state == STATE_EVACUATION)
@@ -148,12 +161,25 @@
 
 				log_game("[key_name(usr)] has called for an emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
-				log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
+				log_ares_security("Initiate Evacuation", "Called for an emergency evacuation.", usr)
 				return TRUE
 
 			state = STATE_EVACUATION
 
 		if("evacuation_cancel")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
 			if(state == STATE_EVACUATION_CANCEL)
 				if(!SShijack.cancel_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
@@ -161,7 +187,7 @@
 
 				log_game("[key_name(usr)] has canceled the emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
-				log_ares_security("Cancel Evacuation", "[usr] has cancelled the emergency evacuation.")
+				log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", usr)
 				return TRUE
 
 			state = STATE_EVACUATION_CANCEL
@@ -340,7 +366,7 @@
 						dat += "<BR><A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A>"
 					dat += "<BR><hr>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
-					dat += GLOB.admins.len > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
+					dat += length(GLOB.admins) > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
 					dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=destroy'>Activate Self-Destruct</A>"
@@ -367,7 +393,7 @@
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
-			for(var/i = 1; i<=messagetitle.len; i++)
+			for(var/i = 1; i<=length(messagetitle); i++)
 				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
 
 		if(STATE_VIEWMESSAGE)
@@ -440,7 +466,7 @@
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
-			for(var/i = 1; i<=messagetitle.len; i++)
+			for(var/i = 1; i<=length(messagetitle); i++)
 				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
 
 		if(STATE_VIEWMESSAGE)

@@ -127,3 +127,7 @@
 2024-07-14:
   kiVts:
   - bugfix: Denied request on req is working again
+2024-07-15:
+  cuberound:
+  - rscadd: roof structures added, can be also used for lattices and billboards, go
+      transparent when you are near them

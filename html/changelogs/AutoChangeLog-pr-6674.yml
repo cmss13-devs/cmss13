@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - rscadd: "roof structures added, can be also used for lattices and billboards, go transparent when you are near them"

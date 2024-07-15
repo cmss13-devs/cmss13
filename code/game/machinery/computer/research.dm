@@ -64,9 +64,9 @@
 		return
 	var/obj/item/card/id/silver/clearance_badge/card = B
 	if(!istype(card))
-		visible_message(SPAN_NOTICE("[user] swipes their ID card on \the [src], but it is refused."))
+		visible_message(SPAN_NOTICE("[user] swipes their ID card on [src], but it is refused."))
 		return
-	if(user.real_name != card.registered_name)
+	if(!card.check_biometrics(user))
 		visible_message(SPAN_WARNING("WARNING: ILLEGAL CLEARANCE USER DETECTED. ABORTING."))
 		return
 

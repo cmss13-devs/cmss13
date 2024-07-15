@@ -179,8 +179,8 @@
 	return TRUE
 
 /obj/item/mortar_shell/custom/can_explode()
-	for(var/obj/item/reagent_container/glass/container in warhead.containers)
-		for(var/datum/reagent/reagent in container.reagents.reagent_list)
+	for(var/obj/item/reagent_container/glass/container in warhead?.containers)
+		for(var/datum/reagent/reagent in container?.reagents?.reagent_list)
 			if(reagent.explosive)
 				return TRUE
 

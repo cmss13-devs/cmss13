@@ -168,25 +168,40 @@
 
 /obj/item/mortar_shell/flamer_fire_act(dam, datum/cause_data/flame_cause_data)
 	if(burning)
+		addtimer(CALLBACK(src, PROC_REF(stop_burning)), 5 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
 		return
 	burning = TRUE
 	cause_data = create_cause_data("Burning Mortar Shell", flame_cause_data.resolve_mob(), src)
 	handle_fire(cause_data)
 
+/obj/item/mortar_shell/proc/stop_burning()
+	burning = FALSE
+
+/obj/item/mortar_shell/proc/can_explode()
+	return TRUE
+
+/obj/item/mortar_shell/custom/can_explode()
+	for(var/obj/item/reagent_container/glass/container in warhead.containers)
+		for(var/datum/reagent/reagent in container.reagents.reagent_list)
+			if(reagent.explosive)
+				return TRUE
+
+	return FALSE
+
 /obj/item/mortar_shell/proc/handle_fire(cause_data)
-	visible_message(SPAN_WARNING("[src] catches on fire and starts cooking off! It's gonna blow!"))
-	anchored = TRUE // don't want other explosions launching it elsewhere
+	if(can_explode())
+		visible_message(SPAN_WARNING("[src] catches on fire and starts cooking off! It's gonna blow!"))
+		anchored = TRUE // don't want other explosions launching it elsewhere
+		var/datum/effect_system/spark_spread/sparks = new()
+		sparks.set_up(n = 10, loca = loc)
+		sparks.start()
+		new /obj/effect/warning/explosive(loc, 5 SECONDS)
 
-	var/datum/effect_system/spark_spread/sparks = new()
-	sparks.set_up(n = 10, loca = loc)
-	sparks.start()
-	new /obj/effect/warning/explosive(loc, 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(explode), cause_data), 5 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.5 SECONDS)
 
-	addtimer(CALLBACK(src, PROC_REF(explode), cause_data), 5 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.5 SECONDS)
-
-/obj/item/mortar_shell/proc/explode(flame_cause_data, severity=2)
-	explosion(get_turf(src),  -1, ((severity > 2) ? 0 : -1), severity - 1, severity + 1, 1, 0, 0, flame_cause_data)
+/obj/item/mortar_shell/proc/explode(flame_cause_data)
+	cell_explosion(src, 100, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, flame_cause_data)
 
 /obj/structure/closet/crate/secure/mortar_ammo
 	name = "\improper M402 mortar ammo crate"

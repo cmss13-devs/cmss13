@@ -26,7 +26,9 @@
 /turf/open/space/basic,
 /area/template_noop)
 "e" = (
-/turf/open/floor/prison/floor_plate,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
 /area/template_noop)
 "f" = (
 /obj/item/stack/sandbags_empty/half,
@@ -117,7 +119,10 @@
 /area/template_noop)
 "y" = (
 /obj/item/stack/sandbags_empty/half,
-/turf/open/floor/prison/darkyellow2/west,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
 /area/template_noop)
 "z" = (
 /obj/structure/platform/kutjevo/smooth{
@@ -135,6 +140,11 @@
 	dir = 4
 	},
 /turf/open/space,
+/area/template_noop)
+"C" = (
+/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/prison/reinforced/hull,
+/turf/open/floor/plating/prison,
 /area/template_noop)
 "D" = (
 /obj/item/trash/used_stasis_bag{
@@ -155,7 +165,10 @@
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "G" = (
-/turf/open/floor/prison/darkyellow2/north,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
 /area/template_noop)
 "H" = (
 /obj/structure/reagent_dispensers/fueltank/oxygentank,
@@ -185,14 +198,21 @@
 /turf/open/space,
 /area/template_noop)
 "L" = (
-/turf/open/floor/prison/darkyellow2/west,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
 /area/template_noop)
 "M" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/space,
 /area/template_noop)
 "N" = (
-/turf/open/floor/solarpanel,
+/turf/open/floor{
+	desc = "A sophisticated device that captures and converts light from the system's star into energy for the station.";
+	icon_state = "solarpanel";
+	name = "solarpanel"
+	},
 /area/template_noop)
 "O" = (
 /obj/structure/platform/kutjevo/smooth,
@@ -219,7 +239,9 @@
 /area/template_noop)
 "T" = (
 /obj/item/stack/sandbags_empty/half,
-/turf/open/floor/prison/darkyellow2,
+/turf/open/floor/prison{
+	icon_state = "darkyellow2"
+	},
 /area/template_noop)
 "U" = (
 /obj/item/stack/sheet/metal,
@@ -239,7 +261,10 @@
 /turf/open/floor/almayer_hull,
 /area/template_noop)
 "X" = (
-/turf/open/floor/prison/darkyellow2/northwest,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "darkyellow2"
+	},
 /area/template_noop)
 "Y" = (
 /obj/structure/platform/kutjevo/smooth{
@@ -259,7 +284,7 @@
 
 (1,1,1) = {"
 x
-F
+C
 F
 F
 F

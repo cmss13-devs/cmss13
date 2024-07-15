@@ -43,7 +43,7 @@
 
 	available_xenos += unique_xenos
 
-	if(!length(available_xenos))
+	if(!available_xenos.len)
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs."))
 		return FALSE
 

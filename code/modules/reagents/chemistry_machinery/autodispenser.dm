@@ -164,7 +164,7 @@
 		data["output_container"] = output_container.name
 		data["output_totalvol"] = output_container.reagents.total_volume
 		data["output_maxvol"] = output_container.reagents.maximum_volume
-		if(length(output_container.reagents.reagent_list))
+		if(output_container.reagents.reagent_list.len)
 			data["output_color"] = mix_color_from_reagents(output_container.reagents.reagent_list)
 		else
 			data["output_color"] = null
@@ -182,12 +182,12 @@
 	var/list/memorylist = program_amount[PROGRAM_MEMORY]
 	var/list/boxlist = program_amount[PROGRAM_BOX]
 
-	if(length(memorylist))
+	if(memorylist.len)
 		data["memory"] = tgui_friendly_program_list[PROGRAM_MEMORY]
 	else
 		data["memory"] = "Empty"
 
-	if(length(boxlist))
+	if(boxlist.len)
 		data["box"] = tgui_friendly_program_list[PROGRAM_BOX]
 	else
 		data["box"] = "Empty"
@@ -308,7 +308,7 @@
 		update_icon()
 		return
 
-	for(var/i=stage,i<=length(programs[1]) + length(programs[2]) && i != 0,i++)
+	for(var/i=stage,i<=programs[1].len + programs[2].len && i != 0,i++)
 		if(status < AUTODISPENSER_IDLE) //We're waiting for new chems to be stored
 			status++
 			if(status == AUTODISPENSER_IDLE)
@@ -376,7 +376,7 @@
 	for(var/obj/item/reagent_container/glass/beaker/vial/V in input_container.contents)
 		if(!V.reagents.get_reagents()) //Ignore empty vials
 			continue
-		if(length(V.reagents.reagent_list) > 1) //We don't work with impure vials
+		if(V.reagents.reagent_list.len > 1) //We don't work with impure vials
 			continue
 		var/datum/reagent/R = V.reagents.reagent_list[1]
 		if(program_amount[save_to]["[R.name]"])
@@ -395,11 +395,11 @@
 	use_power(1500)
 
 /obj/structure/machinery/autodispenser/proc/run_program()
-	if(length(programs[PROGRAM_MEMORY]))
+	if(programs[PROGRAM_MEMORY].len)
 		program = PROGRAM_MEMORY
 	else
 		program = PROGRAM_BOX
-	if(length(programs[program]) && (outputmode == OUTPUT_TO_CONTAINER && output_container) || outputmode != OUTPUT_TO_CONTAINER)
+	if(programs[program].len && (outputmode == OUTPUT_TO_CONTAINER && output_container) || outputmode != OUTPUT_TO_CONTAINER)
 		status = AUTODISPENSER_RUNNING
 		update_icon()
 	else
@@ -407,8 +407,8 @@
 
 /obj/structure/machinery/autodispenser/proc/next_stage()
 	stage++
-	if(stage > length(programs[program])) //End of program
-		if(length(programs[PROGRAM_MEMORY]) && length(programs[PROGRAM_BOX]))
+	if(stage > programs[program].len) //End of program
+		if(programs[PROGRAM_MEMORY].len && programs[PROGRAM_BOX].len)
 			if(program == PROGRAM_BOX)
 				cycle++
 				program--

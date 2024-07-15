@@ -61,7 +61,7 @@
 /datum/sdql_parser/proc/parse_error(error_message)
 	error = 1
 	to_chat(usr, SPAN_WARNING("SDQL2 Parsing Error: [error_message]"), confidential = TRUE)
-	return length(query) + 1
+	return query.len + 1
 
 /datum/sdql_parser/proc/parse()
 	tree = list()
@@ -73,14 +73,14 @@
 		return tree
 
 /datum/sdql_parser/proc/token(i)
-	if(i <= length(query))
+	if(i <= query.len)
 		return query[i]
 
 	else
 		return null
 
 /datum/sdql_parser/proc/tokens(i, num)
-	if(i + num <= length(query))
+	if(i + num <= query.len)
 		return query.Copy(i, i + num)
 
 	else
@@ -473,7 +473,7 @@
 				if (tok == ":")
 					temp_expression_list = list()
 					i = expression(i + 1, temp_expression_list)
-					expression_list[expression_list[length(expression_list)]] = temp_expression_list
+					expression_list[expression_list[expression_list.len]] = temp_expression_list
 					temp_expression_list = null
 					tok = token(i)
 					if (tok != ",")

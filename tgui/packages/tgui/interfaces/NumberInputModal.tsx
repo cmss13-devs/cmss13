@@ -1,11 +1,9 @@
-import { KEY } from 'common/keys';
-import { useState } from 'react';
-
-import { useBackend } from '../backend';
+import { Loader } from './common/Loader';
+import { InputButtons } from './common/InputButtons';
+import { KEY_ENTER, KEY_ESCAPE } from '../../common/keycodes';
+import { useBackend, useLocalState } from '../backend';
 import { Box, Button, RestrictedInput, Section, Stack } from '../components';
 import { Window } from '../layouts';
-import { InputButtons } from './common/InputButtons';
-import { Loader } from './common/Loader';
 
 type NumberInputData = {
   init_value: number;
@@ -15,21 +13,32 @@ type NumberInputData = {
   min_value: number | null;
   timeout: number;
   title: string;
-  round_value: boolean;
+  integer_only: 0 | 1;
 };
 
-export const NumberInputModal = (props) => {
+export const NumberInputModal = () => {
   const { act, data } = useBackend<NumberInputData>();
-  const { init_value, large_buttons, message = '', timeout, title } = data;
-  const [input, setInput] = useState(init_value);
-
-  const setValue = (value: number) => {
+  const {
+    init_value,
+    large_buttons,
+    message = '',
+    timeout,
+    title,
+    integer_only,
+  } = data;
+  const [input, setInput] = useLocalState('input', init_value);
+  const onChange = (value: number) => {
     if (value === input) {
       return;
     }
     setInput(value);
   };
-
+  const onClick = (value: number) => {
+    if (value === input) {
+      return;
+    }
+    setInput(value);
+  };
   // Dynamically changes the window height based on the message.
   const windowHeight =
     140 +
@@ -41,14 +50,14 @@ export const NumberInputModal = (props) => {
       {timeout && <Loader value={timeout} />}
       <Window.Content
         onKeyDown={(event) => {
-          if (event.key === KEY.Enter) {
+          const keyCode = window.event ? event.which : event.keyCode;
+          if (keyCode === KEY_ENTER) {
             act('submit', { entry: input });
           }
-          if (event.key === KEY.Escape) {
+          if (keyCode === KEY_ESCAPE) {
             act('cancel');
           }
-        }}
-      >
+        }}>
         <Section fill>
           <Stack fill vertical>
             <Stack.Item grow>
@@ -57,9 +66,9 @@ export const NumberInputModal = (props) => {
             <Stack.Item>
               <InputArea
                 input={input}
-                onClick={setValue}
-                onChange={setValue}
-                onBlur={setValue}
+                onClick={onClick}
+                onChange={onChange}
+                integer_only={integer_only}
               />
             </Stack.Item>
             <Stack.Item>
@@ -75,8 +84,8 @@ export const NumberInputModal = (props) => {
 /** Gets the user input and invalidates if there's a constraint. */
 const InputArea = (props) => {
   const { act, data } = useBackend<NumberInputData>();
-  const { min_value, max_value, init_value, round_value } = data;
-  const { input, onClick, onChange, onBlur } = props;
+  const { min_value, max_value, init_value } = data;
+  const { input, onClick, onChange, integer_only } = props;
 
   return (
     <Stack fill>
@@ -93,13 +102,12 @@ const InputArea = (props) => {
           autoFocus
           autoSelect
           fluid
-          allowFloats={!round_value}
           minValue={min_value}
           maxValue={max_value}
           onChange={(_, value) => onChange(value)}
-          onBlur={(_, value) => onBlur(value)}
           onEnter={(_, value) => act('submit', { entry: value })}
           value={input}
+          allowFloats={integer_only === 1 ? false : true}
         />
       </Stack.Item>
       <Stack.Item>

@@ -11,7 +11,9 @@
 /area/shiva/exterior/lz2_fortress)
 "c" = (
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor/shiva/radiator_tile,
+/turf/open/floor/shiva{
+	icon_state = "radiator_tile"
+	},
 /area/shiva/exterior/lz2_fortress)
 "f" = (
 /obj/item/weapon/gun/boltaction,
@@ -23,7 +25,9 @@
 "h" = (
 /obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor/shiva/north,
+/turf/open/floor/shiva{
+	dir = 1
+	},
 /area/shiva/exterior/lz2_fortress)
 "j" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -31,7 +35,9 @@
 	pixel_x = 12;
 	pixel_y = 28
 	},
-/turf/open/floor/shiva/north,
+/turf/open/floor/shiva{
+	dir = 1
+	},
 /area/shiva/exterior/lz2_fortress)
 "l" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -42,7 +48,9 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_lz2)
 "m" = (
-/turf/open/floor/shiva/floor3,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
 /area/shiva/exterior/lz2_fortress)
 "p" = (
 /obj/structure/foamed_metal,
@@ -51,19 +59,29 @@
 /area/shiva/exterior/lz2_fortress)
 "r" = (
 /obj/structure/foamed_metal,
-/turf/open/floor/shiva/north,
+/turf/open/floor/shiva{
+	dir = 1
+	},
 /area/shiva/exterior/lz2_fortress)
 "u" = (
 /obj/item/stack/sheet/metal/small_stack,
-/turf/open/floor/shiva/multi_tiles/east,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
 /area/shiva/exterior/lz2_fortress)
 "w" = (
 /obj/structure/foamed_metal,
-/turf/open/floor/shiva/multi_tiles/east,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
 /area/shiva/exterior/lz2_fortress)
 "z" = (
 /obj/structure/foamed_metal,
-/turf/open/floor/shiva/radiator_tile,
+/turf/open/floor/shiva{
+	icon_state = "radiator_tile"
+	},
 /area/shiva/exterior/lz2_fortress)
 "A" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -79,10 +97,15 @@
 /area/shiva/exterior/lz2_fortress)
 "F" = (
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor/shiva/multi_tiles/east,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
 /area/shiva/exterior/lz2_fortress)
 "H" = (
-/turf/open/floor/shiva/north,
+/turf/open/floor/shiva{
+	dir = 1
+	},
 /area/shiva/exterior/lz2_fortress)
 "I" = (
 /obj/structure/foamed_metal,
@@ -93,10 +116,14 @@
 	pixel_x = 12;
 	pixel_y = 25
 	},
-/turf/open/floor/shiva/north,
+/turf/open/floor/shiva{
+	dir = 1
+	},
 /area/shiva/exterior/lz2_fortress)
 "N" = (
-/turf/open/floor/shiva/radiator_tile,
+/turf/open/floor/shiva{
+	icon_state = "radiator_tile"
+	},
 /area/shiva/exterior/lz2_fortress)
 "O" = (
 /obj/structure/machinery/landinglight/ds2/spoke{

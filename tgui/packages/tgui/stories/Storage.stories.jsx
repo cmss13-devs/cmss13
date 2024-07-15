@@ -5,7 +5,6 @@
  */
 
 import { storage } from 'common/storage';
-
 import { Button, LabeledList, NoticeBox, Section } from '../components';
 import { formatSiUnit } from '../format';
 
@@ -27,12 +26,10 @@ const Story = (props) => {
           onClick={() => {
             localStorage.clear();
             storage.clear();
-          }}
-        >
+          }}>
           Clear
         </Button>
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Keys in use">
           {localStorage.length}

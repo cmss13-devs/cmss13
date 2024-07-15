@@ -4,16 +4,8 @@
  * @license MIT
  */
 
-import { useState } from 'react';
-
-import {
-  Box,
-  Button,
-  Input,
-  LabeledList,
-  ProgressBar,
-  Section,
-} from '../components';
+import { useLocalState } from '../backend';
+import { Box, Button, Input, LabeledList, ProgressBar, Section } from '../components';
 
 export const meta = {
   title: 'ProgressBar',
@@ -21,18 +13,18 @@ export const meta = {
 };
 
 const Story = (props) => {
-  const [progress, setProgress] = useState(0.5);
-  const [color, setColor] = useState('');
+  const [progress, setProgress] = useLocalState('progress', 0.5);
+  const [color, setColor] = useLocalState('color', '');
 
   const color_data = color
     ? { color: color }
     : {
-        ranges: {
-          good: [0.5, Infinity],
-          bad: [-Infinity, 0.1],
-          average: [0, 0.5],
-        },
-      };
+      ranges: {
+        good: [0.5, Infinity],
+        bad: [-Infinity, 0.1],
+        average: [0, 0.5],
+      },
+    };
 
   return (
     <Section>
@@ -42,8 +34,14 @@ const Story = (props) => {
       <Box mt={1}>
         <LabeledList mt="2em">
           <LabeledList.Item label="Adjust value">
-            <Button onClick={() => setProgress(progress - 0.1)}>-0.1</Button>
-            <Button onClick={() => setProgress(progress + 0.1)}>+0.1</Button>
+            <Button
+              content="-0.1"
+              onClick={() => setProgress(progress - 0.1)}
+            />
+            <Button
+              content="+0.1"
+              onClick={() => setProgress(progress + 0.1)}
+            />
           </LabeledList.Item>
           <LabeledList.Item label="Override color">
             <Input value={color} onChange={(e, value) => setColor(value)} />

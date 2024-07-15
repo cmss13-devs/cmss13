@@ -662,7 +662,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // facing verbs
 /mob/proc/canface()
-	if(client?.moving) return 0
+	if(client.moving) return 0
 	if(stat==2) return 0
 	if(anchored) return 0
 	if(monkeyizing) return 0
@@ -771,7 +771,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	else
 		visible_message(SPAN_WARNING("<b>[usr] rips [selection] out of [src]'s body.</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"), null, 5)
 
-	if(length(valid_objects) == 1) //Yanking out last object - removing verb.
+	if(valid_objects.len == 1) //Yanking out last object - removing verb.
 		remove_verb(src, /mob/proc/yank_out_object)
 
 	if(ishuman(src))

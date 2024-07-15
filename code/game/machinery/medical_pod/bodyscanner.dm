@@ -333,7 +333,7 @@
 			open = "Open<br>"
 
 		var/unknown_body = 0
-		if (length(e.implants))
+		if (e.implants.len)
 			for(var/I in e.implants)
 				if(is_type_in_list(I,known_implants))
 					imp += "[I] implanted<br>"

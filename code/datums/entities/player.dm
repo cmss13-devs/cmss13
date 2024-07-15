@@ -606,14 +606,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			note.admin_rank = "N/A"
 		note.date = I.timestamp
 		var/list/splitting = splittext(I.content, "|")
-		if(length(splitting) == 1)
+		if(splitting.len == 1)
 			note.text = I.content
 			note.is_ban = FALSE
-		if(length(splitting) == 3)
+		if(splitting.len == 3)
 			note.text = splitting[3]
 			note.ban_time = text2num(replacetext(replacetext(splitting[2],"Duration: ","")," minutes",""))
 			note.is_ban = TRUE
-		if(length(splitting) == 2)
+		if(splitting.len == 2)
 			note.text = I.content
 			note.is_ban = TRUE
 

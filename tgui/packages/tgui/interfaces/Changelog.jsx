@@ -1,21 +1,11 @@
 import { classes } from 'common/react';
+import { useBackend } from '../backend';
+import { Component, Fragment } from 'react';
+import { Box, Button, Dropdown, Icon, Section, Stack, Table, Tooltip } from '../components';
+import { Window } from '../layouts';
+import { resolveAsset } from '../assets';
 import dateformat from 'dateformat';
 import yaml from 'js-yaml';
-import { Component, Fragment } from 'react';
-
-import { resolveAsset } from '../assets';
-import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Dropdown,
-  Icon,
-  Section,
-  Stack,
-  Table,
-  Tooltip,
-} from '../components';
-import { Window } from '../layouts';
 
 const changeTypes = {
   bugfix: { icon: 'bug', color: 'green', desc: 'Fix' },
@@ -47,8 +37,8 @@ const changeTypes = {
 };
 
 export class Changelog extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       data: 'Loading changelog data...',
       selectedDate: '',
@@ -76,7 +66,7 @@ export class Changelog extends Component {
 
     if (attemptNumber > maxAttempts) {
       return this.setData(
-        'Failed to load data after ' + maxAttempts + ' attempts',
+        'Failed to load data after ' + maxAttempts + ' attempts'
       );
     }
 
@@ -106,7 +96,7 @@ export class Changelog extends Component {
 
     if (dates) {
       dates.forEach((date) =>
-        this.dateChoices.push(dateformat(date, 'mmmm yyyy', true)),
+        this.dateChoices.push(dateformat(date, 'mmmm yyyy', true))
       );
       this.setSelectedDate(this.dateChoices[0]);
       this.getData(dates[0]);
@@ -136,7 +126,7 @@ export class Changelog extends Component {
               window.scrollTo(
                 0,
                 document.body.scrollHeight ||
-                  document.documentElement.scrollHeight,
+                  document.documentElement.scrollHeight
               );
               return this.getData(dates[index]);
             }}
@@ -155,12 +145,12 @@ export class Changelog extends Component {
               window.scrollTo(
                 0,
                 document.body.scrollHeight ||
-                  document.documentElement.scrollHeight,
+                  document.documentElement.scrollHeight
               );
               return this.getData(dates[index]);
             }}
             selected={selectedDate}
-            width="150px"
+            width={'150px'}
           />
         </Stack.Item>
         <Stack.Item>
@@ -177,7 +167,7 @@ export class Changelog extends Component {
               window.scrollTo(
                 0,
                 document.body.scrollHeight ||
-                  document.documentElement.scrollHeight,
+                  document.documentElement.scrollHeight
               );
               return this.getData(dates[index]);
             }}
@@ -222,8 +212,7 @@ export class Changelog extends Component {
             href={
               'https://github.com/cmss13-devs/cmss13/commit/' +
               '9a001bf520f889b434acd295253a1052420860af'
-            }
-          >
+            }>
             commit 9a001bf520f889b434acd295253a1052420860af on 2020/14/9
           </a>
           {' is licensed under '}
@@ -247,8 +236,7 @@ export class Changelog extends Component {
             href={
               'https://github.com/tgstation/tgstation/blob/master' +
               '/code/__DEFINES/tgs.dm'
-            }
-          >
+            }>
             code/__DEFINES/tgs.dm
           </a>
           {' and '}
@@ -256,8 +244,7 @@ export class Changelog extends Component {
             href={
               'https://github.com/tgstation/tgstation/blob/master' +
               '/code/modules/tgs/LICENSE'
-            }
-          >
+            }>
             code/modules/tgs/LICENSE
           </a>
           {' for the MIT license.'}
@@ -295,12 +282,10 @@ export class Changelog extends Component {
                               className={classes([
                                 'Changelog__Cell',
                                 'Changelog__Cell--Icon',
-                              ])}
-                            >
+                              ])}>
                               <Tooltip
                                 position="right"
-                                content={changeType.desc}
-                              >
+                                content={changeType.desc}>
                                 <Icon
                                   color={changeType.color}
                                   name={changeType.icon}

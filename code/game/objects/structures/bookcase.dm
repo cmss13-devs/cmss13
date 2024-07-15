@@ -54,7 +54,7 @@
 		..()
 
 /obj/structure/bookcase/attack_hand(mob/user as mob)
-	if(length(contents))
+	if(contents.len)
 		var/obj/item/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)
 			if(user.is_mob_incapacitated() || !in_range(loc, user))
@@ -84,8 +84,8 @@
 			return
 
 /obj/structure/bookcase/update_icon()
-	if(length(contents) < 5)
-		icon_state = "book-[length(contents)]"
+	if(contents.len < 5)
+		icon_state = "book-[contents.len]"
 	else
 		icon_state = "book-5"
 

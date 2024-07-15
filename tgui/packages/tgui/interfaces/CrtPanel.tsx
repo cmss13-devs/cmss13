@@ -1,5 +1,4 @@
 import { classes } from 'common/react';
-
 import { Box } from '../components';
 import { BoxProps } from '../components/Box';
 interface CrtPanelProps extends BoxProps {
@@ -13,8 +12,7 @@ export const CrtPanel = (props: CrtPanelProps) => {
           props.className,
           `panel-crt-${props.color}`,
           props.className,
-        ])}
-      >
+        ])}>
         {props.children}
       </Box>
     </div>

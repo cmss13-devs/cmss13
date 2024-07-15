@@ -85,31 +85,31 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 	. = list()
 	.["logs"] = list()
 	if(user.client.admin_holder.rights & R_MOD)
-		if(length(attack) > stui_length+1)
-			attack.Cut(,length(attack)-stui_length)
+		if(attack.len > stui_length+1)
+			attack.Cut(,attack.len-stui_length)
 		.["logs"][STUI_TEXT_ATTACK] = attack
-		if(length(admin) > stui_length+1)
-			admin.Cut(,length(admin)-stui_length)
+		if(admin.len > stui_length+1)
+			admin.Cut(,admin.len-stui_length)
 		.["logs"][STUI_TEXT_STAFF] = admin
-		if(length(staff) > stui_length+1)
-			staff.Cut(,length(staff)-stui_length)
+		if(staff.len > stui_length+1)
+			staff.Cut(,staff.len-stui_length)
 		.["logs"][STUI_TEXT_STAFF_CHAT] = staff
-		if(length(ooc) > stui_length+1)
-			ooc.Cut(,length(ooc)-stui_length)
+		if(ooc.len > stui_length+1)
+			ooc.Cut(,ooc.len-stui_length)
 		.["logs"][STUI_TEXT_OOC] = ooc
 	if((user.client.admin_holder.rights & R_MOD) || (user.client.admin_holder.rights & R_DEBUG))
-		if(length(game) > stui_length+1)
-			game.Cut(,length(game)-stui_length)
+		if(game.len > stui_length+1)
+			game.Cut(,game.len-stui_length)
 		.["logs"][STUI_TEXT_GAME] = game
 	if(user.client.admin_holder.rights & R_DEBUG)
-		if(length(debug) > stui_length+1)
-			debug.Cut(,length(debug)-stui_length)
+		if(debug.len > stui_length+1)
+			debug.Cut(,debug.len-stui_length)
 		.["logs"][STUI_TEXT_DEBUG] = debug
-		if(length(runtime) > stui_length+1)
-			runtime.Cut(,length(runtime)-stui_length)
+		if(runtime.len > stui_length+1)
+			runtime.Cut(,runtime.len-stui_length)
 		.["logs"][STUI_TEXT_RUNTIME] = runtime
-		if(length(tgui) > stui_length+1)
-			tgui.Cut(,length(tgui)-stui_length)
+		if(tgui.len > stui_length+1)
+			tgui.Cut(,tgui.len-stui_length)
 		.["logs"][STUI_TEXT_TGUI] = tgui
 
 /client/proc/open_STUI()

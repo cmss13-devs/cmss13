@@ -120,7 +120,7 @@
 	if(!screenmob?.client)
 		return
 
-	if(!length(gear))
+	if(!gear.len)
 		inventory_shown = FALSE
 		return //species without inv slots don't show items.
 

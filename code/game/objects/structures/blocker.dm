@@ -126,10 +126,8 @@
 
 	visible = TRUE
 
-/obj/structure/blocker/forcefield/human/bulletproof/get_projectile_hit_boolean()
-	return TRUE
-
 // for fuel pump since it's a large sprite.
+
 /obj/structure/blocker/fuelpump
 	name = "\improper Fuel Pump"
 	desc = "It is a machine that pumps fuel around the ship."

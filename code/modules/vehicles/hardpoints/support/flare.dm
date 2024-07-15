@@ -1,5 +1,5 @@
 /obj/item/hardpoint/support/flare_launcher
-	name = "\improper M-87F Flare Launcher"
+	name = "M-87F Flare Launcher"
 	desc = "A support module for APCs that shoots flares."
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
 
@@ -14,6 +14,8 @@
 
 	health = 500
 	firing_arc = 120
+
+	origins = list(0, -2)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/flare_launcher
 	max_clips = 3

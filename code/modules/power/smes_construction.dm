@@ -39,7 +39,7 @@
 			capacity += C.ChargeCapacity
 			input_level_max += C.IOCapacity
 			output_level_max += C.IOCapacity
-		charge = clamp(charge, 0, capacity)
+		charge = between(0, charge, capacity)
 		return 1
 	else
 		return 0

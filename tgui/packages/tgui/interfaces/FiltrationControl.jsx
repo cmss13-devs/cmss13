@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, NoticeBox, Section } from '../components';
+import { Section, NoticeBox, Button } from '../components';
 import { Window } from '../layouts';
 
 export const FiltrationControl = () => {
@@ -14,14 +14,13 @@ export const FiltrationControl = () => {
           {(!FiltOn && (
             <Button.Confirm
               textAlign="center"
-              fluid
+              fluid={1}
               icon="power-off"
+              content="Start Filtration"
               fontSize="20px"
               color="good"
               onClick={() => act('activate_filt')}
-            >
-              Start Filtration
-            </Button.Confirm>
+            />
           )) || (
             <NoticeBox textAlign="center" success={1} fontSize="20px">
               Filtration is online

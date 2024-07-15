@@ -106,16 +106,14 @@
 		// Humans?
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
-
-			if(M != cause_data.resolve_mob())
-				M.ExtinguishMob()
-
+			M.ExtinguishMob()
 			if(M.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
 				continue
 			if (iscarbon(M))
 				var/mob/living/carbon/C = M
 				if (C.ally_of_hivenumber(hivenumber))
 					continue
+
 				apply_spray(M)
 				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
@@ -146,9 +144,6 @@
 
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
 	..()
-	if(AM == cause_data.resolve_mob())
-		return
-	
 	if(isliving(AM))
 		var/mob/living/living_mob = AM
 		if(living_mob.ally_of_hivenumber(hivenumber))

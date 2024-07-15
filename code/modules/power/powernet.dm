@@ -26,7 +26,7 @@
 
 	var/numapc = 0
 
-	if(LAZYLEN(nodes)) // Added to fix a bad list bug -- TLE
+	if(nodes && nodes.len) // Added to fix a bad list bug -- TLE
 		for(var/obj/structure/machinery/power/terminal/term in nodes)
 			if( istype( term.master, /obj/structure/machinery/power/apc ) )
 				numapc++
@@ -45,7 +45,7 @@
 		perapc = avail/numapc + perapc_excess
 
 	if( netexcess > 100) // if there was excess power last cycle
-		if(LAZYLEN(nodes))
+		if(nodes && nodes.len)
 			for(var/obj/structure/machinery/power/smes/S in nodes) // find the SMESes in the network
 				if(S.powernet == src)
 					S.restore() // and restore some of the power that was used

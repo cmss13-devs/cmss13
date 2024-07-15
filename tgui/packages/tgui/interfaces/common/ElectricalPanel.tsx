@@ -1,7 +1,6 @@
 import { classes } from 'common/react';
-
 import { useBackend } from '../../backend';
-import { Box, Button, Flex, Icon, NoticeBox, Stack } from '../../components';
+import { Box, Button, Icon, Flex, NoticeBox, Stack, ColorBox } from '../../components';
 import { BoxProps } from '../../components/Box';
 import { Table, TableRow } from '../../components/Table';
 
@@ -28,19 +27,18 @@ const ElectricalPanelClosed = (props: BoxProps) => {
         'PanelClosed',
         'ElectricalSafetySign',
         props.className,
-      ])}
-    >
+      ])}>
       <Flex
         direction="row"
         justify="space-between"
-        className="ElectricalSafetySign"
-      >
+        fill
+        className="ElectricalSafetySign">
         <Flex.Item grow>
           <Flex
             justify="space-between"
             direction="column"
-            className={classes(['ElectricalSafetySign'])}
-          >
+            fill
+            className={classes(['ElectricalSafetySign'])}>
             <Flex.Item>
               <Icon name="circle-xmark" />
             </Flex.Item>
@@ -49,15 +47,15 @@ const ElectricalPanelClosed = (props: BoxProps) => {
             </Flex.Item>
           </Flex>
         </Flex.Item>
-        <Flex.Item>
+        <Flex.Item fill>
           <Flex
             justify="space-around"
             align="center"
             inline
+            fill
             wrap
             className="WarningIcon"
-            direction="column"
-          >
+            direction="column">
             <Flex.Item>
               <Icon name="bolt" size={2} />
             </Flex.Item>
@@ -74,8 +72,8 @@ const ElectricalPanelClosed = (props: BoxProps) => {
             justify="space-between"
             align="flex-end"
             direction="column"
-            className={classes(['ElectricalSafetySign'])}
-          >
+            fill
+            className={classes(['ElectricalSafetySign'])}>
             <Flex.Item>
               <Icon name="circle-xmark" />
             </Flex.Item>
@@ -95,18 +93,18 @@ const WireControl = (props: {
 }) => {
   const { data, act } = useBackend<ElectricalData>();
   const target = props.index + 1;
+  let boxColor = 'green';
+  if (props.wire.cut) {
+    boxColor = 'red';
+  }
+  if (!data.electrical.powered) {
+    boxColor = 'grey';
+  }
   return (
     <Stack>
       <Stack.Item grow>{props.wire.desc}</Stack.Item>
-      <Stack.Item pr={1}>
-        <div
-          className={classes([
-            'led',
-            props.wire.cut === 0 && 'led-green',
-            props.wire.cut === 1 && 'led-red',
-            data.electrical.powered === 1 && 'led-off',
-          ])}
-        />
+      <Stack.Item>
+        <ColorBox color={boxColor} align={'center'} />
       </Stack.Item>
       <Stack.Item>
         {props.wire.cut === 0 && (
@@ -114,7 +112,6 @@ const WireControl = (props: {
             icon="scissors"
             onClick={() => act('cutwire', { wire: target })}
             tooltip={'Cut'}
-            tooltipPosition="left"
           />
         )}
         {props.wire.cut === 1 && (
@@ -122,7 +119,6 @@ const WireControl = (props: {
             icon="wrench"
             onClick={() => act('fixwire', { wire: target })}
             tooltip={'Fix'}
-            tooltipPosition="left"
           />
         )}
       </Stack.Item>
@@ -132,7 +128,6 @@ const WireControl = (props: {
           disabled={props.wire.cut === 1}
           onClick={() => act('pulsewire', { wire: target })}
           tooltip={'Pulse'}
-          tooltipPosition="left"
         />
       </Stack.Item>
     </Stack>
@@ -146,11 +141,10 @@ const ElectricalPanelOpen = (props: BoxProps) => {
       <Flex
         direction="column"
         justify="space-between"
-        fill={1}
-        className="ElectricalSafetySign"
-      >
+        fill
+        className="ElectricalSafetySign">
         <Flex.Item>
-          <Table className="WirePanel">
+          <Table vertical className="WirePanel">
             {data.electrical.wires.map((x, index) => (
               <TableRow key={x.desc}>
                 <WireControl wire={x} index={index} />

@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(xeno)
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/xeno/stat_entry(msg)
-	msg = "P:[length(GLOB.xeno_mob_list)]"
+	msg = "P:[GLOB.xeno_mob_list.len]"
 	return ..()
 
 
@@ -15,8 +15,8 @@ SUBSYSTEM_DEF(xeno)
 	if (!resumed)
 		currentrun = GLOB.xeno_mob_list.Copy()
 
-	while (length(currentrun))
-		var/mob/living/carbon/xenomorph/M = currentrun[length(currentrun)]
+	while (currentrun.len)
+		var/mob/living/carbon/xenomorph/M = currentrun[currentrun.len]
 		currentrun.len--
 
 		if (!M || QDELETED(M))

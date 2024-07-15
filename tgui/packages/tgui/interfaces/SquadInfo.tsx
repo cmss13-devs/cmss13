@@ -1,5 +1,4 @@
 import { classes } from 'common/react';
-
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Section, Stack, Table } from '../components';
 import { BoxProps } from '../components/Box';
@@ -88,7 +87,7 @@ const FireTeamLead = (props: {
 
   const demote = () => act('demote_ftl', { target_ft: props.ft });
   return (
-    <Flex fill={1} justify="space-between" className="TeamLeadFlex">
+    <Flex fill justify="space-between" className="TeamLeadFlex">
       <Flex.Item>
         <Stack>
           {isNotAssigned && (
@@ -291,11 +290,10 @@ export const SquadInfo = () => {
   return (
     <Window theme="usmc" width={680} height={675}>
       <Window.Content className="SquadInfo">
-        <Flex fill={1} justify="space-around" direction="column">
+        <Flex fill justify="space-around" direction="column">
           <Flex.Item>
             <Section
-              title={`${data.squad} Squad Leader: ${data.sl?.name ?? 'None'}`}
-            >
+              title={`${data.squad} Squad Leader: ${data.sl?.name ?? 'None'}`}>
               <SquadObjectives />
             </Section>
           </Flex.Item>

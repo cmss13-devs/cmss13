@@ -1,6 +1,5 @@
-import { Component } from 'react';
-
 import { formatTime } from '../format';
+import { Component } from 'react';
 
 // AnimatedNumber Copypaste
 const isSafeNumber = (value) => {

@@ -1,9 +1,9 @@
 import { useBackend } from '../../backend';
 import { Box } from '../../components';
-import { ByondUi } from '../../components';
 import { MfdPanel, MfdProps } from './MultifunctionDisplay';
-import { mfdState } from './stateManagers';
+import { ByondUi } from '../../components';
 import { MapProps } from './types';
+import { mfdState } from './stateManagers';
 
 export const MapMfdPanel = (props: MfdProps) => {
   const { setPanelState } = mfdState(props.panelStateId);
@@ -15,8 +15,7 @@ export const MapMfdPanel = (props: MfdProps) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}
-    >
+      ]}>
       <MapPanel />
     </MfdPanel>
   );
@@ -31,7 +30,7 @@ const MapPanel = () => {
           id: data.tactical_map_ref,
           type: 'map',
         }}
-        className="MapPanel"
+        class="MapPanel"
       />
     </Box>
   );

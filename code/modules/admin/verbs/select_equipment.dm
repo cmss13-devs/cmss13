@@ -10,15 +10,15 @@
 	var/newrank = tgui_input_list(usr, "Select new rank for [H]", "Change the mob's rank and skills", rank_list)
 	if (!newrank)
 		return
-	if(QDELETED(H))
+	if(!H)
 		return
-	var/obj/item/card/id/I = H.get_idcard()
+	var/obj/item/card/id/I = H.wear_id
 
 	if(GLOB.RoleAuthority.roles_by_name[newrank])
 		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[newrank]
 		H.comm_title = J.get_comm_title()
 		H.set_skills(J.get_skills())
-		if(I)
+		if(istype(I))
 			I.access = J.get_access()
 			I.rank = J.title
 			I.assignment = J.disp_title
@@ -48,7 +48,7 @@
 				if(!newskillset || newskillset == "Keep Skillset")
 					return
 
-				if(QDELETED(H))
+				if(!H)
 					return
 
 				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[newskillset]
@@ -58,25 +58,25 @@
 				var/newcommtitle = input("Write the custom title appearing on comms chat (e.g. Spc)", "Comms title") as null|text
 				if(!newcommtitle)
 					return
-				if(QDELETED(H))
+				if(!H)
 					return
 
 				H.comm_title = newcommtitle
 
-				if(!I || I != H.get_idcard())
+				if(!istype(I) || I != H.wear_id)
 					to_chat(usr, "The mob has no id card, unable to modify ID and chat title.")
 				else
 					var/newchattitle = input("Write the custom title appearing in chat (e.g. SGT)", "Chat title") as null|text
 					if(!newchattitle)
 						return
-					if(QDELETED(H) || I != H.get_idcard())
+					if(!H || I != H.wear_id)
 						return
 
 					I.paygrade = newchattitle
 					var/IDtitle = input("Write the custom title on your ID (e.g. Squad Specialist)", "ID title") as null|text
 					if(!IDtitle)
 						return
-					if(QDELETED(H) || I != H.get_idcard())
+					if(!H || I != H.wear_id)
 						return
 
 					I.rank = IDtitle
@@ -92,13 +92,13 @@
 				if(!newskillset)
 					return
 
-				if(QDELETED(H))
+				if(!H)
 					return
 
 				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[newskillset]
 				H.set_skills(J.get_skills())
 
-/client/proc/cmd_admin_dress(mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_dress(mob/M)
 	set category = null
 	set name = "Select Equipment"
 

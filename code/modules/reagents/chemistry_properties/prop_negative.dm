@@ -84,7 +84,6 @@
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1 //has a combat use
-	cost_penalty = FALSE
 
 /datum/chem_property/negative/corrosive/process(mob/living/M, potency = 1, delta_time)
 	..()
@@ -149,9 +148,10 @@
 		if(!M.unacidable)
 			M.take_limb_damage(min(6, volume))
 	if(isxeno(M))
-		var/mob/living/carbon/xenomorph/xeno = M
+		var/mob/living/carbon/xenomorph/X = M
 		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
-			xeno.AddComponent(/datum/component/status_effect/toxic_buildup, potency * volume * 0.25)
+			X.AddComponent(/datum/component/toxic_buildup, potency * volume * 0.25)
+			to_chat(X, SPAN_XENODANGER("The corrosive substance damages your carapace!"))
 
 /datum/chem_property/negative/corrosive/reaction_obj(obj/O, volume, potency)
 	if((istype(O,/obj/item) || istype(O,/obj/effect/glowshroom)) && prob(potency * 10))
@@ -243,7 +243,6 @@
 	description = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system."
 	rarity = PROPERTY_UNCOMMON
 	value = 2
-	cost_penalty = FALSE
 
 /datum/chem_property/negative/hemorrhaging/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
@@ -279,7 +278,7 @@
 		L.wounds += I
 
 /datum/chem_property/negative/hemorrhaging/reaction_mob(mob/M, method = TOUCH, volume, potency)
-	M.AddComponent(/datum/component/status_effect/healing_reduction, potency * volume * POTENCY_MULTIPLIER_VLOW) //deals brute DOT to humans, prevents healing for xenos
+	M.AddComponent(/datum/component/healing_reduction, potency * volume * POTENCY_MULTIPLIER_VLOW) //deals brute DOT to humans, prevents healing for xenos
 
 /datum/chem_property/negative/carcinogenic
 	name = PROPERTY_CARCINOGENIC
@@ -412,7 +411,6 @@
 	description = "Breaks down neurons causing widespread damage to the central nervous system and brain functions. Exposure may cause disorientation or unconsciousness to affected persons."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_TOXICANT|PROPERTY_TYPE_STIMULANT
-	cost_penalty = FALSE
 
 /datum/chem_property/negative/neurotoxic/process(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_MEDIUM * potency, BRAIN)
@@ -431,12 +429,10 @@
 
 /datum/chem_property/negative/neurotoxic/reaction_mob(mob/M, method = TOUCH, volume, potency)
 	if(ishuman(M))
-		var/mob/living/carbon/human/human = M
-		human.Daze(potency * volume * POTENCY_MULTIPLIER_VLOW)
-		to_chat(human, SPAN_WARNING("You start to go numb."))
-	if(isxeno(M))
-		var/mob/living/carbon/xenomorph/xeno = M
-		xeno.AddComponent(/datum/component/status_effect/daze, volume * potency * POTENCY_MULTIPLIER_LOW, 30)
+		var/mob/living/carbon/human/H = M
+		H.apply_damage(potency, BRAIN)
+	to_chat(M, SPAN_WARNING("You start to go numb."))
+	M.apply_effect(potency * volume * POTENCY_MULTIPLIER_LOW, DAZE)
 
 /datum/chem_property/negative/hypermetabolic
 	name = PROPERTY_HYPERMETABOLIC

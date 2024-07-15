@@ -41,7 +41,7 @@ GLOBAL_DATUM_INIT(revdata, /datum/getrev, new)
 	return msg.Join("\n")
 
 /datum/getrev/proc/GetTestMergeInfo(header = TRUE)
-	if(!length(testmerge))
+	if(!testmerge.len)
 		return ""
 	. = header ? "The following pull requests are currently test merged:<br>" : ""
 	for(var/line in testmerge)
@@ -70,7 +70,7 @@ GLOBAL_DATUM_INIT(revdata, /datum/getrev, new)
 	var/pc = revdata.originmastercommit
 	if(pc)
 		msg += "Master commit: <a href=\"[CONFIG_GET(string/githuburl)]/commit/[pc]\">[pc]</a>"
-	if(length(revdata.testmerge))
+	if(revdata.testmerge.len)
 		msg += revdata.GetTestMergeInfo()
 	if(revdata.commit && revdata.commit != revdata.originmastercommit)
 		msg += "Local commit: [revdata.commit]"

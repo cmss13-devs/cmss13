@@ -93,7 +93,7 @@
 /obj/item/reagent_container/food/drinks/bottle/attackby(obj/item/I, mob/living/user)
 	if(!isGlass || !istype(I, /obj/item/paper))
 		return ..()
-	if(!reagents || !length(reagents.reagent_list))
+	if(!reagents || !reagents.reagent_list.len)
 		to_chat(user, SPAN_NOTICE("\The [src] is empty..."))
 		return
 	var/alcohol_potency = 0

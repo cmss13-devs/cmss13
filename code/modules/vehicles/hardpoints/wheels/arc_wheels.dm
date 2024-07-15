@@ -1,5 +1,5 @@
 /obj/item/hardpoint/locomotion/arc_wheels
-	name = "\improper ARC Wheels"
+	name = "ARC Wheels"
 	desc = "Integral to the movement of the ARC."
 	icon = 'icons/obj/vehicles/hardpoints/arc.dmi'
 

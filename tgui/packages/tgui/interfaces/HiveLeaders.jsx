@@ -1,7 +1,6 @@
 import { map } from 'common/collections';
-
 import { useBackend } from '../backend';
-import { Icon, Section, Table } from '../components';
+import { Section, Table, Icon } from '../components';
 import { Window } from '../layouts';
 
 export const HiveLeaders = (props) => {
@@ -13,8 +12,7 @@ export const HiveLeaders = (props) => {
       theme="hive_status"
       resizable
       width={250}
-      height={350}
-    >
+      height={350}>
       <Window.Content>
         <Section>
           <Table className="xeno_list">
@@ -28,14 +26,13 @@ export const HiveLeaders = (props) => {
               className="xenoListRow"
               backgroundColor="xeno"
               height="25px"
-              lineHeight="5px"
-            >
+              lineHeight="5px">
               <Table.Cell colspan={3} p={1}>
                 Queen
               </Table.Cell>
             </Table.Row>
 
-            {map(queens, (entry, i) => (
+            {map((entry, i) => (
               <Table.Row key={i}>
                 <Table.Cell className="noPadCell">
                   <div unselectable="on" className="leaderIcon">
@@ -45,20 +42,19 @@ export const HiveLeaders = (props) => {
                 <Table.Cell>{entry.designation}</Table.Cell>
                 <Table.Cell>{entry.caste_type}</Table.Cell>
               </Table.Row>
-            ))}
+            ))(queens)}
 
             <Table.Row
               className="xenoListRow"
               backgroundColor="xeno"
               height="25px"
-              lineHeight="5px"
-            >
+              lineHeight="5px">
               <Table.Cell colspan={3} p={1}>
                 Leaders
               </Table.Cell>
             </Table.Row>
 
-            {map(leaders, (entry, i) => (
+            {map((entry, i) => (
               <Table.Row key={i}>
                 <Table.Cell className="noPadCell">
                   <div unselectable="on" className="leaderIcon">
@@ -68,7 +64,7 @@ export const HiveLeaders = (props) => {
                 <Table.Cell>{entry.designation}</Table.Cell>
                 <Table.Cell>{entry.caste_type}</Table.Cell>
               </Table.Row>
-            ))}
+            ))(leaders)}
           </Table>
         </Section>
       </Window.Content>

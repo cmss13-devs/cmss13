@@ -16,7 +16,8 @@
 	update_display()
 
 /obj/structure/machinery/scoreboard/proc/update_display()
-	LAZYCLEARLIST(overlays)
+	if(overlays.len)
+		overlays.Cut()
 
 	var/score_state = "s[( floor(scoreleft/10) > scoreleft/10 ? floor(scoreleft/10)-1 : floor(scoreleft/10) )]a"
 	overlays += image('icons/obj/structures/machinery/scoreboard.dmi', icon_state=score_state)

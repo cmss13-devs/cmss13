@@ -35,7 +35,7 @@ const Story = (props) => {
       <Stack fill className="debug-layout">
         <SmallStackItems />
         <Stack.Item grow={1}>
-          <Stack fill vertical zebra>
+          <Stack fill vertical>
             <SmallStackItems />
             <Stack.Item>
               <Stack fill>

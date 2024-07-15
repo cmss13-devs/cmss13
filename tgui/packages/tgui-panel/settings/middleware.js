@@ -5,17 +5,10 @@
  */
 
 import { storage } from 'common/storage';
-
 import { setClientTheme } from '../themes';
-import {
-  addHighlightSetting,
-  loadSettings,
-  removeHighlightSetting,
-  updateHighlightSetting,
-  updateSettings,
-} from './actions';
-import { FONTS_DISABLED } from './constants';
+import { loadSettings, updateSettings, addHighlightSetting, removeHighlightSetting, updateHighlightSetting } from './actions';
 import { selectSettings } from './selectors';
+import { FONTS_DISABLED } from './constants';
 
 const setGlobalFontSize = (fontSize) => {
   document.documentElement.style.setProperty('font-size', fontSize + 'px');

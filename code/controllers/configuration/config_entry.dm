@@ -125,7 +125,7 @@
 		if(isnull(temp))
 			return FALSE
 		new_list += temp
-	if(!length(new_list))
+	if(!new_list.len)
 		return FALSE
 	config_entry_value = new_list
 	return TRUE

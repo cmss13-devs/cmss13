@@ -211,8 +211,8 @@
 
 	if(F && !(projectile_flags & PROJECTILE_SHRAPNEL))
 		permutated |= F //Don't hit the shooter (firer)
-	if (S)
-		permutated |= get_atom_on_turf(S) //Don't hit the originating object
+	else if (S && (projectile_flags & PROJECTILE_SHRAPNEL))
+		permutated |= S
 
 	permutated |= src //Don't try to hit self.
 	shot_from = S
@@ -298,7 +298,7 @@
 	var/pixel_x_source = vis_source.x * world.icon_size + vis_source_pixel_x
 	var/pixel_y_source = vis_source.y * world.icon_size + vis_source_pixel_y
 
-	var/turf/vis_target = path[length(path)]
+	var/turf/vis_target = path[path.len]
 	var/pixel_x_target = vis_target.x * world.icon_size + p_x
 	var/pixel_y_target = vis_target.y * world.icon_size + p_y
 
@@ -311,7 +311,7 @@
 
 	//Determine apparent position along visual path, then lerp between start and end positions
 
-	var/vis_length = vis_travelled + length(path)
+	var/vis_length = vis_travelled + path.len
 	var/vis_current = vis_travelled + speed * (time_carry * 0.1) //speed * (time_carry * 0.1) for remainder time movement, visually "catching up" to where it should be
 	var/vis_interpolant = vis_current / vis_length
 
@@ -357,14 +357,8 @@
 	if((speed * world.tick_lag) >= get_dist(current_turf, target_turf))
 		SEND_SIGNAL(src, COMSIG_BULLET_TERMINAL)
 
-
-	var/list/ignore_list
-	var/obj/item/hardpoint/hardpoint = shot_from
-	if(istype(hardpoint))
-		LAZYOR(ignore_list, hardpoint.owner) //if fired from a vehicle, exclude the vehicle's body from the adjacency check
-
 	// Check we can reach the turf at all based on pathed grid
-	if(check_canhit(current_turf, next_turf, ignore_list))
+	if(check_canhit(current_turf, next_turf))
 		return TRUE
 
 	// Actually move
@@ -600,9 +594,9 @@
 	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, L, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
 
-/obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf, list/ignore_list)
+/obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf)
 	var/proj_dir = get_dir(current_turf, next_turf)
-	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf, ignore_list = ignore_list))
+	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf))
 		ammo.on_hit_turf(current_turf, src)
 		current_turf.bullet_act(src)
 		return TRUE
@@ -1130,7 +1124,7 @@
 		handle_blood_splatter(get_dir(P.starting, loc))
 
 		apply_damage(damage_result,P.ammo.damage_type, P.def_zone) //Deal the damage.
-		if(length(xeno_shields))
+		if(xeno_shields.len)
 			P.play_shielded_hit_effect(src)
 		else
 			P.play_hit_effect(src)

@@ -10,12 +10,18 @@
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/warhead/incendiary,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/warhead/incendiary,
 	)
 
 	name = "OB Incendiary Crate"
 	cost = 0
 	containertype = /obj/structure/closet/crate/secure/ob
-	containername = "OB Ammo Crate (Incendiary)"
+	containername = "OB Ammo Crate (Incendiary x2)"
 	buyable = 0
 	group = "Operations"
 
@@ -27,12 +33,18 @@
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/warhead/explosive,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/warhead/explosive,
 	)
 
 	name = "OB HE Crate"
 	cost = 0
 	containertype = /obj/structure/closet/crate/secure/ob
-	containername = "OB Ammo Crate (HE)"
+	containername = "OB Ammo Crate (HE x2)"
 	buyable = 0
 	group = "Operations"
 
@@ -44,12 +56,18 @@
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/warhead/cluster,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/warhead/cluster,
 	)
 
 	name = "OB Cluster Crate"
 	cost = 0
 	containertype = /obj/structure/closet/crate/secure/ob
-	containername = "OB Ammo Crate (Cluster)"
+	containername = "OB Ammo Crate (Cluster x2)"
 	buyable = 0
 	group = "Operations"
 

@@ -1,5 +1,5 @@
 /obj/item/hardpoint/secondary/grenade_launcher
-	name = "\improper M92T Grenade Launcher"
+	name = "M92T Grenade Launcher"
 	desc = "A secondary weapon for tanks that shoots grenades."
 
 	icon_state = "glauncher"
@@ -9,6 +9,9 @@
 
 	health = 500
 	firing_arc = 90
+	var/max_range = 7
+
+	origins = list(0, -2)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/tank_glauncher
 	max_clips = 3
@@ -31,8 +34,9 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/hardpoint/secondary/grenade_launcher/try_fire(atom/target, mob/living/user, params)
-	if(get_turf(target) in owner.locs)
+/obj/item/hardpoint/secondary/grenade_launcher/try_fire(mob/user, atom/A)
+	var/turf/origin_turf = get_origin_turf()
+	if(origin_turf == get_turf(A))
 		to_chat(user, SPAN_WARNING("The target is too close."))
 		return NONE
 

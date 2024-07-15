@@ -17,7 +17,7 @@
 
 	data["disk"] = loaded_disk
 
-	if(loaded_disk && length(loaded_disk.genes))
+	if(loaded_disk && loaded_disk.genes.len)
 		data["sourceName"] = loaded_disk.genesource
 
 		for(var/datum/plantgene/P in loaded_disk.genes)

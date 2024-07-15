@@ -262,12 +262,13 @@
 		occupant.death(create_cause_data("gibber", user), TRUE)
 		occupant.ghostize()
 
-	addtimer(CALLBACK(src, PROC_REF(create_gibs), totalslabs, allmeat), gibtime)
 	if(synthetic)
 		to_chat(occupant, SPAN_HIGHDANGER("You can detect your limbs being ripped off your body, but it begins to malfunction as it reaches your torso!"))
+		addtimer(CALLBACK(src, PROC_REF(create_gibs), totalslabs, allmeat), gibtime)
 		addtimer(CALLBACK(src, PROC_REF(go_out), TRUE), gibtime)
-	else
-		QDEL_NULL(occupant)
+		return
+
+	QDEL_NULL(occupant)
 
 /obj/structure/machinery/gibber/proc/create_gibs(totalslabs, list/obj/item/reagent_container/food/snacks/allmeat)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1)

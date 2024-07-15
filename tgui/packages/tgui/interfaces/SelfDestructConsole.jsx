@@ -37,10 +37,9 @@ export const SelfDestructConsole = (props) => {
               color="average"
               textAlign="center"
               icon="power-off"
+              content="Activate System"
               onClick={() => act('dest_start')}
-            >
-              Activate System
-            </Button.Confirm>
+            />
           )}
           {dest_status === 2 && (
             <>
@@ -49,19 +48,17 @@ export const SelfDestructConsole = (props) => {
                 color="red"
                 textAlign="center"
                 icon="explosion"
+                content="DETONATE"
                 onClick={() => act('dest_trigger')}
-              >
-                DETONATE
-              </Button.Confirm>
+              />
               <Button.Confirm
                 fluid
                 color="yellow"
                 textAlign="center"
                 icon="ban"
+                content="CANCEL"
                 onClick={() => act('dest_cancel')}
-              >
-                CANCEL
-              </Button.Confirm>
+              />
             </>
           )}
         </Section>

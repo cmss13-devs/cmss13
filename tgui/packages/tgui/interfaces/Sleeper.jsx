@@ -1,16 +1,6 @@
 import { round } from 'common/math';
-
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Flex,
-  Icon,
-  LabeledList,
-  NoticeBox,
-  ProgressBar,
-  Section,
-} from '../components';
+import { Box, Button, Flex, Icon, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 
 const stats = [
@@ -82,18 +72,18 @@ const SleeperOccupant = (props) => {
           <Button
             icon={auto_eject_dead ? 'toggle-on' : 'toggle-off'}
             selected={auto_eject_dead}
+            content={auto_eject_dead ? 'On' : 'Off'}
             onClick={() =>
               act('auto_eject_dead_' + (auto_eject_dead ? 'off' : 'on'))
             }
-          >
-            {auto_eject_dead ? 'On' : 'Off'}
-          </Button>
-          <Button icon="user-slash" onClick={() => act('ejectify')}>
-            Eject
-          </Button>
+          />
+          <Button
+            icon="user-slash"
+            content="Eject"
+            onClick={() => act('ejectify')}
+          />
         </>
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Name">{occupant.name}</LabeledList.Item>
         <LabeledList.Item label="Health">
@@ -105,8 +95,7 @@ const SleeperOccupant = (props) => {
               good: [0.5, Infinity],
               average: [0, 0.5],
               bad: [-Infinity, 0],
-            }}
-          >
+            }}>
             {round(occupant.health, 0)}
           </ProgressBar>
         </LabeledList.Item>
@@ -118,8 +107,7 @@ const SleeperOccupant = (props) => {
             min="0"
             max={occupant.maxTemp}
             value={occupant.bodyTemperature / occupant.maxTemp}
-            color={tempColors[occupant.temperatureSuitability + 3]}
-          >
+            color={tempColors[occupant.temperatureSuitability + 3]}>
             {round(occupant.btCelsius, 0)}&deg;C,
             {round(occupant.btFaren, 0)}&deg;F
           </ProgressBar>
@@ -135,8 +123,7 @@ const SleeperOccupant = (props) => {
                   bad: [-Infinity, 0.6],
                   average: [0.6, 0.9],
                   good: [0.6, Infinity],
-                }}
-              >
+                }}>
                 {occupant.bloodPercent}%, {occupant.bloodLevel}cl
               </ProgressBar>
             </LabeledList.Item>
@@ -163,8 +150,7 @@ const SleeperDamage = (props) => {
               min="0"
               max="100"
               value={occupant[d[1]] / 100}
-              ranges={damageRange}
-            >
+              ranges={damageRange}>
               {round(occupant[d[1]], 0)}
             </ProgressBar>
           </LabeledList.Item>
@@ -187,12 +173,10 @@ const SleeperDialysis = (props) => {
           disabled={dialysisDisabled}
           selected={canDialysis}
           icon={canDialysis ? 'toggle-on' : 'toggle-off'}
+          content={canDialysis ? 'Active' : 'Inactive'}
           onClick={() => act('togglefilter')}
-        >
-          {canDialysis ? 'Active' : 'Inactive'}
-        </Button>
-      }
-    >
+        />
+      }>
       {!occupant.totalreagents && (
         <NoticeBox danger>Occupant has no chemicals to remove!</NoticeBox>
       )}
@@ -201,8 +185,7 @@ const SleeperDialysis = (props) => {
           min="0"
           max={occupant.reagentswhenstarted}
           value={occupant.totalreagents / occupant.reagentswhenstarted}
-          title="Reagents left/Reagents when dialysis was started"
-        >
+          title="Reagents left/Reagents when dialysis was started">
           {occupant.totalreagents}/{occupant.reagentswhenstarted}
         </ProgressBar>
       )) ||
@@ -215,7 +198,7 @@ const SleeperChemicals = (props) => {
   const { act, data } = useBackend();
   const { occupant, chemicals, maxchem, amounts } = data;
   return (
-    <Section title="Occupant Chemicals">
+    <Section title="Occupant Chemicals" flexGrow="1">
       {chemicals.map((chem, i) => {
         let barColor = '';
         let odWarning;
@@ -243,8 +226,7 @@ const SleeperChemicals = (props) => {
               level="3"
               mx="0"
               lineHeight="18px"
-              buttons={odWarning}
-            >
+              buttons={odWarning}>
               <Flex align="flex-start">
                 <ProgressBar
                   min="0"
@@ -252,8 +234,7 @@ const SleeperChemicals = (props) => {
                   value={chem.occ_amount / maxchem}
                   color={barColor}
                   title="Amount of chemicals currently inside the occupant / Total amount injectable by this machine"
-                  mr="0.5rem"
-                >
+                  mr="0.5rem">
                   {chem.pretty_amount}/{maxchem}u
                 </ProgressBar>
                 {amounts.map((a, i) => (
@@ -265,6 +246,7 @@ const SleeperChemicals = (props) => {
                       occupant.stat === 2
                     }
                     icon="syringe"
+                    content={'Inject ' + a + 'u'}
                     title={
                       'Inject ' +
                       a +
@@ -280,9 +262,7 @@ const SleeperChemicals = (props) => {
                         amount: a,
                       })
                     }
-                  >
-                    {'Inject ' + a + 'u'}
-                  </Button>
+                  />
                 ))}
               </Flex>
             </Section>
@@ -295,7 +275,7 @@ const SleeperChemicals = (props) => {
 
 const SleeperEmpty = (props) => {
   return (
-    <Section textAlign="center">
+    <Section textAlign="center" flexGrow="1">
       <Flex height="100%">
         <Flex.Item grow="1" align="center" color="label">
           <Icon name="user-slash" mb="0.5rem" size="5" />

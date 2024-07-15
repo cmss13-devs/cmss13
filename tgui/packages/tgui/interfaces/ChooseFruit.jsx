@@ -1,15 +1,13 @@
 import { classes } from 'common/react';
-import { useState } from 'react';
-
-import { useBackend } from '../backend';
-import { Box, Button, Section, Stack, Tabs } from '../components';
+import { useBackend, useLocalState } from '../backend';
+import { Tabs, Box, Section, Stack, Button } from '../components';
 import { Window } from '../layouts';
 
 export const ChooseFruit = (props) => {
   const { act, data } = useBackend();
   const { fruits, selected_fruit } = data;
 
-  const [compact, setCompact] = useState(false);
+  const [compact, setCompact] = useLocalState('choosefruit_compact', false);
 
   let heightScale = 80;
   if (compact) heightScale = 45;
@@ -18,8 +16,7 @@ export const ChooseFruit = (props) => {
     <Window
       width={350}
       height={15 + fruits.length * heightScale}
-      theme="hive_status"
-    >
+      theme="hive_status">
       <Window.Content>
         <Section
           title="Fruits"
@@ -37,15 +34,13 @@ export const ChooseFruit = (props) => {
             />
           }
           scrollable
-          fill
-        >
+          fill>
           <Tabs vertical fluid fill>
             {fruits.map((val, index) => (
               <Tabs.Tab
                 key={index}
                 selected={val.id === selected_fruit}
-                onClick={() => act('choose_fruit', { type: val.id })}
-              >
+                onClick={() => act('choose_fruit', { type: val.id })}>
                 <Stack align="center">
                   <Stack.Item>
                     <span

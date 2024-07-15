@@ -15,6 +15,3 @@
 
 /datum/lazy_template/ert/pizza_station
 	map_name = "pizza_ert_station"
-
-/datum/lazy_template/ert/uscm_station
-	map_name = "uscm_ert_station"

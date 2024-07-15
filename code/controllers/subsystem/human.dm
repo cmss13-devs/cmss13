@@ -10,15 +10,15 @@ SUBSYSTEM_DEF(human)
 
 
 /datum/controller/subsystem/human/stat_entry(msg)
-	msg = "P:[length(processable_human_list)]"
+	msg = "P:[processable_human_list.len]"
 	return ..()
 
 /datum/controller/subsystem/human/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = processable_human_list.Copy()
 
-	while (length(currentrun))
-		var/mob/living/carbon/human/M = currentrun[length(currentrun)]
+	while (currentrun.len)
+		var/mob/living/carbon/human/M = currentrun[currentrun.len]
 		currentrun.len--
 
 		if (!M || QDELETED(M))

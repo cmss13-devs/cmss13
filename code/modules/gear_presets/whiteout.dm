@@ -270,7 +270,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic
-	name = "Whiteout Team Operative Medic"
+	name = "Whiteout Team Medic"
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic/load_gear(mob/living/carbon/human/new_human)
 	// back

@@ -5,7 +5,9 @@
 	},
 /area/shuttle/ert)
 "c" = (
-/turf/open/shuttle/dropship/light_grey_top_right,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin7"
+	},
 /area/shuttle/ert)
 "e" = (
 /obj/docking_port/mobile/emergency_response/ert3,
@@ -24,10 +26,14 @@
 	dir = 8
 	},
 /obj/effect/landmark/ert_spawns/distress_upp,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/ert)
 "i" = (
-/turf/open/shuttle/dropship/light_grey_bottom_left,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin4"
+	},
 /area/shuttle/ert)
 "j" = (
 /turf/closed/shuttle/ert{
@@ -35,7 +41,9 @@
 	},
 /area/shuttle/ert)
 "k" = (
-/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
+/turf/open/shuttle/dropship{
+	icon_state = "floor8"
+	},
 /area/shuttle/ert)
 "l" = (
 /turf/closed/shuttle/ert{
@@ -54,7 +62,9 @@
 /obj/effect/landmark/ert_spawns/distress_upp/item,
 /obj/item/storage/belt/medical/lifesaver/upp/full,
 /obj/item/device/healthanalyzer,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/ert)
 "p" = (
 /turf/closed/shuttle/ert{
@@ -73,7 +83,9 @@
 	},
 /area/shuttle/ert)
 "s" = (
-/turf/open/shuttle/dropship/light_grey_top_left,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin6"
+	},
 /area/shuttle/ert)
 "u" = (
 /turf/closed/shuttle/ert{
@@ -115,13 +127,17 @@
 	dir = 4
 	},
 /obj/effect/landmark/ert_spawns/distress_upp,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/ert)
 "C" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/ert_spawns/distress_upp/item,
 /obj/item/storage/toolbox/syndicate,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/ert)
 "E" = (
 /turf/closed/shuttle/ert{
@@ -136,7 +152,9 @@
 /area/shuttle/ert)
 "G" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
 /area/shuttle/ert)
 "I" = (
 /turf/closed/shuttle/ert{
@@ -150,16 +168,22 @@
 	pixel_y = -5
 	},
 /obj/effect/landmark/ert_spawns/distress_upp/item,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/ert)
 "K" = (
 /turf/template_noop,
 /area/template_noop)
 "N" = (
-/turf/open/shuttle/dropship/light_grey_bottom_right,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin8"
+	},
 /area/shuttle/ert)
 "O" = (
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
 /area/shuttle/ert)
 "P" = (
 /turf/closed/shuttle/ert{
@@ -174,15 +198,21 @@
 /area/shuttle/ert)
 "R" = (
 /obj/effect/landmark/ert_spawns/distress_upp,
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
 /area/shuttle/ert)
 "S" = (
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/landmark/ert_spawns/distress_upp,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/ert)
 "T" = (
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/ert)
 "V" = (
 /turf/closed/shuttle/ert{
@@ -193,13 +223,17 @@
 "X" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/computer/shuttle/ert,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/ert)
 "Y" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/ert)
 "Z" = (
 /obj/structure/surface/rack,
@@ -207,7 +241,9 @@
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/belt/medical/lifesaver/upp/full,
 /obj/item/device/healthanalyzer,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/ert)
 
 (1,1,1) = {"

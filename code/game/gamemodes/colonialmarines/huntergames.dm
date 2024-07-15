@@ -212,10 +212,10 @@
 	var/mob/living/carbon/human/H
 	var/turf/picked
 
-	if(length(GLOB.hunter_primaries))
+	if(GLOB.hunter_primaries.len)
 		picked = get_turf(pick_n_take(GLOB.hunter_primaries))
 	else
-		if(length(GLOB.hunter_secondaries))
+		if(GLOB.hunter_secondaries.len)
 			picked = get_turf(pick_n_take(GLOB.hunter_secondaries))
 		else
 			message_admins("There were no spawn points available for a contestant.")
@@ -226,7 +226,7 @@
 
 	if(istype(M,/mob/living/carbon/human)) //somehow?
 		H = M
-		if(length(H.contents))
+		if(H.contents.len)
 			for(var/obj/item/I in H.contents)
 				qdel(I)
 		H.forceMove(picked)
@@ -315,7 +315,7 @@
 			last_drop = world.time
 			waiting_for_drop_votes = 1
 			sleep(600)
-			if(!length(supply_votes))
+			if(!supply_votes.len)
 				to_world(SPAN_ROUNDBODY("Nobody got anything! .. weird."))
 				waiting_for_drop_votes = 0
 				supply_votes = list()

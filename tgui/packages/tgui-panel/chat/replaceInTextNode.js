@@ -93,7 +93,7 @@ export const replaceInTextNode = (regex, words, createNode) => (node) => {
     for (let word of words) {
       // Capture if the word is at the beginning, end, middle,
       // or by itself in a message
-      wordRegexStr += `^${word}\\s\\W|\\s\\W${word}\\s\\W|\\s\\W${word}$|^${word}\\s\\W$`;
+      wordRegexStr += `^${word}\\W|\\W${word}\\W|\\W${word}$|^${word}$`;
       // Make sure the last character for the expression is NOT '|'
       if (++i !== words.length) {
         wordRegexStr += '|';
@@ -149,7 +149,7 @@ export const highlightNode = (
   node,
   regex,
   words,
-  createNode = createHighlightNode,
+  createNode = createHighlightNode
 ) => {
   if (!createNode) {
     createNode = createHighlightNode;
@@ -171,8 +171,8 @@ export const highlightNode = (
 // Linkify
 // --------------------------------------------------------
 
-const URL_REGEX =
-  /(?:(?:https?:\/\/)|(?:www\.))(?:[^ ]*?\.[^ ]*?)+[-A-Za-z0-9+&@#/%?=~_|$!:,.;(){}]+/gi;
+// prettier-ignore
+const URL_REGEX = /(?:(?:https?:\/\/)|(?:www\.))(?:[^ ]*?\.[^ ]*?)+[-A-Za-z0-9+&@#/%?=~_|$!:,.;(){}]+/ig;
 
 /**
  * Highlights the text in the node based on the provided regular expression.

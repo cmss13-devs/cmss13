@@ -158,7 +158,8 @@
 	return ""
 
 /obj/structure/machinery/status_display/proc/remove_display()
-	LAZYCLEARLIST(overlays)
+	if(overlays.len)
+		overlays.Cut()
 	if(maptext)
 		maptext = ""
 
@@ -240,7 +241,8 @@
 
 /obj/structure/machinery/ai_status_display/proc/set_picture(state)
 	picture_state = state
-	LAZYCLEARLIST(overlays)
+	if(overlays.len)
+		overlays.Cut()
 	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state=picture_state)
 
 #undef DEFAULT_FONT_COLOR

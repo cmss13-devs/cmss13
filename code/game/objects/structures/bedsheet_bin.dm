@@ -128,8 +128,8 @@ LINEN BINS
 		amount--
 
 		var/obj/item/bedsheet/B
-		if(length(sheets) > 0)
-			B = sheets[length(sheets)]
+		if(sheets.len > 0)
+			B = sheets[sheets.len]
 			sheets.Remove(B)
 
 		else

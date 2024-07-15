@@ -267,7 +267,6 @@
 	V.vehicle = I.exterior
 	V.pixel_x = pixel_x
 	V.pixel_y = pixel_y
-	V.layer = layer
 	V.alpha = alpha
 	V.update_icon()
 
@@ -287,7 +286,6 @@
 	V.vehicle = I.exterior
 	V.pixel_x = pixel_x
 	V.pixel_y = pixel_y
-	V.layer = layer
 	V.alpha = alpha
 
 	qdel(src)

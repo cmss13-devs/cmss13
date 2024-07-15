@@ -1,14 +1,14 @@
 import { useBackend } from '../backend';
-import { Button, Flex, Section, Stack } from '../components';
+import { Button, Stack, Section, Flex } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
-  Panel: () => PlayerList,
-  Update: () => StatusUpdate,
+  'Panel': () => PlayerList,
+  'Update': () => StatusUpdate,
 };
 
-export const WhitelistPanel = (props) => {
-  const { data } = useBackend();
+export const WhitelistPanel = (props, context) => {
+  const { data } = useBackend(context);
   const { current_menu } = data;
   const PageComponent = PAGES[current_menu]();
 
@@ -21,8 +21,8 @@ export const WhitelistPanel = (props) => {
   );
 };
 
-const PlayerList = (props) => {
-  const { data, act } = useBackend();
+const PlayerList = (props, context) => {
+  const { data, act } = useBackend(context);
   const { whitelisted_players } = data;
 
   return (
@@ -31,11 +31,10 @@ const PlayerList = (props) => {
         <Flex.Item mr="1rem">
           <Button
             icon="clipboard"
+            content="Search"
             tooltip="Add new player, or find an existing one."
             onClick={() => act('add_player')}
-          >
-            Search
-          </Button>
+          />
         </Flex.Item>
         <Flex.Item mr="1rem">
           <Button
@@ -54,8 +53,7 @@ const PlayerList = (props) => {
           className="candystripe"
           p=".75rem"
           align="center"
-          fontSize="1.25rem"
-        >
+          fontSize="1.25rem">
           <Flex.Item bold width="20rem" shrink="0" mr="5rem">
             CKey
           </Flex.Item>
@@ -87,8 +85,8 @@ const PlayerList = (props) => {
   );
 };
 
-const StatusUpdate = (props) => {
-  const { act, data } = useBackend();
+const StatusUpdate = (props, context) => {
+  const { act, data } = useBackend(context);
   const {
     co_flags,
     syn_flags,
@@ -122,9 +120,8 @@ const StatusUpdate = (props) => {
                 height="100%"
                 color={isWhitelisted ? 'purple' : 'blue'}
                 tooltip={isWhitelisted ? 'Whitelisted' : 'Not Whitelisted'}
-              >
-                {bit.name}
-              </Button>
+                content={bit.name}
+              />
             );
           })}
         </Stack>
@@ -139,17 +136,16 @@ const StatusUpdate = (props) => {
                 height="100%"
                 checked={new_state}
                 color={new_state ? 'good' : 'bad'}
+                content={bit.name}
                 disabled={!editable}
                 onClick={() =>
                   act('update_number', {
-                    wl_flag: !new_state
+                    'wl_flag': !new_state
                       ? new_rights | bit.bitflag
                       : new_rights & ~bit.bitflag,
                   })
                 }
-              >
-                {bit.name}
-              </Button.Checkbox>
+              />
             );
           })}
         </Stack>
@@ -165,9 +161,8 @@ const StatusUpdate = (props) => {
                 height="100%"
                 color={isWhitelisted ? 'purple' : 'blue'}
                 tooltip={isWhitelisted ? 'Whitelisted' : 'Not Whitelisted'}
-              >
-                {bit.name}
-              </Button>
+                content={bit.name}
+              />
             );
           })}
         </Stack>
@@ -182,17 +177,16 @@ const StatusUpdate = (props) => {
                 height="100%"
                 checked={new_state}
                 color={new_state ? 'good' : 'bad'}
+                content={bit.name}
                 disabled={!editable}
                 onClick={() =>
                   act('update_number', {
-                    wl_flag: !new_state
+                    'wl_flag': !new_state
                       ? new_rights | bit.bitflag
                       : new_rights & ~bit.bitflag,
                   })
                 }
-              >
-                {bit.name}
-              </Button.Checkbox>
+              />
             );
           })}
         </Stack>
@@ -208,9 +202,8 @@ const StatusUpdate = (props) => {
                 height="100%"
                 color={isWhitelisted ? 'purple' : 'blue'}
                 tooltip={isWhitelisted ? 'Whitelisted' : 'Not Whitelisted'}
-              >
-                {bit.name}
-              </Button>
+                content={bit.name}
+              />
             );
           })}
         </Stack>
@@ -225,17 +218,16 @@ const StatusUpdate = (props) => {
                 height="100%"
                 checked={new_state}
                 color={new_state ? 'good' : 'bad'}
+                content={bit.name}
                 disabled={!editable}
                 onClick={() =>
                   act('update_number', {
-                    wl_flag: !new_state
+                    'wl_flag': !new_state
                       ? new_rights | bit.bitflag
                       : new_rights & ~bit.bitflag,
                   })
                 }
-              >
-                {bit.name}
-              </Button.Checkbox>
+              />
             );
           })}
         </Stack>
@@ -251,9 +243,8 @@ const StatusUpdate = (props) => {
                 height="100%"
                 color={isWhitelisted ? 'purple' : 'blue'}
                 tooltip={isWhitelisted ? 'Whitelisted' : 'Not Whitelisted'}
-              >
-                {bit.name}
-              </Button>
+                content={bit.name}
+              />
             );
           })}
         </Stack>
@@ -268,17 +259,16 @@ const StatusUpdate = (props) => {
                 height="100%"
                 checked={new_state}
                 color={new_state ? 'good' : 'bad'}
+                content={bit.name}
                 disabled={!editable}
                 onClick={() =>
                   act('update_number', {
-                    wl_flag: !new_state
+                    'wl_flag': !new_state
                       ? new_rights | bit.bitflag
                       : new_rights & ~bit.bitflag,
                   })
                 }
-              >
-                {bit.name}
-              </Button.Checkbox>
+              />
             );
           })}
         </Stack>
@@ -288,11 +278,10 @@ const StatusUpdate = (props) => {
           icon="check"
           width="100%"
           textAlign="center"
+          content="Update Whitelists"
           tooltip="Update Whitelists"
-          onClick={() => act('update_perms', { player: viewed_player.ckey })}
-        >
-          Update Whitelists
-        </Button>
+          onClick={() => act('update_perms', { 'player': viewed_player.ckey })}
+        />
       </Flex>
     </Section>
   );

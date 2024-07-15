@@ -1,12 +1,12 @@
 /obj/item/hardpoint/armor/snowplow
-	name = "\improper Snowplow"
+	name = "Snowplow"
 	desc = "Clears a path in the snow for friendlies"
 
 	icon_state = "snowplow"
 	disp_icon = "tank"
 	disp_icon_state = "snowplow"
 
-	health = 150
+	health = 600
 	activatable = 1
 
 /obj/item/hardpoint/armor/snowplow/livingmob_interact(mob/living/M)

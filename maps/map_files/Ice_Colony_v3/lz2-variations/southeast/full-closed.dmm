@@ -24,16 +24,23 @@
 /obj/item/clothing/mask/rebreather,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/item/clothing/mask/rebreather,
-/turf/open/floor/shiva/multi_tiles/north,
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "multi_tiles"
+	},
 /area/shiva/exterior/lz2_fortress)
 "r" = (
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_lz2)
 "L" = (
-/turf/open/floor/shiva/radiator_tile,
+/turf/open/floor/shiva{
+	icon_state = "radiator_tile"
+	},
 /area/shiva/exterior/lz2_fortress)
 "N" = (
-/turf/open/floor/shiva/north,
+/turf/open/floor/shiva{
+	dir = 1
+	},
 /area/shiva/exterior/lz2_fortress)
 
 (1,1,1) = {"

@@ -58,33 +58,29 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 		if("s")
 			name += " (Snow)"
 
-// Both
+// Plural
 /datum/sprite_accessory/underwear/boxers
 	name = "Boxers"
 	icon_state = "boxers"
-	gender = NEUTER
+	gender = PLURAL
 	camo_conforming = TRUE
 
+// Male
 /datum/sprite_accessory/underwear/briefs
 	name = "Briefs"
 	icon_state = "briefs"
-	gender = NEUTER
+	gender = MALE
 	camo_conforming = TRUE
 
-/datum/sprite_accessory/underwear/lowriders
-	name = "Lowriders"
-	icon_state = "lowriders"
-	gender = NEUTER
+// Female
+/datum/sprite_accessory/underwear/panties
+	name = "Panties"
+	icon_state = "panties"
+	gender = FEMALE
 	camo_conforming = TRUE
 
-/datum/sprite_accessory/underwear/satin
-	name = "Satin"
-	icon_state = "satin"
-	gender = NEUTER
-	camo_conforming = TRUE
-
-/datum/sprite_accessory/underwear/tanga
-	name = "Tanga"
-	icon_state = "tanga"
-	gender = NEUTER
+/datum/sprite_accessory/underwear/thong
+	name = "Thong"
+	icon_state = "thong"
+	gender = FEMALE
 	camo_conforming = TRUE

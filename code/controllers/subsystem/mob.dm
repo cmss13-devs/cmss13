@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(mob)
 	var/list/living_misc_mobs = list()
 
 /datum/controller/subsystem/mob/stat_entry(msg)
-	msg = "P:[length(living_misc_mobs)]"
+	msg = "P:[living_misc_mobs.len]"
 	return ..()
 
 
@@ -16,8 +16,8 @@ SUBSYSTEM_DEF(mob)
 	if (!resumed)
 		currentrun = living_misc_mobs.Copy()
 
-	while (length(currentrun))
-		var/mob/living/M = currentrun[length(currentrun)]
+	while (currentrun.len)
+		var/mob/living/M = currentrun[currentrun.len]
 		currentrun.len--
 
 		if (!M || QDELETED(M))

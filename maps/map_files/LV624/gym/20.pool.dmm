@@ -4,7 +4,10 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "bQ" = (
-/turf/open/floor/barber/west,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
 /area/lv624/lazarus/fitness)
 "dw" = (
 /obj/item/clothing/under/shorts/red,
@@ -18,7 +21,10 @@
 	pixel_y = -8
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "gL" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -27,7 +33,10 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/whitepurple/northeast,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
 /area/lv624/lazarus/fitness)
 "hb" = (
 /obj/structure/machinery/light{
@@ -36,7 +45,10 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 29
 	},
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "hX" = (
 /obj/structure/filingcabinet/medical,
@@ -63,11 +75,17 @@
 /obj/item/clothing/under/swimsuit/red{
 	pixel_x = -7
 	},
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "kE" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "kY" = (
 /obj/item/device/radio/intercom{
@@ -76,19 +94,31 @@
 	name = "General Listening Channel";
 	pixel_y = 30
 	},
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "li" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "ls" = (
 /obj/item/tool/soap,
-/turf/open/floor/barber/west,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
 /area/lv624/lazarus/fitness)
 "lB" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/whitepurple/northeast,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
 /area/lv624/lazarus/fitness)
 "ma" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -98,16 +128,25 @@
 /area/lv624/ground/jungle/central_jungle)
 "oK" = (
 /obj/item/shard,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "re" = (
 /obj/structure/closet/crate/secure/hydrosec,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "rI" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "sA" = (
 /turf/closed/wall,
@@ -118,10 +157,16 @@
 	name = "\improper Leisure Dome";
 	req_access_txt = "100"
 	},
-/turf/open/floor/whitepurple/northeast,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
 /area/lv624/lazarus/fitness)
 "vq" = (
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "wj" = (
 /turf/open/gm/dirt,
@@ -151,7 +196,10 @@
 /area/lv624/lazarus/fitness)
 "yP" = (
 /obj/effect/landmark/good_item,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "yV" = (
 /obj/structure/sign/safety/water{
@@ -160,28 +208,43 @@
 	},
 /obj/structure/surface/table,
 /obj/item/storage/box/cups,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "zq" = (
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/barber/west,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
 /area/lv624/lazarus/fitness)
 "Be" = (
 /obj/effect/decal/remains/human,
 /obj/structure/machinery/power/apc/nocharge{
 	dir = 1
 	},
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "Ei" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "Er" = (
 /obj/effect/landmark/good_item,
-/turf/open/floor/barber/west,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
 /area/lv624/lazarus/fitness)
 "Ez" = (
 /turf/open/floor,
@@ -198,11 +261,17 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "Ga" = (
 /obj/structure/prop/static_tank/water,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "Gf" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
@@ -215,11 +284,17 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "IA" = (
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "Jk" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -252,7 +327,10 @@
 "Px" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "Rf" = (
 /obj/structure/closet/athletic_mixed,
@@ -260,7 +338,10 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "Rl" = (
 /obj/item/clothing/under/shorts/red,
@@ -268,11 +349,17 @@
 /obj/item/clothing/mask/snorkel,
 /obj/item/clothing/mask/snorkel,
 /obj/item/clothing/mask/snorkel,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "SW" = (
 /obj/structure/machinery/vending/cola,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "Td" = (
 /obj/structure/machinery/colony_floodlight,
@@ -288,13 +375,19 @@
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "UM" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "Vb" = (
 /turf/open/gm/dirtgrassborder/south,
@@ -307,7 +400,10 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/item/storage/firstaid/regular,
-/turf/open/floor/whitepurplecorner/east,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
 /area/lv624/lazarus/fitness)
 "Wj" = (
 /turf/open/gm/grass/grass1,

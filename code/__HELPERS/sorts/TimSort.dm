@@ -1,12 +1,12 @@
 //TimSort interface
 /proc/sortTim(list/L, cmp=/proc/cmp_numeric_asc, associative, fromIndex=1, toIndex=0)
-	if(length(L) >= 2)
-		fromIndex = fromIndex % length(L)
-		toIndex = toIndex % (length(L)+1)
+	if(L && L.len >= 2)
+		fromIndex = fromIndex % L.len
+		toIndex = toIndex % (L.len+1)
 		if(fromIndex <= 0)
-			fromIndex += length(L)
+			fromIndex += L.len
 		if(toIndex <= 0)
-			toIndex += length(L) + 1
+			toIndex += L.len + 1
 
 		var/datum/sortInstance/sort_instance = GLOB.sortInstance
 		if(!sort_instance)

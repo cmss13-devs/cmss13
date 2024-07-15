@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, ProgressBar, Section } from '../components';
+import { Button, ProgressBar, Box, Section } from '../components';
 import { Window } from '../layouts';
 import { createLogger } from '../logging';
 export const AltitudeControlConsole = () => {
@@ -19,8 +19,7 @@ export const AltitudeControlConsole = () => {
               ranges={{
                 good: [-Infinity, 50],
                 bad: [51, Infinity],
-              }}
-            >
+              }}>
               <Box textAlign="center">{data.temp}% to overheat</Box>
             </ProgressBar>
           </Box>
@@ -32,10 +31,9 @@ export const AltitudeControlConsole = () => {
               textAlign="center"
               fluid
               disabled={data.alt === 0.5}
+              content="Set to: Low Altitude"
               onClick={() => act('low_alt')}
-            >
-              Set to: Low Altitude
-            </Button>
+            />
           }
           {
             <Button
@@ -43,10 +41,9 @@ export const AltitudeControlConsole = () => {
               textAlign="center"
               fluid
               disabled={data.alt === 1}
+              content="Set to: Medium Altitude"
               onClick={() => act('med_alt')}
-            >
-              Set to: Medium Altitude
-            </Button>
+            />
           }
           {
             <Button
@@ -54,10 +51,9 @@ export const AltitudeControlConsole = () => {
               textAlign="center"
               fluid
               disabled={data.alt === 1.5}
+              content="Set to: High Altitude"
               onClick={() => act('high_alt')}
-            >
-              Set to: High Altitude
-            </Button>
+            />
           }
         </Section>
       </Window.Content>

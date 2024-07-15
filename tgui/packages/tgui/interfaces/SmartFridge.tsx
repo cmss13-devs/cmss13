@@ -1,16 +1,6 @@
 import { classes } from 'common/react';
-import { useState } from 'react';
-
-import { useBackend } from '../backend';
-import {
-  Button,
-  Icon,
-  NoticeBox,
-  Section,
-  Stack,
-  Tabs,
-  Tooltip,
-} from '../components';
+import { useBackend, useLocalState } from '../backend';
+import { Button, Icon, NoticeBox, Section, Stack, Tabs } from '../components';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
 import { ElectricalPanel } from './common/ElectricalPanel';
@@ -34,7 +24,6 @@ interface StorageItem {
   item: string;
   image: string;
   category: string;
-  desc: string;
 }
 
 const ContentsTable = (props: {
@@ -59,7 +48,10 @@ const Contents = (props: {
   readonly items: StorageItem[];
   readonly title: string;
 }) => {
-  const [tabIndex, setTabIndex] = useState('all');
+  const [tabIndex, setTabIndex] = useLocalState(
+    `contentsTab_${props.isLocal}`,
+    'all'
+  );
   const allItems = props.items;
 
   if (allItems.length === 0) {
@@ -81,7 +73,7 @@ const Contents = (props: {
   const categoryIterable = Array.from(categories.entries());
   return (
     <Section title={props.title}>
-      <Tabs fill fluid className="CategoryTabs">
+      <Tabs fill fluid>
         {categoryIterable
           .sort((a, b) => a[0].localeCompare(b[0]))
           .map((value) => {
@@ -94,8 +86,7 @@ const Contents = (props: {
               <Tabs.Tab
                 key={key}
                 selected={tabIndex === key}
-                onClick={() => setTabIndex(key)}
-              >
+                onClick={() => setTabIndex(key)}>
                 {displayName} ({items.length})
               </Tabs.Tab>
             );
@@ -120,53 +111,35 @@ const ContentItem = (props: {
 }) => {
   const { data, act } = useBackend<SmartFridgeData>();
   const { item } = props;
-  const itemref = { index: item.index, amount: 1, isLocal: props.isLocal };
+  const itemref = { 'index': item.index, 'amount': 1, isLocal: props.isLocal };
   return (
     <>
-      <TableCell className="ItemIcon" verticalAlign="top">
+      <TableCell className="ItemIconCell">
         <span
-          className={classes([`ItemIcon`, `vending32x32`, `${item.image}`])}
+          className={classes(['ItemIcon', `vending32x32`, `${item.image}`])}
         />
       </TableCell>
-      <TableCell className="ItemIconCell" minWidth="3rem">
-        {item.quantity}
-      </TableCell>
-      <TableCell width="100%">
+      <TableCell className="ItemIconCell">{item.quantity}</TableCell>
+      <TableCell>
         <Button
           className="VendButton"
           preserveWhitespace
           textAlign="center"
           icon="circle-down"
-          onClick={() => act('vend', itemref)}
-        >
+          onClick={() => act('vend', itemref)}>
           {item.display_name}
         </Button>
       </TableCell>
       {data.networked === 1 && (
-        <TableCell className="ItemIconCell">
+        <TableCell>
           <Button
-            icon={props.isLocal ? 'download' : 'upload'}
+            icon={props.isLocal ? 'upload' : 'download'}
             onClick={() => act('transfer', itemref)}
           />
         </TableCell>
       )}
-      <TableCell className="ItemIconCell">
-        <Tooltip
-          position="bottom-start"
-          // className={classes(['Tooltip', props.className])}
-          content={
-            <NoticeBox info className={classes(['Description'])}>
-              <Section title={item.display_name}>
-                <span>{item.desc}</span>
-              </Section>
-            </NoticeBox>
-          }
-        >
-          <Icon
-            name="circle-info"
-            className={classes(['ShowDesc', 'RegularItemText', 'SmallIcon'])}
-          />
-        </Tooltip>
+      <TableCell>
+        <Icon name="circle-info" />
       </TableCell>
     </>
   );
@@ -178,7 +151,7 @@ export const SmartFridge = () => {
     <Window theme="weyland" width={400} height={600}>
       <Window.Content className="SmartFridge" scrollable>
         <Stack vertical>
-          {!!data.secure && (
+          {data.secure && (
             <Stack.Item>
               <NoticeBox>Smart Fridge is in secure mode</NoticeBox>
             </Stack.Item>

@@ -85,7 +85,7 @@
 	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
 		data["evac_eta"] = SShijack.get_evac_eta()
 
-	if(!length(messagetitle))
+	if(!messagetitle.len)
 		data["messages"] = null
 	else
 		for(var/i in 1 to length(messagetitle))
@@ -139,7 +139,7 @@
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
-				idcard = human_user.get_idcard()
+				idcard = human_user.wear_id
 			if(!istype(idcard))
 				bio_fail = TRUE
 			else if(!idcard.check_biometrics(human_user))
@@ -198,8 +198,8 @@
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
-				idcard = human_user.get_idcard()
-			if(!idcard)
+				idcard = human_user.wear_id
+			if(!istype(idcard))
 				bio_fail = TRUE
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE

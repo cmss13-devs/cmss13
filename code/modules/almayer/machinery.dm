@@ -106,9 +106,7 @@
 /obj/structure/machinery/prop/almayer/CICmap/computer
 	name = "map terminal"
 	desc = "A terminal that displays a map of the current operation location."
-	icon = 'icons/obj/vehicles/interiors/arc.dmi'
-	icon_state = "cicmap_computer"
-	density = FALSE
+	icon_state = "security"
 
 /obj/structure/machinery/prop/almayer/CICmap/upp
 	minimap_type = MINIMAP_FLAG_UPP
@@ -222,8 +220,8 @@
 	. = ..()
 	if((isobserver(user) || ishuman(user)) && GLOB.fallen_list)
 		var/faltext = ""
-		for(var/i = 1 to length(GLOB.fallen_list))
-			if(i != length(GLOB.fallen_list))
+		for(var/i = 1 to GLOB.fallen_list.len)
+			if(i != GLOB.fallen_list.len)
 				faltext += "[GLOB.fallen_list[i]], "
 			else
 				faltext += GLOB.fallen_list[i]

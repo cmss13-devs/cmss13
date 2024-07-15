@@ -30,10 +30,10 @@
 
 	var/list/unstuttered_words = split_phrase.Copy()
 	var/i = rand(1,3)
-	if(stunned) i = length(split_phrase)
+	if(stunned) i = split_phrase.len
 	for(,i > 0,i--) //Pick a few words to stutter on.
 
-		if (!length(unstuttered_words))
+		if (!unstuttered_words.len)
 			break
 		var/word = pick(unstuttered_words)
 		unstuttered_words -= word //Remove from unstuttered words so we don't stutter it again.

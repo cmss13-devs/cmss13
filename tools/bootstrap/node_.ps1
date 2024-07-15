@@ -30,8 +30,7 @@ $Cache = "$BaseDir\.cache"
 if ($Env:TG_BOOTSTRAP_CACHE) {
 	$Cache = $Env:TG_BOOTSTRAP_CACHE
 }
-
-$NodeVersion = Extract-Variable -Path "$BaseDir\..\..\dependencies.sh" -Key "NODE_VERSION_LTS"
+$NodeVersion = Extract-Variable -Path "$BaseDir\..\..\dependencies.sh" -Key "NODE_VERSION_PRECISE"
 $NodeSource = "https://nodejs.org/download/release/v$NodeVersion/win-x64/node.exe"
 $NodeTargetDir = "$Cache\node-v$NodeVersion-x64"
 $NodeTarget = "$NodeTargetDir\node.exe"

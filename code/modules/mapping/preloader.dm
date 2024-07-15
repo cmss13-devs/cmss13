@@ -9,7 +9,7 @@ GLOBAL_LIST_INIT(_preloader_path, null)
 	var/target_path
 
 /world/proc/preloader_setup(list/the_attributes, path)
-	if(length(the_attributes))
+	if(the_attributes.len)
 		GLOB.use_preloader = TRUE
 		GLOB._preloader_attributes = the_attributes
 		GLOB._preloader_path = path

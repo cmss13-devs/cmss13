@@ -5,8 +5,7 @@
  */
 
 import { createUuid } from 'common/uuid';
-
-import { MESSAGE_TYPE_INTERNAL, MESSAGE_TYPES } from './constants';
+import { MESSAGE_TYPES, MESSAGE_TYPE_INTERNAL } from './constants';
 
 export const canPageAcceptType = (page, type) =>
   type.startsWith(MESSAGE_TYPE_INTERNAL) || page.acceptedTypes[type];
@@ -23,7 +22,6 @@ export const createPage = (obj) => {
     name: 'New Tab',
     acceptedTypes: acceptedTypes,
     unreadCount: 0,
-    hideUnreadCount: false,
     createdAt: Date.now(),
     ...obj,
   };

@@ -9,7 +9,9 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "R" = (
-/turf/open/floor/shiva/north,
+/turf/open/floor/shiva{
+	dir = 1
+	},
 /area/shiva/exterior/lz2_fortress)
 "Y" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,

@@ -180,7 +180,6 @@
 
 /// `tech`: a typepath to a tech
 /datum/techtree/proc/get_node(tech)
-	RETURN_TYPE(/datum/tech)
 	return techs_by_type[tech]
 
 /datum/techtree/proc/on_node_gained(obj/structure/resource_node/RN)

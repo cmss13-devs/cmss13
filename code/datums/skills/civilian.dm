@@ -29,7 +29,6 @@ CIVILIAN
 	name = "ICC CL - Black Market ERT"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_DEFAULT,
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI, //The ASRS consoles
 		SKILL_FIREARMS = SKILL_FIREARMS_CIVILIAN,
@@ -58,13 +57,11 @@ CIVILIAN
 	skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 	)
 
 /datum/skills/civilian/survivor/manager
 	name = "Weyland-Yutani Manager"
 	skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
 		SKILL_OVERWATCH = SKILL_OVERWATCH_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
@@ -123,7 +120,6 @@ CIVILIAN
 /datum/skills/civilian/survivor/doctor
 	name = "Survivor Doctor"
 	additional_skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
 	)
@@ -140,7 +136,6 @@ CIVILIAN
 /datum/skills/civilian/survivor/scientist
 	name = "Survivor Scientist"
 	additional_skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
 		SKILL_RESEARCH = SKILL_RESEARCH_TRAINED,
@@ -149,7 +144,6 @@ CIVILIAN
 /datum/skills/civilian/survivor/chef
 	name = "Survivor Chef"
 	additional_skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_SUPER,
 		SKILL_DOMESTIC = SKILL_DOMESTIC_TRAINED,
 	)
@@ -157,7 +151,6 @@ CIVILIAN
 /datum/skills/civilian/survivor/miner
 	name = "Survivor Miner"
 	additional_skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
@@ -166,7 +159,6 @@ CIVILIAN
 /datum/skills/civilian/survivor/trucker
 	name = "Survivor Trucker"
 	additional_skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
@@ -175,7 +167,6 @@ CIVILIAN
 /datum/skills/civilian/survivor/engineer
 	name = "Survivor Engineer"
 	additional_skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
@@ -185,7 +176,6 @@ CIVILIAN
 /datum/skills/civilian/survivor/chaplain
 	name = "Survivor Chaplain"
 	additional_skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 	)
 
@@ -209,7 +199,6 @@ CIVILIAN
 /datum/skills/civilian/survivor/prisoner
 	name = "Survivor Prisoner"
 	additional_skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
@@ -219,7 +208,6 @@ CIVILIAN
 /datum/skills/civilian/survivor/gangleader
 	name = "Survivor Gang Leader"
 	additional_skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,

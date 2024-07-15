@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
 
 export interface ButtonProps {

@@ -65,7 +65,7 @@
 		if(direction & i)
 			dirList += i
 
-	if(length(dirList))
+	if(dirList.len)
 		var/newDir = pick(dirList)
 		if(newDir == 16)
 			floor = 1

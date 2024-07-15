@@ -1,15 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Divider,
-  LabeledList,
-  NoticeBox,
-  NumberInput,
-  ProgressBar,
-  Section,
-  Tabs,
-} from '../components';
+import { Button, Section, LabeledList, ProgressBar, Divider, NumberInput, NoticeBox, Box, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const SupplyDropConsole = () => {
@@ -28,7 +18,7 @@ export const SupplyDropConsole = () => {
     <Window width={350} height={350}>
       <Window.Content scrollable>
         {!!can_pick_squad && (
-          <NoticeBox info={1} fluid textAlign="center">
+          <NoticeBox info={1} fluid={1} textAlign="center">
             {data.current_squad
               ? `Current squad is :
                 ${data.current_squad}`
@@ -43,8 +33,7 @@ export const SupplyDropConsole = () => {
                   onClick={() => {
                     act('pick_squad', { squad_name: val.squad_name });
                   }}
-                  key={val.squad_name}
-                >
+                  key={val.squad_name}>
                   <Box color={val.squad_color}>{val.squad_name}</Box>
                 </Tabs.Tab>
               );
@@ -60,7 +49,7 @@ export const SupplyDropConsole = () => {
                 minValue={-1000}
                 maxValue={1000}
                 value={data.x_offset}
-                onChange={(value) => act('set_x', { set_x: `${value}` })}
+                onChange={(e, value) => act('set_x', { set_x: `${value}` })}
               />
             </LabeledList.Item>
             <LabeledList.Item label="Latitude">
@@ -70,7 +59,7 @@ export const SupplyDropConsole = () => {
                 minValue={-1000}
                 maxValue={1000}
                 value={data.y_offset}
-                onChange={(value) => act('set_y', { set_y: `${value}` })}
+                onChange={(e, value) => act('set_y', { set_y: `${value}` })}
               />
             </LabeledList.Item>
           </LabeledList>
@@ -78,11 +67,12 @@ export const SupplyDropConsole = () => {
           <Section
             title="Supply Pad Status"
             buttons={
-              <Button icon="sync-alt" onClick={() => act('refresh_pad')}>
-                Update
-              </Button>
-            }
-          >
+              <Button
+                icon="sync-alt"
+                content="Update"
+                onClick={() => act('refresh_pad')}
+              />
+            }>
             <NoticeBox info={1} textAlign="center">
               {data.loaded
                 ? `Supply Pad Status :
@@ -101,8 +91,7 @@ export const SupplyDropConsole = () => {
                   good: [-Infinity, 0.33],
                   average: [0.33, 0.67],
                   bad: [0.67, Infinity],
-                }}
-              >
+                }}>
                 <Box textAlign="center">
                   {Math.ceil(timeLeft / 10)} seconds until next launch
                 </Box>
@@ -112,13 +101,12 @@ export const SupplyDropConsole = () => {
               fontSize="20px"
               textAlign="center"
               disabled={!!cantFire}
-              fluid
+              fluid={1}
               icon="paper-plane"
               color="good"
+              content="Launch Supply Drop"
               onClick={() => act('send_beacon')}
-            >
-              Launch Supply Drop
-            </Button>
+            />
           </Section>
         </Section>
       </Window.Content>

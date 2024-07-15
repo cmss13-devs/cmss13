@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Section } from '../components';
+import { Section, Box } from '../components';
 import { Window } from '../layouts';
 
 export const Binoculars = () => {
@@ -14,8 +14,7 @@ export const Binoculars = () => {
         <Section
           title="SIMPLIFIED COORDINATES OF TARGET"
           textAlign="center"
-          fontSize="15px"
-        >
+          fontSize="15px">
           <Box fontSize="30px">
             LONGITUDE : {x_coord}, LATITUDE : {y_coord}
           </Box>

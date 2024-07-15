@@ -3,27 +3,27 @@
 // -------------------------------------------------------------------- //
 
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Section, Stack } from '../components';
+import { Flex, Box, Section, Button, Stack } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
-  login: () => Login,
-  main: () => MainMenu,
-  announcements: () => AnnouncementLogs,
-  bioscans: () => BioscanLogs,
-  bombardments: () => BombardmentLogs,
-  apollo: () => ApolloLog,
-  access_log: () => AccessLogs,
-  delete_log: () => DeletionLogs,
-  flight_log: () => FlightLogs,
-  talking: () => ARESTalk,
-  deleted_talks: () => DeletedTalks,
-  read_deleted: () => ReadingTalks,
-  security: () => Security,
-  requisitions: () => Requisitions,
-  emergency: () => Emergency,
-  tech_log: () => TechLogs,
-  core_security: () => CoreSec,
+  'login': () => Login,
+  'main': () => MainMenu,
+  'announcements': () => AnnouncementLogs,
+  'bioscans': () => BioscanLogs,
+  'bombardments': () => BombardmentLogs,
+  'apollo': () => ApolloLog,
+  'access_log': () => AccessLogs,
+  'delete_log': () => DeletionLogs,
+  'flight_log': () => FlightLogs,
+  'talking': () => ARESTalk,
+  'deleted_talks': () => DeletedTalks,
+  'read_deleted': () => ReadingTalks,
+  'security': () => Security,
+  'requisitions': () => Requisitions,
+  'emergency': () => Emergency,
+  'tech_log': () => TechLogs,
+  'core_security': () => CoreSec,
 };
 
 export const AresInterface = (props) => {
@@ -61,8 +61,7 @@ const Login = (props) => {
       color="darkgrey"
       fontSize="2rem"
       mt="-3rem"
-      bold
-    >
+      bold>
       <Box fontFamily="monospace">ARES v3.2 Interface</Box>
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
@@ -71,6 +70,7 @@ const Login = (props) => {
       <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
 
       <Button
+        content="Login"
         icon="id-card"
         width="30vw"
         textAlign="center"
@@ -78,9 +78,7 @@ const Login = (props) => {
         p="1rem"
         mt="5rem"
         onClick={() => act('login')}
-      >
-        Login
-      </Button>
+      />
     </Flex>
   );
 };
@@ -124,14 +122,13 @@ const MainMenu = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -144,6 +141,7 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button
+              content="Announcement Logs"
               tooltip="Access the AI Announcement logs."
               icon="bullhorn"
               ml="auto"
@@ -151,12 +149,11 @@ const MainMenu = (props) => {
               width="25vw"
               bold
               onClick={() => act('page_announcements')}
-            >
-              Announcement Logs
-            </Button>
+            />
           </Stack.Item>
           <Stack.Item>
             <Button
+              content="ARES Communication"
               tooltip="Direct communication 1:1 with ARES."
               icon="comments"
               ml="auto"
@@ -164,9 +161,7 @@ const MainMenu = (props) => {
               width="25vw"
               bold
               onClick={() => act('page_1to1')}
-            >
-              ARES Communication
-            </Button>
+            />
           </Stack.Item>
         </Stack>
         {access_level >= 2 && (
@@ -176,6 +171,7 @@ const MainMenu = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
+                content="Flight Records"
                 tooltip="Read the Dropship Flight Control Records."
                 icon="jet-fighter-up"
                 ml="auto"
@@ -183,12 +179,11 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_flight')}
-              >
-                Flight Records
-              </Button>
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
+                content="Bioscan Logs"
                 tooltip="Access the Bioscan records."
                 icon="eye"
                 ml="auto"
@@ -196,12 +191,11 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_bioscans')}
-              >
-                Bioscan Logs
-              </Button>
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
+                content="Bombardment Logs"
                 tooltip="Access Orbital Bombardment logs."
                 icon="meteor"
                 ml="auto"
@@ -209,9 +203,7 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_bombardments')}
-              >
-                Bombardment Logs
-              </Button>
+              />
             </Stack.Item>
           </Stack>
         )}
@@ -222,6 +214,7 @@ const MainMenu = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
+                content="Security Updates"
                 tooltip="Read the Security Updates."
                 icon="file-shield"
                 ml="auto"
@@ -229,12 +222,11 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_security')}
-              >
-                Security Updates
-              </Button>
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
+                content="View Apollo Log"
                 tooltip="Read the Apollo Link logs."
                 icon="clipboard"
                 ml="auto"
@@ -242,9 +234,7 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_apollo')}
-              >
-                View Apollo Log
-              </Button>
+              />
             </Stack.Item>
           </Stack>
         )}
@@ -255,6 +245,7 @@ const MainMenu = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button.Confirm
+                content="Emergency Protocols"
                 tooltip="Access emergency protocols."
                 icon="shield"
                 color="red"
@@ -263,12 +254,11 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_emergency')}
-              >
-                Emergency Protocols
-              </Button.Confirm>
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
+                content="ASRS Audit Log"
                 tooltip="Review the ASRS Audit Log."
                 icon="magnifying-glass-dollar"
                 ml="auto"
@@ -276,12 +266,11 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_requisitions')}
-              >
-                ASRS Audit Log
-              </Button>
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
+                content="Tech Control Log"
                 tooltip="Review the Intel Tech Log."
                 icon="magnifying-glass-chart"
                 ml="auto"
@@ -289,9 +278,7 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_tech')}
-              >
-                Tech Control Log
-              </Button>
+              />
             </Stack.Item>
           </Stack>
         )}
@@ -302,6 +289,7 @@ const MainMenu = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
+                content="View Access Log"
                 tooltip="View the recent logins."
                 icon="users"
                 ml="auto"
@@ -309,9 +297,7 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_access')}
-              >
-                View Access Log
-              </Button>
+              />
             </Stack.Item>
           </Stack>
         )}
@@ -322,6 +308,7 @@ const MainMenu = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
+                content="View Deletion Log"
                 tooltip="View the deletion log."
                 icon="sd-card"
                 ml="auto"
@@ -329,12 +316,11 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_deleted')}
-              >
-                View Deletion Log
-              </Button>
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
+                content="View Deleted 1:1's"
                 tooltip="View the deleted 1:1 conversations with ARES."
                 icon="sd-card"
                 ml="auto"
@@ -342,9 +328,7 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_deleted_1to1')}
-              >
-                View Deleted 1:1&apos;s
-              </Button>
+              />
             </Stack.Item>
           </Stack>
         )}
@@ -356,6 +340,7 @@ const MainMenu = (props) => {
             {sudo === 0 && (
               <Stack.Item>
                 <Button
+                  content="Sudo Login"
                   tooltip="Remote Login."
                   icon="user-secret"
                   ml="auto"
@@ -363,14 +348,13 @@ const MainMenu = (props) => {
                   width="25vw"
                   bold
                   onClick={() => act('sudo')}
-                >
-                  Sudo Login
-                </Button>
+                />
               </Stack.Item>
             )}
             {sudo >= 1 && (
               <Stack.Item>
                 <Button
+                  content="Sudo Logout"
                   tooltip="Logout of Sudo mode."
                   icon="user-secret"
                   ml="auto"
@@ -378,9 +362,7 @@ const MainMenu = (props) => {
                   width="25vw"
                   bold
                   onClick={() => act('sudo_logout')}
-                >
-                  Sudo Logout
-                </Button>
+                />
               </Stack.Item>
             )}
           </Stack>
@@ -392,6 +374,7 @@ const MainMenu = (props) => {
           <Stack>
             <Stack.Item grow>
               <Button
+                content="Nerve Gas Control"
                 align="center"
                 tooltip="Release stored CN20-X nerve gas from security vents."
                 icon="wind"
@@ -401,12 +384,11 @@ const MainMenu = (props) => {
                 width="100%"
                 bold
                 onClick={() => act('page_core_sec')}
-              >
-                Nerve Gas Control
-              </Button>
+              />
             </Stack.Item>
             <Stack.Item grow>
               <Button.Confirm
+                content="AI Core Lockdown"
                 align="center"
                 tooltip="Activate/Deactivate the AI Core Lockdown."
                 icon="lock"
@@ -416,9 +398,7 @@ const MainMenu = (props) => {
                 width="100%"
                 bold
                 onClick={() => act('security_lockdown')}
-              >
-                AI Core Lockdown
-              </Button.Confirm>
+              />
             </Stack.Item>
           </Stack>
         </Section>
@@ -465,14 +445,13 @@ const AnnouncementLogs = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -484,8 +463,7 @@ const AnnouncementLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem"
-          >
+            fontSize="1.25rem">
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -563,14 +541,13 @@ const BioscanLogs = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -582,8 +559,7 @@ const BioscanLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem"
-          >
+            fontSize="1.25rem">
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -661,14 +637,13 @@ const BombardmentLogs = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -680,8 +655,7 @@ const BombardmentLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem"
-          >
+            fontSize="1.25rem">
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -756,14 +730,13 @@ const ApolloLog = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -813,14 +786,13 @@ const AccessLogs = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -871,14 +843,13 @@ const DeletionLogs = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -890,8 +861,7 @@ const DeletionLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem"
-          >
+            fontSize="1.25rem">
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Deletion Time
             </Flex.Item>
@@ -965,14 +935,13 @@ const ARESTalk = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -983,14 +952,13 @@ const ARESTalk = (props) => {
       <Section align="center">
         {!active_convo.length && (
           <Button
+            content="New Conversation"
             icon="pen"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('new_conversation')}
-          >
-            New Conversation
-          </Button>
+          />
         )}
         {active_convo.map((message, i) => {
           return (
@@ -1001,18 +969,18 @@ const ARESTalk = (props) => {
         })}
         {!!active_convo.length && (
           <Button
+            content="Send Message"
             icon="pen"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('message_ares', { active_convo: active_ref })}
-          >
-            Send Message
-          </Button>
+          />
         )}
       </Section>
       <Section align="center">
         <Button.Confirm
+          content="Clear Conversation"
           icon="trash"
           tooltip="Clears the conversation. Please note, your 1:1 conversation is only visible to you."
           width="30vw"
@@ -1023,9 +991,7 @@ const ARESTalk = (props) => {
             act('clear_conversation', { active_convo: active_ref })
           }
           disabled={!active_convo.length}
-        >
-          Clear Conversation
-        </Button.Confirm>
+        />
       </Section>
     </>
   );
@@ -1068,14 +1034,13 @@ const DeletedTalks = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -1086,8 +1051,7 @@ const DeletedTalks = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem"
-          >
+            fontSize="1.25rem">
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Deletion Time
             </Flex.Item>
@@ -1160,14 +1124,13 @@ const ReadingTalks = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -1193,7 +1156,6 @@ const Requisitions = (props) => {
     last_page,
     current_menu,
     records_requisition,
-    printer_cooldown,
   } = data;
 
   return (
@@ -1223,39 +1185,24 @@ const Requisitions = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
       <Section>
         <h1 align="center">ASRS Audit Log</h1>
-        <h4 align="center">
-          <Button
-            icon="print"
-            px="2rem"
-            textAlign="center"
-            tooltip="Print Audit Log"
-            onClick={() => act('print_req')}
-            disabled={printer_cooldown}
-          >
-            Print Audit Log
-          </Button>
-        </h4>
-
         {!!records_requisition.length && (
           <Flex
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem"
-          >
+            fontSize="1.25rem">
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -1331,14 +1278,13 @@ const FlightLogs = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -1349,8 +1295,7 @@ const FlightLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem"
-          >
+            fontSize="1.25rem">
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -1428,14 +1373,13 @@ const Security = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -1446,8 +1390,7 @@ const Security = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem"
-          >
+            fontSize="1.25rem">
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -1581,20 +1524,20 @@ const Emergency = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
       <h1 align="center">Emergency Protocols</h1>
       <Flex align="center" justify="center" height="50%" direction="column">
         <Button.Confirm
+          content="Call General Quarters"
           tooltip={quarters_reason}
           icon="triangle-exclamation"
           color="red"
@@ -1606,10 +1549,9 @@ const Emergency = (props) => {
           bold
           onClick={() => act('general_quarters')}
           disabled={!canQuarters}
-        >
-          Call General Quarters
-        </Button.Confirm>
+        />
         <Button.Confirm
+          content="Initiate Evacuation"
           tooltip={evac_reason}
           icon="shuttle-space"
           color="red"
@@ -1621,10 +1563,9 @@ const Emergency = (props) => {
           bold
           onClick={() => act('evacuation_start')}
           disabled={!canEvac}
-        >
-          Initiate Evacuation
-        </Button.Confirm>
+        />
         <Button.Confirm
+          content="Launch Distress Beacon"
           tooltip={distress_reason}
           icon="circle-exclamation"
           color="red"
@@ -1636,10 +1577,9 @@ const Emergency = (props) => {
           bold
           onClick={() => act('distress')}
           disabled={!canDistress}
-        >
-          Launch Distress Beacon
-        </Button.Confirm>
+        />
         <Button.Confirm
+          content="Request Nuclear Device"
           tooltip={nuke_reason}
           icon="circle-radiation"
           color="red"
@@ -1651,16 +1591,14 @@ const Emergency = (props) => {
           bold
           onClick={() => act('nuclearbomb')}
           disabled={!canNuke}
-        >
-          Request Nuclear Device
-        </Button.Confirm>
+        />
       </Flex>
     </>
   );
 };
 
-const TechLogs = (props) => {
-  const { data, act } = useBackend();
+const TechLogs = (props, context) => {
+  const { data, act } = useBackend(context);
   const {
     logged_in,
     access_text,
@@ -1697,14 +1635,13 @@ const TechLogs = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -1715,8 +1652,7 @@ const TechLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem"
-          >
+            fontSize="1.25rem">
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -1743,8 +1679,7 @@ const TechLogs = (props) => {
                   ml="1rem"
                   shrink="0"
                   textAlign="center"
-                  color="red"
-                >
+                  color="red">
                   {record.details}
                 </Flex.Item>
               )}
@@ -1753,8 +1688,7 @@ const TechLogs = (props) => {
                   width="40rem"
                   ml="1rem"
                   shrink="0"
-                  textAlign="center"
-                >
+                  textAlign="center">
                   {record.details}
                 </Flex.Item>
               )}
@@ -1813,14 +1747,13 @@ const CoreSec = (props) => {
           </h3>
 
           <Button.Confirm
+            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          >
-            Logout
-          </Button.Confirm>
+          />
         </Flex>
       </Section>
 
@@ -1834,6 +1767,7 @@ const CoreSec = (props) => {
             <Button.Confirm
               key={i}
               align="center"
+              content={vent.vent_tag}
               icon="wind"
               tooltip="Release Gas"
               width="100%"
@@ -1841,9 +1775,7 @@ const CoreSec = (props) => {
                 (access_level < 5 && access_level !== 3) || !vent.available
               }
               onClick={() => act('trigger_vent', { vent: vent.ref })}
-            >
-              {vent.vent_tag}
-            </Button.Confirm>
+            />
           );
         })}
       </Section>

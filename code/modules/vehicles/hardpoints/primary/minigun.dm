@@ -1,5 +1,5 @@
 /obj/item/hardpoint/primary/minigun
-	name = "\improper LTAA-AP Minigun"
+	name = "LTAA-AP Minigun"
 	desc = "A primary weapon for tanks that spews bullets"
 
 	icon_state = "ltaaap_minigun"
@@ -8,6 +8,8 @@
 
 	health = 350
 	firing_arc = 90
+
+	origins = list(0, -3)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/ltaaap_minigun
 	max_clips = 1
@@ -61,7 +63,7 @@
 	COOLDOWN_START(src, fire_cooldown, fire_delay * stage_delay_mult)
 
 /obj/item/hardpoint/primary/minigun/proc/calculate_stage_delay_mult()
-	var/stage_rate_len = length(stage_rate)
+	var/stage_rate_len = stage_rate.len
 	var/delta_time = world.time - last_fired
 
 	var/old_spin_stage = spin_stage

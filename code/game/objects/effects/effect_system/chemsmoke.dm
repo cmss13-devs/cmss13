@@ -8,7 +8,6 @@
 	time_to_live = 300
 	anchored = TRUE
 	smokeranking = SMOKE_RANK_HIGH
-	alpha = 100
 
 /obj/effect/particle_effect/smoke/chem/Initialize()
 	. = ..()
@@ -27,7 +26,7 @@
 	var/list/targetTurfs
 	var/list/wallList
 	var/density
-	var/static/last_reaction_signature
+
 
 /datum/effect_system/smoke_spread/chem/New()
 	..()
@@ -70,7 +69,7 @@
 	smokeFlow(location, targetTurfs, wallList)
 
 	//set the density of the cloud - for diluting reagents
-	density = max(1, length(targetTurfs) / 4) //clamp the cloud density minimum to 1 so it cant multiply the reagents
+	density = max(1, targetTurfs.len / 4) //clamp the cloud density minimum to 1 so it cant multiply the reagents
 
 	//Admin messaging
 	var/contained = ""
@@ -80,19 +79,14 @@
 		contained = "\[[contained]\]"
 	var/area/A = get_area(location)
 
-	var/reaction_signature = "[time2text(world.timeofday, "hh:mm")]: ([A.name])[contained] by [carry.my_atom.fingerprintslast]"
-	if(last_reaction_signature == reaction_signature)
-		return
-	last_reaction_signature = reaction_signature
-
 	var/where = "[A.name]|[location.x], [location.y]"
 	var/whereLink = "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
 
 	if(carry.my_atom.fingerprintslast)
-		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
+		message_admins("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 		log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 	else
-		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. No associated key.")
+		message_admins("A chemical smoke reaction has taken place in ([whereLink]). No associated key.")
 		log_game("A chemical smoke reaction has taken place in ([where])[contained]. No associated key.")
 
 
@@ -110,7 +104,7 @@
 		return
 
 	//reagent application - only run if there are extra reagents in the smoke
-	if(length(chemholder.reagents.reagent_list))
+	if(chemholder.reagents.reagent_list.len)
 		for(var/datum/reagent/R in chemholder.reagents.reagent_list)
 			var/proba = 100
 			var/runs = 5
@@ -144,10 +138,10 @@
 								var/dist = cheap_pythag(T.x - location.x, T.y - location.y)
 								if(!dist)
 									dist = 1
-								R.reaction_mob(A, volume = R.volume * POTENCY_MULTIPLIER_VLOW / dist, permeable = FALSE)
+								R.reaction_mob(A, volume = R.volume / dist, permeable = FALSE)
 							else if(istype(A, /obj))
 								R.reaction_obj(A, R.volume)
-					sleep(3 SECONDS)
+					sleep(30)
 
 
 	//build smoke icon
@@ -197,7 +191,7 @@
 //------------------------------------------
 /datum/effect_system/smoke_spread/chem/proc/spawnSmoke(turf/T, icon/I, dist = 1)
 	var/obj/effect/particle_effect/smoke/chem/smoke = new(location)
-	if(length(chemholder.reagents.reagent_list))
+	if(chemholder.reagents.reagent_list.len)
 		chemholder.reagents.copy_to(smoke, chemholder.reagents.total_volume / dist, safety = 1) //copy reagents to the smoke so mob/breathe() can handle inhaling the reagents
 	smoke.icon = I
 	smoke.layer = FLY_LAYER
@@ -205,7 +199,10 @@
 	smoke.pixel_x = -32 + rand(-8,8)
 	smoke.pixel_y = -32 + rand(-8,8)
 	walk_to(smoke, T)
-	sleep(150+rand(0,20))
+	smoke.set_opacity(1) //switching opacity on after the smoke has spawned, and then
+	sleep(150+rand(0,20)) // turning it off before it is deleted results in cleaner
+	if(smoke.opacity)
+		smoke.set_opacity(0)
 	fadeOut(smoke)
 	qdel(smoke)
 
@@ -230,7 +227,7 @@
 
 	pending += location
 
-	while(length(pending))
+	while(pending.len)
 		for(var/turf/current in pending)
 			for(var/D in GLOB.cardinals)
 				var/turf/target = get_step(current, D)
@@ -262,14 +259,3 @@
 	targetTurfs = complete
 
 	return
-
-/obj/effect/particle_effect/smoke/chem/affect(mob/living/carbon/affected_mob)
-	. = ..()
-	if(!.)
-		return FALSE
-	if(!length(reagents?.reagent_list))
-		return FALSE
-
-	for(var/datum/reagent/reagent in reagents.reagent_list)
-		reagent.reaction_mob(affected_mob, volume = reagent.volume * POTENCY_MULTIPLIER_LOW, permeable = FALSE)
-	return TRUE

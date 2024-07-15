@@ -122,7 +122,7 @@
 			src.gameover = 1
 			src.temp = "[src.enemy_name] has fallen! Rejoice!"
 
-			if(!length(contents))
+			if(!contents.len)
 				var/prizeselect = pickweight(prizes)
 				new prizeselect(src.loc)
 

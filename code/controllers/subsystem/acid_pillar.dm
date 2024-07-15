@@ -11,8 +11,8 @@ SUBSYSTEM_DEF(acid_pillar)
 	if (!resumed)
 		currentrun = queuedrun.Copy()
 
-	while (length(currentrun))
-		var/hash = currentrun[length(currentrun)]
+	while (currentrun.len)
+		var/hash = currentrun[currentrun.len]
 		var/datum/acid_spray_info/data = currentrun[hash]
 		currentrun.len--
 

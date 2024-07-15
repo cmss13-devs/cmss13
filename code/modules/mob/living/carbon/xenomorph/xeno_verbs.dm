@@ -11,8 +11,8 @@
 		to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
 		return
 
-	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
+	if(interference)
+		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off our psychic connection!"))
 		return
 
 	hive.hive_ui.open_hive_status(src)
@@ -36,8 +36,8 @@
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
-	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
+	if(interference)
+		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
 		return
 
 	hive.faction_ui.tgui_interact(src)

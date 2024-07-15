@@ -4,14 +4,20 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/hallwaysouth)
 "b" = (
-/turf/open/floor/corsat/plate,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
 /area/corsat/gamma/hallwaysouth)
 "c" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat/retrosquares,
+/turf/open/floor/corsat{
+	icon_state = "retrosquares"
+	},
 /area/corsat/gamma/hallwaysouth)
 "d" = (
-/turf/open/floor/corsat/retrosquares,
+/turf/open/floor/corsat{
+	icon_state = "retrosquares"
+	},
 /area/corsat/gamma/hallwaysouth)
 "e" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
@@ -19,43 +25,69 @@
 "f" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "ThetaNorthD";
-	name = "Theta Dome Airlock"
+	name = "Theta Dome Airlock";
+	unacidable = 0;
+	use_power = 1
 	},
-/turf/open/floor/corsat/marked,
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
 /area/corsat/theta/airlock/control)
 "g" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat/marked,
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
 /area/corsat/theta/airlock/control)
 "h" = (
-/turf/open/floor/corsat/marked,
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
 /area/corsat/theta/airlock/control)
 "i" = (
 /obj/structure/machinery/light{
+	icon_state = "tube1";
 	dir = 1
 	},
 /obj/structure/closet/firecloset,
-/turf/open/floor/corsat/red/north,
+/turf/open/floor/corsat{
+	icon_state = "red";
+	dir = 1
+	},
 /area/corsat/theta/airlock/control)
 "j" = (
-/turf/open/floor/corsat/redcorner/north,
+/turf/open/floor/corsat{
+	icon_state = "redcorner";
+	dir = 1
+	},
 /area/corsat/theta/airlock/control)
 "k" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat/squares,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
 /area/corsat/theta/airlock/control)
 "l" = (
-/turf/open/floor/corsat/squares,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
 /area/corsat/theta/airlock/control)
 "m" = (
-/turf/open/floor/corsat/yellowcorner/east,
+/turf/open/floor/corsat{
+	icon_state = "yellowcorner";
+	dir = 4
+	},
 /area/corsat/theta/airlock/control)
 "n" = (
 /obj/structure/machinery/light{
+	icon_state = "tube1";
 	dir = 1
 	},
 /obj/structure/machinery/disposal,
-/turf/open/floor/corsat/yellow/north,
+/turf/open/floor/corsat{
+	icon_state = "yellow";
+	dir = 1
+	},
 /area/corsat/theta/airlock/control)
 
 (1,1,1) = {"

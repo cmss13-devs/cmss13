@@ -1,5 +1,4 @@
 import { toFixed } from 'common/math';
-
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, NumberInput, Section } from '../components';
 import { RADIO_CHANNELS } from '../constants';
@@ -23,7 +22,7 @@ export const Radio = (props) => {
   const radioChannels = data.channels;
 
   const tunedChannel = RADIO_CHANNELS.find(
-    (channel) => channel.freq === frequency,
+    (channel) => channel.freq === frequency
   );
 
   // Calculate window height
@@ -55,7 +54,7 @@ export const Radio = (props) => {
                   maxValue={maxFrequency / 10}
                   value={frequency / 10}
                   format={(value) => toFixed(value, 1)}
-                  onDrag={(value) =>
+                  onDrag={(e, value) =>
                     act('frequency', {
                       adjust: value - frequency / 10,
                     })
@@ -88,20 +87,18 @@ export const Radio = (props) => {
                   ml={1}
                   icon="bullhorn"
                   selected={useCommand}
+                  content={`High volume ${useCommand ? 'ON' : 'OFF'}`}
                   onClick={() => act('command')}
-                >
-                  {`High volume ${useCommand ? 'ON' : 'OFF'}`}
-                </Button>
+                />
               )}
               {!!subspaceSwitchable && (
                 <Button
                   ml={1}
                   icon="bullhorn"
                   selected={subspace}
+                  content={`Subspace Tx ${subspace ? 'ON' : 'OFF'}`}
                   onClick={() => act('subspace')}
-                >
-                  {`Subspace Tx ${subspace ? 'ON' : 'OFF'}`}
-                </Button>
+                />
               )}
             </LabeledList.Item>
             {!!subspace && (
@@ -116,14 +113,13 @@ export const Radio = (props) => {
                     <Button
                       icon={channel.status ? 'check-square-o' : 'square-o'}
                       selected={channel.status}
+                      content={channel.name + ' ' + channel.hotkey}
                       onClick={() =>
                         act('channel', {
                           channel: channel.name,
                         })
                       }
-                    >
-                      {channel.name + ' ' + channel.hotkey}
-                    </Button>
+                    />
                   </Box>
                 ))}
               </LabeledList.Item>

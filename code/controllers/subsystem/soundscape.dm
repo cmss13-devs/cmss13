@@ -15,8 +15,8 @@ SUBSYSTEM_DEF(soundscape)
 	if(!resumed)
 		currentrun = GLOB.clients.Copy()
 
-	while(length(currentrun))
-		var/client/C = currentrun[length(currentrun)]
+	while(currentrun.len)
+		var/client/C = currentrun[currentrun.len]
 		currentrun.len--
 
 		if(!C || !C.soundOutput)

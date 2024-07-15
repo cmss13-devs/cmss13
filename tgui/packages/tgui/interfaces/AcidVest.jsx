@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, Flex, LabeledList, Section, Slider } from '../components';
+import { Button, LabeledList, Section, Slider, Flex, Box } from '../components';
 import { Window } from '../layouts';
 
 export const AcidVest = (_props) => {
@@ -48,11 +48,10 @@ export const AcidVest = (_props) => {
             </LabeledList.Item>
             <LabeledList.Item label="Configuration">
               <Button
+                content={injectLogic}
                 onClick={() => act('inject_logic')}
                 icon={Ormode ? 'question' : 'plus'}
-              >
-                {injectLogic}
-              </Button>
+              />
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -65,6 +64,7 @@ export const AcidVest = (_props) => {
                     <Flex.Item key={category}>
                       <Button.Checkbox
                         fontSize="1.2rem"
+                        content={category}
                         checked={!!damageList[category]['flag']}
                         onClick={() =>
                           act('configurate', {
@@ -72,9 +72,7 @@ export const AcidVest = (_props) => {
                             config_value: damageList[category]['value'],
                           })
                         }
-                      >
-                        {category}
-                      </Button.Checkbox>
+                      />
                     </Flex.Item>
                   ))}
                 </Flex>
@@ -88,6 +86,7 @@ export const AcidVest = (_props) => {
                     <Flex.Item key={category}>
                       <Button.Checkbox
                         fontSize="1.2rem"
+                        content={category}
                         checked={!!conditionsList[category]['flag']}
                         onClick={() =>
                           act('configurate', {
@@ -95,9 +94,7 @@ export const AcidVest = (_props) => {
                             config_value: conditionsList[category]['value'],
                           })
                         }
-                      >
-                        {category}
-                      </Button.Checkbox>
+                      />
                     </Flex.Item>
                   ))}
                 </Flex>
@@ -111,6 +108,7 @@ export const AcidVest = (_props) => {
                     <Flex.Item key={category}>
                       <Button.Checkbox
                         fontSize="1.2rem"
+                        content={category}
                         checked={!!vitalsList[category]['flag']}
                         onClick={() =>
                           act('configurate', {
@@ -118,9 +116,7 @@ export const AcidVest = (_props) => {
                             config_value: vitalsList[category]['value'],
                           })
                         }
-                      >
-                        {category}
-                      </Button.Checkbox>
+                      />
                     </Flex.Item>
                   ))}
                 </Flex>

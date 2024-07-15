@@ -379,5 +379,5 @@
 		arms_to_damage -= l_arm
 	if(r_arm.status & LIMB_DESTROYED)
 		arms_to_damage -= r_arm
-	if(length(arms_to_damage))
+	if(arms_to_damage.len)
 		human_to_damage.apply_damage(3, BRUTE, pick(arms_to_damage))

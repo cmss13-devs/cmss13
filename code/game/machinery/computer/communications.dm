@@ -81,8 +81,8 @@
 				if(ACCESS_MARINE_SENIOR in I.access)
 					authenticated = 2
 			else
-				I = C.get_idcard()
-				if(I)
+				I = C.wear_id
+				if(istype(I))
 					if(check_access(I)) authenticated = 1
 					if(ACCESS_MARINE_SENIOR in I.access)
 						authenticated = 2
@@ -117,8 +117,8 @@
 				var/obj/item/card/id/idcard = human_user.get_active_hand()
 				var/bio_fail = FALSE
 				if(!istype(idcard))
-					idcard = human_user.get_idcard()
-				if(idcard)
+					idcard = human_user.wear_id
+				if(!istype(idcard))
 					bio_fail = TRUE
 				else if(!idcard.check_biometrics(human_user))
 					bio_fail = TRUE
@@ -171,8 +171,8 @@
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
-				idcard = human_user.get_idcard()
-			if(!idcard)
+				idcard = human_user.wear_id
+			if(!istype(idcard))
 				bio_fail = TRUE
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE
@@ -366,7 +366,7 @@
 						dat += "<BR><A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A>"
 					dat += "<BR><hr>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
-					dat += length(GLOB.admins) > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
+					dat += GLOB.admins.len > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
 					dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=destroy'>Activate Self-Destruct</A>"
@@ -393,7 +393,7 @@
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
-			for(var/i = 1; i<=length(messagetitle); i++)
+			for(var/i = 1; i<=messagetitle.len; i++)
 				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
 
 		if(STATE_VIEWMESSAGE)
@@ -466,7 +466,7 @@
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
-			for(var/i = 1; i<=length(messagetitle); i++)
+			for(var/i = 1; i<=messagetitle.len; i++)
 				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
 
 		if(STATE_VIEWMESSAGE)

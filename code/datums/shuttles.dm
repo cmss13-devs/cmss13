@@ -81,7 +81,8 @@
 /datum/map_template/shuttle/post_load(obj/docking_port/mobile/M)
 	if(movement_force)
 		M.movement_force = movement_force.Copy()
-	M.linkup(src)
+	M.linkup()
+
 
 /datum/map_template/shuttle/vehicle
 	shuttle_id = MOBILE_SHUTTLE_VEHICLE_ELEVATOR

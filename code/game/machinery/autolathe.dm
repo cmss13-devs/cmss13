@@ -106,7 +106,7 @@
 /obj/structure/machinery/autolathe/ui_data(mob/user)
 	var/list/data = list()
 
-	if(length(queue))
+	if(queue.len)
 		var/list/queue_list = list()
 		var/i = 0
 		for(var/params in queue)
@@ -119,7 +119,7 @@
 	else
 		data["queued"] = null
 
-	if(length(currently_making_data))
+	if(currently_making_data.len)
 		data["currently_making"] = currently_making_data
 	else
 		data["currently_making"] = null
@@ -129,7 +129,7 @@
 
 	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
-	for(var/wire = 1 to length(wire_descriptions))
+	for(var/wire = 1 to wire_descriptions.len)
 		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
 
 	data["electrical"] = list(
@@ -164,7 +164,7 @@
 	switch(action)
 		if("cancel")
 			var/index = params["index"]
-			if(index < 1 || index > length(queue))
+			if(index < 1 || index > queue.len)
 				return
 
 			var/list/to_del = queue[index]
@@ -198,7 +198,7 @@
 			if(!initial(make_loc))
 				make_loc = get_step(loc, get_dir(src,usr))
 
-			if(index > 0 && index <= length(recipes))
+			if(index > 0 && index <= recipes.len)
 				making = recipes[index]
 
 			//Exploit detection, not sure if necessary after rewrite.
@@ -358,7 +358,7 @@
 		storage_capacity[material] = tot_rating  * 30000
 
 /obj/structure/machinery/autolathe/proc/try_queue(mob/living/carbon/human/user, datum/autolathe/recipe/making, turf/make_loc, multiplier = 1)
-	if(length(queue) >= queue_max)
+	if(queue.len >= queue_max)
 		to_chat(usr, SPAN_DANGER("The [name] has queued the maximum number of operations. Please wait for completion of current operation."))
 		return AUTOLATHE_FAILED
 
@@ -392,7 +392,7 @@
 
 	busy = TRUE
 
-	while (length(queue))
+	while (queue.len)
 		print_params = queue[1]
 		queue -= list(print_params)
 		print_item(arglist(print_params))
@@ -526,7 +526,7 @@
 
 		max_print_amt = -1
 
-		if(!LAZYLEN(R.resources))
+		if(!R.resources || !R.resources.len)
 			print_data["materials"] = "No resources required"
 		else
 			//Make sure it's buildable and list requires resources.

@@ -23,15 +23,16 @@ const createStats = (verbose) => ({
   version: verbose,
 });
 
+// prettier-ignore
 module.exports = (env = {}, argv) => {
   const mode = argv.mode || 'production';
   const bench = env.TGUI_BENCH;
   const config = {
     mode: mode === 'production' ? 'production' : 'development',
     context: path.resolve(__dirname),
-    target: ['web', 'es5', 'browserslist:ie 11'],
+    target: ['web', 'es3', 'browserslist:ie 8'],
     entry: {
-      tgui: ['./packages/tgui-polyfill', './packages/tgui'],
+      'tgui': ['./packages/tgui-polyfill', './packages/tgui'],
       'tgui-panel': ['./packages/tgui-polyfill', './packages/tgui-panel'],
       'tgui-say': ['./packages/tgui-polyfill', './packages/tgui-say'],
     },
@@ -42,10 +43,9 @@ module.exports = (env = {}, argv) => {
       filename: '[name].bundle.js',
       chunkFilename: '[name].bundle.js',
       chunkLoadTimeout: 15000,
-      publicPath: '/',
     },
     resolve: {
-      extensions: ['.tsx', '.ts', '.js', '.jsx'],
+      extensions: ['.jsx', '.tsx', '.ts', '.js'],
       alias: {},
     },
     module: {
@@ -133,7 +133,7 @@ module.exports = (env = {}, argv) => {
     const { EsbuildPlugin } = require('esbuild-loader');
     config.optimization.minimizer = [
       new EsbuildPlugin({
-        target: 'ie11',
+        target: 'ie8',
         css: true,
       }),
     ];

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, Section, Stack } from '../components';
+import { Stack, Section, LabeledList, Button } from '../components';
 import { Window } from '../layouts';
 
 export const TechNode = (props) => {
@@ -26,11 +26,11 @@ export const TechNode = (props) => {
               title="Information"
               fill
               buttons={
-                <Button backgroundColor="transparent">
-                  {'Tech points: ' + total_points}
-                </Button>
-              }
-            >
+                <Button
+                  content={'Tech points: ' + total_points}
+                  backgroundColor="transparent"
+                />
+              }>
               <LabeledList>
                 <LabeledList.Item label="Name">{name}</LabeledList.Item>
                 <LabeledList.Item label="Description">{desc}</LabeledList.Item>
@@ -41,13 +41,12 @@ export const TechNode = (props) => {
                     {stats.map((stat, i) => (
                       <Button
                         key={i}
+                        content={stat.content}
                         color={stat.color}
                         icon={stat.icon}
                         tooltip={stat.tooltip}
                         mr="100%"
-                      >
-                        {stat.content}
-                      </Button>
+                      />
                     ))}
                   </LabeledList.Item>
                 )}
@@ -58,6 +57,7 @@ export const TechNode = (props) => {
           <Stack.Item>
             <Section>
               <Button
+                content="Purchase"
                 color="green"
                 textAlign="center"
                 width="100%"
@@ -73,9 +73,7 @@ export const TechNode = (props) => {
                         : ''
                 }
                 onClick={() => act('purchase')}
-              >
-                Purchase
-              </Button>
+              />
             </Section>
           </Stack.Item>
         </Stack>

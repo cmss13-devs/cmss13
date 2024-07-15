@@ -24,7 +24,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/shuttle/vehicle_elevator)
 "e" = (
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/shuttle/vehicle_elevator)
 "f" = (
 /obj/effect/decal/warning_stripes{

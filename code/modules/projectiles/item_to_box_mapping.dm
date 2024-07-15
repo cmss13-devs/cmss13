@@ -29,9 +29,12 @@
 
 /datum/item_to_box_mapping/New()
 	//Ammo magazine boxes, minus loose ammo boxes
-	for(var/obj/item/ammo_box/magazine/ammo_box as anything in typesof(/obj/item/ammo_box/magazine) - /obj/item/ammo_box/magazine/misc - /obj/item/ammo_box/magazine/shotgun/light)
+	for(var/obj/item/ammo_box/magazine/ammo_box as anything in typesof(/obj/item/ammo_box/magazine) - /obj/item/ammo_box/magazine/misc)
 		if(initial(ammo_box.empty))
 			//Ignore all the empty boxes
+			continue
+		if(initial(ammo_box.handfuls))
+			//Ignore all the loose ammo boxes because they map with really bad numbers
 			continue
 		var/datum/item_box_pairing/item_box_pairing = new()
 		item_box_pairing.box = ammo_box
@@ -39,11 +42,7 @@
 		if(!item_box_pairing.item)
 			//if the item is null somehow
 			continue
-		if(initial(ammo_box.handfuls))
-			//If we are using handfuls we need to do some wonky conversion
-			item_box_pairing.items_in_box = initial(ammo_box.num_of_magazines) / initial(ammo_box.magazine_type.max_rounds)
-		else
-			item_box_pairing.items_in_box = initial(ammo_box.num_of_magazines)
+		item_box_pairing.items_in_box = initial(ammo_box.num_of_magazines)
 		add_pairing(item_box_pairing)
 
 	//Grenade packets

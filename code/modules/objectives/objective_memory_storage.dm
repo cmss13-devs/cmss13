@@ -221,8 +221,7 @@ GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 /obj/structure/machinery/computer/intel/disk_reader // ARC computer to save on tile space
 	name = "\improper SIGINT terminal"
 	desc = "An USCM computer capable of uploading data to the intelligence database. It has a disk reader slot built into the bottom, as well."
-	icon = 'icons/obj/vehicles/interiors/arc.dmi'
-	icon_state = "sigint_computer"
+	icon_state = "terminal"
 
 /obj/structure/machinery/computer/intel/disk_reader/Initialize()
 	. = ..()

@@ -57,7 +57,7 @@
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
-	if(LAZYLEN(infos) < index) return
+	if(!infos || infos.len < index) return
 
 	var/datum/player_info/item = infos[index]
 	infos.Remove(item)

@@ -211,7 +211,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		"chargingStatus" = charging,
 		"totalLoad" = display_power(lastused_total),
 		"coverLocked" = coverlocked,
-		"siliconUser" = FALSE,
 
 		"powerChannels" = list(
 			list(
@@ -457,13 +456,13 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			icon_state = "apcewires"
 
 	if(!(update_state & UPSTATE_ALLGOOD))
-		if(length(overlays))
+		if(overlays.len)
 			overlays = 0
 			return
 
 	if(update & 2)
 
-		if(length(overlays))
+		if(overlays.len)
 			overlays = 0
 
 		if(!(stat & (BROKEN|MAINT)) && update_state & UPSTATE_ALLGOOD)

@@ -32,29 +32,29 @@ const Story = (props) => {
   return (
     <Section>
       <Box mb={1}>
-        <Button>Simple</Button>
-        <Button selected>Selected</Button>
-        <Button altSelected>Alt Selected</Button>
-        <Button disabled>Disabled</Button>
-        <Button color="transparent">Transparent</Button>
-        <Button icon="cog">Icon</Button>
+        <Button content="Simple" />
+        <Button selected content="Selected" />
+        <Button altSelected content="Alt Selected" />
+        <Button disabled content="Disabled" />
+        <Button color="transparent" content="Transparent" />
+        <Button icon="cog" content="Icon" />
         <Button icon="power-off" />
-        <Button fluid>Fluid</Button>
-        <Button my={1} lineHeight={2} minWidth={15} textAlign="center">
-          With Box props
-        </Button>
+        <Button fluid content="Fluid" />
+        <Button
+          my={1}
+          lineHeight={2}
+          minWidth={15}
+          textAlign="center"
+          content="With Box props"
+        />
       </Box>
       <Box mb={1}>
         {COLORS_STATES.map((color) => (
-          <Button key={color} color={color}>
-            {color}
-          </Button>
+          <Button key={color} color={color} content={color} />
         ))}
         <br />
         {COLORS_SPECTRUM.map((color) => (
-          <Button key={color} color={color}>
-            {color}
-          </Button>
+          <Button key={color} color={color} content={color} />
         ))}
         <br />
         {COLORS_SPECTRUM.map((color) => (

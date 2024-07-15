@@ -1,7 +1,7 @@
-import { useBackend } from '../../backend';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { Box, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { useBackend } from '../../backend';
 import { mfdState, useEquipmentState } from './stateManagers';
 import { EquipmentContext, SentrySpec } from './types';
 
@@ -53,7 +53,7 @@ export const SentryMfdPanel = (props: MfdProps) => {
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
   const sentry = data.equipment_data.find(
-    (x) => x.mount_point === equipmentState,
+    (x) => x.mount_point === equipmentState
   );
   const deployLabel =
     (sentry?.data?.deployed ?? 0) === 1 ? 'RETRACT' : 'DEPLOY';
@@ -81,8 +81,7 @@ export const SentryMfdPanel = (props: MfdProps) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}
-    >
+      ]}>
       <Box className="NavigationMenu">
         {sentry && <SentryPanel {...sentry} />}
       </Box>

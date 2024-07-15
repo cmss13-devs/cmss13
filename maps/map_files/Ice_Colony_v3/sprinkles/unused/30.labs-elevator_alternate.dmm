@@ -5,7 +5,9 @@
 	id = "garage_ice_labs";
 	name = "\improper Garage Shutters"
 	},
-/turf/open/floor/shiva/floor3,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
 /area/shiva/interior/colony/research_hab)
 "b" = (
 /obj/structure/curtain/black,
@@ -13,13 +15,18 @@
 /area/shiva/interior/colony/research_hab)
 "c" = (
 /obj/effect/spawner/random/tool,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
 /area/shiva/interior/colony/research_hab)
 "e" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
 	},
-/turf/open/floor/shiva/purplefull/west,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "purplefull"
+	},
 /area/shiva/interior/colony/research_hab)
 "f" = (
 /obj/effect/decal/warning_stripes{
@@ -29,25 +36,37 @@
 	dir = 4;
 	pixel_x = 6
 	},
-/turf/open/floor/shiva/purplefull/east,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "purplefull"
+	},
 /area/shiva/interior/colony/research_hab)
 "g" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
 /area/shiva/interior/colony/research_hab)
 "h" = (
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
 /area/shiva/interior/colony/research_hab)
 "k" = (
-/turf/open/floor/shiva/floor3,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
 /area/shiva/interior/colony/research_hab)
 "l" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/turf/open/floor/shiva/purplefull/east,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "purplefull"
+	},
 /area/shiva/interior/colony/research_hab)
 "s" = (
 /turf/open/floor/plating/plating_catwalk/shiva,
@@ -56,7 +75,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/shiva/purplefull/west,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "purplefull"
+	},
 /area/shiva/interior/colony/research_hab)
 "u" = (
 /obj/structure/machinery/door_control{
@@ -74,13 +96,19 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/turf/open/floor/shiva/purplefull/north,
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "purplefull"
+	},
 /area/shiva/interior/colony/research_hab)
 "B" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/shiva/purplefull/east,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "purplefull"
+	},
 /area/shiva/interior/colony/research_hab)
 "E" = (
 /obj/effect/decal/warning_stripes{
@@ -90,11 +118,16 @@
 	dir = 8;
 	pixel_x = -6
 	},
-/turf/open/floor/shiva/purplefull/east,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "purplefull"
+	},
 /area/shiva/interior/colony/research_hab)
 "F" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/floor3,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
 /area/shiva/interior/colony/research_hab)
 "I" = (
 /turf/closed/wall/shiva/prefabricated/orange,
@@ -102,13 +135,18 @@
 "L" = (
 /obj/structure/prop/dam/truck,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/floor3,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
 /area/shiva/interior/colony/research_hab)
 "Q" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/turf/open/floor/shiva/purplefull/west,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "purplefull"
+	},
 /area/shiva/interior/colony/research_hab)
 "S" = (
 /obj/effect/decal/cleanable/dirt,
@@ -117,20 +155,28 @@
 "T" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/floor3,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
 /area/shiva/interior/colony/research_hab)
 "U" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/purplefull/north,
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "purplefull"
+	},
 /area/shiva/interior/colony/research_hab)
 "W" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
 	},
-/turf/open/floor/shiva/purplefull/west,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "purplefull"
+	},
 /area/shiva/interior/colony/research_hab)
 "X" = (
 /obj/effect/decal/cleanable/dirt,
@@ -139,7 +185,9 @@
 /area/shiva/interior/colony/research_hab)
 "Z" = (
 /obj/structure/prop/dam/crane,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
 /area/shiva/interior/colony/research_hab)
 
 (1,1,1) = {"

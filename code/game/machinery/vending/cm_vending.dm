@@ -247,7 +247,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	//M94 flare packs handling
 	else if(istype(item_to_stock, /obj/item/storage/box/m94))
 		var/obj/item/storage/box/m94/flare_pack = item_to_stock
-		if(length(flare_pack.contents) < flare_pack.max_storage_space)
+		if(flare_pack.contents.len < flare_pack.max_storage_space)
 			to_chat(user, SPAN_WARNING("\The [item_to_stock] is not full."))
 			return
 		var/flare_type
@@ -272,7 +272,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	//Machete holsters handling
 	else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
 		var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
-		if(AR.pockets && length(AR.pockets.contents))
+		if(AR.pockets && AR.pockets.contents.len)
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
 			return FALSE
@@ -300,7 +300,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(AM.current_rounds != AM.max_rounds)
 				to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
 				return
-		else if(length(A.contents) < A.num_of_magazines)
+		else if(A.contents.len < A.num_of_magazines)
 			to_chat(user, SPAN_WARNING("[A] is not full."))
 			return
 		else
@@ -317,14 +317,14 @@ GLOBAL_LIST_EMPTY(vending_products)
 	//Marine armor handling
 	else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
 		var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
-		if(AR.pockets && length(AR.pockets.contents))
+		if(AR.pockets && AR.pockets.contents.len)
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
 			return FALSE
 	//Marine helmet handling
 	else if(istype(item_to_stock, /obj/item/clothing/head/helmet/marine))
 		var/obj/item/clothing/head/helmet/marine/H = item_to_stock
-		if(H.pockets && length(H.pockets.contents))
+		if(H.pockets && H.pockets.contents.len)
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
 			return FALSE
@@ -541,7 +541,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 			var/turf/target_turf = get_appropriate_vend_turf(user)
 			if(vend_flags & VEND_CLUTTER_PROTECTION)
-				if(length(target_turf.contents) > 25)
+				if(target_turf.contents.len > 25)
 					to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
 					vend_fail()
 					return FALSE
@@ -574,8 +574,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 								to_chat(user, SPAN_WARNING("That set is already taken."))
 								vend_fail()
 								return FALSE
-							var/obj/item/card/id/card = human_user.get_idcard()
-							if(!card?.check_biometrics(user))
+							var/obj/item/card/id/ID = human_user.wear_id
+							if(!istype(ID) || !ID.check_biometrics(user))
 								to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
 								return FALSE
 							var/specialist_assignment
@@ -604,8 +604,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 									to_chat(user, SPAN_WARNING("<b>Something bad occurred with [src], tell a Dev.</b>"))
 									vend_fail()
 									return FALSE
-							card.set_assignment((human_user.assigned_squad ? (human_user.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
-							GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), card.assignment)
+							ID.set_assignment((human_user.assigned_squad ? (human_user.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+							GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
 							GLOB.available_specialist_sets -= p_name
 						else if(vendor_role.Find(JOB_SYNTH))
 							if(user.job != JOB_SYNTH)
@@ -807,8 +807,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 			return FALSE
 
 		var/mob/living/carbon/human/human_user = user
-		var/obj/item/card/id/idcard = human_user.get_idcard()
-		if(!idcard)
+		var/obj/item/card/id/idcard = human_user.wear_id
+		if(!istype(idcard))
 			if(display)
 				to_chat(user, SPAN_WARNING("Access denied. No ID card detected"))
 				vend_fail()
@@ -990,24 +990,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 		for(var/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
 			tmp_list += list(list(initial(IBP.box.name), floor(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
 
-	//For every item that goes into a box, check if the box is already listed in the vendor and if so, update its amount
-	var/list/box_list = list()
-	if(length(tmp_list))
-		for(var/list/tmp_item as anything in tmp_list)
-			var/item_found = FALSE
-			for(var/list/product as anything in listed_products)
-				if(tmp_item[3] == product[3]) //We found a box we already have!
-					product[2] = tmp_item[2] //Update box amount
-					item_found = TRUE
-					break
-			if(!item_found)
-				//We will be adding this box item at the end of the list
-				box_list += list(tmp_item)
-
-	//Putting Ammo and other boxes on the bottom of the list if they haven't been accounted for already
-	if(length(box_list))
+	//Putting Ammo and other boxes on the bottom of the list as per player preferences
+	if(tmp_list.len > 0)
 		listed_products += list(list("BOXES", -1, null, null))
-		for(var/list/L as anything in box_list)
+		for(var/list/L as anything in tmp_list)
 			listed_products += list(L)
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
@@ -1307,8 +1293,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		var/obj/item/item_ref = myprod[3]
 		var/priority = myprod[priority_index]
 		if(islist(item_ref)) // multi-vending
-			var/list/ref_list = item_ref
-			item_ref = ref_list[1]
+			item_ref = item_ref[1]
 
 		var/is_category = item_ref == null
 
@@ -1399,9 +1384,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 /obj/structure/machinery/cm_vending/proc/vendor_successful_vend_one(prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override, stack_amount)
 	var/obj/item/new_item
-	if(vend_flags & VEND_PROPS)
-		new_item = new /obj/item/prop/replacer(target_turf, prod_type)
-	else if(ispath(prod_type, /obj/item))
+	if(ispath(prod_type, /obj/item))
 		if(ispath(prod_type, /obj/item/weapon/gun))
 			new_item = new prod_type(target_turf, TRUE)
 		else
@@ -1421,11 +1404,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	if(vend_flags & VEND_UNIFORM_RANKS)
 		if(insignas_override)
 			var/obj/item/clothing/under/underclothes = new_item
-			var/obj/item/card/id/card = user.get_idcard()
 
 			//Gives ranks to the ranked
-			if(istype(underclothes) && card?.paygrade)
-				var/rankpath = get_rank_pins(card.paygrade)
+			if(istype(underclothes) && user.wear_id && user.wear_id.paygrade)
+				var/rankpath = get_rank_pins(user.wear_id.paygrade)
 				if(rankpath)
 					var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
 					var/obj/item/clothing/accessory/patch/uscmpatch = new()

@@ -183,10 +183,7 @@
 	unscope()
 	scope_attached = FALSE
 	desc = initial(desc) + " Though, it doesn't seem to have one attached yet."
-	if(skillless)
-		new /obj/item/device/vulture_spotter_scope/skillless(get_turf(src), bound_rifle)
-	else
-		new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
+	new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
 
 /// Handler for user folding up the tripod, picking it up
 /obj/structure/vulture_spotter_tripod/proc/fold_up(mob/user)

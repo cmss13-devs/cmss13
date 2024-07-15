@@ -8,14 +8,6 @@
 #define CARDCON_DEPARTMENT_ENGINEERING "Engineering"
 #define CARDCON_DEPARTMENT_COMMAND "Command"
 
-// Weyland Yutani Categories
-#define CARDCON_DEPARTMENT_CORP_LEAD "Corporate Leadership"
-#define CARDCON_DEPARTMENT_CORP_SECURITY "Corporate Security"
-#define CARDCON_DEPARTMENT_CORPORATE "Corporate Employees"
-#define CARDCON_DEPARTMENT_PMC "PMC Combat Ops"
-#define CARDCON_DEPARTMENT_INSPECTION "PMC Investigations"
-#define CARDCON_DEPARTMENT_SPECIALTY "PMC Specialists"
-
 /obj/structure/machinery/computer/card
 	name = "Identification Computer"
 	desc = "Terminal for programming USCM employee ID card access."
@@ -28,13 +20,8 @@
 	var/list/factions = list(FACTION_MARINE)
 	var/printing
 
-	var/is_weyland = FALSE
+	var/is_centcom = FALSE
 	var/authenticated = FALSE
-
-/obj/structure/machinery/computer/card/wey_yu
-	is_weyland = TRUE
-	req_access = list(ACCESS_WY_DATABASE)
-	factions = list(FACTION_WY, FACTION_PMC)
 
 /obj/structure/machinery/computer/card/proc/authenticate(mob/user, obj/item/card/id/id_card)
 	if(!id_card)
@@ -205,7 +192,7 @@
 					target_id_card.assignment = custom_name
 			else
 				var/list/new_access = list()
-				if(is_weyland)
+				if(is_centcom)
 					new_access = get_access(ACCESS_LIST_WY_ALL)
 				else
 					var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[target]
@@ -236,7 +223,7 @@
 					log_idmod(target_id_card, "<font color='green'> [user.real_name] granted [access_type] IFF. </font>", key_name_admin(user))
 				return TRUE
 			access_type = text2num(params["access_target"])
-			if(access_type in (is_weyland ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN)))
+			if(access_type in (is_centcom ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN)))
 				if(access_type in target_id_card.access)
 					target_id_card.access -= access_type
 					log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked access '[get_access_desc(access_type)]'. </font>", key_name_admin(user))
@@ -248,7 +235,7 @@
 			if(!authenticated || !target_id_card)
 				return
 
-			target_id_card.access |= (is_weyland ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN))
+			target_id_card.access |= (is_centcom ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN))
 			target_id_card.faction_group |= factions
 			log_idmod(target_id_card, "<font color='green'> [user.real_name] granted the ID all access and USCM IFF. </font>", key_name_admin(user))
 			return TRUE
@@ -303,19 +290,12 @@
 /obj/structure/machinery/computer/card/ui_static_data(mob/user)
 	var/list/data = list()
 	data["station_name"] = MAIN_SHIP_NAME
-	data["weyland_access"] = is_weyland
+	data["centcom_access"] = is_centcom
 	data["manifest"] = GLOB.data_core.get_manifest(FALSE, FALSE, TRUE)
 
 	var/list/departments
-	if(is_weyland)
-		departments = list(
-			CARDCON_DEPARTMENT_CORP_LEAD = ROLES_WY_LEADERSHIP,
-			CARDCON_DEPARTMENT_CORP_SECURITY = ROLES_WY_GOONS,
-			CARDCON_DEPARTMENT_CORPORATE = ROLES_WY_CORPORATE,
-			CARDCON_DEPARTMENT_PMC = ROLES_WY_PMC,
-			CARDCON_DEPARTMENT_SPECIALTY = ROLES_WY_PMC_AUX,
-			CARDCON_DEPARTMENT_INSPECTION = ROLES_WY_PMC_INSPEC,
-		)
+	if(is_centcom)
+		departments = list("CentCom" = get_all_centcom_jobs())
 	else if(Check_WO())
 		// I am not sure about WOs departments so it may need adjustment
 		departments = list(
@@ -352,26 +332,18 @@
 			data["jobs"][department] = department_jobs
 
 	var/list/regions = list()
-	for(var/i in 1 to is_weyland ? 6 : 7)
+	for(var/i in 1 to 7)
 
 		var/list/accesses = list()
-		if(!is_weyland)
-			for(var/access in get_region_accesses(i))
-				if(get_access_desc(access))
-					accesses += list(list(
-						"desc" = replacetext(get_access_desc(access), "&nbsp", " "),
-						"ref" = access,
-					))
-		else
-			for(var/access in get_region_accesses_wy(i))
-				if(get_weyland_access_desc(access))
-					accesses += list(list(
-						"desc" = replacetext(get_weyland_access_desc(access), "&nbsp", " "),
-						"ref" = access,
-					))
+		for(var/access in get_region_accesses(i))
+			if (get_access_desc(access))
+				accesses += list(list(
+					"desc" = replacetext(get_access_desc(access), "&nbsp", " "),
+					"ref" = access,
+				))
 
 		regions += list(list(
-			"name" = is_weyland ? get_region_accesses_name_wy(i) : get_region_accesses_name(i),
+			"name" = get_region_accesses_name(i),
 			"regid" = i,
 			"accesses" = accesses
 		))
@@ -502,13 +474,6 @@
 #undef CARDCON_DEPARTMENT_AUXCOM
 #undef CARDCON_DEPARTMENT_ENGINEERING
 #undef CARDCON_DEPARTMENT_COMMAND
-
-#undef CARDCON_DEPARTMENT_CORP_LEAD
-#undef CARDCON_DEPARTMENT_CORP_SECURITY
-#undef CARDCON_DEPARTMENT_CORPORATE
-#undef CARDCON_DEPARTMENT_PMC
-#undef CARDCON_DEPARTMENT_INSPECTION
-#undef CARDCON_DEPARTMENT_SPECIALTY
 
 //This console changes a marine's squad. It's very simple.
 //It also does not: change or increment the squad count (used in the login randomizer), nor does it check for jobs.
@@ -759,10 +724,7 @@
 /obj/structure/machinery/computer/crew/clf
 	faction = FACTION_CLF
 
-/obj/structure/machinery/computer/crew/wey_yu
-	faction = FACTION_WY
-
-/obj/structure/machinery/computer/crew/wey_yu/pmc
+/obj/structure/machinery/computer/crew/pmc
 	faction = FACTION_PMC
 
 /obj/structure/machinery/computer/crew/colony
@@ -805,7 +767,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		ui.open()
 
 /datum/crewmonitor/proc/show(mob/M, source)
-	if(!length(ui_sources))
+	if(!ui_sources.len)
 		START_PROCESSING(SSprocessing, src)
 	ui_sources[M] = source
 	tgui_interact(M)
@@ -823,7 +785,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 /datum/crewmonitor/ui_close(mob/M)
 	. = ..()
 	ui_sources -= M
-	if(!length(ui_sources))
+	if(!ui_sources.len)
 		STOP_PROCESSING(SSprocessing, src)
 
 /datum/crewmonitor/ui_host(mob/user)
@@ -942,7 +904,6 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_DROPSHIP_PILOT = 23,
 				JOB_DROPSHIP_CREW_CHIEF = 24,
 				JOB_INTEL = 25,
-				JOB_TANK_CREW = 26,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
 				JOB_PROVOST_TML = 30,
@@ -1068,8 +1029,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_JUNIOR_EXECUTIVE = 24,
 				// 30-39: Security
 				JOB_WY_GOON_LEAD = 30,
-				JOB_WY_GOON_TECH = 32,
-				JOB_WY_GOON = 32,
+				JOB_WY_GOON = 31,
 				// 40-49: MedSci
 				JOB_PMC_SYNTH = 40,
 				JOB_PMC_XENO_HANDLER = 41,

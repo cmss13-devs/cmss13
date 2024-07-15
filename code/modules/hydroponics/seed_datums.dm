@@ -27,7 +27,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	for(var/type in typesof(/datum/seed)-/datum/seed)
 		var/datum/seed/S = new type
 		GLOB.seed_types[S.name] = S
-		S.uid = "[length(GLOB.seed_types)]"
+		S.uid = "[GLOB.seed_types.len]"
 		S.roundstart = 1
 
 	// Make sure any seed packets that were mapped in are updated
@@ -45,7 +45,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	var/list/gene_tags = list("products","consumption","environment","resistance","vigour","flowers")
 	var/list/used_masks = list()
 
-	while(LAZYLEN(gene_tags))
+	while(gene_tags && gene_tags.len)
 		var/gene_tag = pick(gene_tags)
 		var/gene_mask = "[num2hex(rand(0,255))] - [gene_tag]"
 
@@ -250,7 +250,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 			)
 
 		for(var/x=1;x<=additional_chems;x++)
-			if(!length(possible_chems))
+			if(!possible_chems.len)
 				break
 			var/new_chem = pick(possible_chems)
 			possible_chems -= new_chem
@@ -311,7 +311,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 //Returns a key corresponding to an entry in the global seed list.
 /datum/seed/proc/get_mutant_variant()
-	if(!LAZYLEN(mutants) || immutable > 0) return 0
+	if(!mutants || !mutants.len || immutable > 0) return 0
 	return pick(mutants)
 
 //Mutates the plant overall (randomly).
@@ -400,7 +400,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 		//Splicing products has some detrimental effects on yield and lifespan.
 		if("products")
 
-			if(length(gene.values) < 6) return
+			if(gene.values.len < 6) return
 
 			if(yield > 0)  yield =  max(1,floor(yield*0.85))
 			if(endurance > 0) endurance = max(1,floor(endurance*0.85))
@@ -420,7 +420,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 					chems[rid] = gene_chem.Copy()
 					continue
 
-				for(var/i=1;i<=length(gene_chem);i++)
+				for(var/i=1;i<=gene_chem.len;i++)
 
 					if(isnull(gene_chem[i])) gene_chem[i] = 0
 
@@ -442,7 +442,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("consumption")
 
-			if(length(gene.values) < 7) return
+			if(gene.values.len < 7) return
 
 			consume_gasses =    gene.values[1]
 			requires_nutrients =   gene.values[2]
@@ -454,7 +454,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("environment")
 
-			if(length(gene.values) < 6) return
+			if(gene.values.len < 6) return
 
 			ideal_heat =    gene.values[1]
 			heat_tolerance =    gene.values[2]
@@ -465,7 +465,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("resistance")
 
-			if(length(gene.values) < 3) return
+			if(gene.values.len < 3) return
 
 			toxins_tolerance =  gene.values[1]
 			pest_tolerance =    gene.values[2]
@@ -473,7 +473,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("vigour")
 
-			if(length(gene.values) < 6) return
+			if(gene.values.len < 6) return
 
 			endurance = gene.values[1]
 			yield = gene.values[2]
@@ -484,7 +484,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("flowers")
 
-			if(length(gene.values) < 7) return
+			if(gene.values.len < 7) return
 
 			product_icon =  gene.values[1]
 			product_color =    gene.values[2]
@@ -571,7 +571,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 		return
 
 	var/got_product
-	if(LAZYLEN(products) && yield > 0)
+	if(!isnull(products) && products.len && yield > 0)
 		got_product = 1
 
 	if(!got_product && !harvest_sample)
@@ -581,7 +581,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		//This may be a new line. Update the global if it is.
 		if(name == "new line" || !(name in GLOB.seed_types))
-			uid = length(GLOB.seed_types) + 1
+			uid = GLOB.seed_types.len + 1
 			name = "[uid]"
 			GLOB.seed_types[name] = src
 

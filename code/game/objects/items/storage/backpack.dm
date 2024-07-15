@@ -154,7 +154,7 @@
 
 //Returns true if the user's id matches the lock's
 /obj/item/storage/backpack/proc/compare_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/card = H.get_idcard()
+	var/obj/item/card/id/card = H.wear_id
 	if(!card || locking_id.registered_name != card.registered_name)
 		return FALSE
 	else return TRUE

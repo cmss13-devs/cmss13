@@ -81,8 +81,6 @@
 
 /client/proc/handle_bomb_drop(atom/epicenter)
 	var/custom_limit = 5000
-	var/power_warn_threshold = 500
-	var/falloff_warn_threshold = 0.05
 	var/list/choices = list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb")
 	var/list/falloff_shape_choices = list("CANCEL", "Linear", "Exponential")
 	var/choice = tgui_input_list(usr, "What size explosion would you like to produce?", "Drop Bomb", choices)
@@ -115,11 +113,6 @@
 
 			if(power > custom_limit)
 				return
-
-			if((power >= power_warn_threshold) && ((1 / (power / falloff)) <= falloff_warn_threshold) && (explosion_shape == EXPLOSION_FALLOFF_SHAPE_LINEAR)) // The lag can be a bit situational, but a large-power explosion with minimal (linear) falloff can absolutely bring the server to a halt in certain cases.
-				if(tgui_input_list(src, "This bomb has the potential to lag the server. Are you sure you wish to drop it?", "Drop confirm", list("Yes", "No")) != "Yes")
-					return
-
 			cell_explosion(epicenter, power, falloff, explosion_shape, null, cause_data)
 			message_admins("[key_name(src, TRUE)] dropped a custom cell bomb with power [power], falloff [falloff] and falloff_shape [shape_choice]!")
 	message_admins("[ckey] used 'Drop Bomb' at [epicenter.loc].")
@@ -445,7 +438,7 @@
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(length(hive.totalXenos) > 0 || length(hive.total_dead_xenos) > 0)
+		if(hive.totalXenos.len > 0 || hive.total_dead_xenos.len > 0)
 			hives += list("[hive.name]" = hive.hivenumber)
 			last_hive_checked = hive
 
@@ -499,8 +492,8 @@
 		if(random_names)
 			var/random_name = "[lowertext(H.species.name)] ([rand(1, 999)])"
 			H.change_real_name(H, random_name)
-			var/obj/item/card/id/card = H.get_idcard()
-			if(card)
+			if(H.wear_id)
+				var/obj/item/card/id/card = H.wear_id
 				card.registered_name = H.real_name
 				card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 

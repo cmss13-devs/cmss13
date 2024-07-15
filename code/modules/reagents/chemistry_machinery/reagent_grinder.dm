@@ -90,17 +90,17 @@
 		updateUsrDialog()
 		return 0
 
-	if(LAZYLEN(holdingitems) >= limit)
+	if(holdingitems && holdingitems.len >= limit)
 		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 		return 1
 
 	if(istype(O,/obj/item/storage))
 		var/obj/item/storage/B = O
-		if(length(B.contents) > 0)
+		if(B.contents.len > 0)
 			to_chat(user, SPAN_NOTICE("You start dumping the contents of [B] into [src]."))
 			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
 			for(var/obj/item/I in B)
-				if(LAZYLEN(holdingitems) >= limit)
+				if(holdingitems && holdingitems.len >= limit)
 					to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 					break
 				else
@@ -165,7 +165,7 @@
 		if(is_beaker_ready && !is_chamber_empty && !(inoperable()))
 			dat += "<A href='?src=\ref[src];action=grind'>Grind the reagents</a><BR>"
 			dat += "<A href='?src=\ref[src];action=juice'>Juice the reagents</a><BR><BR>"
-		if(LAZYLEN(holdingitems) > 0)
+		if(holdingitems && holdingitems.len > 0)
 			dat += "<A href='?src=\ref[src];action=eject'>Eject the reagents</a><BR>"
 		if(beaker)
 			dat += "<A href='?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
@@ -357,7 +357,7 @@
 			if(beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 				break
 
-		if(length(O.reagents.reagent_list) == 0)
+		if(O.reagents.reagent_list.len == 0)
 			remove_object(O)
 
 	//Sheets

@@ -34,7 +34,7 @@
 	new /obj/item/tool/surgery/synthgraft(src)
 
 /obj/item/storage/surgical_tray/update_icon()
-	if(!length(contents))
+	if(!contents.len)
 		icon_state = "surgical_tray_e"
 	else
 		icon_state = "surgical_tray"

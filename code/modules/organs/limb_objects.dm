@@ -22,34 +22,27 @@
 
 
 	icon = base
-	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[H.skin_color]
-	var/datum/body_type/set_body_type = GLOB.body_type_list[H.body_type]
-	var/datum/body_size/set_body_size = GLOB.body_size_list[H.body_size]
+	var/datum/ethnicity/E = GLOB.ethnicities_list[H.ethnicity]
+	var/datum/body_type/B = GLOB.body_types_list[H.body_type]
 
-	var/skin_color_icon
-	var/body_type_icon
-	var/body_size_icon
+	var/e_icon
+	var/b_icon
 
-	if(!set_skin_color)
-		skin_color_icon = "pale2"
+	if (!E)
+		e_icon = "western"
 	else
-		skin_color_icon = set_skin_color.icon_name
+		e_icon = E.icon_name
 
-	if(!set_body_type)
-		body_type_icon = "lean"
+	if (!B)
+		b_icon = "mesomorphic"
 	else
-		body_type_icon = set_body_type.icon_name
-
-	if(!set_body_size)
-		body_size_icon = "avg"
-	else
-		body_size_icon = set_body_size.icon_name
+		b_icon = B.icon_name
 
 	if(isspeciesyautja(H))
-		skin_color_icon = H.skin_color
-		body_type_icon = H.body_type
+		e_icon = H.ethnicity
+		b_icon = H.body_type
 
-	icon_state = "[get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, name, skin_color_icon)]"
+	icon_state = "[get_limb_icon_name(H.species, b_icon, H.gender, name, e_icon)]"
 	setDir(SOUTH)
 	apply_transform(turn(transform, rand(70,130)))
 

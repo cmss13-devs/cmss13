@@ -110,9 +110,9 @@
 		//An even amount of each plasma and blood type
 		if(plasma == PLASMA_EGG)
 			//Preserve hive_number for the possible larva
-			O.reagents.add_reagent(plasma, amount / length(plasmas), list("hive_number" = hivenumber))
+			O.reagents.add_reagent(plasma, amount / plasmas.len, list("hive_number" = hivenumber))
 		else
-			O.reagents.add_reagent(plasma, amount / length(plasmas))
+			O.reagents.add_reagent(plasma, amount / plasmas.len)
 
 	blood_volume = max(0, blood_volume - amount)
 	return 1
@@ -142,7 +142,7 @@
 	for(var/datum/disease/D in viruses)
 		blood_data["viruses"] += D.Copy()
 
-	if(LAZYLEN(resistances))
+	if(resistances && resistances.len)
 		blood_data["resistances"] = resistances.Copy()
 
 	return blood_data

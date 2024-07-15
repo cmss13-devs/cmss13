@@ -191,7 +191,7 @@
 				for(var/zone in extremities)
 					if(!(human.get_limb(zone)))
 						extremities.Remove(zone)
-				if(length(extremities) < 4)
+				if(extremities.len < 4)
 					return
 			//now crawl
 			mob.crawling = TRUE

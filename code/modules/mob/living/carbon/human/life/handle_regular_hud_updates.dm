@@ -40,9 +40,9 @@
 			else
 				clear_fullscreen("oxy")
 
+
 			//Fire and Brute damage overlay (BSSR)
-			var/max_health_normalisation = (species ? species.total_health : 100) / 100
-			var/hurtdamage = (getBruteLoss() + getFireLoss()) / max_health_normalisation + damageoverlaytemp
+			var/hurtdamage = src.getBruteLoss() + src.getFireLoss() + damageoverlaytemp
 			damageoverlaytemp = 0 // We do this so we can detect if someone hits us or not.
 			if(hurtdamage)
 				var/severity = 0
@@ -198,7 +198,7 @@
 		hud_used.slowed_icon.name = ""
 		hud_used.slowed_icon.icon_state = "status_0"
 
-	var/is_embedded = length(embedded_items)
+	var/is_embedded = embedded_items.len
 	if(is_embedded)
 		hud_used.shrapnel_icon.name = "shrapnel"
 		hud_used.shrapnel_icon.icon_state = "status_shrapnel"
@@ -228,7 +228,7 @@
 		hud_used.tethered_icon.name = ""
 		hud_used.tethered_icon.icon_state = "status_0"
 
-	if(length(active_transfusions))
+	if(active_transfusions.len)
 		hud_used.tethered_icon.name = "transfusion"
 		hud_used.tethered_icon.icon_state = "status_blood"
 		hud_used.tethered_icon.screen_loc = ui_datum.get_status_loc(status_effect_placement)

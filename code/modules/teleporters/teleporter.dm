@@ -29,12 +29,12 @@
 	var/list/turf/source_turfs = locations[location_source]
 	var/list/turf/dest_turfs = locations[location_dest]
 
-	if(!LAZYLEN(source_turfs))
+	if(!source_turfs || source_turfs.len == 0)
 		log_debug("Invalid source location ID [location_source] handed to teleporter [id]. Error code: TELEPORTER_3")
 		log_admin("Invalid source location ID [location_source] handed to teleporter [id]. Tell the devs. Error code: TELEPORTER_3")
 		return FALSE
 
-	if(!LAZYLEN(dest_turfs))
+	if(!dest_turfs || dest_turfs.len == 0)
 		log_debug("Invalid destination location ID [location_dest] handed to teleporter [id]. Error code: TELEPORTER_3")
 		log_admin("Invalid destination location ID [location_dest] handed to teleporter [id]. Tell the devs. Error code: TELEPORTER_3")
 		return FALSE

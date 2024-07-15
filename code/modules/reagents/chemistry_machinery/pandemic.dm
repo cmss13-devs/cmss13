@@ -75,7 +75,7 @@
 							Blood = L
 							break
 					var/list/res = Blood.data_properties["resistances"]
-					spawn(length(res)*200)
+					spawn(res.len*200)
 						wait = null
 		else
 			temphtml = "The replicator is not ready yet."
@@ -160,7 +160,7 @@
 			if(B)
 				Blood = B
 				break
-		if(!beaker.reagents.total_volume||!length(beaker.reagents.reagent_list))
+		if(!beaker.reagents.total_volume||!beaker.reagents.reagent_list.len)
 			dat += "The beaker is empty<BR>"
 		else if(!Blood)
 			dat += "No blood sample found in beaker"
@@ -172,7 +172,7 @@
 
 			if(Blood.data_properties["viruses"])
 				var/list/vir = Blood.data_properties["viruses"]
-				if(length(vir))
+				if(vir.len)
 					for(var/datum/disease/D in Blood.data_properties["viruses"])
 						if(!D.hidden[PANDEMIC])
 
@@ -209,7 +209,7 @@
 			dat += "<BR><b>Contains antibodies to:</b> "
 			if(Blood.data_properties["resistances"])
 				var/list/res = Blood.data_properties["resistances"]
-				if(length(res))
+				if(res.len)
 					dat += "<ul>"
 					for(var/type in Blood.data_properties["resistances"])
 						var/disease_name = "Unknown"
@@ -230,7 +230,7 @@
 					dat += "nothing<BR>"
 			else
 				dat += "nothing<BR>"
-		dat += "<BR><A href='?src=\ref[src];eject=1'>Eject beaker</A>[((beaker.reagents.total_volume && length(beaker.reagents.reagent_list)) ? "-- <A href='?src=\ref[src];empty_beaker=1'>Empty beaker</A>":"")]<BR>"
+		dat += "<BR><A href='?src=\ref[src];eject=1'>Eject beaker</A>[((beaker.reagents.total_volume && beaker.reagents.reagent_list.len) ? "-- <A href='?src=\ref[src];empty_beaker=1'>Empty beaker</A>":"")]<BR>"
 		dat += "<A href='?src=\ref[user];mach_close=pandemic'>Close</A>"
 
 	show_browser(user, "<TITLE>[name]</TITLE><BR>[dat]", name, "pandemic")

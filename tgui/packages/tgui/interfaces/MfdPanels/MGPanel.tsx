@@ -1,7 +1,7 @@
-import { useBackend } from '../../backend';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { Box, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { useBackend } from '../../backend';
 import { mfdState, useEquipmentState } from './stateManagers';
 import { EquipmentContext, MGSpec } from './types';
 
@@ -65,8 +65,7 @@ export const MgMfdPanel = (props: MfdProps) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}
-    >
+      ]}>
       <Box className="NavigationMenu">{mg && <MgPanel {...mg} />}</Box>
     </MfdPanel>
   );

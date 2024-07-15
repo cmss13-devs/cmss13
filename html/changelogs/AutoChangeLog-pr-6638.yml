@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - rscdel: "Mortar shells no longer blow up their payload, instead they will create a small fixed explosion."

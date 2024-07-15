@@ -132,14 +132,14 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	switch(dir)
 		if(NORTH)
-			pixel_y = -26
-		if(SOUTH)
 			pixel_y = 32
+		if(SOUTH)
+			pixel_y = -26
 		if(EAST)
-			pixel_x = -30
+			pixel_x = 30
 			pixel_y = 6
 		if(WEST)
-			pixel_x = 30
+			pixel_x = -30
 			pixel_y = 6
 
 	if(building == 0)
@@ -1358,16 +1358,20 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	cell_type = /obj/item/cell/high
 
 /obj/structure/machinery/power/apc/almayer/directional/north
-	dir = 2
-
-/obj/structure/machinery/power/apc/almayer/directional/south
+	pixel_y = 32
 	dir = 1
 
+/obj/structure/machinery/power/apc/almayer/directional/south
+	pixel_y = -26
+	dir = 2
+
 /obj/structure/machinery/power/apc/almayer/directional/east
-	dir = 8
+	pixel_x = 30
+	dir = 4
 
 /obj/structure/machinery/power/apc/almayer/directional/west
-	dir = 4
+	pixel_x = -30
+	dir = 8
 
 /obj/structure/machinery/power/apc/almayer/hardened
 	name = "hardened area power controller"
@@ -1375,45 +1379,57 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	crash_break_probability = 0
 
 /obj/structure/machinery/power/apc/almayer/hardened/directional/north
-	dir = 2
-
-/obj/structure/machinery/power/apc/almayer/hardened/directional/south
+	pixel_y = 32
 	dir = 1
 
+/obj/structure/machinery/power/apc/almayer/hardened/directional/south
+	pixel_y = -26
+	dir = 2
+
 /obj/structure/machinery/power/apc/almayer/hardened/directional/east
-	dir = 8
+	pixel_x = 30
+	dir = 4
 
 /obj/structure/machinery/power/apc/almayer/hardened/directional/west
-	dir = 4
+	pixel_x = -30
+	dir = 8
 
 //------ Directional APCs ------//
 /obj/structure/machinery/power/apc/directional/no_power
 	start_charge = 0
 
 /obj/structure/machinery/power/apc/directional/no_power/north
-	dir = 2
-
-/obj/structure/machinery/power/apc/directional/no_power/south
+	pixel_y = 32
 	dir = 1
 
+/obj/structure/machinery/power/apc/directional/no_power/south
+	pixel_y = -26
+	dir = 2
+
 /obj/structure/machinery/power/apc/directional/no_power/east
-	dir = 8
+	pixel_x = 30
+	dir = 4
 
 /obj/structure/machinery/power/apc/directional/no_power/west
-	dir = 4
+	pixel_x = -30
+	dir = 8
 
 // Powered APCs with directions
 /obj/structure/machinery/power/apc/directional/power/north
-	dir = 2
-
-/obj/structure/machinery/power/apc/directional/power/south
+	pixel_y = 32
 	dir = 1
 
+/obj/structure/machinery/power/apc/directional/power/south
+	pixel_y = -26
+	dir = 2
+
 /obj/structure/machinery/power/apc/directional/power/east
-	dir = 8
+	pixel_x = 30
+	dir = 4
 
 /obj/structure/machinery/power/apc/directional/power/west
-	dir = 4
+	pixel_x = -30
+	dir = 8
 
 #undef APC_UPDATE_ICON_COOLDOWN
 

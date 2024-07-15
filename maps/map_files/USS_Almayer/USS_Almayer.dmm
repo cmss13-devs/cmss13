@@ -13103,10 +13103,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
-"bTu" = (
-/obj/structure/machinery/power/apc/almayer/directional/west,
-/turf/open/floor/almayer/sterile_green_side/northwest,
-/area/almayer/medical/lower_medical_medbay)
 "bTx" = (
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
@@ -28977,6 +28973,10 @@
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/brig/warden_office)
+"ifQ" = (
+/obj/structure/machinery/power/apc/almayer/directional/west,
+/turf/open/floor/almayer/dark_sterile,
+/area/almayer/medical/lower_medical_medbay)
 "igb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -96504,7 +96504,7 @@ rlZ
 egc
 thP
 beW
-bTu
+bgP
 rlZ
 fqZ
 beW
@@ -96706,7 +96706,7 @@ iTt
 rlZ
 buu
 rlZ
-rlZ
+ifQ
 rlZ
 rlZ
 rlZ

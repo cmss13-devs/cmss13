@@ -124,3 +124,10 @@
   Kivts:
   - ui: The Company spent some money to upgrade the chemical simulator to work on
       the TGUI, Including a few prepaid features.
+2024-07-14:
+  kiVts:
+  - bugfix: Denied request on req is working again
+2024-07-15:
+  cuberound:
+  - rscadd: roof structures added, can be also used for lattices and billboards, go
+      transparent when you are near them

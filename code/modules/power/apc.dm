@@ -1373,42 +1373,37 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	crash_break_probability = 0
 
 //------Groundsite APCs ------//
-/obj/structure/machinery/power/apc/groundsite
-	name = "area power controller"
-
-/obj/structure/machinery/power/apc/groundsite/no_power
+/obj/structure/machinery/power/apc/directional/no_power
 	start_charge = 0
 
-/obj/structure/machinery/power/apc/groundsite/no_power/north
+/obj/structure/machinery/power/apc/directional/no_power/north
 	pixel_y = 24
 	dir = 1
 
-/obj/structure/machinery/power/apc/groundsite/no_power/south
+/obj/structure/machinery/power/apc/directional/no_power/south
 	pixel_y = -24
 
-/obj/structure/machinery/power/apc/groundsite/no_power/east
+/obj/structure/machinery/power/apc/directional/no_power/east
 	pixel_x = 24
 	dir = 4
 
-/obj/structure/machinery/power/apc/groundsite/no_power/west
+/obj/structure/machinery/power/apc/directional/no_power/west
 	pixel_x = -24
 	dir = 8
 
 // Powered APCs with directions
-/obj/structure/machinery/power/apc/groundsite/power
-
-/obj/structure/machinery/power/apc/groundsite/power/north
+/obj/structure/machinery/power/apc/directional/power/north
 	pixel_y = 24
 	dir = 1
 
-/obj/structure/machinery/power/apc/groundsite/power/south
+/obj/structure/machinery/power/apc/directional/power/south
 	pixel_y = -24
 
-/obj/structure/machinery/power/apc/groundsite/power/east
+/obj/structure/machinery/power/apc/directional/power/east
 	pixel_x = 24
 	dir = 4
 
-/obj/structure/machinery/power/apc/groundsite/power/west
+/obj/structure/machinery/power/apc/directional/power/west
 	pixel_x = -24
 	dir = 8
 

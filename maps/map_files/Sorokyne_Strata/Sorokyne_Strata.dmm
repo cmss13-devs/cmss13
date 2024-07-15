@@ -447,7 +447,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/handrail/strata,
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/paths/mining_outpost_exterior)
 "abM" = (
@@ -1301,7 +1301,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "aeR" = (
-/obj/structure/machinery/power/apc/groundsite/power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/research)
 "aeS" = (
@@ -3323,7 +3323,7 @@
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "amM" = (
 /obj/structure/bedsheetbin,
-/obj/structure/machinery/power/apc/groundsite/power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "amN" = (
@@ -3457,7 +3457,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/groundsite/power/south,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/mining_outpost/canteen)
 "anr" = (
@@ -3695,7 +3695,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outside/checkpoints/north_armor)
 "aoz" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/east,
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north_armor)
 "aoA" = (
@@ -4763,7 +4763,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "asM" = (
-/obj/structure/machinery/power/apc/groundsite/power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "asN" = (
@@ -7715,8 +7715,8 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/jungle/structures/ruin)
 "aEu" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/jungle/structures/ruin)
 "aEv" = (
@@ -10824,7 +10824,7 @@
 /area/strata/ag/interior/mining_outpost/south_dormitories)
 "aQA" = (
 /obj/structure/bed/chair,
-/obj/structure/machinery/power/apc/groundsite/power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/mining_outpost/south_dormitories)
 "aQB" = (
@@ -11740,7 +11740,7 @@
 "aUM" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/close,
-/obj/structure/machinery/power/apc/groundsite/power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outpost/foyer)
 "aUN" = (
@@ -12211,8 +12211,8 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "aXa" = (
@@ -12327,7 +12327,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "aXx" = (
-/obj/structure/machinery/power/apc/groundsite/power/east,
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "aXy" = (
@@ -13815,7 +13815,7 @@
 /area/strata/ag/interior/outpost/admin)
 "bei" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/marsh/river)
 "bek" = (
@@ -15840,7 +15840,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/south_outpost)
 "bmP" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/south,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
 "bmQ" = (
@@ -18249,7 +18249,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "bxE" = (
-/obj/structure/machinery/power/apc/groundsite/power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outside/administration)
 "bxF" = (
@@ -19689,7 +19689,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/admin)
 "bKn" = (
-/obj/structure/machinery/power/apc/groundsite/power/south,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outside/bball)
 "bKp" = (
@@ -20102,7 +20102,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/engi/drome)
 "bPU" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/east,
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/plating,
 /area/strata/ug/exterior/jungle/carplake_center)
 "bPX" = (
@@ -20204,7 +20204,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "bRf" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/south,
+/obj/structure/machinery/power/apc/directional/power/south,
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/tcomms/mining_caves)
 "bRg" = (
@@ -20294,11 +20294,11 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/structures/research/south)
 "bSv" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/mining_outpost/maintenance)
 "bSy" = (
-/obj/structure/machinery/power/apc/groundsite/power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outpost/engi/drome)
 "bSD" = (
@@ -22543,7 +22543,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "cnZ" = (
-/obj/structure/machinery/power/apc/groundsite/power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/mining_outpost/flight_control)
 "coa" = (
@@ -22570,7 +22570,7 @@
 /area/strata/ag/interior/outpost/canteen/bar)
 "coi" = (
 /obj/structure/reagent_dispensers/beerkeg,
-/obj/structure/machinery/power/apc/groundsite/power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/cyan2/east,
 /area/strata/ag/interior/outpost/canteen/bar)
 "cok" = (
@@ -23004,7 +23004,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/outpost/platform)
 "ctd" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/caves/lz_caves)
 "cth" = (
@@ -23678,7 +23678,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "den" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/east,
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/carplake/east)
 "dgB" = (
@@ -23769,10 +23769,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/strata/ag/interior/landing_zones/lz1)
 "doH" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/exterior/outpost_decks)
 "doO" = (
@@ -23918,7 +23915,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/outside/checkpoints/west)
 "dCX" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/asphalt/cement/cement3,
 /area/strata/ug/interior/outpost/platform)
 "dDr" = (
@@ -24054,7 +24051,7 @@
 "dSm" = (
 /obj/item/stack/catwalk,
 /obj/item/tool/wrench,
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/almayer/plate,
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "dSA" = (
@@ -24307,7 +24304,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/outpost_decks)
 "era" = (
-/obj/structure/machinery/power/apc/groundsite/power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "erq" = (
@@ -24458,7 +24455,7 @@
 /turf/open/auto_turf/ice/layer2,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "eHo" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/marsh/island_marshes)
 "eHv" = (
@@ -25163,7 +25160,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/structures/monitoring/west)
 "fTa" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/paths/flight_control_exterior)
 "fTJ" = (
@@ -25207,7 +25204,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/underground_dorms/admin1)
 "fZj" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/exterior/marsh/water_marshes)
 "gab" = (
@@ -25325,7 +25322,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/west)
 "gih" = (
@@ -25683,7 +25680,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/outpost/underground_dorms/sec2)
 "gQG" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/hive)
 "gRK" = (
@@ -25694,7 +25691,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "gSz" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/power/north,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/marsh/center)
 "gSR" = (
@@ -25804,7 +25801,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "haU" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/power/west,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/marsh/crash)
 "haZ" = (
@@ -25817,7 +25814,7 @@
 /area/strata/ug/interior/outpost/underground_dorms/admin3)
 "hba" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/power/apc/groundsite/no_power/east,
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/underground_dorms/admin2)
 "hcg" = (
@@ -26292,7 +26289,7 @@
 /turf/open/auto_turf/ice/layer2,
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "ibE" = (
-/obj/structure/machinery/power/apc/groundsite/power/west,
+/obj/structure/machinery/power/apc/directional/power/west,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/vanyard)
 "ibH" = (
@@ -26586,7 +26583,7 @@
 /area/strata/ag/interior/mining_outpost/hive)
 "iAA" = (
 /obj/structure/closet/emcloset,
-/obj/structure/machinery/power/apc/groundsite/power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "iBM" = (
@@ -26934,7 +26931,7 @@
 "jgI" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/maint)
 "jgX" = (
@@ -27297,7 +27294,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/south)
 "jQx" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/structures/monitoring/south)
 "jUa" = (
@@ -27328,7 +27325,7 @@
 /area/strata/ag/exterior/marsh/spring_marshes)
 "jVg" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/caves/shed_five_caves)
 "jVD" = (
@@ -27417,10 +27414,10 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/underground_dorms/med2)
 "kdm" = (
@@ -27849,7 +27846,7 @@
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/power/apc/groundsite/power/east,
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/strata,
 /area/strata/ag/interior/mining_outpost/central)
 "kWo" = (
@@ -28275,7 +28272,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/carplake/north)
 "lIG" = (
-/obj/structure/machinery/power/apc/groundsite/power/east,
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outside/checkpoints/north)
 "lJa" = (
@@ -28500,7 +28497,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/hive)
 "may" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ug/interior/jungle/tearlake)
 "maP" = (
@@ -28514,7 +28511,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/bball)
 "mcv" = (
-/obj/structure/machinery/power/apc/groundsite/power/south,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/strata/white_cyan3,
 /area/strata/ag/interior/outpost/med)
 "mcD" = (
@@ -28799,7 +28796,7 @@
 /turf/open/auto_turf/ice/layer2,
 /area/strata/ag/exterior/marsh/center)
 "mtm" = (
-/obj/structure/machinery/power/apc/groundsite/power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "mvh" = (
@@ -28886,7 +28883,7 @@
 /turf/open/floor/greengrid,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "mCh" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/paths/south_outpost)
 "mCx" = (
@@ -29143,7 +29140,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outpost/engi/drome)
 "naw" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "ncp" = (
@@ -29320,7 +29317,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "nwv" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/south,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/carplake/north)
 "nxh" = (
@@ -29558,7 +29555,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/structures/monitoring/south)
 "nXq" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/east,
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/structures/research/hot_springs)
 "nYM" = (
@@ -29974,7 +29971,7 @@
 /turf/open/auto_turf/ice/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "oQM" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/platform/east)
 "oRm" = (
@@ -30127,7 +30124,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/mining_outpost/central)
 "phD" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/underground_dorms/admin3)
 "piu" = (
@@ -30316,7 +30313,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "psQ" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/south,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/underground_dorms/sec1)
 "psR" = (
@@ -30375,7 +30372,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "pva" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/structures/research/south)
 "pvz" = (
@@ -30487,7 +30484,7 @@
 /turf/open/floor/strata/cyan2/east,
 /area/strata/ag/interior/outpost/med)
 "pEB" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/structures/monitoring/east)
 "pEF" = (
@@ -30514,7 +30511,7 @@
 /turf/open/floor/plating/platebot,
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "pGf" = (
-/obj/structure/machinery/power/apc/groundsite/power/west,
+/obj/structure/machinery/power/apc/directional/power/west,
 /turf/open/floor/plating,
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior)
 "pGt" = (
@@ -30998,7 +30995,7 @@
 /turf/open/floor/strata/cyan2/east,
 /area/strata/ag/interior/outpost/med)
 "qAr" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/outpost/underground_dorms/sec2)
 "qBd" = (
@@ -31011,7 +31008,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "qBv" = (
-/obj/structure/machinery/power/apc/groundsite/power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/admin)
 "qCv" = (
@@ -31450,7 +31447,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "rpp" = (
-/obj/structure/machinery/power/apc/groundsite/power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
 "rpA" = (
@@ -31702,10 +31699,10 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/south)
 "rSE" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outside/checkpoints/outpost)
 "rTC" = (
@@ -32127,7 +32124,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/tearlake)
 "sLn" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/structures/monitoring/west)
 "sMj" = (
@@ -32200,7 +32197,7 @@
 /turf/open/floor/strata/white_cyan1,
 /area/strata/ag/interior/mining_outpost/central)
 "sTZ" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/west,
+/obj/structure/machinery/power/apc/directional/no_power/west,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/bball/cave)
 "sWt" = (
@@ -32263,7 +32260,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/admin)
 "tas" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/south,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "taL" = (
@@ -33282,7 +33279,7 @@
 /turf/open/floor/carpet,
 /area/strata/ag/interior/restricted)
 "uNI" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/platform/south)
 "uNQ" = (
@@ -33848,7 +33845,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/power/apc/groundsite/power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/prison/darkredfull2,
 /area/strata/ag/interior/outside/checkpoints/south)
 "vKV" = (
@@ -34041,7 +34038,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east)
 "wlj" = (
-/obj/structure/machinery/power/apc/groundsite/power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen)
 "wmX" = (
@@ -34347,7 +34344,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "wPq" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/south,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/underground_dorms/admin1)
 "wPI" = (
@@ -34490,7 +34487,7 @@
 /turf/open/floor/strata/purp2,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "xhA" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/south,
+/obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "xhM" = (
@@ -34919,7 +34916,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/south_outpost)
 "xPX" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/east,
+/obj/structure/machinery/power/apc/directional/no_power/east,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/outpost/underground_dorms/admin4)
 "xQb" = (
@@ -35042,7 +35039,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "yde" = (
-/obj/structure/machinery/power/apc/groundsite/no_power/north,
+/obj/structure/machinery/power/apc/directional/no_power/north,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/underground_dorms/med1)
 "ydp" = (

@@ -120,3 +120,10 @@
   iloveloopers:
   - bugfix: Demolitions scanner now properly works for incinerator tanks.
   - spellcheck: Fixed some capitalization with custom incinerator tanks.
+2024-07-12:
+  Kivts:
+  - ui: The Company spent some money to upgrade the chemical simulator to work on
+      the TGUI, Including a few prepaid features.
+2024-07-14:
+  kiVts:
+  - bugfix: Denied request on req is working again

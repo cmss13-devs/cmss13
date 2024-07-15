@@ -4,7 +4,7 @@
 //======
 */
 
-//To do: Move the rest of the Tank ammo into here so its all organized. Currently all over the place.
+//To do: Move the rest of the Tank ammo into here so its all organized. They are currently all over the place.
 
 //Autocannon Ammo//
 
@@ -77,11 +77,6 @@
 	for(var/mob/living/carbon/L in T)
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
-
-/datum/ammo/bullet/tank/flak/set_bullet_traits()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
-	))
 
 //Minigun Ammo//
 

@@ -1,0 +1,4 @@
+author: "Nomoresolvalou"
+delete-after: True
+changes:
+  - rscadd: "Added neckties and stethoscope to the synthetic snowflake vendor"

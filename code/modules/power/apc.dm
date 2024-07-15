@@ -1377,34 +1377,36 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	start_charge = 0
 
 /obj/structure/machinery/power/apc/directional/no_power/north
-	pixel_y = 24
+	pixel_y = 32
 	dir = 1
 
 /obj/structure/machinery/power/apc/directional/no_power/south
-	pixel_y = -24
+	pixel_y = -26
+	dir = 2
 
 /obj/structure/machinery/power/apc/directional/no_power/east
-	pixel_x = 24
+	pixel_x = 30
 	dir = 4
 
 /obj/structure/machinery/power/apc/directional/no_power/west
-	pixel_x = -24
+	pixel_x = -30
 	dir = 8
 
 // Powered APCs with directions
 /obj/structure/machinery/power/apc/directional/power/north
-	pixel_y = 24
+	pixel_y = 32
 	dir = 1
 
 /obj/structure/machinery/power/apc/directional/power/south
-	pixel_y = -24
+	pixel_y = -26
+	dir = 2
 
 /obj/structure/machinery/power/apc/directional/power/east
-	pixel_x = 24
+	pixel_x = 30
 	dir = 4
 
 /obj/structure/machinery/power/apc/directional/power/west
-	pixel_x = -24
+	pixel_x = -30
 	dir = 8
 
 #undef APC_UPDATE_ICON_COOLDOWN

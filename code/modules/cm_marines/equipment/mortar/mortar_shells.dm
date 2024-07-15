@@ -167,15 +167,13 @@
 	return ..()
 
 /obj/item/mortar_shell/flamer_fire_act(dam, datum/cause_data/flame_cause_data)
+	addtimer(VARSET_CALLBACK(src, burning, FALSE), 5 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
+	
 	if(burning)
-		addtimer(CALLBACK(src, PROC_REF(stop_burning)), 5 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
 		return
 	burning = TRUE
 	cause_data = create_cause_data("Burning Mortar Shell", flame_cause_data.resolve_mob(), src)
 	handle_fire(cause_data)
-
-/obj/item/mortar_shell/proc/stop_burning()
-	burning = FALSE
 
 /obj/item/mortar_shell/proc/can_explode()
 	return TRUE
@@ -186,6 +184,9 @@
 			if(reagent.explosive)
 				return TRUE
 
+	return FALSE
+
+/obj/item/mortar_shell/flare/can_explode()
 	return FALSE
 
 /obj/item/mortar_shell/proc/handle_fire(cause_data)
@@ -199,6 +200,7 @@
 
 		addtimer(CALLBACK(src, PROC_REF(explode), cause_data), 5 SECONDS)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.5 SECONDS)
+		
 
 /obj/item/mortar_shell/proc/explode(flame_cause_data)
 	cell_explosion(src, 100, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, flame_cause_data)

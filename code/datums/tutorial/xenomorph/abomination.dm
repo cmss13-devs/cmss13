@@ -18,14 +18,14 @@
 	init_mob()
 	xeno.lock_evolve = TRUE
 
-	message_to_player("Welcome to the tutorial for the Abomination (or \"Predalien\") xenomorph. As an Abomination, you are a frontline powerhouse whose damage scales with your kill count.")
+	message_to_player("Welcome to the tutorial for the Abomination xenomorph. As an Abomination, you are a frontline powerhouse whose damage scales with your kill count.")
 	message_to_player("Your kill count scales when you kill humans with your slash attack, up to 10 kills. Ability kills do not count towards this.")
 
-	addtimer(CALLBACK(src, PROC_REF(how_to_be_abom)), 10.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(how_to_be_abom)), 12 SECONDS)
 
 /datum/tutorial/xenomorph/abomination/proc/how_to_be_abom()
-	message_to_player("You can become an Abomination in-game by chestbursting from a Predator. Be aware that you are kill-on-sight to all Predators forever, and will very likely need to defend yourself against multiple.")
-	message_to_player("Keep in mind this role is very rare, so be sure to stick close to other xenomorphs or over-extend. While you may be stronger than many, you don't have enough health or armor to go out on your own.")
+	message_to_player("Be aware that you are kill-on-sight to all Predators forever, and will very likely need to defend yourself against multiple.")
+	message_to_player("Be sure to stick close to other xenomorphs or over-extend. While you may be stronger than many, you don't have enough health or armor to go out on your own.")
 	addtimer(CALLBACK(src, PROC_REF(feral_rush_tutorial)), 10.5 SECONDS)
 
 /datum/tutorial/xenomorph/abomination/proc/feral_rush_tutorial()
@@ -40,12 +40,13 @@
 
 	UnregisterSignal(source, COMSIG_XENO_ACTION_USED)
 	remove_highlight(source.button)
-	addtimer(CALLBACK(src, PROC_REF(predalien_roar_tutorial_1)), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(predalien_roar_tutorial_1)), 5 SECONDS)
 
 /datum/tutorial/xenomorph/abomination/proc/predalien_roar_tutorial_1()
 	hide_action(xeno, /datum/action/xeno_action/onclick/feralrush)
 	xeno.cannot_slash = TRUE
-	message_to_player("Your next ability is <b>Roar</b>, a versatile ability that disables any motion detectors or cloaks in a medium radius around you. Additionally, it gives a slash and speed bonus to any friendly xenomorphs in range.")
+	message_to_player("Your next ability is <b>Roar</b>, a versatile ability that disables any motion detectors or cloaks in a medium radius around you.")
+	message_to_player("Additionally, it gives a slash and speed bonus to any friendly xenomorphs in range.")
 	addtimer(CALLBACK(src, PROC_REF(predalien_roar_tutorial_2)), 8 SECONDS)
 
 /datum/tutorial/xenomorph/abomination/proc/predalien_roar_tutorial_2()
@@ -91,7 +92,8 @@
 	RegisterSignal(smash, COMSIG_XENO_PRE_ACTION_USED, PROC_REF(frenzy_tutorial_1))
 	add_highlight(smash.button)
 
-	message_to_player("<b>Feral Smash</b> is a strong lunge with a range of five tiles. It deals decent damage that scales with your kill count. Use <b>Feral Smash</b> on the marine to continue.")
+	message_to_player("<b>Feral Smash</b> is a strong lunge with a range of five tiles. It deals decent damage that scales with your kill count.")
+	message_to_player("Use <b>Feral Smash</b> on the marine to continue.")
 	update_objective("Use your Feral Smash ability on the marine.")
 
 	xeno.forceMove(loc_from_corner(0, 2))

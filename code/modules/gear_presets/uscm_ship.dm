@@ -48,7 +48,6 @@
 	rank = JOB_CORPORATE_LIAISON
 	paygrade = PAY_SHORT_WYC2
 	role_comm_title = "CL"
-	skills = /datum/skills/civilian
 
 	minimap_icon = "cl"
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN

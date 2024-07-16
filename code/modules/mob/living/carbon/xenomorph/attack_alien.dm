@@ -504,7 +504,7 @@
 //Slashing fences
 /obj/structure/fence/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
-	var/damage_dealt = 5
+	var/damage_dealt = 25
 	M.visible_message(SPAN_DANGER("[M] mangles [src]!"), \
 	SPAN_DANGER("We mangle [src]!"), \
 	SPAN_DANGER("We hear twisting metal!"), 5, CHAT_TYPE_XENO_COMBAT)

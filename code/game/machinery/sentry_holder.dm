@@ -148,3 +148,41 @@
 /obj/structure/machinery/sentry_holder/almayer/mini/aicore/attack_hand(mob/user)
 	to_chat(user, SPAN_WARNING("[src] can only be deployed remotely."))
 	return
+
+/obj/structure/machinery/sentry_holder/landing_zone
+	icon_state = "floor_sentry_installed" // TODO: More appropriate sprites
+	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone
+	base_icon_state = "floor_sentry" // TODO: More appropriate sprites
+	layer = HATCH_LAYER // Needs to not hide barricades
+
+/obj/structure/machinery/sentry_holder/landing_zone/attack_hand(mob/user)
+	var/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/turret = deployed_turret
+	if(!istype(turret))
+		to_chat(user, SPAN_WARNING("[src] is unresponsive."))
+		return
+
+	if(deployment_cooldown > world.time)
+		to_chat(user, SPAN_WARNING("[src] is busy."))
+		return
+
+	if(deployed_turret.loc == src) //not deployed
+		if(turret.battery_state == TURRET_BATTERY_STATE_DEAD)
+			to_chat(user, SPAN_WARNING("[src] is non-functional."))
+			return
+
+		if(require_red_alert && (seclevel2num(get_security_level()) < SEC_LEVEL_RED))
+			to_chat(user, SPAN_WARNING("[src] can only be activated in emergencies."))
+			return
+
+		to_chat(user, SPAN_NOTICE("You deploy [src]."))
+		deploy_sentry()
+		msg_admin_niche("[key_name(user)] deployed [turret] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
+		return
+
+	to_chat(user, SPAN_NOTICE("You retract [src]."))
+	msg_admin_niche("[key_name(user)] retracted [turret] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
+	undeploy_sentry()
+	return
+
+/obj/structure/machinery/sentry_holder/landing_zone/update_use_power(new_use_power)
+	return

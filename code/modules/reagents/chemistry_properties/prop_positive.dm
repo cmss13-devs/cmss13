@@ -71,7 +71,7 @@
 /datum/chem_property/positive/repairing
 	name = PROPERTY_REPAIRING
 	code = "REP"
-	description = "Repairs cybernetic organs by <B>REDACTED</B>."
+	description = "Repairs cybernetic organs by the use of REDACTED property of REDACTED element."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_MEDICINE
 	value = 2
@@ -435,7 +435,7 @@
 		if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			L.take_damage(0, potency)
 			return
-		if(L.implants && L.implants.len > 0)
+		if(LAZYLEN(L.implants) > 0)
 			var/obj/implanted_object = pick(L.implants)
 			if(implanted_object)
 				L.implants -= implanted_object
@@ -492,7 +492,7 @@
 		var/obj/item/alien_embryo/embryo = content
 		if(embryo && istype(embryo))
 			if(embryo.counter > 0)
-				embryo.counter = embryo.counter - potency
+				embryo.counter = embryo.counter - (potency * delta_time)
 				current_human.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
 			else
 				embryo.stage--
@@ -727,6 +727,11 @@
 	holder.rangefire = max(holder.rangefire, 1)
 	holder.durationfire = max(holder.durationfire, 1)
 	holder.intensityfire = max(holder.intensityfire, 1)
+
+	if(holder.intensityfire >= 50 && istype(holder, /datum/reagent/generated))
+		holder.burncolor = "#ffffff"
+	else
+		holder.burncolor = holder.color
 
 /datum/chem_property/positive/fire/fueling
 	name = PROPERTY_FUELING

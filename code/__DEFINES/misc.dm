@@ -25,6 +25,7 @@
 #define SMOKE_RANK_MED 3
 #define SMOKE_RANK_HIGH 4
 #define SMOKE_RANK_BOILER 5
+#define SMOKE_RANK_MAX 6
 
 // What kind of function to use for Explosions falling off.
 
@@ -162,8 +163,10 @@
 #define MATRIX_NVG 1
 #define MATRIX_WIDE 2
 
+#define RESEARCH_UPGRADE_NOTHING_TO_PASS null
 #define RESEARCH_UPGRADE_EXCLUDE_BUY -2
 #define RESEARCH_UPGRADE_CATEGORY -1 //lord forgive me
+#define RESEARCH_UPGRADE_ITEM 1
 #define RESEARCH_UPGRADE_TIER_1 1
 #define RESEARCH_UPGRADE_TIER_2 2
 #define RESEARCH_UPGRADE_TIER_3 3

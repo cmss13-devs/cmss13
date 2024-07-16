@@ -70,7 +70,7 @@
 	smokeFlow(location, targetTurfs, wallList)
 
 	//set the density of the cloud - for diluting reagents
-	density = max(1, targetTurfs.len / 4) //clamp the cloud density minimum to 1 so it cant multiply the reagents
+	density = max(1, length(targetTurfs) / 4) //clamp the cloud density minimum to 1 so it cant multiply the reagents
 
 	//Admin messaging
 	var/contained = ""
@@ -110,7 +110,7 @@
 		return
 
 	//reagent application - only run if there are extra reagents in the smoke
-	if(chemholder.reagents.reagent_list.len)
+	if(length(chemholder.reagents.reagent_list))
 		for(var/datum/reagent/R in chemholder.reagents.reagent_list)
 			var/proba = 100
 			var/runs = 5
@@ -197,7 +197,7 @@
 //------------------------------------------
 /datum/effect_system/smoke_spread/chem/proc/spawnSmoke(turf/T, icon/I, dist = 1)
 	var/obj/effect/particle_effect/smoke/chem/smoke = new(location)
-	if(chemholder.reagents.reagent_list.len)
+	if(length(chemholder.reagents.reagent_list))
 		chemholder.reagents.copy_to(smoke, chemholder.reagents.total_volume / dist, safety = 1) //copy reagents to the smoke so mob/breathe() can handle inhaling the reagents
 	smoke.icon = I
 	smoke.layer = FLY_LAYER
@@ -230,7 +230,7 @@
 
 	pending += location
 
-	while(pending.len)
+	while(length(pending))
 		for(var/turf/current in pending)
 			for(var/D in GLOB.cardinals)
 				var/turf/target = get_step(current, D)
@@ -263,7 +263,13 @@
 
 	return
 
-/obj/effect/particle_effect/smoke/chem/affect(mob/living/carbon/M)
-	if(reagents.reagent_list.len)
-		for(var/datum/reagent/reagent in reagents.reagent_list)
-			reagent.reaction_mob(M, volume = reagent.volume * POTENCY_MULTIPLIER_LOW, permeable = FALSE)
+/obj/effect/particle_effect/smoke/chem/affect(mob/living/carbon/affected_mob)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!length(reagents?.reagent_list))
+		return FALSE
+
+	for(var/datum/reagent/reagent in reagents.reagent_list)
+		reagent.reaction_mob(affected_mob, volume = reagent.volume * POTENCY_MULTIPLIER_LOW, permeable = FALSE)
+	return TRUE

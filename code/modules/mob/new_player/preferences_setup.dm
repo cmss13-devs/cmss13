@@ -260,6 +260,8 @@
 			return /datum/equipment_preset/uscm/intel/full
 		if(JOB_CAS_PILOT)
 			return /datum/equipment_preset/uscm_ship/gp/full
+		if(JOB_TANK_CREW)
+			return /datum/equipment_preset/uscm/tank/full
 		if(JOB_DROPSHIP_PILOT)
 			return /datum/equipment_preset/uscm_ship/dp/full
 		if(JOB_DROPSHIP_CREW_CHIEF)

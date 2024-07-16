@@ -95,6 +95,9 @@
 #define GENERATE_DEBUG_ID "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)]"
 
 #define RECT new /datum/shape/rectangle
+#define SQUARE new /datum/shape/rectangle/square
+#define ELLIPSE new /datum/shape/ellipse
+#define CIRCLE new /datum/shape/ellipse/circle
 #define QTREE new /datum/quadtree
 #define SEARCH_QTREE(qtree, shape_range, flags) qtree.query_range(shape_range, null, flags)
 

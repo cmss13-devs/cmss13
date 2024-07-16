@@ -1,4 +1,0 @@
-author: "kiVts"
-delete-after: True
-changes:
-  - bugfix: "Denied request on req is working again"

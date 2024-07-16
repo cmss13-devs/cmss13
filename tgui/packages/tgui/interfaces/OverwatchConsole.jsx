@@ -361,7 +361,7 @@ const SquadMonitor = (props) => {
   );
   const [showDeadMarines, setShowDeadMarines] = useSharedState(
     'showdead',
-    false,
+    true,
   );
 
   const [marineSearch, setMarineSearch] = useSharedState('marinesearch', null);

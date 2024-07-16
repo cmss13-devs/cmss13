@@ -80,8 +80,8 @@
 		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
 		return
 
-	var/obj/item/card/id/ID = user.wear_id
-	if(!istype(ID)) //not wearing an ID
+	var/obj/item/card/id/ID = user.get_idcard()
+	if(!ID) //not wearing an ID
 		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
 		return FALSE
 	if(!ID.check_biometrics(user))
@@ -95,7 +95,7 @@
 	user.rank_fallback = "ass"
 	user.hud_set_squad()
 
-	var/obj/item/card/id/ID = user.wear_id
+	var/obj/item/card/id/ID = user.get_idcard()
 	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Spotter")
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
 
@@ -200,7 +200,7 @@
 		to_chat(user, SPAN_WARNING("You know this already!"))
 		return FALSE
 
-	if(user.job != JOB_SQUAD_MARINE)
+	if(!(user.job in JOB_SQUAD_ROLES_LIST))
 		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
 		return FALSE
 

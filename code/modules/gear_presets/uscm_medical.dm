@@ -62,7 +62,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor
-	name = "USCM Surgeon"
+	name = "USCM Doctor"
 
 	assignment = JOB_DOCTOR
 	rank = JOB_DOCTOR
@@ -85,7 +85,7 @@
 //Surgeon this part of the code is to change the name on your ID
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon
-
+	name = "USCM Surgeon"
 	assignment = JOB_SURGEON
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon/load_gear(mob/living/carbon/human/new_human)

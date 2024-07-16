@@ -414,10 +414,10 @@
 	var/mob/living/carbon/human/wearer = usr
 	if(!istype(wearer))
 		return
-	var/obj/item/card/id/id_card = wearer.wear_id?.GetID()
-	if(!istype(id_card))
+	var/obj/item/card/id/id_card = wearer.get_idcard()
+	if(!id_card)
 		return
-	
+
 	var/datum/paygrade/paygrade_actual = GLOB.paygrades[id_card.paygrade]
 	if(!paygrade_actual)
 		return
@@ -564,6 +564,21 @@
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 	volume = RADIO_VOLUME_CRITICAL
+
+/obj/item/device/radio/headset/almayer/mcom/sea
+	name = "marine senior enlisted advisor headset"
+	desc = "Issued only to senior enlisted advisors. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
+	icon_state = "mco_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
+	volume = RADIO_VOLUME_CRITICAL
+	misc_tracking = TRUE
+	locate_setting = TRACKER_CO
+
+	inbuilt_tracking_options = list(
+		"Commanding Officer" = TRACKER_CO,
+		"Executive Officer" = TRACKER_XO,
+		"Chief MP" = TRACKER_CMP
+	)
 
 /obj/item/device/radio/headset/almayer/mcom/synth
 	name = "marine synth headset"
@@ -878,6 +893,14 @@
 	name = "\improper CBRN headset"
 	desc = "A headset given to CBRN marines. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel"
 	frequency = CBRN_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom)
+	ignore_z = TRUE
+	has_hud = TRUE
+
+/obj/item/device/radio/headset/distress/forecon
+	name = "\improper Force Recon headset"
+	desc = "A headset given to FORECON marines. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel"
+	frequency = FORECON_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom)
 	ignore_z = TRUE
 	has_hud = TRUE

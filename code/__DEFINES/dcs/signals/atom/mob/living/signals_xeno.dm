@@ -50,6 +50,10 @@
 
 /// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
 #define COMSIG_XENO_ACTION_USED "xeno_action_used"
+/// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
+#define COMSIG_XENO_PRE_ACTION_USED "xeno_pre_action_used"
+/// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
+#define COMSIG_XENO_FAILED_ACTION_USED "xeno_failed_action_used"
 /// From /mob/living/carbon/xenomorph/proc/check_blood_splash()
 #define COMSIG_XENO_DEAL_ACID_DAMAGE "xeno_deal_acid_damage"
 /// From /mob/living/carbon/xenomorph/proc/recalculate_speed()

@@ -51,6 +51,7 @@
 // Any strain or caste-specific state should be stored on behavior_delegate objects
 // which use_ability invocations can modify using typechecks and typecasts where appropriate.
 /datum/action/xeno_action/proc/use_ability(atom/target)
+	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
 		return FALSE
 	track_xeno_ability_stats()
@@ -129,10 +130,17 @@
 /// A wrapper for use_ability that sends a signal
 /datum/action/xeno_action/proc/use_ability_wrapper(...)
 	// TODO: make hidden a part of can_use_action
-	if(!hidden && can_use_action() && use_ability(arglist(args)))
+	if(!can_use_action())
+		SEND_SIGNAL(src, COMSIG_XENO_FAILED_ACTION_USED, owner)
+		return FALSE
+
+	SEND_SIGNAL(src, COMSIG_XENO_PRE_ACTION_USED, owner)
+
+	if(!hidden && use_ability(arglist(args)))
 		SEND_SIGNAL(src, COMSIG_XENO_ACTION_USED, owner)
 		return TRUE
 
+	SEND_SIGNAL(src, COMSIG_XENO_FAILED_ACTION_USED, owner)
 	return FALSE
 
 // For actions that do something on each life tick
@@ -150,6 +158,7 @@
 // For non-activable Xeno actions, this is used to
 // actually DO the action.
 /datum/action/xeno_action/activable/action_activate()
+	. = ..()
 	if(!owner)
 		return
 	if(hidden)
@@ -201,6 +210,7 @@
 	no_cooldown_msg = TRUE
 
 /datum/action/xeno_action/onclick/action_activate()
+	. = ..()
 	use_ability_wrapper(null)
 
 // Adds a cooldown to this
@@ -362,17 +372,6 @@
 	deltimer(charge_timer_id)
 	charge_timer_id = TIMER_ID_NULL
 
-// Helper proc to get an action on a target Xeno by type.
-// Used to interact with abilities from the outside
-/proc/get_xeno_action_by_type(mob/living/carbon/xenomorph/X, typepath)
-	if (!istype(X))
-		CRASH("xeno_action.dm: get_xeno_action_by_type invoked with non-xeno first argument.")
-
-	for (var/datum/action/xeno_action/XA in X.actions)
-		if (istype(XA, typepath))
-			return XA
-	return null
-
 // Helper proc to check if there is anything blocking the way from mob M to the atom A
 // Max distance can be supplied to check some of the way instead of the whole way.
 /proc/check_clear_path_to_target(mob/M, atom/A, smash_windows = TRUE, max_distance = 1000)
@@ -420,6 +419,7 @@
 	return FALSE
 
 /datum/action/xeno_action/active_toggle/action_activate()
+	. = ..()
 	toggle_toggle()
 
 /datum/action/xeno_action/active_toggle/life_tick()

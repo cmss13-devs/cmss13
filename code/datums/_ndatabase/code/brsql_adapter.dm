@@ -103,7 +103,7 @@
 /datum/db/adapter/brsql_adapter/insert_table(table_name, list/values, datum/callback/CB, sync = FALSE)
 	set waitfor = FALSE
 
-	var/length = values.len
+	var/length = length(values)
 	var/list/qpars = list()
 	var/query_inserttable = getquery_insert_table(table_name, values, qpars)
 	var/datum/callback/callback = CALLBACK(src, TYPE_PROC_REF(/datum/db/adapter/brsql_adapter, after_insert_table), CB, length, table_name)
@@ -150,7 +150,7 @@
 	if(table_meta.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to access system table, error: '[table_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
-	if(!table_meta.results.len) // Table doesn't exist
+	if(!length(table_meta.results)) // Table doesn't exist
 		return internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types)
 
 	var/id =  table_meta.results[1][DB_DEFAULT_ID_FIELD]
@@ -178,7 +178,7 @@
 	if(index_meta.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to access system index table, error: '[index_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
-	if(!index_meta.results.len) // Index doesn't exist
+	if(!length(index_meta.results)) // Index doesn't exist
 		return internal_create_index(index_name, table_name, fields, unique, cluster) && internal_record_index_in_sys(index_name, table_name, fields)
 
 	var/id =  index_meta.results[1][DB_DEFAULT_ID_FIELD]

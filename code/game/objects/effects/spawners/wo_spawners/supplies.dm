@@ -6,7 +6,7 @@
 
 /obj/effect/landmark/wo_supplies/New()
 	..()
-	if(stuff.len)
+	if(length(stuff))
 		for(var/s in stuff)
 			var/amt = rand(amount[1], amount[2])
 			for(var/i = 1, i <= amt, i++)

@@ -9,6 +9,8 @@
 /turf
 	var/obj/structure/snow/snow
 
+//TODO: Do in right way events, without shitcode (someday in future I will do it)
+
 //SPECIAL EVENTS
 /datum/weather_event
 	var/name = ""
@@ -110,8 +112,6 @@
 		return
 
 	else if(stage > max_stages)
-		SSsunlighting.weather_light_affecting_event = null
-		SSsunlighting.update_color()
 		initiator_ref.wind_severity = 0
 		qdel(src)
 		return
@@ -172,7 +172,8 @@
 	if(!bleed_layer)
 		bleed_layer = rand(1, 3)
 
-	AddElement(/datum/element/mob_overlay_effect, bleed_layer * 2, bleed_layer * 3)
+	update_visuals_effects()
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(update_visuals_effects))
 
 	START_PROCESSING(SSslowobj, src)
 
@@ -192,6 +193,19 @@
 	else if(SSweather_conditions.running_weather.weather_special_effect != /datum/weather_effect/snow)
 		damage_act(6 * delta_time)
 	update_overlays()
+
+/obj/structure/snow/proc/update_visuals_effects()
+	SIGNAL_HANDLER
+
+	var/list/contained_mobs = list()
+	for(var/mob/living/contained_mob in contents)
+		contained_mobs += contained_mob
+		SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_FORCE_REMOVE, contained_mob)
+
+	RemoveElement(/datum/element/mob_overlay_effect)
+	AddElement(/datum/element/mob_overlay_effect, bleed_layer * 2, bleed_layer * 3, 100)
+	for(var/mob/living/contained_mob as anything in contained_mobs)
+		SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_FORCE_UPDATE, contained_mob)
 
 /obj/structure/snow/proc/update_corners(propagate = FALSE)
 	var/list/snow_dirs = list(list(), list(), list())
@@ -304,8 +318,7 @@
 	update_corners(TRUE)
 	update_overlays()
 
-	RemoveElement(/datum/element/mob_overlay_effect)
-	AddElement(/datum/element/mob_overlay_effect, bleed_layer * 2, bleed_layer * 3)
+	update_visuals_effects()
 
 /obj/structure/snow/ex_act(severity)
 	damage_act(severity)
@@ -609,7 +622,7 @@
 /datum/looping_sound/storm
 	mid_sounds = 'sound/weather/rain/weather_storm.ogg'
 	mid_length = 30 SECONDS
-	volume = 150
+	volume = 250
 
 /datum/looping_sound/snow
 	mid_sounds = 'sound/weather/snow/weather_snow.ogg'

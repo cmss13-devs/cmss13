@@ -390,3 +390,7 @@ Sunlight System
 
 #undef SUN_FALLOFF
 #undef HARDSUN
+
+//DON'T ASK
+/atom/movable/outdoor_effect/proc/extinguish()
+	return FALSE

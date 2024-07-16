@@ -55,3 +55,7 @@
 
 /// Called when an atom has emp_act called on it, from /atom/emp_act: (severity)
 #define COMSIG_ATOM_EMP_ACT "atom_emp_act"
+
+/// from /datum/element/mob_overlay_effect/Attach()
+#define COMSIG_MOB_OVERLAY_FORCE_REMOVE "mob_overlay_force_remove"
+#define COMSIG_MOB_OVERLAY_FORCE_UPDATE "mob_overlay_force_update"

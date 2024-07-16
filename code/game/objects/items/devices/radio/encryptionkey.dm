@@ -12,6 +12,8 @@
 	var/abstract = FALSE
 
 /obj/item/device/encryptionkey/binary
+	name = "APOLLO relay key"
+	desc = "An encryption key allowing speech over the APOLLO Link. (Using :+)"
 	icon_state = "binary_key"
 	translate_apollo = TRUE
 

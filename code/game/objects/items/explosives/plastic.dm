@@ -21,7 +21,7 @@
 	var/atom/plant_target = null //which atom the plstique explosive is planted on
 	var/overlay_image = "plastic-explosive2"
 	var/image/overlay
-	var/list/breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door , /obj/structure/cargo_container,/obj/structure/machinery/colony_floodlight)
+	var/list/breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door , /obj/structure/cargo_container)
 	antigrief_protection = TRUE //Should it be checked by antigrief?
 
 	var/req_skill = SKILL_ENGINEER
@@ -173,15 +173,27 @@
 	update_icon()
 
 /obj/item/explosive/plastic/proc/can_place(mob/user, atom/target)
+	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || istype(target, /obj/structure/closet/crate))
+		return FALSE
 
-	if(!is_type_in_list(target, breachable))//only items on the list are allowed
-		to_chat(user, SPAN_WARNING("You cannot plant [name] on [target]!"))
+	if(istype(target, /obj/structure/closet))
+		var/obj/structure/closet/C = target
+		if(C.opened)
+			return FALSE
+
+	//vehicle interior stuff checks
+	if(istype(target, /obj/vehicle/multitile))
 		return FALSE
 
 	//vehicle interior stuff checks
 	if(SSinterior.in_interior(target))
 		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy [src]."))
 		return FALSE
+
+	if(istype(target, /obj/effect) || istype(target, /obj/structure/machinery))
+		var/obj/O = target
+		if(O.unacidable)
+			return FALSE
 
 	if(istype(target, /turf/closed/wall))
 		var/turf/closed/wall/W = target
@@ -282,9 +294,6 @@
 	for(var/obj/structure/machinery/door/D in orange(1, target_turf))
 		D.ex_act(1000 * penetration, , cause_data)
 
-	for(var/obj/structure/machinery/colony_floodlight/colony_floodlight in orange(1, target_turf))
-		colony_floodlight.Destroy()
-
 	handle_explosion(target_turf, dir, temp_cause)
 
 /obj/item/explosive/plastic/proc/handle_explosion(turf/target_turf, dir, cause_data)
@@ -382,4 +391,3 @@
 		to_chat(user, SPAN_WARNING("You don't quite understand how the device works..."))
 		return FALSE
 	. = ..()
-

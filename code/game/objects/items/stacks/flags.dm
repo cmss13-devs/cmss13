@@ -241,7 +241,7 @@
 					human.emote("warcry")
 
 		user.show_speech_bubble("warcry")
-		if(allies_nearby > allies_required)
+		if(allies_nearby >= allies_required)
 			playsound(user, warcry_extra_sound, 40)
 			// Start a cooldown on the flag structure. This way we can keep track of the cooldown when the flag is hoisted and taken down.
 			COOLDOWN_START(planted_flag, warcry_cooldown_struc, 90 SECONDS)

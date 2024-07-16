@@ -1141,7 +1141,6 @@
 #include "code\game\objects\items\devices\RSF.dm"
 #include "code\game\objects\items\devices\RSP.dm"
 #include "code\game\objects\items\devices\scanners.dm"
-#include "code\game\objects\items\devices\suit_cooling.dm"
 #include "code\game\objects\items\devices\taperecorder.dm"
 #include "code\game\objects\items\devices\teleportation.dm"
 #include "code\game\objects\items\devices\transfer_valve.dm"

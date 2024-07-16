@@ -924,7 +924,8 @@
 				if(current_chem.chem_id == topic_chem)
 					break
 
-		if(!current_chem.chem_id != topic_chem || !host_mob || (borer_flags_status & BORER_STATUS_CONTROLLING) || !src || stat)
+		if(!current_chem || !host_mob || (borer_flags_status & BORER_STATUS_CONTROLLING) || !src || stat)
+			to_chat(src, SPAN_WARNING("ERROR: CHEM FAILURE - CONTACT FOREST2001"))
 			return FALSE
 		var/datum/reagent/R = GLOB.chemical_reagents_list[current_chem.chem_id]
 		if(enzymes < current_chem.cost)

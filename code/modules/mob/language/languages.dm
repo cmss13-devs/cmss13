@@ -217,14 +217,14 @@
 	flags = RESTRICTED|HIVEMIND
 
 /datum/language/corticalborer/broadcast(mob/living/carbon/speaker, message, speaker_mask, death)
-	var/mob/living/carbon/cortical_borer/B
+	var/mob/living/carbon/cortical_borer/the_borer
 	if(!message) return FALSE
 	if(isborer(speaker))
-		B = speaker
+		the_borer = speaker
 	else if(speaker.has_brain_worms())
-		B = speaker.has_brain_worms()
-	if(B)
-		speaker_mask = B.real_name
+		the_borer = speaker.has_brain_worms()
+	if(the_borer)
+		speaker_mask = the_borer.real_name
 	if(!speaker_mask)
 		speaker_mask = speaker.real_name
 

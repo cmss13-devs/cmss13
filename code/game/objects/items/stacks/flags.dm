@@ -186,6 +186,8 @@
 	var/warcry_sound
 	/// When there are more than 14 allies nearby, play this stronger warcry.
 	var/warcry_extra_sound
+	/// How many nearby allies do we need for the stronger warcry to be played?
+	var/allies_required = 14
 	/// Used to limit the spam of the warcry_extra_sound
 	COOLDOWN_DECLARE(warcry_cooldown_item)
 
@@ -239,7 +241,7 @@
 					human.emote("warcry")
 
 		user.show_speech_bubble("warcry")
-		if(allies_nearby > 14)
+		if(allies_nearby > allies_required)
 			playsound(user, warcry_extra_sound, 40)
 			// Start a cooldown on the flag structure. This way we can keep track of the cooldown when the flag is hoisted and taken down.
 			COOLDOWN_START(planted_flag, warcry_cooldown_struc, 90 SECONDS)

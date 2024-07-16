@@ -203,7 +203,7 @@
 		SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_FORCE_REMOVE, contained_mob)
 
 	RemoveElement(/datum/element/mob_overlay_effect)
-	AddElement(/datum/element/mob_overlay_effect, bleed_layer * 2, bleed_layer * 3, 100)
+	AddElement(/datum/element/mob_overlay_effect, bleed_layer * 2.4, bleed_layer * 1.2, 100)
 	for(var/mob/living/contained_mob as anything in contained_mobs)
 		SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_FORCE_UPDATE, contained_mob)
 

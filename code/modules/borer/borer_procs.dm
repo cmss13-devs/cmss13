@@ -666,7 +666,7 @@
 	var/list/possibilities = list()
 	for(var/datum/borer_chem/chem in GLOB.brainlink.borer_chemicals)
 		possibilities += chem
-	for(var/datum/borer_chem/chem in src.synthesized_chems)
+	for(var/datum/borer_chem/chem in GLOB.brainlink.synthesized_chems)
 		possibilities += chem
 	return possibilities
 
@@ -745,7 +745,7 @@
 	for(var/datum/borer_chem/existing_chem in GLOB.brainlink.borer_chemicals)
 		if(!(existing_chem.chem_id in existing_chems))
 			existing_chems += existing_chem.chem_id
-	for(var/datum/borer_chem/existing_chem in synthesized_chems)
+	for(var/datum/borer_chem/existing_chem in GLOB.brainlink.synthesized_chems)
 		if(!(existing_chem.chem_id in existing_chems))
 			existing_chems += existing_chem.chem_id
 
@@ -794,8 +794,9 @@
 	new_chem.cost = ((5 * failure_chance))
 	new_chem.quantity = (chosen.overdose / 3)
 
-	synthesized_chems += new_chem
+	GLOB.brainlink.synthesized_chems += new_chem
 	to_chat(src, SPAN_XENONOTICE("Replication successful!"))
+	GLOB.brainlink.impulse_broadcast("[real_name] has replicated [new_chem.chem_name]!", "Small")
 
 	return TRUE
 
@@ -918,12 +919,12 @@
 			if(current_chem.chem_id == topic_chem)
 				break
 		if(current_chem.chem_id != topic_chem)
-			for(var/datum/borer_chem/chem_datum in synthesized_chems)
+			for(var/datum/borer_chem/chem_datum in GLOB.brainlink.synthesized_chems)
 				current_chem = chem_datum
 				if(current_chem.chem_id == topic_chem)
 					break
 
-		if(!current_chem || !host_mob || (borer_flags_status & BORER_STATUS_CONTROLLING) || !src || stat)
+		if(!current_chem.chem_id != topic_chem || !host_mob || (borer_flags_status & BORER_STATUS_CONTROLLING) || !src || stat)
 			return FALSE
 		var/datum/reagent/R = GLOB.chemical_reagents_list[current_chem.chem_id]
 		if(enzymes < current_chem.cost)

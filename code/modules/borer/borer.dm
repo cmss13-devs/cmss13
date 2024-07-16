@@ -1,6 +1,7 @@
 /datum/borer_brainlink
 	var/list/living_borers = list()
 	var/list/datum/borer_chem/borer_chemicals = list()
+	var/list/datum/borer_chem/synthesized_chems = list()
 	var/cortical_directive = "Seek hosts and spread. Avoid detection where possible. Do not assume control without need." // Default directive.
 	var/hardmode = FALSE
 	var/pulse_triggered = FALSE
@@ -29,9 +30,8 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 	if(!pulse_triggered && (the_dead.generation <= 1))
 		for(var/mob/living/carbon/cortical_borer/borer in living_borers)
 			if(borer.generation <= 1)
-				continue
+				break
 			death_pulse(DEATH_CAUSE_PRIMARIES)
-			break
 	return
 
 /datum/borer_brainlink/proc/death_pulse(source = DEATH_CAUSE_UNKNOWN)
@@ -204,8 +204,6 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 
 	/// Whether the borer can create chemicals that are marked as restricted.
 	var/restricted_chems_allowed = FALSE
-
-	var/list/datum/borer_chem/synthesized_chems = list()
 
 	var/current_actions = ACTION_SET_HOSTLESS
 	var/list/actions_hostless = list(

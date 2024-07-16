@@ -16,7 +16,7 @@
 	name = "Anti-Enzyme"
 	id = "borercure"
 	description = "An anti-parasite drug synthesised from parastic enzymes. Effectively fights toxins in the bloodstream."
-	color = "#25c08c"
+	color = "#177052"
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_ANTITOXIN = 4, PROPERTY_ANTIPARASITIC = 2)
@@ -25,19 +25,19 @@
 	name = "Neuroshock"
 	id = "borershock"
 	description = "A biosynthetic nerve agent that stimulates cardiomyocytes in critical condition."
-	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_DEFIBRILLATING = 2, PROPERTY_INTRAVENOUS = 1)
+	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_DEFIBRILLATING = 5, PROPERTY_INTRAVENOUS = 1)
 
 /datum/reagent/borer/transformative
 	name = "Biomend"
 	id = "borertransform"
-	description = "A biosynthetic agent that mends damage tissue while creating a toxic byproduct."
+	description = "A biosynthetic agent that mends damaged tissue while creating a toxic byproduct."
 	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_TRANSFORMATIVE = 2, PROPERTY_INTRAVENOUS = 1)
 
 /datum/reagent/borer/super_brain
 	name = "Synaptic Boost"
 	id = "borersuperbrain"
 	description = "An unusual bio-agent that appears to enhance the brain function of subjects. Lethal in high doses."
-	color = "#076e4c"
+	color = "#32745e"
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE
 	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_ENCEPHALOPHRASIVE = 1, PROPERTY_PAINKILLING = 1, PROPERTY_NEUROPEUTIC = 2)

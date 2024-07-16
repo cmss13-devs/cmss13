@@ -670,7 +670,7 @@
 	var/effective_accuracy = P.get_effective_accuracy()
 	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
 
-	var/hitchance = min(projectile_coverage, (projectile_coverage * distance / projectile_coverage_distance_limit) + accuracy_factor * (1 - effective_accuracy/100))
+	var/hitchance = min(projectile_coverage, (projectile_coverage * distance / (projectile_coverage_distance_limit * (cade_direction_correct ? 3 : 1))) + accuracy_factor * (1 - effective_accuracy/100))
 
 	#if DEBUG_HIT_CHANCE
 	to_world(SPAN_DEBUG("([name] as cover) Distance travelled: [P.distance_travelled]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))

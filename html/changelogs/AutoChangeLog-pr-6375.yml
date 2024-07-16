@@ -1,5 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - balance: "The XM88 now deals higher damage per-bullet at the cost of a slightly lower rate of fire and accuracy. This is identical to as if it had a barrel charger attached to it."
-  - balance: "Per the above, the barrel charger is no longer compatible with the XM88."

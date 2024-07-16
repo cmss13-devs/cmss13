@@ -1137,7 +1137,6 @@
 #include "code\game\objects\items\devices\pinpointer.dm"
 #include "code\game\objects\items\devices\pipe_painter.dm"
 #include "code\game\objects\items\devices\portable_vendor.dm"
-#include "code\game\objects\items\devices\RCD.dm"
 #include "code\game\objects\items\devices\scanners.dm"
 #include "code\game\objects\items\devices\suit_cooling.dm"
 #include "code\game\objects\items\devices\taperecorder.dm"

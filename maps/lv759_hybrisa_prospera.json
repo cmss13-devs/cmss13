@@ -25,7 +25,8 @@
         "/datum/equipment_preset/survivor/hybrisa/heavy_vehicle_operator",
         "/datum/equipment_preset/survivor/hybrisa/wy_exec",
         "/datum/equipment_preset/survivor/hybrisa/wey_po",
-        "/datum/equipment_preset/survivor/hybrisa/corporate_goon"
+        "/datum/equipment_preset/survivor/hybrisa/corporate_goon",
+        "/datum/equipment_preset/survivor/clf"
     ],
 	"synth_survivor_types": [
         "/datum/equipment_preset/synth/survivor/hybrisa/engineer_survivor",

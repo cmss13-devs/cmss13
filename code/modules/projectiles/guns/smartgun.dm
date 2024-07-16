@@ -36,8 +36,9 @@
 	)
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type
 	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing //Toggled ammo type
+	var/datum/ammo/ammo_tertiary = /datum/ammo/bullet/smartgun/holo_target
 	var/iff_enabled = TRUE //Begin with the safety on.
-	var/secondary_toggled = 0 //which ammo we use
+	var/ammo_selection = 0 //which ammo we use
 	var/recoil_compensation = 0
 	var/accuracy_improvement = 0
 	var/auto_fire = 0
@@ -50,6 +51,7 @@
 	var/long_range_cooldown = 2
 	var/recycletime = 120
 	var/cover_open = FALSE
+	var/list/ammo_list
 
 	unacidable = 1
 	indestructible = 1
@@ -70,6 +72,7 @@
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
 	ammo_primary = GLOB.ammo_list[ammo_primary] //Gun initialize calls replace_ammo() so we need to set these first.
 	ammo_secondary = GLOB.ammo_list[ammo_secondary]
+	ammo_tertiary = GLOB.ammo_list[ammo_tertiary]
 	MD = new(src)
 	battery = new /obj/item/smartgun_battery(src)
 	. = ..()
@@ -78,6 +81,7 @@
 /obj/item/weapon/gun/smartgun/Destroy()
 	ammo_primary = null
 	ammo_secondary = null
+	ammo_tertiary = null
 	QDEL_NULL(MD)
 	QDEL_NULL(battery)
 	. = ..()
@@ -302,6 +306,8 @@
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	if(G.secondary_toggled)
 		action_icon_state = "ammo_swap_ap"
+	if(G.tertiary_toggled)
+		action_icon_state = "ammo_swap_holo"
 	else
 		action_icon_state = "ammo_swap_normal"
 	button.overlays.Cut()
@@ -336,17 +342,17 @@
 	if(!iff_enabled)
 		to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when \the [src]'s fire restriction is disabled.")
 		return
-	secondary_toggled = !secondary_toggled
-	to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
-	balloon_alert(user, "firing [secondary_toggled ? "armor shredding" : "highly precise"]")
+	ammo_selection = !ammo_selection
+	to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire [ammo_selection list( "armor shredding rounds" : "highly precise rounds" : "holo-targeting rounds" )].")
+	balloon_alert(user, "firing [ammo_selection ? "armor shredding" : "highly precise" ]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	ammo = secondary_toggled ? ammo_secondary : ammo_primary
+	ammo = ammo_selection list( ammo_secondary : ammo_primary : ammo_tertiary )
 	var/datum/action/item_action/smartgun/toggle_ammo_type/TAT = locate(/datum/action/item_action/smartgun/toggle_ammo_type) in actions
 	TAT.update_icon()
 
 /obj/item/weapon/gun/smartgun/replace_ammo()
 	..()
-	ammo = secondary_toggled ? ammo_secondary : ammo_primary
+	ammo = ammo_selection list( ammo_secondary : ammo_primary : ammo_tertiary )
 
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
@@ -742,10 +748,10 @@
 /obj/item/weapon/gun/smartgun/rmc
 	name = "\improper L56A2 smartgun"
 	desc = "The actual firearm in the 2-piece L56A2 Smartgun System. This Variant is used by the Three World Empires Royal Marines Commando units.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
-	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting
-	ammo = /obj/item/ammo_magazine/smartgun/holo_targetting
-	ammo_primary = /datum/ammo/bullet/smartgun/holo_target //Toggled ammo type
-	ammo_secondary = /datum/ammo/bullet/smartgun/holo_target/ap ///Toggled ammo type
+	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting/rmc
+	ammo = /obj/item/ammo_magazine/smartgun/holo_targetting/rmc
+	ammo_primary = /datum/ammo/bullet/smartgun/holo_target/rmc //Toggled ammo type
+	ammo_secondary = /datum/ammo/bullet/smartgun/holo_target/rmc/ap ///Toggled ammo type
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
 	icon_state = "magsg"

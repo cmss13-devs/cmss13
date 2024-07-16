@@ -107,11 +107,11 @@
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
 
-/obj/item/ammo_magazine/smartgun/holo_targetting
+/obj/item/ammo_magazine/smartgun/holo_targetting/rmc
 	name = "holotargetting smartgun drum"
 	desc = "Holotargetting rounds for use in the royal marines commando L56A2 smartgun."
 	icon_state = "m56_drum"
-	default_ammo = /datum/ammo/bullet/smartgun/holo_target
+	default_ammo = /datum/ammo/bullet/smartgun/holo_target/rmc
 	gun_type = /obj/item/weapon/gun/smartgun/rmc
 //-------------------------------------------------------
 //Flare gun. Close enough?

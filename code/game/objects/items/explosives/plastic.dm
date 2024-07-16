@@ -391,3 +391,4 @@
 		to_chat(user, SPAN_WARNING("You don't quite understand how the device works..."))
 		return FALSE
 	. = ..()
+

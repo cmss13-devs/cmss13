@@ -380,22 +380,6 @@
 	if(istype(M))
 		use_power(-M.calculate_current_power_usage(), M.power_channel)
 
-/area/proc/thunk(M)
-	if(istype(get_turf(M), /turf/open/space)) // Can't fall onto nothing.
-		return
-
-	if(istype(M,/mob/living/carbon/human/))  // Only humans can wear magboots, so we give them a chance to.
-		var/mob/living/carbon/human/H = M
-		if((istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
-			return
-		H.adjust_effect(5, STUN)
-		H.adjust_effect(5, WEAKEN)
-
-	to_chat(M, "Gravity!")
-
-
-
-
 //atmos related procs
 
 /area/return_air()

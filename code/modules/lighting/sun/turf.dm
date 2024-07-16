@@ -115,7 +115,7 @@ Sunlight System
 	var/list/corners_list = corners - affecting_corners
 	affecting_corners += corners_list
 	for(corner in corners_list)
-		corner.glob_affect[src] = SUN_FALLOFF(corner, source_turf);
+		corner.glob_affect[src] = SUN_FALLOFF(corner, source_turf)
 		if(corner.glob_affect[src] > corner.sun_falloff) /* if are closer than current dist, update the corner */
 			corner.sun_falloff = corner.glob_affect[src]
 			if(corner.master_NE)

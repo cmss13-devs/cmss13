@@ -39,6 +39,10 @@
 //Update icon and sides on start, but skip nearby check for turfs.
 /turf/open/snow/Initialize(mapload, ...)
 	. = ..()
+//Silent fix
+	if(!snow)
+		new /obj/structure/snow(src, bleed_layer)
+	bleed_layer = 0
 	update_icon(1,1)
 
 /turf/open/snow/Entered(atom/movable/AM)

@@ -24,7 +24,7 @@
 /obj/structure/machinery/siren/power_change()
 	return
 
-/obj/structure/machinery/siren/proc/siren_warning(msg = "WARNING, critical situation, everyone follow basic safety protocols.", sound_ch = 'sound/effects/weather_warning.ogg')
+/obj/structure/machinery/siren/proc/siren_warning(msg = message, sound_ch = 'sound/effects/weather_warning.ogg')
 	playsound(loc, sound_ch, 80, 0)
 	visible_message(SPAN_DANGER("[src] blares. [msg]."))
 

@@ -577,7 +577,7 @@
 /datum/particle_weather/proc/weather_warnings()
 	switch(weather_warnings)
 		if("siren")
-			for(var/obj/structure/machinery/siren/weather/weather_siren in GLOB.siren_objects["weather"])
+			for(var/obj/structure/machinery/siren/weather_siren in GLOB.siren_objects["weather"])
 				if(weather_siren.z in affected_zlevels)
 					weather_siren.siren_warning(weather_warnings["siren"])
 		if("message")

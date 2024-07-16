@@ -132,23 +132,23 @@
 		if(SShijack.sd_unlocked)
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
-	var/mob/living/carbon/cortical_borer/B = has_brain_worms()
-	if(B && (B.borer_flags_status & BORER_STATUS_CONTROLLING))
+	var/mob/living/carbon/cortical_borer/the_borer = has_brain_worms()
+	if(the_borer && (the_borer.borer_flags_status & BORER_STATUS_CONTROLLING))
 
 		var/CR = "Yes"
-		if(!B.can_reproduce)
+		if(!the_borer.can_reproduce)
 			CR = "Forbidden"
-		else if((B.enzymes < BORER_LARVAE_COST))
+		else if((the_borer.enzymes < BORER_LARVAE_COST))
 			CR = "No"
 
 		. += ""
 		. += "Cortical Directive: [GLOB.brainlink.cortical_directive]"
 		. += "Borer: CONTROLLING"
-		. += "Name: [B.real_name]"
+		. += "Name: [the_borer.real_name]"
 		. += "Can Reproduce: [CR]"
-		. += "Enzymes: [round(B.enzymes)]/[round(B.max_enzymes)]"
-		. += "Health: [B.health]/[B.maxHealth]"
-		. += "Injuries: Brute:[round(B.getBruteLoss())] Burn:[round(B.getFireLoss())] Toxin:[round(B.getToxLoss())]"
+		. += "Enzymes: [round(the_borer.enzymes)]/[round(the_borer.max_enzymes)]"
+		. += "Health: [the_borer.health]/[the_borer.maxHealth]"
+		. += "Injuries: Brute:[round(the_borer.getBruteLoss())] Burn:[round(the_borer.getFireLoss())] Toxin:[round(the_borer.getToxLoss())]"
 		. += ""
 		. += "Host Brain Damage: [brainloss]/100"
 		. += "Host Blood Level: [blood_volume / 5.6]%"
@@ -1734,15 +1734,15 @@
 
 /mob/living/carbon/human/on_knockedout_trait_gain(datum/source)
 	. = ..()
-	
+
 	update_execute_hud()
-	
+
 	return .
 
 /mob/living/carbon/human/on_knockedout_trait_loss(datum/source)
 	. = ..()
 
 	update_execute_hud()
-	
+
 	return .
-	
+

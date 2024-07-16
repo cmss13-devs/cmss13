@@ -189,8 +189,12 @@
 	return TRUE
 
 /mob/living/carbon/cortical_borer/proc/hibernate()
-	hibernating = !hibernating
-	if(hibernating)
+	if(borer_flags_actives & BORER_ABILITY_HIBERNATING)
+		borer_flags_actives &= ~BORER_ABILITY_HIBERNATING
+	else
+		borer_flags_actives |= BORER_ABILITY_HIBERNATING
+
+	if(borer_flags_actives & BORER_ABILITY_HIBERNATING)
 		to_chat(src, SPAN_XENONOTICE("You are now hibernating! Your body will dissolve impurities built up from the creation of chemicals, however your enzyme reserves will not replenish. You cannot act beyond communicating whilst in hibernation."))
 		sleeping = 2
 	else
@@ -302,24 +306,24 @@
 	if(stat)
 		to_chat(src, SPAN_XENOWARNING("You cannot leave your host in your current state."))
 		return FALSE
-	if(docile)
+	if(borer_flags_status & BORER_STATUS_DOCILE)
 		to_chat(src, SPAN_XENOWARNING("You are feeling far too docile to do that."))
 		return FALSE
 	if(!host_mob || !src)
 		return FALSE
-	if(leaving)
-		leaving = FALSE
+	if(borer_flags_status & BORER_STATUS_LEAVING)
+		borer_flags_status &= ~BORER_STATUS_LEAVING
 		to_chat(src, SPAN_XENOWARNING("You decide against leaving your host.</span>"))
 		return TRUE
 	to_chat(src, SPAN_XENOHIGHDANGER("You begin disconnecting from [host_mob]'s synapses and prodding at their internal ear canal."))
-	leaving = TRUE
+	borer_flags_status |= BORER_STATUS_LEAVING
 	addtimer(CALLBACK(src, PROC_REF(let_go)), 200)
 	return TRUE
 
 /mob/living/carbon/cortical_borer/proc/let_go()
 	if(!host_mob || !src || QDELETED(host_mob) || QDELETED(src))
 		return FALSE
-	if(!leaving || borer_flags_status & BORER_STATUS_CONTROLLING)
+	if(!(borer_flags_status & BORER_STATUS_LEAVING) || borer_flags_status & BORER_STATUS_CONTROLLING)
 		return FALSE
 	if(stat)
 		to_chat(src, SPAN_XENOWARNING("You cannot release a target in your current state."))
@@ -327,7 +331,7 @@
 
 	to_chat(src, SPAN_XENOHIGHDANGER("You wiggle out of [host_mob]'s ear and plop to the ground."))
 
-	leaving = FALSE
+	borer_flags_status &= ~BORER_STATUS_LEAVING
 	leave_host()
 	return TRUE
 
@@ -372,12 +376,12 @@
 		to_chat(src, SPAN_XENOWARNING("You cannot do that in your current state."))
 		return FALSE
 
-	if(docile)
+	if(borer_flags_status & BORER_STATUS_DOCILE)
 		to_chat(src, SPAN_XENOWARNING("You are feeling far too docile to do that."))
 		return FALSE
 
-	if(bonding)
-		bonding = FALSE
+	if(borer_flags_actives & BORER_PROCESS_BONDING)
+		borer_flags_actives &= ~BORER_PROCESS_BONDING
 		to_chat(src, SPAN_XENOWARNING("You stop attempting to take control of your host."))
 		return FALSE
 
@@ -386,7 +390,7 @@
 	if(QDELETED(src) || QDELETED(host_mob))
 		return FALSE
 
-	bonding = TRUE
+	borer_flags_actives |= BORER_PROCESS_BONDING
 
 	var/delay = 300+(host_mob.getBrainLoss()*5)
 	addtimer(CALLBACK(src, PROC_REF(assume_control)), delay)
@@ -395,9 +399,9 @@
 /mob/living/carbon/cortical_borer/proc/assume_control()
 	if(!host_mob || !src || borer_flags_status & BORER_STATUS_CONTROLLING)
 		return FALSE
-	if(!bonding)
+	if(!(borer_flags_actives & BORER_PROCESS_BONDING))
 		return FALSE
-	if(docile)
+	if(borer_flags_status & BORER_STATUS_DOCILE)
 		to_chat(src, SPAN_XENOWARNING("You are feeling far too docile to do that."))
 		return FALSE
 	else
@@ -439,7 +443,7 @@
 		if(!host_mob.lastKnownIP)
 			host_mob.lastKnownIP = s2h_ip
 
-		bonding = FALSE
+		borer_flags_actives &= ~BORER_PROCESS_BONDING
 		borer_flags_status |= BORER_STATUS_CONTROLLING
 
 		give_new_actions(ACTION_SET_CONTROL)
@@ -453,14 +457,14 @@
 		return TRUE
 
 //Captive mind reclaims their body.
-/mob/living/captive_brain/proc/return_control(mob/living/carbon/cortical_borer/B)
-	if(!B || !(B.borer_flags_status & BORER_STATUS_CONTROLLING) || !resisting_control)
+/mob/living/captive_brain/proc/return_control(mob/living/carbon/cortical_borer/the_borer)
+	if(!the_borer || !(the_borer.borer_flags_status & BORER_STATUS_CONTROLLING) || !resisting_control)
 		return FALSE
-	B.host_mob.adjustBrainLoss(rand(5,10))
+	the_borer.host_mob.adjustBrainLoss(rand(5,10))
 	to_chat(src, SPAN_HIGHDANGER("With an immense exertion of will, you regain control of your body!"))
-	to_chat(B.host_mob, SPAN_XENOHIGHDANGER("You feel control of the host brain ripped from your grasp, and retract your probosci before the wild neural impulses can damage you."))
+	to_chat(the_borer.host_mob, SPAN_XENOHIGHDANGER("You feel control of the host brain ripped from your grasp, and retract your probosci before the wild neural impulses can damage you."))
 	resisting_control = FALSE
-	B.detach()
+	the_borer.detach()
 	return TRUE
 
 ///Brain slug proc for voluntary removal of control.
@@ -470,12 +474,12 @@
 	set name = "Release Control"
 	set desc = "Release control of your host's body."
 
-	var/mob/living/carbon/cortical_borer/B = has_brain_worms()
+	var/mob/living/carbon/cortical_borer/the_borer = has_brain_worms()
 
-	if(B && B.host_brain)
-		to_chat(src, SPAN_XENONOTICE("You withdraw your probosci, releasing control of [B.host_brain]"))
+	if(the_borer && the_borer.host_brain)
+		to_chat(src, SPAN_XENONOTICE("You withdraw your probosci, releasing control of [the_borer.host_brain]"))
 
-		B.detach()
+		the_borer.detach()
 
 	else
 		log_debug(EXCEPTION("Missing borer or missing host brain upon borer release."), src)
@@ -618,14 +622,14 @@
 	set name = "Torment Host"
 	set desc = "Punish your host with agony."
 
-	var/mob/living/carbon/cortical_borer/B = has_brain_worms()
+	var/mob/living/carbon/cortical_borer/the_borer = has_brain_worms()
 
-	if(!B)
+	if(!the_borer)
 		return FALSE
 
-	if(B.host_brain)
+	if(the_borer.host_brain)
 		to_chat(src, SPAN_XENONOTICE("You send a punishing spike of psychic agony lancing into your host's brain."))
-		to_chat(B.host_brain, SPAN_HIGHDANGER("Horrific, burning agony lances through you, ripping a soundless scream from your trapped mind!"))
+		to_chat(the_borer.host_brain, SPAN_HIGHDANGER("Horrific, burning agony lances through you, ripping a soundless scream from your trapped mind!"))
 		return TRUE
 
 
@@ -683,7 +687,7 @@
 		to_chat(src, SPAN_XENOWARNING("You cannot secrete chemicals in your current state."))
 		return FALSE
 
-	if(docile)
+	if(borer_flags_status & BORER_STATUS_DOCILE)
 		to_chat(src, SPAN_XENOWARNING("You are feeling far too docile to do that."))
 		return FALSE
 
@@ -731,7 +735,7 @@
 		to_chat(src, SPAN_XENOWARNING("You cannot replicate chemicals in your current state."))
 		return FALSE
 
-	if(docile)
+	if(borer_flags_status & BORER_STATUS_DOCILE)
 		to_chat(src, SPAN_XENOWARNING("You are feeling far too docile to do that."))
 		return FALSE
 
@@ -791,8 +795,15 @@
 		n_species = "UNSET"
 	new_chem.species = n_species
 
-	new_chem.cost = ((5 * failure_chance))
-	new_chem.quantity = (chosen.overdose / 3)
+	var/new_cost = (5 * failure_chance)
+	if(!new_cost)
+		new_cost = 20
+	new_chem.cost = new_cost
+
+	var/new_quantity = chosen.overdose / 3
+	if(!new_quantity)
+		new_quantity = 10
+	new_chem.quantity = new_quantity
 
 	GLOB.brainlink.synthesized_chems += new_chem
 	to_chat(src, SPAN_XENONOTICE("Replication successful!"))
@@ -824,7 +835,7 @@
 		return FALSE
 
 	if(src && !QDELETED(src) && !QDELETED(host_mob))
-		var/say_string = (docile) ? "slurs" :"states"
+		var/say_string = (borer_flags_status & BORER_STATUS_DOCILE) ? "slurs" :"states"
 		if(host_mob)
 			to_chat(host_mob, SPAN_XENO("[real_name] [say_string]: [input]"), type = MESSAGE_TYPE_RADIO)
 			show_blurb(host_mob, 15, input, TRUE, "center", "center", COLOR_BROWN, null, null, 1)
@@ -907,7 +918,7 @@
 		locate(href_list["src"])
 		if(!isborer(src))
 			return FALSE
-		if(docile)
+		if(borer_flags_status & BORER_STATUS_DOCILE)
 			to_chat(src, SPAN_XENOWARNING("You are feeling far too docile to do that."))
 			return FALSE
 

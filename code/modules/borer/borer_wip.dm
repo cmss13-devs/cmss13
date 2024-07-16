@@ -51,3 +51,43 @@
 	leave_host()
 	perform_infestation(target)
 	return TRUE
+
+
+/mob/living/carbon/cortical_borer/proc/make_alpha()
+	real_name = "Alpha"
+	generation = 0
+	can_reproduce = 2
+	max_contaminant = 500
+	max_enzymes = 2000
+	maxHealth = 500
+	health = 500
+
+	actions_hostless += /datum/action/innate/borer/update_directive
+	actions_humanoidhost += /datum/action/innate/borer/update_directive
+	actions_xenohost += /datum/action/innate/borer/update_directive
+	actions_control += /datum/action/innate/borer/update_directive
+	give_action(src, /datum/action/innate/borer/update_directive)
+
+
+/datum/action/innate/borer/update_directive
+	name = "Change Directive"
+	action_icon_state = "borer_directive"
+
+/datum/action/innate/borer/update_directive/action_activate()
+	var/mob/living/carbon/cortical_borer/the_borer = owner
+	the_borer.update_directive()
+
+/mob/living/carbon/cortical_borer/proc/update_directive()
+	set category = "Borer.Misc"
+	set name = "Update Directive"
+	set desc = "Update the Cortical Directive."
+
+	if(generation > 0)
+		to_chat(src, SPAN_BOLDWARNING("You cannot update the directive, you are not the Alpha!"))
+		return FALSE
+
+	var/new_directive = tgui_input_text(src, "What should the new directive be?", "Cortical Directive", GLOB.brainlink.cortical_directive)
+	if(!new_directive || new_directive == GLOB.brainlink.cortical_directive)
+		return FALSE
+
+	GLOB.brainlink.update_directive(new_directive)

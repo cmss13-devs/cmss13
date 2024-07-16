@@ -97,41 +97,41 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 			return
 		if(stat == DEAD)
 			return say_dead(message)
-		var/mob/living/carbon/cortical_borer/B = loc
+		var/mob/living/carbon/cortical_borer/the_borer = loc
 		to_chat(src, SPAN_BORER("You whisper silently, [message]"), type = MESSAGE_TYPE_RADIO)
-		to_chat(B.host_mob, SPAN_BORER("The captive mind of [src] whispers, \"[message]\""), type = MESSAGE_TYPE_RADIO)
-		log_say("BORER: ([key_name(src)] to [key_name(B.host_mob)]) [message]", src)
+		to_chat(the_borer.host_mob, SPAN_BORER("The captive mind of [src] whispers, \"[message]\""), type = MESSAGE_TYPE_RADIO)
+		log_say("BORER: ([key_name(src)] to [key_name(the_borer.host_mob)]) [message]", src)
 		for (var/mob/dead in GLOB.dead_mob_list)
-			var/track_borer = " (<a href='byond://?src=\ref[dead];track=\ref[B.host_mob]'>F</a>)"
+			var/track_borer = " (<a href='byond://?src=\ref[dead];track=\ref[the_borer.host_mob]'>F</a>)"
 			if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
-				dead.show_message(SPAN_BORER("BORER: ([name] (trapped mind) to [B.real_name][track_borer]) whispers: [message]"), SHOW_MESSAGE_VISIBLE)
+				dead.show_message(SPAN_BORER("BORER: ([name] (trapped mind) to [the_borer.real_name][track_borer]) whispers: [message]"), SHOW_MESSAGE_VISIBLE)
 
 /mob/living/captive_brain/say_understands(mob/other, datum/language/speaking = null)
-	var/mob/living/carbon/cortical_borer/B = loc
-	if(!istype(B))
+	var/mob/living/carbon/cortical_borer/the_borer = loc
+	if(!istype(the_borer))
 		log_debug(EXCEPTION("Trapped mind found without a borer!"), src)
 		return FALSE
-	return B.host_mob.say_understands(other, speaking)
+	return the_borer.host_mob.say_understands(other, speaking)
 
 /mob/living/captive_brain/emote(act, m_type = 1, message = null, intentional = FALSE, force_silence = FALSE)
 	return
 
 /mob/living/captive_brain/resist()
-	var/mob/living/carbon/cortical_borer/B = loc
-	if(!istype(B))
+	var/mob/living/carbon/cortical_borer/the_borer = loc
+	if(!istype(the_borer))
 		log_debug(EXCEPTION("Trapped mind found without a borer!"), src)
 		return FALSE
 	if(resisting_control)
 		to_chat(src, SPAN_DANGER("You stop resisting control."))
-		to_chat(B.host_mob, SPAN_XENODANGER("The captive mind of [src] is no longer attempting to resist you."))
+		to_chat(the_borer.host_mob, SPAN_XENODANGER("The captive mind of [src] is no longer attempting to resist you."))
 		resisting_control = FALSE
 		return FALSE
 
 	to_chat(src, SPAN_HIGHDANGER("You begin doggedly resisting the parasite's control (this will take approximately sixty seconds)."))
-	to_chat(B.host_mob, SPAN_XENOHIGHDANGER("You feel the captive mind of [src] begin to resist your control."))
+	to_chat(the_borer.host_mob, SPAN_XENOHIGHDANGER("You feel the captive mind of [src] begin to resist your control."))
 	resisting_control = TRUE
-	var/delay = (rand(350,450) + B.host_mob.getBrainLoss())
-	addtimer(CALLBACK(src, PROC_REF(return_control), B), delay)
+	var/delay = (rand(350,450) + the_borer.host_mob.getBrainLoss())
+	addtimer(CALLBACK(src, PROC_REF(return_control), the_borer), delay)
 	return TRUE
 
 /datum/action/innate/borer/brain_resist
@@ -169,6 +169,7 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 	holder_type = /obj/item/holder/borer
 	special_mob = TRUE //shows up in own observe category
 	lighting_alpha = 200
+	huggable = FALSE
 
 	var/generation = 1
 	var/stealthy = FALSE
@@ -185,13 +186,9 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 	var/max_enzymes = 500
 	var/contaminant = 0						//Contaminant builds up on enzyme usage, roughly proportionate to cost of use.
 	var/max_contaminant = 120				//Decreases through hibernation or reproduction.
-	var/hibernating = FALSE					//Usable inside a host, but not when controlling. Allows clearing of impurities.
 
 	var/mob/living/carbon/host_mob				// Carbon host for the brain worm.
 	var/mob/living/captive_brain/host_brain	// Used for swapping control of the body back and forth.
-	var/docile = FALSE						// Anti-Parasite or Anti-Enzyme chemicals can stop borers from acting.
-	var/bonding = FALSE
-	var/leaving = FALSE
 	var/hiding = FALSE
 	var/can_reproduce = FALSE				// Locked to manual override to prevent things getting out of hand.
 
@@ -286,31 +283,31 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 			if(ishuman(host_mob))
 				human_host = host_mob
 			if((human_host.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE) && (!human_host.reagents.has_reagent("borerenzyme") || human_host.reagents.has_reagent("borercure")))
-				if(!docile)
+				if(!(borer_flags_status & BORER_STATUS_DOCILE))
 					if(borer_flags_status & BORER_STATUS_CONTROLLING)
 						to_chat(host_mob, SPAN_XENOHIGHDANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
 					else
 						to_chat(src, SPAN_XENOHIGHDANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
-					docile = TRUE
+					borer_flags_status |= BORER_STATUS_DOCILE
 			else
-				if(docile)
+				if(borer_flags_status & BORER_STATUS_DOCILE)
 					if(borer_flags_status & BORER_STATUS_CONTROLLING)
 						to_chat(human_host, SPAN_XENONOTICE("You shake off your lethargy as the chemical leaves your host's blood."))
 					else
 						to_chat(src, SPAN_XENONOTICE("You shake off your lethargy as the chemical leaves your host's blood."))
-					docile = FALSE
-			if(!hibernating && (enzymes < max_enzymes))
+					borer_flags_status &= ~BORER_STATUS_DOCILE
+			if(!(borer_flags_actives) && (enzymes < max_enzymes))
 				var/increase = enzyme_rate
 				if(generation <= 1)
 					increase = enzyme_rate * 2
 				enzymes = min(enzymes + increase, max_enzymes)
 			if(contaminant > 0)
-				if(hibernating)
+				if(borer_flags_actives & BORER_ABILITY_HIBERNATING)
 					contaminant = max(contaminant -= 1, 0)
 				else
 					contaminant = max(contaminant -= 0.1, 0)
 			if(borer_flags_status & BORER_STATUS_CONTROLLING)
-				if(docile)
+				if(borer_flags_status & BORER_STATUS_DOCILE)
 					to_chat(host_mob, SPAN_WARNING("You are feeling far too docile to continue controlling your host..."))
 					host_mob.release_control()
 					return
@@ -427,7 +424,7 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 	else if((enzymes < BORER_LARVAE_COST))
 		CR = "No"
 	var/bore_status = "AWAKE"
-	if(hibernating)
+	if(borer_flags_actives & BORER_ABILITY_HIBERNATING)
 		bore_status = "HIBERNATING"
 
 	. += ""
@@ -463,7 +460,7 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 		if(istype(parsed_language, /datum/language/corticalborer))
 			parsed_language.broadcast(src, new_message)
 			return
-	if(hibernating)
+	if(borer_flags_actives & BORER_ABILITY_HIBERNATING)
 		to_chat(src, SPAN_WARNING("You cannot speak aloud while hibernating!"))
 		return
 	if(loc == host_mob && !talk_inside_host)
@@ -480,32 +477,32 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 	action_icon_state = "borer_help"
 
 /datum/action/innate/borer/helpme/action_activate()
-	var/mob/living/carbon/cortical_borer/B
+	var/mob/living/carbon/cortical_borer/the_borer
 	if(!isborer(owner))
 		if(owner.has_brain_worms())
-			B = owner.has_brain_worms()
+			the_borer = owner.has_brain_worms()
 		else
 			to_chat(owner, SPAN_DANGER("How did you get this command? It's gone now."))
 			hide_action(owner, /datum/action/innate/borer/helpme)
 	else
-		B = owner
-	B.show_help()
+		the_borer = owner
+	the_borer.show_help()
 
 /datum/action/innate/borer/talk_to_host
 	name = "Converse with Host"
 	action_icon_state = "borer_talk"
 
 /datum/action/innate/borer/talk_to_host/action_activate()
-	var/mob/living/carbon/cortical_borer/B = owner
-	B.Communicate()
+	var/mob/living/carbon/cortical_borer/the_borer = owner
+	the_borer.Communicate()
 
 /datum/action/innate/borer/infest_host
 	name = "Infest"
 	action_icon_state = "borer_infest"
 
 /datum/action/innate/borer/infest_host/action_activate()
-	var/mob/living/carbon/cortical_borer/B = owner
-	B.infest()
+	var/mob/living/carbon/cortical_borer/the_borer = owner
+	the_borer.infest()
 
 /datum/action/innate/borer/toggle_hide
 	name = "Toggle Hide"
@@ -513,29 +510,29 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 
 /datum/action/innate/borer/toggle_hide/action_activate()
 	if(!isborer(owner)) return FALSE
-	var/mob/living/carbon/cortical_borer/B = owner
-	B.hide_borer()
+	var/mob/living/carbon/cortical_borer/the_borer = owner
+	the_borer.hide_borer()
 
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_borer.dmi', button, "borer_hiding_[B.hiding]")
+	button.overlays += image('icons/mob/hud/actions_borer.dmi', button, "borer_hiding_[the_borer.hiding]")
 
 /datum/action/innate/borer/talk_to_borer
 	name = "Converse with Borer"
 	action_icon_state = "borer_talk"
 
 /datum/action/innate/borer/talk_to_borer/action_activate()
-	var/mob/living/carbon/cortical_borer/B = owner.has_brain_worms()
-	B.host_mob = owner
-	B.host_mob.borer_comm()
+	var/mob/living/carbon/cortical_borer/the_borer = owner.has_brain_worms()
+	the_borer.host_mob = owner
+	the_borer.host_mob.borer_comm()
 
 /datum/action/innate/borer/talk_to_brain
 	name = "Converse with Trapped Mind"
 	action_icon_state = "borer_talk"
 
 /datum/action/innate/borer/talk_to_brain/action_activate()
-	var/mob/living/carbon/cortical_borer/B = owner.has_brain_worms()
-	B.host_mob = owner
-	B.host_mob.trapped_mind_comm()
+	var/mob/living/carbon/cortical_borer/the_borer = owner.has_brain_worms()
+	the_borer.host_mob = owner
+	the_borer.host_mob.trapped_mind_comm()
 
 /datum/action/innate/borer/take_control
 	name = "Assume Control"
@@ -543,20 +540,20 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 
 /datum/action/innate/borer/take_control/action_activate()
 	if(!isborer(owner)) return FALSE
-	var/mob/living/carbon/cortical_borer/B = owner
-	if(B.hibernating)
-		to_chat(B, SPAN_WARNING("You cannot do that while hibernating!"))
+	var/mob/living/carbon/cortical_borer/the_borer = owner
+	if(the_borer.borer_flags_actives & BORER_ABILITY_HIBERNATING)
+		to_chat(the_borer, SPAN_WARNING("You cannot do that while hibernating!"))
 		return
-	B.bond_brain()
+	the_borer.bond_brain()
 
 /datum/action/innate/borer/give_back_control
 	name = "Release Control"
 	action_icon_state = "borer_leave"
 
 /datum/action/innate/borer/give_back_control/action_activate()
-	var/mob/living/carbon/cortical_borer/B = owner.has_brain_worms()
-	B.host_mob = owner
-	B.host_mob.release_control()
+	var/mob/living/carbon/cortical_borer/the_borer = owner.has_brain_worms()
+	the_borer.host_mob = owner
+	the_borer.host_mob.release_control()
 
 /datum/action/innate/borer/leave_body
 	name = "Leave Host"
@@ -564,11 +561,11 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 
 /datum/action/innate/borer/leave_body/action_activate()
 	if(!isborer(owner)) return FALSE
-	var/mob/living/carbon/cortical_borer/B = owner
-	if(B.hibernating)
-		to_chat(B, SPAN_WARNING("You cannot do that while hibernating!"))
+	var/mob/living/carbon/cortical_borer/the_borer = owner
+	if(the_borer.borer_flags_actives & BORER_ABILITY_HIBERNATING)
+		to_chat(the_borer, SPAN_WARNING("You cannot do that while hibernating!"))
 		return
-	B.release_host()
+	the_borer.release_host()
 
 /datum/action/innate/borer/make_chems
 	name = "Secrete Chemicals"
@@ -576,11 +573,11 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 
 /datum/action/innate/borer/make_chems/action_activate()
 	if(!isborer(owner)) return FALSE
-	var/mob/living/carbon/cortical_borer/B = owner
-	if(B.hibernating)
-		to_chat(B, SPAN_WARNING("You cannot do that while hibernating!"))
+	var/mob/living/carbon/cortical_borer/the_borer = owner
+	if(the_borer.borer_flags_actives & BORER_ABILITY_HIBERNATING)
+		to_chat(the_borer, SPAN_WARNING("You cannot do that while hibernating!"))
 		return
-	B.secrete_chemicals()
+	the_borer.secrete_chemicals()
 
 /datum/action/innate/borer/scan_chems
 	name = "Scan Chemicals"
@@ -588,11 +585,11 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 
 /datum/action/innate/borer/scan_chems/action_activate()
 	if(!isborer(owner)) return FALSE
-	var/mob/living/carbon/cortical_borer/B = owner
-	if(B.hibernating)
-		to_chat(B, SPAN_WARNING("You cannot do that while hibernating!"))
+	var/mob/living/carbon/cortical_borer/the_borer = owner
+	if(the_borer.borer_flags_actives & BORER_ABILITY_HIBERNATING)
+		to_chat(the_borer, SPAN_WARNING("You cannot do that while hibernating!"))
 		return
-	borerscan(B, B.host_mob)
+	borerscan(the_borer, the_borer.host_mob)
 
 /datum/action/innate/borer/learn_chems
 	name = "Learn Chemicals"
@@ -600,52 +597,55 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 
 /datum/action/innate/borer/learn_chems/action_activate()
 	if(!isborer(owner)) return FALSE
-	var/mob/living/carbon/cortical_borer/B = owner
-	if(B.hibernating)
-		to_chat(B, SPAN_WARNING("You cannot do that while hibernating!"))
+	var/mob/living/carbon/cortical_borer/the_borer = owner
+	if(the_borer.borer_flags_actives & BORER_ABILITY_HIBERNATING)
+		to_chat(the_borer, SPAN_WARNING("You cannot do that while hibernating!"))
 		return
-	B.learn_chemicals()
+	the_borer.learn_chemicals()
 
 /datum/action/innate/borer/make_larvae
 	name = "Reproduce"
 	action_icon_state = "borer_reproduce"
 
 /datum/action/innate/borer/make_larvae/action_activate()
-	var/mob/living/carbon/cortical_borer/B = owner.has_brain_worms()
-	B.host_mob = owner
-	B.host_mob.spawn_larvae()
+	var/mob/living/carbon/cortical_borer/the_borer = owner.has_brain_worms()
+	the_borer.host_mob = owner
+	the_borer.host_mob.spawn_larvae()
 
 /datum/action/innate/borer/freeze_victim
 	name = "Dominate Victim"
 	action_icon_state = "borer_stun"
 
 /datum/action/innate/borer/freeze_victim/action_activate()
-	var/mob/living/carbon/cortical_borer/B = owner
-	B.dominate_victim()
+	var/mob/living/carbon/cortical_borer/the_borer = owner
+	the_borer.dominate_victim()
 
 /datum/action/innate/borer/torment
 	name = "Torment Host"
 	action_icon_state = "borer_torment"
 
 /datum/action/innate/borer/torment/action_activate()
-	var/mob/living/carbon/cortical_borer/B = owner.has_brain_worms()
-	B.host_mob = owner
-	B.host_mob.punish_host()
+	var/mob/living/carbon/cortical_borer/the_borer = owner.has_brain_worms()
+	the_borer.host_mob = owner
+	the_borer.host_mob.punish_host()
 
 /datum/action/innate/borer/hibernate
 	name = "Toggle Hibernation"
 	action_icon_state = "borer_sleeping_0"
 
 /datum/action/innate/borer/hibernate/action_activate()
-	var/mob/living/carbon/cortical_borer/B = owner
-	B.hibernate()
+	var/mob/living/carbon/cortical_borer/the_borer = owner
+	the_borer.hibernate()
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_borer.dmi', button, "borer_sleeping_[B.hibernating]")
+	var/is_hibernating = FALSE
+	if(the_borer.borer_flags_actives & BORER_ABILITY_HIBERNATING)
+		is_hibernating = TRUE
+	button.overlays += image('icons/mob/hud/actions_borer.dmi', button, "borer_sleeping_[is_hibernating]")
 
 /datum/action/innate/borer/transfer_host
 	name = "Transfer Host"
 	action_icon_state = "borer_infest"
 
 /datum/action/innate/borer/transfer_host/action_activate()
-	var/mob/living/carbon/cortical_borer/B = owner.has_brain_worms()
-	B.transfer_host()
+	var/mob/living/carbon/cortical_borer/the_borer = owner.has_brain_worms()
+	the_borer.transfer_host()

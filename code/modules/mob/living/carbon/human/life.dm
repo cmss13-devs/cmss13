@@ -66,9 +66,9 @@
 				if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > revive_grace_period) && !issynth(src)) //We are dead beyond revival, or we're junk mobs spawned like the clowns on the clown shuttle
 					undefibbable = TRUE
 					SEND_SIGNAL(src, COMSIG_HUMAN_SET_UNDEFIBBABLE)
-					var/mob/living/carbon/cortical_borer/B = has_brain_worms()
-					if(B)
-						B.host_death(TRUE)
+					var/mob/living/carbon/cortical_borer/the_borer = has_brain_worms()
+					if(the_borer)
+						the_borer.host_death(TRUE)
 					med_hud_set_status()
 
 	else if(stat != DEAD)

@@ -63,10 +63,6 @@
 "at" = (
 /turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/e)
-"au" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/asteroidwarning/north,
-/area/bigredv2/outside/c)
 "av" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/plating/panelscorched,
@@ -307,12 +303,6 @@
 /obj/item/stack/rods,
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
-"bw" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
-/turf/open/floor/white,
-/area/bigredv2/outside/office_complex)
 "bx" = (
 /obj/item/shard,
 /turf/open/floor/asteroidfloor/north,
@@ -398,11 +388,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
-"bP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
-/turf/open/floor/platingdmg1,
-/area/bigredv2/outside/office_complex)
 "bQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
@@ -484,7 +469,6 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "cf" = (
-/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -664,11 +648,6 @@
 	icon_state = "rightengine_3";
 	opacity = 0
 	},
-/area/bigredv2/outside/office_complex)
-"cP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
-/turf/open/floor/whiteyellowfull/east,
 /area/bigredv2/outside/office_complex)
 "cQ" = (
 /obj/item/stack/rods,
@@ -1078,11 +1057,6 @@
 /obj/item/limb/leg/l_leg,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
-"nE" = (
-/obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/bigredv2/outside/office_complex)
 "oF" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
@@ -1303,7 +1277,7 @@ ap
 (4,1,1) = {"
 ac
 ad
-au
+ah
 as
 aJ
 aR
@@ -1390,7 +1364,7 @@ aJ
 aR
 bO
 aS
-bw
+bM
 bE
 by
 bd
@@ -1501,7 +1475,7 @@ XH
 AB
 yS
 aV
-nE
+dM
 dN
 dP
 aV
@@ -1550,7 +1524,7 @@ av
 ar
 aN
 aU
-nE
+dM
 bm
 dA
 fv
@@ -1589,9 +1563,9 @@ yS
 yS
 yS
 dH
-nE
-nE
-nE
+dM
+dM
+dM
 dT
 cF
 do
@@ -1657,7 +1631,7 @@ ap
 az
 bu
 aN
-nE
+dM
 dL
 bm
 yS
@@ -1718,8 +1692,8 @@ rK
 bp
 aV
 dM
-nE
-nE
+dM
+dM
 aV
 fv
 dA
@@ -1798,7 +1772,7 @@ ap
 aS
 ap
 bd
-bP
+bd
 bT
 by
 dU
@@ -1833,7 +1807,7 @@ cg
 ap
 ei
 aS
-cP
+cA
 bE
 bd
 dk

@@ -148,10 +148,6 @@
 "vX" = (
 /turf/open/mars_cave/mars_dirt_5,
 /area/bigredv2/caves_sw)
-"wn" = (
-/obj/effect/landmark/crap_item,
-/turf/open/mars_cave/mars_cave_13,
-/area/bigredv2/outside/lz2_south_cas)
 "wJ" = (
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/lz2_south_cas)
@@ -324,7 +320,6 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "QO" = (
-/obj/effect/landmark/crap_item,
 /turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/caves_research)
 "QS" = (
@@ -424,7 +419,7 @@ cR
 cR
 JV
 fK
-wn
+ik
 ik
 JW
 VR

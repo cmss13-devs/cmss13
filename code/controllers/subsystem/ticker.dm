@@ -444,9 +444,7 @@ SUBSYSTEM_DEF(ticker)
 		qdel(player)
 
 /datum/controller/subsystem/ticker/proc/equip_characters()
-	var/captainless=1
-	if(mode && istype(mode,/datum/game_mode/huntergames)) // || istype(mode,/datum/game_mode/whiskey_outpost)
-		return
+	var/captainless = TRUE
 
 	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
 		if(player.mind)

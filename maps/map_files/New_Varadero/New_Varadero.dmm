@@ -1066,10 +1066,6 @@
 "aLl" = (
 /turf/open/floor/shiva/wred,
 /area/varadero/interior/medical)
-"aLn" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/hall_SE)
 "aMp" = (
 /obj/structure/machinery/photocopier,
 /turf/open/floor/shiva/redfull,
@@ -1190,10 +1186,6 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/gm/dirt/desert3,
 /area/varadero/exterior/lz1_near)
-"aTh" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/medical)
 "aTC" = (
 /obj/item/reagent_container/food/snacks/eat_bar{
 	pixel_x = 5;
@@ -1421,10 +1413,6 @@
 /obj/item/trash/wy_chips_pepper,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"bbt" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/caves/digsite)
 "bbG" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/coast/west,
@@ -1753,7 +1741,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "bpI" = (
-/obj/effect/landmark/hunter_secondary,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
@@ -2115,7 +2102,6 @@
 "bFo" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight/flare,
-/obj/effect/landmark/crap_item,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "bFD" = (
@@ -3424,10 +3410,6 @@
 	},
 /turf/open/floor/light,
 /area/varadero/interior_protected/vessel)
-"cHY" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "cIB" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/shiva/yellow/north,
@@ -5047,10 +5029,6 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"egj" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/floor/plating/icefloor,
-/area/varadero/exterior/lz1_near)
 "egp" = (
 /obj/structure/window/framed/colony,
 /obj/structure/noticeboard{
@@ -5384,7 +5362,6 @@
 /area/varadero/exterior/eastocean)
 "esB" = (
 /obj/structure/closet/radiation,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/comms3)
 "esK" = (
@@ -6343,10 +6320,6 @@
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"fcF" = (
-/obj/effect/landmark/crap_item,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/vessel)
 "fcK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -7180,7 +7153,6 @@
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/comms3)
 "fMq" = (
@@ -7254,7 +7226,6 @@
 /area/varadero/interior/hall_SE)
 "fPo" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/crap_item,
 /obj/item/storage/fancy/cigar,
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/administration)
@@ -7944,10 +7915,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
-"gms" = (
-/obj/effect/landmark/good_item,
-/turf/open/shuttle/red,
-/area/varadero/interior_protected/vessel)
 "gmE" = (
 /obj/structure/closet/jcloset,
 /obj/effect/landmark/objective_landmark/far,
@@ -9547,10 +9514,6 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva/wredfull,
 /area/varadero/interior/medical)
-"hHn" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "hHE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -11838,10 +11801,6 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/interior_protected/caves)
-"jty" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/shiva/multi_tiles/west,
-/area/varadero/interior/hall_N)
 "jtH" = (
 /turf/open/floor/asteroidwarning/west,
 /area/varadero/exterior/lz2_near)
@@ -13850,10 +13809,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/hall_NW)
-"kZl" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "kZn" = (
 /obj/structure/surface/table,
 /obj/item/tool/kitchen/utensil/knife,
@@ -14818,7 +14773,6 @@
 /area/varadero/exterior/pool)
 "lMq" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/crap_item,
 /obj/effect/spawner/random/supply_kit,
 /turf/open/floor/shiva/blue/northeast,
 /area/varadero/interior/administration)
@@ -17385,10 +17339,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/electrical)
-"nOj" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/floor/shiva/multi_tiles/west,
-/area/varadero/interior/cargo)
 "nOz" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/station_alert{
@@ -21223,10 +21173,6 @@
 /obj/structure/prop/fishing/line/long/part2,
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/pontoon_beach)
-"qHu" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/shiva/green/east,
-/area/varadero/interior/hall_N)
 "qHF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -23500,13 +23446,6 @@
 /obj/item/tool/crowbar,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms1)
-"ssv" = (
-/obj/effect/landmark/hunter_secondary,
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 4
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "ssw" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
@@ -24789,10 +24728,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
-"tpa" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/lz2_near)
 "tpB" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/autopsy_scanner{
@@ -29065,7 +29000,6 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "wGs" = (
-/obj/effect/landmark/hunter_primary,
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;
@@ -29240,7 +29174,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "wOL" = (
-/obj/effect/landmark/crap_item,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -29961,10 +29894,6 @@
 	},
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
-"xuW" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/hall_N)
 "xuX" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -38443,7 +38372,7 @@ mGb
 lgP
 lzu
 mGb
-qHu
+mGb
 mGb
 lzu
 lgP
@@ -39915,7 +39844,7 @@ maN
 maN
 maN
 maN
-aTh
+maN
 qcN
 vhb
 kFT
@@ -40601,7 +40530,7 @@ huF
 ykc
 mIL
 enU
-nOj
+enU
 uQK
 uXZ
 lhn
@@ -42775,7 +42704,7 @@ ygZ
 efU
 onr
 ahK
-ssv
+ygZ
 efU
 cgA
 ahK
@@ -43704,7 +43633,7 @@ wMw
 wMw
 wMw
 bnf
-cHY
+wMw
 wMw
 rSA
 pAp
@@ -43721,7 +43650,7 @@ ckI
 hvO
 ckI
 hvO
-jty
+ckI
 hvO
 ckI
 hvO
@@ -44594,7 +44523,7 @@ bZU
 bZU
 bZU
 bZU
-egj
+bZU
 bZU
 bZU
 bZU
@@ -48820,7 +48749,7 @@ rPT
 rPT
 qAp
 xWY
-xuW
+hvO
 bih
 rHv
 pVN
@@ -49567,7 +49496,7 @@ tEJ
 tEJ
 hgB
 tEJ
-aLn
+tEJ
 tEJ
 uXw
 tEJ
@@ -49598,7 +49527,7 @@ umT
 lIT
 qeK
 bGy
-aLn
+tEJ
 tEJ
 tEJ
 tEJ
@@ -56237,7 +56166,7 @@ lTg
 lTg
 pXT
 lTg
-tpa
+lTg
 lTg
 lTg
 pXT
@@ -58056,7 +57985,7 @@ wlB
 wlB
 wlB
 wlB
-hHn
+wlB
 wlB
 wlB
 wlB
@@ -62185,14 +62114,14 @@ kjI
 kjI
 rco
 kjI
-gms
+kjI
 mRs
 snS
 kjI
 kjI
 snS
 mRs
-gms
+kjI
 kjI
 lvS
 nkq
@@ -66917,14 +66846,14 @@ pDX
 bsf
 lVf
 iyk
-kZl
+uvd
 eiK
 hoU
 fxR
 fxR
 kjI
 kjI
-fcF
+ulv
 ulv
 bsf
 bsf
@@ -67465,10 +67394,10 @@ bsf
 bsf
 hte
 sOw
-kZl
+uvd
 ulv
 hoU
-kZl
+uvd
 ulv
 avD
 doP
@@ -69113,7 +69042,7 @@ bsf
 bsf
 bsf
 bsf
-bbt
+bsf
 bsf
 bsf
 bsf

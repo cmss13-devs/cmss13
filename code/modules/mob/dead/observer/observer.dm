@@ -1127,47 +1127,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_joe_late_join(src))
 		SSticker.mode.attempt_to_join_as_joe(src)
 
-
-/mob/dead/verb/drop_vote()
-	set category = "Ghost"
-	set name = "Spectator Vote"
-	set desc = "If it's on Hunter Games gamemode, vote on who gets a supply drop!"
-
-	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
-		return
-
-	if(!istype(SSticker.mode,/datum/game_mode/huntergames))
-		to_chat(src, SPAN_INFO("Wrong game mode. You have to be observing a Hunter Games round."))
-		return
-
-	var/datum/game_mode/huntergames/mode = SSticker.mode
-
-	if(!mode.waiting_for_drop_votes)
-		to_chat(src, SPAN_INFO("There's no drop vote currently in progress. Wait for a supply drop to be announced!"))
-		return
-
-	if(voted_this_drop)
-		to_chat(src, SPAN_INFO("You voted for this one already. Only one please!"))
-		return
-
-	var/list/mobs = GLOB.alive_mob_list
-	var/target = null
-
-	for(var/mob/living/M in mobs)
-		if(!istype(M,/mob/living/carbon/human) || M.stat || isyautja(M)) mobs -= M
-
-
-	target = tgui_input_list(usr, "Please, select a contestant!", "Cake Time", mobs)
-
-	if (!target)//Make sure we actually have a target
-		return
-	else
-		to_chat(src, SPAN_INFO("Your vote for [target] has been counted!"))
-		SSticker.mode:supply_votes += target
-		voted_this_drop = 1
-		addtimer(VARSET_CALLBACK(src, voted_this_drop, FALSE), 20 SECONDS)
-
 /mob/dead/observer/verb/go_dnr()
 	set category = "Ghost.Body"
 	set name = "Go DNR"

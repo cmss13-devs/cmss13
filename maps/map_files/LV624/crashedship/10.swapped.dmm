@@ -101,10 +101,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"sq" = (
-/obj/effect/landmark/crap_item,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "sK" = (
 /obj/effect/decal/remains/human,
 /turf/open/gm/dirt,
@@ -208,10 +204,6 @@
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
-"KY" = (
-/obj/effect/landmark/crap_item,
-/turf/open/shuttle/bright_red,
-/area/lv624/lazarus/crashed_ship_containers)
 "My" = (
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
@@ -222,10 +214,6 @@
 "Pa" = (
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
-"Pp" = (
-/obj/effect/landmark/crap_item,
-/turf/open/gm/dirt,
-/area/lv624/lazarus/crashed_ship_containers)
 "Qq" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -235,10 +223,6 @@
 "QE" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_east_caves)
-"Sj" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/airless/asteroidfloor/northeast,
-/area/lv624/ground/barrens/north_east_barrens)
 "SS" = (
 /obj/structure/foamed_metal,
 /turf/open/gm/dirt,
@@ -332,7 +316,7 @@ EH
 SS
 AT
 AI
-Pp
+AI
 Io
 AI
 qk
@@ -343,7 +327,7 @@ gQ
 Vf
 Vy
 Vy
-Sj
+My
 CI
 pg
 Vy
@@ -406,7 +390,7 @@ At
 At
 SS
 AI
-Pp
+AI
 SS
 gQ
 dZ
@@ -421,7 +405,7 @@ Vy
 Um
 px
 vh
-KY
+Pa
 SS
 AI
 Io
@@ -505,7 +489,7 @@ Vy
 Vy
 Vy
 Vy
-sq
+Vy
 Vy
 Vy
 "}

@@ -212,10 +212,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"aO" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
 "aP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/redcorner/east,
@@ -262,11 +258,6 @@
 /area/bigredv2/outside/marshal_office)
 "aY" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
-/area/bigredv2/outside/marshal_office)
-"aZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "ba" = (
@@ -323,11 +314,6 @@
 /area/bigredv2/outside/marshal_office)
 "bk" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"bl" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/good_item,
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
 "bm" = (
@@ -473,11 +459,6 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westright,
 /turf/open/floor/vault2/west,
-/area/bigredv2/outside/marshal_office)
-"bR" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
-/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -679,7 +660,6 @@
 /area/bigredv2/outside/marshal_office)
 "cE" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
-/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "cF" = (
@@ -962,7 +942,7 @@ as
 ab
 ab
 aI
-aO
+aR
 aY
 bh
 ah
@@ -1035,7 +1015,7 @@ ax
 az
 ah
 aP
-aZ
+aY
 bi
 ah
 bB
@@ -1108,7 +1088,7 @@ at
 ah
 aR
 bb
-bl
+bk
 ah
 bD
 by
@@ -1351,7 +1331,7 @@ cZ
 ah
 bu
 bH
-bR
+aN
 ce
 co
 cw

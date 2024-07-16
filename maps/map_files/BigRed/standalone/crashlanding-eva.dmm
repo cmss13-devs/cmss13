@@ -304,10 +304,6 @@
 	icon_state = "wy13"
 	},
 /area/bigredv2/outside/general_offices)
-"bO" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/platingdmg1,
-/area/bigredv2/outside/general_offices)
 "bP" = (
 /obj/structure/surface/table,
 /turf/open/floor/platingdmg1,
@@ -1502,7 +1498,7 @@ aO
 aO
 bD
 bl
-bO
+aO
 aW
 aW
 eF
@@ -1526,7 +1522,7 @@ aX
 bl
 cW
 aO
-bO
+aO
 dc
 cg
 aO

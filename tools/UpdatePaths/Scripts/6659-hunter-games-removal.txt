@@ -1,0 +1,4 @@
+/obj/effect/landmark/hunter_primary : @DELETE
+/obj/effect/landmark/hunter_secondary : @DELETE
+/obj/effect/landmark/crap_item : @DELETE
+/obj/effect/landmark/good_item : @DELETE

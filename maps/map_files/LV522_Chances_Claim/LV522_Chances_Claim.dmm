@@ -44200,13 +44200,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/corpo_fitness)
-"uLz" = (
-/obj/effect/landmark/hunter_secondary,
-/obj/structure/machinery/landinglight/ds1{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv522/landing_zone_1)
 "uLE" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -54647,7 +54640,7 @@ tns
 fOc
 uTd
 oyf
-uLz
+tns
 fOc
 uTd
 oyf

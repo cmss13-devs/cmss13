@@ -8,11 +8,6 @@
 "c" = (
 /turf/open/floor/damaged5/west,
 /area/bigredv2/outside/telecomm)
-"d" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/telecomm)
 "e" = (
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/telecomm)
@@ -38,10 +33,6 @@
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/damaged4/west,
-/area/bigredv2/outside/telecomm)
-"l" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/damaged5/west,
 /area/bigredv2/outside/telecomm)
 "m" = (
 /obj/effect/decal/cleanable/blood/tracks,
@@ -170,7 +161,7 @@ B
 G
 "}
 (4,1,1) = {"
-d
+j
 e
 g
 s
@@ -199,7 +190,7 @@ A
 e
 f
 h
-l
+c
 q
 b
 y

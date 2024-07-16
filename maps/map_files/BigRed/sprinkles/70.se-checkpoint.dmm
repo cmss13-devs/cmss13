@@ -192,7 +192,6 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/se)
 "Ge" = (
-/obj/effect/landmark/crap_item,
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/filtration_cave_cas)
 "Gm" = (
@@ -319,12 +318,10 @@
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "Zu" = (
-/obj/effect/landmark/hunter_primary,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/filtration_cave_cas)
 "ZK" = (
-/obj/effect/landmark/crap_item,
 /obj/structure/machinery/light{
 	dir = 4
 	},

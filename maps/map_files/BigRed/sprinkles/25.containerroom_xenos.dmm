@@ -61,13 +61,6 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
-"r" = (
-/obj/effect/landmark/hunter_primary,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/nw)
 "s" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/plating,
@@ -231,7 +224,7 @@ b
 g
 m
 j
-r
+q
 j
 v
 w

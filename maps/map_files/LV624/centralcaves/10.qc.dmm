@@ -177,13 +177,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/barrens/north_east_barrens)
-"GR" = (
-/obj/effect/landmark/hunter_primary,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "Is" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -260,7 +253,6 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "Vd" = (
-/obj/effect/landmark/hunter_primary,
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 9
 	},
@@ -590,7 +582,7 @@ ER
 ER
 Rx
 ER
-GR
+wL
 Xj
 XV
 XV

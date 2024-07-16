@@ -83,7 +83,6 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/space_port)
 "av" = (
-/obj/effect/landmark/crap_item,
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/space_port)
 "aw" = (
@@ -236,7 +235,6 @@
 /area/bigredv2/outside/space_port)
 "aY" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/darkgreen2/southwest,
 /area/bigredv2/outside/space_port)
 "aZ" = (
@@ -379,11 +377,6 @@
 "bJ" = (
 /obj/structure/cargo_container/wy/right,
 /turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/nw)
-"bK" = (
-/obj/effect/landmark/crap_item,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/nw)
 "bL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -616,7 +609,7 @@ bG
 bv
 bv
 bF
-bK
+bF
 bv
 bv
 bG

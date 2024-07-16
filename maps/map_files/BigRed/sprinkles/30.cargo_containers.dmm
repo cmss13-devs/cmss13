@@ -218,7 +218,6 @@
 /area/bigredv2/outside/cargo)
 "aQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/good_item,
 /turf/open/floor/bot/north,
 /area/bigredv2/outside/cargo)
 "aR" = (

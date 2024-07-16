@@ -15861,13 +15861,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
-"cCL" = (
-/obj/effect/landmark/crap_item,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
-/turf/open/floor/almayer,
-/area/almayer/maint/hull/upper/u_f_s)
 "cDb" = (
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = null
@@ -21489,7 +21482,6 @@
 	pixel_y = 7
 	},
 /obj/item/trash/popcorn,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "eTm" = (
@@ -40399,10 +40391,6 @@
 /obj/item/facepaint/sniper,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
-"mSr" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/almayer,
-/area/almayer/maint/hull/upper/u_f_p)
 "mSs" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -86283,7 +86271,7 @@ ioM
 lIQ
 qOY
 xZH
-mSr
+hrI
 nLp
 aag
 aag
@@ -86448,7 +86436,7 @@ aag
 aag
 aag
 cZe
-cCL
+lSX
 vDz
 kcH
 kcH

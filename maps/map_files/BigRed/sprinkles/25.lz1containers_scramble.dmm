@@ -241,14 +241,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
-"bg" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
-"bh" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "bi" = (
 /obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating,
@@ -437,7 +429,7 @@ ac
 ac
 aV
 ac
-bg
+ac
 ac
 ac
 bj
@@ -495,7 +487,7 @@ ac
 aV
 ac
 ac
-bh
+ac
 ac
 ac
 ac

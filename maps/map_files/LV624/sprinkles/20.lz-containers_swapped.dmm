@@ -8,14 +8,6 @@
 "d" = (
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
-"f" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz1)
-"g" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/loadingarea/west,
-/area/lv624/lazarus/landing_zones/lz1)
 "j" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints{
 	dir = 4
@@ -74,7 +66,6 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "P" = (
 /obj/vehicle/train/cargo/engine,
-/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "R" = (
@@ -119,7 +110,7 @@ p
 (2,1,1) = {"
 L
 c
-g
+c
 c
 c
 k
@@ -171,7 +162,7 @@ p
 C
 d
 X
-f
+d
 L
 d
 L

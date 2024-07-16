@@ -198,10 +198,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"aW" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/wood/wood_broken6,
-/area/lv624/ground/caves/north_central_caves)
 "aZ" = (
 /obj/structure/window_frame/wood,
 /turf/open/floor/wood,
@@ -230,10 +226,6 @@
 "bf" = (
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"bg" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/wood,
-/area/lv624/ground/caves/north_central_caves)
 "fH" = (
 /obj/item/weapon/gun/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1,
@@ -245,7 +237,6 @@
 /turf/open/floor/wood/wood_broken6,
 /area/lv624/ground/caves/north_central_caves)
 "jQ" = (
-/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/wood/wood_broken3,
 /area/lv624/ground/caves/north_central_caves)
@@ -327,11 +318,6 @@
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"Lu" = (
-/obj/effect/landmark/crap_item,
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/wood,
-/area/lv624/ground/caves/north_central_caves)
 "Ms" = (
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor/wood/wood_broken3,
@@ -394,7 +380,7 @@ aD
 aa
 ah
 an
-bg
+bf
 aK
 bf
 mu
@@ -444,7 +430,7 @@ ah
 ar
 aC
 bf
-bg
+bf
 bf
 aP
 aA
@@ -458,7 +444,7 @@ aE
 bf
 bf
 aC
-bg
+bf
 aA
 aZ
 "}
@@ -491,7 +477,7 @@ ah
 ad
 aw
 bf
-bg
+bf
 aK
 bf
 ak
@@ -537,12 +523,12 @@ aZ
 (15,1,1) = {"
 ah
 aP
-bg
+bf
 aG
 aS
 oA
 Ic
-Lu
+aV
 Ms
 aZ
 "}
@@ -637,7 +623,7 @@ ay
 bf
 aN
 ah
-bg
+bf
 bf
 ND
 aZ
@@ -647,7 +633,7 @@ aa
 ah
 aM
 bf
-aW
+aw
 ah
 bf
 ak

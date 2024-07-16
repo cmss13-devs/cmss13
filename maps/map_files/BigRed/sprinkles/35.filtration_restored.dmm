@@ -177,15 +177,6 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
-"aP" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/dark,
-/area/bigredv2/outside/filtration_plant)
-"aQ" = (
-/obj/structure/surface/table,
-/obj/effect/landmark/good_item,
-/turf/open/floor/darkyellow2/east,
-/area/bigredv2/outside/filtration_plant)
 "aR" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -316,13 +307,6 @@
 /area/bigredv2/outside/filtration_plant)
 "bp" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/filtration_plant)
-"bq" = (
-/obj/effect/landmark/crap_item,
-/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/dark,
@@ -593,10 +577,6 @@
 "tz" = (
 /turf/open/floor/darkyellow2/northwest,
 /area/bigredv2/outside/filtration_plant)
-"tB" = (
-/obj/effect/landmark/crap_item,
-/turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/outside/filtration_cave_cas)
 "vK" = (
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/filtration_plant)
@@ -849,7 +829,7 @@ aa
 aa
 aa
 Wz
-bq
+TX
 bW
 bW
 bW
@@ -1060,7 +1040,7 @@ aF
 ai
 aa
 aZ
-aP
+bW
 aX
 aN
 bm
@@ -1115,7 +1095,7 @@ ai
 aa
 bd
 aR
-aQ
+bG
 be
 aa
 hk
@@ -1225,7 +1205,7 @@ am
 et
 bW
 bW
-aP
+bW
 aO
 by
 bW
@@ -1264,7 +1244,7 @@ bO
 bO
 bO
 bO
-tB
+bO
 bO
 bO
 bO

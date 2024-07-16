@@ -149,10 +149,6 @@
 /obj/item/toy/beach_ball,
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
-"yP" = (
-/obj/effect/landmark/good_item,
-/turf/open/floor/whitepurplecorner/east,
-/area/lv624/lazarus/fitness)
 "yV" = (
 /obj/structure/sign/safety/water{
 	pixel_x = 7;
@@ -178,10 +174,6 @@
 	dir = 8
 	},
 /turf/open/floor/whitepurplecorner/east,
-/area/lv624/lazarus/fitness)
-"Er" = (
-/obj/effect/landmark/good_item,
-/turf/open/floor/barber/west,
 /area/lv624/lazarus/fitness)
 "Ez" = (
 /turf/open/floor,
@@ -227,10 +219,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"JM" = (
-/obj/effect/landmark/crap_item,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/colony/south_medbay_road)
 "KS" = (
 /obj/structure/fence,
 /turf/open/gm/grass/grass1,
@@ -315,10 +303,6 @@
 "WV" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/colony/north_nexus_road)
-"Zo" = (
-/obj/effect/landmark/good_item,
-/turf/open/gm/river,
-/area/lv624/lazarus/fitness)
 "ZM" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/south,
@@ -345,7 +329,7 @@ bA
 ZM
 xS
 xS
-JM
+xS
 xS
 sA
 lB
@@ -418,7 +402,7 @@ bQ
 EG
 EG
 EG
-Zo
+EG
 EG
 bQ
 vq
@@ -448,7 +432,7 @@ Vo
 Iu
 vq
 vq
-Er
+bQ
 EG
 EG
 Ou
@@ -532,7 +516,7 @@ Wj
 WV
 Fx
 SW
-yP
+vq
 bQ
 bQ
 bQ
@@ -540,7 +524,7 @@ bQ
 bQ
 bQ
 bQ
-yP
+vq
 Rl
 Vo
 Wj

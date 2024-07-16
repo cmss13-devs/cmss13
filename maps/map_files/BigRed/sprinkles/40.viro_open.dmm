@@ -14,10 +14,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
-"ae" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/asteroidwarning,
-/area/bigredv2/outside/nw)
 "af" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -149,10 +145,6 @@
 "aN" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/mars_cave/mars_dirt_5,
-/area/bigredv2/outside/virology)
-"aO" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/virology)
 "aR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -479,7 +471,7 @@ bx
 at
 aA
 av
-aO
+av
 av
 aZ
 bd
@@ -641,7 +633,7 @@ bc
 bc
 "}
 (22,1,1) = {"
-ae
+rG
 ak
 ak
 ax

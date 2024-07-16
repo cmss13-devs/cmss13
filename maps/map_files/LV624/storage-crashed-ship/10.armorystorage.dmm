@@ -88,10 +88,6 @@
 /obj/item/tool/pickaxe,
 /turf/open/floor/dark,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
-"v" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/dark,
-/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "x" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/fp9000,
@@ -167,10 +163,6 @@
 	},
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
-"K" = (
-/obj/effect/landmark/crap_item,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "N" = (
 /turf/open/floor/dark,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
@@ -232,7 +224,6 @@
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = 6
 	},
-/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
@@ -240,8 +231,8 @@
 (1,1,1) = {"
 X
 p
-K
-K
+p
+p
 p
 p
 X
@@ -254,7 +245,7 @@ p
 X
 p
 p
-K
+p
 p
 "}
 (3,1,1) = {"
@@ -283,7 +274,7 @@ N
 N
 N
 e
-v
+N
 N
 j
 "}
@@ -320,7 +311,7 @@ j
 (9,1,1) = {"
 j
 P
-v
+N
 Q
 j
 j
@@ -334,7 +325,7 @@ y
 V
 j
 X
-K
+p
 p
 "}
 (11,1,1) = {"

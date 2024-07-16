@@ -920,7 +920,6 @@
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "adn" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
@@ -2245,11 +2244,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/minehead)
-"aih" = (
-/obj/effect/landmark/crap_item,
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/deep/structures/res)
 "aii" = (
 /obj/structure/machinery/computer/guestpass,
 /obj/structure/surface/table/reinforced/prison,
@@ -19355,11 +19349,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata,
 /area/strata/ag/interior/disposals)
-"bAx" = (
-/obj/effect/landmark/crap_item,
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/floor/greengrid,
-/area/strata/ag/interior/disposals)
 "bAy" = (
 /obj/item/trash/pistachios,
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -19853,7 +19842,6 @@
 "bEY" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/effect/landmark/good_item,
 /obj/structure/surface/rack,
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -24885,7 +24873,6 @@
 "eek" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/good_item,
 /turf/open/floor/strata/blue1,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
 "eeG" = (
@@ -26581,7 +26568,6 @@
 /area/strata/ag/exterior/marsh)
 "hsg" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/good_item,
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/deep/structures/engi)
@@ -29052,10 +29038,6 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
-"mjR" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/strata/purp2,
-/area/strata/ug/interior/jungle/deep/structures/engi)
 "mlq" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -29121,7 +29103,6 @@
 /area/strata/ag/interior/tcomms)
 "mrz" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/strata/blue1,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
 "mrG" = (
@@ -30355,7 +30336,6 @@
 "piD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/cheesecakeslice,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
 "piO" = (
@@ -32212,7 +32192,6 @@
 /turf/open/asphalt/cement/cement9,
 /area/strata/ag/exterior/landingzone_2)
 "sQA" = (
-/obj/effect/landmark/good_item,
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib6"
@@ -32582,10 +32561,6 @@
 /obj/structure/bed/roller,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/southresearch)
-"tCR" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/plating,
-/area/strata/ag/exterior/landingzone_2)
 "tDo" = (
 /obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer2,
@@ -33221,7 +33196,6 @@
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/strata/purp2,
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "uHX" = (
@@ -33577,10 +33551,6 @@
 	},
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
-"vqx" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/floor/plating,
-/area/strata/ag/exterior/landingzone_2)
 "vrH" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -33811,10 +33781,6 @@
 	icon_state = "upp3"
 	},
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
-"vJB" = (
-/obj/effect/landmark/good_item,
-/turf/open/floor/strata,
-/area/strata/ug/interior/outpost/jung/dorms/admin2)
 "vKg" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -34148,7 +34114,6 @@
 /area/strata/ag/interior/tcomms)
 "wBj" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/blue1,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
@@ -34178,7 +34143,6 @@
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/obj/effect/landmark/good_item,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin2)
 "wEU" = (
@@ -34631,10 +34595,6 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
-"xGA" = (
-/obj/effect/landmark/crap_item,
-/turf/open/auto_turf/strata_grass/layer0,
-/area/strata/ug/interior/jungle/deep/west_engi)
 "xGE" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/landinglight/ds2/delaythree,
@@ -39527,7 +39487,7 @@ aVq
 csH
 ctd
 ctd
-bAx
+ctd
 ctd
 csH
 aZV
@@ -40113,7 +40073,7 @@ brj
 ctd
 ctd
 ctd
-bAx
+ctd
 brj
 aZY
 aZx
@@ -43091,7 +43051,7 @@ xTU
 bvD
 eFa
 lEo
-tCR
+jWs
 jWs
 ewk
 jWs
@@ -43676,7 +43636,7 @@ xTU
 bvD
 eFa
 odB
-vqx
+jWs
 jWs
 jWs
 jWs
@@ -66093,7 +66053,7 @@ oIx
 sQA
 drI
 usI
-vJB
+uaH
 kbU
 rjf
 iHX
@@ -72702,7 +72662,7 @@ cuM
 tPN
 vit
 vit
-xGA
+uvw
 vit
 sRR
 vit
@@ -73679,7 +73639,7 @@ vit
 vit
 vit
 sRR
-mjR
+vsy
 oAQ
 khT
 sCa
@@ -76140,7 +76100,7 @@ bon
 bon
 bon
 adz
-aih
+aeB
 aiU
 aeC
 abX

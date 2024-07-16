@@ -78,7 +78,6 @@
 "kh" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
-/obj/effect/landmark/crap_item,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
@@ -150,10 +149,6 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
-"rL" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/plating/platingdmg3,
-/area/lv624/lazarus/medbay)
 "rZ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
@@ -199,10 +194,6 @@
 /obj/structure/girder,
 /turf/closed/wall,
 /area/lv624/lazarus/medbay)
-"zj" = (
-/obj/effect/landmark/crap_item,
-/turf/open/gm/dirt,
-/area/lv624/ground/colony/south_medbay_road)
 "zl" = (
 /obj/item/reagent_container/hypospray,
 /turf/open/floor/white,
@@ -250,11 +241,6 @@
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
-"Dk" = (
-/obj/effect/landmark/crap_item,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/damaged5/west,
-/area/lv624/lazarus/medbay)
 "Ed" = (
 /turf/open/floor/damaged5/west,
 /area/lv624/lazarus/medbay)
@@ -272,11 +258,6 @@
 	pixel_y = 3
 	},
 /turf/open/floor/plating/platingdmg3,
-/area/lv624/lazarus/medbay)
-"Gh" = (
-/obj/effect/landmark/crap_item,
-/obj/structure/barricade/wooden,
-/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "Ha" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -308,10 +289,6 @@
 	dir = 1
 	},
 /turf/open/floor/plating/platingdmg3,
-/area/lv624/lazarus/medbay)
-"JO" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/plating/panelscorched,
 /area/lv624/lazarus/medbay)
 "JY" = (
 /obj/effect/decal/cleanable/blood,
@@ -443,10 +420,6 @@
 /area/lv624/lazarus/medbay)
 "UH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
-/turf/open/floor/white,
-/area/lv624/lazarus/medbay)
-"Xv" = (
-/obj/effect/landmark/crap_item,
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "XA" = (
@@ -582,10 +555,10 @@ XJ
 XJ
 hW
 LX
-Gh
+Iy
 UH
 Pk
-rL
+Pk
 Ul
 Pk
 Pk
@@ -608,7 +581,7 @@ YV
 QR
 OO
 Pk
-JO
+fX
 fX
 Ny
 og
@@ -657,7 +630,7 @@ XA
 XJ
 jg
 nz
-Xv
+YV
 Iy
 UH
 QR
@@ -701,7 +674,7 @@ Jc
 Lk
 Ed
 Ed
-Dk
+JY
 RT
 Px
 am
@@ -783,5 +756,5 @@ kg
 Bn
 nG
 og
-zj
+og
 "}

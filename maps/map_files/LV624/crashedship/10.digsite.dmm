@@ -38,10 +38,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"eW" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/airless/asteroidfloor/northeast,
-/area/lv624/ground/barrens/north_east_barrens)
 "gu" = (
 /obj/item/stack/cable_coil/random,
 /obj/item/explosive/grenade/high_explosive,
@@ -61,17 +57,9 @@
 /obj/structure/xenoautopsy/tank/broken,
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
-"kp" = (
-/obj/effect/landmark/crap_item,
-/turf/open/shuttle/bright_red,
-/area/lv624/lazarus/crashed_ship_containers)
 "kP" = (
 /obj/structure/girder/displaced,
 /obj/structure/foamed_metal,
-/turf/open/gm/dirt,
-/area/lv624/lazarus/crashed_ship_containers)
-"nt" = (
-/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "nv" = (
@@ -239,10 +227,6 @@
 "PS" = (
 /turf/closed/wall/sulaco,
 /area/lv624/ground/barrens/north_east_barrens)
-"Ro" = (
-/obj/effect/landmark/crap_item,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "RT" = (
 /obj/item/explosive/grenade/high_explosive/pmc,
 /obj/structure/foamed_metal,
@@ -337,7 +321,7 @@ gu
 yV
 yj
 LQ
-nt
+yV
 xg
 Dw
 yV
@@ -348,7 +332,7 @@ PE
 Wu
 PE
 PE
-eW
+ZH
 tv
 Fk
 PE
@@ -364,7 +348,7 @@ HK
 jE
 vD
 xg
-nt
+yV
 SX
 Fg
 PE
@@ -411,7 +395,7 @@ DT
 DT
 zH
 IP
-nt
+yV
 Fg
 jo
 PS
@@ -426,7 +410,7 @@ PE
 AA
 OV
 Ie
-kp
+xg
 zH
 RT
 DT
@@ -510,7 +494,7 @@ PE
 PE
 PE
 PE
-Ro
+PE
 PE
 PE
 "}

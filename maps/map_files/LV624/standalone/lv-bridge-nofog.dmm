@@ -46,10 +46,6 @@
 "dC" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/central_river)
-"iW" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/plating/asteroidfloor/north,
-/area/lv624/ground/river/central_river)
 "jr" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/north,
@@ -101,10 +97,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
-"xB" = (
-/obj/effect/landmark/crap_item,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/jungle/north_jungle)
 "yj" = (
 /turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/central_river)
@@ -196,7 +188,7 @@ aa
 aa
 lW
 ai
-xB
+lS
 aj
 yu
 "}
@@ -237,7 +229,7 @@ Uh
 DX
 DX
 DX
-iW
+DX
 DX
 lY
 ai
@@ -263,7 +255,7 @@ aj
 (9,1,1) = {"
 Yw
 DX
-iW
+DX
 DX
 DX
 DX

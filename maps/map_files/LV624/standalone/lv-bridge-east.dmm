@@ -67,18 +67,9 @@
 /obj/structure/fence,
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/ground/river/central_river)
-"av" = (
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/north,
-/area/lv624/ground/river/central_river)
 "ax" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/east,
-/area/lv624/ground/river/central_river)
-"ay" = (
-/obj/effect/landmark/crap_item,
-/turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "aA" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
@@ -225,10 +216,6 @@
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
-"Bv" = (
-/obj/effect/landmark/good_item,
-/turf/open/floor/plating/asteroidfloor/north,
-/area/lv624/ground/river/central_river)
 "BA" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
@@ -240,10 +227,6 @@
 "Ex" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_jungle)
-"GU" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/plating/asteroidfloor/north,
-/area/lv624/ground/river/central_river)
 "Hi" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/dirtgrassborder/south,
@@ -375,7 +358,7 @@ Ex
 ab
 ah
 aK
-ay
+aK
 aK
 aK
 aH
@@ -413,7 +396,7 @@ am
 am
 am
 am
-GU
+am
 aW
 oa
 by
@@ -440,7 +423,7 @@ ad
 am
 am
 am
-Bv
+am
 am
 am
 am
@@ -470,7 +453,7 @@ bK
 (12,1,1) = {"
 ab
 ab
-av
+ah
 wu
 aK
 aK
@@ -584,7 +567,7 @@ ab
 ah
 aK
 aK
-ay
+aK
 aH
 aJ
 aJ
@@ -651,7 +634,7 @@ aK
 aK
 aK
 aK
-ay
+aK
 aK
 be
 bf

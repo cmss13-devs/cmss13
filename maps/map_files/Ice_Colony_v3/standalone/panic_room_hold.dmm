@@ -23,7 +23,6 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/effect/landmark/crap_item,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "bi" = (
@@ -795,7 +794,6 @@
 /area/shiva/interior/colony/s_admin)
 "Cd" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/good_item,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Cu" = (
@@ -806,7 +804,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "Cx" = (
@@ -1091,7 +1088,6 @@
 	},
 /obj/item/spacecash/c1000,
 /obj/item/spacecash/c500,
-/obj/effect/landmark/good_item,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/s_admin)
 "Nq" = (
@@ -1147,7 +1143,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "PV" = (
@@ -1330,7 +1325,6 @@
 	pixel_y = -5
 	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "VE" = (
@@ -1342,7 +1336,6 @@
 "VX" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/good_item,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "Wj" = (

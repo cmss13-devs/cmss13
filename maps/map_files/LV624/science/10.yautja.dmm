@@ -48,7 +48,6 @@
 /area/lv624/lazarus/research)
 "aj" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
 /obj/item/weapon/yautja/combistick,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
@@ -142,7 +141,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/effect/landmark/crap_item,
 /obj/structure/transmitter/colony_net{
 	phone_category = "Lazarus Landing";
 	phone_id = "Research Dome";
@@ -262,7 +260,6 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/effect/landmark/crap_item,
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aW" = (
@@ -308,14 +305,12 @@
 	icon_state = "sink";
 	pixel_x = 11
 	},
-/obj/effect/landmark/crap_item,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "bf" = (
 /obj/item/storage/box/beakers,
 /obj/structure/surface/table,
 /obj/structure/sign/safety/biohazard,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "bg" = (
@@ -342,20 +337,6 @@
 /obj/item/explosive/grenade/spawnergrenade/smartdisc,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
-"ec" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/whitepurple/northeast,
-/area/lv624/lazarus/research)
-"gd" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/white,
-/area/lv624/lazarus/research)
-"gM" = (
-/obj/structure/surface/table,
-/obj/item/paper/research_notes,
-/obj/effect/landmark/crap_item,
-/turf/open/floor/whitepurple/northeast,
-/area/lv624/lazarus/research)
 "rg" = (
 /obj/structure/surface/table,
 /obj/item/paper/research_notes,
@@ -374,12 +355,7 @@
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
-"FO" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/freezerfloor,
-/area/lv624/lazarus/research)
 "Hj" = (
-/obj/effect/landmark/crap_item,
 /obj/structure/machinery/power/apc/nocharge{
 	dir = 1
 	},
@@ -392,7 +368,6 @@
 /area/lv624/lazarus/research)
 "LE" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "Np" = (
@@ -432,7 +407,7 @@ ao
 ab
 as
 ak
-ec
+al
 ab
 ao
 ao
@@ -447,13 +422,13 @@ ap
 aw
 aq
 ar
-gM
+rg
 aO
 aE
 ar
 aW
 aX
-FO
+aX
 ac
 aa
 "}
@@ -465,7 +440,7 @@ ax
 al
 aG
 al
-gd
+ak
 al
 aG
 aX
@@ -512,12 +487,12 @@ ab
 ac
 LE
 as
-ec
+al
 al
 ar
 aJ
 Lo
-gd
+ak
 ar
 aZ
 CC
@@ -544,7 +519,7 @@ ad
 "}
 (9,1,1) = {"
 ac
-ec
+al
 ba
 al
 al
@@ -554,7 +529,7 @@ ak
 aT
 ar
 ba
-ec
+al
 al
 al
 ac
@@ -614,7 +589,7 @@ bg
 ae
 ac
 au
-ec
+al
 aF
 ab
 aL

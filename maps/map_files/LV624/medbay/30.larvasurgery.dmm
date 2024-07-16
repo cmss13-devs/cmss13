@@ -30,7 +30,6 @@
 "an" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
-/obj/effect/landmark/crap_item,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
@@ -86,10 +85,6 @@
 /area/lv624/lazarus/medbay)
 "aw" = (
 /obj/item/reagent_container/hypospray,
-/turf/open/floor/white,
-/area/lv624/lazarus/medbay)
-"az" = (
-/obj/effect/landmark/crap_item,
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "aA" = (
@@ -211,10 +206,6 @@
 /obj/item/tool/pen,
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
-"bB" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/whitebluecorner/west,
-/area/lv624/lazarus/medbay)
 "bE" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/west,
@@ -224,10 +215,6 @@
 /area/lv624/ground/colony/south_medbay_road)
 "bI" = (
 /obj/item/trash/cigbutt,
-/turf/open/gm/dirt,
-/area/lv624/ground/colony/south_medbay_road)
-"bK" = (
-/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
 "bN" = (
@@ -544,10 +531,10 @@ ae
 ae
 qP
 aq
-az
+aq
 TK
 aq
-az
+aq
 aq
 aq
 aq
@@ -570,7 +557,7 @@ aq
 aq
 bs
 bx
-bB
+YV
 bN
 bo
 bF
@@ -619,7 +606,7 @@ ac
 ae
 Qu
 qC
-az
+aq
 aq
 TK
 aq
@@ -663,7 +650,7 @@ af
 aU
 aq
 aq
-az
+aq
 pc
 Vq
 mA
@@ -745,5 +732,5 @@ Np
 Pe
 wz
 bF
-bK
+bF
 "}

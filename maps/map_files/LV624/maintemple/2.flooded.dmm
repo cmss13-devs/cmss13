@@ -1617,10 +1617,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"Tn" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/gm/river,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "TY" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/surface/table/reinforced/prison{
@@ -3650,7 +3646,7 @@ HN
 HN
 MD
 ap
-Tn
+Lg
 Dj
 ez
 xp

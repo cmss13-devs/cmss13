@@ -195,11 +195,6 @@
 /obj/item/tool/weldingtool,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
-"aX" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/crap_item,
-/turf/open/floor/darkred2/west,
-/area/bigredv2/outside/admin_building)
 "aY" = (
 /turf/open/floor/darkred2/east,
 /area/bigredv2/outside/admin_building)
@@ -561,7 +556,7 @@ an
 be
 aM
 an
-aX
+an
 ND
 bn
 bs

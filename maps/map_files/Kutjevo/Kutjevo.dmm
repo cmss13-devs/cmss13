@@ -1263,10 +1263,6 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_dunes)
-"bTa" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/scrubland)
 "bTt" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -4011,10 +4007,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/Northwest_Dorms)
-"fAE" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/floor/almayer/research/containment/floor2,
-/area/kutjevo/exterior/complex_border/botany_medical_cave)
 "fAF" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/desert/shallow_edge/north,
@@ -6724,10 +6716,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
-"jRd" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_north)
 "jSi" = (
 /obj/structure/machinery/power/smes/buildable{
 	capacity = 1e+006;
@@ -6958,10 +6946,6 @@
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/locks)
-"kns" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/stonyfields)
 "knP" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/auto_turf/sand/layer0,
@@ -7730,10 +7714,6 @@
 	},
 /turf/open/floor/kutjevo/colors/green/tile,
 /area/kutjevo/interior/oob)
-"lsg" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/scrubland)
 "lsy" = (
 /obj/item/storage/belt/marine,
 /turf/open/floor/kutjevo/multi_tiles/east,
@@ -8886,10 +8866,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/botany)
-"mYG" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_north)
 "mYM" = (
 /obj/structure/window/framed/kutjevo/reinforced,
 /turf/open/floor/plating/kutjevo,
@@ -10090,10 +10066,6 @@
 /obj/item/storage/toolbox/electrical,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
-"oLs" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/scrubland)
 "oMw" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/colors/orange,
@@ -11804,10 +11776,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/gm/dirtgrassborder2/north,
 /area/kutjevo/exterior/complex_border/med_park)
-"rnM" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/stonyfields)
 "rob" = (
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/construction)
@@ -13597,10 +13565,6 @@
 "tUz" = (
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/kutjevo/exterior/lz_river)
-"tVs" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/almayer/research/containment/floor2,
-/area/kutjevo/exterior/complex_border/botany_medical_cave)
 "tWv" = (
 /turf/open/gm/river,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
@@ -14551,10 +14515,6 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
-"via" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/scrubland)
 "vin" = (
 /turf/open/floor/coagulation/icon2_0,
 /area/kutjevo/exterior/lz_river)
@@ -24784,7 +24744,7 @@ bXl
 fui
 rsV
 xYt
-via
+sYd
 bEp
 bXl
 bEp
@@ -24951,7 +24911,7 @@ bEp
 dsp
 dJs
 jvt
-bTa
+sYd
 bEp
 bEp
 bEp
@@ -26087,7 +26047,7 @@ hrz
 hrz
 hrz
 kIn
-oLs
+bXl
 bXl
 bXl
 tvJ
@@ -26254,7 +26214,7 @@ hrz
 hrz
 bXl
 bXl
-lsg
+bXl
 bXl
 dUE
 rfZ
@@ -32021,7 +31981,7 @@ xJg
 xJg
 xJg
 vea
-kns
+xJg
 vea
 dxF
 dxF
@@ -32188,7 +32148,7 @@ jfQ
 xJg
 vea
 xJg
-rnM
+vea
 vea
 vea
 dxF
@@ -36119,7 +36079,7 @@ snr
 lcs
 orY
 kRM
-tVs
+xHx
 wff
 fpO
 wff
@@ -36286,7 +36246,7 @@ snr
 lcs
 orY
 kRM
-fAE
+xHx
 wff
 fpO
 wff
@@ -48112,7 +48072,7 @@ wTt
 bkR
 bEH
 bEH
-mYG
+bkR
 bkR
 bkR
 bkR
@@ -48279,7 +48239,7 @@ bkR
 bkR
 bkR
 hSU
-jRd
+bkR
 bkR
 bkR
 wTt

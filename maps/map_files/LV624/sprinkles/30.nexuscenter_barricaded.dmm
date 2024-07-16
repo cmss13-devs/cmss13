@@ -65,7 +65,6 @@
 /turf/open/floor/damaged2,
 /area/lv624/lazarus/main_hall)
 "am" = (
-/obj/effect/landmark/good_item,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
@@ -113,7 +112,6 @@
 	dir = 4;
 	flipped = 1
 	},
-/obj/effect/landmark/crap_item,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "av" = (
@@ -574,11 +572,6 @@
 /obj/item/ammo_casing,
 /turf/open/floor/whiteyellowcorner/north,
 /area/lv624/lazarus/main_hall)
-"bO" = (
-/obj/effect/landmark/good_item,
-/obj/item/ammo_casing,
-/turf/open/floor/white,
-/area/lv624/lazarus/main_hall)
 "bP" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/barricade/wooden{
@@ -633,7 +626,6 @@
 /turf/open/floor/damaged5,
 /area/lv624/lazarus/main_hall)
 "bX" = (
-/obj/effect/landmark/good_item,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor/white,
@@ -704,10 +696,6 @@
 /area/lv624/lazarus/chapel)
 "HJ" = (
 /obj/structure/flora/pottedplant,
-/turf/open/floor/white,
-/area/lv624/lazarus/main_hall)
-"Ie" = (
-/obj/effect/landmark/crap_item,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "Ii" = (
@@ -886,7 +874,7 @@ aQ
 av
 ar
 bH
-bO
+aP
 Mf
 Ll
 NT
@@ -907,7 +895,7 @@ bP
 bU
 aW
 zt
-Ie
+zt
 "}
 (7,1,1) = {"
 aa

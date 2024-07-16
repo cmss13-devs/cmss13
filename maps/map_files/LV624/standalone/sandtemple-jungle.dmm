@@ -156,10 +156,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
-"FE" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_west_jungle)
 "Ge" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/dirtgrassborder/south,
@@ -401,7 +397,7 @@ uj
 QL
 oD
 LW
-FE
+oD
 LW
 LW
 "}

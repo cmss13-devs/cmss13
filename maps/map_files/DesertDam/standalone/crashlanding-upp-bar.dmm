@@ -142,10 +142,6 @@
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
-"cR" = (
-/obj/effect/landmark/crap_item,
-/turf/open/mars/mars_dirt_5,
-/area/desert_dam/exterior/valley/bar_valley_dam)
 "cZ" = (
 /turf/open/asphalt/cement/cement2,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
@@ -449,7 +445,6 @@
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "iV" = (
-/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/backroom)
 "jf" = (
@@ -1110,13 +1105,6 @@
 /obj/structure/prop/dam/boulder/boulder1,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"xj" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
-	},
-/obj/effect/landmark/crap_item,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/desert_dam/exterior/valley/bar_valley_dam)
 "xm" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/plating,
@@ -1299,7 +1287,6 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "zT" = (
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark/good_item,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "zZ" = (
@@ -1329,10 +1316,6 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/desert_dam/building/bar/bar)
-"At" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "Aw" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -2317,7 +2300,6 @@
 "TH" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/item/ammo_casing/bullet,
-/obj/effect/landmark/crap_item,
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "TO" = (
@@ -3047,7 +3029,7 @@ wZ
 kf
 ym
 GZ
-cR
+kf
 kf
 kf
 kf
@@ -3261,7 +3243,7 @@ Ev
 zD
 hY
 Er
-At
+qS
 qS
 Js
 pA
@@ -3349,7 +3331,7 @@ wE
 mT
 SL
 gN
-xj
+yP
 Tl
 kD
 hc

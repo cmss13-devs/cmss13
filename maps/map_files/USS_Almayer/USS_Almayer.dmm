@@ -2666,9 +2666,7 @@
 /obj/item/device/radio/marine,
 /obj/item/folded_tent/cmd,
 /obj/item/flag/plantable/ua,
-/turf/open/floor/almayer{
-	icon_state = "redfull"
-	},
+/turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
 "asR" = (
 /turf/open/floor/almayer/orange,

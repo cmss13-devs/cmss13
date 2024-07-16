@@ -43,7 +43,7 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 		if(DEATH_CAUSE_UNKNOWN)
 			death_message += " The devastation is unprecedented, and the cause unclear..."
 	impulse_broadcast(death_message)
-	for(var/mob/living/carbon/cortical_borer/borer/borer in living_borers)
+	for(var/mob/living/carbon/cortical_borer/borer in living_borers)
 		borer.death(create_cause_data("Cortical Link Collapse"))
 
 /datum/borer_brainlink/proc/generate_borer_chems()

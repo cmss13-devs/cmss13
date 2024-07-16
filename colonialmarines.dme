@@ -1250,7 +1250,6 @@
 #include "code\game\objects\items\storage\toolbox.dm"
 #include "code\game\objects\items\storage\toolkit.dm"
 #include "code\game\objects\items\storage\wallets.dm"
-#include "code\game\objects\items\tanks\jetpack.dm"
 #include "code\game\objects\items\tanks\tank_types.dm"
 #include "code\game\objects\items\tanks\tanks.dm"
 #include "code\game\objects\items\tools\cleaning_tools.dm"

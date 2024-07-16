@@ -92,3 +92,42 @@
   hislittlecuzingames:
   - rscadd: Multiple tools, and welding visor to SO Locker
   - qol: Adds free bayonet to Staff Officer Locker
+2024-07-11:
+  Blundir:
+  - rscadd: jtac and Intel kits to ASRS store
+  - rscadd: Intel kit to IO points vendor
+  - balance: intel kit now has large doc pouch instead of small
+  - balance: jtac kit now has radiopack
+  Diegoflores31:
+  - imageadd: changes xeno intent icon for a cooler one.
+  Doubleumc:
+  - imageadd: adds CMP tracker sprites for all HUD options
+  Drathek:
+  - maptweak: Removed var edits from open turfs to fix ScrapeAway resetting the turf
+      (e.g. xenos building resin walls) on basically all maps
+  - maptweak: Fixed bad dir var edits on various map
+  - maptweak: Fixed stacked structures on various maps
+  Git-Nivrak:
+  - balance: Hivelords now have meson vision
+  - rscadd: Added a toggle for meson vision for hivelord and burrower
+  Steelpoint:
+  - rscadd: VAISO Covert Operatives will now spawn with a Night Vision Optic in their
+      helmet.
+  Unknownity:
+  - bugfix: Burrowers now see themselves as partly transparent when burrowed.
+  blackdragonTOW:
+  - soundadd: Power Loader sounds have been normalized to -6db
+  iloveloopers:
+  - bugfix: Demolitions scanner now properly works for incinerator tanks.
+  - spellcheck: Fixed some capitalization with custom incinerator tanks.
+2024-07-12:
+  Kivts:
+  - ui: The Company spent some money to upgrade the chemical simulator to work on
+      the TGUI, Including a few prepaid features.
+2024-07-14:
+  kiVts:
+  - bugfix: Denied request on req is working again
+2024-07-15:
+  cuberound:
+  - rscadd: roof structures added, can be also used for lattices and billboards, go
+      transparent when you are near them

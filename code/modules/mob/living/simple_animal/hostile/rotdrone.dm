@@ -1,12 +1,12 @@
 /mob/living/simple_animal/hostile/alien/rotdrone
-	name = "Drone"
+	name = "Rotdrone"
 	desc = "A rotting... thing vaguely reminiscent of a drone. Smells absolutely awful."
-	icon = 'icons/mob/xenos/drone.dmi'
+	icon = 'icons/mob/xenos/rotdrone.dmi'
 	icon_gib = null
 	speed = XENO_SPEED_TIER_2
 	harm_intent_damage = 5
 	melee_damage_lower = XENO_DAMAGE_TIER_1
-	melee_damage_upper = XENO_DAMAGE_TIER_2
+	melee_damage_upper = XENO_DAMAGE_TIER_1
 	move_to_delay = 5
 	meat_type = null
 	unsuitable_atoms_damage = 5
@@ -62,23 +62,26 @@
 
 /mob/living/simple_animal/hostile/alien/rotdrone/Life()
 	. = ..()
-	if(escort && escort.stat == DEAD)
-		escorting = FALSE
-	if(get_dist(src, xeno_master) > 3)
+	if(!xeno_master || xeno_master.stat == DEAD)
+		xeno_master = null
+		adjustBruteLoss(15)
+		return
+	if(get_dist(src, xeno_master) > 4)
 		adjustBruteLoss(5)
 		if(is_fighting == FALSE)
-			if(escort == TRUE && escorting == TRUE && get_dist(src, escort) > 3)
+			if(escort && escorting == TRUE && get_dist(src, escort) > 3)
 				walk_to(src, escort, rand(1, 2), 4)
 			if(got_orders == FALSE && get_dist(src, xeno_master) > 3)
 				walk_to(src, xeno_master, rand(1, 2), 4)
 
+	if(escort && escort.stat == DEAD)
+		escorting = FALSE
 	if(escorting == FALSE)
 		escort = null
-	if(got_orders == FALSE)
-		fighting_override = FALSE
-	if(fighting_override == TRUE || stance == HOSTILE_STANCE_ATTACKING)
+
+	if(stance == HOSTILE_STANCE_ATTACKING)
 		is_fighting = TRUE
-	else if(fighting_override == FALSE)
+	else
 		is_fighting = FALSE
 
 /mob/living/simple_animal/hostile/alien/rotdrone/death(cause, gibbed, deathmessage = "screeches and collapses as it's body melts back into an inert, rotting ooze...")

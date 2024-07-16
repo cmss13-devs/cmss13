@@ -1,7 +1,7 @@
 /datum/action/xeno_action/activable/flesh_harvest
 	name = "Flesh Harvest"
 	ability_name = "flesh harvest"
-	action_icon_state = "gut"
+	action_icon_state = "flesh_harvest"
 	macro_path = /datum/action/xeno_action/verb/verb_flesh_harvest
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -21,7 +21,7 @@
 /datum/action/xeno_action/onclick/raise_servant
 	name = "Raise Servant"
 	ability_name = "raise servant"
-	action_icon_state = "empower"
+	action_icon_state = "unburrow"
 	macro_path = /datum/action/xeno_action/verb/verb_raise_servant
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -29,13 +29,12 @@
 	plasma_cost = 100
 	var/resin_cost = 200
 	var/creattime = 20 SECONDS
-	var/making_servant = FALSE // So we can't make multiple at once
 
 
 /datum/action/xeno_action/activable/command_servants
 	name = "Command Servants"
 	ability_name = "command servants"
-	action_icon_state = "empower"
+	action_icon_state = "mark_rally"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 

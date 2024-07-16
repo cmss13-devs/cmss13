@@ -89,6 +89,7 @@
 	var/flesh_resin = 0
 	var/flesh_resin_max = 1000
 	var/harvesting = FALSE // So you can't harvest multiple corpses at once
+	var/making_servant = FALSE // So we can't make multiple at once
 	var/list/mob/living/simple_animal/hostile/alien/rotdrone/servants = list() // List of active rotdrones
 	var/servant_max = 3 // How many rotdrones one Reaper can have at once
 

@@ -23,7 +23,10 @@
 	if(!xeno.Adjacent(carbon))
 		return
 
-	if(reaper.harvesting)
+	if(reaper.making_servant == TRUE)
+		return
+
+	if(reaper.harvesting == TRUE)
 		to_chat(xeno, SPAN_XENOWARNING("We are already harvesting!"))
 		return
 
@@ -56,7 +59,9 @@
 	reaper.harvesting = TRUE
 
 	if(victim.has_limb("r_leg"))
-		do_after(xeno, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE)
+		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			reaper.harvesting = FALSE
+			return
 		limb = victim.get_limb("r_leg")
 		if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			to_chat(xeno, SPAN_XENOWARNING("This limb is fake!"))
@@ -64,7 +69,9 @@
 		else
 			playsound(carbon, limb_remove_start, 50, TRUE)
 			xeno.visible_message(SPAN_XENONOTICE("[xeno] grabs [carbon]'s [limb.display_name] and starts twisting and pulling!"))
-			do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE)
+			if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+				reaper.harvesting = FALSE
+				return
 			limb.droplimb(FALSE, TRUE, "flesh harvest")
 			xeno.visible_message(SPAN_XENOWARNING("With a final violent motion, [xeno] wrenches off [carbon]'s [limb.display_name] and consumes it!"), \
 			SPAN_XENOWARNING("We harvest the [limb.display_name]!"))
@@ -73,7 +80,9 @@
 			playsound(xeno, limb_remove_end, 25, TRUE)
 
 	if(victim.has_limb("l_leg"))
-		do_after(xeno, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE)
+		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			reaper.harvesting = FALSE
+			return
 		limb = victim.get_limb("l_leg")
 		if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			to_chat(xeno, SPAN_XENOWARNING("This limb is fake!"))
@@ -81,7 +90,9 @@
 		else
 			playsound(carbon, limb_remove_start, 50, TRUE)
 			xeno.visible_message(SPAN_XENONOTICE("[xeno] grabs [carbon]'s [limb.display_name] and starts twisting and pulling!"))
-			do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE)
+			if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+				reaper.harvesting = FALSE
+				return
 			limb.droplimb(FALSE, TRUE, "flesh harvest")
 			xeno.visible_message(SPAN_XENOWARNING("With a final violent motion, [xeno] wrenches off [carbon]'s [limb.display_name] and consumes it!"), \
 			SPAN_XENOWARNING("We harvest the [limb.display_name]!"))
@@ -90,7 +101,9 @@
 			playsound(xeno, limb_remove_end, 25, TRUE)
 
 	if(victim.has_limb("r_arm"))
-		do_after(xeno, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE)
+		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			reaper.harvesting = FALSE
+			return
 		limb = victim.get_limb("r_arm")
 		if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			to_chat(xeno, SPAN_XENOWARNING("This limb is fake!"))
@@ -98,7 +111,9 @@
 		else
 			playsound(carbon, limb_remove_start, 50, TRUE)
 			xeno.visible_message(SPAN_XENONOTICE("[xeno] grabs [carbon]'s [limb.display_name] and starts twisting and pulling!"))
-			do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE)
+			if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+				reaper.harvesting = FALSE
+				return
 			limb.droplimb(FALSE, TRUE, "flesh harvest")
 			xeno.visible_message(SPAN_XENOWARNING("With a final violent motion, [xeno] wrenches off [carbon]'s [limb.display_name] and consumes it!"), \
 			SPAN_XENOWARNING("We harvest the [limb.display_name]!"))
@@ -107,7 +122,9 @@
 			playsound(xeno, limb_remove_end, 25, TRUE)
 
 	if(victim.has_limb("l_arm"))
-		do_after(xeno, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE)
+		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			reaper.harvesting = FALSE
+			return
 		limb = victim.get_limb("l_arm")
 		if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			to_chat(xeno, SPAN_XENOWARNING("This limb is fake!"))
@@ -115,7 +132,9 @@
 		else
 			playsound(carbon, limb_remove_start, 50, TRUE)
 			xeno.visible_message(SPAN_XENONOTICE("[xeno] grabs [carbon]'s [limb.display_name] and starts twisting and pulling!"))
-			do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE)
+			if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+				reaper.harvesting = FALSE
+				return
 			limb.droplimb(FALSE, TRUE, "flesh harvest")
 			xeno.visible_message(SPAN_XENOWARNING("With a final violent motion, [xeno] wrenches off [carbon]'s [limb.display_name] and consumes it!"), \
 			SPAN_XENOWARNING("We harvest the [limb.display_name]!"))
@@ -123,15 +142,19 @@
 			cooldown_mult += 1
 			playsound(xeno, limb_remove_end, 25, TRUE)
 
-	if(fake_count == 4) // Let's be real, this isn't going to happen naturally, but this is fucking funny.
+	if(fake_count == 4) // Let's be real, this isn't going to happen naturally, but it would be fucking funny.
 		xeno.emote("hiss")
+		reaper.harvesting = FALSE
 		xeno.visible_message(SPAN_XENONOTICE("After inspecting [carbon]'s corpse, [xeno] rises angrily."), SPAN_XENOWARNING("It was all fake! Infuriating!"))
 		return
 
 	if(limb == null)
-		do_after(xeno, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE)
+		if(!do_after(xeno, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			reaper.harvesting = FALSE
+			return
 		xeno.emote("hiss")
-		xeno.visible_message(SPAN_XENONOTICE("After inspecting [carbon]'s corpse, [xeno] rises frustratedly."), SPAN_XENOWARNING("...But they have nothing to harvest. Frustrating."))
+		reaper.harvesting = FALSE
+		xeno.visible_message(SPAN_XENONOTICE("After inspecting [carbon]'s corpse, [xeno] rises, visibly frustrated."), SPAN_XENOWARNING("...But they have nothing to harvest. Frustrating."))
 		return
 
 	xeno.visible_message(SPAN_XENONOTICE("[xeno] rises from [carbon]'s corpse."), SPAN_XENOWARNING("We finish our harvest, digesting the harvested limbs into flesh resin!"))
@@ -199,9 +222,6 @@
 
 	if(ishuman(carbon))
 		var/mob/living/carbon/human/victim = carbon
-		to_chat(victim, SPAN_XENOWARNING("As [xeno]'s wing-like claws rip into your [target_limb ? target_limb.display_name : "chest"], your wounds suddenly start hurting badly!"))
-		victim.apply_effect(5, AGONY)
-		victim.emote("pain")
 		if(victim.getToxLoss() >= 20)
 			victim.vomit()
 		if(reaper.flesh_resin > 0)
@@ -219,7 +239,10 @@
 	if(!action_cooldown_check())
 		return
 
-	if(making_servant == TRUE)
+	if(reaper.harvesting == TRUE)
+		return
+
+	if(reaper.making_servant == TRUE)
 		to_chat(xeno, SPAN_XENOWARNING("We are already making a servant!"))
 		return
 
@@ -240,6 +263,7 @@
 
 /datum/action/xeno_action/onclick/raise_servant/proc/create_servant(datum/action/xeno_action/onclick/raise_servant/action_def, atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
 	if(!xeno.check_state())
 		return
 
@@ -248,10 +272,10 @@
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] bends over and starts spewing large amounts of rancid ooze at it's feet, grasping at it as it cascades down!"), \
 	SPAN_XENOWARNING("We regurgitate a mix of plasma and flesh resin, moulding it into a loyal servant!"))
-	making_servant = TRUE
+	reaper.making_servant = TRUE
 
 	if(!do_after(xeno, creattime, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, ACTION_PURPLE_POWER_UP))
-		making_servant = FALSE
+		reaper.making_servant = FALSE
 		return
 
 	xeno.visible_message(SPAN_XENOWARNING("As [xeno] rises, the lump of decomposing sludge shudders and grows, animating into a melting, odd-looking Drone!"), \
@@ -259,7 +283,7 @@
 	var/mob/living/simple_animal/hostile/alien/rotdrone/rotxeno = new(xeno.loc, xeno)
 	servant_rise(rotxeno)
 	new_servant(rotxeno)
-	making_servant = FALSE
+	reaper.making_servant = FALSE
 
 /datum/action/xeno_action/onclick/raise_servant/proc/servant_rise(mob/living/simple_animal/hostile/alien/rotdrone/servant)
 	if(!istype(servant))
@@ -330,7 +354,6 @@
 	servant.got_orders = TRUE
 	servant.target_mob = target
 	servant.is_fighting = TRUE
-	servant.fighting_override = TRUE
 
 /datum/action/xeno_action/activable/command_servants/proc/servant_escort(mob/living/simple_animal/hostile/alien/rotdrone/servant, mob/living/carbon/target)
 	if(!istype(servant))

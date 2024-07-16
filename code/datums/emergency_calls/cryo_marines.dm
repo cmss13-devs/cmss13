@@ -95,9 +95,10 @@
 /obj/effect/landmark/ert_spawns/distress_cryo
 	name = "Distress_Cryo"
 
-/datum/emergency_call/cryo_squad/tech
+/datum/emergency_call/cryo_squad/tech // Actual techweb cryorines
 	name = "Marine Cryo Reinforcements (Tech)"
-	mob_max = 5
-	max_engineers = 1
-	max_medics = 1
+	mob_max = 12
+	max_engineers = 2
+	max_medics = 2
+	max_smartgunners = 1
 	max_heavies = 0

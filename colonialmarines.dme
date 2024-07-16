@@ -1704,7 +1704,6 @@
 #include "code\modules\cm_tech\techs\marine\tier1\arc.dm"
 #include "code\modules\cm_tech\techs\marine\tier1\points.dm"
 #include "code\modules\cm_tech\techs\marine\tier2\orbital_ammo.dm"
-#include "code\modules\cm_tech\techs\marine\tier3\cryo_spec.dm"
 #include "code\modules\cm_tech\techs\marine\tier3\cryorine.dm"
 #include "code\modules\cm_tech\techs\marine\tier4\nuke.dm"
 #include "code\modules\cm_tech\trees\marine.dm"

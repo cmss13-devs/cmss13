@@ -73,7 +73,7 @@
 	hit_sound = list('sound/effects/railgunhit.ogg')
 
 /datum/space_weapon_ammo/rail_gun/miss_target(picked_atom, intercepted)
-	var/list/echo_list = new(18)
+	var/list/echo_list = new /list(18)
 	echo_list[ECHO_OBSTRUCTION] = -2500
 	if(intercepted)
 		playsound(picked_atom, pick(intercept_sound), 100, 1, 100, echo = echo_list)
@@ -82,7 +82,7 @@
 	shipwide_ai_announcement("[capitalize(name)] [intercepted ? "INTERCEPTED" : "MISSED"]!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
 
 /datum/space_weapon_ammo/rail_gun/hit_target(picked_atom)
-	var/list/echo_list = new(18)
+	var/list/echo_list = new /list(18)
 	echo_list[ECHO_OBSTRUCTION] = -500
 	cell_explosion(picked_atom, 1000, 200, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(name))
 	shakeship(5, 5, FALSE, FALSE)
@@ -126,7 +126,7 @@
 	base_miss_chance = 0
 
 /datum/space_weapon_ammo/rocket_launcher/swing_rockets/hit_target(picked_atom)
-	var/list/echo_list = new(18)
+	var/list/echo_list = new /list(18)
 	echo_list[ECHO_OBSTRUCTION] = -500
 	var/list/turf_list = list()
 	for(var/turf/turf in range(7, picked_atom))

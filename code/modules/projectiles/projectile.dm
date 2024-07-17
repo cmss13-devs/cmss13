@@ -298,7 +298,7 @@
 	var/pixel_x_source = vis_source.x * world.icon_size + vis_source_pixel_x
 	var/pixel_y_source = vis_source.y * world.icon_size + vis_source_pixel_y
 
-	var/turf/vis_target = path[path.len]
+	var/turf/vis_target = path[length(path)]
 	var/pixel_x_target = vis_target.x * world.icon_size + p_x
 	var/pixel_y_target = vis_target.y * world.icon_size + p_y
 
@@ -311,7 +311,7 @@
 
 	//Determine apparent position along visual path, then lerp between start and end positions
 
-	var/vis_length = vis_travelled + path.len
+	var/vis_length = vis_travelled + length(path)
 	var/vis_current = vis_travelled + speed * (time_carry * 0.1) //speed * (time_carry * 0.1) for remainder time movement, visually "catching up" to where it should be
 	var/vis_interpolant = vis_current / vis_length
 
@@ -841,8 +841,8 @@
 //mobs use get_projectile_hit_chance instead of get_projectile_hit_boolean
 
 /mob/living/proc/get_projectile_hit_chance(obj/projectile/P)
-	if((body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_NESTED)) && src != P.original)
-		return FALSE // Snowflake check for xeno nests, because we want bullets to fly through even though they're standing in it
+	if((body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_NO_STRAY)) && src != P.original)
+		return FALSE
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_XENO)
 		if((status_flags & XENO_HOST) && HAS_TRAIT(src, TRAIT_NESTED))
@@ -1130,7 +1130,7 @@
 		handle_blood_splatter(get_dir(P.starting, loc))
 
 		apply_damage(damage_result,P.ammo.damage_type, P.def_zone) //Deal the damage.
-		if(xeno_shields.len)
+		if(length(xeno_shields))
 			P.play_shielded_hit_effect(src)
 		else
 			P.play_hit_effect(src)

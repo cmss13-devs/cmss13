@@ -72,11 +72,11 @@
 				if(!elements_str)
 					return
 				var/list/elements = splittext(elements_str, ",")
-				if(elements.len != 6)
-					to_chat(usr, "When creating a custom matrix, explicitly provide all 6 elements! Only [elements.len] were provided.")
+				if(length(elements) != 6)
+					to_chat(usr, "When creating a custom matrix, explicitly provide all 6 elements! Only [length(elements)] were provided.")
 					return
 
-				for(var/i = 1 to elements.len)
+				for(var/i = 1 to length(elements))
 					var/num_ver = text2num(elements[i])
 					if(isnull(num_ver))
 						to_chat(usr, "Failed to convert element #[i] ([elements[i]]) to a number.")

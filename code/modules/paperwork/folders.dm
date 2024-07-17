@@ -41,7 +41,7 @@
 
 /obj/item/folder/update_icon()
 	overlays.Cut()
-	if(contents.len)
+	if(length(contents))
 		overlays += "folder_paper"
 	return
 

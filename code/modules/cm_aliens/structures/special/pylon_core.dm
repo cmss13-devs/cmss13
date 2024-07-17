@@ -70,7 +70,7 @@
 		lesser_count++
 
 	. += "Currently holding [SPAN_NOTICE("[floor(lesser_drone_spawns)]")]/[SPAN_NOTICE("[lesser_drone_spawn_limit]")] lesser drones."
-	. += "There are currently [SPAN_NOTICE("[lesser_count]")] lesser drones in the hive. The hive can support [SPAN_NOTICE("[linked_hive.lesser_drone_limit]")] lesser drones."
+	. += "There are currently [SPAN_NOTICE("[lesser_count]")] lesser drones in the hive. The hive can support a total of [SPAN_NOTICE("[linked_hive.lesser_drone_limit]")] lesser drones at present."
 
 /obj/effect/alien/resin/special/pylon/attack_ghost(mob/dead/observer/user)
 	. = ..()

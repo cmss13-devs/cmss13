@@ -861,7 +861,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		cock_gun(user)
 	user.visible_message(SPAN_NOTICE("[user] loads [magazine] into [src]!"),
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
-	if((reload_sound && reload_volume))
+	if(reload_sound && reload_volume)
 		playsound(user, reload_sound, reload_volume, 1, 5 )
 	else
 		playsound(user, reload_sound, 25, 1, 5)

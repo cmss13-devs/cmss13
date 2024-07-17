@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(who)
 	name = "Who"
 	flags = SS_BACKGROUND
- 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
+	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	init_order = SS_INIT_WHO
 	wait = 5 SECONDS
 

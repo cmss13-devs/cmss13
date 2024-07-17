@@ -20,7 +20,7 @@
 	var/display_name
 
 	var/list/datum/wound/wounds = list()
-	var/number_wounds = 0 // cache the number of wounds, which is NOT wounds.len!
+	var/number_wounds = 0 // cache the number of wounds, which is NOT length(wounds)!
 
 	var/tmp/perma_injury = 0
 
@@ -349,9 +349,9 @@
 				possible_points += parent
 			if(children)
 				possible_points += children
-			if(forbidden_limbs.len)
+			if(length(forbidden_limbs))
 				possible_points -= forbidden_limbs
-			if(possible_points.len)
+			if(length(possible_points))
 				//And pass the damage around, but not the chance to cut the limb off.
 				var/obj/limb/target = pick(possible_points)
 				if(brute_reduced_by == -1)
@@ -477,20 +477,20 @@ This function completely restores a damaged organ to perfect condition.
 	if(!(status & LIMB_SPLINTED_INDESTRUCTIBLE) && (status & LIMB_SPLINTED) && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
 		playsound(get_turf(loc), 'sound/items/splintbreaks.ogg', 20)
-		to_chat(owner, SPAN_DANGER("The splint on your [display_name] comes apart!"))
+		to_chat(owner, SPAN_HIGHDANGER("The splint on your [display_name] comes apart!"))
 		owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 		owner.update_med_icon()
 
 	// first check whether we can widen an existing wound
 	var/datum/wound/W
-	if(wounds.len > 0 && prob(max(50+(number_wounds-1)*10,90)))
+	if(length(wounds) > 0 && prob(max(50+(number_wounds-1)*10,90)))
 		if((type == CUT || type == BRUISE) && damage >= 5)
 			//we need to make sure that the wound we are going to worsen is compatible with the type of damage...
 			var/compatible_wounds[] = new
 			for(W in wounds)
 				if(W.can_worsen(type, damage)) compatible_wounds += W
 
-			if(compatible_wounds.len)
+			if(length(compatible_wounds))
 				W = pick(compatible_wounds)
 				W.open_wound(damage)
 				if(type != BURN)
@@ -654,7 +654,7 @@ This function completely restores a damaged organ to perfect condition.
 			//configurable regen speed woo, no-regen hardcore or instaheal hugbox, choose your destiny
 			heal_amt = heal_amt * CONFIG_GET(number/organ_regeneration_multiplier)
 			// amount of healing is spread over all the wounds
-			heal_amt = heal_amt / (wounds.len + 1)
+			heal_amt = heal_amt / (length(wounds) + 1)
 			// making it look prettier on scanners
 			heal_amt = round(heal_amt,0.1)
 
@@ -801,7 +801,7 @@ This function completely restores a damaged organ to perfect condition.
 		if(istype(E, /obj/limb/chest) || istype(E, /obj/limb/groin) || istype(E, /obj/limb/head))
 			continue
 		limbs_to_remove += E
-	if(limbs_to_remove.len)
+	if(length(limbs_to_remove))
 		var/obj/limb/L = pick(limbs_to_remove)
 		var/limb_name = L.display_name
 		L.droplimb(0, delete_limb)

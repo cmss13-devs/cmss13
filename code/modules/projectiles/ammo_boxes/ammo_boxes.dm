@@ -78,7 +78,7 @@
 	var/overlay_ammo_type = "_reg" //used for ammo type color overlay
 	var/overlay_gun_type = "_m41" //used for text overlay
 	var/overlay_content = "_reg"
-	var/magazine_type = /obj/item/ammo_magazine/rifle
+	var/obj/item/ammo_magazine/magazine_type = /obj/item/ammo_magazine/rifle
 	var/num_of_magazines = 10
 	var/handfuls = FALSE
 	var/icon_state_deployed = null
@@ -126,10 +126,10 @@
 	if(src.loc != user) //feeling box weight in a distance is unnatural and bad
 		return
 	if(!handfuls)
-		if(contents.len < (num_of_magazines/3))
+		if(length(contents) < (num_of_magazines/3))
 			. += SPAN_INFO("It feels almost empty.")
 			return
-		if(contents.len < ((num_of_magazines*2)/3))
+		if(length(contents) < ((num_of_magazines*2)/3))
 			. += SPAN_INFO("It feels about half full.")
 			return
 		. += SPAN_INFO("It feels almost full.")

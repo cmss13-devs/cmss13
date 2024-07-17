@@ -51,9 +51,6 @@
 	var/long_range_cooldown = 2
 	var/recycletime = 120
 	var/cover_open = FALSE
-	var/hp = /datum/ammo/ammo_primary
-	var/ap = /datum/ammo/ammo_secondary
-	var/ht = /datum/ammo/ammo_tertiary
 
 	unacidable = 1
 	indestructible = 1
@@ -74,6 +71,7 @@
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
 	ammo_primary = GLOB.ammo_list[ammo_primary] //Gun initialize calls replace_ammo() so we need to set these first.
 	ammo_secondary = GLOB.ammo_list[ammo_secondary]
+	ammo_tertiary = GLOB.ammo_list[ammo_tertiary]
 	MD = new(src)
 	battery = new /obj/item/smartgun_battery(src)
 	. = ..()
@@ -82,6 +80,7 @@
 /obj/item/weapon/gun/smartgun/Destroy()
 	ammo_primary = null
 	ammo_secondary = null
+	ammo_tertiary = null
 	QDEL_NULL(MD)
 	QDEL_NULL(battery)
 	. = ..()
@@ -305,9 +304,9 @@
 
 /datum/action/item_action/smartgun/toggle_ammo_type/proc/update_icon()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if("ap")
+	if(ammo == ammo_secondary)
 		action_icon_state = "ammo_swap_ap"
-	if("ht")
+	if(ammo == ammo_tertiary)
 		action_icon_state = "ammo_swap_holo"
 	else
 		action_icon_state = "ammo_swap_normal"
@@ -344,15 +343,15 @@
         to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when \the [src]'s fire restriction is disabled.")
         return
     switch(ammo_selection)
-        if("ap")
+        if(ammo_secondary)
             to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire holo-targeting rounds.")
-            ammo= ammo_selection = "ht"
-        if("ht")
+            ammo = ammo_selection = ammo_tertiary
+        if(ammo_tertiary)
             to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire highly precise rounds.")
-            ammo = ammo_selection = "hp"
-        if("hp")
+            ammo = ammo_selection = ammo_primary
+        if(ammo_primary)
             to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire armor shredding rounds.")
-            ammo = ammo_selection = "ap"
+            ammo = ammo_selection = ammo_secondary
 
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")

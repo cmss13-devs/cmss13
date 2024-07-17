@@ -105,5 +105,4 @@
 #include "modules\vehicles\multitile\hardpoints\holder\tank_turret.dm"
 #include "modules\vehicles\multitile\hardpoints\support\smoke.dm"
 #include "modules\vehicles\multitile\tank\tank.dm"
-#include "modules\mob\living\carbon\xenomorph\abilities\queen\queen_abilities.dm"
 #include "modules\mob\living\carbon\xenomorph\abilities\queen\queen_powers.dm"

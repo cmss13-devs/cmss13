@@ -106,7 +106,7 @@
 	user.visible_message(SPAN_NOTICE("[user] starts taking [src] down..."), SPAN_NOTICE("You start taking [src] down..."))
 
 	playsound(loc, 'sound/effects/flag_raising.ogg', 30)
-	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC) || QDELETED(src))
 		return
 
 	playsound(loc, 'sound/effects/flag_raised.ogg', 30)
@@ -233,12 +233,10 @@
 	if(play_warcry && user.faction == faction && user.a_intent == INTENT_HARM)
 		var/allies_nearby = 0
 		if(COOLDOWN_FINISHED(src, warcry_cooldown_item))
-			for (var/mob/living/carbon/human in orange(planted_flag, 7))
-				if (human.is_dead() || human.faction != faction)
+			for(var/mob/living/carbon/human in orange(planted_flag, 7))
+				if(human.is_dead() || human.faction != faction)
 					continue
 				allies_nearby++
-				if (prob(40) && human != user)
-					human.emote("warcry")
 
 		user.show_speech_bubble("warcry")
 		if(allies_nearby >= allies_required)

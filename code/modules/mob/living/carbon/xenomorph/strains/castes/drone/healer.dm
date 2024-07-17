@@ -276,9 +276,10 @@
 			addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), xeno.client), 5 SECONDS)
 
 	xeno.gib(create_cause_data("sacrificing itself", src))
+	return ..()
 
 /datum/action/xeno_action/activable/healer_sacrifice/action_activate()
-	..()
+	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.selected_ability != src)
 		return

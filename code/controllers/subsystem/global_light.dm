@@ -1,4 +1,4 @@
-#define WAIT_SUNLIGHT_READY while(!SSglobal_light.initialized) {stoplag();}
+#define WAIT_GLOBAL_LIGHT_READY while(!SSglobal_light.initialized) {stoplag();}
 
 /datum/time_of_day
 	var/name = ""
@@ -80,9 +80,9 @@ GLOBAL_LIST_EMPTY(global_light_queue_corner)
 GLOBAL_LIST_EMPTY(weather_planes_need_vis)
 
 SUBSYSTEM_DEF(global_light)
-	name = "Sun Lighting"
+	name = "Global Lighting"
 	wait = 2 SECONDS
-	priority = SS_PRIORITY_SUNLIGHTING
+	priority = SS_PRIORITY_GLOBAL_LIGHTING
 	flags = SS_TICKER
 
 	var/atom/movable/sun_color

@@ -119,7 +119,7 @@ do { \
 #define LIGHTING_CHECK_UPDATE 2
 #define LIGHTING_FORCE_UPDATE 3
 
-//Sunlight states
+//Global Light states
 #define SKY_BLOCKED   0
 #define SKY_VISIBLE  1
 #define SKY_VISIBLE_BORDER   2

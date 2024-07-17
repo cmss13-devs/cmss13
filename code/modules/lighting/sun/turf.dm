@@ -3,10 +3,10 @@
 
 /*
 
-Sunlight System
+Global Light System
 
 	Objects + Details
-		Sunlight Objects (this file)
+		Global Light Objects (this file)
 			- Grayscale version of lighting_object
 			- Has 3 states
 				- SKY_BLOCKED  (0)
@@ -265,61 +265,61 @@ Sunlight System
 		pseudo_roof = null
 
 	var/atom/movable/outdoor_effect/effect
-	var/list/SunlightUpdates = list()
+	var/list/GlobalLightUpdates = list()
 
 	//Add ourselves (we might not have corners initialized, and this handles it)
-	SunlightUpdates += src
+	GlobalLightUpdates += src
 
 	//AHHHHGGGGGHHHHHHHHHHHHHHH
 	if(lighting_corner_NE)
 		if(lighting_corner_NE.master_NE)
-			SunlightUpdates |= lighting_corner_NE.master_NE
+			GlobalLightUpdates |= lighting_corner_NE.master_NE
 		if(lighting_corner_NE.master_SE)
-			SunlightUpdates |= lighting_corner_NE.master_SE
+			GlobalLightUpdates |= lighting_corner_NE.master_SE
 		if(lighting_corner_NE.master_SW)
-			SunlightUpdates |= lighting_corner_NE.master_SW
+			GlobalLightUpdates |= lighting_corner_NE.master_SW
 		if(lighting_corner_NE.master_NW)
-			SunlightUpdates |= lighting_corner_NE.master_NW
+			GlobalLightUpdates |= lighting_corner_NE.master_NW
 		for(effect in lighting_corner_NE.glob_affect)
-			SunlightUpdates |= effect.source_turf
+			GlobalLightUpdates |= effect.source_turf
 
 	if(lighting_corner_SE)
 		if(lighting_corner_SE.master_NE)
-			SunlightUpdates |= lighting_corner_SE.master_NE
+			GlobalLightUpdates |= lighting_corner_SE.master_NE
 		if(lighting_corner_SE.master_SE)
-			SunlightUpdates |= lighting_corner_SE.master_SE
+			GlobalLightUpdates |= lighting_corner_SE.master_SE
 		if(lighting_corner_SE.master_SW)
-			SunlightUpdates |= lighting_corner_SE.master_SW
+			GlobalLightUpdates |= lighting_corner_SE.master_SW
 		if(lighting_corner_SE.master_NW)
-			SunlightUpdates |= lighting_corner_SE.master_NW
+			GlobalLightUpdates |= lighting_corner_SE.master_NW
 		for(effect in lighting_corner_SE.glob_affect)
-			SunlightUpdates |= effect.source_turf
+			GlobalLightUpdates |= effect.source_turf
 
 	if(lighting_corner_SW)
 		if(lighting_corner_SW.master_NE)
-			SunlightUpdates |= lighting_corner_SW.master_NE
+			GlobalLightUpdates |= lighting_corner_SW.master_NE
 		if(lighting_corner_SW.master_SE)
-			SunlightUpdates |= lighting_corner_SW.master_SE
+			GlobalLightUpdates |= lighting_corner_SW.master_SE
 		if(lighting_corner_SW.master_SW)
-			SunlightUpdates |= lighting_corner_SW.master_SW
+			GlobalLightUpdates |= lighting_corner_SW.master_SW
 		if(lighting_corner_SW.master_NW)
-			SunlightUpdates |= lighting_corner_SW.master_NW
+			GlobalLightUpdates |= lighting_corner_SW.master_NW
 		for(effect in lighting_corner_SW.glob_affect)
-			SunlightUpdates |= effect.source_turf
+			GlobalLightUpdates |= effect.source_turf
 
 	if(lighting_corner_NW)
 		if(lighting_corner_NW.master_NE)
-			SunlightUpdates |= lighting_corner_NW.master_NE
+			GlobalLightUpdates |= lighting_corner_NW.master_NE
 		if(lighting_corner_NW.master_SE)
-			SunlightUpdates |= lighting_corner_NW.master_SE
+			GlobalLightUpdates |= lighting_corner_NW.master_SE
 		if(lighting_corner_NW.master_SW)
-			SunlightUpdates |= lighting_corner_NW.master_SW
+			GlobalLightUpdates |= lighting_corner_NW.master_SW
 		if(lighting_corner_NW.master_NW)
-			SunlightUpdates |= lighting_corner_NW.master_NW
+			GlobalLightUpdates |= lighting_corner_NW.master_NW
 		for(effect in lighting_corner_NW.glob_affect)
-			SunlightUpdates |= effect.source_turf
+			GlobalLightUpdates |= effect.source_turf
 
-	GLOB.global_light_queue_work |= SunlightUpdates
+	GLOB.global_light_queue_work |= GlobalLightUpdates
 
 	var/turf/turf = SSmapping.get_turf_below(src)
 	if(turf)

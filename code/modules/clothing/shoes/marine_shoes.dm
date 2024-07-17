@@ -81,7 +81,7 @@
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/caustic
-	name = "\improper Z-210 combat boots"
+	name = "\improper XM-CL combat boots"
 	desc = "A pair of ANCW Boots. Their insides are cushioned with soft gell pads to give you an optimal foot bed. You wish you had a pair like this at home."
 	icon_state = "caustic_h"
 	item_state = "caustic_h"

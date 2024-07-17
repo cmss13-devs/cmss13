@@ -223,7 +223,7 @@
 //=RESEARCH ARMOR=\\
 
 /obj/item/clothing/gloves/marine/caustic
-	name = "\improper Z-210 Gloves"
+	name = "\improper XM-CL Gloves"
 	desc = "A pair of ANCW Gloves. Their insides are incredibly soft and cool to the touch."
 	icon_state = "caustic_h"
 	item_state = "caustic_h"

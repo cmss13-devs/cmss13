@@ -586,7 +586,7 @@
 	new /obj/item/clothing/glasses/welding(src)
 
 /obj/item/storage/box/kit/caustic
-	name = "\improper Z-210 Armor Kit"
+	name = "\improper XM-CL Armor Kit"
 	pro_case_overlay = "haz"
 
 /obj/item/storage/box/kit/caustic/fill_preset_inventory()

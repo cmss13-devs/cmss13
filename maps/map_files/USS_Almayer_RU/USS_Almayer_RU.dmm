@@ -17733,7 +17733,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Mech Bay";
-	req_one_access = list(40;1);
+	req_one_access = list(40;
+	 = 1);
 	req_one_access_txt = "40;1"
 	},
 /turf/open/floor/almayer{
@@ -39659,7 +39660,8 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Mech Ops's Room";
-	req_one_access = list(40;1);
+	req_one_access = list(40;
+	 = 1);
 	dir = 2;
 	req_one_access_txt = "40;1"
 	},
@@ -40802,7 +40804,8 @@
 "ijp" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Mech Ops's Room";
-	req_one_access = list(40;1);
+	req_one_access = list(40;
+	 = 1);
 	req_one_access_txt = "40;1"
 	},
 /turf/open/floor/almayer{
@@ -56845,6 +56848,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
+"ohu" = (
+/obj/structure/painting_table,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "ohA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -77149,6 +77158,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
+"vvM" = (
+/obj/structure/painting_table,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hallways/lower/port_midship_hallway)
 "vvV" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
@@ -124506,7 +124521,7 @@ lvz
 duM
 hYe
 fKl
-ezv
+ohu
 ezv
 wYO
 hbz
@@ -124534,7 +124549,7 @@ oat
 fSE
 wKn
 iEa
-iEa
+vvM
 lkA
 taj
 eVp

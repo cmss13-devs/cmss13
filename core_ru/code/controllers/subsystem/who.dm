@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(who)
 		var/list/client_payload = list()
 		client_payload["ckey"] = "[client.key]"
 		client_payload["text"] = "[client.key]"
-		client_payload["ckey_color"] = "white"
+		client_payload["ckey_color"] = client.player_data?.donator_info.patreon_function_available("ooc_color") ? "#D4AF37" : "white"
 		var/mob/client_mob = client.mob
 		new_mobs_ckey[client.key] = client_mob
 		if(client_mob)

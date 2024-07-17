@@ -428,6 +428,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			if(whitelist in GLOB.bitfields["whitelist_status"])
 				whitelist_flags |= GLOB.bitfields["whitelist_status"]["[whitelist]"]
 
+//RUCM START
+	load_donator_info()
+//RUCM END
+
 /datum/entity/player/proc/on_read_notes(list/datum/entity/player_note/_notes)
 	notes_loaded = TRUE
 	if(notes)

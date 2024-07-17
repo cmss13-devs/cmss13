@@ -390,7 +390,6 @@
 /obj/item/clothing/accessory/storage/webbing,
 /obj/structure/machinery/power/apc/almayer/hardened{
 	dir = 1;
-	powernet = "crash";
 	cell_type = /obj/item/cell/hyper
 	},
 /turf/open/floor/almayer{

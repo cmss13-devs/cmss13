@@ -52,8 +52,14 @@
 			display_colour = CONFIG_GET(string/ooc_color_admin)
 		if(admin_holder.rights & R_COLOR)
 			display_colour = prefs.ooccolor
+/*
 	else if(donator)
 		display_colour = prefs.ooccolor
+*/
+//RUCM START
+	else if(player_data?.donator_info.patreon_function_available("ooc_color"))
+		display_colour = prefs.ooccolor
+//RUCM END
 	if(!display_colour) // if invalid R_COLOR choice
 		display_colour = CONFIG_GET(string/ooc_color_default)
 
@@ -78,8 +84,14 @@
 		prefix += "[icon2html(byond, GLOB.clients)]"
 	if(CONFIG_GET(flag/ooc_country_flags) && (prefs.toggle_prefs & TOGGLE_OOC_FLAG))
 		prefix += "[country2chaticon(src.country, GLOB.clients)]"
+/*
 	if(donator)
 		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")]"
+*/
+//RUCM START
+	if(player_data.donator_info.patreon_function_available("badge"))
+		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")]"
+//RUCM END
 	if(isCouncil(src))
 		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "WhitelistCouncil")]"
 	if(admin_holder)

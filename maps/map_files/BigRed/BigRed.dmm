@@ -27296,7 +27296,7 @@
 /area/bigredv2/outside/space_port_lz2)
 "qNM" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = crash
+	insert_tag = crash_specialenviromentaddons
 	},
 /turf/open/space,
 /area/space)

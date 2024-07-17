@@ -10,6 +10,10 @@
 	field_types = list(
 		"player_id" = DB_FIELDTYPE_BIGINT,
 		"discord_id" = DB_FIELDTYPE_STRING_MEDIUM,
+//RUCM START
+		"role_rank" = DB_FIELDTYPE_INT,
+		"stable_rank" = DB_FIELDTYPE_INT,
+//RUCM END
 	)
 
 /datum/view_record/discord_link
@@ -24,6 +28,10 @@
 		"id",
 		"player_id",
 		"discord_id",
+//RUCM START
+		"role_rank",
+		"stable_rank",
+//RUCM END
 	)
 	order_by = list("player_id" = DB_ORDER_BY_ASC)
 

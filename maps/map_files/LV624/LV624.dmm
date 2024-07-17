@@ -12811,7 +12811,7 @@
 /area/lv624/lazarus/comms)
 "gLH" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = crash
+	insert_tag = crash_specialenviromentaddons
 	},
 /turf/open/space,
 /area/space)

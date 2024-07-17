@@ -103,6 +103,7 @@
 	key = "status"
 	anonymous = TRUE
 
+/* RUCM CHANGE
 /datum/world_topic/status/Run(list/input)
 	. = ..()
 	data = list()
@@ -150,6 +151,7 @@
 	data["active_players"] = get_active_player_count()
 	if(SSticker.HasRoundStarted())
 		data["real_mode"] = SSticker.mode.name
+*/
 
 /datum/world_topic/certify
 	key = "certify"

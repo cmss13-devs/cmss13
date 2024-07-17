@@ -98,12 +98,6 @@
 				marine_rk = "dp"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
-//RUCM START
-			if(JOB_CREWMAN)
-				marine_rk = "tc"
-			if(JOB_WALKER)
-				marine_rk = "tc"
-//RUCM END
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
 				border_rk = "command"

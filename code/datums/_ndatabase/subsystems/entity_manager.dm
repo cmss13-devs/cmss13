@@ -83,6 +83,11 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 			view.root_entity_meta = tables[view.root_record_type]
 			adapter.prepare_view(view)
 
+//RUCM START
+	for(var/datum/view_record/discord_rank/discord_rank in DB_VIEW(/datum/view_record/discord_rank))
+		GLOB.discord_ranks["[discord_rank.rank]"] = discord_rank
+//RUCM END
+
 	ready = TRUE
 
 /datum/controller/subsystem/entity_manager/proc/prepare_tables()

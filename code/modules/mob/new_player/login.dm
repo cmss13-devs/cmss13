@@ -15,8 +15,19 @@
 
 	. = ..()
 
+/*
 	new_player_panel()
 	addtimer(CALLBACK(src, PROC_REF(lobby)), 4 SECONDS)
+*/
+//RUCM START
+	if(REAL_CLIENTS > SSqueue.hard_popcap && SSqueue.hard_popcap && !CLIENT_HAS_RIGHTS(client, R_SERVER))
+		que_data = SSqueue.queue_player(src)
+		queue_player_panel()
+		addtimer(CALLBACK(src, PROC_REF(lobby)), 4 SECONDS)
+	else
+		new_player_panel()
+		addtimer(CALLBACK(src, PROC_REF(lobby)), 4 SECONDS)
+//RUCM END
 
 /mob/new_player/proc/lobby()
 	if(!client)

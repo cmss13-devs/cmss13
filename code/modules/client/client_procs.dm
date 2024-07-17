@@ -424,7 +424,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	else
 		toggle_fullscreen(FALSE)
 
-
+/* RUCM CHANGE
 	var/file = file2text("config/donators.txt")
 	var/lines = splittext(file, "\n")
 
@@ -432,6 +432,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(src.ckey == line)
 			src.donator = TRUE
 			add_verb(src, /client/proc/set_ooc_color_self)
+*/
 
 	//if(prefs.window_skin & TOGGLE_WINDOW_SKIN)
 	// set_night_skin()

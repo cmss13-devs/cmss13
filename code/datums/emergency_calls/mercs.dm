@@ -85,7 +85,7 @@
 	max_medics = 3
 
 /datum/emergency_call/heavy_mercs
-	name = "Elite Mercenaries (Random Alignment)"
+	name = "Elite Mercenaries (!DEATHSQUAD! Random Alignment)"
 	mob_min = 4
 	mob_max = 8
 	probability = 0
@@ -103,7 +103,7 @@
 		objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/heavy_mercs/hostile
-	name = "Elite Mercenaries (HOSTILE to USCM)"
+	name = "Elite Mercenaries (!DEATHSQUAD! HOSTILE to USCM)"
 
 /datum/emergency_call/heavy_mercs/hostile/New()
 	. = ..()
@@ -112,7 +112,7 @@
 	objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/heavy_mercs/friendly
-	name = "Elite Mercenaries (Friendly)"
+	name = "Elite Mercenaries (!DEATHSQUAD! Friendly)"
 
 /datum/emergency_call/heavy_mercs/friendly/New()
 	. = ..()

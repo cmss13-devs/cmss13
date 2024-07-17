@@ -13,7 +13,7 @@
 	var/falloff = 1
 	var/volume_cat = VOLUME_SFX
 	var/range = 0
-	var/list/echo = new(18)
+	var/list/echo = new /list(18)
 	var/x //Map coordinates, not sound coordinates
 	var/y
 	var/z

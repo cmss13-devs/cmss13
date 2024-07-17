@@ -36,8 +36,9 @@
 	)
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type
 	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing //Toggled ammo type
+	var/datum/ammo/ammo_tertiary = /datum/ammo/bullet/smartgun/holo_target //Toggled ammo type
 	var/iff_enabled = TRUE //Begin with the safety on.
-	var/secondary_toggled = 0 //which ammo we use
+	var/ammo_selection = 0 //which ammo we use
 	var/recoil_compensation = 0
 	var/accuracy_improvement = 0
 	var/auto_fire = 0
@@ -50,6 +51,9 @@
 	var/long_range_cooldown = 2
 	var/recycletime = 120
 	var/cover_open = FALSE
+	var/hp = /datum/ammo/ammo_primary
+	var/ap = /datum/ammo/ammo_secondary
+	var/ht = /datum/ammo/ammo_tertiary
 
 	unacidable = 1
 	indestructible = 1
@@ -301,8 +305,10 @@
 
 /datum/action/item_action/smartgun/toggle_ammo_type/proc/update_icon()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G.secondary_toggled)
+	if("ap")
 		action_icon_state = "ammo_swap_ap"
+	if("ht")
+		action_icon_state = "ammo_swap_holo"
 	else
 		action_icon_state = "ammo_swap_normal"
 	button.overlays.Cut()
@@ -334,27 +340,26 @@
 	toggle_ammo_type(usr)
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
-	if(!iff_enabled)
-		to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when \the [src]'s fire restriction is disabled.")
-		return
-	secondary_toggled = !secondary_toggled
-	to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
-	balloon_alert(user, "firing [secondary_toggled ? "armor shredding" : "highly precise"]")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	ammo = secondary_toggled ? ammo_secondary : ammo_primary
-	var/datum/action/item_action/smartgun/toggle_ammo_type/TAT = locate(/datum/action/item_action/smartgun/toggle_ammo_type) in actions
-	TAT.update_icon()
-
-/obj/item/weapon/gun/smartgun/replace_ammo()
-	..()
-	ammo = secondary_toggled ? ammo_secondary : ammo_primary
+    if(!iff_enabled)
+        to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when \the [src]'s fire restriction is disabled.")
+        return
+    switch(ammo_selection)
+        if("ap")
+            to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire holo-targeting rounds.")
+            ammo= ammo_selection = "ht"
+        if("ht")
+            to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire highly precise rounds.")
+            ammo = ammo_selection = "hp"
+        if("hp")
+            to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire armor shredding rounds.")
+            ammo = ammo_selection = "ap"
 
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	iff_enabled = !iff_enabled
 	ammo = ammo_primary
-	secondary_toggled = FALSE
+	ammo_selection = FALSE
 	if(iff_enabled)
 		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
 		drain += 10

@@ -224,7 +224,13 @@
 			return FALSE
 	if(isxeno(target) && !(borer_flags_targets & BORER_TARGET_XENOS))//Can it infect xenos? Normally, no.
 		return FALSE
-	if(target.stat != DEAD && Adjacent(target) && !target.has_brain_worms())
+	if(target.stat == DEAD)
+		var/mob/living/carbon/human/human_target
+		if(ishuman(target))
+			human_target = target
+		if(isxeno(target) || (target.status_flags & PERMANENTLY_DEAD) || human_target && human_target.undefibbable)
+			return FALSE
+	if(Adjacent(target) && !target.has_brain_worms())
 		return TRUE
 	else
 		return FALSE
@@ -265,8 +271,12 @@
 		to_chat(src, SPAN_XENOWARNING("You cannot infest a target in your current state."))
 		return FALSE
 	if(target.stat == DEAD)
-		to_chat(src, SPAN_WARNING("You cannot infest the dead."))
-		return FALSE
+		var/mob/living/carbon/human/human_target
+		if(ishuman(target))
+			human_target = target
+		if(isxeno(target) || (target.status_flags & PERMANENTLY_DEAD) || human_target && human_target.undefibbable)
+			to_chat(src, SPAN_WARNING("You cannot infest the dead."))
+			return FALSE
 	if(target in view(1, src))
 		to_chat(src, SPAN_NOTICE("You wiggle into [target]'s ear."))
 		if(!stealthy && !target.stat)

@@ -278,8 +278,15 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 	if(host_mob)
 		set_light_on(FALSE)
 		heal_amt = 3
-		if(!stat && host_mob.stat != DEAD)
-			var/mob/living/carbon/human/human_host
+		var/mob/living/carbon/human/human_host
+		var/dead_host = FALSE
+		if(host_mob.stat == DEAD)
+			if(ishuman(host_mob))
+				human_host = host_mob
+			if(isxeno(host_mob) || (host_mob.status_flags & PERMANENTLY_DEAD) || human_host && human_host.undefibbable)
+				dead_host = TRUE
+
+		if(!stat && !dead_host)
 			if(ishuman(host_mob))
 				human_host = host_mob
 			if((human_host.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE) && (!human_host.reagents.has_reagent("borerenzyme") || human_host.reagents.has_reagent("borercure")))

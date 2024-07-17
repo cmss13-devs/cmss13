@@ -22,8 +22,12 @@
 	if(!target || !host_mob.Adjacent(target))
 		return FALSE
 	if(target.stat == DEAD)
-		to_chat(host_mob, SPAN_WARNING("You cannot infest the dead."))
-		return FALSE
+		var/mob/living/carbon/human/human_target
+		if(ishuman(target))
+			human_target = target
+		if(isxeno(target) || (target.status_flags & PERMANENTLY_DEAD) || human_target && human_target.undefibbable)
+			to_chat(host_mob, SPAN_WARNING("You cannot infest the dead."))
+			return FALSE
 	if(target.has_brain_worms())
 		to_chat(host_mob, SPAN_WARNING("You cannot infest someone who is already infested!"))
 		return FALSE

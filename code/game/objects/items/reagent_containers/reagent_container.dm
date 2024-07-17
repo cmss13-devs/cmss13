@@ -109,5 +109,6 @@
 	button.overlays += IMG
 
 /datum/action/item_action/reagent_container/set_transfer_amount/action_activate()
+	. = ..()
 	var/obj/item/reagent_container/cont = holder_item
 	cont.set_APTFT()

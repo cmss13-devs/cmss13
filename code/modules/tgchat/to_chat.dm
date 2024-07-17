@@ -29,6 +29,14 @@
 	if(target == world)
 		target = GLOB.clients
 
+	var/list/true_targets = list()
+	if(target == GLOB.admins)
+		for(var/admin in target)
+			var/client/admin_client = CLIENT_FROM_VAR(admin)
+			if(CLIENT_IS_STAFF(admin_client))
+				true_targets += admin_client
+		target = true_targets
+
 	// Build a message
 	var/message = list()
 	if(type) message["type"] = type

@@ -268,6 +268,7 @@
 
 
 /datum/action/item_action/taser/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/energy/taser/taser = holder_item
 	if(!ishuman(owner))
 		return

@@ -34,15 +34,11 @@
 /area/shiva/exterior/cp_lz2)
 "k" = (
 /obj/item/stack/sheet/metal/small_stack,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/exterior/lz2_fortress)
 "l" = (
 /obj/item/stack/sheet/metal/small_stack,
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/exterior/lz2_fortress)
 "o" = (
 /obj/structure/machinery/landinglight/ds2/spoke{
@@ -53,60 +49,41 @@
 /area/shiva/exterior/lz2_fortress)
 "p" = (
 /obj/structure/foamed_metal,
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/exterior/lz2_fortress)
 "s" = (
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_lz2)
 "u" = (
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/exterior/lz2_fortress)
 "w" = (
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/exterior/lz2_fortress)
 "x" = (
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 12;
 	pixel_y = 25
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/exterior/lz2_fortress)
 "z" = (
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "A" = (
 /obj/item/stack/sheet/metal/small_stack,
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/exterior/lz2_fortress)
 "B" = (
 /obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "C" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "F" = (
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/exterior/lz2_fortress)
 "I" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -114,9 +91,7 @@
 	pixel_x = -13;
 	pixel_y = 25
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/exterior/lz2_fortress)
 "J" = (
 /obj/structure/machinery/landinglight/ds2/spoke{
@@ -130,15 +105,11 @@
 /area/shiva/exterior/lz2_fortress)
 "M" = (
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "N" = (
 /obj/structure/foamed_metal,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "Q" = (
 /obj/structure/foamed_metal,
@@ -158,10 +129,7 @@
 /obj/item/weapon/gun/boltaction{
 	pixel_x = -6
 	},
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/exterior/lz2_fortress)
 
 (1,1,1) = {"

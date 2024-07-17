@@ -222,6 +222,7 @@
 	update_icon()
 
 /datum/action/item_action/toggle_firing_level/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/launcher/grenade/G = holder_item
 	if(!ishuman(owner))
 		return

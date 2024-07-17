@@ -104,6 +104,26 @@
 	penetration = ARMOR_PENETRATION_TIER_3
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
+/datum/ammo/bullet/pistol/heavy/m47/apimpact
+	name = "heavy ap pistol bullet"
+	penetration = ARMOR_PENETRATION_TIER_1
+	debilitate = list(0,1.5,0,0,0,1,0,0)
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+/datum/ammo/bullet/pistol/m47/impact
+	name = "heavy impact pistol bullet"
+	penetration = ARMOR_PENETRATION_TIER_1
+	debilitate = list(0,1.5,0,0,0,1,0,0)
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+/datum/ammo/bullet/pistol/m47/hp
+	name = "heavy pistol hollowpoint"
+	damage = 70
+	penetration = ARMOR_PENETRATION_TIER_1
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+
+// 50 cal
+
 /datum/ammo/bullet/pistol/heavy/super //Commander's variant
 	name = ".50 heavy pistol bullet"
 	damage = 60

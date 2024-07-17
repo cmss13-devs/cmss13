@@ -1134,6 +1134,31 @@
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 
+
+
+/obj/item/storage/belt/gun/m4a3/m47/co/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m47())
+	new /obj/item/ammo_magazine/pistol/m47/impact(src)
+	new /obj/item/ammo_magazine/pistol/m47/impact(src)
+	new /obj/item/ammo_magazine/pistol/m47/apimpact(src)
+	new /obj/item/ammo_magazine/pistol/m47/apimpact(src)
+	new /obj/item/ammo_magazine/pistol/m47/hp(src)
+	new /obj/item/ammo_magazine/pistol/m47/hp(src)
+
+/obj/item/storage/belt/gun/m4a3/m47/intel/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m47())
+	new /obj/item/ammo_magazine/pistol/m47(src)
+	new /obj/item/ammo_magazine/pistol/m47(src)
+	new /obj/item/ammo_magazine/pistol/m47(src)
+	new /obj/item/ammo_magazine/pistol/m47(src)
+	new /obj/item/ammo_magazine/pistol/m47(src)
+	new /obj/item/ammo_magazine/pistol/m47(src)
+
+/obj/item/storage/belt/gun/m4a3/m47/foreconco/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m47())
+	new /obj/item/ammo_magazine/pistol/m47/impact(src)
+	new /obj/item/ammo_magazine/pistol/m47/hp(src)
+
 /obj/item/storage/belt/gun/m4a3/mod88/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/mod88())
 	for(var/i = 1 to storage_slots - 1)

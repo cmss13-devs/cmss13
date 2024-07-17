@@ -44,6 +44,15 @@
 	new /obj/item/storage/belt/gun/smartpistol/full_nogun(src)
 	new /obj/item/weapon/gun/pistol/smart(src)
 
+//-----------
+/obj/item/storage/box/guncase/m47a2
+	name = "\improper M47A2 pistol case"
+	desc = "A gun case containing the lucrative M47A2 Offensive Handgun."
+	can_hold = list()
+	storage_slots = 1
+
+/obj/item/storage/box/guncase/m47a2/fill_preset_inventory()
+	new /obj/item/storage/belt/gun/m4a3/m47/intel(src)
 //------------
 /obj/item/storage/box/guncase/mou53
 	name = "\improper MOU53 shotgun case"

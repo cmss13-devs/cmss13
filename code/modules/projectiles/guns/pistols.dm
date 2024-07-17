@@ -151,6 +151,42 @@
 /obj/item/weapon/gun/pistol/m1911/socom/equipped
 	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
 
+// A version of the M1911 for COs and FORECON.
+
+/obj/item/weapon/gun/pistol/m47
+	name = "\improper M47A2 offensive handgun"
+	desc = "It's hard to keep a classic down. While Armat's M80A3, an update on the 1911 failed to make it into standard adoption during the Marine '70s revitalization, a variant of their handgun was picked up by FORECON and specialized units within the USMC. 14 rounds of .45, extended barrel, and integrated night sights - more than enough features to justify its designation as an 'Offensive Handgun.'"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon_state = "m47"
+	item_state = "m4a3"
+	fire_sound = 'sound/weapons/gun_m47.ogg'
+	firesound_volume = 80
+	reload_sound = 'sound/weapons/reload_m47.ogg'
+	reload_volume = 70
+	unload_sound = 'sound/weapons/unload_m47.ogg'
+	fire_rattle = 'sound/weapons/gun_m47.ogg'
+	cocked_sound = 'sound/weapons/cocking_m47.ogg'
+	empty_sound = null
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECTOR|GUN_AMMO_COUNTER
+	current_mag = /obj/item/ammo_magazine/pistol/m47
+
+
+/obj/item/weapon/gun/pistol/m47/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 26, "muzzle_y" = 20,"rail_x" = 12, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
+
+
+/obj/item/weapon/gun/pistol/m47/set_gun_config_values()
+	..()
+	set_burst_delay(FIRE_DELAY_TIER_7)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	recoil =  RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+
 //-------------------------------------------------------
 //Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.
 

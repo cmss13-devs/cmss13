@@ -21,6 +21,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 		list("M44 Marksman Speed Loader (.44)", 10, /obj/item/ammo_magazine/revolver/marksman, null, VENDOR_ITEM_REGULAR),
 		list("M4A3 HP Magazine", 5, /obj/item/ammo_magazine/pistol/hp, null, VENDOR_ITEM_REGULAR),
 		list("M4A3 AP Magazine", 5, /obj/item/ammo_magazine/pistol/ap, null, VENDOR_ITEM_REGULAR),
+		list("M47A2 Magazine", 5, /obj/item/ammo_magazine/pistol/m47, null, VENDOR_ITEM_REGULAR),
+		list("M47A2 HP Magazine", 10, /obj/item/ammo_magazine/pistol/m47/hp, null, VENDOR_ITEM_REGULAR),
 		list("VP78 Magazine", 5, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smartpistol Magazine (.45)", 10, /obj/item/ammo_magazine/pistol/smart, null, VENDOR_ITEM_REGULAR),
 

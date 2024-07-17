@@ -44,6 +44,7 @@
 	var/empty_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	//We don't want these for guns that don't have them.
 	var/reload_sound = null
+	var/reload_volume = 25
 	var/cocked_sound = null
 	///world.time value, to prevent COCK COCK COCK COCK
 	var/cock_cooldown = 0
@@ -860,9 +861,10 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		cock_gun(user)
 	user.visible_message(SPAN_NOTICE("[user] loads [magazine] into [src]!"),
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
-	if(reload_sound)
+	if((reload_sound && reload_volume))
+		playsound(user, reload_sound, reload_volume, 1, 5 )
+	else
 		playsound(user, reload_sound, 25, 1, 5)
-
 
 //Drop out the magazine. Keep the ammo type for next time so we don't need to replace it every time.
 //This can be passed with a null user, so we need to check for that as well.

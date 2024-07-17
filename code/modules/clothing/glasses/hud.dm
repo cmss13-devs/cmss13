@@ -106,7 +106,7 @@
 	name = "\improper SensorMate HUD"
 	desc = "A much older heads-up display that displays the last known biometric data from suit sensors of any given individual."
 	icon_state = "sensorhud"
-	deactive_state = "sensorhud_d"
+	deactive_state = "sensorhaud_d"
 	flags_armor_protection = 0
 	toggleable = TRUE
 	hud_type = MOB_HUD_MEDICAL_ADVANCED

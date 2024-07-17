@@ -1,11 +1,17 @@
 SUBSYSTEM_DEF(who)
 	name = "Who"
-	flags = SS_NO_INIT|SS_BACKGROUND
-	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
+	flags = SS_BACKGROUND
+ 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
+	init_order = SS_INIT_WHO
 	wait = 5 SECONDS
 
 	var/datum/player_list/who = new
 	var/datum/player_list/staff/staff_who = new
+
+/datum/controller/subsystem/who/Initialize()
+	who.update_data()
+	staff_who.update_data()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/who/fire(resumed = TRUE)
 	who.update_data()
@@ -76,7 +82,7 @@ SUBSYSTEM_DEF(who)
 
 				if(client_mob.stat != DEAD)
 					if(isxeno(client_mob))
-						client_payload["color"] += "#f00"
+						client_payload["color"] += "#ec3535"
 						client_payload["text"] += " - Xenomorph"
 
 					else if(ishuman(client_mob))
@@ -104,19 +110,19 @@ SUBSYSTEM_DEF(who)
 		new_list_data["total_players"] += list(client_payload)
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "in Lobby: [additional_data["lobby"]]",
+		"content" = "In Lobby: [additional_data["lobby"]]",
 		"color" = "#777",
 		"text" = "Player in lobby",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Spectators: [additional_data["observers"]] Players",
+		"content" = "Spectating Players: [additional_data["observers"]]",
 		"color" = "#777",
 		"text" = "Spectating players",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Spectators: [additional_data["admin_observers"]] Administrators",
+		"content" = "Spectating Admins: [additional_data["admin_observers"]]",
 		"color" = "#777",
 		"text" = "Spectating administrators",
 	))
@@ -129,24 +135,24 @@ SUBSYSTEM_DEF(who)
 
 	new_list_data["additional_info"] += list(list(
 		"content" = "Infected Humans: [additional_data["infected_humans"]]",
-		"color" = "#F00",
+		"color" = "#ec3535",
 		"text" = "Players playing as Infected Human",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "USS `Almayer` Personnel: [additional_data["uscm"]]",
-		"color" = "#3e26c8",
-		"text" = "Players playing as USS `Almayer` Personnel",
+		"content" = "[MAIN_SHIP_NAME] Personnel: [additional_data["uscm"]]",
+		"color" = "#5442bd",
+		"text" = "Players playing as [MAIN_SHIP_NAME] Personnel",
 	))
 
 	new_list_data["additional_info"] += list(list(
 		"content" = "Marines: [additional_data["uscm_marines"]]",
-		"color" = "#3e26c8",
+		"color" = "#5442bd",
 		"text" = "Players playing as Marines",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Yautjes: [additional_data["yautja"]]",
+		"content" = "Yautjas: [additional_data["yautja"]]",
 		"color" = "#7ABA19",
 		"text" = "Players playing as Yautja",
 	))
@@ -157,7 +163,7 @@ SUBSYSTEM_DEF(who)
 		"text" = "Players playing as Infected Yautja",
 	))
 
-	for(var/i = 1 to length(counted_factions))
+	for(var/i in 1 to length(counted_factions))
 		if(counted_factions[counted_factions[i]])
 			new_list_data["factions"] += list(list(
 				"content" = "[counted_factions[i]]: [counted_factions[counted_factions[i]]]",
@@ -301,6 +307,6 @@ SUBSYSTEM_DEF(who)
 
 /mob/verb/staffwho()
 	set category = "Admin"
-	set name = "Staff Who"
+	set name = "StaffWho"
 
 	SSwho.staff_who.tgui_interact(src)

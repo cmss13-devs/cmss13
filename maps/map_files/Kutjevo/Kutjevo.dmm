@@ -10922,8 +10922,8 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "clfship"
 	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/oob/dev_room)
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
 "qmI" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/desert/desert_shore/shore_edge1/north,

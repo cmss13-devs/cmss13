@@ -2964,6 +2964,10 @@
 	},
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
+"aRP" = (
+/obj/vehicle/train/cargo/engine,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/cp_colony_grounds)
 "aRS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner"
@@ -15587,6 +15591,10 @@
 /obj/structure/surface/rack,
 /turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
+"otw" = (
+/obj/vehicle/train/cargo/trolley,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/cp_colony_grounds)
 "otJ" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/layer2,
@@ -47797,8 +47805,8 @@ xfa
 xfa
 xfa
 rHr
-sYu
-sYu
+otw
+otw
 sYu
 lwo
 eOM
@@ -47959,7 +47967,7 @@ vca
 vca
 vca
 epe
-sYu
+otw
 eOM
 aec
 lwo
@@ -48121,7 +48129,7 @@ cKb
 cKb
 cKb
 cKb
-sYu
+aRP
 iXS
 sLs
 lwo

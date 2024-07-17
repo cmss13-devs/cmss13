@@ -169,7 +169,15 @@
 	empty_sound = null
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECTOR|GUN_AMMO_COUNTER
 	current_mag = /obj/item/ammo_magazine/pistol/m47
-
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+	)
 
 /obj/item/weapon/gun/pistol/m47/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 26, "muzzle_y" = 20,"rail_x" = 12, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
@@ -177,15 +185,21 @@
 
 /obj/item/weapon/gun/pistol/m47/set_gun_config_values()
 	..()
-	set_burst_delay(FIRE_DELAY_TIER_7)
+	set_fire_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_8
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
-	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_5
 	recoil =  RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
+
+/obj/item/weapon/gun/pistol/m47/co
+	name = "\improper custom M47A2 offensive handgun"
+	desc_lore = "The feeding ramp is polished to a mirror sheen, with a reinforced slide, and tightened locking mechanisms in the frame for added precision. The thumb safety is extended to make it easier on the finger, with a long-type trigger with non-slip grooves. A ring hammer. The base of the trigger guards's been filed down for a higher grip, too. And not only that, but nearly every other part of this gun has been expertly crafted and customized by USMC armourers."
+	unacidable = TRUE
+	indestructible = 1
+	current_mag = /obj/item/ammo_magazine/pistol/m47/impact
 
 //-------------------------------------------------------
 //Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.
@@ -272,6 +286,8 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "c_deagle"
 	item_state = "c_deagle"
+	unacidable = TRUE
+	indestructible = 1
 	current_mag = /obj/item/ammo_magazine/pistol/heavy/super/highimpact
 	black_market_value = 100
 

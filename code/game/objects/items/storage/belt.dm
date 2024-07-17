@@ -1137,7 +1137,7 @@
 
 
 /obj/item/storage/belt/gun/m4a3/m47/co/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/m47())
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m47/co())
 	new /obj/item/ammo_magazine/pistol/m47/impact(src)
 	new /obj/item/ammo_magazine/pistol/m47/impact(src)
 	new /obj/item/ammo_magazine/pistol/m47/apimpact(src)
@@ -1155,7 +1155,7 @@
 	new /obj/item/ammo_magazine/pistol/m47(src)
 
 /obj/item/storage/belt/gun/m4a3/m47/foreconco/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/m47())
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m47/co())
 	new /obj/item/ammo_magazine/pistol/m47/impact(src)
 	new /obj/item/ammo_magazine/pistol/m47/hp(src)
 

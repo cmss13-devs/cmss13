@@ -29,29 +29,29 @@
 // Used to get a scaled lumcount.
 /turf/proc/get_lumcount(minlum = 0, maxlum = 1)
 	var/totallums = 0
-	var/totalSunFalloff = 0
+	var/totalGlobalLightFalloff = 0
 	if(static_lighting_object)
 		var/datum/static_lighting_corner/L
 		L = lighting_corner_NE
 		if(L)
 			totallums += L.lum_r + L.lum_b + L.lum_g
-			totalSunFalloff += L.sun_falloff
+			totalGlobalLightFalloff += L.global_light_falloff
 		L = lighting_corner_SE
 		if(L)
 			totallums += L.lum_r + L.lum_b + L.lum_g
-			totalSunFalloff += L.sun_falloff
+			totalGlobalLightFalloff += L.global_light_falloff
 		L = lighting_corner_SW
 		if(L)
 			totallums += L.lum_r + L.lum_b + L.lum_g
-			totalSunFalloff += L.sun_falloff
+			totalGlobalLightFalloff += L.global_light_falloff
 		L = lighting_corner_NW
 		if(L)
 			totallums += L.lum_r + L.lum_b + L.lum_g
-			totalSunFalloff += L.sun_falloff
+			totalGlobalLightFalloff += L.global_light_falloff
 		if(outdoor_effect && outdoor_effect.state) /* SKY_BLOCKED is 0 */
-			totalSunFalloff = 4
-		/* sunlight / 4 corners */
-		totallums += totalSunFalloff / 4
+			totalGlobalLightFalloff = 4
+		/* global light / 4 corners */
+		totallums += totalGlobalLightFalloff / 4
 
 		totallums /= 12 // 4 corners, each with 3 channels, get the average.
 

@@ -1,4 +1,4 @@
-#define WAIT_SUNLIGHT_READY while(!SSsunlighting.initialized) {stoplag();}
+#define WAIT_SUNLIGHT_READY while(!SSglobal_light.initialized) {stoplag();}
 
 /datum/time_of_day
 	var/name = ""
@@ -74,12 +74,12 @@
 	position_number = 10
 
 GLOBAL_VAR_INIT(global_light_range, 5)
-GLOBAL_LIST_EMPTY(sunlight_queue_work)
-GLOBAL_LIST_EMPTY(sunlight_queue_update)
-GLOBAL_LIST_EMPTY(sunlight_queue_corner)
+GLOBAL_LIST_EMPTY(global_light_queue_work)
+GLOBAL_LIST_EMPTY(global_light_queue_update)
+GLOBAL_LIST_EMPTY(global_light_queue_corner)
 GLOBAL_LIST_EMPTY(weather_planes_need_vis)
 
-SUBSYSTEM_DEF(sunlighting)
+SUBSYSTEM_DEF(global_light)
 	name = "Sun Lighting"
 	wait = 2 SECONDS
 	priority = SS_PRIORITY_SUNLIGHTING
@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(sunlighting)
 	var/datum/time_of_day/next_step_datum
 	var/datum/particle_weather/weather_datum
 	var/datum/weather_event/weather_light_affecting_event
-	var/list/mutable_appearance/sunlight_overlays
+	var/list/mutable_appearance/global_light_overlays
 
 	var/list/datum/time_of_day/steps = list()
 
@@ -103,11 +103,11 @@ SUBSYSTEM_DEF(sunlighting)
 
 	var/enabled = FALSE
 
-/datum/controller/subsystem/sunlighting/stat_entry(msg)
-	msg = "W:[length(GLOB.sunlight_queue_work)]|U:[length(GLOB.sunlight_queue_update)]|C:[length(GLOB.sunlight_queue_corner)]"
+/datum/controller/subsystem/global_light/stat_entry(msg)
+	msg = "W:[length(GLOB.global_light_queue_work)]|U:[length(GLOB.global_light_queue_update)]|C:[length(GLOB.global_light_queue_corner)]"
 	return ..()
 
-/datum/controller/subsystem/sunlighting/Initialize(timeofday)
+/datum/controller/subsystem/global_light/Initialize(timeofday)
 	enabled = CONFIG_GET(flag/day_time_change)
 	game_time_length = SSmapping.configs[GROUND_MAP].custom_time_length
 	custom_time_offset = rand(0, game_time_length)
@@ -121,24 +121,24 @@ SUBSYSTEM_DEF(sunlighting)
 	sun_color.filters += filter(type = "layer", render_source = S_LIGHTING_VISUAL_RENDER_TARGET)
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/sunlighting/proc/set_game_time_length(new_value)
+/datum/controller/subsystem/global_light/proc/set_game_time_length(new_value)
 	game_time_length = new_value
 
-/datum/controller/subsystem/sunlighting/proc/set_game_time_offset(new_value)
+/datum/controller/subsystem/global_light/proc/set_game_time_offset(new_value)
 	custom_time_offset = new_value
 
-/datum/controller/subsystem/sunlighting/proc/game_time_offseted()
+/datum/controller/subsystem/global_light/proc/game_time_offseted()
 	if(enabled)
 		return (REALTIMEOFDAY + custom_time_offset) % game_time_length
 	return 0
 
-/datum/controller/subsystem/sunlighting/proc/create_steps()
+/datum/controller/subsystem/global_light/proc/create_steps()
 	for(var/path in typesof(/datum/time_of_day))
 		var/datum/time_of_day/time_of_day = new path()
 		if(time_of_day.position_number)
 			steps["[time_of_day.position_number]"] = time_of_day
 
-/datum/controller/subsystem/sunlighting/proc/check_cycle()
+/datum/controller/subsystem/global_light/proc/check_cycle()
 	if(!next_step_datum)
 		set_time_of_day()
 		return TRUE
@@ -148,7 +148,7 @@ SUBSYSTEM_DEF(sunlighting)
 		return TRUE
 	return FALSE
 
-/datum/controller/subsystem/sunlighting/proc/set_time_of_day()
+/datum/controller/subsystem/global_light/proc/set_time_of_day()
 	for(var/worked_length = 1 to length(steps))
 		if(game_time_offseted() >= steps["[worked_length]"].start_at * game_time_length)
 			current_step_datum = steps["[worked_length]"]
@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(sunlighting)
 		current_step_datum = steps["1"]
 		next_step_datum = steps["2"]
 
-/datum/controller/subsystem/sunlighting/proc/update_color()
+/datum/controller/subsystem/global_light/proc/update_color()
 	if(!weather_light_affecting_event)
 		var/time_to_animate = daytimeDiff(game_time_offseted(), next_step_datum.start_at * game_time_length)
 		var/blend_amount = (game_time_offseted() - current_step_datum.start_at * game_time_length) / (next_step_datum.start_at * game_time_length - current_step_datum.start_at * game_time_length)
@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(sunlighting)
 			current_color = BlendRGB(current_color, weather_datum.weather_color_offset, min(weather_blend_amount, weather_blend_ammount))
 		animate(sun_color, color = current_color, time = time_to_animate)
 
-/datum/controller/subsystem/sunlighting/fire(resumed)
+/datum/controller/subsystem/global_light/fire(resumed)
 	if(sun_color)
 		sun_color.name = "SUN_COLOR_[rand()*rand(1,9999999)]" // force rendering refresh because byond is a bitch
 
@@ -190,23 +190,23 @@ SUBSYSTEM_DEF(sunlighting)
 			GLOB.weather_planes_need_vis.Cut(1, worked_length+1)
 			worked_length = 0
 
-	for(worked_length in 1 to length(GLOB.sunlight_queue_work))
-		var/turf/turf = GLOB.sunlight_queue_work[worked_length]
+	for(worked_length in 1 to length(GLOB.global_light_queue_work))
+		var/turf/turf = GLOB.global_light_queue_work[worked_length]
 		if(turf)
 			turf.get_sky_and_weather_states()
 			if(turf.outdoor_effect)
-				GLOB.sunlight_queue_update += turf.outdoor_effect
+				GLOB.global_light_queue_update += turf.outdoor_effect
 
 		if(MC_TICK_CHECK)
 			break
 	if(worked_length)
-		GLOB.sunlight_queue_work.Cut(1, worked_length+1)
+		GLOB.global_light_queue_work.Cut(1, worked_length+1)
 		worked_length = 0
 
 	MC_SPLIT_TICK
 
-	for(worked_length in 1 to length(GLOB.sunlight_queue_update))
-		var/atom/movable/outdoor_effect/outdoor_effect = GLOB.sunlight_queue_update[worked_length]
+	for(worked_length in 1 to length(GLOB.global_light_queue_update))
+		var/atom/movable/outdoor_effect/outdoor_effect = GLOB.global_light_queue_update[worked_length]
 		if(outdoor_effect)
 			outdoor_effect.process_state()
 			update_outdoor_effect_overlays(outdoor_effect)
@@ -214,14 +214,14 @@ SUBSYSTEM_DEF(sunlighting)
 		if(MC_TICK_CHECK)
 			break
 	if(worked_length)
-		GLOB.sunlight_queue_update.Cut(1, worked_length+1)
+		GLOB.global_light_queue_update.Cut(1, worked_length+1)
 		worked_length = 0
 
 
 	MC_SPLIT_TICK
 
-	for(worked_length in 1 to length(GLOB.sunlight_queue_corner))
-		var/turf/turf = GLOB.sunlight_queue_corner[worked_length]
+	for(worked_length in 1 to length(GLOB.global_light_queue_corner))
+		var/turf/turf = GLOB.global_light_queue_corner[worked_length]
 		var/atom/movable/outdoor_effect/outdoor_effect = turf.outdoor_effect
 
 		/* if we haven't initialized but we are affected, create new and check state */
@@ -232,7 +232,7 @@ SUBSYSTEM_DEF(sunlighting)
 
 			/* in case we aren't indoor somehow, wack us into the proc queue, we will be skipped on next indoor check */
 			if(outdoor_effect.state != SKY_BLOCKED)
-				GLOB.sunlight_queue_update += turf.outdoor_effect
+				GLOB.global_light_queue_update += turf.outdoor_effect
 
 		if(outdoor_effect.state != SKY_BLOCKED)
 			continue
@@ -245,13 +245,13 @@ SUBSYSTEM_DEF(sunlighting)
 			break
 
 	if(worked_length)
-		GLOB.sunlight_queue_corner.Cut(1, worked_length+1)
+		GLOB.global_light_queue_corner.Cut(1, worked_length+1)
 		worked_length = 0
 
 	check_cycle()
 
 //get our weather overlay
-/datum/controller/subsystem/sunlighting/proc/get_weather_overlay()
+/datum/controller/subsystem/global_light/proc/get_weather_overlay()
 	var/mutable_appearance/MA = new /mutable_appearance()
 
 	MA.icon			= 'icons/effects/weather_overlay.dmi'
@@ -262,13 +262,13 @@ SUBSYSTEM_DEF(sunlighting)
 	return MA
 
 // Updates overlays and vis_contents for outdoor effects
-/datum/controller/subsystem/sunlighting/proc/update_outdoor_effect_overlays(atom/movable/outdoor_effect/OE)
+/datum/controller/subsystem/global_light/proc/update_outdoor_effect_overlays(atom/movable/outdoor_effect/OE)
 	if(!is_ground_level(OE.z) && !is_mainship_level(OE.z))
 		return
 
 	var/mutable_appearance/MA
 	if(OE.state != SKY_BLOCKED)
-		MA = get_sunlight_overlay(1,1,1,1) /* fully lit */
+		MA = get_global_light_overlay(1,1,1,1) /* fully lit */
 	else //Indoor - do proper corner checks
 		/* check if we are globally affected or not */
 		var/static/datum/static_lighting_corner/dummy/dummy_lighting_corner = new
@@ -278,31 +278,31 @@ SUBSYSTEM_DEF(sunlighting)
 		var/datum/static_lighting_corner/cb = OE.source_turf.lighting_corner_NW || dummy_lighting_corner
 		var/datum/static_lighting_corner/ca = OE.source_turf.lighting_corner_NE || dummy_lighting_corner
 
-		var/fr = cr.sun_falloff
-		var/fg = cg.sun_falloff
-		var/fb = cb.sun_falloff
-		var/fa = ca.sun_falloff
+		var/fr = cr.global_light_falloff
+		var/fg = cg.global_light_falloff
+		var/fb = cb.global_light_falloff
+		var/fa = ca.global_light_falloff
 
-		MA = get_sunlight_overlay(fr, fg, fb, fa)
+		MA = get_global_light_overlay(fr, fg, fb, fa)
 
-	OE.sunlight_overlay = MA
+	OE.global_light_overlay = MA
 	if(is_ground_level(OE.z) && OE.source_turf.ceiling_status & WEATHERVISIBLE)
-		OE.overlays = list(OE.sunlight_overlay, get_weather_overlay())
+		OE.overlays = list(OE.global_light_overlay, get_weather_overlay())
 	else
-		OE.overlays = list(OE.sunlight_overlay)
+		OE.overlays = list(OE.global_light_overlay)
 
 	OE.luminosity = MA.luminosity
 
 //Retrieve an overlay from the list - create if necessary
-/datum/controller/subsystem/sunlighting/proc/get_sunlight_overlay(fr, fg, fb, fa)
+/datum/controller/subsystem/global_light/proc/get_global_light_overlay(fr, fg, fb, fa)
 	var/index = "[fr]|[fg]|[fb]|[fa]"
-	LAZYINITLIST(sunlight_overlays)
-	if(!sunlight_overlays[index])
-		sunlight_overlays[index] = create_sunlight_overlay(fr, fg, fb, fa)
-	return sunlight_overlays[index]
+	LAZYINITLIST(global_light_overlays)
+	if(!global_light_overlays[index])
+		global_light_overlays[index] = create_global_light_overlay(fr, fg, fb, fa)
+	return global_light_overlays[index]
 
 //Create an overlay appearance from corner values
-/datum/controller/subsystem/sunlighting/proc/create_sunlight_overlay(fr, fg, fb, fa)
+/datum/controller/subsystem/global_light/proc/create_global_light_overlay(fr, fg, fb, fa)
 	var/mutable_appearance/MA = new /mutable_appearance()
 
 	MA.blend_mode	= BLEND_OVERLAY

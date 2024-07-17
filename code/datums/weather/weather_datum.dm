@@ -47,7 +47,7 @@
 /datum/weather_event/thunder/start_process()
 	repeats = rand(1, 3)
 	duration = duration + rand(-duration*5, duration*10)/10
-	SSsunlighting.weather_light_affecting_event = src
+	SSglobal_light.weather_light_affecting_event = src
 	stage_process()
 
 /datum/weather_event/thunder/stage_process()
@@ -60,11 +60,11 @@
 			spawn(duration - rand(0, duration*10)/10)
 				playsound_z(SSmapping.levels_by_trait(ZTRAIT_GROUND), pick(sound_effects))
 		if(GLE_STAGE_THIRD)
-			color_animating = SSsunlighting.current_color
+			color_animating = SSglobal_light.current_color
 			animate_flags = CIRCULAR_EASING | EASE_IN
 
 	if(color_animating)
-		animate(SSsunlighting.sun_color, color = color_animating, easing = animate_flags, time = duration)
+		animate(SSglobal_light.sun_color, color = color_animating, easing = animate_flags, time = duration)
 
 	sleep(duration)
 	stage++
@@ -74,8 +74,8 @@
 		sleep(duration)
 
 	else if(stage > max_stages)
-		SSsunlighting.weather_light_affecting_event = null
-		SSsunlighting.update_color()
+		SSglobal_light.weather_light_affecting_event = null
+		SSglobal_light.update_color()
 		qdel(src)
 		return
 
@@ -447,7 +447,7 @@
 		return
 	weather_duration = rand(weather_duration_lower, weather_duration_upper)
 	COOLDOWN_START(src, time_left, weather_duration)
-	weather_start_time = SSsunlighting.game_time_offseted() / SSsunlighting.game_time_length
+	weather_start_time = SSglobal_light.game_time_offseted() / SSglobal_light.game_time_length
 	running = TRUE
 	addtimer(CALLBACK(src, PROC_REF(wind_down)), weather_duration)
 	weather_warnings()

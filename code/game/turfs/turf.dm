@@ -110,7 +110,7 @@
 	if(current_area?.lighting_effect)
 		overlays += current_area.lighting_effect
 	else
-		GLOB.sunlight_queue_work |= src
+		GLOB.global_light_queue_work |= src
 
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
@@ -466,7 +466,7 @@
 
 	if(W.directional_opacity != old_directional_opacity)
 		W.reconsider_lights()
-		W.reconsider_sunlight()
+		W.reconsider_global_light()
 
 	var/area/thisarea = get_area(W)
 	if(thisarea.lighting_effect)

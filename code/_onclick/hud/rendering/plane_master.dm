@@ -109,8 +109,8 @@
 	. = ..()
 	add_filter("emissives", 1, alpha_mask_filter(render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE))
 	add_filter("object_lighting", 2, alpha_mask_filter(render_source = O_LIGHTING_VISUAL_RENDER_TARGET, flags = MASK_INVERSE))
-	if(SSsunlighting.initialized)
-		vis_contents += SSsunlighting.sun_color
+	if(SSglobal_light.initialized)
+		vis_contents += SSglobal_light.sun_color
 
 //Contains all sun light objects
 /atom/movable/screen/plane_master/s_light_visual

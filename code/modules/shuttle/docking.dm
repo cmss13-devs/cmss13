@@ -170,8 +170,8 @@
 	for(var/i in 1 to length(old_turfs))
 		CHECK_TICK
 		if(!(old_turfs[old_turfs[i]] & MOVE_TURF))
-			GLOB.sunlight_queue_work |= old_turfs[i]
-			GLOB.sunlight_queue_work |= new_turfs[i]
+			GLOB.global_light_queue_work |= old_turfs[i]
+			GLOB.global_light_queue_work |= new_turfs[i]
 			continue
 
 		var/turf/old_turf = old_turfs[i]
@@ -196,15 +196,15 @@
 			new_turf.pseudo_roof = custom_ceiling
 */
 		new_turf.afterShuttleMove(old_turf, rotation)
-		GLOB.sunlight_queue_work |= new_turf
+		GLOB.global_light_queue_work |= new_turf
 
 //silent fix
-		var/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter/presetted_pseudo = locate(/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter) in old_turf
+		var/obj/effect/mapping_helpers/global_light/pseudo_roof_setter/presetted_pseudo = locate(/obj/effect/mapping_helpers/global_light/pseudo_roof_setter) in old_turf
 		old_turf.pseudo_roof = presetted_pseudo ? presetted_pseudo.pseudo_roof : initial(old_turf.pseudo_roof)
 /*
 		var/turf/old_ceiling = get_step_multiz(old_turf, UP)
 		if(!old_ceiling)
-			var/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter/presetted_pseudo = locate(/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter) in old_turf
+			var/obj/effect/mapping_helpers/global_light/pseudo_roof_setter/presetted_pseudo = locate(/obj/effect/mapping_helpers/global_light/pseudo_roof_setter) in old_turf
 			old_turf.pseudo_roof = presetted_pseudo ? presetted_pseudo.pseudo_roof : initial(old_turf.pseudo_roof)
 		else if(istype(old_ceiling, custom_ceiling))
 			var/turf/open/floor/roof/old_shuttle_ceiling = old_ceiling
@@ -212,7 +212,7 @@
 		else
 			old_ceiling.baseturfs -= custom_ceiling
 */
-		GLOB.sunlight_queue_work |= old_turf
+		GLOB.global_light_queue_work |= old_turf
 
 	for(var/i in 1 to length(moved_atoms))
 		CHECK_TICK

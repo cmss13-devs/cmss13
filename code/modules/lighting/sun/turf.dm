@@ -1,4 +1,4 @@
-//todo: handle moving sunlight turfs - see various uses of get_turf in lighting_object
+//todo: handle moving global light turfs - see various uses of get_turf in lighting_object
 
 
 /*
@@ -26,7 +26,7 @@ Sunlight System
 	anchored = TRUE
 
 	/* misc vars */
-	var/mutable_appearance/sunlight_overlay
+	var/mutable_appearance/global_light_overlay
 	var/state = SKY_VISIBLE	// If we can see the see the sky, are blocked, or we have a blocked neighbour (SKY_BLOCKED/VISIBLE/VISIBLE_BORDER)
 	var/turf/source_turf
 	var/list/datum/static_lighting_corner/affecting_corners
@@ -36,7 +36,7 @@ Sunlight System
 		return QDEL_HINT_LETMELIVE
 
 	//If we are a source of light - disable it, to fix out corner refs
-	disable_sunlight()
+	disable_global_light()
 
 	//Remove ourselves from our turf
 	if(source_turf && source_turf.outdoor_effect == src)
@@ -52,11 +52,11 @@ Sunlight System
 		source_turf.outdoor_effect = null //No qdel_null force
 	source_turf.outdoor_effect = src
 
-/atom/movable/outdoor_effect/proc/disable_sunlight()
+/atom/movable/outdoor_effect/proc/disable_global_light()
 	var/turf/turf = list()
 	for(var/datum/static_lighting_corner/corner as anything in affecting_corners)
 		corner.glob_affect -= src
-		corner.get_sunlight_falloff()
+		corner.get_global_light_falloff()
 		if(corner.master_NE)
 			turf |= corner.master_NE
 		if(corner.master_SE)
@@ -66,7 +66,7 @@ Sunlight System
 		if(corner.master_NW)
 			turf |= corner.master_NW
 	turf |= source_turf /* get our calculated indoor lighting */
-	GLOB.sunlight_queue_corner |= turf
+	GLOB.global_light_queue_corner |= turf
 
 	//Empty our affecting_corners list
 	affecting_corners = null
@@ -74,16 +74,16 @@ Sunlight System
 /atom/movable/outdoor_effect/proc/process_state()
 	switch(state)
 		if(SKY_BLOCKED)
-			disable_sunlight() /* Do our indoor processing */
+			disable_global_light() /* Do our indoor processing */
 		if(SKY_VISIBLE_BORDER)
-			calc_sunlight_spread()
+			calc_global_light_spread()
 
 #define HARDSUN 0.5 /* our hyperboloidy modifyer funky times - I wrote this in like, 2020 and can't remember how it works - I think it makes a 3D cone shape with a flat top */
 /* calculate the indoor corners we are affecting */
 #define SUN_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2 - HARDSUN) / max(1, GLOB.global_light_range)))
 
 
-/atom/movable/outdoor_effect/proc/calc_sunlight_spread()
+/atom/movable/outdoor_effect/proc/calc_global_light_spread()
 	var/list/turf/turfs = list()
 	var/datum/static_lighting_corner/corner
 	var/turf/turf
@@ -116,8 +116,8 @@ Sunlight System
 	affecting_corners += corners_list
 	for(corner in corners_list)
 		corner.glob_affect[src] = SUN_FALLOFF(corner, source_turf)
-		if(corner.glob_affect[src] > corner.sun_falloff) /* if are closer than current dist, update the corner */
-			corner.sun_falloff = corner.glob_affect[src]
+		if(corner.glob_affect[src] > corner.global_light_falloff) /* if are closer than current dist, update the corner */
+			corner.global_light_falloff = corner.glob_affect[src]
 			if(corner.master_NE)
 				tempMasterList |= corner.master_NE
 			if(corner.master_SE)
@@ -131,7 +131,7 @@ Sunlight System
 	affecting_corners -= corners_list
 	for(corner in corners_list)
 		corner.glob_affect -= src
-		corner.get_sunlight_falloff()
+		corner.get_global_light_falloff()
 		if(corner.master_NE)
 			tempMasterList |= corner.master_NE
 		if(corner.master_SE)
@@ -141,14 +141,14 @@ Sunlight System
 		if(corner.master_NW)
 			tempMasterList |= corner.master_NW
 
-	GLOB.sunlight_queue_corner += tempMasterList /* update the boys */
+	GLOB.global_light_queue_corner += tempMasterList /* update the boys */
 
 /* Related object changes */
-/* I moved this here to consolidate sunlight changes as much as possible, so its easily disabled */
+/* I moved this here to consolidate global light changes as much as possible, so its easily disabled */
 
 /* turf fuckery */
 /turf
-	var/tmp/atom/movable/outdoor_effect/outdoor_effect /* a turf's sunlight overlay */
+	var/tmp/atom/movable/outdoor_effect/outdoor_effect /* a turf's global light overlay */
 	var/turf/pseudo_roof /* our roof turf - may be a path for top z level, or a ref to the turf above*/
 
 /* check ourselves and neighbours to see what outdoor effects we need */
@@ -166,7 +166,7 @@ Sunlight System
 	else /* roofed, so turn off the lights */
 		tempstate = SKY_BLOCKED
 
-	/* if border or indoor, initialize. Set sunlight state if valid */
+	/* if border or indoor, initialize. Set global light state if valid */
 	if(!outdoor_effect && (tempstate <> SKY_BLOCKED || ceiling_status & WEATHERVISIBLE))
 		outdoor_effect = new /atom/movable/outdoor_effect(src)
 
@@ -194,7 +194,7 @@ Sunlight System
 		weathervisible = FALSE
 	else
 		if(recursionStarted)
-			// This src is acting as a ceiling - so if we are a floor we TURF_WEATHER_PROOF + block the sunlight of our down-Z turf
+			// This src is acting as a ceiling - so if we are a floor we TURF_WEATHER_PROOF + block the global light of our down-Z turf
 			skyvisible = turf_flags & TURF_TRANSPARENT //If we are glass floor, we don't block
 			weathervisible = !(turf_flags & TURF_WEATHER_PROOF) //If we are air or space, we aren't TURF_WEATHER_PROOF
 		else //We are open, so assume open to the elements
@@ -227,8 +227,8 @@ Sunlight System
 		else
 			skyvisible = FALSE
 			weathervisible = FALSE
-		// EVERY turf must be transparent for sunlight - so &=
-		// ANY turf must be closed for TURF_WEATHER_PROOF - so |=
+		// EVERY turf must be transparent for global light - so &=
+		// ANY turf must be closed for weather - so |=
 /*
 		var/turf/ceiling = get_step_multiz(src, UP)
 		if(ceiling)
@@ -256,7 +256,7 @@ Sunlight System
 	effect.effect_affect(src)
 
 /* moved this out of reconsider lights so we can call it in multiz refresh  */
-/turf/proc/reconsider_sunlight()
+/turf/proc/reconsider_global_light()
 	if(!SSlighting.initialized)
 		return
 
@@ -319,24 +319,24 @@ Sunlight System
 		for(effect in lighting_corner_NW.glob_affect)
 			SunlightUpdates |= effect.source_turf
 
-	GLOB.sunlight_queue_work |= SunlightUpdates
+	GLOB.global_light_queue_work |= SunlightUpdates
 
 	var/turf/turf = SSmapping.get_turf_below(src)
 	if(turf)
-		turf.reconsider_sunlight()
+		turf.reconsider_global_light()
 
 /* corner fuckery */
 /datum/static_lighting_corner
-	var/list/glob_affect = list() /* list of sunlight objects affecting this corner */
-	var/sun_falloff = 0 /* smallest distance to sunlight turf, for sunlight falloff */
+	var/list/glob_affect = list() /* list of global light objects affecting this corner */
+	var/global_light_falloff = 0 /* smallest distance to global light turf, for global light falloff */
 
-/* loop through and find our strongest sunlight value */
-/datum/static_lighting_corner/proc/get_sunlight_falloff()
-	sun_falloff = 0
+/* loop through and find our strongest global light value */
+/datum/static_lighting_corner/proc/get_global_light_falloff()
+	global_light_falloff = 0
 
 	var/atom/movable/outdoor_effect/effect
 	for(effect in glob_affect)
-		sun_falloff = sun_falloff < glob_affect[effect] ? glob_affect[effect] : sun_falloff
+		global_light_falloff = global_light_falloff < glob_affect[effect] ? glob_affect[effect] : global_light_falloff
 
 /* Effect Fuckery */
 /* these bits are to set the roof on a top-z level, as there is no turf above to act as a roof */
@@ -349,34 +349,34 @@ Sunlight System
 	..()
 	return late ? INITIALIZE_HINT_LATELOAD : INITIALIZE_HINT_QDEL
 
-/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter
+/obj/effect/mapping_helpers/global_light/pseudo_roof_setter
 	var/turf/pseudo_roof
 
-/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter/mountain
+/obj/effect/mapping_helpers/global_light/pseudo_roof_setter/mountain
 	pseudo_roof = /turf/closed/wall/rock
 	icon_state = "roof_mountain"
 
-/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter/wood
+/obj/effect/mapping_helpers/global_light/pseudo_roof_setter/wood
 	pseudo_roof = /turf/open/floor/roof/wood
 	icon_state = "roof_wood"
 
-/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter/concrete
+/obj/effect/mapping_helpers/global_light/pseudo_roof_setter/concrete
 	pseudo_roof = /turf/open/floor/roof/asphalt
 	icon_state = "roof_concrete"
 
-/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter/ship_hull
+/obj/effect/mapping_helpers/global_light/pseudo_roof_setter/ship_hull
 	pseudo_roof = /turf/open/floor/roof/ship_hull
 	icon_state = "roof_ship_hull"
 
-/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter/glass
+/obj/effect/mapping_helpers/global_light/pseudo_roof_setter/glass
 	pseudo_roof = /turf/open/floor/glass
 	icon_state = "roof_glass"
 
-/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter/ship_glass
+/obj/effect/mapping_helpers/global_light/pseudo_roof_setter/ship_glass
 	pseudo_roof = /turf/open/floor/glass/reinforced
 	icon_state = "roof_ship_glass"
 
-/obj/effect/mapping_helpers/sunlight/pseudo_roof_setter/Initialize(mapload)
+/obj/effect/mapping_helpers/global_light/pseudo_roof_setter/Initialize(mapload)
 	. = ..()
 	// Disabled mapload catch - somebody might want to wangle this l8r
 	// if(!mapload)

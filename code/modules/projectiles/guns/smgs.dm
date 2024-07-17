@@ -174,6 +174,10 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
+	random_spawn_chance = 10
+	random_spawn_under = list(
+		/obj/item/attachable/attached_gun/grenade/m203,
+	)
 
 
 /obj/item/weapon/gun/smg/mp5/set_gun_attachment_offsets()
@@ -192,13 +196,6 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_5
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
-
-/obj/item/weapon/gun/smg/mp5/Initialize(mapload, spawn_empty)
-	. = ..()
-	if(prob(10))
-		var/obj/item/attachable/attached_gun/grenade/m203/UGL = new(src)
-		UGL.Attach(src)
-		update_attachable(UGL.slot)
 
 /obj/item/weapon/gun/smg/mp5/tactical
 	random_spawn_chance = 100

@@ -427,6 +427,10 @@
 	SEND_SIGNAL(src, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 
 /obj/item/weapon/gun/proc/handle_random_attachments()
+	#ifdef AUTOWIKI // no randomness for my gun pictures, please
+	return
+	#endif
+
 	var/attachmentchoice
 
 	var/randchance = random_spawn_chance

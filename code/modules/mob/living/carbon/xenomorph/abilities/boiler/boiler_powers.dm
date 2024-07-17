@@ -108,7 +108,7 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check()) // activate c/d only if we already spit
 		for (var/action_type in action_types_to_cd)
-			var/datum/action/xeno_action/xeno_action = get_xeno_action_by_type(xeno, action_type)
+			var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
 			if (!istype(xeno_action))
 				continue
 
@@ -149,7 +149,7 @@
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We dump our acid through our pores, creating a shroud of gas!"))
 
 	for (var/action_type in action_types_to_cd)
-		var/datum/action/xeno_action/xeno_action = get_xeno_action_by_type(xeno, action_type)
+		var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
 		if (!istype(xeno_action))
 			continue
 
@@ -218,7 +218,7 @@
 		empowered = FALSE
 		empowering_charge_counter = 0
 		button.overlays -= "+empowered"
-		var/datum/action/xeno_action/activable/acid_mine/mine = get_xeno_action_by_type(xeno, /datum/action/xeno_action/activable/acid_mine)
+		var/datum/action/xeno_action/activable/acid_mine/mine = get_action(xeno, /datum/action/xeno_action/activable/acid_mine)
 		if(!mine.empowered)
 			mine.empowered = TRUE
 			mine.button.overlays += "+empowered"

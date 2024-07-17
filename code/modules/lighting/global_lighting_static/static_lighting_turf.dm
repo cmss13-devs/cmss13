@@ -78,9 +78,9 @@ Global Light System
 		if(SKY_VISIBLE_BORDER)
 			calc_global_light_spread()
 
-#define HARDSUN 0.5 /* our hyperboloidy modifyer funky times - I wrote this in like, 2020 and can't remember how it works - I think it makes a 3D cone shape with a flat top */
+#define HARDGLOBALLIGHT 0.5 /* our hyperboloidy modifyer funky times - I wrote this in like, 2020 and can't remember how it works - I think it makes a 3D cone shape with a flat top */
 /* calculate the indoor corners we are affecting */
-#define SUN_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2 - HARDSUN) / max(1, GLOB.global_light_range)))
+#define GLOBAL_LIGHT_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2 - HARDGLOBALLIGHT) / max(1, GLOB.global_light_range)))
 
 
 /atom/movable/outdoor_effect/proc/calc_global_light_spread()
@@ -115,7 +115,7 @@ Global Light System
 	var/list/corners_list = corners - affecting_corners
 	affecting_corners += corners_list
 	for(corner in corners_list)
-		corner.glob_affect[src] = SUN_FALLOFF(corner, source_turf)
+		corner.glob_affect[src] = GLOBAL_LIGHT_FALLOFF(corner, source_turf)
 		if(corner.glob_affect[src] > corner.global_light_falloff) /* if are closer than current dist, update the corner */
 			corner.global_light_falloff = corner.glob_affect[src]
 			if(corner.master_NE)
@@ -388,8 +388,8 @@ Global Light System
 
 
 
-#undef SUN_FALLOFF
-#undef HARDSUN
+#undef GLOBAL_LIGHT_FALLOFF
+#undef HARDGLOBALLIGHT
 
 //DON'T ASK
 /atom/movable/outdoor_effect/proc/extinguish()

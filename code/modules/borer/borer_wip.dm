@@ -59,8 +59,10 @@
 	can_reproduce = 2
 	max_contaminant = 500
 	max_enzymes = 2000
+	enzyme_rate = 3
 	maxHealth = 500
 	health = 500
+	restricted_chems_allowed = TRUE
 
 	actions_hostless += /datum/action/innate/borer/update_directive
 	actions_humanoidhost += /datum/action/innate/borer/update_directive

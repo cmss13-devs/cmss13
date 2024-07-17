@@ -4,6 +4,7 @@
 #include "_globalvars\global_lists.dm"
 #include "_globalvars\misc.dm"
 #include "controllers\subsystem\who.dm"
+#include "controllers\subsystem\techtree.dm"
 #include "datums\skills.dm"
 #include "datums\ammo\tank.dm"
 #include "datums\ammo\xeno.dm"
@@ -104,3 +105,5 @@
 #include "modules\vehicles\multitile\hardpoints\holder\tank_turret.dm"
 #include "modules\vehicles\multitile\hardpoints\support\smoke.dm"
 #include "modules\vehicles\multitile\tank\tank.dm"
+#include "modules\mob\living\carbon\xenomorph\abilities\queen\queen_abilities.dm"
+#include "modules\mob\living\carbon\xenomorph\abilities\queen\queen_powers.dm"

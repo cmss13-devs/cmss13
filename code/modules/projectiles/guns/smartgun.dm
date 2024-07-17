@@ -38,7 +38,7 @@
 	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing //Toggled ammo type
 	var/datum/ammo/ammo_tertiary = /datum/ammo/bullet/smartgun/holo_target //Toggled ammo type
 	var/iff_enabled = TRUE //Begin with the safety on.
-	var/ammo_selection = 0 //which ammo we use
+	var/ammo_selection = /datum/ammo/bullet/smartgun //which ammo we use
 	var/recoil_compensation = 0
 	var/accuracy_improvement = 0
 	var/auto_fire = 0
@@ -304,9 +304,9 @@
 
 /datum/action/item_action/smartgun/toggle_ammo_type/proc/update_icon()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(ammo == ammo_secondary)
+	if(ammo_secondary)
 		action_icon_state = "ammo_swap_ap"
-	if(ammo == ammo_tertiary)
+	else if(ammo_tertiary)
 		action_icon_state = "ammo_swap_holo"
 	else
 		action_icon_state = "ammo_swap_normal"
@@ -339,19 +339,27 @@
 	toggle_ammo_type(usr)
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
-    if(!iff_enabled)
-        to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when \the [src]'s fire restriction is disabled.")
-        return
-    switch(ammo_selection)
-        if(ammo_secondary)
-            to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire holo-targeting rounds.")
-            ammo = ammo_selection = ammo_tertiary
-        if(ammo_tertiary)
-            to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire highly precise rounds.")
-            ammo = ammo_selection = ammo_primary
-        if(ammo_primary)
-            to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire armor shredding rounds.")
-            ammo = ammo_selection = ammo_secondary
+	if(!iff_enabled)
+		to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when \the [src]'s fire restriction is disabled.")
+		return
+	if(ammo_secondary)
+		to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire holo-targeting rounds.")
+		ammo_selection = ammo_tertiary
+	else if(ammo_tertiary)
+		to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire highly precise rounds.")
+		ammo_selection = ammo_primary
+	else
+		to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire armor shredding rounds.")
+		ammo_selection = ammo_secondary
+
+/obj/item/weapon/gun/smartgun/replace_ammo()
+	..()
+	if(ammo_secondary)
+		ammo_selection = ammo_secondary
+	else if(ammo_tertiary)
+		ammo_selection = ammo_tertiary
+	else
+		ammo_selection = ammo_primary
 
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")

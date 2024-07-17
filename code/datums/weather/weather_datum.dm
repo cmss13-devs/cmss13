@@ -64,7 +64,7 @@
 			animate_flags = CIRCULAR_EASING | EASE_IN
 
 	if(color_animating)
-		animate(SSglobal_light.sun_color, color = color_animating, easing = animate_flags, time = duration)
+		animate(SSglobal_light.global_lighting_color, color = color_animating, easing = animate_flags, time = duration)
 
 	sleep(duration)
 	stage++

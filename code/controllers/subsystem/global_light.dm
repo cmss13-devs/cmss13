@@ -85,7 +85,7 @@ SUBSYSTEM_DEF(global_light)
 	priority = SS_PRIORITY_GLOBAL_LIGHTING
 	flags = SS_TICKER
 
-	var/atom/movable/sun_color
+	var/atom/movable/global_lighting_color
 
 	var/datum/time_of_day/current_step_datum
 	var/datum/time_of_day/next_step_datum
@@ -113,12 +113,12 @@ SUBSYSTEM_DEF(global_light)
 	custom_time_offset = rand(0, game_time_length)
 	create_steps()
 	set_time_of_day()
-	sun_color = new /atom/movable()
-	sun_color.color = current_step_datum.color
-	sun_color.appearance_flags = RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM
-	sun_color.vis_flags = VIS_INHERIT_PLANE|VIS_INHERIT_LAYER
-	sun_color.blend_mode = BLEND_ADD
-	sun_color.filters += filter(type = "layer", render_source = S_LIGHTING_VISUAL_RENDER_TARGET)
+	global_lighting_color = new /atom/movable()
+	global_lighting_color.color = current_step_datum.color
+	global_lighting_color.appearance_flags = RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM
+	global_lighting_color.vis_flags = VIS_INHERIT_PLANE|VIS_INHERIT_LAYER
+	global_lighting_color.blend_mode = BLEND_ADD
+	global_lighting_color.filters += filter(type = "layer", render_source = S_LIGHTING_VISUAL_RENDER_TARGET)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/global_light/proc/set_game_time_length(new_value)
@@ -166,11 +166,11 @@ SUBSYSTEM_DEF(global_light)
 		if(weather_datum && weather_datum.weather_color_offset)
 			var/weather_blend_amount = (game_time_offseted() - weather_datum.weather_start_time) / (weather_datum.weather_start_time + (weather_datum.weather_duration / 12) - weather_datum.weather_start_time)
 			current_color = BlendRGB(current_color, weather_datum.weather_color_offset, min(weather_blend_amount, weather_blend_ammount))
-		animate(sun_color, color = current_color, time = time_to_animate)
+		animate(global_lighting_color, color = current_color, time = time_to_animate)
 
 /datum/controller/subsystem/global_light/fire(resumed)
-	if(sun_color)
-		sun_color.name = "SUN_COLOR_[rand()*rand(1,9999999)]" // force rendering refresh because byond is a bitch
+	if(global_lighting_color)
+		global_lighting_color.name = "GLOBAL_LIGHT_COLOR_[rand()*rand(1,9999999)]" // force rendering refresh because byond is a bitch
 
 	update_color()
 

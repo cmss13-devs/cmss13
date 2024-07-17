@@ -324,11 +324,10 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 	return all_species
 
 /proc/setup_ship_weapon()
-	var/list/blacklist = list()
 	var/list/ammo_list = list()
-	for(var/T in subtypesof(/datum/space_weapon) - blacklist)
-		var/datum/space_weapon/A = new T
-		ammo_list[A.type] = A
+	for(var/weapon_type in subtypesof(/datum/space_weapon))
+		var/datum/space_weapon/new_weapon  = new weapon_type
+		ammo_list[new_weapon.type] = new_weapon
 	return ammo_list
 
 /proc/setup_ship_ammo()

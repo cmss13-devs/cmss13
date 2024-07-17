@@ -998,7 +998,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/caustic
 	name = "\improper XM10-CL Helmet"
-	desc = "It's an ANCW Helmet. Its fitted with an integrated gasmask and visor. The inside is cushioned with cool gelpads to protect against harsh temperature changes and heavy impacts."
+	desc = "It's an ANCW Helmet. It is fitted with an integrated gasmask and visor. The inside is cushioned with cool gelpads to protect against harsh temperature changes and heavy impacts."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "caustic_h"
 	item_state = "caustic_h"

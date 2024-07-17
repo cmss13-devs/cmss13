@@ -27,7 +27,7 @@
 	. = list()
 
 	if(turf_flags & TURF_WEATHER)
-		overlays += SSglobal_light.get_weather_overlay()
+		overlays += SSweather_conditions.get_weather_overlay()
 
 /turf/proc/update_connections(propagate = 0)
 	var/list/turf_dirs = list()

@@ -250,48 +250,37 @@ SUBSYSTEM_DEF(global_light)
 
 	check_cycle()
 
-//get our weather overlay
-/datum/controller/subsystem/global_light/proc/get_weather_overlay()
-	var/mutable_appearance/MA = new /mutable_appearance()
-
-	MA.icon			= 'icons/effects/weather_overlay.dmi'
-	MA.icon_state	= "weather_overlay"
-	MA.plane		= WEATHER_OVERLAY_PLANE /* we put this on a lower level than lighting so we dont multiply anything */
-	MA.invisibility	= INVISIBILITY_LIGHTING
-	MA.blend_mode	= BLEND_OVERLAY
-	return MA
-
 // Updates overlays and vis_contents for outdoor effects
-/datum/controller/subsystem/global_light/proc/update_outdoor_effect_overlays(atom/movable/outdoor_effect/OE)
-	if(!is_ground_level(OE.z) && !is_mainship_level(OE.z))
+/datum/controller/subsystem/global_light/proc/update_outdoor_effect_overlays(atom/movable/outdoor_effect/effect)
+	if(!is_ground_level(effect.z) && !is_mainship_level(effect.z))
 		return
 
-	var/mutable_appearance/MA
-	if(OE.state != SKY_BLOCKED)
-		MA = get_global_light_overlay(1,1,1,1) /* fully lit */
+	var/mutable_appearance/appearance
+	if(effect.state != SKY_BLOCKED)
+		appearance = get_global_light_overlay(1,1,1,1) /* fully lit */
 	else //Indoor - do proper corner checks
 		/* check if we are globally affected or not */
 		var/static/datum/static_lighting_corner/dummy/dummy_lighting_corner = new
 
-		var/datum/static_lighting_corner/cr = OE.source_turf.lighting_corner_SW || dummy_lighting_corner
-		var/datum/static_lighting_corner/cg = OE.source_turf.lighting_corner_SE || dummy_lighting_corner
-		var/datum/static_lighting_corner/cb = OE.source_turf.lighting_corner_NW || dummy_lighting_corner
-		var/datum/static_lighting_corner/ca = OE.source_turf.lighting_corner_NE || dummy_lighting_corner
+		var/datum/static_lighting_corner/cr = effect.source_turf.lighting_corner_SW || dummy_lighting_corner
+		var/datum/static_lighting_corner/cg = effect.source_turf.lighting_corner_SE || dummy_lighting_corner
+		var/datum/static_lighting_corner/cb = effect.source_turf.lighting_corner_NW || dummy_lighting_corner
+		var/datum/static_lighting_corner/ca = effect.source_turf.lighting_corner_NE || dummy_lighting_corner
 
 		var/fr = cr.global_light_falloff
 		var/fg = cg.global_light_falloff
 		var/fb = cb.global_light_falloff
 		var/fa = ca.global_light_falloff
 
-		MA = get_global_light_overlay(fr, fg, fb, fa)
+		appearance = get_global_light_overlay(fr, fg, fb, fa)
 
-	OE.global_light_overlay = MA
-	if(is_ground_level(OE.z) && OE.source_turf.ceiling_status & WEATHERVISIBLE)
-		OE.overlays = list(OE.global_light_overlay, get_weather_overlay())
+	effect.global_light_overlay = appearance
+	if(is_ground_level(effect.z) && effect.source_turf.ceiling_status & WEATHERVISIBLE)
+		effect.overlays = list(effect.global_light_overlay, SSweather_conditions.get_weather_overlay())
 	else
-		OE.overlays = list(OE.global_light_overlay)
+		effect.overlays = list(effect.global_light_overlay)
 
-	OE.luminosity = MA.luminosity
+	effect.luminosity = appearance.luminosity
 
 //Retrieve an overlay from the list - create if necessary
 /datum/controller/subsystem/global_light/proc/get_global_light_overlay(fr, fg, fb, fa)
@@ -303,31 +292,32 @@ SUBSYSTEM_DEF(global_light)
 
 //Create an overlay appearance from corner values
 /datum/controller/subsystem/global_light/proc/create_global_light_overlay(fr, fg, fb, fa)
-	var/mutable_appearance/MA = new /mutable_appearance()
+	var/mutable_appearance/appearance = new /mutable_appearance()
 
-	MA.blend_mode	= BLEND_OVERLAY
-	MA.icon			= LIGHTING_ICON
-	MA.icon_state	= null
-	MA.plane		= S_LIGHTING_VISUAL_PLANE /* we put this on a lower level than lighting so we dont multiply anything */
-	MA.invisibility	= INVISIBILITY_LIGHTING
+	appearance.blend_mode = BLEND_OVERLAY
+	appearance.icon = LIGHTING_ICON
+	appearance.icon_state = null
+	appearance.plane = S_LIGHTING_VISUAL_PLANE /* we put this on a lower level than lighting so we dont multiply anything */
+	appearance.invisibility = INVISIBILITY_LIGHTING
 
 
-	//MA gets applied as an overlay, but we pull luminosity out to set our outdoor_effect object's lum
+	//appearance gets applied as an overlay, but we pull luminosity out to set our outdoor_effect object's lum
 	#if LIGHTING_SOFT_THRESHOLD != 0
-	MA.luminosity = max(fr, fg, fb, fa) > LIGHTING_SOFT_THRESHOLD
+	appearance.luminosity = max(fr, fg, fb, fa) > LIGHTING_SOFT_THRESHOLD
 	#else
-	MA.luminosity = max(fr, fg, fb, fa) > 1e-6
+	appearance.luminosity = max(fr, fg, fb, fa) > 1e-6
 	#endif
 
 	if((fr & fg & fb & fa) && (fr + fg + fb + fa == 4)) /* this will likely never happen */
-		MA.color = LIGHTING_BASE_MATRIX
-	else if(!MA.luminosity)
-		MA.color = LIGHTING_DARK_MATRIX
+		appearance.color = LIGHTING_BASE_MATRIX
+	else if(!appearance.luminosity)
+		appearance.color = LIGHTING_DARK_MATRIX
 	else
-		MA.color = list(
-					fr, fr, fr,  00 ,
-					fg, fg, fg,  00 ,
-					fb, fb, fb,  00 ,
-					fa, fa, fa,  00 ,
-					00, 00, 00,  01 )
-	return MA
+		appearance.color = list(
+			fr, fr, fr, 00,
+			fg, fg, fg, 00,
+			fb, fb, fb, 00,
+			fa, fa, fa, 00,
+			00, 00, 00, 01,
+		)
+	return appearance

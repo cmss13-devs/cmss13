@@ -13,6 +13,7 @@ SUBSYSTEM_DEF(weather_conditions)
 
 	var/particles/weather/particle_effect
 	var/datum/weather_effect/weather_special_effect
+	var/mutable_appearance/weather_overlay
 	var/obj/weather_effect
 
 /datum/controller/subsystem/weather_conditions/stat_entry(msg)
@@ -33,10 +34,10 @@ SUBSYSTEM_DEF(weather_conditions)
 	return ..()
 
 /datum/controller/subsystem/weather_conditions/Initialize(start_timeofday)
-	for(var/i in subtypesof(/datum/particle_weather))
-		var/datum/particle_weather/particle_weather = new i
+	for(var/type in subtypesof(/datum/particle_weather))
+		var/datum/particle_weather/particle_weather = new type
 		if(particle_weather.target_trait in SSmapping.configs[GROUND_MAP].weather)
-			elligble_weathers[i] = particle_weather.probability
+			elligble_weathers[type] = particle_weather.probability
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/weather_conditions/fire()
@@ -93,6 +94,18 @@ SUBSYSTEM_DEF(weather_conditions)
 		weather_effect.add_filter("weather_alpha_mask", 1, alpha_mask_filter(render_source = WEATHER_RENDER_TARGET))
 		weather_effect.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	return weather_effect
+
+//get our weather overlay
+/datum/controller/subsystem/weather_conditions/proc/get_weather_overlay()
+	if(!weather_overlay)
+		weather_overlay = new /mutable_appearance()
+
+		weather_overlay.icon = 'icons/effects/weather_overlay.dmi'
+		weather_overlay.icon_state = "weather_overlay"
+		weather_overlay.plane = WEATHER_OVERLAY_PLANE /* we put this on a lower level than lighting so we dont multiply anything */
+		weather_overlay.invisibility = INVISIBILITY_LIGHTING
+		weather_overlay.blend_mode = BLEND_OVERLAY
+	return weather_overlay
 
 /datum/controller/subsystem/weather_conditions/proc/set_particle_effect(particles/new_particles)
 	particle_effect = new_particles

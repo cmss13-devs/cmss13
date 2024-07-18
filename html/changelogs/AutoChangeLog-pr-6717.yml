@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed light blue scrubs having no cost in snowflake vendor."

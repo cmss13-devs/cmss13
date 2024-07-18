@@ -1,0 +1,6 @@
+author: "Zonespace, Vile Beggar"
+delete-after: True
+changes:
+  - rscadd: "Handheld planted flags are now indestructible and do a small amount of damage on hit."
+  - bugfix: "Plantable flags can no longer be duplicated."
+  - rscdel: "Planting a UA flag no longer forces anyone but the planter to warcry."

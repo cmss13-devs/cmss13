@@ -447,8 +447,9 @@
 		list("BACKPACKS", -1, null, null),
 		list("Lightweight IMP Backpack", 20, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
 		list("USCM Satchel", 20, /obj/item/storage/backpack/marine/satchel, VENDOR_ITEM_REGULAR),
-		list("USCM Technician Backpack", 10, /obj/item/storage/backpack/marine/tech, VENDOR_ITEM_REGULAR),
 		list("USCM Chestrig", 10, /obj/item/storage/backpack/marine/satchel/chestrig, VENDOR_ITEM_REGULAR),
+		list("USCM Technician Backpack", 10, /obj/item/storage/backpack/marine/tech, VENDOR_ITEM_REGULAR),
+		list("USCM Technician Chestrig", 10, /obj/item/storage/backpack/marine/satchel/tech, VENDOR_ITEM_REGULAR),
 		list("USCM corpsman backpack", 10, /obj/item/storage/backpack/marine/medic, VENDOR_ITEM_REGULAR),
 		list("USCM corpsman satchel", 10, /obj/item/storage/backpack/marine/satchel/medic, VENDOR_ITEM_REGULAR),
 

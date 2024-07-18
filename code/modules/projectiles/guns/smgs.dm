@@ -174,7 +174,8 @@
 		/obj/item/attachable/lasersight, // Under
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/bipod,
-		/obj/item/attachable/burstfire_assembly
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/grenade/m203,
 		)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
@@ -197,6 +198,13 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_5
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
+/obj/item/weapon/gun/smg/mp5/Initialize(mapload, spawn_empty)
+	. = ..()
+	if(prob(10))
+		var/obj/item/attachable/attached_gun/grenade/m203/UGL = new(src)
+		UGL.Attach(src)
+		update_attachable(UGL.slot)
 
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.

@@ -1,0 +1,4 @@
+author: "SpypigDev"
+delete-after: True
+changes:
+  - bugfix: "SO Armory vendors no longer infinitely supply knives"

@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 24
+#define SAVEFILE_VERSION_MAX 25
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -146,6 +146,11 @@
 		S["toggles_sound"] >> sound_toggles
 		sound_toggles |= (SOUND_FAX_MACHINE)
 		S["toggles_sound"] << sound_toggles
+
+	if(savefile_version < 25) //renemes nanotrasen to wy
+		var/relation
+		S["nanotrasen_relation"] >> relation
+		S["weyland_yutani_relation"] << relation
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

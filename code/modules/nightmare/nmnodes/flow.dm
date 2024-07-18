@@ -67,8 +67,7 @@
 	if(!.) return
 	var/list/datum/nmnode/pickables = choices.Copy()
 	for(var/datum/nmnode/node as anything in pickables)
-		if(isnum(node.raw["weight"]))
-			pickables[node] = node.raw["weight"]
+		pickables[node] = isnum(node.raw["weight"]) ? node.raw["weight"] : 1
 	var/list/datum/nmnode/picked = list()
 	var/remaining = src.amount
 #if defined(UNIT_TESTS)

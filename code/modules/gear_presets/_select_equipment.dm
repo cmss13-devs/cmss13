@@ -609,8 +609,38 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 
 	var/list/elite_merc_rifles = list(
 	/obj/item/weapon/gun/smg/m39/elite = /obj/item/ammo_magazine/smg/m39/ap,
-	/obj/item/weapon/gun/rifle/m41aMK1 = /obj/item/ammo_magazine/rifle/m41aMK1,
+	/obj/item/weapon/gun/rifle/m41aMK1 = /obj/item/ammo_magazine/rifle/m41aMK1/ap,
 	/obj/item/weapon/gun/rifle/m41a/elite = /obj/item/ammo_magazine/rifle/ap)
+
+	var/list/elite_merc_shotguns = list(
+	/obj/item/weapon/gun/shotgun/merc = pick(GLOB.shotgun_handfuls_12g),
+	/obj/item/weapon/gun/shotgun/combat = pick(GLOB.shotgun_handfuls_12g),
+	/obj/item/weapon/gun/shotgun/type23 = pick(GLOB.shotgun_handfuls_8g))
+
+	if(prob(shotgun_chance))
+		var/gunpath = pick(elite_merc_shotguns)
+		var/ammopath = elite_merc_shotguns[gunpath]
+		if(spawn_belt)
+			if(ishuman(M))
+				var/mob/living/carbon/human/new_human = M
+				new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun, WEAR_WAIST)
+			ammo_amount = 24
+		spawn_weapon(gunpath, ammopath, M, 0, ammo_amount)
+	else
+		var/gunpath = pick(elite_merc_rifles)
+		var/ammopath = elite_merc_rifles[gunpath]
+		if(spawn_belt)
+			if(ishuman(M))
+				var/mob/living/carbon/human/new_human = M
+				new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
+		spawn_weapon(gunpath, ammopath, M, 0, ammo_amount)
+
+/datum/equipment_preset/proc/spawn_merc_elite_weapon_lowthreat(atom/M, ammo_amount = 12, shotgun_chance = 50, spawn_belt = 1)
+	if(!M) return
+
+	var/list/elite_merc_rifles = list(
+	/obj/item/weapon/gun/rifle/m41aMK1/anchorpoint = /obj/item/ammo_magazine/rifle/m41aMK1/ap,
+	/obj/item/weapon/gun/rifle/m41a/tactical = /obj/item/ammo_magazine/rifle/ap)
 
 	var/list/elite_merc_shotguns = list(
 	/obj/item/weapon/gun/shotgun/merc = pick(GLOB.shotgun_handfuls_12g),

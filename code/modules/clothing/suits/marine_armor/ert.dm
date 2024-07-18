@@ -642,6 +642,82 @@
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_bomb = CLOTHING_ARMOR_GIGAHIGH
 
+//=====================================================================\\
+
+/obj/item/clothing/suit/storage/marine/veteran/mercenary_lowthreat
+	name = "\improper L12 ceramic plated armor"
+	desc = "A set of grey, heavy ceramic armor with dark blue highlights. It is the standard uniform of an unknown mercenary group working in the sector. This is a cheaper version of the far more stronger K12 version."
+	icon_state = "mercenary_heavy_armor"
+	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 2
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine/,
+		/obj/item/weapon/baton,
+		/obj/item/restraint/handcuffs,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/explosive/grenade,
+		/obj/item/storage/bible,
+		/obj/item/weapon/sword/machete,
+		/obj/item/attachable/bayonet,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+	)
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
+	item_state_slots = list(WEAR_JACKET = "mercenary_heavy_armor")
+
+/obj/item/clothing/suit/storage/marine/veteran/mercenary_lowthreat/heavy
+	name = "\improper Modified L12 ceramic plated armor"
+	desc = "A set of grey, heavy ceramic armor with dark blue highlights. It has been modified with extra ceramic plates placed in its storage pouch, and seems intended to support an extremely heavy weapon. This is a cheaper version of the far more stronger K12 version."
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	storage_slots = 1
+
+/obj/item/clothing/suit/storage/marine/veteran/mercenary_lowthreat/miner
+	name = "\improper L8 armored miner vest"
+	desc = "A set of beige, light armor built for protection while mining. It is a specialized uniform of an unknown mercenary group working in the sector. This is a cheaper version of the far more stronger Y8 version."
+	icon_state = "mercenary_miner_armor"
+	storage_slots = 3
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine/,
+		/obj/item/weapon/baton,
+		/obj/item/restraint/handcuffs,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/explosive/grenade,
+		/obj/item/storage/bible,
+		/obj/item/weapon/sword/machete,
+		/obj/item/attachable/bayonet,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+	)
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
+	item_state_slots = list(WEAR_JACKET = "mercenary_miner_armor")
+
+/obj/item/clothing/suit/storage/marine/veteran/mercenary_lowthreat/support
+	name = "\improper L7 armored vest"
+	desc = "A set of blue armor with yellow highlights built for protection while building or carrying out medical treatment in highly dangerous environments. It is a specialized uniform of an unknown mercenary group working in the sector. This is a cheaper version of the far more stronger Z7 version"
+	icon_state = "mercenary_engineer_armor"
+	item_state_slots = list(WEAR_JACKET = "mercenary_engineer_armor")
 
 //=========================//PROVOST\\================================\\
 //=======================================================================\\

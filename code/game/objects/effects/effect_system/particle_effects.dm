@@ -28,7 +28,7 @@
 		pass_flags.flags_pass = PASS_THROUGH|PASS_OVER|PASS_MOB_THRU|PASS_UNDER
 
 /obj/effect/particle_effect/water/Move(turf/newloc)
-	life--
+	life -= 1
 	if (life < 1)
 		qdel(src)
 	if(newloc.density)

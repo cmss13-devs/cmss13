@@ -12015,9 +12015,8 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/apartment/northhallway)
 "bYv" = (
-/obj/structure/bed/chair/wood/normal{
-	layer = 4;
-	pixel_y = 2
+/obj/structure/bed/sofa{
+	icon_state = "couch_hori3"
 	},
 /turf/open/floor/wood,
 /area/lv759/indoors/apartment/eastbedroomsstorage)
@@ -14371,11 +14370,9 @@
 /turf/open/floor/prison/whitered/southeast,
 /area/lv759/indoors/hospital/icu)
 "crt" = (
-/obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/head/soft/ferret{
 	pixel_x = 4
 	},
-/obj/structure/pipes/vents/pump,
 /obj/structure/sign/poster/corporate{
 	layer = 2.9;
 	pixel_y = 32
@@ -14389,6 +14386,8 @@
 	pixel_x = 8
 	},
 /obj/item/trash/hybrisa/cuppa_joes_static/lid,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
 "crD" = (
@@ -20798,6 +20797,10 @@
 	dir = 4;
 	pixel_y = -5
 	},
+/obj/structure/bed/sofa/hybrisa/sofa/black{
+	icon_state = "couch_vet1_black";
+	pixel_x = 12
+	},
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
 "dqh" = (
@@ -25393,6 +25396,12 @@
 	color = "#a6aeab";
 	dir = 8
 	},
+/obj/item/clothing/under/hybrisa/weymart,
+/obj/item/clothing/under/hybrisa/weymart,
+/obj/item/clothing/under/hybrisa/weymart,
+/obj/item/clothing/under/hybrisa/weymart,
+/obj/item/clothing/head/hybrisa/weymart,
+/obj/item/clothing/head/hybrisa/weymart,
 /turf/open/floor/plating,
 /area/lv759/indoors/weymart/maintenance)
 "edR" = (
@@ -26057,7 +26066,6 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "ejo" = (
-/obj/structure/surface/table/holotable/wood,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -26065,6 +26073,7 @@
 	pixel_y = 32;
 	layer = 3.1
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/wood,
 /area/lv759/indoors/apartment/eastbedrooms)
 "ejt" = (
@@ -26562,12 +26571,12 @@
 /turf/open/floor/strata,
 /area/lv759/indoors/colonial_marshals/hallway_north_locker)
 "enB" = (
-/obj/structure/surface/table/holotable/wood,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/device/binoculars/civ,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/wood,
 /area/lv759/indoors/apartment/eastbedrooms)
 "enD" = (
@@ -34352,6 +34361,10 @@
 	pixel_x = -16;
 	pixel_y = -18
 	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
 "fCL" = (
@@ -36732,14 +36745,6 @@
 	},
 /turf/open/floor/prison/cell_stripe/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
-"fXD" = (
-/obj/effect/hybrisa/decal/road/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/effect/hybrisa/decal/road/lines3,
-/obj/structure/barricade/handrail/strata,
-/turf/open/hybrisa/street/asphalt,
-/area/lv759/outdoors/colony_streets/east_central_street)
 "fXE" = (
 /obj/structure/machinery/conveyor{
 	dir = 8;
@@ -37450,9 +37455,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "gdB" = (
-/obj/structure/surface/table/holotable/wood,
 /obj/item/storage/fancy/cigarettes,
 /obj/item/tool/lighter/zippo,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/wood,
 /area/lv759/indoors/apartment/eastbedrooms)
 "gdJ" = (
@@ -50121,11 +50126,12 @@
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/wy_research_complex/weaponresearchlabtesting)
 "iht" = (
-/obj/structure/surface/table/woodentable,
-/obj/item/device/cassette_tape/aesthetic,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
+	},
+/obj/structure/bed/sofa{
+	icon_state = "couch_hori1"
 	},
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown,
 /area/lv759/indoors/apartment/eastbedroomsstorage)
@@ -65323,6 +65329,11 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "kHg" = (
 /obj/effect/hybrisa/decal/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/trash/hotdog,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
 "kHh" = (
@@ -69026,13 +69037,13 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "lmY" = (
-/obj/structure/surface/table/holotable/wood,
 /obj/item/device/flashlight/lamp{
 	layer = 3.5;
 	pixel_x = 8;
 	pixel_y = 10
 	},
 /obj/item/newspaper,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/wood,
 /area/lv759/indoors/apartment/eastbedrooms)
 "lmZ" = (
@@ -69551,15 +69562,6 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	layer = 4;
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
 /obj/item/hybrisa/misc/trash_bag_full_prop{
 	pixel_x = 2;
 	pixel_y = 20
@@ -75798,10 +75800,6 @@
 	},
 /turf/closed/wall/hybrisa/colony/engineering,
 /area/lv759/indoors/recycling_plant/garage)
-"mrv" = (
-/obj/structure/pipes/vents/pump,
-/turf/open/floor/almayer/plate,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
 "mrx" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caves/north_west_caves_outdoors)
@@ -81226,11 +81224,11 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "not" = (
-/obj/structure/bed/sofa{
-	icon_state = "couch_hori3"
-	},
 /obj/structure/sign/safety/north{
 	pixel_y = 32
+	},
+/obj/structure/bed/sofa/hybrisa/sofa/black{
+	icon_state = "couch_hori3_black"
 	},
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
@@ -88138,6 +88136,17 @@
 /obj/structure/ore_box,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/indoors/caves/north_caves)
+"ouk" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = 7;
+	buckling_x = 7;
+	buckling_y = 7
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "oul" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/grimy,
@@ -88158,6 +88167,10 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
@@ -99907,15 +99920,13 @@
 /turf/open/floor/plating/platingdmg1,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "qrn" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_alt";
-	pixel_y = 4;
-	buckling_y = 4
-	},
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	start_charge = 0
+	},
+/obj/structure/bed/sofa/hybrisa/sofa/black{
+	icon_state = "couch_vet3_black";
+	pixel_x = 12
 	},
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
@@ -107053,10 +107064,6 @@
 "rzB" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/effect/hybrisa/decal/road/lines4,
-/obj/structure/barricade/handrail/strata,
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal11"
 	},
@@ -107843,7 +107850,6 @@
 	icon_state = "road_edge_decal3"
 	},
 /obj/effect/hybrisa/decal/road/lines3,
-/obj/structure/barricade/handrail/strata,
 /obj/effect/hybrisa/decal/road/lines1,
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal12"
@@ -112233,7 +112239,6 @@
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/gun/smg/lowchance,
 /obj/effect/spawner/random/technology_scanner,
-/obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison/red,
 /area/lv759/indoors/colonial_marshals/armory_evidenceroom)
 "soU" = (
@@ -112858,10 +112863,10 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/apartment/eastfoyer)
 "ssR" = (
-/obj/structure/surface/table/woodentable,
 /obj/item/device/camera_film,
 /obj/item/device/camera,
 /obj/structure/pipes/vents/pump_hybrisa,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/lv759/indoors/apartment/eastbedroomsstorage)
 "ssS" = (
@@ -113102,6 +113107,9 @@
 	icon_state = "pottedplant_17";
 	pixel_x = 10;
 	pixel_y = 15
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = -8
 	},
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
@@ -117682,11 +117690,11 @@
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "tiM" = (
-/obj/structure/bed/sofa{
-	icon_state = "couch_hori1"
-	},
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreen{
 	pixel_y = 32
+	},
+/obj/structure/bed/sofa/hybrisa/sofa/black{
+	icon_state = "couch_hori1_black"
 	},
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
@@ -118095,17 +118103,16 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_street)
 "tlY" = (
-/obj/item/shard,
-/obj/structure/machinery/space_heater/radiator/red{
-	dir = 1;
-	pixel_y = 26
-	},
 /obj/structure/mirror{
 	desc = "Do you remember who you are?";
 	icon_state = "mirror_broke";
 	name = "broken mirror";
 	pixel_y = 32
 	},
+/obj/structure/bed/stool{
+	icon_state = "stool_alt"
+	},
+/obj/item/shard,
 /turf/open/floor/carpet14_10/west,
 /area/lv759/indoors/apartment/eastbedroomsstorage)
 "tlZ" = (
@@ -129367,9 +129374,8 @@
 "vfl" = (
 /obj/structure/surface/rack,
 /obj/effect/hybrisa/decal/dirt,
-/obj/effect/spawner/random/gun/shotgun/lowchance,
 /obj/effect/spawner/random/technology_scanner,
-/obj/effect/spawner/random/technology_scanner,
+/obj/effect/spawner/random/gun/shotgun/midchance,
 /turf/open/floor/prison/red/north,
 /area/lv759/indoors/colonial_marshals/armory_evidenceroom)
 "vfo" = (
@@ -133688,9 +133694,8 @@
 /turf/open/floor/strata/orange_edge/east,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "vQD" = (
-/obj/structure/bed/stool{
-	icon_state = "stool_alt"
-	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/cassette_tape/aesthetic,
 /turf/open/floor/carpet10_8/west,
 /area/lv759/indoors/apartment/eastbedroomsstorage)
 "vQE" = (
@@ -140891,10 +140896,10 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "wZD" = (
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 5
-	},
 /obj/item/trash/hybrisa/cuppa_joes_static/empty_cup,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/tile/cementflat,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
 "wZE" = (
@@ -142970,8 +142975,18 @@
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xrA" = (
-/turf/closed/wall/hybrisa/colony,
-/area/lv759/indoors/power_plant/telecomms)
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	start_charge = 0
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
 "xrC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -158944,7 +158959,7 @@ not
 kHg
 fdA
 sJk
-sJk
+ouk
 cDz
 qrn
 dpT
@@ -189100,7 +189115,7 @@ lrp
 iow
 ttH
 hsv
-fXD
+uZY
 uHZ
 dsD
 iEq
@@ -190322,7 +190337,7 @@ bSu
 cvM
 pQE
 pSn
-xrA
+tgZ
 lsf
 qgC
 wiL
@@ -190574,7 +190589,7 @@ ewo
 jse
 uoI
 dts
-xrA
+tgZ
 jat
 qgC
 wiL
@@ -194698,7 +194713,7 @@ ttl
 gFG
 pft
 crt
-vLg
+xrA
 bSY
 vLg
 uAX
@@ -194949,7 +194964,7 @@ mfQ
 vGC
 dnL
 lex
-mrv
+mxD
 wZD
 idd
 mpz

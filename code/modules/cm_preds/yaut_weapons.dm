@@ -486,7 +486,7 @@
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	actions_types = list(/datum/action/item_action)
+	actions_types = list(/datum/action/item_action/toggle/use)
 	unacidable = TRUE
 
 /obj/item/weapon/yautja/knife/attack(mob/living/target, mob/living/carbon/human/user)

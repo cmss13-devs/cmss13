@@ -62,6 +62,7 @@
 		ACTIONS SPECIALSIT SNIPER CAN TAKE
 */
 /datum/action/item_action/specialist/aimed_shot/action_activate()
+	. = ..()
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
@@ -276,6 +277,7 @@
 	return TRUE
 
 /datum/action/item_action/specialist/toggle_laser/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
 
 	if(owner.get_held_item() != sniper_rifle)

@@ -75,7 +75,7 @@
 	remaining = length(pickables) // Force all to be picked for testing (this could potentially make false positives though)
 #endif
 	while(length(pickables) && remaining > 0)
-		var/datum/nmnode/node = pickweight(pickables)
+		var/datum/nmnode/node = pick_weight(pickables)
 		remaining--
 		pickables -= node
 		picked += node

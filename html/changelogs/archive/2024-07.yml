@@ -124,3 +124,40 @@
   Kivts:
   - ui: The Company spent some money to upgrade the chemical simulator to work on
       the TGUI, Including a few prepaid features.
+2024-07-14:
+  kiVts:
+  - bugfix: Denied request on req is working again
+2024-07-15:
+  cuberound:
+  - rscadd: roof structures added, can be also used for lattices and billboards, go
+      transparent when you are near them
+2024-07-16:
+  Git-Nivrak:
+  - rscdel: Mortar shells no longer blow up their payload, instead they will create
+      a small fixed explosion.
+  Nomoresolvalou:
+  - rscadd: Added neckties and stethoscope to the synthetic snowflake vendor
+  Steelpoint:
+  - balance: The XM88 now deals higher damage per-bullet at the cost of a slightly
+      lower rate of fire and accuracy. This is identical to as if it had a barrel
+      charger attached to it.
+  - balance: Per the above, the barrel charger is no longer compatible with the XM88.
+2024-07-17:
+  AndroBetel:
+  - rscadd: MP5 has 10% chance to spawn with M203 attached.
+  VileBeggar:
+  - rscadd: The CIC armoury now contains a plantable flag of the United Americas.
+  Zonespace27:
+  - rscadd: Added a tutorial for xenomorph Abominations. You must complete the tutorial
+      before being able to roll for Abomination.
+  harryob:
+  - bugfix: queens can remote build again
+  ihatethisengine:
+  - balance: being mid-paradrop won't trigger traps, fire and stray bullets before
+      you land.
+  realforest2001:
+  - bugfix: Fixes riflemen spec_kits not being usable by riflemen.
+2024-07-18:
+  cuberound:
+  - rscdel: Removed Rapid-Service-Fabricator, rapid construction device and  Rapid-Seed-Producer
+      (old ss13 junk)

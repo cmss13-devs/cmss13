@@ -416,7 +416,7 @@
 
 	var/offset_x = worn_x_dimension
 	var/offset_y = worn_y_dimension
-	if(inhands)
+	if(inhands == 1 || inhands == 0)
 		offset_x = inhand_x_dimension
 		offset_y = inhand_y_dimension
 

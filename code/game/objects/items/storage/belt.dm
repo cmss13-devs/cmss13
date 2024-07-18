@@ -1178,6 +1178,10 @@
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 
+/obj/item/storage/belt/gun/m4a3/m1911/socom/black
+	icon_state = "s_m4a3_holster"
+	has_gamemode_skin = FALSE
+
 /obj/item/storage/belt/gun/m4a3/heavy/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy())
 	new /obj/item/ammo_magazine/pistol/heavy(src)

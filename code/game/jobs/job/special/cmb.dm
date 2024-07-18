@@ -18,6 +18,10 @@
 /datum/job/special/cmb/engi
 	title = JOB_CMB_ENG
 
+// CMB SWAT Specialist
+/datum/job/special/cmb/spec
+	title = JOB_CMB_SWAT
+
 // CMB Investigative Synthetic
 /datum/job/special/cmb/synthetic
 	title = JOB_CMB_SYN

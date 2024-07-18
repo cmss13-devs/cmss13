@@ -1087,6 +1087,16 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/rifle/xm177/tactical
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+		/obj/item/attachable/reflex,
+	)
+	random_spawn_under = list(
+		/obj/item/attachable/lasersight,
+	)
+
+
 //-------------------------------------------------------
 //AR10 rifle
 //basically an early M16

@@ -34,6 +34,10 @@
 	paygrade = PAY_SHORT_CMBBT
 	name = "CMB Breaching Technician"
 
+/datum/paygrade/cmb/spec
+	paygrade = PAY_SHORT_CMBSWS
+	name = "CMB SWAT Specialist"
+
 /datum/paygrade/cmb/icc
 	paygrade = PAY_SHORT_ICCA
 	name = "Interstellar Commerce Commission Agent"

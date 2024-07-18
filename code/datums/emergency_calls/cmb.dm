@@ -97,7 +97,7 @@
 		to_chat(M, SPAN_BOLD("Following the lead of your Marshal, you have become renown for your steadfast commitment to justice, fighting against crime and corruption alike."))
 		to_chat(M, SPAN_BOLD("While enroute to an investigation you were diverted by your command at Anchorpoint Station to the [MAIN_SHIP_NAME] because of a distress beacon."))
 		to_chat(M, SPAN_BOLD("You have been stationed at Anchorpoint Station for [pick(80;"several months", 10;"only a week", 10;"years")] investigating henious crimes among the frontier."))
-		to_chat(M, SPAN_BOLD("The laws of arth stretch beyond the Sol. Where others fall to corruption, you stay steadfast in your morals."))
+		to_chat(M, SPAN_BOLD("The laws of Earth stretch beyond the Sol. Where others fall to corruption, you stay steadfast in your morals."))
 		to_chat(M, SPAN_BOLD("Corporate Officers chase after paychecks and promotions, but you are motivated to do your sworn duty and care for the population, no matter how far or isolated a colony may be."))
 		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))
 
@@ -212,11 +212,12 @@
 
 /datum/emergency_call/cmb/riot_control
 	name = "CMB - Colonial Marshals Riot Control Unit (Friendly)"
-	mob_max = 6
-	mob_min = 2
+	mob_max = 8
+	mob_min = 3
 	probability = 20
 	home_base = /datum/lazy_template/ert/weyland_station
-	max_medics = 1
+	max_heavies = 1
+	max_medics = 2
 	max_synths = 1
 	max_engineers = 1
 
@@ -245,6 +246,10 @@
 		engineers++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Breaching Technician!"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/eng, TRUE, TRUE)
+	else if(heavies < max_heavies && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
+		heavies++
+		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB SWAT Specialist!"))
+		arm_equipment(mob, /datum/equipment_preset/cmb/spec, TRUE, TRUE)
 	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && mob.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Riot Control Synthetic!"))
@@ -279,6 +284,6 @@
 		to_chat(M, SPAN_BOLD("Following the lead of your Marshal, you have become renown for your steadfast commitment to justice, fighting against crime and corruption alike."))
 		to_chat(M, SPAN_BOLD("While enroute to your mission you were diverted by your command at Anchorpoint Station to the [MAIN_SHIP_NAME] because of a distress beacon."))
 		to_chat(M, SPAN_BOLD("You have been stationed at Anchorpoint Station for [pick(80;"several months", 10;"only a week", 10;"years")] keeping orden on the frontier."))
-		to_chat(M, SPAN_BOLD("The laws of arth stretch beyond the Sol. Where others fall to corruption, you stay steadfast in your morals."))
+		to_chat(M, SPAN_BOLD("The laws of Earth stretch beyond the Sol. Where others fall to corruption, you stay steadfast in your morals."))
 		to_chat(M, SPAN_BOLD("Corporate Officers chase after paychecks and promotions, but you are motivated to do your sworn duty and care for the population, no matter how far or isolated a colony may be."))
 		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))

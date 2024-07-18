@@ -29,5 +29,7 @@
 			hud_icon_state = "syn"
 		if(JOB_CMB_TL)
 			hud_icon_state = "mar"
+		if(JOB_CMB_SWAT)
+			hud_icon_state = "spec"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "cmb_[hud_icon_state]")

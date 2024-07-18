@@ -244,10 +244,11 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_CMB_RIOT "CMB Riot Control Officer"
 #define JOB_CMB_MED "CMB Medical Technician"
 #define JOB_CMB_ENG "CMB Breaching Technician"
+#define JOB_CMB_SWAT "CMB SWAT Specialist"
 #define JOB_CMB_RSYN "CMB Riot Control Synthetic"
 
 #define CMB_GRUNT_LIST list(JOB_CMB, JOB_CMB_TL)
-#define CMB_RIOT_LIST list(JOB_CMB_TL, JOB_CMB_RIOT, JOB_CMB_MED, JOB_CMB_ENG)
+#define CMB_RIOT_LIST list(JOB_CMB_TL, JOB_CMB_RIOT, JOB_CMB_MED, JOB_CMB_ENG, JOB_CMB_SWAT)
 
 //-------- FORECON --------//
 

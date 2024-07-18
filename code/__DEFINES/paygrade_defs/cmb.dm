@@ -25,6 +25,9 @@
 /// CMBBT, CMB Breaching Technician
 #define PAY_SHORT_CMBBT "CMBBT"
 
+/// CMBBT, CMB SWAT Specialist
+#define PAY_SHORT_CMBSWS "CMBSWS"
+
 /// CMBRS, CMB Riot Control Synthetic
 #define PAY_SHORT_CMBRS "CMBRS"
 

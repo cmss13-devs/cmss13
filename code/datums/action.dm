@@ -43,7 +43,9 @@
 	return
 
 /datum/action/proc/action_activate()
-	return
+	SHOULD_CALL_PARENT(TRUE)
+
+	SEND_SIGNAL(src, COMSIG_ACTION_ACTIVATED)
 
 /// handler for when a keybind signal is received by the action, calls the action_activate proc asynchronous
 /datum/action/proc/keybind_activation()
@@ -158,6 +160,10 @@
 	hidden = FALSE
 	L.update_action_buttons()
 
+/proc/get_action(mob/action_mob, action_path)
+	for(var/datum/action/action in action_mob.actions)
+		if(istype(action, action_path))
+			return action
 
 /datum/action/item_action
 	name = "Use item"
@@ -182,6 +188,7 @@
 	return ..()
 
 /datum/action/item_action/action_activate()
+	. = ..()
 	if(target)
 		var/obj/item/I = target
 		I.ui_action_click(owner, holder_item)

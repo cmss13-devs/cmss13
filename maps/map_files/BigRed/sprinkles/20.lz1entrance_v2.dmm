@@ -67,7 +67,7 @@
 /obj/item/stack/rods,
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning,
+/turf/open/mars,
 /area/bigredv2/outside/nw)
 "dx" = (
 /turf/open/mars/mars_dirt_9,
@@ -162,10 +162,6 @@
 /obj/structure/largecrate,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
-"nh" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning,
-/area/bigredv2/outside/nw)
 "ob" = (
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 4
@@ -223,7 +219,7 @@
 /area/bigredv2/outside/space_port)
 "ve" = (
 /obj/structure/lz_sign/solaris_sign,
-/turf/open/floor/asteroidwarning,
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "vv" = (
 /obj/item/trash/hotdog{
@@ -272,7 +268,8 @@
 /turf/open/floor/darkgreen2/west,
 /area/bigredv2/outside/space_port)
 "xy" = (
-/turf/open/floor/asteroidwarning,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/mars/mars_dirt_12,
 /area/bigredv2/outside/nw)
 "xB" = (
 /obj/structure/surface/table,
@@ -360,7 +357,7 @@
 /obj/item/stack/sheet/metal,
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning,
+/turf/open/mars,
 /area/bigredv2/outside/nw)
 "GU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -455,7 +452,7 @@
 "OT" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning,
+/turf/open/mars,
 /area/bigredv2/outside/nw)
 "OX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -709,7 +706,7 @@ gD
 TP
 na
 ac
-KV
+xc
 Vi
 jv
 FW
@@ -730,7 +727,7 @@ lW
 TP
 QI
 ac
-xy
+xc
 jv
 jv
 tv
@@ -835,7 +832,7 @@ OM
 aP
 aP
 ac
-xy
+xc
 xc
 jv
 uh
@@ -878,7 +875,7 @@ It
 en
 ac
 OT
-bi
+by
 dL
 JY
 BT
@@ -898,8 +895,8 @@ Bs
 wV
 qL
 ai
-nh
-bi
+by
+by
 dL
 St
 Nj
@@ -940,8 +937,8 @@ Je
 Bs
 Uw
 ai
-xy
-bi
+by
+by
 cS
 JY
 Ku
@@ -982,7 +979,7 @@ XU
 cB
 gp
 ac
-nh
+by
 bi
 cS
 JY

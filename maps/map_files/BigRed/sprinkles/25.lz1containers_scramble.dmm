@@ -102,11 +102,14 @@
 /area/bigredv2/outside/space_port)
 "dj" = (
 /obj/structure/cargo_container/watatsumi/rightmid,
-/turf/open/floor/plating/platebot,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-in"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "dS" = (
 /obj/structure/cargo_container/arious/leftmid,
-/turf/open/floor/plating/platebotc,
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "gE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -114,11 +117,17 @@
 /area/bigredv2/outside/space_port)
 "hi" = (
 /obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/plating/platebot,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-in"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "hs" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/floor/plating/platebot,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-in"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "hR" = (
 /obj/structure/surface/table,
@@ -139,9 +148,18 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
+"jw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "jJ" = (
 /obj/structure/cargo_container/arious/leftmid,
-/turf/open/floor/plating/platebot,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-in"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "jK" = (
 /obj/structure/cargo_container/grant/right,
@@ -160,7 +178,10 @@
 /area/bigredv2/outside/space_port)
 "kB" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
-/turf/open/floor/plating/platebotc,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "mD" = (
 /turf/open/floor/darkgreen2,
@@ -203,6 +224,15 @@
 /obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
+"xE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-in"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "xF" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -225,6 +255,12 @@
 /obj/item/tool/pen,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
+"yn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "zL" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
@@ -243,14 +279,20 @@
 /area/bigredv2/outside/space_port)
 "BG" = (
 /obj/structure/cargo_container/arious/rightmid,
-/turf/open/floor/plating/platebot,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "BJ" = (
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
 "Ez" = (
 /obj/structure/cargo_container/watatsumi/rightmid,
-/turf/open/floor/plating/platebotc,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-in"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "EW" = (
 /obj/structure/surface/table,
@@ -263,9 +305,24 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
+"GU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"Hh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "Hy" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
-/turf/open/floor/plating/platebot,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "IY" = (
 /obj/item/shard,
@@ -281,17 +338,26 @@
 /area/bigredv2/outside/space_port)
 "Ju" = (
 /obj/structure/cargo_container/arious/right,
-/turf/open/floor/plating/platebot,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-in"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "Kx" = (
 /obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
 "KI" = (
-/turf/open/floor/plating/platebot,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "Os" = (
-/turf/open/floor/plating/platebotc,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-in"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "PQ" = (
 /obj/structure/machinery/disposal,
@@ -306,6 +372,20 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/darkgreen2/southwest,
 /area/bigredv2/outside/space_port)
+"Qs" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"TN" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "UH" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -314,7 +394,7 @@
 /area/bigredv2/outside/space_port)
 "UU" = (
 /obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/plating/platebotc,
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "Yu" = (
 /obj/structure/surface/table,
@@ -360,12 +440,12 @@ ac
 ac
 ac
 BJ
-Os
-Os
+ac
+GU
 Os
 Bz
 Bz
-Os
+GU
 Os
 UU
 "}
@@ -379,14 +459,14 @@ ac
 ac
 ac
 BJ
-Os
-UU
-Os
+ac
+TN
+KI
 Bz
 Bz
-Os
+Hh
 kB
-Os
+ac
 "}
 (4,1,1) = {"
 ac
@@ -398,12 +478,12 @@ ac
 ac
 ac
 BJ
-Os
-Os
-Os
+ac
+jw
+yn
 Bz
 Bz
-Os
+jw
 Ez
 dS
 "}
@@ -437,12 +517,12 @@ ac
 ac
 vW
 ac
-KI
-KI
+GU
+Os
 Bz
 Bz
-KI
-KI
+GU
+Os
 bn
 "}
 (7,1,1) = {"
@@ -456,11 +536,11 @@ ac
 ac
 ub
 ac
-KI
-hi
+Hh
+Qs
 Bz
 Bz
-KI
+Hh
 KI
 ac
 "}
@@ -475,12 +555,12 @@ ac
 ac
 BJ
 ac
-KI
-KI
+jw
+yn
 Bz
 og
-KI
-KI
+jw
+yn
 ac
 "}
 (9,1,1) = {"
@@ -513,12 +593,12 @@ an
 ac
 BJ
 ac
-KI
-KI
+GU
+Os
 Bz
 jK
-KI
-KI
+GU
+Os
 ac
 "}
 (11,1,1) = {"
@@ -532,11 +612,11 @@ an
 xF
 BJ
 ac
-KI
+Hh
 KI
 Bz
 Bz
-KI
+Hh
 KI
 ac
 "}
@@ -551,11 +631,11 @@ aP
 ac
 BJ
 ac
-KI
+jw
 hs
 Bz
 Bz
-KI
+jw
 hi
 ac
 "}
@@ -589,11 +669,11 @@ an
 ac
 BJ
 bd
-KI
-KI
+GU
+Os
 Bz
 Bz
-KI
+xE
 jJ
 bj
 "}
@@ -612,7 +692,7 @@ Hy
 KI
 Bz
 Bz
-KI
+Hh
 BG
 bk
 "}
@@ -628,10 +708,10 @@ ac
 BJ
 ac
 dj
-KI
+yn
 Bz
 Bz
-KI
+jw
 Ju
 ac
 "}

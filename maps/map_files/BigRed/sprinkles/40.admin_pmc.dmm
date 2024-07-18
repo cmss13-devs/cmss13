@@ -406,7 +406,6 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "Mu" = (
-/obj/effect/landmark/corpsespawner/wygoon,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/wood,

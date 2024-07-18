@@ -7,6 +7,8 @@
 
 	/// Currently applied environmental reverb.
 	VAR_PROTECTED/owner_environment = SOUND_ENVIRONMENT_NONE
+	/// Assoc list of important channels and their assigned template, in the form of: "channel" = template
+	var/list/tracked_channels = list()
 
 /datum/soundOutput/New(client/client)
 	if(!client)
@@ -24,38 +26,73 @@
 	owner = null
 	return ..()
 
-/datum/soundOutput/proc/process_sound(datum/sound_template/T)
-	var/sound/S = sound(T.file, T.wait, T.repeat)
-	S.volume = owner.volume_preferences[T.volume_cat] * T.volume
-	if(T.channel == 0)
-		S.channel = get_free_channel()
-	else
-		S.channel = T.channel
-	S.frequency = T.frequency
-	S.falloff = T.falloff
-	S.status = T.status
-	if(T.x && T.y && T.z)
-		var/turf/owner_turf = get_turf(owner.mob)
-		if(owner_turf)
-			// We're in an interior and sound came from outside
-			if(SSinterior.in_interior(owner_turf) && owner_turf.z != T.z)
-				var/datum/interior/VI = SSinterior.get_interior_by_coords(owner_turf.x, owner_turf.y, owner_turf.z)
-				if(VI && VI.exterior)
-					var/turf/candidate = get_turf(VI.exterior)
-					if(candidate.z != T.z)
-						return // Invalid location
-					S.falloff /= 2
-					owner_turf = candidate
-			S.x = T.x - owner_turf.x
-			S.y = 0
-			S.z = T.y - owner_turf.y
-		S.y += T.y_s_offset
-		S.x += T.x_s_offset
-		S.echo = SOUND_ECHO_REVERB_ON //enable environment reverb for positional sounds
-	if(owner.mob.ear_deaf > 0)
-		S.status |= SOUND_MUTE
+/datum/soundOutput/proc/process_sound(datum/sound_template/template, update)
+	var/sound/sound = sound(template.file, template.repeat, template.wait)
 
-	sound_to(owner,S)
+	sound.channel = template.channel
+	sound.volume = template.volume * owner.volume_preferences[template.volume_cat]
+	sound.frequency = template.frequency
+	sound.offset = template.offset
+	sound.pitch = template.pitch
+	sound.status = template.status
+	sound.falloff = template.falloff
+
+	if(update)
+		ENABLE_BITFIELD(sound.status, SOUND_UPDATE)
+
+	if(CHECK_BITFIELD(template.sound_flags, SOUND_CAN_DEAFEN) && CHECK_BITFIELD(src.status_flags, EAR_DEAF_MUTE))
+		ENABLE_BITFIELD(sound.status, SOUND_MUTE)
+
+	if(CHECK_BITFIELD(template.sound_flags, SOUND_ENVIRONMENTAL))
+		sound.echo = SOUND_ECHO_REVERB_ON
+
+	if(CHECK_BITFIELD(template.sound_flags, SOUND_TRACKED) && !update)
+		if(GLOB.spatial_sound_tracking && GLOB.sound_lengths["[template.file]"] SECONDS >= GLOB.spatial_sound_tracking_min_length) //debug
+			tracked_channels[num2text(sound.channel)] = template
+
+	if(!CHECK_BITFIELD(template.sound_flags, SOUND_SPATIAL)) //non-spatial
+		sound.x = template.x
+		sound.y = template.y
+		sound.z = template.z
+		sound_to(owner, sound)
+		return
+
+	if(QDELETED(template.source))
+		return
+
+	var/turf/owner_turf = get_turf(owner.mob)
+	var/turf/source_turf = get_turf(template.source)
+	//soundsys only traverses one "step", so will never send from one interior to another
+	if(owner_turf.z == source_turf.z) //both in exterior, or both in same interior
+		sound.x = source_turf.x - owner_turf.x
+		sound.z = source_turf.y - owner_turf.y
+	else if(SSinterior.in_interior(owner_turf)) //source in exterior, owner in interior
+		var/datum/interior/interior = SSinterior.get_interior_by_coords(owner_turf.x, owner_turf.y, owner_turf.z)
+		sound.falloff *= 0.5
+		sound.x = source_turf.x - interior.exterior.x
+		sound.z = source_turf.y - interior.exterior.y
+	else if(SSinterior.in_interior(source_turf)) //source in interior, owner in exterior
+		var/datum/interior/interior = SSinterior.get_interior_by_coords(source_turf.x, source_turf.y, source_turf.z)
+		sound.falloff *= 0.5
+		sound.x = interior.exterior.x - owner_turf.x
+		sound.z = interior.exterior.y - owner_turf.y
+	else //moved to unrelated z while sound was playing, leave it alone
+		return
+
+	sound_to(owner, sound)
+
+/datum/soundOutput/proc/update_tracked_channels()
+	for(var/i in length(tracked_channels) to 1 step -1)
+		var/channel = tracked_channels[i]
+		var/datum/sound_template/template = tracked_channels[channel]
+		if(REALTIMEOFDAY >= template.end_time)
+			tracked_channels -= channel
+			continue
+		if(!CHECK_BITFIELD(template.sound_flags, SOUND_SPATIAL))
+			continue
+		if(template.source == owner.mob)
+			continue
+		process_sound(template, update = TRUE)
 
 /datum/soundOutput/proc/update_ambience(area/target_area, ambience_override, force_update = FALSE)
 	var/status_flags = SOUND_STREAM

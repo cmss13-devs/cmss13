@@ -1412,7 +1412,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			dat += "Lowered"
 			dat += "<br><hr>"
 
-			if(lenght(in_stock))
+			if(length(in_stock))
 				dat += "Available vehicles:<br>"
 				for(var/datum/vehicle_order/order as anything in in_stock)
 					if(order.has_vehicle_lock())

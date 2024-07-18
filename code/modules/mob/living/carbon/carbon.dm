@@ -388,9 +388,13 @@
 			if(!do_after(src, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				to_chat(src, SPAN_WARNING("You need to set up the high toss!"))
 				return
+			animation_attack_on(target)
+			playsound(src, 'sound/weapons/punchmiss.ogg', 50, 1, 7)
 			drop_inv_item_on_ground(I, TRUE)
 			thrown_thing.throw_atom(target, thrown_thing.throw_range, SPEED_SLOW, src, spin_throw, HIGH_LAUNCH)
 		else
+			animation_attack_on(target)
+			playsound(src, 'sound/weapons/punchmiss.ogg', 50, 1, 7)
 			drop_inv_item_on_ground(I, TRUE)
 			thrown_thing.throw_atom(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, spin_throw)
 

@@ -540,7 +540,7 @@
 
 	S["preferred_squad"] >> preferred_squad
 	S["preferred_armor"] >> preferred_armor
-	S["nanotrasen_relation"] >> nanotrasen_relation
+	S["weyland_yutani_relation"] >> weyland_yutani_relation
 	//S["skin_style"] >> skin_style
 
 	S["uplinklocation"] >> uplinklocation
@@ -556,7 +556,7 @@
 
 	if(isnull(language)) language = "None"
 	if(isnull(spawnpoint)) spawnpoint = "Arrivals Shuttle"
-	if(isnull(nanotrasen_relation)) nanotrasen_relation = initial(nanotrasen_relation)
+	if(isnull(weyland_yutani_relation)) weyland_yutani_relation = initial(weyland_yutani_relation)
 	if(!real_name) real_name = random_name(gender)
 	be_random_name = sanitize_integer(be_random_name, 0, 1, initial(be_random_name))
 	be_random_body = sanitize_integer(be_random_body, 0, 1, initial(be_random_body))
@@ -690,7 +690,7 @@
 	S["religion"] << religion
 	S["traits"] << traits
 
-	S["nanotrasen_relation"] << nanotrasen_relation
+	S["weyland_yutani_relation"] << weyland_yutani_relation
 	S["preferred_squad"] << preferred_squad
 	S["preferred_armor"] << preferred_armor
 	//S["skin_style"] << skin_style

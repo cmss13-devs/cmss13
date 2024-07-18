@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - bugfix: "having left hand broken and not splinted has the same effect on wheelchair movement speed as right hand"

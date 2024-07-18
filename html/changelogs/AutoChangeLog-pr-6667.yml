@@ -1,0 +1,7 @@
+author: "TotalEpicness5, Triiodine, monkeyfist, Blundir"
+delete-after: True
+changes:
+  - rscadd: "Adds the G2 electroshock grenade. This grenade does not stun nor deal serious damage to xenos, but it stuns via electric shock. It can create EMP-like effects when faced with electronic devices like sentries, synths, Area Power Controllers, etc. It's damage is reduced by energy armor."
+  - bugfix: "take_overall_armoured_damage now can actually deal burn damage"
+  - balance: "Marine armor has a small bit of energy armor added back. Heavy armor has slightly more protection than medium/light."
+  - bugfix: "Mines now check for explosive antigrief checks"

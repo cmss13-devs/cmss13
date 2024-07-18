@@ -136,11 +136,6 @@
 	path = /obj/item/circuitboard/apc
 	category = AUTOLATHE_CATEGORY_ENGINEERING
 
-/datum/autolathe/recipe/rcd_ammo
-	name = "matter cartridge"
-	path = /obj/item/ammo_rcd
-	category = AUTOLATHE_CATEGORY_ENGINEERING
-
 /datum/autolathe/recipe/table_parts
 	name = "table parts"
 	path = /obj/item/frame/table

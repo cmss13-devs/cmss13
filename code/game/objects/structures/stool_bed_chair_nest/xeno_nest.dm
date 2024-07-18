@@ -245,6 +245,7 @@
 
 	do_buckle(mob, user)
 	ADD_TRAIT(mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
+	ADD_TRAIT(mob, TRAIT_NO_STRAY, TRAIT_SOURCE_BUCKLE)
 	SEND_SIGNAL(mob, COMSIG_MOB_NESTED, user)
 
 	if(!human)
@@ -275,6 +276,7 @@
 	buckled_mob.pixel_y = 0
 	buckled_mob.old_y = 0
 	REMOVE_TRAIT(buckled_mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
+	REMOVE_TRAIT(buckled_mob, TRAIT_NO_STRAY, TRAIT_SOURCE_BUCKLE)
 	var/mob/living/carbon/human/buckled_human = buckled_mob
 
 	var/mob/dead/observer/G = ghost_of_buckled_mob

@@ -169,7 +169,7 @@
 	icon_state = "game_kit"
 	icon = 'icons/obj/items/items.dmi'
 
-/obj/item/prop/griper
+/obj/item/prop/gripper
 	name = "magnetic gripper"
 	desc = "A simple grasping tool for synthetic assets."
 	icon_state = "gripper"

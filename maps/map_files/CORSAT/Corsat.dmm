@@ -24930,7 +24930,7 @@
 /area/corsat/gamma/biodome/complex)
 "bTQ" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/prop/griper,
+/obj/item/prop/gripper,
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/sigma/south/complex)
 "bTU" = (

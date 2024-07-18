@@ -134,7 +134,7 @@
 	desc = "It's a big rat."
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "rat_white"
-	w_class = SIZE_TINY;
+	w_class = SIZE_TINY
 	flags_equip_slot = null
 
 /obj/item/holder/rat/white

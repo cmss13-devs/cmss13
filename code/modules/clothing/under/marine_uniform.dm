@@ -1237,6 +1237,7 @@
 	button.overlays += button_overlay
 
 /datum/action/item_action/specialist/toggle_cbrn_hood/action_activate()
+	. = ..()
 	var/obj/item/clothing/under/marine/cbrn/armor = holder_item
 	if(!istype(armor))
 		return

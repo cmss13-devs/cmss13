@@ -838,6 +838,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		return TRUE
 
 /datum/action/item_action/specialist/twobore_brace/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/shotgun/double/twobore/G = holder_item
 	if(G.braced)
 		return

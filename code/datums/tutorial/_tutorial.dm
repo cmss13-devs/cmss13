@@ -4,7 +4,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial
 	/// What the tutorial is called, is player facing
 	var/name = "Base"
-	/// Internal ID of the tutorial, kept for save files
+	/// Internal ID of the tutorial, kept for save files. Format is "tutorialtype_specifictutorial_number". So, the first basic xeno tutorial would be "xeno_basic_1", and the 2nd marine medical tutorial would be "marine_medical_2"
 	var/tutorial_id = "base"
 	/// A short 1-2 sentence description of the tutorial itself
 	var/desc = ""
@@ -144,6 +144,8 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 /// Ends the tutorial after a certain amount of time.
 /datum/tutorial/proc/tutorial_end_in(time = 5 SECONDS, completed = TRUE)
+	if(completed)
+		mark_completed() // This is done because if you're calling this proc with completed == TRUE, then the tutorial's a done deal. We shouldn't penalize the player if they exit a few seconds before it actually completes.
 	tutorial_ending = TRUE
 	addtimer(CALLBACK(src, PROC_REF(end_tutorial), completed), time)
 
@@ -221,6 +223,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	tutorial = WEAKREF(selected_tutorial)
 
 /datum/action/tutorial_end/action_activate()
+	. = ..()
 	if(!tutorial)
 		return
 

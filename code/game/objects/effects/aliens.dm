@@ -148,7 +148,7 @@
 	..()
 	if(AM == cause_data.resolve_mob())
 		return
-	
+
 	if(isliving(AM))
 		var/mob/living/living_mob = AM
 		if(living_mob.ally_of_hivenumber(hivenumber))
@@ -222,6 +222,7 @@
 		if (buffed_splash)
 			hooman.KnockDown(stun_duration)
 			to_chat(hooman, SPAN_HIGHDANGER("The acid coating on you starts bubbling and sizzling wildly!"))
+			hooman.emote("acidglob")
 		hooman.last_damage_data = cause_data
 		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_foot", 20)
 		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_foot", 20)

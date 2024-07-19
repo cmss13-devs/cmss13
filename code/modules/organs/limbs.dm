@@ -948,6 +948,7 @@ This function completely restores a damaged organ to perfect condition.
 		if(delete_limb)
 			qdel(organ)
 		else
+			owner.emote("me", message = "screams in pain as their [display_name] flies off in an arc!")
 			owner.visible_message(SPAN_WARNING("[owner.name]'s [display_name] flies off in an arc!"),
 			SPAN_HIGHDANGER("<b>Your [display_name] goes flying off!</b>"),
 			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
@@ -1203,12 +1204,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(is_broken())
 		if(prob(15))
 			owner.drop_inv_item_on_ground(c_hand)
-			var/emote_scream = pick("screams in pain and", "lets out a sharp cry and", "cries out and")
-			owner.emote("me", 1, "[(!owner.pain.feels_pain) ? "" : emote_scream ] drops what they were holding in their [hand_name]!")
+			var/emote_scream = pick("winces in pain,", "cries out,")
+			owner.emote("me", message = "[(!owner.pain.feels_pain) ? "" : emote_scream ] dropping what was in their [hand_name]!")
 	if(is_malfunctioning())
 		if(prob(10))
 			owner.drop_inv_item_on_ground(c_hand)
-			owner.emote("me", 1, "drops what they were holding, their [hand_name] malfunctioning!")
+			owner.emote("me", message = "drops what they were holding, their [hand_name] malfunctioning!")
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, owner)
 			spark_system.attach(owner)

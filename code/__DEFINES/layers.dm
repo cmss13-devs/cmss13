@@ -237,11 +237,11 @@
 #define EXTERIOR_LIGHTING_PLANE 101
 #define NVG_PLANE 110
 
-///Popup Chat Messages
-#define RUNECHAT_PLANE 501
-
 #define RENDER_PLANE_GAME 990
 #define RENDER_PLANE_NON_GAME 995
+
+///Popup Chat Messages
+#define RUNECHAT_PLANE 996
 
 #define ESCAPE_MENU_PLANE 997
 

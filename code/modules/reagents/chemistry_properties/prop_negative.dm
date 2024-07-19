@@ -231,7 +231,7 @@
 	M.drowsyness = min(M.drowsyness + 0.5 * potency * delta_time, 15 * potency)
 	M.reagent_move_delay_modifier += potency
 	M.recalculate_move_delay = TRUE
-	if(prob(5 * delta_time))
+	if(prob(2 * delta_time))
 		M.emote(pick("yawn","gasp"))
 
 /datum/chem_property/negative/hemolytic/process_critical(mob/living/M, potency = 1)
@@ -258,7 +258,7 @@
 		L.add_bleeding(I, TRUE)
 		L.wounds += I
 	if(prob(POTENCY_MULTIPLIER_VHIGH * potency))
-		spawn L.owner.emote("me", 1, "coughs up blood!")
+		spawn L.owner.emote("me", message = "coughs up blood!")
 		L.owner.drip(10)
 
 /datum/chem_property/negative/hemorrhaging/process_overdose(mob/living/M, potency = 1, delta_time)

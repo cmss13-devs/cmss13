@@ -56,6 +56,6 @@
 
 		if(left_leg_crippled && right_leg_crippled)
 			if(pain.feels_pain)
-				emote("pain")
+				emote("legcollapse")
 			custom_pain("You can't stand on broken legs!", 1)
 			apply_effect(5, WEAKEN)

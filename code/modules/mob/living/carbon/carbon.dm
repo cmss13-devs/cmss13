@@ -191,6 +191,9 @@
 
 	playsound(loc, "sparks", 25, 1)
 	if(shock_damage > 10)
+		if(ishuman(src))
+			emote("electrocuted")
+			make_jittery(40)
 		src.visible_message(
 			SPAN_DANGER("[src] was shocked by [source]!"), \
 			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"), \

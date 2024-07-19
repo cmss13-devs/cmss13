@@ -50,6 +50,7 @@
 
 
 /datum/action/joe_emote_panel/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 

@@ -19918,7 +19918,14 @@
 "ekZ" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data{
-	dir = 4
+	dir = 4;
+	pixel_y = 10
+	},
+/obj/structure/machinery/computer/cameras/almayer_brig{
+	dir = 4;
+	desc = "Used to access the various cameras in the security brig.";
+	name = "brig cameras console";
+	pixel_y = -11
 	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/warden_office)
@@ -33768,7 +33775,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/camera/autoname/almayer,
+/obj/structure/machinery/camera/autoname/almayer/brig,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
 "kcg" = (
@@ -34442,6 +34449,7 @@
 	id = "Perma 1";
 	pixel_y = 24
 	},
+/obj/structure/machinery/camera/autoname/almayer/brig,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
 "krA" = (
@@ -34630,7 +34638,8 @@
 "kvL" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/almayer_network{
-	dir = 4
+	dir = 4;
+	pixel_y = 0
 	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/warden_office)
@@ -40493,6 +40502,9 @@
 "mTN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/computer/cameras/almayer_brig{
+	dir = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "mUq" = (
@@ -50456,6 +50468,12 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/cichallway)
+"qWm" = (
+/obj/structure/machinery/computer/cameras/almayer_brig{
+	dir = 4
+	},
+/turf/open/floor/almayer/red,
+/area/almayer/shipboard/brig/lobby)
 "qWt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -61350,9 +61368,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/stern)
 "vsz" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
+/obj/structure/machinery/camera/autoname/almayer/brig{
+	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
@@ -61882,10 +61899,8 @@
 /turf/open/floor/almayer/silver,
 /area/almayer/shipboard/brig/cic_hallway)
 "vCy" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera";
-	pixel_y = 6
+/obj/structure/machinery/camera/autoname/almayer/brig{
+	dir = 4
 	},
 /turf/open/floor/almayer/green/west,
 /area/almayer/shipboard/brig/cells)
@@ -63920,6 +63935,7 @@
 	id = "Perma 2";
 	pixel_y = 24
 	},
+/obj/structure/machinery/camera/autoname/almayer/brig,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
 "wnL" = (
@@ -66191,9 +66207,6 @@
 	dir = 1
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/secure_data{
-	dir = 4
-	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 3;
 	pixel_y = 27
@@ -66201,6 +66214,11 @@
 /obj/structure/sign/safety/rewire{
 	pixel_x = 15;
 	pixel_y = 27
+	},
+/obj/structure/machinery/computer/cameras/almayer_brig{
+	dir = 4;
+	desc = "Used to access the various cameras in the security brig.";
+	name = "brig cameras console"
 	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/processing)
@@ -68586,10 +68604,8 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/engine_core)
 "yhg" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera";
-	pixel_y = 6
+/obj/structure/machinery/camera/autoname/almayer/brig{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
@@ -82204,7 +82220,7 @@ cDN
 oFY
 cQL
 npO
-ncl
+qWm
 jcf
 bju
 cMW

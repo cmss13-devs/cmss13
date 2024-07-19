@@ -432,6 +432,8 @@
 		host_brain.ckey = host_mob.ckey
 
 		host_brain.name = host_mob.name
+		host_brain.faction = host_mob.faction
+		host_brain.faction_group = host_mob.faction_group
 
 		if(!host_brain.computer_id)
 			host_brain.computer_id = h2b_id

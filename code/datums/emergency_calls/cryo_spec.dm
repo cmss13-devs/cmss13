@@ -11,7 +11,7 @@
 /datum/emergency_call/cryo_spec/remove_nonqualifiers(list/datum/mind/candidates_list)
 	var/list/datum/mind/candidates_clean = list()
 	for(var/datum/mind/single_candidate in candidates_list)
-		if(check_timelock(single_candidate?.current?.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
+		if(check_timelock(single_candidate?.current?.client, JOB_SQUAD_ROLES_LIST, time_required_for_job))
 			candidates_clean.Add(single_candidate)
 			continue
 		if(single_candidate.current)

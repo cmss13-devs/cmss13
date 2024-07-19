@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "The Heavy Pulse Rifle (M41AE2) will now start with a pre-attached bipod. To better inform players of its unique auto-fire function."

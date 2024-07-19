@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - bugfix: "Fixed a large amount of objects activating erroneous functionality (like an armor light) when using action buttons tied to that object."

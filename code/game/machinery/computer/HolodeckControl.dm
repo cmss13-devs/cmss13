@@ -14,6 +14,12 @@
 /turf/open/floor/holofloor/attackby(obj/item/W as obj, mob/user as mob)
 	return
 
+/turf/open/floor/holofloor/cult
+	icon_state = "cult"
+
+/turf/open/floor/holofloor/cult/south
+	dir = SOUTH
+
 /turf/open/floor/holofloor/grass
 	name = "lush grass"
 	icon_state = "grass1"

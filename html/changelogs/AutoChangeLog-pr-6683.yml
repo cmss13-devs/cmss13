@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - admin: "Added causes for explosion starts to attack logs"

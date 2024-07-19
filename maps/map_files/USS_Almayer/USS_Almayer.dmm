@@ -40502,9 +40502,6 @@
 "mTN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/computer/cameras/almayer_brig{
-	dir = 4
-	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "mUq" = (
@@ -50468,12 +50465,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/cichallway)
-"qWm" = (
-/obj/structure/machinery/computer/cameras/almayer_brig{
-	dir = 4
-	},
-/turf/open/floor/almayer/red,
-/area/almayer/shipboard/brig/lobby)
 "qWt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -82220,7 +82211,7 @@ cDN
 oFY
 cQL
 npO
-qWm
+ncl
 jcf
 bju
 cMW

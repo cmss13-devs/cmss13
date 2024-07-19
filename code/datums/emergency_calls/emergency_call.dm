@@ -225,7 +225,7 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), quiet_launch, announce_incoming, override_spawn_loc), 30 SECONDS)
 
 /datum/emergency_call/proc/remove_nonqualifiers(list/datum/mind/candidates_list)
-	return candidates_list
+	return candidates_list //everyone gets selected on 99% of distress beacons.
 
 /datum/emergency_call/proc/spawn_candidates(quiet_launch = FALSE, announce_incoming = TRUE, override_spawn_loc)
 	if(SSticker.mode)

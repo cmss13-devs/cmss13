@@ -364,6 +364,8 @@
 	icon_state = "terminal"
 	req_access = list()
 	breakable = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
 	///If true, the lifeboat is in the process of launching, and so the code will not allow another launch.
 	var/launch_initiated = FALSE
 

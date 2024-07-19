@@ -224,12 +224,15 @@
 
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), quiet_launch, announce_incoming, override_spawn_loc), 30 SECONDS)
 
+/datum/emergency_call/proc/remove_nonqualifiers(list/datum/mind/candidates_list)
+	return candidates
+
 /datum/emergency_call/proc/spawn_candidates(quiet_launch = FALSE, announce_incoming = TRUE, override_spawn_loc)
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
 
 	SEND_SIGNAL(src, COMSIG_ERT_SETUP)
-
+	candidates = remove_nonqualifiers(candidates)
 	if(length(candidates) < mob_min && !spawn_max_amount)
 		message_admins("Aborting distress beacon, not enough candidates: found [length(candidates)].")
 		members = list() //Empty the members list.
@@ -238,7 +241,6 @@
 		if(!quiet_launch)
 			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		return
-
 	//We've got enough!
 	//Trim down the list
 	var/list/datum/mind/picked_candidates = list()

@@ -418,8 +418,8 @@
 
 
 	shake_camera(target_carbon, 2, 1)
-	var/datum/action/xeno_action/activable/prae_abduct/abduct_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/prae_abduct)
-	var/datum/action/xeno_action/activable/tail_lash/tail_lash_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/tail_lash)
+	var/datum/action/xeno_action/activable/prae_abduct/abduct_action = get_action(oppressor_user, /datum/action/xeno_action/activable/prae_abduct)
+	var/datum/action/xeno_action/activable/tail_lash/tail_lash_action = get_action(oppressor_user, /datum/action/xeno_action/activable/tail_lash)
 	if(abduct_action && !abduct_action.action_cooldown_check())
 		abduct_action.reduce_cooldown(5 SECONDS)
 	if(tail_lash_action && !tail_lash_action.action_cooldown_check())

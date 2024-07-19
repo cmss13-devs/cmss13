@@ -12,7 +12,7 @@
 	var/list/targets = list() // Lists of current potential targets
 	var/list/other_targets = list() //List of special target types to shoot at, if needed.
 	var/atom/movable/target = null
-	var/datum/shape/rectangle/range_bounds
+	var/datum/shape/range_bounds
 	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
 	var/last_fired = 0
 	var/fire_delay = 4
@@ -93,17 +93,17 @@
 
 /obj/structure/machinery/defenses/sentry/proc/set_range()
 	if(omni_directional)
-		range_bounds = RECT(x, y, 8, 8)
+		range_bounds = SQUARE(x, y, 8)
 		return
 	switch(dir)
 		if(EAST)
-			range_bounds = RECT(x + 4, y, 7, 7)
+			range_bounds = SQUARE(x + 4, y, 7)
 		if(WEST)
-			range_bounds = RECT(x - 4, y, 7, 7)
+			range_bounds = SQUARE(x - 4, y, 7)
 		if(NORTH)
-			range_bounds = RECT(x, y + 4, 7, 7)
+			range_bounds = SQUARE(x, y + 4, 7)
 		if(SOUTH)
-			range_bounds = RECT(x, y - 4, 7, 7)
+			range_bounds = SQUARE(x, y - 4, 7)
 
 /obj/structure/machinery/defenses/sentry/proc/unset_range()
 	SIGNAL_HANDLER
@@ -614,17 +614,17 @@
 	var/dbl_range = range * 2
 
 	if(omni_directional)
-		range_bounds = RECT(x, y, dbl_range, dbl_range)
+		range_bounds = SQUARE(x, y, dbl_range)
 		return
 	switch(dir)
 		if(EAST)
-			range_bounds = RECT(x+range, y, dbl_range, dbl_range)
+			range_bounds = SQUARE(x+range, y, dbl_range)
 		if(WEST)
-			range_bounds = RECT(x-range, y, dbl_range, dbl_range)
+			range_bounds = SQUARE(x-range, y, dbl_range)
 		if(NORTH)
-			range_bounds = RECT(x, y+range, dbl_range, dbl_range)
+			range_bounds = SQUARE(x, y+range, dbl_range)
 		if(SOUTH)
-			range_bounds = RECT(x, y-range, dbl_range, dbl_range)
+			range_bounds = SQUARE(x, y-range, dbl_range)
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship
@@ -672,13 +672,13 @@
 /obj/structure/machinery/defenses/sentry/dmr/set_range()
 	switch(dir)
 		if(EAST)
-			range_bounds = RECT(x + (SENTRY_SNIPER_RANGE/2), y, SENTRY_SNIPER_RANGE, SENTRY_SNIPER_RANGE)
+			range_bounds = SQUARE(x + (SENTRY_SNIPER_RANGE/2), y, SENTRY_SNIPER_RANGE)
 		if(WEST)
-			range_bounds = RECT(x - (SENTRY_SNIPER_RANGE/2), y, SENTRY_SNIPER_RANGE, SENTRY_SNIPER_RANGE)
+			range_bounds = SQUARE(x - (SENTRY_SNIPER_RANGE/2), y, SENTRY_SNIPER_RANGE)
 		if(NORTH)
-			range_bounds = RECT(x, y + (SENTRY_SNIPER_RANGE/2), SENTRY_SNIPER_RANGE, SENTRY_SNIPER_RANGE)
+			range_bounds = SQUARE(x, y + (SENTRY_SNIPER_RANGE/2), SENTRY_SNIPER_RANGE)
 		if(SOUTH)
-			range_bounds = RECT(x, y - (SENTRY_SNIPER_RANGE/2), SENTRY_SNIPER_RANGE, SENTRY_SNIPER_RANGE)
+			range_bounds = SQUARE(x, y - (SENTRY_SNIPER_RANGE/2), SENTRY_SNIPER_RANGE)
 
 #undef SENTRY_SNIPER_RANGE
 /obj/structure/machinery/defenses/sentry/shotgun

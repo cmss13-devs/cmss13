@@ -1,3 +1,5 @@
+#define JOB_BRAINWORM "Brainworm"
+
 /// Chemical categories
 #define BORER_CAT_HEAL "Medicines"
 #define BORER_CAT_PUNISH "Motivators"

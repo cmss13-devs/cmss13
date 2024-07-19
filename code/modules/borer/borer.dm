@@ -171,6 +171,8 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 	lighting_alpha = 200
 	huggable = FALSE
 
+	job = JOB_BRAINWORM
+
 	var/generation = 1
 	var/stealthy = FALSE
 	var/static/list/borer_names = list(

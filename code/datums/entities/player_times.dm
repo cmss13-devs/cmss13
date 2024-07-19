@@ -119,7 +119,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 
 	for(var/datum/view_record/playtime/PT in PTs)
 		var/isxeno = (PT.role_id in GLOB.RoleAuthority.castes_by_name)
-		var/isOther = (PT.role_id == JOB_OBSERVER) // more maybe eventually
+		var/isOther = (PT.role_id == JOB_OBSERVER || PT.role_id == JOB_BRAINWORM) // more maybe eventually
 
 		if(PT.role_id == JOB_XENOMORPH)
 			continue // Snowflake check, will need to be removed in the future

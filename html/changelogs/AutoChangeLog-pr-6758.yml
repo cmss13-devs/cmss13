@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - rscdel: "removes trade destinations (they were never used)"

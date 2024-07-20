@@ -4,7 +4,6 @@
 
 	var/mob/user = usr
 	if(!check_rights(R_MOD))
-		to_chat(user, SPAN_WARNING("You do not have access to this command."))
 		return FALSE
 
 	if(!SSticker.mode)
@@ -267,7 +266,7 @@
 
 		if("login")
 			admin_interface.logged_in = user.client.ckey
-			admin_interface.access_list += "[user.client.ckey] at [worldtime2text()], Access Level '[user.client.admin_holder?.rank]'."
+			admin_interface.access_list += "[user.client.ckey] at [worldtime2text()], Access Level '[user.client.admin_holder?.admin_rank?.rank]'."
 			admin_interface.current_menu = "main"
 
 		// -- Page Changers -- //
@@ -363,7 +362,7 @@
 					return FALSE
 				var/admin_log = SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[key_name(user)] replied to [conversation.user]'s ARES message")] [SPAN_GREEN("via Remote Interface")] with: [SPAN_BLUE(message)] </b>")
 				for(var/client/admin in GLOB.admins)
-					if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
+					if(check_client_rights(admin, R_ADMIN|R_MOD, FALSE))
 						to_chat(admin, admin_log)
 
 		if("read_record")

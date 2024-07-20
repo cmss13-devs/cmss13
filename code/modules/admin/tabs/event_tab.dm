@@ -45,6 +45,7 @@
 /client/proc/change_security_level()
 	if(!check_rights(R_ADMIN))
 		return
+
 	var sec_level = input(usr, "It's currently code [get_security_level()].", "Select Security Level")  as null|anything in (list("green","blue","red","delta")-get_security_level())
 	if(sec_level && alert("Switch from code [get_security_level()] to code [sec_level]?","Change security level?","Yes","No") == "Yes")
 		set_security_level(seclevel2num(sec_level))
@@ -65,6 +66,7 @@
 /client/proc/togglebuildmodeself()
 	set name = "Buildmode"
 	set category = "Admin.Events"
+
 	if(!check_rights(R_ADMIN))
 		return
 
@@ -146,14 +148,12 @@
 	message_admins("[key_name_admin(usr)] created an EM PUlse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
 	return
 
-/datum/admins/proc/admin_force_ERT_shuttle()
+/datum/entity/admins/proc/admin_force_ERT_shuttle()
 	set name = "Force ERT Shuttle"
 	set desc = "Force Launch the ERT Shuttle."
 	set category = "Admin.Shuttles"
 
-	if (!SSticker.mode)
-		return
-	if(!check_rights(R_EVENT))
+	if(!SSticker.mode || !check_rights(R_EVENT))
 		return
 
 	var/list/shuttle_map = list()
@@ -188,15 +188,12 @@
 
 	message_admins("[key_name_admin(usr)] force launched a distress shuttle ([tag])")
 
-/datum/admins/proc/admin_force_distress()
+/datum/entity/admins/proc/admin_force_distress()
 	set name = "Distress Beacon"
 	set desc = "Call a distress beacon. This should not be done if the shuttle's already been called."
 	set category = "Admin.Shuttles"
 
-	if (!SSticker.mode)
-		return
-
-	if(!check_rights(R_EVENT)) // Seems more like an event thing than an admin thing
+	if(!SSticker.mode || !check_rights(R_EVENT))
 		return
 
 	var/list/list_of_calls = list()
@@ -246,33 +243,36 @@
 
 	message_admins("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]")
 
-/datum/admins/proc/admin_force_evacuation()
+/datum/entity/admins/proc/admin_force_evacuation()
 	set name = "Trigger Evacuation"
 	set desc = "Triggers emergency evacuation."
 	set category = "Admin.Events"
 
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
+
 	set_security_level(SEC_LEVEL_RED)
 	SShijack.initiate_evacuation()
 
 	message_admins("[key_name_admin(usr)] forced an emergency evacuation.")
 
-/datum/admins/proc/admin_cancel_evacuation()
+/datum/entity/admins/proc/admin_cancel_evacuation()
 	set name = "Cancel Evacuation"
 	set desc = "Cancels emergency evacuation."
 	set category = "Admin.Events"
 
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
+
 	SShijack.cancel_evacuation()
 
 	message_admins("[key_name_admin(usr)] canceled an emergency evacuation.")
 
-/datum/admins/proc/add_req_points()
+/datum/entity/admins/proc/add_req_points()
 	set name = "Add Requisitions Points"
 	set desc = "Add points to the ship requisitions department."
 	set category = "Admin.Events"
+
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
 
@@ -291,10 +291,11 @@
 	if(points_to_add >= 0)
 		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
 
-/datum/admins/proc/check_req_heat()
+/datum/entity/admins/proc/check_req_heat()
 	set name = "Check Requisitions Heat"
 	set desc = "Check how close the CMB is to arriving to search Requisitions."
 	set category = "Admin.Events"
+
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
 
@@ -306,7 +307,7 @@
 	message_admins("[key_name_admin(usr)] set requisitions heat to [req_heat_change].")
 
 
-/datum/admins/proc/admin_force_selfdestruct()
+/datum/entity/admins/proc/admin_force_selfdestruct()
 	set name = "Self-Destruct"
 	set desc = "Trigger self-destruct countdown. This should not be done if the self-destruct has already been called."
 	set category = "Admin.Events"
@@ -533,8 +534,7 @@
 	set name = "Report: Faction"
 	set category = "Admin.Factions"
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 	var/faction = tgui_input_list(usr, "Please choose faction your announcement will be shown to.", "Faction Selection", (FACTION_LIST_HUMANOID - list(FACTION_YAUTJA) + list("Everyone (-Yautja)")))
 	if(!faction)
@@ -573,8 +573,7 @@
 	set desc = "Basically a command announcement, but only for selected Xeno's Hive"
 	set category = "Admin.Factions"
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	var/list/hives = list()
@@ -611,8 +610,7 @@
 	set name = "Report: ARES Comms"
 	set category = "Admin.Factions"
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return FALSE
 
 	if(!ares_is_active())
@@ -638,8 +636,7 @@
 	set name = "Report: ARES Apollo"
 	set category = "Admin.Factions"
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return FALSE
 
 	if(!ares_is_active())
@@ -664,8 +661,7 @@
 	set name = "Report: ARES Shipwide"
 	set category = "Admin.Factions"
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 	var/input = input(usr, "This is an announcement type message from the ship's AI. This will be announced to every conscious human on Almayer z-level. Be aware, this will work even if ARES unpowered/destroyed. Check with online staff before you send this.", "What?", "") as message|null
 	if(!input)
@@ -684,8 +680,7 @@
 	set name = "Report: Yautja AI"
 	set category = "Admin.Factions"
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 	var/input = input(usr, "This is a message from the predator ship's AI. Check with online staff before you send this.", "What?", "") as message|null
 	if(!input)
@@ -698,8 +693,7 @@
 	set name = "Narrate to Everyone"
 	set category = "Admin.Events"
 
-	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	var/msg = input("Message:", text("Enter the text you wish to appear to everyone:")) as text
@@ -742,7 +736,7 @@
 // PANELS
 // ----------------------------
 
-/datum/admins/proc/event_panel()
+/datum/entity/admins/proc/event_panel()
 	if(!check_rights(R_ADMIN,0))
 		return
 
@@ -795,7 +789,7 @@
 	return
 
 
-/datum/admins/proc/chempanel()
+/datum/entity/admins/proc/chempanel()
 	if(!check_rights(R_MOD)) return
 
 	var/dat
@@ -827,8 +821,8 @@
 		admin_holder.chempanel()
 	return
 
-/datum/admins/var/create_humans_html = null
-/datum/admins/proc/create_humans(mob/user)
+/datum/entity/admins/var/create_humans_html = null
+/datum/entity/admins/proc/create_humans(mob/user)
 	if(!GLOB.gear_name_presets_list)
 		return
 
@@ -846,8 +840,8 @@
 	if(admin_holder)
 		admin_holder.create_humans(usr)
 
-/datum/admins/var/create_xenos_html = null
-/datum/admins/proc/create_xenos(mob/user)
+/datum/entity/admins/var/create_xenos_html = null
+/datum/entity/admins/proc/create_xenos(mob/user)
 	if(!create_xenos_html)
 		var/hive_types = jointext(ALL_XENO_HIVES, ";")
 		var/xeno_types = jointext(ALL_XENO_CASTES, ";")
@@ -871,7 +865,7 @@
 		admin_holder.clear_mutineers()
 	return
 
-/datum/admins/proc/clear_mutineers()
+/datum/entity/admins/proc/clear_mutineers()
 	if(!check_rights(R_MOD))
 		return
 
@@ -1044,7 +1038,7 @@
 	set name = "Report: Bioscan"
 	set category = "Admin.Factions"
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!check_rights(R_MOD, FALSE))
 		to_chat(src, "Only administrators may use this command.")
 		return
 

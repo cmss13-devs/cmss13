@@ -6,8 +6,7 @@
 /client/proc/change_ckey(mob/M in GLOB.mob_list, a_ckey = null)
 	var/new_ckey = a_ckey
 
-	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if(!M || QDELETED(M))
@@ -35,7 +34,7 @@
 	change_ckey(O)
 
 /client/proc/cmd_admin_ghostchange(mob/living/M, mob/dead/observer/O)
-	if(!istype(O) || (!check_rights(R_ADMIN|R_DEBUG, 0))) //Let's add a few extra sanity checks.
+	if(!istype(O) || (!check_rights(R_ADMIN|R_DEBUG))) //Let's add a few extra sanity checks.
 		return
 	if(alert("Do you want to possess this mob?", "Switch Ckey", "Yes", "No") == "Yes")
 		if(!M || !O) //Extra check in case the mob was deleted while we were transfering.
@@ -58,8 +57,7 @@
 	set name = "Add HUD To"
 	set category = null
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 	if(!mob)
 		return
@@ -89,7 +87,8 @@
 	set category = "Admin.Fun"
 	set name = "Gib"
 
-	if(!check_rights(R_ADMIN)) return
+	if(!check_rights(R_ADMIN))
+		return
 
 	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
 	if(confirm != "Yes") return
@@ -107,8 +106,7 @@
 /client/proc/cmd_admin_rejuvenate(mob/living/M as mob in GLOB.living_mob_list)
 	set category = null
 	set name = "Rejuvenate"
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 	if(!mob)
 		return
@@ -126,8 +124,7 @@
 
 	if(!ismob(M))
 		return
-	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	var/list/subtle_message_options = list("Voice in head", "QM Psychic Whisper", "Weyland-Yutani", "USCM High Command", "Faction-specific")
@@ -238,8 +235,7 @@
 	set name = "Narrate"
 	set category = null
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if(!M)
@@ -395,11 +391,12 @@
 
 	message_admins("[key_name(src)] changed name of [old_name] to [newname].")
 
-/datum/admins/proc/togglesleep(mob/living/M as mob in GLOB.mob_list)
+/datum/entity/admins/proc/togglesleep(mob/living/M as mob in GLOB.mob_list)
 	set name = "Toggle Sleeping"
 	set category = null
 
-	if(!check_rights(0)) return
+	if(!check_rights(NO_FLAGS))
+		return
 
 	if (M.sleeping > 0) //if they're already slept, set their sleep to zero and remove the icon
 		M.sleeping = 0

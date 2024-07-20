@@ -56,6 +56,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	testing(msg)
 	#endif
 
+
 /proc/load_admins()
 	//clear the datums references
 	GLOB.admin_datums.Cut()
@@ -80,67 +81,8 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	var/msg = "Admins Built:\n"
 	for(var/ckey in GLOB.admin_datums)
 		var/rank
-		var/datum/admins/D = GLOB.admin_datums[ckey]
+		var/datum/entity/admins/D = GLOB.admin_datums[ckey]
 		if(D) rank = D.rank
 		msg += "\t[ckey] - [rank]\n"
 	testing(msg)
 	#endif
-
-/proc/process_rank_file(line, mentor = FALSE)
-	var/list/MentorRanks = file2list("config/mentor_ranks.txt")
-	if(!length(line)) return
-	if(copytext(line,1,2) == "#") return
-
-	//Split the line at every "-"
-	var/list/List = splittext(line, "-")
-	if(!length(List)) return
-
-	//ckey is before the first "-"
-	var/ckey = ckey(List[1])
-	if(!ckey) return
-
-	//rank follows the first "-"
-	var/rank = ""
-	if(length(List) >= 2)
-		rank = ckeyEx(List[2])
-
-	var/list/extra_titles = list()
-	if(length(List) >= 3)
-		extra_titles = List.Copy(3)
-
-	if(mentor)
-		if(!(LAZYISIN(MentorRanks, rank)))
-			log_admin("ADMIN LOADER: WARNING: Mentors.txt attempted to override staff ranks!")
-			log_admin("ADMIN LOADER: Override attempt: (Ckey/[ckey]) (Rank/[rank])")
-			return
-
-	//load permissions associated with this rank
-	var/rights = GLOB.admin_ranks[rank]
-
-	//create the admin datum and store it for later use
-	var/datum/admins/D = new /datum/admins(rank, rights, ckey, extra_titles)
-
-	//find the client for a ckey if they are connected and associate them with the new admin datum
-	D.associate(GLOB.directory[ckey])
-
-/*
-#ifdef TESTING
-/client/verb/changerank(newrank in admin_ranks)
-	if(holder)
-		holder.rank = newrank
-		holder.rights = admin_ranks[newrank]
-	else
-		holder = new /datum/admins(newrank,admin_ranks[newrank],ckey)
-	remove_admin_verbs()
-	holder.associate(src)
-
-/client/verb/changerights(newrights as num)
-	if(holder)
-		holder.rights = newrights
-	else
-		holder = new /datum/admins("testing",newrights,ckey)
-	remove_admin_verbs()
-	holder.associate(src)
-
-#endif
-*/

@@ -32,7 +32,6 @@
 	var/byond_account_age
 	var/first_join_date
 
-
 // UNTRACKED FIELDS
 	var/name // Used for NanoUI statistics menu
 
@@ -45,6 +44,7 @@
 	var/migrating_bans = FALSE
 	var/migrating_jobbans = FALSE
 
+	var/datum/entity/admins/admin
 	var/datum/entity/discord_link/discord_link
 	var/datum/entity/player/permaban_admin
 	var/datum/entity/player/time_ban_admin
@@ -69,7 +69,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"is_permabanned" = DB_FIELDTYPE_INT,
 		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
 		"permaban_date" = DB_FIELDTYPE_STRING_LARGE,
-		"admin_status" = DB_FIELDTYPE_STRING_MEDIUM
 		"whitelist_status" = DB_FIELDTYPE_STRING_MAX,
 		"discord_link_id" = DB_FIELDTYPE_BIGINT,
 		"permaban_admin_id" = DB_FIELDTYPE_BIGINT,
@@ -121,7 +120,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	note.note_category = note_category
 	note.is_ban = is_ban
 	note.ban_time = duration
-	note.admin_rank = admin.admin_holder ? admin.admin_holder.rank : "Non-Staff"
+	if(admin.admin_holder?.admin_rank)
+		note.admin_rank = admin.admin_holder.admin_rank.rank
+	else
+		note.admin_rank = "Non-Staff"
 	// since admin is in game, their player_data has to be populated. This is also checked above
 	note.admin_id = admin.player_data.id
 	note.admin = admin.player_data
@@ -168,7 +170,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if (!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
 
-	if(owning_client && owning_client.admin_holder && (owning_client.admin_holder.rights & R_MOD))
+	if(check_client_rights(owning_client, R_MOD, FALSE))
 		return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
@@ -236,7 +238,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if (!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
 
-	if(owning_client && owning_client.admin_holder && (owning_client.admin_holder.rights & R_MOD))
+	if(check_client_rights(owning_client, R_MOD, FALSE))
 		return FALSE
 
 	var/total_rank = jointext(ranks, ", ")
@@ -422,8 +424,13 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(discord_link_id)
 		discord_link = DB_ENTITY(/datum/entity/discord_link, discord_link_id)
 
-	if(admin_status)
-		GLOB.admin_ranks["admin_status"]
+	if(admin_status in GLOB.admin_ranks)
+		GLOB.admin_ranks[admin_status]
+	//create the admin datum and store it for later use
+	var/datum/entity/admins/D = new /datum/entity/admins(GLOB.admin_ranks[admin_status], ckey, extra_titles)
+
+	//find the client for a ckey if they are connected and associate them with the new admin datum
+	D.associate(GLOB.directory[ckey])
 
 	if(whitelist_status)
 		var/list/whitelists = splittext(whitelist_status, "|")

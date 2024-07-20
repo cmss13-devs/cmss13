@@ -22,8 +22,7 @@
 	set desc = "Give somebody access to any session logfiles saved to the /log/runtime/ folder."
 	set category = null
 
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD) || !(admin_holder.rights & R_DEBUG))
-		to_chat(src, "<font color='red'>Access denied.</font>")
+	if(!check_rights(R_MOD|R_DEBUG))
 		return
 
 	var/client/target = tgui_input_list(src,"Choose somebody to grant access to the server's runtime logs (permissions expire at the end of each round):","Grant Permissions", GLOB.clients)
@@ -60,8 +59,7 @@
 	set desc = "Pick a logfile from data/logs to view."
 	set category = null
 
-	if(!src.admin_holder || !(admin_holder.rights & (R_MOD) || !(admin_holder.rights & R_DEBUG)))
-		to_chat(src, "<font color='red'>Access denied.</font>")
+	if(!check_rights(R_MOD|R_DEBUG))
 		return
 
 	var/path = browse_files("data/logs/")
@@ -78,7 +76,7 @@
 //Other log stuff put here for the sake of organisation
 
 /**Shows this round's server log*/
-/datum/admins/proc/view_game_log()
+/datum/entity/admins/proc/view_game_log()
 	set name = "Show Server Game Log"
 	set desc = "Shows this round's server game log."
 	set category = "Server"
@@ -99,7 +97,7 @@
 	src << ftp(file(path))
 
 /**Shows this round's attack log*/
-/datum/admins/proc/view_attack_log()
+/datum/entity/admins/proc/view_attack_log()
 	set name = "Show Server Attack Log"
 	set desc = "Shows this round's server attack log."
 	set category = "Server"
@@ -120,7 +118,7 @@
 	src << ftp(file(path))
 
 /**Shows this round's runtime log*/
-/datum/admins/proc/view_runtime_log()
+/datum/entity/admins/proc/view_runtime_log()
 	set name = "Show Server Runtime Log"
 	set desc = "Shows this round's server runtime log."
 	set category = "Server"
@@ -141,7 +139,7 @@
 	src << ftp(file(path))
 
 /**Shows this round's href log*/
-/datum/admins/proc/view_href_log()
+/datum/entity/admins/proc/view_href_log()
 	set name = "Show Server HREF Log"
 	set desc = "Shows this round's server HREF log."
 	set category = "Server"
@@ -162,7 +160,7 @@
 	src << ftp(file(path))
 
 /**Shows this round's tgui log*/
-/datum/admins/proc/view_tgui_log()
+/datum/entity/admins/proc/view_tgui_log()
 	set name = "Show Server TGUI Log"
 	set desc = "Shows this round's server TGUI log."
 	set category = "Server"

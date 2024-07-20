@@ -14,7 +14,7 @@
 		to_chat(src, SPAN_DANGER("You have OOC muted."))
 		return
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!check_rights(R_MOD, FALSE))
 		if(!GLOB.ooc_allowed) //Send to LOOC instead
 			looc(msg)
 			return
@@ -42,15 +42,15 @@
 	if(!display_colour)
 		display_colour = CONFIG_GET(string/ooc_color_normal)
 	if(admin_holder && !admin_holder.fakekey)
-		if(admin_holder.rights & R_MENTOR)
+		if(check_rights(R_MENTOR, FALSE))
 			display_colour = CONFIG_GET(string/ooc_color_other)
-		if(admin_holder.rights & R_DEBUG)
+		if(check_rights(R_DEBUG, FALSE))
 			display_colour = CONFIG_GET(string/ooc_color_debug)
-		if(admin_holder.rights & R_MOD)
+		if(check_rights(R_MOD, FALSE))
 			display_colour = CONFIG_GET(string/ooc_color_mods)
-		if(admin_holder.rights & R_ADMIN)
+		if(check_rights(R_ADMIN, FALSE))
 			display_colour = CONFIG_GET(string/ooc_color_admin)
-		if(admin_holder.rights & R_COLOR)
+		if(check_rights(R_COLOR, FALSE))
 			display_colour = prefs.ooccolor
 	else if(donator)
 		display_colour = prefs.ooccolor
@@ -84,9 +84,9 @@
 		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "WhitelistCouncil")]"
 	if(admin_holder)
 		var/list/rank_icons = icon_states('icons/ooc.dmi')
-		var/rankname = admin_holder.rank
+		var/rankname = admin_holder.admin_rank.rank
 		if(rankname in rank_icons)
-			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.rank)]"
+			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.admin_rank.rank)]"
 	if(prefix)
 		prefix = "[prefix] "
 	return prefix
@@ -108,7 +108,7 @@
 		to_chat(src, SPAN_DANGER("You have LOOC muted."))
 		return
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!check_rights(R_MOD, FALSE))
 		if(!GLOB.looc_allowed)
 			to_chat(src, SPAN_DANGER("LOOC is globally muted"))
 			return
@@ -145,7 +145,7 @@
 		if(!M.client)
 			continue
 		var/client/C = M.client
-		if (C.admin_holder && (C.admin_holder.rights & R_MOD))
+		if(check_client_rights(C, R_MOD, FALSE))
 			continue //they are handled after that
 
 		if(C.prefs.toggles_chat & CHAT_LOOC)
@@ -160,15 +160,15 @@
 	if(S.stat != DEAD && !isobserver(S))
 		display_name = "[S.name]/([S.key])"
 
-	for(var/client/C in GLOB.admins)
-		if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))
+	for(var/client/admin in GLOB.admins)
+		if(!check_client_rights(admin, R_MOD, FALSE))
 			continue
 
-		if(C.prefs.toggles_chat & CHAT_LOOC)
+		if(admin.prefs.toggles_chat & CHAT_LOOC)
 			var/prefix = "(R)LOOC"
-			if (C.mob in heard)
+			if(admin.mob in heard)
 				prefix = "LOOC"
-			to_chat(C, "<font color='#f557b8'><span class='ooc linkify'><span class='prefix'>[prefix]:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
+			to_chat(admin, "<font color='#f557b8'><span class='ooc linkify'><span class='prefix'>[prefix]:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 
 /client/verb/round_info()
 	set name = "Current Map" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite

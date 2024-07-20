@@ -50,12 +50,10 @@
 		to_chat(usr, SPAN_WARNING("This mob doesn't have a client tied to it."))
 		return FALSE
 	else
-		if(!usr || !usr.client)
-			return FALSE
-		if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
+		if(!check_rights(R_MOD, FALSE))
 			to_chat(usr, SPAN_WARNING("Error: You don't have permission to do this."))
 			return FALSE
-		if(M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
+		if(!check_client_rights(M.client, R_MOD, FALSE))
 			to_chat(usr, SPAN_WARNING("Error: You cannot mute an admin/mod."))
 			return FALSE
 
@@ -94,7 +92,8 @@
 	set desc = "Toggle your visibility as a ghost to other ghosts."
 	set category = "Preferences.Ghost"
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD)) return
+	if(!check_rights(R_MOD))
+		return
 
 	if(isobserver(usr))
 		if(usr.invisibility <> 60 && usr.layer <> 4.0)
@@ -113,9 +112,8 @@
 	set name = "Set Explosive Antigrief"
 	set category = "Admin.Game"
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!check_rights(R_MOD))
 		return
-
 
 	var/antigrief_choice = tgui_input_list(usr, "Select the preferred antigrief type:", "Select", list(ANTIGRIEF_OPTION_ENABLED, ANTIGRIEF_OPTION_NEW_PLAYERS, ANTIGRIEF_OPTION_DISABLED))
 	if(!antigrief_choice)
@@ -139,7 +137,7 @@
 	set name = "Check Explosive Antigrief"
 	set category = "Admin.Game"
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!check_rights(R_MOD))
 		return
 
 	switch(CONFIG_GET(number/explosive_antigrief))

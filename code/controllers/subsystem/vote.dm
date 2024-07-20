@@ -439,7 +439,7 @@ SUBSYSTEM_DEF(vote)
 
 /datum/controller/subsystem/vote/ui_data(mob/user)
 	. = list()
-	.["is_admin"] = user.client.admin_holder?.rights & R_ADMIN // This can change if they deadmin.
+	.["is_admin"] = user.client.admin_holder?.admin_rank?.rights & R_ADMIN // This can change if they deadmin.
 
 	.["vote_in_progress"] = mode
 	.["vote_choices"] = choices

@@ -4,8 +4,7 @@
 	//set src in world
 	var/static/cookieoffset = rand(1, 9999) //to force cookies to reset after the round.
 
-	if(!(usr.client) || !(usr.client.admin_holder) || !(usr.client.admin_holder.rights & R_MOD))
-		to_chat(usr, SPAN_DANGER("You need to be an administrator to access this."), confidential = TRUE)
+	if(!check_rights(R_MOD))
 		return
 
 	if(!D)

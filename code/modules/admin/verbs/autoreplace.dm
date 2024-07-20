@@ -4,8 +4,7 @@ GLOBAL_LIST_INIT_TYPED(admin_runtime_decorators, /datum/decorator/manual/admin_r
 	set category = "Admin.Events"
 	set name = "Set Autoreplacer"
 
-	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
-		to_chat(usr, "Only administrators may use this command.")
+	if(!check_rights(R_ADMIN))
 		return
 
 	var/types = input(usr, "Enter the type you want to create an autoreplacement for", "Set Autoreplacer") as text|null
@@ -38,8 +37,7 @@ GLOBAL_LIST_INIT_TYPED(admin_runtime_decorators, /datum/decorator/manual/admin_r
 	set category = "Admin.Events"
 	set name = "Deactivate Autoreplacer"
 
-	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
-		to_chat(usr, "Only administrators may use this command.")
+	if(!check_rights(R_ADMIN))
 		return
 
 	var/num_value = tgui_input_real_number(src, "Enter new number:","Num")
@@ -55,8 +53,7 @@ GLOBAL_LIST_INIT_TYPED(admin_runtime_decorators, /datum/decorator/manual/admin_r
 	set category = "Admin.Events"
 	set name = "Rerun Decorators"
 
-	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
-		to_chat(usr, "Only administrators may use this command.")
+	if(!check_rights(R_ADMIN))
 		return
 
 	switch(alert("ARE YOU SURE? THIS MAY CAUSE A LOT OF LAG!", "Rerun Decorators", "Yes", "No"))

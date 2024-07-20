@@ -68,14 +68,14 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 /datum/STUI/ui_static_data(mob/user)
 	. = list()
 	.["tabs"] = list()
-	if(user.client.admin_holder.rights & R_MOD)
+	if(user.client.admin_holder.admin_rank.rights & R_MOD)
 		.["tabs"] += STUI_TEXT_ATTACK
 		.["tabs"] += STUI_TEXT_STAFF
 		.["tabs"] += STUI_TEXT_STAFF_CHAT
 		.["tabs"] += STUI_TEXT_OOC
-	if((user.client.admin_holder.rights & R_MOD) || (user.client.admin_holder.rights & R_DEBUG))
+	if((user.client.admin_holder.admin_rank.rights & R_MOD) || (user.client.admin_holder.admin_rank.rights & R_DEBUG))
 		.["tabs"] += STUI_TEXT_GAME
-	if(user.client.admin_holder.rights & R_DEBUG)
+	if(user.client.admin_holder.admin_rank.rights & R_DEBUG)
 		.["tabs"] += STUI_TEXT_DEBUG
 		.["tabs"] += STUI_TEXT_RUNTIME
 		.["tabs"] += STUI_TEXT_TGUI
@@ -84,7 +84,7 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 	var/stui_length = CONFIG_GET(number/STUI_length)
 	. = list()
 	.["logs"] = list()
-	if(user.client.admin_holder.rights & R_MOD)
+	if(user.client.admin_holder.admin_rank.rights & R_MOD)
 		if(length(attack) > stui_length+1)
 			attack.Cut(,length(attack)-stui_length)
 		.["logs"][STUI_TEXT_ATTACK] = attack
@@ -97,11 +97,11 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 		if(length(ooc) > stui_length+1)
 			ooc.Cut(,length(ooc)-stui_length)
 		.["logs"][STUI_TEXT_OOC] = ooc
-	if((user.client.admin_holder.rights & R_MOD) || (user.client.admin_holder.rights & R_DEBUG))
+	if((user.client.admin_holder.admin_rank.rights & R_MOD) || (user.client.admin_holder.admin_rank.rights & R_DEBUG))
 		if(length(game) > stui_length+1)
 			game.Cut(,length(game)-stui_length)
 		.["logs"][STUI_TEXT_GAME] = game
-	if(user.client.admin_holder.rights & R_DEBUG)
+	if(user.client.admin_holder.admin_rank.rights & R_DEBUG)
 		if(length(debug) > stui_length+1)
 			debug.Cut(,length(debug)-stui_length)
 		.["logs"][STUI_TEXT_DEBUG] = debug

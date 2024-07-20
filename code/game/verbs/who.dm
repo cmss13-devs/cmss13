@@ -41,7 +41,7 @@
 
 	var/dat = "<html><body><B>Current Players:</B><BR>"
 	var/list/Lines = list()
-	if(admin_holder && ((R_ADMIN & admin_holder.rights) || (R_MOD & admin_holder.rights)))
+	if(check_rights(R_MOD|R_ADMIN, FALSE))
 		for(var/client/C in GLOB.clients)
 			if(!CLIENT_HAS_RIGHTS(src, R_STEALTH) && (CLIENT_IS_STEALTHED(C)))
 				continue
@@ -55,7 +55,7 @@
 
 				if(isobserver(C.mob))
 					counted_humanoids["Observers"]++
-					if(C.admin_holder?.rights & R_MOD)
+					if(check_client_rights(C, R_MOD, FALSE))
 						counted_humanoids["Admin observers"]++
 						counted_humanoids["Observers"]--
 					var/mob/dead/observer/O = C.mob
@@ -187,7 +187,7 @@
 	for(var/category in listings)
 		dat += "<BR><B>Current [category] ([length(listings[category])]):<BR></B>\n"
 		for(var/client/entry in listings[category])
-			dat += "\t[entry.key] is \a [entry.admin_holder.rank]"
+			dat += "\t[entry.key] is \a [entry.admin_holder.admin_rank.rank]"
 			if(LAZYLEN(entry.admin_holder.extra_titles))
 				for(var/srank in entry.admin_holder.extra_titles)
 					dat += " & [srank]"

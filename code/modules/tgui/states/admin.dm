@@ -12,7 +12,6 @@
 GLOBAL_DATUM_INIT(admin_state, /datum/ui_state/admin_state, new)
 
 /datum/ui_state/admin_state/can_use_topic(src_object, mob/user)
-	//if(check_rights_for(user.client, R_ADMIN))
-	if(user.client?.admin_holder?.rights & R_MOD)
+	if(check_client_rights(user.client, R_MOD, FALSE))
 		return UI_INTERACTIVE
 	return UI_CLOSE

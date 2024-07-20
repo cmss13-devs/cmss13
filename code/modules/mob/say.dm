@@ -60,12 +60,12 @@
 		usr.emote(message, 1, null, TRUE)
 
 /mob/proc/say_dead(message)
-	var/name = src.real_name
+	var/name = real_name
 
-	if(!src.client) //Somehow
+	if(!client) //Somehow
 		return
 
-	if(!src.client.admin_holder || !(client.admin_holder.rights & R_MOD))
+	if(!check_rights(R_MOD, FALSE))
 		if(!GLOB.dsay_allowed)
 			to_chat(src, SPAN_DANGER("Deadchat is globally muted"))
 			return
@@ -97,7 +97,7 @@
 		if(M.stat == DEAD)
 			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name] (<a href='byond://?src=\ref[M];track=\ref[src]'>F</a>)</span> says, <span class='message'>\"[message]\"</span></span>")
 
-		else if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on
+		else if(M.client && check_client_rights(M.client, R_MOD, FALSE) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on
 			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span> says, <span class='message'>\"[message]\"</span></span>") //Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
 
 	if(length(langchat_listeners))

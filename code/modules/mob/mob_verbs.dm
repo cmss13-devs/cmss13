@@ -107,7 +107,7 @@
 	set category = "OOC"
 
 	var/is_admin = 0
-	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
+	if(check_rights(R_ADMIN, FALSE))
 		is_admin = 1
 
 	if (!CONFIG_GET(flag/respawn) && !is_admin)

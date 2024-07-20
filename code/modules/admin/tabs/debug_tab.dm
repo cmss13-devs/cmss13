@@ -96,8 +96,7 @@
 	set category = "Debug"
 	set name = "Delete"
 
-	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if (alert(src, "Are you sure you want to delete:\n[O]\nat ([O.x], [O.y], [O.z])?", "Confirmation", "Yes", "No") == "Yes")
@@ -113,7 +112,9 @@
 	set name = "Set Ticklag"
 	set desc = "Sets a new tick lag. Recommend you don't mess with this too much! Stable, time-tested ticklag value is 0.9"
 
-	if(!check_rights(R_DEBUG)) return
+	if(!check_rights(R_DEBUG))
+		return
+
 	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") != "Yes") return
 	var/newtick = tgui_input_number(src, "Sets a new tick lag. Please don't mess with this too much! The stable, time-tested ticklag value is 0.9","Lag of Tick", world.tick_lag)
 	//I've used ticks of 2 before to help with serious singulo lags
@@ -155,8 +156,10 @@
 /client/proc/reload_admins()
 	set name = "Reload Admins"
 	set category = "Debug"
-	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes") return
-	if(!check_rights(R_SERVER)) return
+	if(tgui_alert(usr, "Are you sure you want to do this?", , list("Yes", "No")) != "Yes")
+		return
+	if(!check_rights(R_SERVER))
+		return
 
 	message_admins("[usr.ckey] manually reloaded admins.")
 	load_admins()
@@ -168,8 +171,8 @@
 	if (admin_holder)
 		admin_holder.bulk_fetcher_panel()
 
-/datum/admins/proc/bulk_fetcher_panel()
-	if(!check_rights(R_DEBUG,0))
+/datum/entity/admins/proc/bulk_fetcher_panel()
+	if(!check_rights(R_DEBUG))
 		return
 
 	var/dat = {"

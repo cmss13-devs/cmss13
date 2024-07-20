@@ -573,7 +573,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<h2><b><u>Chat Settings:</u></b></h2>"
 			if(CONFIG_GET(flag/ooc_country_flags))
 				dat += "<b>OOC Country Flag:</b> <a href='?_src_=prefs;preference=ooc_flag'><b>[(toggle_prefs & TOGGLE_OOC_FLAG) ? "Enabled" : "Disabled"]</b></a><br>"
-			if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
+			if(check_client_rights(user.client, R_DEBUG, FALSE))
 				dat += "<b>View Master Controller Tab:</b> <a href='?_src_=prefs;preference=ViewMC'><b>[View_MC ? "TRUE" : "FALSE"]</b></a>"
 			if(unlock_content)
 				dat += "<b>BYOND Membership Publicity:</b> <a href='?_src_=prefs;preference=publicity'><b>[(toggle_prefs & TOGGLE_MEMBER_PUBLIC) ? "Public" : "Hidden"]</b></a><br>"
@@ -1827,7 +1827,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					no_radial_labels_preference = !no_radial_labels_preference
 
 				if("ViewMC")
-					if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
+					if(check_client_rights(user.client, R_DEBUG, FALSE))
 						View_MC = !View_MC
 
 				if("playtime_perks")

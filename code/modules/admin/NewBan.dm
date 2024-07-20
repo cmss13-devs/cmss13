@@ -167,7 +167,7 @@ GLOBAL_DATUM(Banlist, /savefile)
 			timeleftstring = "[exp] Minutes"
 		return timeleftstring
 
-/datum/admins/proc/unbanpanel()
+/datum/entity/admins/proc/unbanpanel()
 	var/dat
 
 	var/list/datum/view_record/players/PBV = DB_VIEW(/datum/view_record/players, DB_OR(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_COMP("is_time_banned", DB_EQUALS, 1))) // a filter
@@ -193,7 +193,7 @@ GLOBAL_DATUM(Banlist, /savefile)
 	dat_header += "</span> - <span class='[INTERFACE_GREEN]'>Ban Listing</span><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
 	show_browser(usr, dat_header, "Unban Panel", "unbanp", "size=875x400")
 
-/datum/admins/proc/stickypanel()
+/datum/entity/admins/proc/stickypanel()
 	var/add_sticky = "<a href='?src=\ref[src];[HrefToken()];sticky=1;new_sticky=1'>Add Sticky Ban</a>"
 	var/find_sticky = "<a href='?src=\ref[src];[HrefToken()];sticky=1;find_sticky=1'>Find Sticky Ban</a>"
 
@@ -258,11 +258,14 @@ GLOBAL_DATUM(Banlist, /savefile)
 	if(IsAdminAdvancedProcCall())
 		alert_proccall("cmd_admin_do_ban")
 		return PROC_BLOCKED
-	if(!check_rights(R_BAN|R_MOD))  return
 
-	if(!ismob(M)) return
+	if(!check_rights(R_BAN|R_MOD))
+		return
 
-	if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
+	if(!ismob(M))
+		return
+
+	if(check_client_rights(M.client, R_MOD, FALSE))
 		return //mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 	if(!M.ckey)

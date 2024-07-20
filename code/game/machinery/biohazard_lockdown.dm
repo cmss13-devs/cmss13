@@ -54,7 +54,7 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 	set name = "Research Containment Lockdown"
 	set category = "Admin.Ship"
 
-	if(!admin_holder ||!check_rights(R_EVENT))
+	if(!check_rights(R_EVENT))
 		return FALSE
 
 	var/prompt = tgui_alert(src, "Are you sure you want to trigger a containment breach alert? This will force red alert, and lockdown research.", "Choose.", list("Yes", "No"), 20 SECONDS)

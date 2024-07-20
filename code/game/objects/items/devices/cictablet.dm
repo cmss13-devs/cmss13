@@ -160,9 +160,9 @@
 				to_chat(user, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				return FALSE
 
-			for(var/client/C in GLOB.admins)
-				if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-					playsound_client(C,'sound/effects/sos-morse-code.ogg',10)
+			for(var/client/admin in GLOB.admins)
+				if(check_client_rights(admin, R_ADMIN|R_MOD, FALSE))
+					playsound_client(admin, 'sound/effects/sos-morse-code.ogg', 10)
 			SSticker.mode.request_ert(user)
 			to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)

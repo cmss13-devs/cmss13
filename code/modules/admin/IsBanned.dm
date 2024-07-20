@@ -19,7 +19,7 @@
 
 	// wait for database to be ready
 	WAIT_DB_READY
-	if(GLOB.admin_datums[ckey] && (GLOB.admin_datums[ckey].rights & R_MOD))
+	if(GLOB.admin_datums[ckey] && (GLOB.admin_datums[ckey].admin_rank.rights & R_MOD))
 		return ..()
 
 	if(CONFIG_GET(number/limit_players) && CONFIG_GET(number/limit_players) < length(GLOB.clients))

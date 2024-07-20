@@ -2,8 +2,7 @@
 	set name = "Medals Panel"
 	set category = "Admin.Panels"
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	GLOB.medals_panel.tgui_interact(mob)

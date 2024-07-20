@@ -1,6 +1,6 @@
-/datum/admins/var/static/create_mob_html = null
+/datum/entity/admins/var/static/create_mob_html = null
 
-/datum/admins/proc/create_mob(mob/user)
+/datum/entity/admins/proc/create_mob(mob/user)
 	if (!create_mob_html)
 		var/mobjs = null
 		mobjs = jointext(typesof(/mob), ";")

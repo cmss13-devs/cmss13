@@ -18,7 +18,7 @@
 	if(check_rights(R_VAREDIT))
 
 		if(href_list["rename"])
-			if(!check_rights(NONE))
+			if(!check_rights(NO_FLAGS))
 				return
 
 			var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
@@ -37,7 +37,7 @@
 			vv_update_display(M, "real_name", M.real_name || "No real name")
 
 		else if(href_list["rotatedatum"])
-			if(!check_rights(NONE))
+			if(!check_rights(NO_FLAGS))
 				return
 
 			var/atom/A = locate(href_list["rotatedatum"])

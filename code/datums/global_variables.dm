@@ -2,8 +2,7 @@
 	set category = "Debug.Controllers"
 	set name = "View Global Variables"
 
-	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
-		to_chat(usr, SPAN_DANGER("You need to be a moderator or higher to access this."))
+	if(!check_rights(R_MOD))
 		return
 	if(tgui_alert(usr, "Are you sure you want to view global variables? This will cause a large lag spike.", "Confirmation", list("Yes", "No"), 20 SECONDS) != "Yes")
 		return
@@ -119,7 +118,7 @@
 /client/proc/debug_global_variable(name, value, level)
 	var/html = ""
 	//to make the value bold if changed
-	if(!(admin_holder.rights & R_DEBUG))
+	if(!check_client_rights(src, R_DEBUG, FALSE))
 		return html
 
 	html += "<li style='backgroundColor:white'><a href='?_src_=glob_vars;varnameedit=[name]'>E</a><a href='?_src_=glob_vars;varnamechange=[name]'>C</a> "
@@ -177,7 +176,7 @@
 	return html
 
 /client/proc/view_glob_var_Topic(href, href_list, hsrc)
-	if((usr.client != src) || !src.admin_holder || !(admin_holder.rights & R_MOD))
+	if(usr.client != src || !check_rights(R_MOD))
 		return
 
 	if(href_list["refresh"])

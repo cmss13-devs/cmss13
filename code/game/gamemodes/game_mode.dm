@@ -323,7 +323,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 						continue //Ghosted while alive
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
+		if(check_client_rights(M.client, R_MOD, FALSE))
 			to_chat_spaced(M, html = msg)
 
 //Announces objectives/generic antag text.

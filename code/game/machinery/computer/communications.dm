@@ -215,9 +215,9 @@
 					to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 					return FALSE
 
-				for(var/client/C in GLOB.admins)
-					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-						C << 'sound/effects/sos-morse-code.ogg'
+				for(var/client/admin in GLOB.admins)
+					if(check_client_rights(admin, R_ADMIN|R_MOD, FALSE))
+						admin << 'sound/effects/sos-morse-code.ogg'
 				SSticker.mode.request_ert(usr)
 				to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 
@@ -249,9 +249,9 @@
 					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self-destruct is already activated."))
 					return FALSE
 
-				for(var/client/C in GLOB.admins)
-					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-						C << 'sound/effects/sos-morse-code.ogg'
+				for(var/client/admin in GLOB.admins)
+					if(check_client_rights(admin, R_ADMIN|R_MOD, FALSE))
+						admin << 'sound/effects/sos-morse-code.ogg'
 				message_admins("[key_name(usr)] has requested Self-Destruct! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
 				to_chat(usr, SPAN_NOTICE("A self-destruct request has been sent to USCM Central Command."))
 				cooldown_destruct = world.time

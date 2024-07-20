@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(statpanels)
 			if(!("Tickets" in target.panel_tabs))
 				target.stat_panel.send_message("add_admin_tabs", target.admin_holder.href_token)
 
-			if(!("MC" in target.panel_tabs) && target.admin_holder.rights & R_DEBUG)
+			if(!("MC" in target.panel_tabs) && check_client_rights(target, R_DEBUG, FALSE))
 				target.stat_panel.send_message("add_debug_tabs", target.admin_holder.href_token)
 
 			if(target.stat_tab == "MC" && ((num_fires % mc_wait == 0))) // || target?.prefs.read_preference(/datum/preference/toggle/fast_mc_refresh)))

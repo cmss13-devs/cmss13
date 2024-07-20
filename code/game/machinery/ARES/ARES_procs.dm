@@ -292,7 +292,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 				playsound_client(admin, 'sound/machines/chime.ogg', vol = 25)
 
 	for(var/client/admin in GLOB.admins)
-		if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
+		if(check_client_rights(admin, R_ADMIN|R_MOD, FALSE))
 			to_chat(admin, msg)
 			var/admin_user = GLOB.ares_link.admin_interface.logged_in
 			if(admin_user && !fake)

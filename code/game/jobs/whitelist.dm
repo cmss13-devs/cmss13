@@ -1,5 +1,5 @@
 /proc/can_play_special_job(client/client, job)
-	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
+	if(check_client_rights(client, R_ADMIN, FALSE))
 		return TRUE
 	if(job == XENO_CASTE_QUEEN)
 		var/datum/caste_datum/C = GLOB.RoleAuthority.castes_by_name[XENO_CASTE_QUEEN]

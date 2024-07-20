@@ -59,7 +59,7 @@
 	set name = "AI Core Lockdown"
 	set category = "Admin.Ship"
 
-	if(!admin_holder ||!check_rights(R_EVENT))
+	if(!check_rights(R_EVENT))
 		return FALSE
 
 	var/prompt = "Are you sure you want to trigger an AI Core lockdown? This will raise to red alert, and lockdown the AI Core."

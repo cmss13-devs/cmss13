@@ -303,7 +303,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	player_entity = setup_player_entity(ckey)
 
 	if(check_localhost_status())
-		var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
+		var/datum/entity/admins/admin = new("!localhost!", RL_HOST, ckey)
 		admin.associate(src)
 
 	//Admin Authorisation

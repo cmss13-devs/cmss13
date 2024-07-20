@@ -2,8 +2,9 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all admin_rank datums
 GLOBAL_PROTECT(admin_ranks)
 
 /datum/entity/admin_rank
-	var/rank = "NoRank"
-	var/rights = R_DEFAULT
+	var/rank
+	var/text_rights
+	var/rights = NO_FLAGS
 
 BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 
@@ -12,18 +13,18 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 	table_name = "admin_ranks"
 	field_types = list(
 		"rank" = DB_FIELDTYPE_STRING_MEDIUM,
-		"rights" = DB_FIELDTYPE_STRING_MAX,
+		"text_rights" = DB_FIELDTYPE_STRING_MAX,
 	)
 
 /datum/entity_meta/admin_rank/map(datum/entity/admin_rank/rank, list/values)
 	..()
-	if(values["rights"])
-		rank.rights = rights2flags(values["rights"])
+	if(values["text_rights"])
+		rank.rights = rights2flags(values["text_rights"])
 
 /datum/entity_meta/admin_rank/unmap(datum/entity/admin_rank/rank)
 	. = ..()
 	if(length(rank.rights))
-		.["rights"] = flags2rights(rank.rights)
+		.["text_rights"] = flags2rights(rank.rights)
 
 /proc/rights2flags(text_rights)
 	var/rights = NO_FLAGS

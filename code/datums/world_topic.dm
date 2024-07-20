@@ -79,7 +79,7 @@
 		admins += list(
 			"ckey" = admin.ckey,
 			"key" = admin.key,
-			"rank" = admin.admin_holder.rank,
+			"rank" = admin.admin_holder.admin_rank.rank,
 			"stealth" = admin.admin_holder.fakekey ? TRUE : FALSE,
 			"afk" = admin.is_afk(),
 		)

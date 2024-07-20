@@ -41,7 +41,6 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	GLOB.test_log = "data/logs/tests.log"
 	#endif
 
-	load_admins()
 	jobban_loadbanfile()
 	LoadBans()
 	load_motd()

@@ -381,26 +381,23 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 /datum/proc/announce_fax(msg_admin, msg_ghost)
 	log_admin(msg_admin)
-	for(var/client/C in GLOB.admins)
-		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
+	for(var/client/admin as anything in GLOB.admins)
+		if(check_client_rights(admin, R_ADMIN|R_MOD, FALSE))
 			if(msg_admin)
-				to_chat(C, msg_admin)
+				to_chat(admin, msg_admin)
 			else
-				to_chat(C, msg_ghost)
-			if(C.prefs?.toggles_sound & SOUND_FAX_MACHINE)
-				C << 'sound/effects/incoming-fax.ogg'
+				to_chat(admin, msg_ghost)
+			if(admin.prefs?.toggles_sound & SOUND_FAX_MACHINE)
+				admin << 'sound/effects/incoming-fax.ogg'
 	if(msg_ghost)
-		for(var/i in GLOB.observer_list)
-			var/mob/dead/observer/g = i
-			if(!g.client)
+		for(var/mob/dead/observer/spectator as anything in GLOB.observer_list)
+			if(!spectator.client)
 				continue
-			var/client/C = g.client
-			if(C && C.admin_holder)
-				if((R_ADMIN|R_MOD) & C.admin_holder.rights) //staff don't need to see the fax twice
-					continue
-			to_chat(C, msg_ghost)
-			if(C.prefs?.toggles_sound & SOUND_FAX_MACHINE)
-				C << 'sound/effects/incoming-fax.ogg'
+			if(check_client_rights(spectator.client, R_ADMIN|R_MOD, FALSE)) //staff don't need to see the fax twice
+				continue
+			to_chat(spectator.client, msg_ghost)
+			if(spectator.client.prefs?.toggles_sound & SOUND_FAX_MACHINE)
+				spectator.client << 'sound/effects/incoming-fax.ogg'
 
 
 /obj/structure/machinery/faxmachine/proc/send_fax(datum/fax/faxcontents)

@@ -8,7 +8,7 @@
 	msg += "</span>"
 
 	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
+		if(check_client_rights(C, R_MOD, FALSE))
 			to_chat(C, SPAN_ADMIN(msg))
 
 /proc/msg_admin_attack(text, jump_x, jump_y, jump_z) //Toggleable Attack Messages; server logs don't include the JMP part
@@ -17,7 +17,7 @@
 	log_attack(text)
 	var/rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> [text] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jump_x];Y=[jump_y];Z=[jump_z]'>JMP</a>)")
 	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
+		if(check_client_rights(C, R_MOD, FALSE))
 			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
 				var/msg = rendered
 				to_chat(C, msg)
@@ -26,7 +26,7 @@
 	log_admin(msg)
 	msg = SPAN_NICHE("<span class=\"prefix\">ADMIN NICHE LOG:</span> [msg]")
 	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
+		if(check_client_rights(C, R_MOD, FALSE))
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
 				to_chat(C, msg)
 
@@ -50,7 +50,7 @@
 		text = "///DEAD/// - " + text
 	log_attack(text) //Do everything normally BUT IN GREEN SO THEY KNOW
 	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
+		if(check_client_rights(C, R_MOD, FALSE))
 			if(C.prefs.toggles_chat & CHAT_FFATTACKLOGS)
 				var/msg = rendered
 				to_chat(C, msg)
@@ -63,19 +63,19 @@
 /datum/player_info/var/timestamp // Because this is bloody annoying
 
 
-/datum/admins/proc/player_has_info(key as text)
+/datum/entity/admins/proc/player_has_info(key as text)
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
 	if(!LAZYLEN(infos)) return 0
 	else return 1
 
-/datum/admins/proc/player_notes_all(key as text)
+/datum/entity/admins/proc/player_notes_all(key as text)
 	set category = null
 	set name = "Player Record"
-	if (!istype(src,/datum/admins))
+	if(!istype(src, /datum/entity/admins))
 		src = usr.client.admin_holder
-	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
+	if(!istype(src, /datum/entity/admins) || !(admin_rank.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
@@ -108,8 +108,10 @@
 	show_browser(usr, dat, "Info on [key]", "allplayerinfo", "size=480x480")
 
 
-/datum/admins/proc/Jobbans()
-	if(!check_rights(R_BAN)) return
+/datum/entity/admins/proc/Jobbans()
+	if(!check_rights(R_BAN))
+		return
+
 	var/L[] //List reference.
 	var/r //rank --This will always be a string.
 	var/c //ckey --This will always be a string.
@@ -128,8 +130,9 @@
 	show_browser(usr, dat, "Job Bans", "ban", "size=400x400")
 
 
-/datum/admins/proc/Game()
-	if(!check_rights(0)) return
+/datum/entity/admins/proc/Game()
+	if(!check_rights(NO_FLAGS))
+		return
 
 	var/dat = {"
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode=1'>Change Game Mode</A><br>
@@ -150,7 +153,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////admins2.dm merge
 //i.e. buttons/verbs
 
-/datum/admins/proc/toggleaban()
+/datum/entity/admins/proc/toggleaban()
 	set category = "Server"
 	set desc = "Respawn basically"
 	set name = "Toggle Respawn"
@@ -165,12 +168,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
-/datum/admins/proc/spawn_atom(object as text)
+/datum/entity/admins/proc/spawn_atom(object as text)
 	set category = "Debug"
 	set desc = "(atom path) Spawn an atom"
 	set name = "Spawn"
 
-	if(!check_rights(R_SPAWN)) return
+	if(!check_rights(R_SPAWN))
+		return
 
 	var/list/types = typesof(/atom)
 	var/list/matches = new()
@@ -204,8 +208,7 @@
 	set name = "Update Mob Sprite"
 	set desc = "Should fix any mob sprite update errors."
 
-	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if(istype(H))
@@ -226,19 +229,19 @@
 			return 0
 	else
 		return 0
-	if(C.admin_holder && R_HOST & C.admin_holder.rights)
+	if(check_client_rights(C, R_HOST, FALSE))
 		return 1
 	else
 		return 0
 
-/datum/admins/proc/send_tip()
+/datum/entity/admins/proc/send_tip()
 	if(SSticker)
 		var/success = SSticker.send_tip_of_the_round()
 		if(!success)
 			to_chat(usr, SPAN_ADMINNOTICE("Sending tip failed!"))
 
 /// Allow admin to add or remove traits of datum
-/datum/admins/proc/modify_traits(datum/D)
+/datum/entity/admins/proc/modify_traits(datum/D)
 	if(!D)
 		return
 

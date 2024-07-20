@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_events(href)
+/datum/entity/admins/proc/topic_events(href)
 	switch(href)
 		if("securitylevel")
 			owner.change_security_level()
@@ -150,7 +150,7 @@
 
 
 
-/datum/admins/proc/create_humans_list(href_list)
+/datum/entity/admins/proc/create_humans_list(href_list)
 	if(SSticker?.current_state < GAME_STATE_PLAYING)
 		alert("Please wait until the game has started before spawning humans")
 		return
@@ -277,7 +277,7 @@
 
 		message_admins("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
 
-/datum/admins/proc/create_xenos_list(href_list)
+/datum/entity/admins/proc/create_xenos_list(href_list)
 	if(SSticker?.current_state < GAME_STATE_PLAYING)
 		alert("Please wait until the game has started before spawning xenos")
 		return

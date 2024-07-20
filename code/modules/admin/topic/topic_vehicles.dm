@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_vehicles(href)
+/datum/entity/admins/proc/topic_vehicles(href)
 	switch(href)
 		if("remove_clamp")
 			owner.cmd_admin_remove_clamp()
@@ -18,9 +18,9 @@
 	set desc = "Forcibly removes vehicle clamp from selected vehicle. dropping it under the vehicle."
 	set category = null
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
+
 	var/list/targets = get_multi_vehicles_admin()
 
 	var/choice = tgui_input_list(usr, "Select a vehicle.", "Remove Clamp", targets)
@@ -38,9 +38,9 @@
 	set desc = "Fully restores vehicle modules and hull."
 	set category = null
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
+
 	var/list/targets = get_multi_vehicles_admin()
 
 	alert("[length(targets)], [targets[1]] and [targets[targets[1]]]","Warning", "OK")

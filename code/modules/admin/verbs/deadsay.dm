@@ -2,10 +2,9 @@
 	set category = "Admin.Events"
 	set name = "Dsay" //Gave this shit a shorter name so you only have to time out "dsay" rather than "dead say" to use it --NeoFite
 	set hidden = TRUE
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
-	if(!src.mob)
+	if(!mob)
 		return
 	if(prefs.muted & MUTE_DEADCHAT)
 		to_chat(src, SPAN_DANGER("You cannot send DSAY messages (muted)."))
@@ -15,12 +14,12 @@
 		to_chat(src, SPAN_DANGER("You have deadchat muted."))
 		return
 
-	if (src.handle_spam_prevention(msg,MUTE_DEADCHAT))
+	if(handle_spam_prevention(msg,MUTE_DEADCHAT))
 		return
 
 	var/stafftype = null
 
-	stafftype = "[admin_holder.rank]"
+	stafftype = "[admin_holder.admin_rank.rank]"
 
 	msg = strip_html(msg)
 	log_admin("DEAD: [key_name(src)] : [msg]")
@@ -34,7 +33,7 @@
 		if (istype(M, /mob/new_player))
 			continue
 
-		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to admins who have deadchat toggled on
+		if(M.client && check_client_rights(M.client, R_MOD, FALSE) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to admins who have deadchat toggled on
 			M.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
 
 		else if((M.stat == DEAD || isobserver(M)) && M && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to regular ghosts who have deadchat toggled on

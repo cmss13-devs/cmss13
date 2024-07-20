@@ -2,8 +2,7 @@
 	set name = "Toggle Noclip"
 	set category = "Admin.Fun"
 
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if(!mob)

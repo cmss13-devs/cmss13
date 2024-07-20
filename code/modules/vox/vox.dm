@@ -34,8 +34,7 @@ GLOBAL_LIST_EMPTY(vox_types)
 	set name = "VOX: Panel"
 	set category = "Admin.Panels"
 
-	if(!admin_holder || !(admin_holder.rights & R_SOUNDS))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_SOUNDS))
 		return
 
 	GLOB.vox_panel.tgui_interact(mob)

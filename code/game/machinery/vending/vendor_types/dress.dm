@@ -228,7 +228,6 @@
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items_to_vendor()
 	if(!check_rights(R_MOD))
-		to_chat(usr, SPAN_WARNING("This option isn't for you."))
 		return
 
 	var/obj/item/chosen = get_item_category_from_user()

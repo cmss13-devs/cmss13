@@ -1,4 +1,4 @@
-/datum/admins/proc/CheckAdminHref(href, href_list)
+/datum/entity/admins/proc/CheckAdminHref(href, href_list)
 	var/auth = href_list["admin_token"]
 	. = auth && (auth == href_token || auth == GLOB.href_token)
 	if(.)
@@ -11,7 +11,7 @@
 		return TRUE
 	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
 
-/datum/admins/Topic(href, href_list)
+/datum/entity/admins/Topic(href, href_list)
 	..()
 
 	if(usr.client != src.owner || !check_rights(0))
@@ -61,7 +61,7 @@
 				to_chat(usr, "<font color='red'>Error: Topic 'editrights': No valid ckey</font>")
 				return
 
-		var/datum/admins/D = GLOB.admin_datums[adm_ckey]
+		var/datum/entity/admins/D = GLOB.admin_datums[adm_ckey]
 
 		if(task == "remove")
 			if(alert("Are you sure you want to remove [adm_ckey]?","Message","Yes","Cancel") == "Yes")
@@ -80,7 +80,7 @@
 
 			var/rights = 0
 			if(D)
-				rights = D.rights
+				rights = D.admin_rank.rights
 			switch(new_rank)
 				if(null,"") return
 				if("*New Rank*")
@@ -106,7 +106,7 @@
 				D.rank = new_rank //update the rank
 				D.rights = rights //update the rights based on admin_ranks (default: 0)
 			else
-				D = new /datum/admins(new_rank, rights, adm_ckey)
+				D = new /datum/entity/admins(new_rank, rights, adm_ckey)
 
 			var/client/C = GLOB.directory[adm_ckey] //find the client with the specified ckey (if they are logged in)
 			D.associate(C) //link up with the client and add verbs
@@ -150,14 +150,16 @@
 //======================================================
 
 	else if(href_list["delay_round_end"])
-		if(!check_rights(R_SERVER)) return
+		if(!check_rights(R_SERVER))
+			return
 
 		SSticker.delay_end = !SSticker.delay_end
 		message_admins("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
 
 	else if(href_list["simplemake"])
 
-		if(!check_rights(R_SPAWN)) return
+		if(!check_rights(R_SPAWN))
+			return
 
 		var/mob/M = locate(href_list["mob"])
 		if(!ismob(M))
@@ -427,7 +429,9 @@
 		usr.client.warn(href_list["warn"])
 
 	else if(href_list["unbanupgradeperma"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
+
 		UpdateTime()
 		var/reason
 
@@ -460,7 +464,8 @@
 		unbanpanel()
 
 	else if(href_list["unbane"])
-		if(!check_rights(R_BAN)) return
+		if(!check_rights(R_BAN))
+			return
 
 		UpdateTime()
 		var/reason
@@ -502,7 +507,8 @@
 
 	//JOBBAN'S INNARDS
 	else if(href_list["jobban3"])
-		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  return
+		if(!check_rights(R_MOD, FALSE) && !check_rights(R_ADMIN))
+			return
 
 		var/mob/M = locate(href_list["jobban4"])
 		if(!ismob(M))
@@ -510,7 +516,7 @@
 			return
 
 		if(M != usr) //we can jobban ourselves
-			if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_BAN)) //they can ban too. So we can't ban them
+			if(check_client_rights(M.client, R_BAN, FALSE)) //they can ban too. So we can't ban them
 				alert("You cannot perform this action. You must be of a higher administrative rank!")
 				return
 
@@ -554,7 +560,9 @@
 
 		//Banning comes first
 		if(length(notbannedlist))
-			if(!check_rights(R_BAN))  return
+			if(!check_rights(R_BAN))
+				return
+
 			var/reason = input(usr,"Reason?","Please State Reason","") as text|null
 			if(reason)
 				var/datum/entity/player/P = get_player_from_key(M.ckey)
@@ -597,7 +605,8 @@
 			qdel(M.client)
 
 	else if(href_list["removejobban"])
-		if(!check_rights(R_BAN)) return
+		if(!check_rights(R_BAN))
+			return
 
 		var/t = href_list["removejobban"]
 		if(t)
@@ -608,12 +617,13 @@
 				href_list["ban"] = 1 // lets it fall through and refresh
 
 	else if(href_list["newban"])
-		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))  return
+		if(!check_rights(R_MOD, FALSE) && !check_rights(R_BAN))
+			return
 
 		var/mob/M = locate(href_list["newban"])
 		if(!ismob(M)) return
 
-		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
+		if(check_client_rights(M.client, R_MOD, FALSE))
 			return //mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		if(!M.ckey)
@@ -633,7 +643,8 @@
 		P.add_timed_ban(reason, mins)
 
 	else if(href_list["eorgban"])
-		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))  return
+		if(!check_rights(R_MOD, FALSE) && !check_rights(R_BAN))
+			return
 
 		var/mob/M = locate(href_list["eorgban"])
 		if(!ismob(M)) return
@@ -658,7 +669,7 @@
 		P.add_timed_ban(reason, mins)
 
 	else if(href_list["xenoresetname"])
-		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))
+		if(!check_rights(R_MOD, FALSE) && !check_rights(R_BAN))
 			return
 
 		var/mob/living/carbon/xenomorph/X = locate(href_list["xenoresetname"])
@@ -686,7 +697,7 @@
 		X.generate_name()
 
 	else if(href_list["xenobanname"])
-		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))
+		if(!check_rights(R_MOD, FALSE) && !check_rights(R_BAN))
 			return
 
 		var/mob/living/carbon/xenomorph/X = locate(href_list["xenobanname"])
@@ -734,16 +745,20 @@
 		X.generate_name()
 
 	else if(href_list["mute"])
-		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))
+		if(!check_rights(R_MOD, FALSE) && !check_rights(R_ADMIN))
 			return
 
 		var/mob/M = locate(href_list["mute"])
-		if(!ismob(M)) return
-		if(!M.client) return
+		if(!ismob(M))
+			return
+		if(!M.client)
+			return
 
 		var/mute_type = href_list["mute_type"]
-		if(istext(mute_type)) mute_type = text2num(mute_type)
-		if(!isnum(mute_type)) return
+		if(istext(mute_type))
+			mute_type = text2num(mute_type)
+		if(!isnum(mute_type))
+			return
 
 		cmd_admin_mute(M, mute_type)
 
@@ -751,7 +766,8 @@
 		topic_chems(href_list["chem_panel"])
 
 	else if(href_list["c_mode"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
 		for(var/mode in config.modes)
@@ -760,7 +776,8 @@
 		show_browser(usr, dat, "Change Gamemode", "c_mode")
 
 	else if(href_list["c_mode2"])
-		if(!check_rights(R_ADMIN|R_SERVER)) return
+		if(!check_rights(R_ADMIN|R_SERVER))
+			return
 
 		GLOB.master_mode = href_list["c_mode2"]
 		message_admins("[key_name_admin(usr)] set the mode as [GLOB.master_mode].")
@@ -769,7 +786,8 @@
 		SSticker.save_mode(GLOB.master_mode)
 
 	else if(href_list["monkeyone"])
-		if(!check_rights(R_SPAWN)) return
+		if(!check_rights(R_SPAWN))
+			return
 
 		var/mob/living/carbon/human/H = locate(href_list["monkeyone"])
 		if(!istype(H))
@@ -780,7 +798,8 @@
 		H.monkeyize()
 
 	else if(href_list["forcespeech"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
@@ -788,13 +807,15 @@
 			return
 
 		var/speech = input("What will [key_name(M)] say?.", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
-		if(!speech) return
+		if(!speech)
+			return
 		M.say(speech)
 		speech = sanitize(speech) // Nah, we don't trust them
 		message_admins("[key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]")
 
 	else if(href_list["zombieinfect"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 		var/mob/living/carbon/human/H = locate(href_list["zombieinfect"])
 		if(!istype(H))
 			to_chat(usr, "This can only be used on instances of type /human")
@@ -813,7 +834,8 @@
 
 		message_admins("[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS")
 	else if(href_list["larvainfect"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
 		if(!istype(H))
 			to_chat(usr, "This can only be used on instances of type /human")
@@ -894,7 +916,8 @@
 		H.faction = hive.internal_faction
 
 	else if(href_list["forceemote"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		var/mob/M = locate(href_list["forceemote"])
 		if(!ismob(M))
@@ -930,7 +953,8 @@
 		qdel(M)
 
 	else if(href_list["tdome1"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -951,7 +975,8 @@
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
 
 	else if(href_list["tdome2"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -972,7 +997,8 @@
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
 
 	else if(href_list["tdomeadmin"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -990,7 +1016,8 @@
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
 
 	else if(href_list["tdomeobserve"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -1027,7 +1054,8 @@
 		message_admins(WRAP_STAFF_LOG(usr, "ahealed [key_name(L)] in [get_area(L)] ([L.x],[L.y],[L.z])."), L.x, L.y, L.z)
 
 	else if(href_list["makealien"])
-		if(!check_rights(R_SPAWN)) return
+		if(!check_rights(R_SPAWN))
+			return
 
 		var/mob/living/carbon/human/H = locate(href_list["makealien"])
 		if(!istype(H))
@@ -1037,7 +1065,8 @@
 		usr.client.cmd_admin_alienize(H)
 
 	else if(href_list["changehivenumber"])
-		if(!check_rights(R_DEBUG|R_ADMIN)) return
+		if(!check_rights(R_DEBUG|R_ADMIN))
+			return
 
 		var/mob/living/carbon/H = locate(href_list["changehivenumber"])
 		if(!istype(H))
@@ -1047,7 +1076,8 @@
 			usr.client.cmd_admin_change_their_hivenumber(H)
 
 	else if(href_list["makeyautja"])
-		if(!check_rights(R_SPAWN)) return
+		if(!check_rights(R_SPAWN))
+			return
 
 		if(alert("Are you sure you want to make this person into a yautja? It will delete their old character.","Make Yautja","Yes","No") != "Yes")
 			return
@@ -1097,7 +1127,8 @@
 		return
 
 	else if(href_list["makeanimal"])
-		if(!check_rights(R_SPAWN)) return
+		if(!check_rights(R_SPAWN))
+			return
 
 		var/mob/M = locate(href_list["makeanimal"])
 		if(istype(M, /mob/new_player))
@@ -1156,7 +1187,8 @@
 		C.jumptocoord(x,y,z)
 
 	else if(href_list["admincancelob"])
-		if(!check_rights(R_MOD)) return
+		if(!check_rights(R_MOD))
+			return
 		var/cancel_token = href_list["cancellation"]
 		if(!cancel_token)
 			return
@@ -1166,7 +1198,8 @@
 		message_admins("[src.owner] has cancelled the orbital strike.")
 
 	else if(href_list["admincancelpredsd"])
-		if (!check_rights(R_MOD)) return
+		if (!check_rights(R_MOD))
+			return
 		var/obj/item/clothing/gloves/yautja/hunter/bracer = locate(href_list["bracer"])
 		var/mob/living/carbon/victim = locate(href_list["victim"])
 		if (!istype(bracer))
@@ -1247,9 +1280,9 @@
 
 		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
 		log_admin("[src.owner] replied to [key_name(H)]'s USCM message with the message [input].")
-		for(var/client/X in GLOB.admins)
-			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
-				to_chat(X, SPAN_STAFF_IC("<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \")[input]\"</b>"))
+		for(var/client/admin as anything in GLOB.admins)
+			if(check_client_rights(admin, R_ADMIN|R_MOD, FALSE))
+				to_chat(admin, SPAN_STAFF_IC("<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \")[input]\"</b>"))
 		to_chat(H, SPAN_DANGER("You hear something crackle in your headset before a voice speaks, please stand by for a message:\" \blue <b>\"[input]\"</b>"))
 
 	else if(href_list["SyndicateReply"])
@@ -2125,8 +2158,8 @@
 		var/msg = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> is responding to <font color=red>[key_name(ref_person)]</font>.</b>")
 
 		//send this msg to all admins
-		for(var/client/X in GLOB.admins)
-			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
+		for(var/client/admin as anything in GLOB.admins)
+			if(check_client_rights(admin, R_ADMIN|R_MOD, FALSE))
 				to_chat(X, msg)
 
 		//unanswered_distress -= ref_person
@@ -2327,9 +2360,9 @@
 
 		to_chat(src.owner, "You sent [input] to [speaker] via ARES Interface.")
 		log_admin("[src.owner] replied to [key_name(speaker)]'s ARES message with the message [input].")
-		for(var/client/staff in GLOB.admins)
-			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
-				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] replied to [key_name(speaker)]'s ARES message")] with: [SPAN_BLUE(input)] </b>"))
+		for(var/client/admin as anything in GLOB.admins)
+			if(check_client_rights(admin, R_ADMIN|R_MOD, FALSE))
+				to_chat(admin, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] replied to [key_name(speaker)]'s ARES message")] with: [SPAN_BLUE(input)] </b>"))
 		GLOB.ares_link.interface.response_from_ares(input, href_list["AresRef"])
 
 	if(href_list["AresMark"])
@@ -2345,13 +2378,13 @@
 
 		to_chat(src.owner, "You marked [speaker]'s ARES message for response.")
 		log_admin("[src.owner] marked [key_name(speaker)]'s ARES message. [src.owner] will be responding.")
-		for(var/client/staff in GLOB.admins)
-			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
-				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] marked [key_name(speaker)]'s ARES message for response.")]</b>"))
+		for(var/client/admin in GLOB.admins)
+			if(check_client_rights(admin, R_ADMIN|R_MOD, FALSE))
+				to_chat(admin, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] marked [key_name(speaker)]'s ARES message for response.")]</b>"))
 
 	return
 
-/datum/admins/proc/accept_ert(mob/approver, mob/ref_person)
+/datum/entity/admins/proc/accept_ert(mob/approver, mob/ref_person)
 	if(GLOB.distress_cancel)
 		return
 	GLOB.distress_cancel = TRUE
@@ -2360,7 +2393,7 @@
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
 ///Handles calling the ERT sent by handheld distress beacons
-/datum/admins/proc/accept_handheld_ert(mob/approver, mob/ref_person, ert_called)
+/datum/entity/admins/proc/accept_handheld_ert(mob/approver, mob/ref_person, ert_called)
 	if(GLOB.distress_cancel)
 		return
 	GLOB.distress_cancel = TRUE
@@ -2368,7 +2401,7 @@
 	log_game("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 
-/datum/admins/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
+/datum/entity/admins/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
 	var/counter = 0
 
 	var/dat = ""
@@ -2394,7 +2427,7 @@
 	dat += "</tr></table>"
 	return dat
 
-/datum/admins/proc/get_job_titles_from_list(list/roles)
+/datum/entity/admins/proc/get_job_titles_from_list(list/roles)
 	var/list/temp = list()
 	for(var/jobPos in roles)
 		if(!jobPos)

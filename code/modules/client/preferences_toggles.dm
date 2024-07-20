@@ -621,7 +621,7 @@
 	prefs.toggles_chat ^= CHAT_DEAD
 	prefs.save_preferences()
 
-	if(src.admin_holder && (admin_holder.rights & R_MOD))
+	if(check_rights(R_MOD, FALSE))
 		to_chat(src,SPAN_DANGER( "You will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat."))
 	else
 		to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat."))

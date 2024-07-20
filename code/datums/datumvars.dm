@@ -45,7 +45,7 @@
 //href_list is a reference, modifying it in these procs WILL change the rest of the proc in topic.dm of admin/view_variables!
 //This proc is for "high level" actions like admin heal/set species/etc/etc. The low level debugging things should go in admin/view_variables/topic_basic.dm incase this runtimes.
 /datum/proc/vv_do_topic(list/href_list)
-	if(!usr || !usr.client || !usr.client.admin_holder || !check_rights(NONE))
+	if(!check_rights(NO_FLAGS))
 		return FALSE //This is VV, not to be called by anything else.
 	if(SEND_SIGNAL(src, COMSIG_VV_TOPIC, usr, href_list) & COMPONENT_VV_HANDLED)
 		return FALSE

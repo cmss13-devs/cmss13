@@ -536,7 +536,7 @@
 				return FALSE
 
 			for(var/client/admin in GLOB.admins)
-				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
+				if(check_client_rights(admin, R_ADMIN|R_MOD, FALSE))
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
 			SSticker.mode.request_ert(user, TRUE)
 			to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to USCM High Command."))
@@ -562,7 +562,7 @@
 			if(!reason)
 				return FALSE
 			for(var/client/admin in GLOB.admins)
-				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
+				if(check_client_rights(admin, R_ADMIN|R_MOD, FALSE))
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
 			message_admins("[key_name(user)] has requested use of Nuclear Ordnance (via ARES)! Reason: <b>[reason]</b> [CC_MARK(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukeapprove=\ref[user]'>APPROVE</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukedeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
 			to_chat(user, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command for the following reason: [reason]"))

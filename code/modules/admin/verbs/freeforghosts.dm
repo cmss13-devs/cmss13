@@ -2,8 +2,7 @@
 	set category = null
 	set name = "Free for Ghosts"
 
-	if(!src.admin_holder || !(admin_holder.rights & R_ADMIN))
-		to_chat(src, "Only staff members may use this.")
+	if(!check_rights(R_ADMIN))
 		return
 
 	free_for_ghosts(M, notify = TRUE)
@@ -31,11 +30,10 @@
 	set name = "Free All Mobs"
 	set category = "Admin.InView"
 
-	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_ADMIN))
 		return
 
-	if(alert("This will free ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
+	if(tgui_alert(usr, "This will free ALL mobs within your view range. Are you sure?", , list("Yes", "Cancel")) == "Cancel")
 		return
 
 	for(var/mob/living/M in view(src))

@@ -114,7 +114,7 @@
 	if(!CONFIG_GET(flag/use_timelocks))
 		return TRUE
 
-	if(client.admin_holder && (client.admin_holder.rights & (R_NOLOCK | R_ADMIN)))
+	if(check_client_rights(client, R_NOLOCK|R_ADMIN, FALSE))
 		return TRUE
 
 	if(get_job_playtime(client, title) > minimum_playtime_as_job)

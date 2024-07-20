@@ -125,27 +125,26 @@
 	to_chat(src, SPAN_NOTICE("You have turned invismin [admin_holder.fakekey ? "ON" : "OFF"]"))
 	log_admin("[key_name_admin(usr)] has turned invismin [admin_holder.fakekey ? "ON" : "OFF"]")
 
-/datum/admins/proc/announce()
+/datum/entity/admins/proc/announce()
 	set name = "Admin Announcement"
 	set desc = "Announce your desires to the world"
 	set category = "Admin.Game"
 
-	if(!check_rights(0))
+	if(!check_rights(NO_FLAGS))
 		return
-	var/message = input("Global message to send:", "Admin Announce", null, null)  as message
+
+	var/message = tgui_input_text(usr, "Global message to send", "Admin Announce", null, MAX_BOOK_MESSAGE_LEN, TRUE)
 	if(message)
-		if(!check_rights(R_SERVER,0))
-			message = adminscrub(message,500)
+		if(!check_rights(R_SERVER, FALSE))
+			message = adminscrub(message, 500)
 		to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN(" <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 
-/datum/admins/proc/player_notes_show(key as text)
+/datum/entity/admins/proc/player_notes_show(key as text)
 	set name = "Player Notes Show"
 	set category = "Admin"
-	if (!istype(src,/datum/admins))
-		src = usr.client.admin_holder
-	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
-		to_chat(usr, "Error: you are not an admin!")
+
+	if(!check_rights(R_MOD))
 		return
 
 	var/datum/entity/player/P = get_player_from_key(key)
@@ -182,38 +181,35 @@
 	dat += "</body></html>"
 	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
 
-/datum/admins/proc/check_ckey(target_key as text)
+/datum/entity/admins/proc/check_ckey(target_key as text)
 	set name = "Check CKey"
 	set category = "Admin"
 
-	var/mob/user = usr
-	if (!istype(src, /datum/admins))
-		src = user.client.admin_holder
-	if (!istype(src, /datum/admins) || !(rights & R_MOD))
-		to_chat(user, "Error: you are not an admin!")
+	if(!check_rights(R_MOD))
 		return
+
 	target_key = ckey(target_key)
 	if(!target_key)
-		to_chat(user, "Error: No key detected!")
+		to_chat(usr, "Error: No key detected!")
 		return
-	to_chat(user, SPAN_WARNING("Checking Ckey: [target_key]"))
+	to_chat(usr, SPAN_WARNING("Checking Ckey: [target_key]"))
 	var/list/keys = analyze_ckey(target_key)
 	if(!keys)
-		to_chat(user, SPAN_WARNING("No results for [target_key]."))
+		to_chat(usr, SPAN_WARNING("No results for [target_key]."))
 		return
-	to_chat(user, SPAN_WARNING("Check CKey Results: [keys.Join(", ")]"))
+	to_chat(usr, SPAN_WARNING("Check CKey Results: [keys.Join(", ")]"))
 
-	log_admin("[key_name(user)] analyzed ckey '[target_key]'")
+	log_admin("[key_name(usr)] analyzed ckey '[target_key]'")
 
-/datum/admins/proc/sleepall()
+/datum/entity/admins/proc/sleepall()
 	set name = "Sleep All"
 	set category = "Admin.InView"
 	set hidden = TRUE
 
-	if(!check_rights(0))
+	if(!check_rights(NO_FLAGS))
 		return
 
-	if(alert("This will sleep ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
+	if(tgui_alert(usr, "This will sleep ALL mobs within your view range (for Administration purposes). Are you sure?", , list("Yes", "Cancel")) == "Cancel")
 		return
 	for(var/mob/living/M in view(usr.client))
 		M.apply_effect(3, PARALYZE) // prevents them from exiting the screen range
@@ -222,15 +218,15 @@
 
 	message_admins("[key_name(usr)] used Toggle Sleep In View.")
 
-/datum/admins/proc/wakeall()
+/datum/entity/admins/proc/wakeall()
 	set name = "Wake All"
 	set category = "Admin.InView"
 	set hidden = TRUE
 
-	if(!check_rights(0))
+	if(!check_rights(NO_FLAGS))
 		return
 
-	if(alert("This wake ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
+	if(tgui_alert(usr, "This wake ALL mobs within your view range (for Administration purposes). Are you sure?", , list("Yes", "Cancel")) == "Cancel")
 		return
 	for(var/mob/living/M in view(usr.client))
 		M.sleeping = 0 //set their sleep to zero and remove their icon
@@ -258,7 +254,7 @@
 	if (!msg)
 		return
 
-	REDIS_PUBLISH("byond.asay", "author" = src.key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
+	REDIS_PUBLISH("byond.asay", "author" = key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.admin_rank.rank)
 
 	if(findtext(msg, "@") || findtext(msg, "#"))
 		var/list/link_results = check_asay_links(msg)
@@ -276,16 +272,16 @@
 	log_adminpm("ADMIN: [key_name(src)] : [msg]")
 
 	var/color = "mod"
-	if(check_rights(R_PERMISSIONS, show_msg = FALSE))
+	if(check_rights(R_PERMISSIONS, FALSE))
 		color = "adminmod"
 
 	var/channel = "ADMIN:"
-	channel = "[admin_holder.rank]:"
+	channel = "[admin_holder.admin_rank.rank]:"
 	for(var/client/client as anything in GLOB.admins)
-		if((R_ADMIN|R_MOD) & client.admin_holder.rights)
+		if(!check_client_rights(client, R_ADMIN|R_MOD, FALSE))
 			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
 
-/datum/admins/proc/alertall()
+/datum/entity/admins/proc/alertall()
 	set name = "Alert All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -303,7 +299,7 @@
 	log_admin("[key_name(src)] sent an In View admin alert with custom message [message].")
 	message_admins("[key_name(src)] sent an In View admin alert with custom message [message].")
 
-/datum/admins/proc/directnarrateall()
+/datum/entity/admins/proc/directnarrateall()
 	set name = "Direct Narrate All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -325,7 +321,7 @@
 #define SUBTLE_MESSAGE_USCM "USCM High Command"
 #define SUBTLE_MESSAGE_FACTION "Faction Specific"
 
-/datum/admins/proc/subtlemessageall()
+/datum/entity/admins/proc/subtlemessageall()
 	set name = "Subtle Message All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -373,7 +369,7 @@
 /client/proc/cmd_mentor_say(msg as text)
 	set name = "MentorSay"
 	set category = "OOC"
-	set hidden = 0
+	set hidden = FALSE
 
 	if(!check_rights(R_MENTOR|R_MOD|R_ADMIN))
 		return
@@ -387,12 +383,12 @@
 
 	var/color = "mentorsay"
 	var/channel = "Mentor:"
-	channel = "[admin_holder.rank]:"
-	if(check_rights(R_MOD|R_ADMIN,0))
+	channel = "[admin_holder.admin_rank.rank]:"
+	if(check_rights(R_MOD|R_ADMIN, FALSE))
 		color = "mentorstaff"
 
 	for(var/client/C in GLOB.admins)
-		if((R_ADMIN|R_MOD|R_MENTOR) & C.admin_holder.rights)
+		if(check_client_rights(C, R_ADMIN|R_MOD|R_MENTOR, FALSE))
 			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
 
 /client/proc/get_mentor_say()
@@ -406,9 +402,9 @@
 	add_verb(src, GLOB.admin_verbs_hideable)
 	remove_verb(src, /client/proc/enable_admin_verbs)
 
-	if(!(admin_holder.rights & R_DEBUG))
+	if(!(admin_holder.admin_rank.rights & R_DEBUG))
 		remove_verb(src, /client/proc/callproc_datum)
-	if(!(admin_holder.rights & R_POSSESS))
+	if(!(admin_holder.admin_rank.rights & R_POSSESS))
 		remove_verb(src, /client/proc/release)
 		remove_verb(src, /client/proc/possess)
 
@@ -424,7 +420,7 @@
 	set category = "Admin.InView"
 	set hidden = TRUE
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!check_rights(R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -451,8 +447,7 @@
 	set category = "Admin.InView"
 	set hidden = TRUE
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if(alert("This will rejuvenate ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
@@ -469,8 +464,7 @@
 	set category = "Admin.InView"
 	set hidden = TRUE
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if(alert("This will rejuvenate ALL humans within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
@@ -486,8 +480,7 @@
 	set category = "Admin.InView"
 	set hidden = TRUE
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if(alert("This will rejuvenate ALL revivable humans within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
@@ -512,8 +505,7 @@
 	set category = "Admin.InView"
 	set hidden = TRUE
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if(alert("This will rejuvenate ALL xenos within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
@@ -527,8 +519,8 @@
 // ----------------------------
 // PANELS
 // ----------------------------
-/datum/admins/proc/teleport_panel()
-	if(!check_rights(R_MOD, 0))
+/datum/entity/admins/proc/teleport_panel()
+	if(!check_rights(R_MOD))
 		return
 
 	var/dat = {"
@@ -556,13 +548,13 @@
 	set name = "Teleport Panel"
 	set category = "Admin.Panels"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	admin_holder.teleport_panel()
 
-/datum/admins/proc/vehicle_panel()
-	if(!check_rights(R_MOD, 0))
+/datum/entity/admins/proc/vehicle_panel()
+	if(!check_rights(R_MOD))
 		return
 
 	var/dat = {"
@@ -579,12 +571,12 @@
 	set name = "Vehicle Panel"
 	set category = "Admin.Panels"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	admin_holder.vehicle_panel()
 
-/datum/admins/proc/in_view_panel()
+/datum/entity/admins/proc/in_view_panel()
 	var/dat = {"
 		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
 		<BR>
@@ -607,7 +599,7 @@
 	show_browser(usr, dat, "In View Panel", "inviews")
 	return
 
-/datum/admins/proc/imaginary_friend()
+/datum/entity/admins/proc/imaginary_friend()
 	set category = "OOC.Mentor"
 	set name = "Imaginary Friend"
 
@@ -660,7 +652,7 @@
 	set name = "In View Panel"
 	set category = "Admin.InView"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	admin_holder.in_view_panel()
@@ -669,7 +661,7 @@
 	set name = "Toggle LZ Weeding"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	set_lz_resin_allowed(!GLOB.resin_lz_allowed)
@@ -694,7 +686,7 @@
 	set name = "Toggle OB Spawn"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	GLOB.spawn_ob = !GLOB.spawn_ob
@@ -704,7 +696,7 @@
 	set name = "Toggle Engi Sniper Upgrade"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	if(!SSticker.mode)
@@ -718,7 +710,7 @@
 	set name = "Toggle Attack Dead"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	if(!SSticker.mode)
@@ -732,7 +724,7 @@
 	set name = "Toggle Disposable Mobs"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_EVENT, FALSE))
+	if(!check_rights(R_EVENT))
 		return
 
 	if(!SSticker.mode)
@@ -746,7 +738,7 @@
 	set name = "Toggle Strip/Drag Dead"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	if(!SSticker.mode)
@@ -760,7 +752,7 @@
 	set name = "Toggle Uniform Strip Dead"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	if(!SSticker.mode)
@@ -776,7 +768,7 @@
 	set name = "Toggle Strong Defibs"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	if(!SSticker.mode)
@@ -790,7 +782,7 @@
 	set name = "Toggle Blood Optimization"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	if(!SSticker.mode)
@@ -804,7 +796,7 @@
 	set name = "Toggle Combat CAS Equipment"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	if(!SSticker.mode)
@@ -818,7 +810,7 @@
 	set name = "Toggle LZ Mortar Protection"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	if(!SSticker.mode)
@@ -832,7 +824,7 @@
 	set name = "Toggle Shipside SD Protection"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	if(!SSticker.mode)
@@ -846,7 +838,7 @@
 	set name = "Toggle Hardcore"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
+	if(!check_rights(R_MOD))
 		return
 
 	if(!SSticker.mode)
@@ -863,7 +855,7 @@
 	set name = "Toggle Working Joe Restrictions"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_EVENT, TRUE))
+	if(!check_rights(R_EVENT))
 		return
 
 	if(!SSticker.mode)
@@ -877,7 +869,7 @@
 	set name = "Toggle Working Joe Respawns"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_EVENT, TRUE))
+	if(!check_rights(R_EVENT))
 		return
 
 	if(!SSticker.mode)

@@ -33,7 +33,7 @@
 	return
 
 
-/datum/admins/proc/topic_chems(href)
+/datum/entity/admins/proc/topic_chems(href)
 	switch(href)
 		if("view_reagent")
 			var/response = alert(usr,"Enter ID or select ID from list?",null, "Enter ID","Select from list")

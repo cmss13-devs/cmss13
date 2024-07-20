@@ -325,7 +325,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 
-		if(!client || !client.admin_holder || !(client.admin_holder.rights & R_MOD))
+		if(!check_client_rights(client, R_MOD, FALSE))
 			to_chat(usr, "This can only be used on people with +MOD permissions")
 			return
 

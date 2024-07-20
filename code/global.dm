@@ -30,12 +30,12 @@
 // 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
 //=================================================
 
-#define CLIENT_HAS_RIGHTS(cli, flags) ((cli?.admin_holder?.rights & flags) == flags)
-#define CLIENT_IS_STAFF(cli) (cli?.admin_holder?.rights & (R_MOD|R_ADMIN))
+#define CLIENT_HAS_RIGHTS(cli, flags) ((cli?.admin_holder?.admin_rank?.rights & flags) == flags)
+#define CLIENT_IS_STAFF(cli) (cli?.admin_holder?.admin_rank?.rights & (R_MOD|R_ADMIN))
 #define CLIENT_IS_MENTOR(cli) CLIENT_HAS_RIGHTS(cli, R_MENTOR)
 #define CLIENT_IS_STEALTHED(cli) (CLIENT_HAS_RIGHTS(cli, R_STEALTH) && cli.prefs?.toggles_admin & ADMIN_STEALTHMODE)
 
-#define AHOLD_IS_MOD(ahold) (ahold && (ahold.rights & R_MOD))
-#define AHOLD_IS_ADMIN(ahold) (ahold && (ahold.rights & R_ADMIN))
+#define AHOLD_IS_MOD(ahold) (ahold && (ahold?.admin_rank.rights & R_MOD))
+#define AHOLD_IS_ADMIN(ahold) (ahold && (ahold?.admin_rank.rights & R_ADMIN))
 
 		//items that ask to be called every cycle

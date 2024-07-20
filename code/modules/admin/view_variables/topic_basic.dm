@@ -53,7 +53,7 @@
 	if(href_list[VV_HK_TAG])
 		usr.client.tag_datum(target)
 	if(href_list[VV_HK_ADDCOMPONENT])
-		if(!check_rights(NONE))
+		if(!check_rights(NO_FLAGS))
 			return
 		var/list/names = list()
 		var/list/componentsubtypes = sort_list(subtypesof(/datum/component), GLOBAL_PROC_REF(cmp_typepaths_asc))
@@ -83,7 +83,7 @@
 		log_admin("[key_name(usr)] has added [result] [datumname] to [key_name(target)].")
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] has added [result] [datumname] to [key_name_admin(target)]."))
 	if(href_list[VV_HK_REMOVECOMPONENT] || href_list[VV_HK_MASS_REMOVECOMPONENT])
-		if(!check_rights(NONE))
+		if(!check_rights(NO_FLAGS))
 			return
 		var/mass_remove = href_list[VV_HK_MASS_REMOVECOMPONENT]
 		var/list/components = list()

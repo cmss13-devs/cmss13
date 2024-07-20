@@ -8,8 +8,7 @@
 	set name = "Jump to Area"
 	set category = null
 
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if(!src.mob)
@@ -33,8 +32,7 @@
 	set name = "Jump to Turf"
 	set category = null
 
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if(!src.mob)
@@ -53,8 +51,7 @@
 	set name = "Jump to Object"
 	set category = null
 
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	var/turf/object_location = get_turf(O)
@@ -75,8 +72,7 @@
 	set name = "Jump to Mob"
 	set category = null
 
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if(src.mob)
@@ -96,8 +92,7 @@
 	set name = "Jump to Coordinate"
 	set category = null
 
-	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	if(src.mob)
@@ -143,8 +138,7 @@
 	set name = "Jump to Ckey"
 	set category = null
 
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	var/list/keys = list()
@@ -172,7 +166,7 @@
 	set category = null
 	set hidden = TRUE
 
-	if(!src.admin_holder)
+	if(!admin_holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -185,8 +179,7 @@
 	set category = null
 	set desc = "Key to teleport"
 
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 
 	var/list/keys = list()
@@ -208,8 +201,7 @@
 	set name = "Send Mob"
 	set hidden = TRUE
 
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_MOD))
 		return
 	var/area/A = tgui_input_list(usr, "Pick an area.", "Pick an area", return_sorted_areas())
 	if(A)

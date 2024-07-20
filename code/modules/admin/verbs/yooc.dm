@@ -3,7 +3,7 @@
 	set name = "YOOC"
 	set desc = "OOC channel for Yautja players."
 
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
+	if(!check_client_rights(src, R_MOD, FALSE))
 		to_chat(src, "Only staff members may talk on this channel.")
 		return
 
@@ -12,7 +12,7 @@
 	if(!msg)
 		return
 
-	var/yooc_message = "YOOC: [src.key]([src.admin_holder.rank]): [msg]"
+	var/yooc_message = "YOOC: [key]([admin_holder.admin_rank.rank]): [msg]"
 	log_admin(yooc_message)
 
 	msg = process_chat_markup(msg, list("*"))
@@ -29,6 +29,6 @@
 
 	// Send to staff
 	for(var/client/C in GLOB.admins) // Send to staff
-		if(!(C.admin_holder.rights & R_MOD))
+		if(!check_client_rights(C, R_MOD, FALSE))
 			continue
 		to_chat_spaced(C, margin_top = 0.5, margin_bottom = 0.5, html = SPAN_YOOC(yooc_message))

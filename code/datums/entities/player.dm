@@ -69,6 +69,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"is_permabanned" = DB_FIELDTYPE_INT,
 		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
 		"permaban_date" = DB_FIELDTYPE_STRING_LARGE,
+		"admin_status" = DB_FIELDTYPE_STRING_MEDIUM
 		"whitelist_status" = DB_FIELDTYPE_STRING_MAX,
 		"discord_link_id" = DB_FIELDTYPE_BIGINT,
 		"permaban_admin_id" = DB_FIELDTYPE_BIGINT,
@@ -420,6 +421,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		time_ban_admin = DB_ENTITY(/datum/entity/player, time_ban_admin_id)
 	if(discord_link_id)
 		discord_link = DB_ENTITY(/datum/entity/discord_link, discord_link_id)
+
+	if(admin_status)
+		GLOB.admin_ranks["admin_status"]
 
 	if(whitelist_status)
 		var/list/whitelists = splittext(whitelist_status, "|")

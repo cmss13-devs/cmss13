@@ -326,7 +326,7 @@
 		/obj/item/explosive/grenade/smokebomb/airburst,
 		/obj/item/explosive/grenade/smokebomb/airburst,
 		/obj/item/explosive/grenade/flashbang,
-		)
+	)
 	preload = /obj/item/explosive/grenade/slug/baton
 
 //-------------------------------------------------------

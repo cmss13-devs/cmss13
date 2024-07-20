@@ -1104,6 +1104,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "cmb_helmet"
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_LOW
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
@@ -1114,6 +1116,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/veteran/cmb/engi
 	built_in_visors = list(new /obj/item/device/helmet_visor/security, new /obj/item/device/helmet_visor/welding_visor)
 
+/obj/item/clothing/head/helmet/marine/veteran/cmb/spec
+	name = "M11R-S pattern CMB SWAT helmet"
+	icon_state = "cmb_elite_helmet"
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	built_in_visors = list(new /obj/item/device/helmet_visor/security, new /obj/item/device/helmet_visor/night_vision)
 
 
 //==========================//DISTRESS\\=================================\\

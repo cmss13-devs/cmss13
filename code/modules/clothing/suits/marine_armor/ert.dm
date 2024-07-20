@@ -608,6 +608,16 @@
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	item_state_slots = list(WEAR_JACKET = "cmb_light_armor")
 
+/obj/item/clothing/suit/storage/marine/veteran/cmb/spec
+	name = "\improper M4R-S pattern CMB SWAT armor"
+	icon_state = "cmb_elite_armor"
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	item_state_slots = list(WEAR_JACKET = "cmb_elite_armor")
+
 /obj/item/clothing/suit/storage/marine/veteran/cmb/leader
 	name = "\improper M4R pattern CMB Marshal armor"
 	icon_state = "cmb_sheriff_armor"

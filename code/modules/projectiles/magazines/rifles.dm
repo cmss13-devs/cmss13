@@ -240,6 +240,14 @@
 	w_class = SIZE_MEDIUM
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
+/obj/item/ammo_magazine/rifle/m16/ext
+	name = "\improper M16 extended magazine (5.56x45mm)"
+	desc = "An AP 5.56x45mm magazine for the M16 assault rifle. This one contains 30 bullets."
+	icon_state = "m16_ext"
+	item_state = "m16_ext"
+	bonus_overlay = "m16_ext_overlay"
+	max_rounds = 30
+
 //-------------------------------------------------------
 //AR10 RIFLE
 

@@ -748,6 +748,9 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
+/obj/item/weapon/gun/revolver/cmb/tactical
+	starting_attachment_types = list(/obj/item/attachable/extended_barrel, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
+
 /obj/item/weapon/gun/revolver/cmb/normalpoint
 	current_mag = /obj/item/ammo_magazine/internal/revolver/cmb
 

@@ -287,3 +287,16 @@
 		to_chat(M, SPAN_BOLD("The laws of Earth stretch beyond the Sol. Where others fall to corruption, you stay steadfast in your morals."))
 		to_chat(M, SPAN_BOLD("Corporate Officers chase after paychecks and promotions, but you are motivated to do your sworn duty and care for the population, no matter how far or isolated a colony may be."))
 		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))
+
+// A Nearby Colonial Marshal riot control team responding to Marshals in Distress.
+/datum/emergency_call/cmb/riot_control/alt
+	name = "CMB - Riot Control Unit - Marshals in Distress (Friendly)"
+	mob_max = 5
+	mob_min = 1
+	max_medics = 1
+	probability = 0
+
+/datum/emergency_call/cmb/riot_control/New()
+	..()
+	arrival_message = "CMB Team, this is Anchorpoint Station. We have confirmed you are in distress. Routing nearby units to assist!"
+	objectives = "Patrol Unit 5807, we have nearby Marshals in Distress! Locate and assist them immediately."

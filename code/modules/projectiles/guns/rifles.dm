@@ -1041,6 +1041,7 @@
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle/m16,
 		/obj/item/ammo_magazine/rifle/m16/ap,
+		/obj/item/ammo_magazine/rifle/m16/ext,
 	)
 
 	attachable_allowed = list(

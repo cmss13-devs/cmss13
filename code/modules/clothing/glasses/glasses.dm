@@ -540,8 +540,8 @@
 	desc = "Yellowish protective glass piece, can be lifted up when needed, makes you see everything in yellow."
 	icon_state = "swat_shield"
 	icon = 'icons/obj/items/helmet_garb.dmi'
-	active_icon_state = "swat_shield"
-	inactive_icon_state = "swat_shield_up"
+	active_icon_state = "swat_shield_up"
+	inactive_icon_state = "swat_shield"
 	flags_equip_slot = null
 
 //welding goggles

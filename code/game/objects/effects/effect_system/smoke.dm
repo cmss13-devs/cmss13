@@ -731,7 +731,7 @@
 		location = get_turf(loca)
 	if(direct)
 		direction = direct
-	if(lifetime)
+	if(smoke_time)
 		lifetime = smoke_time
 	radius = min(radius, 10)
 	amount = radius

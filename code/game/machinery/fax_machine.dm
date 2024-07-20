@@ -431,7 +431,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 								P.stamped = new
 							P.stamped += /obj/item/tool/stamp
 							P.overlays += stampoverlay
-							P.stamps += "<HR><i>This paper has been stamped by The Office of Colonial Marshals.</i>"
+							P.stamps += "<HR><i>This paper has been stamped by The Office of the Colonial Marshals.</i>"
 						if("Weyland-Yutani Quantum Relay")
 							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 							stampoverlay.icon_state = "paper_stamp-weyyu"

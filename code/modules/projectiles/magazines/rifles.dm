@@ -529,3 +529,6 @@
 	max_rounds = 12
 	gun_type = /obj/item/weapon/gun/rifle/xm51
 	transfer_handful_amount = 6
+
+/obj/item/ammo_magazine/rifle/xm51/cmb
+	name = "\improper Model 1771 magazine (16g)"

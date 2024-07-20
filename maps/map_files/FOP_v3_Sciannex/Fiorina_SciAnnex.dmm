@@ -25377,7 +25377,6 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/medbay)
 "tpE" = (
-/obj/item/tank/jetpack/carbondioxide,
 /obj/structure/surface/rack,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)

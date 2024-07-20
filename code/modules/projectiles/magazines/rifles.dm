@@ -531,4 +531,11 @@
 	transfer_handful_amount = 6
 
 /obj/item/ammo_magazine/rifle/xm51/cmb
-	name = "\improper Model 1771 magazine (16g)"
+	name = "\improper Model 1771 magazine (16g breaching)"
+	icon_state = "m51b"
+
+/obj/item/ammo_magazine/rifle/xm51/cmb/rubber
+	name = "\improper Model 1771 magazine (16g rubber buckshot)"
+	desc = "A 16 gauge pump-action rubber shotgun magazine."
+	icon_state = "m51b_rubber"
+	default_ammo = /datum/ammo/bullet/shotgun/light/rubber

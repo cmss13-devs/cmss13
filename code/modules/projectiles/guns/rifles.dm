@@ -2014,12 +2014,6 @@
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
 
-/obj/item/weapon/gun/rifle/xm51/cock_gun(mob/user)
-	return
-
-/obj/item/weapon/gun/rifle/xm51/cock(mob/user) //Stops the "You cock the gun." message where nothing happens.
-	return
-
 /obj/item/weapon/gun/rifle/xm51/cmb
 	name = "\improper Model 1771 Cobra Max Tactical"
 	desc = "Designed on the M51 platform by Armat Battlefield Systems for the Office of the Colonial Marshals as a breaching and crowd control weapon, the Model 1771 is a mag-fed, pump-action shotgun. It utilizes special 16-gauge breaching rounds which are effective at breaching walls and doors, additionally designed to shoot rubber buckshot."

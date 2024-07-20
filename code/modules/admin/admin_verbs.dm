@@ -211,6 +211,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/sound_debug_query,
 	/client/proc/toggle_spatial_sound_tracking,
 	/client/proc/set_spatial_sound_tracking_min_length,
+	// /client/proc/generate_sound_lengths,
 	/client/proc/debug_game_history,
 	/client/proc/enter_tree,
 	/client/proc/set_tree_points,

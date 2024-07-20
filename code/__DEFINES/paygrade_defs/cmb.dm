@@ -16,7 +16,7 @@
 /// CMBD, CMB Deputy
 #define PAY_SHORT_CMBD "CMBD"
 
-/// CMBR, CMB Riot Contol Officer
+/// CMBR, CMB Riot Control Officer
 #define PAY_SHORT_CMBR "CMBR"
 
 /// CMBMT, CMB Medical Technician

@@ -193,3 +193,20 @@
   realforest2001:
   - rscadd: The Combat Correspondant's civilian equipment is now in it's own category
       to make it easier to tell why you can't click it as the military version.
+2024-07-20:
+  Doubleumc:
+  - rscdel: Removed facial disfigurement
+  - code_imp: Fixed and refactored probability weighting for pick_weight
+  - bugfix: no longer stab with utensil when trying to feed while target full
+  Drathek:
+  - admin: Added causes for explosion starts to attack logs
+  Steelpoint:
+  - rscadd: The Heavy Pulse Rifle (M41AE2) will now start with a pre-attached bipod.
+      To better inform players of its unique auto-fire function.
+  Zonespace27:
+  - bugfix: Fixed a large amount of objects activating erroneous functionality (like
+      an armor light) when using action buttons tied to that object.
+  - bugfix: Fixed a potential softlock in the abomination tutorial.
+  cuberound:
+  - rscdel: removes trade destinations (they were never used)
+  - balance: m56 cupola uses m56d ammo rather then standard sg ammo

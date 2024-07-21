@@ -557,6 +557,7 @@
 //---ability actions--\\
 
 /datum/action/item_action/m46c/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/rifle/m46c/protag_gun = holder_item
 	if(!ishuman(owner))
 		return
@@ -1227,6 +1228,7 @@
 	fire_sound = 'sound/weapons/gun_hpr.ogg'
 	aim_slowdown = SLOWDOWN_ADS_LMG
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
+	starting_attachment_types = list(/obj/item/attachable/bipod)
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/reddot,

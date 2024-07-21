@@ -55,6 +55,10 @@
 						SPAN_HELPFUL("You feel a <b>breath of fresh air</b> enter your lungs. It feels good."),
 						SPAN_HELPFUL("You <b>perform CPR</b> on <b>[src]</b>. Repeat at least every <b>7 seconds</b>."),
 						SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."))
+				if((!is_revivable() || !check_tod()) && stat == DEAD)
+					attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."),
+						SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>. You feel it may be a lost cause."))
+					balloon_alert(attacking_mob, "you perform cpr, but feel it may be a lost cause")
 				if(is_revivable() && stat == DEAD)
 					if(cpr_cooldown < world.time)
 						revive_grace_period += 7 SECONDS
@@ -66,10 +70,6 @@
 							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
 						balloon_alert(attacking_mob, "incorrect rhythm. do it slower")
 					cpr_cooldown = world.time + 7 SECONDS
-				else if(!is_revivable() || !check_tod())
-					attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."),
-						SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>. You feel it may be a lost cause."))
-					balloon_alert(attacking_mob, "you perform cpr, but feel it may be a lost cause")
 			cpr_attempt_timer = 0
 			return 1
 

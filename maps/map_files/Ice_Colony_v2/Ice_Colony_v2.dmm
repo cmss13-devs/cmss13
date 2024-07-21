@@ -10137,10 +10137,6 @@
 /area/ice_colony/surface/storage_unit/research)
 "aKo" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_rcd,
-/obj/item/ammo_rcd,
-/obj/item/ammo_rcd,
-/obj/item/ammo_rcd,
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aKp" = (

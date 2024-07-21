@@ -29,7 +29,7 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 	impulse_broadcast("[the_dead.real_name] has died!", "Small")
 	if(!pulse_triggered && (the_dead.generation <= 1))
 		for(var/mob/living/carbon/cortical_borer/borer in living_borers)
-			if(borer.generation <= 1)
+			if(borer.generation <= 1 && !borer.pulse_immune)
 				break
 			death_pulse(DEATH_CAUSE_PRIMARIES)
 	return
@@ -174,6 +174,8 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 	job = JOB_BRAINWORM
 
 	var/generation = 1
+	/// Whether or not the borer is immune to death pulse, the death of all borers if no primaries remain.
+	var/pulse_immune = FALSE
 	var/stealthy = FALSE
 	var/static/list/borer_names = list(
 			"Primary", "Secondary", "Tertiary", "Quaternary", "Quinary", "Senary",

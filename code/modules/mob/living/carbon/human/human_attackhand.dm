@@ -55,7 +55,7 @@
 						SPAN_HELPFUL("You feel a <b>breath of fresh air</b> enter your lungs. It feels good."),
 						SPAN_HELPFUL("You <b>perform CPR</b> on <b>[src]</b>. Repeat at least every <b>7 seconds</b>."),
 						SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."))
-				if((!is_revivable() || !check_tod()) && stat == DEAD)
+				if(is_revivable() && !check_tod() && stat == DEAD)
 					attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."),
 						SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>. You feel it may be a lost cause."))
 					balloon_alert(attacking_mob, "you perform cpr, but feel it may be a lost cause")

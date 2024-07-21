@@ -382,7 +382,6 @@ you will have to do something like if(client.admin_holder.admin_rank.rights & R_
 	var/datum/entity/admin_holder/admin
 	if(!length(admins))
 		admin = DB_ENTITY(/datum/entity/admin_holder)
-		admin.admin_id = admin_client.player_data.id
 		admin.ckey = admin_client.ckey
 		admin.rank = rank.rank
 		admin.save()
@@ -392,5 +391,4 @@ you will have to do something like if(client.admin_holder.admin_rank.rights & R_
 	if(!admin_client.admin_holder)
 		GLOB.admin_ranks = load_ranks()
 		GLOB.admin_datums = load_admins()
-		admin_client.player_data.admin_id = admin.id
 		GLOB.admin_datums[admin_client.ckey].associate(admin_client)

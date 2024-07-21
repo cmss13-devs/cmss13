@@ -1,8 +1,9 @@
 /datum/autowiki/guns
+	generate_multiple = TRUE
 	page = "Template:Autowiki/Content/GunData"
 
 
-/datum/autowiki/guns/generate()
+/datum/autowiki/guns/generate_multiple()
 	var/output = ""
 
 	var/list/gun_to_ammo = list()
@@ -12,7 +13,14 @@
 			continue // Skip mags with no icon_state (e.g. base types)
 		LAZYADD(gun_to_ammo[initial(typepath.gun_type)], typepath)
 
-	for(var/typepath in sort_list(subtypesof(/obj/item/weapon/gun), GLOBAL_PROC_REF(cmp_typepaths_asc)))
+	var/list/unique_typepaths = list()
+	for(var/typepath in sort_list(subtypesof(/obj/item/weapon/gun), GLOBAL_PROC_REF(cmp_typepaths_name_asc)))
+		if(initial(typepath.name) in unique_typepaths)
+			continue
+
+		unique_typepaths[typepath.name] = typepath
+
+	for(var/typepath in unique_typepaths)
 		var/obj/item/weapon/gun/generating_gun = typepath
 		if(isnull(initial(generating_gun.icon_state)))
 			continue // Skip guns with no icon_state (e.g. base types)
@@ -108,7 +116,8 @@
 			upload_icon(generated_icon, filename)
 			gun_data["icon"] = filename
 
-		output += include_template("Autowiki/Gun", gun_data)
+		var/page_name = replacetext(strip_improper(generating_gun.name), " ", "_")
+		output += list(title = "Autowiki/Gun/[page_name]", text = include_template("Autowiki/Gun", gun_data))
 
 		qdel(generating_gun)
 

@@ -122,6 +122,8 @@
 //  (Тут же будет и лок на броню и молот)
 
 /datum/action/item_action/specialist/enrage/action_activate()
+	. = ..()
+
 	var/obj/item/clothing/suit/storage/marine/m40/armor = holder_item
 	if (!istype(armor))
 		return

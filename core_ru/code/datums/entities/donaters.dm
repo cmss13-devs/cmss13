@@ -5,7 +5,7 @@ GLOBAL_LIST_EMPTY_TYPED(donators_info, /datum/donator_info)
 	var/datum/donator_info/donator_info
 
 /datum/entity/discord_rank
-	var/rank
+	var/rank_id
 	var/rank_name
 	var/functions
 	var/role_id
@@ -17,24 +17,24 @@ BSQL_PROTECT_DATUM(/datum/entity/discord_rank)
 	entity_type = /datum/entity/discord_rank
 	table_name = "discord_ranks"
 	field_types = list(
-		"rank" = DB_FIELDTYPE_INT,
+		"rank_id" = DB_FIELDTYPE_INT,
 		"rank_name" = DB_FIELDTYPE_STRING_LARGE,
 		"functions" = DB_FIELDTYPE_STRING_MAX,
 		"role_id" = DB_FIELDTYPE_STRING_LARGE,
 	)
 
-/datum/entity_meta/discord_rank/map(datum/entity/discord_rank/ET, list/values)
+/datum/entity_meta/discord_rank/map(datum/entity/discord_rank/rank, list/values)
 	..()
 	if(values["functions"])
-		ET.buns = json_decode(values["functions"])
+		rank.buns = json_decode(values["functions"])
 
-/datum/entity_meta/discord_rank/unmap(datum/entity/discord_rank/ET)
+/datum/entity_meta/discord_rank/unmap(datum/entity/discord_rank/rank)
 	. = ..()
-	if(length(ET.buns))
-		.["functions"] = json_encode(ET.buns)
+	if(length(rank.buns))
+		.["functions"] = json_encode(rank.buns)
 
 /datum/view_record/discord_rank
-	var/rank
+	var/rank_id
 	var/rank_name
 	var/functions
 	var/role_id
@@ -44,17 +44,17 @@ BSQL_PROTECT_DATUM(/datum/entity/discord_rank)
 	root_record_type = /datum/entity/discord_rank
 	destination_entity = /datum/view_record/discord_rank
 	fields = list(
-		"rank",
+		"rank_id",
 		"rank_name",
 		"functions",
 		"role_id",
 	)
-	order_by = list("rank" = DB_ORDER_BY_ASC)
+	order_by = list("rank_id" = DB_ORDER_BY_ASC)
 
-/datum/entity_view_meta/discord_rank/map(datum/view_record/discord_rank/ET, list/values)
+/datum/entity_view_meta/discord_rank/map(datum/view_record/discord_rank/rank, list/values)
 	..()
 	if(values["functions"])
-		ET.buns = json_decode(values["functions"])
+		rank.buns = json_decode(values["functions"])
 
 /datum/entity/skin
 	var/player_id
@@ -73,15 +73,15 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 		"skins_db" = DB_FIELDTYPE_STRING_MAX,
 	)
 
-/datum/entity_meta/skin/map(datum/entity/skin/ET, list/values)
+/datum/entity_meta/skin/map(datum/entity/skin/skin, list/values)
 	..()
 	if(values["skins_db"])
-		ET.skin = json_decode(values["skins_db"])
+		skin.skin = json_decode(values["skins_db"])
 
-/datum/entity_meta/skin/unmap(datum/entity/skin/ET)
+/datum/entity_meta/skin/unmap(datum/entity/skin/skin)
 	. = ..()
-	if(length(ET.skin))
-		.["skins_db"] = json_encode(ET.skin)
+	if(length(skin.skin))
+		.["skins_db"] = json_encode(skin.skin)
 
 /datum/donator_info
 	var/datum/entity/player/player_datum

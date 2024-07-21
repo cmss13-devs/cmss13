@@ -85,7 +85,7 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 
 //RUCM START
 	for(var/datum/view_record/discord_rank/discord_rank in DB_VIEW(/datum/view_record/discord_rank))
-		GLOB.discord_ranks["[discord_rank.rank]"] = discord_rank
+		GLOB.discord_ranks["[discord_rank.rank_id]"] = discord_rank
 //RUCM END
 
 	ready = TRUE

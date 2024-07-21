@@ -67,7 +67,6 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 		rank.rights = rights2flags(values["text_rights"])
 
 /datum/entity/admin_holder
-	var/admin_id
 	var/ckey
 	var/rank
 	var/extra_titles_encoded
@@ -79,7 +78,6 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
 	entity_type = /datum/entity/admin_holder
 	table_name = "admins"
 	field_types = list(
-		"admin_id" = DB_FIELDTYPE_BIGINT,
 		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
 		"rank" = DB_FIELDTYPE_STRING_MEDIUM,
 		"extra_titles_encoded" = DB_FIELDTYPE_STRING_MAX,

@@ -62,6 +62,7 @@
 				if(is_revivable() && stat == DEAD)
 					if(cpr_cooldown < world.time)
 						revive_grace_period += 7 SECONDS
+						cpr_cooldown = world.time + 7 SECONDS
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."),
 							SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>."))
 						balloon_alert(attacking_mob, "you perform cpr")
@@ -69,7 +70,6 @@
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> fails to perform CPR on <b>[src]</b>."),
 							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
 						balloon_alert(attacking_mob, "incorrect rhythm. do it slower")
-					cpr_cooldown = world.time + 7 SECONDS
 			cpr_attempt_timer = 0
 			return 1
 

@@ -1,5 +1,9 @@
 /mob/living/carbon/human/var/cpr_cooldown
 /mob/living/carbon/human/var/cpr_attempt_timer
+/mob/living/carbon/human/proc/check_tod()
+	if(!undefibbable && world.time <= timeofdeath + revive_grace_period)
+		return TRUE
+	return FALSE
 /mob/living/carbon/human/attack_hand(mob/living/carbon/human/attacking_mob)
 	if(..())
 		return TRUE
@@ -61,6 +65,10 @@
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."),
 							SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>."))
 						balloon_alert(attacking_mob, "you perform cpr")
+					else if((!check_tod() && !issynth(H)))
+						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."),
+							SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>. You feel it may be a lost cause."))
+						balloon_alert(attacking_mob, "you perform cpr, but feel it may be a lost cause")
 					else
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> fails to perform CPR on <b>[src]</b>."),
 							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))

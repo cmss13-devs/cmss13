@@ -3,7 +3,7 @@
 	uses_special_name = TRUE
 	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/synthetic
-	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 
 	minimap_icon = "synth"
 
@@ -758,7 +758,7 @@
 	rank = JOB_COLONIST
 	skills = /datum/skills/infiltrator_synthetic
 	idtype = /obj/item/card/id/lanyard
-	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/synth/infiltrator/New()
 	. = ..()

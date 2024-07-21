@@ -3,7 +3,7 @@
 	languages = list(LANGUAGE_JAPANESE, LANGUAGE_ENGLISH)
 	assignment = JOB_CLF
 	rank = FACTION_CLF
-	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_CLF
 	origin_override = ORIGIN_CIVILIAN
 	idtype = /obj/item/card/id/data
@@ -283,7 +283,7 @@
 	assignment = JOB_CLF_MEDIC
 	rank = JOB_CLF_MEDIC
 	role_comm_title = "MED"
-	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/clf/combat_medic
 
 /datum/equipment_preset/clf/medic/load_gear(mob/living/carbon/human/new_human)
@@ -715,7 +715,7 @@
 	skills = /datum/skills/colonial_synthetic
 	assignment = JOB_CLF_SYNTH
 	rank = JOB_CLF_SYNTH
-	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/clf/synth/New()
@@ -959,7 +959,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_COMMANDER
 	rank = JOB_CLF_COMMANDER
-	paygrades = list(PAY_SHORT_REBC = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_REBC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMDR"
 	skills = /datum/skills/clf/commander
 

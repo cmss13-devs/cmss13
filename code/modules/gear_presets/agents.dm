@@ -17,7 +17,7 @@
 	)
 	assignment = JOB_STOWAWAY
 	rank = JOB_STOWAWAY
-	paygrades = list("???" = JOB_PLAYTIME_TIER_1)
+	paygrades = list("???" = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "???"
 	skills = /datum/skills/civilian/survivor
 
@@ -69,7 +69,7 @@
 	)
 	assignment = JOB_UPP_REPRESENTATIVE
 	rank = JOB_UPP_REPRESENTATIVE
-	paygrades = list(PAY_SHORT_CREP = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_CREP = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "UPP Rep."
 	skills = /datum/skills/civilian/survivor
 
@@ -105,7 +105,7 @@
 	)
 	assignment = JOB_TWE_REPRESENTATIVE
 	rank = JOB_TWE_REPRESENTATIVE
-	paygrades = list(PAY_SHORT_CREP = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_CREP = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TWE Rep."
 	skills = /datum/skills/civilian/survivor
 

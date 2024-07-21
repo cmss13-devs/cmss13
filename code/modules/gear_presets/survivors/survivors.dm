@@ -5,7 +5,7 @@
 
 	skills = /datum/skills/civilian/survivor
 	languages = list(LANGUAGE_ENGLISH)
-	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/lanyard
 	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_SURVIVOR)
@@ -187,7 +187,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 /datum/equipment_preset/survivor/colonial_marshal
 	name = "Survivor - Colonial Marshal Deputy"
 	assignment = "CMB Deputy"
-	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
@@ -394,7 +394,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrades = list(PAY_SHORT_ICCL = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_ICCL = JOB_PLAYTIME_TIER_0)
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
@@ -428,7 +428,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "USCM Survivor"
 	skills = /datum/skills/civilian/survivor/marshal
 	idtype = /obj/item/card/id/dogtag
-	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 

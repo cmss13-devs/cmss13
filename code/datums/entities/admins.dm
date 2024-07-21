@@ -66,33 +66,17 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 	if(values["text_rights"])
 		rank.rights = rights2flags(values["text_rights"])
 
-/datum/entity/admin_holder
+/datum/entity/admin_holder_d
 	var/admin_id
 	var/ckey
 	var/rank
 	var/extra_titles_encoded
 	var/list/extra_titles = list()
 
-// UNTRACKED FIELDS
-	var/datum/view_record/admin_rank/admin_rank
-	var/client/owner = null
-	var/fakekey = null
-
-	var/href_token
-
-	var/datum/marked_datum
-	var/list/datum/tagged_datums
-
-	///Whether this admin is invisiminning
-	var/invisimined = FALSE
-
-	var/datum/filter_editor/filteriffic
-	var/datum/particle_editor/particle_test
-
-BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
+BSQL_PROTECT_DATUM(/datum/entity/admin_holder_d)
 
 /datum/entity_meta/admin_holder
-	entity_type = /datum/entity/admin_holder
+	entity_type = /datum/entity/admin_holder_d
 	table_name = "admins"
 	field_types = list(
 		"admin_id" = DB_FIELDTYPE_BIGINT,
@@ -120,8 +104,22 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
 
 	var/datum/view_record/admin_rank/admin_rank
 
+	var/client/owner = null
+	var/fakekey = null
+
+	var/href_token
+
+	var/datum/marked_datum
+	var/list/datum/tagged_datums
+
+	///Whether this admin is invisiminning
+	var/invisimined = FALSE
+
+	var/datum/filter_editor/filteriffic
+	var/datum/particle_editor/particle_test
+
 /datum/entity_view_meta/admin_holder
-	root_record_type = /datum/entity/admin_holder
+	root_record_type = /datum/entity/admin_holder_d
 	destination_entity = /datum/view_record/admin_holder
 	fields = list(
 		"admin_id",
@@ -382,12 +380,12 @@ you will have to do something like if(client.player_data?.admin_holder.admin_ran
 	rank.save()
 	rank.sync()
 
-	DB_FILTER(/datum/entity/admin_holder, DB_COMP("ckey", DB_EQUALS, admin_client.ckey), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(localhost_entity_check), admin_client, rank))
+	DB_FILTER(/datum/entity/admin_holder_d, DB_COMP("ckey", DB_EQUALS, admin_client.ckey), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(localhost_entity_check), admin_client, rank))
 
-/proc/localhost_entity_check(client/admin_client, datum/entity/admin_rank/rank, list/datum/entity/admin_holder/admins)
-	var/datum/entity/admin_holder/admin
+/proc/localhost_entity_check(client/admin_client, datum/entity/admin_rank/rank, list/datum/entity/admin_holder_d/admins)
+	var/datum/entity/admin_holder_d/admin
 	if(!length(admins))
-		admin = DB_ENTITY(/datum/entity/admin_holder)
+		admin = DB_ENTITY(/datum/entity/admin_holder_d)
 		admin.admin_id = admin_client.player_data.id
 		admin.ckey = admin_client.ckey
 		admin.rank = rank.rank
@@ -395,5 +393,11 @@ you will have to do something like if(client.player_data?.admin_holder.admin_ran
 		admin.sync()
 	else
 		admin = admins[length(admins)]
+
 	GLOB.admin_ranks = load_ranks()
+	GLOB.admin_datums = load_admins()
+
+
+
+	admin_client.player_data.admin_holder = admin
 	admin.associate(admin_client)

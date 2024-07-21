@@ -428,7 +428,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		discord_link = DB_ENTITY(/datum/entity/discord_link, discord_link_id)
 
 	if(admin_id)
-		admin_holder = DB_ENTITY(/datum/entity/admin_holder, admin_id)
+		admin_holder = GLOB.admin_datums{ckey}
 		admin_holder.associate(owning_client)
 		admin_holder.save()
 		admin_holder.sync()

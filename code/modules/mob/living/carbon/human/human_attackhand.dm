@@ -59,7 +59,7 @@
 					attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."),
 						SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>. You feel it may be a lost cause."))
 					balloon_alert(attacking_mob, "you perform cpr, but feel it may be a lost cause")
-				if(is_revivable() && stat == DEAD)
+				else if(is_revivable() && stat == DEAD)
 					if(cpr_cooldown < world.time)
 						revive_grace_period += 7 SECONDS
 						cpr_cooldown = world.time + 7 SECONDS

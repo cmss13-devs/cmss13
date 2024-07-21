@@ -511,7 +511,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		error("ALARM: MISMATCH. Loaded player data for client [ckey], player data ckey is [player.ckey], id: [player.id]")
 	player_data = player
 	player_data.owning_client = src
-	if(!admin_holder && ckey in GLOB.admin_datums)
+	if(ckey in GLOB.admin_datums && !admin_holder)
 		admin_holder = GLOB.admin_datums[ckey]
 		admin_holder.associate(src)
 	if(!player_data.last_login)

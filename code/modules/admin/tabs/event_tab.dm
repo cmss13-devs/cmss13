@@ -148,7 +148,7 @@
 	message_admins("[key_name_admin(usr)] created an EM PUlse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
 	return
 
-/datum/entity/admins/proc/admin_force_ERT_shuttle()
+/datum/entity/admin_holder/proc/admin_force_ERT_shuttle()
 	set name = "Force ERT Shuttle"
 	set desc = "Force Launch the ERT Shuttle."
 	set category = "Admin.Shuttles"
@@ -188,7 +188,7 @@
 
 	message_admins("[key_name_admin(usr)] force launched a distress shuttle ([tag])")
 
-/datum/entity/admins/proc/admin_force_distress()
+/datum/entity/admin_holder/proc/admin_force_distress()
 	set name = "Distress Beacon"
 	set desc = "Call a distress beacon. This should not be done if the shuttle's already been called."
 	set category = "Admin.Shuttles"
@@ -243,7 +243,7 @@
 
 	message_admins("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]")
 
-/datum/entity/admins/proc/admin_force_evacuation()
+/datum/entity/admin_holder/proc/admin_force_evacuation()
 	set name = "Trigger Evacuation"
 	set desc = "Triggers emergency evacuation."
 	set category = "Admin.Events"
@@ -256,7 +256,7 @@
 
 	message_admins("[key_name_admin(usr)] forced an emergency evacuation.")
 
-/datum/entity/admins/proc/admin_cancel_evacuation()
+/datum/entity/admin_holder/proc/admin_cancel_evacuation()
 	set name = "Cancel Evacuation"
 	set desc = "Cancels emergency evacuation."
 	set category = "Admin.Events"
@@ -268,7 +268,7 @@
 
 	message_admins("[key_name_admin(usr)] canceled an emergency evacuation.")
 
-/datum/entity/admins/proc/add_req_points()
+/datum/entity/admin_holder/proc/add_req_points()
 	set name = "Add Requisitions Points"
 	set desc = "Add points to the ship requisitions department."
 	set category = "Admin.Events"
@@ -291,7 +291,7 @@
 	if(points_to_add >= 0)
 		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
 
-/datum/entity/admins/proc/check_req_heat()
+/datum/entity/admin_holder/proc/check_req_heat()
 	set name = "Check Requisitions Heat"
 	set desc = "Check how close the CMB is to arriving to search Requisitions."
 	set category = "Admin.Events"
@@ -307,7 +307,7 @@
 	message_admins("[key_name_admin(usr)] set requisitions heat to [req_heat_change].")
 
 
-/datum/entity/admins/proc/admin_force_selfdestruct()
+/datum/entity/admin_holder/proc/admin_force_selfdestruct()
 	set name = "Self-Destruct"
 	set desc = "Trigger self-destruct countdown. This should not be done if the self-destruct has already been called."
 	set category = "Admin.Events"
@@ -736,7 +736,7 @@
 // PANELS
 // ----------------------------
 
-/datum/entity/admins/proc/event_panel()
+/datum/entity/admin_holder/proc/event_panel()
 	if(!check_rights(R_ADMIN,0))
 		return
 
@@ -789,7 +789,7 @@
 	return
 
 
-/datum/entity/admins/proc/chempanel()
+/datum/entity/admin_holder/proc/chempanel()
 	if(!check_rights(R_MOD)) return
 
 	var/dat
@@ -821,8 +821,8 @@
 		player_data.admin_holder.chempanel()
 	return
 
-/datum/entity/admins/var/create_humans_html = null
-/datum/entity/admins/proc/create_humans(mob/user)
+/datum/entity/admin_holder/var/create_humans_html = null
+/datum/entity/admin_holder/proc/create_humans(mob/user)
 	if(!GLOB.gear_name_presets_list)
 		return
 
@@ -840,8 +840,8 @@
 	if(player_data.admin_holder)
 		player_data.admin_holder.create_humans(usr)
 
-/datum/entity/admins/var/create_xenos_html = null
-/datum/entity/admins/proc/create_xenos(mob/user)
+/datum/entity/admin_holder/var/create_xenos_html = null
+/datum/entity/admin_holder/proc/create_xenos(mob/user)
 	if(!create_xenos_html)
 		var/hive_types = jointext(ALL_XENO_HIVES, ";")
 		var/xeno_types = jointext(ALL_XENO_CASTES, ";")
@@ -865,7 +865,7 @@
 		player_data.admin_holder.clear_mutineers()
 	return
 
-/datum/entity/admins/proc/clear_mutineers()
+/datum/entity/admin_holder/proc/clear_mutineers()
 	if(!check_rights(R_MOD))
 		return
 

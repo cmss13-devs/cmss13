@@ -1313,8 +1313,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 		if("src")
 			return source
 		if("marked")
-			if(usr?.client?.player_data.admin_holder?.marked_datum)
-				return usr?.client?.player_data.admin_holder?.marked_datum
+			if(usr?.client?.player_data?.admin_holder?.marked_datum)
+				return usr?.client?.player_data?.admin_holder?.marked_datum
 			else
 				return null
 		if("world")

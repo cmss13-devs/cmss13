@@ -1,6 +1,6 @@
-/datum/entity/admins/var/static/create_object_html = null
+/datum/entity/admin_holder/var/static/create_object_html = null
 
-/datum/entity/admins/proc/create_object(mob/user)
+/datum/entity/admin_holder/proc/create_object(mob/user)
 	if (!create_object_html)
 		var/objectjs = null
 		objectjs = jointext(typesof(/obj), ";")
@@ -11,7 +11,7 @@
 	show_browser(user, replacetext(create_object_html, "/* ref src */", "\ref[src]"), "Create Object", "create_object", "size=450x525")
 
 
-/datum/entity/admins/proc/quick_create_object(mob/user)
+/datum/entity/admin_holder/proc/quick_create_object(mob/user)
 
 	var/quick_create_object_html = null
 	var/pathtext = null

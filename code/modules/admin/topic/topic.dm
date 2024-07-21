@@ -1,4 +1,4 @@
-/datum/entity/admins/proc/CheckAdminHref(href, href_list)
+/datum/entity/admin_holder/proc/CheckAdminHref(href, href_list)
 	var/auth = href_list["admin_token"]
 	. = auth && (auth == href_token || auth == GLOB.href_token)
 	if(.)
@@ -11,7 +11,7 @@
 		return TRUE
 	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
 
-/datum/entity/admins/Topic(href, href_list)
+/datum/entity/admin_holder/Topic(href, href_list)
 	..()
 
 	if(usr.client != src.owner || !check_rights(0))
@@ -62,7 +62,7 @@
 				to_chat(usr, "<font color='red'>Error: Topic 'editrights': No valid ckey</font>")
 				return
 
-		var/datum/entity/admins/D = GLOB.admin_datums[adm_ckey]
+		var/datum/entity/admin_holder/D = GLOB.admin_datums[adm_ckey]
 
 		if(task == "remove")
 			if(alert("Are you sure you want to remove [adm_ckey]?","Message","Yes","Cancel") == "Yes")
@@ -107,7 +107,7 @@
 				D.rank = new_rank //update the rank
 				D.rights = rights //update the rights based on admin_ranks (default: 0)
 			else
-				D = new /datum/entity/admins(new_rank, rights, adm_ckey)
+				D = new /datum/entity/admin_holder(new_rank, rights, adm_ckey)
 
 			var/client/C = GLOB.directory[adm_ckey] //find the client with the specified ckey (if they are logged in)
 			D.associate(C) //link up with the client and add verbs
@@ -2386,7 +2386,7 @@
 
 	return
 
-/datum/entity/admins/proc/accept_ert(mob/approver, mob/ref_person)
+/datum/entity/admin_holder/proc/accept_ert(mob/approver, mob/ref_person)
 	if(GLOB.distress_cancel)
 		return
 	GLOB.distress_cancel = TRUE
@@ -2395,7 +2395,7 @@
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
 ///Handles calling the ERT sent by handheld distress beacons
-/datum/entity/admins/proc/accept_handheld_ert(mob/approver, mob/ref_person, ert_called)
+/datum/entity/admin_holder/proc/accept_handheld_ert(mob/approver, mob/ref_person, ert_called)
 	if(GLOB.distress_cancel)
 		return
 	GLOB.distress_cancel = TRUE
@@ -2403,7 +2403,7 @@
 	log_game("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 
-/datum/entity/admins/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
+/datum/entity/admin_holder/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
 	var/counter = 0
 
 	var/dat = ""
@@ -2429,7 +2429,7 @@
 	dat += "</tr></table>"
 	return dat
 
-/datum/entity/admins/proc/get_job_titles_from_list(list/roles)
+/datum/entity/admin_holder/proc/get_job_titles_from_list(list/roles)
 	var/list/temp = list()
 	for(var/jobPos in roles)
 		if(!jobPos)

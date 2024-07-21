@@ -1603,7 +1603,7 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	for(var/mob/M as anything in mobs)
 		if(skip_mindless && (!M.mind && !M.ckey))
 			continue
-		if(M.client?.player_data.admin_holder)
+		if(M.client?.player_data?.admin_holder)
 			if(M.client.player_data.admin_holder.fakekey || M.client.player_data.admin_holder.invisimined) //stealthmins
 				continue
 		var/name = avoid_assoc_duplicate_keys(M.name, namecounts)

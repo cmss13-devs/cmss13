@@ -1,7 +1,7 @@
 GLOBAL_LIST_INIT_TYPED(admin_ranks, /datum/view_record/admin_rank, load_ranks())
 GLOBAL_PROTECT(admin_ranks)
 
-GLOBAL_LIST_INIT_TYPED(admin_datums, /datum/view_record/admins, load_admins())
+GLOBAL_LIST_INIT_TYPED(admin_datums, /datum/view_record/admin_holder, load_admins())
 GLOBAL_PROTECT(admin_datums)
 
 GLOBAL_VAR_INIT(href_token, GenerateToken())
@@ -13,7 +13,7 @@ GLOBAL_PROTECT(href_token)
 
 /proc/load_admins()
 	WAIT_DB_READY
-	return DB_VIEW(/datum/view_record/admins)
+	return DB_VIEW(/datum/view_record/admin_holder)
 
 /datum/entity/admin_rank
 	var/rank
@@ -58,7 +58,7 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 	if(values["text_rights"])
 		rank.rights = rights2flags(values["text_rights"])
 
-/datum/entity/admins
+/datum/entity/admin_holder
 	var/admin_id
 	var/ckey
 	var/rank
@@ -81,10 +81,10 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 	var/datum/filter_editor/filteriffic
 	var/datum/particle_editor/particle_test
 
-BSQL_PROTECT_DATUM(/datum/entity/admins)
+BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
 
-/datum/entity_meta/admins
-	entity_type = /datum/entity/admins
+/datum/entity_meta/admin_holder
+	entity_type = /datum/entity/admin_holder
 	table_name = "admins"
 	field_types = list(
 		"admin_id" = DB_FIELDTYPE_BIGINT,
@@ -93,17 +93,17 @@ BSQL_PROTECT_DATUM(/datum/entity/admins)
 		"extra_titles_encoded" = DB_FIELDTYPE_STRING_MAX,
 	)
 
-/datum/entity_meta/admins/map(datum/entity/admins/admin, list/values)
+/datum/entity_meta/admin_holder/map(datum/entity/admin_holder/admin, list/values)
 	..()
 	if(values["extra_titles_encoded"])
 		admin.extra_titles = json_decode(values["extra_titles_encoded"])
 
-/datum/entity_meta/admins/unmap(datum/entity/admins/admin)
+/datum/entity_meta/admin_holder/unmap(datum/entity/admin_holder/admin)
 	. = ..()
 	if(length(admin.extra_titles))
 		.["extra_titles_encoded"] = json_encode(admin.extra_titles)
 
-/datum/view_record/admins
+/datum/view_record/admin_holder
 	var/admin_id
 	var/ckey
 	var/rank
@@ -112,9 +112,9 @@ BSQL_PROTECT_DATUM(/datum/entity/admins)
 
 	var/datum/view_record/admin_rank/admin_rank
 
-/datum/entity_view_meta/admins
-	root_record_type = /datum/entity/admins
-	destination_entity = /datum/view_record/admins
+/datum/entity_view_meta/admin_holder
+	root_record_type = /datum/entity/admin_holder
+	destination_entity = /datum/view_record/admin_holder
 	fields = list(
 		"admin_id",
 		"ckey",
@@ -122,15 +122,18 @@ BSQL_PROTECT_DATUM(/datum/entity/admins)
 		"extra_titles_encoded",
 	)
 
-/datum/entity_view_meta/admins/map(datum/view_record/admins/admin, list/values)
+/datum/entity_view_meta/admin_holder/map(datum/view_record/admin_holder/admin, list/values)
 	..()
 	admin.admin_rank = GLOB.admin_ranks[admin.rank]
 	if(values["extra_titles_encoded"])
 		admin.extra_titles = json_decode(values["extra_titles_encoded"])
 
-/datum/entity/admins/proc/associate(client/admin_client)
+/datum/entity/admin_holder/proc/associate(client/admin_client)
 	if(istype(admin_client))
-		admin_rank = GLOB.admin_ranks[rank]
+		if(rank in GLOB.admin_ranks)
+			admin_rank = GLOB.admin_ranks[rank]
+		else
+			stack_trace("Warning, admins missconfiguration in DB")
 		owner = admin_client
 		owner.player_data.admin_holder = src
 		owner.add_admin_verbs()
@@ -141,7 +144,7 @@ BSQL_PROTECT_DATUM(/datum/entity/admins)
 			if(!world.GetConfig("admin", admin_client.ckey))
 				world.SetConfig("APP/admin", admin_client.ckey, "role = coder")
 
-/datum/entity/admins/proc/disassociate()
+/datum/entity/admin_holder/proc/disassociate()
 	if(owner)
 		GLOB.admins -= owner
 		owner.remove_admin_verbs()
@@ -229,13 +232,13 @@ you will have to do something like if(client.player_data.admin_holder.admin_rank
 		player_data.admin_holder.associate(src)
 	return TRUE
 
-/datum/entity/admins/proc/check_for_rights(rights_required)
+/datum/entity/admin_holder/proc/check_for_rights(rights_required)
 	if(rights_required && !(rights_required & admin_rank.rights))
 		return FALSE
 	return TRUE
 
 /// gets any additional channels for tgui-say (admin & mentor)
-/datum/entity/admins/proc/get_tgui_say_extra_channels()
+/datum/entity/admin_holder/proc/get_tgui_say_extra_channels()
 	var/extra_channels = list()
 	if(check_for_rights(R_ADMIN) || check_for_rights(R_MOD))
 		extra_channels += ADMIN_CHANNEL
@@ -248,7 +251,7 @@ you will have to do something like if(client.player_data.admin_holder.admin_rank
 
 //This proc checks whether subject has at least ONE of the rights specified in rights_required.
 /proc/check_rights_for(client/subject, rights_required)
-	if(subject?.player_data.admin_holder)
+	if(subject?.player_data?.admin_holder)
 		return subject.player_data.admin_holder.check_for_rights(rights_required)
 	return FALSE
 
@@ -263,7 +266,7 @@ you will have to do something like if(client.player_data.admin_holder.admin_rank
 		var/client/C = usr.client
 		if(!C)
 			CRASH("No client for HrefToken()!")
-		var/datum/entity/admins/holder = C.player_data.admin_holder
+		var/datum/entity/admin_holder/holder = C.player_data.admin_holder
 		if(holder)
 			tok = holder.href_token
 	return tok
@@ -358,3 +361,28 @@ you will have to do something like if(client.player_data.admin_holder.admin_rank
 	if(rights & RL_EVERYTHING)
 		text_rights += "everything|"
 	return text_rights
+
+/proc/localhost_rank_check(client/admin_client, list/datum/entity/admin_rank/ranks)
+	var/datum/entity/admin_rank/rank
+	if(!length(ranks))
+		rank = DB_ENTITY(/datum/entity/admin_rank)
+		rank.rank = "!localhost!"
+		rank.rights = RL_HOST
+		rank.save()
+		rank.sync()
+	else
+		rank = ranks[length(ranks)]
+	DB_FILTER(/datum/entity/admin_holder, DB_COMP("ckey", DB_EQUALS, admin_client.ckey), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(localhost_entity_check), admin_client, rank))
+
+/proc/localhost_entity_check(client/admin_client, datum/entity/admin_rank/rank, list/datum/entity/admin_holder/admins)
+	var/datum/entity/admin_holder/admin
+	if(!length(admins))
+		admin = DB_ENTITY(/datum/entity/admin_holder)
+		admin.admin_id = admin_client.player_data.id
+		admin.ckey = admin_client.ckey
+		admin.rank = rank.rank
+		admin.save()
+		admin.sync()
+	else
+		admin = admins[length(admins)]
+	admin.associate(admin_client)

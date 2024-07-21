@@ -33,7 +33,7 @@
 	SSticker.mode.pred_additional_max = value
 	message_admins("[key_name_admin(usr)] adjusted the additional pred amount from [cur_extra] to [value].")
 
-/datum/entity/admins/proc/force_predator_round()
+/datum/entity/admin_holder/proc/force_predator_round()
 	set name = "Toggle Predator Round"
 	set desc = "Force-toggle a predator round for the round type. Only works on maps that support Predator spawns."
 	set category = "Server.Round"
@@ -133,7 +133,7 @@
 		log_admin("[key_name(usr)] checked round status.")
 	return
 
-/datum/entity/admins/proc/end_round()
+/datum/entity/admin_holder/proc/end_round()
 	set name = "End Round"
 	set desc = "Immediately ends the round, be very careful"
 	set category = "Server.Round"
@@ -157,7 +157,7 @@
 		"})
 	return
 
-/datum/entity/admins/proc/delay()
+/datum/entity/admin_holder/proc/delay()
 	set name = "Delay Round Start/End"
 	set desc = "Delay the game start/end"
 	set category = "Server.Round"
@@ -181,7 +181,7 @@
 		to_chat(world, SPAN_CENTERBOLD("The game start has been [SSticker.delay_start ? "delayed" : "continued"]."))
 		return
 
-/datum/entity/admins/proc/startnow()
+/datum/entity/admin_holder/proc/startnow()
 	set name = "Start Round"
 	set desc = "Start the round RIGHT NOW"
 	set category = "Server.Round"

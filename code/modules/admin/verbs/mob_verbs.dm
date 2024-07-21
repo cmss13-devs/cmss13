@@ -391,7 +391,7 @@
 
 	message_admins("[key_name(src)] changed name of [old_name] to [newname].")
 
-/datum/entity/admins/proc/togglesleep(mob/living/M as mob in GLOB.mob_list)
+/datum/entity/admin_holder/proc/togglesleep(mob/living/M as mob in GLOB.mob_list)
 	set name = "Toggle Sleeping"
 	set category = null
 

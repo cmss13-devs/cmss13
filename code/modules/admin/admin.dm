@@ -63,19 +63,19 @@
 /datum/player_info/var/timestamp // Because this is bloody annoying
 
 
-/datum/entity/admins/proc/player_has_info(key as text)
+/datum/entity/admin_holder/proc/player_has_info(key as text)
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
 	if(!LAZYLEN(infos)) return 0
 	else return 1
 
-/datum/entity/admins/proc/player_notes_all(key as text)
+/datum/entity/admin_holder/proc/player_notes_all(key as text)
 	set category = null
 	set name = "Player Record"
-	if(!istype(src, /datum/entity/admins))
+	if(!istype(src, /datum/entity/admin_holder))
 		src = usr.client.player_data.admin_holder
-	if(!istype(src, /datum/entity/admins) || !(admin_rank.rights & R_MOD))
+	if(!istype(src, /datum/entity/admin_holder) || !(admin_rank.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
@@ -108,7 +108,7 @@
 	show_browser(usr, dat, "Info on [key]", "allplayerinfo", "size=480x480")
 
 
-/datum/entity/admins/proc/Jobbans()
+/datum/entity/admin_holder/proc/Jobbans()
 	if(!check_rights(R_BAN))
 		return
 
@@ -130,7 +130,7 @@
 	show_browser(usr, dat, "Job Bans", "ban", "size=400x400")
 
 
-/datum/entity/admins/proc/Game()
+/datum/entity/admin_holder/proc/Game()
 	if(!check_rights(NO_FLAGS))
 		return
 
@@ -153,7 +153,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////admins2.dm merge
 //i.e. buttons/verbs
 
-/datum/entity/admins/proc/toggleaban()
+/datum/entity/admin_holder/proc/toggleaban()
 	set category = "Server"
 	set desc = "Respawn basically"
 	set name = "Toggle Respawn"
@@ -168,7 +168,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
-/datum/entity/admins/proc/spawn_atom(object as text)
+/datum/entity/admin_holder/proc/spawn_atom(object as text)
 	set category = "Debug"
 	set desc = "(atom path) Spawn an atom"
 	set name = "Spawn"
@@ -234,14 +234,14 @@
 	else
 		return 0
 
-/datum/entity/admins/proc/send_tip()
+/datum/entity/admin_holder/proc/send_tip()
 	if(SSticker)
 		var/success = SSticker.send_tip_of_the_round()
 		if(!success)
 			to_chat(usr, SPAN_ADMINNOTICE("Sending tip failed!"))
 
 /// Allow admin to add or remove traits of datum
-/datum/entity/admins/proc/modify_traits(datum/D)
+/datum/entity/admin_holder/proc/modify_traits(datum/D)
 	if(!D)
 		return
 

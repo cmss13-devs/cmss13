@@ -46,7 +46,7 @@
 	var/migrating_bans = FALSE
 	var/migrating_jobbans = FALSE
 
-	var/datum/entity/admins/admin_holder
+	var/datum/entity/admin_holder/admin_holder
 	var/datum/entity/discord_link/discord_link
 	var/datum/entity/player/permaban_admin
 	var/datum/entity/player/time_ban_admin
@@ -428,7 +428,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		discord_link = DB_ENTITY(/datum/entity/discord_link, discord_link_id)
 
 	if(admin_id)
-		admin_holder = DB_ENTITY(/datum/entity/admins, admin_id)
+		admin_holder = DB_ENTITY(/datum/entity/admin_holder, admin_id)
 		admin_holder.associate(owning_client)
 		admin_holder.save()
 		admin_holder.sync()

@@ -104,55 +104,55 @@
 
 
 /datum/escape_menu/proc/home_chem()
-	if(!client?.player_data.admin_holder.check_for_rights(R_MOD))
+	if(!client?.player_data?.admin_holder.check_for_rights(R_MOD))
 		return
 
-	client?.player_data.admin_holder.chempanel()
+	client?.player_data?.admin_holder.chempanel()
 
 /datum/escape_menu/proc/home_event()
-	if(!client?.player_data.admin_holder.check_for_rights(R_ADMIN))
+	if(!client?.player_data?.admin_holder.check_for_rights(R_ADMIN))
 		return
 
-	client?.player_data.admin_holder.event_panel()
+	client?.player_data?.admin_holder.event_panel()
 
 /datum/escape_menu/proc/home_game()
-	if(!client?.player_data.admin_holder.check_for_rights(R_SPAWN))
+	if(!client?.player_data?.admin_holder.check_for_rights(R_SPAWN))
 		return
 
-	client?.player_data.admin_holder.Game()
+	client?.player_data?.admin_holder.Game()
 
 /datum/escape_menu/proc/home_medal()
-	if(!client?.player_data.admin_holder.check_for_rights(R_MOD))
+	if(!client?.player_data?.admin_holder.check_for_rights(R_MOD))
 		return
 
 	GLOB.medals_panel.tgui_interact(client?.mob)
 
 /datum/escape_menu/proc/home_tacmaps()
-	if(!client?.player_data.admin_holder.check_for_rights(R_ADMIN|R_MOD))
+	if(!client?.player_data?.admin_holder.check_for_rights(R_ADMIN|R_MOD))
 		return
 
 	GLOB.tacmap_admin_panel.tgui_interact(client?.mob)
 
 /datum/escape_menu/proc/home_teleport()
-	if(!client?.player_data.admin_holder.check_for_rights(R_MOD))
+	if(!client?.player_data?.admin_holder.check_for_rights(R_MOD))
 		return
 
-	client?.player_data.admin_holder.teleport_panel()
+	client?.player_data?.admin_holder.teleport_panel()
 
 /datum/escape_menu/proc/home_inview()
-	if(!client?.player_data.admin_holder.check_for_rights(R_MOD))
+	if(!client?.player_data?.admin_holder.check_for_rights(R_MOD))
 		return
 
-	client?.player_data.admin_holder.in_view_panel()
+	client?.player_data?.admin_holder.in_view_panel()
 
 /datum/escape_menu/proc/home_unban()
-	if(!client?.player_data.admin_holder.check_for_rights(R_BAN))
+	if(!client?.player_data?.admin_holder.check_for_rights(R_BAN))
 		return
 
-	client?.player_data.admin_holder.unbanpanel()
+	client?.player_data?.admin_holder.unbanpanel()
 
 /datum/escape_menu/proc/home_shuttle()
-	if(!client?.player_data.admin_holder.check_for_rights(R_ADMIN|R_DEBUG|R_HOST))
+	if(!client?.player_data?.admin_holder.check_for_rights(R_ADMIN|R_DEBUG|R_HOST))
 		return
 
 	SSshuttle.tgui_interact(client?.mob)

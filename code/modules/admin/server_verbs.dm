@@ -1,4 +1,4 @@
-/datum/entity/admins/proc/change_ground_map()
+/datum/entity/admin_holder/proc/change_ground_map()
 	set category = "Server"
 	set name = "M: Change Ground Map"
 
@@ -39,7 +39,7 @@
 	log_admin("[key_name(usr)] changed the map to [VM.map_name].")
 	message_admins("[key_name_admin(usr)] changed the map to [VM.map_name].")
 
-/datum/entity/admins/proc/vote_ground_map()
+/datum/entity/admin_holder/proc/vote_ground_map()
 	set category = "Server"
 	set name = "M: Start Ground Map Vote"
 
@@ -50,7 +50,7 @@
 	log_admin("[key_name(usr)] started a groundmap vote.")
 	message_admins("[key_name_admin(usr)] started a groundmap vote.")
 
-/datum/entity/admins/proc/override_ground_map()
+/datum/entity/admin_holder/proc/override_ground_map()
 	set category = "Server"
 	set name = "M: Override Next Map"
 
@@ -86,7 +86,7 @@
 	tgui_alert(usr, "Done, using default map_config ('Unknown' map). ALWAYS check at start of round that the map loaded correctly when using this. Passing a map vote or changing it with verb vote will revert these changes. Good luck!", "One little thing...", list("OK"))
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] overrode next '[map_type]' map with '[map]' and default settings."))
 
-/datum/entity/admins/proc/change_ship_map()
+/datum/entity/admin_holder/proc/change_ship_map()
 	set category = "Server"
 	set name = "M: Change Ship Map"
 

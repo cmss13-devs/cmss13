@@ -1,4 +1,4 @@
-/datum/entity/admins/proc/restart()
+/datum/entity/admin_holder/proc/restart()
 	set name = "Restart Server"
 	set desc = "Restarts the world"
 	set category = "Server"
@@ -17,7 +17,7 @@
 		sleep(50)
 		world.Reboot()
 
-/datum/entity/admins/proc/togglejoin()
+/datum/entity/admin_holder/proc/togglejoin()
 	set name = "Toggle Joining Round"
 	set desc = "Players can still log into the server, but players won't be able to join the game as a new mob."
 	set category = "Server"
@@ -30,7 +30,7 @@
 	message_admins("[key_name_admin(usr)] toggled new player game joining.")
 	world.update_status()
 
-/datum/entity/admins/proc/toggledsay()
+/datum/entity/admin_holder/proc/toggledsay()
 	set name = "Toggle Server Deadchat"
 	set desc = "Globally Toggles Deadchat"
 	set category = "Server"
@@ -42,7 +42,7 @@
 		to_world("<B>Deadchat has been globally disabled!</B>")
 	message_admins("[key_name_admin(usr)] toggled deadchat.")
 
-/datum/entity/admins/proc/toggleooc()
+/datum/entity/admin_holder/proc/toggleooc()
 	set name = "Toggle OOC"
 	set desc = "Globally Toggles OOC"
 	set category = "Server"
@@ -54,7 +54,7 @@
 		to_world("<B>The OOC channel has been globally disabled!</B>")
 	message_admins("[key_name_admin(usr)] toggled OOC.")
 
-/datum/entity/admins/proc/togglelooc()
+/datum/entity/admin_holder/proc/togglelooc()
 	set name = "Toggle LOOC"
 	set desc = "Globally Toggles LOOC"
 	set category = "Server"

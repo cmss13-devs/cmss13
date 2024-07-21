@@ -1,4 +1,4 @@
-/datum/entity/admins/proc/topic_inviews(href)
+/datum/entity/admin_holder/proc/topic_inviews(href)
 	switch(href)
 		if("rejuvenateall")
 			owner.rejuvenate_all_in_view()

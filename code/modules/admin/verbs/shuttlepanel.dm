@@ -1,4 +1,4 @@
-/datum/entity/admins/proc/open_shuttlepanel()
+/datum/entity/admin_holder/proc/open_shuttlepanel()
 	set category = "Admin.Shuttles"
 	set name = "Shuttle Manipulator"
 	set desc = "Opens the shuttle manipulator UI."

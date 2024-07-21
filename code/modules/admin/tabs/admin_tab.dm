@@ -125,7 +125,7 @@
 	to_chat(src, SPAN_NOTICE("You have turned invismin [player_data.admin_holder.fakekey ? "ON" : "OFF"]"))
 	log_admin("[key_name_admin(usr)] has turned invismin [player_data.admin_holder.fakekey ? "ON" : "OFF"]")
 
-/datum/entity/admins/proc/announce()
+/datum/entity/admin_holder/proc/announce()
 	set name = "Admin Announcement"
 	set desc = "Announce your desires to the world"
 	set category = "Admin.Game"
@@ -140,7 +140,7 @@
 		to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN(" <b>[usr.client.player_data.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 
-/datum/entity/admins/proc/player_notes_show(key as text)
+/datum/entity/admin_holder/proc/player_notes_show(key as text)
 	set name = "Player Notes Show"
 	set category = "Admin"
 
@@ -181,7 +181,7 @@
 	dat += "</body></html>"
 	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
 
-/datum/entity/admins/proc/check_ckey(target_key as text)
+/datum/entity/admin_holder/proc/check_ckey(target_key as text)
 	set name = "Check CKey"
 	set category = "Admin"
 
@@ -201,7 +201,7 @@
 
 	log_admin("[key_name(usr)] analyzed ckey '[target_key]'")
 
-/datum/entity/admins/proc/sleepall()
+/datum/entity/admin_holder/proc/sleepall()
 	set name = "Sleep All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -218,7 +218,7 @@
 
 	message_admins("[key_name(usr)] used Toggle Sleep In View.")
 
-/datum/entity/admins/proc/wakeall()
+/datum/entity/admin_holder/proc/wakeall()
 	set name = "Wake All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -264,7 +264,7 @@
 			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
 			for(var/iter_ckey in pinged_admin_clients)
 				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
-				if(!iter_admin_client?.player_data.admin_holder)
+				if(!iter_admin_client?.player_data?.admin_holder)
 					continue
 				window_flash(iter_admin_client)
 				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
@@ -281,7 +281,7 @@
 		if(!check_client_rights(client, R_ADMIN|R_MOD, FALSE))
 			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
 
-/datum/entity/admins/proc/alertall()
+/datum/entity/admin_holder/proc/alertall()
 	set name = "Alert All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -299,7 +299,7 @@
 	log_admin("[key_name(src)] sent an In View admin alert with custom message [message].")
 	message_admins("[key_name(src)] sent an In View admin alert with custom message [message].")
 
-/datum/entity/admins/proc/directnarrateall()
+/datum/entity/admin_holder/proc/directnarrateall()
 	set name = "Direct Narrate All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -321,7 +321,7 @@
 #define SUBTLE_MESSAGE_USCM "USCM High Command"
 #define SUBTLE_MESSAGE_FACTION "Faction Specific"
 
-/datum/entity/admins/proc/subtlemessageall()
+/datum/entity/admin_holder/proc/subtlemessageall()
 	set name = "Subtle Message All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -519,7 +519,7 @@
 // ----------------------------
 // PANELS
 // ----------------------------
-/datum/entity/admins/proc/teleport_panel()
+/datum/entity/admin_holder/proc/teleport_panel()
 	if(!check_rights(R_MOD))
 		return
 
@@ -553,7 +553,7 @@
 
 	player_data.admin_holder.teleport_panel()
 
-/datum/entity/admins/proc/vehicle_panel()
+/datum/entity/admin_holder/proc/vehicle_panel()
 	if(!check_rights(R_MOD))
 		return
 
@@ -576,7 +576,7 @@
 
 	player_data.admin_holder.vehicle_panel()
 
-/datum/entity/admins/proc/in_view_panel()
+/datum/entity/admin_holder/proc/in_view_panel()
 	var/dat = {"
 		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
 		<BR>
@@ -599,7 +599,7 @@
 	show_browser(usr, dat, "In View Panel", "inviews")
 	return
 
-/datum/entity/admins/proc/imaginary_friend()
+/datum/entity/admin_holder/proc/imaginary_friend()
 	set category = "OOC.Mentor"
 	set name = "Imaginary Friend"
 

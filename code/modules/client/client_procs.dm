@@ -303,8 +303,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	player_entity = setup_player_entity(ckey)
 
 	if(check_localhost_status())
-		var/datum/entity/admins/admin = new("!localhost!", RL_HOST, ckey)
-		admin.associate(src)
+		DB_FILTER(/datum/entity/admin_rank, DB_COMP("rank", DB_EQUALS, "!localhost!"), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(localhost_rank_check), src))
 
 	add_pref_verbs()
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)

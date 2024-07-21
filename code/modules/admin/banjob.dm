@@ -79,7 +79,7 @@ GLOBAL_LIST_EMPTY(jobban_keylist)
 	if(player_data.admin_holder)
 		player_data.admin_holder.job_ban(M)
 
-/datum/entity/admins/proc/job_ban(mob/M)
+/datum/entity/admin_holder/proc/job_ban(mob/M)
 	if(!ismob(M))
 		to_chat(usr, "This can only be used on instances of type /mob")
 		return

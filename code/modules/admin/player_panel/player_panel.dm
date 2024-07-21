@@ -1,5 +1,5 @@
 
-/datum/entity/admins/proc/player_panel_new()//The new one
+/datum/entity/admin_holder/proc/player_panel_new()//The new one
 	if(!check_rights(R_MOD))
 		return
 	var/dat = "<html>"
@@ -272,7 +272,7 @@
 	show_browser(usr, dat, "User Panel", "players", "size=600x480")
 
 //Extended panel with ban related things
-/datum/entity/admins/proc/player_panel_extended()
+/datum/entity/admin_holder/proc/player_panel_extended()
 	if(!check_rights(R_MOD))
 		return
 
@@ -316,7 +316,7 @@
 	show_browser(usr, dat, "Player Menu", "players", "size=640x480")
 
 
-/datum/entity/admins/proc/check_antagonists()
+/datum/entity/admin_holder/proc/check_antagonists()
 	if(!SSticker || !(SSticker.current_state >= GAME_STATE_PLAYING))
 		alert("The game hasn't started yet!")
 		return
@@ -377,7 +377,7 @@
 	dat += "</body></html>"
 	show_browser(usr, dat, "Antagonists", "antagonists", "size=600x500")
 
-/datum/entity/admins/proc/check_round_status()
+/datum/entity/admin_holder/proc/check_round_status()
 	if (SSticker.current_state >= GAME_STATE_PLAYING)
 		var/dat = "<html><body><h1><B>Round Status</B></h1>"
 		dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
@@ -485,7 +485,7 @@
 		var/mob/living/L = targetMob
 		.["mob_feels_pain"] = L.pain?.feels_pain
 
-	.["current_permissions"] = user.client?.player_data.admin_holder?.admin_rank?.rights
+	.["current_permissions"] = user.client?.player_data?.admin_holder?.admin_rank?.rights
 
 	if(targetMob.client)
 		var/client/targetClient = targetMob.client
@@ -583,7 +583,7 @@ GLOBAL_LIST_INIT(pp_status_flags, list(
 
 	return P.act(clUser, targetMob, params)
 
-/datum/entity/admins/proc/show_player_panel(mob/M in GLOB.mob_list)
+/datum/entity/admin_holder/proc/show_player_panel(mob/M in GLOB.mob_list)
 	set name = "Show Player Panel"
 	set desc = "Edit player (respawn, ban, heal, etc)"
 	set category = null

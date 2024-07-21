@@ -4,7 +4,7 @@
 
 	msg = "<span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]"
 	if(jmp_x && jmp_y && jmp_z)
-		msg += " (<a href='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jmp_x];Y=[jmp_y];Z=[jmp_z]'>JMP</a>)"
+		msg += " (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jmp_x];Y=[jmp_y];Z=[jmp_z]'>JMP</a>)"
 	msg += "</span>"
 
 	for(var/client/C as anything in GLOB.admins)
@@ -15,7 +15,7 @@
 	if(GLOB.perf_flags & PERF_TOGGLE_ATTACKLOGS)
 		return
 	log_attack(text)
-	var/rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> [text] (<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jump_x];Y=[jump_y];Z=[jump_z]'>JMP</a>)")
+	var/rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> [text] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jump_x];Y=[jump_y];Z=[jump_z]'>JMP</a>)")
 	for(var/client/C as anything in GLOB.admins)
 		if(check_client_rights(C, R_MOD, FALSE))
 			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
@@ -63,19 +63,19 @@
 /datum/player_info/var/timestamp // Because this is bloody annoying
 
 
-/datum/entity/admin_holder/proc/player_has_info(key as text)
+/datum/view_record/admin_holder/proc/player_has_info(key as text)
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
 	if(!LAZYLEN(infos)) return 0
 	else return 1
 
-/datum/entity/admin_holder/proc/player_notes_all(key as text)
+/datum/view_record/admin_holder/proc/player_notes_all(key as text)
 	set category = null
 	set name = "Player Record"
-	if(!istype(src, /datum/entity/admin_holder))
-		src = usr.client.player_data?.admin_holder
-	if(!istype(src, /datum/entity/admin_holder) || !(admin_rank.rights & R_MOD))
+	if(!istype(src, /datum/view_record/admin_holder))
+		src = usr.client.admin_holder
+	if(!istype(src, /datum/view_record/admin_holder) || !(admin_rank.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
@@ -100,7 +100,7 @@
 
 			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || check_for_rights(R_PERMISSIONS))
-			dat += "<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
 
 		dat += "<br><br>"
 	dat += "</body></html>"
@@ -108,7 +108,7 @@
 	show_browser(usr, dat, "Info on [key]", "allplayerinfo", "size=480x480")
 
 
-/datum/entity/admin_holder/proc/Jobbans()
+/datum/view_record/admin_holder/proc/Jobbans()
 	if(!check_rights(R_BAN))
 		return
 
@@ -130,21 +130,21 @@
 	show_browser(usr, dat, "Job Bans", "ban", "size=400x400")
 
 
-/datum/entity/admin_holder/proc/Game()
+/datum/view_record/admin_holder/proc/Game()
 	if(!check_rights(NO_FLAGS))
 		return
 
 	var/dat = {"
-		<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode=1'>Change Game Mode</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode=1'>Change Game Mode</A><br>
 		"}
 
 	dat += {"
 		<BR>
-		<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];create_object=1'>Create Object</A><br>
-		<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];quick_create_object=1'>Quick Create Object</A><br>
-		<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];create_turf=1'>Create Turf</A><br>
-		<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];create_mob=1'>Create Mob</A><br>
-		<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Immediately Send Tip</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];create_object=1'>Create Object</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];quick_create_object=1'>Quick Create Object</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];create_turf=1'>Create Turf</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];create_mob=1'>Create Mob</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Immediately Send Tip</A><br>
 		"}
 
 	show_browser(usr, dat, "Game Panel", "admin2", "size=210x280")
@@ -153,7 +153,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////admins2.dm merge
 //i.e. buttons/verbs
 
-/datum/entity/admin_holder/proc/toggleaban()
+/datum/view_record/admin_holder/proc/toggleaban()
 	set category = "Server"
 	set desc = "Respawn basically"
 	set name = "Toggle Respawn"
@@ -168,7 +168,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
-/datum/entity/admin_holder/proc/spawn_atom(object as text)
+/datum/view_record/admin_holder/proc/spawn_atom(object as text)
 	set category = "Debug"
 	set desc = "(atom path) Spawn an atom"
 	set name = "Spawn"
@@ -234,14 +234,14 @@
 	else
 		return 0
 
-/datum/entity/admin_holder/proc/send_tip()
+/datum/view_record/admin_holder/proc/send_tip()
 	if(SSticker)
 		var/success = SSticker.send_tip_of_the_round()
 		if(!success)
 			to_chat(usr, SPAN_ADMINNOTICE("Sending tip failed!"))
 
 /// Allow admin to add or remove traits of datum
-/datum/entity/admin_holder/proc/modify_traits(datum/D)
+/datum/view_record/admin_holder/proc/modify_traits(datum/D)
 	if(!D)
 		return
 

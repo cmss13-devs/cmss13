@@ -27,7 +27,7 @@
 	if (usr)
 		P.author = usr.key
 		if(check_rights(R_MOD, FALSE))
-			P.rank = usr.client.player_data?.admin_holder.admin_rank.rank
+			P.rank = usr.client.admin_holder.admin_rank.rank
 		else
 			to_chat(usr, "NA01: Something went wrong, tell a coder.")
 			return

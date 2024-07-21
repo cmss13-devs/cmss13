@@ -1,4 +1,4 @@
-/datum/entity/admin_holder/proc/CheckAdminHref(href, href_list)
+/datum/view_record/admin_holder/proc/CheckAdminHref(href, href_list)
 	var/auth = href_list["admin_token"]
 	. = auth && (auth == href_token || auth == GLOB.href_token)
 	if(.)
@@ -11,7 +11,7 @@
 		return TRUE
 	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
 
-/datum/entity/admin_holder/Topic(href, href_list)
+/datum/view_record/admin_holder/Topic(href, href_list)
 	..()
 
 	if(usr.client != src.owner || !check_rights(0))
@@ -62,7 +62,7 @@
 				to_chat(usr, "<font color='red'>Error: Topic 'editrights': No valid ckey</font>")
 				return
 
-		var/datum/entity/admin_holder/D = GLOB.admin_datums[adm_ckey]
+		var/datum/view_record/admin_holder/D = GLOB.admin_datums[adm_ckey]
 
 		if(task == "remove")
 			if(alert("Are you sure you want to remove [adm_ckey]?","Message","Yes","Cancel") == "Yes")
@@ -107,7 +107,7 @@
 				D.rank = new_rank //update the rank
 				D.rights = rights //update the rights based on admin_ranks (default: 0)
 			else
-				D = new /datum/entity/admin_holder(new_rank, rights, adm_ckey)
+				D = new /datum/view_record/admin_holder(new_rank, rights, adm_ckey)
 
 			var/client/C = GLOB.directory[adm_ckey] //find the client with the specified ckey (if they are logged in)
 			D.associate(C) //link up with the client and add verbs
@@ -651,7 +651,7 @@
 		var/mob/M = locate(href_list["eorgban"])
 		if(!ismob(M)) return
 
-		if(M.client && M.client.player_data?.admin_holder) return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
+		if(M.client && M.client.admin_holder) return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		if(!M.ckey)
 			to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
@@ -773,7 +773,7 @@
 
 		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
 		for(var/mode in config.modes)
-			dat += {"<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
+			dat += {"<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
 		dat += {"Now: [GLOB.master_mode]"}
 		show_browser(usr, dat, "Change Gamemode", "c_mode")
 
@@ -2185,7 +2185,7 @@
 
 	if(href_list["distress"]) //Distress Beacon, sends a random distress beacon when pressed
 		GLOB.distress_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		message_admins("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
 		addtimer(CALLBACK(src, PROC_REF(accept_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 		//unanswered_distress -= ref_person
 
@@ -2193,7 +2193,7 @@
 		var/mob/ref_person = href_list["distress_handheld"]
 		var/ert_name = href_list["ert_name"]
 		GLOB.distress_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to SEND [ert_name]! Launching in 10 seconds... (<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		message_admins("[key_name_admin(usr)] has opted to SEND [ert_name]! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
 		addtimer(CALLBACK(src, PROC_REF(accept_handheld_ert), usr, ref_person, ert_name), 10 SECONDS)
 
 	if(href_list["deny_distress_handheld"]) //Logs denied handheld distress beacons
@@ -2204,7 +2204,7 @@
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed
 		GLOB.destroy_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to GRANT the self-destruct! Starting in 10 seconds... (<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
+		message_admins("[key_name_admin(usr)] has opted to GRANT the self-destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
 			if(GLOB.distress_cancel)
 				return
@@ -2386,7 +2386,7 @@
 
 	return
 
-/datum/entity/admin_holder/proc/accept_ert(mob/approver, mob/ref_person)
+/datum/view_record/admin_holder/proc/accept_ert(mob/approver, mob/ref_person)
 	if(GLOB.distress_cancel)
 		return
 	GLOB.distress_cancel = TRUE
@@ -2395,7 +2395,7 @@
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
 ///Handles calling the ERT sent by handheld distress beacons
-/datum/entity/admin_holder/proc/accept_handheld_ert(mob/approver, mob/ref_person, ert_called)
+/datum/view_record/admin_holder/proc/accept_handheld_ert(mob/approver, mob/ref_person, ert_called)
 	if(GLOB.distress_cancel)
 		return
 	GLOB.distress_cancel = TRUE
@@ -2403,7 +2403,7 @@
 	log_game("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 
-/datum/entity/admin_holder/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
+/datum/view_record/admin_holder/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
 	var/counter = 0
 
 	var/dat = ""
@@ -2429,7 +2429,7 @@
 	dat += "</tr></table>"
 	return dat
 
-/datum/entity/admin_holder/proc/get_job_titles_from_list(list/roles)
+/datum/view_record/admin_holder/proc/get_job_titles_from_list(list/roles)
 	var/list/temp = list()
 	for(var/jobPos in roles)
 		if(!jobPos)

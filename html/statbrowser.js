@@ -583,7 +583,7 @@ function draw_tickets() {
 		if (part[2]) {
 			var a = document.createElement("a");
 			a.href =
-				"?_src_=player_data?.admin_holder;admin_token=" +
+				"?_src_=admin_holder;admin_token=" +
 				href_token +
 				";ahelp=" +
 				part[2] +
@@ -615,7 +615,7 @@ function draw_interviews() {
 	var manLink = document.createElement("a");
 	manLink.textContent = "Open Interview Manager Panel";
 	manLink.href =
-		"?_src_=player_data?.admin_holder;admin_token=" +
+		"?_src_=admin_holder;admin_token=" +
 		href_token +
 		";interview_man=1;statpanel_item_click=left";
 	manDiv.appendChild(manLink);
@@ -651,7 +651,7 @@ function draw_interviews() {
 		var a = document.createElement("a");
 		a.textContent = part["status"];
 		a.href =
-			"?_src_=player_data?.admin_holder;admin_token=" +
+			"?_src_=admin_holder;admin_token=" +
 			href_token +
 			";interview=" +
 			part["ref"] +

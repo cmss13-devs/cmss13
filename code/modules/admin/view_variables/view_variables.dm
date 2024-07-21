@@ -44,11 +44,11 @@
 	var/ref_line = "@[copytext(refid, 2, -1)]" // get rid of the brackets, add a @ prefix for copy pasting in asay
 
 	var/marked_line
-	if(player_data?.admin_holder && player_data?.admin_holder.marked_datum && player_data?.admin_holder.marked_datum == D)
+	if(admin_holder && admin_holder.marked_datum && admin_holder.marked_datum == D)
 		marked_line = VV_MSG_MARKED
 	var/tagged_line
-	if(player_data?.admin_holder && LAZYFIND(player_data?.admin_holder.tagged_datums, D))
-		var/tag_index = LAZYFIND(player_data?.admin_holder.tagged_datums, D)
+	if(admin_holder && LAZYFIND(admin_holder.tagged_datums, D))
+		var/tag_index = LAZYFIND(admin_holder.tagged_datums, D)
 		tagged_line = VV_MSG_TAGGED(tag_index)
 	var/varedited_line
 	if(!islist && (D.datum_flags & DF_VAR_EDITED))

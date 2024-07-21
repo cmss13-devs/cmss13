@@ -48,7 +48,7 @@ GLOBAL_DATUM_INIT(revdata, /datum/getrev, new)
 		var/datum/tgs_revision_information/test_merge/tm = line
 		var/cm = tm.head_commit
 		var/details = ": '" + html_encode(tm.title) + "' by " + html_encode(tm.author) + " at commit " + html_encode(copytext_char(cm, 1, 11))
-		if(details && findtext(details, "\[s\]") && (!usr || !usr.client.player_data?.admin_holder))
+		if(details && findtext(details, "\[s\]") && (!usr || !usr.client.admin_holder))
 			continue
 		. += "<a href=\"[CONFIG_GET(string/githuburl)]/pull/[tm.number]\">#[tm.number][details]</a><br>"
 

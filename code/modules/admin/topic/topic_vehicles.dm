@@ -1,4 +1,4 @@
-/datum/entity/admin_holder/proc/topic_vehicles(href)
+/datum/view_record/admin_holder/proc/topic_vehicles(href)
 	switch(href)
 		if("remove_clamp")
 			owner.cmd_admin_remove_clamp()

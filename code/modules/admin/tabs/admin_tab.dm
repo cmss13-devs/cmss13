@@ -2,7 +2,7 @@
 	set name = "De-Admin"
 	set category = "Admin"
 
-	if(!player_data?.admin_holder)
+	if(!admin_holder)
 		return
 
 	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") != "Yes")
@@ -27,7 +27,7 @@
 	set desc = "Remove your protection from becoming a larva."
 	set category = "Admin.Game"
 
-	if(!player_data?.admin_holder)
+	if(!admin_holder)
 		return
 	if(!isobserver(mob))
 		to_chat(usr, SPAN_WARNING("You must be a ghost to use this."))
@@ -40,22 +40,22 @@
 	set name = "Unban Panel"
 	set category = "Admin.Panels"
 
-	if(player_data?.admin_holder)
-		player_data?.admin_holder.unbanpanel()
+	if(admin_holder)
+		admin_holder.unbanpanel()
 	return
 
 /client/proc/stickyban_panel()
 	set name = "Stickyban Panel"
 	set category = "Admin.Panels"
 
-	player_data?.admin_holder?.stickypanel()
+	admin_holder?.stickypanel()
 
 /client/proc/player_panel_new()
 	set name = "Player Panel"
 	set category = "Admin.Panels"
 
-	if(player_data?.admin_holder)
-		player_data?.admin_holder.player_panel_new()
+	if(admin_holder)
+		admin_holder.player_panel_new()
 	return
 
 /client/proc/admin_ghost()
@@ -107,25 +107,25 @@
 	if(!check_rights(R_MOD))
 		return
 
-	if(player_data?.admin_holder.fakekey)
-		player_data?.admin_holder.fakekey = null
+	if(admin_holder.fakekey)
+		admin_holder.fakekey = null
 		if(isobserver(mob))
 			mob.invisibility = initial(mob.invisibility)
 			mob.alpha = initial(mob.alpha)
 			mob.mouse_opacity = initial(mob.mouse_opacity)
 	else
-		player_data?.admin_holder.fakekey = "John Titor"
+		admin_holder.fakekey = "John Titor"
 		if(isobserver(mob))
 			mob.invisibility = INVISIBILITY_MAXIMUM
 			mob.alpha = 0
 			mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-	player_data?.admin_holder.invisimined = !player_data?.admin_holder.invisimined
+	admin_holder.invisimined = !admin_holder.invisimined
 
-	to_chat(src, SPAN_NOTICE("You have turned invismin [player_data?.admin_holder.fakekey ? "ON" : "OFF"]"))
-	log_admin("[key_name_admin(usr)] has turned invismin [player_data?.admin_holder.fakekey ? "ON" : "OFF"]")
+	to_chat(src, SPAN_NOTICE("You have turned invismin [admin_holder.fakekey ? "ON" : "OFF"]"))
+	log_admin("[key_name_admin(usr)] has turned invismin [admin_holder.fakekey ? "ON" : "OFF"]")
 
-/datum/entity/admin_holder/proc/announce()
+/datum/view_record/admin_holder/proc/announce()
 	set name = "Admin Announcement"
 	set desc = "Announce your desires to the world"
 	set category = "Admin.Game"
@@ -137,10 +137,10 @@
 	if(message)
 		if(!check_rights(R_SERVER, FALSE))
 			message = adminscrub(message, 500)
-		to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN(" <b>[usr.client.player_data?.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
+		to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN(" <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 
-/datum/entity/admin_holder/proc/player_notes_show(key as text)
+/datum/view_record/admin_holder/proc/player_notes_show(key as text)
 	set name = "Player Notes Show"
 	set category = "Admin"
 
@@ -181,7 +181,7 @@
 	dat += "</body></html>"
 	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
 
-/datum/entity/admin_holder/proc/check_ckey(target_key as text)
+/datum/view_record/admin_holder/proc/check_ckey(target_key as text)
 	set name = "Check CKey"
 	set category = "Admin"
 
@@ -201,7 +201,7 @@
 
 	log_admin("[key_name(usr)] analyzed ckey '[target_key]'")
 
-/datum/entity/admin_holder/proc/sleepall()
+/datum/view_record/admin_holder/proc/sleepall()
 	set name = "Sleep All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -218,7 +218,7 @@
 
 	message_admins("[key_name(usr)] used Toggle Sleep In View.")
 
-/datum/entity/admin_holder/proc/wakeall()
+/datum/view_record/admin_holder/proc/wakeall()
 	set name = "Wake All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -254,7 +254,7 @@
 	if (!msg)
 		return
 
-	REDIS_PUBLISH("byond.asay", "author" = key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = player_data?.admin_holder.admin_rank.rank)
+	REDIS_PUBLISH("byond.asay", "author" = key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.admin_rank.rank)
 
 	if(findtext(msg, "@") || findtext(msg, "#"))
 		var/list/link_results = check_asay_links(msg)
@@ -264,7 +264,7 @@
 			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
 			for(var/iter_ckey in pinged_admin_clients)
 				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
-				if(!iter_admin_client?.player_data?.admin_holder)
+				if(!iter_admin_client?.admin_holder)
 					continue
 				window_flash(iter_admin_client)
 				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
@@ -276,12 +276,12 @@
 		color = "adminmod"
 
 	var/channel = "ADMIN:"
-	channel = "[player_data?.admin_holder.admin_rank.rank]:"
+	channel = "[admin_holder.admin_rank.rank]:"
 	for(var/client/client as anything in GLOB.admins)
 		if(!check_client_rights(client, R_ADMIN|R_MOD, FALSE))
 			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
 
-/datum/entity/admin_holder/proc/alertall()
+/datum/view_record/admin_holder/proc/alertall()
 	set name = "Alert All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -299,7 +299,7 @@
 	log_admin("[key_name(src)] sent an In View admin alert with custom message [message].")
 	message_admins("[key_name(src)] sent an In View admin alert with custom message [message].")
 
-/datum/entity/admin_holder/proc/directnarrateall()
+/datum/view_record/admin_holder/proc/directnarrateall()
 	set name = "Direct Narrate All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -321,7 +321,7 @@
 #define SUBTLE_MESSAGE_USCM "USCM High Command"
 #define SUBTLE_MESSAGE_FACTION "Faction Specific"
 
-/datum/entity/admin_holder/proc/subtlemessageall()
+/datum/view_record/admin_holder/proc/subtlemessageall()
 	set name = "Subtle Message All"
 	set category = "Admin.InView"
 	set hidden = TRUE
@@ -383,7 +383,7 @@
 
 	var/color = "mentorsay"
 	var/channel = "Mentor:"
-	channel = "[player_data?.admin_holder.admin_rank.rank]:"
+	channel = "[admin_holder.admin_rank.rank]:"
 	if(check_rights(R_MOD|R_ADMIN, FALSE))
 		color = "mentorstaff"
 
@@ -402,9 +402,9 @@
 	add_verb(src, GLOB.admin_verbs_hideable)
 	remove_verb(src, /client/proc/enable_admin_verbs)
 
-	if(!(player_data?.admin_holder.admin_rank.rights & R_DEBUG))
+	if(!(admin_holder.admin_rank.rights & R_DEBUG))
 		remove_verb(src, /client/proc/callproc_datum)
-	if(!(player_data?.admin_holder.admin_rank.rights & R_POSSESS))
+	if(!(admin_holder.admin_rank.rights & R_POSSESS))
 		remove_verb(src, /client/proc/release)
 		remove_verb(src, /client/proc/possess)
 
@@ -519,7 +519,7 @@
 // ----------------------------
 // PANELS
 // ----------------------------
-/datum/entity/admin_holder/proc/teleport_panel()
+/datum/view_record/admin_holder/proc/teleport_panel()
 	if(!check_rights(R_MOD))
 		return
 
@@ -551,9 +551,9 @@
 	if(!check_rights(R_MOD))
 		return
 
-	player_data?.admin_holder.teleport_panel()
+	admin_holder.teleport_panel()
 
-/datum/entity/admin_holder/proc/vehicle_panel()
+/datum/view_record/admin_holder/proc/vehicle_panel()
 	if(!check_rights(R_MOD))
 		return
 
@@ -574,9 +574,9 @@
 	if(!check_rights(R_MOD))
 		return
 
-	player_data?.admin_holder.vehicle_panel()
+	admin_holder.vehicle_panel()
 
-/datum/entity/admin_holder/proc/in_view_panel()
+/datum/view_record/admin_holder/proc/in_view_panel()
 	var/dat = {"
 		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
 		<BR>
@@ -599,7 +599,7 @@
 	show_browser(usr, dat, "In View Panel", "inviews")
 	return
 
-/datum/entity/admin_holder/proc/imaginary_friend()
+/datum/view_record/admin_holder/proc/imaginary_friend()
 	set category = "OOC.Mentor"
 	set name = "Imaginary Friend"
 
@@ -655,7 +655,7 @@
 	if(!check_rights(R_MOD))
 		return
 
-	player_data?.admin_holder.in_view_panel()
+	admin_holder.in_view_panel()
 
 /client/proc/toggle_lz_resin()
 	set name = "Toggle LZ Weeding"

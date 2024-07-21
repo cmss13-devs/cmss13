@@ -1,6 +1,6 @@
-/datum/entity/admin_holder/var/static/create_turf_html = null
+/datum/view_record/admin_holder/var/static/create_turf_html = null
 
-/datum/entity/admin_holder/proc/create_turf(mob/user)
+/datum/view_record/admin_holder/proc/create_turf(mob/user)
 	if (!create_turf_html)
 		var/turfjs = null
 		turfjs = jointext(typesof(/turf), ";")

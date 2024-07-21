@@ -76,7 +76,7 @@
 		if(kb.can_use(src) && kb.down(src) && keycount >= MAX_COMMANDS_PER_KEY)
 			break
 
-	player_data?.admin_holder?.key_down(_key, src)
+	admin_holder?.key_down(_key, src)
 	mob.focus?.key_down(_key, src)
 
 /client/verb/keyUp(_key as text)
@@ -104,13 +104,13 @@
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
 		if(kb.can_use(src) && kb.up(src))
 			break
-	player_data?.admin_holder?.key_up(_key, src)
+	admin_holder?.key_up(_key, src)
 	mob.focus?.key_up(_key, src)
 
 
 /*
 // Called every game tick
 /client/keyLoop()
-	player_data?.admin_holder?.keyLoop(src)
+	admin_holder?.keyLoop(src)
 	mob.focus?.keyLoop(src)
 */

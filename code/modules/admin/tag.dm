@@ -1,10 +1,10 @@
 /**
- * Inserts the target_datum into [/datum/entity/admin_holder/var/tagged_datums], for later reference.
+ * Inserts the target_datum into [/datum/view_record/admin_holder/var/tagged_datums], for later reference.
  *
  * Arguments:
  * * target_datum - The datum you want to create a tag for
  */
-/datum/entity/admin_holder/proc/add_tagged_datum(datum/target_datum)
+/datum/view_record/admin_holder/proc/add_tagged_datum(datum/target_datum)
 	if(LAZYFIND(tagged_datums, target_datum))
 		to_chat(owner, SPAN_WARNING("[target_datum] is already tagged!"))
 		return
@@ -14,7 +14,7 @@
 	to_chat(owner, SPAN_NOTICE("[target_datum] has been tagged."))
 
 /// Get ahead of the curve with deleting
-/datum/entity/admin_holder/proc/handle_tagged_del(datum/source)
+/datum/view_record/admin_holder/proc/handle_tagged_del(datum/source)
 	SIGNAL_HANDLER
 
 	if(owner)
@@ -22,13 +22,13 @@
 	remove_tagged_datum(source, silent = TRUE)
 
 /**
- * Attempts to remove the specified datum from [/datum/entity/admin_holder/var/tagged_datums] if it exists
+ * Attempts to remove the specified datum from [/datum/view_record/admin_holder/var/tagged_datums] if it exists
  *
  * Arguments:
  * * target_datum - The datum you want to remove from the tagged_datums list
  * * silent - If TRUE, won't print messages to the owner's chat
  */
-/datum/entity/admin_holder/proc/remove_tagged_datum(datum/target_datum, silent=FALSE)
+/datum/view_record/admin_holder/proc/remove_tagged_datum(datum/target_datum, silent=FALSE)
 	if(!istype(target_datum))
 		return
 
@@ -51,13 +51,13 @@
 					[X.getCloneLoss() ? " <font color='#1c3ac4'>[X.getCloneLoss()]</font>" : ""])"
 
 /// Display all of the tagged datums
-/datum/entity/admin_holder/proc/display_tags()
+/datum/view_record/admin_holder/proc/display_tags()
 	set category = "Admin.Game"
 	set name = "View Tags"
 
-	if (!istype(src, /datum/entity/admin_holder))
-		src = usr.client.player_data?.admin_holder
-	if (!istype(src, /datum/entity/admin_holder))
+	if (!istype(src, /datum/view_record/admin_holder))
+		src = usr.client.admin_holder
+	if (!istype(src, /datum/view_record/admin_holder))
 		to_chat(usr, "Error: you are not an admin!", confidential = TRUE)
 		return
 

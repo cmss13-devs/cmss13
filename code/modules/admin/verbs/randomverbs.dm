@@ -7,7 +7,7 @@
 	set category = "Admin"
 	set name = "Check new Players"
 
-	if(!player_data?.admin_holder)
+	if(!admin_holder)
 		to_chat(src, "You do not have permission to use this.")
 		return
 

@@ -46,7 +46,6 @@
 	var/migrating_bans = FALSE
 	var/migrating_jobbans = FALSE
 
-	var/datum/entity/admin_holder/admin_holder
 	var/datum/entity/discord_link/discord_link
 	var/datum/entity/player/permaban_admin
 	var/datum/entity/player/time_ban_admin
@@ -97,7 +96,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		if(!admin || !admin.player_data)
 			return FALSE
 		if(note_category == NOTE_ADMIN || is_confidential)
-			if (!AHOLD_IS_MOD(admin.player_data?.admin_holder))
+			if (!AHOLD_IS_MOD(admin.admin_holder))
 				return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
@@ -123,8 +122,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	note.note_category = note_category
 	note.is_ban = is_ban
 	note.ban_time = duration
-	if(admin.player_data?.admin_holder?.admin_rank)
-		note.admin_rank = admin.player_data?.admin_holder.admin_rank.rank
+	if(admin.admin_holder?.admin_rank)
+		note.admin_rank = admin.admin_holder.admin_rank.rank
 	else
 		note.admin_rank = "Non-Staff"
 	// since admin is in game, their player_data has to be populated. This is also checked above
@@ -149,7 +148,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if((!AHOLD_IS_MOD(admin.player_data?.admin_holder)) && !whitelist)
+	if((!AHOLD_IS_MOD(admin.admin_holder)) && !whitelist)
 		return FALSE
 	if(whitelist && !(isSenator(admin) || CLIENT_HAS_RIGHTS(admin, R_PERMISSIONS)))
 		return FALSE
@@ -170,7 +169,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.player_data?.admin_holder))
+	if (!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
 
 	if(check_client_rights(owning_client, R_MOD, FALSE))
@@ -209,7 +208,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.player_data?.admin_holder))
+	if (!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
 
 	if(!is_time_banned)
@@ -238,7 +237,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.player_data?.admin_holder))
+	if (!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
 
 	if(check_client_rights(owning_client, R_MOD, FALSE))
@@ -300,7 +299,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.player_data?.admin_holder))
+	if (!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
 
 	var/safe_rank = ckey(rank)
@@ -427,12 +426,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(discord_link_id)
 		discord_link = DB_ENTITY(/datum/entity/discord_link, discord_link_id)
 
-	if(admin_id)
-		admin_holder = GLOB.admin_datums{ckey}
-		admin_holder.associate(owning_client)
-		admin_holder.save()
-		admin_holder.sync()
-
 	if(whitelist_status)
 		var/list/whitelists = splittext(whitelist_status, "|")
 
@@ -521,6 +514,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		error("ALARM: MISMATCH. Loaded player data for client [ckey], player data ckey is [player.ckey], id: [player.id]")
 	player_data = player
 	player_data.owning_client = src
+	if(player.admin_id && !admin_holder)
+		admin_holder = GLOB.admin_datums[ckey]
+		admin_holder.associate(src)
 	if(!player_data.last_login)
 		player_data.first_join_date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
 	if(!player_data.first_join_date)

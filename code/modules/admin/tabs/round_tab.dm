@@ -3,7 +3,7 @@
 	set desc = "Adjust the extra slots for predators."
 	set category = "Server.Round"
 
-	if(!player_data?.admin_holder)
+	if(!admin_holder)
 		return
 
 	if(!SSticker?.mode)
@@ -33,7 +33,7 @@
 	SSticker.mode.pred_additional_max = value
 	message_admins("[key_name_admin(usr)] adjusted the additional pred amount from [cur_extra] to [value].")
 
-/datum/entity/admin_holder/proc/force_predator_round()
+/datum/view_record/admin_holder/proc/force_predator_round()
 	set name = "Toggle Predator Round"
 	set desc = "Force-toggle a predator round for the round type. Only works on maps that support Predator spawns."
 	set category = "Server.Round"
@@ -68,7 +68,7 @@
 	set name = "Free Job Slots"
 	set category = "Server.Round"
 
-	if(!player_data?.admin_holder)
+	if(!admin_holder)
 		return
 
 	var/roles[] = new
@@ -89,7 +89,7 @@
 	set name = "Adjust Job Slots"
 	set category = "Server.Round"
 
-	if(!player_data?.admin_holder)
+	if(!admin_holder)
 		return
 
 	var/roles[] = new
@@ -120,20 +120,20 @@
 /client/proc/check_antagonists()
 	set name = "Check Antagonists"
 	set category = "Server.Round"
-	if(player_data?.admin_holder)
-		player_data?.admin_holder.check_antagonists()
+	if(admin_holder)
+		admin_holder.check_antagonists()
 		log_admin("[key_name(usr)] checked antagonists.")
 	return
 
 /client/proc/check_round_status()
 	set name = "Round Status"
 	set category = "Server.Round"
-	if(player_data?.admin_holder)
-		player_data?.admin_holder.check_round_status()
+	if(admin_holder)
+		admin_holder.check_round_status()
 		log_admin("[key_name(usr)] checked round status.")
 	return
 
-/datum/entity/admin_holder/proc/end_round()
+/datum/view_record/admin_holder/proc/end_round()
 	set name = "End Round"
 	set desc = "Immediately ends the round, be very careful"
 	set category = "Server.Round"
@@ -157,7 +157,7 @@
 		"})
 	return
 
-/datum/entity/admin_holder/proc/delay()
+/datum/view_record/admin_holder/proc/delay()
 	set name = "Delay Round Start/End"
 	set desc = "Delay the game start/end"
 	set category = "Server.Round"
@@ -181,7 +181,7 @@
 		to_chat(world, SPAN_CENTERBOLD("The game start has been [SSticker.delay_start ? "delayed" : "continued"]."))
 		return
 
-/datum/entity/admin_holder/proc/startnow()
+/datum/view_record/admin_holder/proc/startnow()
 	set name = "Start Round"
 	set desc = "Start the round RIGHT NOW"
 	set category = "Server.Round"

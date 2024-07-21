@@ -76,10 +76,10 @@ GLOBAL_LIST_EMPTY(jobban_keylist)
 	if(!check_rights(R_BAN|R_MOD))
 		return
 
-	if(player_data?.admin_holder)
-		player_data?.admin_holder.job_ban(M)
+	if(admin_holder)
+		admin_holder.job_ban(M)
 
-/datum/entity/admin_holder/proc/job_ban(mob/M)
+/datum/view_record/admin_holder/proc/job_ban(mob/M)
 	if(!ismob(M))
 		to_chat(usr, "This can only be used on instances of type /mob")
 		return

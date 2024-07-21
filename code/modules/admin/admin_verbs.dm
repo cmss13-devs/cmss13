@@ -1,6 +1,6 @@
 //admin verb groups - They can overlap if you so wish. Only one of each verb will exist in the verbs list regardless
 GLOBAL_LIST_INIT(admin_verbs_default, list(
-	/datum/entity/admin_holder/proc/show_player_panel, /*shows an interface for individual players, with various links (links require additional flags*/
+	/datum/view_record/admin_holder/proc/show_player_panel, /*shows an interface for individual players, with various links (links require additional flags*/
 	/client/proc/toggleadminhelpsound, /*toggles whether we hear a sound when adminhelps/PMs are used*/
 	/client/proc/becomelarva, /*lets you forgo your larva protection as staff member. */
 	/client/proc/deadmin_self, /*destroys our own admin datum so we can play as a regular player*/
@@ -34,17 +34,17 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/toggledebuglogs,
 	/client/proc/togglestatpanelsplit,
 	/client/proc/togglenichelogs,
-	/datum/entity/admin_holder/proc/display_tags,
-	/datum/entity/admin_holder/proc/player_notes_show,
-	/datum/entity/admin_holder/proc/check_ckey,
-	/datum/entity/admin_holder/proc/toggleooc, /*toggles ooc on/off for everyone*/
-	/datum/entity/admin_holder/proc/togglelooc, /*toggles ooc on/off for everyone*/
-	/datum/entity/admin_holder/proc/toggledsay, /*toggles dsay on/off for everyone*/
+	/datum/view_record/admin_holder/proc/display_tags,
+	/datum/view_record/admin_holder/proc/player_notes_show,
+	/datum/view_record/admin_holder/proc/check_ckey,
+	/datum/view_record/admin_holder/proc/toggleooc, /*toggles ooc on/off for everyone*/
+	/datum/view_record/admin_holder/proc/togglelooc, /*toggles ooc on/off for everyone*/
+	/datum/view_record/admin_holder/proc/toggledsay, /*toggles dsay on/off for everyone*/
 	/client/proc/check_antagonists,
 	/client/proc/check_round_status,
 	/client/proc/toggleattacklogs,
 	/client/proc/toggleffattacklogs,
-	/datum/entity/admin_holder/proc/show_player_panel,
+	/datum/view_record/admin_holder/proc/show_player_panel,
 	/client/proc/hide_admin_verbs,
 	/client/proc/vehicle_panel,
 	/client/proc/in_view_panel, /*allows application of aheal/sleep in an AOE*/
@@ -54,19 +54,19 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/rejuvenate_all_humans_in_view,
 	/client/proc/rejuvenate_all_revivable_humans_in_view,
 	/client/proc/rejuvenate_all_xenos_in_view,
-	/datum/entity/admin_holder/proc/togglesleep,
-	/datum/entity/admin_holder/proc/sleepall,
-	/datum/entity/admin_holder/proc/wakeall,
+	/datum/view_record/admin_holder/proc/togglesleep,
+	/datum/view_record/admin_holder/proc/sleepall,
+	/datum/view_record/admin_holder/proc/wakeall,
 	/client/proc/toggle_lz_protection,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,
 	/client/proc/toggle_own_ghost_vis,
 	/client/proc/cmd_admin_check_contents,
 	/client/proc/clear_mutineers,
-	/datum/entity/admin_holder/proc/directnarrateall,
-	/datum/entity/admin_holder/proc/subtlemessageall,
-	/datum/entity/admin_holder/proc/alertall,
-	/datum/entity/admin_holder/proc/imaginary_friend,
+	/datum/view_record/admin_holder/proc/directnarrateall,
+	/datum/view_record/admin_holder/proc/subtlemessageall,
+	/datum/view_record/admin_holder/proc/alertall,
+	/datum/view_record/admin_holder/proc/imaginary_friend,
 	/client/proc/toggle_admin_pings,
 	/client/proc/cmd_admin_open_ares,
 	/client/proc/cmd_admin_say, /*staff-only ooc chat*/
@@ -76,10 +76,10 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
-	/datum/entity/admin_holder/proc/togglejoin, /*toggles whether people can join the current game*/
-	/datum/entity/admin_holder/proc/announce, /*priority announce something to all clients.*/
-	/datum/entity/admin_holder/proc/view_game_log, /*shows the server game log (diary) for this round*/
-	/datum/entity/admin_holder/proc/view_attack_log, /*shows the server attack log for this round*/
+	/datum/view_record/admin_holder/proc/togglejoin, /*toggles whether people can join the current game*/
+	/datum/view_record/admin_holder/proc/announce, /*priority announce something to all clients.*/
+	/datum/view_record/admin_holder/proc/view_game_log, /*shows the server game log (diary) for this round*/
+	/datum/view_record/admin_holder/proc/view_attack_log, /*shows the server attack log for this round*/
 	/client/proc/giveruntimelog, /*allows us to give access to all runtime logs to somebody*/
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/toggleprayers, /*toggles prayers on/off*/
@@ -90,11 +90,11 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/cmd_admin_remove_clamp,
 	/client/proc/cmd_admin_repair_multitile,
-	/datum/entity/admin_holder/proc/admin_force_selfdestruct,
+	/datum/view_record/admin_holder/proc/admin_force_selfdestruct,
 	/client/proc/check_round_statistics,
 	/client/proc/force_teleporter,
 	/client/proc/matrix_editor,
-	/datum/entity/admin_holder/proc/open_shuttlepanel
+	/datum/view_record/admin_holder/proc/open_shuttlepanel
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
@@ -111,11 +111,11 @@ GLOBAL_LIST_INIT(admin_verbs_sounds, list(
 
 GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/cmd_admin_change_custom_event,
-	/datum/entity/admin_holder/proc/admin_force_distress,
-	/datum/entity/admin_holder/proc/admin_force_ERT_shuttle,
+	/datum/view_record/admin_holder/proc/admin_force_distress,
+	/datum/view_record/admin_holder/proc/admin_force_ERT_shuttle,
 	/client/proc/enable_event_mob_verbs,
 	/client/proc/force_hijack,
-	/datum/entity/admin_holder/proc/force_predator_round, //Force spawns a predator round.
+	/datum/view_record/admin_holder/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/
 	/client/proc/cmd_admin_object_narrate,
@@ -167,25 +167,25 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(
-	/datum/entity/admin_holder/proc/spawn_atom,
+	/datum/view_record/admin_holder/proc/spawn_atom,
 	/client/proc/game_panel,
 	/client/proc/create_humans,
 	/client/proc/create_xenos
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_server, list(
-	/datum/entity/admin_holder/proc/startnow,
-	/datum/entity/admin_holder/proc/restart,
-	/datum/entity/admin_holder/proc/delay,
-	/datum/entity/admin_holder/proc/toggleaban,
-	/datum/entity/admin_holder/proc/end_round,
-	/datum/entity/admin_holder/proc/change_ground_map,
-	/datum/entity/admin_holder/proc/change_ship_map,
-	/datum/entity/admin_holder/proc/vote_ground_map,
-	/datum/entity/admin_holder/proc/override_ground_map,
+	/datum/view_record/admin_holder/proc/startnow,
+	/datum/view_record/admin_holder/proc/restart,
+	/datum/view_record/admin_holder/proc/delay,
+	/datum/view_record/admin_holder/proc/toggleaban,
+	/datum/view_record/admin_holder/proc/end_round,
+	/datum/view_record/admin_holder/proc/change_ground_map,
+	/datum/view_record/admin_holder/proc/change_ship_map,
+	/datum/view_record/admin_holder/proc/vote_ground_map,
+	/datum/view_record/admin_holder/proc/override_ground_map,
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/cmd_debug_del_all,
-	/datum/entity/admin_holder/proc/togglejoin,
+	/datum/view_record/admin_holder/proc/togglejoin,
 	/client/proc/toggle_cdn,
 ))
 
@@ -215,10 +215,10 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/purge_data_tab,
 	/client/proc/getserverlog, /*allows us to fetch any server logs (diary) for other days*/
 	/client/proc/getruntimelog,  /*allows us to access any runtime logs (can be granted by giveruntimelog)*/
-	/datum/entity/admin_holder/proc/view_game_log, /*shows the server game log (diary) for this round*/
-	/datum/entity/admin_holder/proc/view_runtime_log, /*shows the server runtime log for this round*/
-	/datum/entity/admin_holder/proc/view_href_log, /*shows the server HREF log for this round*/
-	/datum/entity/admin_holder/proc/view_tgui_log, /*shows the server TGUI log for this round*/
+	/datum/view_record/admin_holder/proc/view_game_log, /*shows the server game log (diary) for this round*/
+	/datum/view_record/admin_holder/proc/view_runtime_log, /*shows the server runtime log for this round*/
+	/datum/view_record/admin_holder/proc/view_href_log, /*shows the server HREF log for this round*/
+	/datum/view_record/admin_holder/proc/view_tgui_log, /*shows the server TGUI log for this round*/
 	/client/proc/admin_blurb,
 ))
 
@@ -290,9 +290,9 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/cmd_admin_pm_context,
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/cmd_admin_check_contents,
-	/datum/entity/admin_holder/proc/show_player_panel,
+	/datum/view_record/admin_holder/proc/show_player_panel,
 	/client/proc/cmd_admin_delete,
-	/datum/entity/admin_holder/proc/togglesleep,
+	/datum/view_record/admin_holder/proc/togglesleep,
 	/client/proc/debug_variables,
 	/client/proc/debug_global_variables
 ))
@@ -316,7 +316,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 ))
 
 /client/proc/add_admin_verbs()
-	if(!player_data?.admin_holder)
+	if(!admin_holder)
 		return
 	if(CLIENT_IS_STAFF(src))
 		add_verb(src, GLOB.admin_verbs_default)
@@ -330,7 +330,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		add_verb(src, GLOB.admin_verbs_major_event)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		add_verb(src, /client/proc/cmd_mentor_say)
-		add_verb(src, /datum/entity/admin_holder/proc/imaginary_friend)
+		add_verb(src, /datum/view_record/admin_holder/proc/imaginary_friend)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
 		add_verb(src, /client/proc/togglebuildmodeself)
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))
@@ -380,21 +380,21 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 /client/proc/jobbans()
 	set name = "Display Job Bans"
 	set category = "Admin"
-	if(player_data?.admin_holder)
-		player_data?.admin_holder.Jobbans()
+	if(admin_holder)
+		admin_holder.Jobbans()
 	return
 
 /client/proc/game_panel()
 	set name = "Game Panel"
 	set category = "Admin.Panels"
-	if(player_data?.admin_holder)
-		player_data?.admin_holder.Game()
+	if(admin_holder)
+		admin_holder.Game()
 	return
 
 /client/proc/set_ooc_color_self()
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
-	if(!player_data?.admin_holder && !donator) return
+	if(!admin_holder && !donator) return
 	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
@@ -467,7 +467,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 /client/proc/toggle_log_hrefs()
 	set name = "Toggle href Logging"
 	set category = "Server"
-	if(!player_data?.admin_holder) return
+	if(!admin_holder) return
 	if(config)
 		if(CONFIG_GET(flag/log_hrefs))
 			CONFIG_SET(flag/log_hrefs, FALSE)

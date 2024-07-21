@@ -12,19 +12,19 @@
 	if(!msg)
 		return
 
-	var/yooc_message = "YOOC: [key]([player_data?.admin_holder.admin_rank.rank]): [msg]"
+	var/yooc_message = "YOOC: [key]([admin_holder.admin_rank.rank]): [msg]"
 	log_admin(yooc_message)
 
 	msg = process_chat_markup(msg, list("*"))
 
 	// Send to preds who are non-staff
 	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
-		if(Y.client && !Y.client.player_data?.admin_holder)
+		if(Y.client && !Y.client.admin_holder)
 			to_chat_spaced(Y, margin_top = 0.5, margin_bottom = 0.5, html = SPAN_YOOC(yooc_message))
 
 	// Send to observers
 	for(var/mob/dead/observer/O in GLOB.observer_list)
-		if(O.client && !O.client.player_data?.admin_holder) // Send to observers who are non-staff
+		if(O.client && !O.client.admin_holder) // Send to observers who are non-staff
 			to_chat_spaced(O, margin_top = 0.5, margin_bottom = 0.5, html = SPAN_YOOC(yooc_message))
 
 	// Send to staff

@@ -67,7 +67,7 @@
 	window.send_message("props", list(
 		lightMode = client.prefs?.tgui_say_light_mode,
 		maxLength = max_length,
-		extraChannels = client.player_data?.admin_holder?.get_tgui_say_extra_channels()
+		extraChannels = client.admin_holder?.get_tgui_say_extra_channels()
 	))
 
 	stop_thinking()

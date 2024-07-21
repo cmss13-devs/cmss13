@@ -91,13 +91,13 @@
 
 		var/markstring
 		if(!(VV_MARKED_DATUM in restricted_classes))
-			markstring = "[VV_MARKED_DATUM] (CURRENT: [(istype(player_data?.admin_holder) && istype(player_data?.admin_holder.marked_datum))? player_data?.admin_holder.marked_datum.type : "NULL"])"
+			markstring = "[VV_MARKED_DATUM] (CURRENT: [(istype(admin_holder) && istype(admin_holder.marked_datum))? admin_holder.marked_datum.type : "NULL"])"
 			classes += markstring
 
 		var/list/tagstrings = new
-		if(!(VV_TAGGED_DATUM in restricted_classes) && player_data?.admin_holder && LAZYLEN(player_data?.admin_holder.tagged_datums))
+		if(!(VV_TAGGED_DATUM in restricted_classes) && admin_holder && LAZYLEN(admin_holder.tagged_datums))
 			var/i = 0
-			for(var/datum/iter_tagged_datum as anything in player_data?.admin_holder.tagged_datums)
+			for(var/datum/iter_tagged_datum as anything in admin_holder.tagged_datums)
 				i++
 				var/new_tagstring = "[VV_TAGGED_DATUM] #[i]: [iter_tagged_datum.type])"
 				tagstrings[new_tagstring] = iter_tagged_datum
@@ -110,10 +110,10 @@
 			classes += extra_classes
 
 		.["class"] = tgui_input_list(src, "What kind of data?", "Variable Type", classes)
-		if(player_data?.admin_holder && player_data?.admin_holder.marked_datum && .["class"] == markstring)
+		if(admin_holder && admin_holder.marked_datum && .["class"] == markstring)
 			.["class"] = VV_MARKED_DATUM
 
-		if(player_data?.admin_holder && tagstrings[.["class"]])
+		if(admin_holder && tagstrings[.["class"]])
 			var/datum/chosen_datum = tagstrings[.["class"]]
 			.["value"] = chosen_datum
 			.["class"] = VV_TAGGED_DATUM
@@ -242,7 +242,7 @@
 				return
 
 		if(VV_MARKED_DATUM)
-			.["value"] = player_data?.admin_holder.marked_datum
+			.["value"] = admin_holder.marked_datum
 			if(.["value"] == null)
 				.["class"] = null
 				return

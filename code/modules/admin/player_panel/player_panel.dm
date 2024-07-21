@@ -1,5 +1,5 @@
 
-/datum/entity/admin_holder/proc/player_panel_new()//The new one
+/datum/view_record/admin_holder/proc/player_panel_new()//The new one
 	if(!check_rights(R_MOD))
 		return
 	var/dat = "<html>"
@@ -272,7 +272,7 @@
 	show_browser(usr, dat, "User Panel", "players", "size=600x480")
 
 //Extended panel with ban related things
-/datum/entity/admin_holder/proc/player_panel_extended()
+/datum/view_record/admin_holder/proc/player_panel_extended()
 	if(!check_rights(R_MOD))
 		return
 
@@ -316,7 +316,7 @@
 	show_browser(usr, dat, "Player Menu", "players", "size=640x480")
 
 
-/datum/entity/admin_holder/proc/check_antagonists()
+/datum/view_record/admin_holder/proc/check_antagonists()
 	if(!SSticker || !(SSticker.current_state >= GAME_STATE_PLAYING))
 		alert("The game hasn't started yet!")
 		return
@@ -377,7 +377,7 @@
 	dat += "</body></html>"
 	show_browser(usr, dat, "Antagonists", "antagonists", "size=600x500")
 
-/datum/entity/admin_holder/proc/check_round_status()
+/datum/view_record/admin_holder/proc/check_round_status()
 	if (SSticker.current_state >= GAME_STATE_PLAYING)
 		var/dat = "<html><body><h1><B>Round Status</B></h1>"
 		dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
@@ -395,13 +395,13 @@
 					dat += "IN PROGRESS"
 			dat += "<br>"
 
-			dat += "<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
-			dat += "<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
-			dat += "<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
 			if(check_rights(R_ADMIN, FALSE))
-				dat += "<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
+				dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
 
-		dat += "<br><A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</A><br>"
+		dat += "<br><A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</A><br>"
 		dat += "</body></html>"
 		show_browser(usr, dat, "Round Status", "roundstatus", "size=600x500")
 	else
@@ -485,7 +485,7 @@
 		var/mob/living/L = targetMob
 		.["mob_feels_pain"] = L.pain?.feels_pain
 
-	.["current_permissions"] = user.client?.player_data?.admin_holder?.admin_rank?.rights
+	.["current_permissions"] = user.client?.admin_holder?.admin_rank?.rights
 
 	if(targetMob.client)
 		var/client/targetClient = targetMob.client
@@ -496,8 +496,8 @@
 		.["client_muted"] = targetClient.prefs.muted
 		.["client_age"] = targetClient.player_data.byond_account_age
 		.["first_join"] = targetClient.player_data.first_join_date
-		if(targetClient.player_data?.admin_holder?.admin_rank?.rank)
-			.["client_rank"] = targetClient.player_data?.admin_holder.admin_rank.rank
+		if(targetClient.admin_holder?.admin_rank?.rank)
+			.["client_rank"] = targetClient.admin_holder.admin_rank.rank
 		else
 			.["client_rank"] = "Player"
 		.["client_muted"] = targetClient.prefs.muted
@@ -583,7 +583,7 @@ GLOBAL_LIST_INIT(pp_status_flags, list(
 
 	return P.act(clUser, targetMob, params)
 
-/datum/entity/admin_holder/proc/show_player_panel(mob/M in GLOB.mob_list)
+/datum/view_record/admin_holder/proc/show_player_panel(mob/M in GLOB.mob_list)
 	set name = "Show Player Panel"
 	set desc = "Edit player (respawn, ban, heal, etc)"
 	set category = null

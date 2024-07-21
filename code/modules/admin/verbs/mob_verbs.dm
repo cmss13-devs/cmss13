@@ -312,7 +312,7 @@
 	set name = "Drop Everything"
 	set category = null
 
-	if(!player_data?.admin_holder)
+	if(!admin_holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -391,7 +391,7 @@
 
 	message_admins("[key_name(src)] changed name of [old_name] to [newname].")
 
-/datum/entity/admin_holder/proc/togglesleep(mob/living/M as mob in GLOB.mob_list)
+/datum/view_record/admin_holder/proc/togglesleep(mob/living/M as mob in GLOB.mob_list)
 	set name = "Toggle Sleeping"
 	set category = null
 

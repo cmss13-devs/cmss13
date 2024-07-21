@@ -76,7 +76,7 @@
 //Other log stuff put here for the sake of organisation
 
 /**Shows this round's server log*/
-/datum/entity/admin_holder/proc/view_game_log()
+/datum/view_record/admin_holder/proc/view_game_log()
 	set name = "Show Server Game Log"
 	set desc = "Shows this round's server game log."
 	set category = "Server"
@@ -97,7 +97,7 @@
 	src << ftp(file(path))
 
 /**Shows this round's attack log*/
-/datum/entity/admin_holder/proc/view_attack_log()
+/datum/view_record/admin_holder/proc/view_attack_log()
 	set name = "Show Server Attack Log"
 	set desc = "Shows this round's server attack log."
 	set category = "Server"
@@ -118,7 +118,7 @@
 	src << ftp(file(path))
 
 /**Shows this round's runtime log*/
-/datum/entity/admin_holder/proc/view_runtime_log()
+/datum/view_record/admin_holder/proc/view_runtime_log()
 	set name = "Show Server Runtime Log"
 	set desc = "Shows this round's server runtime log."
 	set category = "Server"
@@ -139,7 +139,7 @@
 	src << ftp(file(path))
 
 /**Shows this round's href log*/
-/datum/entity/admin_holder/proc/view_href_log()
+/datum/view_record/admin_holder/proc/view_href_log()
 	set name = "Show Server HREF Log"
 	set desc = "Shows this round's server HREF log."
 	set category = "Server"
@@ -160,7 +160,7 @@
 	src << ftp(file(path))
 
 /**Shows this round's tgui log*/
-/datum/entity/admin_holder/proc/view_tgui_log()
+/datum/view_record/admin_holder/proc/view_tgui_log()
 	set name = "Show Server TGUI Log"
 	set desc = "Shows this round's server TGUI log."
 	set category = "Server"

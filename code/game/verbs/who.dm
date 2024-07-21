@@ -96,7 +96,7 @@
 							if(X.faction == FACTION_PREDALIEN)
 								counted_xenos[FACTION_PREDALIEN]++
 							entry += " - <B><font color='red'>Xenomorph</font></B>"
-				entry += " (<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[C.mob]'>?</A>)"
+				entry += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[C.mob]'>?</A>)"
 				Lines += entry
 
 		for(var/line in sortList(Lines))
@@ -142,7 +142,7 @@
 
 	else
 		for(var/client/C in GLOB.clients)
-			if((C.player_data?.admin_holder && C.player_data?.admin_holder.fakekey) || (CLIENT_IS_STEALTHED(C)))
+			if((C.admin_holder && C.admin_holder.fakekey) || (CLIENT_IS_STEALTHED(C)))
 				continue
 
 			Lines += C.key
@@ -177,7 +177,7 @@
 	for(var/client/C in GLOB.admins)
 		if(CLIENT_IS_STEALTHED(C) && !CLIENT_HAS_RIGHTS(src, R_STEALTH))
 			continue
-		if(C.player_data?.admin_holder?.fakekey && !CLIENT_IS_STAFF(src))
+		if(C.admin_holder?.fakekey && !CLIENT_IS_STAFF(src))
 			continue
 		for(var/category in mappings)
 			if(CLIENT_HAS_RIGHTS(C, mappings[category]))
@@ -187,14 +187,14 @@
 	for(var/category in listings)
 		dat += "<BR><B>Current [category] ([length(listings[category])]):<BR></B>\n"
 		for(var/client/entry in listings[category])
-			dat += "\t[entry.key] is \a [entry.player_data?.admin_holder.admin_rank.rank]"
-			if(LAZYLEN(entry.player_data?.admin_holder.extra_titles))
-				for(var/srank in entry.player_data?.admin_holder.extra_titles)
+			dat += "\t[entry.key] is \a [entry.admin_holder.admin_rank.rank]"
+			if(LAZYLEN(entry.admin_holder.extra_titles))
+				for(var/srank in entry.admin_holder.extra_titles)
 					dat += " & [srank]"
 			if(CLIENT_IS_STAFF(src))
 				if(CLIENT_IS_STEALTHED(entry))
 					dat += " <B><font color='#b60d0d'>(STEALTHED)</font></B>"
-				else if(entry.player_data?.admin_holder?.fakekey)
+				else if(entry.admin_holder?.fakekey)
 					dat += " <i>(HIDDEN)</i>"
 				if(istype(entry.mob, /mob/dead/observer))
 					dat += "<B> - <font color='#808080'>Observing</font></B>"

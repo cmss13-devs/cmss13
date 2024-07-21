@@ -260,6 +260,7 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 		health = maxHealth
 		max_enzymes = max_enzymes * 1.5
 		max_contaminant = max_contaminant * 1.5
+		stealthy = TRUE
 	if((!is_admin_level(z)) && ERT)
 		summon()
 	GLOB.brainlink.living_borers += src

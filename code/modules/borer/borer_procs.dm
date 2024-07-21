@@ -264,7 +264,10 @@
 	if(is_mob_incapacitated())
 		return FALSE
 	to_chat(src, SPAN_NOTICE("You slither up [target] and begin probing at their ear canal..."))
-	if(!do_after(src, 50, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_HOSTILE, target))
+	var/used_icon = BUSY_ICON_HOSTILE
+	if(stealthy)
+		used_icon = NO_BUSY_ICON
+	if(!do_after(src, 50, INTERRUPT_ALL_OUT_OF_RANGE, used_icon, target))
 		to_chat(src, SPAN_WARNING("As [target] moves away, you are dislodged and fall to the ground."))
 		return FALSE
 	if(!target || !src)

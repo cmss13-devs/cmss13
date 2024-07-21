@@ -102,7 +102,7 @@ SUBSYSTEM_DEF(events)
 	if(!check_rights(R_EVENT))
 		return
 
-	admin_holder.force_event()
+	player_data.admin_holder.force_event()
 
 /datum/entity/admins/proc/force_event()
 	var/dat = ""

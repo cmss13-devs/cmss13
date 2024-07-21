@@ -28,7 +28,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	var/class
 
 /obj/effect/statclick/debug/clicked()
-	if(!usr.client.admin_holder || !target)
+	if(!usr.client.player_data.admin_holder || !target)
 		return
 	if(!class)
 		if(istype(target, /datum/controller/subsystem))
@@ -51,7 +51,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	set name = "Restart Controller"
 	set desc = "Restart one of the various periodic loop controllers for the game (be careful!)"
 
-	if(!admin_holder)
+	if(!player_data.admin_holder)
 		return
 	switch(controller)
 		if("Master")
@@ -68,7 +68,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	set name = "Debug Controller"
 	set desc = "Debug the various periodic loop controllers for the game (be careful!)"
 
-	if(!admin_holder)
+	if(!player_data.admin_holder)
 		return
 
 	var/list/controllers = list()

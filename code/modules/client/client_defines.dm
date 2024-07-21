@@ -3,7 +3,6 @@
 		////////////////
 		//ADMIN THINGS//
 		////////////////
-	var/datum/entity/admins/admin_holder = null //Datum for storing admin permissions and other admin stuff
 	var/datum/buildmode/buildmode = null
 
 	// Holds the client's current mentorhelp thread

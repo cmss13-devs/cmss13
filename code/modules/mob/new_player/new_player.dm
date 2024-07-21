@@ -463,5 +463,5 @@
 		. += "Time To Start: SOON"
 
 	. += "Players: [SSticker.totalPlayers]"
-	if(client.admin_holder)
+	if(client.player_data.admin_holder)
 		. += "Players Ready: [SSticker.totalPlayersReady]"

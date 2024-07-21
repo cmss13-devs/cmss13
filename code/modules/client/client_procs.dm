@@ -77,7 +77,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Rate limiting
 	var/mtl = CONFIG_GET(number/minute_topic_limit)
-	if (!admin_holder && mtl)
+	if (!player_data.admin_holder && mtl)
 		var/minute = round(world.time, 600)
 		if (!topiclimiter)
 			topiclimiter = new(LIMITER_SIZE)
@@ -96,7 +96,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			return
 
 	var/stl = CONFIG_GET(number/second_topic_limit)
-	if (!admin_holder && stl && href_list["window_id"] != "statbrowser")
+	if (!player_data.admin_holder && stl && href_list["window_id"] != "statbrowser")
 		var/second = round(world.time, 10)
 		if (!topiclimiter)
 			topiclimiter = new(LIMITER_SIZE)
@@ -205,8 +205,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		P.remove_note(index, whitelist = TRUE)
 
 	switch(href_list["_src_"])
-		if("admin_holder")
-			hsrc = admin_holder
+		if("player_data.admin_holder")
+			hsrc = player_data.admin_holder
 		if("mhelp")
 			var/client/thread_author = GLOB.directory[href_list["mhelp_key"]]
 			if(thread_author)
@@ -243,7 +243,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	return ..() //redirect to hsrc.Topic()
 
 /client/proc/handle_spam_prevention(message, mute_type)
-	if(CONFIG_GET(flag/automute_on) && !admin_holder && src.last_message == message)
+	if(CONFIG_GET(flag/automute_on) && !player_data.admin_holder && src.last_message == message)
 		src.last_message_count++
 		if(src.last_message_count >= SPAM_TRIGGER_AUTOMUTE)
 			to_chat(src, SPAN_DANGER("You have exceeded the spam filter limit for identical messages. An auto-mute was applied."))
@@ -305,11 +305,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(check_localhost_status())
 		var/datum/entity/admins/admin = new("!localhost!", RL_HOST, ckey)
 		admin.associate(src)
-
-	//Admin Authorisation
-	admin_holder = GLOB.admin_datums[ckey]
-	if(admin_holder)
-		admin_holder.associate(src)
 
 	add_pref_verbs()
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
@@ -465,8 +460,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		prefs.owner = null
 		QDEL_NULL(prefs.preview_dummy)
 
-	if(admin_holder)
-		admin_holder.owner = null
+	if(player_data.admin_holder)
+		player_data.admin_holder.owner = null
 		GLOB.admins -= src
 	GLOB.directory -= ckey
 	GLOB.clients -= src
@@ -713,7 +708,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 				if(ADMIN_CHANNEL)
-					if(admin_holder?.check_for_rights(R_MOD))
+					if(player_data.admin_holder?.check_for_rights(R_MOD))
 						if(prefs.tgui_say)
 							var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[asay]")
@@ -722,7 +717,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 				if(MENTOR_CHANNEL)
-					if(admin_holder?.check_for_rights(R_MENTOR))
+					if(player_data.admin_holder?.check_for_rights(R_MENTOR))
 						if(prefs.tgui_say)
 							var/mentor = tgui_say_create_open_command(MENTOR_CHANNEL)
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[mentor]")
@@ -770,9 +765,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	init_verbs()
 
 /client/proc/open_filter_editor(atom/in_atom)
-	if(admin_holder)
-		admin_holder.filteriffic = new /datum/filter_editor(in_atom)
-		admin_holder.filteriffic.tgui_interact(mob)
+	if(player_data.admin_holder)
+		player_data.admin_holder.filteriffic = new /datum/filter_editor(in_atom)
+		player_data.admin_holder.filteriffic.tgui_interact(mob)
 
 /// Clears the client's screen, aside from ones that opt out
 /client/proc/clear_screen()
@@ -786,9 +781,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 ///opens the particle editor UI for the in_atom object for this client
 /client/proc/open_particle_editor(atom/movable/in_atom)
-	if(admin_holder)
-		admin_holder.particle_test = new /datum/particle_editor(in_atom)
-		admin_holder.particle_test.tgui_interact(mob)
+	if(player_data.admin_holder)
+		player_data.admin_holder.particle_test = new /datum/particle_editor(in_atom)
+		player_data.admin_holder.particle_test.tgui_interact(mob)
 
 /client/proc/load_xeno_name()
 	xeno_prefix = prefs.xeno_prefix

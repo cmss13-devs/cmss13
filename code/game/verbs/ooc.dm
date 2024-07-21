@@ -41,7 +41,7 @@
 	var/display_colour = GLOB.ooc_color_override
 	if(!display_colour)
 		display_colour = CONFIG_GET(string/ooc_color_normal)
-	if(admin_holder && !admin_holder.fakekey)
+	if(player_data.admin_holder && !player_data.admin_holder.fakekey)
 		if(check_rights(R_MENTOR, FALSE))
 			display_colour = CONFIG_GET(string/ooc_color_other)
 		if(check_rights(R_DEBUG, FALSE))
@@ -82,11 +82,11 @@
 		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")]"
 	if(isCouncil(src))
 		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "WhitelistCouncil")]"
-	if(admin_holder)
+	if(player_data.admin_holder)
 		var/list/rank_icons = icon_states('icons/ooc.dmi')
-		var/rankname = admin_holder.admin_rank.rank
+		var/rankname = player_data.admin_holder.admin_rank.rank
 		if(rankname in rank_icons)
-			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.admin_rank.rank)]"
+			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, player_data.admin_holder.admin_rank.rank)]"
 	if(prefix)
 		prefix = "[prefix] "
 	return prefix

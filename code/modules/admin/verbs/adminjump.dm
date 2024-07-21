@@ -166,7 +166,7 @@
 	set category = null
 	set hidden = TRUE
 
-	if(!admin_holder)
+	if(!player_data.admin_holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
 

@@ -23,7 +23,7 @@
 	permissions_required = R_BAN
 
 /datum/player_action/eorgban/act(client/user, mob/target, list/params)
-	if(target.client && target.client.admin_holder) return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
+	if(target.client && target.client.player_data.admin_holder) return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 	if(!target.ckey)
 		to_chat(user, SPAN_DANGER("<B>Warning: Mob ckey for [target.name] not found.</b>"))
@@ -116,7 +116,7 @@
 
 
 /datum/player_action/show_notes/act(client/user, mob/target, list/params)
-	user.admin_holder.player_notes_show(target.ckey)
+	user.player_data.admin_holder.player_notes_show(target.ckey)
 	return TRUE
 
 /datum/player_action/check_ckey
@@ -125,7 +125,7 @@
 
 
 /datum/player_action/check_ckey/act(client/user, mob/target, list/params)
-	user.admin_holder.check_ckey(target.ckey)
+	user.player_data.admin_holder.check_ckey(target.ckey)
 	return TRUE
 
 /datum/player_action/reset_xeno_name

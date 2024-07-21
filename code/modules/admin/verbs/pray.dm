@@ -21,7 +21,7 @@
 	msg = SPAN_BIGNOTICE("[prefix][key_name(src, 1)] [CC_MARK(src)] [ADMIN_PP(src)] [ADMIN_VV(src)] [ADMIN_SM(src)] [ADMIN_JMP_USER(src)] [ADMIN_SC(src)]: [msg]")
 	log_admin(msg)
 	for(var/client/admin in GLOB.admins)
-		if(AHOLD_IS_MOD(admin.admin_holder))
+		if(AHOLD_IS_MOD(admin.player_data.admin_holder))
 			to_chat(admin, SPAN_STAFF_IC(msg))
 			if(admin.prefs.toggles_sound & SOUND_ARES_MESSAGE)
 				admin << 'sound/machines/terminal_alert.ogg'

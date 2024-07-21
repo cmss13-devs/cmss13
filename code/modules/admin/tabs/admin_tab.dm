@@ -2,7 +2,7 @@
 	set name = "De-Admin"
 	set category = "Admin"
 
-	if(!admin_holder)
+	if(!player_data.admin_holder)
 		return
 
 	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") != "Yes")
@@ -27,7 +27,7 @@
 	set desc = "Remove your protection from becoming a larva."
 	set category = "Admin.Game"
 
-	if(!admin_holder)
+	if(!player_data.admin_holder)
 		return
 	if(!isobserver(mob))
 		to_chat(usr, SPAN_WARNING("You must be a ghost to use this."))
@@ -40,22 +40,22 @@
 	set name = "Unban Panel"
 	set category = "Admin.Panels"
 
-	if(admin_holder)
-		admin_holder.unbanpanel()
+	if(player_data.admin_holder)
+		player_data.admin_holder.unbanpanel()
 	return
 
 /client/proc/stickyban_panel()
 	set name = "Stickyban Panel"
 	set category = "Admin.Panels"
 
-	admin_holder?.stickypanel()
+	player_data.admin_holder?.stickypanel()
 
 /client/proc/player_panel_new()
 	set name = "Player Panel"
 	set category = "Admin.Panels"
 
-	if(admin_holder)
-		admin_holder.player_panel_new()
+	if(player_data.admin_holder)
+		player_data.admin_holder.player_panel_new()
 	return
 
 /client/proc/admin_ghost()
@@ -107,23 +107,23 @@
 	if(!check_rights(R_MOD))
 		return
 
-	if(admin_holder.fakekey)
-		admin_holder.fakekey = null
+	if(player_data.admin_holder.fakekey)
+		player_data.admin_holder.fakekey = null
 		if(isobserver(mob))
 			mob.invisibility = initial(mob.invisibility)
 			mob.alpha = initial(mob.alpha)
 			mob.mouse_opacity = initial(mob.mouse_opacity)
 	else
-		admin_holder.fakekey = "John Titor"
+		player_data.admin_holder.fakekey = "John Titor"
 		if(isobserver(mob))
 			mob.invisibility = INVISIBILITY_MAXIMUM
 			mob.alpha = 0
 			mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-	admin_holder.invisimined = !admin_holder.invisimined
+	player_data.admin_holder.invisimined = !player_data.admin_holder.invisimined
 
-	to_chat(src, SPAN_NOTICE("You have turned invismin [admin_holder.fakekey ? "ON" : "OFF"]"))
-	log_admin("[key_name_admin(usr)] has turned invismin [admin_holder.fakekey ? "ON" : "OFF"]")
+	to_chat(src, SPAN_NOTICE("You have turned invismin [player_data.admin_holder.fakekey ? "ON" : "OFF"]"))
+	log_admin("[key_name_admin(usr)] has turned invismin [player_data.admin_holder.fakekey ? "ON" : "OFF"]")
 
 /datum/entity/admins/proc/announce()
 	set name = "Admin Announcement"
@@ -137,7 +137,7 @@
 	if(message)
 		if(!check_rights(R_SERVER, FALSE))
 			message = adminscrub(message, 500)
-		to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN(" <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
+		to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN(" <b>[usr.client.player_data.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 
 /datum/entity/admins/proc/player_notes_show(key as text)
@@ -254,7 +254,7 @@
 	if (!msg)
 		return
 
-	REDIS_PUBLISH("byond.asay", "author" = key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.admin_rank.rank)
+	REDIS_PUBLISH("byond.asay", "author" = key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = player_data.admin_holder.admin_rank.rank)
 
 	if(findtext(msg, "@") || findtext(msg, "#"))
 		var/list/link_results = check_asay_links(msg)
@@ -264,7 +264,7 @@
 			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
 			for(var/iter_ckey in pinged_admin_clients)
 				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
-				if(!iter_admin_client?.admin_holder)
+				if(!iter_admin_client?.player_data.admin_holder)
 					continue
 				window_flash(iter_admin_client)
 				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
@@ -276,7 +276,7 @@
 		color = "adminmod"
 
 	var/channel = "ADMIN:"
-	channel = "[admin_holder.admin_rank.rank]:"
+	channel = "[player_data.admin_holder.admin_rank.rank]:"
 	for(var/client/client as anything in GLOB.admins)
 		if(!check_client_rights(client, R_ADMIN|R_MOD, FALSE))
 			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
@@ -383,7 +383,7 @@
 
 	var/color = "mentorsay"
 	var/channel = "Mentor:"
-	channel = "[admin_holder.admin_rank.rank]:"
+	channel = "[player_data.admin_holder.admin_rank.rank]:"
 	if(check_rights(R_MOD|R_ADMIN, FALSE))
 		color = "mentorstaff"
 
@@ -402,9 +402,9 @@
 	add_verb(src, GLOB.admin_verbs_hideable)
 	remove_verb(src, /client/proc/enable_admin_verbs)
 
-	if(!(admin_holder.admin_rank.rights & R_DEBUG))
+	if(!(player_data.admin_holder.admin_rank.rights & R_DEBUG))
 		remove_verb(src, /client/proc/callproc_datum)
-	if(!(admin_holder.admin_rank.rights & R_POSSESS))
+	if(!(player_data.admin_holder.admin_rank.rights & R_POSSESS))
 		remove_verb(src, /client/proc/release)
 		remove_verb(src, /client/proc/possess)
 
@@ -551,7 +551,7 @@
 	if(!check_rights(R_MOD))
 		return
 
-	admin_holder.teleport_panel()
+	player_data.admin_holder.teleport_panel()
 
 /datum/entity/admins/proc/vehicle_panel()
 	if(!check_rights(R_MOD))
@@ -574,7 +574,7 @@
 	if(!check_rights(R_MOD))
 		return
 
-	admin_holder.vehicle_panel()
+	player_data.admin_holder.vehicle_panel()
 
 /datum/entity/admins/proc/in_view_panel()
 	var/dat = {"
@@ -655,7 +655,7 @@
 	if(!check_rights(R_MOD))
 		return
 
-	admin_holder.in_view_panel()
+	player_data.admin_holder.in_view_panel()
 
 /client/proc/toggle_lz_resin()
 	set name = "Toggle LZ Weeding"

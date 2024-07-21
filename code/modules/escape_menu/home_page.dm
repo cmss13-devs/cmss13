@@ -113,7 +113,7 @@
 	qdel(src)
 
 /datum/escape_menu/proc/home_open_player_panel()
-	client?.admin_holder.player_panel_new()
+	client?.player_data.admin_holder.player_panel_new()
 	qdel(src)
 
 /datum/escape_menu/proc/home_mentor_help()

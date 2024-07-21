@@ -1,14 +1,19 @@
-GLOBAL_LIST_EMPTY(admin_ranks) //list of all admin_rank datums
+GLOBAL_LIST_INIT_TYPED(admin_ranks, /datum/view_record/admin_rank, load_ranks())
 GLOBAL_PROTECT(admin_ranks)
 
-GLOBAL_LIST_INIT_TYPED(admin_datums, /datum/entity/admins, load_admins())
+GLOBAL_LIST_INIT_TYPED(admin_datums, /datum/view_record/admins, load_admins())
+GLOBAL_PROTECT(admin_datums)
+
+GLOBAL_VAR_INIT(href_token, GenerateToken())
+GLOBAL_PROTECT(href_token)
+
+/proc/load_ranks()
+	WAIT_DB_READY
+	return DB_VIEW(/datum/view_record/admin_rank)
 
 /proc/load_admins()
 	WAIT_DB_READY
-
-//TODO: DO SEPARATE TABLE FOR ADMINS, TO INIT IT FROM THERE
-GLOBAL_VAR_INIT(href_token, GenerateToken())
-GLOBAL_PROTECT(href_token)
+	return DB_VIEW(/datum/view_record/admins)
 
 /datum/entity/admin_rank
 	var/rank
@@ -35,18 +40,33 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 	if(length(rank.rights))
 		.["text_rights"] = flags2rights(rank.rights)
 
-	var/datum/entity/admins/D = new /datum/entity/admins(GLOB.admin_ranks[admin_status], ckey, extra_titles)
+/datum/view_record/admin_rank
+	var/rank
+	var/text_rights
+	var/rights = NO_FLAGS
 
-	//find the client for a ckey if they are connected and associate them with the new admin datum
-	D.associate(GLOB.directory[ckey])
+/datum/entity_view_meta/admin_rank
+	root_record_type = /datum/entity/admin_rank
+	destination_entity = /datum/view_record/admin_rank
+	fields = list(
+		"rank",
+		"text_rights",
+	)
+
+/datum/entity_meta/admin_rank/map(datum/view_record/admin_rank/rank, list/values)
+	..()
+	if(values["text_rights"])
+		rank.rights = rights2flags(values["text_rights"])
 
 /datum/entity/admins
-	var/extra_titles_text
-
+	var/admin_id
+	var/ckey
+	var/rank
+	var/extra_titles_encoded
+	var/list/extra_titles = list()
 
 // UNTRACKED FIELDS
-	var/datum/entity/admin_rank/admin_rank
-	var/list/extra_titles = null
+	var/datum/view_record/admin_rank/admin_rank
 	var/client/owner = null
 	var/fakekey = null
 
@@ -61,62 +81,71 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 	var/datum/filter_editor/filteriffic
 	var/datum/particle_editor/particle_test
 
+BSQL_PROTECT_DATUM(/datum/entity/admins)
+
 /datum/entity_meta/admins
 	entity_type = /datum/entity/admins
 	table_name = "admins"
 	field_types = list(
 		"admin_id" = DB_FIELDTYPE_BIGINT,
-		"extra_titles_text" = DB_FIELDTYPE_STRING_MAX,
+		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
+		"rank" = DB_FIELDTYPE_STRING_MEDIUM,
+		"extra_titles_encoded" = DB_FIELDTYPE_STRING_MAX,
 	)
 
-/datum/entity_link/admin_to_player_job_bans
-	parent_entity = /datum/entity/player
-	child_entity = /datum/entity/player_job_ban
-	child_field = "admin_id"
-
-	parent_name = "admin"
-
-/datum/entity_meta/chemical_information/map(datum/entity/chemical_information/ET, list/values)
+/datum/entity_meta/admins/map(datum/entity/admins/admin, list/values)
 	..()
-	if(values["properties_text"])
-		ET.properties = json_decode(values["properties_text"])
+	if(values["extra_titles_encoded"])
+		admin.extra_titles = json_decode(values["extra_titles_encoded"])
 
-/datum/entity_meta/chemical_information/unmap(datum/entity/chemical_information/ET)
+/datum/entity_meta/admins/unmap(datum/entity/admins/admin)
 	. = ..()
-	if(length(ET.properties))
-		.["properties_text"] = json_encode(ET.properties)
+	if(length(admin.extra_titles))
+		.["extra_titles_encoded"] = json_encode(admin.extra_titles)
 
-/datum/entity/admins/New(admin_rank_ref, ckey, list/new_extra_titles)
-	if(!ckey)
-		error("Admin datum created without a ckey argument. Datum has been deleted")
-		qdel(src)
-		return
-	admin_rank = admin_rank_ref
-	href_token = GenerateToken()
-	GLOB.admin_datums[ckey] = src
-	extra_titles = new_extra_titles
+/datum/view_record/admins
+	var/admin_id
+	var/ckey
+	var/rank
+	var/extra_titles_encoded
+	var/list/extra_titles = list()
 
-// Letting admins edit their own permission giver is a poor idea
-/datum/entity/admins/vv_edit_var(var_name, var_value)
-	return FALSE
+	var/datum/view_record/admin_rank/admin_rank
 
-/datum/entity/admins/proc/associate(client/C)
-	if(istype(C))
-		owner = C
-		owner.admin_holder = src
+/datum/entity_view_meta/admins
+	root_record_type = /datum/entity/admins
+	destination_entity = /datum/view_record/admins
+	fields = list(
+		"admin_id",
+		"ckey",
+		"rank",
+		"extra_titles_encoded",
+	)
+
+/datum/entity_view_meta/admins/map(datum/view_record/admins/admin, list/values)
+	..()
+	admin.admin_rank = GLOB.admin_ranks[admin.rank]
+	if(values["extra_titles_encoded"])
+		admin.extra_titles = json_decode(values["extra_titles_encoded"])
+
+/datum/entity/admins/proc/associate(client/admin_client)
+	if(istype(admin_client))
+		admin_rank = GLOB.admin_ranks[rank]
+		owner = admin_client
+		owner.player_data.admin_holder = src
 		owner.add_admin_verbs()
 		owner.tgui_say.load()
 		owner.update_special_keybinds()
-		GLOB.admins |= C
+		GLOB.admins |= admin_client
 		if(admin_rank.rights & R_PROFILER)
-			if(!world.GetConfig("admin", C.ckey))
-				world.SetConfig("APP/admin", C.ckey, "role = coder")
+			if(!world.GetConfig("admin", admin_client.ckey))
+				world.SetConfig("APP/admin", admin_client.ckey, "role = coder")
 
 /datum/entity/admins/proc/disassociate()
 	if(owner)
 		GLOB.admins -= owner
 		owner.remove_admin_verbs()
-		owner.admin_holder = null
+		owner.player_data.admin_holder = null
 		owner.tgui_say.load()
 		owner.update_special_keybinds()
 		owner = null
@@ -126,14 +155,14 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 		return FALSE
 
 	if(rights_required)
-		if(admin.admin_holder)
-			if(rights_required & admin.admin_holder.admin_rank.rights)
+		if(admin.player_data.admin_holder)
+			if(rights_required & admin.player_data.admin_holder.admin_rank.rights)
 				return TRUE
 			else
 				if(show_msg && admin.prefs.show_permission_errors)
 					to_chat(admin, SPAN_DANGER("Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required,"")]."))
 	else
-		if(admin.admin_holder)
+		if(admin.player_data.admin_holder)
 			return TRUE
 		else
 			if(show_msg && admin.prefs.show_permission_errors)
@@ -152,7 +181,7 @@ generally it would be used like so:
 	to_world("you have enough rights!")
 
 NOTE: it checks usr! not src! So if you're checking somebody's rank in a proc which they did not call
-you will have to do something like if(client.admin_holder.admin_rank.rights & R_ADMIN) yourself.
+you will have to do something like if(client.player_data.admin_holder.admin_rank.rights & R_ADMIN) yourself.
 */
 /proc/check_rights(rights_required, show_msg=TRUE)
 	if(usr && usr.client)
@@ -162,13 +191,13 @@ you will have to do something like if(client.admin_holder.admin_rank.rights & R_
 /proc/check_other_rights(client/other, rights_required, show_msg = TRUE)
 	if(!other)
 		return FALSE
-	if(rights_required && other.admin_holder?.admin_rank?.rank)
+	if(rights_required && other.player_data.admin_holder?.admin_rank?.rank)
 		if(check_client_rights(usr.client, rights_required, show_msg))
 			return TRUE
 		else if(show_msg)
 			to_chat(usr, SPAN_WARNING("You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")]."))
 	else
-		if(other.admin_holder)
+		if(other.player_data.admin_holder)
 			return TRUE
 		else if(show_msg)
 			to_chat(usr, SPAN_WARNING("You are not a holder."))
@@ -177,11 +206,11 @@ you will have to do something like if(client.admin_holder.admin_rank.rights & R_
 //probably a bit iffy - will hopefully figure out a better solution
 /proc/check_if_greater_rights_than(client/other)
 	if(usr && usr.client)
-		if(usr.client.admin_holder)
-			if(!other || !other.admin_holder)
+		if(usr.client.player_data.admin_holder)
+			if(!other || !other.player_data.admin_holder)
 				return 1
-			if(usr.client.admin_holder.admin_rank.rights != other.admin_holder.admin_rank.rights)
-				if( (usr.client.admin_holder.admin_rank.rights & other.admin_holder.admin_rank.rights) == other.admin_holder.admin_rank.rights )
+			if(usr.client.player_data.admin_holder.admin_rank.rights != other.player_data.admin_holder.admin_rank.rights)
+				if( (usr.client.player_data.admin_holder.admin_rank.rights & other.player_data.admin_holder.admin_rank.rights) == other.player_data.admin_holder.admin_rank.rights )
 					return 1 //we have all the rights they have and more
 		to_chat(usr, "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>")
 	return 0
@@ -190,14 +219,14 @@ you will have to do something like if(client.admin_holder.admin_rank.rights & R_
 	if(IsAdminAdvancedProcCall())
 		alert_proccall("deadmin")
 		return PROC_BLOCKED
-	if(admin_holder)
-		admin_holder.disassociate()
-		QDEL_NULL(admin_holder)
+	if(player_data.admin_holder)
+		player_data.admin_holder.disassociate()
+		QDEL_NULL(player_data.admin_holder)
 	return TRUE
 
 /client/proc/readmin()
-	if(GLOB.admin_datums[ckey])
-		GLOB.admin_datums[ckey].associate(src)
+	if(player_data.admin_holder)
+		player_data.admin_holder.associate(src)
 	return TRUE
 
 /datum/entity/admins/proc/check_for_rights(rights_required)
@@ -219,8 +248,8 @@ you will have to do something like if(client.admin_holder.admin_rank.rights & R_
 
 //This proc checks whether subject has at least ONE of the rights specified in rights_required.
 /proc/check_rights_for(client/subject, rights_required)
-	if(subject?.admin_holder)
-		return subject.admin_holder.check_for_rights(rights_required)
+	if(subject?.player_data.admin_holder)
+		return subject.player_data.admin_holder.check_for_rights(rights_required)
 	return FALSE
 
 /proc/GenerateToken()
@@ -234,7 +263,7 @@ you will have to do something like if(client.admin_holder.admin_rank.rights & R_
 		var/client/C = usr.client
 		if(!C)
 			CRASH("No client for HrefToken()!")
-		var/datum/entity/admins/holder = C.admin_holder
+		var/datum/entity/admins/holder = C.player_data.admin_holder
 		if(holder)
 			tok = holder.href_token
 	return tok

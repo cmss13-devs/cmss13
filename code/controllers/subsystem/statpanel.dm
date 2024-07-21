@@ -58,10 +58,10 @@ SUBSYSTEM_DEF(statpanels)
 			target.stat_panel.send_message("update_split_admin_tabs", !!(target.prefs.toggles_admin & SPLIT_ADMIN_TABS))
 
 			if(!("Tickets" in target.panel_tabs))
-				target.stat_panel.send_message("add_admin_tabs", target.admin_holder.href_token)
+				target.stat_panel.send_message("add_admin_tabs", target.player_data.admin_holder.href_token)
 
 			if(!("MC" in target.panel_tabs) && check_client_rights(target, R_DEBUG, FALSE))
-				target.stat_panel.send_message("add_debug_tabs", target.admin_holder.href_token)
+				target.stat_panel.send_message("add_debug_tabs", target.player_data.admin_holder.href_token)
 
 			if(target.stat_tab == "MC" && ((num_fires % mc_wait == 0))) // || target?.prefs.read_preference(/datum/preference/toggle/fast_mc_refresh)))
 				set_MC_tab(target)
@@ -263,7 +263,7 @@ SUBSYSTEM_DEF(statpanels)
 			set_turf_examine_tab(target, target_mob)
 			return TRUE
 
-	if(!target.admin_holder)
+	if(!target.player_data.admin_holder)
 		return FALSE
 
 	if(target.stat_tab == "MC")

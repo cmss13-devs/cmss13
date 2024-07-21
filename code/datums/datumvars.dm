@@ -50,7 +50,7 @@
 	if(SEND_SIGNAL(src, COMSIG_VV_TOPIC, usr, href_list) & COMPONENT_VV_HANDLED)
 		return FALSE
 	if(href_list[VV_HK_MODIFY_TRAITS])
-		usr.client.admin_holder.modify_traits(src)
+		usr.client.player_data.admin_holder.modify_traits(src)
 	if(href_list[VV_HK_EXPLODE])
 		if(!check_rights(R_DEBUG))
 			return

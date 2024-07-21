@@ -312,7 +312,7 @@
 	set name = "Drop Everything"
 	set category = null
 
-	if(!admin_holder)
+	if(!player_data.admin_holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
 

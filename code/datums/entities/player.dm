@@ -5,7 +5,7 @@
 	var/last_known_ip
 	var/last_known_cid
 
-	var/admin_rank
+	var/admin_id
 
 	var/whitelist_status
 	var/whitelist_flags
@@ -46,7 +46,7 @@
 	var/migrating_bans = FALSE
 	var/migrating_jobbans = FALSE
 
-	var/datum/entity/admins/admin_entity
+	var/datum/entity/admins/admin_holder
 	var/datum/entity/discord_link/discord_link
 	var/datum/entity/player/permaban_admin
 	var/datum/entity/player/time_ban_admin
@@ -71,7 +71,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"is_permabanned" = DB_FIELDTYPE_INT,
 		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
 		"permaban_date" = DB_FIELDTYPE_STRING_LARGE,
-		"admin_rank" = DB_FIELDTYPE_STRING_MEDIUM,
+		"admin_id" = DB_FIELDTYPE_BIGINT,
 		"whitelist_status" = DB_FIELDTYPE_STRING_MAX,
 		"discord_link_id" = DB_FIELDTYPE_BIGINT,
 		"permaban_admin_id" = DB_FIELDTYPE_BIGINT,
@@ -97,7 +97,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		if(!admin || !admin.player_data)
 			return FALSE
 		if(note_category == NOTE_ADMIN || is_confidential)
-			if (!AHOLD_IS_MOD(admin.admin_holder))
+			if (!AHOLD_IS_MOD(admin.player_data.admin_holder))
 				return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
@@ -123,8 +123,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	note.note_category = note_category
 	note.is_ban = is_ban
 	note.ban_time = duration
-	if(admin.admin_holder?.admin_rank)
-		note.admin_rank = admin.admin_holder.admin_rank.rank
+	if(admin.player_data.admin_holder?.admin_rank)
+		note.admin_rank = admin.player_data.admin_holder.admin_rank.rank
 	else
 		note.admin_rank = "Non-Staff"
 	// since admin is in game, their player_data has to be populated. This is also checked above
@@ -149,7 +149,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if((!AHOLD_IS_MOD(admin.admin_holder)) && !whitelist)
+	if((!AHOLD_IS_MOD(admin.player_data.admin_holder)) && !whitelist)
 		return FALSE
 	if(whitelist && !(isSenator(admin) || CLIENT_HAS_RIGHTS(admin, R_PERMISSIONS)))
 		return FALSE
@@ -170,7 +170,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.admin_holder))
+	if (!AHOLD_IS_MOD(admin.player_data.admin_holder))
 		return FALSE
 
 	if(check_client_rights(owning_client, R_MOD, FALSE))
@@ -209,7 +209,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.admin_holder))
+	if (!AHOLD_IS_MOD(admin.player_data.admin_holder))
 		return FALSE
 
 	if(!is_time_banned)
@@ -238,7 +238,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.admin_holder))
+	if (!AHOLD_IS_MOD(admin.player_data.admin_holder))
 		return FALSE
 
 	if(check_client_rights(owning_client, R_MOD, FALSE))
@@ -300,7 +300,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.admin_holder))
+	if (!AHOLD_IS_MOD(admin.player_data.admin_holder))
 		return FALSE
 
 	var/safe_rank = ckey(rank)
@@ -427,8 +427,11 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(discord_link_id)
 		discord_link = DB_ENTITY(/datum/entity/discord_link, discord_link_id)
 
-	if(admin_rank)
-		admin_entity = DB_ENTITY(/datum/entity/admins, id)
+	if(admin_id)
+		admin_holder = DB_ENTITY(/datum/entity/admins, admin_id)
+		admin_holder.associate(owning_client)
+		admin_holder.save()
+		admin_holder.sync()
 
 	if(whitelist_status)
 		var/list/whitelists = splittext(whitelist_status, "|")

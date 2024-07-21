@@ -76,8 +76,8 @@ GLOBAL_LIST_EMPTY(jobban_keylist)
 	if(!check_rights(R_BAN|R_MOD))
 		return
 
-	if(admin_holder)
-		admin_holder.job_ban(M)
+	if(player_data.admin_holder)
+		player_data.admin_holder.job_ban(M)
 
 /datum/entity/admins/proc/job_ban(mob/M)
 	if(!ismob(M))

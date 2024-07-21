@@ -196,7 +196,7 @@
 	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "Set Species")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_ORGAN, "Add Organ")
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_ORGAN, "Remove Organ")
-	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"
+	. += "<option value='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"
 
 /mob/living/carbon/human/vv_do_topic(list/href_list)
 	. = ..()

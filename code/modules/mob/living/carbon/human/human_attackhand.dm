@@ -68,7 +68,7 @@
 						balloon_alert(attacking_mob, "you perform cpr")
 					else
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> fails to perform CPR on <b>[src]</b>."),
-							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
+							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. You (along with anyone else nearby) need to do it <b>slower</b>."))
 						balloon_alert(attacking_mob, "incorrect rhythm. do it slower")
 			cpr_attempt_timer = 0
 			return 1

@@ -173,6 +173,8 @@
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
 /datum/ammo/proc/slowdown(mob/living/living_mob, obj/projectile/fired_projectile)
+	if(living_mob.mob_size >= MOB_SIZE_BIG)
+        return //Big mobs are not affected.
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		target.apply_effect(1, SUPERSLOW)

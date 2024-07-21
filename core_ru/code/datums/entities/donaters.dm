@@ -19,6 +19,7 @@ BSQL_PROTECT_DATUM(/datum/entity/discord_rank)
 		"rank" = DB_FIELDTYPE_INT,
 		"rank_name" = DB_FIELDTYPE_STRING_LARGE,
 		"functions" = DB_FIELDTYPE_STRING_MAX,
+		"role_id" = DB_FIELDTYPE_STRING_LARGE,
 	)
 
 /datum/entity_meta/discord_rank/map(datum/entity/discord_rank/ET, list/values)
@@ -44,6 +45,7 @@ BSQL_PROTECT_DATUM(/datum/entity/discord_rank)
 		"rank",
 		"rank_name",
 		"functions",
+		"role_id",
 	)
 	order_by = list("rank" = DB_ORDER_BY_ASC)
 

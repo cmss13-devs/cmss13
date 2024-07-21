@@ -682,7 +682,8 @@
 				var/mob/living/carbon/human/human_grab = grab_effect.grabbed_thing
 				if(grab_level >= GRAB_AGGRESSIVE)
 					birthed.perform_infestation(human_grab)
-
+			else
+				birthed.hide_borer()
 			return TRUE
 		else
 			to_chat(src, SPAN_XENONOTICE("You need at least [BORER_LARVAE_COST] enzymes to reproduce!"))

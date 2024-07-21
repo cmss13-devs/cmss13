@@ -39,7 +39,7 @@
 		show_player_panel(M)
 		return
 
-/*
+/* dead code?
 	if(href_list["editrights"])
 		if(!check_rights(R_PERMISSIONS))
 			message_admins("[key_name_admin(usr)] attempted to edit the admin permissions without sufficient rights.")

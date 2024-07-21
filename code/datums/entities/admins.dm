@@ -61,7 +61,7 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 		"text_rights",
 	)
 
-/datum/entity_meta/admin_rank/map(datum/view_record/admin_rank/rank, list/values)
+/datum/entity_view_meta/admin_rank/map(datum/view_record/admin_rank/rank, list/values)
 	..()
 	if(values["text_rights"])
 		rank.rights = rights2flags(values["text_rights"])
@@ -131,6 +131,7 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
 /datum/entity_view_meta/admin_holder/map(datum/view_record/admin_holder/admin, list/values)
 	..()
 	admin.admin_rank = GLOB.admin_ranks[admin.rank]
+	admin.href_token = GenerateToken()
 	if(values["extra_titles_encoded"])
 		admin.extra_titles = json_decode(values["extra_titles_encoded"])
 
@@ -370,14 +371,12 @@ you will have to do something like if(client.admin_holder.admin_rank.rights & R_
 	var/datum/entity/admin_rank/rank
 	if(!length(ranks))
 		rank = DB_ENTITY(/datum/entity/admin_rank)
+		rank.rank = "!localhost!"
+		rank.rights = RL_HOST
+		rank.text_rights = "host"
+		rank.save()
 	else
 		rank = ranks[length(ranks)]
-
-	rank.rank = "!localhost!"
-	rank.rights = RL_HOST
-	rank.text_rights = "host"
-	rank.save()
-	rank.sync()
 
 	DB_FILTER(/datum/entity/admin_holder, DB_COMP("ckey", DB_EQUALS, admin_client.ckey), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(localhost_entity_check), admin_client, rank))
 
@@ -389,11 +388,11 @@ you will have to do something like if(client.admin_holder.admin_rank.rights & R_
 		admin.ckey = admin_client.ckey
 		admin.rank = rank.rank
 		admin.save()
-		admin.sync()
 	else
 		admin = admins[length(admins)]
 
-	GLOB.admin_ranks = load_ranks()
-	GLOB.admin_datums = load_admins()
-
-	GLOB.admin_datums[admin_client.ckey].associate(admin_client)
+	if(!admin_client.admin_holder)
+		GLOB.admin_ranks = load_ranks()
+		GLOB.admin_datums = load_admins()
+		admin_client.player_data.admin_id = admin.id
+		GLOB.admin_datums[admin_client.ckey].associate(admin_client)

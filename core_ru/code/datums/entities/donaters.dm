@@ -8,6 +8,7 @@ GLOBAL_LIST_EMPTY_TYPED(donators_info, /datum/donator_info)
 	var/rank
 	var/rank_name
 	var/functions
+	var/role_id
 	var/list/buns = list()
 
 BSQL_PROTECT_DATUM(/datum/entity/discord_rank)
@@ -36,6 +37,7 @@ BSQL_PROTECT_DATUM(/datum/entity/discord_rank)
 	var/rank
 	var/rank_name
 	var/functions
+	var/role_id
 	var/list/buns = list()
 
 /datum/entity_view_meta/discord_rank

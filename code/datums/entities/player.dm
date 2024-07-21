@@ -5,8 +5,6 @@
 	var/last_known_ip
 	var/last_known_cid
 
-	var/admin_id
-
 	var/whitelist_status
 	var/whitelist_flags
 
@@ -70,7 +68,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"is_permabanned" = DB_FIELDTYPE_INT,
 		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
 		"permaban_date" = DB_FIELDTYPE_STRING_LARGE,
-		"admin_id" = DB_FIELDTYPE_BIGINT,
 		"whitelist_status" = DB_FIELDTYPE_STRING_MAX,
 		"discord_link_id" = DB_FIELDTYPE_BIGINT,
 		"permaban_admin_id" = DB_FIELDTYPE_BIGINT,
@@ -514,7 +511,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		error("ALARM: MISMATCH. Loaded player data for client [ckey], player data ckey is [player.ckey], id: [player.id]")
 	player_data = player
 	player_data.owning_client = src
-	if(player.admin_id && !admin_holder)
+	if(!admin_holder && ckey in GLOB.admin_datums)
 		admin_holder = GLOB.admin_datums[ckey]
 		admin_holder.associate(src)
 	if(!player_data.last_login)

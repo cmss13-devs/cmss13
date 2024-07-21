@@ -49,7 +49,7 @@
 		return FALSE
 	var/list/data = list()
 
-	data["admin_login"] = "[admin_interface.logged_in], [user.client.player_data.admin_holder?.rank]"
+	data["admin_login"] = "[admin_interface.logged_in], [user.client.player_data?.admin_holder?.rank]"
 	data["admin_access_log"] = list(admin_interface.access_list)
 
 	data["current_menu"] = admin_interface.current_menu
@@ -266,7 +266,7 @@
 
 		if("login")
 			admin_interface.logged_in = user.client.ckey
-			admin_interface.access_list += "[user.client.ckey] at [worldtime2text()], Access Level '[user.client.player_data.admin_holder?.admin_rank?.rank]'."
+			admin_interface.access_list += "[user.client.ckey] at [worldtime2text()], Access Level '[user.client.player_data?.admin_holder?.admin_rank?.rank]'."
 			admin_interface.current_menu = "main"
 
 		// -- Page Changers -- //

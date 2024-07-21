@@ -3,7 +3,7 @@
 	set desc = "Adjust the extra slots for predators."
 	set category = "Server.Round"
 
-	if(!player_data.admin_holder)
+	if(!player_data?.admin_holder)
 		return
 
 	if(!SSticker?.mode)
@@ -68,7 +68,7 @@
 	set name = "Free Job Slots"
 	set category = "Server.Round"
 
-	if(!player_data.admin_holder)
+	if(!player_data?.admin_holder)
 		return
 
 	var/roles[] = new
@@ -89,7 +89,7 @@
 	set name = "Adjust Job Slots"
 	set category = "Server.Round"
 
-	if(!player_data.admin_holder)
+	if(!player_data?.admin_holder)
 		return
 
 	var/roles[] = new
@@ -120,16 +120,16 @@
 /client/proc/check_antagonists()
 	set name = "Check Antagonists"
 	set category = "Server.Round"
-	if(player_data.admin_holder)
-		player_data.admin_holder.check_antagonists()
+	if(player_data?.admin_holder)
+		player_data?.admin_holder.check_antagonists()
 		log_admin("[key_name(usr)] checked antagonists.")
 	return
 
 /client/proc/check_round_status()
 	set name = "Round Status"
 	set category = "Server.Round"
-	if(player_data.admin_holder)
-		player_data.admin_holder.check_round_status()
+	if(player_data?.admin_holder)
+		player_data?.admin_holder.check_round_status()
 		log_admin("[key_name(usr)] checked round status.")
 	return
 

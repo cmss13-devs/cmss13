@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	set name = "Show Plant Genes"
 	set desc = "Prints the round's plant gene masks."
 
-	if(!player_data.admin_holder) return
+	if(!player_data?.admin_holder) return
 
 	if(!GLOB.gene_tag_masks)
 		to_chat(usr, "Gene masks not set.")

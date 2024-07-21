@@ -343,7 +343,7 @@
 		var/list/possible_classes = list("text","num","type","reference","mob reference","icon","file","list")
 		if(LAZYLEN(stored_matrices))
 			possible_classes += "matrix"
-		if(player_data.admin_holder && player_data.admin_holder.marked_datum)
+		if(player_data?.admin_holder && player_data?.admin_holder.marked_datum)
 			possible_classes += "marked datum"
 		possible_classes += "edit referenced object"
 
@@ -412,7 +412,7 @@
 			return
 
 		if("marked datum")
-			var/datum/D = player_data.admin_holder.marked_datum
+			var/datum/D = player_data?.admin_holder.marked_datum
 			global.vars[variable] = D
 
 	world.log << "### Global VarEdit by [key_name(src)]: '[variable]': [var_value] => [html_encode("[global.vars[variable]]")]"

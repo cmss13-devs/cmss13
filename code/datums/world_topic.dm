@@ -79,8 +79,8 @@
 		admins += list(
 			"ckey" = admin.ckey,
 			"key" = admin.key,
-			"rank" = admin.player_data.admin_holder.admin_rank.rank,
-			"stealth" = admin.player_data.admin_holder.fakekey ? TRUE : FALSE,
+			"rank" = admin.player_data?.admin_holder.admin_rank.rank,
+			"stealth" = admin.player_data?.admin_holder.fakekey ? TRUE : FALSE,
 			"afk" = admin.is_afk(),
 		)
 	statuscode = 200

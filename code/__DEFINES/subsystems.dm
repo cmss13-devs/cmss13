@@ -109,6 +109,7 @@
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
+#define SS_INIT_ENTITYMANAGER 87
 #define SS_INIT_PROFILER 86
 #define SS_INIT_INPUT   85
 #define SS_INIT_TOPIC 83
@@ -144,7 +145,6 @@
 #define SS_INIT_TICKER -21
 #define SS_INIT_VOTE   -23
 #define SS_INIT_DATABASE   -27
-#define SS_INIT_ENTITYMANAGER   -28
 #define SS_INIT_PLAYTIME   -29
 #define SS_INIT_STICKY -30
 #define SS_INIT_PREDSHIPS  -31

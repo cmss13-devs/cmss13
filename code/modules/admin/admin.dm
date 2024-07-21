@@ -4,7 +4,7 @@
 
 	msg = "<span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]"
 	if(jmp_x && jmp_y && jmp_z)
-		msg += " (<a href='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jmp_x];Y=[jmp_y];Z=[jmp_z]'>JMP</a>)"
+		msg += " (<a href='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jmp_x];Y=[jmp_y];Z=[jmp_z]'>JMP</a>)"
 	msg += "</span>"
 
 	for(var/client/C as anything in GLOB.admins)
@@ -15,7 +15,7 @@
 	if(GLOB.perf_flags & PERF_TOGGLE_ATTACKLOGS)
 		return
 	log_attack(text)
-	var/rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> [text] (<A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jump_x];Y=[jump_y];Z=[jump_z]'>JMP</a>)")
+	var/rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> [text] (<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jump_x];Y=[jump_y];Z=[jump_z]'>JMP</a>)")
 	for(var/client/C as anything in GLOB.admins)
 		if(check_client_rights(C, R_MOD, FALSE))
 			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
@@ -74,7 +74,7 @@
 	set category = null
 	set name = "Player Record"
 	if(!istype(src, /datum/entity/admin_holder))
-		src = usr.client.player_data.admin_holder
+		src = usr.client.player_data?.admin_holder
 	if(!istype(src, /datum/entity/admin_holder) || !(admin_rank.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
@@ -100,7 +100,7 @@
 
 			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || check_for_rights(R_PERMISSIONS))
-			dat += "<A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
+			dat += "<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
 
 		dat += "<br><br>"
 	dat += "</body></html>"
@@ -135,16 +135,16 @@
 		return
 
 	var/dat = {"
-		<A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode=1'>Change Game Mode</A><br>
+		<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode=1'>Change Game Mode</A><br>
 		"}
 
 	dat += {"
 		<BR>
-		<A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];create_object=1'>Create Object</A><br>
-		<A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];quick_create_object=1'>Quick Create Object</A><br>
-		<A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];create_turf=1'>Create Turf</A><br>
-		<A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];create_mob=1'>Create Mob</A><br>
-		<A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Immediately Send Tip</A><br>
+		<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];create_object=1'>Create Object</A><br>
+		<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];quick_create_object=1'>Quick Create Object</A><br>
+		<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];create_turf=1'>Create Turf</A><br>
+		<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];create_mob=1'>Create Mob</A><br>
+		<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Immediately Send Tip</A><br>
 		"}
 
 	show_browser(usr, dat, "Game Panel", "admin2", "size=210x280")

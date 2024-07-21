@@ -3,7 +3,7 @@
 	weight = WEIGHT_ADMIN
 
 /datum/keybinding/admin/can_use(client/user)
-	return user.player_data.admin_holder ? TRUE : FALSE
+	return user.player_data?.admin_holder ? TRUE : FALSE
 
 /datum/keybinding/admin/admin_ghost
 	hotkey_keys = list("F5")
@@ -32,7 +32,7 @@
 	. = ..()
 	if(.)
 		return
-	user.player_data.admin_holder.player_panel_new()
+	user.player_data?.admin_holder.player_panel_new()
 	return TRUE
 
 /datum/keybinding/admin/toggle_buildmode_self

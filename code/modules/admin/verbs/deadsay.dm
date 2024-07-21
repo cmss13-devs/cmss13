@@ -19,7 +19,7 @@
 
 	var/stafftype = null
 
-	stafftype = "[player_data.admin_holder.admin_rank.rank]"
+	stafftype = "[player_data?.admin_holder.admin_rank.rank]"
 
 	msg = strip_html(msg)
 	log_admin("DEAD: [key_name(src)] : [msg]")

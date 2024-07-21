@@ -57,7 +57,7 @@
 	(here the list).
 	Yeah, by the way, you can chain these MAP / WHERE things FOREVER!
 
-	"SELECT /mob WHERE client MAP client WHERE player_data.admin_holder MAP player_data.admin_holder"
+	"SELECT /mob WHERE client MAP client WHERE player_data?.admin_holder MAP player_data?.admin_holder"
 
 	You can also generate a new list on the fly using a selector array. @[] will generate a list of objects based off the selector provided.
 

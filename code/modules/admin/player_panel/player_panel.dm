@@ -395,13 +395,13 @@
 					dat += "IN PROGRESS"
 			dat += "<br>"
 
-			dat += "<A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
-			dat += "<A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
-			dat += "<A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
+			dat += "<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
+			dat += "<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
+			dat += "<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
 			if(check_rights(R_ADMIN, FALSE))
-				dat += "<A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
+				dat += "<A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
 
-		dat += "<br><A HREF='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</A><br>"
+		dat += "<br><A HREF='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</A><br>"
 		dat += "</body></html>"
 		show_browser(usr, dat, "Round Status", "roundstatus", "size=600x500")
 	else
@@ -496,8 +496,8 @@
 		.["client_muted"] = targetClient.prefs.muted
 		.["client_age"] = targetClient.player_data.byond_account_age
 		.["first_join"] = targetClient.player_data.first_join_date
-		if(targetClient.player_data.admin_holder?.admin_rank?.rank)
-			.["client_rank"] = targetClient.player_data.admin_holder.admin_rank.rank
+		if(targetClient.player_data?.admin_holder?.admin_rank?.rank)
+			.["client_rank"] = targetClient.player_data?.admin_holder.admin_rank.rank
 		else
 			.["client_rank"] = "Player"
 		.["client_muted"] = targetClient.prefs.muted

@@ -97,7 +97,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		if(!admin || !admin.player_data)
 			return FALSE
 		if(note_category == NOTE_ADMIN || is_confidential)
-			if (!AHOLD_IS_MOD(admin.player_data.admin_holder))
+			if (!AHOLD_IS_MOD(admin.player_data?.admin_holder))
 				return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
@@ -123,8 +123,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	note.note_category = note_category
 	note.is_ban = is_ban
 	note.ban_time = duration
-	if(admin.player_data.admin_holder?.admin_rank)
-		note.admin_rank = admin.player_data.admin_holder.admin_rank.rank
+	if(admin.player_data?.admin_holder?.admin_rank)
+		note.admin_rank = admin.player_data?.admin_holder.admin_rank.rank
 	else
 		note.admin_rank = "Non-Staff"
 	// since admin is in game, their player_data has to be populated. This is also checked above
@@ -149,7 +149,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if((!AHOLD_IS_MOD(admin.player_data.admin_holder)) && !whitelist)
+	if((!AHOLD_IS_MOD(admin.player_data?.admin_holder)) && !whitelist)
 		return FALSE
 	if(whitelist && !(isSenator(admin) || CLIENT_HAS_RIGHTS(admin, R_PERMISSIONS)))
 		return FALSE
@@ -170,7 +170,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.player_data.admin_holder))
+	if (!AHOLD_IS_MOD(admin.player_data?.admin_holder))
 		return FALSE
 
 	if(check_client_rights(owning_client, R_MOD, FALSE))
@@ -209,7 +209,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.player_data.admin_holder))
+	if (!AHOLD_IS_MOD(admin.player_data?.admin_holder))
 		return FALSE
 
 	if(!is_time_banned)
@@ -238,7 +238,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.player_data.admin_holder))
+	if (!AHOLD_IS_MOD(admin.player_data?.admin_holder))
 		return FALSE
 
 	if(check_client_rights(owning_client, R_MOD, FALSE))
@@ -300,7 +300,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.player_data.admin_holder))
+	if (!AHOLD_IS_MOD(admin.player_data?.admin_holder))
 		return FALSE
 
 	var/safe_rank = ckey(rank)

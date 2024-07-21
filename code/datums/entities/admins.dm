@@ -9,11 +9,19 @@ GLOBAL_PROTECT(href_token)
 
 /proc/load_ranks()
 	WAIT_DB_READY
-	return DB_VIEW(/datum/view_record/admin_rank)
+	var/list/named_ranks = list()
+	var/list/datum/view_record/admin_rank/ranks = DB_VIEW(/datum/view_record/admin_rank)
+	for(var/datum/view_record/admin_rank/rank as anything in ranks)
+		named_ranks[rank.rank] = rank
+	return named_ranks
 
 /proc/load_admins()
 	WAIT_DB_READY
-	return DB_VIEW(/datum/view_record/admin_holder)
+	var/list/ckeyed_admins = list()
+	var/list/datum/view_record/admin_holder/admins = DB_VIEW(/datum/view_record/admin_holder)
+	for(var/datum/view_record/admin_holder/admin as anything in admins)
+		ckeyed_admins[admin.ckey] = admin
+	return ckeyed_admins
 
 /datum/entity/admin_rank
 	var/rank
@@ -135,7 +143,7 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
 		else
 			stack_trace("Warning, admins missconfiguration in DB")
 		owner = admin_client
-		owner.player_data.admin_holder = src
+		owner.player_data?.admin_holder = src
 		owner.add_admin_verbs()
 		owner.tgui_say.load()
 		owner.update_special_keybinds()
@@ -148,7 +156,7 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
 	if(owner)
 		GLOB.admins -= owner
 		owner.remove_admin_verbs()
-		owner.player_data.admin_holder = null
+		owner.player_data?.admin_holder = null
 		owner.tgui_say.load()
 		owner.update_special_keybinds()
 		owner = null
@@ -158,14 +166,14 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
 		return FALSE
 
 	if(rights_required)
-		if(admin.player_data.admin_holder)
-			if(rights_required & admin.player_data.admin_holder.admin_rank.rights)
+		if(admin.player_data?.admin_holder)
+			if(rights_required & admin.player_data?.admin_holder.admin_rank.rights)
 				return TRUE
 			else
 				if(show_msg && admin.prefs.show_permission_errors)
 					to_chat(admin, SPAN_DANGER("Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required,"")]."))
 	else
-		if(admin.player_data.admin_holder)
+		if(admin.player_data?.admin_holder)
 			return TRUE
 		else
 			if(show_msg && admin.prefs.show_permission_errors)
@@ -184,7 +192,7 @@ generally it would be used like so:
 	to_world("you have enough rights!")
 
 NOTE: it checks usr! not src! So if you're checking somebody's rank in a proc which they did not call
-you will have to do something like if(client.player_data.admin_holder.admin_rank.rights & R_ADMIN) yourself.
+you will have to do something like if(client.player_data?.admin_holder.admin_rank.rights & R_ADMIN) yourself.
 */
 /proc/check_rights(rights_required, show_msg=TRUE)
 	if(usr && usr.client)
@@ -194,13 +202,13 @@ you will have to do something like if(client.player_data.admin_holder.admin_rank
 /proc/check_other_rights(client/other, rights_required, show_msg = TRUE)
 	if(!other)
 		return FALSE
-	if(rights_required && other.player_data.admin_holder?.admin_rank?.rank)
+	if(rights_required && other.player_data?.admin_holder?.admin_rank?.rank)
 		if(check_client_rights(usr.client, rights_required, show_msg))
 			return TRUE
 		else if(show_msg)
 			to_chat(usr, SPAN_WARNING("You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")]."))
 	else
-		if(other.player_data.admin_holder)
+		if(other.player_data?.admin_holder)
 			return TRUE
 		else if(show_msg)
 			to_chat(usr, SPAN_WARNING("You are not a holder."))
@@ -209,11 +217,11 @@ you will have to do something like if(client.player_data.admin_holder.admin_rank
 //probably a bit iffy - will hopefully figure out a better solution
 /proc/check_if_greater_rights_than(client/other)
 	if(usr && usr.client)
-		if(usr.client.player_data.admin_holder)
-			if(!other || !other.player_data.admin_holder)
+		if(usr.client.player_data?.admin_holder)
+			if(!other || !other.player_data?.admin_holder)
 				return 1
-			if(usr.client.player_data.admin_holder.admin_rank.rights != other.player_data.admin_holder.admin_rank.rights)
-				if( (usr.client.player_data.admin_holder.admin_rank.rights & other.player_data.admin_holder.admin_rank.rights) == other.player_data.admin_holder.admin_rank.rights )
+			if(usr.client.player_data?.admin_holder.admin_rank.rights != other.player_data?.admin_holder.admin_rank.rights)
+				if( (usr.client.player_data?.admin_holder.admin_rank.rights & other.player_data?.admin_holder.admin_rank.rights) == other.player_data?.admin_holder.admin_rank.rights )
 					return 1 //we have all the rights they have and more
 		to_chat(usr, "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>")
 	return 0
@@ -222,14 +230,13 @@ you will have to do something like if(client.player_data.admin_holder.admin_rank
 	if(IsAdminAdvancedProcCall())
 		alert_proccall("deadmin")
 		return PROC_BLOCKED
-	if(player_data.admin_holder)
-		player_data.admin_holder.disassociate()
-		QDEL_NULL(player_data.admin_holder)
+	if(player_data?.admin_holder)
+		player_data?.admin_holder.disassociate()
 	return TRUE
 
 /client/proc/readmin()
-	if(player_data.admin_holder)
-		player_data.admin_holder.associate(src)
+	if(player_data?.admin_holder)
+		player_data?.admin_holder.associate(src)
 	return TRUE
 
 /datum/entity/admin_holder/proc/check_for_rights(rights_required)
@@ -252,7 +259,7 @@ you will have to do something like if(client.player_data.admin_holder.admin_rank
 //This proc checks whether subject has at least ONE of the rights specified in rights_required.
 /proc/check_rights_for(client/subject, rights_required)
 	if(subject?.player_data?.admin_holder)
-		return subject.player_data.admin_holder.check_for_rights(rights_required)
+		return subject.player_data?.admin_holder.check_for_rights(rights_required)
 	return FALSE
 
 /proc/GenerateToken()
@@ -266,7 +273,7 @@ you will have to do something like if(client.player_data.admin_holder.admin_rank
 		var/client/C = usr.client
 		if(!C)
 			CRASH("No client for HrefToken()!")
-		var/datum/entity/admin_holder/holder = C.player_data.admin_holder
+		var/datum/entity/admin_holder/holder = C.player_data?.admin_holder
 		if(holder)
 			tok = holder.href_token
 	return tok
@@ -366,12 +373,15 @@ you will have to do something like if(client.player_data.admin_holder.admin_rank
 	var/datum/entity/admin_rank/rank
 	if(!length(ranks))
 		rank = DB_ENTITY(/datum/entity/admin_rank)
-		rank.rank = "!localhost!"
-		rank.rights = RL_HOST
-		rank.save()
-		rank.sync()
 	else
 		rank = ranks[length(ranks)]
+
+	rank.rank = "!localhost!"
+	rank.rights = RL_HOST
+	rank.text_rights = "host"
+	rank.save()
+	rank.sync()
+
 	DB_FILTER(/datum/entity/admin_holder, DB_COMP("ckey", DB_EQUALS, admin_client.ckey), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(localhost_entity_check), admin_client, rank))
 
 /proc/localhost_entity_check(client/admin_client, datum/entity/admin_rank/rank, list/datum/entity/admin_holder/admins)
@@ -385,4 +395,5 @@ you will have to do something like if(client.player_data.admin_holder.admin_rank
 		admin.sync()
 	else
 		admin = admins[length(admins)]
+	GLOB.admin_ranks = load_ranks()
 	admin.associate(admin_client)

@@ -1,16 +1,16 @@
 /client/proc/tag_datum(datum/target_datum)
-	if(!player_data.admin_holder || QDELETED(target_datum))
+	if(!player_data?.admin_holder || QDELETED(target_datum))
 		return
-	player_data.admin_holder.add_tagged_datum(target_datum)
+	player_data?.admin_holder.add_tagged_datum(target_datum)
 
 /client/proc/toggle_tag_datum(datum/target_datum)
-	if(!player_data.admin_holder || !target_datum)
+	if(!player_data?.admin_holder || !target_datum)
 		return
 
-	if(LAZYFIND(player_data.admin_holder.tagged_datums, target_datum))
-		player_data.admin_holder.remove_tagged_datum(target_datum)
+	if(LAZYFIND(player_data?.admin_holder.tagged_datums, target_datum))
+		player_data?.admin_holder.remove_tagged_datum(target_datum)
 	else
-		player_data.admin_holder.add_tagged_datum(target_datum)
+		player_data?.admin_holder.add_tagged_datum(target_datum)
 
 /client/proc/tag_datum_mapview(datum/target_datum as mob|obj|turf|area in view(view))
 	set category = "Debug"

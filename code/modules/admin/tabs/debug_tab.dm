@@ -168,8 +168,8 @@
 	set name = "Bulk Fetch Items"
 	set category = "Debug"
 
-	if (player_data.admin_holder)
-		player_data.admin_holder.bulk_fetcher_panel()
+	if (player_data?.admin_holder)
+		player_data?.admin_holder.bulk_fetcher_panel()
 
 /datum/entity/admin_holder/proc/bulk_fetcher_panel()
 	if(!check_rights(R_DEBUG))

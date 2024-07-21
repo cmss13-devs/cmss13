@@ -148,7 +148,7 @@
 /obj/item/paper/vv_get_dropdown()
 	. = ..()
 	. += "<option value>-----PAPER-----</option>"
-	. += "<option value='?_src_=player_data.admin_holder;[HrefToken(forceGlobal = TRUE)];customise_paper=\ref[src]'>Customise content</option>"
+	. += "<option value='?_src_=player_data?.admin_holder;[HrefToken(forceGlobal = TRUE)];customise_paper=\ref[src]'>Customise content</option>"
 
 /obj/item/paper/proc/addtofield(id, text, links = 0)
 	var/locid = 0

@@ -2,7 +2,7 @@
 	set name = "Setup Event Info"
 	set category = "Admin.Events"
 
-	if(!player_data.admin_holder)
+	if(!player_data?.admin_holder)
 		to_chat(usr, "Only administrators may use this command.")
 		return
 
@@ -52,7 +52,7 @@
 		log_admin("[key_name(usr)] changed the security level to code [sec_level].")
 
 /client/proc/toggle_gun_restrictions()
-	if(!player_data.admin_holder || !config)
+	if(!player_data?.admin_holder || !config)
 		return
 
 	if(CONFIG_GET(flag/remove_gun_restrictions))
@@ -327,7 +327,7 @@
 	set desc = "View faxes from this round"
 	set category = "Admin.Events"
 
-	if(!player_data.admin_holder)
+	if(!player_data?.admin_holder)
 		return
 
 	var/list/options = list(
@@ -784,8 +784,8 @@
 /client/proc/event_panel()
 	set name = "Event Panel"
 	set category = "Admin.Panels"
-	if (player_data.admin_holder)
-		player_data.admin_holder.event_panel()
+	if (player_data?.admin_holder)
+		player_data?.admin_holder.event_panel()
 	return
 
 
@@ -817,8 +817,8 @@
 /client/proc/chem_panel()
 	set name = "Chem Panel"
 	set category = "Admin.Panels"
-	if(player_data.admin_holder)
-		player_data.admin_holder.chempanel()
+	if(player_data?.admin_holder)
+		player_data?.admin_holder.chempanel()
 	return
 
 /datum/entity/admin_holder/var/create_humans_html = null
@@ -837,8 +837,8 @@
 /client/proc/create_humans()
 	set name = "Create Humans"
 	set category = "Admin.Events"
-	if(player_data.admin_holder)
-		player_data.admin_holder.create_humans(usr)
+	if(player_data?.admin_holder)
+		player_data?.admin_holder.create_humans(usr)
 
 /datum/entity/admin_holder/var/create_xenos_html = null
 /datum/entity/admin_holder/proc/create_xenos(mob/user)
@@ -855,14 +855,14 @@
 /client/proc/create_xenos()
 	set name = "Create Xenos"
 	set category = "Admin.Events"
-	if(player_data.admin_holder)
-		player_data.admin_holder.create_xenos(usr)
+	if(player_data?.admin_holder)
+		player_data?.admin_holder.create_xenos(usr)
 
 /client/proc/clear_mutineers()
 	set name = "Clear All Mutineers"
 	set category = "Admin.Events"
-	if(player_data.admin_holder)
-		player_data.admin_holder.clear_mutineers()
+	if(player_data?.admin_holder)
+		player_data?.admin_holder.clear_mutineers()
 	return
 
 /datum/entity/admin_holder/proc/clear_mutineers()

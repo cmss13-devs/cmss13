@@ -316,7 +316,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 ))
 
 /client/proc/add_admin_verbs()
-	if(!player_data.admin_holder)
+	if(!player_data?.admin_holder)
 		return
 	if(CLIENT_IS_STAFF(src))
 		add_verb(src, GLOB.admin_verbs_default)
@@ -380,21 +380,21 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 /client/proc/jobbans()
 	set name = "Display Job Bans"
 	set category = "Admin"
-	if(player_data.admin_holder)
-		player_data.admin_holder.Jobbans()
+	if(player_data?.admin_holder)
+		player_data?.admin_holder.Jobbans()
 	return
 
 /client/proc/game_panel()
 	set name = "Game Panel"
 	set category = "Admin.Panels"
-	if(player_data.admin_holder)
-		player_data.admin_holder.Game()
+	if(player_data?.admin_holder)
+		player_data?.admin_holder.Game()
 	return
 
 /client/proc/set_ooc_color_self()
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
-	if(!player_data.admin_holder && !donator) return
+	if(!player_data?.admin_holder && !donator) return
 	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
@@ -467,7 +467,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 /client/proc/toggle_log_hrefs()
 	set name = "Toggle href Logging"
 	set category = "Server"
-	if(!player_data.admin_holder) return
+	if(!player_data?.admin_holder) return
 	if(config)
 		if(CONFIG_GET(flag/log_hrefs))
 			CONFIG_SET(flag/log_hrefs, FALSE)

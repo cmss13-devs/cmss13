@@ -229,8 +229,8 @@
 	name = "Access Admin Datum"
 
 /datum/player_action/access_admin_datum/act(client/user, mob/target, list/params)
-	if(!target.client || !target.client.player_data.admin_holder)
+	if(!target.client || !target.client.player_data?.admin_holder)
 		return
 
-	user.debug_variables(target.client.player_data.admin_holder)
+	user.debug_variables(target.client.player_data?.admin_holder)
 	return TRUE

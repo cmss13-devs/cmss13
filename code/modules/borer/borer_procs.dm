@@ -11,7 +11,7 @@
 		options += list("Infecting a host")
 	else if(borer_flags_status & BORER_STATUS_CONTROLLING)
 		target = host_mob
-		options += list("Captive Host", "Releasing Control", "Reproducing")
+		options += list("Captive Host", "Releasing Control", "Reproducing", "Transferring Host")
 	else if(isxeno(host_mob))
 		options += list("Assuming Control","Hibernation","Reproducing")
 	else
@@ -38,9 +38,11 @@
 			var/capability = "able"
 			if(!can_reproduce) capability = "forbidden"
 			else if((enzymes < BORER_LARVAE_COST)) capability = "unable"
-			help_message = "Reproduction will take a minimum of [BORER_LARVAE_COST] enzymes and direct control of your host.\n\nWhen in direct control you can use the Reproduce ability to spit out a new borer.\nMake sure to do this in a safe place, the new borer will not have a player to start with.\n\nYou are currently [capability] to reproduce."
+			help_message = "Reproduction will take a minimum of [BORER_LARVAE_COST] enzymes and direct control of your host.\n\nWhen in direct control you can use the Reproduce ability to spit out a new borer.\nMake sure to do this in a safe place, the new borer will not have a player to start with.\n\n If you are choking a human when you reproduce, the borer will infest them directly.\n\nYou are currently [capability] to reproduce."
 		if("Assuming Control")
 			help_message = "Assuming control will put you in direct control of your host, acting as if you are their player.\n\nYour host will be disassociated with their body, and trapped in their own mind unable to speak to anyone but you.\nWhile in this state you are unable to make use of the hivemind.\n\nYour host can resist your control and regain their body however this can cause brain damage in humanoids.\nYou must assume control to reproduce.\n\nNote: Whilst in direct control of your host medical HUDs will detect you.\n\n\nIMPORTANT: While in direct control of a mob you MUST NOT perform antag actions unless you have permission from staff."
+		if("Transferring Host")
+			help_message = "If you are in direct control of your host and are choking a human target, you can move directly from your host into the new target."
 		if("Contaminant & Enzymes")
 			help_message = "Enzymes are the cost of using most of your active abilities, such as secreting chemicals. They are gained passively over time whilst inside a host.\n\nUsing enzymes will in most cases produce Contaminant which upon reaching its capacity will prevent you using abilities.\nYou can clear Contaminant by hibernating when inside a host, alternately Contaminant will naturally be turned into a weak light source whilst outside a host."
 		if("Hibernation")
@@ -668,8 +670,16 @@
 			var/repro = max(brainworm.can_reproduce - 1, 0)
 			var/list/ancestors = brainworm.ancestry
 			ancestors += real_name
+
 			var/mob/living/carbon/cortical_borer/birthed = new /mob/living/carbon/cortical_borer(T, brainworm.generation + 1, TRUE, repro, brainworm.borer_flags_targets, ancestors)
 			brainworm.offspring += birthed.real_name
+
+			var/obj/item/grab/grab_effect = get_held_item()
+			if(istype(grab_effect) && ishuman(grab_effect.grabbed_thing))
+				var/mob/living/carbon/human/human_grab = grab_effect.grabbed_thing
+				if(grab_level >= GRAB_AGGRESSIVE)
+					birthed.perform_infestation(human_grab)
+
 			return TRUE
 		else
 			to_chat(src, SPAN_XENONOTICE("You need at least [BORER_LARVAE_COST] enzymes to reproduce!"))

@@ -655,7 +655,7 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 
 /datum/action/innate/borer/transfer_host
 	name = "Transfer Host"
-	action_icon_state = "borer_infest"
+	action_icon_state = "borer_transfer"
 
 /datum/action/innate/borer/transfer_host/action_activate()
 	var/mob/living/carbon/cortical_borer/the_borer = owner.has_brain_worms()

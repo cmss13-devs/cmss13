@@ -116,6 +116,12 @@
 		if(required_time - playtime > 0)
 			break
 		final_paygrade = current_paygrade
+	if(rank == JOB_SQUAD_MARINE && final_paygrade == PAY_SHORT_ME3)
+		if(GLOB.data_core.leveled_riflemen > GLOB.data_core.leveled_riflemen_max)
+			return PAY_SHORT_ME2
+		else
+			GLOB.data_core.leveled_riflemen_max++
+			return final_paygrade
 	if(!final_paygrade)
 		. = "???"
 		CRASH("[key_name(new_human)] spawned with no valid paygrade.")

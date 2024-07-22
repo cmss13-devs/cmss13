@@ -224,7 +224,15 @@
 		/obj/item/attachable/attached_gun/grenade/m203,
 		/obj/item/attachable/stock/smg/collapsible/mp5a5,
 		)
-	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible/mp5a5)
+
+/obj/item/weapon/gun/smg/mp5/mp5a5/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/smg/collapsible/mp5a5/S = new(src)
+	S.hidden = FALSE
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	S.apply_on_weapon(src)
+	update_attachable(S.slot)
 
 /obj/item/weapon/gun/smg/mp5/mp5a5/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 26, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 19, "under_x" = 19, "under_y" = 13, "stock_x" = 39, "stock_y" = 11)

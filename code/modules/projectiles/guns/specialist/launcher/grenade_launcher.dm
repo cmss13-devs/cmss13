@@ -328,6 +328,7 @@
 		/obj/item/explosive/grenade/flashbang,
 	)
 	preload = /obj/item/explosive/grenade/slug/baton
+	disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien, /obj/item/explosive/grenade/incendiary/molotov)
 
 //-------------------------------------------------------
 //M79 Grenade Launcher subtype of the M81

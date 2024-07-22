@@ -7,7 +7,7 @@
 
 	lightning_chance = 4
 
-	fire_smothering_strength = 2
+	fire_smothering_strength = 1
 
 	turf_overlay_icon_state = "hybrisa_rain"
 	turf_overlay_alpha = 40
@@ -26,7 +26,7 @@
 
 	lightning_chance = 2
 
-	fire_smothering_strength = 1
+	fire_smothering_strength = null
 
 	turf_overlay_icon_state = "hybrisa_rain"
 	turf_overlay_alpha = 25

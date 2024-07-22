@@ -137,7 +137,7 @@
 
 /mob/living/carbon/xenomorph/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))
-	var/icon_path = 'icons/mob/xenos/xenomorph_64x64.dmi'
+	var/icon_path
 	var/gib_state = "gibbed-a-corpse"
 	remains.pixel_x = pixel_x //For 2x2.
 

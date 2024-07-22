@@ -962,7 +962,22 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-/obj/item/weapon/gun/rifle/m16/tactical
+/obj/item/weapon/gun/rifle/m16/m16a5
+	name = "\improper M16A5 rifle"
+	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon_state = "m16a5"
+	item_state = "m16"
+
+/obj/item/weapon/gun/rifle/m16/m16a5/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/m16/m16a5/S = new(src)
+	S.hidden = FALSE
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
+/obj/item/weapon/gun/rifle/m16/m16a5/tactical
 	random_spawn_chance = 100
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
@@ -1089,7 +1104,22 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-/obj/item/weapon/gun/rifle/xm177/tactical
+/obj/item/weapon/gun/rifle/xm177/car15a3
+	name = "\improper CAR-15A3 carbine"
+	desc = "Modernized version of the XM177, developed for limited use by special forces and Office of the Colonial Marshals. The short length inhibits the attachment of most underbarrel attachments, and the barrel moderator prohibits the attachment of all muzzle devices."
+	desc_lore = null
+	icon_state = "car15a3"
+	item_state = "m16"
+
+/obj/item/weapon/gun/rifle/xm177/car15a3/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/m16/xm177/car15a3/integrated = new(src)
+	integrated.hidden = FALSE
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
+
+/obj/item/weapon/gun/rifle/xm177/car15a3/tactical
 	random_spawn_chance = 100
 	random_spawn_rail = list(
 		/obj/item/attachable/reflex,

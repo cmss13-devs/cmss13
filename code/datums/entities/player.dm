@@ -428,6 +428,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			if(whitelist in GLOB.bitfields["whitelist_status"])
 				whitelist_flags |= GLOB.bitfields["whitelist_status"]["[whitelist]"]
 
+//RUCM START
+	load_donator_info()
+//RUCM END
+
 /datum/entity/player/proc/on_read_notes(list/datum/entity/player_note/_notes)
 	notes_loaded = TRUE
 	if(notes)
@@ -606,14 +610,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			note.admin_rank = "N/A"
 		note.date = I.timestamp
 		var/list/splitting = splittext(I.content, "|")
-		if(splitting.len == 1)
+		if(length(splitting) == 1)
 			note.text = I.content
 			note.is_ban = FALSE
-		if(splitting.len == 3)
+		if(length(splitting) == 3)
 			note.text = splitting[3]
 			note.ban_time = text2num(replacetext(replacetext(splitting[2],"Duration: ","")," minutes",""))
 			note.is_ban = TRUE
-		if(splitting.len == 2)
+		if(length(splitting) == 2)
 			note.text = I.content
 			note.is_ban = TRUE
 

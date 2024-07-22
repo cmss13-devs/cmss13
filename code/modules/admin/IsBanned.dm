@@ -22,7 +22,7 @@
 	if(GLOB.admin_datums[ckey] && (GLOB.admin_datums[ckey].rights & R_MOD))
 		return ..()
 
-	if(CONFIG_GET(number/limit_players) && CONFIG_GET(number/limit_players) < GLOB.clients.len)
+	if(CONFIG_GET(number/limit_players) && CONFIG_GET(number/limit_players) < length(GLOB.clients))
 		return list("reason"="POP CAPPED", "desc"="\nReason: Server is pop capped at the moment at [CONFIG_GET(number/limit_players)] players. Attempt reconnection in 2-3 minutes.")
 
 	var/datum/entity/player/P = get_player_from_key(ckey)

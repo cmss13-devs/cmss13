@@ -167,6 +167,8 @@
 	shuttle.crashing = TRUE
 	SSshuttle.moveShuttleToDock(shuttle, temp_crashable_port, TRUE)
 
+	makepowernets()
+
 	..()
 
 	var/obj/structure/tunnel/T

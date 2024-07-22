@@ -54,7 +54,7 @@
 	last_combat_time = world.time
 
 /datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_spin()
-	var/datum/action/xeno_action/activable/pierce/pAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pierce)
+	var/datum/action/xeno_action/activable/pierce/pAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pierce)
 	if (istype(pAction))
 		pAction.should_spin_instead = TRUE
 
@@ -62,7 +62,7 @@
 	return
 
 /datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_normal()
-	var/datum/action/xeno_action/activable/pierce/pAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pierce)
+	var/datum/action/xeno_action/activable/pierce/pAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pierce)
 	if (istype(pAction))
 		pAction.should_spin_instead = FALSE
 	return
@@ -88,6 +88,6 @@
 		new_shield.explosive_armor_amount = 1.5*XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
 		to_chat(praetorian, SPAN_XENOHIGHDANGER("We feel our defensive shell regenerate! It will block one hit!"))
 
-	var/datum/action/xeno_action/activable/cleave/caction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/cleave)
+	var/datum/action/xeno_action/activable/cleave/caction = get_action(bound_xeno, /datum/action/xeno_action/activable/cleave)
 	if (istype(caction))
 		caction.buffed = TRUE

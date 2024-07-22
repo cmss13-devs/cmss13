@@ -12,7 +12,7 @@
 	var/charges_to_give = 1
 
 /datum/tech/xeno/powerup/queen_beacon/apply_powerup(mob/living/carbon/xenomorph/target)
-	var/datum/action/xeno_action/A = get_xeno_action_by_type(target, /datum/action/xeno_action/activable/place_queen_beacon)
+	var/datum/action/xeno_action/A = get_action(target, /datum/action/xeno_action/activable/place_queen_beacon)
 
 	if(!A)
 		A = give_action(target, /datum/action/xeno_action/activable/place_queen_beacon)

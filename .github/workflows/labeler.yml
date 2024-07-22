@@ -2,6 +2,10 @@ name: Labeling and Verification
 on:
   pull_request_target:
     types: [opened, reopened, synchronize, edited]
+
+permissions:
+  pull-requests: write
+
 jobs:
   label:
     runs-on: ubuntu-latest

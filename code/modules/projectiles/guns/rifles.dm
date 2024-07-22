@@ -563,6 +563,7 @@
 //---ability actions--\\
 
 /datum/action/item_action/m46c/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/rifle/m46c/protag_gun = holder_item
 	if(!ishuman(owner))
 		return
@@ -1607,6 +1608,11 @@
 
 /obj/item/weapon/gun/rifle/m4ra/training
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/rubber
+
+/obj/item/weapon/gun/rifle/m4ra/tactical
+	current_mag = /obj/item/ammo_magazine/rifle/m4ra/ext
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip)
+
 
 //-------------------------------------------------------
 

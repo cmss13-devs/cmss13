@@ -504,29 +504,6 @@
 	new_human.equip_if_possible(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
 	new_human.equip_if_possible(new /obj/item/clipboard, WEAR_WAIST)
 
-//*****************************************************************************************************/
-
-/datum/equipment_preset/other/compression_suit
-	name = "Mk50 Compression Suit"
-	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_PMC
-	skills = /datum/skills/pfc
-	idtype = /obj/item/card/id/data
-
-/datum/equipment_preset/other/compression_suit/load_gear(mob/living/carbon/human/new_human)
-	//TODO: add backpacks and satchels
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/magboots, WEAR_FEET)
-
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/space/compression, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/compression, WEAR_HEAD)
-	var /obj/item/tank/jetpack/J = new /obj/item/tank/jetpack/oxygen(new_human)
-	new_human.equip_to_slot_or_del(J, WEAR_BACK)
-	J.toggle()
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/breath, WEAR_FACE)
-	J.Topic(null, list("stat" = 1))
-	spawn_merc_weapon(new_human)
-
 
 //*****************************************************************************************************/
 
@@ -881,8 +858,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/dogtag
-	assignment = JOB_CREWMAN
-	rank = JOB_CREWMAN
+	assignment = JOB_TANK_CREW
+	rank = JOB_TANK_CREW
 	paygrade = PAY_SHORT_ME4
 	role_comm_title = "CRMN"
 	minimum_age = 30
@@ -968,6 +945,7 @@
 		new_human.nutrition = NUTRITION_LOW
 
 /datum/equipment_preset/tutorial/fed
+	name = "Tutorial (Fed)"
 	underfed = FALSE
 
 

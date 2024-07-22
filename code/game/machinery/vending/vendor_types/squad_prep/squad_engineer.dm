@@ -88,6 +88,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 
 		list("PAMPHLETS", 0, null, null, null),
 		list("JTAC Pamphlet", 15, /obj/item/pamphlet/skill/jtac, null, VENDOR_ITEM_REGULAR),
+//RUCM START
+		list("Medical Pamphlet", 15, /obj/item/pamphlet/skill/medical, null, VENDOR_ITEM_RECOMMENDED),
+//RUCM END
 
 		list("RADIO KEYS", 0, null, null, null),
 		list("Intel Radio Encryption Key", 3, /obj/item/device/encryptionkey/intel, null, VENDOR_ITEM_REGULAR),

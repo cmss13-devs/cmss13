@@ -83,6 +83,11 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 			view.root_entity_meta = tables[view.root_record_type]
 			adapter.prepare_view(view)
 
+//RUCM START
+	for(var/datum/view_record/discord_rank/discord_rank in DB_VIEW(/datum/view_record/discord_rank))
+		GLOB.discord_ranks["[discord_rank.rank_id]"] = discord_rank
+//RUCM END
+
 	ready = TRUE
 
 /datum/controller/subsystem/entity_manager/proc/prepare_tables()
@@ -102,8 +107,8 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 		currentrun = tables_unsorted.Copy()
 	if(!SSdatabase.connection.connection_ready())
 		return
-	while (currentrun.len)
-		var/datum/entity_meta/Q = currentrun[currentrun.len]
+	while (length(currentrun))
+		var/datum/entity_meta/Q = currentrun[length(currentrun)]
 		do_select(Q)
 		do_insert(Q)
 		do_update(Q)

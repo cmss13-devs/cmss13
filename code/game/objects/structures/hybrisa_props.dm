@@ -1916,8 +1916,11 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform4
 	icon_state = "hybrisaplatform3"
 
-/obj/structure/prop/hybrisa/fakeplatforms/platform4
-	icon_state = "hybrisaplatform3"
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco
+	icon = 'icons/obj/structures/props/platforms.dmi'
+	icon_state = "hybrisaplatform_deco3"
+	name = "raised metal corner"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 
 /obj/structure/prop/hybrisa/fakeplatforms/platform5
 	icon = 'icons/obj/structures/props/platforms.dmi'

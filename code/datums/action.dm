@@ -187,12 +187,6 @@
 	holder_item = null
 	return ..()
 
-/datum/action/item_action/action_activate()
-	. = ..()
-	if(target)
-		var/obj/item/I = target
-		I.ui_action_click(owner, holder_item)
-
 /datum/action/item_action/can_use_action()
 	if(ishuman(owner) && !owner.is_mob_incapacitated())
 		var/mob/living/carbon/human/human = owner
@@ -211,6 +205,17 @@
 /datum/action/item_action/toggle/New(Target)
 	..()
 	name = "Toggle [target]"
+	button.name = name
+
+/datum/action/item_action/toggle/action_activate()
+	. = ..()
+	if(target)
+		var/obj/item/I = target
+		I.ui_action_click(owner, holder_item)
+
+/datum/action/item_action/toggle/use/New(target)
+	. = ..()
+	name = "Use [target]"
 	button.name = name
 
 //This is the proc used to update all the action buttons.

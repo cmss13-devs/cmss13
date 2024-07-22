@@ -95,6 +95,7 @@
 
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
+	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
 	icon_state = "folding-1"
 	item_state = "folding"
 	item_state_slots = list(

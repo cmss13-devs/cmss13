@@ -843,7 +843,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	indestructible = TRUE
-	density = TRUE
+	density = FALSE
 	layer = ABOVE_XENO_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/misc
@@ -1912,6 +1912,9 @@
 
 /obj/structure/prop/hybrisa/fakeplatforms/platform3
 	icon_state = "platform"
+
+/obj/structure/prop/hybrisa/fakeplatforms/platform4
+	icon_state = "hybrisaplatform3"
 
 /obj/structure/prop/hybrisa/fakeplatforms/platform4
 	icon_state = "hybrisaplatform3"

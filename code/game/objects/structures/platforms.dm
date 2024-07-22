@@ -321,3 +321,4 @@
 	icon_state = "hybrisaplatform_deco3"
 	name = "raised metal corner"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	layer = BELOW_MOB_LAYER

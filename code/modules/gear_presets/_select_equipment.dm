@@ -82,7 +82,7 @@
 		faction_group = list(faction)
 
 	if(paygrade)
-		paygrades = list(paygrade = JOB_PLAYTIME_TIER_0)
+		paygrades = list("[paygrade]" = JOB_PLAYTIME_TIER_0)
 
 	//load_appearance()
 /datum/equipment_preset/proc/load_race(mob/living/carbon/human/new_human, client/mob_client)

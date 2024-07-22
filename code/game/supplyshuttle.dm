@@ -532,7 +532,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	for(var/datum/supply_packs_asrs/crate in cratelist)
 		var/weight = (floor(10000/crate.cost))
 		weighted_crate_list[crate] = weight
-	return pickweight(weighted_crate_list)
+	return pick_weight(weighted_crate_list)
 
 //To stop things being sent to centcomm which should not be sent to centcomm. Recursively checks for these types.
 /datum/controller/supply/proc/forbidden_atoms_check(atom/A)

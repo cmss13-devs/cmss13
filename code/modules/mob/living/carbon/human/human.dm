@@ -350,10 +350,10 @@
 		return "[face_name] (as [id_name])"
 	return face_name
 
-//Returns "Unknown" if facially disfigured and real_name if not. Useful for setting name when polyacided or when updating a human's name variable
+//Returns "Unknown" if facially unidentifiable and real_name if not. Useful for setting name when headless or when updating a human's name variable
 /mob/living/carbon/human/proc/get_face_name()
 	var/obj/limb/head/head = get_limb("head")
-	if(!head || head.disfigured || (head.status & LIMB_DESTROYED) || !real_name) //disfigured. use id-name if possible
+	if(!head || (head.status & LIMB_DESTROYED) || !real_name) //unidentifiable. use id-name if possible
 		return "Unknown"
 	return real_name
 
@@ -907,9 +907,6 @@
 	var/obj/limb/head/h = get_limb("head")
 	if(QDELETED(h))
 		h = get_limb("synthetic head")
-	else
-		h.disfigured = 0
-	name = get_visible_name()
 
 	if(species && !(species.flags & NO_BLOOD))
 		restore_blood()
@@ -1712,15 +1709,15 @@
 
 /mob/living/carbon/human/on_knockedout_trait_gain(datum/source)
 	. = ..()
-	
+
 	update_execute_hud()
-	
+
 	return .
 
 /mob/living/carbon/human/on_knockedout_trait_loss(datum/source)
 	. = ..()
 
 	update_execute_hud()
-	
+
 	return .
-	
+

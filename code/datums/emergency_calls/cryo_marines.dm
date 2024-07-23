@@ -95,10 +95,33 @@
 /obj/effect/landmark/ert_spawns/distress_cryo
 	name = "Distress_Cryo"
 
+/proc/get_marines()
+    var/pop_scale = 0
+    var/count = 0
+
+    for (var/mob/living/carbon/human/H in GLOB.human_mob_list)
+        if (H.faction == FACTION_MARINE)
+            count
+
+    switch(count)
+        if(95 to 104)
+            pop_scale += 2
+        if(105 to 114)
+            pop_scale += 4
+        if(115 to 120)
+            pop_scale += 6
+
+    return count
+
 /datum/emergency_call/cryo_squad/tech // Actual techweb cryorines
-	name = "Marine Cryo Reinforcements (Tech)"
-	mob_max = 12
-	max_engineers = 2
-	max_medics = 2
-	max_smartgunners = 1
-	max_heavies = 0
+    name = "Marine Cryo Reinforcements (Tech)"
+    mob_max = 6
+    max_engineers = 2
+    max_medics = 2
+    max_smartgunners = 1
+    max_heavies = 0
+
+/datum/emergency_call/cryo_squad/tech/New()
+	. = ..()
+	var/pop_scale = get_marines()
+	mob_max += pop_scale

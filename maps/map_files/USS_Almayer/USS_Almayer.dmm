@@ -55740,14 +55740,14 @@
 /obj/structure/transmitter/rotary/no_dnd{
 	name = "Flight Control Line 1 Telephone";
 	phone_category = "Command";
-	phone_id = "CIC Helm Control Line 1";
+	phone_id = "CIC Flight Control Line 1";
 	pixel_y = 17;
 	pixel_x = -8
 	},
 /obj/structure/transmitter/rotary/no_dnd{
 	name = "Flight Control Line 2 Telephone";
 	phone_category = "Command";
-	phone_id = "CIC Helm Control Line 2";
+	phone_id = "CIC Flight Control Line 2";
 	pixel_y = 18;
 	pixel_x = 6
 	},

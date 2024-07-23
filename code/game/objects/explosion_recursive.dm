@@ -71,7 +71,9 @@ explosion resistance exactly as much as their health
 	falloff = max(falloff0, power/100) //prevent explosions with a range larger than 100 tiles
 	minimum_spread_power = -power * reflection_amplification_limit
 
-	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", src.loc.x, src.loc.y, src.loc.z)
+	var/obj/causing_obj = explosion_cause_data?.resolve_cause()
+	var/mob/causing_mob = explosion_cause_data?.resolve_mob()
+	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff],[causing_obj ? " from [causing_obj]" : ""][causing_mob ? " by [key_name(causing_mob)]" : ""] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", loc.x, loc.y, loc.z)
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1))
 	playsound(epicenter, "explosion", 90, 1, max(round(power,1),7) )

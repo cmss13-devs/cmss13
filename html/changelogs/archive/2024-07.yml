@@ -210,3 +210,15 @@
   cuberound:
   - rscdel: removes trade destinations (they were never used)
   - balance: m56 cupola uses m56d ammo rather then standard sg ammo
+2024-07-22:
+  BlackCrystalic:
+  - bugfix: Queen maturity timer
+  Blackcrystalic:
+  - qol: port who/staffwho to TGUI
+  ThePiachu:
+  - refactor: Made XM88 box code more uniform with other handful boxes.
+  zzzmike:
+  - bugfix: lifeboat launch console is no longer slashable / acidable
+2024-07-23:
+  cuberound:
+  - code_imp: cleans up water particle code

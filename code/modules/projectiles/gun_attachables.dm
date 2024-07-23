@@ -2054,13 +2054,13 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = NO_FLAGS
 	hud_offset_mod = 3
 
+/obj/item/attachable/stock/m16/New()//no stats, its cosmetic
+	..()
+
 /obj/item/attachable/stock/m16/m16a5
 	name = "\improper M16A5 bump stock"
 	icon_state = "m16a5_stock"
 	attach_icon = "m16a5_stock"
-
-/obj/item/attachable/stock/m16/New()//no stats, its cosmetic
-	..()
 
 /obj/item/attachable/stock/m16/xm177
 	name = "\improper collapsible M16 stock"

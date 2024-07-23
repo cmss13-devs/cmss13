@@ -964,7 +964,8 @@
 
 /obj/item/weapon/gun/rifle/m16/m16a5
 	name = "\improper M16A5 rifle"
-	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm."
+	desc = "Modernized version of M16 platform rifle, probably originated from bottomless stockpiles of UA, when they switched to a newer designs. It is chambered in 5.56x45mm."
+	desc_lore = "The M16A5, introduced in 2016 has become something of a timeless classic in UA territory. The design rights for the gun and its many related platforms came into Armat ownership after their acquisition of Colt, and it's remained a surprisingly lucrative patent since then. While dated, the weapon's ease of use and more conventional rounds have made it popular among minimally-trained colonists and isolated units alike, being much easier to self-produce replacement parts and ammunition for than more advanced alternatives like pulse rifles and caseless ammunition. Subsequently, it remains a common sight on many colonies, and even in the reserve armories of some USCMC vessels like the Sulaco, partly from tradition and partly because of the sheer surplus supply of rifles that's lasted nearly two centuries."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "m16a5"
 	item_state = "m16a5"

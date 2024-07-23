@@ -34,7 +34,6 @@
 			if(check_shields(0, attacking_xeno.name)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s grab is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Our grab was blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
 				return XENO_ATTACK_ACTION
 
 			if(Adjacent(attacking_xeno)) //Logic!
@@ -64,7 +63,6 @@
 			if(check_shields(0, attacking_xeno.name)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s slash is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Our slash is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
 				return XENO_ATTACK_ACTION
 
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
@@ -186,7 +184,6 @@
 			if(check_shields(0, attacking_xeno.name)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s tackle is blocked by [src]'s shield!"), \
 				SPAN_DANGER("We tackle is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
 				return XENO_ATTACK_ACTION
 			attacking_xeno.flick_attack_overlay(src, "disarm")
 

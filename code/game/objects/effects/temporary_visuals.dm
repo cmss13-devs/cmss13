@@ -119,3 +119,17 @@
 	transform = matrix().Scale(32 / 1024, 32 / 1024)
 	animate(src, time = 0.5 * radius * speed, transform=matrix().Scale((32 / 1024) * radius * 1.5, (32 / 1024) * radius * 1.5), easing = easing_type)
 
+//------------------------------------------
+//Block
+//------------------------------------------
+
+/obj/effect/temp_visual/block //color is white by default, set to whatever is needed
+	name = "blocking glow"
+	icon_state = "block"
+	color = COLOR_YELLOW
+	duration = 6.7
+
+/obj/effect/temp_visual/block/Initialize(mapload)
+	. = ..()
+	pixel_x = rand(-12, 12)
+	pixel_y = rand(-9, 0)

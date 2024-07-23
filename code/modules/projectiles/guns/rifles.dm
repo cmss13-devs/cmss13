@@ -967,7 +967,7 @@
 	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "m16a5"
-	item_state = "m16"
+	item_state = "m16a5"
 
 /obj/item/weapon/gun/rifle/m16/m16a5/handle_starting_attachment()
 	..()
@@ -1109,7 +1109,7 @@
 	desc = "Modernized version of the XM177, developed for limited use by special forces and Office of the Colonial Marshals. The short length inhibits the attachment of most underbarrel attachments, and the barrel moderator prohibits the attachment of all muzzle devices."
 	desc_lore = null
 	icon_state = "car15a3"
-	item_state = "m16"
+	item_state = "car15a3"
 
 /obj/item/weapon/gun/rifle/xm177/car15a3/handle_starting_attachment()
 	..()

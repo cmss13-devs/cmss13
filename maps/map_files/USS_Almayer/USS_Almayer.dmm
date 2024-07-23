@@ -2850,9 +2850,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/command/cic)
 "atO" = (
-/turf/open/floor/almayer/silver/east{
-	dir = 8
-	},
+/turf/open/floor/almayer/silver/west,
 /area/almayer/command/cic)
 "atP" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{

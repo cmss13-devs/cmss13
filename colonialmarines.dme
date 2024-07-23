@@ -542,6 +542,7 @@
 #include "code\datums\emergency_calls\xeno_cultists.dm"
 #include "code\datums\emergency_calls\xenos.dm"
 #include "code\datums\emergency_calls\zombie.dm"
+#include "code\datums\emergency_calls\beacon-reinforcements\freelancers.dm"
 #include "code\datums\entities\chemical_information.dm"
 #include "code\datums\entities\clans.dm"
 #include "code\datums\entities\discord_identifier.dm"

@@ -101,17 +101,17 @@
 
     for (var/mob/living/carbon/human/H in GLOB.human_mob_list)
         if (H.faction == FACTION_MARINE)
-            count
+            count++
 
     switch(count)
         if(95 to 104)
-            pop_scale += 2
+            pop_scale = 2
         if(105 to 114)
-            pop_scale += 4
-        if(115 to 120)
-            pop_scale += 6
+            pop_scale = 4
+        if(115 to 350)
+            pop_scale = 6
 
-    return count
+    return pop_scale
 
 /datum/emergency_call/cryo_squad/tech // Actual techweb cryorines
     name = "Marine Cryo Reinforcements (Tech)"

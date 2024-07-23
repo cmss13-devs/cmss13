@@ -1,0 +1,16 @@
+
+/datum/tech/beacon
+	name = "Call For Reinforcements"
+	desc = "Activate the [MAIN_SHIP_NAME]'s long range transmitters to call for reinforcements."
+	icon_state = "beacon"
+
+	announce_message = "Contingency squad Foxtrot are being taken out of cryo to assist the operation."
+
+	required_points = 10
+
+	flags = TREE_FLAG_MARINE
+	tier = /datum/tier/three
+
+/datum/tech/beacon/on_unlock()
+	. = ..()
+	SSticker.mode.get_specific_call(/datum/emergency_call/cryo_squad/tech, TRUE, FALSE) // "Marine Reinforcements"

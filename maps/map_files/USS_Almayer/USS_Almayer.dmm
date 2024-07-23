@@ -3272,12 +3272,15 @@
 /area/almayer/command/cichallway)
 "awA" = (
 /obj/structure/sign/safety/terminal{
-	pixel_x = 8;
+	pixel_x = 15;
 	pixel_y = 32
 	},
 /obj/structure/machinery/computer/cameras/almayer/bulky{
-	network = list("ARES");
-	name = "ARES Core Cameras"
+	network = list("ARES","Alamo","Normandy");
+	name = "ARES Core and Dropship Cameras"
+	},
+/obj/structure/sign/safety/flightcontrol{
+	pixel_y = 32
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -55734,6 +55737,20 @@
 	dir = 1
 	},
 /obj/structure/machinery/computer/altitude_control_console,
+/obj/structure/transmitter/rotary/no_dnd{
+	name = "Flight Control Line 1 Telephone";
+	phone_category = "Command";
+	phone_id = "CIC Helm Control Line 1";
+	pixel_y = 17;
+	pixel_x = -8
+	},
+/obj/structure/transmitter/rotary/no_dnd{
+	name = "Flight Control Line 2 Telephone";
+	phone_category = "Command";
+	phone_id = "CIC Helm Control Line 2";
+	pixel_y = 18;
+	pixel_x = 6
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "teZ" = (

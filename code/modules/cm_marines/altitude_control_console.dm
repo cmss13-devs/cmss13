@@ -22,7 +22,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 /obj/structure/machinery/computer/altitude_control_console
 	icon_state = "almayer_altitude"
 	name = "\improper Altitude Control Console"
-	desc = "The A.C.C console monitors, regulates, and updates the ships attitude and altitude in relation to the AO. It's not rocket science."
+	desc = "The A.C.C console monitors, regulates, and updates the ships attitude and altitude in relation to the AO. It's not rocket science... or maybe it is."
 	density = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
@@ -48,9 +48,17 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 
 /obj/structure/machinery/computer/altitude_control_console/process()
 	. = ..()
+	var/altitude = "Altitude"
+	switch(GLOB.ship_alt)
+		if(SHIP_ALT_LOW)
+			altitude = "Low altitude"
+		if(SHIP_ALT_MED)
+			altitude = "Medium altitude"
+		if(SHIP_ALT_HIGH)
+			altitude = "High altitude"
 	var/temperature_change
 	if(GLOB.ship_temp >= OVERHEAT)
-		ai_silent_announcement("Attention: Orbital correction no longer sustainable, moving to geo-synchronous orbit until engine cooloff.", ";", TRUE)
+		ai_silent_announcement("Attention: [altitude] orbital maneuver no longer sustainable, moving to geo-synchronous orbit until engine cooloff.", ";", TRUE)
 		GLOB.ship_alt = SHIP_ALT_HIGH
 		temperature_change = OVERHEAT_COOLING
 		for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
@@ -74,7 +82,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			if(!is_mainship_level(current_mob.z))
 				continue
 			shake_camera(current_mob, 10, 1)
-		ai_silent_announcement("Performing Attitude Control.", ";", TRUE)
+		ai_silent_announcement(" [altitude] maneuver currently under performance, full stabilization of the altitude unable to be achieved, maintaining procedures until overheat.", ";", TRUE)
 
 //TGUI.... fun... years have gone by, I am dying of old age
 /obj/structure/machinery/computer/altitude_control_console/tgui_interact(mob/user, datum/tgui/ui)
@@ -104,34 +112,38 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 	if(.)
 		return
 	var/mob/user = ui.user
-	switch(action)
-		if("low_alt")
-			change_altitude(user, SHIP_ALT_LOW)
-			. = TRUE
-		if("med_alt")
-			change_altitude(user, SHIP_ALT_MED)
-			. = TRUE
-		if("high_alt")
-			change_altitude(user, SHIP_ALT_HIGH)
-			. = TRUE
-	message_admins("[key_name(user)] has changed the ship's altitude to [action].")
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_ALTITUDE_CHANGE))
+		message_admins("[key_name(user)] tried to change the ship's altitude, but it is still on cooldown.")
+	else
+		switch(action)
+			if("low_alt")
+				change_altitude(user, SHIP_ALT_LOW)
+				. = TRUE
+			if("med_alt")
+				change_altitude(user, SHIP_ALT_MED)
+				. = TRUE
+			if("high_alt")
+				change_altitude(user, SHIP_ALT_HIGH)
+				. = TRUE
+		message_admins("[key_name(user)] has changed the ship's altitude to [action].")
 
 	add_fingerprint(ui.user)
 
 /obj/structure/machinery/computer/altitude_control_console/proc/change_altitude(mob/user, new_altitude)
 	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_ALTITUDE_CHANGE))
-		to_chat(user, SPAN_WARNING("The engines are not ready to burn yet."))
+		to_chat(user, SPAN_WARNING("Engines pending recalibration to burn again, stand by."))
 		return
 	if(GLOB.ship_alt == new_altitude)
 		return
-	GLOB.ship_alt = new_altitude
-	TIMER_COOLDOWN_START(src, COOLDOWN_ALTITUDE_CHANGE, 90 SECONDS)
-	for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-		if(!is_mainship_level(current_mob.z))
-			continue
-		current_mob.apply_effect(3, WEAKEN)
-		shake_camera(current_mob, 10, 2)
-	ai_silent_announcement("Attention: Performing high-g maneuver.", ";", TRUE)
+	else
+		GLOB.ship_alt = new_altitude
+		TIMER_COOLDOWN_START(src, COOLDOWN_ALTITUDE_CHANGE, 90 SECONDS)
+		for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+			if(!is_mainship_level(current_mob.z))
+				continue
+			current_mob.apply_effect(3, WEAKEN)
+			shake_camera(current_mob, 10, 2)
+			ai_silent_announcement("Attention: Altitude control protocols initialized, currently performing high-g orbital maneuver.", ";", TRUE)
 
 #undef COOLING
 #undef OVERHEAT_COOLING

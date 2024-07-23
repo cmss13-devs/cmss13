@@ -20,9 +20,10 @@ GLOBAL_VAR_INIT(ship_temp, 0)
 GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 
 /obj/structure/machinery/computer/altitude_control_console
-	icon_state = "overwatch"
+	icon_state = "almayer_altitude"
 	name = "Altitude Control Console"
 	desc = "The A.C.C console monitors, regulates, and updates the ships attitude and altitude in relation to the AO. It's not rocket science."
+	density = TRUE
 
 /obj/structure/machinery/computer/altitude_control_console/attack_hand()
 	. = ..()
@@ -54,7 +55,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 				continue
 			current_mob.apply_effect(3, WEAKEN)
 			shake_camera(current_mob, 10, 2)
-		ai_silent_announcement("Attention performing high-G maneuverer", ";", TRUE)
+		ai_silent_announcement("Attention performing high-G maneuver", ";", TRUE)
 	if(!temperature_change)
 		switch(GLOB.ship_alt)
 			if(SHIP_ALT_LOW)
@@ -128,7 +129,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			continue
 		current_mob.apply_effect(3, WEAKEN)
 		shake_camera(current_mob, 10, 2)
-	ai_silent_announcement("Attention: Performing high-G manoeuvre", ";", TRUE)
+	ai_silent_announcement("Attention: Performing high-G maneuver", ";", TRUE)
 
 #undef COOLING
 #undef OVERHEAT_COOLING

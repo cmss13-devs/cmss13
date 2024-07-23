@@ -473,3 +473,9 @@
 			to_chat(id_owner, SPAN_HELPFUL("AI visitation access granted."))
 			playsound_client(id_owner?.client, 'sound/machines/pda_ping.ogg', src, 25, 0)
 	return TRUE
+
+/obj/structure/machinery/computer/working_joe/bulky
+	desc = "The IBM series 10 computer retrofitted to work as a console to facilitate Working Joes and their operation, allowing for easy allocation of resources. While somewhat dated it still serves its purpose."
+	icon = 'icons/obj/structures/machinery/ares.dmi'
+	icon_state = "console_bulky"
+	density = TRUE

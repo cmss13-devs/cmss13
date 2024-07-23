@@ -747,6 +747,33 @@
 	icon_state = "cmonitor"
 	density = FALSE
 
+/obj/structure/machinery/computer/crew/alt/update_icon()
+	if(stat & BROKEN)
+		icon_state = "cmonitorb"
+	else
+		if(stat & NOPOWER)
+			icon_state = "cmonitor0"
+			stat |= NOPOWER
+		else
+			icon_state = initial(icon_state)
+			stat &= ~NOPOWER
+
+/obj/structure/machinery/computer/crew/bulky
+	desc = "The IBM series 10 computer retrofitted to be used to monitor active health sensors built into the wearer's uniform. While somewhat dated it still serves its purpose."
+	icon_state = "crew_bulky"
+	deconstructible = FALSE
+
+/obj/structure/machinery/computer/crew/bulky/update_icon()
+	if(stat & BROKEN)
+		icon_state = "crew_bulkyb"
+	else
+		if(stat & NOPOWER)
+			icon_state = "crew_bulky0"
+			stat |= NOPOWER
+		else
+			icon_state = initial(icon_state)
+			stat &= ~NOPOWER
+
 /obj/structure/machinery/computer/crew/alt/yautja
 	name = "\improper Yautja health monitor"
 	desc = "Used to monitor active health sensors of all Yautja in the system. You can see that the console highlights the human's ship areas with BLUE and the hunting locations with RED."

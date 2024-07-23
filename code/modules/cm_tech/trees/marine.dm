@@ -150,7 +150,7 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 /obj/structure/machinery/computer/view_objectives
 	name = "Intel Database Computer"
 	desc = "An USCM Intel Computer for consulting the current Intel database."
-	icon_state = "terminal1_old"
+	icon_state = "comm"
 	unslashable = TRUE
 	unacidable = TRUE
 

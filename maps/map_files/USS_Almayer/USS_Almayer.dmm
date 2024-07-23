@@ -2510,12 +2510,6 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
-"arG" = (
-/obj/structure/machinery/power/apc/almayer/hardened{
-	dir = 1
-	},
-/turf/open/floor/almayer/silver/north,
-/area/almayer/command/cic)
 "arH" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/redfull,
@@ -2541,8 +2535,8 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/structure/prop/almayer/computers/sensor_computer1,
-/turf/open/floor/almayer/silver/northeast,
+/obj/structure/machinery/computer/working_joe/bulky,
+/turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "arT" = (
 /obj/structure/target{
@@ -2655,9 +2649,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/stair_clone/upper)
 "asN" = (
-/obj/structure/machinery/computer/crew,
-/obj/structure/machinery/light,
-/turf/open/floor/almayer/silver/southeast,
+/obj/structure/machinery/computer/crew/bulky,
+/obj/structure/machinery/status_display{
+	pixel_y = -29
+	},
+/turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "asQ" = (
 /obj/structure/surface/rack,
@@ -2854,7 +2850,9 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/command/cic)
 "atO" = (
-/turf/open/floor/almayer/silver/east,
+/turf/open/floor/almayer/silver/east{
+	dir = 8
+	},
 /area/almayer/command/cic)
 "atP" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -3245,7 +3243,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
 "awt" = (
-/turf/open/floor/almayer/silvercorner/east,
+/turf/open/floor/almayer/silvercorner{
+	dir = 4
+	},
 /area/almayer/command/cic)
 "awu" = (
 /obj/effect/decal/warning_stripes{
@@ -3275,12 +3275,13 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/command/cichallway)
 "awA" = (
-/obj/structure/prop/almayer/computers/sensor_computer3{
-	name = "weapon targetting computer"
-	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 32
+	},
+/obj/structure/machinery/computer/cameras/almayer/bulky{
+	network = list("ARES");
+	name = "ARES Core Cameras"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -3318,8 +3319,9 @@
 /area/almayer/command/cic)
 "awH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command,
-/obj/item/device/megaphone,
+/obj/structure/machinery/faxmachine/uscm/command{
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "awQ" = (
@@ -3640,20 +3642,8 @@
 /turf/open/floor/almayer/redfull,
 /area/almayer/shipboard/starboard_missiles)
 "ayr" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
-/obj/structure/machinery/computer/working_joe{
-	dir = 8;
-	pixel_x = 17;
-	pixel_y = 8
-	},
-/obj/structure/machinery/computer/cameras/almayer/ares{
-	dir = 8;
-	pixel_x = 17;
-	pixel_y = -6
+/obj/structure/machinery/power/apc/almayer/hardened{
+	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -5113,7 +5103,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/starboard)
 "aGH" = (
-/obj/structure/machinery/computer/ordercomp,
+/obj/structure/machinery/computer/ordercomp/bulky,
+/obj/structure/sign/safety/terminal{
+	pixel_x = 8;
+	pixel_y = -32
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aGN" = (
@@ -5619,7 +5613,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 4
 	},
-/turf/open/floor/almayer/silver/north,
+/turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "aKk" = (
 /obj/structure/disposalpipe/segment,
@@ -15621,7 +15615,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer/silver/east,
+/turf/open/floor/almayer/silvercorner{
+	dir = 1
+	},
 /area/almayer/command/cic)
 "cwo" = (
 /obj/structure/largecrate/random/mini/chest{
@@ -21566,9 +21562,9 @@
 /area/almayer/living/briefing)
 "eVj" = (
 /obj/structure/bed/chair/office/dark{
-	dir = 4
+	dir = 1
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer,
 /area/almayer/command/cic)
 "eVm" = (
 /obj/structure/sign/safety/bulkhead_door{
@@ -27535,6 +27531,7 @@
 	pixel_y = 4
 	},
 /obj/structure/surface/table/reinforced/black,
+/obj/item/device/megaphone,
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "hxG" = (
@@ -29820,6 +29817,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
+"ixS" = (
+/turf/open/floor/almayer/silver/east{
+	dir = 10
+	},
+/area/almayer/command/cic)
 "ixT" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -33161,6 +33163,10 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
+"jQk" = (
+/obj/structure/machinery/computer/tech_control,
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
 "jQt" = (
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/almayer/medical/containment/cell)
@@ -36900,6 +36906,10 @@
 /obj/item/storage/firstaid/adv,
 /obj/item/storage/firstaid/adv,
 /obj/item/storage/firstaid/adv,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
 "lrX" = (
@@ -37986,10 +37996,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/vehiclehangar)
-"lQG" = (
-/obj/structure/machinery/computer/tech_control,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
 "lQO" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -38293,7 +38299,6 @@
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
-	pixel_x = -6;
 	pixel_y = 28
 	},
 /obj/structure/machinery/computer/cameras/almayer/vehicle{
@@ -38302,10 +38307,6 @@
 	},
 /obj/item/device/flashlight/lamp,
 /obj/item/clothing/glasses/hud/health,
-/obj/structure/machinery/firealarm{
-	pixel_x = 8;
-	pixel_y = 28
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "lZI" = (
@@ -49578,6 +49579,11 @@
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_a_p)
+"qDM" = (
+/turf/open/floor/almayer/silver/east{
+	dir = 9
+	},
+/area/almayer/command/cic)
 "qDP" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -54425,6 +54431,11 @@
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_fore_hallway)
+"sAO" = (
+/turf/open/floor/almayer/silvercorner{
+	dir = 8
+	},
+/area/almayer/command/cic)
 "sAS" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
@@ -55662,6 +55673,14 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/lobby)
+"tdA" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/silver/east{
+	dir = 9
+	},
+/area/almayer/command/cic)
 "tdE" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -55728,7 +55747,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/prop/almayer/computers/sensor_computer2,
+/obj/structure/machinery/computer/altitude_control_console,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "teZ" = (
@@ -62727,6 +62746,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "vSn" = (
@@ -67542,11 +67565,8 @@
 /turf/open/floor/almayer/red/west,
 /area/almayer/hallways/upper/starboard)
 "xMA" = (
-/obj/structure/machinery/computer/med_data,
-/obj/structure/sign/safety/terminal{
-	pixel_x = 8;
-	pixel_y = -32
-	},
+/obj/structure/machinery/computer/med_data/bulky,
+/obj/structure/machinery/light,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "xMB" = (
@@ -87880,11 +87900,11 @@ kcN
 cod
 ufL
 aic
-aov
-wVW
-arG
+aKq
+luZ
 alX
-lQG
+alX
+avY
 oPE
 alZ
 auT
@@ -87894,10 +87914,10 @@ bZJ
 aRt
 axp
 aPI
-lQG
+avY
 aIf
-aEB
-wVW
+alX
+eRu
 aKi
 amY
 aVg
@@ -88084,7 +88104,7 @@ yff
 ufL
 aic
 aKq
-luZ
+uTU
 alX
 alX
 avY
@@ -88100,7 +88120,7 @@ alX
 avY
 aIf
 alX
-eRu
+uTU
 aKq
 aKz
 mKq
@@ -88286,10 +88306,10 @@ kcN
 kcN
 agj
 aic
-aKq
-uTU
-alX
-alX
+aov
+wVW
+jQk
+ixS
 aqN
 avY
 alX
@@ -88301,10 +88321,10 @@ alX
 alX
 avY
 aqN
-aIf
-alX
-uTU
-aKq
+tdA
+jQk
+wVW
+aTj
 aKz
 mKq
 ceK
@@ -88489,12 +88509,12 @@ xxh
 xpi
 agj
 bFA
-aov
+sxW
 wVW
 arR
+sAO
 atO
-atO
-atO
+ixS
 awt
 aqN
 rKd
@@ -88502,12 +88522,12 @@ aAA
 xMB
 aqN
 ays
-atO
+qDM
 atO
 cvZ
 asN
 wVW
-aTj
+aKn
 aKz
 mKq
 bFC
@@ -88696,7 +88716,7 @@ aoA
 wVW
 teY
 eVj
-aqN
+alX
 alX
 asc
 abk

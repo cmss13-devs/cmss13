@@ -3243,9 +3243,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
 "awt" = (
-/turf/open/floor/almayer/silvercorner/west{
-	dir = 4
-	},
+/turf/open/floor/almayer/silvercorner/east,
 /area/almayer/command/cic)
 "awu" = (
 /obj/effect/decal/warning_stripes{
@@ -3648,9 +3646,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "ays" = (
-/turf/open/floor/almayer/silvercorner/west{
-	dir = 2
-	},
+/turf/open/floor/almayer/silvercorner,
 /area/almayer/command/cic)
 "ayu" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -15617,9 +15613,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer/silvercorner/west{
-	dir = 1
-	},
+/turf/open/floor/almayer/silvercorner/north,
 /area/almayer/command/cic)
 "cwo" = (
 /obj/structure/largecrate/random/mini/chest{
@@ -29820,9 +29814,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "ixS" = (
-/turf/open/floor/almayer/silver{
-	dir = 10
-	},
+/turf/open/floor/almayer/silver/southwest,
 /area/almayer/command/cic)
 "ixT" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -49582,9 +49574,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_a_p)
 "qDM" = (
-/turf/open/floor/almayer/silver{
-	dir = 9
-	},
+/turf/open/floor/almayer/silver/northwest,
 /area/almayer/command/cic)
 "qDP" = (
 /obj/structure/machinery/light{
@@ -55677,9 +55667,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer/silver{
-	dir = 9
-	},
+/turf/open/floor/almayer/silver/northwest,
 /area/almayer/command/cic)
 "tdE" = (
 /obj/structure/window/reinforced{

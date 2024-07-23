@@ -1,6 +1,6 @@
 // #################### Working Joe Ticket Console #####################
 /obj/structure/machinery/computer/working_joe
-	name = "APOLLO Maintenance Controller"
+	name = "\improper APOLLO Maintenance Controller"
 	desc = "A console built to facilitate Working Joes and their operation, allowing for simple allocation of resources."
 	icon = 'icons/obj/structures/machinery/ares.dmi'
 	icon_state = "console"

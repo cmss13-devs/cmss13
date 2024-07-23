@@ -21,9 +21,12 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 
 /obj/structure/machinery/computer/altitude_control_console
 	icon_state = "almayer_altitude"
-	name = "Altitude Control Console"
+	name = "\improper Altitude Control Console"
 	desc = "The A.C.C console monitors, regulates, and updates the ships attitude and altitude in relation to the AO. It's not rocket science."
 	density = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	breakable = FALSE
 
 /obj/structure/machinery/computer/altitude_control_console/attack_hand()
 	. = ..()
@@ -47,7 +50,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 	. = ..()
 	var/temperature_change
 	if(GLOB.ship_temp >= OVERHEAT)
-		ai_silent_announcement("Attention: orbital correction no longer sustainable, moving to geo-synchronous orbit until engine cooloff.", ";", TRUE)
+		ai_silent_announcement("Attention: Orbital correction no longer sustainable, moving to geo-synchronous orbit until engine cooloff.", ";", TRUE)
 		GLOB.ship_alt = SHIP_ALT_HIGH
 		temperature_change = OVERHEAT_COOLING
 		for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
@@ -55,7 +58,6 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 				continue
 			current_mob.apply_effect(3, WEAKEN)
 			shake_camera(current_mob, 10, 2)
-		ai_silent_announcement("Attention performing high-G maneuver", ";", TRUE)
 	if(!temperature_change)
 		switch(GLOB.ship_alt)
 			if(SHIP_ALT_LOW)
@@ -72,7 +74,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			if(!is_mainship_level(current_mob.z))
 				continue
 			shake_camera(current_mob, 10, 1)
-		ai_silent_announcement("Performing Attitude Control", ";", TRUE)
+		ai_silent_announcement("Performing Attitude Control.", ";", TRUE)
 
 //TGUI.... fun... years have gone by, I am dying of old age
 /obj/structure/machinery/computer/altitude_control_console/tgui_interact(mob/user, datum/tgui/ui)
@@ -101,7 +103,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 
 	if(.)
 		return
-	var/mob/user = usr
+	var/mob/user = ui.user
 	switch(action)
 		if("low_alt")
 			change_altitude(user, SHIP_ALT_LOW)
@@ -114,7 +116,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			. = TRUE
 	message_admins("[key_name(user)] has changed the ship's altitude to [action].")
 
-	add_fingerprint(usr)
+	add_fingerprint(ui.user)
 
 /obj/structure/machinery/computer/altitude_control_console/proc/change_altitude(mob/user, new_altitude)
 	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_ALTITUDE_CHANGE))
@@ -129,7 +131,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			continue
 		current_mob.apply_effect(3, WEAKEN)
 		shake_camera(current_mob, 10, 2)
-	ai_silent_announcement("Attention: Performing high-G maneuver", ";", TRUE)
+	ai_silent_announcement("Attention: Performing high-g maneuver.", ";", TRUE)
 
 #undef COOLING
 #undef OVERHEAT_COOLING

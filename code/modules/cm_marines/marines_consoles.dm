@@ -762,6 +762,9 @@
 	desc = "The IBM series 10 computer retrofitted to be used to monitor active health sensors built into the wearer's uniform. While somewhat dated it still serves its purpose."
 	icon_state = "crew_bulky"
 	deconstructible = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	breakable = FALSE
 
 /obj/structure/machinery/computer/crew/bulky/update_icon()
 	if(stat & BROKEN)

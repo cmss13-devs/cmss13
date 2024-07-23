@@ -321,7 +321,6 @@
 	network = list(CAMERA_NET_ALMAYER)
 
 /obj/structure/machinery/computer/cameras/almayer/bulky
-	name = "Security Cameras"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	desc = "The IBM series 10 computer retrofitted to work as a security cameras console for the ship. While somewhat dated it still serves its purpose."
 	icon_state = "cameras_bulky"

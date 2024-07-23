@@ -513,3 +513,6 @@
 	desc = "The IBM series 10 computer retrofitted to be used to check the medical records of all crew. While somewhat dated it still serves its purpose."
 	icon_state = "medcomp_bulky"
 	deconstructible = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	breakable = FALSE

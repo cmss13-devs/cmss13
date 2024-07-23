@@ -149,7 +149,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			computer.black_market_lockout = TRUE
 
 /obj/structure/machinery/computer/ordercomp
-	name = "Supply ordering console"
+	name = "supply ordering console"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "request"
 	density = TRUE
@@ -163,6 +163,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "request_bulky"
 	deconstructible = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	breakable = FALSE
 
 /obj/structure/machinery/computer/supply_drop_console
 	name = "Supply Drop Console"

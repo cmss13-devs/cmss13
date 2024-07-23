@@ -219,3 +219,6 @@
   - refactor: Made XM88 box code more uniform with other handful boxes.
   zzzmike:
   - bugfix: lifeboat launch console is no longer slashable / acidable
+2024-07-23:
+  cuberound:
+  - code_imp: cleans up water particle code

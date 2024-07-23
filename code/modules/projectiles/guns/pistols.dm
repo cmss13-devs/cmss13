@@ -155,7 +155,7 @@
 
 /obj/item/weapon/gun/pistol/m47
 	name = "\improper M47A2 offensive handgun"
-	desc = "It's hard to keep a classic down. While Armat's M80A3, an update on the 1911 failed to make it into standard adoption during the Marine '70s revitalization, a variant of their handgun was picked up by FORECON and specialized units within the USMC. 14 rounds of .45, extended barrel, and integrated night sights - more than enough features to justify its designation as an 'Offensive Handgun.'"
+	desc = "It's hard to keep a classic down. While Armat's M80A3, an update on the 1911 failed to make it into standard adoption during the Marine '70s revitalization, a variant of their handgun was picked up by FORECON and specialized units within the USCM. 14 rounds of .45, extended barrel, and integrated night sights - more than enough features to justify its designation as an 'Offensive Handgun.'"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m47"
 	item_state = "m4a3"

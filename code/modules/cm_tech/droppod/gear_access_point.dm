@@ -55,7 +55,7 @@
 		return
 
 //RUCM START
-	droppod_tech.on_pod_access(user)
+	droppod_tech.on_pod_access(user, src)
 //RUCM END
 /obj/structure/techpod_vendor/proc/get_access_permission(mob/living/carbon/human/user)
 	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST) //all WO has lifted access restrictions

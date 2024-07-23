@@ -262,7 +262,7 @@ CULT
 		return
 	var/land_time = max(turf_area.ceiling, 1) * (20 SECONDS)
 	playsound(T, 'sound/effects/alert.ogg', 75)
-	assigned_droppod = new(T, tech_to_deploy)
+	assigned_droppod = new(T, list_of_techs[tech_to_deploy])
 	assigned_droppod.drop_time = land_time
 	assigned_droppod.launch(T)
 	var/list/to_send_to = H.assigned_squad?.marines_list

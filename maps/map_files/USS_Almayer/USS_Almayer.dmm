@@ -3243,7 +3243,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
 "awt" = (
-/turf/open/floor/almayer/silvercorner{
+/turf/open/floor/almayer/silvercorner/west{
 	dir = 4
 	},
 /area/almayer/command/cic)
@@ -3648,7 +3648,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "ays" = (
-/turf/open/floor/almayer/silvercorner,
+/turf/open/floor/almayer/silvercorner/west{
+	dir = 2
+	},
 /area/almayer/command/cic)
 "ayu" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -15615,7 +15617,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer/silvercorner{
+/turf/open/floor/almayer/silvercorner/west{
 	dir = 1
 	},
 /area/almayer/command/cic)
@@ -29818,7 +29820,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "ixS" = (
-/turf/open/floor/almayer/silver/east{
+/turf/open/floor/almayer/silver{
 	dir = 10
 	},
 /area/almayer/command/cic)
@@ -49580,7 +49582,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_a_p)
 "qDM" = (
-/turf/open/floor/almayer/silver/east{
+/turf/open/floor/almayer/silver{
 	dir = 9
 	},
 /area/almayer/command/cic)
@@ -54432,9 +54434,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_fore_hallway)
 "sAO" = (
-/turf/open/floor/almayer/silvercorner{
-	dir = 8
-	},
+/turf/open/floor/almayer/silvercorner/west,
 /area/almayer/command/cic)
 "sAS" = (
 /obj/structure/disposalpipe/segment,
@@ -55677,7 +55677,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer/silver/east{
+/turf/open/floor/almayer/silver{
 	dir = 9
 	},
 /area/almayer/command/cic)

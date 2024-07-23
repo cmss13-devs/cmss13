@@ -36,17 +36,17 @@
 
 /obj/item/storage/box/combat_zone_engi_package
 	name = "Engineer sentry gun czsp"
-	icon_state = "guncase"
+	icon_state = "cryo_defense_kit"
 	storage_slots = 4
 
 /obj/item/storage/box/combat_zone_engi_package_flamer
 	name = "Engineer sentry flamer czsp"
-	icon_state = "guncase"
+	icon_state = "cryo_defense_kit"
 	storage_slots = 4
 
 /obj/item/storage/box/combat_zone_engi_package_tesla
 	name = "Engineer tesla czsp"
-	icon_state = "guncase"
+	icon_state = "cryo_defense_kit"
 	storage_slots = 4
 
 /obj/item/storage/box/combat_zone_engi_package/Initialize()

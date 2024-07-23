@@ -27,7 +27,7 @@
 
 /obj/item/storage/box/combat_zone_support_package
 	name = "Medical czsp"
-	icon_state = "guncase"
+	icon_state = "medicbox"
 	storage_slots = 8
 
 /obj/item/storage/box/combat_zone_support_package/Initialize()

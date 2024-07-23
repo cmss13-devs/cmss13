@@ -92,6 +92,7 @@
 #include "modules\cm_tech\techs\xeno\tier3\rev_jelly.dm"
 #include "modules\cm_tech\techs\xeno\tier4\health_up.dm"
 #include "modules\cm_tech\trees\xeno.dm"
+#include "modules\cm_preds\yaut_actions.dm"
 #include "modules\gear_presets\usmc.dm"
 #include "modules\gear_presets\uscm_ship.dm"
 #include "modules\mob\mod_defines.dm"

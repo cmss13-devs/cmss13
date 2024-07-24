@@ -1,11 +1,17 @@
 SUBSYSTEM_DEF(who)
 	name = "Who"
-	flags = SS_NO_INIT|SS_BACKGROUND
+	flags = SS_BACKGROUND
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
+	init_order = SS_INIT_WHO
 	wait = 5 SECONDS
 
 	var/datum/player_list/who = new
 	var/datum/player_list/staff/staff_who = new
+
+/datum/controller/subsystem/who/Initialize()
+	who.update_data()
+	staff_who.update_data()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/who/fire(resumed = TRUE)
 	who.update_data()
@@ -34,23 +40,21 @@ SUBSYSTEM_DEF(who)
 	)
 	new_list_data["additional_info"] = list()
 	var/list/counted_factions = list()
-	for(var/client/client in sortTim(GLOB.clients, GLOBAL_PROC_REF(cmp_ckey_asc)))
+	for(var/client/client as anything in sortTim(GLOB.clients, GLOBAL_PROC_REF(cmp_ckey_asc)))
 		CHECK_TICK
 		new_list_data["all_clients"]++
 		var/list/client_payload = list()
 		client_payload["ckey"] = "[client.key]"
 		client_payload["text"] = "[client.key]"
-		client_payload["ckey_color"] = client.player_data?.donator_info.patreon_function_available("ooc_color") ? "#D4AF37" : "white"
+		client_payload["ckey_color"] = "white"
 		var/mob/client_mob = client.mob
 		new_mobs_ckey[client.key] = client_mob
 		if(client_mob)
 			if(istype(client_mob, /mob/new_player))
 				client_payload["text"] += " - in Lobby"
 				additional_data["lobby"]++
-				new_list_data["total_players"] += list(client_payload)
-				continue
 
-			if(isobserver(client_mob))
+			else if(isobserver(client_mob))
 				client_payload["text"] += " - Playing as [client_mob.real_name]"
 				if(CLIENT_IS_STAFF(client))
 					additional_data["admin_observers"]++
@@ -78,7 +82,7 @@ SUBSYSTEM_DEF(who)
 
 				if(client_mob.stat != DEAD)
 					if(isxeno(client_mob))
-						client_payload["color"] += "#f00"
+						client_payload["color"] += "#ec3535"
 						client_payload["text"] += " - Xenomorph"
 
 					else if(ishuman(client_mob))
@@ -106,19 +110,19 @@ SUBSYSTEM_DEF(who)
 		new_list_data["total_players"] += list(client_payload)
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "in Lobby: [additional_data["lobby"]]",
+		"content" = "In Lobby: [additional_data["lobby"]]",
 		"color" = "#777",
 		"text" = "Player in lobby",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Spectators: [additional_data["observers"]] Players",
+		"content" = "Spectating Players: [additional_data["observers"]]",
 		"color" = "#777",
 		"text" = "Spectating players",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Spectators: [additional_data["admin_observers"]] Administrators",
+		"content" = "Spectating Admins: [additional_data["admin_observers"]]",
 		"color" = "#777",
 		"text" = "Spectating administrators",
 	))
@@ -131,24 +135,24 @@ SUBSYSTEM_DEF(who)
 
 	new_list_data["additional_info"] += list(list(
 		"content" = "Infected Humans: [additional_data["infected_humans"]]",
-		"color" = "#F00",
+		"color" = "#ec3535",
 		"text" = "Players playing as Infected Human",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "USS `Almayer` Personnel: [additional_data["uscm"]]",
-		"color" = "#3e26c8",
-		"text" = "Players playing as USS `Almayer` Personnel",
+		"content" = "[MAIN_SHIP_NAME] Personnel: [additional_data["uscm"]]",
+		"color" = "#5442bd",
+		"text" = "Players playing as [MAIN_SHIP_NAME] Personnel",
 	))
 
 	new_list_data["additional_info"] += list(list(
 		"content" = "Marines: [additional_data["uscm_marines"]]",
-		"color" = "#3e26c8",
+		"color" = "#5442bd",
 		"text" = "Players playing as Marines",
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Yautjes: [additional_data["yautja"]]",
+		"content" = "Yautjas: [additional_data["yautja"]]",
 		"color" = "#7ABA19",
 		"text" = "Players playing as Yautja",
 	))
@@ -159,7 +163,7 @@ SUBSYSTEM_DEF(who)
 		"text" = "Players playing as Infected Yautja",
 	))
 
-	for(var/i in 10 to length(counted_factions) - 2)
+	for(var/i in 1 to length(counted_factions))
 		if(counted_factions[counted_factions[i]])
 			new_list_data["factions"] += list(list(
 				"content" = "[counted_factions[i]]: [counted_factions[counted_factions[i]]]",
@@ -245,7 +249,7 @@ SUBSYSTEM_DEF(who)
 	for(var/category in mappings)
 		LAZYSET(listings, category, list())
 
-	for(var/client/client in GLOB.admins)
+	for(var/client/client as anything in GLOB.admins)
 		if(client.admin_holder?.fakekey && !CLIENT_IS_STAFF(client))
 			continue
 
@@ -256,7 +260,7 @@ SUBSYSTEM_DEF(who)
 
 	for(var/category in listings)
 		var/list/admins = list()
-		for(var/client/entry in listings[category])
+		for(var/client/entry as anything in listings[category])
 			var/list/admin = list()
 			var/rank = entry.admin_holder.rank
 			if(entry.admin_holder.extra_titles?.len)
@@ -303,6 +307,6 @@ SUBSYSTEM_DEF(who)
 
 /mob/verb/staffwho()
 	set category = "Admin"
-	set name = "Staff Who"
+	set name = "StaffWho"
 
 	SSwho.staff_who.tgui_interact(src)

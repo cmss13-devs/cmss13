@@ -161,3 +161,67 @@
   cuberound:
   - rscdel: Removed Rapid-Service-Fabricator, rapid construction device and  Rapid-Seed-Producer
       (old ss13 junk)
+2024-07-19:
+  Drathek:
+  - bugfix: Fixed light blue scrubs having no cost in snowflake vendor.
+  SpypigDev:
+  - bugfix: SO Armory vendors no longer infinitely supply knives
+  TotalEpicness5, Triiodine, monkeyfist, Blundir:
+  - rscadd: Adds the G2 electroshock grenade. This grenade does not stun nor deal
+      serious damage to xenos, but it stuns via electric shock. It can create EMP-like
+      effects when faced with electronic devices like sentries, synths, Area Power
+      Controllers, etc. It's damage is reduced by energy armor.
+  - bugfix: take_overall_armoured_damage now can actually deal burn damage
+  - balance: Marine armor has a small bit of energy armor added back. Heavy armor
+      has slightly more protection than medium/light.
+  - bugfix: Mines now check for explosive antigrief checks
+  VileBeggar:
+  - balance: The DRG-N Offensive Flamer Unit now fires a 3-tile wide glob of high-combustion
+      napalm.
+  Zonespace, Vile Beggar:
+  - rscadd: Handheld planted flags are now indestructible and do a small amount of
+      damage on hit.
+  - bugfix: Plantable flags can no longer be duplicated.
+  - rscdel: Planting a UA flag no longer forces anyone but the planter to warcry.
+  cuberound:
+  - bugfix: having left hand broken and not splinted has the same effect on wheelchair
+      movement speed as right hand
+  - bugfix: corrects holoround highligh alpha value
+  - rscdel: Removed malfanction closet
+  kiVts:
+  - bugfix: Surgery sound and alike is fixed
+  realforest2001:
+  - rscadd: The Combat Correspondant's civilian equipment is now in it's own category
+      to make it easier to tell why you can't click it as the military version.
+2024-07-20:
+  Doubleumc:
+  - rscdel: Removed facial disfigurement
+  - code_imp: Fixed and refactored probability weighting for pick_weight
+  - bugfix: no longer stab with utensil when trying to feed while target full
+  Drathek:
+  - admin: Added causes for explosion starts to attack logs
+  Steelpoint:
+  - rscadd: The Heavy Pulse Rifle (M41AE2) will now start with a pre-attached bipod.
+      To better inform players of its unique auto-fire function.
+  Zonespace27:
+  - bugfix: Fixed a large amount of objects activating erroneous functionality (like
+      an armor light) when using action buttons tied to that object.
+  - bugfix: Fixed a potential softlock in the abomination tutorial.
+  cuberound:
+  - rscdel: removes trade destinations (they were never used)
+  - balance: m56 cupola uses m56d ammo rather then standard sg ammo
+2024-07-22:
+  BlackCrystalic:
+  - bugfix: Queen maturity timer
+  Blackcrystalic:
+  - qol: port who/staffwho to TGUI
+  ThePiachu:
+  - refactor: Made XM88 box code more uniform with other handful boxes.
+  zzzmike:
+  - bugfix: lifeboat launch console is no longer slashable / acidable
+2024-07-23:
+  cuberound:
+  - code_imp: cleans up water particle code
+2024-07-24:
+  Doubleumc:
+  - bugfix: sounds & motion detectors should be more reliable

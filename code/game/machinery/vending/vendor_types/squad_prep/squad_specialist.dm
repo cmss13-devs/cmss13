@@ -35,6 +35,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("M74 AGM-F Fragmentation Grenades x6", 40, /obj/effect/essentials_set/agmf_6_pack, null, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-I Incendiary Grenades x6", 40, /obj/effect/essentials_set/agmi_6_pack, null, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-S Smoke Grenades x6", 20, /obj/effect/essentials_set/agms_6_pack, null, VENDOR_ITEM_REGULAR),
+		list("G2 Electroshock Grenade Pack x6", 40, /obj/effect/essentials_set/sebb_6_pack, null, VENDOR_ITEM_REGULAR),
 
 		list("EXTRA FLAMETHROWER TANKS", 0, null, null, null),
 		list("Large Incinerator Tank", 40, /obj/item/ammo_magazine/flamer_tank/large, null, VENDOR_ITEM_REGULAR),
@@ -259,4 +260,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 		/obj/item/explosive/grenade/smokebomb/airburst,
 		/obj/item/explosive/grenade/smokebomb/airburst,
 		/obj/item/explosive/grenade/smokebomb/airburst,
+	)
+
+/obj/effect/essentials_set/sebb_6_pack
+	spawned_gear_list = list(
+		/obj/item/explosive/grenade/sebb,
+		/obj/item/explosive/grenade/sebb,
+		/obj/item/explosive/grenade/sebb,
+		/obj/item/explosive/grenade/sebb,
+		/obj/item/explosive/grenade/sebb,
+		/obj/item/explosive/grenade/sebb,
 	)

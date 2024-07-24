@@ -27,6 +27,12 @@
 	description = "A biosynthetic nerve agent that stimulates cardiomyocytes in critical condition."
 	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_DEFIBRILLATING = 5, PROPERTY_INTRAVENOUS = 1)
 
+/datum/reagent/borer/brainsleep
+	name = "Neurostasis"
+	id = "borerbrainstasis"
+	description = "A biosynthetic agent that preserves long term brain function at the cost of the short term."
+	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_NEUROCRYOGENIC = 3, PROPERTY_INTRAVENOUS = 1)
+
 /datum/reagent/borer/transformative
 	name = "Biomend"
 	id = "borertransform"
@@ -114,12 +120,23 @@
 	cost = 120
 	quantity = 5
 
+
+//"Speciality" Chems
 /datum/borer_chem/human/restarter
 	chem_name = "Neuroshock"
 	chem_id = "borershock"
 	desc = "A powerful nerve agent that stimulates the heart. Useful for keeping your host alive. Lethal in high doses."
 	cost = 300
 	quantity = 2
+	restricted = TRUE
+	impure = FALSE
+
+/datum/borer_chem/human/restarter
+	chem_name = "Neurostasis"
+	chem_id = "borerbrainstasis"
+	desc = "A biosynthetic agent that preserves long term brain function at the cost of the short term."
+	cost = 300
+	quantity = 10
 	restricted = TRUE
 	impure = FALSE
 

@@ -375,7 +375,10 @@
 	. = ..()
 	var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 	if(lifeboat.status == LIFEBOAT_LOCKED)
-		if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+			to_chat(user, SPAN_WARNING("[src] displays an error message and asks you to contact your pilot to resolve the problem."))
+			return
+		else 
 			if(user.action_busy || override_being_removed)
 				return
 			to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
@@ -399,8 +402,6 @@
 					SPAN_NOTICE("You have successfully taken back control over the lifeboat."))
 				override_being_removed = FALSE
 			return
-		else 
-			to_chat(user, SPAN_WARNING("[src] displays an error message and asks you to contact your pilot to resolve the problem."))
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)

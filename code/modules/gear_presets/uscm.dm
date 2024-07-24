@@ -368,7 +368,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_TL_PREP)
 	assignment = JOB_SQUAD_TEAM_LEADER
 	rank = JOB_SQUAD_TEAM_LEADER
-	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "FTL"
 	skills = /datum/skills/tl
 
@@ -766,7 +766,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_TL_PREP)
 	assignment = JOB_SQUAD_TEAM_LEADER
 	rank = JOB_SQUAD_TEAM_LEADER
-	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "TL"
 	skills = /datum/skills/tl
 

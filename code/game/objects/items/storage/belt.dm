@@ -1318,7 +1318,7 @@
 
 /obj/item/storage/belt/gun/xm51/black/cmb
 	name = "\improper M276 pattern Model 1771 holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the Office of Colonial Marshals. It consists of a modular belt with various clips. This version is for the Model 1771 breaching scattergun, allowing easier storage of the weapon. It features pouches for storing two magazines along with extra shells."
+	desc = "The M276 is the standard load-bearing equipment of the Office of the Colonial Marshals. It consists of a modular belt with various clips. This version is for the Model 1771 breaching scattergun, allowing easier storage of the weapon. It features pouches for storing two magazines along with extra shells."
 	gun_has_gamemode_skin = FALSE
 
 

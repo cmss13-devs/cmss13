@@ -166,7 +166,7 @@
 	unload_sound = 'sound/weapons/unload_m47.ogg'
 	fire_rattle = 'sound/weapons/gun_m47.ogg'
 	cocked_sound = 'sound/weapons/cocking_m47.ogg'
-	pickup_sound = "sound/weapons/draw_m47.ogg"
+	pickup_sound = 'sound/weapons/draw_m47.ogg'
 	empty_sound = null
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECTOR|GUN_AMMO_COUNTER
 	current_mag = /obj/item/ammo_magazine/pistol/m47

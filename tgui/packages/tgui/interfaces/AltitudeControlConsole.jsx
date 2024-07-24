@@ -34,7 +34,7 @@ export const AltitudeControlConsole = () => {
               disabled={data.alt === 0.5}
               onClick={() => act('low_alt')}
             >
-              Set to: Low Altitude
+              Set to: Lowest orbitable altitude
             </Button>
           }
           {
@@ -45,18 +45,7 @@ export const AltitudeControlConsole = () => {
               disabled={data.alt === 1}
               onClick={() => act('med_alt')}
             >
-              Set to: Medium Altitude
-            </Button>
-          }
-          {
-            <Button
-              fontSize="20px"
-              textAlign="center"
-              fluid
-              disabled={data.alt === 1.5}
-              onClick={() => act('high_alt')}
-            >
-              Set to: High Altitude
+              Set to: Most optimal orbitable altitude
             </Button>
           }
         </Section>

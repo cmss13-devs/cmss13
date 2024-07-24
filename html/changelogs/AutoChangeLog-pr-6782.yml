@@ -1,4 +1,0 @@
-author: "Doubleumc"
-delete-after: True
-changes:
-  - bugfix: "sounds & motion detectors should be more reliable"

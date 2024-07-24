@@ -378,30 +378,29 @@
 		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 			to_chat(user, SPAN_WARNING("[src] displays an error message and asks you to contact your pilot to resolve the problem."))
 			return
-		else 
-			if(user.action_busy || override_being_removed)
-				return
-			to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
-			override_being_removed = TRUE
-			user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
-				SPAN_NOTICE("You try to take back control over the lifeboat. It will take around [remaining_time / 10] seconds."))
-			while(remaining_time > 20)
-				if(!do_after(user, 20 SECONDS, INTERRUPT_ALL|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE, numticks = 20))
-					to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))
-					override_being_removed = FALSE
-					return
-				remaining_time = remaining_time - 20 SECONDS 
-				if(remaining_time > 0)
-					to_chat(user, SPAN_NOTICE("You partially bypass the lockout, only [remaining_time / 10] seconds left."))
-			if(remaining_time <= 0)
-				to_chat(user, SPAN_NOTICE("You successfully removed the lockout!"))
-				playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
-				lifeboat.status = LIFEBOAT_ACTIVE
-				lifeboat.available = TRUE
-				user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
-					SPAN_NOTICE("You have successfully taken back control over the lifeboat."))
-				override_being_removed = FALSE
+		if(user.action_busy || override_being_removed)
 			return
+		to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
+		override_being_removed = TRUE
+		user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
+			SPAN_NOTICE("You try to take back control over the lifeboat. It will take around [remaining_time / 10] seconds."))
+		while(remaining_time > 20)
+			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE, numticks = 20))
+				to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))
+				override_being_removed = FALSE
+				return
+			remaining_time = remaining_time - 20 SECONDS 
+			if(remaining_time > 0)
+				to_chat(user, SPAN_NOTICE("You partially bypass the lockout, only [remaining_time / 10] seconds left."))
+		if(remaining_time <= 0)
+			to_chat(user, SPAN_NOTICE("You successfully removed the lockout!"))
+			playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
+			lifeboat.status = LIFEBOAT_ACTIVE
+			lifeboat.available = TRUE
+			user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
+				SPAN_NOTICE("You have successfully taken back control over the lifeboat."))
+			override_being_removed = FALSE
+		return
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)

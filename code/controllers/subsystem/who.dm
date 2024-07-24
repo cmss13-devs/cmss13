@@ -23,9 +23,11 @@ SUBSYSTEM_DEF(who)
 	var/tgui_interface_name = "Who"
 	var/list/mobs_ckey = list()
 	var/list/list_data = list()
+	var/list/list_admin_data = list()
 
 /datum/player_list/proc/update_data()
 	var/list/new_list_data = list()
+	var/list/new_list_admin_data = list()
 	var/list/new_mobs_ckey = list()
 	var/list/additional_data = list(
 		"lobby" = 0,
@@ -38,15 +40,17 @@ SUBSYSTEM_DEF(who)
 		"uscm" = 0,
 		"uscm_marines" = 0,
 	)
-	new_list_data["additional_info"] = list()
+	new_list_admin_data["additional_info"] = list()
 	var/list/counted_factions = list()
 	for(var/client/client as anything in sortTim(GLOB.clients, GLOBAL_PROC_REF(cmp_ckey_asc)))
 		CHECK_TICK
 		new_list_data["all_clients"]++
+		new_list_admin_data["all_clients"]++
 		var/list/client_payload = list()
 		client_payload["ckey"] = "[client.key]"
 		client_payload["text"] = "[client.key]"
 		client_payload["ckey_color"] = "white"
+		new_list_data["total_players"] += list(client_payload.Copy())
 		var/mob/client_mob = client.mob
 		new_mobs_ckey[client.key] = client_mob
 		if(client_mob)
@@ -107,57 +111,57 @@ SUBSYSTEM_DEF(who)
 							else
 								counted_factions[client_mob.faction]++
 
-		new_list_data["total_players"] += list(client_payload)
+		new_list_admin_data["total_players"] += list(client_payload)
 
-	new_list_data["additional_info"] += list(list(
+	new_list_admin_data["additional_info"] += list(list(
 		"content" = "In Lobby: [additional_data["lobby"]]",
 		"color" = "#777",
 		"text" = "Player in lobby",
 	))
 
-	new_list_data["additional_info"] += list(list(
+	new_list_admin_data["additional_info"] += list(list(
 		"content" = "Spectating Players: [additional_data["observers"]]",
 		"color" = "#777",
 		"text" = "Spectating players",
 	))
 
-	new_list_data["additional_info"] += list(list(
+	new_list_admin_data["additional_info"] += list(list(
 		"content" = "Spectating Admins: [additional_data["admin_observers"]]",
 		"color" = "#777",
 		"text" = "Spectating administrators",
 	))
 
-	new_list_data["additional_info"] += list(list(
+	new_list_admin_data["additional_info"] += list(list(
 		"content" = "Humans: [additional_data["humans"]]",
 		"color" = "#2C7EFF",
 		"text" = "Players playing as Human",
 	))
 
-	new_list_data["additional_info"] += list(list(
+	new_list_admin_data["additional_info"] += list(list(
 		"content" = "Infected Humans: [additional_data["infected_humans"]]",
 		"color" = "#ec3535",
 		"text" = "Players playing as Infected Human",
 	))
 
-	new_list_data["additional_info"] += list(list(
+	new_list_admin_data["additional_info"] += list(list(
 		"content" = "[MAIN_SHIP_NAME] Personnel: [additional_data["uscm"]]",
 		"color" = "#5442bd",
 		"text" = "Players playing as [MAIN_SHIP_NAME] Personnel",
 	))
 
-	new_list_data["additional_info"] += list(list(
+	new_list_admin_data["additional_info"] += list(list(
 		"content" = "Marines: [additional_data["uscm_marines"]]",
 		"color" = "#5442bd",
 		"text" = "Players playing as Marines",
 	))
 
-	new_list_data["additional_info"] += list(list(
+	new_list_admin_data["additional_info"] += list(list(
 		"content" = "Yautjas: [additional_data["yautja"]]",
 		"color" = "#7ABA19",
 		"text" = "Players playing as Yautja",
 	))
 
-	new_list_data["additional_info"] += list(list(
+	new_list_admin_data["additional_info"] += list(list(
 		"content" = "Infected Predators: [additional_data["infected_preds"]]",
 		"color" = "#7ABA19",
 		"text" = "Players playing as Infected Yautja",
@@ -165,13 +169,13 @@ SUBSYSTEM_DEF(who)
 
 	for(var/i in 1 to length(counted_factions))
 		if(counted_factions[counted_factions[i]])
-			new_list_data["factions"] += list(list(
+			new_list_admin_data["factions"] += list(list(
 				"content" = "[counted_factions[i]]: [counted_factions[counted_factions[i]]]",
 				"color" = "#2C7EFF",
 				"text" = "Other",
 			))
 	if(counted_factions[FACTION_NEUTRAL])
-		new_list_data["factions"] += list(list(
+		new_list_admin_data["factions"] += list(list(
 			"content" = "[FACTION_NEUTRAL] Humans: [counted_factions[FACTION_NEUTRAL]]",
 			"color" = "#688944",
 			"text" = "Neutrals",
@@ -180,13 +184,14 @@ SUBSYSTEM_DEF(who)
 	for(var/faction_to_get in ALL_XENO_HIVES)
 		var/datum/hive_status/hive = GLOB.hive_datum[faction_to_get]
 		if(hive && length(hive.totalXenos))
-			new_list_data["xenomorphs"] += list(list(
+			new_list_admin_data["xenomorphs"] += list(list(
 				"content" = "[hive.name]: [length(hive.totalXenos)]",
 				"color" = hive.color ? hive.color : "#8200FF",
 				"text" = "Queen: [hive.living_xeno_queen ? "Alive" : "Dead"]",
 			))
 
 	list_data = new_list_data
+	list_admin_data = new_list_admin_data
 	mobs_ckey = new_mobs_ckey
 
 /datum/player_list/tgui_interact(mob/user, datum/tgui/ui)
@@ -197,7 +202,10 @@ SUBSYSTEM_DEF(who)
 		ui.set_autoupdate(TRUE)
 
 /datum/player_list/ui_data(mob/user)
-	. = list_data
+	if(CLIENT_IS_STAFF(user.client))
+		. = list_admin_data
+	else
+		. = list_data
 
 /datum/player_list/ui_static_data(mob/user)
 	. = list()
@@ -232,6 +240,7 @@ SUBSYSTEM_DEF(who)
 
 /datum/player_list/staff/update_data()
 	var/list/new_list_data = list()
+	var/list/new_list_admin_data = list()
 	mobs_ckey = list()
 
 	var/list/listings
@@ -259,6 +268,7 @@ SUBSYSTEM_DEF(who)
 				break
 
 	for(var/category in listings)
+		var/list/minimum_admins = list()
 		var/list/admins = list()
 		for(var/client/entry as anything in listings[category])
 			var/list/admin = list()
@@ -269,6 +279,7 @@ SUBSYSTEM_DEF(who)
 
 			admin["content"] = "[entry.key] ([rank])"
 			admin["text"] = ""
+			minimum_admins += list(admin.Copy())
 
 			if(entry.admin_holder?.fakekey)
 				admin["text"] += " (HIDDEN)"
@@ -294,10 +305,18 @@ SUBSYSTEM_DEF(who)
 			"category" = category,
 			"category_color" = category_colors[category],
 			"category_administrators" = length(listings[category]),
+			"admins" = minimum_admins,
+		))
+
+		new_list_admin_data["administrators"] += list(list(
+			"category" = category,
+			"category_color" = category_colors[category],
+			"category_administrators" = length(listings[category]),
 			"admins" = admins,
 		))
 
 	list_data = new_list_data
+	list_admin_data = new_list_admin_data
 
 /mob/verb/who()
 	set category = "OOC"

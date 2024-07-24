@@ -202,11 +202,13 @@ SUBSYSTEM_DEF(who)
 		ui.set_autoupdate(TRUE)
 
 /datum/player_list/ui_data(mob/user)
-	.["admin"] = CLIENT_IS_STAFF(user.client)
-	if(.["admin"])
+	. = list()
+	var/admin = CLIENT_IS_STAFF(user.client)
+	if(admin)
 		. = list_admin_data
 	else
 		. = list_data
+	.["admin"] = admin
 
 /datum/player_list/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

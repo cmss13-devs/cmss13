@@ -888,6 +888,8 @@
 	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
 
+	starting_attachment_types = list(/obj/item/attachable/stock/m16)
+
 	current_mag = /obj/item/ammo_magazine/rifle/m16
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -938,14 +940,6 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
-/obj/item/weapon/gun/rifle/m16/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/m16/S = new(src)
-	S.hidden = FALSE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
-
 /obj/item/weapon/gun/rifle/m16/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 9, "rail_y" = 20, "under_x" = 22, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
 
@@ -969,14 +963,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "m16a5"
 	item_state = "m16a5"
-
-/obj/item/weapon/gun/rifle/m16/m16a5/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/m16/m16a5/S = new(src)
-	S.hidden = FALSE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
+	starting_attachment_types = list(/obj/item/attachable/stock/m16/m16a5)
 
 /obj/item/weapon/gun/rifle/m16/m16a5/tactical
 	random_spawn_chance = 100
@@ -1081,16 +1068,10 @@
 		/obj/item/attachable/lasersight,
 	)
 
+	starting_attachment_types = list(/obj/item/attachable/stock/m16/xm177)
+
 /obj/item/weapon/gun/rifle/xm177/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 9, "rail_y" = 20, "under_x" = 19, "under_y" = 13, "stock_x" = 15, "stock_y" = 14)
-
-/obj/item/weapon/gun/rifle/xm177/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/m16/xm177/integrated = new(src)
-	integrated.hidden = FALSE
-	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
-	integrated.Attach(src)
-	update_attachable(integrated.slot)
 
 /obj/item/weapon/gun/rifle/xm177/set_gun_config_values()
 	..()
@@ -1112,13 +1093,7 @@
 	icon_state = "car15a3"
 	item_state = "car15a3"
 
-/obj/item/weapon/gun/rifle/xm177/car15a3/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/m16/xm177/car15a3/integrated = new(src)
-	integrated.hidden = FALSE
-	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
-	integrated.Attach(src)
-	update_attachable(integrated.slot)
+	starting_attachment_types = list(/obj/item/attachable/stock/m16/xm177/car15a3)
 
 /obj/item/weapon/gun/rifle/xm177/car15a3/tactical
 	random_spawn_chance = 100
@@ -1215,7 +1190,7 @@
 	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. Chambered in 5.56x45mm."
 	icon_state = "m16a1"
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
-	starting_attachment_types = list(/obj/item/attachable/bayonet)
+	starting_attachment_types = list(/obj/item/attachable/stock/m16, /obj/item/attachable/bayonet)
 
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
@@ -1243,7 +1218,7 @@
 	name = "\improper Dutch's Grenadier M16A1"
 	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
-	starting_attachment_types = list(/obj/item/attachable/scope/mini, /obj/item/attachable/bayonet)
+	starting_attachment_types = list(/obj/item/attachable/stock/m16, /obj/item/attachable/scope/mini, /obj/item/attachable/bayonet)
 
 /obj/item/weapon/gun/rifle/m16/grenadier/dutch/set_gun_config_values()
 	..()

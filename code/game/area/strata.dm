@@ -40,19 +40,20 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag
 	name = "Above Ground Area"
 	icon_state = "ag"
+	is_resin_allowed = TRUE
 
 /area/strata/ag/exterior
 	name = "Exterior Above Ground Area"
 	icon_state = "ag_e"
+	ceiling = CEILING_NONE
 	//always_unpowered = 1 So exterior lights work, this will be commented out unless it causes unforseen issues.
-	is_resin_allowed = FALSE
 
 /area/strata/ag/interior
 	name = "Interior Above Ground Area"
 	icon_state = "ag_i"
 	requires_power = 1
 	temperature = T20C //Nice and room temp
-	ceiling = CEILING_METAL
+	ceiling = CEILING_REINFORCED_GLASS_ALLOW_LAS
 
 
 //-Under Ground (ug)
@@ -60,6 +61,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ug
 	name = "Under Ground Area"
 	icon_state = "ug"
+	is_resin_allowed = TRUE
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/strata/ug/interior
@@ -74,6 +76,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	requires_power = 1
 	temperature = T20C
 	ceiling = CEILING_NONE
+	weather_enabled = TRUE
 
 
 ////////////////////////////////////////
@@ -103,8 +106,8 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Do not use."
 	icon_state = "landingzone_1"
 	minimap_color = MINIMAP_AREA_LZ
-	weather_enabled = FALSE
 	is_resin_allowed = FALSE
+	weather_enabled = FALSE
 
 /area/strata/ag/interior/landing_zones/lz1
 	name = "Landing Zone 1 Pad - Mining Aerodrome"
@@ -123,10 +126,14 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/exterior/caves/shed_five_caves
 	name = "Terminal Five Topside Caves"
-	is_resin_allowed = TRUE
 
 /area/strata/ag/exterior/caves/lz_caves
 	name = "External Mining Aerodrome Caves"
+
+/area/strata/ag/exterior/jungle/carplake_center
+	name = "Deep Jungle - Carp Lake Center Island"
+	icon_state = "ug_jung_1"
+	weather_enabled = TRUE
 
 //-Marsh
 
@@ -181,7 +188,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/exterior/outpost_decks
 	name = "Outpost Decks"
 	icon_state = "rdecks"
-	is_resin_allowed = TRUE
 	minimap_color = MINIMAP_AREA_RESEARCH
 
 
@@ -190,14 +196,12 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/exterior/paths
 	name = "Ice Path"
 	icon_state = "path"
-	is_resin_allowed = TRUE
 
 /area/strata/ag/exterior/paths/flight_control_exterior
 	name = "Flight Control Exterior"
 
 /area/strata/ag/exterior/paths/mining_outpost_exterior
 	name = "Mining Outpost Exterior"
-	is_resin_allowed = FALSE
 
 /area/strata/ag/exterior/paths/north_outpost
 	name = "Outpost - North Access Channel"
@@ -210,18 +214,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/exterior/paths/south_outpost
 	minimap_color = MINIMAP_AREA_RESEARCH
 	name = "South Of The Outpost"
-
-//-Underground "open" Lake
-
-/area/strata/ug/exterior/jungle
-	name = "Do not use."
-	icon_state = "ug_jung_0"
-
-/area/strata/ug/exterior/jungle/carplake_center
-	name = "Deep Jungle - Carp Lake Center Island"
-	icon_state = "ug_jung_1"
-
-
 
 ////////////////////////////////////////
 //   ------===| Interior |===------   //
@@ -293,7 +285,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/interior/mining_outpost
 	name = "Do not use."
-	is_resin_allowed = FALSE
 
 /area/strata/ag/interior/mining_outpost/central
 	name = "Mining Outpost Central Hallway"
@@ -306,12 +297,10 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/interior/mining_outpost/maintenance
 	name = "Mining Outpost Dormitory Maintenance"
 	icon_state = "outpost_maint"
-	is_resin_allowed = TRUE
 
 /area/strata/ag/interior/mining_outpost/hive
 	name = "Mining Outpost Dormitory Thermal Storage"
 	icon_state = "dorms_beno"
-	is_resin_allowed = TRUE
 
 /area/strata/ag/interior/mining_outpost/canteen
 	name = "Mining Outpost Dormitory Canteen"
@@ -333,6 +322,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Flight Control Offices"
 	icon_state = "offices"
 	minimap_color = MINIMAP_AREA_COMMAND
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/strata/ag/interior/outside/wooden_hospital
 	name = "Wooden Hospital - Hospital Proper"
@@ -349,6 +339,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/interior/outside/checkpoints
 	name= "Do not use."
 	icon_state = "security_station"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_SEC
 
 /area/strata/ag/interior/outside/checkpoints/north_armor
@@ -377,14 +368,18 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior
 	name = "Engineering Parts Storage Exterior"
+	weather_enabled = TRUE
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/strata/ag/interior/outside/bball //come on and SLAM.
 	name = "Outpost Basket Ball Court"
 	icon_state = "outpost_gen_4"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/strata/ag/interior/outside/bball/cave //come on BURST AND DIE.
 	name = "Outpost - B-Ball Caves"
 	icon_state = "hive_1"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 
 
 //-Underground Dorms

@@ -311,6 +311,8 @@
 			is_outside = TRUE
 		if(CEILING_GLASS)
 			is_outside = TRUE
+		if(CEILING_REINFORCED_GLASS_ALLOW_LAS)
+			is_outside = TRUE
 
 	if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
 		is_outside = FALSE

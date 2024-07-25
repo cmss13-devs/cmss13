@@ -44,7 +44,7 @@
 /obj/structure/barricade/handrail/Collided(atom/movable/movable)
 	if(istype(movable,/mob/living/carbon/xenomorph/ravager) || istype(movable,/mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/xenomorph = movable
-		if(!xenomorph.stat) //No dead xenos jumpin on the bed~
+		if(xenomorph.stat == CONSCIOUS) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[xenomorph] plows straight through [src]!"))
 			deconstruct(FALSE)
 	else

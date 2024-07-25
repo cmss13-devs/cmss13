@@ -58,7 +58,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			ticket_list = resolved_tickets
 		else
 			CRASH("Invalid ticket state: [new_ticket.state]")
-	var/num_closed = ticket_list.len
+	var/num_closed = length(ticket_list)
 	if(num_closed)
 		for(var/I in 1 to num_closed)
 			var/datum/admin_help/AH = ticket_list[I]
@@ -97,8 +97,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	SHOULD_NOT_SLEEP(TRUE)
 	var/list/L = list()
 	var/num_disconnected = 0
-	L[++L.len] = list("Active Tickets:", "[astatclick.update("[active_tickets.len]")]", null, REF(astatclick))
-	astatclick.update("[active_tickets.len]")
+	L[++L.len] = list("Active Tickets:", "[astatclick.update("[length(active_tickets)]")]", null, REF(astatclick))
+	astatclick.update("[length(active_tickets)]")
 	for(var/I in active_tickets)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
@@ -108,8 +108,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			++num_disconnected
 	if(num_disconnected)
 		L[++L.len] = list("Disconnected:", "[astatclick.update("[num_disconnected]")]", null, REF(astatclick))
-	L[++L.len] = list("Closed Tickets:", "[cstatclick.update("[closed_tickets.len]")]", null, REF(cstatclick))
-	L[++L.len] = list("Resolved Tickets:", "[rstatclick.update("[resolved_tickets.len]")]", null, REF(rstatclick))
+	L[++L.len] = list("Closed Tickets:", "[cstatclick.update("[length(closed_tickets)]")]", null, REF(cstatclick))
+	L[++L.len] = list("Resolved Tickets:", "[rstatclick.update("[length(resolved_tickets)]")]", null, REF(rstatclick))
 	return L
 
 //Reassociate still open ticket if one exists
@@ -300,7 +300,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		webhook_sent = WEBHOOK_URGENT
 	var/list/adm = get_admin_counts(R_BAN)
 	var/list/activemins = adm["present"]
-	var/admin_number_present = activemins.len
+	var/admin_number_present = length(activemins)
 
 	log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 	if(admin_number_present <= 0)
@@ -660,7 +660,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	// Append any tickets also opened by this user if relevant
 	var/list/related_tickets = GLOB.ahelp_tickets.TicketsByCKey(initiator_ckey)
-	if (related_tickets.len > 1)
+	if (length(related_tickets) > 1)
 		dat += "<br/><b>Other Tickets by User</b><br/>"
 		for (var/datum/admin_help/related_ticket in related_tickets)
 			if (related_ticket.id == id)

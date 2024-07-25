@@ -31,7 +31,7 @@
 
 	if(HAS_TRAIT(attack_item, TRAIT_TOOL_PEN) || istype(attack_item, /obj/item/toy/crayon))
 		close_browser(usr, name) //Closes the dialog
-		if(page < contents.len)
+		if(page < length(contents))
 			page = 1
 		var/obj/item/paper/paper = contents[page]
 		paper.attackby(attack_item, user)
@@ -93,8 +93,8 @@
 			page--
 			playsound(loc, "pageturn", 15, 1)
 		if(href_list["remove"])
-			if(contents.len < page)
-				page = contents.len
+			if(length(contents) < page)
+				page = length(contents)
 			var/obj/item/ripped_out_page = contents[page]
 			usr.put_in_hands(ripped_out_page)
 			to_chat(usr, SPAN_NOTICE("You rip out [ripped_out_page] from [src]."))
@@ -117,6 +117,9 @@
 		to_chat(usr, SPAN_NOTICE("Ghosts don't have hands, you can't flip the page!"))
 	else
 		to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
+
+/obj/item/notepad/proc/operator[](index_num)
+	return contents[index_num]
 
 /obj/item/notepad/verb/rename()
 	set name = "Rename notepad"

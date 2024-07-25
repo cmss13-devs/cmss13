@@ -77,6 +77,7 @@
 	src.icon_dead = "mouse_[body_color]_splat"
 	src.icon_state = "mouse_[body_color]_splat"
 	layer = ABOVE_LYING_MOB_LAYER
+	set_body_position(LYING_DOWN)
 	if(client)
 		client.time_died_as_mouse = world.time
 

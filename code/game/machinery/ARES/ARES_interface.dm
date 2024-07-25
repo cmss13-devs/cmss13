@@ -24,6 +24,8 @@
 	/// The datacore storing all the information.
 	var/datum/ares_datacore/datacore
 
+	COOLDOWN_DECLARE(printer_cooldown)
+
 /obj/structure/machinery/computer/ares_console/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
 		return FALSE
@@ -93,6 +95,8 @@
 	data["mission_failed"] = SSticker.mode.is_in_endgame
 	data["nuketimelock"] = NUCLEAR_TIME_LOCK
 	data["nuke_available"] = datacore.nuke_available
+
+	data["printer_cooldown"] = !COOLDOWN_FINISHED(src, printer_cooldown)
 
 	var/list/logged_announcements = list()
 	for(var/datum/ares_record/announcement/broadcast as anything in datacore.records_announcement)
@@ -247,8 +251,8 @@
 				authentication = get_ares_access(idcard)
 				last_login = idcard.registered_name
 			else if(operator.wear_id)
-				idcard = operator.wear_id
-				if(istype(idcard))
+				idcard = operator.get_idcard()
+				if(idcard)
 					authentication = get_ares_access(idcard)
 					last_login = idcard.registered_name
 			else
@@ -336,6 +340,72 @@
 		if("page_core_sec")
 			last_menu = current_menu
 			current_menu = "core_security"
+
+		// -- Print ASRS Audit Log -- //
+		if("print_req")
+			playsound = FALSE
+			if(!COOLDOWN_FINISHED(src, printer_cooldown))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(!length(datacore.records_asrs))
+				to_chat(user, SPAN_WARNING("There are no records to print!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			COOLDOWN_START(src, printer_cooldown, 20 SECONDS)
+			playsound(src, 'sound/machines/fax.ogg', 15, 1)
+			sleep(3.4 SECONDS)
+			var/contents = {"
+						<style>
+							#container { width: 500px; min-height: 500px; margin: 25px auto;  \
+									font-family: monospace; padding: 0; font-size: 130% }  \
+							#title { font-size: 250%; letter-spacing: 8px; \
+									font-weight: bolder; margin: 20px auto }   \
+							.header { font-size: 130%; text-align: center; }   \
+							.important { font-variant: small-caps; font-size = 130%;   \
+										font-weight: bolder; }    \
+							.tablelabel { width: 150px; }  \
+							.field { font-style: italic; } \
+							table { table-layout: fixed }  \
+						</style><div id='container'>   \
+						<div class='header'>   \
+							<p id='title' class='important'>A.S.R.S.</p>   \
+							<p class='important'>Automatic Storage Retrieval System</p>    \
+							<p class='field'>Audit Log</p> \
+						</div><hr>
+						<u>Printed By:</u> [last_login]<br>
+						<u>Print Time:</u> [worldtime2text()]<br>
+						<hr>
+						<center>
+						<table border=1 cellspacing=0 cellpadding=3 style='border: 1px solid black;'>
+						<thead>
+							<tr>
+							<th scope="col">Time</th>
+							<th scope="col">User</th>
+							<th scope="col">Source</th>
+							<th scope="col">Order</th>
+							</tr>
+						</thead>
+						<tbody>
+						"}
+
+			for(var/datum/ares_record/requisition_log/req_order as anything in datacore.records_asrs)
+
+				contents += {"
+							<tr>
+							<th scope="row">[req_order.time]</th>
+							<td>[req_order.user]</td>
+							<td>[req_order.title]</td>
+							<td>[req_order.details]</td>
+							</tr>
+							"}
+
+			contents += "</center></tbody></table>"
+
+			var/obj/item/paper/log = new(loc)
+			log.name = "ASRS Audit Log"
+			log.info += contents
+			log.icon_state = "paper_uscm_words"
+			visible_message(SPAN_NOTICE("[src] prints out a paper."))
 
 		// -- Delete Button -- //
 		if("delete_record")

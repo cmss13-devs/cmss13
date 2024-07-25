@@ -64,7 +64,7 @@
 				to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
 
 /obj/structure/filingcabinet/attack_hand(mob/user as mob)
-	if(contents.len <= 0)
+	if(length(contents) <= 0)
 		to_chat(user, SPAN_NOTICE("\The [src] is empty."))
 		return
 

@@ -22,6 +22,12 @@
 #define DEFENSE_BELL_TOWER 4
 #define DEFENSE_TESLA_COIL 5
 
+// Defines for /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone
+#define TURRET_BATTERY_STATE_OK 0
+#define TURRET_BATTERY_STATE_LOW 1
+#define TURRET_BATTERY_STATE_CRITICAL 2
+#define TURRET_BATTERY_STATE_DEAD 3
+
 // What range the generator has to be in or defenses has to be in.
 #define GEN_SEARCH_RANGE 5
 #define GEN_PLASTEEL_COST 10

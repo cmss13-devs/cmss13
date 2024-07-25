@@ -350,10 +350,10 @@
 		return "[face_name] (as [id_name])"
 	return face_name
 
-//Returns "Unknown" if facially disfigured and real_name if not. Useful for setting name when polyacided or when updating a human's name variable
+//Returns "Unknown" if facially unidentifiable and real_name if not. Useful for setting name when headless or when updating a human's name variable
 /mob/living/carbon/human/proc/get_face_name()
 	var/obj/limb/head/head = get_limb("head")
-	if(!head || head.disfigured || (head.status & LIMB_DESTROYED) || !real_name) //disfigured. use id-name if possible
+	if(!head || (head.status & LIMB_DESTROYED) || !real_name) //unidentifiable. use id-name if possible
 		return "Unknown"
 	return real_name
 
@@ -907,9 +907,6 @@
 	var/obj/limb/head/h = get_limb("head")
 	if(QDELETED(h))
 		h = get_limb("synthetic head")
-	else
-		h.disfigured = 0
-	name = get_visible_name()
 
 	if(species && !(species.flags & NO_BLOOD))
 		restore_blood()
@@ -1000,8 +997,8 @@
 
 	if(self)
 		var/list/L = get_broken_limbs() - list("chest","head","groin")
-		if(L.len > 0)
-			msg += "Your [english_list(L)] [L.len > 1 ? "are" : "is"] broken\n"
+		if(length(L) > 0)
+			msg += "Your [english_list(L)] [length(L) > 1 ? "are" : "is"] broken\n"
 	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself":"start analyzing [src]"]"))
 	if(toxloss > 20)
 		msg += "[self ? "Your" : "Their"] skin is slightly green\n"
@@ -1259,6 +1256,11 @@
 		if(TRACKER_XO)
 			H = GLOB.marine_leaders[JOB_XO]
 			tracking_suffix = "_xo"
+		if(TRACKER_CMP)
+			var/datum/job/command/warrant/cmp_job = GLOB.RoleAuthority.roles_for_mode[JOB_CHIEF_POLICE]
+			if(cmp_job?.active_cmp)
+				H = cmp_job.active_cmp
+			tracking_suffix = "_cmp"
 		if(TRACKER_CL)
 			var/datum/job/civilian/liaison/liaison_job = GLOB.RoleAuthority.roles_for_mode[JOB_CORPORATE_LIAISON]
 			if(liaison_job?.active_liaison)
@@ -1404,13 +1406,13 @@
 				to_splint.Add(l)
 
 		var/msg = "" // Have to use this because there are issues with the to_chat macros and text macros and quotation marks
-		if(to_splint.len)
+		if(length(to_splint))
 			if(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				var/can_reach_splints = TRUE
 				var/amount_removed = 0
 				if(wear_suit && istype(wear_suit,/obj/item/clothing/suit/space))
 					var/obj/item/clothing/suit/space/suit = target.wear_suit
-					if(suit.supporting_limbs && suit.supporting_limbs.len)
+					if(LAZYLEN(suit.supporting_limbs))
 						msg = "[user == target ? "your":"\proper [target]'s"]"
 						to_chat(user, SPAN_WARNING("You cannot remove the splints, [msg] [suit] is supporting some of the breaks."))
 						can_reach_splints = FALSE
@@ -1707,15 +1709,15 @@
 
 /mob/living/carbon/human/on_knockedout_trait_gain(datum/source)
 	. = ..()
-	
+
 	update_execute_hud()
-	
+
 	return .
 
 /mob/living/carbon/human/on_knockedout_trait_loss(datum/source)
 	. = ..()
 
 	update_execute_hud()
-	
+
 	return .
-	
+

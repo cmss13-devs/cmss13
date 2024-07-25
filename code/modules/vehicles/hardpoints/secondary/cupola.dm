@@ -1,5 +1,5 @@
 /obj/item/hardpoint/secondary/m56cupola
-	name = "M56 Cupola"
+	name = "\improper M56 Cupola"
 	desc = "A secondary weapon for tanks that shoots bullets"
 
 	icon_state = "m56_cupola"
@@ -28,9 +28,3 @@
 	burst_amount = 3
 	burst_delay = 0.3 SECONDS
 	extra_delay = 0.6 SECONDS
-
-/obj/item/hardpoint/secondary/m56cupola/set_bullet_traits()
-	..()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
-	))

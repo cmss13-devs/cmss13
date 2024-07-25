@@ -122,8 +122,8 @@
 			src.gameover = 1
 			src.temp = "[src.enemy_name] has fallen! Rejoice!"
 
-			if(!contents.len)
-				var/prizeselect = pickweight(prizes)
+			if(!length(contents))
+				var/prizeselect = pick_weight(prizes)
 				new prizeselect(src.loc)
 
 				if(istype(prizeselect, /obj/item/toy/gun)) //Ammo comes with the gun
@@ -176,5 +176,5 @@
 		if(2)
 			num_of_prizes = rand(0,2)
 	for(num_of_prizes; num_of_prizes > 0; num_of_prizes--)
-		empprize = pickweight(prizes)
+		empprize = pick_weight(prizes)
 		new empprize(src.loc)

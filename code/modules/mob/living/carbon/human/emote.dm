@@ -358,6 +358,7 @@
 
 	user.show_speech_bubble("warcry")
 
+/* RUCM CHANGE
 /datum/emote/living/carbon/human/warcry/get_sound(mob/living/user)
 	if(ishumansynth_strict(user))
 		if(user.gender == MALE)
@@ -370,6 +371,7 @@
 				return get_sfx("female_upp_warcry")
 			else
 				return get_sfx("female_warcry")
+*/
 
 /datum/emote/living/carbon/human/whimper
 	key = "whimper"

@@ -17733,9 +17733,9 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Mech Bay";
-	req_one_access = list(40;
-	 = 1);
-	req_one_access_txt = "40;1"
+	req_one_access = list(40,1);
+	req_one_access_txt = "40;1";
+	req_access = list()
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -39660,10 +39660,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Mech Ops's Room";
-	req_one_access = list(40;
-	 = 1);
+	req_one_access = list(40,1);
 	dir = 2;
-	req_one_access_txt = "40;1"
+	req_one_access_txt = "40;1";
+	req_access = list()
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -40804,9 +40804,9 @@
 "ijp" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Mech Ops's Room";
-	req_one_access = list(40;
-	 = 1);
-	req_one_access_txt = "40;1"
+	req_one_access = list(40,1);
+	req_one_access_txt = "40;1";
+	req_access = list()
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -56511,14 +56511,6 @@
 "nZa" = (
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"nZb" = (
-/obj/item/desk_bell{
-	pixel_x = -6;
-	pixel_y = -8;
-	anchored = 1
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/req)
 "nZF" = (
 /turf/open/floor/almayer{
 	icon_state = "orange"
@@ -126353,7 +126345,7 @@ nZa
 wab
 xTd
 mbO
-nZb
+bdl
 bDZ
 bdj
 bri
@@ -127692,7 +127684,7 @@ alL
 jvY
 alG
 eRt
-uOO
+pBW
 aep
 aep
 aep
@@ -129316,7 +129308,7 @@ aOC
 alO
 uOO
 cbU
-pBW
+uOO
 loP
 loP
 loP

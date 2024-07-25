@@ -433,7 +433,6 @@
 	new /obj/item/weapon/gun/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg/holo_target(src)
-	new /obj/item/attachable/bipod(src)
 	new /obj/item/stack/folding_barricade/three(src)
 	new /obj/item/clothing/glasses/welding(src)
 	new /obj/item/tool/weldingtool(src)

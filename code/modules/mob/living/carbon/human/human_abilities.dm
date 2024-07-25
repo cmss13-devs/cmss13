@@ -201,7 +201,17 @@ CULT
 	if(protected_by_pylon(TURF_PROTECTION_CAS, T))
 		to_chat(H, SPAN_WARNING("The droppod cannot punch through an organic ceiling!"))
 		return
+//RUCM START
+	if(isclosedturf(T))
+		to_chat(H, SPAN_WARNING("The droppod cannot land in walls!"))
+		return
+//RUCM END
 
+//RUCM START
+	if(locate(/obj/structure/droppod/tech) in T)
+		to_chat(H, SPAN_WARNING("Other droppod is already here!"))
+		return
+//RUCM END
 	return TRUE
 
 
@@ -233,11 +243,18 @@ CULT
 	if(!can_deploy_droppod(T))
 		return
 
-	to_chat(H, SPAN_WARNING("No droppods currently available."))
-	return
-
-/* // FULL IMPLEM OF DROPPODS FOR REUSE
+//RUCM START
 	var/list/list_of_techs = list()
+	for(var/i in GLOB.unlocked_droppod_techs)
+		var/datum/tech/tech_to_use = i
+		list_of_techs += list("[tech_to_use.name]" = tech_to_use)
+	if(!list_of_techs.len)
+		to_chat(H, SPAN_WARNING("No droppods currently available."))
+		return
+	var/tech_to_deploy = tgui_input_list(H, "Choose a tech to deploy at this location", "Tech deployment", list_of_techs)
+	if(!tech_to_deploy)
+		return
+//RUCM END
 	if(!can_deploy_droppod(T))
 		return
 	var/area/turf_area = get_area(T)
@@ -245,7 +262,7 @@ CULT
 		return
 	var/land_time = max(turf_area.ceiling, 1) * (20 SECONDS)
 	playsound(T, 'sound/effects/alert.ogg', 75)
-	assigned_droppod = new(T, tech_to_deploy)
+	assigned_droppod = new(T, list_of_techs[tech_to_deploy])
 	assigned_droppod.drop_time = land_time
 	assigned_droppod.launch(T)
 	var/list/to_send_to = H.assigned_squad?.marines_list
@@ -255,7 +272,6 @@ CULT
 	for(var/M in to_send_to)
 		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [floor(land_time*0.1)] seconds."))
 	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, PROC_REF(handle_droppod_deleted))
-*/
 
 /datum/action/human_action/activable/droppod/proc/handle_droppod_deleted(obj/structure/droppod/tech/T)
 	SIGNAL_HANDLER

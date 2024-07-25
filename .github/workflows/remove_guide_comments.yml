@@ -7,9 +7,7 @@ on:
 jobs:
   remove_guide_comments:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
+    permissions: write-all
     steps:
     - name: Checkout
       uses: actions/checkout@v3

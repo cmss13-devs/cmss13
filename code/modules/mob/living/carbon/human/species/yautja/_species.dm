@@ -215,6 +215,9 @@
 	give_action(hunter, /datum/action/yautja_emote_panel)
 	give_action(hunter, /datum/action/predator_action/mark_for_hunt)
 	give_action(hunter, /datum/action/predator_action/mark_panel)
+//RUCM START
+	give_action(hunter, /datum/action/human_action/yautja_jump)
+//RUCM END
 	return ..()
 
 /datum/species/yautja/get_hairstyle(style)

@@ -86,7 +86,12 @@
 	// We only target living humans and xenos
 	var/list/target_list = list()
 	for(var/mob/living/prey in view(7, usr.client))
+/*
 		if((ishuman_strict(prey) || isxeno(prey)) && prey.stat != DEAD)
+*/
+//RUCM START
+		if((ishuman_strict(prey) || isxeno(prey) || isyautja(prey)) && prey.stat != DEAD) // Renegades hunt my beloved
+//RUCM END
 			target_list += prey
 
 	var/mob/living/carbon/M = tgui_input_list(usr, "Target", "Choose a prey.", target_list)
@@ -100,6 +105,9 @@
 	M.hunter_data.hunted = TRUE
 	M.hud_set_hunter()
 
+//RUCM START
+	to_chat(M, SPAN_YAUTJABOLD("YOU CHOSEN FOR HUNT, you have 1 minute to prepare"))
+//RUCM END
 	// Notify the pred
 	to_chat(src, SPAN_YAUTJABOLD("You have chosen [hunter_data.prey] as your next prey."))
 

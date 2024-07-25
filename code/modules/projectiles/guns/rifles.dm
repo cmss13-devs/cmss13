@@ -1237,6 +1237,7 @@
 	fire_sound = 'sound/weapons/gun_hpr.ogg'
 	aim_slowdown = SLOWDOWN_ADS_LMG
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
+	starting_attachment_types = list(/obj/item/attachable/bipod)
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/reddot,

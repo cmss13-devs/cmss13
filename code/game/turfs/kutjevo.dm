@@ -189,6 +189,9 @@
 /turf/open/floor/kutjevo/colors/orange/inner_corner/north
 	dir = NORTH
 
+/turf/open/floor/kutjevo/colors/orange/inner_corner/south
+	dir = SOUTH
+
 /turf/open/floor/kutjevo/colors/orange/inner_corner/east
 	dir = EAST
 
@@ -247,20 +250,35 @@
 /turf/open/floor/kutjevo/colors/purple/edge/north
 	dir = NORTH
 
+/turf/open/floor/kutjevo/colors/purple/edge/south
+	dir = SOUTH
+
 /turf/open/floor/kutjevo/colors/purple/edge/east
 	dir = EAST
+
+/turf/open/floor/kutjevo/colors/purple/edge/west
+	dir = WEST
 
 /turf/open/floor/kutjevo/colors/purple/edge/northeast
 	dir = NORTHEAST
 
-/turf/open/floor/kutjevo/colors/purple/edge/west
-	dir = WEST
+/turf/open/floor/kutjevo/colors/purple/edge/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/kutjevo/colors/purple/edge/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/kutjevo/colors/purple/edge/southwest
+	dir = SOUTHWEST
 
 /turf/open/floor/kutjevo/colors/purple/inner_corner
 	icon_state = "purp4"
 
 /turf/open/floor/kutjevo/colors/purple/inner_corner/north
 	dir = NORTH
+
+/turf/open/floor/kutjevo/colors/purple/inner_corner/south
+	dir = SOUTH
 
 /turf/open/floor/kutjevo/colors/purple/inner_corner/east
 	dir = EAST

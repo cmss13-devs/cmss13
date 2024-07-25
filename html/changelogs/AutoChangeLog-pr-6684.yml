@@ -1,0 +1,4 @@
+author: "BlackCrystalic"
+delete-after: True
+changes:
+  - qol: "if server take too long to pre init all before lobby art, players will see lobbyart \"loading\""

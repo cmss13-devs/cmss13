@@ -219,3 +219,12 @@
   - refactor: Made XM88 box code more uniform with other handful boxes.
   zzzmike:
   - bugfix: lifeboat launch console is no longer slashable / acidable
+2024-07-23:
+  cuberound:
+  - code_imp: cleans up water particle code
+2024-07-24:
+  Doubleumc:
+  - bugfix: sounds & motion detectors should be more reliable
+2024-07-25:
+  cuberound:
+  - rscdel: removes /obj/item/device/suit_cooling_unit and get_pressure_weakness()

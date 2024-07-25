@@ -474,7 +474,7 @@
 	random_spawn_chance = 100
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/mini,
 	)
 	random_spawn_under = list(
@@ -709,7 +709,7 @@
 	random_spawn_chance = 38
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/slavic,
 		/obj/item/attachable/magnetic_harness,
 	)
@@ -792,7 +792,7 @@
 	random_spawn_chance = 35
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/magnetic_harness,
 	)
@@ -918,7 +918,7 @@
 	random_spawn_chance = 42
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/mini,
 	)
 	random_spawn_under = list(
@@ -1005,7 +1005,7 @@
 	random_spawn_chance = 42
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/mini,
 	)
 	random_spawn_muzzle = list(
@@ -1060,7 +1060,7 @@
 	random_spawn_chance = 75
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 	)
 	random_spawn_under = list(
@@ -1141,7 +1141,7 @@
 	random_spawn_chance = 10
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/mini,
 	)
 	random_spawn_under = list(
@@ -1194,7 +1194,7 @@
 
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 	)
 	random_spawn_under = list(
 		/obj/item/attachable/angledgrip,

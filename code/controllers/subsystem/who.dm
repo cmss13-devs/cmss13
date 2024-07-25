@@ -190,7 +190,9 @@ SUBSYSTEM_DEF(who)
 				"text" = "Queen: [hive.living_xeno_queen ? "Alive" : "Dead"]",
 			))
 
+	new_list_data["admin"] = FALSE
 	list_data = new_list_data
+	new_list_admin_data["admin"] = TRUE
 	list_admin_data = new_list_admin_data
 	mobs_ckey = new_mobs_ckey
 
@@ -206,10 +208,6 @@ SUBSYSTEM_DEF(who)
 		. = list_admin_data
 	else
 		. = list_data
-
-/datum/player_list/ui_static_data(mob/user)
-	. = list()
-	.["admin"] = CLIENT_IS_STAFF(user.client)
 
 /datum/player_list/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -314,7 +312,9 @@ SUBSYSTEM_DEF(who)
 			"admins" = admins,
 		))
 
+	new_list_data["admin"] = FALSE
 	list_data = new_list_data
+	new_list_admin_data["admin"] = TRUE
 	list_admin_data = new_list_admin_data
 
 /mob/verb/who()

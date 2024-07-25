@@ -248,12 +248,9 @@
 			return TRUE
 
 /obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
-	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", GLOB.available_specialist_kit_boxes)
+	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", GLOB.available_specialist_kit_boxes, 10 SECONDS)
 	if(!selection || QDELETED(src))
 		return FALSE
-	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-		to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
-		return
 	if(!GLOB.available_specialist_kit_boxes[selection] || GLOB.available_specialist_kit_boxes[selection] <= 0)
 		to_chat(user, SPAN_WARNING("No more kits of this type may be chosen!"))
 		return FALSE
@@ -299,6 +296,7 @@
 		user.put_in_hands(spec_box)
 		card.set_assignment((user.assigned_squad && squad_assignment_update ? (user.assigned_squad.name + " ") : "") + card.assignment + " ([specialist_assignment])")
 		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), card.assignment)
+		GLOB.available_specialist_kit_boxes[selection]--
 		return TRUE
 	return FALSE
 
@@ -425,7 +423,6 @@
 	new /obj/item/weapon/gun/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg/holo_target(src)
-	new /obj/item/attachable/bipod(src)
 	new /obj/item/stack/folding_barricade/three(src)
 	new /obj/item/clothing/glasses/welding(src)
 	new /obj/item/tool/weldingtool(src)
@@ -483,6 +480,7 @@
 	new /obj/item/storage/box/m94/signal(src)
 	new /obj/item/device/binoculars/range/designator(src)
 	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/storage/backpack/marine/satchel/rto(src)
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"
@@ -493,7 +491,7 @@
 	new /obj/item/device/encryptionkey/intel(src)
 	new /obj/item/pamphlet/skill/intel(src)
 	new /obj/item/device/motiondetector/intel(src)
-	new /obj/item/storage/pouch/document/small(src)
+	new /obj/item/storage/pouch/document(src)
 
 /obj/item/storage/box/kit/mini_grenadier
 	name = "\improper Frontline M40 Grenadier Kit"

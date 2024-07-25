@@ -225,3 +225,6 @@
 2024-07-24:
   Doubleumc:
   - bugfix: sounds & motion detectors should be more reliable
+2024-07-25:
+  cuberound:
+  - rscdel: removes /obj/item/device/suit_cooling_unit and get_pressure_weakness()

@@ -998,6 +998,9 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	rank = JOB_PMC_GUNNER
 	paygrade = PAY_SHORT_PMC_SS
 	role_comm_title = "SG"
+
+	minimap_icon = "pmc_sg"
+
 	skills = /datum/skills/pmc/smartgunner
 
 /datum/equipment_preset/pmc/pmc_gunner/load_gear(mob/living/carbon/human/new_human)
@@ -1677,7 +1680,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrade = PAY_SHORT_PMC_TEC
 	role_comm_title = "TEC"
 
-	minimap_icon = "pmc_ct"
+	minimap_icon = "engi"
 
 	skills = /datum/skills/pmc/engineer
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
@@ -1829,6 +1832,9 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrade = PAY_SHORT_PMC_DIR
 	role_comm_title = "DIR"
 	skills = /datum/skills/pmc/director
+
+	minimap_icon = "pmc_sd"
+
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
 
 /datum/equipment_preset/pmc/director/load_gear(mob/living/carbon/human/new_human)
@@ -1867,7 +1873,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	rank = JOB_PMC_SYNTH
 	paygrade = PAY_SHORT_SYN
 
-	minimap_icon = "pmc_syn"
+	minimap_icon = "syn"
 
 	role_comm_title = "WY Syn"
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command

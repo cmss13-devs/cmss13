@@ -196,6 +196,7 @@
 	paygrade = PAY_SHORT_SYN
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "173/RECON Syn"
+	minimap_background = "background_upp"
 	minimap_icon = "upp_synth"
 
 /datum/equipment_preset/synth/survivor/upp/load_gear(mob/living/carbon/human/new_human)

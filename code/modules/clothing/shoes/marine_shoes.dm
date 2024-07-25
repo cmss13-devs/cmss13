@@ -82,7 +82,7 @@
 
 /obj/item/clothing/shoes/marine/caustic
 	name = "\improper XM-CL combat boots"
-	desc = "A pair of ANCW Boots. Their insides are cushioned with soft gel pads to give you an optimal foot bed. You wish you had a pair like this at home."
+	desc = "A pair of ANCW Boots. Their insides are cushioned with soft gel pads to give you an optimal footbed. You wish you had a pair like this at home."
 	icon_state = "caustic_h"
 	item_state = "caustic_h"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW

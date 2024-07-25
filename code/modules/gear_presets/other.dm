@@ -65,6 +65,7 @@
 
 	skills = /datum/skills/freelancer
 
+
 /datum/equipment_preset/other/freelancer/standard/load_gear(mob/living/carbon/human/new_human)
 	//generic clothing
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
@@ -127,6 +128,80 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
+
+/datum/equipment_preset/other/freelancer/beacon
+	name = "Freelancer (Standard)"
+	paygrade = PAY_SHORT_FL_S
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/freelancer
+
+/datum/equipment_preset/other/freelancer/beacon/load_gear(mob/living/carbon/human/new_human)
+	//generic clothing
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	spawn_merc_helmet(new_human)
+	//storage and specific stuff, they all get an ERT medpouch.
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
+
+	load_freelancer_soldier(new_human)
+
+/datum/equipment_preset/other/freelancer/beacon/proc/load_freelancer_soldier(mob/living/carbon/human/new_human)
+	var/percentage = rand(1, 100)
+	switch(percentage)
+		//most freelancers are rifleman, most others are breachers, some have HPRs.
+		if(1 to 66)
+			load_freelancer_rifleman(new_human)
+		if(67 to 85)
+			load_freelancer_shotgunner(new_human)
+		else
+			load_freelancer_machinegunner(new_human)
+
+/datum/equipment_preset/other/freelancer/beacon/proc/load_freelancer_machinegunner(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	spawn_merc_weapon(new_human,1,6)
+	spawn_weapon(/obj/item/weapon/gun/rifle/lmg, /obj/item/ammo_magazine/rifle/lmg, new_human, 0, 5) //HPR mini-spec
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/lmg/holo_target, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/lmg/holo_target, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
+
+/datum/equipment_preset/other/freelancer/beacon/proc/load_freelancer_shotgunner(mob/living/carbon/human/new_human)
+	//storage items
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	spawn_weapon(/obj/item/weapon/gun/shotgun/type23, pick(GLOB.shotgun_handfuls_8g), new_human, 0, 14) //shotgunner mini-spec
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied_incendiary, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied_incendiary, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/smokebomb, WEAR_IN_BACK)
+
+
+/datum/equipment_preset/other/freelancer/beacon/proc/load_freelancer_rifleman(mob/living/carbon/human/new_human)
+	//storage items
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive, WEAR_R_STORE)
+	spawn_merc_weapon(new_human)
+	//Stored stuff
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_R_STORE)
+
 
 //*****************************************************************************************************/
 
@@ -264,6 +339,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/m41aMK1, /obj/item/ammo_magazine/rifle/m41aMK1, new_human, 0, 9)

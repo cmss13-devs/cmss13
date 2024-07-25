@@ -4811,7 +4811,7 @@
 /obj/structure/filtration/machine_96x96/indestructible{
 	icon_state = "distribution"
 	},
-/turf/open/auto_turf/sand/layer0,
+/turf/closed/wall/kutjevo/rock/border,
 /area/kutjevo/interior/power/comms)
 "gLg" = (
 /obj/structure/machinery/optable,
@@ -12916,7 +12916,7 @@
 /area/kutjevo/interior/complex/botany/east_tech)
 "rJs" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/exterior/runoff_dunes)
 "rKI" = (
@@ -13009,6 +13009,13 @@
 	},
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
+"rQF" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/colors/purple,
+/area/kutjevo/interior/complex/botany/east)
 "rQY" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
@@ -16747,9 +16754,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
-"xdz" = (
-/turf/open/space/basic,
-/area/kutjevo/interior/power/comms)
 "xdC" = (
 /obj/structure/platform_decoration/kutjevo/rock{
 	dir = 1
@@ -26924,7 +26928,7 @@ tXm
 mZE
 tlN
 qvR
-xdz
+qvR
 sDG
 sDG
 nro
@@ -27092,7 +27096,7 @@ mZE
 ezX
 qvR
 qvR
-xdz
+qvR
 nJn
 nJn
 noj
@@ -28114,7 +28118,7 @@ cTz
 mZt
 gnY
 cPj
-wpm
+mPf
 gnY
 cTz
 cTz
@@ -34754,7 +34758,7 @@ kDS
 kDS
 kDS
 xyM
-eXm
+sUQ
 lgJ
 kDS
 kDS
@@ -35756,7 +35760,7 @@ xyM
 sUQ
 lgJ
 xyM
-eXm
+sUQ
 lgJ
 kDS
 kDS
@@ -36591,7 +36595,7 @@ tIt
 tIz
 tIz
 tIz
-tIz
+rQF
 tIz
 eXm
 eXm

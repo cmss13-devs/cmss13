@@ -1635,9 +1635,6 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/security
 	icon_state = "security"
 
-/obj/structure/prop/hybrisa/misc/machinery/screens/evac
-	icon_state = "evac"
-
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert
 	icon_state = "redalert"
 

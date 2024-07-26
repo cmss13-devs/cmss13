@@ -837,7 +837,6 @@
 #include "code\game\jobs\job\special\weyland_yutani.dm"
 #include "code\game\machinery\aicore_lockdown.dm"
 #include "code\game\machinery\air_alarm.dm"
-#include "code\game\machinery\air_sensor.dm"
 #include "code\game\machinery\autolathe.dm"
 #include "code\game\machinery\autolathe_datums.dm"
 #include "code\game\machinery\Beacon.dm"

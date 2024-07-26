@@ -61017,7 +61017,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/device/suit_cooling_unit,
+/obj/item/device/demo_scanner,
 /obj/item/tool/screwdriver,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/wy_research_complex/researchanddevelopment)

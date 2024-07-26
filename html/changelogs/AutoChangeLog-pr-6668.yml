@@ -1,7 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - bugfix: "fixed runner having no gib animation"
-  - bugfix: "fixed gib remains being invisible"
-  - imageadd: "boiler gib animation"
-  - imageadd: "larva gib remains"

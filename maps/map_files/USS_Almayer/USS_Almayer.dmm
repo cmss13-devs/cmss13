@@ -24598,6 +24598,12 @@
 "gpY" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/lifeboat_pumps/north1)
+"gqf" = (
+/obj/structure/machinery/alarm/almayer{
+	dir = 1
+	},
+/turf/closed/wall/almayer,
+/area/almayer/hallways/lower/starboard_umbilical)
 "gqt" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = -17
@@ -28974,10 +28980,6 @@
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/brig/warden_office)
-"ifQ" = (
-/obj/structure/machinery/power/apc/almayer/directional/west,
-/turf/open/floor/almayer/dark_sterile,
-/area/almayer/medical/lower_medical_medbay)
 "igb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -47486,6 +47488,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
+"pPK" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/power/apc/almayer/directional/west,
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/almayer/medical/lower_medical_medbay)
 "pPM" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/silver/northeast,
@@ -59246,13 +59255,6 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/lower/port_midship_hallway)
-"uGi" = (
-/obj/structure/machinery/suit_storage_unit/compression_suit/uscm,
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/lower/starboard_umbilical)
 "uGN" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
@@ -83700,7 +83702,7 @@ uaG
 uaG
 uaG
 uaG
-uaG
+gqf
 uaG
 uaG
 uaG
@@ -83905,7 +83907,7 @@ lxd
 dPk
 nBV
 dyq
-uGi
+lxd
 uaG
 lYN
 byr
@@ -96504,7 +96506,7 @@ xdx
 rlZ
 egc
 thP
-beW
+pPK
 bgP
 rlZ
 fqZ
@@ -96707,7 +96709,7 @@ iTt
 rlZ
 buu
 rlZ
-ifQ
+rlZ
 rlZ
 rlZ
 rlZ

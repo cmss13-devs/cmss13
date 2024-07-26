@@ -88,10 +88,6 @@
 	start_semiauto = FALSE
 	start_automatic = TRUE
 	var/cover_open = FALSE //if the gun's feed-cover is open or not.
-	var/pos1 = 32
-	var/pos2 = -32
-	var/pos3 = 32
-	var/pos4 = -32
 
 
 /obj/item/weapon/gun/m60/Initialize(mapload, spawn_empty)

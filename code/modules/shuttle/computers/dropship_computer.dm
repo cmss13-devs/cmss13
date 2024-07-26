@@ -254,6 +254,14 @@
 			set_lz_resin_allowed(TRUE)
 		stop_playing_launch_announcement_alarm()
 
+		var/hivenumber = XENO_HIVE_NORMAL
+		if(istype(xeno))
+			hivenumber = xeno.hivenumber
+		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+		if(hive.living_xeno_queen)
+			var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_action(hive.living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
+			ovi_ability.reduce_cooldown(ovi_ability.xeno_cooldown)
+
 		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
 		message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)
@@ -313,9 +321,6 @@
 	hive.abandon_on_hijack()
 	var/original_evilution = hive.evolution_bonus
 	hive.override_evilution(XENO_HIJACK_EVILUTION_BUFF, TRUE)
-	if(hive.living_xeno_queen)
-		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_action(hive.living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
-		ovi_ability.reduce_cooldown(ovi_ability.xeno_cooldown)
 	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
 
 	// Notify the yautja too so they stop the hunt

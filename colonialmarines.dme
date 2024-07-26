@@ -868,6 +868,7 @@
 #include "code\game\machinery\line_nexter.dm"
 #include "code\game\machinery\machinery.dm"
 #include "code\game\machinery\mass_driver.dm"
+#include "code\game\machinery\mining.dm"
 #include "code\game\machinery\misc.dm"
 #include "code\game\machinery\navbeacon.dm"
 #include "code\game\machinery\newscaster.dm"

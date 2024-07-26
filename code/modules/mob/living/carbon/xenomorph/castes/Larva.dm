@@ -10,7 +10,7 @@
 	caste_desc = "D'awwwww, so cute!"
 	speed = XENO_SPEED_TIER_10
 	innate_healing = TRUE //heals even outside weeds so you're not stuck unable to evolve when hiding on the ship wounded.
-	evolves_to = XENO_T1_CASTES
+	evolves_to = list(XENO_CASTE_DRONE)
 
 	evolve_without_queen = TRUE
 	can_be_revived = FALSE

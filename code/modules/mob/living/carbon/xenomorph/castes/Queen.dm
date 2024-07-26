@@ -48,6 +48,7 @@
 	minimap_icon = "xenoqueen"
 
 	royal_caste = TRUE
+	evolution_cost = 0
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:

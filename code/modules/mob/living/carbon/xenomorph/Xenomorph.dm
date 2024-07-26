@@ -151,6 +151,7 @@
 	var/show_only_numbers = FALSE
 	var/evolution_stored = 0 //How much evolution they have stored
 	var/evolution_threshold = 200
+	var/evolution_cost = 30 //How much evolution to caste will cost
 	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
 	var/time_of_birth
 

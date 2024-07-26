@@ -579,7 +579,6 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "tx" = (
-/obj/structure/machinery/hologram/holopad,
 /turf/open/floor/carpet,
 /area/centcom/living)
 "tP" = (

@@ -16,7 +16,7 @@
 			candidates_clean.Add(single_candidate)
 			continue
 		if(single_candidate.current)
-			to_chat(single_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you dont have enough playtime (5 Hours) as military police!"))
+			to_chat(single_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you don't have enough playtime (5 Hours) as military police!"))
 	return candidates_clean
 
 /datum/emergency_call/inspection_provost/create_member(datum/mind/M, turf/override_spawn_loc)

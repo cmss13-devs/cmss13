@@ -15,7 +15,7 @@
 			candidates_clean.Add(single_candidate)
 			continue
 		if(single_candidate.current)
-			to_chat(single_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you dont have the specialist job unlocked!"))
+			to_chat(single_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you don't have the specialist job unlocked!"))
 	return candidates_clean
 
 /datum/emergency_call/cryo_spec/create_member(datum/mind/mind, turf/override_spawn_loc)

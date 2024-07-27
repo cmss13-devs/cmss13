@@ -21,7 +21,6 @@ SUBSYSTEM_DEF(who)
 /datum/player_list
 	var/tgui_name = "Who"
 	var/tgui_interface_name = "Who"
-	var/list/mobs_ckey = list()
 	var/list/list_data = list()
 	var/list/list_admin_data = list()
 
@@ -194,7 +193,6 @@ SUBSYSTEM_DEF(who)
 	list_data = new_list_data
 	new_list_admin_data["admin"] = TRUE
 	list_admin_data = new_list_admin_data
-	mobs_ckey = new_mobs_ckey
 
 /datum/player_list/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -216,8 +214,12 @@ SUBSYSTEM_DEF(who)
 
 	switch(action)
 		if("get_player_panel")
-			if(mobs_ckey[params["ckey"]])
-				GLOB.admin_datums[ui.user.client.ckey].show_player_panel(mobs_ckey[params["ckey"]])
+			var/chosen_ckey = params["ckey"]
+			for(var/client/target in GLOB.clients)
+				if(target.ckey != chosen_ckey)
+					continue
+				if(target.mob)
+					GLOB.admin_datums[ui.user.client.ckey].show_player_panel(target.mob)
 
 /datum/player_list/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
@@ -238,7 +240,6 @@ SUBSYSTEM_DEF(who)
 /datum/player_list/staff/update_data()
 	var/list/new_list_data = list()
 	var/list/new_list_admin_data = list()
-	mobs_ckey = list()
 
 	var/list/listings
 	var/list/mappings

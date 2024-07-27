@@ -159,6 +159,8 @@
 
 	// Determine if the layer will need to change
 	var/desired_layer = round(parent_structure.layer + 0.05, 0.01) // Byond floats are garbage
+	if(desired_layer == XENO_HIDING_LAYER)
+		desired_layer += 0.01
 	var/layer_changing = mob.plane == parent_structure.plane && (direction & approach_dirs_layer_override) && initial(mob.layer) < desired_layer
 	if(layer_changing)
 		RegisterSignal(mob, COMSIG_LIVING_SHIMMY_LAYER, PROC_REF(on_mob_shimmy_layer))
@@ -177,6 +179,10 @@
 	// Override their layer if needed
 	var/animate_time = min(mob.move_delay + extra_delay, MAX_ANIMATE_TIME)
 	if(layer_changing)
+		if(mob.layer == XENO_HIDING_LAYER && isxeno(mob))
+			var/datum/action/xeno_action/onclick/xenohide/hide = get_action(mob, /datum/action/xeno_action/onclick/xenohide)
+			if(hide)
+				hide.post_attack()
 		if(mob.layer > desired_layer)
 			// Delayed since our layer already satisfies the requirement and we might be moving off of another shimmy
 			addtimer(VARSET_CALLBACK(mob, layer, desired_layer), animate_time * 0.5)
@@ -257,11 +263,20 @@
 		if(extra_delay && mob.client)
 			mob.client.move_delay += extra_delay
 		var/desired_layer = round(parent_structure.layer + 0.05, 0.01) // Byond floats are garbage
+		if(desired_layer == XENO_HIDING_LAYER)
+			desired_layer += 0.01
 		var/layer_changing = mob.plane == parent_structure.plane && (new_direction & approach_dirs_layer_override) && initial(mob.layer) < desired_layer
 		if(layer_changing)
+			RegisterSignal(mob, COMSIG_LIVING_SHIMMY_LAYER, PROC_REF(on_mob_shimmy_layer), override = TRUE) // Override because we're just ensuring its set if not already set
+			if(mob.layer == XENO_HIDING_LAYER && isxeno(mob))
+				var/datum/action/xeno_action/onclick/xenohide/hide = get_action(mob, /datum/action/xeno_action/onclick/xenohide)
+				if(hide)
+					hide.post_attack()
 			mob.layer = desired_layer
 		else
-			mob.layer = initial(mob.layer)
+			UnregisterSignal(mob, COMSIG_LIVING_SHIMMY_LAYER)
+			if(mob.layer != XENO_HIDING_LAYER || !isxeno(mob))
+				mob.layer = initial(mob.layer)
 
 	return .
 
@@ -278,10 +293,11 @@
 
 	// Undo layer change only if we aren't shimmying again
 	if(!(SEND_SIGNAL(mob, COMSIG_LIVING_SHIMMY_LAYER) & COMSIG_LIVING_SHIMMY_LAYER_CANCEL))
-		if(dir & NORTH)
-			mob.layer = initial(mob.layer)
-		else
-			addtimer(VARSET_CALLBACK(mob, layer, initial(mob.layer)), animate_time * 0.5)
+		if(mob.layer != XENO_HIDING_LAYER || !isxeno(mob))
+			if(dir & NORTH)
+				mob.layer = initial(mob.layer)
+			else
+				addtimer(VARSET_CALLBACK(mob, layer, initial(mob.layer)), animate_time * 0.5)
 
 	// Delay them if needed
 	if(extra_delay && mob.client)

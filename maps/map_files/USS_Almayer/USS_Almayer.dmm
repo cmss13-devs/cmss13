@@ -3320,6 +3320,14 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/command,
 /obj/item/device/megaphone,
+/obj/structure/machinery/computer/cameras/almayer_brig{
+	dir = 8;
+	desc = "Used to access the various cameras in the security brig.";
+	name = "brig cameras console";
+	pixel_y = 12;
+	pixel_x = 17;
+	layer = 2.99
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "awQ" = (
@@ -31597,7 +31605,16 @@
 "jhI" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data{
-	dir = 4
+	dir = 4;
+	pixel_y = 19;
+	layer = 2.99
+	},
+/obj/structure/machinery/computer/cameras/almayer_brig{
+	dir = 4;
+	desc = "Used to access the various cameras in the security brig.";
+	name = "brig cameras console";
+	pixel_y = 5;
+	layer = 2.99
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/chief_mp_office)
@@ -64329,7 +64346,8 @@
 "wvE" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/almayer_network{
-	dir = 4
+	dir = 4;
+	pixel_y = 1
 	},
 /obj/structure/machinery/light{
 	dir = 1

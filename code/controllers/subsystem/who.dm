@@ -51,7 +51,6 @@ SUBSYSTEM_DEF(who)
 		client_payload["ckey_color"] = "white"
 		new_list_data["total_players"] += list(client_payload.Copy())
 		var/mob/client_mob = client.mob
-		new_mobs_ckey[client.key] = client_mob
 		if(client_mob)
 			if(istype(client_mob, /mob/new_player))
 				client_payload["text"] += " - in Lobby"
@@ -216,7 +215,7 @@ SUBSYSTEM_DEF(who)
 		if("get_player_panel")
 			var/chosen_ckey = params["ckey"]
 			for(var/client/target in GLOB.clients)
-				if(target.ckey != chosen_ckey)
+				if(target.key != chosen_ckey)
 					continue
 				if(target.mob)
 					GLOB.admin_datums[ui.user.client.ckey].show_player_panel(target.mob)

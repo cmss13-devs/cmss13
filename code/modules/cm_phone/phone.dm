@@ -270,7 +270,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		if(attached_to && ismob(attached_to.loc))
 			var/mob/M = attached_to.loc
 			if(timeout)
-				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] Your call to [T.phone_id] has reached voicemail, you immediately disconnect the line."))
+				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] Your call to [T.phone_id] has reached voicemail, nobody picked up the phone."))
 				busy_loop.start()
 				outring_loop.stop()
 			else

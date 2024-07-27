@@ -3,7 +3,7 @@
 	desc = "A rotting... thing vaguely reminiscent of a drone. Smells absolutely awful."
 	icon = 'icons/mob/xenos/rotdrone.dmi'
 	icon_gib = null
-	speed = XENO_SPEED_TIER_2
+	speed = XENO_SPEED_TIER_3
 	harm_intent_damage = 5
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_1
@@ -21,6 +21,7 @@
 	hud_possible = list(XENO_BANISHED_HUD)
 	var/mob/living/carbon/xenomorph/xeno_master // The xeno that spawned the rotdrone
 	var/mob/living/carbon/xenomorph/escort // A xeno that they've been ordered to follow
+	var/mob/living/carbon/mastertarget // Who is supposed to be attacked
 	var/escorting = FALSE // Posterity var to make sure they know they have someone else to follow
 	var/got_orders = FALSE // Has the rotdrone recieved an order from their master?
 	var/is_fighting = FALSE // Is the rotdrone currently fighting or trying to fight something?
@@ -39,6 +40,7 @@
 		death()
 		return
 	escort = null
+	mastertarget = null
 	xeno_master = X
 	hivenumber = X.hivenumber
 	set_hive_data(src, hivenumber)
@@ -62,17 +64,23 @@
 
 /mob/living/simple_animal/hostile/alien/rotdrone/Life()
 	. = ..()
-	if(!xeno_master || xeno_master.stat == DEAD)
-		xeno_master = null
-		adjustBruteLoss(15)
+	if(xeno_master.stat == DEAD || xeno_master == null)
+		death()
 		return
-	if(get_dist(src, xeno_master) > 4)
+	if(get_dist(src, xeno_master) >= 4)
 		adjustBruteLoss(5)
 		if(is_fighting == FALSE)
-			if(escort && escorting == TRUE && get_dist(src, escort) > 3)
+			if(escort && escorting == TRUE && get_dist(src, escort) >= 4)
 				walk_to(src, escort, rand(1, 2), 4)
-			if(got_orders == FALSE && get_dist(src, xeno_master) > 3)
+				if(get_dist(src, escort) <= rand(1, 2))
+					walk(src, 0)
+			if(got_orders == FALSE && get_dist(src, xeno_master) >= 4)
 				walk_to(src, xeno_master, rand(1, 2), 4)
+				if(get_dist(src, xeno_master) <= rand(1, 2))
+					walk(src, 0)
+
+	if(mastertarget && mastertarget.stat == DEAD)
+		mastertarget = FALSE
 
 	if(escort && escort.stat == DEAD)
 		escorting = FALSE
@@ -84,10 +92,8 @@
 	else
 		is_fighting = FALSE
 
-/mob/living/simple_animal/hostile/alien/rotdrone/death(cause, gibbed, deathmessage = "screeches and collapses as it's body melts back into an inert, rotting ooze...")
+/mob/living/simple_animal/hostile/alien/rotdrone/death(cause, gibbed, deathmessage = "screeches and collapses as it's body dissolves into an inert, rotting ooze...")
 	. = ..()
-	if(!xeno_master == null)
-		to_chat(xeno_master, SPAN_XENOWARNING("We feel that one of our servants has perished!"))
 
 /mob/living/simple_animal/hostile/alien/rotdrone/Destroy()
 	remove_from_all_mob_huds()

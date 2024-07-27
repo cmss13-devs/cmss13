@@ -1,3 +1,10 @@
+/datum/action/xeno_action/verb/verb_compel_resin()
+	set category = "Alien"
+	set name = "Compel Resin"
+	set hidden = TRUE
+	var/action_name = "Compel Resin"
+	handle_xeno_macro(src, action_name)
+
 /datum/action/xeno_action/verb/verb_flesh_harvest()
 	set category = "Alien"
 	set name = "Flesh Harvest"

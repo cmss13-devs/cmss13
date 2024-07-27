@@ -110,11 +110,6 @@
 	name = "Secrete Thick Resin"
 	thick = TRUE
 
-/datum/action/xeno_action/activable/secrete_resin/reaper
-	name = "Secrete Special Resin"
-	thick = TRUE
-	ability_primacy = XENO_NOT_PRIMARY_ACTION
-
 //resin marker
 /datum/action/xeno_action/activable/info_marker
 	name = "Mark Resin"

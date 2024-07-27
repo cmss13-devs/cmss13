@@ -287,6 +287,9 @@
 			SPAN_WARNING("We shove [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			if(ismonkey(src))
 				apply_effect(8, WEAKEN)
+			else
+				apply_effect(1, WEAKEN) // Also actually tackling them now, man this stuff was neglected
+			M.animation_attack_on(src)
 	return XENO_ATTACK_ACTION
 
 /mob/living/attack_larva(mob/living/carbon/xenomorph/larva/M)

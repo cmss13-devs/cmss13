@@ -4,8 +4,8 @@
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_2
-	melee_damage_upper = XENO_DAMAGE_TIER_4
-	melee_vehicle_damage = XENO_DAMAGE_TIER_4
+	melee_damage_upper = XENO_DAMAGE_TIER_3
+	melee_vehicle_damage = XENO_DAMAGE_TIER_3
 	max_health = XENO_HEALTH_TIER_9
 	plasma_gain = XENO_PLASMA_GAIN_TIER_6
 	plasma_max = XENO_PLASMA_TIER_5
@@ -67,8 +67,7 @@
 		/datum/action/xeno_action/activable/secrete_resin/reaper,
 		/datum/action/xeno_action/activable/flesh_harvest, //first macro
 		/datum/action/xeno_action/activable/claw_strike, //second macro
-		/datum/action/xeno_action/onclick/raise_servant, //third macro
-		/datum/action/xeno_action/activable/command_servants, //fourth macro
+		/datum/action/xeno_action/activable/raise_servant, //third macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
@@ -88,10 +87,24 @@
 
 	var/flesh_resin = 0
 	var/flesh_resin_max = 1000
+	var/pause_drain = FALSE
+	var/unpause_coming = FALSE
+	var/pause_dur = 20 SECONDS
 	var/harvesting = FALSE // So you can't harvest multiple corpses at once
 	var/making_servant = FALSE // So we can't make multiple at once
 	var/list/mob/living/simple_animal/hostile/alien/rotdrone/servants = list() // List of active rotdrones
-	var/servant_max = 3 // How many rotdrones one Reaper can have at once
+	var/servant_max = 1 // How many rotdrones one Reaper can have at once
+
+/datum/behavior_delegate/base_reaper/proc/unpause_drain()
+	to_chat(bound_xeno, SPAN_XENONOTICE("Our body resumes absorbation of flesh resin."))
+	pause_drain = FALSE
+	unpause_coming = FALSE
+	pause_dur = 20 SECONDS
+
+/datum/behavior_delegate/base_reaper/proc/drain_resin()
+	flesh_resin -= 1
+	if(flesh_resin > 200)
+		flesh_resin -= 1
 
 /datum/behavior_delegate/base_reaper/append_to_stat()
 	. = ..()
@@ -99,8 +112,6 @@
 
 /datum/behavior_delegate/base_reaper/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
 	flesh_resin += 5
-	if(iscarbon(target_mob))
-		target_mob.apply_damage(flesh_resin * 0.01, TOX)
 
 /datum/behavior_delegate/base_reaper/on_life()
 	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
@@ -108,3 +119,18 @@
 	var/percentage_flesh = round((flesh_resin / flesh_resin_max) * 100, 10)
 	if(percentage_flesh)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_flesh]")
+
+	if(flesh_resin > flesh_resin_max)
+		flesh_resin = flesh_resin_max
+	if(flesh_resin < 0)
+		flesh_resin = 0
+
+	if(pause_drain == TRUE && unpause_coming == FALSE)
+		unpause_coming = TRUE
+		addtimer(CALLBACK(src, PROC_REF(unpause_drain)), pause_dur)
+
+	if(flesh_resin > 0 && pause_drain == FALSE)
+		drain_resin()
+	else
+		return ..()
+

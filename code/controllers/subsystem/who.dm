@@ -217,7 +217,7 @@ SUBSYSTEM_DEF(who)
 	switch(action)
 		if("get_player_panel")
 			if(mobs_ckey[params["ckey"]])
-				GLOB.admin_datums[usr.client.ckey].show_player_panel(mobs_ckey[params["ckey"]])
+				GLOB.admin_datums[ui.user.client.ckey].show_player_panel(mobs_ckey[params["ckey"]])
 
 /datum/player_list/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
@@ -276,10 +276,11 @@ SUBSYSTEM_DEF(who)
 
 			admin["content"] = "[entry.key] ([rank])"
 			admin["text"] = ""
-			minimum_admins += list(admin.Copy())
 
 			if(entry.admin_holder?.fakekey)
 				admin["text"] += " (HIDDEN)"
+			else
+				minimum_admins += list(admin.Copy())
 
 			if(istype(entry.mob, /mob/dead/observer))
 				admin["color"] = "#808080"

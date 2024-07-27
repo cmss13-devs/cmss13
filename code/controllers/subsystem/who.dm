@@ -27,7 +27,6 @@ SUBSYSTEM_DEF(who)
 /datum/player_list/proc/update_data()
 	var/list/new_list_data = list()
 	var/list/new_list_admin_data = list()
-	var/list/new_mobs_ckey = list()
 	var/list/additional_data = list(
 		"lobby" = 0,
 		"admin_observers" = 0,

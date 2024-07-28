@@ -101,6 +101,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Landing Zone 2 - Ice Fields"
 	icon_state = "nearlz2"
 	weather_enabled = TRUE
+	is_landing_zone = TRUE
 
 /area/strata/ag/interior/landing_zones
 	name = "Do not use."
@@ -117,6 +118,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/interior/landing_zones/near_lz1
 	name = "Landing Zone 1 - Mining Aerodrome"
 	icon_state = "nearlz1"
+	is_landing_zone = TRUE
 
 
 //-Caves
@@ -309,6 +311,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/interior/mining_outpost/flight_control
 	name = "Mining Outpost Flight Control"
 	icon_state = "dorms_lobby"
+	is_landing_zone = TRUE
 
 
 

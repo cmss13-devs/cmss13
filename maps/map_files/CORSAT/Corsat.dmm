@@ -24911,7 +24911,6 @@
 /area/corsat/sigma/south/complex)
 "bTM" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/device/suit_cooling_unit,
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/sigma/south/complex)
 "bTN" = (
@@ -35676,7 +35675,6 @@
 /area/corsat/omega/complex)
 "lHI" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/ammo_rcd,
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/sigma/south/complex)
 "lHK" = (

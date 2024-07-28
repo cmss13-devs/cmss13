@@ -126,7 +126,7 @@
 		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return FALSE
 
-	if (user.is_mob_incapacitated())
+	if ((user.is_mob_incapacitated() || user.is_mob_restrained())
 		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return FALSE
 

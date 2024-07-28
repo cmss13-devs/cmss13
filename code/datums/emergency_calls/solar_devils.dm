@@ -80,7 +80,7 @@
 
 	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN))
 		smartgunners++
-		to_chat(mob, SPAN_ROLE_HEADER("You are the Solar Devils Smartgunner!"))
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Solar Devils Smartgunner!"))
 		arm_equipment(mob, /datum/equipment_preset/uscm/sg_pve, TRUE, TRUE)
 
 	else

@@ -122,7 +122,7 @@
 
 
 //"Speciality" Chems
-/datum/borer_chem/human/restarter
+/datum/borer_chem/universal/restarter
 	chem_name = "Neuroshock"
 	chem_id = "borershock"
 	desc = "A powerful nerve agent that stimulates the heart. Useful for keeping your host alive. Lethal in high doses."
@@ -131,7 +131,7 @@
 	restricted = TRUE
 	impure = FALSE
 
-/datum/borer_chem/human/restarter
+/datum/borer_chem/universal/neurostasis
 	chem_name = "Neurostasis"
 	chem_id = "borerbrainstasis"
 	desc = "A biosynthetic agent that preserves long term brain function at the cost of the short term."

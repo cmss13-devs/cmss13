@@ -52,7 +52,7 @@
 	desc = "A storage container filled with neatly-lined, egg-shaped holes."
 	storage_slots = 12
 	max_storage_space = 24
-	can_hold = list(/obj/item/reagent_container/food/snacks/egg)
+	can_hold = list(/obj/item/reagent_container/food/snacks/egg, /obj/item/borer_egg)
 
 /obj/item/storage/fancy/egg_box/fill_preset_inventory()
 	for(var/i=1; i <= storage_slots; i++)

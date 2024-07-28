@@ -53,7 +53,7 @@
 			if(climber.a_intent == INTENT_HARM)
 				var/climbed = do_climb(climber)
 				if(climbed)
-					climber.client.move_delay += 3 DECISECONDS
+					climber.client?.move_delay += 3 DECISECONDS
 					if(prob(25))
 						if(ishuman(climber))
 							climber.apply_damage(15,BRUTE,no_limb_loss = TRUE)

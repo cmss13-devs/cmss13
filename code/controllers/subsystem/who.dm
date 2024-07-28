@@ -277,9 +277,7 @@ SUBSYSTEM_DEF(who)
 			admin["content"] = "[entry.key] ([rank])"
 			admin["text"] = ""
 
-			if(CLIENT_IS_STEALTHED(entry))
-				continue
-			else if(entry.admin_holder?.fakekey)
+			if(entry.admin_holder?.fakekey || CLIENT_IS_STEALTHED(C))
 				admin["text"] += " (HIDDEN)"
 			else
 				minimum_admins += list(admin.Copy())

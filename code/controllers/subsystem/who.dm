@@ -267,6 +267,7 @@ SUBSYSTEM_DEF(who)
 	for(var/category in listings)
 		var/list/minimum_admins = list()
 		var/list/admins = list()
+		var/stealthed = 0
 		for(var/client/entry as anything in listings[category])
 			var/list/admin = list()
 			var/rank = entry.admin_holder.rank
@@ -281,6 +282,9 @@ SUBSYSTEM_DEF(who)
 				admin["text"] += " (HIDDEN)"
 			else if(!CLIENT_IS_STEALTHED(entry))
 				minimum_admins += list(admin.Copy())
+			else
+				stealthed++
+				admin["stealthed"] = TRUE
 
 			if(istype(entry.mob, /mob/dead/observer))
 				admin["color"] = "#808080"
@@ -310,6 +314,7 @@ SUBSYSTEM_DEF(who)
 			"category" = category,
 			"category_color" = category_colors[category],
 			"category_administrators" = length(admins),
+			"stealthed" = stealthed,
 			"admins" = admins,
 		))
 
@@ -317,6 +322,10 @@ SUBSYSTEM_DEF(who)
 	list_data = new_list_data
 	new_list_admin_data["admin"] = TRUE
 	list_admin_data = new_list_admin_data
+
+/datum/player_list/staff/ui_static_data(mob/user)
+	. = list()
+	.["r_stealth"] = CLIENT_HAS_RIGHTS(user.client, R_STEALTH)
 
 /mob/verb/who()
 	set category = "OOC"

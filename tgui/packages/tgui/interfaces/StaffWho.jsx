@@ -4,7 +4,7 @@ import { Window } from '../layouts';
 
 export const StaffWho = (props, context) => {
   const { data } = useBackend(context);
-  const { admin, administrators } = data;
+  const { admin, r_stealth, administrators } = data;
 
   return (
     <Window resizable width={600} height={600}>
@@ -15,18 +15,26 @@ export const StaffWho = (props, context) => {
               {administrators.map((x, index) => (
                 <StaffWhoCollapsible
                   key={x.index}
-                  title={x.category + ' - ' + x.category_administrators}
+                  title={
+                    x.category +
+                    ' - ' +
+                    (r_stealth
+                      ? x.category_administrators
+                      : x.category_administrators - x.stealthed)
+                  }
                   color={x.category_color}
                 >
-                  {x.admins.map((x, index) => (
-                    <GetAdminInfo
-                      key={x.index}
-                      admin={admin}
-                      content={x.content}
-                      color={x.color}
-                      text={x.text}
-                    />
-                  ))}
+                  {x.admins.map((x, index) =>
+                    (r_stealth && x.stealthed) || !x.stealthed ? (
+                      <GetAdminInfo
+                        key={x.index}
+                        admin={admin}
+                        content={x.content}
+                        color={x.color}
+                        text={x.text}
+                      />
+                    ) : null,
+                  )}
                 </StaffWhoCollapsible>
               ))}
             </Stack.Item>

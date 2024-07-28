@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer_armory, list(
 		list("Marine Combat Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Aviator Shades", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
-		list("Bayonet", 0, /obj/item/attachable/bayonet, null, VENDOR_ITEM_REGULAR),
+		list("Bayonet", 0, /obj/item/attachable/bayonet, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 
 		list("SPECIALISATION KIT (CHOOSE 1)", 0, null, null, null),
 		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),

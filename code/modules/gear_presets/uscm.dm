@@ -1178,7 +1178,7 @@
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
-/datum/equipment_preset/uscm/sg_pve/full/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/uscm/sg_pve/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo(new_human), WEAR_L_EAR)
@@ -1205,7 +1205,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_R_STORE)
 	spawn_marine_fluff_items(new_human)
 
-/datum/equipment_preset/uscm/sg_pve/full/load_status(mob/living/carbon/human/new_human)
+/datum/equipment_preset/uscm/sg_pve/load_status(mob/living/carbon/human/new_human)
 
 //## Team Leader ##//
 /datum/equipment_preset/uscm/tl_pve

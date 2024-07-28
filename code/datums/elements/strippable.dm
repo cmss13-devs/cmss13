@@ -122,7 +122,7 @@
 	if (isnull(item))
 		return FALSE
 
-	if (user.action_busy && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+	if ((user.action_busy && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED)) || user.is_mob_restrained() || HAS_TRAIT(user, (TRAIT_IMMOBILIZED || TRAIT_INCAPACITATED || TRAIT_FLOORED)))
 		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return FALSE
 

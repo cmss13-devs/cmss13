@@ -66444,6 +66444,10 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/engineering/lower/engine_core)
+"xqf" = (
+/mob/living/roomba,
+/turf/open/floor/almayer,
+/area/almayer/squads/alpha_bravo_shared)
 "xqh" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/weldingtool,
@@ -107048,7 +107052,7 @@ obE
 thA
 qGc
 rth
-rth
+xqf
 rth
 aTW
 aTW

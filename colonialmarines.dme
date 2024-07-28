@@ -1904,6 +1904,7 @@
 #include "code\modules\mob\living\living_verbs.dm"
 #include "code\modules\mob\living\login.dm"
 #include "code\modules\mob\living\logout.dm"
+#include "code\modules\mob\living\roomba.dm"
 #include "code\modules\mob\living\say.dm"
 #include "code\modules\mob\living\brain\brain.dm"
 #include "code\modules\mob\living\brain\brain_item.dm"

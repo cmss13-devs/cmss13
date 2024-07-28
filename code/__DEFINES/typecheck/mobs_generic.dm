@@ -1,6 +1,7 @@
 #define isARES(A) (istype(A, /mob/living/silicon/decoy/ship_ai))
 #define isSilicon(A) (istype(A, /mob/living/silicon))
 #define isRemoteControlling(M) (M && M.client && M.client.remote_control)
+#define isRobot (R) (istype(R, /mob/living/robot/roomba))
 
 #define isbrain(A) (istype(A, /mob/living/brain))
 #define isanimal(A) (istype(A, /mob/living/simple_animal))

@@ -1523,6 +1523,7 @@
 #include "code\modules\autowiki\pages\guns.dm"
 #include "code\modules\borer\borer.dm"
 #include "code\modules\borer\borer_chemicals.dm"
+#include "code\modules\borer\borer_egg.dm"
 #include "code\modules\borer\borer_html.dm"
 #include "code\modules\borer\borer_procs.dm"
 #include "code\modules\borer\borer_wip.dm"

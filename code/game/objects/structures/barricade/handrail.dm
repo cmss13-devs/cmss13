@@ -47,6 +47,7 @@
 		if(!xenomorph.stat)
 			visible_message(SPAN_DANGER("[xenomorph] plows straight through [src]!"))
 			deconstruct(FALSE)
+			return
 	else
 		if(ismob(movable) && autoclimb)
 			var/mob/living/climber = movable

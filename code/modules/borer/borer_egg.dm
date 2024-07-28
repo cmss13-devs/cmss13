@@ -10,6 +10,7 @@
 	layer = MOB_LAYER
 	black_market_value = 35
 
+	var/hatched = FALSE
 	var/birth_generation = 1
 	var/can_reproduce = 1
 	var/target_flags = BORER_TARGET_HUMANS
@@ -43,5 +44,4 @@
 	var/mob/living/carbon/cortical_borer/birthed = new /mob/living/carbon/cortical_borer(loc, birth_generation, TRUE, can_reproduce, target_flags, ancestors)
 
 	user.mind.transfer_to(birthed, TRUE)
-	birthed.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [A]!"), SPAN_XENODANGER("You emerge out of \the [A] and awaken from your slumber. For the Hive!"))
-	playsound(birthed, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
+	birthed.visible_message(SPAN_XENODANGER("A Borer suddenly emerges out of \the [src]!"), SPAN_XENODANGER("You emerge out of \the [src] and awaken from your slumber."))

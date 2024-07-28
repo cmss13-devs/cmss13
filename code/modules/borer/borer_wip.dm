@@ -80,6 +80,7 @@
 	action_icon_state = "borer_directive"
 
 /datum/action/innate/borer/update_directive/action_activate()
+	. = ..()
 	var/mob/living/carbon/cortical_borer/the_borer = owner
 	the_borer.update_directive()
 

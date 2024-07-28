@@ -123,9 +123,6 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			if("med_alt")
 				change_altitude(user, SHIP_ALT_MED)
 				. = TRUE
-			if("high_alt")
-				change_altitude(user, SHIP_ALT_HIGH)
-				. = TRUE
 		message_admins("[key_name(user)] has changed the ship's altitude to [action].")
 
 	add_fingerprint(user)

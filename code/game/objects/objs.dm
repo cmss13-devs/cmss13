@@ -277,7 +277,7 @@
 
 //trying to buckle a mob
 /obj/proc/buckle_mob(mob/M, mob/user)
-	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || HAS_TRAIT(src, (TRAIT_IMMOBILIZED || TRAIT_INCAPACITATED || TRAIT_FLOORED)) || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
+	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || HAS_TRAIT(user, (TRAIT_IMMOBILIZED || TRAIT_INCAPACITATED || TRAIT_FLOORED)) || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
 		return
 
 	if (isxeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))

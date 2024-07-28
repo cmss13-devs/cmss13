@@ -56,7 +56,8 @@
 					climber.client?.move_delay += 3 DECISECONDS
 					if(prob(25))
 						if(ishuman(climber))
-							climber.apply_damage(15,BRUTE,no_limb_loss = TRUE)
+							var/mob/living/carbon/human/human = climber
+							human.apply_damage(15,BRUTE,no_limb_loss = TRUE)
 						else
 							climber.apply_damage(15,BRUTE)
 						climber.visible_message(SPAN_WARNING("You hit yourself as you vault over the [src]"))

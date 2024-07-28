@@ -128,7 +128,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 				. = TRUE
 		message_admins("[key_name(user)] has changed the ship's altitude to [action].")
 
-	add_fingerprint(ui.user)
+	add_fingerprint(user)
 
 /obj/structure/machinery/computer/altitude_control_console/proc/change_altitude(mob/user, new_altitude)
 	if(GLOB.ship_alt == new_altitude)

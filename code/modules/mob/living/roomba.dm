@@ -103,8 +103,16 @@
 
 // --- Existence of life and death ---
 
+/mob/living/roomba/Life()
+	if(health <= 0)
+		death()
+	. = ..()
+
 /mob/living/roomba/spawn_gibs()
 	robogibs(loc)
+
+/mob/living/roomba/handle_regular_status_updates()
+	updatehealth()
 
 // --- Handles vaccum and mopping "logic" for "cleaning" list ---
 

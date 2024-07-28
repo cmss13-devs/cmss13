@@ -133,15 +133,15 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 /obj/structure/machinery/computer/altitude_control_console/proc/change_altitude(mob/user, new_altitude)
 	if(GLOB.ship_alt == new_altitude)
 		return
-	if(GLOB.ship_alt = new_altitude)
-		TIMER_COOLDOWN_START(src, COOLDOWN_ALTITUDE_CHANGE, 90 SECONDS)
-		for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-			if(!is_mainship_level(current_mob.z))
-				continue
-			current_mob.apply_effect(3, SLOW)
-			to_chat(user, SPAN_WARNING("You have some difficulty on maintaining balance!"))
-			shake_camera(current_mob, 10, 2)
-			ai_silent_announcement("Attention: Altitude control protocols initialized, currently performing high-g orbital maneuver.", ";", TRUE)
+	GLOB.ship_alt = new_altitude
+	TIMER_COOLDOWN_START(src, COOLDOWN_ALTITUDE_CHANGE, 90 SECONDS)
+	for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+		if(!is_mainship_level(current_mob.z))
+			continue
+		current_mob.apply_effect(3, SLOW)
+		to_chat(user, SPAN_WARNING("You have some difficulty on maintaining balance!"))
+		shake_camera(current_mob, 10, 2)
+		ai_silent_announcement("Attention: Altitude control protocols initialized, currently performing high-g orbital maneuver.", ";", TRUE)
 
 #undef COOLING
 #undef OVERHEAT_COOLING

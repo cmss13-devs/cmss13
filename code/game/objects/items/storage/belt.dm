@@ -163,6 +163,9 @@
 		/obj/item/device/lightreplacer,
 		/obj/item/stack/sheet/metal,
 		/obj/item/stack/sheet/plasteel,
+		/obj/item/stack/sandbags_empty,
+		/obj/item/stack/sandbags,
+		/obj/item/defenses/handheld/sentry,
 	)
 
 	bypass_w_limit = list(
@@ -170,6 +173,9 @@
 		/obj/item/device/lightreplacer,
 		/obj/item/stack/sheet/metal,
 		/obj/item/stack/sheet/plasteel,
+		/obj/item/stack/sandbags_empty,
+		/obj/item/stack/sandbags,
+		/obj/item/defenses/handheld/sentry,
 	)
 
 /obj/item/storage/belt/utility/full/pred

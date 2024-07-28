@@ -599,6 +599,8 @@
 		/obj/item/tool/wirecutters,
 		/obj/item/stack/cable_coil,
 		/obj/item/device/multitool,
+		/obj/item/tool/shovel/etool,
+		/obj/item/weapon/gun/smg/nailgun/compact,
 	)
 
 /obj/item/storage/internal/accessory/tool_webbing/small

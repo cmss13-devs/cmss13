@@ -302,14 +302,14 @@ SUBSYSTEM_DEF(who)
 		new_list_data["administrators"] += list(list(
 			"category" = category,
 			"category_color" = category_colors[category],
-			"category_administrators" = length(listings[category]),
+			"category_administrators" = length(minimum_admins),
 			"admins" = minimum_admins,
 		))
 
 		new_list_admin_data["administrators"] += list(list(
 			"category" = category,
 			"category_color" = category_colors[category],
-			"category_administrators" = length(listings[category]),
+			"category_administrators" = length(admins),
 			"admins" = admins,
 		))
 

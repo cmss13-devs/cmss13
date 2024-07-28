@@ -80,10 +80,13 @@
 	if(target == user)
 		attack_self(user)
 
-	else if(istype(target, /mob/living/carbon/human) )
+	else if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		if(human_target.species.flags & IS_SYNTHETIC)
-			to_chat(human_target, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
+			to_chat(human_target, SPAN_WARNING("They have a monitor for a head, where do you think you're going to put that?"))
+			return FALSE
+		if(target.stat == DEAD)
+			to_chat(user, SPAN_WARNING("You can't feed this to the dead!"))
 			return FALSE
 		if(target.has_brain_worms())
 			to_chat(user, SPAN_WARNING("Something makes you feel like you don't need to do this..."))

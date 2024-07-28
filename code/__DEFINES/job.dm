@@ -13,6 +13,7 @@
 #define SQUAD_SOF "SOF"
 #define SQUAD_CBRN "CBRN"
 #define SQUAD_FORECON "FORECON"
+#define SQUAD_SOLAR "Solar Devils"
 
 // Job name defines
 #define JOB_SQUAD_MARINE "Rifleman"
@@ -124,6 +125,8 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_GENERAL "USCM General"
 #define JOB_ACMC "Assistant Commandant of the Marine Corps"
 #define JOB_CMC "Commandant of the Marine Corps"
+#define JOB_PLT_MED "Platoon Corpsman"
+#define JOB_PLT_SL "Platoon Squad Leader"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \

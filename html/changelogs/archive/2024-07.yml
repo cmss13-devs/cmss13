@@ -222,3 +222,32 @@
 2024-07-23:
   cuberound:
   - code_imp: cleans up water particle code
+2024-07-24:
+  Doubleumc:
+  - bugfix: sounds & motion detectors should be more reliable
+2024-07-25:
+  cuberound:
+  - rscdel: removes /obj/item/device/suit_cooling_unit and get_pressure_weakness()
+2024-07-26:
+  BlackCrystalic:
+  - qol: if server take too long to pre init all before lobby art, players will see
+      lobbyart "loading"
+  Blundir:
+  - bugfix: fixed runner having no gib animation
+  - bugfix: fixed gib remains being invisible
+  - imageadd: boiler gib animation
+  - imageadd: larva gib remains
+  - imageadd: shoes icons resprite
+  Steelpoint:
+  - imageadd: The Sniper and Anti-Material Rifle Specialists will now use an urban
+      camouflage sprite for their ghillie suit instead of a green camouflage.
+  realforest2001:
+  - rscadd: Synthetics and Yautja now spawn with the Iron Teeth trait, not dropping
+      items held in their mouth.
+  rythenx:
+  - rscadd: more options for hats to ASO vendor to bring it in line with what SO has
+      available
+2024-07-29:
+  TheManWithNoHands:
+  - code_imp: adds flags to cone, allowing it to be worn on head
+  - imageadd: added on mob sprites for cone

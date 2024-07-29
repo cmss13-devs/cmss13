@@ -82,7 +82,7 @@
 /datum/character_trait/biology/bad_leg/New()
 	. = ..()
 	// Not on definition as several lists are added
-	inapplicable_roles = list(JOB_CAS_PILOT, JOB_DROPSHIP_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL, JOB_ORDNANCE_TECH, JOB_MARINE) + JOB_SQUAD_ROLES_LIST + JOB_MARINE_RAIDER_ROLES_LIST + JOB_ERT_GRUNT_LIST
+	inapplicable_roles = list(JOB_CAS_PILOT, JOB_DROPSHIP_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_TANK_CREW, JOB_INTEL, JOB_ORDNANCE_TECH, JOB_MARINE) + JOB_SQUAD_ROLES_LIST + JOB_MARINE_RAIDER_ROLES_LIST + JOB_ERT_GRUNT_LIST
 	bad_cane_roles = list(JOB_SURVIVOR, JOB_STOWAWAY)
 	fancy_cane_roles = list(JOB_CO_SURVIVOR, CORPORATE_SURVIVOR, JOB_CMO, JOB_CORPORATE_LIAISON, JOB_SEA, JOB_CHIEF_ENGINEER) + JOB_COMMAND_ROLES_LIST
 	inapplicable_species = list(SPECIES_SYNTHETIC, SPECIES_YAUTJA)
@@ -129,4 +129,18 @@
 
 /datum/character_trait/biology/hardcore/unapply_trait(mob/living/carbon/human/target)
 	REMOVE_TRAIT(target, TRAIT_HARDCORE, ROUNDSTART_TRAIT)
+	..()
+
+/datum/character_trait/biology/iron_teeth
+	trait_name = "Iron Teeth"
+	trait_desc = "You've got iron teeth or really good dental insurance. Items in your face slot won't fall out when you go down."
+	applyable = TRUE
+	cost = 1
+
+/datum/character_trait/biology/iron_teeth/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
+	ADD_TRAIT(target, TRAIT_IRON_TEETH, ROUNDSTART_TRAIT)
+	..()
+
+/datum/character_trait/biology/iron_teeth/unapply_trait(mob/living/carbon/human/target)
+	REMOVE_TRAIT(target, TRAIT_IRON_TEETH, ROUNDSTART_TRAIT)
 	..()

@@ -37,6 +37,7 @@
 	crit_health = -25
 	gib_chance = 25
 	mob_size = MOB_SIZE_SMALL
+	speaking_noise = "larva_talk"
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
@@ -159,6 +160,20 @@
 	// Custom emote
 	if(act == "me")
 		return ..()
+
+	switch(stat)
+		if(UNCONSCIOUS)
+			to_chat(src, SPAN_WARNING("You cannot emote while unconscious!"))
+			return FALSE
+		if(DEAD)
+			to_chat(src, SPAN_WARNING("You cannot emote while dead!"))
+			return FALSE
+	if(client)
+		if(client.prefs.muted & MUTE_IC)
+			to_chat(src, SPAN_DANGER("You cannot emote (muted)."))
+			return FALSE
+		if(!client.attempt_talking())
+			return FALSE
 
 	// Otherwise, ""roar""!
 	playsound(loc, "alien_roar_larva", 15)

@@ -286,7 +286,7 @@
 						response = alert(usr,"What do you want customized?","Custom reaction [target]","Add component","Add catalyst","Finish")
 					else
 						return
-			if(R.required_reagents.len < 3)
+			if(length(R.required_reagents) < 3)
 				to_chat(usr,SPAN_WARNING("You need to add at least 3 components excluding catalysts. The reaction has not been saved."))
 				return
 			//Save our reaction

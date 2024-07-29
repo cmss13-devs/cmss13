@@ -364,8 +364,13 @@
 	icon_state = "terminal"
 	req_access = list()
 	breakable = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
 	///If true, the lifeboat is in the process of launching, and so the code will not allow another launch.
 	var/launch_initiated = FALSE
+
+/obj/structure/machinery/computer/shuttle/lifeboat/ex_act(severity)
+	return
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)
 	. = ..()
@@ -382,7 +387,13 @@
 					return
 
 				var/mob/living/carbon/human/human_user = user
-				if(!(ACCESS_MARINE_SENIOR in human_user.wear_id?.access) && !(ACCESS_MARINE_DROPSHIP in human_user.wear_id?.access))
+				var/obj/item/card/id/card = human_user.get_idcard()
+
+				if(!card)
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
+					return
+
+				if(!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 

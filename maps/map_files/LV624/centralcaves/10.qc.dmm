@@ -38,10 +38,7 @@
 /area/lv624/ground/caves/south_central_caves)
 "hW" = (
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/northwest,
 /area/lv624/ground/barrens/containers)
 "iS" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
@@ -207,10 +204,7 @@
 /area/lv624/ground/caves/south_central_caves)
 "JZ" = (
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/ground/barrens/containers)
 "KX" = (
 /turf/open/gm/dirt,

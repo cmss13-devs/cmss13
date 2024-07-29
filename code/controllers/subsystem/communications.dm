@@ -287,6 +287,17 @@ SUBSYSTEM_DEF(radio)
 		"[COLONY_FREQ]" = "deptradio",
 		"[BUG_A_FREQ]" = "airadio",
 		"[BUG_B_FREQ]" = "aiprivradio",
+		"[UPP_FREQ]" = "syndradio",
+		"[UPP_CMD_FREQ]" = "opforcmd",
+		"[UPP_ENGI_FREQ]" = "opforeng",
+		"[UPP_MED_FREQ]" = "opformed",
+		"[UPP_CCT_FREQ]" = "opforcct",
+		"[UPP_KDO_FREQ]" = "opforspe",
+		"[CLF_FREQ]" = "clfradio",
+		"[CLF_CMD_FREQ]" = "opforcmd",
+		"[CLF_ENGI_FREQ]" = "opforeng",
+		"[CLF_MED_FREQ]" = "opformed",
+		"[CLF_CCT_FREQ]" = "opforcct",
 	)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)
@@ -359,10 +370,6 @@ SUBSYSTEM_DEF(radio)
 		return freq_span
 	if(frequency in PMC_FREQS)
 		return "pmcradio"
-	if(frequency in UPP_FREQS)
-		return "syndradio"
-	if(frequency in CLF_FREQS)
-		return "clfradio"
 	if(frequency in ERT_FREQS)
 		return "centradio"
 	if(frequency in DEPT_FREQS)

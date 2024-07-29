@@ -52,9 +52,9 @@
 		if(ismob(movable) && autoclimb)
 			var/mob/living/climber = movable
 			if(climber.a_intent == INTENT_HARM)
+				climber.client?.move_delay += 3 DECISECONDS
 				var/climbed = do_climb(climber)
 				if(climbed)
-					climber.client?.move_delay += 3 DECISECONDS
 					if(prob(25))
 						if(ishuman(climber))
 							var/mob/living/carbon/human/human = climber

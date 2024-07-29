@@ -165,6 +165,7 @@
 		/obj/item/stack/sheet/plasteel,
 		/obj/item/stack/sandbags_empty,
 		/obj/item/stack/sandbags,
+		/obj/item/stack/barbed_wire,
 		/obj/item/defenses/handheld/sentry,
 	)
 

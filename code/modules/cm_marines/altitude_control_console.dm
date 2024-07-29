@@ -13,6 +13,7 @@ GLOBAL_VAR_INIT(alt_ctrl_disabled, FALSE)
 #define COOLING -10
 #define OVERHEAT_COOLING -5
 #define HEATING 10
+#define B_HEATING 20
 #define OVERHEAT 100
 
 //Has the ships temperature set to 0 on startup, sets the global default var to med
@@ -29,6 +30,9 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 	breakable = FALSE
 
 /obj/structure/machinery/computer/altitude_control_console/ex_act()
+	return
+
+/obj/structure/machinery/computer/altitude_control_console/bullet_act()
 	return
 
 /obj/structure/machinery/computer/altitude_control_console/attack_hand()
@@ -72,7 +76,10 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 	if(!temperature_change)
 		switch(GLOB.ship_alt)
 			if(SHIP_ALT_LOW)
-				temperature_change = HEATING
+				if(prob(50))
+					temperature_change = HEATING
+				else
+					temperature_change = B_HEATING
 			if(SHIP_ALT_MED)
 				temperature_change = COOLING
 			if(SHIP_ALT_HIGH)

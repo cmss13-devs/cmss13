@@ -49,6 +49,13 @@ export const AltitudeControlConsole = () => {
             </Button>
           }
         </Section>
+        <Section title="System Operational Warning">
+          <Box textAlign="center" fontSize="20px">
+            The Ship will always be set according to the disabled option, if
+            none of the two options available to you are disabled, that means
+            the ship is on high altitude
+          </Box>
+        </Section>
       </Window.Content>
     </Window>
   );

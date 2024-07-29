@@ -861,7 +861,6 @@
 #include "code\game\machinery\fuelcell_recycler.dm"
 #include "code\game\machinery\fusion_engine.dm"
 #include "code\game\machinery\gear.dm"
-#include "code\game\machinery\hologram.dm"
 #include "code\game\machinery\holosign.dm"
 #include "code\game\machinery\igniter.dm"
 #include "code\game\machinery\iv_drip.dm"

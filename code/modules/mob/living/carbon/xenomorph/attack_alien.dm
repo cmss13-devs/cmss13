@@ -875,25 +875,6 @@
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/machinery/hydro_floodlight/attack_larva(mob/living/carbon/xenomorph/larva/M)
-	M.visible_message("[M] starts biting [src]!","In a rage, we start biting [src], but with no effect!", null, 5, CHAT_TYPE_XENO_COMBAT)
-
-/obj/structure/machinery/hydro_floodlight/attack_alien(mob/living/carbon/xenomorph/M)
-	if(!is_on)
-		to_chat(M, SPAN_WARNING("Why bother? It's just some weird metal thing."))
-		return XENO_NO_DELAY_ACTION
-	if(damaged)
-		to_chat(M, SPAN_WARNING("It's already damaged."))
-		return XENO_NO_DELAY_ACTION
-	M.animation_attack_on(src)
-	M.visible_message("[M] slashes away at [src]!","We slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
-	health  = max(health - rand(M.melee_damage_lower, M.melee_damage_upper), 0)
-	if(!health)
-		set_damaged()
-	else
-		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
-	return XENO_ATTACK_ACTION
-
 /obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	M.visible_message("[M] starts biting [src]!","In a rage, we start biting [src], but with no effect!", null, 5, CHAT_TYPE_XENO_COMBAT)
 

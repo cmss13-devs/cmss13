@@ -397,14 +397,13 @@
 			remaining_time = remaining_time - 20 SECONDS 
 			if(remaining_time > 0)
 				to_chat(user, SPAN_NOTICE("You partially bypass the lockout, only [remaining_time / 10] seconds left."))
-		if(remaining_time <= 0)
-			to_chat(user, SPAN_NOTICE("You successfully removed the lockout!"))
-			playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
-			lifeboat.status = LIFEBOAT_ACTIVE
-			lifeboat.available = TRUE
-			user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
-				SPAN_NOTICE("You have successfully taken back control over the lifeboat."))
-			override_being_removed = FALSE
+		to_chat(user, SPAN_NOTICE("You successfully removed the lockout!"))
+		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		lifeboat.status = LIFEBOAT_ACTIVE
+		lifeboat.available = TRUE
+		user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
+			SPAN_NOTICE("You have successfully taken back control over the lifeboat."))
+		override_being_removed = FALSE
 		return
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))

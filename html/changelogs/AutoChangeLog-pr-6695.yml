@@ -1,5 +1,0 @@
-author: "TheManWithNoHands"
-delete-after: True
-changes:
-  - code_imp: "adds flags to cone, allowing it to be worn on head"
-  - imageadd: "added on mob sprites for cone"

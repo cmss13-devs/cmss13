@@ -11013,7 +11013,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /obj/structure/machinery/light,
 /turf/open/floor/strata/floor3,
-/area/strata/ag/interior/landing_zones/near_lz1)
+/area/strata/ag/interior/mining_outpost/south_dormitories)
 "aRF" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/strata,
@@ -11285,11 +11285,11 @@
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/ag/interior/landing_zones/near_lz1)
+/area/strata/ag/interior/mining_outpost/south_dormitories)
 "aSS" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ag/interior/landing_zones/near_lz1)
+/area/strata/ag/interior/mining_outpost/south_dormitories)
 "aST" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/landing_zones/near_lz1)
@@ -25427,7 +25427,7 @@
 "gpr" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/asphalt/cement,
-/area/strata/ag/interior/outside/engineering/parts_storage)
+/area/strata/ag/interior/outside/checkpoints/south)
 "gpO" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -26664,6 +26664,12 @@
 "iEU" = (
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/underground_dorms/med1)
+"iGm" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/mining_outpost/south_dormitories)
 "iGp" = (
 /obj/structure/machinery/power/reactor/colony,
 /obj/structure/machinery/camera/autoname,
@@ -28102,6 +28108,10 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/platform/east)
+"lmF" = (
+/obj/structure/pipes/vents/pump/on,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/mining_outpost/south_dormitories)
 "lno" = (
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/jungle/structures/monitoring/south)
@@ -28157,7 +28167,7 @@
 	dir = 1
 	},
 /turf/open/asphalt/cement,
-/area/strata/ag/interior/outside/engineering/parts_storage)
+/area/strata/ag/interior/outside/checkpoints/south)
 "lrO" = (
 /obj/structure/cargo_container/wy/mid,
 /turf/open/auto_turf/ice/layer0,
@@ -28680,6 +28690,9 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/tearlake)
+"miI" = (
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/mining_outpost/south_dormitories)
 "miL" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
@@ -29527,7 +29540,7 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ag/interior/outside/engineering/parts_storage)
+/area/strata/ag/interior/outside/checkpoints/south)
 "nQE" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -30385,7 +30398,7 @@
 	dir = 1
 	},
 /turf/open/floor/strata/floor3/east,
-/area/strata/ag/interior/outside/engineering/parts_storage)
+/area/strata/ag/interior/outside/checkpoints/south)
 "psQ" = (
 /obj/structure/machinery/power/apc/directional/no_power/south,
 /turf/open/floor/strata/floor3/east,
@@ -30773,6 +30786,13 @@
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
+"pWz" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/mining_outpost/south_dormitories)
 "pWP" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -30784,7 +30804,7 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ag/interior/outside/engineering/parts_storage)
+/area/strata/ag/interior/outside/checkpoints/south)
 "pYI" = (
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/underground_dorms/admin1)
@@ -31102,7 +31122,7 @@
 "qDI" = (
 /obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ag/interior/outside/engineering/parts_storage)
+/area/strata/ag/interior/outside/checkpoints/south)
 "qFH" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/strata/floor2,
@@ -32090,6 +32110,9 @@
 /obj/structure/fence,
 /turf/open/asphalt/cement/cement9,
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior)
+"swQ" = (
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outside/checkpoints/south)
 "sxr" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/structure/platform_decoration/strata{
@@ -33012,7 +33035,7 @@
 /area/strata/ag/exterior/marsh/relay_marshes)
 "ubN" = (
 /turf/open/asphalt/cement,
-/area/strata/ag/interior/outside/engineering/parts_storage)
+/area/strata/ag/interior/outside/checkpoints/south)
 "ucl" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -34640,6 +34663,9 @@
 "xje" = (
 /turf/open/asphalt/cement/cement1,
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior)
+"xjp" = (
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/mining_outpost/south_dormitories)
 "xjr" = (
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/platform/east)
@@ -34853,7 +34879,7 @@
 "xDu" = (
 /obj/structure/sign/nosmoking_2,
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/ag/interior/outside/engineering/parts_storage)
+/area/strata/ag/interior/outside/checkpoints/south)
 "xDD" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -39726,9 +39752,9 @@ chq
 aMB
 aJP
 ctC
-aOS
-aQv
-aRC
+iGm
+aPh
+pWz
 aSR
 aUu
 aWi
@@ -39901,9 +39927,9 @@ aIn
 aLf
 aMB
 aNJ
-aOP
-aQv
-aRA
+xjp
+aPh
+clW
 aSS
 ctx
 cty
@@ -40076,10 +40102,10 @@ chq
 aLf
 aMB
 fno
-aoj
-aQv
-cnv
-aST
+ckX
+aPh
+cov
+miI
 spJ
 cty
 cty
@@ -40251,8 +40277,8 @@ chr
 bWy
 aMB
 cjv
-aoj
-aQw
+ckX
+lmF
 aRD
 aSR
 aUv
@@ -40426,9 +40452,9 @@ fWV
 aLg
 aMB
 cjv
-aoj
-aQv
-cnv
+ckX
+aPh
+cov
 aac
 aac
 aWk
@@ -40601,10 +40627,10 @@ aJQ
 aLh
 aMB
 cjv
-aOP
-aQv
-aRA
-nog
+xjp
+aPh
+clW
+cnB
 aac
 aWk
 bnm
@@ -40776,10 +40802,10 @@ ceq
 aLi
 aMD
 crY
-aOS
-aQv
-cnv
-azx
+iGm
+aPh
+cov
+cjw
 aac
 bXc
 jgX
@@ -46621,7 +46647,7 @@ vrH
 rXy
 aac
 aac
-hYc
+cwT
 cwT
 cbO
 ixS
@@ -46796,11 +46822,11 @@ mCK
 qfC
 aac
 aac
-hYc
+cwT
 qDI
 gpr
-tRC
-hYc
+swQ
+cwT
 aac
 bxy
 xCX
@@ -46971,11 +46997,11 @@ vrH
 rXy
 aac
 aac
-hYc
+cwT
 psE
 lrd
 pXB
-hYc
+cwT
 aac
 bea
 bxy
@@ -47149,8 +47175,8 @@ aac
 xDu
 nQk
 ubN
-tRC
-hYc
+swQ
+cwT
 aac
 aac
 bea

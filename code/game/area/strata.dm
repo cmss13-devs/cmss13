@@ -151,9 +151,11 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/exterior/marsh/island_marshes
 	name = "Cryo-Thermal Island Marshes"
+	is_landing_zone = TRUE
 
 /area/strata/ag/exterior/marsh/relay_marshes
 	name = "Cryo-Thermal Relay Marshes"
+	is_landing_zone = TRUE
 
 /area/strata/ag/exterior/marsh/center
 	name = "Cryo-Thermal Springs"
@@ -356,6 +358,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/interior/outside/checkpoints/south
 	name = "Landing Zone South Security Checkpoint"
+	is_landing_zone = TRUE
 
 /area/strata/ag/interior/outside/checkpoints/outpost
 	name = "Outpost Deck Security Checkpoint"

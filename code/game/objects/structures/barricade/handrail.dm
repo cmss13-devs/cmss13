@@ -58,7 +58,7 @@
 					if(prob(25))
 						if(ishuman(climber))
 							var/mob/living/carbon/human/human = climber
-							human.apply_damage(15,BRUTE,no_limb_loss = TRUE)
+							human.apply_damage(5,BRUTE,no_limb_loss = TRUE)
 						else
 							climber.apply_damage(15,BRUTE)
 						climber.visible_message(SPAN_WARNING("You hit yourself as you vault over the [src]"))

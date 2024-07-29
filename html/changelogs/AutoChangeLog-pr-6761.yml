@@ -1,0 +1,5 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - balance: "revolver belt and sg holster belt can fit any revolver"
+  - balance: "increased mateba belt storage size from 6 to 7"

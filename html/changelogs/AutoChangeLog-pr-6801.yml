@@ -1,4 +1,4 @@
 author: "cuberound"
 delete-after: True
 changes:
-  - rscdel: "Removed malfanction closet"
+  - rscdel: "Removes mass driver"

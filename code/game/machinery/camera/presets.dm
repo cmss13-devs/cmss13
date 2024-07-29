@@ -99,6 +99,10 @@
 	name = "ares core camera"
 	network = list(CAMERA_NET_ARES)
 
+/obj/structure/machinery/camera/autoname/almayer/brig
+	name = "brig camera"
+	network = list(CAMERA_NET_BRIG)
+
 //used by the landing camera dropship equipment. Do not place them right under where the dropship lands.
 //Should place them near each corner of your LZs.
 /obj/structure/machinery/camera/autoname/lz_camera

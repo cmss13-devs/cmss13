@@ -1,6 +1,6 @@
 #define HIJACK_EXPLOSION_COUNT 5
 #define MARINE_MAJOR_ROUND_END_DELAY (3 MINUTES)
-#define LZ_HAZARD_START (2 SECONDS)
+#define LZ_HAZARD_START (3 MINUTES)
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"

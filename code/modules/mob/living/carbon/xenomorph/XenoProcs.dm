@@ -457,7 +457,7 @@
 			has_obstacle = TRUE
 			break
 
-	if(current_turf.density || has_obstacle )
+	if(current_turf.density || has_obstacle)
 		if(!silent)
 			to_chat(src, SPAN_WARNING("There's something built here already."))
 		return

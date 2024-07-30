@@ -41,5 +41,3 @@
 // #define TESTING
 // #define REFERENCE_TRACKING
 // #define GC_FAILURE_HARD_LOOKUP
-
-#define AUTOWIKI

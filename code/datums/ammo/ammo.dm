@@ -176,7 +176,7 @@
 	if(isxeno(living_mob))
 		var/mob/living/carbon/xenomorph/xeno = living_mob
 		if(xeno.caste.tier > 2)
-				return //tier 3 are not affected
+			return //tier 3 are not affected
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		target.apply_effect(1, SUPERSLOW)

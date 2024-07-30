@@ -204,6 +204,8 @@
 				S = pick('sound/items/cane_step_1.ogg', 'sound/items/cane_step_2.ogg', 'sound/items/cane_step_3.ogg', 'sound/items/cane_step_4.ogg', 'sound/items/cane_step_5.ogg', )
 			if("match")
 				S = pick('sound/effects/match.ogg')
+			if("throwing")
+				S = pick('sound/effects/throwing/swoosh1.ogg', 'sound/effects/throwing/swoosh2.ogg', 'sound/effects/throwing/swoosh3.ogg', 'sound/effects/throwing/swoosh4.ogg')
 			if("punch")
 				S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 			if("swing_hit")

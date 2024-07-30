@@ -1364,6 +1364,40 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "A sturdy helmet worn by an unknown mercenary group. Features a toggleable welding screen for eye protection."
 	built_in_visors = list(new /obj/item/device/helmet_visor/welding_visor/mercenary)
 
+//=======================================================================\\
+
+/obj/item/clothing/head/helmet/marine/veteran/mercenary_lowthreat
+	name = "\improper L12 ceramic helmet"
+	desc = "A sturdy helmet worn by an unknown mercenary group. This is a cheaper version of the far more stronger K12 helmet."
+	icon_state = "mercenary_heavy_helmet"
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
+	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
+
+/obj/item/clothing/head/helmet/marine/veteran/mercenary_lowthreat/miner
+	name = "\improper L8 miner helmet"
+	desc = "A sturdy helmet, specialised for mining, worn by an unknown mercenary group. This is a cheaper version of the far more stronger L8 helmet."
+	icon_state = "mercenary_miner_helmet"
+
+/obj/item/clothing/head/helmet/marine/veteran/mercenary_lowthreat/support
+	name = "\improper L7 helmet"
+	desc = "A sturdy helmet worn by an unknown mercenary group. This is a cheaper version of the far more stronger L8 helmet."
+	icon_state = "mercenary_engineer_helmet"
+
+/obj/item/clothing/head/helmet/marine/veteran/mercenary_lowthreat/support/engineer
+	desc = "A sturdy helmet worn by an unknown mercenary group. Features a toggleable welding screen for eye protection. This is a cheaper version of the far more stronger L8 helmet."
+	built_in_visors = list(new /obj/item/device/helmet_visor/welding_visor/mercenary)
+
+
 //=============================//MEME\\==================================\\
 //=======================================================================\\
 

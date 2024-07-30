@@ -46,7 +46,7 @@
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or mentor).
 	COOLDOWN_DECLARE(bracer_recharge)
 	/// What minimap icon this bracer should have
-	var/minimap_icon = "predator"
+	var/minimap_icon
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
@@ -54,6 +54,8 @@
 		START_PROCESSING(SSobj, src)
 		if(!owner)
 			owner = user
+		if(isyautja(owner))
+			minimap_icon = owner.assigned_equipment_preset?.minimap_icon
 		toggle_lock_internal(user, TRUE)
 		RegisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH), PROC_REF(update_minimap_icon))
 		INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), user)

@@ -5,6 +5,8 @@
 	rank = JOB_CMB
 	idtype = /obj/item/card/id/deputy
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+	minimap_background = "background_cmb"
+	minimap_background_color = FALSE
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/CMB
 
@@ -63,6 +65,9 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Deputy"
 	rank = JOB_CMB
+
+	minimap_icon = "deputy"
+
 	skills = /datum/skills/cmb
 
 /datum/equipment_preset/cmb/standard/load_gear(mob/living/carbon/human/new_human)
@@ -146,6 +151,8 @@
 	role_comm_title = "CMB MAR"
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	minimap_icon = "xo"
+
 	assignment = "CMB Marshal"
 	rank = JOB_CMB_TL
 	skills = /datum/skills/cmb/leader
@@ -199,6 +206,8 @@
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
+
+	minimap_icon = "cmb_syn"
 
 	assignment = "CMB Investigative Synthetic"
 	rank = JOB_CMB_SYN
@@ -302,6 +311,8 @@
 	role_comm_title = "ICC Rep."
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	minimap_icon = "icc"
+
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	rank = JOB_CMB_ICC
 	skills = /datum/skills/civilian/survivor
@@ -360,6 +371,8 @@
 	idtype = /obj/item/card/id/lanyard
 	role_comm_title = "OBS"
 	flags = EQUIPMENT_PRESET_EXTRA
+
+	minimap_icon = "obs"
 
 	assignment = "Interstellar Human Rights Observer"
 	rank = JOB_CMB_OBS

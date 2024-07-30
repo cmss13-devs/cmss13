@@ -297,11 +297,10 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
-	icon = 'icons/lobby/title.dmi'
-	icon_state = ""
-// icon_state = "title_holiday"
+	icon = 'icons/lobby/title_loading.dmi'
+	icon_state = "title"
 	layer = FLY_LAYER
-	special_icon = 1
+	special_icon = TRUE
 
 /turf/closed/wall/indestructible/splashscreen/Initialize()
 	. = ..()
@@ -309,16 +308,19 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /proc/force_lobby_art(art_id)
 	GLOB.displayed_lobby_art = art_id
-	var/turf/closed/wall/indestructible/splashscreen/SS = locate("LOBBYART")
+	var/turf/closed/wall/indestructible/splashscreen/lobby_art = locate("LOBBYART")
 	var/list/lobby_arts = CONFIG_GET(str_list/lobby_art_images)
 	var/list/lobby_authors = CONFIG_GET(str_list/lobby_art_authors)
-	SS.icon_state = lobby_arts[GLOB.displayed_lobby_art]
-	SS.desc = "Artwork by [lobby_authors[GLOB.displayed_lobby_art]]"
-	for(var/client/C in GLOB.clients)
+	lobby_art.icon = 'icons/lobby/title.dmi'
+	lobby_art.icon_state = lobby_arts[GLOB.displayed_lobby_art]
+	lobby_art.desc = "Artwork by [lobby_authors[GLOB.displayed_lobby_art]]"
+	lobby_art.pixel_x = -288
+	lobby_art.pixel_y = -288
+	for(var/client/player in GLOB.clients)
 		if(GLOB.displayed_lobby_art != -1)
 			var/author = lobby_authors[GLOB.displayed_lobby_art]
 			if(author != "Unknown")
-				to_chat_forced(C, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
+				to_chat_forced(player, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
 
 /turf/closed/wall/indestructible/other
 	icon_state = "r_wall"
@@ -1036,7 +1038,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	SPAN_XENONOTICE("You claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
 	if (M.hivenumber == hivenumber)
-		take_damage(Ceiling(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
+		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
 		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
 	return XENO_ATTACK_ACTION
@@ -1252,7 +1254,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	SPAN_XENONOTICE("We claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
 	if (M.hivenumber == hivenumber)
-		take_damage(Ceiling(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
+		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
 		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
 	return XENO_ATTACK_ACTION

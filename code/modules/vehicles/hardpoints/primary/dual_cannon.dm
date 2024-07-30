@@ -1,6 +1,6 @@
 // APC cannons
 /obj/item/hardpoint/primary/dualcannon
-	name = "PARS-159 Boyars Dualcannon"
+	name = "\improper PARS-159 Boyars Dualcannon"
 	desc = "A primary two-barrel cannon for the APC that shoots 20mm IFF-compatible rounds."
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
 
@@ -14,7 +14,7 @@
 	health = 500
 	firing_arc = 60
 
-	origins = list(0, -2)
+	origins = list(0, 1)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/boyars_dualcannon
 	max_clips = 2

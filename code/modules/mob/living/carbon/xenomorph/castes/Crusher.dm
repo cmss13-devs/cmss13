@@ -51,7 +51,7 @@
 	base_pixel_y = -16
 
 	rebounds = FALSE // no more fucking pinball crooshers
-
+	organ_value = 3000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -184,7 +184,7 @@
 				. = FALSE
 			else if (O.anchored)
 				visible_message(SPAN_DANGER("[src] crushes [O]!"), SPAN_XENODANGER("We crush [O]!"))
-				if(O.contents.len) //Hopefully won't auto-delete things inside crushed stuff.
+				if(length(O.contents)) //Hopefully won't auto-delete things inside crushed stuff.
 					var/turf/T = get_turf(src)
 					for(var/atom/movable/S in T.contents) S.forceMove(T)
 
@@ -261,11 +261,11 @@
 
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
 
-	var/datum/action/xeno_action/activable/pounce/crusher_charge/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
+	var/datum/action/xeno_action/activable/pounce/crusher_charge/cAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
 	if (!cAction.action_cooldown_check())
 		cAction.reduce_cooldown(cdr_amount)
 
-	var/datum/action/xeno_action/onclick/crusher_shield/sAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/crusher_shield)
+	var/datum/action/xeno_action/onclick/crusher_shield/sAction = get_action(bound_xeno, /datum/action/xeno_action/onclick/crusher_shield)
 	if (!sAction.action_cooldown_check())
 		sAction.reduce_cooldown(base_cdr_amount)
 

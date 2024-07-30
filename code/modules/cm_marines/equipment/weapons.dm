@@ -21,9 +21,8 @@
 	update_icon()
 
 /obj/item/storage/box/m56_system/update_icon()
-	if(overlays.len)
-		overlays.Cut()
-	if(contents.len)
+	LAZYCLEARLIST(overlays)
+	if(length(contents))
 		icon_state = "kit_case"
 		overlays += image(icon, "smartgun")
 	else
@@ -50,9 +49,8 @@
 	update_icon()
 
 /obj/item/storage/box/m56c_system/update_icon()
-	if(overlays.len)
-		overlays.Cut()
-	if(contents.len)
+	LAZYCLEARLIST(overlays)
+	if(length(contents))
 		icon_state = "kit_case"
 		overlays += image(icon, "smartgun")
 	else
@@ -80,9 +78,8 @@
 	update_icon()
 
 /obj/item/storage/box/m56_dirty_system/update_icon()
-	if(overlays.len)
-		overlays.Cut()
-	if(contents.len)
+	LAZYCLEARLIST(overlays)
+	if(length(contents))
 		icon_state = "kit_case"
 		overlays += image(icon, "smartgun")
 	else

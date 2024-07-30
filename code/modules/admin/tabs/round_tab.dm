@@ -1,22 +1,37 @@
 /client/proc/adjust_predator_round()
-	set name = "Adjust Predator Round"
-	set desc = "Adjust the number of predators present in a predator round."
+	set name = "Adjust Predator Slots"
+	set desc = "Adjust the extra slots for predators."
 	set category = "Server.Round"
 
-	if(admin_holder)
-		if(!SSticker || !SSticker.mode)
-			to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
-			return
+	if(!admin_holder)
+		return
 
-		var/value = tgui_input_number(src,"How many additional predators can join? Decreasing the value is not recommended. Current predator count: [SSticker.mode.pred_current_num]","Input:", 0, (SSticker.mode.pred_additional_max - SSticker.mode.pred_current_num))
+	if(!SSticker?.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
 
-		if(value < SSticker.mode.pred_current_num)
-			to_chat(src, SPAN_NOTICE("Aborting. Number cannot be lower than the current pred count. (current: [SSticker.mode.pred_current_num], attempted: [value])"))
-			return
+	var/cur_extra = SSticker.mode.pred_additional_max
+	var/cur_count = SSticker.mode.pred_current_num
+	var/cur_max = SSticker.mode.calculate_pred_max()
+	var/value = tgui_input_number(src, "How many additional predators can join? Current predator count: [cur_count]/[cur_max] Current setting: [cur_extra]", "Input:", default = cur_extra, min_value = 0, integer_only = TRUE)
 
-		if(value)
-			SSticker.mode.pred_additional_max = abs(value)
-			message_admins("[key_name_admin(usr)] adjusted the additional pred amount to [abs(value)].")
+	if(isnull(value))
+		return
+
+	if(value == cur_extra)
+		return
+
+	cur_count = SSticker.mode.pred_current_num // values could have changed since asking
+	cur_max = SSticker.mode.calculate_pred_max()
+	var/free_extra = max(min(cur_extra, cur_max - cur_count), 0) // how much we could potentionally reduce pred_additional_max
+
+	// If we are reducing the count and that exceeds how much we could reduce it by
+	if(value < cur_extra && (cur_extra - value) > free_extra)
+		to_chat(src, SPAN_NOTICE("Aborting. Number cannot result in a max less than current pred count. (current: [cur_count]/[cur_max], current extra: [cur_extra], attempted: [value])"))
+		return
+
+	SSticker.mode.pred_additional_max = value
+	message_admins("[key_name_admin(usr)] adjusted the additional pred amount from [cur_extra] to [value].")
 
 /datum/admins/proc/force_predator_round()
 	set name = "Toggle Predator Round"
@@ -42,6 +57,7 @@
 		if(istype(PJ) && !PJ.spawn_positions)
 			PJ.set_spawn_positions(GLOB.players_preassigned)
 		predator_round.flags_round_type |= MODE_PREDATOR
+		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 	else
 		predator_round.flags_round_type &= ~MODE_PREDATOR
 

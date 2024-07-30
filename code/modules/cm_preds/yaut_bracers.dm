@@ -556,7 +556,7 @@
 	set src in usr
 	. = cloaker_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/cloaker_internal(mob/caller, forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/cloaker_internal(mob/caller, forced = FALSE, silent = FALSE, instant = FALSE)
 	. = check_random_function(caller, forced)
 	if(.)
 		return
@@ -569,7 +569,7 @@
 
 	if(HAS_TRAIT(caller, TRAIT_CLOAKED)) //Turn it off.
 		if(cloak_timer > world.time)
-			to_chat(M, SPAN_WARNING("Your cloaking device is busy! Time left: <B>[max(round((cloak_timer - world.time) / 10), 1)]</b> seconds."))
+			to_chat(M, SPAN_WARNING("Your cloaking device is busy! Time left: <B>[max(floor((cloak_timer - world.time) / 10), 1)]</b> seconds."))
 			return FALSE
 		decloak(caller)
 	else //Turn it on!
@@ -582,7 +582,7 @@
 			return FALSE
 
 		if(cloak_timer > world.time)
-			to_chat(M, SPAN_WARNING("Your cloaking device is still recharging! Time left: <B>[max(round((cloak_timer - world.time) / 10), 1)]</b> seconds."))
+			to_chat(M, SPAN_WARNING("Your cloaking device is still recharging! Time left: <B>[max(floor((cloak_timer - world.time) / 10), 1)]</b> seconds."))
 			return FALSE
 
 		if(!drain_power(M, 50))
@@ -600,15 +600,21 @@
 			M.see_invisible = SEE_INVISIBLE_LEVEL_ONE
 
 		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
-		M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
-		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
-		animate(M, alpha = new_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
+		if(!silent)
+			M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
+			playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
+
+		if(!instant)
+			animate(M, alpha = new_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
+		else
+			M.alpha = new_alpha
 
 		var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		SA.remove_from_hud(M)
 		var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 		XI.remove_from_hud(M)
-		anim(M.loc,M,'icons/mob/mob.dmi',,"cloak",,M.dir)
+		if(!instant)
+			anim(M.loc,M,'icons/mob/mob.dmi',,"cloak",,M.dir)
 
 	var/datum/action/predator_action/bracer/cloak/cloak_action
 	for(cloak_action as anything in M.actions)
@@ -633,6 +639,8 @@
 /obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multipler = DECLOAK_FORCED)
 	if(!user)
 		return
+
+	SEND_SIGNAL(src, COMSIG_PRED_BRACER_DECLOAKED)
 
 	UnregisterSignal(user, COMSIG_HUMAN_EXTINGUISH)
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)

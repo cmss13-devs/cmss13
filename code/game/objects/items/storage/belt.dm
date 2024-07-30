@@ -145,7 +145,7 @@
 
 /obj/item/storage/belt/medical
 	name = "\improper M276 pattern medical storage rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport medical supplies and pistol ammunition. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport bulkier medical supplies. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
 	icon_state = "medicalbelt"
 	item_state = "medical"
 	storage_slots = 14
@@ -357,7 +357,7 @@
 		/obj/item/explosive/grenade/flashbang,
 		/obj/item/explosive/grenade/custom/teargas,
 		/obj/item/reagent_container/spray/pepper,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/flash,
 		/obj/item/clothing/glasses,
 		/obj/item/ammo_magazine/pistol,
@@ -402,7 +402,7 @@
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
 
@@ -412,7 +412,7 @@
 	new /obj/item/weapon/baton(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 
 /obj/item/storage/belt/security/MP/UPP
 	name = "\improper Type 43 military police rig"
@@ -422,7 +422,7 @@
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/ammo_magazine/revolver/upp/shrapnel(src)
 
@@ -439,8 +439,8 @@
 	new /obj/item/weapon/baton(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/explosive/grenade/flashbang(src)
 
 /obj/item/storage/belt/security/MP/CMB/synth/fill_preset_inventory()
@@ -449,8 +449,8 @@
 	new /obj/item/weapon/baton(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/explosive/grenade/flashbang(src)
 
 /obj/item/storage/belt/marine
@@ -1084,11 +1084,11 @@
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
 		if(ammo_dumping.current_rounds != 0)
-			if(contents.len < storage_slots - 1) //this is because it's a gunbelt and the final slot is reserved for the gun
+			if(length(contents) < storage_slots - 1) //this is because it's a gunbelt and the final slot is reserved for the gun
 				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
 				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
 				for(var/i = 1 to handfuls)
-					if(contents.len < storage_slots - 1)
+					if(length(contents) < storage_slots - 1)
 						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
 						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
@@ -1209,6 +1209,22 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
 
+/obj/item/storage/belt/gun/m4a3/nailgun
+	name = "customized nailgun holster"
+	desc = "Combination of a M276 pistol holster and engineering toolbelt that have been cannibalized into a unique belt that can holster a compact nailgun and two spare nailgun magazines."
+	icon_state = "nailgun_holster"
+	storage_slots = 3
+	can_hold = list(
+		/obj/item/weapon/gun/smg/nailgun/compact,
+		/obj/item/ammo_magazine/smg/nailgun,
+	)
+	has_gamemode_skin = FALSE
+
+/obj/item/storage/belt/gun/m4a3/nailgun/prefilled/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/smg/nailgun/compact())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/smg/nailgun(src)
+
 /obj/item/storage/belt/gun/m39
 	name = "\improper M276 pattern M39 holster rig"
 	desc = "Special issue variant of the M276 designed to holster a M39 submachine gun and two spare magazines. Uncommonly issued to USCM support and specialist personnel."
@@ -1280,12 +1296,12 @@
 #undef MAXIMUM_MAGAZINE_COUNT
 
 /obj/item/storage/belt/gun/m44
-	name = "\improper M276 pattern M44 holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M44 magnum revolver, along with six small pouches for speedloaders. It smells faintly of hay."
+	name = "\improper M276 pattern general revoler holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is universal and adjustable for different revolvers, along with six small pouches for speedloaders. It smells faintly of hay."
 	icon_state = "m44r_holster"
 	storage_slots = 7
 	can_hold = list(
-		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 	)
 	has_gamemode_skin = TRUE
@@ -1367,7 +1383,7 @@
 	set name = "Detach revolver holster"
 	set src in usr
 	if(ishuman(usr))
-		if(contents.len)
+		if(length(contents))
 			to_chat(usr, SPAN_WARNING("The belt needs to be fully empty to remove the holster!"))
 			return
 		to_chat(usr, SPAN_NOTICE("You detach the holster from the belt."))
@@ -1397,7 +1413,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with five small pouches for speedloaders. This one is aging poorly, and seems to be surplus equipment. It's stamped '3rd 'Dust Raiders' Battalion'."
 	icon_state = "s_cmateba_holster"
 	item_state = "s_marinebelt"
-	storage_slots = 6
+	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/mateba,
@@ -1681,7 +1697,7 @@
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
 		/obj/item/weapon/gun/pistol,
-		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/smartgun,
@@ -1701,8 +1717,7 @@
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
 		/obj/item/weapon/gun/pistol,
-		/obj/item/weapon/gun/revolver/m44,
-		/obj/item/weapon/gun/revolver/mateba,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver/mateba,
 		/obj/item/ammo_magazine/pistol,
@@ -1724,8 +1739,7 @@
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
 		/obj/item/weapon/gun/pistol,
-		/obj/item/weapon/gun/revolver/m44,
-		/obj/item/weapon/gun/revolver/mateba,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver/mateba,
 		/obj/item/ammo_magazine/pistol,
@@ -1747,8 +1761,7 @@
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
 		/obj/item/weapon/gun/pistol,
-		/obj/item/weapon/gun/revolver/m44,
-		/obj/item/weapon/gun/revolver/mateba,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver/mateba,
 		/obj/item/ammo_magazine/pistol,

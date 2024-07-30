@@ -245,7 +245,7 @@
 			P.wrapped = O
 			O.forceMove(P)
 			P.w_class = O.w_class
-			var/i = round(P.w_class)
+			var/i = floor(P.w_class)
 			if(i in list(1,2,3,4,5))
 				P.icon_state = "deliverycrate[i]"
 				switch(i)
@@ -337,7 +337,7 @@
 	var/dat = "<tt><center><h1><b>TagMaster 2.3</b></h1></center>"
 
 	dat += "<table style='width:100%; padding:4px;'><tr>"
-	for(var/i = 1, i <= GLOB.tagger_locations.len, i++)
+	for(var/i = 1, i <= length(GLOB.tagger_locations), i++)
 		dat += "<td><a href='?src=\ref[src];nextTag=[GLOB.tagger_locations[i]]'>[GLOB.tagger_locations[i]]</a></td>"
 
 		if (i%4==0)

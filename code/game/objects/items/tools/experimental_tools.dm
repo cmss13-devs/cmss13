@@ -107,7 +107,7 @@
 		icon_state = "autocomp"
 	if(pdcell && pdcell.charge)
 		overlays.Cut()
-	switch(round(pdcell.charge * 100 / pdcell.maxcharge))
+	switch(floor(pdcell.charge * 100 / pdcell.maxcharge))
 		if(1 to 32)
 			overlays += "cpr_batt_lo"
 		if(33 to 65)
@@ -118,7 +118,7 @@
 
 /obj/item/clothing/suit/auto_cpr/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("It has [round(pdcell.charge * 100 / pdcell.maxcharge)]% charge remaining.")
+	. += SPAN_NOTICE("It has [floor(pdcell.charge * 100 / pdcell.maxcharge)]% charge remaining.")
 
 
 
@@ -230,7 +230,7 @@
 		overlays += "+filtering"
 
 	if(pdcell && pdcell.charge)
-		switch(round(pdcell.charge * 100 / pdcell.maxcharge))
+		switch(floor(pdcell.charge * 100 / pdcell.maxcharge))
 			if(85 to INFINITY)
 				overlays += "dialysis_battery_100"
 			if(60 to 84)
@@ -249,7 +249,7 @@
 /obj/item/tool/portadialysis/get_examine_text(mob/user)
 	. = ..()
 	var/currentpercent = 0
-	currentpercent = round(pdcell.charge * 100 / pdcell.maxcharge)
+	currentpercent = floor(pdcell.charge * 100 / pdcell.maxcharge)
 	. += SPAN_INFO("It has [currentpercent]% charge left in its internal battery.")
 
 /obj/item/tool/portadialysis/proc/painful_detach()
@@ -379,5 +379,5 @@
 		arms_to_damage -= l_arm
 	if(r_arm.status & LIMB_DESTROYED)
 		arms_to_damage -= r_arm
-	if(arms_to_damage.len)
+	if(length(arms_to_damage))
 		human_to_damage.apply_damage(3, BRUTE, pick(arms_to_damage))

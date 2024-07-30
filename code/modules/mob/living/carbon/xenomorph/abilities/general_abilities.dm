@@ -329,6 +329,9 @@
 		xeno.recalculate_speed()
 	button.icon_state = "template"
 
+/datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_in()
+	return
+
 /datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/xeno, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 	movement_buffer--
@@ -482,6 +485,7 @@
 	listen_signal = COMSIG_KB_XENO_EVOLVE
 
 /datum/action/xeno_action/onclick/evolve/action_activate()
+	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.do_evolve()
 
@@ -563,3 +567,18 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.xeno_tacmap()
 	return ..()
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision
+	name = "Toggle Meson Vision"
+	action_icon_state = "project_xeno"
+	plasma_cost = 0
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_5
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision/enable_toggle()
+	. = ..()
+	owner.sight |= SEE_TURFS
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision/disable_toggle()
+	. = ..()
+	owner.sight &= ~SEE_TURFS

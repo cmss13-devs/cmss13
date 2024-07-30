@@ -21,8 +21,7 @@ SUBSYSTEM_DEF(interior)
 
 	var/list/bounds = template.load(locate(bottom_left.x + (INTERIOR_BORDER_SIZE / 2), bottom_left.y + (INTERIOR_BORDER_SIZE / 2), bottom_left.z), centered = FALSE)
 
-	var/list/turfs = block( locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
-							locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
+	var/list/turfs = block(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ], bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ])
 
 	var/list/areas = list()
 	for(var/turf/current_turf as anything in turfs)

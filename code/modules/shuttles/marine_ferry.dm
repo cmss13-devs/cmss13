@@ -44,7 +44,7 @@
 	if(!LAZYLEN(locs_land))
 		return TRUE
 
-	if(!main_doors.len && !controls.len)
+	if(!length(main_doors) && !length(controls))
 		var/turf/T_src = pick(locs_dock)
 		var/list/turfs = get_shuttle_turfs(T_src, info_datums)
 		for(var/turf/T in turfs)
@@ -147,12 +147,12 @@
 
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 
 	for(var/obj/structure/dropship_equipment/fuel/cooling_system/CS in equipments)
-		recharging = round(recharging * SHUTTLE_COOLING_FACTOR_RECHARGE) //cooling system reduces recharge time
+		recharging = floor(recharging * SHUTTLE_COOLING_FACTOR_RECHARGE) //cooling system reduces recharge time
 		break
 
 	//START: Heavy lifting backend
@@ -164,7 +164,7 @@
 	var/int_rot = locs_move[T_int]
 	var/turf/T_trg
 	var/trg_rot
-	if(!locs_land.len) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
+	if(!length(locs_land)) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
 		transit_gun_mission = 1
 
 	if(transit_gun_mission)//gun mission makes you land back where you started.
@@ -194,7 +194,7 @@
 		for(var/X in equipments)
 			var/obj/structure/dropship_equipment/E = X
 			if(istype(E, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-				travel_time  = round(travel_time / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer increases travel time
+				travel_time  = floor(travel_time / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer increases travel time
 				break
 	else
 		if(transit_optimized)
@@ -205,7 +205,7 @@
 		for(var/X in equipments)
 			var/obj/structure/dropship_equipment/E = X
 			if(istype(E, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-				travel_time  = round(travel_time * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer reduces travel time
+				travel_time  = floor(travel_time * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer reduces travel time
 				break
 
 	//START: Heavy lifting backend
@@ -324,7 +324,7 @@
 	if(moving_status != SHUTTLE_IDLE) return
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 
@@ -349,7 +349,7 @@
 			for(var/turf/TU in SSoldshuttle.shuttle_controller.locs_crash[target_section])
 				if(istype(get_area(TU), /area/almayer/hallways/hangar))
 					crash_turfs += TU
-			if(crash_turfs.len) T_trg = pick(crash_turfs)
+			if(length(crash_turfs)) T_trg = pick(crash_turfs)
 			else message_admins("no crash turf found in Almayer Hangar, contact coders.")
 			break
 

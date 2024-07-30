@@ -84,8 +84,8 @@
 			recharge_duration = recharge_duration * SHUTTLE_COOLING_FACTOR_RECHARGE
 
 
-	dropship.callTime = round(flight_duration)
-	dropship.rechargeTime = round(recharge_duration)
+	dropship.callTime = floor(flight_duration)
+	dropship.rechargeTime = floor(recharge_duration)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -101,7 +101,7 @@
 	if(disabled)
 		return UI_UPDATE
 	if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
-		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
+		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 		return UI_CLOSE
 	if(dropship_control_lost)
 		var/remaining_time = timeleft(door_control_cooldown) / 10
@@ -314,7 +314,7 @@
 	var/original_evilution = hive.evolution_bonus
 	hive.override_evilution(XENO_HIJACK_EVILUTION_BUFF, TRUE)
 	if(hive.living_xeno_queen)
-		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_xeno_action_by_type(hive.living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
+		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_action(hive.living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
 		ovi_ability.reduce_cooldown(ovi_ability.xeno_cooldown)
 	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
 

@@ -39,13 +39,13 @@
 	var/total_transfered = 0
 	var/current_list_element = 1
 
-	current_list_element = rand(1,reagent_list.len)
+	current_list_element = rand(1,length(reagent_list))
 
 	while(total_transfered != amount)
 		if(total_transfered >= amount) break
-		if(total_volume <= 0 || !reagent_list.len) break
+		if(total_volume <= 0 || !length(reagent_list)) break
 
-		if(current_list_element > reagent_list.len) current_list_element = 1
+		if(current_list_element > length(reagent_list)) current_list_element = 1
 		var/datum/reagent/current_reagent = reagent_list[current_list_element]
 
 		remove_reagent(current_reagent.id, 1)
@@ -62,17 +62,17 @@
 	var/total_transfered = 0
 	var/current_list_element = 1
 
-	current_list_element = rand(1, reagent_list.len)
+	current_list_element = rand(1, length(reagent_list))
 
 	while(total_transfered != amount)
 		if(total_transfered >= amount) break
-		if(total_volume <= 0 || !reagent_list.len) break
+		if(total_volume <= 0 || !length(reagent_list)) break
 
-		if(current_list_element > reagent_list.len) current_list_element = 1
+		if(current_list_element > length(reagent_list)) current_list_element = 1
 		var/datum/reagent/current_reagent = reagent_list[current_list_element]
 
 		if(current_reagent.id == reagent_to_ignore)
-			if(reagent_list.len == 1) break //if the reagent to be avoided is the only one in the list, we're done here.
+			if(length(reagent_list) == 1) break //if the reagent to be avoided is the only one in the list, we're done here.
 			if(current_list_element == 1)
 				current_reagent = reagent_list[current_list_element + 1] //if the selected reagent was number 1, we don't want it trying to draw id.0, so we add 1
 			else
@@ -252,11 +252,11 @@
 
 				var/datum/chemical_reaction/C = reaction
 
-				var/total_required_reagents = C.required_reagents.len
+				var/total_required_reagents = length(C.required_reagents)
 				var/total_matching_reagents = 0
 				var/total_required_catalysts = 0
 				if(C.required_catalysts)
-					total_required_catalysts = C.required_catalysts.len
+					total_required_catalysts = length(C.required_catalysts)
 				var/total_matching_catalysts= 0
 				var/matching_container = 0
 				var/matching_other = 0
@@ -266,7 +266,7 @@
 					if(!has_reagent(B, C.required_reagents[B]))
 						break
 					total_matching_reagents++
-					multipliers += round(get_reagent_amount(B) / C.required_reagents[B])
+					multipliers += floor(get_reagent_amount(B) / C.required_reagents[B])
 				for(var/B in C.required_catalysts)
 					if(B == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/silver))
 						total_matching_catalysts++
@@ -594,9 +594,9 @@
 				dir = E.dir
 
 	//only integers please
-	radius = round(radius)
-	intensity = round(intensity)
-	duration = round(duration)
+	radius = floor(radius)
+	intensity = floor(intensity)
+	duration = floor(duration)
 	if(ex_power > 0)
 		explode(sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle)
 	if(intensity > 0)
@@ -630,7 +630,7 @@
 	if(my_atom) //It exists outside of null space.
 		for(var/datum/reagent/R in reagent_list) // if you want to do extra stuff when other chems are present, do it here
 			if(R.id == "iron")
-				shards += round(R.volume)
+				shards += floor(R.volume)
 			else if(R.id == "phoron" && R.volume >= EXPLOSION_PHORON_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
 

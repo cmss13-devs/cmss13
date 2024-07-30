@@ -1,5 +1,7 @@
-import { useBackend, useLocalState } from '../backend';
-import { Stack, Section, Tabs, Input, Button } from '../components';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Button, Input, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const PhoneMenu = (props) => {
@@ -18,14 +20,7 @@ const GeneralPanel = (props) => {
   const { availability, last_caller } = data;
   const available_transmitters = Object.keys(data.available_transmitters);
   const transmitters = data.transmitters.filter((val1) =>
-    available_transmitters.includes(val1.phone_id)
-  );
-
-  const [currentSearch, setSearch] = useLocalState('current_search', '');
-
-  const [selectedPhone, setSelectedPhone] = useLocalState(
-    'selected_phone',
-    null
+    available_transmitters.includes(val1.phone_id),
   );
 
   const categories = [];
@@ -36,10 +31,9 @@ const GeneralPanel = (props) => {
     categories.push(data.phone_category);
   }
 
-  const [currentCategory, setCategory] = useLocalState(
-    'current_category',
-    categories[0]
-  );
+  const [currentSearch, setSearch] = useState('');
+  const [selectedPhone, setSelectedPhone] = useState(null);
+  const [currentCategory, setCategory] = useState(categories[0]);
 
   let dnd_tooltip = 'Do Not Disturb is DISABLED';
   let dnd_locked = 'No';
@@ -65,7 +59,8 @@ const GeneralPanel = (props) => {
               <Tabs.Tab
                 selected={val === currentCategory}
                 onClick={() => setCategory(val)}
-                key={val}>
+                key={val}
+              >
                 {val}
               </Tabs.Tab>
             ))}
@@ -80,7 +75,7 @@ const GeneralPanel = (props) => {
           />
         </Stack.Item>
         <Stack.Item grow>
-          <Section fill scrollable onComponentDidMount={(node) => node.focus()}>
+          <Section fill scrollable>
             <Tabs vertical>
               {transmitters.map((val) => {
                 if (
@@ -106,7 +101,8 @@ const GeneralPanel = (props) => {
                         ? document.activeElement.blur()
                         : false
                     }
-                    icon={val.phone_icon}>
+                    icon={val.phone_icon}
+                  >
                     {val.phone_id}
                   </Tabs.Tab>
                 );
@@ -117,18 +113,18 @@ const GeneralPanel = (props) => {
         {!!selectedPhone && (
           <Stack.Item>
             <Button
-              content="Dial"
               color="good"
               fluid
               textAlign="center"
               onClick={() => act('call_phone', { phone_id: selectedPhone })}
-            />
+            >
+              Dial
+            </Button>
           </Stack.Item>
         )}
         {!!last_caller && <Stack.Item>Last Caller: {last_caller}</Stack.Item>}
         <Stack.Item>
           <Button
-            content="Do Not Disturb"
             color="red"
             tooltip={dnd_tooltip}
             disabled={dnd_locked === 'Yes'}
@@ -136,7 +132,9 @@ const GeneralPanel = (props) => {
             fluid
             textAlign="center"
             onClick={() => act('toggle_dnd')}
-          />
+          >
+            Do Not Disturb
+          </Button>
         </Stack.Item>
       </Stack>
     </Section>

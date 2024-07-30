@@ -90,11 +90,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 /datum/entity/player/proc/add_note(note_text, is_confidential, note_category = NOTE_ADMIN, is_ban = FALSE, duration = null)
 	var/client/admin = usr.client
 	// do all checks here, especially for sensitive stuff like this
-	if(!admin || !admin.player_data)
-		return FALSE
-	if(note_category == NOTE_ADMIN || is_confidential)
-		if (!AHOLD_IS_MOD(admin.admin_holder))
+	if(!(note_category == NOTE_WHITELIST))
+		if(!admin || !admin.player_data)
 			return FALSE
+		if(note_category == NOTE_ADMIN || is_confidential)
+			if (!AHOLD_IS_MOD(admin.admin_holder))
+				return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
 	if(CONFIG_GET(flag/duplicate_notes_to_file))
@@ -119,7 +120,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	note.note_category = note_category
 	note.is_ban = is_ban
 	note.ban_time = duration
-	note.admin_rank = admin.admin_holder.rank
+	note.admin_rank = admin.admin_holder ? admin.admin_holder.rank : "Non-Staff"
 	// since admin is in game, their player_data has to be populated. This is also checked above
 	note.admin_id = admin.player_data.id
 	note.admin = admin.player_data
@@ -134,13 +135,17 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	notes.Add(note)
 	return TRUE
 
-/datum/entity/player/proc/remove_note(note_id)
+/datum/entity/player/proc/remove_note(note_id, whitelist = FALSE)
+	if(IsAdminAdvancedProcCall())
+		return PROC_BLOCKED
 	var/client/admin = usr.client
 	// do all checks here, especially for sensitive stuff like this
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.admin_holder))
+	if((!AHOLD_IS_MOD(admin.admin_holder)) && !whitelist)
+		return FALSE
+	if(whitelist && !(isSenator(admin) || CLIENT_HAS_RIGHTS(admin, R_PERMISSIONS)))
 		return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
@@ -601,14 +606,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			note.admin_rank = "N/A"
 		note.date = I.timestamp
 		var/list/splitting = splittext(I.content, "|")
-		if(splitting.len == 1)
+		if(length(splitting) == 1)
 			note.text = I.content
 			note.is_ban = FALSE
-		if(splitting.len == 3)
+		if(length(splitting) == 3)
 			note.text = splitting[3]
 			note.ban_time = text2num(replacetext(replacetext(splitting[2],"Duration: ","")," minutes",""))
 			note.is_ban = TRUE
-		if(splitting.len == 2)
+		if(length(splitting) == 2)
 			note.text = I.content
 			note.is_ban = TRUE
 

@@ -952,6 +952,13 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	cost = 1 //The cadmium poisoning pays for the discounted cost longterm
 	allowed_origins = USCM_ORIGINS
 
+/datum/gear/misc/dogtags
+	display_name = "Attachable Dogtags"
+	path = /obj/item/clothing/accessory/dogtags
+	cost = 1
+	slot = WEAR_IN_ACCESSORY
+	allowed_origins = USCM_ORIGINS
+
 /datum/gear/misc/patch_uscm
 	display_name = "USCM shoulder patch"
 	path = /obj/item/clothing/accessory/patch

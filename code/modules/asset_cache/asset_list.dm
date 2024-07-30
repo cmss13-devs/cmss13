@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		var/icon/big = size[SPRSZ_STRIPPED]
 		var/per_line = big.Width() / tiny.Width()
 		var/x = (idx % per_line) * tiny.Width()
-		var/y = round(idx / per_line) * tiny.Height()
+		var/y = floor(idx / per_line) * tiny.Height()
 
 		out += ".[name][size_id].[sprite_id]{background-position:-[x]px -[y]px;}"
 
@@ -203,7 +203,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 	for (var/icon_state_name in icon_states(I))
 		for (var/direction in directions)
-			var/prefix2 = (directions.len > 1) ? "[dir2text(direction)]-" : ""
+			var/prefix2 = (length(directions) > 1) ? "[dir2text(direction)]-" : ""
 			Insert("[prefix][prefix2][icon_state_name]", I, icon_state=icon_state_name, dir=direction)
 
 /datum/asset/spritesheet/proc/css_tag()
@@ -260,7 +260,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 			if (!asset)
 				continue
 			asset = fcopy_rsc(asset) //dedupe
-			var/prefix2 = (directions.len > 1) ? "[dir2text(direction)]." : ""
+			var/prefix2 = (length(directions) > 1) ? "[dir2text(direction)]." : ""
 			var/asset_name = sanitize_filename("[prefix].[prefix2][icon_state_name].png")
 			if (generic_icon_names)
 				asset_name = "[generate_asset_name(asset)].png"

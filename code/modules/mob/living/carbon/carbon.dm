@@ -48,7 +48,7 @@
 					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
 		var/obj/item/I = user.get_active_hand()
 		if(I && I.force)
-			var/d = rand(round(I.force / 4), I.force)
+			var/d = rand(floor(I.force / 4), I.force)
 			if(istype(src, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = src
 				var/organ = H.get_limb("chest")
@@ -110,7 +110,7 @@
 			var/obj/O = A
 			if(O.unacidable)
 				O.forceMove(get_turf(loc))
-				O.throw_atom(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
+				O.throw_atom(pick(range(1, get_turf(loc))), 1, SPEED_FAST)
 
 	. = ..(cause)
 
@@ -388,9 +388,13 @@
 			if(!do_after(src, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				to_chat(src, SPAN_WARNING("You need to set up the high toss!"))
 				return
+			animation_attack_on(target)
+			playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, 7)
 			drop_inv_item_on_ground(I, TRUE)
 			thrown_thing.throw_atom(target, thrown_thing.throw_range, SPEED_SLOW, src, spin_throw, HIGH_LAUNCH)
 		else
+			animation_attack_on(target)
+			playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, 7)
 			drop_inv_item_on_ground(I, TRUE)
 			thrown_thing.throw_atom(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, spin_throw)
 
@@ -482,7 +486,7 @@
 
 /mob/living/carbon/on_stored_atom_del(atom/movable/AM)
 	..()
-	if(stomach_contents.len && ismob(AM))
+	if(length(stomach_contents) && ismob(AM))
 		for(var/X in stomach_contents)
 			if(AM == X)
 				stomach_contents -= AM

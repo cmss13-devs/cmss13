@@ -4,7 +4,7 @@
 
 
 /datum/autowiki/guns/generate_multiple()
-	var/output = ""
+	var/output = list()
 
 	var/list/gun_to_ammo = list()
 
@@ -14,18 +14,19 @@
 		LAZYADD(gun_to_ammo[initial(typepath.gun_type)], typepath)
 
 	var/list/unique_typepaths = list()
-	for(var/typepath in sort_list(subtypesof(/obj/item/weapon/gun), GLOBAL_PROC_REF(cmp_typepaths_name_asc)))
+	for(var/obj/item/weapon/gun/typepath as anything in sort_list(subtypesof(/obj/item/weapon/gun), GLOBAL_PROC_REF(cmp_typepaths_name_asc)))
 		if(initial(typepath.name) in unique_typepaths)
 			continue
 
-		unique_typepaths[typepath.name] = typepath
+		unique_typepaths[initial(typepath.name)] = typepath
 
-	for(var/typepath in unique_typepaths)
+	for(var/name in unique_typepaths)
+		var/typepath = unique_typepaths[name]
+
 		var/obj/item/weapon/gun/generating_gun = typepath
 		if(isnull(initial(generating_gun.icon_state)))
 			continue // Skip guns with no icon_state (e.g. base types)
-
-		generating_gun = new typepath()
+		generating_gun = new typepath
 		var/filename = SANITIZE_FILENAME(escape_value(format_text(generating_gun.name)))
 		var/list/gun_data = generating_gun.ui_data()
 
@@ -116,8 +117,9 @@
 			upload_icon(generated_icon, filename)
 			gun_data["icon"] = filename
 
-		var/page_name = replacetext(strip_improper(generating_gun.name), " ", "_")
-		output += list(title = "Autowiki/Gun/[page_name]", text = include_template("Autowiki/Gun", gun_data))
+		var/page_name = SANITIZE_FILENAME(replacetext(strip_improper(generating_gun.name), " ", "_"))
+		var/to_add = list(title = "Autowiki/Content/Gun/[page_name]", text = include_template("Autowiki/Gun", gun_data))
+		output += list(to_add)
 
 		qdel(generating_gun)
 

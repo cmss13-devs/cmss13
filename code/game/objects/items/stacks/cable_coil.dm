@@ -33,7 +33,7 @@
 
 /obj/item/stack/cable_coil/proc/updateicon()
 	if (!color)
-		color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_ORANGE, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
+		color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_ORANGE, COLOR_WHITE, COLOR_MAGENTA, COLOR_YELLOW, COLOR_CYAN)
 	if(amount == 1)
 		icon_state = "coil1"
 		name = "cable piece"
@@ -70,7 +70,7 @@
 		if(src.amount <= 14)
 			to_chat(usr, SPAN_WARNING("You need at least 15 lengths to make restraints!"))
 			return
-		var/obj/item/handcuffs/cable/B = new /obj/item/handcuffs/cable(usr.loc)
+		var/obj/item/restraint/adjustable/cable/B = new /obj/item/restraint/adjustable/cable(usr.loc)
 		B.color = color
 		to_chat(usr, SPAN_NOTICE("You wind some cable together to make some restraints."))
 		src.use(15)
@@ -298,11 +298,11 @@
 	color = "#a8c1dd"
 
 /obj/item/stack/cable_coil/white
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 
 /obj/item/stack/cable_coil/random/Initialize()
 	. = ..()
-	color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
+	color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_WHITE, COLOR_MAGENTA, COLOR_YELLOW, COLOR_CYAN)
 
 /obj/item/stack/cable_coil/attack(mob/M as mob, mob/user as mob)
 	if(ishuman(M))

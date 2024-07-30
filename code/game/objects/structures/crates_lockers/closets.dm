@@ -127,7 +127,7 @@
 			var/obj/item/explosive/plastic/P = I
 			if(P.active)
 				continue
-		var/item_size = Ceiling(I.w_class / 2)
+		var/item_size = ceil(I.w_class / 2)
 		if(stored_units + item_size > storage_capacity)
 			continue
 		if(!I.anchored)
@@ -244,8 +244,6 @@
 				user.visible_message(SPAN_NOTICE("[user] has pried apart [src] with [W]."), "You pry apart [src].")
 				qdel(src)
 				return
-		if(isrobot(user))
-			return
 		user.drop_inv_item_to_loc(W,loc)
 
 	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))

@@ -34,11 +34,11 @@
 	/// If uses the overlay
 	var/use_stripe_overlay = TRUE
 	/// Color for the squad marines gear overlays
-	var/equipment_color = "#FFFFFF"
+	var/equipment_color = COLOR_WHITE
 	/// The alpha for the armor overlay used by equipment color
 	var/armor_alpha = 125
 	/// Color for the squad marines langchat
-	var/chat_color = "#FFFFFF"
+	var/chat_color = COLOR_WHITE
 	/// Which special access do we grant them
 	var/list/access = list()
 	/// Can use any squad vendor regardless of squad connection
@@ -221,6 +221,18 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/forecon
+	name = SQUAD_FORECON
+	equipment_color = "#32CD32"
+	chat_color = "#32CD32"
+	radio_freq = FORECON_FREQ
+	minimap_color = "#32CD32"
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
+
 //############################### UPP Squads
 /datum/squad/upp
 	name = "Root"
@@ -400,17 +412,17 @@
 
 /// Displays a message to squad members directly on the game map
 /datum/squad/proc/send_maptext(text = "", title_text = "", only_leader = 0)
-	var/message_colour = chat_color
+	var/message_color = chat_color
 	if(only_leader)
 		if(squad_leader)
 			if(!squad_leader.stat && squad_leader.client)
 				playsound_client(squad_leader.client, 'sound/effects/radiostatic.ogg', squad_leader.loc, 25, FALSE)
-				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
+				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_color)
 	else
 		for(var/mob/living/carbon/human/marine in marines_list)
 			if(!marine.stat && marine.client) //Only living and connected people in our squad
 				playsound_client(marine.client, 'sound/effects/radiostatic.ogg', marine.loc, 25, FALSE)
-				marine.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
+				marine.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_color)
 
 /// Displays a message to the squad members in chat
 /datum/squad/proc/send_message(text = "", plus_name = 0, only_leader = 0)
@@ -452,7 +464,7 @@
 
 	var/obj/item/card/id/C = ID
 	if(!C)
-		C = M.wear_id
+		C = M.get_idcard()
 	if(!C)
 		C = M.get_active_hand()
 	if(!istype(C))
@@ -554,7 +566,7 @@
 		return //not assigned to the correct squad
 	var/obj/item/card/id/C = ID
 	if(!istype(C))
-		C = M.wear_id
+		C = M.get_idcard()
 	if(!istype(C))
 		return FALSE //Abort, no ID found
 
@@ -637,9 +649,9 @@
 				R.keys -= key
 				qdel(key)
 			R.recalculateChannels()
-		if(istype(old_lead.wear_id, /obj/item/card/id))
-			var/obj/item/card/id/ID = old_lead.wear_id
-			ID.access -= ACCESS_MARINE_LEADER
+		var/obj/item/card/id/card = old_lead.get_idcard()
+		if(card)
+			card.access -= ACCESS_MARINE_LEADER
 	REMOVE_TRAITS_IN(old_lead, TRAIT_SOURCE_SQUAD_LEADER)
 	old_lead.hud_set_squad()
 	old_lead.update_inv_head() //updating marine helmet leader overlays
@@ -649,7 +661,7 @@
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.
 /proc/get_squad_by_name(text)
-	if(!GLOB.RoleAuthority || GLOB.RoleAuthority.squads.len == 0)
+	if(!GLOB.RoleAuthority || length(GLOB.RoleAuthority.squads) == 0)
 		return null
 	var/datum/squad/S
 	for(S in GLOB.RoleAuthority.squads)

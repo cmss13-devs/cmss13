@@ -125,6 +125,9 @@
 	..()
 
 /obj/item/storage/backpack/proc/is_accessible_by(mob/user)
+	// If the user is already looking inside this backpack.
+	if(user.s_active == src)
+		return TRUE
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!worn_accessible)
@@ -151,7 +154,7 @@
 
 //Returns true if the user's id matches the lock's
 /obj/item/storage/backpack/proc/compare_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/card = H.wear_id
+	var/obj/item/card/id/card = H.get_idcard()
 	if(!card || locking_id.registered_name != card.registered_name)
 		return FALSE
 	else return TRUE
@@ -265,6 +268,7 @@
 	return TRUE
 
 /datum/action/item_action/specialist/santabag/action_activate()
+	. = ..()
 	var/obj/item/storage/backpack/santabag/santa_bag = holder_item
 	santa_bag.refill_santa_bag(owner)
 	update_button_icon()
@@ -347,6 +351,12 @@
 
 /obj/item/storage/backpack/satchel/lockable/liaison
 	lock_overridable = FALSE
+
+/obj/item/storage/backpack/satchel/blue
+	icon_state = "satchel_blue"
+
+/obj/item/storage/backpack/satchel/black
+	icon_state = "satchel_black"
 
 /obj/item/storage/backpack/satchel/norm
 	name = "satchel"
@@ -494,6 +504,12 @@
 	desc = "A heavy-duty chestrig used by some USCM technicians."
 	icon_state = "marinesatch_techi"
 
+/obj/item/storage/backpack/marine/satchel/chestrig
+	name = "\improper USCM chestrig"
+	desc = "A chestrig used by some USCM personnel."
+	icon_state = "chestrig"
+	has_gamemode_skin = FALSE
+
 GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/rto)
 
 /obj/item/storage/backpack/marine/satchel/rto
@@ -522,6 +538,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	button.overlays += IMG
 
 /datum/action/item_action/rto_pack/use_phone/action_activate()
+	. = ..()
 	for(var/obj/item/storage/backpack/marine/satchel/rto/radio_backpack in owner)
 		radio_backpack.use_phone(owner)
 		return
@@ -714,6 +731,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper M68 Thermal Cloak"
 	desc = "The lightweight thermal dampeners and optical camouflage provided by this cloak are weaker than those found in standard USCM ghillie suits. In exchange, the cloak can be worn over combat armor and offers the wearer high maneuverability and adaptability to many environments."
 	icon_state = "scout_cloak"
+	unacidable = TRUE
+	indestructible = TRUE
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S) //Need to wear Scout armor and helmet to equip this.
 	has_gamemode_skin = FALSE //same sprite for all gamemode.
 	var/camo_active = FALSE
@@ -853,6 +872,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		return TRUE
 
 /datum/action/item_action/specialist/toggle_cloak/action_activate()
+	. = ..()
 	var/obj/item/storage/backpack/marine/satchel/scout_cloak/SC = holder_item
 	SC.camouflage()
 

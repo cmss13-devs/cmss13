@@ -18,7 +18,7 @@
 	if(!say_understands(speaker,language))
 		if(istype(speaker,/mob/living/simple_animal))
 			var/mob/living/simple_animal/S = speaker
-			if(S.speak.len)
+			if(length(S.speak))
 				message = pick(S.speak)
 			else
 				message = stars(message)
@@ -106,54 +106,8 @@
 		speaker_name = "unknown"
 		comm_paygrade = ""
 
-	var/changed_voice
-
-	if(isAI(src) && !hard_to_hear)
-		var/jobname // the mob's "job"
-		var/mob/living/carbon/human/impersonating //The crewmember being impersonated, if any.
-
-		if (ishuman(speaker))
-			var/mob/living/carbon/human/H = speaker
-
-			if((H.wear_id && istype(H.wear_id,/obj/item/card/id/syndicate)) && (H.wear_mask && istype(H.wear_mask,/obj/item/clothing/mask/gas/voice)))
-
-				changed_voice = 1
-				var/mob/living/carbon/human/I = locate(speaker_name)
-
-				if(I)
-					impersonating = I
-					jobname = impersonating.get_assignment()
-					comm_paygrade = impersonating.get_paygrade()
-				else
-					jobname = "Unknown"
-					comm_paygrade = ""
-			else
-				jobname = H.get_assignment()
-				comm_paygrade = H.get_paygrade()
-
-		else if (iscarbon(speaker)) // Nonhuman carbon mob
-			jobname = "No id"
-			comm_paygrade = ""
-		else if (isAI(speaker))
-			jobname = "AI"
-			comm_paygrade = ""
-		else if (isrobot(speaker))
-			jobname = "Cyborg"
-			comm_paygrade = ""
-		else
-			jobname = "Unknown"
-			comm_paygrade = ""
-
-		if(changed_voice)
-			if(impersonating)
-				track = "<a href='byond://?src=\ref[src];trackname=[html_encode(speaker_name)];track=\ref[impersonating]'>[speaker_name] ([jobname])</a>"
-			else
-				track = "[speaker_name] ([jobname])"
-		else
-			track = "<a href='byond://?src=\ref[src];trackname=[html_encode(speaker_name)];track=\ref[speaker]'>[speaker_name] ([jobname])</a>"
-
 	if(istype(src, /mob/dead/observer))
-		if(speaker_name != speaker.real_name && !isAI(speaker)) //Announce computer and various stuff that broadcasts doesn't use it's real name but AI's can't pretend to be other mobs.
+		if(speaker_name != speaker.real_name) //Announce computer and various stuff that broadcasts doesn't use it's real name but AI's can't pretend to be other mobs.
 			speaker_name = "[speaker.real_name] ([speaker_name])"
 		track = "[speaker_name] (<a href='byond://?src=\ref[src];track=\ref[speaker]'>F</a>)"
 
@@ -235,7 +189,7 @@
 
 		var/list/punctuation = list(",", "!", ".", ";", "?")
 		var/list/messages = splittext(message, " ")
-		var/R = rand(1, messages.len)
+		var/R = rand(1, length(messages))
 		var/heardword = messages[R]
 		if(copytext(heardword,1, 1) in punctuation)
 			heardword = copytext(heardword,2)

@@ -44,8 +44,6 @@ map ice_colony_v2
 endmap
 
 map shivas_snowball
-	voteweight 0
-	disabled
 endmap
 
 map kutjevo

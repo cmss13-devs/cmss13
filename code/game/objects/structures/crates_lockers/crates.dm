@@ -101,8 +101,6 @@
 /obj/structure/closet/crate/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.flags_item & ITEM_ABSTRACT) return
 	if(opened)
-		if(isrobot(user))
-			return
 		user.drop_inv_item_to_loc(W, loc)
 	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/stack/fulton))
 		return
@@ -279,13 +277,6 @@
 	name = "RCD crate"
 	desc = "A crate for the storage of the RCD."
 
-/obj/structure/closet/crate/rcd/Initialize()
-	. = ..()
-	new /obj/item/ammo_rcd(src)
-	new /obj/item/ammo_rcd(src)
-	new /obj/item/ammo_rcd(src)
-	new /obj/item/device/rcd(src)
-
 /obj/structure/closet/crate/freezer/rations //Fpr use in the escape shuttle
 	desc = "A crate of emergency rations."
 	name = "Emergency Rations"
@@ -337,7 +328,7 @@
 	icon_closed = "closed_supply"
 
 /obj/structure/closet/crate/trashcart
-	name = "\improper trash cart"
+	name = "trash cart"
 	desc = "A heavy, metal trashcart with wheels."
 	icon_state = "closed_trashcart"
 	icon_opened = "open_trashcart"
@@ -439,4 +430,3 @@
 	density = TRUE
 	icon_opened = "open_mcart_y"
 	icon_closed = "closed_mcart_y"
-

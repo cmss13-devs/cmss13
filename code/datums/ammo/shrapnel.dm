@@ -43,10 +43,17 @@
 	shrapnel_chance = 0
 	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
 	penetration = ARMOR_PENETRATION_TIER_5
+	/// inflicts this many holo stacks per bullet hit
+	var/holo_stacks = 10
+	/// modifies the default cap limit of 100 by this amount
+	var/bonus_damage_cap_increase = 0
+	/// multiplies the default drain of 5 holo stacks per second by this amount
+	var/stack_loss_multiplier = 1
 
-/datum/ammo/bullet/shrapnel/hornet_rounds/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/bullet/shrapnel/hornet_rounds/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
-	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
+	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase, stack_loss_multiplier)
+
 
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"

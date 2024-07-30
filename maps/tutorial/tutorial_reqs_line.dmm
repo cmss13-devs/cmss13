@@ -1,0 +1,180 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall/almayer/outer,
+/area/misc/tutorial)
+"c" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	dir = 2;
+	no_panel = 1;
+	not_weldable = 1;
+	req_one_access = null
+	},
+/turf/open/floor/almayer,
+/area/misc/tutorial)
+"l" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer/green/west,
+/area/misc/tutorial)
+"m" = (
+/obj/structure/surface/rack,
+/turf/open/floor/almayer/green/west,
+/area/misc/tutorial)
+"n" = (
+/obj/structure/surface/table/almayer{
+	breakable = 0;
+	throwpass = 0;
+	climbable = 0;
+	indestructible = 1;
+	density = 0
+	},
+/obj/structure/blocker/forcefield/human/bulletproof{
+	visible = 0
+	},
+/turf/open/floor/almayer,
+/area/misc/tutorial)
+"w" = (
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/almayer,
+/area/misc/tutorial)
+"x" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/almayer/green/east,
+/area/misc/tutorial)
+"y" = (
+/obj/structure/machinery/line_nexter,
+/turf/open/floor/almayer/green/east,
+/area/misc/tutorial)
+"E" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/misc/tutorial)
+"J" = (
+/obj/item/toy/bikehorn/rubberducky{
+	name = "Quackers";
+	desc = "You feel as though this rubber duck has been here for a long time. It's Mr. Quackers! He loves you!"
+	},
+/obj/effect/landmark/tutorial/reqs_line_cleaner,
+/turf/open/floor/almayer,
+/area/misc/tutorial)
+"K" = (
+/turf/open/floor/almayer,
+/area/misc/tutorial)
+"N" = (
+/obj/effect/landmark/tutorial_bottom_left,
+/turf/open/floor/almayer,
+/area/misc/tutorial)
+"X" = (
+/obj/structure/sign/ROsign{
+	layer = 3
+	},
+/turf/closed/wall/almayer,
+/area/misc/tutorial)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+K
+K
+K
+K
+K
+K
+K
+a
+N
+a
+"}
+(3,1,1) = {"
+a
+J
+X
+y
+x
+x
+x
+x
+a
+K
+a
+"}
+(4,1,1) = {"
+a
+a
+K
+n
+w
+a
+a
+a
+a
+c
+a
+"}
+(5,1,1) = {"
+a
+a
+K
+E
+l
+l
+m
+m
+K
+K
+a
+"}
+(6,1,1) = {"
+a
+a
+K
+K
+K
+K
+K
+K
+K
+K
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+K
+K
+K
+K
+K
+K
+K
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

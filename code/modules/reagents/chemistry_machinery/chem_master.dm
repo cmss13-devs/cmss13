@@ -141,7 +141,15 @@
 			if(length(label) < 3)
 				loaded_pill_bottle.maptext_label = label
 				loaded_pill_bottle.update_icon()
+	else if(href_list["setcolor"])
+		// Checking for state changes
+		if(!loaded_pill_bottle)
+			return
 
+		if(!Adjacent(usr))
+			return
+
+		loaded_pill_bottle.choose_color()
 
 	else if(href_list["close"])
 		close_browser(user, "chemmaster")
@@ -215,7 +223,7 @@
 				return
 
 			if(href_list["createpill_multiple"])
-				count = Clamp(tgui_input_number(user, "Select the number of pills to make. (max: [max_pill_count])", "Pills to make", pillamount, max_pill_count, 1), 0, max_pill_count)
+				count = clamp(tgui_input_number(user, "Select the number of pills to make. (max: [max_pill_count])", "Pills to make", pillamount, max_pill_count, 1), 0, max_pill_count)
 				if(!count)
 					return
 
@@ -240,7 +248,7 @@
 				P.icon_state = "pill"+pillsprite
 				reagents.trans_to(P,amount_per_pill)
 				if(loaded_pill_bottle)
-					if(loaded_pill_bottle.contents.len < loaded_pill_bottle.max_storage_space)
+					if(length(loaded_pill_bottle.contents) < loaded_pill_bottle.max_storage_space)
 						loaded_pill_bottle.handle_item_insertion(P, TRUE)
 						updateUsrDialog()
 
@@ -346,7 +354,7 @@
 		dat = "Please insert beaker.<BR>"
 		if(pill_maker)
 			if(loaded_pill_bottle)
-				dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject Pill Bottle \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
+				dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject Pill Bottle \[[length(loaded_pill_bottle.contents)]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
 			else
 				dat += "No pill bottle inserted.<BR><BR>"
 		dat += "<A href='?src=\ref[src];close=1'>Close</A>"
@@ -354,9 +362,10 @@
 		dat += "<A href='?src=\ref[src];eject=1;user=\ref[user]'>Eject beaker and Clear Buffer</A><BR><BR>"
 		if(pill_maker)
 			if(loaded_pill_bottle)
-				dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
-				dat += "<A href='?src=\ref[src];addlabelp=1;user=\ref[user]'>Add label to [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
-				dat += "<A href='?src=\ref[src];transferp=1;'>Transfer [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\] to the smartfridge</A><BR><BR>"
+				dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject [loaded_pill_bottle] \[[length(loaded_pill_bottle.contents)]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
+				dat += "<A href='?src=\ref[src];addlabelp=1;user=\ref[user]'>Add label to [loaded_pill_bottle] \[[length(loaded_pill_bottle.contents)]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
+				dat += "<A href='?src=\ref[src];setcolor=1;user=\ref[user]'>Set color to [loaded_pill_bottle] \[[length(loaded_pill_bottle.contents)]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
+				dat += "<A href='?src=\ref[src];transferp=1;'>Transfer [loaded_pill_bottle] \[[length(loaded_pill_bottle.contents)]/[loaded_pill_bottle.max_storage_space]\] to the smartfridge</A><BR><BR>"
 			else
 				dat += "No pill bottle inserted.<BR><BR>"
 		if(!connected && pill_maker)

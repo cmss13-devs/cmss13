@@ -22,7 +22,7 @@
 		if(order == "help")
 			to_chat(src, SPAN_NOTICE("<br>Orders give a buff to nearby soldiers for a short period of time, followed by a cooldown, as follows:<br><B>Move</B> - Increased mobility and chance to dodge projectiles.<br><B>Hold</B> - Increased resistance to pain and combat wounds.<br><B>Focus</B> - Increased gun accuracy and effective range.<br>"))
 			return
-		if(order == "cancel")
+		if(!order || order == "cancel")
 			return
 
 		if(!command_aura_available)
@@ -72,14 +72,14 @@
 	switch(order)
 		if(COMMAND_ORDER_MOVE)
 			mobility_aura_count++
-			mobility_aura = Clamp(mobility_aura, strength, ORDER_MOVE_MAX_LEVEL)
+			mobility_aura = clamp(mobility_aura, strength, ORDER_MOVE_MAX_LEVEL)
 		if(COMMAND_ORDER_HOLD)
 			protection_aura_count++
-			protection_aura = Clamp(protection_aura, strength, ORDER_HOLD_MAX_LEVEL)
+			protection_aura = clamp(protection_aura, strength, ORDER_HOLD_MAX_LEVEL)
 			pain.apply_pain_reduction(protection_aura * PAIN_REDUCTION_AURA)
 		if(COMMAND_ORDER_FOCUS)
 			marksman_aura_count++
-			marksman_aura = Clamp(marksman_aura, strength, ORDER_FOCUS_MAX_LEVEL)
+			marksman_aura = clamp(marksman_aura, strength, ORDER_FOCUS_MAX_LEVEL)
 
 	hud_set_order()
 

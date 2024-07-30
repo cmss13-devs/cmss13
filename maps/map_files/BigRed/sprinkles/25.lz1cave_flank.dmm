@@ -3,13 +3,15 @@
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "c" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "d" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
+"e" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/outside/lz1_north_cas)
 "f" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/plating,
@@ -18,15 +20,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "i" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_6"
-	},
+/turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/outside/lz1_north_cas)
 "j" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "F" = (
 /obj/structure/sign/safety/hazard,
@@ -218,7 +216,7 @@ c
 c
 c
 c
-j
+e
 "}
 (12,1,1) = {"
 c
@@ -235,7 +233,7 @@ c
 c
 c
 c
-j
+e
 "}
 (13,1,1) = {"
 c
@@ -252,7 +250,7 @@ c
 c
 c
 c
-j
+e
 "}
 (14,1,1) = {"
 c
@@ -269,7 +267,7 @@ c
 c
 c
 c
-j
+e
 "}
 (15,1,1) = {"
 c
@@ -286,5 +284,5 @@ c
 i
 c
 c
-j
+e
 "}

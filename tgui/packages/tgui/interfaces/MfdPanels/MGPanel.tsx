@@ -1,12 +1,13 @@
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { useBackend } from '../../backend';
 import { Box, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { useBackend } from '../../backend';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
 import { EquipmentContext, MGSpec } from './types';
 
 const MgPanel = (props: DropshipEquipment) => {
   const mgData = props.data as MGSpec;
+
   return (
     <Stack>
       <Stack.Item width="100px">
@@ -39,11 +40,13 @@ const MgPanel = (props: DropshipEquipment) => {
   );
 };
 
-export const MgMfdPanel = (props: MfdProps, context) => {
-  const { act, data } = useBackend<EquipmentContext>(context);
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const { equipmentState } = useEquipmentState(context, props.panelStateId);
+export const MgMfdPanel = (props: MfdProps) => {
+  const { act, data } = useBackend<EquipmentContext>();
+  const { setPanelState } = mfdState(props.panelStateId);
+  const { equipmentState } = useEquipmentState(props.panelStateId);
   const mg = data.equipment_data.find((x) => x.mount_point === equipmentState);
+  const deployLabel = (mg?.data?.deployed ?? 0) === 1 ? 'RETRACT' : 'DEPLOY';
+
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -52,7 +55,7 @@ export const MgMfdPanel = (props: MfdProps, context) => {
       ]}
       leftButtons={[
         {
-          children: 'DEPLOY',
+          children: deployLabel,
           onClick: () =>
             act('deploy-equipment', { equipment_id: mg?.mount_point }),
         },
@@ -62,7 +65,8 @@ export const MgMfdPanel = (props: MfdProps, context) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}>
+      ]}
+    >
       <Box className="NavigationMenu">{mg && <MgPanel {...mg} />}</Box>
     </MfdPanel>
   );

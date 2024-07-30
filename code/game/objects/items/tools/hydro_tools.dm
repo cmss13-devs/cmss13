@@ -31,24 +31,19 @@
 
 /obj/item/tool/plantspray/pests/old
 	name = "bottle of pestkiller"
-	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "bottle16"
 
 /obj/item/tool/plantspray/pests/old/carbaryl
 	name = "bottle of carbaryl"
-	icon_state = "bottle16"
 	toxicity = 4
 	pest_kill_str = 2
 
 /obj/item/tool/plantspray/pests/old/lindane
 	name = "bottle of lindane"
-	icon_state = "bottle18"
 	toxicity = 6
 	pest_kill_str = 4
 
 /obj/item/tool/plantspray/pests/old/phosmet
 	name = "bottle of phosmet"
-	icon_state = "bottle15"
 	toxicity = 8
 	pest_kill_str = 7
 
@@ -57,25 +52,21 @@
 /obj/item/tool/weedkiller
 	name = "bottle of weedkiller"
 	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "bottle16"
 	var/toxicity = 0
 	var/weed_kill_str = 0
 
 /obj/item/tool/weedkiller/triclopyr
 	name = "bottle of glyphosate"
-	icon_state = "bottle16"
 	toxicity = 4
 	weed_kill_str = 2
 
 /obj/item/tool/weedkiller/lindane
 	name = "bottle of triclopyr"
-	icon_state = "bottle18"
 	toxicity = 6
 	weed_kill_str = 4
 
 /obj/item/tool/weedkiller/D24
 	name = "bottle of 2,4-D"
-	icon_state = "bottle15"
 	toxicity = 8
 	weed_kill_str = 7
 

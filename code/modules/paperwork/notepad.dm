@@ -14,14 +14,14 @@
 	var/page = 1
 	var/screen = 0
 
-	var/list/cover_colours = list("red", "green", "black", "blue")
-	var/cover_colour
+	var/list/cover_colors = list("red", "green", "black", "blue")
+	var/cover_color
 
 /obj/item/notepad/Initialize(mapload, ...)
 	. = ..()
-	if(!cover_colour)
-		cover_colour = pick(cover_colours)
-	icon_state = initial(icon_state) + "_[cover_colour]"
+	if(!cover_color)
+		cover_color = pick(cover_colors)
+	icon_state = initial(icon_state) + "_[cover_color]"
 
 	for(var/i = 1 to paper_left)
 		new /obj/item/paper(src)
@@ -31,7 +31,7 @@
 
 	if(HAS_TRAIT(attack_item, TRAIT_TOOL_PEN) || istype(attack_item, /obj/item/toy/crayon))
 		close_browser(usr, name) //Closes the dialog
-		if(page < contents.len)
+		if(page < length(contents))
 			page = 1
 		var/obj/item/paper/paper = contents[page]
 		paper.attackby(attack_item, user)
@@ -93,8 +93,8 @@
 			page--
 			playsound(loc, "pageturn", 15, 1)
 		if(href_list["remove"])
-			if(contents.len < page)
-				page = contents.len
+			if(length(contents) < page)
+				page = length(contents)
 			var/obj/item/ripped_out_page = contents[page]
 			usr.put_in_hands(ripped_out_page)
 			to_chat(usr, SPAN_NOTICE("You rip out [ripped_out_page] from [src]."))
@@ -118,6 +118,9 @@
 	else
 		to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
 
+/obj/item/notepad/proc/operator[](index_num)
+	return contents[index_num]
+
 /obj/item/notepad/verb/rename()
 	set name = "Rename notepad"
 	set category = "Object"
@@ -129,13 +132,13 @@
 	add_fingerprint(usr)
 
 /obj/item/notepad/black
-	cover_colour = "black"
+	cover_color = "black"
 
 /obj/item/notepad/blue
-	cover_colour = "blue"
+	cover_color = "blue"
 
 /obj/item/notepad/green
-	cover_colour = "green"
+	cover_color = "green"
 
 /obj/item/notepad/red
-	cover_colour = "red"
+	cover_color = "red"

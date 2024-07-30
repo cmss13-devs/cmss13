@@ -16,24 +16,20 @@
 	if(stat == UNCONSCIOUS)
 		return //Unconscious? Nope.
 
-	if(dazed > 0)
-		to_chat(src, SPAN_WARNING("You are too dazed to talk."))
-		return
-
 	if(copytext(message, 1, 2) == "*")
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
 			return emote(lowertext(copytext(message, 2)), intentional = TRUE)
 
 	var/datum/language/speaking = null
 	if(length(message) >= 2)
-		if(can_hivemind_speak && copytext(message,1,2) == ";" && languages.len)
+		if(can_hivemind_speak && copytext(message,1,2) == ";" && length(languages))
 			for(var/datum/language/L in languages)
 				if(L.flags & HIVEMIND)
 					verb = L.speech_verb
 					speaking = L
 					break
 		var/channel_prefix = copytext(message, 1, 3)
-		if(languages.len)
+		if(length(languages))
 			for(var/datum/language/L in languages)
 				if(lowertext(channel_prefix) == ":[L.key]" || lowertext(channel_prefix) == ".[L.key]")
 					verb = L.speech_verb
@@ -94,8 +90,11 @@
 
 //General proc for hivemind. Lame, but effective.
 /mob/living/carbon/xenomorph/proc/hivemind_talk(message)
-	if(interference)
-		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_HIVEMIND_TALK, message) & COMPONENT_OVERRIDE_HIVEMIND_TALK)
 		return
 
 	hivemind_broadcast(message, hive)

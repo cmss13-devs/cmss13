@@ -1,7 +1,16 @@
 import { round } from 'common/math';
-import { Fragment } from 'inferno';
+
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Icon, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
+import {
+  Box,
+  Button,
+  Flex,
+  Icon,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
 
 const stats = [
@@ -32,8 +41,8 @@ const tempColors = [
   'bad',
 ];
 
-export const Sleeper = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Sleeper = (props) => {
+  const { act, data } = useBackend();
   const { hasOccupant } = data;
   const body = hasOccupant ? <SleeperMain /> : <SleeperEmpty />;
   const windowHeight = hasOccupant ? 850 : 150;
@@ -46,21 +55,21 @@ export const Sleeper = (props, context) => {
   );
 };
 
-const SleeperMain = (props, context) => {
-  const { act, data } = useBackend(context);
+const SleeperMain = (props) => {
+  const { act, data } = useBackend();
   const { occupant } = data;
   return (
-    <Fragment>
+    <>
       <SleeperDialysis />
       <SleeperOccupant />
       <SleeperDamage />
       <SleeperChemicals />
-    </Fragment>
+    </>
   );
 };
 
-const SleeperOccupant = (props, context) => {
-  const { act, data } = useBackend(context);
+const SleeperOccupant = (props) => {
+  const { act, data } = useBackend();
   const { occupant, auto_eject_dead } = data;
   return (
     <Section
@@ -73,18 +82,18 @@ const SleeperOccupant = (props, context) => {
           <Button
             icon={auto_eject_dead ? 'toggle-on' : 'toggle-off'}
             selected={auto_eject_dead}
-            content={auto_eject_dead ? 'On' : 'Off'}
             onClick={() =>
               act('auto_eject_dead_' + (auto_eject_dead ? 'off' : 'on'))
             }
-          />
-          <Button
-            icon="user-slash"
-            content="Eject"
-            onClick={() => act('ejectify')}
-          />
+          >
+            {auto_eject_dead ? 'On' : 'Off'}
+          </Button>
+          <Button icon="user-slash" onClick={() => act('ejectify')}>
+            Eject
+          </Button>
         </>
-      }>
+      }
+    >
       <LabeledList>
         <LabeledList.Item label="Name">{occupant.name}</LabeledList.Item>
         <LabeledList.Item label="Health">
@@ -96,7 +105,8 @@ const SleeperOccupant = (props, context) => {
               good: [0.5, Infinity],
               average: [0, 0.5],
               bad: [-Infinity, 0],
-            }}>
+            }}
+          >
             {round(occupant.health, 0)}
           </ProgressBar>
         </LabeledList.Item>
@@ -108,13 +118,14 @@ const SleeperOccupant = (props, context) => {
             min="0"
             max={occupant.maxTemp}
             value={occupant.bodyTemperature / occupant.maxTemp}
-            color={tempColors[occupant.temperatureSuitability + 3]}>
+            color={tempColors[occupant.temperatureSuitability + 3]}
+          >
             {round(occupant.btCelsius, 0)}&deg;C,
             {round(occupant.btFaren, 0)}&deg;F
           </ProgressBar>
         </LabeledList.Item>
         {!!occupant.hasBlood && (
-          <Fragment>
+          <>
             <LabeledList.Item label="Blood Level">
               <ProgressBar
                 min="0"
@@ -124,22 +135,23 @@ const SleeperOccupant = (props, context) => {
                   bad: [-Infinity, 0.6],
                   average: [0.6, 0.9],
                   good: [0.6, Infinity],
-                }}>
+                }}
+              >
                 {occupant.bloodPercent}%, {occupant.bloodLevel}cl
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item label="Pulse" verticalAlign="middle">
               {occupant.pulse} BPM
             </LabeledList.Item>
-          </Fragment>
+          </>
         )}
       </LabeledList>
     </Section>
   );
 };
 
-const SleeperDamage = (props, context) => {
-  const { data } = useBackend(context);
+const SleeperDamage = (props) => {
+  const { data } = useBackend();
   const { occupant } = data;
   return (
     <Section title="Occupant Damage">
@@ -151,7 +163,8 @@ const SleeperDamage = (props, context) => {
               min="0"
               max="100"
               value={occupant[d[1]] / 100}
-              ranges={damageRange}>
+              ranges={damageRange}
+            >
               {round(occupant[d[1]], 0)}
             </ProgressBar>
           </LabeledList.Item>
@@ -161,8 +174,8 @@ const SleeperDamage = (props, context) => {
   );
 };
 
-const SleeperDialysis = (props, context) => {
-  const { act, data } = useBackend(context);
+const SleeperDialysis = (props) => {
+  const { act, data } = useBackend();
   const { hasOccupant, dialysis, occupant } = data;
   const canDialysis = dialysis;
   const dialysisDisabled = !hasOccupant || !occupant.totalreagents;
@@ -174,10 +187,12 @@ const SleeperDialysis = (props, context) => {
           disabled={dialysisDisabled}
           selected={canDialysis}
           icon={canDialysis ? 'toggle-on' : 'toggle-off'}
-          content={canDialysis ? 'Active' : 'Inactive'}
           onClick={() => act('togglefilter')}
-        />
-      }>
+        >
+          {canDialysis ? 'Active' : 'Inactive'}
+        </Button>
+      }
+    >
       {!occupant.totalreagents && (
         <NoticeBox danger>Occupant has no chemicals to remove!</NoticeBox>
       )}
@@ -186,7 +201,8 @@ const SleeperDialysis = (props, context) => {
           min="0"
           max={occupant.reagentswhenstarted}
           value={occupant.totalreagents / occupant.reagentswhenstarted}
-          title="Reagents left/Reagents when dialysis was started">
+          title="Reagents left/Reagents when dialysis was started"
+        >
           {occupant.totalreagents}/{occupant.reagentswhenstarted}
         </ProgressBar>
       )) ||
@@ -195,11 +211,11 @@ const SleeperDialysis = (props, context) => {
   );
 };
 
-const SleeperChemicals = (props, context) => {
-  const { act, data } = useBackend(context);
+const SleeperChemicals = (props) => {
+  const { act, data } = useBackend();
   const { occupant, chemicals, maxchem, amounts } = data;
   return (
-    <Section title="Occupant Chemicals" flexGrow="1">
+    <Section title="Occupant Chemicals">
       {chemicals.map((chem, i) => {
         let barColor = '';
         let odWarning;
@@ -227,7 +243,8 @@ const SleeperChemicals = (props, context) => {
               level="3"
               mx="0"
               lineHeight="18px"
-              buttons={odWarning}>
+              buttons={odWarning}
+            >
               <Flex align="flex-start">
                 <ProgressBar
                   min="0"
@@ -235,7 +252,8 @@ const SleeperChemicals = (props, context) => {
                   value={chem.occ_amount / maxchem}
                   color={barColor}
                   title="Amount of chemicals currently inside the occupant / Total amount injectable by this machine"
-                  mr="0.5rem">
+                  mr="0.5rem"
+                >
                   {chem.pretty_amount}/{maxchem}u
                 </ProgressBar>
                 {amounts.map((a, i) => (
@@ -247,7 +265,6 @@ const SleeperChemicals = (props, context) => {
                       occupant.stat === 2
                     }
                     icon="syringe"
-                    content={'Inject ' + a + 'u'}
                     title={
                       'Inject ' +
                       a +
@@ -263,7 +280,9 @@ const SleeperChemicals = (props, context) => {
                         amount: a,
                       })
                     }
-                  />
+                  >
+                    {'Inject ' + a + 'u'}
+                  </Button>
                 ))}
               </Flex>
             </Section>
@@ -274,9 +293,9 @@ const SleeperChemicals = (props, context) => {
   );
 };
 
-const SleeperEmpty = (props, context) => {
+const SleeperEmpty = (props) => {
   return (
-    <Section textAlign="center" flexGrow="1">
+    <Section textAlign="center">
       <Flex height="100%">
         <Flex.Item grow="1" align="center" color="label">
           <Icon name="user-slash" mb="0.5rem" size="5" />

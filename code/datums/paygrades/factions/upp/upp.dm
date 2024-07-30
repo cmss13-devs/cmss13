@@ -1,6 +1,7 @@
 /datum/paygrade/upp
 	name = "UPP Paygrade"
 	pay_multiplier = 0.1 //lol. lmao
+	default_faction = FACTION_UPP
 
 
 //UPP Enlisted
@@ -56,12 +57,14 @@
 	name = "2nd Kommando"
 	prefix = "2ndKdo."
 	pay_multiplier = 2
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/upp/uc3
 	paygrade = PAY_SHORT_UC3
 	name = "1st Kommando"
 	prefix = "1stKdo."
 	pay_multiplier = 2.5
+	officer_grade = GRADE_OFFICER
 
 //UPP Officers
 /datum/paygrade/upp/uo1
@@ -69,51 +72,60 @@
 	name = "Leytenant"
 	prefix = "Lt."
 	pay_multiplier = 1.25
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/upp/uo2
 	paygrade = PAY_SHORT_UO2
 	name = "Senior Leytenant"
 	prefix = "Sr. LT."
 	pay_multiplier = 1.5
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/upp/uo3
 	paygrade = PAY_SHORT_UO3
 	name = "Kapitan"
 	prefix = "Kpt."
 	pay_multiplier = 2
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/upp/uo4
 	paygrade = PAY_SHORT_UO4
 	name = "Mayjor"
 	prefix = "May."
 	pay_multiplier = 2.5
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/upp/uo5
 	paygrade = PAY_SHORT_UO5
 	name = "Leytenant Kolonel"
 	prefix = "Lt. Kol."
 	pay_multiplier = 3
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/upp/uo6
 	paygrade = PAY_SHORT_UO6
 	name = "Kolonel"
 	prefix = "Kol."
 	pay_multiplier = 4
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/upp/uo7
 	paygrade = PAY_SHORT_UO7
 	name = "Mayjor General"
 	prefix = "May. Gen."
 	pay_multiplier = 5
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/upp/uo8
 	paygrade = PAY_SHORT_UO8
 	name = "Leytenant General"
 	prefix = "Lt. Gen."
 	pay_multiplier = 6
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/upp/uo9
 	paygrade = PAY_SHORT_UO9
 	name = "Army General"
 	prefix = "Gen."
 	pay_multiplier = 7
+	officer_grade = GRADE_FLAG

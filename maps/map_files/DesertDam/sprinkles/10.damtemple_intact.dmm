@@ -1,9 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "av" = (
 /obj/structure/xenoautopsy/tank/alien,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/red,
 /area/desert_dam/interior/caves/temple)
 "aZ" = (
 /obj/structure/prop/brazier,
@@ -25,10 +23,7 @@
 /area/desert_dam/interior/caves/temple)
 "bE" = (
 /obj/structure/machinery/optable,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "bJ" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -76,10 +71,7 @@
 /obj/item/tank/nitrogen{
 	pixel_x = 5
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "fX" = (
 /obj/structure/stairs/perspective{
@@ -115,10 +107,7 @@
 	name = "ancient clan mask";
 	pixel_y = 20
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "iM" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -139,14 +128,11 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/legcuffs/beartrap{
+/obj/item/restraint/legcuffs/beartrap{
 	pixel_x = -1;
 	pixel_y = 8
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "ke" = (
 /obj/structure/xenoautopsy/tank/larva,
@@ -154,9 +140,7 @@
 	dir = 8;
 	health = 80
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/red,
 /area/desert_dam/interior/caves/temple)
 "kI" = (
 /obj/structure/prop/brazier/torch,
@@ -169,10 +153,7 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "mA" = (
-/turf/open/desert/dirt{
-	dir = 8;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "mB" = (
 /turf/open/floor/sandstone/runed,
@@ -186,22 +167,14 @@
 	desc = "A long-barreled heavy plasma weapon capable of leveling down an entire building. This one seems to be damaged beyond use.";
 	name = "damaged plasma rifle"
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "mY" = (
-/turf/open/desert/dirt{
-	icon_state = "rock1"
-	},
+/turf/open/desert/dirt/rock1,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "oq" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "oH" = (
 /obj/structure/surface/rack,
@@ -219,16 +192,10 @@
 /obj/item/stack/medical/advanced/ointment/predator{
 	pixel_x = 5
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "oR" = (
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "pC" = (
 /obj/structure/showcase{
@@ -251,10 +218,7 @@
 	icon_state = "pred_mask12_ebony";
 	unacidable = 0
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "qv" = (
 /obj/effect/decal/remains/xeno{
@@ -268,10 +232,7 @@
 /area/desert_dam/interior/caves/central_caves)
 "qV" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/desert/dirt{
-	dir = 8;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "re" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
@@ -304,25 +265,13 @@
 	name = "ancient katana";
 	unacidable = 1
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "rI" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/XenoItem/AntiAcid{
-	pixel_x = -6
-	},
-/obj/item/XenoItem/AntiAcid{
-	pixel_x = 4
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "td" = (
 /turf/open/desert/rock,
@@ -336,10 +285,7 @@
 "tq" = (
 /obj/structure/closet/coffin/predator,
 /obj/item/storage/large_holster/katana,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "uK" = (
 /obj/structure/machinery/door/airlock/sandstone/runed{
@@ -353,9 +299,7 @@
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
-/turf/open/desert/dirt{
-	icon_state = "dirt2"
-	},
+/turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vb" = (
 /obj/structure/stairs/perspective{
@@ -363,9 +307,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/turf/open/desert/dirt{
-	icon_state = "rock1"
-	},
+/turf/open/desert/dirt/rock1,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vY" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -419,10 +361,7 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "AU" = (
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "Bm" = (
 /obj/structure/surface/rack{
@@ -434,15 +373,10 @@
 /obj/item/stack/sheet/mineral/platinum{
 	amount = 50
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "Co" = (
-/turf/open/desert/dirt{
-	icon_state = "dirt2"
-	},
+/turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "Dc" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -486,9 +420,7 @@
 /area/desert_dam/interior/caves/temple)
 "GX" = (
 /obj/structure/xenoautopsy/tank/hugger,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/red,
 /area/desert_dam/interior/caves/temple)
 "Hj" = (
 /obj/structure/surface/rack{
@@ -500,10 +432,7 @@
 	name = "strange jelly"
 	},
 /obj/item/xeno_egg,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "Ix" = (
 /obj/structure/surface/rack{
@@ -512,10 +441,7 @@
 	},
 /obj/item/tool/weldingtool,
 /obj/item/clothing/glasses/welding/superior,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "IV" = (
 /obj/effect/decal/cleanable/cobweb{
@@ -539,10 +465,7 @@
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "Jh" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -568,10 +491,7 @@
 /area/desert_dam/interior/caves/temple)
 "JP" = (
 /obj/structure/xenoautopsy/tank,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "JU" = (
 /obj/structure/platform/mineral/sandstone/runed,
@@ -579,10 +499,7 @@
 /area/desert_dam/interior/caves/temple)
 "JZ" = (
 /obj/structure/machinery/autolathe/yautja,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "Kj" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -593,10 +510,7 @@
 /area/desert_dam/interior/caves/temple)
 "KA" = (
 /obj/structure/closet/coffin/predator,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "Li" = (
 /turf/open/gm/river/desert/deep,
@@ -618,10 +532,7 @@
 /obj/item/tool/surgery/bonesetter/predatorbonesetter,
 /obj/item/tool/surgery/bonegel/predatorbonegel,
 /obj/item/tool/surgery/FixOVein/predatorFixOVein,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "MH" = (
 /turf/closed/wall/mineral/sandstone/runed,
@@ -653,9 +564,7 @@
 	dir = 8;
 	health = 80
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/red,
 /area/desert_dam/interior/caves/temple)
 "Ps" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -685,10 +594,7 @@
 /obj/structure/machinery/door/window{
 	dir = 8
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "SD" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed,
@@ -696,10 +602,7 @@
 /area/desert_dam/interior/caves/temple)
 "TO" = (
 /obj/structure/xenoautopsy,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "TU" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
@@ -714,10 +617,7 @@
 	dir = 4;
 	name = "plasma power generator"
 	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "Vz" = (
 /turf/closed/wall/mineral/sandstone/runed{
@@ -726,10 +626,7 @@
 /area/desert_dam/interior/caves/temple)
 "WM" = (
 /obj/structure/curtain/red,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "WV" = (
 /obj/structure/prop/brazier/torch,
@@ -743,10 +640,7 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "ZI" = (
-/turf/open/desert/dirt{
-	dir = 4;
-	icon_state = "desert_transition_corner1"
-	},
+/turf/open/desert/dirt/desert_transition_corner1/east,
 /area/desert_dam/exterior/valley/valley_crashsite)
 
 (1,1,1) = {"

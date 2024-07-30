@@ -73,7 +73,7 @@
 
 		else if(task == "rank")
 			var/new_rank
-			if(GLOB.admin_ranks.len)
+			if(length(GLOB.admin_ranks))
 				new_rank = tgui_input_list(usr, "Please select a rank", "New rank", (GLOB.admin_ranks|"*New Rank*"))
 			else
 				new_rank = tgui_input_list(usr, "Please select a rank", "New rank", list("Game Master","Game Admin", "Trial Admin", "Admin Observer","*New Rank*"))
@@ -91,7 +91,7 @@
 						to_chat(usr, "<font color='red'>Error: Topic 'editrights': Invalid rank</font>")
 						return
 					if(CONFIG_GET(flag/admin_legacy_system))
-						if(GLOB.admin_ranks.len)
+						if(length(GLOB.admin_ranks))
 							if(new_rank in GLOB.admin_ranks)
 								rights = GLOB.admin_ranks[new_rank] //we typed a rank which already exists, use its rights
 							else
@@ -229,6 +229,200 @@
 			alert(usr, "This ban has already been lifted / does not exist.", "Error", "Ok")
 		unbanpanel()
 
+	else if(href_list["unban_perma"])
+		var/datum/entity/player/unban_player = get_player_from_key(href_list["unban_perma"])
+		if(!(tgui_alert(owner, "Do you want to unban [unban_player.ckey]? They are currently permabanned for: [unban_player.permaban_reason], since [unban_player.permaban_date].", "Unban Player", list("Yes", "No")) == "Yes"))
+			return
+
+		if(!unban_player.is_permabanned)
+			to_chat(owner, "The player is not currently permabanned.")
+
+		unban_player.is_permabanned = FALSE
+		unban_player.permaban_admin_id = null
+		unban_player.permaban_date = null
+		unban_player.permaban_reason = null
+
+		unban_player.save()
+
+		message_admins("[key_name_admin(owner)] has removed the permanent ban on [unban_player.ckey].")
+		important_message_external("[owner] has removed the permanent ban on [unban_player.ckey].", "Permaban Removed")
+
+	else if(href_list["sticky"])
+		if(href_list["view_all_ckeys"])
+			var/list/datum/view_record/stickyban_matched_ckey/all_ckeys = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
+				DB_COMP("linked_stickyban", DB_EQUALS, href_list["sticky"])
+			)
+
+			var/list/keys = list()
+			var/list/whitelisted = list()
+			for(var/datum/view_record/stickyban_matched_ckey/match as anything in all_ckeys)
+				if(match.whitelisted)
+					whitelisted += match.ckey
+				else
+					keys += match.ckey
+
+			show_browser(owner, "Impacted: [english_list(keys)]<br><br>Whitelisted: [english_list(whitelisted)]", "Stickyban Keys", "stickykeys")
+			return
+
+		if(href_list["view_all_cids"])
+			var/list/datum/view_record/stickyban_matched_cid/all_cids = DB_VIEW(/datum/view_record/stickyban_matched_cid,
+				DB_COMP("linked_stickyban", DB_EQUALS, href_list["sticky"])
+			)
+
+			var/list/cids = list()
+			for(var/datum/view_record/stickyban_matched_cid/match as anything in all_cids)
+				cids += match.cid
+
+			show_browser(owner, english_list(cids), "Stickyban CIDs", "stickycids")
+			return
+
+		if(href_list["view_all_ips"])
+			var/list/datum/view_record/stickyban_matched_ip/all_ips = DB_VIEW(/datum/view_record/stickyban_matched_ip,
+				DB_COMP("linked_stickyban", DB_EQUALS, href_list["sticky"])
+			)
+
+			var/list/ips = list()
+			for(var/datum/view_record/stickyban_matched_ip/match as anything in all_ips)
+				ips += match.ip
+
+			show_browser(owner, english_list(ips), "Stickyban IPs", "stickycips")
+			return
+
+		if(href_list["find_sticky"])
+			var/ckey = ckey(tgui_input_text(owner, "Which CKEY should we attempt to find stickybans for?", "FindABan"))
+			if(!ckey)
+				return
+
+			var/list/datum/view_record/stickyban/stickies = SSstickyban.check_for_sticky_ban(ckey)
+			if(!stickies)
+				to_chat(owner, SPAN_ADMIN("Could not locate any stickbans impacting [ckey]."))
+				return
+
+			var/list/impacting_stickies = list()
+
+			for(var/datum/view_record/stickyban/sticky as anything in stickies)
+				impacting_stickies += sticky.identifier
+
+			to_chat(owner, SPAN_ADMIN("Found the following stickybans for [ckey]: [english_list(impacting_stickies)]"))
+
+		if(!check_rights_for(owner, R_BAN))
+			return
+
+		if(href_list["new_sticky"])
+			owner.cmd_admin_do_stickyban()
+			return
+
+		var/datum/entity/stickyban/sticky = DB_ENTITY(/datum/entity/stickyban, href_list["sticky"])
+		if(!sticky)
+			return
+
+		sticky.sync()
+
+		if(href_list["whitelist_ckey"])
+			var/ckey_to_whitelist = ckey(tgui_input_text(owner, "What CKEY should be whitelisted? Editing stickyban: [sticky.identifier]"))
+			if(!ckey_to_whitelist)
+				return
+
+			SSstickyban.whitelist_ckey(sticky.id, ckey_to_whitelist)
+			message_admins("[key_name_admin(owner)] has whitelisted [ckey_to_whitelist] against stickyban '[sticky.identifier]'.")
+			important_message_external("[owner] has whitelisted [ckey_to_whitelist] against stickyban '[sticky.identifier]'.", "CKEY Whitelisted")
+
+		if(href_list["add"])
+			var/option = tgui_input_list(owner, "What do you want to add?", "AddABan", list("CID", "CKEY", "IP"))
+			if(!option)
+				return
+
+			var/to_add = tgui_input_text(owner, "Provide the [option] to add to the stickyban.", "AddABan")
+			if(!to_add)
+				return
+
+			switch(option)
+				if("CID")
+					SSstickyban.add_matched_cid(sticky.id, to_add)
+				if("CKEY")
+					SSstickyban.add_matched_ckey(sticky.id, to_add)
+				if("IP")
+					SSstickyban.add_matched_ip(sticky.id, to_add)
+
+			message_admins("[key_name_admin(owner)] has added a [option] ([to_add]) to stickyban '[sticky.identifier]'.")
+			important_message_external("[owner] has added a [option] ([to_add]) to stickyban '[sticky.identifier]'.", "[option] Added to Stickyban")
+
+		if(href_list["remove"])
+			var/option = tgui_input_list(owner, "What do you want to remove?", "DelABan", list("Entire Stickyban", "CID", "CKEY", "IP"))
+			switch(option)
+				if("Entire Stickyban")
+					if(!(tgui_alert(owner, "Are you sure you want to remove this stickyban? Identifier: [sticky.identifier] Reason: [sticky.reason]", "Confirm", list("Yes", "No")) == "Yes"))
+						return
+
+					sticky.active = FALSE
+					sticky.save()
+
+					message_admins("[key_name_admin(owner)] has deactivated stickyban '[sticky.identifier]'.")
+					important_message_external("[owner] has deactivated stickyban '[sticky.identifier]'.", "Stickyban Deactivated")
+
+				if("CID")
+					var/list/datum/view_record/stickyban_matched_cid/all_cids = DB_VIEW(/datum/view_record/stickyban_matched_cid,
+						DB_COMP("linked_stickyban", DB_EQUALS, sticky.id)
+					)
+
+					var/list/cid_to_record_id = list()
+					for(var/datum/view_record/stickyban_matched_cid/match in all_cids)
+						cid_to_record_id["[match.cid]"] = match.id
+
+					var/picked = tgui_input_list(owner, "Which CID to remove?", "DelABan", cid_to_record_id)
+					if(!picked)
+						return
+
+					var/selected = cid_to_record_id[picked]
+
+					var/datum/entity/stickyban_matched_cid/sticky_cid = DB_ENTITY(/datum/entity/stickyban_matched_cid, selected)
+					sticky_cid.delete()
+
+					message_admins("[key_name_admin(owner)] has removed a CID ([picked]) from stickyban '[sticky.identifier]'.")
+					important_message_external("[owner] has removed a CID ([picked]) from stickyban '[sticky.identifier]'.", "CID Removed from Stickyban")
+
+				if("CKEY")
+					var/list/datum/view_record/stickyban_matched_ckey/all_ckeys = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
+						DB_COMP("linked_stickyban", DB_EQUALS, sticky.id)
+					)
+
+					var/list/ckey_to_record_id = list()
+					for(var/datum/view_record/stickyban_matched_ckey/match in all_ckeys)
+						ckey_to_record_id["[match.ckey]"] = match.id
+
+					var/picked = tgui_input_list(owner, "Which CKEY to remove?", "DelABan", ckey_to_record_id)
+					if(!picked)
+						return
+
+					var/selected = ckey_to_record_id[picked]
+
+					var/datum/entity/stickyban_matched_ckey/sticky_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey, selected)
+					sticky_ckey.delete()
+
+					message_admins("[key_name_admin(owner)] has removed a CKEY ([picked]) from stickyban '[sticky.identifier]'.")
+					important_message_external("[owner] has removed a CKEY ([picked]) from stickyban '[sticky.identifier]'.", "CKEY Removed from Stickyban")
+
+				if("IP")
+					var/list/datum/view_record/stickyban_matched_ip/all_ips = DB_VIEW(/datum/view_record/stickyban_matched_ip,
+						DB_COMP("linked_stickyban", DB_EQUALS, sticky.id)
+					)
+
+					var/list/ip_to_record_id = list()
+					for(var/datum/view_record/stickyban_matched_ip/match in all_ips)
+						ip_to_record_id["[match.ip]"] = match.id
+
+					var/picked = tgui_input_list(owner, "Which IP to remove?", "DelABan", ip_to_record_id)
+					if(!picked)
+						return
+
+					var/selected = ip_to_record_id[picked]
+
+					var/datum/entity/stickyban_matched_ip/sticky_ip = DB_ENTITY(/datum/entity/stickyban_matched_ip, selected)
+					sticky_ip.delete()
+
+					message_admins("[key_name_admin(owner)] has removed an IP ([picked]) from stickyban [sticky.identifier].")
+					important_message_external("[owner] has removed an IP ([picked]) from stickyban '[sticky.identifier].", "IP Removed from Stickyban")
+
 	else if(href_list["warn"])
 		usr.client.warn(href_list["warn"])
 
@@ -359,7 +553,7 @@
 				notbannedlist += job
 
 		//Banning comes first
-		if(notbannedlist.len)
+		if(length(notbannedlist))
 			if(!check_rights(R_BAN))  return
 			var/reason = input(usr,"Reason?","Please State Reason","") as text|null
 			if(reason)
@@ -371,7 +565,7 @@
 
 		//Unbanning joblist
 		//all jobs in joblist are banned already OR we didn't give a reason (implying they shouldn't be banned)
-		if(joblist.len) //at least 1 banned job exists in joblist so we have stuff to unban.
+		if(length(joblist)) //at least 1 banned job exists in joblist so we have stuff to unban.
 			for(var/job in joblist)
 				var/reason = jobban_isbanned(M, job, P1)
 				if(!reason) continue //skip if it isn't jobbanned anyway
@@ -745,9 +939,6 @@
 		if(!ismob(M))
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
-		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
-			return
 
 		for(var/obj/item/I in M)
 			M.drop_inv_item_on_ground(I)
@@ -768,9 +959,6 @@
 		var/mob/M = locate(href_list["tdome2"])
 		if(!ismob(M))
 			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
 			return
 
 		for(var/obj/item/I in M)
@@ -793,9 +981,6 @@
 		if(!ismob(M))
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
-		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
-			return
 
 		M.apply_effect(5, PARALYZE)
 		sleep(5)
@@ -813,9 +998,6 @@
 		var/mob/M = locate(href_list["tdomeobserve"])
 		if(!ismob(M))
 			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
 			return
 
 		for(var/obj/item/I in M)
@@ -853,17 +1035,6 @@
 			return
 
 		usr.client.cmd_admin_alienize(H)
-
-	else if(href_list["makeai"])
-		if(!check_rights(R_SPAWN)) return
-
-		var/mob/living/carbon/human/H = locate(href_list["makeai"])
-		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
-			return
-
-		message_admins(SPAN_DANGER("Admin [key_name_admin(usr)] AIized [key_name_admin(H)]!"), 1)
-		H.AIize()
 
 	else if(href_list["changehivenumber"])
 		if(!check_rights(R_DEBUG|R_ADMIN)) return
@@ -917,28 +1088,13 @@
 				qdel(M.skills)
 			M.skills = null //no skill restriction
 
-			if(is_alien_whitelisted(M,"Yautja Elder"))
-				M.change_real_name(M, "Elder [y_name]")
-				H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter/full(H), WEAR_JACKET)
-				H.equip_to_slot_or_del(new /obj/item/weapon/twohanded/yautja/glaive(H), WEAR_L_HAND)
-			else
-				M.change_real_name(M, y_name)
+			M.change_real_name(M, y_name)
 			M.name = "Unknown" // Yautja names are not visible for oomans
 
 			if(H)
 				qdel(H) //May have to clear up round-end vars and such....
 
 		return
-
-	else if(href_list["makerobot"])
-		if(!check_rights(R_SPAWN)) return
-
-		var/mob/living/carbon/human/H = locate(href_list["makerobot"])
-		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
-			return
-
-		usr.client.cmd_admin_robotize(H)
 
 	else if(href_list["makeanimal"])
 		if(!check_rights(R_SPAWN)) return
@@ -1163,7 +1319,7 @@
 		GLOB.fax_contents += fax_message // save a copy
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
+		GLOB.PressFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>PRESS REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1199,6 +1355,7 @@
 				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
+
 	else if(href_list["USCMFaxReply"])
 		var/mob/living/carbon/human/H = locate(href_list["USCMFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
@@ -1226,7 +1383,7 @@
 						return
 				else
 					return
-				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from Weyland USCM", "") as message|null
+				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from USCM", "") as message|null
 				if(!message_body)
 					return
 				var/sent_by = input(src.owner, "Enter the name and rank you are sending from.", "Outgoing message from USCM", "") as message|null
@@ -1282,8 +1439,8 @@
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
-	else if(href_list["CLFaxReply"])
-		var/mob/living/carbon/human/H = locate(href_list["CLFaxReply"])
+	else if(href_list["WYFaxReply"])
+		var/mob/living/carbon/human/H = locate(href_list["WYFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
@@ -1358,6 +1515,249 @@
 						P.stamped += /obj/item/tool/stamp
 						P.overlays += stampoverlay
 						P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
+
+				to_chat(src.owner, "Message reply to transmitted successfully.")
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				return
+		to_chat(src.owner, "/red Unable to locate fax!")
+
+	else if(href_list["TWEFaxReply"])
+		var/mob/living/carbon/human/H = locate(href_list["TWEFaxReply"])
+		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+
+		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
+		if(!template_choice) return
+		var/datum/fax/fax_message
+		switch(template_choice)
+			if("Custom")
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from TWE", "") as message|null
+				if(!input)
+					return
+				fax_message = new(input)
+			if("Template")
+				var/subject = input(src.owner, "Enter subject line", "Outgoing message from TWE", "") as message|null
+				if(!subject)
+					return
+				var/addressed_to = ""
+				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				if(address_option == "Sender")
+					addressed_to = "[H.real_name]"
+				else if(address_option == "Custom")
+					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from TWE", "") as message|null
+					if(!addressed_to)
+						return
+				else
+					return
+				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from TWE", "") as message|null
+				if(!message_body)
+					return
+				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from TWE", "") as message|null
+				if(!sent_by)
+					return
+				fax_message = new(generate_templated_fax(0, "THREE WORLD EMPIRE - ROYAL MILITARY COMMAND", subject, addressed_to, message_body, sent_by, "Office of Military Communications", "Three World Empire"))
+		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", "size=500x400")
+		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		if(send_choice != "Send")
+			return
+		GLOB.fax_contents += fax_message // save a copy
+
+		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+		if(!customname)
+			return
+
+		GLOB.TWEFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+
+		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>THREE WORLD EMPIRE FAX REPLY: </font></b> ")
+		msg_ghost += "Transmitting '[customname]' via secure connection ... "
+		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		announce_fax( ,msg_ghost)
+
+		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
+			if(F == fax)
+				if(!(F.inoperable()))
+
+					// animate! it's alive!
+					flick("faxreceive", F)
+
+					// give the sprite some time to flick
+					spawn(20)
+						var/obj/item/paper/P = new /obj/item/paper( F.loc )
+						P.name = "Three World Empire - [customname]"
+						P.info = fax_message.data
+						P.update_icon()
+
+						playsound(F.loc, "sound/machines/fax.ogg", 15)
+
+						// Stamps
+						var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+						stampoverlay.icon_state = "paper_stamp-twe"
+						if(!P.stamped)
+							P.stamped = new
+						P.stamped += /obj/item/tool/stamp
+						P.overlays += stampoverlay
+						P.stamps += "<HR><i>This paper has been stamped by the Three World Empire Quantum Relay (tm).</i>"
+
+				to_chat(src.owner, "Message reply to transmitted successfully.")
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				return
+		to_chat(src.owner, "/red Unable to locate fax!")
+
+	else if(href_list["UPPFaxReply"])
+		var/mob/living/carbon/human/H = locate(href_list["UPPFaxReply"])
+		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+
+		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
+		if(!template_choice) return
+		var/datum/fax/fax_message
+		switch(template_choice)
+			if("Custom")
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from UPP", "") as message|null
+				if(!input)
+					return
+				fax_message = new(input)
+			if("Template")
+				var/subject = input(src.owner, "Enter subject line", "Outgoing message from UPP", "") as message|null
+				if(!subject)
+					return
+				var/addressed_to = ""
+				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				if(address_option == "Sender")
+					addressed_to = "[H.real_name]"
+				else if(address_option == "Custom")
+					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from UPP", "") as message|null
+					if(!addressed_to)
+						return
+				else
+					return
+				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from UPP", "") as message|null
+				if(!message_body)
+					return
+				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from UPP", "") as message|null
+				if(!sent_by)
+					return
+				fax_message = new(generate_templated_fax(0, "UNION OF PROGRESSIVE PEOPLES - MILITARY HIGH KOMMAND", subject, addressed_to, message_body, sent_by, "Military High Kommand", "Union of Progressive Peoples"))
+		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", "size=500x400")
+		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		if(send_choice != "Send")
+			return
+		GLOB.fax_contents += fax_message // save a copy
+
+		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+		if(!customname)
+			return
+
+		GLOB.UPPFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+
+		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>UNION OF PROGRESSIVE PEOPLES FAX REPLY: </font></b> ")
+		msg_ghost += "Transmitting '[customname]' via secure connection ... "
+		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		announce_fax( ,msg_ghost)
+
+		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
+			if(F == fax)
+				if(!(F.inoperable()))
+
+					// animate! it's alive!
+					flick("faxreceive", F)
+
+					// give the sprite some time to flick
+					spawn(20)
+						var/obj/item/paper/P = new /obj/item/paper( F.loc )
+						P.name = "Union of Progressive Peoples - [customname]"
+						P.info = fax_message.data
+						P.update_icon()
+
+						playsound(F.loc, "sound/machines/fax.ogg", 15)
+
+						// Stamps
+						var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+						stampoverlay.icon_state = "paper_stamp-upp"
+						if(!P.stamped)
+							P.stamped = new
+						P.stamped += /obj/item/tool/stamp
+						P.overlays += stampoverlay
+						P.stamps += "<HR><i>This paper has been stamped by the Union of Progressive Peoples Quantum Relay (tm).</i>"
+
+				to_chat(src.owner, "Message reply to transmitted successfully.")
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				return
+		to_chat(src.owner, "/red Unable to locate fax!")
+
+	else if(href_list["CLFFaxReply"])
+		var/mob/living/carbon/human/H = locate(href_list["CLFFaxReply"])
+		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+
+		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
+		if(!template_choice) return
+		var/datum/fax/fax_message
+		switch(template_choice)
+			if("Custom")
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from CLF", "") as message|null
+				if(!input)
+					return
+				fax_message = new(input)
+			if("Template")
+				var/subject = input(src.owner, "Enter subject line", "Outgoing message from CLF", "") as message|null
+				if(!subject)
+					return
+				var/addressed_to = ""
+				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				if(address_option == "Sender")
+					addressed_to = "[H.real_name]"
+				else if(address_option == "Custom")
+					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from CLF", "") as message|null
+					if(!addressed_to)
+						return
+				else
+					return
+				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from CLF", "") as message|null
+				if(!message_body)
+					return
+				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from CLF", "") as message|null
+				if(!sent_by)
+					return
+				fax_message = new(generate_templated_fax(0, "COLONIAL LIBERATION FRONT - COLONIAL COUNCIL OF LIBERATION", subject, addressed_to, message_body, sent_by, "Guerilla Forces Command", "Colonial Liberation Front"))
+		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", "size=500x400")
+		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		if(send_choice != "Send")
+			return
+		GLOB.fax_contents += fax_message // save a copy
+
+		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+		if(!customname)
+			return
+
+		GLOB.CLFFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+
+		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>COLONIAL LIBERATION FRONT FAX REPLY: </font></b> ")
+		msg_ghost += "Transmitting '[customname]' via secure connection ... "
+		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		announce_fax( ,msg_ghost)
+
+		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
+			if(F == fax)
+				if(!(F.inoperable()))
+
+					// animate! it's alive!
+					flick("faxreceive", F)
+
+					// give the sprite some time to flick
+					spawn(20)
+						var/obj/item/paper/P = new /obj/item/paper( F.loc )
+						P.name = "Colonial Liberation Front - [customname]"
+						P.info = fax_message.data
+						P.update_icon()
+
+						playsound(F.loc, "sound/machines/fax.ogg", 15)
+
+						// Stamps
+						var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+						stampoverlay.icon_state = "paper_stamp-clf"
+						if(!P.stamped)
+							P.stamped = new
+						P.stamped += /obj/item/tool/stamp
+						P.overlays += stampoverlay
+						P.stamps += "<HR><i>This paper has been stamped and encrypted by the Colonial Liberation Front Quantum Relay (tm).</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
 				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
@@ -1550,10 +1950,10 @@
 			alert("Removed:\n" + jointext(removed_paths, "\n"))
 
 		var/list/offset = splittext(href_list["offset"],",")
-		var/number = dd_range(1, 100, text2num(href_list["object_count"]))
-		var/X = offset.len > 0 ? text2num(offset[1]) : 0
-		var/Y = offset.len > 1 ? text2num(offset[2]) : 0
-		var/Z = offset.len > 2 ? text2num(offset[3]) : 0
+		var/number = clamp(text2num(href_list["object_count"]), 1, 100)
+		var/X = length(offset) > 0 ? text2num(offset[1]) : 0
+		var/Y = length(offset) > 1 ? text2num(offset[2]) : 0
+		var/Z = length(offset) > 2 ? text2num(offset[3]) : 0
 		var/tmp_dir = href_list["object_dir"]
 		var/obj_dir = tmp_dir ? text2num(tmp_dir) : 2
 		if(!obj_dir || !(obj_dir in list(1,2,4,8,5,6,9,10)))
@@ -1847,6 +2247,21 @@
 		if(!datum_to_remove)
 			return
 		return remove_tagged_datum(datum_to_remove)
+
+	if(href_list["view_bug_report"])
+		if(!check_rights(R_ADMIN|R_MOD))
+			return
+
+		var/datum/tgui_bug_report_form/bug_report = locate(href_list["view_bug_report"])
+		if(!istype(bug_report) || QDELETED(bug_report))
+			to_chat(usr, SPAN_WARNING("This bug report is no longer available."))
+			return
+
+		if(!bug_report.assign_admin(usr))
+			return
+
+		bug_report.tgui_interact(usr)
+		return
 
 	if(href_list["show_tags"])
 		if(!check_rights(R_ADMIN))

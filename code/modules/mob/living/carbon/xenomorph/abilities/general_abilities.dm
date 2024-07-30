@@ -295,7 +295,9 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.speed_modifier = initial(xeno.speed_modifier)// Reset the speed modifier should you be disrupted while zooming or whatnot
+
+	if (!xeno.check_state())
+		return
 
 	if(xeno.observed_xeno)
 		return
@@ -326,6 +328,9 @@
 		xeno.speed_modifier -= movement_slowdown
 		xeno.recalculate_speed()
 	button.icon_state = "template"
+
+/datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_in()
+	return
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/xeno, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
@@ -480,6 +485,7 @@
 	listen_signal = COMSIG_KB_XENO_EVOLVE
 
 /datum/action/xeno_action/onclick/evolve/action_activate()
+	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.do_evolve()
 
@@ -497,6 +503,7 @@
 	ability_name = "view tacmap"
 
 	var/mob/living/carbon/xenomorph/queen/tracked_queen
+	var/hivenumber
 
 /datum/action/xeno_action/onclick/tacmap/Destroy()
 	tracked_queen = null
@@ -505,6 +512,7 @@
 /datum/action/xeno_action/onclick/tacmap/give_to(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 
+	hivenumber = xeno.hive.hivenumber
 	RegisterSignal(xeno.hive, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_new_queen))
 
 	if(!xeno.hive.living_xeno_queen)
@@ -515,6 +523,10 @@
 		hide_from(xeno)
 
 	handle_new_queen(new_queen = xeno.hive.living_xeno_queen)
+
+/datum/action/xeno_action/onclick/tacmap/remove_from(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+	UnregisterSignal(GLOB.hive_datum[hivenumber], COMSIG_HIVE_NEW_QUEEN)
 
 /// handles the addition of a new queen, hiding if appropriate
 /datum/action/xeno_action/onclick/tacmap/proc/handle_new_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
@@ -555,3 +567,18 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.xeno_tacmap()
 	return ..()
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision
+	name = "Toggle Meson Vision"
+	action_icon_state = "project_xeno"
+	plasma_cost = 0
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_5
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision/enable_toggle()
+	. = ..()
+	owner.sight |= SEE_TURFS
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision/disable_toggle()
+	. = ..()
+	owner.sight &= ~SEE_TURFS

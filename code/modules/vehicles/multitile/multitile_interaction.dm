@@ -297,7 +297,7 @@
 
 	if(ammo_flags & AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE)
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
-		damage = round(damage*ANTISTRUCT_DMG_MULT_TANK)
+		damage = floor(damage*ANTISTRUCT_DMG_MULT_TANK)
 	if(ammo_flags & AMMO_ACIDIC)
 		dam_type = "acid"
 
@@ -507,7 +507,7 @@
 
 	var/success = interior.enter(dragged_atom, entrance_used)
 	if(success)
-		to_chat(user, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
+		to_chat(user, SPAN_NOTICE("You successfully fit [dragged_atom] inside \the [src]."))
 	else
 		to_chat(user, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]! It's either too big or vehicle is out of space!"))
 	return

@@ -1,39 +1,26 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ao" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_23"
-	},
+/turf/open/mars_cave/mars_cave_23,
 /area/bigredv2/outside/lz2_south_cas)
 "au" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/weapon/shield/riot,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "az" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_research)
 "bu" = (
 /obj/structure/closet/secure_closet/marshal,
 /obj/item/clothing/suit/storage/CMB,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "cj" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "cR" = (
 /turf/closed/wall/solaris/rock,
@@ -42,48 +29,32 @@
 /turf/open/mars_cave,
 /area/bigredv2/caves_research)
 "fo" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_15"
-	},
+/turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/outside/lz2_south_cas)
 "fK" = (
 /obj/structure/machinery/light/double{
 	dir = 1
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7"
-	},
+/turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/outside/lz2_south_cas)
 "fQ" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_6"
-	},
+/turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/outside/lz2_south_cas)
 "gQ" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_9"
-	},
+/turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/caves_sw)
 "ie" = (
 /obj/item/prop/helmetgarb/spent_buckshot,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17"
-	},
+/turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/lz2_south_cas)
 "ii" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_15"
-	},
+/turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves_sw)
 "ik" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_13"
-	},
+/turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/outside/lz2_south_cas)
 "io" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_6"
-	},
+/turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/caves_research)
 "iF" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -98,24 +69,16 @@
 	pixel_x = -8;
 	pixel_y = 7
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "jj" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/lz2_south_cas)
 "ki" = (
 /obj/structure/machinery/light/double{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "kq" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -140,91 +103,57 @@
 	pixel_x = -7;
 	pixel_y = -3
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "kS" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_7"
-	},
+/turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves_sw)
 "lQ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves_sw)
 "mT" = (
 /obj/item/clothing/head/helmet/riot,
-/turf/open/floor/plating{
-	burnt = 1;
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/burnt_platingdmg3/west,
 /area/bigredv2/caves/mining)
 "nx" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_7"
-	},
+/turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/outside/lz2_south_cas)
 "pn" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17"
-	},
+/turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/caves_sw)
 "qm" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz2_south_cas)
 "qW" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_13"
-	},
+/turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves_sw)
 "sJ" = (
 /obj/item/clothing/suit/storage/CMB,
 /obj/structure/closet/secure_closet/marshal,
 /obj/structure/machinery/light/double,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "sV" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7"
-	},
+/turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/caves_sw)
 "uJ" = (
 /obj/item/shard{
 	pixel_x = 11;
 	pixel_y = 8
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "vX" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars_cave/mars_dirt_5,
 /area/bigredv2/caves_sw)
 "wn" = (
 /obj/effect/landmark/crap_item,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_13"
-	},
+/turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/outside/lz2_south_cas)
 "wJ" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/lz2_south_cas)
 "wK" = (
 /obj/structure/bed/chair{
@@ -232,10 +161,7 @@
 	},
 /obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "wW" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -250,14 +176,11 @@
 	pixel_x = -11;
 	pixel_y = 1
 	},
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 1;
 	pixel_y = 5
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "xS" = (
 /obj/item/trash/cigbutt,
@@ -265,22 +188,16 @@
 	pixel_x = 9;
 	pixel_y = -5
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17"
-	},
+/turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/lz2_south_cas)
 "yw" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
 "zB" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_sw)
 "zP" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_20"
-	},
+/turf/open/mars_cave/mars_cave_20,
 /area/bigredv2/outside/lz2_south_cas)
 "AD" = (
 /obj/effect/decal/cleanable/blood{
@@ -288,43 +205,28 @@
 	icon_state = "gib6";
 	pixel_y = 20
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Be" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Marshals Mining Security Post"
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Bm" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_14"
-	},
+/turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves_sw)
 "Bz" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "BO" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17"
-	},
+/turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/lz2_south_cas)
 "BY" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_11"
-	},
+/turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves_research)
 "En" = (
 /obj/structure/window_frame/solaris/reinforced,
@@ -337,40 +239,26 @@
 	pixel_y = -9
 	},
 /obj/item/shard,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Et" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_10"
-	},
+/turf/open/mars_cave/mars_cave_10,
 /area/bigredv2/caves_research)
 "Fp" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_19"
-	},
+/turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/caves_sw)
 "FB" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot,
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot,
 /obj/item/clothing/under/marine/ua_riot,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "FW" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_11"
-	},
+/turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/outside/lz2_south_cas)
 "Jm" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7"
-	},
+/turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/outside/lz2_south_cas)
 "Jy" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -381,32 +269,22 @@
 	},
 /obj/item/clothing/mask/cigarette/cigar/havana,
 /obj/item/shard,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "JV" = (
 /turf/closed/wall/wood,
 /area/bigredv2/outside/lz2_south_cas)
 "JW" = (
 /obj/structure/machinery/light/double,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_5"
-	},
+/turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/outside/lz2_south_cas)
 "KI" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Le" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_research)
 "MN" = (
 /obj/structure/reagent_dispensers/peppertank{
@@ -419,20 +297,15 @@
 	icon_state = "grenade_custom";
 	name = "M55C Teargas grenade"
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Nu" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_sw)
 "OV" = (
 /obj/structure/surface/rack,
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 1;
 	pixel_y = 5
 	},
@@ -440,58 +313,38 @@
 /obj/item/clothing/head/helmet/riot{
 	pixel_y = 11
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "OY" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_14"
-	},
+/turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/outside/lz2_south_cas)
 "Qn" = (
 /obj/structure/window_frame/solaris/reinforced,
 /obj/item/shard,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "QO" = (
 /obj/effect/landmark/crap_item,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7"
-	},
+/turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/caves_research)
 "QS" = (
 /obj/structure/machinery/door/poddoor/two_tile{
 	name = "\improper Eta Tunnel Lockdown"
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/lz2_south_cas)
 "QV" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_20"
-	},
+/turf/open/mars_cave/mars_cave_20,
 /area/bigredv2/caves_sw)
 "Rm" = (
 /obj/item/shard{
 	icon_state = "small"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17"
-	},
+/turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/lz2_south_cas)
 "Sy" = (
 /obj/item/weapon/broken_bottle,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Tm" = (
 /obj/effect/decal/cleanable/blood{
@@ -501,102 +354,66 @@
 	icon_state = "grenade_custom";
 	name = "M55C Teargas grenade"
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Ue" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bundle,
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_y = -3
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Uh" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_15"
-	},
+/turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves_sw)
 "UG" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_sw)
 "UX" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves_sw)
 "VR" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "Wy" = (
 /obj/structure/window/framed/solaris/reinforced,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "WV" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_6"
-	},
+/turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/caves_sw)
 "Xl" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_7"
-	},
+/turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/outside/lz2_south_cas)
 "Xm" = (
-/turf/open/floor/plating{
-	burnt = 1;
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/burnt_platingdmg3/west,
 /area/bigredv2/caves/mining)
 "XE" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "XV" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window{
 	dir = 1
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Yt" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_16"
-	},
+/turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/outside/lz2_south_cas)
 "Zk" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_16"
-	},
+/turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves_sw)
 "Zz" = (
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 
 (1,1,1) = {"

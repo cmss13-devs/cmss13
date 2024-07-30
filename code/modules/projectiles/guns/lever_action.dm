@@ -353,7 +353,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	name = "\improper XM88 heavy rifle"
 	desc = "An experimental man-portable anti-material rifle chambered in .458 SOCOM. It must be manually chambered for every shot.\nIt has a special property - when you obtain multiple direct hits in a row, its armor penetration and damage will increase."
 	desc_lore = "Originally developed by ARMAT Battlefield Systems for the government of the state of Greater Brazil for use in the Favela Wars (2161 - Ongoing) against mechanized infantry. The platform features an onboard computerized targeting system, sensor array, and an electronic autoloader; these features work in tandem to reduce and render inert armor on the users target with successive hits. The Almayer was issued a small amount of XM88s while preparing for Operation Swamp Hopper with the USS Nan-Shan."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi' // overriden with camos anyways
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi' // overridden with camos anyways
 	icon_state = "boomslang"
 	item_state = "boomslang"
 	fire_sound = 'sound/weapons/gun_boomslang_fire.ogg'
@@ -378,7 +378,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/bayonet/upp, // Barrel
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
@@ -393,9 +392,9 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_2)
+	set_fire_delay(FIRE_DELAY_TIER_2 + FIRE_DELAY_TIER_11)
 	lever_delay = FIRE_DELAY_TIER_3
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = 0

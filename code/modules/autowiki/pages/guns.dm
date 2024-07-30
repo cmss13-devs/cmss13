@@ -7,14 +7,18 @@
 
 	var/list/gun_to_ammo = list()
 
-	for(var/obj/item/ammo_magazine/typepath as anything in subtypesof(/obj/item/ammo_magazine) - subtypesof(/obj/item/ammo_magazine/internal))
+	for(var/obj/item/ammo_magazine/typepath as anything in subtypesof(/obj/item/ammo_magazine) - typesof(/obj/item/ammo_magazine/internal))
+		if(isnull(initial(typepath.icon_state)))
+			continue // Skip mags with no icon_state (e.g. base types)
 		LAZYADD(gun_to_ammo[initial(typepath.gun_type)], typepath)
 
 	for(var/typepath in sort_list(subtypesof(/obj/item/weapon/gun), GLOBAL_PROC_REF(cmp_typepaths_asc)))
-		var/obj/item/weapon/gun/generating_gun = new typepath()
+		var/obj/item/weapon/gun/generating_gun = typepath
+		if(isnull(initial(generating_gun.icon_state)))
+			continue // Skip guns with no icon_state (e.g. base types)
 
+		generating_gun = new typepath()
 		var/filename = SANITIZE_FILENAME(escape_value(format_text(generating_gun.name)))
-
 		var/list/gun_data = generating_gun.ui_data()
 
 		var/list/valid_mag_types = list()
@@ -70,6 +74,8 @@
 
 		var/list/attachments_by_slot = list()
 		for(var/obj/item/attachable/attachment_typepath as anything in generating_gun.attachable_allowed)
+			if(isnull(initial(attachment_typepath.icon_state)))
+				continue // Skip attachments with no icon_state (e.g. base types)
 			LAZYADD(attachments_by_slot[capitalize(initial(attachment_typepath.slot))], attachment_typepath)
 
 		var/attachments = ""

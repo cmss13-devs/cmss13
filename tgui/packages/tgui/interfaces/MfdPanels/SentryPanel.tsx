@@ -1,11 +1,11 @@
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { useBackend } from '../../backend';
 import { Box, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { useBackend } from '../../backend';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
 import { EquipmentContext, SentrySpec } from './types';
 
-const SentryPanel = (props: DropshipEquipment, context) => {
+const SentryPanel = (props: DropshipEquipment) => {
   const sentryData = props.data as SentrySpec;
   return (
     <Stack>
@@ -48,15 +48,16 @@ const SentryPanel = (props: DropshipEquipment, context) => {
   );
 };
 
-export const SentryMfdPanel = (props: MfdProps, context) => {
-  const { act, data } = useBackend<EquipmentContext>(context);
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const { equipmentState } = useEquipmentState(context, props.panelStateId);
+export const SentryMfdPanel = (props: MfdProps) => {
+  const { act, data } = useBackend<EquipmentContext>();
+  const { setPanelState } = mfdState(props.panelStateId);
+  const { equipmentState } = useEquipmentState(props.panelStateId);
   const sentry = data.equipment_data.find(
-    (x) => x.mount_point === equipmentState
+    (x) => x.mount_point === equipmentState,
   );
   const deployLabel =
     (sentry?.data?.deployed ?? 0) === 1 ? 'RETRACT' : 'DEPLOY';
+
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -70,7 +71,7 @@ export const SentryMfdPanel = (props: MfdProps, context) => {
             act('deploy-equipment', { equipment_id: sentry?.mount_point }),
         },
         {
-          children: 'CAMERA',
+          children: sentry?.data?.camera_available ? 'CAMERA' : undefined,
           onClick: () =>
             act('set-camera-sentry', { equipment_id: sentry?.mount_point }),
         },
@@ -80,7 +81,8 @@ export const SentryMfdPanel = (props: MfdProps, context) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}>
+      ]}
+    >
       <Box className="NavigationMenu">
         {sentry && <SentryPanel {...sentry} />}
       </Box>

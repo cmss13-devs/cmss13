@@ -38,9 +38,9 @@
 	for(var/datum/cas_fire_mission_record/record as anything in records)
 		.["records"] += list(record.ui_data(user))
 
-/datum/cas_fire_mission/proc/build_new_record(obj/structure/dropship_equipment/weapon/weap, fire_length)
+/datum/cas_fire_mission/proc/build_new_record(obj/structure/dropship_equipment/weapon/weapon, fire_length)
 	var/datum/cas_fire_mission_record/record = new()
-	record.weapon = weap
+	record.weapon = weapon
 	record.offsets = new /list(fire_length)
 	for(var/idx = 1; idx<=fire_length; idx++)
 		record.offsets[idx] = "-"
@@ -53,24 +53,24 @@
 		// if weapon appears in weapons list but not in record
 		// > add empty record for new weapon
 		var/found = FALSE
-		for(var/obj/structure/dropship_equipment/weapon/weap in weapons)
-			if(record.weapon == weap)
+		for(var/obj/structure/dropship_equipment/weapon/weapon in weapons)
+			if(record.weapon == weapon)
 				found=TRUE
 				break
 		if(!found)
 			bad_records.Add(record)
-	for(var/obj/structure/dropship_equipment/weapon/weap in weapons)
+	for(var/obj/structure/dropship_equipment/weapon/weapon in weapons)
 		var/found = FALSE
 		for(var/datum/cas_fire_mission_record/record in records)
-			if(record.weapon == weap)
+			if(record.weapon == weapon)
 				found=TRUE
 				break
 		if(!found)
-			missing_weapons.Add(weap)
+			missing_weapons.Add(weapon)
 	for(var/datum/cas_fire_mission_record/record in bad_records)
 		records -= record
-	for(var/obj/structure/dropship_equipment/weapon/weap in missing_weapons)
-		build_new_record(weap, fire_length)
+	for(var/obj/structure/dropship_equipment/weapon/weapon in missing_weapons)
+		build_new_record(weapon, fire_length)
 
 /datum/cas_fire_mission/proc/record_for_weapon(weapon_id)
 	for(var/datum/cas_fire_mission_record/record as anything in records)
@@ -80,7 +80,7 @@
 
 /datum/cas_fire_mission/proc/check(obj/structure/machinery/computer/dropship_weapons/linked_console)
 	error_weapon = null
-	if(records.len == 0)
+	if(length(records) == 0)
 		return FIRE_MISSION_ALL_GOOD //I mean yes... but why?
 
 	for(var/datum/cas_fire_mission_record/record in records)
@@ -105,7 +105,7 @@
 		var/i
 		if(!record.offsets)
 			continue
-		for(i=1,i<=record.offsets.len,i++)
+		for(i=1,i<=length(record.offsets),i++)
 			if(cd > 0)
 				cd--
 			if(record.offsets[i] == null || record.offsets[i] == "-")
@@ -164,51 +164,6 @@
 	if(initial_turf == null || check(linked_console) != FIRE_MISSION_ALL_GOOD)
 		return FIRE_MISSION_NOT_EXECUTABLE
 
-	var/obj/effect/firemission_effect = new(initial_turf)
-
-	firemission_effect.icon = 'icons/obj/items/weapons/projectiles.dmi'
-	firemission_effect.icon_state = "laser_target2"
-	firemission_effect.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	firemission_effect.invisibility = INVISIBILITY_MAXIMUM
-	QDEL_IN(firemission_effect, 5 SECONDS)
-
-	notify_ghosts(header = "CAS Fire Mission", message = "[usr ? usr : "Someone"] is launching Fire Mission '[name]' at [get_area(initial_turf)].", source = firemission_effect)
-	msg_admin_niche("[usr ? key_name(usr) : "Someone"] is launching Fire Mission '[name]' at ([initial_turf.x],[initial_turf.y],[initial_turf.z]) [ADMIN_JMP(initial_turf)]")
-
-	var/relative_dir
-	for(var/mob/M in range(15, initial_turf))
-		if(get_turf(M) == initial_turf)
-			relative_dir = 0
-		else
-			relative_dir = Get_Compass_Dir(M, initial_turf)
-
-		var/ds_identifier = "LARGE BIRD"
-		if (M.mob_flags & KNOWS_TECHNOLOGY)
-			ds_identifier = "DROPSHIP"
-
-		M.show_message( \
-			SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
-		)
-
-	// Xenos have time to react to the first message
-	sleep(0.5 SECONDS)
-
-	for(var/mob/M in range(10, initial_turf))
-		if(get_turf(M) == initial_turf)
-			relative_dir = 0
-		else
-			relative_dir = Get_Compass_Dir(M, initial_turf)
-
-		var/ds_identifier = "LARGE BIRD"
-		if (M.mob_flags & KNOWS_TECHNOLOGY)
-			ds_identifier = "DROPSHIP"
-
-		M.show_message( \
-			SPAN_HIGHDANGER("A [ds_identifier] FIRES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING FIRE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
-		)
-
 	var/turf/current_turf = initial_turf
 	var/tally_step = steps / mission_length //how much shots we need before moving to next turf
 	var/next_step = tally_step //when we move to next turf
@@ -237,14 +192,14 @@
 				envelope.change_current_loc(current_turf)
 		var/datum/cas_fire_mission_record/item
 		for(item in records)
-			if(item.offsets.len < step || item.offsets[step] == null || item.offsets[step]=="-")
+			if(length(item.offsets) < step || item.offsets[step] == null || item.offsets[step]=="-")
 				continue
 			var/offset = item.offsets[step]
 			if (current_turf == null)
 				return -1
 			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
-			var/area/A = get_area(shootloc)
-			if(shootloc && !CEILING_IS_PROTECTED(A?.ceiling, CEILING_PROTECTION_TIER_3) && !protected_by_pylon(TURF_PROTECTION_CAS, shootloc))
+			var/area/area = get_area(shootloc)
+			if(shootloc && !CEILING_IS_PROTECTED(area?.ceiling, CEILING_PROTECTION_TIER_3) && !protected_by_pylon(TURF_PROTECTION_CAS, shootloc))
 				item.weapon.open_fire_firemission(shootloc)
 		sleep(step_delay)
 	if(envelope)

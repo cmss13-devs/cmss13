@@ -20,9 +20,8 @@
 		if(M.client && (!M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD))) // Send to marines who are non-staff
 			to_chat_spaced(M, margin_top = 0.5, margin_bottom = 0.5, html = SPAN_MOOC("MOOC: [src.key]([src.admin_holder.rank]): [msg]"))
 
-	var/list/synthetics = getsynths()
-	for(var/mob/M in synthetics)
-		if(M.client && !M.client.admin_holder)
+	for(var/mob/M in GLOB.human_mob_list)
+		if(issynth(M) && M.client && !M.client.admin_holder)
 			to_chat_spaced(M, margin_top = 0.5, margin_bottom = 0.5, html = SPAN_MOOC("MOOC: [src.key]([src.admin_holder.rank]): [msg]"))
 
 	for(var/mob/dead/observer/M in GLOB.observer_list)

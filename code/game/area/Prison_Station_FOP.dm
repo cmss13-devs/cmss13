@@ -90,6 +90,7 @@
 /area/prison/security/checkpoint/hangar
 	name = "\improper Main Hangar Traffic Control"
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/prison/storage
 	icon_state = "engine_storage"
@@ -211,6 +212,7 @@
 	name = "\improper Hangar-Barracks Maintenance"
 	icon_state = "maint_e_shuttle"
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/prison/canteen
 	name = "\improper Canteen"
@@ -457,6 +459,7 @@
 /area/prison/monorail/east
 	name = "\improper East Monorail Station"
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/prison/monorail/west
 	name = "\improper West Monorail Station"
@@ -467,10 +470,12 @@
 /area/prison/hanger/main
 	name = "\improper Main Hanger"
 	icon_state = "hangar_alpha"
+	is_landing_zone = TRUE
 
 /area/prison/hanger/research
 	name = "\improper Research Hanger"
 	icon_state = "hangar_beta"
+	is_landing_zone = TRUE
 
 /area/prison/hangar_storage/main
 	name = "\improper Main Hangar Storage"
@@ -480,9 +485,11 @@
 	name = "\improper Research Hangar Storage"
 	icon_state = "toxstorage"
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/prison/hangar_storage/research/shuttle
 	name = "Corporate Shuttle"
+	is_landing_zone = FALSE
 
 /area/prison/telecomms
 	name = "\improper Telecommunications"

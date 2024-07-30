@@ -3,7 +3,7 @@
 
 Voice Change
 
-	Very Very noticable.
+	Very Very noticeable.
 	Lowers resistance considerably.
 	Decreases stage speed.
 	Reduced transmittable.

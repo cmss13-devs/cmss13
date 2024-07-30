@@ -8,7 +8,7 @@
 	id = "inaprovaline"
 	description = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients. If the lungs are functional, inaprovaline will allow respiration while under cardiac arrest. Slows down bleeding and acts as a weak painkiller. Overdosing may cause severe damage to cardiac tissue."
 	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#dcbaf0" // rgb: 200, 165, 220
 	overdose = HIGH_REAGENTS_OVERDOSE
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
@@ -42,7 +42,7 @@
 	id = "tramadol"
 	description = "Tramadol is a centrally acting analgesic and is considered to be a relatively safe. The analgesic potency is claimed to be about one tenth that of morphine. It is used to treat both acute and chronic pain of moderate to (moderately) severe intensity. Tramadol is generally considered as a medicinal drug with a low potential for dependence relative to morphine. Overdosing on tramadol is highly toxic."
 	reagent_state = LIQUID
-	color = "#C8A5DC"
+	color = "#d7c7e0"
 	custom_metabolism = AMOUNT_PER_TIME(15, 10 MINUTES) // Lasts 10 minutes for 15 units
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
@@ -54,7 +54,7 @@
 	id = "oxycodone"
 	description = "Oxycodone is an opioid agonist with addiction potential similar to that of morphine. It is approved for the treatment of patients with moderate to severe pain who are expected to need continuous opioids for an extended period of time. Overdosing on oxycodone can cause hallucinations, brain damage and be highly toxic."
 	reagent_state = LIQUID
-	color = "#E01D25"
+	color = "#1cc282"
 	custom_metabolism = AMOUNT_PER_TIME(15, 5 MINUTES) // Lasts 5 minutes for 15 units
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
@@ -66,7 +66,7 @@
 	id = "sterilizine"
 	description = "A sterilizer used to clean wounds in preparation for surgery. Its use has mostly been outclassed to the cheaper alternative of space cleaner."
 	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#b8d2f5" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/medical/leporazine
@@ -74,7 +74,7 @@
 	id = "leporazine"
 	description = "A drug used to treat hypothermia and hyperthermia. Stabilizes patient body temperture. Prevents the use of cryogenics. Overdosing on leporazine can cause extreme drowsyness."
 	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#a03919" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -85,7 +85,7 @@
 	id = "kelotane"
 	description = "Common medicine used to treat burns, caustic and corrosive trauma. Overdosing on kelotane can cause internal tissue damage."
 	reagent_state = LIQUID
-	color = "#D8C58C"
+	color = "#d8b343"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
@@ -96,7 +96,7 @@
 	id = "dermaline"
 	description = "Advanced medicine used to treat severe burn trauma. Enables the body to restore even the direst heat-damaged tissue. Overdosing on dermaline can cause severe internal tissue damage."
 	reagent_state = LIQUID
-	color = "#F8C57C"
+	color = "#e2972e"
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -107,7 +107,7 @@
 	id = "dexalin"
 	description = "Dexalin is used in the treatment of oxygen deprivation by feeding oxygen to red blood cells directly inside the bloodstream. Used as an antidote to lexorin poisoning."
 	reagent_state = LIQUID
-	color = "#C865FC"
+	color = "#1f28a7"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
@@ -118,7 +118,7 @@
 	id = "dexalinp"
 	description = "Dexalin Plus is an upgraded form of Dexalin with added iron and carbon to quicken the rate which oxygen binds to the hemoglobin in red blood cells."
 	reagent_state = LIQUID
-	color = "#C8A5FC"
+	color = "#293fff"
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -129,7 +129,7 @@
 	id = "tricordrazine"
 	description = "Tricordrazine is a highly potent stimulant, originally derived from cordrazine. Can be used to treat a wide range of injuries."
 	reagent_state = LIQUID
-	color = "#B865CC"
+	color = "#d87f2b"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -140,7 +140,7 @@
 	id = "anti_toxin"
 	description = "General use anti-toxin, that neutralizes most toxins in the bloodstream. Commonly used in many advanced chemicals. Can be used as a mild anti-hallucinogen and to reduce tiredness."
 	reagent_state = LIQUID
-	color = "#A8F59C"
+	color = "#3fc92a"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
@@ -151,7 +151,7 @@
 	id = "adminordrazine"
 	description = "A magical substance created by gods to dissolve extreme amounts of salt."
 	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#dae63b" // rgb: 200, 165, 220
 	properties = list(PROPERTY_OMNIPOTENT = 2)
 	flags = REAGENT_TYPE_MEDICAL
 
@@ -160,7 +160,7 @@
 	id = "thwei"
 	description = "A strange, alien liquid."
 	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#41c498" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_HIGH_VALUE
 	properties = list(
@@ -182,7 +182,7 @@
 	id = "neuraline"
 	description = "A chemical cocktail tailored to enhance or dampen specific neural processes."
 	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#a244d8" // rgb: 200, 165, 220
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 	overdose = 2
 	overdose_critical = 3
@@ -195,7 +195,7 @@
 	id = "arithrazine"
 	description = "A stabilized variant of dylovene. Its toxin-cleansing properties are weakened and there are harmful side effects, but it does not react with other compounds to create toxin."
 	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#3c8529" // rgb: 200, 165, 220
 	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
@@ -207,7 +207,7 @@
 	id = "russianred"
 	description = "An emergency radiation treatment. The list of potential side effects include retinal damage and unconsciousness."
 	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#ce2727" // rgb: 200, 165, 220
 	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
@@ -218,7 +218,7 @@
 	id = "alkysine"
 	description = "Alkysine is a drug used to lessen and heal the damage to neurological tissue after a catastrophic injury. Small amounts can repair extensive brain trauma. Functions as a very weak painkiller. Overdosing on alkysine is extremely toxic."
 	reagent_state = LIQUID
-	color = "#E89599"
+	color = "#e9d191"
 	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
@@ -241,7 +241,7 @@
 	id = "peridaxon"
 	description = "Prevents symptoms caused by damaged internal organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. Overdosing on peridaxon will cause internal tissue damage."
 	reagent_state = LIQUID
-	color = "#C845DC"
+	color = "#403142"
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
@@ -253,7 +253,7 @@
 	id = "bicaridine"
 	description = "Bicaridine is an analgesic medication and can be used to treat severe external blunt trauma and to stabilize patients. Overdosing on Bicaridine will cause caustic burns and toxins."
 	reagent_state = LIQUID
-	color = "#E8756C"
+	color = "#e7554a"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
@@ -288,7 +288,7 @@
 	id = "ultrazine"
 	description = "A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive."
 	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#ffec43" // rgb: 200, 165, 220
 	custom_metabolism = 0.0167 //5 units will last approximately 10 minutes
 	overdose = LOWM_REAGENTS_OVERDOSE
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
@@ -314,7 +314,7 @@
 	id = "cryoxadone"
 	description = "Industrial grade cryogenic medicine. Treats most types of tissue damage. Its main limitation is that the patient's body temperature must be under 170K to metabolise correctly."
 	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#4acaca" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CRYOMETABOLIZING = 2, PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1, PROPERTY_ANTICARCINOGENIC = 1)
 
@@ -332,7 +332,7 @@
 	id = "clonexadone"
 	description = "Advanced cryogenic medicine made from cryoxadone. Treats most types of tissue damage. Requires temperatures below 170K to to metabolise correctly."
 	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#51b4db" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CRYOMETABOLIZING = 6, PROPERTY_NEOGENETIC = 3, PROPERTY_ANTICORROSIVE = 3, PROPERTY_ANTITOXIC = 3, PROPERTY_ANTICARCINOGENIC = 3)
 
@@ -351,7 +351,7 @@
 	id = "spaceacillin"
 	description = "General use theta-lactam antibiotic. Prevents and cures mundane infections."
 	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#9749c4" // rgb: 200, 165, 220
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL

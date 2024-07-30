@@ -57,7 +57,7 @@
 		return
 
 	var/datum/entity/statistic/medal/new_medal = DB_ENTITY(/datum/entity/statistic/medal)
-	var/datum/entity/player/player_entity = get_player_from_key(new_recipient.ckey)
+	var/datum/entity/player/player_entity = get_player_from_key(new_recipient.persistent_ckey)
 	if(player_entity)
 		new_medal.player_id = player_entity.id
 

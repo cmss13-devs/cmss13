@@ -155,7 +155,7 @@
 					dat += text("<A href='?src=\ref[];choice=New Record (Security)'>New Security Record</A><BR><BR>", src)
 				dat += text("\n<A href='?src=\ref[];choice=Print Record'>Print Record</A><BR>\n<A href='?src=\ref[];choice=Return'>Back</A><BR>", src, src)
 			if(4.0)
-				if(!Perp.len)
+				if(!length(Perp))
 					dat += text("ERROR.  String could not be located.<br><br><A href='?src=\ref[];choice=Return'>Back</A>", src)
 				else
 					dat += {"
@@ -172,7 +172,7 @@
 <th>Rank</th>
 <th>Criminal Status</th>
 </tr> "}
-					for(var/i=1, i<=Perp.len, i += 2)
+					for(var/i=1, i<=length(Perp), i += 2)
 						var/crimstat = ""
 						var/datum/data/record/R = Perp[i]
 						if(istype(Perp[i+1],/datum/data/record/))
@@ -217,7 +217,7 @@ What a mess.*/
 		active1 = null
 	if (!( GLOB.data_core.security.Find(active2) ))
 		active2 = null
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (ishighersilicon(usr)))
+	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (isSilicon(usr)))
 		usr.set_interaction(src)
 		switch(href_list["choice"])
 // SORTING!
@@ -271,16 +271,16 @@ What a mess.*/
 				Perp = new/list()
 				t1 = lowertext(t1)
 				var/list/components = splittext(t1, " ")
-				if(components.len > 5)
+				if(length(components) > 5)
 					return //Lets not let them search too greedily.
 				for(var/datum/data/record/R in GLOB.data_core.general)
 					var/temptext = R.fields["name"] + " " + R.fields["id"] + " " + R.fields["rank"]
-					for(var/i = 1, i<=components.len, i++)
+					for(var/i = 1, i<=length(components), i++)
 						if(findtext(temptext,components[i]))
 							var/prelist = new/list(2)
 							prelist[1] = R
 							Perp += prelist
-				for(var/i = 1, i<=Perp.len, i+=2)
+				for(var/i = 1, i<=length(Perp), i+=2)
 					for(var/datum/data/record/E in GLOB.data_core.security)
 						var/datum/data/record/R = Perp[i]
 						if ((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
@@ -361,16 +361,13 @@ What a mess.*/
 					return
 				var/a2 = active2
 				var/t1 = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)),1,MAX_MESSAGE_LEN)
-				if((!t1 || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!ishighersilicon(usr))) || active2 != a2))
+				if((!t1 || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isSilicon(usr))) || active2 != a2))
 					return
 				var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 				var/new_comment = list("entry" = t1, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
 				if(istype(usr,/mob/living/carbon/human))
 					var/mob/living/carbon/human/U = usr
 					new_comment["created_by"] = list("name" = U.get_authentification_name(), "rank" = U.get_assignment())
-				else if(istype(usr,/mob/living/silicon/robot))
-					var/mob/living/silicon/robot/U = usr
-					new_comment["created_by"] = list("name" = U.name, "rank" = "[U.modtype] [U.braintype]")
 				if(!islist(active2.fields["comments"]))
 					active2.fields["comments"] = list("1" = new_comment)
 				else
@@ -387,9 +384,6 @@ What a mess.*/
 					if(istype(usr,/mob/living/carbon/human))
 						var/mob/living/carbon/human/U = usr
 						deleter = "[U.get_authentification_name()] ([U.get_assignment()])"
-					else if(istype(usr,/mob/living/silicon/robot))
-						var/mob/living/silicon/robot/U = usr
-						deleter = "[U.name] ([U.modtype] [U.braintype])"
 					updated_comments[href_list["del_c"]]["deleted_by"] = deleter
 					updated_comments[href_list["del_c"]]["deleted_at"] = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 					active2.fields["comments"] = updated_comments
@@ -442,7 +436,7 @@ What a mess.*/
 							temp += "</ul>"
 					if("rank")
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
-						if (istype(active1, /datum/data/record) && GLOB.highcom_paygrades.Find(rank))
+						if (istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
 							temp = "<h5>Occupation:</h5>"
 							temp += "<ul>"
 							for(var/rank in GLOB.joblist)
@@ -511,17 +505,12 @@ What a mess.*/
 	return dat
 
 /obj/structure/machinery/computer/secure_data/proc/is_not_allowed(mob/user)
-	return user.stat || user.is_mob_restrained() || (!in_range(src, user) && (!ishighersilicon(user)))
+	return user.stat || user.is_mob_restrained() || (!in_range(src, user) && (!isSilicon(user)))
 
 /obj/structure/machinery/computer/secure_data/proc/get_photo(mob/user)
 	if(istype(user.get_active_hand(), /obj/item/photo))
 		var/obj/item/photo/photo = user.get_active_hand()
 		return photo.img
-	if(ishighersilicon(user))
-		var/mob/living/silicon/tempAI = usr
-		var/datum/picture/selection = tempAI.GetPicture()
-		if (selection)
-			return selection.fields["img"]
 
 /obj/structure/machinery/computer/secure_data/emp_act(severity)
 	. = ..()
@@ -540,7 +529,7 @@ What a mess.*/
 				if(4)
 					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP")
 				if(5)
-					R.fields["p_stat"] = pick("*Unconcious*", "Active", "Physically Unfit")
+					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
 			continue

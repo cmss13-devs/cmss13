@@ -1,10 +1,11 @@
 import { toFixed } from 'common/math';
+
 import { useBackend } from '../backend';
-import { Button, Section, LabeledList, Slider } from '../components';
+import { Button, LabeledList, Section, Slider } from '../components';
 import { Window } from '../layouts';
 
-export const Signaller = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Signaller = (props) => {
+  const { act, data } = useBackend();
   const { max_freq, min_freq, max_signal, min_signal } = data;
 
   return (
@@ -15,9 +16,10 @@ export const Signaller = (props, context) => {
             fluid
             textAlign="center"
             icon="satellite-dish"
-            content="Trigger"
             onClick={() => act('send_signal')}
-          />
+          >
+            Trigger
+          </Button>
         </Section>
         <Section>
           <LabeledList>

@@ -56,9 +56,6 @@
 
 	if(istype(mob, /mob/living/carbon))
 		mob.swap_hand()
-	if(istype(mob,/mob/living/silicon/robot))
-		var/mob/living/silicon/robot/R = mob
-		R.cycle_modules()
 	return
 
 
@@ -71,8 +68,7 @@
 
 /client/verb/drop_item()
 	set hidden = TRUE
-	if(!isrobot(mob))
-		mob.drop_item_v()
+	mob.drop_item_v()
 	return
 
 
@@ -181,7 +177,7 @@
 		if((mob.flags_atom & DIRLOCK) && mob.dir != direct)
 			move_delay += MOVE_REDUCTION_DIRECTION_LOCKED // by Geeves
 
-		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
+		mob.cur_speed = clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL // We pre-set this now for the crawling case. If crawling do_after fails, next_movement would be set after the attempt end instead of now.
 
 		//Try to crawl first
@@ -195,7 +191,7 @@
 				for(var/zone in extremities)
 					if(!(human.get_limb(zone)))
 						extremities.Remove(zone)
-				if(extremities.len < 4)
+				if(length(extremities) < 4)
 					return
 			//now crawl
 			mob.crawling = TRUE
@@ -305,5 +301,5 @@
 	if(stat)
 		prob_slip = 0  // Changing this to zero to make it line up with the comment.
 
-	prob_slip = round(prob_slip)
+	prob_slip = floor(prob_slip)
 	return(prob_slip)

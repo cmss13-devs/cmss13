@@ -87,7 +87,7 @@
 	if(!X.check_state(1))
 		return
 
-	var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/cleave)
+	var/datum/action/xeno_action/activable/cleave/cAction = get_action(X, /datum/action/xeno_action/activable/cleave)
 
 	if (!istype(cAction))
 		return
@@ -129,7 +129,7 @@
 
 	// Config
 	var/max_distance = 7
-	var/windup = 7 DECISECONDS
+	var/windup = 8 DECISECONDS
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
@@ -328,7 +328,7 @@
 	if(!X.check_state(1))
 		return
 
-	var/datum/action/xeno_action/activable/warden_heal/WH = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/warden_heal)
+	var/datum/action/xeno_action/activable/warden_heal/WH = get_action(X, /datum/action/xeno_action/activable/warden_heal)
 	if (!istype(WH))
 		return
 

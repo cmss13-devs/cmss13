@@ -22,32 +22,18 @@
 
 	playsound(src, unpacking_sound, 35)
 
-	/// Store the reference of the crate material
-	var/obj/item/stack/sheet/material_sheet
-	if(parts_type) // Create the crate material and store its reference
-		material_sheet = new parts_type(current_turf, 2)
-
-	// Move the objects back to the turf, above the crate material
+	// Move the contents back to the turf
 	for(var/atom/movable/moving_atom as anything in contents)
 		moving_atom.forceMove(current_turf)
 
+	if(parts_type) // Create the crate material
+		new parts_type(current_turf, 2)
+
 	deconstruct(TRUE)
-
-	// Move the crate material to the bottom of the turf's contents
-	if(material_sheet)
-		move_to_bottom(material_sheet, current_turf)
-
-/// Custom proc to move an object to the bottom of the turf's contents
-/obj/structure/largecrate/proc/move_to_bottom(obj/moving_down, turf/current_turf)
-	if(!istype(moving_down) || !istype(current_turf))
-		return
-	for(var/atom/movable/checking_atom in current_turf.contents)
-		if(checking_atom != moving_down)
-			checking_atom.layer = max(checking_atom.layer, moving_down.layer + 0.1)
 
 /obj/structure/largecrate/deconstruct(disassembled = TRUE)
 	if(!disassembled)
-		new /obj/item/stack/sheet/wood(loc)
+		new parts_type(loc)
 	return ..()
 
 
@@ -268,22 +254,22 @@
 
 GLOBAL_LIST_EMPTY(rbarrel_cap_states) // Will be set up in generate_barrel_states
 GLOBAL_LIST_INIT(rbarrel_center_states, generate_barrel_states())
-GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOUR_SILVER,
-	COLOUR_FLOORTILE_GRAY,
-	COLOUR_MAROON,
-	COLOUR_SOFT_RED,
-	COLOUR_LIGHT_GRAYISH_RED,
-	COLOUR_VERY_SOFT_YELLOW,
-	COLOUR_OLIVE,
-	COLOUR_DARK_MODERATE_LIME_GREEN,
-	COLOUR_TEAL,
-	COLOUR_MODERATE_BLUE,
-	COLOUR_PURPLE,
-	COLOUR_STRONG_VIOLET,
-	COLOUR_BEIGE,
-	COLOUR_DARK_MODERATE_ORANGE,
-	COLOUR_BROWN,
-	COLOUR_DARK_BROWN))
+GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
+	COLOR_FLOORTILE_GRAY,
+	COLOR_MAROON,
+	COLOR_SOFT_RED,
+	COLOR_LIGHT_GRAYISH_RED,
+	COLOR_VERY_SOFT_YELLOW,
+	COLOR_OLIVE,
+	COLOR_DARK_MODERATE_LIME_GREEN,
+	COLOR_TEAL,
+	COLOR_MODERATE_BLUE,
+	COLOR_PURPLE,
+	COLOR_STRONG_VIOLET,
+	LIGHT_BEIGE,
+	COLOR_DARK_MODERATE_ORANGE,
+	COLOR_BROWN,
+	COLOR_DARK_BROWN))
 
 /proc/generate_barrel_states()
 	var/list/rbarrel_center_states = list()

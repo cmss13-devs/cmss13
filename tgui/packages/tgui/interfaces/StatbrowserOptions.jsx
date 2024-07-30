@@ -1,15 +1,13 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Flex, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
-export const StatbrowserOptions = (props, context) => {
-  const { act, data } = useBackend(context);
+export const StatbrowserOptions = (props) => {
+  const { act, data } = useBackend();
   const { current_fontsize } = data;
-  const [fontsize, setFontsize] = useLocalState(
-    context,
-    'fontsize',
-    current_fontsize
-  );
+  const [fontsize, setFontsize] = useState(current_fontsize);
 
   return (
     <Window title="Statbrowser Options" width={300} height={120}>
@@ -22,7 +20,7 @@ export const StatbrowserOptions = (props, context) => {
             maxValue={30}
             step={0.5}
             format={(value) => value + 'px'}
-            onChange={(_, value) => {
+            onChange={(value) => {
               setFontsize(value);
               act('change_fontsize', { new_fontsize: value });
             }}
@@ -33,7 +31,7 @@ export const StatbrowserOptions = (props, context) => {
   );
 };
 
-const Options = (props, context) => {
+const Options = (props) => {
   const { children } = props;
 
   return (
@@ -42,14 +40,14 @@ const Options = (props, context) => {
         {!Array.isArray(children)
           ? children
           : children.map((option, i) => (
-            <Flex.Item key={i}>{option}</Flex.Item>
-          ))}
+              <Flex.Item key={i}>{option}</Flex.Item>
+            ))}
       </Flex>
     </Section>
   );
 };
 
-const Option = (props, context) => {
+const Option = (props) => {
   const { category, input } = props;
 
   return (
@@ -60,7 +58,7 @@ const Option = (props, context) => {
   );
 };
 
-const NumberOption = (props, context) => {
+const NumberOption = (props) => {
   const { category, ...rest } = props;
 
   return <Option category={category} input={<NumberInput {...rest} />} />;

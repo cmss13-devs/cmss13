@@ -2,6 +2,29 @@
 	name = "prop"
 	desc = "Some kind of prop."
 
+/// A prop that acts as a replacement for another item, mimicking their looks.
+/// Mainly used in Reqs Tutorial to provide the full item selections without side effects.
+/obj/item/prop/replacer
+	/// The type that this object is taking the place of
+	var/original_type
+
+/obj/item/prop/replacer/Initialize(mapload, obj/original_type)
+	if(!original_type)
+		return INITIALIZE_HINT_QDEL
+	. = ..()
+	src.original_type = original_type
+	var/obj/created_type = new original_type // Instancing this for the sake of assigning its appearance to the prop and nothing else
+	name = initial(original_type.name)
+	icon = initial(original_type.icon)
+	icon_state = initial(original_type.icon_state)
+	desc = initial(original_type.desc)
+	if(ispath(original_type, /obj/item))
+		var/obj/item/item_type = original_type
+		item_state = initial(item_type.item_state)
+
+	appearance = created_type.appearance
+	qdel(created_type)
+
 /obj/item/prop/laz_top
 	name = "lazertop"
 	icon = 'icons/obj/structures/props/server_equipment.dmi'
@@ -88,6 +111,11 @@
 	name = "USCM historical table flag"
 	icon_state = "uscmflag2"
 	desc = "A miniature historical table flag of the United States Colonial Marines, in traditional scarlet and gold. The USCM logo sits in the center; an eagle is perched atop it and an anchor rests behind it."
+
+/obj/item/prop/tableflag/upp
+	name = "UPP table flag"
+	icon_state = "uppflag"
+	desc = "A miniature table flag of the Union of Progressive Peoples, consisting of 17 yellow stars, surrounding the bigger one in the middle on scarlet field."
 
 /obj/item/prop/flower_vase
 	name = "flower vase"

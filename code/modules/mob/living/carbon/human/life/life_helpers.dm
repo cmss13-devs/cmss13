@@ -6,25 +6,6 @@
  * Mostly for procs that are not called in the direct Life() loop, except for exact functionality matches (handle_breath, breathe, get_breath_from_internal for example)
  */
 
-//Calculate how vulnerable the human is to under- and overpressure.
-//Returns 0 (equals 0 %) if sealed in an undamaged suit, 1 if unprotected (equals 100%).
-//Suitdamage can modifiy this in 10% steps.
-/mob/living/carbon/human/proc/get_pressure_weakness()
-
-	var/pressure_adjustment_coefficient = 1 // Assume no protection at first.
-
-	if(wear_suit && (wear_suit.flags_inventory & NOPRESSUREDMAGE) && head && (head.flags_inventory & NOPRESSUREDMAGE)) //Complete set of pressure-proof suit worn, assume fully sealed.
-		pressure_adjustment_coefficient = 0
-
-		//Handles breaches in your space suit. 10 suit damage equals a 100% loss of pressure protection.
-		if(istype(wear_suit, /obj/item/clothing/suit/space))
-			var/obj/item/clothing/suit/space/S = wear_suit
-			if(S.can_breach && S.damage)
-				pressure_adjustment_coefficient += S.damage * 0.1
-
-	pressure_adjustment_coefficient = min(1, max(pressure_adjustment_coefficient, 0)) //So it isn't less than 0 or larger than 1.
-	return pressure_adjustment_coefficient
-
 /mob/living/carbon/human/proc/stabilize_body_temperature()
 
 
@@ -187,31 +168,6 @@
 	if(G.lighting_alpha < lighting_alpha)
 		lighting_alpha = G.lighting_alpha
 
-/mob/living/carbon/human/handle_silent()
-	if(..())
-		speech_problem_flag = TRUE
-	return silent
-
-/mob/living/carbon/human/handle_slurring()
-	if(..())
-		speech_problem_flag = TRUE
-	return slurring
-
-/mob/living/carbon/human/handle_dazed()
-	if(dazed)
-		var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
-
-		var/final_reduction = skill_resistance + 1
-		adjust_effect(-final_reduction, DAZE, EFFECT_FLAG_LIFE)
-	if(dazed)
-		speech_problem_flag = TRUE
-	return dazed
-
-/mob/living/carbon/human/handle_stuttering()
-	if(..())
-		speech_problem_flag = TRUE
-	return stuttering
-
 #define HUMAN_TIMER_TO_EFFECT_CONVERSION (0.05) //(1/20) //once per 2 seconds, with effect equal to endurance, which is used later
 
 /mob/living/carbon/human/GetStunDuration(amount)
@@ -231,6 +187,13 @@
 	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.08 : 0
 	var/final_reduction = (1 - skill_resistance) / species.knock_out_reduction
 	return . * final_reduction
+
+/mob/living/carbon/human/GetDazeDuration(amount)
+	. = ..()
+	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.08 : 0
+	var/final_reduction = (1 - skill_resistance)
+	return . * final_reduction
+
 
 /mob/living/carbon/human/proc/handle_revive()
 	SEND_SIGNAL(src, COMSIG_HUMAN_REVIVED)

@@ -35,7 +35,7 @@
 	var/headset_hud_on = FALSE
 	var/locate_setting = TRACKER_SL
 	var/misc_tracking = FALSE
-	var/hud_type = MOB_HUD_FACTION_USCM
+	var/hud_type = MOB_HUD_FACTION_MARINE
 	var/default_freq
 
 	///The type of minimap this headset is added to
@@ -233,7 +233,7 @@
 		), PROC_REF(turn_on))
 		wearer = user
 		RegisterSignal(user, COMSIG_MOB_STAT_SET_ALIVE, PROC_REF(update_minimap_icon))
-		RegisterSignal(user, COMSIG_MOB_LOGIN, PROC_REF(add_hud_tracker))
+		RegisterSignal(user, COMSIG_MOB_LOGGED_IN, PROC_REF(add_hud_tracker))
 		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(update_minimap_icon))
 		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(update_minimap_icon))
 		if(headset_hud_on)
@@ -250,7 +250,7 @@
 	UnregisterSignal(user, list(
 		COMSIG_LIVING_REJUVENATED,
 		COMSIG_HUMAN_REVIVED,
-		COMSIG_MOB_LOGIN,
+		COMSIG_MOB_LOGGED_IN,
 		COMSIG_MOB_DEATH,
 		COMSIG_HUMAN_SET_UNDEFIBBABLE,
 		COMSIG_MOB_STAT_SET_ALIVE
@@ -341,7 +341,7 @@
 	var/z_level = turf_gotten.z
 
 	if(wearer.assigned_equipment_preset.always_minimap_visible == TRUE || wearer.stat == DEAD) //We show to all marines if we have this flag, separated by faction
-		if(hud_type == MOB_HUD_FACTION_USCM)
+		if(hud_type == MOB_HUD_FACTION_MARINE)
 			marker_flags = MINIMAP_FLAG_USCM
 		else if(hud_type == MOB_HUD_FACTION_UPP)
 			marker_flags = MINIMAP_FLAG_UPP
@@ -383,7 +383,7 @@
 
 /obj/item/device/radio/headset/ai_integrated/receive_range(freq, level)
 	if (disabledAi)
-		return -1 //Transciever Disabled.
+		return -1 //Transceiver Disabled.
 	return ..(freq, level, 1)
 
 //MARINE HEADSETS
@@ -404,6 +404,30 @@
 
 	var/datum/techtree/T = GET_TREE(TREE_MARINE)
 	T.enter_mob(usr)
+
+/obj/item/device/radio/headset/almayer/verb/give_medal_recommendation()
+	set name = "Give Medal Recommendation"
+	set desc = "Send a medal recommendation for approval by the Commanding Officer"
+	set category = "Object.Medals"
+	set src in usr
+
+	var/mob/living/carbon/human/wearer = usr
+	if(!istype(wearer))
+		return
+	var/obj/item/card/id/id_card = wearer.get_idcard()
+	if(!id_card)
+		return
+
+	var/datum/paygrade/paygrade_actual = GLOB.paygrades[id_card.paygrade]
+	if(!paygrade_actual)
+		return
+	if(!istype(paygrade_actual, /datum/paygrade/marine)) //We only want marines to be able to recommend for medals
+		return
+	if(paygrade_actual.ranking < 3) //E1 starts at 0, so anyone above Corporal (ranking = 3) can recommend for medals
+		to_chat(wearer, SPAN_WARNING("Only officers or NCO's (ME4+) can recommend medals!"))
+		return
+	if(add_medal_recommendation(usr))
+		to_chat(usr, SPAN_NOTICE("Recommendation successfully submitted."))
 
 /obj/item/device/radio/headset/almayer/ce
 	name = "chief engineer's headset"
@@ -540,6 +564,21 @@
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 	volume = RADIO_VOLUME_CRITICAL
+
+/obj/item/device/radio/headset/almayer/mcom/sea
+	name = "marine senior enlisted advisor headset"
+	desc = "Issued only to senior enlisted advisors. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
+	icon_state = "mco_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
+	volume = RADIO_VOLUME_CRITICAL
+	misc_tracking = TRUE
+	locate_setting = TRACKER_CO
+
+	inbuilt_tracking_options = list(
+		"Commanding Officer" = TRACKER_CO,
+		"Executive Officer" = TRACKER_XO,
+		"Chief MP" = TRACKER_CMP
+	)
 
 /obj/item/device/radio/headset/almayer/mcom/synth
 	name = "marine synth headset"
@@ -858,6 +897,14 @@
 	ignore_z = TRUE
 	has_hud = TRUE
 
+/obj/item/device/radio/headset/distress/forecon
+	name = "\improper Force Recon headset"
+	desc = "A headset given to FORECON marines. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel"
+	frequency = FORECON_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom)
+	ignore_z = TRUE
+	has_hud = TRUE
+
 /obj/item/device/radio/headset/distress/pmc/hvh
 	desc = "A special headset used by corporate personnel. Channels are as follows: :o - colony."
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/WY)
@@ -995,7 +1042,7 @@
 	icon_state = "cmb_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmb)
 	has_hud = TRUE
-	hud_type = MOB_HUD_FACTION_USCM
+	hud_type = MOB_HUD_FACTION_MARINE
 
 /obj/item/device/radio/headset/distress/CMB/limited
 	name = "\improper Damaged CMB Earpiece"
@@ -1040,7 +1087,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/soc/forecon)
 	volume = RADIO_VOLUME_QUIET
 	has_hud = TRUE
-	hud_type = MOB_HUD_FACTION_USCM
+	hud_type = MOB_HUD_FACTION_MARINE
 
 /obj/item/device/radio/headset/almayer/mcom/vc
 	name = "marine vehicle crew radio headset"

@@ -1,36 +1,35 @@
-import { useBackend, useLocalState } from '../backend';
-import { Tabs, Section, Button, Fragment, Stack, Flex } from '../components';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Button, Flex, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = [
   {
     title: 'USCM',
-    component: () => MedalsPage,
     color: 'blue',
     icon: 'medal',
   },
   {
     title: 'Hive',
-    component: () => MedalsPage,
     color: 'purple',
     icon: 'star',
   },
 ];
 
-export const MedalsPanel = (props, context) => {
-  const { data } = useBackend(context);
+export const MedalsPanel = (props) => {
+  const { data } = useBackend();
   const { uscm_awards, uscm_award_ckeys, xeno_awards, xeno_award_ckeys } = data;
 
-  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 1);
-
-  const PageComponent = PAGES[pageIndex].component();
+  const [pageIndex, setPageIndex] = useState(1);
 
   return (
     <Window
       width={600}
       height={400}
       theme={pageIndex === 0 ? 'ntos' : 'hive_status'}
-      resizable>
+      resizable
+    >
       <Window.Content scrollable>
         <Stack direction="column" fill>
           <Stack.Item basis="content" grow={0} pb={1}>
@@ -46,7 +45,8 @@ export const MedalsPanel = (props, context) => {
                     color={page.color}
                     selected={i === pageIndex}
                     icon={page.icon}
-                    onClick={() => setPageIndex(i)}>
+                    onClick={() => setPageIndex(i)}
+                  >
                     {page.title}
                   </Tabs.Tab>
                 );
@@ -54,7 +54,7 @@ export const MedalsPanel = (props, context) => {
             </Tabs>
           </Stack.Item>
           <Stack.Item mx={0}>
-            <PageComponent
+            <MedalsPage
               awards={pageIndex === 0 ? uscm_awards : xeno_awards}
               ckeys={pageIndex === 0 ? uscm_award_ckeys : xeno_award_ckeys}
               isMarineMedal={pageIndex === 0}
@@ -69,45 +69,46 @@ export const MedalsPanel = (props, context) => {
   );
 };
 
-const MedalsPage = (props, context) => {
-  const { act } = useBackend(context);
+const MedalsPage = (props) => {
+  const { act } = useBackend();
   const { awards, ckeys, isMarineMedal } = props;
 
   return (
     <Section
       title={isMarineMedal ? 'Medal Awards' : 'Royal Jellies'}
       buttons={
-        <Fragment>
-          <Button
-            icon="clock"
-            content="Refresh"
-            ml={0.5}
-            onClick={() => act('refresh')}
-          />
+        <>
+          <Button icon="clock" ml={0.5} onClick={() => act('refresh')}>
+            Refresh
+          </Button>
           <Button
             icon="plus"
             color="green"
-            content={isMarineMedal ? 'Add a medal' : 'Add a jelly'}
             align="center"
             width={8.5}
             ml={0.5}
             onClick={() => act(isMarineMedal ? 'add_medal' : 'add_jelly')}
-          />
-        </Fragment>
-      }>
-      <Fragment>
+          >
+            {isMarineMedal ? 'Add a medal' : 'Add a jelly'}
+          </Button>
+        </>
+      }
+    >
+      <>
         {Object.keys(awards).map((recipient_name, recipient_index) => (
           <Section
             title={recipient_name + ckeys[recipient_name]}
             key={recipient_index}
-            m={1}>
+            m={1}
+          >
             {Object(awards[recipient_name]).map((medal, medalIndex) => (
               <Flex
                 direction="row"
                 key={medalIndex}
                 backgroundColor={
                   medalIndex % 2 === 1 ? 'rgba(255,255,255,0.1)' : ''
-                }>
+                }
+              >
                 <Flex.Item grow={1} align="center" m={1} p={0.2}>
                   A {medal}
                 </Flex.Item>
@@ -115,7 +116,6 @@ const MedalsPage = (props, context) => {
                   <Button.Confirm
                     icon="trash"
                     color="white"
-                    content="Rescind"
                     confirmColor="bad"
                     width={6.5}
                     textAlign="center"
@@ -126,13 +126,15 @@ const MedalsPage = (props, context) => {
                         index: medalIndex,
                       })
                     }
-                  />
+                  >
+                    Rescind
+                  </Button.Confirm>
                 </Flex.Item>
               </Flex>
             ))}
           </Section>
         ))}
-      </Fragment>
+      </>
     </Section>
   );
 };

@@ -1,6 +1,6 @@
 import { sortBy } from 'common/collections';
-import { Fragment } from 'inferno';
-import { useLocalState } from '../../backend';
+import { useState } from 'react';
+
 import { Button, Section, Stack, Tabs } from '../../components';
 
 const diffMap = {
@@ -18,7 +18,7 @@ const diffMap = {
   },
 };
 
-export const AccessList = (props, context) => {
+export const AccessList = (props) => {
   const {
     accesses = [],
     selectedList = [],
@@ -28,16 +28,15 @@ export const AccessList = (props, context) => {
     grantDep,
     denyDep,
   } = props;
-  const [selectedAccessName, setSelectedAccessName] = useLocalState(
-    context,
-    'accessName',
-    accesses[0]?.name
+  const [selectedAccessName, setSelectedAccessName] = useState(
+    accesses[0]?.name,
   );
   const selectedAccess = accesses.find(
-    (access) => access.name === selectedAccessName
+    (access) => access.name === selectedAccessName,
   );
-  const selectedAccessEntries = sortBy((entry) => entry.desc)(
-    selectedAccess?.accesses || []
+  const selectedAccessEntries = sortBy(
+    selectedAccess?.accesses || [],
+    (entry) => entry.desc,
   );
 
   const checkAccessIcon = (accesses) => {
@@ -63,21 +62,16 @@ export const AccessList = (props, context) => {
     <Section
       title="Access"
       buttons={
-        <Fragment>
-          <Button
-            icon="check-double"
-            content="Grant All"
-            color="good"
-            onClick={() => grantAll()}
-          />
-          <Button
-            icon="undo"
-            content="Deny All"
-            color="bad"
-            onClick={() => denyAll()}
-          />
-        </Fragment>
-      }>
+        <>
+          <Button icon="check-double" color="good" onClick={() => grantAll()}>
+            Grant All
+          </Button>
+          <Button icon="undo" color="bad" onClick={() => denyAll()}>
+            Deny All
+          </Button>
+        </>
+      }
+    >
       <Stack>
         <Stack.Item>
           <Tabs vertical>
@@ -92,7 +86,8 @@ export const AccessList = (props, context) => {
                   color={color}
                   icon={icon}
                   selected={access.name === selectedAccessName}
-                  onClick={() => setSelectedAccessName(access.name)}>
+                  onClick={() => setSelectedAccessName(access.name)}
+                >
                   {access.name}
                 </Tabs.Tab>
               );
@@ -105,19 +100,21 @@ export const AccessList = (props, context) => {
               <Button
                 fluid
                 icon="check"
-                content="Grant Region"
                 color="good"
                 onClick={() => grantDep(selectedAccess.regid)}
-              />
+              >
+                Grant Region
+              </Button>
             </Stack.Item>
             <Stack.Item>
               <Button
                 fluid
                 icon="times"
-                content="Deny Region"
                 color="bad"
                 onClick={() => denyDep(selectedAccess.regid)}
-              />
+              >
+                Deny Region
+              </Button>
             </Stack.Item>
           </Stack>
           <Stack vertical mt={1}>
@@ -125,10 +122,11 @@ export const AccessList = (props, context) => {
               <Stack.Item key={entry.desc}>
                 <Button.Checkbox
                   fluid
-                  content={entry.desc}
                   checked={selectedList.includes(entry.ref)}
                   onClick={() => accessMod(entry.ref)}
-                />
+                >
+                  {entry.desc}
+                </Button.Checkbox>
               </Stack.Item>
             ))}
           </Stack>

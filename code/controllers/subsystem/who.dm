@@ -253,6 +253,7 @@ SUBSYSTEM_DEF(who)
 				admin_payload["special_text"] += " (HIDDEN)"
 				admin_additional["total_admins"] += list(list("[entry.key] ([rank])" = list(admin_payload)))
 			else
+				admin_additional["total_admins"] += list(list("[entry.key] ([rank])" = list(admin_payload)))
 				base_data["total_admins"] += list(list("[entry.key] ([rank])" = list(admin_payload.Copy())))
 
 			admin_payload["text"] = ""

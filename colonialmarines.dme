@@ -1282,7 +1282,6 @@
 #include "code\game\objects\structures\curtains.dm"
 #include "code\game\objects\structures\desertdam.dm"
 #include "code\game\objects\structures\displaycase.dm"
-#include "code\game\objects\structures\electricchair.dm"
 #include "code\game\objects\structures\extinguisher.dm"
 #include "code\game\objects\structures\fence.dm"
 #include "code\game\objects\structures\flora.dm"

@@ -21,13 +21,9 @@ export const Who = (props, context) => {
 
   const total_players = mergeArrays(
     base_data.total_players,
-    player_additional.total_players,
-    player_stealthed_additional.total_players,
+    player_additional?.total_players,
+    player_stealthed_additional?.total_players,
   );
-
-  if (!total_players || !Array.isArray(total_players)) {
-    return <Window resizable width={800} height={600} />;
-  }
 
   const [searchQuery, setSearchQuery] = useLocalState('searchQuery', '');
 
@@ -76,7 +72,7 @@ export const Who = (props, context) => {
                 ) : null}
               </WhoCollapsible>
             </Section>
-            {factions_additional.length ? (
+            {factions_additional ? (
               <Section>
                 <WhoCollapsible title="Information" color="olive">
                   <Box direction="column">

@@ -317,7 +317,7 @@
 	if(!victim || !victim.loc)
 		return
 	if(loc != victim)
-		victim.chestburst = 0 //if a doc removes the larva during the sleep(6), we must remove the 'bursting' overlay on the human
+		victim.chestburst = 0 //if a doc removes the larva during the sleep(10), we must remove the 'bursting' overlay on the human
 		victim.update_burst()
 		return
 

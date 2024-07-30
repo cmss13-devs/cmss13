@@ -119,6 +119,9 @@
 
 	var/has_species_tab_items = FALSE
 
+	//Species specific emote sound lists
+	var/list/burstscreams = list()
+
 /datum/species/New()
 	if(unarmed_type)
 		unarmed = new unarmed_type()

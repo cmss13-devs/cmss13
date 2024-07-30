@@ -21,7 +21,7 @@
 
 		for(var/obj/item/item as anything in container)
 			if(extract(item, user))
-				// Bandaid to update the container contents and delete "ghosts" of items after they're been processed
+				// Properly deletes container contents after they've been processed
 				container.remove_from_storage(item)
 				item.moveToNullspace()
 

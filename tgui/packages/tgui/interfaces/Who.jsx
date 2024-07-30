@@ -60,18 +60,18 @@ export const Who = (props, context) => {
             </Section>
           </Stack.Item>
           <Stack.Item mt={0.2} grow>
-            <Section>
-              <WhoCollapsible
-                title={'Players - ' + filteredTotalPlayers.length}
-                color="good"
-              >
-                {filteredTotalPlayers.length ? (
+            {filteredTotalPlayers ? (
+              <Section>
+                <WhoCollapsible
+                  title={'Players - ' + filteredTotalPlayers.length}
+                  color="good"
+                >
                   <Box>
                     <FilterPlayers players_to_filter={filteredTotalPlayers} />
                   </Box>
-                ) : null}
-              </WhoCollapsible>
-            </Section>
+                </WhoCollapsible>
+              </Section>
+            ) : null}
             {factions_additional ? (
               <Section>
                 <WhoCollapsible title="Information" color="olive">

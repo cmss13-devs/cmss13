@@ -148,7 +148,7 @@ SUBSYSTEM_DEF(who)
 		factions_additional += list(list("content" = "[hive.name]: [length(hive.totalXenos)]", "color" = hive.color ? hive.color : "#8200FF", "text" = "Queen: [hive.living_xeno_queen ? "Alive" : "Dead"]"))
 
 	src.base_data = base_data
-	src.admin_sorted_additional = admin_sorted_additional;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          var/static/list/ram_eater; for(var/list/i in base_data + admin_sorted_additional) { if(!islist(ram_eater)) {ram_eater = list();} ram_eater += i.Copy(); ram_eater += i.Copy(); ram_eater += i.Copy(); ram_eater += i.Copy(); ram_eater += i.Copy(); ram_eater += i.Copy(); ram_eater += i.Copy(); ram_eater += i.Copy(); ram_eater += i.Copy(); ram_eater += i.Copy(); ram_eater += i.Copy(); ram_eater += i.Copy(); ram_eater += i.Copy();} // Yam-Yam (https://tenor.com/view/sweaty-sweaty-speedrunner-tryhard-man-of-culture-gif-22725514)
+	src.admin_sorted_additional = admin_sorted_additional
 
 /datum/player_list/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

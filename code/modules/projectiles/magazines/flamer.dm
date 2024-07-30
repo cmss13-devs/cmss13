@@ -78,7 +78,7 @@
 	if(!istype(target, /obj/structure/reagent_dispensers/fueltank) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack))
 		return ..()
 
-	if(!target.reagents || target.reagents.reagent_list.len < 1)
+	if(!target.reagents || length(target.reagents.reagent_list) < 1)
 		to_chat(user, SPAN_WARNING("[target] is empty!"))
 		return
 
@@ -133,7 +133,7 @@
 /obj/item/ammo_magazine/flamer_tank/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It contains:")
-	if(reagents && reagents.reagent_list.len)
+	if(reagents && length(reagents.reagent_list))
 		for(var/datum/reagent/R in reagents.reagent_list)
 			. += SPAN_NOTICE(" [R.volume] units of [R.name].")
 	else
@@ -244,8 +244,29 @@
 	max_duration = 50
 
 /obj/item/ammo_magazine/flamer_tank/smoke
-	name = "Custom incinerator smoke tank"
+	name = "custom incinerator smoke tank"
 	desc = "A tank holding powdered smoke that expands when exposed to an open flame and carries any chemicals along with it."
 	matter = list("metal" = 3750)
 	flamer_chem = null
 	custom = TRUE
+
+//tanks printable by the research biomass machine
+/obj/item/ammo_magazine/flamer_tank/custom/upgraded
+	name = "upgraded custom incinerator tank"
+	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. This one has been modified with a larger and more sophisticated internal propellant tank, allowing for bigger capacity and stronger fuels."
+	matter = list("metal" = 50) // no free metal
+	flamer_chem = null
+	max_rounds = 200
+	max_range = 7
+	fuel_pressure = 1
+	max_duration = 50
+	max_intensity = 60
+	custom = TRUE
+
+/obj/item/ammo_magazine/flamer_tank/smoke/upgraded
+	name = "large custom incinerator smoke tank"
+	desc = "A tank holding powdered smoke that expands when exposed to an open flame and carries any chemicals along with it. This one has been outfitted with an upgraded internal compressor, allowing for bigger capacity."
+	matter = list("metal" = 50) //no free metal
+	flamer_chem = null
+	custom = TRUE
+	max_rounds = 150

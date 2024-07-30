@@ -1,6 +1,6 @@
 /obj/item/hardpoint/primary/flamer
-	name = "DRG-N Offensive Flamer Unit"
-	desc = "A primary weapon for the tank that spews fire everywhere."
+	name = "\improper DRG-N Offensive Flamer Unit"
+	desc = "A primary weapon for the tank that spews out high-combustion napalm in a wide radius. The fuel burns intensely and quickly, which allows for it to be used offensively by armoured vehicles."
 
 	icon_state = "drgn_flamer"
 	disp_icon = "tank"

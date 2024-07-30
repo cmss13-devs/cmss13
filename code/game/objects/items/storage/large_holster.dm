@@ -332,7 +332,7 @@
 
 /obj/item/storage/large_holster/fuelpack/get_examine_text(mob/user)
 	. = ..()
-	if(contents.len)
+	if(length(contents))
 		. += "It is storing a M240-T incinerator unit."
 	if (get_dist(user, src) <= 1)
 		if(fuel)
@@ -375,6 +375,7 @@
 		return TRUE
 
 /datum/action/item_action/specialist/toggle_fuel/action_activate()
+	. = ..()
 	var/obj/item/storage/large_holster/fuelpack/FP = holder_item
 	if (!istype(FP))
 		return

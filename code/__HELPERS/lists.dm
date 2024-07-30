@@ -12,7 +12,7 @@
 
 //Returns a list in plain english as a string
 /proc/english_list(list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
-	var/total = input.len
+	var/total = length(input)
 	if (!total)
 		return "[nothing_text]"
 	else if (total == 1)
@@ -33,9 +33,9 @@
 
 //Returns list element or null. Should prevent "index out of bounds" error.
 /proc/listgetindex(list/list,index)
-	if(istype(list) && list.len)
+	if(istype(list) && length(list))
 		if(isnum(index))
-			if(InRange(index,1,list.len))
+			if(ISINRANGE(index,1,length(list)))
 				return list[index]
 		else if(list[index])
 			return list[index]
@@ -87,54 +87,38 @@
 		result = first ^ second
 	return result
 
-//Pretends to pick an element based on its weight but really just seems to pick a random element.
-/proc/pickweight(list/L)
-	var/total = 0
-	var/item
-	for (item in L)
-		if (!L[item])
-			L[item] = 1
-		total += L[item]
-
-	total = rand(1, total)
-	for (item in L)
-		total -=L [item]
-		if (total <= 0)
-			return item
-	return null
-
 /// Pick a random element from the list and remove it from the list.
 /proc/pick_n_take(list/L)
 	RETURN_TYPE(L[_].type)
-	if(L.len)
-		var/picked = rand(1,L.len)
+	if(length(L))
+		var/picked = rand(1,length(L))
 		. = L[picked]
 		L.Cut(picked,picked+1) //Cut is far more efficient that Remove()
 
 //Returns the top(last) element from the list and removes it from the list (typical stack function)
 /proc/pop(list/L)
-	if(L.len)
-		. = L[L.len]
+	if(length(L))
+		. = L[length(L)]
 		L.len--
 
 /proc/popleft(list/L)
-	if(L.len)
+	if(length(L))
 		. = L[1]
 		L.Cut(1,2)
 
 //Returns the next element in parameter list after first appearance of parameter element. If it is the last element of the list or not present in list, returns first element.
 /proc/next_in_list(element, list/L)
-	for(var/i=1, i<L.len, i++)
+	for(var/i=1, i<length(L), i++)
 		if(L[i] == element)
 			return L[i+1]
 	return L[1]
 
 //Returns the previous element in parameter list before last appearance of parameter element. If it is the first element of the list or not present in list, returns last element.
 /proc/prev_in_list(element, list/L)
-	for(var/i=L.len, i>1, i--)
+	for(var/i=length(L), i>1, i--)
 		if(L[i] == element)
 			return L[i-1]
-	return L[L.len]
+	return L[length(L)]
 
 /*
  * Sorting
@@ -144,7 +128,7 @@
 /proc/reverselist(list/L)
 	var/list/output = list()
 	if(L)
-		for(var/i = L.len; i >= 1; i--)
+		for(var/i = length(L); i >= 1; i--)
 			output += L[i]
 	return output
 
@@ -155,7 +139,7 @@
 		. = L_n
 		var/L_o[] = L.Copy()
 		var/i
-		while(L_o.len)
+		while(length(L_o))
 			i = pick(L_o)
 			if(!ref) L_n += i
 			else L_n[i] = L_o[i]
@@ -171,9 +155,9 @@
 
 //Mergesort: divides up the list into halves to begin the sort
 /proc/sortKey(list/client/L, order = 1)
-	if(isnull(L) || L.len < 2)
+	if(isnull(L) || length(L) < 2)
 		return L
-	var/middle = L.len / 2 + 1
+	var/middle = length(L) / 2 + 1
 	return mergeKey(sortKey(L.Copy(0,middle)), sortKey(L.Copy(middle)), order)
 
 //Mergsort: does the actual sorting and returns the results back to sortAtom
@@ -181,7 +165,7 @@
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
-	while(Li <= L.len && Ri <= R.len)
+	while(Li <= length(L) && Ri <= length(R))
 		var/client/rL = L[Li]
 		var/client/rR = R[Ri]
 		if(sorttext(rL.ckey, rR.ckey) == order)
@@ -189,20 +173,20 @@
 		else
 			result += R[Ri++]
 
-	if(Li <= L.len)
+	if(Li <= length(L))
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
 
 // Quicksort implementation
 /proc/sortAtom(list/atom/L, order = 1)
-	if(isnull(L) || L.len < 2)
+	if(isnull(L) || length(L) < 2)
 		return L
 	var/startIndex = 1
 	var/list/atom/M = new/list()
 	for(var/atom/mob in L)
 		if(istype(mob))
 			M.Add(mob)
-	var/endIndex = M.len - 1
+	var/endIndex = length(M) - 1
 	var/top = 0
 	var/list/stack[endIndex*2]
 	stack[++top] = startIndex
@@ -241,9 +225,9 @@
 /proc/sortRecord(list/datum/data/record/L, field = "name", order = 1)
 	if(isnull(L))
 		return list()
-	if(L.len < 2)
+	if(length(L) < 2)
 		return L
-	var/middle = L.len / 2 + 1
+	var/middle = length(L) / 2 + 1
 	return mergeRecordLists(sortRecord(L.Copy(0, middle), field, order), sortRecord(L.Copy(middle), field, order), field, order)
 
 //Mergsort: does the actual sorting and returns the results back to sortRecord
@@ -252,7 +236,7 @@
 	var/Ri=1
 	var/list/result = new()
 	if(!isnull(L) && !isnull(R))
-		while(Li <= L.len && Ri <= R.len)
+		while(Li <= length(L) && Ri <= length(R))
 			var/datum/data/record/rL = L[Li]
 			if(isnull(rL))
 				L -= rL
@@ -266,7 +250,7 @@
 			else
 				result += R[Ri++]
 
-		if(Li <= L.len)
+		if(Li <= length(L))
 			return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
 
@@ -285,9 +269,9 @@
 	RETURN_TYPE(/list)
 	if(!istype(L))
 		return
-	if(L.len < 2)
+	if(length(L) < 2)
 		return L
-	var/middle = L.len / 2 + 1 // Copy is first,second-1
+	var/middle = length(L) / 2 + 1 // Copy is first,second-1
 	return mergeLists(sortList(L.Copy(0,middle)), sortList(L.Copy(middle))) //second parameter null = to end of list
 
 //Mergsorge: uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
@@ -301,13 +285,13 @@
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
-	while(Li <= L.len && Ri <= R.len)
+	while(Li <= length(L) && Ri <= length(R))
 		if(sorttext(L[Li], R[Ri]) < 1)
 			result += R[Ri++]
 		else
 			result += L[Li++]
 
-	if(Li <= L.len)
+	if(Li <= length(L))
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
 
@@ -322,68 +306,68 @@
 
 // List of lists, sorts by element[key] - for things like crew monitoring computer sorting records by name.
 /proc/sortByKey(list/L, key)
-	if(L.len < 2)
+	if(length(L) < 2)
 		return L
-	var/middle = L.len / 2 + 1
+	var/middle = length(L) / 2 + 1
 	return mergeKeyedLists(sortByKey(L.Copy(0, middle), key), sortByKey(L.Copy(middle), key), key)
 
 /proc/mergeKeyedLists(list/L, list/R, key)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
-	while(Li <= L.len && Ri <= R.len)
+	while(Li <= length(L) && Ri <= length(R))
 		if(sorttext(L[Li][key], R[Ri][key]) < 1)
 			// Works around list += list2 merging lists; it's not pretty but it works
 			result += "temp item"
-			result[result.len] = R[Ri++]
+			result[length(result)] = R[Ri++]
 		else
 			result += "temp item"
-			result[result.len] = L[Li++]
+			result[length(result)] = L[Li++]
 
-	if(Li <= L.len)
+	if(Li <= length(L))
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
 
 
 //Mergesort: any value in a list, preserves key=value structure
 /proc/sortAssoc(list/L)
-	if(L.len < 2)
+	if(length(L) < 2)
 		return L
-	var/middle = L.len / 2 + 1 // Copy is first,second-1
+	var/middle = length(L) / 2 + 1 // Copy is first,second-1
 	return mergeAssoc(sortAssoc(L.Copy(0,middle)), sortAssoc(L.Copy(middle))) //second parameter null = to end of list
 
 /proc/mergeAssoc(list/L, list/R)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
-	while(Li <= L.len && Ri <= R.len)
+	while(Li <= length(L) && Ri <= length(R))
 		if(sorttext(L[Li], R[Ri]) < 1)
 			result += R&R[Ri++]
 		else
 			result += L&L[Li++]
 
-	if(Li <= L.len)
+	if(Li <= length(L))
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
 
 // Same as sortAssoc but rather than creating a whole new list keeps the original list ref and just returns that list modified
 /proc/sortAssocKeepList(list/L)
-	if(L.len < 2)
+	if(length(L) < 2)
 		return L
-	var/middle = L.len / 2 + 1 // Copy is first,second-1
+	var/middle = length(L) / 2 + 1 // Copy is first,second-1
 	return mergeAssocKeepList(sortAssoc(L.Copy(0,middle)), sortAssoc(L.Copy(middle)), L) //second parameter null = to end of list
 
 /proc/mergeAssocKeepList(list/L, list/R, list/original)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
-	while(Li <= L.len && Ri <= R.len)
+	while(Li <= length(L) && Ri <= length(R))
 		if(sorttext(L[Li], R[Ri]) < 1)
 			result += R&R[Ri++]
 		else
 			result += L&L[Li++]
 
-	if(Li <= L.len)
+	if(Li <= length(L))
 		result += L.Copy(Li, 0)
 	else
 		result += R.Copy(Ri, 0)
@@ -408,7 +392,7 @@
 /proc/bitfield2list(bitfield = 0, list/wordlist)
 	var/list/r = list()
 	if(islist(wordlist))
-		var/max = min(wordlist.len,16)
+		var/max = min(length(wordlist),16)
 		var/bit = 1
 		for(var/i=1, i<=max, i++)
 			if(bitfield & bit)
@@ -430,9 +414,9 @@
 
 //Move a single element from position fromIndex within a list, to position toIndex
 //All elements in the range [1,toIndex) before the move will be before the pivot afterwards
-//All elements in the range [toIndex, L.len+1) before the move will be after the pivot afterwards
+//All elements in the range [toIndex, length(L)+1) before the move will be after the pivot afterwards
 //In other words, it's as if the range [fromIndex,toIndex) have been rotated using a <<< operation common to other languages.
-//fromIndex and toIndex must be in the range [1,L.len+1]
+//fromIndex and toIndex must be in the range [1,length(L)+1]
 //This will preserve associations ~Carnie
 /proc/moveElement(list/L, fromIndex, toIndex)
 	if(fromIndex == toIndex || fromIndex+1 == toIndex) //no need to move
@@ -493,13 +477,13 @@
 
 //replaces reverseList ~Carnie
 /proc/reverseRange(list/L, start=1, end=0)
-	if(L.len)
-		start = start % L.len
-		end = end % (L.len+1)
+	if(length(L))
+		start = start % length(L)
+		end = end % (length(L)+1)
 		if(start <= 0)
-			start += L.len
+			start += length(L)
 		if(end <= 0)
-			end += L.len + 1
+			end += length(L) + 1
 
 		--end
 		while(start < end)
@@ -518,13 +502,13 @@
 
 ///replaces reverseList ~Carnie
 /proc/reverse_range(list/inserted_list, start = 1, end = 0)
-	if(inserted_list.len)
-		start = start % inserted_list.len
-		end = end % (inserted_list.len + 1)
+	if(length(inserted_list))
+		start = start % length(inserted_list)
+		end = end % (length(inserted_list) + 1)
 		if(start <= 0)
-			start += inserted_list.len
+			start += length(inserted_list)
 		if(end <= 0)
-			end += inserted_list.len + 1
+			end += length(inserted_list) + 1
 
 		--end
 		while(start < end)
@@ -574,7 +558,7 @@
 	var/list/found = list()
 	for(var/atom/A in contents)
 		found += A
-		if(A.contents.len)
+		if(length(A.contents))
 			found += A.contents_recursive()
 	return found
 
@@ -582,7 +566,7 @@
 	var/list/found = list()
 	for(var/atom/A in contents)
 		found += A
-		if(A.contents.len)
+		if(length(A.contents))
 			found += A.contents
 	return found
 
@@ -594,15 +578,15 @@
 	if(!sort)
 		return L
 
-	if(L.len <= 1)
+	if(length(L) <= 1)
 		return L
 
-	var/middle = floor(L.len / 2)
+	var/middle = floor(length(L) / 2)
 	var/list/left = custom_mergesort(L.Copy(1, middle + 1))
 	var/list/right = custom_mergesort(L.Copy(middle + 1))
 	var/list/result = list()
 
-	while(left.len > 0 && right.len > 0)
+	while(length(left) > 0 && length(right) > 0)
 		var/a = left[1]
 		var/b = right[1]
 
@@ -613,11 +597,11 @@
 			result += b
 			right.Cut(1,2)
 
-	while(left.len > 0)
+	while(length(left) > 0)
 		result += left[1]
 		left.Cut(1,2)
 
-	while(right.len > 0)
+	while(length(right) > 0)
 		result += right[1]
 		right.Cut(1,2)
 

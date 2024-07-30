@@ -90,7 +90,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	var/list/acceptableTurfs = list()
 	for (var/t in ordered_area) //Go through the orderedArea list
 		var/turf/unchecked_turf = t
-		if (typecache_filter_list_reverse(unchecked_turf.contents, ignored_atoms).len != 0) //if there is something in this turf that isn't in the blacklist, we consider this turf "acceptable" and add it to the acceptableTurfs list
+		if (length(typecache_filter_list_reverse(unchecked_turf.contents, ignored_atoms)) != 0) //if there is something in this turf that isn't in the blacklist, we consider this turf "acceptable" and add it to the acceptableTurfs list
 			acceptableTurfs.Add(unchecked_turf) //Because orderedArea was an ordered linear list, acceptableTurfs will be as well.
 
 	launch_list = list() //Anything in launch_list will go into the supplypod when it is launched

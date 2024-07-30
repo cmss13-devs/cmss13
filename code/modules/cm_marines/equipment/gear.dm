@@ -108,7 +108,7 @@
 			continue
 		mobs_can_store += H
 	var/mob/living/carbon/human/mob_to_store
-	if(mobs_can_store.len)
+	if(length(mobs_can_store))
 		mob_to_store = pick(mobs_can_store)
 		mob_to_store.forceMove(src)
 		mob_to_store.unset_interaction()

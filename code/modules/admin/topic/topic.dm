@@ -73,7 +73,7 @@
 
 		else if(task == "rank")
 			var/new_rank
-			if(GLOB.admin_ranks.len)
+			if(length(GLOB.admin_ranks))
 				new_rank = tgui_input_list(usr, "Please select a rank", "New rank", (GLOB.admin_ranks|"*New Rank*"))
 			else
 				new_rank = tgui_input_list(usr, "Please select a rank", "New rank", list("Game Master","Game Admin", "Trial Admin", "Admin Observer","*New Rank*"))
@@ -91,7 +91,7 @@
 						to_chat(usr, "<font color='red'>Error: Topic 'editrights': Invalid rank</font>")
 						return
 					if(CONFIG_GET(flag/admin_legacy_system))
-						if(GLOB.admin_ranks.len)
+						if(length(GLOB.admin_ranks))
 							if(new_rank in GLOB.admin_ranks)
 								rights = GLOB.admin_ranks[new_rank] //we typed a rank which already exists, use its rights
 							else
@@ -553,7 +553,7 @@
 				notbannedlist += job
 
 		//Banning comes first
-		if(notbannedlist.len)
+		if(length(notbannedlist))
 			if(!check_rights(R_BAN))  return
 			var/reason = input(usr,"Reason?","Please State Reason","") as text|null
 			if(reason)
@@ -565,7 +565,7 @@
 
 		//Unbanning joblist
 		//all jobs in joblist are banned already OR we didn't give a reason (implying they shouldn't be banned)
-		if(joblist.len) //at least 1 banned job exists in joblist so we have stuff to unban.
+		if(length(joblist)) //at least 1 banned job exists in joblist so we have stuff to unban.
 			for(var/job in joblist)
 				var/reason = jobban_isbanned(M, job, P1)
 				if(!reason) continue //skip if it isn't jobbanned anyway
@@ -1950,10 +1950,10 @@
 			alert("Removed:\n" + jointext(removed_paths, "\n"))
 
 		var/list/offset = splittext(href_list["offset"],",")
-		var/number = dd_range(1, 100, text2num(href_list["object_count"]))
-		var/X = offset.len > 0 ? text2num(offset[1]) : 0
-		var/Y = offset.len > 1 ? text2num(offset[2]) : 0
-		var/Z = offset.len > 2 ? text2num(offset[3]) : 0
+		var/number = clamp(text2num(href_list["object_count"]), 1, 100)
+		var/X = length(offset) > 0 ? text2num(offset[1]) : 0
+		var/Y = length(offset) > 1 ? text2num(offset[2]) : 0
+		var/Z = length(offset) > 2 ? text2num(offset[3]) : 0
 		var/tmp_dir = href_list["object_dir"]
 		var/obj_dir = tmp_dir ? text2num(tmp_dir) : 2
 		if(!obj_dir || !(obj_dir in list(1,2,4,8,5,6,9,10)))
@@ -2247,6 +2247,21 @@
 		if(!datum_to_remove)
 			return
 		return remove_tagged_datum(datum_to_remove)
+
+	if(href_list["view_bug_report"])
+		if(!check_rights(R_ADMIN|R_MOD))
+			return
+
+		var/datum/tgui_bug_report_form/bug_report = locate(href_list["view_bug_report"])
+		if(!istype(bug_report) || QDELETED(bug_report))
+			to_chat(usr, SPAN_WARNING("This bug report is no longer available."))
+			return
+
+		if(!bug_report.assign_admin(usr))
+			return
+
+		bug_report.tgui_interact(usr)
+		return
 
 	if(href_list["show_tags"])
 		if(!check_rights(R_ADMIN))

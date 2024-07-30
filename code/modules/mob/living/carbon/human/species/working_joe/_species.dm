@@ -2,9 +2,9 @@
 	name = SYNTH_WORKING_JOE
 	name_plural = "Working Joes"
 	death_message = "violently gargles fluid and seizes up, the glow in their eyes dimming..."
-	uses_ethnicity = FALSE
+	uses_skin_color = FALSE
 	burn_mod = 0.65 // made for hazardous environments, withstanding temperatures up to 1210 degrees
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT, TRAIT_UNSTRIPPABLE)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT, TRAIT_UNSTRIPPABLE, TRAIT_IRON_TEETH)
 
 	slowdown = 0.45
 	hair_color = "#000000"
@@ -50,6 +50,7 @@
 
 
 /datum/action/joe_emote_panel/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 

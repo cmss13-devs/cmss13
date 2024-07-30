@@ -307,9 +307,7 @@
 	)
 	assignment = JOB_CHIEF_REQUISITION
 	rank = JOB_CHIEF_REQUISITION
-	paygrades = list(PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_1)
-	//unsure of this for now
-	//paygrade_high = PAY_SHORT_ME8
+	paygrades = list(PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "QM"
 	minimum_age = 27
 	skills = /datum/skills/RO

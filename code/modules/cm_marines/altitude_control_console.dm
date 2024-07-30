@@ -55,16 +55,24 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 
 /obj/structure/machinery/computer/altitude_control_console/process()
 	. = ..()
+	//Updating temperature
 	var/temperature_change
-	if(GLOB.ship_alt == SHIP_ALT_LOW && GLOB.ship_temp >= OVERHEAT)
-		ai_silent_announcement("Attention: Low altitude orbital maneuver no longer sustainable, moving to furthest geo-synchronous orbit until engine cooloff.", ";", TRUE)
-		GLOB.ship_alt = SHIP_ALT_HIGH
-		temperature_change = OVERHEAT_COOLING
-		for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-			if(!is_mainship_level(current_mob.z))
-				continue
-			current_mob.apply_effect(3, SLOW)
-			shake_camera(current_mob, 10, 2)
+	switch(GLOB.ship_alt)
+		if(SHIP_ALT_LOW)
+			if(prob(50))
+				temperature_change = HEATING
+			else
+				temperature_change = B_HEATING
+		if(SHIP_ALT_MED)
+			temperature_change = COOLING
+		if(SHIP_ALT_HIGH)
+			if(prob(75))
+				temperature_change = OVERHEAT_COOLING
+			else
+				temperature_change = COOLING
+	GLOB.ship_temp = clamp(GLOB.ship_temp += temperature_change, 0, OVERHEAT)
+
+	//Override orbit, announce low orbit
 	if(GLOB.ship_alt == SHIP_ALT_HIGH && GLOB.ship_temp == 0)
 		ai_silent_announcement("Attention: Engine cooloff completed, automatic stabilization to most optimal geo-synchronous orbit undergoing.", ";", TRUE)
 		GLOB.ship_alt = SHIP_ALT_MED
@@ -73,26 +81,24 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 				continue
 			current_mob.apply_effect(3, SLOW)
 			shake_camera(current_mob, 10, 2)
-	if(!temperature_change)
-		switch(GLOB.ship_alt)
-			if(SHIP_ALT_LOW)
-				if(prob(50))
-					temperature_change = HEATING
-				else
-					temperature_change = B_HEATING
-			if(SHIP_ALT_MED)
-				temperature_change = COOLING
-			if(SHIP_ALT_HIGH)
-				temperature_change = COOLING
-	GLOB.ship_temp = clamp(GLOB.ship_temp += temperature_change, 0, 120)
-	if(prob(50))
 		return
-	if(GLOB.ship_alt == SHIP_ALT_LOW)
+	if(GLOB.ship_alt == SHIP_ALT_LOW && GLOB.ship_temp >= OVERHEAT)
+		ai_silent_announcement("Attention: Low altitude orbital maneuver no longer sustainable, moving to furthest geo-synchronous orbit until engine cooloff.", ";", TRUE)
+		GLOB.ship_alt = SHIP_ALT_HIGH
 		for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 			if(!is_mainship_level(current_mob.z))
 				continue
-			shake_camera(current_mob, 10, 1)
-		ai_silent_announcement("Low altitude maneuver currently under performance, full stabilization of the altitude unable to be achieved, maintaining procedures until overheat.", ";", TRUE)
+			current_mob.apply_effect(3, SLOW)
+			shake_camera(current_mob, 10, 2)
+		return
+	if(prob(50))
+		return
+	else if(GLOB.ship_alt == SHIP_ALT_LOW)
+		for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+			if(!is_mainship_level(current_mob.z))
+				continue
+			shake_camera(current_mob, 10, 2)
+			ai_silent_announcement("Low altitude maneuver currently under performance, full stabilization of the altitude unable to be achieved, maintaining procedures until overheat.", ";", TRUE)
 
 //TGUI.... fun... years have gone by, I am dying of old age
 /obj/structure/machinery/computer/altitude_control_console/tgui_interact(mob/user, datum/tgui/ui)
@@ -141,7 +147,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 	if(GLOB.ship_alt == new_altitude)
 		return
 	GLOB.ship_alt = new_altitude
-	TIMER_COOLDOWN_START(src, COOLDOWN_ALTITUDE_CHANGE, 90 SECONDS)
+	TIMER_COOLDOWN_START(src, COOLDOWN_ALTITUDE_CHANGE, 60 SECONDS)
 	for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 		if(!is_mainship_level(current_mob.z))
 			continue

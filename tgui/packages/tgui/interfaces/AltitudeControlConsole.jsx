@@ -1,11 +1,24 @@
 import { useBackend } from '../backend';
-import { Box, Button, ProgressBar, Section } from '../components';
+import {
+  Box,
+  Button,
+  Icon,
+  ProgressBar,
+  Section,
+  Tooltip,
+} from '../components';
 import { Window } from '../layouts';
-import { createLogger } from '../logging';
 export const AltitudeControlConsole = () => {
   const { act, data } = useBackend();
-  const logger = createLogger('Debug');
-  logger.warn(data);
+  let altIcon = 'plane';
+  let altTip = 'Currently: Normal Altitude';
+  if (data.alt === 0.5) {
+    altIcon = 'plane-arrival';
+    altTip = 'Currently: Low Altitude';
+  } else if (data.alt === 1.5) {
+    altIcon = 'plane-departure';
+    altTip = 'Currently: High Altitude';
+  }
   return (
     <Window width={455} height={275}>
       <Window.Content scrollable>
@@ -25,7 +38,14 @@ export const AltitudeControlConsole = () => {
             </ProgressBar>
           </Box>
         </Section>
-        <Section title="Altitude Control">
+        <Section
+          title="Altitude Control"
+          buttons={
+            <Tooltip content={altTip} position="left">
+              <Icon name={altIcon} size={1.5} />
+            </Tooltip>
+          }
+        >
           {
             <Button
               fontSize="20px"

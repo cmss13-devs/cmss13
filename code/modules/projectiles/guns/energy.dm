@@ -214,6 +214,7 @@
 	charge_icon = "+taser"
 	black_market_value = 20
 	actions_types = list(/datum/action/item_action/taser/change_mode)
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK|GUN_CANT_EXECUTE
 	/// Determines if the taser will hit any target, or if it checks for wanted status. Default is wanted only.
 	var/mode = TASER_MODE_P
 	var/skilllock = SKILL_POLICE_SKILLED

@@ -15,7 +15,7 @@
 /// High Command, can read the deletion log.
 #define ARES_ACCESS_HIGH 9
 #define ARES_ACCESS_WY_COMMAND 10
-/// Debugging. Allows me to view everything without using a high command rank. Unlikely to stay in a full merge.
+/// Debugging. Allows me to view everything without using a high command rank.
 #define ARES_ACCESS_DEBUG 11
 
 #define ARES_RECORD_ANNOUNCE "Announcement Record"
@@ -78,6 +78,7 @@
 /// Cooldowns
 #define COOLDOWN_ARES_SENSOR 60 SECONDS
 #define COOLDOWN_ARES_ACCESS_CONTROL 20 SECONDS
+#define COOLDOWN_ARES_VENT 60 SECONDS
 
 /// Time until someone can respawn as Working Joe
 #define JOE_JOIN_DEAD_TIME (15 MINUTES)

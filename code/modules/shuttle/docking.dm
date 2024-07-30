@@ -41,7 +41,7 @@
 		rotation = dir2angle(new_dock.dir)-dir2angle(dir)
 		if ((rotation % 90) != 0)
 			rotation += (rotation % 90) //diagonal rotations not allowed, round up
-		rotation = SIMPLIFY_DEGREES(rotation)
+		rotation %%= 360
 
 	if(!movement_direction)
 		movement_direction = turn(preferred_direction, 180)
@@ -64,7 +64,7 @@
 	var/list/new_hidden_turfs
 	if(hidden)
 		new_hidden_turfs = list()
-		for(var/i in 1 to old_turfs.len)
+		for(var/i in 1 to length(old_turfs))
 			CHECK_TICK
 			var/turf/oldT = old_turfs[i]
 			if(old_turfs[oldT] & MOVE_TURF)
@@ -135,7 +135,7 @@
 		old_turfs[oldT] = move_mode
 
 /obj/docking_port/mobile/proc/takeoff(list/old_turfs, list/new_turfs, list/moved_atoms, rotation, movement_direction, old_dock, area/underlying_old_area)
-	for(var/i in 1 to old_turfs.len)
+	for(var/i in 1 to length(old_turfs))
 		var/turf/oldT = old_turfs[i]
 		var/turf/newT = new_turfs[i]
 		var/move_mode = old_turfs[oldT]
@@ -162,12 +162,12 @@
 	var/new_parallax_dir = FALSE
 	if(istype(new_dock, /obj/docking_port/stationary/transit))
 		new_parallax_dir = preferred_direction
-	for(var/i in 1 to areas_to_move.len)
+	for(var/i in 1 to length(areas_to_move))
 		CHECK_TICK
 		var/area/internal_area = areas_to_move[i]
 		internal_area.afterShuttleMove(new_parallax_dir) //areas
 
-	for(var/i in 1 to old_turfs.len)
+	for(var/i in 1 to length(old_turfs))
 		CHECK_TICK
 		if(!(old_turfs[old_turfs[i]] & MOVE_TURF))
 			continue
@@ -175,7 +175,7 @@
 		var/turf/newT = new_turfs[i]
 		newT.afterShuttleMove(oldT, rotation) //turfs
 
-	for(var/i in 1 to moved_atoms.len)
+	for(var/i in 1 to length(moved_atoms))
 		CHECK_TICK
 		var/atom/movable/moved_object = moved_atoms[i]
 		if(QDELETED(moved_object))
@@ -187,12 +187,12 @@
 
 	underlying_old_area.lateShuttleMove()
 
-	for(var/i in 1 to areas_to_move.len)
+	for(var/i in 1 to length(areas_to_move))
 		CHECK_TICK
 		var/area/internal_area = areas_to_move[i]
 		internal_area.lateShuttleMove()
 
-	for(var/i in 1 to old_turfs.len)
+	for(var/i in 1 to length(old_turfs))
 		CHECK_TICK
 		if(!(old_turfs[old_turfs[i]] & MOVE_CONTENTS | MOVE_TURF))
 			continue
@@ -200,7 +200,7 @@
 		var/turf/newT = new_turfs[i]
 		newT.lateShuttleMove(oldT)
 
-	for(var/i in 1 to moved_atoms.len)
+	for(var/i in 1 to length(moved_atoms))
 		CHECK_TICK
 		var/atom/movable/moved_object = moved_atoms[i]
 		if(QDELETED(moved_object))

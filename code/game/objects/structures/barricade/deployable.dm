@@ -95,6 +95,7 @@
 
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
+	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
 	icon_state = "folding-1"
 	item_state = "folding"
 	item_state_slots = list(
@@ -269,7 +270,7 @@
 
 /obj/item/stack/folding_barricade/get_examine_text(mob/user)
 	. = ..()
-	if(round(min(stack_health)/maxhealth * 100) <= 75)
+	if(floor(min(stack_health)/maxhealth * 100) <= 75)
 		. += SPAN_WARNING("It appears to be damaged.")
 
 /obj/item/stack/folding_barricade/three

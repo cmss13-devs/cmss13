@@ -3,6 +3,7 @@
 #define CAMERA_NET_CONTAINMENT "Containment"
 #define CAMERA_NET_CONTAINMENT_HIDDEN "Containment Hidden"
 #define CAMERA_NET_RESEARCH "Research"
+#define CAMERA_NET_BRIG "Brig"
 #define CAMERA_NET_ALAMO "Alamo"
 #define CAMERA_NET_NORMANDY "Normandy"
 #define CAMERA_NET_COLONY "Colony"
@@ -16,6 +17,7 @@
 #define CAMERA_NET_VEHICLE "Vehicle"
 #define CAMERA_NET_LANDING_ZONES "Landing Zones"
 #define CAMERA_NET_LASER_TARGETS "Laser Targets"
+#define CAMERA_NET_CORRESPONDENT "Combat Correspondent Live"
 
 #define CAMERA_NET_POWER_ALARMS "Power Alarms"
 #define CAMERA_NET_ATMOSPHERE_ALARMS "Atmosphere Alarms"

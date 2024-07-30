@@ -163,7 +163,7 @@
 
 	var/datum/skills/skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
 									//see skills.dm in #define folder and code/datums/skills.dm for more info
-	var/obj/item/legcuffs/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
+	var/obj/item/restraint/legcuffs/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
 
 	var/list/viruses = list() //List of active diseases
 
@@ -397,7 +397,7 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		if(!languages.len)
+		if(!length(languages))
 			to_chat(usr, "This mob knows no languages.")
 			return
 

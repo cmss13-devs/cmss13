@@ -6,7 +6,7 @@
 	w_class = SIZE_MEDIUM
 
 	matter = list("metal" = 2000)
-	fire_sound = 'sound/weapons/gun_44mag_v3.ogg'
+	fire_sound = 'sound/weapons/gun_44mag_v4.ogg'
 	reload_sound = 'sound/weapons/gun_44mag_speed_loader.wav'
 	cocked_sound = 'sound/weapons/gun_revolver_spun.ogg'
 	unload_sound = 'sound/weapons/gun_44mag_open_chamber.wav'
@@ -534,7 +534,7 @@
 	desc = "Used to swap the barrels of a mateba revolver."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "matebakey"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	force = 5
 	w_class = SIZE_TINY
 	throwforce = 5

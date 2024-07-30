@@ -15,7 +15,7 @@
 	ground_offset_x = 2
 	ground_offset_y = 6
 
-	actions_types = list(/datum/action/item_action)
+	actions_types = list(/datum/action/item_action/toggle)
 	var/on = FALSE
 	var/raillight_compatible = TRUE //Can this be turned into a rail light ?
 	var/toggleable = TRUE
@@ -421,7 +421,7 @@
 
 /obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, amount)
 	. = ..()
-	light_range = round(amount * 0.04)
+	light_range = floor(amount * 0.04)
 	if(!light_range)
 		return INITIALIZE_HINT_QDEL
 	set_light(light_range)

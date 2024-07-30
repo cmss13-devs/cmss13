@@ -88,7 +88,7 @@
 	if(mods["left"])
 		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_DRAG, src_obj, over_obj, params)
 
-	var/atom/last_atom = LAZYACCESS(mouse_trace_history, mouse_trace_history.len)
+	var/atom/last_atom = LAZYACCESS(mouse_trace_history, length(mouse_trace_history))
 	if(over_obj == last_atom)
 		return
 
@@ -97,7 +97,6 @@
 
 /client/MouseDrop(datum/src_object, datum/over_object, src_location, over_location, src_control, over_control, params)
 	. = ..()
-
 	if(over_object)
 		SEND_SIGNAL(over_object, COMSIG_ATOM_DROPPED_ON, src_object, src)
 

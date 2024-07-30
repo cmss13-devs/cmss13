@@ -53,6 +53,12 @@
 		var/obj/item/paper/research_report/CR = P.convert_to_chem_report()
 		GLOB.chemical_data.save_document(CR, response, CR.name)
 		return
+	//biomass credits rewards
+	if(istype(B, /obj/item/research_upgrades/credits))
+		var/obj/item/research_upgrades/credits/cred = B
+		GLOB.chemical_data.update_credits(cred.credit_value)
+		visible_message(SPAN_NOTICE("[user] inserts [cred] in [src], collecting [cred.credit_value] points from sales."))
+		qdel(cred)
 	//Clearance Updating
 	if(!istype(B, /obj/item/card/id))
 		return
@@ -162,7 +168,6 @@
 					visible_message(SPAN_NOTICE("Clearance access increased to level [GLOB.chemical_data.clearance_level] for [cost] credits."))
 					msg_admin_niche("[key_name(user)] traded research credits to upgrade the clearance to level [GLOB.chemical_data.clearance_level].")
 					if(max_clearance < GLOB.chemical_data.clearance_level)
-						GLOB.chemical_data.update_income(1) //Bonus income and a paper for buying clearance instead of swiping it up
 						switch(GLOB.chemical_data.clearance_level)
 							if(2)
 								new /obj/item/paper/research_notes/unique/tier_two/(photocopier.loc)
@@ -179,7 +184,7 @@
 		if("purchase_document")
 			if(!photocopier)
 				return
-			var/purchase_tier = Floor(text2num(params["purchase_document"]))
+			var/purchase_tier = floor(text2num(params["purchase_document"]))
 			if(purchase_tier <= 0 || purchase_tier > 5)
 				return
 			if(purchase_tier > GLOB.chemical_data.clearance_level)

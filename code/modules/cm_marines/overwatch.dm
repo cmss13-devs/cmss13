@@ -184,13 +184,11 @@
 					if(is_ground_level(current_turf.z))
 						continue
 
+			var/obj/item/card/id/card = marine_human.get_idcard()
 			if(marine_human.job)
 				role = marine_human.job
-			else if(istype(marine_human.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-				var/obj/item/card/id/ID = marine_human.wear_id //we use their ID to get their role.
-				if(ID.rank)
-					role = ID.rank
-
+			else if(card?.rank) //decapitated marine is mindless,
+				role = card.rank
 
 			if(current_squad.squad_leader)
 				if(marine_human == current_squad.squad_leader)
@@ -249,15 +247,14 @@
 			if(JOB_SQUAD_SPECIALIST)
 				spec_count++
 				if(marine_human)
-					if(istype(marine_human.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-						var/obj/item/card/id/ID = marine_human.wear_id //we use their ID to get their role.
-						if(ID.assignment)
-							if(specialist_type)
-								specialist_type = "MULTIPLE"
-							else
-								var/list/spec_type = splittext(ID.assignment, "(")
-								if(islist(spec_type) && (length(spec_type) > 1))
-									specialist_type = splittext(spec_type[2], ")")[1]
+					var/obj/item/card/id/card = marine_human.get_idcard()
+					if(card?.assignment) //decapitated marine is mindless,
+						if(specialist_type)
+							specialist_type = "MULTIPLE"
+						else
+							var/list/spec_type = splittext(card.assignment, "(")
+							if(islist(spec_type) && (length(spec_type) > 1))
+								specialist_type = splittext(spec_type[2], ")")[1]
 				else if(!specialist_type)
 					specialist_type = "UNKNOWN"
 				if(mob_state != "Dead")
@@ -589,9 +586,9 @@
 	if(sl_headset)
 		sl_headset.keys += new /obj/item/device/encryptionkey/squadlead/acting(sl_headset)
 		sl_headset.recalculateChannels()
-	if(istype(selected_sl.wear_id, /obj/item/card/id))
-		var/obj/item/card/id/ID = selected_sl.wear_id
-		ID.access += ACCESS_MARINE_LEADER
+	var/obj/item/card/id/card = selected_sl.get_idcard()
+	if(card)
+		card.access += ACCESS_MARINE_LEADER
 	selected_sl.hud_set_squad()
 	selected_sl.update_inv_head() //updating marine helmet leader overlays
 	selected_sl.update_inv_wear_suit()
@@ -696,7 +693,8 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is KIA.")]")
 		return
 
-	if(!istype(transfer_marine.wear_id, /obj/item/card/id))
+	var/obj/item/card/id/card = transfer_marine.get_idcard()
+	if(!card)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [transfer_marine] isn't wearing an ID.")]")
 		return
 
@@ -713,7 +711,8 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is KIA.")]")
 		return
 
-	if(!istype(transfer_marine.wear_id, /obj/item/card/id))
+	card = transfer_marine.get_idcard()
+	if(!card)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [transfer_marine] isn't wearing an ID.")]")
 		return
 
@@ -726,7 +725,7 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [new_squad] can't have another [transfer_marine.job].")]")
 		return
 
-	. = transfer_marine_to_squad(transfer_marine, new_squad, old_squad)
+	. = transfer_marine_to_squad(transfer_marine, new_squad, old_squad, card)
 	if(.)
 		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.")]")
 		to_chat(transfer_marine, "[icon2html(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>")
@@ -800,7 +799,7 @@
 	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
 
 	/// Project ARES interface log.
-	log_ares_bombardment(user.name, ob_name, "X[x_bomb], Y[y_bomb] in [get_area(T)]")
+	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb] in [get_area(T)]")
 
 	busy = FALSE
 	if(istype(T))
@@ -816,8 +815,8 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
 		return
 
-	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.
-	if(!istype(C))
+	var/obj/structure/closet/crate/crate = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.
+	if(!istype(crate))
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
 		return
 
@@ -843,18 +842,24 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
+	if(crate.opened)
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The crate is not secure on the drop pad. Get Requisitions to close the crate!")]")
+		return
+
 	busy = TRUE
-	C.visible_message(SPAN_WARNING("\The [C] loads into a launch tube. Stand clear!"))
-	SEND_SIGNAL(C, COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED, current_squad)
+	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
+	SEND_SIGNAL(crate, COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED, current_squad)
 	COOLDOWN_START(current_squad, next_supplydrop, 500 SECONDS)
 	if(ismob(usr))
 		var/mob/M = usr
 		M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
-	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
-	var/obj/structure/droppod/supply/pod = new(null, C)
+	playsound(crate.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
+	var/obj/structure/droppod/supply/pod = new(null, crate)
 	pod.launch(T)
-	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
+	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply].", usr.real_name)
+	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
 	busy = FALSE
 
 /obj/structure/machinery/computer/overwatch/almayer
@@ -864,6 +869,10 @@
 
 /obj/structure/machinery/computer/overwatch/almayer/broken
 	name = "Broken Overwatch Console"
+
+/obj/structure/machinery/computer/overwatch/almayer/small
+	icon = 'icons/obj/vehicles/interiors/arc.dmi'
+	icon_state = "overwatch_computer"
 
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF
@@ -884,9 +893,13 @@
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
+	plane = FLOOR_PLANE
 	layer = 2.1 //It's the floor, man
 	var/squad = SQUAD_MARINE_1
 	var/sending_package = 0
+
+/obj/structure/supply_drop/ex_act(severity, direction)
+	return FALSE
 
 /obj/structure/supply_drop/Initialize(mapload, ...)
 	. = ..()

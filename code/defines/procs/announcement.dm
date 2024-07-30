@@ -42,14 +42,20 @@
 				continue
 			if(is_mainship_level(H.z)) // People on ship see everything
 				continue
+
+			// If they have iff AND a marine headset they will recieve announcements
+			var/obj/item/card/id/card = H.get_idcard()
+			if ((FACTION_MARINE in card?.faction_group) && (istype(H.wear_l_ear, /obj/item/device/radio/headset/almayer) || istype(H.wear_r_ear, /obj/item/device/radio/headset/almayer)))
+				continue
+
 			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY)) && !(faction_to_display in H.faction_group)) //faction checks
 				targets.Remove(H)
 
 		switch(logging)
 			if(ARES_LOG_MAIN)
-				log_ares_announcement(title, message)
+				log_ares_announcement(title, message, signature)
 			if(ARES_LOG_SECURITY)
-				log_ares_security(title, message)
+				log_ares_security(title, message, signature)
 
 	else if(faction_to_display == "Everyone (-Yautja)")
 		for(var/mob/M in targets)
@@ -98,9 +104,9 @@
 
 	switch(logging)
 		if(ARES_LOG_MAIN)
-			log_ares_announcement("[MAIN_AI_SYSTEM] Comms Update", message)
+			log_ares_announcement("Comms Update", message, MAIN_AI_SYSTEM)
 		if(ARES_LOG_SECURITY)
-			log_ares_security("[MAIN_AI_SYSTEM] Security Update", message)
+			log_ares_security("Security Update", message, MAIN_AI_SYSTEM)
 
 /proc/ai_silent_announcement(message, channel_prefix, bypass_cooldown = FALSE)
 	if(!message)
@@ -133,9 +139,9 @@
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
 	switch(ares_logging)
 		if(ARES_LOG_MAIN)
-			log_ares_announcement(title, message)
+			log_ares_announcement(title, message, signature)
 		if(ARES_LOG_SECURITY)
-			log_ares_security(title, message)
+			log_ares_security(title, message, signature)
 
 	announcement_helper(message, title, targets, sound_to_play)
 
@@ -148,7 +154,7 @@
 		if(!ishuman(T) || isyautja(T) || !is_mainship_level((get_turf(T))?.z))
 			targets.Remove(T)
 
-	log_ares_announcement("[title] Shipwide Update", message)
+	log_ares_announcement("Shipwide Update", message, title)
 
 	announcement_helper(message, title, targets, sound_to_play)
 

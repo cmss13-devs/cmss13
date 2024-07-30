@@ -1,7 +1,7 @@
 /datum/xeno_strain/healer
 	name = DRONE_HEALER
-	description = "You lose your choice of resin secretions, a chunk of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve by using your vital fluids and a fifth of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
-	flavor_description = "To the very last drop, your blood belongs to The Hive; share it with your sisters to keep them fighting."
+	description = "You lose your choice of resin secretions, a chunk of your slash damage, and you will experience a slighty-increased difficulty in tackling hosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve by using your vital fluids and a fifth of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
+	flavor_description = "Divided we fall, united we win. We live for the hive, we die for the hive."
 	icon_state_prefix = "Healer"
 
 	actions_to_remove = list(
@@ -276,9 +276,10 @@
 			addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), xeno.client), 5 SECONDS)
 
 	xeno.gib(create_cause_data("sacrificing itself", src))
+	return ..()
 
 /datum/action/xeno_action/activable/healer_sacrifice/action_activate()
-	..()
+	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.selected_ability != src)
 		return

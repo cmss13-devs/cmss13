@@ -27,7 +27,7 @@
 		if(reagents.total_volume)
 			var/image/filling = image('icons/obj/structures/machinery/iv_drip.dmi', src, "reagent")
 
-			var/percent = round((reagents.total_volume / beaker.volume) * 100)
+			var/percent = floor((reagents.total_volume / beaker.volume) * 100)
 			switch(percent)
 				if(0 to 9) filling.icon_state = "reagent0"
 				if(10 to 24) filling.icon_state = "reagent10"
@@ -190,7 +190,7 @@
 	. += "The IV drip is [mode ? "injecting" : "taking blood"]."
 
 	if(beaker)
-		if(beaker.reagents && beaker.reagents.reagent_list.len)
+		if(beaker.reagents && length(beaker.reagents.reagent_list))
 			. += SPAN_NOTICE(" Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.")
 		else
 			. += SPAN_NOTICE(" Attached is an empty [beaker].")

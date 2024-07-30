@@ -234,8 +234,9 @@
 	icon_deny = "sec-deny"
 	req_access = list(ACCESS_MARINE_BRIG)
 	products = list(
-		/obj/item/handcuffs = 8,
-		/obj/item/handcuffs/zip = 10,
+		/obj/item/restraint/handcuffs = 8,
+		/obj/item/restraint/handcuffs/zip = 10,
+		/obj/item/restraint/legcuffs = 3,
 		/obj/item/explosive/grenade/flashbang = 4,
 		/obj/item/weapon/gun/energy/taser = 4,
 		/obj/item/reagent_container/spray/pepper = 4,
@@ -263,7 +264,7 @@
 	hacking_safety = TRUE
 	wrenchable = FALSE
 	products = list(
-		/obj/item/handcuffs/zip = 40,
+		/obj/item/restraint/handcuffs/zip = 40,
 		/obj/item/explosive/grenade/flashbang = 20,
 		/obj/item/explosive/grenade/custom/teargas = 40,
 		/obj/item/ammo_magazine/smg/m39/rubber = 40,
@@ -295,6 +296,7 @@
 		/obj/item/storage/firstaid/fire = 2,
 		/obj/item/storage/firstaid/rad = 1,
 		/obj/item/device/radio/headset = 6,
+		/obj/item/tool/crew_monitor = 1,
 	)
 	contraband = list(/obj/item/storage/fancy/cigar = 2,/obj/item/tool/lighter/zippo = 2)
 

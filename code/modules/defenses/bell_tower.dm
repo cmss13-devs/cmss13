@@ -18,7 +18,7 @@
 	can_be_near_defense = TRUE
 
 	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
 	)
 
 	selected_categories = list(
@@ -257,7 +257,7 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-	var/list/targets = SSquadtree.players_in_range(RECT(M.x, M.y, area_range, area_range), M.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	var/list/targets = SSquadtree.players_in_range(SQUARE(M.x, M.y, area_range), M.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
 	if(!targets)
 		return
 

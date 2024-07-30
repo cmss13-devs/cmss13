@@ -29,10 +29,6 @@
 		to_chat(X, SPAN_XENOWARNING("We can't do that from there."))
 		return
 
-	if(SSticker?.mode?.hardcore)
-		to_chat(X, SPAN_XENOWARNING("A certain presence is preventing us from digging tunnels here."))
-		return
-
 	if(!T.can_dig_xeno_tunnel() || !is_ground_level(T.z))
 		to_chat(X, SPAN_XENOWARNING("We scrape around, but we can't seem to dig through that kind of floor."))
 		return
@@ -142,7 +138,7 @@
 
 	playsound(xeno.loc, pick(xeno.screech_sound_effect_list), 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
-	xeno.create_shriekwave() //Adds the visual effect. Wom wom wom
+	xeno.create_shriekwave(14) //Adds the visual effect. Wom wom wom, 14 shriekwaves
 
 	for(var/mob/mob in view())
 		if(mob && mob.client)

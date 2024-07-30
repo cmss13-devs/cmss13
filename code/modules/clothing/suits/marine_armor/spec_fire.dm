@@ -4,8 +4,10 @@
 	name = "\improper M35 pyrotechnician armor"
 	desc = "A custom set of M35 armor designed for use by USCM Pyrotechnicians."
 	icon_state = "pyro_armor"
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	light_range = 5
 	fire_intensity_resistance = BURN_LEVEL_TIER_1
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
@@ -143,6 +145,7 @@
 		return TRUE
 
 /datum/action/item_action/specialist/fire_shield/action_activate()
+	. = ..()
 	var/obj/item/clothing/suit/storage/marine/M35/armor = holder_item
 	if (!istype(armor))
 		return

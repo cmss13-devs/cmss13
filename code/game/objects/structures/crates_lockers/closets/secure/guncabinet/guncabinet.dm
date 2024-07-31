@@ -74,9 +74,9 @@
 
 /obj/structure/closet/secure_closet/guncabinet/riot_control/Initialize()
 	. = ..()
-	new /obj/item/weapon/gun/shotgun/combat/riot(src, TRUE)
-	new /obj/item/weapon/gun/shotgun/combat/riot(src, TRUE)
-	new /obj/item/weapon/gun/shotgun/combat/riot(src, TRUE)
+	new /obj/item/weapon/gun/shotgun/shockgun(src, TRUE)
+	new /obj/item/weapon/gun/shotgun/shockgun(src, TRUE)
+	new /obj/item/weapon/gun/shotgun/shockgun(src, TRUE)
 	new /obj/item/weapon/shield/riot(src)
 	new /obj/item/weapon/shield/riot(src)
 	new /obj/item/weapon/shield/riot(src)

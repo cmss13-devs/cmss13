@@ -1854,6 +1854,11 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "tactical_stock"
 	hud_offset_mod = 6
 
+/obj/item/attachable/stock/riot
+	name = "\improper ES-7 Wire stock"
+	desc = "A Plastic stock made for the ES-7 shockgun."
+	icon_state = "es7_stock"
+
 /obj/item/attachable/stock/tactical/New()
 	..()
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_1

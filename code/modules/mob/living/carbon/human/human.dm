@@ -943,6 +943,10 @@
 
 	..()
 
+/mob/living/carbon/human/proc/is_heart_broken()
+	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
+	return heart && heart.organ_status >= ORGAN_BROKEN
+
 /mob/living/carbon/human/proc/is_lung_ruptured()
 	var/datum/internal_organ/lungs/L = internal_organs_by_name["lungs"]
 	return L && L.organ_status >= ORGAN_BRUISED
@@ -953,7 +957,6 @@
 	if(L && !L.organ_status >= ORGAN_BRUISED)
 		src.custom_pain("You feel a stabbing pain in your chest!", 1)
 		L.damage = L.min_bruised_damage
-
 
 /mob/living/carbon/human/get_visible_implants(class = 0)
 	var/list/visible_objects = list()

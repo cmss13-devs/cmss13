@@ -61,7 +61,8 @@
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(ship_id)
 	if (!istype(shuttle))
 		return
-	if(shuttle.dropship_control_lost)
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/comp = shuttle.getControlConsole()
+	if(comp?.dropship_control_lost)
 		return
 	if(is_mainship_level(z)) // on the almayer
 		return

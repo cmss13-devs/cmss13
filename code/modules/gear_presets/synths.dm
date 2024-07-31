@@ -437,7 +437,7 @@
 	role_comm_title = "CMB Syn"
 	assignment = JOB_CMB_SYN
 	rank = JOB_CMB_SYN
-	paygrade = PAY_SHORT_CMBS
+	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
 	equipment_to_spawn = list(

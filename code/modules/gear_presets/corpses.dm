@@ -236,7 +236,7 @@
 /datum/equipment_preset/corpse/security/cmb/riot
 	name = "Corpse - CMB Riot Control Officer"
 	rank = JOB_CMB_RIOT
-	paygrade = PAY_SHORT_CMBR
+	paygrades = list(PAY_SHORT_CMBR = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
 	xenovictim = FALSE
 	access = list(

@@ -247,7 +247,7 @@
 
 /datum/equipment_preset/cmb/riot
 	name = "CMB - Riot Control Officer"
-	paygrade = PAY_SHORT_CMBR
+	paygrades = list(PAY_SHORT_CMBR = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
 	role_comm_title = "CMB RCO"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -362,7 +362,7 @@
 
 /datum/equipment_preset/cmb/med
 	name = "CMB - Medical Technician"
-	paygrade = PAY_SHORT_CMBMT
+	paygrades = list(PAY_SHORT_CMBMT = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
 	role_comm_title = "CMB MDT"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -411,7 +411,7 @@
 
 /datum/equipment_preset/cmb/eng
 	name = "CMB - Breaching Technician"
-	paygrade = PAY_SHORT_CMBBT
+	paygrades = list(PAY_SHORT_CMBBT = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
 	role_comm_title = "CMB BT"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -463,7 +463,7 @@
 
 /datum/equipment_preset/cmb/spec
 	name = "CMB - SWAT Specialist"
-	paygrade = PAY_SHORT_CMBSWS
+	paygrades = list(PAY_SHORT_CMBSWS = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
 	role_comm_title = "CMB Spec"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -611,7 +611,7 @@
 
 /datum/equipment_preset/cmb/synth/riot
 	name = "CMB - Colonial Marshal Riot Control Synthetic"
-	paygrade = PAY_SHORT_CMBRS
+	paygrades = list(PAY_SHORT_CMBRS = JOB_PLAYTIME_TIER_0)
 
 	assignment = "CMB Riot Control Synthetic"
 	rank = JOB_CMB_RSYN

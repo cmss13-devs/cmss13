@@ -689,7 +689,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	data["accuracy"] = accuracy * accuracy_mult
 	data["unwielded_accuracy"] = accuracy * accuracy_mult_unwielded
 	data["min_accuracy"] = min_accuracy
-	data["min_accuracy"] = min_accuracy
 	data["max_range"] = max_range
 	data["effective_range"] = effective_range
 

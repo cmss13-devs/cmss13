@@ -15,8 +15,8 @@
 		return
 
 	// Opening doors from afar is cool
-	if(istype(target, /obj/structure/mineral_door/resin))
-		var/obj/structure/mineral_door/resin/resin_door = target
+	var/obj/structure/mineral_door/resin/resin_door = target
+	if(istype(target, /obj/structure/mineral_door/resin) && !xeno.Adjacent(resin_door))
 		resin_door.TryToSwitchState(xeno)
 		if(resin_door.state)
 			to_chat(xeno, SPAN_XENONOTICE("We compel the resin door to close."))

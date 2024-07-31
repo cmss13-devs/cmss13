@@ -109,7 +109,7 @@
 
 /obj/structure/machinery/medical_pod/autodoc/proc/heal_limb(mob/living/carbon/human/human, brute, burn)
 	var/list/obj/limb/parts = human.get_damaged_limbs(brute,burn)
-	if(!parts.len) return
+	if(!length(parts)) return
 	var/obj/limb/picked = pick(parts)
 	if(picked.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		picked.heal_damage(brute, burn, TRUE)
@@ -238,17 +238,12 @@
 					surgery_list += create_autodoc_surgery(L,ORGAN_SURGERY,"damage",0,I)
 					organdamagesurgery++
 
-			if(istype(L,/obj/limb/head))
-				var/obj/limb/head/H = L
-				if(H.disfigured)
-					surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"facial")
-
 			if(L.status & LIMB_BROKEN)
 				surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"broken")
 			if(L.status & LIMB_DESTROYED)
 				if(!(L.parent.status & LIMB_DESTROYED) && L.name != "head")
 					surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"missing")
-			if(L.implants.len)
+			if(length(L.implants))
 				for(var/I in L.implants)
 					if(!is_type_in_list(I,known_implants))
 						surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"shrapnel")
@@ -294,7 +289,7 @@
 
 	var/list/surgery_todo_list = N.fields["autodoc_manual"]
 
-	if(!surgery_todo_list.len)
+	if(!length(surgery_todo_list))
 		visible_message("\The [src] buzzes, no surgical procedures were queued.")
 		return
 
@@ -320,7 +315,7 @@
 			surgery_todo_list -= A
 
 	var/currentsurgery = 1
-	while(surgery_todo_list.len > 0)
+	while(length(surgery_todo_list) > 0)
 		if(!surgery)
 			break;
 		sleep(-1)
@@ -508,7 +503,7 @@
 						open_incision(H,S.limb_ref)
 						if(S.limb_ref.name == "chest" || S.limb_ref.name == "head")
 							open_encased(H,S.limb_ref)
-						if(S.limb_ref.implants.len)
+						if(length(S.limb_ref.implants))
 							for(var/obj/item/I in S.limb_ref.implants)
 								if(!surgery) break
 								if(!is_type_in_list(I,known_implants))
@@ -520,20 +515,6 @@
 							close_encased(H,S.limb_ref)
 						if(!surgery) break
 						close_incision(H,S.limb_ref)
-
-					if("facial")
-						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning Facial Reconstruction Surgery.");
-						if(S.unneeded)
-							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
-							surgery_todo_list -= S
-							continue
-						if(istype(S.limb_ref, /obj/limb/head))
-							var/obj/limb/head/F = S.limb_ref
-							sleep(SCALPEL_MAX_DURATION + HEMOSTAT_MAX_DURATION + RETRACTOR_MAX_DURATION + CAUTERY_MAX_DURATION)
-							F.remove_all_bleeding(TRUE)
-							F.disfigured = 0
-							F.owner.name = F.owner.get_visible_name()
 
 					if("open")
 						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
@@ -753,9 +734,6 @@
 								if("shrapnel")
 									surgeryqueue["shrapnel"] = 1
 									dat += "Shrapnel Removal Surgery"
-								if("facial")
-									surgeryqueue["facial"] = 1
-									dat += "Facial Reconstruction Surgery"
 								if("open")
 									surgeryqueue["open"] = 1
 									dat += "Close Open Incisions"
@@ -893,7 +871,7 @@
 				var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
 				for(var/obj/limb/L in connected.occupant.limbs)
 					if(L)
-						if(L.implants.len)
+						if(length(L.implants))
 							for(var/I in L.implants)
 								if(!is_type_in_list(I,known_implants))
 									N.fields["autodoc_manual"] += create_autodoc_surgery(L,LIMB_SURGERY,"shrapnel")
@@ -901,18 +879,6 @@
 				if(!needed)
 					N.fields["autodoc_manual"] += create_autodoc_surgery(null,LIMB_SURGERY,"shrapnel",1)
 				updateUsrDialog()
-
-			if(href_list["facial"])
-				for(var/obj/limb/L in connected.occupant.limbs)
-					if(L)
-						if(istype(L,/obj/limb/head))
-							var/obj/limb/head/J = L
-							if(J.disfigured)
-								N.fields["autodoc_manual"] += create_autodoc_surgery(L,LIMB_SURGERY,"facial")
-							else
-								N.fields["autodoc_manual"] += create_autodoc_surgery(L,LIMB_SURGERY,"facial",1)
-							updateUsrDialog()
-							break
 
 			if(href_list["open"])
 				for(var/obj/limb/L in connected.occupant.limbs)

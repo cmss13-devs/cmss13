@@ -6,6 +6,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/security[] = list()
 	//This list tracks characters spawned in the world and cannot be modified in-game. Currently referenced by respawn_character().
 	var/locked[] = list()
+	var/leveled_riflemen = 0
+	var/leveled_riflemen_max = 7
 
 /datum/datacore/proc/get_manifest(monochrome, OOC, nonHTML)
 	var/list/cic = GLOB.ROLES_CIC.Copy()

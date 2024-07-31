@@ -169,6 +169,18 @@
 	icon_state = "game_kit"
 	icon = 'icons/obj/items/items.dmi'
 
+/obj/item/prop/gripper
+	name = "magnetic gripper"
+	desc = "A simple grasping tool for synthetic assets."
+	icon_state = "gripper"
+	icon = 'icons/obj/items/devices.dmi'
+
+/obj/item/prop/matter_decompiler
+	name = "matter decompiler"
+	desc = "Eating trash, bits of glass, or other debris will replenish your stores."
+	icon_state = "decompiler"
+	icon = 'icons/obj/items/devices.dmi'
+
 /// Xeno-specific props
 
 /obj/item/prop/alien/hugger

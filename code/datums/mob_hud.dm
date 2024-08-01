@@ -475,7 +475,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 						holder3.icon_state = "huddead"
 						holder2_set = 1
 			else
-				if(heart && (heart.organ_status >= ORGAN_BROKEN && check_tod())) // broken heart icon
+				if(is_heart_broken()) // broken heart icon
 					holder.icon_state = "huddeadheart"
 					if(!holder2_set)
 						holder2.icon_state = "huddeadheart"
@@ -784,7 +784,7 @@ GLOBAL_DATUM(hud_icon_hudfocus, /image)
 // Vampire Execute HUD
 /mob/living/carbon/human/proc/update_execute_hud()
 	var/image/execute_holder = hud_list[XENO_EXECUTE]
-	
+
 	execute_holder.icon_state = "hudblank"
 	execute_holder.overlays.Cut()
 

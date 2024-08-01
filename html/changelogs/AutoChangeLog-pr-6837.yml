@@ -1,0 +1,4 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - bugfix: "You can no longer build structures on top of dense objects. This prevents weird layering happening with walls and tables, window frames, etc."

@@ -475,7 +475,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 						holder3.icon_state = "huddead"
 						holder2_set = 1
 			else
-				if(heart && (heart.organ_status >= ORGAN_BROKEN && check_tod() && is_revivable(ignore_heart = TRUE))) // broken heart icon
+				if(is_heart_broken()) // broken heart icon
 					holder.icon_state = "huddeadheart"
 					if(!holder2_set)
 						holder2.icon_state = "huddeadheart"

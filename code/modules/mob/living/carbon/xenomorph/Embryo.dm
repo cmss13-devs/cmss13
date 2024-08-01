@@ -138,10 +138,10 @@
 				var/message = pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")
 				message = SPAN_WARNING("[message].")
 				to_chat(affected_mob, message)
+				if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
+					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 				if(prob(50))
 					affected_mob.emote("scream")
-					if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
-						affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 			if(prob(6))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"), \

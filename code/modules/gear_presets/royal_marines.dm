@@ -340,13 +340,6 @@
 // Below is presets for the beacon reinforcements. //
 //*****************************************************************************************************/
 /datum/equipment_preset/twe/royal_marine/standard/beacon
-	name = "TWE Royal Marine Commando (Rifleman)"
-	paygrade = PAY_SHORT_RMC1
-	role_comm_title = "RMC"
-	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "Royal Marines Rifleman"
-	rank = JOB_TWE_RMC_RIFLEMAN
-	skills = /datum/skills/rmc
 
 /datum/equipment_preset/twe/royal_marine/standard/bedacon/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -391,13 +384,6 @@
 	..()
 
 /datum/equipment_preset/twe/royal_marine/lieuteant/beacon//they better say it Lef-tenant or they should be banned for LRP. More importantly this guy doesn't spawn in the ERT
-	name = "TWE Royal Marine Commando (Officer)"
-	paygrade = PAY_SHORT_RNO1
-	role_comm_title = "RMC LT"
-	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "Royal Marines Team Commander"
-	rank = JOB_TWE_RMC_LIEUTENANT
-	skills = /datum/skills/rmc/leader
 
 
 /datum/equipment_preset/twe/royal_marine/lieuteant/beacon/load_gear(mob/living/carbon/human/new_human)

@@ -93,12 +93,12 @@
 	max_engineers = 8
 
 /datum/emergency_call/cryo_squad/tech // Actual techweb cryorines
-    name = "Marine Cryo Reinforcements (Tech)"
-    mob_max = 6
-    max_engineers = 2
-    max_medics = 2
-    max_smartgunners = 1
-    max_heavies = 0
+	name = "Marine Cryo Reinforcements (Tech)"
+	mob_max = 6
+	max_engineers = 2
+	max_medics = 2
+	max_smartgunners = 1
+	max_heavies = 0
 
 /obj/effect/landmark/ert_spawns/distress_cryo
 	name = "Distress_Cryo"

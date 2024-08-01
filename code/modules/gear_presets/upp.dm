@@ -228,14 +228,6 @@
 	)
 
 /datum/equipment_preset/upp/soldier/beacon
-	name = "UPP Soldier"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	skills = /datum/skills/upp
-	assignment = JOB_UPP
-	rank = JOB_UPP
-	role_comm_title = "Sol"
-	paygrade = PAY_SHORT_UE2
 
 /datum/equipment_preset/upp/soldier/beacon/load_gear(mob/living/carbon/human/new_human)
 	//face
@@ -618,14 +610,6 @@
 	)
 
 /datum/equipment_preset/upp/sapper/beacon
-	name = "UPP Sapper"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	skills = /datum/skills/upp/combat_engineer
-	assignment = JOB_UPP_ENGI
-	rank = JOB_UPP_ENGI
-	role_comm_title = "Sap"
-	paygrade = PAY_SHORT_UE3
 
 /datum/equipment_preset/upp/sapper/beacon/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/upp, WEAR_BACK)
@@ -1086,14 +1070,6 @@
 
 
 /datum/equipment_preset/upp/leader/beacon
-	name = "UPP Squad Leader"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	skills = /datum/skills/upp/SL
-	assignment = JOB_UPP_LEADER
-	rank = JOB_UPP_LEADER
-	role_comm_title = "SL"
-	paygrade = PAY_SHORT_UE6
 
 /datum/equipment_preset/upp/leader/beacon/load_gear(mob/living/carbon/human/new_human)
 	//back

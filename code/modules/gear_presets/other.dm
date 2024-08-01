@@ -130,11 +130,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 
 /datum/equipment_preset/other/freelancer/beacon
-	name = "Freelancer (Standard)"
-	paygrade = PAY_SHORT_FL_S
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	skills = /datum/skills/freelancer
 
 /datum/equipment_preset/other/freelancer/beacon/load_gear(mob/living/carbon/human/new_human)
 	//generic clothing
@@ -311,13 +306,6 @@
 	spawn_merc_weapon(new_human,1,2)
 
 /datum/equipment_preset/other/freelancer/leader/beacon
-	name = "Freelancer (Beacon Leader)"
-	paygrade = PAY_SHORT_FL_WL
-	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "Freelancer Warlord"
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_JAPANESE)
-
-	skills = /datum/skills/freelancer/SL
 
 /datum/equipment_preset/other/freelancer/leader/beacon/load_gear(mob/living/carbon/human/new_human)
 

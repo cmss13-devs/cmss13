@@ -1,0 +1,4 @@
+author: "Asmocard"
+delete-after: True
+changes:
+  - qol: "Can now dump containers into the seed extractor"

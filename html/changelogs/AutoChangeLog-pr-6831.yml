@@ -1,0 +1,4 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - rscadd: "The weapon stats screen now shows the effective range of ammo, instead of its armor punch value."

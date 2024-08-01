@@ -118,7 +118,7 @@
 			gun_data["icon"] = filename
 
 		var/page_name = SANITIZE_FILENAME(replacetext(strip_improper(generating_gun.name), " ", "_"))
-		var/to_add = list(title = "Autowiki/Content/Gun/[page_name]", text = include_template("Autowiki/Gun", gun_data))
+		var/to_add = list(title = "Template:Autowiki/Content/Gun/[page_name]", text = include_template("Autowiki/Gun", gun_data))
 		output += list(to_add)
 
 		qdel(generating_gun)

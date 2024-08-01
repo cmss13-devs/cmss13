@@ -12,7 +12,7 @@
 /datum/emergency_call/inspection_provost/remove_nonqualifiers(list/datum/mind/candidates_list)
 	var/list/datum/mind/candidates_clean = list()
 	for(var/datum/mind/single_candidate in candidates_list)
-		if(check_timelock(single_candidate?.current?.client, JOB_POLICE, time_required_for_job))
+		if(check_timelock(single_candidate.current?.client, JOB_POLICE, time_required_for_job))
 			candidates_clean.Add(single_candidate)
 			continue
 		if(single_candidate.current)

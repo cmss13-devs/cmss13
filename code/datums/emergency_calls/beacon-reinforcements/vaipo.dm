@@ -47,6 +47,7 @@
 		to_chat(human, SPAN_ROLE_HEADER("You are an Engineer in VAIPO"))
 	else
 		arm_equipment(human, /datum/equipment_preset/contractor/duty/standard/beacon,  mind == null, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Riflemen in VAIPO"))
 
 		print_backstory(human)
 

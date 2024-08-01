@@ -104,22 +104,22 @@
 	name = "Distress_Cryo"
 
 /datum/emergency_call/cryo_squad/tech/proc/get_marines()
-    var/pop_scale = 0
-    var/count = 0
+	var/pop_scale = 0
+	var/count = 0
 
-    for (var/mob/living/carbon/human/H in GLOB.human_mob_list)
-        if (H.faction == FACTION_MARINE)
-            count++
+	for (var/mob/living/carbon/human/H in GLOB.human_mob_list)
+		if (H.faction == FACTION_MARINE)
+			count++
 
-    switch(count)
-        if(95 to 104)
-            pop_scale = 2
-        if(105 to 114)
-            pop_scale = 4
-        if(115 to 350)
-            pop_scale = 6
+	switch(count)
+		if(95 to 104)
+			pop_scale = 2
+		if(105 to 114)
+			pop_scale = 4
+		if(115 to 350)
+			pop_scale = 6
 
-    return pop_scale
+	return pop_scale
 
 /datum/emergency_call/cryo_squad/tech/New()
 	. = ..()

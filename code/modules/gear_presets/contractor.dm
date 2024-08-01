@@ -155,6 +155,18 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1, WEAR_IN_BACK)
 
+
+/datum/equipment_preset/contractor/duty/standard/beacon
+	name = "Military Contractor (Standard)"
+	paygrade = PAY_SHORT_VAI_S
+	role_comm_title = "Merc"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = "VAIPO Mercenary"
+	rank = JOB_CONTRACTOR_ST
+	skills = /datum/skills/contractor
+	faction = FACTION_CONTRACTOR
+
+
 /datum/equipment_preset/contractor/duty/standard/beacon/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu, WEAR_BODY)
@@ -279,6 +291,19 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 
+
+/datum/equipment_preset/contractor/duty/engi/beacon
+	name = "Military Contractor (Engineer)"
+	paygrade = PAY_SHORT_VAI_E
+
+	role_comm_title = "Eng"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = "VAIPO Engineering Specialist"
+	rank = JOB_CONTRACTOR_ENGI
+	skills = /datum/skills/contractor/engi
+	faction = FACTION_CONTRACTOR
+
 /datum/equipment_preset/contractor/duty/engi/beacon/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
@@ -353,6 +378,16 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40, WEAR_IN_BACK)
 
+/datum/equipment_preset/contractor/duty/medic/beacon
+	name = "Military Contractor (Medic)"
+	paygrade = PAY_SHORT_VAI_M
+	role_comm_title = "Med"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = "VAIMS Medical Specialist"
+	rank = JOB_CONTRACTOR_MEDIC
+	skills = /datum/skills/contractor/medic
+	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/duty/medic/beacon/load_gear(mob/living/carbon/human/new_human)
 	//clothing
@@ -435,6 +470,17 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/hacked/contractor, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments, WEAR_IN_BACK)
+
+/datum/equipment_preset/contractor/duty/leader/beacon
+	name = "Military Contractor (Leader)"
+	paygrade = PAY_SHORT_VAI_L
+	role_comm_title = "TL"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = "VAIPO Team Leader"
+	rank = JOB_CONTRACTOR_TL
+	skills = /datum/skills/contractor/leader
+	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/duty/leader/beacon/load_gear(mob/living/carbon/human/new_human)
 	//clothes

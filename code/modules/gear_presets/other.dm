@@ -319,7 +319,7 @@
 
 	skills = /datum/skills/freelancer/SL
 
-/datum/equipment_preset/other/freelancer/leader/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/other/freelancer/leader/beacon/load_gear(mob/living/carbon/human/new_human)
 
 	//No random helmet, so that it's more clear that he's the leader
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)

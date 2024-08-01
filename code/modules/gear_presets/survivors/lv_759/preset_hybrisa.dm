@@ -327,7 +327,7 @@
 
 	name = "Survivor - Hybrisa - CMB Police Officer"
 	assignment = "CMB Affiliated Officer"
-	paygrade = PAY_SHORT_CMBD
+	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
@@ -432,7 +432,7 @@
 /datum/equipment_preset/survivor/hybrisa/paramedic
 	name = "Survivor - Hybrisa - Emergency Medical Technician - Paramedic"
 	assignment = "Emergency Medical Technician - Paramedic"
-	paygrade = PAY_SHORT_CPARA
+	paygrades = list(PAY_SHORT_CPARA = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "EMT - Paramedic"
 	skills = /datum/skills/civilian/survivor/paramedic
@@ -757,7 +757,7 @@
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade = PAY_SHORT_WYC3
+	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_0)
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL,ACCESS_WY_EXEC,)
@@ -777,8 +777,8 @@
 			else if(playtime > JOB_PLAYTIME_TIER_2)
 				return PAY_SHORT_WYC4
 			else
-				return paygrade
-	return paygrade
+				return paygrades[1]
+	return paygrades[1]
 
 /datum/equipment_preset/survivor/hybrisa/wy_exec/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,45)
@@ -848,7 +848,7 @@
 	assignment = "Weyland-Yutani - Corporate Security Guard"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction_group = FACTION_LIST_SURVIVOR_WY
-	paygrade = PAY_SHORT_CPO
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/goon
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_EXEC,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL)
@@ -919,7 +919,7 @@
 	name = "Survivor - Hybrisa - Weyland-Yutani - Commercial Pilot"
 	assignment = "Weyland-Yutani - Commercial Pilot"
 	skills = /datum/skills/civilian/survivor/wy_pilot
-	paygrade = PAY_SHORT_WYPO2
+	paygrades = list(PAY_SHORT_WYPO2 = JOB_PLAYTIME_TIER_0)
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/gold
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

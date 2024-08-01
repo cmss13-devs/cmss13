@@ -31,6 +31,9 @@ GLOBAL_LIST_INIT(cm_vending_walkman, list(
 ))
 
 /obj/structure/machinery/cm_vending/sorted/walkman/stock(obj/item/item_to_stock, mob/user)
+	if(!check_item_loc(item_to_stock, user))
+		return
+
 	var/list/R
 	for(R in (listed_products))
 		if(item_to_stock.type == R[3])

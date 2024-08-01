@@ -165,6 +165,9 @@
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/stock(obj/item/item_to_stock, mob/user)
+	if(!check_item_loc(item_to_stock, user))
+		return
+
 	if(istype(item_to_stock, /obj/item/storage) && !istype(item_to_stock, /obj/item/storage/box/m94) && !istype(item_to_stock, /obj/item/storage/large_holster/machete))
 		to_chat(user, SPAN_WARNING("Can't restock \the [item_to_stock]."))
 		return
@@ -304,6 +307,9 @@
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/stock(obj/item/item_to_stock, mob/user)
+	if(!check_item_loc(item_to_stock, user))
+		return
+
 	//these are exempted because checks would be huge and not worth it
 	if(istype(item_to_stock, /obj/item/storage))
 		to_chat(user, SPAN_WARNING("Can't restock \the [item_to_stock]."))
@@ -481,6 +487,9 @@
 	return
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/stock(obj/item/item_to_stock, mob/user)
+	if(!check_item_loc(item_to_stock, user))
+		return
+
 	var/list/R
 	for(R in (listed_products))
 		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))

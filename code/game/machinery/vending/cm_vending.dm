@@ -1010,6 +1010,13 @@ GLOBAL_LIST_EMPTY(vending_products)
 		for(var/list/L as anything in box_list)
 			listed_products += list(L)
 
+///check if the item is actually in a tangible location. this will prevent duping via tactical reloads/attaching items and other means.
+/obj/structure/machinery/cm_vending/sorted/proc/check_item_loc(obj/item/item_to_stock, mob/user)
+	if(!istype(item_to_stock.loc, /turf/) && !istype(item_to_stock.loc, user))
+		to_chat(user, SPAN_WARNING("[item_to_stock] needs to be on your person or near [src] in order to restock it."))
+		return FALSE
+	return TRUE
+
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
 	. = ..(user)
 	.["vendor_type"] = "sorted"
@@ -1060,7 +1067,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		stock(A, user)
 
 /obj/structure/machinery/cm_vending/sorted/proc/stock(obj/item/item_to_stock, mob/user)
-	if(istype(item_to_stock, /obj/item/storage))
+	if(istype(item_to_stock, /obj/item/storage) || !check_item_loc(item_to_stock, user))
 		return FALSE
 
 	var/list/stock_listed_products = get_listed_products(user)

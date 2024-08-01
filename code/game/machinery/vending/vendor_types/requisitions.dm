@@ -48,7 +48,7 @@
 		list("M20 Claymore Anti-Personnel Mine", floor(scale * 4), /obj/item/explosive/mine, VENDOR_ITEM_REGULAR),
 		list("M40 HEDP Grenade", floor(scale * 25), /obj/item/explosive/grenade/high_explosive, VENDOR_ITEM_REGULAR),
 		list("M40 HIDP Incendiary Grenade", floor(scale * 4), /obj/item/explosive/grenade/incendiary, VENDOR_ITEM_REGULAR),
-		list("M40 HPDP White Phosphorus Smoke Grenade", floor(scale * 4), /obj/item/explosive/grenade/phosphorus, VENDOR_ITEM_REGULAR),
+		list("M40 CCDP Chemical Compound Smoke Grenade", floor(scale * 4), /obj/item/explosive/grenade/phosphorus, VENDOR_ITEM_REGULAR),
 		list("M40 HSDP Smoke Grenade", floor(scale * 5), /obj/item/explosive/grenade/smokebomb, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Frag Airburst Grenade", floor(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Incendiary Airburst Grenade", floor(scale * 4), /obj/item/explosive/grenade/incendiary/airburst, VENDOR_ITEM_REGULAR),
@@ -119,7 +119,7 @@
 		list("Large Shotgun Shell Pouch", floor(scale * 1), /obj/item/storage/pouch/shotgun/large, VENDOR_ITEM_REGULAR),
 
 		list("MISCELLANEOUS", -1, null, null),
-		list("Combat Flashlight", floor(scale * 8), /obj/item/device/flashlight, VENDOR_ITEM_REGULAR),
+		list("Combat Flashlight", floor(scale * 8), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
 		list("Entrenching Tool", floor(scale * 4), /obj/item/tool/shovel/etool/folded, VENDOR_ITEM_REGULAR),
 		list("Gas Mask", floor(scale * 10), /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", floor(scale * 2), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
@@ -148,8 +148,8 @@
 		list("M40 HEDP Grenade Box", 0, /obj/item/storage/box/nade_box, VENDOR_ITEM_REGULAR),
 		list("M40 HIDP Grenade Packet", 0, /obj/item/storage/box/packet/incendiary, VENDOR_ITEM_REGULAR),
 		list("M40 HIDP Grenade Box", 0, /obj/item/storage/box/nade_box/incen, VENDOR_ITEM_REGULAR),
-		list("M40 HPDP Grenade Packet", 0, /obj/item/storage/box/packet/phosphorus/alt, VENDOR_ITEM_REGULAR),
-		list("M40 HPDP Grenade Box", 0, /obj/item/storage/box/nade_box/phophorus, VENDOR_ITEM_REGULAR),
+		list("M40 CCDP Grenade Packet", 0, /obj/item/storage/box/packet/phosphorus/strong, VENDOR_ITEM_REGULAR),
+		list("M40 CCDP Grenade Box", 0, /obj/item/storage/box/nade_box/phophorus, VENDOR_ITEM_REGULAR),
 		list("M40 HSDP Grenade Packet", 0, /obj/item/storage/box/packet/smoke, VENDOR_ITEM_REGULAR),
 		list("M40 MFHS Grenade Packet", 0, /obj/item/storage/box/packet/foam, VENDOR_ITEM_REGULAR),
 		list("M40 HIRR Baton Slug Packet", 0, /obj/item/storage/box/packet/baton_slug, VENDOR_ITEM_REGULAR),
@@ -164,7 +164,7 @@
 		list("M20 mine box", 0, /obj/item/storage/box/explosive_mines, VENDOR_ITEM_REGULAR),
 
 		list("OTHER BOXES", -1, null, null),
-		list("Box of Flashlights", 0, /obj/item/ammo_box/magazine/misc/flashlight, VENDOR_ITEM_REGULAR),
+		list("Box of Combat Flashlights", 0, /obj/item/ammo_box/magazine/misc/flashlight/combat, VENDOR_ITEM_REGULAR),
 		list("Box of M94 Marking Flare Packs", 0, /obj/item/ammo_box/magazine/misc/flares, VENDOR_ITEM_REGULAR),
 		list("Box of M89 Signal Flare Packs", 0, /obj/item/ammo_box/magazine/misc/flares/signal, VENDOR_ITEM_REGULAR),
 		list("Box of High-Capacity Power Cells", 0, /obj/item/ammo_box/magazine/misc/power_cell, VENDOR_ITEM_REGULAR)

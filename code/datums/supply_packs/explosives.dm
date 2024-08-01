@@ -111,25 +111,25 @@
 	containername = "\improper explosive HEDP grenade crate (WARNING)"
 	group = "Explosives"
 
-/datum/supply_packs/explosives_M40_HPDP
-	name = "M40 HPDP white phosphorus grenades crate (x6)"
+/datum/supply_packs/explosives_M40_CCDP
+	name = "M40 CCDP chemical compound grenades crate (x6)"
 	contains = list(
 		/obj/item/storage/box/packet/phosphorus,
 		/obj/item/storage/box/packet/phosphorus,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
-	containername = "\improper M40 HPDP grenade crate (WARNING)"
+	containername = "\improper M40 CCDP grenade crate (WARNING)"
 	group = "Explosives"
 
-/datum/supply_packs/explosives_M40_HPDP_crate
-	name = "M40 HPDP white phosphorus grenade box crate (x25)"
+/datum/supply_packs/explosives_M40_CCDP_crate
+	name = "M40 WPDP chemical compund grenade box crate (x25)"
 	contains = list(
 		/obj/item/storage/box/nade_box/phophorus,
 	)
 	cost = 100
 	containertype = /obj/structure/closet/crate/explosives
-	containername = "\improper HPDP grenade crate (WARNING)"
+	containername = "\improper CCDP grenade crate (WARNING)"
 	group = "Explosives"
 
 /datum/supply_packs/explosives_M40_HEFA

@@ -77,12 +77,15 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 	content_type = /obj/item/explosive/grenade/smokebomb
 
 /obj/item/storage/box/packet/phosphorus
-	name = "\improper HPDP grenade packet"
-	desc = "It contains three HPDP white phosphorus grenades."
-	icon_state = "hpdp_packet"
+	name = "\improper WPDP grenade packet"
+	desc = "It contains three WPDP white phosphorus grenades."
+	icon_state = "wpdp_packet"
 	content_type = /obj/item/explosive/grenade/phosphorus/weak
 
-/obj/item/storage/box/packet/phosphorus/alt
+/obj/item/storage/box/packet/phosphorus/strong
+	name = "\improper CCDP grenade packet"
+	desc = "It contains three CCDP chemical compound grenades."
+	icon_state = "ccdp_packet"
 	content_type = /obj/item/explosive/grenade/phosphorus
 
 /obj/item/storage/box/packet/phosphorus/upp

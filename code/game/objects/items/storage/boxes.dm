@@ -613,11 +613,6 @@
 /obj/item/storage/box/nade_box/Initialize()
 	. = ..()
 	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
-	if(type_icon)
-		overlays += image(icon, type_icon)
-
-	if(model_icon)
-		overlays += image(icon, model_icon)
 
 /obj/item/storage/box/nade_box/proc/try_forced_folding(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -643,8 +638,13 @@
 /obj/item/storage/box/nade_box/update_icon()
 	if(!length(contents))
 		icon_state = "[base_icon]_e"
+		overlays.Cut()
 	else
 		icon_state = base_icon
+		if(type_icon)
+			overlays += image(icon, type_icon)
+		if(model_icon)
+			overlays += image(icon, model_icon)
 
 
 /obj/item/storage/box/nade_box/frag
@@ -655,9 +655,9 @@
 	grenade_type = /obj/item/explosive/grenade/high_explosive/frag
 
 /obj/item/storage/box/nade_box/phophorus
-	name = "\improper M40 HPDP grenade box"
-	desc = "A secure box holding 25 M40 HPDP white phosphorus grenade. High explosive, don't store near the flamer fuel."
-	type_icon = "hpdp"
+	name = "\improper M40 CCDP grenade box"
+	desc = "A secure box holding 25 M40 CCDP chemical compound grenade. High explosive, don't store near the flamer fuel."
+	type_icon = "ccdp"
 	can_hold = list(/obj/item/explosive/grenade/phosphorus)
 	grenade_type = /obj/item/explosive/grenade/phosphorus
 

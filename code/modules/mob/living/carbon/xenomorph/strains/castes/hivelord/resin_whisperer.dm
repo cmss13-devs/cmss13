@@ -43,18 +43,19 @@
 	name = "Coerce Resin (100)"
 	action_icon_state = "secrete_resin"
 	ability_name = "coerce resin"
-	var/last_use = 0
 	xeno_cooldown = 1 SECONDS
 	thick = FALSE
 	make_message = FALSE
 
 	no_cooldown_msg = TRUE
 
-	var/care_about_adjacency = TRUE
 	build_speed_mod = 2 // the actual building part takes twice as long
 
 	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin
 	action_type = XENO_ACTION_CLICK
+
+	var/last_use = 0
+	var/care_about_adjacency = TRUE
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/target_atom, mods)
 	if(!can_remote_build())
@@ -69,6 +70,10 @@
 
 	var/turf/target_turf = get_turf(target_atom)
 	if(!target_turf)
+		return
+
+	if(care_about_adjacency && !(target_turf in view(10, owner)))
+		to_chat(owner, SPAN_XENONOTICE("We must have a direct line of sight!"))
 		return
 
 	/// Check if the target is a resin door and open or close it

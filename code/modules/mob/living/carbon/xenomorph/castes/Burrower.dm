@@ -52,6 +52,7 @@
 	base_pixel_x = 0
 	base_pixel_y = -20
 	tier = 2
+	organ_value = 1500
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -65,6 +66,7 @@
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
+		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 		/datum/action/xeno_action/onclick/tacmap,
 		)
 
@@ -80,10 +82,6 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Burrower_1","Burrower_2","Burrower_3")
 	weed_food_states_flipped = list("Burrower_1","Burrower_2","Burrower_3")
-
-/mob/living/carbon/xenomorph/burrower/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
-	. = ..()
-	sight |= SEE_TURFS
 
 /mob/living/carbon/xenomorph/burrower/ex_act(severity)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))

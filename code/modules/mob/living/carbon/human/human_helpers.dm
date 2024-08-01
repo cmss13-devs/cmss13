@@ -31,7 +31,7 @@
 				if("head")
 					return "[skin_color]_[limb_name]_[get_gender_name(gender)]"
 				if("groin")
-					return "[skin_color]_[limb_name]__[body_type]_[get_gender_name(gender)]"
+					return "[skin_color]_[limb_name]_[body_type]_[get_gender_name(gender)]"
 
 		switch(limb_name)
 			if("synthetic head")
@@ -369,7 +369,7 @@
 
 /mob/living/carbon/human/proc/has_foreign_object()
 	for(var/obj/limb/L in limbs)
-		if(L.implants && L.implants.len > 0)
+		if(LAZYLEN(L.implants) > 0)
 			return TRUE
 	for(var/obj/item/alien_embryo/A in contents)
 		return TRUE

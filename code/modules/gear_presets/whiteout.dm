@@ -9,7 +9,7 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_TSL) //Synths after all.
 	skills = /datum/skills/everything //They are Synths, programmed for Everything.
 	idtype = /obj/item/card/id/pmc/ds
-	paygrade = PAY_SHORT_CDNM
+	paygrades = list(PAY_SHORT_CDNM = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/pmc/w_y_whiteout/New()
 	. = ..()
@@ -270,7 +270,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic
-	name = "Whiteout Team Medic"
+	name = "Whiteout Team Operative Medic"
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic/load_gear(mob/living/carbon/human/new_human)
 	// back

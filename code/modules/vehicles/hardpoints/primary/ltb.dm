@@ -1,5 +1,5 @@
 /obj/item/hardpoint/primary/cannon
-	name = "LTB Cannon"
+	name = "\improper LTB Cannon"
 	desc = "A primary cannon for tanks that shoots explosive rounds"
 
 	icon_state = "ltb_cannon"

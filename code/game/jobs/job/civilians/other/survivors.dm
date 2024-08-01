@@ -187,7 +187,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
-	if(CO_survivor_types.len)
+	if(length(CO_survivor_types))
 		total_positions = 1
 		spawn_positions = 1
 	return spawn_positions

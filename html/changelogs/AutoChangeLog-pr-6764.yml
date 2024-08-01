@@ -1,0 +1,4 @@
+author: "kiVts"
+delete-after: True
+changes:
+  - rscadd: "Players will not get picked at certain ERT beacons if they dont have enough playtime in relevant area."

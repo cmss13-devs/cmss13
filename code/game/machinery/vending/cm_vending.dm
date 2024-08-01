@@ -1012,7 +1012,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 ///check if the item is actually in a tangible location. this will prevent duping via tactical reloads/attaching items and other means.
 /obj/structure/machinery/cm_vending/sorted/proc/check_item_loc(obj/item/item_to_stock, mob/user)
-	if(!istype(item_to_stock.loc, /turf/) && !istype(item_to_stock.loc, user))
+	if(!is_type_in_list(item_to_stock.loc, list(/turf/, user, /obj/item/storage)))
 		to_chat(user, SPAN_WARNING("[item_to_stock] needs to be on your person or near [src] in order to restock it."))
 		return FALSE
 	return TRUE

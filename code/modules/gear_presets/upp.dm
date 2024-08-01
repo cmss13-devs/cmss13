@@ -952,15 +952,6 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
 
-/datum/equipment_preset/upp/leader
-	name = "UPP Squad Leader"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	skills = /datum/skills/upp/SL
-	assignment = JOB_UPP_LEADER
-	rank = JOB_UPP_LEADER
-	role_comm_title = "SL"
-	paygrade = PAY_SHORT_UE6
 
 /datum/equipment_preset/upp/leader/beacon/load_gear(mob/living/carbon/human/new_human)
 	//back

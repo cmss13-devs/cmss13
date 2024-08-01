@@ -1,57 +1,57 @@
-/datum/emergency_call/royal_marines/beacon
-	name = "Royal Marines Commandos (Beacon)"
-	mob_max = 8
+
+
+/datum/emergency_call/rmc/beacon
+	name = "RMC (Beacon Reinforcements)"
+	mob_max = 7
 	mob_min = 1
+	max_engineers = 1
+	max_medics = 1
 	spawn_max_amount = TRUE
-	home_base = /datum/lazy_template/ert/twe_station
-	shuttle_id = MOBILE_SHUTTLE_ID_ERT4
-	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_twe/beacon
-	item_spawn = /obj/effect/landmark/ert_spawns/distress_twe/item
 
-/datum/emergency_call/royal_marines/beacon/New()
+/datum/emergency_call/rmc/beacon/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is the HMS Kurtz of the Three World Empires. We've received your call and are enroute to aid."
-	objectives = "Ensure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
+	objectives = "Assist the USCM forces"
+	arrival_message = "[MAIN_SHIP_NAME], this is the HMS Thames of the Three World Empires. We've received your call and are enroute to aid per the C2 Collaborative Defense Agreement."
 
-
-/datum/emergency_call/royal_marines/beacon/create_member(datum/mind/spawning_mind, turf/override_spawn_loc)
+/datum/emergency_call/rmc/beacon/create_member(datum/mind/mind, turf/override_spawn_loc)
+	set waitfor = 0
+	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
+		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
-	if(!istype(spawn_loc))
-		return //Didn't find a useable spawn point.
+	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	spawning_mind.transfer_to(mob, TRUE)
+	var/mob/living/carbon/human/human = new(spawn_loc)
 
+	if(mind)
+		mind.transfer_to(human, TRUE)
+	else
+		human.create_hud()
 
-	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job && (!mind )))
-		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are an Officer in the Royal Marines Commando. Born in the Three World Empire."))
-		arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/lieuteant/beacon, TRUE, TRUE)
-	else if(spawning_mind)
-		to_chat(mob, SPAN_ROLE_HEADER("You are a member of the Royal Marines Commando. Born in the three world empire."))
-		arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/standard/beacon, TRUE, TRUE)
+	if(mob_max > length(members))
+		announce_dchat("Some Commandos were not taken, use the Join As Freed Mob verb to take one of them.")
 
 
+	if(!leader && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(human.client, JOB_SQUAD_LEADER, time_required_for_job))))
+		leader = human
+		arm_equipment(human, /datum/equipment_preset/twe/royal_marine/lieuteant/beacon, mind == null, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Officer in the RMC"))
+	else
+		arm_equipment(human, /datum/equipment_preset/twe/royal_marine/standard/beacon,  mind == null, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Rifleman in the RMC"))
 
-/datum/emergency_call/royal_marines/beacon/print_backstory(mob/living/carbon/human/spawning_mob)
-	to_chat(spawning_mob, SPAN_BOLD("You were born in the Three World Empire to a [pick_weight(list("average" = 75, "poor" = 15, "well-established" = 10))] family."))
-	to_chat(spawning_mob, SPAN_BOLD("Joining the Royal Marines gave you a lot of combat experience and useful skills."))
-	to_chat(spawning_mob, SPAN_BOLD("You are knowledgable of the xenomorph threat."))
-	to_chat(spawning_mob, SPAN_BOLD("You are a citizen of the three world empire and joined the Royal Marines Commando"))
-	to_chat(spawning_mob, SPAN_BOLD("You are apart of a jointed UA/TWE taskforce onboard the HMS Patna and Thunderchild."))
-	to_chat(spawning_mob, SPAN_BOLD("Under the directive of the RMC high command, you have been assisting USCM forces with maintaining peace in the area."))
-	to_chat(spawning_mob, SPAN_BOLD("Assist the USCMC Force of the [MAIN_SHIP_NAME] however you can."))
-
-
-/obj/effect/landmark/ert_spawns/distress_twe
-	name = "Distress_TWE"
-
-/obj/effect/landmark/ert_spawns/distress_twe/item
-	name = "Distress_TWEItem"
-
+	print_backstory(human)
 
 	sleep(10)
 	if(!mind)
-		mob.free_for_ghosts()
-	to_chat(mob, SPAN_BOLD("Objectives: [objectives]"))
+		human.free_for_ghosts()
+	to_chat(human, SPAN_BOLD("Objectives: [objectives]"))
+
+/datum/emergency_call/rmc/beacon/print_backstory(mob/living/carbon/human/human)
+	to_chat(human, SPAN_BOLD("You were born in the Three World Empire to a [pick_weight(list("average" = 75, "poor" = 15, "well-established" = 10))] family."))
+	to_chat(human, SPAN_BOLD("Joining the Royal Marines gave you a lot of combat experience and useful skills."))
+	to_chat(human, SPAN_BOLD("You are [pick_weight(list("unaware" = 75, "faintly aware" = 15, "knoledgeable" = 10))] of the xenomorph threat."))
+	to_chat(human, SPAN_BOLD("You are a citizen of the three world empire and joined the Royal Marines Commando"))
+	to_chat(human, SPAN_BOLD("You are apart of a jointed UA/TWE taskforce onboard the HMS Patna and Thunderchild."))
+	to_chat(human, SPAN_BOLD("Under the directive of the RMC high command, you have been assisting USCM forces with maintaining peace in the area."))
+	to_chat(human, SPAN_BOLD("Assist the USCMC Force of the [MAIN_SHIP_NAME] however you can."))

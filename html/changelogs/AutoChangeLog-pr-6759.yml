@@ -1,5 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "grabbing something has a small mob animation now, grabbing items have visual effect, animation and sound"
-  - rscadd: "throwing has small animation and sound"

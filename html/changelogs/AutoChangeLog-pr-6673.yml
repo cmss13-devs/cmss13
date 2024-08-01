@@ -1,5 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - rscadd: "Marine Special Forces, Forecon, Echo Squad and CBRN will now appear in their own sub-menu for observers."
-  - ui: "Foxtrot's colour in the observe menu now reflects the squads true colour scheme."

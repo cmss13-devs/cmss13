@@ -57,6 +57,9 @@ GLOBAL_LIST_INIT(cmp_field, "name")
 /proc/cmp_typepaths_asc(A, B)
 	return sorttext("[B]","[A]")
 
+/proc/cmp_typepaths_name_asc(atom/A, atom/B)
+	return sorttext(initial(A.name), initial(B.name))
+
 /// Compares mobs based on their timeofdeath value in ascending order
 /proc/cmp_mob_deathtime_asc(mob/A, mob/B)
 	return A.timeofdeath - B.timeofdeath

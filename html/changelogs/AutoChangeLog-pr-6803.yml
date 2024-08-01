@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - rscdel: "removes UNUSED hydro lights that were replaced by colony lights long ago"

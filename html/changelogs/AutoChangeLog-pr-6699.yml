@@ -1,0 +1,5 @@
+author: "Doubleumc"
+delete-after: True
+changes:
+  - bugfix: "fixed tank secondary flamer stopping after one tile"
+  - balance: "flamers can now fire streams over the \"wrong\" side of a barricade, when adjacent"

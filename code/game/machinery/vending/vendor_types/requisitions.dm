@@ -450,8 +450,8 @@
 		list("USCM Chestrig", 10, /obj/item/storage/backpack/marine/satchel/chestrig, VENDOR_ITEM_REGULAR),
 		list("USCM Technician Backpack", 10, /obj/item/storage/backpack/marine/tech, VENDOR_ITEM_REGULAR),
 		list("USCM Technician Chestrig", 10, /obj/item/storage/backpack/marine/satchel/tech, VENDOR_ITEM_REGULAR),
-		list("USCM corpsman backpack", 10, /obj/item/storage/backpack/marine/medic, VENDOR_ITEM_REGULAR),
-		list("USCM corpsman satchel", 10, /obj/item/storage/backpack/marine/satchel/medic, VENDOR_ITEM_REGULAR),
+		list("USCM Corpsman Backpack", 10, /obj/item/storage/backpack/marine/medic, VENDOR_ITEM_REGULAR),
+		list("USCM Corpsman Satchel", 10, /obj/item/storage/backpack/marine/satchel/medic, VENDOR_ITEM_REGULAR),
 
 
 		list("ARMOR", -1, null, null),

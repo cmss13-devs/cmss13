@@ -69,7 +69,7 @@
 	var/recharge_duration = SHUTTLE_RECHARGE
 
 	if(optimised)
-		recharge_duration = SHUTTLE_RECHARGE * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE
+		recharge_duration = SHUTTLE_RECHARGE * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE * GLOB.ship_alt
 
 	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
 		// fuel enhancer
@@ -81,7 +81,7 @@
 
 		// cooling system
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/cooling_system))
-			recharge_duration = recharge_duration * SHUTTLE_COOLING_FACTOR_RECHARGE
+			recharge_duration = recharge_duration * SHUTTLE_COOLING_FACTOR_RECHARGE * GLOB.ship_alt
 
 
 	dropship.callTime = floor(flight_duration)

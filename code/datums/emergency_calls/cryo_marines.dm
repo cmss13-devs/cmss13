@@ -92,10 +92,18 @@
 	probability = 0
 	max_engineers = 8
 
+/datum/emergency_call/cryo_squad/tech // Actual techweb cryorines
+    name = "Marine Cryo Reinforcements (Tech)"
+    mob_max = 6
+    max_engineers = 2
+    max_medics = 2
+    max_smartgunners = 1
+    max_heavies = 0
+
 /obj/effect/landmark/ert_spawns/distress_cryo
 	name = "Distress_Cryo"
 
-/proc/get_marines()
+/datum/emergency_call/cryo_squad/tech/proc/get_marines()
     var/pop_scale = 0
     var/count = 0
 
@@ -112,14 +120,6 @@
             pop_scale = 6
 
     return pop_scale
-
-/datum/emergency_call/cryo_squad/tech // Actual techweb cryorines
-    name = "Marine Cryo Reinforcements (Tech)"
-    mob_max = 6
-    max_engineers = 2
-    max_medics = 2
-    max_smartgunners = 1
-    max_heavies = 0
 
 /datum/emergency_call/cryo_squad/tech/New()
 	. = ..()

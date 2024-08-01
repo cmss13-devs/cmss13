@@ -199,8 +199,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 			if(R.one_per_turf != ONE_TYPE_PER_BORDER) //all barricade-esque structures utilize this define and have their own check for object density. checking twice is unneeded.
 				for(var/obj/object in usr.loc)
-					if(object.density)
-						to_chat(usr, SPAN_WARNING("[object] is blocking you from constructing \the [R.title]."))
+					if(object.density || istype(object, /obj/structure/machinery/door))
+						to_chat(usr, SPAN_WARNING("[object] is blocking you from constructing \the [R.title]!"))
 						return
 
 		if((R.flags & RESULT_REQUIRES_SNOW) && !(istype(usr.loc, /turf/open/snow) || istype(usr.loc, /turf/open/auto_turf/snow)))

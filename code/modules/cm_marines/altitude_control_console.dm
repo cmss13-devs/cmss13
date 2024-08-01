@@ -81,7 +81,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			if(!is_mainship_level(current_mob.z))
 				continue
 			current_mob.apply_effect(3, SLOW)
-			shake_camera(current_mob, 10, 2)
+			shake_camera(current_mob, 5, 2)
 		return
 	if(GLOB.ship_alt == SHIP_ALT_LOW && GLOB.ship_temp >= OVERHEAT)
 		ai_silent_announcement("Attention: Low altitude orbital maneuver no longer sustainable, moving to furthest geo-synchronous orbit until engine cooloff.", ";", TRUE)
@@ -91,7 +91,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			if(!is_mainship_level(current_mob.z))
 				continue
 			current_mob.apply_effect(3, SLOW)
-			shake_camera(current_mob, 10, 2)
+			shake_camera(current_mob, 5, 2)
 		return
 	if(prob(50))
 		return
@@ -99,7 +99,6 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 		for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 			if(!is_mainship_level(current_mob.z))
 				continue
-			shake_camera(current_mob, 10, 2)
 			ai_silent_announcement("Low altitude maneuver currently under performance, full stabilization of the altitude unable to be achieved, maintaining procedures until overheat.", ";", TRUE)
 
 //TGUI.... fun... years have gone by, I am dying of old age
@@ -155,7 +154,6 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			continue
 		current_mob.apply_effect(3, SLOW)
 		to_chat(user, SPAN_WARNING("You have some difficulty on maintaining balance!"))
-		shake_camera(current_mob, 10, 2)
 		ai_silent_announcement("Attention: Altitude control protocols initialized, currently performing high-g orbital maneuver.", ";", TRUE)
 
 #undef COOLING

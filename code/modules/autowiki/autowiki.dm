@@ -31,7 +31,7 @@
 				CRASH("[autowiki_type] does not generate a proper output when generate_multiple is set!")
 
 			for(var/list in output)
-				total_output += json_encode(list)
+				total_output += json_encode(list) + "\n"
 
 			if(!autowiki.page)
 				continue

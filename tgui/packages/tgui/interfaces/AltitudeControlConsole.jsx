@@ -69,11 +69,13 @@ export const AltitudeControlConsole = () => {
             </Button>
           }
         </Section>
-        <Section title="System Operational Warning">
-          <Box textAlign="center" fontSize="20px">
-            The Ship will always be set according to the disabled option, if
-            none of the two options available to you are disabled, that means
-            the ship is on high altitude
+        <Section title="System Operational Warnings">
+          <Box fontSize="20px">
+            1. Automatic changes have a cooldown of 20 seconds.
+            <br />
+            2. Manual changes have a cooldown of 40 seconds.
+            <br />
+            3. In average, it takes 3 minutes for the engines to 100% overheat.
           </Box>
         </Section>
       </Window.Content>

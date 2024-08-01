@@ -76,6 +76,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 	if(GLOB.ship_alt == SHIP_ALT_HIGH && GLOB.ship_temp == 0)
 		ai_silent_announcement("Attention: Engine cooloff completed, automatic stabilization to most optimal geo-synchronous orbit undergoing.", ";", TRUE)
 		GLOB.ship_alt = SHIP_ALT_MED
+		TIMER_COOLDOWN_START(src, COOLDOWN_ALTITUDE_CHANGE, 20 SECONDS)
 		for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 			if(!is_mainship_level(current_mob.z))
 				continue
@@ -85,6 +86,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 	if(GLOB.ship_alt == SHIP_ALT_LOW && GLOB.ship_temp >= OVERHEAT)
 		ai_silent_announcement("Attention: Low altitude orbital maneuver no longer sustainable, moving to furthest geo-synchronous orbit until engine cooloff.", ";", TRUE)
 		GLOB.ship_alt = SHIP_ALT_HIGH
+		TIMER_COOLDOWN_START(src, COOLDOWN_ALTITUDE_CHANGE, 20 SECONDS)
 		for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 			if(!is_mainship_level(current_mob.z))
 				continue
@@ -147,7 +149,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 	if(GLOB.ship_alt == new_altitude)
 		return
 	GLOB.ship_alt = new_altitude
-	TIMER_COOLDOWN_START(src, COOLDOWN_ALTITUDE_CHANGE, 60 SECONDS)
+	TIMER_COOLDOWN_START(src, COOLDOWN_ALTITUDE_CHANGE, 40 SECONDS)
 	for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 		if(!is_mainship_level(current_mob.z))
 			continue

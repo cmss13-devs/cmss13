@@ -87699,7 +87699,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/device/gripper,
+/obj/item/prop/gripper,
 /obj/structure/cable/white{
 	color = "550d0d";
 	icon_state = "2-6";
@@ -94743,7 +94743,7 @@
 /obj/structure/machinery/shower{
 	dir = 8
 	},
-/obj/item/tool/soap/nanotrasen,
+/obj/item/tool/soap/weyland_yutani,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv759/indoors/wy_research_complex/dormsbedroom)
 "ptg" = (
@@ -102719,7 +102719,7 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime1"
 	},
-/obj/item/tool/soap/nanotrasen,
+/obj/item/tool/soap/weyland_yutani,
 /turf/open/floor/freezerfloor,
 /area/lv759/indoors/apartment/eastrestroomsshower)
 "qJS" = (

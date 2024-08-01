@@ -1,0 +1,7 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "throw volume is lower and based on the distance of throw, half visible mobs make no throw sound (sniper, scout, yautja)"
+  - rscadd: "throw animation pixel shifts for less pixels"
+  - rscadd: "lowered throw sound range a bit"
+  - soundadd: "added mutiple unique sound for throwing things"

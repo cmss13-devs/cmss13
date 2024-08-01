@@ -1,0 +1,4 @@
+author: "ihatethisengine2"
+delete-after: True
+changes:
+  - bugfix: "fixed the lockdown button working after dropship being locked by Queen"

@@ -943,9 +943,10 @@
 
 	..()
 
+/// Returns whether this person has a broken heart but is otherwise revivable
 /mob/living/carbon/human/proc/is_heart_broken()
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
-	return heart && heart.organ_status >= ORGAN_BROKEN && check_tod()
+	return heart && heart.organ_status >= ORGAN_BROKEN && check_tod() && is_revivable(ignore_heart = TRUE)
 
 /mob/living/carbon/human/proc/is_lung_ruptured()
 	var/datum/internal_organ/lungs/L = internal_organs_by_name["lungs"]

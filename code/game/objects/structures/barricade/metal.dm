@@ -279,3 +279,31 @@
 	..()
 	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB
+
+/obj/structure/barricade/metal/plasteel
+	name = "plasteel barricade"
+	desc = "A sturdy and easily assembled barricade made of reinforced plasteel plates, the pinnacle of strongpoints. Use a blowtorch to repair."
+	icon_state = "new_plasteel_0"
+	health = 900
+	maxhealth = 900
+	crusher_resistant = TRUE
+	force_level_absorption = 20
+	stack_type = /obj/item/stack/sheet/plasteel
+	debris = list(/obj/item/stack/sheet/plasteel)
+	destroyed_stack_amount = 3
+	barricade_type = "new_plasteel"
+	repair_materials = list("plasteel" = 0.45)
+
+/obj/structure/barricade/metal/plasteel/wired/New()
+	maxhealth += 50
+	update_health(-50)
+	can_wire = FALSE
+	is_wired = TRUE
+	climbable = FALSE
+	update_icon()
+	return ..()
+
+/obj/structure/barricade/metal/plasteel/wired/initialize_pass_flags(datum/pass_flags_container/PF)
+	..()
+	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
+	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB

@@ -283,9 +283,6 @@
 
 //combined from req guns and ammo vendors
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/stock(obj/item/item_to_stock, mob/user)
-	if(!check_item_loc(item_to_stock, user))
-		return
-
 	if(being_restocked && user)
 		to_chat(user, SPAN_WARNING("\The [src] is already being restocked, you will get in the way!"))
 		return FALSE

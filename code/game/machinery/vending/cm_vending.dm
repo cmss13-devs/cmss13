@@ -1024,6 +1024,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return
 	if(!ishuman(user))
 		return
+	if(istype(A.loc, /obj/item/weapon/gun))
+		return
 
 	// Try to bulk restock using a container
 	if(istype(A, /obj/item/storage))

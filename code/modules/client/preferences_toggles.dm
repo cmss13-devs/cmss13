@@ -224,9 +224,9 @@
 	set category = "Preferences"
 	set desc = "Toggles whether the game window will be true fullscreen or normal."
 
-	prefs.toggle_prefs ^= TOGGLE_FULLSCREEN
+	TOGGLE_BITFIELD(prefs.toggle_prefs, TOGGLE_FULLSCREEN)
 	prefs.save_preferences()
-	toggle_fullscreen(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
+	update_fullscreen()
 
 /client/verb/toggle_ambient_occlusion()
 	set name = "Toggle Ambient Occlusion"

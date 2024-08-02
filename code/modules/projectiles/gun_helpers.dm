@@ -547,11 +547,22 @@ DEFINES in setup.dm, referenced here.
 				for(var/item_in_slot in items_in_slot)
 					if(istype(item_in_slot, storage))
 						var/slot = active_hand.preferred_storage[storage]
-						if(slot == WEAR_ACCESSORY)
-							slot = WEAR_IN_ACCESSORY
-
-						if(equip_to_slot_if_possible(active_hand, slot, 1, 0, 1, 1))
-							return 1
+						switch(slot)
+							if(WEAR_ACCESSORY)
+								slot = WEAR_IN_ACCESSORY
+							if(WEAR_WAIST)
+								slot = WEAR_IN_BELT
+							if(WEAR_BACK)
+								slot = WEAR_IN_BACK
+							if(WEAR_J_STORE)
+								slot = WEAR_IN_J_STORE
+							if(WEAR_HEAD)
+								slot = WEAR_IN_HELMET
+							if(WEAR_FEET)
+								slot = WEAR_IN_SHOES
+						
+						if(equip_to_slot_if_possible(active_hand, slot, ignore_delay = TRUE, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = TRUE))
+							return TRUE
 		if(w_uniform)
 			for(var/obj/accessory in w_uniform.accessories)
 				var/obj/item/storage/internal/accessory/holster/holster = accessory

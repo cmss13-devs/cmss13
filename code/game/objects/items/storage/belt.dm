@@ -161,19 +161,19 @@
 		/obj/item/device/analyzer,
 		/obj/item/explosive/plastic,
 		/obj/item/device/lightreplacer,
-		/obj/item/stack/sheet/metal,
-		/obj/item/stack/sheet/plasteel,
+		/obj/item/stack/sheet,
 		/obj/item/stack/sandbags_empty,
 		/obj/item/stack/sandbags,
 		/obj/item/stack/barbed_wire,
 		/obj/item/defenses/handheld/sentry,
+		/obj/item/stack/rods,
+		/obj/item/stack/tile,
 	)
 
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,
 		/obj/item/device/lightreplacer,
-		/obj/item/stack/sheet/metal,
-		/obj/item/stack/sheet/plasteel,
+		/obj/item/stack/sheet,
 		/obj/item/stack/sandbags_empty,
 		/obj/item/stack/sandbags,
 		/obj/item/defenses/handheld/sentry,

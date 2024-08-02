@@ -25,3 +25,7 @@
 #define NOTIFY_JOIN_XENO "join_xeno"
 #define NOTIFY_XENO_TACMAP "xeno_tacmap"
 #define NOTIFY_USCM_TACMAP "uscm_tacmap"
+
+#define INHERENT_HUD_MEDICAL "med"
+#define INHERENT_HUD_SECURITY "sec"
+#define INHERENT_HUD_NEW_PLAYER "new"

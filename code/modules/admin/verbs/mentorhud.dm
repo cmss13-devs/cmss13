@@ -39,20 +39,20 @@
 	if(!ishuman(mentor))
 		to_chat(src, SPAN_WARNING("You cannot use this power as a non-human!"))
 		return FALSE
-	if(!mentor.looc_overhead)
+
+	if(!mentor.looc_overhead && !(mentor.inherent_huds_toggled[INHERENT_HUD_NEW_PLAYER]))
 		to_chat(src, SPAN_WARNING("You are not in a mentor role! (Overhead LOOC is disabled!)"))
 		return FALSE
 
 	var/datum/mob_hud/the_hud
-	var/chosen_HUD = 3
 	the_hud = GLOB.huds[MOB_HUD_NEW_PLAYER]
 
-	if(mentor.inherent_huds_toggled[chosen_HUD])
-		mentor.inherent_huds_toggled[chosen_HUD] = FALSE
+	if(mentor.inherent_huds_toggled[INHERENT_HUD_NEW_PLAYER])
+		mentor.inherent_huds_toggled[INHERENT_HUD_NEW_PLAYER] = FALSE
 		the_hud.remove_hud_from(mentor, mentor)
 		to_chat(mentor, SPAN_INFO("<B>New Player Markers Disabled</B>"))
 	else
-		mentor.inherent_huds_toggled[chosen_HUD] = TRUE
+		mentor.inherent_huds_toggled[INHERENT_HUD_NEW_PLAYER] = TRUE
 		the_hud.add_hud_to(mentor, mentor)
 		to_chat(mentor, SPAN_INFO("<B>New Player Markers Enabled</B>"))
 	return TRUE

@@ -270,13 +270,13 @@
 		return
 
 	var/datum/mob_hud/the_hud
-	var/chosen_HUD = 1
+	var/chosen_HUD = INHERENT_HUD_MEDICAL
 	switch(hud_choice)
 		if("Medical HUD")
 			the_hud = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
 		if("Security HUD")
 			the_hud = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-			chosen_HUD = 2
+			chosen_HUD = INHERENT_HUD_SECURITY
 		else
 			return
 

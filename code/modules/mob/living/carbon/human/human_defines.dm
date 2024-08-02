@@ -147,7 +147,7 @@
 	/// A list of all the shrapnel currently embedded in the human
 	var/list/atom/movable/embedded_items = list()
 
-	var/list/inherent_huds_toggled = list(FALSE,FALSE, FALSE)
+	var/list/inherent_huds_toggled = list(INHERENT_HUD_MEDICAL = FALSE, INHERENT_HUD_SECURITY = FALSE, INHERENT_HUD_NEW_PLAYER = FALSE)
 
 	var/default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 

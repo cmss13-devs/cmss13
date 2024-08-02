@@ -34,10 +34,10 @@
 
 	if(!leader && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(human.client, JOB_SQUAD_LEADER, time_required_for_job))))
 		leader = human
-		arm_equipment(human, /datum/equipment_preset/twe/royal_marine/lieuteant/beacon, mind == null, TRUE)
+		arm_equipment(human, /datum/equipment_preset/twe/royal_marine/beacon/leader, mind == null, TRUE)
 		to_chat(human, SPAN_ROLE_HEADER("You are a Officer in the RMC"))
 	else
-		arm_equipment(human, /datum/equipment_preset/twe/royal_marine/standard/beacon,  mind == null, TRUE)
+		arm_equipment(human, /datum/equipment_preset/twe/royal_marine/beacon/standard,  mind == null, TRUE)
 		to_chat(human, SPAN_ROLE_HEADER("You are a Rifleman in the RMC"))
 
 	print_backstory(human)

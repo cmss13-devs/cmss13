@@ -35,18 +35,18 @@
 
 	if(!leader && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(human.client, JOB_SQUAD_LEADER, time_required_for_job))))
 		leader = human
-		arm_equipment(human, /datum/equipment_preset/contractor/duty/leader/beacon, mind == null, TRUE)
+		arm_equipment(human, /datum/equipment_preset/contractor/duty/beacon/leader, mind == null, TRUE)
 		to_chat(human, SPAN_ROLE_HEADER("You are a Squad Leader in VAIPO"))
 	else if (medics < max_medics && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(human.client, JOB_SQUAD_MEDIC, time_required_for_job))))
 		medics++
-		arm_equipment(human, /datum/equipment_preset/contractor/duty/medic/beacon, mind == null, TRUE)
+		arm_equipment(human, /datum/equipment_preset/contractor/duty/beacon/medic, mind == null, TRUE)
 		to_chat(human, SPAN_ROLE_HEADER("You are a Combat Medic in VAIPO"))
 	else if (engineers < max_engineers && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(human.client, JOB_SQUAD_ENGI, time_required_for_job))))
 		engineers++
-		arm_equipment(human, /datum/equipment_preset/contractor/duty/engi/beacon,  mind == null, TRUE)
+		arm_equipment(human, /datum/equipment_preset/contractor/duty/beacon/engi,  mind == null, TRUE)
 		to_chat(human, SPAN_ROLE_HEADER("You are an Engineer in VAIPO"))
 	else
-		arm_equipment(human, /datum/equipment_preset/contractor/duty/standard/beacon,  mind == null, TRUE)
+		arm_equipment(human, /datum/equipment_preset/contractor/duty/beacon/standard,  mind == null, TRUE)
 		to_chat(human, SPAN_ROLE_HEADER("You are a Riflemen in VAIPO"))
 
 		print_backstory(human)

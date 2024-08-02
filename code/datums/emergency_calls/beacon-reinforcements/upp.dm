@@ -38,18 +38,18 @@
 
 	if(!leader && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(human.client, JOB_SQUAD_LEADER, time_required_for_job))))
 		leader = human
-		arm_equipment(human, /datum/equipment_preset/upp/leader/beacon, mind == null, TRUE)
+		arm_equipment(human, /datum/equipment_preset/upp/beacon/leader, mind == null, TRUE)
 		to_chat(human, SPAN_ROLE_HEADER("You are a Squad Leader in the UPP"))
 	else if (medics < max_medics && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(human.client, JOB_SQUAD_MEDIC, time_required_for_job))))
 		medics++
-		arm_equipment(human, /datum/equipment_preset/upp/medic/beacon,  mind == null, TRUE)
+		arm_equipment(human, /datum/equipment_preset/upp/beacon/medic,  mind == null, TRUE)
 		to_chat(human, SPAN_ROLE_HEADER("You are a Medic in the UPP"))
 	else if (engineers < max_engineers && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(human.client, JOB_SQUAD_ENGI, time_required_for_job))))
 		engineers++
-		arm_equipment(human, /datum/equipment_preset/upp/sapper/beacon,  mind == null, TRUE)
+		arm_equipment(human, /datum/equipment_preset/upp/beacon/sapper,  mind == null, TRUE)
 		to_chat(human, SPAN_ROLE_HEADER("You are a Sapper in the UPP"))
 	else
-		arm_equipment(human, /datum/equipment_preset/upp/soldier/beacon,  mind == null, TRUE)
+		arm_equipment(human, /datum/equipment_preset/upp/beacon/soldier,  mind == null, TRUE)
 		to_chat(human, SPAN_ROLE_HEADER("You are a Soldier in the UPP"))
 
 	print_backstory(human)

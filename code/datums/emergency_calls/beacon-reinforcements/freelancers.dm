@@ -34,7 +34,7 @@
 
 	if(!leader && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(human.client, JOB_SQUAD_LEADER, time_required_for_job))))
 		leader = human
-		arm_equipment(human, /datum/equipment_preset/other/freelancer/leader/beacon, mind == null, TRUE)
+		arm_equipment(human, /datum/equipment_preset/other/freelancer/beacon/leader, mind == null, TRUE)
 		to_chat(human, SPAN_ROLE_HEADER("You are a Warlord over your own mercenary band."))
 	else if (medics < max_medics && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(human.client, JOB_SQUAD_MEDIC, time_required_for_job))))
 		medics++

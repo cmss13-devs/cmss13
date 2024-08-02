@@ -129,9 +129,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 
-/datum/equipment_preset/other/freelancer/beacon
+/datum/equipment_preset/other/freelancer/beacon/standard
 
-/datum/equipment_preset/other/freelancer/beacon/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/other/freelancer/beacon/standard/load_gear(mob/living/carbon/human/new_human)
 	//generic clothing
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
@@ -305,9 +305,9 @@
 	spawn_weapon(/obj/item/weapon/gun/rifle/m41aMK1, /obj/item/ammo_magazine/rifle/m41aMK1, new_human, 0, 9)
 	spawn_merc_weapon(new_human,1,2)
 
-/datum/equipment_preset/other/freelancer/leader/beacon
+/datum/equipment_preset/other/freelancer/beacon/leader
 
-/datum/equipment_preset/other/freelancer/leader/beacon/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/other/freelancer/beacon/leader/load_gear(mob/living/carbon/human/new_human)
 
 	//No random helmet, so that it's more clear that he's the leader
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)

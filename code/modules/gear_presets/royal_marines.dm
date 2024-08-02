@@ -339,7 +339,7 @@
 
 // Below is presets for the beacon reinforcements. //
 //*****************************************************************************************************/
-/datum/equipment_preset/twe/royal_marine/standard/beacon
+/datum/equipment_preset/twe/royal_marine/beacon/standard
 
 /datum/equipment_preset/twe/royal_marine/standard/bedacon/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -375,7 +375,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
 
-/datum/equipment_preset/twe/royal_marine/standard/beacon/mre_pack
+/datum/equipment_preset/twe/royal_marine/beacon/standard/mre_pack
 	name = "TWE Royal Marine Commando (MRE Rifleman)"
 
 /datum/equipment_preset/twe/royal_marine/standard/mre_pack/load_gear(mob/living/carbon/human/new_human)
@@ -383,10 +383,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_box/magazine/misc/mre, WEAR_IN_BACK)
 	..()
 
-/datum/equipment_preset/twe/royal_marine/lieuteant/beacon//they better say it Lef-tenant or they should be banned for LRP. More importantly this guy doesn't spawn in the ERT
+/datum/equipment_preset/twe/royal_marine/beacon/leader//they better say it Lef-tenant or they should be banned for LRP. More importantly this guy doesn't spawn in the ERT
 
 
-/datum/equipment_preset/twe/royal_marine/lieuteant/beacon/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/twe/royal_marine/beacon/leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/royal_marine/team_leader, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/royal_marine/lt, WEAR_BODY)

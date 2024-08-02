@@ -156,9 +156,9 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1, WEAR_IN_BACK)
 
 
-/datum/equipment_preset/contractor/duty/standard/beacon
+/datum/equipment_preset/contractor/duty/beacon/standard
 
-/datum/equipment_preset/contractor/duty/standard/beacon/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/contractor/duty/beacon/standard/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
@@ -283,9 +283,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 
 
-/datum/equipment_preset/contractor/duty/engi/beacon
+/datum/equipment_preset/contractor/duty/beacon/engi
 
-/datum/equipment_preset/contractor/duty/engi/beacon/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/contractor/duty/beacon/engi/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -359,9 +359,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40, WEAR_IN_BACK)
 
-/datum/equipment_preset/contractor/duty/medic/beacon
+/datum/equipment_preset/contractor/duty/beacon/medic
 
-/datum/equipment_preset/contractor/duty/medic/beacon/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/contractor/duty/beacon/medic/load_gear(mob/living/carbon/human/new_human)
 	//clothing
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -443,9 +443,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments, WEAR_IN_BACK)
 
-/datum/equipment_preset/contractor/duty/leader/beacon
+/datum/equipment_preset/contractor/duty/beacon/leader
 
-/datum/equipment_preset/contractor/duty/leader/beacon/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/contractor/duty/beacon/leader/load_gear(mob/living/carbon/human/new_human)
 	//clothes
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/r_bla, WEAR_BODY)

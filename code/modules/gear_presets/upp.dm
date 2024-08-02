@@ -227,9 +227,9 @@
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/upp/soldier/beacon
+/datum/equipment_preset/upp/beacon/soldier
 
-/datum/equipment_preset/upp/soldier/beacon/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/upp/beacon/soldier/load_gear(mob/living/carbon/human/new_human)
 	//face
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	//head
@@ -433,9 +433,9 @@
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/upp/medic/beacon
+/datum/equipment_preset/upp/beacon/medic
 
-/datum/equipment_preset/upp/medic/beacon/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/upp/beacon/medic/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK) //1
@@ -609,9 +609,9 @@
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/upp/sapper/beacon
+/datum/equipment_preset/upp/beacon/sapper
 
-/datum/equipment_preset/upp/sapper/beacon/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/upp/beacon/sapper/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //.33
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //.66
@@ -1069,9 +1069,9 @@
 	)
 
 
-/datum/equipment_preset/upp/leader/beacon
+/datum/equipment_preset/upp/beacon/leader
 
-/datum/equipment_preset/upp/leader/beacon/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/upp/beacon/leader/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_BACK) //0.66

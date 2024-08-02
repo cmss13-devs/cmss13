@@ -58,18 +58,18 @@
 		return
 
 	// initial flight time
-	var/flight_duration =  is_flyby ? DROPSHIP_TRANSIT_DURATION : DROPSHIP_TRANSIT_DURATION
+	var/flight_duration =  is_flyby ? DROPSHIP_TRANSIT_DURATION / GLOB.ship_alt : DROPSHIP_TRANSIT_DURATION * GLOB.ship_alt
 	if(optimised)
 		if(is_flyby)
-			flight_duration = DROPSHIP_TRANSIT_DURATION * 1.5 / GLOB.ship_alt
+			flight_duration = DROPSHIP_TRANSIT_DURATION * 1.5
 		else
-			flight_duration = DROPSHIP_TRANSIT_DURATION * SHUTTLE_OPTIMIZE_FACTOR_TRAVEL * GLOB.ship_alt
+			flight_duration = DROPSHIP_TRANSIT_DURATION * SHUTTLE_OPTIMIZE_FACTOR_TRAVEL
 
 	// recharge time before dropship can take off
-	var/recharge_duration = SHUTTLE_RECHARGE
+	var/recharge_duration = SHUTTLE_RECHARGE * GLOB.ship_alt
 
 	if(optimised)
-		recharge_duration = SHUTTLE_RECHARGE * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE * GLOB.ship_alt
+		recharge_duration = SHUTTLE_RECHARGE * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE
 
 	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
 		// fuel enhancer

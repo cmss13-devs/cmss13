@@ -61,7 +61,7 @@
 	var/flight_duration =  is_flyby ? DROPSHIP_TRANSIT_DURATION : DROPSHIP_TRANSIT_DURATION
 	if(optimised)
 		if(is_flyby)
-			flight_duration = DROPSHIP_TRANSIT_DURATION * 1.5
+			flight_duration = DROPSHIP_TRANSIT_DURATION * 1.5 / GLOB.ship_alt
 		else
 			flight_duration = DROPSHIP_TRANSIT_DURATION * SHUTTLE_OPTIMIZE_FACTOR_TRAVEL * GLOB.ship_alt
 
@@ -77,11 +77,11 @@
 			if(is_flyby)
 				flight_duration = flight_duration / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL
 			else
-				flight_duration = flight_duration * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL * GLOB.ship_alt
+				flight_duration = flight_duration * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL
 
 		// cooling system
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/cooling_system))
-			recharge_duration = recharge_duration * SHUTTLE_COOLING_FACTOR_RECHARGE * GLOB.ship_alt
+			recharge_duration = recharge_duration * SHUTTLE_COOLING_FACTOR_RECHARGE
 
 
 	dropship.callTime = floor(flight_duration)

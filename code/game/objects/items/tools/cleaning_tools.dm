@@ -152,7 +152,7 @@
 		return
 	..()
 
-/obj/item/tool/soap/nanotrasen
+/obj/item/tool/soap/weyland_yutani
 	desc = "A Weyland-Yutani brand bar of soap. Smells of phoron."
 	icon_state = "soapnt"
 

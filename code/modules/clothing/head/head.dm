@@ -568,7 +568,7 @@
 	icon_state = "beret_badge"
 
 /obj/item/clothing/head/beret/marine/ro
-	name = "USCM quartermaster beret"
+	name = "\improper USCM quartermaster beret"
 	desc = "A beret with the sergeant insignia emblazoned on it. It symbolizes hard work and shady business."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "ro_beret"

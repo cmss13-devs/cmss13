@@ -210,6 +210,8 @@
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend
 	icon_state = "req_guns_wall"
+	vend_delay = 5
+	vend_sound = 'sound/machines/vending_drop.ogg'
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
@@ -346,11 +348,13 @@
 			return //We found our item, no reason to go on.
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/blend
-		icon_state = "req_ammo_wall"
-		tiles_with = list(
-			/obj/structure/window/framed/almayer,
-			/obj/structure/machinery/door/airlock,
-			/turf/closed/wall/almayer)
+	icon_state = "req_ammo_wall"
+	vend_delay = 5
+	vend_sound = 'sound/machines/vending_drop.ogg'
+	tiles_with = list(
+		/obj/structure/window/framed/almayer,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall/almayer)
 
 //Special cargo-specific vendor with vending offsets
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
@@ -417,6 +421,8 @@
 
 /obj/structure/machinery/cm_vending/sorted/attachments/blend
 	icon_state = "req_attach_wall"
+	vend_delay = 5
+	vend_sound = 'sound/machines/vending_drop.ogg'
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,

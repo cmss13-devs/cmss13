@@ -34,7 +34,7 @@
 	var/gloves_type = /obj/item/clothing/gloves/marine
 	var/headset_type = /obj/item/device/radio/headset/almayer/marine
 
-	var/vend_delay = 0 //delaying vending of an item (for drinks machines animation, for example). Make sure to synchronize this with animation duration
+	var/vend_delay = 0.1 //delaying vending of an item (for drinks machines animation, for example). Make sure to synchronize this with animation duration
 	var/vend_sound //use with caution. Potential spam
 
 	/// X Offset to vend to
@@ -1367,7 +1367,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	if(LAZYLEN(itemspec)) //making sure it's not empty
 		if(vend_delay)
 			overlays.Cut()
-			icon_state = "[initial(icon_state)]_vend"
+			flick("[initial(icon_state)]_vend", src)
 			if(vend_sound)
 				playsound(loc, vend_sound, 25, 1, 2) //heard only near vendor
 			sleep(vend_delay)

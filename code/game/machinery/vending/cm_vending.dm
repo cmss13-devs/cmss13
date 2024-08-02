@@ -247,7 +247,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	//M94 flare packs handling
 	else if(istype(item_to_stock, /obj/item/storage/box/m94))
 		var/obj/item/storage/box/m94/flare_pack = item_to_stock
-		if(flare_pack.contents.len < flare_pack.max_storage_space)
+		if(length(flare_pack.contents) < flare_pack.max_storage_space)
 			to_chat(user, SPAN_WARNING("\The [item_to_stock] is not full."))
 			return
 		var/flare_type
@@ -272,7 +272,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	//Machete holsters handling
 	else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
 		var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
-		if(AR.pockets && AR.pockets.contents.len)
+		if(AR.pockets && length(AR.pockets.contents))
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
 			return FALSE
@@ -300,7 +300,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(AM.current_rounds != AM.max_rounds)
 				to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
 				return
-		else if(A.contents.len < A.num_of_magazines)
+		else if(length(A.contents) < A.num_of_magazines)
 			to_chat(user, SPAN_WARNING("[A] is not full."))
 			return
 		else
@@ -317,14 +317,14 @@ GLOBAL_LIST_EMPTY(vending_products)
 	//Marine armor handling
 	else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
 		var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
-		if(AR.pockets && AR.pockets.contents.len)
+		if(AR.pockets && length(AR.pockets.contents))
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
 			return FALSE
 	//Marine helmet handling
 	else if(istype(item_to_stock, /obj/item/clothing/head/helmet/marine))
 		var/obj/item/clothing/head/helmet/marine/H = item_to_stock
-		if(H.pockets && H.pockets.contents.len)
+		if(H.pockets && length(H.pockets.contents))
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
 			return FALSE
@@ -541,7 +541,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 			var/turf/target_turf = get_appropriate_vend_turf(user)
 			if(vend_flags & VEND_CLUTTER_PROTECTION)
-				if(target_turf.contents.len > 25)
+				if(length(target_turf.contents) > 25)
 					to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
 					vend_fail()
 					return FALSE
@@ -600,6 +600,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 								if("Pyro Set")
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
 									specialist_assignment = "Pyro"
+//RUCM START
+								if("Stormtrooper Set")
+									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ST)
+									user.skills.set_skill(SKILL_ENDURANCE, SKILL_ENDURANCE_MAX)
+									specialist_assignment = "Stormtrooper"
+//RUCM END
 								else
 									to_chat(user, SPAN_WARNING("<b>Something bad occurred with [src], tell a Dev.</b>"))
 									vend_fail()
@@ -990,10 +996,24 @@ GLOBAL_LIST_EMPTY(vending_products)
 		for(var/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
 			tmp_list += list(list(initial(IBP.box.name), floor(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
 
-	//Putting Ammo and other boxes on the bottom of the list as per player preferences
-	if(tmp_list.len > 0)
+	//For every item that goes into a box, check if the box is already listed in the vendor and if so, update its amount
+	var/list/box_list = list()
+	if(length(tmp_list))
+		for(var/list/tmp_item as anything in tmp_list)
+			var/item_found = FALSE
+			for(var/list/product as anything in listed_products)
+				if(tmp_item[3] == product[3]) //We found a box we already have!
+					product[2] = tmp_item[2] //Update box amount
+					item_found = TRUE
+					break
+			if(!item_found)
+				//We will be adding this box item at the end of the list
+				box_list += list(tmp_item)
+
+	//Putting Ammo and other boxes on the bottom of the list if they haven't been accounted for already
+	if(length(box_list))
 		listed_products += list(list("BOXES", -1, null, null))
-		for(var/list/L as anything in tmp_list)
+		for(var/list/L as anything in box_list)
 			listed_products += list(L)
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
@@ -1293,7 +1313,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		var/obj/item/item_ref = myprod[3]
 		var/priority = myprod[priority_index]
 		if(islist(item_ref)) // multi-vending
-			item_ref = item_ref[1]
+			var/list/ref_list = item_ref
+			item_ref = ref_list[1]
 
 		var/is_category = item_ref == null
 

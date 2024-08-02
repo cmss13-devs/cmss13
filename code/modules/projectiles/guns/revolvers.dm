@@ -6,7 +6,7 @@
 	w_class = SIZE_MEDIUM
 
 	matter = list("metal" = 2000)
-	fire_sound = 'sound/weapons/gun_44mag_v3.ogg'
+	fire_sound = 'sound/weapons/gun_44mag_v4.ogg'
 	reload_sound = 'sound/weapons/gun_44mag_speed_loader.wav'
 	cocked_sound = 'sound/weapons/gun_revolver_spun.ogg'
 	unload_sound = 'sound/weapons/gun_44mag_open_chamber.wav'

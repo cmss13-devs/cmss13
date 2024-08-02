@@ -33,9 +33,9 @@
 	var/long_range_cooldown = 2
 	var/blip_type = "detector"
 	var/iff_signal = FACTION_MARINE
-	actions_types = list(/datum/action/item_action)
+	actions_types = list(/datum/action/item_action/toggle)
 	var/scanning = FALSE // controls if MD is in process of scan
-	var/datum/shape/rectangle/range_bounds
+	var/datum/shape/rectangle/square/range_bounds
 	var/long_range_locked = FALSE //only long-range MD
 	var/ping_overlay
 
@@ -48,7 +48,7 @@
 
 /obj/item/device/motiondetector/Initialize()
 	. = ..()
-	range_bounds = new //Just creating a rectangle datum
+	range_bounds = new //Just creating a square datum
 	update_icon()
 
 /obj/item/device/motiondetector/Destroy()
@@ -215,12 +215,7 @@
 	if(!istype(cur_turf))
 		return
 
-	if(!range_bounds)
-		range_bounds = new/datum/shape/rectangle
-	range_bounds.center_x = cur_turf.x
-	range_bounds.center_y = cur_turf.y
-	range_bounds.width = detector_range * 2
-	range_bounds.height = detector_range * 2
+	range_bounds.set_shape(cur_turf.x, cur_turf.y, detector_range * 2)
 
 	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
 

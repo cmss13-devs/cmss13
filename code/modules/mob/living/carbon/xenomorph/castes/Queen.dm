@@ -418,6 +418,14 @@
 		make_combat_effective()
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
+	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
+
+/mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
+	SIGNAL_HANDLER
+	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
+		if(xeno.hivenumber == hivenumber)
+			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
+			playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 
 /mob/living/carbon/xenomorph/queen/generate_name()
 	if(!nicknumber)
@@ -463,6 +471,9 @@
 
 /mob/living/carbon/xenomorph/queen/proc/make_combat_effective()
 	queen_aged = TRUE
+	if(queen_age_timer_id != TIMER_ID_NULL)
+		deltimer(queen_age_timer_id)
+		queen_age_timer_id = TIMER_ID_NULL
 
 	give_combat_abilities()
 	recalculate_actions()
@@ -529,20 +540,19 @@
 			if(egg_amount >= 1)
 				if(isturf(loc))
 					var/turf/T = loc
-					if(T.contents.len <= 25) //so we don't end up with a million object on that turf.
+					if(length(T.contents) <= 25) //so we don't end up with a million object on that turf.
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
 
 /mob/living/carbon/xenomorph/queen/get_status_tab_items()
 	. = ..()
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
-	var/xeno_leader_num = hive?.queen_leader_limit - hive?.open_xeno_leader_positions.len
+	var/xeno_leader_num = hive?.queen_leader_limit - length(hive?.open_xeno_leader_positions)
 
 	. += "Pooled Larvae: [stored_larvae]"
 	. += "Leaders: [xeno_leader_num] / [hive?.queen_leader_limit]"
-	if(queen_age_timer_id != TIMER_ID_NULL)
-		var/time_left = time2text(timeleft(queen_age_timer_id) + 1 MINUTES, "mm") // We add a minute so that it basically ceilings the value.
-		. += "Maturity: [time_left == 1? "[time_left] minute" : "[time_left] minutes"] remaining"
+	if(!queen_aged && queen_age_timer_id != TIMER_ID_NULL)
+		. += "Maturity: [time2text(timeleft(queen_age_timer_id), "mm:ss")] remaining"
 
 /mob/living/carbon/xenomorph/queen/proc/set_orders()
 	set category = "Alien"

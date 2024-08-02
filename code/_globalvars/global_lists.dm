@@ -9,6 +9,9 @@ GLOBAL_LIST_EMPTY(CLFFaxes)
 GLOBAL_LIST_EMPTY(GeneralFaxes) //Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if source paper is deleted
 
+// for all of our various bugs and runtimes
+GLOBAL_LIST_EMPTY(bug_reports)
+
 //datum containing a reference to the flattend map png url, the actual png is stored in the user's cache.
 GLOBAL_LIST_EMPTY(uscm_flat_tacmap_data)
 GLOBAL_LIST_EMPTY(xeno_flat_tacmap_data)
@@ -116,6 +119,34 @@ GLOBAL_LIST(chemical_reactions_filtered_list) //List of all /datum/chemical_reac
 GLOBAL_LIST(chemical_reactions_list) //List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
 GLOBAL_LIST(chemical_reagents_list) //List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
 GLOBAL_LIST(chemical_properties_list) //List of all /datum/chem_property datums indexed by property name
+//list of all properties that conflict with each other.
+GLOBAL_LIST_INIT_TYPED(conflicting_properties, /list, list( PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING, PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC, PROPERTY_TOXIC = PROPERTY_ANTITOXIC,\
+											PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE, PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC, PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,\
+											PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC, PROPERTY_PAINING = PROPERTY_PAINKILLING, PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,\
+											PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC, PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC, PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC,\
+											PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC, PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC,\
+											PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING, PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,\
+											PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING, PROPERTY_NUTRITIOUS = PROPERTY_EMETIC,\
+											PROPERTY_HYPERGENETIC = PROPERTY_NEOGENETIC, PROPERTY_HYPERGENETIC = PROPERTY_HEPATOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_NEPHROPEUTIC,\
+											PROPERTY_HYPERGENETIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_OCULOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_CARDIOPEUTIC,\
+											PROPERTY_HYPERGENETIC = PROPERTY_NEUROPEUTIC, PROPERTY_ADDICTIVE = PROPERTY_ANTIADDICTIVE, PROPERTY_NEUROSHIELDING = PROPERTY_NEUROTOXIC,\
+											PROPERTY_HYPOMETABOLIC = PROPERTY_HYPERMETABOLIC, PROPERTY_HYPERTHROTTLING = PROPERTY_NEUROINHIBITING,
+											PROPERTY_FOCUSING = PROPERTY_NERVESTIMULATING, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPERTHERMIC, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPOTHERMIC,
+											PROPERTY_AIDING = PROPERTY_NEUROINHIBITING, PROPERTY_OXYGENATING = PROPERTY_HYPOXEMIC, PROPERTY_ANTICARCINOGENIC = PROPERTY_CARCINOGENIC, \
+											PROPERTY_CIPHERING = PROPERTY_CIPHERING_PREDATOR, PROPERTY_TRANSFORMATIVE = PROPERTY_ANTITOXIC, PROPERTY_MUSCLESTIMULATING = PROPERTY_NERVESTIMULATING))
+//list of all properties that combine into something else, now featured in global list
+GLOBAL_LIST_INIT_TYPED(combining_properties, /list, list( PROPERTY_DEFIBRILLATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_CARDIOPEUTIC),\
+											PROPERTY_THANATOMETABOL = list(PROPERTY_HYPOXEMIC, PROPERTY_CRYOMETABOLIZING, PROPERTY_NEUROCRYOGENIC),\
+											PROPERTY_HYPERDENSIFICATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_BONEMENDING, PROPERTY_CARCINOGENIC),\
+											PROPERTY_HYPERTHROTTLING = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_HALLUCINOGENIC),\
+											PROPERTY_NEUROSHIELDING = list(PROPERTY_ALCOHOLIC, PROPERTY_BALDING),\
+											PROPERTY_ANTIADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_ANTIHALLUCINOGENIC),\
+											PROPERTY_ADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC),\
+											PROPERTY_CIPHERING_PREDATOR = list(PROPERTY_CIPHERING, PROPERTY_CROSSMETABOLIZING),\
+											PROPERTY_FIRE_PENETRATING = list(PROPERTY_OXYGENATING, PROPERTY_VISCOUS),\
+											PROPERTY_BONEMENDING = list(PROPERTY_HYPERDENSIFICATING, PROPERTY_NUTRITIOUS),\
+											PROPERTY_BONEMENDING = list(PROPERTY_HYPERDENSIFICATING, PROPERTY_NUTRITIOUS),\
+											PROPERTY_ENCEPHALOPHRASIVE = list(PROPERTY_NERVESTIMULATING, PROPERTY_PSYCHOSTIMULATING)))
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
 GLOBAL_LIST_INIT_TYPED(chemical_gen_classes_list, /list, list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"tau", list()))
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
@@ -300,7 +331,7 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 
 /proc/number_list_decode(number_list_data)
 	var/list/L = params2list(number_list_data)
-	for(var/i in 1 to L.len)
+	for(var/i in 1 to length(L))
 		L[i] = text2num(L[i])
 	return L
 
@@ -311,6 +342,9 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 		rkey++
 		var/datum/species/S = new T
 		S.race_key = rkey //Used in mob icon caching.
+		var/datum/species/existing = all_species[S.name]
+		if(existing)
+			stack_trace("[S.name] from [T] overlaps with [existing.type]! It must have a unique name for lookup!")
 		all_species[S.name] = S
 	return all_species
 
@@ -353,6 +387,9 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 		if (!initial(EP.flags))
 			continue
 		EP = new T
+		var/datum/equipment_preset/existing = gear_path_presets_list[EP.name]
+		if(existing)
+			stack_trace("[EP.name] from [T] overlaps with [existing.type]! It must have a unique name for lookup!")
 		gear_path_presets_list[EP.name] = EP
 	return sortAssoc(gear_path_presets_list)
 
@@ -464,7 +501,11 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 /proc/setup_yautja_capes()
 	var/list/cape_list = list()
 	for(var/obj/item/clothing/yautja_cape/cape_type as anything in typesof(/obj/item/clothing/yautja_cape))
-		cape_list[initial(cape_type.name)] = cape_type
+		var/cape_name = initial(cape_type.name)
+		var/obj/item/clothing/yautja_cape/existing = cape_list[cape_name]
+		if(existing)
+			stack_trace("[cape_name] from [cape_type] overlaps with [existing.type]! It must have a unique name for lookup!")
+		cape_list[cape_name] = cape_type
 	return cape_list
 
 
@@ -494,7 +535,13 @@ GLOBAL_LIST_INIT(available_specialist_sets, list(
 			"Anti-materiel Sniper Set",
 			"Demolitionist Set",
 			"Heavy Grenadier Set",
+/*
 			"Pyro Set"
+*/
+//RUCM START
+			"Pyro Set",
+			"Stormtrooper Set",
+//RUCM END
 			))
 
 //Similar thing, but used in /obj/item/spec_kit
@@ -505,6 +552,9 @@ GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 			"Scout" = 2,
 			"Demo" = 2,
 			"Anti-materiel Sniper" = 2,
+//RUCM START
+			"Stormtrooper" = 2,
+//RUCM END
 			))
 
 /proc/init_global_referenced_datums()

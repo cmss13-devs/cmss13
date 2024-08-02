@@ -220,6 +220,18 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/forecon
+	name = SQUAD_FORECON
+	equipment_color = "#32CD32"
+	chat_color = "#32CD32"
+	radio_freq = FORECON_FREQ
+	minimap_color = "#32CD32"
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
+
 //############################### UPP Squads
 /datum/squad/upp
 	name = "Root"
@@ -652,7 +664,7 @@
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.
 /proc/get_squad_by_name(text)
-	if(!GLOB.RoleAuthority || GLOB.RoleAuthority.squads.len == 0)
+	if(!GLOB.RoleAuthority || length(GLOB.RoleAuthority.squads) == 0)
 		return null
 	var/datum/squad/S
 	for(S in GLOB.RoleAuthority.squads)

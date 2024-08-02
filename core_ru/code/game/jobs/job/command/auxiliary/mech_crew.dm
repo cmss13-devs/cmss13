@@ -15,5 +15,5 @@ AddTimelock(/datum/job/command/walker, list(
 ))
 
 /obj/effect/landmark/start/mech_crew
-	name = JOB_CREWMAN
+	name = JOB_WALKER
 	job = /datum/job/command/walker

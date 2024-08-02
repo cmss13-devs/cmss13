@@ -145,7 +145,7 @@
 
 /obj/item/storage/belt/medical
 	name = "\improper M276 pattern medical storage rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport medical supplies and pistol ammunition. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport bulkier medical supplies. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
 	icon_state = "medicalbelt"
 	item_state = "medical"
 	storage_slots = 14
@@ -1084,11 +1084,11 @@
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
 		if(ammo_dumping.current_rounds != 0)
-			if(contents.len < storage_slots - 1) //this is because it's a gunbelt and the final slot is reserved for the gun
+			if(length(contents) < storage_slots - 1) //this is because it's a gunbelt and the final slot is reserved for the gun
 				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
 				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
 				for(var/i = 1 to handfuls)
-					if(contents.len < storage_slots - 1)
+					if(length(contents) < storage_slots - 1)
 						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
 						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
@@ -1383,7 +1383,7 @@
 	set name = "Detach revolver holster"
 	set src in usr
 	if(ishuman(usr))
-		if(contents.len)
+		if(length(contents))
 			to_chat(usr, SPAN_WARNING("The belt needs to be fully empty to remove the holster!"))
 			return
 		to_chat(usr, SPAN_NOTICE("You detach the holster from the belt."))

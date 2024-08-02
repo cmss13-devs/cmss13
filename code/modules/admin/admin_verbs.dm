@@ -394,7 +394,13 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 /client/proc/set_ooc_color_self()
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
+/*
 	if(!admin_holder && !donator) return
+*/
+//RUCM START
+	if(!check_rights(R_COLOR) && !player_data.donator_info.patreon_function_available("ooc_color"))
+		return
+//RUCM END
 	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor

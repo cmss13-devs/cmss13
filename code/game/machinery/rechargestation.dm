@@ -150,6 +150,11 @@
 			overlays += image('icons/obj/objects.dmi', "statn_c100")
 
 /obj/structure/machinery/recharge_station/proc/process_occupant()
+	//RUCM START
+	if (hacky_override)
+		process_occupant_localized()
+		return
+	//RUCM END
 	if(src.occupant)
 		var/doing_stuff = FALSE
 		if (issynth(occupant))
@@ -167,7 +172,7 @@
 				doing_stuff = TRUE
 			if(!doing_stuff)
 				for(var/obj/limb/current_limb in humanoid_occupant.limbs)
-					if(current_limb.implants.len)
+					if(length(current_limb.implants))
 						doing_stuff = TRUE
 						to_chat(occupant, "Foreign material detected. Beginning removal process...")
 						for(var/obj/item/current_implant in current_limb.implants)

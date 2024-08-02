@@ -21,7 +21,7 @@
 	)
 
 /datum/tech/xeno/powerup/artillery_blob/apply_powerup(mob/living/carbon/xenomorph/target)
-	var/datum/action/xeno_action/B = get_xeno_action_by_type(target, /datum/action/xeno_action/activable/bombard/queen)
+	var/datum/action/xeno_action/B = get_action(target, /datum/action/xeno_action/activable/bombard/queen)
 
 	if(!B)
 		B = give_action(target, /datum/action/xeno_action/activable/bombard/queen)

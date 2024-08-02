@@ -12,7 +12,7 @@
 	var/list/targets = list() // Lists of current potential targets
 	var/list/other_targets = list() //List of special target types to shoot at, if needed.
 	var/atom/movable/target = null
-	var/datum/shape/rectangle/range_bounds
+	var/datum/shape/range_bounds
 	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
 	var/last_fired = 0
 	var/fire_delay = 4
@@ -85,7 +85,7 @@
 	if(!targets)
 		return FALSE
 
-	if(!target && targets.len)
+	if(!target && length(targets))
 		target = pick(targets)
 
 	get_target(target)
@@ -93,17 +93,17 @@
 
 /obj/structure/machinery/defenses/sentry/proc/set_range()
 	if(omni_directional)
-		range_bounds = RECT(x, y, 8, 8)
+		range_bounds = SQUARE(x, y, 8)
 		return
 	switch(dir)
 		if(EAST)
-			range_bounds = RECT(x + 4, y, 7, 7)
+			range_bounds = SQUARE(x + 4, y, 7)
 		if(WEST)
-			range_bounds = RECT(x - 4, y, 7, 7)
+			range_bounds = SQUARE(x - 4, y, 7)
 		if(NORTH)
-			range_bounds = RECT(x, y + 4, 7, 7)
+			range_bounds = SQUARE(x, y + 4, 7)
 		if(SOUTH)
-			range_bounds = RECT(x, y - 4, 7, 7)
+			range_bounds = SQUARE(x, y - 4, 7)
 
 /obj/structure/machinery/defenses/sentry/proc/unset_range()
 	SIGNAL_HANDLER
@@ -290,7 +290,7 @@
 		if(actual_fire(A))
 			break
 
-	if(targets.len)
+	if(length(targets))
 		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
 
 	if(!engaged_timer)
@@ -350,7 +350,7 @@
 	if(!targets.Find(new_target))
 		targets.Add(new_target)
 
-	if(!targets.len)
+	if(!length(targets))
 		return
 
 	var/list/conscious_targets = list()
@@ -405,7 +405,7 @@
 				continue
 
 		var/list/turf/path = get_line(src, A, include_start_atom = FALSE)
-		if(!path.len || get_dist(src, A) > sentry_range)
+		if(!length(path) || get_dist(src, A) > sentry_range)
 			if(A == target)
 				target = null
 			targets.Remove(A)
@@ -457,9 +457,9 @@
 			else
 				conscious_targets += M
 
-	if(conscious_targets.len)
+	if(length(conscious_targets))
 		target = pick(conscious_targets)
-	else if(unconscious_targets.len)
+	else if(length(unconscious_targets))
 		target = pick(unconscious_targets)
 
 	if(!target) //No targets, don't bother firing
@@ -468,7 +468,7 @@
 	fire(target)
 
 /obj/structure/machinery/defenses/sentry/premade
-	name = "UA-577 Gauss Turret"
+	name = "\improper UA-577 Gauss Turret"
 	immobile = TRUE
 	turned_on = TRUE
 	icon_state = "premade" //for the map editor only
@@ -497,14 +497,14 @@
 	return
 
 /obj/structure/machinery/defenses/sentry/premade/dumb
-	name = "Modified UA-577 Gauss Turret"
+	name = "modified UA-577 Gauss Turret"
 	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been disabled, and it will open fire on any targets within range."
 	faction_group = null
 	ammo = new /obj/item/ammo_magazine/sentry/premade/dumb
 
 //the turret inside a static sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/deployable
-	name = "UA-633 Static Gauss Turret"
+	name = "\improper UA-633 Static Gauss Turret"
 	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
@@ -544,13 +544,13 @@
 	selected_categories[SENTRY_CATEGORY_IFF] = SENTRY_FACTION_COLONY
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer
-	name = "UA-635C Static Gauss Turret"
+	name = "\improper UA-635C Static Gauss Turret"
 	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed and modified for UA warship use."
 	fire_delay = 0.4 SECONDS
 	omni_directional = TRUE
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini
-	name = "UA 512-S mini sentry"
+	name = "\improper UA 512-S mini sentry"
 	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M30 Autocannon and an internal belt feed and modified for UA warship use."
 	defense_type = "Mini"
 	fire_delay = 0.25 SECONDS
@@ -563,6 +563,68 @@
 	handheld_type = /obj/item/defenses/handheld/sentry/mini
 	composite_icon = FALSE
 
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone
+	name = "\improper UA-577 Spaceborne Gauss Turret"
+	fire_delay = 2
+	sentry_range = 10
+	omni_directional = TRUE
+	/// How long the battery for this turret lasts. Will warn low at 70% and critical at 90% use.
+	var/battery_duration = 20 MINUTES
+	/// The current battery state
+	var/battery_state = TURRET_BATTERY_STATE_OK
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/Initialize()
+	. = ..()
+
+	var/low_battery_time = ceil(battery_duration * 0.7)
+	var/critical_battery_time = ceil(battery_duration * 0.9)
+	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_LOW), low_battery_time)
+	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_CRITICAL), critical_battery_time)
+	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_DEAD), battery_duration)
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/get_examine_text(mob/user)
+	. = ..()
+	switch(battery_state)
+		if(TURRET_BATTERY_STATE_OK)
+			. += SPAN_INFO("Its battery indictor is green, fully charged.")
+		if(TURRET_BATTERY_STATE_LOW)
+			. += SPAN_INFO("Its battery indictor is flashing yellow.")
+		if(TURRET_BATTERY_STATE_CRITICAL)
+			. += SPAN_INFO("Its battery indictor is flashing red.")
+		if(TURRET_BATTERY_STATE_DEAD)
+			. += SPAN_INFO("It appears to be offline.")
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/proc/set_battery_state(state)
+	battery_state = state
+	switch(state)
+		if(TURRET_BATTERY_STATE_LOW)
+			playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 15, 1)
+			visible_message(SPAN_WARNING("[name] beeps steadily as its battery is getting low."))
+		if(TURRET_BATTERY_STATE_CRITICAL)
+			playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 20, 1)
+			visible_message(SPAN_WARNING("[name] beeps steadily as its battery gets critically low."))
+		if(TURRET_BATTERY_STATE_DEAD)
+			playsound(loc, 'sound/machines/terminal_shutdown.ogg', 35, 1)
+			turned_on = FALSE
+			power_off_action()
+			update_icon()
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/set_range()
+	var/range = sentry_range - 1
+	var/dbl_range = range * 2
+
+	if(omni_directional)
+		range_bounds = SQUARE(x, y, dbl_range)
+		return
+	switch(dir)
+		if(EAST)
+			range_bounds = SQUARE(x+range, y, dbl_range)
+		if(WEST)
+			range_bounds = SQUARE(x-range, y, dbl_range)
+		if(NORTH)
+			range_bounds = SQUARE(x, y+range, dbl_range)
+		if(SOUTH)
+			range_bounds = SQUARE(x, y-range, dbl_range)
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship
@@ -583,7 +645,7 @@
 
 #define SENTRY_SNIPER_RANGE 10
 /obj/structure/machinery/defenses/sentry/dmr
-	name = "UA 725-D Sniper Sentry"
+	name = "\improper UA 725-D Sniper Sentry"
 	desc = "A fully-automated defence turret with long-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
 	defense_type = "DMR"
 	health = 150
@@ -610,17 +672,17 @@
 /obj/structure/machinery/defenses/sentry/dmr/set_range()
 	switch(dir)
 		if(EAST)
-			range_bounds = RECT(x + (SENTRY_SNIPER_RANGE/2), y, SENTRY_SNIPER_RANGE, SENTRY_SNIPER_RANGE)
+			range_bounds = SQUARE(x + (SENTRY_SNIPER_RANGE/2), y, SENTRY_SNIPER_RANGE)
 		if(WEST)
-			range_bounds = RECT(x - (SENTRY_SNIPER_RANGE/2), y, SENTRY_SNIPER_RANGE, SENTRY_SNIPER_RANGE)
+			range_bounds = SQUARE(x - (SENTRY_SNIPER_RANGE/2), y, SENTRY_SNIPER_RANGE)
 		if(NORTH)
-			range_bounds = RECT(x, y + (SENTRY_SNIPER_RANGE/2), SENTRY_SNIPER_RANGE, SENTRY_SNIPER_RANGE)
+			range_bounds = SQUARE(x, y + (SENTRY_SNIPER_RANGE/2), SENTRY_SNIPER_RANGE)
 		if(SOUTH)
-			range_bounds = RECT(x, y - (SENTRY_SNIPER_RANGE/2), SENTRY_SNIPER_RANGE, SENTRY_SNIPER_RANGE)
+			range_bounds = SQUARE(x, y - (SENTRY_SNIPER_RANGE/2), SENTRY_SNIPER_RANGE)
 
 #undef SENTRY_SNIPER_RANGE
 /obj/structure/machinery/defenses/sentry/shotgun
-	name = "UA 12-G Shotgun Sentry"
+	name = "\improper UA 12-G Shotgun Sentry"
 	defense_type = "Shotgun"
 	health = 250
 	health_max = 250
@@ -651,7 +713,7 @@
 				L.apply_effect(1, WEAKEN)
 
 /obj/structure/machinery/defenses/sentry/mini
-	name = "UA 512-M mini sentry"
+	name = "\improper UA 512-M mini sentry"
 	defense_type = "Mini"
 	fire_delay = 0.15 SECONDS
 	health = 150

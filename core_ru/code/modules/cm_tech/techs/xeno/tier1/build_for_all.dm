@@ -47,14 +47,14 @@
 		return
 
 	for(var/typepath in actions_to_give)
-		if(!get_xeno_action_by_type(X, typepath))
+		if(!get_action(X, typepath))
 			var/datum/action/xeno_action/XA = give_action(X, typepath)
 
 			XA.plasma_cost = 0
 			XA.ability_primacy = null //so it doesn't conflict with other ability hotkeys
 
 	for(var/typepath in macro_action_to_give)
-		if(!get_xeno_action_by_type(X, typepath))
+		if(!get_action(X, typepath))
 			var/datum/action/xeno_action/XA = give_action(X, typepath)
 
 			// No need to give this ability the default macro as it is an additional ability

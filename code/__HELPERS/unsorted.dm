@@ -534,7 +534,7 @@
 /atom/proc/GetAllContents(searchDepth = 5, list/toReturn = list())
 	for(var/atom/part as anything in contents)
 		toReturn += part
-		if(part.contents.len && searchDepth)
+		if(length(part.contents) && searchDepth)
 			part.GetAllContents(searchDepth - 1, toReturn)
 	return toReturn
 
@@ -555,7 +555,7 @@
 		if(part.loc != src) // That's a multitile atom, and it's not actually here stricto sensu
 			continue
 		toReturn += part
-		if(part.contents.len && searchDepth)
+		if(length(part.contents) && searchDepth)
 			part.GetAllContents(searchDepth - 1, toReturn)
 	return toReturn
 
@@ -1082,7 +1082,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 
 	var/list/doors = new/list()
 
-	if(toupdate.len)
+	if(length(toupdate))
 		for(var/turf/T1 in toupdate)
 			for(var/obj/structure/machinery/door/D2 in T1)
 				doors += D2
@@ -1091,7 +1091,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			else
 				air_master.tiles_to_update += T1*/
 
-	if(fromupdate.len)
+	if(length(fromupdate))
 		for(var/turf/T2 in fromupdate)
 			for(var/obj/structure/machinery/door/D2 in T2)
 				doors += D2
@@ -1287,7 +1287,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 	for(var/turf/T in orange(origin, outer_range))
 		if(!inner_range || get_dist(origin, T) >= inner_range)
 			turfs += T
-	if(turfs.len)
+	if(length(turfs))
 		return pick(turfs)
 
 // Returns true if arming a given explosive might be considered grief
@@ -1503,15 +1503,18 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 /// Macro for cases where an UNTIL() may go on forever (such as for an http request)
 #define UNTIL_OR_TIMEOUT(X, __time) \
-	do {\
-		__time = max(__time, 0);\
-		var/__start_time = world.time;\
-		while(!(X)) {;\
-			stoplag();\
-			if(__start_time + __time <= world.time) {;\
-				CRASH("UNTIL_OR_TIMEOUT hit timeout limit of [__time]");\
-			};\
-		};\
+	do { \
+		if(__time <= 0) {; \
+			CRASH("UNTIL_OR_TIMEOUT given invalid time"); \
+		} \
+		var/__start_time = world.time; \
+		do { \
+			if(__start_time + __time <= world.time) {; \
+				CRASH("UNTIL_OR_TIMEOUT hit timeout limit of [__time]"); \
+			} else { \
+				stoplag(); \
+			} \
+		} while(!(X)) \
 	} while(FALSE)
 
 //Repopulates sortedAreas list
@@ -1528,7 +1531,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		return GetAllContents()
 	var/list/processing = list(src)
 	var/list/assembled = list()
-	while(processing.len)
+	while(length(processing))
 		var/atom/A = processing[1]
 		processing.Cut(1,2)
 		if(!ignore_typecache[A.type])

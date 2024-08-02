@@ -18,7 +18,7 @@
 		/datum/job/civilian/synthetic/whiskey = JOB_SYNTH,
 		/datum/job/command/warrant/whiskey = JOB_CHIEF_POLICE,
 		/datum/job/command/bridge/whiskey = JOB_SO,
-		/datum/job/command/tank_crew/whiskey = JOB_CREWMAN,
+		/datum/job/command/tank_crew/whiskey = JOB_TANK_CREW,
 		/datum/job/command/police/whiskey = JOB_POLICE,
 		/datum/job/command/pilot/whiskey = JOB_CAS_PILOT,
 		/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
@@ -206,9 +206,9 @@
 /datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(datum/whiskey_outpost_wave/wave_data)
 	if(!istype(wave_data))
 		return
-	if(wave_data.command_announcement.len > 0)
+	if(length(wave_data.command_announcement) > 0)
 		marine_announcement(wave_data.command_announcement[1], wave_data.command_announcement[2])
-	if(wave_data.sound_effect.len > 0)
+	if(length(wave_data.sound_effect) > 0)
 		playsound_z(SSmapping.levels_by_trait(ZTRAIT_GROUND), pick(wave_data.sound_effect))
 
 //CHECK WIN
@@ -302,7 +302,7 @@
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
 
 		GLOB.round_statistics.log_round_statistics()
 
@@ -490,7 +490,7 @@
 	if(crate)
 		crate.storage_capacity = 60
 
-	if(randomitems.len)
+	if(length(randomitems))
 		for(var/i = 0; i < choosemax; i++)
 			var/path = pick(randomitems)
 			var/obj/I = new path(crate)
@@ -541,7 +541,7 @@
 			for(var/obj/O in T)
 				if(istype(O,/obj/structure/closet/crate))
 					var/obj/structure/closet/crate/C = O
-					if(C.contents.len)
+					if(length(C.contents))
 						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
 						continue
 					new /obj/item/stack/sheet/metal(get_step(src,dir))
@@ -783,7 +783,7 @@
 	return
 
 /obj/item/storage/box/attachments/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		var/turf/T = get_turf(src)
 		if(T)
 			new /obj/item/paper/crumpled(T)

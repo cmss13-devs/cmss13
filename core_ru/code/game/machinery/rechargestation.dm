@@ -105,25 +105,6 @@
 									humanoid_occupant.disabilities &= ~NEARSIGHTED
 									humanoid_occupant.sdisabilities &= ~DISABILITY_BLIND
 								to_chat(occupant, "Внутренний компонент отремонтирован.")
-			// Пластическая операция для синтетика?
-			if(!doing_stuff)
-				var/obj/limb/head/H = humanoid_occupant.get_limb("head")
-				if (H && H.disfigured)
-					if (very_busy)
-						to_chat(occupant, "Произвожу покраску...")
-						doing_stuff = TRUE
-					else
-						to_chat(occupant, "Обнаружено повреждение декоративной части корпуса. Произвожу покраску корпуса...")
-						doing_stuff = TRUE
-						very_busy = TRUE
-						sleep(10 SECONDS)
-						very_busy = FALSE
-						H.disfigured = FALSE
-						H.owner.name = H.owner.get_visible_name()
-						H.remove_all_bleeding(TRUE)
-						humanoid_occupant.update_body()
-						H.update_icon()
-						to_chat(occupant, "Товарный вид востановлен.")
 
 			// TODO убрать звук дефиба?
 			// Дефиб синта

@@ -341,7 +341,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/twe/royal_marine/beacon/standard
 
-/datum/equipment_preset/twe/royal_marine/standard/bedacon/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/twe/royal_marine/beacon/standard/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/royal_marine, WEAR_BODY)

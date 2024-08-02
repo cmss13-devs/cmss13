@@ -20,6 +20,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_HUNTER = new /datum/mob_hud/hunter_hud(),
 	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan(),
 	MOB_HUD_EXECUTE = new /datum/mob_hud/execute_hud(),
+	MOB_HUD_NEW_PLAYER = new /datum/mob_hud/new_player(),
 	))
 
 /datum/mob_hud
@@ -160,6 +161,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	hud_icons = list(STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST)
 
 
+
+/datum/mob_hud/new_player
+	hud_icons = list(NEW_PLAYER_HUD)
 
 //Xeno status hud, for xenos
 /datum/mob_hud/xeno
@@ -668,6 +672,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer")
 		return
 
+	hud_set_new_player()
 	F.modify_hud_holder(holder, src)
 
 /mob/living/carbon/human/yautja/hud_set_squad()
@@ -840,3 +845,27 @@ GLOBAL_DATUM(hud_icon_hudfocus, /image)
 	var/freeze_found = HAS_TRAIT(src, TRAIT_IMMOBILIZED) && body_position == STANDING_UP && !buckled // Eligible targets are unable to move but can stand and aren't buckled (eg nested) - This is to convey that they are temporarily unable to move
 	if (freeze_found)
 		freeze_holder.overlays += image('icons/mob/hud/hud.dmi', src, "xeno_freeze")
+
+
+
+/mob/proc/hud_set_new_player()
+	return
+
+GLOBAL_DATUM(hud_icon_new_player, /image)
+
+
+/mob/living/carbon/human/hud_set_new_player()
+	if(!client || !job)
+		return FALSE
+	var/image/holder = hud_list[NEW_PLAYER_HUD]
+	holder.icon_state = "hudblank"
+	holder.overlays.Cut()
+	holder.pixel_y = 8
+	var/playtime = get_job_playtime(client, job)
+	if(playtime <= JOB_PLAYTIME_TIER_1)
+		if(!GLOB.hud_icon_new_player)
+			GLOB.hud_icon_new_player = image('icons/mob/hud/hud.dmi', src, "new_player_marker")
+		holder.overlays += GLOB.hud_icon_new_player
+
+	hud_list[NEW_PLAYER_HUD] = holder
+	return TRUE

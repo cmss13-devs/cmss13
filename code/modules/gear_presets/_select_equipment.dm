@@ -121,6 +121,8 @@
 		. = "???"
 		CRASH("[key_name(new_human)] spawned with no valid paygrade.")
 
+	new_human.hud_set_new_player()
+
 	return final_paygrade
 
 /datum/equipment_preset/proc/load_gear(mob/living/carbon/human/new_human, client/mob_client)

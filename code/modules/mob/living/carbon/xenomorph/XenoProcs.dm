@@ -216,18 +216,17 @@
 	armor_integrity = min(armor_integrity + value, 100)
 
 
-//Strip all inherent xeno verbs from your caste. Used in evolution.
+///Strip all inherent xeno verbs from your caste. Used in evolution.
 /mob/living/carbon/xenomorph/proc/remove_inherent_verbs()
 	if(inherent_verbs)
 		remove_verb(src, inherent_verbs)
 
-//Add all your inherent caste verbs and procs. Used in evolution.
+///Add all your inherent caste verbs and procs. Used in evolution.
 /mob/living/carbon/xenomorph/proc/add_inherent_verbs()
 	if(inherent_verbs)
 		add_verb(src, inherent_verbs)
 
-// activates the buffs and debuffs of Stalk mode for certain castes , This is the generic proc but each xeno can have their own set of snowflake.
-#define STALKING_COOLDOWN "stalking_cooldown"
+/// activates the buffs and debuffs of Stalk mode for certain castes , This is the generic proc but each xeno can have their own set of snowflake.
 /mob/living/carbon/xenomorph/set_movement_intent(new_intent, cooldown = 5 SECONDS)
 	if(TIMER_COOLDOWN_CHECK(src, STALKING_COOLDOWN))
 		to_chat(src, SPAN_XENOWARNING("We are not ready to change our stance"))

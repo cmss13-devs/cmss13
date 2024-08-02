@@ -28,25 +28,34 @@
 	/// The list of people observing this mob.
 	var/list/mob/dead/observer/observers
 	var/zone_selected = "chest"
-
-	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
+	///Allows all mobs to use the me verb by default, will have to manually specify they cannot
+	var/use_me = 1
 	var/damageoverlaytemp = 0
-	var/computer_id = null //to track the players
+	///to track the players
+	var/computer_id = null
 	var/list/attack_log = list( )
-	var/atom/movable/interactee //the thing that the mob is currently interacting with (e.g. a computer, another mob (stripping a mob), manning a hmg)
+	///the thing that the mob is currently interacting with (e.g. a computer, another mob (stripping a mob), manning a hmg)
+	var/atom/movable/interactee
 	var/sdisabilities = 0 //Carbon
 	var/disabilities = 0 //Carbon
 	var/atom/movable/pulling = null
 	var/next_move = null
-	var/next_move_slowdown = 0 // Amount added during the next movement_delay(), then is reset.
-	var/speed = 0 //Speed that modifies the movement delay of a given mob
-	var/recalculate_move_delay = TRUE // Whether move delay needs to be recalculated, on by default so that new mobs actually get movement delay calculated upon creation
+	/// Amount added during the next movement_delay(), then is reset.
+	var/next_move_slowdown = 0
+	///Speed that modifies the movement delay of a given mob
+	var/speed = 0
+	/// Whether move delay needs to be recalculated, on by default so that new mobs actually get movement delay calculated upon creation
+	var/recalculate_move_delay = TRUE
 	var/crawling = FALSE
 	var/can_crawl = TRUE
-	var/base_walk = 4 // Base walking speed
-	var/base_run = 2 // Base running speed
-	var/walk_modifier = 0 // speed modifier for Walk mode
-	var/run_modifier = 0 // speed modifier for Run mode
+	 /// Base walking speed
+	var/base_walk = 4
+	/// Base running speed
+	var/base_run = 2
+	/// speed modifier for Walk mode
+	var/walk_modifier = 0
+	/// speed modifier for Run mode
+	var/run_modifier = 0
 	var/monkeyizing = null //Carbon
 	var/hand = null
 

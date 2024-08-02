@@ -4,6 +4,7 @@
 #define COOLDOWN_HIJACK_GROUND_CHECK "gamemode_ground_check"
 #define COOLDOWN_ITEM_HOOD_SOUND "item_hood_sound"
 #define COOLDOWN_LIGHT "cooldown_light"
+#define STALKING_COOLDOWN "stalking_cooldown"
 
 //Define for ship alt
 #define COOLDOWN_ALTITUDE_CHANGE "altitude_change"

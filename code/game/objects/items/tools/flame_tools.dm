@@ -454,6 +454,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_off = "cigar_off"
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_FACE
+	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
 	throw_speed = SPEED_VERY_FAST
 	item_state = "cigar_off"

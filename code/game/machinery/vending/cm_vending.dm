@@ -1024,6 +1024,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return
 	if(!ishuman(user))
 		return
+	// with tactical reloading/attaching attachments, a mousedrop can be held until said actions are complete. this can produce a buggy ghost item which we solve by checking if the items are attached/inside the weapon (by comparing if their loc equals to a weapon's)
 	if(istype(A.loc, /obj/item/weapon/gun))
 		return
 

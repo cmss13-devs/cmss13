@@ -48,7 +48,7 @@
 	var/recalculate_move_delay = TRUE
 	var/crawling = FALSE
 	var/can_crawl = TRUE
-	 /// Base walking speed
+	/// Base walking speed
 	var/base_walk = 4
 	/// Base running speed
 	var/base_run = 2

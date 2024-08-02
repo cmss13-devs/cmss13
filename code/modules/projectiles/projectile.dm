@@ -660,7 +660,7 @@
 
 //Used by machines and structures to calculate shooting past cover
 /obj/proc/calculate_cover_hit_boolean(obj/projectile/P, distance = 0, cade_direction_correct = FALSE)
-	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank gets a bonus to bypassing cover
+	if(istype(P.shot_from, /obj/item/hardpoint) || istype(P.ammo, /datum/ammo/xeno)) //anything shot from a tank or a xeno gets a bonus to bypassing cover
 		distance -= 3
 
 	if(distance < 1 || (distance > 3 && cade_direction_correct))

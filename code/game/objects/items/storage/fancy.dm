@@ -270,7 +270,6 @@
 	throwforce = 2
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST
-	flags_obj = OBJ_IS_HELMET_GARB
 	storage_slots = 7
 	can_hold = list(/obj/item/clothing/mask/cigarette/cigar)
 	icon_type = "cigar"

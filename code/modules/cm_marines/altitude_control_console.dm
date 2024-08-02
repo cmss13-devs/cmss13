@@ -81,7 +81,6 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			if(!is_mainship_level(current_mob.z))
 				continue
 			current_mob.apply_effect(3, SLOW)
-			shake_camera(current_mob, 2, 2)
 		return
 	if(GLOB.ship_alt == SHIP_ALT_LOW && GLOB.ship_temp >= OVERHEAT)
 		ai_silent_announcement("Attention: Low altitude orbital maneuver no longer sustainable, moving to furthest geo-synchronous orbit until engine cooloff.", ";", TRUE)

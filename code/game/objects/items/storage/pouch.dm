@@ -807,7 +807,7 @@
 	storage_flags = STORAGE_FLAGS_POUCH
 	icon_state = "construction"
 	desc = "It's specifically made to hold engineering items. Requires engineering skills to use effectively."
-	storage_slots = 7
+	storage_slots = 6
 	can_hold_skill = list(
 		/obj/item/circuitboard = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
 		/obj/item/device/flashlight = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),

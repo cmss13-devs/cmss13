@@ -851,21 +851,39 @@ GLOBAL_DATUM(hud_icon_hudfocus, /image)
 /mob/proc/hud_set_new_player()
 	return
 
-GLOBAL_DATUM(hud_icon_new_player, /image)
+GLOBAL_DATUM(hud_icon_new_player_1, /image)
+GLOBAL_DATUM(hud_icon_new_player_2, /image)
+GLOBAL_DATUM(hud_icon_new_player_3, /image)
 
 
 /mob/living/carbon/human/hud_set_new_player()
+	if(!GLOB.hud_icon_new_player_1)
+		GLOB.hud_icon_new_player_1 = image('icons/mob/hud/hud.dmi', src, "new_player_marker_1")
+	if(!GLOB.hud_icon_new_player_2)
+		GLOB.hud_icon_new_player_2 = image('icons/mob/hud/hud.dmi', src, "new_player_marker_2")
+	if(!GLOB.hud_icon_new_player_3)
+		GLOB.hud_icon_new_player_3 = image('icons/mob/hud/hud.dmi', src, "new_player_marker_3")
 	if(!client || !job)
 		return FALSE
 	var/image/holder = hud_list[NEW_PLAYER_HUD]
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
 	holder.pixel_y = 8
+	var/total_time = client.get_total_human_playtime()
 	var/playtime = get_job_playtime(client, job)
-	if(playtime <= JOB_PLAYTIME_TIER_1)
-		if(!GLOB.hud_icon_new_player)
-			GLOB.hud_icon_new_player = image('icons/mob/hud/hud.dmi', src, "new_player_marker")
-		holder.overlays += GLOB.hud_icon_new_player
+	var/marker = GLOB.hud_icon_new_player_3
 
+	var/low_time = FALSE
+	if(total_time < JOB_PLAYTIME_TIER_2)
+		marker = GLOB.hud_icon_new_player_2
+		low_time = TRUE
+
+	if(playtime <= JOB_PLAYTIME_TIER_1)
+		if(low_time)
+			marker = GLOB.hud_icon_new_player_1
+	else if(!low_time)
+		return FALSE
+
+	holder.overlays += marker
 	hud_list[NEW_PLAYER_HUD] = holder
 	return TRUE

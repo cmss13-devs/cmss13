@@ -11,21 +11,21 @@
 		return
 
 	if(active)
-		to_chat(usr, SPAN_XENOWARNING("Прошлый бонус от жертвы грудолома всё ещё активен!"))
+		to_chat(usr, SPAN_XENOWARNING("We are stopped get points from larvae!"))
 		return
 
-	if(tgui_alert(user_xeno, "Вы действительно хотите пожертвовать грудоломом для временной прибавки к притоку очков эволюции?", "Жертва Грудолома", list("Да", "Нет")) != "Да")
+	if(tgui_alert(user_xeno, "Do you really want to exchange your doughter for points?", "Sacrafice larvae?", list("Yes", "No")) != "Да")
 		return
 
 	if(user_xeno.hive.stored_larva < required_larva)
-		to_chat(usr, SPAN_XENOWARNING("Недостаточно закопанных грудоломов."))
+		to_chat(usr, SPAN_XENOWARNING("Not enought larvaes in core."))
 		return
 
 	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost))
 		return
 
-	xeno_message(SPAN_XENOANNOUNCE("Улей пожертвовал новорождённой сестрой во имя эволюции! Дополнительный приток остановится через [duration/600] минут."), hivenumber = user_xeno.hive.hivenumber)
-	xeno_maptext("Улей пожертвовал новорождённой сестрой во имя эволюции!", "Эволюция Улья", user_xeno.hive.hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("Hive sacrafice larva for points! influx of points stop in [duration/600] minutes."), hivenumber = user_xeno.hive.hivenumber)
+	xeno_maptext("Hive sacrafice larva for points!", "Hive evolution", user_xeno.hive.hivenumber)
 	addtimer(CALLBACK(src, PROC_REF(end_boost), user_xeno), duration)
 	active = TRUE
 
@@ -41,5 +41,5 @@
 	active = FALSE
 	if(!user_xeno)
 		return
-	xeno_message(SPAN_XENOANNOUNCE("Улей прекратил получать бонус к притоку очков эволюции. Жертва сестры не будет забыта!"), hivenumber = user_xeno.hive.hivenumber)
-	xeno_maptext("Улей прекратил получать бонус к притоку очков эволюции.", "Эволюция Улья", user_xeno.hive.hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("Hive stopped get points from sacrafice. Larvae will not be forgotten!"), hivenumber = user_xeno.hive.hivenumber)
+	xeno_maptext("Hive stopped get points from sacrafice.", "Hive evolution", user_xeno.hive.hivenumber)

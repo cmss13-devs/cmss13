@@ -1,12 +1,13 @@
 #define RESOURCE_INCOME_TELECOMMS_DELAY 60 SECONDS
 #define RESOURCE_INCOME_TELECOMMS 0.3
 
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/var/next_income_timer = 0
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/var/datum/techtree/xeno_tree
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/var/datum/techtree/marine_tree
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms
+	var/next_income_timer = 0
+	var/datum/techtree/xeno_tree
+	var/datum/techtree/marine_tree
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/process(delta_time)
-	if(!toggled && !corrupted && ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
+	if(!toggled && !corrupted || ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
 		STOP_PROCESSING(SSobj, src)
 		return
 
@@ -16,11 +17,9 @@
 	else if(toggled)
 		tree = marine_tree
 
-	if(next_income_timer > 0)
-		next_income_timer -= 1
+	if(world.time > next_income_timer)
+		next_income_timer = world.time + RESOURCE_INCOME_TELECOMMS_DELAY
 		return
-
-	next_income_timer = RESOURCE_INCOME_TELECOMMS_DELAY / delta_time / 10
 
 	if(tree)
 		tree.on_process()

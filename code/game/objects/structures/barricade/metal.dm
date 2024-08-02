@@ -294,16 +294,3 @@
 	barricade_type = "new_plasteel"
 	repair_materials = list("plasteel" = 0.45)
 
-/obj/structure/barricade/metal/plasteel/wired/New()
-	maxhealth += 50
-	update_health(-50)
-	can_wire = FALSE
-	is_wired = TRUE
-	climbable = FALSE
-	update_icon()
-	return ..()
-
-/obj/structure/barricade/metal/plasteel/wired/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
-	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB

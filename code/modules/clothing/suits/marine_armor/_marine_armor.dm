@@ -307,7 +307,7 @@
 	name = "\improper M3 pattern general officer armor"
 	desc = "A well-crafted suit of M3 Pattern Armor with a gold shine. It looks very expensive, but shockingly fairly easy to carry and wear."
 	icon_state = "general"
-	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/general)
 	specialty = "M3 pattern general"

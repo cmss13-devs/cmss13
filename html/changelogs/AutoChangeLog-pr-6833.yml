@@ -1,4 +1,0 @@
-author: "VileBeggar"
-delete-after: True
-changes:
-  - bugfix: "Health scans will now display the heartbroken status if applicable."

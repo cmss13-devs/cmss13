@@ -636,9 +636,9 @@
 		new grenade_type(src)
 
 /obj/item/storage/box/nade_box/update_icon()
+	overlays.Cut()
 	if(!length(contents))
 		icon_state = "[base_icon]_e"
-		overlays.Cut()
 	else
 		icon_state = base_icon
 		if(type_icon)

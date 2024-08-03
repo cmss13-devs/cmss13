@@ -125,7 +125,6 @@
 	)
 
 
-
 /obj/item/weapon/gun/smg/m39/elite/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_SMG)

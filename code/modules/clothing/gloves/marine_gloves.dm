@@ -44,7 +44,7 @@
 
 /obj/item/clothing/gloves/marine/insulated/black
 	name = "marine insulated black gloves"
-	desc = "These marine gloves will protect the wearer from electric shocks and shrapnal. Standard issue for well equipped Marine battalions."
+	desc = "These marine gloves will protect the wearer from electric shocks and shrapnal. Standard issue for properly-equipped Marines."
 	icon_state = "black"
 	item_state = "black"
 

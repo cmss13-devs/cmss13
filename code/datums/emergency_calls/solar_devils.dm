@@ -87,5 +87,5 @@
 		arm_equipment(mob, /datum/equipment_preset/uscm/rifleman_pve, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Solar Devils Rifleman!"))
 
-	to_chat(mob, SPAN_ROLE_BODY("You are a member of the Solar Devils, part of the 2nd Div, 3rd Batt. Unlike the Marines of the USS Almayer, you are through and through professionals. Well trained and well equipped. Semper Fidelis Marine."))
+	to_chat(mob, SPAN_ROLE_BODY("You are a member of the Solar Devils, part of the 2nd Div, 3rd Batt. Unlike the Marines of the USS Almayer, you are career marines, you are well trained and properly equipped. Semper Fidelis Marine."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)

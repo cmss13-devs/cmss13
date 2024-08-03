@@ -113,13 +113,7 @@
 /datum/flameshape/line/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	var/turf/source_turf = get_turf(F.loc)
 
-	var/turf/prev_T = F.loc
-
-	var/mob/user
-	if(F.weapon_cause_data)
-		user = F.weapon_cause_data.resolve_mob()
-	if(user)
-		prev_T = user.loc
+	var/turf/prev_T
 
 	var/distance = 1
 	var/stop_at_turf = FALSE
@@ -135,7 +129,7 @@
 		if(T.density)
 			T.flamer_fire_act(burn_dam, F.weapon_cause_data)
 			stop_at_turf = TRUE
-		else
+		else if(prev_T)
 			var/obj/flamer_fire/temp = new()
 			var/atom/A = LinkBlocked(temp, prev_T, T)
 
@@ -145,7 +139,7 @@
 					break
 				stop_at_turf = TRUE
 
-		if(T == F.loc || (user && T == user.loc))
+		if(T == F.loc)
 			if(stop_at_turf)
 				break
 			prev_T = T
@@ -168,16 +162,11 @@
 /datum/flameshape/triangle/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	set waitfor = 0
 
-	var/mob/user
-
-	if(F.weapon_cause_data)
-		user = F.weapon_cause_data.resolve_mob()
-
-	var/unleash_dir = user.dir
+	var/unleash_dir = get_cardinal_dir(F, F.target_clicked)
 	var/list/turf/turfs = get_line(F, F.target_clicked)
 	var/distance = 1
 	var/hit_dense_atom_mid = FALSE
-	var/turf/prev_T = user.loc
+	var/turf/prev_T
 
 	for(var/turf/T in turfs)
 		if(distance > fire_spread_amount)

@@ -373,7 +373,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	. = list(desc)
 
 	if(stat & BROKEN)
-		. += SPAN_INFO("It appears to be completely broken. It's hard to see what else is wrong with it.")
+		. += SPAN_INFO("It appears to be completely broken. Bash it open with any tool.")
 		return
 	if(opened)
 		if(has_electronics && terminal)
@@ -559,7 +559,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && opened)
 		if(has_electronics == 1)
 			if(user.action_busy) return
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea how to deconstruct [src]."))
 				return
 			if(terminal)
@@ -591,7 +591,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			opened = APC_COVER_OPEN
 			update_icon()
 	else if(istype(W, /obj/item/cell) && opened) //Trying to put a cell inside
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea how to fit [W] into [src]."))
 			return
 		if(cell)
@@ -609,7 +609,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				update_icon()
 	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER)) //Haxing
 		if(opened)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("\The [src]'s wiring confuses you."))
 				return
 			if(cell)
@@ -643,7 +643,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				tgui_interact(user) //then close them and open up the new ones (wires/panel)
 
 	else if(istype(W, /obj/item/card/id)) //Trying to unlock the interface with an ID card
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You're not sure where to swipe \the [W] on [src]."))
 			return
 		if(opened)
@@ -661,7 +661,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			else
 				to_chat(user, SPAN_WARNING("Access denied."))
 	else if(iswire(W) && !terminal && opened && has_electronics != 2)
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [src]."))
 			return
 		if(loc:intact_tile)
@@ -688,7 +688,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				make_terminal()
 				terminal.connect_to_network()
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && terminal && opened && has_electronics != 2)
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		if(loc:intact_tile)
@@ -712,7 +712,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			qdel(terminal)
 			terminal = null
 	else if(istype(W, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && !(stat & BROKEN))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts inserting the power control board into [src]."),
@@ -724,7 +724,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			SPAN_NOTICE("You insert the power control board into [src]."))
 			qdel(W)
 	else if(istype(W, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && (stat & BROKEN))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		to_chat(user, SPAN_WARNING("You cannot put the board inside, the frame is damaged."))
@@ -733,7 +733,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		var/obj/item/tool/weldingtool/WT = W
@@ -750,7 +750,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			deconstruct()
 			return
 	else if(istype(W, /obj/item/frame/apc) && opened && (stat & BROKEN))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		if(has_electronics)
@@ -916,7 +916,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	if(usr == user && opened && (!isRemoteControlling(user)))
 		if(cell)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea how to remove the power cell from [src]."))
 				return
 			user.put_in_hands(cell)
@@ -1051,7 +1051,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		else if(prob(H.getBrainLoss()))
 			to_chat(user, SPAN_WARNING("You momentarily forget how to use [src]."))
 			return 0
-		if(!skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(H, SPAN_WARNING("You don't know how to use \the [src]'s interface."))
 			return
 	return 1

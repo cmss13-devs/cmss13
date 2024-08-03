@@ -15,7 +15,7 @@
 	cant_hold = list(/obj/item/storage/firstaid, /obj/item/storage/toolkit)
 	can_hold_skill = list(
 		/obj/item/storage/firstaid = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
-		/obj/item/storage/toolkit = list(SKILL_ENGINEER, SKILL_ENGINEER_ENGI),
+		/obj/item/storage/toolkit = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
 		)
 	drop_sound = "armorequip"
 	var/worn_accessible = FALSE //whether you can access its content while worn on the back
@@ -154,7 +154,7 @@
 
 //Returns true if the user's id matches the lock's
 /obj/item/storage/backpack/proc/compare_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/card = H.wear_id
+	var/obj/item/card/id/card = H.get_idcard()
 	if(!card || locking_id.registered_name != card.registered_name)
 		return FALSE
 	else return TRUE
@@ -268,6 +268,7 @@
 	return TRUE
 
 /datum/action/item_action/specialist/santabag/action_activate()
+	. = ..()
 	var/obj/item/storage/backpack/santabag/santa_bag = holder_item
 	santa_bag.refill_santa_bag(owner)
 	update_button_icon()
@@ -537,6 +538,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	button.overlays += IMG
 
 /datum/action/item_action/rto_pack/use_phone/action_activate()
+	. = ..()
 	for(var/obj/item/storage/backpack/marine/satchel/rto/radio_backpack in owner)
 		radio_backpack.use_phone(owner)
 		return
@@ -870,6 +872,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		return TRUE
 
 /datum/action/item_action/specialist/toggle_cloak/action_activate()
+	. = ..()
 	var/obj/item/storage/backpack/marine/satchel/scout_cloak/SC = holder_item
 	SC.camouflage()
 

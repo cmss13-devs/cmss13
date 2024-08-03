@@ -82,7 +82,7 @@
 
 /obj/item/device/helmet_visor/medical/advanced
 	name = "advanced medical optic"
-	helmet_overlay = "med_sight_left"
+	helmet_overlay = "med_sight_right"
 
 /obj/item/device/helmet_visor/medical/advanced/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	. = ..()
@@ -146,6 +146,7 @@
 			return
 
 /datum/action/item_action/view_publications/helmet_visor/action_activate()
+	. = ..()
 	var/obj/item/device/helmet_visor/medical/advanced/medical_visor = locate() in holder_item
 
 	if(!medical_visor)
@@ -225,7 +226,7 @@
 /obj/item/device/helmet_visor/night_vision/get_examine_text(mob/user)
 	. = ..()
 
-	. += SPAN_NOTICE("It is currently at [round((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
+	. += SPAN_NOTICE("It is currently at [floor((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
 
 /obj/item/device/helmet_visor/night_vision/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(on_update_sight))
@@ -286,7 +287,7 @@
 /obj/item/device/helmet_visor/night_vision/get_helmet_examine_text()
 	. = ..()
 
-	. += SPAN_NOTICE(" It is currently at [round((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
+	. += SPAN_NOTICE(" It is currently at [floor((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
 
 /obj/item/device/helmet_visor/night_vision/proc/on_update_sight(mob/user)
 	SIGNAL_HANDLER

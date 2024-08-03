@@ -29,6 +29,7 @@
 	matter = list("metal" = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 	inherent_traits = list(TRAIT_TOOL_WRENCH)
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 
 /*
@@ -50,8 +51,9 @@
 	throw_range = 5
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
+	flags_item = CAN_DIG_SHRAPNEL
 	inherent_traits = list(TRAIT_TOOL_SCREWDRIVER)
-
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 
 /obj/item/tool/screwdriver/Initialize()
@@ -134,6 +136,7 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
 	inherent_traits = list(TRAIT_TOOL_WIRECUTTERS)
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/wirecutters/tactical
 	name = "tactical wirecutters"
@@ -188,6 +191,7 @@
 	/// Used to slowly deplete the fuel when the tool is left on.
 	var/weld_tick = 0
 	var/has_welding_screen = FALSE
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/weldingtool/Initialize()
 	. = ..()
@@ -471,6 +475,7 @@
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
 	inherent_traits = list(TRAIT_TOOL_CROWBAR)
 	pry_capable = IS_PRY_CAPABLE_CROWBAR
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/crowbar/red
 	icon = 'icons/obj/items/items.dmi'
@@ -493,6 +498,7 @@
 	w_class = SIZE_LARGE
 	force = MELEE_FORCE_STRONG
 	flags_equip_slot = SLOT_SUIT_STORE
+	flags_atom = FPRINT|QUICK_DRAWABLE
 	pry_capable = IS_PRY_CAPABLE_FORCE //but not really
 	///Whether the Maintenance Jack is on crowbar or wrench mode
 	var/crowbar_mode = TRUE //False for wrench mode
@@ -555,12 +561,18 @@
 		if(requires_superstrength_pry)
 			if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
 				return
-		if(!attacked_door.density) //If its open
-			return
 		if(attacked_door.heavy) //Unopenable
 			to_chat(usr, SPAN_DANGER("You cannot force [attacked_door] open."))
 			return
 		if(user.action_busy)
+			return
+		if(!attacked_door.density && !attacked_door.arePowerSystemsOn()) //If its open and unpowered
+			attacked_door.close(TRUE)
+			return
+		if(attacked_door.density && !attacked_door.arePowerSystemsOn()) // if its closed and unpowered
+			attacked_door.open(TRUE)
+			return
+		if(!attacked_door.density) //If its open
 			return
 
 		user.visible_message(SPAN_DANGER("[user] jams [src] into [attacked_door] and starts to pry it open."),

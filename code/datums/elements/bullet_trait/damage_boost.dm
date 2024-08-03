@@ -87,7 +87,7 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 		boosted_projectile.damage_boosted-- //Mark that damage has been returned to normal.
 
 	if(damage_boosted_atoms[hit_atom.type]) //If hitting a valid atom for damage boost
-		boosted_projectile.damage = round(boosted_projectile.damage * active_damage_mult) //Modify Damage by multiplier
+		boosted_projectile.damage = floor(boosted_projectile.damage * active_damage_mult) //Modify Damage by multiplier
 
 		if (active_damage_mult)
 			boosted_projectile.last_damage_mult = active_damage_mult //Save multiplier for next check

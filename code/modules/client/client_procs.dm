@@ -43,6 +43,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_auto_eject_to_hand,
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
+	/client/proc/toggle_ammo_display_type,
 	/client/proc/toggle_middle_mouse_click,
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
@@ -265,7 +266,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//Helps prevent multiple files being uploaded at once. Or right after eachother.
 	var/time_to_wait = fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [round(time_to_wait/10)] seconds.</font>")
+		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [floor(time_to_wait/10)] seconds.</font>")
 		return 0
 	fileaccess_timer = world.time + FTPDELAY */
 	return 1
@@ -296,7 +297,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	var/static/next_external_rsc = 0
 	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
 	if(length(external_rsc_urls))
-		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
+		next_external_rsc = WRAP(next_external_rsc+1, 1, length(external_rsc_urls)+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
 	player_entity = setup_player_entity(ckey)

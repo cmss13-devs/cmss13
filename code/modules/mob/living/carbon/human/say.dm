@@ -26,7 +26,7 @@
 			else
 				headset.last_multi_broadcast = world.time
 		if(multibroadcast_cooldown)
-			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [round(multibroadcast_cooldown / 10)] more seconds."
+			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [floor(multibroadcast_cooldown / 10)] more seconds."
 		return
 
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":" || message[1] == "#"))
@@ -158,7 +158,7 @@
 
 			for(var/mob/living/M in hearers(message_range, src))
 				if(M != src)
-					M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
+					M.show_message(SPAN_NOTICE("[src] talks into [length(used_radios) ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
 			if(ishumansynth_strict(src))
 				playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 

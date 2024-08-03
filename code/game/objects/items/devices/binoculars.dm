@@ -403,6 +403,7 @@
 	COOLDOWN_START(designator, spotting_cooldown, 0)
 
 /datum/action/item_action/specialist/spotter_target/action_activate()
+	. = ..()
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/human = owner
@@ -448,7 +449,7 @@
 	human.face_atom(target)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
-	var/distance = round(get_dist(target, human) * 0.5)
+	var/distance = floor(get_dist(target, human) * 0.5)
 	var/f_spotting_time = designator.spotting_time + distance
 
 	designator.is_spotting = TRUE

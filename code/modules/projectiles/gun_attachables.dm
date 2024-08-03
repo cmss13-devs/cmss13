@@ -1054,6 +1054,7 @@ Defined in conflicts.dm of the #defines folder.
 	button.name = name
 
 /datum/action/item_action/toggle_zoom_level/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/G = holder_item
 	var/obj/item/attachable/scope/variable_zoom/S = G.attachments["rail"]
 	S.toggle_zoom_level()
@@ -1674,6 +1675,7 @@ Defined in conflicts.dm of the #defines folder.
 /datum/action/item_action/vulture
 
 /datum/action/item_action/vulture/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/gun_holder = holder_item
 	var/obj/item/attachable/vulture_scope/scope = gun_holder.attachments["rail"]
 	if(!istype(scope))
@@ -2973,7 +2975,7 @@ Defined in conflicts.dm of the #defines folder.
 			current_rounds += transfered_rounds
 			FT.current_rounds -= transfered_rounds
 
-			var/amount_of_reagents = FT.reagents.reagent_list.len
+			var/amount_of_reagents = length(FT.reagents.reagent_list)
 			var/amount_removed_per_reagent = transfered_rounds / amount_of_reagents
 			for(var/datum/reagent/R in FT.reagents.reagent_list)
 				R.volume -= amount_removed_per_reagent
@@ -3223,6 +3225,10 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("This chemical will clog the nozzle!"))
 		return
 
+	if(istype(gun.current_mag, /obj/item/ammo_magazine/flamer_tank/smoke)) // you can't fire smoke like a projectile!
+		to_chat(user, SPAN_WARNING("[src] can't be used with this fuel tank!"))
+		return
+
 	gun.last_fired = world.time
 	gun.current_mag.reagents.remove_reagent(flamer_reagent.id, FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)
 
@@ -3231,13 +3237,13 @@ Defined in conflicts.dm of the #defines folder.
 	ammo_datum.flamer_reagent_id = flamer_reagent.id
 	P.generate_bullet(ammo_datum)
 	P.icon_state = "naptha_ball"
-	P.color = flamer_reagent.color
+	P.color = flamer_reagent.burncolor
 	P.hit_effect_color = flamer_reagent.burncolor
 	P.fire_at(target, user, user, max_range, AMMO_SPEED_TIER_2, null)
 	var/turf/user_turf = get_turf(user)
 	playsound(user_turf, pick(fire_sounds), 50, TRUE)
 
-	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(gun.current_mag.get_ammo_percent())]</b>% fuel remaining!"))
+	to_chat(user, SPAN_WARNING("The gauge reads: <b>[floor(gun.current_mag.get_ammo_percent())]</b>% fuel remaining!"))
 
 /obj/item/attachable/verticalgrip
 	name = "vertical grip"
@@ -3511,6 +3517,7 @@ Defined in conflicts.dm of the #defines folder.
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/bipod/toggle_full_auto_switch/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/holder_gun = holder_item
 	var/obj/item/attachable/bipod/attached_bipod = holder_gun.attachments["under"]
 

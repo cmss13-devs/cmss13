@@ -175,7 +175,7 @@
 	SPAN_WARNING("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
 	playsound(user.loc, fire_sound, 50, 1)
 
-	var/angle = round(Get_Angle(user,target))
+	var/angle = floor(Get_Angle(user,target))
 	muzzle_flash(angle,user)
 	simulate_recoil(0, user)
 
@@ -222,6 +222,7 @@
 	update_icon()
 
 /datum/action/item_action/toggle_firing_level/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/launcher/grenade/G = holder_item
 	if(!ishuman(owner))
 		return

@@ -22,7 +22,7 @@
 		attack_hand(user)
 
 	else
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
 			return 0
 
@@ -69,7 +69,7 @@
 					to_chat(user, "You finish prying out the components.")
 
 					// Drop all the component stuff
-					if(contents.len > 0)
+					if(length(contents) > 0)
 						for(var/obj/x in src)
 							x.forceMove(user.loc)
 					else
@@ -103,7 +103,7 @@
 
 	// You need a multitool to use this, or be silicon
 	if(!isSilicon(user))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
 			return
 		// istype returns false if the value is null
@@ -125,7 +125,7 @@
 		else
 			dat += "<br>Identification String: <a href='?src=\ref[src];input=id'>NULL</a>"
 		dat += "<br>Network: <a href='?src=\ref[src];input=network'>[network]</a>"
-		dat += "<br>Prefabrication: [autolinkers.len ? "TRUE" : "FALSE"]"
+		dat += "<br>Prefabrication: [length(autolinkers) ? "TRUE" : "FALSE"]"
 		if(hide) dat += "<br>Shadow Link: ACTIVE</a>"
 
 		//Show additional options for certain GLOB.machines.
@@ -160,7 +160,7 @@
 	dat += "</font>"
 	temp = ""
 	show_browser(user, dat, "[src] Access", "tcommachine", "size=520x500;can_resize=0")
-	onclose(user, "dormitory")
+	onclose(user, "tcommachine")
 
 
 // Off-Site Relays

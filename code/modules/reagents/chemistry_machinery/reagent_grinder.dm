@@ -90,17 +90,17 @@
 		updateUsrDialog()
 		return 0
 
-	if(holdingitems && holdingitems.len >= limit)
+	if(LAZYLEN(holdingitems) >= limit)
 		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 		return 1
 
 	if(istype(O,/obj/item/storage))
 		var/obj/item/storage/B = O
-		if(B.contents.len > 0)
+		if(length(B.contents) > 0)
 			to_chat(user, SPAN_NOTICE("You start dumping the contents of [B] into [src]."))
 			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
 			for(var/obj/item/I in B)
-				if(holdingitems && holdingitems.len >= limit)
+				if(LAZYLEN(holdingitems) >= limit)
 					to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 					break
 				else
@@ -165,7 +165,7 @@
 		if(is_beaker_ready && !is_chamber_empty && !(inoperable()))
 			dat += "<A href='?src=\ref[src];action=grind'>Grind the reagents</a><BR>"
 			dat += "<A href='?src=\ref[src];action=juice'>Juice the reagents</a><BR><BR>"
-		if(holdingitems && holdingitems.len > 0)
+		if(LAZYLEN(holdingitems) > 0)
 			dat += "<A href='?src=\ref[src];action=eject'>Eject the reagents</a><BR>"
 		if(beaker)
 			dat += "<A href='?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
@@ -270,7 +270,7 @@
 	else if(O.potency == -1)
 		return 5
 	else
-		return round(O.potency)
+		return floor(O.potency)
 
 /obj/structure/machinery/reagentgrinder/proc/get_juice_amount(obj/item/reagent_container/food/snacks/grown/O)
 	if(!istype(O))
@@ -278,7 +278,7 @@
 	else if(O.potency == -1)
 		return 5
 	else
-		return round(5*sqrt(O.potency))
+		return floor(5*sqrt(O.potency))
 
 /obj/structure/machinery/reagentgrinder/proc/remove_object(obj/item/O)
 	holdingitems -= O
@@ -348,7 +348,7 @@
 						O.reagents.remove_reagent("nutriment", min(O.reagents.get_reagent_amount("nutriment"), space))
 				else
 					if(O.reagents != null && O.reagents.has_reagent("nutriment"))
-						beaker.reagents.add_reagent(r_id, min(round(O.reagents.get_reagent_amount("nutriment")*abs(amount)), space))
+						beaker.reagents.add_reagent(r_id, min(floor(O.reagents.get_reagent_amount("nutriment")*abs(amount)), space))
 						O.reagents.remove_reagent("nutriment", min(O.reagents.get_reagent_amount("nutriment"), space))
 
 			else
@@ -357,7 +357,7 @@
 			if(beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 				break
 
-		if(O.reagents.reagent_list.len == 0)
+		if(length(O.reagents.reagent_list) == 0)
 			remove_object(O)
 
 	//Sheets

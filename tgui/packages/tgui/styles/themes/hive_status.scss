@@ -1,8 +1,8 @@
 @use 'sass:meta';
 @use '../base.scss';
 @use '../colors.scss' with (
-   $primary: #52375c,
- );
+  $primary: #52375c
+);
 
 .theme-hive_status {
   // Components

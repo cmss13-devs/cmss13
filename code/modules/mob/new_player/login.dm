@@ -32,7 +32,7 @@
 		var/author = lobby_authors[GLOB.displayed_lobby_art]
 		if(author != "Unknown")
 			to_chat(src, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
-	if(GLOB.join_motd)
-		to_chat(src, "<div class=\"motd\">[GLOB.join_motd]</div>")
 	if(GLOB.current_tms)
 		to_chat(src, SPAN_BOLDANNOUNCE(GLOB.current_tms))
+	if(GLOB.join_motd)
+		to_chat(src, "<div class=\"motd\">[GLOB.join_motd]</div>")

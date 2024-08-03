@@ -69,7 +69,7 @@
 		current_mob.apply_armoured_damage(get_xeno_damage_slash(current_mob, damage), ARMOR_MELEE, BRUTE, null, 20)
 		playsound(current_mob, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
-	if (target_mobs.len >= shield_regen_threshold)
+	if (length(target_mobs) >= shield_regen_threshold)
 		var/datum/behavior_delegate/praetorian_vanguard/behavior = source_xeno.behavior_delegate
 		if (istype(behavior))
 			behavior.regen_shield()
@@ -133,7 +133,7 @@
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
 		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
-	if (target_mobs.len >= shield_regen_threshold)
+	if (length(target_mobs) >= shield_regen_threshold)
 		var/datum/behavior_delegate/praetorian_vanguard/behavior = X.behavior_delegate
 		if (istype(behavior))
 			behavior.regen_shield()
@@ -418,8 +418,8 @@
 
 
 	shake_camera(target_carbon, 2, 1)
-	var/datum/action/xeno_action/activable/prae_abduct/abduct_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/prae_abduct)
-	var/datum/action/xeno_action/activable/tail_lash/tail_lash_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/tail_lash)
+	var/datum/action/xeno_action/activable/prae_abduct/abduct_action = get_action(oppressor_user, /datum/action/xeno_action/activable/prae_abduct)
+	var/datum/action/xeno_action/activable/tail_lash/tail_lash_action = get_action(oppressor_user, /datum/action/xeno_action/activable/tail_lash)
 	if(abduct_action && !abduct_action.action_cooldown_check())
 		abduct_action.reduce_cooldown(5 SECONDS)
 	if(tail_lash_action && !tail_lash_action.action_cooldown_check())
@@ -879,12 +879,7 @@
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it spasms as it recuperates unnaturally quickly!")) //marines probably should know if a xeno gets rejuvenated
 		targetXeno.xeno_jitter(1 SECONDS) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating
 		targetXeno.flick_heal_overlay(3 SECONDS, "#F5007A") //therefore making the Praetorian a priority target
-		targetXeno.set_effect(0, PARALYZE)
-		targetXeno.set_effect(0, STUN)
-		targetXeno.set_effect(0, WEAKEN)
-		targetXeno.set_effect(0, DAZE)
-		targetXeno.set_effect(0, SLOW)
-		targetXeno.set_effect(0, SUPERSLOW)
+		targetXeno.clear_debuffs()
 		use_plasma = TRUE
 	if (use_plasma)
 		use_plasma_owner()

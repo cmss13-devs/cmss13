@@ -23,6 +23,8 @@
 
 	/// an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
 	var/projectile_coverage = 0
+	/// How many tiles away from this object that a shooter needs to be to maximize this barricade's projectile coverage
+	var/projectile_coverage_distance_limit = 6
 	/// set to true if the item is garbage and should be deleted after awhile
 	var/garbage = FALSE
 
@@ -277,18 +279,17 @@
 
 //trying to buckle a mob
 /obj/proc/buckle_mob(mob/M, mob/user)
-	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
+	if (!ismob(M) || (get_dist(src, user) > 1) || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
+		return
+
+	if (user.is_mob_incapacitated() || HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
+		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return
 
 	if (isxeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
 		return
 	if (iszombie(user))
-		return
-
-	// mobs that become immobilized should not be able to buckle themselves.
-	if(M == user && HAS_TRAIT(user, TRAIT_IMMOBILIZED))
-		to_chat(user, SPAN_WARNING("You are unable to do this in your current state."))
 		return
 
 	if(density)
@@ -306,6 +307,7 @@
 	if (M.mob_size <= MOB_SIZE_XENO)
 		if ((M.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(M, TRAIT_OPPOSABLE_THUMBS)))
 			do_buckle(M, user)
+			return
 	if ((M.mob_size > MOB_SIZE_HUMAN))
 		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
 		return
@@ -374,7 +376,7 @@
 		return 0
 	bullet_ping(P)
 	if(P.ammo.damage)
-		update_health(round(P.ammo.damage / 2))
+		update_health(floor(P.ammo.damage / 2))
 	return 1
 
 /obj/item/proc/get_mob_overlay(mob/user_mob, slot)
@@ -415,7 +417,7 @@
 
 	var/offset_x = worn_x_dimension
 	var/offset_y = worn_y_dimension
-	if(inhands)
+	if(inhands == 1 || inhands == 0)
 		offset_x = inhand_x_dimension
 		offset_y = inhand_y_dimension
 

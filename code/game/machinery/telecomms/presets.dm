@@ -81,7 +81,7 @@
 	else if(P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
 		update_health(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	update_health(round(P.damage/2))
+	update_health(floor(P.damage/2))
 	return TRUE
 
 /obj/structure/machinery/telecomms/relay/preset/tower/update_health(damage = 0)
@@ -122,7 +122,7 @@
 			return
 		if(user.action_busy)
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return
 		var/obj/item/tool/weldingtool/WT = I
@@ -306,6 +306,11 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	else
 		update_icon()
 
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/update_state()
+	..()
+	if(inoperable())
+		handle_xeno_acquisition(get_turf(src))
+
 /// Handles xenos corrupting the tower when weeds touch the turf it is located on
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(turf/weeded_turf)
 	SIGNAL_HANDLER
@@ -328,12 +333,15 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(SSticker.mode.is_in_endgame)
 		return
 
+	if(operable())
+		return
+
 	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
-		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME))
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		return
 
 	if(!COOLDOWN_FINISHED(src, corruption_delay))
-		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (COOLDOWN_TIMELEFT(src, corruption_delay)))
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (COOLDOWN_TIMELEFT(src, corruption_delay)), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		return
 
 	var/obj/effect/alien/weeds/node/pylon/cluster/parent_node = weeded_turf.weeds.parent
@@ -450,7 +458,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "CentComm Receiver"
 	network = "tcommsat"
 	autolinkers = list("receiverCent")
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ, FORECON_FREQ)
 
 //Buses
 

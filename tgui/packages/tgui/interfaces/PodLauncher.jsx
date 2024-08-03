@@ -1,10 +1,22 @@
 import { toFixed } from 'common/math';
 import { storage } from 'common/storage';
-import { multiline } from 'common/string';
 import { createUuid } from 'common/uuid';
-import { Component, Fragment } from 'react';
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, ByondUi, Divider, Input, Knob, LabeledControls, NumberInput, Section, Flex, Slider } from '../components';
+import { Component, Fragment, useState } from 'react';
+
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  ByondUi,
+  Divider,
+  Flex,
+  Input,
+  Knob,
+  LabeledControls,
+  NumberInput,
+  Section,
+  Slider,
+} from '../components';
 import { Window } from '../layouts';
 
 const pod_grey = {
@@ -20,6 +32,7 @@ export const PodLauncher = (props) => {
 };
 
 const PodLauncherContent = (props) => {
+  const [tabPageIndex, setTabPageIndex] = useState(1);
   return (
     <Window.Content>
       <Flex direction="column" height="100%">
@@ -34,7 +47,10 @@ const PodLauncherContent = (props) => {
                   <PresetsPage />
                 </Flex.Item>
                 <Flex.Item>
-                  <ReverseMenu />
+                  <ReverseMenu
+                    tabPageIndex={tabPageIndex}
+                    setTabPageIndex={setTabPageIndex}
+                  />
                 </Flex.Item>
                 <Flex.Item>
                   <Section>
@@ -44,7 +60,10 @@ const PodLauncherContent = (props) => {
               </Flex>
             </Flex.Item>
             <Flex.Item grow={3}>
-              <ViewTabHolder />
+              <ViewTabHolder
+                tabPageIndex={tabPageIndex}
+                setTabPageIndex={setTabPageIndex}
+              />
             </Flex.Item>
             <Flex.Item basis="16em">
               <Flex height="100%" direction="column">
@@ -237,7 +256,7 @@ const EFFECTS_ALL = [
     list: EFFECTS_LOAD,
     label: 'Load From',
     alt_label: 'Load',
-    tooltipPosition: 'right',
+    tooltipPosition: 'bottom',
   },
   {
     list: EFFECTS_NORMAL,
@@ -248,7 +267,7 @@ const EFFECTS_ALL = [
 
 const ViewTabHolder = (props) => {
   const { act, data } = useBackend();
-  const [tabPageIndex, setTabPageIndex] = useLocalState('tabPageIndex', 1);
+  const { tabPageIndex, setTabPageIndex } = props;
   const { glob_tab_indexes, custom_dropoff, map_ref } = data;
   const TabPageComponent = TABPAGES[tabPageIndex].component();
   return (
@@ -310,24 +329,22 @@ const ViewTabHolder = (props) => {
           <Button
             icon="trash"
             color="transparent"
-            tooltip={multiline`
-            Clears everything
-            from the bay`}
-            tooltipOverrideLong
+            tooltip={`Clears everything from the bay`}
             tooltipPosition="top"
             onClick={() => act('clear_bay')}
           />
         </>
-      }>
+      }
+    >
       <Flex direction="column" height="100%">
         <Flex.Item>
           <TabPageComponent />
         </Flex.Item>
         <Flex.Item grow={1} mt={1}>
           <ByondUi
+            className="CameraPanel"
             height="100%"
             params={{
-              zoom: 0,
               id: map_ref,
               type: 'map',
             }}
@@ -352,17 +369,16 @@ const TabBay = (props) => {
   const { act, data } = useBackend();
   return (
     <>
+      <Button icon="street-view" onClick={() => act('goto_bay')}>
+        Teleport
+      </Button>
       <Button
-        content="Teleport"
-        icon="street-view"
-        onClick={() => act('goto_bay')}
-      />
-      <Button
-        content={data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
         disabled={!data.old_area}
         icon="undo-alt"
         onClick={() => act('goto_prev_turf')}
-      />
+      >
+        {data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
+      </Button>
     </>
   );
 };
@@ -371,17 +387,16 @@ const TabDrop = (props) => {
   const { act, data } = useBackend();
   return (
     <>
+      <Button icon="street-view" onClick={() => act('goto_dropoff')}>
+        Teleport
+      </Button>
       <Button
-        content="Teleport"
-        icon="street-view"
-        onClick={() => act('goto_dropoff')}
-      />
-      <Button
-        content={data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
         disabled={!data.old_area}
         icon="undo-alt"
         onClick={() => act('goto_prev_turf')}
-      />
+      >
+        {data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
+      </Button>
     </>
   );
 };
@@ -410,9 +425,7 @@ const PodStatusPage = (props) => {
                         <Button
                           tooltip={effect.title}
                           tooltipPosition={list.tooltipPosition}
-                          tooltipOverrideLong
                           icon={effect.icon}
-                          content={effect.content}
                           selected={
                             effect.selected ? effect.selected(data) : false
                           }
@@ -422,13 +435,15 @@ const PodStatusPage = (props) => {
                             }
                           }}
                           style={{
-                            'vertical-align': 'middle',
-                            'margin-left': j !== 0 ? '1px' : '0px',
-                            'margin-right':
+                            verticalAlign: 'middle',
+                            marginLeft: j !== 0 ? '1px' : '0px',
+                            marginRight:
                               j !== list.list.length - 1 ? '1px' : '0px',
-                            'border-radius': '5px',
+                            borderRadius: '5px',
                           }}
-                        />
+                        >
+                          {effect.content}
+                        </Button>
                       )}
                     </Flex.Item>
                   ))}
@@ -444,20 +459,16 @@ const PodStatusPage = (props) => {
 
 const ReverseMenu = (props) => {
   const { act, data } = useBackend();
-  const [tabPageIndex, setTabPageIndex] = useLocalState('tabPageIndex', 1);
+  const { tabPageIndex, setTabPageIndex } = props;
   const { glob_tab_indexes, target_mode } = data;
   const { TARGET_MODE_DROPOFF, TARGET_MODE_NONE } = data.glob_target_mode;
   return (
     <Section fill height="100%" title="Reverse">
-      <Flex fill direction="column">
+      <Flex fill={1} direction="column">
         <Flex.Item maxHeight="20px">
           <Button
-            content="Dropoff Turf"
             selected={target_mode === TARGET_MODE_DROPOFF}
-            tooltip={multiline`
-              Where the pods
-              go after being recalled`}
-            tooltipOverrideLong
+            tooltip={`Where the pods go after being recalled`}
             tooltipPosition="bottom"
             onClick={() => {
               if (data.target_mode === TARGET_MODE_DROPOFF) {
@@ -470,15 +481,14 @@ const ReverseMenu = (props) => {
                 });
               }
             }}
-          />
+          >
+            Dropoff Turf
+          </Button>
           <Button
             inline
             icon="trash"
             disabled={!data.custom_dropoff}
-            tooltip={multiline`
-              Clears the custom dropoff
-              location.`}
-            tooltipOverrideLong
+            tooltip={`Clears the custom dropoff location.`}
             tooltipPosition="bottom"
             onClick={() => {
               act('clear_dropoff');
@@ -499,6 +509,10 @@ class PresetsPage extends Component {
     super();
     this.state = {
       presets: [],
+      presetIndex: 0,
+      settingName: 0,
+      newNameText: '',
+      hue: 0,
     };
   }
 
@@ -550,14 +564,13 @@ class PresetsPage extends Component {
       }
     }
     storage.set('cm_podlauncher_presetlist', presets);
+    this.setState({
+      presets: presets,
+    });
   }
   render() {
-    const { presets } = this.state;
+    const { presets, presetIndex, settingName, newNameText, hue } = this.state;
     const { act, data } = useBackend();
-    const [presetIndex, setSelectedPreset] = useLocalState('presetIndex', 0);
-    const [settingName, setEditingNameStatus] = useLocalState('settingName', 0);
-    const [newNameText, setText] = useLocalState('newNameText', '');
-    const [hue, setHue] = useLocalState('hue', 0);
     return (
       <Section
         scrollable
@@ -570,25 +583,24 @@ class PresetsPage extends Component {
                 color="transparent"
                 icon="plus"
                 tooltip="New Preset"
-                onClick={() => setEditingNameStatus(1)}
+                tooltipPosition="bottom"
+                onClick={() => this.setState({ settingName: 1 })}
               />
             )}
             <Button
               inline
               color="transparent"
-              content=""
               icon="download"
               tooltip="Saves preset"
-              tooltipOverrideLong
               tooltipPosition="bottom"
               onClick={() => this.saveDataToPreset(presetIndex, data)}
             />
             <Button
               inline
               color="transparent"
-              content=""
               icon="upload"
               tooltip="Loads preset"
+              tooltipPosition="bottom"
               onClick={() => {
                 this.loadDataFromPreset(presetIndex);
               }}
@@ -602,7 +614,8 @@ class PresetsPage extends Component {
               onClick={() => this.deletePreset(presetIndex)}
             />
           </>
-        }>
+        }
+      >
         {settingName === 1 && (
           <>
             <Button
@@ -612,7 +625,7 @@ class PresetsPage extends Component {
               tooltipPosition="right"
               onClick={() => {
                 this.newPreset(newNameText, hue, data);
-                setEditingNameStatus(0);
+                this.setState({ settingName: 0 });
               }}
             />
             <Button
@@ -620,8 +633,7 @@ class PresetsPage extends Component {
               icon="window-close"
               tooltip="Cancel"
               onClick={() => {
-                setText('');
-                setEditingNameStatus(0);
+                this.setState({ newNameText: '', settingName: 0 });
               }}
             />
             <span color="label"> Hue: </span>
@@ -634,13 +646,13 @@ class PresetsPage extends Component {
               value={hue}
               minValue={0}
               maxValue={360}
-              onChange={(e, value) => setHue(value)}
+              onChange={(value) => this.setState({ hue: value })}
             />
             <Input
               inline
               autofocus
               placeholder="Preset Name"
-              onChange={(e, value) => setText(value)}
+              onChange={(e, value) => this.setState({ newNameText: value })}
             />
             <Divider horizontal />
           </>
@@ -653,23 +665,28 @@ class PresetsPage extends Component {
         )}
         {presets
           ? presets.map((preset, i) => (
-            <Button
-              key={i}
-              width="100%"
-              backgroundColor={`hsl(${preset.hue}, 50%, 50%)`}
-              onClick={() => setSelectedPreset(preset.id)}
-              content={preset.title}
-              style={
-                presetIndex === preset.id
-                  ? {
-                    'border-width': '1px',
-                    'border-style': 'solid',
-                    'border-color': `hsl(${preset.hue}, 80%, 80%)`,
-                  }
-                  : ''
-              }
-            />
-          ))
+              <Button
+                key={i}
+                width="100%"
+                backgroundColor={`hsl(${preset.hue}, 50%, 50%)`}
+                onClick={() =>
+                  this.setState({
+                    presetIndex: preset.id,
+                  })
+                }
+                style={
+                  presetIndex === preset.id
+                    ? {
+                        borderWidth: '1px',
+                        borderStyle: 'solid',
+                        borderColor: `hsl(${preset.hue}, 80%, 80%)`,
+                      }
+                    : ''
+                }
+              >
+                {preset.title}
+              </Button>
+            ))
           : ''}
       </Section>
     );
@@ -683,16 +700,9 @@ const LaunchPage = (props) => {
     <Button
       fluid
       textAlign="center"
-      tooltip={multiline`
-        Launches the droppod`}
-      tooltipOverrideLong
+      tooltip={`Launches the droppod`}
       selected={data.target_mode === TARGET_MODE_LAUNCH}
       tooltipPosition="top"
-      content={
-        <Box bold fontSize="1.4em" lineHeight={3}>
-          LAUNCH
-        </Box>
-      }
       onClick={() => {
         if (data.target_mode === TARGET_MODE_LAUNCH) {
           act('set_target_mode', {
@@ -704,7 +714,11 @@ const LaunchPage = (props) => {
           });
         }
       }}
-    />
+    >
+      <Box bold fontSize="1.4em" lineHeight={3}>
+        LAUNCH
+      </Box>
+    </Button>
   );
 };
 
@@ -718,26 +732,24 @@ const Timing = (props) => {
         <Button
           icon="undo"
           color="transparent"
-          tooltip={multiline`
-          Reset all pod
-          timings/delays`}
-          tooltipOverrideLong
+          tooltip={`Reset all pod timings/delays`}
           tooltipPosition="top"
           onClick={() => {
             act('set_delays', {
-              'drop_time': 0,
-              'dropping_time': 35,
-              'open_time': 30,
-              'return_time': 300,
+              drop_time: 0,
+              dropping_time: 35,
+              open_time: 30,
+              return_time: 300,
             });
             act('set_reverse_delays', {
-              'drop_time': 0,
-              'dropping_time': 35,
-              'open_time': 30,
+              drop_time: 0,
+              dropping_time: 35,
+              open_time: 30,
             });
           }}
         />
-      }>
+      }
+    >
       <DelayHelper delay_list={DELAYS} title="Normal Timers" />
       {!!data.should_recall && (
         <>
@@ -814,15 +826,15 @@ const Damage = (props) => {
           icon="undo"
           color="transparent"
           tooltip="Reset damage"
-          tooltipOverrideLong
           tooltipPosition="top"
           onClick={() => {
             act('set_damage', {
-              'damage': 0,
+              damage: 0,
             });
           }}
         />
-      }>
+      }
+    >
       <Slider
         value={data.land_damage}
         ranges={{
@@ -842,7 +854,7 @@ const Damage = (props) => {
 
 const Explosion = (props) => {
   const { act, data } = useBackend();
-  const [enabled, setEnabled] = useLocalState('explosion_enabled', false);
+  const [enabled, setEnabled] = useState(false);
   return (
     <Section
       fill
@@ -853,25 +865,25 @@ const Explosion = (props) => {
           selected={enabled}
           color="transparent"
           tooltip="Toggle explosion"
-          tooltipOverrideLong
           tooltipPosition="top"
           onClick={() => {
             if (enabled) {
               setEnabled(false);
               act('set_explosive_parameters', {
-                'power': 0,
-                'falloff': 75,
+                power: 0,
+                falloff: 75,
               });
             } else {
               setEnabled(true);
               act('set_explosive_parameters', {
-                'power': 50,
-                'falloff': 75,
+                power: 50,
+                falloff: 75,
               });
             }
           }}
         />
-      }>
+      }
+    >
       {!!enabled && (
         <>
           <Slider

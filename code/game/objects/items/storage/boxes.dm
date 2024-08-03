@@ -470,6 +470,7 @@
 	item_state = "zippo"
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_WAIST
+	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 	can_hold = list(/obj/item/tool/match)
 
 /obj/item/storage/box/matches/fill_preset_inventory()
@@ -574,7 +575,7 @@
 		new /obj/item/device/flashlight/flare(src)
 
 /obj/item/storage/box/m94/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		icon_state = "m94_e"
 	else
 		icon_state = "m94"
@@ -590,7 +591,7 @@
 		new /obj/item/device/flashlight/flare/signal(src)
 
 /obj/item/storage/box/m94/signal/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		icon_state = "m89_e"
 	else
 		icon_state = "m89"
@@ -608,6 +609,24 @@
 	var/grenade_type = /obj/item/explosive/grenade/high_explosive
 	has_gamemode_skin = TRUE
 
+/obj/item/storage/box/nade_box/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
+
+/obj/item/storage/box/nade_box/proc/try_forced_folding(datum/source, mob/user)
+	SIGNAL_HANDLER
+
+	if(!isturf(loc))
+		return
+
+	if(length(contents))
+		return
+
+	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
+	storage_close(user)
+	to_chat(user, SPAN_NOTICE("You throw away [src]."))
+	qdel(src)
+
 /obj/item/storage/box/nade_box/post_skin_selection()
 	base_icon = icon_state
 
@@ -616,9 +635,8 @@
 		new grenade_type(src)
 
 /obj/item/storage/box/nade_box/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		icon_state = "[base_icon]_e"
-		qdel(src) //No reason to keep it - nobody will reuse it...
 	else
 		icon_state = base_icon
 
@@ -728,7 +746,7 @@
 	storage_slots = 7
 	max_w_class = 0
 	use_sound = "rip"
-	var/isopened = 0
+	var/isopened = FALSE
 
 /obj/item/storage/box/MRE/fill_preset_inventory()
 	pickflavor()
@@ -766,12 +784,15 @@
 
 /obj/item/storage/box/MRE/Initialize()
 	. = ..()
-	isopened = 0
+	isopened = FALSE
 	icon_state = "mealpack"
 	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
 
 /obj/item/storage/box/MRE/proc/try_forced_folding(datum/source, mob/user)
 	SIGNAL_HANDLER
+
+	if(!isturf(loc))
+		return
 
 	if(locate(/obj/item/reagent_container/food/snacks/packaged_meal) in src)
 		return
@@ -782,10 +803,8 @@
 	qdel(src)
 
 /obj/item/storage/box/MRE/update_icon()
-	if(!contents.len)
-		qdel(src)
-	else if(!isopened)
-		isopened = 1
+	if(!isopened)
+		isopened = TRUE
 		icon_state = "mealpackopened"
 
 //food boxes for storage in bulk

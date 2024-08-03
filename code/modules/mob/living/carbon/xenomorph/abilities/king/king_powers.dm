@@ -344,7 +344,7 @@
 
 /obj/effect/xenomorph/xeno_telegraph/king_attack_template
 	icon = 'icons/effects/96x96.dmi'
-	icon_state = "xenolandingpink"
+	icon_state = "landing2"
 	layer = BELOW_MOB_LAYER
 
 /obj/effect/xenomorph/xeno_telegraph/king_attack_template/yellow

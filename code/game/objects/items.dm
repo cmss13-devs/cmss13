@@ -163,6 +163,9 @@
 	/// How much to offset the item randomly either way alongside Y visually
 	var/ground_offset_y = 0
 
+	/// Special storages this item prioritizes
+	var/list/preferred_storage
+
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 

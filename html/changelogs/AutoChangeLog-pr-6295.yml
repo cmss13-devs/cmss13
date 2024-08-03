@@ -1,8 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - code_imp: "Changed back-end for working out equipment preset paygrades so as to remove the manual overrides on several roles based on playtime perks."
-  - rscadd: "Added lower ranks for all enlisted and some officer roles subject to having played for less than ten hours. This rank cannot be used after playing more than ten hours, and ignores preferences for playtime perks."
-  - rscadd: "Added a higher rank achievable to most enlisted and some officers, requiring 175+ hours."
-  - rscadd: "Changed base rank for SL, SG, Spec and FTL by one grade up."
-  - rscadd: "Changed low playtime rank for MP and Nurse from Lance Corporal to Corporal."

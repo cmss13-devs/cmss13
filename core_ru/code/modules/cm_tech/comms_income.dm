@@ -11,8 +11,10 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
+	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME || world.time < next_income_timer)
 		return
+
+	next_income_timer = world.time + RESOURCE_INCOME_TELECOMMS_DELAY
 
 	var/datum/techtree/tree
 	if(corrupted)
@@ -20,15 +22,9 @@
 	else if(toggled)
 		tree = marine_tree
 
-	if(world.time > next_income_timer)
-		next_income_timer = world.time + RESOURCE_INCOME_TELECOMMS_DELAY
-		return
-
 	if(tree)
 		tree.on_process()
 		tree.add_points(RESOURCE_INCOME_TELECOMMS)
-
-#undef RESOURCE_INCOME_TELECOMMS_DELAY
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/New()
 	. = ..()
@@ -42,3 +38,6 @@
 
 /datum/techtree/marine/on_process()
 	SSobjectives.comms.score_new_points(RESOURCE_INCOME_TELECOMMS)
+
+#undef RESOURCE_INCOME_TELECOMMS_DELAY
+#undef RESOURCE_INCOME_TELECOMMS

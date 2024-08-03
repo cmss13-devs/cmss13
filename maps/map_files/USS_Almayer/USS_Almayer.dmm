@@ -235,7 +235,7 @@
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/obj/structure/machinery/cm_vending/clothing/staff_officer_armory,
+/obj/structure/machinery/cm_vending/gear/staff_officer_armory,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
 "abR" = (
@@ -51901,7 +51901,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/upper/u_a_p)
 "ryR" = (
-/obj/structure/machinery/cm_vending/clothing/staff_officer_armory,
+/obj/structure/machinery/cm_vending/gear/staff_officer_armory,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
 "ryY" = (

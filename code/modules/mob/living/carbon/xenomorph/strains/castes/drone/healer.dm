@@ -257,6 +257,9 @@
 
 	xeno.say(";MY LIFE FOR THE QUEEN!!!")
 
+	if(target.health < 0)
+		target.gain_health(abs(target.health)) // gets them out of crit first
+
 	target.gain_health(xeno.health * transfer_mod)
 	target.updatehealth()
 

@@ -11,7 +11,7 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME || world.time < next_income_timer)
+	if(world.time < next_income_timer)
 		return
 
 	next_income_timer = world.time + RESOURCE_INCOME_TELECOMMS_DELAY

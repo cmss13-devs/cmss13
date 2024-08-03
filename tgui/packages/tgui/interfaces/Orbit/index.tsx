@@ -158,6 +158,10 @@ const marineSplitter = (members: Array<Observable>) => {
   const charlieSquad: Array<Observable> = [];
   const deltaSquad: Array<Observable> = [];
   const foxtrotSquad: Array<Observable> = [];
+  const echoSquad: Array<Observable> = [];
+  const CBRNSquad: Array<Observable> = [];
+  const FORECONSquad: Array<Observable> = [];
+  const SOFSquad: Array<Observable> = [];
   const other: Array<Observable> = [];
 
   members.forEach((x) => {
@@ -171,6 +175,14 @@ const marineSplitter = (members: Array<Observable>) => {
       deltaSquad.push(x);
     } else if (x.job?.includes('Foxtrot')) {
       foxtrotSquad.push(x);
+    } else if (x.job?.includes('Echo')) {
+      echoSquad.push(x);
+    } else if (x.job?.includes('CBRN')) {
+      CBRNSquad.push(x);
+    } else if (x.job?.includes('FORECON')) {
+      FORECONSquad.push(x);
+    } else if (x.job?.includes('SOF')) {
+      SOFSquad.push(x);
     } else {
       other.push(x);
     }
@@ -181,7 +193,11 @@ const marineSplitter = (members: Array<Observable>) => {
     buildSquadObservable('Bravo', 'yellow', bravoSquad),
     buildSquadObservable('Charlie', 'purple', charlieSquad),
     buildSquadObservable('Delta', 'blue', deltaSquad),
-    buildSquadObservable('Foxtrot', 'teal', foxtrotSquad),
+    buildSquadObservable('Foxtrot', 'brown', foxtrotSquad),
+    buildSquadObservable('Echo', 'teal', echoSquad),
+    buildSquadObservable('CBRN', 'dark-blue', CBRNSquad),
+    buildSquadObservable('FORECON', 'green', FORECONSquad),
+    buildSquadObservable('SOF', 'red', SOFSquad),
     buildSquadObservable('Other', 'grey', other),
   ];
   return squads;

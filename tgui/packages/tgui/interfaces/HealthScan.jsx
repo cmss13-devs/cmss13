@@ -46,6 +46,7 @@ export const HealthScan = (props) => {
     hugged,
     detail_level,
     permadead,
+    heart_broken,
     advice,
     species,
     holocard,
@@ -116,9 +117,11 @@ export const HealthScan = (props) => {
               <LabeledList.Item label="Condition">
                 <Box color={permadead ? 'red' : 'green'} bold={1}>
                   {permadead
-                    ? 'Permanently deceased'
+                    ? heart_broken
+                      ? 'Myocardial rupture, surgical intervention required'
+                      : 'Permanently deceased'
                     : Synthetic
-                      ? 'Central power system shutdown, reboot possible.'
+                      ? 'Central power system shutdown, reboot possible'
                       : 'Cardiac arrest, defibrillation possible'}
                 </Box>
               </LabeledList.Item>

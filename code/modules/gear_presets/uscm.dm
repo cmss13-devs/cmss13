@@ -963,12 +963,6 @@
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 
-/datum/equipment_preset/uscm/marsoc/sl/load_rank(mob/living/carbon/human/new_human)
-	if(new_human.client)
-		if(get_job_playtime(new_human.client, rank) > JOB_PLAYTIME_TIER_2)
-			return PAY_SHORT_MO2
-	return paygrade
-
 //############ Solar Devils (PvE Marines) #############
 //## Random Headware/Mask Setup ##//
 /datum/equipment_preset/uscm/proc/spawn_marine_fluff_items(mob/living/carbon/human/new_human)

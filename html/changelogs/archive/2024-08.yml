@@ -1,0 +1,36 @@
+2024-08-02:
+  Asmocard:
+  - qol: Can now dump containers into the seed extractor
+  Blundir:
+  - rscadd: throw volume is lower and based on the distance of throw, half visible
+      mobs make no throw sound (sniper, scout, yautja)
+  - rscadd: throw animation pixel shifts for less pixels
+  - rscadd: lowered throw sound range a bit
+  - soundadd: added mutiple unique sound for throwing things
+  - soundadd: added numerous phone sounds for different phone interactions
+  CapCamIII:
+  - rscadd: UPP and CLF department channels now have distinct chat colors
+  Doubleumc:
+  - bugfix: fixed tank secondary flamer stopping after one tile
+  - balance: flamers can now fire streams over the "wrong" side of a barricade, when
+      adjacent
+  VileBeggar:
+  - bugfix: You can no longer build structures on top of dense objects. This prevents
+      weird layering happening with walls and tables, window frames, etc.
+  - bugfix: You can no longer rest while on ovi as a Queen, which made half of your
+      abilities unusable if you did so.
+  - rscadd: The weapon stats screen now shows the effective range of ammo, instead
+      of its armor punch value.
+  - bugfix: Health scans will now display the heartbroken status if applicable.
+  cuberound:
+  - code_imp: changes references from nanotrasen to weyland yutani
+  ihatethisengine2:
+  - balance: heavy revolver ammo cannot slowdown t3s anymore.
+  - bugfix: fixed the lockdown button working after dropship being locked by Queen
+  kiVts:
+  - rscadd: Players will not get picked at certain ERT beacons if they dont have enough
+      playtime in relevant area.
+2024-08-03:
+  hislittlecuzingames:
+  - qol: Can roleplay easier with cigarettes, cigars, lighters counting as cosmetic
+      for helmet storage purposes.

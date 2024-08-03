@@ -470,6 +470,7 @@
 	item_state = "zippo"
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_WAIST
+	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 	can_hold = list(/obj/item/tool/match)
 
 /obj/item/storage/box/matches/fill_preset_inventory()

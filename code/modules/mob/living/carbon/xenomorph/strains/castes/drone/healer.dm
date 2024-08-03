@@ -164,7 +164,11 @@
 		else
 			salve_applied_icon.icon_state = "Healer Drone Knocked Down"
 	else
-		salve_applied_icon.icon_state = "Healer Drone Walking"
+		switch(bound_xeno.m_intent)
+			if(MOVE_INTENT_STALK)
+				salve_applied_icon.icon_state = "Healer Drone Walking"
+			if(MOVE_INTENT_HUNT)
+				salve_applied_icon.icon_state = "Healer Drone Running"
 
 	bound_xeno.overlays += salve_applied_icon
 

@@ -379,7 +379,11 @@
 		else
 			fruit_sac_overlay_icon.icon_state = "Gardener Drone Knocked Down"
 	else
-		fruit_sac_overlay_icon.icon_state = "Gardener Drone Walking"
+		switch(bound_xeno.m_intent)
+			if(MOVE_INTENT_STALK)
+				fruit_sac_overlay_icon.icon_state = "Gardener Drone Walking"
+			if(MOVE_INTENT_HUNT)
+				fruit_sac_overlay_icon.icon_state = "Gardener Drone Running"
 
 	var/fruit_sac_color = initial(bound_xeno.selected_fruit.gardener_sac_color)
 

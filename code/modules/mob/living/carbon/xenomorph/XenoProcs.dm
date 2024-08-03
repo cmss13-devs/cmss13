@@ -248,6 +248,7 @@
 			evasion_modifier += XENO_EVASION_MOD_ULTRA // this looks like a lot but evasion is broken and doesnt even work most of the time
 			add_temp_pass_flags(PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO)
 	recalculate_evasion()
+	update_icons()
 
 //Adds or removes a delay to movement based on your caste. If speed = 0 then it shouldn't do much.
 //Runners are -2, -4 is BLINDLINGLY FAST, +2 is fat-level

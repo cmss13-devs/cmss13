@@ -374,6 +374,9 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	addtimer(CALLBACK(src, PROC_REF(switch_to_idle_corruption)), (2 SECONDS))
 
 	new_pylon.comms_relay_connection()
+//RUCM START
+	START_PROCESSING(SSobj, src)
+//RUCM END
 
 /// Handles removing corruption effects from the comms relay
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/uncorrupt(datum/deleting_datum)

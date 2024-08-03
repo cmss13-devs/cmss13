@@ -174,7 +174,9 @@
 #define XENO_BURIED_LARVA_TIME_LIMIT (30 MINUTES)
 
 /// The time when xenos can start taking over comm towers
+/*RUCM CHANGE
 #define XENO_COMM_ACQUISITION_TIME (55 MINUTES)
+*/
 
 /// The time it takes for a pylon to give one larva while activated
 #define XENO_PYLON_ACTIVATION_COOLDOWN (5 MINUTES)

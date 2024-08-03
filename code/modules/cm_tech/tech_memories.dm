@@ -175,14 +175,28 @@
 		"white"
 	))
 
+//RUCM START
+	var/active_comms
+	for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/C in world)
+		if(C && C?:toggled && !C?:corrupted)
+			active_comms += 1
+//RUCM END
 	// Communications
 	objectives += list(get_objective(
 		"Colony communications",
+/* RUCM CHANGE
 		FALSE,
 		FALSE,
 		(SSobjectives.comms.state == OBJECTIVE_COMPLETE ? SSobjectives.comms.value : FALSE),
 		(SSobjectives.comms.state == OBJECTIVE_COMPLETE ? "green" : "red"),
 		(SSobjectives.comms.state == OBJECTIVE_COMPLETE ? "Online" : "Offline"),
+*/
+//RUCM START
+		(active_comms ? active_comms : "0"),
+		2,
+		SSobjectives.comms.value,
+		(active_comms ? "green" : "red"),
+//RUCM END
 	))
 
 	// Power (smes)

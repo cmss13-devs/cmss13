@@ -148,7 +148,7 @@
 				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage!"))
 		else
 			user.affected_message(target,
-				SPAN_WARNING("Your hands are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage!"),
+				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage!"),
 				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage!"),
 				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage!"))
 			var/datum/internal_organ/I = pick(surgery.affected_limb.internal_organs)

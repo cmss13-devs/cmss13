@@ -7,8 +7,11 @@
 	var/datum/techtree/marine_tree
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/process(delta_time)
-	if(!toggled && !corrupted || ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
+	if(!toggled && !corrupted)
 		STOP_PROCESSING(SSobj, src)
+		return
+
+	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
 		return
 
 	var/datum/techtree/tree

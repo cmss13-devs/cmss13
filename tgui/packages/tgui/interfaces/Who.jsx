@@ -20,7 +20,7 @@ export const Who = (props, context) => {
   } = data;
 
   const total_players = mergeArrays(
-    base_data.total_players,
+    base_data?.total_players,
     player_additional?.total_players,
     player_stealthed_additional?.total_players,
   );
@@ -60,7 +60,7 @@ export const Who = (props, context) => {
             </Section>
           </Stack.Item>
           <Stack.Item mt={0.2} grow>
-            {filteredTotalPlayers ? (
+            {filteredTotalPlayers && (
               <Section>
                 <WhoCollapsible
                   title={'Players - ' + filteredTotalPlayers.length}
@@ -71,8 +71,8 @@ export const Who = (props, context) => {
                   </Box>
                 </WhoCollapsible>
               </Section>
-            ) : null}
-            {factions_additional ? (
+            )}
+            {factions_additional && (
               <Section>
                 <WhoCollapsible title="Information" color="olive">
                   <Box direction="column">
@@ -87,7 +87,7 @@ export const Who = (props, context) => {
                   </Box>
                 </WhoCollapsible>
               </Section>
-            ) : null}
+            )}
           </Stack.Item>
         </Stack>
       </Window.Content>
@@ -96,7 +96,6 @@ export const Who = (props, context) => {
 };
 
 const WhoCollapsible = (props, context) => {
-  const { act } = useBackend(context);
   const { title, color, children } = props;
   return (
     <Collapsible title={title} color={color} open>
@@ -106,16 +105,15 @@ const WhoCollapsible = (props, context) => {
 };
 
 const GetAddInfo = (props, context) => {
-  const { act } = useBackend(context);
   const { content, color, text } = props;
 
   return (
     <Button
-      color={'transparent'}
+      color="transparent"
       style={{
-        'border-color': color,
-        'border-style': 'solid',
-        'border-width': '1px',
+        borderColor: color,
+        borderStyle: 'solid',
+        borderWidth: '1px',
         color: color,
       }}
       tooltip={text}
@@ -127,40 +125,31 @@ const GetAddInfo = (props, context) => {
 };
 
 const FilterPlayers = (props, context) => {
-  const { act } = useBackend(context);
   const { players_to_filter } = props;
 
-  return players_to_filter.map((x) => {
-    const ckey = Object.keys(x)[0];
-    const params = x[ckey];
-    const extractedParams = {};
-    params.forEach((param) => {
-      Object.keys(param).forEach((key) => {
-        extractedParams[key] = param[key];
-      });
-    });
-    return <GetPlayerInfo key={ckey} ckey={ckey} {...extractedParams} />;
+  return players_to_filter.map((clientObj) => {
+    const ckey = Object.keys(clientObj)[0];
+    return <GetPlayerInfo key={ckey} ckey={ckey} {...clientObj[ckey][0]} />;
   });
 };
 
 const GetPlayerInfo = (props, context) => {
-  const { act } = useBackend(context);
-  const { ckey, text, ckey_color, color } = props;
+  const { ckey, text, color, ckey_color } = props;
 
   return (
     <Button
-      color={'transparent'}
+      color="transparent"
       style={{
-        'border-color': color ? color : '#2185d0',
-        'border-style': 'solid',
-        'border-width': '1px',
-        color: color ? color : ckey_color,
+        borderColor: color || '#2185d0',
+        borderStyle: 'solid',
+        borderWidth: '1px',
+        color: color || ckey_color || '#2185d0',
       }}
       onClick={() => act('get_player_panel', { ckey: ckey })}
       tooltip={text}
       tooltipPosition="bottom-start"
     >
-      <div color={color ? color : ckey_color}>{ckey}</div>
+      <div style={{ color: color || ckey_color || '#2185d0' }}>{ckey}</div>
     </Button>
   );
 };
@@ -179,14 +168,10 @@ const mergeArrays = (...arrays) => {
   const mergedObject = {};
 
   arrays.forEach((array) => {
-    if (!array) {
-      return;
-    }
+    if (!array) return;
 
     array.forEach((item) => {
-      if (!item) {
-        return;
-      }
+      if (!item) return;
 
       const key = Object.keys(item)[0];
       const value = item[key];
@@ -196,21 +181,22 @@ const mergeArrays = (...arrays) => {
       }
 
       value.forEach((subItem) => {
-        if (!subItem) {
-          return;
-        }
+        if (typeof subItem !== 'object' || subItem === null) return;
 
-        const subKey = Object.keys(subItem)[0];
-        const subValue = subItem[subKey];
-
-        const existingItem = mergedObject[key].find(
-          (funny_value) => Object.keys(funny_value)[0] === subKey,
+        const existingItemIndex = mergedObject[key].findIndex(
+          (existingSubItem) =>
+            Object.keys(existingSubItem).some((subKey) =>
+              Object.prototype.hasOwnProperty.call(subItem, subKey),
+            ),
         );
 
-        if (existingItem) {
-          existingItem[subKey] = subValue;
+        if (existingItemIndex !== -1) {
+          mergedObject[key][existingItemIndex] = {
+            ...mergedObject[key][existingItemIndex],
+            ...subItem,
+          };
         } else {
-          mergedObject[key].push({ [subKey]: subValue });
+          mergedObject[key].push(subItem);
         }
       });
     });

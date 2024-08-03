@@ -31,7 +31,6 @@ export const StaffWho = (props, context) => {
 };
 
 const FilterCategories = (props, context) => {
-  const { act } = useBackend(context);
   const { categories, total_admins } = props;
 
   return categories.map((category) => {
@@ -49,7 +48,6 @@ const FilterCategories = (props, context) => {
 };
 
 const StaffWhoCollapsible = (props, context) => {
-  const { act } = useBackend(context);
   const { title, color, children } = props;
   return (
     <Collapsible title={title} color={color} open>
@@ -59,11 +57,10 @@ const StaffWhoCollapsible = (props, context) => {
 };
 
 const CategoryDropDown = (props, context) => {
-  const { act } = useBackend(context);
   const { category, category_admins } = props;
   return (
     <StaffWhoCollapsible
-      title={category.category + ' - ' + category_admins.length}
+      title={`${category.category} - ${category_admins.length}`}
       color={category.category_color}
     >
       <FilterAdmins category_admins={category_admins} />
@@ -72,44 +69,31 @@ const CategoryDropDown = (props, context) => {
 };
 
 const FilterAdmins = (props, context) => {
-  const { act } = useBackend(context);
   const { category_admins } = props;
 
-  return category_admins.map((x) => {
-    const ckey = Object.keys(x)[0];
-    const params = x[ckey];
-    const extractedParams = {};
-    params.forEach((param) => {
-      Object.keys(param).forEach((key) => {
-        extractedParams[key] = param[key];
-      });
-    });
-    return <GetAdminInfo key={ckey} ckey={ckey} {...extractedParams} />;
+  return category_admins.map((adminObj) => {
+    const ckey = Object.keys(adminObj)[0];
+    return <GetAdminInfo key={ckey} ckey={ckey} {...adminObj[ckey][0]} />;
   });
 };
 
 const GetAdminInfo = (props, context) => {
-  const { act } = useBackend(context);
   const { ckey, special_color, special_text, text, color } = props;
   return (
     <Button
       color={'transparent'}
       style={{
-        'border-color': special_color
-          ? special_color
-          : color
-            ? color
-            : '#2185d0',
+        'border-color': special_color || color || '#2185d0',
         'border-style': 'solid',
         'border-width': '1px',
-        color: color ? color : 'white',
+        color: special_color || color || 'white',
       }}
       tooltip={text}
       tooltipPosition="bottom-start"
     >
       <b
         style={{
-          color: special_color ? special_color : color ? color : 'white',
+          color: special_color || color || 'white',
         }}
       >
         {ckey}
@@ -146,14 +130,10 @@ const mergeArrays = (...arrays) => {
   const mergedObject = {};
 
   arrays.forEach((array) => {
-    if (!array) {
-      return;
-    }
+    if (!array) return;
 
     array.forEach((item) => {
-      if (!item) {
-        return;
-      }
+      if (!item) return;
 
       const key = Object.keys(item)[0];
       const value = item[key];
@@ -163,21 +143,22 @@ const mergeArrays = (...arrays) => {
       }
 
       value.forEach((subItem) => {
-        if (!subItem) {
-          return;
-        }
+        if (typeof subItem !== 'object' || subItem === null) return;
 
-        const subKey = Object.keys(subItem)[0];
-        const subValue = subItem[subKey];
-
-        const existingItem = mergedObject[key].find(
-          (funny_value) => Object.keys(funny_value)[0] === subKey,
+        const existingItemIndex = mergedObject[key].findIndex(
+          (existingSubItem) =>
+            Object.keys(existingSubItem).some((subKey) =>
+              Object.prototype.hasOwnProperty.call(subItem, subKey),
+            ),
         );
 
-        if (existingItem) {
-          existingItem[subKey] = subValue;
+        if (existingItemIndex !== -1) {
+          mergedObject[key][existingItemIndex] = {
+            ...mergedObject[key][existingItemIndex],
+            ...subItem,
+          };
         } else {
-          mergedObject[key].push({ [subKey]: subValue });
+          mergedObject[key].push(subItem);
         }
       });
     });

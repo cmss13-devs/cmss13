@@ -189,6 +189,7 @@
 	return ..()
 
 /datum/action/human_action/synth_bracer/action_activate()
+	. = ..()
 	if(is_active())
 		set_inactive(category)
 		return FALSE

@@ -10,6 +10,7 @@
 	ability_tag = SIMI_ABILITY_PROTECT
 
 /datum/action/human_action/synth_bracer/protective_form/action_activate()
+	. = ..()
 	var/mob/living/carbon/human/user = owner
 	if(!issynth(user) || synth_bracer.active_ability != SIMI_ACTIVE_NONE)
 		return

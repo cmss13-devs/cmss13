@@ -245,13 +245,13 @@
 			evasion_modifier = XENO_EVASION_NONE
 			remove_temp_pass_flags(PASS_MOB_IS_XENO|PASS_TYPE_CRAWLER|PASS_MOB_THRU_XENO)
 			remove_temp_can_pass_flags(PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO)
-			layer = MOB_LAYER
+			layer = initial(layer)
 
 		if(MOVE_INTENT_STALK)
 			evasion_modifier += XENO_EVASION_MOD_ULTRA // this looks like a lot but evasion is broken and doesnt even work most of the time
 			add_temp_pass_flags(PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO|PASS_TYPE_CRAWLER)
 			add_temp_can_pass_flags(PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO)
-			layer = BELOW_TABLE_LAYER
+			layer = XENO_HIDING_LAYER
 
 	recalculate_evasion()
 	update_icons()

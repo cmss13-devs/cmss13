@@ -297,7 +297,7 @@
 			break
 		if(distance > distance_max)
 			break
-		var/obj/effect/xenomorph/spray/temp = new spray_path()
+		var/atom/movable/temp = new spray_path()
 		var/atom/movable/blocker = LinkBlocked(temp, prev_turf, turf)
 		qdel(temp)
 		if(blocker)

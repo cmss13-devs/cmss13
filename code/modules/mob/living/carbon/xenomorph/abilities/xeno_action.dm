@@ -146,7 +146,14 @@
 /datum/action/xeno_action/activable
 
 /datum/action/xeno_action/activable/can_use_action()
-	. = ..()
+	if(!owner)
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.stat == DEAD) // to prevent dead xenos from doing wacky interactions
+		return FALSE
+	if(xeno.m_intent == MOVE_INTENT_STALK && xeno.tier < 2)
+		return FALSE
+	return TRUE
 
 // Called when the action is clicked on.
 // For non-activable Xeno actions, this is used to

@@ -681,7 +681,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	if(..())
 		return
 
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use that console."))
 		return TRUE
 

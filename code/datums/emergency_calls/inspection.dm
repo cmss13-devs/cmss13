@@ -1,6 +1,6 @@
 //USCM Provost
 /datum/emergency_call/inspection_provost
-	name = "Inspection - USCM Provost - ML knowledge required."
+	name = "Inspection - USCM Provost - ML knowledge and MP playtime required."
 	mob_max = 2
 	mob_min = 1
 	probability = 0
@@ -9,6 +9,15 @@
 	..()
 	objectives = "Investigate any issues with ML enforcement on the [MAIN_SHIP_NAME]."
 
+/datum/emergency_call/inspection_provost/remove_nonqualifiers(list/datum/mind/candidates_list)
+	var/list/datum/mind/candidates_clean = list()
+	for(var/datum/mind/single_candidate in candidates_list)
+		if(check_timelock(single_candidate.current?.client, JOB_POLICE, time_required_for_job))
+			candidates_clean.Add(single_candidate)
+			continue
+		if(single_candidate.current)
+			to_chat(single_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you don't have enough playtime (5 Hours) as military police!"))
+	return candidates_clean
 
 /datum/emergency_call/inspection_provost/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()

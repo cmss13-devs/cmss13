@@ -14,7 +14,7 @@
 		to_chat(usr, SPAN_XENOWARNING("We are stopped get points from larvae!"))
 		return
 
-	if(tgui_alert(user_xeno, "Do you really want to exchange your doughter for points?", "Sacrafice larvae?", list("Yes", "No")) != "Да")
+	if(tgui_alert(user_xeno, "Do you really want to exchange your doughter for points?", "Sacrafice larvae?", list("Yes", "No")) != "Yes")
 		return
 
 	if(user_xeno.hive.stored_larva < required_larva)

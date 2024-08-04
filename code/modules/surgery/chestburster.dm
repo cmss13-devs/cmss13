@@ -114,9 +114,9 @@
 	/*Using the hands to forcefully rip out the larva will be faster at the cost of damaging both the doctor and the patient, with the addition of organ damage.
 	Unlike before, the hemostat is now the best tool for removing removing the larva, as opposed to wirecutters and the fork.*/
 	tools = list(
-		/obj/item/tool/surgery/hemostat = 1.5, //Same as optimal (1) for 9s
-		/obj/item/tool/wirecutters = 1.8, //Same as suboptimal (1.2) for 9s
-		/obj/item/tool/kitchen/utensil/fork = 2.1 //Same as substitute (1.4) for 9s
+		/obj/item/tool/surgery/hemostat = 1.5 * SURGERY_TOOL_MULT_IDEAL,
+		/obj/item/tool/wirecutters = 1.5 * SURGERY_TOOL_MULT_SUBOPTIMAL,
+		/obj/item/tool/kitchen/utensil/fork = 1.5 * SURGERY_TOOL_MULT_SUBSTITUTE
 		)
 	time = 6 SECONDS
 	preop_sound = 'sound/surgery/hemostat1.ogg'

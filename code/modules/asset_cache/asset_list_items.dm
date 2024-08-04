@@ -297,7 +297,17 @@
 			continue
 
 		if(icon_state in icon_states(icon_file))
-			I = icon(icon_file, icon_state, SOUTH)
+			if(ispath(item, /obj/item/ammo_box/magazine))
+				var/obj/item/ammo_box/magazine/AB = item
+				if(ispath(item, /obj/item/ammo_box/magazine/misc))
+					I = icon('icons/ui_icons/vendor_preview_icons.dmi', "[AB.icon_state][AB?.overlay_gun_type]", SOUTH)
+				else
+					I = icon('icons/ui_icons/vendor_preview_icons.dmi', "[AB.icon_state][AB?.overlay_ammo_type]", SOUTH)
+			else if(ispath(item, /obj/item/storage/box/nade_box))
+				var/obj/item/storage/box/nade_box/NB = item
+				I = icon('icons/ui_icons/vendor_preview_icons.dmi', NB.type_icon, SOUTH)
+			else
+				I = icon(icon_file, icon_state, SOUTH)
 			var/c = initial(item.color)
 			if (!isnull(c) && c != "#FFFFFF")
 				I.Blend(c, ICON_MULTIPLY)

@@ -681,7 +681,7 @@
 	name = "\improper M74 AGM-I grenade box"
 	desc = "A secure box holding 25 M74 AGM Incendiary grenades. Highly flammable, don't store near the flamer fuel."
 	model_icon = "model_m74"
-	type_icon = "hidp"
+	type_icon = "agmi"
 	can_hold = list(/obj/item/explosive/grenade/incendiary/airburst)
 	grenade_type = /obj/item/explosive/grenade/incendiary/airburst
 

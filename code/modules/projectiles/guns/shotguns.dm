@@ -243,7 +243,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "The Weyland-Yutani ES-7 Supernova Electrostatic shockgun, a Dual-Action shotgun with a quick fire rate, it uses Electrostatic propulsion similiar to the ES-4. Originally made for corporate security, this one has been modified for MP use, specfically by removing the option to use Pump action mode and being chambered in 20 gauge, Takes X21 Slug rounds only."
 	gauge = "20g"
 	muzzle_flash = "muzzle_flash_blue"
-	fire_sound = "gun_shotgun_riot"
+	fire_sound = "gun_shockgun"
 	firesound_volume = 20
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/riot
 	attachable_allowed = list(

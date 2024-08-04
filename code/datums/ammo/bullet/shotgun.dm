@@ -57,8 +57,8 @@
 	headshot_state = HEADSHOT_OVERLAY_LIGHT //Electric version of the bean bag.
 	handful_state = "elec_slug"
 	icon_state = "beanbag"
+	sound_override = 'sound/weapons/gun_shockgun.ogg'
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
-	sound_override = 'sound/weapons/gun_shotgun_riot.ogg'
 	max_range = 12
 	shrapnel_chance = 0
 	damage = 0

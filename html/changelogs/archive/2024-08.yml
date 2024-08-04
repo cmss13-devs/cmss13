@@ -34,3 +34,50 @@
   hislittlecuzingames:
   - qol: Can roleplay easier with cigarettes, cigars, lighters counting as cosmetic
       for helmet storage purposes.
+2024-08-04:
+  Diegoflores31:
+  - balance: Healer drone apply salve now has a 1 second cooldown.
+  - balance: Salve wound now heals slightly quicker.
+  MistChristmas:
+  - balance: Buffed MP and Officer Armor's Bullet Armour.
+  Nivrak, NervanCatos:
+  - balance: Modified engineering skill levels, Combat technicians now do everything
+      engineering related slightly faster. This does not affect any other roles or
+      skillchecks.
+  - rscadd: Adds the tactical compact nailgun to the Combat Technician's vendor essential
+      engineering kit, It cannot fire and uses 2 metal instead of 1 to repair. Credit
+      to NervanCatos.
+  - rscadd: Added the M277 pattern construction rig, It comes with 6 slots instead
+      of 10 in the M276 but can carry metal and plasteel stacks. Available in the
+      CT vendor.
+  - rscadd: Added the Engineer Kit pouch, basically and engineer kit - in a pouch.
+      Restricted by engineering skill. Available in the CT vendor.
+  - rscadd: Added the Small Tool Webbing, A smaller variant of the tool webbing with
+      6 slots instead of 7. Available in the CT vendor.
+  - qol: Screwdriver, Crowbar, Blowtorch, Multitool, Wrench and Wirecutters will now
+      prioritize the tool webbing when quick equipping.
+  - code_imp: Added a new variable for items, preferred_storage which allows to replicate
+      the above behavior for other items and storages.
+  - rscadd: Added a new sentry upgrade, The omni-sentry. As the name suggests it is
+      omni-directional but has 30% reduces damage and a shorter range by 1.
+  - qol: Made APC examine-text a bit more clear about what you should be doing next.
+  SpypigDev:
+  - refactor: SO armory vendor code refactored into the main SO gear vendor code
+  - balance: XO weapon and clothing vendors fitted with a more modernized equipment
+      set
+  - balance: XO weapon vendor now offers Medic or Engineer essentials sets
+  - bugfix: Vending an autoinjector pouch as SO or XO now produces a full pouch, rather
+      than empty
+  - balance: SO's mod88 removed from cryo spawn and moved to their vendor instead
+  Steelpoint:
+  - balance: The VP78 pistol will now deal maximum damage up to 6 tiles from the shooters
+      position before experiencing gradual damage falloff. This is up from a previous
+      maximum range of 3 tiles.
+  VileBeggar:
+  - code_imp: removed an unneeded var in mob_hud.dm
+  Zonespace27:
+  - balance: Barricades are now far better at blocking bullets from the front. They
+      will not block most bullets if the shooter is within 2 tiles, however.
+  ihatethisengine2:
+  - balance: sacrifice ability now guarantees to get the target out of crit on top
+      of the heal

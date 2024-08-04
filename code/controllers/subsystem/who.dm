@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(who)
 		client_payload["ckey_color"] = "white"
 		if(CLIENT_IS_STEALTHED(client))
 			player_stealthed_additional["total_players"] += list(list(client.key = list(client_payload)))
-		else if(entry.admin_holder?.fakekey)
+		else if(client.admin_holder?.fakekey)
 			player_additional["total_players"] += list(list(client.key = list(client_payload)))
 		else
 			base_data["total_players"] += list(list(client.key = list(client_payload.Copy())))
@@ -239,38 +239,38 @@ SUBSYSTEM_DEF(who)
 			"category_color" = category_colors[category],
 		))
 
-		for(var/client/entry as anything in listings[category][2])
+		for(var/client/client as anything in listings[category][2])
 			var/list/admin_payload = list()
 			admin_payload["category"] = category
-			var/rank = entry.admin_holder.rank
-			if(entry.admin_holder.extra_titles?.len)
-				for(var/srank in entry.admin_holder.extra_titles)
+			var/rank = client.admin_holder.rank
+			if(client.admin_holder.extra_titles?.len)
+				for(var/srank in client.admin_holder.extra_titles)
 					rank += " & [srank]"
 
-			if(CLIENT_IS_STEALTHED(entry))
+			if(CLIENT_IS_STEALTHED(client))
 				admin_payload["special_color"] = "#b60d0d"
 				admin_payload["special_text"] = " (STEALTHED)"
-				admin_stealthed_additional["total_admins"] += list(list("[entry.key] ([rank])" = list(admin_payload)))
-			else if(entry.admin_holder?.fakekey)
+				admin_stealthed_additional["total_admins"] += list(list("[client.key] ([rank])" = list(admin_payload)))
+			else if(client.admin_holder?.fakekey)
 				admin_payload["special_text"] += " (HIDDEN)"
-				admin_additional["total_admins"] += list(list("[entry.key] ([rank])" = list(admin_payload)))
+				admin_additional["total_admins"] += list(list("[client.key] ([rank])" = list(admin_payload)))
 			else
-				admin_additional["total_admins"] += list(list("[entry.key] ([rank])" = list(admin_payload)))
-				base_data["total_admins"] += list(list("[entry.key] ([rank])" = list(admin_payload.Copy())))
+				admin_additional["total_admins"] += list(list("[client.key] ([rank])" = list(admin_payload)))
+				base_data["total_admins"] += list(list("[client.key] ([rank])" = list(admin_payload.Copy())))
 
 			admin_payload["text"] = ""
-			if(istype(entry.mob, /mob/dead/observer))
+			if(istype(client.mob, /mob/dead/observer))
 				admin_payload["color"] = "#808080"
 				admin_payload["text"] += "Spectating"
 
-			else if(istype(entry.mob, /mob/new_player))
+			else if(istype(client.mob, /mob/new_player))
 				admin_payload["color"] = "#FFFFFF"
 				admin_payload["text"] += "in Lobby"
 			else
 				admin_payload["color"] = "#688944"
 				admin_payload["text"] += "Playing"
 
-			if(entry.is_afk())
+			if(client.is_afk())
 				admin_payload["color"] = "#A040D0"
 				admin_payload["special_text"] += " (AFK)"
 

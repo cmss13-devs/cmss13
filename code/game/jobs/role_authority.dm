@@ -717,6 +717,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 /datum/authority/branch/role/proc/get_caste_by_text(name)
 	var/mob/living/carbon/xenomorph/M
 	switch(name) //ADD NEW CASTES HERE!
+		if(WEAVE_CASTE_WEAVELING)
+			M = /mob/living/carbon/xenomorph/weaveling
+		if(WEAVE_CASTE_WEAVER)
+			M = /mob/living/carbon/xenomorph/weaver
 		if(XENO_CASTE_LARVA)
 			M = /mob/living/carbon/xenomorph/larva
 		if(XENO_CASTE_PREDALIEN_LARVA)
@@ -759,10 +763,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/predalien
 		if(XENO_CASTE_HELLHOUND)
 			M = /mob/living/carbon/xenomorph/hellhound
-		if(WEAVE_CASTE_WEAVELING)
-			M = /mob/living/carbon/xenomorph/weaveling
-		if(WEAVE_CASTE_WEAVER)
-			M = /mob/living/carbon/xenomorph/weaver
 	return M
 
 

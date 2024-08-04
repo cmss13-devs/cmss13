@@ -969,7 +969,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
 
-
 /datum/equipment_preset/other/weave_cultist
 	name = "Cultist - Weave Cultist"
 	faction = FACTION_XENOMORPH

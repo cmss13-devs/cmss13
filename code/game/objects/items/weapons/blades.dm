@@ -252,11 +252,12 @@
 
 /obj/item/weapon/weaveblade/attack_hand(mob/living/carbon/user) //Prevents marines from instantly picking it up via pickup macros.
 	if(!((user.hivenumber == XENO_HIVE_WEAVE) || (user.faction == "The Weave Nexus")))
-		user.visible_message(SPAN_BOLDWARNING("[user] is repelled from \the [src] by the force of The Weave!"), SPAN_BOLDWARNING("The Weave repels your hand away from \the [src]! You cannot touch it!"))
+		user.visible_message(SPAN_BOLDWARNING("[user] is repelled from [src] by the force of The Weave!"), SPAN_BOLDWARNING("The Weave repels your hand away from [src]! You cannot touch it!"))
 		return FALSE
-	else ..()
+	else
+		..()
 
-/obj/item/weapon/weaveblade/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
+/obj/item/weapon/weaveblade/attack(mob/living/target, mob/living/carbon/human/user)
 	if(target.hivenumber == XENO_HIVE_WEAVE || target.faction == "The Weave Nexus")
 		to_chat(user, SPAN_XENOHIGHDANGER("You cannot harm a being of The Weave!"))
 		return FALSE
@@ -265,7 +266,7 @@
 /obj/item/weapon/weaveblade/pull_response(mob/puller)
 	var/mob/living/carbon/user = puller
 	if(!((user.hivenumber == XENO_HIVE_WEAVE) || (user.faction == "The Weave Nexus")))
-		user.visible_message(SPAN_BOLDWARNING("[user] is repelled from \the [src] by the force of The Weave!"), SPAN_BOLDWARNING("The Weave repels your hand away from \the [src]! You cannot touch it!"))
+		user.visible_message(SPAN_BOLDWARNING("[user] is repelled from [src] by the force of The Weave!"), SPAN_BOLDWARNING("The Weave repels your hand away from [src]! You cannot touch it!"))
 		return FALSE
 	return TRUE
 

@@ -639,8 +639,6 @@ CULT
 			var/obj/vehicle/multitile/arc/vehicle = vehicle_chair.vehicle
 			vehicle.toggle_antenna(human_user)
 
-
-
 //Weave
 /datum/action/human_action/activable/cult/weave/speak_hivemind
 	name = "Commune with The Weave"
@@ -737,12 +735,12 @@ CULT
 		if (cultist.blood_volume < BLOOD_VOLUME_SAFE)
 			to_chat(cultist, SPAN_XENOWARNING("You do not have enough blood to do this safely! The Weave will not risk harming you."))
 			return FALSE
-		else
-			cultist.blood_volume -= 100
-			nexus.weave_energy += 100
-			cultist.visible_message(SPAN_XENONOTICE("[cultist] exudes energy back into The Weave!"), SPAN_XENONOTICE("You release some of your energy into The Weave!"))
-			enter_cooldown(cooldown)
-			return TRUE
+
+		cultist.blood_volume -= 100
+		nexus.weave_energy += 100
+		cultist.visible_message(SPAN_XENONOTICE("[cultist] exudes energy back into The Weave!"), SPAN_XENONOTICE("You release some of your energy into The Weave!"))
+		enter_cooldown(cooldown)
+		return TRUE
 
 /datum/action/human_action/activable/cult/weave/regenerate_wounds
 	name = "Regenerate Wounds"

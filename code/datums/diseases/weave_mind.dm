@@ -34,4 +34,4 @@
 				to_chat(affected_mob, SPAN_XENOHIGHDANGER("Images flash through your mind as The Weave makes itself known..."))
 				var/mob/living/carbon/human/H = affected_mob
 				H.WeaveClaim(CAUSE_ESSENCE)
-				src.cure()
+				cure()

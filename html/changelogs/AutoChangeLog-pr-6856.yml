@@ -1,0 +1,4 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - bugfix: "Phones can no longer be stored in closets/crates, which prevents players from dragging crates with their phones and other weird issues that can occur."

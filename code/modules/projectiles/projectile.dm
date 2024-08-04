@@ -304,14 +304,10 @@
 
 	//Change the bullet angle to its visual path
 
-	var/mutable_appearance/new_appearance = new(appearance)
-	new_appearance.invisibility = invisibility
-	new_appearance.plane = plane
-
 	var/vis_angle = delta_to_angle(pixel_x_target - pixel_x_source, pixel_y_target - pixel_y_source)
 	var/matrix/rotate = matrix()
 	rotate.Turn(vis_angle)
-	new_appearance.transform = rotate
+	apply_transform(rotate)
 
 	//Determine apparent position along visual path, then lerp between start and end positions
 
@@ -330,22 +326,19 @@
 
 	//Set pixel offset as from current loc to old position, so it appears to start in the old position
 
-	new_appearance.pixel_x = (start_turf.x - current_turf.x) * world.icon_size + start_pixel_x
-	new_appearance.pixel_y = (start_turf.y - current_turf.y) * world.icon_size + start_pixel_y
+	pixel_x = (start_turf.x - current_turf.x) * world.icon_size + start_pixel_x
+	pixel_y = (start_turf.y - current_turf.y) * world.icon_size + start_pixel_y
+
+	//Determine apparent distance travelled, then lerp for projectile fade-in
+
+	var/dist_current = distance_travelled + speed * (time_carry * 0.1) //speed * (time_carry * 0.1) for remainder time fade-in
+	var/alpha_interpolant = dist_current - 1 //-1 so it transitions from transparent to opaque between dist 1-2
+	var/alpha_new = LERP(0, 255, alpha_interpolant)
 
 	//Animate the visuals from starting position to new position
 
-	appearance = new_appearance
-
 	var/anim_time = delta_time * 0.1
-	if(alpha < 255) //Determine apparent distance travelled, then lerp for projectile fade-in
-		var/dist_current = distance_travelled + speed * (time_carry * 0.1) //speed * (time_carry * 0.1) for remainder time fade-in
-		var/alpha_interpolant = dist_current - 1 //-1 so it transitions from transparent to opaque between dist 1-2
-		var/alpha_new = LERP(0, 255, alpha_interpolant)
-
-		animate(src, pixel_x = pixel_x_rel_new, pixel_y = pixel_y_rel_new, alpha = alpha_new, time = anim_time, flags = ANIMATION_END_NOW)
-	else
-		animate(src, pixel_x = pixel_x_rel_new, pixel_y = pixel_y_rel_new, time = anim_time, flags = ANIMATION_END_NOW)
+	animate(src, pixel_x = pixel_x_rel_new, pixel_y = pixel_y_rel_new, alpha = alpha_new, time = anim_time, flags = ANIMATION_END_NOW)
 
 /// Flies the projectile forward one single turf
 /obj/projectile/proc/fly()

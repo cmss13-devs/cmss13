@@ -802,6 +802,28 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/reagent_container/syringe(src)
 
+/obj/item/storage/pouch/engikit
+	name = "engineer kit pouch"
+	storage_flags = STORAGE_FLAGS_POUCH
+	icon_state = "construction"
+	desc = "It's specifically made to hold engineering items. Requires engineering skills to use effectively."
+	storage_slots = 6
+	can_hold_skill = list(
+		/obj/item/circuitboard = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/flashlight = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/clothing/glasses/welding = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/analyzer = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/demo_scanner = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/reagent_scanner = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/t_scanner = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/stack/cable_coil = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/cell = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/assembly = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/stock_parts = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/explosive/plastic = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+	)
+	can_hold_skill_only = TRUE
+
 /obj/item/storage/pouch/medkit
 	name = "medical kit pouch"
 	storage_flags = STORAGE_FLAGS_POUCH

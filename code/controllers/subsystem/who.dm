@@ -57,11 +57,13 @@ SUBSYSTEM_DEF(who)
 		var/list/client_payload = list()
 		client_payload["text"] = client.key
 		client_payload["ckey_color"] = "white"
-		if(!CLIENT_IS_STEALTHED(client))
-			base_data["total_players"] += list(list(client.key = list(client_payload.Copy())))
+		if(CLIENT_IS_STEALTHED(client))
+			player_stealthed_additional["total_players"] += list(list(client.key = list(client_payload)))
+		else if(entry.admin_holder?.fakekey)
 			player_additional["total_players"] += list(list(client.key = list(client_payload)))
 		else
-			player_stealthed_additional["total_players"] += list(list(client.key = list(client_payload)))
+			base_data["total_players"] += list(list(client.key = list(client_payload.Copy())))
+			player_additional["total_players"] += list(list(client.key = list(client_payload)))
 
 		var/mob/client_mob = client.mob
 		if(client_mob)

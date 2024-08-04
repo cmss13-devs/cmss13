@@ -183,6 +183,7 @@
 
 /area/fiorina/station/telecomm/lz1_tram
 	name = "Fiorina - LZ1 Aux Port Communications Relay"
+	is_landing_zone = TRUE
 
 /area/fiorina/station/telecomm/lz1_engineering
 	name = "Fiorina - Engineering Primary Communications Relay"

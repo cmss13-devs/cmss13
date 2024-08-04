@@ -1,6 +1,6 @@
 /datum/equipment_preset/wy
 	name = "WY"
-	paygrade = PAY_SHORT_WYC1
+	paygrades = list(PAY_SHORT_WYC1 = JOB_PLAYTIME_TIER_0)
 
 	faction = FACTION_WY
 	rank = FACTION_WY
@@ -29,7 +29,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_TRAINEE
 	rank = JOB_TRAINEE
-	paygrade = PAY_SHORT_WYC1
+	paygrades = list(PAY_SHORT_WYC1 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/trainee/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/trainee(new_human), WEAR_BODY)
@@ -40,28 +40,28 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_JUNIOR_EXECUTIVE
 	rank = JOB_JUNIOR_EXECUTIVE
-	paygrade = PAY_SHORT_WYC2
+	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec
 	name = "Corporate - C - Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE
 	rank = JOB_EXECUTIVE
-	paygrade = PAY_SHORT_WYC3
+	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/senior_exec
 	name = "Corporate - D - Senior Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_SENIOR_EXECUTIVE
 	rank = JOB_SENIOR_EXECUTIVE
-	paygrade = PAY_SHORT_WYC4
+	paygrades = list(PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_spec
 	name = "Corporate - E - Executive Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE_SPECIALIST
 	rank = JOB_EXECUTIVE_SPECIALIST
-	paygrade = PAY_SHORT_WYC5
+	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_spec/lawyer
 	name = "Corporate - E - Lawyer"
@@ -82,7 +82,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE_SUPERVISOR
 	rank = JOB_EXECUTIVE_SUPERVISOR
-	paygrade = PAY_SHORT_WYC6
+	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer
 	name = "Corporate - F - Lawyer"
@@ -120,21 +120,21 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_ASSISTANT_MANAGER
 	rank = JOB_ASSISTANT_MANAGER
-	paygrade = PAY_SHORT_WYC7
+	paygrades = list(PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/division_manager
 	name = "Corporate - H - Division Manager"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIVISION_MANAGER
 	rank = JOB_DIVISION_MANAGER
-	paygrade = PAY_SHORT_WYC8
+	paygrades = list(PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/chief_executive
 	name = "Corporate - I - Chief Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CHIEF_EXECUTIVE
 	rank = JOB_CHIEF_EXECUTIVE
-	paygrade = PAY_SHORT_WYC9
+	paygrades = list(PAY_SHORT_WYC9 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/chief_executive/New()
 	. = ..()
@@ -145,7 +145,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIRECTOR
 	rank = JOB_DIRECTOR
-	paygrade = PAY_SHORT_WYC10
+	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/manager/director
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
 

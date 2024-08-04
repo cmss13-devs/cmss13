@@ -60,7 +60,7 @@
 	var/power = null
 	power = i - 1
 	while(power >= 0)
-		var/val = round(num / 16 ** power)
+		var/val = floor(num / 16 ** power)
 		num -= val * 16 ** power
 		switch(val)
 			if(9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0)

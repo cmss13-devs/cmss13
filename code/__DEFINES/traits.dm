@@ -161,6 +161,8 @@
 #define TRAIT_MERGED_WITH_WEEDS "merged_with_weeds"
 /// Apply this to identify a mob as temporarily muted
 #define TRAIT_TEMPORARILY_MUTED "temporarily_muted"
+/// Mob wont get hit by stray projectiles
+#define TRAIT_NO_STRAY "trait_no_stray"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -179,6 +181,8 @@
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive
 #define TRAIT_XENONID "t_xenonid"
+/// if the xeno's connection to the hivemind is cut
+#define TRAIT_HIVEMIND_INTERFERENCE "t_interference"
 /// If the hive or xeno can use objects.
 #define TRAIT_OPPOSABLE_THUMBS "t_thumbs"
 /// If the mob is sensitive to The Weave
@@ -235,6 +239,8 @@
 #define TRAIT_IN_TUTORIAL "t_IN_TUTORIAL"
 /// If the mob is cloaked in any form
 #define TRAIT_CLOAKED "t_cloaked"
+/// If the mob won't drop items held in face slot when downed
+#define TRAIT_IRON_TEETH "t_iron_teeth"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -271,7 +277,7 @@
 
 #define TRAIT_GUN_BIPODDED "t_gun_bipodded"
 
-#define TRAIT_GUN_LIGHT_DEACTIVATED "t_gun_light_deactivated"
+#define TRAIT_GUN_LIGHT_FORCE_DEACTIVATED "t_gun_light_deactivated"
 
 /// If this ID belongs to an ERT member
 #define TRAIT_ERT_ID "ert_id"
@@ -358,6 +364,8 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
 		"TRAIT_ABILITY_OVIPOSITOR" = TRAIT_ABILITY_OVIPOSITOR,
+		"TRAIT_OPPOSABLE_THUMBS" = TRAIT_OPPOSABLE_THUMBS,
+		"TRAIT_INTERFERENCE" = TRAIT_HIVEMIND_INTERFERENCE,
 	),
 	/datum/hive_status = list(
 		"TRAIT_XENONID" = TRAIT_XENONID,
@@ -437,6 +445,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_TEMPORARY_MUTE "t_s_temporary_mute"
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
+///Status trait coming from hivemind interference
+#define TRAIT_SOURCE_HIVEMIND_INTERFERENCE "t_s_hivemind_interference"
 ///Status trait coming from a xeno nest
 #define XENO_NEST_TRAIT "xeno_nest"
 ///Status trait from a generic throw by xeno abilities

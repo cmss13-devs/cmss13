@@ -3,7 +3,7 @@
 	desc = "A portable compact TC-4T telecommunications construction kit. Used to set up subspace communications lines between planetary and extra-planetary locations. Needs cabling."
 	icon = 'icons/obj/structures/machinery/comm_tower2.dmi'
 	icon_state = "construct_0_0"
-	required_skill = SKILL_ENGINEER_ENGI
+	required_skill = SKILL_ENGINEER_TRAINED
 	required_dismantle_skill = 5
 	density = TRUE
 	anchored = FALSE
@@ -18,9 +18,9 @@
 			is_wired = 1
 			break
 	if(components)
-		switch(components.len)
+		switch(length(components))
 			if(0 to 8)
-				icon_state = "construct_[contents.len]_[is_wired]"
+				icon_state = "construct_[length(contents)]_[is_wired]"
 			else
 				icon_state = "construct_8_1"
 	else if(state)

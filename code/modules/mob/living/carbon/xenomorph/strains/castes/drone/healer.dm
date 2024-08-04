@@ -1,7 +1,7 @@
 /datum/xeno_strain/healer
 	name = DRONE_HEALER
-	description = "You lose your choice of resin secretions, a chunk of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve by using your vital fluids and a fifth of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
-	flavor_description = "To the very last drop, your blood belongs to The Hive; share it with your sisters to keep them fighting."
+	description = "You lose your choice of resin secretions, a chunk of your slash damage, and you will experience a slighty-increased difficulty in tackling hosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve by using your vital fluids and a fifth of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
+	flavor_description = "Divided we fall, united we win. We live for the hive, we die for the hive."
 	icon_state_prefix = "Healer"
 
 	actions_to_remove = list(
@@ -58,10 +58,14 @@
 	macro_path = /datum/action/xeno_action/verb/verb_apply_salve
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
+	xeno_cooldown = 0.5 SECONDS
 
 /datum/action/xeno_action/activable/apply_salve/use_ability(atom/target_atom)
+	if(!action_cooldown_check())
+		return
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.xeno_apply_salve(target_atom, health_transfer_amount, max_range, damage_taken_mod)
+	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/verb/verb_apply_salve()
@@ -124,9 +128,9 @@
 	adjustBruteLoss(amount * damage_taken_mod)
 	use_plasma(amount * 2)
 	updatehealth()
-	new /datum/effects/heal_over_time(target_xeno, amount, 10, 1)
+	new /datum/effects/heal_over_time(target_xeno, heal_amount = amount)
 	target_xeno.xeno_jitter(1 SECONDS)
-	target_xeno.flick_heal_overlay(10 SECONDS, "#00be6f")
+	target_xeno.flick_heal_overlay(5 SECONDS, "#00be6f")
 	to_chat(target_xeno, SPAN_XENOWARNING("[src] covers our wounds with a regenerative resin salve. We feel reinvigorated!"))
 	to_chat(src, SPAN_XENOWARNING("We regurgitate our vital fluids and some plasma to create a regenerative resin salve and apply it to [target_xeno]'s wounds. We feel weakened..."))
 	playsound(src, "alien_drool", 25)
@@ -135,7 +139,7 @@
 	if(!target_is_healer && !isfacehugger(target_xeno)) // no cheap grinding
 		healer_delegate.modify_transferred(amount * damage_taken_mod)
 	update_icons()
-	addtimer(CALLBACK(healer_delegate, /datum/behavior_delegate/drone_healer/proc/un_salve), 10 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(CALLBACK(healer_delegate, /datum/behavior_delegate/drone_healer/proc/un_salve), 5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /datum/behavior_delegate/drone_healer
 	name = "Healer Drone Behavior Delegate"
@@ -257,6 +261,9 @@
 
 	xeno.say(";MY LIFE FOR THE QUEEN!!!")
 
+	if(target.health < 0)
+		target.gain_health(abs(target.health)) // gets them out of crit first
+
 	target.gain_health(xeno.health * transfer_mod)
 	target.updatehealth()
 
@@ -276,9 +283,10 @@
 			addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), xeno.client), 5 SECONDS)
 
 	xeno.gib(create_cause_data("sacrificing itself", src))
+	return ..()
 
 /datum/action/xeno_action/activable/healer_sacrifice/action_activate()
-	..()
+	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.selected_ability != src)
 		return

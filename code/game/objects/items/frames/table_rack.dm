@@ -59,7 +59,10 @@
 	if(istype(get_area(loc), /area/shuttle))  //HANGAR/SHUTTLE BUILDING
 		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))
 		return
-
+	for(var/obj/object in OT)
+		if(object.density)
+			to_chat(user, SPAN_WARNING("[object] is blocking you from constructing [src]!"))
+			return
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_WARNING("Hold still while you're constructing a table!"))
 		return
@@ -100,6 +103,7 @@
 	desc = "A kit for a table, including a large, flat wooden surface and four legs. Some assembly required."
 	icon_state = "wood_tableparts"
 	flags_atom = FPRINT
+	matter = null
 	table_type = /obj/structure/surface/table/woodentable
 
 /obj/item/frame/table/wood/attackby(obj/item/W, mob/user)
@@ -140,6 +144,7 @@
 	desc = "A kit for a table, including a large, flat wooden and carpet surface and four legs. Some assembly required."
 	icon_state = "gamble_tableparts"
 	flags_atom = null
+	matter = null
 	table_type = /obj/structure/surface/table/gamblingtable
 
 /obj/item/frame/table/gambling/attackby(obj/item/W as obj, mob/user as mob)

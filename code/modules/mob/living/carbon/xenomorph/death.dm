@@ -36,7 +36,7 @@
 				XQ.dismount_ovipositor(TRUE)
 
 			if(GLOB.hive_datum[hivenumber].stored_larva)
-				GLOB.hive_datum[hivenumber].stored_larva = round(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
+				GLOB.hive_datum[hivenumber].stored_larva = floor(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
 
 				var/list/players_with_xeno_pref = get_alien_candidates(GLOB.hive_datum[hivenumber])
 				if(players_with_xeno_pref && istype(GLOB.hive_datum[hivenumber].hive_location, /obj/effect/alien/resin/special/pylon/core))
@@ -137,25 +137,31 @@
 
 /mob/living/carbon/xenomorph/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))
-	remains.icon = icon
+	var/icon_path
+	var/gib_state = "gibbed-a-corpse"
 	remains.pixel_x = pixel_x //For 2x2.
 
 	if(!caste)
 		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [QDELETED(src)], health: [health])")
 
-	switch(caste.caste_type) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
+	if(mob_size >= MOB_SIZE_BIG)
+		icon_path = 'icons/mob/xenos/xenomorph_64x64.dmi'
+	else
+		icon_path = 'icons/mob/xenos/xenomorph_48x48.dmi'
+	switch(caste.caste_type)
+		if(XENO_CASTE_RUNNER)
+			icon_path = 'icons/mob/xenos/xenomorph_64x64.dmi'
+			gib_state = "gibbed-a-corpse-runner"
 		if(XENO_CASTE_BOILER)
 			var/mob/living/carbon/xenomorph/boiler/src_boiler = src
 			visible_message(SPAN_DANGER("[src] begins to bulge grotesquely, and explodes in a cloud of corrosive gas!"))
 			src_boiler.smoke.set_up(2, 0, get_turf(src), new_cause_data = src_boiler.smoke.cause_data)
 			src_boiler.smoke.start()
-			remains.icon_state = "gibbed-a-corpse"
-		if(XENO_CASTE_RUNNER)
-			remains.icon_state = "gibbed-a-corpse-runner"
 		if(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA)
-			remains.icon_state = "larva_gib_corpse"
-		else
-			remains.icon_state = "gibbed-a-corpse"
+			icon_path = 'icons/mob/xenos/larva.dmi'
+
+	remains.icon_state = gib_state
+	remains.icon = icon_path
 
 	check_blood_splash(35, BURN, 65, 2) //Some testing numbers. 35 burn, 65 chance.
 
@@ -170,8 +176,12 @@
 		icon_path = 'icons/mob/xenos/xenomorph_48x48.dmi'
 	switch(caste.caste_type)
 		if(XENO_CASTE_RUNNER)
+			icon_path = 'icons/mob/xenos/xenomorph_64x64.dmi'
 			to_flick = "gibbed-a-runner"
+		if(XENO_CASTE_BOILER)
+			to_flick = "gibbed-a-boiler"
 		if(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA)
+			icon_path = 'icons/mob/xenos/larva.dmi'
 			to_flick = "larva_gib"
 	new /obj/effect/overlay/temp/gib_animation/xeno(loc, src, to_flick, icon_path)
 

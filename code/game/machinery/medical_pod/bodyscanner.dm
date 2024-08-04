@@ -263,7 +263,7 @@
 	s_class = occ["brainloss"] < 1 ? INTERFACE_GOOD : INTERFACE_BAD
 	dat += "[SET_CLASS("&nbsp&nbspApprox. Brain Damage:", INTERFACE_PINK)] [SET_CLASS("[occ["brainloss"]]%", s_class)]<br><br>"
 
-	dat += "[SET_CLASS("Knocked Out Summary:", "#40628a")] [occ["knocked_out"]]% (approximately [round(occ["knocked_out"] * GLOBAL_STATUS_MULTIPLIER / (1 SECONDS))] seconds left!)<br>"
+	dat += "[SET_CLASS("Knocked Out Summary:", "#40628a")] [occ["knocked_out"]]% (approximately [floor(occ["knocked_out"] * GLOBAL_STATUS_MULTIPLIER / (1 SECONDS))] seconds left!)<br>"
 	dat += "[SET_CLASS("Body Temperature:", "#40628a")] [occ["bodytemp"]-T0C]&deg;C ([occ["bodytemp"]*1.8-459.67]&deg;F)<br><HR>"
 
 	s_class = occ["blood_amount"] > 448 ? INTERFACE_OKAY : INTERFACE_BAD
@@ -333,7 +333,7 @@
 			open = "Open<br>"
 
 		var/unknown_body = 0
-		if (e.implants.len)
+		if (length(e.implants))
 			for(var/I in e.implants)
 				if(is_type_in_list(I,known_implants))
 					imp += "[I] implanted<br>"

@@ -131,16 +131,17 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 
 	// Create an actual medal item
 	if(medal_location)
+		var/turf/turf_location = get_turf(medal_location)
 		var/obj/item/clothing/accessory/medal/medal
 		switch(medal_type)
 			if(MARINE_CONDUCT_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/bronze/conduct(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/bronze/conduct(turf_location)
 			if(MARINE_BRONZE_HEART_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/bronze/heart(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/bronze/heart(turf_location)
 			if(MARINE_VALOR_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/silver/valor(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/silver/valor(turf_location)
 			if(MARINE_HEROISM_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/gold/heroism(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/gold/heroism(turf_location)
 			else
 				return FALSE
 		medal.recipient_name = chosen_recipient
@@ -223,16 +224,17 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 
 	// Create an actual medal item
 	if(medal_location)
+		var/turf/turf_location = get_turf(medal_location)
 		var/obj/item/clothing/accessory/medal/medal
 		switch(medal_type)
 			if(MARINE_CONDUCT_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/bronze/conduct(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/bronze/conduct(turf_location)
 			if(MARINE_BRONZE_HEART_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/bronze/heart(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/bronze/heart(turf_location)
 			if(MARINE_VALOR_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/silver/valor(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/silver/valor(turf_location)
 			if(MARINE_HEROISM_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/gold/heroism(medal_location)
+				medal = new /obj/item/clothing/accessory/medal/gold/heroism(turf_location)
 			else
 				return FALSE
 		medal.recipient_name = chosen_recipient
@@ -254,7 +256,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 	return TRUE
 
 /proc/open_medal_panel(mob/living/carbon/human/user, obj/printer)
-	var/obj/item/card/id/card = user.wear_id
+	var/obj/item/card/id/card = user?.get_idcard()
 	if(!card)
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
 		return
@@ -289,23 +291,21 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	var/list/recipient_castes = list()
 	var/list/recipient_mobs = list()
 	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
-		if (xeno.persistent_ckey == usr.persistent_ckey) // Don't award self
+		if(xeno.persistent_ckey == usr.persistent_ckey) // Don't award self
 			continue
-		if (xeno.tier == 0) // Don't award larva or facehuggers
-			continue
-		if (!as_admin && istype(xeno.caste, /datum/caste_datum/queen)) // Don't award queens unless admin
-			continue
+		if(xeno.tier == 0) // Don't award larva or facehuggers
+			if(!as_admin || !isqueen(xeno))  // Don't award queens unless admin (She is tier 0 for whatever reason)
+				continue
 		var/recipient_name = xeno.real_name
 		recipient_castes[recipient_name] = xeno.caste_type
 		recipient_mobs[recipient_name] = xeno
 		possible_recipients += recipient_name
 	for(var/mob/living/carbon/xenomorph/xeno in hive.total_dead_xenos)
-		if (xeno.persistent_ckey == usr.persistent_ckey) // Don't award previous selves
+		if(xeno.persistent_ckey == usr.persistent_ckey) // Don't award previous selves
 			continue
-		if (xeno.tier == 0) // Don't award larva or facehuggers
-			continue
-		if (!as_admin && istype(xeno.caste, /datum/caste_datum/queen)) // Don't award previous queens unless admin
-			continue
+		if(xeno.tier == 0) // Don't award larva or facehuggers
+			if(!as_admin || !isqueen(xeno))  // Don't award queens unless admin (She is tier 0 for whatever reason)
+				continue
 		var/recipient_name = xeno.real_name
 		recipient_castes[recipient_name] = xeno.caste_type
 		recipient_mobs[recipient_name] = xeno
@@ -402,7 +402,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 		to_chat(usr, "Error: Could not find the [is_marine_medal ? "marine" : "xeno"] awards for '[recipient_name]'!")
 		return FALSE
 
-	if(index < 1 || index > recipient_award.medal_names.len)
+	if(index < 1 || index > length(recipient_award.medal_names))
 		to_chat(usr, "Error: Index [index] is out of bounds!")
 		return FALSE
 
@@ -429,7 +429,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	// Either entirely delete the award from the list, or just remove the entry if there are multiple
 	var/medal_type = recipient_award.medal_names[index]
 	var/citation = recipient_award.medal_citations[index]
-	if(recipient_award.medal_names.len == 1)
+	if(length(recipient_award.medal_names) == 1)
 		if(is_marine_medal)
 			GLOB.medal_awards.Remove(recipient_name)
 		else
@@ -479,6 +479,10 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 			continue
 		recipient_ranks[recipient_name] = record.fields["rank"]
 		possible_recipients += recipient_name
+	if(length(possible_recipients) == 0)
+		to_chat(recommendation_giver, SPAN_WARNING("It's not possible to give medals when the ship is empty. Tough luck, partner..."))
+		return FALSE
+
 	var/chosen_recipient = tgui_input_list(recommendation_giver, "Who do you want to recommend a medal for?", "Medal Recommendation", possible_recipients)
 	if(!chosen_recipient)
 		return FALSE
@@ -576,8 +580,8 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/user = usr
-	var/obj/item/card/id/card = user.wear_id
+	var/mob/living/carbon/human/user = ui.user
+	var/obj/item/card/id/card = user?.get_idcard()
 	if(!card)
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
 		return
@@ -604,7 +608,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 
 	switch(action)
 		if("grant_new_medal")
-			if(give_medal_award(get_turf(actual_loc)))
+			if(give_medal_award(actual_loc))
 				actual_loc.visible_message(SPAN_NOTICE("[actual_loc] prints a medal."))
 			. = TRUE
 
@@ -629,7 +633,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			if(confirm_choice != "Yes")
 				return
 
-			if(give_medal_award_prefilled(get_turf(actual_loc), user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name))
+			if(give_medal_award_prefilled(actual_loc, user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name))
 				GLOB.medal_recommendations -= recommendation
 				qdel(recommendation)
 				user.visible_message(SPAN_NOTICE("[actual_loc] prints a medal."))

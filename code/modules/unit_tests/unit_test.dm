@@ -64,7 +64,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 /datum/unit_test/Destroy()
 	QDEL_LIST(allocated)
 	// clear the test area
-	for (var/turf/turf in block(locate(1, 1, run_loc_floor_bottom_left.z), locate(world.maxx, world.maxy, run_loc_floor_bottom_left.z)))
+	for (var/turf/turf as anything in Z_TURFS(run_loc_floor_bottom_left.z))
 		for (var/content in turf.contents)
 			if (istype(content, /obj/effect/landmark))
 				continue
@@ -87,7 +87,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 /datum/unit_test/proc/allocate(type, ...)
 	var/list/arguments = args.Copy(2)
 	if(ispath(type, /atom))
-		if (!arguments.len)
+		if (!length(arguments))
 			arguments = list(run_loc_floor_bottom_left)
 		else if (arguments[1] == null)
 			arguments[1] = run_loc_floor_bottom_left

@@ -110,11 +110,11 @@
 		else
 			data["occupant"]["temperaturestatus"] = "bad"
 
-	data["cellTemperature"] = round(temperature)
+	data["cellTemperature"] = floor(temperature)
 
 	data["isBeakerLoaded"] = beaker ? TRUE : FALSE
 	var/beakerContents = list()
-	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
+	if(beaker && beaker.reagents && length(beaker.reagents.reagent_list))
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
 			beakerContents += list(list("name" = R.name, "volume" = R.volume))
 	data["beakerContents"] = beakerContents
@@ -193,6 +193,11 @@
 	var/is_on = on && operable()
 	icon_state = "[icon_state]-[is_on ? "on" : "off"]-[occupant ? "occupied" : "empty"]"
 
+/obj/structure/machinery/cryo_cell/Destroy()
+	if(occupant)
+		go_out()
+	. = ..()
+
 /obj/structure/machinery/cryo_cell/proc/process_occupant()
 	if(!occupant)
 		return
@@ -252,7 +257,7 @@
 
 		if(can_administer)
 			beaker.reagents.trans_to(occupant, 5)
-			beaker.reagents.reaction(occupant)
+			beaker.reagents.reaction(occupant, permeable_in_mobs = FALSE)
 
 	if(autoeject)
 		//release the patient automatically when brute and burn are handled on non-robotic limbs

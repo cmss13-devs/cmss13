@@ -106,6 +106,10 @@
 			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
 			return
 
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)) //Checked again to account for people trying to place acid while channeling the burrow ability
+		to_chat(src, SPAN_WARNING("We can't melt [O] from here!"))
+		return
+
 	if(!check_state())
 		return
 
@@ -195,6 +199,10 @@
 			client.pixel_x = -viewoffset
 			client.pixel_y = 0
 
+	for (var/datum/action/xeno_action/onclick/toggle_long_range/action in actions)
+		action.on_zoom_in()
+		return
+
 /mob/living/carbon/xenomorph/proc/zoom_out()
 	if(!client)
 		return
@@ -281,7 +289,7 @@
 	for(var/turf/T in turflist)
 		distance++
 
-		if(!prev_turf && turflist.len > 1)
+		if(!prev_turf && length(turflist) > 1)
 			prev_turf = get_turf(src)
 			continue //So we don't burn the tile we be standin on
 

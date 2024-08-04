@@ -108,6 +108,7 @@
 	UnregisterSignal(human_dummy, COMSIG_MOB_DEATH)
 	message_to_player("Well done. Killing humans is one of many ways to help the hive.")
 	message_to_player("Another way is to <b>capture</b> them. This will grow a new xenomorph inside them which will eventually burst into a new playable xenomorph!")
+	update_objective("")
 	addtimer(CALLBACK(human_dummy, TYPE_PROC_REF(/mob/living, rejuvenate)), 8 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(proceed_to_tackle_phase)), 10 SECONDS)
 
@@ -139,6 +140,7 @@
 	xeno.melee_damage_lower = 0
 	xeno.melee_damage_upper = 0
 	message_to_player("Well done. Under normal circumstances, you would have to keep tackling the human to keep them down, but for the purposes of this tutorial they will stay down forever.")
+	update_objective("")
 	addtimer(CALLBACK(src, PROC_REF(cap_phase)), 10 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/cap_phase()
@@ -147,6 +149,7 @@
 	add_to_tracking_atoms(morpher)
 	add_highlight(morpher, COLOR_YELLOW)
 	message_to_player("In the south west is an egg morpher. Click the egg morpher to take a <b>facehugger</b>.")
+	update_objective("Take a facehugger from the eggmorpher.")
 	RegisterSignal(xeno, COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER, PROC_REF(take_facehugger_phase))
 
 /datum/tutorial/xenomorph/basic/proc/take_facehugger_phase(source, hugger)
@@ -160,7 +163,18 @@
 	add_highlight(hugger, COLOR_YELLOW)
 	message_to_player("This is a facehugger, highlighted in yellow. Pick up the facehugger by clicking it.")
 	message_to_player("Stand next to the downed human and click them to apply the facehugger. Or drop the facehugger near them to see it leap onto their face automatically.")
-	RegisterSignal(human_dummy, COMSIG_HUMAN_IMPREGNATE, PROC_REF(nest_cap_phase))
+	update_objective("Apply the facehugger to the human.")
+	RegisterSignal(hugger, COMSIG_PARENT_QDELETING, PROC_REF(on_hugger_deletion))
+	RegisterSignal(human_dummy, COMSIG_HUMAN_IMPREGNATE, PROC_REF(nest_cap_phase), override = TRUE)
+
+/datum/tutorial/xenomorph/basic/proc/on_hugger_deletion(hugger)
+	SIGNAL_HANDLER
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/effect/alien/resin/special/eggmorph, morpher)
+	morpher.stored_huggers = 1
+	add_highlight(morpher, COLOR_YELLOW)
+	message_to_player("Click the egg morpher to take a <b>facehugger</b>.")
+	update_objective("Take a facehugger from the eggmorpher.")
+	RegisterSignal(xeno, COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER, PROC_REF(take_facehugger_phase))
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase()
 	SIGNAL_HANDLER
@@ -168,10 +182,12 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/mask/facehugger, hugger)
 	UnregisterSignal(human_dummy, COMSIG_MOB_TAKE_DAMAGE)
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_IMPREGNATE)
+	UnregisterSignal(hugger, COMSIG_PARENT_QDELETING)
 	remove_highlight(hugger)
 
 	message_to_player("We should nest the infected human to make sure they don't get away.")
 	message_to_player("Humans cannot escape nests without help, and the nest will keep them alive long enough for our new sister to burst forth.")
+	update_objective("")
 	addtimer(CALLBACK(src, PROC_REF(nest_cap_phase_two)), 10 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_two()
@@ -185,6 +201,7 @@
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_three()
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	message_to_player("Grab the human using your grab intent. Or use control + click.")
+	update_objective("Grab the human using grab intent or ctrl-click.")
 	RegisterSignal(human_dummy, COMSIG_MOVABLE_XENO_START_PULLING, PROC_REF(nest_cap_phase_four))
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_four()
@@ -192,6 +209,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_MOVABLE_XENO_START_PULLING)
 	message_to_player("Well done. Now devour the human by clicking on your character with the grab selected in your hand. You must not move during this process.")
+	update_objective("Devour the grabbed human by clicking on them with the grab in-hand.")
 	RegisterSignal(human_dummy, COMSIG_MOB_DEVOURED, PROC_REF(nest_cap_phase_five))
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_five()

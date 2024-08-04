@@ -184,9 +184,12 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 	chambered_tray = TRUE
 	var/misfuel = get_misfuel_amount()
 	var/message = "[key_name(user)] chambered the Orbital Bombardment cannon."
+	var/ares_message = "Shell chambered."
 	if(misfuel)
 		message += " It is misfueled by [misfuel] units!"
+		ares_message += " Fuel imbalance detected!"
 	message_admins(message, x, y, z)
+	log_ares_bombardment(user, lowertext(tray.warhead.name), ares_message)
 
 	update_icon()
 
@@ -509,15 +512,13 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	var/distance = 18
 	var/fire_level = 70
 	var/burn_level = 80
-	var/fire_color = null
+	var/fire_color = LIGHT_COLOR_CYAN
 	var/fire_type = "white"
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target)
 	. = ..()
 	if (!.)
 		return
-	if(fire_color)
-		fire_type = "dynamic"
 
 	new /obj/effect/overlay/temp/blinking_laser (target)
 	sleep(10)
@@ -680,7 +681,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	if(..())
 		return
 
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use that console."))
 		return TRUE
 

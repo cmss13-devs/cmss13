@@ -80,7 +80,7 @@
 		return FALSE
 	var/temp = text2num(trim(str_val))
 	if(!isnull(temp))
-		config_entry_value = clamp(integer ? round(temp) : temp, min_val, max_val)
+		config_entry_value = clamp(integer ? floor(temp) : temp, min_val, max_val)
 		if(config_entry_value != temp && !(datum_flags & DF_VAR_EDITED))
 			log_config("Changing [name] from [temp] to [config_entry_value]!")
 		return TRUE
@@ -125,7 +125,7 @@
 		if(isnull(temp))
 			return FALSE
 		new_list += temp
-	if(!new_list.len)
+	if(!length(new_list))
 		return FALSE
 	config_entry_value = new_list
 	return TRUE

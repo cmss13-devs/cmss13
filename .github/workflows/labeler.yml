@@ -1,7 +1,7 @@
-name: Labeling
+name: Labeling and Verification
 on:
   pull_request_target:
-    types: [opened]
+    types: [opened, reopened, synchronize, edited]
 jobs:
   label:
     runs-on: ubuntu-latest
@@ -13,7 +13,7 @@ jobs:
         run: |
           unset SECRET_EXISTS
           if [ -n "$ENABLER_SECRET" ]; then SECRET_EXISTS=true ; fi
-          echo "::set-output name=ACTIONS_ENABLED::$SECRET_EXISTS"
+          echo "ACTIONS_ENABLED=$SECRET_EXISTS" >> $GITHUB_OUTPUT
       - name: Get The Script
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
@@ -29,7 +29,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pygithub
           sudo apt-get install dos2unix
-      - name: Add Labels
+      - name: Add and verify labels
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
           python add_labels.py

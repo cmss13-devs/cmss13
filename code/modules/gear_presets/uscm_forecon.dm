@@ -1,7 +1,7 @@
 /datum/equipment_preset/uscm/forecon
 	assignment = JOB_SQUAD_MARINE
 	rank = JOB_SQUAD_MARINE
-	paygrade = PAY_SHORT_ME5
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	rank = JOB_MARINE
@@ -227,7 +227,7 @@
 	rank = JOB_SQUAD_LEADER
 	role_comm_title = "SL"
 	skills = /datum/skills/military/survivor/forecon_squad_leader
-	paygrade = PAY_SHORT_MO1
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)

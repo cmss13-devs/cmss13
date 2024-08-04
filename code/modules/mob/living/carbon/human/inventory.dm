@@ -412,6 +412,8 @@
 
 /mob/living/carbon/human/get_item_by_slot(slot_id)
 	switch(slot_id)
+		if(WEAR_ACCESSORY)
+			return w_uniform.accessories
 		if(WEAR_BACK)
 			return back
 		if(WEAR_FACE)

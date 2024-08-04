@@ -283,6 +283,7 @@ CULT
 
 /datum/action/human_action/activable/cult
 	name = "Activable Cult Ability"
+	icon_file = 'icons/mob/hud/actions_cultist.dmi'
 
 /datum/action/human_action/activable/cult/xeno/speak_hivemind
 	name = "Speak in Hivemind"

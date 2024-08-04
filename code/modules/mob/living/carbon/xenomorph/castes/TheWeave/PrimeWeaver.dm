@@ -1,6 +1,6 @@
 /datum/caste_datum/prime_weaver
 	caste_type = WEAVE_CASTE_PRIME
-	tier = 2
+	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_7
 	melee_damage_upper = XENO_DAMAGE_TIER_8

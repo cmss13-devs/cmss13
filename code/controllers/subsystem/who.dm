@@ -252,6 +252,7 @@ SUBSYSTEM_DEF(who)
 				admin_payload["special_text"] = " (STEALTHED)"
 				admin_stealthed_additional["total_admins"] += list(list("[client.key] ([rank])" = list(admin_payload)))
 			else if(client.admin_holder?.fakekey)
+				admin_payload["special_color"] = "#7b582f"
 				admin_payload["special_text"] += " (HIDDEN)"
 				admin_additional["total_admins"] += list(list("[client.key] ([rank])" = list(admin_payload)))
 			else

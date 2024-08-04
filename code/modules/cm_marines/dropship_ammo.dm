@@ -322,11 +322,11 @@
 
 /obj/structure/ship_ammo/rocket/harpoon
 	name = "\improper AGM-184 'Harpoon II'"
-	desc = "The AGM-184 Harpoon II is an Anti-Ship Missile, designed and used to effectively take down enemy ships with a huge blast wave with low explosive power. This one is modified to use ground signals. Can be loaded into the LAU-444 Guided Missile Launcher."
+	desc = "The AGM-184 Harpoon II is an Anti-Ship Missile, designed and used to effectively take down enemy ships with a huge blast wave with low explosive power. This one is modified to use ground signals and can be seen as a cheaper alternative to conventional ordnance. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "harpoon"
 	ammo_id = "s"
 	travelling_time = 50
-	point_cost = 300
+	point_cost = 200
 	fire_mission_delay = 4
 
 //Looks kinda OP but all it can actually do is just to blow windows and some of other things out, cant do much damage.

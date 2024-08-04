@@ -34,6 +34,9 @@
 	var/heat_damage_per_tick = 3 //amount of damage applied if animal's body temperature is higher than maxbodytemp
 	var/cold_damage_per_tick = 2 //same as heat_damage_per_tick, only if the bodytemperature it's lower than minbodytemp
 
+	///Will this mob be affected by fire/napalm? Set to FALSE for all mobs as the implications could be weird due to not being tested for all simple mobs.
+	var/affected_by_fire = FALSE
+
 	//Atmos effect - Yes, you can make creatures that require phoron or co2 to survive. N2O is a trace gas and handled separately, hence why it isn't here. It'd be hard to add it. Hard and me don't mix (Yes, yes make all the dick jokes you want with that.) - Errorage
 	var/min_oxy = 5
 	var/max_oxy = 0 //Leaving something at 0 means it's off - has no maximum
@@ -74,8 +77,58 @@
 /mob/living/simple_animal/updatehealth()
 	return
 
-/mob/living/simple_animal/Life(delta_time)
+/mob/living/simple_animal/get_examine_text(mob/user)
+	. = ..()
+	if(stat == DEAD)
+		. += SPAN_BOLDWARNING("It is DEAD. Kicked the bucket.")
+	else
+		var/percent = (health / maxHealth * 100)
+		switch(percent)
+			if(95 to INFINITY)
+				. += SPAN_NOTICE("It looks quite healthy.")
+			if(75 to 94)
+				. += SPAN_NOTICE("It looks slightly injured.")
+			if(50 to 74)
+				. += SPAN_DANGER("It looks injured.")
+			if(25 to 49)
+				. += SPAN_DANGER("It bleeds with sizzling wounds.")
+			if(-INFINITY to 24)
+				. += SPAN_BOLDWARNING("It is heavily injured and limping badly.")
 
+/mob/living/simple_animal/handle_fire()
+	if(..())
+		return
+	health -= fire_reagent.intensityfire * 0.5
+
+/mob/living/simple_animal/IgniteMob()
+	if(!affected_by_fire)
+		return
+	return ..()
+
+/mob/living/simple_animal/update_fire()
+	if(on_fire && fire_reagent)
+		var/image/I
+		if(mob_size >= MOB_SIZE_BIG)
+			if((body_position != LYING_DOWN))
+				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire", "layer"=-1)
+			else
+				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire_lying", "layer"=-1)
+		else
+			I = image("icon" = 'icons/mob/xenos/effects.dmi', "icon_state"="alien_fire", "layer"=-1)
+
+		I.pixel_y -= pixel_y
+		I.pixel_x -= pixel_x
+		I.appearance_flags |= RESET_COLOR|RESET_ALPHA
+		I.color = fire_reagent.burncolor
+		overlays += I
+	if(!on_fire)
+		for(var/image/fire_overlay in overlays)
+			if(fire_overlay.icon_state == "alien_fire" || fire_overlay.icon_state == "alien_fire_lying")
+				overlays -= fire_overlay
+
+/mob/living/simple_animal/Life(delta_time)
+	if(affected_by_fire)
+		handle_fire()
 	//Health
 	if(stat == DEAD)
 		if(health > 0)
@@ -240,32 +293,46 @@
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		apply_damage(damage, BRUTE)
 
-
-/mob/living/simple_animal/attack_hand(mob/living/carbon/human/M as mob)
+/mob/living/simple_animal/attack_hand(mob/living/carbon/human/attacking_mob)
 	..()
 
-	switch(M.a_intent)
-
+	switch(attacking_mob.a_intent)
 		if(INTENT_HELP)
 			if (health > 0)
-				for(var/mob/O in viewers(src, null))
-					if ((O.client && !( O.blinded )))
-						O.show_message(SPAN_NOTICE("[M] [response_help] [src]"), SHOW_MESSAGE_VISIBLE)
-
-		if(INTENT_GRAB)
-			if(M == src || anchored)
-				return 0
-			M.start_pulling(src)
-
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+				visible_message(SPAN_NOTICE("[attacking_mob] [response_help] [src]."))
 			return 1
 
-		if(INTENT_HARM, INTENT_DISARM)
-			apply_damage(harm_intent_damage, BRUTE)
-			for(var/mob/O in viewers(src, null))
-				if ((O.client && !( O.blinded )))
-					O.show_message(SPAN_DANGER("[M] [response_harm] [src]"), SHOW_MESSAGE_VISIBLE)
+		if(INTENT_GRAB)
+			attacking_mob.start_pulling(src)
+			return 1
 
-	return
+		if(INTENT_DISARM)
+			visible_message(SPAN_NOTICE("[attacking_mob] [response_disarm] [src]."))
+			attacking_mob.animation_attack_on(src)
+			attacking_mob.flick_attack_overlay(src, "disarm")
+			return 1
+
+		if(INTENT_HARM)
+			var/datum/unarmed_attack/attack = attacking_mob.species.unarmed
+			if(!attack.is_usable(attacking_mob))
+				attack = attacking_mob.species.secondary_unarmed
+				return 0
+
+			attacking_mob.animation_attack_on(src)
+			attacking_mob.flick_attack_overlay(src, "punch")
+
+			var/extra_cqc_dmg = 0
+			if(attacking_mob.skills)
+				extra_cqc_dmg = attacking_mob.skills?.get_skill_level(SKILL_CQC)
+			var/final_damage = 0
+
+			playsound(loc, attack.attack_sound, 25, 1)
+			visible_message(SPAN_DANGER("[attacking_mob] [response_harm] [src]!"), null, null, 5)
+
+			final_damage = attack.damage + extra_cqc_dmg + harm_intent_damage
+			apply_damage(final_damage, BRUTE, src, sharp = attack.sharp, edge = attack.edge)
+			return 1
 
 /mob/living/simple_animal/can_be_pulled_by(mob/pulling_mob)
 	if(locate(/obj/item/explosive/plastic) in contents)

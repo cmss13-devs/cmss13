@@ -83,10 +83,10 @@ const GetAdminInfo = (props, context) => {
     <Button
       color={'transparent'}
       style={{
-        'border-color': special_color || color || '#2185d0',
+        'border-color': color || '#2185d0',
         'border-style': 'solid',
         'border-width': '1px',
-        color: special_color || color || 'white',
+        color: color || 'white',
       }}
       tooltip={text}
       tooltipPosition="bottom-start"

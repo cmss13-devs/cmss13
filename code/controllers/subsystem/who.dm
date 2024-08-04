@@ -31,10 +31,10 @@ SUBSYSTEM_DEF(who)
 	var/list/admin_sorted_additional = list()
 
 	var/list/factions_additional = list()
-	admin_sorted_additional["factions_additional"] = list("flags" = R_ADMIN, "data" = factions_additional)
+	admin_sorted_additional["factions_additional"] = list("flags" = R_MOD|R_ADMIN, "data" = factions_additional)
 
 	var/list/player_additional = list()
-	admin_sorted_additional["player_additional"] = list("flags" = R_ADMIN, "data" = player_additional)
+	admin_sorted_additional["player_additional"] = list("flags" = R_MOD|R_ADMIN, "data" = player_additional)
 
 	var/list/player_stealthed_additional = list()
 	admin_sorted_additional["player_stealthed_additional"] = list("flags" = R_STEALTH, "data" = player_stealthed_additional)
@@ -209,7 +209,7 @@ SUBSYSTEM_DEF(who)
 	var/list/admin_sorted_additional = list()
 
 	var/list/admin_additional = list()
-	admin_sorted_additional["admin_additional"] = list("flags" = R_ADMIN, "data" = admin_additional)
+	admin_sorted_additional["admin_additional"] = list("flags" = R_MOD|R_ADMIN, "data" = admin_additional)
 
 	var/list/admin_stealthed_additional = list()
 	admin_sorted_additional["admin_stealthed_additional"] = list("flags" = R_STEALTH, "data" = admin_stealthed_additional)
@@ -262,7 +262,7 @@ SUBSYSTEM_DEF(who)
 				admin_payload["text"] += "Spectating"
 
 			else if(istype(entry.mob, /mob/new_player))
-				admin_payload["color"] = "#688944"
+				admin_payload["color"] = "#FFFFFF"
 				admin_payload["text"] += "in Lobby"
 			else
 				admin_payload["color"] = "#688944"

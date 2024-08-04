@@ -731,16 +731,18 @@ CULT
 		to_chat(cultist, SPAN_XENOWARNING("You do not have enough blood to do this safely! The Weave will not risk harming you."))
 		return FALSE
 
-	if (do_after(cultist, 10 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY))
-		if (cultist.blood_volume < BLOOD_VOLUME_SAFE)
-			to_chat(cultist, SPAN_XENOWARNING("You do not have enough blood to do this safely! The Weave will not risk harming you."))
-			return FALSE
+	if (!do_after(cultist, 10 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY))
+		return FALSE
 
-		cultist.blood_volume -= 100
-		nexus.weave_energy += 100
-		cultist.visible_message(SPAN_XENONOTICE("[cultist] exudes energy back into The Weave!"), SPAN_XENONOTICE("You release some of your energy into The Weave!"))
-		enter_cooldown(cooldown)
-		return TRUE
+	if (cultist.blood_volume < BLOOD_VOLUME_SAFE)
+		to_chat(cultist, SPAN_XENOWARNING("You do not have enough blood to do this safely! The Weave will not risk harming you."))
+		return FALSE
+
+	cultist.blood_volume -= 100
+	nexus.weave_energy += 100
+	cultist.visible_message(SPAN_XENONOTICE("[cultist] exudes energy back into The Weave!"), SPAN_XENONOTICE("You release some of your energy into The Weave!"))
+	enter_cooldown(cooldown)
+	return TRUE
 
 /datum/action/human_action/activable/cult/weave/regenerate_wounds
 	name = "Regenerate Wounds"

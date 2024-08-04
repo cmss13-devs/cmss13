@@ -61,6 +61,10 @@
 
 /datum/action/xeno_action/activable/apply_salve/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(xeno.m_intent == MOVE_INTENT_STALK)
+		return FALSE
+
 	xeno.xeno_apply_salve(target_atom, health_transfer_amount, max_range, damage_taken_mod)
 	return ..()
 

@@ -904,6 +904,9 @@
 
 		current = get_step_towards(current, target_turf)
 
+/datum/action/xeno_action/activable/tail_stab/can_use_action()
+	return TRUE
+
 /datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 
@@ -924,6 +927,9 @@
 
 	if (world.time <= stabbing_xeno.next_move)
 		return FALSE
+
+	if(stabbing_xeno.m_intent == MOVE_INTENT_STALK)
+		stabbing_xeno.set_movement_intent(MOVE_INTENT_HUNT, 10 SECONDS)
 
 	var/distance = get_dist(stabbing_xeno, targetted_atom)
 	if(distance > 2)

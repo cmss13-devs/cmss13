@@ -24,4 +24,5 @@
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 	xeno_cooldown = 60 SECONDS
 	plasma_cost = 500
+	var/exchange_rate = 0.1
 

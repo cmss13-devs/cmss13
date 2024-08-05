@@ -1007,6 +1007,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 
+	H.WeaveClaim(CAUSE_ADMIN)
+
 //*****************************************************************************************************/
 /datum/equipment_preset/other/weave_cultist/load_status(mob/living/carbon/human/H, hivenumber = XENO_HIVE_WEAVE)
 	if(SSticker.mode && H.mind)

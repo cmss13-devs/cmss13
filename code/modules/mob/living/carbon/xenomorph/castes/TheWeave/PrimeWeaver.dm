@@ -58,6 +58,7 @@
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
 		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/activable/create_pool,
 		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/secrete_resin/hivelord/weave_macro,
 		/datum/action/xeno_action/onclick/psychic_whisper,
@@ -88,6 +89,7 @@
 	. = ..()
 	sight |= SEE_THRU//Changes what counts as Line-of-Sight, allowing Psychic speech through walls, but not hearing replies.
 	resin_build_order = GLOB.resin_build_order_hivelord
+	hive.add_hive_leader(src)
 
 /mob/living/carbon/xenomorph/prime_weaver/update_icons()
 	if (stat == DEAD)
@@ -104,3 +106,30 @@
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 	update_wounds()
+
+
+/mob/living/carbon/xenomorph/prime_weaver/generate_name()
+	if(!nicknumber)
+		generate_and_set_nicknumber()
+	var/name_prefix = hive.prefix
+	if(HAS_TRAIT(src, TRAIT_NO_PREFIX))
+		name_prefix = ""
+
+	age = XENO_NORMAL
+	if(client)
+		hud_update()
+
+	name = "[name_prefix]Prime Weaver"
+
+	var/name_client_prefix = ""
+	var/name_client_postfix = ""
+	if(client)
+		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
+		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
+	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
+
+	if(!HAS_TRAIT(src, TRAIT_NO_COLOR))
+		color = hive.color
+
+	//Update linked data so they show up properly
+	change_real_name(src, name)

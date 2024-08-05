@@ -637,6 +637,7 @@
 #define XENO_STRUCTURE_EGGMORPH  "egg morpher"
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
 #define XENO_STRUCTURE_NEST  "thick resin nest"
+#define XENO_STRUCTURE_WEAVE_POOL "flux pool"
 
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1

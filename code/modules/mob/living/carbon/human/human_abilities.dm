@@ -283,7 +283,7 @@ CULT
 
 /datum/action/human_action/activable/cult
 	name = "Activable Cult Ability"
-	icon_file = 'icons/mob/hud/actions_cultist.dmi'
+	icon_file = 'icons/mob/hud/actions_cult.dmi'
 
 /datum/action/human_action/activable/cult/xeno/speak_hivemind
 	name = "Speak in Hivemind"
@@ -641,6 +641,9 @@ CULT
 			vehicle.toggle_antenna(human_user)
 
 //Weave
+/datum/action/human_action/activable/cult/weave
+	var/energy_cost = 0
+
 /datum/action/human_action/activable/cult/weave/speak_hivemind
 	name = "Commune with The Weave"
 	action_icon_state = "cultist_channel_hivemind"
@@ -667,6 +670,7 @@ CULT
 	name = "Read The Weave"
 	action_icon_state = "cultist_channel_stun"
 	cooldown = 15 MINUTES
+	energy_cost = 300
 
 /datum/action/human_action/activable/cult/weave/weave_sense/action_activate()
 	. = ..()
@@ -690,7 +694,7 @@ CULT
 	if(nexus.bioscan_time > world.time)
 		to_chat(owner, SPAN_XENOWARNING("The Weave is too disturbed to be read at this time."))
 		return FALSE
-	if (!nexus.can_use_energy(300))
+	if (!nexus.can_use_energy(energy_cost))
 		to_chat(owner, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
 		return FALSE
 
@@ -699,23 +703,24 @@ CULT
 		enter_cooldown(10 SECONDS)
 		return FALSE
 
-	if(nexus.use_energy(300))
+	if(nexus.use_energy(energy_cost))
 		enter_cooldown(cooldown)
 		nexus.bioscan_time = world.time + 15 MINUTES
 		to_chat(owner, SPAN_XENONOTICE("The Weave reveals there are [marines] humans and [xenos] other biosigns alive on the colony."))
 		return TRUE
-	else
-		to_chat(owner, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
-		return FALSE
+
+	to_chat(owner, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
+	return FALSE
 
 
 /datum/action/human_action/activable/cult/weave/exude_energy
 	name = "Exude Energy"
 	action_icon_state = "cultist_channel_exude"
 	cooldown = 3 MINUTES
+	var/blood_cost = 100
+	var/exchange_rate = 1
 
-/datum/action/human_action/activable/cult/weave/exude_energy/action_activate()
-	. = ..()
+/datum/action/human_action/activable/cult/weave/exude_energy/use_ability()
 	if(!can_use_action())
 		return FALSE
 	if(!action_cooldown_check())
@@ -739,8 +744,8 @@ CULT
 		to_chat(cultist, SPAN_XENOWARNING("You do not have enough blood to do this safely! The Weave will not risk harming you."))
 		return FALSE
 
-	cultist.blood_volume -= 100
-	nexus.weave_energy += 100
+	cultist.blood_volume -= blood_cost
+	nexus.feed_weave(blood_cost * exchange_rate)
 	cultist.visible_message(SPAN_XENONOTICE("[cultist] exudes energy back into The Weave!"), SPAN_XENONOTICE("You release some of your energy into The Weave!"))
 	enter_cooldown(cooldown)
 	return TRUE
@@ -749,10 +754,9 @@ CULT
 	name = "Regenerate Wounds"
 	action_icon_state = "cultist_channel_heal"
 	cooldown = 3 MINUTES
-	var/energy_cost = 150
+	energy_cost = 150
 
-/datum/action/human_action/activable/cult/weave/regenerate_wounds/action_activate()
-	. = ..()
+/datum/action/human_action/activable/cult/weave/regenerate_wounds/use_ability()
 	if(!can_use_action())
 		return FALSE
 	if(!action_cooldown_check())
@@ -765,17 +769,17 @@ CULT
 	if (!nexus.can_use_energy(energy_cost))
 		to_chat(cultist, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
 		return FALSE
-	if(cultist.bruteloss < 10 && cultist.fireloss < 10)
+	if(cultist.getBruteLoss(organic_only = TRUE) < 10 && cultist.getFireLoss(organic_only = TRUE) < 10)
 		to_chat(cultist, SPAN_XENOWARNING("You are not sufficiently injured for The Weave to aid you."))
 		return FALSE
 
-	if (do_after(cultist, 10 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_MEDICAL))
-		if(!nexus.use_energy(energy_cost))
-			to_chat(cultist, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
-			return FALSE
-		else
-			cultist.visible_message(SPAN_XENONOTICE("[cultist] is wrapped in energies from The Weave as their wounds close!"), SPAN_XENONOTICE("Your wounds close as The Weave wraps around you!"))
-			cultist.apply_damage(-20, BRUTE)
-			cultist.apply_damage(-20, BURN)
-			enter_cooldown(cooldown)
-			return TRUE
+	if(!do_after(cultist, 10 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_MEDICAL))
+		return FALSE
+	if(!nexus.use_energy(energy_cost))
+		to_chat(cultist, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
+		return FALSE
+
+	cultist.visible_message(SPAN_XENONOTICE("[cultist] is wrapped in energies from The Weave as their wounds close!"), SPAN_XENONOTICE("Your wounds close as The Weave wraps around you!"))
+	cultist.heal_limb_damage(20, 20)
+	enter_cooldown(cooldown)
+	return TRUE

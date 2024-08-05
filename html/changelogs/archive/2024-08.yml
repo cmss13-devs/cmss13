@@ -81,3 +81,10 @@
   ihatethisengine2:
   - balance: sacrifice ability now guarantees to get the target out of crit on top
       of the heal
+2024-08-05:
+  Lagomorphica:
+  - balance: The combat correspondents camera is no longer meltable or explodable.
+  VileBeggar:
+  - qol: Deafness is now limited to being 1 minute in length.
+  - bugfix: Phones can no longer be stored in closets/crates, which prevents players
+      from dragging crates with their phones and other weird issues that can occur.

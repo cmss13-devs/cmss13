@@ -21762,6 +21762,13 @@
 	},
 /turf/open/floor/almayer/orangecorner/east,
 /area/almayer/engineering/upper_engineering/port)
+"eYU" = (
+/obj/structure/disposalpipe/up/almayer{
+	dir = 8;
+	id = "almayerlink_med_req"
+	},
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/hydroponics)
 "eZm" = (
 /turf/closed/wall/almayer,
 /area/almayer/maint/hull/upper/p_stern)
@@ -39787,6 +39794,13 @@
 "mGu" = (
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/securestorage)
+"mGM" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 4;
+	id = "almayerlink_med_req"
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "mGT" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -43314,7 +43328,7 @@
 "obo" = (
 /obj/structure/disposalpipe/up/almayer{
 	dir = 8;
-	id = "almayerlink_med_req"
+	id = "almayerlink_med1_req"
 	},
 /turf/closed/wall/almayer,
 /area/almayer/squads/req)
@@ -49448,6 +49462,13 @@
 	},
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower)
+"qAE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/medical_science)
 "qAG" = (
 /obj/structure/platform{
 	dir = 1
@@ -53181,6 +53202,13 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
+"saX" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 8;
+	id = "almayerlink_med1_req"
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "sbq" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	icon_state = "almayer_pdoor";
@@ -98287,7 +98315,7 @@ iKy
 iKy
 iKy
 wAE
-baw
+mGM
 baw
 qYC
 kwo
@@ -98490,7 +98518,7 @@ qQu
 qQu
 qQu
 wAE
-baw
+ley
 vbB
 ley
 kwo
@@ -98693,7 +98721,7 @@ dME
 bRO
 llo
 wAE
-baw
+saX
 dBp
 gVA
 tQV
@@ -100083,7 +100111,7 @@ iYf
 bIM
 wPz
 iUo
-vOy
+qAE
 xqp
 lzA
 vkp
@@ -100286,7 +100314,7 @@ mTp
 wiW
 wPz
 jeq
-rQy
+eYU
 wWR
 vti
 vkp

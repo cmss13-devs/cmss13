@@ -27,7 +27,7 @@
 			continue
 		if(isliving(A))
 			var/mob/living/M = A
-			if(!attack_same && (M.faction != faction || !(M.faction in faction_group)))
+			if(evaluate_target(M))
 				enemies |= M
 
 	for(var/mob/living/simple_animal/hostile/retaliate/H in around)

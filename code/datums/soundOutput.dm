@@ -7,7 +7,7 @@
 
 	/// Currently applied environmental reverb.
 	VAR_PROTECTED/owner_environment = SOUND_ENVIRONMENT_NONE
-	/// Assoc list of important channels and their assigned template, in the form of: "channel" = template
+	/// Assoc list of important channels and their assigned template, in the form of: "[channel]" = template
 	var/list/tracked_channels = list()
 
 /datum/soundOutput/New(client/client)
@@ -26,31 +26,24 @@
 	owner = null
 	return ..()
 
-/datum/soundOutput/proc/process_sound(datum/sound_template/template, update)
-	var/sound/sound = sound(template.file, template.repeat, template.wait)
+/**
+ * Translates a sound_template into an appropriate sound for the owner and sends it.
+ *
+ * Arguments:
+ * * template - the sound_template
+ * * update - if truthy updates the existing sound on the template's channel, otherwise overwrites it
+ */
+/datum/soundOutput/proc/process_sound(datum/sound_template/template, update = FALSE)
+	var/sound/sound = template.get_sound(update)
 
-	sound.channel = template.channel
-	sound.volume = template.volume * owner.volume_preferences[template.volume_cat]
-	sound.frequency = template.frequency
-	sound.offset = template.offset
-	sound.pitch = template.pitch
-	sound.status = template.status
-	sound.falloff = template.falloff
-	sound.echo = template.echo.Copy()
-
-	if(update)
-		ENABLE_BITFIELD(sound.status, SOUND_UPDATE)
+	sound.volume *= owner.volume_preferences[template.volume_cat]
 
 	if(CHECK_BITFIELD(template.sound_flags, SOUND_CAN_DEAFEN) && CHECK_BITFIELD(src.status_flags, EAR_DEAF_MUTE))
 		ENABLE_BITFIELD(sound.status, SOUND_MUTE)
 
-	if(CHECK_BITFIELD(template.sound_flags, SOUND_ENVIRONMENTAL))
-		sound.echo[ECHO_ROOM] = 0
-		sound.echo[ECHO_ROOMHF] = 0
-
 	if(CHECK_BITFIELD(template.sound_flags, SOUND_TRACKED) && !update)
 		if(GLOB.spatial_sound_tracking && GLOB.sound_lengths["[template.file]"] SECONDS >= GLOB.spatial_sound_tracking_min_length) //debug
-			tracked_channels[num2text(sound.channel)] = template
+			tracked_channels["[sound.channel]"] = template
 
 	if(!CHECK_BITFIELD(template.sound_flags, SOUND_SPATIAL)) //non-spatial
 		sound.x = template.x

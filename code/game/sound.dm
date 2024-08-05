@@ -6,8 +6,8 @@
 	//copied sound datum vars; environment, echo, pan, params, priority deliberately omitted
 	/// This is the file that will be played when the sound is sent to a player.
 	var/file
-	/// Set to TRUE to repeat the sound indefinitely once it begins playing, 2 to repeat it forwards and backwards.
-	var/repeat = FALSE
+	/// Set to 1 to repeat the sound indefinitely once it begins playing, 2 to repeat it forwards and backwards.
+	var/repeat = 0
 	/// Set to TRUE to wait for other sounds in this channel to finish before playing this one.
 	var/wait = FALSE
 	/// For sound effects, set to 1 through 1024 to choose a specific sound channel. For values of 0 or less, any available channel will be chosen.
@@ -30,12 +30,13 @@
 	var/z = 0
 	/// Within the falloff distance a sound stays at a constant volume. Outside of this distance it attenuates at a rate determined by the falloff. Higher values fade more slowly.
 	var/falloff = 1
+	/// If set to an 18-element list, this value customizes reverbration settings for this sound only. A null or non-numeric value for any setting will select its default.
 	var/list/echo = SOUND_ECHO_REVERB_OFF
 
 	//custom vars
 	/// Origin atom for the sound. Used for sound position.
 	var/atom/source
-	/// The category of this sound for client volume purposes: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes) and VOLUME_ADM (Admin sounds and some other stuff)
+	/// The category of this sound for client volume purposes: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes), and VOLUME_ADM (Admin sounds and some other stuff).
 	var/volume_cat = VOLUME_SFX
 	/// For spatial sounds, maximum range the sound is played. Defaults to volume * 0.25.
 	var/range = 0
@@ -96,6 +97,42 @@
 	source = null
 	return ..()
 
+/**
+ * Creates a sound datum based on the template.
+ *
+ * Arguments:
+ * * update - if truthy the sound datum only has values that will cause no change to the sound, and can be modified from there
+ *
+ * Returns a sound datum
+ */
+/datum/sound_template/proc/get_sound(update)
+	var/sound/sound = sound(/*repeat = src.repeat,*/ /*wait = src.wait,*/ channel = src.channel, volume = src.volume)
+	//sound.pan = src.pan
+	//sound.params = src.pan
+	//sound.priority = src.priority
+	sound.status = src.status
+	sound.x = src.x
+	sound.y = src.y
+	sound.z = src.z
+	sound.falloff = src.falloff
+	//repeat, wait, pan, params, priority commented out as currently unused
+
+	if(update)
+		sound.status |= SOUND_UPDATE
+		sound.echo = null
+	else //only needed when not updating as their default values indicate no change
+		sound.file = src.file
+		sound.frequency = src.frequency
+		sound.offset = src.offset
+		sound.pitch = src.pitch
+		//sound.environment = src.environment
+		if(CHECK_BITFIELD(sound_flags, SOUND_ENVIRONMENTAL))
+			sound.echo[ECHO_ROOM] = 0
+			sound.echo[ECHO_ROOMHF] = 0
+	//environment commented out as currently nonexistent on templates
+
+	return sound
+
 /proc/get_free_channel()
 	var/static/cur_chan = 1
 	. = cur_chan++
@@ -138,14 +175,14 @@
 	template.falloff = falloff
 	if(islist(echo))
 		for(var/pos in 1 to length(echo))
-			if(isnull(echo[pos]))
+			if(!isnum(echo[pos]))
 				continue
 			template.echo[pos] = echo[pos]
 
 	template.source = source
 	template.volume_cat = vol_cat
 	template.range = sound_range || vol * 0.25
-	ENABLE_BITFIELD(template.sound_flags, SOUND_SPATIAL|SOUND_ENVIRONMENTAL|SOUND_CAN_DEAFEN|SOUND_TRACKED)
+	ENABLE_BITFIELD(template.sound_flags, SOUND_SPATIAL|SOUND_ENVIRONMENTAL|SOUND_CAN_DEAFEN|SOUND_TRACKED) //TODO: limit to sounds that need it
 
 	SSsound.queue(template)
 	return template.channel
@@ -165,7 +202,7 @@
 	template.status = status
 	if(islist(echo))
 		for(var/pos in 1 to length(echo))
-			if(isnull(echo[pos]))
+			if(!isnum(echo[pos]))
 				continue
 			template.echo[pos] = echo[pos]
 
@@ -187,7 +224,7 @@
 	template.status = status
 	if(islist(echo))
 		for(var/pos in 1 to length(echo))
-			if(isnull(echo[pos]))
+			if(!isnum(echo[pos]))
 				continue
 			template.echo[pos] = echo[pos]
 
@@ -217,7 +254,7 @@
 	template.volume = volume
 	if(islist(echo))
 		for(var/pos in 1 to length(echo))
-			if(isnull(echo[pos]))
+			if(!isnum(echo[pos]))
 				continue
 			template.echo[pos] = echo[pos]
 

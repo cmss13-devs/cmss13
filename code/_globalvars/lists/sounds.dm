@@ -1,6 +1,6 @@
 #define SOUND_LENGTHS_FILEPATH "sound/sound_lengths.txt"
 
-/// Assoc list of of all sounds in the codebase, in the form "sound/path.ext" = length in seconds
+/// Assoc list of of all sounds in the codebase, in the form "[sound/path.ext]" = length in seconds
 GLOBAL_LIST_INIT(sound_lengths, json_decode(file2text(SOUND_LENGTHS_FILEPATH)))
 
 /*

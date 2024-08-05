@@ -82,8 +82,7 @@
 #define SOUND_ENVIRONMENT_DIZZY 24
 #define SOUND_ENVIRONMENT_PSYCHOTIC 25
 
-#define SOUND_ECHO_REVERB_ON list(0, 0, 0, 0, 0, 0.0, 0, 0.25, 1.5, 1.0, 0, 1.0, 0, 0.0, 0.0, 0.0, 1.0, 0)
-#define SOUND_ECHO_REVERB_OFF list(0, 0, -10000, -10000, 0, 0.0, 0, 0.25, 1.5, 1.0, 0, 1.0, 0, 0.0, 0.0, 0.0, 1.0, 0) //-10000 to Room & RoomHF makes enviromental reverb effectively inaudible
+#define SOUND_ECHO_REVERB_OFF list(null, null, -10000, -10000, null, null, null, null, null, null, null, null, null, null, null, null, null, null) //-10000 to Room & RoomHF makes enviromental reverb effectively inaudible, nulls are interpreted as default values
 
 /// Enviromental sounds are effected by environmental reverb
 #define SOUND_ENVIRONMENTAL (1<<4)

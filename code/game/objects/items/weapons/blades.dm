@@ -138,17 +138,6 @@
 	throwforce = MELEE_FORCE_STRONG
 	edge = 1
 
-
-/obj/item/weapon/pizza_cutter
-	name = "\improper PIZZA TIME"
-	icon = 'icons/obj/items/weapons/weapons.dmi'
-	icon_state = "pizza_cutter"
-	item_state = "pizza_cutter"
-	desc = "Before you is a holy relic of a bygone era when the great Pizza Lords reigned supreme. You know either that or it's just a big damn pizza cutter."
-	sharp = IS_SHARP_ITEM_ACCURATE
-	force = MELEE_FORCE_VERY_STRONG
-	edge = 1
-
 ///For digging shrapnel out of OTHER people, not yourself. Triggered by human/attackby() so target is definitely human. User might not be.
 /obj/item/proc/dig_out_shrapnel_check(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	if(user.a_intent == INTENT_HELP && (target == user || skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))) //Squad medics and above, or yourself

@@ -11,7 +11,7 @@ import {
 import { Window } from '../layouts';
 
 export const Who = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend();
   const {
     base_data,
     player_additional,

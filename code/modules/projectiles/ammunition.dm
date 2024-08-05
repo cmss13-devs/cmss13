@@ -233,6 +233,8 @@ bullets/shells. ~N
 */
 
 /obj/item/ammo_magazine/handful
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "generic handful"
 	desc = "A handful of rounds to reload on the go."
 	icon = 'icons/obj/items/weapons/guns/handful.dmi'

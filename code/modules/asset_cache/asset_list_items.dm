@@ -297,22 +297,18 @@
 			continue
 
 		if(icon_state in icon_states(icon_file))
-			if(ispath(item, /obj/item/ammo_box/magazine))
-				var/obj/item/ammo_box/magazine/ammo_box = item
-				if(ispath(item, /obj/item/ammo_box/magazine/misc))
-					new_icon = icon('icons/ui_icons/vendor_preview_icons.dmi', "[ammo_box.icon_state][ammo_box?.overlay_gun_type]", SOUTH)
-				else
-					new_icon = icon('icons/ui_icons/vendor_preview_icons.dmi', "[ammo_box.icon_state][ammo_box?.overlay_ammo_type]", SOUTH)
-			else if(ispath(item, /obj/item/storage/box/nade_box))
-				var/obj/item/storage/box/nade_box/nade_box = item
-				new_icon = icon('icons/ui_icons/vendor_preview_icons.dmi', nade_box.type_icon, SOUTH)
+			if(ispath(current_product, /obj/item/storage/box) || ispath(current_product, /obj/item/ammo_box) || ispath(current_product, /obj/item/reagent_container))
+				item = new current_product()
+				new_icon = getFlatIcon(item)
+				new_icon.Scale(32,32)
+				qdel(item)
 			else
 				new_icon = icon(icon_file, icon_state, SOUTH)
-			var/new_color = initial(item.color)
-			if (!isnull(new_color) && new_color != "#FFFFFF")
-				new_icon.Blend(new_color, ICON_MULTIPLY)
+				var/new_color = initial(item.color)
+				if (!isnull(new_color) && new_color != "#FFFFFF")
+					new_icon.Blend(new_color, ICON_MULTIPLY)
 		else
-			if (ispath(current_product, /obj/effect/essentials_set))
+			if(ispath(current_product, /obj/effect/essentials_set))
 				var/obj/effect/essentials_set/essentials = new current_product()
 				var/list/spawned_list = essentials.spawned_gear_list
 				if(LAZYLEN(spawned_list))

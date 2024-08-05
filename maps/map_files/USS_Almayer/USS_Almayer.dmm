@@ -32955,7 +32955,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	access_modified = 1;
 	name = "Kitchen";
-	req_one_access_txt = "30;19"
+	req_one_access_txt = "30;28;19"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -74609,7 +74609,7 @@
 	access_modified = 1;
 	dir = 1;
 	name = "\improper Kitchen Hydroponics";
-	req_one_access_txt = "30;19"
+	req_one_access_txt = "30;28;19"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -80273,7 +80273,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	access_modified = 1;
 	name = "\improper Main Kitchen";
-	req_one_access_txt = "30;19"
+	req_one_access_txt = "30;28;19"
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"

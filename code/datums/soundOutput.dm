@@ -52,10 +52,14 @@
 		S.y += T.y_s_offset
 		S.x += T.x_s_offset
 		S.echo = SOUND_ECHO_REVERB_ON //enable environment reverb for positional sounds
+	for(var/pos = 1 to length(T.echo))
+		if(!T.echo[pos])
+			continue
+		S.echo[pos] = T.echo[pos]
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 
-	sound_to(owner,S)
+	sound_to(owner, S)
 
 /datum/soundOutput/proc/update_ambience(area/target_area, ambience_override, force_update = FALSE)
 	var/status_flags = SOUND_STREAM

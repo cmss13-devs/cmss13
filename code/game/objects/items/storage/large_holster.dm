@@ -91,6 +91,16 @@
 /obj/item/storage/large_holster/machete/arnold/full/fill_preset_inventory()
 	new /obj/item/weapon/sword/machete/arnold(src)
 
+/obj/item/storage/large_holster/machete/smartgunner
+	name = "\improper M56 harness machete scabbard"
+	desc = "A scabbard that connects to the M56 combat harness for carrying a M2132 machete."
+	icon_state = "smartgun_machete_holster"
+	flags_equip_slot = SLOT_BACK
+	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
+
+/obj/item/storage/large_holster/machete/smartgunner/full/fill_preset_inventory()
+	new /obj/item/weapon/sword/machete(src)
+
 /obj/item/storage/large_holster/katana
 	name = "\improper katana scabbard"
 	desc = "A large, vibrantly colored katana scabbard used to carry a Japanese sword. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."

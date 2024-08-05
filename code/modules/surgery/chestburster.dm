@@ -151,8 +151,8 @@
 				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage!"),
 				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage!"),
 				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage!"))
-			var/datum/internal_organ/I = pick(surgery.affected_limb.internal_organs)
-			I.take_damage(5,0)
+			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
+			impacted_organ.take_damage(5, FALSE)
 			if(target.stat == CONSCIOUS)
 				target.emote("scream")
 			target.apply_damage(15, BURN, target_zone)

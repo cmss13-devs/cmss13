@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(who)
 	if(!CLIENT_IS_STAFF(user.client))
 		return
 	for(var/data_packet_name in admin_sorted_additional) // One by one for Drulikar complains
-		if(!CLIENT_HAS_RIGHTS(user.client, admin_sorted_additional[data_packet_name]["flags"]))
+		if(!check_client_rights(user.client, admin_sorted_additional[data_packet_name]["flags"], FALSE))
 			continue
 		. += list("[data_packet_name]" = admin_sorted_additional[data_packet_name]["data"])
 

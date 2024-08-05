@@ -80,6 +80,8 @@
 	can_stack_builds = TRUE
 	universal_understand = TRUE
 
+	speaking_noise = 'sound/voice/weave_talk2.ogg'
+
 /mob/living/carbon/xenomorph/weaver/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	. = ..()
 	sight |= SEE_THRU//Changes what counts as Line-of-Sight, allowing Psychic speech through walls, but not hearing replies.

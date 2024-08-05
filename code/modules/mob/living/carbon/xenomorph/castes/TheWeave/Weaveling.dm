@@ -75,6 +75,8 @@
 	selected_fruit = /obj/effect/alien/resin/fruit/weave
 	universal_understand = TRUE
 
+	speaking_noise = 'sound/voice/weave_talk1.ogg'
+
 /mob/living/carbon/xenomorph/weaveling/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	. = ..()
 	sight |= SEE_THRU//Changes what counts as Line-of-Sight, allowing Psychic speech through walls, but not hearing replies.

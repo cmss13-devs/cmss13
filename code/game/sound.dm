@@ -30,7 +30,7 @@
 	var/z = 0
 	/// Within the falloff distance a sound stays at a constant volume. Outside of this distance it attenuates at a rate determined by the falloff. Higher values fade more slowly.
 	var/falloff = 1
-	var/list/echo = new /list(18)
+	var/list/echo = SOUND_ECHO_REVERB_OFF
 
 	//custom vars
 	/// Origin atom for the sound. Used for sound position.
@@ -62,7 +62,7 @@
 		src.y = source_template.y
 		src.z = source_template.z
 		src.falloff = source_template.falloff
-		src.echo = source_template.echo
+		src.echo = source_template.echo.Copy()
 
 		src.source = source_template.source
 		src.volume_cat = source_template.volume_cat
@@ -84,7 +84,11 @@
 		src.y = source_sound.y
 		src.z = source_sound.z
 		src.falloff = source_sound.falloff
-		src.echo = source_sound.echo
+		if(islist(source_sound.echo))
+			var/list/source_sound_echo = source_sound.echo
+			src.echo = source_sound_echo.Copy()
+		else
+			src.echo = source_sound.echo
 	else
 		src.file = get_sfx(file)
 
@@ -132,10 +136,11 @@
 		template.frequency = GET_RANDOM_FREQ // Same frequency for everybody
 	template.status = status
 	template.falloff = falloff
-	for(var/pos in 1 to length(echo))
-		if(ifnull(echo[pos]))
-			continue
-		template.echo[pos] = echo[pos]
+	if(islist(echo))
+		for(var/pos in 1 to length(echo))
+			if(isnull(echo[pos]))
+				continue
+			template.echo[pos] = echo[pos]
 
 	template.source = source
 	template.volume_cat = vol_cat
@@ -158,10 +163,11 @@
 	if(random_freq)
 		template.frequency = GET_RANDOM_FREQ
 	template.status = status
-	for(var/pos in 1 to length(echo))
-		if(ifnull(echo[pos]))
-			continue
-		template.echo[pos] = echo[pos]
+	if(islist(echo))
+		for(var/pos in 1 to length(echo))
+			if(isnull(echo[pos]))
+				continue
+			template.echo[pos] = echo[pos]
 
 	template.volume_cat = vol_cat
 
@@ -169,7 +175,7 @@
 	return template.channel
 
 /// Plays sound to all mobs that are map-level contents of an area
-/proc/playsound_area(area/area, sound/soundin, vol = 100, channel, vol_cat = VOLUME_SFX, status)
+/proc/playsound_area(area/area, sound/soundin, vol = 100, channel, vol_cat = VOLUME_SFX, status, list/echo)
 	if(!isarea(area))
 		error("[area] is not an area and is trying to play an area sound: [soundin]")
 		return FALSE
@@ -179,10 +185,11 @@
 	template.channel = channel || get_free_channel()
 	template.volume = vol
 	template.status = status
-	for(var/pos in 1 to length(echo))
-		if(ifnull(echo[pos]))
-			continue
-		template.echo[pos] = echo[pos]
+	if(islist(echo))
+		for(var/pos in 1 to length(echo))
+			if(isnull(echo[pos]))
+				continue
+			template.echo[pos] = echo[pos]
 
 	template.volume_cat = vol_cat
 
@@ -208,10 +215,11 @@
 
 	template.channel = SOUND_CHANNEL_Z
 	template.volume = volume
-	for(var/pos in 1 to length(echo))
-		if(ifnull(echo[pos]))
-			continue
-		template.echo[pos] = echo[pos]
+	if(islist(echo))
+		for(var/pos in 1 to length(echo))
+			if(isnull(echo[pos]))
+				continue
+			template.echo[pos] = echo[pos]
 
 	template.volume_cat = vol_cat
 

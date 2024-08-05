@@ -36,10 +36,7 @@
 	sound.pitch = template.pitch
 	sound.status = template.status
 	sound.falloff = template.falloff
-	for(var/pos in 1 to length(template.echo))
-		if(isnull(template.echo[pos]))
-			continue
-		sound.echo[pos] = template.echo[pos]
+	sound.echo = template.echo.Copy()
 
 	if(update)
 		ENABLE_BITFIELD(sound.status, SOUND_UPDATE)
@@ -48,7 +45,8 @@
 		ENABLE_BITFIELD(sound.status, SOUND_MUTE)
 
 	if(CHECK_BITFIELD(template.sound_flags, SOUND_ENVIRONMENTAL))
-		sound.echo = SOUND_ECHO_REVERB_ON
+		sound.echo[ECHO_ROOM] = 0
+		sound.echo[ECHO_ROOMHF] = 0
 
 	if(CHECK_BITFIELD(template.sound_flags, SOUND_TRACKED) && !update)
 		if(GLOB.spatial_sound_tracking && GLOB.sound_lengths["[template.file]"] SECONDS >= GLOB.spatial_sound_tracking_min_length) //debug

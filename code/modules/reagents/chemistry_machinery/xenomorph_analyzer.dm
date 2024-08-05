@@ -143,7 +143,7 @@
 	busy = FALSE
 
 
-/obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, mob/user, variation)
+/obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, mob/user)
 	if(stat & NOPOWER)
 		icon_state = "xeno_analyzer_off"
 		return

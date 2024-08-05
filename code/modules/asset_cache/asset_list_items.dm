@@ -281,54 +281,54 @@
 	name = "vending"
 
 /datum/asset/spritesheet/vending_products/register()
-	for (var/k in GLOB.vending_products)
-		var/atom/item = k
+	for (var/current_product in GLOB.vending_products)
+		var/atom/item = current_product
 		var/icon_file = initial(item.icon)
 		var/icon_state = initial(item.icon_state)
-		var/icon/I
+		var/icon/new_icon
 
 		if (!ispath(item, /atom))
 			log_debug("not atom! [item]")
 			continue
 
-		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
+		var/imgid = replacetext(replacetext("[current_product]", "/obj/item/", ""), "/", "-")
 
 		if(sprites[imgid])
 			continue
 
 		if(icon_state in icon_states(icon_file))
 			if(ispath(item, /obj/item/ammo_box/magazine))
-				var/obj/item/ammo_box/magazine/AB = item
+				var/obj/item/ammo_box/magazine/ammo_box = item
 				if(ispath(item, /obj/item/ammo_box/magazine/misc))
-					I = icon('icons/ui_icons/vendor_preview_icons.dmi', "[AB.icon_state][AB?.overlay_gun_type]", SOUTH)
+					new_icon = icon('icons/ui_icons/vendor_preview_icons.dmi', "[ammo_box.icon_state][ammo_box?.overlay_gun_type]", SOUTH)
 				else
-					I = icon('icons/ui_icons/vendor_preview_icons.dmi', "[AB.icon_state][AB?.overlay_ammo_type]", SOUTH)
+					new_icon = icon('icons/ui_icons/vendor_preview_icons.dmi', "[ammo_box.icon_state][ammo_box?.overlay_ammo_type]", SOUTH)
 			else if(ispath(item, /obj/item/storage/box/nade_box))
-				var/obj/item/storage/box/nade_box/NB = item
-				I = icon('icons/ui_icons/vendor_preview_icons.dmi', NB.type_icon, SOUTH)
+				var/obj/item/storage/box/nade_box/nade_box = item
+				new_icon = icon('icons/ui_icons/vendor_preview_icons.dmi', nade_box.type_icon, SOUTH)
 			else
-				I = icon(icon_file, icon_state, SOUTH)
-			var/c = initial(item.color)
-			if (!isnull(c) && c != "#FFFFFF")
-				I.Blend(c, ICON_MULTIPLY)
+				new_icon = icon(icon_file, icon_state, SOUTH)
+			var/new_color = initial(item.color)
+			if (!isnull(new_color) && new_color != "#FFFFFF")
+				new_icon.Blend(new_color, ICON_MULTIPLY)
 		else
-			if (ispath(k, /obj/effect/essentials_set))
-				var/obj/effect/essentials_set/es_set = new k()
-				var/list/spawned_list = es_set.spawned_gear_list
+			if (ispath(current_product, /obj/effect/essentials_set))
+				var/obj/effect/essentials_set/essentials = new current_product()
+				var/list/spawned_list = essentials.spawned_gear_list
 				if(LAZYLEN(spawned_list))
 					var/obj/item/target = spawned_list[1]
 					icon_file = initial(target.icon)
 					icon_state = initial(target.icon_state)
 					var/target_obj = new target()
-					I = getFlatIcon(target_obj)
-					I.Scale(32,32)
+					new_icon = getFlatIcon(target_obj)
+					new_icon.Scale(32,32)
 					qdel(target_obj)
 			else
-				item = new k()
-				I = icon(item.icon, item.icon_state, SOUTH)
+				item = new current_product()
+				new_icon = icon(item.icon, item.icon_state, SOUTH)
 				qdel(item)
 
-		Insert(imgid, I)
+		Insert(imgid, new_icon)
 	return ..()
 
 

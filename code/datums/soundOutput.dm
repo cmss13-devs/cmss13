@@ -36,6 +36,10 @@
 	sound.pitch = template.pitch
 	sound.status = template.status
 	sound.falloff = template.falloff
+	for(var/pos in 1 to length(template.echo))
+		if(isnull(template.echo[pos]))
+			continue
+		sound.echo[pos] = template.echo[pos]
 
 	if(update)
 		ENABLE_BITFIELD(sound.status, SOUND_UPDATE)

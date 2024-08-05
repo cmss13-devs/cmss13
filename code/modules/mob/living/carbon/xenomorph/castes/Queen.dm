@@ -432,6 +432,8 @@
 	if(!nicknumber)
 		generate_and_set_nicknumber()
 	var/name_prefix = hive.prefix
+	if(HAS_TRAIT(src, TRAIT_NO_PREFIX))
+		name_prefix = ""
 	if(queen_aged)
 		age_xeno()
 		switch(age)

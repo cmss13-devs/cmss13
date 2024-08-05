@@ -71,6 +71,9 @@
 /datum/action/xeno_action/onclick/choose_resin/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_4 //it's important that hivelord and drone have the same macros because their playstyle is similar, but it's not as important for queen since her playstyle is very different
 
+/datum/action/xeno_action/onclick/choose_resin/weave_macro
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
 	name = "Secrete Resin"
@@ -85,6 +88,10 @@
 	var/build_speed_mod = 1
 
 	plasma_cost = 1
+
+/datum/action/xeno_action/activable/secrete_resin/weave_macro
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 
 /datum/action/xeno_action/activable/secrete_resin/can_use_action()
 	. = ..()
@@ -103,6 +110,9 @@
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Thick Resin"
 	thick = TRUE
+
+/datum/action/xeno_action/activable/secrete_resin/hivelord/weave_macro
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 //resin marker
 /datum/action/xeno_action/activable/info_marker

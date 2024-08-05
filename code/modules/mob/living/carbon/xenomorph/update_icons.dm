@@ -325,6 +325,12 @@
 /mob/living/carbon/xenomorph/proc/update_wounds()
 	if(!wound_icon_holder)
 		return
+	if(caste.caste_type in WEAVE_CASTES)
+		wound_icon_holder.icon = 'icons/mob/xenonids/weave.dmi'
+	else if(HAS_TRAIT(src, TRAIT_XENONID))
+		wound_icon_holder.icon = 'icons/mob/xenonids/wounds.dmi'
+	else
+		wound_icon_holder.icon = 'icons/mob/xenos/wounds.dmi'
 
 	var/health_threshold
 	health_threshold = max(ceil((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks

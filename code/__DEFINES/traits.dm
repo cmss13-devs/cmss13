@@ -185,10 +185,14 @@
 #define TRAIT_HIVEMIND_INTERFERENCE "t_interference"
 /// If the hive or xeno can use objects.
 #define TRAIT_OPPOSABLE_THUMBS "t_thumbs"
+/// If the mob is sensitive to The Weave
+#define TRAIT_WEAVE_SENSITIVE "t_weave_sensitive"
 /// If the Hive delays round end (this is overridden for some hives). Does not occur naturally. Must be applied in events.
 #define TRAIT_NO_HIVE_DELAY "t_no_hive_delay"
 /// If the Hive uses it's colors on the mobs. Does not occur naturally, excepting the Mutated hive.
 #define TRAIT_NO_COLOR "t_no_color"
+/// If the Hive uses a hive prefix (Emulates the default hive).
+#define TRAIT_NO_PREFIX "t_no_prefix"
 
 // MISC MOB TRAITS
 /// If the mob is nested.

@@ -196,3 +196,49 @@
 
 	//Not in here? Must be untested!
 	return 0
+
+
+
+
+/mob/living/carbon/human/proc/WeaveClaim(cause = CAUSE_ADMIN)
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
+
+	var/truecause = "Unknown Means"
+	var/traitsource = TRAIT_SOURCE_ADMIN
+	switch(cause)
+		if(CAUSE_ADMIN)
+			truecause = "Divine Intervention"
+		if(CAUSE_ESSENCE)
+			truecause = "Essence Exposure"
+			traitsource = TRAIT_SOURCE_ABILITY("WeaveExposure")
+		if(CAUSE_WEAVER)
+			truecause = "The Prime Weaver"
+			traitsource = TRAIT_SOURCE_ABILITY("WeaveBlessing")
+
+	if(!istype(hive))
+		message_admins("[truecause] attempted to make [key_name(src)] a Weave cultist, but The Weave doesn't exist!")
+		return
+
+	var/datum/equipment_preset/other/weave_cultist/WC = new()
+	var/eyecolor = "#5adfe4"
+	r_eyes = hex2num(copytext(eyecolor, 2, 4))
+	g_eyes = hex2num(copytext(eyecolor, 4, 6))
+	b_eyes = hex2num(copytext(eyecolor, 6, 8))
+	update_body()
+	WC.load_race(src, hive.hivenumber)
+	WC.load_status(src)
+
+	to_chat(src, SPAN_XENODANGER("You have been enlightened by [truecause]!"))
+	to_chat(src, SPAN_XENOHIGHDANGER("<hr>You are now a Weave Devotee!"))
+	to_chat(src, SPAN_XENODANGER("Worship The Weave and listen to the Prime Weaver for orders. You are bound to peace and fanatic neutrality, however, you may defend yourself and The Weave if there is no alternative.<hr>"))
+
+	xeno_message("[src] has been claimed by The Weave!", 2, XENO_HIVE_WEAVE)
+	ADD_TRAIT(src, TRAIT_WEAVE_SENSITIVE, traitsource)
+
+	allow_gun_usage = FALSE
+	setBrainLoss(0)
+	KnockOut(5)
+	make_jittery(105)
+
+	if(client)
+		playsound_client(client, 'sound/effects/xeno_newlarva.ogg', null, 25)

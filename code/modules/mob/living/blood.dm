@@ -180,6 +180,12 @@
 	if(caste && caste.royal_caste)
 		return BLOOD_COLOR_XENO_ROYAL
 	return BLOOD_COLOR_XENO
+/mob/living/carbon/xenomorph/weaveling/get_blood_color()
+	return "#5adfe4"
+/mob/living/carbon/xenomorph/weaver/get_blood_color()
+	return "#5adfe4"
+/mob/living/carbon/xenomorph/prime_weaver/get_blood_color()
+	return "#135f72"
 
 /mob/living/carbon/human/get_blood_color()
 	return species.blood_color
@@ -197,6 +203,12 @@
 	else
 		return "xenoblood"
 
+/mob/living/carbon/xenomorph/weaveling/get_blood_id()
+	return "xenobloodweave"
+/mob/living/carbon/xenomorph/weaver/get_blood_id()
+	return "xenobloodweave"
+/mob/living/carbon/xenomorph/prime_weaver/get_blood_id()
+	return "xenobloodweave"
 /mob/living/carbon/human/get_blood_id()
 	if(species.flags & NO_BLOOD)
 		return

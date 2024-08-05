@@ -575,6 +575,8 @@
 	hud_set_marks()
 
 	var/name_prefix = in_hive.prefix
+	if(HAS_TRAIT(src, TRAIT_NO_PREFIX))
+		name_prefix = ""
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
 	var/number_decorator = ""

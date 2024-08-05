@@ -3,7 +3,7 @@ import { Button, Collapsible, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const StaffWho = (props, context) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend();
   const { base_data, admin_additional, admin_stealthed_additional } = data;
 
   const total_admins = mergeArrays(

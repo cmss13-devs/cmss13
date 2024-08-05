@@ -156,6 +156,10 @@
 					grabbed_mob.apply_damage(20)
 					health -= 50
 
+			grabbed_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slammed against [src] by [key_name(user)]</font>")
+			user.attack_log += text("\[[time_stamp()]\] <font color='red'>slammed [key_name(grabbed_mob)] against [src]</font>")
+			msg_admin_attack("[key_name(user)] slammed [key_name(grabbed_mob)] against [src] at [get_area_name(grabbed_mob)]", grabbed_mob.loc.x, grabbed_mob.loc.y, grabbed_mob.loc.z)
+
 			healthcheck(1, 1, grabbed_mob) //The person thrown into the window literally shattered it
 		return
 

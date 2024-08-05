@@ -140,7 +140,7 @@
 		if(overloaded)
 			. += SPAN_INFO("It is overloaded.")
 			return
-		if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			. += SPAN_INFO("You could overload its safeties with a multitool.")
 
 /obj/structure/machinery/power/reactor/power_change()
@@ -344,7 +344,7 @@
 		if(!is_ship_reactor)
 			return
 
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			return
 
 		to_chat(user, SPAN_WARNING("You start [overloaded ? "overloading" : "restoring"] the safeties on [src]."))
@@ -446,7 +446,7 @@
 
 	var/repair_time = 20 SECONDS
 	repair_time *= user.get_skill_duration_multiplier(SKILL_ENGINEER)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		repair_time += 5 SECONDS
 
 	to_chat(user, SPAN_NOTICE("You start repairing [src] with [tool]."))

@@ -23,8 +23,6 @@
 
 	/// an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
 	var/projectile_coverage = 0
-	/// How many tiles away from this object that a shooter needs to be to maximize this barricade's projectile coverage
-	var/projectile_coverage_distance_limit = 6
 	/// set to true if the item is garbage and should be deleted after awhile
 	var/garbage = FALSE
 

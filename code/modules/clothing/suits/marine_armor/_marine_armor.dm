@@ -696,7 +696,7 @@
 	)
 	blood_overlay_type = "armor"
 	flags_atom = parent_type::flags_atom | NO_NAME_OVERRIDE|NO_SNOW_TYPE
-	armor_melee = CLOTHING_ARMOR_LOW
+	armor_melee = CLOTHING_ARMOR_VERYLOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW

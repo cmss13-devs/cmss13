@@ -741,6 +741,10 @@
 	name = "strange metal pillar"
 	desc = "A strange metal pillar, unlike any metal you've seen before."
 	icon_state = "eng_pillar1"
+	allow_construction = FALSE
+
+/turf/open/floor/hybrisa/engineership/pillars/is_weedable()
+	return NOT_WEEDABLE
 
 /turf/open/floor/hybrisa/engineership/pillars/north/pillar1
 	icon_state = "eng_pillar1"

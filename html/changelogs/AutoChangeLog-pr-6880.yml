@@ -1,0 +1,5 @@
+author: "Contrabang"
+delete-after: True
+changes:
+  - rscadd: "Smartgunner Machete Scabbard, which smartgunners can wear on their back when their harness is equipped."
+  - balance: "SG's vendor has replaced the 6P Machete Scabbard with a 15P Smartgunner Machete Scabbard."

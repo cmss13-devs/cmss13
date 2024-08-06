@@ -495,7 +495,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
 "Wy" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "Xu" = (

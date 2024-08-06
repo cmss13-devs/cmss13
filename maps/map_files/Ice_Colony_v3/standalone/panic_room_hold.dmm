@@ -294,7 +294,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "mC" = (
-/obj/structure/machinery/power/apc/directional/no_power/west,
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "mI" = (
@@ -609,7 +609,7 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/s_admin)
 "wY" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
 "xa" = (

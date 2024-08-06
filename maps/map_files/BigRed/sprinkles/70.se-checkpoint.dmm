@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ax" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor,
 /area/bigred/ground/security)
 "aN" = (

@@ -20,7 +20,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "af" = (
-/obj/structure/machinery/power/apc/directional/no_power/north{
+/obj/structure/machinery/power/apc/power/north{
 	name = "Fitness APC"
 	},
 /turf/open/floor,

@@ -33,7 +33,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "hW" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "ih" = (

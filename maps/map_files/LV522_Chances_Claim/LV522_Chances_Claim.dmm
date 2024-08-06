@@ -329,7 +329,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms/glass)
 "akk" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor)
 "akl" = (
@@ -1331,7 +1333,9 @@
 /area/lv522/indoors/a_block/security/glass)
 "aUN" = (
 /obj/item/stack/sheet/wood/large_stack,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/casino)
@@ -1626,7 +1630,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/c_block/cargo)
 "bbL" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/east)
 "bce" = (
@@ -4796,7 +4802,9 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/casino)
 "cTf" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/west)
 "cTz" = (
@@ -5904,7 +5912,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/hydro)
@@ -6174,7 +6184,9 @@
 	pixel_y = 5
 	},
 /obj/item/tool/pen/blue/clicky,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/command_centre)
 "dAm" = (
@@ -6591,7 +6603,9 @@
 /area/lv522/atmos/east_reactor/east)
 "dLf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/strata/white_cyan1/east,
 /area/lv522/indoors/a_block/corpo/glass)
 "dLq" = (
@@ -6969,7 +6983,9 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
 "dVU" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/strata/white_cyan1/east,
 /area/lv522/indoors/a_block/medical)
 "dWc" = (
@@ -8016,7 +8032,9 @@
 /area/lv522/landing_zone_1/tunnel/far)
 "evg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/directional/no_power/west,
+/obj/structure/machinery/power/apc/power/west{
+	start_charge = 20
+	},
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "evu" = (
@@ -8820,7 +8838,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/strata/blue1,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "eOU" = (
@@ -9538,7 +9558,9 @@
 "fiG" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/kitchen/glass)
 "fiS" = (
@@ -9839,7 +9861,9 @@
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/west_reactor)
 "fsj" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/north_command_centre)
@@ -11550,7 +11574,9 @@
 /area/lv522/indoors/b_block/bar)
 "ghw" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms/glass)
 "ghy" = (
@@ -11887,7 +11913,9 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "gqf" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -11946,7 +11974,9 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/executive)
 "grZ" = (
@@ -12094,7 +12124,9 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "guZ" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "gvk" = (
@@ -12375,7 +12407,9 @@
 	pixel_x = 3;
 	pixel_y = 7
 	},
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/strata/white_cyan1,
 /area/lv522/indoors/lone_buildings/chunk)
 "gCO" = (
@@ -12724,7 +12758,9 @@
 /turf/open/asphalt/cement/cement1,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "gLd" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/organic/grass,
 /area/lv522/indoors/a_block/garden)
 "gLg" = (
@@ -13330,7 +13366,9 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/a_block/dorm_north)
 "gZJ" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "gZL" = (
@@ -13957,7 +13995,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/north)
 "hll" = (
@@ -15226,7 +15266,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/nw_rockies)
 "hQE" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -16625,7 +16667,9 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "izT" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/mouse,
 /turf/open/floor/strata/white_cyan1/east,
@@ -18150,7 +18194,9 @@
 /area/lv522/atmos/cargo_intake)
 "jjq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/strata/blue1,
 /area/lv522/indoors/a_block/dorm_north)
 "jjt" = (
@@ -19019,7 +19065,9 @@
 /area/lv522/indoors/a_block/fitness/glass)
 "jBu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/directional/power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "jBw" = (
@@ -19937,7 +19985,9 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_2)
 "jVz" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -20069,7 +20119,9 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/engineering)
 "jYE" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
 "jYF" = (
@@ -21276,7 +21328,9 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/garage)
 "kxz" = (
-/obj/structure/machinery/power/apc/directional/power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
 "kxH" = (
@@ -21398,7 +21452,9 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "kAn" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "kAG" = (
@@ -21914,7 +21970,9 @@
 /obj/structure/platform/stair_cut{
 	icon_state = "platform_stair_alt"
 	},
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/indoors/a_block/bridges/dorms_fitness)
 "kMr" = (
@@ -22559,7 +22617,9 @@
 /area/lv522/indoors/a_block/kitchen/damage)
 "lag" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/way_in_command_centre)
 "lao" = (
@@ -23577,7 +23637,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/dorms)
 "lAk" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/c_block/mining)
@@ -24027,7 +24089,9 @@
 /area/lv522/atmos/reactor_garage)
 "lLL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/directional/power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/c_block/t_comm)
 "lMF" = (
@@ -27209,7 +27273,9 @@
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/nw_rockies)
 "nky" = (
-/obj/structure/machinery/power/apc/directional/power/south,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "nkX" = (
@@ -28050,7 +28116,9 @@
 /area/lv522/landing_zone_1)
 "nFt" = (
 /obj/structure/pipes/vents/pump,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/filt)
 "nFM" = (
@@ -28999,7 +29067,9 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/lv522/indoors/c_block/cargo)
 "nYv" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/blue/northwest,
 /area/lv522/indoors/a_block/hallway)
 "nYF" = (
@@ -29509,7 +29579,9 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "ojw" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges/garden_bridge)
@@ -29648,7 +29720,9 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel/far)
 "ooG" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges)
 "opl" = (
@@ -29942,7 +30016,9 @@
 	current_rounds = 0
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "ouI" = (
@@ -30513,7 +30589,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/mining)
 "oKm" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
@@ -31507,7 +31585,9 @@
 	pixel_x = 2;
 	pixel_y = 6
 	},
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "phn" = (
@@ -32872,7 +32952,9 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/bridges)
 "pQG" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
@@ -33121,7 +33203,9 @@
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/security)
 "pWx" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -33837,7 +33921,9 @@
 	pixel_y = 10
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms/glass)
 "qnM" = (
@@ -34168,7 +34254,9 @@
 /obj/item/toy/dice,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/a_block/fitness/glass)
 "qtN" = (
@@ -34548,7 +34636,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/admin)
 "qCd" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -39023,7 +39113,9 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms/glass)
 "syy" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/garage)
@@ -43194,7 +43286,9 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "uqe" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "uqo" = (
@@ -43349,7 +43443,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/way_in_command_centre)
 "utR" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/science,
@@ -44616,7 +44712,9 @@
 	dir = 8
 	},
 /obj/item/ashtray/bronze,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms/glass)
 "uWh" = (
@@ -45349,7 +45447,9 @@
 /turf/open/floor/strata/white_cyan3/west,
 /area/lv522/indoors/a_block/medical/glass)
 "vnq" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/bridges/op_centre)
 "vnX" = (
@@ -45644,7 +45744,9 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/nw_rockies)
 "vtl" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/bridges/corpo)
 "vtp" = (
@@ -46297,7 +46399,9 @@
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/decal/cleanable/cobweb,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/security)
 "vIb" = (
@@ -46765,7 +46869,9 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/central_streets)
 "vSO" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/a_block/fitness)
 "vSU" = (
@@ -48974,7 +49080,9 @@
 /turf/open/floor/plating,
 /area/lv522/oob)
 "wVf" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/west_reactor)
 "wVo" = (
@@ -49150,7 +49258,9 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/admin)
 "xay" = (
@@ -51379,7 +51489,9 @@
 "yct" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms/glass)
 "ycv" = (

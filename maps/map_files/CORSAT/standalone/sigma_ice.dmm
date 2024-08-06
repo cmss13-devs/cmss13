@@ -1454,7 +1454,7 @@
 /turf/open/floor/asteroidplating,
 /area/corsat/sigma/biodome/gunrange)
 "GJ" = (
-/obj/structure/machinery/power/apc/directional/no_power/west,
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /obj/structure/closet/wardrobe/atmospherics_yellow,
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/sigma/airlock/control)

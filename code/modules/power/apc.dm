@@ -1357,19 +1357,19 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/almayer
 	cell_type = /obj/item/cell/high
 
-/obj/structure/machinery/power/apc/almayer/directional/north
+/obj/structure/machinery/power/apc/almayer/north
 	pixel_y = 32
 	dir = 1
 
-/obj/structure/machinery/power/apc/almayer/directional/south
+/obj/structure/machinery/power/apc/almayer/south
 	pixel_y = -26
 	dir = 2
 
-/obj/structure/machinery/power/apc/almayer/directional/east
+/obj/structure/machinery/power/apc/almayer/east
 	pixel_x = 30
 	dir = 4
 
-/obj/structure/machinery/power/apc/almayer/directional/west
+/obj/structure/machinery/power/apc/almayer/west
 	pixel_x = -30
 	dir = 8
 
@@ -1378,61 +1378,101 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	desc = "A control terminal for the area electrical systems. This one is hardened against sudden power fluctuations caused by electrical grid damage."
 	crash_break_probability = 0
 
-/obj/structure/machinery/power/apc/almayer/hardened/directional/north
+/obj/structure/machinery/power/apc/almayer/hardened/north
 	pixel_y = 32
 	dir = 1
 
-/obj/structure/machinery/power/apc/almayer/hardened/directional/south
+/obj/structure/machinery/power/apc/almayer/hardened/south
 	pixel_y = -26
 	dir = 2
 
-/obj/structure/machinery/power/apc/almayer/hardened/directional/east
+/obj/structure/machinery/power/apc/almayer/hardened/east
 	pixel_x = 30
 	dir = 4
 
-/obj/structure/machinery/power/apc/almayer/hardened/directional/west
+/obj/structure/machinery/power/apc/almayer/hardened/west
 	pixel_x = -30
 	dir = 8
 
 //------ Directional APCs ------//
-/obj/structure/machinery/power/apc/directional/no_power
+
+/obj/structure/machinery/power/apc/no_power
 	start_charge = 0
 
-/obj/structure/machinery/power/apc/directional/no_power/north
+/obj/structure/machinery/power/apc/no_power/north
 	pixel_y = 32
 	dir = 1
 
-/obj/structure/machinery/power/apc/directional/no_power/south
+/obj/structure/machinery/power/apc/no_power/south
 	pixel_y = -26
 	dir = 2
 
-/obj/structure/machinery/power/apc/directional/no_power/east
+/obj/structure/machinery/power/apc/no_power/east
 	pixel_x = 30
 	dir = 4
 
-/obj/structure/machinery/power/apc/directional/no_power/west
+/obj/structure/machinery/power/apc/no_power/west
 	pixel_x = -30
 	dir = 8
 
 // Powered APCs with directions
-/obj/structure/machinery/power/apc/directional/power/north
+/obj/structure/machinery/power/apc/power/north
 	pixel_y = 32
 	dir = 1
 
-/obj/structure/machinery/power/apc/directional/power/south
+/obj/structure/machinery/power/apc/power/south
 	pixel_y = -26
 	dir = 2
 
-/obj/structure/machinery/power/apc/directional/power/east
+/obj/structure/machinery/power/apc/power/east
 	pixel_x = 30
 	dir = 4
 
-/obj/structure/machinery/power/apc/directional/power/west
+/obj/structure/machinery/power/apc/power/west
+	pixel_x = -30
+	dir = 8
+
+// Upgraded APC's with directions
+/obj/structure/machinery/power/apc/upgraded/power
+	desc = "A control terminal for the area electrical systems. This one is upgraded with better power cell to sustain higher power usage."
+	cell_type = /obj/item/cell/high
+
+
+/obj/structure/machinery/power/apc/upgraded/power/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/upgraded/power/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/upgraded/power/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/upgraded/power/west
+	pixel_x = -30
+	dir = 8
+
+// apc that start at zero charge.
+
+/obj/structure/machinery/power/apc/upgraded/no_power
+	start_charge = 0
+
+/obj/structure/machinery/power/apc/upgraded/no_power/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/upgraded/no_power/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/upgraded/no_power/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/upgraded/no_power/west
 	pixel_x = -30
 	dir = 8
 
 #undef APC_UPDATE_ICON_COOLDOWN
-
-// apc that start at zero charge.
-/obj/structure/machinery/power/apc/nocharge
-	start_charge = 0

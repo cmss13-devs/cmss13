@@ -40,7 +40,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
 "q" = (
-/obj/structure/machinery/power/apc/directional/no_power/west,
+/obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/plating,
 /area/shiva/exterior/cp_lz2)
 "r" = (
@@ -114,7 +114,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
 "Y" = (
-/obj/structure/machinery/power/apc/directional/no_power/east,
+/obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "Z" = (

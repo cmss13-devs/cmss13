@@ -516,7 +516,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "ty" = (
-/obj/structure/machinery/power/apc/directional/no_power/north,
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "tS" = (
@@ -1069,7 +1069,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "Tn" = (
-/obj/structure/machinery/power/apc/directional/no_power/east,
+/obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "Tp" = (

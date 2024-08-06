@@ -2,6 +2,8 @@
  * Chemistry defines
  */
 
+/// Amount of bottle icon variations in total
+#define BOTTLE_ICON_CHOICES 4
 /// Amount of random icon variations for pills in total
 #define PILL_ICON_CHOICES 22
 /* Pill icon classes to generate mappings for */

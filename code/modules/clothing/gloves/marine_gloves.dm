@@ -219,3 +219,20 @@
 	item_state = "cbrn"
 	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
+
+//=RESEARCH ARMOR=\\
+
+/obj/item/clothing/gloves/marine/caustic
+	name = "\improper XM-CL Gloves"
+	desc = "A pair of ANCW Gloves. Their insides are incredibly soft and cool to the touch."
+	icon_state = "caustic_h"
+	item_state = "caustic_h"
+	siemens_coefficient = 1
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_HIGHPLUS
+	armor_rad = CLOTHING_ARMOR_HIGHPLUS
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	adopts_squad_color = FALSE

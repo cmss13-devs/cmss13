@@ -168,7 +168,7 @@
 		if(on && user.zone_selected == "eyes")
 			if(ishuman_strict(being)) //robots and aliens are unaffected
 				return
-			var/reaction = "try to watch closely, but you see no difference in [being.p_their()] eyes' reactions" //Shouldn't ever happen anyways
+			var/reaction = null //Shouldn't ever happen anyways
 			if(isnull(being.internal_organs_by_name))
 				reaction = "discover that indeed [being.p_they()] have nothing to be checked"
 				return // they have no organs somehow

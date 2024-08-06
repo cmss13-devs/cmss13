@@ -110,7 +110,7 @@
 		if(user.a_intent == INTENT_HELP)
 			var/body_part = parse_zone(user.zone_selected)
 			if(body_part)
-				var/sound = "try to listen closely, but you are unable to hear any useful sounds"
+				var/sound = null
 				if(being.stat == DEAD || (being.status_flags&FAKEDEATH))
 					sound = "can't hear anything at all, they must have kicked the bucket"
 				else

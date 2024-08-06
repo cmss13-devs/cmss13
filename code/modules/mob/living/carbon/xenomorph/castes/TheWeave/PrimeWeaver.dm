@@ -1,3 +1,18 @@
+GLOBAL_LIST_INIT(resin_build_order_primeweave, list(
+	/datum/resin_construction/resin_turf/wall/thick,
+	/datum/resin_construction/resin_turf/wall/reflective,
+	/datum/resin_construction/resin_turf/membrane/thick,
+	/datum/resin_construction/resin_obj/door/thick,
+	/datum/resin_construction/resin_obj/acid_pillar,
+	/datum/resin_construction/resin_obj/sticky_resin,
+	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/resin_spike,
+	/datum/resin_construction/resin_obj/resin_node,
+	/datum/resin_construction/resin_obj/movable/thick_wall,
+	/datum/resin_construction/resin_obj/movable/thick_membrane,
+))
+
+
 /datum/caste_datum/prime_weaver
 	caste_type = WEAVE_CASTE_PRIME
 	tier = 3
@@ -88,7 +103,7 @@
 /mob/living/carbon/xenomorph/prime_weaver/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	. = ..()
 	sight |= SEE_THRU//Changes what counts as Line-of-Sight, allowing Psychic speech through walls, but not hearing replies.
-	resin_build_order = GLOB.resin_build_order_hivelord
+	resin_build_order = GLOB.resin_build_order_primeweave
 	hive.add_hive_leader(src)
 
 /mob/living/carbon/xenomorph/prime_weaver/update_icons()

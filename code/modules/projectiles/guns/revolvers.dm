@@ -498,7 +498,7 @@
 	desc = "A lean .38 made by Smith & Wesson. A timeless classic, from antiquity to the future. This specific model is known to be wildly inaccurate, yet extremely lethal."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "sw357"
-	item_state = "ny762" //PLACEHOLDER
+	item_state = "sw357"
 	fire_sound = 'sound/weapons/gun_44mag2.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/small
 	force = 6

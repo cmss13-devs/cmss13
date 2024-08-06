@@ -122,7 +122,7 @@
 			return
 		if(user.action_busy)
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return
 		var/obj/item/tool/weldingtool/WT = I
@@ -458,7 +458,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "CentComm Receiver"
 	network = "tcommsat"
 	autolinkers = list("receiverCent")
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ, FORECON_FREQ)
 
 //Buses
 

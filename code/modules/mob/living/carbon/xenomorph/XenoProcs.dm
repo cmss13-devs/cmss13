@@ -264,7 +264,7 @@
 
 /mob/living/carbon/xenomorph/proc/pounced_mob(mob/living/L)
 	// This should only be called back by a mob that has pounce, so no need to check
-	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
+	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce.
 	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
@@ -336,7 +336,7 @@
 	pounced_mob(L)
 
 /mob/living/carbon/xenomorph/proc/pounced_obj(obj/O)
-	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
+	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce
 	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
@@ -408,7 +408,7 @@
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in our belly that needs regurgitating."))
 
-/mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE)
+/mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE, ignore_nest = FALSE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
@@ -447,6 +447,8 @@
 				if(P.chair_state != DROPSHIP_CHAIR_BROKEN)
 					has_obstacle = TRUE
 					break
+			else if(istype(O, /obj/structure/bed/nest) && ignore_nest)
+				continue
 			else
 				has_obstacle = TRUE
 				break

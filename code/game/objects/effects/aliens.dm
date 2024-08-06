@@ -125,6 +125,10 @@
 			var/obj/vehicle/multitile/V = atm
 			V.handle_acidic_environment(src)
 			continue
+		if (istype(loc, /turf/open))
+			var/turf/open/scorch_turf_target = loc
+			if(scorch_turf_target.scorchable)
+				scorch_turf_target.scorch(damage_amount)
 
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)
@@ -148,7 +152,7 @@
 	..()
 	if(AM == cause_data.resolve_mob())
 		return
-	
+
 	if(isliving(AM))
 		var/mob/living/living_mob = AM
 		if(living_mob.ally_of_hivenumber(hivenumber))
@@ -597,7 +601,7 @@
 
 		total_hits++
 
-	var/datum/action/xeno_action/activable/boiler_trap/trap = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
+	var/datum/action/xeno_action/activable/boiler_trap/trap = get_action(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
 
 	trap.reduce_cooldown(total_hits*4 SECONDS)
 

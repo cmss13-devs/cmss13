@@ -144,7 +144,7 @@
 	desc = "A circular blade used for cutting pizzas. This one has a cheap plastic handle."
 	flags_atom = FPRINT|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
-	edge = 1
+	edge = TRUE
 	force = 10
 	w_class = SIZE_MEDIUM
 	hitsound = 'sound/weapons/bladeslice.ogg'

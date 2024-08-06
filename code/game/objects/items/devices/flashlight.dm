@@ -166,7 +166,7 @@
 	add_fingerprint(user)
 	if(user.a_intent == INTENT_HELP)
 		if(on && user.zone_selected == "eyes")
-			if(ishuman_strict(being)) //robots and aliens are unaffected
+			if(!ishuman_strict(being)) //robots and aliens are unaffected
 				return
 			var/reaction = "try to watch closely, but you see no difference in [being.p_their()] eyes' reactions" //Shouldn't ever happen anyways
 			if(isnull(being.internal_organs_by_name))

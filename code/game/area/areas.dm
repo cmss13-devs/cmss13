@@ -27,7 +27,6 @@
 
 	var/unique = TRUE
 
-	var/has_gravity = 1
 // var/list/lights // list of all lights on this area
 	var/list/all_doors = list() //Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/air_doors_activated = 0
@@ -380,42 +379,6 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	if(istype(M))
 		use_power(-M.calculate_current_power_usage(), M.power_channel)
-
-/area/proc/gravitychange(gravitystate = 0, area/A)
-
-	A.has_gravity = gravitystate
-
-	if(gravitystate)
-		for(var/mob/living/carbon/human/M in A)
-			thunk(M)
-		for(var/mob/M1 in A)
-			M1.make_floating(0)
-	else
-		for(var/mob/M in A)
-			if(M.Check_Dense_Object() && istype(src,/mob/living/carbon/human/))
-				var/mob/living/carbon/human/H = src
-				if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING))  //magboots + dense_object = no floaty effect
-					H.make_floating(0)
-				else
-					H.make_floating(1)
-			else
-				M.make_floating(1)
-
-/area/proc/thunk(M)
-	if(istype(get_turf(M), /turf/open/space)) // Can't fall onto nothing.
-		return
-
-	if(istype(M,/mob/living/carbon/human/))  // Only humans can wear magboots, so we give them a chance to.
-		var/mob/living/carbon/human/H = M
-		if((istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
-			return
-		H.adjust_effect(5, STUN)
-		H.adjust_effect(5, WEAKEN)
-
-	to_chat(M, "Gravity!")
-
-
-
 
 //atmos related procs
 

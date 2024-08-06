@@ -352,6 +352,10 @@
 /obj/structure/machinery/computer/cameras/almayer_network/vehicle
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)
 
+/obj/structure/machinery/computer/cameras/almayer_brig
+	name = "Brig Cameras Console"
+	network = list(CAMERA_NET_BRIG)
+
 /obj/structure/machinery/computer/cameras/mortar
 	name = "Mortar Camera Interface"
 	alpha = 0

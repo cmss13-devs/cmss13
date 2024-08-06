@@ -292,7 +292,7 @@
 					P.forceMove(loc)
 		else if(href_list["change_pill"])
 			var/dat = "<table>"
-			for(var/i = 1 to MAX_PILL_SPRITE)
+			for(var/i = 1 to PILL_ICON_CHOICES)
 				dat += "<tr><td><a href=\"?src=\ref[src]&pill_sprite=[i]\"><img src=\"pill[i].png\" /></a></td></tr>"
 			dat += "</table>"
 			show_browser(user, dat, "Change Pill Type", "chem_master")

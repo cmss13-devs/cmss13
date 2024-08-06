@@ -610,6 +610,11 @@
 	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage."
 	hold = /obj/item/storage/internal/accessory/tool_webbing
 
+/obj/item/clothing/accessory/storage/tool_webbing/small
+	name = "Small Tool Webbing"
+	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage. This is the small low-budget version."
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small
+
 /obj/item/storage/internal/accessory/tool_webbing
 	storage_slots = 7
 	can_hold = list(
@@ -620,7 +625,23 @@
 		/obj/item/tool/wirecutters,
 		/obj/item/stack/cable_coil,
 		/obj/item/device/multitool,
+		/obj/item/tool/shovel/etool,
+		/obj/item/weapon/gun/smg/nailgun/compact,
 	)
+
+/obj/item/storage/internal/accessory/tool_webbing/small
+	storage_slots = 6
+
+/obj/item/clothing/accessory/storage/tool_webbing/small/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
+
+/obj/item/storage/internal/accessory/tool_webbing/small/equipped/fill_preset_inventory()
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/device/multitool(src)
 
 /obj/item/clothing/accessory/storage/tool_webbing/equipped
 	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped

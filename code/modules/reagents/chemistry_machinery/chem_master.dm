@@ -298,7 +298,6 @@
 			show_browser(user, dat, "Change Pill Type", "chem_master")
 			return
 		else if(href_list["change_bottle"])
-			#define BOTTLE_ICON_CHOICES 4 //max icon state of the bottle sprites
 			var/dat = "<table>"
 			for(var/i = 1 to BOTTLE_ICON_CHOICES)
 				dat += "<tr><td><a href=\"?src=\ref[src]&bottle_sprite=[i]\"><img src=\"bottle-[i].png\" /></a></td></tr>"

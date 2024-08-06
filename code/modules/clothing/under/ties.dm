@@ -134,33 +134,29 @@
 											sound = "hear <font color='green'>normal heart beating patterns</font>, [being.p_their()] heart is surely <font color='green'>healthy</font>"
 								var/datum/internal_organ/lungs/lungs = being.internal_organs_by_name["lungs"]
 								if(lungs)
+									if(sound)
+										sound += ". You also"
 									switch(lungs.organ_status)
 										if(ORGAN_LITTLE_BRUISED)
 											if(sound)
-												sound += ". You also hear <font color='yellow'>some crackles when they breath</font>, they are possibly suffering from <font color='yellow'>a small damage to the lungs</font>"
-											else
-												sound += "hear <font color='yellow'>some crackles when they breath</font>, they are possibly suffering from a <font color='yellow'>small damage to the lungs</font>"
+												sound += " hear <font color='yellow'>some crackles when they breath</font>, they are possibly suffering from <font color='yellow'>a small damage to the lungs</font>"
 										if(ORGAN_BRUISED)
 											if(sound)
-												sound += ". You also hear <font color='orange'>unusual respiration sounds</font> and noticeable difficulty to breath, possibly signalling <font color='orange'>ruptured lungs</font>"
-											else
-												sound +=  "hear <font color='orange'>unusual respiration sounds</font> and a difficulty to breath, possibly signalling <font color='orange'>ruptured lungs</font>"
+												sound += " hear <font color='orange'>unusual respiration sounds</font> and noticeable difficulty to breath, possibly signalling <font color='orange'>ruptured lungs</font>"
 										if(ORGAN_BROKEN)
 											if(sound)
-												sound += ". You also <font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, [being.p_their()] lungs are <font color='red'>heavily failing</font>"
-											else
-												sound += "<font color='red'>barely hear respiration sounds</font>,  [being.p_their()] lungs are probably <font color='red'>failing</font>"
+												sound += " <font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, [being.p_their()] lungs are <font color='red'>heavily failing</font>"
 										else
 											if(sound)
-												sound += ". You hear <font color='green'>normal respiration sounds</font> aswell, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
-											else
-												sound += "hear <font color='green'>normal respiration sounds</font> aswell, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
+												sound += " hear <font color='green'>normal respiration sounds</font> aswell, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
 								else
 									sound = "can't hear. Really, anything at all, how weird"
 							else
 								sound = "hear a lot of sounds... it's quite hard to distinguish, really"
 						if("eyes","mouth")
 							sound = "can't hear anything. Maybe that isn't the smartest idea"
+						else
+							sound = "hear a sound here and there, but none of them give you any good information"
 				user.visible_message("[user] places [src] against [being]'s [body_part] and listens attentively.", "You place [src] against [being.p_their()] [body_part] and... you [sound].")
 				return
 	return ..(being,user)

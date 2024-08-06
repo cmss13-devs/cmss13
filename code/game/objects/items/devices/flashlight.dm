@@ -125,12 +125,12 @@
 		user.visible_message(SPAN_NOTICE("[user] directs [src] to [being]'s eyes."), \
 							SPAN_NOTICE("You direct [src] to [being]'s eyes."))
 
-		if(istype(being, /mob/living/carbon/human)) //robots and aliens are unaffected
+		if(ishuman_strict(being)) //robots and aliens are unaffected
 			var/datum/internal_organ/eyes/eyes = being.internal_organs_by_name["eyes"]
 			var/datum/internal_organ/brain/brain = being.internal_organs_by_name["brain"]
 			if(being.stat == DEAD || being.sdisabilities & DISABILITY_BLIND || eyes.organ_status == ORGAN_BROKEN || brain.organ_status == ORGAN_BROKEN) //mob is dead, fully blind, or their eyes are
 				to_chat(user, SPAN_NOTICE("[being]'s pupils do not react to the light!"))
-			else //they're okay!
+			else //they're okay! Well, probably
 				being.flash_eyes()
 				to_chat(user, SPAN_NOTICE("[being]'s pupils narrow."))
 				return
@@ -166,9 +166,9 @@
 	add_fingerprint(user)
 	if(user.a_intent == INTENT_HELP)
 		if(on && user.zone_selected == "eyes")
-			if(ishuman_strict(being)) //robots and aliens are unaffected
+			if(!ishuman_strict(being)) //robots and aliens are unaffected
 				return
-			var/reaction = null //Shouldn't ever happen anyways
+			var/reaction = null
 			if(isnull(being.internal_organs_by_name))
 				reaction = "discover that indeed [being.p_they()] have nothing to be checked"
 				return // they have no organs somehow
@@ -197,30 +197,24 @@
 								being.flash_eyes()
 								reaction = "perceive that [being.p_their()] eyes and pupils are <font color='green'>normally reacting to the light</font>, [being.p_they()] is probably<font color='green'> seeing without problems</font>"
 					if(brain)
+						if(reaction)
+							reaction += ". You also"
 						switch(brain.organ_status)
 							if(ORGAN_LITTLE_BRUISED)
 								being.flash_eyes()
 								if(reaction)
-									reaction += ". You also notice that the pupils are <font color='yellow'>consensually constricting with a significant delay</font> when light is separately applied to each eye, meaning that [being.p_they()] possibly have <font color='yellow'>subtle brain damage</font>"
-								else
-									reaction += "notice that the pupils are <font color='yellow'>consensually constricting with a significant delay</font> when light is separately applied to each eye, meaning that [being.p_they()] possibly have <font color='yellow'>subtle brain damage</font>"
+									reaction += " notice that the pupils are <font color='yellow'>consensually constricting with a significant delay</font> when light is separately applied to each eye, meaning that [being.p_they()] possibly have <font color='yellow'>subtle brain damage</font>"
 							if(ORGAN_BRUISED)
 								being.flash_eyes()
 								if(reaction)
-									reaction += ". You also notice that the pupils are <font color='orange'>not consensually constricting</font> when light is separately applied to each eye, meaning possible <font color='orange'>brain damage</font>"
-								else
-									reaction += "notice that the pupils are <font color='orange'>not consensually constricting</font> when light is separately applied to each eye, meaning possible <font color='orange'>brain damage</font>"
+									reaction += " notice that the pupils are <font color='orange'>not consensually constricting</font> when light is separately applied to each eye, meaning possible <font color='orange'>brain damage</font>"
 							if(ORGAN_BROKEN)
 								if(reaction)
-									reaction += ". You also notice that the pupils <font color='red'>have different sizes and are assymmetric</font>, [being.p_they()] possibly have <font color='red'>severe brain damage</font>"
-								else
-									reaction += "notice that the pupils have <font color='red'>different sizes and are assymmetric</font>, [being.p_they()] possibly have <font color='red'>severe brain damage</font>"
+									reaction += " notice that the pupils <font color='red'>have different sizes and are assymmetric</font>, [being.p_they()] possibly have <font color='red'>severe brain damage</font>"
 							else
 								being.flash_eyes()
 								if(reaction)
-									reaction += ". You also notice that the pupils are <font color='green'>consensually and normally constricting</font> when light is separately applied to each eye, [being.p_their()] brain is <font color='green'>probably fine</font>"
-								else
-									reaction += "notice that the pupils are <font color='greeen'>consensually and normally constricting</font> when light is separately applied to each eye, [being.p_their()] brain is <font color='green'>probably fine</font>"
+									reaction += " notice that the pupils are <font color='green'>consensually and normally constricting</font> when light is separately applied to each eye, [being.p_their()] brain is <font color='green'>probably fine</font>"
 					else
 						reaction = "can't see anything at all, weirdly enough"
 				else

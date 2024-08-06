@@ -53,7 +53,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "ag_i"
 	requires_power = 1
 	temperature = T20C //Nice and room temp
-	ceiling = CEILING_REINFORCED_GLASS_ALLOW_LAS
+	ceiling = CEILING_METAL
 
 
 //-Under Ground (ug)

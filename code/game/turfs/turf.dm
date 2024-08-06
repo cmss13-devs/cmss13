@@ -523,7 +523,7 @@
 		turfs += F
 
 	switch(A.ceiling)
-		if(CEILING_GLASS, CEILING_REINFORCED_GLASS_ALLOW_LAS)
+		if(CEILING_GLASS)
 			playsound(src, "sound/effects/Glassbr1.ogg", 60, 1)
 			spawn(8)
 				if(amount >1)
@@ -571,8 +571,6 @@
 			return "The ceiling above is glass. That's not going to stop anything."
 		if(CEILING_METAL)
 			return "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything."
-		if(CEILING_REINFORCED_GLASS_ALLOW_LAS)
-			return "The ceiling above is reinforced glass. You can see sky above, doesn't look like it's going to stop much."
 		if(CEILING_UNDERGROUND_ALLOW_CAS)
 			return "It is underground. A thin cavern roof lies above. Doesn't look like it's going to stop much."
 		if(CEILING_UNDERGROUND_BLOCK_CAS)

@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -25,7 +27,7 @@ export const Who = (props, context) => {
     player_stealthed_additional?.total_players,
   );
 
-  const [searchQuery, setSearchQuery] = useLocalState('searchQuery', '');
+  const [searchQuery, setSearchQuery] = useState('', '');
 
   const searchPlayers = () =>
     total_players.filter((playerObj) => isMatch(playerObj, searchQuery));
@@ -46,11 +48,13 @@ export const Who = (props, context) => {
                   <Input
                     autoFocus
                     fluid
-                    onEnter={(e, value) =>
+                    onEnter={(e, value) => {
+                      const clientObj = searchPlayers()?.[0];
+                      if (!clientObj) return;
                       act('get_player_panel', {
-                        ckey: searchPlayers()?.[0][0],
-                      })
-                    }
+                        ckey: Object.keys(clientObj)[0],
+                      });
+                    }}
                     onInput={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search..."
                     value={searchQuery}
@@ -134,6 +138,7 @@ const FilterPlayers = (props, context) => {
 };
 
 const GetPlayerInfo = (props, context) => {
+  const { act } = useBackend();
   const { ckey, text, color, ckey_color } = props;
 
   return (

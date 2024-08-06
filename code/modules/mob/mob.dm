@@ -470,6 +470,9 @@
 		if(!M.can_be_pulled_by(src))
 			return
 	else if(istype(AM, /obj))
+		if(recently_grabbed > world.time)
+			return FALSE
+		recently_grabbed = world.time + 6
 		AM.add_fingerprint(src)
 		animation_attack_on(AM)
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)

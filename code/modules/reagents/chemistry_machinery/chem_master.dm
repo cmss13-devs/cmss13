@@ -434,7 +434,7 @@
 	icon_state = "industry_mixer0"
 	base_state = "industry_mixer"
 	req_skill = SKILL_ENGINEER
-	req_skill_level = SKILL_ENGINEER_ENGI
+	req_skill_level = SKILL_ENGINEER_TRAINED
 	pill_maker = FALSE
 	vial_maker = TRUE
 	max_pill_count = 0

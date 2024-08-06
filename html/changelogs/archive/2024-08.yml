@@ -88,3 +88,48 @@
   - qol: Deafness is now limited to being 1 minute in length.
   - bugfix: Phones can no longer be stored in closets/crates, which prevents players
       from dragging crates with their phones and other weird issues that can occur.
+2024-08-06:
+  BlackCrystalic:
+  - rscadd: Byond backed function of sound ECHO ported
+  - refactor: refactor of weaponhits hardcode
+  Blundir:
+  - bugfix: research chute is now connected to req chute and works properly
+  Drathek:
+  - rscadd: Added note of who deletes a comment in a medical record
+  - bugfix: Fixed Delete Entry button showing for deleted medical notes
+  - bugfix: Fixed medical record prints not showing who printed it
+  - bugfix: Fixed initial gender capitalization in records
+  - code_imp: Improved some record checks
+  - admin: Added mostly niche logging for all record changes
+  Drathek iloveloopers:
+  - rscdel: Removed ability to buy clearance papers.
+  - balance: Clearance cards now give their equivalent clearance in credits.
+  - balance: Clearance cards no longer lose their value when scanned by the wrong
+      person.
+  MarpleJones:
+  - bugfix: Using the hemostat on the final larva surgery step is now better than
+      using wirecutters or the fork.
+  - rscadd: The final larva surgery step will now apply organ damage when done barehanded.
+      Barehanded is faster than using tools by a couple of seconds, at the cost of
+      the doctor's and the patient's health.
+  - rscadd: Adds an acidsplash sound effect to doing the barehanded step.
+  MistChristmas:
+  - bugfix: Prevents tunnels under LZ Sentries
+  VileBeggar:
+  - bugfix: butcher's knife inhands now display properly
+  cuberound:
+  - bugfix: weeds do not cover preshure tanks
+  - rscadd: acid spray scorches grass and melts snow
+  - rscdel: Removes gravity :)
+  mullenpaul:
+  - ui: added section in dropship flight computer for some terminals to select which
+      dropship to control
+  - maptweak: reworked CIC remote terminals
+  - refactor: some remote terminals can control different dropships
+  - balance: queen will randomly select a dropship to call down to the lz on hijack
+  - balance: when dropship exists on primary landing pad, the queen can't call down
+      another dropship
+  - balance: when a dropship is enroute to the primary landing pad, the queen can't
+      call another dropship
+  realforest2001:
+  - bugfix: Fixes the cap on rifleman Lance Corporals.

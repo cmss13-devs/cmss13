@@ -30,7 +30,6 @@
 	var/flip_cooldown = 0 //If flip cooldown exists, don't allow flipping or putting back. This carries a WORLD.TIME value
 	health = 100
 	projectile_coverage = 20 //maximum chance of blocking a projectile
-	var/flipped_projectile_coverage_distance_limit = 2
 	var/flipped_projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	var/upright_projectile_coverage = PROJECTILE_COVERAGE_LOW
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
@@ -43,7 +42,6 @@
 			qdel(T)
 	if(flipped)
 		projectile_coverage = flipped_projectile_coverage
-		projectile_coverage_distance_limit = flipped_projectile_coverage_distance_limit
 	else
 		projectile_coverage = upright_projectile_coverage
 
@@ -448,7 +446,6 @@
 			INVOKE_ASYNC(movable_on_table, TYPE_PROC_REF(/atom/movable, throw_atom), pick(targets), 1, SPEED_FAST)
 
 	projectile_coverage = flipped_projectile_coverage
-	projectile_coverage_distance_limit = flipped_projectile_coverage_distance_limit
 
 	setDir(direction)
 	if(dir != NORTH)
@@ -476,7 +473,6 @@
 	verbs += /obj/structure/surface/table/verb/do_flip
 
 	projectile_coverage = upright_projectile_coverage
-	projectile_coverage_distance_limit = src::projectile_coverage_distance_limit
 
 	layer = initial(layer)
 	flipped = FALSE

@@ -138,16 +138,12 @@
 										sound += ". You also"
 									switch(lungs.organ_status)
 										if(ORGAN_LITTLE_BRUISED)
-											if(sound)
 												sound += " hear <font color='yellow'>some crackles when they breath</font>, they are possibly suffering from <font color='yellow'>a small damage to the lungs</font>"
 										if(ORGAN_BRUISED)
-											if(sound)
 												sound += " hear <font color='orange'>unusual respiration sounds</font> and noticeable difficulty to breath, possibly signalling <font color='orange'>ruptured lungs</font>"
 										if(ORGAN_BROKEN)
-											if(sound)
 												sound += " <font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, [being.p_their()] lungs are <font color='red'>heavily failing</font>"
 										else
-											if(sound)
 												sound += " hear <font color='green'>normal respiration sounds</font> aswell, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
 								else
 									sound = "can't hear. Really, anything at all, how weird"

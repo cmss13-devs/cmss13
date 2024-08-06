@@ -229,15 +229,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
-"abQ" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
-/obj/structure/machinery/cm_vending/clothing/staff_officer_armory,
-/turf/open/floor/almayer/redfull,
-/area/almayer/command/cic)
 "abR" = (
 /obj/item/tank/phoron,
 /turf/open/floor/almayer/redfull,
@@ -3941,35 +3932,11 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north2)
-"azV" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/window/reinforced/toughened{
-	dir = 8
-	},
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
-	dir = 4;
-	name = "Normandy Remote Control Console";
-	shuttleId = "dropship_normandy"
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/command/cic)
 "azW" = (
 /obj/structure/machinery/door/window/westright{
 	dir = 2
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
-"azX" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/window/reinforced/toughened{
-	dir = 4
-	},
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
-	dir = 8;
-	name = "Alamo Remote Control Console";
-	shuttleId = "dropship_alamo"
-	},
-/turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "azZ" = (
 /obj/structure/machinery/keycard_auth,
@@ -16871,6 +16838,10 @@
 	},
 /turf/open/floor/almayer/green/northwest,
 /area/almayer/living/offices)
+"cWw" = (
+/obj/structure/machinery/cm_vending/gear/staff_officer_armory,
+/turf/open/floor/almayer/redfull,
+/area/almayer/command/cic)
 "cWy" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/reagent_container/food/snacks/packaged_burger,
@@ -21791,6 +21762,13 @@
 	},
 /turf/open/floor/almayer/orangecorner/east,
 /area/almayer/engineering/upper_engineering/port)
+"eYU" = (
+/obj/structure/disposalpipe/up/almayer{
+	dir = 8;
+	id = "almayerlink_med_req"
+	},
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/hydroponics)
 "eZm" = (
 /turf/closed/wall/almayer,
 /area/almayer/maint/hull/upper/p_stern)
@@ -24163,20 +24141,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/engineering/laundry)
-"geg" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/hangar{
-	dir = 4;
-	pixel_y = 12
-	},
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
-	dir = 4;
-	name = "Normandy Remote Control Console";
-	pixel_y = -12;
-	shuttleId = "dropship_normandy"
-	},
-/turf/open/floor/almayer/redfull,
-/area/almayer/living/offices/flight)
 "gei" = (
 /obj/structure/sign/safety/ref_bio_storage{
 	pixel_x = -17;
@@ -27432,6 +27396,17 @@
 	},
 /turf/open/floor/almayer/greenfull,
 /area/almayer/living/offices)
+"huw" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 4;
+	name = "Dropship Remote Control Console"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
 "huD" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -33235,6 +33210,15 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
+"jSc" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/obj/structure/machinery/cm_vending/gear/staff_officer_armory,
+/turf/open/floor/almayer/redfull,
+/area/almayer/command/cic)
 "jSo" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/almayer/plate,
@@ -39810,6 +39794,13 @@
 "mGu" = (
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/securestorage)
+"mGM" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 4;
+	id = "almayerlink_med_req"
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "mGT" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -42168,6 +42159,19 @@
 /obj/effect/landmark/late_join/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
+"nCj" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/cameras/hangar{
+	dir = 4;
+	pixel_y = 12
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 4;
+	pixel_y = -12;
+	name = "Remote dropship navigation computer"
+	},
+/turf/open/floor/almayer/redfull,
+/area/almayer/living/offices/flight)
 "nCn" = (
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/almayer/plate,
@@ -43324,7 +43328,7 @@
 "obo" = (
 /obj/structure/disposalpipe/up/almayer{
 	dir = 8;
-	id = "almayerlink_med_req"
+	id = "almayerlink_med1_req"
 	},
 /turf/closed/wall/almayer,
 /area/almayer/squads/req)
@@ -49458,6 +49462,13 @@
 	},
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower)
+"qAE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/medical_science)
 "qAG" = (
 /obj/structure/platform{
 	dir = 1
@@ -51900,10 +51911,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/upper/u_a_p)
-"ryR" = (
-/obj/structure/machinery/cm_vending/clothing/staff_officer_armory,
-/turf/open/floor/almayer/redfull,
-/area/almayer/command/cic)
 "ryY" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/disposalpipe/down/almayer{
@@ -53195,6 +53202,13 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
+"saX" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 8;
+	id = "almayerlink_med1_req"
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "sbq" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	icon_state = "almayer_pdoor";
@@ -53587,20 +53601,6 @@
 	},
 /turf/open/floor/almayer/green/northeast,
 /area/almayer/hallways/lower/port_midship_hallway)
-"siz" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/hangar{
-	dir = 8;
-	pixel_y = -12
-	},
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
-	dir = 8;
-	name = "Alamo Remote Control Console";
-	pixel_y = 12;
-	shuttleId = "dropship_alamo"
-	},
-/turf/open/floor/almayer/redfull,
-/area/almayer/living/offices/flight)
 "siC" = (
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/hallways/lower/port_fore_hallway)
@@ -54862,6 +54862,13 @@
 	},
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower)
+"sKI" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/window/reinforced/toughened{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
 "sKM" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -66374,6 +66381,20 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_a_s)
+"xnZ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/cameras/hangar{
+	dir = 8;
+	pixel_y = -12
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 8;
+	pixel_y = 12;
+	shuttleId = "dropship_alamo";
+	name = "Remote dropship navigation computer"
+	},
+/turf/open/floor/almayer/redfull,
+/area/almayer/living/offices/flight)
 "xoe" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -88725,7 +88746,7 @@ aqN
 alX
 asc
 abk
-azV
+huw
 aAB
 aBZ
 avY
@@ -89022,7 +89043,7 @@ bHB
 xyw
 aho
 vWc
-geg
+nCj
 aEj
 aho
 aYt
@@ -89131,7 +89152,7 @@ wVW
 wVW
 rOC
 soX
-azX
+sKI
 vHt
 aCb
 aDv
@@ -89531,7 +89552,7 @@ agj
 aic
 sxW
 wVW
-abQ
+jSc
 atN
 cEl
 sOi
@@ -89834,7 +89855,7 @@ bHB
 xyw
 aho
 dkj
-siz
+xnZ
 gYt
 aho
 aYt
@@ -90355,7 +90376,7 @@ alX
 aIf
 aED
 wVW
-ryR
+cWw
 jvX
 iaa
 wVW
@@ -98294,7 +98315,7 @@ iKy
 iKy
 iKy
 wAE
-baw
+mGM
 baw
 qYC
 kwo
@@ -98497,7 +98518,7 @@ qQu
 qQu
 qQu
 wAE
-baw
+ley
 vbB
 ley
 kwo
@@ -98700,7 +98721,7 @@ dME
 bRO
 llo
 wAE
-baw
+saX
 dBp
 gVA
 tQV
@@ -100090,7 +100111,7 @@ iYf
 bIM
 wPz
 iUo
-vOy
+qAE
 xqp
 lzA
 vkp
@@ -100293,7 +100314,7 @@ mTp
 wiW
 wPz
 jeq
-rQy
+eYU
 wWR
 vti
 vkp

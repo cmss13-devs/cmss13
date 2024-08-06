@@ -171,7 +171,7 @@ Everything below isn't used or out of place.
 	name = "Survivor - Corporate Security Goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON
-	paygrade = PAY_SHORT_CPO
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -250,7 +250,7 @@ Everything below isn't used or out of place.
 	name = "Survivor - USASF Commander"
 	assignment = "USASF Commander"
 	skills = /datum/skills/commander
-	paygrade = PAY_SHORT_NO5
+	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "USASF CDR"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

@@ -37,6 +37,10 @@
 		to_chat(X, SPAN_XENOWARNING("There already is a tunnel here."))
 		return
 
+	if(locate(/obj/structure/machinery/sentry_holder/landing_zone) in X.loc)
+		to_chat(X, SPAN_XENOWARNING("We can't dig a tunnel with this object in the way."))
+		return
+
 	if(X.tunnel_delay)
 		to_chat(X, SPAN_XENOWARNING("We are not ready to dig a tunnel again."))
 		return

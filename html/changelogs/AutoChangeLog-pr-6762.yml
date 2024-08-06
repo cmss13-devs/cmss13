@@ -1,6 +1,0 @@
-author: "efzapa"
-delete-after: True
-changes:
-  - rscadd: "All Brig Detainment Cameras are now linked to a new Brig Camera Console Computer, available in the Brig Lobby, Warden's Office, CIC, and CMP Office."
-  - maptweak: "Removed one of the Security Records Consoles in the Brig Lobby in place for a Brig Camera Console."
-  - mapadd: "Both Brig Perma Cells now have brig cameras in them."

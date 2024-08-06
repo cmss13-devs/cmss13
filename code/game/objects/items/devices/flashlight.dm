@@ -125,7 +125,7 @@
 		user.visible_message(SPAN_NOTICE("[user] directs [src] to [being]'s eyes."), \
 							SPAN_NOTICE("You direct [src] to [being]'s eyes."))
 
-		if(istype(being, /mob/living/carbon/human)) //robots and aliens are unaffected
+		if(ishuman_strict(being)) //robots and aliens are unaffected
 			var/datum/internal_organ/eyes/eyes = being.internal_organs_by_name["eyes"]
 			var/datum/internal_organ/brain/brain = being.internal_organs_by_name["brain"]
 			if(being.stat == DEAD || being.sdisabilities & DISABILITY_BLIND || eyes.organ_status == ORGAN_BROKEN || brain.organ_status == ORGAN_BROKEN) //mob is dead, fully blind, or their eyes are

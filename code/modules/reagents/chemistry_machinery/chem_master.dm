@@ -298,9 +298,9 @@
 			show_browser(user, dat, "Change Pill Type", "chem_master")
 			return
 		else if(href_list["change_bottle"])
-			#define MAX_BOTTLE_SPRITE 4 //max icon state of the bottle sprites
+			#define BOTTLE_ICON_CHOICES 4 //max icon state of the bottle sprites
 			var/dat = "<table>"
-			for(var/i = 1 to MAX_BOTTLE_SPRITE)
+			for(var/i = 1 to BOTTLE_ICON_CHOICES)
 				dat += "<tr><td><a href=\"?src=\ref[src]&bottle_sprite=[i]\"><img src=\"bottle-[i].png\" /></a></td></tr>"
 			dat += "</table>"
 			show_browser(user, dat, "Change Bottle Type", "chem_master")
@@ -344,9 +344,9 @@
 	if(!(user.client in has_sprites))
 		spawn()
 			has_sprites += user.client
-			for(var/i = 1 to MAX_PILL_SPRITE)
+			for(var/i = 1 to PILL_ICON_CHOICES)
 				user << browse_rsc(icon('icons/obj/items/chemistry.dmi', "pill" + num2text(i)), "pill[i].png")
-			for(var/i = 1 to MAX_BOTTLE_SPRITE)
+			for(var/i = 1 to BOTTLE_ICON_CHOICES)
 				user << browse_rsc(icon('icons/obj/items/chemistry.dmi', "bottle-" + num2text(i)), "bottle-[i].png")
 	var/dat = ""
 	if(!beaker)

@@ -98,6 +98,18 @@
 	flags_equip_slot = SLOT_BACK
 	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
 
+/obj/item/storage/large_holster/machete/smartgunner/mob_can_equip(mob/equipping_mob, slot, disable_warning)
+	. = ..()
+
+	var/mob/living/carbon/human/user = equipping_mob
+	if(!ishuman(user))
+		return FALSE
+
+	if(!user.wear_suit || !(user.wear_suit.flags_inventory & SMARTGUN_HARNESS))
+		if(!disable_warning)
+			to_chat(equipping_mob, SPAN_WARNING("You can't equip [src] without a harness."))
+		return FALSE
+
 /obj/item/storage/large_holster/machete/smartgunner/full/fill_preset_inventory()
 	new /obj/item/weapon/sword/machete(src)
 

@@ -1,8 +1,24 @@
+#define OVERLAY_FIRE_LAYER -1
+
 /mob/living/simple_animal
 	name = "animal"
 	icon = 'icons/mob/animal.dmi'
 	health = 20
 	maxHealth = 20
+
+	speed = 0 //LETS SEE IF I CAN SET SPEEDS FOR SIMPLE MOBS WITHOUT DESTROYING EVERYTHING. Higher speed is slower, negative speed is faster
+
+	//LETTING SIMPLE ANIMALS ATTACK? WHAT COULD GO WRONG. Defaults to zero so Ian can still be cuddly
+	melee_damage_lower = 0
+	melee_damage_upper = 0
+	attacktext = "attacks"
+	attack_sound = null
+	friendly = "nuzzles" //If the mob does no damage with it's attack
+	can_crawl = FALSE
+	black_market_value = 25
+	dead_black_market_value = 0
+
+	mobility_flags = MOBILITY_FLAGS_LYING_CAPABLE_DEFAULT
 
 	var/icon_living = ""
 	var/icon_dead = ""
@@ -47,19 +63,7 @@
 	var/min_n2 = 0
 	var/max_n2 = 0
 	var/unsuitable_atoms_damage = 2 //This damage is taken when atmos doesn't fit all the requirements above
-	speed = 0 //LETS SEE IF I CAN SET SPEEDS FOR SIMPLE MOBS WITHOUT DESTROYING EVERYTHING. Higher speed is slower, negative speed is faster
-
-	//LETTING SIMPLE ANIMALS ATTACK? WHAT COULD GO WRONG. Defaults to zero so Ian can still be cuddly
-	melee_damage_lower = 0
-	melee_damage_upper = 0
-	attacktext = "attacks"
-	attack_sound = null
-	friendly = "nuzzles" //If the mob does no damage with it's attack
-	can_crawl = FALSE
-	black_market_value = 25
-	dead_black_market_value = 0
-
-	mobility_flags = MOBILITY_FLAGS_LYING_CAPABLE_DEFAULT
+	var/fire_overlay
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
@@ -98,7 +102,7 @@
 /mob/living/simple_animal/handle_fire()
 	if(..())
 		return
-	health -= fire_reagent.intensityfire * 0.5
+	apply_damage(fire_reagent.intensityfire * 0.5, BURN)
 
 /mob/living/simple_animal/IgniteMob()
 	if(!affected_by_fire)
@@ -106,25 +110,25 @@
 	return ..()
 
 /mob/living/simple_animal/update_fire()
+	if(!on_fire)
+		overlays -= fire_overlay
 	if(on_fire && fire_reagent)
-		var/image/I
+		var/image/fire_overlay_image
 		if(mob_size >= MOB_SIZE_BIG)
 			if((body_position != LYING_DOWN))
-				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire", "layer"=-1)
+				fire_overlay_image = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire", "layer" = OVERLAY_FIRE_LAYER)
 			else
-				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire_lying", "layer"=-1)
+				fire_overlay_image = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire_lying", "layer" = OVERLAY_FIRE_LAYER)
 		else
-			I = image("icon" = 'icons/mob/xenos/effects.dmi', "icon_state"="alien_fire", "layer"=-1)
+			fire_overlay_image = image("icon" = 'icons/mob/xenos/effects.dmi', "icon_state"="alien_fire", "layer" = OVERLAY_FIRE_LAYER)
 
-		I.pixel_y -= pixel_y
-		I.pixel_x -= pixel_x
-		I.appearance_flags |= RESET_COLOR|RESET_ALPHA
-		I.color = fire_reagent.burncolor
-		overlays += I
-	if(!on_fire)
-		for(var/image/fire_overlay in overlays)
-			if(fire_overlay.icon_state == "alien_fire" || fire_overlay.icon_state == "alien_fire_lying")
-				overlays -= fire_overlay
+		fire_overlay_image.pixel_y -= pixel_y
+		fire_overlay_image.pixel_x -= pixel_x
+		fire_overlay_image.appearance_flags |= RESET_COLOR|RESET_ALPHA
+		fire_overlay_image.color = fire_reagent.burncolor
+		fire_overlay_image.color = fire_reagent.burncolor
+		overlays += fire_overlay_image
+		fire_overlay = fire_overlay_image
 
 /mob/living/simple_animal/Life(delta_time)
 	if(affected_by_fire)
@@ -395,6 +399,9 @@
 /mob/living/simple_animal/adjustBruteLoss(damage)
 	health = clamp(health - damage, 0, maxHealth)
 
+/mob/living/simple_animal/adjustFireLoss(damage)
+	health = clamp(health - damage, 0, maxHealth)
+
 /mob/living/simple_animal/proc/SA_attackable(target_mob)
 	if (isliving(target_mob))
 		var/mob/living/L = target_mob
@@ -445,3 +452,5 @@
 	if(user && error_msg)
 		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal!"))
 	return FALSE
+
+#undef OVERLAY_FIRE_LAYER

@@ -37,16 +37,17 @@
 	melee_damage_upper = 25
 	attack_same = FALSE
 
+	var/sleep_overlay
+
 	///If 0, moves the mob out of attacking into idle state. Used to prevent the mob from chasing down targets that did not mean to hurt it.
 	var/aggression_value = 0
-
 	///What sounds to play when the mob growls.
 	var/list/growl_sounds = list('sound/effects/giant_lizard_growl1.ogg', 'sound/effects/giant_lizard_growl2.ogg')
-	///What sounds to play when hissing. Mostly used for when being pet.
+	///What sounds to play when hissing.
 	var/list/hiss_sounds = list('sound/effects/giant_lizard_hiss1.ogg', 'sound/effects/giant_lizard_hiss2.ogg')
 
 	///Emotes to play when being pet by a friend.
-	var/list/pet_emotes = list("closes its eyes.", "growls happily.", "wags its tail.", "stares.", "rolls on the ground.")
+	var/list/pet_emotes = list("closes its eyes.", "growls happily.", "wags its tail.", "rolls on the ground.")
 	///Cooldown to stop generic emote spam.
 	COOLDOWN_DECLARE(emote_cooldown)
 
@@ -63,6 +64,10 @@
 	var/chance_to_rest = 0
 	///Is the mob currently running away from a target?
 	var/is_retreating = FALSE
+	///How many times have we attempted to retreat?
+	var/retreat_attempts = 0
+	///Tied directly to retreat_attempts. If our retreat fail, then we will completely stop trying to retreat for the length of this cooldown.
+	COOLDOWN_DECLARE(retreat_cooldown)
 
 	///The food object that the mob is trying to eat.
 	var/food_target
@@ -80,10 +85,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/Initialize()
 	. = ..()
+	change_real_name(src, "[name] ([rand(1, 999)])")
 	pounce_callbacks[/mob] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_mob_wrapper)
 	pounce_callbacks[/turf] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_turf_wrapper)
 	pounce_callbacks[/obj] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_obj_wrapper)
-
 
 //regular pain datum will make the mob die when trying to pounce after taking enough damage.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/initialize_pain()
@@ -113,7 +118,9 @@
 	. = ..()
 	find_target_on_trait_loss()
 
+///Proc for handling the AI post-status effect.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/find_target_on_trait_loss()
+	is_retreating = FALSE
 	if(stance > HOSTILE_STANCE_ALERT)
 		FindTarget()
 		MoveToTarget()
@@ -121,16 +128,17 @@
 //procs for handling sleeping icons when resting
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/AddSleepingIcon()
 	var/image/SL
-	SL = new /image('icons/mob/hud/hud.dmi', "slept_icon")
-	if(SL in overlays)
+	SL = new /image('icons/mob/hud/hud.dmi', "slept_icon_centered")
+	if(sleep_overlay)
 		return
-	overlays += SL
-	addtimer(CALLBACK(src, PROC_REF(RemoveSleepingIcon)), 3 SECONDS)
+	sleep_overlay = SL
+	overlays += sleep_overlay
+	addtimer(CALLBACK(src, PROC_REF(RemoveSleepingIcon)), 6 SECONDS)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/RemoveSleepingIcon()
-	var/image/SL
-	SL = new /image('icons/mob/hud/hud.dmi', "slept_icon")
-	overlays -= SL
+	if(sleep_overlay)
+		overlays -= sleep_overlay
+		sleep_overlay = null
 
 //The parent proc sets the stance to IDLE which will break the AI if it's in combat
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/stop_moving()
@@ -170,31 +178,68 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/attack_hand(mob/living/carbon/human/attacking_mob)
 	. = ..()
+	if(stat == DEAD)
+		return
+
 	if(attacking_mob.a_intent == INTENT_HELP && (attacking_mob.faction in faction_group))
+		if(on_fire)
+			adjust_fire_stacks(-5, min_stacks = 0)
+			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+			visible_message(SPAN_DANGER("[attacking_mob] tries to put out the fire on [src]!"), \
+			SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
+			if(fire_stacks <= 0)
+				visible_message(SPAN_DANGER("[attacking_mob] has successfully extinguished the fire on [src]!"), \
+				SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
+			return
 		if(!resting)
 			chance_to_rest += 15
 		if(resting)
 			chance_to_rest = 0
 			if(COOLDOWN_FINISHED(src, emote_cooldown))
 				COOLDOWN_START(src, emote_cooldown, rand(5, 8) SECONDS)
-				manual_emote(pick(pet_emotes))
+				manual_emote(pick(pick(pet_emotes), "stares at [attacking_mob].", "licks [attacking_mob]'s hand."), "nibbles [attacking_mob]'s arm.", "flicks its tongue at [attacking_mob].")
 				if(prob(50))
 					playsound(loc, hiss_sounds, 25)
+	if(attacking_mob.a_intent == INTENT_DISARM && prob(75))
+		walk_to(src, get_step(loc, attacking_mob.dir), 0, LIZARD_SPEED_NORMAL)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force)
 	Retaliate()
 	aggression_value = clamp(aggression_value + 5, 0, 30)
 	. = ..()
 	var/retreat_chance = abs((health / maxHealth * 100) - 100)
-	if(prob(retreat_chance))
+	if(prob(retreat_chance) && health <= maxHealth * 0.66 && COOLDOWN_FINISHED(src, retreat_cooldown))
 		MoveTo(target_mob, 12, TRUE, 8 SECONDS)
 	if(damage >= 10 && damagetype == BRUTE)
 		add_splatter_floor(loc, TRUE)
 		bleed_ticks = clamp(bleed_ticks + ceil(damage / 10), 0, 30)
 
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/try_to_extinguish()
+	if(!is_retreating && on_fire)
+		//forget EVERYTHING. we need to stop the flames!!!
+		stance = HOSTILE_STANCE_ALERT
+		target_mob = null
+		food_target = null
+		is_eating = FALSE
+		manual_emote("hisses in agony!")
+		playsound(src, hiss_sounds, 40)
+		MoveTo(null, 9, TRUE, 4 SECONDS, FALSE)
+		COOLDOWN_START(src, calm_cooldown, 8 SECONDS)
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/IgniteMob()
+	. = ..()
+	if(on_fire)
+		try_to_extinguish()
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/handle_fire()
+	. = ..()
+	if(on_fire)
+		try_to_extinguish()
+
+
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/Life(delta_time)
-	//simplemobs don't have knockdown reduction so we'll manually remove it if applicable. works well due to Life() delay.
-	SetKnockDown(0)
+	//simplemobs don't have innate knockdown reduction so we'll manually lower it here.
+	AdjustKnockDown(-0.5)
 	if(aggression_value > 0) aggression_value--
 
 	//if we haven't gotten hurt in a while, calm down and go back to idling
@@ -233,10 +278,10 @@
 	if(bleed_ticks)
 		var/is_small_pool = FALSE
 		if(bleed_ticks < 10) is_small_pool = TRUE
-		bleed_ticks -= is_small_pool ? 1 : 2
+		bleed_ticks--
 		add_splatter_floor(loc, is_small_pool)
 
-	if(!target_mob)
+	if(!target_mob && !on_fire)
 		if(is_retreating)
 			stop_moving()
 			stance = HOSTILE_STANCE_IDLE
@@ -256,6 +301,7 @@
 			for(var/mob/living/carbon/intruder in view(5, src))
 				if((intruder.faction in faction_group) || intruder.stat != CONSCIOUS || ismonkey(intruder))
 					continue
+
 				intruder_in_sight = TRUE
 				face_atom(intruder)
 				stance = HOSTILE_STANCE_ALERT
@@ -299,8 +345,8 @@
 
 	if(isliving(target_mob))
 		var/mob/living/target = target_mob
-		//decimate mobs that are in crit
-		if(target.stat == UNCONSCIOUS)
+		//decimate mobs that are on the ground
+		if(target.body_position == LYING_DOWN)
 			ravagingattack()
 			return target
 
@@ -322,7 +368,7 @@
 	is_eating = TRUE
 	for(var/times_to_eat = rand(4, 6), times_to_eat--)
 		sleep(rand(1.7, 2.5) SECONDS)
-		if(check_food_loc(food) || stance > HOSTILE_STANCE_ALERT)
+		if(check_food_loc(food) || stance > HOSTILE_STANCE_ALERT || stat == DEAD)
 			return
 		face_atom(food)
 		playsound(loc,'sound/items/eatfood.ogg', 25, 1)
@@ -391,14 +437,22 @@
 
 //Immediately retaliate after being attacked.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/Retaliate()
-	if(stat == DEAD || target_mob)
+	if(stat == DEAD || target_mob || on_fire)
 		return
-	aggression_value = clamp(aggression_value + 5, 0, 30)
+	aggression_value = clamp(aggression_value + 5, 0, 15)
+
 	. = ..()
+
 	target_mob = FindTarget()
 	if(target_mob)
 		growl(target_mob)
 		MoveToTarget()
+
+	//basic pack behaviour
+	for(var/mob/living/simple_animal/hostile/retaliate/giant_lizard/pack_member in view(7, src))
+		if(pack_member == src || pack_member.target_mob)
+			continue
+		pack_member.Retaliate()
 
 ///Proc for moving to targets. walk_to() doesn't check for resting and status effects so we will do it ourselves.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/MoveTo(target, distance = 1, retreat = FALSE, time = 6 SECONDS, return_to_combat = FALSE)
@@ -407,29 +461,45 @@
 	if(resting)
 		set_resting(FALSE)
 	if(!retreat)
-		walk_to(src, target, distance, move_to_delay)
+		walk_to(src, target ? target : get_turf(src), distance, move_to_delay)
 		return
-
-	is_retreating = TRUE
-	stop_automated_movement = TRUE
-	stance = HOSTILE_STANCE_ALERT
-	walk_away(src, target ? target : get_turf(src), distance, LIZARD_SPEED_RETREAT)
-	addtimer(CALLBACK(src, PROC_REF(stop_retreat), return_to_combat), time)
+	if(!is_retreating)
+		is_retreating = TRUE
+		stop_automated_movement = TRUE
+		stance = HOSTILE_STANCE_ALERT
+		walk_away(src, target ? target : get_turf(src), distance, LIZARD_SPEED_RETREAT)
+		addtimer(CALLBACK(src, PROC_REF(stop_retreat), return_to_combat), time)
 
 //Proc that's called after the retreat has run its course.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/stop_retreat(return_to_combat = FALSE)
 	is_retreating = FALSE
+	//extinguishing is top priority
+	if(on_fire)
+		visible_message(SPAN_NOTICE("[src] rolls frantically on the ground to extinguish itself!"))
+		adjust_fire_stacks(-10)
+		KnockDown(2)
+		Stun(2)
+		ExtinguishMob()
+		return
 	if(!return_to_combat)
+		//can't retreat? go back to fighting
+		if(retreat_attempts >= 2)
+			FindTarget()
+			MoveToTarget()
+			retreat_attempts = 0
+			//seems like it's a life or death situation. we will stop trying to run away.
+			COOLDOWN_START(src, retreat_cooldown, 20 SECONDS)
+			return
 		//don't stop retreating if there are non-friendly carbons in view
 		for(var/mob/living/carbon/hostile_mob in view(7, src))
 			if(hostile_mob.faction in faction_group)
 				continue
-			MoveTo(hostile_mob, 10, TRUE, 4 SECONDS, FALSE)
+			MoveTo(hostile_mob, 10, TRUE, 3 SECONDS, FALSE)
+			retreat_attempts++
 			return
-
+		retreat_attempts = 0
 		LoseTarget()
 	else
-		stance = HOSTILE_STANCE_ATTACKING
 		FindTarget()
 		MoveToTarget()
 
@@ -442,7 +512,7 @@
 		stance = HOSTILE_STANCE_ATTACKING
 		MoveTo(target_mob)
 
-///Ravaging attack, used for when a mob gets pounced.
+///Ravaging attack, used for when a mob gets pounced or is on the ground.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/ravagingattack()
 	if(is_ravaging)
 		return
@@ -458,6 +528,8 @@
 			playsound(loc, attack_type ? "alien_claw_flesh" : "alien_bite", 25, 1)
 			target_mob.handle_blood_splatter(get_dir(src.loc, target_mob.loc))
 			target_mob.apply_damage(damage, BRUTE)
+			target_mob.apply_effect(1, DAZE)
+			shake_camera(target_mob, 1, 2)
 			animation_attack_on(target_mob)
 			face_atom(target_mob)
 			sleep(0.5 SECONDS)

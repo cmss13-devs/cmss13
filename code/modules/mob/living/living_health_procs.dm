@@ -550,6 +550,8 @@
 		GLOB.alive_mob_list += src
 		tod = null
 		timeofdeath = 0
+	if(isanimal(src))
+		health = maxHealth
 
 	// restore us to consciousness
 	set_stat(CONSCIOUS)

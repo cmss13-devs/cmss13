@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - rscadd: "acid spray scorches grass and melts snow"

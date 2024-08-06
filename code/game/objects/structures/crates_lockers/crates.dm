@@ -97,6 +97,8 @@
 			var/obj/structure/bed/B = O
 			if(B.buckled_mob)
 				continue
+		if(istype(O, /obj/item/phone))
+			continue
 		O.forceMove(src)
 		itemcount++
 

@@ -138,7 +138,7 @@
 										sound += ". You also "
 									switch(lungs.organ_status)
 										if(ORGAN_LITTLE_BRUISED)
-											sound += "hear <font color='yellow'>some crackles when they breath</font>, they are possibly suffering from <font color='yellow'>a small damage to the lungs</font>"
+											sound += "hear <font color='yellow'>some crackles when [being.p_they()] breath</font>, [being.p_they()] are possibly suffering from <font color='yellow'>a small damage to the lungs</font>"
 										if(ORGAN_BRUISED)
 											sound += "hear <font color='orange'>unusual respiration sounds</font> and noticeable difficulty to breath, possibly signalling <font color='orange'>ruptured lungs</font>"
 										if(ORGAN_BROKEN)

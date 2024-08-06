@@ -579,7 +579,6 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "tx" = (
-/obj/structure/machinery/hologram/holopad,
 /turf/open/floor/carpet,
 /area/centcom/living)
 "tP" = (
@@ -2211,7 +2210,7 @@ hp
 hp
 hp
 hp
-kx
+hp
 "}
 (2,1,1) = {"
 aa
@@ -3570,7 +3569,7 @@ hp
 hp
 hp
 hp
-hp
+kx
 hp
 hp
 hp

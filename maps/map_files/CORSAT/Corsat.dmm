@@ -24617,7 +24617,6 @@
 /area/corsat/sigma/south/complex)
 "bTM" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/device/suit_cooling_unit,
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/sigma/south/complex)
 "bTN" = (
@@ -24632,7 +24631,7 @@
 /area/corsat/gamma/biodome/complex)
 "bTQ" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/device/gripper,
+/obj/item/prop/gripper,
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/sigma/south/complex)
 "bTU" = (

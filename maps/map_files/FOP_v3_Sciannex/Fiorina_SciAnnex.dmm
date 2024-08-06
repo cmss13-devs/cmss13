@@ -15742,7 +15742,7 @@
 /obj/structure/machinery/shower{
 	pixel_y = 13
 	},
-/obj/item/tool/soap/nanotrasen,
+/obj/item/tool/soap/weyland_yutani,
 /turf/open/floor/prison/kitchen/southwest,
 /area/fiorina/tumor/civres)
 "lWy" = (

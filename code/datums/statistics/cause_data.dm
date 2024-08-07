@@ -29,5 +29,5 @@
 		if(M.mind)
 			new_data.ckey = M.mind.ckey
 		new_data.role = M.get_role_name()
-		new_data.faction = M.faction
+		new_data.faction = M.faction?.faction_name
 	return new_data

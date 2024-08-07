@@ -73,7 +73,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic/medal)
 	if(giver_player)
 		new_medal.giver_player_id = giver_player.id
 
-	track_statistic_earned(new_recipient.faction.faction_name, STATISTICS_MEDALS, 1, new_recipient.client.player_data.id)
+	track_statistic_earned(new_recipient.faction.faction_name, STATISTICS_MEDALS, 1, new_recipient.client.player_data)
 	medals += new_medal
 	new_medal.save()
 	new_medal.detach()
@@ -86,7 +86,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic/medal)
 		return FALSE
 
 	var/round_id = SSperf_logging.round?.id
-	track_statistic_earned(recipient.faction.faction_name, STATISTICS_MEDALS, -1, recipient.client.player_data.id)
+	track_statistic_earned(recipient.faction.faction_name, STATISTICS_MEDALS, -1, recipient.client.player_data)
 	for(var/datum/entity/statistic/medal/new_medal as anything in medals)
 		if(new_medal.round_id == round_id && new_medal.recipient_name == recipient.real_name && new_medal.medal_type == medal_type && new_medal.citation == citation)
 			medals -= new_medal

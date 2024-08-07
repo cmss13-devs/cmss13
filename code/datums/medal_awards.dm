@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 		if(!as_admin && mob == usr)
 			// Giver: Increment their medals given stat
 			giver_mob = mob
-			track_statistic_earned(giver_mob.faction, STATISTIC_TYPE_MISC, STATISTICS_MEDALS_GIVE, 1, giver_mob.client.player_data.id)
+			track_statistic_earned(giver_mob.faction, STATISTIC_TYPE_MISC, STATISTICS_MEDALS_GIVE, 1, giver_mob.client.player_data)
 			if(found_other)
 				break
 			found_other = TRUE
@@ -342,7 +342,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 			if(mob == usr)
 				// Giver: Increment their medals given stat
 				giver_mob = mob
-				track_statistic_earned(giver_mob.faction, STATISTIC_TYPE_MISC, STATISTICS_MEDALS_GIVE, 1, giver_mob.client.player_data.id)
+				track_statistic_earned(giver_mob.faction, STATISTIC_TYPE_MISC, STATISTICS_MEDALS_GIVE, 1, giver_mob.client.player_data)
 				break
 
 	// Create the recipient_award
@@ -446,7 +446,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 
 	// Remove giver's stat
 	if(giver_mob)
-		track_statistic_earned(giver_mob.faction, STATISTIC_TYPE_MISC, STATISTICS_MEDALS_GIVE, -1, giver_mob.client.player_data.id)
+		track_statistic_earned(giver_mob.faction, STATISTIC_TYPE_MISC, STATISTICS_MEDALS_GIVE, -1, giver_mob.client.player_data)
 
 	// Remove stats for recipient (this has a weakref to the mob, but theres a possibility of recipient.statistic_exempt)
 	if(recipient_mob)

@@ -22,17 +22,23 @@
         "value" = DB_FIELDTYPE_INT,
     )
 
-/proc/track_statistic_earned(faction, statistic_type, general_name, statistic_name, value, player_id)
-	if(!player_id || !faction || !statistic_type || !general_name || !statistic_name)
+/proc/track_statistic_earned(faction, statistic_type, general_name, statistic_name, value, datum/entity/player/player)
+	if(!player || !faction || !statistic_type || !general_name || !statistic_name)
+		return
+
+	var/datum/entity/statistic/statistic = player.player_entity?.get_statistic(faction, statistic_type, general_name, statistic_name)
+	if(statistic)
+		statistic.value += value
+		statistic.save()
 		return
 
 	DB_FILTER(/datum/entity/statistic, DB_AND(
-		DB_COMP("player_id", DB_EQUALS, player_id),
+		DB_COMP("player_id", DB_EQUALS, player.id),
 		DB_COMP("faction", DB_EQUALS, faction),
 		DB_COMP("statistic_type", DB_EQUALS, statistic_type),
 		DB_COMP("general_name", DB_EQUALS, general_name),
 		DB_COMP("statistic_name", DB_EQUALS, statistic_name)),
-		CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(track_statistic_earned_callback), faction, statistic_type, general_name, statistic_name, value, player_id))
+		CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(track_statistic_earned_callback), faction, statistic_type, general_name, statistic_name, value, player.id))
 
 /proc/track_statistic_earned_callback(faction, statistic_type, general_name, statistic_name, value, player_id, list/datum/entity/statistic/statistics)
 	if(!length(statistics))
@@ -190,7 +196,7 @@
 	var/datum/entity/statistic/statistic = match_statistic.statistic_info[statistic_type][general_name][statistic_name]
 	if(!statistic)
 		return FALSE
-	return statistic.value
+	return statistic
 
 /datum/player_entity/proc/setup_entity()
 	set waitfor = FALSE

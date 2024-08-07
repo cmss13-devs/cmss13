@@ -707,21 +707,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	migrated_jobbans = TRUE
 	save()
 
-/datum/entity/player/proc/adjust_stat(stat_id, stat_category, num, set_to_num = FALSE)
-	var/datum/entity/player_stat/stat = LAZYACCESS(stats, stat_id)
-
-	if(!stat)
-		stat = DB_ENTITY(/datum/entity/player_stat)
-		stat.player_id = id
-		stat.stat_id = stat_id
-		stat.stat_category = stat_category
-		LAZYSET(stats, stat_id, stat)
-	if(set_to_num)
-		stat.stat_number = num
-	else
-		stat.stat_number += num
-	stat.save()
-
 /datum/entity/player/proc/check_whitelist_status(flag_to_check)
 	if(whitelist_flags & flag_to_check)
 		return TRUE

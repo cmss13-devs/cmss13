@@ -182,8 +182,6 @@
 
 	/// The typepath of the flag structure that gets spawned when the flag is planted.
 	var/flag_type = /obj/structure/flag/plantable
-	/// Used to check if nearby mobs belong to a faction when calculating for the stronger warcry.
-	var/faction
 	/// Does the flag play a unique warcry when planted? (Only while on harm intent.)
 	var/play_warcry = FALSE
 	/// The warcry's sound path.
@@ -197,11 +195,11 @@
 
 /obj/item/flag/plantable/get_examine_text(mob/user)
 	. = ..()
-	if(play_warcry && user.faction == faction)
+	if(play_warcry && user.ally(faction))
 		. += SPAN_NOTICE("Planting the flag while in <b>HARM</b> intent will cause you to bellow out a rallying warcry!")
 
 /// Proc for turning the flag item into a structure.
-/obj/item/flag/plantable/proc/plant_flag(mob/living/user, play_warcry = FALSE, warcry_sound, warcry_extra_sound, faction)
+/obj/item/flag/plantable/proc/plant_flag(mob/living/user, play_warcry = FALSE, warcry_sound, warcry_extra_sound)
 	if(user.action_busy)
 		return
 
@@ -231,14 +229,15 @@
 
 	user.visible_message(SPAN_NOTICE("[user] plants [src] into the ground!"), SPAN_NOTICE("You plant [src] into the ground!"))
 	var/obj/structure/flag/plantable/planted_flag = new flag_type(turf_to_plant)
+	planted_flag.faction = faction
 
 	// If there are more than 14 allies nearby, play a stronger rallying cry.
 	// Otherwise, play the default warcry sound if there is one. If not, play a generic flag raising sfx.
-	if(play_warcry && user.faction == faction && user.a_intent == INTENT_HARM)
+	if(play_warcry && user.ally(faction) && user.a_intent == INTENT_HARM)
 		var/allies_nearby = 0
 		if(COOLDOWN_FINISHED(src, warcry_cooldown_item))
 			for(var/mob/living/carbon/human in orange(planted_flag, 7))
-				if(human.is_dead() || human.faction != faction)
+				if(human.is_dead() || !human.ally(faction))
 					continue
 				allies_nearby++
 
@@ -258,9 +257,14 @@
 
 	qdel(src)
 
+/obj/item/flag/plantable/pick_up(mob/user)
+	..()
+	if(!faction)
+		faction = user.faction
+
 /obj/item/flag/plantable/attack_self(mob/user)
 	..()
-	plant_flag(user, play_warcry, warcry_sound, warcry_extra_sound, faction)
+	plant_flag(user, play_warcry, warcry_sound, warcry_extra_sound)
 
 // UNITED AMERICAS FLAG //
 //////////////////////////

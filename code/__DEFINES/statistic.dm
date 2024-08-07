@@ -12,6 +12,8 @@
 #define STATISTIC_TYPE_JOB				"Role"
 #define STATISTIC_TYPE_WEAPON			"Weapon"
 
+#define STATISTIC_TYPE_GLOBAL			"global" // Don't have link to a faction
+
 #define STATISTICS_DEATH_LIST_LEN		20
 
 #define STATISTICS_FF_SHOT_HIT			"FF Shot Hit"

@@ -169,10 +169,6 @@
 /datum/faction/proc/get_antag_guns_sorted_equipment()
 	return list()
 
-/datum/faction/proc/store_objective(datum/cm_objective/O)
-	if(objective_memory)
-		objective_memory.store_objective(O)
-
 //FACTION INFO PANEL
 /datum/faction/ui_state(mob/user)
 	return GLOB.not_incapacitated_state
@@ -207,19 +203,8 @@
 
 	switch(action)
 		if("relations")
-			relations_datum.tgui_interact(usr)
-		if("tasks")
-			task_interface.tgui_interact(usr)
-		if("clues")
-			if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED))
-				to_chat(usr, SPAN_WARNING("You have no access to the [name] intel network."))
-				return
-			objective_interface.tgui_interact(usr)
-		if("researchs")
-			if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
-				to_chat(usr, SPAN_WARNING("You have no access to the [name] research network."))
-				return
-			research_objective_interface.tgui_interact(usr)
+			var/datum/faction_module/relations/module = modules[MODULE_CODE_NAME_RELATIONS]
+			module.tgui_interact(usr)
 		if("status")
 			get_faction_info(usr)
 
@@ -278,66 +263,30 @@
 */
 
 	dat = "<html><body onselectstart='return false;'><center>"
-	dat += "[user.client.auto_lang(LANGUAGE_LOBBY_ROUND_TIME)]: [DisplayTimeText(world.time, language = user.client.language)]<br>"
-	dat += "[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_CHOSE)]:<br>"
+	dat += "Round Time: [DisplayTimeText(world.time)]<br>"
+	dat += "Chose from lower opened positions:<br>"
 	dat += additional_join_status(user)
 
 	if(!latejoin_enabled)
-		dat = "[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_CLOSED)]:<br>"
-
-	else if(!SSautobalancer.can_join(src))
-		dat = "[user.client.auto_lang(LANGUAGE_JS_BALANCE_ISSUE)]:<br>"
+		dat = "You can't right now join round for that faction:<br>"
 
 	else
 		var/list/roles = roles_list[SSticker.mode.name]
 		for(var/role in roles)
-			var/datum/job/job = SSticker.role_authority.roles_by_name[role]
-			var/check_result = SSticker.role_authority.check_role_entry(user, job, src, TRUE)
+			var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role]
+			var/check_result = GLOB.RoleAuthority.check_role_entry(user, job, src, TRUE)
 			var/active = 0
 			for(var/mob/mob in GLOB.player_list)
 				if(mob.client && mob.job == job.title)
 					active++
 
 			if(check_result)
-				dat += "[job.disp_title] ([job.current_positions]): [check_result] ([user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_ACTIVE)]: [active])<br>"
+				dat += "[job.disp_title] ([job.current_positions]): [check_result] (Active: [active])<br>"
 			else
-				dat += "<a href='byond://?src=\ref[user];lobby_choice=SelectedJob;job_selected=[job.title]'>[job.disp_title] ([job.current_positions]) ([user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_ACTIVE)]: [active])</a><br>"
+				dat += "<a href='byond://?src=\ref[user];lobby_choice=SelectedJob;job_selected=[job.title]'>[job.disp_title] ([job.current_positions]) (Active: [active])</a><br>"
 
 	dat += "</center>"
 	show_browser(user, dat, "Late Join", "latechoices", "size=420x700")
 
 /datum/faction/proc/additional_join_status(mob/new_player/user, dat = "")
 	return
-/*
-			if(roles_show & FLAG_SHOW_CIC && ROLES_CIC & job.title)
-				dat += "<hr>[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_COM)]:<br>"
-				roles_show ^= FLAG_SHOW_CIC
-
-			else if(roles_show & FLAG_SHOW_AUXIL_SUPPORT && ROLES_AUXIL_SUPPORT & job.title)
-				dat += "<hr>[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_SUP)]:<br>"
-				roles_show ^= FLAG_SHOW_AUXIL_SUPPORT
-
-			else if(roles_show & FLAG_SHOW_MISC && ROLES_MISC & job.title)
-				dat += "<hr>[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_OTH)]:<br>"
-				roles_show ^= FLAG_SHOW_MISC
-
-			else if(roles_show & FLAG_SHOW_POLICE && ROLES_POLICE & job.title)
-				dat += "<hr>[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_POL)]:<br>"
-				roles_show ^= FLAG_SHOW_POLICE
-
-			else if(roles_show & FLAG_SHOW_ENGINEERING && ROLES_ENGINEERING & job.title)
-				dat += "<hr>[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_ENG)]:<br>"
-				roles_show ^= FLAG_SHOW_ENGINEERING
-
-			else if(roles_show & FLAG_SHOW_REQUISITION && ROLES_REQUISITION & job.title)
-				dat += "<hr>[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_CAG)]:<br>"
-				roles_show ^= FLAG_SHOW_REQUISITION
-
-			else if(roles_show & FLAG_SHOW_MEDICAL && ROLES_MEDICAL & job.title)
-				dat += "<hr>[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_MED)]:<br>"
-				roles_show ^= FLAG_SHOW_MEDICAL
-
-			else if(roles_show & FLAG_SHOW_MARINES && ROLES_MARINES & job.title)
-				dat += "<hr>[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_MAR)]:<br>"
-				roles_show ^= FLAG_SHOW_MARINES
-*/

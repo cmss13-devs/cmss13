@@ -30,9 +30,9 @@
 	relations[target_faction.faction_name] = clamp(relations[target_faction.faction_name] + opinion, RELATIONS_WAR[1], RELATIONS_MAX)
 
 /datum/faction_module/relations/tgui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, source, ui)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, source, "FactionRelations", "[faction] Relations")
+		ui = new(user, src, "FactionRelations", "[faction] Relations")
 		ui.open()
 		ui.set_autoupdate(TRUE)
 

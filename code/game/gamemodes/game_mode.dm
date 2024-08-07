@@ -33,6 +33,10 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/static_comms_amount = 0
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
 
+	var/list/active_roles_mappings_pool = list()
+	var/list/active_roles_pool = list()
+	var/list/factions_pool = list()
+
 	var/list/roles_to_roll
 
 	var/corpses_to_spawn = 0
@@ -43,6 +47,14 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	..()
 	if(taskbar_icon)
 		GLOB.available_taskbar_icons |= taskbar_icon
+
+	for(var/faction_to_get in FACTION_LIST_ALL)
+		var/datum/faction/faction = GLOB.faction_datum[faction_to_get]
+		if(length(faction.roles_list[name]))
+			factions_pool[faction.name] = faction.faction_name
+			active_roles_mappings_pool += faction.role_mappings[name]
+			for(var/i in faction.roles_list[name])
+				active_roles_pool += i
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	to_world("<B>Notice</B>: [src] did not define announce()")

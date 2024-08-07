@@ -1,0 +1,5 @@
+author: "Doubleumc"
+delete-after: True
+changes:
+  - code_imp: "shrapnel smoothly animates their movement"
+  - code_imp: "visual-effect-only shrapnel replaced by clientside particles"

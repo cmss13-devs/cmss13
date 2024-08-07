@@ -23,7 +23,7 @@
 #define STATISTICS_SCREAM				"Scream"
 #define STATISTICS_HIT					"Hit"
 #define STATISTICS_FF_HIT				"FF Hit"
-#define STATISTICS_EXPLODED_MOBS		"Blowjobs Done"
+#define STATISTICS_EXPLODED_MOBS		"Blowjobs Done" // :clueless_face:
 #define STATISTICS_SLASH				"Slash"
 #define STATISTICS_REVIVE				"Revive"
 #define STATISTICS_REVIVED				"Revived"

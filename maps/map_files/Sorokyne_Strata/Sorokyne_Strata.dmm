@@ -2687,7 +2687,6 @@
 "akb" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/mass_spectrometer,
-/obj/item/device/matter_decompiler,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "akf" = (

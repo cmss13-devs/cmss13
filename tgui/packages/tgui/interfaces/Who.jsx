@@ -27,7 +27,7 @@ export const Who = (props, context) => {
     player_stealthed_additional?.total_players,
   );
 
-  const [searchQuery, setSearchQuery] = useState('', '');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const searchPlayers = () =>
     total_players.filter((playerObj) => isMatch(playerObj, searchQuery));

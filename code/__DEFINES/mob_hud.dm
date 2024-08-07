@@ -27,7 +27,7 @@
 #define HUNTER_CLAN "25" //Displays a colored icon to represent ingame Hunter Clans
 #define HUNTER_HUD "26" //Displays various statuses on mobs for Hunters to identify targets
 #define HOLOCARD_HUD "27" //Displays the holocards set by medical personnel
-#define NEW_PLAYER_HUD "28" //Makes it easy to see new players.
+#define NEW_PLAYER_HUD "29" //Makes it easy to see new players.
 
 //data HUD (medhud, sechud) defines
 #define MOB_HUD_SECURITY_BASIC 1

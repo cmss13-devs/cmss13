@@ -19,7 +19,7 @@
 		tree = marine_tree
 
 	if(tree)
-		tree.on_process()
+		tree.comms_income_total += RESOURCE_INCOME_TELECOMMS
 		tree.add_points(RESOURCE_INCOME_TELECOMMS)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/New()
@@ -31,8 +31,5 @@
 	if(toggled)
 		START_PROCESSING(SSslowobj, src)
 	..()
-
-/datum/techtree/marine/on_process()
-	SSobjectives.comms.score_new_points(RESOURCE_INCOME_TELECOMMS)
 
 #undef RESOURCE_INCOME_TELECOMMS

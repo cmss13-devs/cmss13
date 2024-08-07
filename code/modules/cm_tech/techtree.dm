@@ -111,9 +111,11 @@
 /datum/techtree/proc/set_points(number)
 	points = max(number, 0)
 
+/* RUCM CHANGE
 /datum/techtree/proc/add_points(number)
 	set_points(points + (number * points_mult))
 	total_points += number * points_mult
+*/
 
 /datum/techtree/proc/spend_points(number)
 	set_points(points - number)

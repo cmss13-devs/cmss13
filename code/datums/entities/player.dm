@@ -709,6 +709,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 /datum/entity/player/proc/adjust_stat(stat_id, stat_category, num, set_to_num = FALSE)
 	var/datum/entity/player_stat/stat = LAZYACCESS(stats, stat_id)
+
 	if(!stat)
 		stat = DB_ENTITY(/datum/entity/player_stat)
 		stat.player_id = id

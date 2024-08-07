@@ -59,7 +59,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	requires_power = FALSE
 	static_lighting = FALSE
 	base_lighting_alpha = 255
-	has_gravity = 1
 
 // === end remove
 
@@ -72,7 +71,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	statistic_exempt = TRUE
 	ceiling = CEILING_METAL
 
-	base_lighting_alpha = 255	
+	base_lighting_alpha = 255
 
 /area/centcom/control
 	name = "\improper abandoned  Centcom Control"

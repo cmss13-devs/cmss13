@@ -1,0 +1,4 @@
+author: "?"
+delete-after: True
+changes:
+  - bugfix: "Fixed explosive implant not triggering when hearing the code-word."

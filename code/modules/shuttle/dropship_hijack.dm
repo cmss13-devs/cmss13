@@ -70,7 +70,7 @@
 /datum/dropship_hijack/almayer/proc/fire()
 	if(!shuttle || !crash_site)
 		return FALSE
-	shuttle.callTime = DROPSHIP_CRASH_TRANSIT_DURATION * GLOB.ship_alt
+	shuttle.callTime = DROPSHIP_CRASH_TRANSIT_DURATION
 	SSshuttle.moveShuttle(shuttle.id, crash_site.id, TRUE)
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_hijack()

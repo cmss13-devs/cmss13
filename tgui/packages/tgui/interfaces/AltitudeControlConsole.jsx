@@ -1,11 +1,24 @@
 import { useBackend } from '../backend';
-import { Box, Button, ProgressBar, Section } from '../components';
+import {
+  Box,
+  Button,
+  Icon,
+  ProgressBar,
+  Section,
+  Tooltip,
+} from '../components';
 import { Window } from '../layouts';
-import { createLogger } from '../logging';
 export const AltitudeControlConsole = () => {
   const { act, data } = useBackend();
-  const logger = createLogger('Debug');
-  logger.warn(data);
+  let altIcon = 'plane';
+  let altTip = 'Currently: Normal Altitude';
+  if (data.alt === 0.5) {
+    altIcon = 'plane-arrival';
+    altTip = 'Currently: Low Altitude';
+  } else if (data.alt === 1.5) {
+    altIcon = 'plane-departure';
+    altTip = 'Currently: High Altitude';
+  }
   return (
     <Window width={455} height={275}>
       <Window.Content scrollable>
@@ -25,7 +38,14 @@ export const AltitudeControlConsole = () => {
             </ProgressBar>
           </Box>
         </Section>
-        <Section title="Altitude Control">
+        <Section
+          title="Altitude Control"
+          buttons={
+            <Tooltip content={altTip} position="left">
+              <Icon name={altIcon} size={1.5} />
+            </Tooltip>
+          }
+        >
           {
             <Button
               fontSize="20px"
@@ -34,7 +54,7 @@ export const AltitudeControlConsole = () => {
               disabled={data.alt === 0.5}
               onClick={() => act('low_alt')}
             >
-              Set to: Low Altitude
+              Set to: Lowest orbitable altitude
             </Button>
           }
           {
@@ -45,20 +65,18 @@ export const AltitudeControlConsole = () => {
               disabled={data.alt === 1}
               onClick={() => act('med_alt')}
             >
-              Set to: Medium Altitude
+              Set to: Most optimal orbitable altitude
             </Button>
           }
-          {
-            <Button
-              fontSize="20px"
-              textAlign="center"
-              fluid
-              disabled={data.alt === 1.5}
-              onClick={() => act('high_alt')}
-            >
-              Set to: High Altitude
-            </Button>
-          }
+        </Section>
+        <Section title="System Operational Warnings">
+          <Box fontSize="20px">
+            1. Automatic changes have a cooldown of 20 seconds.
+            <br />
+            2. Manual changes have a cooldown of 40 seconds.
+            <br />
+            3. In average, it takes 3 minutes for the engines to 100% overheat.
+          </Box>
         </Section>
       </Window.Content>
     </Window>

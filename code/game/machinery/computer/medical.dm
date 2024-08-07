@@ -534,3 +534,12 @@
 	desc = "Cheap Weyland-Yutani Laptop."
 	icon_state = "medlaptop"
 	density = FALSE
+
+/obj/structure/machinery/computer/med_data/bulky
+	name = "medical records computer"
+	desc = "The IBM series 10 computer retrofitted to be used to check the medical records of all crew. While somewhat dated it still serves its purpose."
+	icon_state = "medcomp_bulky"
+	deconstructible = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	breakable = FALSE

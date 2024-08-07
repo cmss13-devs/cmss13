@@ -60,12 +60,12 @@
 		return
 
 	// initial flight time
-	var/flight_duration =  is_flyby ? DROPSHIP_TRANSIT_DURATION : DROPSHIP_TRANSIT_DURATION * GLOB.ship_alt
+	var/flight_duration =  is_flyby ? DROPSHIP_TRANSIT_DURATION / GLOB.ship_alt : DROPSHIP_TRANSIT_DURATION * GLOB.ship_alt
 	if(optimised)
 		if(is_flyby)
-			flight_duration = DROPSHIP_TRANSIT_DURATION * 1.5
+			flight_duration *= 1.5
 		else
-			flight_duration = DROPSHIP_TRANSIT_DURATION * SHUTTLE_OPTIMIZE_FACTOR_TRAVEL
+			flight_duration *= SHUTTLE_OPTIMIZE_FACTOR_TRAVEL
 
 	// recharge time before dropship can take off
 	var/recharge_duration = SHUTTLE_RECHARGE

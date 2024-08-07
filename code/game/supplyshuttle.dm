@@ -149,7 +149,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			computer.black_market_lockout = TRUE
 
 /obj/structure/machinery/computer/ordercomp
-	name = "Supply ordering console"
+	name = "supply ordering console"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "request"
 	density = TRUE
@@ -157,6 +157,15 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/temp = null
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
 	var/last_viewed_group = "categories"
+
+/obj/structure/machinery/computer/ordercomp/bulky
+	desc = "The IBM series 10 computer retrofitted to be used as a console for the Automated Storage Retrieval System. While somewhat dated it still serves its purpose."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "request_bulky"
+	deconstructible = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	breakable = FALSE
 
 /obj/structure/machinery/computer/supply_drop_console
 	name = "Supply Drop Console"

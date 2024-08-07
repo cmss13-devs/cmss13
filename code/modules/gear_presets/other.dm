@@ -602,6 +602,12 @@
 
 //Overloading the function to be able to spawn gear first
 /datum/equipment_preset/other/zombie/load_preset(mob/living/carbon/human/new_human, randomise = FALSE)
+	GLOB.faction_datum[faction].add_mob(new_human)
+	if(new_human.faction?.organ_faction_iff_tag_type)
+		if(new_human.organ_faction_tag)
+			QDEL_NULL(new_human.organ_faction_tag)
+		new_human.organ_faction_tag = new new_human.faction.organ_faction_iff_tag_type(new_human, new_human.faction)
+
 	if(randomise)
 		load_name(new_human)
 	load_skills(new_human) //skills are set before equipment because of skill restrictions on certain clothes.
@@ -628,7 +634,6 @@
 		uniform.has_sensor = UNIFORM_HAS_SENSORS
 		uniform.sensor_faction = FACTION_COLONIST
 	new_human.job = "Zombie"
-	new_human.faction = faction
 	return ..()
 
 /datum/equipment_preset/other/zombie/load_race(mob/living/carbon/human/new_human)
@@ -767,16 +772,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/new_human, hivenumber = XENO_HIVE_NORMAL)
+/datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/new_human)
 	if(SSticker.mode && new_human.mind)
 		SSticker.mode.xenomorphs += new_human.mind
-
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(hive)
-		new_human.faction = hive.internal_faction
-		if(hive.leading_cult_sl == new_human)
-			hive.leading_cult_sl = null
-	new_human.hivenumber = hivenumber
 
 	GLOB.xeno_cultists += new_human
 

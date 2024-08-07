@@ -26,6 +26,11 @@
 		return FALSE
 	return TRUE
 
+/mob/proc/track_friendly_hit(weapon, amount = 1, statistic_name = STATISTICS_FF_HIT)
+	if(statistic_exempt || !client || !client.player_data || !faction)
+		return FALSE
+	return TRUE
+
 /mob/proc/track_shot(weapon, amount = 1, statistic_name = STATISTICS_SHOT)
 	if(statistic_exempt || !client || !client.player_data || !faction)
 		return FALSE
@@ -120,6 +125,15 @@
 	track_statistic_earned(faction.faction_name, STATISTIC_TYPE_JOB, get_role_name(), statistic_name, amount, client.player_data.id)
 
 /mob/living/carbon/human/track_hit(weapon, amount = 1, statistic_name = STATISTICS_HIT)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	track_statistic_earned(faction.faction_name, STATISTIC_TYPE_JOB, get_role_name(), statistic_name, amount, client.player_data.id)
+	if(weapon)
+		track_statistic_earned(faction.faction_name, STATISTIC_TYPE_WEAPON, weapon, statistic_name, amount, client.player_data.id)
+
+/mob/living/carbon/human/track_friendly_hit(weapon, amount = 1, statistic_name = STATISTICS_FF_HIT)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -230,6 +244,15 @@
 	track_statistic_earned(faction.faction_name, STATISTIC_TYPE_CASTE, caste_type, statistic_name, amount, client.player_data.id)
 
 /mob/living/carbon/xenomorph/track_hit(weapon, amount = 1, statistic_name = STATISTICS_HIT)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	track_statistic_earned(faction.faction_name, STATISTIC_TYPE_CASTE, get_role_name(), statistic_name, amount, client.player_data.id)
+	if(weapon)
+		track_statistic_earned(faction.faction_name, STATISTIC_TYPE_WEAPON, weapon, statistic_name, amount, client.player_data.id)
+
+/mob/living/carbon/xenomorph/track_friendly_hit(weapon, amount = 1, statistic_name = STATISTICS_FF_HIT)
 	. = ..()
 	if(!.)
 		return FALSE

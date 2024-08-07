@@ -10,8 +10,6 @@
 
 	var/memory
 
-	var/datum/entity/player_entity/player_entity = null
-
 	//put this here for easier tracking ingame
 	var/datum/money_account/initial_account
 

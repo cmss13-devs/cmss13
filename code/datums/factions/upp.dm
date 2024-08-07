@@ -1,6 +1,32 @@
 /datum/faction/upp
-	name = "Union of Progressive Peoples"
-	faction_tag = FACTION_UPP
+	name = NAME_FACTION_UPP
+	desc = "A wide-reaching and powerful socialist authoritarian state. The UPP acts as the political and ideological rival of the United States and the UA. Though they have a relatively large presence on Earth (particularly in the Eastern sphere), the UPP is also largely active in colonizing the frontier. \
+	While the United Americas have never engaged the UPP in an official war, hostilities broke out between a USCM Task Force and a UPP Expeditionary Force during Operation Canton in mid 2165. The engagement ended in a ceasefire. The reason was fears that the conflict would spread to the more densely populated Sol System. \
+	The incident greatly enraged many senior officials in the UPP, who viewed the battle of Canton as an attempt by the United States to annex UPP sovereign territory. “Such an insult (referring to Canton) can only be repaid in American blood. Mark my words, this will happen”, Kolonel Ganbaatar of the UPP Armed Forces was quoted saying in May 2168."
+
+	faction_name = FACTION_UPP
+	faction_tag = SIDE_FACTION_UPP
+	relations_pregen = RELATIONS_FACTION_UPP
+	faction_iff_tag_type = /obj/item/faction_tag/upp
+
+	role_mappings = list(
+		MODE_NAME_EXTENDED = list(),
+		MODE_NAME_DISTRESS_SIGNAL = list(),
+		MODE_NAME_FACTION_CLASH = list(),
+		MODE_NAME_WISKEY_OUTPOST = list(),
+		MODE_NAME_HUNTER_GAMES = list(),
+		MODE_NAME_HIVE_WARS = list(),
+		MODE_NAME_INFECTION = list()
+	)
+	roles_list = list(
+		MODE_NAME_EXTENDED = list(),
+		MODE_NAME_DISTRESS_SIGNAL = list(),
+		MODE_NAME_FACTION_CLASH = UPP_JOB_LIST,
+		MODE_NAME_WISKEY_OUTPOST = list(),
+		MODE_NAME_HUNTER_GAMES = list(),
+		MODE_NAME_HIVE_WARS = list(),
+		MODE_NAME_INFECTION = list()
+	)
 
 /datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state
@@ -25,23 +51,11 @@
 			hud_icon_state = "lt"
 		if(JOB_UPP_SRLT_OFFICER)
 			hud_icon_state = "slt"
-		if(JOB_UPP_KPT_OFFICER)
-			hud_icon_state = "xo"
 		if(JOB_UPP_MAY_OFFICER)
-			hud_icon_state = "co"
-		if(JOB_UPP_LTKOL_OFFICER)
-			hud_icon_state = "co"
+			hud_icon_state = "may"
 		if(JOB_UPP_KOL_OFFICER)
-			hud_icon_state = "co"
-		if(JOB_UPP_MAY_GENERAL)
-			hud_icon_state = "co"
-		if(JOB_UPP_LT_GENERAL)
-			hud_icon_state = "co"
-		if(JOB_UPP_GENERAL)
-			hud_icon_state = "co"
+			hud_icon_state = "kol"
 		if(JOB_UPP_COMBAT_SYNTH)
-			hud_icon_state = "synth"
-		if(JOB_UPP_SUPPORT_SYNTH)
 			hud_icon_state = "synth"
 		if(JOB_UPP_COMMANDO)
 			hud_icon_state = "com"

@@ -200,7 +200,7 @@
 			var/datum/statistic_groups/new_group = statistics[faction_to_get]
 			if(!new_group)
 				new_group = new()
-				new_group.group_name = GLOB.faction_datum[faction_to_get].name
+				new_group.group_name = GLOB.faction_datums[faction_to_get].name
 				new_group.group_parameter = faction_to_get
 				new_group.player = src
 				statistics[faction_to_get] = new_group

@@ -68,11 +68,11 @@
 	if(ismob(LM.thrower))
 		M = LM.thrower
 		if(M.faction == faction)
-			M.track_friendly_hit(initial(I.name))
-			M.track_friendly_damage(initial(I.name), src, power)
+			M.track_friendly_hit(initial(O.name))
+			M.track_friendly_damage(initial(O.name), src, damage_done)
 		else
-			M.track_hit(initial(I.name))
-			M.track_damage(initial(I.name), src, power)
+			M.track_hit(initial(O.name))
+			M.track_damage(initial(O.name), src, damage_done)
 		var/client/assailant = M.client
 		if(assailant)
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")

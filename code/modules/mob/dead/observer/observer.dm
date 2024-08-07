@@ -462,13 +462,10 @@ Works together with spawning an observer, noted above.
 
 	if(!can_reenter_corpse)
 		away_timer = 300 //They'll never come back, so we can max out the timer right away.
-		if(GLOB.round_statistics)
-			GLOB.round_statistics.update_panel_data()
 		track_death_calculations() //This needs to be done before mind is nullified
 		if(ghost.mind)
 			ghost.mind.original = ghost
-	else if(ghost.mind && ghost.mind.player_entity) //Use else here because track_death_calculations() already calls this.
-		ghost.mind.player_entity.update_panel_data(GLOB.round_statistics)
+	else if(ghost.client)
 		ghost.mind.original = src
 
 	mind = null
@@ -516,8 +513,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/living/proc/do_ghost()
 	if(stat == DEAD)
-		if(mind && mind.player_entity)
-			mind.player_entity.update_panel_data(GLOB.round_statistics)
+		if(client && client.player_data)
+			client.player_data.setup_statistics()
 		ghostize(TRUE)
 	else
 		var/list/options = list("Ghost", "Stay in body")
@@ -963,55 +960,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Join as Zombie"
 	set desc = "Select an alive but logged-out Zombie to rejoin the game."
 
-	if (!client)
-		return
-
-	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
-		return
-
-	var/list/zombie_list = list()
-	if(length(GLOB.zombie_landmarks))
-		zombie_list += list("Underground Zombie" = "Underground Zombie")
-	for(var/mob/living/carbon/human/A in GLOB.zombie_list)
-		if(!A.client && A.stat != DEAD) // Only living zombies
-			zombie_list += list(A.real_name = A)
-
-	if(!length(zombie_list))
-		to_chat(src, SPAN_DANGER("There are no available zombies."))
-		return
-
-	var/choice = tgui_input_list(usr, "Pick a Zombie:", "Join as Zombie", zombie_list)
-	if(!choice)
-		return
-
-	if(!client || !mind)
-		return
-
-	if(choice == "Underground Zombie")
-		if(!length(GLOB.zombie_landmarks))
-			to_chat(src, SPAN_WARNING("Sorry, the last underground zombie just got taken."))
-			return
-		var/obj/effect/landmark/zombie/spawn_point = pick(GLOB.zombie_landmarks)
-		spawn_point.spawn_zombie(src)
-		return
-
-	var/mob/living/carbon/human/Z = zombie_list[choice]
-
-	if(!Z || QDELETED(Z))
-		return
-
-	if(Z.stat == DEAD)
-		to_chat(src, SPAN_WARNING("This zombie is dead!"))
-		return
-
-	if(Z.client)
-		to_chat(src, SPAN_WARNING("That player is still connected."))
-		return
-
-	mind.transfer_to(Z, TRUE)
-	msg_admin_niche("[key_name(usr)] has joined as a [Z].")
-
+	GLOB.faction_datum[FACTION_ZOMBIE]?.get_join_status(src)
 
 /mob/dead/verb/join_as_freed_mob()
 	set category = "Ghost.Join"
@@ -1181,14 +1130,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			ref = WEAKREF(H)
 		GLOB.data_core.manifest_modify(name, ref, null, null, "*Deceased*")
 
-
-/mob/dead/observer/verb/view_kill_feed()
+/mob/dead/observer/verb/view_stats()
 	set category = "Ghost.View"
-	set name = "View Kill Feed"
-	set desc = "View global kill statistics tied to the game."
+	set name = "View Statistics"
+	set desc = "View global and player statistics tied to the game."
 
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.show_kill_feed(src)
+	if(client?.player_data?.player_entity)
+		client.player_data.player_entity.tgui_interact(src)
 
 /mob/dead/observer/get_status_tab_items()
 	. = ..()

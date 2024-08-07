@@ -146,6 +146,7 @@
 
 				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT))
 					escaped += list(serialized)
+// I will KRILL you,  HOW DARE YOU DID THIS WAY... I need to do one more shit around or just put some sticks and leave it for somebody ELSE, thanks!!!
 				else if(human.faction in FACTION_LIST_WY)
 					wy += list(serialized)
 				else if(issynth(human) && !isinfiltratorsynthetic(human))

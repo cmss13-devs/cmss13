@@ -222,7 +222,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/list/mobs = list()
 	for(var/faction_name in factions_pool)
 		var/faction_to_get = factions_pool[faction_name]
-		var/datum/faction/faction = GLOB.faction_datum[faction_to_get]
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		for(var/mob/mob in faction.totalMobs)
 			if(mob.client)
 				mobs += mob

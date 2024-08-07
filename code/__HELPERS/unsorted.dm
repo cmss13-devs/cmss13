@@ -1347,6 +1347,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	. = oview(range, GLOB.dview_mob)
 	GLOB.dview_mob.loc = null
 
+/// Version of oview() which ignores darkness
 /proc/doview(range, atom/center, invis_flags)
 	if(!center)
 		return

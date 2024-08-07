@@ -6,7 +6,7 @@
 	skills = /datum/skills/civilian/survivor/clf
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	faction = FACTION_CLF
-	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
+	faction_group = list(FACTION_CLF, FACTION_COLONIST)
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	survivor_variant = HOSTILE_SURVIVOR
 

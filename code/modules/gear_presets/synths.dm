@@ -105,8 +105,8 @@
 /datum/equipment_preset/synth/survivor
 	name = "Survivor - Synthetic - Classic Joe"
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_SURVIVOR)
+	faction = FACTION_COLONIST
+	faction_group = list(FACTION_COLONIST)
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SYNTH
 	rank = JOB_SYNTH_SURVIVOR

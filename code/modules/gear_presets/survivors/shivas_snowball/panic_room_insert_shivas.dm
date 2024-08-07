@@ -8,7 +8,7 @@
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Assistant Operations Manager"
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	faction_group = list(FACTION_WY, FACTION_COLONIST)
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,

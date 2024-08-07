@@ -324,7 +324,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		if(current_mob.stat != CONSCIOUS || isyautja(current_mob))
 			humans_other -= current_mob
 			continue
-		if(current_mob.faction == FACTION_MARINE || current_mob.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
+		if(current_mob.faction == FACTION_MARINE || current_mob.faction == FACTION_COLONIST) //separating marines from other factions. Survs go here too
 			humans_uscm += current_mob
 			humans_other -= current_mob
 
@@ -560,7 +560,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			if(current_human.stat != CONSCIOUS || isyautja(current_human))
 				humans_other -= current_mob
 				continue
-		if(current_mob.faction == FACTION_MARINE || current_mob.faction == FACTION_SURVIVOR)
+		if(current_mob.faction == FACTION_MARINE || current_mob.faction == FACTION_COLONIST)
 			humans_uscm += current_mob
 			humans_other -= current_mob
 

@@ -11416,6 +11416,7 @@
 /area/lv759/indoors/wy_research_complex/head_research_office)
 "bTP" = (
 /obj/structure/bed/roller/hospital,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/almayer/research/containment/corner_var1/east,
 /area/lv759/indoors/wy_research_complex/mainlabs)
 "bTR" = (
@@ -36949,6 +36950,7 @@
 	layer = 2.9
 	},
 /obj/effect/hybrisa/decal/road/lines2,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/prison/darkyellow2,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
 "fYG" = (
@@ -72509,15 +72511,6 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown,
 /area/lv759/indoors/apartment/eastbedroomsstorage)
-"lNm" = (
-/obj/structure/machinery/door/airlock/almayer/maint/reinforced/colony{
-	autoname = 1;
-	name = "autoname reinforced";
-	dir = 1;
-	req_one_access = null
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "lNo" = (
 /obj/structure/pipes/standard/manifold/hidden/dark{
 	dir = 4
@@ -90663,7 +90656,8 @@
 	},
 /obj/structure/prop/power_transformer{
 	density = 1;
-	layer = 4
+	layer = 4;
+	indestructible = 1
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/floor/prison/cell_stripe/north,
@@ -94015,7 +94009,8 @@
 	},
 /obj/structure/prop/power_transformer{
 	density = 1;
-	layer = 4
+	layer = 4;
+	indestructible = 1
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/floor/prison/cell_stripe/north,
@@ -107394,7 +107389,8 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "rzF" = (
 /obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch{
-	pixel_y = 28
+	pixel_y = 28;
+	indestructible = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/electical_systems/substation1)
@@ -111132,6 +111128,7 @@
 	dir = 1;
 	req_one_access = null
 	},
+/obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "sbK" = (
@@ -112582,6 +112579,7 @@
 	},
 /obj/item/explosive/grenade/high_explosive/pmc,
 /obj/effect/spawner/random/technology_scanner,
+/obj/item/explosive/plastic,
 /turf/open/floor/almayer/cargo,
 /area/lv759/indoors/wy_research_complex/cargo)
 "spa" = (
@@ -204556,7 +204554,7 @@ jSI
 lYY
 yfp
 ruJ
-lNm
+iTp
 lYY
 nlN
 ruJ

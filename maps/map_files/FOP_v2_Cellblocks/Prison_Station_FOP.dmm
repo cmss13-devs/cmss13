@@ -12319,6 +12319,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
 	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/checkpoint/highsec/n)
 "aUq" = (
@@ -12584,7 +12585,6 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/machinery/power/apc/no_power/east,
 /obj/structure/filingcabinet,
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/checkpoint/highsec/n)
@@ -19965,6 +19965,7 @@
 "bzw" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/rampbottom/north,
 /area/prison/holding/holding1)
 "bzx" = (
@@ -33899,6 +33900,10 @@
 	},
 /turf/open/floor/prison/greenfull/northwest,
 /area/prison/monorail/west)
+"hmA" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/prison/cellblock/mediumsec/east)
 "hmQ" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
@@ -37000,10 +37005,6 @@
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/prison/red/east,
 /area/prison/cellblock/highsec/north/north)
-"tXB" = (
-/obj/structure/machinery/power/apc/no_power/south,
-/turf/open/floor/plating,
-/area/prison/cellblock/mediumsec/east)
 "uaB" = (
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -69231,8 +69232,8 @@ cpU
 coM
 cqd
 cpU
+hmA
 cpY
-tXB
 chi
 cip
 cju

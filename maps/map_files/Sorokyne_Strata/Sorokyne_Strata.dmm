@@ -26300,7 +26300,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "haU" = (
-/obj/structure/machinery/power/apc/no_power/east,
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/marsh/crash)
 "haZ" = (

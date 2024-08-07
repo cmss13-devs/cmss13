@@ -218,7 +218,7 @@
 	H.apply_damage(-damage_heal_threshold, TOX)
 	H.apply_damage(-damage_heal_threshold, CLONE)
 	H.apply_damage(-H.getOxyLoss(), OXY)
-	user.track_heal_damage(initial(attached_to.name), H, attached_to.damage_heal_threshold * 3)
+	user.track_heal_damage(initial(name), H, damage_heal_threshold * 3)
 	H.updatehealth() //Needed for the check to register properly
 
 	if(!(H.species?.flags & NO_CHEM_METABOLIZATION))

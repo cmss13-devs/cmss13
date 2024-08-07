@@ -960,7 +960,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Join as Zombie"
 	set desc = "Select an alive but logged-out Zombie to rejoin the game."
 
-	GLOB.faction_datum[FACTION_ZOMBIE]?.get_join_status(src)
+	GLOB.faction_datums[FACTION_ZOMBIE]?.get_join_status(src)
 
 /mob/dead/verb/join_as_freed_mob()
 	set category = "Ghost.Join"

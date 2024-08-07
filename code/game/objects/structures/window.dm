@@ -132,8 +132,8 @@
 	if(health > 0)
 		return TRUE
 
-	if(istype(proj.firer, /mob))
-		var/mob/user = proj.firer
+	if(istype(Proj.firer, /mob))
+		var/mob/user = Proj.firer
 		user.count_statistic_stat(STATISTICS_DESTRUCTION_WINDOWS)
 
 	return TRUE

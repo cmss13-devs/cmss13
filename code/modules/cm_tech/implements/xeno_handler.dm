@@ -38,9 +38,9 @@
 
 	else
 		var/picked = pick(/mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/spitter, /mob/living/carbon/xenomorph/lurker)
-		new_mob = new picked(spawn_loc, null, GLOB.faction_datum[FACTION_XENOMORPH_TAMED])
-		new_mob.faction_tag = new /obj/item/faction_tag/wy/pmc_handler(X, GLOB.faction_datum[FACTION_USCM])
-		new_mob.organ_faction_tag = new /obj/item/faction_tag/wy/pmc_handler(X, GLOB.faction_datum[FACTION_XENOMORPH_TAMED])
+		new_mob = new picked(spawn_loc, null, GLOB.faction_datums[FACTION_XENOMORPH_TAMED])
+		new_mob.faction_tag = new /obj/item/faction_tag/wy/pmc_handler(X, GLOB.faction_datums[FACTION_USCM])
+		new_mob.organ_faction_tag = new /obj/item/faction_tag/wy/pmc_handler(X, GLOB.faction_datums[FACTION_XENOMORPH_TAMED])
 	if(M)
 		M.transfer_to(new_mob, TRUE)
 	else

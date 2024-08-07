@@ -1,6 +1,0 @@
-author: "Drathek iloveloopers"
-delete-after: True
-changes:
-  - rscdel: "Removed ability to buy clearance papers."
-  - balance: "Clearance cards now give their equivalent clearance in credits."
-  - balance: "Clearance cards no longer lose their value when scanned by the wrong person."

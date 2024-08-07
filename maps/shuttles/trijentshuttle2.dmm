@@ -38,11 +38,7 @@
 /turf/open/shuttle/escapepod,
 /area/shuttle/trijent_shuttle/elevator)
 "n" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 26;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/item/tool/wirecutters{
 	pixel_y = -7
 	},

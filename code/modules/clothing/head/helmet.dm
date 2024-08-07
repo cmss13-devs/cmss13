@@ -965,11 +965,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/MP/riot
 	name = "\improper M10 pattern riot helmet"
-	desc = "A special variant of the M10 Pattern Helmet worn by the Military Police of the USCM. Whether you're facing a crime syndicate or a mutiny, this bucket will keep your brains intact."
+	desc = "A version of the standard MP M10, this version comes in black and has better protection against fire and Melee weapons."
 	icon_state = "riot_mp_helmet"
 	item_state = "riot_mp_helmet"
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_HIGH
 	built_in_visors = list(new /obj/item/device/helmet_visor/security)
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT

@@ -1373,39 +1373,39 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	crash_break_probability = 0
 
 //------Groundsite APCs ------//
-/obj/structure/machinery/power/apc/directional/no_power
+/obj/structure/machinery/power/apc/no_power
 	start_charge = 0
 
-/obj/structure/machinery/power/apc/directional/no_power/north
+/obj/structure/machinery/power/apc/no_power/north
 	pixel_y = 32
 	dir = 1
 
-/obj/structure/machinery/power/apc/directional/no_power/south
+/obj/structure/machinery/power/apc/no_power/south
 	pixel_y = -26
 	dir = 2
 
-/obj/structure/machinery/power/apc/directional/no_power/east
+/obj/structure/machinery/power/apc/no_power/east
 	pixel_x = 30
 	dir = 4
 
-/obj/structure/machinery/power/apc/directional/no_power/west
+/obj/structure/machinery/power/apc/no_power/west
 	pixel_x = -30
 	dir = 8
 
 // Powered APCs with directions
-/obj/structure/machinery/power/apc/directional/power/north
+/obj/structure/machinery/power/apc/power/north
 	pixel_y = 32
 	dir = 1
 
-/obj/structure/machinery/power/apc/directional/power/south
+/obj/structure/machinery/power/apc/power/south
 	pixel_y = -26
 	dir = 2
 
-/obj/structure/machinery/power/apc/directional/power/east
+/obj/structure/machinery/power/apc/power/east
 	pixel_x = 30
 	dir = 4
 
-/obj/structure/machinery/power/apc/directional/power/west
+/obj/structure/machinery/power/apc/power/west
 	pixel_x = -30
 	dir = 8
 

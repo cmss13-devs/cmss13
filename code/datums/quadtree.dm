@@ -82,7 +82,7 @@
 
 /// Returns TRUE if this shape's bounding box intersects the provided shape's bounding box, otherwise FALSE. Generally faster than a full intersection test.
 /datum/shape/proc/intersects_aabb(datum/shape/aabb)
-	return (abs(src.center_x - aabb.center_x) <= (src.bounds_x + aabb.bounds_x) * 0.5) && (abs(src.center_y - aabb.center_y) <= (src.bounds_x + aabb.bounds_x) * 0.5)
+	return (abs(src.center_x - aabb.center_x) <= (src.bounds_x + aabb.bounds_x) * 0.5) && (abs(src.center_y - aabb.center_y) <= (src.bounds_y + aabb.bounds_y) * 0.5)
 
 /// Returns TRUE if this shape intersects the provided rectangle shape, otherwise FALSE.
 /datum/shape/proc/intersects_rect(datum/shape/rectangle/rect)

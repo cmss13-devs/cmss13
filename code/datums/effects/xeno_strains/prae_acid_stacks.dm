@@ -71,6 +71,10 @@
 
 	var/mob/living/carbon/human/H = affected_atom
 	H.apply_damage(proc_damage, BURN)
+	if(cause_mob.faction == H.faction)
+		cause_mob.track_friendly_damage("Acid", H, proc_damage)
+	else
+		cause_mob.track_damage("Acid", H, proc_damage)
 	to_chat(H, SPAN_XENODANGER("You feel acid eat into your skin!"))
 	qdel(src)
 	return

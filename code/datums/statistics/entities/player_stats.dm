@@ -34,13 +34,13 @@
 /mob/proc/track_shot_hit(weapon, mob/shot_mob, amount = 1, statistic_name = STATISTICS_SHOT_HIT)
 	if(statistic_exempt || !client || !client.player_data || !faction)
 		return FALSE
-	if(SSticker.mode.round_statistics)
-		SSticker.mode.round_statistics.total_projectiles_hit += amount
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.total_projectiles_hit += amount
 		if(shot_mob)
 			if(ishuman(shot_mob))
-				SSticker.mode.round_statistics.total_projectiles_hit_human += amount
+				GLOB.round_statistics.total_projectiles_hit_human += amount
 			else if(isxeno(shot_mob))
-				SSticker.mode.round_statistics.total_projectiles_hit_xeno += amount
+				GLOB.round_statistics.total_projectiles_hit_xeno += amount
 	return TRUE
 
 /mob/proc/track_damage(weapon, mob/damaged_mob, amount = 1, statistic_name = STATISTICS_DAMAGE)
@@ -61,8 +61,8 @@
 /mob/proc/track_friendly_fire(weapon, amount = 1, statistic_name = STATISTICS_FF_SHOT_HIT)
 	if(statistic_exempt || !client || !client.player_data || !faction)
 		return FALSE
-	if(SSticker.mode.round_statistics)
-		SSticker.mode.round_statistics.total_friendly_fire_instances += amount
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.total_friendly_fire_instances += amount
 	return TRUE
 
 /mob/proc/track_revive(amount = 1, statistic_name = STATISTICS_REVIVED)
@@ -83,8 +83,8 @@
 /mob/proc/track_slashes(caste, amount = 1, statistic_name = STATISTICS_SLASH)
 	if(statistic_exempt || !client || !client.player_data || !faction)
 		return FALSE
-	if(SSticker.mode.round_statistics)
-		SSticker.mode.round_statistics.total_slashes += amount
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.total_slashes += amount
 	return TRUE
 
 /mob/proc/track_ability_usage(ability, caste, amount = 1)

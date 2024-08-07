@@ -123,6 +123,7 @@
 	face_atom(target_xeno)
 	adjustBruteLoss(amount * damage_taken_mod)
 	use_plasma(amount * 2)
+	track_heal_damage(null, target_xeno, amount * damage_taken_mod)
 	updatehealth()
 	new /datum/effects/heal_over_time(target_xeno, amount, 10, 1)
 	target_xeno.xeno_jitter(1 SECONDS)

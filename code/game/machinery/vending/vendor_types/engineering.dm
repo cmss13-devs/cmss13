@@ -89,7 +89,7 @@
 		list("Supply Ordering Console", 2, /obj/item/circuitboard/computer/ordercomp, VENDOR_ITEM_REGULAR),
 		list("Research Data Terminal", 2, /obj/item/circuitboard/computer/research_terminal, VENDOR_ITEM_REGULAR),
 		list("P.A.C.M.A.N Generator", 1, /obj/item/circuitboard/machine/pacman, VENDOR_ITEM_REGULAR),
-		list("Auxiliar Power Storage Unit", 2, /obj/item/circuitboard/machine/ghettosmes, VENDOR_ITEM_REGULAR),
+		list("Auxiliary Power Storage Unit", 2, /obj/item/circuitboard/machine/ghettosmes, VENDOR_ITEM_REGULAR),
 		list("Air Alarm Electronics", 2, /obj/item/circuitboard/airalarm, VENDOR_ITEM_REGULAR),
 		list("Security Camera Monitor", 2, /obj/item/circuitboard/computer/cameras, VENDOR_ITEM_REGULAR),
 		list("Television Set", 4, /obj/item/circuitboard/computer/cameras/tv, VENDOR_ITEM_REGULAR),

@@ -1100,11 +1100,17 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			else
 				air_master.tiles_to_update += T2*/
 
-/proc/get_cardinal_dir(atom/A, atom/B)
-	var/dx = abs(B.x - A.x)
-	var/dy = abs(B.y - A.y)
-	return get_dir(A, B) & (rand() * (dx+dy) < dy ? 3 : 12)
+/// Returns the nearest cardinal dir between two atoms. Favors NORTH/SOUTH on perfect diagonals. Consistent and reversible.
+/proc/get_cardinal_dir(atom/start, atom/end) as num
+	var/dx = end.x - start.x
+	var/dy = end.y - start.y
+	if(!(dx || dy))
+		return 0 //returns 0 when on same x/y, consistent with get_dir()
 
+	if(abs(dx) > abs(dy))
+		return dx < 0 ? WEST : EAST
+	else
+		return dy < 0 ? SOUTH : NORTH
 
 //Returns the 2 dirs perpendicular to the arg
 /proc/get_perpen_dir(dir)
@@ -1283,10 +1289,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 	origin = get_turf(origin)
 	if(!origin)
 		return
-	var/list/turfs = list()
-	for(var/turf/T in orange(origin, outer_range))
-		if(!inner_range || get_dist(origin, T) >= inner_range)
-			turfs += T
+	var/list/turfs = (RANGE_TURFS(outer_range, origin) - RANGE_TURFS(inner_range - 1, origin))
 	if(length(turfs))
 		return pick(turfs)
 

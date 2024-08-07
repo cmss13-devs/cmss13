@@ -28282,7 +28282,7 @@
 	name = "Riot gear"
 	},
 /obj/item/weapon/shield/riot,
-/obj/item/clothing/head/helmet/riot,
+/obj/item/clothing/head/helmet/marine/MP/riot,
 /obj/item/clothing/suit/armor/riot,
 /turf/open/floor/prison/darkred2/north,
 /area/prison/security/armory/riot)
@@ -28566,7 +28566,7 @@
 	name = "Riot gear"
 	},
 /obj/item/weapon/shield/riot,
-/obj/item/clothing/head/helmet/riot,
+/obj/item/clothing/head/helmet/marine/MP/riot
 /obj/item/clothing/suit/armor/riot,
 /turf/open/floor/prison,
 /area/prison/security/armory/riot)

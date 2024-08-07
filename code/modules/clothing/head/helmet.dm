@@ -45,8 +45,8 @@
 
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
-	desc = "It's a helmet specifically designed to protect against close range attacks. It covers your ears."
-	icon_state = "riot"
+	desc = "A scarred riot helmet covered in cobwebs. It still protects your ears"
+	icon_state = "old_riot"
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -57,10 +57,6 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
-
-/obj/item/clothing/head/helmet/riot/vintage_riot
-	desc = "A scarred riot helmet covered in cobwebs. It still protects your ears."
-	icon_state = "old_riot"
 
 /obj/item/clothing/head/helmet/augment
 	name = "augment array"
@@ -333,6 +329,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/accessory/patch/falcon = "falconspatch",
 	/obj/item/ammo_magazine/handful = "bullet",
 	/obj/item/prop/helmetgarb/riot_shield = "helmet_riot_shield",
+	/obj/item/prop/helmetgarb/riot_shield_mp = "helmet_riot_plate",
 	/obj/item/attachable/flashlight = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/prop/helmetgarb/chaplain_patch = "chaplain_patch",
 	/obj/item/tool/pen/fountain = "fountainpen",
@@ -965,6 +962,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "cmp_helmet"
 	item_state = "cmp_helmet"
 	specialty = "M10 pattern chief MP"
+
+/obj/item/clothing/head/helmet/marine/MP/riot
+	name = "\improper M10 pattern riot helmet"
+	desc = "A special variant of the M10 Pattern Helmet worn by the Military Police of the USCM. Whether you're facing a crime syndicate or a mutiny, this bucket will keep your brains intact."
+	icon_state = "riot_mp_helmet"
+	item_state = "riot_mp_helmet"
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	built_in_visors = list(new /obj/item/device/helmet_visor/security)
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"

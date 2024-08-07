@@ -29,7 +29,7 @@
 								100; /obj/item/explosive/grenade/incendiary, \
 \
 								170; /obj/item/clothing/suit/armor/vest/security, \
-								165; /obj/item/clothing/head/helmet/riot, \
+								165; /obj/item/clothing/head/helmet/marine/MP/riot, \
 								160; /obj/item/clothing/gloves/marine/veteran/pmc, \
 \
 								50; /obj/item/storage/firstaid/regular, \

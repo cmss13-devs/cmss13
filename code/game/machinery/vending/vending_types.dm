@@ -274,6 +274,7 @@
 		/obj/item/ammo_magazine/rifle/m4ra/rubber = 40,
 		/obj/item/clothing/head/helmet/marine/MP = 8,
 		/obj/item/explosive/plastic/breaching_charge/rubber = 6,
+		/obj/item/prop/helmetgarb/riot_shield_mp = 20
 	)
 
 /obj/structure/machinery/vending/sea

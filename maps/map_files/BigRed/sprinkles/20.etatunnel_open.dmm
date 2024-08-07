@@ -113,7 +113,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves_sw)
 "mT" = (
-/obj/item/clothing/head/helmet/riot,
+/obj/item/clothing/head/helmet/marine/MP/riot,
 /turf/open/floor/plating/burnt_platingdmg3/west,
 /area/bigredv2/caves/mining)
 "nx" = (
@@ -310,7 +310,7 @@
 	pixel_y = 5
 	},
 /obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/head/helmet/riot{
+/obj/item/clothing/head/helmet/marine/MP/riot{
 	pixel_y = 11
 	},
 /turf/open/floor/plating/platingdmg3/west,

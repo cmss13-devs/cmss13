@@ -23,6 +23,7 @@
 #define STATISTICS_SCREAM				"Scream"
 #define STATISTICS_HIT					"Hit"
 #define STATISTICS_FF_HIT				"FF Hit"
+#define STATISTICS_EXPLODED_MOBS		"Blowjobs Done"
 #define STATISTICS_SLASH				"Slash"
 #define STATISTICS_REVIVE				"Revive"
 #define STATISTICS_REVIVED				"Revived"
@@ -65,7 +66,7 @@
 #define STATISTICS_REPAIR_GENERATOR		"Generators Repaired"
 #define STATISTICS_UPGRADE_TURRETS		"Defenses Upgraded"
 #define STATISTICS_REPAIR_APC			"APCs Repaired"
-#define STATISTICS_DEFENSES_BUILT		"Defenses Built"
+#define STATISTICS_DEFENSES_BUILT		"Defenses Built" // OOD
 
 #define STATISTICS_CORGI				"Corgis Murdered"
 #define STATISTICS_CAT					"Cats Murdered"
@@ -77,12 +78,12 @@
 #define STATISTICS_SURGERY_BRAIN		"Brains Mended"
 #define STATISTICS_SURGERY_EYE			"Eyes Mended"
 #define STATISTICS_SURGERY_LARVA		"Larvae Removed"
-#define STATISTICS_SURGERY_NECRO		"Necro Limbs Fixed"
+#define STATISTICS_SURGERY_NECRO		"Necro Limbs Fixed" // OOD
 #define STATISTICS_SURGERY_SHRAPNEL		"Shrapnel Removed"
 #define STATISTICS_SURGERY_AMPUTATE		"Limbs Amputated"
 #define STATISTICS_SURGERY_ORGAN_REPAIR	"Organs Repaired"
-#define STATISTICS_SURGERY_ORGAN_ATTACH	"Organs Implanted"
-#define STATISTICS_SURGERY_ORGAN_REMOVE	"Organs Harvested"
+#define STATISTICS_SURGERY_ORGAN_ATTACH	"Organs Implanted" // OOD
+#define STATISTICS_SURGERY_ORGAN_REMOVE	"Organs Harvested" // OOD
 
 #define STATISTICS_DESTRUCTION_WALLS	"Walls Destroyed"
 #define STATISTICS_DESTRUCTION_DOORS	"Doors Destroyed"

@@ -57,6 +57,7 @@
 #include "code\__DEFINES\emote_panels.dm"
 #include "code\__DEFINES\equipment.dm"
 #include "code\__DEFINES\events.dm"
+#include "code\__DEFINES\factions.dm"
 #include "code\__DEFINES\fire.dm"
 #include "code\__DEFINES\flags.dm"
 #include "code\__DEFINES\fonts.dm"

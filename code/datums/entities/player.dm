@@ -51,8 +51,7 @@
 	var/list/datum/entity/player_note/notes
 	var/list/datum/entity/player_job_ban/job_bans
 	var/list/datum/entity/player_time/playtimes
-	var/list/datum/entity/player_stat/stats
-	var/datum/entity/player_entity/player_entity = null
+	var/datum/player_entity/player_entity
 	var/list/playtime_data // For the NanoUI menu
 	var/client/owning_client
 
@@ -409,7 +408,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/entity/player, migrate_jobbans))
 
 	DB_FILTER(/datum/entity/player_time, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, TYPE_PROC_REF(/datum/entity/player, on_read_timestat)))
-	DB_FILTER(/datum/entity/player_stat, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, TYPE_PROC_REF(/datum/entity/player, on_read_stats)))
 
 	if(!migrated_bans && !migrating_bans)
 		migrating_bans = TRUE
@@ -462,11 +460,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 		for(var/datum/entity/player_time/S in _stat)
 			LAZYSET(playtimes, S.role_id, S)
-
-/datum/entity/player/proc/on_read_stats(list/datum/entity/player_stat/_stat)
-	if(_stat)
-		for(var/datum/entity/player_stat/S as anything in _stat)
-			LAZYSET(stats, S.stat_id, S)
 
 /datum/entity/player/proc/load_byond_account_age()
 	var/list/http_request = world.Export("http://byond.com/members/[ckey]?format=text")

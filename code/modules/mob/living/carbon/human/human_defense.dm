@@ -333,11 +333,11 @@ Contains most of the procs that are called when a mob is attacked by something
 		var/mob/M = LM.thrower
 		var/client/assailant = M.client
 		if(M.faction == faction)
-			M.track_friendly_hit(initial(I.name))
-			M.track_friendly_damage(initial(I.name), src, damage)
+			M.track_friendly_hit(initial(O.name))
+			M.track_friendly_damage(initial(O.name), src, damage)
 		else
-			M.track_hit(initial(I.name))
-			M.track_damage(initial(I.name), src, damage)
+			M.track_hit(initial(O.name))
+			M.track_damage(initial(O.name), src, damage)
 		if (damage > 5)
 			last_damage_mob = M
 		if (assailant)

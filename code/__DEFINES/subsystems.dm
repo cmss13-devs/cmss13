@@ -114,6 +114,12 @@
 #define SS_INIT_TOPIC 83
 #define SS_INIT_LOBBYART 82
 #define SS_INIT_INFLUXDRIVER 28
+// Do not break this braket
+#define SS_INIT_DATABASE 27.9
+#define SS_INIT_ENTITYMANAGER 27.8
+#define SS_INIT_PREF_LOGGING 27.7
+#define SS_INIT_PLAYTIME 27.6
+// Do not break this braket
 #define SS_INIT_GARBAGE 24
 #define SS_INIT_EVENTS 23.5
 #define SS_INIT_HIJACK 22.6
@@ -144,9 +150,6 @@
 #define SS_INIT_ASSETS -20
 #define SS_INIT_TICKER -21
 #define SS_INIT_VOTE   -23
-#define SS_INIT_DATABASE   -27
-#define SS_INIT_ENTITYMANAGER   -28
-#define SS_INIT_PLAYTIME   -29
 #define SS_INIT_STICKY -30
 #define SS_INIT_PREDSHIPS  -31
 #define SS_INIT_OBJECTIVES -32

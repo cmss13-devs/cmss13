@@ -11,8 +11,6 @@
  *
  */
 
-GLOBAL_DATUM(round_statistics, /datum/entity/statistic/round)
-GLOBAL_LIST_INIT_TYPED(player_entities, /datum/entity/player_entity, list())
 GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique tracking_ids to tacbinos and signal flares
 /datum/game_mode
 	var/name = "invalid"
@@ -20,6 +18,9 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/votable = TRUE
 	var/vote_cycle = null
 	var/probability = 0
+	var/list/round_end_states = list()
+	var/list/faction_round_end_state = list()
+	var/list/faction_result_end_state = list()
 	var/list/datum/mind/modePlayer = new
 	var/required_players = 0
 	var/required_players_secret = 0 //Minimum number of players for that game mode to be chose in Secret
@@ -31,8 +32,6 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
 	var/static_comms_amount = 0
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
-
-	var/datum/entity/statistic/round/round_stats = null
 
 	var/list/roles_to_roll
 
@@ -130,15 +129,11 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	return
 
 /datum/game_mode/proc/announce_ending()
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [GLOB.master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
 
 /datum/game_mode/proc/declare_completion()
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.track_round_end()
 	var/clients = 0
 	var/surviving_humans = 0
 	var/surviving_total = 0
@@ -165,8 +160,50 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	if(surviving_total > 0)
 		log_game("Round end - total: [surviving_total]")
 
+	announce_ending()
 
-	return 0
+	var/list/winners_info = get_winners_states()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.round_result = round_finished
+		if(!length(GLOB.round_statistics.current_map.victories))
+			GLOB.round_statistics.current_map.victories = list()
+		GLOB.round_statistics.current_map.victories[round_finished]++
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
+
+		GLOB.round_statistics.log_round_statistics()
+		GLOB.round_statistics.track_round_end()
+
+	calculate_end_statistics()
+	show_end_statistics(winners_info[1], winners_info[2], winners_info[3])
+
+/datum/game_mode/proc/get_winners_states()
+	var/list/icon_states = list()
+	var/list/musical_tracks = list()
+	var/list/standart_payload = list()
+	standart_payload += "draw"
+	var/sound/sound = sound(pick('sound/music/round_end/sad_loss1.ogg', 'sound/music/round_end/sad_loss2.ogg', 'sound/music/round_end/neutral_melancholy1.ogg', 'sound/music/round_end/neutral_melancholy2.ogg'), channel = SOUND_CHANNEL_LOBBY)
+	sound.status = SOUND_STREAM
+	standart_payload += sound
+	sound = sound(pick('sound/music/round_end/end.ogg'), channel = SOUND_CHANNEL_LOBBY)
+	sound.status = SOUND_STREAM
+	standart_payload += sound
+	for(var/faction_name in factions_pool)
+		if(faction_result_end_state[faction_name])
+			icon_states[faction_name] = faction_result_end_state[faction_name][round_finished][1]
+			sound = sound(pick(faction_result_end_state[faction_name][round_finished][2]), channel = SOUND_CHANNEL_LOBBY)
+			sound.status = SOUND_STREAM
+			musical_tracks[faction_name] = list(sound)
+			sound = sound(pick(faction_result_end_state[faction_name][round_finished][3]), channel = SOUND_CHANNEL_LOBBY)
+			sound.status = SOUND_STREAM
+			musical_tracks[faction_name] += sound
+		else
+			icon_states[faction_name] = standart_payload[1]
+			musical_tracks[faction_name] = list(standart_payload[2], standart_payload[3])
+
+
+	return list(icon_states, musical_tracks, standart_payload)
 
 /datum/game_mode/proc/calculate_end_statistics()
 	for(var/i in GLOB.alive_mob_list)
@@ -181,14 +218,30 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 			else
 				record_playtime(M.client.player_data, M.job, type)
 
-/datum/game_mode/proc/show_end_statistics(icon_state)
-	GLOB.round_statistics.update_panel_data()
-	for(var/mob/M in GLOB.player_list)
-		if(M.client)
-			give_action(M, /datum/action/show_round_statistics, null, icon_state)
+/datum/game_mode/proc/show_end_statistics(icon_states, musical_tracks, standart_payload)
+	var/list/mobs = list()
+	for(var/faction_name in factions_pool)
+		var/faction_to_get = factions_pool[faction_name]
+		var/datum/faction/faction = GLOB.faction_datum[faction_to_get]
+		for(var/mob/mob in faction.totalMobs)
+			if(mob.client)
+				mobs += mob
+				give_action(mob, /datum/action/show_round_statistics, null, icon_states[faction_to_get])
+				sound_to(mob, musical_tracks[faction.name][1])
+				if(length(musical_tracks[faction_to_get]) > 1)
+					spawn(20 SECONDS)
+						sound_to(mob, musical_tracks[faction_to_get][2])
+
+	for(var/mob/mob in GLOB.player_list - mobs)
+		if(mob.client)
+			give_action(mob, /datum/action/show_round_statistics, null, standart_payload[1])
+			sound_to(mob, standart_payload[2])
+			if(length(standart_payload) > 2)
+				spawn(20 SECONDS)
+					sound_to(mob, standart_payload[3])
 
 /datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
-	return 0
+	return FALSE
 
 /datum/game_mode/proc/get_players_for_role(role, override_jobbans = 0)
 	var/list/players = list()

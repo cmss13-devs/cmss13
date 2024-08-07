@@ -52,6 +52,7 @@
 	var/list/datum/entity/player_job_ban/job_bans
 	var/list/datum/entity/player_time/playtimes
 	var/list/datum/entity/player_stat/stats
+	var/datum/entity/player_entity/player_entity = null
 	var/list/playtime_data // For the NanoUI menu
 	var/client/owning_client
 
@@ -427,6 +428,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		for(var/whitelist in whitelists)
 			if(whitelist in GLOB.bitfields["whitelist_status"])
 				whitelist_flags |= GLOB.bitfields["whitelist_status"]["[whitelist]"]
+
+	setup_statistics()
+
+/datum/entity/player/proc/setup_statistics()
+	if(!player_entity)
+		player_entity = setup_player_entity(ckey)
+		player_entity.player = src
+	player_entity.setup_entity()
 
 /datum/entity/player/proc/on_read_notes(list/datum/entity/player_note/_notes)
 	notes_loaded = TRUE

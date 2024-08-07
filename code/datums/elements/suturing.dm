@@ -276,6 +276,7 @@ maximum_heal = total amount of each damage type that can be healed - IE TRUE/TRU
 					W.salved |= WOUND_SUTURED
 
 	target_limb.heal_damage(brute_to_heal, burn_to_heal)
+	healing.track_heal_damage(initial(suturing_item.name), healed, brute_to_heal + burn_to_heal)
 
 	if(!suture_brute && !suture_burn)
 		return SUTURED_FULLY

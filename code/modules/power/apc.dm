@@ -761,7 +761,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged frontal panel with a new one."),
 			SPAN_NOTICE("You replace [src]'s damaged frontal panel with a new one."))
-			user.count_niche_stat(STATISTICS_NICHE_REPAIR_APC)
+			user.count_statistic_stat(STATISTICS_REPAIR_APC)
 			qdel(W)
 			beenhit = 0
 			stat &= ~BROKEN

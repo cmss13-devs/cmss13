@@ -195,10 +195,10 @@
 		embedded_human.embedded_items -= S
 		organ = null
 		for(var/i in 1 to S.count-1)
-			user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
+			user.count_statistic_stat(STATISTICS_SURGERY_SHRAPNEL)
 			var/shrapnel = new S.type(S.loc)
 			QDEL_IN(shrapnel, 300)
-		user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
+		user.count_statistic_stat(STATISTICS_SURGERY_SHRAPNEL)
 		QDEL_IN(S, 300)
 
 	if(length(removed_limbs))

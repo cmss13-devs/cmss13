@@ -986,7 +986,10 @@ Additional game mode variables.
 
 // for the toolbox
 /datum/game_mode/proc/end_round_message()
-	return "Extended round has ended."
+	if(round_finished)
+		return "Round has ended. [round_finished]."
+	else
+		return "Round has ended due to technical reasons."
 
 /datum/game_mode/proc/get_escape_menu()
 	return "On the [SSmapping.configs[SHIP_MAP].map_name], orbiting..."

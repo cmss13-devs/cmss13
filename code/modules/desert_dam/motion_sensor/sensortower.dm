@@ -187,6 +187,7 @@
 					return FALSE
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = SENSORTOWER_BUILDSTATE_WORKING
+				user.count_statistic_stat(STATISTICS_REPAIR_SENSORTOWER)
 				user.visible_message(SPAN_NOTICE("[user] repairs \the [src]'s tubing and plating."),
 				SPAN_NOTICE("You repair \the [src]'s tubing and plating."))
 				update_icon()

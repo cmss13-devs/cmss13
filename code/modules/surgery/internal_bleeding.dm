@@ -38,7 +38,7 @@
 	log_interact(user, target, "[key_name(user)] began repairing internal bleeding in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
 /datum/surgery_step/fix_vein/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.count_niche_stat(STATISTICS_NICHE_SURGERY_IB)
+	user.count_statistic_stat(STATISTICS_SURGERY_IB)
 
 	user.affected_message(target,
 		SPAN_NOTICE("You finish repairing [target]'s damaged vein."),

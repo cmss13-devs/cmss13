@@ -120,7 +120,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	if(damage >= damage_cap)
 		if(M && istype(M))
-			M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_DOORS, 1)
+			M.count_statistic_stat(STATISTICS_DESTRUCTION_DOORS)
 			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_AIRLOCK, src)
 		to_chat(loc, SPAN_DANGER("[src] blows apart!"))
 		deconstruct(FALSE)

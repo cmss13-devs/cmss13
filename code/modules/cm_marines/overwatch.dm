@@ -804,7 +804,7 @@
 	busy = FALSE
 	if(istype(T))
 		GLOB.almayer_orbital_cannon.fire_ob_cannon(T, user, current_squad)
-		user.count_niche_stat(STATISTICS_NICHE_OB)
+		user.count_statistic_stat(STATISTICS_OB)
 
 /obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
 	SHOULD_NOT_SLEEP(TRUE)
@@ -852,7 +852,7 @@
 	COOLDOWN_START(current_squad, next_supplydrop, 500 SECONDS)
 	if(ismob(usr))
 		var/mob/M = usr
-		M.count_niche_stat(STATISTICS_NICHE_CRATES)
+		M.count_statistic_stat(STATISTICS_CRATES)
 
 	playsound(crate.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 	var/obj/structure/droppod/supply/pod = new(null, crate)

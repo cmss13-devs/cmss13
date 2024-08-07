@@ -166,7 +166,7 @@
 		SPAN_WARNING("[user] cuts your [surgery.affected_limb.display_name] off!"),
 		SPAN_NOTICE("[user] cuts [target]'s [surgery.affected_limb.display_name] off."))
 
-	user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)
+	user.count_statistic_stat(STATISTICS_SURGERY_AMPUTATE)
 	surgery.affected_limb.droplimb(amputation = TRUE, surgery_in_progress = TRUE)
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	log_interact(user, target, "[key_name(user)] successfully severed [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
@@ -191,7 +191,7 @@
 			SPAN_WARNING("[user] hacks [target]'s [surgery.affected_limb.display_name] off!"))
 
 		user.animation_attack_on(target)
-		user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)
+		user.count_statistic_stat(STATISTICS_SURGERY_AMPUTATE)
 		surgery.affected_limb.droplimb() //This will sever the limb messily and reset incision depth. The stump cleanup surgery will have to be done to properly amputate, but doing this saved two seconds. Worth it?
 		target.apply_damage(20, BRUTE, surgery.affected_limb.parent)
 		log_interact(user, target, "[key_name(user)] hacked [key_name(target)]'s [surgery.affected_limb.display_name] off with \the [tool], ending [surgery].")

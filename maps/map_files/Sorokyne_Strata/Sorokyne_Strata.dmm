@@ -30520,7 +30520,7 @@
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "pGf" = (
 /obj/structure/machinery/power/apc/no_power/west,
-/turf/open/auto_turf/snow/brown_base/layer2,
+/turf/open/floor/plating,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "pGt" = (
 /turf/closed/shuttle/ert{

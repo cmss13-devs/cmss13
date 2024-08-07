@@ -69,7 +69,7 @@
 	if(!..())
 		return FALSE
 
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 		if(!silent)
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 		return FALSE
@@ -95,7 +95,7 @@
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
-				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 
@@ -112,7 +112,7 @@
 				return
 
 			if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
-				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to modify [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -136,7 +136,7 @@
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
-				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
@@ -151,7 +151,7 @@
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
-				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
@@ -169,7 +169,7 @@
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
-				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				var/turf/open/T = loc
@@ -190,7 +190,7 @@
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
-				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),

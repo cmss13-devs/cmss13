@@ -88,3 +88,80 @@
   - qol: Deafness is now limited to being 1 minute in length.
   - bugfix: Phones can no longer be stored in closets/crates, which prevents players
       from dragging crates with their phones and other weird issues that can occur.
+2024-08-06:
+  BlackCrystalic:
+  - rscadd: Byond backed function of sound ECHO ported
+  - refactor: refactor of weaponhits hardcode
+  Blundir:
+  - bugfix: research chute is now connected to req chute and works properly
+  Drathek:
+  - rscadd: Added note of who deletes a comment in a medical record
+  - bugfix: Fixed Delete Entry button showing for deleted medical notes
+  - bugfix: Fixed medical record prints not showing who printed it
+  - bugfix: Fixed initial gender capitalization in records
+  - code_imp: Improved some record checks
+  - admin: Added mostly niche logging for all record changes
+  Drathek iloveloopers:
+  - rscdel: Removed ability to buy clearance papers.
+  - balance: Clearance cards now give their equivalent clearance in credits.
+  - balance: Clearance cards no longer lose their value when scanned by the wrong
+      person.
+  MarpleJones:
+  - bugfix: Using the hemostat on the final larva surgery step is now better than
+      using wirecutters or the fork.
+  - rscadd: The final larva surgery step will now apply organ damage when done barehanded.
+      Barehanded is faster than using tools by a couple of seconds, at the cost of
+      the doctor's and the patient's health.
+  - rscadd: Adds an acidsplash sound effect to doing the barehanded step.
+  MistChristmas:
+  - bugfix: Prevents tunnels under LZ Sentries
+  VileBeggar:
+  - bugfix: butcher's knife inhands now display properly
+  cuberound:
+  - bugfix: weeds do not cover preshure tanks
+  - rscadd: acid spray scorches grass and melts snow
+  - rscdel: Removes gravity :)
+  mullenpaul:
+  - ui: added section in dropship flight computer for some terminals to select which
+      dropship to control
+  - maptweak: reworked CIC remote terminals
+  - refactor: some remote terminals can control different dropships
+  - balance: queen will randomly select a dropship to call down to the lz on hijack
+  - balance: when dropship exists on primary landing pad, the queen can't call down
+      another dropship
+  - balance: when a dropship is enroute to the primary landing pad, the queen can't
+      call another dropship
+  realforest2001:
+  - bugfix: Fixes the cap on rifleman Lance Corporals.
+2024-08-07:
+  Contrabang:
+  - rscadd: Smartgunner Machete Scabbard, which smartgunners can wear on their back
+      when their harness is equipped.
+  - balance: SG's vendor has replaced the 6P Machete Scabbard with a 15P Smartgunner
+      Machete Scabbard.
+  LC4492:
+  - rscadd: Adds penlights and stethoscopes to nurses and corpsmen, they can use them
+      to reliably check if someone have specific types of organ damage and how much,
+      without the need of other apparatus. Adds a new organ.status called "LITTLE_BRUISED",
+      used by the stethoscope and penlight to not give false positives when diagnosticating
+      someone (saying that they are healthy, when they actually have 9 heart damage).
+  - bugfix: Fixed an outdated check that made the entire "flash eyes with flashlight"
+      mechanic don't work at all. Also updated it to check some other things for ease
+      of logic.
+  - spellcheck: Fixed typos on the abandoned "flash eyes with flashlight" code.
+  - code_imp: 'Added new functionalities for both the stethoscope and penlight: The
+      stethoscopes can now be used to check the condition of both heart and lungs
+      individually by aiming the chest, letting you be able to check if the organs
+      are LITTLE_BRUISED (Have a damage equal or above 1), BRUISED (Have a damage
+      equal or above 10), BROKEN (have a damage equal or above 30) or "HEALTHY" (any
+      damage below 1). And the penlight, that can be used the same way to check the
+      condition of brain and eyes by aiming the eyes of the person you are interacting
+      with. Also with the fixing mentioned above, you can now flash people''s eyes
+      again! Everytime you check the condition of someone''s eyes, you will also flash
+      them. Replaced one letter vars in the flashlight code and on the stethoscope
+      section of the ties code.'
+  - imageadd: Adds new "in_hand" icons for penlights and stethoscopes, both will now
+      appear on your hands when used. Penlights have both "off" and "on" icons, fancy
+      stuff!
+  LTNTS:
+  - imageadd: port tgsprites for pills (including a new variation)

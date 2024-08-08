@@ -1,6 +1,6 @@
 /datum/emergency_call/solar_devils
 	name = "USCM Solar Devils (Half Squad)"
-	arrival_message = "This is the USCM 2nd Division, 3rd Battalion, Solar Devils, responding to your distress beacon. Don't worry, the grown ups are here to clean up your mess."
+	arrival_message = "This is the Solar Devils of the USCM 2nd Division, responding to your distress beacon. Don't worry, the grown-ups are here to clean up your mess."
 	objectives = "Assist local Marine forces in dealing with whatever issue they can't handle. Further orders may be forthcoming."
 	home_base = /datum/lazy_template/ert/uscm_station
 	probability = 0
@@ -38,12 +38,12 @@
 		arm_equipment(mob, /datum/equipment_preset/uscm/rifleman_pve, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Solar Devils Rifleman!"))
 
-	to_chat(mob, SPAN_ROLE_BODY("You are a member of the Solar Devils, part of the 2nd Div, 3rd Batt. Unlike the Marines of the USS Almayer, you are through and through professionals. Well trained and well equipped. Semper Fidelis Marine."))
+	to_chat(mob, SPAN_ROLE_BODY("You are a member of the 3rd Battalion 'Solar Devils', part of the USCM's 2nd Division, 1st Regiment. Unlike most of the USS Almayer's troops, you are well-trained and properly-equipped career marines. Semper Fidelis."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/solar_devils_full
 	name = "USCM Solar Devils (Full Squad)"
-	arrival_message = "This is the USCM 2nd Division, 3rd Battalion, Solar Devils, responding to your distress beacon. Don't worry, the grown ups are here to clean up your mess."
+	arrival_message = "This is the Solar Devils of the USCM 2nd Division, responding to your distress beacon. Don't worry, the grown-ups are here to clean up your mess."
 	objectives = "Assist local Marine forces in dealing with whatever issue they can't handle. Further orders may be forthcoming."
 	home_base = /datum/lazy_template/ert/uscm_station
 	probability = 0
@@ -87,5 +87,5 @@
 		arm_equipment(mob, /datum/equipment_preset/uscm/rifleman_pve, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Solar Devils Rifleman!"))
 
-	to_chat(mob, SPAN_ROLE_BODY("You are a member of the Solar Devils, part of the 2nd Div, 3rd Batt. Unlike the Marines of the USS Almayer, you are career marines, you are well trained and properly equipped. Semper Fidelis Marine."))
+	to_chat(mob, SPAN_ROLE_BODY("You are a member of the 3rd Battalion 'Solar Devils', part of the USCM's 2nd Division, 1st Regiment. Unlike most of the USS Almayer's troops, you are well-trained and properly-equipped career marines. Semper Fidelis."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)

@@ -1,23 +1,17 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_lambda)
 "b" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "c" = (
 /obj/effect/glowshroom,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_lambda)
 "g" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_lambda)
 
 (1,1,1) = {"

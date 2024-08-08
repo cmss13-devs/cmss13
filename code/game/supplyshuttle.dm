@@ -532,7 +532,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	for(var/datum/supply_packs_asrs/crate in cratelist)
 		var/weight = (floor(10000/crate.cost))
 		weighted_crate_list[crate] = weight
-	return pickweight(weighted_crate_list)
+	return pick_weight(weighted_crate_list)
 
 //To stop things being sent to centcomm which should not be sent to centcomm. Recursively checks for these types.
 /datum/controller/supply/proc/forbidden_atoms_check(atom/A)
@@ -1115,7 +1115,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	else if (href_list["rreq"])
 		var/ordernum = text2num(href_list["rreq"])
 		temp = "Invalid Request.<BR>"
-		for(var/i=1, length(i<=GLOB.supply_controller.requestlist), i++)
+		for(var/i=1, i<=length(GLOB.supply_controller.requestlist), i++)
 			var/datum/supply_order/SO = GLOB.supply_controller.requestlist[i]
 			if(SO.ordernum == ordernum)
 				GLOB.supply_controller.requestlist.Cut(i,i+1)

@@ -660,7 +660,7 @@
 
 //Used by machines and structures to calculate shooting past cover
 /obj/proc/calculate_cover_hit_boolean(obj/projectile/P, distance = 0, cade_direction_correct = FALSE)
-	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank gets a bonus to bypassing cover
+	if(istype(P.shot_from, /obj/item/hardpoint) || istype(P.ammo, /datum/ammo/xeno)) //anything shot from a tank or a xeno gets a bonus to bypassing cover
 		distance -= 3
 
 	if(distance < 1 || (distance > 3 && cade_direction_correct))
@@ -668,10 +668,9 @@
 
 	//an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile
 	var/effective_accuracy = P.get_effective_accuracy()
-	var/distance_limit = 6 //number of tiles needed to max out block probability
 	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
 
-	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - effective_accuracy/100))
+	var/hitchance = min(projectile_coverage, (projectile_coverage * distance / (projectile_coverage_distance_limit * (cade_direction_correct ? 3 : 1))) + accuracy_factor * (1 - effective_accuracy/100))
 
 	#if DEBUG_HIT_CHANCE
 	to_world(SPAN_DEBUG("([name] as cover) Distance travelled: [P.distance_travelled]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
@@ -841,8 +840,8 @@
 //mobs use get_projectile_hit_chance instead of get_projectile_hit_boolean
 
 /mob/living/proc/get_projectile_hit_chance(obj/projectile/P)
-	if((body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_NESTED)) && src != P.original)
-		return FALSE // Snowflake check for xeno nests, because we want bullets to fly through even though they're standing in it
+	if((body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_NO_STRAY)) && src != P.original)
+		return FALSE
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_XENO)
 		if((status_flags & XENO_HOST) && HAS_TRAIT(src, TRAIT_NESTED))

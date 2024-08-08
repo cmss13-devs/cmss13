@@ -90,6 +90,8 @@
 			var/obj/structure/bed/B = O
 			if(B.buckled_mob)
 				continue
+		if(istype(O, /obj/item/phone))
+			continue
 		O.forceMove(src)
 		itemcount++
 
@@ -276,13 +278,6 @@
 /obj/structure/closet/crate/rcd
 	name = "RCD crate"
 	desc = "A crate for the storage of the RCD."
-
-/obj/structure/closet/crate/rcd/Initialize()
-	. = ..()
-	new /obj/item/ammo_rcd(src)
-	new /obj/item/ammo_rcd(src)
-	new /obj/item/ammo_rcd(src)
-	new /obj/item/device/rcd(src)
 
 /obj/structure/closet/crate/freezer/rations //Fpr use in the escape shuttle
 	desc = "A crate of emergency rations."

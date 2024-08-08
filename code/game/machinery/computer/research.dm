@@ -60,36 +60,24 @@
 		GLOB.chemical_data.update_credits(cred.credit_value)
 		visible_message(SPAN_NOTICE("[user] inserts [cred] in [src], collecting [cred.credit_value] points from sales."))
 		qdel(cred)
-	//Clearance Updating
+	//Clearance Card Updating
 	if(!istype(B, /obj/item/card/id))
 		return
 	var/obj/item/card/id/silver/clearance_badge/card = B
 	if(!istype(card))
-		visible_message(SPAN_NOTICE("[user] swipes their ID card on \the [src], but it is refused."))
+		visible_message(SPAN_NOTICE("[user] swipes their ID card on [src], but it is refused."))
 		return
-	if(card.clearance_access <= GLOB.chemical_data.clearance_level || (card.clearance_access == 6 && GLOB.chemical_data.clearance_level >= 5 && GLOB.chemical_data.clearance_x_access))
-		visible_message(SPAN_NOTICE("[user] swipes the clearance card on [src], but nothing happens."))
-		return
-	if(user.real_name != card.registered_name)
-		visible_message(SPAN_WARNING("WARNING: ILLEGAL CLEARANCE USER DETECTED. CARD DATA HAS BEEN WIPED."))
-		card.clearance_access = 0
+	if(!card.check_biometrics(user))
+		visible_message(SPAN_WARNING("WARNING: ILLEGAL CLEARANCE USER DETECTED. ABORTING."))
 		return
 
-	var/give_level
-	var/give_x = FALSE
-	if(card.clearance_access == 6)
-		give_level = 5
-		give_x = TRUE
-	else
-		give_level = card.clearance_access
+	var/credits_to_add = max(card.credits_to_give - GLOB.chemical_data.credits_gained, 0)
+	if(credits_to_add)
+		GLOB.chemical_data.update_credits(credits_to_add)
+		GLOB.chemical_data.credits_gained += credits_to_add
 
-	GLOB.chemical_data.clearance_level = give_level
-	if(give_x)
-		GLOB.chemical_data.clearance_x_access = TRUE
-		GLOB.chemical_data.reached_x_access = TRUE
-
-	visible_message(SPAN_NOTICE("[user] swipes their ID card on \the [src], updating the clearance to level [give_level][give_x ? "X" : ""]."))
-	msg_admin_niche("[key_name(user)] has updated the research clearance to level [give_level][give_x ? "X" : ""].")
+	visible_message(SPAN_NOTICE("[user] swipes their ID card on [src], granting [credits_to_add] credits."))
+	msg_admin_niche("[key_name(user)] has swiped a clearance card to give [credits_to_add] credits to research.")
 	return
 
 /obj/structure/machinery/computer/research/ui_state(mob/user)

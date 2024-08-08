@@ -75,11 +75,6 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 	if(GLOB.economy_init)
 		return 2
 
-	for(var/loc_type in typesof(/datum/trade_destination) - /datum/trade_destination)
-		var/datum/trade_destination/D = new loc_type
-		GLOB.weighted_randomevent_locations[D] = length(D.viable_random_events)
-		GLOB.weighted_mundaneevent_locations[D] = length(D.viable_mundane_events)
-
 	create_station_account()
 
 	create_department_account("Vendor")

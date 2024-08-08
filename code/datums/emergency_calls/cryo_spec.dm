@@ -8,6 +8,16 @@
 	shuttle_id = ""
 	spawn_max_amount = TRUE
 
+/datum/emergency_call/cryo_spec/remove_nonqualifiers(list/datum/mind/candidates_list)
+	var/list/datum/mind/candidates_clean = list()
+	for(var/datum/mind/single_candidate in candidates_list)
+		if(check_timelock(single_candidate.current?.client, JOB_SQUAD_ROLES_LIST, time_required_for_job))
+			candidates_clean.Add(single_candidate)
+			continue
+		if(single_candidate.current)
+			to_chat(single_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you don't have the specialist job unlocked!"))
+	return candidates_clean
+
 /datum/emergency_call/cryo_spec/create_member(datum/mind/mind, turf/override_spawn_loc)
 	set waitfor = FALSE
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)

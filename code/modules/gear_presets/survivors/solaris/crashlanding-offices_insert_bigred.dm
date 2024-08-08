@@ -7,7 +7,7 @@
 	assignment = "Weyland-Yutani PMC"
 	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
-	paygrade = PAY_SHORT_PMC_OP
+	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -45,7 +45,7 @@
 /datum/equipment_preset/survivor/pmc/medic
 	name = "Survivor - PMC Medic"
 	assignment = JOB_PMC_MEDIC
-	paygrade = PAY_SHORT_PMC_MS
+	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/pmc/medic
 
 /datum/equipment_preset/survivor/pmc/medic/load_gear(mob/living/carbon/human/new_human)
@@ -64,7 +64,7 @@
 /datum/equipment_preset/survivor/pmc/engineer
 	name = "Survivor - PMC Engineer"
 	assignment = JOB_PMC_ENGINEER
-	paygrade = PAY_SHORT_PMC_TEC
+	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/pmc/engineer
 
 /datum/equipment_preset/survivor/pmc/engineer/load_gear(mob/living/carbon/human/new_human)
@@ -80,7 +80,7 @@
 /datum/equipment_preset/survivor/wy/manager
 	name = "Survivor - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = PAY_SHORT_WYC6
+	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"

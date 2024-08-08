@@ -145,7 +145,9 @@
 #define SS_INIT_ASSETS -20
 #define SS_INIT_VOTE   -23
 #define SS_INIT_DATABASE   -27
+/* RUCM CHANGE
 #define SS_INIT_ENTITYMANAGER   -28
+*/
 #define SS_INIT_PLAYTIME   -29
 #define SS_INIT_STICKY -30
 #define SS_INIT_PREDSHIPS  -31

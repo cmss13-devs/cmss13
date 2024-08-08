@@ -39,6 +39,7 @@
 		show_player_panel(M)
 		return
 
+/*RUCM REMOVE START
 	if(href_list["editrights"])
 		if(!check_rights(R_PERMISSIONS))
 			message_admins("[key_name_admin(usr)] attempted to edit the admin permissions without sufficient rights.")
@@ -123,6 +124,7 @@
 			D.rights ^= permissionlist[new_permission]
 
 			message_admins("[key_name_admin(usr)] toggled the [new_permission] permission of [adm_ckey]")
+RUCM REMOVE END*/
 
 //======================================================
 //Everything that has to do with evac and self-destruct.

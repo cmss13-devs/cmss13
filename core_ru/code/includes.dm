@@ -16,6 +16,7 @@
 #include "datums\ammo\bullet\rifle.dm"
 #include "datums\ammo\bullet\smg.dm"
 #include "datums\ammo\bullet\shotgun.dm"
+#include "datums\entities\admins.dm"
 #include "datums\entities\discord_link.dm"
 #include "datums\entities\donaters.dm"
 #include "datums\entities\player.dm"

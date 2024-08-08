@@ -8,5 +8,6 @@
 #include "core_defines_ru\mode.dm"
 #include "core_defines_ru\shuttles.dm"
 #include "core_defines_ru\skills.dm"
+#include "core_defines_ru\subsystems.dm"
 #include "core_defines_ru\vendors.dm"
 #include "core_defines_ru\xeno.dm"

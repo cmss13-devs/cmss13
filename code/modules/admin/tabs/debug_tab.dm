@@ -159,7 +159,12 @@
 	if(!check_rights(R_SERVER)) return
 
 	message_admins("[usr.ckey] manually reloaded admins.")
+/*
 	load_admins()
+*/
+//RUCM START
+	GLOB.db_admin_datums = load_admins()
+//RUCM END
 
 /client/proc/bulk_fetcher()
 	set name = "Bulk Fetch Items"

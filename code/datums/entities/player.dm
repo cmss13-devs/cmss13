@@ -513,6 +513,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		error("ALARM: MISMATCH. Loaded player data for client [ckey], player data ckey is [player.ckey], id: [player.id]")
 	player_data = player
 	player_data.owning_client = src
+//RUCM EDIT STAR
+	if((ckey in GLOB.db_admin_datums) && !admin_holder)
+		if(!GLOB.admin_datums[ckey])
+			new /datum/admins(ckey)
+		GLOB.admin_datums[ckey].associate(src, GLOB.db_admin_datums[ckey])
+//RUCM EDIT END
 	if(!player_data.last_login)
 		player_data.first_join_date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
 	if(!player_data.first_join_date)

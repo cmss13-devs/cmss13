@@ -2,9 +2,16 @@ SUBSYSTEM_DEF(techtree)
 	name = "Tech Tree"
 	init_order = SS_INIT_TECHTREE
 
+/*
 	flags = SS_NO_FIRE
 
 	wait = 5 SECONDS
+*/
+//RUCM START
+	flags = NO_FLAGS
+
+	wait = 1 MINUTES
+//RUCM END
 
 	var/list/datum/tech/techs = list()
 	var/list/datum/techtree/trees = list()

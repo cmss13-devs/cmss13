@@ -165,3 +165,17 @@
       stuff!
   LTNTS:
   - imageadd: port tgsprites for pills (including a new variation)
+2024-08-08:
+  '?':
+  - bugfix: Fixed explosive implant not triggering when hearing the code-word.
+  BlackCrystalic:
+  - bugfix: No more admin data sended to normal players in who/staff who
+  Doubleumc:
+  - code_imp: shrapnel smoothly animates their movement
+  - code_imp: visual-effect-only shrapnel replaced by clientside particles
+  Venuska1117, Blundir:
+  - imageadd: add directional APC's Sprites.
+  - balance: Now there are only 3 APC's types, APC's with call_type high/super/hyper
+      are replaced with upgraded APC variant containing high capacity cell, weak variant
+      got replaced with normal APC variant.
+  - bugfix: Fixes APC's with wrong offsets (strata and Prison)

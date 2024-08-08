@@ -17281,8 +17281,8 @@
 /area/lv624/lazarus/quartstorage)
 "pKC" = (
 /obj/effect/landmark/lizard_spawn,
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle/west_jungle)
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/south_east_jungle)
 "pKS" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/jungle/vines/light_2,
@@ -22835,7 +22835,7 @@ aAl
 aAl
 avf
 aAl
-pKC
+aAl
 ase
 atu
 asx
@@ -59361,7 +59361,7 @@ lBw
 eTQ
 opS
 opS
-gUq
+pKC
 wpw
 lBw
 lBw

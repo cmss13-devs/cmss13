@@ -40,14 +40,11 @@
 	melee_damage_upper = 25
 	attack_same = FALSE
 
+	///Reference to the ZZzzz sleep overlay when resting.
 	var/sleep_overlay
 
 	///If 0, moves the mob out of attacking into idle state. Used to prevent the mob from chasing down targets that did not mean to hurt it.
 	var/aggression_value = 0
-	///What sounds to play when the mob growls.
-	var/list/growl_sounds = list('sound/effects/giant_lizard_growl1.ogg', 'sound/effects/giant_lizard_growl2.ogg')
-	///What sounds to play when hissing.
-	var/list/hiss_sounds = list('sound/effects/giant_lizard_hiss1.ogg', 'sound/effects/giant_lizard_hiss2.ogg')
 
 	///Emotes to play when being pet by a friend.
 	var/list/pet_emotes = list("closes its eyes.", "growls happily.", "wags its tail.", "rolls on the ground.")
@@ -107,7 +104,7 @@
 		manual_emote("growls at [target_mob].")
 	else
 		manual_emote("growls.")
-	playsound(loc, growl_sounds, 60)
+	playsound(loc, "giant_lizard_growl", 60)
 	COOLDOWN_START(src, growl_message, rand(10, 14) SECONDS)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/get_status_tab_items()
@@ -177,7 +174,7 @@
 			. += SPAN_NOTICE("\nRest on the ground to restore 5% of your health every second.")
 			. += SPAN_NOTICE("You're able to pounce targets by using [client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
 			. += SPAN_NOTICE("You will aggressively maul targets that are prone. Any click on yourself will be passed down to mobs below you, so feel free to click on your sprite in order to attack pounced targets.")
-	else if((user.faction in faction_group) && user != src)
+	else if((user.faction in faction_group))
 		desc = "[initial(desc)] There's a hint of warmth in them."
 	else
 		desc = initial(desc)
@@ -198,6 +195,14 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/attack_hand(mob/living/carbon/human/attacking_mob)
 	. = ..()
+	process_attack_hand(attacking_mob)
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/attack_alien(mob/living/carbon/xenomorph/attacking_mob)
+	. = ..()
+	process_attack_hand(attacking_mob)
+
+///Proc for handling attacking the lizard with a hand for BOTH XENOS AND HUMANS.
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/process_attack_hand(mob/living/carbon/attacking_mob)
 	if(stat == DEAD)
 		return
 
@@ -222,9 +227,9 @@
 				COOLDOWN_START(src, emote_cooldown, rand(5, 8) SECONDS)
 				manual_emote(pick(pick(pet_emotes), "stares at [attacking_mob].", "nuzzles [attacking_mob].", "licks [attacking_mob]'s hand."), "nibbles [attacking_mob]'s arm.", "flicks its tongue at [attacking_mob].")
 				if(prob(50))
-					playsound(loc, hiss_sounds, 25)
+					playsound(loc, "giant_lizard_hiss", 25)
 	if(attacking_mob.a_intent == INTENT_DISARM && prob(75))
-		walk_to(src, get_step(loc, attacking_mob.dir), 0, LIZARD_SPEED_NORMAL)
+		step_to(src, get_step(loc, attacking_mob.dir), 0, LIZARD_SPEED_NORMAL)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force)
 	Retaliate()
@@ -235,8 +240,8 @@
 		if(client && !is_retreating)
 			is_retreating = TRUE
 			to_chat(src, SPAN_USERDANGER("Your fight or flight response kicks in, run!"))
-			speed = LIZARD_SPEED_NORMAL_CLIENT
-			addtimer(VARSET_CALLBACK(src, speed, LIZARD_SPEED_RETREAT_CLIENT), 8 SECONDS)
+			speed = LIZARD_SPEED_RETREAT_CLIENT
+			addtimer(VARSET_CALLBACK(src, speed, LIZARD_SPEED_NORMAL_CLIENT), 8 SECONDS)
 			addtimer(VARSET_CALLBACK(src, is_retreating, FALSE), 8 SECONDS)
 		else
 			MoveTo(target_mob, 12, TRUE, 8 SECONDS)
@@ -252,7 +257,7 @@
 		food_target = null
 		is_eating = FALSE
 		manual_emote("hisses in agony!")
-		playsound(src, hiss_sounds, 40)
+		playsound(src, "giant_lizard_hiss", 40)
 		MoveTo(null, 9, TRUE, 4 SECONDS, FALSE)
 		COOLDOWN_START(src, calm_cooldown, 8 SECONDS)
 
@@ -463,6 +468,7 @@
 		stance = HOSTILE_STANCE_IDLE
 		return TRUE
 
+//Proc for when we lose our food target.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/lose_food()
 	stance = HOSTILE_STANCE_IDLE
 	food_target = null
@@ -659,7 +665,7 @@
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 			return
 
-	playsound(loc, hiss_sounds, 25)
+	playsound(loc, "giant_lizard_hiss", 25)
 	pounced_mob.KnockDown(0.5)
 	step_to(src, pounced_mob)
 	if(!client)
@@ -688,6 +694,7 @@
 	if(!istype(O, /obj/structure/surface/table) && !istype(O, /obj/structure/surface/rack))
 		O.hitby(src) //This resets throwing.
 
+//Middle mouse button/shift click to pounce.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/click(atom/clicked_atom, list/mods)
 	if(mods["shift"] && !mods["middle"])
 		if(client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
@@ -701,7 +708,27 @@
 	return ..()
 
 
+///CLIENT EMOTES
+////////////////
+
+/datum/emote/living/giant_lizard
+	mob_type_allowed_typecache = list(/mob/living/simple_animal/hostile/retaliate/giant_lizard)
+
+/datum/emote/living/giant_lizard/growl
+	key = "growl"
+	message = "growls."
+	sound = "giant_lizard_growl"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/giant_lizard/hiss
+	key = "hiss"
+	message = "hisses."
+	sound = "giant_lizard_hiss"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 #undef ATTACK_SLASH
 #undef ATTACK_BITE
 #undef LIZARD_SPEED_NORMAL
 #undef LIZARD_SPEED_RETREAT
+#undef LIZARD_SPEED_NORMAL_CLIENT
+#undef LIZARD_SPEED_RETREAT_CLIENT

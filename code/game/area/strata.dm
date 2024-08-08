@@ -109,6 +109,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	minimap_color = MINIMAP_AREA_LZ
 	is_resin_allowed = FALSE
 	weather_enabled = FALSE
+	ceiling = CEILING_NONE
 
 /area/strata/ag/interior/landing_zones/lz1
 	name = "Landing Zone 1 Pad - Mining Aerodrome"
@@ -192,8 +193,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/exterior/outpost_decks
 	name = "Outpost Decks"
 	icon_state = "rdecks"
-	minimap_color = MINIMAP_AREA_RESEARCH
-
+	minimap_color = MINIMAP_AREA_CAVES
 
 //-Paths
 
@@ -216,8 +216,8 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "cabin"
 
 /area/strata/ag/exterior/paths/south_outpost
-	minimap_color = MINIMAP_AREA_RESEARCH
 	name = "South Of The Outpost"
+	ceiling = CEILING_NONE
 
 ////////////////////////////////////////
 //   ------===| Interior |===------   //
@@ -233,10 +233,23 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/interior/outpost
 	name = "Sorokyne Outpost"
 	icon_state = "shed_x_ag"
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/strata/ag/interior/outpost/foyer
 	name = "Outpost Main Foyer"
 	icon_state = "outpost_gen_1"
+
+/area/strata/ag/interior/outpost/hallways
+	name = "Do not use."
+	icon_state = "outpost_admin_3"
+	minimap_color = MINIMAP_AREA_GLASS
+	ceiling = CEILING_GLASS
+
+/area/strata/ag/interior/outpost/hallways/north
+	name = "Outpost North Hallways"
+
+/area/strata/ag/interior/outpost/hallways/south
+	name = "Outpost South Hallways"
 
 /area/strata/ag/interior/outpost/maint
 	name = "Outpost Canteen - Eastern Maintenance"
@@ -289,6 +302,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/interior/mining_outpost
 	name = "Do not use."
+	minimap_color = MINIMAP_AREA_MINING
 
 /area/strata/ag/interior/mining_outpost/central
 	name = "Mining Outpost Central Hallway"
@@ -302,6 +316,12 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Mining Outpost Dormitory Maintenance"
 	icon_state = "outpost_maint"
 
+/area/strata/ag/interior/mining_outpost/hallways
+	name = "Mining Outpost Hallways"
+	icon_state = "outpost_admin_3"
+	minimap_color = MINIMAP_AREA_GLASS
+	ceiling = CEILING_GLASS
+
 /area/strata/ag/interior/mining_outpost/hive
 	name = "Mining Outpost Dormitory Thermal Storage"
 	icon_state = "dorms_beno"
@@ -314,8 +334,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Mining Outpost Flight Control"
 	icon_state = "dorms_lobby"
 	is_landing_zone = TRUE
-
-
 
 //-Outside interiors
 
@@ -332,6 +350,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/interior/outside/wooden_hospital
 	name = "Wooden Hospital - Hospital Proper"
 	icon_state = "cabin3"
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/strata/ag/interior/mountain
 	name = "Outside mountain"
@@ -367,25 +386,34 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/interior/outside/engineering
 	name = "Do not use."
 	icon_state = "outpost_engi_3"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/strata/ag/interior/outside/engineering/parts_storage
 	name = "Engineering Parts Storage"
 	icon_state = "outpost_engi_1"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior
 	name = "Engineering Parts Storage Exterior"
 	weather_enabled = TRUE
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+
+/area/strata/ag/interior/outside/engineering/parts_storage_cave
+	name = "Engineering Parts Storage Exterior"
+	icon_state = "outpost_engi_4"
+	minimap_color = MINIMAP_AREA_CAVES_DEEP
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 
 /area/strata/ag/interior/outside/bball //come on and SLAM.
 	name = "Outpost Basket Ball Court"
 	icon_state = "outpost_gen_4"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/strata/ag/interior/outside/bball/cave //come on BURST AND DIE.
 	name = "Outpost - B-Ball Caves"
 	icon_state = "hive_1"
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 
 
 //-Underground Dorms
@@ -398,6 +426,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ug/interior/outpost/underground_dorms
 	name = "Do not use."
 	icon_state = "ug_jung_dorm"
+	minimap_color = MINIMAP_AREA_CAVES_STRUCTURE
 
 /area/strata/ug/interior/outpost/underground_dorms/sec1
 	name = "Underground Security Dorm #1"
@@ -430,13 +459,14 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ug/interior/outpost/platform
 	name = "Underground Platform"
 	icon_state = "ug_jung_1"
-	minimap_color = MINIMAP_AREA_JUNGLE
+	minimap_color = MINIMAP_AREA_MEDBAY_CAVE
 
 //-Underground Jungle
 
 /area/strata/ug/interior/jungle
 	name = "Do not use."
 	icon_state = "ug_jung_0"
+	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/strata/ug/interior/jungle/carplake
 	name = "Do not use."
@@ -470,34 +500,42 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ug/interior/jungle/structures/research
 	icon_state = "ug_jung_2"
 	name = "Deep Jungle - Classified Research Station"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/strata/ug/interior/jungle/structures/research/south
 	icon_state = "ug_jung_3"
 	name = "Deep Jungle - South of Classified Research Station"
+	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/strata/ug/interior/jungle/structures/research/hot_springs
 	icon_state = "ug_jung_4"
 	name = "Deep Jungle - Hot Springs"
+	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/strata/ug/interior/jungle/structures/research/old_tunnels
 	icon_state = "ug_jung_mine_1"
 	name = "Deep Jungle - Old Tunnels"
+	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/strata/ug/interior/jungle/structures/monitoring
 	icon_state = "ug_jung_5"
 	name = "Deep Jungle - Planetary Core Monitoring"
+	minimap_color = MINIMAP_AREA_CAVES_STRUCTURE
 
 /area/strata/ug/interior/jungle/structures/monitoring/west
 	icon_state = "ug_jung_6"
 	name = "Deep Jungle - West of Planetary Core Monitoring"
+	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/strata/ug/interior/jungle/structures/monitoring/south
 	icon_state = "ug_jung_7"
 	name = "Deep Jungle - South of Planetary Core Monitoring"
+	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/strata/ug/interior/jungle/structures/monitoring/east
 	icon_state = "ug_jung_8"
 	name = "Deep Jungle - East of Planetary Core Monitoring"
+	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/strata/ug/interior/jungle/structures/ruin
 	icon_state = "ug_jung_mine_4"

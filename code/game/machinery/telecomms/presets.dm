@@ -375,7 +375,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	new_pylon.comms_relay_connection()
 //RUCM START
-	START_PROCESSING(SSobj, src)
+	START_PROCESSING(SSslowobj, src)
 //RUCM END
 
 /// Handles removing corruption effects from the comms relay

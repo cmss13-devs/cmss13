@@ -168,8 +168,9 @@
 	for(var/obj/structure/machinery/defenses/def in loc)
 		qdel(def)
 
-	for(var/mob/mob in view(7, loc))
+	FOR_DVIEW(var/mob/mob, 7, loc, HIDE_INVISIBLE_OBSERVER)
 		shake_camera(mob, 4, 5)
+	FOR_DVIEW_END
 
 	addtimer(CALLBACK(src, PROC_REF(open)), open_time)
 

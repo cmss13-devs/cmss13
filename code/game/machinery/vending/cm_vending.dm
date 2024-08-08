@@ -153,7 +153,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/get_examine_text(mob/living/carbon/human/user)
 	. = ..()
 
-	if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && hackable)
+	if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && hackable)
 		. += SPAN_NOTICE("You believe you can hack this one to remove the access requirements.")
 
 /obj/structure/machinery/cm_vending/proc/hack_access(mob/user)
@@ -684,7 +684,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		to_chat(user, SPAN_WARNING("You need to set [src] back upright first."))
 		return
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		else if(stat & MAINT)
@@ -711,7 +711,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		else if(stat & REPAIR_STEP_ONE)
@@ -728,7 +728,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
 	else if(iswire(W))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		var/obj/item/stack/cable_coil/CC = W
@@ -751,7 +751,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
 	else if(istype(W, /obj/item/stack/sheet/metal))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		var/obj/item/stack/sheet/metal/M = W
@@ -774,7 +774,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 		var/obj/item/device/multitool/MT = W
 
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 			to_chat(user, SPAN_WARNING("You do not understand how tweak access requirements in [src]."))
 			return FALSE
 		if(stat != WORKING)

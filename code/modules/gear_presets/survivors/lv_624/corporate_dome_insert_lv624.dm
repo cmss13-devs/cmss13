@@ -4,7 +4,7 @@
 /datum/equipment_preset/survivor/wy/executive
 	name = "Survivor - LV-624 Paranoid Corporate Liaison"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade = PAY_SHORT_WYC5
+	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "LV-624 Corporate Liaison"
 	idtype = /obj/item/card/id/silver/clearance_badge/cl

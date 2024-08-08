@@ -267,9 +267,7 @@
 "qP" = (
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "tr" = (

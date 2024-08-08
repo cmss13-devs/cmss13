@@ -1796,9 +1796,7 @@
 /area/lv624/ground/river/east_river)
 "akh" = (
 /obj/item/trash/candy,
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/power/north,
 /obj/structure/machinery/door_control{
 	id = "secure_outer_blast";
 	name = "Secure Outer Doors";
@@ -2717,9 +2715,7 @@
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
 "aru" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
 "arv" = (
@@ -3677,9 +3673,7 @@
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/fitness)
 "aww" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "awx" = (
@@ -4217,9 +4211,7 @@
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
 "azc" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "azd" = (
@@ -4610,9 +4602,7 @@
 	},
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aAS" = (
@@ -4620,9 +4610,7 @@
 /obj/item/toy/deck,
 /obj/item/storage/fancy/cigarettes/wypacket,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aAU" = (
@@ -5281,9 +5269,7 @@
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aDE" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "aDF" = (
@@ -5437,9 +5423,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aEB" = (
@@ -5518,9 +5502,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/chapel/north,
 /area/lv624/lazarus/chapel)
 "aEL" = (
@@ -5622,9 +5604,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
 "aFa" = (
@@ -6256,9 +6236,7 @@
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aIi" = (
@@ -6707,9 +6685,7 @@
 /area/lv624/lazarus/yggdrasil)
 "aKq" = (
 /obj/structure/flora/jungle/vines/light_1,
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/gm/grass/grass2,
 /area/lv624/lazarus/yggdrasil)
 "aKr" = (
@@ -7287,9 +7263,7 @@
 /turf/open/floor/red/southwest,
 /area/lv624/lazarus/security)
 "aNR" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/red,
 /area/lv624/lazarus/security)
 "aNS" = (
@@ -7399,9 +7373,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_central_jungle)
 "aOy" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aOA" = (
@@ -7895,9 +7867,7 @@
 /turf/open/floor/barber/west,
 /area/lv624/lazarus/kitchen)
 "aQQ" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aQX" = (
@@ -8188,9 +8158,7 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/caves/south_east_caves)
 "aSq" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/grimy,
 /area/lv624/lazarus/captain)
 "aSs" = (
@@ -8464,8 +8432,7 @@
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "aTJ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
+/obj/structure/machinery/power/apc/power/north{
 	start_charge = 15
 	},
 /turf/open/floor/delivery,
@@ -8550,9 +8517,7 @@
 /area/lv624/lazarus/kitchen)
 "aUc" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aUd" = (
@@ -8727,8 +8692,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aUR" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
+/obj/structure/machinery/power/apc/power/north{
 	start_charge = 200
 	},
 /turf/open/floor/greengrid,
@@ -9341,9 +9305,7 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "aXs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/delivery,
 /area/lv624/lazarus/engineering)
 "aXt" = (
@@ -12200,7 +12162,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "fqM" = (
-/obj/structure/machinery/power/apc/nocharge,
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/asteroidwarning/east,
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "frV" = (
@@ -12339,7 +12301,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/engineering)
 "fFZ" = (
-/obj/structure/machinery/power/apc/nocharge,
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/asteroidfloor/north,
 /area/lv624/ground/colony/telecomm/cargo)
 "fGn" = (
@@ -13901,9 +13863,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "jcb" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "jcn" = (
@@ -14301,9 +14261,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/grimy,
 /area/lv624/lazarus/hop)
 "jRm" = (
@@ -16983,9 +16941,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/barrens/north_east_barrens)
 "pgf" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "pgD" = (
@@ -20514,9 +20470,7 @@
 "whr" = (
 /obj/item/ammo_magazine/smg/mp5,
 /obj/item/ammo_magazine/smg/mp5,
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
 "whv" = (

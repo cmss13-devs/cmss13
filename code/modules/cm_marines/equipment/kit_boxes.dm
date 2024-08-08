@@ -283,15 +283,15 @@
 			specialist_assignment = "Scout"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
 			//this is to be able to use C4s that are coming with the kit
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
+				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_NOVICE)
 		if("Demo")
 			spec_box = new /obj/item/storage/box/spec/demolitionist(T)
 			specialist_assignment = "Demo"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
 			//this is to be able to use C4s that are coming with the kit
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
+				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_NOVICE)
 //RUCM START
 		if("Stormtrooper")
 			spec_box = new /obj/item/storage/box/spec/stormtrooper(T)
@@ -299,8 +299,8 @@
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ST)
 			user.skills.set_skill(SKILL_ENDURANCE, SKILL_ENDURANCE_MAX)
 			//this is to be able to use C4s that are coming with the kit
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
+				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_NOVICE)
 //RUCM END
 	if(specialist_assignment)
 		user.put_in_hands(spec_box)

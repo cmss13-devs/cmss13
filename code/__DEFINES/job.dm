@@ -360,6 +360,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_XENOMORPH_QUEEN  "Queen"
 
 // For coloring the ranks in the statistics menu
+#define JOB_PLAYTIME_TIER_0  (0 HOURS)
 #define JOB_PLAYTIME_TIER_1  (10 HOURS)
 #define JOB_PLAYTIME_TIER_2  (25 HOURS)
 #define JOB_PLAYTIME_TIER_3  (70 HOURS)

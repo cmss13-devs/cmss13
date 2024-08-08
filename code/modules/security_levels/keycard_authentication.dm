@@ -36,6 +36,9 @@
 			if(active == 1)
 				//This is not the device that made the initial request. It is the device confirming the request.
 				if(event_source)
+					if(event_source.event_triggered_by == usr)
+						to_chat(usr, "Your ID is rejected, as it is the one that triggered the event!")
+						return
 					event_source.confirmed = 1
 					event_source.event_confirmed_by = usr
 			else if(screen == 2)

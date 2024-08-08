@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/message_lowercase = lowertext(message)
 
 	for(var/word in banned_words)
-		if(findtext(message_lowercase, lowertext(word)))
+		if(findtext(message_lowercase, regex(lowertext(word))))
 			to_chat(user,
 				html = "\n<font color='red' size='4'><b>-- Word Filter Message --</b></font>",
 				)

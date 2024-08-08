@@ -1,4 +1,6 @@
 ## Word filter
 ## WORD_FILTER <word>
-## Case insensitive
+## Case insensitive, Uses regex
 #WORD_FILTER wordToBan
+#WORD_FILTER otherwordtoban
+#WORD_FILTER wordtoban.*withregex

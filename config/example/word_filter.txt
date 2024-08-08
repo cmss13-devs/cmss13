@@ -1,0 +1,4 @@
+## Word filter
+## WORD_FILTER <word>
+## Case insensitive
+#WORD_FILTER wordToBan

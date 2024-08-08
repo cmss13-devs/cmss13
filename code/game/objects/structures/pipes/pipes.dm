@@ -19,7 +19,7 @@
 	/// The grenade subtypes that pipes will use when they explode
 	var/static/list/exploding_types = list(/obj/item/explosive/grenade/high_explosive/bursting_pipe, /obj/item/explosive/grenade/incendiary/bursting_pipe)
 
-/obj/structure/pipes/Initialize(mapload, ...)
+/obj/structure/pipes/Initialize(...)
 	. = ..()
 
 	if(!icon_manager)
@@ -34,10 +34,9 @@
 
 	QDEL_NULL(pipe_vision_img)
 
-	if(mapload)
-		create_valid_directions()
+	create_valid_directions()
 
-		search_for_connections()
+	search_for_connections()
 
 	if(!is_mainship_level(z))
 		return

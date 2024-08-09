@@ -86,11 +86,9 @@
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
 		if(affected_mob.in_stasis || affected_mob.bodytemperature < 170)
 			if(stage < 5)
-				counter += 0.33 * hive.larva_gestation_multiplier * delta_time
+				counter += 0.4 * hive.larva_gestation_multiplier * delta_time
 			if(stage == 4) // Stasis affects late-stage less
-				counter += 0.11 * hive.larva_gestation_multiplier * delta_time
-		else if(HAS_TRAIT(affected_mob, TRAIT_NESTED)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
-			counter += 1.5 * hive.larva_gestation_multiplier * delta_time //Currently twice as much, can be changed
+				counter += 0.04 * hive.larva_gestation_multiplier * delta_time
 		else
 			if(stage < 5)
 				counter += 1 * hive.larva_gestation_multiplier * delta_time
@@ -106,12 +104,13 @@
 		if(2)
 			if(prob(4))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
-					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"), \
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
 					affected_mob.apply_effect(1, PARALYZE)
 					affected_mob.make_jittery(105)
-					affected_mob.take_limb_damage(1)
+					if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
+						affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
+						affected_mob.take_limb_damage(1)
 			if(prob(2))
 				var/message = SPAN_WARNING("[pick("Your chest hurts a little bit", "Your stomach hurts")].")
 				to_chat(affected_mob, message)
@@ -121,34 +120,37 @@
 				to_chat(affected_mob, message)
 			else if(prob(1))
 				to_chat(affected_mob, SPAN_WARNING("Your muscles ache."))
-				if(prob(20))
+				if((prob(20)) && (!HAS_TRAIT(affected_mob, TRAIT_NESTED)))
 					affected_mob.take_limb_damage(1)
 			else if(prob(2))
 				affected_mob.emote("[pick("sneeze", "cough")]")
 			if(prob(5))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
-					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
 					affected_mob.apply_effect(2, PARALYZE)
 					affected_mob.make_jittery(105)
-					affected_mob.take_limb_damage(1)
+					if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
+						affected_mob.take_limb_damage(1)
+						affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 		if(4)
 			if(prob(2))
-				affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 				var/message = pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")
 				message = SPAN_WARNING("[message].")
 				to_chat(affected_mob, message)
+				if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
+					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 				if(prob(50))
 					affected_mob.emote("scream")
 			if(prob(6))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
-					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"), \
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
 					affected_mob.apply_effect(3, PARALYZE)
 					affected_mob.make_jittery(105)
-					affected_mob.take_limb_damage(1)
+					if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
+						affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
+						affected_mob.take_limb_damage(1)
 		if(5)
 			become_larva()
 		if(7) // Stage 6 is while we are trying to find a candidate in become_larva

@@ -3637,7 +3637,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/doctor
-	name = "UPP Doctor"
+	name = "UPP Doktor"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/combat_medic

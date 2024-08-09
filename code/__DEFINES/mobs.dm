@@ -113,13 +113,14 @@
 #define CANROOT (1<<6)
 #define GODMODE (1<<12)
 #define FAKEDEATH (1<<13) //Replaces stuff like changeling.changeling_fakedeath
-#define DISFIGURED (1<<14) //I'll probably move this elsewhere if I ever get wround to writing a bitflag mob-damage system
+//#define DISFIGURED (1<<14) //unused
 #define XENO_HOST (1<<15) //Tracks whether we're gonna be a baby alien's mummy.
 #define IMMOBILE_ACTION (1<<16) // If you are performing an action that prevents you from being pushed by your own people.
 #define PERMANENTLY_DEAD (1<<17)
 #define CANDAZE (1<<18)
 #define CANSLOW (1<<19)
 #define NO_PERMANENT_DAMAGE (1<<20)
+#define CORRUPTED_ALLY (1<<21)
 
 // =============================
 // hive types
@@ -165,8 +166,9 @@
 #define ORGAN_ROBOT 2
 
 #define ORGAN_HEALTHY 0
-#define ORGAN_BRUISED 1
-#define ORGAN_BROKEN 2
+#define ORGAN_LITTLE_BRUISED 1 //used by stethoscopes and penlights
+#define ORGAN_BRUISED 2
+#define ORGAN_BROKEN 3
 
 //=================================================
 
@@ -309,77 +311,6 @@
 #define CAN_HOLD_TWO_HANDS 1
 #define CAN_HOLD_ONE_HAND 2
 
-// ------------ //
-// STRAIN FLAGS //
-// ------------ //
-
-// Queen strain flags
-#define QUEEN_NORMAL "Normal"
-
-// Facehugger strain flags
-#define FACEHUGGER_NORMAL "Normal"
-#define FACEHUGGER_WATCHER "Watcher"
-
-// Drone strain flags
-#define DRONE_NORMAL "Normal"
-#define DRONE_HEALER "Healer"
-#define DRONE_GARDENER "Gardener"
-
-// Hivelord strain flags
-#define HIVELORD_NORMAL "Normal"
-#define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
-
-// Carrier strain flags
-#define CARRIER_NORMAL "Normal"
-#define CARRIER_EGGSAC "Eggsac"
-
-// Burrower strain flags
-#define BURROWER_NORMAL "Normal"
-#define BURROWER_TREMOR "Tremor"
-
-// Sentinel strain flags
-#define SENTINEL_NORMAL "Normal"
-
-// Spitter strain flags
-#define SPITTER_NORMAL "Normal"
-
-// Boiler strain flags
-#define BOILER_NORMAL "Normal"
-#define BOILER_TRAPPER "Trapper"
-
-// Runner strain flags
-#define RUNNER_NORMAL "Normal"
-#define RUNNER_ACIDER "Acider"
-
-// Lurker strain flags
-#define LURKER_NORMAL "Normal"
-#define LURKER_VAMPIRE   "Vampire"
-// Ravager strain flags
-#define RAVAGER_NORMAL "Normal"
-#define RAVAGER_HEDGEHOG "Hedgehog"
-#define RAVAGER_BERSERKER   "Berserker"
-
-// Defender strain flags
-#define DEFENDER_NORMAL "Normal"
-#define DEFENDER_STEELCREST "Steelcrest"
-
-// Warrior strain flags
-#define WARRIOR_NORMAL "Normal"
-
-// Crusher strain flags
-#define CRUSHER_NORMAL "Normal"
-#define CRUSHER_CHARGER "Charger"
-
-// Praetorian strain flags
-#define PRAETORIAN_NORMAL   "Normal"
-#define PRAETORIAN_VANGUARD "Vanguard"
-#define PRAETORIAN_DANCER   "Dancer"
-#define PRAETORIAN_WARDEN   "Warden"
-#define PRAETORIAN_OPPRESSOR  "Oppressor"
-
-// Hellhound strain flags
-#define HELLHOUND_NORMAL "Normal"
-
 GLOBAL_LIST_INIT(default_onmob_icons, list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi',
@@ -450,6 +381,6 @@ GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 #define MOBILITY_LIEDOWN (1<<8)
 
 #define MOBILITY_FLAGS_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND)
+#define MOBILITY_FLAGS_LYING_CAPABLE_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_LIEDOWN)
 #define MOBILITY_FLAGS_CARBON_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
 #define MOBILITY_FLAGS_REST_CAPABLE_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
-

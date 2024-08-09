@@ -20,11 +20,11 @@
 	has_camera = FALSE
 
 	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
 	)
 
 	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_USCM,
+		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
 
@@ -70,7 +70,7 @@
 /obj/structure/machinery/defenses/tesla_coil/proc/get_target()
 	targets = list()
 
-	for(var/mob/living/M in oview(tesla_range, src))
+	FOR_DOVIEW(var/mob/living/M, tesla_range, src, HIDE_INVISIBLE_OBSERVER)
 		if(M.stat == DEAD)
 			continue
 		if(HAS_TRAIT(M, TRAIT_CHARGING))
@@ -81,10 +81,12 @@
 			continue
 
 		targets += M
+	FOR_DOVIEW_END
 
-	for(var/obj/structure/machinery/defenses/D in oview(tesla_range, src))
+	FOR_DOVIEW(var/obj/structure/machinery/defenses/D, tesla_range, src, HIDE_INVISIBLE_OBSERVER)
 		if(D.turned_on)
 			targets += D
+	FOR_DOVIEW_END
 
 /obj/structure/machinery/defenses/tesla_coil/proc/fire(atoms)
 	if(!(world.time - last_fired >= fire_delay) || !turned_on)

@@ -90,6 +90,8 @@
 			var/obj/structure/bed/B = O
 			if(B.buckled_mob)
 				continue
+		if(istype(O, /obj/item/phone))
+			continue
 		O.forceMove(src)
 		itemcount++
 
@@ -277,13 +279,6 @@
 	name = "RCD crate"
 	desc = "A crate for the storage of the RCD."
 
-/obj/structure/closet/crate/rcd/Initialize()
-	. = ..()
-	new /obj/item/ammo_rcd(src)
-	new /obj/item/ammo_rcd(src)
-	new /obj/item/ammo_rcd(src)
-	new /obj/item/device/rcd(src)
-
 /obj/structure/closet/crate/freezer/rations //Fpr use in the escape shuttle
 	desc = "A crate of emergency rations."
 	name = "Emergency Rations"
@@ -335,7 +330,7 @@
 	icon_closed = "closed_supply"
 
 /obj/structure/closet/crate/trashcart
-	name = "\improper trash cart"
+	name = "trash cart"
 	desc = "A heavy, metal trashcart with wheels."
 	icon_state = "closed_trashcart"
 	icon_opened = "open_trashcart"
@@ -437,4 +432,3 @@
 	density = TRUE
 	icon_opened = "open_mcart_y"
 	icon_closed = "closed_mcart_y"
-

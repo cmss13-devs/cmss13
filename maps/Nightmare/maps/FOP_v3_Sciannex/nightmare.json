@@ -1,3 +1,10 @@
 [
-	{ "type": "map_sprinkle", "path": "sprinkles/" }
+	{ "type": "map_sprinkle", "path": "sprinkles/" },
+{
+    "type": "map_insert",
+    "landmark": "riot_control",
+    "chance": 0.5,
+    "path": "standalone/riot_in_progress.dmm",
+    "when": { "riot_in_progress": "true" }
+}
 ]

@@ -22,6 +22,8 @@
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
 	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
+	/// A multiplier to an object's force when used against a stucture.
+	var/demolition_mod = 1
 
 	health = null
 
@@ -161,6 +163,9 @@
 	/// How much to offset the item randomly either way alongside Y visually
 	var/ground_offset_y = 0
 
+	/// Special storages this item prioritizes
+	var/list/preferred_storage
+
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 
@@ -242,9 +247,9 @@ cases. Override_icon_state should be a list.*/
 	var/new_icon_state
 	var/new_protection
 	var/new_item_state
-	if(override_icon_state && override_icon_state.len)
+	if(LAZYLEN(override_icon_state))
 		new_icon_state = override_icon_state[SSmapping.configs[GROUND_MAP].map_name]
-	if(override_protection && override_protection.len)
+	if(LAZYLEN(override_protection))
 		new_protection = override_protection[SSmapping.configs[GROUND_MAP].map_name]
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("snow")
@@ -275,7 +280,7 @@ cases. Override_icon_state should be a list.*/
 			size = "huge"
 		if(SIZE_MASSIVE)
 			size = "massive"
-	. += "This is a [blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item."
+	. += "[p_are() == "are" ? "These are " : "This is a "][blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. [p_they(TRUE)] [p_are()] a [size] item."
 	if(desc)
 		. += desc
 	if(desc_lore)
@@ -459,6 +464,8 @@ cases. Override_icon_state should be a list.*/
 
 	if(item.flags_equip_slot & slotdefine2slotbit(slot))
 		if(is_type_in_list(item, uniform_restricted))
+			if(light_on)
+				turn_light(toggle_on = FALSE)
 			user.drop_inv_item_on_ground(src)
 			to_chat(user, SPAN_NOTICE("You drop \the [src] to the ground while unequipping \the [item]."))
 
@@ -664,13 +671,13 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_HANDCUFFS)
 				if(human.handcuffed)
 					return FALSE
-				if(!istype(src, /obj/item/handcuffs))
+				if(!istype(src, /obj/item/restraint))
 					return FALSE
 				return TRUE
 			if(WEAR_LEGCUFFS)
 				if(human.legcuffed)
 					return FALSE
-				if(!istype(src, /obj/item/legcuffs))
+				if(!istype(src, /obj/item/restraint))
 					return FALSE
 				return TRUE
 			if(WEAR_IN_ACCESSORY)

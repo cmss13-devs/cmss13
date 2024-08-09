@@ -35,9 +35,6 @@
 	if(!xeno.check_state())
 		return
 
-	if(xeno.mutation_type != SENTINEL_NORMAL)
-		return
-
 	if(!action_cooldown_check())
 		to_chat(src, SPAN_WARNING("We must wait for your spit glands to refill."))
 		return
@@ -75,9 +72,6 @@
 		return
 
 	if (!check_and_use_plasma_owner())
-		return
-
-	if (xeno.mutation_type != SENTINEL_NORMAL)
 		return
 
 	var/datum/behavior_delegate/sentinel_base/behavior = xeno.behavior_delegate

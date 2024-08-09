@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Section, Button, LabeledList, Flex } from '../components';
+import { Button, Flex, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
 
 export const PartFabricator = (props) => {
@@ -15,8 +15,7 @@ export const PartFabricator = (props) => {
 
 const GeneralPanel = (props) => {
   const { act, data } = useBackend();
-  const { points, Equipment, Ammo } = data;
-
+  const { points, omnisentrygun_price, Equipment, Ammo } = data;
   return (
     <div>
       <Section>Points: {points}</Section>
@@ -31,17 +30,18 @@ const GeneralPanel = (props) => {
                   className="underline"
                   buttons={
                     <Button
-                      content={'Fabricate  (' + Equipment.cost + ')'}
                       icon="wrench"
                       tooltip={Equipment.desc}
                       tooltipPosition="left"
                       onClick={() =>
                         act('produce', {
-                          path: Equipment.path,
-                          cost: Equipment.cost,
+                          index: Equipment.index,
+                          is_ammo: Equipment.is_ammo,
                         })
                       }
-                    />
+                    >
+                      {'Fabricate  (' + Equipment.cost + ')'}
+                    </Button>
                   }
                 />
               ))}
@@ -57,18 +57,36 @@ const GeneralPanel = (props) => {
                   label={Ammo.name}
                   className="underline"
                   buttons={
-                    <Button
-                      content={'Fabricate  (' + Ammo.cost + ')'}
-                      icon="wrench"
-                      tooltip={Ammo.desc}
-                      tooltipPosition="left"
-                      onClick={() =>
-                        act('produce', {
-                          path: Ammo.path,
-                          cost: Ammo.cost,
-                        })
-                      }
-                    />
+                    Ammo.name === 'A/C-49-P Air Deployable Sentry' ? (
+                      <Button
+                        icon="wrench"
+                        tooltip={Ammo.desc}
+                        tooltipPosition="left"
+                        cost={omnisentrygun_price}
+                        onClick={() =>
+                          act('produce', {
+                            index: Ammo.index,
+                            is_ammo: Ammo.is_ammo,
+                          })
+                        }
+                      >
+                        {'Fabricate  (' + omnisentrygun_price + ')'}
+                      </Button>
+                    ) : (
+                      <Button
+                        icon="wrench"
+                        tooltip={Ammo.desc}
+                        tooltipPosition="left"
+                        onClick={() =>
+                          act('produce', {
+                            index: Ammo.index,
+                            is_ammo: Ammo.is_ammo,
+                          })
+                        }
+                      >
+                        {'Fabricate  (' + Ammo.cost + ')'}
+                      </Button>
+                    )
                   }
                 />
               ))}

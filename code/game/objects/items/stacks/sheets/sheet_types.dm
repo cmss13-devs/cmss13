@@ -107,7 +107,7 @@ GLOBAL_LIST_INIT_TYPED(plasteel_recipes, /datum/stack_recipe, list ( \
 /obj/item/stack/sheet/plasteel
 	name = "plasteel sheet"
 	singular_name = "plasteel sheet"
-	desc = "These sheets are an alloy of iron and phoron."
+	desc = "Plasteel is an expensive, durable material made from combining platinum, steel, and advanced polymers to create a metal that is corrosion-resistant, highly durable, and lightweight. The only reason this isn't used more often is because of how damn costly it is."
 	icon_state = "sheet-plasteel"
 	item_state = "sheet-plasteel"
 	matter = list("metal" = 3750)
@@ -327,6 +327,34 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("empty magazine box (AR10)", /obj/item/ammo_box/magazine/ar10/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (MP5)", /obj/item/ammo_box/magazine/mp5/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (MAR30)", /obj/item/ammo_box/magazine/mar30/empty), \
+		new/datum/stack_recipe("empty magazine box (MAR30 EX)", /obj/item/ammo_box/magazine/mar30/ext/empty), \
+		new/datum/stack_recipe("empty magazine box (MAR50)", /obj/item/ammo_box/magazine/mar50/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (UZI)", /obj/item/ammo_box/magazine/uzi/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (MAC-15)", /obj/item/ammo_box/magazine/mac15/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (MP27)", /obj/item/ammo_box/magazine/mp27/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (M1911)", /obj/item/ammo_box/magazine/m1911/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (MK-45)", /obj/item/ammo_box/magazine/mk45/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (KT-42)", /obj/item/ammo_box/magazine/kt42/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (Beretta 92FS)", /obj/item/ammo_box/magazine/b92fs/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (FN FP9000)", /obj/item/ammo_box/magazine/fp9000/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (Type19)", /obj/item/ammo_box/magazine/type19/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (ZhNK-72)", /obj/item/ammo_box/magazine/zhnk/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (Type64 Bizon)", /obj/item/ammo_box/magazine/type64/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (S&W .38)", /obj/item/ammo_box/magazine/snw/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (NSG 23)", /obj/item/ammo_box/magazine/nsg23/empty), \
 		new/datum/stack_recipe("empty magazine box (NSG 23 AP)", /obj/item/ammo_box/magazine/nsg23/ap/empty), \

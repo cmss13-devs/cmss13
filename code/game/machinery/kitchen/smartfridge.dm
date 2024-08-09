@@ -125,7 +125,7 @@
 			user.visible_message( \
 				SPAN_NOTICE("[user] loads \the [src] with \the [P]."), \
 				SPAN_NOTICE("You load \the [src] with \the [P]."))
-			if(P.contents.len > 0)
+			if(length(P.contents) > 0)
 				to_chat(user, SPAN_NOTICE("Some items are refused."))
 
 	else if(!(O.flags_item & NOBLUDGEON)) //so we can spray, scan, c4 the machine.
@@ -186,7 +186,7 @@
 
 	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
-	for(var/wire = 1 to wire_descriptions.len)
+	for(var/wire = 1 to length(wire_descriptions))
 		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
 
 	.["electrical"] = list(
@@ -350,7 +350,7 @@
 		if("cutwire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()
@@ -364,7 +364,7 @@
 		if("fixwire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()
@@ -377,7 +377,7 @@
 		if("pulsewire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()

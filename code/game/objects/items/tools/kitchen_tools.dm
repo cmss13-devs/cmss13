@@ -48,7 +48,7 @@
 		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
 		if(fullness > NUTRITION_HIGH)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
-			return ..()
+			return
 		reagents.set_source_mob(user)
 		reagents.trans_to_ingest(M, reagents.total_volume)
 		if(M == user)
@@ -126,7 +126,7 @@
 	flags_atom = FPRINT|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
-	force = 10
+	force = MELEE_FORCE_TIER_4
 	w_class = SIZE_MEDIUM
 	throwforce = 6
 	throw_speed = SPEED_VERY_FAST
@@ -143,7 +143,7 @@
 	icon_state = "butch"
 	desc = "A huge thing used for chopping and chopping up meat. This includes clowns and clown-by-products."
 	flags_atom = FPRINT|CONDUCT
-	force = 15
+	force = MELEE_FORCE_NORMAL
 	w_class = SIZE_SMALL
 	throwforce = 8
 	throw_speed = SPEED_VERY_FAST

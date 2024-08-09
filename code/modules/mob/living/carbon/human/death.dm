@@ -10,13 +10,16 @@
 			// Override the current limb status
 			E.droplimb(0, 0, cause)
 
-	undefibbable = TRUE
+
 
 	GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "*Deceased*")
 
 	if(is_a_synth)
 		spawn_gibs()
 		return
+
+	undefibbable = TRUE
+
 	..()
 
 /mob/living/carbon/human/gib_animation()
@@ -128,3 +131,5 @@
 	else if(death_data?.cause_name == "existing")
 		// Corpses spawn as gibbed true to avoid sfx, even though they aren't actually gibbed...
 		AddComponent(/datum/component/weed_food)
+	
+	update_execute_hud()

@@ -43,10 +43,17 @@
 	shrapnel_chance = 0
 	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
 	penetration = ARMOR_PENETRATION_TIER_5
+	/// inflicts this many holo stacks per bullet hit
+	var/holo_stacks = 10
+	/// modifies the default cap limit of 100 by this amount
+	var/bonus_damage_cap_increase = 0
+	/// multiplies the default drain of 5 holo stacks per second by this amount
+	var/stack_loss_multiplier = 1
 
-/datum/ammo/bullet/shrapnel/hornet_rounds/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/bullet/shrapnel/hornet_rounds/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
-	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
+	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase, stack_loss_multiplier)
+
 
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"
@@ -115,16 +122,36 @@
 	name = "glass shrapnel"
 	icon_state = "shrapnel_glass"
 
-/datum/ammo/bullet/shrapnel/light/effect/ // no damage, but looks bright and neat
-	name = "sparks"
-
-	damage = 1 // Tickle tickle
-
-/datum/ammo/bullet/shrapnel/light/effect/ver1
-	icon_state = "shrapnel_bright1"
-
-/datum/ammo/bullet/shrapnel/light/effect/ver2
+/particles/shrapnel
+	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "shrapnel_bright2"
+	width = 1000
+	height = 1000
+	count = 100
+	spawning = 0
+	lifespan = 0.6 SECONDS
+	fadein = 0.2 SECONDS
+	velocity = generator("square", 32 * 0.85, 32 * 1.15)
+	rotation = generator("num", 0, 359)
+
+/obj/shrapnel_effect
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	unacidable = TRUE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+
+/obj/shrapnel_effect/New()
+	. = ..()
+	particles = new /particles/shrapnel
+	particles.spawning = rand(5,9) + rand(5,9)
+	addtimer(CALLBACK(src, PROC_REF(stop)), 0.1 SECONDS)
+	QDEL_IN(src, 0.9 SECONDS)
+
+/obj/shrapnel_effect/proc/stop()
+	particles.spawning = 0
+
+/obj/shrapnel_effect/get_applying_acid_time()
+	return -1
 
 /datum/ammo/bullet/shrapnel/jagged
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2

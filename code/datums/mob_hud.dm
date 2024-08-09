@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_XENO_INFECTION = new /datum/mob_hud/xeno_infection(),
 	MOB_HUD_XENO_STATUS = new /datum/mob_hud/xeno(),
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
-	MOB_HUD_FACTION_USCM = new /datum/mob_hud/faction(),
+	MOB_HUD_FACTION_MARINE = new /datum/mob_hud/faction(),
 	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
 	MOB_HUD_FACTION_UPP = new /datum/mob_hud/faction/upp(),
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
@@ -18,7 +18,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
 	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
 	MOB_HUD_HUNTER = new /datum/mob_hud/hunter_hud(),
-	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan()
+	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan(),
+	MOB_HUD_EXECUTE = new /datum/mob_hud/execute_hud(),
 	))
 
 /datum/mob_hud
@@ -167,6 +168,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /datum/mob_hud/xeno_hostile
 	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
 
+/datum/mob_hud/execute_hud
+	hud_icons = list(XENO_EXECUTE)
+
 /datum/mob_hud/hunter_clan
 	hud_icons = list(HUNTER_CLAN)
 
@@ -185,7 +189,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 //Factions
 /datum/mob_hud/faction
-	hud_icons = list(FACTION_HUD, ORDER_HUD)
+	hud_icons = list(FACTION_HUD, ORDER_HUD, HOLOCARD_HUD)
 	var/faction_to_check = FACTION_MARINE
 
 /datum/mob_hud/faction/add_to_single_hud(mob/user, mob/target)
@@ -209,7 +213,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	faction_to_check = FACTION_PMC
 
 /datum/mob_hud/faction/observer
-	hud_icons = list(FACTION_HUD, ORDER_HUD, HUNTER_CLAN)
+	hud_icons = list(FACTION_HUD, ORDER_HUD, HUNTER_CLAN, HOLOCARD_HUD)
 
 ///////// MOB PROCS //////////////////////////////:
 
@@ -258,6 +262,11 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		xeno_hostile_hud = FALSE
 		var/datum/mob_hud/hostile_hud = GLOB.huds[MOB_HUD_XENO_HOSTILE]
 		hostile_hud.remove_hud_from(src, src)
+
+	if (execute_hud)
+		execute_hud = FALSE
+		var/datum/mob_hud/execute = GLOB.huds[MOB_HUD_EXECUTE]
+		execute.remove_hud_from(src, src)
 
 
 
@@ -370,6 +379,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	holder3.color = null
 	holder4.color = null
 
+	holder2.alpha = alpha
+	holder3.alpha = alpha
+
 	holder4.icon_state = "hudblank"
 
 	if(species && species.flags & IS_SYNTHETIC)
@@ -396,7 +408,6 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		var/revive_enabled = stat == DEAD && check_tod() && is_revivable()
 		if(stat == DEAD)
 			revive_enabled = check_tod() && is_revivable()
-		var/datum/internal_organ/heart/heart = islist(internal_organs_by_name) ? internal_organs_by_name["heart"] : null
 
 		var/holder2_set = 0
 		if(hivenumber)
@@ -421,6 +432,14 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 				if(hive && hive.color)
 					holder3.color = hive.color
+
+				if(stat == DEAD || status_flags & FAKEDEATH)
+					holder2.alpha = 100
+					holder3.alpha = 100
+
+		if(status_flags & CORRUPTED_ALLY)
+			holder4.color = "#80ff80"
+			holder4.icon_state = "hudalien_ally"
 
 		if(stat == DEAD || status_flags & FAKEDEATH)
 			if(revive_enabled)
@@ -455,7 +474,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 						holder3.icon_state = "huddead"
 						holder2_set = 1
 			else
-				if(heart && (heart.organ_status >= ORGAN_BROKEN && check_tod())) // broken heart icon
+				if(is_heart_broken()) // broken heart icon
 					holder.icon_state = "huddeadheart"
 					if(!holder2_set)
 						holder2.icon_state = "huddeadheart"
@@ -753,7 +772,23 @@ GLOBAL_DATUM(hud_icon_hudfocus, /image)
 		holder.overlays += GLOB.hud_icon_hudfocus
 	hud_list[ORDER_HUD] = holder
 
+/mob/proc/hud_set_holocard()
+	return
 
+// HOLOCARD HUD
+/mob/living/carbon/human/hud_set_holocard()
+	var/image/holder = hud_list[HOLOCARD_HUD]
+	holder.icon_state = holo_card_color ? "holo_card_[holo_card_color]" : "hudblank"
+
+// Vampire Execute HUD
+/mob/living/carbon/human/proc/update_execute_hud()
+	var/image/execute_holder = hud_list[XENO_EXECUTE]
+
+	execute_holder.icon_state = "hudblank"
+	execute_holder.overlays.Cut()
+
+	if(stat == UNCONSCIOUS || (stat != DEAD && HAS_TRAIT(src, TRAIT_KNOCKEDOUT)))
+		execute_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
 
 // Xeno "hostile" HUD
 /mob/living/carbon/human/proc/update_xeno_hostile_hud()

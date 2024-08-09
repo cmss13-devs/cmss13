@@ -62,7 +62,7 @@
 	var/datum/disease/black_goo/zombie_infection = locate() in zombie.viruses
 	if(!zombie_infection)
 		zombie_infection = zombie.AddDisease(new /datum/disease/black_goo())
-	zombie_infection.stage = 3
+	zombie_infection.stage = 4
 
 	var/datum/mob_hud/Hu = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 	Hu.add_hud_to(zombie, zombie)

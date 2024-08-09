@@ -410,7 +410,7 @@
 
 	switch(client.prefs?.pain_overlay_pref_level)
 		if(PAIN_OVERLAY_IMPAIR)
-			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, Ceiling(clamp(eye_blurry * 0.3, 1, 6)))
+			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, ceil(clamp(eye_blurry * 0.3, 1, 6)))
 		if(PAIN_OVERLAY_LEGACY)
 			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/blurry)
 		else // PAIN_OVERLAY_BLURRY
@@ -446,7 +446,7 @@
 
 /mob/living/proc/AdjustEarDeafness(amount)
 	var/prev_deaf = ear_deaf
-	ear_deaf = max(ear_deaf + amount, 0)
+	ear_deaf = clamp(ear_deaf + amount, 0, 30) //roughly 1 minute
 	if(prev_deaf)
 		if(ear_deaf == 0)
 			on_deafness_loss()
@@ -496,7 +496,7 @@
 	src.updatehealth()
 
 // damage MANY limbs, in random order
-/mob/living/proc/take_overall_damage(brute, burn, used_weapon = null)
+/mob/living/proc/take_overall_damage(brute, burn, used_weapon = null, limb_damage_chance = 80)
 	if(status_flags & GODMODE) return 0 //godmode
 	apply_damage(brute, BRUTE)
 	apply_damage(burn, BURN)
@@ -525,6 +525,7 @@
 	hallucination = 0
 	jitteriness = 0
 	dizziness = 0
+	stamina.apply_damage(-stamina.max_stamina)
 
 	// restore all of a human's blood
 	if(ishuman(src))

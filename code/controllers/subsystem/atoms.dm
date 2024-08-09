@@ -19,6 +19,9 @@ SUBSYSTEM_DEF(atoms)
 
 	var/list/BadInitializeCalls = list()
 
+	///initAtom() adds the atom its creating to this list iff InitializeAtoms() has been given a list to populate as an argument
+	var/list/created_atoms
+
 	initialized = INITIALIZATION_INSSATOMS
 
 /datum/controller/subsystem/atoms/Initialize(timeofday)
@@ -34,7 +37,7 @@ SUBSYSTEM_DEF(atoms)
 	populate_seed_list()
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms)
+/datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms, list/atoms_to_return)
 	if(initialized == INITIALIZATION_INSSATOMS)
 		return
 
@@ -59,7 +62,7 @@ SUBSYSTEM_DEF(atoms)
 
 	processing_late_loaders = TRUE
 
-	for(var/I = 1; I <= late_loaders.len; I++)
+	for(var/I = 1; I <= length(late_loaders); I++)
 		var/atom/A = late_loaders[I]
 		//I hate that we need this
 		if(QDELETED(A))
@@ -67,13 +70,16 @@ SUBSYSTEM_DEF(atoms)
 		A.LateInitialize()
 
 	#ifdef TESTING
-	testing("Late initialized [late_loaders.len] atoms")
+	testing("Late initialized [length(late_loaders)] atoms")
 	#endif
 	late_loaders.Cut()
 	processing_late_loaders = FALSE
 
 /// Actually creates the list of atoms. Exists soley so a runtime in the creation logic doesn't cause initalized to totally break
-/datum/controller/subsystem/atoms/proc/CreateAtoms(list/atoms)
+/datum/controller/subsystem/atoms/proc/CreateAtoms(list/atoms, list/atoms_to_return = null)
+	if (atoms_to_return)
+		LAZYINITLIST(created_atoms)
+
 	#ifdef TESTING
 	var/count
 	#endif
@@ -81,10 +87,10 @@ SUBSYSTEM_DEF(atoms)
 	var/list/mapload_arg = list(TRUE)
 	if(atoms)
 		#ifdef TESTING
-		count = atoms.len
+		count = length(atoms)
 		#endif
 
-		for(var/I in 1 to atoms.len)
+		for(var/I in 1 to length(atoms))
 			var/atom/A = atoms[I]
 			if(!(A.flags_atom & INITIALIZED))
 				CHECK_TICK
@@ -152,12 +158,10 @@ SUBSYSTEM_DEF(atoms)
 		qdeleted = TRUE
 	else if(!(A.flags_atom & INITIALIZED))
 		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT
-	/*
 	else
-		SEND_SIGNAL(A,COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE)
+		SEND_SIGNAL(A, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON)
 		if(created_atoms && from_template && ispath(the_type, /atom/movable))//we only want to populate the list with movables
 			created_atoms += A.get_all_contents()
-	*/
 
 	return qdeleted || QDELING(A)
 

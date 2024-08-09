@@ -1,62 +1,40 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "am" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "aw" = (
 /obj/item/clothing/under/colonist,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/medbay)
 "aO" = (
 /obj/structure/barricade/wooden,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/medbay)
 "bk" = (
 /obj/structure/machinery/medical_pod/sleeper,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "cQ" = (
 /obj/structure/machinery/sleep_console,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "fX" = (
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/lv624/lazarus/medbay)
 "gp" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "hW" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Medbay APC";
-	pixel_y = 30;
-	start_charge = 0
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "ih" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
@@ -66,36 +44,26 @@
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "iq" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
 	pixel_x = 2
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "it" = (
 /obj/item/storage/firstaid,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "jg" = (
 /obj/structure/machinery/body_scanconsole,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "jW" = (
 /obj/item/storage/firstaid/toxin,
 /obj/structure/barricade/wooden,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "jY" = (
 /obj/structure/flora/jungle/planttop1,
@@ -110,9 +78,7 @@
 /obj/item/clothing/glasses/hud/health,
 /obj/effect/landmark/crap_item,
 /obj/item/reagent_container/spray/cleaner,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "kD" = (
 /obj/structure/flora/jungle/planttop1,
@@ -120,9 +86,7 @@
 /area/lv624/ground/colony/south_medbay_road)
 "lk" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "lD" = (
 /obj/structure/surface/table,
@@ -133,15 +97,11 @@
 	phone_category = "Lazarus Landing";
 	phone_id = "Medbay"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "mz" = (
 /obj/structure/machinery/light,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "mS" = (
 /obj/item/device/radio/intercom{
@@ -150,15 +110,10 @@
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "nz" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/whitebluecorner/east,
 /area/lv624/lazarus/medbay)
 "nG" = (
 /obj/structure/fence,
@@ -168,16 +123,11 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
 "ok" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "ot" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/lv624/lazarus/medbay)
 "pp" = (
 /obj/structure/closet/wardrobe,
@@ -185,9 +135,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "qe" = (
 /obj/structure/surface/table,
@@ -198,15 +146,11 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "rL" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "rZ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -220,22 +164,14 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/medbay)
 "uV" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/medbay)
 "vm" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/medbay)
 "xe" = (
 /obj/structure/fence,
@@ -248,9 +184,7 @@
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "xM" = (
 /turf/open/gm/dirtgrassborder/north,
@@ -269,32 +203,23 @@
 /area/lv624/ground/colony/south_medbay_road)
 "zl" = (
 /obj/item/reagent_container/hypospray,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "zy" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "zD" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "zL" = (
 /obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/pistol/holdout,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/medbay)
 "zS" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
@@ -310,44 +235,30 @@
 "BL" = (
 /obj/structure/window_frame/colony,
 /obj/item/shard,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "Cq" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "Df" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/engineer,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "Dk" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged5"
-	},
+/turf/open/floor/damaged5/west,
 /area/lv624/lazarus/medbay)
 "Ed" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged5"
-	},
+/turf/open/floor/damaged5/west,
 /area/lv624/lazarus/medbay)
 "EZ" = (
 /obj/structure/girder,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/medbay)
 "Fk" = (
 /turf/closed/wall,
@@ -358,16 +269,12 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "Gh" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/barricade/wooden,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "Ha" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -375,29 +282,20 @@
 /area/lv624/ground/jungle/north_jungle)
 "Il" = (
 /obj/structure/machinery/bioprinter,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "Iy" = (
 /obj/structure/barricade/wooden,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "IO" = (
 /obj/structure/machinery/iv_drip,
 /obj/structure/barricade/wooden,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/medbay)
 "Jc" = (
 /obj/structure/girder,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "JE" = (
 /turf/open/gm/grass/grass1,
@@ -407,22 +305,15 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "JO" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/panelscorched,
 /area/lv624/lazarus/medbay)
 "JY" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged5"
-	},
+/turf/open/floor/damaged5/west,
 /area/lv624/lazarus/medbay)
 "Km" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -432,15 +323,11 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/medbay)
 "LX" = (
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "MT" = (
 /obj/item/device/radio/intercom{
@@ -449,24 +336,18 @@
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/medbay)
 "MW" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "Ny" = (
 /obj/structure/window_frame/colony,
 /obj/item/shard,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "NO" = (
 /obj/structure/surface/table,
@@ -480,9 +361,7 @@
 	},
 /obj/item/storage/belt/medical/full,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "Os" = (
 /obj/structure/surface/table,
@@ -490,117 +369,83 @@
 	pixel_y = 4
 	},
 /obj/item/tool/pen,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "OK" = (
 /obj/structure/window_frame/colony,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "OO" = (
 /obj/item/tool/kitchen/utensil/fork,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/medbay)
 "Pd" = (
 /obj/item/trash/cigbutt,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
 "Pk" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "Px" = (
 /obj/structure/surface/table,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "PE" = (
 /obj/structure/filingcabinet,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged5"
-	},
+/turf/open/floor/damaged5/west,
 /area/lv624/lazarus/medbay)
 "Qd" = (
 /turf/open/floor,
 /area/lv624/lazarus/medbay)
 "QR" = (
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/medbay)
 "RO" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Medical Bay"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "RT" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged5"
-	},
+/turf/open/floor/damaged5/west,
 /area/lv624/lazarus/medbay)
 "Sz" = (
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "TC" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/spray,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "Ul" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/doctor,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "Uq" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "UG" = (
 /obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "UH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "Xv" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "XA" = (
 /turf/open/gm/grass/grass1,
@@ -609,14 +454,10 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/medbay)
 "YJ" = (
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "YV" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 
 (1,1,1) = {"

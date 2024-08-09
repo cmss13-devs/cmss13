@@ -425,7 +425,7 @@
 	desc = "It can carry pistol magazines and revolver speedloaders."
 	max_w_class = SIZE_SMALL
 	icon_state = "pistol_mag"
-	storage_slots = 3
+	storage_slots = 4
 
 	can_hold = list(
 		/obj/item/ammo_magazine/pistol,
@@ -802,6 +802,28 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/reagent_container/syringe(src)
 
+/obj/item/storage/pouch/engikit
+	name = "engineer kit pouch"
+	storage_flags = STORAGE_FLAGS_POUCH
+	icon_state = "construction"
+	desc = "It's specifically made to hold engineering items. Requires engineering skills to use effectively."
+	storage_slots = 6
+	can_hold_skill = list(
+		/obj/item/circuitboard = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/flashlight = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/clothing/glasses/welding = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/analyzer = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/demo_scanner = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/reagent_scanner = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/t_scanner = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/stack/cable_coil = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/cell = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/assembly = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/stock_parts = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/explosive/plastic = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+	)
+	can_hold_skill_only = TRUE
+
 /obj/item/storage/pouch/medkit
 	name = "medical kit pouch"
 	storage_flags = STORAGE_FLAGS_POUCH
@@ -824,6 +846,7 @@
 		/obj/item/roller = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/bodybag = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/reagent_container/blood = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/tool/surgery/FixOVein = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 	)
 	can_hold_skill_only = TRUE
 
@@ -870,13 +893,13 @@
 	inner = new /obj/item/reagent_container/glass/pressurized_canister()
 	//Only add an autoinjector if the canister is empty
 	//Important for the snowflake /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
-	if(contents.len == 0)
+	if(length(contents) == 0)
 		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)
 	inner.reagents.add_reagent(ragent, inner.volume)
-	if(contents.len > 0)
+	if(length(contents) > 0)
 		var/obj/item/reagent_container/hypospray/autoinjector/empty/A = contents[1]
 		A.reagents.add_reagent(ragent, A.volume)
 		A.update_uses_left()
@@ -902,7 +925,7 @@
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
-	if(contents.len > 0)
+	if(length(contents) > 0)
 		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
 		A.reagents.add_reagent("adrenaline", A.volume/3)
 		A.reagents.add_reagent("inaprovaline", A.volume/3)
@@ -937,7 +960,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(obj/item/reagent_container/hypospray/autoinjector/autoinjector)
 	var/max_uses = autoinjector.volume / autoinjector.amount_per_transfer_from_this
-	max_uses = round(max_uses) == max_uses ? max_uses : round(max_uses) + 1
+	max_uses = floor(max_uses) == max_uses ? max_uses : floor(max_uses) + 1
 	if(inner && inner.reagents.total_volume > 0 && (autoinjector.uses_left < max_uses))
 		inner.reagents.trans_to(autoinjector, autoinjector.volume)
 		autoinjector.update_uses_left()
@@ -972,7 +995,7 @@
 
 
 	var/obj/O = target
-	if(!O.reagents || O.reagents.reagent_list.len < 1)
+	if(!O.reagents || length(O.reagents.reagent_list) < 1)
 		to_chat(user, SPAN_WARNING("[O] is empty!"))
 		return
 
@@ -985,7 +1008,7 @@
 	O.reagents.trans_to(inner, amt_to_remove)
 
 	//Refill our autoinjector
-	if(contents.len > 0)
+	if(length(contents) > 0)
 		fill_autoinjector(contents[1])
 
 	//Top up our inner reagent canister after filling up the injector
@@ -1031,14 +1054,14 @@
 
 //returns a text listing the reagents (and their volume) in the atom. Used by Attack logs for reagents in pills
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/get_reagent_list_text()
-	if(inner && inner.reagents && inner.reagents.reagent_list && inner.reagents.reagent_list.len)
+	if(inner && inner.reagents && LAZYLEN(inner.reagents.reagent_list))
 		var/datum/reagent/R = inner.reagents.reagent_list[1]
 		. = "[R.name]([R.volume]u)"
 
-		if(inner.reagents.reagent_list.len < 2)
+		if(length(inner.reagents.reagent_list) < 2)
 			return
 
-		for(var/i in 2 to inner.reagents.reagent_list.len)
+		for(var/i in 2 to length(inner.reagents.reagent_list))
 			R = inner.reagents.reagent_list[i]
 
 			if(!R)
@@ -1270,6 +1293,21 @@
 	new /obj/item/tool/wrench(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
+
+/obj/item/storage/pouch/tools/tactical/upp
+	name = "synthetic tools pouch"
+	desc = "Special issue tools pouch for UPP synthetics. Due to the enhanced strength of the synthetic and its inability to feel discomfort, this pouch is designed to maximize internal space with no concern for its wearer's comfort."
+	icon_state = "tools"
+	storage_slots = 7
+
+/obj/item/storage/pouch/tools/tactical/upp/fill_preset_inventory()
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/device/multitool(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/stack/cable_coil(src)
 
 /obj/item/storage/pouch/tools/uppsynth/fill_preset_inventory()
 	new /obj/item/tool/crowbar(src)

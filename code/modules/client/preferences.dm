@@ -65,6 +65,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
 	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
+	var/flash_overlay_pref = FLASH_OVERLAY_WHITE
+	var/crit_overlay_pref = CRIT_OVERLAY_WHITE
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
@@ -152,8 +154,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/g_eyes = 0 //Eye color
 	var/b_eyes = 0 //Eye color
 	var/species = "Human"    //Species datum to use.
-	var/ethnicity = "Western" // Ethnicity
-	var/body_type = "Mesomorphic (Average)" // Body Type
+	var/ethnicity = "Western" //Legacy, kept to update save files
+	var/skin_color = "Pale 2" // Skin color
+	var/body_size = "Average" // Body Size
+	var/body_type = "Lean" // Body Type
 	var/language = "None" //Secondary language
 	var/list/gear //Custom/fluff item loadout.
 	var/preferred_squad = "None"
@@ -185,7 +189,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/gen_record = ""
 	var/exploit_record = ""
 
-	var/nanotrasen_relation = "Neutral"
+	var/weyland_yutani_relation = "Neutral"
 
 	var/uplinklocation = "PDA"
 
@@ -245,7 +249,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/auto_observe = TRUE
 
 /datum/preferences/New(client/C)
-	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
+	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
 	if(istype(C))
 		owner = C
@@ -335,8 +339,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<a href='?_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
 			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
-			dat += "<b>Ethnicity:</b> <a href='?_src_=prefs;preference=ethnicity;task=input'><b>[ethnicity]</b></a><br>"
-			dat += "<b>Body Type:</b> <a href='?_src_=prefs;preference=body_type;task=input'><b>[body_type]</b></a><br>"
+			dat += "<b>Skin Color:</b> <a href='?_src_=prefs;preference=skin_color;task=input'><b>[skin_color]</b></a><br>"
+			dat += "<b>Body Size:</b> <a href='?_src_=prefs;preference=body_size;task=input'><b>[body_size]</b></a><br>"
+			dat += "<b>Body Muscularity:</b> <a href='?_src_=prefs;preference=body_type;task=input'><b>[body_type]</b></a><br>"
 			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits;task=open'><b>Character Traits</b></a>"
 			dat += "<br>"
 
@@ -399,7 +404,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 			if(length(gear))
 				dat += "<br>"
-				for(var/i = 1; i <= gear.len; i++)
+				for(var/i = 1; i <= length(gear); i++)
 					var/datum/gear/G = GLOB.gear_datums_by_name[gear[i]]
 					if(G)
 						total_cost += G.cost
@@ -411,7 +416,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 			if(total_cost < MAX_GEAR_COST)
 				dat += " <a href='byond://?src=\ref[user];preference=loadout;task=input'><b>Add</b></a>"
-				if(gear && gear.len)
+				if(LAZYLEN(gear))
 					dat += " <a href='byond://?src=\ref[user];preference=loadout;task=clear'><b>Clear</b></a>"
 
 			dat += "</div>"
@@ -421,7 +426,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Origin:</b> <a href='?_src_=prefs;preference=origin;task=input'><b>[origin]</b></a><br/>"
 			dat += "<b>Religion:</b> <a href='?_src_=prefs;preference=religion;task=input'><b>[religion]</b></a><br/>"
 
-			dat += "<b>Corporate Relation:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>"
+			dat += "<b>Corporate Relation:</b> <a href ='?_src_=prefs;preference=wy_relation;task=input'><b>[weyland_yutani_relation]</b></a><br>"
 			dat += "<b>Preferred Squad:</b> <a href ='?_src_=prefs;preference=prefsquad;task=input'><b>[preferred_squad]</b></a><br>"
 
 			dat += "<h2><b><u>Fluff Information:</u></b></h2>"
@@ -590,8 +595,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Sounds:</b> <a href='?_src_=prefs;preference=hear_admin_sounds'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Play Announcement Sounds As Ghost:</b> <a href='?_src_=prefs;preference=hear_observer_announcements'><b>[(toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Play Fax Sounds As Ghost:</b> <a href='?_src_=prefs;preference=hear_faxes'><b>[(toggles_sound & SOUND_FAX_MACHINE) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Toggle Meme or Atmospheric Sounds:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle</a><br>"
 			dat += "<b>Set Eye Blur Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
+			dat += "<b>Set Flash Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set</a><br>"
+			dat += "<b>Set Crit Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play VOX Announcements:</b> <a href='?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"
@@ -626,6 +635,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_SWAP_HANDS]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Vendors Vending to Hands: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_VEND_ITEM_TO_HAND]'><b>[toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Semi-Auto Ammo Display Limiter: \
+					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AMMO_DISPLAY_TYPE]'><b>[toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE ? "On" : "Off"]</b></a><br>"
 			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations Detail Level</a><br>"
 			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Dual Wield Functionality</a><br>"
 		if(MENU_SPECIAL) //wart
@@ -644,14 +655,19 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	dat += "</div></body>"
 
 	winshow(user, "preferencewindow", TRUE)
-	show_browser(user, dat, "Preferences", "preferencebrowser")
+	show_browser(user, dat, "Preferences", "preferencewindow")
 	onclose(user, "preferencewindow", src)
 
-//limit - The amount of jobs allowed per column. Defaults to 13 to make it look nice.
-//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
-//width - Screen' width. Defaults to 550 to make it look nice.
-//height - Screen's height. Defaults to 500 to make it look nice.
-/datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(JOB_CHIEF_REQUISITION), width = 950, height = 700)
+/**
+ * Job Preferences: Preferences for role at round start.
+ *
+ * Arguments:
+ * * limit - The amount of jobs allowed per column.
+ * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads.
+ * * width - Screen' width.
+ * * height - Screen's height.
+ */
+/datum/preferences/proc/SetChoices(mob/user, limit = 21, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -760,11 +776,16 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	onclose(user, "mob_occupation", user.client, list("_src_" = "prefs", "preference" = "job", "task" = "close"))
 	return
 
-//limit - The amount of jobs allowed per column. Defaults to 13 to make it look nice.
-//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
-//width - Screen' width. Defaults to 550 to make it look nice.
-//height - Screen's height. Defaults to 500 to make it look nice.
-/datum/preferences/proc/set_job_slots(mob/user, limit = 19, list/splitJobs = list(JOB_CHIEF_REQUISITION), width = 950, height = 700)
+/**
+ * Job Assignments window: Assign unique characters to a particular job.
+ *
+ * Arguments:
+ * * limit - The amount of jobs allowed per column.
+ * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads.
+ * * width - Screen' width.
+ * * height - Screen's height.
+ */
+/datum/preferences/proc/set_job_slots(mob/user, limit = 21, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -1020,7 +1041,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/datum/gear/G
 					if(isnull(gear) || !islist(gear))
 						gear = list()
-					if(gear.len)
+					if(length(gear))
 						for(var/gear_name in gear)
 							G = GLOB.gear_datums_by_name[gear_name]
 							total_cost += G?.cost
@@ -1035,7 +1056,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("remove")
 					var/i_remove = text2num(href_list["gear"])
-					if(i_remove < 1 || i_remove > gear.len) return
+					if(i_remove < 1 || i_remove > length(gear)) return
 					gear.Cut(i_remove, i_remove + 1)
 
 				if("clear")
@@ -1161,10 +1182,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					real_name = character_origin.generate_human_name(gender)
 				if ("age")
 					age = rand(AGE_MIN, AGE_MAX)
-				if ("ethnicity")
-					ethnicity = random_ethnicity()
+				if ("skin_color")
+					skin_color = random_skin_color()
 				if ("body_type")
 					body_type = random_body_type()
+				if ("body_size")
+					body_size = random_body_size()
 				if ("hair")
 					r_hair = rand(0,255)
 					g_hair = rand(0,255)
@@ -1247,7 +1270,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("pred_age")
 					var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(175 to 3000):", "Character Preference", 1234, 3000, 175)
 					if(new_predator_age)
-						predator_age = max(min( round(text2num(new_predator_age)), 3000),175)
+						predator_age = max(min( floor(text2num(new_predator_age)), 3000),175)
 				if("pred_use_legacy")
 					var/legacy_choice = tgui_input_list(user, "What legacy set do you wish to use?", "Legacy Set", PRED_LEGACIES)
 					if(!legacy_choice)
@@ -1260,13 +1283,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					predator_translator_type = new_translator_type
 				if("pred_mask_type")
 					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-12)", "Mask Selection", 1, 12, 1)
-					if(new_predator_mask_type) predator_mask_type = round(text2num(new_predator_mask_type))
+					if(new_predator_mask_type) predator_mask_type = floor(text2num(new_predator_mask_type))
 				if("pred_armor_type")
 					var/new_predator_armor_type = tgui_input_number(user, "Choose your armor type:\n(1-7)", "Armor Selection", 1, 7, 1)
-					if(new_predator_armor_type) predator_armor_type = round(text2num(new_predator_armor_type))
+					if(new_predator_armor_type) predator_armor_type = floor(text2num(new_predator_armor_type))
 				if("pred_boot_type")
 					var/new_predator_boot_type = tgui_input_number(user, "Choose your greaves type:\n(1-4)", "Greave Selection", 1, 4, 1)
-					if(new_predator_boot_type) predator_boot_type = round(text2num(new_predator_boot_type))
+					if(new_predator_boot_type) predator_boot_type = floor(text2num(new_predator_boot_type))
 				if("pred_mask_mat")
 					var/new_pred_mask_mat = tgui_input_list(user, "Choose your mask material:", "Mask Material", PRED_MATERIALS)
 					if(!new_pred_mask_mat)
@@ -1481,7 +1504,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("age")
 					var/new_age = tgui_input_number(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference", 19, AGE_MAX, AGE_MIN)
 					if(new_age)
-						age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
+						age = max(min( floor(text2num(new_age)), AGE_MAX),AGE_MIN)
 
 				if("metadata")
 					var/new_metadata = input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , metadata)  as message|null
@@ -1535,14 +1558,20 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(new_h_gradient_style)
 						grad_style = new_h_gradient_style
 
-				if ("ethnicity")
-					var/new_ethnicity = tgui_input_list(user, "Choose your character's ethnicity:", "Character Preferences", GLOB.ethnicities_list)
+				if ("skin_color")
+					var/new_skin_color = tgui_input_list(user, "Choose your character's skin color:", "Character Preferences", GLOB.skin_color_list)
 
-					if (new_ethnicity)
-						ethnicity = new_ethnicity
+					if (new_skin_color)
+						skin_color = new_skin_color
+
+				if ("body_size")
+					var/new_body_size = tgui_input_list(user, "Choose your character's body size:", "Character Preferences", GLOB.body_size_list)
+
+					if (new_body_size)
+						body_size = new_body_size
 
 				if ("body_type")
-					var/new_body_type = tgui_input_list(user, "Choose your character's body type:", "Character Preferences", GLOB.body_types_list)
+					var/new_body_type = tgui_input_list(user, "Choose your character's body type:", "Character Preferences", GLOB.body_type_list)
 
 					if (new_body_type)
 						body_type = new_body_type
@@ -1612,10 +1641,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(new_backbag)
 						backbag = GLOB.backbaglist.Find(new_backbag)
 
-				if("nt_relation")
+				if("wy_relation")
 					var/new_relation = input(user, "Choose your relation to the Weyland-Yutani company. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.", "Character Preference")  as null|anything in list("Loyal", "Supportive", "Neutral", "Skeptical", "Opposed")
 					if(new_relation)
-						nanotrasen_relation = new_relation
+						weyland_yutani_relation = new_relation
 
 				if("prefsquad")
 					var/new_pref_squad = input(user, "Choose your preferred squad.", "Character Preference")  as null|anything in list("Alpha", "Bravo", "Charlie", "Delta", "None")
@@ -1819,6 +1848,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(!(toggles_sound & SOUND_MIDI))
 						user?.client?.tgui_panel?.stop_music()
 
+				if("hear_observer_announcements")
+					toggles_sound ^= SOUND_OBSERVER_ANNOUNCEMENTS
+
+				if("hear_faxes")
+					toggles_sound ^= SOUND_FAX_MACHINE
+
 				if("lobby_music")
 					toggles_sound ^= SOUND_LOBBY
 					if(toggles_sound & SOUND_LOBBY)
@@ -1934,7 +1969,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("save")
 					if(save_cooldown > world.time)
-						to_chat(user, SPAN_WARNING("You need to wait [round((save_cooldown-world.time)/10)] seconds before you can do that again."))
+						to_chat(user, SPAN_WARNING("You need to wait [floor((save_cooldown-world.time)/10)] seconds before you can do that again."))
 						return
 					var/datum/origin/character_origin = GLOB.origins[origin]
 					var/name_error = character_origin.validate_name(real_name)
@@ -1950,7 +1985,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("reload")
 					if(reload_cooldown > world.time)
-						to_chat(user, SPAN_WARNING("You need to wait [round((reload_cooldown-world.time)/10)] seconds before you can do that again."))
+						to_chat(user, SPAN_WARNING("You need to wait [floor((reload_cooldown-world.time)/10)] seconds before you can do that again."))
 						return
 					load_preferences()
 					load_character()
@@ -2043,8 +2078,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	character.age = age
 	character.gender = gender
-	character.ethnicity = ethnicity
+	character.skin_color = skin_color
 	character.body_type = body_type
+	character.body_size = body_size
 
 	character.r_eyes = r_eyes
 	character.g_eyes = g_eyes
@@ -2116,15 +2152,16 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			message_admins("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
 			character.gender = MALE
 
-// Transfers the character's physical characteristics (age, gender, ethnicity, etc) to the mob
+// Transfers the character's physical characteristics (age, gender, skin_color, etc) to the mob
 /datum/preferences/proc/copy_appearance_to(mob/living/carbon/human/character, safety = 0)
 	if(!istype(character))
 		return
 
 	character.age = age
 	character.gender = gender
-	character.ethnicity = ethnicity
+	character.skin_color = skin_color
 	character.body_type = body_type
+	character.body_size = body_size
 
 	character.r_eyes = r_eyes
 	character.g_eyes = g_eyes

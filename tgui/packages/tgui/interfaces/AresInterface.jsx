@@ -1,23 +1,29 @@
+// -------------------------------------------------------------------- //
+// Please ensure when updating this menu, changes are reflected in AresAdmin.js
+// -------------------------------------------------------------------- //
+
 import { useBackend } from '../backend';
-import { Flex, Box, Section, Button, Stack } from '../components';
+import { Box, Button, Flex, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
-  'login': () => Login,
-  'main': () => MainMenu,
-  'announcements': () => AnnouncementLogs,
-  'bioscans': () => BioscanLogs,
-  'bombardments': () => BombardmentLogs,
-  'apollo': () => ApolloLog,
-  'access_log': () => AccessLogs,
-  'delete_log': () => DeletionLogs,
-  'flight_log': () => FlightLogs,
-  'talking': () => ARESTalk,
-  'deleted_talks': () => DeletedTalks,
-  'read_deleted': () => ReadingTalks,
-  'security': () => Security,
-  'requisitions': () => Requisitions,
-  'emergency': () => Emergency,
+  login: () => Login,
+  main: () => MainMenu,
+  announcements: () => AnnouncementLogs,
+  bioscans: () => BioscanLogs,
+  bombardments: () => BombardmentLogs,
+  apollo: () => ApolloLog,
+  access_log: () => AccessLogs,
+  delete_log: () => DeletionLogs,
+  flight_log: () => FlightLogs,
+  talking: () => ARESTalk,
+  deleted_talks: () => DeletedTalks,
+  read_deleted: () => ReadingTalks,
+  security: () => Security,
+  requisitions: () => Requisitions,
+  emergency: () => Emergency,
+  tech_log: () => TechLogs,
+  core_security: () => CoreSec,
 };
 
 export const AresInterface = (props) => {
@@ -30,10 +36,12 @@ export const AresInterface = (props) => {
     themecolor = 'crtred';
   } else if (current_menu === 'emergency') {
     themecolor = 'crtred';
+  } else if (current_menu === 'core_security') {
+    themecolor = 'crtred';
   }
 
   return (
-    <Window theme={themecolor} width={780} height={725}>
+    <Window theme={themecolor} width={800} height={725}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -53,16 +61,16 @@ const Login = (props) => {
       color="darkgrey"
       fontSize="2rem"
       mt="-3rem"
-      bold>
+      bold
+    >
       <Box fontFamily="monospace">ARES v3.2 Interface</Box>
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
       </Box>
-      <Box fontFamily="monospace">Version 8.2.3</Box>
+      <Box fontFamily="monospace">Version 8.3.4</Box>
       <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
 
       <Button
-        content="Login"
         icon="id-card"
         width="30vw"
         textAlign="center"
@@ -70,7 +78,9 @@ const Login = (props) => {
         p="1rem"
         mt="5rem"
         onClick={() => act('login')}
-      />
+      >
+        Login
+      </Button>
     </Flex>
   );
 };
@@ -114,13 +124,14 @@ const MainMenu = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -129,11 +140,10 @@ const MainMenu = (props) => {
 
         <Stack>
           <Stack.Item grow>
-            <h3>Access Level 0</h3>
+            <h3>Access Level 1</h3>
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="Announcement Logs"
               tooltip="Access the AI Announcement logs."
               icon="bullhorn"
               ml="auto"
@@ -141,11 +151,12 @@ const MainMenu = (props) => {
               width="25vw"
               bold
               onClick={() => act('page_announcements')}
-            />
+            >
+              Announcement Logs
+            </Button>
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="ARES Communication"
               tooltip="Direct communication 1:1 with ARES."
               icon="comments"
               ml="auto"
@@ -153,52 +164,11 @@ const MainMenu = (props) => {
               width="25vw"
               bold
               onClick={() => act('page_1to1')}
-            />
+            >
+              ARES Communication
+            </Button>
           </Stack.Item>
         </Stack>
-        {access_level >= 1 && (
-          <Stack>
-            <Stack.Item grow>
-              <h3>Access Level 1</h3>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="Flight Records"
-                tooltip="Read the Dropship Flight Control Records."
-                icon="jet-fighter-up"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_flight')}
-              />
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="Bioscan Logs"
-                tooltip="Access the Bioscan records."
-                icon="eye"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_bioscans')}
-              />
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="Bombardment Logs"
-                tooltip="Access Orbital Bombardment logs."
-                icon="meteor"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_bombardments')}
-              />
-            </Stack.Item>
-          </Stack>
-        )}
         {access_level >= 2 && (
           <Stack>
             <Stack.Item grow>
@@ -206,7 +176,52 @@ const MainMenu = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
-                content="Security Updates"
+                tooltip="Read the Dropship Flight Control Records."
+                icon="jet-fighter-up"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_flight')}
+              >
+                Flight Records
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                tooltip="Access the Bioscan records."
+                icon="eye"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_bioscans')}
+              >
+                Bioscan Logs
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                tooltip="Access Orbital Bombardment logs."
+                icon="meteor"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_bombardments')}
+              >
+                Bombardment Logs
+              </Button>
+            </Stack.Item>
+          </Stack>
+        )}
+        {access_level >= 3 && (
+          <Stack>
+            <Stack.Item grow>
+              <h3>Access Level 3</h3>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
                 tooltip="Read the Security Updates."
                 icon="file-shield"
                 ml="auto"
@@ -214,11 +229,12 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_security')}
-              />
+              >
+                Security Updates
+              </Button>
             </Stack.Item>
             <Stack.Item>
               <Button
-                content="View Apollo Log"
                 tooltip="Read the Apollo Link logs."
                 icon="clipboard"
                 ml="auto"
@@ -226,39 +242,9 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_apollo')}
-              />
-            </Stack.Item>
-          </Stack>
-        )}
-        {access_level >= 4 && (
-          <Stack>
-            <Stack.Item grow>
-              <h3>Access Level 4</h3>
-            </Stack.Item>
-            <Stack.Item>
-              <Button.Confirm
-                content="Emergency Protocols"
-                tooltip="Access emergency protocols."
-                icon="shield"
-                color="red"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_emergency')}
-              />
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="ASRS Audit Log"
-                tooltip="Review the ASRS Audit Log."
-                icon="cart-shopping"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_requisitions')}
-              />
+              >
+                View Apollo Log
+              </Button>
             </Stack.Item>
           </Stack>
         )}
@@ -268,8 +254,54 @@ const MainMenu = (props) => {
               <h3>Access Level 5</h3>
             </Stack.Item>
             <Stack.Item>
+              <Button.Confirm
+                tooltip="Access emergency protocols."
+                icon="shield"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_emergency')}
+              >
+                Emergency Protocols
+              </Button.Confirm>
+            </Stack.Item>
+            <Stack.Item>
               <Button
-                content="View Access Log"
+                tooltip="Review the ASRS Audit Log."
+                icon="magnifying-glass-dollar"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_requisitions')}
+              >
+                ASRS Audit Log
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                tooltip="Review the Intel Tech Log."
+                icon="magnifying-glass-chart"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_tech')}
+              >
+                Tech Control Log
+              </Button>
+            </Stack.Item>
+          </Stack>
+        )}
+        {access_level >= 6 && (
+          <Stack>
+            <Stack.Item grow>
+              <h3>Access Level 6</h3>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
                 tooltip="View the recent logins."
                 icon="users"
                 ml="auto"
@@ -277,18 +309,19 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_access')}
-              />
+              >
+                View Access Log
+              </Button>
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 8 && (
+        {access_level >= 9 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 8</h3>
+              <h3>Access Level 9</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
-                content="View Deletion Log"
                 tooltip="View the deletion log."
                 icon="sd-card"
                 ml="auto"
@@ -296,11 +329,12 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_deleted')}
-              />
+              >
+                View Deletion Log
+              </Button>
             </Stack.Item>
             <Stack.Item>
               <Button
-                content="View Deleted 1:1's"
                 tooltip="View the deleted 1:1 conversations with ARES."
                 icon="sd-card"
                 ml="auto"
@@ -308,19 +342,20 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_deleted_1to1')}
-              />
+              >
+                View Deleted 1:1&apos;s
+              </Button>
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 10 && (
+        {access_level >= 11 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 10</h3>
+              <h3>Maintenance Access</h3>
             </Stack.Item>
             {sudo === 0 && (
               <Stack.Item>
                 <Button
-                  content="Sudo Login"
                   tooltip="Remote Login."
                   icon="user-secret"
                   ml="auto"
@@ -328,13 +363,14 @@ const MainMenu = (props) => {
                   width="25vw"
                   bold
                   onClick={() => act('sudo')}
-                />
+                >
+                  Sudo Login
+                </Button>
               </Stack.Item>
             )}
             {sudo >= 1 && (
               <Stack.Item>
                 <Button
-                  content="Sudo Logout"
                   tooltip="Logout of Sudo mode."
                   icon="user-secret"
                   ml="auto"
@@ -342,12 +378,51 @@ const MainMenu = (props) => {
                   width="25vw"
                   bold
                   onClick={() => act('sudo_logout')}
-                />
+                >
+                  Sudo Logout
+                </Button>
               </Stack.Item>
             )}
           </Stack>
         )}
       </Section>
+      {(access_level === 3 || access_level >= 6) && (
+        <Section>
+          <h1 align="center">Core Security Protocols</h1>
+          <Stack>
+            <Stack.Item grow>
+              <Button
+                align="center"
+                tooltip="Release stored CN20-X nerve gas from security vents."
+                icon="wind"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('page_core_sec')}
+              >
+                Nerve Gas Control
+              </Button>
+            </Stack.Item>
+            <Stack.Item grow>
+              <Button.Confirm
+                align="center"
+                tooltip="Activate/Deactivate the AI Core Lockdown."
+                icon="lock"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('security_lockdown')}
+              >
+                AI Core Lockdown
+              </Button.Confirm>
+            </Stack.Item>
+          </Stack>
+        </Section>
+      )}
     </>
   );
 };
@@ -390,13 +465,14 @@ const AnnouncementLogs = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -408,7 +484,8 @@ const AnnouncementLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -436,7 +513,7 @@ const AnnouncementLogs = (props) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 3}
+                  disabled={access_level < 4}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -486,13 +563,14 @@ const BioscanLogs = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -504,7 +582,8 @@ const BioscanLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -532,7 +611,7 @@ const BioscanLogs = (props) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 4}
+                  disabled={access_level < 5}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -582,13 +661,14 @@ const BombardmentLogs = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -600,7 +680,8 @@ const BombardmentLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -611,7 +692,7 @@ const BombardmentLogs = (props) => {
               User
             </Flex.Item>
             <Flex.Item width="30rem" textAlign="center">
-              Coordinates
+              Details
             </Flex.Item>
           </Flex>
         )}
@@ -632,7 +713,7 @@ const BombardmentLogs = (props) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 4}
+                  disabled={access_level < 5}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -675,13 +756,14 @@ const ApolloLog = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -731,13 +813,14 @@ const AccessLogs = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -788,13 +871,14 @@ const DeletionLogs = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -806,7 +890,8 @@ const DeletionLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Deletion Time
             </Flex.Item>
@@ -880,13 +965,14 @@ const ARESTalk = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -897,13 +983,14 @@ const ARESTalk = (props) => {
       <Section align="center">
         {!active_convo.length && (
           <Button
-            content="New Conversation"
             icon="pen"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('new_conversation')}
-          />
+          >
+            New Conversation
+          </Button>
         )}
         {active_convo.map((message, i) => {
           return (
@@ -914,18 +1001,18 @@ const ARESTalk = (props) => {
         })}
         {!!active_convo.length && (
           <Button
-            content="Send Message"
             icon="pen"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('message_ares', { active_convo: active_ref })}
-          />
+          >
+            Send Message
+          </Button>
         )}
       </Section>
       <Section align="center">
         <Button.Confirm
-          content="Clear Conversation"
           icon="trash"
           tooltip="Clears the conversation. Please note, your 1:1 conversation is only visible to you."
           width="30vw"
@@ -936,7 +1023,9 @@ const ARESTalk = (props) => {
             act('clear_conversation', { active_convo: active_ref })
           }
           disabled={!active_convo.length}
-        />
+        >
+          Clear Conversation
+        </Button.Confirm>
       </Section>
     </>
   );
@@ -979,13 +1068,14 @@ const DeletedTalks = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -996,7 +1086,8 @@ const DeletedTalks = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Deletion Time
             </Flex.Item>
@@ -1069,13 +1160,14 @@ const ReadingTalks = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -1101,6 +1193,7 @@ const Requisitions = (props) => {
     last_page,
     current_menu,
     records_requisition,
+    printer_cooldown,
   } = data;
 
   return (
@@ -1130,24 +1223,39 @@ const Requisitions = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
       <Section>
         <h1 align="center">ASRS Audit Log</h1>
+        <h4 align="center">
+          <Button
+            icon="print"
+            px="2rem"
+            textAlign="center"
+            tooltip="Print Audit Log"
+            onClick={() => act('print_req')}
+            disabled={printer_cooldown}
+          >
+            Print Audit Log
+          </Button>
+        </h4>
+
         {!!records_requisition.length && (
           <Flex
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -1223,13 +1331,14 @@ const FlightLogs = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -1240,7 +1349,8 @@ const FlightLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -1318,13 +1428,14 @@ const Security = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -1335,7 +1446,8 @@ const Security = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -1363,7 +1475,7 @@ const Security = (props) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 7}
+                  disabled={access_level < 8}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -1469,20 +1581,20 @@ const Emergency = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
       <h1 align="center">Emergency Protocols</h1>
       <Flex align="center" justify="center" height="50%" direction="column">
         <Button.Confirm
-          content="Call General Quarters"
           tooltip={quarters_reason}
           icon="triangle-exclamation"
           color="red"
@@ -1494,9 +1606,10 @@ const Emergency = (props) => {
           bold
           onClick={() => act('general_quarters')}
           disabled={!canQuarters}
-        />
+        >
+          Call General Quarters
+        </Button.Confirm>
         <Button.Confirm
-          content="Initiate Evacuation"
           tooltip={evac_reason}
           icon="shuttle-space"
           color="red"
@@ -1508,9 +1621,10 @@ const Emergency = (props) => {
           bold
           onClick={() => act('evacuation_start')}
           disabled={!canEvac}
-        />
+        >
+          Initiate Evacuation
+        </Button.Confirm>
         <Button.Confirm
-          content="Launch Distress Beacon"
           tooltip={distress_reason}
           icon="circle-exclamation"
           color="red"
@@ -1522,9 +1636,10 @@ const Emergency = (props) => {
           bold
           onClick={() => act('distress')}
           disabled={!canDistress}
-        />
+        >
+          Launch Distress Beacon
+        </Button.Confirm>
         <Button.Confirm
-          content="Request Nuclear Device"
           tooltip={nuke_reason}
           icon="circle-radiation"
           color="red"
@@ -1536,8 +1651,202 @@ const Emergency = (props) => {
           bold
           onClick={() => act('nuclearbomb')}
           disabled={!canNuke}
-        />
+        >
+          Request Nuclear Device
+        </Button.Confirm>
       </Flex>
+    </>
+  );
+};
+
+const TechLogs = (props) => {
+  const { data, act } = useBackend();
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_tech,
+    access_level,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          >
+            Logout
+          </Button.Confirm>
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Tech Control Logs</h1>
+        {!!records_tech.length && (
+          <Flex
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem"
+          >
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item width="15rem" grow bold>
+              Authenticator
+            </Flex.Item>
+            <Flex.Item width="40rem" textAlign="center">
+              Details
+            </Flex.Item>
+          </Flex>
+        )}
+        {records_tech.map((record, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+                {record.time}
+              </Flex.Item>
+              <Flex.Item width="15rem" grow italic>
+                {record.user}
+              </Flex.Item>
+              {!!record.tier_changer && (
+                <Flex.Item
+                  width="40rem"
+                  ml="1rem"
+                  shrink="0"
+                  textAlign="center"
+                  color="red"
+                >
+                  {record.details}
+                </Flex.Item>
+              )}
+              {!record.tier_changer && (
+                <Flex.Item
+                  width="40rem"
+                  ml="1rem"
+                  shrink="0"
+                  textAlign="center"
+                >
+                  {record.details}
+                </Flex.Item>
+              )}
+
+              <Flex.Item ml="1rem">
+                <Button.Confirm
+                  icon="trash"
+                  tooltip="Delete Record"
+                  disabled={access_level < 4 || !!record.tier_changer}
+                  onClick={() => act('delete_record', { record: record.ref })}
+                />
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const CoreSec = (props) => {
+  const { data, act } = useBackend();
+  const {
+    logged_in,
+    access_text,
+    access_level,
+    last_page,
+    current_menu,
+    security_vents,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          >
+            Logout
+          </Button.Confirm>
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Core Security Protocols</h1>
+      </Section>
+      <Section>
+        <h1 align="center">Nerve Gas Release</h1>
+        {security_vents.map((vent, i) => {
+          return (
+            <Button.Confirm
+              key={i}
+              align="center"
+              icon="wind"
+              tooltip="Release Gas"
+              width="100%"
+              disabled={
+                (access_level < 5 && access_level !== 3) || !vent.available
+              }
+              onClick={() => act('trigger_vent', { vent: vent.ref })}
+            >
+              {vent.vent_tag}
+            </Button.Confirm>
+          );
+        })}
+      </Section>
     </>
   );
 };

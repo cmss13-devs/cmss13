@@ -19,15 +19,15 @@ SUBSYSTEM_DEF(machinery)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/machinery/stat_entry(msg)
-	msg = "M:[GLOB.processing_machines.len]"
+	msg = "M:[length(GLOB.processing_machines)]"
 	return ..()
 
 /datum/controller/subsystem/machinery/fire(resumed = FALSE)
 	if (!resumed)
 		currentrunmachines = GLOB.processing_machines.Copy()
 
-	while (currentrunmachines.len)
-		var/obj/structure/machinery/M = currentrunmachines[currentrunmachines.len]
+	while (length(currentrunmachines))
+		var/obj/structure/machinery/M = currentrunmachines[length(currentrunmachines)]
 		currentrunmachines.len--
 
 		if (!M || QDELETED(M))

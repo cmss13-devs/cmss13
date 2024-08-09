@@ -32,7 +32,7 @@
 	. = ..()
 
 	node = place_node()
-	for(var/turf/A in range(round(cover_range*PYLON_COVERAGE_MULT), loc))
+	for(var/turf/A as anything in RANGE_TURFS(floor(cover_range*PYLON_COVERAGE_MULT), loc))
 		LAZYADD(A.linked_pylons, src)
 		linked_turfs += A
 
@@ -62,12 +62,15 @@
 /obj/effect/alien/resin/special/pylon/get_examine_text(mob/user)
 	. = ..()
 
+	if(!isobserver(user) && !isxeno(user))
+		return
+
 	var/lesser_count = 0
 	for(var/mob/living/carbon/xenomorph/lesser_drone/lesser in linked_hive.totalXenos)
 		lesser_count++
 
-	. += "Currently holding [SPAN_NOTICE("[Floor(lesser_drone_spawns)]")]/[SPAN_NOTICE("[lesser_drone_spawn_limit]")] lesser drones."
-	. += "There are currently [SPAN_NOTICE("[lesser_count]")] lesser drones in the hive. The hive can support [SPAN_NOTICE("[linked_hive.lesser_drone_limit]")] lesser drones."
+	. += "Currently holding [SPAN_NOTICE("[floor(lesser_drone_spawns)]")]/[SPAN_NOTICE("[lesser_drone_spawn_limit]")] lesser drones."
+	. += "There are currently [SPAN_NOTICE("[lesser_count]")] lesser drones in the hive. The hive can support a total of [SPAN_NOTICE("[linked_hive.lesser_drone_limit]")] lesser drones at present."
 
 /obj/effect/alien/resin/special/pylon/attack_ghost(mob/dead/observer/user)
 	. = ..()

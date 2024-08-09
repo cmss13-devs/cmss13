@@ -83,7 +83,7 @@
 
 	icon_state = null
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_LOGIN, PROC_REF(add_default_image))
+	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_LOGGED_IN, PROC_REF(add_default_image))
 
 	for(var/I in GLOB.player_list)
 		add_default_image(SSdcs, I)
@@ -125,7 +125,7 @@
 
 	mobs_under += L
 	RegisterSignal(L, COMSIG_PARENT_QDELETING, PROC_REF(remove_under_van))
-	RegisterSignal(L, COMSIG_MOB_LOGIN, PROC_REF(add_client))
+	RegisterSignal(L, COMSIG_MOB_LOGGED_IN, PROC_REF(add_client))
 	RegisterSignal(L, COMSIG_MOVABLE_MOVED, PROC_REF(check_under_van))
 
 	if(L.client)
@@ -141,7 +141,7 @@
 
 	UnregisterSignal(L, list(
 		COMSIG_PARENT_QDELETING,
-		COMSIG_MOB_LOGIN,
+		COMSIG_MOB_LOGGED_IN,
 		COMSIG_MOVABLE_MOVED,
 	))
 
@@ -166,6 +166,8 @@
 	for(var/I in GLOB.player_list)
 		var/mob/M = I
 		M.client.images -= normal_image
+
+	QDEL_NULL(lighting_holder)
 
 	return ..()
 

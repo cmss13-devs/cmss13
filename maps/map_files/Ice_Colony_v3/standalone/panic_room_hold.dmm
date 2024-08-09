@@ -1,0 +1,2091 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ai" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"aq" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
+"aH" = (
+/obj/item/tool/pen/blue{
+	pixel_x = 5
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"ba" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/alarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/effect/landmark/crap_item,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"bi" = (
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = -5;
+	pixel_y = 12
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"bI" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"ce" = (
+/turf/closed/wall/shiva/prefabricated/reinforced,
+/area/shiva/interior/colony/s_admin)
+"ch" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 11;
+	pixel_y = 20
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/bar)
+"cv" = (
+/obj/structure/machinery/alarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"cL" = (
+/obj/item/prop/colony/folded_bedroll,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"cO" = (
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/colony/s_admin)
+"cS" = (
+/turf/closed/wall/shiva/prefabricated/reinforced,
+/area/shiva/interior/bar)
+"cY" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/item/shard{
+	icon_state = "large"
+	},
+/obj/item/frame/table/reinforced,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"dg" = (
+/obj/structure/barricade/metal{
+	dir = 1;
+	health = 210
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"do" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"dv" = (
+/obj/item/ammo_magazine/rifle/m16,
+/obj/structure/closet/secure_closet/guncabinet/wy,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/s_admin)
+"dF" = (
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"eO" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/s_admin)
+"eZ" = (
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/s_admin)
+"ff" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"fj" = (
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"fx" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/obj/effect/landmark/corpsespawner/doctor,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/bar)
+"fM" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Panic Room Shutters";
+	id = "south_panicroom"
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/s_admin)
+"fR" = (
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"fT" = (
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/shiva/green/southeast,
+/area/shiva/interior/colony/botany)
+"gf" = (
+/obj/structure/closet/crate/freezer,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"gh" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/item/ammo_magazine/rifle/extended{
+	current_rounds = 0
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"gk" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/platingdmg3,
+/area/shiva/interior/colony/s_admin)
+"gn" = (
+/obj/structure/machinery/computer/cameras/wooden_tv{
+	pixel_y = 7
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"gB" = (
+/obj/structure/surface/table,
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"gL" = (
+/obj/structure/bed/bedroll,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"gO" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"gR" = (
+/obj/item/stack/rods,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"hN" = (
+/obj/item/ammo_casing,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/colony/s_admin)
+"iF" = (
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"iS" = (
+/obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"iZ" = (
+/obj/item/weapon/gun/rifle/m16,
+/obj/structure/closet/secure_closet/guncabinet/wy,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/s_admin)
+"js" = (
+/obj/item/stack/rods,
+/turf/open/floor/shiva/green/southwest,
+/area/shiva/interior/colony/botany)
+"jE" = (
+/obj/effect/acid_hole{
+	dir = 4
+	},
+/turf/closed/wall/shiva/prefabricated,
+/area/shiva/interior/colony/s_admin)
+"jK" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassall_1"
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard)
+"jL" = (
+/obj/structure/machinery/alarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"jP" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clothing/head/soft/sec/corp{
+	pixel_y = 10
+	},
+/obj/item/tool/stamp/hos,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"ky" = (
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = 10;
+	pixel_y = 16
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"kB" = (
+/obj/structure/bed/bedroll,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"kP" = (
+/obj/structure/surface/table/woodentable{
+	dir = 1;
+	flipped = 1
+	},
+/obj/structure/machinery/computer/objective,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"kT" = (
+/obj/item/stack/folding_barricade,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"lb" = (
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/structure/filingcabinet/chestdrawer,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"lq" = (
+/obj/item/ammo_magazine/rifle{
+	current_rounds = 0
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"lP" = (
+/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"lQ" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"mC" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"mI" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"ne" = (
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard/cp_bar)
+"ng" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
+"nh" = (
+/obj/structure/window/framed/shiva,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
+"ns" = (
+/obj/structure/surface/table,
+/obj/item/weapon/gun/rifle/ar10,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"ob" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/cans/ale{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/drinks/cans/ale{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/cans/ale{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/cans/ale,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"of" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Panic Room Shutters";
+	id = "north_panicroom"
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
+"ov" = (
+/obj/item/trash/buritto,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"oH" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/shiva/green,
+/area/shiva/interior/colony/botany)
+"oT" = (
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"oY" = (
+/obj/structure/closet/crate/secure/weyland,
+/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"pz" = (
+/obj/item/weapon/gun/boltaction,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/s_admin)
+"pC" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"pG" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"pQ" = (
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/junkyard)
+"pS" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"pV" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/platingdmg2,
+/area/shiva/interior/colony/s_admin)
+"qT" = (
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"qU" = (
+/obj/effect/landmark/corpsespawner/scientist,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"rB" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"rM" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"rQ" = (
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"sq" = (
+/obj/structure/machinery/faxmachine,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"sy" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgibdown1"
+	},
+/obj/structure/machinery/light/double,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"sZ" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/s_admin)
+"ti" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/floor/plating/platingdmg3,
+/area/shiva/interior/colony/s_admin)
+"tk" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clipboard,
+/obj/item/tool/stamp,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"tl" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"tu" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"tD" = (
+/obj/effect/decal/cleanable/vomit{
+	icon_state = "vomit_2"
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = 9;
+	pixel_y = 17
+	},
+/obj/effect/landmark/corpsespawner/chef,
+/obj/structure/bed/bedroll,
+/obj/item/bedsheet/ce,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"tG" = (
+/obj/structure/janitorialcart,
+/turf/open/floor/shiva/green/southeast,
+/area/shiva/interior/colony/botany)
+"tW" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
+"tY" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"ug" = (
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "3"
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/s_admin)
+"uh" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"ul" = (
+/obj/item/ammo_magazine/rifle/boltaction,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"uA" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/bar)
+"uE" = (
+/obj/structure/machinery/door_control{
+	id = "north_panicroom";
+	pixel_y = 30
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"uJ" = (
+/obj/item/stack/rods,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"uM" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clipboard,
+/obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"uP" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"uR" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"vn" = (
+/obj/effect/decal/remains/xeno,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"vq" = (
+/obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"vs" = (
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/s_admin)
+"vL" = (
+/obj/item/reagent_container/glass/bucket/mopbucket{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/shiva/green/southeast,
+/area/shiva/interior/colony/botany)
+"wH" = (
+/turf/open/floor/plating/platingdmg3,
+/area/shiva/interior/colony/s_admin)
+"wM" = (
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_y = 5
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"wO" = (
+/obj/item/clipboard,
+/obj/item/tool/pen/blue,
+/obj/item/stack/sheet/metal,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/obj/item/shard{
+	icon_state = "large"
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"wW" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/s_admin)
+"wX" = (
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/s_admin)
+"wY" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"xa" = (
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"xg" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"xD" = (
+/obj/structure/bed/chair/comfy/orange{
+	dir = 1
+	},
+/obj/item/paper_bin,
+/obj/structure/machinery/light/double,
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"xZ" = (
+/obj/item/storage/belt/marine,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"yd" = (
+/obj/item/weapon/gun/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/structure/closet/secure_closet/guncabinet/wy,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/s_admin)
+"ye" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_cl,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"yi" = (
+/obj/item/trash/wy_chips_pepper,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"yo" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"yq" = (
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/obj/effect/decal/remains/human,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"yz" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassall_3"
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard)
+"yQ" = (
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"yS" = (
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/item/weapon/gun/boltaction,
+/obj/structure/closet/secure_closet/guncabinet/wy,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/s_admin)
+"zc" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"zi" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"zp" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"zu" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/shiva/green/southeast,
+/area/shiva/interior/colony/botany)
+"zw" = (
+/obj/item/ammo_casing,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"zA" = (
+/obj/structure/window_frame/colony/reinforced,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
+"Ad" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"Av" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/closet/secure_closet/guncabinet/wy,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/s_admin)
+"AC" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"AY" = (
+/obj/structure/flora/pottedplant,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"AZ" = (
+/turf/open/floor/plating/platingdmg1,
+/area/shiva/interior/colony/s_admin)
+"Bg" = (
+/obj/structure/machinery/light_construct{
+	dir = 1
+	},
+/obj/item/light_bulb/tube/prison,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Bq" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"Bv" = (
+/obj/structure/machinery/door_control{
+	id = "south_panicroom";
+	pixel_x = 30
+	},
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"BD" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -11;
+	pixel_y = 20
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/bar)
+"BQ" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/bar)
+"BU" = (
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Cc" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating/platingdmg3,
+/area/shiva/interior/colony/s_admin)
+"Cd" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/good_item,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Cu" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clipboard,
+/obj/item/tool/stamp,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"Cx" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"CZ" = (
+/obj/item/ammo_casing,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Dg" = (
+/obj/effect/decal/cleanable/vomit,
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Dl" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Dx" = (
+/obj/structure/machinery/light/double,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"DB" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/s_admin)
+"DU" = (
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"DW" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"DY" = (
+/obj/item/trash/burger,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"EX" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"Fa" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/plating/platingdmg2,
+/area/shiva/interior/colony/s_admin)
+"Fc" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/rifle/ar10,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"Ff" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating/platingdmg1,
+/area/shiva/interior/colony/s_admin)
+"Fg" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"Fn" = (
+/turf/open/floor/shiva/radiator_tile,
+/area/shiva/interior/bar)
+"Fp" = (
+/obj/structure/bed/chair/office/dark,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Fx" = (
+/obj/structure/surface/table,
+/obj/structure/prop/ice_colony/hula_girl,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"FH" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"FK" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"FY" = (
+/turf/template_noop,
+/area/template_noop)
+"GC" = (
+/turf/closed/wall/shiva/prefabricated,
+/area/shiva/interior/colony/s_admin)
+"GJ" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"GQ" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgibhead"
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"He" = (
+/obj/item/stool,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Hf" = (
+/obj/structure/closet/secure_closet/security,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"Hp" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/colony/s_admin)
+"Hx" = (
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"HA" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/machinery/computer/station_alert{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"Ik" = (
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard)
+"Iy" = (
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/obj/effect/landmark/corpsespawner/wysec,
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"IB" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"IQ" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"Jp" = (
+/obj/item/ammo_magazine/rifle/extended{
+	current_rounds = 0
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"Jv" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"Jx" = (
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/botany)
+"JF" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"JQ" = (
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/structure/machinery/alarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/structure/closet/secure_closet/guncabinet/wy,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/s_admin)
+"Kb" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/botany)
+"Ko" = (
+/obj/structure/bed/chair,
+/obj/item/ammo_casing,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Kp" = (
+/obj/structure/machinery/computer/cameras{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"KO" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"KR" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"Ld" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/shiva/green,
+/area/shiva/interior/colony/botany)
+"Lh" = (
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Lk" = (
+/obj/structure/largecrate/random/case,
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard/cp_bar)
+"Lr" = (
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "White"
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Lu" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/s_admin)
+"LE" = (
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/bar)
+"LF" = (
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"LU" = (
+/turf/open/floor/shiva/snow_mat,
+/area/shiva/interior/colony/botany)
+"Mi" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"MG" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Panic Room Shutters";
+	id = "south_panicroom"
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"ML" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/plating/platingdmg3,
+/area/shiva/interior/colony/s_admin)
+"MR" = (
+/obj/structure/safe,
+/obj/item/spacecash/c1000{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c500,
+/obj/effect/landmark/good_item,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/s_admin)
+"Nq" = (
+/turf/open/floor/shiva/green,
+/area/shiva/interior/colony/botany)
+"Nt" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib6"
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/colony/s_admin)
+"Nu" = (
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"NC" = (
+/obj/item/lightstick/variant/planted,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard)
+"On" = (
+/obj/item/stack/rods,
+/obj/structure/window_frame/colony/reinforced,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
+"ON" = (
+/obj/item/lightstick/red/variant/planted,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"OV" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"Pb" = (
+/obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"Py" = (
+/obj/item/trash/kepler,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"PG" = (
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
+"PI" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clipboard,
+/obj/item/tool/stamp,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"PV" = (
+/obj/structure/bed/bedroll,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Qh" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/bar)
+"QS" = (
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard)
+"Rs" = (
+/obj/structure/surface/table,
+/obj/item/tool/pen/blue{
+	pixel_x = -6
+	},
+/obj/item/paper_bin{
+	pixel_y = 7
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Ru" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"Ry" = (
+/obj/item/tool/mop{
+	pixel_x = -10
+	},
+/turf/open/floor/shiva/green,
+/area/shiva/interior/colony/botany)
+"RD" = (
+/obj/structure/bed/chair/wood/normal,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"RH" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"RP" = (
+/turf/open/floor/shiva/green/southwest,
+/area/shiva/interior/colony/botany)
+"RQ" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"RS" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"Se" = (
+/obj/effect/decal/cleanable/vomit{
+	icon_state = "vomit_4"
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"Sl" = (
+/obj/structure/machinery/disposal/broken,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
+"Sq" = (
+/obj/item/tool/wet_sign,
+/turf/open/floor/shiva/green/southeast,
+/area/shiva/interior/colony/botany)
+"SB" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
+"SU" = (
+/obj/item/device/flashlight/lamp{
+	pixel_y = 7
+	},
+/obj/item/frame/table/wood,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"Tc" = (
+/obj/item/frame/table/reinforced,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Td" = (
+/obj/item/reagent_container/food/drinks/cans/waterbottle,
+/obj/item/ammo_casing,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"Tj" = (
+/obj/structure/machinery/disposal/broken,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Tr" = (
+/obj/structure/machinery/computer/station_alert{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"TG" = (
+/obj/item/prop/colony/folded_bedroll,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/s_admin)
+"TI" = (
+/obj/item/ammo_casing,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/s_admin)
+"TL" = (
+/obj/item/weapon/gun/energy/taser,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"Ub" = (
+/obj/item/trash/kepler/flamehot,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"Ue" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/bar)
+"UD" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+	name = "\improper Colony Administration";
+	locked = 1
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"UW" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/shiva/green/southwest,
+/area/shiva/interior/colony/botany)
+"Vb" = (
+/obj/item/bodybag,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Vi" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
+"Vl" = (
+/obj/effect/acid_hole,
+/turf/closed/wall/shiva/prefabricated,
+/area/shiva/interior/colony/s_admin)
+"Vy" = (
+/obj/structure/surface/table,
+/obj/item/storage/toolbox/emergency,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"VC" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"VE" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	name = "\improper Colony Security Checkpoint"
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"VX" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/good_item,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"Wj" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Wm" = (
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"WA" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/bar)
+"WT" = (
+/obj/item/frame/table/wood,
+/turf/open/floor/plating/platingdmg2,
+/area/shiva/interior/colony/s_admin)
+"Xt" = (
+/obj/structure/flora/pottedplant,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"Xu" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/plating/platingdmg1,
+/area/shiva/interior/colony/s_admin)
+"XP" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"YD" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/cameras{
+	dir = 1
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"YS" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"YT" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/machinery/computer/atmos_alert{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"Zi" = (
+/obj/item/weapon/gun/pistol/holdout,
+/obj/item/ammo_magazine/pistol/holdout,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/bar)
+"Zl" = (
+/obj/item/stack/cable_coil,
+/turf/open/floor/plating/platingdmg1,
+/area/shiva/interior/colony/s_admin)
+"ZD" = (
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+
+(1,1,1) = {"
+PG
+ce
+FY
+FY
+FY
+FY
+FY
+FY
+FY
+FY
+FY
+FY
+ce
+ce
+ce
+ce
+ce
+ce
+pQ
+pQ
+Ik
+FY
+FY
+"}
+(2,1,1) = {"
+PG
+ce
+FY
+FY
+FY
+FY
+FY
+FY
+FY
+FY
+FY
+ce
+ce
+JQ
+yS
+Av
+yd
+ce
+QS
+NC
+QS
+FY
+FY
+"}
+(3,1,1) = {"
+Kb
+ce
+FY
+FY
+FY
+FY
+FY
+FY
+FY
+FY
+FY
+ce
+MR
+wM
+fj
+rQ
+iZ
+ce
+Ik
+jK
+pQ
+FY
+FY
+"}
+(4,1,1) = {"
+RP
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+fj
+xZ
+fj
+dv
+ce
+yz
+Ik
+Ik
+FY
+FY
+"}
+(5,1,1) = {"
+RP
+GC
+iS
+pG
+tu
+ba
+Cd
+mC
+dF
+dF
+qT
+JF
+ce
+pz
+TG
+eZ
+ce
+ce
+ce
+ce
+Ik
+FY
+FY
+"}
+(6,1,1) = {"
+RP
+Vl
+dF
+Hx
+Ad
+Hx
+dF
+CZ
+Hx
+Ad
+zw
+dF
+ce
+Nu
+Ub
+xZ
+Pb
+vq
+pS
+ce
+QS
+FY
+FY
+"}
+(7,1,1) = {"
+Ld
+nh
+rM
+tk
+YT
+zi
+xa
+dF
+tk
+Kp
+rB
+qU
+ce
+ul
+dF
+dF
+ov
+yQ
+kB
+ce
+Ik
+FY
+FY
+"}
+(8,1,1) = {"
+RP
+Vi
+CZ
+lQ
+gO
+uM
+dF
+dF
+RH
+Tr
+PI
+Dx
+ce
+uE
+CZ
+tl
+Dl
+dF
+iF
+ce
+NC
+FY
+FY
+"}
+(9,1,1) = {"
+UW
+GC
+mI
+Hx
+RS
+Hx
+CZ
+dF
+Hx
+RS
+Jp
+dF
+of
+Td
+RD
+Rs
+sq
+ye
+fj
+ce
+QS
+FY
+FY
+"}
+(10,1,1) = {"
+js
+zA
+do
+Hx
+Hx
+lP
+dF
+Lr
+Hx
+Hx
+Hx
+yq
+of
+Vy
+Fp
+Tj
+Fx
+tY
+oY
+ce
+QS
+FY
+FY
+"}
+(11,1,1) = {"
+Nq
+tW
+dg
+uh
+lq
+Hx
+dF
+dF
+Hx
+Hx
+Hx
+CZ
+of
+ns
+PV
+He
+Wj
+dF
+gf
+ce
+QS
+FY
+FY
+"}
+(12,1,1) = {"
+oH
+GC
+Bg
+oT
+Cx
+Hx
+dF
+CZ
+LF
+Ad
+Hx
+dF
+of
+Fc
+CZ
+DY
+dF
+BU
+ce
+ce
+cS
+ch
+Fn
+"}
+(13,1,1) = {"
+Nq
+aq
+rM
+tk
+Bq
+XP
+dF
+dF
+tk
+Bq
+XP
+sy
+ce
+YS
+dF
+dF
+cL
+bi
+Mi
+MG
+Qh
+LE
+LE
+"}
+(14,1,1) = {"
+Nq
+SB
+FK
+RH
+HA
+Cu
+dF
+dF
+cY
+HA
+Cu
+dF
+ce
+yi
+BU
+dF
+dF
+Ko
+gB
+fM
+Ue
+Zi
+LE
+"}
+(15,1,1) = {"
+Sq
+GC
+dF
+Hx
+RS
+Hx
+CZ
+dF
+zw
+RS
+Hx
+dF
+ce
+fj
+Vb
+ky
+CZ
+ZD
+GJ
+fM
+fx
+BQ
+BQ
+"}
+(16,1,1) = {"
+vL
+GC
+dF
+Tc
+VC
+dF
+Lh
+dF
+gR
+dF
+vn
+Xt
+ce
+Se
+Dg
+dF
+yQ
+CZ
+Py
+fM
+uA
+LE
+LE
+"}
+(17,1,1) = {"
+fT
+ce
+GC
+GC
+GC
+jE
+GC
+ce
+oT
+cO
+cO
+uh
+ce
+tD
+RQ
+uP
+IQ
+gL
+Bv
+MG
+WA
+LE
+LE
+"}
+(18,1,1) = {"
+Ry
+GC
+DU
+jL
+TL
+fR
+ob
+GC
+AY
+vs
+vs
+AY
+ce
+GC
+GC
+GC
+GC
+ce
+ce
+ce
+cS
+BD
+Fn
+"}
+(19,1,1) = {"
+tG
+GC
+gn
+fR
+fR
+Iy
+jP
+GC
+Ru
+Hp
+cO
+Hx
+GC
+VX
+cv
+kP
+lb
+GC
+ai
+Wm
+FY
+FY
+FY
+"}
+(20,1,1) = {"
+Sq
+GC
+Hf
+ff
+OV
+xg
+YD
+GC
+gh
+cO
+cO
+Hx
+FH
+IB
+aH
+SU
+xD
+GC
+ne
+Wm
+FY
+FY
+FY
+"}
+(21,1,1) = {"
+zu
+ce
+ce
+VE
+ce
+wO
+bI
+ce
+EX
+cO
+hN
+Hx
+GC
+pC
+fj
+kT
+fj
+GC
+KO
+ON
+FY
+FY
+FY
+"}
+(22,1,1) = {"
+Jx
+On
+KR
+GQ
+uR
+Hx
+Hx
+On
+Cx
+Nt
+cO
+AC
+ce
+GC
+GC
+AZ
+GC
+ce
+Fg
+Wm
+FY
+FY
+FY
+"}
+(23,1,1) = {"
+PG
+UD
+Lu
+wX
+TI
+wX
+ug
+UD
+eO
+wW
+vs
+Hx
+GC
+Ff
+wH
+AZ
+WT
+GC
+Lk
+Wm
+FY
+FY
+FY
+"}
+(24,1,1) = {"
+LU
+Hx
+eO
+wX
+DB
+wX
+wX
+Hx
+sZ
+vs
+vs
+zw
+Zl
+ML
+AZ
+ti
+wH
+pV
+ne
+Wm
+FY
+FY
+FY
+"}
+(25,1,1) = {"
+PG
+nh
+zc
+zw
+Hx
+Hx
+Hx
+nh
+DW
+Hx
+Hx
+uJ
+gk
+ng
+wH
+Cc
+Fa
+GC
+ne
+ON
+FY
+FY
+FY
+"}
+(26,1,1) = {"
+PG
+GC
+Hx
+Hx
+Jv
+Hx
+AY
+GC
+yo
+Hx
+Jv
+zp
+GC
+Sl
+Xu
+wH
+AZ
+GC
+wY
+Wm
+FY
+FY
+FY
+"}
+(27,1,1) = {"
+PG
+GC
+GC
+GC
+GC
+GC
+GC
+GC
+GC
+GC
+GC
+ce
+ce
+ce
+ce
+GC
+GC
+ce
+ne
+Wm
+FY
+FY
+FY
+"}

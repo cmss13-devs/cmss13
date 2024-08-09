@@ -224,16 +224,16 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	if(strength < 1)
 		return phrase
 	else
-		strength = Ceiling(strength/5)
+		strength = ceil(strength/5)
 
 	var/list/split_phrase = text2list(phrase," ") //Split it up into words.
 	var/list/unstuttered_words = split_phrase.Copy()
 
-	var/max_stutter = min(strength, split_phrase.len)
+	var/max_stutter = min(strength, length(split_phrase))
 	var/stutters = rand(max(max_stutter - 3, 1), max_stutter)
 
 	for(var/i = 0, i < stutters, i++)
-		if (!unstuttered_words.len)
+		if (!length(unstuttered_words))
 			break
 
 		var/word = pick(unstuttered_words)
@@ -268,7 +268,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 				else // normal stutter
 					word = R.Replace(word, "$1$2-$2$3$4")
 
-		if(prob(3 * strength) && index != unstuttered_words.len - 1) // stammer / pause - don't pause at the end of sentences!
+		if(prob(3 * strength) && index != length(unstuttered_words) - 1) // stammer / pause - don't pause at the end of sentences!
 			word = R.Replace(word, "$0 ...")
 
 		split_phrase[index] = word
@@ -315,7 +315,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		message = replace_X.Replace(message, "CKTH")
 	return message
 
-#define PIXELS_PER_STRENGTH_VAL 24
+#define PIXELS_PER_STRENGTH_VAL 28
 
 /proc/shake_camera(mob/M, steps = 1, strength = 1, time_per_step = 1)
 	if(!M?.client || (M.shakecamera > world.time))
@@ -326,12 +326,12 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	var/old_X = M.client.pixel_x
 	var/old_y = M.client.pixel_y
 
-	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step, flags = ANIMATION_PARALLEL)
+	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = CUBIC_EASING | EASE_IN, time = time_per_step, flags = ANIMATION_PARALLEL)
 	var/i = 1
 	while(i < steps)
-		animate(pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step)
+		animate(pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = CUBIC_EASING | EASE_IN, time = time_per_step)
 		i++
-	animate(pixel_x = old_X, pixel_y = old_y,time = clamp(Floor(strength/PIXELS_PER_STRENGTH_VAL),2,4))//ease it back
+	animate(pixel_x = old_X, pixel_y = old_y,time = clamp(floor(strength/PIXELS_PER_STRENGTH_VAL),2,4))//ease it back
 
 #undef PIXELS_PER_STRENGTH_VAL
 
@@ -342,7 +342,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	return FALSE
 
 
-/mob/proc/abiotic(full_body = 0)
+/mob/proc/abiotic(full_body = FALSE)
 	if(full_body && ((src.l_hand && !( src.l_hand.flags_item & ITEM_ABSTRACT )) || (src.r_hand && !( src.r_hand.flags_item & ITEM_ABSTRACT )) || (src.back || src.wear_mask)))
 		return TRUE
 
@@ -386,68 +386,16 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 /mob/proc/get_eye_protection()
 	return EYE_PROTECTION_NONE
 
-/mob/proc/a_select_zone(input, client/user)
-	var/atom/movable/screen/zone_sel/zone
-
-	for(var/A in user.screen)
-		if(istype(A, /atom/movable/screen/zone_sel))
-			zone = A
-
-	if(!zone)
+/// Change the mob's selected body zone to `target_zone`.
+/mob/proc/select_body_zone(target_zone)
+	if(!target_zone || !hud_used?.zone_sel)
 		return
 
-	switch(input)
-		if("head")
-			switch(usr.zone_selected)
-				if("head")
-					zone.selecting = "eyes"
-				if("eyes")
-					zone.selecting = "mouth"
-				if("mouth")
-					zone.selecting = "head"
-				else
-					zone.selecting = "head"
-		if("chest")
-			zone.selecting = "chest"
-		if("groin")
-			zone.selecting = "groin"
-		if("rarm")
-			switch(usr.zone_selected)
-				if("r_arm")
-					zone.selecting = "r_hand"
-				if("r_hand")
-					zone.selecting = "r_arm"
-				else
-					zone.selecting = "r_arm"
-		if("larm")
-			switch(usr.zone_selected)
-				if("l_arm")
-					zone.selecting = "l_hand"
-				if("l_hand")
-					zone.selecting = "l_arm"
-				else
-					zone.selecting = "l_arm"
-		if("rleg")
-			switch(usr.zone_selected)
-				if("r_leg")
-					zone.selecting = "r_foot"
-				if("r_foot")
-					zone.selecting = "r_leg"
-				else
-					zone.selecting = "r_leg"
-		if("lleg")
-			switch(usr.zone_selected)
-				if("l_leg")
-					zone.selecting = "l_foot"
-				if("l_foot")
-					zone.selecting = "l_leg"
-				else
-					zone.selecting = "l_leg"
-		if("next")
-			zone.selecting = next_in_list(usr.zone_selected, DEFENSE_ZONES_LIVING)
-		if("prev")
-			zone.selecting = prev_in_list(usr.zone_selected, DEFENSE_ZONES_LIVING)
-	zone.update_icon(usr)
+	// Update the mob's selected zone.
+	zone_selected = target_zone
+	// Update the HUD's selected zone.
+	hud_used.zone_sel.selecting = target_zone
+	hud_used.zone_sel.update_icon()
 
 #define DURATION_MULTIPLIER_TIER_1 0.75
 #define DURATION_MULTIPLIER_TIER_2 0.5
@@ -472,8 +420,10 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
 			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-				return DURATION_MULTIPLIER_TIER_2
+				return (DURATION_MULTIPLIER_TIER_3 + DURATION_MULTIPLIER_TIER_2) / 2
 			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				return DURATION_MULTIPLIER_TIER_2
+			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 				return DURATION_MULTIPLIER_TIER_1
 // Construction
 		if(SKILL_CONSTRUCTION)
@@ -482,7 +432,9 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 // Medical
 		if(SKILL_MEDICAL)
 			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_MASTER))
-				return DURATION_MULTIPLIER_TIER_3
+				return 0.35
+			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
+				return DURATION_MULTIPLIER_TIER_1
 // Surgeon
 		if(SKILL_SURGERY)
 			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
@@ -534,7 +486,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
  * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
  * for why this isn't atom/verb/examine()
  */
-/mob/verb/examinate(atom/examinify as mob|obj|turf in view())
+/mob/verb/examinate(atom/examinify as mob|obj|turf in view(28, usr))
 	set name = "Examine"
 	set category = "IC"
 
@@ -601,7 +553,10 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
 		if(!ghost.client)
 			continue
-		ghost.notify_ghost(message, ghost_sound, enter_link, enter_text, source, alert_overlay, action, flashwindow, ignore_mapload, ignore_key, header, notify_volume, extra_large)
+		var/specific_ghost_sound = ghost_sound
+		if(!(ghost.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
+			specific_ghost_sound = null
+		ghost.notify_ghost(message, specific_ghost_sound, enter_link, enter_text, source, alert_overlay, action, flashwindow, ignore_mapload, ignore_key, header, notify_volume, extra_large)
 
 /mob/dead/observer/proc/notify_ghost(message, ghost_sound, enter_link, enter_text, atom/source, mutable_appearance/alert_overlay, action = NOTIFY_JUMP, flashwindow = FALSE, ignore_mapload = TRUE, ignore_key, header, notify_volume = 100, extra_large = FALSE) //Easy notification of a single ghosts.
 	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load
@@ -652,7 +607,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	alert_overlay.layer = FLOAT_LAYER
 	alert_overlay.plane = FLOAT_PLANE
-
+	alert_overlay.underlays.Cut()
 	screen_alert.overlays += alert_overlay
 
 /mob/proc/reset_lighting_alpha()
@@ -660,4 +615,3 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	sync_lighting_plane_alpha()
-

@@ -5,7 +5,7 @@
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "egg_item"
 	w_class = SIZE_MASSIVE
-	flags_atom = OPENCONTAINER
+	flags_atom = FPRINT|OPENCONTAINER
 	flags_item = NOBLUDGEON
 	throw_range = 1
 	layer = MOB_LAYER
@@ -104,12 +104,15 @@
 		if(weed.weed_strength >= WEED_LEVEL_WEAK && weed.linked_hive.hivenumber == hivenumber) //check for ANY weeds
 			any_weeds = weed
 
+	// If the user isn't an eggsac carrier, then they can only  plant eggs on hive weeds.
+	var/needs_hive_weeds = !istype(user.strain, /datum/xeno_strain/eggsac)
+
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(!any_weeds && !hive_weeds) //you need at least some weeds to plant on.
 		to_chat(user, SPAN_XENOWARNING("[src] must be planted on [lowertext(hive.prefix)]weeds."))
 		return
 
-	if(!hive_weeds && user.mutation_type != CARRIER_EGGSAC)
+	if(!hive_weeds && needs_hive_weeds)
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
 
@@ -138,7 +141,7 @@
 		return
 
 	for(var/obj/effect/alien/weeds/weed in T)
-		if(weed.weed_strength >= WEED_LEVEL_HIVE || user.mutation_type == CARRIER_EGGSAC)
+		if(weed.weed_strength >= WEED_LEVEL_HIVE || !needs_hive_weeds)
 			user.use_plasma(30)
 			var/obj/effect/alien/egg/newegg
 			if(weed.weed_strength >= WEED_LEVEL_HIVE)

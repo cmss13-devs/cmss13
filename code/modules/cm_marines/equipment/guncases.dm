@@ -67,7 +67,6 @@
 	new /obj/item/ammo_magazine/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg/holo_target(src)
 	new /obj/item/attachable/flashlight
-	new /obj/item/attachable/bipod
 
 //------------
 /obj/item/storage/box/guncase/m41aMK1
@@ -347,6 +346,30 @@
 	new /obj/item/device/vulture_spotter_tripod(src)
 	new /obj/item/device/vulture_spotter_scope/skillless(src, WEAKREF(rifle))
 	new /obj/item/tool/screwdriver(src) // Spotter scope needs a screwdriver to disassemble
+
+/obj/item/storage/box/guncase/vulture/holo_target
+	name = "\improper M707 holo-targetting anti-materiel rifle case"
+	desc = "A gun case containing the M707 \"Vulture\" anti-materiel rifle and its requisite spotting tools. This variant is pre-loaded with <b>IFF-CAPABLE</b> holo-targeting rounds."
+
+/obj/item/storage/box/guncase/vulture/holo_target/fill_preset_inventory()
+	var/obj/item/weapon/gun/boltaction/vulture/holo_target/rifle = new(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope(src, WEAKREF(rifle))
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/pamphlet/trait/vulture(src)
+	new /obj/item/pamphlet/trait/vulture(src)
+
+/obj/item/storage/box/guncase/vulture/holo_target/skillless
+	storage_slots = 5
+
+/obj/item/storage/box/guncase/vulture/holo_target/skillless/fill_preset_inventory()
+	var/obj/item/weapon/gun/boltaction/vulture/holo_target/skillless/rifle = new(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope/skillless(src, WEAKREF(rifle))
+	new /obj/item/tool/screwdriver(src)
+
 
 /obj/item/storage/box/guncase/xm51
 	name = "\improper XM51 breaching scattergun case"

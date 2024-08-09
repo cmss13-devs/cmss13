@@ -16,9 +16,6 @@
 
 	var/atom/movable/screen/hands = null //robot
 
-	var/adminhelp_marked = 0 // Prevents marking an Adminhelp more than once. Making this a client define will cause runtimes and break some Adminhelps
-	var/adminhelp_marked_admin = "" // Ckey of last marking admin
-
 	/// a ckey that persists client logout / ghosting, replaced when a client inhabits the mob
 	var/persistent_ckey
 
@@ -28,7 +25,8 @@
 	I'll make some notes on where certain variable defines should probably go.
 	Changing this around would probably require a good look-over the pre-existing code.
 	*/
-	var/list/observers //The list of people observing this mob.
+	/// The list of people observing this mob.
+	var/list/mob/dead/observer/observers
 	var/zone_selected = "chest"
 
 	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
@@ -165,7 +163,7 @@
 
 	var/datum/skills/skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
 									//see skills.dm in #define folder and code/datums/skills.dm for more info
-	var/obj/item/legcuffs/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
+	var/obj/item/restraint/legcuffs/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
 
 	var/list/viruses = list() //List of active diseases
 
@@ -194,6 +192,8 @@
 	var/away_timer = 0 //How long the player has not done an action.
 
 	var/recently_pointed_to = 0 //used as cooldown for the pointing verb.
+
+	var/recently_grabbed = 0 //used as a cooldown for item grabs
 
 	///Color matrices to be applied to the client window. Assoc. list.
 	var/list/client_color_matrices
@@ -399,7 +399,7 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		if(!languages.len)
+		if(!length(languages))
 			to_chat(usr, "This mob knows no languages.")
 			return
 
@@ -429,4 +429,3 @@
 			return
 
 		src.regenerate_icons()
-

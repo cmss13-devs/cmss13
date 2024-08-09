@@ -66,7 +66,7 @@
 		if (BB.opened)
 			return
 		visible_message("[BB] begins to wiggle violently!")
-		if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
+		if(do_after(src, 5 SECONDS, INTERRUPT_UNCONSCIOUS, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
 			BB.open()
 
 		///The medical machines below are listed separately to allow easier changes to each process

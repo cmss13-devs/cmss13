@@ -557,6 +557,7 @@
 //---ability actions--\\
 
 /datum/action/item_action/m46c/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/rifle/m46c/protag_gun = holder_item
 	if(!ishuman(owner))
 		return
@@ -1227,6 +1228,7 @@
 	fire_sound = 'sound/weapons/gun_hpr.ogg'
 	aim_slowdown = SLOWDOWN_ADS_LMG
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
+	starting_attachment_types = list(/obj/item/attachable/bipod)
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/reddot,
@@ -1587,6 +1589,11 @@
 /obj/item/weapon/gun/rifle/m4ra/training
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/rubber
 
+/obj/item/weapon/gun/rifle/m4ra/tactical
+	current_mag = /obj/item/ammo_magazine/rifle/m4ra/ext
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip)
+
+
 //-------------------------------------------------------
 
 //L42A Battle Rifle
@@ -1763,9 +1770,9 @@
 
 /obj/item/weapon/gun/rifle/rmc_f90/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	fire_delay = FIRE_DELAY_TIER_11
 	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_8
+	burst_delay = FIRE_DELAY_TIER_11
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_1
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -1804,7 +1811,7 @@
 
 /obj/item/weapon/gun/rifle/rmc_f90/scope/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
+	fire_delay = FIRE_DELAY_TIER_11
 	burst_amount = 0
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_1
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
@@ -1844,9 +1851,9 @@
 
 /obj/item/weapon/gun/rifle/rmc_f90/shotgun/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	fire_delay = FIRE_DELAY_TIER_11
 	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_8
+	burst_delay = FIRE_DELAY_TIER_11
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_1
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8

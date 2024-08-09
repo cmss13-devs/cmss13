@@ -54,13 +54,6 @@
 	*/
 	var/list/cooldowns
 
-#ifndef EXPERIMENT_515_DONT_CACHE_REF
-	/// A cached version of our \ref
-	/// The brunt of \ref costs are in creating entries in the string tree (a tree of immutable strings)
-	/// This avoids doing that more then once per datum by ensuring ref strings always have a reference to them after they're first pulled
-	var/cached_ref
-#endif
-
 	/// A weak reference to another datum
 	var/datum/weakref/weak_reference
 
@@ -75,6 +68,10 @@
 
 #ifdef DATUMVAR_DEBUGGING_MODE
 	var/list/cached_vars
+#endif
+
+#ifdef AUTOWIKI
+	var/autowiki_skip = FALSE
 #endif
 
 /**
@@ -126,7 +123,7 @@
 			var/datum/component/C = all_components
 			qdel(C, FALSE, TRUE)
 		if(datum_components)
-			debug_log("'[src]' datum_components was not null after removing all components! [datum_components.len] entries remained...")
+			debug_log("'[src]' datum_components was not null after removing all components! [length(datum_components)] entries remained...")
 			datum_components.Cut()
 
 	var/list/lookup = comp_lookup

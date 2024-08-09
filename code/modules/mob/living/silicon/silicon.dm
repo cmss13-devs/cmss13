@@ -64,7 +64,7 @@
 // this function shows health in the Status panel
 /mob/living/silicon/proc/show_system_integrity()
 	if(!stat)
-		stat(null, text("System integrity: [round((health/maxHealth)*100)]%"))
+		stat(null, text("System integrity: [floor((health/maxHealth)*100)]%"))
 	else
 		stat(null, text("Systems nonfunctional"))
 
@@ -145,7 +145,7 @@
 			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 			HUD_nbr = 2
 		if("Squad HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_USCM]
+			H = GLOB.huds[MOB_HUD_FACTION_MARINE]
 			HUD_nbr = 3
 		else
 			return

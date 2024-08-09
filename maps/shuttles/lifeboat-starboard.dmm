@@ -164,9 +164,7 @@
 	id = "Boat2-D2";
 	throw_dir = 1
 	},
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "vG" = (
 /obj/docking_port/mobile/crashable/lifeboat/starboard,
@@ -188,9 +186,7 @@
 	id = "Boat2-D1";
 	throw_dir = 1
 	},
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "zv" = (
 /turf/closed/shuttle/lifeboat{
@@ -213,9 +209,7 @@
 	},
 /area/shuttle/lifeboat)
 "AF" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "plating_striped"
-	},
+/turf/open/shuttle/lifeboat/plating_striped,
 /area/shuttle/lifeboat)
 "Bf" = (
 /turf/closed/shuttle/lifeboat/transparent{
@@ -376,9 +370,7 @@
 	},
 /area/shuttle/lifeboat)
 "Qj" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "Rk" = (
 /turf/closed/shuttle/lifeboat{
@@ -397,10 +389,7 @@
 	},
 /area/shuttle/lifeboat)
 "SA" = (
-/turf/open/shuttle/lifeboat{
-	dir = 1;
-	icon_state = "plating_striped"
-	},
+/turf/open/shuttle/lifeboat/plating_striped/north,
 /area/shuttle/lifeboat)
 "Td" = (
 /turf/closed/shuttle/lifeboat{
@@ -445,9 +434,7 @@
 	},
 /area/shuttle/lifeboat)
 "VZ" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor8"
-	},
+/turf/open/shuttle/escapepod/floor1/east,
 /area/shuttle/lifeboat)
 "Xj" = (
 /turf/closed/shuttle/lifeboat{
@@ -455,9 +442,7 @@
 	},
 /area/shuttle/lifeboat)
 "XV" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "plate"
-	},
+/turf/open/shuttle/lifeboat/plate,
 /area/shuttle/lifeboat)
 "Zl" = (
 /turf/closed/shuttle/lifeboat{

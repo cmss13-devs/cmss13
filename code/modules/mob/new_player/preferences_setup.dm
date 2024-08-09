@@ -6,8 +6,9 @@
 		else
 			gender = FEMALE
 
-	ethnicity = random_ethnicity()
+	skin_color = random_skin_color()
 	body_type = random_body_type()
+	body_size = random_body_size()
 
 	h_style = random_hair_style(gender, species)
 	f_style = random_facial_hair_style(gender, species)
@@ -210,20 +211,20 @@
 
 	if(isnull(preview_front))
 		preview_front = new()
-		owner.add_to_screen(preview_front)
 		preview_front.vis_contents += preview_dummy
 		preview_front.screen_loc = "preview:0,0"
 	preview_front.icon_state = bg_state
+	owner.add_to_screen(preview_front)
 
 	if(isnull(rotate_left))
 		rotate_left = new(null, preview_dummy)
-		owner.add_to_screen(rotate_left)
 		rotate_left.screen_loc = "preview:-1:16,0"
+	owner.add_to_screen(rotate_left)
 
 	if(isnull(rotate_right))
 		rotate_right = new(null, preview_dummy)
-		owner.add_to_screen(rotate_right)
 		rotate_right.screen_loc = "preview:1:-16,0"
+	owner.add_to_screen(rotate_right)
 
 /datum/preferences/proc/job_pref_to_gear_preset()
 	var/high_priority
@@ -257,8 +258,12 @@
 			return /datum/equipment_preset/uscm_ship/auxiliary_officer
 		if(JOB_INTEL)
 			return /datum/equipment_preset/uscm/intel/full
-		if(JOB_PILOT)
-			return /datum/equipment_preset/uscm_ship/po/full
+		if(JOB_CAS_PILOT)
+			return /datum/equipment_preset/uscm_ship/gp/full
+		if(JOB_TANK_CREW)
+			return /datum/equipment_preset/uscm/tank/full
+		if(JOB_DROPSHIP_PILOT)
+			return /datum/equipment_preset/uscm_ship/dp/full
 		if(JOB_DROPSHIP_CREW_CHIEF)
 			return /datum/equipment_preset/uscm_ship/dcc/full
 		if(JOB_CORPORATE_LIAISON)

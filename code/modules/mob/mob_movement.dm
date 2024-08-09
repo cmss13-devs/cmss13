@@ -191,7 +191,7 @@
 				for(var/zone in extremities)
 					if(!(human.get_limb(zone)))
 						extremities.Remove(zone)
-				if(extremities.len < 4)
+				if(length(extremities) < 4)
 					return
 			//now crawl
 			mob.crawling = TRUE
@@ -261,12 +261,12 @@
 
 		if(istype(src,/mob/living/carbon/human/))  // Only humans can wear magboots, so we give them a chance to.
 			var/mob/living/carbon/human/H = src
-			if((istype(turf,/turf/open/floor)) && (src.lastarea.has_gravity == 0) && !(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
+			if((istype(turf,/turf/open/floor)) && !(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
 				continue
 
 
 		else
-			if((istype(turf,/turf/open/floor)) && (src.lastarea && src.lastarea.has_gravity == 0)) // No one else gets a chance.
+			if(istype(turf,/turf/open/floor)) // No one else gets a chance.
 				continue
 
 
@@ -301,5 +301,5 @@
 	if(stat)
 		prob_slip = 0  // Changing this to zero to make it line up with the comment.
 
-	prob_slip = round(prob_slip)
+	prob_slip = floor(prob_slip)
 	return(prob_slip)

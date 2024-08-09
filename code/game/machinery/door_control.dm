@@ -61,6 +61,9 @@
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(ship_id)
 	if (!istype(shuttle))
 		return
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/comp = shuttle.getControlConsole()
+	if(comp?.dropship_control_lost)
+		return
 	if(is_mainship_level(z)) // on the almayer
 		return
 
@@ -176,9 +179,9 @@
 		flick(initial(icon_state) + "-denied",src)
 		return
 
-	// safety first
-	if(!is_mainship_level(SSshuttle.vehicle_elevator.z))
-		flick(initial(icon_state) + "-denied",src)
+	// If someone's trying to lower the railings but the elevator isn't in the vehicle bay.
+	if(!desiredstate && !is_mainship_level(SSshuttle.vehicle_elevator.z))
+		flick(initial(icon_state) + "-denied", src) // Safety first!
 		return
 
 	use_power(5)

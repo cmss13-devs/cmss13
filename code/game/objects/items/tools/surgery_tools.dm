@@ -96,6 +96,7 @@
 	force = 10
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
+	demolition_mod = 0.1
 	w_class = SIZE_TINY
 	throwforce = 5
 	flags_item = CAN_DIG_SHRAPNEL
@@ -201,6 +202,8 @@
 	icon_state = "bone-gel"
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 7500)
+	///base icon state for update_icon() to reference, fixes bonegel/empty
+	var/base_icon_state = "bone-gel"
 	///percent of gel remaining in container
 	var/remaining_gel = 100
 	///If gel is used when doing bone surgery
@@ -214,6 +217,22 @@
 	var/fracture_fix_cost = 5
 	///How much bone gel is needed to mend bones
 	var/mend_bones_fix_cost = 5
+
+/obj/item/tool/surgery/bonegel/update_icon()
+	. = ..()
+	if(remaining_gel >= 100)
+		icon_state = base_icon_state
+		return
+	if(remaining_gel > 50)
+		icon_state = "[base_icon_state]_75"
+		return
+	if(remaining_gel > 25)
+		icon_state = "[base_icon_state]_50"
+		return
+	if(remaining_gel > 0)
+		icon_state = "[base_icon_state]_25"
+		return
+	icon_state = "[base_icon_state]_0"
 
 /obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
 	. = ..()
@@ -244,6 +263,7 @@
 		if(!do_after(user, time_per_refill, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, refilling_obj))
 			break
 		remaining_gel = clamp(remaining_gel + 10, 0, 100)
+		update_icon()
 		to_chat(user, SPAN_NOTICE("[refilling_obj] chimes, and displays \"[remaining_gel]% filled\"."))
 
 	refilling = FALSE
@@ -257,14 +277,17 @@
 	if(remaining_gel < gel_cost)
 		return FALSE
 	remaining_gel -= gel_cost
+	update_icon()
 	return TRUE
 
 /obj/item/tool/surgery/bonegel/empty
 	remaining_gel = 0
+	icon_state = "bone-gel_0"
 
 /obj/item/tool/surgery/bonegel/predatorbonegel
 	name = "gel gun"
 	desc = "Inside is a liquid that is similar in effect to bone gel, but requires much smaller quantities, allowing near infinite use from a single capsule."
+	base_icon_state = "predator_bone-gel"
 	icon_state = "predator_bone-gel"
 	unlimited_gel = TRUE
 
@@ -509,8 +532,8 @@ t. optimisticdude
 					to_chat(usr, "This is difficult, you probably shouldn't move")
 					return
 				to_chat(usr, "You've cut through the outer layers of Chitin")
-				new /obj/item/XenoBio/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
-				new /obj/item/XenoBio/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
+				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
+				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				T.butchery_progress++
 				active = 0
 		if(1)
@@ -519,7 +542,7 @@ t. optimisticdude
 					to_chat(usr, "This is difficult, you probably shouldn't move.")
 					return
 				to_chat(usr, "You've cut into the chest cavity and retreived a sample of blood.")
-				new /obj/item/XenoBio/Blood(T.loc)//This will be a sample of blood eventually
+				new /obj/item/oldresearch/Blood(T.loc)//This will be a sample of blood eventually
 				T.butchery_progress++
 				active = 0
 		if(2)
@@ -529,7 +552,7 @@ t. optimisticdude
 					return
 				//to_chat(usr, "You've cut out an intact organ.")
 				to_chat(usr, "You've cut out some Biomass...")
-				new /obj/item/XenoBio/Resin(T.loc)//This will be an organ eventually, based on the caste.
+				new /obj/item/oldresearch/Resin(T.loc)//This will be an organ eventually, based on the caste.
 				T.butchery_progress++
 				active = 0
 		if(3)
@@ -539,6 +562,6 @@ t. optimisticdude
 					return
 				to_chat(usr, "You scrape out the remaining biomass.")
 				active = 0
-				new /obj/item/XenoBio/Resin(T.loc)
+				new /obj/item/oldresearch/Resin(T.loc)
 				new /obj/effect/decal/remains/xeno(T.loc)
 				qdel(T)

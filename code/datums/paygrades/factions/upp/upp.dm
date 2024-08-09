@@ -84,15 +84,15 @@
 
 /datum/paygrade/upp/uo3
 	paygrade = PAY_SHORT_UO3
-	name = "Captain"
-	prefix = "Cpt."
+	name = "Kapitan"
+	prefix = "Kpt."
 	pay_multiplier = 2
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/upp/uo4
 	paygrade = PAY_SHORT_UO4
-	name = "Major"
-	prefix = "Maj."
+	name = "Mayjor"
+	prefix = "May."
 	pay_multiplier = 2.5
 	officer_grade = GRADE_OFFICER
 
@@ -112,7 +112,7 @@
 
 /datum/paygrade/upp/uo7
 	paygrade = PAY_SHORT_UO7
-	name = "General Lieutenant"
+	name = "General Leytenant"
 	prefix = "GenLt."
 	pay_multiplier = 5
 	officer_grade = GRADE_FLAG

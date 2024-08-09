@@ -1111,7 +1111,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer
-	name = "UPP Lieutenant"
+	name = "UPP Mladshiy Leytenant"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/officer
@@ -1273,7 +1273,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/senior
-	name = "UPP Senior Lieutenant"
+	name = "UPP Starshiy Leytenant"
 	assignment = JOB_UPP_SRLT_OFFICER
 	rank = JOB_UPP_SRLT_OFFICER
 	role_comm_title = "Sr-Lt."
@@ -1432,7 +1432,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/kapitan
-	name = "UPP Captain"
+	name = "UPP Kapitan"
 	assignment = JOB_UPP_KPT_OFFICER
 	rank = JOB_UPP_KPT_OFFICER
 	role_comm_title = "May."
@@ -1592,7 +1592,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/major
-	name = "UPP Major"
+	name = "UPP Mayjor"
 	assignment = JOB_UPP_MAY_OFFICER
 	rank = JOB_UPP_MAY_OFFICER
 	role_comm_title = "May."
@@ -1753,8 +1753,8 @@
 
 /datum/equipment_preset/upp/officer/podpolkovnik
 	name = "UPP Podpolkovnik"
-	assignment = JOB_UPP_KOL_OFFICER
-	rank = JOB_UPP_KOL_OFFICER
+	assignment = JOB_UPP_LTKOL_OFFICER
+	rank = JOB_UPP_LTKOL_OFFICER
 	role_comm_title = "Lt. Kol."
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
@@ -1912,9 +1912,9 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/Polkovnik
-	name = "UPP Polkovnik"
-	assignment = JOB_UPP_MAY_GENERAL
-	rank = JOB_UPP_MAY_GENERAL
+	name = "UPP General Mayjor"
+	assignment = JOB_UPP_BRIG_GENERAL
+	rank = JOB_UPP_BRIG_GENERAL
 	role_comm_title = "Kol."
 	paygrades = list(PAY_SHORT_UO6 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
@@ -2072,7 +2072,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/may_gen
-	name = "UPP General Lieutenant"
+	name = "UPP General Leytenant"
 	assignment = JOB_UPP_MAY_GENERAL
 	rank = JOB_UPP_MAY_GENERAL
 	role_comm_title = "May. Gen."

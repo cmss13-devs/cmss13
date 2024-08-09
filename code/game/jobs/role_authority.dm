@@ -38,6 +38,7 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 	var/list/roles_for_mode //Derived list of roles only for the game mode, generated when the round starts.
 	var/list/castes_by_path //Master list generated when role aithority is created, listing every caste by path.
 	var/list/castes_by_name //Master list generated when role authority is created, listing every default caste by name.
+	var/list/other_roles = list(JOB_OBSERVER, JOB_BRAINWORM)
 
 	/// List of mapped roles that should be used in place of usual ones
 	var/list/role_mappings

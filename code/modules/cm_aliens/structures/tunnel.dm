@@ -99,7 +99,7 @@
 
 /obj/structure/tunnel/attackby(obj/item/W as obj, mob/user as mob)
 	if(!isxeno(user))
-		if(istype(W, /obj/item/tool/shovel))
+		if(HAS_TRAIT(W,  TRAIT_TOOL_SHOVEL))
 			var/obj/item/tool/shovel/destroying_shovel = W
 
 			if(destroying_shovel.folded)

@@ -146,7 +146,7 @@
 	item_state = "pizza_cutter"
 	desc = "Before you is a holy relic of a bygone era when the great Pizza Lords reigned supreme. You know either that or it's just a big damn pizza cutter."
 	sharp = IS_SHARP_ITEM_ACCURATE
-	force = MELEE_FORCE_VERY_STRONG
+	force = MELEE_FORCE_STRONG
 	edge = 1
 
 ///For digging shrapnel out of OTHER people, not yourself. Triggered by human/attackby() so target is definitely human. User might not be.

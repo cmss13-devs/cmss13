@@ -254,6 +254,19 @@
 
 	charger_ability.stop_momentum()
 
+/obj/structure/fence/electrified/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(!charger_ability.momentum)
+		charger_ability.stop_momentum()
+		return
+	attack_generic(xeno,CHARGER_DAMAGE_CADE)
+	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
+	if(QDELETED(src))
+		if(prob(50))
+			charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
+		return XENO_CHARGE_TRY_MOVE
+
+	charger_ability.stop_momentum()
+
 // Crates
 
 /obj/structure/largecrate/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)

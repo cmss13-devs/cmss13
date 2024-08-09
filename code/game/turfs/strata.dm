@@ -109,11 +109,20 @@
 /turf/open/floor/strata/cyan3
 	icon_state = "cyan3"
 
+/turf/open/floor/strata/cyan3/north
+	dir = NORTH
+
 /turf/open/floor/strata/cyan3/east
 	dir = EAST
 
 /turf/open/floor/strata/cyan4
 	icon_state = "cyan4"
+
+/turf/open/floor/strata/cyan4/north
+	dir = NORTH
+
+/turf/open/floor/strata/cyan4/west
+	dir = WEST
 
 /turf/open/floor/strata/cyan4/east
 	dir = EAST
@@ -127,8 +136,17 @@
 /turf/open/floor/strata/orange_edge
 	icon_state = "orange_edge"
 
+/turf/open/floor/strata/orange_edge/north
+	dir = NORTH
+
 /turf/open/floor/strata/orange_edge/east
 	dir = EAST
+
+/turf/open/floor/strata/orange_edge/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/strata/orange_edge/northwest
+	dir = NORTHWEST
 
 /turf/open/floor/strata/red3/east
 	dir = EAST
@@ -160,11 +178,26 @@
 /turf/open/floor/strata/cyan3/west
 	dir = WEST
 
+/turf/open/floor/strata/cyan3/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/strata/cyan3/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/cyan3/northwest
+	dir = NORTHWEST
+
 /turf/open/floor/strata/multi_tiles/west
 	dir = WEST
 
 /turf/open/floor/strata/orange_edge/west
 	dir = WEST
+
+/turf/open/floor/strata/orange_edge/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/orange_edge/southeast
+	dir = SOUTHEAST
 
 /turf/open/floor/strata/red3/west
 	dir = WEST
@@ -247,6 +280,9 @@
 /turf/open/floor/strata/orange_icorner/north
 	dir = NORTH
 
+/turf/open/floor/strata/orange_icorner/east
+	dir = EAST
+
 /turf/open/floor/strata/orange_icorner/west
 	dir = WEST
 
@@ -282,3 +318,27 @@
 
 /turf/open/floor/strata/red4/west
 	dir = WEST
+
+/turf/open/floor/strata/yellow3
+	icon_state = "yellow3"
+
+/turf/open/floor/strata/yellow3/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/yellow3/north
+	dir = NORTH
+
+/turf/open/floor/strata/yellow3/east
+	dir = EAST
+
+/turf/open/floor/strata/yellow3/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/strata/yellow3/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/strata/yellow3/west
+	dir = WEST
+
+/turf/open/floor/strata/yellow3/northwest
+	dir = NORTHWEST

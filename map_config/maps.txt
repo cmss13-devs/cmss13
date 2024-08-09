@@ -57,6 +57,10 @@ map lv522_chances_claim
 	minplayers 130
 endmap
 
+map lv759_hybrisa_prospera
+	minplayers 130
+endmap
+
 map new_varadero
 endmap
 

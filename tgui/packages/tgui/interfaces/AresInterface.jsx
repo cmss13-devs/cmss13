@@ -3,7 +3,7 @@
 // -------------------------------------------------------------------- //
 
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Section, Stack } from '../components';
+import { Box, Button, Dropdown, Flex, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
@@ -93,6 +93,8 @@ const MainMenu = (props) => {
     last_page,
     current_menu,
     access_level,
+    faction_options,
+    sentry_setting,
     sudo,
   } = data;
 
@@ -383,35 +385,46 @@ const MainMenu = (props) => {
                 </Button>
               </Stack.Item>
             )}
+            <Stack.Item>
+              <Button
+                icon="satellite"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('bioscan')}
+                tooltip="Trigger an immediate bioscan for diagnostics."
+              >
+                Bioscan
+              </Button>
+            </Stack.Item>
           </Stack>
         )}
       </Section>
       {(access_level === 3 || access_level >= 6) && (
         <Section>
           <h1 align="center">Core Security Protocols</h1>
+
+          <Button
+            align="center"
+            tooltip="Release stored CN20-X nerve gas from security vents."
+            icon="wind"
+            color="red"
+            ml="auto"
+            px="2rem"
+            width="100%"
+            bold
+            onClick={() => act('page_core_sec')}
+          >
+            Nerve Gas Control
+          </Button>
           <Stack>
-            <Stack.Item grow>
-              <Button
-                align="center"
-                tooltip="Release stored CN20-X nerve gas from security vents."
-                icon="wind"
-                color="red"
-                ml="auto"
-                px="2rem"
-                width="100%"
-                bold
-                onClick={() => act('page_core_sec')}
-              >
-                Nerve Gas Control
-              </Button>
-            </Stack.Item>
-            <Stack.Item grow>
+            <Stack.Item grow mr="0">
               <Button.Confirm
                 align="center"
                 tooltip="Activate/Deactivate the AI Core Lockdown."
                 icon="lock"
                 color="red"
-                ml="auto"
                 px="2rem"
                 width="100%"
                 bold
@@ -419,6 +432,19 @@ const MainMenu = (props) => {
               >
                 AI Core Lockdown
               </Button.Confirm>
+            </Stack.Item>
+            <Stack.Item ml="0" mr="0">
+              <Dropdown
+                options={faction_options}
+                selected={sentry_setting}
+                color="red"
+                onSelected={(value) =>
+                  act('update_sentries', { chosen_iff: value })
+                }
+                width="90px"
+                disabled={access_level < 9}
+                tooltip="Change core sentries IFF settings."
+              />
             </Stack.Item>
           </Stack>
         </Section>

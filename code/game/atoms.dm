@@ -16,7 +16,7 @@
 	// The cached datum for the permanent pass flags for any given atom
 	var/datum/pass_flags_container/pass_flags
 
-	// Temporary lags for what an atom can pass through
+	// Temporary flags for what an atom can pass through
 	var/list/flags_pass_temp
 	var/list/temp_flag_counter
 
@@ -429,7 +429,19 @@ Parameters are passed from New.
 			return TRUE
 	return FALSE
 
-// Movement
+///Temporal CAN PASS FLAGGS ,
+//this should be a proc for any kind of temporal flag but needs big rework (TODO)
+/atom/proc/add_temp_can_pass_flags(flags_to_add)
+	for (var/flag in GLOB.bitflags)
+		if(!(flags_to_add & flag))
+			continue
+		flags_can_pass_all_temp |= flag
+
+/atom/proc/remove_temp_can_pass_flags(flags_to_remove)
+	for (var/flag in GLOB.bitflags)
+		flags_can_pass_all_temp &= ~flag
+
+///Temporal PASS FLAGS
 /atom/proc/add_temp_pass_flags(flags_to_add)
 	if (isnull(temp_flag_counter))
 		temp_flag_counter = list()

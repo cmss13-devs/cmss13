@@ -17,6 +17,9 @@
 	if(attacking_xeno.behavior_delegate)
 		intent = attacking_xeno.behavior_delegate.override_intent(src)
 
+	if(attacking_xeno.m_intent == MOVE_INTENT_STALK)
+		attacking_xeno.set_movement_intent(MOVE_INTENT_HUNT, cooldown = 10 SECONDS)
+
 	//Reviewing the four primary intents
 	switch(intent)
 
@@ -228,6 +231,9 @@
 /mob/living/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.fortify || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED))
 		return XENO_NO_DELAY_ACTION
+
+	if(M.m_intent == MOVE_INTENT_STALK)
+		M.set_movement_intent(MOVE_INTENT_HUNT, cooldown = 10 SECONDS)
 
 	switch(M.a_intent)
 		if(INTENT_HELP)

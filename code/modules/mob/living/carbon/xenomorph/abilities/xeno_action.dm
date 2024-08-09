@@ -72,6 +72,8 @@
 	if(!owner)
 		return FALSE
 	var/mob/living/carbon/xenomorph/X = owner
+	if(X.m_intent == MOVE_INTENT_STALK && X.tier < 2)
+		return FALSE
 	if(X && !X.is_mob_incapacitated() && !HAS_TRAIT(X, TRAIT_DAZED) && X.body_position == STANDING_UP && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 
@@ -152,6 +154,13 @@
 /datum/action/xeno_action/activable
 
 /datum/action/xeno_action/activable/can_use_action()
+	if(!owner)
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.stat == DEAD) // to prevent dead xenos from doing wacky interactions
+		return FALSE
+	if(xeno.m_intent == MOVE_INTENT_STALK && xeno.tier < 2)
+		return FALSE
 	return TRUE
 
 // Called when the action is clicked on.

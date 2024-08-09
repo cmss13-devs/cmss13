@@ -216,16 +216,45 @@
 	armor_integrity = min(armor_integrity + value, 100)
 
 
-//Strip all inherent xeno verbs from your caste. Used in evolution.
+///Strip all inherent xeno verbs from your caste. Used in evolution.
 /mob/living/carbon/xenomorph/proc/remove_inherent_verbs()
 	if(inherent_verbs)
 		remove_verb(src, inherent_verbs)
 
-//Add all your inherent caste verbs and procs. Used in evolution.
+///Add all your inherent caste verbs and procs. Used in evolution.
 /mob/living/carbon/xenomorph/proc/add_inherent_verbs()
 	if(inherent_verbs)
 		add_verb(src, inherent_verbs)
 
+/// activates the buffs and debuffs of Stalk mode for certain castes , This is the generic proc but each xeno can have their own set of snowflake.
+/mob/living/carbon/xenomorph/set_movement_intent(new_intent, cooldown = 3 SECONDS)
+	if(TIMER_COOLDOWN_CHECK(src, STALKING_COOLDOWN))
+		to_chat(src, SPAN_XENOWARNING("We are not ready to change our stance"))
+		return
+	TIMER_COOLDOWN_START(src, STALKING_COOLDOWN, cooldown)
+	. = ..()
+	if(caste)
+		walk_modifier = caste.walk_modifier
+		run_modifier = caste.run_modifier
+	if(!can_ventcrawl()) // for now only crawlers can get actual buffs for stalk mode
+		return
+	if(tier > 1)
+		return
+	switch(new_intent)
+		if(MOVE_INTENT_HUNT)
+			evasion_modifier = XENO_EVASION_NONE
+			remove_temp_pass_flags(PASS_MOB_IS_XENO|PASS_TYPE_CRAWLER|PASS_MOB_THRU_XENO)
+			remove_temp_can_pass_flags(PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO)
+			layer = initial(layer)
+
+		if(MOVE_INTENT_STALK)
+			evasion_modifier += XENO_EVASION_MOD_ULTRA // this looks like a lot but evasion is broken and doesnt even work most of the time
+			add_temp_pass_flags(PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO|PASS_TYPE_CRAWLER)
+			add_temp_can_pass_flags(PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO)
+			layer = XENO_HIDING_LAYER
+
+	recalculate_evasion()
+	update_icons()
 
 //Adds or removes a delay to movement based on your caste. If speed = 0 then it shouldn't do much.
 //Runners are -2, -4 is BLINDLINGLY FAST, +2 is fat-level
@@ -236,9 +265,6 @@
 
 	if(frenzy_aura)
 		. -= (frenzy_aura * 0.05)
-
-	if(agility)
-		. += caste.agility_speed_increase
 
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in loc
 	if (W)

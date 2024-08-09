@@ -1813,13 +1813,13 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper XM88 padded stock"
 	desc = "A specially made compound polymer stock reinforced with aluminum rods and thick rubber padding to shield the user from recoil. Fitted specifically for the XM88 Heavy Rifle."
 	icon_state = "boomslang-stock"
-	wield_delay_mod = WIELD_DELAY_NORMAL
+	wield_delay_mod = WIELD_DELAY_SLOW
 	hud_offset_mod = 6
 
 /obj/item/attachable/stock/xm88/New()
 	..()
 	select_gamemode_skin(type)
-	recoil_mod = -RECOIL_AMOUNT_TIER_5
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_4

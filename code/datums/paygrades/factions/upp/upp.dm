@@ -12,13 +12,13 @@
 
 /datum/paygrade/upp/ue1
 	paygrade = PAY_SHORT_UE1
-    name = "Ryadovoy"
+	name = "Ryadovoy"
 	prefix = "Rya."
 	pay_multiplier = 0.1
 
 /datum/paygrade/upp/ue2
 	paygrade = PAY_SHORT_UE2
-    name = "Efreitor"
+	name = "Efreitor"
 	prefix = "Efr."
 	pay_multiplier = 0.15
 
@@ -30,7 +30,7 @@
 
 /datum/paygrade/upp/ue4
 	paygrade = PAY_SHORT_UE4
-    name = "Sergeant"
+	name = "Sergeant"
 	prefix = "Sgt."
 	pay_multiplier = 0.5
 
@@ -42,7 +42,7 @@
 
 /datum/paygrade/upp/ue6
 	paygrade = PAY_SHORT_UE6
-    name = "Starshyna"
+	name = "Starshyna"
 	prefix = "StS"
 	pay_multiplier = 0.9
 
@@ -126,7 +126,7 @@
 
 /datum/paygrade/upp/uo9
 	paygrade = PAY_SHORT_UO9
-    name = "General Armii"
+	name = "General Armii"
 	prefix = "GenArm."
 	pay_multiplier = 7
 	officer_grade = GRADE_FLAG

@@ -58,6 +58,34 @@
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/pistol/m1911
 
+//-------------------------------------------------------
+//M47
+
+/obj/item/ammo_magazine/pistol/m47
+	name = "\improper M47A2 Magazine"
+	default_ammo = /datum/ammo/bullet/pistol/heavy
+	caliber = ".45"
+	icon_state = "m47"
+	max_rounds = 14
+	gun_type = /obj/item/weapon/gun/pistol/m47
+
+/obj/item/ammo_magazine/pistol/m47/hp
+	name = "\improper M47A2 Hollowpoint Magazine"
+	desc = "A pistol magazine. This one contains hollowpoint bullets, which have noticeably higher stopping power on unarmored targets, and noticeably less on armored targets."
+	default_ammo = /datum/ammo/bullet/pistol/m47/hp
+	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
+
+/obj/item/ammo_magazine/pistol/m47/apimpact
+	name = "\improper M47 Armor-Piercing Impact Magazine"
+	desc = "A pistol magazine. This one contains armor-piercing bullets, which have noticeably higher stopping power on well-armored targets, and noticeably less on unarmored or lightly-armored targets."
+	default_ammo = /datum/ammo/bullet/pistol/heavy/m47/apimpact
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
+/obj/item/ammo_magazine/pistol/m47/impact
+	name = "\improper M47 High Impact Magazine"
+	desc = "A pistol magazine. This one contains armor-piercing bullets, which have noticeably higher stopping power on well-armored targets, and noticeably less on unarmored or lightly-armored targets."
+	default_ammo = /datum/ammo/bullet/pistol/m47/impact
+	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
 
 //-------------------------------------------------------
 //88M4 based off VP70

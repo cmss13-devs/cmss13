@@ -79,12 +79,12 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	handful_state = "beanbag_slug"
 
 /obj/item/ammo_magazine/shotgun/beanbag/riot
-	name = "box of RC beanbag slugs"
-	desc = "A box filled with beanbag shotgun shells used for non-lethal crowd control. Riot Control use only."
-	icon_state = "beanbag"
-	item_state = "beanbag"
-	default_ammo = /datum/ammo/bullet/shotgun/beanbag
-	handful_state = "beanbag_slug"
+	name = "box of X21 slugs"
+	desc = "A box filled with X21 shells used for non-lethal crowd control. Riot Control use only."
+	icon_state = "electric"
+	item_state = "electric"
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag/electric
+	handful_state = "elec_slug"
 	caliber = "20g"
 
 /obj/item/ammo_magazine/shotgun/light/breaching
@@ -133,7 +133,8 @@ also doesn't really matter. You can only reload them with handfuls.
 
 /obj/item/ammo_magazine/internal/shotgun/combat/riot
 	caliber = "20g"
-	default_ammo = /datum/ammo/bullet/shotgun/beanbag
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag/electric
+	max_rounds = 12
 
 /obj/item/ammo_magazine/internal/shotgun/merc
 	max_rounds = 5
@@ -246,8 +247,11 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 	handful_state = "beanbag_slug"
 
-/obj/item/ammo_magazine/handful/shotgun/beanbag/riot
-	name = "handful of beanbag slugs (20g)"
+/obj/item/ammo_magazine/handful/shotgun/beanbag/electric
+	name = "handful of X21 slugs (20g)"
+	icon_state = "elec_slug_5"
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag/electric
+	handful_state = "elec_slug"
 	caliber = "20g"
 
 /obj/item/ammo_magazine/handful/shotgun/heavy

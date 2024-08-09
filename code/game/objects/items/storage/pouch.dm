@@ -574,7 +574,7 @@
 
 /obj/item/storage/pouch/shotgun/large/beanbag/riot/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag/electric(src)
 
 /obj/item/storage/pouch/shotgun/large/slug/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

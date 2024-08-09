@@ -366,3 +366,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 
 /obj/structure/machinery/camera/cas/isXRay()
 	return TRUE
+
+/obj/structure/machinery/camera/overwatch
+	name = "overwatch camera"
+	network = list(CAMERA_NET_OVERWATCH)

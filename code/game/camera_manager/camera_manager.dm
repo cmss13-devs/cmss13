@@ -192,6 +192,9 @@
 		var/obj/item/clothing/clothing = current.loc
 		cam_location = clothing.loc
 
+	else if(istype(current.loc, /obj/item/device/overwatch_camera))
+		var/obj/item/device/overwatch_camera/cam_gear = current.loc
+		cam_location = cam_gear.loc
 	// If we're not forcing an update for some reason and the cameras are in the same location,
 	// we don't need to update anything.
 	// Most security cameras will end here as they're not moving.

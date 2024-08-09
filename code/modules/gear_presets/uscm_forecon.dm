@@ -34,7 +34,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/recon(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/flask/marine(new_human), WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/facepaint/sniper(new_human), WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_ACCESSORY)
@@ -75,6 +74,16 @@
 		if (9)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
 
+/datum/equipment_preset/uscm/forecon/proc/spawn_random_tech_headgear(mob/living/carbon/human/new_human)
+	var/i = rand(1,4)
+	switch(i)
+		if (1 , 2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+		if (3 , 4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic/white(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
+
 /datum/equipment_preset/uscm/forecon/proc/add_forecon_weapon_pistol(mob/living/carbon/human/new_human)
 	var/random_pistol = rand(1,5)
 	switch(random_pistol)
@@ -108,6 +117,7 @@
 
 /datum/equipment_preset/uscm/forecon/standard/load_gear(mob/living/carbon/human/new_human)
 	..()
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
 	spawn_random_headgear(new_human)
 	add_forecon_weapon_pistol(new_human)
 	add_forecon_weapon(new_human)
@@ -115,25 +125,24 @@
 /datum/equipment_preset/uscm/forecon/tech
 	name = "USCM Reconnaissance Support Technician"
 	assignment = JOB_FORECON_SUPPORT
-	rank = JOB_SQUAD_MEDIC
+	rank = JOB_SQUAD_TECH
 	role_comm_title = "SuppTech"
 	minimap_icon = "engi"
 	skills = /datum/skills/military/survivor/forecon_techician
 
 /datum/equipment_preset/uscm/forecon/tech/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/big(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/big(new_human), WEAR_BACK)
 	..()
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/forecon(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/surgical(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool , WEAR_IN_BACK)
 	add_forecon_weapon(new_human)
-	spawn_random_headgear(new_human)
+	spawn_random_tech_headgear(new_human)
 
 /datum/equipment_preset/uscm/forecon/marksman
 	name = "USCM Reconnaissance Designated Marksman"
@@ -154,6 +163,7 @@
 	uniform.attach_accessory(new_human,pin)
 	uniform.attach_accessory(new_human,patch_forecon)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/M3S, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic(new_human), WEAR_IN_JACKET)
@@ -199,6 +209,7 @@
 	uniform.attach_accessory(new_human,pin)
 	uniform.attach_accessory(new_human,patch_forecon)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
@@ -244,6 +255,7 @@
 	uniform.attach_accessory(new_human,pin)
 	uniform.attach_accessory(new_human,patch_forecon)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1/tactical(new_human), WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1(new_human), WEAR_IN_BACK)

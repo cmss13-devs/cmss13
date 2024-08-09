@@ -648,7 +648,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 	new /obj/item/clothing/gloves/marine(src)
 	new /obj/item/clothing/head/helmet(src)
 	new /obj/item/clothing/head/helmet(src)
-	new /obj/item/clothing/head/helmet/riot(src)
+	new /obj/item/clothing/head/helmet/marine/MP/riot(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/shoes/combat(src)

@@ -4113,7 +4113,7 @@
 /area/lv522/indoors/a_block/kitchen)
 "cCt" = (
 /obj/item/prop/alien/hugger,
-/obj/item/clothing/head/helmet/riot,
+/obj/item/clothing/head/helmet/marine/MP/riot,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/kitchen)
@@ -48019,7 +48019,7 @@
 "wua" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/accessory/storage/black_vest,
-/obj/item/clothing/head/helmet/riot,
+/obj/item/clothing/head/helmet/marine/MP/riot,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/security)
 "wud" = (

@@ -493,6 +493,10 @@
 	desc = "The complimentary, but sold separate face shield associated with the RC6 riot helmet."
 	icon_state = "helmet_riot_shield"
 
+/obj/item/prop/helmetgarb/riot_shield_mp
+	name = "\improper Z9 integrated riotplate"
+	desc = "An improved variant of the M7 integrated faceplate, these were originally produced by a group of marines stationed on LV-920, a snow planet. Conditions were terrible, so to raise morale, the marines hatched a prank. They would spray-paint a faceplate black and meticulously repaint the logos and warning text around the inner seams, not that anyone reads those anyway. Any MP brave or foolish enough to don the brand new faceplate would have the entirety of their cheeks and chin painted black because of residual paint, much to the delight of the bored marines. Unfortunately, due to the prank's roaring success and its spread across the Marine Corps, production of genuine models began, diluting the pool of fake plates with real ones. You're pretty sure this is a real one. Pretty sure."
+	icon_state = "helmet_riot_plate"
 
 /obj/item/prop/helmetgarb/helmet_gasmask
 	name = "\improper M5 integrated gasmask"

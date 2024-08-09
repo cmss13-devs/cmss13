@@ -1,0 +1,4 @@
+author: "Contrabang"
+delete-after: True
+changes:
+  - qol: "Reorders the Essential SG Kit in order of Armor, Smartgun, Goggles"

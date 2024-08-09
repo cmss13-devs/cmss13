@@ -161,9 +161,7 @@
 
 /obj/structure/ship_ammo/heavygun/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	set waitfor = 0
-	var/list/turf_list = list()
-	for(var/turf/T in range(bullet_spread_range, impact))
-		turf_list += T
+	var/list/turf_list = RANGE_TURFS(bullet_spread_range, impact)
 	var/soundplaycooldown = 0
 	var/debriscooldown = 0
 
@@ -243,9 +241,7 @@
 
 /obj/structure/ship_ammo/laser_battery/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	set waitfor = 0
-	var/list/turf_list = list()
-	for(var/turf/T in range(3, impact)) //This is its area of effect
-		turf_list += T
+	var/list/turf_list = RANGE_TURFS(3, impact) //This is its area of effect
 	playsound(impact, 'sound/effects/pred_vision.ogg', 20, 1)
 	for(var/i=1 to 16) //This is how many tiles within that area of effect will be randomly ignited
 		var/turf/U = pick(turf_list)

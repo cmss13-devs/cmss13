@@ -153,6 +153,10 @@
 					M.apply_damage(20)
 					health -= 50
 
+			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slammed against [src] by [key_name(user)]</font>")
+			user.attack_log += text("\[[time_stamp()]\] <font color='red'>slammed [key_name(M)] against [src]</font>")
+			msg_admin_attack("[key_name(user)] slammed [key_name(M)] against [src] at [get_area_name(M)]", M.loc.x, M.loc.y, M.loc.z)
+
 			healthcheck(1, 1, M) //The person thrown into the window literally shattered it
 		return
 

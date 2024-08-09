@@ -9,6 +9,7 @@
 	storage_slots = 14
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
+	max_w_class = 0
 	foldable = null
 
 /obj/item/storage/box/spec/update_icon()

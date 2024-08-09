@@ -210,7 +210,7 @@
 	item_reference = /obj/item/clothing/accessory/health/research_plate/anti_decay
 
 /datum/research_upgrades/armor/caustic
-	name = "XM-CL Body Armor"
+	name = "XM-CL Armor Kit"
 	desc = "Part of an experimental armor set using the ANCW system to withstand acid."
 	value_upgrade = 6000
 	on_init_argument = RESEARCH_UPGRADE_NOTHING_TO_PASS

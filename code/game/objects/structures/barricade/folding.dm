@@ -1,5 +1,5 @@
 /obj/structure/barricade/plasteel
-	name = "plasteel barricade"
+	name = "folding plasteel barricade"
 	desc = "A very sturdy barricade made out of plasteel panels, the pinnacle of strongpoints. Use a blowtorch to repair. Can be flipped down to create a path."
 	icon_state = "plasteel_closed_0"
 	health = 800

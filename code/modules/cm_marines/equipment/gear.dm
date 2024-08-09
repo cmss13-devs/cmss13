@@ -4,8 +4,8 @@
 
 /obj/item/device/flashlight/combat
 	name = "combat flashlight"
-	desc = "A Flashlight designed to be held in the hand, or attached to a rifle"
-	icon_state = "flashlight"
+	desc = "A Flashlight designed to be held in the hand, or attached to a rifle, has better bulb compared to a normal flashlight."
+	icon_state = "combat_flashlight"
 	item_state = "flashlight"
 	light_range = 5 //Pretty luminous, but still a flashlight that fits in a pocket
 

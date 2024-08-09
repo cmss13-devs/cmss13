@@ -74,7 +74,7 @@
 
 /mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 
-	if(body_position == LYING_DOWN)
+	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= 30)

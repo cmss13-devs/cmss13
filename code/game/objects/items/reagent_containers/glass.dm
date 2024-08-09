@@ -365,6 +365,21 @@
 	ground_offset_x = 9
 	ground_offset_y = 8
 
+
+/obj/item/reagent_container/glass/beaker/vial/random
+	var/tier
+
+/obj/item/reagent_container/glass/beaker/vial/random/Initialize()
+	. = ..()
+	var/random_chem
+	if(tier)
+		random_chem = pick(GLOB.chemical_gen_classes_list[tier])
+	else
+		random_chem = GLOB.chemical_gen_classes_list["C5"]
+	if(random_chem)
+		reagents.add_reagent(random_chem, 30)
+		update_icon()
+
 /obj/item/reagent_container/glass/beaker/vial/epinephrine
 	name = "epinephrine vial"
 

@@ -148,7 +148,7 @@ GLOBAL_LIST_INIT_TYPED(combining_properties, /list, list( PROPERTY_DEFIBRILLATIN
 											PROPERTY_BONEMENDING = list(PROPERTY_HYPERDENSIFICATING, PROPERTY_NUTRITIOUS),\
 											PROPERTY_ENCEPHALOPHRASIVE = list(PROPERTY_NERVESTIMULATING, PROPERTY_PSYCHOSTIMULATING)))
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
-GLOBAL_LIST_INIT_TYPED(chemical_gen_classes_list, /list, list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"tau", list()))
+GLOBAL_LIST_INIT_TYPED(chemical_gen_classes_list, /list, list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(), "H1" = list(), "tau", list()))
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
 GLOBAL_LIST_INIT_TYPED(generated_properties, /list, list("positive" = list(), "negative" = list(), "neutral" = list()))
 

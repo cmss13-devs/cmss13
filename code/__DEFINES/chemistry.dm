@@ -77,6 +77,8 @@
 #define CHEM_CLASS_SPECIAL 5
 /// Randomly generated chemicals
 #define CHEM_CLASS_ULTRA 6
+/// Rare chemicals ONLY aquired via hydroponics, Those are mostly useless but very important for hard diff
+#define CHEM_CLASS_HYDRO 7
 
 //chem_effect_flags, used to quickly check if the mob has a chem that provides a special effect
 #define CHEM_EFFECT_RESIST_FRACTURE (1<<0)

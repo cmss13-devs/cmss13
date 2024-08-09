@@ -121,6 +121,7 @@ SUBSYSTEM_DEF(objectives)
 	var/disks = 30
 	var/experimental_devices = 15
 	var/research_papers = 15
+	var/vial_boxes = 5
 
 	//A stub of tweaking item spawns based on map
 	switch(SSmapping.configs[GROUND_MAP])
@@ -132,6 +133,7 @@ SUBSYSTEM_DEF(objectives)
 		if(MAP_CORSAT)
 			research_papers = 30
 			experimental_devices = 20
+			var/vial_boxes = 5
 
 	//Calculating document ratios so we don't end up with filing cabinets holding 10 documents because there are few filing cabinets
 	// TODO: use less dumb structuring than legacy one
@@ -189,6 +191,11 @@ SUBSYSTEM_DEF(objectives)
 	for(var/i=0;i<research_papers;i++)
 		var/dest = pick(10;"close", 8;"medium", 2;"far", 20;"science", 15;"close_documents", 12;"medium_documents", 3;"far_documents", 30;"science_documents")
 		spawn_objective_at_landmark(dest, /obj/item/paper/research_notes)
+	for(var/i=0;i<vial_boxes;i++)
+		var/dest = pick(40;"medium", 20;"far", 40;"science")
+		spawn_objective_at_landmark(dest, /obj/item/storage/fancy/vials/random)
+
+
 
 // Populate the map with objective items.
 

@@ -430,7 +430,7 @@
 /area/varadero/interior/maintenance/north)
 "aqq" = (
 /obj/structure/prop/rock/brown,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -538,13 +538,13 @@
 /area/varadero/interior_protected/caves/central)
 "axh" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
 "axs" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -2466,7 +2466,7 @@
 /turf/open/floor/shiva/snow_mat,
 /area/varadero/interior/security)
 "bUK" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -2562,7 +2562,7 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/maintenance/research)
 "bZv" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/auto_turf/sand_white/layer1,
@@ -2687,7 +2687,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/bunks)
 "cdO" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -3052,7 +3052,7 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -3104,7 +3104,7 @@
 /obj/item/weapon/gun/pistol/mod88{
 	pixel_y = -2
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -3143,7 +3143,7 @@
 /area/varadero/interior/hall_SE)
 "cwk" = (
 /obj/structure/largecrate/random,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -3229,7 +3229,7 @@
 /turf/open/floor/shiva/snow_mat/east,
 /area/varadero/interior/medical)
 "cCk" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/gm/dirt,
@@ -3929,7 +3929,7 @@
 /turf/open/floor/shiva/red,
 /area/varadero/interior/morgue)
 "dgF" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -4086,7 +4086,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
 "dlr" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -4839,7 +4839,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
 "dYd" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -5610,7 +5610,7 @@
 	icon_state = "hr_kutjevo";
 	name = "support struts"
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -5716,7 +5716,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms3)
 "eFW" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -6769,7 +6769,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "fuF" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -7927,7 +7927,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "gnx" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/shiva/green,
@@ -8051,7 +8051,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "gtv" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -8301,7 +8301,7 @@
 /area/varadero/interior/hall_SE)
 "gCQ" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/gm/dirt,
@@ -9814,7 +9814,7 @@
 /turf/open/shuttle/red,
 /area/varadero/interior_protected/vessel)
 "hTX" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -10168,7 +10168,7 @@
 	climb_delay = 1;
 	layer = 2.99
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -10611,7 +10611,7 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "izy" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -10845,7 +10845,7 @@
 /turf/open/gm/coast/east,
 /area/varadero/exterior/comms4)
 "iJa" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -10955,7 +10955,7 @@
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/medical)
 "iOi" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -11407,7 +11407,7 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -11886,7 +11886,7 @@
 /turf/open/floor/shiva/snow_mat,
 /area/varadero/interior/maintenance)
 "jzB" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -11971,7 +11971,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/white,
@@ -12048,7 +12048,7 @@
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/medical)
 "jGm" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -12624,7 +12624,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/security)
 "kfc" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/auto_turf/sand_white/layer1,
@@ -13115,7 +13115,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_SE)
 "kyP" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/auto_turf/sand_white/layer1,
@@ -13861,7 +13861,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastocean)
 "ldr" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -13942,7 +13942,7 @@
 "lgb" = (
 /obj/structure/bedsheetbin,
 /obj/item/ammo_magazine/rifle/m4ra,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -13998,7 +13998,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/records)
 "liq" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -14224,7 +14224,7 @@
 /turf/open/floor/shiva/green/north,
 /area/varadero/interior/records)
 "ltB" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -14397,7 +14397,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/medical)
 "lyp" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -14555,7 +14555,7 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "lFA" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -16174,7 +16174,7 @@
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "mPl" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -16489,7 +16489,7 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/electrical)
 "nak" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -16545,7 +16545,7 @@
 /area/varadero/interior_protected/caves/digsite)
 "ncC" = (
 /obj/item/ammo_magazine/handful/lever_action,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -16857,7 +16857,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "npi" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -17568,7 +17568,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/wood,
@@ -17596,7 +17596,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/hall_NW)
 "nYx" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -18039,7 +18039,7 @@
 /area/varadero/interior/administration)
 "orK" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/gm/dirt,
@@ -18186,7 +18186,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/shiva/greenfull/west,
@@ -18312,7 +18312,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/shiva/green/northeast,
@@ -18374,7 +18374,7 @@
 /area/varadero/interior/hall_SE)
 "oDB" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/gm/dirt,
@@ -18436,7 +18436,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "oHo" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/auto_turf/sand_white/layer1,
@@ -18859,7 +18859,7 @@
 /turf/open/gm/coast/south,
 /area/varadero/exterior/lz2_near)
 "paq" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -19250,7 +19250,7 @@
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_SE)
 "pox" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -19451,7 +19451,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -19630,7 +19630,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
 "pDF" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -19795,7 +19795,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/hall_SE)
 "pKK" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/auto_turf/sand_white/layer1,
@@ -19917,7 +19917,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "pOg" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -19962,7 +19962,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -20535,7 +20535,7 @@
 	climb_delay = 1;
 	layer = 2.99
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -20816,7 +20816,7 @@
 /obj/structure/closet/crate/trashcart{
 	pixel_y = 8
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/shiva/multi_tiles,
@@ -21544,7 +21544,7 @@
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
 "qVO" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -21693,7 +21693,7 @@
 	climb_delay = 1;
 	layer = 2.99
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -21912,7 +21912,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/maintenance/north)
 "rmr" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -22408,7 +22408,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "rGl" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/shiva/blue,
@@ -22633,7 +22633,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -22876,7 +22876,7 @@
 /turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/lz2_near)
 "rXS" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/auto_turf/sand_white/layer1,
@@ -23015,7 +23015,7 @@
 	pixel_y = 7
 	},
 /obj/effect/spawner/random/technology_scanner,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -23075,7 +23075,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/cargo)
 "sfF" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -23435,7 +23435,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves/digsite)
 "stU" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -23836,7 +23836,7 @@
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/medical)
 "sIn" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -24239,7 +24239,7 @@
 	icon_state = "hr_kutjevo";
 	name = "support struts"
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -24433,7 +24433,7 @@
 	climb_delay = 1;
 	layer = 2.99
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/gm/dirt,
@@ -24863,7 +24863,7 @@
 /area/varadero/interior/hall_SE)
 "twh" = (
 /obj/structure/machinery/washing_machine,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -24966,7 +24966,7 @@
 /area/varadero/exterior/lz1_near)
 "tEF" = (
 /obj/structure/prop/rock/brown,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -25083,7 +25083,7 @@
 	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/hand_labeler,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -25359,7 +25359,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/east)
 "tVl" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/shiva/greenfull/west,
@@ -25452,7 +25452,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
 "tYT" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/shiva/purple,
@@ -25790,7 +25790,7 @@
 	pixel_x = -5;
 	pixel_y = -6
 	},
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -26541,7 +26541,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_SE)
 "uXR" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -26587,7 +26587,7 @@
 /area/varadero/interior/electrical)
 "uZK" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -27027,7 +27027,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "vpQ" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 4;
 	pixel_x = -3
 	},
@@ -27221,7 +27221,7 @@
 /turf/open/floor/shiva/redcorners/east,
 /area/varadero/interior/security)
 "vwT" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -27271,7 +27271,7 @@
 /turf/closed/wall/rock/brown,
 /area/varadero/exterior/pontoon_beach/lz)
 "vzq" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/gm/dirt,
@@ -27428,7 +27428,7 @@
 /area/varadero/interior/court)
 "vDf" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/gm/coast/north,
@@ -28001,7 +28001,7 @@
 /area/varadero/exterior/pontoon_beach/lz)
 "vWG" = (
 /obj/structure/bed/chair,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/shiva/floor3,
@@ -30014,7 +30014,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/laundry)
 "xBw" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	dir = 8;
 	pixel_x = 3
 	},
@@ -30110,7 +30110,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "xEl" = (
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -30460,7 +30460,7 @@
 	dir = 10
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/obj/structure/machinery/storm_siren{
+/obj/structure/machinery/siren/storm{
 	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,

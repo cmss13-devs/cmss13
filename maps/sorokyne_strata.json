@@ -6,7 +6,9 @@
     "environment_traits": {
         "COLD": true
     },
-    "weather_holder": "/datum/weather_ss_map_holder/sorokyne",
+    "weather": [
+        "weather_snow"
+    ],
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/soro",
         "/datum/equipment_preset/survivor/doctor/soro",
@@ -41,5 +43,18 @@
         "Hive Wars",
         "Faction Clash",
         "Infection"
-    ]
+    ],
+    "map_day_night_modificator": {
+        "Midnight": 1,
+        "Night": 0.083,
+        "Dawn": 0.16,
+        "Sunrise": 0.25,
+        "Sunrise-Morning": 0.29,
+        "Morning": 0.33,
+        "Daytime": 0.416,
+        "Evening": 0.66,
+        "Sunset": 0.7916,
+        "Dusk": 0.916
+    },
+    "custom_time_length": 1483925
 }

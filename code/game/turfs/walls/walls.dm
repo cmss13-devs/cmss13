@@ -31,8 +31,6 @@
 
 	var/current_bulletholes = null
 	var/image/bullet_overlay = null
-	var/list/wall_connections = list("0", "0", "0", "0")
-	var/neighbors_list = 0
 	var/repair_materials = list("wood"= 0.075, "metal" = 0.15, "plasteel" = 0.3) //Max health % recovered on a nailgun repair
 
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
@@ -41,11 +39,11 @@
 	var/obj/effect/acid_hole/acided_hole
 	var/acided_hole_dir = SOUTH
 
-	var/special_icon = 0
-	var/list/blend_turfs = list(/turf/closed/wall)
-	var/list/noblend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/almayer/research/containment) //Turfs to avoid blending with
-	var/list/blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
-	var/list/noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
+	special_icon = 0
+	blend_turfs = list(/turf/closed/wall)
+	noblend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/almayer/research/containment) //Turfs to avoid blending with
+	blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
+	noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
 
 /turf/closed/wall/Initialize(mapload, ...)
 	. = ..()

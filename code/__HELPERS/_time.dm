@@ -33,6 +33,11 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 /proc/worldtime2text(format = "hh:mm", time = world.time)
 	return gameTimestamp(format, time + GLOB.time_offset)
 
+//returns time diff of two times normalized to time_rate_multiplier
+/proc/daytimeDiff(timeA, timeB)
+	var/time_diff = timeA > timeB ? (timeB + 1) - timeA : timeB - timeA
+	return time_diff
+
 /proc/gameTimestamp(format = "hh:mm:ss", wtime=null)
 	if(!wtime)
 		wtime = world.time

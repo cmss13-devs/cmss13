@@ -317,7 +317,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "abi" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/wood,
@@ -899,7 +899,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/gen/bball)
 "adk" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 1;
 	pixel_y = 28
 	},
@@ -928,7 +928,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/exterior/paths/cabin_area)
 "adq" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10
@@ -2432,7 +2432,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/cabin_area)
 "aiL" = (
-/obj/structure/machinery/weather_siren,
+/obj/structure/machinery/siren/weather,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/gen/bball)
 "aiM" = (
@@ -4255,7 +4255,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/research_decks/security)
 "aql" = (
-/obj/structure/machinery/weather_siren,
+/obj/structure/machinery/siren/weather,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/research_decks/security)
 "aqm" = (
@@ -4514,7 +4514,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/cabin_area)
 "arr" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 1;
 	pixel_y = 28
 	},
@@ -5736,7 +5736,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/engi)
 "avN" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 1;
 	pixel_y = 28
 	},
@@ -6455,7 +6455,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/dorms)
 "ayp" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 4;
 	pixel_x = 18;
 	pixel_y = 10
@@ -7224,7 +7224,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ag/interior/outpost/med)
 "aBq" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10
@@ -9086,7 +9086,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "aIN" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost,
@@ -9393,7 +9393,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aKa" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 1;
 	pixel_y = 28
 	},
@@ -9778,7 +9778,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/paths/adminext)
 "aLw" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 1;
 	pixel_y = 28
 	},
@@ -10050,7 +10050,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ug/interior/jungle/deep/minehead/ruins)
 "aMF" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 4;
 	pixel_x = 18;
 	pixel_y = 10
@@ -10749,7 +10749,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "aPd" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 4;
 	pixel_x = 18;
 	pixel_y = 10
@@ -10811,7 +10811,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/dorms/south)
 "aPq" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 4;
 	pixel_x = 18;
 	pixel_y = 10
@@ -11137,7 +11137,7 @@
 /turf/closed/wall/wood,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "aQu" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 1;
 	pixel_y = 28
 	},
@@ -11697,7 +11697,7 @@
 /turf/open/asphalt/cement/cement15,
 /area/strata/ag/interior/landingzone_1)
 "aSP" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 1;
 	pixel_y = 28
 	},
@@ -11711,7 +11711,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/nearlz1)
 "aSR" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced,
@@ -12490,7 +12490,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/north_lz_caves)
 "aWr" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
@@ -13874,7 +13874,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "bcI" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 4;
 	pixel_x = 18;
 	pixel_y = 10
@@ -14406,7 +14406,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/nearlz1)
 "beL" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10
@@ -14596,7 +14596,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/exterior/research_decks)
 "bfv" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10
@@ -15085,7 +15085,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/engi/drome)
 "bhx" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10
@@ -19732,7 +19732,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "bER" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced,
@@ -20185,7 +20185,7 @@
 /turf/closed/wall/strata_ice/dirty,
 /area/strata/ag/exterior/north_lz_caves)
 "bIV" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost,
@@ -20256,7 +20256,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/administration)
 "bJG" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 4;
 	pixel_x = 18;
 	pixel_y = 10
@@ -20483,7 +20483,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "bLR" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced,
@@ -21266,7 +21266,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/security)
 "bVV" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 1;
 	pixel_y = 28
 	},
@@ -21542,7 +21542,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/tcomms)
 "bYJ" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 4;
 	pixel_x = 18;
 	pixel_y = 10
@@ -21961,7 +21961,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ccV" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 1;
 	pixel_y = 28
 	},
@@ -22659,7 +22659,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/dorms/south)
 "cjx" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 1;
 	pixel_y = 28
 	},
@@ -24060,7 +24060,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin3)
 "czb" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 4;
 	pixel_x = 18;
 	pixel_y = 10
@@ -24420,7 +24420,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/strata/ag/interior/landingzone_1)
 "doO" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 1;
 	pixel_y = 28
 	},
@@ -25092,7 +25092,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "eMZ" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10
@@ -25121,7 +25121,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "eNW" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 4;
 	pixel_x = 18;
 	pixel_y = 10
@@ -25263,7 +25263,7 @@
 /turf/open/asphalt/cement/cement1,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "fil" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
@@ -25676,7 +25676,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/exterior/marsh/crash)
 "fSr" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced,
@@ -25898,7 +25898,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/mountain)
 "glN" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10
@@ -26878,7 +26878,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/med1)
 "itw" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10
@@ -27306,7 +27306,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/exterior/marsh/river)
 "jhl" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10
@@ -27522,7 +27522,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/security)
 "jEO" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
@@ -27549,7 +27549,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/dorms/hive)
 "jIz" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 1;
 	pixel_y = 28
 	},
@@ -28646,7 +28646,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "lQT" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 4;
 	pixel_x = 18;
 	pixel_y = 10
@@ -28987,13 +28987,13 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/paths/north_outpost)
 "mrT" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/med)
 "mso" = (
-/obj/structure/machinery/weather_siren,
+/obj/structure/machinery/siren/weather,
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ag/exterior/paths/north_outpost)
 "msC" = (
@@ -29127,7 +29127,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ag/interior/research_decks/security)
 "mIG" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced,
@@ -29697,7 +29697,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
 "ocw" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10
@@ -29741,7 +29741,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/tcomms)
 "oeK" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
@@ -30941,7 +30941,7 @@
 /turf/open/floor/strata/white_cyan3/east,
 /area/strata/ag/interior/outpost/med)
 "qxD" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 4;
 	pixel_x = 18;
 	pixel_y = 10
@@ -31699,7 +31699,7 @@
 /turf/open/gm/river,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "sbW" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost,
@@ -31918,7 +31918,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "szb" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10
@@ -33327,7 +33327,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/tcomms)
 "vlH" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_x = 10;
 	pixel_y = -8
 	},
@@ -33457,7 +33457,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/med)
 "vtM" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10
@@ -34117,7 +34117,7 @@
 /turf/open/floor/carpet,
 /area/strata/ag/interior/restricted/devroom)
 "wYL" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
@@ -34180,7 +34180,7 @@
 /turf/open/floor/strata/purp2,
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "xhM" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 4;
 	pixel_x = 18;
 	pixel_y = 10
@@ -34751,7 +34751,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "ykh" = (
-/obj/structure/machinery/weather_siren{
+/obj/structure/machinery/siren/weather{
 	dir = 8;
 	pixel_x = -18;
 	pixel_y = 10

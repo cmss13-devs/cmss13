@@ -333,7 +333,7 @@
 		var/atom/movable/screen/plane_master/lighting/lighting = hud_used.plane_masters["[LIGHTING_PLANE]"]
 		if (lighting)
 			lighting.alpha = lighting_alpha
-		var/atom/movable/screen/plane_master/lighting/exterior_lighting = hud_used.plane_masters["[EXTERIOR_LIGHTING_PLANE]"]
+		var/atom/movable/screen/plane_master/s_light_visual/exterior_lighting = hud_used.plane_masters["[S_LIGHTING_VISUAL_PLANE]"]
 		if (exterior_lighting)
 			exterior_lighting.alpha = min(GLOB.minimum_exterior_lighting_alpha, lighting_alpha)
 

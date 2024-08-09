@@ -8,6 +8,7 @@ GLOBAL_LIST_EMPTY(TWEFaxes)
 GLOBAL_LIST_EMPTY(CLFFaxes)
 GLOBAL_LIST_EMPTY(GeneralFaxes) //Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if source paper is deleted
+GLOBAL_LIST_EMPTY(siren_objects)
 
 // for all of our various bugs and runtimes
 GLOBAL_LIST_EMPTY(bug_reports)

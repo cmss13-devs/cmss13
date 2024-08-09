@@ -196,6 +196,9 @@
 /// Bubble for typing indicators
 #define TYPING_LAYER 500
 
+#define S_LIGHTING_VISUAL_PLANE 115
+#define S_LIGHTING_VISUAL_RENDER_TARGET "S_LIGHT_VISUAL_PLANE"
+
 #define O_LIGHTING_VISUAL_PLANE 120
 #define O_LIGHTING_VISUAL_LAYER 16
 #define O_LIGHTING_VISUAL_RENDER_TARGET "O_LIGHT_VISUAL_PLANE"
@@ -227,6 +230,11 @@
 /// Roof plane, disappearing when entering buildings
 #define ROOF_PLANE -4
 
+#define WEATHER_OVERLAY_PLANE -3
+#define WEATHER_RENDER_TARGET "*WEATHER_OVERLAY_PLANE"
+
+#define WEATHER_EFFECT_PLANE -2
+
 /// To keep from conflicts with SEE_BLACKNESS internals
 #define BLACKNESS_PLANE 0
 
@@ -234,7 +242,6 @@
 
 ///--------------- FULLSCREEN RUNECHAT BUBBLES ------------
 #define LIGHTING_PLANE 100
-#define EXTERIOR_LIGHTING_PLANE 101
 #define NVG_PLANE 110
 
 ///Popup Chat Messages

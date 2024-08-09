@@ -8,6 +8,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 
 // MATH DEFINES
 
+#define Clamp(val, min_val, max_val) (max(min_val, min(val, max_val)))
 #define CLAMP01(x) (clamp((x), 0, 1))
 
 // cotangent

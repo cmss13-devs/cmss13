@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/force_load_lazy_template,
 	/client/proc/enable_podlauncher,
 	/client/proc/change_taskbar_icon,
-	/client/proc/change_weather,
+	/client/proc/run_particle_weather,
 	/client/proc/admin_blurb
 ))
 

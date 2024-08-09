@@ -346,13 +346,11 @@
 /obj/effect/xenomorph/acid/proc/handle_weather()
 	SIGNAL_HANDLER
 
-	var/area/acids_area = get_area(src)
-	if(!acids_area)
-		return
+	var/turf/turf = get_turf(src)
 
-	if(SSweather.is_weather_event && locate(acids_area) in SSweather.weather_areas)
-		acid_delay = acid_delay + (SSweather.weather_event_instance.fire_smothering_strength * 0.33) //smothering_strength is 1-10, acid strength is a multiplier
-		in_weather = SSweather.weather_event_instance.fire_smothering_strength
+	if(SSweather_conditions.running_weather && turf.turf_flags & TURF_WEATHER)
+		acid_delay = acid_delay + (SSweather_conditions.running_weather.fire_smothering_strength * 0.33) //smothering_strength is 1-10, acid strength is a multiplier
+		in_weather = SSweather_conditions.running_weather.fire_smothering_strength
 	else
 		acid_delay = initial(acid_delay)
 		in_weather = FALSE

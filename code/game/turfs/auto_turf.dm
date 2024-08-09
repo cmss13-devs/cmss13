@@ -166,6 +166,13 @@
 	icon_prefix = "snow"
 	layer_name = list("icy dirt", "shallow snow", "deep snow", "very deep snow", "rock filled snow")
 
+/turf/open/auto_turf/snow/Initialize()
+	. = ..()
+//Silent fix
+	if(!snow)
+		new /obj/structure/snow(src, bleed_layer)
+	bleed_layer = 0
+
 /turf/open/auto_turf/snow/insert_self_into_baseturfs()
 	baseturfs += /turf/open/auto_turf/snow/layer0
 

@@ -11,6 +11,7 @@
 	specialty = "M45 pattern ghillie"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
+	unacidable = TRUE
 
 	var/camo_active = FALSE
 	var/hide_in_progress = FALSE

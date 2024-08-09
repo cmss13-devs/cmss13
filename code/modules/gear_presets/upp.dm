@@ -1916,7 +1916,7 @@
 	assignment = JOB_UPP_BRIG_GENERAL
 	rank = JOB_UPP_BRIG_GENERAL
 	role_comm_title = "Kol."
-	paygrades = list(PAY_SHORT_UO6 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/Polkovnik/load_gear(mob/living/carbon/human/new_human)

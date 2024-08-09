@@ -272,8 +272,8 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_UPP_KOL_OFFICER "UPP Polkovnik"
 #define JOB_UPP_BRIG_GENERAL "UPP Mayjor General"
 #define JOB_UPP_MAY_GENERAL "UPP General Leytenant"
-#define JOB_UPP_LT_GENERAL "UPP General polkovnik"
-#define JOB_UPP_GENERAL "UPP Armii General"
+#define JOB_UPP_LT_GENERAL "UPP General Polkovnik"
+#define JOB_UPP_GENERAL "UPP General Armii"
 
 #define JOB_UPP_COMBAT_SYNTH "UPP Combat Synthetic"
 #define JOB_UPP_SUPPORT_SYNTH "UPP Support Synthetic"

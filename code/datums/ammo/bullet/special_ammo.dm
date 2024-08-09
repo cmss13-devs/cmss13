@@ -152,12 +152,6 @@
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		damage = 15
 
-/datum/ammo/bullet/minigun/tank
-	accuracy = -HIT_ACCURACY_TIER_1
-	accuracy_var_low = PROJECTILE_VARIANCE_TIER_8
-	accuracy_var_high = PROJECTILE_VARIANCE_TIER_8
-	accurate_range = 12
-
 /datum/ammo/bullet/m60
 	name = "M60 bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM

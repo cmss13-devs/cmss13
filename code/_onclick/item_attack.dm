@@ -107,6 +107,8 @@
 		switch(damtype)
 			if("brute")
 				M.apply_damage(power,BRUTE)
+				if(isanimal(M) && power > 10)
+					M.handle_blood_splatter(get_dir(user.loc, M.loc))
 			if("fire")
 				M.apply_damage(power,BURN)
 				to_chat(M, SPAN_WARNING("It burns!"))

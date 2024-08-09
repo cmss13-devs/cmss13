@@ -74,6 +74,10 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
+"vt" = (
+/obj/effect/landmark/lizard_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/south_east_jungle)
 "wQ" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_x = -28
@@ -107,6 +111,10 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "EZ" = (
 /obj/structure/flora/jungle/vines/light_3,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/jungle/south_east_jungle)
+"Kj" = (
+/obj/effect/landmark/lizard_spawn,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "LV" = (
@@ -317,7 +325,7 @@ Wt
 gU
 Xz
 Xy
-Xl
+vt
 Xl
 Xl
 Ze
@@ -347,7 +355,7 @@ Tl
 aK
 Wl
 yg
-Xy
+Kj
 Xl
 br
 EZ

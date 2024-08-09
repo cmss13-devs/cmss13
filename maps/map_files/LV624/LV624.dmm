@@ -13368,6 +13368,11 @@
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/caves/sand_temple)
+"hUK" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/obj/effect/landmark/lizard_spawn,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "hWj" = (
 /turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/east_river)
@@ -16917,6 +16922,10 @@
 "pcA" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/jungle/south_central_jungle)
+"pcL" = (
+/obj/effect/landmark/lizard_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "pfl" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/chef,
@@ -17226,6 +17235,10 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
+"pKC" = (
+/obj/effect/landmark/lizard_spawn,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/south_east_jungle)
 "pKS" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/jungle/vines/light_2,
@@ -18987,6 +19000,14 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_west_jungle)
+"tkN" = (
+/obj/effect/landmark/lizard_spawn,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
+"tkS" = (
+/obj/effect/landmark/lizard_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/south_east_jungle)
 "tlk" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -19599,6 +19620,10 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
+"ury" = (
+/obj/effect/landmark/lizard_spawn,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "urR" = (
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
@@ -23033,7 +23058,7 @@ aKb
 aKb
 lyz
 aWl
-qBW
+pcL
 aWO
 hMd
 aWl
@@ -23946,7 +23971,7 @@ auy
 aVS
 aWl
 aWO
-aWO
+ury
 aWO
 qBW
 aVS
@@ -59290,7 +59315,7 @@ lBw
 eTQ
 opS
 opS
-gUq
+pKC
 wpw
 lBw
 lBw
@@ -59744,7 +59769,7 @@ qjt
 wpw
 wpw
 eTQ
-opS
+tkS
 lnV
 qgA
 lBw
@@ -60110,7 +60135,7 @@ jxR
 uve
 uve
 uve
-vty
+tkN
 git
 vty
 moM
@@ -60568,7 +60593,7 @@ uve
 vty
 vty
 nED
-glS
+hUK
 vty
 uve
 uve

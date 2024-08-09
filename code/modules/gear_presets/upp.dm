@@ -1913,8 +1913,8 @@
 
 /datum/equipment_preset/upp/officer/Polkovnik
 	name = "UPP Polkovnik"
-	assignment = JOB_UPP_KOL_OFFICER
-	rank = JOB_UPP_KOL_OFFICER
+	assignment = JOB_UPP_MAY_GENERAL
+	rank = JOB_UPP_MAY_GENERAL
 	role_comm_title = "Kol."
 	paygrades = list(PAY_SHORT_UO6 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
@@ -2073,8 +2073,8 @@
 
 /datum/equipment_preset/upp/officer/may_gen
 	name = "UPP General Lieutenant"
-	assignment = JOB_UPP_KOL_OFFICER
-	rank = JOB_UPP_KOL_OFFICER
+	assignment = JOB_UPP_MAY_GENERAL
+	rank = JOB_UPP_MAY_GENERAL
 	role_comm_title = "May. Gen."
 	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
@@ -2233,8 +2233,8 @@
 
 /datum/equipment_preset/upp/officer/ley_gen
 	name = "UPP General Polkovnik"
-	assignment = JOB_UPP_KOL_OFFICER
-	rank = JOB_UPP_KOL_OFFICER
+	assignment = JOB_UPP_LT_GENERAL
+	rank = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
 	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
@@ -2393,8 +2393,8 @@
 
 /datum/equipment_preset/upp/officer/gen
 	name = "UPP General Armii"
-	assignment = JOB_UPP_KOL_OFFICER
-	rank = JOB_UPP_KOL_OFFICER
+	assignment = JOB_UPP_GENERAL
+	rank = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
 	paygrades = list(PAY_SHORT_UO9 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander

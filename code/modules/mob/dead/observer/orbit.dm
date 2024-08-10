@@ -144,8 +144,7 @@
 				else
 					serialized["background_color"] = human.assigned_equipment_preset?.minimap_background
 
-				var/turf/mob_turf = get_turf(M)
-				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(mob_turf.z) && !(human.faction in FACTION_LIST_ERT_ALL))
+				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT_ALL))
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
 					wy += list(serialized)

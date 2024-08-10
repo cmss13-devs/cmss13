@@ -471,18 +471,6 @@
 	icon_state = "medicae_armor_u"
 	item_state = "medicae_armor_u"
 
-/obj/item/clothing/suit/storage/marine/fluff/Sanctum_heavy
-	name = "Sanctum Founder Armor"
-	desc = "Personal Armor of the Founder of Sanctum Team. It looks more like a Exosuit.  Unique DONOR ITEM" //Add UNIQUE if Unique
-	icon_state = "Sanctum_Heavy_u"
-	item_state = "Sanctum_Heavy_u"
-
-/obj/item/clothing/suit/storage/marine/fluff/Sanctum_medium
-	name = "Sanctum Standard Armor"
-	desc = "The Standard Issue Armor for Sanctum Operatives  Unique DONOR ITEM"
-	icon_state = "Sanctum_Medium_u"
-	item_state = "Sanctum_Medium_u"
-
 /obj/item/clothing/suit/storage/marine/fluff/dudewithatude
 	name = "Rainbow Coat"
 	desc = "Powered by the magic of FRIENDSHIP. (Can be toggled opened or closed)  UNIQUE DONOR ITEM"
@@ -920,14 +908,6 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
-/obj/item/clothing/head/helmet/marine/fluff/Sanctum_helmet
-	name = "Sanctum Combat Helmet"
-	desc = " The Standard Issue helmet of Sanctum Team.  DONOR ITEM" //Add UNIQUE if Unique
-	icon_state = "Sanctum_Helm_u"
-	item_state = "Sanctum_Helm_u"
-	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
-
 /obj/item/clothing/head/helmet/marine/fluff/dingledangle
 	name = "Rusty's Cap"
 	desc = "A little old and shabby. The color has slightly faded over time.  DONOR ITEM"
@@ -1206,13 +1186,6 @@
 	desc = "Uniform work by the Medical Corps of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "medicae_jumpsuit_u"
 	worn_state = "medicae_jumpsuit_u"
-	flags_jumpsuit = FALSE
-
-/obj/item/clothing/under/marine/fluff/sanctum_uniform //NO USER
-	name = "Sanctum Fatigues"
-	desc = "Fatigues with Kevlar fibers for a bit more protection than most clothing.  UNIQUE DONOR ITEM"
-	icon_state = "Sanctum_u"
-	worn_state = "Sanctum_u"
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/sailordave //CKEY=sailordave

@@ -133,3 +133,62 @@
       call another dropship
   realforest2001:
   - bugfix: Fixes the cap on rifleman Lance Corporals.
+2024-08-07:
+  Contrabang:
+  - rscadd: Smartgunner Machete Scabbard, which smartgunners can wear on their back
+      when their harness is equipped.
+  - balance: SG's vendor has replaced the 6P Machete Scabbard with a 15P Smartgunner
+      Machete Scabbard.
+  LC4492:
+  - rscadd: Adds penlights and stethoscopes to nurses and corpsmen, they can use them
+      to reliably check if someone have specific types of organ damage and how much,
+      without the need of other apparatus. Adds a new organ.status called "LITTLE_BRUISED",
+      used by the stethoscope and penlight to not give false positives when diagnosticating
+      someone (saying that they are healthy, when they actually have 9 heart damage).
+  - bugfix: Fixed an outdated check that made the entire "flash eyes with flashlight"
+      mechanic don't work at all. Also updated it to check some other things for ease
+      of logic.
+  - spellcheck: Fixed typos on the abandoned "flash eyes with flashlight" code.
+  - code_imp: 'Added new functionalities for both the stethoscope and penlight: The
+      stethoscopes can now be used to check the condition of both heart and lungs
+      individually by aiming the chest, letting you be able to check if the organs
+      are LITTLE_BRUISED (Have a damage equal or above 1), BRUISED (Have a damage
+      equal or above 10), BROKEN (have a damage equal or above 30) or "HEALTHY" (any
+      damage below 1). And the penlight, that can be used the same way to check the
+      condition of brain and eyes by aiming the eyes of the person you are interacting
+      with. Also with the fixing mentioned above, you can now flash people''s eyes
+      again! Everytime you check the condition of someone''s eyes, you will also flash
+      them. Replaced one letter vars in the flashlight code and on the stethoscope
+      section of the ties code.'
+  - imageadd: Adds new "in_hand" icons for penlights and stethoscopes, both will now
+      appear on your hands when used. Penlights have both "off" and "on" icons, fancy
+      stuff!
+  LTNTS:
+  - imageadd: port tgsprites for pills (including a new variation)
+2024-08-08:
+  '?':
+  - bugfix: Fixed explosive implant not triggering when hearing the code-word.
+  BlackCrystalic:
+  - bugfix: No more admin data sended to normal players in who/staff who
+  Doubleumc:
+  - code_imp: shrapnel smoothly animates their movement
+  - code_imp: visual-effect-only shrapnel replaced by clientside particles
+  Venuska1117, Blundir:
+  - imageadd: add directional APC's Sprites.
+  - balance: Now there are only 3 APC's types, APC's with call_type high/super/hyper
+      are replaced with upgraded APC variant containing high capacity cell, weak variant
+      got replaced with normal APC variant.
+  - bugfix: Fixes APC's with wrong offsets (strata and Prison)
+2024-08-10:
+  BasilHerb:
+  - rscdel: removed the M56B Smartgun Kit from requisitions.
+  - balance: made the M56 Combat Harness unmeltable.
+  - balance: made the M45 Ghillie Suit unmeltable.
+  Contrabang:
+  - qol: Reorders the Essential SG Kit in order of Armor, Smartgun, Goggles
+  HaultyAnonie:
+  - bugfix: Made claymore boxes in vendors be accurately labeled as the amount of
+      claymores they contain. From (x4 mines) to (x5 mines). The actual contents of
+      the box.
+  cuberound:
+  - rscdel: removes gravity generator (ugly legacy stuff)

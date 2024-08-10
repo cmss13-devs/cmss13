@@ -104,7 +104,7 @@
 				return FALSE
 
 			var/input = stripped_multiline_input(user, "Please write a message to announce to the [MAIN_SHIP_NAME]'s crew and all groundside personnel.", "Priority Announcement", "")
-			if(!input || !COOLDOWN_FINISHED(src, announcement_cooldown) || !(user in view(1, src)))
+			if(!input || !COOLDOWN_FINISHED(src, announcement_cooldown) || !(user in dview(1, src)))
 				return FALSE
 
 			var/signed = null

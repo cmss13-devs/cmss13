@@ -1,6 +1,0 @@
-author: "BasilHerb"
-delete-after: True
-changes:
-  - rscdel: "removed the M56B Smartgun Kit from requisitions."
-  - balance: "made the M56 Combat Harness unmeltable."
-  - balance: "made the M45 Ghillie Suit unmeltable."

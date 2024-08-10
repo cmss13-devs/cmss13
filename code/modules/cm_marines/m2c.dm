@@ -6,6 +6,7 @@
 #define M2C_LOW_COOLDOWN_ROLL 0.3
 #define M2C_HIGH_COOLDOWN_ROLL 0.45
 #define M2C_PASSIVE_COOLDOWN_AMOUNT 4
+#define T37_PASSIVE_COOLDOWN_AMOUNT 4
 #define M2C_OVERHEAT_OVERLAY 14
 #define M2C_CRUSHER_STUN 3 //amount in ticks (roughly 3 seconds)
 
@@ -22,6 +23,16 @@
 	max_rounds = 125
 	default_ammo = /datum/ammo/bullet/machinegun/auto
 	gun_type = null
+
+/obj/item/ammo_magazine/m2c/t37
+	name = "T37 Ammunition Box (7.62x54mmR rounds)"
+	desc = "A box of 125, 7.62x54mmR rounds for the UPP T37 Medium Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the T37."
+	caliber = "7.62x54mmR"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "t37"
+	item_state = "t37"
+	max_rounds = 150
+	default_ammo = /datum/ammo/bullet/machinegun/auto/medium
 
 //STORAGE BOX FOR THE MACHINEGUN
 /obj/item/storage/box/m56d/m2c
@@ -199,6 +210,7 @@
 	display_ammo = FALSE
 	var/list/cadeblockers = list()
 	var/cadeblockers_range = 1
+	var/stationary = FALSE
 
 	var/static/image/barrel_overheat_image
 	var/has_barrel_overlay = FALSE
@@ -209,6 +221,7 @@
 	// OVERHEAT MECHANIC VARIABLES
 	var/overheat_value = 0
 	var/overheat_threshold = 40
+	var/passive_cooldown = M2C_PASSIVE_COOLDOWN_AMOUNT
 	var/emergency_cooling = FALSE
 	var/overheat_text_cooldown = 0
 	var/force_cooldown_timer = 10
@@ -245,7 +258,7 @@
 /obj/structure/machinery/m56d_hmg/auto/process()
 
 	var/mob/user = operator
-	overheat_value -= M2C_PASSIVE_COOLDOWN_AMOUNT
+	overheat_value -= passive_cooldown
 	if(overheat_value <= 0)
 		overheat_value = 0
 		STOP_PROCESSING(SSobj, src)
@@ -462,7 +475,11 @@
 		return
 	if(!ishuman(user)  && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
+
 	if(over_object == user && in_range(src, user))
+		if(stationary)
+			to_chat(user, SPAN_WARNING("You cannot disassemble the [src], it is stationary!"))
+			return
 		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))
 			playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
 			user.visible_message(SPAN_NOTICE(" [user] removes [src]'s ammo box."),SPAN_NOTICE(" You remove [src]'s ammo box, preparing the gun for disassembly."))
@@ -588,6 +605,95 @@
 		rotate_timer = world.time + 0.4 SECONDS
 		rotate_to(user, target)
 		return TRUE
+
+/obj/structure/machinery/m56d_hmg/auto/t37
+	name = "\improper T37 Medium Machinegun"
+	desc = "A deployable, medium machine gun. The T37 is a UPP machinegun that fires 7.62x64mmR rounds. Unlike the USCM M2C counterpart, it has a much slower firerate in favor of sustained fire. Due to the quality of the design, it has a tendency to explode if it sustains too much damage. <B> Click its sprite while behind it without holding anything to man it. Click-drag on NON-GRAB intent to disassemble the gun, GRAB INTENT to remove ammo magazines."
+	icon_state = "t37"
+	icon_full = "t37"
+	icon_empty = "t37_e"
+	rounds_max = 150
+	ammo = /datum/ammo/bullet/machinegun/auto/medium
+	fire_delay = 0.35 SECONDS
+	grip_dir = null
+	stationary = TRUE
+
+	// OVERHEAT MECHANIC VARIABLES
+	overheat_threshold = 20
+	passive_cooldown = T37_PASSIVE_COOLDOWN_AMOUNT
+
+	var/explosion_chance = 70
+	var/explosion_power = 65
+	var/explosion_falloff = 25
+	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL
+
+/obj/structure/machinery/m56d_hmg/auto/t37/update_health(amount)
+	health -= amount
+	if(health <= 0)
+		if(prob(explosion_chance))
+			var/cause_data = create_cause_data(src.name)
+			visible_message(SPAN_HIGHDANGER("[src] explodes into pieces!"))
+			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, cause_data)
+		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		qdel(src)
+		return
+	else
+		..()
+
+/obj/structure/machinery/m56d_hmg/auto/handle_ammo_out(mob/user)
+	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] [src]'s ammo box drops onto the ground, now completely empty."))
+	playsound(loc, empty_alarm, 70, 1)
+	update_icon() //final safeguard.
+	var/obj/item/ammo_magazine/m2c/t37/AM = new /obj/item/ammo_magazine/m2c/t37(src.loc)
+	AM.current_rounds = 0
+	AM.update_icon()
+
+/obj/structure/machinery/m56d_hmg/auto/attackby(obj/item/O as obj, mob/user as mob)
+	if(!ishuman(user))
+		return
+	// RELOADING
+	if(istype(O, /obj/item/ammo_magazine/m2c/t37))
+		var/obj/item/ammo_magazine/m2c/t37/M = O
+		if(rounds)
+			to_chat(user, SPAN_WARNING("There's already an ammo box inside of [src], remove it first!"))
+			return
+		if(user.action_busy) return
+		user.visible_message(SPAN_NOTICE("[user] loads [src] with an ammo box! "), SPAN_NOTICE("You load [src] with an ammo box!"))
+		playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
+		rounds = min(rounds + M.current_rounds, rounds_max)
+		update_icon()
+		user.temp_drop_inv_item(O)
+		qdel(O)
+		return
+
+	// WELDER REPAIR
+	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
+		if(user.action_busy)
+			return
+
+		var/obj/item/tool/weldingtool/WT = O
+
+		if(health == health_max)
+			to_chat(user, SPAN_WARNING("[src] doesn't need repairs, it's well-maintained."))
+			return
+
+		if(WT.remove_fuel(2, user))
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on \the [src]."), \
+				SPAN_NOTICE("You begin repairing the damage on \the [src]."))
+			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+			if(!do_after(user, repair_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+				return
+			user.visible_message(SPAN_NOTICE("[user] repairs some of the damage on [src]."), \
+					SPAN_NOTICE("You repair [src]."))
+			update_health(-round(health_max*0.2))
+			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		else
+			to_chat(user, SPAN_WARNING("You need more fuel in [WT] to repair damage to [src]."))
+		return
+	return
 
 #undef M2C_OVERHEAT_CRITICAL
 #undef M2C_OVERHEAT_BAD

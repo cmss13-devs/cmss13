@@ -565,8 +565,8 @@
 	name = "\improper M17 satchel charge box"
 	desc = "A secure box holding three M17 satchel charges."
 	can_hold = list(
-	/obj/item/explosive/satchel_charge,
-	/obj/item/satchel_charge_detonator,
+		/obj/item/explosive/satchel_charge,
+		/obj/item/satchel_charge_detonator,
 	)
 
 /obj/item/storage/box/explosive_mines/satchel_charges/fill_preset_inventory()

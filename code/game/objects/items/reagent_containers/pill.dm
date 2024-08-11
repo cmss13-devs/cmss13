@@ -251,7 +251,7 @@
 /obj/item/reagent_container/pill/imialky
 	pill_desc = "A pill containing Imidazoline and Alkysine. Heals eye and brain damage."
 	pill_initial_reagents = list("imidazoline" = 10, "alkysine" = 5)
-	pill_icon_class = "imialky"
+	pill_icon_class = "imi"
 
 /obj/item/reagent_container/pill/bicaridine
 	pill_desc = "A Bicaridine pill. Heals brute damage."

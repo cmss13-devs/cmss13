@@ -552,7 +552,8 @@ GLOBAL_LIST_INIT(available_specialist_sets, list(
 			"Anti-materiel Sniper Set",
 			"Demolitionist Set",
 			"Heavy Grenadier Set",
-			"Pyro Set"
+			"Pyro Set",
+			"Heavy Armor Set (HvH Only)"
 			))
 
 //Similar thing, but used in /obj/item/spec_kit

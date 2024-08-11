@@ -582,29 +582,63 @@ GLOBAL_LIST_EMPTY(vending_products)
 							switch(p_name)
 								if("Scout Set")
 									if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
-										to_chat(user, SPAN_WARNING("No scout on HvH."))
+										to_chat(user, SPAN_WARNING("You must pick Heavy Armor Specialist in HvH."))
 										vend_fail()
 										return FALSE
 									else
 										user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
 										specialist_assignment = "Scout"
 								if("Sniper Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
-									specialist_assignment = "Sniper"
-									GLOB.available_specialist_sets -= "Anti-materiel Sniper Set"
+									if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+										to_chat(user, SPAN_WARNING("You must pick Heavy Armor Specialist in HvH."))
+										vend_fail()
+										return FALSE
+									else
+										user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
+										specialist_assignment = "Sniper"
+										GLOB.available_specialist_sets -= "Anti-materiel Sniper Set"
 								if("Anti-materiel Sniper Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
-									specialist_assignment = "Heavy Sniper"
-									GLOB.available_specialist_sets -= "Sniper Set"
+									if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+										to_chat(user, SPAN_WARNING("You must pick Heavy Armor Specialist in HvH."))
+										vend_fail()
+										return FALSE
+									else
+										user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
+										specialist_assignment = "Heavy Sniper"
+										GLOB.available_specialist_sets -= "Sniper Set"
 								if("Demolitionist Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
-									specialist_assignment = "Demo"
+									if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+										to_chat(user, SPAN_WARNING("You must pick Heavy Armor Specialist in HvH."))
+										vend_fail()
+										return FALSE
+									else
+										user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
+										specialist_assignment = "Demo"
 								if("Heavy Grenadier Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
-									specialist_assignment = "Grenadier"
+									if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+										to_chat(user, SPAN_WARNING("You must pick Heavy Armor Specialist in HvH."))
+										vend_fail()
+										return FALSE
+									else
+										user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
+										specialist_assignment = "Grenadier"
 								if("Pyro Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
-									specialist_assignment = "Pyro"
+									if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+										to_chat(user, SPAN_WARNING("You must pick Heavy Armor Specialist in HvH."))
+										vend_fail()
+										return FALSE
+									else
+										user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
+										specialist_assignment = "Pyro"
+								if("Heavy Armor Set (HvH Only)")
+									if(MODE_HAS_FLAG(MODE_INFESTATION))
+										to_chat(user, SPAN_WARNING("This is a HvH only kit. Pick another one."))
+										vend_fail()
+										return FALSE
+									else
+										user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_KITTED)
+										specialist_assignment = "Specialist"
+										GLOB.available_specialist_sets += "Heavy Armor Set (HvH Only)"
 								else
 									to_chat(user, SPAN_WARNING("<b>Something bad occurred with [src], tell a Dev.</b>"))
 									vend_fail()

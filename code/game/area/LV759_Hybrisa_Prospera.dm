@@ -230,8 +230,9 @@
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 
 /area/lv759/indoors/caves/north_east_caves_comms
-	name = "KMCC - Mining Outpost - Caverns - Northeast - Subspace-Communications"
+	name = "KMCC - Mining Outpost - East - Subspace-Communications"
 	icon_state = "comms_1"
+	ceiling = CEILING_NONE
 	minimap_color = MINIMAP_AREA_COMMS
 
 /area/lv759/indoors/caves/north_east_caves_comms_2

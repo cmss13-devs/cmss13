@@ -186,6 +186,6 @@
 
 	announcement_title = UPP_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_UPP
-	req_access = list(ACCESS_UPP_COMMANDO)
+	req_access = list(ACCESS_UPP_LEADERSHIP)
 
 	minimap_type = MINIMAP_FLAG_UPP

@@ -227,14 +227,14 @@ CIVILIAN
 
 /datum/skills/civilian/survivor/wy_pilot
 	name = "Survivor - Weyland Yutani - Pilot"
-	skills = list(
+	additional_skills = list(
 		SKILL_PILOT = SKILL_PILOT_EXPERT,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 	)
 
 /datum/skills/civilian/survivor/paramedic
 	name = "Survivor - Paramedic"
-	skills = list(
+	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
@@ -252,7 +252,7 @@ CIVILIAN
 
 /datum/skills/civilian/survivor/pizza_delivery_driver
 	name = "Survivor - Pizza Galaxy Delivery Driver"
-	skills = list(
+	additional_skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,

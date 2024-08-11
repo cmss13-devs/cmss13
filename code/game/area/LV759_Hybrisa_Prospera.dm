@@ -33,19 +33,19 @@
 
 // Landing Zone 1
 /area/lv759/outdoors/landing_zone_1
-	name = "Nova Medica Hospital Complex - Emergency Response Landing Zone One"
+	name = "Nova Medica Hospital Complex - Emergency Response - Landing Zone One"
 	icon_state = "medical_lz1"
 	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 	ceiling = CEILING_NONE
 /area/lv759/indoors/landing_zone_1/flight_control_room
-	name = "Nova Medica Hospital Complex - Emergency Response Landing Zone One - Flight Control Room"
+	name = "Nova Medica Hospital Complex - Emergency Response - Landing Zone One - Flight Control Room"
 	icon_state = "hybrisa"
 	ceiling = CEILING_METAL
 	is_landing_zone = TRUE
 /area/lv759/indoors/landing_zone_1/lz1_console
-	name = "Nova Medica Hospital Complex - Emergency Response Landing Zone One - Dropship Alamo Console"
+	name = "Nova Medica Hospital Complex - Emergency Response - Landing Zone One - Dropship Alamo Console"
 	icon_state = "hybrisa"
 	requires_power = FALSE
 	ceiling = CEILING_METAL
@@ -229,6 +229,15 @@
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 
+/area/lv759/indoors/caves/north_east_caves_comms
+	name = "KMCC - Mining Outpost - Caverns - Northeast - Subspace-Communications"
+	icon_state = "comms_1"
+	minimap_color = MINIMAP_AREA_COMMS
+
+/area/lv759/indoors/caves/north_east_caves_comms_2
+	name = "NMHC - Emergency Response - Landing Zone One - Caverns - Northeast - Subspace-Communications"
+	icon_state = "comms_1"
+	minimap_color = MINIMAP_AREA_COMMS
 
 // Caves Central Plateau
 /area/lv759/outdoors/caveplateau
@@ -518,10 +527,15 @@
 	name = "Nova Medica Hospital Complex - Reception"
 /area/lv759/indoors/hospital/cmo_office
 	name = "Nova Medica Hospital Complex - Chief Medical Officer's Office"
+
 /area/lv759/indoors/hospital/maintenance
 	name = "Nova Medica Hospital Complex - Subspace Communications & Electrical Systems"
 	icon_state = "comms_1"
 	minimap_color = MINIMAP_AREA_COMMS
+
+/area/lv759/indoors/hospital/break_room
+	name = "Nova Medica Hospital Complex - Breakroom"
+
 /area/lv759/indoors/hospital/pharmacy
 	name = "Nova Medica Hospital Complex - Pharmacy & Outgoing Foyer"
 /area/lv759/indoors/hospital/outgoing

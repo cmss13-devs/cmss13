@@ -18,28 +18,27 @@ SUBSYSTEM_DEF(playtime)
 
 	WAIT_DB_READY
 
-	var/list/datum/view_record/playtime/PTs = DB_VIEW(/datum/view_record/playtime)
+	var/list/datum/view_record/playtime/all_records = DB_VIEW(/datum/view_record/playtime)
 	var/list/real_best_playtimes = list()
-	for(var/datum/view_record/playtime/PT as anything in PTs)
+	for(var/datum/view_record/playtime/record as anything in all_records)
 		CHECK_TICK
-		if(!(PT.role_id in real_best_playtimes))
-			real_best_playtimes[PT.role_id] = list(PT.total_minutes, PT)
+		if(!real_best_playtimes[record.role_id])
+			real_best_playtimes[record.role_id] = list(record.total_minutes, record)
 			continue
-		if(real_best_playtimes[PT.role_id][1] > PT.total_minutes)
+		if(real_best_playtimes[record.role_id][1] > record.total_minutes)
 			continue
-		real_best_playtimes[PT.role_id] = list(PT.total_minutes, PT)
+		real_best_playtimes[record.role_id] = list(record.total_minutes, record)
 
 	for(var/role_name in real_best_playtimes)
 		CHECK_TICK
 		var/list/info_list = real_best_playtimes[role_name]
-		var/datum/view_record/playtime/PT = info_list[2]
-		if(!PT)
+		var/datum/view_record/playtime/record = info_list[2]
+		if(!record)
 			continue
-		var/datum/view_record/players/player = SAFEPICK(DB_VIEW(/datum/view_record/players, DB_COMP("id", DB_EQUALS, PT.player_id)))
+		var/datum/view_record/players/player = SAFEPICK(DB_VIEW(/datum/view_record/players, DB_COMP("id", DB_EQUALS, record.player_id)))
 		if(!player)
-			stack_trace("[PT.player_id] not found for [PT.role_id] (tell a dev, db fucked up).")
 			continue
-		best_playtimes += list(list("ckey" = player.ckey) + PT.get_nanoui_data())
+		best_playtimes += list(list("ckey" = player.ckey) + record.get_nanoui_data())
 
 /datum/controller/subsystem/playtime/fire(resumed = FALSE)
 	if (!resumed)

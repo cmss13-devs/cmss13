@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(playtime)
 		var/datum/view_record/players/player = SAFEPICK(DB_VIEW(/datum/view_record/players, DB_COMP("id", DB_EQUALS, record.player_id)))
 		if(!player)
 			continue
-		best_playtimes += list(list("ckey" = player.ckey) + record.get_nanoui_data())
+		best_playtimes += list(list("ckey" = player.glob_pt_visibility ? player.ckey : "Anon #[player.id]") + record.get_nanoui_data())
 
 /datum/controller/subsystem/playtime/fire(resumed = FALSE)
 	if (!resumed)
@@ -84,3 +84,12 @@ SUBSYSTEM_DEF(playtime)
 
 		if (MC_TICK_CHECK)
 			return
+
+/client/proc/toggle_ckey_visiblity_playtime()
+	set name = "Toggle Ckey Visibility In Playtimes"
+	set category = "Preferences.UI"
+	set desc = ".Enable or Disable your own ckey visiblity in global playtimes"
+	if(client.player_data)
+		client.player_data.glob_pt_visibility = !client.player_data.glob_pt_visibility
+		to_chat(src, SPAN_BOLDNOTICE("Now your ckey [client.player_data.glob_pt_visibility ? "showing" : "hidden"] in global playtimes"))
+		client.player_data.save()

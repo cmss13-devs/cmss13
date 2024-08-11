@@ -32,6 +32,8 @@
 	var/byond_account_age
 	var/first_join_date
 
+	var/glob_pt_visibility = FALSE
+
 
 // UNTRACKED FIELDS
 	var/name // Used for NanoUI statistics menu
@@ -83,6 +85,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"stickyban_whitelisted" = DB_FIELDTYPE_INT,
 		"byond_account_age" = DB_FIELDTYPE_STRING_MEDIUM,
 		"first_join_date" = DB_FIELDTYPE_STRING_MEDIUM,
+		"glob_pt_visibility" = DB_FIELDTYPE_INT,
 	)
 
 // NOTE: good example of database operations using NDatabase, so it is well commented

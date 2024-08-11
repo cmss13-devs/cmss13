@@ -293,8 +293,8 @@
 	flag_type = /obj/structure/flag/plantable/upp
 	faction = FACTION_UPP
 	play_warcry = TRUE
-	warcry_sound = 'sound/voice/upp_warcry/warcry_male_1.ogg'
-	warcry_extra_sound = 'sound/effects/flag_warcry_ua_extra.ogg'
+	warcry_sound = 'sound/effects/flag_upp_warcry.ogg'
+	warcry_extra_sound = 'sound/effects/flag_upp_warcry_extra.ogg'
 
 /obj/structure/flag/plantable/upp
 	name = "\improper Union of Progressive Peoples flag"

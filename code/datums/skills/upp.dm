@@ -84,7 +84,7 @@ UNITED PROGRESSIVE PEOPLES
 	)
 
 /datum/skills/upp/supply_specialist
-	name = "UPP Soldat Logistiki"
+	name = "UPP Korporal Logistiki"
 	skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,

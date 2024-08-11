@@ -84,12 +84,3 @@ SUBSYSTEM_DEF(playtime)
 
 		if (MC_TICK_CHECK)
 			return
-
-/client/proc/toggle_ckey_visiblity_playtime()
-	set name = "Toggle Ckey Visibility In Playtimes"
-	set category = "Preferences.UI"
-	set desc = ".Enable or Disable your own ckey visiblity in global playtimes"
-	if(player_data)
-		player_data.glob_pt_visibility = !player_data.glob_pt_visibility
-		to_chat(src, SPAN_BOLDNOTICE("Now your ckey [player_data.glob_pt_visibility ? "showing" : "hidden"] in global playtimes"))
-		player_data.save()

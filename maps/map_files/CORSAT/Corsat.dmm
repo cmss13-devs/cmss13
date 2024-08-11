@@ -40319,12 +40319,6 @@
 /turf/open/floor/corsat/yellow,
 /area/corsat/gamma/engineering/atmos)
 "qVd" = (
-/obj/structure/machinery/gravity_generator{
-	desc = "Absorbs and redirects radiation, hopefully away from you.";
-	name = "Radiation Collector";
-	pixel_x = 15;
-	pixel_y = -5
-	},
 /obj/structure/platform{
 	dir = 1
 	},

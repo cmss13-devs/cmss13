@@ -112,18 +112,6 @@
 	desc = "A flag of the United Americas. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
 	icon_state = "uaflag"
 
-//============//
-//  Flags    //
-//==========//
-
-/obj/structure/sign/flag
-	icon = 'icons/obj/structures/props/flags.dmi'
-
-/obj/structure/sign/flag/upp
-	name = "\improper Union of Progressive Peoples Flag"
-	desc = "Unity through Strength, Freedom through Unity"
-	icon_state = "upp_flag"
-
 //=====================//
 // SEMIOTIC STANDARD  //
 //===================//

@@ -8,7 +8,7 @@
 	icon_state = "m20"
 	force = 5
 	w_class = SIZE_SMALL
-	layer = ABOVE_LYING_MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
+	layer = BELOW_MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
 	throwforce = 5
 	health = 60
 	throw_range = 6
@@ -441,7 +441,7 @@
 	desc = "This older anti tank mine design from the 21st century was rolled back into service simply due to the currently-used M307 EMP anti tank mines being unable to trigger against the minimally armored vehicles commonly used by CLF. Featuring a 250 pound minimum detonation threshold, it can be employed against all but the lightest of vehicles. Despite being outdated, it can still pack a punch against APCs and lighter vehicles, while its plastic construction prevents detection by simple methods."
 	icon_state = "antitank_mine"
 	w_class = SIZE_LARGE
-	layer = ABOVE_LYING_MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
+	layer = LYING_BETWEEN_MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
 	explosive_power = 150
 	heavy_trigger = TRUE
 

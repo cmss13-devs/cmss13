@@ -78,7 +78,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 /datum/entity/player/ui_data(mob/user)
 	if(!LAZYACCESS(playtime_data, "loaded"))
 		load_timestat_data()
-	return playtime_data
+	return list("playtime" = playtime_data, "playtimeglob" = SSplaytime.best_playtimes)
 
 /datum/entity/player/ui_state(mob/user)
 	return GLOB.always_state

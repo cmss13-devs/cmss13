@@ -767,6 +767,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	var/last_known_ip
 	var/discord_link_id
 	var/whitelist_status
+	var/glob_pt_visibility
 
 /datum/entity_view_meta/players
 	root_record_type = /datum/entity/player
@@ -784,5 +785,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"last_known_ip",
 		"last_known_cid",
 		"discord_link_id",
-		"whitelist_status"
+		"whitelist_status",
+		"glob_pt_visibility",
 		)

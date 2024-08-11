@@ -487,7 +487,7 @@
 
 /datum/equipment_preset/other/elite_merc/standard_lowthreat
 	name = "Elite Mercenary (Standard)"
-	paygrade = PAY_SHORT_EFL_S
+	paygrades = list(PAY_SHORT_EFL_S = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -524,7 +524,7 @@
 
 /datum/equipment_preset/other/elite_merc/standard_lowthreat/heavy
 	name = "Elite Mercenary (Heavy)"
-	paygrade = PAY_SHORT_EFL_H
+	paygrades = list(PAY_SHORT_EFL_H = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -564,7 +564,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/other/elite_merc/standard_lowthreat/engineer
 	name = "Elite Mercenary (Engineer)"
-	paygrade = PAY_SHORT_EFL_E
+	paygrades = list(PAY_SHORT_EFL_E = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/data
@@ -618,7 +618,7 @@
 
 /datum/equipment_preset/other/elite_merc/standard_lowthreat/medic
 	name = "Elite Mercenary (Medic)"
-	paygrade = PAY_SHORT_EFL_M
+	paygrades = list(PAY_SHORT_EFL_M = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -664,7 +664,7 @@
 
 /datum/equipment_preset/other/elite_merc/standard_lowthreat/leader
 	name = "Elite Mercenary (Leader)"
-	paygrade = PAY_SHORT_EFL_TL
+	paygrades = list(PAY_SHORT_EFL_TL = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom

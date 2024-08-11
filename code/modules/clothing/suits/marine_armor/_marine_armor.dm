@@ -718,3 +718,12 @@
 		return
 
 	. = COMPONENT_NO_IGNITE
+
+/obj/item/clothing/suit/storage/marine/caustic/dropped(mob/user)
+	if (!istype(user))
+		return
+	UnregisterSignal(user, list(
+		COMSIG_LIVING_FLAMER_CROSSED,
+		COMSIG_LIVING_FLAMER_FLAMED,
+	))
+	..()

@@ -447,7 +447,6 @@
 
 /obj/item/explosive/mine/bury/antitank/prime()
 	set waitfor = 0
-	create_shrapnel(loc, shrapnel_count, , ,/datum/ammo/bullet/shrapnel, cause_data)
 	cell_explosion(loc, explosive_power, 25, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF, dir, cause_data)
 	for(var/mob/living/carbon/M in oview(1, src))
 		M.AdjustStun(4)

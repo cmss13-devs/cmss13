@@ -39077,7 +39077,6 @@
 /area/bigredv2/outside/w)
 "xYy" = (
 /obj/structure/surface/table,
-/obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/dark,

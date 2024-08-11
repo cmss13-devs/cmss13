@@ -14,6 +14,7 @@ endmap
 
 map lv624
 	default
+	maxplayers 129
 endmap
 
 map bigredv2

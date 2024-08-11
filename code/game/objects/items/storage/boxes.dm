@@ -561,6 +561,19 @@
 	for(var/i in 1 to 5)
 		new /obj/item/explosive/mine/pmc(src)
 
+/obj/item/storage/box/explosive_mines/satchel_charges
+	name = "\improper M17 satchel charge box"
+	desc = "A secure box holding five M17 satchel charges."
+	can_hold = list(/obj/item/explosive/satchel_charge,
+	/obj/item/satchel_charge_detonator,
+	)
+
+/obj/item/storage/box/explosive_mines/satchel_charges/fill_preset_inventory()
+	new /obj/item/satchel_charge_detonator(src)
+	for(var/i in 1 to 5)
+		new /obj/item/explosive/satchel_charge(src)
+
+
 /obj/item/storage/box/m94
 	name = "\improper M94 marking flare pack"
 	desc = "A packet of eight M94 Marking Flares. Carried by USCM soldiers to light dark areas that cannot be reached with the usual TNR Shoulder Lamp."

@@ -594,6 +594,8 @@
 		/obj/item/explosive/plastic,
 		/obj/item/explosive/mine,
 		/obj/item/explosive/grenade,
+		/obj/item/explosive/satchel_charge,
+		/obj/item/satchel_charge_detonator,
 	)
 
 /obj/item/storage/pouch/explosive/attackby(obj/item/W, mob/user)

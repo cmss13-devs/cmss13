@@ -692,7 +692,7 @@
 	icon_state = "caustic_h"
 	item_state = "caustic_h"
 	flags_atom = parent_type::flags_atom | NO_NAME_OVERRIDE|NO_SNOW_TYPE //Code i dont remember writing, and only learned about afterwards. Applys the parents flags to the atom. The more you know. Dont remove the ghost code, it migth haunt you.
-	armor_melee = CLOTHING_ARMOR_VERYLOW
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
@@ -701,7 +701,20 @@
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
-	unacidable = TRUE
 	storage_slots = 2
 	siemens_coefficient = 1
 	slowdown = SLOWDOWN_ARMOR_LIGHT
+
+/obj/item/clothing/suit/storage/marine/caustic/equipped(mob/user, slot)
+	if(slot == WEAR_JACKET)
+		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_callback))
+	..()
+
+
+/obj/item/clothing/suit/storage/marine/caustic/proc/flamer_fire_callback(mob/living/L, datum/reagent/R)
+	SIGNAL_HANDLER
+
+	if(R.fire_penetrating)
+		return
+
+	. = COMPONENT_NO_IGNITE

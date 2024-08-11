@@ -212,7 +212,7 @@
 /datum/research_upgrades/armor/caustic
 	name = "XM-CL Armor Kit"
 	desc = "Part of an experimental armor set using the ANCW system to withstand acid."
-	value_upgrade = 6000
+	value_upgrade = 2500
 	on_init_argument = RESEARCH_UPGRADE_NOTHING_TO_PASS
 	behavior = RESEARCH_UPGRADE_ITEM
 	clearance_req = 5

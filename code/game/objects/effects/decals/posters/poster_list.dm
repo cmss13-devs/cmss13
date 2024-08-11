@@ -229,7 +229,7 @@ Template
 
 /datum/poster/poster_44
 	icon_state="poster44"
-	name = "Saftey poster"
+	name = "Safety poster"
 	desc = "WASTE damages PROFIT - Think On!"
 
 /datum/poster/poster_45
@@ -314,7 +314,7 @@ Template
 
 /datum/poster/poster_61
 	icon_state="poster61"
-	name = "Saftey poster"
+	name = "Safety poster"
 	desc = "Silence is not a Virtue - Do Not Share Sensitive Information..."
 
 /datum/poster/poster_62
@@ -339,7 +339,7 @@ Template
 
 /datum/poster/poster_66
 	icon_state="poster66"
-	name = "Saftey poster"
+	name = "Safety poster"
 	desc = "Save Resources! Switch Off Before You Clock Off."
 
 /datum/poster/poster_67
@@ -349,12 +349,12 @@ Template
 
 /datum/poster/poster_68
 	icon_state="poster68"
-	name = "Saftey poster"
+	name = "Safety poster"
 	desc = "Clutter Clouds the Mind - Clean Workstation = Clear Head!"
 
 /datum/poster/poster_69
 	icon_state="poster69"
-	name = "Saftey poster"
+	name = "Safety poster"
 	desc = "NO foreign objects allowed - that means YOU Smokey Joe!"
 
 /datum/poster/poster_70
@@ -364,7 +364,7 @@ Template
 
 /datum/poster/poster_71
 	icon_state="poster71"
-	name = "Saftey poster"
+	name = "Safety poster"
 	desc = "REMEMBER - Check Once, Twice, Thrice!"
 
 /datum/poster/poster_72
@@ -384,7 +384,7 @@ Template
 
 /datum/poster/poster_75
 	icon_state="poster75"
-	name = "Saftey poster"
+	name = "Safety poster"
 	desc = "DO NOT APPROACH SUSPICIOUS OBJECTS - CALL SECURITY."
 
 /datum/poster/poster_76
@@ -399,7 +399,7 @@ Template
 
 /datum/poster/poster_78
 	icon_state="poster78"
-	name = "Saftey poster"
+	name = "Safety poster"
 	desc = "CLEAN UP AFTER YOURSELF! CLEAN SPACE - CLEAR MIND."
 
 /datum/poster/poster_79
@@ -409,12 +409,12 @@ Template
 
 /datum/poster/poster_80
 	icon_state="poster80"
-	name = "Saftey poster"
+	name = "Safety poster"
 	desc = "DON'T OPEN UNKNOWN CONTAINERS - AVOID VERMIN!"
 
 /datum/poster/poster_81
 	icon_state="poster81"
-	name = "Saftey poster"
+	name = "Safety poster"
 	desc = "THIS IS A QUIET ZONE - PLEASE TALK SOFTLY."
 
 /datum/poster/poster_82
@@ -429,5 +429,5 @@ Template
 
 /datum/poster/poster_84
 	icon_state="poster84"
-	name = "Saftey poster"
+	name = "Safety poster"
 	desc = "GERMS HATE SOAP - DON'T forget to wash your hands."

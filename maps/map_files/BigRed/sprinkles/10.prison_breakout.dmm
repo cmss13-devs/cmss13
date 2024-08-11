@@ -1,4 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"ab" = (
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"ac" = (
+/obj/structure/surface/table,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"af" = (
+/obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
 "ah" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/marshal_office)
@@ -8,8 +24,94 @@
 "aj" = (
 /turf/open/mars,
 /area/bigredv2/outside/n)
+"ak" = (
+/obj/structure/pipes/vents/pump,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"al" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/whitegreen/east,
+/area/bigredv2/outside/marshal_office)
+"am" = (
+/obj/structure/sink{
+	pixel_y = 32
+	},
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/marshal_office)
+"ap" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"aq" = (
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/marshal_office)
+"ar" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/marshal_office)
 "at" = (
 /turf/closed/wall/solaris,
+/area/bigredv2/outside/marshal_office)
+"aw" = (
+/obj/structure/bed,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"ax" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"ay" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/marshal_office)
+"az" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"aA" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/marshal_office)
+"aB" = (
+/obj/structure/machinery/flasher/portable,
+/turf/open/floor/vault2/west,
+/area/bigredv2/outside/marshal_office)
+"aD" = (
+/obj/structure/closet/l3closet/security,
+/turf/open/floor/vault2/west,
+/area/bigredv2/outside/marshal_office)
+"aN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"aO" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"aP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"aQ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"aR" = (
+/turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "aY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -47,6 +149,89 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"bg" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"bh" = (
+/obj/structure/machinery/light,
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"bi" = (
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"bj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"bk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"bl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/good_item,
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"bn" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"bp" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	density = 0;
+	dir = 1;
+	icon_state = "door_open";
+	name = "\improper Marshal Office Armory"
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"br" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"bs" = (
+/obj/structure/closet/secure_closet/marshal,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"bx" = (
+/obj/structure/machinery/computer/secure_data,
+/obj/structure/surface/table,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"by" = (
+/turf/open/floor/bcircuit,
+/area/bigredv2/outside/marshal_office)
+"bA" = (
+/obj/structure/machinery/computer/cameras,
+/obj/structure/surface/table,
+/turf/open/floor/bcircuit,
+/area/bigredv2/outside/marshal_office)
+"bB" = (
+/obj/structure/surface/table,
+/obj/item/ore/diamond,
+/obj/item/ore/uranium,
+/turf/open/floor/bcircuit,
+/area/bigredv2/outside/marshal_office)
+"bD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor/red/north,
+/area/bigredv2/outside/marshal_office)
+"bE" = (
+/turf/open/floor/redcorner/west,
+/area/bigredv2/outside/marshal_office)
+"bF" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
 "bG" = (
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
@@ -57,18 +242,178 @@
 /obj/item/stack/rods,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
+"bM" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/bcircuit,
+/area/bigredv2/outside/marshal_office)
+"bN" = (
+/obj/structure/surface/table,
+/obj/item/device/radio,
+/turf/open/floor/bcircuit,
+/area/bigredv2/outside/marshal_office)
+"bO" = (
+/turf/open/mars/mars_dirt_13,
+/area/bigredv2/outside/n)
+"bP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/redcorner/west,
+/area/bigredv2/outside/marshal_office)
+"bQ" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/door/window/brigdoor/westright,
+/turf/open/floor/vault2/west,
+/area/bigredv2/outside/marshal_office)
+"bR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"bV" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"bW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	icon_state = "door_locked";
+	name = "\improper Marshal Office Armory"
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"bX" = (
+/obj/structure/surface/table,
+/obj/item/ore/uranium,
+/turf/open/floor/bcircuit,
+/area/bigredv2/outside/marshal_office)
+"bY" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/red/west,
+/area/bigredv2/outside/marshal_office)
+"bZ" = (
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/floor/bcircuit,
+/area/bigredv2/outside/marshal_office)
+"ca" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/floor/red/northwest,
+/area/bigredv2/outside/marshal_office)
+"cb" = (
+/turf/open/floor/asteroidwarning/northwest,
+/area/bigredv2/outside/n)
+"cg" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"ch" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/prisoner,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"ci" = (
+/obj/structure/machinery/light,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"cj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/red,
+/area/bigredv2/outside/marshal_office)
+"ck" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/turf/open/floor/red/southeast,
+/area/bigredv2/outside/marshal_office)
+"cl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/prison_security,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/shell,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/turf/open/floor/redcorner/west,
+/area/bigredv2/outside/marshal_office)
+"cm" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/shell,
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"cn" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/door/window/brigdoor/southright,
+/turf/open/floor/vault2/west,
+/area/bigredv2/outside/marshal_office)
 "co" = (
 /obj/structure/window_frame/solaris,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
+"cq" = (
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/outside/n)
+"cr" = (
+/obj/item/ammo_casing/shell,
+/turf/open/floor/redcorner/west,
+/area/bigredv2/outside/marshal_office)
 "cs" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-"cv" = (
+"ct" = (
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"cu" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"cy" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"cz" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/red/west,
+/area/bigredv2/outside/marshal_office)
+"cA" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"cC" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/whitegreen/east,
+/turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "cE" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
@@ -80,15 +425,6 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
-"cG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell,
-/obj/effect/landmark/corpsespawner/prisoner,
-/obj/effect/decal/cleanable/blood/gibs/body,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "cL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -105,6 +441,71 @@
 /obj/item/clothing/shoes/black,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"cN" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Marshal Office"
+	},
+/turf/open/floor/red/west,
+/area/bigredv2/outside/marshal_office)
+"cO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"cP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood,
+/obj/item/tool/kitchen/knife,
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"cR" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"cS" = (
+/obj/structure/machinery/alarm{
+	dir = 1;
+	pixel_y = -30
+	},
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"cT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/frame/table,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"cU" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	density = 0;
+	dir = 1;
+	icon_state = "door_open";
+	name = "\improper Marshal Office Holding Cell"
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"cV" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	icon_state = "door_locked";
+	name = "\improper Marshal Office Holding Cell"
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"cW" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	name = "\improper Marshal Office Checkpoint"
+	},
+/turf/open/floor/redfull/northwest,
+/area/bigredv2/outside/marshal_office)
 "cX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -116,10 +517,45 @@
 "cY" = (
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"cZ" = (
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"db" = (
+/obj/structure/machinery/door_control{
+	id = "Marshal Offices";
+	name = "Storm Shutters";
+	pixel_x = -32
+	},
+/turf/open/floor/redfull/northwest,
+/area/bigredv2/outside/marshal_office)
+"dc" = (
+/obj/structure/surface/table,
+/turf/open/floor/redfull/northwest,
+/area/bigredv2/outside/marshal_office)
 "dd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
+/area/bigredv2/outside/marshal_office)
+"de" = (
+/obj/structure/closet/secure_closet/brig,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"df" = (
+/obj/structure/bed,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"dg" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/redfull/northwest,
+/area/bigredv2/outside/marshal_office)
+"dh" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/open/floor/redfull/northwest,
 /area/bigredv2/outside/marshal_office)
 "di" = (
 /obj/effect/decal/cleanable/dirt,
@@ -136,258 +572,79 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-"dn" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/camera/autoname,
-/obj/item/ammo_magazine/shotgun/slugs,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"dC" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"dO" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/botany,
-/turf/open/floor,
-/area/bigredv2/outside/marshal_office)
-"dZ" = (
-/obj/structure/pipes/vents/pump,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"ee" = (
-/turf/open/floor/asteroidwarning/north,
-/area/bigredv2/outside/n)
-"eD" = (
-/obj/structure/bed,
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"eE" = (
-/obj/item/clothing/mask/gas{
-	pixel_y = 9
-	},
-/obj/structure/machinery/deployable/barrier,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"eP" = (
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/marshal_office)
-"eS" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/botany,
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"eY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Marshal Office Brig";
-	density = 0;
-	icon_state = "door_open"
+"dl" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 1;
+	name = "\improper Marshal Office Prison"
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
-"fe" = (
-/turf/open/mars_cave/mars_dirt_4,
+"do" = (
+/turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/n)
-"fq" = (
+"dt" = (
 /obj/structure/closet/l3closet/security,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
-"fL" = (
-/obj/structure/pipes/vents/pump{
-	dir = 1
-	},
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"gj" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"gk" = (
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"gt" = (
-/obj/structure/surface/table,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"gF" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "\improper Marshal Office Checkpoint"
-	},
-/turf/open/floor/redfull/northwest,
-/area/bigredv2/outside/marshal_office)
-"gP" = (
-/obj/structure/pipes/vents/pump,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/deployable/barrier,
-/turf/open/floor/plating/platingdmg1,
-/area/bigredv2/outside/marshal_office)
-"hd" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"hh" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"hj" = (
-/obj/effect/decal/cleanable/dirt,
+"dG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/rack,
-/turf/open/floor/dark,
+/turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/outside/marshal_office)
-"hu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Marshal Office"
+"ea" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_y = -2
 	},
-/turf/open/floor/red/west,
-/area/bigredv2/outside/marshal_office)
-"hx" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	icon_state = "door_locked";
-	name = "\improper Marshal Office Armory"
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"hE" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/door/window/brigdoor/westright,
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
-"is" = (
+"es" = (
 /obj/structure/machinery/computer/arcade,
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"iB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/floor/red/north,
-/area/bigredv2/outside/marshal_office)
-"iC" = (
-/obj/item/ammo_casing/shell,
-/obj/effect/landmark/corpsespawner/prisoner,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
-	pixel_x = -8
-	},
-/obj/effect/decal/cleanable/blood/gibs/body,
-/obj/effect/decal/cleanable/blood,
-/obj/item/tool/kitchen/utensil/knife{
-	pixel_x = -6;
-	pixel_y = -18
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"jh" = (
-/obj/structure/closet/secure_closet/brig,
-/obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"jI" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/computer/prisoner,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"jV" = (
-/obj/structure/surface/table,
-/obj/item/ore/uranium,
-/turf/open/floor/bcircuit,
-/area/bigredv2/outside/marshal_office)
-"kf" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/red,
-/area/bigredv2/outside/marshal_office)
-"kB" = (
-/turf/open/mars/mars_dirt_13,
-/area/bigredv2/outside/n)
-"kE" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/prison_security,
-/obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/shell,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/turf/open/floor/redcorner/west,
-/area/bigredv2/outside/marshal_office)
-"kK" = (
-/obj/item/weapon/shield/riot{
-	pixel_x = -3;
-	pixel_y = -7
-	},
-/obj/effect/landmark/corpsespawner/prisoner,
-/obj/effect/decal/cleanable/blood/gibs/body,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"kW" = (
-/obj/item/clothing/mask/gas{
-	pixel_x = 10;
-	pixel_y = -12
-	},
-/obj/structure/barricade/deployable{
-	dir = 8
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"kY" = (
-/obj/structure/closet/l3closet/security,
-/turf/open/floor/vault2/west,
-/area/bigredv2/outside/marshal_office)
-"lJ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/prisoner,
-/obj/effect/decal/cleanable/blood,
-/obj/item/tool/kitchen/knife,
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"lR" = (
-/obj/item/clothing/mask/gas{
-	pixel_y = 7;
-	pixel_x = 7
-	},
-/obj/item/stack/folding_barricade{
-	pixel_y = -4;
-	pixel_x = 1
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"lW" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
-"ml" = (
-/obj/structure/pipes/standard/simple/hidden/green{
+"fh" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	name = "\improper Marshal Office Evidence Room"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"gu" = (
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/n)
+"gJ" = (
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"gL" = (
+/obj/structure/machinery/light,
+/obj/structure/barricade/wooden{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/revolver/small{
-	pixel_x = -11;
-	pixel_y = 13
-	},
-/turf/open/floor,
+/turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
-"ms" = (
+"gV" = (
+/obj/structure/machinery/deployable/barrier,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"hc" = (
+/obj/item/trash/wy_chips_pepper{
+	pixel_y = -13;
+	pixel_x = 24
+	},
+/obj/item/stack/sheet/metal{
+	pixel_x = 10;
+	pixel_y = -5
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = 3;
+	pixel_x = -1
+	},
+/turf/open/floor/vault2/west,
+/area/bigredv2/outside/marshal_office)
+"hF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -401,7 +658,385 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-"mE" = (
+"if" = (
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/outside/n)
+"ip" = (
+/obj/item/weapon/shield/riot,
+/obj/item/frame/table/reinforced,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/vault2/west,
+/area/bigredv2/outside/marshal_office)
+"ix" = (
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"iH" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/botany,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
+"jj" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 1;
+	name = "\improper Marshal Office Prison"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"jn" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"jo" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/weapon/baton/cattleprod{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"jq" = (
+/obj/structure/machinery/camera/autoname,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/turf/open/floor/red/northeast,
+/area/bigredv2/outside/marshal_office)
+"jW" = (
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"kG" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"lU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"mz" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"mB" = (
+/obj/item/reagent_container/food/snacks/syndicake{
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/turf/open/floor/vault2/west,
+/area/bigredv2/outside/marshal_office)
+"np" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	name = "\improper Marshal Office Prison"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"nz" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/gibs/xeno/body,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
+"nV" = (
+/obj/structure/pipes/vents/pump,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/deployable/barrier,
+/turf/open/floor/plating/platingdmg1,
+/area/bigredv2/outside/marshal_office)
+"ov" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/obj/item/frame/table,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"pj" = (
+/obj/item/frame/table,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"pw" = (
+/obj/item/clothing/mask/gas{
+	pixel_y = 7;
+	pixel_x = 7
+	},
+/obj/item/stack/folding_barricade{
+	pixel_y = -4;
+	pixel_x = 1
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"pG" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/camera/autoname,
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"qm" = (
+/obj/structure/bed,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"qG" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/revolver/cmb{
+	pixel_y = -1;
+	pixel_x = -3
+	},
+/turf/open/floor/vault2/west,
+/area/bigredv2/outside/marshal_office)
+"qM" = (
+/obj/item/clothing/mask/gas{
+	pixel_y = 9
+	},
+/obj/structure/machinery/deployable/barrier,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"qX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/weldingtool{
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"rA" = (
+/obj/item/clothing/mask/gas,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"rC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/turf/open/floor/red/east,
+/area/bigredv2/outside/marshal_office)
+"rL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/red/southwest,
+/area/bigredv2/outside/marshal_office)
+"so" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/structure/barricade/wooden,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"sy" = (
+/obj/item/ammo_casing/shell,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"sR" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/botany,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"tu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/stack/sheet/metal{
+	pixel_x = 1
+	},
+/obj/item/frame/rack,
+/turf/open/floor/plating/platingdmg1,
+/area/bigredv2/outside/marshal_office)
+"ug" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/clothing/suit/armor/riot{
+	pixel_y = -9;
+	pixel_x = -12
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"ui" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"uo" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
+"ut" = (
+/obj/item/clothing/mask/gas{
+	pixel_x = 10;
+	pixel_y = -12
+	},
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"uy" = (
+/obj/item/stack/sheet/metal{
+	pixel_x = 3;
+	pixel_y = -11
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"uA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/botany,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"uX" = (
+/obj/structure/barricade/deployable,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"vi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/armor/riot{
+	pixel_y = 5;
+	pixel_x = 7
+	},
+/obj/item/shard,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"wm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"wB" = (
+/obj/item/storage/toolbox{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"wL" = (
+/obj/structure/machinery/light,
+/turf/open/floor/bcircuit,
+/area/bigredv2/outside/marshal_office)
+"xk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"xF" = (
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = -9
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"yb" = (
+/obj/structure/window_frame/solaris,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/bigredv2/outside/marshal_office)
+"yx" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Marshal Office Prison Toilet"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"yY" = (
+/obj/item/ammo_casing/shell,
+/obj/item/storage/box/MRE{
+	pixel_x = -1;
+	pixel_y = -6
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"za" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/shell,
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"zv" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"zD" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Marshal Office Brig";
+	density = 0;
+	icon_state = "door_open"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"AG" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/revolver/small{
+	pixel_x = -11;
+	pixel_y = 13
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
+"AI" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/tool/screwdriver{
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/obj/item/tool/crowbar/red{
+	pixel_y = -14;
+	pixel_x = 2
+	},
+/obj/item/stack/tile/plasteel{
+	pixel_x = 16;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/marshal_office)
+"BS" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/outside/marshal_office)
+"DR" = (
+/obj/item/weapon/shield/riot{
+	pixel_x = -3;
+	pixel_y = -7
+	},
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"Ee" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	density = 0;
@@ -415,161 +1050,14 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/marshal_office)
-"mX" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 2.5;
-	pixel_x = -1
-	},
-/turf/open/floor/red/east,
-/area/bigredv2/outside/marshal_office)
-"no" = (
-/obj/structure/surface/table,
-/obj/item/device/radio,
-/turf/open/floor/bcircuit,
-/area/bigredv2/outside/marshal_office)
-"nJ" = (
-/obj/structure/surface/rack,
-/obj/item/weapon/gun/revolver/cmb{
-	pixel_y = -1;
-	pixel_x = -3
-	},
-/turf/open/floor/vault2/west,
-/area/bigredv2/outside/marshal_office)
-"oe" = (
-/obj/structure/mirror{
-	icon_state = "mirror_broke";
-	pixel_x = 30
-	},
-/obj/item/tool/soap/deluxe{
-	pixel_y = -7;
-	pixel_x = -9
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/marshal_office)
-"om" = (
-/obj/structure/machinery/computer/arcade,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"oH" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"oN" = (
-/obj/item/clothing/mask/gas,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"pA" = (
-/obj/item/ammo_casing/shell,
-/turf/open/floor/redcorner/west,
-/area/bigredv2/outside/marshal_office)
-"pB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_x = -1;
-	pixel_y = 1
-	},
-/turf/open/floor/red/southeast,
-/area/bigredv2/outside/marshal_office)
-"pZ" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	density = 0;
-	dir = 1;
-	icon_state = "door_open";
-	name = "\improper Marshal Office Holding Cell"
+"Ek" = (
+/obj/item/stack/folding_barricade{
+	pixel_x = 1;
+	pixel_y = 4
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"qq" = (
-/obj/structure/barricade/deployable{
-	dir = 8
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"qs" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	icon_state = "door_locked";
-	name = "\improper Marshal Office Holding Cell"
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"qz" = (
-/obj/structure/toilet{
-	dir = 4
-	},
-/obj/effect/landmark/monkey_spawn,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/marshal_office)
-"qD" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "\improper Marshal Office Prison Toilet"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"qP" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "\improper Marshal Office Prison";
-	icon_state = "door_open"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"qX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = -8;
-	pixel_y = -5
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"rb" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/marshal_office)
-"rp" = (
-/obj/structure/closet/secure_closet/brig,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"rq" = (
-/obj/structure/closet/secure_closet/brig,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"rD" = (
-/obj/structure/machinery/computer/secure_data,
-/obj/structure/surface/table,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"sa" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
-/turf/open/floor/bcircuit,
-/area/bigredv2/outside/marshal_office)
-"sd" = (
-/turf/open/floor/bcircuit,
-/area/bigredv2/outside/marshal_office)
-"st" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/turf/open/floor,
-/area/bigredv2/outside/marshal_office)
-"sX" = (
-/obj/item/ammo_casing/shell,
-/obj/item/storage/box/MRE{
-	pixel_x = -1;
-	pixel_y = -6
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"tg" = (
+"Fs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/revolver/cmb{
 	pixel_y = -11;
@@ -586,20 +1074,25 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"tq" = (
-/obj/structure/machinery/light,
-/obj/effect/landmark/corpsespawner/prisoner,
-/obj/effect/decal/cleanable/blood/gibs/body,
-/obj/effect/decal/cleanable/blood,
-/obj/item/shard,
-/turf/open/floor/plating/platingdmg3/west,
-/area/bigredv2/outside/marshal_office)
-"tS" = (
+"FA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/good_item,
+/obj/item/clothing/suit/armor/riot{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"FK" = (
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
-"tU" = (
+"Gs" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"Hl" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_y = -9;
@@ -607,226 +1100,23 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"ut" = (
-/obj/structure/machinery/light,
-/turf/open/floor/bcircuit,
-/area/bigredv2/outside/marshal_office)
-"vh" = (
-/obj/structure/machinery/camera/autoname,
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_x = -1;
-	pixel_y = -1
-	},
-/turf/open/floor/red/northeast,
-/area/bigredv2/outside/marshal_office)
-"vn" = (
+"Ho" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/redcorner/west,
-/area/bigredv2/outside/marshal_office)
-"vQ" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "\improper Marshal Office Prison"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"wd" = (
-/obj/item/stack/sheet/metal{
-	pixel_x = 3;
-	pixel_y = -11
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"wv" = (
-/obj/structure/machinery/deployable/barrier,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"wN" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/bed,
-/turf/open/floor/whitegreen/east,
-/area/bigredv2/outside/marshal_office)
-"xb" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"xd" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
-	pixel_y = -9
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"xq" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"yb" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 8
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/marshal_office)
-"yh" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/red/west,
-/area/bigredv2/outside/marshal_office)
-"yn" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"yx" = (
-/obj/structure/machinery/light,
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"yK" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"yQ" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/slugs{
-	pixel_y = -2
-	},
-/turf/open/floor/vault2/west,
-/area/bigredv2/outside/marshal_office)
-"zk" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = 5;
-	pixel_x = 7
-	},
-/obj/item/shard,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"zF" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"Ba" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"Bq" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-"Bx" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"Bz" = (
-/obj/structure/bed,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"BB" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/door/window/brigdoor/southright,
-/turf/open/floor/vault2/west,
-/area/bigredv2/outside/marshal_office)
-"BH" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	dir = 1;
-	name = "\improper Marshal Office Prison"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"Cm" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"Cr" = (
-/turf/open/floor/redcorner/west,
-/area/bigredv2/outside/marshal_office)
-"CE" = (
-/obj/structure/machinery/light,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"CQ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"Dk" = (
-/obj/item/storage/toolbox{
-	pixel_x = 4;
-	pixel_y = 9
-	},
-/obj/item/ammo_casing/bullet,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"Dp" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
-/obj/item/frame/table,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"Dt" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/security,
-/obj/effect/decal/cleanable/blood/gibs/body,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"Du" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/item/weapon/baton/cattleprod{
-	pixel_x = 11;
-	pixel_y = -7
+"HO" = (
+/obj/structure/surface/table,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Solaris Ridge";
+	phone_color = "red";
+	phone_id = "Marshal Office"
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"DC" = (
-/obj/item/frame/table,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"DV" = (
-/obj/structure/closet/hydrant{
-	pixel_y = 32
-	},
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"Em" = (
-/obj/item/stack/folding_barricade{
-	pixel_x = 1;
-	pixel_y = 4
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"Er" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "\improper Marshal Office Evidence Room"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"ES" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/stack/sheet/metal{
-	pixel_x = 1
-	},
-/turf/open/floor/plating/platingdmg3,
-/area/bigredv2/outside/marshal_office)
-"EZ" = (
+"HS" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/clothing/accessory/storage/black_vest,
@@ -834,156 +1124,51 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"Fb" = (
-/turf/open/floor/redcorner/east,
+"Io" = (
+/obj/structure/closet/l3closet/security,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
-"FE" = (
-/obj/structure/surface/table,
-/turf/open/floor/white,
+"IR" = (
+/obj/structure/machinery/light,
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood,
+/obj/item/shard,
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/marshal_office)
-"FF" = (
-/obj/structure/barricade/wooden{
+"Kb" = (
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/barricade/wooden,
+/obj/structure/machinery/door_control{
+	id = "Marshal Offices";
+	name = "Storm Shutters";
+	pixel_y = 24
+	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
-"FP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood{
-	dir = 4;
-	icon_state = "gib6"
-	},
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"FY" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"GR" = (
-/turf/open/mars/mars_dirt_10,
-/area/bigredv2/outside/n)
-"HH" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = -6;
-	pixel_x = -8
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"HR" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/tool/screwdriver{
-	pixel_x = -13;
-	pixel_y = 9
-	},
-/obj/item/tool/crowbar/red{
-	pixel_y = -14;
-	pixel_x = 2
-	},
-/obj/item/stack/tile/plasteel{
-	pixel_x = 16;
-	pixel_y = 12
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/marshal_office)
-"HW" = (
-/obj/structure/machinery/alarm{
-	dir = 1;
-	pixel_y = -30
-	},
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"Iq" = (
+"Ll" = (
 /obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
-"IB" = (
-/obj/item/ammo_casing/shell,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"ID" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/light{
+"Lq" = (
+/obj/structure/barricade/deployable{
 	dir = 8
 	},
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"Jf" = (
-/obj/structure/barricade/deployable{
-	dir = 4
-	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"Jp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/tool/weldingtool{
-	pixel_x = 2;
-	pixel_y = 10
-	},
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"JI" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"JJ" = (
-/obj/structure/machinery/door_control{
-	id = "Marshal Offices";
-	name = "Storm Shutters";
-	pixel_x = -32
-	},
-/turf/open/floor/redfull/northwest,
-/area/bigredv2/outside/marshal_office)
-"Kk" = (
-/obj/structure/surface/table,
-/turf/open/floor/redfull/northwest,
-/area/bigredv2/outside/marshal_office)
-"Ko" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating/platingdmg1,
-/area/bigredv2/outside/marshal_office)
-"KR" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "\improper Marshal Office Prison"
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"KY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"Ld" = (
-/obj/structure/bed,
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"Ls" = (
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"LC" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell,
-/obj/effect/decal/cleanable/blood/drip,
-/obj/item/shard,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"LN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/stack/sheet/metal{
-	pixel_x = 1
-	},
+"LM" = (
 /obj/item/frame/rack,
-/turf/open/floor/plating/platingdmg1,
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"Mn" = (
+"Ml" = (
 /obj/item/ammo_casing/shell,
 /obj/effect/landmark/corpsespawner/prisoner,
 /obj/effect/decal/cleanable/blood/gibs/body,
@@ -994,103 +1179,7 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"Mo" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/n)
-"Ms" = (
-/obj/structure/machinery/flasher/portable,
-/turf/open/floor/vault2/west,
-/area/bigredv2/outside/marshal_office)
-"Mu" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"MM" = (
-/obj/structure/window/framed/solaris/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Marshal Offices";
-	name = "\improper Marshal Offices Shutters"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/medical)
-"MN" = (
-/obj/structure/machinery/light,
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"MV" = (
-/obj/item/ammo_casing/shell,
-/obj/item/storage/box/MRE{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/turf/open/floor/vault2/west,
-/area/bigredv2/outside/marshal_office)
-"MW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/bed,
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"Nf" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4
-	},
-/turf/open/floor/redfull/northwest,
-/area/bigredv2/outside/marshal_office)
-"Ni" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"Ns" = (
-/turf/open/floor/asteroidwarning/east,
-/area/bigredv2/outside/n)
-"NE" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = -9;
-	pixel_x = -12
-	},
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"Of" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"Os" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"Oy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"OA" = (
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"OU" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"Pt" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
-/turf/open/floor/plating/platingdmg3/west,
-/area/bigredv2/outside/marshal_office)
-"Pu" = (
+"Mq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_y = -8;
@@ -1105,159 +1194,52 @@
 	},
 /turf/open/floor/plating/platingdmg1,
 /area/bigredv2/outside/marshal_office)
-"PD" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"PF" = (
-/obj/structure/machinery/computer/cameras,
-/obj/structure/surface/table,
-/turf/open/floor/bcircuit,
-/area/bigredv2/outside/marshal_office)
-"PJ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/frame/rack,
-/turf/open/floor/plating/platingdmg2/west,
-/area/bigredv2/outside/marshal_office)
-"PO" = (
-/obj/item/reagent_container/food/snacks/syndicake{
-	pixel_x = -8;
-	pixel_y = -4
+"MH" = (
+/obj/structure/mirror{
+	icon_state = "mirror_broke";
+	pixel_x = 30
 	},
-/turf/open/floor/vault2/west,
-/area/bigredv2/outside/marshal_office)
-"QW" = (
-/obj/structure/surface/table,
-/obj/item/ore/diamond,
-/obj/item/ore/uranium,
-/turf/open/floor/bcircuit,
-/area/bigredv2/outside/marshal_office)
-"Ra" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
+/obj/item/tool/soap/deluxe{
+	pixel_y = -7;
+	pixel_x = -9
 	},
-/turf/open/floor/white,
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
-"Rh" = (
-/obj/structure/window_frame/solaris,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating,
-/area/bigredv2/outside/marshal_office)
-"RB" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/door_control{
+"MM" = (
+/obj/structure/window/framed/solaris/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Marshal Offices";
-	name = "Storm Shutters";
-	pixel_y = 24
+	name = "\improper Marshal Offices Shutters"
 	},
-/obj/structure/machinery/camera/autoname,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"RG" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/botany,
+/turf/open/floor/plating,
+/area/bigredv2/outside/medical)
+"MS" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
-"RX" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	density = 0;
-	dir = 1;
-	icon_state = "door_open";
-	name = "\improper Marshal Office Armory"
+"Nc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/armor/riot{
+	pixel_y = -6;
+	pixel_x = -8
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"SM" = (
-/turf/open/floor/asteroidwarning/northwest,
-/area/bigredv2/outside/n)
-"SN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"SQ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/red/west,
-/area/bigredv2/outside/marshal_office)
-"Te" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell,
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"Uh" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/gibs/limb,
-/turf/open/floor,
-/area/bigredv2/outside/marshal_office)
-"Ul" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/frame/table,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
-"Um" = (
-/obj/effect/landmark/static_comms/net_one,
-/turf/open/floor/bcircuit,
-/area/bigredv2/outside/marshal_office)
-"UG" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"UR" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"US" = (
-/obj/item/trash/wy_chips_pepper{
-	pixel_y = -13;
-	pixel_x = 24
-	},
-/obj/item/stack/sheet/metal{
-	pixel_x = 10;
-	pixel_y = -5
-	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
-	pixel_y = 3;
-	pixel_x = -1
-	},
-/turf/open/floor/vault2/west,
-/area/bigredv2/outside/marshal_office)
-"UU" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating/platingdmg2/west,
-/area/bigredv2/outside/marshal_office)
-"Vk" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1;
-	pixel_y = -1
-	},
-/turf/open/floor/red/northwest,
-/area/bigredv2/outside/marshal_office)
-"Vt" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+"No" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
 	},
 /turf/open/floor/red/west,
 /area/bigredv2/outside/marshal_office)
-"Vu" = (
+"NQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
+"Ow" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -1265,10 +1247,117 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"Vw" = (
+"Px" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	name = "\improper Marshal Office Holding Cell"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"PL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"Qs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal{
+	pixel_x = 1
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/bigredv2/outside/marshal_office)
+"QW" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
+"Ro" = (
+/obj/item/ammo_casing/shell,
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood,
+/obj/item/tool/kitchen/utensil/knife{
+	pixel_x = -6;
+	pixel_y = -18
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"RJ" = (
+/obj/effect/landmark/lv624/xeno_tunnel,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/n)
+"Sa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/frame/rack,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"Sf" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	name = "\improper Marshal Office Prison"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"Sj" = (
+/obj/structure/surface/table,
+/obj/item/clothing/head/beret/sec/warden{
+	pixel_y = 5
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"SF" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating/platingdmg2/west,
+/area/bigredv2/outside/marshal_office)
+"ST" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	name = "\improper Marshal Office Prison";
+	icon_state = "door_open"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"UU" = (
+/obj/item/ammo_casing/shell,
+/obj/item/storage/box/MRE{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/vault2/west,
+/area/bigredv2/outside/marshal_office)
 "VC" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating/platingdmg1,
+/area/bigredv2/outside/marshal_office)
+"VS" = (
+/obj/structure/machinery/computer/arcade,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"VX" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed,
+/turf/open/floor/whitegreen/east,
+/area/bigredv2/outside/marshal_office)
+"Wi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
+"Ww" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/shard,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"YT" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 1
@@ -1279,381 +1368,293 @@
 	},
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
-"VJ" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "\improper Marshal Office Holding Cell"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"VP" = (
-/obj/structure/surface/table,
-/obj/item/clothing/head/beret/sec/warden{
-	pixel_y = 5
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"WG" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/turf/open/floor/red/southwest,
-/area/bigredv2/outside/marshal_office)
-"WR" = (
-/obj/structure/closet/secure_closet/marshal,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"WY" = (
-/obj/item/weapon/shield/riot,
-/obj/item/frame/table/reinforced,
-/obj/item/shard,
-/obj/item/shard,
-/turf/open/floor/vault2/west,
-/area/bigredv2/outside/marshal_office)
-"Yd" = (
-/obj/structure/closet/l3closet/security,
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/vault2/west,
-/area/bigredv2/outside/marshal_office)
-"Yg" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"Yt" = (
-/obj/structure/surface/table,
-/obj/structure/transmitter/colony_net/rotary{
-	phone_category = "Solaris Ridge";
-	phone_color = "red";
-	phone_id = "Marshal Office"
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"Zk" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/redfull/northwest,
-/area/bigredv2/outside/marshal_office)
-"Zm" = (
-/obj/structure/sink{
-	pixel_y = 32
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/marshal_office)
-"Zx" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	dir = 1;
-	name = "\improper Marshal Office Prison"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"ZC" = (
-/obj/structure/barricade/deployable,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"ZF" = (
-/obj/item/frame/rack,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"ZM" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/white,
-/area/bigredv2/outside/marshal_office)
-"ZR" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/redcorner,
-/area/bigredv2/outside/marshal_office)
 
 (1,1,1) = {"
-UR
-is
-Ls
-wd
-Ls
-Ls
-qP
-Ni
+aa
+VS
+ab
+uy
+ab
+ab
+ST
+aO
 aY
-yx
+bh
 ah
-sd
-sa
-sd
-sd
+by
+bM
+by
+by
 at
-SQ
-hu
+cz
+cN
 ah
 ah
 ah
 dj
 "}
 (2,1,1) = {"
-Ls
-UR
-UR
+ab
+aa
+aa
 at
-eD
-Ls
+aw
+ab
 ah
-yn
+aP
 aY
-gk
+bi
 ah
-sd
-Vw
-Vw
-Vw
+by
+cZ
+cZ
+cZ
 at
-lW
-gk
+cA
+bi
 bG
-Vw
-rq
+cZ
+gJ
 dj
 "}
 (3,1,1) = {"
-Ls
-UR
-UR
+ab
+aa
+aa
 at
 at
 at
 ah
-yn
+aP
 aY
-gk
+bi
 ah
-PF
-Vw
-Vw
-Vw
-Er
-lW
-FP
-pZ
-Vw
-CE
+bA
+cZ
+cZ
+cZ
+fh
+cA
+cO
+cU
+cZ
+ci
 dj
 "}
 (4,1,1) = {"
-FE
-UR
-UR
+ac
+aa
+aa
 at
-Of
-Ra
+kG
+az
 ah
-JI
+PL
 aZ
-gk
+bi
 ah
-QW
-no
-jV
-ut
+bB
+bN
+bX
+wL
 at
-lW
-lJ
+cA
+cP
 bG
-Vw
-Bz
+cZ
+df
 dj
 "}
 (5,1,1) = {"
-Ls
-dZ
-RG
-BH
-hd
-hd
-KR
-UG
+ab
+ak
+sR
+jj
+ap
+ap
+np
+aQ
 ba
-hh
+bj
 ah
 at
 at
 at
 at
 at
-RB
-dC
+Kb
+bk
 ah
 ah
 ah
 dj
 "}
 (6,1,1) = {"
-ZM
-Ls
-Bx
+zv
+ab
+MS
 at
-Ls
-Ls
+ab
+ab
 ah
-Fb
-dO
-dC
+aR
+iH
+bk
 ah
-Vk
-yh
-Vt
-WG
-Vw
-lW
-dC
+ca
+No
+bY
+rL
+cZ
+cA
+bk
 bG
-Vw
-jh
+cZ
+ix
 dj
 "}
 (7,1,1) = {"
-FE
-Ls
-MW
+ac
+ab
+Wi
 at
 at
 at
 ah
-Fb
+aR
 bb
-tS
+bl
 ah
-iB
-sd
-Um
-kf
-Vw
-lW
-dC
-qs
-Vw
-CE
+bD
+by
+bZ
+cj
+cZ
+cA
+bk
+cV
+cZ
+ci
 dj
 "}
 (8,1,1) = {"
-gt
-Ls
-eD
+af
+ab
+aw
 at
-ID
-Ra
+ax
+az
 ah
-om
+es
 bc
-dC
+bk
 ah
-iB
-sd
-sd
-kf
-Vw
-xq
-Oy
+bD
+by
+by
+cj
+cZ
+cC
+wm
 bG
-Vw
-Bz
+cZ
+df
 dj
 "}
 (9,1,1) = {"
-UR
-UR
-eS
-Zx
-Ls
-Ls
-vQ
-Fb
+aa
+aa
+uA
+dl
+ab
+ab
+Sf
+aR
 bc
-OA
+Gs
 ah
-vh
-mX
-mX
-pB
-Vw
-xq
-gk
+jq
+rC
+rC
+ck
+cZ
+cC
+bi
 ah
 ah
 ah
 dj
 "}
 (10,1,1) = {"
-wN
-cv
-cv
+VX
+al
+al
 at
-eD
-Ls
+aw
+ab
 ah
-FF
+so
 bb
-MN
+gL
 ah
-Vw
-Vw
-Vw
-Vw
-Vw
-xq
-gk
+cZ
+cZ
+cZ
+cZ
+cZ
+cC
+bi
 bG
-Vw
-rp
+cZ
+de
 dj
 "}
 (11,1,1) = {"
 ah
-Zm
-eP
+am
+aq
 at
 at
 at
 ah
-xb
+QW
 bb
-dC
-eY
-Cr
-vn
-vn
-kE
-pA
+bk
+zD
+bE
+bP
+bP
+cl
+cr
 bb
-gk
-VJ
-Vw
-CE
+bi
+Px
+cZ
+ci
 dj
 "}
 (12,1,1) = {"
 ah
-oe
-yb
-qD
-rb
-qz
+MH
+ar
+yx
+ay
+aA
 ah
-xb
+QW
 bd
-Mu
-OU
-ZR
-Mu
-Mu
-Te
+bn
+br
+bF
+bn
+bn
+cm
 cs
 cE
-fL
+cR
 bG
-Vw
-Ld
+cZ
+qm
 dj
 "}
 (13,1,1) = {"
@@ -1669,12 +1670,12 @@ ah
 ah
 ah
 bG
-hE
+bQ
 bG
 ah
-DV
-Bq
-HW
+ct
+nz
+cS
 ah
 ah
 ah
@@ -1683,94 +1684,94 @@ dj
 (14,1,1) = {"
 ai
 ai
-Ns
-Mo
+if
+RJ
 ah
-Ms
-Iq
-MV
-PO
+aB
+Ll
+UU
+mB
 ah
-WR
-qq
-kW
-eE
+bs
+Lq
+ut
+qM
 bG
-yn
+aP
 bc
-gj
+FK
 bG
-Vw
-rp
+cZ
+de
 dj
 "}
 (15,1,1) = {"
 aj
 aj
 aj
-ee
+cq
 ah
-fq
-iC
-IB
-sX
+Io
+Ro
+sy
+yY
 ah
-Vu
-DC
-ZF
-ZC
+Ow
+pj
+LM
+uX
 bG
-FY
+cu
 bc
-dC
-qs
-Vw
-CE
+bk
+cV
+cZ
+ci
 dj
 "}
 (16,1,1) = {"
 aj
 aj
 aj
-ee
+cq
 ah
-kY
-Ba
-EZ
-Mn
+aD
+mz
+HS
+Ml
 ah
-Yt
-oN
-HH
-wv
-BB
-Dt
-ml
-dC
+HO
+rA
+Nc
+gV
+cn
+ui
+AG
+bk
 bG
-Vw
-Bz
+cZ
+df
 dj
 "}
 (17,1,1) = {"
 aj
 aj
-kB
-ee
+bO
+cq
 ah
-Yd
-LC
-tU
-xd
+dt
+Ww
+Hl
+xF
 ah
-dn
-SN
-zF
-Em
+pG
+xk
+bR
+Ek
 co
-oH
-Uh
-dC
+lU
+uo
+bk
 ah
 ah
 ah
@@ -1779,118 +1780,118 @@ dj
 (18,1,1) = {"
 aj
 aj
-GR
+do
 ai
 ah
-US
-cG
-ES
-Pt
+hc
+za
+Qs
+BS
 ah
-VP
-qX
-zk
-ZC
-Rh
-yK
+Sj
+FA
+vi
+uX
+yb
+jn
 cF
-dC
-gF
-JJ
-Zk
+bk
+cW
+db
+dg
 MM
 "}
 (19,1,1) = {"
 aj
-kB
-fe
+bO
+gu
 ai
 ah
-yQ
-PJ
-LN
-tq
+ea
+dG
+tu
+IR
 ah
-Du
-Cm
-hj
-lR
+jo
+aN
+Sa
+pw
 bL
-Dk
-ms
-KY
+wB
+hF
+NQ
 bG
-Kk
-Nf
+dc
+dh
 MM
 "}
 (20,1,1) = {"
-kB
-fe
+bO
+gu
 ai
 ai
 ah
-nJ
-tg
-gP
-UU
-mE
-NE
-CQ
-Dp
-PD
-RX
-HR
-st
-dC
+qG
+Fs
+nV
+SF
+Ee
+ug
+bg
+ov
+cg
+bp
+AI
+Ho
+bk
 ah
 bG
 bG
 dj
 "}
 (21,1,1) = {"
-SM
+cb
 ai
 ai
 ai
 ah
+YT
+DR
+Mq
 VC
-kK
-Pu
-Ko
 ah
-rD
-Jf
-Os
-jI
+bx
+jW
+bV
+ch
 ah
-Fb
+aR
 cL
-Ul
+cT
 cX
 dd
 dd
 dk
 "}
 (22,1,1) = {"
-ee
+cq
 ah
 ah
 ah
 ah
 ah
 ah
-WY
+ip
 ah
 ah
 ah
 bL
-hx
+bW
 bG
 ah
-Yg
+cy
 cM
-Jp
+qX
 cY
 cY
 di

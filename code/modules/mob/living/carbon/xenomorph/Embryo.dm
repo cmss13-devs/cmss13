@@ -191,7 +191,7 @@
 
 	if(!picked)
 		// Get a candidate from observers
-		var/list/candidates = get_alien_candidates(hive)
+		var/list/candidates = get_alien_candidates(hive, abomination = (isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR)))
 		if(candidates && length(candidates))
 			// If they were facehugged by a player thats still in queue, they get second dibs on the new larva.
 			if(hugger_ckey)

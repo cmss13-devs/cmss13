@@ -7,7 +7,7 @@
 	desc = "A planted flag with the iconic USCM flag plastered all over it, you feel a burst of energy by its mere sight."
 	handheld_type = /obj/item/defenses/handheld/planted_flag
 	disassemble_time = 10
-	var/datum/shape/rectangle/range_bounds
+	var/datum/shape/range_bounds
 	var/area_range = PLANTED_FLAG_RANGE
 	var/buff_intensity = PLANTED_FLAG_BUFF
 	health = 200
@@ -33,7 +33,7 @@
 		apply_area_effect()
 		start_processing()
 
-	range_bounds = RECT(x, y, PLANTED_FLAG_RANGE, PLANTED_FLAG_RANGE)
+	range_bounds = SQUARE(x, y, PLANTED_FLAG_RANGE)
 	update_icon()
 
 /obj/structure/machinery/defenses/planted_flag/Destroy()
@@ -70,9 +70,9 @@
 
 /obj/structure/machinery/defenses/planted_flag/proc/apply_area_effect()
 	if(!range_bounds)
-		range_bounds = RECT(x, y, area_range, area_range)
+		range_bounds = SQUARE(x, y, area_range)
 
-	var/list/targets = SSquadtree.players_in_range(RECT(x, y, area_range, area_range), z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	var/list/targets = SSquadtree.players_in_range(SQUARE(x, y, area_range), z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
 	if(!targets)
 		return
 
@@ -180,7 +180,7 @@
 	if(!M.x && !M.y && !M.z)
 		return
 
-	var/list/targets = SSquadtree.players_in_range(RECT(M.x, M.y, area_range, area_range), M.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	var/list/targets = SSquadtree.players_in_range(SQUARE(M.x, M.y, area_range), M.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
 	targets |= M
 
 	for(var/mob/living/carbon/human/H in targets)

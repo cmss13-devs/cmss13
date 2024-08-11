@@ -1,17 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ax" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 28;
-	start_charge = 0
-	},
-/turf/open/floor,
-/area/bigred/ground/security)
-"ay" = (
-/turf/open/asphalt/cement,
+"aH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/filtration_cave_cas)
-"aF" = (
-/turf/open/asphalt/cement/cement4,
+"aM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement2,
 /area/bigredv2/outside/filtration_cave_cas)
 "aN" = (
 /obj/structure/surface/table/almayer,
@@ -20,23 +14,18 @@
 	},
 /turf/open/floor,
 /area/bigred/ground/security)
+"bp" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	icon_state = "door_locked";
+	name = "\improper Checkpoint Office"
+	},
+/turf/open/floor,
+/area/bigred/ground/security)
 "bx" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/motiondetector,
 /turf/open/floor,
 /area/bigred/ground/security)
-"bN" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "\improper Checkpoint Office"
-	},
-/turf/open/floor/delivery,
-/area/bigred/ground/security)
-"bX" = (
-/obj/effect/decal/cleanable/generic,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement/cement1/north,
-/area/bigredv2/outside/filtration_cave_cas)
 "el" = (
 /obj/structure/surface/table/almayer,
 /obj/item/restraint/handcuffs,
@@ -46,24 +35,22 @@
 /obj/structure/closet/secure_closet/marshal,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
-"iQ" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
-/area/bigredv2/outside/se)
-"ja" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement/cement15,
+"gr" = (
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
-"jk" = (
-/turf/open/asphalt/cement/cement15,
-/area/bigredv2/outside/filtration_cave_cas)
-"jq" = (
+"hz" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	icon_state = "door_locked";
+	dir = 1;
 	name = "\improper Checkpoint Office"
 	},
-/turf/open/floor,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/delivery,
 /area/bigred/ground/security)
+"ie" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/outside/filtration_cave_cas)
 "kd" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/transmitter/colony_net/rotary{
@@ -76,26 +63,31 @@
 "kX" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigred/ground/security)
-"lQ" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement/cement2,
+"nY" = (
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "oT" = (
 /turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/filtration_cave_cas)
+"pI" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement2,
 /area/bigredv2/outside/filtration_cave_cas)
 "pV" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigred/ground/security)
-"pW" = (
-/turf/open/asphalt/cement/cement12,
-/area/bigredv2/outside/filtration_cave_cas)
 "qy" = (
 /obj/item/device/radio,
 /obj/structure/surface/table/almayer,
 /turf/open/floor,
 /area/bigred/ground/security)
+"qS" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/bigredv2/outside/se)
 "rD" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -106,30 +98,32 @@
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
-"rO" = (
-/turf/open/asphalt/cement/cement14,
+"sd" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor,
+/area/bigred/ground/security)
+"tV" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "filtration";
+	name = "Filtration Lockdown"
+	},
+/turf/open/floor/delivery,
 /area/bigredv2/outside/filtration_cave_cas)
 "uk" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigred/ground/security)
-"uE" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement2,
-/area/bigredv2/outside/filtration_cave_cas)
 "uF" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
-"uU" = (
+"ve" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Checkpoint Office"
 	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/delivery,
 /area/bigred/ground/security)
 "vH" = (
@@ -141,12 +135,6 @@
 /obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor,
 /area/bigred/ground/security)
-"wK" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement4,
-/area/bigredv2/outside/filtration_cave_cas)
 "xa" = (
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
@@ -165,78 +153,53 @@
 	},
 /turf/open/floor,
 /area/bigred/ground/security)
-"xt" = (
-/obj/item/tool/warning_cone,
-/turf/open/asphalt/cement/cement4,
-/area/bigredv2/outside/filtration_cave_cas)
-"yq" = (
+"xw" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement3,
+/area/bigredv2/outside/filtration_cave_cas)
+"An" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/filtration_cave_cas)
 "AY" = (
 /turf/open/floor,
 /area/bigred/ground/security)
-"Bv" = (
-/obj/effect/decal/strata_decals/grime/grime2,
-/turf/open/asphalt/cement/cement3,
-/area/bigredv2/outside/filtration_cave_cas)
-"CI" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	id = "filtration";
-	name = "Filtration Lockdown"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/filtration_cave_cas)
-"Gu" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/outside/filtration_cave_cas)
-"GC" = (
-/obj/effect/landmark/crap_item,
-/turf/open/asphalt/cement/cement1/north,
-/area/bigredv2/outside/filtration_cave_cas)
-"GD" = (
-/obj/effect/landmark/hunter_primary,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement/cement9,
-/area/bigredv2/outside/filtration_cave_cas)
-"GW" = (
-/obj/structure/machinery/camera/autoname,
+"DT" = (
 /turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
+"Es" = (
+/turf/open/asphalt/cement/cement14,
+/area/bigredv2/outside/filtration_cave_cas)
+"Fv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement4,
+/area/bigredv2/outside/filtration_cave_cas)
+"Gi" = (
+/turf/open/asphalt/cement/cement9,
+/area/bigredv2/outside/filtration_cave_cas)
+"HM" = (
+/obj/item/tool/warning_cone,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/bigredv2/outside/se)
 "IS" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
-"IU" = (
+"KD" = (
+/obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	id = "filtration";
-	name = "Filtration Lockdown"
-	},
-/turf/open/floor/delivery,
+/turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/filtration_cave_cas)
-"Kr" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
-/area/bigredv2/outside/se)
 "KO" = (
 /obj/item/trash/sosjerky,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigred/ground/security)
-"LH" = (
-/turf/open/asphalt/cement/cement3,
-/area/bigredv2/outside/filtration_cave_cas)
-"LJ" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement/cement12,
-/area/bigredv2/outside/filtration_cave_cas)
-"LW" = (
-/obj/effect/decal/cleanable/dirt,
+"Lw" = (
+/obj/effect/landmark/hunter_primary,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement/cement1/north,
+/turf/open/asphalt/cement/cement9,
 /area/bigredv2/outside/filtration_cave_cas)
 "LX" = (
 /obj/structure/machinery/light{
@@ -245,17 +208,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigred/ground/security)
+"Mo" = (
+/turf/open/asphalt/cement/cement12,
+/area/bigredv2/outside/filtration_cave_cas)
 "Mq" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
-"Nm" = (
-/turf/open/asphalt/cement/cement9,
-/area/bigredv2/outside/filtration_cave_cas)
-"NF" = (
-/obj/effect/decal/cleanable/generic,
+"Nv" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement/cement15,
 /area/bigredv2/outside/filtration_cave_cas)
 "NQ" = (
 /obj/structure/largecrate,
@@ -268,28 +231,46 @@
 /obj/structure/machinery/vending/security,
 /turf/open/floor,
 /area/bigred/ground/security)
-"OO" = (
-/obj/effect/decal/strata_decals/grime/grime2{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement3,
+"On" = (
+/turf/open/asphalt/cement,
+/area/bigredv2/outside/filtration_cave_cas)
+"Ot" = (
+/turf/open/asphalt/cement/cement15,
 /area/bigredv2/outside/filtration_cave_cas)
 "Pf" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor,
 /area/bigred/ground/security)
+"Pg" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/bigredv2/outside/se)
 "PS" = (
 /turf/open/mars,
 /area/bigredv2/outside/se)
+"Qf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "filtration";
+	name = "Filtration Lockdown"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/filtration_cave_cas)
 "Qo" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris/reinforced,
 /area/bigred/ground/security)
-"Qs" = (
+"Rv" = (
 /obj/item/tool/warning_cone,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
-/area/bigredv2/outside/se)
+/turf/open/asphalt/cement/cement4,
+/area/bigredv2/outside/filtration_cave_cas)
+"RA" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement4,
+/area/bigredv2/outside/filtration_cave_cas)
 "Sr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -302,12 +283,10 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigred/ground/security)
-"Tl" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement/cement4,
-/area/bigredv2/outside/filtration_cave_cas)
-"UP" = (
-/obj/effect/decal/cleanable/dirt,
+"Tw" = (
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 1
+	},
 /turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "Vn" = (
@@ -320,6 +299,18 @@
 /obj/structure/largecrate,
 /turf/open/floor,
 /area/bigred/ground/security)
+"XS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/bigredv2/outside/filtration_cave_cas)
+"XX" = (
+/obj/effect/landmark/crap_item,
+/turf/open/asphalt/cement/cement1/north,
+/area/bigredv2/outside/filtration_cave_cas)
+"Ya" = (
+/obj/structure/machinery/camera/autoname,
+/turf/open/asphalt/cement/cement4,
+/area/bigredv2/outside/filtration_cave_cas)
 "Yo" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid,
@@ -332,6 +323,11 @@
 	},
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
+"Zn" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/bigredv2/outside/filtration_cave_cas)
 "ZK" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/machinery/light{
@@ -342,10 +338,10 @@
 
 (1,1,1) = {"
 PS
-Qs
-Kr
-Kr
-iQ
+HM
+qS
+qS
+Pg
 kX
 kX
 kX
@@ -358,10 +354,10 @@ Qo
 "}
 (2,1,1) = {"
 oT
-CI
-CI
-CI
-CI
+tV
+tV
+tV
+tV
 kX
 IS
 LX
@@ -374,10 +370,10 @@ Qo
 "}
 (3,1,1) = {"
 oT
-uE
-UP
-LH
-rO
+pI
+xw
+nY
+Es
 SF
 kd
 AY
@@ -390,10 +386,10 @@ Qo
 "}
 (4,1,1) = {"
 oT
-Nm
-bX
-GC
-jk
+Gi
+KD
+XX
+Ot
 SF
 Vn
 xj
@@ -402,14 +398,14 @@ AY
 uk
 uk
 AY
-uU
+hz
 "}
 (5,1,1) = {"
 oT
-CI
-CI
-IU
-IU
+tV
+tV
+Qf
+Qf
 kX
 YZ
 aN
@@ -422,15 +418,15 @@ Qo
 "}
 (6,1,1) = {"
 oT
-lQ
-OO
-Bv
-rO
+aM
+Tw
+gr
+Es
 kX
 kX
 kX
 kX
-jq
+bp
 kX
 kX
 kX
@@ -438,10 +434,10 @@ Qo
 "}
 (7,1,1) = {"
 oT
-GW
-ay
-ay
-pW
+Ya
+On
+On
+Mo
 kX
 VI
 VI
@@ -454,12 +450,12 @@ Qo
 "}
 (8,1,1) = {"
 oT
-aF
-yq
-ay
-pW
+DT
+XS
+On
+Mo
 kX
-ax
+sd
 AY
 uk
 uk
@@ -470,11 +466,11 @@ Qo
 "}
 (9,1,1) = {"
 oT
-Tl
-yq
-yq
-pW
-bN
+Fv
+XS
+XS
+Mo
+ve
 uk
 uk
 AY
@@ -486,10 +482,10 @@ Qo
 "}
 (10,1,1) = {"
 oT
-wK
-ay
-NF
-pW
+RA
+On
+Zn
+Mo
 kX
 AY
 Pf
@@ -502,10 +498,10 @@ Qo
 "}
 (11,1,1) = {"
 oT
-xt
-ay
-yq
-LJ
+Rv
+On
+XS
+aH
 kX
 vH
 ZK
@@ -517,11 +513,11 @@ NQ
 Qo
 "}
 (12,1,1) = {"
-Gu
-GD
-LW
-LW
-ja
+ie
+Lw
+An
+An
+Nv
 Qo
 Qo
 Qo

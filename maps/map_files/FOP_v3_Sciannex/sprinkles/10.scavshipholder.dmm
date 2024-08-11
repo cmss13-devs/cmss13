@@ -190,7 +190,7 @@
 /turf/closed/shuttle/ert,
 /area/template_noop)
 "nV" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/almayer,
 /area/template_noop)
 "od" = (

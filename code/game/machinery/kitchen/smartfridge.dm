@@ -350,7 +350,7 @@
 		if("cutwire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()
@@ -364,7 +364,7 @@
 		if("fixwire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()
@@ -377,7 +377,7 @@
 		if("pulsewire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()

@@ -233,6 +233,8 @@ bullets/shells. ~N
 */
 
 /obj/item/ammo_magazine/handful
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "generic handful"
 	desc = "A handful of rounds to reload on the go."
 	icon = 'icons/obj/items/weapons/guns/handful.dmi'
@@ -365,7 +367,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	overlay_ammo_type = "_blank"
 	overlay_gun_type = "_458"
 	overlay_content = "_458"
-	magazine_type = /obj/item/ammo_magazine/handful/lever_action/xm88
+	magazine_type = /obj/item/ammo_magazine/lever_action/xm88
 
 /obj/item/ammo_box/magazine/lever_action/xm88/empty
 	empty = TRUE

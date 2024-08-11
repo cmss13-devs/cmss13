@@ -310,6 +310,7 @@
 	specialty = "M3 pattern general"
 	item_state_slots = list(WEAR_JACKET = "general")
 	w_class = SIZE_MEDIUM
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/marine/MP/SO
 	name = "\improper M3 pattern officer armor"

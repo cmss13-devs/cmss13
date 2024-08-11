@@ -638,6 +638,16 @@
 /obj/item/storage/pill_bottle/imidazoline/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
 
+//Imidazoline+Alkysine
+/obj/item/storage/pill_bottle/imialky
+	name = "\improper Imialky pill bottle"
+	icon_state = "pill_canister11"
+	pill_type_to_fill = /obj/item/reagent_container/pill/imialky
+	maptext_label = "Im"
+
+/obj/item/storage/pill_bottle/imialky/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
+
 //PERIDAXON
 /obj/item/storage/pill_bottle/peridaxon
 	name = "\improper Peridaxon pill bottle"

@@ -643,7 +643,7 @@
 	name = "\improper Imialky pill bottle"
 	icon_state = "pill_canister11"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imialky
-	maptext_label = "Im"
+	maptext_label = "IA"
 
 /obj/item/storage/pill_bottle/imialky/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT

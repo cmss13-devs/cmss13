@@ -178,6 +178,81 @@
 	color = "#B31008" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_HYPOTHERMIC = 6)
+// HYDRO HARD TIER CHEMS
+
+/datum/reagent/atropine //poppy
+	name = "Atropine"
+	id = "atropine"
+	description = "Plant based chemical replaced and superseded by Epinephrine, it has a plethora of side effects but is considerably stronger than epinephrine" //I know now stay shush
+	reagent_state = LIQUID
+	color = "#B31008" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_ELECTROGENETIC = 6, PROPERTY_INTRAVENOUS = 1, PROPERTY_NEUROTOXIC = 1)
+
+/datum/reagent/thymol //some kind of thyme
+	name = "Thymol"
+	id = "thymol"
+	description = "Known chemical used in the 20th century as innovative way to combat hookworm parasites and generally all kinds of infections, it was since used as natural pesticide."
+	reagent_state = LIQUID
+	color = "#B31008" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_ANTIPARASITIC = 0.5)
+
+/datum/reagent/psoralen //cabbage, doesnt make sense but eh
+	name = "Psoralen"
+	id = "Psoralen"
+	description = "Naturally occuring carcinogenic, used commonly as mutagen for DNA research."
+	reagent_state = LIQUID
+	color = "#B31008" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_CARCINOGENIC = 6)
+
+/datum/reagent/coniine //carrot
+	name = "Coniine"
+	id = "coniine"
+	description = "Potent neurotoxic chemical commonly used as a murder weapon, death is caused by respiration failure and paralysis"
+	reagent_state = LIQUID
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	color = "#B31008" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_SEDATIVE = 5)
+
+/datum/reagent/zygacine
+	name = "Zygacine"
+	id = "zygacine"
+	description = "Causes convulsing of the heart muscles before blocking the contractions entirely"
+	reagent_state = LIQUID
+	color = "#B31008" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_CARDIOTOXIC = 3)
+
+/datum/reagent/digoxin
+	name = "Digoxin"
+	id = "digoxin"
+	description = "One of the oldest chemicals to enter field in treating many heart conditions, besides few sides effects, it can be used to great effect."
+	reagent_state = LIQUID
+	color = "#B31008" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_FLUFFING = 1)
+
+/datum/reagent/urishiol
+	name = "Urishiol"
+	id = "urishiol"
+	description = "description something"
+	reagent_state = LIQUID
+	color = "#B31008" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_HYPOTHERMIC = 6)
+
+/datum/reagent/phenol
+	name = "Phenol"
+	id = "phenol"
+	description = "description something"
+	reagent_state = LIQUID
+	color = "#B31008" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_HYPOTHERMIC = 6)
 
 /datum/reagent/sodiumchloride
 	name = "Table Salt"

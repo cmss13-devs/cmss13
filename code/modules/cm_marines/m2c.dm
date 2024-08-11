@@ -640,7 +640,7 @@
 	else
 		..()
 
-/obj/structure/machinery/m56d_hmg/auto/handle_ammo_out(mob/user)
+/obj/structure/machinery/m56d_hmg/auto/t37/handle_ammo_out(mob/user)
 	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] [src]'s ammo box drops onto the ground, now completely empty."))
 	playsound(loc, empty_alarm, 70, 1)
 	update_icon() //final safeguard.
@@ -648,7 +648,7 @@
 	AM.current_rounds = 0
 	AM.update_icon()
 
-/obj/structure/machinery/m56d_hmg/auto/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/m56d_hmg/auto/t37/attackby(obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user))
 		return
 	// RELOADING

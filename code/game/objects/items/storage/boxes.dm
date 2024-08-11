@@ -563,14 +563,14 @@
 
 /obj/item/storage/box/explosive_mines/satchel_charges
 	name = "\improper M17 satchel charge box"
-	desc = "A secure box holding five M17 satchel charges."
+	desc = "A secure box holding three M17 satchel charges."
 	can_hold = list(/obj/item/explosive/satchel_charge,
 	/obj/item/satchel_charge_detonator,
 	)
 
 /obj/item/storage/box/explosive_mines/satchel_charges/fill_preset_inventory()
 	new /obj/item/satchel_charge_detonator(src)
-	for(var/i in 1 to 5)
+	for(var/i in 1 to 3)
 		new /obj/item/explosive/satchel_charge(src)
 
 

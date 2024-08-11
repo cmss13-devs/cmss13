@@ -295,7 +295,7 @@
 	if (isobserver(user) || isxeno(user)) return
 
 	if (mods["alt"]) // alt+click to ping charges?
-		to_chat(SPAN_NOTICE("You ping the detonator's [length(linked_charges)] linked charges."))
+		to_chat(user, SPAN_NOTICE("You ping the detonator's [length(linked_charges)] linked charges."))
 		for(var/obj/item/explosive/satchel_charge/SC in linked_charges)
 			flick("satchel_primed", SC)
 			SC.beep(TRUE)
@@ -334,7 +334,7 @@
 		C.toggle_throw_mode(THROW_MODE_NORMAL)
 	to_chat(user, SPAN_NOTICE("You activate the M17 Satchel Charge, it will now arm itself after a short time once thrown."))
 	activated = TRUE
-	addtimer(CALLBACK(src, .proc/un_activate), 10 SECONDS, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, nameof(.proc/un_activate)), 10 SECONDS, TIMER_UNIQUE)
 
 /obj/item/explosive/satchel_charge/attackby(obj/item/W, mob/user)
 	. = ..()
@@ -369,14 +369,14 @@
 	dir = get_dir(src, thrower)
 	if(activated && linked_detonator)
 		icon_state = "satchel_primed"
-		prime_timer  = addtimer(CALLBACK(src, .proc/arm), prime_time , TIMER_UNIQUE)
+		prime_timer  = addtimer(CALLBACK(src, nameof(.proc/arm)), prime_time , TIMER_UNIQUE)
 		beep()
 
 /obj/item/explosive/satchel_charge/proc/beep(beep_once)
 	playsound(src.loc, 'sound/weapons/mine_tripped.ogg', 10, 1)
 	to_chat(world, "BEEP")
 	if(!armed && beep_once != TRUE)
-		addtimer(CALLBACK(src, .proc/beep), 1 SECONDS, TIMER_UNIQUE)
+		addtimer(CALLBACK(src, nameof(.proc/beep)), 1 SECONDS, TIMER_UNIQUE)
 
 
 /obj/item/explosive/satchel_charge/proc/arm()

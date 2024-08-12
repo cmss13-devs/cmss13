@@ -1002,8 +1002,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "caustic_h"
 	item_state = "caustic_h"
 	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_HIGH

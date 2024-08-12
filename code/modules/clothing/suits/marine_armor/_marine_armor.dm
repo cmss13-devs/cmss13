@@ -694,7 +694,6 @@
 	flags_atom = parent_type::flags_atom | NO_NAME_OVERRIDE|NO_SNOW_TYPE //Code i dont remember writing, and only learned about afterwards. Applys the parents flags to the atom. The more you know. Dont remove the ghost code, it migth haunt you.
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bio = CLOTHING_ARMOR_HIGH

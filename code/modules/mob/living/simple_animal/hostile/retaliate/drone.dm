@@ -146,7 +146,7 @@
 		walk(src,0)
 		spawn(rand(50,150))
 			if(!disabled && exploding)
-				cell_explosion(src.loc, 220, 37, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
+				cell_explosion(loc, 220, 37, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 	..()
 
 //ion rifle!

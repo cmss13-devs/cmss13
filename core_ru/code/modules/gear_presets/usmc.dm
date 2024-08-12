@@ -15,7 +15,7 @@
 	)
 	assignment = JOB_WALKER
 	rank = JOB_WALKER
-	paygrade = "ME4"
+	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CRMN"
 	minimum_age = 30
 	skills = /datum/skills/mech_pilot

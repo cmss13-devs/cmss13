@@ -578,10 +578,6 @@
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
-"tx" = (
-/obj/structure/machinery/hologram/holopad,
-/turf/open/floor/carpet,
-/area/centcom/living)
 "tP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -2211,7 +2207,7 @@ hp
 hp
 hp
 hp
-kx
+hp
 "}
 (2,1,1) = {"
 aa
@@ -3570,7 +3566,7 @@ hp
 hp
 hp
 hp
-hp
+kx
 hp
 hp
 hp
@@ -9716,7 +9712,7 @@ ds
 eE
 eY
 eY
-tx
+eY
 eY
 eY
 eY

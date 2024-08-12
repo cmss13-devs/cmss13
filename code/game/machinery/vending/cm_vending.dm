@@ -597,6 +597,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 								if("Heavy Grenadier Set")
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
 									specialist_assignment = "Grenadier"
+									GLOB.available_specialist_sets -= "SHARP Operator Set"
+								if("SHARP Operator Set")
+									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
+									specialist_assignment = "SHARP Operator"
+									GLOB.available_specialist_sets -= "Grenadier Set"
 								if("Pyro Set")
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
 									specialist_assignment = "Pyro"

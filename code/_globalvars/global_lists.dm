@@ -493,6 +493,7 @@ GLOBAL_LIST_INIT(available_specialist_sets, list(
 			"Anti-materiel Sniper Set",
 			"Demolitionist Set",
 			"Heavy Grenadier Set",
+			"SHARP Operator Set",
 			"Pyro Set"
 			))
 
@@ -500,6 +501,7 @@ GLOBAL_LIST_INIT(available_specialist_sets, list(
 GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 			"Pyro" = 2,
 			"Grenadier" = 2,
+			"SHARP" = 2,
 			"Sniper" = 2,
 			"Scout" = 2,
 			"Demo" = 2,

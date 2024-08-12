@@ -142,11 +142,12 @@
 
 /obj/item/storage/box/spec/heavy_grenadier
 	name = "\improper Heavy Grenadier equipment case"
-	desc = "A large case containing a heavy-duty multi-shot Armat Systems M92 grenade launcher or a P9 SHARP Rifle, M3-G4 grenadier armor and helmet, significant amount of various M40 grenades and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "A large case containing a heavy-duty multi-shot Armat Systems M92 grenade launcher, M3-G4 grenadier armor and helmet, significant amount of various M40 grenades and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "grenadier"
 
 /obj/item/storage/box/spec/heavy_grenadier/fill_preset_inventory()
-	new /obj/item/spec_kit/grenadier_weapon_selector(src)
+	new /obj/item/weapon/gun/launcher/grenade/m92(src)
+	new /obj/item/storage/belt/grenade/large/full(src)
 	new /obj/item/storage/backpack/marine/grenadepack(src)
 	new /obj/item/storage/backpack/marine/grenadepack(src)
 	new /obj/item/clothing/gloves/marine/M3G(src)
@@ -157,26 +158,29 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/device/binoculars(src)
 
-/obj/item/storage/box/spec/heavy_grenadier/m92
-	desc = "A large case containing a M92 grenade launcher."
+/obj/item/storage/box/spec/sharp_operator
+	name = "\improper SHARP Operator equipment case"
+	desc = "A large case containing a P9 SHARP rifle, M3-G4 Grenadier armor and helmet, and various pieces of additional equipment.\nDrag this sprite onto yourself to open it up!"
+	kit_overlay = "grenadier"
 
-/obj/item/storage/box/spec/heavy_grenadier/m92/fill_preset_inventory()
-	new /obj/item/storage/belt/grenade/large/full(src)
-	new /obj/item/weapon/gun/launcher/grenade/m92(src)
-
-/obj/item/storage/box/spec/heavy_grenadier/sharp
-	desc = "A large case containing a P9 SHARP Rifle."
-
-/obj/item/storage/box/spec/heavy_grenadier/sharp/fill_preset_inventory()
-	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
-	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
-	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
-	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
-	new /obj/item/ammo_magazine/rifle/sharp/flechette(src)
-	new /obj/item/ammo_magazine/rifle/sharp/flechette(src)
-	new /obj/item/ammo_magazine/rifle/sharp/track(src)
-	new /obj/item/ammo_magazine/rifle/sharp/track(src)
+/obj/item/storage/box/spec/sharp_operator/fill_preset_inventory()
 	new /obj/item/weapon/gun/rifle/sharp(src)
+	new /obj/item/storage/belt/marine/sharp(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/flechette(src)
+	new /obj/item/ammo_magazine/rifle/sharp/flechette(src)
+	new /obj/item/ammo_magazine/rifle/sharp/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/sharp/incendiary(src)
+	new /obj/item/clothing/gloves/marine/M3G(src)
+	new /obj/item/clothing/suit/storage/marine/M3G(src)
+	new /obj/item/clothing/head/helmet/marine/grenadier(src)
+	new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/device/binoculars(src)
 
 
 //maybe put in req for later use?
@@ -292,6 +296,10 @@
 			spec_box = new /obj/item/storage/box/spec/heavy_grenadier(T)
 			specialist_assignment = "Grenadier"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
+		if("SHARP")
+			spec_box = new /obj/item/storage/box/spec/sharp_operator(T)
+			specialist_assignment = "SHARP Operator"
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
 		if("Sniper")
 			spec_box = new /obj/item/storage/box/spec/sniper(T)
 			specialist_assignment = "Sniper"
@@ -321,30 +329,6 @@
 		return TRUE
 	return FALSE
 
-//Grenadier weapon selector snowflake
-/obj/item/spec_kit/grenadier_weapon_selector
-	name = "\improper Grenadier weapon case"
-	desc = "A large case with the option of the M92 grenade launcher and the P9 SHARP Rifle."
-
-/obj/item/spec_kit/grenadier_weapon_selector/can_use(mob/living/carbon/human/user)
-	return TRUE
-
-/obj/item/spec_kit/grenadier_weapon_selector/select_and_spawn(mob/living/carbon/human/user)
-	var/grenadier_selection = tgui_input_list(usr, "Select your weapon", "Weapon Selection", list("M92 Grenade Launcher", "P9 SHARP Rifle"))
-	if(!grenadier_selection || QDELETED(src))
-		return FALSE
-	var/turf/T = get_turf(loc)
-	var/obj/item/storage/box/spec/weapon_box
-	switch(grenadier_selection)
-		if("M92 Grenade Launcher")
-			weapon_box = new /obj/item/storage/box/spec/heavy_grenadier/m92(T)
-			user.put_in_hands(weapon_box)
-			return TRUE
-		if("P9 SHARP Rifle")
-			weapon_box = new /obj/item/storage/box/spec/heavy_grenadier/sharp(T)
-			user.put_in_hands(weapon_box)
-			return TRUE
-	return FALSE
 
 
 //******************************************PFC Kits****************************************************************/

@@ -321,11 +321,18 @@
 /obj/item/explosive/mine/sharp
 	name = "\improper P9 SHARP explosive dart"
 	desc = "An experimental P9 SHARP proximity triggered explosive dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
-	icon_state = "sonicharpoon_g"
+	icon_state = "sharp_explosive_mine"
 	angle = 360
 	var/disarmed = FALSE
 	var/explosion_size = 100
 	var/explosion_falloff = 50
+	var/mine_level = 1
+	var/deploy_time = 0
+	var/mine_state = ""
+
+/obj/item/explosive/mine/sharp/proc/upgrade_mine()
+	mine_level++
+	icon_state = mine_state + "_[mine_level]"
 
 /obj/item/explosive/mine/sharp/check_for_obstacles(mob/living/user)
 	return FALSE
@@ -341,10 +348,18 @@
 			tripwire.linked_claymore = src
 			active = TRUE
 
-/obj/item/explosive/mine/sharp/prime(var/mob/user)
+/obj/item/explosive/mine/sharp/prime(mob/user)
 	set waitfor = 0
 	if(!cause_data)
 		cause_data = create_cause_data(initial(name), user)
+	if(mine_level == 1)
+		explosion_size = 100
+	else if(mine_level == 2)
+		explosion_size = 115
+	else if(mine_level == 3)
+		explosion_size = 130
+	else
+		explosion_size = 145
 	cell_explosion(loc, explosion_size, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data)
 	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 45)
 	qdel(src)
@@ -353,7 +368,7 @@
 	anchored = FALSE
 	active = FALSE
 	triggered = FALSE
-	icon_state = base_icon_state + "_disarmed"
+	icon_state = "sharp_mine_disarmed"
 	QDEL_NULL(tripwire)
 	disarmed = TRUE
 	add_to_garbage(src)
@@ -363,11 +378,12 @@
 		return
 	. = ..()
 
-/obj/item/explosive/mine/sharp/deploy_mine(var/mob/user)
+/obj/item/explosive/mine/sharp/deploy_mine(mob/user)
 	if(disarmed)
 		return
 	if(!hard_iff_lock && user)
 		iff_signal = user.faction
+
 
 	cause_data = create_cause_data(initial(name), user)
 	if(user)
@@ -375,6 +391,11 @@
 	setDir(user ? user.dir : dir) //The direction it is planted in is the direction the user faces at that time
 	activate_sensors()
 	update_icon()
+	deploy_time = world.time
+	mine_state = icon_state
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 30 SECONDS, TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 60 SECONDS, TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 90 SECONDS, TIMER_DELETE_ME)
 	for(var/mob/living/carbon/mob in range(1, src))
 		src.try_to_prime(mob)
 
@@ -383,3 +404,32 @@
 		..()
 	else
 		return
+
+/obj/item/explosive/mine/sharp/incendiary
+	name = "\improper P9 SHARP incendiary dart"
+	desc = "An experimental P9 SHARP proximity triggered explosive dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
+	icon_state = "sharp_incendiary_mine"
+
+/obj/item/explosive/mine/sharp/incendiary/prime(mob/user)
+	set waitfor = 0
+	if(!cause_data)
+		cause_data = create_cause_data(initial(name), user)
+	if(mine_level == 1)
+		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
+		var/smoke_radius = 2
+		smoke.set_up(smoke_radius, 0, loc)
+		smoke.start()
+		playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 45)
+	else if(mine_level == 2)
+		var/datum/reagent/napalm/green/reagent = new()
+		new /obj/flamer_fire(loc, cause_data, reagent, 2)
+		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
+	else if(mine_level == 3)
+		var/datum/reagent/napalm/ut/reagent = new()
+		new /obj/flamer_fire(loc, cause_data, reagent, 2)
+		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
+	else
+		var/datum/reagent/napalm/ut/reagent = new()
+		new /obj/flamer_fire(loc, cause_data, reagent, 3)
+		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
+	qdel(src)

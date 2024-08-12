@@ -336,6 +336,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 							set_name = "Demolitionist Set"
 						if(SKILL_SPEC_GRENADIER)
 							set_name = "Heavy Grenadier Set"
+							GLOB.available_specialist_sets += "SHARP Operator Set"
 						if(SKILL_SPEC_PYRO)
 							set_name = "Pyro Set"
 						if(SKILL_SPEC_SCOUT)

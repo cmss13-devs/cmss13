@@ -286,10 +286,10 @@
 	else
 		turn_object(270)
 
-/obj/item/sharp/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+/obj/item/sharp/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	return
 
-/obj/item/sharp/proc/on_embedded_movement(var/mob/living/embedded_mob)
+/obj/item/sharp/proc/on_embedded_movement(mob/living/embedded_mob)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob
@@ -308,9 +308,9 @@
 /obj/item/sharp/explosive
 	name = "\improper 9X-E Sticky Explosive Dart"
 
-/obj/item/sharp/track
-	name = "\improper 9X-T Sticky Tracker Dart"
-	desc = "It looks like a used 9X-T Sticky Tracker Dart, useless now."
+/obj/item/sharp/incendiary
+	name = "\improper 9X-T Sticky Incendiary Dart"
+	desc = "It looks like a used 9X-T Sticky Incendiary Dart, useless now."
 	icon_state = "sonicharpoon_tracker"
 
 /obj/item/sharp/flechette

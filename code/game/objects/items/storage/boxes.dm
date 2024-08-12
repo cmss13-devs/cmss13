@@ -561,6 +561,24 @@
 	for(var/i in 1 to 5)
 		new /obj/item/explosive/mine/pmc(src)
 
+/obj/item/storage/box/explosive/antitank_mine
+	name = "\improper M19 Antitank mine box"
+	desc = "A secure box holding three M19 anti-tank, pressure-fuse mines."
+	icon_state = "antitank_minebox"
+	w_class = SIZE_LARGE
+	max_storage_space = 14
+	can_hold = list(/obj/item/explosive/mine/bury/antitank)
+
+/obj/item/storage/box/explosive/antitank_mine/fill_preset_inventory()
+	for(var/i in 1 to 3)
+		new /obj/item/explosive/mine/bury/antitank(src)
+
+/obj/item/storage/box/explosive/antitank_mine/update_icon()
+	if(!length(contents))
+		icon_state = "antitank_minebox_e"
+	else
+		icon_state = "antitank_minebox"
+
 /obj/item/storage/box/m94
 	name = "\improper M94 marking flare pack"
 	desc = "A packet of eight M94 Marking Flares. Carried by USCM soldiers to light dark areas that cannot be reached with the usual TNR Shoulder Lamp."

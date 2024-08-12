@@ -254,11 +254,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "abe" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -32;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "abf" = (
@@ -1417,9 +1413,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "afK" = (
-/obj/structure/machinery/power/apc{
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -2162,10 +2156,7 @@
 "aiF" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/slugs,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aiG" = (
@@ -3904,11 +3895,8 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_store)
 "apv" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Xenbiology Lab APC";
-	pixel_x = -30;
-	start_charge = 0
+/obj/structure/machinery/power/apc/no_power/west{
+	name = "Xenbiology Lab APC"
 	},
 /obj/structure/machinery/door_control{
 	id = "lambda";
@@ -4392,7 +4380,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "arw" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "arx" = (
@@ -5487,10 +5475,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "avF" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Dormitories APC";
-	pixel_y = 25
+/obj/structure/machinery/power/apc/power/north{
+	name = "Dormitories APC"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -5952,11 +5938,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -30
 	},
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
 "axr" = (
@@ -7668,8 +7650,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aEb" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
+/obj/structure/machinery/power/apc/power/north{
 	name = "Bar APC"
 	},
 /turf/open/floor/wood,
@@ -7699,11 +7680,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/living)
 "aEm" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/whitepurple/west,
 /area/bigredv2/caves/lambda/research)
 "aEn" = (
@@ -8383,11 +8360,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/whitegreen/northwest,
 /area/bigredv2/caves/lambda/virology)
 "aHa" = (
@@ -9319,7 +9292,7 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/hydroponics)
 "aKH" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/hydroponics)
 "aKI" = (
@@ -10935,8 +10908,7 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aQC" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
+/obj/structure/machinery/power/apc/power/north{
 	name = "Virology APC"
 	},
 /turf/open/floor/white,
@@ -11641,8 +11613,7 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aSZ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
+/obj/structure/machinery/power/apc/power/north{
 	name = "Control Center APC"
 	},
 /turf/open/floor/plating,
@@ -12524,10 +12495,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aXb" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "aXc" = (
@@ -13943,8 +13911,7 @@
 /area/bigredv2/outside/office_complex)
 "bcZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc{
-	dir = 1;
+/obj/structure/machinery/power/apc/power/north{
 	name = "Interview Room APC"
 	},
 /turf/open/floor,
@@ -14093,7 +14060,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "bdG" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "bdI" = (
@@ -14878,9 +14845,7 @@
 /turf/open/floor/bot/north,
 /area/bigredv2/outside/cargo)
 "bhf" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bhi" = (
@@ -19697,10 +19662,7 @@
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "ccI" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 2.5;
@@ -19971,11 +19933,7 @@
 /area/bigredv2/outside/marshal_office)
 "cGT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -32;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/filtration_plant)
 "cGZ" = (
@@ -21492,7 +21450,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves_lambda)
 "fyp" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/darkgreencorners2,
 /area/bigredv2/caves/eta/storage)
 "fyz" = (
@@ -21592,9 +21550,7 @@
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_north)
 "fKW" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/darkyellowcorners2/north,
 /area/bigredv2/caves/eta/living)
 "fLj" = (
@@ -23249,10 +23205,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "jiS" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_store)
 "jkn" = (
@@ -24257,9 +24210,7 @@
 /turf/open/mars_cave,
 /area/bigredv2/caves_east)
 "kRy" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
 "kRK" = (
@@ -24792,9 +24743,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "lTM" = (
@@ -25284,10 +25233,7 @@
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/caves/mining)
 "mYV" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/red/north,
 /area/bigredv2/outside/lambda_cave_cas)
 "mYW" = (
@@ -26481,9 +26427,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/e)
 "plx" = (
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/darkred2/east,
 /area/bigredv2/caves/eta/research)
 "pmk" = (
@@ -26814,10 +26758,7 @@
 /turf/open/floor/carpet,
 /area/bigredv2/outside/library)
 "pTo" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -1
@@ -28559,10 +28500,7 @@
 /area/bigredv2/caves/mining)
 "sWh" = (
 /obj/structure/platform_decoration,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/telecomm/n_cave)
 "sWS" = (
@@ -28989,7 +28927,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "tDl" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/darkredcorners2/west,
 /area/bigredv2/caves/eta/xenobiology)
 "tDv" = (
@@ -29538,10 +29476,7 @@
 /turf/open/mars_cave/mars_dirt_5,
 /area/bigredv2/caves/mining)
 "uJF" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "uJI" = (
@@ -31010,9 +30945,7 @@
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves/mining)
 "xAX" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "xBn" = (
@@ -31241,9 +31174,7 @@
 /turf/open/floor/plating/warnplate/west,
 /area/bigredv2/outside/telecomm/warehouse)
 "xWV" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/power/north,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},

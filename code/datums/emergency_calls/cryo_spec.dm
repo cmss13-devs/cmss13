@@ -35,10 +35,11 @@
 		human.create_hud()
 
 	if(!mind)
-		for(var/obj/structure/machinery/cryopod/pod in view(7,human))
+		FOR_DVIEW(var/obj/structure/machinery/cryopod/pod, 7, human, HIDE_INVISIBLE_OBSERVER)
 			if(pod && !pod.occupant)
 				pod.go_in_cryopod(human, silent = TRUE)
 				break
+		FOR_DVIEW_END
 
 	sleep(5)
 	human.client?.prefs.copy_all_to(human, JOB_SQUAD_SPECIALIST, TRUE, TRUE)

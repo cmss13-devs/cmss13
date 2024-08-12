@@ -270,6 +270,7 @@
 		falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 		to_chat(usr, SPAN_NOTICE("You disable [src]'s blast wave dampener, restoring the blast radius to full."))
 	playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+
 /obj/item/satchel_charge_detonator
 	name = "M38-D Multipurpose Detonator"
 	desc = "An ergonomic detonator capable of detonating multiple types of command explosives, notable being satchel charges, detcords and plastic explosives."
@@ -284,27 +285,27 @@
 	flick("detonator_active", src)
 	sleep(40)
 	var/detonation_count = 0
-	for(var/obj/item/explosive/satchel_charge/SC in linked_charges)
-		if(SC.z != src.loc.z)
-			message_admins("")
-		SC.detonate(src)
+	for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
+		charges.detonate(src)
 		detonation_count++
 	to_chat(user, SPAN_NOTICE("[detonation_count] charges detonated."))
 
 /obj/item/satchel_charge_detonator/clicked(mob/user, list/mods)  // kill me
-	if (isobserver(user) || isxeno(user)) return
+	if (isobserver(user) || isxeno(user))
+		return
 
 	if (mods["alt"]) // alt+click to ping charges?
 		to_chat(user, SPAN_NOTICE("You ping the detonator's [length(linked_charges)] linked charges."))
-		for(var/obj/item/explosive/satchel_charge/SC in linked_charges)
-			flick("satchel_primed", SC)
-			SC.beep(TRUE)
+		for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
+			flick("satchel_primed", charges)
+			charges.beep(TRUE)
 		return 1
 	return
+
 /obj/item/explosive/satchel_charge
 	name = "M17 Satchel Charge"
-	desc = "The M17 is an old, yet robust satchel charge system dating back to the late 21st century that still hasn't been replaced yet. In addition to command detonation, it also features a laser tripwire mode where it can be mounted onto a wall and detonate to anything the crosses it without IFF. Finally it features a seldomly used auto disarm mode where it automatically disarms after a time period to reduce collateral damage from UXO. Not that collateral matters nowadays anyways...\nTo detonate it, it requires linking with the included M38-D universal detonator beforehand and tossing it ."
-	//desc = "After linked to a detonator, and thrown, will become primed and able to be detonated."
+	desc = "After linked to a detonator, and thrown, will become primed and able to be detonated."
+	desc_lore = "The M17 is an old, yet robust satchel charge system dating back to the late 21st century that still hasn't been replaced yet. It features a seldomly used auto disarm mode where it automatically disarms after a time period to reduce collateral damage from UXO. Not that collateral matters nowadays anyways...\nTo detonate it, it requires linking with the included M38-D universal detonator beforehand and tossing it ."
 	gender = PLURAL
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "satchel"
@@ -374,7 +375,7 @@
 
 /obj/item/explosive/satchel_charge/proc/beep(beep_once)
 	playsound(src.loc, 'sound/weapons/mine_tripped.ogg', 10, 1)
-	to_chat(world, "BEEP")
+	to_chat(world, SPAN_WARNING ("BEEP"))
 	if(!armed && beep_once != TRUE)
 		addtimer(CALLBACK(src, PROC_REF(beep)), 1 SECONDS, TIMER_UNIQUE)
 
@@ -388,7 +389,6 @@
 
 /obj/item/explosive/satchel_charge/pickup(mob/user)
 	if(armed)
-		do_after(user, prime_time, INTERRUPT_MOVED, TRUE)
 		if(linked_detonator)
 			icon_state = "satchel_linked"
 		else
@@ -401,5 +401,4 @@
 		return
 	linked_detonator.linked_charges -= src
 	cell_explosion(loc, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
-	message_admins("BOOM!")
 	qdel(src)

@@ -1,0 +1,5 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - balance: "Explosions now always deal full damage at the source tile"
+  - bugfix: "Fixed sadar rockets not gibbing humans on direct hit"

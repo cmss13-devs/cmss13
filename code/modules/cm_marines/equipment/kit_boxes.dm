@@ -9,6 +9,7 @@
 	storage_slots = 14
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
+	max_w_class = 0
 	foldable = null
 
 /obj/item/storage/box/spec/update_icon()
@@ -283,15 +284,15 @@
 			specialist_assignment = "Scout"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
 			//this is to be able to use C4s that are coming with the kit
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
+				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_NOVICE)
 		if("Demo")
 			spec_box = new /obj/item/storage/box/spec/demolitionist(T)
 			specialist_assignment = "Demo"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
 			//this is to be able to use C4s that are coming with the kit
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
+				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_NOVICE)
 	if(specialist_assignment)
 		user.put_in_hands(spec_box)
 		card.set_assignment((user.assigned_squad && squad_assignment_update ? (user.assigned_squad.name + " ") : "") + card.assignment + " ([specialist_assignment])")
@@ -423,7 +424,6 @@
 	new /obj/item/weapon/gun/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg/holo_target(src)
-	new /obj/item/attachable/bipod(src)
 	new /obj/item/stack/folding_barricade/three(src)
 	new /obj/item/clothing/glasses/welding(src)
 	new /obj/item/tool/weldingtool(src)

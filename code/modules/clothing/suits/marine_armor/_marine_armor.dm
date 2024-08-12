@@ -286,6 +286,17 @@
 	item_state_slots = list(WEAR_JACKET = "mp_armor")
 	black_market_value = 20
 
+/obj/item/clothing/suit/storage/marine/MP/Initialize(mapload)
+	. = ..()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		armor_bullet = CLOTHING_ARMOR_HIGH
+		armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+		armor_internaldamage = CLOTHING_ARMOR_HIGH
+	else
+		armor_bullet = CLOTHING_ARMOR_MEDIUM
+		armor_bomb = CLOTHING_ARMOR_MEDIUM
+		armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+
 /obj/item/clothing/suit/storage/marine/MP/warden
 	name = "\improper M3 pattern warden MP armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens. Useful for letting your men know who is in charge."
@@ -415,6 +426,17 @@
 	armor_variation = 0
 	specialty = "M3 pattern smooth marine"
 
+/obj/item/clothing/suit/storage/marine/medium/Initialize(mapload)
+	. = ..()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		armor_bullet = CLOTHING_ARMOR_HIGH
+		armor_bomb = CLOTHING_ARMOR_MEDIUM
+		armor_internaldamage = CLOTHING_ARMOR_HIGH
+	else
+		armor_bullet = CLOTHING_ARMOR_MEDIUM
+		armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+		armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
 // M3-L pattern light armor
 /obj/item/clothing/suit/storage/marine/light
 	name = "\improper M3-L pattern light armor"
@@ -454,6 +476,17 @@
 /obj/item/clothing/suit/storage/marine/light/smooth
 	icon_state = "L6"
 	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/light/Initialize(mapload)
+	. = ..()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		armor_bullet = CLOTHING_ARMOR_MEDIUM
+		armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+		armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	else
+		armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+		armor_bomb = CLOTHING_ARMOR_MEDIUM
+		armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/storage/marine/light/vest
 	name = "\improper M3-VL pattern ballistics vest"
@@ -499,6 +532,17 @@
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
 	uniform_restricted = null
+
+/obj/item/clothing/suit/storage/marine/light/synvest/Initialize(mapload)
+	. = ..()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		armor_bullet = CLOTHING_ARMOR_NONE
+		armor_bomb = CLOTHING_ARMOR_NONE
+		armor_internaldamage = CLOTHING_ARMOR_NONE
+	else
+		armor_bullet = CLOTHING_ARMOR_NONE
+		armor_bomb = CLOTHING_ARMOR_NONE
+		armor_internaldamage = CLOTHING_ARMOR_NONE
 
 /obj/item/clothing/suit/storage/marine/light/synvest/grey
 	icon_state = "VL_syn"
@@ -577,6 +621,17 @@
 /obj/item/clothing/suit/storage/marine/heavy/smooth
 	icon_state = "H6"
 	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/heavy/Initialize(mapload)
+	. = ..()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		armor_bullet = CLOTHING_ARMOR_HIGH
+		armor_bomb = CLOTHING_ARMOR_HIGH
+		armor_internaldamage = CLOTHING_ARMOR_HIGH
+	else
+		armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+		armor_bomb = CLOTHING_ARMOR_HIGHPLUS
+		armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 //===========================//SPECIALIST\\================================\\
 //=======================================================================\\

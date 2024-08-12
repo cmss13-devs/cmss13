@@ -452,7 +452,7 @@
 		M.AdjustStun(4)
 		M.KnockDown(4)
 		to_chat(M, SPAN_HIGHDANGER("Molten copper rips through your lower body!"))
-		M.apply_damage(150,BURN)
+		M.apply_damage(200,BURN)
 		if(ishuman(M))
 			sparks.start()
 			var/mob/living/carbon/human/H = M

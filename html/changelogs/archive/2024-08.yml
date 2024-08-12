@@ -192,3 +192,9 @@
       the box.
   cuberound:
   - rscdel: removes gravity generator (ugly legacy stuff)
+2024-08-12:
+  Git-Nivrak:
+  - bugfix: You can no longer put items back in the specialist case after taking them
+      out
+  zzzmike:
+  - rscadd: fun fact for internal bleeding fixed

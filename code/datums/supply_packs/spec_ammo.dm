@@ -188,7 +188,7 @@
 		/obj/item/ammo_magazine/rifle/sharp/flechette,
 		/obj/item/ammo_magazine/rifle/sharp/flechette,
 		/obj/item/ammo_magazine/rifle/sharp/incendiary,
-		/obj/item/ammo_magazine/rifle/sharp/incendiary
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
 	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
@@ -202,7 +202,7 @@
 		/obj/item/ammo_magazine/rifle/sharp/explosive,
 		/obj/item/ammo_magazine/rifle/sharp/explosive,
 		/obj/item/ammo_magazine/rifle/sharp/explosive,
-		/obj/item/ammo_magazine/rifle/sharp/explosive
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
@@ -216,7 +216,7 @@
 		/obj/item/ammo_magazine/rifle/sharp/flechette,
 		/obj/item/ammo_magazine/rifle/sharp/flechette,
 		/obj/item/ammo_magazine/rifle/sharp/flechette,
-		/obj/item/ammo_magazine/rifle/sharp/flechette
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
@@ -230,7 +230,7 @@
 		/obj/item/ammo_magazine/rifle/sharp/incendiary,
 		/obj/item/ammo_magazine/rifle/sharp/incendiary,
 		/obj/item/ammo_magazine/rifle/sharp/incendiary,
-		/obj/item/ammo_magazine/rifle/sharp/incendiary
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo

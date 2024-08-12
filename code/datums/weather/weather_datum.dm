@@ -424,7 +424,12 @@
 	return severity / max_severity
 
 /datum/particle_weather/proc/tick()
-	if(weather_additional_events && prob(10))
+	if(!running)
+		return
+	if(COOLDOWN_FINISHED(src, time_left))
+		wind_down()
+		return
+	if(weather_additional_events && prob(max(severity, 10)))
 		for(var/event in weather_additional_events)
 			if(!prob(weather_additional_events[event][1]))
 				continue
@@ -451,7 +456,6 @@
 	COOLDOWN_START(src, time_left, weather_duration)
 	weather_start_time = SSglobal_light.game_time_offseted() / SSglobal_light.game_time_length
 	running = TRUE
-	addtimer(CALLBACK(src, PROC_REF(wind_down)), weather_duration)
 	weather_warnings()
 	if(particle_effect_type)
 		SSweather_conditions.set_particle_effect(new particle_effect_type);
@@ -487,6 +491,7 @@
 
 /datum/particle_weather/proc/wind_down()
 	severity = 0
+	running = FALSE
 	if(SSweather_conditions.particle_effect)
 		SSweather_conditions.particle_effect.animate_severity(0)
 
@@ -494,7 +499,6 @@
 		addtimer(CALLBACK(src, PROC_REF(end)), SSweather_conditions.particle_effect.lifespan + SSweather_conditions.particle_effect.fade)
 
 /datum/particle_weather/proc/end()
-	running = FALSE
 	SSweather_conditions.stop_weather()
 
 /datum/particle_weather/proc/can_weather(mob/living/mob_to_check)

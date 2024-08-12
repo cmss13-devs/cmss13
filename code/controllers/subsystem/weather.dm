@@ -71,7 +71,7 @@ SUBSYSTEM_DEF(weather_conditions)
 /datum/controller/subsystem/weather_conditions/proc/run_weather(datum/particle_weather/weather_datum_type, force = 0)
 	if(running_weather)
 		if(force)
-			running_weather.end()
+			running_weather.wind_down()
 		else
 			return
 

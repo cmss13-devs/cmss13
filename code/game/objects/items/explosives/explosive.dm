@@ -305,7 +305,7 @@
 /obj/item/explosive/satchel_charge
 	name = "M17 Satchel Charge"
 	desc = "After linked to a detonator, and thrown, will become primed and able to be detonated."
-	desc_lore = "The M17 is a simple satchel charge system used by Marines in situations where their usual fire support can't reach. This one is set to automatically disarm after a short period, to reduce the chances of civilian injuries from abandoned UXO.\nTo detonate it, link the satchel charge with the included M38-D universal detonator beforehand, then throw it."
+	desc_lore = "The M17 is a simple satchel charge system used by Marines in situations where their usual fire support can't reach, designed to be thrown at or into structures before exploding. This one is set to automatically disarm after a short period, to reduce the chances of civilian injuries from abandoned UXO.\nTo detonate it, link the satchel charge with the included M38-D universal detonator beforehand, then throw it. The detonator's safety mechanism takes four seconds to deactivate after being thrown."
 	gender = PLURAL
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "satchel"

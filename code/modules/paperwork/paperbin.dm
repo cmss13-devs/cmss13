@@ -28,7 +28,7 @@
 
 /obj/item/paper_bin/attack_hand(mob/user)
 	var/response = ""
-	if(!papers.len > 0)
+	if(!length(papers) > 0)
 		response = alert(user, "What kind of paper?", "Paper type request", "Regular", sec_paper_type, "Cancel")
 		if (response != "Regular" && response != "Carbon-Copy" && response != "Company Document" && response != "USCM Document")
 			add_fingerprint(user)
@@ -39,8 +39,8 @@
 			update_icon()
 
 		var/obj/item/paper/P
-		if(papers.len > 0) //If there's any custom paper on the stack, use that instead of creating a new paper.
-			P = papers[papers.len]
+		if(length(papers) > 0) //If there's any custom paper on the stack, use that instead of creating a new paper.
+			P = papers[length(papers)]
 			papers.Remove(P)
 		else
 			if (response == "Regular")

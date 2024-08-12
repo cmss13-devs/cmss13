@@ -14,14 +14,14 @@
 	var/huggers_to_grow_max = 12
 	var/huggers_reserved = 0
 	var/mob/captured_mob
-	var/datum/shape/rectangle/range_bounds
+	var/datum/shape/range_bounds
 
 	appearance_flags = KEEP_TOGETHER
 	layer = FACEHUGGER_LAYER
 
 /obj/effect/alien/resin/special/eggmorph/Initialize(mapload, hive_ref)
 	. = ..()
-	range_bounds = RECT(x, y, EGGMORPG_RANGE, EGGMORPG_RANGE)
+	range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
 
 /obj/effect/alien/resin/special/eggmorph/Destroy()
 	if (stored_huggers && linked_hive)
@@ -44,6 +44,9 @@
 	. = ..()
 	if(isxeno(user) || isobserver(user))
 		. += "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow (reserved: [huggers_reserved])."
+	if(isobserver(user))
+		var/current_hugger_count = linked_hive.get_current_playable_facehugger_count();
+		. += "There are currently [SPAN_NOTICE("[current_hugger_count]")] facehuggers in the hive. The hive can support a total of [SPAN_NOTICE("[linked_hive.playable_hugger_limit]")] facehuggers at present."
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/grab))
@@ -155,7 +158,7 @@
 
 /obj/effect/alien/resin/special/eggmorph/proc/check_facehugger_target()
 	if(!range_bounds)
-		range_bounds = RECT(x, y, EGGMORPG_RANGE, EGGMORPG_RANGE)
+		range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
 
 	var/list/targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
 	if(isnull(targets) || !length(targets))

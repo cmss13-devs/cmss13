@@ -191,7 +191,7 @@
 
 		var/turf/spawn_turf
 		if(range_to_spawn_on)
-			for(spawn_turf in range(initial_turf, range_to_spawn_on))
+			for(spawn_turf in range(range_to_spawn_on, initial_turf))
 				if(!spawn_turf || istype(spawn_turf, /turf/closed))
 					continue
 				turfs += spawn_turf
@@ -259,7 +259,7 @@
 			var/datum/emergency_call/custom/em_call = new()
 			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned humans")
 			em_call.name = name
-			em_call.mob_max = humans.len
+			em_call.mob_max = length(humans)
 			em_call.players_to_offer = humans
 			em_call.owner = owner
 
@@ -317,7 +317,7 @@
 
 		var/turf/spawn_turf
 		if(range_to_spawn_on)
-			for(spawn_turf in range(initial_turf, range_to_spawn_on))
+			for(spawn_turf in range(range_to_spawn_on, initial_turf))
 				if(!spawn_turf || istype(spawn_turf, /turf/closed))
 					continue
 				turfs += spawn_turf
@@ -347,7 +347,7 @@
 			var/datum/emergency_call/custom/em_call = new()
 			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned xenos")
 			em_call.name = name
-			em_call.mob_max = xenos.len
+			em_call.mob_max = length(xenos)
 			em_call.players_to_offer = xenos
 			em_call.owner = owner
 

@@ -2,120 +2,68 @@
 	set name = "Weapons"
 	set category = "Admin.Ship"
 
-	var/weapontype = tgui_alert(src, "What weapon?", "Choose wisely!", list("Missile", "Railgun"), 20 SECONDS)
-	if(!weapontype)
+	var/list/datum/space_weapon/potential_weapons = list()
+	for(var/weapon_to_get in GLOB.space_weapons)
+		var/datum/space_weapon/weapon_to_set = GLOB.space_weapons[weapon_to_get]
+		LAZYSET(potential_weapons, weapon_to_set.name, weapon_to_set)
+
+	var/weapon_type = tgui_input_list(src, "What weapon?", "Choose wisely!", potential_weapons)
+	if(!weapon_type)
 		return
-	var/hiteta = tgui_input_number(src, "Give an ETA for the weapon to hit.", "Don't make them wait too long!", 10, 120, 10, 20 SECONDS)
-	if(!hiteta)
+
+	var/list/ammo_type = list()
+	var/answer = tgui_alert(src, "Use all ammo types?", "Ammo selector", list("Yes", "No", "Cancel"))
+	if(answer == "Yes")
+		ammo_type = potential_weapons[weapon_type].possibly_ammunition
+	else if(answer == "No")
+		var/list/datum/space_weapon_ammo/potential_ammo = list()
+		for(var/ammo_to_get in potential_weapons[weapon_type].possibly_ammunition)
+			var/datum/space_weapon_ammo/ammo_to_set = GLOB.space_weapons_ammo[ammo_to_get]
+			LAZYSET(potential_ammo, ammo_to_set.name, ammo_to_get)
+
+		while(length(potential_ammo))
+			var/additional_ammo = tgui_input_list(src, "Choose ammo", "Ammo selector", potential_ammo, 20 SECONDS)
+			if(!additional_ammo)
+				break
+			ammo_type += potential_ammo[additional_ammo]
+			potential_ammo -= additional_ammo
+	else
 		return
-	var/point_defense = tgui_alert(src, "Allow Point Defence of the ship to intercept, or for the weapon to miss?", "standard  PD/miss chance is 30%.", list("Yes", "No"), 20 SECONDS)
-	if(!point_defense)
+
+	if(!length(ammo_type))
 		return
-	point_defense = point_defense == "Yes"
-	var/exactplace = tgui_alert(src, "Shoot it at random places, or where you're at?", "Choose wisely!", list("Random", "Where I am"), 20 SECONDS)
-	if(!exactplace)
+
+	var/hit_eta = tgui_input_number(src, "Give an ETA for the weapon to hit.", "Don't make them wait too long!", 10, 120, 10, 20 SECONDS)
+	if(!hit_eta)
 		return
-	exactplace = exactplace == "Where I am"
 
-	var/salvo
-	var/quantity
-	if(exactplace == FALSE)
-		salvo = tgui_alert(src, "Make it a salvo or a single fire?", "Choose wisely!", list("Salvo", "Single"), 20 SECONDS)
-		if(!salvo)
-			return
-		salvo = salvo == "Salvo"
-		if(salvo == TRUE)
-			quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 2, 10, 2, 20 SECONDS)
+	var/intercept_chance = tgui_input_number(src, "Chance Point Defence of the ship to intercept, or for the weapon to miss?", "standard PD chance is 0%.", 0, 100, 0, 20 SECONDS)
 
-	var/prompt = tgui_alert(src, "Are you sure you want to open fire at the USS Almayer with those parameters?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
-	if(prompt != "Yes")
+	var/targets
+	var/quantity = 1
+	if(tgui_alert(src, "Shoot it at random places, or where you're at?", "Choose wisely!", list("Random", "Where I am"), 20 SECONDS) == "Where I am")
+		targets = list(get_turf(mob))
+	else
+		quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 1, 256, 1, 20 SECONDS)
+		targets = shipside_random_turf_picker(quantity)
+
+	var/delay = tgui_input_number(src, "Give delay between hits in diceseconds (1/10 of second). (0 async hits, can cause emotional damage)", "Don't make them wait too long!", 0, 600, 0, 20 SECONDS)
+
+	if(tgui_alert(src, "Are you sure you want to open fire at the [MAIN_SHIP_NAME] with those parameters?", "Choose wisely!", list("Yes", "No")) != "Yes")
 		return
-	var/atom/picked_atom
-	var/list/targets = list()
-	switch(weapontype)
 
-		if("Missile")
-			if(exactplace == TRUE)
-				shipwide_ai_announcement("DANGER: MISSILE WARNING. LAUNCH DETECTED, BRACE, BRACE, BRACE. ESTIMATED TIME: [hiteta] SECONDS.", MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
-				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, mob.loc, point_defense), hiteta SECONDS)
-				message_admins("[key_name_admin(src)] Fired a Single Missile at the Almayer at their own location, [mob.loc], with point defense as [point_defense]")
-				if(point_defense == TRUE)
-					var/spoolup = hiteta - 4
-					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING TARGET, SPOOLING UP POINT DEFENSE. ATTEMPTING TO INTERCEPT." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
-
-			if(exactplace == FALSE)
-				if(salvo == TRUE)
-					shipwide_ai_announcement("DANGER: MISSILE SALVO DETECTED, BRACE, BRACE, BRACE. SALVO SIZE: [quantity], ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
-					targets = shipside_random_turf_picker(quantity)
-					if(targets == null)
-						tgui_alert(src, "Uh oh! Something broke at this point! Contact the coders!", "Acknowledge!", list("ok."), 10 SECONDS)
-						return
-					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, targets, point_defense, salvo), hiteta SECONDS)
-					message_admins("[key_name_admin(src)] Fired a salvo of [quantity] Missiles at the Almayer at random places, with point defense as [point_defense]")
-					if(point_defense == TRUE)
-						var/spoolup = hiteta - 4
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING TARGETS, SPOOLING UP POINT DEFENSE. ATTEMPTING TO INTERCEPT." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
-				else
-					shipwide_ai_announcement("DANGER: MISSILE WARNING. LAUNCH DETECTED, BRACE, BRACE, BRACE. ESTIMATED TIME: [hiteta] SECONDS.", MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
-					picked_atom = shipside_random_turf_picker(1)
-					if(picked_atom == null)
-						tgui_alert(src, "Uh oh! Something broke at this point! Contact the coders!", "Acknowledge!", list("ok."), 10 SECONDS)
-						return
-					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, point_defense), hiteta SECONDS)
-					message_admins("[key_name_admin(src)] Fired a Single Missile at the Almayer at a random place, [picked_atom], with point defense as [point_defense]")
-					if(point_defense == TRUE)
-						var/spoolup = hiteta - 4
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING TARGET, SPOOLING UP POINT DEFENSE. ATTEMPTING TO INTERCEPT." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
-
-		if("Railgun")
-			if(exactplace == TRUE)
-				shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, INCOMING SHOT. BRACE, BRACE, BRACE. ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
-				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, mob.loc, point_defense), hiteta SECONDS)
-				message_admins("[key_name_admin(src)] Fired a single Railgun Slug at the Almayer at their location, [mob.loc], with the possibility of missing as [point_defense]")
-
-
-			if(exactplace == FALSE)
-				if(salvo == TRUE)
-					shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, SALVO INCOMING. BRACE, BRACE, BRACE. SALVO SIZE: [quantity], ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
-					targets = shipside_random_turf_picker(quantity)
-					if(targets == null)
-						tgui_alert(src, "Uh oh! Something broke at this point! Contact the coders!", "Acknowledge!", list("ok."), 10 SECONDS)
-						return
-					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, targets, point_defense, salvo), hiteta SECONDS)
-					message_admins("[key_name_admin(src)] Fired a salvo of Railgun Slugs at the Almayer at random places, with the possibility of missing [point_defense]")
-					picked_atom = null
-					targets = null
-
-				if(salvo == FALSE)
-					prompt = tgui_alert(src, "Are you sure you want to shoot a railgun slug at the USS Almayer at a random place?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
-					if(prompt == "Yes")
-						shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, INCOMING SHOT. BRACE, BRACE, BRACE. ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
-						picked_atom = shipside_random_turf_picker(1)
-						if(picked_atom == null)
-							tgui_alert(src, "Uh oh! Something broke at this point! Contact the coders!", "Acknowledge!", list("ok."), 10 SECONDS)
-							return
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, picked_atom, point_defense), hiteta SECONDS)
-						message_admins("[key_name_admin(src)] Fired a single Railgun Slug at the Almayer at a random location, [picked_atom], with the possibility of missing as [point_defense]")
+	potential_weapons[weapon_type].shot_message(length(targets), hit_eta)
+	addtimer(CALLBACK(potential_weapons[weapon_type], TYPE_PROC_REF(/datum/space_weapon, on_shot), targets, ammo_type, intercept_chance, delay), hit_eta SECONDS)
+	message_admins("[key_name_admin(src)] Fired [quantity] form [weapon_type] at the Almayer, with point defense as [intercept_chance]% with delay of [delay/10] seconds between hits")
+	if(intercept_chance)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING TARGET[quantity > 1 ? "S" : ""], SPOOLING UP POINT DEFENSE. ATTEMPTING TO INTERCEPT." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), (hit_eta - 4) SECONDS)
 
 /proc/shipside_random_turf_picker(turfquantity)
-
-	var/picked_atom
-	var/picked_area
 	var/list/targets = list()
-	var/list/turfs_of_area = list()
-	for(var/currentturf in 1 to turfquantity)
-		for(var/limiter in 1 to 120)
-			picked_area = pick(GLOB.ship_areas)
-			for(var/turf/my_turf in picked_area)
+	for(var/currentturf = 1 to turfquantity)
+		var/list/turfs_of_area = list()
+		for(var/area in GLOB.ship_areas)
+			for(var/turf/my_turf in area)
 				turfs_of_area += my_turf
-			if(turfs_of_area.len > 0)
-				picked_atom = pick(turfs_of_area)
-				if (picked_atom != null)
-					targets += picked_atom
-					break
-
-	if(targets.len < turfquantity)
-		return null
-	else
-		return targets
-
+		targets += pick(turfs_of_area)
+	return targets

@@ -251,8 +251,8 @@
 				authentication = get_ares_access(idcard)
 				last_login = idcard.registered_name
 			else if(operator.wear_id)
-				idcard = operator.wear_id
-				if(istype(idcard))
+				idcard = operator.get_idcard()
+				if(idcard)
 					authentication = get_ares_access(idcard)
 					last_login = idcard.registered_name
 			else

@@ -70,6 +70,10 @@
 	var/list/cached_vars
 #endif
 
+#ifdef AUTOWIKI
+	var/autowiki_skip = FALSE
+#endif
+
 /**
 * Default implementation of clean-up code.
 *
@@ -119,7 +123,7 @@
 			var/datum/component/C = all_components
 			qdel(C, FALSE, TRUE)
 		if(datum_components)
-			debug_log("'[src]' datum_components was not null after removing all components! [datum_components.len] entries remained...")
+			debug_log("'[src]' datum_components was not null after removing all components! [length(datum_components)] entries remained...")
 			datum_components.Cut()
 
 	var/list/lookup = comp_lookup

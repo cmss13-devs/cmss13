@@ -534,7 +534,7 @@
 /atom/proc/GetAllContents(searchDepth = 5, list/toReturn = list())
 	for(var/atom/part as anything in contents)
 		toReturn += part
-		if(part.contents.len && searchDepth)
+		if(length(part.contents) && searchDepth)
 			part.GetAllContents(searchDepth - 1, toReturn)
 	return toReturn
 
@@ -555,7 +555,7 @@
 		if(part.loc != src) // That's a multitile atom, and it's not actually here stricto sensu
 			continue
 		toReturn += part
-		if(part.contents.len && searchDepth)
+		if(length(part.contents) && searchDepth)
 			part.GetAllContents(searchDepth - 1, toReturn)
 	return toReturn
 
@@ -1082,7 +1082,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 
 	var/list/doors = new/list()
 
-	if(toupdate.len)
+	if(length(toupdate))
 		for(var/turf/T1 in toupdate)
 			for(var/obj/structure/machinery/door/D2 in T1)
 				doors += D2
@@ -1091,7 +1091,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			else
 				air_master.tiles_to_update += T1*/
 
-	if(fromupdate.len)
+	if(length(fromupdate))
 		for(var/turf/T2 in fromupdate)
 			for(var/obj/structure/machinery/door/D2 in T2)
 				doors += D2
@@ -1100,11 +1100,17 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			else
 				air_master.tiles_to_update += T2*/
 
-/proc/get_cardinal_dir(atom/A, atom/B)
-	var/dx = abs(B.x - A.x)
-	var/dy = abs(B.y - A.y)
-	return get_dir(A, B) & (rand() * (dx+dy) < dy ? 3 : 12)
+/// Returns the nearest cardinal dir between two atoms. Favors NORTH/SOUTH on perfect diagonals. Consistent and reversible.
+/proc/get_cardinal_dir(atom/start, atom/end) as num
+	var/dx = end.x - start.x
+	var/dy = end.y - start.y
+	if(!(dx || dy))
+		return 0 //returns 0 when on same x/y, consistent with get_dir()
 
+	if(abs(dx) > abs(dy))
+		return dx < 0 ? WEST : EAST
+	else
+		return dy < 0 ? SOUTH : NORTH
 
 //Returns the 2 dirs perpendicular to the arg
 /proc/get_perpen_dir(dir)
@@ -1283,11 +1289,8 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 	origin = get_turf(origin)
 	if(!origin)
 		return
-	var/list/turfs = list()
-	for(var/turf/T in orange(origin, outer_range))
-		if(!inner_range || get_dist(origin, T) >= inner_range)
-			turfs += T
-	if(turfs.len)
+	var/list/turfs = (RANGE_TURFS(outer_range, origin) - RANGE_TURFS(inner_range - 1, origin))
+	if(length(turfs))
 		return pick(turfs)
 
 // Returns true if arming a given explosive might be considered grief
@@ -1337,29 +1340,35 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 /// Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).
-/proc/dview(range = world.view, center, invis_flags = 0)
+/proc/dview(range = world.view, atom/center, invis_flags = 0)
 	if(!center)
 		return
 
-	GLOB.dview_mob.loc = center
-
+	GLOB.dview_mob.loc = isturf(center) ? center : center.loc
 	GLOB.dview_mob.see_invisible = invis_flags
 
-	. = view(range, GLOB.dview_mob)
+	. = oview(range, GLOB.dview_mob)
 	GLOB.dview_mob.loc = null
+
+/// Version of oview() which ignores darkness
+/proc/doview(range, atom/center, invis_flags)
+	if(!center)
+		return
+
+	return dview(range, center, invis_flags) - center
 
 /mob/dview
 	name = "INTERNAL DVIEW MOB"
-	invisibility = 101
+	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
-	see_in_dark = 1e6
+	see_in_dark = INFINITY
 	var/ready_to_die = FALSE
 
 /mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists
 	SHOULD_CALL_PARENT(FALSE)
-	if(flags_atom & INITIALIZED)
+	if(CHECK_BITFIELD(flags_atom, INITIALIZED))
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags_atom |= INITIALIZED
+	ENABLE_BITFIELD(flags_atom, INITIALIZED)
 	return INITIALIZE_HINT_NORMAL
 
 /mob/dview/Destroy(force = FALSE)
@@ -1375,11 +1384,18 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 
 #define FOR_DVIEW(type, range, center, invis_flags) \
-	GLOB.dview_mob.loc = center;           \
+	GLOB.dview_mob.loc = isturf(center) ? (center) : (center).loc; \
 	GLOB.dview_mob.see_invisible = invis_flags; \
-	for(type in view(range, GLOB.dview_mob))
+	for(type in oview(range, GLOB.dview_mob))
 
 #define FOR_DVIEW_END GLOB.dview_mob.loc = null
+
+#define FOR_DOVIEW(type, range, center, invis_flags) \
+	GLOB.dview_mob.loc = isturf(center) ? (center) : (center).loc; \
+	GLOB.dview_mob.see_invisible = invis_flags; \
+	for(type in oview(range, GLOB.dview_mob) - (center))
+
+#define FOR_DOVIEW_END FOR_DVIEW_END
 
 /proc/get_turf_pixel(atom/AM)
 	if(!istype(AM))
@@ -1501,6 +1517,22 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 #define UNTIL(X) while(!(X)) stoplag()
 
+/// Macro for cases where an UNTIL() may go on forever (such as for an http request)
+#define UNTIL_OR_TIMEOUT(X, __time) \
+	do { \
+		if(__time <= 0) {; \
+			CRASH("UNTIL_OR_TIMEOUT given invalid time"); \
+		} \
+		var/__start_time = world.time; \
+		do { \
+			if(__start_time + __time <= world.time) {; \
+				CRASH("UNTIL_OR_TIMEOUT hit timeout limit of [__time]"); \
+			} else { \
+				stoplag(); \
+			} \
+		} while(!(X)) \
+	} while(FALSE)
+
 //Repopulates sortedAreas list
 /proc/repopulate_sorted_areas()
 	GLOB.sorted_areas = list()
@@ -1515,7 +1547,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		return GetAllContents()
 	var/list/processing = list(src)
 	var/list/assembled = list()
-	while(processing.len)
+	while(length(processing))
 		var/atom/A = processing[1]
 		processing.Cut(1,2)
 		if(!ignore_typecache[A.type])

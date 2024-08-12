@@ -161,6 +161,8 @@
 #define TRAIT_MERGED_WITH_WEEDS "merged_with_weeds"
 /// Apply this to identify a mob as temporarily muted
 #define TRAIT_TEMPORARILY_MUTED "temporarily_muted"
+/// Mob wont get hit by stray projectiles
+#define TRAIT_NO_STRAY "trait_no_stray"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -239,6 +241,8 @@
 #define TRAIT_SPEC_KIT "t_spec_kit"
 /// What spec set the mob has claimed, if any
 #define TRAIT_SPEC(spec_type) "t_spec_[spec_type]"
+/// If the mob won't drop items held in face slot when downed
+#define TRAIT_IRON_TEETH "t_iron_teeth"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them

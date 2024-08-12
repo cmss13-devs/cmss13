@@ -340,6 +340,8 @@
 			wound_icon_holder.icon_state = "[caste.caste_type]_walk_[health_threshold]"
 		else
 			wound_icon_holder.icon_state = handle_special_wound_states(health_threshold)
+	if(organ_removed)
+		wound_icon_holder.icon_state = "[caste.caste_type]_dissection"
 
 ///Used to display the xeno wounds/backpacks without rapidly switching overlays
 /atom/movable/vis_obj

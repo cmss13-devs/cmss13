@@ -4,6 +4,7 @@
 #include "_globalvars\global_lists.dm"
 #include "_globalvars\misc.dm"
 #include "_globalvars\mobs.dm"
+#include "controllers\subsystem\playtime.dm"
 #include "controllers\subsystem\queue.dm"
 #include "controllers\subsystem\techtree.dm"
 #include "datums\shuttles.dm"

@@ -83,6 +83,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"stickyban_whitelisted" = DB_FIELDTYPE_INT,
 		"byond_account_age" = DB_FIELDTYPE_STRING_MEDIUM,
 		"first_join_date" = DB_FIELDTYPE_STRING_MEDIUM,
+//RUCM START
+		"glob_pt_visibility" = DB_FIELDTYPE_INT,
+//RUCM END
 	)
 
 // NOTE: good example of database operations using NDatabase, so it is well commented
@@ -791,5 +794,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"last_known_ip",
 		"last_known_cid",
 		"discord_link_id",
-		"whitelist_status"
+		"whitelist_status",
+//RUCM START
+		"glob_pt_visibility",
+//RUCM END
 		)

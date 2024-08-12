@@ -75,10 +75,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 /datum/entity/player/ui_assets(mob/user)
 	return list(get_asset_datum(/datum/asset/spritesheet/playtime_rank))
 
+/* RUCM CHANGE
 /datum/entity/player/ui_data(mob/user)
 	if(!LAZYACCESS(playtime_data, "loaded"))
 		load_timestat_data()
 	return playtime_data
+*/
 
 /datum/entity/player/ui_state(mob/user)
 	return GLOB.always_state

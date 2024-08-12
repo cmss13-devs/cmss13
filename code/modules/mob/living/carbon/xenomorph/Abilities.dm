@@ -29,16 +29,16 @@
 		to_chat(X, SPAN_XENOWARNING("We can't do that from there."))
 		return
 
-	if(SSticker?.mode?.hardcore)
-		to_chat(X, SPAN_XENOWARNING("A certain presence is preventing us from digging tunnels here."))
-		return
-
 	if(!T.can_dig_xeno_tunnel() || !is_ground_level(T.z))
 		to_chat(X, SPAN_XENOWARNING("We scrape around, but we can't seem to dig through that kind of floor."))
 		return
 
 	if(locate(/obj/structure/tunnel) in X.loc)
 		to_chat(X, SPAN_XENOWARNING("There already is a tunnel here."))
+		return
+
+	if(locate(/obj/structure/machinery/sentry_holder/landing_zone) in X.loc)
+		to_chat(X, SPAN_XENOWARNING("We can't dig a tunnel with this object in the way."))
 		return
 
 	if(X.tunnel_delay)
@@ -144,16 +144,18 @@
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
 	xeno.create_shriekwave(14) //Adds the visual effect. Wom wom wom, 14 shriekwaves
 
-	for(var/mob/mob in view())
+	FOR_DVIEW(var/mob/mob, world.view, owner, HIDE_INVISIBLE_OBSERVER)
 		if(mob && mob.client)
 			if(isxeno(mob))
 				shake_camera(mob, 10, 1)
 			else
 				shake_camera(mob, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
+	FOR_DVIEW_END
 
 	var/list/mobs_in_view = list()
-	for(var/mob/living/carbon/M in oview(7, xeno))
+	FOR_DOVIEW(var/mob/living/carbon/M, 7, xeno, HIDE_INVISIBLE_OBSERVER)
 		mobs_in_view += M
+	FOR_DOVIEW_END
 	for(var/mob/living/carbon/M in orange(10, xeno))
 		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, xeno) & COMPONENT_SCREECH_ACT_CANCEL)
 			continue
@@ -247,7 +249,7 @@
 	var/whisper = strip_html(input("Message:", "Psychic Radiance") as text|null)
 	if(!whisper || !xeno_player.check_state(TRUE))
 		return
-	for(var/mob/living/possible_target in view(12, xeno_player))
+	FOR_DVIEW(var/mob/living/possible_target, 12, xeno_player, HIDE_INVISIBLE_OBSERVER)
 		if(possible_target == xeno_player || !possible_target.client)
 			continue
 		target_list += possible_target
@@ -255,6 +257,7 @@
 			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[whisper]\""))
 		else
 			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[whisper]\""))
+	FOR_DVIEW_END
 	if(!length(target_list))
 		return
 	var/targetstring = english_list(target_list)

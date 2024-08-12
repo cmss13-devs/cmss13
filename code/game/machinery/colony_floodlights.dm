@@ -125,7 +125,7 @@
 /obj/structure/machinery/colony_floodlight/attackby(obj/item/I, mob/user)
 	if(damaged)
 		if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return FALSE
 
@@ -160,7 +160,7 @@
 			return TRUE
 
 		else if(HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return FALSE
 
@@ -183,7 +183,7 @@
 				return
 			var/obj/item/tool/weldingtool/welder = I
 
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return FALSE
 
@@ -206,7 +206,7 @@
 
 		else if(iscoil(I))
 			var/obj/item/stack/cable_coil/coil = I
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return FALSE
 
@@ -228,7 +228,7 @@
 			return TRUE
 
 		else if(istype(I, /obj/item/device/lightreplacer))
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return FALSE
 
@@ -271,7 +271,7 @@
 	if(ishuman(user))
 		if(damaged)
 			. += SPAN_WARNING("It is damaged.")
-			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				switch(repair_state)
 					if(FLOODLIGHT_REPAIR_UNSCREW) . += SPAN_INFO("You must first unscrew its maintenance hatch.")
 					if(FLOODLIGHT_REPAIR_CROWBAR) . += SPAN_INFO("You must crowbar its lighting assembly out or use a light replacer.")

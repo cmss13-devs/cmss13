@@ -258,7 +258,7 @@
 /obj/vehicle/multitile/get_examine_text(mob/user)
 	. = ..()
 	for(var/obj/item/hardpoint/H in hardpoints)
-		. += "There is \a [H] module installed."
+		. += "There [H.p_are()] \a [H] module[H.p_s()] installed."
 		H.examine(user, TRUE)
 	if(clamped)
 		. += "There is a vehicle clamp attached."
@@ -267,7 +267,7 @@
 		for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
 			passengers_amount += RRS.taken
 		if(passengers_amount > 0)
-			. += "You can sense approximately [passengers_amount] hosts inside."
+			. += "You can sense approximately [passengers_amount] host\s inside."
 
 /obj/vehicle/multitile/proc/load_hardpoints()
 	return

@@ -171,7 +171,7 @@ Everything below isn't used or out of place.
 	name = "Survivor - Corporate Security Goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON
-	paygrade = PAY_SHORT_CPO
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -204,8 +204,8 @@ Everything below isn't used or out of place.
 
 // ----- Mercenary Survivors
 
-// after double check pmc/miner/one isn't being used anywhere.
-/datum/equipment_preset/survivor/pmc/miner/one
+// after double check pmc/miner isn't being used anywhere.
+/datum/equipment_preset/survivor/pmc/miner
 	name = "Survivor - Mercenary"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
@@ -214,7 +214,7 @@ Everything below isn't used or out of place.
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
-/datum/equipment_preset/survivor/pmc/miner/one/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/pmc/miner/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/miner, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/miner, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner, WEAR_HEAD)
@@ -250,7 +250,7 @@ Everything below isn't used or out of place.
 	name = "Survivor - USASF Commander"
 	assignment = "USASF Commander"
 	skills = /datum/skills/commander
-	paygrade = PAY_SHORT_NO5
+	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "USASF CDR"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -293,6 +293,7 @@ Everything below isn't used or out of place.
 /// used in Shivas Snowball
 
 /datum/equipment_preset/survivor/clf/cold
+	name = "CLF Survivor (Cold)"
 
 //children of spawn rebel shoes proc
 /datum/equipment_preset/survivor/clf/cold/spawn_rebel_suit(mob/living/carbon/human/human)

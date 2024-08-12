@@ -721,9 +721,7 @@
 
 	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground
 
-	var/list/possible_turfs = list()
-	for(var/turf/TU in range(ammo_accuracy_range, target_turf))
-		possible_turfs += TU
+	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
 	SA.source_mob = user
@@ -1216,7 +1214,7 @@
 
 	var/list/possible_fultons = get_targets()
 
-	if(!possible_fultons.len)
+	if(!length(possible_fultons))
 		to_chat(user, SPAN_WARNING("No active balloons detected."))
 		return
 
@@ -1328,9 +1326,7 @@
 
 	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground
 
-	var/list/possible_turfs = list()
-	for(var/turf/TU in range(ammo_accuracy_range, target_turf))
-		possible_turfs += TU
+	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
 	SA.source_mob = user

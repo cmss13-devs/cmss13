@@ -6,11 +6,19 @@
 	/// For example: "Template:Autowiki/CircuitInfo".
 	var/page
 
+	/// If the generation of this autowiki should call /generate_multiple(),
+	/// which should return a list of list(title = "Page Title", contents)
+	/// allowing for the generation of multiple pages in the same autowiki
+	var/generate_multiple = FALSE
+
 /// Override and return the new text of the page.
 /// This proc can be impure, usually to call `upload_file`.
 /datum/autowiki/proc/generate()
 	SHOULD_CALL_PARENT(FALSE)
 	CRASH("[type] does not implement generate()!")
+
+/datum/autowiki/proc/generate_multiple()
+	SHOULD_CALL_PARENT(FALSE)
 
 /// Generates an auto formatted template user.
 /// Your autowiki should ideally be a *lot* of these.
@@ -19,6 +27,7 @@
 /// something that looks like `{{ Autowiki_Circuit|name=Combiner|description=This combines }}`
 /// Lists, which must be array-like (no keys), will be turned into a flat list with their key and a number,
 /// such that list("food" = list("fruit", "candy")) -> food1=fruit|food2=candy
+/// Your page should respect AUTOWIKI_SKIP, and check for this using IS_AUTOWIKI_SKIP
 /datum/autowiki/proc/include_template(name, parameters)
 	var/template_text = "{{[name]"
 

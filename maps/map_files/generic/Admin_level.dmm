@@ -12,10 +12,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
 "ad" = (
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome)
 "ae" = (
 /obj/docking_port/stationary/vehicle_elevator/adminlevel,
@@ -27,18 +24,12 @@
 	id = "tdome_observer";
 	name = "\improper Observer Shutters"
 	},
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome)
 "aj" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/effect/spider/stickyweb,
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/northwest,
 /area/adminlevel/ert_station)
 "ak" = (
 /turf/closed/wall/almayer/outer,
@@ -51,10 +42,7 @@
 	pixel_y = 27
 	},
 /obj/structure/bed/sofa/south/grey/left,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station)
 "as" = (
 /turf/open/space/basic,
@@ -63,19 +51,13 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome)
 "aA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome)
 "aB" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -83,9 +65,7 @@
 	id = "tdome_t2";
 	name = "\improper Team 2 Shutters"
 	},
-/turf/open/floor/tdome{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/tdome/test_floor4,
 /area/tdome)
 "aC" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -101,10 +81,7 @@
 /turf/open/space,
 /area/space)
 "aE" = (
-/turf/open/floor/tdome{
-	dir = 1;
-	icon_state = "w-y0"
-	},
+/turf/open/floor/tdome/w_y0/north,
 /area/tdome)
 "aK" = (
 /obj/structure/closet/cabinet,
@@ -112,36 +89,27 @@
 /area/adminlevel/ert_station)
 "bn" = (
 /obj/structure/closet/boxinggloves,
-/turf/open/floor/almayer{
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver,
 /area/adminlevel/ert_station)
 "co" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
 /obj/structure/bed/sofa/south/grey,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station)
 "cD" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood{
 	req_access = null
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "cK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "cU" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -160,10 +128,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/southeast,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "ds" = (
 /turf/closed/wall/almayer/outer{
@@ -171,9 +136,7 @@
 	},
 /area/centcom/living)
 "dw" = (
-/turf/open/floor/almayer{
-	icon_state = "test_floor5"
-	},
+/turf/open/floor/almayer/test_floor5,
 /area/supply/dock)
 "dy" = (
 /turf/open/floor/wood,
@@ -198,9 +161,7 @@
 /turf/open/floor/plating/bare_catwalk,
 /area/supply/dock)
 "ev" = (
-/turf/open/floor/carpet/edge{
-	dir = 9
-	},
+/turf/open/floor/carpet/edge/northwest,
 /area/centcom/living)
 "ew" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -230,40 +191,27 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "eE" = (
-/turf/open/floor/carpet/edge{
-	dir = 1
-	},
+/turf/open/floor/carpet/edge/north,
 /area/centcom/living)
 "eF" = (
-/turf/open/floor/carpet/edge{
-	dir = 5
-	},
+/turf/open/floor/carpet/edge/northeast,
 /area/centcom/living)
 "eG" = (
 /obj/structure/window/framed/colony/reinforced/hull,
-/turf/open/floor/almayer{
-	icon_state = "redfull"
-	},
+/turf/open/floor/almayer/redfull,
 /area/adminlevel/ert_station)
 "eQ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/east,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "eU" = (
-/turf/open/floor/carpet/edge{
-	dir = 8
-	},
+/turf/open/floor/carpet/edge/west,
 /area/centcom/living)
 "eW" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
-/turf/open/floor/carpet/edge{
-	dir = 8
-	},
+/turf/open/floor/carpet/edge/west,
 /area/centcom/living)
 "eX" = (
 /obj/effect/landmark/sim_target,
@@ -273,9 +221,7 @@
 /turf/open/floor/carpet,
 /area/centcom/living)
 "eZ" = (
-/turf/open/floor/carpet/edge{
-	dir = 4
-	},
+/turf/open/floor/carpet/edge/east,
 /area/centcom/living)
 "fn" = (
 /turf/closed/wall/almayer/outer{
@@ -308,46 +254,32 @@
 /area/centcom/living)
 "fz" = (
 /obj/structure/machinery/telecomms/receiver/preset_cent,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "fA" = (
 /obj/structure/machinery/telecomms/bus/preset_cent,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "fB" = (
 /obj/structure/machinery/telecomms/processor/preset_cent,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "fC" = (
 /obj/structure/machinery/telecomms/server/presets/centcomm,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "fL" = (
-/turf/open/floor/carpet/edge{
-	dir = 10
-	},
+/turf/open/floor/carpet/edge/southwest,
 /area/centcom/living)
 "fM" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
-/turf/open/floor/carpet/edge{
-	dir = 4
-	},
+/turf/open/floor/carpet/edge/east,
 /area/centcom/living)
 "fN" = (
 /obj/effect/step_trigger/message/memorial,
-/turf/open/floor/carpet/edge{
-	dir = 1
-	},
+/turf/open/floor/carpet/edge/north,
 /area/centcom/living)
 "fO" = (
 /obj/effect/step_trigger/message/memorial,
@@ -358,87 +290,58 @@
 /area/centcom/living)
 "fQ" = (
 /obj/structure/machinery/telecomms/relay/preset/centcom,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "fR" = (
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "fW" = (
-/turf/open/floor/carpet/edge{
-	dir = 6
-	},
+/turf/open/floor/carpet/edge/southeast,
 /area/centcom/living)
 "gb" = (
 /obj/structure/machinery/autolathe/full,
-/turf/open/floor/almayer{
-	icon_state = "test_floor5"
-	},
+/turf/open/floor/almayer/test_floor5,
 /area/adminlevel/ert_station)
 "gd" = (
 /obj/structure/machinery/telecomms/allinone/interceptor,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "ge" = (
 /obj/structure/machinery/telecomms/broadcaster/preset_cent,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "gf" = (
 /obj/structure/machinery/telecomms/hub/preset_cent,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "gg" = (
 /obj/structure/machinery/computer/rdservercontrol{
 	name = "Master R&amp;D Server Controller"
 	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "gh" = (
 /obj/structure/machinery/r_n_d/server/centcom,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "gu" = (
 /turf/open/floor/plating,
 /area/admin/droppod/holding)
 "gA" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station)
 "gR" = (
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "sterile_green_side"
-	},
+/turf/open/floor/almayer/sterile_green_side/southeast,
 /area/adminlevel/ert_station)
 "gX" = (
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "hp" = (
 /turf/closed/wall/indestructible,
 /area/start)
 "hH" = (
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "sterile_green_side"
-	},
+/turf/open/floor/almayer/sterile_green_side/northwest,
 /area/adminlevel/ert_station)
 "hP" = (
 /obj/docking_port/stationary/emergency_response/idle_port1,
@@ -450,24 +353,17 @@
 /area/adminlevel/ert_station)
 "il" = (
 /obj/structure/machinery/photocopier,
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "iz" = (
 /obj/structure/disposalpipe/junction,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/east,
 /area/adminlevel/ert_station)
 "iL" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/turf/open/floor/almayer{
-	icon_state = "plating_striped"
-	},
+/turf/open/floor/almayer/plating_striped,
 /area/adminlevel/ert_station)
 "iR" = (
 /obj/structure/disposalpipe/segment{
@@ -497,30 +393,20 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "me" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/east,
 /area/adminlevel/ert_station)
 "nP" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silvercorner"
-	},
+/turf/open/floor/almayer/silvercorner/west,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "nU" = (
 /obj/structure/bed/sofa/vert/grey,
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "oa" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -532,17 +418,13 @@
 	pixel_x = -9;
 	pixel_y = -4
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "ob" = (
 /obj/structure/target{
 	name = "punching bag"
 	},
-/turf/open/floor/almayer{
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver,
 /area/adminlevel/ert_station)
 "op" = (
 /obj/structure/machinery/cryopod,
@@ -555,17 +437,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "red"
-	},
+/turf/open/floor/almayer/red/northwest,
 /area/adminlevel/ert_station)
 "oB" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "oQ" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -587,25 +463,17 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
 "oW" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y0"
-	},
+/turf/open/floor/almayer/w_y0/north,
 /area/adminlevel/ert_station)
 "oZ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "pc" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "red"
-	},
+/turf/open/floor/almayer/red/northeast,
 /area/adminlevel/ert_station)
 "ph" = (
 /obj/structure/disposalpipe/junction{
@@ -614,39 +482,26 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
 "pm" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
-	},
+/turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/ert_station)
 "pq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "pP" = (
 /obj/item/newspaper,
-/turf/open/floor/carpet{
-	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
-	name = "\improper carpet"
-	},
+/turf/open/floor/carpet,
 /area/adminlevel/ert_station)
 "pQ" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 32
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "qi" = (
 /obj/structure/flora/pottedplant/random,
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "ql" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -668,9 +523,7 @@
 	phone_id = "Unknown Signal";
 	pixel_x = 14
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "qz" = (
 /obj/structure/surface/table/almayer,
@@ -683,34 +536,24 @@
 /obj/item/device/binoculars{
 	pixel_y = 4
 	},
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
 "rf" = (
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -11
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "sterile_green_side"
-	},
+/turf/open/floor/almayer/sterile_green_side/northeast,
 /area/adminlevel/ert_station)
 "rR" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/item/reagent_container/food/condiment/enzyme,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station)
 "sj" = (
 /obj/structure/machinery/faxmachine,
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "sy" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -733,14 +576,8 @@
 /area/adminlevel/ert_station)
 "th" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
-"tx" = (
-/obj/structure/machinery/hologram/holopad,
-/turf/open/floor/carpet,
-/area/centcom/living)
 "tP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -754,9 +591,7 @@
 /area/adminlevel/ert_station)
 "tY" = (
 /obj/structure/machinery/washing_machine,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "uf" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -766,18 +601,14 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "ug" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Bathroom"
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "uk" = (
 /obj/structure/surface/table/reinforced,
@@ -789,18 +620,14 @@
 	pixel_x = -8
 	},
 /obj/item/tool/kitchen/rollingpin,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station)
 "ur" = (
 /obj/docking_port/stationary/emergency_response/idle_port6,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station)
 "uI" = (
-/turf/open/floor/almayer{
-	icon_state = "red"
-	},
+/turf/open/floor/almayer/red,
 /area/adminlevel/ert_station)
 "uJ" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -816,19 +643,13 @@
 /turf/open/space/transit/east/shuttlespace_ew13,
 /area/space)
 "uK" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/west,
 /area/adminlevel/ert_station)
 "uN" = (
 /obj/structure/sign/goldenplaque{
 	pixel_y = 27
 	},
-/turf/open/floor/carpet{
-	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
-	name = "\improper carpet"
-	},
+/turf/open/floor/carpet,
 /area/adminlevel/ert_station)
 "uY" = (
 /obj/structure/janitorialcart,
@@ -840,30 +661,17 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "va" = (
 /obj/structure/toilet,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "vB" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/effect/spawner/random/toy,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/northeast,
 /area/adminlevel/ert_station/shuttle_dispatch)
-"vD" = (
-/turf/open/floor/carpet{
-	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
-	name = "\improper carpet"
-	},
-/area/adminlevel/ert_station)
 "vE" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns{
 	hacked = 1;
@@ -871,10 +679,7 @@
 	use_power = 0;
 	use_snowflake_points = 1
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station)
 "vH" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -891,40 +696,25 @@
 /area/space)
 "vN" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "wj" = (
-/turf/open/floor/tdome{
-	dir = 1;
-	icon_state = "w-y2"
-	},
+/turf/open/floor/tdome/w_y2/north,
 /area/tdome)
 "wp" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/west,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "wr" = (
 /obj/structure/machinery/body_scanconsole,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green"
-	},
+/turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station)
 "wu" = (
 /obj/structure/machinery/iv_drip,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "wv" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
 "wA" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -932,9 +722,7 @@
 	dir = 8;
 	pixel_y = 6
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "wL" = (
 /obj/structure/machinery/disposal/deliveryChute,
@@ -954,9 +742,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering Storage"
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "xw" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -992,19 +778,14 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
 "xU" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y2"
-	},
+/turf/open/floor/almayer/w_y2/north,
 /area/adminlevel/ert_station)
 "yk" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/processor{
 	pixel_y = 10
 	},
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station)
 "ym" = (
 /obj/effect/decal/warning_stripes{
@@ -1028,18 +809,14 @@
 	pixel_y = 10
 	},
 /obj/structure/surface/table/reinforced,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station)
 "yQ" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave{
 	pixel_y = 10
 	},
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station)
 "zg" = (
 /obj/structure/machinery/chem_dispenser/soda{
@@ -1047,9 +824,7 @@
 	pixel_y = 10
 	},
 /obj/structure/surface/table/reinforced,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station)
 "zk" = (
 /obj/structure/machinery/chem_dispenser/soda/beer{
@@ -1057,47 +832,32 @@
 	pixel_y = 10
 	},
 /obj/structure/surface/table/reinforced,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station)
 "zn" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access{
 	req_access = null
 	},
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
-	},
+/turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/ert_station)
 "zr" = (
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/northwest,
 /area/adminlevel/ert_station)
 "zt" = (
 /obj/structure/machinery/vending/security,
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "red"
-	},
+/turf/open/floor/almayer/red/southeast,
 /area/adminlevel/ert_station)
 "zB" = (
 /obj/structure/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/northwest,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "zN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "zO" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1105,24 +865,17 @@
 /obj/item/device/defibrillator/upgraded,
 /obj/item/clothing/glasses/hud/health,
 /obj/item/roller,
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "sterile_green_side"
-	},
+/turf/open/floor/almayer/sterile_green_side/northwest,
 /area/adminlevel/ert_station)
 "AI" = (
 /obj/structure/sign/poster{
 	pixel_x = -32;
 	serial_number = 16
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "AL" = (
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "AS" = (
 /turf/closed/wall/almayer/outer,
@@ -1131,9 +884,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "Bw" = (
 /obj/effect/decal/warning_stripes{
@@ -1147,10 +898,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdome2)
 "BO" = (
 /obj/effect/decal/warning_stripes{
@@ -1163,27 +911,18 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_20"
 	},
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
 "BV" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station)
 "Cc" = (
 /obj/effect/landmark/sim_camera,
-/turf/open/floor/engine{
-	color = "#AAAAAA"
-	},
+/turf/open/floor/engine/simulator_center,
 /area/adminlevel/simulation)
 "Cf" = (
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
-	},
+/turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/ert_station)
 "Ch" = (
 /obj/structure/sign/poster/ad,
@@ -1192,19 +931,14 @@
 "Cm" = (
 /obj/structure/machinery/cm_vending/sorted/walkman,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/southwest,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "CI" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/bedsheetbin{
 	pixel_y = 6
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "CK" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
@@ -1215,9 +949,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "redfull"
-	},
+/turf/open/floor/almayer/redfull,
 /area/adminlevel/ert_station)
 "CN" = (
 /obj/structure/sign/safety/bathunisex{
@@ -1226,9 +958,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
 "CU" = (
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station)
 "Do" = (
 /obj/structure/mirror,
@@ -1245,30 +975,21 @@
 	pixel_x = -17
 	},
 /obj/structure/machinery/door/window/southleft,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station)
 "Dt" = (
 /obj/structure/bed/sofa/vert/grey/top,
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Dv" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Dw" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/item/book/manual/marine_law,
 /obj/item/restraint/handcuffs,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red"
-	},
+/turf/open/floor/almayer/red/east,
 /area/adminlevel/ert_station)
 "DD" = (
 /obj/effect/decal/warning_stripes{
@@ -1277,16 +998,11 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "DV" = (
-/turf/open/floor/tdome{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/tdome/tcomms,
 /area/tdome)
 "Ee" = (
 /obj/effect/landmark/thunderdome/one,
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdome1)
 "Ef" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -1316,10 +1032,7 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Ez" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red"
-	},
+/turf/open/floor/almayer/red/east,
 /area/adminlevel/ert_station)
 "EG" = (
 /obj/effect/decal/warning_stripes{
@@ -1347,24 +1060,17 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "EY" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/west,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Fd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "red"
-	},
+/turf/open/floor/almayer/red,
 /area/adminlevel/ert_station)
 "Fo" = (
 /obj/effect/decal/warning_stripes{
@@ -1375,10 +1081,7 @@
 "Fw" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigar,
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
 "FB" = (
 /turf/open/floor/plating,
@@ -1398,14 +1101,10 @@
 	id = "ERT Lock 1";
 	unacidable = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/adminlevel/ert_station)
 "FT" = (
-/turf/open/floor/almayer{
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Ge" = (
 /obj/structure/bed/chair{
@@ -1424,10 +1123,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access{
 	req_access = null
 	},
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "sterile_green_side"
-	},
+/turf/open/floor/almayer/sterile_green_side/southeast,
 /area/adminlevel/ert_station)
 "Gm" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -1443,22 +1139,15 @@
 /turf/open/space/transit/east/shuttlespace_ew12,
 /area/space)
 "Gq" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/west,
 /area/adminlevel/ert_station)
 "Gr" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station)
 "Gs" = (
 /obj/structure/machinery/sleep_console,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "Gv" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -1477,10 +1166,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
 "GB" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station)
 "GC" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -1510,27 +1196,19 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "Restroom"
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "HL" = (
 /obj/structure/sign/catclock{
 	pixel_x = 32
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/east,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "HQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station)
 "HW" = (
 /obj/docking_port/stationary/emergency_response/idle_port4,
@@ -1544,18 +1222,13 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/west,
 /area/adminlevel/ert_station)
 "Il" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "Io" = (
 /obj/structure/flora/pottedplant{
@@ -1568,19 +1241,14 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
 "Is" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/almayer/red/north,
 /area/adminlevel/ert_station)
 "ID" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "IE" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -1596,10 +1264,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "red"
-	},
+/turf/open/floor/almayer/red/southwest,
 /area/adminlevel/ert_station)
 "IR" = (
 /turf/closed/wall/r_wall/unmeltable,
@@ -1617,19 +1282,14 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "Jy" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/east,
 /area/adminlevel/ert_station)
 "JT" = (
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -11
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "JW" = (
 /obj/structure/machinery/cm_vending/sorted/walkman,
@@ -1639,24 +1299,16 @@
 /turf/closed/wall/mineral/gold,
 /area/adminlevel/ert_station)
 "Kq" = (
-/turf/open/floor/tdome{
-	icon_state = "redfull"
-	},
+/turf/open/floor/tdome/redfull,
 /area/tdome/tdome2)
 "Kv" = (
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/northeast,
 /area/adminlevel/ert_station)
 "KA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/east,
 /area/adminlevel/ert_station)
 "KM" = (
 /obj/structure/bed/chair{
@@ -1679,18 +1331,13 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Lt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner,
 /area/adminlevel/ert_station)
 "Ly" = (
 /obj/effect/decal/warning_stripes{
@@ -1715,15 +1362,10 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "red"
-	},
+/turf/open/floor/almayer/red,
 /area/adminlevel/ert_station)
 "LE" = (
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/southeast,
 /area/adminlevel/ert_station)
 "LF" = (
 /obj/structure/sign/nosmoking_1,
@@ -1738,18 +1380,12 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
 "LR" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "sterile_green_side"
-	},
+/turf/open/floor/almayer/sterile_green_side/northeast,
 /area/adminlevel/ert_station)
 "LU" = (
 /obj/structure/sign/poster{
@@ -1758,9 +1394,7 @@
 	name = "YOU ALWAYS KNOW A WORKING JOE.";
 	pixel_y = 30
 	},
-/turf/open/floor/almayer{
-	icon_state = "plating_striped"
-	},
+/turf/open/floor/almayer/plating_striped,
 /area/adminlevel/ert_station)
 "LZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -1771,37 +1405,27 @@
 	dir = 4;
 	unacidable = 1
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station)
 "Mk" = (
 /obj/structure/sign/safety,
 /turf/closed/wall,
 /area/adminlevel/ert_station)
 "MB" = (
-/turf/open/floor/almayer{
-	icon_state = "silvercorner"
-	},
+/turf/open/floor/almayer/silvercorner,
 /area/adminlevel/ert_station)
 "MG" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/west,
 /area/adminlevel/ert_station)
 "ML" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "MQ" = (
 /obj/structure/disposalpipe/segment{
@@ -1828,9 +1452,7 @@
 	id = "ERT Lock 4";
 	unacidable = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/adminlevel/ert_station)
 "Nk" = (
 /obj/structure/flora/pottedplant{
@@ -1844,10 +1466,7 @@
 	name = "departures board";
 	pixel_y = 34
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Nx" = (
 /obj/structure/barricade/handrail{
@@ -1861,9 +1480,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "NH" = (
 /obj/structure/sign/nosmoking_2,
@@ -1871,10 +1488,7 @@
 /area/adminlevel/ert_station)
 "NU" = (
 /obj/structure/machinery/vending/cola,
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
 "NZ" = (
 /turf/open/floor/carpet,
@@ -1890,17 +1504,13 @@
 	id = "ERT Lock 3";
 	unacidable = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/adminlevel/ert_station)
 "Oi" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Oj" = (
-/turf/open/floor/almayer{
-	icon_state = "plating_striped"
-	},
+/turf/open/floor/almayer/plating_striped,
 /area/adminlevel/ert_station)
 "On" = (
 /obj/structure/disposaloutlet{
@@ -1914,9 +1524,7 @@
 "OC" = (
 /obj/structure/sign/poster/hunk,
 /obj/structure/window/framed/colony/reinforced/hull,
-/turf/open/floor/almayer{
-	icon_state = "redfull"
-	},
+/turf/open/floor/almayer/redfull,
 /area/adminlevel/ert_station)
 "OD" = (
 /obj/structure/machinery/vending/dinnerware,
@@ -1928,19 +1536,14 @@
 /area/adminlevel/ert_station)
 "OI" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/almayer{
-	icon_state = "test_floor5"
-	},
+/turf/open/floor/almayer/test_floor5,
 /area/adminlevel/ert_station)
 "OK" = (
 /obj/effect/landmark/thunderdome/one,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdome1)
 "OT" = (
 /turf/closed/wall/almayer/outer,
@@ -1957,32 +1560,21 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Pr" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/east,
 /area/adminlevel/ert_station)
 "PE" = (
 /turf/open/floor/engine,
 /area/adminlevel/simulation)
 "PF" = (
 /obj/effect/landmark/thunderdome/two,
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdome2)
 "PJ" = (
-/turf/open/floor/tdome{
-	dir = 1;
-	icon_state = "w-y1"
-	},
+/turf/open/floor/tdome/w_y1/north,
 /area/tdome)
 "PS" = (
 /obj/item/trash/cigbutt/cigarbutt,
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "PT" = (
 /obj/structure/sign/safety/debark_lounge{
@@ -2005,65 +1597,43 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "Qq" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Qr" = (
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "Qz" = (
 /obj/item/prop/helmetgarb/rosary,
-/turf/open/floor/carpet{
-	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
-	name = "\improper carpet"
-	},
+/turf/open/floor/carpet,
 /area/adminlevel/ert_station)
 "QA" = (
 /obj/structure/machinery/chem_storage/misc,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "QJ" = (
-/turf/open/floor/almayer{
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver,
 /area/adminlevel/ert_station)
 "QL" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/open/floor/tdome{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/tdome/tcomms,
 /area/tdome/tdomeobserve)
 "Rj" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "RF" = (
-/turf/open/floor/almayer{
-	icon_state = "sterile_green"
-	},
+/turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station)
 "RK" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/west,
 /area/adminlevel/ert_station)
 "RL" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -2072,18 +1642,13 @@
 	pixel_x = 11;
 	pixel_y = 13
 	},
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "red"
-	},
+/turf/open/floor/almayer/red/southeast,
 /area/adminlevel/ert_station)
 "RV" = (
 /obj/structure/closet{
 	name = "boxing attire"
 	},
-/turf/open/floor/almayer{
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver,
 /area/adminlevel/ert_station)
 "RW" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat/chess,
@@ -2095,9 +1660,7 @@
 	id = "tdome_t1";
 	name = "\improper Team 1 Shutters"
 	},
-/turf/open/floor/tdome{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/tdome/test_floor4,
 /area/tdome)
 "Sk" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -2110,10 +1673,7 @@
 /obj/structure/machinery/cm_vending/clothing/antag{
 	name = "\improper Response Team Automated Equipment Rack"
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station)
 "Sw" = (
 /obj/structure/machinery/newscaster/security_unit,
@@ -2129,24 +1689,17 @@
 /obj/structure/sign/safety/med_cryo{
 	pixel_x = -17
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "Tg" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "Ti" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y1"
-	},
+/turf/open/floor/almayer/w_y1/north,
 /area/adminlevel/ert_station)
 "Tm" = (
 /obj/structure/surface/table/almayer,
@@ -2165,16 +1718,10 @@
 	name = "Observer Shutters";
 	pixel_y = 9
 	},
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
 "TD" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/west,
 /area/adminlevel/ert_station)
 "TH" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -2208,10 +1755,7 @@
 	},
 /obj/structure/bed/sofa/south/grey/right,
 /obj/item/trash/buritto,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station)
 "TX" = (
 /obj/structure/surface/table/gamblingtable,
@@ -2224,9 +1768,7 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Ua" = (
 /obj/structure/machinery/cm_vending/gear/antag{
@@ -2234,10 +1776,7 @@
 	name = "\improper Response Team Automated Gear Rack";
 	use_snowflake_points = 1
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station)
 "Uf" = (
 /obj/structure/sign/safety/medical,
@@ -2247,22 +1786,14 @@
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
 "Uk" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/east,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Ur" = (
 /obj/structure/bed/sofa/vert/grey/bot,
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Ut" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "greencorner"
-	},
+/turf/open/floor/almayer/greencorner/north,
 /area/adminlevel/ert_station)
 "UI" = (
 /obj/structure/surface/table/gamblingtable,
@@ -2270,9 +1801,7 @@
 	pixel_x = -1;
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "UQ" = (
 /obj/effect/decal/warning_stripes{
@@ -2284,9 +1813,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "UW" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -2313,15 +1840,10 @@
 /area/adminlevel/ert_station)
 "VD" = (
 /obj/structure/machinery/vending/cigarette/free,
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
 "VI" = (
-/turf/open/floor/almayer{
-	icon_state = "silvercorner"
-	},
+/turf/open/floor/almayer/silvercorner,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "VQ" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -2338,15 +1860,10 @@
 /area/space)
 "VS" = (
 /obj/structure/machinery/medical_pod/sleeper,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "Wn" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Wp" = (
 /obj/effect/decal/warning_stripes{
@@ -2374,9 +1891,7 @@
 /area/adminlevel/ert_station)
 "WH" = (
 /obj/structure/machinery/chem_storage,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer/mono,
 /area/centcom/control)
 "WK" = (
 /obj/structure/bed/chair{
@@ -2389,10 +1904,7 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "WQ" = (
 /obj/structure/machinery/vending/cigarette/colony,
@@ -2422,71 +1934,48 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
 "XR" = (
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "sterile_green_side"
-	},
+/turf/open/floor/almayer/sterile_green_side/southwest,
 /area/adminlevel/ert_station)
 "Ya" = (
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "Yn" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/northeast,
 /area/adminlevel/ert_station)
 "Ys" = (
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station)
 "Yu" = (
 /obj/structure/bed/sofa/vert/grey,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
+/turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Yy" = (
 /obj/structure/machinery/chem_dispenser,
 /obj/item/reagent_container/glass/beaker/bluespace,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "YE" = (
 /obj/structure/machinery/chem_master,
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "YJ" = (
 /obj/structure/machinery/medical_pod/autodoc/unskilled,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "YO" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/pizzabox/meat{
 	pixel_y = 8
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station)
 "YP" = (
-/turf/open/floor/tdome{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
 "YU" = (
 /turf/closed/wall,
@@ -2498,9 +1987,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
 "Zd" = (
-/turf/open/floor/tdome{
-	icon_state = "bluefull"
-	},
+/turf/open/floor/tdome/bluefull,
 /area/tdome/tdome1)
 "Zh" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -2510,10 +1997,7 @@
 	name = "Surgery Cleaner"
 	},
 /obj/item/storage/box/monkeycubes,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
-	},
+/turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/ert_station)
 "Zp" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -2526,16 +2010,11 @@
 	pixel_x = -32;
 	serial_number = 16
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
+/turf/open/floor/almayer/silver/west,
 /area/adminlevel/ert_station)
 "Zv" = (
 /obj/structure/machinery/autodoc_console,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "Zw" = (
 /obj/structure/sign/safety/debark_lounge,
@@ -2543,10 +2022,7 @@
 /area/adminlevel/ert_station)
 "Zy" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer/orange/north,
 /area/adminlevel/ert_station)
 "ZD" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -2563,9 +2039,7 @@
 	id = "ERT Lock 2";
 	unacidable = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/adminlevel/ert_station)
 "ZI" = (
 /obj/structure/barricade/handrail,
@@ -2573,9 +2047,7 @@
 /area/adminlevel/ert_station)
 "ZJ" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/almayer{
-	icon_state = "test_floor5"
-	},
+/turf/open/floor/almayer/test_floor5,
 /area/adminlevel/ert_station)
 "ZU" = (
 /obj/structure/bed/chair/comfy,
@@ -2735,7 +2207,7 @@ hp
 hp
 hp
 hp
-kx
+hp
 "}
 (2,1,1) = {"
 aa
@@ -4094,7 +3566,7 @@ hp
 hp
 hp
 hp
-hp
+kx
 hp
 hp
 hp
@@ -5568,8 +5040,8 @@ ao
 an
 QJ
 pP
-vD
-vD
+NZ
+NZ
 GB
 oS
 Qr
@@ -5719,9 +5191,9 @@ YU
 co
 an
 QJ
-vD
-vD
-vD
+NZ
+NZ
+NZ
 GB
 oS
 Qr
@@ -5871,7 +5343,7 @@ YU
 TU
 Qr
 QJ
-vD
+NZ
 Kk
 uN
 GB
@@ -6023,8 +5495,8 @@ Rj
 YO
 an
 QJ
-vD
-vD
+NZ
+NZ
 Qz
 GB
 oS
@@ -6175,9 +5647,9 @@ Rj
 GB
 an
 QJ
-vD
-vD
-vD
+NZ
+NZ
+NZ
 GB
 oS
 QJ
@@ -10240,7 +9712,7 @@ ds
 eE
 eY
 eY
-tx
+eY
 eY
 eY
 eY

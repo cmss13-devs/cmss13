@@ -132,6 +132,12 @@
 //------GENERAL PROCS----------
 //-----------------------------
 
+/obj/item/hardpoint/p_s(temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	if(temp_gender == PLURAL)
+		. = "s"
+
 /obj/item/hardpoint/Initialize()
 	. = ..()
 	set_bullet_traits()
@@ -330,7 +336,7 @@
 	. = ..()
 	if(health <= 0)
 		. += "It's busted!"
-	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
+	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
 		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 
 //reloading hardpoint - take mag from backup clips and replace current ammo with it. Will change in future. Called via weapons loader

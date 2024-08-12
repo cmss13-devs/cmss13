@@ -155,7 +155,7 @@
 					dat += text("<A href='?src=\ref[];choice=New Record (Security)'>New Security Record</A><BR><BR>", src)
 				dat += text("\n<A href='?src=\ref[];choice=Print Record'>Print Record</A><BR>\n<A href='?src=\ref[];choice=Return'>Back</A><BR>", src, src)
 			if(4.0)
-				if(!Perp.len)
+				if(!length(Perp))
 					dat += text("ERROR.  String could not be located.<br><br><A href='?src=\ref[];choice=Return'>Back</A>", src)
 				else
 					dat += {"
@@ -172,7 +172,7 @@
 <th>Rank</th>
 <th>Criminal Status</th>
 </tr> "}
-					for(var/i=1, i<=Perp.len, i += 2)
+					for(var/i=1, i<=length(Perp), i += 2)
 						var/crimstat = ""
 						var/datum/data/record/R = Perp[i]
 						if(istype(Perp[i+1],/datum/data/record/))
@@ -271,16 +271,16 @@ What a mess.*/
 				Perp = new/list()
 				t1 = lowertext(t1)
 				var/list/components = splittext(t1, " ")
-				if(components.len > 5)
+				if(length(components) > 5)
 					return //Lets not let them search too greedily.
 				for(var/datum/data/record/R in GLOB.data_core.general)
 					var/temptext = R.fields["name"] + " " + R.fields["id"] + " " + R.fields["rank"]
-					for(var/i = 1, i<=components.len, i++)
+					for(var/i = 1, i<=length(components), i++)
 						if(findtext(temptext,components[i]))
 							var/prelist = new/list(2)
 							prelist[1] = R
 							Perp += prelist
-				for(var/i = 1, i<=Perp.len, i+=2)
+				for(var/i = 1, i<=length(Perp), i+=2)
 					for(var/datum/data/record/E in GLOB.data_core.security)
 						var/datum/data/record/R = Perp[i]
 						if ((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
@@ -355,16 +355,17 @@ What a mess.*/
 					GLOB.data_core.security -= R
 					qdel(R)
 				temp = "All Security records deleted."
+				msg_admin_niche("[key_name_admin(usr)] deleted all security records.")
 
 			if ("Add Entry")
 				if (!(istype(active2, /datum/data/record)))
 					return
 				var/a2 = active2
-				var/t1 = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)),1,MAX_MESSAGE_LEN)
-				if((!t1 || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isSilicon(usr))) || active2 != a2))
+				var/new_value = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)),1,MAX_MESSAGE_LEN)
+				if((!new_value || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isSilicon(usr))) || active2 != a2))
 					return
 				var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
-				var/new_comment = list("entry" = t1, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
+				var/new_comment = list("entry" = new_value, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
 				if(istype(usr,/mob/living/carbon/human))
 					var/mob/living/carbon/human/U = usr
 					new_comment["created_by"] = list("name" = U.get_authentification_name(), "rank" = U.get_assignment())
@@ -374,6 +375,7 @@ What a mess.*/
 					var/new_com_i = length(active2.fields["comments"]) + 1
 					active2.fields["comments"]["[new_com_i]"] = new_comment
 				to_chat(usr, text("You have added a new comment to the Security Record of [].", active2.fields["name"]))
+				msg_admin_niche("[key_name_admin(usr)] added a security comment for [active1.fields["name"]] ([active1.fields["id"]]): [new_value].")
 
 			if ("Delete Entry")
 				if(!islist(active2.fields["comments"]))
@@ -406,23 +408,28 @@ What a mess.*/
 				switch(href_list["field"])
 					if("name")
 						if (istype(active1, /datum/data/record))
-							var/t1 = reject_bad_name(input(usr, "Please input name:", "Secure. records", active1.fields["name"]) as text|null)
-							if (!t1 || active1 != a1)
+							var/new_value = reject_bad_name(input(usr, "Please input name:", "Secure. records", active1.fields["name"]) as text|null)
+							if (!new_value || active1 != a1)
 								return
-							message_admins("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
-							active1.fields["name"] = t1
+							message_admins("[key_name(usr)] changed the security record name of [active1.fields["name"]] to [new_value]")
+							active1.fields["name"] = new_value
+
 					if("sex")
 						if (istype(active1, /datum/data/record))
+							var/new_value = "Male"
 							if (active1.fields["sex"] == "Male")
-								active1.fields["sex"] = "Female"
-							else
-								active1.fields["sex"] = "Male"
+								new_value = "Female"
+							active1.fields["sex"] = new_value
+							msg_admin_niche("[key_name(usr)] changed the security record sex of [active1.fields["name"]] to [new_value]")
+
 					if("age")
 						if (istype(active1, /datum/data/record))
-							var/t1 = input("Please input age:", "Secure. records", active1.fields["age"], null)  as num
-							if (!t1 || active1 != a1)
+							var/new_value = input("Please input age:", "Secure. records", active1.fields["age"], null)  as num
+							if (!new_value || active1 != a1)
 								return
-							active1.fields["age"] = t1
+							active1.fields["age"] = new_value
+							msg_admin_niche("[key_name(usr)] changed the security record age of [active1.fields["name"]] to [new_value]")
+
 					if("criminal")
 						if (istype(active2, /datum/data/record))
 							temp = "<h5>Criminal Status:</h5>"
@@ -434,22 +441,25 @@ What a mess.*/
 							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=suspect'>Suspect</a></li>"
 							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=njp'>NJP</a></li>"
 							temp += "</ul>"
+
 					if("rank")
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
 						if (istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
 							temp = "<h5>Occupation:</h5>"
 							temp += "<ul>"
 							for(var/rank in GLOB.joblist)
-								temp += "<li><a href='?src=\ref[src];choice=Change Occupation;rank=[rank]'>[rank]</a></li>"
+								temp += "<li><a href='?src=\ref[src];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
 							temp += "</ul>"
 						else
 							alert(usr, "You do not have the required rank to do this!")
+
 					if("species")
 						if (istype(active1, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please enter race:", "General records", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if (!t1 || active1 != a1)
+							var/new_value = copytext(trim(strip_html(input("Please enter race:", "General records", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
+							if (!new_value || active1 != a1)
 								return
-							active1.fields["species"] = t1
+							active1.fields["species"] = new_value
+							msg_admin_niche("[key_name(usr)] changed the security record species of [active1.fields["name"]] to [new_value]")
 
 
 //TEMPORARY MENU FUNCTIONS
@@ -457,14 +467,17 @@ What a mess.*/
 				temp=null
 				switch(href_list["choice"])
 					if ("Change Rank")
-						if (active1)
-							active1.fields["rank"] = href_list["rank"]
-							if(href_list["rank"] in GLOB.joblist)
-								active1.fields["real_rank"] = href_list["real_rank"]
+						if(istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
+							var/new_value = href_list["rank"]
+							active1.fields["rank"] = new_value
+							if(new_value in GLOB.joblist)
+								active1.fields["real_rank"] = new_value
+							message_admins("[key_name(usr)] changed the security record sex of [active1.fields["name"]] to [new_value]")
 
 					if ("Change Criminal Status")
-						if (active2)
-							switch(href_list["criminal2"])
+						if(istype(active2, /datum/data/record))
+							var/new_value = href_list["criminal2"]
+							switch(new_value)
 								if("none")
 									active2.fields["criminal"] = "None"
 								if("arrest")
@@ -480,6 +493,8 @@ What a mess.*/
 
 							for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 								H.sec_hud_set_security_status()
+
+							message_admins("[key_name(usr)] changed the security record criminal status of [active1.fields["name"]] to [new_value]")
 
 	add_fingerprint(usr)
 	updateUsrDialog()
@@ -521,20 +536,27 @@ What a mess.*/
 		if(prob(10/severity))
 			switch(rand(1,6))
 				if(1)
+					msg_admin_niche("The security record name of [R.fields["name"]] was scrambled!")
 					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
 				if(2)
 					R.fields["sex"] = pick("Male", "Female")
+					msg_admin_niche("The security record sex of [R.fields["name"]] was scrambled!")
 				if(3)
 					R.fields["age"] = rand(5, 85)
+					msg_admin_niche("The security record age of [R.fields["name"]] was scrambled!")
 				if(4)
 					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP")
+					msg_admin_niche("The security record criminal status of [R.fields["name"]] was scrambled!")
 				if(5)
 					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
+					msg_admin_niche("The security record physical state of [R.fields["name"]] was scrambled!")
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
+					msg_admin_niche("The security record mental state of [R.fields["name"]] was scrambled!")
 			continue
 
 		else if(prob(1))
+			msg_admin_niche("The security record of [R.fields["name"]] was lost!")
 			GLOB.data_core.security -= R
 			qdel(R)
 			continue

@@ -134,9 +134,10 @@
 				return
 			if(RADIO_CHANNEL_INTERCOM)
 				message_mode = null
-				for(var/obj/item/device/radio/intercom/I in view(1))
+				FOR_DVIEW(var/obj/item/device/radio/intercom/I, 1, src, HIDE_INVISIBLE_OBSERVER)
 					used_radios += I
 					break // remove this if we EVER have two different intercomms with DIFFERENT frequencies IN ONE ROOM
+				FOR_DVIEW_END
 			else
 				if(message_mode != MESSAGE_MODE_LOCAL)
 					var/earpiece = get_type_in_ears(/obj/item/device/radio)
@@ -158,7 +159,7 @@
 
 			for(var/mob/living/M in hearers(message_range, src))
 				if(M != src)
-					M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
+					M.show_message(SPAN_NOTICE("[src] talks into [length(used_radios) ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
 			if(ishumansynth_strict(src))
 				playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 

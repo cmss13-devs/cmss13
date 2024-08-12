@@ -117,7 +117,6 @@
 	)
 	storage_slots = 10
 
-
 /obj/item/storage/belt/utility/full/fill_preset_inventory()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)
@@ -136,6 +135,50 @@
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/device/t_scanner(src)
 
+/obj/item/storage/belt/utility/construction
+	name = "\improper M277 pattern construction rig"
+	desc = "The M277 is a common rig used by Combat Technicians to carry around materials and other supplies. It consists of a modular belt with various clips. This version sarafices storage space for specialized material loading clips."
+	storage_slots = 6
+	can_hold = list(
+		/obj/item/tool/crowbar,
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/wirecutters,
+		/obj/item/tool/wrench,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/tool/shovel/etool,
+		/obj/item/stack/cable_coil,
+		/obj/item/weapon/gun/smg/nailgun/compact,
+		/obj/item/cell,
+		/obj/item/circuitboard,
+		/obj/item/stock_parts,
+		/obj/item/device/demo_scanner,
+		/obj/item/device/reagent_scanner,
+		/obj/item/device/assembly,
+		/obj/item/device/multitool,
+		/obj/item/device/flashlight,
+		/obj/item/device/t_scanner,
+		/obj/item/device/analyzer,
+		/obj/item/explosive/plastic,
+		/obj/item/device/lightreplacer,
+		/obj/item/stack/sheet,
+		/obj/item/stack/sandbags_empty,
+		/obj/item/stack/sandbags,
+		/obj/item/stack/barbed_wire,
+		/obj/item/defenses/handheld/sentry,
+		/obj/item/stack/rods,
+		/obj/item/stack/tile,
+	)
+
+	bypass_w_limit = list(
+		/obj/item/tool/shovel/etool,
+		/obj/item/device/lightreplacer,
+		/obj/item/stack/sheet,
+		/obj/item/stack/sandbags_empty,
+		/obj/item/stack/sandbags,
+		/obj/item/defenses/handheld/sentry,
+	)
+
 /obj/item/storage/belt/utility/full/pred
 	name = "\improper Yautja toolbelt"
 	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools."
@@ -145,7 +188,7 @@
 
 /obj/item/storage/belt/medical
 	name = "\improper M276 pattern medical storage rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport medical supplies and pistol ammunition. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport bulkier medical supplies. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
 	icon_state = "medicalbelt"
 	item_state = "medical"
 	storage_slots = 14
@@ -1100,11 +1143,11 @@
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
 		if(ammo_dumping.current_rounds != 0)
-			if(contents.len < storage_slots - 1) //this is because it's a gunbelt and the final slot is reserved for the gun
+			if(length(contents) < storage_slots - 1) //this is because it's a gunbelt and the final slot is reserved for the gun
 				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
 				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
 				for(var/i = 1 to handfuls)
-					if(contents.len < storage_slots - 1)
+					if(length(contents) < storage_slots - 1)
 						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
 						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
@@ -1312,12 +1355,12 @@
 #undef MAXIMUM_MAGAZINE_COUNT
 
 /obj/item/storage/belt/gun/m44
-	name = "\improper M276 pattern M44 holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M44 magnum revolver, along with six small pouches for speedloaders. It smells faintly of hay."
+	name = "\improper M276 pattern general revoler holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is universal and adjustable for different revolvers, along with six small pouches for speedloaders. It smells faintly of hay."
 	icon_state = "m44r_holster"
 	storage_slots = 7
 	can_hold = list(
-		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 	)
 	has_gamemode_skin = TRUE
@@ -1399,7 +1442,7 @@
 	set name = "Detach revolver holster"
 	set src in usr
 	if(ishuman(usr))
-		if(contents.len)
+		if(length(contents))
 			to_chat(usr, SPAN_WARNING("The belt needs to be fully empty to remove the holster!"))
 			return
 		to_chat(usr, SPAN_NOTICE("You detach the holster from the belt."))
@@ -1429,7 +1472,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with five small pouches for speedloaders. This one is aging poorly, and seems to be surplus equipment. It's stamped '3rd 'Dust Raiders' Battalion'."
 	icon_state = "s_cmateba_holster"
 	item_state = "s_marinebelt"
-	storage_slots = 6
+	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/mateba,
@@ -1713,7 +1756,7 @@
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
 		/obj/item/weapon/gun/pistol,
-		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/smartgun,
@@ -1733,8 +1776,7 @@
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
 		/obj/item/weapon/gun/pistol,
-		/obj/item/weapon/gun/revolver/m44,
-		/obj/item/weapon/gun/revolver/mateba,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver/mateba,
 		/obj/item/ammo_magazine/pistol,
@@ -1756,8 +1798,7 @@
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
 		/obj/item/weapon/gun/pistol,
-		/obj/item/weapon/gun/revolver/m44,
-		/obj/item/weapon/gun/revolver/mateba,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver/mateba,
 		/obj/item/ammo_magazine/pistol,
@@ -1779,8 +1820,7 @@
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
 		/obj/item/weapon/gun/pistol,
-		/obj/item/weapon/gun/revolver/m44,
-		/obj/item/weapon/gun/revolver/mateba,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver/mateba,
 		/obj/item/ammo_magazine/pistol,

@@ -88,7 +88,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_WY_ARMORY 212
 ///Secret research or other projects with highly restricted access
 #define ACCESS_WY_SECRETS 213
-
+#define ACCESS_WY_DATABASE 214
 #define ACCESS_WY_LEADERSHIP 215
 ///Senior leadership, the highest ranks
 #define ACCESS_WY_SENIOR_LEAD 216

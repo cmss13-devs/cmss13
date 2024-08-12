@@ -52,13 +52,13 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 	if(colony_camera_mapload && mapload && is_ground_level(z))
 		network = list(CAMERA_NET_COLONY)
 
-	if(!src.network || src.network.len < 1)
+	if(LAZYLEN(src.network) < 1)
 		if(loc)
 			error("[src.name] in [get_area(src)] (x:[src.x] y:[src.y] z:[src.z]) has errored. [src.network?"Empty network list":"Null network list"]")
 		else
 			error("[src.name] in [get_area(src)]has errored. [src.network?"Empty network list":"Null network list"]")
 		ASSERT(src.network)
-		ASSERT(src.network.len > 0)
+		ASSERT(length(src.network) > 0)
 
 	set_pixel_location()
 	update_icon()
@@ -263,9 +263,11 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 //Return a working camera that can see a given mob
 //or null if none
 /proc/seen_by_camera(mob/M)
-	for(var/obj/structure/machinery/camera/C in oview(4, M))
+	FOR_DOVIEW(var/obj/structure/machinery/camera/C, 4, M, HIDE_INVISIBLE_OBSERVER)
 		if(C.can_use()) // check if camera disabled
+			FOR_DOVIEW_END
 			return C
+	FOR_DOVIEW_END
 	return null
 
 /proc/near_range_camera(mob/M)

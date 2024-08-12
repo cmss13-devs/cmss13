@@ -85,7 +85,7 @@
 	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
 		data["evac_eta"] = SShijack.get_evac_eta()
 
-	if(!messagetitle.len)
+	if(!length(messagetitle))
 		data["messages"] = null
 	else
 		for(var/i in 1 to length(messagetitle))
@@ -139,7 +139,7 @@
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
-				idcard = human_user.wear_id
+				idcard = human_user.get_idcard()
 			if(!istype(idcard))
 				bio_fail = TRUE
 			else if(!idcard.check_biometrics(human_user))
@@ -184,7 +184,7 @@
 				to_chat(user, SPAN_WARNING("Arrays are re-cycling.  Please stand by."))
 				return FALSE
 			var/input = stripped_input(user, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
-			if(!input || !(user in view(1,src)) || !COOLDOWN_FINISHED(src, cooldown_central))
+			if(!input || !(user in dview(1, src)) || !COOLDOWN_FINISHED(src, cooldown_central))
 				return FALSE
 
 			high_command_announce(input, user)
@@ -198,8 +198,8 @@
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
-				idcard = human_user.wear_id
-			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
 				bio_fail = TRUE
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE
@@ -211,7 +211,7 @@
 				to_chat(user, SPAN_WARNING("Please allow at least [COOLDOWN_TIMELEFT(src, cooldown_message)/10] second\s to pass between announcements."))
 				return FALSE
 			var/input = stripped_multiline_input(user, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-			if(!input || !COOLDOWN_FINISHED(src, cooldown_message) || !(user in view(1,src)))
+			if(!input || !COOLDOWN_FINISHED(src, cooldown_message) || !(user in dview(1, src)))
 				return FALSE
 
 			var/signed = null

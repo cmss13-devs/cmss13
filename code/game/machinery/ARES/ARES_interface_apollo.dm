@@ -175,8 +175,8 @@
 				authentication = get_ares_access(idcard)
 				last_login = idcard.registered_name
 			else if(user.wear_id)
-				idcard = user.wear_id
-				if(istype(idcard))
+				idcard = user.get_idcard()
+				if(idcard)
 					authentication = get_ares_access(idcard)
 					last_login = idcard.registered_name
 			else
@@ -317,8 +317,8 @@
 			if(istype(idcard))
 				has_id = TRUE
 			else if(user.wear_id)
-				idcard = user.wear_id
-				if(istype(idcard))
+				idcard = user.get_idcard()
+				if(idcard)
 					has_id = TRUE
 			if(!has_id)
 				to_chat(user, SPAN_WARNING("You require an ID card to request an access ticket!"))

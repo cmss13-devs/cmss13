@@ -87,7 +87,9 @@
 			xeno_type = /mob/living/carbon/xenomorph/defender
 		if(XENO_CASTE_BURROWER)
 			xeno_type = /mob/living/carbon/xenomorph/burrower
-
+	var/obj/item/organ/xeno/organ = locate() in src
+	if(!isnull(organ))
+		qdel(organ)
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(target_xeno), target_xeno)
 
@@ -214,8 +216,8 @@
 		return
 	var/datum/hive_status/hive = X.hive
 	if(X.observed_xeno)
-		if(!hive.open_xeno_leader_positions.len && X.observed_xeno.hive_pos == NORMAL_XENO)
-			to_chat(X, SPAN_XENOWARNING("You currently have [hive.xeno_leader_list.len] promoted leaders. You may not maintain additional leaders until your power grows."))
+		if(!length(hive.open_xeno_leader_positions) && X.observed_xeno.hive_pos == NORMAL_XENO)
+			to_chat(X, SPAN_XENOWARNING("You currently have [length(hive.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
 			return
 		var/mob/living/carbon/xenomorph/T = X.observed_xeno
 		if(T == X)
@@ -237,12 +239,12 @@
 		for(var/mob/living/carbon/xenomorph/T in hive.xeno_leader_list)
 			possible_xenos += T
 
-		if(possible_xenos.len > 1)
+		if(length(possible_xenos) > 1)
 			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which leader?", possible_xenos, theme="hive_status")
 			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != X.z || !X.check_state())
 				return
 			X.overwatch(selected_xeno)
-		else if(possible_xenos.len)
+		else if(length(possible_xenos))
 			X.overwatch(possible_xenos[1])
 		else
 			to_chat(X, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
@@ -399,6 +401,7 @@
 			remove_personal_ally()
 		if("Clear Personal Allies")
 			clear_personal_allies()
+	return ..()
 
 /datum/action/xeno_action/onclick/manage_hive/proc/add_personal_ally()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner

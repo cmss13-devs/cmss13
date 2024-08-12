@@ -171,24 +171,24 @@
 	name = "corporate doctor badge"
 	desc = "A corporate holo-badge. It is fingerprint locked with clearance level 3 access. It is commonly held by corporate doctors."
 	icon_state = "clearance"
-	var/clearance_access = 3
+	var/credits_to_give = 15 //gives the equivalent clearance access in credits
 
 /obj/item/card/id/silver/clearance_badge/scientist
 	name = "corporate scientist badge"
 	desc = "A corporate holo-badge. It is fingerprint locked with clearance level 4 access. It is commonly held by corporate scientists."
-	clearance_access = 4
+	credits_to_give = 27
 
 /obj/item/card/id/silver/clearance_badge/cl
 	name = "corporate liaison badge"
 	desc = "A corporate holo-badge in unique corporate orange and white. It is fingerprint locked with clearance level 5 access. It is commonly held by corporate liaisons."
 	icon_state = "cl"
-	clearance_access = 5
+	credits_to_give = 42
 
 /obj/item/card/id/silver/clearance_badge/manager
 	name = "corporate manager badge"
 	desc = "A corporate holo-badge in standard corporate orange and white. It has a unique uncapped bottom. It is fingerprint locked with 5-X clearance level. Commonly held by corporate managers."
 	icon_state = "pmc"
-	clearance_access = 6
+	credits_to_give = 47
 
 /obj/item/card/id/pizza
 	name = "pizza guy badge"
@@ -391,7 +391,7 @@
 /obj/item/dogtag/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/dogtag))
 		var/obj/item/dogtag/D = I
-		to_chat(user, SPAN_NOTICE("You join the [fallen_names.len>1 ? "tags":"two tags"] together."))
+		to_chat(user, SPAN_NOTICE("You join the [length(fallen_names)>1 ? "tags":"two tags"] together."))
 		name = "information dog tags"
 		if(D.fallen_names)
 			fallen_names += D.fallen_names
@@ -404,11 +404,11 @@
 
 /obj/item/dogtag/get_examine_text(mob/user)
 	. = ..()
-	if(ishuman(user) && fallen_names && fallen_names.len)
-		var/msg = "There [fallen_names.len>1 ? \
-			"are [fallen_names.len] tags.<br>They read":\
+	if(ishuman(user) && LAZYLEN(fallen_names))
+		var/msg = "There [length(fallen_names)>1 ? \
+			"are [length(fallen_names)] tags.<br>They read":\
 			"is one ID tag.<br>It reads"]:"
-		for (var/i=1 to fallen_names.len)
+		for (var/i=1 to length(fallen_names))
 			msg += "<br>[i]. \"[fallen_names[i]] - [fallen_assgns[i]] - [fallen_blood_types[i]]\""
 		. += SPAN_NOTICE("[msg]")
 

@@ -66,7 +66,7 @@
 
 /obj/item/ammo_box/proc/explode(severity, datum/cause_data/flame_cause_data)
 	if(severity > 0)
-		cell_explosion(get_turf(src), ((severity > 2) ? 180 : 100), ((severity > 2) ? 40 : 20), EXPLOSION_FALLOFF_SHAPE_LINEAR, null,flame_cause_data )
+		cell_explosion(get_turf(src), ((severity > 2) ? 180 : 100), ((severity > 2) ? 40 : 20), EXPLOSION_FALLOFF_SHAPE_LINEAR, null, flame_cause_data)
 	//just in case
 	if(!QDELETED(src))
 		qdel(src)

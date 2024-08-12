@@ -157,8 +157,8 @@
 
 
 
-/obj/item/explosive/mine/attackby(obj/item/W, mob/user)
-	if(needs_digging && HAS_TRAIT(W,  TRAIT_TOOL_SHOVEL) && !active && anchored && !buried)
+/obj/item/explosive/mine/attackby(obj/item/thing, mob/user)
+	if(needs_digging && HAS_TRAIT(thing,  TRAIT_TOOL_SHOVEL) && !active && anchored && !buried)
 		user.visible_message(SPAN_NOTICE("[user] starts burying [src]."), \
 			SPAN_NOTICE("You start burying [src]."))
 		playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
@@ -244,17 +244,17 @@
 
 
 //Mine can also be triggered if you "cross right in front of it" (same tile)
-/obj/item/explosive/mine/Crossed(atom/A)
+/obj/item/explosive/mine/Crossed(atom/atoom)
 	..()
-	if(isliving(A))
-		var/mob/living/L = A
-		if(!L.stat == DEAD)//so dragged corpses don't trigger mines.
+	if(isliving(atoom))
+		var/mob/living/creature = atoom
+		if(!creature.stat == DEAD)//so dragged corpses don't trigger mines.
 			return
 		else
-			try_to_prime(A)
+			try_to_prime(atoom)
 
-/obj/item/explosive/mine/Collided(atom/movable/AM)
-	try_to_prime(AM)
+/obj/item/explosive/mine/Collided(atom/movable/vehicle)
+	try_to_prime(vehicle)
 
 /**
  * Proc that notifies a heavy trigger failing to detonate
@@ -317,27 +317,27 @@
 			disarm()
 
 
-/obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/beno)
 	if(triggered) //Mine is already set to go off
 		return XENO_NO_DELAY_ACTION
 
-	if(M.a_intent == INTENT_HELP)
+	if(beno.a_intent == INTENT_HELP)
 		if(buried)
-			to_chat(M, SPAN_XENONOTICE("This is buried, you need to dig it out to damage it!"))
+			to_chat(beno, SPAN_XENONOTICE("This is buried, you need to dig it out to damage it!"))
 		else
-			to_chat(M, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
+			to_chat(beno, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
 		return XENO_NO_DELAY_ACTION
 	if(buried)
-		M.animation_attack_on(src)
-		M.visible_message(SPAN_NOTICE("[M] starts digging up [src]."), \
+		beno.animation_attack_on(src)
+		beno.visible_message(SPAN_NOTICE("[beno] starts digging up [src]."), \
 		SPAN_NOTICE("You start digging up [src]. This might end badly..."))
-		if(!do_after(M, deploy_time * 1.5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			M.visible_message(SPAN_WARNING("[M] stops disarming [src]."), \
+		if(!do_after(beno, deploy_time * 1.5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			beno.visible_message(SPAN_WARNING("[beno] stops disarming [src]."), \
 			SPAN_WARNING("You stop disarming [src]."))
 			return
 	else
-		M.animation_attack_on(src)
-		M.visible_message(SPAN_DANGER("[M] has slashed [src]!"), \
+		beno.animation_attack_on(src)
+		beno.visible_message(SPAN_DANGER("[beno] has slashed [src]!"), \
 		SPAN_DANGER("You slash [src]!"))
 		playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
 
@@ -448,20 +448,20 @@
 /obj/item/explosive/mine/bury/antitank/prime()
 	set waitfor = 0
 	cell_explosion(loc, explosive_power, 25, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF, dir, cause_data)
-	for(var/mob/living/carbon/M in oview(1, src))
-		M.AdjustStun(4)
-		M.KnockDown(4)
-		to_chat(M, SPAN_HIGHDANGER("Molten copper rips through your lower body!"))
-		M.apply_damage(200,BURN)
-		if(ishuman(M))
+	for(var/mob/living/carbon/creature in oview(1, src))
+		creature.AdjustStun(4)
+		creature.KnockDown(4)
+		to_chat(creature, SPAN_HIGHDANGER("Molten copper rips through your lower body!"))
+		creature.apply_damage(200,BURN)
+		if(ishuman(creature))
 			sparks.start()
-			var/mob/living/carbon/human/H = M
-			var/obj/limb/L = H.get_limb("l_leg")
-			var/obj/limb/R = H.get_limb("r_leg")
-			R.droplimb()
-			L.droplimb()
-			playsound(M.loc, "bone_break", 45, TRUE)
-			playsound(M.loc, "bone_break", 45, TRUE)
+			var/mob/living/carbon/human/fleshbag = creature
+			var/obj/limb/left = fleshbag.get_limb("l_leg")
+			var/obj/limb/right = fleshbag.get_limb("r_leg")
+			right.droplimb()
+			left.droplimb()
+			playsound(creature.loc, "bone_break", 45, TRUE)
+			playsound(creature.loc, "bone_break", 45, TRUE)
 	for(var/mob/living/living_mob in viewers(7, src))
 		if(living_mob.client)
 			shake_camera(living_mob, 10, 1)

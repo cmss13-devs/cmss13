@@ -39,8 +39,8 @@
         "Faction Clash",
         "Infection"
     ],
-    "map_day_night_modificator": {
-        "Midnight": 1,
+    "map_global_light_modificator": {
+        "Midnight": 0,
         "Night": 0.083,
         "Dawn": 0.16,
         "Sunrise": 0.25,
@@ -51,6 +51,5 @@
         "Sunset": 0.7916,
         "Dusk": 0.916
     },
-    "custom_time_length": 1438344,
-    "map_corpses": 30
+    "custom_time_length": 1438344
 }

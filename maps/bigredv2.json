@@ -48,8 +48,8 @@
         "Faction Clash",
         "Infection"
     ],
-    "map_day_night_modificator": {
-        "Midnight": 1,
+    "map_global_light_modificator": {
+        "Midnight": 0,
         "Night": 0.083,
         "Dawn": 0.16,
         "Sunrise": 0.25,

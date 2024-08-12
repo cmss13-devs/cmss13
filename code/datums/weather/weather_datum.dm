@@ -181,6 +181,7 @@
 	update_overlays()
 
 /obj/structure/snow/Destroy(force)
+	update_visuals_effects(src, FALSE)
 	STOP_PROCESSING(SSslowobj, src)
 	snowed_turf.snow = null
 	snowed_turf = null
@@ -194,7 +195,7 @@
 		damage_act(6 * delta_time)
 	update_overlays()
 
-/obj/structure/snow/proc/update_visuals_effects()
+/obj/structure/snow/proc/update_visuals_effects(datum/source, replace = TRUE)
 	SIGNAL_HANDLER
 
 	var/list/contained_mobs = list()
@@ -203,9 +204,10 @@
 		SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_FORCE_REMOVE, contained_mob)
 
 	RemoveElement(/datum/element/mob_overlay_effect)
-	AddElement(/datum/element/mob_overlay_effect, bleed_layer * 2.4, bleed_layer * 1.2, 100)
-	for(var/mob/living/contained_mob as anything in contained_mobs)
-		SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_FORCE_UPDATE, contained_mob)
+	if(replace)
+		AddElement(/datum/element/mob_overlay_effect, bleed_layer * 2.4, bleed_layer * 1.2, 100)
+		for(var/mob/living/contained_mob as anything in contained_mobs)
+			SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_FORCE_UPDATE, contained_mob)
 
 /obj/structure/snow/proc/update_corners(propagate = FALSE)
 	var/list/snow_dirs = list(list(), list(), list())

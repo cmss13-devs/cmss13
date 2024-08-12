@@ -8,10 +8,10 @@
 
 /datum/time_of_day/New()
 	..()
-	if(SSmapping.configs[GROUND_MAP].map_day_night_modificator[name])
-		start_at = SSmapping.configs[GROUND_MAP].map_day_night_modificator[name]
-	if(SSmapping.configs[GROUND_MAP].custom_day_night_colors[name])
-		color = SSmapping.configs[GROUND_MAP].custom_day_night_colors[name]
+	if(SSmapping.configs[GROUND_MAP].map_global_light_modificator[name])
+		start_at = SSmapping.configs[GROUND_MAP].map_global_light_modificator[name]
+	if(SSmapping.configs[GROUND_MAP].map_global_light_colors[name])
+		color = SSmapping.configs[GROUND_MAP].map_global_light_colors[name]
 
 /datum/time_of_day/midnight
 	name = "Midnight"
@@ -96,7 +96,7 @@ SUBSYSTEM_DEF(global_light)
 	var/list/datum/time_of_day/steps = list()
 
 	var/current_color = ""
-	var/weather_blend_ammount = 0.3
+	var/min_weather_blend_amount = 0.3
 
 	var/game_time_length = 24 HOURS
 	var/custom_time_offset = 0
@@ -128,9 +128,7 @@ SUBSYSTEM_DEF(global_light)
 	custom_time_offset = new_value
 
 /datum/controller/subsystem/global_light/proc/game_time_offseted()
-	if(enabled)
-		return (REALTIMEOFDAY + custom_time_offset) % game_time_length
-	return 0
+	return (REALTIMEOFDAY + custom_time_offset) % game_time_length
 
 /datum/controller/subsystem/global_light/proc/create_steps()
 	for(var/path in typesof(/datum/time_of_day))
@@ -159,13 +157,17 @@ SUBSYSTEM_DEF(global_light)
 		next_step_datum = steps["2"]
 
 /datum/controller/subsystem/global_light/proc/update_color()
+	if(!enabled)
+		animate(global_lighting_color, color = "#000000", time = 60 SECONDS)
+		return
 	if(!weather_light_affecting_event)
-		var/time_to_animate = daytimeDiff(game_time_offseted(), next_step_datum.start_at * game_time_length)
-		var/blend_amount = (game_time_offseted() - current_step_datum.start_at * game_time_length) / (next_step_datum.start_at * game_time_length - current_step_datum.start_at * game_time_length)
+		var/time = game_time_offseted()
+		var/time_to_animate = daytimeDiff(time, next_step_datum.start_at * game_time_length)
+		var/blend_amount = (time - current_step_datum.start_at * game_time_length) / (next_step_datum.start_at * game_time_length - current_step_datum.start_at * game_time_length)
 		current_color = BlendRGB(current_step_datum.color, next_step_datum.color, blend_amount)
 		if(weather_datum && weather_datum.weather_color_offset)
-			var/weather_blend_amount = (game_time_offseted() - weather_datum.weather_start_time) / (weather_datum.weather_start_time + (weather_datum.weather_duration / 12) - weather_datum.weather_start_time)
-			current_color = BlendRGB(current_color, weather_datum.weather_color_offset, min(weather_blend_amount, weather_blend_ammount))
+			var/weather_blend_amount = (time - weather_datum.weather_start_time) / (weather_datum.weather_start_time + (weather_datum.weather_duration / 12) - weather_datum.weather_start_time)
+			current_color = BlendRGB(current_color, weather_datum.weather_color_offset, min(weather_blend_amount, min_weather_blend_amount))
 		animate(global_lighting_color, color = current_color, time = time_to_animate)
 
 /datum/controller/subsystem/global_light/fire(resumed)

@@ -65,8 +65,8 @@
 
 	var/nightmare_path
 
-	var/list/map_day_night_modificator = list()
-	var/list/custom_day_night_colors = list()
+	var/list/map_global_light_modificator = list()
+	var/list/map_global_light_colors = list()
 	var/custom_time_length = list()
 
 	var/list/weather = list()
@@ -390,17 +390,17 @@
 			var/datum/game_mode/G = a
 			gamemodes += initial(G.config_tag)
 
-	if(islist(json["map_day_night_modificator"]))
-		if(!islist(json["map_day_night_modificator"]))
+	if(islist(json["map_global_light_modificator"]))
+		if(!islist(json["map_global_light_modificator"]))
 			log_world("map_config custom day/night modificator is not a list!")
 			return
-		map_day_night_modificator = json["map_day_night_modificator"]
+		map_global_light_modificator = json["map_global_light_modificator"]
 
-	if(islist(json["custom_day_night_colors"]))
-		if(!islist(json["custom_day_night_colors"]))
+	if(islist(json["map_global_light_colors"]))
+		if(!islist(json["map_global_light_colors"]))
 			log_world("map_config custom day/night colors is not a list!")
 			return
-		custom_day_night_colors = json["custom_day_night_colors"]
+		map_global_light_colors = json["map_global_light_colors"]
 
 	if(json["custom_time_length"])
 		custom_time_length = json["custom_time_length"]

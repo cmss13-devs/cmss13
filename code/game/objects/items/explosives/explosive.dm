@@ -329,30 +329,30 @@
 		return
 	icon_state = "satchel_primed"
 	playsound(src.loc, 'sound/machines/click.ogg', 25, 1)
-	var/mob/living/carbon/C = user
-	if(istype(C) && !C.throw_mode)
-		C.toggle_throw_mode(THROW_MODE_NORMAL)
+	var/mob/living/carbon/living_carbon = user
+	if(istype(living_carbon) && !living_carbon.throw_mode)
+		living_carbon.toggle_throw_mode(THROW_MODE_NORMAL)
 	to_chat(user, SPAN_NOTICE("You activate the M17 Satchel Charge, it will now arm itself after a short time once thrown."))
 	activated = TRUE
-	addtimer(CALLBACK(src, PROC_REF(un_activate), 10 SECONDS, TIMER_UNIQUE))
+	addtimer(CALLBACK(src, PROC_REF(un_activate)), 10 SECONDS, TIMER_UNIQUE)
 
-/obj/item/explosive/satchel_charge/attackby(obj/item/W, mob/user)
+/obj/item/explosive/satchel_charge/attackby(obj/item/weapon_thing, mob/user)
 	. = ..()
 	beep(TRUE)
 	if(armed)
 		to_chat(user, SPAN_WARNING("This charge is armed, its linking cannot be altered unless disarmed."))
 		return
-	if(!istype(W, /obj/item/satchel_charge_detonator))
+	if(!istype(weapon_thing, /obj/item/satchel_charge_detonator))
 		return
-	var/obj/item/satchel_charge_detonator/D = W
-	if(linked_detonator == D)
-		D.linked_charges -= src
+	var/obj/item/satchel_charge_detonator/detonator = weapon_thing
+	if(linked_detonator == detonator)
+		detonator.linked_charges -= src
 		linked_detonator = null
 		to_chat(user, SPAN_NOTICE("You unlink the charge from the detonator."))
 		icon_state = "satchel"
 	else
-		D.linked_charges |= src
-		linked_detonator = D
+		detonator.linked_charges |= src
+		linked_detonator = detonator
 		to_chat(user, SPAN_NOTICE("The detonator indicates a new charge has been linked."))
 		icon_state = "satchel_linked"
 
@@ -369,14 +369,14 @@
 	dir = get_dir(src, thrower)
 	if(activated && linked_detonator)
 		icon_state = "satchel_primed"
-		prime_timer  = addtimer(CALLBACK(src, PROC_REF(arm), prime_time , TIMER_UNIQUE))
+		prime_timer  = addtimer(CALLBACK(src, PROC_REF(arm)), prime_time, TIMER_UNIQUE)
 		beep()
 
 /obj/item/explosive/satchel_charge/proc/beep(beep_once)
 	playsound(src.loc, 'sound/weapons/mine_tripped.ogg', 10, 1)
 	to_chat(world, "BEEP")
 	if(!armed && beep_once != TRUE)
-		addtimer(CALLBACK(src, PROC_REF(beep), 1 SECONDS, TIMER_UNIQUE))
+		addtimer(CALLBACK(src, PROC_REF(beep)), 1 SECONDS, TIMER_UNIQUE)
 
 
 /obj/item/explosive/satchel_charge/proc/arm()
@@ -388,15 +388,13 @@
 
 /obj/item/explosive/satchel_charge/pickup(mob/user)
 	if(armed)
-		do_after(user, prime_time , INTERRUPT_MOVED, TRUE)
+		do_after(user, prime_time, INTERRUPT_MOVED, TRUE)
 		if(linked_detonator)
 			icon_state = "satchel_linked"
 		else
 			icon_state = "satchel"
 		armed = FALSE
-		. = ..()
-	else
-		. = ..()
+	return ..()
 
 /obj/item/explosive/satchel_charge/proc/detonate(triggerer)
 	if(!armed || linked_detonator != triggerer)

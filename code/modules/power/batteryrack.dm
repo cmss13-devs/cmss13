@@ -207,7 +207,7 @@
 					empulse(src.loc, 4, 10, 1)
 			if (overcharge_percent >= 140)
 				if (prob(1))
-					cell_explosion(src.loc, 220, 55, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
+					cell_explosion(loc, 220, 55, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 		else //how the hell was this proc called for negative charge
 			charge = 0
 

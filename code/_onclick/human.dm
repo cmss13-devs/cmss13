@@ -38,7 +38,7 @@
 	if (A != src) return ..()
 	var/mob/living/carbon/human/H = A
 
-	if (last_chew + 75 > world.time)
+	if (last_chew + 1 > world.time)
 		to_chat(H, SPAN_DANGER("You can't bite your hand again yet..."))
 		return
 

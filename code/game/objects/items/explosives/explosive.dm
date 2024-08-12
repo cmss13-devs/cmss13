@@ -305,7 +305,7 @@
 /obj/item/explosive/satchel_charge
 	name = "M17 Satchel Charge"
 	desc = "After linked to a detonator, and thrown, will become primed and able to be detonated."
-	desc_lore = "The M17 is an old, yet robust satchel charge system dating back to the late 21st century that still hasn't been replaced yet. It features a seldomly used auto disarm mode where it automatically disarms after a time period to reduce collateral damage from UXO. Not that collateral matters nowadays anyways...\nTo detonate it, it requires linking with the included M38-D universal detonator beforehand and tossing it ."
+	desc_lore = "The M17 is a simple satchel charge system used by Marines in situations where their usual fire support can't reach. In addition to command detonation, it also features a laser tripwire mode where it can be mounted onto a wall to detonate if anything crosses its path without a valid IFF signal, although that module doesn't seem to function on the Almayer's stock of charges.. This one is set to automatically disarm after a short period, to reduce the chances of civilian injuries from abandoned UXO.\nTo detonate it, link the satchel charge with the included M38-D universal detonator beforehand, then throw it."
 	gender = PLURAL
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "satchel"

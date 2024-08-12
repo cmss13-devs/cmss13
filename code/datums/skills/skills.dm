@@ -181,13 +181,13 @@
 /datum/skills
 	/// The name of the skillset
 	var/name
-	// The mob that has this skillset
+	/// The mob that has this skillset
 	var/mob/owner
 
-	// List of skill datums.
-	// Also, if this is populated when the datum is created, it will set the skill levels automagically
+	/// List of skill datums.
+	/// Also, if this is populated when the datum is created, it will set the skill levels automagically
 	var/list/skills = list()
-	// Same as above, but for children of parents that just add a lil something else
+	/// Same as above, but for children of parents that just add a lil something else
 	var/list/additional_skills = list()
 
 /datum/skills/New(mob/skillset_owner)

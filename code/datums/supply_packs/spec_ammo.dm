@@ -183,13 +183,13 @@
 /datum/supply_packs/ammo_grenadier_sharp_mix
 	name = "SHARP Grenadier Mixed Magazine Crate (explosive x2, flechette x2, incendiary x2)"
 	contains = list(
-					/obj/item/ammo_magazine/rifle/sharp/explosive,
-					/obj/item/ammo_magazine/rifle/sharp/explosive,
-					/obj/item/ammo_magazine/rifle/sharp/flechette,
-					/obj/item/ammo_magazine/rifle/sharp/flechette,
-					/obj/item/ammo_magazine/rifle/sharp/incendiary,
-					/obj/item/ammo_magazine/rifle/sharp/incendiary
-					)
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "SHARP Grenadier Mixed Magazine Crate"
@@ -198,12 +198,12 @@
 /datum/supply_packs/ammo_grenadier_sharp_explosive
 	name = "SHARP Grenadier Explosive Magazine Crate (x5)"
 	contains = list(
-					/obj/item/ammo_magazine/rifle/sharp/explosive,
-					/obj/item/ammo_magazine/rifle/sharp/explosive,
-					/obj/item/ammo_magazine/rifle/sharp/explosive,
-					/obj/item/ammo_magazine/rifle/sharp/explosive,
-					/obj/item/ammo_magazine/rifle/sharp/explosive
-					)
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/explosive
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "SHARP Grenadier Explosive Magazine Crate"
@@ -212,26 +212,26 @@
 /datum/supply_packs/ammo_grenadier_sharp_flechette
 	name = "SHARP Grenadier Flechette Magazine Crate (x5)"
 	contains = list(
-					/obj/item/ammo_magazine/rifle/sharp/flechette,
-					/obj/item/ammo_magazine/rifle/sharp/flechette,
-					/obj/item/ammo_magazine/rifle/sharp/flechette,
-					/obj/item/ammo_magazine/rifle/sharp/flechette,
-					/obj/item/ammo_magazine/rifle/sharp/flechette
-					)
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/flechette
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "SHARP Grenadier Flechette Magazine Crate"
 	group = "Weapons Specialist Ammo"
 
-/datum/supply_packs/ammo_grenadier_sharp_tracking
+/datum/supply_packs/ammo_grenadier_sharp_incendiary
 	name = "SHARP Grenadier incendiary Magazine Crate (x5)"
 	contains = list(
-					/obj/item/ammo_magazine/rifle/sharp/incendiary,
-					/obj/item/ammo_magazine/rifle/sharp/incendiary,
-					/obj/item/ammo_magazine/rifle/sharp/incendiary,
-					/obj/item/ammo_magazine/rifle/sharp/incendiary,
-					/obj/item/ammo_magazine/rifle/sharp/incendiary
-					)
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "SHARP Grenadier incendiary Magazine Crate"

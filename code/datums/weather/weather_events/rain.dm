@@ -29,7 +29,7 @@
 	particle_effect_type = /particles/weather/rain/storm
 
 	scale_vol_with_severity = TRUE
-	weather_sounds = /datum/looping_sound/rain
+	weather_sounds = /datum/looping_sound/storm
 	weather_messages = list("The rain cools your skin.", "The storm is really picking up!")
 
 	damage_type = TOX

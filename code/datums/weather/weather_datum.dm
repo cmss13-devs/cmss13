@@ -538,7 +538,7 @@
 	if(current_sound)
 		//SET VOLUME
 		if(scale_vol_with_severity)
-			current_sound.volume = initial(current_sound.volume) * severity_mod()
+			current_sound.volume = initial(current_sound.volume) * max(severity_mod(), 25)
 		if(!current_sound.loop_started) //don't restart already playing sounds
 			current_sound.start()
 		return
@@ -548,7 +548,7 @@
 		current_sounds[target_client] = current_sound
 		//SET VOLUME
 		if(scale_vol_with_severity)
-			current_sound.volume = initial(current_sound.volume) * severity_mod()
+			current_sound.volume = initial(current_sound.volume) * max(severity_mod(), 25)
 		current_sound.start()
 
 	if(wind_severity && weather_sounds)
@@ -556,7 +556,7 @@
 		if(current_wind_sound)
 			//SET VOLUME
 			if(scale_vol_with_severity)
-				current_wind_sound.volume = initial(current_wind_sound.volume) * severity_mod()
+				current_wind_sound.volume = initial(current_wind_sound.volume) * max(severity_mod(), 25)
 			if(!current_wind_sound.loop_started) //don't restart already playing sounds
 				current_wind_sound.start()
 			return
@@ -567,7 +567,7 @@
 			current_wind_sounds[target_client] = current_wind_sound
 			//SET VOLUME
 			if(scale_vol_with_severity)
-				current_wind_sound.volume = initial(current_wind_sound.volume) * severity_mod()
+				current_wind_sound.volume = initial(current_wind_sound.volume) * max(severity_mod(), 25)
 			current_wind_sound.start()
 
 

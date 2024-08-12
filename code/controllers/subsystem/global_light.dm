@@ -157,14 +157,13 @@ SUBSYSTEM_DEF(global_light)
 		next_step_datum = steps["2"]
 
 /datum/controller/subsystem/global_light/proc/update_color()
-	if(!enabled)
-		animate(global_lighting_color, color = "#000000", time = 60 SECONDS)
-		return
 	if(!weather_light_affecting_event)
 		var/time = game_time_offseted()
 		var/time_to_animate = daytimeDiff(time, next_step_datum.start_at * game_time_length)
 		var/blend_amount = (time - current_step_datum.start_at * game_time_length) / (next_step_datum.start_at * game_time_length - current_step_datum.start_at * game_time_length)
 		current_color = BlendRGB(current_step_datum.color, next_step_datum.color, blend_amount)
+		if(!enabled)
+			current_color = "#000000"
 		if(weather_datum && weather_datum.weather_color_offset)
 			var/weather_blend_amount = (time - weather_datum.weather_start_time) / (weather_datum.weather_start_time + (weather_datum.weather_duration / 12) - weather_datum.weather_start_time)
 			current_color = BlendRGB(current_color, weather_datum.weather_color_offset, min(weather_blend_amount, min_weather_blend_amount))

@@ -50,7 +50,7 @@
 /obj/item/explosive/mine/get_examine_text(mob/user)
 	. = ..()
 	if(buried)
-		. +=  "This is buried."
+		. +=  "It is buried."
 	if(heavy_trigger)
 		. +=  "It has a heavy trigger."
 

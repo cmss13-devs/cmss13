@@ -375,4 +375,4 @@ display floor(lastgen) and phorontank amount
 	board_path = /obj/item/circuitboard/machine/pacman/mrs
 
 /obj/structure/machinery/power/port_gen/pacman/mrs/overheat()
-	cell_explosion(src.loc, 500, 70, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
+	cell_explosion(loc, 500, 70, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)

@@ -171,7 +171,7 @@
 		buried = TRUE
 		addtimer(CALLBACK(src, PROC_REF(deploy_mine), user), arming_time)
 	//Disarming
-	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+	if(HAS_TRAIT(thing, TRAIT_TOOL_MULTITOOL))
 		if(active)
 			if(user.action_busy)
 				return

@@ -195,7 +195,7 @@
 					empulse(src.loc, 1, 3, 0)
 			if (overcharge_percent >= 150)
 				if (prob(1))
-					cell_explosion(src.loc, 120, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
+					cell_explosion(loc, 120, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
 		if ((3.6e6+1) to INFINITY)
 			if (overcharge_percent >= 115)
 				if (prob(8))

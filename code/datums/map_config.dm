@@ -35,8 +35,6 @@
 
 	var/squads_max_num = 4
 
-	var/weather_holder
-
 	var/list/survivor_types
 	var/list/survivor_types_by_variant
 

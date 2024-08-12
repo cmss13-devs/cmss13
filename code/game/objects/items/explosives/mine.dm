@@ -378,7 +378,7 @@
 /obj/effect/mine_tripwire/ex_act(severity)
 	return
 
-/obj/effect/mine_tripwire/Crossed(atom/movable/AM)
+/obj/effect/mine_tripwire/Crossed(atom/movable/vehicle)
 	if(!linked_claymore)
 		qdel(src)
 		return
@@ -387,7 +387,7 @@
 		return
 
 	if(linked_claymore)
-		linked_claymore.try_to_prime(AM)
+		linked_claymore.try_to_prime(vehicle)
 
 /obj/item/explosive/mine/active
 	icon_state = "m20_active"
@@ -438,7 +438,8 @@
 
 /obj/item/explosive/mine/bury/antitank
 	name = "\improper M19 Anti-Tank Mine"
-	desc = "This older anti tank mine design from the 21st century was rolled back into service simply due to the currently-used M307 EMP anti tank mines being unable to trigger against the minimally armored vehicles commonly used by CLF. Featuring a 250 pound minimum detonation threshold, it can be employed against all but the lightest of vehicles. Despite being outdated, it can still pack a punch against APCs and lighter vehicles, while its plastic construction prevents detection by simple methods."
+	desc = "A pressure-fuse, anti tank mine. Might take out a track or two, maybe even disable a light vehicle, if you're lucky."
+	desc_lore = "This older anti tank mine design from the 21st century was rolled back into service simply due to the currently-used M307 EMP anti tank mines being unable to trigger against the minimally armored vehicles commonly used by CLF. Featuring a 250 pound minimum detonation threshold, it can be employed against all but the lightest of vehicles. Despite being outdated, it can still pack a punch against APCs and lighter vehicles, while its plastic construction prevents detection by simple methods."
 	icon_state = "antitank_mine"
 	w_class = SIZE_LARGE
 	layer = LYING_BETWEEN_MOB_LAYER //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though

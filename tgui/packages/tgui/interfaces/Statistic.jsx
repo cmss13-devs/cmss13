@@ -1,6 +1,6 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import {
   Box,
   Collapsible,
@@ -13,11 +13,7 @@ import { Window } from '../layouts';
 
 export const Statistic = (props, context) => {
   const { act, data } = useBackend(context);
-  const [selectedTab, setSelectedTab] = useLocalState(
-    context,
-    'selectedTab',
-    0,
-  );
+  const [selectedTab, setSelectedTab] = useState('Round');
 
   const { data_tabs, round, medals } = data;
 

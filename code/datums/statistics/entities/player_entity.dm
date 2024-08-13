@@ -26,10 +26,8 @@
 	if(!player || !faction || !statistic_type || !general_name || !statistic_name)
 		return
 
-	// Just in case, because here factions system is litteraly FUCKED UP I need set this check here for **NOW**, **UNITL** faction rework to datum is done
 	if(!(faction in FACTION_LIST_ALL))
-		return
-	// This is done, because if somebody start FUN around with faction names, then his STATISTIC pannel will be fucked up with a lot of faction names... just imagine, open it and see 200+ names, cool? 200%
+		faction = FACTION_NEUTRAL
 
 	var/datum/entity/statistic/statistic = player.player_entity?.get_statistic(faction, statistic_type, general_name, statistic_name)
 	if(statistic)
@@ -211,7 +209,9 @@
 			var/datum/statistic_groups/new_group = statistics[faction_to_get]
 			if(!new_group)
 				new_group = new()
-				new_group.group_name = GLOB.faction_datums[faction_to_get].name
+//				new_group.group_name = GLOB.faction_datums[faction_to_get].name // FUCK YOU
+				// FUCK YOU x2
+				new_group.group_name = faction_to_get
 				new_group.group_parameter = faction_to_get
 				new_group.player = src
 				statistics[faction_to_get] = new_group

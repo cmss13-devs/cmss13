@@ -680,6 +680,15 @@
 	playsound(src,'sound/machines/click.ogg', 15, 1)
 	return
 
+/obj/item/clothing/suit/storage/marine/specialist/Initialize(mapload)
+	. = ..()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+		armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
+	else
+		armor_bullet = CLOTHING_ARMOR_HIGH
+		armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
 /obj/item/clothing/suit/storage/marine/M3G
 	name = "\improper M3-G4 grenadier armor"
 	desc = "A custom set of M3 armor packed to the brim with padding, plating, and every form of ballistic protection under the sun. Used exclusively by USCM Grenadiers."
@@ -700,6 +709,15 @@
 	unacidable = TRUE
 	light_range = 5
 
+/obj/item/clothing/suit/storage/marine/M3G/Initialize(mapload)
+	. = ..()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		armor_bullet = CLOTHING_ARMOR_HIGH
+		armor_internaldamage = CLOTHING_ARMOR_HIGH
+	else
+		armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+		armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
 /obj/item/clothing/suit/storage/marine/M3T
 	name = "\improper M3-T light armor"
 	desc = "A custom set of M3 armor designed for users of long-ranged explosive weaponry."
@@ -710,6 +728,17 @@
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	unacidable = TRUE
 
+/obj/item/clothing/suit/storage/marine/M3T/Initialize(mapload)
+	. = ..()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		armor_bullet = CLOTHING_ARMOR_HIGH
+		armor_bomb = CLOTHING_ARMOR_HIGH
+		armor_internaldamage = CLOTHING_ARMOR_HIGH
+	else
+		armor_bullet = CLOTHING_ARMOR_MEDIUM
+		armor_bomb = CLOTHING_ARMOR_HIGH
+		armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
 /obj/item/clothing/suit/storage/marine/M3S
 	name = "\improper M3-S light armor"
 	desc = "A custom set of M3 armor designed for USCM Scouts."
@@ -719,6 +748,17 @@
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	unacidable = TRUE
+
+/obj/item/clothing/suit/storage/marine/M3S/Initialize(mapload)
+	. = ..()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		armor_bullet = CLOTHING_ARMOR_HIGH
+		armor_bomb = CLOTHING_ARMOR_MEDIUM
+		armor_internaldamage = CLOTHING_ARMOR_HIGH
+	else
+		armor_bullet = CLOTHING_ARMOR_MEDIUM
+		armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+		armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/RO
 	name = "quartermaster jacket"

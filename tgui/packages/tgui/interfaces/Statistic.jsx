@@ -80,19 +80,21 @@ const GetTab = (props, context) => {
                 <Box>Name: {round.name}</Box>
                 <Box>Gamemode: {round.game_mode}</Box>
                 <Box>Map: {round.map_name}</Box>
-                {round.round_result && <Box>Result: {round.round_result}</Box>}
-                {round.real_time_start && (
+                {round.round_result ? (
+                  <Box>Result: {round.round_result}</Box>
+                ) : null}
+                {round.real_time_start ? (
                   <Box>Round Start: {round.real_time_start}</Box>
-                )}
-                {round.real_time_end && (
+                ) : null}
+                {round.real_time_end ? (
                   <Box>Round Time End: {round.real_time_end}</Box>
-                )}
-                {round.round_length && (
+                ) : null}
+                {round.round_length ? (
                   <Box>Round Length: {round.round_length}</Box>
-                )}
-                {round.round_hijack_time && (
+                ) : null}
+                {round.round_hijack_time ? (
                   <Box>Hijack Time: {round.round_hijack_time}</Box>
-                )}
+                ) : null}
                 <Box>Total Shots Fired: {round.total_projectiles_fired}</Box>
                 <Box>Total Shots Hit: {round.total_projectiles_hit}</Box>
                 <Box>
@@ -108,11 +110,11 @@ const GetTab = (props, context) => {
                 <Box>Total FF Kills: {round.total_friendly_kills}</Box>
                 <Box>Total Huggers Applied: {round.total_huggers_applied}</Box>
                 <Box>Total Larva Burst: {round.total_larva_burst}</Box>
-                {round.end_round_player_population && (
+                {round.end_round_player_population ? (
                   <Box>
                     Final Population: {round.end_round_player_population}
                   </Box>
-                )}
+                ) : null}
                 <Box>Total Deaths: {round.total_deaths}</Box>
                 {round.Participants && (
                   <>
@@ -295,7 +297,7 @@ const StatTab = (props, context) => {
       )}
       <Box height="12px" />
       <>
-        {faction.statistics_list.length && (
+        {faction.statistics_list.length ? (
           <Section title="Additional Statistics">
             {faction.statistics_list.map((entry, index) => (
               <Collapsible key={index} title={entry.name}>
@@ -311,7 +313,7 @@ const StatTab = (props, context) => {
                           }}
                         >
                           <Box>{entry.name}</Box>
-                          {entry.statistics.length && (
+                          {entry.statistics.length ? (
                             <Box>
                               Statistics
                               <Box height="3px" />
@@ -323,9 +325,9 @@ const StatTab = (props, context) => {
                                 </Fragment>
                               ))}
                             </Box>
-                          )}
+                          ) : null}
                           <Box height="6px" />
-                          {entry.top_statistics.length && (
+                          {entry.top_statistics.length ? (
                             <Box>
                               Top Statistics
                               <Box height="3px" />
@@ -337,7 +339,7 @@ const StatTab = (props, context) => {
                                 </Fragment>
                               ))}
                             </Box>
-                          )}
+                          ) : null}
                         </Box>
                         <Box height="6px" />
                       </Fragment>
@@ -348,7 +350,7 @@ const StatTab = (props, context) => {
               </Collapsible>
             ))}
           </Section>
-        )}
+        ) : null}
         <Box />
       </>
     </Box>

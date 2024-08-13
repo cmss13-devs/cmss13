@@ -24,6 +24,7 @@
 	var/total_slashes = 0
 
 	// untracked data
+	var/list/cached_tgui_data
 	var/datum/entity/statistic_map/current_map = null // reference to current map
 	var/list/datum/entity/statistic_death/death_stats_list = list()
 
@@ -87,6 +88,7 @@
 		round_statistics.game_mode = name
 		round_statistics.real_time_start = world.realtime
 		round_statistics.save()
+		START_PROCESSING(SSobj, round_statistics)
 		GLOB.round_statistics = round_statistics
 
 /datum/entity/statistic_round/proc/setup_faction(faction)
@@ -128,7 +130,7 @@
 	for(var/i in GLOB.alive_mob_list)
 		var/mob/M = i
 		if(M.mind && M.faction)
-			track_final_participant(M.faction?.name)
+			track_final_participant(M.faction)
 
 	if(current_map)
 		current_map.total_rounds++
@@ -149,7 +151,7 @@
 	for(var/i in GLOB.alive_mob_list)
 		var/mob/M = i
 		if(M.mind)
-			track_hijack_participant(M.faction?.name)
+			track_hijack_participant(M.faction)
 
 	round_hijack_time = duration2text(world.time)
 	save()
@@ -250,6 +252,8 @@
 	return TRUE
 
 /datum/action/show_round_statistics/action_activate()
+	. = ..()
+
 	if(!can_use_action())
 		return
 

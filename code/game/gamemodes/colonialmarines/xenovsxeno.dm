@@ -257,8 +257,17 @@
 	. = ..()
 
 	declare_completion_announce_xenomorphs()
-	calculate_end_statistics()
 	declare_fun_facts()
+
+/datum/game_mode/xenovs/get_winners_states()
+	var/end_icon = "xeno_major"
+	var/musical_track
+	musical_track = pick('sound/theme/neutral_melancholy1.ogg', 'sound/theme/neutral_melancholy2.ogg')
+
+	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	S.status = SOUND_STREAM
+	sound_to(world, S)
+	return list(end_icon)
 
 /datum/game_mode/xenovs/announce_ending()
 	if(GLOB.round_statistics)
@@ -266,22 +275,3 @@
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the battling hives on [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nThe game-mode was: [GLOB.master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
-
-/datum/game_mode/xenovs/get_winners_states()
-	var/list/icon_states = list()
-	var/list/musical_tracks = list()
-	var/sound/sound
-	for(var/faction_name in factions_pool)
-		var/pick = 2
-		if(faction_won.faction_name == faction_name)
-			pick = 1
-
-		icon_states[faction_name] = faction_result_end_state[pick][1]
-		sound = sound(pick(faction_result_end_state[pick][2]), channel = SOUND_CHANNEL_LOBBY)
-		sound.status = SOUND_STREAM
-		musical_tracks[faction_name] = sound
-		sound = sound(pick(faction_result_end_state[pick][3]), channel = SOUND_CHANNEL_LOBBY)
-		sound.status = SOUND_STREAM
-		musical_tracks[faction_name] += sound
-
-	return list(icon_states, musical_tracks)

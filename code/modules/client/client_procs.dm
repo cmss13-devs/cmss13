@@ -300,8 +300,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		next_external_rsc = WRAP(next_external_rsc+1, 1, length(external_rsc_urls)+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
-	player_entity = setup_player_entity(ckey)
-
 	if(check_localhost_status())
 		var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
 		admin.associate(src)
@@ -535,11 +533,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return
 	if(GLOB.player_entities["[ckey]"])
 		return GLOB.player_entities["[ckey]"]
-	var/datum/entity/player_entity/P = new()
+	var/datum/player_entity/P = new()
 	P.ckey = ckey
-	P.name = ckey
+	P.entity_name = ckey
 	GLOB.player_entities["[ckey]"] = P
-	// P.setup_save(ckey)
 	return P
 
 /proc/save_player_entities()
@@ -810,12 +807,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		total_xeno_playtime += get_job_playtime(src, caste)
 
 	total_xeno_playtime += get_job_playtime(src, JOB_XENOMORPH)
-
-	if(player_entity)
-		var/past_xeno_playtime = player_entity.get_playtime(STATISTIC_XENO)
-		if(past_xeno_playtime)
-			total_xeno_playtime += past_xeno_playtime
-
 
 	cached_xeno_playtime = total_xeno_playtime
 

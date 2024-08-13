@@ -158,7 +158,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 
 	new_death.role_name = get_role_name()
 	new_death.mob_name = real_name
-	new_death.faction_name = faction?.name
+	new_death.faction_name = faction
 
 	new_death.area_name = area.name
 

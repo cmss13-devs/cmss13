@@ -201,7 +201,7 @@ GLOBAL_DATUM_INIT(medals_view_given_tgui, /datum/medals_view_tgui/given_medals, 
 
 
 /datum/medals_view_tgui/given_medals/get_medals(mob/user)
-	return DB_VIEW(/datum/view_record/medal_view, DB_COMP("giver_player_id", DB_EQUALS, user.client.player_data.id))
+	return DB_VIEW(/datum/view_record/statistic_medal, DB_COMP("giver_player_id", DB_EQUALS, user.client.player_data.id))
 
 
 /datum/medals_view_tgui/given_medals/tgui_interact(mob/user, datum/tgui/ui)

@@ -105,7 +105,7 @@
 	if(uses <= 0)
 		return
 
-	user.count_statistic_stat(STATISTICS_IMPLANTS_IMPLANTED)
+	M.count_statistic_stat(STATISTICS_IMPLANTS_IMPLANTED)
 
 	if(LAZYISIN(M.implants, implant_type))
 		QDEL_NULL(M.implants[implant_type])

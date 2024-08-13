@@ -169,7 +169,7 @@
 
 	age = XENO_NORMAL
 
-	var/datum/entity/statistic/statistic = client?.player_data?.player_entity?.get_statistic(faction.faction_name, STATISTIC_TYPE_CASTE_ABILITIES, caste_type, STATISTICS_FACEHUGGE)
+	var/datum/entity/statistic/statistic = client?.player_data?.player_entity?.get_statistic(faction, STATISTIC_TYPE_CASTE_ABILITIES, caste_type, STATISTICS_FACEHUGGE)
 	total_facehugs = statistic.value
 	switch(total_facehugs)
 		if(FACEHUG_TIER_1 to FACEHUG_TIER_2)

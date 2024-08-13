@@ -8,11 +8,11 @@
 /datum/player_entity/ui_state(mob/user)
 	return GLOB.always_state
 
-/datum/player_entity/ui_data(mob/user, datum/entity/statistic_round/viewing_round = SSticker?.mode?.round_statistics )
+/datum/player_entity/ui_data(mob/user, datum/entity/statistic_round/viewing_round = GLOB.round_statistics)
 	var/list/data = list()
 	data["data_tabs"] = list()
 	if(viewing_round)
-		data["round"] = viewing_round.update_panel_data()
+		data["round"] = viewing_round.cached_tgui_data
 		data["data_tabs"] += "Round"
 
 	if(length(medals))
@@ -127,7 +127,7 @@
 			)
 	return data
 
-/datum/entity/statistic_round/proc/update_panel_data()
+/datum/entity/statistic_round/process()
 	var/map_name
 	if(current_map)
 		map_name = current_map.map_name
@@ -183,7 +183,7 @@
 			"z" = statistic_death.z,
 		))
 
-	return list(
+	cached_tgui_data = list(
 		"name" = round_name,
 		"game_mode" = game_mode,
 		"map_name" = map_name,

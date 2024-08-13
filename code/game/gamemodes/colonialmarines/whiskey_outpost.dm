@@ -37,19 +37,6 @@
 		/datum/job/marine/standard/whiskey = JOB_SQUAD_MARINE,
 	)
 
-	round_end_states = list(MODE_WISKEY_OUTPOST_X_MAJOR, MODE_WISKEY_OUTPOST_M_MAJOR)
-
-	faction_result_end_state = list(
-		FACTION_MARINE = list(
-			MODE_WISKEY_OUTPOST_M_MAJOR = list("marine_major", list('sound/misc/hell_march.ogg'), list('sound/music/round_end/issomebodysinging.ogg')),
-			MODE_WISKEY_OUTPOST_X_MAJOR = list("marine_minor", list('sound/misc/Game_Over_Man.ogg'), list('sound/music/round_end/end.ogg')),
-		),
-		FACTION_XENOMORPH_NORMAL = list(
-			MODE_WISKEY_OUTPOST_X_MAJOR = list("xeno_major", list('sound/misc/hell_march.ogg'), list('sound/music/round_end/bluespace.ogg')),
-			MODE_WISKEY_OUTPOST_M_MAJOR = list("xeno_minor", list('sound/misc/Game_Over_Man.ogg'), list('sound/music/round_end/end.ogg')),
-		)
-	)
-
 	latejoin_larva_drop = 0 //You never know
 
 	//var/mob/living/carbon/human/Commander //If there is no Commander, marines wont get any supplies
@@ -282,6 +269,26 @@
 			to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
 			to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
 			to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
+
+/datum/game_mode/xenovs/get_winners_states()
+	var/end_icon = "draw"
+	var/musical_track
+	switch(round_finished)
+		if(MODE_WISKEY_OUTPOST_M_MAJOR)
+			musical_track = 'sound/misc/hell_march.ogg'
+			end_icon = "marine_major"
+		if(MODE_WISKEY_OUTPOST_X_MAJOR)
+			musical_track = 'sound/misc/Game_Over_Man.ogg'
+			end_icon = "xeno_major"
+		else
+			musical_track = 'sound/misc/sadtrombone.ogg'
+			if(GLOB.round_statistics)
+				GLOB.round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
+
+	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	S.status = SOUND_STREAM
+	sound_to(world, S)
+	return list(end_icon)
 
 ///////////////////////////////
 //Other WO things to simulate//

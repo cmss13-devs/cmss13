@@ -5,6 +5,8 @@
 #define FACEHUG_TIER_3 100
 #define FACEHUG_TIER_4 1000
 
+// OOD mean Out Of Date (not used, please keep this list up to date, and remember sync in db changes)
+
 // Statistics defines
 #define STATISTIC_TYPE_MISC				"Misc"
 #define STATISTIC_TYPE_CASTE			"Caste"
@@ -66,8 +68,9 @@
 #define STATISTICS_UPGRADE_CADES		"Barricades Upgraded"
 #define STATISTICS_REPAIR_CADES			"Barricades Repaired"
 #define STATISTICS_REPAIR_GENERATOR		"Generators Repaired"
-#define STATISTICS_UPGRADE_TURRETS		"Defenses Upgraded"
+#define STATISTICS_REPAIR_SENSORTOWER	"Sensor Towers Repaired"
 #define STATISTICS_REPAIR_APC			"APCs Repaired"
+#define STATISTICS_UPGRADE_TURRETS		"Defenses Upgraded"
 #define STATISTICS_DEFENSES_BUILT		"Defenses Built" // OOD
 
 #define STATISTICS_CORGI				"Corgis Murdered"

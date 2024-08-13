@@ -12,24 +12,6 @@
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
 	static_comms_amount = 1
 	var/round_status_flags
-	round_end_states = list(MODE_INFESTATION_X_MAJOR, MODE_INFESTATION_M_MAJOR, MODE_INFESTATION_X_MINOR, MODE_INFESTATION_M_MINOR, MODE_INFESTATION_DRAW_DEATH)
-
-	faction_result_end_state = list(
-		FACTION_MARINE = list(
-			MODE_INFESTATION_M_MAJOR = list("marine_major", list('sound/music/round_end/winning_triumph1.ogg', 'sound/music/round_end/winning_triumph2.ogg'), list('sound/music/round_end/issomebodysinging.ogg')),
-			MODE_INFESTATION_M_MINOR = list("marine_major", list('sound/music/round_end/neutral_hopeful1.ogg', 'sound/music/round_end/neutral_hopeful2.ogg'), list()),
-			MODE_INFESTATION_X_MINOR = list("marine_minor", list('sound/music/round_end/neutral_melancholy1.ogg', 'sound/music/round_end/neutral_melancholy2.ogg'), list('sound/music/round_end/bluespace.ogg')),
-			MODE_INFESTATION_X_MAJOR = list("marine_minor", list('sound/music/round_end/sad_loss1.ogg', 'sound/music/round_end/sad_loss2.ogg'), list('sound/music/round_end/end.ogg')),
-			MODE_GENERIC_DRAW_NUKE =  list("draw", list('sound/music/round_end/nuclear_detonation1.ogg', 'sound/music/round_end/nuclear_detonation2.ogg'), list()),
-		),
-		FACTION_XENOMORPH_NORMAL = list(
-			MODE_INFESTATION_X_MAJOR = list("xeno_major", list('sound/music/round_end/winning_triumph1.ogg', 'sound/music/round_end/winning_triumph2.ogg'), list()),
-			MODE_INFESTATION_X_MINOR = list("xeno_major", list('sound/music/round_end/neutral_hopeful1.ogg', 'sound/music/round_end/neutral_hopeful2.ogg'), list()),
-			MODE_INFESTATION_M_MINOR = list("xeno_minor", list('sound/music/round_end/neutral_melancholy1.ogg', 'sound/music/round_end/neutral_melancholy2.ogg'), list('sound/music/round_end/bluespace.ogg')),
-			MODE_INFESTATION_M_MAJOR = list("xeno_minor", list('sound/music/round_end/sad_loss1.ogg', 'sound/music/round_end/sad_loss2.ogg'), list('sound/music/round_end/end.ogg')),
-			MODE_GENERIC_DRAW_NUKE =  list("draw", list('sound/music/round_end/nuclear_detonation1.ogg', 'sound/music/round_end/nuclear_detonation2.ogg'), list()),
-		)
-	)
 
 	var/research_allocation_interval = 10 MINUTES
 	var/next_research_allocation = 0
@@ -481,7 +463,7 @@
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 
-/* TODO: PUT IT SOMEWHERE LATER
+/* TODO: PUT IT SOMEWHERE LATER (faction rework PR)
 #define MAJORITY 0.5 // What percent do we consider a 'majority?'
 if(MODE_INFESTATION_X_MINOR)
 			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
@@ -521,6 +503,50 @@ if(MODE_INFESTATION_X_MINOR)
 
 	add_current_round_status_to_end_results("Round End")
 	handle_round_results_statistics_output()
+
+/datum/game_mode/colonialmarines/get_winners_states()
+	var/majority = 0.5
+	var/end_icon = "draw"
+	var/musical_track
+	switch(round_finished)
+		if(MODE_INFESTATION_X_MAJOR)
+			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
+			end_icon = "xeno_major"
+		if(MODE_INFESTATION_M_MAJOR)
+			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
+			end_icon = "marine_major"
+		if(MODE_INFESTATION_X_MINOR)
+			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
+			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
+				var/headcount = count_per_faction()
+				var/living = headcount["total_headcount"]
+				if ((headcount["WY_headcount"] / living) > majority)
+					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
+					log_game("3rd party victory: Weyland-Yutani")
+					message_admins("3rd party victory: Weyland-Yutani")
+				else if ((headcount["UPP_headcount"] / living) > majority)
+					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+					log_game("3rd party victory: Union of Progressive Peoples")
+					message_admins("3rd party victory: Union of Progressive Peoples")
+				else if ((headcount["CLF_headcount"] / living) > majority)
+					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
+					log_game("3rd party victory: Colonial Liberation Front")
+					message_admins("3rd party victory: Colonial Liberation Front")
+				else if ((headcount["marine_headcount"] / living) > majority)
+					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
+			else
+				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
+			end_icon = "xeno_minor"
+		if(MODE_INFESTATION_M_MINOR)
+			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
+			end_icon = "marine_minor"
+		if(MODE_INFESTATION_DRAW_DEATH)
+			end_icon = "draw"
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	S.status = SOUND_STREAM
+	sound_to(world, S)
+	return list(end_icon)
 
 /datum/game_mode/colonialmarines/proc/add_current_round_status_to_end_results(special_round_status as text)
 	var/players = GLOB.clients

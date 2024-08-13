@@ -155,7 +155,7 @@
 		create_shrapnel(location, rand(1,5), explosion_direction, shrapnel_type = /datum/ammo/bullet/shrapnel/light/glass, cause_data = cause_data)
 
 	if(M)
-		mob.count_statistic_stat(STATISTICS_DESTRUCTION_WINDOWS)
+		M.count_statistic_stat(STATISTICS_DESTRUCTION_WINDOWS)
 		SEND_SIGNAL(M, COMSIG_MOB_WINDOW_EXPLODED, src)
 
 	handle_debris(severity, explosion_direction)

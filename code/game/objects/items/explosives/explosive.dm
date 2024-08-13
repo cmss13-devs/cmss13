@@ -278,7 +278,6 @@
 	icon_state = "detonator"
 
 	var/list/linked_charges = list()
-	// list of linked explosives to handle
 
 /obj/item/satchel_charge_detonator/attack_self(mob/user, parameters) // when attackl_self, detonate charges
 	. = ..()

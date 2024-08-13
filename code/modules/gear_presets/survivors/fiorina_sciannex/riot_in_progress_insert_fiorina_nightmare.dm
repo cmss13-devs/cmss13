@@ -3,7 +3,7 @@
 /datum/equipment_preset/survivor/cmb
 	name = "Survivor - Colonial Marshal"
 	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_COLONIST)
+	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/human_versus_human = FALSE
 	access = list(

@@ -36,7 +36,7 @@
 	return
 
 /datum/action/item_action/view_publications/can_use_action()
-	if(owner && !owner.is_mob_incapacitated() && owner.faction != FACTION_COLONIST)
+	if(owner && !owner.is_mob_incapacitated() && owner.faction != FACTION_SURVIVOR)
 		return TRUE
 
 /datum/action/item_action/view_publications/action_activate()
@@ -85,7 +85,7 @@
 	set name = "View Research Publications"
 	set src in usr
 
-	if(!usr.stat && !usr.is_mob_restrained() && usr.faction != FACTION_COLONIST)
+	if(!usr.stat && !usr.is_mob_restrained() && usr.faction != FACTION_SURVIVOR)
 		tgui_interact(usr)
 
 /obj/item/clothing/glasses/hud/health/Topic(href, href_list)

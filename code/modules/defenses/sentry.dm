@@ -519,7 +519,7 @@
 	. = ..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
-	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_COLONIST)
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
 	. = ..()
@@ -534,7 +534,7 @@
 	sentry_type = "wy_sentry"
 	health = 350
 	health_max = 350
-	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_COLONIST, FACTION_WY)
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_WY)
 	fire_delay = 0.6 SECONDS
 	damage_mult = 2
 

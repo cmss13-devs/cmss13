@@ -7,8 +7,8 @@
 	languages = list(LANGUAGE_ENGLISH)
 	paygrade = PAY_SHORT_CIV
 	idtype = /obj/item/card/id/lanyard
-	faction = FACTION_COLONIST
-	faction_group = list(FACTION_COLONIST)
+	faction = FACTION_SURVIVOR
+	faction_group = list(FACTION_SURVIVOR)
 	origin_override = ORIGIN_CIVILIAN
 
 	access = list(ACCESS_CIVILIAN_PUBLIC)

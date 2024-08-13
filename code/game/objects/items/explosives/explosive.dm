@@ -366,7 +366,7 @@
 	else
 		detonator.linked_charges |= src
 		linked_detonator = detonator
-		to_chat(user, SPAN_NOTICE("The detonator indicates a new charge has been linked."))
+		to_chat(user, SPAN_NOTICE("[detonator] indicates a new charge has been linked."))
 		icon_state = "satchel_linked"
 
 /obj/item/explosive/satchel_charge/proc/un_activate()

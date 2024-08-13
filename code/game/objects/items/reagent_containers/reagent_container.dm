@@ -52,7 +52,7 @@
 
 	if(!transparent)
 		return
-	if(user != loc && get_dist(user, src) >2)
+	if(user != loc && !in_range(src, user)
 		return SPAN_WARNING("[src] is too far away for you to see what's in it!")
 
 	if(!LAZYLEN(reagents.reagent_list))

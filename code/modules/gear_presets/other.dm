@@ -602,7 +602,7 @@
 
 //Overloading the function to be able to spawn gear first
 /datum/equipment_preset/other/zombie/load_preset(mob/living/carbon/human/new_human, randomise = FALSE)
-	GLOB.faction_datums[faction].add_mob(new_human)
+	GLOB.faction_datum[faction].add_mob(new_human)
 	if(new_human.faction?.organ_faction_iff_tag_type)
 		if(new_human.organ_faction_tag)
 			QDEL_NULL(new_human.organ_faction_tag)

@@ -239,9 +239,8 @@
 
 	if(!living_hives)
 		round_finished = "No one has won."
-	else if(living_hives == 1)
+	else if (living_hives == 1)
 		round_finished = "The [last_living_hive] has won."
-		SSticker.mode.faction_won = last_living_hive
 
 ///////////////////////////////
 //Checks if the round is over//

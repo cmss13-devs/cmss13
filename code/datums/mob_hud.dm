@@ -659,7 +659,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	return
 
 /mob/living/carbon/human/hud_set_squad()
-	var/image/holder = hud_list[faction.hud_type]
+	var/datum/faction/F = get_faction(faction)
+	var/image/holder = hud_list[F.hud_type]
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
 
@@ -667,7 +668,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer")
 		return
 
-	faction.modify_hud_holder(holder, src)
+	F.modify_hud_holder(holder, src)
 
 /mob/living/carbon/human/yautja/hud_set_squad()
 	set waitfor = FALSE
@@ -783,7 +784,7 @@ GLOBAL_DATUM(hud_icon_hudfocus, /image)
 // Vampire Execute HUD
 /mob/living/carbon/human/proc/update_execute_hud()
 	var/image/execute_holder = hud_list[XENO_EXECUTE]
-
+	
 	execute_holder.icon_state = "hudblank"
 	execute_holder.overlays.Cut()
 

@@ -241,7 +241,7 @@
 	if(!GLOB.enter_allowed)
 		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return
-	if(!GLOB.RoleAuthority.assign_role(src, GET_MAPPED_ROLE(player_rank), 1))
+	if(!GLOB.RoleAuthority.assign_role(src, player_rank, 1))
 		to_chat(src, alert("[rank] is not available. Please try another."))
 		return
 
@@ -249,7 +249,7 @@
 	close_spawn_windows()
 
 	var/mob/living/carbon/human/character = create_character(TRUE) //creates the human and transfers vars and mind
-	GLOB.RoleAuthority.equip_role(character, GET_MAPPED_ROLE(player_rank), late_join = TRUE)
+	GLOB.RoleAuthority.equip_role(character, player_rank, late_join = TRUE)
 	EquipCustomItems(character)
 
 	if((GLOB.security_level > SEC_LEVEL_BLUE || SShijack.hijack_status) && player_rank.gets_emergency_kit)
@@ -257,8 +257,9 @@
 		character.put_in_hands(new /obj/item/storage/box/kit/cryo_self_defense(character.loc))
 
 	GLOB.data_core.manifest_inject(character)
-	SSticker.minds += character.mind
+	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc. //TODO!!!!! ~Carn
 	SSticker.mode.latejoin_update(player_rank)
+	SSticker.mode.update_gear_scale()
 
 	for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
 		if(sq)
@@ -280,17 +281,16 @@
 					hive.stored_larva++
 					hive.hive_ui.update_burrowed_larva()
 
-	if(character.mind && character.client.player_data)
-		var/list/xeno_playtimes = LAZYACCESS(character.client.player_data.playtime_data, "stored_xeno_playtime")
-		var/list/marine_playtimes = LAZYACCESS(character.client.player_data.playtime_data, "stored_human_playtime")
-		if(!xeno_playtimes && !marine_playtimes)
+	if(character.mind && character.mind.player_entity)
+		var/datum/entity/player_entity/player = character.mind.player_entity
+		if(player.get_playtime(STATISTIC_HUMAN) == 0 && player.get_playtime(STATISTIC_XENO) == 0)
 			msg_admin_niche("NEW JOIN: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 		if(character.client)
-			var/client/C = character.client
-			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
+			var/client/client = character.client
+			if(client.player_data && client.player_data.playtime_loaded && length(client.player_data.playtimes) == 0)
 				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
-			if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= CONFIG_GET(number/notify_new_player_age)))
-				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [character.job] - Current location: [get_area(character)]")
+			if(client.player_data && client.player_data.playtime_loaded && ((round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= CONFIG_GET(number/notify_new_player_age)))
+				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
 	character.client.init_verbs()
 	qdel(src)
@@ -299,8 +299,8 @@
 /mob/new_player/proc/LateChoices()
 	var/list/faction_to_get_list = list()
 	for(var/faction_to_get in SSticker.mode.factions_pool)
-		var/datum/faction/faction = GLOB.faction_datums[SSticker.mode.factions_pool[faction_to_get]]
-		if(!faction.spawning_enabled)
+		var/datum/faction/faction = GLOB.faction_datum[SSticker.mode.factions_pool[faction_to_get]]
+		if(!faction.spawning_enabled || (!faction.force_spawning && !faction.weight_act[SSticker.mode.name]))
 			continue
 		faction_to_get_list += faction_to_get
 
@@ -308,7 +308,7 @@
 	if(!choice)
 		return
 
-	GLOB.faction_datums[SSticker.mode.factions_pool[choice]].get_join_status(src)
+	GLOB.faction_datum[SSticker.mode.factions_pool[choice]].get_join_status(src)
 
 /mob/new_player/proc/create_character(is_late_join = FALSE)
 	spawning = TRUE

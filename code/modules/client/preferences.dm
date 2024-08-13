@@ -674,7 +674,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		return
 
 	if(!observing_faction)
-		observing_faction = GLOB.faction_datums[SSticker.mode.factions_pool[pick(SSticker.mode.factions_pool)]]
+		observing_faction = GLOB.faction_datum[SSticker.mode.factions_pool[pick(SSticker.mode.factions_pool)]]
 
 	if(!length(roles_pool))
 		roles_pool = observing_faction.roles_list[SSticker.mode.name]
@@ -795,7 +795,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		return
 
 	if(!observing_faction)
-		observing_faction = GLOB.faction_datums[SSticker.mode.factions_pool[pick(SSticker.mode.factions_pool)]]
+		observing_faction = GLOB.faction_datum[SSticker.mode.factions_pool[pick(SSticker.mode.factions_pool)]]
 
 	if(!length(roles_pool))
 		roles_pool = observing_faction.roles_list[SSticker.mode.name]
@@ -1018,7 +1018,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(!choice)
 						return
 
-					observing_faction = GLOB.faction_datums[SSticker.mode.factions_pool[choice]]
+					observing_faction = GLOB.faction_datum[SSticker.mode.factions_pool[choice]]
 					set_choices(user)
 				else
 					set_choices(user)
@@ -1044,7 +1044,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(!choice)
 						return
 
-					observing_faction = GLOB.faction_datums[SSticker.mode.factions_pool[choice]]
+					observing_faction = GLOB.faction_datum[SSticker.mode.factions_pool[choice]]
 					set_job_slots(user)
 				else
 					set_job_slots(user)

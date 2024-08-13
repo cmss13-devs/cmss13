@@ -53,6 +53,9 @@ SUBSYSTEM_DEF(ticker)
 	var/tutorial_disabled = FALSE
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
+	if(!SSmapping.configs)
+		SSmapping.HACK_LoadMapConfig()
+
 	load_mode()
 
 	var/all_music = CONFIG_GET(keyed_list/lobby_music)

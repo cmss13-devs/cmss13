@@ -196,7 +196,15 @@
 	if(!match_statistic)
 		return FALSE
 
-	var/datum/entity/statistic/statistic = match_statistic.statistic_info[statistic_type][general_name][statistic_name]
+	var/datum/player_statistic/match_statistic_type = match_statistic.statistic_info[statistic_type]
+	if(!match_statistic_type)
+		return FALSE
+
+	var/datum/player_statistic_detail/match_detail_statistic = match_statistic_type.statistics[general_name]
+	if(!match_detail_statistic)
+		return FALSE
+
+	var/datum/entity/statistic/statistic = match_detail_statistic.statistics[statistic_name]
 	if(!statistic)
 		return FALSE
 	return statistic

@@ -151,7 +151,7 @@
 	id = DROPSHIP_RESOLUTE
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
 
-/obj/docking_port/mobile/marine_dropship/normandy/get_transit_path_type()
+/obj/docking_port/mobile/marine_dropship/resolute/get_transit_path_type()
 	return /turf/open/space/transit/dropship/resolute
 
 /obj/docking_port/mobile/marine_dropship/check()

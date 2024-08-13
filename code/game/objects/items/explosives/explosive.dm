@@ -408,7 +408,7 @@
 	qdel(src)
 
 /obj/item/explosive/satchel_charge/Destroy()
-	linked_detonator.linked_charges -= src
+	linked_detonator?.linked_charges -= src
 	linked_detonator = null
 	return ..()
 

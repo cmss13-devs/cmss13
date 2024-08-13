@@ -133,7 +133,6 @@ SUBSYSTEM_DEF(objectives)
 		if(MAP_CORSAT)
 			research_papers = 30
 			experimental_devices = 20
-			var/vial_boxes = 5
 
 	//Calculating document ratios so we don't end up with filing cabinets holding 10 documents because there are few filing cabinets
 	// TODO: use less dumb structuring than legacy one

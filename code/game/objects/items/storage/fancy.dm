@@ -396,14 +396,12 @@
 
 /obj/item/storage/fancy/vials/fill_preset_inventory()
 	if(is_random)
-		for(var/i=1; i <= start_vials; i++)
-			var/spawns = rand(1,4)
-			new /obj/item/reagent_container/glass/beaker/vial(src)
-			for(var/i=1; i <= storage_slots; i++)
-				if(i<=spawns && prob(20))
-					new /obj/item/reagent_container/glass/beaker/vial/random(src)
-				else
-					new /obj/item/reagent_container/glass/beaker/vial(src)
+		var/spawns = rand(1,4)
+		for(var/i=1; i <= storage_slots; i++)
+			if(i<=spawns && prob(20))
+				new /obj/item/reagent_container/glass/beaker/vial/random(src)
+			else
+				new /obj/item/reagent_container/glass/beaker/vial(src)
 	else
 		for(var/i=1; i <= start_vials; i++)
 			new /obj/item/reagent_container/glass/beaker/vial(src)

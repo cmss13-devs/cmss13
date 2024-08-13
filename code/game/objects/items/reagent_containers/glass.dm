@@ -375,7 +375,7 @@
 	if(tier)
 		random_chem = pick(GLOB.chemical_gen_classes_list[tier])
 	else
-		random_chem = GLOB.chemical_gen_classes_list["C5"]
+		random_chem = pick(GLOB.chemical_gen_classes_list["C5"])
 	if(random_chem)
 		reagents.add_reagent(random_chem, 30)
 		update_icon()

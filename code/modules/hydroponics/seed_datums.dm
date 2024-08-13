@@ -77,6 +77,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	var/list/chems  // Chemicals that plant produces in products/injects into victim.
 	var/list/consume_gasses // The plant will absorb these gasses during its life.
 	var/list/exude_gasses   // The plant will exude these gasses during its life.
+	var/list/chems_special  // Chemicals to be found after mutating the chemical.
 
 	//Tolerances.
 	var/requires_nutrients = 1   // The plant can starve.
@@ -379,13 +380,15 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers wither and fall off."))
 			else //New chems! (20% chance)
-				var/new_chem = list(pick( prob(10);pick(GLOB.chemical_gen_classes_list["C1"]),\
+				var/chem_to_add = list(pick( prob(10);pick(GLOB.chemical_gen_classes_list["C1"]),\
 											prob(15);pick(GLOB.chemical_gen_classes_list["C2"]),\
 											prob(25);pick(GLOB.chemical_gen_classes_list["C3"]),\
 											prob(30);pick(GLOB.chemical_gen_classes_list["C4"]),\
 											prob(15);pick(GLOB.chemical_gen_classes_list["T1"]),\
 											prob(5);pick(GLOB.chemical_gen_classes_list["T2"])) = list(1,rand(1,2)))
-				chems += new_chem
+				if(prob(50) && chems_special)
+					chem_to_add = list(pick(chems_special) = 8)
+				chems += chem_to_add
 
 
 	return
@@ -799,8 +802,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	mutants = null
 	packet_icon = "seed-deathnettle"
 	plant_icon = "deathnettle"
-	chems = list("plantmatter" = list(1,50), "pacid" = list(0,1))
-
+	chems = list("plantmatter" = list(1,50))
+	chems_special = list("urishiol")
 	maturation = 8
 	yield = 2
 
@@ -1019,6 +1022,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	packet_icon = "mycelium-reishi"
 	plant_icon = "reishi"
 	chems = list("mushroom" = list(1,50), "psilocybin" = list(3,5))
+	chems_special = list("zygacine")
 
 	maturation = 10
 	production = 5
@@ -1126,6 +1130,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	packet_icon = "seed-harebell"
 	plant_icon = "harebell"
 	chems = list("plantmatter" = list(1,20))
+	chems_special = list("digoxin")
 
 	lifespan = 100
 	maturation = 7
@@ -1141,6 +1146,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	products = list(/obj/item/reagent_container/food/snacks/grown/poppy)
 	plant_icon = "poppy"
 	chems = list("plantmatter" = list(1,20), "bicaridine" = list(1,10))
+	chems_special = list("atropine")
 
 	lifespan = 25
 	potency = 20
@@ -1216,6 +1222,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	plant_icon = "cabbage"
 	harvest_repeat = 1
 	chems = list("vegetable" = list(1,10))
+	chems_special = list("psoralen")
 
 	lifespan = 50
 	maturation = 3
@@ -1358,6 +1365,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	products = list(/obj/item/reagent_container/food/snacks/grown/carrot)
 	plant_icon = "carrot"
 	chems = list("vegetable" = list(1,20), "imidazoline" = list(3,5))
+	chems_special = list("coniine", "phenol")
 
 	lifespan = 25
 	maturation = 10

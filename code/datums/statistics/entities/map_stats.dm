@@ -18,9 +18,9 @@
 	)
 
 /datum/entity_meta/statistic_map/map(datum/entity/statistic_map/map_entity, list/values)
-    ..()
-    if(values["total_victories"])
-        map_entity.victories = json_decode(values["total_victories"])
+	..()
+	if(values["total_victories"])
+		map_entity.victories = json_decode(values["total_victories"])
 
 /datum/entity_meta/statistic_map/unmap(datum/entity/statistic_map/map_entity)
 	. = ..()

@@ -10,20 +10,20 @@
 BSQL_PROTECT_DATUM(/datum/entity/statistic/medal)
 
 /datum/entity_meta/statistic_medal
-    entity_type = /datum/entity/statistic/medal
-    table_name = "player_statistic_medal"
-    field_types = list(
-        "player_id" = DB_FIELDTYPE_BIGINT,
-        "round_id" = DB_FIELDTYPE_BIGINT,
+	entity_type = /datum/entity/statistic/medal
+	table_name = "player_statistic_medal"
+	field_types = list(
+		"player_id" = DB_FIELDTYPE_BIGINT,
+		"round_id" = DB_FIELDTYPE_BIGINT,
 
-        "medal_type" = DB_FIELDTYPE_STRING_LARGE,
-        "recipient_name" = DB_FIELDTYPE_STRING_LARGE,
-        "recipient_role" = DB_FIELDTYPE_STRING_LARGE,
-        "citation" = DB_FIELDTYPE_STRING_MAX,
+		"medal_type" = DB_FIELDTYPE_STRING_LARGE,
+		"recipient_name" = DB_FIELDTYPE_STRING_LARGE,
+		"recipient_role" = DB_FIELDTYPE_STRING_LARGE,
+		"citation" = DB_FIELDTYPE_STRING_MAX,
 
-        "giver_name" = DB_FIELDTYPE_STRING_LARGE,
-        "giver_player_id" = DB_FIELDTYPE_BIGINT,
-    )
+		"giver_name" = DB_FIELDTYPE_STRING_LARGE,
+		"giver_player_id" = DB_FIELDTYPE_BIGINT,
+	)
 
 /datum/view_record/statistic_medal
 	var/player_id

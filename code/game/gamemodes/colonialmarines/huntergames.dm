@@ -86,8 +86,8 @@
 //Digging through this is a pain. I'm leaving it mostly alone until a full rework takes place.
 
 /datum/game_mode/huntergames
-	name = "Hunter Games"
-	config_tag = "Hunter Games"
+	name = MODE_NAME_HUNTER_GAMES
+	config_tag = MODE_NAME_HUNTER_GAMES
 	required_players = 1
 	flags_round_type = MODE_NO_LATEJOIN
 	latejoin_larva_drop = 0 //You never know

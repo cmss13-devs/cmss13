@@ -36,6 +36,16 @@
 
 //=================================================
 
+#define MODE_NAME_EXTENDED			"Extended"
+#define MODE_NAME_EXTENDED_NO_SPAWN	"Extended - No Spawn"
+#define MODE_NAME_DISTRESS_SIGNAL	"Distress Signal"
+#define MODE_NAME_FACTION_CLASH		"Faction Clash"
+#define MODE_NAME_WISKEY_OUTPOST	"Whiskey Outpost"
+#define MODE_NAME_HUNTER_GAMES		"Hunter Games"
+#define MODE_NAME_HIVE_WARS			"Hive Wars"
+#define MODE_NAME_INFECTION			"Infection"
+
+//=================================================
 
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 

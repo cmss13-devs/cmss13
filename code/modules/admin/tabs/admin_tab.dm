@@ -608,7 +608,7 @@
 	return
 
 /datum/admins/proc/imaginary_friend()
-	set category = "OOC.Mentor"
+	set category = "Admin.Mentor"
 	set name = "Imaginary Friend"
 
 	var/mob/user = usr

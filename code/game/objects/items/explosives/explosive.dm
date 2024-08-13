@@ -277,6 +277,7 @@
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "detonator"
 
+	/// list of linked explosives to handle
 	var/list/linked_charges = list()
 
 /obj/item/satchel_charge_detonator/attack_self(mob/user, parameters) // when attackl_self, detonate charges

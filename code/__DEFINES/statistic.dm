@@ -14,7 +14,8 @@
 #define STATISTIC_TYPE_JOB				"Role"
 #define STATISTIC_TYPE_WEAPON			"Weapon"
 
-#define STATISTIC_TYPE_GLOBAL			"global" // Don't have link to a faction
+// Used to replace faction name
+#define STATISTIC_TYPE_GLOBAL			"Global Statistic" // Don't have link to a faction
 
 #define STATISTICS_DEATH_LIST_LEN		20
 

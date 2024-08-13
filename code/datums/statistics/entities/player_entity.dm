@@ -11,16 +11,16 @@
 	var/value
 
 /datum/entity_meta/statistic
-    entity_type = /datum/entity/statistic
-    table_name = "player_statistic"
-    field_types = list(
-        "player_id" = DB_FIELDTYPE_BIGINT,
+	entity_type = /datum/entity/statistic
+	table_name = "player_statistic"
+	field_types = list(
+		"player_id" = DB_FIELDTYPE_BIGINT,
 		"faction" = DB_FIELDTYPE_STRING_LARGE,
-        "statistic_type" = DB_FIELDTYPE_STRING_LARGE,
-        "general_name" = DB_FIELDTYPE_STRING_LARGE,
-        "statistic_name" = DB_FIELDTYPE_STRING_LARGE,
-        "value" = DB_FIELDTYPE_INT,
-    )
+		"statistic_type" = DB_FIELDTYPE_STRING_LARGE,
+		"general_name" = DB_FIELDTYPE_STRING_LARGE,
+		"statistic_name" = DB_FIELDTYPE_STRING_LARGE,
+		"value" = DB_FIELDTYPE_INT,
+	)
 
 /proc/track_statistic_earned(faction, statistic_type, general_name, statistic_name, value, datum/entity/player/player)
 	if(!player || !faction || !statistic_type || !general_name || !statistic_name)

@@ -564,6 +564,7 @@
 /obj/item/storage/box/explosive_mines/satchel_charges
 	name = "\improper M17 satchel charge box (x5)"
 	desc = "A secure box holding five M17 satchel charges."
+	max_storage_space = 16
 	can_hold = list(
 		/obj/item/explosive/satchel_charge,
 		/obj/item/satchel_charge_detonator,

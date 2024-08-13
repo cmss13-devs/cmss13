@@ -264,6 +264,10 @@
 	shuttle_tag = DROPSHIP_NORMANDY
 	dir = SOUTH
 
+/turf/open/space/transit/dropship/resolute
+	shuttle_tag = DROPSHIP_RESOLUTE
+	dir = SOUTH
+
 /turf/open/space/transit/south
 	dir = SOUTH
 

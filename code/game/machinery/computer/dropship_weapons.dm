@@ -890,6 +890,12 @@
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_NORMANDY
 
+/obj/structure/machinery/computer/dropship_weapons/dropship3
+	name = "\improper 'Resolute' weapons controls"
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
+	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
+	shuttle_tag = DROPSHIP_RESOLUTE
+
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
 	. = ..()
 	QDEL_NULL(firemission_envelope)

@@ -288,6 +288,8 @@
 		deployed_turret.linked_cam.network = list(CAMERA_NET_ALAMO)
 	else if (linked_shuttle.id == DROPSHIP_NORMANDY)
 		deployed_turret.linked_cam.network = list(CAMERA_NET_NORMANDY)
+	else if (linked_shuttle.id == DROPSHIP_RESOLUTE)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_RESOLUTE)
 
 
 /obj/structure/dropship_equipment/sentry_holder/proc/undeploy_sentry()

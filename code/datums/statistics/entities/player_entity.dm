@@ -26,7 +26,7 @@
 	if(!player || !faction || !statistic_type || !general_name || !statistic_name)
 		return
 
-	if(!(faction in FACTION_LIST_ALL))
+	if(!(faction in FACTION_LIST_ALL + list(STATISTIC_TYPE_GLOBAL)))
 		faction = FACTION_NEUTRAL
 
 	var/datum/entity/statistic/statistic = player.player_entity?.get_statistic(faction, statistic_type, general_name, statistic_name)
@@ -213,7 +213,7 @@
 	set waitfor = FALSE
 	WAIT_DB_READY
 	if(player)
-		for(var/faction_to_get in FACTION_LIST_ALL)
+		for(var/faction_to_get in FACTION_LIST_ALL + list(STATISTIC_TYPE_GLOBAL))
 			var/datum/statistic_groups/new_group = statistics[faction_to_get]
 			if(!new_group)
 				new_group = new()

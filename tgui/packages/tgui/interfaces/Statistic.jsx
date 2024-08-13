@@ -188,7 +188,7 @@ const GetTab = (props, context) => {
           ) : (
             <NoticeBox danger>Round statistic prepairing!</NoticeBox>
           )}
-          {round && round.death_list ? (
+          {round?.death_list.length ? (
             <KillView real_data={round.death_list} />
           ) : (
             <NoticeBox danger>No recorded kills!</NoticeBox>

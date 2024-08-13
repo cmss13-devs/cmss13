@@ -279,11 +279,17 @@
 
 	/// list of linked explosives to handle
 	var/list/linked_charges = list()
+	var/pressed = FALSE
 
 /obj/item/satchel_charge_detonator/attack_self(mob/user, parameters) // when attackl_self, detonate charges
 	. = ..()
+	to_chat(user, SPAN_BOLDWARNING("You hold down the detonator button."))
+	if(pressed)
+		return
+	pressed = TRUE
 	flick("detonator_active", src)
 	sleep(40)
+	pressed = FALSE
 	var/detonation_count = 0
 	for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
 		charges.detonate(src)
@@ -375,7 +381,6 @@
 
 /obj/item/explosive/satchel_charge/proc/beep(beep_once)
 	playsound(src.loc, 'sound/weapons/mine_tripped.ogg', 10, 1)
-	to_chat(world, SPAN_WARNING ("BEEP"))
 	if(!armed && beep_once != TRUE)
 		addtimer(CALLBACK(src, PROC_REF(beep)), 1 SECONDS, TIMER_UNIQUE)
 
@@ -399,6 +404,16 @@
 /obj/item/explosive/satchel_charge/proc/detonate(triggerer)
 	if(!armed || linked_detonator != triggerer)
 		return
-	linked_detonator.linked_charges -= src
 	cell_explosion(loc, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 	qdel(src)
+
+/obj/item/explosive/satchel_charge/Destroy()
+	linked_detonator.linked_charges -= src
+	linked_detonator = null
+	return ..()
+
+/obj/item/satchel_charge_detonator/Destroy()
+	for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
+		charges.linked_detonator = null
+	linked_charges = null
+	return ..()

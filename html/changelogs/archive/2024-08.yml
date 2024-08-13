@@ -198,3 +198,15 @@
       out
   zzzmike:
   - rscadd: fun fact for internal bleeding fixed
+2024-08-13:
+  Adamix147:
+  - maptweak: Moved the unfixable APC at Kutjevo Botany to make it fixable again.
+  Contrabang:
+  - bugfix: ERT no longer show up in the orbit escape section
+  Doubleumc:
+  - admin: '"Start Round" can start a delayed round'
+  Git-Nivrak:
+  - balance: Explosions now always deal full damage at the source tile
+  - bugfix: Fixed sadar rockets not gibbing humans on direct hit
+  MarpleJones:
+  - balance: Reduces the cost of the AGM-184 'Harpoon II' from 300 to 200.

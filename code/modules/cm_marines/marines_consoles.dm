@@ -223,7 +223,19 @@
 		if("PRG_access")
 			if(!authenticated || !target_id_card)
 				return
-			var/access_type = text2num(params["access_target"])
+
+			var/access_type = params["access_target"]
+			if(params["access_target"] in factions)
+				if(!target_id_card.faction_group)
+					target_id_card.faction_group = list()
+				if(params["access_target"] in target_id_card.faction_group)
+					target_id_card.faction_group -= params["access_target"]
+					log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked [access_type] IFF. </font>", key_name_admin(user))
+				else
+					target_id_card.faction_group |= params["access_target"]
+					log_idmod(target_id_card, "<font color='green'> [user.real_name] granted [access_type] IFF. </font>", key_name_admin(user))
+				return TRUE
+			access_type = text2num(params["access_target"])
 			if(access_type in (is_weyland ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN)))
 				if(access_type in target_id_card.access)
 					target_id_card.access -= access_type
@@ -237,6 +249,7 @@
 				return
 
 			target_id_card.access |= (is_weyland ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN))
+			target_id_card.faction_group |= factions
 			log_idmod(target_id_card, "<font color='green'> [user.real_name] granted the ID all access and USCM IFF. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_denyall")
@@ -245,11 +258,17 @@
 
 			var/list/access = target_id_card.access
 			access.Cut()
+			target_id_card.faction_group -= factions
 			log_idmod(target_id_card, "<font color='red'> [user.real_name] removed all accesses and USCM IFF. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_grantregion")
 			if(!authenticated || !target_id_card)
 				return
+
+			if(params["region"] == "Faction (IFF system)")
+				target_id_card.faction_group |= factions
+				log_idmod(target_id_card, "<font color='green'> [user.real_name] granted USCM IFF. </font>", key_name_admin(user))
+				return TRUE
 			var/region = text2num(params["region"])
 			if(isnull(region))
 				return
@@ -260,6 +279,11 @@
 		if("PRG_denyregion")
 			if(!authenticated || !target_id_card)
 				return
+
+			if(params["region"] == "Faction (IFF system)")
+				target_id_card.faction_group -= factions
+				log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked USCM IFF. </font>", key_name_admin(user))
+				return TRUE
 			var/region = text2num(params["region"])
 			if(isnull(region))
 				return
@@ -295,24 +319,24 @@
 	else if(Check_WO())
 		// I am not sure about WOs departments so it may need adjustment
 		departments = list(
-			CARDCON_DEPARTMENT_COMMAND = GLOB.ROLES_CIC & GLOB.ROLES_WO_USCM,
-			CARDCON_DEPARTMENT_AUXCOM = GLOB.ROLES_AUXIL_SUPPORT & GLOB.ROLES_WO_USCM,
-			CARDCON_DEPARTMENT_MISC = GLOB.ROLES_MISC & GLOB.ROLES_WO_USCM,
-			CARDCON_DEPARTMENT_SECURITY = GLOB.ROLES_POLICE & GLOB.ROLES_WO_USCM,
-			CARDCON_DEPARTMENT_ENGINEERING = GLOB.ROLES_ENGINEERING & GLOB.ROLES_WO_USCM,
-			CARDCON_DEPARTMENT_SUPPLY = GLOB.ROLES_REQUISITION & GLOB.ROLES_WO_USCM,
-			CARDCON_DEPARTMENT_MEDICAL = GLOB.ROLES_MEDICAL & GLOB.ROLES_WO_USCM,
+			CARDCON_DEPARTMENT_COMMAND = GLOB.ROLES_CIC & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_AUXCOM = GLOB.ROLES_AUXIL_SUPPORT & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MISC = GLOB.ROLES_MISC & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_SECURITY = GLOB.ROLES_POLICE & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_ENGINEERING = GLOB.ROLES_ENGINEERING & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_SUPPLY = GLOB.ROLES_REQUISITION & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MEDICAL = GLOB.ROLES_MEDICAL & GLOB.ROLES_WO,
 			CARDCON_DEPARTMENT_MARINE = GLOB.ROLES_MARINES
 		)
 	else
 		departments = list(
-			CARDCON_DEPARTMENT_COMMAND = GLOB.ROLES_CIC & GLOB.ROLES_REGULAR_USCM,
-			CARDCON_DEPARTMENT_AUXCOM = GLOB.ROLES_AUXIL_SUPPORT & GLOB.ROLES_REGULAR_USCM,
-			CARDCON_DEPARTMENT_MISC = GLOB.ROLES_MISC & GLOB.ROLES_REGULAR_USCM,
-			CARDCON_DEPARTMENT_SECURITY = GLOB.ROLES_POLICE & GLOB.ROLES_REGULAR_USCM,
-			CARDCON_DEPARTMENT_ENGINEERING = GLOB.ROLES_ENGINEERING & GLOB.ROLES_REGULAR_USCM,
-			CARDCON_DEPARTMENT_SUPPLY = GLOB.ROLES_REQUISITION & GLOB.ROLES_REGULAR_USCM,
-			CARDCON_DEPARTMENT_MEDICAL = GLOB.ROLES_MEDICAL & GLOB.ROLES_REGULAR_USCM,
+			CARDCON_DEPARTMENT_COMMAND = GLOB.ROLES_CIC - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_AUXCOM = GLOB.ROLES_AUXIL_SUPPORT - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MISC = GLOB.ROLES_MISC - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_SECURITY = GLOB.ROLES_POLICE - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_ENGINEERING = GLOB.ROLES_ENGINEERING - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_SUPPLY = GLOB.ROLES_REQUISITION - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MEDICAL = GLOB.ROLES_MEDICAL - GLOB.ROLES_WO,
 			CARDCON_DEPARTMENT_MARINE = GLOB.ROLES_MARINES
 		)
 	data["jobs"] = list()
@@ -352,9 +376,12 @@
 			"accesses" = accesses
 		))
 
+	// Factions goes here
+	if(target_id_card && target_id_card.faction_group && isnull(target_id_card.faction_group))
+		target_id_card.faction_group = list()
 	var/list/localfactions = list()
 	// We can see only those factions which have our console tuned on
-	for(var/datum/faction/faction in factions)
+	for(var/faction in factions)
 		localfactions += list(list(
 			"desc" = faction,
 			"ref" = faction,
@@ -381,7 +408,7 @@
 	if(target_id_card)
 		data["id_rank"] = target_id_card.assignment ? target_id_card.assignment : "Unassigned"
 		data["id_owner"] = target_id_card.registered_name ? target_id_card.registered_name : "-----"
-		data["access_on_card"] = target_id_card.access + target_id_card.faction
+		data["access_on_card"] = target_id_card.access + target_id_card.faction_group
 		data["id_account"] = target_id_card.associated_account_number
 
 	return data
@@ -495,7 +522,7 @@
 	req_access = list(ACCESS_MARINE_DATABASE)
 	var/obj/item/card/id/ID_to_modify = null
 	var/mob/living/carbon/human/person_to_modify = null
-	faction_to_get = FACTION_MARINE
+	var/faction = FACTION_MARINE
 
 /obj/structure/machinery/computer/squad_changer/verb/eject_id()
 	set category = "Object"
@@ -682,7 +709,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 250
 	active_power_usage = 500
-	faction_to_get = FACTION_MARINE
+	var/faction = FACTION_MARINE
 	/// What type of /datum/crewmonitor this will create
 	var/crewmonitor_type = /datum/crewmonitor
 

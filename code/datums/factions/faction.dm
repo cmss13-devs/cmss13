@@ -44,7 +44,7 @@
 	for(var/module in modules_to_add)
 		if(!GLOB.faction_modules[module])
 			return
-		modules[module] = new GLOB.faction_modules[module](src, modules_to_add[module])
+		modules[module] = new GLOB.faction_modules[module](src, ...modules_to_add[module])
 
 /datum/faction/can_vv_modify()
 	return FALSE

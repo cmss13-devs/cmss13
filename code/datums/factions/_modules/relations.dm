@@ -4,7 +4,7 @@
 	var/relations[] = RELATIONS_MAP
 	var/list/allies = list()
 
-/datum/faction_module/relations/New(datum/faction/faction_to_set, list/arguments)
+/datum/faction_module/relations/New(datum/faction/faction_to_set)
 	. = ..()
 	generate_relations_helper()
 

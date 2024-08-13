@@ -308,6 +308,12 @@
 		return TRUE
 	return
 
+/obj/item/satchel_charge_detonator/Destroy()
+	for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
+		charges.linked_detonator = null
+	linked_charges = null
+	return ..()
+
 /obj/item/explosive/satchel_charge
 	name = "M17 Satchel Charge"
 	desc = "After linked to a detonator, and thrown, will become primed and able to be detonated."
@@ -412,8 +418,3 @@
 	linked_detonator = null
 	return ..()
 
-/obj/item/satchel_charge_detonator/Destroy()
-	for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
-		charges.linked_detonator = null
-	linked_charges = null
-	return ..()

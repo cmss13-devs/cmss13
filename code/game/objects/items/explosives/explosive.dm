@@ -298,7 +298,7 @@
 		for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
 			flick("satchel_primed", charges)
 			charges.beep(TRUE)
-		return 1
+		return TRUE
 	return
 
 /obj/item/explosive/satchel_charge

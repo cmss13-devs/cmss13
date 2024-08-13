@@ -337,12 +337,6 @@
 
 	//Animate the visuals from starting position to new position
 
-	if(projectile_flags & PROJECTILE_SHRAPNEL) //there can be a LOT of shrapnel especially from a cluster OB, not important enough for the expense of an animate()
-		alpha = alpha_new
-		pixel_x = pixel_x_rel_new
-		pixel_y = pixel_y_rel_new
-		return
-
 	var/anim_time = delta_time * 0.1
 	animate(src, pixel_x = pixel_x_rel_new, pixel_y = pixel_y_rel_new, alpha = alpha_new, time = anim_time, flags = ANIMATION_END_NOW)
 

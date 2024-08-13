@@ -39,6 +39,7 @@
 
 /datum/surgery_step/fix_vein/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.count_statistic_stat(STATISTICS_SURGERY_IB)
+	user.life_ib_total++
 
 	user.affected_message(target,
 		SPAN_NOTICE("You finish repairing [target]'s damaged vein."),

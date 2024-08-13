@@ -111,12 +111,12 @@
 	name = "Remove Larva"
 	desc = "extract the xenomorph larva"
 	accept_hand = TRUE
-	/*Similar to PINCH, but balanced around 100 = using bare hands. Haemostat is faster and better,
-	other tools are slower but don't burn the surgeon.*/
+	/*Using the hands to forcefully rip out the larva will be faster at the cost of damaging both the doctor and the patient, with the addition of organ damage.
+	Unlike before, the hemostat is now the best tool for removing removing the larva, as opposed to wirecutters and the fork.*/
 	tools = list(
-		/obj/item/tool/surgery/hemostat = 1.5,
-		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_SUBOPTIMAL,
-		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_SUBSTITUTE
+		/obj/item/tool/surgery/hemostat = 1.5 * SURGERY_TOOL_MULT_IDEAL,
+		/obj/item/tool/wirecutters = 1.5 * SURGERY_TOOL_MULT_SUBOPTIMAL,
+		/obj/item/tool/kitchen/utensil/fork = 1.5 * SURGERY_TOOL_MULT_SUBSTITUTE
 		)
 	time = 6 SECONDS
 	preop_sound = 'sound/surgery/hemostat1.ogg'
@@ -131,9 +131,9 @@
 			SPAN_NOTICE("[user] tries to extract the larva from [target]'s chest with \the [tool]."))
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You try to extract the larva from [target]'s chest."),
-			SPAN_NOTICE("[user] tries to extract the larva from your chest."),
-			SPAN_NOTICE("[user] tries to extract the larva from [target]'s chest."))
+			SPAN_NOTICE("You try to forcefully rip the larva from [target]'s chest with your bare hand."),
+			SPAN_NOTICE("[user] tries to forcefully rip the larva from your chest."),
+			SPAN_NOTICE("[user] tries to forcefully rip the larva from [target]'s chest."))
 
 	target.custom_pain("Something hurts horribly in your chest!",1)
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
@@ -148,10 +148,16 @@
 				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage!"))
 		else
 			user.affected_message(target,
-				SPAN_WARNING("Your hands are burned by acid as you pull a wriggling parasite out of [target]'s ribcage!"),
-				SPAN_WARNING("[user]'s hands are burned by acid as \he pulls a wriggling parasite out of your ribcage!"),
-				SPAN_WARNING("[user]'s hands are burned by acid as \he pulls a wriggling parasite out of [target]'s ribcage!"))
+				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage!"),
+				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage!"),
+				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage!"))
+			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
+			impacted_organ.take_damage(5, FALSE)
+			if(target.stat == CONSCIOUS)
+				target.emote("scream")
+			target.apply_damage(15, BURN, target_zone)
 
+			play_failure_sound(user, target, target_zone, tool, surgery)
 			user.emote("pain")
 
 			if(user.hand)

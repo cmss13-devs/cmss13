@@ -18,6 +18,7 @@
 	var/total_time_alive
 	var/total_damage_taken
 	var/total_revives_done = 0
+	var/total_ib_fixed = 0
 
 	var/total_brute = 0
 	var/total_burn = 0
@@ -53,6 +54,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 		"total_time_alive" = DB_FIELDTYPE_BIGINT,
 		"total_damage_taken" = DB_FIELDTYPE_INT,
 		"total_revives_done" = DB_FIELDTYPE_INT,
+		"total_ib_fixed" = DB_FIELDTYPE_INT,
 
 		"total_brute" = DB_FIELDTYPE_INT,
 		"total_burn" = DB_FIELDTYPE_INT,
@@ -192,6 +194,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 	new_death.total_time_alive = life_time_total
 	new_death.total_damage_taken = life_damage_taken_total
 	new_death.total_revives_done = life_revives_total
+	new_death.total_ib_fixed = life_ib_total
 
 	var/ff_type = new_death.cause_faction_name == new_death.faction_name ? 1 : 0
 	if(GLOB.round_statistics)

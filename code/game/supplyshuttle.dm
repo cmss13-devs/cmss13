@@ -164,12 +164,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	icon_state = "security_cam"
 	circuit = /obj/item/circuitboard/computer/supply_drop_console
 	req_access = list(ACCESS_MARINE_CARGO)
-	fation_to_get = FACTION_MARINE
 	var/x_supply = 0
 	var/y_supply = 0
 	var/datum/squad/current_squad = null
 	var/drop_cooldown = 1 MINUTES
 	var/can_pick_squad = TRUE
+	var/faction = FACTION_MARINE
 	var/obj/structure/closet/crate/loaded_crate
 	COOLDOWN_DECLARE(next_fire)
 

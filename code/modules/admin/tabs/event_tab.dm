@@ -6,38 +6,41 @@
 		to_chat(usr, "Only administrators may use this command.")
 		return
 
-	if(!length(GLOB.custom_event_info_list))
+	if(!LAZYLEN(GLOB.custom_event_info_list))
 		to_chat(usr, "custom_event_info_list is not initialized, tell a dev.")
 		return
 
 	var/list/temp_list = list()
 
 	for(var/T in GLOB.custom_event_info_list)
-		var/datum/custom_event_info/custom_event = GLOB.custom_event_info_list[T]
-		temp_list["[custom_event.msg ? "(x) [custom_event.faction_name]" : custom_event.faction_name]"] = custom_event.faction_name
+		var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[T]
+		temp_list["[CEI.msg ? "(x) [CEI.faction]" : CEI.faction]"] = CEI.faction
 
-	var/event_info_get = temp_list[tgui_input_list(usr, "Select faction. Ghosts will see only \"Global\" category message. Factions with event message set are marked with (x).", "Faction Choice", temp_list)]
-	if(!event_info_get)
+	var/faction = tgui_input_list(usr, "Select faction. Ghosts will see only \"Global\" category message. Factions with event message set are marked with (x).", "Faction Choice", temp_list)
+	if(!faction)
 		return
 
-	var/datum/custom_event_info/custom_info = GLOB.custom_event_info_list[event_info_get]
-	if(!custom_info)
-		to_chat(usr, "custom_event_info_list don't have [event_info_get] in list, tell a dev.")
+	faction = temp_list[faction]
+
+	if(!GLOB.custom_event_info_list[faction])
+		to_chat(usr, "Error has occurred, [faction] category is not found.")
 		return
 
-	var/input = tgui_input_text(usr, "Enter the custom event message for \"[event_info_get]\" category. Be descriptive. \nTo remove the event message, remove text and confirm.", "[event_info_get] Event Message", custom_info.msg, 4096, TRUE)
+	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[faction]
+
+	var/input = input(usr, "Enter the custom event message for \"[faction]\" category. Be descriptive. \nTo remove the event message, remove text and confirm.", "[faction] Event Message", CEI.msg) as message|null
 	if(isnull(input))
 		return
 
 	if(input == "" || !input)
-		custom_info.msg = ""
-		message_admins("[key_name_admin(usr)] has removed the event message for \"[event_info_get]\" category.")
+		CEI.msg = ""
+		message_admins("[key_name_admin(usr)] has removed the event message for \"[faction]\" category.")
 		return
 
-	custom_info.msg = html_encode(input)
-	message_admins("[key_name_admin(usr)] has changed the event message for \"[event_info_get]\" category.")
+	CEI.msg = html_encode(input)
+	message_admins("[key_name_admin(usr)] has changed the event message for \"[faction]\" category.")
 
-	custom_info.handle_event_info_update()
+	CEI.handle_event_info_update(faction)
 
 /client/proc/change_security_level()
 	if(!check_rights(R_ADMIN))

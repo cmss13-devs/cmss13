@@ -5,8 +5,8 @@
 	icon_state = "crew_monitor"
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_SMALL
-	faction_to_get = FACTION_MARINE
 	var/datum/radar/lifeline/radar
+	var/faction = FACTION_MARINE
 
 /obj/item/tool/crew_monitor/Initialize(mapload, ...)
 	. = ..()

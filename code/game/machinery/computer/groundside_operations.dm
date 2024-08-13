@@ -8,8 +8,6 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-	fation_to_get = FACTION_MARINE
-
 	var/obj/structure/machinery/camera/cam = null
 	var/datum/squad/current_squad = null
 
@@ -22,6 +20,7 @@
 	var/add_pmcs = TRUE
 	var/lz_selection = TRUE
 	var/has_squad_overwatch = TRUE
+	var/faction = FACTION_MARINE
 	var/show_command_squad = FALSE
 
 /obj/structure/machinery/computer/groundside_operations/Initialize()

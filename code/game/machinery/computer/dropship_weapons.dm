@@ -4,7 +4,7 @@
 	density = TRUE
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleright"
-	fation_to_get = FACTION_MARINE
+	var/faction = FACTION_MARINE
 	circuit = null
 	unslashable = TRUE
 	unacidable = TRUE

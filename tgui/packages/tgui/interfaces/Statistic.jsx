@@ -12,7 +12,7 @@ import {
 import { Window } from '../layouts';
 
 export const Statistic = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend();
   const [selectedTab, setSelectedTab] = useState('Round');
 
   const { data_tabs, round, medals } = data;
@@ -56,7 +56,7 @@ export const Statistic = (props, context) => {
 };
 
 const GetTab = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend();
   const { factions } = data;
   const { selectedTab, round, medals } = props;
 

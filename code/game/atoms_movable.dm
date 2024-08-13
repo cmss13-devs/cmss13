@@ -31,6 +31,9 @@
 	///Highest-intensity light affecting us, which determines our visibility.
 	var/affecting_dynamic_lumi = 0
 
+	var/faction_to_get = null
+	var/datum/faction/faction = null
+
 //===========================================================================
 /atom/movable/Destroy(force)
 	for(var/atom/movable/I in contents)
@@ -46,6 +49,7 @@
 		orbiting.end_orbit(src)
 		orbiting = null
 
+	faction = null
 	vis_locs = null //clears this atom out of all viscontents
 	if(length(vis_contents))
 		vis_contents.Cut()

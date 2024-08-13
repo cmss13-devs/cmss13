@@ -2,5 +2,5 @@
 	var/module_name
 	var/datum/faction/faction
 
-/datum/faction_module/New(datum/faction/faction_to_set)
+/datum/faction_module/New(datum/faction/faction_to_set, list/arguments)
 	faction = faction_to_set

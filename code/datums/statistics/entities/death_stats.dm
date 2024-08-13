@@ -194,10 +194,10 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 	new_death.total_revives_done = life_revives_total
 
 	var/ff_type = new_death.cause_faction_name == new_death.faction_name ? 1 : 0
-	if(SSticker.mode.round_statistics)
-		SSticker.mode.round_statistics.track_dead_participant(new_death.faction_name)
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_dead_participant(new_death.faction_name)
 		if(ff_type)
-			SSticker.mode.round_statistics.total_friendly_kills++
+			GLOB.round_statistics.total_friendly_kills++
 
 	if(cause_player)
 		if(isxeno(cause_mob))
@@ -215,8 +215,8 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 			if(new_death.cause_name)
 				track_statistic_earned(new_death.faction_name, STATISTIC_TYPE_WEAPON, new_death.cause_name, ff_type ? STATISTICS_DEATH_FF : STATISTICS_DEATH, 1, player_entity)
 
-	if(SSticker.mode && SSticker.mode.round_statistics)
-		SSticker.mode.round_statistics.death_stats_list += new_death
+	if(SSticker.mode && GLOB.round_statistics)
+		GLOB.round_statistics.death_stats_list += new_death
 
 	new_death.save()
 	new_death.detach()

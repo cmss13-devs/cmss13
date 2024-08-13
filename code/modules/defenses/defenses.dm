@@ -10,7 +10,6 @@
 	use_power = USE_POWER_NONE
 	stat = DEFENSE_FUNCTIONAL
 	health = 200
-	var/list/faction_group
 	var/health_max = 200
 	var/turned_on = FALSE
 	var/mob/owner_mob = null
@@ -44,26 +43,24 @@
 	var/list/selected_categories = list()
 
 
-/obj/structure/machinery/defenses/Initialize()
+/obj/structure/machinery/defenses/Initialize(mapload, datum/faction/faction_to_set, obj/item/defenses/handheld/handheld_ref)
 	. = ..()
+
+	if(faction_to_set)
+		faction = faction_to_set
+
+	if(handheld_ref)
+		HD = handheld_ref
+	else
+		placed = TRUE
+		HD = new handheld_type(src, faction, src)
+
 	update_icon()
-	connect()
 
 /obj/structure/machinery/defenses/Destroy()
 	if(!QDESTROYING(HD))
 		QDEL_NULL(HD)
 	return ..()
-
-/obj/structure/machinery/defenses/proc/connect()
-	if(static)
-		return FALSE
-	if(placed && !HD)
-		HD = new handheld_type
-		if(!HD.TR)
-			HD.TR = src
-			return TRUE
-		return TRUE
-	return FALSE
 
 /obj/structure/machinery/defenses/update_icon()
 	if(!composite_icon)
@@ -120,7 +117,7 @@
 		selected_categories[category] = selection
 		switch(category)
 			if(SENTRY_CATEGORY_IFF)
-				handle_iff(selection)
+//				handle_iff(selection)
 				return TRUE
 		return FALSE
 
@@ -129,7 +126,7 @@
 			nickname = selection
 			return TRUE
 	return FALSE
-
+/*
 /**
  * Update the IFF status of this structure.
  * @param selection: faction selection string.
@@ -148,7 +145,7 @@
 			faction_group = FACTION_LIST_WY
 		if(FACTION_UPP)
 			faction_group = FACTION_LIST_UPP
-
+*/
 
 /obj/structure/machinery/defenses/start_processing()
 	if(!machine_processing)

@@ -220,11 +220,9 @@
 	permissions_required = R_VAREDIT
 
 /datum/player_action/set_faction/act(client/user, mob/living/carbon/human/target, list/params)
-	var/new_faction = tgui_input_list(usr, "Select faction.", "Faction Choice", FACTION_LIST_HUMANOID)
-	if(!new_faction)
-		new_faction = FACTION_NEUTRAL
-	target.faction = new_faction
-	target.faction_group = list(new_faction)
+	var/faction_to_get = tgui_input_list(usr, "Select faction", "Faction Choice", FACTION_LIST_ALL)
+	if(faction_to_get)
+		GLOB.faction_datums[faction_to_get].add_mob(target)
 
 	message_admins("[key_name_admin(user)][new_faction ? "" : " failed to"] set [key_name_admin(target)]'s faction to [new_faction].")
 	return TRUE

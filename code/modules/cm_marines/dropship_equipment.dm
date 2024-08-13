@@ -192,7 +192,7 @@
 	.["camera_available"] = defense.has_camera && is_deployed
 	.["selection_state"] = list()
 	.["kills"] = defense.kills
-	.["iff_status"] = defense.faction_group
+	.["iff_status"] = defense.faction.faction_name
 	.["health"] = defense.health
 	.["health_max"] = defense.health_max
 	.["deployed"] = is_deployed

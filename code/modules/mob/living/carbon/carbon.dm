@@ -74,7 +74,7 @@
 
 /mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 
-	if(body_position == LYING_DOWN)
+	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= 30)
@@ -379,7 +379,7 @@
 
 		if(!lastarea)
 			lastarea = get_area(src.loc)
-		if((istype(loc, /turf/open/space)) || !lastarea.has_gravity)
+		if(istype(loc, /turf/open/space))
 			inertia_dir = get_dir(target, src)
 			step(src, inertia_dir)
 

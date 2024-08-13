@@ -113,6 +113,7 @@
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
 	var/life_revives_total = 0
+	var/life_ib_total = 0
 	var/festivizer_hits_total = 0
 
 	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total

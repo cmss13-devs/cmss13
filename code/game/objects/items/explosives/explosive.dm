@@ -361,7 +361,7 @@
 	if(linked_detonator == detonator)
 		detonator.linked_charges -= src
 		linked_detonator = null
-		to_chat(user, SPAN_NOTICE("You unlink the charge from the detonator."))
+		to_chat(user, SPAN_NOTICE("You unlink the charge from [detonator]."))
 		icon_state = "satchel"
 	else
 		detonator.linked_charges |= src

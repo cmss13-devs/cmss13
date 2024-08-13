@@ -387,7 +387,7 @@
 /datum/emote/living/carbon/human/burstscream
 	key = "burstscream"
 	message = "screams in agony!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_FORCED_AUDIO|EMOTE_AUDIBLE|EMOTE_VISIBLE
 	stat_allowed = UNCONSCIOUS
 
 /datum/emote/living/carbon/human/burstscream/get_sound(mob/living/carbon/human/user)

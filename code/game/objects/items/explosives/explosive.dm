@@ -288,7 +288,7 @@
 	for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
 		charges.detonate(src)
 		detonation_count++
-	to_chat(user, SPAN_NOTICE("[detonation_count] charges detonated."))
+	to_chat(user, SPAN_NOTICE("[src] reported [detonation_count] charge[detonation_count > 1 ? "s" : ""] detonated."))
 
 /obj/item/satchel_charge_detonator/clicked(mob/user, list/mods)  // kill me
 	if (isobserver(user) || isxeno(user))

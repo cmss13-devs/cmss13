@@ -80,19 +80,8 @@
 	name_plural = "Colonial Synthetics"
 	uses_skin_color = TRUE
 	special_body_types = TRUE
-	burn_mod = 0.8
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_IRON_TEETH)
-
-	pain_type = /datum/pain/synthetic/colonial
-	rarity_value = 1.5
-	slowdown = 0.2
-	total_health = 200 //But more durable
-
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-
-	knock_down_reduction = 3.5
-	stun_reduction = 3.5
-
 
 /datum/species/synthetic/colonial/colonial_gen_two
 	name = SYNTH_COLONY_GEN_TWO

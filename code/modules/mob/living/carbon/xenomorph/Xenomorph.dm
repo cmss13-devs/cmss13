@@ -346,11 +346,12 @@
 	/// If TRUE, the xeno cannot slash anything
 	var/cannot_slash = FALSE
 
-/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, datum/faction/faction_to_set)
-	var/area/A = get_area(src)
-	if(A && A.statistic_exempt || SSticker.mode?.round_finished)
-		statistic_exempt = TRUE
+/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 
+	if(old_xeno && old_xeno.hivenumber)
+		src.hivenumber = old_xeno.hivenumber
+	else if(hivenumber)
+		src.hivenumber = hivenumber
 	//putting the organ in for research
 	if(organ_value != 0)
 		var/obj/item/organ/xeno/organ = new() //give
@@ -359,6 +360,11 @@
 		organ.caste_origin = caste_type
 		organ.icon_state = get_organ_icon()
 
+	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
+
+	if(hive)
+		hive.add_xeno(src)
+
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
 
@@ -366,21 +372,10 @@
 
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
 	if(old_xeno)
-		old_xeno.faction.add_mob(src)
-		faction.remove_mob(old_xeno)
-		nicknumber = old_xeno.nicknumber
-		life_kills_total = old_xeno.life_kills_total
-		life_damage_taken_total = old_xeno.life_damage_taken_total
-		evolution_stored = old_xeno.evolution_stored
-		if(old_xeno.organ_faction_tag)
-			organ_faction_tag = old_xeno.organ_faction_tag
-			organ_faction_tag.forceMove(src)
-			old_xeno.faction_tag = null
-
-		if(old_xeno.faction_tag)
-			faction_tag = old_xeno.faction_tag
-			faction_tag.forceMove(src)
-			old_xeno.faction_tag = null
+		src.nicknumber = old_xeno.nicknumber
+		src.life_kills_total = old_xeno.life_kills_total
+		src.life_damage_taken_total = old_xeno.life_damage_taken_total
+		src.evolution_stored = old_xeno.evolution_stored
 
 		for(var/datum/language/language as anything in old_xeno.languages)
 			add_language(language.name)//Make sure to keep languages (mostly for event Queens that know English)
@@ -400,8 +395,10 @@
 			old_xeno.drop_inv_item_on_ground(item)
 		old_xeno.empty_gut()
 
-	else if(faction_to_set)
-		faction_to_set.add_mob(src)
+		if(old_xeno.iff_tag)
+			iff_tag = old_xeno.iff_tag
+			iff_tag.forceMove(src)
+			old_xeno.iff_tag = null
 
 	if(hive)
 		for(var/trait in hive.hive_inherant_traits)
@@ -495,6 +492,10 @@
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		hive.used_slots[selected_caste]++
 
+	//Statistics
+	var/area/current_area = get_area(src)
+	if(current_area && current_area.statistic_exempt)
+		statistic_exempt = TRUE
 	if(GLOB.round_statistics && !statistic_exempt)
 		GLOB.round_statistics.track_new_participant(faction, 1)
 

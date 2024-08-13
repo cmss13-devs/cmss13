@@ -1,13 +1,18 @@
 /datum/custom_event_info
-	var/name = "default"
-	var/faction_name = "default"
-	var/datum/faction/faction = null
-	var/msg = ""
+	var/faction = "default" //here category/faction/hive name stored
+	var/msg = "" //here is the message itself
+
 
 //this shows event info to player. can pass clients and mobs
-/datum/custom_event_info/proc/show_player_event_info(client/user)
-	if(!istype(user))
-		return
+/datum/custom_event_info/proc/show_player_event_info(user)
+
+	if(!istype(user, /client))
+		if(ismob(user))
+			var/mob/M = user
+			if(!M.client)
+				return
+		else
+			return
 
 	if(msg == "")
 		return
@@ -21,6 +26,7 @@
 
 //this shows changed event info to everyone in the category
 /datum/custom_event_info/proc/handle_event_info_update()
+
 	if(!msg)
 		return
 
@@ -31,16 +37,26 @@
 		to_world(dat)
 		return
 
-	else if(faction_name)
-		for(var/mob/M in faction.totalMobs)
-			show_player_event_info(M.client)
+	else if(faction in FACTION_LIST_HUMANOID)
+		for(var/mob/M in GLOB.human_mob_list)
+			if(M && M.faction == faction)
+				show_player_event_info(M)
 		return
+
+	else
+		var/datum/hive_status/hive
+		for(var/hivenumber in GLOB.hive_datum)
+			hive = GLOB.hive_datum[hivenumber]
+			if(hive.name == faction)
+				for(var/mob/M in hive.totalXenos)
+					show_player_event_info(M)
+				return
 
 	message_admins("ERROR, ([faction ? faction : "name lost"]) faction is not found for event info.")
 	return
 
-/proc/check_event_info(category = "Global", client/user)
+/mob/proc/check_event_info(category = "Global")
 	if(GLOB.custom_event_info_list[category])
 		var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[category]
 		if(CEI.msg)
-			CEI.show_player_event_info(user)
+			CEI.show_player_event_info(src)

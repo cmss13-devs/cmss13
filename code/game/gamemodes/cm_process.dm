@@ -199,8 +199,6 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
-			if(!M.faction || (M.faction.need_round_end_check && !M.faction.can_delay_round_end(M)))
-				continue
 			if(ishuman(M) && !isyautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
 				var/mob/living/carbon/human/H = M
 				if(((H.species && H.species.name == "Human") || (H.is_important)) && !H.hivenumber) //only real humans count, or those we have set to also be included
@@ -210,6 +208,9 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 				if(isxeno(M))
 					var/mob/living/carbon/xenomorph/xeno = M
 					if(!xeno.counts_for_roundend)
+						continue
+					var/datum/hive_status/xeno_hive = GLOB.hive_datum[xeno.hivenumber]
+					if(!xeno_hive || (xeno_hive.need_round_end_check && !xeno_hive.can_delay_round_end(xeno)))
 						continue
 					if (A.flags_area & AREA_AVOID_BIOSCAN)
 						continue

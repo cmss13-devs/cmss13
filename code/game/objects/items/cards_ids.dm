@@ -62,6 +62,7 @@
 	icon_state = "id"
 	item_state = "card-id"
 	var/access = list()
+	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
 
 	/// The name registered_name on the card

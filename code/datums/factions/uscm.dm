@@ -1,13 +1,6 @@
 /datum/faction/uscm
-	name = NAME_FACTION_USCM
-	desc = "The USCM is divided into three overarching branches, called the Marine Space Forces: Sol, overseeing the core colonies and earth, the largest of the three; Eridani, operating among the Chinese and American colonised arms; Herculis, going through the Anglo-Japanese arms and the outer fringes. Each branch operates independently, but all are responsible for protecting American space territory and working together in that goal. \
-	There is also a fourth group, the Reserves, which is stationed mostly on earth and serves to reinforce the other branches. They have not seen any active use yet, but who knows what the future holds. Marine Space Force, Herculis, Chinook 91 GSO station is a military space station in geosynchronous orbit around the colony world Georgia 525 (70 Ophiuchi A V), and is the headquarters for the Herculis branch of the USCM. Under its control are the 4th Colonial Marine Division, 4th Colonial Marine Brigade, 4th Aerospace Wing, and 1st Colonial Support Group of the USCM. \
-	Chinook 91 reports directly to O'Neill station in Earth-Lunar space. The O'Neill station is the main communication base between the three branches. Supervising orders from the homeworld, controlling the First Fleet and rare joint operations. It is an extremely vital station and well guarded by the First Fleet in all its might. Tithonis Mountain on Bernice 378 is another large garrison of USCM troops, such as the 1st Colonial Support Group, and there are more minor garrisons along the Anglo-Japanese arm. The 2nd Company of the 2nd Battalion of the 4th Brigade, the Falling Falcons, and the USS Almayer are stationed in Herculis."
-
-	faction_name = FACTION_USCM
-	faction_tag = SIDE_FACTION_USCM
-	relations_pregen = RELATIONS_FACTION_USCM
-	faction_iff_tag_type = /obj/item/faction_tag/uscm
+	name = "United States Colonial Marines"
+	faction_tag = FACTION_MARINE
 
 /datum/faction/uscm/modify_hud_holder(image/holder, mob/living/carbon/human/current_human)
 	var/datum/squad/squad = current_human.assigned_squad
@@ -21,42 +14,26 @@
 		else if(I)
 			_role = I.rank
 		switch(GET_DEFAULT_ROLE(_role))
-			if(JOB_SQUAD_ENGI)
-				marine_rk = "engi"
-			if(JOB_SQUAD_SPECIALIST)
-				marine_rk = "spec"
-			if(JOB_SQUAD_TEAM_LEADER)
-				marine_rk = "tl"
-			if(JOB_SQUAD_MEDIC)
-				marine_rk = "med"
-			if(JOB_SQUAD_SMARTGUN)
-				marine_rk = "gun"
-			if(JOB_XO)
-				marine_rk = "xo"
-			if(JOB_CO)
-				marine_rk = "co"
-			if(JOB_GENERAL)
-				marine_rk = "general"
-			if(JOB_PILOT)
-				marine_rk = "po"
-			if(JOB_INTEL)
-				marine_rk = "io"
-			if(JOB_DROPSHIP_CREW_CHIEF)
-				marine_rk = "dcc"
-			if(JOB_CREWMAN)
-				marine_rk = "tc"
-			if(JOB_MARINE_RAIDER)
-				marine_rk = "soc"
-			if(JOB_MARINE_RAIDER_SL)
-				marine_rk = "soctl"
-			if(JOB_MARINE_RAIDER_CMD)
-				marine_rk = "soccmd"
+			if(JOB_SQUAD_ENGI) marine_rk = "engi"
+			if(JOB_SQUAD_SPECIALIST) marine_rk = "spec"
+			if(JOB_SQUAD_TEAM_LEADER) marine_rk = "tl"
+			if(JOB_SQUAD_MEDIC) marine_rk = "med"
+			if(JOB_SQUAD_SMARTGUN) marine_rk = "gun"
+			if(JOB_XO) marine_rk = "xo"
+			if(JOB_CO) marine_rk = "co"
+			if(JOB_GENERAL) marine_rk = "general"
+			if(JOB_CAS_PILOT) marine_rk = "gp"
+			if(JOB_DROPSHIP_PILOT) marine_rk = "dp"
+			if(JOB_TANK_CREW) marine_rk = "tc"
+			if(JOB_INTEL) marine_rk = "io"
+			if(JOB_DROPSHIP_CREW_CHIEF) marine_rk = "dcc"
+			if(JOB_MARINE_RAIDER) marine_rk = "soc"
+			if(JOB_MARINE_RAIDER_SL) marine_rk = "soctl"
+			if(JOB_MARINE_RAIDER_CMD) marine_rk = "soccmd"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
-				if("Squad")
-					marine_rk = "leader_a"
-				if("Team")
-					marine_rk = "soctl_a"
+				if("Squad") marine_rk = "leader_a"
+				if("Team") marine_rk = "soctl_a"
 
 			current_human.langchat_styles = "langchat_bolded" // bold text for bold leaders
 		else
@@ -64,8 +41,7 @@
 
 		current_human.langchat_color = current_human.assigned_squad.chat_color
 
-		if(!marine_rk)
-			marine_rk = current_human.rank_fallback
+		if(!marine_rk) marine_rk = current_human.rank_fallback
 		if(marine_rk)
 			var/image/IMG = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")
 			if(squad_clr)
@@ -99,6 +75,9 @@
 			if(JOB_CO)
 				marine_rk = "co"
 				border_rk = "command"
+			if(JOB_USCM_OBSV)
+				marine_rk = "vo"
+				border_rk = "command"
 			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
@@ -110,8 +89,10 @@
 				border_rk = "command"
 			if(JOB_INTEL)
 				marine_rk = "io"
-			if(JOB_PILOT)
-				marine_rk = "po"
+			if(JOB_CAS_PILOT)
+				marine_rk = "gp"
+			if(JOB_DROPSHIP_PILOT)
+				marine_rk = "dp"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
 			if(JOB_CHIEF_POLICE)
@@ -119,6 +100,8 @@
 				border_rk = "command"
 			if(JOB_POLICE)
 				marine_rk = "mp"
+			if(JOB_TANK_CREW)
+				marine_rk = "tc"
 			if(JOB_WARDEN)
 				marine_rk = "warden"
 				border_rk = "command"
@@ -214,6 +197,19 @@
 			if(JOB_CMB_OBS)
 				marine_rk = "obs"
 				icon_prefix = "cmb_"
+			// Check squad marines here too, for the unique ones
+			if(JOB_SQUAD_ENGI)
+				marine_rk = "engi"
+			if(JOB_SQUAD_MEDIC)
+				marine_rk = "med"
+			if(JOB_SQUAD_SPECIALIST)
+				marine_rk = "spec"
+			if(JOB_SQUAD_SMARTGUN)
+				marine_rk = "gun"
+			if(JOB_SQUAD_TEAM_LEADER)
+				marine_rk = "tl"
+			if(JOB_SQUAD_LEADER)
+				marine_rk = "leader"
 
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")

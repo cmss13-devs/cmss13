@@ -409,7 +409,7 @@
 
 /obj/item/explosive/satchel_charge/proc/detonate(triggerer)
 	if(!armed || linked_detonator != triggerer)
-		return
+		return FALSE
 	cell_explosion(loc, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 	qdel(src)
 

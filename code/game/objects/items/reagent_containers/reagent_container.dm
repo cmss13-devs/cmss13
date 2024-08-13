@@ -49,7 +49,7 @@
 
 	if(!transparent)
 		return
-	if(user != loc && !in_range(src, user)
+	if(user != loc && !in_range(src, user))
 		return SPAN_WARNING("[src] is too far away for you to see what's in it!")
 
 	if(!LAZYLEN(reagents.reagent_list))
@@ -87,6 +87,10 @@
 	name = "Set Transfer Amount"
 	/// The container that transfer amount will be set on
 	var/obj/item/reagent_container/container
+
+/datum/action/item_action/reagent_container/set_transfer_amount/Destroy()
+	container = null
+	. = ..()
 
 /datum/action/item_action/reagent_container/set_transfer_amount/New(mob/living/user, obj/item/holder)
 	..()

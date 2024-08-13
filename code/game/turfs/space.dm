@@ -81,7 +81,7 @@
 
 	inertial_drift(A)
 
-	if(SSticker.mode && SSmapping.levels_by_trait(ZTRAIT_GROUND))
+	if(SSticker.mode && length(SSmapping.levels_by_trait(ZTRAIT_GROUND)))
 
 
 		// Okay, so let's make it so that people can travel z levels but not nuke disks!

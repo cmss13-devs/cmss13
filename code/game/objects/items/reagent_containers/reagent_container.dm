@@ -26,9 +26,6 @@
 	. = ..()
 	create_reagents(volume)
 
-/obj/item/reagent_container/Destroy()
-	possible_transfer_amounts = null
-	return ..()
 
 /obj/item/reagent_container/get_examine_text(mob/user)
 	. = ..()

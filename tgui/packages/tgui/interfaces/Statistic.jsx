@@ -27,14 +27,6 @@ export const Statistic = (props, context) => {
         <Flex direction="column" height="100%">
           <Flex.Item>
             <Tabs fluid textAlign="center">
-              <Tabs.Tab
-                color="green"
-                icon="sync-alt"
-                selected={1}
-                onClick={() => act('update')}
-              >
-                Update
-              </Tabs.Tab>
               {data_tabs.map((tab) => (
                 <Tabs.Tab
                   key={tab}
@@ -76,115 +68,121 @@ const GetTab = (props, context) => {
     case 'Round':
       return (
         <Box>
-          <Section title="Round Statistic">
-            <Box
-              direction="column"
-              style={{
-                padding: '12px 10px 12px 10px',
-                border: '0.5px solid #4a4a4a',
-              }}
-            >
-              <Box>Name: {round.name}</Box>
-              <Box>Gamemode: {round.game_mode}</Box>
-              <Box>Map: {round.map_name}</Box>
-              <Box>Result: {round.round_result}</Box>
-              <Box>Round Start: {round.real_time_start}</Box>
-              <Box>Round Time End: {round.real_time_end}</Box>
-              <Box>Round Length: {round.round_length}</Box>
-              {round.round_hijack_time ? (
-                <Box>Hijack Time: {round.round_hijack_time}</Box>
-              ) : null}
-              <Box>Total Shots Fired: {round.total_projectiles_fired}</Box>
-              <Box>Total Shots Hit: {round.total_projectiles_hit}</Box>
-              <Box>
-                Total Shots Hit (Human): {round.total_projectiles_hit_human}
-              </Box>
-              <Box>
-                Total Shots Hit (Xeno): {round.total_projectiles_hit_xeno}
-              </Box>
-              <Box>Total Slashes: {round.total_slashes}</Box>
-              <Box>
-                Total Shots Hit (FF): {round.total_friendly_fire_instances}
-              </Box>
-              <Box>Total FF Kills: {round.total_friendly_kills}</Box>
-              <Box>Total Huggers Applied: {round.total_huggers_applied}</Box>
-              <Box>Total Larva Burst: {round.total_larva_burst}</Box>
-              {round.end_round_player_population ? (
-                <Box>Final Population: {round.end_round_player_population}</Box>
-              ) : null}
-              <Box>Total Deaths: {round.total_deaths}</Box>
-              {round.Participants ? (
-                <>
-                  <Box height="6px" />
+          {round ? (
+            <Section title="Round Statistic">
+              <Box
+                direction="column"
+                style={{
+                  padding: '12px 10px 12px 10px',
+                  border: '0.5px solid #4a4a4a',
+                }}
+              >
+                <Box>Name: {round.name}</Box>
+                <Box>Gamemode: {round.game_mode}</Box>
+                <Box>Map: {round.map_name}</Box>
+                <Box>Result: {round.round_result}</Box>
+                <Box>Round Start: {round.real_time_start}</Box>
+                <Box>Round Time End: {round.real_time_end}</Box>
+                <Box>Round Length: {round.round_length}</Box>
+                {round.round_hijack_time ? (
+                  <Box>Hijack Time: {round.round_hijack_time}</Box>
+                ) : null}
+                <Box>Total Shots Fired: {round.total_projectiles_fired}</Box>
+                <Box>Total Shots Hit: {round.total_projectiles_hit}</Box>
+                <Box>
+                  Total Shots Hit (Human): {round.total_projectiles_hit_human}
+                </Box>
+                <Box>
+                  Total Shots Hit (Xeno): {round.total_projectiles_hit_xeno}
+                </Box>
+                <Box>Total Slashes: {round.total_slashes}</Box>
+                <Box>
+                  Total Shots Hit (FF): {round.total_friendly_fire_instances}
+                </Box>
+                <Box>Total FF Kills: {round.total_friendly_kills}</Box>
+                <Box>Total Huggers Applied: {round.total_huggers_applied}</Box>
+                <Box>Total Larva Burst: {round.total_larva_burst}</Box>
+                {round.end_round_player_population ? (
                   <Box>
-                    Participants:
-                    {round.Participants.map((entry, index) => (
-                      <Fragment key={index}>
-                        <Box
-                          style={{
-                            padding: '6px 5px 6px 5px',
-                            border: '0.5px solid #4a4a4a',
-                          }}
-                        >
-                          <Box>
-                            {entry.name}: {entry.value}
-                          </Box>
-                        </Box>
-                        <Box height="6px" />
-                      </Fragment>
-                    ))}
+                    Final Population: {round.end_round_player_population}
                   </Box>
-                </>
-              ) : null}
-              {round.hijack_participants ? (
-                <>
-                  <Box height="6px" />
-                  <Box>
-                    Hijack Participants:
-                    {round.hijack_participants.map((entry, index) => (
-                      <Fragment key={index}>
-                        <Box
-                          style={{
-                            padding: '6px 5px 6px 5px',
-                            border: '0.5px solid #4a4a4a',
-                          }}
-                        >
-                          <Box>
-                            {entry.name}: {entry.value}
+                ) : null}
+                <Box>Total Deaths: {round.total_deaths}</Box>
+                {round.Participants ? (
+                  <>
+                    <Box height="6px" />
+                    <Box>
+                      Participants:
+                      {round.Participants.map((entry, index) => (
+                        <Fragment key={index}>
+                          <Box
+                            style={{
+                              padding: '6px 5px 6px 5px',
+                              border: '0.5px solid #4a4a4a',
+                            }}
+                          >
+                            <Box>
+                              {entry.name}: {entry.value}
+                            </Box>
                           </Box>
-                        </Box>
-                        <Box height="6px" />
-                      </Fragment>
-                    ))}
-                  </Box>
-                </>
-              ) : null}
-              {round.final_participants ? (
-                <>
-                  <Box height="6px" />
-                  <Box>
-                    Final Participants:
-                    {round.final_participants.map((entry, index) => (
-                      <Fragment key={index}>
-                        <Box
-                          style={{
-                            padding: '6px 5px 6px 5px',
-                            border: '0.5px solid #4a4a4a',
-                          }}
-                        >
-                          <Box>
-                            {entry.name}: {entry.value}
+                          <Box height="6px" />
+                        </Fragment>
+                      ))}
+                    </Box>
+                  </>
+                ) : null}
+                {round.hijack_participants ? (
+                  <>
+                    <Box height="6px" />
+                    <Box>
+                      Hijack Participants:
+                      {round.hijack_participants.map((entry, index) => (
+                        <Fragment key={index}>
+                          <Box
+                            style={{
+                              padding: '6px 5px 6px 5px',
+                              border: '0.5px solid #4a4a4a',
+                            }}
+                          >
+                            <Box>
+                              {entry.name}: {entry.value}
+                            </Box>
                           </Box>
-                        </Box>
-                        <Box height="6px" />
-                      </Fragment>
-                    ))}
-                  </Box>
-                </>
-              ) : null}
-            </Box>
-          </Section>
-          {round.death_list ? (
+                          <Box height="6px" />
+                        </Fragment>
+                      ))}
+                    </Box>
+                  </>
+                ) : null}
+                {round.final_participants ? (
+                  <>
+                    <Box height="6px" />
+                    <Box>
+                      Final Participants:
+                      {round.final_participants.map((entry, index) => (
+                        <Fragment key={index}>
+                          <Box
+                            style={{
+                              padding: '6px 5px 6px 5px',
+                              border: '0.5px solid #4a4a4a',
+                            }}
+                          >
+                            <Box>
+                              {entry.name}: {entry.value}
+                            </Box>
+                          </Box>
+                          <Box height="6px" />
+                        </Fragment>
+                      ))}
+                    </Box>
+                  </>
+                ) : null}
+              </Box>
+            </Section>
+          ) : (
+            <NoticeBox danger>Round statistic prepairing!</NoticeBox>
+          )}
+          {round?.death_list ? (
             <KillView real_data={round.death_list} />
           ) : (
             <NoticeBox danger>No recorded kills!</NoticeBox>
@@ -288,20 +286,13 @@ const StatTab = (props, context) => {
         <NoticeBox danger>No recorded deaths!</NoticeBox>
       )}
       <Box height="12px" />
-      <Section title="Additional Statistics">
+      <>
         {faction.statistics_list.length ? (
-          <Box
-            direction="column"
-            style={{
-              padding: '12px 10px 12px 10px',
-              border: '0.5px solid #4a4a4a',
-            }}
-          >
+          <Section title="Additional Statistics">
             {faction.statistics_list.map((entry, index) => (
               <Collapsible key={index} title={entry.name}>
                 {entry.value.length ? (
                   <>
-                    <Box height="12px" />
                     {entry.value.map((entry, index) => (
                       <Fragment key={index}>
                         <Box
@@ -343,13 +334,15 @@ const StatTab = (props, context) => {
                         <Box height="6px" />
                       </Fragment>
                     ))}
+                    <Box height="6px" />
                   </>
                 ) : null}
               </Collapsible>
             ))}
-          </Box>
+          </Section>
         ) : null}
-      </Section>
+        <Box height="6px" />
+      </>
     </Box>
   );
 };

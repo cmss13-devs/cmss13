@@ -412,6 +412,7 @@
 		return FALSE
 	cell_explosion(loc, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 	qdel(src)
+	return TRUE
 
 /obj/item/explosive/satchel_charge/Destroy()
 	linked_detonator?.linked_charges -= src

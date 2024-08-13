@@ -85,7 +85,8 @@
 	desc = "A pair of ANCW Boots. Their insides are cushioned with soft gel pads to give you an optimal footbed. You wish you had a pair like this at home."
 	icon_state = "caustic_h"
 	item_state = "caustic_h"
-	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_VERYLOW
+	armor_laser = CLOTHING_ARMOR_VERYLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_HIGH

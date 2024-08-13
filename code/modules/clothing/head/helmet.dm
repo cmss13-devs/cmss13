@@ -1001,7 +1001,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "It's an ANCW Helmet. It is fitted with an integrated gas mask and visor. The inside is cushioned with cool gel pads to protect against harsh temperature changes and heavy impacts."
 	icon_state = "caustic_h"
 	item_state = "caustic_h"
-	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_VERYLOW
+	armor_laser = CLOTHING_ARMOR_VERYLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_HIGH

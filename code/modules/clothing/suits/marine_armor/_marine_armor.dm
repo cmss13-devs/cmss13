@@ -625,8 +625,8 @@
 /obj/item/clothing/suit/storage/marine/heavy/Initialize(mapload)
 	. = ..()
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
-		armor_bullet = CLOTHING_ARMOR_HIGH
-		armor_bomb = CLOTHING_ARMOR_HIGH
+		armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+		armor_bomb = CLOTHING_ARMOR_HIGHPLUS
 		armor_internaldamage = CLOTHING_ARMOR_HIGH
 	else
 		armor_bullet = CLOTHING_ARMOR_HIGHPLUS

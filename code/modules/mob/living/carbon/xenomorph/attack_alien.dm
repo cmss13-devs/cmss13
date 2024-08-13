@@ -366,7 +366,7 @@
 	if(health <= 0)
 		xeno.visible_message(SPAN_DANGER("[xeno] destroys \the [src] with its tail!"), SPAN_DANGER("We destroy \the [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes \the [src] with its tail!"), SPAN_DANGER("We strikes \the [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes \the [src] with its tail!"), SPAN_DANGER("We strike \the [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	if(is_wired)
 		xeno.visible_message(SPAN_DANGER("The barbed wire slices into \the [xeno]'s tail!"), SPAN_DANGER("The barbed wire slices into our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		xeno.apply_damage(5)

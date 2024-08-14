@@ -297,8 +297,7 @@ as having entered the turf.
 
 	if(power >= 100) // powerful explosions send out some special effects
 		new /obj/effect/shockwave(epicenter, explosion_range)
-		create_shrapnel(epicenter, rand(explosion_range/1.5, explosion_range*1.5), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, explosion_cause_data)
-		create_shrapnel(epicenter, rand(explosion_range/1.5, explosion_range*1.5), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, explosion_cause_data)
+		new /obj/shrapnel_effect(epicenter)
 
 /proc/log_explosion(atom/A, datum/automata_cell/explosion/E)
 	if(isliving(A))

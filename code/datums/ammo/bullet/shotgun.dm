@@ -56,7 +56,7 @@
 	name = "X21 slug"
 	headshot_state = HEADSHOT_OVERLAY_LIGHT //Electric version of the bean bag.
 	handful_state = "elec_slug"
-	icon_state = "beanbag"
+	icon_state = "bullet"
 	sound_override = 'sound/weapons/gun_shockgun.ogg'
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
 	max_range = 12

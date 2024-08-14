@@ -29,8 +29,8 @@
 	friction = generator(GEN_NUM, 0.1, 0.5)
 
 /datum/element/debris
-	element_flags = ELEMENT_BESPOKE
-	id_arg_index = 2
+	element_flags = ELEMENT_DETACH|ELEMENT_BESPOKE
+	id_arg_index = 1
 
 	///Icon state of debris when impacted by a proj
 	var/debris = null
@@ -71,16 +71,16 @@
 	smoke_visuals = new(source, /particles/impact_smoke)
 	smoke_visuals.particles.position = list(position_offset, position_offset)
 	smoke_visuals.particles.velocity = list(x_component_smoke, y_component_smoke)
-	if(debris && !(proj.ammo.flags_ammo_behavior & AMMO_ENERGY || proj.ammo.flags_ammo_behavior & AMMO_XENO))
+	if(debris && !(proj.ammo.flags_ammo_behavior & AMMO_ENERGY && proj.ammo.flags_ammo_behavior & AMMO_XENO))
 		debris_visuals = new(source, /particles/debris)
 		debris_visuals.particles.position = generator(GEN_CIRCLE, position_offset, position_offset)
 		debris_visuals.particles.velocity = list(x_component, y_component)
-		debris_visuals.layer = ABOVE_OBJ_LAYER + 0.02
+		debris_visuals.layer = FLY_LAYER
 		debris_visuals.particles.icon_state = debris
 		debris_visuals.particles.count = debris_amount
 		debris_visuals.particles.spawning = debris_amount
 		debris_visuals.particles.scale = debris_scale
-	smoke_visuals.layer = ABOVE_OBJ_LAYER + 0.01
+	smoke_visuals.layer = FLY_LAYER
 	if(proj.ammo.sound_bounce)
 		playsound(source, proj.ammo.sound_bounce, 50, 1)
 	addtimer(CALLBACK(src, PROC_REF(remove_ping), src, smoke_visuals, debris_visuals), 0.7 SECONDS)

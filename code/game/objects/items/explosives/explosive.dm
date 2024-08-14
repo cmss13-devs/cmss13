@@ -337,6 +337,10 @@
 
 /obj/item/explosive/satchel_charge/attack_self(mob/user)
 	. = ..()
+	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
+		to_chat(user, SPAN_WARNING("[name]'s safe-area accident inhibitor prevents you from planting it!"))
+		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
+		return
 	if(!linked_detonator)
 		to_chat(user, SPAN_NOTICE("This Charge is not linked to any detonator"))
 		return

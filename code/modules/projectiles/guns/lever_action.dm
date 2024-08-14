@@ -550,3 +550,52 @@ their unique feature is that a direct hit will buff your damage and firerate
 #undef FLOATING_PENETRATION_TIER_2
 #undef FLOATING_PENETRATION_TIER_3
 #undef FLOATING_PENETRATION_TIER_4
+
+//==========TX-801=============//
+
+/obj/item/weapon/gun/lever_action/tx801
+	name = "TX-801 lever-action shotgun"
+	desc = "This lever-action was designed for small scout operations in harsh environments such as the jungle or particularly windy deserts, as such its internal mechanisms are simple yet robust."
+	icon_state = "tx801"
+	item_state = "tx801"
+	flags_equip_slot = SLOT_BACK
+	gun_category = GUN_CATEGORY_SHOTGUN
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/tx801
+	levering_sprite = "tx801-l"
+	default_caliber = "12g"
+	attachable_allowed = list(
+		/obj/item/attachable/bayonet/upp, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/magnetic_harness/lever_sling,
+		/obj/item/attachable/stock/shotgun, // Stock
+		)
+	map_specific_decoration = FALSE
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
+	flags_gun_lever_action = MOVES_WHEN_LEVERING|DANGEROUS_TO_ONEHAND_LEVER
+	civilian_usable_override = TRUE
+
+/obj/item/weapon/gun/lever_action/r4t/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 20, "under_x" = 24, "under_y" = 14, "stock_x" = 20, "stock_y" = 13)
+
+/obj/item/weapon/gun/lever_action/tx801/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_7 * 4)
+	lever_delay = FIRE_DELAY_TIER_2
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = 0
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3

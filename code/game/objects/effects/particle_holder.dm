@@ -27,14 +27,12 @@
 	update_visual_contents(loc)
 
 /obj/effect/abstract/particle_holder/Destroy(force)
-	var/atom/movable/attached = weak_attached.resolve()
-	var/atom/movable/additional_attached
-	if(weak_additional)
-		additional_attached = weak_additional.resolve()
-	if(attached)
+	if(weak_attached)
+		var/atom/movable/attached = weak_attached.resolve()
 		attached.vis_contents -= src
 		UnregisterSignal(loc, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
-	if(additional_attached)
+	if(weak_additional)
+		var/atom/movable/additional_attached = weak_additional.resolve()
 		additional_attached.vis_contents -= src
 	QDEL_NULL(particles)
 	return ..()

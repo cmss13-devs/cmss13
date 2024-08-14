@@ -284,19 +284,21 @@ as having entered the turf.
 	if(QDELETED(E))
 		return
 
-	if(power >= 150) //shockwave for anything over 150 power
-		new /obj/effect/shockwave(epicenter, power/60)
-
 	E.power = power
 	E.power_falloff = falloff
 	E.falloff_shape = falloff_shape
 	E.direction = direction
 	E.explosion_cause_data = explosion_cause_data
 
+	var/explosion_range = round(power / falloff)
+
+	// Make explosion effect
+	new /obj/effect/temp_visual/explosion(epicenter, explosion_range, LIGHT_COLOR_HOLY_MAGIC, power)
+
 	if(power >= 100) // powerful explosions send out some special effects
-		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
-		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, explosion_cause_data)
-		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, explosion_cause_data)
+		new /obj/effect/shockwave(epicenter, explosion_range)
+		create_shrapnel(epicenter, rand(explosion_range/1.5, explosion_range*1.5), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, explosion_cause_data)
+		create_shrapnel(epicenter, rand(explosion_range/1.5, explosion_range*1.5), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, explosion_cause_data)
 
 /proc/log_explosion(atom/A, datum/automata_cell/explosion/E)
 	if(isliving(A))

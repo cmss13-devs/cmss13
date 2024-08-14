@@ -110,6 +110,9 @@ Class Procs:
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	var/power_machine = FALSE //Whether the machine should process on power, or normal processor
 
+/obj/structure/closet/cabinet/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
+
 /obj/structure/machinery/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "-----MACHINERY-----")
@@ -369,7 +372,7 @@ Class Procs:
 	unslashable = TRUE
 	unacidable = TRUE
 	wrenchable = FALSE
-	
+
 /obj/structure/machinery/fuelpump/ex_act(severity)
 	return
 

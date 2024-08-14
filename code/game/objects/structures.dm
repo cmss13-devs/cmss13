@@ -56,16 +56,15 @@
 			deconstruct(FALSE)
 
 /obj/structure/proc/handle_debris(severity = 0, direction = 0)
-	if(!LAZYLEN(debris))
+	if(!length(debris))
 		return
-	switch(severity)
-		if(0)
-			for(var/thing in debris)
-				new thing(loc)
-		if(0 to EXPLOSION_THRESHOLD_HIGH) //beyond EXPLOSION_THRESHOLD_HIGH, the explosion is too powerful to create debris. It's all atomized.
-			for(var/thing in debris)
-				var/obj/item/I = new thing(loc)
-				I.explosion_throw(severity, direction)
+	if(severity > 100)
+		for(var/thing in debris)
+			var/obj/item/I = new thing(loc)
+			I.explosion_throw(severity, direction)
+	else
+		for(var/thing in debris)
+			new thing(loc)
 
 /obj/structure/proc/climb_on()
 

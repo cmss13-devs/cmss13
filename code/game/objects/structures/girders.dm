@@ -25,6 +25,9 @@
 	// To store what type of wall it used to be
 	var/original
 
+/obj/structure/girder/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
+
 /obj/structure/girder/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)

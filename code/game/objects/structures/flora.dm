@@ -103,6 +103,9 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	pixel_x = -16
 	layer = ABOVE_FLY_LAYER
 
+/obj/structure/flora/tree/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_WOOD, -10, 5)
+
 /obj/structure/flora/tree/pine
 	name = "pine tree"
 	icon = 'icons/obj/structures/props/pinetrees.dmi'
@@ -170,6 +173,10 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	icon = 'icons/obj/structures/props/ausflora.dmi'
 	density = FALSE
 	fire_flag = FLORA_BURN_NO_SPREAD
+
+/obj/structure/flora/grass/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_LEAF, -10, 5)
+
 /*
 
 ICE GRASS

@@ -35,6 +35,9 @@
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "rock"
 
+/turf/closed/mineral/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_ROCK, -10, 5, 1)
+
 /turf/closed/mineral/Initialize(mapload)
 	. = ..()
 	var/list/step_overlays = list("s" = NORTH, "n" = SOUTH, "w" = EAST, "e" = WEST)
@@ -52,6 +55,9 @@
 	icon_state = "wall2"
 	desc = "Some thick jungle."
 	baseturfs = /turf/open/gm/grass
+
+/turf/closed/gm/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_LEAF, -10, 5)
 
 	//Not yet
 /turf/closed/gm/ex_act(severity)
@@ -90,6 +96,9 @@
 	icon = 'icons/turf/walls/icewall.dmi'
 	icon_state = "Single"
 	desc = "It is very thick."
+
+/turf/closed/ice/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SNOW, -10, 5, 1)
 
 /turf/closed/ice/single
 	icon_state = "Single"
@@ -188,6 +197,9 @@
 	name = "Icy rock"
 	icon = 'icons/turf/walls/rockwall.dmi'
 
+/turf/closed/ice/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SNOW, -10, 5, 1)
+
 /turf/closed/ice_rock/single
 	icon_state = "single"
 
@@ -246,6 +258,9 @@
 	icon_state = "wall1"
 	icon = 'icons/turf/shuttle.dmi'
 	layer = ABOVE_TURF_LAYER
+
+/turf/closed/shuttle/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
 
 /turf/closed/shuttle/is_weedable()
 	return FULLY_WEEDABLE

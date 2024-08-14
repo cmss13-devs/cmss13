@@ -101,6 +101,8 @@
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 
+	add_debris_element()
+
 	return INITIALIZE_HINT_NORMAL
 
 /turf/Destroy(force)

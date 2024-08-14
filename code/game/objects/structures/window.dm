@@ -21,6 +21,9 @@
 
 	minimap_color = MINIMAP_FENCE
 
+/obj/structure/window/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_GLASS, -10, 5)
+
 ///fixes up layering on northern and southern windows, breaks fulltile windows, those shouldn't be used in the first place regardless.
 /obj/structure/window/Initialize()
 	. = ..()
@@ -107,7 +110,8 @@
 		if(user && istype(user))
 			user.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
 			SEND_SIGNAL(user, COMSIG_MOB_DESTROY_WINDOW, src)
-			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
+			if(!istype(AM, /obj/projectile))
+				user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
 			if(is_mainship_level(z))
 				SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
 		if(make_shatter_sound)
@@ -117,17 +121,25 @@
 		if(make_hit_sound)
 			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
-/obj/structure/window/bullet_act(obj/projectile/Proj)
+/obj/structure/window/bullet_act(obj/projectile/proj)
 	//Tasers and the like should not damage windows.
-	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
-	if(Proj.ammo.damage_type == HALLOSS || Proj.damage <= 0 || ammo_flags == AMMO_ENERGY)
-		return 0
+	var/ammo_flags = proj.ammo.flags_ammo_behavior | proj.projectile_override_flags
+	if(proj.ammo.damage_type == HALLOSS || proj.damage <= 0 || ammo_flags == AMMO_ENERGY)
+		return FALSE
+
+	bullet_ping(proj)
 
 	if(!not_damageable) //Impossible to destroy
-		health -= Proj.damage
-	..()
-	healthcheck(user = Proj.firer)
-	return 1
+		health -= proj.damage
+
+	if(health > 0)
+		healthcheck(FALSE, TRUE, TRUE, proj.firer, proj)
+		return TRUE
+
+	playsound(src, "windowshatter", 50, 1)
+	handle_debris(proj.damage * 4, proj.dir)
+	deconstruct(disassembled = FALSE)
+	return TRUE
 
 /obj/structure/window/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	if(not_damageable) //Impossible to destroy
@@ -135,23 +147,22 @@
 
 	health -= severity * EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
 
-	var/mob/M = cause_data?.resolve_mob()
+	var/mob/mob = cause_data?.resolve_mob()
 	if(health > 0)
-		healthcheck(FALSE, TRUE, user = M)
-		return
+		healthcheck(FALSE, TRUE, user = mob)
+		return TRUE
 
-	if(health >= -2000)
-		var/location = get_turf(src)
-		playsound(src, "windowshatter", 50, 1)
-		create_shrapnel(location, rand(1,5), explosion_direction, shrapnel_type = /datum/ammo/bullet/shrapnel/light/glass, cause_data = cause_data)
+	playsound(src, "windowshatter", 50, 1)
+	create_shrapnel(get_turf(src), rand(1,5), explosion_direction, shrapnel_type = /datum/ammo/bullet/shrapnel/light/glass, cause_data = cause_data)
 
-	if(M)
-		M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
-		SEND_SIGNAL(M, COMSIG_MOB_WINDOW_EXPLODED, src)
+	if(mob)
+		mob.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
+		SEND_SIGNAL(mob, COMSIG_MOB_WINDOW_EXPLODED, src)
 
+	playsound(src, "windowshatter", 50, 1)
 	handle_debris(severity, explosion_direction)
-	deconstruct(FALSE)
-	return
+	deconstruct(disassembled = FALSE)
+	return TRUE
 
 /obj/structure/window/get_explosion_resistance(direction)
 	if(not_damageable)
@@ -549,7 +560,6 @@
 	else
 		qdel(src)
 	return
-
 
 /obj/structure/window/framed/deconstruct(disassembled = TRUE)
 	if(window_frame)

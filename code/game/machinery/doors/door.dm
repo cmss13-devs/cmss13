@@ -33,6 +33,9 @@
 	var/masterkey_mod = 0.1
 	dir = EAST //So multitile doors are directioned properly
 
+/obj/structure/machinery/door/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
+
 /obj/structure/machinery/door/Initialize(mapload, ...)
 	. = ..()
 	layer = density ? closed_layer : open_layer

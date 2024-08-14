@@ -17,6 +17,9 @@
 	var/hardness = 1
 	var/oreAmount = 7
 
+/obj/structure/mineral_door/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_ROCK, -10, 5)
+
 /obj/structure/mineral_door/New(location)
 	..()
 	icon_state = mineralType
@@ -201,6 +204,9 @@
 /obj/structure/mineral_door/wood
 	mineralType = "wood"
 	hardness = 1
+
+/obj/structure/mineral_door/wood/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_WOOD, -10, 5)
 
 /obj/structure/mineral_door/wood/Open()
 	isSwitchingStates = 1

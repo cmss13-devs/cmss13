@@ -1228,6 +1228,7 @@
 
 //This is where the bullet bounces off.
 /atom/proc/bullet_ping(obj/projectile/P, pixel_x_offset = 0, pixel_y_offset = 0)
+	SEND_SIGNAL(P, COMSIG_BULLET_PING_ACT, src)
 	if(!P || !P.ammo.ping)
 		return
 

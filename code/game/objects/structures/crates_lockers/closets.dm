@@ -28,6 +28,9 @@
 
 	var/mob_size = 15
 
+/obj/structure/closet/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -10, 5)
+
 /obj/structure/closet/Initialize()
 	. = ..()
 	if(!opened && fill_from_loc) // if closed, any item at the crate's loc is put in the contents

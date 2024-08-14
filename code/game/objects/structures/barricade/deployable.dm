@@ -19,6 +19,9 @@
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/source_type = /obj/item/stack/folding_barricade //had to add this here, cause mapped in porta cades were unfoldable.
 
+/obj/structure/barricade/deployable/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
+
 /obj/structure/barricade/deployable/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_INFO("Drag its sprite onto yourself to undeploy.")

@@ -828,7 +828,8 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "co" = (
-/obj/structure/machinery/gravity_generator,
+/obj/structure/machinery/portable_atmospherics/canister/phoron,
+/obj/structure/window/phoronreinforced,
 /obj/structure/window/phoronreinforced{
 	icon_state = "phoronrwindow"
 	},
@@ -934,7 +935,8 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "cy" = (
-/obj/structure/machinery/gravity_generator,
+/obj/structure/window/phoronreinforced,
+/obj/structure/machinery/portable_atmospherics/canister/phoron,
 /obj/structure/window/phoronreinforced{
 	icon_state = "phoronrwindow"
 	},
@@ -1803,8 +1805,7 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4;
+/obj/structure/machinery/power/apc/almayer/east{
 	pixel_y = 25
 	},
 /obj/item/weapon/twohanded/yautja/spear,

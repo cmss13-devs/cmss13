@@ -33,7 +33,8 @@
 		UnregisterSignal(loc, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 	if(weak_additional)
 		var/atom/movable/additional_attached = weak_additional.resolve()
-		additional_attached.vis_contents -= src
+		if(additional_attached)
+			additional_attached.vis_contents -= src
 	QDEL_NULL(particles)
 	return ..()
 

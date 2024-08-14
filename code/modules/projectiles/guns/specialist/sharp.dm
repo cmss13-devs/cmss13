@@ -3,7 +3,7 @@
 
 /obj/item/weapon/gun/rifle/sharp
 	name = "\improper P9 SHARP rifle"
-	desc = "A experimental harpoon launcher rifle manufactured by Armat Systems. It's specialized for specific ammo types out of a 10-round magazine, best used for area denial and disruption."
+	desc = "An experimental harpoon launcher rifle with an inbuilt magnetic harness manufactured by Armat Systems. It's specialized for specific ammo types out of a 10-round magazine, best used for area denial and disruption."
 	icon_state = "sharprifle"
 	item_state = "sharp"
 	fire_sound = 'sound/weapons/gun_sharp.ogg'
@@ -14,7 +14,8 @@
 	muzzle_flash = null
 
 	current_mag = /obj/item/ammo_magazine/rifle/sharp/explosive
-	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
+	attachable_allowed = list()
+	auto_retrieval_slot = WEAR_J_STORE
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	wield_delay = WIELD_DELAY_NORMAL

@@ -351,6 +351,7 @@
 	if(istype(living_carbon) && !living_carbon.throw_mode)
 		living_carbon.toggle_throw_mode(THROW_MODE_NORMAL)
 	to_chat(user, SPAN_NOTICE("You activate the M17 Satchel Charge, it will now arm itself after a short time once thrown."))
+	w_class = SIZE_MASSIVE
 	activated = TRUE
 	addtimer(CALLBACK(src, PROC_REF(un_activate)), 10 SECONDS, TIMER_UNIQUE)
 
@@ -378,6 +379,7 @@
 /obj/item/explosive/satchel_charge/proc/un_activate()
 	if(activated)
 		activated = FALSE
+		w_class = SIZE_SMALL
 		if(linked_detonator)
 			icon_state = "satchel_linked"
 		else
@@ -411,6 +413,7 @@
 		else
 			icon_state = "satchel"
 		armed = FALSE
+		w_class = SIZE_SMALL
 	return ..()
 
 /obj/item/explosive/satchel_charge/proc/detonate(triggerer)

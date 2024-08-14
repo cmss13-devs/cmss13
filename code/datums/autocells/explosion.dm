@@ -291,13 +291,12 @@ as having entered the turf.
 	E.explosion_cause_data = explosion_cause_data
 
 	var/explosion_range = round(power / falloff)
-
-	// Make explosion effect
-	new /obj/effect/temp_visual/explosion(epicenter, explosion_range, LIGHT_COLOR_HOLY_MAGIC, power)
+	var/turf/current = get_turf(epicenter)
+	new /obj/effect/temp_visual/explosion(current, explosion_range, LIGHT_COLOR_HOLY_MAGIC, power)
 
 	if(power >= 100) // powerful explosions send out some special effects
-		new /obj/effect/shockwave(epicenter, explosion_range)
-		new /obj/shrapnel_effect(epicenter)
+		new /obj/effect/shockwave(current, explosion_range)
+		new /obj/shrapnel_effect(current)
 
 /proc/log_explosion(atom/A, datum/automata_cell/explosion/E)
 	if(isliving(A))

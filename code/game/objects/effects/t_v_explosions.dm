@@ -291,10 +291,10 @@
 
 	if(power > EXPLOSION_THRESHOLD_MEDIUM)
 		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 6 * radius, 6 * radius)
-	else if(power <= EXPLOSION_THRESHOLD_MLOW)
-		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 3 * radius, 3 * radius)
-	else
+	else if(power > EXPLOSION_THRESHOLD_LOW)
 		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 5 * radius, 5 * radius)
+	else
+		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 3 * radius, 3 * radius)
 	explosion_smoke.layer = layer + 0.1
 	sparks.particles.velocity = generator(GEN_CIRCLE, 8 * radius, 8 * radius)
 	addtimer(CALLBACK(src, PROC_REF(set_count_short)), 5)
@@ -314,6 +314,66 @@
 	QDEL_NULL(smoke_wave)
 	QDEL_NULL(explosion_smoke)
 	QDEL_NULL(sparks)
+	QDEL_NULL(large_kickup)
+	QDEL_NULL(falling_debris)
+	QDEL_NULL(dirt_kickup)
+	return ..()
+
+/obj/effect/temp_visual/rappel_dust
+	duration = 25
+	///smoke wave particle holder
+	var/obj/effect/abstract/particle_holder/smoke_wave
+	///debris dirt kickup particle holder
+	var/obj/effect/abstract/particle_holder/dirt_kickup
+	///falling debris particle holder
+	var/obj/effect/abstract/particle_holder/falling_debris
+	///large dirt kickup particle holder
+	var/obj/effect/abstract/particle_holder/large_kickup
+
+/obj/effect/temp_visual/rappel_dust/Initialize(mapload, radius, power)
+	. = ..()
+	var/turf/turf = get_turf(src)
+	if(!turf.can_bloody)
+		smoke_wave = new(src, /particles/wave_water)
+		dirt_kickup = new(src, /particles/water_splash)
+		falling_debris = new(src, /particles/water_falling)
+		large_kickup = new(src, /particles/water_splash_large)
+	else
+		if(power <= EXPLOSION_THRESHOLD_LOW)
+			smoke_wave = new(src, /particles/smoke_wave/small)
+		else
+			smoke_wave = new(src, /particles/smoke_wave)
+
+		dirt_kickup = new(src, /particles/dirt_kickup)
+		if(power <= EXPLOSION_THRESHOLD_LOW)
+			falling_debris = new(src, /particles/falling_debris/small)
+		else
+			falling_debris = new(src, /particles/falling_debris)
+
+		if(power > EXPLOSION_THRESHOLD_HIGH)
+			large_kickup = new(src, /particles/dirt_kickup_large/deva)
+		else
+			large_kickup = new(src, /particles/dirt_kickup_large)
+
+	if(power > EXPLOSION_THRESHOLD_HIGH)
+		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 6 * radius, 6 * radius)
+	else if(power > EXPLOSION_THRESHOLD_LOW)
+		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 5 * radius, 5 * radius)
+	else
+		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 3 * radius, 3 * radius)
+	addtimer(CALLBACK(src, PROC_REF(set_count_short)), 5)
+	addtimer(CALLBACK(src, PROC_REF(set_count_long)), 10)
+
+/obj/effect/temp_visual/rappel_dust/proc/set_count_short()
+	smoke_wave.particles.count = 0
+	large_kickup.particles.count = 0
+	falling_debris.particles.count = 0
+
+/obj/effect/temp_visual/rappel_dust/proc/set_count_long()
+	dirt_kickup.particles.count = 0
+
+/obj/effect/temp_visual/rappel_dust/Destroy()
+	QDEL_NULL(smoke_wave)
 	QDEL_NULL(large_kickup)
 	QDEL_NULL(falling_debris)
 	QDEL_NULL(dirt_kickup)

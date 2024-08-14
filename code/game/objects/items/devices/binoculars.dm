@@ -4,6 +4,7 @@
 	desc = "A military-issued pair of binoculars."
 	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "binoculars"
+	item_state = ""
 	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
 	drop_sound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
@@ -14,6 +15,8 @@
 	throw_speed = SPEED_VERY_FAST
 	/// If FALSE won't change icon_state to a camo marine bino.
 	var/uses_camo = TRUE
+	var/raised = FALSE
+	var/base_item_state = "binoculars"
 
 
 	//matter = list("metal" = 50,"glass" = 50)
@@ -30,7 +33,26 @@
 	if(SEND_SIGNAL(user, COMSIG_BINOCULAR_ATTACK_SELF, src))
 		return
 
+	if(raised)
+		set_raised(FALSE, user)
+	else
+		set_raised(TRUE, user)
+
 	zoom(user, 11, 12)
+
+/obj/item/device/binoculars/proc/set_raised(to_raise, mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+
+	if(!to_raise)
+		raised = FALSE
+		item_state = "[base_item_state]"
+	else
+		raised = TRUE
+		item_state = "[base_item_state]_eyes"
+
+	H.update_inv_r_hand()
+	H.update_inv_l_hand()
 
 /obj/item/device/binoculars/dropped(/obj/item/item, mob/user)
 	. = ..()

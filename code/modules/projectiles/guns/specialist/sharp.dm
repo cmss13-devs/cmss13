@@ -24,7 +24,7 @@
 	flags_item = TWOHANDED|NO_CRYO_STORE
 	map_specific_decoration = TRUE
 
-	var/explosion_delay_sharp = FALSE
+	var/explosion_delay_sharp = TRUE
 
 
 /obj/item/weapon/gun/rifle/sharp/set_gun_attachment_offsets()
@@ -33,7 +33,7 @@
 /obj/item/weapon/gun/rifle/sharp/set_gun_config_values()
 	..()
 	set_burst_amount(BURST_AMOUNT_TIER_1)
-	fire_delay = FIRE_DELAY_TIER_SHARP
+	fire_delay = FIRE_DELAY_TIER_AMR
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_NONE
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -61,18 +61,24 @@
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
 
+//code for changing explosion delay on direct hits
+
 /obj/item/weapon/gun/rifle/sharp/do_toggle_firemode(mob/user)
 	. = ..()
 	explosion_delay_sharp = !explosion_delay_sharp
 	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [explosion_delay_sharp ? SPAN_BOLD("enable") : SPAN_BOLD("disable")] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("five seconds") : SPAN_BOLD("one second")]."))
 
+//code for changing flechette ammo rate of fire
+
 /obj/item/weapon/gun/rifle/sharp/reload(mob/user, obj/item/ammo_magazine/magazine)
 	. = ..()
 	if(magazine.type == /obj/item/ammo_magazine/rifle/sharp/flechette)
 		set_fire_delay(FIRE_DELAY_TIER_SNIPER)
 	else
-		set_fire_delay(FIRE_DELAY_TIER_SHARP)
+		set_fire_delay(FIRE_DELAY_TIER_AMR)
+
+
 /*
 //========
 					SHARP Dart Ammo
@@ -148,7 +154,7 @@
 
 /datum/ammo/rifle/sharp/explosive/proc/delayed_explosion(obj/projectile/P, mob/M, mob/shooter)
 	if(ismob(M))
-		var/explosion_size = 100
+		var/explosion_size = 50
 		var/falloff_size = 50
 		var/cause_data = create_cause_data("P9 SHARP Rifle", shooter)
 		cell_explosion(get_turf(M), explosion_size, falloff_size, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, cause_data)

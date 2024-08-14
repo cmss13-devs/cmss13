@@ -127,8 +127,8 @@
 	SSmob.living_misc_mobs -= src
 	return ..()
 
-/mob/living/carbon/xenomorph/hellhound/handle_blood_splatter(splatter_dir)
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/hellhound(loc, splatter_dir)
+/mob/living/carbon/xenomorph/hellhound/handle_blood_splatter(splatter_dir, splatter_angle)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/hellhound(loc, splatter_dir, splatter_angle)
 
 /datum/behavior_delegate/hellhound_base
 	name = "Base Hellhound Behavior Delegate"

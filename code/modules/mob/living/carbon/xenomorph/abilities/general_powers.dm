@@ -1041,7 +1041,7 @@
 	target.apply_effect(3, DAZE)
 	shake_camera(target, 2, 1)
 
-	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
+	target.handle_blood_splatter(get_dir(owner, target), round(Get_Angle(owner, target), 1))
 	return target
 
 /datum/action/xeno_action/activable/tail_stab/proc/reset_direction(mob/living/carbon/xenomorph/stabbing_xeno, last_dir, new_dir)

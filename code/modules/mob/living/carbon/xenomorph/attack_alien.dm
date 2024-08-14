@@ -137,7 +137,7 @@
 			attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] [attacking_xeno.slashes_verb] [src]!"), \
 			SPAN_DANGER("We [attacking_xeno.slash_verb] [src]!"), null, null, CHAT_TYPE_XENO_COMBAT)
 
-			handle_blood_splatter(get_dir(attacking_xeno.loc, src.loc))
+			handle_blood_splatter(get_dir(attacking_xeno, loc), round(Get_Angle(attacking_xeno, loc), 1))
 
 			last_damage_data = create_cause_data(initial(attacking_xeno.name), attacking_xeno)
 

@@ -1023,8 +1023,7 @@
 	P.play_hit_effect(src)
 	if(damage || (ammo_flags & AMMO_SPECIAL_EMBED))
 
-		var/splatter_dir = get_dir(P.starting, loc)
-		handle_blood_splatter(splatter_dir)
+		handle_blood_splatter(get_dir(P.starting, loc), !isnull(P.angle) ? P.angle : round(Get_Angle(P.starting, loc), 1))
 
 		. = TRUE
 		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer = P.firer)
@@ -1121,7 +1120,7 @@
 
 	if(damage)
 		//only apply the blood splatter if we do damage
-		handle_blood_splatter(get_dir(P.starting, loc))
+		handle_blood_splatter(get_dir(P.starting, loc), !isnull(P.angle) ? P.angle : round(Get_Angle(P.starting, loc), 1))
 
 		apply_damage(damage_result,P.ammo.damage_type, P.def_zone) //Deal the damage.
 		if(length(xeno_shields))

@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(blood_particles)
 	layer = ABOVE_XENO_LAYER
 	var/splatter_type = "splatter"
 
-/obj/effect/temp_visual/dir_setting/bloodsplatter/Initialize(mapload, set_dir, fx_duration, color_override)
+/obj/effect/temp_visual/dir_setting/bloodsplatter/Initialize(mapload, set_dir, set_angle, fx_duration, color_override)
 	if(color_override)
 		color = color_override
 	if(IS_DIAGONAL_DIR(set_dir))
@@ -70,9 +70,12 @@ GLOBAL_LIST_EMPTY(blood_particles)
 	else
 		icon_state = "[splatter_type][pick(3, 4, 5)]"
 	. = ..()
+	var/x_component = sin(set_angle) * -15
+	var/y_component = cos(set_angle) * -15
 	if(!GLOB.blood_particles[color])
 		GLOB.blood_particles[color] = new /particles/splatter(color)
 	particles = GLOB.blood_particles[color]
+	particles.velocity = list(x_component, y_component)
 	if(fx_duration)
 		duration = fx_duration
 	var/target_pixel_x = 0

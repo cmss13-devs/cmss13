@@ -122,11 +122,10 @@
 		else
 			wound_icon_holder.icon_state = "[caste_name]_walk_[health_threshold]"
 
-/mob/living/simple_animal/hostile/alien/bullet_act(obj/projectile/P)
+/mob/living/simple_animal/hostile/alien/bullet_act(obj/projectile/proj)
 	. = ..()
-	if(P.damage)
-		var/splatter_dir = get_dir(P.starting, loc)//loc is the xeno getting hit, P.starting is the turf of where the projectile got spawned
-		new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir)
+	if(proj.damage)
+		new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, get_dir(proj.starting, loc), !isnull(proj.angle) ? proj.angle : round(Get_Angle(proj.starting, loc), 1))
 		if(prob(15))
 			roar_emote()
 

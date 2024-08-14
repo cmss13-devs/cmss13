@@ -383,7 +383,7 @@
 	else
 		explosion_size = 145
 	cell_explosion(loc, explosion_size, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data)
-	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 45)
+	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
 	qdel(src)
 
 /obj/item/explosive/mine/sharp/disarm()
@@ -441,7 +441,7 @@
 		var/smoke_radius = 2
 		smoke.set_up(smoke_radius, 0, loc)
 		smoke.start()
-		playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 45)
+		playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
 	else if(mine_level == 2)
 		var/datum/reagent/napalm/green/reagent = new()
 		new /obj/flamer_fire(loc, cause_data, reagent, 2)

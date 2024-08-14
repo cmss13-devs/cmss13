@@ -126,6 +126,7 @@
 	if(shooter && ismob(shooter))
 		if(!M.get_target_lock(shooter.faction_group))
 			var/obj/item/weapon/gun/rifle/sharp/weapon = P.shot_from
+			playsound(get_turf(M), 'sound/weapons/gun_sharp_explode.ogg', 100)
 			if(weapon && weapon.explosion_delay_sharp)
 				addtimer(CALLBACK(src, PROC_REF(delayed_explosion), P, M, shooter), 5 SECONDS)
 			else
@@ -150,7 +151,7 @@
 		var/falloff_size = 50
 		var/cause_data = create_cause_data("P9 SHARP Rifle", shooter)
 		cell_explosion(get_turf(M), explosion_size, falloff_size, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, cause_data)
-		playsound(get_turf(M), 'sound/weapons/gun_sharp_explode.ogg', 45)
+
 
 /datum/ammo/rifle/sharp/incendiary
 	name = "9X-T sticky incendiary dart"
@@ -165,6 +166,7 @@
 	if(shooter && ismob(shooter))
 		if(!M.get_target_lock(shooter.faction_group))
 			var/obj/item/weapon/gun/rifle/sharp/weapon = P.shot_from
+			playsound(get_turf(M), 'sound/weapons/gun_sharp_explode.ogg', 100)
 			if(weapon && weapon.explosion_delay_sharp)
 				addtimer(CALLBACK(src, PROC_REF(delayed_fire), P, M, shooter), 5 SECONDS)
 			else
@@ -189,7 +191,6 @@
 		var/smoke_radius = 2
 		smoke.set_up(smoke_radius, 0, get_turf(M))
 		smoke.start()
-		playsound(get_turf(M), 'sound/weapons/gun_sharp_explode.ogg', 45)
 
 /datum/ammo/rifle/sharp/flechette
 	name = "9X-F flechette dart"

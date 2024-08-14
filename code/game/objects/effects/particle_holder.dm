@@ -18,7 +18,6 @@
 		stack_trace("particle holder was created with no loc!")
 		return INITIALIZE_HINT_QDEL
 	if(!particle_path)
-		stack_trace("particle holder was created with no particle path!")
 		return INITIALIZE_HINT_QDEL
 	if(ismovable(loc))
 		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))

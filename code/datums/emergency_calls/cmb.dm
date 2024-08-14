@@ -225,7 +225,7 @@
 	..()
 	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], this is Anchorpoint Station with the Colonial Marshal Bureau. We are receiving your distress signal and are dispatching a nearby riot control team to board with you now. Standby."
 
-/datum/emergency_call/cmb/create_member(datum/mind/M, turf/override_spawn_loc)
+/datum/emergency_call/cmb/riot_control/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))

@@ -292,8 +292,8 @@
 	pressed = FALSE
 	var/detonation_count = 0
 	for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
-		charges.detonate(src)
-		detonation_count++
+		if(charges.detonate(src))
+			detonation_count++
 	to_chat(user, SPAN_NOTICE("[src] reported [detonation_count] charge[detonation_count > 1 ? "s" : ""] detonated."))
 
 /obj/item/satchel_charge_detonator/clicked(mob/user, list/mods)  // kill me
@@ -365,12 +365,13 @@
 	if(linked_detonator == detonator)
 		detonator.linked_charges -= src
 		linked_detonator = null
-		to_chat(user, SPAN_NOTICE("You unlink the charge from the detonator."))
+		to_chat(user, SPAN_NOTICE("You unlink the charge from [detonator]."))
 		icon_state = "satchel"
 	else
+		linked_detonator?.linked_charges -= src
 		detonator.linked_charges |= src
 		linked_detonator = detonator
-		to_chat(user, SPAN_NOTICE("The detonator indicates a new charge has been linked."))
+		to_chat(user, SPAN_NOTICE("[detonator] indicates a new charge has been linked."))
 		icon_state = "satchel_linked"
 
 /obj/item/explosive/satchel_charge/proc/un_activate()
@@ -413,9 +414,10 @@
 
 /obj/item/explosive/satchel_charge/proc/detonate(triggerer)
 	if(!armed || linked_detonator != triggerer)
-		return
+		return FALSE
 	cell_explosion(loc, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 	qdel(src)
+	return TRUE
 
 /obj/item/explosive/satchel_charge/Destroy()
 	linked_detonator?.linked_charges -= src

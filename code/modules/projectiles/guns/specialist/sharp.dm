@@ -194,7 +194,7 @@
 
 /datum/ammo/rifle/sharp/incendiary/proc/delayed_fire(obj/projectile/P, mob/M, mob/shooter)
 	if(ismob(M))
-		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
+		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus/sharp
 		var/smoke_radius = 2
 		smoke.set_up(smoke_radius, 0, get_turf(M))
 		smoke.start()

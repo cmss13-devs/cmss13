@@ -37,7 +37,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dress_corporate_liaison, list(
 	list("Grey Vest", 0, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Brown Vest", 0, /obj/item/clothing/suit/storage/jacket/marine/vest, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Tan Vest", 0, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
-	list("External Webbing", 0, /obj/item/clothing/suit/storage/webbing, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 	list("TIES", 0, null, null, null),
 	list("Black Tie", 0, /obj/item/clothing/accessory/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),

@@ -63,7 +63,7 @@
 			M.apply_effect(2.5, SUPERSLOW)
 			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
-			var/no_clothes_neuro = FALSE
+	var/no_clothes_neuro = FALSE
 
 			if(ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -71,7 +71,7 @@
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
-			if(M.GetKnockDownDuration() < 5)
+			if(M.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
 				M.KnockDown(power)
 				M.Stun(power)
 				M.visible_message(SPAN_DANGER("[M] falls prone."))
@@ -91,7 +91,7 @@
 			H.visible_message(SPAN_DANGER("[H] shrugs off the neurotoxin!"))
 			return
 
-		H.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Adjust as needed.
+		H.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
 		H.Stun(0.7)
 		H.visible_message(SPAN_DANGER("[H] falls prone."))
 

@@ -210,3 +210,12 @@
   - bugfix: Fixed sadar rockets not gibbing humans on direct hit
   MarpleJones:
   - balance: Reduces the cost of the AGM-184 'Harpoon II' from 300 to 200.
+2024-08-15:
+  Blundir:
+  - rscadd: plasteel non folding barricade
+  Steelpoint:
+  - rscadd: A plantable UPP flag has been added to the game, an equilivant of the
+      United Americas flag. Currently admin spawn only.
+  - rscadd: A Command Tablet has been added that can be used by UPP Officers.
+  - rscadd: UPP Officers ranked O4 or greater (USCM Major Equilivant) are issued with
+      a Command Tablet.

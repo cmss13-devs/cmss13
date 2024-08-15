@@ -54,7 +54,7 @@
 
 	if(!isxeno(M))
 		if(insta_neuro)
-			if(M.GetKnockDownDuration() < 3)
+			if(M.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
 				M.KnockDown(power)
 				M.Stun(power)
 				return
@@ -63,7 +63,7 @@
 			M.apply_effect(2.5, SUPERSLOW)
 			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
-	var/no_clothes_neuro = FALSE
+		var/no_clothes_neuro = FALSE
 
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -79,24 +79,24 @@
 /proc/apply_scatter_neuro(mob/living/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if (skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
-			H.visible_message(SPAN_DANGER("[H] withstands the neurotoxin!"))
-			return // Endurance 5 makes you immune to weak neuro
+		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
+			M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+			return //endurance 5 makes you immune to weak neuro
 
 		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR))
-			H.visible_message(SPAN_DANGER("[H] withstands the neurotoxin!"))
+			H.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
 			return // Survivors should be immune to weak neurotoxin
 
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[H] shrugs off the neurotoxin!"))
+			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
-		H.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
-		H.Stun(0.7)
-		H.visible_message(SPAN_DANGER("[H] falls prone."))
+		M.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
+		M.Stun(0.7)
+		M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
-	if (ishuman(M))
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.status_flags & XENO_HOST)
 			neuro_callback.Invoke(H, effect_power, TRUE)

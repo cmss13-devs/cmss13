@@ -220,3 +220,10 @@
 	caliber = ".455"
 	default_ammo = /datum/ammo/bullet/revolver/webley
 	gun_type = /obj/item/weapon/gun/revolver/m44/custom/webley
+
+//-------------------------------------------------------
+//SHOTGUN REVOLVER //For the more agressive cowboys/SWAT team
+/obj/item/ammo_magazin/iternal/revolver/mts255
+	caliber = "12g"
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+	gun_type = /obj/item/weapon/gun/revolver/mts255

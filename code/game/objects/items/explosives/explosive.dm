@@ -276,6 +276,7 @@
 	desc = "An ergonomic detonator capable of detonating multiple types of command explosives, notable being satchel charges, detcords and plastic explosives."
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "detonator"
+	w_class = SIZE_TINY
 
 	/// list of linked explosives to handle
 	var/list/linked_charges = list()

@@ -223,7 +223,7 @@
 
 //-------------------------------------------------------
 //SHOTGUN REVOLVER //For the more agressive cowboys/SWAT team
-/obj/item/ammo_magazin/iternal/revolver/mts255
+/obj/item/ammo_magazine/iternal/revolver/mts255
 	caliber = "12g"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	gun_type = /obj/item/weapon/gun/revolver/mts255

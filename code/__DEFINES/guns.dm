@@ -57,3 +57,8 @@
 #define CO_GUN_DEAGLE "Desert Eagle"
 #define CO_GUN_MATEBA_COUNCIL "Colonel's Mateba"
 #define CO_GUN_DEAGLE_COUNCIL "Golden Desert Eagle"
+
+//Colors for Shotguns shells and boxes //Needs to be figured out what the colors for the rest need to be
+
+#define AMMO_BAND_COLOR_LIGHT_BIRDSHOT "#F9F6EE"
+

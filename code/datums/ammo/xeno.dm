@@ -65,7 +65,7 @@
 
 	var/no_clothes_neuro = FALSE
 
-			if(ishuman(M))
+		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(!H.wear_suit || H.wear_suit.slowdown == 0)
 				no_clothes_neuro = TRUE
@@ -77,17 +77,17 @@
 				M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /proc/apply_scatter_neuro(mob/living/M)
-	if (ishuman(M))
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
 			H.visible_message(SPAN_DANGER("[H] withstands the neurotoxin!"))
 			return // Endurance 5 makes you immune to weak neuro
 
-		if (skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR))
+		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR))
 			H.visible_message(SPAN_DANGER("[H] withstands the neurotoxin!"))
 			return // Survivors should be immune to weak neurotoxin
 
-		if (H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
 			H.visible_message(SPAN_DANGER("[H] shrugs off the neurotoxin!"))
 			return
 
@@ -95,10 +95,10 @@
 		H.Stun(0.7)
 		H.visible_message(SPAN_DANGER("[H] falls prone."))
 
-/datum/ammo/xeno/toxin/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if (H.status_flags & XENO_HOST)
+		if(H.status_flags & XENO_HOST)
 			neuro_callback.Invoke(H, effect_power, TRUE)
 			return
 

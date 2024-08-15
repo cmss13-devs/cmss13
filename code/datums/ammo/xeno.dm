@@ -22,77 +22,87 @@
 	max_range = 12
 
 /datum/ammo/xeno/toxin
-	name = "neurotoxic spit"
-	damage_falloff = 0
-	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
-	spit_cost = 25
-	var/effect_power = XENO_NEURO_TIER_4
-	var/datum/callback/neuro_callback
+    name = "neurotoxic spit"
+    damage_falloff = 0
+    flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
+    spit_cost = 25
+    var/effect_power = XENO_NEURO_TIER_4
+    var/datum/callback/neuro_callback
 
-	shell_speed = AMMO_SPEED_TIER_3
-	max_range = 7
+    shell_speed = AMMO_SPEED_TIER_3
+    max_range = 7
 
 /datum/ammo/xeno/toxin/New()
-	..()
+    ..()
 
-	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
+    neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
 /proc/apply_neuro(mob/living/M, power, insta_neuro)
-	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
-		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
-		return //endurance 5 makes you immune to weak neurotoxin
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
-			return //species like zombies or synths are immune to neurotoxin
+    if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
+        M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+        return //endurance 5 makes you immune to weak neurotoxin
 
-	if(!isxeno(M))
-		if(insta_neuro)
-			if(M.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
-				M.KnockDown(power)
-				M.Stun(power)
-				return
+    if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR) && !insta_neuro)
+        M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+        return // survivors should be immune to weak neurotoxin
 
-		if(ishuman(M))
-			M.apply_effect(2.5, SUPERSLOW)
-			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
+    if(ishuman(M))
+        var/mob/living/carbon/human/H = M
+        if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
+            H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+            return //species like zombies or synths are immune to neurotoxin
 
-		var/no_clothes_neuro = FALSE
+    if(!isxeno(M))
+        if(insta_neuro)
+            if(M.GetKnockDownDuration() < 3)
+                M.KnockDown(power)
+                M.Stun(power)
+                return
 
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(!H.wear_suit || H.wear_suit.slowdown == 0)
-				no_clothes_neuro = TRUE
+        if(ishuman(M))
+            M.apply_effect(2.5, SUPERSLOW)
+            M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
-		if(no_clothes_neuro)
-			if(M.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
-				M.KnockDown(power)
-				M.Stun(power)
-				M.visible_message(SPAN_DANGER("[M] falls prone."))
+        var/no_clothes_neuro = FALSE
+
+        if(ishuman(M))
+            var/mob/living/carbon/human/H = M
+            if(!H.wear_suit || H.wear_suit.slowdown == 0)
+                no_clothes_neuro = TRUE
+
+        if(no_clothes_neuro)
+            if(M.GetKnockDownDuration() < 5)
+                M.KnockDown(power)
+                M.Stun(power)
+                M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /proc/apply_scatter_neuro(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
-			M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
-			return //endurance 5 makes you immune to weak neuro
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
-			return
+    if (ishuman(M))
+        var/mob/living/carbon/human/H = M
+        if (skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
+            H.visible_message(SPAN_DANGER("[H] withstands the neurotoxin!"))
+            return // Endurance 5 makes you immune to weak neuro
 
-		M.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
-		M.Stun(0.7)
-		M.visible_message(SPAN_DANGER("[M] falls prone."))
+        if (skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR))
+            H.visible_message(SPAN_DANGER("[H] withstands the neurotoxin!"))
+            return // Survivors should be immune to weak neurotoxin
 
-/datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.status_flags & XENO_HOST)
-			neuro_callback.Invoke(H, effect_power, TRUE)
-			return
+        if (H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
+            H.visible_message(SPAN_DANGER("[H] shrugs off the neurotoxin!"))
+            return
 
-	neuro_callback.Invoke(M, effect_power, FALSE)
+        H.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Adjust as needed.
+        H.Stun(0.7)
+        H.visible_message(SPAN_DANGER("[H] falls prone."))
+
+/datum/ammo/xeno/toxin/on_hit_mob(mob/M, obj/projectile/P)
+    if (ishuman(M))
+        var/mob/living/carbon/human/H = M
+        if (H.status_flags & XENO_HOST)
+            neuro_callback.Invoke(H, effect_power, TRUE)
+            return
+
+    neuro_callback.Invoke(M, effect_power, FALSE)
 
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"

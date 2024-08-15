@@ -145,14 +145,14 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 
 	attack_log += "[log_message]."
 
-	if(!mind || statistic_exempt)
+	if(statistic_exempt)
 		return
 
 	var/area/area = get_area(death_loc)
 	handle_observer_message(cause_data, cause_mob, death_loc, area)
 
 	var/datum/entity/statistic_death/new_death = DB_ENTITY(/datum/entity/statistic_death)
-	var/datum/entity/player/player_entity = get_player_from_key(mind.ckey)
+	var/datum/entity/player/player_entity = get_player_from_key(mind ? mind.ckey : ckey)
 	if(player_entity)
 		new_death.player_id = player_entity.id
 

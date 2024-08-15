@@ -100,7 +100,7 @@
 			GLOB.specialist_set_datums[path].available_vendor_num--
 		ADD_TRAIT(redeemer, TRAIT_SPEC_VENDOR, TRAIT_SOURCE_INHERENT)
 	ADD_TRAIT(redeemer, TRAIT_SPEC(trait_to_give), TRAIT_SOURCE_INHERENT)
-	var/obj/item/card/id/idcard = redeemer.wear_id
+	var/obj/item/card/id/idcard = redeemer.get_idcard()
 	if(idcard)
 		idcard.set_assignment((redeemer.assigned_squad ? (redeemer.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([role_name])")
 		GLOB.data_core.manifest_modify(redeemer.real_name, WEAKREF(redeemer), idcard.assignment)

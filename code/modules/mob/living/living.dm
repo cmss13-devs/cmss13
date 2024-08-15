@@ -355,9 +355,20 @@
 		now_pushing = FALSE
 		return
 
+	//If who I collided into is a xeno that isn't a larva:
+	//Cast them into the xeno datum
+	//If they (not as a xeno datum) are big or bigger; OR I am a human that isn't a predator; OR I am a runner:
+	//set now_pushing to false and return
 	if(isxeno(L) && !islarva(L))
 		var/mob/living/carbon/xenomorph/X = L
-		if(X.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isyautja(src))) // Small xenos can be pushed by other xenos or preds
+		if(X.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isyautja(src)) || (isrunner(src))) // Small xenos can be pushed by other xenos or preds
+			now_pushing = FALSE
+			return
+	//If I am a runner
+	//and my target is a human OR xeno
+	//I cannot push the target
+	if(isrunner(src))
+		if(ishuman(L) || isxeno(L))
 			now_pushing = FALSE
 			return
 

@@ -62,9 +62,9 @@
 	on = !on
 	set_light_on(on)
 	update_icon()
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.update_button_icon()
+	for(var/xman in actions)
+		var/datum/action/active = xman
+		active.update_button_icon()
 
 	return TRUE
 
@@ -73,68 +73,71 @@
 		on = FALSE
 		set_light_on(on)
 		update_icon()
-		for(var/X in actions)
-			var/datum/action/A = X
-			A.update_button_icon()
+		for(var/xman in actions)
+			var/datum/action/active = xman
+			active.update_button_icon()
 		return 1
 	return 0
 
-/obj/item/device/flashlight/attackby(obj/item/I as obj, mob/user as mob)
-	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
+/obj/item/device/flashlight/attackby(obj/item/item as obj, mob/user as mob)
+	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(!raillight_compatible) //No fancy messages, just no
 			return
 		if(on)
 			to_chat(user, SPAN_WARNING("Turn off [src] first."))
 			return
 		if(isstorage(loc))
-			var/obj/item/storage/S = loc
-			S.remove_from_storage(src)
+			var/obj/item/storage/container = loc
+			container.remove_from_storage(src)
 		if(loc == user)
 			user.drop_inv_item_on_ground(src) //This part is important to make sure our light sources update, as it calls dropped()
-		var/obj/item/attachable/flashlight/F = new(src.loc)
-		user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
+		var/obj/item/attachable/flashlight/flash = new(src.loc)
+		user.put_in_hands(flash) //This proc tries right, left, then drops it all-in-one.
 		to_chat(user, SPAN_NOTICE("You modify [src]. It can now be mounted on a weapon."))
-		to_chat(user, SPAN_NOTICE("Use a screwdriver on [F] to change it back."))
+		to_chat(user, SPAN_NOTICE("Use a screwdriver on [flash] to change it back."))
 		qdel(src) //Delete da old flashlight
 		return
 	else
 		..()
 
-/obj/item/device/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
+/obj/item/device/flashlight/attack(mob/living/carbon/human/being as mob, mob/living/user as mob)
 	add_fingerprint(user)
 	if(on && user.zone_selected == "eyes")
 
 		if((user.getBrainLoss() >= 60) && prob(50)) //too dumb to use flashlight properly
 			return ..() //just hit them in the head
 
-		if((!ishuman(user) || SSticker) && SSticker.mode.name != "monkey") //don't have dexterity
+		if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey") //don't have dexterity
 			to_chat(user, SPAN_NOTICE("You don't have the dexterity to do this!"))
 			return
 
-		var/mob/living/carbon/human/H = M //mob has protective eyewear
-		if(ishuman(H) && ((H.head && H.head.flags_inventory & COVEREYES) || (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) || (H.glasses && H.glasses.flags_inventory & COVEREYES)))
-			to_chat(user, SPAN_NOTICE("You're going to need to remove that [(H.head && H.head.flags_inventory & COVEREYES) ? "helmet" : (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) ? "mask": "glasses"] first."))
+		var/mob/living/carbon/human/beingB = being //mob has protective eyewear
+		if(ishuman(beingB) && ((beingB.head && beingB.head.flags_inventory & COVEREYES) || (beingB.wear_mask && beingB.wear_mask.flags_inventory & COVEREYES) || (beingB.glasses && beingB.glasses.flags_inventory & COVEREYES)))
+			to_chat(user, SPAN_NOTICE("You're going to need to remove [(beingB.head && beingB.head.flags_inventory & COVEREYES) ? "that helmet" : (beingB.wear_mask && beingB.wear_mask.flags_inventory & COVEREYES) ? "that mask": "those glasses"] first."))
 			return
 
-		if(M == user) //they're using it on themselves
-			M.flash_eyes()
-			M.visible_message(SPAN_NOTICE("[M] directs [src] to \his eyes."), \
-							SPAN_NOTICE("You wave the light in front of your eyes! Trippy!"))
+		if(being == user) //they're using it on themselves
+			being.flash_eyes()
+			being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."), \
+							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] directs [src] to [M]'s eyes."), \
-							SPAN_NOTICE("You direct [src] to [M]'s eyes."))
+		user.visible_message(SPAN_NOTICE("[user] directs [src] to [being]'s eyes."), \
+							SPAN_NOTICE("You direct [src] to [being]'s eyes."))
 
-		if(istype(M, /mob/living/carbon/human)) //robots and aliens are unaffected
-			if(M.stat == DEAD || M.sdisabilities & DISABILITY_BLIND) //mob is dead or fully blind
-				to_chat(user, SPAN_NOTICE("[M] pupils does not react to the light!"))
-			else //they're okay!
-				M.flash_eyes()
-				to_chat(user, SPAN_NOTICE("[M]'s pupils narrow."))
+		if(ishuman_strict(being)) //robots and aliens are unaffected
+			var/datum/internal_organ/eyes/eyes = being.internal_organs_by_name["eyes"]
+			var/datum/internal_organ/brain/brain = being.internal_organs_by_name["brain"]
+			if(being.stat == DEAD || being.sdisabilities & DISABILITY_BLIND || eyes.organ_status == ORGAN_BROKEN || brain.organ_status == ORGAN_BROKEN) //mob is dead, fully blind, or their eyes are
+				to_chat(user, SPAN_NOTICE("[being]'s pupils do not react to the light!"))
+			else //they're okay! Well, probably
+				being.flash_eyes()
+				to_chat(user, SPAN_NOTICE("[being]'s pupils narrow."))
+				return
 	else
 		return ..()
 
-/obj/item/device/flashlight/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/item/device/flashlight/attack_alien(mob/living/carbon/xenomorph/being)
 	. = ..()
 
 	if(on && can_be_broken)
@@ -147,13 +150,74 @@
 
 /obj/item/device/flashlight/pen
 	name = "penlight"
-	desc = "A pen-sized light, used by medical staff."
+	desc = "A pen-sized light, used by medical staff to check the condition of eyes, brain, and the overall awareness of patients."
 	icon_state = "penlight"
 	item_state = ""
+	flags_equip_slot = SLOT_WAIST|SLOT_EAR|SLOT_SUIT_STORE
 	flags_atom = FPRINT|CONDUCT
 	light_range = 2
 	w_class = SIZE_TINY
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 15
+	matter = list("metal" = 10,"glass" = 5)
 	raillight_compatible = 0
+
+/obj/item/device/flashlight/pen/attack(mob/living/carbon/human/being as mob, mob/living/user as mob)
+	add_fingerprint(user)
+	if(user.a_intent == INTENT_HELP)
+		if(on && user.zone_selected == "eyes")
+			if(!ishuman_strict(being)) //robots and aliens are unaffected
+				return
+			var/reaction = null
+			if(isnull(being.internal_organs_by_name))
+				reaction = "discover that indeed [being.p_they()] have nothing to be checked"
+				return // they have no organs somehow
+			if(being == user) //they're using it on themselves
+				being.flash_eyes()
+				being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."), \
+							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
+				return
+			if(being.stat == DEAD || (being.status_flags&FAKEDEATH))
+				reaction = "conclude that [being.p_their()] eyes are completely lifeless, [being.p_they()] must have passed away"
+			else
+				var/datum/internal_organ/eyes/eyes = being.internal_organs_by_name["eyes"]
+				var/datum/internal_organ/brain/brain = being.internal_organs_by_name["brain"]
+				if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+					if(eyes)
+						switch(eyes.organ_status)
+							if(ORGAN_LITTLE_BRUISED)
+								being.flash_eyes()
+								reaction = "notice that [being.p_their()] eyes are <font color='yellow'>reacting to the light</font>, but [being.p_their()] pupils seen to <font color='yellow'>react sluggishly and with small delays</font>, [being.p_their()] vision is probably <font color='yellow'>a little impaired</font>"
+							if(ORGAN_BRUISED)
+								being.flash_eyes()
+								reaction = "observe that [being.p_their()] eyes are <font color='orange'>unrealiably reacting to the light</font>, with [being.p_their()] pupils <font color='orange'>reacting very sluggishly and with noticeable delays</font>, it is probable that [being.p_their()] vision is <font color='orange'>remarkably impaired</font>"
+							if(ORGAN_BROKEN)
+								reaction = "notice that [being.p_their()] eyes are <font color='red'>not reacting to the light</font>, and the pupils of both eyes are <font color='red'>not constricting with the light</font> shine at all, [being.p_they()] is probably <font color='red'>blind</font>"
+							else
+								being.flash_eyes()
+								reaction = "perceive that [being.p_their()] eyes and pupils are <font color='green'>normally reacting to the light</font>, [being.p_they()] is probably<font color='green'> seeing without problems</font>"
+					if(brain)
+						if(reaction)
+							reaction += ". You also "
+						switch(brain.organ_status)
+							if(ORGAN_LITTLE_BRUISED)
+								being.flash_eyes()
+								reaction += "notice that the pupils are <font color='yellow'>consensually constricting with a significant delay</font> when light is separately applied to each eye, meaning that [being.p_they()] possibly have <font color='yellow'>subtle brain damage</font>"
+							if(ORGAN_BRUISED)
+								being.flash_eyes()
+								reaction += "notice that the pupils are <font color='orange'>not consensually constricting</font> when light is separately applied to each eye, meaning possible <font color='orange'>brain damage</font>"
+							if(ORGAN_BROKEN)
+								reaction += "notice that the pupils <font color='red'>have different sizes and are assymmetric</font>, [being.p_they()] possibly have <font color='red'>severe brain damage</font>"
+							else
+								being.flash_eyes()
+								reaction += "notice that the pupils are <font color='green'>consensually and normally constricting</font> when light is separately applied to each eye, [being.p_their()] brain is <font color='green'>probably fine</font>"
+					else
+						reaction = "can't see anything at all, weirdly enough"
+				else
+					being.flash_eyes()
+					reaction = "don't really know what you are looking for, you don't know anything about medicine"
+			user.visible_message("[user] directs [src] to [being]'s eyes.", "You point [src] to [being.p_their()] eyes to begin analysing them further and... you [reaction].")
+	return ..()
 
 /obj/item/device/flashlight/drone
 	name = "low-power flashlight"
@@ -364,9 +428,9 @@
 		user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
 		playsound(src,'sound/handling/flare_activate_2.ogg', 50, 1) //cool guy sound
 		turn_on()
-		var/mob/living/carbon/U = user
-		if(istype(U) && !U.throw_mode)
-			U.toggle_throw_mode(THROW_MODE_NORMAL)
+		var/mob/living/carbon/enjoyer = user
+		if(istype(enjoyer) && !enjoyer.throw_mode)
+			enjoyer.toggle_throw_mode(THROW_MODE_NORMAL)
 
 /obj/item/device/flashlight/flare/proc/activate_signal(mob/living/carbon/human/user)
 	return

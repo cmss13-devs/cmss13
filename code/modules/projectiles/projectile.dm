@@ -337,12 +337,6 @@
 
 	//Animate the visuals from starting position to new position
 
-	if(projectile_flags & PROJECTILE_SHRAPNEL) //there can be a LOT of shrapnel especially from a cluster OB, not important enough for the expense of an animate()
-		alpha = alpha_new
-		pixel_x = pixel_x_rel_new
-		pixel_y = pixel_y_rel_new
-		return
-
 	var/anim_time = delta_time * 0.1
 	animate(src, pixel_x = pixel_x_rel_new, pixel_y = pixel_y_rel_new, alpha = alpha_new, time = anim_time, flags = ANIMATION_END_NOW)
 
@@ -841,8 +835,8 @@
 //mobs use get_projectile_hit_chance instead of get_projectile_hit_boolean
 
 /mob/living/proc/get_projectile_hit_chance(obj/projectile/P)
-	if((body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_NESTED)) && src != P.original)
-		return FALSE // Snowflake check for xeno nests, because we want bullets to fly through even though they're standing in it
+	if((body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_NO_STRAY)) && src != P.original)
+		return FALSE
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_XENO)
 		if((status_flags & XENO_HOST) && HAS_TRAIT(src, TRAIT_NESTED))

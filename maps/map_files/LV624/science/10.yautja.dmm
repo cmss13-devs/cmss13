@@ -380,9 +380,7 @@
 /area/lv624/lazarus/research)
 "Hj" = (
 /obj/effect/landmark/crap_item,
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "Lo" = (

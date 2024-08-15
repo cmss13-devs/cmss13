@@ -69,6 +69,3 @@
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		armor_bullet = CLOTHING_ARMOR_HIGH
 		armor_internaldamage = CLOTHING_ARMOR_HIGH
-	else
-		armor_bullet = CLOTHING_ARMOR_MEDIUM
-		armor_internaldamage = CLOTHING_ARMOR_MEDIUM

@@ -30,10 +30,6 @@
 		armor_bullet = CLOTHING_ARMOR_HIGH
 		armor_bomb = CLOTHING_ARMOR_MEDIUM
 		armor_internaldamage = CLOTHING_ARMOR_HIGH
-	else
-		armor_bullet = CLOTHING_ARMOR_MEDIUM
-		armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-		armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/marine/ghillie/dropped(mob/user)
 	if(ishuman(user) && !issynth(user))

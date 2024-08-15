@@ -292,10 +292,6 @@
 		armor_bullet = CLOTHING_ARMOR_HIGH
 		armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
 		armor_internaldamage = CLOTHING_ARMOR_HIGH
-	else
-		armor_bullet = CLOTHING_ARMOR_MEDIUM
-		armor_bomb = CLOTHING_ARMOR_MEDIUM
-		armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 
 /obj/item/clothing/suit/storage/marine/MP/warden
 	name = "\improper M3 pattern warden MP armor"
@@ -432,10 +428,6 @@
 		armor_bullet = CLOTHING_ARMOR_HIGH
 		armor_bomb = CLOTHING_ARMOR_MEDIUM
 		armor_internaldamage = CLOTHING_ARMOR_HIGH
-	else
-		armor_bullet = CLOTHING_ARMOR_MEDIUM
-		armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-		armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 // M3-L pattern light armor
 /obj/item/clothing/suit/storage/marine/light
@@ -483,10 +475,6 @@
 		armor_bullet = CLOTHING_ARMOR_MEDIUM
 		armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 		armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-	else
-		armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
-		armor_bomb = CLOTHING_ARMOR_MEDIUM
-		armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/storage/marine/light/vest
 	name = "\improper M3-VL pattern ballistics vest"
@@ -536,10 +524,6 @@
 /obj/item/clothing/suit/storage/marine/light/synvest/Initialize(mapload)
 	. = ..()
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
-		armor_bullet = CLOTHING_ARMOR_NONE
-		armor_bomb = CLOTHING_ARMOR_NONE
-		armor_internaldamage = CLOTHING_ARMOR_NONE
-	else
 		armor_bullet = CLOTHING_ARMOR_NONE
 		armor_bomb = CLOTHING_ARMOR_NONE
 		armor_internaldamage = CLOTHING_ARMOR_NONE
@@ -626,8 +610,6 @@
 	. = ..()
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		armor_internaldamage = CLOTHING_ARMOR_HIGH
-	else
-		armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 //===========================//SPECIALIST\\================================\\
 //=======================================================================\\
@@ -681,9 +663,6 @@
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 		armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
-	else
-		armor_bullet = CLOTHING_ARMOR_HIGH
-		armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 /obj/item/clothing/suit/storage/marine/M3G
 	name = "\improper M3-G4 grenadier armor"
@@ -710,9 +689,6 @@
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		armor_bullet = CLOTHING_ARMOR_HIGH
 		armor_internaldamage = CLOTHING_ARMOR_HIGH
-	else
-		armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
-		armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 /obj/item/clothing/suit/storage/marine/M3T
 	name = "\improper M3-T light armor"
@@ -729,9 +705,6 @@
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		armor_bullet = CLOTHING_ARMOR_HIGH
 		armor_internaldamage = CLOTHING_ARMOR_HIGH
-	else
-		armor_bullet = CLOTHING_ARMOR_MEDIUM
-		armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/marine/M3S
 	name = "\improper M3-S light armor"
@@ -749,10 +722,6 @@
 		armor_bullet = CLOTHING_ARMOR_HIGH
 		armor_bomb = CLOTHING_ARMOR_MEDIUM
 		armor_internaldamage = CLOTHING_ARMOR_HIGH
-	else
-		armor_bullet = CLOTHING_ARMOR_MEDIUM
-		armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-		armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/RO
 	name = "quartermaster jacket"

@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Plastic Explosive", 3, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Breaching Charge", 5, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_RECOMMENDED),
-		list("Satchel Charge Box (x5 charges, 1x detonator)", 18, /obj/item/storage/box/explosive_mines/satchel_charges, null, VENDOR_ITEM_RECOMMENDED),
+		list("Satchel Charge Box (x5 charges, 1x detonator)", 15, /obj/item/storage/box/explosive_mines/satchel_charges, null, VENDOR_ITEM_RECOMMENDED),
 		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
 		list("Super-Capacity Power Cell", 10, /obj/item/cell/super, null, VENDOR_ITEM_REGULAR),
 		list("ES-11 Mobile Fuel Canister", 4, /obj/item/tool/weldpack/minitank, null, VENDOR_ITEM_REGULAR),

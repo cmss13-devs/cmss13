@@ -3127,6 +3127,10 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/space)
+"kt" = (
+/obj/item/flag/plantable/upp,
+/turf/open/floor/corsat/plate,
+/area/space)
 "ku" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
@@ -5796,6 +5800,11 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic/lit)
+"um" = (
+/obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
+/turf/open/floor/corsat/plate,
+/area/space)
 "un" = (
 /obj/structure/sign/safety/storage{
 	pixel_y = 3;
@@ -7739,6 +7748,13 @@
 /obj/structure/machinery/sleep_console,
 /turf/open/floor/strata/white_cyan2,
 /area/space)
+"Be" = (
+/obj/structure/machinery/cm_vending/clothing/antag{
+	name = "\improper Response Team Automated Equipment Rack";
+	density = 0
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
 "Bf" = (
 /obj/structure/machinery/cm_vending/sorted/walkman{
 	pixel_y = 24;
@@ -7812,6 +7828,16 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/almayer/red/northeast,
+/area/space)
+"Bp" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = -4
+	},
+/obj/item/clothing/glasses/welding{
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/redfull,
 /area/space)
 "Bq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -10383,6 +10409,13 @@
 	},
 /turf/closed/wall/almayer/aicore/hull,
 /area/space)
+"JA" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
+/turf/open/floor/almayer/redfull,
+/area/space)
 "JB" = (
 /obj/structure/machinery/medical_pod/autodoc/unskilled,
 /turf/open/floor/strata/white_cyan2,
@@ -10470,6 +10503,10 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/prison/floor_marked/west,
 /area/event/metal/dynamic/lit)
+"Kb" = (
+/obj/item/folded_tent/cmd,
+/turf/open/floor/corsat/plate,
+/area/space)
 "Kc" = (
 /turf/open/floor/almayer_hull/outerhull_dir/northeast,
 /area/space)
@@ -12377,6 +12414,13 @@
 "Qu" = (
 /turf/open/floor/strata/white_cyan3/northeast,
 /area/event/metal/dynamic/lit)
+"Qv" = (
+/obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/no_access{
+	req_access = null
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
 "Qw" = (
 /obj/structure/platform,
 /obj/structure/blocker/invisible_wall,
@@ -12679,6 +12723,15 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/event/metal/dynamic/lit)
+"RC" = (
+/obj/structure/machinery/cm_vending/gear/antag{
+	hacked = 1;
+	name = "\improper Response Team Automated Gear Rack";
+	use_snowflake_points = 1;
+	density = 0
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
 "RD" = (
 /turf/open/floor/almayer_hull,
 /area/space)
@@ -13319,6 +13372,10 @@
 "Tw" = (
 /turf/open/floor/strata/orange_icorner,
 /area/space)
+"Tx" = (
+/obj/structure/machinery/cm_vending/gear/antag_guns,
+/turf/open/floor/corsat/plate,
+/area/space)
 "Tz" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 8;
@@ -13816,6 +13873,13 @@
 	},
 /turf/open/floor/corsat/bluecorner/east,
 /area/event/metal/dynamic/lit)
+"Vb" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/toolcloset,
+/turf/open/floor/almayer/redfull,
+/area/space)
 "Vd" = (
 /turf/open/floor/carpet,
 /area/space)
@@ -54421,11 +54485,11 @@ QR
 cd
 cd
 bs
-Wu
-Wu
-Wu
-Wu
-Wu
+cY
+cY
+cY
+cY
+cY
 jo
 cd
 ns
@@ -54673,11 +54737,11 @@ fL
 cd
 Tr
 bs
-Qk
-fr
-Kn
-Ja
-vj
+tl
+tl
+tl
+tl
+tl
 jo
 UD
 AV
@@ -54923,7 +54987,7 @@ Ww
 LV
 fL
 cd
-Tr
+cd
 bs
 bs
 bs
@@ -55175,13 +55239,13 @@ Ww
 LV
 fL
 cd
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
+cE
+Tx
+RC
+Be
+Tx
+RC
+Be
 cd
 cd
 cd
@@ -55427,14 +55491,14 @@ Ww
 LV
 fL
 cd
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
+cE
+Vb
+Bp
+JA
+cE
+cE
+cE
+cE
 cd
 bd
 bd
@@ -55679,14 +55743,14 @@ Ww
 LV
 fL
 cd
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
+cE
+cE
+cE
+cE
+cE
+cE
+cE
+cE
 cd
 bd
 bd
@@ -55931,14 +55995,14 @@ Ww
 LV
 fL
 cd
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
+cE
+cE
+cE
+cE
+cE
+kt
+cE
+cE
 cd
 bd
 bd
@@ -56183,14 +56247,14 @@ Ww
 LV
 fL
 cd
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
+cE
+cE
+cE
+cE
+Kb
+cE
+cE
+fX
 cd
 bd
 bd
@@ -56435,14 +56499,14 @@ je
 rM
 FB
 cd
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
+cE
+Qv
+um
+cE
+cE
+cE
+cE
+cE
 cd
 bd
 bd
@@ -56693,8 +56757,8 @@ cd
 cd
 cd
 cd
-Tr
-Tr
+cd
+cd
 cd
 bd
 bd

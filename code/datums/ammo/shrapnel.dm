@@ -70,6 +70,22 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
+/datum/ammo/bullet/shrapnel/birdshot
+	name = "shrapnel"
+	icon_state = "birdshot"
+	accurate_range_min = 5
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER
+
+	accuracy = HIT_ACCURACY_TIER_3
+	accurate_range = 32
+	max_range = 8
+	damage = 20
+	damage_var_low = -PROJECTILE_VARIANCE_TIER_6
+	damage_var_high = PROJECTILE_VARIANCE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_4
+	shell_speed = AMMO_SPEED_TIER_3
+	shrapnel_chance = 10
+
 /datum/ammo/bullet/shrapnel/metal
 	name = "metal shrapnel"
 	icon_state = "shrapnelshot_bit"

@@ -1,0 +1,4 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "Guns now support custom muzzle flash light color, some guns have a new color of it now, standard color is yellow tinted now instead of white"

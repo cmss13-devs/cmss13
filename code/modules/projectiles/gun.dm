@@ -33,6 +33,8 @@
 	var/muzzle_flash = "muzzle_flash"
 	///muzzle flash brightness
 	var/muzzle_flash_lum = 3
+	///Color of the muzzle flash light effect.
+	var/muzzle_flash_color = COLOR_VERY_SOFT_YELLOW
 
 	var/fire_sound = 'sound/weapons/Gunshot.ogg'
 	/// If fire_sound is null, it will pick a sound from the list here instead.
@@ -1780,6 +1782,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(!light_on && (light_range <= muzzle_flash_lum))
 		set_light_range(muzzle_flash_lum)
 		set_light_on(TRUE)
+		set_light_color(muzzle_flash_color)
 		addtimer(CALLBACK(src, PROC_REF(reset_light_range), prev_light), 0.5 SECONDS)
 
 	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', user, muzzle_flash, user.dir == NORTH ? ABOVE_LYING_MOB_LAYER : FLOAT_LAYER)

@@ -1264,7 +1264,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/supply
-	name = "UPP Korporal Logistiki"
+	name = "UPP Logistics Technician"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/supply_specialist
@@ -3889,13 +3889,13 @@
 
 
 /datum/equipment_preset/upp/commissar
-	name = "UPP Starshy Politruk"
+	name = "UPP Political Commissar"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_UPP_COMMISSAR
 	rank = JOB_UPP_COMMISSAR
 	paygrades = list(PAY_SHORT_UO4P = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "Politruk"
+	role_comm_title = "Commissar"
 	minimum_age = 30
 	skills = /datum/skills/upp/commissar
 

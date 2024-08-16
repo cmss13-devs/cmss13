@@ -97,7 +97,7 @@
 
 /datum/paygrade/upp/uo4p
 	paygrade = PAY_SHORT_UO4P
-	name = "Starshy Politruk"
+	name = "Political Commissar"
 	prefix = "Pol."
 	pay_multiplier = 5
 	officer_grade = GRADE_OFFICER

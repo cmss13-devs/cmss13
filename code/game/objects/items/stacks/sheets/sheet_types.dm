@@ -279,6 +279,7 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		null, \
 		new/datum/stack_recipe("empty shotgun shell box (Beanbag)", /obj/item/ammo_box/magazine/shotgun/beanbag/empty), \
 		new/datum/stack_recipe("empty shotgun shell box (Buckshot)", /obj/item/ammo_box/magazine/shotgun/buckshot/empty), \
+		new/datum/stack_recipe("empty shotgun shell box (Birdshot)", /obj/item/ammo_box/magazine/shotgun/birdshot/empty), \
 		new/datum/stack_recipe("empty shotgun shell box (Flechette)", /obj/item/ammo_box/magazine/shotgun/flechette/empty), \
 		new/datum/stack_recipe("empty shotgun shell box (Incendiary)", /obj/item/ammo_box/magazine/shotgun/incendiary/empty), \
 		new/datum/stack_recipe("empty shotgun shell box (Incendiary Buckshot)", /obj/item/ammo_box/magazine/shotgun/incendiarybuck/empty), \

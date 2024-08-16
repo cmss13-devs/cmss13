@@ -78,6 +78,14 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 	handful_state = "beanbag_slug"
 
+/obj/item/ammo_magazine/shotgun/birdshot
+	name = "box of birdshot shells"
+	desc = "A box filled with birdshot spread shotgun shells. 12 Gauge."
+	icon_state = "birdshot"
+	item_state = "birdshot"
+	default_ammo = /datum/ammo/bullet/shotgun/birdshot
+	handful_state = "birdshot_shell"
+
 /obj/item/ammo_magazine/shotgun/beanbag/riot
 	name = "box of RC beanbag slugs"
 	desc = "A box filled with beanbag shotgun shells used for non-lethal crowd control. Riot Control use only."

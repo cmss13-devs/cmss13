@@ -221,6 +221,10 @@
 	icon_state = "base_buck"
 	stuff = list(/obj/item/ammo_box/magazine/shotgun/buckshot)
 
+/obj/effect/landmark/wo_supplies/ammo/box/bird
+	icon_state = "base_bird"
+	stuff = list(/obj/item/ammo_box/magazine/shotgun/birdshot)
+
 /obj/effect/landmark/wo_supplies/ammo/box/smgmag
 	icon_state = "base_m39"
 	stuff = list(/obj/item/ammo_box/magazine/m39)

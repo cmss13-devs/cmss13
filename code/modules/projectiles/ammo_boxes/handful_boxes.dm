@@ -68,6 +68,14 @@
 /obj/item/ammo_box/magazine/shotgun/beanbag/empty
 	empty = TRUE
 
+/obj/item/ammo_box/magazine/shotgun/birdshot
+	name = "\improper shotgun shell box (Birdshot x 100)"
+	icon_state = "base_bird"
+	overlay_content = "_bird"
+	magazine_type = /obj/item/ammo_magazine/shotgun/birdshot
+
+/obj/item/ammo_box/magazine/shotgun/birdshot/empty
+	empty = TRUE
 
 //-----------------------16 GAUGE SHOTGUN SHELL BOXES-----------------------
 

@@ -1228,6 +1228,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 		/obj/item/ammo_box/magazine/shotgun/beanbag/empty = /obj/item/ammo_box/magazine/shotgun/beanbag,
 		/obj/item/ammo_box/magazine/shotgun/buckshot/empty = /obj/item/ammo_box/magazine/shotgun/buckshot,
+		/obj/item/ammo_box/magazine/shotgun/birdshot/empty = /obj/item/ammo_box/magazine/shotgun/birdshot,
 		/obj/item/ammo_box/magazine/shotgun/flechette/empty = /obj/item/ammo_box/magazine/shotgun/flechette,
 		/obj/item/ammo_box/magazine/shotgun/incendiary/empty = /obj/item/ammo_box/magazine/shotgun/incendiary,
 		/obj/item/ammo_box/magazine/shotgun/empty = /obj/item/ammo_box/magazine/shotgun,

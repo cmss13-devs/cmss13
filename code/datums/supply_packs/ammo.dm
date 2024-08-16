@@ -250,6 +250,16 @@
 	containername = "\improper shotgun breaching crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_shell_box_bird
+	name = "Shell box (100x birdshot shells)"
+	contains = list(
+		/obj/item/ammo_box/magazine/shotgun/birdshot,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper shotgun birdshot crate"
+	group = "Ammo"
+
 //------------------------For 88M4 ----------------
 
 /datum/supply_packs/ammo_mod88_mag_box_ap
@@ -498,6 +508,7 @@
 		/obj/item/ammo_magazine/shotgun,
 		/obj/item/ammo_magazine/shotgun/buckshot,
 		/obj/item/ammo_magazine/shotgun/buckshot,
+		/obj/item/ammo_magazine/shotgun/birdshot,
 		/obj/item/ammo_magazine/shotgun/incendiary,
 		/obj/item/ammo_magazine/rifle/m4ra/ap,
 		/obj/item/ammo_magazine/rifle/m4ra,

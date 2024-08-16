@@ -219,3 +219,6 @@
   - rscadd: A Command Tablet has been added that can be used by UPP Officers.
   - rscadd: UPP Officers ranked O4 or greater (USCM Major Equilivant) are issued with
       a Command Tablet.
+2024-08-16:
+  Doubleumc:
+  - ui: dark HUD indicators stay anchored to the viewport edge

@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(reagents)
 			GLOB.chemical_data.research_property_data += chem
 		if(prop.rarity > PROPERTY_DISABLED)
 			//Filters for the generator picking properties
-			if(prop.rarity == PROPERTY_RARE || prop.rarity == PROPERTY_LEGENDARY)
+			if(prop.rarity == PROPERTY_RARE) //legendary properties are no more
 				GLOB.chemical_properties_list["rare"][prop.name] = prop
 			else if(isNegativeProperty(prop))
 				GLOB.chemical_properties_list["negative"][prop.name] = prop

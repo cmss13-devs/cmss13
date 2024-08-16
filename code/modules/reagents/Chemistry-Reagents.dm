@@ -49,6 +49,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/burn_sprite = "dynamic"
 	var/burncolor = "#f88818"
 	var/burncolormod = 1
+	/// Cant be used in chemical synthesis in ANY way.
+	var/lockdown_chem = FALSE
 	var/fire_type = FIRE_VARIANT_DEFAULT //Unique types of fire not modeled by chemfire (1 = Armor Shredding Greenfire). Effects in flamer.dm
 	// Chem generator and research stuff
 	var/chemclass = CHEM_CLASS_NONE //Decides how rare the chem in the generation process
@@ -254,6 +256,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	power = C.power
 	falloff_modifier =  C.falloff_modifier
 	flags = C.flags
+	lockdown_chem = C.lockdown_chem
 
 /datum/chemical_reaction/proc/make_alike(datum/chemical_reaction/C)
 	if(!C)

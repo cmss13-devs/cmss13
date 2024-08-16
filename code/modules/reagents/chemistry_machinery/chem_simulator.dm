@@ -3,6 +3,7 @@
 #define MODE_SUPPRESS 2
 #define MODE_RELATE 3
 #define MODE_CREATE 4
+#define MODE_ADD 5
 
 #define SIMULATION_FAILURE -1
 #define SIMULATION_STAGE_OFF 0
@@ -522,12 +523,16 @@
 		status_bar = "CRITICAL FAILURE: NO POSSIBLE CHEMICAL COMBINATION"
 		simulating = SIMULATION_STAGE_OFF
 		return FALSE
+
 	if(target && mode != MODE_CREATE)
 		if(!target.completed)
 			status_bar = "INCOMPLETE DATA DETECTED IN TARGET"
 			return FALSE
 		if(!target.data)
 			status_bar = "DATA CORRUPTION DETECTED, RESCAN CHEMICAL"
+			return FALSE
+		if(target.data.lockdown_chem)
+			status_bar = "TARGET CHEMICAL STRUCTURE DESTROYED"
 			return FALSE
 		if(target.data.chemclass < CHEM_CLASS_BASIC || !istype(target.data, /datum/reagent/generated)) //Requires a custom/generated chem as a base
 			status_bar = "TARGET CAN NOT BE ALTERED"
@@ -565,10 +570,13 @@
 		if(mode == MODE_RELATE && isnull(reference))
 			status_bar = "NO REFERENCE DATA DETECTED"
 			return FALSE
-		if(mode == MODE_RELATE)
+		if(mode == MODE_RELATE || mode == MODE_ADD)
 			if(reference && target)
 				if(!reference.completed)
 					status_bar = "INCOMPLETE DATA DETECTED IN REFERENCE"
+					return FALSE
+				if(reference.data.lockdown_chem)
+					status_bar = "REFERENCE CHEMICAL STRUCTURE DESTROYED"
 					return FALSE
 				if(reference_property)
 					if(target.data.get_property(reference_property.name))
@@ -667,6 +675,14 @@
 	C.remove_property(target_property.name)
 	C.insert_property(reference_property.name, reference_property.level)
 
+
+/obj/structure/machinery/chem_simulator/proc/add(datum/reagent/generated/C)
+	if(!target || !reference || !target_property || !reference_property)
+		return
+	C.make_alike(target.data)
+	C.insert_property(reference_property.name, reference_property.level)
+	reference.data.lockdown_chem = TRUE
+
 /obj/structure/machinery/chem_simulator/proc/create(datum/reagent/generated/C)
 	C.chemclass = CHEM_CLASS_RARE
 	C.name = creation_name
@@ -753,7 +769,7 @@
 	var/mode_id
 	var/icon_type
 
-/datum/chemical_simulator_modes/create
+/datum/chemical_simulator_modes/create //todo nuke this from planet of the earth dont forget to remove junk that will appear  in global datum and jsx obv
 	name = "CREATE"
 	desc = "Create a new custom chemical from the known properties discovered earlier."
 	mode_id = MODE_CREATE
@@ -768,6 +784,12 @@
 /datum/chemical_simulator_modes/amplify
 	name = "AMPLIFY"
 	desc = "Amplify one level in the choosen property. This operation lowers the OD level."
+	mode_id = MODE_AMPLIFY
+	icon_type = "square-plus"
+
+/datum/chemical_simulator_modes/add //death to create mode! Glory to the new add mode!
+	name = "ADD"
+	desc = "Use the property in the reference chemical to add a property to the target chemical, with no downsides to the target chemical, however it damages the chemical structure of reference chemical, Making any other modification impossible."
 	mode_id = MODE_AMPLIFY
 	icon_type = "square-plus"
 

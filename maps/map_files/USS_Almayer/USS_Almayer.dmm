@@ -39967,6 +39967,8 @@
 /area/almayer/living/port_emb)
 "mKN" = (
 /obj/effect/landmark/start/pilot/cas_pilot,
+/obj/effect/landmark/start/upp,
+/obj/effect/landmark/late_join/upp,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "mLe" = (

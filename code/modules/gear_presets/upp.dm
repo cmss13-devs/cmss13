@@ -1,3 +1,27 @@
+/obj/effect/landmark/start/upp
+	name = JOB_UPP
+	icon_state = "upp_spawn"
+	job = /datum/job/antag/upp
+
+/datum/job/antag/upp
+	title = JOB_UPP
+	title = JOB_UPP
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp
+	total_positions = 1
+	spawn_positions = 1
+	allow_additional = TRUE
+
+/obj/effect/landmark/start/upp/soldier
+	name = JOB_UPP
+	icon_state = "upp_spawn"
+	job = /datum/job/antag/upp/soldier
+
+/datum/job/antag/upp/soldier
+	title = JOB_UPP
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/soldier
+
 
 /datum/equipment_preset/upp
 	name = FACTION_UPP
@@ -2656,6 +2680,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/synth
+	title = JOB_UPP_SUPPORT_SYNTH
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/synth
+
 /datum/equipment_preset/upp/synth
 	name = "UPP Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -2868,7 +2897,10 @@
 		list("Space Cleaner", 2, /obj/item/reagent_container/spray/cleaner, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
 	)
-
+/datum/job/antag/upp/synth/combat
+	title = JOB_UPP_COMBAT_SYNTH
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/synth/combat
 
 /datum/equipment_preset/upp/synth/combat
 	name = "UPP Combat Synthetic"
@@ -2926,6 +2958,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/upp, WEAR_R_STORE)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/conscript
+	title = JOB_UPP_CONSCRIPT
+	selection_class = "job_antag"
+	gear_preset =/datum/equipment_preset/upp/conscript
 
 /datum/equipment_preset/upp/conscript
 	//meme role
@@ -3036,6 +3072,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/commando
+	title = JOB_UPP_COMMANDO
+	selection_class = "job_antag"
+	gear_preset =/datum/equipment_preset/upp/commando
 
 /datum/equipment_preset/upp/commando
 	name = "UPP Commando (!DEATHSQUAD!)"
@@ -3163,6 +3203,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/commando/medic
+	title = JOB_UPP_COMMANDO_MEDIC
+	selection_class = "job_antag"
+	gear_preset =/datum/equipment_preset/upp/commando/medic
 
 /datum/equipment_preset/upp/commando/medic
 	name = "UPP Commando Medic (!DEATHSQUAD!)"
@@ -3330,6 +3374,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/commando/leader
+	title = JOB_UPP_COMMANDO_LEADER
+	selection_class = "job_antag"
+	gear_preset =/datum/equipment_preset/upp/commando/leader
 
 /datum/equipment_preset/upp/commando/leader
 	name = "UPP Commando Leader (!DEATHSQUAD!)"
@@ -3480,6 +3528,8 @@
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
+/datum/job/antag/upp/commando/low_threat
+	gear_preset =/datum/equipment_preset/upp/commando/low_threat
 
 /datum/equipment_preset/upp/commando/low_threat
 	name = "UPP Commando"
@@ -3512,6 +3562,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 8)
+
+/datum/job/antag/upp/commando/medic/low_threat
+	gear_preset =/datum/equipment_preset/upp/commando/medic/low_threat
 
 /datum/equipment_preset/upp/commando/medic/low_threat
 	name = "UPP Commando Medic"
@@ -3553,6 +3606,9 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 5)
 
+/datum/job/antag/upp/commando/leader/low_threat
+	gear_preset =/datum/equipment_preset/upp/commando/leader/low_threat
+
 /datum/equipment_preset/upp/commando/leader/low_threat
 	name = "UPP Commando Leader"
 
@@ -3586,6 +3642,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs, WEAR_IN_BACK)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/tank
+	title = JOB_UPP_CREWMAN
+	selection_class = "job_antag"
+	gear_preset =/datum/equipment_preset/upp/tank
 
 /datum/equipment_preset/upp/tank
 	name = "UPP Vehicle Crewman (TANK)"
@@ -3704,6 +3764,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/doctor
+	title = JOB_UPP_LT_DOKTOR
+	selection_class = "job_antag"
+	gear_preset =/datum/equipment_preset/upp/doctor
 
 /datum/equipment_preset/upp/doctor
 	name = "UPP Doctor"

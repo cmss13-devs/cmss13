@@ -421,6 +421,11 @@
 	name = "Nurse late join"
 	job = JOB_NURSE
 
+//------------------------------------
+/obj/effect/landmark/late_join/upp
+	name = "UPP late join"
+	job = JOB_UPP
+
 
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()

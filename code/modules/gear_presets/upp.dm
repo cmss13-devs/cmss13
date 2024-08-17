@@ -56,8 +56,12 @@
 	idtype = /obj/item/card/id/dogtag
 
 //*****************************************************************************************************/
-/datum/job/antag/upp/should_block_game_interaction(atom/target)
-	. = ..()
+/datum/job/antag/upp/soldier
+	title = JOB_UPP
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/soldier
+	total_positions = 1
+	spawn_positions = 1
 
 /datum/equipment_preset/upp/soldier
 	name = "UPP Soldier"
@@ -225,7 +229,10 @@
 	)
 
 //*****************************************************************************************************/
-
+/datum/job/antag/upp/medic
+	title = JOB_UPP_MEDIC
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/medic
 
 
 /datum/equipment_preset/upp/medic
@@ -404,7 +411,6 @@
 	gear_preset = /datum/equipment_preset/upp/sapper
 
 
-
 /datum/equipment_preset/upp/sapper
 	name = "UPP Sapper"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -540,6 +546,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/specialist
+	title = JOB_UPP_SPECIALIST
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/specialist
 
 /datum/equipment_preset/upp/specialist
 	name = "UPP Specialist"
@@ -669,6 +679,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/machinegunner
+	title = JOB_UPP_SPECIALIST
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/machinegunner
 
 /datum/equipment_preset/upp/machinegunner
 	name = "UPP Machinegunner"
@@ -796,6 +810,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/leader
+	title = JOB_UPP_LEADER
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/leader
 
 /datum/equipment_preset/upp/leader
 	name = "UPP Squad Leader"
@@ -966,6 +984,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/military_police
+	title = JOB_UPP_POLICE
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/military_police
 
 /datum/equipment_preset/upp/military_police
 	name = "UPP Military Police"
@@ -1120,6 +1142,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/officer
+	title = JOB_UPP_LT_OFFICER
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer
 
 /datum/equipment_preset/upp/officer
 	name = "UPP Lieutenant"
@@ -1282,6 +1308,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/officer/senior
+	title = JOB_UPP_SRLT_OFFICER
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/senior
 
 /datum/equipment_preset/upp/officer/senior
 	name = "UPP Senior Lieutenant"
@@ -1441,6 +1471,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/officer/kapitan
+	title = JOB_UPP_KPT_OFFICER
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/kapitan
 
 /datum/equipment_preset/upp/officer/kapitan
 	name = "UPP Kapitan"
@@ -1601,6 +1635,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/officer/major
+	title = JOB_UPP_MAY_OFFICER
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/major
 
 /datum/equipment_preset/upp/officer/major
 	name = "UPP Major"
@@ -1761,6 +1799,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/officer/lt_kolonel
+	title = JOB_UPP_LTKOL_OFFICER
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/lt_kolonel
 
 /datum/equipment_preset/upp/officer/lt_kolonel
 	name = "UPP Leytenant Kolonel"
@@ -1921,6 +1963,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/officer/kolonel
+	title = JOB_UPP_KOL_OFFICER
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/kolonel
 
 /datum/equipment_preset/upp/officer/kolonel
 	name = "UPP Kolonel"
@@ -2081,6 +2127,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/officer/may_gen
+	title = JOB_UPP_KOL_OFFICER
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/may_gen
 
 /datum/equipment_preset/upp/officer/may_gen
 	name = "UPP Mayjor General"
@@ -2241,6 +2291,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/officer/ley_gen
+	title = JOB_UPP_KOL_OFFICER
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/ley_gen
 
 /datum/equipment_preset/upp/officer/ley_gen
 	name = "UPP Leytenant General"
@@ -2401,6 +2455,10 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/officer/gen
+	title = JOB_UPP_KOL_OFFICER
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/gen
 
 /datum/equipment_preset/upp/officer/gen
 	name = "UPP Army General"

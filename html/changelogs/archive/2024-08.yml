@@ -1,0 +1,234 @@
+2024-08-02:
+  Asmocard:
+  - qol: Can now dump containers into the seed extractor
+  Blundir:
+  - rscadd: throw volume is lower and based on the distance of throw, half visible
+      mobs make no throw sound (sniper, scout, yautja)
+  - rscadd: throw animation pixel shifts for less pixels
+  - rscadd: lowered throw sound range a bit
+  - soundadd: added mutiple unique sound for throwing things
+  - soundadd: added numerous phone sounds for different phone interactions
+  CapCamIII:
+  - rscadd: UPP and CLF department channels now have distinct chat colors
+  Doubleumc:
+  - bugfix: fixed tank secondary flamer stopping after one tile
+  - balance: flamers can now fire streams over the "wrong" side of a barricade, when
+      adjacent
+  VileBeggar:
+  - bugfix: You can no longer build structures on top of dense objects. This prevents
+      weird layering happening with walls and tables, window frames, etc.
+  - bugfix: You can no longer rest while on ovi as a Queen, which made half of your
+      abilities unusable if you did so.
+  - rscadd: The weapon stats screen now shows the effective range of ammo, instead
+      of its armor punch value.
+  - bugfix: Health scans will now display the heartbroken status if applicable.
+  cuberound:
+  - code_imp: changes references from nanotrasen to weyland yutani
+  ihatethisengine2:
+  - balance: heavy revolver ammo cannot slowdown t3s anymore.
+  - bugfix: fixed the lockdown button working after dropship being locked by Queen
+  kiVts:
+  - rscadd: Players will not get picked at certain ERT beacons if they dont have enough
+      playtime in relevant area.
+2024-08-03:
+  hislittlecuzingames:
+  - qol: Can roleplay easier with cigarettes, cigars, lighters counting as cosmetic
+      for helmet storage purposes.
+2024-08-04:
+  Diegoflores31:
+  - balance: Healer drone apply salve now has a 1 second cooldown.
+  - balance: Salve wound now heals slightly quicker.
+  MistChristmas:
+  - balance: Buffed MP and Officer Armor's Bullet Armour.
+  Nivrak, NervanCatos:
+  - balance: Modified engineering skill levels, Combat technicians now do everything
+      engineering related slightly faster. This does not affect any other roles or
+      skillchecks.
+  - rscadd: Adds the tactical compact nailgun to the Combat Technician's vendor essential
+      engineering kit, It cannot fire and uses 2 metal instead of 1 to repair. Credit
+      to NervanCatos.
+  - rscadd: Added the M277 pattern construction rig, It comes with 6 slots instead
+      of 10 in the M276 but can carry metal and plasteel stacks. Available in the
+      CT vendor.
+  - rscadd: Added the Engineer Kit pouch, basically and engineer kit - in a pouch.
+      Restricted by engineering skill. Available in the CT vendor.
+  - rscadd: Added the Small Tool Webbing, A smaller variant of the tool webbing with
+      6 slots instead of 7. Available in the CT vendor.
+  - qol: Screwdriver, Crowbar, Blowtorch, Multitool, Wrench and Wirecutters will now
+      prioritize the tool webbing when quick equipping.
+  - code_imp: Added a new variable for items, preferred_storage which allows to replicate
+      the above behavior for other items and storages.
+  - rscadd: Added a new sentry upgrade, The omni-sentry. As the name suggests it is
+      omni-directional but has 30% reduces damage and a shorter range by 1.
+  - qol: Made APC examine-text a bit more clear about what you should be doing next.
+  SpypigDev:
+  - refactor: SO armory vendor code refactored into the main SO gear vendor code
+  - balance: XO weapon and clothing vendors fitted with a more modernized equipment
+      set
+  - balance: XO weapon vendor now offers Medic or Engineer essentials sets
+  - bugfix: Vending an autoinjector pouch as SO or XO now produces a full pouch, rather
+      than empty
+  - balance: SO's mod88 removed from cryo spawn and moved to their vendor instead
+  Steelpoint:
+  - balance: The VP78 pistol will now deal maximum damage up to 6 tiles from the shooters
+      position before experiencing gradual damage falloff. This is up from a previous
+      maximum range of 3 tiles.
+  VileBeggar:
+  - code_imp: removed an unneeded var in mob_hud.dm
+  Zonespace27:
+  - balance: Barricades are now far better at blocking bullets from the front. They
+      will not block most bullets if the shooter is within 2 tiles, however.
+  ihatethisengine2:
+  - balance: sacrifice ability now guarantees to get the target out of crit on top
+      of the heal
+2024-08-05:
+  Lagomorphica:
+  - balance: The combat correspondents camera is no longer meltable or explodable.
+  VileBeggar:
+  - qol: Deafness is now limited to being 1 minute in length.
+  - bugfix: Phones can no longer be stored in closets/crates, which prevents players
+      from dragging crates with their phones and other weird issues that can occur.
+2024-08-06:
+  BlackCrystalic:
+  - rscadd: Byond backed function of sound ECHO ported
+  - refactor: refactor of weaponhits hardcode
+  Blundir:
+  - bugfix: research chute is now connected to req chute and works properly
+  Drathek:
+  - rscadd: Added note of who deletes a comment in a medical record
+  - bugfix: Fixed Delete Entry button showing for deleted medical notes
+  - bugfix: Fixed medical record prints not showing who printed it
+  - bugfix: Fixed initial gender capitalization in records
+  - code_imp: Improved some record checks
+  - admin: Added mostly niche logging for all record changes
+  Drathek iloveloopers:
+  - rscdel: Removed ability to buy clearance papers.
+  - balance: Clearance cards now give their equivalent clearance in credits.
+  - balance: Clearance cards no longer lose their value when scanned by the wrong
+      person.
+  MarpleJones:
+  - bugfix: Using the hemostat on the final larva surgery step is now better than
+      using wirecutters or the fork.
+  - rscadd: The final larva surgery step will now apply organ damage when done barehanded.
+      Barehanded is faster than using tools by a couple of seconds, at the cost of
+      the doctor's and the patient's health.
+  - rscadd: Adds an acidsplash sound effect to doing the barehanded step.
+  MistChristmas:
+  - bugfix: Prevents tunnels under LZ Sentries
+  VileBeggar:
+  - bugfix: butcher's knife inhands now display properly
+  cuberound:
+  - bugfix: weeds do not cover preshure tanks
+  - rscadd: acid spray scorches grass and melts snow
+  - rscdel: Removes gravity :)
+  mullenpaul:
+  - ui: added section in dropship flight computer for some terminals to select which
+      dropship to control
+  - maptweak: reworked CIC remote terminals
+  - refactor: some remote terminals can control different dropships
+  - balance: queen will randomly select a dropship to call down to the lz on hijack
+  - balance: when dropship exists on primary landing pad, the queen can't call down
+      another dropship
+  - balance: when a dropship is enroute to the primary landing pad, the queen can't
+      call another dropship
+  realforest2001:
+  - bugfix: Fixes the cap on rifleman Lance Corporals.
+2024-08-07:
+  Contrabang:
+  - rscadd: Smartgunner Machete Scabbard, which smartgunners can wear on their back
+      when their harness is equipped.
+  - balance: SG's vendor has replaced the 6P Machete Scabbard with a 15P Smartgunner
+      Machete Scabbard.
+  LC4492:
+  - rscadd: Adds penlights and stethoscopes to nurses and corpsmen, they can use them
+      to reliably check if someone have specific types of organ damage and how much,
+      without the need of other apparatus. Adds a new organ.status called "LITTLE_BRUISED",
+      used by the stethoscope and penlight to not give false positives when diagnosticating
+      someone (saying that they are healthy, when they actually have 9 heart damage).
+  - bugfix: Fixed an outdated check that made the entire "flash eyes with flashlight"
+      mechanic don't work at all. Also updated it to check some other things for ease
+      of logic.
+  - spellcheck: Fixed typos on the abandoned "flash eyes with flashlight" code.
+  - code_imp: 'Added new functionalities for both the stethoscope and penlight: The
+      stethoscopes can now be used to check the condition of both heart and lungs
+      individually by aiming the chest, letting you be able to check if the organs
+      are LITTLE_BRUISED (Have a damage equal or above 1), BRUISED (Have a damage
+      equal or above 10), BROKEN (have a damage equal or above 30) or "HEALTHY" (any
+      damage below 1). And the penlight, that can be used the same way to check the
+      condition of brain and eyes by aiming the eyes of the person you are interacting
+      with. Also with the fixing mentioned above, you can now flash people''s eyes
+      again! Everytime you check the condition of someone''s eyes, you will also flash
+      them. Replaced one letter vars in the flashlight code and on the stethoscope
+      section of the ties code.'
+  - imageadd: Adds new "in_hand" icons for penlights and stethoscopes, both will now
+      appear on your hands when used. Penlights have both "off" and "on" icons, fancy
+      stuff!
+  LTNTS:
+  - imageadd: port tgsprites for pills (including a new variation)
+2024-08-08:
+  '?':
+  - bugfix: Fixed explosive implant not triggering when hearing the code-word.
+  BlackCrystalic:
+  - bugfix: No more admin data sended to normal players in who/staff who
+  Doubleumc:
+  - code_imp: shrapnel smoothly animates their movement
+  - code_imp: visual-effect-only shrapnel replaced by clientside particles
+  Venuska1117, Blundir:
+  - imageadd: add directional APC's Sprites.
+  - balance: Now there are only 3 APC's types, APC's with call_type high/super/hyper
+      are replaced with upgraded APC variant containing high capacity cell, weak variant
+      got replaced with normal APC variant.
+  - bugfix: Fixes APC's with wrong offsets (strata and Prison)
+2024-08-10:
+  BasilHerb:
+  - rscdel: removed the M56B Smartgun Kit from requisitions.
+  - balance: made the M56 Combat Harness unmeltable.
+  - balance: made the M45 Ghillie Suit unmeltable.
+  Contrabang:
+  - qol: Reorders the Essential SG Kit in order of Armor, Smartgun, Goggles
+  HaultyAnonie:
+  - bugfix: Made claymore boxes in vendors be accurately labeled as the amount of
+      claymores they contain. From (x4 mines) to (x5 mines). The actual contents of
+      the box.
+  cuberound:
+  - rscdel: removes gravity generator (ugly legacy stuff)
+2024-08-12:
+  Git-Nivrak:
+  - bugfix: You can no longer put items back in the specialist case after taking them
+      out
+  zzzmike:
+  - rscadd: fun fact for internal bleeding fixed
+2024-08-13:
+  Adamix147:
+  - maptweak: Moved the unfixable APC at Kutjevo Botany to make it fixable again.
+  Contrabang:
+  - bugfix: ERT no longer show up in the orbit escape section
+  Doubleumc:
+  - admin: '"Start Round" can start a delayed round'
+  Git-Nivrak:
+  - balance: Explosions now always deal full damage at the source tile
+  - bugfix: Fixed sadar rockets not gibbing humans on direct hit
+  MarpleJones:
+  - balance: Reduces the cost of the AGM-184 'Harpoon II' from 300 to 200.
+2024-08-15:
+  Blundir:
+  - rscadd: plasteel non folding barricade
+  Steelpoint:
+  - rscadd: A plantable UPP flag has been added to the game, an equilivant of the
+      United Americas flag. Currently admin spawn only.
+  - rscadd: A Command Tablet has been added that can be used by UPP Officers.
+  - rscadd: UPP Officers ranked O4 or greater (USCM Major Equilivant) are issued with
+      a Command Tablet.
+2024-08-16:
+  Doubleumc:
+  - ui: dark HUD indicators stay anchored to the viewport edge
+2024-08-17:
+  567Turtle:
+  - rscadd: Gay crayons for your helmet ("Box of Prideful Crayons" in the toys section
+      of the loadout menu.)
+  Blundir:
+  - rscadd: Guns now support custom muzzle flash light color, some guns have a new
+      color of it now, standard color is yellow tinted now instead of white
+  cuberound:
+  - bugfix: two persons are needed to activate red, ert and emergency acces using
+      cards

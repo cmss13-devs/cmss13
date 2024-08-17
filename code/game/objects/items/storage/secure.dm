@@ -97,7 +97,7 @@
 			else if ((code == l_code) && (l_set == 1))
 				locked = 0
 				overlays = null
-				overlays += image('icons/obj/items/storage/briefcase.dmi', icon_opened)
+				overlays += image('icons/obj/items/storage/briefcases.dmi', icon_opened)
 				code = null
 			else
 				code = "ERROR"

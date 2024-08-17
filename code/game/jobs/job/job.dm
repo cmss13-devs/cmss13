@@ -318,3 +318,7 @@
 
 	if(user.client.check_whitelist_status(flags_whitelist))
 		return TRUE
+
+/// Called when the job owner enters deep cryogenic storage
+/datum/job/proc/on_cryo(mob/living/carbon/human/cryoing)
+	return

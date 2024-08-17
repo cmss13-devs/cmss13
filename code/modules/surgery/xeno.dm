@@ -70,7 +70,7 @@
 			SPAN_NOTICE("[user] successfully destroys your carapace into bits and pieces using [tool]."),,
 			SPAN_NOTICE("[user] successfully destroys [target.caste_type] carapace into bits and pieces using [tool]."))
 	for(var/mob/living/carbon/human/victim in orange(1, target))
-		if(istype(victim.wear_suit, /obj/item/clothing/suit/bio_suit) && istype(victim.head, /obj/item/clothing/head/bio_hood))
+		if((istype(victim.wear_suit, /obj/item/clothing/suit/bio_suit) || istype(victim.wear_suit, /obj/item/clothing/suit/storage/synthbio)) && (istype(victim.head, /obj/item/clothing/head/bio_hood) || istype(victim.head, /obj/item/clothing/head/bio_hood/synth)))
 			continue
 		to_chat(victim, SPAN_HIGHDANGER("You are covered in acid as you feel agonizing pain!"))
 		victim.apply_damage(rand(75, 125), BURN) // you WILL wear biosuit.

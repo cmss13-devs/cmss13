@@ -172,7 +172,7 @@
 			LateChoices()
 
 		if("late_join_upp")
-						if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
+			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
 
@@ -185,7 +185,7 @@
 					tutorial_menu()
 					return
 
-			LateChoicesUpp()
+			LateChoices()
 
 		if("late_join_xeno")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)

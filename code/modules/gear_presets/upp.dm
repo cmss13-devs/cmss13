@@ -11,6 +11,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	allow_additional = TRUE
+	late_joinable = TRUE
 
 /obj/effect/landmark/start/upp/soldier
 	name = JOB_UPP

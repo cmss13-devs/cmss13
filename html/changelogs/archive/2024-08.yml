@@ -198,3 +198,37 @@
       out
   zzzmike:
   - rscadd: fun fact for internal bleeding fixed
+2024-08-13:
+  Adamix147:
+  - maptweak: Moved the unfixable APC at Kutjevo Botany to make it fixable again.
+  Contrabang:
+  - bugfix: ERT no longer show up in the orbit escape section
+  Doubleumc:
+  - admin: '"Start Round" can start a delayed round'
+  Git-Nivrak:
+  - balance: Explosions now always deal full damage at the source tile
+  - bugfix: Fixed sadar rockets not gibbing humans on direct hit
+  MarpleJones:
+  - balance: Reduces the cost of the AGM-184 'Harpoon II' from 300 to 200.
+2024-08-15:
+  Blundir:
+  - rscadd: plasteel non folding barricade
+  Steelpoint:
+  - rscadd: A plantable UPP flag has been added to the game, an equilivant of the
+      United Americas flag. Currently admin spawn only.
+  - rscadd: A Command Tablet has been added that can be used by UPP Officers.
+  - rscadd: UPP Officers ranked O4 or greater (USCM Major Equilivant) are issued with
+      a Command Tablet.
+2024-08-16:
+  Doubleumc:
+  - ui: dark HUD indicators stay anchored to the viewport edge
+2024-08-17:
+  567Turtle:
+  - rscadd: Gay crayons for your helmet ("Box of Prideful Crayons" in the toys section
+      of the loadout menu.)
+  Blundir:
+  - rscadd: Guns now support custom muzzle flash light color, some guns have a new
+      color of it now, standard color is yellow tinted now instead of white
+  cuberound:
+  - bugfix: two persons are needed to activate red, ert and emergency acces using
+      cards

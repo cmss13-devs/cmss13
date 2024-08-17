@@ -188,31 +188,6 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/space)
-"av" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
-/area/space)
 "aw" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
@@ -292,6 +267,9 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
 /turf/open/floor/strata,
 /area/space)
 "aE" = (
@@ -316,31 +294,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic/lit)
-"aH" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata/orange_edge,
-/area/space)
 "aI" = (
 /obj/structure/platform/strata/metal,
 /obj/structure/surface/table/reinforced/prison,
@@ -557,6 +510,14 @@
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
 /turf/open/floor/almayer/red/north,
+/area/space)
+"bl" = (
+/obj/structure/platform/strata/metal,
+/obj/structure/platform_decoration/strata/metal{
+	dir = 1;
+	pixel_y = 6
+	},
+/turf/open/floor/corsat/red,
 /area/space)
 "bm" = (
 /obj/structure/window/framed/bunker/reinforced,
@@ -810,6 +771,15 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
+/area/space)
+"bV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor/strata/orange_edge{
+	dir = 1
+	},
 /area/space)
 "bX" = (
 /obj/structure/pipes/vents/scrubber{
@@ -1349,10 +1319,6 @@
 /obj/structure/foamed_metal,
 /turf/open/floor/plating,
 /area/space)
-"dn" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/almayer/cargo,
-/area/space)
 "do" = (
 /obj/structure/surface/rack,
 /obj/item/storage/pouch/shotgun/heavyslug,
@@ -1430,6 +1396,12 @@
 "dz" = (
 /obj/vehicle/powerloader/ft,
 /turf/open/floor/strata,
+/area/space)
+"dA" = (
+/obj/structure/machinery/cryopod{
+	layer = 3.1
+	},
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "dB" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -1703,6 +1675,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/spiralplate,
 /area/space)
+"ec" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/type73,
+/obj/item/ammo_box/magazine/type73,
+/obj/item/ammo_box/magazine/type73,
+/obj/item/ammo_box/magazine/type73,
+/obj/item/ammo_box/magazine/type73,
+/obj/item/ammo_box/magazine/type73,
+/obj/item/ammo_box/magazine/type73,
+/obj/item/ammo_box/magazine/type73,
+/obj/item/ammo_box/magazine/type73,
+/obj/item/ammo_box/magazine/type73,
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "ed" = (
 /obj/structure/bookcase,
 /turf/open/floor/wood/ship,
@@ -1890,6 +1876,18 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
+/area/space)
+"ey" = (
+/obj/structure/surface/rack,
+/obj/item/defenses/handheld/sentry/upp,
+/obj/item/defenses/handheld/sentry/upp,
+/obj/item/defenses/handheld/sentry/upp,
+/obj/item/defenses/handheld/sentry/upp,
+/obj/item/defenses/handheld/sentry/upp,
+/obj/item/defenses/handheld/sentry/upp,
+/obj/item/defenses/handheld/sentry/upp,
+/obj/item/defenses/handheld/sentry/upp,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "ez" = (
 /obj/structure/surface/rack,
@@ -2137,6 +2135,13 @@
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic/lit)
+"fg" = (
+/obj/structure/machinery/cryopod{
+	pixel_y = 14;
+	layer = 2.8
+	},
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "fh" = (
 /turf/open/floor/corsat/blue,
 /area/space)
@@ -2164,6 +2169,15 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic/lit)
+"fl" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "fm" = (
 /obj/structure/machinery/door_control{
 	id = "crate_room2";
@@ -2362,6 +2376,14 @@
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic/lit)
+"fL" = (
+/obj/structure/machinery/cryopod{
+	pixel_y = 8;
+	layer = 2.7;
+	dir = 1
+	},
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "fM" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/strata/blue3{
@@ -2659,6 +2681,20 @@
 "gy" = (
 /turf/open/floor/corsat/green/northwest,
 /area/event/metal/dynamic/lit)
+"gz" = (
+/obj/structure/surface/rack,
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "gA" = (
 /obj/structure/surface/rack,
 /turf/open/floor/corsat{
@@ -2718,6 +2754,18 @@
 /turf/open/floor/corsat/purple{
 	dir = 6
 	},
+/area/space)
+"gL" = (
+/obj/structure/machinery/cryopod{
+	pixel_y = -6;
+	dir = 8
+	},
+/obj/structure/machinery/cryopod{
+	pixel_y = 20;
+	layer = 2.9;
+	dir = 8
+	},
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "gM" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -2783,6 +2831,14 @@
 /area/space)
 "gT" = (
 /turf/open/floor/corsat/green/northwest,
+/area/space)
+"gU" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/misc/power_cell,
+/obj/item/ammo_box/magazine/misc/power_cell,
+/obj/item/ammo_box/magazine/misc/power_cell,
+/obj/item/ammo_box/magazine/misc/power_cell,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "gV" = (
 /turf/open/floor/almayer/green/southeast,
@@ -3188,6 +3244,13 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/space)
+"hw" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/recharger/unanchored,
+/obj/structure/machinery/recharger/unanchored,
+/obj/structure/machinery/recharger/unanchored,
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "hx" = (
 /obj/structure/bed/chair/bolted{
 	dir = 8
@@ -3325,6 +3388,24 @@
 "hS" = (
 /turf/open/floor/strata/white_cyan3/south,
 /area/event/metal/dynamic/lit)
+"hT" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/type19,
+/obj/item/ammo_box/magazine/type19,
+/obj/item/ammo_box/magazine/type19,
+/obj/item/ammo_box/magazine/type19,
+/obj/item/ammo_box/magazine/type19,
+/obj/item/ammo_box/magazine/type19,
+/obj/item/ammo_box/magazine/type19,
+/obj/item/ammo_box/magazine/type19,
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
+"hU" = (
+/obj/structure/platform/strata/metal{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/space)
 "hV" = (
 /obj/structure/prop/almayer/missile_tube{
 	icon_state = "missiletubesouth"
@@ -3449,6 +3530,13 @@
 /turf/open/floor/corsat{
 	icon_state = "yellowcorner"
 	},
+/area/space)
+"io" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/turf/open/floor/corsat/arrow_north,
 /area/space)
 "ip" = (
 /obj/structure/bed/chair/office/dark{
@@ -3765,6 +3853,24 @@
 "jc" = (
 /obj/structure/platform_decoration,
 /turf/open/floor/strata/floor2,
+/area/space)
+"jd" = (
+/obj/structure/platform/strata/metal{
+	dir = 1
+	},
+/obj/structure/platform/strata/metal{
+	dir = 4
+	},
+/obj/structure/platform_decoration/strata/metal{
+	dir = 8;
+	pixel_y = -5;
+	pixel_x = -4
+	},
+/turf/open/floor/corsat/red,
+/area/space)
+"je" = (
+/obj/structure/closet/coffin/woodencrate,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "jf" = (
 /obj/structure/barricade/handrail{
@@ -4570,19 +4676,6 @@
 	},
 /turf/open/floor/strata/green1,
 /area/space)
-"kR" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/type71/ap,
-/obj/item/ammo_box/magazine/type71/ap,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
-/area/space)
 "kS" = (
 /obj/structure/machinery/medical_pod/autodoc/unskilled{
 	dir = 8
@@ -4903,6 +4996,10 @@
 	},
 /obj/structure/curtain/shower,
 /turf/open/floor/plating/plating_catwalk,
+/area/space)
+"lF" = (
+/obj/structure/closet/crate,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "lG" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -5346,24 +5443,6 @@
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/space)
-"mI" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/plasteel/large_stack,
-/obj/item/stack/sheet/plasteel/large_stack,
-/obj/item/stack/sheet/plasteel/large_stack,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
-/area/space)
 "mJ" = (
 /obj/structure/sign/safety/ladder{
 	pixel_x = 1;
@@ -5456,6 +5535,13 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/chem_dispenser/soda,
 /turf/open/floor/prison/kitchen,
+/area/space)
+"mX" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 1
+	},
+/turf/open/floor/corsat/plate,
 /area/space)
 "mY" = (
 /obj/structure/largecrate/random/mini/small_case/b{
@@ -5583,6 +5669,13 @@
 	dir = 1
 	},
 /area/space)
+"nn" = (
+/obj/structure/platform/strata/metal{
+	dir = 4
+	},
+/obj/structure/platform/strata/metal,
+/turf/open/floor/corsat/red,
+/area/space)
 "no" = (
 /turf/open/floor/almayer/empty/requisitions,
 /area/space)
@@ -5629,6 +5722,10 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/recharger,
 /turf/open/floor/strata/floor3/east,
+/area/space)
+"nu" = (
+/obj/structure/surface/rack,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "nv" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
@@ -5871,15 +5968,6 @@
 	},
 /turf/open/floor/strata,
 /area/space)
-"oa" = (
-/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
-	access_modified = 1;
-	name = "\improper Requisition's Office";
-	req_one_access = null;
-	req_one_access_txt = "1;26"
-	},
-/turf/open/floor/corsat/marked,
-/area/space)
 "ob" = (
 /obj/structure/machinery/computer/crew/upp,
 /turf/open/floor/corsat/yellow{
@@ -6011,7 +6099,7 @@
 /obj/item/reagent_container/glass/bucket/janibucket{
 	pixel_y = 11
 	},
-/turf/open/floor/almayer/cargo,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "or" = (
 /obj/structure/sign/safety/three{
@@ -6325,7 +6413,7 @@
 /area/space)
 "ph" = (
 /obj/structure/janitorialcart,
-/turf/open/floor/almayer/cargo,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "pi" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -6696,31 +6784,6 @@
 "pY" = (
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/space)
-"pZ" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
-/area/space)
 "qa" = (
 /obj/structure/closet/crate/freezer/cooler{
 	pixel_x = -7
@@ -6816,6 +6879,10 @@
 	id = "cargo_belt";
 	dir = 1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
 /turf/open/floor/strata/orange_edge{
 	dir = 1
 	},
@@ -6825,6 +6892,13 @@
 	dwidth = 8
 	},
 /turf/open/space,
+/area/space)
+"qn" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/type71/ap,
+/obj/item/ammo_box/magazine/type71/ap,
+/obj/item/ammo_box/magazine/type71/ap,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "qo" = (
 /turf/open/floor/corsat/green/southeast,
@@ -6837,6 +6911,16 @@
 	dir = 1
 	},
 /turf/open/floor/carpet,
+/area/space)
+"qq" = (
+/obj/structure/platform/strata/metal{
+	dir = 4
+	},
+/obj/structure/platform_decoration/strata/metal{
+	dir = 8;
+	pixel_x = -5
+	},
+/turf/open/floor/corsat/squares,
 /area/space)
 "qr" = (
 /turf/open/floor/corsat/purple{
@@ -7079,6 +7163,20 @@
 	icon_state = "test_floor4"
 	},
 /area/space)
+"qY" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/type64,
+/obj/item/ammo_box/magazine/type64,
+/obj/item/ammo_box/magazine/type64,
+/obj/item/ammo_box/magazine/type64,
+/obj/item/ammo_box/magazine/type64,
+/obj/item/ammo_box/magazine/type64,
+/obj/item/ammo_box/magazine/type64,
+/obj/item/ammo_box/magazine/type64,
+/obj/item/ammo_box/magazine/type64,
+/obj/item/ammo_box/magazine/type64,
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "qZ" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/wood,
@@ -7129,6 +7227,10 @@
 "rh" = (
 /turf/open/floor/prison/darkbrownfull2,
 /area/space)
+"ri" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/strata,
+/area/space)
 "rj" = (
 /obj/structure/platform{
 	pixel_y = -2;
@@ -7156,6 +7258,25 @@
 "rn" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/strata/orange_cover,
+/area/space)
+"ro" = (
+/obj/structure/surface/rack,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/skill/jtac,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "rp" = (
 /obj/structure/machinery/prop/almayer/CICmap/upp,
@@ -7332,6 +7453,17 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/space)
+"rG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/darkish,
+/area/space)
 "rI" = (
 /obj/structure/prop/broken_ladder,
 /turf/open/floor/corsat/purple{
@@ -7391,6 +7523,15 @@
 	layer = 2.5
 	},
 /turf/open/floor/darkish,
+/area/space)
+"rP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor/strata/orange_edge{
+	dir = 9
+	},
 /area/space)
 "rQ" = (
 /turf/open/floor/corsat/red{
@@ -7476,32 +7617,6 @@
 	layer = 2.7
 	},
 /turf/open/floor/strata/floor2,
-/area/space)
-"sb" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
-/area/space)
-"sc" = (
-/obj/structure/machinery/conveyor_switch{
-	id = "cargo_belt"
-	},
-/turf/open/floor/strata,
 /area/space)
 "sd" = (
 /obj/structure/bed/chair{
@@ -7968,12 +8083,6 @@
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/almayer/green/southwest,
 /area/space)
-"ty" = (
-/obj/structure/machinery/cryopod{
-	dir = 8
-	},
-/turf/open/floor/almayer/cargo,
-/area/space)
 "tz" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/almayer/plate,
@@ -8273,6 +8382,13 @@
 	},
 /obj/item/book/manual/detective,
 /turf/open/floor/wood,
+/area/space)
+"tU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 2
+	},
+/turf/open/floor/strata,
 /area/space)
 "tV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -8937,6 +9053,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/space)
+"vx" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/type73/impact,
+/obj/item/ammo_box/magazine/type73/impact,
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "vy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -9133,6 +9255,13 @@
 	icon_state = "W"
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/space)
+"vV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/darkish,
 /area/space)
 "vW" = (
 /obj/structure/machinery/cryopod{
@@ -9585,6 +9714,12 @@
 	icon_state = "blue"
 	},
 /area/space)
+"wY" = (
+/obj/structure/machinery/cryopod{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "wZ" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/almayer/closed{
@@ -9696,6 +9831,12 @@
 	dir = 10
 	},
 /area/space)
+"xo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata,
+/area/space)
 "xp" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	req_access = list(240);
@@ -9778,6 +9919,10 @@
 /obj/structure/platform_decoration,
 /turf/open/floor/corsat/squares,
 /area/space)
+"xz" = (
+/obj/structure/platform/strata/metal,
+/turf/open/floor/corsat/red,
+/area/space)
 "xA" = (
 /obj/structure/closet/crate,
 /turf/open/floor/strata/orange_cover,
@@ -9795,28 +9940,12 @@
 /area/event/metal/dynamic/lit)
 "xD" = (
 /obj/structure/machinery/cryopod,
-/turf/open/floor/almayer/cargo,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "xE" = (
 /turf/open/floor/strata/purp3{
 	dir = 8
 	},
-/area/space)
-"xF" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
 /area/space)
 "xG" = (
 /obj/structure/closet/secure_closet/freezer/meat,
@@ -9988,6 +10117,9 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/soap/syndie,
 /turf/open/floor/corsat/lightplate,
+/area/space)
+"yc" = (
+/turf/open/floor/almayer/plating,
 /area/space)
 "yd" = (
 /obj/structure/closet/crate/supply,
@@ -10331,6 +10463,13 @@
 /obj/structure/closet/secure_closet/staff_officer/armory/shotgun,
 /turf/open/floor/almayer/redfull,
 /area/space)
+"yU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/strata,
+/area/space)
 "yV" = (
 /turf/open/floor/corsat/retrosquares,
 /area/space)
@@ -10372,6 +10511,10 @@
 "za" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
 	pixel_x = -1
 	},
 /turf/open/floor/strata,
@@ -10464,6 +10607,18 @@
 	pixel_y = 32
 	},
 /turf/open/floor/strata/cyan1/east,
+/area/space)
+"zk" = (
+/obj/structure/machinery/conveyor_switch{
+	id = "cargo_belt"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor/strata/orange_edge{
+	dir = 1
+	},
 /area/space)
 "zm" = (
 /obj/structure/closet,
@@ -10795,6 +10950,13 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic/lit)
+"Af" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/corsat/red,
+/area/space)
 "Ag" = (
 /obj/structure/machinery/suit_storage_unit/standard_unit,
 /turf/open/floor/corsat/cargo,
@@ -11556,6 +11718,10 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/space)
+"Cf" = (
+/obj/structure/bed/chair/comfy/black,
+/turf/open/floor/corsat/plate,
+/area/space)
 "Cg" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced/colony{
 	req_access = list(100);
@@ -11862,24 +12028,6 @@
 /obj/item/tool/pen,
 /turf/open/floor/almayer/green/west,
 /area/space)
-"CO" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/plasteel/large_stack,
-/obj/item/stack/sheet/plasteel/large_stack,
-/obj/item/stack/sheet/plasteel/large_stack,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
-/area/space)
 "CQ" = (
 /turf/open/floor/strata/green1,
 /area/space)
@@ -12121,6 +12269,16 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/corsat/squares,
 /area/space)
+"Dw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/darkish,
+/area/space)
 "Dx" = (
 /obj/structure/platform{
 	dir = 8;
@@ -12162,6 +12320,16 @@
 /turf/open/floor/corsat/darkgreen{
 	dir = 1
 	},
+/area/space)
+"DE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/turf/open/floor/corsat/plate,
 /area/space)
 "DF" = (
 /obj/structure/barricade/sandbags/wired{
@@ -12537,21 +12705,6 @@
 	},
 /turf/open/floor/corsat/bluecorner/east,
 /area/event/metal/dynamic/lit)
-"Eq" = (
-/obj/structure/surface/rack,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
-/area/space)
 "Er" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit{
@@ -12872,6 +13025,10 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/space)
+"EX" = (
+/obj/structure/machinery/door/airlock/almayer/security,
+/turf/open/floor/corsat/marked,
+/area/space)
 "EY" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -12928,6 +13085,13 @@
 /area/event/metal/dynamic/lit)
 "Ff" = (
 /turf/open/floor/corsat/whitetan,
+/area/space)
+"Fg" = (
+/obj/structure/machinery/door/poddoor/railing{
+	dir = 2;
+	id = "supply_elevator_railing"
+	},
+/turf/open/floor/almayer/plating,
 /area/space)
 "Fh" = (
 /obj/structure/window/reinforced/toughened,
@@ -13238,6 +13402,19 @@
 	dir = 4
 	},
 /area/space)
+"FP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/prop/almayer/computer,
+/turf/open/floor/corsat/plate,
+/area/space)
 "FQ" = (
 /turf/open/floor/corsat/redcorner/west,
 /area/event/metal/dynamic/lit)
@@ -13273,6 +13450,16 @@
 /turf/open/floor/strata/red3{
 	dir = 1
 	},
+/area/space)
+"FV" = (
+/obj/structure/platform/strata/metal{
+	dir = 1
+	},
+/obj/structure/platform_decoration/strata/metal{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/floor/corsat/red,
 /area/space)
 "FW" = (
 /turf/open/floor/corsat/marked,
@@ -13742,6 +13929,16 @@
 /obj/structure/machinery/cell_charger,
 /turf/open/floor/strata/floor3/east,
 /area/space)
+"Ha" = (
+/obj/structure/machinery/cryopod{
+	pixel_y = -6
+	},
+/obj/structure/machinery/cryopod{
+	pixel_y = 20;
+	layer = 2.9
+	},
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "Hb" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/clothing/shoes/marine/upp/knife,
@@ -13761,6 +13958,14 @@
 	},
 /obj/item/bedsheet/red,
 /turf/open/floor/wood/ship,
+/area/space)
+"Hd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/strata,
 /area/space)
 "He" = (
 /obj/structure/bed{
@@ -14428,13 +14633,6 @@
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /turf/open/floor/strata/multi_tiles/west,
 /area/space)
-"Iy" = (
-/obj/structure/machinery/conveyor{
-	id = "cargo_belt";
-	dir = 1
-	},
-/turf/open/floor/strata,
-/area/space)
 "Iz" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
 /turf/open/floor/corsat/spiralplate,
@@ -14814,6 +15012,10 @@
 /turf/open/floor/strata/white_cyan2,
 /area/space)
 "Jx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
 /turf/open/floor/strata/orange_edge{
 	dir = 5
 	},
@@ -15000,6 +15202,13 @@
 "Kc" = (
 /turf/open/floor/almayer_hull/outerhull_dir/northeast,
 /area/space)
+"Kd" = (
+/obj/structure/machinery/cryopod{
+	layer = 3.1;
+	dir = 8
+	},
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "Ke" = (
 /obj/structure/bed/stool,
 /turf/open/floor/almayer/plating_striped/east,
@@ -15108,6 +15317,10 @@
 	desc = "A large leather scabbard used to carry a Type 57 "Spetsnaz" machete. It can be strapped to the back or the armor."
 	},
 /turf/open/shuttle/elevator/grating,
+/area/space)
+"Kq" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/turf/open/floor/corsat/marked,
 /area/space)
 "Kr" = (
 /obj/structure/machinery/optable,
@@ -15293,6 +15506,14 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
+/area/space)
+"KV" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/zhnk,
+/obj/item/ammo_box/magazine/zhnk,
+/obj/item/ammo_box/magazine/zhnk,
+/obj/item/ammo_box/magazine/zhnk,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "KW" = (
 /obj/vehicle/powerloader/jd{
@@ -15533,6 +15754,12 @@
 	},
 /turf/open/floor/almayer/green/east,
 /area/space)
+"LB" = (
+/obj/structure/platform/strata/metal{
+	dir = 1
+	},
+/turf/open/floor/corsat/red,
+/area/space)
 "LC" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -15666,41 +15893,6 @@
 	name = "tank trap"
 	},
 /area/event/metal/dynamic/lit)
-"LV" = (
-/obj/structure/surface/rack,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
-/area/space)
 "LW" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "Leftyenant's Quarters";
@@ -15926,6 +16118,14 @@
 	dir = 6
 	},
 /area/space)
+"Mz" = (
+/obj/structure/machinery/cryopod{
+	pixel_y = 14;
+	layer = 2.8;
+	dir = 8
+	},
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "MA" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/strata/white_cyan2,
@@ -15986,26 +16186,6 @@
 /turf/open/floor/corsat/darkgreencorner{
 	dir = 1
 	},
-/area/space)
-"MK" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
 /area/space)
 "MM" = (
 /turf/open/floor/corsat/darkgreen/southwest,
@@ -16382,6 +16562,13 @@
 	dir = 1
 	},
 /area/space)
+"NK" = (
+/obj/structure/machinery/cryopod{
+	pixel_y = 8;
+	layer = 2.7
+	},
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "NL" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/folder/white,
@@ -16445,6 +16632,14 @@
 /area/event/metal/dynamic/lit)
 "NT" = (
 /turf/open/floor/corsat/browncorner,
+/area/space)
+"NU" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/plasteel/large_stack,
+/obj/item/stack/sheet/plasteel/large_stack,
+/obj/item/stack/sheet/plasteel/large_stack,
+/obj/item/stack/sheet/plasteel/large_stack,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "NV" = (
 /obj/effect/decal/warning_stripes{
@@ -16710,6 +16905,18 @@
 	icon_state = "test_floor4"
 	},
 /area/space)
+"OA" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/sentry/upp,
+/obj/item/ammo_magazine/sentry/upp,
+/obj/item/ammo_magazine/sentry/upp,
+/obj/item/ammo_magazine/sentry/upp,
+/obj/item/ammo_magazine/sentry/upp,
+/obj/item/ammo_magazine/sentry/upp,
+/obj/item/ammo_magazine/sentry/upp,
+/obj/item/ammo_magazine/sentry/upp,
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "OB" = (
 /obj/structure/machinery/computer/crew/upp,
 /turf/open/floor/corsat/red{
@@ -16831,29 +17038,6 @@
 /area/space)
 "OR" = (
 /turf/open/floor/corsat/red/north,
-/area/space)
-"OS" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
 /area/space)
 "OT" = (
 /obj/structure/machinery/medical_pod/autodoc/unskilled,
@@ -17232,6 +17416,13 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/blue/northwest,
 /area/space)
+"PL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "PM" = (
 /obj/structure/blocker/forcefield/vehicles,
 /obj/item/tool/extinguisher,
@@ -17604,21 +17795,6 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/corsat/squares,
 /area/event/metal/dynamic/lit)
-"QC" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/zhnk,
-/obj/item/ammo_box/magazine/zhnk,
-/obj/item/ammo_box/magazine/zhnk,
-/obj/item/ammo_box/magazine/zhnk,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata/orange_edge,
-/area/space)
 "QD" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/type71,
@@ -17911,6 +18087,13 @@
 	name = "reinforced bunker wall"
 	},
 /area/space)
+"Rt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/strata,
+/area/space)
 "Rv" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine{
@@ -17924,6 +18107,12 @@
 /obj/item/tool/weldingtool/largetank,
 /turf/open/floor/plating,
 /area/event/metal/dynamic/lit)
+"Rx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/darkish,
+/area/space)
 "Ry" = (
 /turf/open/floor/strata/white_cyan4/west,
 /area/space)
@@ -18382,20 +18571,6 @@
 	dir = 4
 	},
 /area/event/metal/dynamic/lit)
-"Sv" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/plasteel/large_stack,
-/obj/item/stack/sheet/plasteel/large_stack,
-/obj/item/stack/sheet/plasteel/large_stack,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
-/area/space)
 "Sw" = (
 /turf/open/floor/corsat/green/west,
 /area/event/metal/dynamic/lit)
@@ -18438,6 +18613,10 @@
 	dir = 10
 	},
 /area/event/metal/dynamic/lit)
+"SC" = (
+/obj/structure/stairs/perspective,
+/turf/open/floor/corsat/red,
+/area/space)
 "SD" = (
 /obj/structure/prop/broken_ladder,
 /obj/effect/decal/cleanable/dirt,
@@ -18592,36 +18771,6 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/space)
-"Tb" = (
-/obj/structure/surface/rack,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata/orange_edge,
-/area/space)
 "Tc" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -18733,31 +18882,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/event/metal/dynamic/lit)
-"Tp" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata/orange_edge,
-/area/space)
 "Tq" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/clothing/head/uppcap/beret,
@@ -19264,6 +19388,15 @@
 	dir = 6
 	},
 /area/space)
+"Uz" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/type71,
+/obj/item/ammo_box/magazine/type71,
+/obj/item/ammo_box/magazine/type71,
+/obj/item/ammo_box/magazine/type71,
+/obj/item/ammo_box/magazine/type71,
+/turf/open/floor/prison/floor_marked/west,
+/area/space)
 "UA" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/chem_dispenser/soda/beer,
@@ -19390,25 +19523,6 @@
 	dir = 10
 	},
 /area/space)
-"UP" = (
-/obj/structure/surface/rack,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
-/area/space)
 "UQ" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "backroom2";
@@ -19489,24 +19603,6 @@
 /obj/structure/closet/toolcloset,
 /turf/open/floor/almayer/redfull,
 /area/space)
-"Vc" = (
-/obj/structure/surface/rack,
-/obj/structure/machinery/recharger/unanchored,
-/obj/structure/machinery/recharger/unanchored,
-/obj/structure/machinery/recharger/unanchored,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata/orange_edge,
-/area/space)
 "Vd" = (
 /turf/open/floor/carpet,
 /area/space)
@@ -19581,6 +19677,12 @@
 /area/event/metal/dynamic/lit)
 "Vq" = (
 /turf/open/floor/strata/white_cyan1,
+/area/space)
+"Vr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/strata,
 /area/space)
 "Vs" = (
 /obj/structure/platform_decoration,
@@ -19666,17 +19768,6 @@
 "VE" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata,
-/area/space)
-"VF" = (
-/obj/structure/surface/rack,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
 	id = "supply_elevator_railing"
 	},
 /turf/open/floor/strata,
@@ -20437,6 +20528,30 @@
 /area/event/metal/dynamic/lit)
 "Xu" = (
 /turf/open/floor/prison/greenfull,
+/area/space)
+"Xv" = (
+/obj/structure/surface/rack,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/turf/open/floor/prison/floor_marked/west,
 /area/space)
 "Xw" = (
 /obj/structure/machinery/gibber{
@@ -21337,6 +21452,13 @@
 /obj/structure/platform_decoration/strata/metal,
 /turf/open/floor/darkish,
 /area/space)
+"Zx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "Zy" = (
 /obj/item/ammo_magazine/m2c,
 /turf/open/floor/strata/multi_tiles/west,
@@ -21399,27 +21521,6 @@
 /area/space)
 "ZH" = (
 /turf/open/floor/corsat/brown,
-/area/space)
-"ZI" = (
-/obj/structure/surface/rack,
-/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
-/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
-/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
-/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
-/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
-/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
-/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
-/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
-/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
-/obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_railing"
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
-	},
-/turf/open/floor/strata/orange_edge,
 /area/space)
 "ZJ" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -40622,7 +40723,7 @@ bd
 cd
 oq
 ph
-dn
+tH
 zO
 cW
 ao
@@ -41609,14 +41710,14 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
 bd
 bd
 bd
@@ -41863,12 +41964,12 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+wx
+hr
+hr
+cE
+cd
 bd
 bd
 bd
@@ -42115,12 +42216,12 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+hr
+wx
+hr
+cE
+cd
 bd
 eQ
 Pc
@@ -42367,12 +42468,12 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+LR
+LR
+LR
+cE
+Bl
 bd
 DD
 cY
@@ -42619,12 +42720,12 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+hr
+hr
+hr
+cE
+cd
 bd
 DD
 cE
@@ -42870,13 +42971,13 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+cd
+wx
+hr
+hr
+cE
+cd
 bd
 DD
 Ua
@@ -43119,16 +43220,16 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+Bl
+cd
 bd
 DD
 cE
@@ -43143,9 +43244,9 @@ tl
 tl
 cd
 Ua
-ty
-ty
-ty
+wY
+wY
+wY
 Ua
 jC
 Fy
@@ -43371,16 +43472,16 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+ub
+lR
+lR
+vV
+cE
+cE
+cE
+bl
+cY
+cd
 bd
 DD
 cY
@@ -43623,16 +43724,16 @@ bd
 bd
 bd
 bd
-Fy
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+ub
+lR
+lR
+vV
+cE
+hr
+cE
+xz
+cY
+cd
 bd
 DD
 cY
@@ -43875,16 +43976,16 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+ub
+lR
+Rx
+Dw
+cE
+cE
+cE
+xz
+cY
+cd
 bd
 DD
 cE
@@ -44127,16 +44228,16 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+cd
+mX
+Cf
+cE
+cE
+cE
+Af
+cY
+cd
 bd
 DD
 QH
@@ -44151,9 +44252,9 @@ tl
 LR
 cd
 Ua
-ty
-ty
-ty
+wY
+wY
+wY
 Ua
 jC
 Fy
@@ -44378,17 +44479,17 @@ tu
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+lR
+lR
+rG
+cE
+cE
+cE
+cE
+xz
+cY
+cd
 bd
 DD
 cE
@@ -44630,17 +44731,17 @@ Es
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+ub
+lR
+lR
+vV
+cE
+hr
+cE
+cE
+xz
+cY
+cd
 bd
 DD
 cY
@@ -44882,17 +44983,17 @@ XV
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+ub
+lR
+Rx
+Dw
+cE
+cE
+cE
+cE
+nn
+qq
+cd
 bd
 DD
 cY
@@ -45134,17 +45235,17 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+ub
+cd
+LR
+LR
+LR
+LR
+LR
+LR
+LR
+LR
+cd
 bd
 DD
 cE
@@ -45159,9 +45260,9 @@ tl
 tl
 cd
 Ua
-ty
-ty
-ty
+wY
+wY
+wY
 Ua
 jC
 Fy
@@ -45386,17 +45487,17 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+cE
+cE
+cE
+cE
+cE
+cE
+cE
+cE
+cE
+cd
 bd
 DD
 QH
@@ -45638,17 +45739,17 @@ Hq
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+mn
+Uj
+bP
+lk
+mn
+Uj
+CC
+lk
+lk
+cd
 bd
 DD
 cE
@@ -45890,17 +45991,17 @@ Hq
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+vO
+MP
+uU
+rO
+uL
+uT
+pq
+rO
+Zw
+cd
 bd
 DD
 cY
@@ -46142,17 +46243,17 @@ cd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+bL
+vd
+fF
+fF
+lQ
+vd
+fF
+fF
+pc
+cd
 bd
 DD
 cY
@@ -46167,9 +46268,9 @@ LR
 LR
 cd
 Ua
-ty
-ty
-ty
+wY
+wY
+wY
 Ua
 jC
 ak
@@ -46394,17 +46495,17 @@ cd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+ac
+fF
+fF
+fF
+bu
+fF
+fF
+fF
+pc
+cd
 bd
 DD
 cE
@@ -46646,17 +46747,17 @@ cd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+KP
+Mc
+fF
+fF
+KP
+Mc
+fF
+fF
+pc
+cd
 bd
 DD
 QH
@@ -46898,17 +46999,17 @@ cd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+cd
+yy
+yy
+VW
+VW
+VW
+Cb
+Cb
+cd
+cd
 bd
 gJ
 bS
@@ -47150,17 +47251,17 @@ cd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cd
+vr
+RD
+RD
+RD
+RD
+RD
+RD
+RD
+RD
+cd
 bd
 bd
 bd
@@ -47403,16 +47504,16 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+vr
+RD
+RD
+RD
+RD
+RD
+RD
+RD
+RD
+cd
 bd
 bd
 bd
@@ -47655,16 +47756,16 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+TZ
+LL
+LL
+LL
+LL
+LL
+LL
+LL
+LL
+cd
 bd
 bd
 bd
@@ -48935,7 +49036,7 @@ LR
 LR
 cE
 cd
-LR
+cd
 LR
 cd
 dk
@@ -49186,8 +49287,8 @@ hr
 hr
 hr
 cE
+cY
 cd
-LR
 LR
 QI
 dk
@@ -49438,8 +49539,8 @@ wx
 hr
 hr
 cE
+cY
 cd
-LR
 LR
 cd
 eP
@@ -49689,9 +49790,9 @@ cd
 cd
 cd
 cd
-Pp
 cd
-tl
+EX
+cd
 LR
 cd
 cd
@@ -49744,7 +49845,7 @@ nf
 jo
 LR
 cd
-Bl
+EX
 cd
 cd
 cd
@@ -49938,12 +50039,12 @@ ub
 lR
 lR
 aj
+cg
 cE
 cE
-cE
-cE
+FV
+cY
 cd
-tl
 tl
 tl
 tl
@@ -49996,12 +50097,12 @@ aC
 jo
 LR
 cd
+cY
+bl
 cE
 cE
 cE
-cE
-cE
-lR
+vV
 lR
 hV
 ub
@@ -50190,12 +50291,12 @@ ub
 lR
 lR
 aj
+Dl
+hr
 cE
-cE
-cE
-cE
+LB
+cY
 cd
-LR
 LR
 LR
 LR
@@ -50248,12 +50349,12 @@ aC
 jo
 LR
 cd
+cY
+xz
 cE
+hr
 cE
-cE
-cE
-cE
-lR
+vV
 lR
 hV
 ub
@@ -50442,11 +50543,11 @@ ub
 lR
 lR
 aj
+cg
 cE
 cE
-cE
-cE
-cd
+LB
+cY
 cd
 LR
 LR
@@ -50488,25 +50589,25 @@ dk
 wb
 jo
 ce
-sb
-Qd
-sb
 Qd
 Qd
 Qd
-LV
 Qd
-Vc
+Qd
+Qd
+Qd
+Qd
+aC
 jo
 LR
 cd
+cY
+xz
 cE
 cE
 cE
-cE
-cE
-lR
-lR
+Dw
+Rx
 hV
 ub
 bd
@@ -50692,13 +50793,13 @@ bd
 cd
 cd
 cd
+FP
+DE
 cE
 cE
 cE
-cE
-cE
-cE
-cE
+SC
+cY
 cd
 LR
 LR
@@ -50740,25 +50841,25 @@ dk
 ru
 jo
 ce
-VF
-Qd
-xF
 Qd
 Qd
 Qd
-UP
 Qd
-ZI
+Qd
+Qd
+Qd
+Qd
+aC
 jo
 LR
 cd
+cY
+Af
 cE
 cE
 cE
-cE
-cE
-cE
-cE
+Cf
+mX
 cd
 cd
 cd
@@ -50945,12 +51046,12 @@ ub
 lR
 lR
 aj
+cg
 cE
 cE
 cE
-cE
-cE
-cE
+LB
+cY
 cd
 LR
 tl
@@ -50992,25 +51093,25 @@ dk
 gR
 jo
 ce
-Eq
-Qd
-MK
 Qd
 Qd
 Qd
-OS
 Qd
-Tb
+Qd
+Qd
+Qd
+Qd
+aC
 jo
 LR
 cd
+cY
+xz
 cE
 cE
 cE
 cE
-cE
-cE
-lR
+rG
 lR
 hV
 ub
@@ -51197,12 +51298,12 @@ ub
 lR
 lR
 aj
+Dl
+hr
 cE
 cE
-cE
-cE
-cE
-cE
+LB
+cY
 cd
 LR
 tl
@@ -51256,13 +51357,13 @@ aC
 jo
 tl
 cd
+cY
+xz
 cE
 cE
+hr
 cE
-cE
-cE
-cE
-lR
+vV
 lR
 hV
 ub
@@ -51449,12 +51550,12 @@ ub
 lR
 lR
 aj
+cg
 cE
 cE
 cE
-cE
-cE
-cE
+jd
+hU
 cd
 LR
 tl
@@ -51496,26 +51597,26 @@ If
 WU
 jo
 ce
-CO
-Qd
-CO
 Qd
 Qd
 Qd
-av
 Qd
-Tp
+Qd
+Qd
+Qd
+Qd
+aC
 jo
 tl
 cd
+qq
+nn
 cE
 cE
 cE
 cE
-cE
-cE
-lR
-lR
+Dw
+Rx
 hV
 ub
 bd
@@ -51699,14 +51800,14 @@ bd
 bd
 cd
 cd
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
+PL
+PL
+LR
+LR
+LR
+LR
+LR
+LR
 cd
 cd
 cd
@@ -51748,26 +51849,26 @@ YM
 YM
 YM
 iD
-VF
-Qd
-Sv
 Qd
 Qd
 Qd
-kR
 Qd
-QC
+Qd
+Qd
+Qd
+Qd
+aC
 jo
 LR
 cd
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
+LR
+LR
+LR
+LR
+LR
+LR
+LR
+LR
 cd
 cd
 bd
@@ -52000,15 +52101,15 @@ Qd
 Qd
 Qd
 Qd
-Eq
-Qd
-mI
 Qd
 Qd
 Qd
-pZ
 Qd
-aH
+Qd
+Qd
+Qd
+Qd
+aC
 jo
 LR
 cd
@@ -52245,13 +52346,13 @@ Fy
 jo
 ce
 Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
+Vr
+Vr
+Vr
+Vr
+Vr
+Vr
+Vr
 aD
 NO
 NO
@@ -52497,14 +52598,14 @@ Fy
 jo
 PZ
 Jx
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Ir
+fl
+fl
+fl
+yc
+qY
+gU
+KV
+Fg
 TG
 Nf
 Nf
@@ -52748,15 +52849,15 @@ Qd
 Fy
 jo
 jo
-ce
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Ir
+bV
+NU
+NU
+NU
+yc
+ec
+vx
+hT
+Fg
 JK
 LR
 eF
@@ -53000,15 +53101,15 @@ Qd
 Fy
 sS
 VT
-ce
-sc
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Ir
+zk
+yc
+yc
+yc
+yc
+yc
+yc
+yc
+Fg
 JK
 LR
 LR
@@ -53253,14 +53354,14 @@ ak
 Yu
 hF
 ql
-Iy
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Ir
+yc
+yc
+yc
+yc
+yc
+yc
+yc
+Fg
 lY
 LR
 LR
@@ -53504,15 +53605,15 @@ Qd
 Fy
 sS
 VT
-ce
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Ir
+bV
+yc
+yc
+yc
+yc
+yc
+yc
+yc
+Fg
 JK
 LR
 Oi
@@ -53756,15 +53857,15 @@ Qd
 Fy
 jo
 jo
-ce
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Ir
+bV
+Xv
+hw
+gz
+yc
+Uz
+qn
+nu
+Fg
 JK
 LR
 LR
@@ -54008,15 +54109,15 @@ Qd
 Fy
 jo
 Tw
-iD
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Ir
+rP
+ey
+OA
+ro
+yc
+Uz
+nu
+nu
+Fg
 fG
 fy
 fy
@@ -54261,13 +54362,13 @@ AK
 jo
 ce
 Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
-Qd
+Rt
+Rt
+Rt
+Rt
+Rt
+Rt
+Rt
 za
 VE
 VE
@@ -54763,11 +54864,11 @@ sS
 sS
 AK
 jo
-zq
-WU
-oa
-WU
-zq
+jo
+jo
+jo
+jo
+jo
 jo
 WU
 Pp
@@ -54785,10 +54886,10 @@ jo
 LR
 cd
 bd
-bd
-bd
-bd
-bd
+pf
+pf
+pf
+pf
 bd
 bd
 bd
@@ -55014,14 +55115,14 @@ jo
 sS
 sS
 AK
+tU
 jo
-Qd
-Qd
-Qd
-Qd
-Qd
+NK
+fg
+Ha
+dA
 jo
-Qd
+ri
 Qd
 Qd
 Qd
@@ -55037,10 +55138,10 @@ jo
 LR
 cd
 bd
-bd
-bd
-bd
-bd
+kl
+im
+lg
+gC
 bd
 bd
 bd
@@ -55266,17 +55367,17 @@ jo
 UI
 sS
 AK
+io
+Kq
+LR
+LR
+LR
+LR
 jo
-Qd
-Qd
-Qd
-Qd
-Qd
-jo
-Qd
-Qd
-Qd
-Qd
+Hd
+yU
+yU
+yU
 jo
 Qd
 Qd
@@ -55518,17 +55619,17 @@ WU
 QT
 sS
 AK
+io
+Pp
+LR
+LR
+LR
+LR
 jo
-jo
-jo
-Qd
-Qd
-Qd
-jo
-pf
-pf
-pf
-pf
+xo
+LR
+LR
+LR
 jo
 Qd
 Qd
@@ -55770,17 +55871,17 @@ Gg
 aN
 ak
 AK
-DG
-ak
+Zx
 jo
-Qd
-Qd
-Qd
+fL
+Mz
+gL
+Kd
 jo
-kl
-im
-lg
-gC
+xo
+wY
+wY
+wY
 jo
 Qd
 Qd
@@ -56022,8 +56123,8 @@ WU
 QT
 Fy
 AK
-Qd
 Fy
+jo
 jo
 jo
 jo
@@ -57041,8 +57142,8 @@ jo
 jo
 jo
 jo
-mf
-mf
+je
+lF
 ar
 sS
 ar
@@ -57242,13 +57343,13 @@ bd
 bd
 bd
 bd
-cx
-cx
-Wx
-Zr
-tE
-cx
-cx
+bd
+bd
+bd
+bd
+bd
+bd
+bd
 bd
 bd
 bd
@@ -57283,7 +57384,7 @@ Qd
 Fy
 AK
 sS
-sS
+Qd
 jo
 tl
 tl
@@ -57494,13 +57595,13 @@ bd
 bd
 bd
 bd
-cx
-Aa
-ZU
-bc
-Oy
-aX
-cx
+bd
+bd
+bd
+bd
+bd
+bd
+bd
 bd
 bd
 bd
@@ -57746,13 +57847,13 @@ bd
 bd
 bd
 bd
-Rz
-Eh
-WI
-HK
-jb
-Eh
-vb
+bd
+bd
+bd
+bd
+bd
+bd
+bd
 bd
 bd
 bd
@@ -57998,13 +58099,13 @@ bd
 bd
 bd
 bd
-pW
-gu
-hb
-Lk
-gu
-gu
-gu
+bd
+bd
+bd
+bd
+bd
+bd
+bd
 bd
 bd
 bd
@@ -58250,13 +58351,13 @@ bd
 bd
 bd
 bd
-mH
-AQ
-os
-Fx
-Nt
-AQ
-RE
+bd
+bd
+bd
+bd
+bd
+bd
+bd
 bd
 bd
 bd
@@ -58502,13 +58603,13 @@ bd
 bd
 bd
 bd
-cx
-Aa
-ZU
-bc
-Oy
-Dr
-cx
+bd
+bd
+bd
+bd
+bd
+bd
+bd
 bd
 bd
 bd
@@ -58754,13 +58855,13 @@ bd
 bd
 bd
 bd
-cx
-cx
-FJ
-bI
-XM
-cx
-cx
+bd
+bd
+bd
+bd
+bd
+bd
+bd
 bd
 bd
 bd
@@ -59241,13 +59342,13 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cx
+cx
+Wx
+Zr
+tE
+cx
+cx
 bd
 bd
 bd
@@ -59493,13 +59594,13 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cx
+Aa
+ZU
+bc
+Oy
+aX
+cx
 bd
 bd
 bd
@@ -59745,13 +59846,13 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+Rz
+Eh
+WI
+HK
+jb
+Eh
+vb
 bd
 bd
 bd
@@ -59997,13 +60098,13 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+pW
+gu
+hb
+Lk
+gu
+gu
+gu
 bd
 bd
 bd
@@ -60249,13 +60350,13 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+mH
+AQ
+os
+Fx
+Nt
+AQ
+RE
 bd
 bd
 bd
@@ -60501,13 +60602,13 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cx
+Aa
+ZU
+bc
+Oy
+Dr
+cx
 bd
 bd
 bd
@@ -60753,13 +60854,13 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
-bd
-bd
-bd
+cx
+cx
+FJ
+bI
+XM
+cx
+cx
 bd
 bd
 bd

@@ -1,3 +1,4 @@
+
 /datum/equipment_preset/upp
 	name = FACTION_UPP
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE)
@@ -55,6 +56,8 @@
 	idtype = /obj/item/card/id/dogtag
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/should_block_game_interaction(atom/target)
+	. = ..()
 
 /datum/equipment_preset/upp/soldier
 	name = "UPP Soldier"
@@ -222,6 +225,8 @@
 	)
 
 //*****************************************************************************************************/
+
+
 
 /datum/equipment_preset/upp/medic
 	name = "UPP Medic"
@@ -393,6 +398,12 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/sapper
+	title = JOB_UPP_ENGI
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/sapper
+
+
 
 /datum/equipment_preset/upp/sapper
 	name = "UPP Sapper"

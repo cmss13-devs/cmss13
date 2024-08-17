@@ -186,7 +186,7 @@
 		/obj/item/clothing/under/colonist/workwear/khaki,
 		/obj/item/clothing/under/colonist/workwear/pink,
 		/obj/item/clothing/under/colonist/workwear/green,
-		)
+	)
 	dress_over = list(
 		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
 		/obj/item/clothing/suit/storage/jacket/marine/corporate,
@@ -204,7 +204,7 @@
 		/obj/item/clothing/suit/storage/jacket/marine/vest,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
 		/obj/item/clothing/suit/storage/webbing,
-		)
+	)
 	dress_extra = list(
 		/obj/item/clothing/accessory/black,
 		/obj/item/clothing/accessory/red,
@@ -218,22 +218,22 @@
 		/obj/item/clothing/glasses/sunglasses,
 		/obj/item/clothing/glasses/sunglasses/prescription,
 		/obj/item/clothing/glasses/regular/hipster,
-		)
+	)
 	dress_gloves = list(
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/gloves/marine/dress,
-		)
+	)
 	dress_shoes = list(
 		/obj/item/clothing/shoes/laceup,
 		/obj/item/clothing/shoes/laceup/brown,
 		/obj/item/clothing/shoes/black,
 		/obj/item/clothing/shoes/marine/corporate,
-		)
+	)
 	dress_hat = list(
 		/obj/item/clothing/head/fedora,
 		/obj/item/clothing/head/beret/cm/black/civilian,
 		/obj/item/clothing/head/beret/cm/white/civilian,
-		)
+	)
 
 /datum/equipment_preset/goon/researcher/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)

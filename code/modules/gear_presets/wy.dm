@@ -10,74 +10,6 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/headset_type = /obj/item/device/radio/headset/distress/WY
 
-	dress_under = list(
-		/obj/item/clothing/under/liaison_suit/black,
-		/obj/item/clothing/under/liaison_suit/blue,
-		/obj/item/clothing/under/liaison_suit/brown,
-		/obj/item/clothing/under/liaison_suit/corporate_formal,
-		/obj/item/clothing/under/liaison_suit,
-		/obj/item/clothing/under/liaison_suit/charcoal,
-		/obj/item/clothing/under/liaison_suit/formal,
-		/obj/item/clothing/under/liaison_suit/blazer,
-		/obj/item/clothing/under/liaison_suit/suspenders,
-		/obj/item/clothing/under/blackskirt,
-		/obj/item/clothing/under/suit_jacket/trainee,
-		/obj/item/clothing/under/liaison_suit/ivy,
-		/obj/item/clothing/under/liaison_suit/orange,
-		/obj/item/clothing/under/liaison_suit/field,
-		/obj/item/clothing/under/colonist/workwear,
-		/obj/item/clothing/under/colonist/workwear/khaki,
-		/obj/item/clothing/under/colonist/workwear/pink,
-		/obj/item/clothing/under/colonist/workwear/green,
-		)
-	dress_over = list(
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/brown,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/blue,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
-		/obj/item/clothing/suit/storage/jacket/marine/bomber/grey,
-		/obj/item/clothing/suit/storage/jacket/marine/bomber/red,
-		/obj/item/clothing/suit/storage/jacket/marine/bomber,
-		/obj/item/clothing/suit/storage/bomber,
-		/obj/item/clothing/suit/storage/bomber/alt,
-		/obj/item/clothing/suit/storage/snow_suit/liaison,
-		/obj/item/clothing/suit/storage/labcoat,
-		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
-		/obj/item/clothing/suit/storage/jacket/marine/vest,
-		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
-		/obj/item/clothing/suit/storage/webbing,
-		)
-	dress_extra = list(
-		/obj/item/clothing/accessory/black,
-		/obj/item/clothing/accessory/red,
-		/obj/item/clothing/accessory/purple,
-		/obj/item/clothing/accessory/blue,
-		/obj/item/clothing/accessory/green,
-		/obj/item/clothing/accessory/gold,
-		/obj/item/clothing/accessory/horrible,
-		/obj/item/clothing/glasses/sunglasses/big,
-		/obj/item/clothing/glasses/sunglasses/aviator,
-		/obj/item/clothing/glasses/sunglasses,
-		/obj/item/clothing/glasses/sunglasses/prescription,
-		/obj/item/clothing/glasses/regular/hipster,
-		)
-	dress_gloves = list(
-		/obj/item/clothing/gloves/black,
-		/obj/item/clothing/gloves/marine/dress,
-		)
-	dress_shoes = list(
-		/obj/item/clothing/shoes/laceup,
-		/obj/item/clothing/shoes/laceup/brown,
-		/obj/item/clothing/shoes/black,
-		/obj/item/clothing/shoes/marine/corporate,
-		)
-	dress_hat = list(
-		/obj/item/clothing/head/fedora,
-		/obj/item/clothing/head/beret/cm/black/civilian,
-		/obj/item/clothing/head/beret/cm/white/civilian,
-		)
-
 /datum/equipment_preset/wy/New()
 	. = ..()
 	access += get_access(ACCESS_LIST_WY_BASE)
@@ -99,6 +31,13 @@
 	rank = JOB_TRAINEE
 	paygrades = list(PAY_SHORT_WYC1 = JOB_PLAYTIME_TIER_0)
 
+	dress_under = list(/obj/item/clothing/under/liaison_suit/black, /obj/item/clothing/under/liaison_suit/blue, /obj/item/clothing/under/liaison_suit/brown, /obj/item/clothing/under/liaison_suit/corporate_formal, /obj/item/clothing/under/liaison_suit, /obj/item/clothing/under/liaison_suit/charcoal, /obj/item/clothing/under/liaison_suit/formal, /obj/item/clothing/under/liaison_suit/blazer, /obj/item/clothing/under/liaison_suit/suspenders, /obj/item/clothing/under/blackskirt, /obj/item/clothing/under/suit_jacket/trainee, /obj/item/clothing/under/liaison_suit/ivy, /obj/item/clothing/under/liaison_suit/orange, /obj/item/clothing/under/liaison_suit/field, /obj/item/clothing/under/colonist/workwear, /obj/item/clothing/under/colonist/workwear/khaki, /obj/item/clothing/under/colonist/workwear/pink, /obj/item/clothing/under/colonist/workwear/green)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/corporate, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, /obj/item/clothing/suit/storage/jacket/marine/bomber/red, /obj/item/clothing/suit/storage/jacket/marine/bomber, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt, /obj/item/clothing/suit/storage/snow_suit/liaison, /obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, /obj/item/clothing/suit/storage/jacket/marine/vest, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, /obj/item/clothing/suit/storage/webbing)
+	dress_extra = list(/obj/item/clothing/accessory/black, /obj/item/clothing/accessory/red, /obj/item/clothing/accessory/purple, /obj/item/clothing/accessory/blue, /obj/item/clothing/accessory/green, /obj/item/clothing/accessory/gold, /obj/item/clothing/accessory/horrible, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/prescription, /obj/item/clothing/glasses/regular/hipster)
+	dress_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/laceup/brown, /obj/item/clothing/shoes/black, /obj/item/clothing/shoes/marine/corporate)
+	dress_hat = list(/obj/item/clothing/head/fedora, /obj/item/clothing/head/beret/cm/black/civilian, /obj/item/clothing/head/beret/cm/white/civilian)
+
 /datum/equipment_preset/wy/trainee/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/trainee(new_human), WEAR_BODY)
 	. = ..()
@@ -110,12 +49,26 @@
 	rank = JOB_JUNIOR_EXECUTIVE
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0)
 
+	dress_under = list(/obj/item/clothing/under/liaison_suit/black, /obj/item/clothing/under/liaison_suit/blue, /obj/item/clothing/under/liaison_suit/brown, /obj/item/clothing/under/liaison_suit/corporate_formal, /obj/item/clothing/under/liaison_suit, /obj/item/clothing/under/liaison_suit/charcoal, /obj/item/clothing/under/liaison_suit/formal, /obj/item/clothing/under/liaison_suit/blazer, /obj/item/clothing/under/liaison_suit/suspenders, /obj/item/clothing/under/blackskirt, /obj/item/clothing/under/suit_jacket/trainee, /obj/item/clothing/under/liaison_suit/ivy, /obj/item/clothing/under/liaison_suit/orange, /obj/item/clothing/under/liaison_suit/field, /obj/item/clothing/under/colonist/workwear, /obj/item/clothing/under/colonist/workwear/khaki, /obj/item/clothing/under/colonist/workwear/pink, /obj/item/clothing/under/colonist/workwear/green)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/corporate, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, /obj/item/clothing/suit/storage/jacket/marine/bomber/red, /obj/item/clothing/suit/storage/jacket/marine/bomber, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt, /obj/item/clothing/suit/storage/snow_suit/liaison, /obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, /obj/item/clothing/suit/storage/jacket/marine/vest, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, /obj/item/clothing/suit/storage/webbing)
+	dress_extra = list(/obj/item/clothing/accessory/black, /obj/item/clothing/accessory/red, /obj/item/clothing/accessory/purple, /obj/item/clothing/accessory/blue, /obj/item/clothing/accessory/green, /obj/item/clothing/accessory/gold, /obj/item/clothing/accessory/horrible, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/prescription, /obj/item/clothing/glasses/regular/hipster)
+	dress_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/laceup/brown, /obj/item/clothing/shoes/black, /obj/item/clothing/shoes/marine/corporate)
+	dress_hat = list(/obj/item/clothing/head/fedora, /obj/item/clothing/head/beret/cm/black/civilian, /obj/item/clothing/head/beret/cm/white/civilian)
+
 /datum/equipment_preset/wy/exec
 	name = "Corporate - C - Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE
 	rank = JOB_EXECUTIVE
 	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_0)
+
+	dress_under = list(/obj/item/clothing/under/liaison_suit/black, /obj/item/clothing/under/liaison_suit/blue, /obj/item/clothing/under/liaison_suit/brown, /obj/item/clothing/under/liaison_suit/corporate_formal, /obj/item/clothing/under/liaison_suit, /obj/item/clothing/under/liaison_suit/charcoal, /obj/item/clothing/under/liaison_suit/formal, /obj/item/clothing/under/liaison_suit/blazer, /obj/item/clothing/under/liaison_suit/suspenders, /obj/item/clothing/under/blackskirt, /obj/item/clothing/under/suit_jacket/trainee, /obj/item/clothing/under/liaison_suit/ivy, /obj/item/clothing/under/liaison_suit/orange, /obj/item/clothing/under/liaison_suit/field, /obj/item/clothing/under/colonist/workwear, /obj/item/clothing/under/colonist/workwear/khaki, /obj/item/clothing/under/colonist/workwear/pink, /obj/item/clothing/under/colonist/workwear/green)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/corporate, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, /obj/item/clothing/suit/storage/jacket/marine/bomber/red, /obj/item/clothing/suit/storage/jacket/marine/bomber, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt, /obj/item/clothing/suit/storage/snow_suit/liaison, /obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, /obj/item/clothing/suit/storage/jacket/marine/vest, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, /obj/item/clothing/suit/storage/webbing)
+	dress_extra = list(/obj/item/clothing/accessory/black, /obj/item/clothing/accessory/red, /obj/item/clothing/accessory/purple, /obj/item/clothing/accessory/blue, /obj/item/clothing/accessory/green, /obj/item/clothing/accessory/gold, /obj/item/clothing/accessory/horrible, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/prescription, /obj/item/clothing/glasses/regular/hipster)
+	dress_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/laceup/brown, /obj/item/clothing/shoes/black, /obj/item/clothing/shoes/marine/corporate)
+	dress_hat = list(/obj/item/clothing/head/fedora, /obj/item/clothing/head/beret/cm/black/civilian, /obj/item/clothing/head/beret/cm/white/civilian)
 
 /datum/equipment_preset/wy/senior_exec
 	name = "Corporate - D - Senior Executive"
@@ -124,6 +77,13 @@
 	rank = JOB_SENIOR_EXECUTIVE
 	paygrades = list(PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_0)
 
+	dress_under = list(/obj/item/clothing/under/liaison_suit/black, /obj/item/clothing/under/liaison_suit/blue, /obj/item/clothing/under/liaison_suit/brown, /obj/item/clothing/under/liaison_suit/corporate_formal, /obj/item/clothing/under/liaison_suit, /obj/item/clothing/under/liaison_suit/charcoal, /obj/item/clothing/under/liaison_suit/formal, /obj/item/clothing/under/liaison_suit/blazer, /obj/item/clothing/under/liaison_suit/suspenders, /obj/item/clothing/under/blackskirt, /obj/item/clothing/under/suit_jacket/trainee, /obj/item/clothing/under/liaison_suit/ivy, /obj/item/clothing/under/liaison_suit/orange, /obj/item/clothing/under/liaison_suit/field, /obj/item/clothing/under/colonist/workwear, /obj/item/clothing/under/colonist/workwear/khaki, /obj/item/clothing/under/colonist/workwear/pink, /obj/item/clothing/under/colonist/workwear/green)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/corporate, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, /obj/item/clothing/suit/storage/jacket/marine/bomber/red, /obj/item/clothing/suit/storage/jacket/marine/bomber, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt, /obj/item/clothing/suit/storage/snow_suit/liaison, /obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, /obj/item/clothing/suit/storage/jacket/marine/vest, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, /obj/item/clothing/suit/storage/webbing)
+	dress_extra = list(/obj/item/clothing/accessory/black, /obj/item/clothing/accessory/red, /obj/item/clothing/accessory/purple, /obj/item/clothing/accessory/blue, /obj/item/clothing/accessory/green, /obj/item/clothing/accessory/gold, /obj/item/clothing/accessory/horrible, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/prescription, /obj/item/clothing/glasses/regular/hipster)
+	dress_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/laceup/brown, /obj/item/clothing/shoes/black, /obj/item/clothing/shoes/marine/corporate)
+	dress_hat = list(/obj/item/clothing/head/fedora, /obj/item/clothing/head/beret/cm/black/civilian, /obj/item/clothing/head/beret/cm/white/civilian)
+
 /datum/equipment_preset/wy/exec_spec
 	name = "Corporate - E - Executive Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -131,8 +91,22 @@
 	rank = JOB_EXECUTIVE_SPECIALIST
 	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0)
 
+	dress_under = list(/obj/item/clothing/under/liaison_suit/black, /obj/item/clothing/under/liaison_suit/blue, /obj/item/clothing/under/liaison_suit/brown, /obj/item/clothing/under/liaison_suit/corporate_formal, /obj/item/clothing/under/liaison_suit, /obj/item/clothing/under/liaison_suit/charcoal, /obj/item/clothing/under/liaison_suit/formal, /obj/item/clothing/under/liaison_suit/blazer, /obj/item/clothing/under/liaison_suit/suspenders, /obj/item/clothing/under/blackskirt, /obj/item/clothing/under/suit_jacket/trainee, /obj/item/clothing/under/liaison_suit/ivy, /obj/item/clothing/under/liaison_suit/orange, /obj/item/clothing/under/liaison_suit/field, /obj/item/clothing/under/colonist/workwear, /obj/item/clothing/under/colonist/workwear/khaki, /obj/item/clothing/under/colonist/workwear/pink, /obj/item/clothing/under/colonist/workwear/green)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/corporate, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, /obj/item/clothing/suit/storage/jacket/marine/bomber/red, /obj/item/clothing/suit/storage/jacket/marine/bomber, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt, /obj/item/clothing/suit/storage/snow_suit/liaison, /obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, /obj/item/clothing/suit/storage/jacket/marine/vest, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, /obj/item/clothing/suit/storage/webbing)
+	dress_extra = list(/obj/item/clothing/accessory/black, /obj/item/clothing/accessory/red, /obj/item/clothing/accessory/purple, /obj/item/clothing/accessory/blue, /obj/item/clothing/accessory/green, /obj/item/clothing/accessory/gold, /obj/item/clothing/accessory/horrible, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/prescription, /obj/item/clothing/glasses/regular/hipster)
+	dress_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/laceup/brown, /obj/item/clothing/shoes/black, /obj/item/clothing/shoes/marine/corporate)
+	dress_hat = list(/obj/item/clothing/head/fedora, /obj/item/clothing/head/beret/cm/black/civilian, /obj/item/clothing/head/beret/cm/white/civilian)
+
 /datum/equipment_preset/wy/exec_spec/lawyer
 	name = "Corporate - E - Lawyer"
+
+	dress_under = list(/obj/item/clothing/under/liaison_suit/black, /obj/item/clothing/under/liaison_suit/blue, /obj/item/clothing/under/liaison_suit/brown, /obj/item/clothing/under/liaison_suit/corporate_formal, /obj/item/clothing/under/liaison_suit, /obj/item/clothing/under/liaison_suit/charcoal, /obj/item/clothing/under/liaison_suit/formal, /obj/item/clothing/under/liaison_suit/blazer, /obj/item/clothing/under/liaison_suit/suspenders, /obj/item/clothing/under/blackskirt, /obj/item/clothing/under/suit_jacket/trainee, /obj/item/clothing/under/liaison_suit/ivy, /obj/item/clothing/under/liaison_suit/orange, /obj/item/clothing/under/liaison_suit/field, /obj/item/clothing/under/colonist/workwear, /obj/item/clothing/under/colonist/workwear/khaki, /obj/item/clothing/under/colonist/workwear/pink, /obj/item/clothing/under/colonist/workwear/green)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/corporate, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, /obj/item/clothing/suit/storage/jacket/marine/bomber/red, /obj/item/clothing/suit/storage/jacket/marine/bomber, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt, /obj/item/clothing/suit/storage/snow_suit/liaison, /obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, /obj/item/clothing/suit/storage/jacket/marine/vest, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, /obj/item/clothing/suit/storage/webbing)
+	dress_extra = list(/obj/item/clothing/accessory/black, /obj/item/clothing/accessory/red, /obj/item/clothing/accessory/purple, /obj/item/clothing/accessory/blue, /obj/item/clothing/accessory/green, /obj/item/clothing/accessory/gold, /obj/item/clothing/accessory/horrible, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/prescription, /obj/item/clothing/glasses/regular/hipster)
+	dress_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/laceup/brown, /obj/item/clothing/shoes/black, /obj/item/clothing/shoes/marine/corporate)
+	dress_hat = list(/obj/item/clothing/head/fedora, /obj/item/clothing/head/beret/cm/black/civilian, /obj/item/clothing/head/beret/cm/white/civilian)
 
 /datum/equipment_preset/wy/exec_spec/lawyer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
@@ -153,6 +127,13 @@
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer
+
+	dress_under = list(/obj/item/clothing/under/liaison_suit/black, /obj/item/clothing/under/liaison_suit/blue, /obj/item/clothing/under/liaison_suit/brown, /obj/item/clothing/under/liaison_suit/corporate_formal, /obj/item/clothing/under/liaison_suit, /obj/item/clothing/under/liaison_suit/charcoal, /obj/item/clothing/under/liaison_suit/formal, /obj/item/clothing/under/liaison_suit/blazer, /obj/item/clothing/under/liaison_suit/suspenders, /obj/item/clothing/under/blackskirt, /obj/item/clothing/under/suit_jacket/trainee, /obj/item/clothing/under/liaison_suit/ivy, /obj/item/clothing/under/liaison_suit/orange, /obj/item/clothing/under/liaison_suit/field, /obj/item/clothing/under/colonist/workwear, /obj/item/clothing/under/colonist/workwear/khaki, /obj/item/clothing/under/colonist/workwear/pink, /obj/item/clothing/under/colonist/workwear/green)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/corporate, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, /obj/item/clothing/suit/storage/jacket/marine/bomber/red, /obj/item/clothing/suit/storage/jacket/marine/bomber, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt, /obj/item/clothing/suit/storage/snow_suit/liaison, /obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, /obj/item/clothing/suit/storage/jacket/marine/vest, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, /obj/item/clothing/suit/storage/webbing)
+	dress_extra = list(/obj/item/clothing/accessory/black, /obj/item/clothing/accessory/red, /obj/item/clothing/accessory/purple, /obj/item/clothing/accessory/blue, /obj/item/clothing/accessory/green, /obj/item/clothing/accessory/gold, /obj/item/clothing/accessory/horrible, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/prescription, /obj/item/clothing/glasses/regular/hipster)
+	dress_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/laceup/brown, /obj/item/clothing/shoes/black, /obj/item/clothing/shoes/marine/corporate)
+	dress_hat = list(/obj/item/clothing/head/fedora, /obj/item/clothing/head/beret/cm/black/civilian, /obj/item/clothing/head/beret/cm/white/civilian)
 	name = "Corporate - F - Lawyer"
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer/load_gear(mob/living/carbon/human/new_human)
@@ -176,6 +157,13 @@
 	. = ..()
 	access = get_access(ACCESS_LIST_WY_SENIOR)
 
+	dress_under = list(/obj/item/clothing/under/liaison_suit/black, /obj/item/clothing/under/liaison_suit/blue, /obj/item/clothing/under/liaison_suit/brown, /obj/item/clothing/under/liaison_suit/corporate_formal, /obj/item/clothing/under/liaison_suit, /obj/item/clothing/under/liaison_suit/charcoal, /obj/item/clothing/under/liaison_suit/formal, /obj/item/clothing/under/liaison_suit/blazer, /obj/item/clothing/under/liaison_suit/suspenders, /obj/item/clothing/under/blackskirt, /obj/item/clothing/under/suit_jacket/trainee, /obj/item/clothing/under/liaison_suit/ivy, /obj/item/clothing/under/liaison_suit/orange, /obj/item/clothing/under/liaison_suit/field, /obj/item/clothing/under/colonist/workwear, /obj/item/clothing/under/colonist/workwear/khaki, /obj/item/clothing/under/colonist/workwear/pink, /obj/item/clothing/under/colonist/workwear/green)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/corporate, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, /obj/item/clothing/suit/storage/jacket/marine/bomber/red, /obj/item/clothing/suit/storage/jacket/marine/bomber, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt, /obj/item/clothing/suit/storage/snow_suit/liaison, /obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, /obj/item/clothing/suit/storage/jacket/marine/vest, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, /obj/item/clothing/suit/storage/webbing)
+	dress_extra = list(/obj/item/clothing/accessory/black, /obj/item/clothing/accessory/red, /obj/item/clothing/accessory/purple, /obj/item/clothing/accessory/blue, /obj/item/clothing/accessory/green, /obj/item/clothing/accessory/gold, /obj/item/clothing/accessory/horrible, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/prescription, /obj/item/clothing/glasses/regular/hipster)
+	dress_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/laceup/brown, /obj/item/clothing/shoes/black, /obj/item/clothing/shoes/marine/corporate)
+	dress_hat = list(/obj/item/clothing/head/fedora, /obj/item/clothing/head/beret/cm/black/civilian, /obj/item/clothing/head/beret/cm/white/civilian)
+
 /datum/equipment_preset/wy/manager/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(new_human), WEAR_JACKET)
@@ -190,6 +178,13 @@
 	rank = JOB_ASSISTANT_MANAGER
 	paygrades = list(PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_0)
 
+	dress_under = list(/obj/item/clothing/under/liaison_suit/black, /obj/item/clothing/under/liaison_suit/blue, /obj/item/clothing/under/liaison_suit/brown, /obj/item/clothing/under/liaison_suit/corporate_formal, /obj/item/clothing/under/liaison_suit, /obj/item/clothing/under/liaison_suit/charcoal, /obj/item/clothing/under/liaison_suit/formal, /obj/item/clothing/under/liaison_suit/blazer, /obj/item/clothing/under/liaison_suit/suspenders, /obj/item/clothing/under/blackskirt, /obj/item/clothing/under/suit_jacket/trainee, /obj/item/clothing/under/liaison_suit/ivy, /obj/item/clothing/under/liaison_suit/orange, /obj/item/clothing/under/liaison_suit/field, /obj/item/clothing/under/colonist/workwear, /obj/item/clothing/under/colonist/workwear/khaki, /obj/item/clothing/under/colonist/workwear/pink, /obj/item/clothing/under/colonist/workwear/green)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/corporate, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, /obj/item/clothing/suit/storage/jacket/marine/bomber/red, /obj/item/clothing/suit/storage/jacket/marine/bomber, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt, /obj/item/clothing/suit/storage/snow_suit/liaison, /obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, /obj/item/clothing/suit/storage/jacket/marine/vest, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, /obj/item/clothing/suit/storage/webbing)
+	dress_extra = list(/obj/item/clothing/accessory/black, /obj/item/clothing/accessory/red, /obj/item/clothing/accessory/purple, /obj/item/clothing/accessory/blue, /obj/item/clothing/accessory/green, /obj/item/clothing/accessory/gold, /obj/item/clothing/accessory/horrible, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/prescription, /obj/item/clothing/glasses/regular/hipster)
+	dress_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/laceup/brown, /obj/item/clothing/shoes/black, /obj/item/clothing/shoes/marine/corporate)
+	dress_hat = list(/obj/item/clothing/head/fedora, /obj/item/clothing/head/beret/cm/black/civilian, /obj/item/clothing/head/beret/cm/white/civilian)
+
 /datum/equipment_preset/wy/manager/division_manager
 	name = "Corporate - H - Division Manager"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -197,12 +192,26 @@
 	rank = JOB_DIVISION_MANAGER
 	paygrades = list(PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_0)
 
+	dress_under = list(/obj/item/clothing/under/liaison_suit/black, /obj/item/clothing/under/liaison_suit/blue, /obj/item/clothing/under/liaison_suit/brown, /obj/item/clothing/under/liaison_suit/corporate_formal, /obj/item/clothing/under/liaison_suit, /obj/item/clothing/under/liaison_suit/charcoal, /obj/item/clothing/under/liaison_suit/formal, /obj/item/clothing/under/liaison_suit/blazer, /obj/item/clothing/under/liaison_suit/suspenders, /obj/item/clothing/under/blackskirt, /obj/item/clothing/under/suit_jacket/trainee, /obj/item/clothing/under/liaison_suit/ivy, /obj/item/clothing/under/liaison_suit/orange, /obj/item/clothing/under/liaison_suit/field, /obj/item/clothing/under/colonist/workwear, /obj/item/clothing/under/colonist/workwear/khaki, /obj/item/clothing/under/colonist/workwear/pink, /obj/item/clothing/under/colonist/workwear/green)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/corporate, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, /obj/item/clothing/suit/storage/jacket/marine/bomber/red, /obj/item/clothing/suit/storage/jacket/marine/bomber, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt, /obj/item/clothing/suit/storage/snow_suit/liaison, /obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, /obj/item/clothing/suit/storage/jacket/marine/vest, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, /obj/item/clothing/suit/storage/webbing)
+	dress_extra = list(/obj/item/clothing/accessory/black, /obj/item/clothing/accessory/red, /obj/item/clothing/accessory/purple, /obj/item/clothing/accessory/blue, /obj/item/clothing/accessory/green, /obj/item/clothing/accessory/gold, /obj/item/clothing/accessory/horrible, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/prescription, /obj/item/clothing/glasses/regular/hipster)
+	dress_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/laceup/brown, /obj/item/clothing/shoes/black, /obj/item/clothing/shoes/marine/corporate)
+	dress_hat = list(/obj/item/clothing/head/fedora, /obj/item/clothing/head/beret/cm/black/civilian, /obj/item/clothing/head/beret/cm/white/civilian)
+
 /datum/equipment_preset/wy/manager/chief_executive
 	name = "Corporate - I - Chief Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CHIEF_EXECUTIVE
 	rank = JOB_CHIEF_EXECUTIVE
 	paygrades = list(PAY_SHORT_WYC9 = JOB_PLAYTIME_TIER_0)
+
+	dress_under = list(/obj/item/clothing/under/liaison_suit/black, /obj/item/clothing/under/liaison_suit/blue, /obj/item/clothing/under/liaison_suit/brown, /obj/item/clothing/under/liaison_suit/corporate_formal, /obj/item/clothing/under/liaison_suit, /obj/item/clothing/under/liaison_suit/charcoal, /obj/item/clothing/under/liaison_suit/formal, /obj/item/clothing/under/liaison_suit/blazer, /obj/item/clothing/under/liaison_suit/suspenders, /obj/item/clothing/under/blackskirt, /obj/item/clothing/under/suit_jacket/trainee, /obj/item/clothing/under/liaison_suit/ivy, /obj/item/clothing/under/liaison_suit/orange, /obj/item/clothing/under/liaison_suit/field, /obj/item/clothing/under/colonist/workwear, /obj/item/clothing/under/colonist/workwear/khaki, /obj/item/clothing/under/colonist/workwear/pink, /obj/item/clothing/under/colonist/workwear/green)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/corporate, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, /obj/item/clothing/suit/storage/jacket/marine/bomber/red, /obj/item/clothing/suit/storage/jacket/marine/bomber, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt, /obj/item/clothing/suit/storage/snow_suit/liaison, /obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, /obj/item/clothing/suit/storage/jacket/marine/vest, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, /obj/item/clothing/suit/storage/webbing)
+	dress_extra = list(/obj/item/clothing/accessory/black, /obj/item/clothing/accessory/red, /obj/item/clothing/accessory/purple, /obj/item/clothing/accessory/blue, /obj/item/clothing/accessory/green, /obj/item/clothing/accessory/gold, /obj/item/clothing/accessory/horrible, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/prescription, /obj/item/clothing/glasses/regular/hipster)
+	dress_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/laceup/brown, /obj/item/clothing/shoes/black, /obj/item/clothing/shoes/marine/corporate)
+	dress_hat = list(/obj/item/clothing/head/fedora, /obj/item/clothing/head/beret/cm/black/civilian, /obj/item/clothing/head/beret/cm/white/civilian)
 
 /datum/equipment_preset/wy/manager/chief_executive/New()
 	. = ..()
@@ -216,6 +225,13 @@
 	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/manager/director
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
+
+	dress_under = list(/obj/item/clothing/under/liaison_suit/black, /obj/item/clothing/under/liaison_suit/blue, /obj/item/clothing/under/liaison_suit/brown, /obj/item/clothing/under/liaison_suit/corporate_formal, /obj/item/clothing/under/liaison_suit, /obj/item/clothing/under/liaison_suit/charcoal, /obj/item/clothing/under/liaison_suit/formal, /obj/item/clothing/under/liaison_suit/blazer, /obj/item/clothing/under/liaison_suit/suspenders, /obj/item/clothing/under/blackskirt, /obj/item/clothing/under/suit_jacket/trainee, /obj/item/clothing/under/liaison_suit/ivy, /obj/item/clothing/under/liaison_suit/orange, /obj/item/clothing/under/liaison_suit/field, /obj/item/clothing/under/colonist/workwear, /obj/item/clothing/under/colonist/workwear/khaki, /obj/item/clothing/under/colonist/workwear/pink, /obj/item/clothing/under/colonist/workwear/green)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/corporate, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, /obj/item/clothing/suit/storage/jacket/marine/bomber/red, /obj/item/clothing/suit/storage/jacket/marine/bomber, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt, /obj/item/clothing/suit/storage/snow_suit/liaison, /obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, /obj/item/clothing/suit/storage/jacket/marine/vest, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, /obj/item/clothing/suit/storage/webbing)
+	dress_extra = list(/obj/item/clothing/accessory/black, /obj/item/clothing/accessory/red, /obj/item/clothing/accessory/purple, /obj/item/clothing/accessory/blue, /obj/item/clothing/accessory/green, /obj/item/clothing/accessory/gold, /obj/item/clothing/accessory/horrible, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/prescription, /obj/item/clothing/glasses/regular/hipster)
+	dress_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/laceup/brown, /obj/item/clothing/shoes/black, /obj/item/clothing/shoes/marine/corporate)
+	dress_hat = list(/obj/item/clothing/head/fedora, /obj/item/clothing/head/beret/cm/black/civilian, /obj/item/clothing/head/beret/cm/white/civilian)
 
 /datum/equipment_preset/wy/manager/director/New()
 	. = ..()

@@ -2,6 +2,7 @@
 /obj/item/storage/box/czsp/first_aid
 	name = "first-aid combat support kit"
 	desc = "Contains upgraded medical kits, nanosplints and an upgraded defibrillator."
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "medicbox"
 	storage_slots = 3
 
@@ -15,6 +16,7 @@
 /obj/item/storage/box/czsp/medical
 	name = "medical combat support kit"
 	desc = "Contains upgraded medical kits, nanosplints and an upgraded defibrillator."
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "medicbox"
 	storage_slots = 4
 

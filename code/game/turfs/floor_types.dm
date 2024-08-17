@@ -840,6 +840,36 @@
 /turf/open/floor/almayer/empty/vehicle_bay/get_depths_turfs()
 	return SSshuttle.vehicle_elevator.return_turfs()
 
+//UPP Symbol Floor
+/turf/open/floor/almayer/upp_floor
+	icon = 'icons/turf/upp_floor.dmi'
+	icon_state = "upp_c"
+	name = "\improper UPP Logo"
+
+/turf/open/floor/almayer/upp_floor/directional
+	icon_state = "upp_directional"
+
+/turf/open/floor/almayer/upp_floor/directional/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/upp_floor/directional/north
+	dir = NORTH
+
+/turf/open/floor/almayer/upp_floor/directional/east
+	dir = EAST
+
+/turf/open/floor/almayer/upp_floor/directional/west
+	dir = WEST
+
+/turf/open/floor/almayer/upp_floor/directional/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/upp_floor/directional/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer/upp_floor/directional/northwest
+	dir = NORTHWEST
+
 //Others
 /turf/open/floor/almayer/uscm
 	icon_state = "logo_c"

@@ -222,3 +222,19 @@
 2024-08-16:
   Doubleumc:
   - ui: dark HUD indicators stay anchored to the viewport edge
+2024-08-17:
+  567Turtle:
+  - rscadd: Gay crayons for your helmet ("Box of Prideful Crayons" in the toys section
+      of the loadout menu.)
+  Blundir:
+  - rscadd: Guns now support custom muzzle flash light color, some guns have a new
+      color of it now, standard color is yellow tinted now instead of white
+  cuberound:
+  - bugfix: two persons are needed to activate red, ert and emergency acces using
+      cards
+2024-08-18:
+  Zonespace27:
+  - bugfix: Fixed heavy sniper spec opening up the wrong specialist slot on admin
+      cryo
+  cuberound:
+  - rscdel: removes bluespace beacon

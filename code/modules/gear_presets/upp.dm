@@ -24,6 +24,8 @@
 /datum/equipment_preset/upp/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_UPP_ALL) //ACCESS_COME_BACK_TO_ME
+/datum/equipment_preset/upp/cryo
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/upp/cryo/load_gear(mob/living/carbon/human/new_human)
 	.=..()
@@ -84,7 +86,7 @@
 
 /datum/equipment_preset/upp/cryo/soldier
 	name = "UPP Soldier (Cryo)"
-	flags = EQUIPMENT_PRESET_EXTRA
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	skills = /datum/skills/upp
 	assignment = JOB_UPP
@@ -92,15 +94,8 @@
 	role_comm_title = "Sol"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 
-/datum/equipment_preset/upp/soldier
-	name = "UPP Soldier (Cryo)"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	skills = /datum/skills/upp
-	assignment = JOB_UPP
-	rank = JOB_UPP
-	role_comm_title = "Sol"
-	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
+/datum/equipment_preset/upp/cryo/soldier/load_gear(mob/living/carbon/human/new_human)
+	. = ..()
 
 
 /datum/equipment_preset/upp/soldier
@@ -292,9 +287,9 @@
 	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/cryo/medic
 
+
 /datum/equipment_preset/upp/cryo/medic
 	name = "UPP Medic (Cryo)"
-	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/combat_medic
 	assignment = JOB_UPP_MEDIC
@@ -491,7 +486,6 @@
 
 /datum/equipment_preset/upp/cryo/sapper
 	name = "UPP Sapper (Cryo)"
-	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/combat_engineer
 	assignment = JOB_UPP_ENGI
@@ -657,7 +651,16 @@
 /datum/job/antag/upp/specialist
 	title = JOB_UPP_SPECIALIST
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/specialist
+	gear_preset = /datum/equipment_preset/upp/cryo/specialist
+
+/datum/equipment_preset/upp/cryo/specialist
+	name = "UPP Specialist (Cryo)"
+
+	skills = /datum/skills/upp/specialist
+	assignment = JOB_UPP_SPECIALIST
+	rank = JOB_UPP_SPECIALIST
+	role_comm_title = "Spc"
+	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/specialist
 	name = "UPP Specialist"
@@ -797,7 +800,16 @@
 /datum/job/antag/upp/machinegunner
 	title = JOB_UPP_SPECIALIST
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/machinegunner
+	gear_preset = /datum/equipment_preset/upp/cryo/machinegunner
+
+/datum/equipment_preset/upp/cryo/machinegunner
+	name = "UPP Machinegunner (Cryo)"
+
+	skills = /datum/skills/upp/specialist
+	assignment = JOB_UPP_SPECIALIST
+	rank = JOB_UPP_SPECIALIST
+	role_comm_title = "Spc"
+	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/machinegunner
 	name = "UPP Machinegunner"
@@ -931,7 +943,16 @@
 /datum/job/antag/upp/leader
 	title = JOB_UPP_LEADER
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/leader
+	gear_preset = /datum/equipment_preset/upp/cryo/leader
+
+/datum/equipment_preset/upp/cryo/leader
+	name = "UPP Squad Leader (Cryo)"
+
+	skills = /datum/skills/upp/SL
+	assignment = JOB_UPP_LEADER
+	rank = JOB_UPP_LEADER
+	role_comm_title = "SL"
+	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/leader
 	name = "UPP Squad Leader"
@@ -1110,7 +1131,16 @@
 /datum/job/antag/upp/military_police
 	title = JOB_UPP_POLICE
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/military_police
+	gear_preset = /datum/equipment_preset/upp/cryo/military_police
+
+/datum/equipment_preset/upp/cryo/military_police
+	name = "UPP Military Police (Cryo)"
+
+	skills = /datum/skills/upp/military_police
+	assignment = JOB_UPP_POLICE
+	rank = JOB_UPP_POLICE
+	role_comm_title = "MP"
+	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/military_police
 	name = "UPP Military Police"
@@ -1267,7 +1297,16 @@
 /datum/job/antag/upp/officer
 	title = JOB_UPP_LT_OFFICER
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/officer
+	gear_preset = /datum/equipment_preset/upp/cryo/officer
+
+/datum/equipment_preset/upp/cryo/officer
+	name = "UPP Lieutenant (Cryo)"
+
+	skills = /datum/skills/upp/officer
+	assignment = JOB_UPP_LT_OFFICER
+	rank = JOB_UPP_LT_OFFICER
+	role_comm_title = "Lt."
+	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer
 	name = "UPP Lieutenant"
@@ -1433,7 +1472,14 @@
 /datum/job/antag/upp/officer/senior
 	title = JOB_UPP_SRLT_OFFICER
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/officer/senior
+	gear_preset = /datum/equipment_preset/upp/cryo/officer/senior
+
+/datum/equipment_preset/upp/cryo/officer/senior
+	name = "UPP Senior Lieutenant (Cryo)"
+	assignment = JOB_UPP_SRLT_OFFICER
+	rank = JOB_UPP_SRLT_OFFICER
+	role_comm_title = "Sr-Lt."
+	paygrades = list(PAY_SHORT_UO2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer/senior
 	name = "UPP Senior Lieutenant"
@@ -1586,7 +1632,15 @@
 /datum/job/antag/upp/officer/kapitan
 	title = JOB_UPP_KPT_OFFICER
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/officer/kapitan
+	gear_preset = /datum/equipment_preset/upp/cryo/officer/kapitan
+
+/datum/equipment_preset/upp/cryo/officer/kapitan
+	name = "UPP Kapitan (Cryo)"
+	assignment = JOB_UPP_KPT_OFFICER
+	rank = JOB_UPP_KPT_OFFICER
+	role_comm_title = "May."
+	paygrades = list(PAY_SHORT_UO3 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/upp/kapitan
 
 /datum/equipment_preset/upp/officer/kapitan
 	name = "UPP Kapitan"
@@ -1753,7 +1807,15 @@
 	flags_whitelist =  WHITELIST_COMMANDER
 	title = JOB_UPP_MAY_OFFICER
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/officer/major
+	gear_preset = /datum/equipment_preset/upp/cryo/officer/major
+
+/datum/equipment_preset/upp/cryo/officer/major
+	name = "UPP Major (Cryo)"
+	assignment = JOB_UPP_MAY_OFFICER
+	rank = JOB_UPP_MAY_OFFICER
+	role_comm_title = "May."
+	paygrades = list(PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/major
 	name = "UPP Major"
@@ -1922,8 +1984,15 @@
 	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 	title = JOB_UPP_LTKOL_OFFICER
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/officer/lt_kolonel
+	gear_preset = /datum/equipment_preset/upp/cryo/officer/lt_kolonel
 
+/datum/equipment_preset/upp/cryo/officer/lt_kolonel
+	name = "UPP Leytenant Kolonel (Cryo)"
+	assignment = JOB_UPP_LTKOL_OFFICER
+	rank = JOB_UPP_LTKOL_OFFICER
+	role_comm_title = "Lt. Kol."
+	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/lt_kolonel
 	name = "UPP Leytenant Kolonel"
@@ -2097,7 +2166,15 @@
 	flags_whitelist =  WHITELIST_COMMANDER_COLONEL
 	title = JOB_UPP_KOL_OFFICER
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/officer/kolonel
+	gear_preset = /datum/equipment_preset/upp/cryo/officer/kolonel
+
+/datum/equipment_preset/upp/cryo/officer/kolonel
+	name = "UPP Kolonel (Cryo)"
+	assignment = JOB_UPP_KOL_OFFICER
+	rank = JOB_UPP_KOL_OFFICER
+	role_comm_title = "Kol."
+	paygrades = list(PAY_SHORT_UO6 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/kolonel
 	name = "UPP Kolonel"
@@ -2263,7 +2340,15 @@
 /datum/job/antag/upp/officer/may_gen
 	title = JOB_UPP_KOL_OFFICER
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/officer/may_gen
+	gear_preset = /datum/equipment_preset/upp/cryo/officer/may_gen
+
+/datum/equipment_preset/upp/cryo/officer/may_gen
+	name = "UPP Mayjor General (Cryo)"
+	assignment = JOB_UPP_KOL_OFFICER
+	rank = JOB_UPP_KOL_OFFICER
+	role_comm_title = "May. Gen."
+	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/may_gen
 	name = "UPP Mayjor General"
@@ -2429,7 +2514,15 @@
 /datum/job/antag/upp/officer/ley_gen
 	title = JOB_UPP_KOL_OFFICER
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/officer/ley_gen
+	gear_preset = /datum/equipment_preset/upp/cryo/officer/ley_gen
+
+/datum/equipment_preset/upp/cryo/officer/ley_gen
+	name = "UPP Leytenant General (Cryo)"
+	assignment = JOB_UPP_KOL_OFFICER
+	rank = JOB_UPP_KOL_OFFICER
+	role_comm_title = "Lt. Gen."
+	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/ley_gen
 	name = "UPP Leytenant General"
@@ -2595,7 +2688,15 @@
 /datum/job/antag/upp/officer/gen
 	title = JOB_UPP_KOL_OFFICER
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/officer/gen
+	gear_preset = /datum/equipment_preset/upp/cryo/officer/gen
+
+/datum/equipment_preset/upp/cryo/officer/gen
+	name = "UPP Army General (Cryo)"
+	assignment = JOB_UPP_KOL_OFFICER
+	rank = JOB_UPP_KOL_OFFICER
+	role_comm_title = "Gen."
+	paygrades = list(PAY_SHORT_UO9 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/gen
 	name = "UPP Army General"
@@ -2799,7 +2900,18 @@
 	flags_whitelist = WHITELIST_SYNTHETIC
 	title = JOB_UPP_SUPPORT_SYNTH
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/synth
+	gear_preset = /datum/equipment_preset/upp/cryo/synth
+
+/datum/equipment_preset/upp/cryo/synth
+	name = "UPP Synthetic (Cryo)"
+
+	languages = ALL_SYNTH_LANGUAGES_UPP
+
+	skills = /datum/skills/synthetic
+	assignment = JOB_UPP_SUPPORT_SYNTH
+	rank = JOB_UPP_SUPPORT_SYNTH
+	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
+	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/upp/synth
 	name = "UPP Synthetic"
@@ -3019,7 +3131,13 @@
 /datum/job/antag/upp/synth/combat
 	title = JOB_UPP_COMBAT_SYNTH
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/synth/combat
+	gear_preset = /datum/equipment_preset/upp/cryo/synth/combat
+
+/datum/equipment_preset/upp/cryo/synth/combat
+	name = "UPP Combat Synthetic (Cryo)"
+
+	assignment = JOB_UPP_COMBAT_SYNTH
+	rank = JOB_UPP_COMBAT_SYNTH
 
 /datum/equipment_preset/upp/synth/combat
 	name = "UPP Combat Synthetic"
@@ -3080,7 +3198,17 @@
 /datum/job/antag/upp/conscript
 	title = JOB_UPP_CONSCRIPT
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/conscript
+	gear_preset = /datum/equipment_preset/upp/cryo/conscript
+
+/datum/equipment_preset/upp/cryo/conscript
+	//meme role
+	name = "UPP Conscript (Cryo)"
+
+	skills = /datum/skills/upp
+	assignment = JOB_UPP_CONSCRIPT
+	rank = JOB_UPP_CONSCRIPT
+	role_comm_title = "Cons"
+	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/conscript
 	//meme role
@@ -3192,7 +3320,18 @@
 /datum/job/antag/upp/commando
 	title = JOB_UPP_COMMANDO
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/commando
+	gear_preset = /datum/equipment_preset/upp/cryo/commando
+
+/datum/equipment_preset/upp/cryo/commando
+	name = "UPP Commando (!DEATHSQUAD! , Cryo)"
+
+	skills = /datum/skills/commando
+	assignment = JOB_UPP_COMMANDO
+	rank = JOB_UPP_COMMANDO
+	role_comm_title = "JKdo"
+	paygrades = list(PAY_SHORT_UC1 = JOB_PLAYTIME_TIER_0)
+	idtype = /obj/item/card/id/data
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
 /datum/equipment_preset/upp/commando
 	name = "UPP Commando (!DEATHSQUAD!)"
@@ -3317,7 +3456,16 @@
 /datum/job/antag/upp/commando/medic
 	title = JOB_UPP_COMMANDO_MEDIC
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/commando/medic
+	gear_preset = /datum/equipment_preset/upp/cryo/commando/medic
+
+/datum/equipment_preset/upp/cryo/commando/medic
+	name = "UPP Commando Medic (!DEATHSQUAD!, Cryo)"
+
+	skills = /datum/skills/commando/medic
+	assignment = JOB_UPP_COMMANDO_MEDIC
+	rank = JOB_UPP_COMMANDO_MEDIC
+	role_comm_title = "2ndKdo"
+	paygrades = list(PAY_SHORT_UC2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/commando/medic
 	name = "UPP Commando Medic (!DEATHSQUAD!)"
@@ -3482,7 +3630,17 @@
 /datum/job/antag/upp/commando/leader
 	title = JOB_UPP_COMMANDO_LEADER
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/commando/leader
+	gear_preset = /datum/equipment_preset/upp/cryo/commando/leader
+
+/datum/equipment_preset/upp/cryo/commando/leader
+	name = "UPP Commando Leader (!DEATHSQUAD!, cryo)"
+
+	skills = /datum/skills/commando/leader
+	assignment = JOB_UPP_COMMANDO_LEADER
+	rank = JOB_UPP_COMMANDO_LEADER
+	role_comm_title = "1stKdo"
+	paygrades = list(PAY_SHORT_UC3 = JOB_PLAYTIME_TIER_0)
+	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/upp/commando/leader
 	name = "UPP Commando Leader (!DEATHSQUAD!)"
@@ -3634,8 +3792,6 @@
 		list("Range Finder", 10, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
 		list("Laser Designator", 15, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
 	)
-/datum/job/antag/upp/commando/low_threat
-	gear_preset = /datum/equipment_preset/upp/commando/low_threat
 
 /datum/equipment_preset/upp/commando/low_threat
 	name = "UPP Commando"
@@ -3668,9 +3824,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 8)
-
-/datum/job/antag/upp/commando/medic/low_threat
-	gear_preset = /datum/equipment_preset/upp/commando/medic/low_threat
 
 /datum/equipment_preset/upp/commando/medic/low_threat
 	name = "UPP Commando Medic"
@@ -3712,9 +3865,6 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 5)
 
-/datum/job/antag/upp/commando/leader/low_threat
-	gear_preset = /datum/equipment_preset/upp/commando/leader/low_threat
-
 /datum/equipment_preset/upp/commando/leader/low_threat
 	name = "UPP Commando Leader"
 
@@ -3751,11 +3901,21 @@
 /datum/job/antag/upp/tank
 	title = JOB_UPP_CREWMAN
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/tank
+	gear_preset = /datum/equipment_preset/upp/cryo/tank
+
+/datum/equipment_preset/upp/cryo/tank
+	name = "UPP Vehicle Crewman (TANK, cryo)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = JOB_UPP_CREWMAN
+	rank = JOB_UPP_CREWMAN
+	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "TANK"
+	minimum_age = 30
+	skills = /datum/skills/tank_crew
 
 /datum/equipment_preset/upp/tank
 	name = "UPP Vehicle Crewman (TANK)"
-	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_UPP_CREWMAN
 	rank = JOB_UPP_CREWMAN
@@ -3853,8 +4013,16 @@
 /datum/job/antag/upp/doctor
 	title = JOB_UPP_LT_DOKTOR
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/doctor
+	gear_preset = /datum/equipment_preset/upp/cryo/doctor
 
+/datum/equipment_preset/upp/cryo/doctor
+	name = "UPP Doctor (Cryo)"
+
+	skills = /datum/skills/upp/combat_medic
+	assignment = JOB_UPP_LT_DOKTOR
+	rank = JOB_UPP_LT_DOKTOR
+	role_comm_title = "Lt. Med."
+	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
 /datum/equipment_preset/upp/doctor
 	name = "UPP Doctor"
 	flags = EQUIPMENT_PRESET_EXTRA

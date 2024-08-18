@@ -348,14 +348,14 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/datum/job/marine_job = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
 	assign_role(M, marine_job)
 
-/datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin = FALSE)
+/datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin = FALSE, antag = FALSE)
 	if(ismob(M) && istype(J))
-		if(check_role_entry(M, J, latejoin))
+		if(check_role_entry(M, J, latejoin, antag))
 			M.job = J.title
 			J.current_positions++
 			return TRUE
 
-/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin = FALSE)
+/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin = FALSE, antag = FALSE)
 	if(jobban_isbanned(M, J.title))
 		return FALSE
 	if(J.role_ban_alternative && jobban_isbanned(M, J.role_ban_alternative))
@@ -368,6 +368,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return FALSE
 	if(latejoin && !J.late_joinable)
 		return FALSE
+	if((istype(J,/datum/job/antag) && !antag) || (!istype(J,/datum/job/antag) && antag))
+		return FALSE
+
 	return TRUE
 
 /datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1) //Want to make sure it's a job, and nothing like a MODE or special role.

@@ -55,7 +55,7 @@
 		output += "<a href='byond://?src=\ref[src];lobby_choice=manifest'>View the Crew Manifest</A><br><br>"
 		output += "<a href='byond://?src=\ref[src];lobby_choice=hiveleaders'>View Hive Leaders</A><br><br>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join'>Join the USCM!</A></p>"
-		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_upp'>Join the UPP!</A></p>"
+		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_antag'>Join the UPP!</A></p>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_xeno'>Join the Hive!</A></p>"
 		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
 			if(SSticker.mode.check_predator_late_join(src,0)) output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_pred'>Join the Hunt!</A></p>"
@@ -171,7 +171,7 @@
 
 			LateChoices()
 
-		if("late_join_upp")
+		if("late_join_antag")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
@@ -185,7 +185,7 @@
 					tutorial_menu()
 					return
 
-			LateChoices()
+			LateChoicesAntag()
 
 		if("late_join_xeno")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
@@ -333,7 +333,7 @@
 
 	for(var/i in GLOB.RoleAuthority.roles_for_mode)
 		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(!GLOB.RoleAuthority.check_role_entry(src, J, TRUE))
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = FALSE, antag = FALSE))
 			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active
@@ -369,6 +369,69 @@
 			roles_show ^= FLAG_SHOW_MEDICAL
 
 		else if(roles_show & FLAG_SHOW_MARINES && GLOB.ROLES_MARINES.Find(J.title))
+			dat += "<hr>Marines:<br>"
+			roles_show ^= FLAG_SHOW_MARINES
+
+		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
+
+	dat += "</center>"
+	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
+
+/mob/new_player/proc/LateChoicesAntag()
+	var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
+	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence... or something
+	var/mins = (mills % 36000) / 600
+	var/hours = mills / 36000
+
+	var/dat = "<html><body onselectstart='return false;'><center>"
+	dat += "Round Duration: [floor(hours)]h [floor(mins)]m<br>"
+
+	if(SShijack)
+		switch(SShijack.evac_status)
+			if(EVACUATION_STATUS_INITIATED)
+				dat += "<font color='red'><b>The [MAIN_SHIP_NAME] is being evacuated.</b></font><br>"
+
+	dat += "Choose from the following open positions:<br>"
+	var/roles_show = FLAG_SHOW_ALL_JOBS
+
+	for(var/i in GLOB.RoleAuthority.roles_for_mode)
+		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = FALSE, antag = TRUE))
+			continue
+		var/active = 0
+		// Only players with the job assigned and AFK for less than 10 minutes count as active
+		for(var/mob/M in GLOB.player_list)
+			if(M.client && M.job == J.title)
+				active++
+		if(roles_show & FLAG_SHOW_CIC && GLOB.ROLES_CIC_ANTAG.Find(J.title))
+			dat += "Command:<br>"
+			roles_show ^= FLAG_SHOW_CIC
+
+		else if(roles_show & FLAG_SHOW_AUXIL_SUPPORT && GLOB.ROLES_AUXIL_SUPPORT_ANTAG.Find(J.title))
+			dat += "<hr>Auxiliary Combat Support:<br>"
+			roles_show ^= FLAG_SHOW_AUXIL_SUPPORT
+
+		else if(roles_show & FLAG_SHOW_MISC && GLOB.ROLES_MISC_ANTAG.Find(J.title))
+			dat += "<hr>Other:<br>"
+			roles_show ^= FLAG_SHOW_MISC
+
+		else if(roles_show & FLAG_SHOW_POLICE && GLOB.ROLES_POLICE_ANTAG.Find(J.title))
+			dat += "<hr>Military Police:<br>"
+			roles_show ^= FLAG_SHOW_POLICE
+
+		else if(roles_show & FLAG_SHOW_ENGINEERING && GLOB.ROLES_ENGINEERING_ANTAG.Find(J.title))
+			dat += "<hr>Engineering:<br>"
+			roles_show ^= FLAG_SHOW_ENGINEERING
+
+		else if(roles_show & FLAG_SHOW_REQUISITION && GLOB.ROLES_REQUISITION_ANTAG.Find(J.title))
+			dat += "<hr>Requisitions:<br>"
+			roles_show ^= FLAG_SHOW_REQUISITION
+
+		else if(roles_show & FLAG_SHOW_MEDICAL && GLOB.ROLES_MEDICAL_ANTAG.Find(J.title))
+			dat += "<hr>Medbay:<br>"
+			roles_show ^= FLAG_SHOW_MEDICAL
+
+		else if(roles_show & FLAG_SHOW_MARINES && GLOB.ROLES_MARINES_ANTAG.Find(J.title))
 			dat += "<hr>Marines:<br>"
 			roles_show ^= FLAG_SHOW_MARINES
 

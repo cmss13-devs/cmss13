@@ -1598,7 +1598,8 @@
 			O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [restraint]!</B>"), 1)
 		if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			return
-
+		if(stat == DEAD)
+			return
 		if(!restraint || buckled)
 			return // time leniency for lag which also might make this whole thing pointless but the server
 		for(var/mob/O in viewers(src))//  lags so hard that 40s isn't lenient enough - Quarxink

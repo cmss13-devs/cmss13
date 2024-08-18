@@ -95,9 +95,6 @@
 	role_comm_title = "Sol"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 
-/datum/equipment_preset/upp/cryo/soldier/load_gear(mob/living/carbon/human/new_human)
-	. = ..()
-
 
 /datum/equipment_preset/upp/soldier
 	name = "UPP Soldier"
@@ -1139,6 +1136,17 @@
 	role_comm_title = "MP"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
 
+/datum/equipment_preset/upp/cryo/military_police/load_gear(mob/living/carbon/human/new_human)
+	. = ..()
+	//uniform
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/mp, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)
+	//ear
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
+	//limbs
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
+
 /datum/equipment_preset/upp/military_police
 	name = "UPP Military Police"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -1303,6 +1311,13 @@
 	rank = JOB_UPP_LT_OFFICER
 	role_comm_title = "Lt."
 	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/upp/cryo/officer/load_gear(mob/living/carbon/human/new_human)
+	. = ..()
+	//face
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command, WEAR_L_EAR)
+	//uniform
+	var/obj/item/clothing/under/marine/veteran/UPP/officer/M = new()
 
 /datum/equipment_preset/upp/officer
 	name = "UPP Lieutenant"
@@ -2908,6 +2923,18 @@
 	rank = JOB_UPP_SUPPORT_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
+
+/datum/equipment_preset/upp/cryo/synth/load_gear(mob/living/carbon/human/new_human)
+	. = ..()
+	//face
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command, WEAR_L_EAR)
+	//body
+	var/obj/item/clothing/under/marine/veteran/UPP/medic/UPP = new()
+	var/obj/item/clothing/accessory/storage/surg_vest/drop_green/upp/webbing = new()
+	UPP.attach_accessory(new_human, webbing)
+	new_human.equip_to_slot_or_del(UPP, WEAR_BODY)
+	//limbs
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 
 /datum/equipment_preset/upp/synth
 	name = "UPP Synthetic"

@@ -29,6 +29,7 @@
 
 /obj/item/storage/box/czsp/medic_upgraded_kits
 	name = "medical upgrade kit"
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "upgradedkitbox"
 	desc = "This kit holds upgraded trauma and burn kits, for critical injuries."
 	max_w_class = SIZE_MEDIUM

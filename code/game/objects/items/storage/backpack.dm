@@ -230,7 +230,6 @@
 /obj/item/storage/backpack/santabag
 	name = "Santa's Gift Bag"
 	desc = "Space Santa uses this to deliver toys to all the nice children in space in Christmas! Wow, it's pretty big!"
-	icon = 'icons/obj/items/storage/bags.dmi'
 	icon_state = "giftbag"
 	item_state = "giftbag"
 	w_class = SIZE_LARGE

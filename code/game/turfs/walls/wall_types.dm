@@ -271,14 +271,50 @@
 	walltype = WALL_SULACO
 
 
+//UPP walls.
 
+/turf/closed/wall/upp
+	name = "hull"
+	desc = "A metal wall used to separate rooms on spaceships from the cold void of space."
+	icon = 'icons/turf/walls/upp_almayer_walls.dmi'
+	icon_state = "testwall"
 
-/turf/closed/wall/indestructible
-	name = "wall"
-	icon = 'icons/turf/walls/walls.dmi'
-	icon_state = "riveted"
-	opacity = TRUE
+	damage_cap = HEALTH_WALL
+	walltype = WALL_UPP_BASE
+
+/turf/closed/wall/upp/reinforced
+	name = "reinforced hull"
+	desc = "A reinforced metal wall used to separate rooms and make up the ship."
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+//	walltype = WALL_UPP_REINFORCED
+
+/turf/closed/wall/upp/reinforced/outer
+	name = "outer hull"
+	desc = "A metal wall used to separate space from the ship"
+	icon_state = "hull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
+	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
 	hull = 1
+
+
+/turf/closed/wall/strata_outpost
+	name = "bare outpost walls"
+	icon = 'icons/turf/walls/strata_outpost.dmi'
+	icon_state = "strata_bare_outpost_"
+	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	walltype = WALL_STRATA_OUTPOST_BARE
+
+/turf/closed/wall/strata_outpost/reinforced
+	name = "ribbed outpost walls"
+	icon_state = "strata_ribbed_outpost_"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = HEALTH_WALL_REINFORCED
+
+/turf/closed/wall/strata_outpost/reinforced/hull
+	hull = 1
+	icon_state = "strata_hull"
+	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
 
 

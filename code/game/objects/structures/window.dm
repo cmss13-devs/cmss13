@@ -1041,3 +1041,33 @@
 	icon_state = "paddedsec_rwindow0"
 	basestate = "paddedsec_rwindow"
 	window_frame = /obj/structure/window_frame/corsat/security
+
+//UPP windows
+
+/obj/structure/window/framed/upp
+	name = "window"
+	icon = 'icons/turf/walls/upp_almayer_windows.dmi'
+	icon_state = "alm_window0"
+	basestate = "alm_window"
+	desc = "A glass window inside a wall frame."
+	health = 40
+	window_frame = /obj/structure/window_frame/upp
+
+/obj/structure/window/framed/upp/reinforced
+	name = "reinforced window"
+	icon_state = "alm_rwindow0"
+	basestate = "alm_rwindow"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/upp/reinforced
+
+/obj/structure/window/framed/upp/hull
+	icon_state = "alm_rwindow0"
+	basestate = "alm_rwindow"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000

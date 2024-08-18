@@ -315,3 +315,21 @@
 
 /obj/structure/window_frame/corsat/security
 	window_type = /obj/structure/window/framed/corsat/security
+
+//upp frames
+
+/obj/structure/window_frame/upp
+	icon = 'icons/turf/walls/upp_almayer_windows.dmi'
+	icon_state = "window0_frame"
+	basestate = "alm_window0"
+
+/obj/structure/window_frame/upp/reinforced
+	icon_state = "window0_frame"
+	basestate = "alm_rwindow0"
+	reinforced = TRUE
+
+/obj/structure/window_frame/upp/hull
+	icon_state = "window0_frame"
+	basestate = "alm_rwindow0"
+	unslashable = TRUE
+	unacidable = TRUE

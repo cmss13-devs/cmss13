@@ -1,4 +1,0 @@
-author: "Doubleumc"
-delete-after: True
-changes:
-  - ui: "dark HUD indicators stay anchored to the viewport edge"

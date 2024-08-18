@@ -334,7 +334,7 @@
 
 	for(var/i in GLOB.RoleAuthority.roles_for_mode)
 		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = FALSE, antag = FALSE))
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, antag = FALSE))
 			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active
@@ -397,7 +397,7 @@
 
 	for(var/i in GLOB.RoleAuthority.roles_for_mode)
 		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = FALSE, antag = TRUE))
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, antag = TRUE))
 			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active

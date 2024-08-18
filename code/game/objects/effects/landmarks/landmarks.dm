@@ -273,6 +273,13 @@
 			LAZYREMOVE(GLOB.spawns_by_squad_and_job[squad][job], src)
 		else
 			LAZYREMOVE(GLOB.spawns_by_job[job], src)
+	if(job_list)
+		for(var/job_from_list in job_list)
+			if(squad)
+				LAZYINITLIST(GLOB.spawns_by_squad_and_job[squad])
+				LAZYREMOVE(GLOB.spawns_by_squad_and_job[squad][job_from_list], src)
+			else
+				LAZYREMOVE(GLOB.spawns_by_job[job_from_list], src)
 	return ..()
 
 /obj/effect/landmark/start/AISloc
@@ -455,6 +462,9 @@
 		LAZYREMOVE(GLOB.latejoin_by_squad[squad], src)
 	else if(job)
 		LAZYREMOVE(GLOB.latejoin_by_job[job], src)
+	else if(job_list)
+		for(var/job_to_add in job_list)
+			LAZYREMOVE(GLOB.latejoin_by_job[job_to_add], src)
 	else
 		GLOB.latejoin -= src
 	return ..()

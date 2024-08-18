@@ -1,7 +1,7 @@
 /obj/effect/landmark/start/upp
 	name = JOB_UPP
 	icon_state = "upp_spawn"
-	joblist = UPP_JOB_LIST
+	job_list = UPP_JOB_LIST
 
 /obj/effect/landmark/late_join
 

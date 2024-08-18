@@ -247,7 +247,7 @@
 	anchored = TRUE
 	var/job
 	var/squad
-	var/joblist
+	var/job_list
 
 /obj/effect/landmark/start/Initialize(mapload, ...)
 	. = ..()
@@ -257,8 +257,8 @@
 			LAZYADD(GLOB.spawns_by_squad_and_job[squad][job], src)
 		else
 			LAZYADD(GLOB.spawns_by_job[job], src)
-	if(joblist)
-		for(var/job_from_list in src.joblist)
+	if(job_list)
+		for(var/job_from_list in job_list)
 			if(squad)
 				LAZYINITLIST(GLOB.spawns_by_squad_and_job[squad])
 				LAZYADD(GLOB.spawns_by_squad_and_job[squad][job_from_list], src)
@@ -445,7 +445,7 @@
 	else if(job)
 		LAZYADD(GLOB.latejoin_by_job[job], src)
 	else if(job_list)
-		for(var/job_to_add in src.job_list)
+		for(var/job_to_add in job_list)
 			LAZYADD(GLOB.latejoin_by_job[job_to_add], src)
 	else
 		GLOB.latejoin += src

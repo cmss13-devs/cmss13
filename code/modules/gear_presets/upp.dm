@@ -14,12 +14,14 @@
 	gear_preset = /datum/equipment_preset/upp/cryo
 
 
+
 /datum/equipment_preset/upp
 	name = FACTION_UPP
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	idtype = /obj/item/card/id/dogtag
 	origin_override = ORIGIN_UPP
+	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 
 /datum/equipment_preset/upp/New()
 	. = ..()

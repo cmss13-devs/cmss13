@@ -83,6 +83,7 @@
 	selection_class = "job_antag"
 	total_positions = 1
 	spawn_positions = 1
+	gear_preset = /datum/equipment_preset/upp/soldier
 
 /datum/equipment_preset/upp/soldier
 	name = "UPP Soldier"
@@ -269,6 +270,7 @@
 /datum/job/antag/upp/medic
 	title = JOB_UPP_MEDIC
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/medic
 
 /datum/equipment_preset/upp/medic
 	name = "UPP Medic"
@@ -455,6 +457,7 @@
 /datum/job/antag/upp/sapper
 	title = JOB_UPP_ENGI
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/sapper
 
 
 /datum/equipment_preset/upp/sapper
@@ -615,6 +618,7 @@
 /datum/job/antag/upp/specialist
 	title = JOB_UPP_SPECIALIST
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/specialist
 
 /datum/equipment_preset/upp/specialist
 	name = "UPP Specialist"
@@ -754,6 +758,7 @@
 /datum/job/antag/upp/machinegunner
 	title = JOB_UPP_SPECIALIST
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/machinegunner
 
 /datum/equipment_preset/upp/machinegunner
 	name = "UPP Machinegunner"
@@ -887,6 +892,7 @@
 /datum/job/antag/upp/leader
 	title = JOB_UPP_LEADER
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/leader
 
 /datum/equipment_preset/upp/leader
 	name = "UPP Squad Leader"
@@ -1065,6 +1071,7 @@
 /datum/job/antag/upp/military_police
 	title = JOB_UPP_POLICE
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/military_police
 
 /datum/equipment_preset/upp/military_police
 	name = "UPP Military Police"
@@ -1221,6 +1228,7 @@
 /datum/job/antag/upp/officer
 	title = JOB_UPP_LT_OFFICER
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer
 
 /datum/equipment_preset/upp/officer
 	name = "UPP Lieutenant"
@@ -1386,6 +1394,7 @@
 /datum/job/antag/upp/officer/senior
 	title = JOB_UPP_SRLT_OFFICER
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/senior
 
 /datum/equipment_preset/upp/officer/senior
 	name = "UPP Senior Lieutenant"
@@ -1538,6 +1547,7 @@
 /datum/job/antag/upp/officer/kapitan
 	title = JOB_UPP_KPT_OFFICER
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/kapitan
 
 /datum/equipment_preset/upp/officer/kapitan
 	name = "UPP Kapitan"
@@ -1704,6 +1714,7 @@
 	flags_whitelist =  WHITELIST_COMMANDER
 	title = JOB_UPP_MAY_OFFICER
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/major
 
 /datum/equipment_preset/upp/officer/major
 	name = "UPP Major"
@@ -1872,6 +1883,8 @@
 	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 	title = JOB_UPP_LTKOL_OFFICER
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/lt_kolonel
+
 
 /datum/equipment_preset/upp/officer/lt_kolonel
 	name = "UPP Leytenant Kolonel"
@@ -2045,6 +2058,7 @@
 	flags_whitelist =  WHITELIST_COMMANDER_COLONEL
 	title = JOB_UPP_KOL_OFFICER
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/kolonel
 
 /datum/equipment_preset/upp/officer/kolonel
 	name = "UPP Kolonel"
@@ -2210,6 +2224,7 @@
 /datum/job/antag/upp/officer/may_gen
 	title = JOB_UPP_KOL_OFFICER
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/may_gen
 
 /datum/equipment_preset/upp/officer/may_gen
 	name = "UPP Mayjor General"
@@ -2375,6 +2390,7 @@
 /datum/job/antag/upp/officer/ley_gen
 	title = JOB_UPP_KOL_OFFICER
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/ley_gen
 
 /datum/equipment_preset/upp/officer/ley_gen
 	name = "UPP Leytenant General"
@@ -2540,6 +2556,7 @@
 /datum/job/antag/upp/officer/gen
 	title = JOB_UPP_KOL_OFFICER
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/officer/gen
 
 /datum/equipment_preset/upp/officer/gen
 	name = "UPP Army General"
@@ -2743,6 +2760,7 @@
 	flags_whitelist = WHITELIST_SYNTHETIC
 	title = JOB_UPP_SUPPORT_SYNTH
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/synth
 
 /datum/equipment_preset/upp/synth
 	name = "UPP Synthetic"
@@ -2962,6 +2980,7 @@
 /datum/job/antag/upp/synth/combat
 	title = JOB_UPP_COMBAT_SYNTH
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/synth/combat
 
 /datum/equipment_preset/upp/synth/combat
 	name = "UPP Combat Synthetic"
@@ -3022,6 +3041,7 @@
 /datum/job/antag/upp/conscript
 	title = JOB_UPP_CONSCRIPT
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/conscript
 
 /datum/equipment_preset/upp/conscript
 	//meme role
@@ -3133,6 +3153,7 @@
 /datum/job/antag/upp/commando
 	title = JOB_UPP_COMMANDO
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/commando
 
 /datum/equipment_preset/upp/commando
 	name = "UPP Commando (!DEATHSQUAD!)"
@@ -3257,6 +3278,7 @@
 /datum/job/antag/upp/commando/medic
 	title = JOB_UPP_COMMANDO_MEDIC
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/commando/medic
 
 /datum/equipment_preset/upp/commando/medic
 	name = "UPP Commando Medic (!DEATHSQUAD!)"
@@ -3421,6 +3443,7 @@
 /datum/job/antag/upp/commando/leader
 	title = JOB_UPP_COMMANDO_LEADER
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/commando/leader
 
 /datum/equipment_preset/upp/commando/leader
 	name = "UPP Commando Leader (!DEATHSQUAD!)"
@@ -3573,6 +3596,7 @@
 		list("Laser Designator", 15, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
 	)
 /datum/job/antag/upp/commando/low_threat
+	gear_preset = /datum/equipment_preset/upp/commando/low_threat
 
 /datum/equipment_preset/upp/commando/low_threat
 	name = "UPP Commando"
@@ -3607,6 +3631,7 @@
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 8)
 
 /datum/job/antag/upp/commando/medic/low_threat
+	gear_preset = /datum/equipment_preset/upp/commando/medic/low_threat
 
 /datum/equipment_preset/upp/commando/medic/low_threat
 	name = "UPP Commando Medic"
@@ -3649,6 +3674,7 @@
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 5)
 
 /datum/job/antag/upp/commando/leader/low_threat
+	gear_preset = /datum/equipment_preset/upp/commando/leader/low_threat
 
 /datum/equipment_preset/upp/commando/leader/low_threat
 	name = "UPP Commando Leader"
@@ -3686,6 +3712,7 @@
 /datum/job/antag/upp/tank
 	title = JOB_UPP_CREWMAN
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/tank
 
 /datum/equipment_preset/upp/tank
 	name = "UPP Vehicle Crewman (TANK)"
@@ -3787,6 +3814,7 @@
 /datum/job/antag/upp/doctor
 	title = JOB_UPP_LT_DOKTOR
 	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/doctor
 
 /datum/equipment_preset/upp/doctor
 	name = "UPP Doctor"

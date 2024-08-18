@@ -59,7 +59,7 @@
 		/datum/action/xeno_action/onclick/plant_weeds/not_primary,
 		/datum/action/xeno_action/activable/flesh_harvest, //first macro
 		/datum/action/xeno_action/activable/rapture, //second macro
-		/datum/action/xeno_action/onclick/extra_pheros, //third macro
+		/datum/action/xeno_action/onclick/emit_miasma, //third macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 

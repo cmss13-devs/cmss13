@@ -40,7 +40,7 @@
 
 /datum/law/major_law/listening_bugs
 	name = "Unauthorized use of a Listening Device"
-	desc = "Using a listening device against SOP in a secure area such as the CIC. Listening devices tied to foreign governments or terror organisations is also considered subterfuge."
+	desc = "Using a listening device against SOP in a secure area such as the CIC. Use of listening devices tied to foreign governments or terror organisations is also considered subterfuge."
 	special_punishment = "Listening Device Confiscation"
 	brig_time = 15
 

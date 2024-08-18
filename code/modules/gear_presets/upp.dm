@@ -11,7 +11,7 @@
 	spawn_positions = 1
 	allow_additional = TRUE
 	late_joinable = TRUE
-	gear_preset = /datum/equipment_preset/upp
+	gear_preset = /datum/equipment_preset/upp/cryo
 
 
 /datum/equipment_preset/upp
@@ -24,6 +24,10 @@
 /datum/equipment_preset/upp/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_UPP_ALL) //ACCESS_COME_BACK_TO_ME
+
+/datum/equipment_preset/upp/cryo/load_gear(mob/living/carbon/human/new_human)
+	.=..()
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 
 /datum/equipment_preset/upp/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(60;MALE,40;FEMALE)
@@ -76,7 +80,28 @@
 	selection_class = "job_antag"
 	total_positions = 1
 	spawn_positions = 1
-	gear_preset = /datum/equipment_preset/upp/soldier
+	gear_preset = /datum/equipment_preset/upp/cryo/soldier
+
+/datum/equipment_preset/upp/cryo/soldier
+	name = "UPP Soldier (Cryo)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/upp
+	assignment = JOB_UPP
+	rank = JOB_UPP
+	role_comm_title = "Sol"
+	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
+
+/datum/equipment_preset/upp/soldier
+	name = "UPP Soldier (Cryo)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/upp
+	assignment = JOB_UPP
+	rank = JOB_UPP
+	role_comm_title = "Sol"
+	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
+
 
 /datum/equipment_preset/upp/soldier
 	name = "UPP Soldier"
@@ -262,10 +287,10 @@
 //*****************************************************************************************************/
 
 
-/datum/job/antag/upp/medic
+/datum/job/antag/upp/cryo/medic
 	title = JOB_UPP_MEDIC
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/medic
+	gear_preset = /datum/equipment_preset/upp/cryo/medic
 
 /datum/equipment_preset/upp/cryo/medic
 	name = "UPP Medic (Cryo)"
@@ -462,8 +487,17 @@
 /datum/job/antag/upp/sapper
 	title = JOB_UPP_ENGI
 	selection_class = "job_antag"
-	gear_preset = /datum/equipment_preset/upp/sapper
+	gear_preset = /datum/equipment_preset/upp/cryo/sapper
 
+/datum/equipment_preset/upp/cryo/sapper
+	name = "UPP Sapper (Cryo)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/upp/combat_engineer
+	assignment = JOB_UPP_ENGI
+	rank = JOB_UPP_ENGI
+	role_comm_title = "Sap"
+	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/sapper
 	name = "UPP Sapper"

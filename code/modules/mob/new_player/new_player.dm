@@ -55,7 +55,8 @@
 		output += "<a href='byond://?src=\ref[src];lobby_choice=manifest'>View the Crew Manifest</A><br><br>"
 		output += "<a href='byond://?src=\ref[src];lobby_choice=hiveleaders'>View Hive Leaders</A><br><br>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join'>Join the USCM!</A></p>"
-		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_antag'>Join the UPP!</A></p>"
+		if(GLOB.master_mode == "Faction Clash UPP CM")
+			output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_antag'>Join the UPP!!</A></p>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_xeno'>Join the Hive!</A></p>"
 		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
 			if(SSticker.mode.check_predator_late_join(src,0)) output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_pred'>Join the Hunt!</A></p>"
@@ -224,7 +225,7 @@
 				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 				return
 
-			AttemptLateSpawn(href_list["job_selected"])
+			AttemptLateSpawn(href_list["job_selected"], antag = href_list["antag"])
 			return
 
 		if("tutorial")
@@ -249,7 +250,7 @@
 	var/datum/tutorial_menu/menu = new(src)
 	menu.ui_interact(src)
 
-/mob/new_player/proc/AttemptLateSpawn(rank)
+/mob/new_player/proc/AttemptLateSpawn(rank , antag = FALSE)
 	var/datum/job/player_rank = GLOB.RoleAuthority.roles_for_mode[rank]
 	if (src != usr)
 		return
@@ -259,7 +260,7 @@
 	if(!GLOB.enter_allowed)
 		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return
-	if(!GLOB.RoleAuthority.assign_role(src, player_rank, 1))
+	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE, antag = antag))
 		to_chat(src, alert("[rank] is not available. Please try another."))
 		return
 
@@ -372,7 +373,7 @@
 			dat += "<hr>Marines:<br>"
 			roles_show ^= FLAG_SHOW_MARINES
 
-		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
+		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;antag=0;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
 
 	dat += "</center>"
 	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
@@ -435,7 +436,7 @@
 			dat += "<hr>Marines:<br>"
 			roles_show ^= FLAG_SHOW_MARINES
 
-		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
+		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;antag=1;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
 
 	dat += "</center>"
 	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")

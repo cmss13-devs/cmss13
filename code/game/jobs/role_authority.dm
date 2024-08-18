@@ -348,9 +348,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/datum/job/marine_job = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
 	assign_role(M, marine_job)
 
-/datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin = FALSE)
+/datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin = FALSE, antag = FALSE)
 	if(ismob(M) && istype(J))
-		if(check_role_entry(M, J, latejoin))
+		if(check_role_entry(M, J, latejoin, antag))
 			M.job = J.title
 			J.current_positions++
 			return TRUE

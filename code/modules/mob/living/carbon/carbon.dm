@@ -505,7 +505,7 @@
 		C.visible_message(SPAN_DANGER("[C] has successfully extinguished the fire on [src]!"), \
 		SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 
-/mob/living/carbon/resist_buckle(mob/user)
+/mob/living/carbon/resist_buckle()
 
 	if(handcuffed)
 		next_move = world.time + 100
@@ -515,7 +515,7 @@
 		if(do_after(src, 1200, INTERRUPT_NO_FLOORED^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			if(!buckled)
 				return
-			if(user.stat == DEAD)
+			if(src.stat == DEAD)
 				return
 			visible_message(SPAN_DANGER("<B>[src] manages to unbuckle themself!</B>"),\
 						SPAN_NOTICE("You successfully unbuckle yourself."))

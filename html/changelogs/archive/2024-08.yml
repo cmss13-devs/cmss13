@@ -232,3 +232,9 @@
   cuberound:
   - bugfix: two persons are needed to activate red, ert and emergency acces using
       cards
+2024-08-18:
+  Zonespace27:
+  - bugfix: Fixed heavy sniper spec opening up the wrong specialist slot on admin
+      cryo
+  cuberound:
+  - rscdel: removes bluespace beacon

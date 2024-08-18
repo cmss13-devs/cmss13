@@ -61,6 +61,7 @@
 #include "modules\clothing\gloves\marine_gloves.dm"
 #include "modules\clothing\head\helmet.dm"
 #include "modules\cm_marines\equipment\kit_boxes.dm"
+#include "modules\cm_marines\specialist.dm"
 #include "modules\cm_aliens\structures\sunken_colony.dm"
 #include "modules\cm_aliens\structures\special\pylon_core.dm"
 #include "modules\cm_tech\comms_income.dm"

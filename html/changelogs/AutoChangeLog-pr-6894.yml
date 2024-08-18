@@ -1,0 +1,4 @@
+author: "Asmocard"
+delete-after: True
+changes:
+  - qol: "Playing cards no longer take a storage slot from your helmet, they take a vanity slot now."

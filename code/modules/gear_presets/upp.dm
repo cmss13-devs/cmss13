@@ -1661,6 +1661,7 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/major
+	flags_whitelist =  WHITELIST_COMMANDER
 	title = JOB_UPP_MAY_OFFICER
 	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/officer/major
@@ -1825,6 +1826,7 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/lt_kolonel
+	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 	title = JOB_UPP_LTKOL_OFFICER
 	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/officer/lt_kolonel
@@ -1989,6 +1991,7 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/kolonel
+	flags_whitelist =  WHITELIST_COMMANDER_COLONEL
 	title = JOB_UPP_KOL_OFFICER
 	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/officer/kolonel
@@ -2682,6 +2685,7 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/synth
+	flags_whitelist = WHITELIST_SYNTHETIC
 	title = JOB_UPP_SUPPORT_SYNTH
 	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/synth

@@ -16,11 +16,6 @@
 	allow_additional = TRUE
 	late_joinable = TRUE
 
-/obj/effect/landmark/start/upp/soldier
-	name = JOB_UPP
-	icon_state = "upp_spawn"
-	job = /datum/job/antag/upp/soldier
-
 /datum/job/antag/upp/soldier
 	title = JOB_UPP
 	selection_class = "job_antag"

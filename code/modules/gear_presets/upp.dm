@@ -3,9 +3,6 @@
 	icon_state = "upp_spawn"
 	job_list = UPP_JOB_LIST
 
-/obj/effect/landmark/late_join
-
-
 /datum/job/antag/upp
 	title = JOB_UPP
 	title = JOB_UPP
@@ -15,10 +12,6 @@
 	allow_additional = TRUE
 	late_joinable = TRUE
 	gear_preset = /datum/equipment_preset/upp
-
-/datum/job/antag/upp/soldier
-	title = JOB_UPP
-	selection_class = "job_antag"
 
 
 /datum/equipment_preset/upp
@@ -267,10 +260,22 @@
 	)
 
 //*****************************************************************************************************/
+
+
 /datum/job/antag/upp/medic
 	title = JOB_UPP_MEDIC
 	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/medic
+
+/datum/equipment_preset/upp/cryo/medic
+	name = "UPP Medic (Cryo)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/upp/combat_medic
+	assignment = JOB_UPP_MEDIC
+	rank = JOB_UPP_MEDIC
+	role_comm_title = "Med"
+	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/medic
 	name = "UPP Medic"

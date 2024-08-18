@@ -156,10 +156,6 @@
 /obj/structure/closet/secure_closet/guncabinet/red/cic_armory_shotgun,
 /turf/open/floor/almayer/redfull,
 /area/space)
-"ar" = (
-/obj/structure/prop/broken_ladder,
-/turf/open/floor/strata/floor3/east,
-/area/space)
 "as" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -187,6 +183,10 @@
 	dir = 2
 	},
 /turf/open/floor/corsat/plate,
+/area/space)
+"av" = (
+/obj/structure/machinery/washing_machine,
+/turf/open/floor/strata/floor2,
 /area/space)
 "aw" = (
 /obj/structure/surface/rack,
@@ -1319,6 +1319,12 @@
 /obj/structure/foamed_metal,
 /turf/open/floor/plating,
 /area/space)
+"dn" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
 "do" = (
 /obj/structure/surface/rack,
 /obj/item/storage/pouch/shotgun/heavyslug,
@@ -1659,6 +1665,13 @@
 	pixel_y = 11
 	},
 /turf/open/floor/wood/ship,
+/area/space)
+"dZ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/plating,
 /area/space)
 "ea" = (
 /obj/structure/surface/table/almayer,
@@ -3445,6 +3458,13 @@
 /obj/structure/closet/secure_closet/securecom,
 /turf/open/floor/almayer/redfull,
 /area/space)
+"hZ" = (
+/obj/item/trash/hotdog{
+	pixel_y = -15;
+	pixel_x = -11
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "ia" = (
 /obj/structure/stairs/perspective{
 	dir = 4
@@ -4675,6 +4695,11 @@
 	name = "Alfa squad armband"
 	},
 /turf/open/floor/strata/green1,
+/area/space)
+"kR" = (
+/obj/item/clothing/suit/storage/snow_suit/soviet,
+/obj/item/clothing/suit/gimmick/jason,
+/turf/open/floor/wood/ship,
 /area/space)
 "kS" = (
 /obj/structure/machinery/medical_pod/autodoc/unskilled{
@@ -6784,6 +6809,10 @@
 "pY" = (
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/space)
+"pZ" = (
+/obj/structure/prop/broken_ladder,
+/turf/open/floor/corsat/spiralplate,
+/area/space)
 "qa" = (
 /obj/structure/closet/crate/freezer/cooler{
 	pixel_x = -7
@@ -7464,6 +7493,15 @@
 	},
 /turf/open/floor/darkish,
 /area/space)
+"rH" = (
+/obj/structure/prop/ice_colony/tiger_rug{
+	desc = "A rather tasteless but impressive tiger rug. Must've costed a fortune to get this exported to the rim. Actually, this rug was 'collectivized' by internal police troopers during anti-corruption raids on colonies and later gifted to Leytenant.";
+	icon_state = "Gray";
+	pixel_x = -14;
+	pixel_y = -18
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "rI" = (
 /obj/structure/prop/broken_ladder,
 /turf/open/floor/corsat/purple{
@@ -8051,6 +8089,13 @@
 	dir = 8
 	},
 /area/space)
+"ts" = (
+/obj/item/clothing/shoes/sandal{
+	pixel_x = 10;
+	pixel_y = -9
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/space)
 "tt" = (
 /obj/structure/machinery/vending/dinnerware,
 /turf/open/floor/wood/ship,
@@ -8129,6 +8174,14 @@
 /obj/item/mortar_shell/flare,
 /obj/item/mortar_shell/flare,
 /turf/open/floor/almayer/cargo,
+/area/space)
+"tG" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/item/clothing/head/ushanka{
+	pixel_x = 11;
+	pixel_y = 16
+	},
+/turf/open/floor/plating,
 /area/space)
 "tH" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -9808,6 +9861,11 @@
 /obj/item/storage/surgical_tray,
 /turf/open/floor/strata/white_cyan2,
 /area/space)
+"xk" = (
+/obj/structure/closet,
+/obj/item/clothing/head/uppcap,
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "xl" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -9938,10 +9996,6 @@
 	},
 /turf/open/floor/strata/white_cyan3/west,
 /area/event/metal/dynamic/lit)
-"xD" = (
-/obj/structure/machinery/cryopod,
-/turf/open/floor/prison/floor_marked/west,
-/area/space)
 "xE" = (
 /turf/open/floor/strata/purp3{
 	dir = 8
@@ -10053,6 +10107,15 @@
 	pixel_y = 5
 	},
 /obj/item/tool/pen,
+/obj/item/clothing/head/uppcap/civi{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/prop/magazine/book{
+	desc = "A booklet provided to anyone ranging from conscripts to normal citizenry. The first page is stamped with the Party's insignia and reminds you that the Party has your best interest in heart; the following pages immensely simplify the Party's doctrine, grossly propagandizes Socialism, and greatly vilifies the United Americas.";
+	name = "UPP Party Doctrine Booklet";
+	pixel_x = 13
+	},
 /turf/open/floor/strata/floor3/east,
 /area/space)
 "xV" = (
@@ -12027,6 +12090,14 @@
 /obj/item/clipboard,
 /obj/item/tool/pen,
 /turf/open/floor/almayer/green/west,
+/area/space)
+"CO" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/item/tool/hand_labeler{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/plating,
 /area/space)
 "CQ" = (
 /turf/open/floor/strata/green1,
@@ -14633,6 +14704,9 @@
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /turf/open/floor/strata/multi_tiles/west,
 /area/space)
+"Iy" = (
+/turf/open/floor/plating/almayer/no_build,
+/area/space)
 "Iz" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
 /turf/open/floor/corsat/spiralplate,
@@ -15484,6 +15558,19 @@
 "KQ" = (
 /turf/open/floor/corsat/darkgreencorner/west,
 /area/event/metal/dynamic/lit)
+"KR" = (
+/obj/structure/surface/table/almayer,
+/obj/item/large_shrapnel/at_rocket_dud,
+/obj/item/attachable/bayonet/upp{
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/obj/item/toy/deck{
+	pixel_x = 9;
+	pixel_y = -11
+	},
+/turf/open/floor/strata/floor2,
+/area/space)
 "KS" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/trash/plate,
@@ -16310,6 +16397,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/space)
+"Na" = (
+/turf/open/floor/almayer/no_build,
 /area/space)
 "Nb" = (
 /obj/structure/machinery/prop/almayer/computer{
@@ -18771,6 +18861,10 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/space)
+"Tb" = (
+/obj/structure/stairs,
+/turf/open/floor/corsat/plate,
+/area/space)
 "Tc" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -19603,6 +19697,13 @@
 /obj/structure/closet/toolcloset,
 /turf/open/floor/almayer/redfull,
 /area/space)
+"Vc" = (
+/obj/structure/closet,
+/obj/item/clothing/head/uppcap/ushanka/civi{
+	pixel_y = 6
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "Vd" = (
 /turf/open/floor/carpet,
 /area/space)
@@ -20360,6 +20461,14 @@
 	dir = 4
 	},
 /obj/item/storage/toolbox/mechanical,
+/turf/open/floor/plating,
+/area/space)
+"Xb" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/item/trash/crushed_cup{
+	pixel_x = 8;
+	pixel_y = 15
+	},
 /turf/open/floor/plating,
 /area/space)
 "Xc" = (
@@ -41470,10 +41579,10 @@ bd
 bd
 bd
 bd
-bd
-bd
-bd
-bd
+NK
+fg
+Ha
+dA
 bd
 bd
 cd
@@ -41981,12 +42090,12 @@ bd
 bd
 bd
 cd
-Dc
-IE
-Dc
-Dc
-IE
-Dc
+pZ
+LR
+pZ
+pZ
+LR
+pZ
 cd
 jC
 Fy
@@ -42032,12 +42141,12 @@ oX
 oX
 eB
 cd
-Dc
-IE
-Dc
-Dc
-IE
-Dc
+pZ
+LR
+pZ
+pZ
+LR
+pZ
 QI
 LR
 cd
@@ -42487,10 +42596,10 @@ cd
 tl
 LR
 cd
-Ua
-xD
-xD
-xD
+NK
+fg
+Ha
+dA
 Ua
 jC
 Fy
@@ -43243,10 +43352,10 @@ cd
 tl
 tl
 cd
-Ua
-wY
-wY
-wY
+fL
+Mz
+gL
+Kd
 Ua
 jC
 Fy
@@ -43495,10 +43604,10 @@ cd
 tl
 tl
 cd
-Ua
-xD
-xD
-xD
+NK
+fg
+Ha
+dA
 Ua
 jC
 Fy
@@ -44251,10 +44360,10 @@ cd
 tl
 LR
 cd
-Ua
-wY
-wY
-wY
+fL
+Mz
+gL
+Kd
 Ua
 jC
 Fy
@@ -44503,10 +44612,10 @@ cd
 tl
 LR
 cd
-Ua
-xD
-xD
-xD
+NK
+fg
+Ha
+dA
 Ua
 jC
 Fy
@@ -45259,10 +45368,10 @@ cd
 tl
 tl
 cd
-Ua
-wY
-wY
-wY
+fL
+Mz
+gL
+Kd
 Ua
 jC
 Fy
@@ -45511,10 +45620,10 @@ cd
 tl
 tl
 cd
-Ua
-xD
-xD
-xD
+NK
+fg
+Ha
+dA
 Ua
 jC
 Fy
@@ -46267,10 +46376,10 @@ cd
 LR
 LR
 cd
-Ua
-wY
-wY
-wY
+fL
+Mz
+gL
+Kd
 Ua
 jC
 ak
@@ -46519,10 +46628,10 @@ cd
 LR
 LR
 cd
-Ua
-xD
-xD
-xD
+NK
+fg
+Ha
+dA
 Ua
 jC
 ak
@@ -47044,17 +47153,17 @@ zq
 jo
 jo
 bs
-IE
-IE
-IE
+LR
+LR
+LR
 rN
 Fy
 Fy
 sS
 dk
-IE
-IE
-IE
+LR
+LR
+LR
 bs
 jo
 jo
@@ -47068,9 +47177,9 @@ Pp
 Pp
 Pp
 jo
-IE
-IE
-IE
+LR
+LR
+LR
 cd
 cd
 cd
@@ -47296,17 +47405,17 @@ Ix
 vg
 et
 bs
-Dc
-IE
-Dc
+pZ
+LR
+pZ
 rN
 dk
 dk
 dk
 dk
-Dc
-IE
-Dc
+pZ
+LR
+pZ
 bs
 cE
 cE
@@ -47320,9 +47429,9 @@ DG
 DG
 ak
 jo
-IE
-Dc
-IE
+tl
+pZ
+tl
 cd
 tl
 tl
@@ -47527,8 +47636,8 @@ cd
 tl
 tl
 cd
-dk
-DG
+Xb
+ts
 DG
 zm
 cd
@@ -47555,19 +47664,19 @@ bs
 We
 Fy
 ES
-bs
-bs
-bs
-bs
-bs
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-jo
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
 sS
 sS
 Fy
@@ -47807,19 +47916,19 @@ jo
 QS
 Fy
 cv
-jo
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-jo
+sS
+Iy
+dn
+dn
+dn
+dn
+dn
+dn
+dn
+Na
+Na
+Na
+cd
 oX
 oX
 Fy
@@ -48034,7 +48143,7 @@ cd
 dk
 DG
 DG
-zm
+Vc
 cd
 oX
 oX
@@ -48059,19 +48168,19 @@ jo
 QS
 Fy
 cv
-jo
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-jo
+sS
+Iy
+dn
+dn
+dn
+dn
+dn
+dn
+dn
+Na
+Na
+Na
+cd
 rh
 Qd
 Fy
@@ -48311,19 +48420,19 @@ jo
 ol
 Rr
 ol
-jo
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-jo
+sS
+Iy
+dn
+dn
+dn
+dn
+dn
+dn
+dn
+Na
+Na
+Na
+cd
 rh
 Qd
 Fy
@@ -48535,10 +48644,10 @@ cd
 LR
 tl
 cd
-dk
+tG
 DG
 DG
-zm
+xk
 cd
 oX
 oX
@@ -48563,19 +48672,19 @@ jo
 zp
 oX
 hP
-jo
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-jo
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+JM
+JM
+JM
+cd
 rh
 Qd
 Fy
@@ -48815,19 +48924,19 @@ Jy
 sS
 sS
 sS
-jo
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-jo
+cd
+cd
+Tb
+Tb
+Tb
+Tb
+Tb
+Tb
+Tb
+Iy
+Iy
+Iy
+cd
 Qd
 Qd
 Fy
@@ -49042,7 +49151,7 @@ cd
 dk
 DG
 DG
-ak
+hZ
 Jy
 oX
 oX
@@ -49067,19 +49176,19 @@ sE
 AK
 DG
 DG
-jo
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-jo
+cd
+cd
+Tb
+Tb
+Tb
+Tb
+Tb
+Tb
+Tb
+Iy
+Iy
+Iy
+cd
 sS
 sS
 ak
@@ -49292,8 +49401,8 @@ cd
 LR
 QI
 dk
-dk
-dk
+CO
+dZ
 dk
 Xy
 DG
@@ -49319,19 +49428,19 @@ Jy
 AK
 Qd
 Qd
-jo
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-cE
-jo
+cd
+cd
+Tb
+Tb
+Tb
+Tb
+Tb
+Tb
+Tb
+Iy
+Iy
+Iy
+cd
 DG
 DG
 DG
@@ -49545,8 +49654,8 @@ LR
 cd
 eP
 xU
-oX
-oX
+KR
+av
 Jy
 sS
 sS
@@ -49571,19 +49680,19 @@ jo
 AK
 Qd
 My
-jo
-jo
-jo
-jo
-jo
-jo
-jo
-jo
-jo
-jo
-jo
-jo
-jo
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
 Pp
 Pp
 Pp
@@ -51567,7 +51676,7 @@ oX
 sS
 sS
 Fy
-Dc
+pZ
 jo
 xe
 jo
@@ -52575,7 +52684,7 @@ oX
 sS
 sS
 Fy
-Dc
+pZ
 jo
 OI
 jo
@@ -57144,9 +57253,9 @@ jo
 jo
 je
 lF
-ar
-sS
-ar
+pZ
+LR
+pZ
 jo
 LR
 tl
@@ -57396,9 +57505,9 @@ LR
 jo
 jo
 jo
-sS
-sS
-sS
+LR
+LR
+LR
 jo
 LR
 tl
@@ -57648,9 +57757,9 @@ LR
 tl
 tl
 jo
-ar
-sS
-ar
+pZ
+LR
+pZ
 jo
 LR
 LR
@@ -58143,7 +58252,7 @@ bs
 Vd
 Vd
 AV
-AV
+kR
 dw
 bs
 jo
@@ -59401,7 +59510,7 @@ dk
 AK
 bs
 AV
-AV
+rH
 Vd
 Sz
 Uq

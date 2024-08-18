@@ -1,6 +1,5 @@
 /obj/effect/landmark/start/upp
 	name = JOB_UPP
-	icon_state = "upp_spawn"
 	job_list = UPP_JOB_LIST
 
 /datum/job/antag/upp

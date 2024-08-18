@@ -649,6 +649,20 @@
 	icon_state = "mercenary_engineer_uniform"
 	worn_state = "mercenary_engineer_uniform"
 
+// Research Armnor \\
+
+/obj/item/clothing/under/marine/caustic
+	name = "\improper ANCW Unifrom"
+	desc = "A modified version of standart issue USMC uniform. Lacking Kevlar, it possses soft gel pads instead. It almost feels like wearing a pyjama."
+	siemens_coefficient = 1
+	icon_state = "caustic_h"
+	worn_state = "caustic_h"
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	drop_sound = "armorequip"
 
 ////// Civilians /////////
 

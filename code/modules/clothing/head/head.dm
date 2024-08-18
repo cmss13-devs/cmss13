@@ -88,6 +88,16 @@
 	name = "USCM Squad Beret"
 	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
 
+/obj/item/clothing/head/beret/cm/white/civilian
+	name = "White Beret"
+	desc = "A nice fashionable beret, popular with executives."
+	icon_state = "s_beret"
+
+/obj/item/clothing/head/beret/cm/black/civilian
+	name = "Black Beret"
+	desc = "A nice fashionable beret, popular with executives."
+	icon_state = "beret_black"
+
 /obj/item/clothing/head/beret/cm/squadberet/equipped(mob/user, slot)
 	. = ..()
 	self_set()

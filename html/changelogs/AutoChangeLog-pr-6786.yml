@@ -1,4 +1,0 @@
-author: "BlackCrystalic"
-delete-after: True
-changes:
-  - bugfix: "No more admin data sended to normal players in who/staff who"

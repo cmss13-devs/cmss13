@@ -515,7 +515,7 @@
 		if(do_after(src, 1200, INTERRUPT_NO_FLOORED^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			if(!buckled)
 				return
-			if(src.stat == DEAD)
+			if(stat == DEAD)
 				return
 			visible_message(SPAN_DANGER("<B>[src] manages to unbuckle themself!</B>"),\
 						SPAN_NOTICE("You successfully unbuckle yourself."))

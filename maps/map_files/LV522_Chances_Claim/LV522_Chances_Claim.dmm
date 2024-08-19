@@ -12790,12 +12790,6 @@
 /obj/item/device/binoculars,
 /turf/open/floor/strata/blue1,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
-"hlJ" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/lv522/atmos/filt)
 "hmz" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/auto_turf/sand_white/layer0,
@@ -75118,7 +75112,7 @@ sYl
 sYl
 gUv
 han
-hlJ
+shD
 cpy
 cpy
 cpy
@@ -75324,7 +75318,7 @@ fSe
 sYl
 gUv
 sYl
-hlJ
+shD
 cpy
 cpy
 cpy

@@ -10,6 +10,19 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/special/insp
 	officer_grade = GRADE_FLAG //Not really a flag officer, but they have special access to things for their job.
 
+/datum/paygrade/provost/inspector/chief
+	paygrade = PAY_SHORT_PVCI
+	name = "Provost Chief Inspector"
+	prefix = "Chief Insp."
+	rank_pin = /obj/item/clothing/accessory/ranks/special/insp
+	officer_grade = GRADE_FLAG //Not really a flag officer, but they have special access to things for their job.
+
+/datum/paygrade/provost/marshal/deputy
+	paygrade = PAY_SHORT_PVDM
+	name = "Provost Deputy Marshal"
+	prefix = "Deputy Marshal"
+	officer_grade = GRADE_FLAG
+
 /datum/paygrade/provost/marshal
 	paygrade = PAY_SHORT_PVM
 	name = "Provost Marshal"
@@ -20,6 +33,12 @@
 	paygrade = PAY_SHORT_PVSM
 	name = "Provost Sector Marshal"
 	prefix = "S. Marshal"
+	officer_grade = GRADE_FLAG
+
+/datum/paygrade/provost/fleetmarshal
+	paygrade = PAY_SHORT_PVFM
+	name = "Provost Fleet Marshal"
+	prefix = "Fleet Marshal"
 	officer_grade = GRADE_FLAG
 
 /datum/paygrade/provost/chiefmarshal

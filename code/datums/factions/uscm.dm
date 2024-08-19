@@ -142,10 +142,16 @@
 			if(JOB_PROVOST_INSPECTOR)
 				marine_rk = "pvi"
 				border_rk = "command"
+			if(JOB_PROVOST_INSPECTOR, JOB_PROVOST_CINSPECTOR)
+				marine_rk = "pvci"
+				border_rk = "command"
 			if(JOB_PROVOST_ADVISOR)
 				marine_rk = "pva"
 				border_rk = "command"
-			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
+			if(JOB_PROVOST_DMARSHAL)
+				marine_rk = "pvdm"
+				border_rk = "command"
+			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_FMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
 			// TIS

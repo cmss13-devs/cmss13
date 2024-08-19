@@ -489,6 +489,11 @@
 	icon_state = "coblackberet"
 	desc = "A beret with the USCM Military Police insignia emblazoned on it."
 
+/obj/item/clothing/head/beret/marine/mp/provost/chief
+	name = "\improper USCM chief provost beret"
+	icon_state = "pvciberet"
+	desc = "A beret with the USCM Military Police insignia emblazoned on it."
+
 /obj/item/clothing/head/beret/marine/mp/tis
 	name = "\improper UAAC-TIS Special Agent Beret"
 	icon_state = "berettis"

@@ -219,3 +219,40 @@
   - rscadd: A Command Tablet has been added that can be used by UPP Officers.
   - rscadd: UPP Officers ranked O4 or greater (USCM Major Equilivant) are issued with
       a Command Tablet.
+2024-08-16:
+  Doubleumc:
+  - ui: dark HUD indicators stay anchored to the viewport edge
+2024-08-17:
+  567Turtle:
+  - rscadd: Gay crayons for your helmet ("Box of Prideful Crayons" in the toys section
+      of the loadout menu.)
+  Blundir:
+  - rscadd: Guns now support custom muzzle flash light color, some guns have a new
+      color of it now, standard color is yellow tinted now instead of white
+  cuberound:
+  - bugfix: two persons are needed to activate red, ert and emergency acces using
+      cards
+2024-08-18:
+  Zonespace27:
+  - bugfix: Fixed heavy sniper spec opening up the wrong specialist slot on admin
+      cryo
+  cuberound:
+  - rscdel: removes bluespace beacon
+2024-08-19:
+  Asmocard:
+  - qol: Playing cards no longer take a storage slot from your helmet, they take a
+      vanity slot now.
+  Vandujr:
+  - rscadd: Added a new 'Corporate Liaison's Wardrobe' that all corporate roles can
+      use. includes more clothes than the cabinet originally had.
+  - rscadd: Added a new orange outfit the CL can pick from his Wardrobe Vendor.
+  - rscadd: Added civilian black and white berets.
+  - refactor: Refactored the corporate boots, making a version with and without a
+      knife in it on spawn. All roles that should have the knife version, have it.
+  - imageadd: Added new item sprites to the old 'complete' suits; that being the tan
+      and formal suits, aswell as the suspenders.
+  - imageadd: Added a new item sprite for the black beret, in line with the rest of
+      the modern berets.
+  - maptweak: Swapped the CL's cabinet for the wardrobe vendor.
+  zzzmike:
+  - bugfix: lets you resist when bucklecuffed to bed

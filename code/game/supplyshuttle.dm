@@ -1523,3 +1523,9 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 	"UPP Clothing",
 	)
 	points = 99999999
+
+/datum/controller/supply/upp/process(delta_time)
+	iteration++
+	points += points_per_process
+	if(iteration < 20)
+		return

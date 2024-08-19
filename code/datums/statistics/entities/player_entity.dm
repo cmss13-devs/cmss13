@@ -10,6 +10,8 @@
 	var/statistic_name
 	var/value
 
+BSQL_PROTECT_DATUM(/datum/entity/statistic)
+
 /datum/entity_meta/statistic
 	entity_type = /datum/entity/statistic
 	table_name = "player_statistic"
@@ -80,6 +82,8 @@
 	var/list/statistic_info = list()
 	var/list/statistic_all = list()
 
+BSQL_PROTECT_DATUM(/datum/statistic_groups)
+
 /datum/statistic_groups/proc/load_statistic_deaths(list/datum/entity/statistic_death/statistics)
 	nemesis.nemesis_name = ""
 	nemesis.value = 0
@@ -133,6 +137,8 @@
 	var/list/statistic_all = list()
 	var/list/total = list()
 
+BSQL_PROTECT_DATUM(/datum/player_statistic)
+
 /datum/player_statistic/proc/load_statistic()
 	for(var/subtype in statistic_all)
 		var/datum/player_statistic_detail/statistic = statistics[subtype]
@@ -177,9 +183,13 @@
 	var/list/top_values_statistics = list()
 	var/list/statistics = list()
 
+BSQL_PROTECT_DATUM(/datum/player_statistic_detail)
+
 /datum/player_statistic_nemesis
 	var/nemesis_name
 	var/value
+
+BSQL_PROTECT_DATUM(/datum/player_statistic_nemesis)
 
 /////////////////////////////////////////////////////////////////////////////////////
 //Player Entity
@@ -190,6 +200,8 @@
 	var/datum/entity/player/player = null
 	var/list/datum/entity/statistic/medal/medals = list()
 	var/list/statistics = list()
+
+BSQL_PROTECT_DATUM(/datum/player_entity)
 
 /datum/player_entity/proc/get_statistic(faction, statistic_type, general_name, statistic_name)
 	var/datum/statistic_groups/match_statistic = statistics[faction]
@@ -226,7 +238,7 @@
 
 			DB_FILTER(/datum/entity/statistic_death, DB_AND(
 			DB_COMP("player_id", DB_EQUALS, player.id),
-			DB_COMP("faction_name", DB_EQUALS, new_group.group_name)),
+			DB_COMP("faction_name", DB_EQUALS, faction_to_get)),
 			CALLBACK(new_group, TYPE_PROC_REF(/datum/statistic_groups, load_statistic_deaths)))
 
 			DB_FILTER(/datum/entity/statistic, DB_AND(

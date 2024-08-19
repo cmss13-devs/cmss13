@@ -5,6 +5,10 @@
 
 /datum/shuttle/ferry/supply
 	iselevator = 1
+	location = 1
+	location = 1
+	warmup_time = 1
+	move_time = ELEVATOR_TRANSIT_DURATION
 	var/away_location = 1 //the location to hide at while pretending to be in-transit
 	var/late_chance = 0
 	var/max_late_time = 300
@@ -18,8 +22,10 @@
 	var/Elevator_y
 	var/Elevator_z
 	var/elevator_loc
+	var/datum/controller/supply/linked_supply
 	///Used to mirrors the turfs (and their contents) on the elevator when raising/lowering, so they don't instantly teleport or vanish.
 	var/obj/effect/elevator/animation_overlay/elevator_animation
+
 
 /datum/shuttle/ferry/supply/proc/pick_loc()
 	RETURN_TYPE(/turf)
@@ -27,6 +33,7 @@
 
 /datum/shuttle/ferry/supply/New()
 	..()
+	linked_supply = GLOB.supply_controller
 	elevator_animation = new()
 	elevator_animation.pixel_x = 160 //Matches the slope on the sprite.
 	elevator_animation.pixel_y = -80
@@ -184,3 +191,7 @@
 		if(M.id == gear_id)
 			spawn()
 				M.icon_state = "gear"
+
+/datum/shuttle/ferry/supply/upp/New()
+	. = ..()
+	linked_supply = GLOB.supply_controller_upp

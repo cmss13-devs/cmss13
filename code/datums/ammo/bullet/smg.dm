@@ -149,7 +149,7 @@
 /datum/ammo/bullet/smg/p90
 	name = "submachinegun bullet"
 
-	damage = 18
+	damage = 20
 	accurate_range = 5
 	effective_range_max = 8
 	penetration = ARMOR_PENETRATION_TIER_4
@@ -159,7 +159,7 @@
 /datum/ammo/bullet/smg/p90/p90_twe_ap
 	name = "armor-piercing submachinegun bullet"
 
-	damage = 24
+	damage = 26
 	accurate_range = 5
 	effective_range_max = 8
 	penetration = ARMOR_PENETRATION_TIER_6

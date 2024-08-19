@@ -142,7 +142,10 @@
 			if(JOB_PROVOST_INSPECTOR)
 				marine_rk = "pvi"
 				border_rk = "command"
-			if(JOB_PROVOST_INSPECTOR, JOB_PROVOST_CINSPECTOR)
+			if(JOB_PROVOST_UNDERCOVER)
+				marine_rk = "pvuc"
+				border_rk = "command"
+			if(JOB_PROVOST_CINSPECTOR)
 				marine_rk = "pvci"
 				border_rk = "command"
 			if(JOB_PROVOST_ADVISOR)

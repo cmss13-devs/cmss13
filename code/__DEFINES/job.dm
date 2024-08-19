@@ -332,6 +332,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_PROVOST_ADVISOR "Provost Advisor"
 #define JOB_PROVOST_INSPECTOR "Provost Inspector"
 #define JOB_PROVOST_CINSPECTOR "Provost Chief Inspector"
+#define JOB_PROVOST_UNDERCOVER "Provost Undercover Inspector"
 
 #define JOB_PROVOST_DMARSHAL "Provost Deputy Marshal"
 #define JOB_PROVOST_MARSHAL "Provost Marshal"

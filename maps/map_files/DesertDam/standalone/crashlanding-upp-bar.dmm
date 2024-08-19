@@ -842,11 +842,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "rm" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "rR" = (
@@ -1153,11 +1149,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xG" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
@@ -1910,11 +1902,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "LJ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/backroom)

@@ -350,7 +350,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 /datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin = FALSE, antag = FALSE)
 	if(ismob(M) && istype(J))
-		if(check_role_entry(M, J, latejoin, text2num(antag)))
+		if(check_role_entry(M, J, latejoin, antag))
 			M.job = J.title
 			J.current_positions++
 			return TRUE
@@ -368,9 +368,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return FALSE
 	if(latejoin && !J.late_joinable)
 		return FALSE
-	if(istype(J,/datum/job/antag) && !antag)
-		return FALSE
-	if(!istype(J,/datum/job/antag) && antag)
+	if((istype(J,/datum/job/antag) && !antag) || (!istype(J,/datum/job/antag) && antag))
 		return FALSE
 
 	return TRUE

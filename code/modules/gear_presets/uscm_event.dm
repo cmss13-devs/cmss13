@@ -331,7 +331,7 @@
 	name = "Provost Chief Inspector"
 
 	assignment = JOB_PROVOST_CINSPECTOR
-	rank = "Provost Chief Inspector"
+	rank = JOB_PROVOST_CINSPECTOR
 	paygrades = list(PAY_SHORT_PVCI = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PvCI"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -382,7 +382,7 @@
 	skills = /datum/skills/general
 
 	assignment = JOB_PROVOST_DMARSHAL
-	rank = "Provost Deputy Marshal"
+	rank = JOB_PROVOST_DMARSHAL
 	paygrades = list(PAY_SHORT_PVDM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVDM
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -425,22 +425,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/cotablet(new_human.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm_event/provost/marshal/sector
-	name = "Provost Sector Marshal (MO8)"
+	name = "Provost Sector Marshal (MO9)"
 	minimum_age = 50
 
 	assignment = JOB_PROVOST_SMARSHAL
 	rank = "Provost Sector Marshal"
 	paygrades = list(PAY_SHORT_PVSM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVSM
-
-/datum/equipment_preset/uscm_event/provost/marshal/fleet
-	name = "Provost Fleet Marshal (MO9)"
-	minimum_age = 50
-
-	assignment = JOB_PROVOST_FMARSHAL
-	rank = "Provost Fleet Marshal"
-	paygrades = list(PAY_SHORT_PVFM = JOB_PLAYTIME_TIER_0)
-	role_comm_title = PAY_SHORT_PVFM
 
 /datum/equipment_preset/uscm_event/provost/marshal/chief
 	name = "Provost Chief Marshal (PvCM)"

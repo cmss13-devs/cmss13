@@ -35,12 +35,6 @@
 	prefix = "S. Marshal"
 	officer_grade = GRADE_FLAG
 
-/datum/paygrade/provost/fleetmarshal
-	paygrade = PAY_SHORT_PVFM
-	name = "Provost Fleet Marshal"
-	prefix = "Fleet Marshal"
-	officer_grade = GRADE_FLAG
-
 /datum/paygrade/provost/chiefmarshal
 	paygrade = PAY_SHORT_PVCM
 	name = "Provost Chief Marshal"

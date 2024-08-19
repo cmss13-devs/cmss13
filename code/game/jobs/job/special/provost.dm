@@ -31,9 +31,5 @@
 	title = JOB_PROVOST_SMARSHAL
 
 //Provost Chief Marshal
-/datum/job/special/provost/marshal/fleet
-	title = JOB_PROVOST_FMARSHAL
-
-//Provost Chief Marshal
 /datum/job/special/provost/marshal/chief
 	title = JOB_PROVOST_CMARSHAL

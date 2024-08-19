@@ -19,8 +19,5 @@
 /// PvSM, Provost Sector Marshal
 #define PAY_SHORT_PVSM "PvSM"
 
-/// PvI, Provost Fleet Marshal
-#define PAY_SHORT_PVFM "PvFM"
-
 /// PvCM, Provost Chief Marshal
 #define PAY_SHORT_PVCM "PvCM"

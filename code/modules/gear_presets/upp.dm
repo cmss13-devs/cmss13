@@ -1102,7 +1102,7 @@
 	role_comm_title = "MP"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
 
-/datum/equipment_preset/upp/cryo/military_police/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/upp/military_police/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
 	//uniform
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/mp, WEAR_BODY)

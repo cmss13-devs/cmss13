@@ -165,3 +165,94 @@
       stuff!
   LTNTS:
   - imageadd: port tgsprites for pills (including a new variation)
+2024-08-08:
+  '?':
+  - bugfix: Fixed explosive implant not triggering when hearing the code-word.
+  BlackCrystalic:
+  - bugfix: No more admin data sended to normal players in who/staff who
+  Doubleumc:
+  - code_imp: shrapnel smoothly animates their movement
+  - code_imp: visual-effect-only shrapnel replaced by clientside particles
+  Venuska1117, Blundir:
+  - imageadd: add directional APC's Sprites.
+  - balance: Now there are only 3 APC's types, APC's with call_type high/super/hyper
+      are replaced with upgraded APC variant containing high capacity cell, weak variant
+      got replaced with normal APC variant.
+  - bugfix: Fixes APC's with wrong offsets (strata and Prison)
+2024-08-10:
+  BasilHerb:
+  - rscdel: removed the M56B Smartgun Kit from requisitions.
+  - balance: made the M56 Combat Harness unmeltable.
+  - balance: made the M45 Ghillie Suit unmeltable.
+  Contrabang:
+  - qol: Reorders the Essential SG Kit in order of Armor, Smartgun, Goggles
+  HaultyAnonie:
+  - bugfix: Made claymore boxes in vendors be accurately labeled as the amount of
+      claymores they contain. From (x4 mines) to (x5 mines). The actual contents of
+      the box.
+  cuberound:
+  - rscdel: removes gravity generator (ugly legacy stuff)
+2024-08-12:
+  Git-Nivrak:
+  - bugfix: You can no longer put items back in the specialist case after taking them
+      out
+  zzzmike:
+  - rscadd: fun fact for internal bleeding fixed
+2024-08-13:
+  Adamix147:
+  - maptweak: Moved the unfixable APC at Kutjevo Botany to make it fixable again.
+  Contrabang:
+  - bugfix: ERT no longer show up in the orbit escape section
+  Doubleumc:
+  - admin: '"Start Round" can start a delayed round'
+  Git-Nivrak:
+  - balance: Explosions now always deal full damage at the source tile
+  - bugfix: Fixed sadar rockets not gibbing humans on direct hit
+  MarpleJones:
+  - balance: Reduces the cost of the AGM-184 'Harpoon II' from 300 to 200.
+2024-08-15:
+  Blundir:
+  - rscadd: plasteel non folding barricade
+  Steelpoint:
+  - rscadd: A plantable UPP flag has been added to the game, an equilivant of the
+      United Americas flag. Currently admin spawn only.
+  - rscadd: A Command Tablet has been added that can be used by UPP Officers.
+  - rscadd: UPP Officers ranked O4 or greater (USCM Major Equilivant) are issued with
+      a Command Tablet.
+2024-08-16:
+  Doubleumc:
+  - ui: dark HUD indicators stay anchored to the viewport edge
+2024-08-17:
+  567Turtle:
+  - rscadd: Gay crayons for your helmet ("Box of Prideful Crayons" in the toys section
+      of the loadout menu.)
+  Blundir:
+  - rscadd: Guns now support custom muzzle flash light color, some guns have a new
+      color of it now, standard color is yellow tinted now instead of white
+  cuberound:
+  - bugfix: two persons are needed to activate red, ert and emergency acces using
+      cards
+2024-08-18:
+  Zonespace27:
+  - bugfix: Fixed heavy sniper spec opening up the wrong specialist slot on admin
+      cryo
+  cuberound:
+  - rscdel: removes bluespace beacon
+2024-08-19:
+  Asmocard:
+  - qol: Playing cards no longer take a storage slot from your helmet, they take a
+      vanity slot now.
+  Vandujr:
+  - rscadd: Added a new 'Corporate Liaison's Wardrobe' that all corporate roles can
+      use. includes more clothes than the cabinet originally had.
+  - rscadd: Added a new orange outfit the CL can pick from his Wardrobe Vendor.
+  - rscadd: Added civilian black and white berets.
+  - refactor: Refactored the corporate boots, making a version with and without a
+      knife in it on spawn. All roles that should have the knife version, have it.
+  - imageadd: Added new item sprites to the old 'complete' suits; that being the tan
+      and formal suits, aswell as the suspenders.
+  - imageadd: Added a new item sprite for the black beret, in line with the rest of
+      the modern berets.
+  - maptweak: Swapped the CL's cabinet for the wardrobe vendor.
+  zzzmike:
+  - bugfix: lets you resist when bucklecuffed to bed

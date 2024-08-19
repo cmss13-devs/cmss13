@@ -124,6 +124,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/request_start()
 	if(current_state == GAME_STATE_PREGAME)
 		time_left = 0
+		delay_start = FALSE
 
 	// Killswitch if hanging or interrupted
 	if(SSnightmare.stat != NIGHTMARE_STATUS_DONE)

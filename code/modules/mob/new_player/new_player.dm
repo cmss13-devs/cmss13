@@ -225,7 +225,7 @@
 				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 				return
 
-			AttemptLateSpawn(href_list["job_selected"], antag = href_list["antag"])
+			AttemptLateSpawn(href_list["job_selected"], antag = text2num( href_list["antag"]))
 			return
 
 		if("tutorial")
@@ -263,6 +263,7 @@
 	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE, antag = antag))
 		to_chat(src, alert("[rank] is not available. Please try another."))
 		return
+
 
 	spawning = TRUE
 	close_spawn_windows()

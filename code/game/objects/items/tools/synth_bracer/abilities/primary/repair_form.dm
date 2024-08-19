@@ -9,9 +9,7 @@
 	category = SIMI_PRIMARY_ACTION
 	ability_tag = SIMI_ABILITY_REPAIR
 
-/datum/action/human_action/synth_bracer/repair_form/action_activate()
-	..()
-
+/datum/action/human_action/synth_bracer/repair_form/form_call()
 	if(synth.getBruteLoss() <= 0 && synth.getFireLoss() <= 0)
 		to_chat(synth, SPAN_WARNING("[synth_bracer.name] beeps, \"No noticeable damage. Procedure cancelled.\""))
 		return

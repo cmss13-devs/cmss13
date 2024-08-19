@@ -145,6 +145,9 @@
 	synth_bracer = null
 	return ..()
 
+/datum/action/human_action/synth_bracer/proc/form_call()
+	return
+
 /datum/action/human_action/synth_bracer/action_cooldown_check()
 	return ability_used_time <= world.time
 
@@ -190,9 +193,11 @@
 
 /datum/action/human_action/synth_bracer/action_activate()
 	. = ..()
-	if(is_active())
-		set_inactive(category)
-		return FALSE
+	if(!istype(owner, /mob/living/carbon/human))
+		return
+	var/mob/living/carbon/human/human_owner = owner
+	if(human_owner.gloves == synth_bracer)
+		form_call(synth_bracer, human_owner)
 	if(!handles_cooldown && cooldown)
 		enter_cooldown()
 	if(!handles_charge_cost && charge_cost)
@@ -204,16 +209,7 @@
 	return FALSE
 
 /datum/action/human_action/synth_bracer/proc/set_active(category = SIMI_SECONDARY_ACTION, set_ability = SIMI_ACTIVE_NONE)
-	switch(category)
-		if(SIMI_PRIMARY_ACTION)
-			synth_bracer.active_ability = set_ability
-		if(SIMI_SECONDARY_ACTION)
-			synth_bracer.active_utility = set_ability
-	if((synth_bracer.active_ability == SIMI_ACTIVE_NONE) && (synth_bracer.active_utility == SIMI_ACTIVE_NONE))
-		synth_bracer.flags_item &= ~NODROP
-	else
-		synth_bracer.flags_item |= NODROP
-	synth_bracer.update_icon(synth)
+	synth_bracer.set_active(category, set_ability)
 
 /datum/action/human_action/synth_bracer/proc/set_inactive(category = SIMI_SECONDARY_ACTION)
 	set_active(category, SIMI_ACTIVE_NONE)

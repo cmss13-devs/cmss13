@@ -27,7 +27,7 @@
 	return TRUE
 
 /datum/action/human_action/synth_bracer/anchor_form/action_activate()
-	..()
+	. = ..()
 
 	switch(synth_bracer.active_ability)
 		if(SIMI_ACTIVE_NONE)

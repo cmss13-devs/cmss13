@@ -490,9 +490,8 @@
 	desc = "A beret with the USCM Military Police insignia emblazoned on it."
 
 /obj/item/clothing/head/beret/marine/mp/provost/chief
-	name = "\improper USCM chief provost beret"
+	name = "\improper USCM provost command beret"
 	icon_state = "pvciberet"
-	desc = "A beret with the USCM Military Police insignia emblazoned on it."
 
 /obj/item/clothing/head/beret/marine/mp/tis
 	name = "\improper UAAC-TIS Special Agent Beret"

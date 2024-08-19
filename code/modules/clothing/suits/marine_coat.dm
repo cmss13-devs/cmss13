@@ -244,7 +244,7 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
 
 /obj/item/clothing/suit/storage/jacket/marine/provost/chief
-	name = "\improper Chief Provost Jacket"
+	name = "\improper Provost Command Jacket"
 	desc = "A crisp jacket with the Provost sigil."
 	icon_state = "provostci_jacket"
 

@@ -13,7 +13,7 @@ GLOBAL_SUBTYPE_PATHS_LIST_INDEXED(supply_packs_types, /datum/supply_packs, name)
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(supply_packs_datums, /datum/supply_packs, type)
 
 GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
-GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply, new())
+GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 /area/supply
 	ceiling = CEILING_METAL
@@ -1325,6 +1325,13 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply, new())
 
 	frequency.post_signal(src, status_signal)
 
+/obj/structure/machinery/computer/supplycomp/upp
+	name = "UPP supply console"
+
+/obj/structure/machinery/computer/supplycomp/upp/Initialize()
+	. = ..()
+		linked_supply_controller = GLOB.supply_controller_upp
+
 /obj/structure/machinery/computer/supplycomp/vehicle
 	name = "vehicle ASRS console"
 	desc = "A console for an Automated Storage and Retrieval System. This one is tied to a deep storage unit for vehicles."
@@ -1499,3 +1506,27 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply, new())
 
 	add_fingerprint(usr)
 	updateUsrDialog()
+
+/datum/controller/supply/upp
+	all_supply_groups = list(
+	"Operations",
+	"Weapons",
+	"Vehicle Ammo",
+	"Vehicle Equipment",
+	"Attachments",
+	"Ammo",
+	"Weapons Specialist Ammo",
+	"Restricted Equipment",
+	"Clothing",
+	"Medical",
+	"Engineering",
+	"Research",
+	"Supplies",
+	"Food",
+	"Gear",
+	"Mortar",
+	"Explosives",
+	"Reagent tanks",
+	)
+
+/datum/controller/supply/upp

@@ -42,6 +42,7 @@
 	process_shuttles += shuttle
 
 	GLOB.supply_controller.shuttle = shuttle
+	GLOB.supply_controller_upp.shuttle = shuttle
 
 //---ELEVATOR---//
 	// Elevator I

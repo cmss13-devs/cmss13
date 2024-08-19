@@ -4,15 +4,12 @@
 
 /datum/job/antag/upp
 	title = JOB_UPP
-	title = JOB_UPP
 	selection_class = "job_antag"
 	total_positions = 1
 	spawn_positions = 1
 	allow_additional = TRUE
 	late_joinable = TRUE
-	gear_preset = /datum/equipment_preset/upp
-
-
+	gear_preset = /datum/equipment_preset/upp/soldier
 
 /datum/equipment_preset/upp
 	name = FACTION_UPP

@@ -644,9 +644,7 @@
 	pixel_x = -7;
 	pixel_y = 16
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/oob)
 "auG" = (
 /turf/open/floor/prison,
@@ -707,9 +705,7 @@
 	pixel_x = -11;
 	pixel_y = 12
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/oob)
 "ayn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -753,9 +749,7 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 1
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/oob)
 "aAI" = (
 /obj/structure/window/framed/strata/reinforced,
@@ -855,9 +849,7 @@
 	pixel_x = -16;
 	pixel_y = 13
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/oob)
 "aEF" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -1068,9 +1060,7 @@
 	dir = 5;
 	pixel_y = 8
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/oob)
 "aMI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1098,9 +1088,7 @@
 "aNI" = (
 /obj/item/trash/barcardine,
 /obj/item/tool/weldingtool,
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/oob)
 "aNP" = (
 /turf/open/floor/strata/white_cyan3/southeast,
@@ -6371,9 +6359,7 @@
 /area/lv522/atmos/cargo_intake)
 "dNe" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/atmos/way_in_command_centre)
 "dNm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -16567,9 +16553,7 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/atmos/way_in_command_centre)
 "juQ" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -17698,10 +17682,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y2"
-	},
+/turf/open/floor/almayer/w_y2,
 /area/lv522/atmos/way_in_command_centre)
 "jWX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18645,9 +18626,7 @@
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "ksf" = (
 /obj/structure/machinery/deployable/barrier,
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/atmos/way_in_command_centre)
 "ksk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -19107,9 +19086,7 @@
 /obj/structure/barricade/deployable{
 	dir = 1
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/atmos/way_in_command_centre)
 "kEN" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -21770,9 +21747,7 @@
 /area/lv522/indoors/a_block/dorms/glass)
 "mev" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges/corpo)
 "meK" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -22465,10 +22440,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y1"
-	},
+/turf/open/floor/almayer/w_y1,
 /area/lv522/atmos/way_in_command_centre)
 "mwT" = (
 /obj/structure/prop/dam/truck,
@@ -25808,9 +25780,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges/corpo)
 "odX" = (
 /obj/structure/prop/invuln/minecart_tracks,
@@ -30224,12 +30194,6 @@
 /obj/structure/largecrate,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1)
-"qvb" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
-/area/lv522/indoors/a_block/bridges/op_centre)
 "qvA" = (
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_2)
@@ -30251,11 +30215,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
-"qvQ" = (
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
-/area/lv522/indoors/a_block/bridges/op_centre)
 "qws" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp{
@@ -36059,9 +36018,7 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "gib4"
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges/corpo)
 "tdE" = (
 /turf/closed/shuttle/dropship2/tornado/typhoon{
@@ -36434,9 +36391,7 @@
 /area/lv522/indoors/b_block/bridge)
 "tmC" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/atmos/way_in_command_centre)
 "tmL" = (
 /obj/structure/surface/table/almayer,
@@ -36501,9 +36456,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "tnN" = (
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/atmos/way_in_command_centre)
 "tnU" = (
 /obj/effect/decal/warning_stripes{
@@ -42596,10 +42549,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y0"
-	},
+/turf/open/floor/almayer/w_y0,
 /area/lv522/atmos/way_in_command_centre)
 "wcq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44795,9 +44745,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "xlI" = (
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges/corpo)
 "xlL" = (
 /obj/structure/reagent_dispensers/fueltank{
@@ -46728,9 +46676,7 @@
 	pixel_x = -11;
 	pixel_y = -8
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile2"
-	},
+/turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges/corpo)
 "yjK" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -70642,7 +70588,7 @@ xjF
 xFp
 xZP
 uNB
-qvb
+xUQ
 ykc
 gNJ
 pTl
@@ -70848,7 +70794,7 @@ ryO
 xFp
 xZP
 uNB
-qvb
+xUQ
 xAZ
 sQT
 pTl
@@ -71054,7 +71000,7 @@ ryO
 xFp
 xZP
 uNB
-qvQ
+pTl
 xAZ
 djM
 xUQ
@@ -71260,7 +71206,7 @@ ryO
 xFp
 xZP
 uNB
-qvQ
+pTl
 ykT
 djM
 pTl
@@ -72702,7 +72648,7 @@ vGp
 vGp
 sPh
 uNB
-qvb
+xUQ
 ykT
 xOw
 xUQ
@@ -72908,7 +72854,7 @@ vGp
 vGp
 sPh
 uNB
-qvb
+xUQ
 xAZ
 djM
 pTl
@@ -73114,7 +73060,7 @@ vGp
 vGp
 sPh
 uNB
-qvQ
+pTl
 xAZ
 xOw
 lZI
@@ -73320,7 +73266,7 @@ vGp
 oiA
 xZP
 uNB
-qvb
+xUQ
 xnI
 xkv
 xUQ

@@ -19406,9 +19406,7 @@
 "kNR" = (
 /obj/structure/closet/crate/explosives,
 /obj/item/storage/box/explosive_mines,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "kNY" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -34232,9 +34230,7 @@
 /obj/structure/closet/crate/green,
 /obj/item/device/sentry_computer,
 /obj/item/defenses/handheld/sentry,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "sjY" = (
 /turf/open/auto_turf/shale/layer2,

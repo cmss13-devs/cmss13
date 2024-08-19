@@ -218,7 +218,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 			if(new_death.cause_name)
 				track_statistic_earned(new_death.faction_name, STATISTIC_TYPE_WEAPON, new_death.cause_name, ff_type ? STATISTICS_DEATH_FF : STATISTICS_DEATH, 1, player_entity)
 
-#if !defined(UNIT_TESTS)
+#ifndef UNIT_TESTS
 	if(SSticker.mode && GLOB.round_statistics)
 		GLOB.round_statistics.death_stats_list += new_death
 #endif

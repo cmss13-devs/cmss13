@@ -83,8 +83,8 @@ UNITED PROGRESSIVE PEOPLES
 		SKILL_FIREARMS = SKILL_FIREARMS_EXPERT,
 	)
 
-/datum/skills/upp/supply_specialist
-	name = "UPP Korporal Logistiki"
+/datum/skills/upp/logistics_technician
+	name = "UPP Logistics Technician"
 	skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,

@@ -41,30 +41,8 @@
 	shuttles["Supply"] = shuttle
 	process_shuttles += shuttle
 	GLOB.supply_controller.shuttle = shuttle
+	GLOB.supply_controller_upp.shuttle = shuttle
 
-	// Supply shuttle upp
-	var/datum/shuttle/ferry/supply/upp/shuttle_upp
-
-	shuttle_upp = new/datum/shuttle/ferry/supply/upp()
-	shuttle_upp.location = 1
-	shuttle_upp.warmup_time = 1
-	shuttle_upp.move_time = ELEVATOR_TRANSIT_DURATION
-	for(var/area/A in GLOB.all_areas)
-		if(A.type == /area/supply/dock) //redo this for new area
-			shuttle.area_offsite = A
-			break
-
-	for(var/area/B in GLOB.all_areas)
-		if(B.type == /area/supply/station) //redo this for new area
-			shuttle.area_station = B
-			break
-
-	if(shuttle.area_station && shuttle.area_offsite)
-		shuttles["Supply_UPP"] = shuttle_upp
-		process_shuttles += shuttle_upp
-		shuttle_upp.linked_supply = GLOB.supply_controller_upp
-	else
-		qdel(shuttle_upp)
 
 //---ELEVATOR---//
 	// Elevator I

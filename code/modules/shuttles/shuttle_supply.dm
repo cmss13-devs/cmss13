@@ -33,7 +33,7 @@
 
 /datum/shuttle/ferry/supply/New()
 	..()
-	linked_supply = GLOB.supply_controller
+	linked_supply = GLOB.supply_controller_upp
 	elevator_animation = new()
 	elevator_animation.pixel_x = 160 //Matches the slope on the sprite.
 	elevator_animation.pixel_y = -80
@@ -192,7 +192,3 @@
 			spawn()
 				M.icon_state = "gear"
 
-/datum/shuttle/ferry/supply/upp/New()
-	. = ..()
-	linked_supply = GLOB.supply_controller_upp
-	GLOB.supply_controller_upp.shuttle = src

@@ -20,7 +20,7 @@
 /datum/paygrade/provost/marshal/deputy
 	paygrade = PAY_SHORT_PVDM
 	name = "Provost Deputy Marshal"
-	prefix = "Deputy Marshal"
+	prefix = "Dep. Marshal"
 	officer_grade = GRADE_FLAG
 
 /datum/paygrade/provost/marshal

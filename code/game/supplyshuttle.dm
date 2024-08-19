@@ -1330,7 +1330,8 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 /obj/structure/machinery/computer/supplycomp/upp/Initialize()
 	. = ..()
-		linked_supply_controller = GLOB.supply_controller_upp
+	linked_supply_controller = GLOB.supply_controller_upp
+	LAZYADD(linked_supply_controller.bound_supply_computer_list, src)
 
 /obj/structure/machinery/computer/supplycomp/vehicle
 	name = "vehicle ASRS console"
@@ -1528,5 +1529,5 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 	"Explosives",
 	"Reagent tanks",
 	)
+	points = 1000000
 
-/datum/controller/supply/upp

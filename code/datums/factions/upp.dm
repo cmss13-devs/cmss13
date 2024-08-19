@@ -62,13 +62,14 @@
 		list("Type 71 Pulse Rifle", 20, /obj/item/weapon/gun/rifle/type71, null, VENDOR_ITEM_RECOMMENDED),
 		list("Type 71 Pulse Rifle Carbine", 20, /obj/item/weapon/gun/rifle/type71/carbine, null, VENDOR_ITEM_REGULAR),
 		list("Type 64 Submachinegun", 20, /obj/item/weapon/gun/smg/bizon/upp, null, VENDOR_ITEM_REGULAR),
-		list("Type 23 riot shotgun", 20, /obj/item/weapon/gun/shotgun/type23, null, VENDOR_ITEM_REGULAR),
+		list("Type 23 Riot Shotgun", 20, /obj/item/weapon/gun/shotgun/type23, null, VENDOR_ITEM_REGULAR),
+
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("Type 71 AP Magazine (5.45x39mm)", 15, /obj/item/ammo_magazine/rifle/type71/ap, null, VENDOR_ITEM_REGULAR),
 		list("Type 71 Magazine (5.45x39mm)", 5, /obj/item/ammo_magazine/rifle/type71, null, VENDOR_ITEM_REGULAR),
 		list("Type 64 Helical Magazine (7.62x19mm)", 5, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
-		list("Handful of heavy buckshot shells (8g)", 5, /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, null, VENDOR_ITEM_REGULAR),
+		list("Handful of Heavy Buckshot Shells (8g)", 5, /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, null, VENDOR_ITEM_REGULAR),
 
 
 		list("SIDEARMS", -1, null, null, null),
@@ -81,7 +82,7 @@
 		list("NP92 Magazine (9x18mm Makarov)", 40, /obj/item/ammo_magazine/pistol/np92, null, VENDOR_ITEM_REGULAR),
 		list("ZHNK-72 Speed Loader (7.62x38mmR)", 40, /obj/item/ammo_magazine/revolver/upp, null, VENDOR_ITEM_REGULAR),
 
-		list("ATTACHMENTS", 0, null, null, null, null),
+		list("ATTACHMENTS", 0, null, null, null),
 		list("Angled Grip", 15, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
 		list("Burst Fire Assembly", 15, /obj/item/attachable/burstfire_assembly, null, VENDOR_ITEM_REGULAR),
 		list("Extended Barrel", 15, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),

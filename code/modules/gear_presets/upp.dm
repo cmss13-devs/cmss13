@@ -10,7 +10,7 @@
 	spawn_positions = 1
 	allow_additional = TRUE
 	late_joinable = TRUE
-	gear_preset = /datum/equipment_preset/upp/cryo
+	gear_preset = /datum/equipment_preset/upp
 
 
 
@@ -25,7 +25,7 @@
 /datum/equipment_preset/upp/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_UPP_ALL) //ACCESS_COME_BACK_TO_ME
-/datum/equipment_preset/upp/cryo
+/datum/equipment_preset/upp
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/upp/load_gear(mob/living/carbon/human/new_human)

@@ -1,0 +1,179 @@
+/obj/structure/machinery/power/apc{dir=1;start_charge=0} : /obj/structure/machinery/power/apc/no_power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=2;start_charge=0} : /obj/structure/machinery/power/apc/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=4;start_charge=0} : /obj/structure/machinery/power/apc/no_power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=8;start_charge=0} : /obj/structure/machinery/power/apc/no_power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=1;start_charge=0;pixel_y=@ANY} : /obj/structure/machinery/power/apc/no_power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=2;start_charge=0;pixel_y=@ANY} : /obj/structure/machinery/power/apc/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=4;start_charge=0;pixel_x=@ANY} : /obj/structure/machinery/power/apc/no_power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=8;start_charge=0;pixel_x=@ANY} : /obj/structure/machinery/power/apc/no_power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{start_charge=0} : /obj/structure/machinery/power/apc/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+
+/obj/structure/machinery/power/apc{dir=1;start_charge=90} : /obj/structure/machinery/power/apc/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=2;start_charge=90} : /obj/structure/machinery/power/apc/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=4;start_charge=90} : /obj/structure/machinery/power/apc/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=8;start_charge=90} : /obj/structure/machinery/power/apc/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=1;start_charge=90;pixel_y=@ANY} : /obj/structure/machinery/power/apc/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=2;start_charge=90;pixel_y=@ANY} : /obj/structure/machinery/power/apc/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=4;start_charge=90;pixel_x=@ANY} : /obj/structure/machinery/power/apc/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{dir=8;start_charge=90;pixel_x=@ANY} : /obj/structure/machinery/power/apc/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc{start_charge=90} : /obj/structure/machinery/power/apc/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+
+/obj/structure/machinery/power/apc{dir=1} : /obj/structure/machinery/power/apc/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc{dir=2} : /obj/structure/machinery/power/apc/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc{dir=4} : /obj/structure/machinery/power/apc/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc{dir=8} : /obj/structure/machinery/power/apc/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc{dir=1;pixel_y=@ANY} : /obj/structure/machinery/power/apc/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc{dir=2;pixel_y=@ANY} : /obj/structure/machinery/power/apc/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc{dir=4;pixel_x=@ANY} : /obj/structure/machinery/power/apc/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc{dir=8;pixel_x=@ANY} : /obj/structure/machinery/power/apc/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc : /obj/structure/machinery/power/apc/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+
+/obj/structure/machinery/power/apc/weak{dir=1;start_charge=0} : /obj/structure/machinery/power/apc/no_power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/weak{dir=2;start_charge=0} : /obj/structure/machinery/power/apc/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/weak{dir=4;start_charge=0} : /obj/structure/machinery/power/apc/no_power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/weak{dir=8;start_charge=0} : /obj/structure/machinery/power/apc/no_power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/weak{dir=1;start_charge=0;pixel_y=@ANY} : /obj/structure/machinery/power/apc/no_power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/weak{dir=2;start_charge=0;pixel_y=@ANY} : /obj/structure/machinery/power/apc/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/weak{dir=4;start_charge=0;pixel_x=@ANY} : /obj/structure/machinery/power/apc/no_power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/weak{dir=8;start_charge=0;pixel_x=@ANY} : /obj/structure/machinery/power/apc/no_power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/weak{start_charge=0} : /obj/structure/machinery/power/apc/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+
+/obj/structure/machinery/power/apc/weak{dir=1;start_charge=90} : /obj/structure/machinery/power/apc/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=2;start_charge=90} : /obj/structure/machinery/power/apc/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=4;start_charge=90} : /obj/structure/machinery/power/apc/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=8;start_charge=90} : /obj/structure/machinery/power/apc/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=1;start_charge=90;pixel_y=@ANY} : /obj/structure/machinery/power/apc/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=2;start_charge=90;pixel_y=@ANY} : /obj/structure/machinery/power/apc/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=4;start_charge=90;pixel_x=@ANY} : /obj/structure/machinery/power/apc/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=8;start_charge=90;pixel_x=@ANY} : /obj/structure/machinery/power/apc/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{start_charge=90} : /obj/structure/machinery/power/apc/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=20}
+
+/obj/structure/machinery/power/apc/weak{dir=1} : /obj/structure/machinery/power/apc/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=2} : /obj/structure/machinery/power/apc/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=4} : /obj/structure/machinery/power/apc/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=8} : /obj/structure/machinery/power/apc/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=1;pixel_y=@ANY} : /obj/structure/machinery/power/apc/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=2;pixel_y=@ANY} : /obj/structure/machinery/power/apc/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=4;pixel_x=@ANY} : /obj/structure/machinery/power/apc/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak{dir=8;pixel_x=@ANY} : /obj/structure/machinery/power/apc/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=20}
+/obj/structure/machinery/power/apc/weak : /obj/structure/machinery/power/apc/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=20}
+
+/obj/structure/machinery/power/apc/high{dir=1;start_charge=0} : /obj/structure/machinery/power/apc/no_power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=2;start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=4;start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=8;start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=1;start_charge=0;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/no_power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=2;start_charge=0;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=4;start_charge=0;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/no_power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=8;start_charge=0;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/no_power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+
+/obj/structure/machinery/power/apc/high{dir=1;start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=2;start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=4;start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=8;start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=1;start_charge=90;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=2;start_charge=90;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=4;start_charge=90;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=8;start_charge=90;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/high{start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+
+/obj/structure/machinery/power/apc/high{dir=1} : /obj/structure/machinery/power/apc/upgraded/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=2} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=4} : /obj/structure/machinery/power/apc/upgraded/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=8} : /obj/structure/machinery/power/apc/upgraded/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=1;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=2;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=4;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/high{dir=8;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/high : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+
+/obj/structure/machinery/power/apc/super{dir=1;start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=2;start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=4;start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=8;start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=1;start_charge=0;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/no_power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=2;start_charge=0;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=4;start_charge=0;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/no_power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=8;start_charge=0;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/no_power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+
+/obj/structure/machinery/power/apc/super{dir=1;start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=2;start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=4;start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=8;start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=1;start_charge=90;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=2;start_charge=90;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=4;start_charge=90;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=8;start_charge=90;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/super{start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+
+/obj/structure/machinery/power/apc/super{dir=1} : /obj/structure/machinery/power/apc/upgraded/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=2} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=4} : /obj/structure/machinery/power/apc/upgraded/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=8} : /obj/structure/machinery/power/apc/upgraded/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=1;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=2;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=4;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/super{dir=8;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/super : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+
+/obj/structure/machinery/power/apc/hyper{dir=1;start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=2;start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=4;start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=8;start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=1;start_charge=0;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/no_power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=2;start_charge=0;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=4;start_charge=0;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/no_power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=8;start_charge=0;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/no_power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{start_charge=0} : /obj/structure/machinery/power/apc/upgraded/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+
+/obj/structure/machinery/power/apc/hyper{dir=1;start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=2;start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=4;start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=8;start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=1;start_charge=90;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=2;start_charge=90;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=4;start_charge=90;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=8;start_charge=90;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/hyper{start_charge=90} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+
+/obj/structure/machinery/power/apc/hyper{dir=1} : /obj/structure/machinery/power/apc/upgraded/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=2} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=4} : /obj/structure/machinery/power/apc/upgraded/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=8} : /obj/structure/machinery/power/apc/upgraded/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=1;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/north{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=2;pixel_y=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=4;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/east{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/hyper{dir=8;pixel_x=@ANY} : /obj/structure/machinery/power/apc/upgraded/power/west{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/hyper : /obj/structure/machinery/power/apc/upgraded/power/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+
+/obj/structure/machinery/power/apc/nocharge{dir=1} : /obj/structure/machinery/power/apc/no_power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/nocharge{dir=2} : /obj/structure/machinery/power/apc/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/nocharge{dir=4} : /obj/structure/machinery/power/apc/no_power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/nocharge{dir=8} : /obj/structure/machinery/power/apc/no_power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/nocharge{dir=1;pixel_y=@ANY} : /obj/structure/machinery/power/apc/no_power/north{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/nocharge{dir=2;pixel_y=@ANY} : /obj/structure/machinery/power/apc/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/nocharge{dir=4;pixel_x=@ANY} : /obj/structure/machinery/power/apc/no_power/east{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/nocharge{dir=8;pixel_x=@ANY} : /obj/structure/machinery/power/apc/no_power/west{@OLD;pixel_x=@SKIP;dir=@SKIP;start_charge=@SKIP}
+/obj/structure/machinery/power/apc/nocharge : /obj/structure/machinery/power/apc/no_power/south{@OLD;pixel_y=@SKIP;dir=@SKIP;start_charge=@SKIP}
+
+/obj/structure/machinery/power/apc/almayer{dir=1} : /obj/structure/machinery/power/apc/almayer/north{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer{dir=2} : /obj/structure/machinery/power/apc/almayer/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer{dir=4} : /obj/structure/machinery/power/apc/almayer/east{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer{dir=8} : /obj/structure/machinery/power/apc/almayer/west{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer{dir=1;pixel_y=@ANY} : /obj/structure/machinery/power/apc/almayer/north{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer{dir=2;pixel_y=@ANY} : /obj/structure/machinery/power/apc/almayer/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer{dir=4;pixel_x=@ANY} : /obj/structure/machinery/power/apc/almayer/east{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer{dir=8;pixel_x=@ANY} : /obj/structure/machinery/power/apc/almayer/west{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer : /obj/structure/machinery/power/apc/almayer/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+
+/obj/structure/machinery/power/apc/almayer/hardened{dir=1} : /obj/structure/machinery/power/apc/almayer/hardened/north{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer/hardened{dir=2} : /obj/structure/machinery/power/apc/almayer/hardened/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer/hardened{dir=4} : /obj/structure/machinery/power/apc/almayer/hardened/east{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer/hardened{dir=8} : /obj/structure/machinery/power/apc/almayer/hardened/west{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer/hardened{dir=1;pixel_y=@ANY} : /obj/structure/machinery/power/apc/almayer/hardened/north{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer/hardened{dir=2;pixel_y=@ANY} : /obj/structure/machinery/power/apc/almayer/hardened/south{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer/hardened{dir=4;pixel_x=@ANY} : /obj/structure/machinery/power/apc/almayer/hardened/east{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer/hardened{dir=8;pixel_x=@ANY} : /obj/structure/machinery/power/apc/almayer/hardened/west{@OLD;pixel_x=@SKIP;dir=@SKIP}
+/obj/structure/machinery/power/apc/almayer/hardened : /obj/structure/machinery/power/apc/almayer/hardened/south{@OLD;pixel_y=@SKIP;dir=@SKIP}

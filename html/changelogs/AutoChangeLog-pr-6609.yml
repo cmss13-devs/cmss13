@@ -1,4 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - balance: "being mid-paradrop won't trigger traps, fire and stray bullets before you land."

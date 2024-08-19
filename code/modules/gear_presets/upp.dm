@@ -4040,12 +4040,28 @@
 
 /datum/equipment_preset/upp/cryo/doctor
 	name = "UPP Doctor (Cryo)"
-
 	skills = /datum/skills/upp/combat_medic
 	assignment = JOB_UPP_LT_DOKTOR
 	rank = JOB_UPP_LT_DOKTOR
 	role_comm_title = "Lt. Med."
 	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/upp/cryo/doctor/load_gear(mob/living/carbon/human/new_human)
+	. = ..()
+	//face
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(new_human), WEAR_EYES)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+	//body
+	var/obj/item/clothing/under/marine/veteran/UPP/medic/UPP = new()
+	var/obj/item/clothing/accessory/storage/surg_vest/equipped/W = new()
+	UPP.attach_accessory(new_human, W)
+	//limbs
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
+
+
 /datum/equipment_preset/upp/doctor
 	name = "UPP Doctor"
 	flags = EQUIPMENT_PRESET_EXTRA

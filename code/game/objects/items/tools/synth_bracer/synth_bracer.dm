@@ -107,7 +107,7 @@
 		flick("bracer_[bracer_color]_startup", src)
 
 		if(ishuman(user))
-			var/mob/living/carbon/human/wearer = user
+			wearer = user
 			if(wearer.comm_title)
 				internal_transmitter.phone_id = "[wearer.comm_title] [wearer]"
 			else if(wearer.job)

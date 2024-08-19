@@ -1267,7 +1267,7 @@
 	name = "UPP Logistics Technician"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	skills = /datum/skills/upp/supply_specialist
+	skills = /datum/skills/upp/logistcs_technician
 	assignment = JOB_UPP_SUPPLY
 	rank = JOB_UPP_SUPPLY
 	role_comm_title = "Log."

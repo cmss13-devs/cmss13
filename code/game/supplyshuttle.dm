@@ -1510,24 +1510,16 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 /datum/controller/supply/upp
 	all_supply_groups = list(
-	"Operations",
-	"Weapons",
-	"Vehicle Ammo",
-	"Vehicle Equipment",
+	"UPP Weapons",
+	"UPP Ammo",
+	"UPP Special Weapon",
+	"UPP Special Ammo",
 	"Attachments",
-	"Ammo",
-	"Weapons Specialist Ammo",
-	"Restricted Equipment",
-	"Clothing",
 	"Medical",
-	"Engineering",
-	"Research",
-	"Supplies",
-	"Food",
-	"Gear",
-	"Mortar",
-	"Explosives",
-	"Reagent tanks",
+	"UPP Engineering",
+	"UPP Food",
+	"UPP Gear",
+	"UPP Explosives",
+	"UPP Clothing",
 	)
-	points = 1000000
-
+	points = 99999999

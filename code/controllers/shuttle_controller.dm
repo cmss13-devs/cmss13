@@ -45,7 +45,6 @@
 	// Supply shuttle upp
 	var/datum/shuttle/ferry/supply/upp/shuttle_upp
 
-	// Supply shuttle
 	shuttle_upp = new/datum/shuttle/ferry/supply/upp()
 	shuttle_upp.location = 1
 	shuttle_upp.warmup_time = 1

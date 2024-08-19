@@ -15,13 +15,14 @@ import { Button, Flex, NoticeBox } from '../../components';
  * All props can be redefined if you want custom behavior, but
  * it's preferred to stick to defaults.
  */
-export const InterfaceLockNoticeBox = (props, context) => {
-  const { act, data } = useBackend(context);
+export const InterfaceLockNoticeBox = (props) => {
+  const { act, data } = useBackend();
   const {
     siliconUser = data.siliconUser,
     locked = data.locked,
     onLockStatusChange = () => act('lock'),
     accessText = 'an ID card or dogtags',
+    preventLocking = data.preventLocking,
   } = props;
   // For silicon users
   if (siliconUser) {
@@ -35,13 +36,15 @@ export const InterfaceLockNoticeBox = (props, context) => {
               m={0}
               color={locked ? 'red' : 'green'}
               icon={locked ? 'lock' : 'unlock'}
-              content={locked ? 'Locked' : 'Unlocked'}
+              disabled={preventLocking}
               onClick={() => {
                 if (onLockStatusChange) {
                   onLockStatusChange(!locked);
                 }
               }}
-            />
+            >
+              {locked ? 'Locked' : 'Unlocked'}
+            </Button>
           </Flex.Item>
         </Flex>
       </NoticeBox>

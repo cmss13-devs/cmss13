@@ -1,7 +1,7 @@
 // Group to populate with all the explosives exept OB and mortar shell
 
 /datum/supply_packs/explosives
-	name = "surplus explosives crate (claymore mine x5, M40 HIDP x2, M40 HEDP x2, M15 Frag x2, M12 Blast x2)"
+	name = "surplus explosives crate (claymore mine x5, M40 HIDP x2, M40 HEDP x2, M15 Frag x2, M12 Blast x2, M40 MFHS x2)"
 	contains = list(
 		/obj/item/storage/box/explosive_mines,
 		/obj/item/explosive/grenade/high_explosive,
@@ -12,6 +12,8 @@
 		/obj/item/explosive/grenade/high_explosive/m15,
 		/obj/item/explosive/grenade/high_explosive/pmc,
 		/obj/item/explosive/grenade/high_explosive/pmc,
+		/obj/item/explosive/grenade/metal_foam,
+		/obj/item/explosive/grenade/metal_foam,
 	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
@@ -86,6 +88,18 @@
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HEDP grenades crate (WARNING)"
 	group = "Explosives"
+
+/datum/supply_packs/explosives_sebb
+	name = "G2 electroshock grenades crate (x6)"
+	contains = list(
+		/obj/item/storage/box/packet/sebb,
+		/obj/item/storage/box/packet/sebb,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper G2 electroshock grenades crate (WARNING)"
+	group = "Explosives"
+
 
 /datum/supply_packs/explosives_hedp
 	name = "M40 HEDP blast grenade box crate (x25)"

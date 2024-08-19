@@ -279,7 +279,7 @@
 		var/obj/item/card/id/id_card = human.get_idcard()
 
 		if (id_card)
-			if ((id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.highcom_paygrades) || (id_card.paygrade == "PvI"))
+			if ((id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.uscm_highcom_paygrades))
 				return TRUE
 
 	return FALSE

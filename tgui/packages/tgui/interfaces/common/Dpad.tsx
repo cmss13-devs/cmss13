@@ -1,24 +1,28 @@
 import { useBackend } from '../../backend';
 import { Box, Button, Stack } from '../../components';
-import { useFiremissionXOffsetValue, useFiremissionYOffsetValue, useLazeTarget } from '../MfdPanels/stateManagers';
+import {
+  useFiremissionXOffsetValue,
+  useFiremissionYOffsetValue,
+  useLazeTarget,
+} from '../MfdPanels/stateManagers';
 
-const SvgButton = (
-  props: { transform?: string; onClick?: (e: any) => void },
-  context
-) => {
+const SvgButton = (props: {
+  readonly transform?: string;
+  readonly onClick?: (e: any) => void;
+}) => {
   return (
     <svg height="100" width="100">
       <g transform={props.transform} onClick={props.onClick}>
         <path
           stroke="#808080"
-          stroke-width="1"
+          strokeWidth="1"
           fillOpacity="1"
           fill="#606060"
           d="M 0 15 l 0 -20 l 10 -10 l 20 15 l 0 25 l -20 15 l -10 -10 l 0 -20"
         />
         <path
           stroke="#FFFFFF"
-          stroke-width="2"
+          strokeWidth="2"
           fillOpacity="0"
           d="M 25 12 l -20 0 l 10 -10 l -10 10 l 10 10"
         />
@@ -27,14 +31,12 @@ const SvgButton = (
   );
 };
 
-export const Dpad = (props, context) => {
-  const { act } = useBackend(context);
-  const { selectedTarget } = useLazeTarget(context);
+export const Dpad = (props) => {
+  const { act } = useBackend();
+  const { selectedTarget } = useLazeTarget();
 
-  const { fmXOffsetValue, setFmXOffsetValue } =
-    useFiremissionXOffsetValue(context);
-  const { fmYOffsetValue, setFmYOffsetValue } =
-    useFiremissionYOffsetValue(context);
+  const { fmXOffsetValue, setFmXOffsetValue } = useFiremissionXOffsetValue();
+  const { fmYOffsetValue, setFmYOffsetValue } = useFiremissionYOffsetValue();
 
   const min_value = -12;
   const max_value = 12;
@@ -48,9 +50,9 @@ export const Dpad = (props, context) => {
     setFmXOffsetValue(xValue);
     setFmYOffsetValue(yValue);
     act('firemission-dual-offset-camera', {
-      'target_id': selectedTarget,
-      'x_offset_value': xValue,
-      'y_offset_value': yValue,
+      target_id: selectedTarget,
+      x_offset_value: xValue,
+      y_offset_value: yValue,
     });
   };
 

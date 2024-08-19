@@ -20,7 +20,10 @@
 				if(-90 to -80) severity = 8
 				if(-95 to -90) severity = 9
 				if(-INFINITY to -95) severity = 10
-			overlay_fullscreen("crit", /atom/movable/screen/fullscreen/crit, severity)
+			if(client.prefs?.crit_overlay_pref == CRIT_OVERLAY_DARK)
+				overlay_fullscreen("crit", /atom/movable/screen/fullscreen/crit/dark, severity)
+			else
+				overlay_fullscreen("crit", /atom/movable/screen/fullscreen/crit, severity)
 		else
 			clear_fullscreen("crit")
 			if(oxyloss)
@@ -37,9 +40,9 @@
 			else
 				clear_fullscreen("oxy")
 
-
 			//Fire and Brute damage overlay (BSSR)
-			var/hurtdamage = src.getBruteLoss() + src.getFireLoss() + damageoverlaytemp
+			var/max_health_normalisation = (species ? species.total_health : 100) / 100
+			var/hurtdamage = (getBruteLoss() + getFireLoss()) / max_health_normalisation + damageoverlaytemp
 			damageoverlaytemp = 0 // We do this so we can detect if someone hits us or not.
 			if(hurtdamage)
 				var/severity = 0
@@ -60,7 +63,7 @@
 		else
 			clear_fullscreen("blind")
 
-		///Pain should override the SetEyeBlur(0) should the pain be painful enough to cause eyeblur in the first place. Also, peepers is essential to make sure eye damage isn't overriden.
+		///Pain should override the SetEyeBlur(0) should the pain be painful enough to cause eyeblur in the first place. Also, peepers is essential to make sure eye damage isn't overridden.
 		var/datum/internal_organ/eyes/peepers = internal_organs_by_name["eyes"]
 		if((disabilities & NEARSIGHTED) && !HAS_TRAIT(src, TRAIT_NEARSIGHTED_EQUIPMENT) && pain.current_pain < 80 && peepers.organ_status == ORGAN_HEALTHY)
 			EyeBlur(2)
@@ -195,7 +198,7 @@
 		hud_used.slowed_icon.name = ""
 		hud_used.slowed_icon.icon_state = "status_0"
 
-	var/is_embedded = embedded_items.len
+	var/is_embedded = length(embedded_items)
 	if(is_embedded)
 		hud_used.shrapnel_icon.name = "shrapnel"
 		hud_used.shrapnel_icon.icon_state = "status_shrapnel"
@@ -225,7 +228,7 @@
 		hud_used.tethered_icon.name = ""
 		hud_used.tethered_icon.icon_state = "status_0"
 
-	if(active_transfusions.len)
+	if(length(active_transfusions))
 		hud_used.tethered_icon.name = "transfusion"
 		hud_used.tethered_icon.icon_state = "status_blood"
 		hud_used.tethered_icon.screen_loc = ui_datum.get_status_loc(status_effect_placement)

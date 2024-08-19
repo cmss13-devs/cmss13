@@ -2,14 +2,14 @@ import { useBackend } from '../backend';
 import { Button, Flex, Section } from '../components';
 import { Window } from '../layouts';
 
-export const HiveFaction = (props, context) => {
-  const { act, data } = useBackend(context);
+export const HiveFaction = (props) => {
+  const { act, data } = useBackend();
   const { glob_factions, current_allies } = data;
 
   const onFactionButtonClick = (faction) =>
     act('set_ally', {
-      'should_ally': !current_allies[faction],
-      'target_faction': faction,
+      should_ally: !current_allies[faction],
+      target_faction: faction,
     });
 
   return (
@@ -20,22 +20,24 @@ export const HiveFaction = (props, context) => {
             {glob_factions['Xenomorph'].map((faction) => (
               <Button.Checkbox
                 key={faction}
-                content={faction}
                 width="100%"
                 checked={current_allies[faction]}
                 onClick={() => onFactionButtonClick(faction)}
-              />
+              >
+                {faction}
+              </Button.Checkbox>
             ))}
           </Section>
           <Section title="Human" height="100%" width="100%" ml={1}>
             {glob_factions['Human'].map((faction) => (
               <Button.Checkbox
                 key={faction}
-                content={faction}
                 width="100%"
                 checked={current_allies[faction]}
                 onClick={() => onFactionButtonClick(faction)}
-              />
+              >
+                {faction}
+              </Button.Checkbox>
             ))}
           </Section>
         </Flex>

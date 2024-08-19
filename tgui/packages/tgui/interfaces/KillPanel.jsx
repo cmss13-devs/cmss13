@@ -1,10 +1,11 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
+
 import { useBackend } from '../backend';
-import { Section, Box, NoticeBox, Collapsible } from '../components';
+import { Box, Collapsible, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
-export const KillPanel = (props, context) => {
-  const { act, data } = useBackend(context);
+export const KillPanel = (props) => {
+  const { act, data } = useBackend();
   const { death_data } = data;
 
   const real_data = death_data['death_stats_list'];
@@ -24,8 +25,8 @@ export const KillPanel = (props, context) => {
   );
 };
 
-const KillView = (props, context) => {
-  const { act, data } = useBackend(context);
+const KillView = (props) => {
+  const { act, data } = useBackend();
   const { death_data } = data;
 
   const real_data = death_data['death_stats_list'];
@@ -33,13 +34,14 @@ const KillView = (props, context) => {
   return real_data.map((entry, index) => (
     <Collapsible
       key={index}
-      title={entry.mob_name + ' (' + entry.time_of_death + ')'}>
+      title={entry.mob_name + ' (' + entry.time_of_death + ')'}
+    >
       <Box>Mob: {entry.mob_name}</Box>
       {entry.job_name ? (
-        <Fragment>
+        <>
           <Box height="3px" />
           <Box>Job: {entry.job_name}</Box>
-        </Fragment>
+        </>
       ) : null}
       <Box height="3px" />
       <Box>Area: {entry.area_name}</Box>

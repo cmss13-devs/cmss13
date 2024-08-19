@@ -68,9 +68,11 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/datum/admins/proc/alertall,
 	/datum/admins/proc/imaginary_friend,
 	/client/proc/toggle_admin_pings,
+	/client/proc/cmd_admin_open_ares,
 	/client/proc/cmd_admin_say, /*staff-only ooc chat*/
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	/client/proc/cmd_admin_tacmaps_panel,
+	/client/proc/other_records,
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
@@ -96,8 +98,9 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
-	/client/proc/unban_panel
-	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes. Don't forget the comma in the line above when uncommenting this!
+	/client/proc/unban_panel,
+	/client/proc/stickyban_panel,
+	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes.
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_sounds, list(
@@ -110,6 +113,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/cmd_admin_change_custom_event,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
+	/client/proc/enable_event_mob_verbs,
 	/client/proc/force_hijack,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/adjust_predator_round,
@@ -135,12 +139,13 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/adminpanelweapons,
 	/client/proc/admin_general_quarters,
 	/client/proc/admin_biohazard_alert,
+	/client/proc/admin_aicore_alert,
 	/client/proc/toggle_hardcore_perma,
 	/client/proc/toggle_bypass_joe_restriction,
+	/client/proc/toggle_joe_respawns,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
-	/client/proc/enable_event_mob_verbs,
 	/client/proc/cmd_admin_dress_all,
 	/client/proc/free_all_mobs_in_view,
 	/client/proc/drop_bomb,
@@ -154,6 +159,7 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,
 	/client/proc/map_template_upload,
+	/client/proc/force_load_lazy_template,
 	/client/proc/enable_podlauncher,
 	/client/proc/change_taskbar_icon,
 	/client/proc/change_weather,
@@ -190,7 +196,6 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/cmd_admin_delete,
 	/client/proc/cmd_debug_del_all,
 	/client/proc/reload_admins,
-	/client/proc/reload_whitelist,
 	/client/proc/restart_controller,
 	/client/proc/debug_controller,
 	/client/proc/cmd_debug_toggle_should_check_for_win,
@@ -238,12 +243,13 @@ GLOBAL_LIST_INIT(debug_verbs, list(
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_possess, list(
+	/client/proc/cmd_assume_direct_control,
 	/client/proc/possess,
 	/client/proc/release
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_permissions, list(
-	/client/proc/ToRban
+	/client/proc/whitelist_panel,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_color, list(
@@ -262,10 +268,7 @@ GLOBAL_LIST_INIT(admin_mob_event_verbs_hideable, list(
 	/client/proc/editappear,
 	/client/proc/cmd_admin_addhud,
 	/client/proc/cmd_admin_change_their_hivenumber,
-	/client/proc/cmd_assume_direct_control,
 	/client/proc/free_mob_for_ghosts,
-	/client/proc/possess,
-	/client/proc/release,
 	/client/proc/cmd_admin_grantfullaccess,
 	/client/proc/cmd_admin_grantallskills,
 	/client/proc/admin_create_account
@@ -273,6 +276,7 @@ GLOBAL_LIST_INIT(admin_mob_event_verbs_hideable, list(
 
 //verbs which can be hidden - needs work
 GLOBAL_LIST_INIT(admin_verbs_hideable, list(
+	/client/proc/cmd_assume_direct_control,
 	/client/proc/release,
 	/client/proc/possess,
 	/client/proc/callproc_datum,
@@ -347,14 +351,8 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		add_verb(src, GLOB.admin_verbs_spawn)
 	if(CLIENT_HAS_RIGHTS(src, R_STEALTH))
 		add_verb(src, GLOB.admin_verbs_stealth)
-	if(GLOB.RoleAuthority && (GLOB.RoleAuthority.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER))
+	if(check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		add_verb(src, GLOB.clan_verbs)
-
-/client/proc/add_admin_whitelists()
-	if(CLIENT_IS_MENTOR(src))
-		GLOB.RoleAuthority.roles_whitelist[ckey] |= WHITELIST_MENTOR
-	if(CLIENT_IS_STAFF(src))
-		GLOB.RoleAuthority.roles_whitelist[ckey] |= WHITELIST_JOE
 
 /client/proc/remove_admin_verbs()
 	remove_verb(src, list(

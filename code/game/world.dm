@@ -14,7 +14,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 /world/New()
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
-		LIBCALL(debug_server, "auxtools_init")()
+		call_ext(debug_server, "auxtools_init")()
 		enable_debugging()
 	hub_password = "kMZy3U5jJHSiBQjr"
 
@@ -69,7 +69,10 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	initiate_minimap_icons()
 
 	change_tick_lag(CONFIG_GET(number/ticklag))
-	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
+
+	// As of byond 515.1637 time2text now treats 0 like it does negative numbers so the hour is wrong
+	// We could instead use world.timezone but IMO better to not assume lummox will keep time2text in parity with it
+	GLOB.timezoneOffset = text2num(time2text(10,"hh")) * 36000
 
 	Master.Initialize(10, FALSE, TRUE)
 
@@ -86,10 +89,6 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	//Scramble the coords obsfucator
 	GLOB.obfs_x = rand(-500, 500) //A number between -100 and 100
 	GLOB.obfs_y = rand(-500, 500) //A number between -100 and 100
-
-	spawn(3000) //so we aren't adding to the round-start lag
-		if(CONFIG_GET(flag/ToRban))
-			ToRban_autoupdate()
 
 	// If the server's configured for local testing, get everything set up ASAP.
 	// Shamelessly stolen from the test manager's host_tests() proc
@@ -115,7 +114,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		GLOB.log_directory += "[replacetext(time_stamp(), ":", ".")]"
 
 	runtime_logging_ready = TRUE // Setting up logging now, so disabling early logging
-	#ifndef UNIT_TESTS
+	#if !defined(UNIT_TESTS) && !defined(AUTOWIKI)
 	world.log = file("[GLOB.log_directory]/dd.log")
 	#endif
 	backfill_runtime_log()
@@ -129,7 +128,8 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.round_stats = "[GLOB.log_directory]/round_stats.log"
 	GLOB.scheduler_stats = "[GLOB.log_directory]/round_scheduler_stats.log"
-	GLOB.mutator_logs = "[GLOB.log_directory]/mutator_logs.log"
+	GLOB.mapping_log = "[GLOB.log_directory]/mapping.log"
+	GLOB.strain_logs = "[GLOB.log_directory]/strain_logs.log"
 
 	start_log(GLOB.tgui_log)
 	start_log(GLOB.world_href_log)
@@ -138,7 +138,8 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.round_stats)
 	start_log(GLOB.scheduler_stats)
-	start_log(GLOB.mutator_logs)
+	start_log(GLOB.mapping_log)
+	start_log(GLOB.strain_logs)
 
 	if(fexists(GLOB.config_error_log))
 		fcopy(GLOB.config_error_log, "[GLOB.log_directory]/config_error.log")
@@ -268,7 +269,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 /world/proc/load_tm_message()
 	var/datum/getrev/revdata = GLOB.revdata
-	if(revdata.testmerge.len)
+	if(length(revdata.testmerge))
 		GLOB.current_tms = revdata.GetTestMergeInfo()
 
 /world/proc/update_status()
@@ -321,9 +322,35 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 /world/proc/on_tickrate_change()
 	SStimer.reset_buckets()
 
+/**
+ * Handles incresing the world's maxx var and intializing the new turfs and assigning them to the global area.
+ * If map_load_z_cutoff is passed in, it will only load turfs up to that z level, inclusive.
+ * This is because maploading will handle the turfs it loads itself.
+ */
+/world/proc/increase_max_x(new_maxx, map_load_z_cutoff = maxz)
+	if(new_maxx <= maxx)
+		return
+//	var/old_max = world.maxx
+	maxx = new_maxx
+	if(!map_load_z_cutoff)
+		return
+//	var/area/global_area = GLOB.areas_by_type[world.area] // We're guaranteed to be touching the global area, so we'll just do this
+//	var/list/to_add = block(old_max + 1, 1, 1, maxx, maxy, map_load_z_cutoff)
+//	global_area.contained_turfs += to_add
+
+/world/proc/increase_max_y(new_maxy, map_load_z_cutoff = maxz)
+	if(new_maxy <= maxy)
+		return
+//	var/old_maxy = maxy
+	maxy = new_maxy
+	if(!map_load_z_cutoff)
+		return
+//	var/area/global_area = GLOB.areas_by_type[world.area] // We're guarenteed to be touching the global area, so we'll just do this
+//	var/list/to_add = block(1, old_maxy + 1, 1, maxx, maxy, map_load_z_cutoff)
+//	global_area.contained_turfs += to_add
+
 /world/proc/incrementMaxZ()
 	maxz++
-	//SSmobs.MaxZChanged()
 
 /** For initializing and starting byond-tracy when BYOND_TRACY is defined
  * byond-tracy is a useful profiling tool that allows the user to view the CPU usage and execution time of procs as they run.
@@ -339,13 +366,14 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		else
 			CRASH("unsupported platform")
 
-	var/init = LIBCALL(lib, "init")()
+	var/init = call_ext(lib, "init")()
 	if("0" != init)
 		CRASH("[lib] init error: [init]")
 
 /world/proc/HandleTestRun()
 	// Wait for the game ticker to initialize
 	Master.sleep_offline_after_initializations = FALSE
+	SSticker.start_immediately = TRUE
 	UNTIL(SSticker.initialized)
 
 	//trigger things to run the whole process

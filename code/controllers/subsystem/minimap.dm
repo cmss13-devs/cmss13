@@ -88,8 +88,8 @@ SUBSYSTEM_DEF(minimaps)
 				else if(yval < smallest_y)
 					smallest_y = yval
 
-		minimaps_by_z["[level]"].x_offset = FLOOR((SCREEN_PIXEL_SIZE-largest_x-smallest_x) / MINIMAP_SCALE, 1)
-		minimaps_by_z["[level]"].y_offset = FLOOR((SCREEN_PIXEL_SIZE-largest_y-smallest_y) / MINIMAP_SCALE, 1)
+		minimaps_by_z["[level]"].x_offset = floor((SCREEN_PIXEL_SIZE-largest_x-smallest_x) / MINIMAP_SCALE)
+		minimaps_by_z["[level]"].y_offset = floor((SCREEN_PIXEL_SIZE-largest_y-smallest_y) / MINIMAP_SCALE)
 
 		icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset)
 		icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset)
@@ -182,7 +182,7 @@ SUBSYSTEM_DEF(minimaps)
  * the raw lists are to speed up the Fire() of the subsystem so we dont have to filter through
  * WARNING!
  * There is a byond bug: http://www.byond.com/forum/post/2661309
- * That that forces us to use a seperate list ref when accessing the lists of this datum
+ * That that forces us to use a separate list ref when accessing the lists of this datum
  * Yea it hurts me too
  */
 /datum/hud_displays
@@ -585,6 +585,8 @@ SUBSYSTEM_DEF(minimaps)
 		owner?.client?.remove_from_screen(map)
 		minimap_displayed = FALSE
 
+	UnregisterSignal(target, COMSIG_MOVABLE_Z_CHANGED)
+
 /**
  * Updates the map when the owner changes zlevel
  */
@@ -683,6 +685,7 @@ SUBSYSTEM_DEF(minimaps)
 		user.client.register_map_obj(map_holder.map)
 		ui = new(user, src, "TacticalMap")
 		ui.open()
+		RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(on_mind_transferred))
 
 /datum/tacmap/drawing/tgui_interact(mob/user, datum/tgui/ui)
 	var/mob/living/carbon/xenomorph/xeno = user
@@ -690,6 +693,11 @@ SUBSYSTEM_DEF(minimaps)
 	var/faction = is_xeno ? xeno.hivenumber : user.faction
 	if(faction == FACTION_NEUTRAL && isobserver(user))
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
+
+	if(is_xeno && xeno.hive.see_humans_on_tacmap && targeted_ztrait != ZTRAIT_MARINE_MAIN_SHIP)
+		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_PMC|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
+		targeted_ztrait = ZTRAIT_MARINE_MAIN_SHIP
+		map_holder = null
 
 	new_current_map = get_unannounced_tacmap_data_png(faction)
 	old_map = get_tacmap_data_png(faction)
@@ -721,6 +729,7 @@ SUBSYSTEM_DEF(minimaps)
 			tacmap_ready_time = SSminimaps.next_fire + 2 SECONDS
 			addtimer(CALLBACK(src, PROC_REF(on_tacmap_fire), faction), SSminimaps.next_fire - world.time + 1 SECONDS)
 			user.client.register_map_obj(map_holder.map)
+			RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(on_mind_transferred))
 
 		ui = new(user, src, "TacticalMap")
 		ui.open()
@@ -756,7 +765,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = TRUE
 	data["canViewCanvas"] = FALSE
-	data["isXeno"] = FALSE
+	data["isxeno"] = FALSE
 
 	return data
 
@@ -772,7 +781,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/is_xeno = istype(xeno)
 	var/faction = is_xeno ? xeno.hivenumber : user.faction
 
-	data["isXeno"] = is_xeno
+	data["isxeno"] = is_xeno
 	data["canViewTacmap"] = is_xeno
 	data["canViewCanvas"] = faction == FACTION_MARINE || faction == XENO_HIVE_NORMAL
 
@@ -790,7 +799,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
-	data["isXeno"] = FALSE
+	data["isxeno"] = FALSE
 
 	return data
 
@@ -802,9 +811,12 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
-	data["isXeno"] = TRUE
+	data["isxeno"] = TRUE
 
 	return data
+
+/datum/tacmap/ui_close(mob/user)
+	UnregisterSignal(user.mind, COMSIG_MIND_TRANSFERRED)
 
 /datum/tacmap/drawing/ui_close(mob/user)
 	. = ..()
@@ -893,8 +905,8 @@ SUBSYSTEM_DEF(minimaps)
 					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
 				var/mob/living/carbon/human/human_leader = user
 				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
-				playsound_client(human_leader.client, "sound/effects/sos-morse-code.ogg")
-				notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/sos-morse-code.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = owner)
+				playsound_client(human_leader.client, "sound/effects/data-transmission.ogg")
+				notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = owner)
 			else if(faction == XENO_HIVE_NORMAL)
 				GLOB.xeno_flat_tacmap_data += new_current_map
 				COOLDOWN_START(GLOB, xeno_canvas_cooldown, CANVAS_COOLDOWN_TIME)
@@ -933,6 +945,11 @@ SUBSYSTEM_DEF(minimaps)
 		return UI_CLOSE
 
 	return UI_INTERACTIVE
+
+// This gets removed when the player changes bodies (i.e. xeno evolution), so re-register it when that happens.
+/datum/tacmap/proc/on_mind_transferred(datum/mind/source, mob/previous_body)
+	SIGNAL_HANDLER
+	source.current.client.register_map_obj(map_holder.map)
 
 /datum/tacmap_holder
 	var/map_ref

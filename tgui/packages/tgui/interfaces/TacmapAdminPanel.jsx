@@ -1,7 +1,9 @@
-import { useBackend, useLocalState } from '../backend';
-import { Tabs, Section, Button, Stack, Flex } from '../components';
-import { DrawnMap } from './DrawnMap';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Button, Flex, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
+import { DrawnMap } from './DrawnMap';
 
 const PAGES = [
   {
@@ -18,8 +20,8 @@ const PAGES = [
   },
 ];
 
-export const TacmapAdminPanel = (props, context) => {
-  const { data } = useBackend(context);
+export const TacmapAdminPanel = (props) => {
+  const { data } = useBackend();
   const {
     uscm_map,
     xeno_map,
@@ -37,7 +39,7 @@ export const TacmapAdminPanel = (props, context) => {
     last_update_time,
   } = data;
 
-  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
+  const [pageIndex, setPageIndex] = useState(0);
 
   const PageComponent = PAGES[pageIndex].component();
 
@@ -46,7 +48,8 @@ export const TacmapAdminPanel = (props, context) => {
       width={600}
       height={800}
       theme={pageIndex === 0 ? 'ntos' : 'hive_status'}
-      resizable>
+      resizable
+    >
       <Window.Content scrollable>
         <Stack direction="column" fill>
           <Stack.Item basis="content" grow={0} pb={1}>
@@ -62,7 +65,8 @@ export const TacmapAdminPanel = (props, context) => {
                     color={page.color}
                     selected={i === pageIndex}
                     icon={page.icon}
-                    onClick={() => setPageIndex(i)}>
+                    onClick={() => setPageIndex(i)}
+                  >
                     {page.title}
                   </Tabs.Tab>
                 );
@@ -95,8 +99,8 @@ export const TacmapAdminPanel = (props, context) => {
   );
 };
 
-const FactionPage = (props, context) => {
-  const { act } = useBackend(context);
+const FactionPage = (props) => {
+  const { act } = useBackend();
   const { svg, ckeys, names, times, selected_map, is_uscm } = props;
 
   return (
@@ -105,7 +109,6 @@ const FactionPage = (props, context) => {
       buttons={
         <Button
           icon="fa-solid fa-download"
-          content="Fix Cache"
           tooltip="Attempt to send flat tacmap data for the current selection. Use this if the map is incorrectly a wiki map."
           tooltipPosition="bottom"
           ml={0.5}
@@ -114,16 +117,19 @@ const FactionPage = (props, context) => {
               uscm: is_uscm,
             })
           }
-        />
-      }>
+        >
+          Fix Cache
+        </Button>
+      }
+    >
       {Object(ckeys).map((ckey, ckey_index) => (
         <Flex
           direction="row"
           key={ckey_index}
-          backgroundColor={ckey_index % 2 === 1 ? 'rgba(255,255,255,0.1)' : ''}>
+          backgroundColor={ckey_index % 2 === 1 ? 'rgba(255,255,255,0.1)' : ''}
+        >
           <Flex.Item grow={0} basis="content" mx={0.5} mt={0.8}>
             <Button.Checkbox
-              content="View"
               textAlign="center"
               verticalAlignContent="bottom"
               checked={selected_map === ckey_index}
@@ -134,7 +140,9 @@ const FactionPage = (props, context) => {
                   index: ckey_index,
                 })
               }
-            />
+            >
+              View
+            </Button.Checkbox>
           </Flex.Item>
           <Flex.Item grow={1} align="center" m={1} p={0.2}>
             {names[ckey_index]} ({ckey}) - {times[ckey_index]}
@@ -144,7 +152,6 @@ const FactionPage = (props, context) => {
               icon="trash"
               color="white"
               confirmColor="bad"
-              content="Delete"
               textAlign="center"
               verticalAlignContent="bottom"
               width={6.5}
@@ -155,7 +162,9 @@ const FactionPage = (props, context) => {
                   index: ckey_index,
                 })
               }
-            />
+            >
+              Delete
+            </Button.Confirm>
           </Flex.Item>
         </Flex>
       ))}

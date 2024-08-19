@@ -141,7 +141,15 @@
 			if(length(label) < 3)
 				loaded_pill_bottle.maptext_label = label
 				loaded_pill_bottle.update_icon()
+	else if(href_list["setcolor"])
+		// Checking for state changes
+		if(!loaded_pill_bottle)
+			return
 
+		if(!Adjacent(usr))
+			return
+
+		loaded_pill_bottle.choose_color()
 
 	else if(href_list["close"])
 		close_browser(user, "chemmaster")
@@ -215,7 +223,7 @@
 				return
 
 			if(href_list["createpill_multiple"])
-				count = Clamp(tgui_input_number(user, "Select the number of pills to make. (max: [max_pill_count])", "Pills to make", pillamount, max_pill_count, 1), 0, max_pill_count)
+				count = clamp(tgui_input_number(user, "Select the number of pills to make. (max: [max_pill_count])", "Pills to make", pillamount, max_pill_count, 1), 0, max_pill_count)
 				if(!count)
 					return
 
@@ -240,7 +248,7 @@
 				P.icon_state = "pill"+pillsprite
 				reagents.trans_to(P,amount_per_pill)
 				if(loaded_pill_bottle)
-					if(loaded_pill_bottle.contents.len < loaded_pill_bottle.max_storage_space)
+					if(length(loaded_pill_bottle.contents) < loaded_pill_bottle.max_storage_space)
 						loaded_pill_bottle.handle_item_insertion(P, TRUE)
 						updateUsrDialog()
 
@@ -283,17 +291,15 @@
 				if(!Adjacent(usr) || !usr.put_in_hands(P))
 					P.forceMove(loc)
 		else if(href_list["change_pill"])
-			#define MAX_PILL_SPRITE 20 //max icon state of the pill sprites
 			var/dat = "<table>"
-			for(var/i = 1 to MAX_PILL_SPRITE)
+			for(var/i = 1 to PILL_ICON_CHOICES)
 				dat += "<tr><td><a href=\"?src=\ref[src]&pill_sprite=[i]\"><img src=\"pill[i].png\" /></a></td></tr>"
 			dat += "</table>"
 			show_browser(user, dat, "Change Pill Type", "chem_master")
 			return
 		else if(href_list["change_bottle"])
-			#define MAX_BOTTLE_SPRITE 4 //max icon state of the bottle sprites
 			var/dat = "<table>"
-			for(var/i = 1 to MAX_BOTTLE_SPRITE)
+			for(var/i = 1 to BOTTLE_ICON_CHOICES)
 				dat += "<tr><td><a href=\"?src=\ref[src]&bottle_sprite=[i]\"><img src=\"bottle-[i].png\" /></a></td></tr>"
 			dat += "</table>"
 			show_browser(user, dat, "Change Bottle Type", "chem_master")
@@ -337,16 +343,16 @@
 	if(!(user.client in has_sprites))
 		spawn()
 			has_sprites += user.client
-			for(var/i = 1 to MAX_PILL_SPRITE)
+			for(var/i = 1 to PILL_ICON_CHOICES)
 				user << browse_rsc(icon('icons/obj/items/chemistry.dmi', "pill" + num2text(i)), "pill[i].png")
-			for(var/i = 1 to MAX_BOTTLE_SPRITE)
+			for(var/i = 1 to BOTTLE_ICON_CHOICES)
 				user << browse_rsc(icon('icons/obj/items/chemistry.dmi', "bottle-" + num2text(i)), "bottle-[i].png")
 	var/dat = ""
 	if(!beaker)
 		dat = "Please insert beaker.<BR>"
 		if(pill_maker)
 			if(loaded_pill_bottle)
-				dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject Pill Bottle \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
+				dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject Pill Bottle \[[length(loaded_pill_bottle.contents)]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
 			else
 				dat += "No pill bottle inserted.<BR><BR>"
 		dat += "<A href='?src=\ref[src];close=1'>Close</A>"
@@ -354,9 +360,10 @@
 		dat += "<A href='?src=\ref[src];eject=1;user=\ref[user]'>Eject beaker and Clear Buffer</A><BR><BR>"
 		if(pill_maker)
 			if(loaded_pill_bottle)
-				dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
-				dat += "<A href='?src=\ref[src];addlabelp=1;user=\ref[user]'>Add label to [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
-				dat += "<A href='?src=\ref[src];transferp=1;'>Transfer [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\] to the smartfridge</A><BR><BR>"
+				dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject [loaded_pill_bottle] \[[length(loaded_pill_bottle.contents)]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
+				dat += "<A href='?src=\ref[src];addlabelp=1;user=\ref[user]'>Add label to [loaded_pill_bottle] \[[length(loaded_pill_bottle.contents)]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
+				dat += "<A href='?src=\ref[src];setcolor=1;user=\ref[user]'>Set color to [loaded_pill_bottle] \[[length(loaded_pill_bottle.contents)]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
+				dat += "<A href='?src=\ref[src];transferp=1;'>Transfer [loaded_pill_bottle] \[[length(loaded_pill_bottle.contents)]/[loaded_pill_bottle.max_storage_space]\] to the smartfridge</A><BR><BR>"
 			else
 				dat += "No pill bottle inserted.<BR><BR>"
 		if(!connected && pill_maker)
@@ -425,7 +432,7 @@
 	icon_state = "industry_mixer0"
 	base_state = "industry_mixer"
 	req_skill = SKILL_ENGINEER
-	req_skill_level = SKILL_ENGINEER_ENGI
+	req_skill_level = SKILL_ENGINEER_TRAINED
 	pill_maker = FALSE
 	vial_maker = TRUE
 	max_pill_count = 0

@@ -4,17 +4,28 @@
  * @license MIT
  */
 
-import { useLocalState } from '../backend';
-import { Box, DraggableControl, Icon, Input, Knob, LabeledList, NumberInput, Section, Slider } from '../components';
+import { useState } from 'react';
+
+import {
+  Box,
+  DraggableControl,
+  Icon,
+  Input,
+  Knob,
+  LabeledList,
+  NumberInput,
+  Section,
+  Slider,
+} from '../components';
 
 export const meta = {
   title: 'Input',
   render: () => <Story />,
 };
 
-const Story = (props, context) => {
-  const [number, setNumber] = useLocalState(context, 'number', 0);
-  const [text, setText] = useLocalState(context, 'text', 'Sample text');
+const Story = (props) => {
+  const [number, setNumber] = useState(0);
+  const [text, setText] = useState('Sample text');
   return (
     <Section>
       <LabeledList>
@@ -33,7 +44,7 @@ const Story = (props, context) => {
             value={number}
             minValue={-100}
             maxValue={100}
-            onChange={(e, value) => setNumber(value)}
+            onChange={(value) => setNumber(value)}
           />
         </LabeledList.Item>
         <LabeledList.Item label="NumberInput (onDrag)">
@@ -45,7 +56,7 @@ const Story = (props, context) => {
             value={number}
             minValue={-100}
             maxValue={100}
-            onDrag={(e, value) => setNumber(value)}
+            onDrag={(value) => setNumber(value)}
           />
         </LabeledList.Item>
         <LabeledList.Item label="Slider (onDrag)">
@@ -91,7 +102,8 @@ const Story = (props, context) => {
               dragMatrix={[0, -1]}
               step={1}
               stepPixelSize={5}
-              onDrag={(e, value) => setNumber(value)}>
+              onDrag={(e, value) => setNumber(value)}
+            >
               {(control) => (
                 <Box onMouseDown={control.handleDragStart}>
                   <Icon

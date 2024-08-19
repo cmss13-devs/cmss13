@@ -1,14 +1,12 @@
-import { useBackend, useLocalState } from '../backend';
-import { Flex, Section, Box, Tabs, LabeledList } from '../components';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Box, Flex, LabeledList, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 
-export const ResearchMemories = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [clueCategory, setClueCategory] = useLocalState(
-    context,
-    'clueCategory',
-    0
-  );
+export const ResearchMemories = () => {
+  const { data } = useBackend();
+  const [clueCategory, setClueCategory] = useState(0);
 
   const { clearance, research_credits, theme, clue_categories } = data;
 
@@ -30,7 +28,8 @@ export const ResearchMemories = (props, context) => {
                   color="blue"
                   selected={i === clueCategory}
                   icon={clue_category.icon}
-                  onClick={() => setClueCategory(i)}>
+                  onClick={() => setClueCategory(i)}
+                >
                   {clue_category.name}
                   {!!clue_category.clues.length &&
                     ' (' + clue_category.clues.length + ')'}
@@ -46,7 +45,7 @@ export const ResearchMemories = (props, context) => {
   );
 };
 
-const CluesAdvanced = (props, context) => {
+const CluesAdvanced = (props) => {
   const { clues } = props;
 
   return (
@@ -59,7 +58,8 @@ const CluesAdvanced = (props, context) => {
               className="candystripe"
               justify="space-between"
               px="1rem"
-              py=".5rem">
+              py=".5rem"
+            >
               <Flex.Item>{clue.text}</Flex.Item>
             </Flex>
           );
@@ -69,8 +69,8 @@ const CluesAdvanced = (props, context) => {
   );
 };
 
-const Objectives = (props, context) => {
-  const { data } = useBackend(context);
+const Objectives = (props) => {
+  const { data } = useBackend();
 
   return (
     <Section title="Objectives">
@@ -82,7 +82,8 @@ const Objectives = (props, context) => {
                 <Box
                   color={page.content_color ? page.content_color : 'white'}
                   inline
-                  preserveWhitespace>
+                  preserveWhitespace
+                >
                   {page.content + ' '}
                 </Box>
               )}

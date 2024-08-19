@@ -1,19 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 8;
-	icon_state = "landingstripe"
+	dir = 8
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
 "ab" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
 "ac" = (
 /turf/closed/wall/solaris/reinforced,
@@ -46,177 +39,113 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "ak" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "al" = (
 /obj/item/shard,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "am" = (
 /obj/structure/largecrate/random/barrel,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "an" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2/northwest,
 /area/bigredv2/outside/space_port)
 "ao" = (
 /obj/structure/machinery/disposal,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2/north,
 /area/bigredv2/outside/space_port)
 "ap" = (
 /obj/item/shard,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2/north,
 /area/bigredv2/outside/space_port)
 "aq" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2/north,
 /area/bigredv2/outside/space_port)
 "ar" = (
 /obj/structure/noticeboard{
 	pixel_y = 30
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2/north,
 /area/bigredv2/outside/space_port)
 "as" = (
 /obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2/northeast,
 /area/bigredv2/outside/space_port)
 "at" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/space_port)
 "au" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/space_port)
 "av" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/space_port)
 "aw" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "ax" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "ay" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "az" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aA" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aB" = (
 /obj/structure/filingcabinet,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2/east,
 /area/bigredv2/outside/space_port)
 "aC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "aD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "aE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "aF" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "aG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
 "aI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -226,23 +155,17 @@
 	dir = 1;
 	name = "\improper Spaceport"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aK" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aL" = (
 /obj/structure/surface/table,
@@ -252,28 +175,18 @@
 	name = "Storm Shutters";
 	pixel_x = 32
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2/east,
 /area/bigredv2/outside/space_port)
 "aM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "aN" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port)
 "aO" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port)
 "aP" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -285,114 +198,76 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aQ" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2/west,
 /area/bigredv2/outside/space_port)
 "aR" = (
 /obj/structure/bed/chair/office/dark,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aS" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
 	layer = 3.25
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aT" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2/east,
 /area/bigredv2/outside/space_port)
 "aU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
 "aV" = (
 /obj/structure/largecrate,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "aW" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
 "aX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "aY" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 10;
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2/southwest,
 /area/bigredv2/outside/space_port)
 "aZ" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2,
 /area/bigredv2/outside/space_port)
 "ba" = (
 /obj/structure/surface/table,
 /obj/item/device/radio,
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2,
 /area/bigredv2/outside/space_port)
 "bb" = (
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2,
 /area/bigredv2/outside/space_port)
 "bc" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2,
 /area/bigredv2/outside/space_port)
 "bd" = (
 /obj/structure/surface/table,
 /obj/item/paper,
 /obj/item/tool/pen,
-/turf/open/floor{
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2,
 /area/bigredv2/outside/space_port)
 "be" = (
 /obj/structure/surface/table,
 /obj/item/paper_bin,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "darkgreen2"
-	},
+/turf/open/floor/darkgreen2/southeast,
 /area/bigredv2/outside/space_port)
 "bh" = (
 /turf/closed/wall/solaris/rock,
@@ -401,93 +276,63 @@
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "bj" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_11"
-	},
+/turf/open/mars/mars_dirt_11,
 /area/bigredv2/outside/nw)
 "bk" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "bl" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "bm" = (
-/turf/open/floor{
-	dir = 10;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/nw)
 "bn" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "bo" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "bp" = (
+/obj/item/stack/sheet/metal,
+/obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "bq" = (
 /obj/structure/lz_sign/solaris_sign,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "br" = (
-/turf/open/floor{
-	dir = 6;
-	icon_state = "asteroidwarning"
-	},
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "bs" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_12"
-	},
+/turf/open/mars/mars_dirt_12,
 /area/bigredv2/outside/nw)
 "bt" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_13"
-	},
+/turf/open/mars/mars_dirt_13,
 /area/bigredv2/outside/nw)
 "bu" = (
 /obj/structure/fence,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "bv" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/nw)
 "bw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "bx" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/nw)
 "by" = (
 /obj/effect/decal/cleanable/dirt,
@@ -495,185 +340,117 @@
 /area/bigredv2/outside/nw)
 "bz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "bA" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_10"
-	},
+/turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/nw)
 "bB" = (
 /obj/structure/fence,
-/turf/open/mars{
-	icon_state = "mars_dirt_10"
-	},
+/turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/nw)
 "bC" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars{
-	icon_state = "mars_dirt_11"
-	},
+/turf/open/mars/mars_dirt_11,
 /area/bigredv2/outside/nw)
 "bD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/nw)
 "bE" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/nw)
 "bF" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/nw)
 "bG" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "bH" = (
 /obj/structure/cargo_container/wy/left,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "bI" = (
 /obj/structure/cargo_container/wy/mid,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "bJ" = (
 /obj/structure/cargo_container/wy/right,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "bK" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/nw)
 "bL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "bM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "bN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "bP" = (
 /obj/structure/cargo_container/kelland/left,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "bQ" = (
 /obj/structure/cargo_container/kelland/right,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "bS" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "bT" = (
 /obj/structure/fence,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "bU" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/nw)
 "bV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/nw)
 "bW" = (
 /obj/structure/fence,
-/turf/open/mars{
-	icon_state = "mars_dirt_3"
-	},
+/turf/open/mars/mars_dirt_3,
 /area/bigredv2/outside/nw)
 "bX" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "bY" = (
 /turf/template_noop,
 /area/template_noop)
 "bZ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/nw)
 "ca" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_9"
-	},
+/turf/open/mars/mars_dirt_9,
 /area/bigredv2/outside/nw)
 "cb" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_14"
-	},
+/turf/open/mars/mars_dirt_14,
 /area/bigredv2/outside/nw)
 "cc" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/engineer,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "Dc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -835,7 +612,7 @@ aE
 ak
 aW
 aW
-bm
+bG
 bv
 bv
 bF
@@ -856,7 +633,7 @@ aF
 aM
 aX
 aM
-bo
+bz
 bw
 bz
 bz
@@ -877,7 +654,7 @@ aG
 ab
 ab
 ab
-bp
+bS
 bx
 bx
 bG
@@ -919,7 +696,7 @@ aI
 aP
 aP
 ac
-br
+bn
 bl
 bu
 bE
@@ -940,7 +717,7 @@ aJ
 aQ
 aY
 ac
-bs
+bn
 bs
 bl
 bE
@@ -961,7 +738,7 @@ aA
 aR
 aZ
 ac
-bi
+bo
 bi
 bA
 bE
@@ -982,7 +759,7 @@ aw
 aK
 ba
 ai
-bi
+bX
 bi
 bA
 bE
@@ -1003,7 +780,7 @@ aA
 aA
 bb
 ai
-bi
+bp
 bi
 bB
 bE
@@ -1024,7 +801,7 @@ cc
 aw
 bc
 ai
-bi
+bn
 bi
 bB
 bE
@@ -1045,7 +822,7 @@ aA
 aS
 bd
 ac
-bi
+br
 bi
 bB
 bE
@@ -1066,7 +843,7 @@ aL
 aT
 be
 ac
-bi
+bX
 bi
 bB
 bE

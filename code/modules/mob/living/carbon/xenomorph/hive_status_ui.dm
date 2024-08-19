@@ -137,7 +137,7 @@
 		return UI_INTERACTIVE
 
 	// If the Queen died or is otherwise missing.
-	if(!assoc_hive.living_xeno_queen)
+	if(!assoc_hive.living_xeno_queen && !assoc_hive.allow_no_queen_actions)
 		return UI_CLOSE
 
 /datum/hive_status_ui/ui_data(mob/user)
@@ -201,7 +201,7 @@
 			if(xenoSrc.stat == DEAD)
 				return
 
-			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/queen_give_plasma)
+			var/datum/action/xeno_action/A = get_action(xenoSrc, /datum/action/xeno_action/activable/queen_give_plasma)
 			A?.use_ability_wrapper(xenoTarget)
 
 		if("heal")
@@ -214,7 +214,7 @@
 			if(xenoSrc.stat == DEAD)
 				return
 
-			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/queen_heal)
+			var/datum/action/xeno_action/A = get_action(xenoSrc, /datum/action/xeno_action/activable/queen_heal)
 			A?.use_ability_wrapper(xenoTarget, TRUE)
 
 		if("overwatch")

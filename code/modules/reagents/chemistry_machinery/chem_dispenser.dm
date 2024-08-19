@@ -134,13 +134,13 @@
 /obj/structure/machinery/chem_dispenser/ui_data(mob/user)
 	. = list()
 	.["amount"] = amount
-	.["energy"] = round(chem_storage.energy)
-	.["maxEnergy"] = round(chem_storage.max_energy)
+	.["energy"] = floor(chem_storage.energy)
+	.["maxEnergy"] = floor(chem_storage.max_energy)
 	.["isBeakerLoaded"] = beaker ? 1 : 0
 
 	var/list/beakerContents = list()
 	var/beakerCurrentVolume = 0
-	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
+	if(beaker && beaker.reagents && length(beaker.reagents.reagent_list))
 		for(var/datum/reagent/current_reagent in beaker.reagents.reagent_list)
 			beakerContents += list(list("name" = current_reagent.name, "volume" = current_reagent.volume))  // list in a list because Byond merges the first list...
 			beakerCurrentVolume += current_reagent.volume
@@ -201,9 +201,6 @@
 			. = TRUE
 
 /obj/structure/machinery/chem_dispenser/attackby(obj/item/reagent_container/attacking_object, mob/user)
-	if(isrobot(user))
-		return
-
 	if(istype(attacking_object, /obj/item/reagent_container/glass) || istype(attacking_object, /obj/item/reagent_container/food))
 		if(accept_beaker_only && istype(attacking_object,/obj/item/reagent_container/food))
 			to_chat(user, SPAN_NOTICE("This machine only accepts beakers"))

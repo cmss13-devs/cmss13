@@ -150,7 +150,7 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_HYPERTHERMIC = 1)
 
-/datum/reagent/condensedcapsaicin/reaction_mob(mob/living/M, method=TOUCH, volume)
+/datum/reagent/condensedcapsaicin/reaction_mob(mob/living/M, method=TOUCH, volume, permeable)
 	if(!istype(M, /mob/living) || has_species(M,"Horror"))
 		return
 
@@ -184,7 +184,7 @@
 	id = "sodiumchloride"
 	description = "A salt made of sodium chloride. Commonly used to season food."
 	reagent_state = SOLID
-	color = "#FFFFFF" // rgb: 255,255,255
+	color = COLOR_WHITE
 	chemfiresupp = TRUE
 	intensitymod = 0.1
 	burncolor = "#ffff00"
@@ -227,7 +227,7 @@
 	id = "sprinkles"
 	description = "Multi-colored little bits of sugar, commonly found on donuts. Loved by cops."
 	nutriment_factor = 1 * REAGENTS_METABOLISM
-	color = "#FF00FF" // rgb: 255, 0, 255
+	color = COLOR_MAGENTA
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 	flags = REAGENT_NO_GENERATION
 
@@ -288,7 +288,7 @@
 	description = "The most widely consumed staple food on Earth. Rice is the most important grain with regard to human nutrition and caloric intake."
 	reagent_state = SOLID
 	nutriment_factor = 1 * REAGENTS_METABOLISM
-	color = "#FFFFFF" // rgb: 0, 0, 0
+	color = COLOR_WHITE
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/cherryjelly
@@ -304,6 +304,6 @@
 	name = "Honey"
 	id = "honey"
 	description = "Honey is a natural sweet, viscous food substance composed of mainly fructose and glucose."
-	color = "#FFFF00"
+	color = COLOR_YELLOW
 	chemclass = CHEM_CLASS_RARE
 	flags = REAGENT_NO_GENERATION

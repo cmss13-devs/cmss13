@@ -3,14 +3,14 @@
     "map_path": "map_files/FOP_v2_Cellblocks",
     "map_file": "Prison_Station_FOP.dmm",
     "survivor_types": [
-        "/datum/equipment_preset/survivor/scientist/florina",
-        "/datum/equipment_preset/survivor/doctor/florina",
+        "/datum/equipment_preset/survivor/scientist/fiorina",
+        "/datum/equipment_preset/survivor/doctor/fiorina",
         "/datum/equipment_preset/survivor/interstellar_human_rights_observer",
-        "/datum/equipment_preset/survivor/security/florina",
+        "/datum/equipment_preset/survivor/security/fiorina",
         "/datum/equipment_preset/survivor/prisoner",
         "/datum/equipment_preset/survivor/prisoner",
         "/datum/equipment_preset/survivor/gangleader",
-        "/datum/equipment_preset/survivor/engineer/florina",
+        "/datum/equipment_preset/survivor/engineer/fiorina",
         "/datum/equipment_preset/survivor/clf",
         "/datum/equipment_preset/survivor/civilian"
     ],

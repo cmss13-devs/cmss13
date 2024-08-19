@@ -26,6 +26,10 @@
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
 	attack_delay = -1
 
+	available_strains = list(
+		/datum/xeno_strain/berserker,
+		/datum/xeno_strain/hedgehog,
+	)
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base
 
 	minimum_evolve_time = 15 MINUTES
@@ -45,9 +49,8 @@
 	tier = 3
 	pixel_x = -16
 	old_x = -16
-	mutation_type = RAVAGER_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
-
+	organ_value = 3000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -87,7 +90,7 @@
 /datum/behavior_delegate/ravager_base/melee_attack_additional_effects_self()
 	..()
 
-	var/datum/action/xeno_action/activable/pounce/charge/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/charge)
+	var/datum/action/xeno_action/activable/pounce/charge/cAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/charge)
 	if (!cAction.action_cooldown_check())
 		cAction.reduce_cooldown(slash_charge_cdr)
 

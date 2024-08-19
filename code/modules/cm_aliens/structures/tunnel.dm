@@ -48,7 +48,21 @@
 	if(resin_trap)
 		qdel(resin_trap)
 
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
 	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(hivenumber), "xenotunnel")
+
+/obj/structure/tunnel/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hive.tunnels -= src
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+		hive = GLOB.hive_datum[XENO_HIVE_FORSAKEN]
+		hive.tunnels += src
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /obj/structure/tunnel/Destroy()
 	if(hive)
@@ -115,7 +129,7 @@
 	if(isxeno(usr) && isfriendly(usr) && (usr.loc == src))
 		pick_tunnel(usr)
 	else
-		to_chat(usr, "You stare into the dark abyss" + "[contents.len ? ", making out what appears to be two little lights... almost like something is watching." : "."]")
+		to_chat(usr, "You stare into the dark abyss" + "[length(contents) ? ", making out what appears to be two little lights... almost like something is watching." : "."]")
 
 /obj/structure/tunnel/verb/exit_tunnel_verb()
 	set name = "Exit Tunnel"
@@ -130,15 +144,17 @@
 	if(!istype(X) || X.is_mob_incapacitated(TRUE) || !isfriendly(X) || !hive)
 		return FALSE
 	if(X in contents)
-		var/list/tunnels = list()
-		for(var/obj/structure/tunnel/T in hive.tunnels)
+		var/list/input_tunnels = list()
+
+		var/list/sorted_tunnels = sort_list_dist(hive.tunnels, get_turf(X))
+		for(var/obj/structure/tunnel/T in sorted_tunnels)
 			if(T == src)
 				continue
 			if(!is_ground_level(T.z))
 				continue
 
-			tunnels += list(T.tunnel_desc = T)
-		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", tunnels, theme="hive_status")
+			input_tunnels += list(T.tunnel_desc = T)
+		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", input_tunnels, theme="hive_status")
 		if(!pick)
 			return FALSE
 
@@ -159,9 +175,9 @@
 		if(!do_after(X, tunnel_time, INTERRUPT_NO_NEEDHAND, 0))
 			return FALSE
 
-		var/obj/structure/tunnel/T = tunnels[pick]
+		var/obj/structure/tunnel/T = input_tunnels[pick]
 
-		if(T.contents.len > 2)// max 3 xenos in a tunnel
+		if(length(T.contents) > 2)// max 3 xenos in a tunnel
 			to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 			return FALSE
 		if(!T.loc)
@@ -220,11 +236,11 @@
 		to_chat(M, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
 		return XENO_NO_DELAY_ACTION
 
-	if(!hive.tunnels.len)
+	if(!length(hive.tunnels))
 		to_chat(M, SPAN_WARNING("[src] doesn't seem to lead anywhere."))
 		return XENO_NO_DELAY_ACTION
 
-	if(contents.len > 2)
+	if(length(contents) > 2)
 		to_chat(M, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 		return XENO_NO_DELAY_ACTION
 
@@ -247,7 +263,7 @@
 		to_chat(M, SPAN_WARNING("Our crawling was interrupted!"))
 		return XENO_NO_DELAY_ACTION
 
-	if(hive.tunnels.len) //Make sure other tunnels exist
+	if(length(hive.tunnels)) //Make sure other tunnels exist
 		M.forceMove(src) //become one with the tunnel
 		to_chat(M, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
 		pick_tunnel(M)

@@ -20,11 +20,11 @@
 	has_camera = FALSE
 
 	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
 	)
 
 	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_USCM,
+		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
 
@@ -70,8 +70,8 @@
 /obj/structure/machinery/defenses/tesla_coil/proc/get_target()
 	targets = list()
 
-	for(var/mob/living/M in oview(tesla_range, src))
-		if(M.stat == DEAD || isrobot(M))
+	FOR_DOVIEW(var/mob/living/M, tesla_range, src, HIDE_INVISIBLE_OBSERVER)
+		if(M.stat == DEAD)
 			continue
 		if(HAS_TRAIT(M, TRAIT_CHARGING))
 			to_chat(M, SPAN_WARNING("You ignore some weird noises as you charge."))
@@ -81,10 +81,12 @@
 			continue
 
 		targets += M
+	FOR_DOVIEW_END
 
-	for(var/obj/structure/machinery/defenses/D in oview(tesla_range, src))
+	FOR_DOVIEW(var/obj/structure/machinery/defenses/D, tesla_range, src, HIDE_INVISIBLE_OBSERVER)
 		if(D.turned_on)
 			targets += D
+	FOR_DOVIEW_END
 
 /obj/structure/machinery/defenses/tesla_coil/proc/fire(atoms)
 	if(!(world.time - last_fired >= fire_delay) || !turned_on)
@@ -125,7 +127,7 @@
 	if(!istype(M))
 		return FALSE
 
-	var/list/turf/path = getline2(src, M, include_from_atom = FALSE)
+	var/list/turf/path = get_line(src, M, include_start_atom = FALSE)
 
 	var/blocked = FALSE
 	for(var/turf/T in path)

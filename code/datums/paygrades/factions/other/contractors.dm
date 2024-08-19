@@ -1,38 +1,39 @@
 /datum/paygrade/contractors
 	name = "Contractor Paygrade"
+	fprefix = "VAI"
 	pay_multiplier = 1.5
 
 /datum/paygrade/contractors/standard
-	paygrade = "VAI"
+	paygrade = PAY_SHORT_VAI_S
 	name = "VAI Mercenary"
-	prefix = "VAI"
+	prefix = "Merc."
 
 /datum/paygrade/contractors/med
-	paygrade = "VAI-M"
+	paygrade = PAY_SHORT_VAI_M
 	name = "VAI Medical Specialist"
-	prefix = "VAI MED"
+	prefix = "Med."
 	pay_multiplier = 1.75
 
 /datum/paygrade/contractors/mg
-	paygrade = "VAI-G"
+	paygrade = PAY_SHORT_VAI_G
 	name = "VAI Machinegunner"
-	prefix = "VAI MG"
+	prefix = "MG."
 	pay_multiplier = 1.75
 
 /datum/paygrade/contractors/engi
-	paygrade = "VAI-E"
+	paygrade = PAY_SHORT_VAI_E
 	name = "VAI Engineering Specialist"
-	prefix = "VAI ENG"
+	prefix = "Eng."
 	pay_multiplier = 1.75
 
 /datum/paygrade/contractors/syn
-	paygrade = "VAI-S"
+	paygrade = PAY_SHORT_VAI_SN
 	name = "VAI Synthetic"
-	prefix = "VAI Syn"
 	pay_multiplier = 0
 
 /datum/paygrade/contractors/lead
-	paygrade = "VAI-L"
+	paygrade = PAY_SHORT_VAI_L
 	name = "VAI Team Leader"
-	prefix = "VAI TL"
+	prefix = "TL."
 	pay_multiplier = 2.25
+	officer_grade = GRADE_OFFICER

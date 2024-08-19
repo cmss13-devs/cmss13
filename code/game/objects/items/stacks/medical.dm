@@ -21,7 +21,7 @@
 		to_chat(user, SPAN_DANGER("\The [src] cannot be applied to [M]!"))
 		return 1
 
-	if(!ishuman(user) && !isrobot(user))
+	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return 1
 

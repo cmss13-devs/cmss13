@@ -67,7 +67,7 @@
 
 /obj/item/weapon/gun/energy/emp_act(severity)
 	. = ..()
-	cell.use(round(cell.maxcharge / severity))
+	cell.use(floor(cell.maxcharge / severity))
 	update_icon()
 
 /obj/item/weapon/gun/energy/load_into_chamber()
@@ -117,6 +117,7 @@
 	icon_state = "rxfm5_eva"
 	item_state = "eva"
 	muzzle_flash = "muzzle_laser"
+	muzzle_flash_color = COLOR_LASER_RED
 	fire_sound = 'sound/weapons/Laser4.ogg'
 	w_class = SIZE_MEDIUM
 	gun_category = GUN_CATEGORY_HANDGUN
@@ -174,6 +175,7 @@
 	icon_state = "laz_uzi"
 	item_state = "laz_uzi"
 	muzzle_flash = "muzzle_laser"
+	muzzle_flash_color = COLOR_LASER_RED
 	gun_category = GUN_CATEGORY_SMG
 	flags_equip_slot = SLOT_WAIST
 	charge_cost = 200
@@ -214,6 +216,7 @@
 	charge_icon = "+taser"
 	black_market_value = 20
 	actions_types = list(/datum/action/item_action/taser/change_mode)
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK|GUN_CANT_EXECUTE
 	/// Determines if the taser will hit any target, or if it checks for wanted status. Default is wanted only.
 	var/mode = TASER_MODE_P
 	var/skilllock = SKILL_POLICE_SKILLED
@@ -268,6 +271,7 @@
 
 
 /datum/action/item_action/taser/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/energy/taser/taser = holder_item
 	if(!ishuman(owner))
 		return

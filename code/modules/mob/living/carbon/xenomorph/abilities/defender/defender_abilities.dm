@@ -20,6 +20,13 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 4 SECONDS
 
+	var/base_damage = 30
+	var/usable_while_fortified = FALSE
+
+/datum/action/xeno_action/activable/headbutt/steel_crest
+	base_damage = 37.5
+	usable_while_fortified = TRUE
+
 /datum/action/xeno_action/onclick/tail_sweep
 	name = "Tail Sweep"
 	action_icon_state = "tail_sweep"
@@ -41,8 +48,9 @@
 
 	/// Extra armor when fortified and facing bullets.
 	var/frontal_armor = 5
-	/// Extra armor when steelcrest, fortified, and facing bullets.
-	var/steelcrest_frontal_armor = 15
+
+/datum/action/xeno_action/activable/fortify/steel_crest
+	frontal_armor = 15
 
 /datum/action/xeno_action/activable/tail_stab/slam
 	name = "Tail Slam"

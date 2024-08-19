@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(xevolution)
 			//Add on any bonuses from thie hivecore after applying upgrade progress
 			boost_power_new += (0.5 * HS.has_special_structure(XENO_STRUCTURE_CORE))
 
-		boost_power_new = Clamp(boost_power_new, BOOST_POWER_MIN, BOOST_POWER_MAX)
+		boost_power_new = clamp(boost_power_new, BOOST_POWER_MIN, BOOST_POWER_MAX)
 
 		boost_power_new += HS.evolution_bonus
 		if(!force_boost_power)

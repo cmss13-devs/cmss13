@@ -49,13 +49,13 @@
 	var/string_paygrade = preset.load_rank(target)
 	var/datum/paygrade/paygrade_datum = GLOB.paygrades[string_paygrade]
 	if(paygrade_datum?.ranking > maximum_ranking)
-		to_chat(target, SPAN_WARNING("Your paygrade is too high for you to be able to recieve the lisping trait."))
+		to_chat(target, SPAN_WARNING("Your paygrade is too high for you to be able to receive the lisping trait."))
 		return
 	if(target.job in inapplicable_roles)
-		to_chat(target, SPAN_WARNING("Your office is too high for you to be able to recieve the lisping trait."))
+		to_chat(target, SPAN_WARNING("Your office is too high for you to be able to receive the lisping trait."))
 		return
 	if(target.species.group in inapplicable_species)
-		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to recieve the lisping trait."))
+		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to receive the lisping trait."))
 		return
 
 	ADD_TRAIT(target, TRAIT_LISPING, ROUNDSTART_TRAIT)
@@ -82,17 +82,17 @@
 /datum/character_trait/biology/bad_leg/New()
 	. = ..()
 	// Not on definition as several lists are added
-	inapplicable_roles = list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL, JOB_ORDNANCE_TECH, JOB_MARINE) + JOB_SQUAD_ROLES_LIST + JOB_MARINE_RAIDER_ROLES_LIST + JOB_ERT_GRUNT_LIST
+	inapplicable_roles = list(JOB_CAS_PILOT, JOB_DROPSHIP_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_TANK_CREW, JOB_INTEL, JOB_ORDNANCE_TECH, JOB_MARINE) + JOB_SQUAD_ROLES_LIST + JOB_MARINE_RAIDER_ROLES_LIST + JOB_ERT_GRUNT_LIST
 	bad_cane_roles = list(JOB_SURVIVOR, JOB_STOWAWAY)
 	fancy_cane_roles = list(JOB_CO_SURVIVOR, CORPORATE_SURVIVOR, JOB_CMO, JOB_CORPORATE_LIAISON, JOB_SEA, JOB_CHIEF_ENGINEER) + JOB_COMMAND_ROLES_LIST
 	inapplicable_species = list(SPECIES_SYNTHETIC, SPECIES_YAUTJA)
 
 /datum/character_trait/biology/bad_leg/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
 	if(target.job in inapplicable_roles)
-		to_chat(target, SPAN_WARNING("Your office is too combat-geared for you to be able to recieve the bad leg trait."))
+		to_chat(target, SPAN_WARNING("Your office is too combat-geared for you to be able to receive the bad leg trait."))
 		return
 	if(target.species.group in inapplicable_species)
-		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to recieve the bad leg trait."))
+		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to receive the bad leg trait."))
 		return
 
 	target.AddComponent(/datum/component/bad_leg)
@@ -129,4 +129,18 @@
 
 /datum/character_trait/biology/hardcore/unapply_trait(mob/living/carbon/human/target)
 	REMOVE_TRAIT(target, TRAIT_HARDCORE, ROUNDSTART_TRAIT)
+	..()
+
+/datum/character_trait/biology/iron_teeth
+	trait_name = "Iron Teeth"
+	trait_desc = "You've got iron teeth or really good dental insurance. Items in your face slot won't fall out when you go down."
+	applyable = TRUE
+	cost = 1
+
+/datum/character_trait/biology/iron_teeth/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
+	ADD_TRAIT(target, TRAIT_IRON_TEETH, ROUNDSTART_TRAIT)
+	..()
+
+/datum/character_trait/biology/iron_teeth/unapply_trait(mob/living/carbon/human/target)
+	REMOVE_TRAIT(target, TRAIT_IRON_TEETH, ROUNDSTART_TRAIT)
 	..()

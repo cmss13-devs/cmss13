@@ -1,12 +1,14 @@
-import { MfdProps, MfdPanel } from './MultifunctionDisplay';
-import { Box, Divider, Flex, Stack } from '../../components';
-import { useBackend, useLocalState } from '../../backend';
 import { range } from 'common/collections';
+import { useState } from 'react';
+
+import { useBackend } from '../../backend';
+import { Box, Divider, Flex, Stack } from '../../components';
 import { Icon } from '../../components';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
 import { MedevacContext, MedevacTargets } from './types';
 
-const MedevacOccupant = (props: { data: MedevacTargets }) => (
+const MedevacOccupant = (props: { readonly data: MedevacTargets }) => (
   <Box>
     <Flex justify="space-between" direction="horizontal">
       <Flex.Item grow>
@@ -16,7 +18,7 @@ const MedevacOccupant = (props: { data: MedevacTargets }) => (
         </Stack>
       </Flex.Item>
       <Flex.Item grow>
-        <Flex fill justify="space-around">
+        <Flex fill={1} justify="space-around">
           <Flex.Item>
             HP
             <br />
@@ -47,19 +49,14 @@ const MedevacOccupant = (props: { data: MedevacTargets }) => (
   </Box>
 );
 
-export const MedevacMfdPanel = (props: MfdProps, context) => {
-  const [medevacOffset, setMedevacOffset] = useLocalState(
-    context,
-    `${props.panelStateId}_medevacoffset`,
-    0
-  );
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const { equipmentState } = useEquipmentState(context, props.panelStateId);
-
-  const { data, act } = useBackend<MedevacContext>(context);
+export const MedevacMfdPanel = (props: MfdProps) => {
+  const { data, act } = useBackend<MedevacContext>();
+  const [medevacOffset, setMedevacOffset] = useState(0);
+  const { setPanelState } = mfdState(props.panelStateId);
+  const { equipmentState } = useEquipmentState(props.panelStateId);
 
   const result = data.equipment_data.find(
-    (x) => x.mount_point === equipmentState
+    (x) => x.mount_point === equipmentState,
   );
   const medevacs = data.medevac_targets === null ? [] : data.medevac_targets;
   const medevac_mapper = (x: number) => {
@@ -75,16 +72,17 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
   };
 
   const left_targets = range(medevacOffset, medevacOffset + 5).map(
-    medevac_mapper
+    medevac_mapper,
   );
 
   const right_targets = range(medevacOffset + 5, medevacOffset + 8).map(
-    medevac_mapper
+    medevac_mapper,
   );
 
   const all_targets = range(medevacOffset, medevacOffset + 8)
     .map((x) => data.medevac_targets[x])
     .filter((x) => x !== undefined);
+
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -93,7 +91,7 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
         {
           children: <Icon name="arrow-up" />,
           onClick: () => {
-            if (medevacOffset >= 1) {
+            if (medevacOffset > 0) {
               setMedevacOffset(medevacOffset - 1);
             }
           },
@@ -109,52 +107,50 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
         },
       ]}
       topButtons={[
-        {
-          children: 'EQUIP',
-          onClick: () => setPanelState('equipment'),
-        },
+        { children: 'EQUIP', onClick: () => setPanelState('equipment') },
       ]}
       bottomButtons={[
         {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}>
+      ]}
+    >
       <Box className="NavigationMenu">
         <Flex justify="space-between">
           <Flex.Item>
             <svg width="60px">
               {all_targets.length > 0 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 50 50 l -20 0 l -20 -20 l -20 0"
                 />
               )}
               {all_targets.length > 1 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 50 100 l -20 0 l -20 30 l -20 0"
                 />
               )}
               {all_targets.length > 2 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 50 155 l -20 0 l -20 80 l -20 0"
                 />
               )}
               {all_targets.length > 3 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 50 210 l -20 0 l -20 120 l -20 0"
                 />
               )}
               {all_targets.length > 4 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 50 260 l -20 0 l -20 170 l -20 0"
                 />
@@ -168,7 +164,7 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
               </Stack.Item>
               {all_targets.map((x) => (
                 <>
-                  <Stack.Item key={x.occupant} width="100%">
+                  <Stack.Item key={x.occupant} width="100%" minHeight="32px">
                     <MedevacOccupant data={x} />
                   </Stack.Item>
                   <Divider />
@@ -180,21 +176,21 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
             <svg width="60px">
               {all_targets.length > 5 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 0 310 l 20 0 l 20 -180 l 20 0"
                 />
               )}
               {all_targets.length > 6 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 0 360 l 20 0 l 20 -130 l 20 0"
                 />
               )}
               {all_targets.length > 7 && (
                 <path
-                  fill-opacity="0"
+                  fillOpacity="0"
                   stroke="#00e94e"
                   d="M 0 410 l 20 0 l 20 -80 l 20 0"
                 />

@@ -5,23 +5,24 @@
 	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "kit_case"
 	w_class = SIZE_HUGE
-	storage_slots = 4
+	storage_slots = 7
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	foldable = null
 
 /obj/item/storage/box/m56_system/Initialize()
 	. = ..()
-	new /obj/item/clothing/glasses/night/m56_goggles(src)
-	new /obj/item/weapon/gun/smartgun(src)
-	new /obj/item/smartgun_battery(src)
 	new /obj/item/clothing/suit/storage/marine/smartgunner(src)
+	new /obj/item/weapon/gun/smartgun(src)
+	new /obj/item/clothing/glasses/night/m56_goggles(src)
+	new /obj/item/smartgun_battery(src)
+	for(var/i in 1 to 3)
+		new /obj/item/ammo_magazine/smartgun(src)
 	update_icon()
 
 /obj/item/storage/box/m56_system/update_icon()
-	if(overlays.len)
-		overlays.Cut()
-	if(contents.len)
+	LAZYCLEARLIST(overlays)
+	if(length(contents))
 		icon_state = "kit_case"
 		overlays += image(icon, "smartgun")
 	else
@@ -48,9 +49,8 @@
 	update_icon()
 
 /obj/item/storage/box/m56c_system/update_icon()
-	if(overlays.len)
-		overlays.Cut()
-	if(contents.len)
+	LAZYCLEARLIST(overlays)
+	if(length(contents))
 		icon_state = "kit_case"
 		overlays += image(icon, "smartgun")
 	else
@@ -78,9 +78,8 @@
 	update_icon()
 
 /obj/item/storage/box/m56_dirty_system/update_icon()
-	if(overlays.len)
-		overlays.Cut()
-	if(contents.len)
+	LAZYCLEARLIST(overlays)
+	if(length(contents))
 		icon_state = "kit_case"
 		overlays += image(icon, "smartgun")
 	else

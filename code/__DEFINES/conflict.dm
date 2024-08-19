@@ -54,24 +54,25 @@
 #define GUN_TRIGGER_SAFETY (1<<1)
 #define GUN_UNUSUAL_DESIGN (1<<2)
 #define GUN_SILENCED (1<<3)
+#define GUN_CANT_EXECUTE (1<<4)
 ///If checking for ammo with current.mag you have to check it against numerical values, as booleans will not trigger.
-#define GUN_INTERNAL_MAG (1<<4)
-#define GUN_AUTO_EJECTOR (1<<5)
-#define GUN_AMMO_COUNTER (1<<6)
-#define GUN_BURST_FIRING (1<<7)
-#define GUN_FLASHLIGHT_ON (1<<8)
-#define GUN_WY_RESTRICTED (1<<9)
-#define GUN_SPECIALIST (1<<10)
-#define GUN_WIELDED_FIRING_ONLY (1<<11)
+#define GUN_INTERNAL_MAG (1<<5)
+#define GUN_AUTO_EJECTOR (1<<6)
+#define GUN_AMMO_COUNTER (1<<7)
+#define GUN_BURST_FIRING (1<<8)
+#define GUN_FLASHLIGHT_ON (1<<9)
+#define GUN_WY_RESTRICTED (1<<10)
+#define GUN_SPECIALIST (1<<11)
+#define GUN_WIELDED_FIRING_ONLY (1<<12)
 /// removes unwielded accuracy and scatter penalties (not recoil)
-#define GUN_ONE_HAND_WIELDED (1<<12)
-#define GUN_ANTIQUE (1<<13)
+#define GUN_ONE_HAND_WIELDED (1<<13)
+#define GUN_ANTIQUE (1<<14)
 /// Whether the gun has been fired by its current user (reset upon `dropped()`)
-#define GUN_RECOIL_BUILDUP (1<<14)
+#define GUN_RECOIL_BUILDUP (1<<15)
 /// support weapon, bipod will grant autofire
-#define GUN_SUPPORT_PLATFORM (1<<15)
+#define GUN_SUPPORT_PLATFORM (1<<16)
 /// No gun description, only base desc
-#define GUN_NO_DESCRIPTION (1<<16)
+#define GUN_NO_DESCRIPTION (1<<17)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 #define USES_STREAKS (1<<0)
@@ -141,8 +142,8 @@
 #define WIELD_DELAY_VERY_SLOW 10
 #define WIELD_DELAY_HORRIBLE 12
 
-///This is how long you must wait after throwing something to throw again
-#define THROW_DELAY (0.4 SECONDS)
+///This is how long you must wait to throw again after throwing two things
+#define THROW_DELAY (1.5 SECONDS)
 
 //Explosion level thresholds. Upper bounds
 #define EXPLOSION_THRESHOLD_VLOW 50

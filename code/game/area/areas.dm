@@ -27,7 +27,6 @@
 
 	var/unique = TRUE
 
-	var/has_gravity = 1
 // var/list/lights // list of all lights on this area
 	var/list/all_doors = list() //Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/air_doors_activated = 0
@@ -66,7 +65,7 @@
 	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets
 	var/requires_power = 1
 	var/unlimited_power = 0
-	var/always_unpowered = 0 //this gets overriden to 1 for space in area/New()
+	var/always_unpowered = 0 //this gets overridden to 1 for space in area/New()
 
 	//which channels are powered
 	var/power_equip = TRUE
@@ -104,12 +103,6 @@
 	if(is_mainship_level(z))
 		GLOB.ship_areas += src
 
-	if(base_lighting_alpha)
-		return INITIALIZE_HINT_ROUNDSTART
-
-/area/LateInitialize()
-	. = ..()
-
 	update_base_lighting()
 
 /area/proc/initialize_power(override_power)
@@ -142,12 +135,6 @@
 					C.network.Remove(CAMERA_NET_POWER_ALARMS)
 				else
 					C.network.Add(CAMERA_NET_POWER_ALARMS)
-			for (var/mob/living/silicon/aiPlayer in GLOB.ai_mob_list)
-				if(aiPlayer.z == source.z)
-					if (state == 1)
-						aiPlayer.cancelAlarm("Power", src, source)
-					else
-						aiPlayer.triggerAlarm("Power", src, cameras, source)
 			for(var/obj/structure/machinery/computer/station_alert/a in GLOB.machines)
 				if(a.z == source.z)
 					if(state == 1)
@@ -173,8 +160,6 @@
 		if (danger_level < 2 && atmosalm >= 2)
 			for(var/obj/structure/machinery/camera/C in src)
 				C.network.Remove(CAMERA_NET_ATMOSPHERE_ALARMS)
-			for(var/mob/living/silicon/aiPlayer in GLOB.ai_mob_list)
-				aiPlayer.cancelAlarm("Atmosphere", src, src)
 			for(var/obj/structure/machinery/computer/station_alert/a in GLOB.machines)
 				a.cancelAlarm("Atmosphere", src, src)
 
@@ -184,8 +169,6 @@
 			for(var/obj/structure/machinery/camera/C in src)
 				cameras += C
 				C.network.Add(CAMERA_NET_ATMOSPHERE_ALARMS)
-			for(var/mob/living/silicon/aiPlayer in GLOB.ai_mob_list)
-				aiPlayer.triggerAlarm("Atmosphere", src, cameras, src)
 			for(var/obj/structure/machinery/computer/station_alert/a in GLOB.machines)
 				a.triggerAlarm("Atmosphere", src, cameras, src)
 			air_doors_close()
@@ -235,8 +218,6 @@
 		for (var/obj/structure/machinery/camera/C in src)
 			cameras.Add(C)
 			C.network.Add(CAMERA_NET_FIRE_ALARMS)
-		for (var/mob/living/silicon/ai/aiPlayer in GLOB.ai_mob_list)
-			aiPlayer.triggerAlarm("Fire", src, cameras, src)
 		for (var/obj/structure/machinery/computer/station_alert/a in GLOB.machines)
 			a.triggerAlarm("Fire", src, cameras, src)
 
@@ -253,8 +234,6 @@
 					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 		for (var/obj/structure/machinery/camera/C in src)
 			C.network.Remove(CAMERA_NET_FIRE_ALARMS)
-		for (var/mob/living/silicon/ai/aiPlayer in GLOB.ai_mob_list)
-			aiPlayer.cancelAlarm("Fire", src, src)
 		for (var/obj/structure/machinery/computer/station_alert/a in GLOB.machines)
 			a.cancelAlarm("Fire", src, src)
 
@@ -400,42 +379,6 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	if(istype(M))
 		use_power(-M.calculate_current_power_usage(), M.power_channel)
-
-/area/proc/gravitychange(gravitystate = 0, area/A)
-
-	A.has_gravity = gravitystate
-
-	if(gravitystate)
-		for(var/mob/living/carbon/human/M in A)
-			thunk(M)
-		for(var/mob/M1 in A)
-			M1.make_floating(0)
-	else
-		for(var/mob/M in A)
-			if(M.Check_Dense_Object() && istype(src,/mob/living/carbon/human/))
-				var/mob/living/carbon/human/H = src
-				if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING))  //magboots + dense_object = no floaty effect
-					H.make_floating(0)
-				else
-					H.make_floating(1)
-			else
-				M.make_floating(1)
-
-/area/proc/thunk(M)
-	if(istype(get_turf(M), /turf/open/space)) // Can't fall onto nothing.
-		return
-
-	if(istype(M,/mob/living/carbon/human/))  // Only humans can wear magboots, so we give them a chance to.
-		var/mob/living/carbon/human/H = M
-		if((istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
-			return
-		H.adjust_effect(5, STUN)
-		H.adjust_effect(5, WEAKEN)
-
-	to_chat(M, "Gravity!")
-
-
-
 
 //atmos related procs
 

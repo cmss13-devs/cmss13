@@ -10,7 +10,7 @@
 /proc/job_slot_formula(marine_count, factor, c, min, max)
 	if(marine_count <= factor)
 		return min
-	return round(Clamp((marine_count/factor)+c, min, max))
+	return floor(clamp((marine_count/factor)+c, min, max))
 
 /proc/medic_slot_formula(playercount)
 	return job_slot_formula(playercount,40,1,3,5)

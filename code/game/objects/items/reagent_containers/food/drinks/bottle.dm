@@ -93,7 +93,7 @@
 /obj/item/reagent_container/food/drinks/bottle/attackby(obj/item/I, mob/living/user)
 	if(!isGlass || !istype(I, /obj/item/paper))
 		return ..()
-	if(!reagents || !reagents.reagent_list.len)
+	if(!reagents || !length(reagents.reagent_list))
 		to_chat(user, SPAN_NOTICE("\The [src] is empty..."))
 		return
 	var/alcohol_potency = 0
@@ -107,7 +107,7 @@
 	if(alcohol_potency < BURN_LEVEL_TIER_1)
 		to_chat(user, SPAN_NOTICE("There's not enough flammable liquid in \the [src]!"))
 		return
-	alcohol_potency = Clamp(alcohol_potency, BURN_LEVEL_TIER_1, BURN_LEVEL_TIER_7)
+	alcohol_potency = clamp(alcohol_potency, BURN_LEVEL_TIER_1, BURN_LEVEL_TIER_7)
 
 	if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return

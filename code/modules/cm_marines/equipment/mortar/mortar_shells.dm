@@ -8,6 +8,8 @@
 	var/datum/cause_data/cause_data
 	ground_offset_x = 7
 	ground_offset_y = 6
+	/// is it currently on fire and about to explode?
+	var/burning = FALSE
 
 
 /obj/item/mortar_shell/Destroy()
@@ -110,7 +112,7 @@
 	icon_state = initial(icon_state)
 
 /obj/item/mortar_shell/custom/attackby(obj/item/W as obj, mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
 		return
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
@@ -153,6 +155,55 @@
 		to_chat(user, SPAN_DANGER("You add [W] to [name]."))
 		icon_state = initial(icon_state) +"_unlocked"
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+
+/obj/item/mortar_shell/ex_act(severity, explosion_direction)
+	if(!burning)
+		return ..()
+
+/obj/item/mortar_shell/attack_hand(mob/user)
+	if(burning)
+		to_chat(user, SPAN_DANGER("[src] is on fire and might explode!"))
+		return
+	return ..()
+
+/obj/item/mortar_shell/flamer_fire_act(dam, datum/cause_data/flame_cause_data)
+	addtimer(VARSET_CALLBACK(src, burning, FALSE), 5 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
+	
+	if(burning)
+		return
+	burning = TRUE
+	cause_data = create_cause_data("Burning Mortar Shell", flame_cause_data.resolve_mob(), src)
+	handle_fire(cause_data)
+
+/obj/item/mortar_shell/proc/can_explode()
+	return TRUE
+
+/obj/item/mortar_shell/custom/can_explode()
+	for(var/obj/item/reagent_container/glass/container in warhead?.containers)
+		for(var/datum/reagent/reagent in container?.reagents?.reagent_list)
+			if(reagent.explosive)
+				return TRUE
+
+	return FALSE
+
+/obj/item/mortar_shell/flare/can_explode()
+	return FALSE
+
+/obj/item/mortar_shell/proc/handle_fire(cause_data)
+	if(can_explode())
+		visible_message(SPAN_WARNING("[src] catches on fire and starts cooking off! It's gonna blow!"))
+		anchored = TRUE // don't want other explosions launching it elsewhere
+		var/datum/effect_system/spark_spread/sparks = new()
+		sparks.set_up(n = 10, loca = loc)
+		sparks.start()
+		new /obj/effect/warning/explosive(loc, 5 SECONDS)
+
+		addtimer(CALLBACK(src, PROC_REF(explode), cause_data), 5 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.5 SECONDS)
+		
+
+/obj/item/mortar_shell/proc/explode(flame_cause_data)
+	cell_explosion(src, 100, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, flame_cause_data)
 
 /obj/structure/closet/crate/secure/mortar_ammo
 	name = "\improper M402 mortar ammo crate"

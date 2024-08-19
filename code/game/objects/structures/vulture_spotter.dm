@@ -87,7 +87,7 @@
 	if(user.client)
 		RegisterSignal(user.client, COMSIG_PARENT_QDELETING, PROC_REF(do_unscope))
 		user.client.change_view(scope_zoom, src)
-	RegisterSignal(user, list(COMSIG_MOB_PICKUP_ITEM, COMSIG_MOB_RESISTED), PROC_REF(do_unscope))
+	RegisterSignal(user, list(COMSIG_MOB_PICKUP_ITEM, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION), PROC_REF(do_unscope))
 	user.see_in_dark += darkness_view
 	user.lighting_alpha = 127
 	user.sync_lighting_plane_alpha()
@@ -183,7 +183,10 @@
 	unscope()
 	scope_attached = FALSE
 	desc = initial(desc) + " Though, it doesn't seem to have one attached yet."
-	new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
+	if(skillless)
+		new /obj/item/device/vulture_spotter_scope/skillless(get_turf(src), bound_rifle)
+	else
+		new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
 
 /// Handler for user folding up the tripod, picking it up
 /obj/structure/vulture_spotter_tripod/proc/fold_up(mob/user)
@@ -234,7 +237,7 @@
 		user.lighting_alpha = user.default_lighting_alpha
 		user.sync_lighting_plane_alpha()
 		user.clear_fullscreen("vulture_spotter")
-		UnregisterSignal(user, list(COMSIG_MOB_PICKUP_ITEM, COMSIG_MOB_RESISTED))
+		UnregisterSignal(user, list(COMSIG_MOB_PICKUP_ITEM, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION))
 		user.pixel_x = 0
 		user.pixel_y = 0
 		if(user.client)
@@ -295,6 +298,10 @@
 
 	return rifle.attachments["rail"]
 
+/obj/structure/vulture_spotter_tripod/check_eye(mob/living/user)
+	if((user.body_position != STANDING_UP) || (get_dist(user, src) > 0) || user.is_mob_incapacitated() || !user.client)
+		do_unscope()
+
 /datum/action/vulture_tripod_unscope
 	name = "Stop Using Scope"
 	action_icon_state = "vulture_tripod_close"
@@ -306,6 +313,7 @@
 	tripod = WEAKREF(spotting_tripod)
 
 /datum/action/vulture_tripod_unscope/action_activate()
+	. = ..()
 	if(!tripod)
 		return
 

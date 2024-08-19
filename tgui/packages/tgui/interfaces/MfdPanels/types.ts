@@ -1,8 +1,9 @@
-import { InfernoNode } from 'inferno';
+import { ReactNode } from 'react';
+
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
 
 export interface ButtonProps {
-  children?: InfernoNode;
+  children?: ReactNode;
   onClick?: () => void;
 }
 
@@ -66,11 +67,16 @@ export type SentrySpec = {
   kills: number;
   iff_status: string[];
   camera_available: number;
-  deployed: number;
+  deployed: 0 | 1;
 };
 
 export type SpotlightSpec = {
   name: string;
+};
+
+export type ParadropSpec = {
+  signal: string | null;
+  locked: 0 | 1;
 };
 
 export type MGSpec = {

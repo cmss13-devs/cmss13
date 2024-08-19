@@ -1,9 +1,9 @@
 import { useBackend } from '../backend';
-import { Button, Stack, Section, NoticeBox } from '../components';
+import { Button, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
-export const SquadMod = (props, context) => {
-  const { act, data } = useBackend(context);
+export const SquadMod = (props) => {
+  const { act, data } = useBackend();
   const { squads = [], human, id_name, has_id } = data;
   return (
     <Window width={400} height={300}>
@@ -11,12 +11,9 @@ export const SquadMod = (props, context) => {
         <Section>
           <Stack vertical>
             <Stack.Item>
-              <Button
-                fluid
-                icon="eject"
-                content={id_name}
-                onClick={() => act('PRG_eject')}
-              />
+              <Button fluid icon="eject" onClick={() => act('PRG_eject')}>
+                {id_name}
+              </Button>
             </Stack.Item>
             {!has_id && (
               <Stack.Item>
@@ -45,14 +42,15 @@ export const SquadMod = (props, context) => {
               <Button
                 key={entry.name}
                 fluid
-                content={entry.name}
                 backgroundColor={entry.color}
                 onClick={() =>
                   act('PRG_squad', {
                     name: entry.name,
                   })
                 }
-              />
+              >
+                {entry.name}
+              </Button>
             ))}
           </Section>
         )}

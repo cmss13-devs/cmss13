@@ -10,10 +10,8 @@
 	pixel_x = -32;
 	tag = "back_right"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_10"
-	},
-/area/vehicle/van)
+/turf/open/shuttle/vehicle/floor_1_10,
+/area/interior/vehicle/van)
 "e" = (
 /obj/structure/interior_wall/van{
 	icon_state = "background_1"
@@ -35,10 +33,8 @@
 	alpha = 100;
 	pixel_y = -2
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_1"
-	},
-/area/vehicle/van)
+/turf/open/shuttle/vehicle/floor_1_1,
+/area/interior/vehicle/van)
 "i" = (
 /obj/structure/interior_wall/van{
 	icon_state = "front_1"
@@ -68,10 +64,8 @@
 /obj/effect/vehicle_roof/van{
 	icon_state = "roof_3"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_8"
-	},
-/area/vehicle/van)
+/turf/open/shuttle/vehicle/floor_1_8,
+/area/interior/vehicle/van)
 "r" = (
 /obj/structure/interior_wall/van{
 	icon_state = "background_3"
@@ -91,10 +85,8 @@
 	pixel_x = -32;
 	tag = "back_left"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_7"
-	},
-/area/vehicle/van)
+/turf/open/shuttle/vehicle/floor_1_7,
+/area/interior/vehicle/van)
 "t" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
@@ -112,10 +104,8 @@
 /obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
 	icon_state = "windshield_viewport_bottom"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_11"
-	},
-/area/vehicle/van)
+/turf/open/shuttle/vehicle/floor_3_11,
+/area/interior/vehicle/van)
 "v" = (
 /obj/structure/interior_wall/van{
 	icon_state = "interior_door"
@@ -146,13 +136,10 @@
 	tag = "right"
 	},
 /obj/structure/bed/chair/comfy{
-	dir = 4;
-	icon_state = "comfychair"
+	dir = 4
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_12"
-	},
-/area/vehicle/van)
+/turf/open/shuttle/vehicle/floor_3_12,
+/area/interior/vehicle/van)
 "z" = (
 /obj/structure/interior_wall/van{
 	icon_state = "back_1"
@@ -178,10 +165,8 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_9"
-	},
-/area/vehicle/van)
+/turf/open/shuttle/vehicle/floor_1_9,
+/area/interior/vehicle/van)
 "J" = (
 /obj/structure/interior_wall/van{
 	alpha = 50;
@@ -199,10 +184,8 @@
 /obj/effect/vehicle_roof/van{
 	icon_state = "roof_2"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_2"
-	},
-/area/vehicle/van)
+/turf/open/shuttle/vehicle/floor_1_2,
+/area/interior/vehicle/van)
 "O" = (
 /turf/open/void/vehicle,
 /area/space)

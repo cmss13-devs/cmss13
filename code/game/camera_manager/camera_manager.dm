@@ -6,7 +6,7 @@
 /datum/component/camera_manager
 	var/map_name
 	var/obj/structure/machinery/camera/current
-	var/datum/shape/rectangle/current_area
+	var/datum/shape/current_area
 	var/atom/movable/screen/map_view/cam_screen
 	var/atom/movable/screen/background/cam_background
 	var/list/range_turfs = list()
@@ -25,13 +25,16 @@
 	. = ..()
 	map_name = "camera_manager_[REF(src)]_map"
 	cam_screen = new
+	cam_screen.icon = null
 	cam_screen.name = "screen"
 	cam_screen.assigned_map = map_name
 	cam_screen.del_on_map_removal = FALSE
 	cam_screen.screen_loc = "[map_name]:1,1"
+	cam_screen.appearance_flags |= TILE_BOUND
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
+	cam_background.appearance_flags |= TILE_BOUND
 
 	cam_plane_masters = list()
 	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
@@ -42,14 +45,17 @@
 	. = ..()
 	range_turfs = null
 	current_area = null
-	cam_plane_masters = null
+	QDEL_LIST_ASSOC_VAL(cam_plane_masters)
 	QDEL_NULL(cam_background)
 	QDEL_NULL(cam_screen)
 	if(current)
 		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
+	current = null
+	last_camera_turf = null
 
 /datum/component/camera_manager/proc/add_plane(atom/movable/screen/plane_master/instance)
 	instance.assigned_map = map_name
+	instance.appearance_flags |= TILE_BOUND
 	instance.del_on_map_removal = FALSE
 	if(instance.blend_mode_override)
 		instance.blend_mode = instance.blend_mode_override
@@ -61,8 +67,8 @@
 	var/client/user_client = user.client
 	if(!user_client)
 		return
-	user_client.register_map_obj(cam_background)
 	user_client.register_map_obj(cam_screen)
+	user_client.register_map_obj(cam_background)
 	for(var/plane_id in cam_plane_masters)
 		user_client.register_map_obj(cam_plane_masters[plane_id])
 
@@ -71,27 +77,22 @@
 	var/client/user_client = user.client
 	if(!user_client)
 		return
-	user_client.clear_map(cam_background)
-	user_client.clear_map(cam_screen)
-	for(var/plane_id in cam_plane_masters)
-		user_client.clear_map(cam_plane_masters[plane_id])
+	user_client.clear_map(map_name)
 
 /datum/component/camera_manager/RegisterWithParent()
 	. = ..()
-	START_PROCESSING(SSdcs, src)
 	SEND_SIGNAL(parent, COMSIG_CAMERA_MAPNAME_ASSIGNED, map_name)
 	RegisterSignal(parent, COMSIG_CAMERA_REGISTER_UI, PROC_REF(register))
 	RegisterSignal(parent, COMSIG_CAMERA_UNREGISTER_UI, PROC_REF(unregister))
 	RegisterSignal(parent, COMSIG_CAMERA_SET_NVG, PROC_REF(enable_nvg))
 	RegisterSignal(parent, COMSIG_CAMERA_CLEAR_NVG, PROC_REF(disable_nvg))
-	RegisterSignal(parent, COMSIG_CAMERA_SET_AREA, PROC_REF(set_camera_rect))
+	RegisterSignal(parent, COMSIG_CAMERA_SET_AREA, PROC_REF(set_camera_area))
 	RegisterSignal(parent, COMSIG_CAMERA_SET_TARGET, PROC_REF(set_camera))
 	RegisterSignal(parent, COMSIG_CAMERA_CLEAR, PROC_REF(clear_camera))
+	RegisterSignal(parent, COMSIG_CAMERA_REFRESH, PROC_REF(refresh_camera))
 
 /datum/component/camera_manager/UnregisterFromParent()
 	. = ..()
-	STOP_PROCESSING(SSdcs, src)
-
 	UnregisterSignal(parent, COMSIG_CAMERA_REGISTER_UI)
 	UnregisterSignal(parent, COMSIG_CAMERA_UNREGISTER_UI)
 	UnregisterSignal(parent, COMSIG_CAMERA_SET_NVG)
@@ -99,6 +100,7 @@
 	UnregisterSignal(parent, COMSIG_CAMERA_SET_AREA)
 	UnregisterSignal(parent, COMSIG_CAMERA_SET_TARGET)
 	UnregisterSignal(parent, COMSIG_CAMERA_CLEAR)
+	UnregisterSignal(parent, COMSIG_CAMERA_REFRESH)
 
 /datum/component/camera_manager/proc/clear_camera()
 	SIGNAL_HANDLER
@@ -113,6 +115,13 @@
 	target_height = null
 	show_camera_static()
 
+/datum/component/camera_manager/proc/refresh_camera()
+	SIGNAL_HANDLER
+	if(render_mode == RENDER_MODE_AREA)
+		update_area_camera()
+		return
+	update_target_camera()
+
 /datum/component/camera_manager/proc/set_camera(source, atom/target, w, h)
 	SIGNAL_HANDLER
 	render_mode = RENDER_MODE_TARGET
@@ -124,16 +133,18 @@
 	RegisterSignal(current, COMSIG_PARENT_QDELETING, PROC_REF(show_camera_static))
 	update_target_camera()
 
-/datum/component/camera_manager/proc/set_camera_rect(source, x, y, z, w, h)
+/datum/component/camera_manager/proc/set_camera_area(source, datum/shape/new_area, z)
 	SIGNAL_HANDLER
 	render_mode = RENDER_MODE_AREA
 	if(current)
 		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
 	current = null
-	current_area = RECT(x, y, w, h)
-	target_x = x
-	target_y = y
+	current_area = new_area
+	target_x = current_area.center_x
+	target_y = current_area.center_y
 	target_z = z
+	target_width = current_area.bounds_x
+	target_height = current_area.bounds_y
 	update_area_camera()
 
 /datum/component/camera_manager/proc/enable_nvg(source, power, matrixcol)
@@ -152,10 +163,10 @@
 
 /datum/component/camera_manager/proc/sync_lighting_plane_alpha(lighting_alpha)
 	var/atom/movable/screen/plane_master/lighting/lighting = cam_plane_masters["[LIGHTING_PLANE]"]
-	if (lighting)
+	if(lighting)
 		lighting.alpha = lighting_alpha
 	var/atom/movable/screen/plane_master/lighting/exterior_lighting = cam_plane_masters["[EXTERIOR_LIGHTING_PLANE]"]
-	if (exterior_lighting)
+	if(exterior_lighting)
 		exterior_lighting.alpha = min(GLOB.minimum_exterior_lighting_alpha, lighting_alpha)
 
 /**
@@ -177,9 +188,9 @@
 	var/cam_location = current
 	if(isliving(current.loc) || isVehicle(current.loc))
 		cam_location = current.loc
-	else if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
-		cam_location = helmet.loc
+	else if(istype(current.loc, /obj/item/clothing))
+		var/obj/item/clothing/clothing = current.loc
+		cam_location = clothing.loc
 
 	// If we're not forcing an update for some reason and the cameras are in the same location,
 	// we don't need to update anything.
@@ -210,12 +221,12 @@
 	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
 	last_camera_turf = new_location
 
-	var/x_size = current_area.width
-	var/y_size = current_area.height
+	var/x_size = current_area.bounds_x
+	var/y_size = current_area.bounds_y
 	var/turf/target = locate(current_area.center_x, current_area.center_y, target_z)
 
 	var/list/visible_things = isXRay ? range("[x_size]x[y_size]", target) : view("[x_size]x[y_size]", target)
-	src.render_objects(visible_things)
+	render_objects(visible_things)
 
 /datum/component/camera_manager/proc/render_objects(list/visible_things)
 	var/list/visible_turfs = list()

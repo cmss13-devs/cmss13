@@ -2,7 +2,7 @@
 	return (mob_size < MOB_SIZE_BIG && caste.can_vent_crawl)
 
 /mob/living/carbon/xenomorph/ventcrawl_carry()
-	if(stomach_contents.len)
+	if(length(stomach_contents))
 		for(var/mob/living/carbon/human/H in stomach_contents)
 			if(!isspeciesmonkey(H))
 				to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl with [H] inside you!"))
@@ -27,12 +27,29 @@
 /mob/living/carbon/xenomorph/proc/get_plasma_percentage()
 	if(plasma_max<=0)
 		return 100
-	return round(plasma_stored * 100 / plasma_max)
+	return floor(plasma_stored * 100 / plasma_max)
 
 /mob/living/carbon/xenomorph/proc/get_armor_integrity_percentage()
 	if(armor_deflection<=0)
 		return 100
-	return round(armor_integrity * 100 / armor_integrity_max)
+	return floor(armor_integrity * 100 / armor_integrity_max)
+
+/**
+ * Returns the name of the xeno's strain, if it has one.
+ *
+ * If that can't be found, returns "Normal".
+ */
+/mob/living/carbon/xenomorph/proc/get_strain_name()
+	return strain?.name || "Normal"
+
+/**
+ * Returns the custom icon state from the xeno's strain, if it has one.
+ *
+ * If that can't be found, returns "Normal"
+ */
+/mob/living/carbon/xenomorph/proc/get_strain_icon()
+	return strain?.icon_state_prefix || "Normal"
+	// TODO: Go through xeno/xenoid sprites and remove "Normal", so that this isn't needed.
 
 //These don't do much currently. Or anything? Only around for legacy code.
 /mob/living/carbon/xenomorph/is_mob_restrained()
@@ -58,4 +75,4 @@
 	return caste.fire_intensity_resistance
 
 /mob/living/carbon/xenomorph/alter_ghost(mob/dead/observer/ghost)
-	ghost.icon_state = "[mutation_type] [caste.caste_type] Running"
+	ghost.icon_state = "[get_strain_icon()] [caste.caste_type] Running"

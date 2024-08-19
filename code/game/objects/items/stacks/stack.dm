@@ -15,10 +15,14 @@
 	var/list/datum/stack_recipe/recipes
 	var/singular_name
 	var/amount = 1
-	var/max_amount //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
-	var/stack_id //used to determine if two stacks are of the same kind.
-	var/amount_sprites = FALSE //does it have sprites for extra amount, like metal, plasteel, or wood
-	var/display_maptext = TRUE //does it show amount on top of the icon
+	///also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
+	var/max_amount
+	///used to determine if two stacks are of the same kind.
+	var/stack_id
+	///does it have sprites for extra amount, like metal, plasteel, or wood
+	var/amount_sprites = FALSE
+	///does it show amount on top of the icon
+	var/display_maptext = TRUE
 	//Coords for contents display, to make it play nice with inventory borders.
 	maptext_x = 4
 	maptext_y = 3
@@ -89,7 +93,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		var/datum/stack_recipe_list/srl = recipe_list[recipes_sublist]
 		recipe_list = srl.recipes
 	var/t1 = text("<HTML><HEAD><title>Constructions from []</title></HEAD><body><TT>Amount Left: []<br>", src, src.amount)
-	for(var/i = 1; i <= recipe_list.len, i++)
+	for(var/i = 1; i <= length(recipe_list), i++)
 		var/E = recipe_list[i]
 		if(isnull(E))
 			t1 += "<hr>"
@@ -107,7 +111,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 		if(istype(E, /datum/stack_recipe))
 			var/datum/stack_recipe/R = E
-			var/max_multiplier = round(src.amount / R.req_amount)
+			var/max_multiplier = floor(src.amount / R.req_amount)
 			var/title
 			var/can_build = 1
 			can_build = can_build && (max_multiplier > 0)
@@ -122,7 +126,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 				t1 += text("[]", title)
 				continue
 			if(R.max_res_amount>1 && max_multiplier > 1)
-				max_multiplier = min(max_multiplier, round(R.max_res_amount/R.res_amount))
+				max_multiplier = min(max_multiplier, floor(R.max_res_amount/R.res_amount))
 				t1 += " |"
 				var/list/multipliers = list(5, 10, 25)
 				for (var/n in multipliers)
@@ -144,7 +148,9 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		list_recipes(usr, text2num(href_list["sublist"]))
 
 	if(href_list["make"])
-		if(amount < 1) qdel(src) //Never should happen
+		if(amount < 1)
+			qdel(src) //Never should happen
+			return
 
 		var/list/recipes_list = recipes
 		if(href_list["sublist"])
@@ -152,9 +158,13 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			recipes_list = srl.recipes
 		var/datum/stack_recipe/R = recipes_list[text2num(href_list["make"])]
 		var/multiplier = text2num(href_list["multiplier"])
-		if(!isnum(multiplier))
+		if(multiplier != multiplier) // isnan
+			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with NaN")
 			return
-		multiplier = round(multiplier)
+		if(!isnum(multiplier)) // this used to block nan...
+			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with !isnum")
+			return
+		multiplier = floor(multiplier)
 		if(multiplier < 1)
 			return  //href exploit protection
 		if(R.skill_lvl)
@@ -186,6 +196,12 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			if(tunnel)
 				to_chat(usr, SPAN_WARNING("The [R.title] cannot be constructed on a tunnel!"))
 				return
+
+			if(R.one_per_turf != ONE_TYPE_PER_BORDER) //all barricade-esque structures utilize this define and have their own check for object density. checking twice is unneeded.
+				for(var/obj/object in usr.loc)
+					if(object.density || istype(object, /obj/structure/machinery/door))
+						to_chat(usr, SPAN_WARNING("[object] is blocking you from constructing \the [R.title]!"))
+						return
 
 		if((R.flags & RESULT_REQUIRES_SNOW) && !(istype(usr.loc, /turf/open/snow) || istype(usr.loc, /turf/open/auto_turf/snow)))
 			to_chat(usr, SPAN_WARNING("The [R.title] must be built on snow!"))
@@ -277,11 +293,15 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	if(used > amount) //If it's larger than what we have, no go.
 		return FALSE
 	amount -= used
-	update_icon()
 	if(amount <= 0)
-		if(usr && loc == usr)
-			usr.temp_drop_inv_item(src)
+		if(loc == usr)
+			usr?.temp_drop_inv_item(src)
+		else if(isstorage(loc))
+			var/obj/item/storage/storage = loc
+			storage.remove_from_storage(src)
 		qdel(src)
+	else
+		update_icon()
 	return TRUE
 
 /obj/item/stack/proc/add(extra)
@@ -320,48 +340,48 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			return
 		if(!use(desired))
 			return
-		var/obj/item/stack/newstack = new src.type(user, desired)
+		var/obj/item/stack/newstack = new type(user, desired)
 		transfer_fingerprints_to(newstack)
 		user.put_in_hands(newstack)
-		src.add_fingerprint(user)
+		add_fingerprint(user)
 		newstack.add_fingerprint(user)
-		if(src && usr.interactee==src)
-			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), usr)
+		if(!QDELETED(src) && user.interactee == src)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
 		return TRUE
-	else
-		return ..()
+
+	return ..()
 
 /obj/item/stack/attack_hand(mob/user as mob)
-	if (user.get_inactive_hand() == src)
-		var/obj/item/stack/F = new src.type(user, 1)
-		transfer_fingerprints_to(F)
-		user.put_in_hands(F)
-		src.add_fingerprint(user)
-		F.add_fingerprint(user)
+	if(user.get_inactive_hand() == src)
+		var/obj/item/stack/new_stack = new type(user, 1)
+		transfer_fingerprints_to(new_stack)
+		user.put_in_hands(new_stack)
+		add_fingerprint(user)
+		new_stack.add_fingerprint(user)
 		use(1)
-		if (src && usr.interactee==src)
-			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), usr)
-	else
-		..()
-	return
+		if(!QDELETED(src) && user.interactee == src)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
+		return
+
+	return ..()
 
 /obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/stack))
-		var/obj/item/stack/S = W
-		if(S.stack_id == stack_id) //same stack type
-			if(S.amount >= max_amount)
+		var/obj/item/stack/other_stack = W
+		if(other_stack.stack_id == stack_id) //same stack type
+			if(other_stack.amount >= max_amount)
 				to_chat(user, SPAN_WARNING("The stack is full!"))
 				return TRUE
-			var/to_transfer = min(src.amount, S.max_amount-S.amount)
+			var/to_transfer = min(amount, other_stack.max_amount - other_stack.amount)
 			if(to_transfer <= 0)
 				return
 			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
-			S.add(to_transfer)
-			if (S && usr.interactee==S)
-				INVOKE_ASYNC(S, TYPE_PROC_REF(/obj/item/stack, interact), usr)
-			src.use(to_transfer)
-			if (src && usr.interactee==src)
-				INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), usr)
+			other_stack.add(to_transfer)
+			if(other_stack && user.interactee == other_stack)
+				INVOKE_ASYNC(other_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
+			use(to_transfer)
+			if(!QDELETED(src) && user.interactee == src)
+				INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
 			user.next_move = world.time + 0.3 SECONDS
 			return TRUE
 

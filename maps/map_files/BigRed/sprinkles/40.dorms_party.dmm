@@ -20,8 +20,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "af" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
+/obj/structure/machinery/power/apc/power/north{
 	name = "Fitness APC"
 	},
 /turf/open/floor,
@@ -47,32 +46,24 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "al" = (
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "an" = (
 /obj/item/trash/chunk,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "ao" = (
 /obj/item/trash/chunk{
 	pixel_x = 3;
 	pixel_y = -4
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "ap" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aq" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -119,34 +110,26 @@
 "ay" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/good_item,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "az" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aA" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib4"
 	},
 /obj/effect/landmark/corpsespawner/colonist/random,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/trash/chunk{
 	pixel_y = 5
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aC" = (
 /obj/structure/machinery/camera/autoname{
@@ -193,16 +176,12 @@
 /area/bigredv2/outside/dorms)
 "aJ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aK" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -211,17 +190,13 @@
 	pixel_y = 4
 	},
 /obj/item/reagent_container/food/drinks/bottle/rum,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/trash/chunk,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aN" = (
 /obj/item/trash/chunk,
@@ -246,18 +221,14 @@
 /area/bigredv2/outside/dorms)
 "aS" = (
 /obj/item/device/megaphone,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aT" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/item/reagent_container/food/drinks/bottle/rum,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aU" = (
 /obj/effect/decal/cleanable/dirt,
@@ -265,18 +236,14 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aW" = (
 /obj/item/device/radio/intercom{
@@ -297,9 +264,7 @@
 /area/bigredv2/outside/dorms)
 "ba" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "bb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -404,17 +369,13 @@
 /area/bigredv2/outside/dorms)
 "dl" = (
 /obj/item/reagent_container/food/drinks/bottle/rum,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "do" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "el" = (
 /obj/effect/landmark/corpsespawner/colonist/random,
@@ -429,9 +390,7 @@
 /area/bigredv2/outside/dorms)
 "lN" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "zO" = (
 /obj/structure/pipes/standard/simple/hidden/green{

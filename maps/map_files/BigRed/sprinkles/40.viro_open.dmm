@@ -4,28 +4,19 @@
 /area/bigredv2/caves)
 "ab" = (
 /obj/structure/fence,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_13"
-	},
+/turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/outside/virology)
 "ac" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 10
-	},
+/turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/nw)
 "ad" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "ae" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "af" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
@@ -37,205 +28,131 @@
 	id = "viro";
 	name = "Virology Lockdown"
 	},
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/virology)
 "ag" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/virology)
 "ah" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_12"
-	},
+/turf/open/mars/mars_dirt_12,
 /area/bigredv2/outside/virology)
 "ai" = (
 /turf/open/mars,
 /area/bigredv2/outside/virology)
 "ak" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "al" = (
 /obj/structure/fence,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/virology)
 "am" = (
 /obj/effect/decal/cleanable/ash,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_13"
-	},
+/turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/outside/virology)
 "an" = (
 /obj/effect/decal/cleanable/ash,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_6"
-	},
+/turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/outside/virology)
 "ao" = (
 /obj/structure/closet/bodybag{
 	icon_state = "bodybag_open"
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_12"
-	},
+/turf/open/mars/mars_dirt_12,
 /area/bigredv2/outside/virology)
 "aq" = (
 /obj/structure/inflatable,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars_cave/mars_dirt_5,
 /area/bigredv2/outside/virology)
 "ar" = (
 /obj/structure/fence,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7"
-	},
+/turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/outside/virology)
 "as" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 9
-	},
+/turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/virology)
 "at" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 1
-	},
+/turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/virology)
 "au" = (
 /obj/structure/inflatable,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/virology)
 "av" = (
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/virology)
 "aw" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/structure/inflatable,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 9
-	},
+/turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/virology)
 "ax" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 1
-	},
+/turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/nw)
 "ay" = (
 /obj/structure/closet/bodybag{
 	icon_state = "bodybag_open"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars_cave/mars_dirt_5,
 /area/bigredv2/outside/virology)
 "az" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 8
-	},
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/virology)
 "aA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/virology)
 "aE" = (
 /obj/structure/inflatable,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 5
-	},
+/turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/nw)
 "aF" = (
 /obj/structure/inflatable/door,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/virology)
 "aG" = (
 /obj/structure/inflatable/door,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 8
-	},
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/virology)
 "aH" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/structure/inflatable,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 4
-	},
+/turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/virology)
 "aI" = (
 /obj/structure/inflatable/door,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 4
-	},
+/turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/nw)
 "aJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 8
-	},
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/virology)
 "aK" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 4
-	},
+/turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/virology)
 "aM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/structure/inflatable/popped/door,
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/virology)
 "aN" = (
 /obj/effect/decal/cleanable/ash,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars_cave/mars_dirt_5,
 /area/bigredv2/outside/virology)
 "aO" = (
 /obj/effect/landmark/hunter_secondary,
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/virology)
 "aR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -246,10 +163,7 @@
 	id = "viro";
 	name = "Virology Lockdown"
 	},
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/virology)
 "aU" = (
 /turf/open/mars,
@@ -263,41 +177,27 @@
 	dir = 4
 	},
 /obj/structure/inflatable/door,
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "aX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 10
-	},
+/turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/virology)
 "aY" = (
 /obj/structure/sign/safety/biohazard,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/virology)
 "aZ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/virology)
 "ba" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/virology)
 "bb" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_14"
-	},
+/turf/open/mars/mars_dirt_14,
 /area/bigredv2/outside/virology)
 "bc" = (
 /turf/closed/wall/solaris/rock,
@@ -311,10 +211,7 @@
 	dir = 1;
 	name = "\improper Virology Lab Decontamination"
 	},
-/turf/open/floor{
-	icon_state = "warnwhite";
-	dir = 1
-	},
+/turf/open/floor/warnwhite/north,
 /area/bigredv2/outside/virology)
 "bf" = (
 /obj/effect/decal/cleanable/blood{
@@ -324,73 +221,47 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "bg" = (
 /obj/structure/inflatable,
-/turf/open/mars{
-	icon_state = "mars_dirt_11"
-	},
+/turf/open/mars/mars_dirt_11,
 /area/bigredv2/outside/virology)
 "bj" = (
 /obj/structure/inflatable,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 6
-	},
+/turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/nw)
 "bk" = (
 /obj/structure/inflatable/door,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 10
-	},
+/turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/virology)
 "bl" = (
 /obj/structure/inflatable,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 9
-	},
+/turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/virology)
 "bm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/inflatable,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 1
-	},
+/turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/virology)
 "bn" = (
 /obj/structure/inflatable,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 8
-	},
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/virology)
 "bo" = (
 /obj/structure/closet/bodybag{
 	icon_state = "bodybag_open"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/virology)
 "bp" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_6"
-	},
+/turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/outside/virology)
 "bq" = (
 /obj/structure/closet/bodybag{
 	icon_state = "bodybag_open"
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_3"
-	},
+/turf/open/mars/mars_dirt_3,
 /area/bigredv2/outside/virology)
 "br" = (
 /obj/structure/inflatable/popped,
@@ -400,86 +271,56 @@
 /obj/structure/surface/table/almayer,
 /obj/item/tool/surgery/scalpel,
 /obj/item/device/autopsy_scanner,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/virology)
 "bt" = (
 /obj/structure/bed/roller,
-/turf/open/mars{
-	icon_state = "mars_dirt_10"
-	},
+/turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/virology)
 "bu" = (
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 9
-	},
+/turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/virology)
 "bv" = (
 /obj/structure/inflatable/popped,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 1
-	},
+/turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/virology)
 "bw" = (
 /obj/structure/bed/roller,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 1
-	},
+/turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/virology)
 "bx" = (
 /obj/structure/inflatable/popped,
-/turf/open/mars{
-	icon_state = "mars_dirt_10"
-	},
+/turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/virology)
 "by" = (
 /obj/structure/inflatable/popped/door,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 8
-	},
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/virology)
 "bz" = (
 /obj/structure/inflatable,
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/virology)
 "bA" = (
 /obj/structure/inflatable/door,
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/virology)
 "bE" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/virology)
 "bF" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/med_data/laptop{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 5
-	},
+/turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/virology)
 "bG" = (
 /obj/structure/surface/table/almayer,
@@ -487,39 +328,25 @@
 /obj/item/storage/syringe_case/regular{
 	pixel_y = 10
 	},
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/virology)
 "bH" = (
 /obj/structure/surface/table/almayer,
-/obj/item/handcuffs,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "asteroidwarning"
-	},
+/obj/item/restraint/handcuffs,
+/turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/virology)
 "lB" = (
-/turf/open/floor{
-	dir = 6;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/virology)
 "qP" = (
 /obj/structure/inflatable/popped/door,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "rG" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "uN" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars_cave/mars_dirt_5,
 /area/bigredv2/outside/virology)
 "zC" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -527,22 +354,14 @@
 	id = "viro";
 	name = "Virology Lockdown"
 	},
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 1
-	},
+/turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/virology)
 "FK" = (
 /obj/structure/inflatable,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 4
-	},
+/turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/virology)
 "GE" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/virology)
 "Kk" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -550,35 +369,23 @@
 	id = "viro";
 	name = "Virology Lockdown"
 	},
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/virology)
 "Kv" = (
 /obj/item/weapon/gun/flamer,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/virology)
 "Po" = (
 /obj/structure/inflatable,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	dir = 5
-	},
+/turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/virology)
 "Ry" = (
 /obj/effect/decal/cleanable/ash,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_14"
-	},
+/turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/outside/virology)
 "Vr" = (
 /obj/structure/inflatable/popped,
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/virology)
 
 (1,1,1) = {"

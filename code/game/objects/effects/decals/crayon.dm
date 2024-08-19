@@ -5,7 +5,7 @@
 	layer = ABOVE_TURF_LAYER
 	anchored = TRUE
 
-/obj/effect/decal/cleanable/crayon/New(location, main = "#FFFFFF",shade = "#000000", type = "rune")
+/obj/effect/decal/cleanable/crayon/New(location, main = COLOR_WHITE,shade = COLOR_BLACK, type = "rune")
 	..()
 	forceMove(location)
 

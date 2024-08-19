@@ -54,7 +54,7 @@
 
 /obj/item/clothing/mask/balaclava
 	name = "balaclava"
-	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existance, protects your face from the cold almost as well as it conceals it. This one is in a standard black color."
+	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existence, protects your face from the cold almost as well as it conceals it. This one is in a standard black color."
 	icon_state = "balaclava"
 	item_state = "balaclava"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
@@ -65,7 +65,7 @@
 
 /obj/item/clothing/mask/balaclava/tactical
 	name = "green balaclava"
-	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existance, protects your face from the cold almost as well as it conceals it. This one is in a non-standard green color."
+	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existence, protects your face from the cold almost as well as it conceals it. This one is in a non-standard green color."
 	icon_state = "swatclava"
 	item_state = "swatclava"
 

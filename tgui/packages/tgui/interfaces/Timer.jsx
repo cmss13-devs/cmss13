@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, Section, Slider } from '../components';
 import { Window } from '../layouts';
 
-export const Timer = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Timer = (props) => {
+  const { act, data } = useBackend();
   const { max_time, min_time } = data;
 
   const window_width = 360;
@@ -15,9 +15,10 @@ export const Timer = (props, context) => {
             fluid
             color={data.is_timing ? 'green' : 'red'}
             icon="clock"
-            content={data.is_timing ? 'Enabled' : 'Disabled'}
             onClick={() => act('set_timing', { should_time: !data.is_timing })}
-          />
+          >
+            {data.is_timing ? 'Enabled' : 'Disabled'}
+          </Button>
         </Section>
         <Section>
           <Slider

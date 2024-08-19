@@ -1,10 +1,19 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
+
 import { useBackend } from '../backend';
-import { Section, Box, ProgressBar, NoticeBox, Collapsible, Flex, Divider } from '../components';
+import {
+  Box,
+  Collapsible,
+  Divider,
+  Flex,
+  NoticeBox,
+  ProgressBar,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
 
-export const VehicleStatus = (props, context) => {
-  const { act, data } = useBackend(context);
+export const VehicleStatus = (props) => {
+  const { act, data } = useBackend();
   const {
     resistance_data,
     integrity,
@@ -28,7 +37,8 @@ export const VehicleStatus = (props, context) => {
                 good: [0.7, Infinity],
                 average: [0.2, 0.7],
                 bad: [-Infinity, 0.2],
-              }}>
+              }}
+            >
               Hull integrity: {integrity}%
             </ProgressBar>
           ) : (
@@ -57,8 +67,8 @@ export const VehicleStatus = (props, context) => {
   );
 };
 
-const ResistanceView = (props, context) => {
-  const { act, data } = useBackend(context);
+const ResistanceView = (props) => {
+  const { act, data } = useBackend();
   const { resistance_data, integrity } = data;
   return resistance_data.map((resistance, index) => (
     <Fragment key={index}>
@@ -70,8 +80,8 @@ const ResistanceView = (props, context) => {
   ));
 };
 
-const HardpointsView = (props, context) => {
-  const { act, data } = useBackend(context);
+const HardpointsView = (props) => {
+  const { act, data } = useBackend();
   const { hardpoint_data } = data;
   return hardpoint_data.map((hardpoint, index) => (
     <Fragment key={index}>
@@ -85,7 +95,8 @@ const HardpointsView = (props, context) => {
             good: [0.7, Infinity],
             average: [0.2, 0.7],
             bad: [-Infinity, 0.2],
-          }}>
+          }}
+        >
           Hardpoint integrity: {hardpoint.health}%
         </ProgressBar>
       ) : (
@@ -96,18 +107,20 @@ const HardpointsView = (props, context) => {
         <Flex direction="row">
           <ProgressBar
             value={hardpoint.current_rounds / hardpoint.max_rounds}
-            width={hardpoint.fpw ? '100%' : '49%'}>
+            width={hardpoint.fpw ? '100%' : '49%'}
+          >
             Ammo: {hardpoint.current_rounds} / {hardpoint.max_rounds}
           </ProgressBar>
           {hardpoint.fpw ? null : (
-            <Fragment>
+            <>
               <Box width="3px" />
               <ProgressBar
                 value={hardpoint.mags / hardpoint.max_mags}
-                width="49%">
+                width="49%"
+              >
                 Mags: {hardpoint.mags} / {hardpoint.max_mags}
               </ProgressBar>
-            </Fragment>
+            </>
           )}
         </Flex>
       ) : null}
@@ -115,8 +128,8 @@ const HardpointsView = (props, context) => {
   ));
 };
 
-const PassengersView = (props, context) => {
-  const { act, data } = useBackend(context);
+const PassengersView = (props) => {
+  const { act, data } = useBackend();
   const { passenger_categories_data } = data;
   return passenger_categories_data.map((cat, index) => (
     <Fragment key={index}>

@@ -52,6 +52,8 @@
 	gender = NEUTER
 	icon_size = 48
 	black_market_value = KILL_MENDOZA
+	///How much to horizontally adjust the sprites of held item onmobs by. Based on icon size. Most xenos have hands about the same height as a human's.
+	var/xeno_inhand_item_offset
 	dead_black_market_value = 50
 	light_system = MOVABLE_LIGHT
 	var/obj/item/clothing/suit/wear_suit = null
@@ -130,10 +132,8 @@
 	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
 
-	// Mutator-related and other important vars
-	var/mutation_icon_state = null
-	var/mutation_type = null
-	var/datum/mutator_set/individual_mutators/mutators = new
+	/// The xeno's strain, if they've taken one.
+	var/datum/xeno_strain/strain = null
 
 	// Hive-related vars
 	var/datum/hive_status/hive
@@ -218,11 +218,11 @@
 	//////////////////////////////////////////////////////////////////
 	var/xeno_mobhud = FALSE //whether the xeno mobhud is activated or not.
 	var/xeno_hostile_hud = FALSE // 'Hostile' HUD - the verb Xenos use to see tags, etc on humans
+	var/execute_hud = FALSE // Crit HUD, only visible to vampire lurkers
 	var/list/plasma_types = list() //The types of plasma the caste contains
 	var/list/xeno_shields = list() // List of /datum/xeno_shield that holds all active shields on the Xeno.
 	var/acid_splash_cooldown = 5 SECONDS //Time it takes between acid splash retaliate procs
 	var/acid_splash_last //Last recorded time that an acid splash procced
-	var/interference = 0 // Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
 	var/mob/living/carbon/xenomorph/observed_xeno // Overwatched xeno for xeno hivemind vision
 	var/need_weeds = TRUE // Do we need weeds to regen HP?
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
@@ -249,6 +249,11 @@
 
 	// Life reduction variables.
 	var/life_slow_reduction = -1.5
+	//Research organ harvesting.
+	var/organ_removed = FALSE
+	/// value of organ in each caste, e.g. 10k is autodoc larva removal. runner is 500
+	var/organ_value = 0
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -263,6 +268,7 @@
 	// an easily modularizable way. So, here you go.
 	//
 	//////////////////////////////////////////////////////////////////
+
 	var/tunnel = FALSE
 	/// for check on lurker invisibility
 	var/stealth = FALSE
@@ -337,6 +343,8 @@
 
 	var/atom/movable/vis_obj/xeno_wounds/wound_icon_holder
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
+	/// If TRUE, the xeno cannot slash anything
+	var/cannot_slash = FALSE
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 
@@ -344,6 +352,13 @@
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
+	//putting the organ in for research
+	if(organ_value != 0)
+		var/obj/item/organ/xeno/organ = new() //give
+		organ.forceMove(src)
+		organ.research_value = organ_value
+		organ.caste_origin = caste_type
+		organ.icon_state = get_organ_icon()
 
 	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
 
@@ -389,8 +404,6 @@
 		for(var/trait in hive.hive_inherant_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
-	mutators.xeno = src
-
 	//Set caste stuff
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
@@ -433,7 +446,7 @@
 
 	GLOB.living_xeno_list += src
 	GLOB.xeno_mob_list += src
-
+	xeno_inhand_item_offset = (icon_size - 32) * 0.5
 	// More setup stuff for names, abilities etc
 	update_icon_source()
 	generate_name()
@@ -461,7 +474,7 @@
 	time_of_birth = world.time
 
 	//Minimap
-	if(z)
+	if(z && hivenumber != XENO_HIVE_TUTORIAL)
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight
@@ -661,11 +674,13 @@
 			. += "It appears to belong to [hive?.name ? "the [hive.name]" : "a different hive"]."
 
 	if(isxeno(user) || isobserver(user))
-		if(mutation_type != "Normal")
-			. += "It has specialized into a [mutation_type]."
+		if(strain)
+			. += "It has specialized into a [strain.name]."
 
 	if(iff_tag)
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
+	if(organ_removed)
+		. += "It seems to have its carapace cut open."
 
 /mob/living/carbon/xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
@@ -693,7 +708,7 @@
 	selected_ability = null
 	queued_action = null
 
-	QDEL_NULL(mutators)
+	QDEL_NULL(strain)
 	QDEL_NULL(behavior_delegate)
 
 	built_structures = null
@@ -709,17 +724,10 @@
 	if(hardcore)
 		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete
 
-	. = ..()
-
-	// Everything below fits the "we have to clear by principle it but i dont wanna break stuff" bill
-	mutators = null
-
-
+	return ..()
 
 /mob/living/carbon/xenomorph/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE
-
-
 
 /mob/living/carbon/xenomorph/start_pulling(atom/movable/AM, lunge, no_msg)
 	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
@@ -777,6 +785,11 @@
 	var/datum/mob_hud/MH = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src, src)
 
+// Transfer any observing players over to the xeno's new body (`target`) on evolve/de-evolve.
+/mob/living/carbon/xenomorph/transfer_observers_to(atom/target)
+	for(var/mob/dead/observer/observer as anything in observers)
+		observer.clean_observe_target()
+		observer.do_observe(target)
 
 /mob/living/carbon/xenomorph/check_improved_pointing()
 	//xeno leaders get a big arrow and less cooldown
@@ -823,10 +836,10 @@
 
 
 //*********************************************************//
-//********************Mutator functions********************//
+// ******************** Strain Procs **********************//
 //*********************************************************//
 
-//Call this function when major changes happen - evolutions, upgrades, mutators getting removed
+//Call this proc when major changes happen - evolutions, upgrades, mutators getting removed
 /mob/living/carbon/xenomorph/proc/recalculate_everything()
 	recalculate_stats()
 	recalculate_actions()
@@ -850,8 +863,8 @@
 	tackle_min = caste.tackle_min
 	tackle_max = caste.tackle_max
 	tackle_chance = caste.tackle_chance + tackle_chance_modifier
-	tacklestrength_min = caste.tacklestrength_min + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
-	tacklestrength_max = caste.tacklestrength_max + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
+	tacklestrength_min = caste.tacklestrength_min
+	tacklestrength_max = caste.tacklestrength_max
 
 /mob/living/carbon/xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health
@@ -861,7 +874,7 @@
 	if(health < maxHealth)
 		currentHealthRatio = health / maxHealth
 	maxHealth = new_max_health
-	health = round(maxHealth * currentHealthRatio + 0.5)//Restore our health ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	health = floor(maxHealth * currentHealthRatio + 0.5)//Restore our health ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(health > maxHealth)
 		health = maxHealth
 
@@ -875,7 +888,7 @@
 		return
 	var/plasma_ratio = plasma_stored / plasma_max
 	plasma_max = new_plasma_max
-	plasma_stored = round(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	plasma_stored = floor(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(plasma_stored > plasma_max)
 		plasma_stored = plasma_max
 
@@ -888,7 +901,7 @@
 
 /mob/living/carbon/xenomorph/proc/recalculate_armor()
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
-	armor_deflection = armor_modifier + round(100 - (100 - caste.armor_deflection))
+	armor_deflection = armor_modifier + floor(100 - (100 - caste.armor_deflection))
 	armor_explosive_buff = explosivearmor_modifier
 
 /mob/living/carbon/xenomorph/proc/recalculate_damage()
@@ -907,18 +920,8 @@
 /mob/living/carbon/xenomorph/proc/recalculate_actions()
 	recalculate_acid()
 	recalculate_weeds()
-	pull_multiplier = mutators.pull_multiplier
-	if(isrunner(src))
-		//Xeno runners need a small nerf to dragging speed mutator
-		pull_multiplier = 1 - (1 - mutators.pull_multiplier) * 0.85
-		if(is_zoomed)
-			zoom_out()
-	if(iscarrier(src))
-		var/mob/living/carbon/xenomorph/carrier/carrier = src
-		carrier.huggers_max = caste.huggers_max
-		carrier.eggs_max = caste.eggs_max
-	need_weeds = mutators.need_weeds
-
+	// Modified on subtypes
+	pull_multiplier = initial(pull_multiplier)
 
 /mob/living/carbon/xenomorph/proc/recalculate_acid()
 	if(caste)
@@ -997,6 +1000,9 @@
 	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
 
+/mob/living/carbon/xenomorph/proc/get_organ_icon()
+	return "heart_t[tier]"
+
 /mob/living/carbon/xenomorph/resist_restraints()
 	if(!legcuffed)
 		return
@@ -1005,7 +1011,7 @@
 	next_move = world.time + 10 SECONDS
 	last_special = world.time + 1 SECONDS
 
-	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
+	var/displaytime = max(1, floor(breakouttime / 600)) //Minutes
 	visible_message(SPAN_DANGER("<b>[src] attempts to remove [legcuffed]!</b>"),
 		SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute\s and we must stand still)"))
 	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND ^ INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
@@ -1043,7 +1049,7 @@
 		handle_ghost_message()
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()
-	notify_ghosts("[src] ([mutation_type] [caste_type]) has ghosted and their body is up for grabs!", source = src)
+	notify_ghosts("[src] ([get_strain_name()] [caste_type]) has ghosted and their body is up for grabs!", source = src)
 
 /mob/living/carbon/xenomorph/larva/handle_ghost_message()
 	if(locate(/obj/effect/alien/resin/special/pylon/core) in range(2, get_turf(src)))
@@ -1095,3 +1101,12 @@
 	else
 		//If we somehow use all 999 numbers fallback on 0
 		nicknumber = 0
+
+/proc/setup_xenomorph(mob/living/carbon/xenomorph/target, mob/new_player/new_player, is_late_join = FALSE)
+	new_player.spawning = TRUE
+	new_player.close_spawn_windows()
+	new_player.client.prefs.copy_all_to(target, new_player.job, is_late_join = FALSE)
+
+	if(new_player.mind)
+		new_player.mind_initialize()
+		new_player.mind.transfer_to(target, TRUE)

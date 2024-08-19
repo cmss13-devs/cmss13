@@ -25,6 +25,11 @@
 	return positions
 */
 
+/datum/job/marine/specialist/on_cryo(mob/living/carbon/human/cryoing)
+	var/specialist_set = get_specialist_set(cryoing)
+	if(isnull(specialist_set))
+		return
+	GLOB.specialist_set_datums[specialist_set].refund_set(cryoing)
 
 /datum/job/marine/specialist/whiskey
 	title = JOB_WO_SQUAD_SPECIALIST

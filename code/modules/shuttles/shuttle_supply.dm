@@ -195,3 +195,4 @@
 /datum/shuttle/ferry/supply/upp/New()
 	. = ..()
 	linked_supply = GLOB.supply_controller_upp
+	GLOB.supply_controller_upp.shuttle = src

@@ -3732,7 +3732,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 8)
 
-/datum/equipment_preset/upp/commando/medic/dressed/low_threat
+/datum/equipment_preset/upp/commando/medic/low_threat
 	name = "UPP Commando Medic"
 
 /datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/new_human)

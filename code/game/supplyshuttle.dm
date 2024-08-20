@@ -444,7 +444,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Gear",
 		"Mortar",
 		"Explosives",
-		"Reagent tanks",
+		"Reagent tanks"
 		)
 
 	var/list/contraband_supply_groups = list(

@@ -69,7 +69,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 		"UPP Food",
 		"UPP Gear",
 		"UPP Explosives",
-		"UPP Clothing",
+		"UPP Clothing"
 	)
 
 //No random crates for UPP

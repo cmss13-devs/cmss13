@@ -13,7 +13,6 @@ GLOBAL_SUBTYPE_PATHS_LIST_INDEXED(supply_packs_types, /datum/supply_packs, name)
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(supply_packs_datums, /datum/supply_packs, type)
 
 GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
-GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 /area/supply
 	ceiling = CEILING_METAL
@@ -682,7 +681,6 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 	var/approvedby
 	var/list/packages
 
-
 /obj/item/paper/manifest/read_paper(mob/user, scramble = FALSE)
 	var/paper_info = info
 	if(scramble)
@@ -1325,14 +1323,6 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 	frequency.post_signal(src, status_signal)
 
-/obj/structure/machinery/computer/supplycomp/upp
-	name = "UPP supply console"
-
-/obj/structure/machinery/computer/supplycomp/upp/Initialize()
-	. = ..()
-	linked_supply_controller = GLOB.supply_controller_upp
-	LAZYADD(linked_supply_controller.bound_supply_computer_list, src)
-
 /obj/structure/machinery/computer/supplycomp/vehicle
 	name = "vehicle ASRS console"
 	desc = "A console for an Automated Storage and Retrieval System. This one is tied to a deep storage unit for vehicles."
@@ -1507,25 +1497,3 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 	add_fingerprint(usr)
 	updateUsrDialog()
-
-/datum/controller/supply/upp
-	all_supply_groups = list(
-	"UPP Weapons",
-	"UPP Ammo",
-	"UPP Special Weapon",
-	"UPP Special Ammo",
-	"Attachments",
-	"Medical",
-	"UPP Engineering",
-	"UPP Food",
-	"UPP Gear",
-	"UPP Explosives",
-	"UPP Clothing",
-	)
-	points = 99999999
-
-/datum/controller/supply/upp/process(delta_time)
-	iteration++
-	points += points_per_process
-	if(iteration < 20)
-		return

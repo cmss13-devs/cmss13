@@ -151,6 +151,12 @@
 	name = "Circuit board (Supply Drop Console)"
 	build_path = /obj/structure/machinery/computer/supply_drop_console/limited
 
+/obj/item/circuitboard/computer/supplycomp/upp
+	name = "Circuit board (General Supply Storage console)"
+	build_path = /obj/structure/machinery/computer/supplycomp/upp
+	//No black market under communism
+	black_market_lock = TRUE
+
 /obj/item/circuitboard/computer/supplycomp
 	name = "Circuit board (ASRS console)"
 	build_path = /obj/structure/machinery/computer/supplycomp

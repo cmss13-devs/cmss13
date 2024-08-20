@@ -1,4 +1,4 @@
-/datum/supply_packs/potato_crate
+/datum/supply_packs/upp/potato_crate
 	name = "Surplus boxes of potato (x10 boxes) (x700 potatos)"
 	contains = list(
 		/obj/item/storage/box/potato,
@@ -18,7 +18,7 @@
 	containername = "Potato crate"
 	group = "UPP Food"
 
-/datum/supply_packs/ration_crate
+/datum/supply_packs/upp/ration_crate
 	name = "UPP ration crate (x20)"
 	contains = list(
 		/obj/item/reagent_container/food/snacks/upp,

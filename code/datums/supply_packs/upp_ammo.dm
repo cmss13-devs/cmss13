@@ -1,25 +1,25 @@
-/datum/supply_packs/ammo_rounds_box_5_45x39mm
+/datum/supply_packs/upp/ammo_rounds_box_5_45x39mm
 	name = "ammo box crate (5.45x39mm) (x600 rounds)"
 	contains = list(
 		/obj/item/ammo_box/rounds/type71,
 	)
 	cost = 20
-	containertype = /obj/structure/closet/crate/weapon
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "5.45x39mm ammo crate"
 	group = "UPP Ammo"
 
-/datum/supply_packs/ammo_rounds_box_5_45x39mm_ap
+/datum/supply_packs/upp/ammo_rounds_box_5_45x39mm_ap
 	name = "ammo box crate (5.45x39mm AP) (x600 rounds)"
 	contains = list(
 		/obj/item/ammo_box/rounds/type71/ap,
 	)
 	cost = 40
-	containertype = /obj/structure/closet/crate/weapon
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "5.45x39mm AP ammo crate"
 	group = "UPP Ammo"
 
 
-/datum/supply_packs/ammo_8g_slug
+/datum/supply_packs/upp/ammo_8g_slug
 	name = "Magazine box (Type 23, 20x slug)"
 	contains = list(
 		/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
@@ -44,7 +44,7 @@
 		/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
 	)
 	cost = 10
-	containertype = /obj/structure/closet/crate/weapon
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "Type 23 slug ammo crate"
 	group = "UPP Ammo"
 
@@ -63,7 +63,7 @@ datum/supply_packs/ammo_8g_dragon_breath
 		/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
 	)
 	cost = 20
-	containertype = /obj/structure/closet/crate/weapon
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "Type 23 dragon's breath ammo crate"
 	group = "UPP Ammo"
 
@@ -82,52 +82,52 @@ datum/supply_packs/ammo_8g_flechette
 		/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,
 	)
 	cost = 10
-	containertype = /obj/structure/closet/crate/weapon
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "Type 23 flechette ammo crate"
 	group = "UPP Ammo"
 
 
-/datum/supply_packs/ammo_Type64_x10
+/datum/supply_packs/upp/ammo_Type64_x10
 	name = "Magazine box (Type 64, 10x regular mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/type64
 	)
 	cost = 20
-	containertype = /obj/structure/closet/crate/weapon
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "Type 64 magazines crate"
 	group = "UPP Ammo"
 
-/datum/supply_packs/ammo_Type64_x10
+/datum/supply_packs/upp/ammo_Type64_x10
 	name = "Magazine box (Type 64, 10x regular mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/type64
 	)
 	cost = 20
-	containertype = /obj/structure/closet/crate/weapon
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "Type 64 magazines crate"
 	group = "UPP Ammo"
 
-/datum/supply_packs/ammo_Type71_box
+/datum/supply_packs/upp/ammo_Type71_box
 	name = "Magazine box (Type 71, 10x regular mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/type71,
 	)
 	cost = 20
-	containertype = /obj/structure/closet/crate/weapon
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "Type 71 magazines crate"
 	group = "UPP Ammo"
 
-/datum/supply_packs/ammo_Type71_box_ap
+/datum/supply_packs/upp/ammo_Type71_box_ap
 	name = "Magazine box (Type 71, 10x AP mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/type71/ap,
 	)
 	cost = 40
-	containertype = /obj/structure/closet/crate/weapon
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "Type 71 AP magazines crate"
 	group = "UPP Ammo"
 
-/datum/supply_packs/ammo_m2c_upp
+/datum/supply_packs/upp/ammo_m2c_upp
 	name = "M2C ammunition crate (x2)"
 	contains = list(
 		/obj/item/ammo_magazine/m2c,
@@ -138,7 +138,7 @@ datum/supply_packs/ammo_8g_flechette
 	containername = "\improper m2c ammunition crate"
 	group = "UPP Ammo"
 
-/datum/supply_packs/ammo_pkp_mags
+/datum/supply_packs/upp/ammo_pkp_mags
 	name = "Magazines (QYJ-72, 10x mags)"
 	contains = list(
 		/obj/item/ammo_magazine/pkp,
@@ -154,11 +154,11 @@ datum/supply_packs/ammo_8g_flechette
 		/obj/item/ammo_magazine/pkp,
 	)
 	cost = 30
-	containertype = /obj/structure/closet/crate/weapon
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "QYJ-72 magazines crate"
 	group = "UPP Ammo"
 
-/datum/supply_packs/ammo_minigun_mags
+/datum/supply_packs/upp/ammo_minigun_mags
 	name = "Magazines (GSh-7.62, 6x mags)"
 	contains = list(
 		/obj/item/ammo_magazine/minigun,
@@ -169,12 +169,11 @@ datum/supply_packs/ammo_8g_flechette
 		/obj/item/ammo_magazine/minigun,
 	)
 	cost = 30
-	containertype = /obj/structure/closet/crate/weapon
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "GSh-7.62 magazines crate"
 	group = "UPP Special Ammo"
 
-
-/datum/supply_packs/ammo_Type88_x10
+/datum/supply_packs/upp/ammo_Type88_x10
 	name = "Magazines (Type 88, 10x regular mags)"
 	contains = list(
 		/obj/item/ammo_magazine/sniper/svd,
@@ -190,11 +189,11 @@ datum/supply_packs/ammo_8g_flechette
 		/obj/item/ammo_magazine/sniper/svd,
 	)
 	cost = 20
-	containertype = /obj/structure/closet/crate/weapon
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "Type 88 magazines crate"
 	group = "UPP Special Ammo"
 
-/datum/supply_packs/ammo_rpg_he
+/datum/supply_packs/upp/ammo_rpg_he
 	name = "HJRA-12 HE Rocket Crate (x3)"
 	contains = list(
 		/obj/item/ammo_magazine/rocket/upp,
@@ -206,7 +205,7 @@ datum/supply_packs/ammo_8g_flechette
 	containername = "HJRA-12 HE Rocket Crate"
 	group = "UPP Special Ammo"
 
-/datum/supply_packs/ammo_rpg_ap
+/datum/supply_packs/upp/ammo_rpg_ap
 	name = "HJRA-12 AP Rocket Crate (x3)"
 	contains = list(
 		/obj/item/ammo_magazine/rocket/upp/at,
@@ -218,7 +217,7 @@ datum/supply_packs/ammo_8g_flechette
 	containername = "HJRA-12 AP Rockets Crate"
 	group = "UPP Special Ammo"
 
-/datum/supply_packs/ammo_rpg_wp
+/datum/supply_packs/upp/ammo_rpg_wp
 	name = "HJRA-12 Extreme-Intensity Incendiary Rocket Crate (x3)"
 	contains = list(
 		/obj/item/ammo_magazine/rocket/upp/incen,

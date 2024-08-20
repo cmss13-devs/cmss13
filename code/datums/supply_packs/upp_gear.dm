@@ -1,4 +1,4 @@
-/datum/supply_packs/binocs_upp
+/datum/supply_packs/upp/binocs_upp
 	name = "Mixed Binoculars Crate (x2 per, x6 total)"
 	cost = 20
 	containertype = /obj/structure/closet/crate/green
@@ -13,7 +13,7 @@
 		/obj/item/device/binoculars,
 	)
 
-/datum/supply_packs/flares_upp
+/datum/supply_packs/upp/flares_upp
 	name = "flare packs crate (x20)"
 	contains = list(
 		/obj/item/ammo_box/magazine/misc/flares,
@@ -25,7 +25,7 @@
 	group = "UPP Gear"
 
 
-/datum/supply_packs/motiondetector_upp
+/datum/supply_packs/upp/motiondetector_upp
 	name = "Motion Detector (x2)"
 	contains = list(
 		/obj/item/device/motiondetector/hacked,
@@ -36,7 +36,7 @@
 	containername = "Motion Detector crate"
 	group = "UPP Gear"
 
-/datum/supply_packs/signal_flares_upp
+/datum/supply_packs/upp/signal_flares_upp
 	name = "signal flare packs crate (x4)"
 	contains = list(
 		/obj/item/storage/box/m94/signal,
@@ -49,7 +49,7 @@
 	containername = "signal flare pack crate"
 	group = "UPP Gear"
 
-/datum/supply_packs/fulton_upp
+/datum/supply_packs/upp/fulton_upp
 	name = "fulton recovery device crate (x4)"
 	contains = list(
 		/obj/item/stack/fulton,
@@ -62,7 +62,7 @@
 	containername = "fulton recovery device crate"
 	group = "UPP Gear"
 
-/datum/supply_packs/parachute_upp
+/datum/supply_packs/upp/parachute_upp
 	name = "parachute crate (x20)"
 	contains = list(
 		/obj/item/parachute,

@@ -109,14 +109,14 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/last_viewed_group = "categories"
 	var/first_time = TRUE
 	var/datum/controller/supply/linked_supply_controller
-	var/faction = "USCM"
+	var/faction = FACTION_MARINE
 
 /obj/structure/machinery/computer/supplycomp/Initialize()
 	. = ..()
 	switch(faction)
-		if("USCM")
+		if(FACTION_MARINE)
 			linked_supply_controller = GLOB.supply_controller
-		if("UPP")
+		if(FACTION_UPP)
 			linked_supply_controller = GLOB.supply_controller_upp
 		else
 			linked_supply_controller = GLOB.supply_controller //we default to normal budget on wrong input

@@ -22,15 +22,15 @@
 	available_points_to_display = 0
 
 	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_TO_HAND|VEND_USE_VENDOR_FLAGS
-	var/faction = "USCM"
+	var/faction = FACTION_MARINE
 	var/datum/controller/supply/linked_supply_controller
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/Initialize(mapload, ...)
 	. = ..()
 	switch(faction)
-		if("USCM")
+		if(FACTION_MARINE)
 			linked_supply_controller = GLOB.supply_controller
-		if("UPP")
+		if(FACTION_UPP)
 			linked_supply_controller = GLOB.supply_controller_upp
 		else
 			linked_supply_controller = GLOB.supply_controller //we default to normal budget on wrong input

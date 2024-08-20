@@ -12,19 +12,19 @@
 	var/generate_points = TRUE
 	var/omnisentry_price_scale = 100
 	var/omnisentry_price = 300
-	var/faction = "USCM"
+	var/faction = FACTION_MARINE
 	var/datum/controller/supply/linked_supply_controller
 
 /obj/structure/machinery/part_fabricator/upp
 	name = "UPP part fabricator"
-	faction = "UPP"
+	faction = FACTION_UPP
 
 /obj/structure/machinery/part_fabricator/New()
 	..()
 	switch(faction)
-		if("USCM")
+		if(FACTION_MARINE)
 			linked_supply_controller = GLOB.supply_controller
-		if("UPP")
+		if(FACTION_UPP)
 			linked_supply_controller = GLOB.supply_controller_upp
 		else
 			linked_supply_controller = GLOB.supply_controller
@@ -143,11 +143,11 @@
 
 	unslashable = TRUE
 	unacidable = TRUE
-	faction = "USCM"
+	faction = FACTION_MARINE
 
 /obj/structure/machinery/part_fabricator/dropship/upp
 	name = "UPP dropship part fabricator"
-	faction = "UPP"
+	faction = FACTION_UPP
 
 /obj/structure/machinery/part_fabricator/dropship/get_point_store()
 	return linked_supply_controller.dropship_points
@@ -267,11 +267,11 @@
 
 	unacidable = TRUE
 	indestructible = TRUE
-	faction = "USCM"
+	faction = FACTION_MARINE
 
 /obj/structure/machinery/part_fabricator/tank/upp
 	name = "UPP vehicle part fabricator"
-
+	faction = FACTION_UPP
 
 /obj/structure/machinery/part_fabricator/tank/get_point_store()
 	return linked_supply_controller.tank_points

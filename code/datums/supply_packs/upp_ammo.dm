@@ -48,7 +48,7 @@
 	containername = "Type 23 slug ammo crate"
 	group = "UPP Ammo"
 
-datum/supply_packs/ammo_8g_dragon_breath
+/datum/supply_packs/ammo_8g_dragon_breath
 	name = "Magazine box (Type 23, 10x dragon's breath)"
 	contains = list(
 		/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
@@ -67,7 +67,7 @@ datum/supply_packs/ammo_8g_dragon_breath
 	containername = "Type 23 dragon's breath ammo crate"
 	group = "UPP Ammo"
 
-datum/supply_packs/ammo_8g_flechette
+/datum/supply_packs/ammo_8g_flechette
 	name = "Magazine box (Type 23, 10x flechette)"
 	contains = list(
 		/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,

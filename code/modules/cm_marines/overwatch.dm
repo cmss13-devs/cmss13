@@ -26,7 +26,7 @@
 	var/marine_filter = list() // individual marine hiding control - list of string references
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
-	var/obj/structure/orbital_cannon/currentOrbitalCannon = null
+	var/obj/structure/orbital_cannon/current_orbital_cannon = null
 
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
@@ -43,7 +43,7 @@
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
 
-	currentOrbitalCannon = GLOB.almayer_orbital_cannon
+	current_orbital_cannon = GLOB.almayer_orbital_cannon
 	if (faction == FACTION_MARINE)
 		tacmap = new /datum/tacmap/drawing(src, minimap_type)
 	else
@@ -317,10 +317,10 @@
 		has_supply_pad = TRUE
 	data["can_launch_crates"] = has_supply_pad
 	data["has_crate_loaded"] = supply_crate
-	data["can_launch_obs"] = currentOrbitalCannon
-	if(currentOrbitalCannon)
-		data["ob_cooldown"] = COOLDOWN_TIMELEFT(currentOrbitalCannon, ob_firing_cooldown)
-		data["ob_loaded"] = currentOrbitalCannon.chambered_tray
+	data["can_launch_obs"] = current_orbital_cannon
+	if(current_orbital_cannon)
+		data["ob_cooldown"] = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
+		data["ob_loaded"] = current_orbital_cannon.chambered_tray
 
 	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
 	data["operator"] = operator.name
@@ -458,10 +458,10 @@
 				return
 			x_bomb = text2num(params["x"])
 			y_bomb = text2num(params["y"])
-			if(currentOrbitalCannon.is_disabled)
+			if(current_orbital_cannon.is_disabled)
 				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
-			else if(!COOLDOWN_FINISHED(currentOrbitalCannon, ob_firing_cooldown))
-				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(currentOrbitalCannon, ob_firing_cooldown)/10] seconds.")]")
+			else if(!COOLDOWN_FINISHED(current_orbital_cannon, ob_firing_cooldown))
+				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
 			else
 				handle_bombard(user)
 
@@ -633,7 +633,7 @@
 	var/area/ob_area = get_area(target)
 	if(!ob_area)
 		return
-	var/ob_type = currentOrbitalCannon.tray.warhead ? currentOrbitalCannon.tray.warhead.warhead_kind : "UNKNOWN"
+	var/ob_type = current_orbital_cannon.tray.warhead ? current_orbital_cannon.tray.warhead.warhead_kind : "UNKNOWN"
 
 	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 		if(!S.active)
@@ -748,7 +748,7 @@
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("No squad selected!")]")
 		return
 
-	if(!currentOrbitalCannon.chambered_tray)
+	if(!current_orbital_cannon.chambered_tray)
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The orbital cannon has no ammo chambered.")]")
 		return
 
@@ -798,8 +798,8 @@
 	if(!T)
 		return
 
-	var/ob_name = lowertext(currentOrbitalCannon.tray.warhead.name)
-	var/mutable_appearance/warhead_appearance = mutable_appearance(currentOrbitalCannon.tray.warhead.icon, currentOrbitalCannon.tray.warhead.icon_state)
+	var/ob_name = lowertext(current_orbital_cannon.tray.warhead.name)
+	var/mutable_appearance/warhead_appearance = mutable_appearance(current_orbital_cannon.tray.warhead.icon, current_orbital_cannon.tray.warhead.icon_state)
 	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
 
 	/// Project ARES interface log.
@@ -807,7 +807,7 @@
 
 	busy = FALSE
 	if(istype(T))
-		currentOrbitalCannon.fire_ob_cannon(T, user, current_squad)
+		current_orbital_cannon.fire_ob_cannon(T, user, current_squad)
 		user.count_niche_stat(STATISTICS_NICHE_OB)
 
 /obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
@@ -889,7 +889,7 @@
 /obj/structure/machinery/computer/overwatch/upp/Initialize()
 	. = ..()
 
-	currentOrbitalCannon = null
+	current_orbital_cannon = null
 	if (faction == FACTION_MARINE)
 		tacmap = new /datum/tacmap/drawing(src, minimap_type)
 	else
@@ -1169,10 +1169,10 @@
 		has_supply_pad = TRUE
 	data["can_launch_crates"] = has_supply_pad
 	data["has_crate_loaded"] = supply_crate
-	data["can_launch_obs"] = currentOrbitalCannon
-	if(currentOrbitalCannon)
-		data["ob_cooldown"] = COOLDOWN_TIMELEFT(currentOrbitalCannon, ob_firing_cooldown)
-		data["ob_loaded"] = currentOrbitalCannon.chambered_tray
+	data["can_launch_obs"] = current_orbital_cannon
+	if(current_orbital_cannon)
+		data["ob_cooldown"] = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
+		data["ob_loaded"] = current_orbital_cannon.chambered_tray
 
 	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
 	data["operator"] = operator.name

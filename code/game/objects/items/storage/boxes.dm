@@ -467,6 +467,19 @@
 	new /obj/item/storage/pill_bottle( src )
 	new /obj/item/storage/pill_bottle( src )
 
+/obj/item/storage/box/pillbottles/pillpackets
+	name = "box of pill packets"
+	desc = "it has pictures of pill packets on its front."
+	icon_state = "pillpacket_box"
+
+/obj/item/storage/box/pillbottles/pillpackets/fill_preset_inventory()
+	new /obj/item/storage/pill_bottle/packet( src )
+	new /obj/item/storage/pill_bottle/packet( src )
+	new /obj/item/storage/pill_bottle/packet( src )
+	new /obj/item/storage/pill_bottle/packet( src )
+	new /obj/item/storage/pill_bottle/packet( src )
+	new /obj/item/storage/pill_bottle/packet( src )
+	new /obj/item/storage/pill_bottle/packet( src )
 
 /obj/item/storage/box/snappops
 	name = "snap pop box"

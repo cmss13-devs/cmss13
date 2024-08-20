@@ -460,7 +460,7 @@ SOLAR DEVILS (PvE Marines)
 	)
 
 /datum/skills/smartgunner_PvE
-	name = "Fireteam Leader"
+	name = "Smartgunner"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,

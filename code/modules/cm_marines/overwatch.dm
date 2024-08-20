@@ -26,9 +26,13 @@
 	var/marine_filter = list() // individual marine hiding control - list of string references
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
+	var/obj/structure/orbital_cannon/currentOrbitalCannon = null
 
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
+
+	var/list/possible_options = list("Blue" = "crtblue", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
+	var/list/chosen_theme = list("Blue", "Green", "Yellow", "Red")
 
 
 	///List of saved coordinates, format of ["x", "y", "comment"]
@@ -39,6 +43,7 @@
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
 
+	currentOrbitalCannon = GLOB.almayer_orbital_cannon
 	if (faction == FACTION_MARINE)
 		tacmap = new /datum/tacmap/drawing(src, minimap_type)
 	else
@@ -80,10 +85,10 @@
 	if(!ishuman(user))
 		return ..()
 	if(mods["alt"]) //Changing UI theme
-		var/list/possible_options = list("Blue"= "crtblue", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
-		var/chosen_theme = tgui_input_list(user, "Choose a UI theme:", "UI Theme", list("Blue", "Green", "Yellow", "Red"))
-		if(possible_options[chosen_theme])
-			ui_theme = possible_options[chosen_theme]
+		var/tgui_input_theme = tgui_input_list(user, "Choose a UI theme:", "UI Theme", chosen_theme)
+
+		if(possible_options[tgui_input_theme])
+			ui_theme = possible_options[tgui_input_theme]
 		return TRUE
 	. = ..()
 
@@ -312,10 +317,10 @@
 		has_supply_pad = TRUE
 	data["can_launch_crates"] = has_supply_pad
 	data["has_crate_loaded"] = supply_crate
-	data["can_launch_obs"] = GLOB.almayer_orbital_cannon
-	if(GLOB.almayer_orbital_cannon)
-		data["ob_cooldown"] = COOLDOWN_TIMELEFT(GLOB.almayer_orbital_cannon, ob_firing_cooldown)
-		data["ob_loaded"] = GLOB.almayer_orbital_cannon.chambered_tray
+	data["can_launch_obs"] = currentOrbitalCannon
+	if(currentOrbitalCannon)
+		data["ob_cooldown"] = COOLDOWN_TIMELEFT(currentOrbitalCannon, ob_firing_cooldown)
+		data["ob_loaded"] = currentOrbitalCannon.chambered_tray
 
 	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
 	data["operator"] = operator.name
@@ -453,10 +458,10 @@
 				return
 			x_bomb = text2num(params["x"])
 			y_bomb = text2num(params["y"])
-			if(GLOB.almayer_orbital_cannon.is_disabled)
+			if(currentOrbitalCannon.is_disabled)
 				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
-			else if(!COOLDOWN_FINISHED(GLOB.almayer_orbital_cannon, ob_firing_cooldown))
-				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(GLOB.almayer_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
+			else if(!COOLDOWN_FINISHED(currentOrbitalCannon, ob_firing_cooldown))
+				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(currentOrbitalCannon, ob_firing_cooldown)/10] seconds.")]")
 			else
 				handle_bombard(user)
 
@@ -628,7 +633,7 @@
 	var/area/ob_area = get_area(target)
 	if(!ob_area)
 		return
-	var/ob_type = GLOB.almayer_orbital_cannon.tray.warhead ? GLOB.almayer_orbital_cannon.tray.warhead.warhead_kind : "UNKNOWN"
+	var/ob_type = currentOrbitalCannon.tray.warhead ? currentOrbitalCannon.tray.warhead.warhead_kind : "UNKNOWN"
 
 	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 		if(!S.active)
@@ -743,7 +748,7 @@
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("No squad selected!")]")
 		return
 
-	if(!GLOB.almayer_orbital_cannon.chambered_tray)
+	if(!currentOrbitalCannon.chambered_tray)
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The orbital cannon has no ammo chambered.")]")
 		return
 
@@ -793,8 +798,8 @@
 	if(!T)
 		return
 
-	var/ob_name = lowertext(GLOB.almayer_orbital_cannon.tray.warhead.name)
-	var/mutable_appearance/warhead_appearance = mutable_appearance(GLOB.almayer_orbital_cannon.tray.warhead.icon, GLOB.almayer_orbital_cannon.tray.warhead.icon_state)
+	var/ob_name = lowertext(currentOrbitalCannon.tray.warhead.name)
+	var/mutable_appearance/warhead_appearance = mutable_appearance(currentOrbitalCannon.tray.warhead.icon, currentOrbitalCannon.tray.warhead.icon_state)
 	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
 
 	/// Project ARES interface log.
@@ -802,7 +807,7 @@
 
 	busy = FALSE
 	if(istype(T))
-		GLOB.almayer_orbital_cannon.fire_ob_cannon(T, user, current_squad)
+		currentOrbitalCannon.fire_ob_cannon(T, user, current_squad)
 		user.count_niche_stat(STATISTICS_NICHE_OB)
 
 /obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
@@ -877,6 +882,19 @@
 	faction = FACTION_CLF
 /obj/structure/machinery/computer/overwatch/upp
 	faction = FACTION_UPP
+	ui_theme = "crtupp"
+	possible_options = list("UPP" = "crtupp", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
+	chosen_theme = list("UPP", "Green", "Yellow", "Red")
+
+/obj/structure/machinery/computer/overwatch/upp/Initialize()
+	. = ..()
+
+	currentOrbitalCannon = null
+	if (faction == FACTION_MARINE)
+		tacmap = new /datum/tacmap/drawing(src, minimap_type)
+	else
+		tacmap = new(src, minimap_type) // Non-drawing version
+
 /obj/structure/machinery/computer/overwatch/pmc
 	faction = FACTION_PMC
 /obj/structure/machinery/computer/overwatch/twe
@@ -944,6 +962,223 @@
 /obj/structure/supply_drop/upp4
 	icon_state = "deltadrop"
 	squad = "UPPS1"
+
+/obj/structure/machinery/computer/overwatch/upp/ui_data(mob/user)
+	var/list/data = list()
+
+	data["theme"] = ui_theme
+
+	if(!current_squad)
+		data["squad_list"] = list()
+		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
+			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
+				data["squad_list"] += current_squad.name
+		return data
+
+	data["current_squad"] = current_squad.name
+
+	data["primary_objective"] = current_squad.primary_objective
+	data["secondary_objective"] = current_squad.secondary_objective
+
+	data["marines"] = list()
+
+	var/leader_count = 0
+	var/ftl_count = 0
+	var/spec_count = 0
+	var/medic_count = 0
+	var/engi_count = 0
+	var/smart_count = 0
+	var/marine_count = 0
+
+	var/leaders_alive = 0
+	var/ftl_alive = 0
+	var/spec_alive= 0
+	var/medic_alive= 0
+	var/engi_alive = 0
+	var/smart_alive = 0
+	var/marines_alive = 0
+
+	var/specialist_type
+
+	var/SL_z //z level of the Squad Leader
+	if(current_squad.squad_leader)
+		var/turf/SL_turf = get_turf(current_squad.squad_leader)
+		SL_z = SL_turf.z
+
+	for(var/marine in current_squad.marines_list)
+		if(!marine)
+			continue //just to be safe
+		var/mob_name = "unknown"
+		var/mob_state = ""
+		var/has_helmet = TRUE
+		var/role = "unknown"
+		var/acting_sl = ""
+		var/fteam = ""
+		var/distance = "???"
+		var/area_name = "???"
+		var/is_squad_leader = FALSE
+		var/mob/living/carbon/human/marine_human
+
+
+		if(ishuman(marine))
+			marine_human = marine
+			if(istype(marine_human.loc, /obj/structure/machinery/cryopod)) //We don't care much for these
+				continue
+			mob_name = marine_human.real_name
+			var/area/current_area = get_area(marine_human)
+			var/turf/current_turf = get_turf(marine_human)
+			if(!current_turf)
+				continue
+			if(current_area)
+				area_name = sanitize_area(current_area.name)
+
+			switch(z_hidden)
+				if(HIDE_ALMAYER)
+					if(is_mainship_level(current_turf.z))
+						continue
+				if(HIDE_GROUND)
+					if(is_ground_level(current_turf.z))
+						continue
+
+			var/obj/item/card/id/card = marine_human.get_idcard()
+			if(marine_human.job)
+				role = marine_human.job
+			else if(card?.rank) //decapitated marine is mindless,
+				role = card.rank
+
+			if(current_squad.squad_leader)
+				if(marine_human == current_squad.squad_leader)
+					distance = "N/A"
+					if(current_squad.name == SQUAD_SOF)
+						if(marine_human.job == JOB_MARINE_RAIDER_CMD)
+							acting_sl = " (direct command)"
+						else if(marine_human.job != JOB_MARINE_RAIDER_SL)
+							acting_sl = " (acting TL)"
+					else if(marine_human.job != JOB_SQUAD_LEADER)
+						acting_sl = " (acting SL)"
+					is_squad_leader = TRUE
+				else if(current_turf && (current_turf.z == SL_z))
+					distance = "[get_dist(marine_human, current_squad.squad_leader)] ([dir2text_short(Get_Compass_Dir(current_squad.squad_leader, marine_human))])"
+
+
+			switch(marine_human.stat)
+				if(CONSCIOUS)
+					mob_state = "Conscious"
+
+				if(UNCONSCIOUS)
+					mob_state = "Unconscious"
+
+				if(DEAD)
+					mob_state = "Dead"
+
+			if(!istype(marine_human.head, /obj/item/clothing/head/helmet/marine))
+				has_helmet = FALSE
+
+			if(!marine_human.key || !marine_human.client)
+				if(marine_human.stat != DEAD)
+					mob_state += " (SSD)"
+
+
+			if(marine_human.assigned_fireteam)
+				fteam = " [marine_human.assigned_fireteam]"
+
+		else //listed marine was deleted or gibbed, all we have is their name
+			for(var/datum/data/record/marine_record as anything in GLOB.data_core.general)
+				if(marine_record.fields["name"] == marine)
+					role = marine_record.fields["real_rank"]
+					break
+			mob_state = "Dead"
+			mob_name = marine
+
+
+		switch(role)
+			if(JOB_UPP_LEADER)
+				leader_count++
+				if(mob_state != "Dead")
+					leaders_alive++
+			if(JOB_SQUAD_TEAM_LEADER) // no upp team leader
+				ftl_count++
+				if(mob_state != "Dead")
+					ftl_alive++
+			if(JOB_UPP_SPECIALIST)
+				spec_count++
+				if(marine_human)
+					var/obj/item/card/id/card = marine_human.get_idcard()
+					if(card?.assignment) //decapitated marine is mindless,
+						if(specialist_type)
+							specialist_type = "MULTIPLE"
+						else
+							var/list/spec_type = splittext(card.assignment, "(")
+							if(islist(spec_type) && (length(spec_type) > 1))
+								specialist_type = splittext(spec_type[2], ")")[1]
+				else if(!specialist_type)
+					specialist_type = "UNKNOWN"
+				if(mob_state != "Dead")
+					spec_alive++
+			if(JOB_UPP_MEDIC)
+				medic_count++
+				if(mob_state != "Dead")
+					medic_alive++
+			if(JOB_UPP_ENGI)
+				engi_count++
+				if(mob_state != "Dead")
+					engi_alive++
+			if(JOB_SQUAD_SMARTGUN) // no upp smartgun
+				smart_count++
+				if(mob_state != "Dead")
+					smart_alive++
+			if(JOB_UPP)
+				marine_count++
+				if(mob_state != "Dead")
+					marines_alive++
+
+		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name,"ref" = REF(marine)))
+		data["marines"] += marine_data
+		if(is_squad_leader)
+			if(!data["squad_leader"])
+				data["squad_leader"] = marine_data[1]
+
+	data["total_deployed"] = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count
+	data["living_count"] = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive
+
+	data["leader_count"] = leader_count
+	data["ftl_count"] = ftl_count
+	data["spec_count"] = spec_count
+	data["medic_count"] = medic_count
+	data["engi_count"] = engi_count
+	data["smart_count"] = smart_count
+
+	data["leaders_alive"] = leaders_alive
+	data["ftl_alive"] = ftl_alive
+	data["spec_alive"] = spec_alive
+	data["medic_alive"] = medic_alive
+	data["engi_alive"] = engi_alive
+	data["smart_alive"] = smart_alive
+	data["specialist_type"] = specialist_type ? specialist_type : "NONE"
+
+	data["z_hidden"] = z_hidden
+
+	data["saved_coordinates"] = list()
+	for(var/i in 1 to length(saved_coordinates))
+		data["saved_coordinates"] += list(list("x" = saved_coordinates[i]["x"], "y" = saved_coordinates[i]["y"], "comment" = saved_coordinates[i]["comment"], "index" = i))
+
+	var/has_supply_pad = FALSE
+	var/obj/structure/closet/crate/supply_crate
+	if(current_squad.drop_pad)
+		supply_crate = locate() in current_squad.drop_pad.loc
+		has_supply_pad = TRUE
+	data["can_launch_crates"] = has_supply_pad
+	data["has_crate_loaded"] = supply_crate
+	data["can_launch_obs"] = currentOrbitalCannon
+	if(currentOrbitalCannon)
+		data["ob_cooldown"] = COOLDOWN_TIMELEFT(currentOrbitalCannon, ob_firing_cooldown)
+		data["ob_loaded"] = currentOrbitalCannon.chambered_tray
+
+	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
+	data["operator"] = operator.name
+
+	return data
+
 
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND

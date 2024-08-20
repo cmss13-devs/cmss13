@@ -862,3 +862,210 @@
 		update_free_mar()
 	target.hud_set_squad()
 	return
+
+/datum/squad/upp/put_marine_in_squad(mob/living/carbon/human/M, obj/item/card/id/ID)
+
+	if(!istype(M))
+		return FALSE //Logic
+	if(!src.usable)
+		return FALSE
+	if(!M.job)
+		return FALSE //Not yet
+	if(M.assigned_squad)
+		return FALSE //already in a squad
+
+	var/obj/item/card/id/C = ID
+	if(!C)
+		C = M.get_idcard()
+	if(!C)
+		C = M.get_active_hand()
+	if(!istype(C))
+		return FALSE //No ID found
+
+	var/assignment = M.job
+	var/paygrade
+
+	var/list/extra_access = list()
+
+	switch(GET_DEFAULT_ROLE(M.job))
+		if(JOB_UPP_ENGI)
+			assignment = JOB_SQUAD_ENGI
+			num_engineers++
+			C.claimedgear = FALSE
+		if(JOB_UPP_MEDIC)
+			assignment = JOB_SQUAD_MEDIC
+			num_medics++
+			C.claimedgear = FALSE
+		if(JOB_UPP_SPECIALIST)
+			assignment = JOB_SQUAD_SPECIALIST
+			num_specialists++
+		if(JOB_SQUAD_TEAM_LEADER)
+			assignment = JOB_SQUAD_TEAM_LEADER
+			num_tl++
+			M.important_radio_channels += radio_freq
+		if(JOB_SQUAD_SMARTGUN)
+			assignment = JOB_SQUAD_SMARTGUN
+			num_smartgun++
+		if(JOB_UPP_LEADER)
+			if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_UPP_LEADER) //field promoted SL
+				var/old_lead = squad_leader
+				demote_squad_leader() //replaced by the real one
+				SStracking.start_tracking(tracking_id, old_lead)
+			assignment = squad_type + " Leader"
+			squad_leader = M
+			SStracking.set_leader(tracking_id, M)
+			SStracking.start_tracking("marine_sl", M)
+
+			if(GET_DEFAULT_ROLE(M.job) == JOB_UPP_LEADER) //field promoted SL don't count as real ones
+				num_leaders++
+
+	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(personnel_deleted), override = TRUE)
+	if(assignment != JOB_UPP_LEADER)
+		SStracking.start_tracking(tracking_id, M)
+
+	count++ //Add up the tally. This is important in even squad distribution.
+
+	if(GET_DEFAULT_ROLE(M.job) != JOB_UPP)
+		log_admin("[key_name(M)] has been assigned as [name] [M.job]") // we don't want to spam squad marines but the others are useful
+
+	marines_list += M
+	M.assigned_squad = src //Add them to the squad
+	C.access += (src.access + extra_access) //Add their squad access to their ID
+	if(prepend_squad_name_to_assignment)
+		C.assignment = "[name] [assignment]"
+	else
+		C.assignment = assignment
+
+	SEND_SIGNAL(M, COMSIG_SET_SQUAD)
+
+	if(paygrade)
+		C.paygrade = paygrade
+	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
+
+	var/obj/item/device/radio/headset/almayer/marine/headset = locate() in list(M.wear_l_ear, M.wear_r_ear)
+	if(headset && radio_freq)
+		headset.set_frequency(radio_freq)
+	M.update_inv_head()
+	M.update_inv_wear_suit()
+	M.update_inv_gloves()
+	return TRUE
+
+/datum/squad/upp/forget_marine_in_squad(mob/living/carbon/human/M)
+	if(M.assigned_squad.squad_leader == M)
+		if(GET_DEFAULT_ROLE(M.job) != JOB_UPP_LEADER) //a field promoted SL, not a real one
+			demote_squad_leader()
+		else
+			M.assigned_squad.squad_leader = null
+		update_squad_leader()
+	else
+		if(M.assigned_fireteam)
+			if(fireteam_leaders[M.assigned_fireteam] == M)
+				unassign_ft_leader(M.assigned_fireteam, TRUE, FALSE)
+			unassign_fireteam(M, FALSE)
+
+	count--
+	marines_list -= M
+	personnel_deleted(M, zap = TRUE) // Free all refs and Zap it entierly as this is on purpose
+	clear_ref_tracking(M)
+	update_free_mar()
+	M.assigned_squad = null
+
+	switch(GET_DEFAULT_ROLE(M.job))
+		if(JOB_UPP_ENGI)
+			num_engineers--
+		if(JOB_UPP_MEDIC)
+			num_medics--
+		if(JOB_UPP_SPECIALIST)
+			num_specialists--
+		if(JOB_SQUAD_SMARTGUN)
+			num_smartgun--
+		if(JOB_SQUAD_TEAM_LEADER)
+			num_tl--
+		if(JOB_UPP_LEADER)
+			num_leaders--
+
+//proc for demoting current Squad Leader
+/datum/squad/upp/demote_squad_leader(leader_killed)
+	var/mob/living/carbon/human/old_lead = squad_leader
+
+	SStracking.delete_leader(tracking_id)
+	SStracking.stop_tracking("marine_sl", old_lead)
+
+	squad_leader = null
+	switch(GET_DEFAULT_ROLE(old_lead.job))
+		if(JOB_UPP_SPECIALIST)
+			old_lead.comm_title = "Spc"
+		if(JOB_UPP_ENGI)
+			old_lead.comm_title = "Sap"
+		if(JOB_UPP_MEDIC)
+			old_lead.comm_title = "HM"
+		if(JOB_SQUAD_TEAM_LEADER)
+			old_lead.comm_title = "FTL"
+		if(JOB_SQUAD_SMARTGUN)
+			old_lead.comm_title = "SG"
+		if(JOB_UPP_LEADER)
+			if(!leader_killed)
+				old_lead.comm_title = "Sgt"
+		else
+			old_lead.comm_title = "Sld"
+
+	if(GET_DEFAULT_ROLE(old_lead.job) != JOB_SQUAD_LEADER || !leader_killed)
+		var/obj/item/device/radio/headset/almayer/marine/R = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+		if(R)
+			for(var/obj/item/device/encryptionkey/squadlead/acting/key in R.keys)
+				R.keys -= key
+				qdel(key)
+			R.recalculateChannels()
+		var/obj/item/card/id/card = old_lead.get_idcard()
+		if(card)
+			card.access -= ACCESS_MARINE_LEADER
+	REMOVE_TRAITS_IN(old_lead, TRAIT_SOURCE_SQUAD_LEADER)
+	old_lead.hud_set_squad()
+	old_lead.update_inv_head() //updating marine helmet leader overlays
+	old_lead.update_inv_wear_suit()
+	to_chat(old_lead, FONT_SIZE_BIG(SPAN_BLUE("You're no longer the [squad_type] Leader for [src]!")))
+
+/datum/squad/upp/manage_fireteams(mob/living/carbon/human/target)
+	var/obj/item/card/id/ID = target.get_idcard()
+	if(!ID || !(ID.rank in GLOB.ROLES_MARINES_ANTAG))
+		return
+	if(ID.rank == JOB_UPP_LEADER || squad_leader == target) //if SL/aSL are chosen
+		var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders"))
+		if(target.assigned_squad != src)
+			return //in case they somehow change squad while SL is choosing
+		if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
+			return //if SL got knocked out or demoted while choosing
+		switch(choice)
+			if("Unassign Fireteam 1 Leader") unassign_ft_leader("FT1", TRUE)
+			if("Unassign Fireteam 2 Leader") unassign_ft_leader("FT2", TRUE)
+			if("Unassign Fireteam 3 Leader") unassign_ft_leader("FT3", TRUE)
+			if("Unassign all Team Leaders") unassign_all_ft_leaders()
+			else return
+		target.hud_set_squad()
+		return
+	if(target.assigned_fireteam)
+		if(fireteam_leaders[target.assigned_fireteam] == target) //Check if person already is FT leader
+			var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign from Team Leader position"))
+			if(target.assigned_squad != src)
+				return
+			if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
+				return
+			if(choice == "Unassign from Team Leader position")
+				unassign_ft_leader(target.assigned_fireteam, TRUE)
+			target.hud_set_squad()
+			return
+
+		var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Remove from Fireteam", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3", "Assign as Team Leader"))
+		if(target.assigned_squad != src)
+			return
+		if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
+			return
+		switch(choice)
+			if("Remove from Fireteam") unassign_fireteam(target)
+			if("Assign to Fireteam 1") assign_fireteam("FT1", target)
+			if("Assign to Fireteam 2") assign_fireteam("FT2", target)
+			if("Assign to Fireteam 3") assign_fireteam("FT3", target)
+			if("Assign as Team Leader") assign_ft_leader(target.assigned_fireteam, target)
+			else return
+		target.hud_set_squad()
+		return

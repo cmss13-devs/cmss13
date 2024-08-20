@@ -57,7 +57,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 
 /datum/controller/supply/upp
-	points = 99999
+	points = 120
 	all_supply_groups = list(
 		"UPP Weapons",
 		"UPP Ammo",
@@ -99,16 +99,6 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 		if(!length(clear_turfs))
 			shoppinglist.Cut()
 			return
-
-		if(order.object.contraband == TRUE && prob(5))
-		// Mendoza loaded the wrong order in. What a dunce!
-			var/list/contraband_list
-			for(var/supply_type in GLOB.supply_packs_datums)
-				var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
-				if(supply_pack.contraband == FALSE)
-					continue
-				LAZYADD(contraband_list, supply_pack)
-			order.object = pick(contraband_list)
 
 		// Container generation
 		var/turf/target_turf = pick(clear_turfs)
@@ -203,7 +193,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 		\n<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
 
 
-	show_browser(user, dat, "General Supply Storage ", "computer", "size=575x450")
+	show_browser(user, dat, "General Supply Storage", "computer", "size=575x450")
 	return
 
 /obj/structure/machinery/computer/ordercomp/upp/Topic(href, href_list)

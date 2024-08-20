@@ -109,10 +109,17 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/last_viewed_group = "categories"
 	var/first_time = TRUE
 	var/datum/controller/supply/linked_supply_controller
+	var/faction = "USCM"
 
 /obj/structure/machinery/computer/supplycomp/Initialize()
 	. = ..()
-	linked_supply_controller = GLOB.supply_controller
+	switch(faction)
+		if("USCM")
+			linked_supply_controller = GLOB.supply_controller
+		if("UPP")
+			linked_supply_controller = GLOB.supply_controller_upp
+		else
+			linked_supply_controller = GLOB.supply_controller //we default to normal budget on wrong input
 	LAZYADD(linked_supply_controller.bound_supply_computer_list, src)
 
 /obj/structure/machinery/computer/supplycomp/Destroy()

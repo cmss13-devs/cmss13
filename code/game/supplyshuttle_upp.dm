@@ -1,5 +1,140 @@
 GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
+/obj/structure/machinery/computer/ordercomp/upp
+	name = "UPP Supply ordering console"
+	circuit = /obj/item/circuitboard/computer/ordercomp/upp
+
+/obj/structure/machinery/computer/ordercomp/upp/Initialize()
+	. = ..()
+	linked_supply_controller = GLOB.supply_controller_upp
+
+/obj/structure/machinery/computer/ordercomp/upp/attack_hand(mob/user as mob)
+	if(..())
+		return
+	user.set_interaction(src)
+	var/dat
+	if(temp)
+		dat = temp
+	else
+		var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
+		if (shuttle)
+			dat += {"Location: [shuttle.has_arrive_time() ? "Raising platform":shuttle.at_station() ? "Raised":"Lowered"]<BR>
+			<HR>Supply budget: $[linked_supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>
+		<BR>\n<A href='?src=\ref[src];order=categories'>Request items</A><BR><BR>
+		<A href='?src=\ref[src];vieworders=1'>View approved orders</A><BR><BR>
+		<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR><BR>
+		<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
+
+	show_browser(user, dat, "General Supply Storage", "computer", "size=575x450")
+	return
+
+/obj/structure/machinery/computer/ordercomp/upp/Topic(href, href_list)
+	if(..())
+		return
+
+	if( isturf(loc) && (in_range(src, usr) || isSilicon(usr)) )
+		usr.set_interaction(src)
+
+	if(href_list["order"])
+		if(href_list["order"] == "categories")
+			//all_supply_groups
+			//Request what?
+			last_viewed_group = "categories"
+			temp = "<b>Supply budget: $[linked_supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
+			temp += "<A href='?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
+			temp += "<b>Select a category</b><BR><BR>"
+			for(var/supply_group_name in linked_supply_controller.all_supply_groups)
+				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
+		else
+			last_viewed_group = href_list["order"]
+			temp = "<b>Supply budget: $[linked_supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
+			temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
+			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
+			for(var/supply_type in GLOB.supply_packs_datums)
+				var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
+				if(supply_pack.contraband || supply_pack.group != last_viewed_group || !supply_pack.buyable)
+					continue //Have to send the type instead of a reference to
+				temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
+
+	else if (href_list["doorder"])
+		if(world.time < reqtime)
+			for(var/mob/V in hearers(src))
+				V.show_message("<b>[src]</b>'s monitor flashes, \"[world.time - reqtime] seconds remaining until another requisition form may be printed.\"", SHOW_MESSAGE_VISIBLE)
+			return
+
+		//Find the correct supply_pack datum
+		var/supply_pack_type = GLOB.supply_packs_types[href_list["doorder"]]
+		if(!supply_pack_type)
+			return
+		var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_pack_type]
+
+		if(supply_pack.contraband || !supply_pack.buyable)
+			return
+
+		var/timeout = world.time + 600
+		var/reason = strip_html(input(usr,"Reason:","Why do you require this item?","") as null|text)
+		if(world.time > timeout) return
+		if(!reason) return
+
+		var/idname = "*None Provided*"
+		var/idrank = "*None Provided*"
+		if(ishuman(usr))
+			var/mob/living/carbon/human/H = usr
+			idname = H.get_authentification_name()
+			idrank = H.get_assignment()
+		else if(isSilicon(usr))
+			idname = usr.real_name
+
+		linked_supply_controller.ordernum++
+		var/obj/item/paper/reqform = new /obj/item/paper(loc)
+		reqform.name = "UPP Requisition Form - [supply_pack.name]"
+		reqform.info += "<h3>UPP Supply Requisition Form</h3><hr>"
+		reqform.info += "INDEX: #[linked_supply_controller.ordernum]<br>"
+		reqform.info += "REQUESTED BY: [idname]<br>"
+		reqform.info += "RANK: [idrank]<br>"
+		reqform.info += "REASON: [reason]<br>"
+		reqform.info += "SUPPLY CRATE TYPE: [supply_pack.name]<br>"
+		reqform.info += "ACCESS RESTRICTION: [get_access_desc(supply_pack.access)]<br>"
+		reqform.info += "CONTENTS:<br>"
+		reqform.info += supply_pack.manifest
+		reqform.info += "<hr>"
+		reqform.info += "GLORY TO THE UPP<br>"
+		reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
+
+		reqform.update_icon() //Fix for appearing blank when printed.
+		reqtime = (world.time + 5) % 1e5
+
+		//make our supply_order datum
+		var/datum/supply_order/supply_order = new /datum/supply_order()
+		supply_order.ordernum = linked_supply_controller.ordernum
+		supply_order.object = supply_pack
+		supply_order.orderedby = idname
+		linked_supply_controller.requestlist += supply_order
+
+		temp = "Thanks for your request. The cargo team will process it as soon as possible.<BR>"
+		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
+
+	else if (href_list["vieworders"])
+		temp = "Current approved orders: <BR><BR>"
+		for(var/S in linked_supply_controller.shoppinglist)
+			var/datum/supply_order/SO = S
+			temp += "[SO.object.name] approved by [SO.approvedby]<BR>"
+		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+
+	else if (href_list["viewrequests"])
+		temp = "Current requests: <BR><BR>"
+		for(var/S in linked_supply_controller.requestlist)
+			var/datum/supply_order/SO = S
+			temp += "#[SO.ordernum] - [SO.object.name] requested by [SO.orderedby]<BR>"
+		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+
+	else if (href_list["mainmenu"])
+		temp = null
+
+	add_fingerprint(usr)
+	updateUsrDialog()
+	return
+
 /obj/structure/machinery/computer/supplycomp/upp
 	name = "UPP supply console"
 	desc = "A console for the General Supply Storage"
@@ -49,8 +184,8 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 	info += "  \
 		</ul><br/><hr><br/><p class='important header'>    \
+		<br/> Glory to the UPP	\
 			Please stamp below and return to confirm receipt of shipment   \
-		<br/> Glory to the UPP!	\
 		</p></div>"
 
 	name = "[name] - [ordername]"

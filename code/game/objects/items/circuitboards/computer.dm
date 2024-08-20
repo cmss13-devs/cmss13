@@ -143,6 +143,10 @@
 	name = "Circuit board (Supply ordering console)"
 	build_path = /obj/structure/machinery/computer/ordercomp
 
+/obj/item/circuitboard/computer/ordercomp/upp
+	name = "Circuit board (UPP Supply ordering console)"
+	build_path = /obj/structure/machinery/computer/ordercomp/upp
+
 /obj/item/circuitboard/computer/supply_drop_console
 	name = "Circuit board (Supply Drop Console)"
 	build_path = /obj/structure/machinery/computer/supply_drop_console

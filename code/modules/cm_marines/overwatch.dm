@@ -36,7 +36,6 @@
 	///Currently selected UI theme
 	var/ui_theme = "crtblue"
 
-
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
 

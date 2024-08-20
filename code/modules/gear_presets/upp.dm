@@ -10,6 +10,7 @@
 	allow_additional = TRUE
 	late_joinable = TRUE
 	gear_preset = /datum/equipment_preset/upp/soldier
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp
 	name = FACTION_UPP

@@ -65,7 +65,7 @@
 	// Whether the squad is available for squad management
 	var/locked = FALSE
 	/// Whether it is visible in overwatch
-	var/active = FALSE
+	var/active = TRUE //this var in fact looks COMPLEATLY useless as visibility in overwatch is also determined by faction
 	/// Which faction the squad is in
 	var/faction = FACTION_MARINE
 

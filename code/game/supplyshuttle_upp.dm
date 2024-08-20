@@ -10,6 +10,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 	linked_supply_controller = GLOB.supply_controller_upp
 	LAZYADD(linked_supply_controller.bound_supply_computer_list, src)
 
+
 /obj/item/paper/manifest/upp
 	name = "UPP Supply Manifest"
 

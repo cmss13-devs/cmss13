@@ -468,6 +468,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	for(var/pool in base_random_crate_intervals)
 		random_crates_carry[pool] = 0
 
+/datum/controller/supply/Destroy(force, ...)
+	. = ..()
+	for(var/console in bound_supply_computer_list) //removal of this datum breakes the consoles anyway
+		qdel(console)
+
 /datum/controller/supply/proc/start_processing()
 	START_PROCESSING(SSslowobj, src)
 

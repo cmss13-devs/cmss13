@@ -3,14 +3,13 @@
 	job_list = UPP_JOB_LIST
 
 /datum/job/antag/upp
-	title = JOB_UPP
+	title = FACTION_UPP
 	selection_class = "job_antag"
 	total_positions = 1
 	spawn_positions = 1
 	allow_additional = TRUE
 	late_joinable = TRUE
 	gear_preset = /datum/equipment_preset/upp/soldier
-	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp
 	name = FACTION_UPP
@@ -82,6 +81,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	gear_preset = /datum/equipment_preset/upp/soldier
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp/soldier
 	name = "UPP Soldier (Cryo)"
@@ -275,6 +275,7 @@
 	title = JOB_UPP_MEDIC
 	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/medic
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 
 /datum/equipment_preset/upp/medic
@@ -465,6 +466,7 @@
 	title = JOB_UPP_ENGI
 	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/sapper
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp/sapper
 	name = "UPP Sapper (Cryo)"
@@ -627,6 +629,7 @@
 	title = JOB_UPP_SPECIALIST
 	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/specialist
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp/specialist
 	name = "UPP Specialist (Cryo)"
@@ -771,6 +774,7 @@
 	title = JOB_UPP_SPECIALIST
 	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/machinegunner
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp/machinegunner
 	name = "UPP Machinegunner (Cryo)"
@@ -909,6 +913,7 @@
 	title = JOB_UPP_LEADER
 	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/leader
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp/leader
 	name = "UPP Squad Leader (Cryo)"
@@ -3130,6 +3135,7 @@
 	title = JOB_UPP_CONSCRIPT
 	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/conscript
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp/conscript
 	//meme role

@@ -695,6 +695,7 @@
 #include "code\datums\supply_packs\upp_food.dm"
 #include "code\datums\supply_packs\upp_gear.dm"
 #include "code\datums\supply_packs\upp_medical.dm"
+#include "code\datums\supply_packs\upp_mortar.dm"
 #include "code\datums\supply_packs\upp_weapons.dm"
 #include "code\datums\supply_packs\vehicle_ammo.dm"
 #include "code\datums\supply_packs\vehicle_equipment.dm"

@@ -17,7 +17,6 @@
 	var/containername = null
 	var/access = null
 	var/contraband = 0 /// Tell if the crate is a contraband value 1 or not 0.
-	var/isUPPCrate = 0
 	var/group = null
 	var/buyable = 1 ///Can this pack be bought? These packs don't show up at all - they have to be spawned externally (fe: DEFCON ASRS)
 	var/randomised_num_contained = 0 //Randomly picks X of items out of the contains list instead of using all.

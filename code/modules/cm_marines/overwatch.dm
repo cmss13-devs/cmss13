@@ -942,11 +942,11 @@
 	icon_state = "deltadrop"
 	squad = SQUAD_MARINE_4
 
-//======UPP=======
-
 /obj/structure/supply_drop/echo //extra supply drop pad
 	icon_state = "echodrop"
-	squad = "UPPS1"
+	squad = SQUAD_MARINE_5
+
+//======UPP=======
 
 /obj/structure/supply_drop/upp1
 	icon_state = "alphadrop"
@@ -954,14 +954,15 @@
 
 /obj/structure/supply_drop/upp2
 	icon_state = "bravodrop"
-	squad = "UPPS1"
+	squad = "UPPS2"
 
 /obj/structure/supply_drop/upp3
 	icon_state = "charliedrop"
-	squad = "UPPS1"
+	squad = "UPPS3"
+
 /obj/structure/supply_drop/upp4
 	icon_state = "deltadrop"
-	squad = "UPPS1"
+	squad = "UPPS4"
 
 /obj/structure/machinery/computer/overwatch/upp/ui_data(mob/user)
 	var/list/data = list()

@@ -939,7 +939,7 @@
 	squad = "UPPS1"
 
 /obj/structure/supply_drop/upp3
-	icon_state = "charlieodrop"
+	icon_state = "charliedrop"
 	squad = "UPPS1"
 /obj/structure/supply_drop/upp4
 	icon_state = "deltadrop"

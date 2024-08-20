@@ -154,8 +154,6 @@
 /obj/item/circuitboard/computer/supplycomp/upp
 	name = "Circuit board (General Supply Storage console)"
 	build_path = /obj/structure/machinery/computer/supplycomp/upp
-	//No black market under communism
-	black_market_lock = TRUE
 
 /obj/item/circuitboard/computer/supplycomp
 	name = "Circuit board (ASRS console)"
@@ -177,6 +175,12 @@
 	if (..(SC))
 		SC.toggle_contraband(contraband_enabled)
 		SC.lock_black_market(black_market_lock)
+
+//No black market under communism
+/obj/item/circuitboard/computer/supplycomp/upp/attackby(obj/item/tool, mob/user)
+	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
+		to_chat(user, SPAN_WARNING("You try to pulse the circuit board, but nothing happens. Maybe you need something more specialized?"))
+		return
 
 /obj/item/circuitboard/computer/supplycomp/attackby(obj/item/tool, mob/user)
 	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))

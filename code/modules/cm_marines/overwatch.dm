@@ -922,7 +922,7 @@
 	. = ..()
 	GLOB.supply_drop_list += src
 	for(var/datum/squad/glob_squad in GLOB.RoleAuthority.squads)
-		if(squad == glob_squad)
+		if(squad == glob_squad.name)
 			if(glob_squad.drop_pad)
 				return
 			else

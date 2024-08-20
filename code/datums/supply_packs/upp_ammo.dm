@@ -90,7 +90,7 @@
 /datum/supply_packs/upp/ammo_Type64_x10
 	name = "Magazine box (Type 64, 10x regular mags)"
 	contains = list(
-		/obj/item/ammo_box/magazine/type64
+		/obj/item/ammo_box/magazine/type64,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo

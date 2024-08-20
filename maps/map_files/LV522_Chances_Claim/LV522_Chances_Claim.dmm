@@ -1523,7 +1523,7 @@
 "bbi" = (
 /obj/structure/closet/secure_closet/atmos_personal,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "bbk" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
@@ -6908,7 +6908,7 @@
 /area/lv522/atmos/cargo_intake)
 "ebR" = (
 /obj/structure/closet/secure_closet/engineering_welding,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "ecm" = (
 /obj/structure/machinery/iv_drip,
@@ -12122,7 +12122,7 @@
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "gUQ" = (
 /obj/structure/machinery/disposal,
@@ -12319,7 +12319,7 @@
 /area/lv522/indoors/a_block/kitchen/glass)
 "gZg" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "gZh" = (
 /obj/structure/platform_decoration,
@@ -15034,7 +15034,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "izr" = (
 /obj/structure/platform/stair_cut,
@@ -16372,7 +16372,7 @@
 "jkL" = (
 /obj/structure/closet/toolcloset,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "jlc" = (
 /obj/structure/surface/rack,
@@ -17976,7 +17976,7 @@
 "jYy" = (
 /obj/structure/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "jYF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18315,7 +18315,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "kfi" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "kfq" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -21336,7 +21336,7 @@
 /obj/structure/machinery/cell_charger,
 /obj/effect/spawner/random/powercell,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "lKC" = (
 /obj/structure/window_frame/strata,
@@ -25207,7 +25207,7 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "nMl" = (
 /obj/structure/bed/chair{
@@ -29532,7 +29532,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/glasses/meson,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "pXq" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -33243,7 +33243,7 @@
 /obj/item/fuel_cell,
 /obj/item/fuel_cell,
 /obj/structure/surface/rack,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "rCi" = (
 /turf/closed/shuttle/dropship2/tornado{
@@ -33424,7 +33424,7 @@
 	pixel_y = 30
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "rIx" = (
 /obj/structure/machinery/light{
@@ -35283,7 +35283,7 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
 	},
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "sEc" = (
 /obj/structure/bed/bedroll{
@@ -35893,7 +35893,7 @@
 	},
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "sQI" = (
 /obj/effect/decal/cleanable/generic,
@@ -36125,7 +36125,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "sXM" = (
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "sXQ" = (
 /obj/structure/bed/chair/comfy,
@@ -41439,7 +41439,7 @@
 /area/lv522/outdoors/colony_streets/south_east_street)
 "vsy" = (
 /obj/structure/machinery/fuelcell_recycler/full,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "vsG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -42182,7 +42182,7 @@
 /area/lv522/indoors/a_block/dorms/glass)
 "vKF" = (
 /obj/structure/closet/secure_closet/atmos_personal,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "vKJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
@@ -42857,12 +42857,12 @@
 /area/lv522/indoors/a_block/admin)
 "wbi" = (
 /obj/structure/machinery/recharge_station,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "wbj" = (
 /obj/structure/machinery/recharge_station,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greenfull,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "wbo" = (
 /obj/effect/decal/cleanable/dirt,

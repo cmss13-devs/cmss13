@@ -673,4 +673,4 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/org
 
-/datum/config_entry/str_list/word_filter
+/datum/config_entry/string/word_filter

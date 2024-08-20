@@ -1838,6 +1838,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/white_cyan3/northwest,
 /area/lv522/indoors/a_block/medical/glass)
+"bkg" = (
+/obj/structure/platform_decoration/strata{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/oob)
 "bkh" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/white_cyan3/southwest,
@@ -3642,6 +3648,10 @@
 "cvi" = (
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/security)
+"cvA" = (
+/obj/structure/platform_decoration/strata,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/oob)
 "cvP" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4;
@@ -4146,6 +4156,12 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/b_block/bar)
+"cIS" = (
+/obj/item/weapon/gun/rifle/sniper/M42A{
+	current_mag = null
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/oob)
 "cIV" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat/brown,
@@ -7529,6 +7545,19 @@
 /obj/structure/surface/rack,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
+"esO" = (
+/obj/item/ammo_magazine/sniper{
+	current_rounds = 0;
+	pixel_x = -6;
+	pixel_y = -7
+	},
+/obj/item/ammo_magazine/sniper{
+	current_rounds = 0;
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/oob)
 "etn" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 10
@@ -9058,6 +9087,13 @@
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049,
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/security)
+"flN" = (
+/obj/structure/prop/invuln/rope{
+	pixel_x = 11;
+	pixel_y = 5
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/oob)
 "fms" = (
 /obj/structure/bed/chair/comfy,
 /obj/effect/decal/cleanable/dirt,
@@ -10912,6 +10948,12 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/south_west_street)
+"goo" = (
+/obj/structure/platform/strata{
+	dir = 4
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/oob)
 "gou" = (
 /turf/open/floor/prison/darkpurple2/northwest,
 /area/lv522/indoors/a_block/dorms)
@@ -20554,6 +20596,9 @@
 /obj/item/prop/alien/hugger,
 /turf/open/floor/strata/blue1,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
+"lpe" = (
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/oob)
 "lpi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -20682,6 +20727,10 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"ltw" = (
+/obj/structure/platform/strata,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/oob)
 "lty" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -26611,6 +26660,9 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
+"osc" = (
+/turf/open/auto_turf/shale/layer2,
+/area/lv522/oob)
 "osd" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/fence{
@@ -31371,7 +31423,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "qPq" = (
 /obj/structure/platform/strata,
-/turf/closed/wall/strata_ice/dirty,
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/oob)
 "qPu" = (
 /obj/item/weapon/gun/revolver/cmb,
@@ -31637,7 +31689,7 @@
 /obj/structure/platform_decoration/strata{
 	dir = 1
 	},
-/turf/closed/wall/strata_ice/dirty,
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/oob)
 "qTI" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -31698,7 +31750,7 @@
 /obj/structure/platform/strata{
 	dir = 4
 	},
-/turf/closed/wall/strata_ice/dirty,
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/oob)
 "qVb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -31918,7 +31970,7 @@
 	dir = 8
 	},
 /obj/structure/platform/strata,
-/turf/closed/wall/strata_ice/dirty,
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/oob)
 "qZC" = (
 /turf/open/floor/corsat/marked,
@@ -32694,7 +32746,7 @@
 /obj/structure/platform/strata{
 	dir = 8
 	},
-/turf/closed/wall/strata_ice/dirty,
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/oob)
 "rrf" = (
 /obj/structure/platform,
@@ -32825,7 +32877,7 @@
 /obj/structure/platform/strata{
 	dir = 4
 	},
-/turf/closed/wall/strata_ice/dirty,
+/turf/open/auto_turf/sand_white/layer0,
 /area/lv522/oob)
 "rtX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -33170,7 +33222,7 @@
 /obj/structure/platform/strata{
 	dir = 8
 	},
-/turf/closed/wall/strata_ice/dirty,
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/oob)
 "rBU" = (
 /turf/closed/shuttle/dropship2/tornado/typhoon{
@@ -33202,7 +33254,7 @@
 /obj/structure/platform_decoration/strata{
 	dir = 4
 	},
-/turf/closed/wall/strata_ice/dirty,
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/oob)
 "rCz" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -33607,7 +33659,7 @@
 /obj/structure/platform/strata{
 	dir = 1
 	},
-/turf/closed/wall/strata_ice/dirty,
+/turf/open/auto_turf/sand_white/layer0,
 /area/lv522/oob)
 "rNs" = (
 /obj/item/stack/sheet/wood,
@@ -33729,7 +33781,7 @@
 /obj/structure/platform_decoration/strata{
 	dir = 8
 	},
-/turf/closed/wall/strata_ice/dirty,
+/turf/open/auto_turf/sand_white/layer0,
 /area/lv522/oob)
 "rRa" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -35359,6 +35411,10 @@
 /obj/structure/curtain/red,
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/casino)
+"sHp" = (
+/obj/structure/platform_decoration/strata,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/oob)
 "sHy" = (
 /obj/structure/machinery/floodlight,
 /obj/effect/decal/cleanable/dirt,
@@ -38806,6 +38862,12 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/engineering)
+"uks" = (
+/obj/structure/platform/strata{
+	dir = 1
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/oob)
 "ukt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -48485,8 +48547,8 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
+lpe
+lpe
 cpy
 cpy
 cpy
@@ -48690,8 +48752,8 @@ cpy
 cpy
 cpy
 cpy
-dvO
-rtI
+sHp
+goo
 rtI
 rQL
 cpy
@@ -48895,12 +48957,12 @@ cpy
 cpy
 cpy
 cpy
-dvO
+sHp
 qUQ
 ruv
 rME
 rNm
-cpy
+lpe
 cpy
 cpy
 cpy
@@ -49100,13 +49162,13 @@ cpy
 cpy
 cpy
 cpy
-dvO
+cvA
 qUQ
 rmA
 rza
-qZf
+osc
 rNm
-cpy
+lpe
 cpy
 cpy
 cpy
@@ -49306,13 +49368,13 @@ cpy
 cpy
 cpy
 cpy
-qPq
+ltw
 qVN
 qZf
 qZf
 rBz
 rCu
-cpy
+lpe
 cpy
 cpy
 cpy
@@ -49511,13 +49573,13 @@ cpy
 cpy
 cpy
 cpy
-cpy
-qPq
+lpe
+ltw
 qYy
-qZf
+cIS
 rzq
-rNm
-cpy
+uks
+qZf
 cpy
 cpy
 cpy
@@ -49716,14 +49778,14 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
+lpe
+lpe
 qPq
-qZf
+osc
 roM
-qZf
-rNm
-cpy
+esO
+uks
+lpe
 cpy
 cpy
 cpy
@@ -49922,14 +49984,14 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
+lpe
+qZf
 qTH
 qZB
-qZf
+osc
 rBz
-rCu
-cpy
+bkg
+lpe
 cpy
 cpy
 cpy
@@ -50129,12 +50191,12 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
+qZf
+qZf
 qTH
 rqT
 rCu
-cpy
+lpe
 cpy
 cpy
 cpy
@@ -50336,11 +50398,11 @@ ien
 cpy
 cpy
 ien
-cpy
-cpy
+qZf
+flN
 ien
-cpy
-cpy
+lpe
+lpe
 ien
 cpy
 cpy

@@ -59,17 +59,17 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 /datum/controller/supply/upp
 	points = 99999
 	all_supply_groups = list(
-	"UPP Weapons",
-	"UPP Ammo",
-	"UPP Special Weapon",
-	"UPP Special Ammo",
-	"UPP Attachments",
-	"UPP Medical",
-	"UPP Engineering",
-	"UPP Food",
-	"UPP Gear",
-	"UPP Explosives",
-	"UPP Clothing",
+		"UPP Weapons",
+		"UPP Ammo",
+		"UPP Special Weapon",
+		"UPP Special Ammo",
+		"UPP Attachments",
+		"UPP Medical",
+		"UPP Engineering",
+		"UPP Food",
+		"UPP Gear",
+		"UPP Explosives",
+		"UPP Clothing",
 	)
 
 //No random crates for UPP

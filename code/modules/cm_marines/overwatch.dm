@@ -924,9 +924,26 @@
 	icon_state = "deltadrop"
 	squad = SQUAD_MARINE_4
 
+//======UPP=======
+
 /obj/structure/supply_drop/echo //extra supply drop pad
 	icon_state = "echodrop"
-	squad = SQUAD_MARINE_5
+	squad = "UPPS1"
+
+/obj/structure/supply_drop/upp1
+	icon_state = "alphadrop"
+	squad = "UPPS1"
+
+/obj/structure/supply_drop/upp2
+	icon_state = "bravodrop"
+	squad = "UPPS1"
+
+/obj/structure/supply_drop/upp3
+	icon_state = "charlieodrop"
+	squad = "UPPS1"
+/obj/structure/supply_drop/upp4
+	icon_state = "deltadrop"
+	squad = "UPPS1"
 
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND

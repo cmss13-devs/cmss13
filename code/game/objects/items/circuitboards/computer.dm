@@ -179,7 +179,7 @@
 //No black market under communism
 /obj/item/circuitboard/computer/supplycomp/upp/attackby(obj/item/tool, mob/user)
 	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
-		to_chat(user, SPAN_WARNING("You try to pulse the circuit board, but nothing happens. Maybe you need something more specialized?"))
+		to_chat(user, SPAN_WARNING("You try to pulse the circuit board, but nothing happens."))
 		return
 
 /obj/item/circuitboard/computer/supplycomp/attackby(obj/item/tool, mob/user)

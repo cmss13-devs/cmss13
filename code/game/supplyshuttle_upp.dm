@@ -4,12 +4,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 	name = "UPP supply console"
 	desc = "A console for the General Supply Storage"
 	circuit = /obj/item/circuitboard/computer/supplycomp/upp
-
-/obj/structure/machinery/computer/supplycomp/upp/Initialize()
-	. = ..()
-	LAZYREMOVE(linked_supply_controller.bound_supply_computer_list, src)
-	linked_supply_controller = GLOB.supply_controller_upp
-	LAZYADD(linked_supply_controller.bound_supply_computer_list, src)
+	faction = "UPP"
 
 
 /obj/item/paper/manifest/upp

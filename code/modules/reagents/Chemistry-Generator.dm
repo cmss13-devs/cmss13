@@ -90,11 +90,11 @@
 				if(0)
 					chem_id = pick(GLOB.chemical_gen_classes_list["C"])//If tier is 0, we can add any classed chemical
 				if(1)
-					if(roll<=80)
+					if(roll<=60)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
-					else if(roll<=55)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
 					else if(roll<=35)
+						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
+					else
 						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 				if(2)
 					if(roll<=60)
@@ -118,16 +118,14 @@
 							chem_id = pick(GLOB.chemical_gen_classes_list["C5"])
 						else
 							chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
-					else if(roll<=15)
+					else if(roll<=25)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
-					else if(roll<=40)
+					else if(roll<=45)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else if(roll<=65)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
-
 					else
 						chem_id = pick(GLOB.chemical_gen_classes_list["C5"])
-
 		//if we are already using this reagent, try again
 		if(required_reagents && required_reagents.Find(chem_id))
 			if(my_chemid) //If this was a manually set chemid, return FALSE so we don't cause an infinite loop

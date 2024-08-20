@@ -416,154 +416,131 @@ export const ModeRelate = (props) => {
   );
 };
 
-export const ModeCreate = (props) => {
+export const ModeAdd = (props) => {
   const { act, data } = useBackend();
-  const { complexityMenu } = props;
-  const { known_properties } = data;
-  const [selectedProperty, setSelectedProperty] = useSharedState(false);
+  const { target_data, reference_data, lock_control } = data;
+  const {
+    setSelectedTargetProperty,
+    setSelectedReferenceProperty,
+    selectedReferenceProperty,
+    selectedTargetProperty,
+  } = props;
   return (
-    <Flex direction={'column'}>
-      <Flex.Item>
-        <CreateControl complexityMenu={complexityMenu} />
-      </Flex.Item>
-      <Flex.Item>
-        <Stack
-          ml={1}
-          mt={1}
-          mr={1}
-          width={65}
-          height={7}
-          wrap="wrap"
-          align="start"
-        >
-          {map(known_properties, (property) => (
-            <Stack.Item
-              m={0.5}
-              bold
-              grow
-              fontSize={'12px'}
-              minWidth={4}
-              maxHeight={2}
+    (target_data && reference_data && (
+      <Flex ml={3} fontSize={1.2} maxWidth={70} height={20} mt={5}>
+        <Stack vertical>
+          <Stack.Item
+            bold
+            backgroundColor={'#232429'}
+            py={1}
+            opacity={0.7}
+            mx={1}
+            textAlign="center"
+          >
+            Target Data
+          </Stack.Item>
+          <Stack.Item>
+            <Flex.Item
+              maxWidth={18}
+              minWidth={18}
+              textAlign="center"
+              height={10}
             >
-              <Button
-                textAlign={'center'}
-                fluid
-                px={'1px'}
-                italic={property.is_locked}
-                bold={property.is_locked}
-                onClick={() => {
-                  act('select_create_property', {
-                    property_code: property.code,
-                  });
-                  setSelectedProperty(property.code);
-                }}
-                selected={
-                  property.is_enabled || selectedProperty === property.code
-                }
-                disabled={property.is_locked}
-                tooltip={property.conflicting_tooltip}
-                tooltipPosition="bottom"
-              >
-                {property.code} {property.level}
-              </Button>
-            </Stack.Item>
-          ))}
+              {map(target_data, (property) => (
+                <Button
+                  bold
+                  m={0.6}
+                  width={8}
+                  textAlign={'center'}
+                  onClick={() => {
+                    act('select_target_property', {
+                      property_code: property.code,
+                    });
+                    setSelectedTargetProperty(property.code);
+                  }}
+                  selected={
+                    selectedTargetProperty === property.code ? true : false
+                  }
+                  disabled={lock_control || property.is_locked}
+                  tooltip={property.tooltip}
+                >
+                  {property.code} {property.level}
+                </Button>
+              ))}
+            </Flex.Item>
+          </Stack.Item>
         </Stack>
-      </Flex.Item>
-      <Flex.Item mt={'18px'} width={65.5}>
-        {map(
-          known_properties,
-          (property) =>
-            property.code === selectedProperty && (
-              <Section title={property.name} textAlign={'center'}>
-                <h4>{property.desc}</h4>
-              </Section>
-            ),
-        )}
-      </Flex.Item>
-    </Flex>
-  );
-};
-
-export const CreateControl = (props) => {
-  const { act, data } = useBackend();
-  const { template_filters, lock_control, complexity_list } = data;
-  const { complexityMenu } = props;
-  return !complexityMenu ? (
-    <Flex width={64.5} height={2} ml={1}>
-      <Flex.Item ml={2}>
-        <Button
-          width={10}
-          fontSize={'14px'}
-          bold
-          onClick={() => act('select_overdose')}
-          disabled={lock_control}
+        <Flex.Item
+          maxWidth={18}
+          minWidth={18}
+          textAlign="center"
+          height={10}
+          mr={1}
         >
-          Set OD
-        </Button>
-      </Flex.Item>
-      <Flex.Item ml={2}>
-        <Button
-          width={10}
-          fontSize={'14px'}
-          bold
-          disabled={lock_control}
-          onClick={() => {
-            act('change_name');
-          }}
-        >
-          Set Name
-        </Button>
-      </Flex.Item>
-      <Flex.Item ml={2} bold>
-        <Button
-          fontSize={'14px'}
-          disabled={lock_control}
-          onClick={() => {
-            act('change_create_target_level');
-          }}
-        >
-          Set LEVEL
-        </Button>
-      </Flex.Item>
-      {map(template_filters, (flag, name) => (
-        <Flex.Item ml={1} width={5} textAlign="center">
-          <Button
-            fluid
-            onClick={() => {
-              act('toggle_flag', {
-                flag_id: flag[1],
-              });
-            }}
-            fontSize={'14px'}
-            selected={flag[0]}
-            bold
-            italic={flag[0]}
-          >
-            {name}
-          </Button>
+          <Stack vertical>
+            <Stack.Item
+              bold
+              backgroundColor={'#232429'}
+              py={1}
+              opacity={0.8}
+              textAlign="center"
+            >
+              Reference Data
+            </Stack.Item>
+            <Stack.Item>
+              <Flex.Item
+                maxWidth={18}
+                minWidth={18}
+                textAlign="center"
+                height={10}
+              >
+                {map(reference_data, (property) => (
+                  <Button
+                    bold
+                    m={0.6}
+                    width={8}
+                    textAlign={'center'}
+                    onClick={() => {
+                      act('select_reference_property', {
+                        property_code: property.code,
+                      });
+                      setSelectedReferenceProperty(property.code);
+                    }}
+                    selected={
+                      selectedReferenceProperty === property.code ? true : false
+                    }
+                    disabled={lock_control || property.is_locked}
+                    tooltip={property.tooltip}
+                  >
+                    {property.code} {property.level}
+                  </Button>
+                ))}
+              </Flex.Item>
+            </Stack.Item>
+          </Stack>
         </Flex.Item>
-      ))}
-    </Flex>
-  ) : (
-    <Flex width={64.5} height={2} ml={1}>
-      {map(complexity_list, (rarity, id) => (
-        <Flex.Item ml={1} width={15}>
-          <Button
-            fluid
-            onClick={() => {
-              act('change_complexity', {
-                complexity_slot: id + 1,
-              });
-            }}
-            fontSize={'14px'}
-            bold
-          >
-            {rarity}
-          </Button>
+        <Flex.Item maxWidth={25} grow>
+          {map(
+            target_data,
+            (property) =>
+              property.code === selectedTargetProperty && (
+                <Stack vertical>
+                  <Stack.Item>
+                    <Section title={property.name}>{property.desc}</Section>
+                  </Stack.Item>
+                  <Stack.Item bold backgroundColor={'#191b22'} p={1}>
+                    Price of the operatfion : {property.cost}
+                  </Stack.Item>
+                </Stack>
+              ),
+          )}
         </Flex.Item>
-      ))}
-    </Flex>
+      </Flex>
+    )) || (
+      <Box m={3} height={10}>
+        <NoticeBox bold>No data inserted!</NoticeBox>
+      </Box>
+    )
   );
 };
 
@@ -622,7 +599,14 @@ export const ChemSimulator = () => {
             selectedReferenceProperty={selectedReferenceProperty}
           />
         )}
-        {selectedMode === 4 && <ModeCreate complexityMenu={complexityMenu} />}
+        {selectedMode === 4 && (
+          <ModeAdd
+            setSelectedTargetProperty={setSelectedTargetProperty}
+            selectedTargetProperty={selectedTargetProperty}
+            setSelectedReferenceProperty={setSelectedReferenceProperty}
+            selectedReferenceProperty={selectedReferenceProperty}
+          />
+        )}
       </Window.Content>
     </Window>
   );

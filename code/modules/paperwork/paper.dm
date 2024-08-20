@@ -649,8 +649,12 @@
 	var/full_report
 	var/grant
 
-/obj/item/paper/research_notes/Initialize()
+/obj/item/paper/research_notes/Initialize(mapload, data, note_type)
 	. = ..()
+	if(data)
+		src.data = data
+	if(note_type)
+		src.note_type = note_type
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/item/paper/research_notes/LateInitialize()

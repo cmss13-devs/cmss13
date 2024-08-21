@@ -30,6 +30,7 @@
 			if(JOB_MARINE_RAIDER) marine_rk = "soc"
 			if(JOB_MARINE_RAIDER_SL) marine_rk = "soctl"
 			if(JOB_MARINE_RAIDER_CMD) marine_rk = "soccmd"
+			if(JOB_SQUAD_TECH) marine_rk = "tech"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
 				if("Squad") marine_rk = "leader_a"
@@ -87,6 +88,8 @@
 			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
 				marine_rk = "general"
 				border_rk = "command"
+			if(JOB_SQUAD_TECH)
+				marine_rk = "tech"
 			if(JOB_INTEL)
 				marine_rk = "io"
 			if(JOB_CAS_PILOT)

@@ -89,3 +89,13 @@
 	recipient = "the Corporate Security Division"
 	ert_paths = list(/datum/emergency_call/goon/bodyguard) // "Weyland-Yutani Goon (Executive Bodyguard Detail)"
 	ert_short_names = list("SEND BODYGUARD")
+
+// Provost office distress beacon held by Inspectors+
+/obj/item/handheld_distress_beacon/provost
+	name = "\improper Provost Office handheld beacon"
+	desc = "A standard Provost Office beacon branded with the Provost Office symbol, provided to personnel for emergencies. It features an extended relay antenna and calls a squadron of Provost enforcers."
+
+	beacon_type = "Provost Enforcers beacon"
+	recipient = "the USS Superintendent"
+	ert_paths = list(/datum/emergency_call/provost_enforcer) // "USCM Provost Enforcers"
+	ert_short_names = list("SEND ENFORCERS")

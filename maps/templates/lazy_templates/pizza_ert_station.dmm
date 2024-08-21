@@ -1391,7 +1391,7 @@
 /area/adminlevel/ert_station/pizza_station)
 "sp" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/weapon/pizza_cutter,
+/obj/item/tool/kitchen/pizzacutter,
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/pizza_station)
 "sx" = (
@@ -2986,7 +2986,7 @@
 "MB" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/pizzabox/meat,
-/obj/item/weapon/pizza_cutter,
+/obj/item/tool/kitchen/pizzacutter,
 /turf/open/floor/cmo,
 /area/adminlevel/ert_station/pizza_station)
 "MK" = (

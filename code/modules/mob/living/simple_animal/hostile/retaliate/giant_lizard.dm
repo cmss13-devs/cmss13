@@ -206,7 +206,7 @@
 	if(stat == DEAD)
 		return
 
-	if(!(attacking_mob.faction in faction_group))
+	if(!(attacking_mob.faction in faction_group) && !is_eating)
 		Retaliate()
 
 	if(attacking_mob.a_intent == INTENT_HELP && (attacking_mob.faction in faction_group))

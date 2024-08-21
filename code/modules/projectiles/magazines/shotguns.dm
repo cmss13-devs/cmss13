@@ -284,6 +284,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 
 /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag
 	name = "handful of heavy beanbag shells (8g)"
+	desc = "A non-lethal type of shotgun ammo."
 	icon_state = "heavy_beanbag_4"
 	handful_state = "heavy_beanbag"
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/beanbag

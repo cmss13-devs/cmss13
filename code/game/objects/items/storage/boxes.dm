@@ -34,6 +34,23 @@
 	w_class = SIZE_LARGE //Changed becuase of in-game abuse
 	storage_flags = STORAGE_FLAGS_BOX
 
+/obj/item/storage/box/pride
+	name = "box of prideful crayons"
+	desc = "A box of every flavor of pride."
+	storage_slots = 8
+	w_class = SIZE_SMALL
+	can_hold = list(/obj/item/toy/crayon/pride)
+
+/obj/item/storage/box/pride/fill_preset_inventory()
+	new /obj/item/toy/crayon/pride/gay(src)
+	new /obj/item/toy/crayon/pride/lesbian(src)
+	new /obj/item/toy/crayon/pride/bi(src)
+	new /obj/item/toy/crayon/pride/ace(src)
+	new /obj/item/toy/crayon/pride/pan(src)
+	new /obj/item/toy/crayon/pride/trans(src)
+	new /obj/item/toy/crayon/pride/enby(src)
+	new /obj/item/toy/crayon/pride/fluid(src)
+
 /obj/item/storage/box/survival
 	w_class = SIZE_MEDIUM
 
@@ -470,6 +487,7 @@
 	item_state = "zippo"
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_WAIST
+	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 	can_hold = list(/obj/item/tool/match)
 
 /obj/item/storage/box/matches/fill_preset_inventory()

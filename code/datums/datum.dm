@@ -70,6 +70,10 @@
 	var/list/cached_vars
 #endif
 
+#ifdef AUTOWIKI
+	var/autowiki_skip = FALSE
+#endif
+
 /**
 * Default implementation of clean-up code.
 *

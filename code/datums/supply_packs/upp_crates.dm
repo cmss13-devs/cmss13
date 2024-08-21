@@ -4,4 +4,3 @@
 	containertype = null
 	containername = "large crate"
 	group = "UPP"
-	isUPPCrate = TRUE

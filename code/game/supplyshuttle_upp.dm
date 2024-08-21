@@ -82,7 +82,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 	info += "  \
 		</ul><br/><hr><br/><p class='important header'>    \
-		<br/> Glory to the UPP	\
+		<br/> Glory to the UPP<br/>\
 			Please stamp below and return to confirm receipt of shipment   \
 		</p></div>"
 

@@ -7,8 +7,6 @@
 
 /datum/supply_packs/upp/random_weapon
 	name = "Old supplies (Weapon)"
-	contains = list(
-	)
 	cost = 5
 	containertype = /obj/structure/closet/crate/weapon/upp_random_weapon
 	containername = "Old supplies crate (Weapon)"

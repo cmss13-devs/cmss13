@@ -55,6 +55,8 @@
 			if(CO_GUN_MATEBA)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
 				kit = /obj/item/storage/mateba_case/captain
+			if(CO_GUN_M47)
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/m47/co/
 			if(CO_GUN_MATEBA_SPECIAL)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/special
 			if(CO_GUN_MATEBA_COUNCIL)

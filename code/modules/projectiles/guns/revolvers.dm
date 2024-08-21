@@ -548,7 +548,8 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "mateba"
 	item_state = "mateba"
-
+	unacidable = TRUE
+	indestructible = 1
 	fire_sound = 'sound/weapons/gun_mateba.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba
 	force = 15

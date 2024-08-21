@@ -95,14 +95,40 @@
 	sound_override = null
 
 // Used by M1911, Deagle and KT-42
+/datum/ammo/bullet/pistol/heavy/New()
+	..()
+	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
+
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	damage = 55
+	damage_falloff = DAMAGE_FALLOFF_TIER_5
 	penetration = ARMOR_PENETRATION_TIER_3
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+
+/datum/ammo/bullet/pistol/heavy/m47/apimpact
+	name = "heavy ap pistol bullet"
+	damage = 45
+	penetration = ARMOR_PENETRATION_TIER_10
+	debilitate = list(0,1.5,0,0,0,1,0,0)
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+/datum/ammo/bullet/pistol/m47/impact
+	name = "heavy impact pistol bullet"
+	damage = 50
+	penetration = ARMOR_PENETRATION_TIER_1
+	debilitate = list(0,1.5,0,0,0,1,0,0)
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+/datum/ammo/bullet/pistol/m47/hp
+	name = "heavy pistol hollowpoint"
+	damage = 70
+	penetration = ARMOR_PENETRATION_TIER_1
+
+// 50 cal
 
 /datum/ammo/bullet/pistol/heavy/super //Commander's variant
 	name = ".50 heavy pistol bullet"
@@ -128,10 +154,6 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	debilitate = list(0,1.5,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_BALLISTIC
-
-/datum/ammo/bullet/pistol/heavy/super/highimpact/New()
-	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)

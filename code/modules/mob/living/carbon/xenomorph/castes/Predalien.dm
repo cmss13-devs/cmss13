@@ -1,4 +1,6 @@
 /datum/caste_datum/predalien
+	AUTOWIKI_SKIP(TRUE)
+
 	caste_type = XENO_CASTE_PREDALIEN
 	display_name = "Abomination"
 

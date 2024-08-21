@@ -1,4 +1,6 @@
 /datum/caste_datum/larva
+	AUTOWIKI_SKIP(TRUE)
+
 	caste_type = XENO_CASTE_LARVA
 	tier = 0
 	plasma_gain = 0.1

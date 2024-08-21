@@ -110,6 +110,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/first_time = TRUE
 	var/datum/controller/supply/linked_supply_controller
 	var/faction = FACTION_MARINE
+	var/form_shipname = ""
 
 /obj/structure/machinery/computer/supplycomp/Initialize()
 	. = ..()
@@ -120,6 +121,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			linked_supply_controller = GLOB.supply_controller_upp
 		else
 			linked_supply_controller = GLOB.supply_controller //we default to normal budget on wrong input
+	form_shipname = "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
 	LAZYADD(linked_supply_controller.bound_supply_computer_list, src)
 
 /obj/structure/machinery/computer/supplycomp/Destroy()
@@ -167,10 +169,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
 	var/last_viewed_group = "categories"
 	var/datum/controller/supply/linked_supply_controller
+	var/form_shipname = ""
 
 /obj/structure/machinery/computer/ordercomp/Initialize()
 	. = ..()
 	linked_supply_controller = GLOB.supply_controller
+	form_shipname = "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
 
 /obj/structure/machinery/computer/supply_drop_console
 	name = "Supply Drop Console"
@@ -834,7 +838,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		linked_supply_controller.ordernum++
 		var/obj/item/paper/reqform = new /obj/item/paper(loc)
 		reqform.name = "Requisition Form - [supply_pack.name]"
-		reqform.info += "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
+		reqform.info += form_shipname
 		reqform.info += "INDEX: #[linked_supply_controller.ordernum]<br>"
 		reqform.info += "REQUESTED BY: [idname]<br>"
 		reqform.info += "RANK: [idrank]<br>"
@@ -1035,7 +1039,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		linked_supply_controller.ordernum++
 		var/obj/item/paper/reqform = new /obj/item/paper(loc)
 		reqform.name = "Requisition Form - [supply_pack.name]"
-		reqform.info += "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
+		reqform.info += form_shipname
 		reqform.info += "INDEX: #[linked_supply_controller.ordernum]<br>"
 		reqform.info += "REQUESTED BY: [idname]<br>"
 		reqform.info += "RANK: [idrank]<br>"

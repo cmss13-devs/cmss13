@@ -9619,7 +9619,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "bpT" = (
-/obj/structure/machinery/computer/supplycomp/upp,
+/obj/structure/machinery/computer/supplycomp,
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
 "bpV" = (

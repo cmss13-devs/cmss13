@@ -1,7 +1,7 @@
 /mob/living/carbon/human/proc/parse_say_modes(message)
 	. = list("message_and_language", "modes" = list())
 	if(length(message) >= 1 && message[1] == ";")
-		.["message_and_language"] = copytext(message, 2)
+		.["message_and_language"] = copytext_char(message, 2)
 		.["modes"] += "headset"
 		return
 
@@ -30,9 +30,9 @@
 		return
 
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":" || message[1] == "#"))
-		var/channel_prefix = copytext(message, 1, 3)
+		var/channel_prefix = copytext_char(message, 1, 3)
 		if(channel_prefix in GLOB.department_radio_keys)
-			.["message_and_language"] = copytext(message, 3)
+			.["message_and_language"] = copytext_char(message, 3)
 			.["modes"] += GLOB.department_radio_keys[channel_prefix]
 			return
 

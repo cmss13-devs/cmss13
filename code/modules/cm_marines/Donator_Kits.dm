@@ -436,9 +436,9 @@
 	donor_key = "sasoperative"
 	kit_variant = "Legion"
 	donor_gear = list(
-		/obj/item/clothing/suit/storage/marine/fluff/sas_legion,
-		/obj/item/clothing/under/marine/fluff/sas_legion,
-		/obj/item/clothing/mask/fluff/sas_legion,
+		/obj/item/clothing/suit/storage/marine/light/fluff/sas_legion,
+		/obj/item/clothing/head/helmet/marine/fluff/sas_legion,
+		/obj/item/storage/backpack/marine/satchel/fluff/sas_legion,
 	)
 
 /obj/item/storage/box/donator_kit/seloc_aferah

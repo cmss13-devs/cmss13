@@ -1,0 +1,4 @@
+author: "Mensla"
+delete-after: True
+changes:
+  - rscadd: "Added new pizza cutter sprites."

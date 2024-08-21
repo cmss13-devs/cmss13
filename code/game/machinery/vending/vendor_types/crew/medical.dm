@@ -245,6 +245,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		/obj/item/tool/surgery/synthgraft,
 		/obj/item/storage/syringe_case,
 		/obj/item/storage/surgical_case/regular,
+		/obj/item/clothing/accessory/stethoscope,
+		/obj/item/device/flashlight/pen,
+
 
 	)
 
@@ -255,7 +258,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		/obj/item/device/healthanalyzer,
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/tool/surgery/synthgraft,
-		/obj/item/device/flashlight/pen,
 		/obj/item/clothing/accessory/stethoscope,
+		/obj/item/device/flashlight/pen,
 		/obj/item/storage/syringe_case,
 	)

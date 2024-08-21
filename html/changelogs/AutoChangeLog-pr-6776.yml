@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Synthetics and Yautja now spawn with the Iron Teeth trait, not dropping items held in their mouth."

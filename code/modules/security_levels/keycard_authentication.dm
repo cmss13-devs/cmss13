@@ -36,8 +36,11 @@
 			if(active == 1)
 				//This is not the device that made the initial request. It is the device confirming the request.
 				if(event_source)
+					if(event_source.event_triggered_by == user)
+						user.visible_message(SPAN_DANGER("Your ID is rejected, as it is the one that triggered the event!"))
+						return
 					event_source.confirmed = 1
-					event_source.event_confirmed_by = usr
+					event_source.event_confirmed_by = user
 			else if(screen == 2)
 				event_triggered_by = usr
 				broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices

@@ -1,7 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - rscadd: "Force reconnaissance response teams will now use the USS Kurtz as their home base when departing from the USS Almayer on their response shuttle."
-  - balance: "The ERT Forecon Medic/Engineer spawn has been reworked into the 'Reconnaissance Support Technician' to better reflect its design as a combination of a Corpsman and a Comtech."
-  - rscadd: "Per the above, the Support Tech now spawns with a unique and full lifesaver belt and some form of a medical visor."
-  - imageadd: "The Support Tech has a unique HUD icon to better denote its role."

@@ -957,19 +957,19 @@
 
 /obj/structure/supply_drop/upp1
 	icon_state = "alphadrop"
-	squad = "UPPS1"
+	squad = SQUAD_UPP_1
 
 /obj/structure/supply_drop/upp2
 	icon_state = "bravodrop"
-	squad = "UPPS2"
+	squad = SQUAD_UPP_2
 
 /obj/structure/supply_drop/upp3
 	icon_state = "charliedrop"
-	squad = "UPPS3"
+	squad = SQUAD_UPP_3
 
 /obj/structure/supply_drop/upp4
 	icon_state = "deltadrop"
-	squad = "UPPS4"
+	squad = SQUAD_UPP_4
 
 /obj/structure/machinery/computer/overwatch/upp/ui_data(mob/user)
 	var/list/data = list()

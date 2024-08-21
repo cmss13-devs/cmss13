@@ -1506,6 +1506,11 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/way_in_command_centre)
+"aZU" = (
+/obj/structure/window/framed/strata/reinforced,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/mining)
 "bag" = (
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/corsat/brown/north,
@@ -2166,6 +2171,12 @@
 	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/lv522/indoors/a_block/dorms)
+"byy" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "mining_shutter_2"
+	},
+/turf/open/floor/corsat/squares,
+/area/lv522/indoors/c_block/mining)
 "byJ" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
@@ -2227,6 +2238,10 @@
 "bAo" = (
 /turf/open/floor/corsat/browncorner/north,
 /area/lv522/atmos/east_reactor/west)
+"bAB" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/closed/wall/strata_outpost,
+/area/lv522/oob)
 "bBe" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -4972,17 +4987,23 @@
 /obj/structure/machinery/door_control/brbutton/alt{
 	id = "Marked_3";
 	name = "remote door-control";
-	pixel_x = -7;
+	pixel_x = -6;
 	pixel_y = 16
 	},
 /obj/structure/machinery/door_control/brbutton/alt{
 	id = "Marked_6";
 	name = "remote door-control";
-	pixel_x = 8;
+	pixel_x = 7;
 	pixel_y = 16
 	},
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	id = "Marked_7";
+	name = "remote door-control";
+	pixel_x = 7;
+	pixel_y = -2
 	},
 /turf/open/floor/corsat/brown/northeast,
 /area/lv522/oob/w_y_vault)
@@ -7572,8 +7593,9 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door_control/brbutton/alt{
-	id = "Secure_Master_Armoury_2";
-	name = "remote door-control"
+	id = "Marked_7";
+	name = "remote door-control";
+	pixel_x = -2
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/lv522/indoors/c_block/mining)
@@ -12067,6 +12089,10 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/filt)
 "gSn" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "mining_shutter_1"
+	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
 "gSJ" = (
@@ -13706,7 +13732,6 @@
 "hLx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/space_heater/radiator/red,
-/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/bridge)
 "hLF" = (
@@ -14958,10 +14983,9 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/way_in_command_centre)
 "ixL" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/floor/prison/greenfull/east,
-/area/lv522/indoors/b_block/bridge)
+/obj/item/prop/alien/hugger,
+/turf/open/gm/river,
+/area/lv522/landing_zone_1/tunnel)
 "ixO" = (
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 1
@@ -16885,6 +16909,9 @@
 "jxC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "mining_shutter_1"
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
@@ -19300,6 +19327,11 @@
 	},
 /turf/open/asphalt/cement/cement4,
 /area/lv522/outdoors/colony_streets/east_central_street)
+"kEp" = (
+/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/corsat/marked,
+/area/lv522/indoors/c_block/mining)
 "kEL" = (
 /obj/structure/barricade/deployable{
 	dir = 1
@@ -21006,7 +21038,6 @@
 /area/lv522/oob)
 "lBd" = (
 /obj/structure/machinery/disposal,
-/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/bridge)
 "lBj" = (
@@ -21856,6 +21887,11 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
+"mbi" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/closed/wall/strata_outpost,
+/area/lv522/oob)
 "mbq" = (
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
@@ -27516,6 +27552,10 @@
 /obj/structure/platform_decoration,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"oQH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/strata_outpost,
+/area/lv522/indoors/c_block/mining)
 "oQN" = (
 /obj/structure/largecrate/random/case,
 /turf/open/floor/plating,
@@ -27696,6 +27736,9 @@
 /area/lv522/atmos/reactor_garage)
 "oVS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "mining_shutter_1"
+	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
 "oWy" = (
@@ -28029,7 +28072,6 @@
 	network = list("interrogation")
 	},
 /obj/structure/machinery/light/small,
-/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/bridge)
 "pfv" = (
@@ -28366,6 +28408,7 @@
 	dir = 1;
 	req_one_access_txt = "100"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
 "ppX" = (
@@ -28599,6 +28642,10 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
+"pxG" = (
+/obj/item/toy/plush/farwa,
+/turf/open/gm/river,
+/area/lv522/landing_zone_1/tunnel)
 "pxN" = (
 /turf/open/floor/corsat/brown/west,
 /area/lv522/atmos/east_reactor)
@@ -28911,8 +28958,10 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/way_in_command_centre)
 "pGl" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/lv522/indoors/a_block/kitchen)
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/closed/wall/strata_outpost,
+/area/lv522/indoors/c_block/mining)
 "pGN" = (
 /obj/structure/prop/almayer/computers/sensor_computer3,
 /obj/structure/machinery/door_control/brbutton/alt{
@@ -29805,6 +29854,9 @@
 	layer = 2.6
 	},
 /obj/structure/machinery/door/airlock/multi_tile/elevator/freight,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "mining_shutter_2"
+	},
 /turf/open/floor/corsat/plate,
 /area/lv522/indoors/c_block/mining)
 "qeJ" = (
@@ -34769,6 +34821,7 @@
 	dir = 1;
 	name = "\improper Mining Control"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
 "spI" = (
@@ -35101,6 +35154,11 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"sza" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "szh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -35245,6 +35303,13 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
+"sCD" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "mining_shutter_1";
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/lv522/indoors/c_block/mining)
 "sCP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -35930,6 +35995,7 @@
 	req_one_access_txt = "100";
 	welded = 1
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
 "sQZ" = (
@@ -36926,6 +36992,11 @@
 "trZ" = (
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/lv522/indoors/lone_buildings/chunk)
+"tsm" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/closed/wall/strata_ice/dirty,
+/area/lv522/oob)
 "tso" = (
 /obj/structure/largecrate/random,
 /turf/open/asphalt/cement/cement1,
@@ -38602,6 +38673,7 @@
 	id = "LV_522_Hydro-Lockdown";
 	name = "\improper Storm Shutters"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/b_block/bridge)
 "ufs" = (
@@ -39793,6 +39865,13 @@
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "Marked_7";
+	indestructible = 1;
+	layer = 3.3;
+	name = "\improper Secure Blast Door";
+	unacidable = 1
+	},
 /turf/open/floor/corsat/marked,
 /area/lv522/oob/w_y_vault)
 "uGl" = (
@@ -39898,6 +39977,12 @@
 	},
 /turf/open/asphalt/cement/cement3,
 /area/lv522/outdoors/colony_streets/north_west_street)
+"uIx" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "mining_shutter_2"
+	},
+/turf/open/floor/corsat/plate,
+/area/lv522/indoors/c_block/mining)
 "uIB" = (
 /obj/structure/sign/nosmoking_2{
 	pixel_y = 28
@@ -40885,6 +40970,14 @@
 	icon_state = "2"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
+"vfq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "mining_shutter_1"
+	},
+/turf/open/floor/corsat/marked,
+/area/lv522/indoors/c_block/mining)
 "vfC" = (
 /obj/item/storage/backpack/marine/satchel{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
@@ -43132,6 +43225,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
+"wgP" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "mining_shutter_1"
+	},
+/turf/open/floor/corsat/marked,
+/area/lv522/indoors/c_block/mining)
 "wgR" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/prison,
@@ -43536,6 +43635,13 @@
 	},
 /turf/open/floor/strata/white_cyan1,
 /area/lv522/indoors/lone_buildings/chunk)
+"wrp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "mining_shutter_1"
+	},
+/turf/open/floor/corsat/marked,
+/area/lv522/indoors/c_block/mining)
 "wrz" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -45576,6 +45682,10 @@
 "xzV" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "mining_shutter_1"
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
@@ -52560,7 +52670,7 @@ wfP
 wfP
 eYM
 sRM
-hTe
+pxG
 hTe
 eYM
 cpy
@@ -52767,7 +52877,7 @@ nxF
 eYM
 sRM
 hTe
-hTe
+ixL
 eYM
 cpy
 cpy
@@ -55855,7 +55965,7 @@ eYM
 jJF
 gXb
 jJF
-jJF
+sza
 eYM
 eYM
 cpy
@@ -61623,7 +61733,7 @@ qzQ
 hhI
 vDL
 nTF
-wIr
+nTF
 nRY
 uwe
 nZP
@@ -61829,7 +61939,7 @@ oLa
 qzQ
 hhI
 lBd
-wIr
+nTF
 guh
 bQA
 nZP
@@ -62035,7 +62145,7 @@ tkf
 qzQ
 hhI
 hLx
-wIr
+nTF
 oox
 mlv
 pXv
@@ -62240,7 +62350,7 @@ pKl
 tkf
 qzQ
 aPu
-ixL
+jmv
 ueY
 tRs
 eqV
@@ -62447,7 +62557,7 @@ tkf
 fTP
 aPu
 pfq
-wIr
+nTF
 rsD
 bQA
 nZP
@@ -62653,7 +62763,7 @@ fTP
 aPu
 mOJ
 nTF
-wIr
+nTF
 mlv
 nZP
 enB
@@ -65124,12 +65234,12 @@ aAI
 iBo
 eso
 sCi
-jas
+ezu
 wbo
 mfK
 aLY
 jas
-jas
+ezu
 cpy
 cpy
 bMX
@@ -65330,12 +65440,12 @@ aAI
 egE
 vpe
 wHz
-jas
+ezu
 wbo
 mfK
 aLY
 uLv
-jas
+ezu
 cpy
 cpy
 bMX
@@ -65536,12 +65646,12 @@ jas
 tKf
 eso
 hrU
-jas
+ezu
 nQu
 gXy
 pRY
 jFP
-jas
+ezu
 cpy
 cpy
 bMX
@@ -65747,7 +65857,7 @@ nQu
 wbo
 ydO
 aLY
-jas
+ezu
 cpy
 cpy
 bMX
@@ -65948,12 +66058,12 @@ jas
 jas
 jas
 uFO
-jas
+ezu
 nQu
 nQu
 gXy
 aLY
-jas
+ezu
 cpy
 cpy
 bMX
@@ -66154,12 +66264,12 @@ aAI
 hBp
 eso
 vpe
-jas
+ezu
 wbo
 nQu
 gXy
 aLY
-jas
+ezu
 cpy
 cpy
 bMX
@@ -66360,12 +66470,12 @@ aAI
 cwe
 vpe
 oCs
-jas
+ezu
 kNo
 nQu
 gXy
 aLY
-jas
+ezu
 cpy
 cpy
 bMX
@@ -66566,12 +66676,12 @@ jas
 yak
 qbB
 snR
-jas
+ezu
 uYk
 wbo
 gXy
 jas
-jas
+ezu
 cpy
 cpy
 bMX
@@ -66767,17 +66877,17 @@ jas
 jas
 gSn
 xzV
-pIx
+vfq
 jas
 jas
 jas
 jas
-jas
+ezu
 jas
 ogT
 jas
 jas
-jas
+ezu
 cpy
 cpy
 bMX
@@ -66978,12 +67088,12 @@ eHu
 eSO
 hzc
 tuK
-jas
+ezu
 lzP
 dDp
 rej
 jas
-jas
+ezu
 cpy
 cpy
 bMX
@@ -67184,12 +67294,12 @@ eso
 uMl
 vWI
 hzc
-aAI
+aZU
 iTb
 wIu
 ntK
 hkC
-jas
+ezu
 cpy
 cpy
 bMX
@@ -67390,12 +67500,12 @@ eso
 eso
 vWI
 hzc
-aAI
+aZU
 ykn
 vpe
 uEE
 eBu
-jas
+ezu
 cpy
 cpy
 bMX
@@ -67596,12 +67706,12 @@ eso
 eso
 lzB
 wTx
-jas
+ezu
 oeT
 sKx
 vpe
 ykn
-jas
+ezu
 cpy
 cpy
 bMX
@@ -67802,12 +67912,12 @@ eso
 eso
 lzB
 xqV
-jas
+ezu
 rej
 xFv
 vpe
 jpM
-jas
+ezu
 cpy
 cpy
 bMX
@@ -68008,12 +68118,12 @@ ixO
 eso
 eso
 esF
-aAI
+aZU
 snu
 vjr
 vpe
 mUj
-jas
+ezu
 cpy
 cpy
 bMX
@@ -68214,12 +68324,12 @@ jVV
 boQ
 vpe
 tuK
-aAI
+aZU
 hFg
 urh
 vpe
 ntK
-jas
+ezu
 cpy
 cpy
 bMX
@@ -68420,12 +68530,12 @@ ckZ
 vsI
 nIJ
 jas
-jas
+ezu
 fwV
 vjr
 iJZ
 ntK
-jas
+ezu
 cpy
 cpy
 bMX
@@ -68611,7 +68721,7 @@ nax
 nax
 nax
 mnb
-gSn
+jas
 vpe
 eso
 vpe
@@ -68626,12 +68736,12 @@ xPF
 xPF
 xPF
 ljr
-jas
+ezu
 lAk
 tOx
 eso
 pYG
-jas
+ezu
 cpy
 cpy
 bMX
@@ -68817,7 +68927,7 @@ nax
 nax
 nax
 mnb
-gSn
+wgP
 vpe
 eso
 eso
@@ -68832,12 +68942,12 @@ iHw
 fXG
 tLl
 tzd
-jas
+ezu
 mIU
 lTQ
 nQG
 clT
-jas
+ezu
 cpy
 cpy
 bMX
@@ -69023,7 +69133,7 @@ uwT
 uwT
 uwT
 bqE
-gSn
+wgP
 vpe
 vpe
 eso
@@ -69038,12 +69148,12 @@ lTj
 lTj
 etn
 tzd
-jas
+ezu
 jas
 hiZ
 qsN
 aAI
-jas
+ezu
 cpy
 cpy
 bMX
@@ -69157,7 +69267,7 @@ pNs
 pli
 lxL
 tVN
-pGl
+kqb
 hAi
 fpl
 qcA
@@ -69238,18 +69348,18 @@ mOy
 vpe
 kZs
 pIx
-wpF
+byy
 xZy
 lNT
 lNT
 wpF
 tzd
-jas
+ezu
 cVe
 xFv
 eso
 cVe
-jas
+ezu
 cpy
 cpy
 bMX
@@ -69435,7 +69545,7 @@ uwT
 uwT
 uwT
 bqE
-gSn
+wgP
 vpe
 vpe
 eso
@@ -69444,19 +69554,19 @@ tcK
 vpe
 vpe
 aXB
-wpF
+byy
 tHo
 wpF
 wpF
 wpF
 tzd
-jas
+ezu
 ntK
 xFv
 nQG
 fHy
-jas
-jas
+ezu
+ezu
 cpy
 bMX
 "}
@@ -69641,7 +69751,7 @@ uwT
 uwT
 fWG
 bqE
-pIx
+wrp
 eso
 vpe
 vpe
@@ -69650,19 +69760,19 @@ vjr
 vpe
 vpe
 pIx
-ksA
+uIx
 ksA
 wpF
 wpF
 ksA
 tzd
-jas
+ezu
 aWT
 vZS
 vpe
 clT
 dWG
-jas
+ezu
 cpy
 bMX
 "}
@@ -69847,7 +69957,7 @@ fWG
 fWG
 fWG
 bqE
-pIx
+oQH
 eso
 eso
 vpe
@@ -69862,13 +69972,13 @@ eQB
 ksA
 oiD
 tzd
-jas
+ezu
 fpr
 vjr
 sTG
 fpr
 blW
-jas
+ezu
 cpy
 bMX
 "}
@@ -70068,13 +70178,13 @@ xPF
 xPF
 xPF
 dFz
-jas
+ezu
 iRa
 bUV
 vpe
 fpr
 dWG
-jas
+ezu
 cpy
 bMX
 "}
@@ -70274,13 +70384,13 @@ oxH
 oxH
 imh
 jas
-jas
+ezu
 cVe
 xFv
 vWI
 fpr
-jas
-jas
+ezu
+ezu
 cpy
 bMX
 "}
@@ -70484,8 +70594,8 @@ spz
 njm
 qup
 ntK
-jas
-jas
+ezu
+ezu
 cpy
 cpy
 bMX
@@ -70686,11 +70796,11 @@ aRi
 sbx
 aRi
 aRi
-jas
+ezu
 ogT
 jas
-jas
-jas
+ezu
+ezu
 cpy
 cpy
 cpy
@@ -70892,10 +71002,10 @@ jas
 jas
 jas
 jas
-jas
+ezu
 nQu
 jas
-jas
+ezu
 cpy
 cpy
 cpy
@@ -71098,10 +71208,10 @@ vSC
 jas
 etq
 phq
-jas
+ezu
 nQu
 uTY
-jas
+ezu
 cpy
 cpy
 cpy
@@ -71304,10 +71414,10 @@ phq
 jas
 kXk
 phq
-jas
+ezu
 nQu
 aEF
-jas
+ezu
 cpy
 cpy
 cpy
@@ -71497,7 +71607,7 @@ coR
 ozw
 ozw
 xcP
-gSn
+wgP
 vpe
 tJN
 rNv
@@ -71510,10 +71620,10 @@ lHS
 jas
 jas
 qNg
-jas
+ezu
 rmp
 aEF
-jas
+ezu
 cpy
 cpy
 cpy
@@ -71716,10 +71826,10 @@ phq
 lHS
 phq
 aam
-jas
+ezu
 wcM
 aEF
-jas
+ezu
 cpy
 cpy
 cpy
@@ -71896,7 +72006,7 @@ uwT
 uwT
 fWG
 jKa
-gSn
+wgP
 vpe
 eso
 vpe
@@ -71909,7 +72019,7 @@ eso
 vjr
 eso
 eso
-gSn
+wgP
 eso
 eso
 ipw
@@ -71922,10 +72032,10 @@ cmc
 phq
 phq
 qYq
-jas
+ezu
 wbo
 aEF
-jas
+ezu
 cpy
 cpy
 cpy
@@ -72115,7 +72225,7 @@ lWf
 cxo
 vpe
 ozw
-gSn
+wgP
 aRi
 ozw
 xFv
@@ -72127,11 +72237,11 @@ fYw
 aGy
 eJd
 ptU
-jas
-jas
+ezu
+ezu
 wbo
 aEF
-jas
+ezu
 cpy
 cpy
 cpy
@@ -72308,7 +72418,7 @@ uwT
 uwT
 uwT
 bqE
-gSn
+wgP
 vpe
 vpe
 wwc
@@ -72327,17 +72437,17 @@ jas
 nOT
 jas
 jas
-jas
-jas
-jas
-jas
-jas
-jas
-jas
+ezu
+ezu
+ezu
+ezu
+ezu
+ezu
+ezu
 hra
 nQu
 aEF
-jas
+ezu
 cpy
 cpy
 cpy
@@ -72543,7 +72653,7 @@ nQu
 nQu
 nQu
 haF
-jas
+ezu
 cpy
 cpy
 cpy
@@ -72739,7 +72849,7 @@ vpe
 eso
 vpe
 ahZ
-jas
+pGl
 jas
 jfP
 mKZ
@@ -72748,8 +72858,8 @@ pYO
 apC
 apC
 tWv
-jas
-jas
+ezu
+ezu
 cpy
 cpy
 cpy
@@ -72945,16 +73055,16 @@ eso
 sjA
 vpe
 goO
-jas
+ezu
 jas
 jas
 jas
 nQT
 jas
-jas
-jas
-jas
-jas
+ezu
+ezu
+ezu
+pGl
 cpy
 cpy
 cpy
@@ -73151,13 +73261,13 @@ eFb
 sjA
 eso
 goO
-jas
+ezu
 ctE
 jas
 aEF
 nQu
 wcM
-jas
+ezu
 cpy
 cpy
 cpy
@@ -73345,25 +73455,25 @@ xzK
 xzK
 jas
 jas
-gSn
-gSn
-gSn
+sCD
+sCD
+sCD
 jas
 jas
 jas
 jas
 jas
-jas
-jas
-jas
-jas
-jas
+ezu
+ezu
+ezu
+ezu
+ezu
 ctE
 jas
 kFd
 nQu
 qIt
-jas
+ezu
 cpy
 cpy
 cpy
@@ -73558,8 +73668,8 @@ tkA
 cpy
 cpy
 cpy
-cpy
-abo
+ygJ
+bAB
 ctE
 ctE
 ctE
@@ -73569,7 +73679,7 @@ jas
 wHX
 nQu
 sZz
-jas
+ezu
 cpy
 cpy
 cpy
@@ -73764,7 +73874,7 @@ wQa
 wQa
 cpy
 cpy
-abo
+bAB
 ctE
 ctE
 ctE
@@ -73775,7 +73885,7 @@ jas
 wHX
 nQu
 fZA
-jas
+ezu
 cpy
 cpy
 cpy
@@ -73970,7 +74080,7 @@ wQa
 wQa
 wQa
 cpy
-abo
+bAB
 ctE
 ctE
 ctE
@@ -73981,7 +74091,7 @@ jas
 jGe
 nQu
 dLC
-jas
+ezu
 cpy
 cpy
 cpy
@@ -74176,7 +74286,7 @@ wQa
 wQa
 wQa
 cpy
-cpy
+ygJ
 ctE
 ctE
 ctE
@@ -74187,7 +74297,7 @@ jas
 jGe
 nQu
 nQu
-jas
+ezu
 cpy
 cpy
 cpy
@@ -74382,8 +74492,8 @@ wQa
 wQa
 wQa
 cpy
-cpy
-abo
+ygJ
+bAB
 ctE
 ctE
 ctE
@@ -74393,7 +74503,7 @@ jas
 lYG
 nQu
 hcO
-jas
+ezu
 cpy
 cpy
 cpy
@@ -74589,7 +74699,7 @@ wQa
 cpy
 cpy
 cpy
-cpy
+ygJ
 ctE
 ctE
 ctE
@@ -74599,7 +74709,7 @@ jas
 uCo
 sid
 glQ
-jas
+ezu
 cpy
 cpy
 cpy
@@ -74795,17 +74905,17 @@ wQa
 wQa
 cpy
 cpy
-cpy
-cpy
-abo
-abo
+tsm
+ygJ
+bAB
+mbi
 ctE
 ctE
 jas
 jas
 ogT
 jas
-jas
+ezu
 cpy
 cpy
 cpy
@@ -75004,15 +75114,15 @@ cpy
 cpy
 cpy
 cpy
-abo
-abo
+mbi
+mbi
 jas
 jas
 xln
 vpe
 aRi
-jas
-jas
+pGl
+pGl
 cpy
 cpy
 cpy
@@ -75211,14 +75321,14 @@ cpy
 cpy
 cpy
 cpy
-abo
-jas
+bAB
+ezu
 bUx
 vpe
 eso
 eso
 xGC
-jas
+ezu
 cpy
 cpy
 cpy
@@ -75418,13 +75528,13 @@ wQa
 wQa
 cpy
 cpy
-jas
+ezu
 qrf
 cTZ
 suh
 vpe
 lPT
-jas
+ezu
 cpy
 cpy
 cpy
@@ -75624,13 +75734,13 @@ wQa
 wQa
 wQa
 cpy
-jas
+ezu
 uUm
 eso
 wJq
 wNX
 gnl
-jas
+ezu
 cpy
 cpy
 cpy
@@ -75830,13 +75940,13 @@ wQa
 wQa
 wQa
 eLf
-jas
+ezu
 pVy
 vpe
 eso
 wNX
 xlV
-jas
+ezu
 dhH
 eXG
 cpy
@@ -76036,13 +76146,13 @@ wQa
 wQa
 wQa
 eLf
-jas
-jas
+pGl
+pGl
 ozw
 eso
 ozw
-jas
-jas
+pGl
+pGl
 dhH
 eXG
 cpy
@@ -76243,11 +76353,11 @@ fdh
 wQa
 tGw
 ybz
-jas
-jas
-ogT
-jas
-jas
+pGl
+ezu
+kEp
+ezu
+pGl
 ybz
 fdf
 eXG

@@ -82,3 +82,8 @@
 		scatter = initial(scatter) * (1/new_stage_rate)
 		stage_delay_mult = 1 / new_stage_rate
 		SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult)
+
+/obj/item/hardpoint/primary/minigun/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)//might not need this because of is_lobbing, but let's keep it just incase
+	))

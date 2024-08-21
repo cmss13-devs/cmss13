@@ -101,8 +101,3 @@
 /datum/ammo/bullet/tank/minigun/proc/setup_hvh_damage()
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		damage = 15
-
-/datum/ammo/bullet/tank/minigun/set_bullet_traits()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
-	))

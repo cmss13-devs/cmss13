@@ -855,7 +855,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "YN" = (
-/obj/structure/machinery/power/apc/almayer{
+/obj/structure/machinery/power/apc/almayer/south{
 	cell_type = /obj/item/cell/hyper
 	},
 /turf/open/floor/almayer/tcomms,

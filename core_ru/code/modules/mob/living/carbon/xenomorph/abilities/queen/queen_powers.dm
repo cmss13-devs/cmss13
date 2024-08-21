@@ -18,7 +18,7 @@
 		return
 
 	if(user_xeno.hive.stored_larva < required_larva)
-		to_chat(usr, SPAN_XENOWARNING("Not enought larvaes in core."))
+		to_chat(usr, SPAN_XENOWARNING("Not enought larvae in core."))
 		return
 
 	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost))

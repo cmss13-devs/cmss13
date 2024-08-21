@@ -15,6 +15,9 @@
 /datum/job/special/uscm/riot/chief
 	title = JOB_RIOT_CHIEF
 
+/datum/job/special/uscm/tech
+	title = JOB_SQUAD_TECH
+
 #define USCM_TECH "USCM"
 #define WY_TECH "Wey-Yu"
 

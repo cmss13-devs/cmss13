@@ -433,7 +433,7 @@ SOLAR DEVILS (PvE Marines)
 ---------------------
 */
 
-/datum/skills/rifleman_PvE
+/datum/skills/rifleman_pve
 	name = "Private"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
@@ -445,7 +445,7 @@ SOLAR DEVILS (PvE Marines)
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 	)
 
-/datum/skills/combat_medic_PvE
+/datum/skills/combat_medic_pve
 	name = "Combat Medic"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
@@ -459,7 +459,7 @@ SOLAR DEVILS (PvE Marines)
 		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
 	)
 
-/datum/skills/smartgunner_PvE
+/datum/skills/smartgunner_pve
 	name = "Smartgunner"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
@@ -472,7 +472,7 @@ SOLAR DEVILS (PvE Marines)
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_SMARTGUN,
 	)
 
-/datum/skills/tl_PvE
+/datum/skills/tl_pve
 	name = "Fireteam Leader"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
@@ -486,7 +486,7 @@ SOLAR DEVILS (PvE Marines)
 		SKILL_PILOT = SKILL_PILOT_TRAINED,
 	)
 
-/datum/skills/sl_PvE
+/datum/skills/sl_pve
 	name = "Squad Leader"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,

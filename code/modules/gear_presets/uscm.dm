@@ -1008,7 +1008,7 @@
 	rank = JOB_SQUAD_MARINE
 	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "RFN"
-	skills = /datum/skills/rifleman_PvE
+	skills = /datum/skills/rifleman_pve
 	auto_squad_name = SQUAD_SOLAR
 
 	minimap_icon = "private"
@@ -1069,7 +1069,7 @@
 	rank = JOB_SQUAD_MEDIC
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "HM"
-	skills = /datum/skills/combat_medic_PvE
+	skills = /datum/skills/combat_medic_pve
 	auto_squad_name = SQUAD_SOLAR
 
 	minimap_icon = "medic"
@@ -1133,7 +1133,7 @@
 	rank = JOB_SQUAD_SMARTGUN
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "SG"
-	skills = /datum/skills/smartgunner_PvE
+	skills = /datum/skills/smartgunner_pve
 	auto_squad_name = SQUAD_SOLAR
 
 	minimap_icon = "smartgunner"
@@ -1179,7 +1179,7 @@
 	rank = JOB_SQUAD_TEAM_LEADER
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "FTL"
-	skills = /datum/skills/tl_PvE
+	skills = /datum/skills/tl_pve
 	auto_squad_name = SQUAD_SOLAR
 
 	minimap_icon = "tl"
@@ -1236,7 +1236,7 @@
 	rank = JOB_SQUAD_LEADER
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "SL"
-	skills = /datum/skills/sl_PvE
+	skills = /datum/skills/sl_pve
 	auto_squad_name = SQUAD_SOLAR
 
 	minimap_icon = "sl"

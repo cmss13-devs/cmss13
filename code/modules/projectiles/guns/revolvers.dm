@@ -314,7 +314,7 @@
 	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
 
 /obj/item/weapon/gun/revolver/m44/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 12, "rail_y" = 23, "under_x" = 21, "under_y" = 18, "stock_x" = 16, "stock_y" = 20)
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 12, "rail_y" = 23, "under_x" = 21, "under_y" = 16, "stock_x" = 16, "stock_y" = 20)
 
 /obj/item/weapon/gun/revolver/m44/set_gun_config_values()
 	..()

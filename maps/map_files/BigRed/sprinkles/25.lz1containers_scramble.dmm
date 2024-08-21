@@ -46,11 +46,7 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/space_port)
 "ao" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -32;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "ap" = (

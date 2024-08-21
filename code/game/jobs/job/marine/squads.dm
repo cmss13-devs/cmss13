@@ -239,29 +239,30 @@
 	usable = TRUE
 	omni_squad_vendor = TRUE
 	faction = FACTION_UPP
+	radio_freq = UPP_FREQ
 
 /datum/squad/upp/one
-	name = "UPPS1"
+	name = SQUAD_UPP_1
 	equipment_color = "#e61919"
 	chat_color = "#e67d7d"
 
 /datum/squad/upp/twp
-	name = "UPPS2"
+	name = SQUAD_UPP_2
 	equipment_color = "#ffc32d"
 	chat_color = "#ffe650"
 
 /datum/squad/upp/three
-	name = "UPPS3"
+	name = SQUAD_UPP_3
 	equipment_color = "#c864c8"
 	chat_color = "#ff96ff"
 
 /datum/squad/upp/four
-	name = "UPPS4"
+	name = SQUAD_UPP_4
 	equipment_color = "#4148c8"
 	chat_color = "#828cff"
 
 /datum/squad/upp/kdo
-	name = "UPPKdo"
+	name = SQUAD_UPP_5
 	equipment_color = "#c47a50"
 	chat_color = "#c47a50"
 	squad_type = "Team"

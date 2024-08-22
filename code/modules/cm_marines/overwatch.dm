@@ -33,6 +33,7 @@
 
 	var/list/possible_options = list("Blue" = "crtblue", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
 	var/list/chosen_theme = list("Blue", "Green", "Yellow", "Red")
+	var/command_channel_key = ":v"
 
 
 	///List of saved coordinates, format of ["x", "y", "comment"]
@@ -111,25 +112,7 @@
 		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
 		ui.open()
 
-/obj/structure/machinery/computer/overwatch/ui_data(mob/user)
-	var/list/data = list()
-
-	data["theme"] = ui_theme
-
-	if(!current_squad)
-		data["squad_list"] = list()
-		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
-				data["squad_list"] += current_squad.name
-		return data
-
-	data["current_squad"] = current_squad.name
-
-	data["primary_objective"] = current_squad.primary_objective
-	data["secondary_objective"] = current_squad.secondary_objective
-
-	data["marines"] = list()
-
+/obj/structure/machinery/computer/overwatch/proc/count_marines(list/data)
 	var/leader_count = 0
 	var/ftl_count = 0
 	var/spec_count = 0
@@ -303,6 +286,28 @@
 	data["engi_alive"] = engi_alive
 	data["smart_alive"] = smart_alive
 	data["specialist_type"] = specialist_type ? specialist_type : "NONE"
+	return data
+
+/obj/structure/machinery/computer/overwatch/ui_data(mob/user)
+	var/list/data = list()
+
+	data["theme"] = ui_theme
+
+	if(!current_squad)
+		data["squad_list"] = list()
+		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
+			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
+				data["squad_list"] += current_squad.name
+		return data
+
+	data["current_squad"] = current_squad.name
+
+	data["primary_objective"] = current_squad.primary_objective
+	data["secondary_objective"] = current_squad.secondary_objective
+
+	data["marines"] = list()
+
+	data = count_marines(data)
 
 	data["z_hidden"] = z_hidden
 
@@ -565,7 +570,7 @@
 		current_squad.send_message("Attention: A new Squad Leader has been set: [selected_sl.real_name].")
 		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[selected_sl.real_name] is the new Squad Leader of squad '[current_squad]'! Logging to enlistment file.")]")
 
-	to_chat(selected_sl, "[icon2html(src, selected_sl)] <font size='3' color='blue'><B>Overwatch: You've been promoted to \'[selected_sl.job == JOB_SQUAD_LEADER ? "SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel (:v).</B></font>")
+	to_chat(selected_sl, "[icon2html(src, selected_sl)] <font size='3' color='blue'><B>Overwatch: You've been promoted to \'[selected_sl.job == JOB_SQUAD_LEADER ? "SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel ([command_channel_key]).</B></font>")
 	to_chat(user, "[icon2html(src, usr)] [selected_sl.real_name] is [current_squad]'s new leader!")
 
 	if(selected_sl.assigned_fireteam)
@@ -586,13 +591,23 @@
 		selected_sl.comm_title = "aSL"
 	ADD_TRAIT(selected_sl, TRAIT_LEADERSHIP, TRAIT_SOURCE_SQUAD_LEADER)
 
-	var/obj/item/device/radio/headset/almayer/marine/sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+	var/obj/item/device/radio/headset/sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+	switch(faction)
+		if (FACTION_UPP)
+			sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/distress/UPP)
+
 	if(sl_headset)
-		sl_headset.keys += new /obj/item/device/encryptionkey/squadlead/acting(sl_headset)
+		switch(faction)
+			if (FACTION_UPP)
+				sl_headset.keys += new /obj/item/device/encryptionkey/upp/command/acting(sl_headset)
+			else
+				sl_headset.keys += new /obj/item/device/encryptionkey/squadlead/acting(sl_headset)
 		sl_headset.recalculateChannels()
 	var/obj/item/card/id/card = selected_sl.get_idcard()
 	if(card)
-		card.access += ACCESS_MARINE_LEADER
+		switch(faction)
+			if (FACTION_MARINE)
+				card.access += ACCESS_MARINE_LEADER
 	selected_sl.hud_set_squad()
 	selected_sl.update_inv_head() //updating marine helmet leader overlays
 	selected_sl.update_inv_wear_suit()
@@ -882,6 +897,7 @@
 	faction = FACTION_CLF
 /obj/structure/machinery/computer/overwatch/upp
 	faction = FACTION_UPP
+	command_channel_key = "#v"
 	ui_theme = "crtupp"
 	possible_options = list("UPP" = "crtupp", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
 	chosen_theme = list("UPP", "Green", "Yellow", "Red")
@@ -971,25 +987,7 @@
 	icon_state = "deltadrop"
 	squad = SQUAD_UPP_4
 
-/obj/structure/machinery/computer/overwatch/upp/ui_data(mob/user)
-	var/list/data = list()
-
-	data["theme"] = ui_theme
-
-	if(!current_squad)
-		data["squad_list"] = list()
-		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
-				data["squad_list"] += current_squad.name
-		return data
-
-	data["current_squad"] = current_squad.name
-
-	data["primary_objective"] = current_squad.primary_objective
-	data["secondary_objective"] = current_squad.secondary_objective
-
-	data["marines"] = list()
-
+/obj/structure/machinery/computer/overwatch/upp/count_marines(list/data)
 	var/leader_count = 0
 	var/ftl_count = 0
 	var/spec_count = 0
@@ -1163,27 +1161,6 @@
 	data["engi_alive"] = engi_alive
 	data["smart_alive"] = smart_alive
 	data["specialist_type"] = specialist_type ? specialist_type : "NONE"
-
-	data["z_hidden"] = z_hidden
-
-	data["saved_coordinates"] = list()
-	for(var/i in 1 to length(saved_coordinates))
-		data["saved_coordinates"] += list(list("x" = saved_coordinates[i]["x"], "y" = saved_coordinates[i]["y"], "comment" = saved_coordinates[i]["comment"], "index" = i))
-
-	var/has_supply_pad = FALSE
-	var/obj/structure/closet/crate/supply_crate
-	if(current_squad.drop_pad)
-		supply_crate = locate() in current_squad.drop_pad.loc
-		has_supply_pad = TRUE
-	data["can_launch_crates"] = has_supply_pad
-	data["has_crate_loaded"] = supply_crate
-	data["can_launch_obs"] = current_orbital_cannon
-	if(current_orbital_cannon)
-		data["ob_cooldown"] = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
-		data["ob_loaded"] = current_orbital_cannon.chambered_tray
-
-	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
-	data["operator"] = operator.name
 
 	return data
 

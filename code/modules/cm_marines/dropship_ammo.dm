@@ -375,8 +375,9 @@
 	travelling_time = 80 //faster than 30mm cannon, slower than real rockets
 	transferable_ammo = TRUE
 	point_cost = 300
-	fire_mission_delay = 3 //high cooldown
-	 var/rocket_name = "minirocket"
+	fire_mission_delay =3 //high cooldown
+
+	var/rocket_name = " minirocket"
 
 /obj/structure/ship_ammo/minirocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(2)
@@ -407,7 +408,7 @@
 	icon_state = "minirocket_inc"
 	point_cost = 500
 	fire_mission_delay = 3 //high cooldown
-	/rocket_name = incendiary minirocket
+	rocket_name = " incendiary minirocket"
 
 
 /obj/structure/ship_ammo/minirocket/incendiary/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
@@ -450,33 +451,31 @@
 
 /obj/structure/ship_ammo/minirocket/smoke
 	name = "\improper 1FW-AH Smoke shell 'Fog'"
-	desc = "The Type 1FW-AH Smoke shell 'Fog' though it lacks a targeting system, its high ammo count and low cost of production means it is a effective way to block enemy visuals, each individual pod contains a chemical mix that produces thick, harmless smoke, or "fog" on impact. Can be loaded into the LAU-229 Rocket Pod."
+	desc = "The Type 1FW-AH Smoke shell, also known as 'Fog', lacks a targeting system, but its high ammo count and low cost of production means it is a effective way to block enemy visuals, each individual pod contains a chemical mix that produces thick, harmless smoke, or 'fog' on impact. Can be loaded into the LAU-229 Rocket Pod."
 	icon_state = "minirocket"
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	equipment_type = /obj/structure/dropship_equipment/weapon/minirocket_pod
 	ammo_count = 12
 	max_ammo_count = 12
 	ammo_name = "Smoke shells"
-	travelling_time = 70 //Slightly faster than their mini-mike siblings.
+	travelling_time = 50 //Slightly faster than their mini-mike siblings.
 	transferable_ammo = TRUE
-	point_cost = 200
-	fire_mission_delay = 1 //Low cooldown, as the effect is relatively harmless.
-	rocket_name= "smoke shell"
+	point_cost = 100
+	fire_mission_delay = 1  //Low cooldown, as the effect is relatively harmless.
+	rocket_name= " smoke shell"
 
 /obj/structure/ship_ammo/minirocket/smoke/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(2)
 	spawn(5)
 
-			var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
-			S.set_up(10,0,impact,null,5)
-			S.start()
+		var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
+		S.set_up(7,0,impact,null,70)
+		S.start()
 		if(!ammo_count && loc)
 			qdel(src) //deleted after last Smole shell is fired and impacts the ground.
 
 /obj/structure/ship_ammo/minirocket/smoke/show_loaded_desc(mob/user)
 	if(ammo_count)
-		return "It's loaded with \a [src] containing [ammo_count] Smoke Shells.\s."
+		return "It's loaded with \a [src] containing [ammo_count] [rocket_name]\s."
 
-/obj/structure/ship_ammo/minirocket/smoke/get_examine_text(mob/user)
-	. = ..()
-	. += "It has [ammo_count] [rocket_name]\s."
+//A note from the guy that made this. this was my first project, and it probally sort of sucks. its effectively modified from the core Minirockets. But i oddly had a blast doing it, and hope i can look back of this with fondness later. I love this community and wanted to give more than my character.

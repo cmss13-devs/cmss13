@@ -3024,7 +3024,8 @@
 /area/kutjevo/exterior/runoff_bridge)
 "dRw" = (
 /obj/effect/overlay/palmtree_l,
-/turf/open/auto_turf/sand/layer1,
+/obj/effect/overlay/coconut,
+/turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/complex/botany)
 "dRX" = (
 /obj/structure/window/framed/kutjevo/reinforced,
@@ -10261,19 +10262,6 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
-"nmL" = (
-/obj/structure/stairs/perspective/kutjevo{
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective/kutjevo{
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective/kutjevo{
-	icon_state = "p_stair_full"
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/runoff_bridge)
 "nnf" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /obj/structure/platform_decoration/kutjevo{
@@ -10938,6 +10926,9 @@
 "oeb" = (
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/kutjevo/exterior/runoff_bridge)
+"oef" = (
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/complex/botany)
 "ofn" = (
 /obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/auto_turf/sand/layer1,
@@ -11748,7 +11739,7 @@
 /area/kutjevo/interior/complex/med/operating)
 "phA" = (
 /obj/effect/overlay/palmtree_r,
-/turf/open/auto_turf/sand/layer1,
+/turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/complex/botany)
 "phI" = (
 /obj/structure/bed/chair{
@@ -35480,7 +35471,7 @@ qgW
 eXm
 eSP
 dRw
-egZ
+oef
 lHs
 uPK
 kDS
@@ -35645,8 +35636,8 @@ lce
 hVg
 juO
 eXm
-egZ
-egZ
+oef
+oef
 eSP
 tRp
 uPK
@@ -36148,7 +36139,7 @@ qgW
 eXm
 vBT
 eSP
-egZ
+oef
 lHs
 qGk
 vzN
@@ -37674,7 +37665,7 @@ dRj
 dRj
 dRj
 ucb
-nmL
+cqX
 fyD
 fyD
 oeb

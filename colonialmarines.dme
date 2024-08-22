@@ -2467,7 +2467,6 @@
 #include "code\modules\vehicles\interior\interactable\vendors.dm"
 #include "code\modules\vehicles\interior\interactable\viewports.dm"
 #include "code\modules\vehicles\interior\interactable\weapons_loader.dm"
-#include "code\modules\vehicles\interior\objects\fancy_locker.dm"
 #include "code\modules\vehicles\multitile\multitile.dm"
 #include "code\modules\vehicles\multitile\multitile_bump.dm"
 #include "code\modules\vehicles\multitile\multitile_hardpoints.dm"

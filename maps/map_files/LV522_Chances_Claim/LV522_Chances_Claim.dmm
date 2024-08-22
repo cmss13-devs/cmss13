@@ -43094,7 +43094,7 @@
 /area/lv522/indoors/a_block/security/glass)
 "ukT" = (
 /obj/structure/closet/crate,
-/obj/item/storage/pouch/pressurized_reagent_canister/revival,
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_peri,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "ulh" = (

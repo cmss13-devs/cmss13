@@ -1,6 +1,4 @@
 /datum/caste_datum/facehugger
-	AUTOWIKI_SKIP(TRUE)
-
 	caste_type = XENO_CASTE_FACEHUGGER
 	tier = 0
 	plasma_gain = XENO_PLASMA_GAIN_TIER_1

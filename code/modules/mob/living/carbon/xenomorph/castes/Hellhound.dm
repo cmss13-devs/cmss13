@@ -1,6 +1,4 @@
 /datum/caste_datum/hellhound
-	AUTOWIKI_SKIP(TRUE)
-
 	caste_type = XENO_CASTE_HELLHOUND
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
 	tier = 0

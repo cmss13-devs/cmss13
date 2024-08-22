@@ -1,5 +1,5 @@
 /obj/item/storage/box/packet
-	icon = 'icons/obj/items/weapons/grenade.dmi'
+	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "hedp_packet"
 	w_class = SIZE_MEDIUM//fits into bags
 	storage_slots = 3

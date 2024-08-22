@@ -1426,7 +1426,7 @@
 /obj/item/storage/pouch/machete
 	name = "\improper H6B pattern M2132 machete scabbard"
 	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the pouch slot."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/holsters.dmi'
 	icon_state = "macheteB_holster"
 	item_state = "machete_holster"
 	max_w_class = SIZE_LARGE

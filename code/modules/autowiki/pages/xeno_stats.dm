@@ -5,33 +5,46 @@
 /datum/autowiki/xeno_stats/generate_multiple()
 	var/output = list()
 
-	for(var/mob/living/carbon/xeno as anything in subtypesof(/mob/living/carbon/xenomorph))
+	for(var/mob/living/carbon/xenomorph/xeno as anything in subtypesof(/mob/living/carbon/xenomorph))
 		if(IS_AUTOWIKI_SKIP(xeno))
 			continue
 
-		var/xeno_instance = new xeno()
+		var/mob/living/carbon/xenomorph/xeno_instance = new xeno()
 
-		output += template_from_xeno(xeno_instance)
+		var/strains = list(null) + xeno_instance.caste.available_strains
+		for(var/datum/xeno_strain/strain as anything in strains)
+			var/datum/xeno_strain/strain_instance = null
+			if(!isnull(strain))
+				strain_instance = new strain()
+
+			output += template_from_xeno(xeno_instance, strain_instance)
+
+			qdel(strain_instance)
 
 		qdel(xeno)
 
 	return output
 
-/datum/autowiki/xeno_stats/proc/template_from_xeno(mob/living/carbon/xenomorph/xeno)
-	// Base stats
+/datum/autowiki/xeno_stats/proc/template_from_xeno(mob/living/carbon/xenomorph/xeno, datum/xeno_strain/strain)
+	var/name = xeno.caste_type
+	if(!isnull(strain))
+		strain.apply_strain(xeno)
+		name = "[strain.name] [name]"
+
 	var/xeno_data = list(
-		"Name" = xeno.caste_type,
+		"Name" = name,
 		"Health" = xeno.maxHealth,
 		"Armor" = xeno.armor_deflection,
 		"Plasma" = xeno.plasma_max,
 		"Damage Range" = "[xeno.melee_damage_lower]\u2014[xeno.melee_damage_upper]",
+		"Claw Strength" = xeno.claw_type,
 		"Evasion" = xeno.evasion,
-		// Speed is relatively unintuitive, so we convert it into a form
-		// that makes sense for the wiki.
+		// Mob speed is relatively non-obvious, we we convert it into a very intuitive
+		// range for wiki-readability.
 		"Speed" = humanize_speed(xeno.speed),
 	)
 
-	var/sanitized_name = url_encode(replacetext(xeno.caste_type, " ", "_"))
+	var/sanitized_name = url_encode(replacetext(name, " ", "_"))
 	return list(list(title = "Tempalte:AutoWiki/Content/XenoStats/[sanitized_name]", text = include_template("Autowiki/XenoStats", xeno_data)))
 
 /datum/autowiki/xeno_stats/proc/humanize_speed(speed)

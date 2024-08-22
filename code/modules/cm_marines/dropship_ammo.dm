@@ -376,6 +376,7 @@
 	transferable_ammo = TRUE
 	point_cost = 300
 	fire_mission_delay = 3 //high cooldown
+	 var/rocket_name = "minirocket"      
 
 /obj/structure/ship_ammo/minirocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(2)
@@ -393,11 +394,11 @@
 
 /obj/structure/ship_ammo/minirocket/show_loaded_desc(mob/user)
 	if(ammo_count)
-		return "It's loaded with \a [src] containing [ammo_count] minirocket\s."
+		return "It's loaded with \a [src] containing [ammo_count] [rocket_name]\s."
 
 /obj/structure/ship_ammo/minirocket/get_examine_text(mob/user)
 	. = ..()
-	. += "It has [ammo_count] minirocket\s."
+	. += "It has [ammo_count][rocket_name]\s."
 
 
 /obj/structure/ship_ammo/minirocket/incendiary
@@ -406,6 +407,8 @@
 	icon_state = "minirocket_inc"
 	point_cost = 500
 	fire_mission_delay = 3 //high cooldown
+	rocket_name = incendiary minirocket
+	
 
 /obj/structure/ship_ammo/minirocket/incendiary/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	..()

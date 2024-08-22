@@ -675,7 +675,6 @@
 						R.keys -= key
 						qdel(key)
 					R.recalculateChannels()
-				var/obj/item/card/id/card = old_lead.get_idcard()
 		if (FACTION_MARINE)
 			switch(GET_DEFAULT_ROLE(old_lead.job))
 				if(JOB_SQUAD_SPECIALIST)

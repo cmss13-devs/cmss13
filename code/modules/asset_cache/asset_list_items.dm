@@ -390,8 +390,8 @@
 		var/icon_state = temp_gun.base_gun_icon // base_gun_icon is set in Initialize generally
 		qdel(temp_gun)
 		if(icon_state && isnull(sprites[icon_state]))
-			// upgrade this to a stack_trace once all guns have a lineart and we want to lint against that
-			log_debug("[current_gun] does not have a valid lineart icon state, icon=[icon_file], icon_state=[json_encode(icon_state)]")
+			// downgrade this to a log_debug if we don't want missing lineart to be a lint
+			stack_trace("[current_gun] does not have a valid lineart icon state, icon=[icon_file], icon_state=[json_encode(icon_state)]")
 
 	..()
 

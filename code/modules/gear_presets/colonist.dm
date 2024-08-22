@@ -75,6 +75,7 @@
 	name = "Colonist - Doctor"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Colonial Doctor"
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 
 	//Marine access is required to use chem dispensers...
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)

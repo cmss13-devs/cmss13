@@ -1,0 +1,4 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "added amr ammo to WO req vendor and to WO ammo beacons"

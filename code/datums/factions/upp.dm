@@ -54,10 +54,10 @@
 			hud_icon_state = "vc"
 		if(JOB_UPP_LT_DOKTOR)
 			hud_icon_state = "doc"
-
-	if(squad && squad.squad_leader == H && _role != JOB_UPP_LEADER)
-		hud_icon_state = "sl_a"
-
+		if(JOB_UPP_SUPPLY)
+			hud_icon_state = "log"
+		if(JOB_UPP_COMMISSAR)
+			hud_icon_state = "commi"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
 

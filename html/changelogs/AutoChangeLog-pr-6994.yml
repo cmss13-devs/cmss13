@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - bugfix: "\"Retrieve Fulton\" objective should now show up properly."

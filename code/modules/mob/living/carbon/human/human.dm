@@ -1045,7 +1045,7 @@
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
 
 /mob/living/carbon/human/verb/view_objective_memory()
-	set name = "View objectives"
+	set name = "View intel objectives"
 	set category = "IC"
 
 	if(!mind)

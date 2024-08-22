@@ -615,6 +615,7 @@
 		"SHARP ammo",
 		"Rocket ammo",
 		"Sniper ammo",
+		"Anti-Material Sniper ammo",
 		"Pyrotechnician tanks",
 		"Scout ammo",
 		"Smartgun ammo",
@@ -635,8 +636,11 @@
 		if("Sniper ammo")
 			supply_drop = 3
 			to_chat(usr, SPAN_NOTICE("Sniper ammo will now drop!"))
-		if("Explosives and grenades")
+		if("Anti-Material Sniper ammo")
 			supply_drop = 4
+			to_chat(usr, SPAN_NOTICE("Anti-Material Sniper ammo will now drop!"))
+		if("Explosives and grenades")
+			supply_drop = 5
 			to_chat(usr, SPAN_NOTICE("Explosives and grenades will now drop!"))
 		if("SHARP ammo")
 			supply_drop = 5
@@ -738,21 +742,27 @@
 							/obj/item/ammo_magazine/sniper,
 							/obj/item/ammo_magazine/sniper/incendiary,
 							/obj/item/ammo_magazine/sniper/flak)
-		if(4) // Give them explosives + Grenades for the Grenade spec. Might be too many grenades, but we'll find out.
+		if(4) //Amr sniper ammo.
+			spawnitems = list(/obj/item/ammo_magazine/sniper/anti_materiel,
+							/obj/item/ammo_magazine/sniper/anti_materiel,
+							/obj/item/ammo_magazine/sniper/anti_materiel,
+							/obj/item/ammo_magazine/sniper/anti_materiel,
+							/obj/item/ammo_magazine/sniper/anti_materiel)
+		if(5) // Give them explosives + Grenades for the Grenade spec. Might be too many grenades, but we'll find out.
 			spawnitems = list(/obj/item/storage/box/explosive_mines,
 							/obj/item/storage/belt/grenade/full)
-		if(5) // SHARP ammo
+		if(6) // SHARP ammo
 			spawnitems = list(/obj/item/ammo_magazine/rifle/sharp/explosive,
 							/obj/item/ammo_magazine/rifle/sharp/explosive,
 							/obj/item/ammo_magazine/rifle/sharp/explosive,
 							/obj/item/ammo_magazine/rifle/sharp/incendiary,
 							/obj/item/ammo_magazine/rifle/sharp/flechette,)
-		if(6) // Pyrotech
+		if(7) // Pyrotech
 			var/fuel = pick(/obj/item/ammo_magazine/flamer_tank/large/B, /obj/item/ammo_magazine/flamer_tank/large/X)
 			spawnitems = list(/obj/item/ammo_magazine/flamer_tank/large,
 							/obj/item/ammo_magazine/flamer_tank/large,
 							fuel)
-		if(7) // Scout
+		if(8) // Scout
 			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra/custom,
 							/obj/item/ammo_magazine/rifle/m4ra/custom,
 							/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,

@@ -2398,8 +2398,6 @@ Defined in conflicts.dm of the #defines folder.
 	melee_mod = 15
 	size_mod = 0
 
-/obj/item/attachable/stock/m60/New()
-	..()
 
 /obj/item/attachable/stock/ppsh
 	name = "PPSh-17b stock"
@@ -2413,8 +2411,6 @@ Defined in conflicts.dm of the #defines folder.
 	melee_mod = 10
 	size_mod = 0
 
-/obj/item/attachable/stock/ppsh/New()
-	..()
 
 
 /obj/item/attachable/stock/smg

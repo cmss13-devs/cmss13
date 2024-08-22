@@ -270,3 +270,14 @@
   - imageadd: The Support Tech has a unique HUD icon to better denote its role.
   Waseemq1235:
   - rscadd: Adds handheld Enforcer squad distress beacons for Provost Inspectors+
+2024-08-22:
+  AmoryBlaine:
+  - imageadd: Imports TWE sprites from downstream
+  - imageadd: Imports mime & cowboy boots
+  SASoperative:
+  - code_imp: Updated donator items
+  - imageadd: Added new donator sprites
+  - imagedel: Removed old unused sprites
+  dongwaiver:
+  - imageadd: new m44 revolver sprites
+  - imagedel: old m44 revolver sprites

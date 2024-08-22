@@ -33,6 +33,7 @@
 #define RADIO_CHANNEL_MEDSCI "MedSci"
 #define RADIO_CHANNEL_MP "MP"
 #define RADIO_CHANNEL_NORMANDY "Normandy"
+#define RADIO_CHANNEL_SAIPAN "Saipan"
 #define RADIO_CHANNEL_REQ "Req"
 #define RADIO_CHANNEL_SENTRY "Sentry Network"
 #define RADIO_CHANNEL_SPECIAL "special"

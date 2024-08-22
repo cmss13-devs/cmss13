@@ -375,7 +375,7 @@
 	travelling_time = 80 //faster than 30mm cannon, slower than real rockets
 	transferable_ammo = TRUE
 	point_cost = 300
-	fire_mission_delay =3 //high cooldown
+	fire_mission_delay = 3 //high cooldown
 
 	var/rocket_name = " minirocket"
 

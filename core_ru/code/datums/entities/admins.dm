@@ -260,6 +260,8 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
 	else
 		rank = ranks[length(ranks)]
 
+	UNTIL(admin_client.player_data)
+
 	DB_FILTER(/datum/entity/admin_holder, DB_COMP("player_id", DB_EQUALS, admin_client.player_data.id), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(localhost_entity_check), admin_client, rank))
 
 /proc/localhost_entity_check(client/admin_client, datum/entity/admin_rank/rank, list/datum/entity/admin_holder/admins)

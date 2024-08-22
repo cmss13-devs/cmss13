@@ -84,11 +84,13 @@
 		targets += M
 	FOR_DOVIEW_END
 
-	if(attack_defenses)
-		FOR_DOVIEW(var/obj/structure/machinery/defenses/D, tesla_range, src, HIDE_INVISIBLE_OBSERVER)
-			if(D.turned_on)
-				targets += D
-		FOR_DOVIEW_END
+	if(!attack_defenses)
+		return
+
+	FOR_DOVIEW(var/obj/structure/machinery/defenses/D, tesla_range, src, HIDE_INVISIBLE_OBSERVER)
+		if(D.turned_on)
+			targets += D
+	FOR_DOVIEW_END
 
 /obj/structure/machinery/defenses/tesla_coil/proc/fire(atoms)
 	if(!(world.time - last_fired >= fire_delay) || !turned_on)

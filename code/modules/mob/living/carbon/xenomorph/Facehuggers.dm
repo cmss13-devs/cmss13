@@ -350,7 +350,7 @@
 	else
 		target.visible_message(SPAN_DANGER("[src] violates [target]'s face!"))
 
-	if(GLOB.round_statistics && (ishuman(target) || isyautja(target)))
+	if(GLOB.round_statistics && (ishuman(target)))
 		GLOB.round_statistics.total_huggers_applied++
 
 /obj/item/clothing/mask/facehugger/proc/go_active()

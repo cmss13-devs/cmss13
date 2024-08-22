@@ -39717,7 +39717,7 @@
 "mId" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/armor/riot/marine/vintage_riot,
-/obj/item/clothing/head/helmet/riot/vintage_riot,
+/obj/item/clothing/head/helmet/riot,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},

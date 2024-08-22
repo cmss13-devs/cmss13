@@ -27,6 +27,7 @@
 	name = "box"
 	desc = "It's just an ordinary box."
 	icon_state = "box"
+	icon = 'icons/obj/items/storage/boxes.dmi'
 	item_state = "syringe_kit"
 	foldable = TRUE
 	storage_slots = null
@@ -150,6 +151,7 @@
 /obj/item/storage/box/flashbangs
 	name = "box of flashbangs (WARNING)"
 	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness or deafness in repeated use.</B>"
+	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "flashbang"
 	can_hold = list(/obj/item/explosive/grenade/flashbang)
 	w_class = SIZE_MEDIUM
@@ -181,6 +183,7 @@
 /obj/item/storage/box/emps
 	name = "box of emp grenades"
 	desc = "A box with 5 emp grenades."
+	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "emp"
 
 /obj/item/storage/box/emps/fill_preset_inventory()
@@ -500,7 +503,7 @@
 
 /obj/item/storage/box/lights
 	name = "box of replacement bulbs"
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "light"
 	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
 	item_state = "syringe_kit"
@@ -548,6 +551,7 @@
 /obj/item/storage/box/twobore
 	name = "box of 2 bore shells"
 	icon_state = "twobore"
+	icon = 'icons/obj/items/storage/kits.dmi'
 	desc = "A box filled with enormous slug shells, for hunting only the most dangerous game. 2 Bore."
 	storage_slots = 5
 	can_hold = list(/obj/item/ammo_magazine/handful/shotgun/twobore)
@@ -562,6 +566,7 @@
 /obj/item/storage/box/explosive_mines
 	name = "\improper M20 mine box"
 	desc = "A secure box holding five M20 anti-personnel proximity mines."
+	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "minebox"
 	w_class = SIZE_MEDIUM
 	max_storage_space = 10
@@ -582,6 +587,7 @@
 	name = "\improper M94 marking flare pack"
 	desc = "A packet of eight M94 Marking Flares. Carried by USCM soldiers to light dark areas that cannot be reached with the usual TNR Shoulder Lamp."
 	icon_state = "m94"
+	icon = 'icons/obj/items/storage/packets.dmi'
 	w_class = SIZE_MEDIUM
 	storage_slots = 8
 	max_storage_space = 8
@@ -618,6 +624,7 @@
 	name = "\improper M40 HEDP grenade box"
 	desc = "A secure box holding 25 M40 High-Explosive Dual-Purpose grenades. High explosive, don't store near the flamer fuel."
 	icon_state = "nade_placeholder"
+	icon = 'icons/obj/items/storage/packets.dmi'
 	w_class = SIZE_LARGE
 	storage_slots = 25
 	max_storage_space = 50
@@ -774,6 +781,7 @@
 	name = "\improper USCM MRE"
 	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
 	icon_state = "mealpack"
+	icon = 'icons/obj/items/storage/mre.dmi'
 	w_class = SIZE_SMALL
 	can_hold = list()
 	storage_slots = 7

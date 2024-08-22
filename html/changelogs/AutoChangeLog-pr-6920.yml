@@ -1,0 +1,5 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "The UPP Logistics Technician has been added as a event role for the UPP. Their intention is to assist in operating any supply depots and logistics departments under the control of the UPP, they also possess engineering and construction skills allowing them to assist in fortification work as required."
+  - rscadd: "The UPP Political Commissar has been added as a event role for the UPP. They act to ensure the political ideology of the UPP is upheld within the unit they are attached to. The goals and ranking of this job are left undefined to add ambiguity as to their ability to influence the UPP command structure."

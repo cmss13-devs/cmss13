@@ -1,0 +1,4 @@
+author: "Willzadl"
+delete-after: True
+changes:
+  - qol: "Changed 'View objectives' verb to 'View intel objectives'."

@@ -1,0 +1,4 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - refactor: "splits storage.dmi into multiple files, also moved some icons around for organization"

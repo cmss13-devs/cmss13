@@ -288,15 +288,6 @@
 	new /obj/item/storage/box/donkpockets(src)
 	new /obj/item/storage/box/donkpockets(src)
 
-/* CM doesn't use this.
-/obj/structure/closet/crate/bin
-	desc = "A large bin."
-	name = "Large bin"
-	icon_state = "largebin"
-	icon_opened = "largebinopen"
-	icon_closed = "largebin"
-*/
-
 /obj/structure/closet/crate/radiation
 	name = "radioactive gear crate"
 	desc = "A crate with a radiation sign on it."

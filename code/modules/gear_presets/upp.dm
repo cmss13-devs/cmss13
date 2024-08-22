@@ -173,7 +173,11 @@
 /datum/equipment_preset/upp/soldier/get_antag_clothing_equipment()
 	return list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Standard Apparel", 0, list(/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/shoes/marine/upp/knife, /obj/item/clothing/gloves/marine/veteran/upp, /obj/item/device/radio/headset/distress/UPP), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("Boots", 0, /obj/item/clothing/shoes/marine/upp/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+		list("Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("UM5 Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/upp, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
@@ -331,7 +335,11 @@
 /datum/equipment_preset/upp/medic/get_antag_clothing_equipment()
 	return list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Standard Apparel", 0, list(/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/shoes/marine/upp/knife, /obj/item/clothing/gloves/marine/veteran/upp, /obj/item/device/radio/headset/distress/UPP/medic), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("Boots", 0, /obj/item/clothing/shoes/marine/upp/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+		list("Medic Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP/medic, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("UL6 Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/support, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/upp, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP/medic, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
@@ -684,7 +692,12 @@
 /datum/equipment_preset/upp/specialist/get_antag_clothing_equipment()
 	return list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Standard Apparel", 0, list(/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/shoes/marine/upp/knife, /obj/item/clothing/gloves/marine/veteran/upp, /obj/item/device/radio/headset/distress/UPP), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("Boots", 0, /obj/item/clothing/shoes/marine/upp/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+		list("Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("UH7 Heavy Plated Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/upp, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+
 		list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 

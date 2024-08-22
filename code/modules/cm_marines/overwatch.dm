@@ -947,6 +947,9 @@
 
 /obj/structure/supply_drop/Destroy()
 	GLOB.supply_drop_list -= src
+	for(var/datum/squad/glob_squad in GLOB.RoleAuthority.squads)
+		if(squad == glob_squad.name)
+			glob_squad.drop_pad = null
 	return ..()
 
 /obj/structure/supply_drop/alpha

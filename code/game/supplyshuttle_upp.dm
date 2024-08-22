@@ -7,27 +7,9 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 /obj/structure/machinery/computer/ordercomp/upp/Initialize()
 	. = ..()
 	linked_supply_controller = GLOB.supply_controller_upp
+	asrs_name = "General Supply Storage"
 	form_shipname = "<h3>General Supply Storage Form</h3><hr>"
-
-/obj/structure/machinery/computer/ordercomp/upp/attack_hand(mob/user as mob)
-	if(..())
-		return
-	user.set_interaction(src)
-	var/dat
-	if(temp)
-		dat = temp
-	else
-		var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
-		if (shuttle)
-			dat += {"Location: [shuttle.has_arrive_time() ? "Raising platform":shuttle.at_station() ? "Raised":"Lowered"]<BR>
-			<HR>Supply budget: $[linked_supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>
-		<BR>\n<A href='?src=\ref[src];order=categories'>Request items</A><BR><BR>
-		<A href='?src=\ref[src];vieworders=1'>View approved orders</A><BR><BR>
-		<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR><BR>
-		<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
-
-	show_browser(user, dat, "General Supply Storage", "computer", "size=575x450")
-	return
+	asrs_is_busy_text = "General Supply Storage is working on order"
 
 /obj/structure/machinery/computer/supplycomp/upp
 	name = "UPP supply console"
@@ -38,6 +20,8 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 /obj/structure/machinery/computer/supplycomp/upp/Initialize()
 	. = ..()
 	form_shipname = "<h3>General Supply Storage Form</h3><hr>"
+	asrs_name = "General Supply Storage"
+	asrs_is_busy_text = "General Supply Storage is working on order"
 
 /obj/item/paper/manifest/upp
 	name = "UPP Supply Manifest"
@@ -90,6 +74,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 
 /datum/controller/supply/upp
+	manifest_to_print = /obj/item/paper/manifest/upp
 	points = 120
 	all_supply_groups = list(
 		"UPP Weapons",
@@ -115,117 +100,3 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 	points += points_per_process
 	if(iteration < 20)
 		return
-
-/datum/controller/supply/upp/buy()
-	var/area/area_shuttle = shuttle?.get_location_area()
-	if(!area_shuttle || !length(shoppinglist))
-		return
-
-	// Try to find an available turf to place our package
-	var/list/turf/clear_turfs = list()
-	for(var/turf/T in area_shuttle)
-		if(T.density || LAZYLEN(T.contents))
-			continue
-		clear_turfs += T
-
-	for(var/datum/supply_order/order in shoppinglist)
-		// No space! Forget buying, it's no use.
-		if(!length(clear_turfs))
-			shoppinglist.Cut()
-			return
-
-		// Container generation
-		var/turf/target_turf = pick(clear_turfs)
-		clear_turfs.Remove(target_turf)
-		var/atom/container = target_turf
-		var/datum/supply_packs/package = order.object
-		if(package.containertype)
-			container = new package.containertype(target_turf)
-			if(package.containername)
-				container.name = package.containername
-
-		// Lock it up if it's something that can be
-		if(isobj(container) && package.access)
-			var/obj/lockable = container
-			lockable.req_access = list(package.access)
-
-		// Contents generation
-		var/list/content_names = list()
-		var/list/content_types = package.contains
-		if(package.randomised_num_contained)
-			content_types = list()
-			for(var/i in 1 to package.randomised_num_contained)
-				content_types += pick(package.contains)
-		for(var/typepath in content_types)
-			var/atom/item = new typepath(container)
-			content_names += item.name
-
-		// Manifest generation
-		var /obj/item/paper/manifest/upp/slip
-		slip = new /obj/item/paper/manifest/upp(container)
-		slip.ordername = package.name
-		slip.ordernum = order.ordernum
-		slip.orderedby = order.orderedby
-		slip.approvedby = order.approvedby
-		slip.packages = content_names
-		slip.generate_contents()
-		slip.update_icon()
-	shoppinglist.Cut()
-
-/obj/structure/machinery/computer/supplycomp/upp/attack_hand(mob/user as mob)
-	if(!is_mainship_level(z)) return
-	if(!allowed(user))
-		to_chat(user, SPAN_DANGER("Access Denied."))
-		return
-
-	if(..())
-		return
-	user.set_interaction(src)
-	post_signal("supply")
-	var/dat
-	if (temp)
-		dat = temp
-	else
-		var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
-		if (shuttle)
-			dat += "\nPlatform position: "
-			if (shuttle.has_arrive_time())
-				dat += "Moving<BR>"
-			else
-				if (shuttle.at_station())
-					if (shuttle.docking_controller)
-						switch(shuttle.docking_controller.get_docking_status())
-							if ("docked") dat += "Raised<BR>"
-							if ("undocked") dat += "Lowered<BR>"
-							if ("docking") dat += "Raising [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
-							if ("undocking") dat += "Lowering [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
-					else
-						dat += "Raised<BR>"
-
-					if (shuttle.can_launch())
-						dat += "<A href='?src=\ref[src];send=1'>Lower platform</A>"
-					else if (shuttle.can_cancel())
-						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
-					else
-						dat += "*General Supply Storage is working on order*"
-					dat += "<BR>\n<BR>"
-				else
-					dat += "Lowered<BR>"
-					if (shuttle.can_launch())
-						dat += "<A href='?src=\ref[src];send=1'>Raise platform</A>"
-					else if (shuttle.can_cancel())
-						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
-					else
-						dat += "*General Supply Storage is working on order*"
-					dat += "<BR>\n<BR>"
-
-
-		dat += {"<HR>\nSupply budget: $[linked_supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>\n<BR>
-		\n<A href='?src=\ref[src];order=categories'>Order items</A><BR>\n<BR>
-		\n<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR>\n<BR>
-		\n<A href='?src=\ref[src];vieworders=1'>View orders</A><BR>\n<BR>
-		\n<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
-
-
-	show_browser(user, dat, "General Supply Storage", "computer", "size=575x450")
-	return

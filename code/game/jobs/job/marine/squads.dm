@@ -521,13 +521,6 @@
 		if(JOB_UPP_SPECIALIST)
 			assignment = JOB_SQUAD_SPECIALIST
 			num_specialists++
-		if(JOB_SQUAD_TEAM_LEADER)
-			assignment = JOB_SQUAD_TEAM_LEADER
-			num_tl++
-			M.important_radio_channels += radio_freq
-		if(JOB_SQUAD_SMARTGUN)
-			assignment = JOB_SQUAD_SMARTGUN
-			num_smartgun++
 		if(JOB_UPP_LEADER)
 			if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_UPP_LEADER) //field promoted SL
 				var/old_lead = squad_leader
@@ -650,10 +643,6 @@
 			num_medics--
 		if(JOB_UPP_SPECIALIST)
 			num_specialists--
-		if(JOB_SQUAD_SMARTGUN)
-			num_smartgun--
-		if(JOB_SQUAD_TEAM_LEADER)
-			num_tl--
 		if(JOB_UPP_LEADER)
 			num_leaders--
 
@@ -671,13 +660,9 @@
 				if(JOB_UPP_SPECIALIST)
 					old_lead.comm_title = "Spc"
 				if(JOB_UPP_ENGI)
-					old_lead.comm_title = "Sap"
+					old_lead.comm_title = "ComTech"
 				if(JOB_UPP_MEDIC)
-					old_lead.comm_title = "HM"
-				if(JOB_SQUAD_TEAM_LEADER)
-					old_lead.comm_title = "FTL"
-				if(JOB_SQUAD_SMARTGUN)
-					old_lead.comm_title = "SG"
+					old_lead.comm_title = "Med"
 				if(JOB_UPP_LEADER)
 					if(!leader_killed)
 						old_lead.comm_title = "Sgt"

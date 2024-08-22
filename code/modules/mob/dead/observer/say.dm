@@ -12,7 +12,7 @@
 		if (src.client.handle_spam_prevention(message, MUTE_DEADCHAT))
 			return
 
-	if(!filter_message(src, message))
+	if(!filter_message(client, message))
 		return
 
 	. = src.say_dead(message)

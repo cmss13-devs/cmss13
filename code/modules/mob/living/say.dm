@@ -62,12 +62,12 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 /proc/prefix_to_channel(prefix)
 	return GLOB.department_radio_keys[prefix]
 
-/proc/filter_message(user, message)
+/proc/filter_message(client/user, message)
 	var/filter = CONFIG_GET(string/word_filter)
 	var/message_lowercase = lowertext(message)
 	if(!filter)
 		return TRUE
-		
+
 	if(findtext(message_lowercase, regex(filter)))
 		to_chat(user,
 			html = "\n<font color='red' size='4'><b>-- Word Filter Message --</b></font>",
@@ -77,9 +77,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			html = "\n<font color='red' size='4'><b>Your message has been automatically filtered due to its contents. Trying to circumvent this filter will get you banned.</b></font>",
 			)
 		SEND_SOUND(user, sound('sound/effects/adminhelp_new.ogg'))
-		log_admin("[user.client] triggered the chat filter with the following message: [message].")
+		log_admin("[user.ckey] triggered the chat filter with the following message: [message].")
 		return FALSE
-	
+
 	return TRUE
 
 ///Shows custom speech bubbles for screaming, *warcry etc.

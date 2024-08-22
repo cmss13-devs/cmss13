@@ -1,5 +1,0 @@
-author: "AmoryBlaine"
-delete-after: True
-changes:
-  - imageadd: "Imports TWE sprites from downstream"
-  - imageadd: "Imports mime & cowboy boots"

@@ -29,6 +29,12 @@
 	special_punishment = "Escort Out"
 	brig_time = 7.5
 
+/datum/law/minor_law/listening_bugs
+	name = "Unauthorized use of a Listening Device"
+	desc = "Using a listening device against SOP in a public area such as the gym."
+	special_punishment = "Listening Device Confiscation"
+	brig_time = 7.5
+
 /datum/law/minor_law/disrespect
 	name = "Disrespecting a Superior Officer"
 	desc = "Using offensive names or being directly disrespectful to someone of a Commissioned Officer of higher rank or position."

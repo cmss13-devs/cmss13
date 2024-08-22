@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Makes survivor doctors now use doctor title, and security survivors now use Officer title."

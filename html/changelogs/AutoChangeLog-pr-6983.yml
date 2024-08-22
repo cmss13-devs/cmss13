@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Re-ordered the SEA vendor contents slightly, and changed the combat gear to use combat categories."

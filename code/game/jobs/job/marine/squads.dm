@@ -658,14 +658,14 @@
 		if (FACTION_UPP)
 			switch(GET_DEFAULT_ROLE(old_lead.job))
 				if(JOB_UPP_SPECIALIST)
-					old_lead.comm_title = "Spc"
+					old_lead.comm_title = "Spec"
 				if(JOB_UPP_ENGI)
-					old_lead.comm_title = "ComTech"
+					old_lead.comm_title = "Sapper"
 				if(JOB_UPP_MEDIC)
 					old_lead.comm_title = "Med"
 				if(JOB_UPP_LEADER)
 					if(!leader_killed)
-						old_lead.comm_title = "Sgt"
+						old_lead.comm_title = "MSzh"
 				else
 					old_lead.comm_title = "Sld"
 			if(GET_DEFAULT_ROLE(old_lead.job) != JOB_UPP_LEADER || !leader_killed)

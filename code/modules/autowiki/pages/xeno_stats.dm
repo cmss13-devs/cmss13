@@ -5,31 +5,33 @@
 /datum/autowiki/xeno_stats/generate_multiple()
 	var/output = list()
 
-	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
-		if(caste.autowiki_skip)
+	for(var/mob/living/carbon/xeno as anything in subtypesof(/mob/living/carbon/xenomorph))
+		if(IS_AUTOWIKI_SKIP(xeno))
 			continue
 
-		output += template_from_xeno(caste)
+		var/xeno_instance = new xeno()
 
-		qdel(caste)
+		output += template_from_xeno(xeno_instance)
+
+		qdel(xeno)
 
 	return output
 
-/datum/autowiki/xeno_stats/proc/template_from_xeno(datum/caste_datum/caste)
+/datum/autowiki/xeno_stats/proc/template_from_xeno(mob/living/carbon/xenomorph/xeno)
 	// Base stats
 	var/xeno_data = list(
-		"Name" = caste.caste_type,
-		"Health" = caste.max_health,
-		"Armor" = caste.armor_deflection,
-		"Plasma" = caste.plasma_max,
-		"Damage Range" = "[caste.melee_damage_lower]\u2014[caste.melee_damage_upper]",
-		"Evasion" = caste.evasion,
+		"Name" = xeno.caste_type,
+		"Health" = xeno.maxHealth,
+		"Armor" = xeno.armor_deflection,
+		"Plasma" = xeno.plasma_max,
+		"Damage Range" = "[xeno.melee_damage_lower]\u2014[xeno.melee_damage_upper]",
+		"Evasion" = xeno.evasion,
 		// Speed is relatively unintuitive, so we convert it into a form
 		// that makes sense for the wiki.
-		"Speed" = humanize_speed(caste.speed),
+		"Speed" = humanize_speed(xeno.speed),
 	)
 
-	var/sanitized_name = url_encode(replacetext(caste.caste_type, " ", "_"))
+	var/sanitized_name = url_encode(replacetext(xeno.caste_type, " ", "_"))
 	return list(list(title = "Tempalte:AutoWiki/Content/XenoStats/[sanitized_name]", text = include_template("Autowiki/XenoStats", xeno_data)))
 
 /datum/autowiki/xeno_stats/proc/humanize_speed(speed)

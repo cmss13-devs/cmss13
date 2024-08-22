@@ -86,6 +86,7 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 	var/rank_id
 	var/extra_titles_encoded
 	var/list/extra_titles
+	var/list/rank_ids_extra
 
 BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
 
@@ -101,12 +102,17 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
 /datum/entity_meta/admin_holder/map(datum/entity/admin_holder/admin, list/values)
 	..()
 	if(values["extra_titles_encoded"])
-		admin.extra_titles = json_decode(values["extra_titles_encoded"])
+		admin.rank_ids_extra = json_decode(values["extra_titles_encoded"])
+		for(var/rank_id as anything in admin.rank_ids_extra)
+			var/datum/view_record/admin_rank = SAFEPICK(DB_VIEW(/datum/view_record/admin_rank, DB_COMP("id", DB_EQUALS, rank_id)))
+			if(!admin_rank)
+				continue
+			admin.extra_titles += admin_rank.rank_name
 
 /datum/entity_meta/admin_holder/unmap(datum/entity/admin_holder/admin)
 	. = ..()
-	if(length(admin.extra_titles))
-		.["extra_titles_encoded"] = json_encode(admin.extra_titles)
+	if(length(admin.rank_ids_extra))
+		.["extra_titles_encoded"] = json_encode(admin.rank_ids_extra)
 
 /datum/entity_link/player_to_admin_holder
 	parent_entity = /datum/entity/player

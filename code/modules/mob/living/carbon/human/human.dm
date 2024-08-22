@@ -1066,7 +1066,7 @@
 		to_chat(src, "The game appears to have misplaced your mind datum.")
 		return
 
-	if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+	if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED) || !(FACTION_MARINE in get_id_faction_group()))
 		to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] research network."))
 		return
 

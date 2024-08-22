@@ -20565,7 +20565,12 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/firstaid/regular,
 /obj/item/clipboard,
-/obj/item/tool/pen,
+/obj/item/tool/pen{
+	pixel_y = -17
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = -16
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "eAI" = (
@@ -32918,6 +32923,12 @@
 	pixel_y = 10;
 	req_one_access_txt = "1;21"
 	},
+/obj/item/paper_bin/uscm{
+	pixel_y = -4
+	},
+/obj/item/tool/pen{
+	pixel_y = -5
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "jOo" = (
@@ -38917,6 +38928,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
 "mrM" = (
+/obj/structure/closet/secure_closet/quartermaster_uscm,
 /turf/open/floor/almayer/green,
 /area/almayer/squads/req)
 "msg" = (
@@ -41623,8 +41635,12 @@
 	pixel_x = 4;
 	pixel_y = 11
 	},
-/obj/structure/sign/poster/propaganda{
-	pixel_y = 34
+/obj/structure/sign/ROcreed{
+	pixel_y = 30
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_y = -11;
+	pixel_x = 7
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
@@ -46899,7 +46915,9 @@
 /area/almayer/engineering/lower)
 "pCr" = (
 /obj/structure/machinery/cm_vending/sorted/attachments/blend,
-/turf/open/floor/almayer/plate,
+/turf/closed/wall/almayer{
+	opacity = 0
+	},
 /area/almayer/squads/req)
 "pDh" = (
 /obj/structure/machinery/power/monitor{
@@ -52161,6 +52179,9 @@
 /area/almayer/maint/hull/upper/p_stern)
 "rHN" = (
 /obj/structure/pipes/vents/pump/on,
+/obj/structure/bed/chair{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "rIj" = (
@@ -57643,6 +57664,11 @@
 /obj/item/storage/box/m94,
 /obj/item/storage/box/m94,
 /obj/item/stack/sheet/mineral/plastic/small_stack,
+/obj/item/frame/rack,
+/obj/item/frame/rack,
+/obj/item/frame/rack,
+/obj/item/frame/rack,
+/obj/item/frame/rack,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
 "tXn" = (
@@ -64472,6 +64498,12 @@
 /obj/effect/landmark/start/pilot/dropship_pilot,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
+"wEF" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/squads/req)
 "wEI" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/tool/pen,
@@ -112335,7 +112367,7 @@ mww
 sZe
 bdl
 fgm
-bdj
+wEF
 rHN
 kuu
 mDj

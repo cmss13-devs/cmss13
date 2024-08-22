@@ -577,6 +577,15 @@
 	desc = "A beret with the lieutenant insignia emblazoned on it. It inspires a feeling of respect."
 	icon_state = "beret_badge"
 
+/obj/item/clothing/head/beret/marine/ro
+	name = "\improper USCM quartermaster beret"
+	desc = "A beret with the sergeant insignia emblazoned on it. It symbolizes hard work and shady business."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "ro_beret"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
 //==========================//PROTECTIVE\\===============================\\
 //=======================================================================\\
 

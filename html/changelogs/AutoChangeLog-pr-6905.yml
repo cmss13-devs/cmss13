@@ -1,0 +1,5 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - imageadd: "adds lineart images for almost all guns that didn't have it"
+  - code_imp: "missing lineart error is now a lint"

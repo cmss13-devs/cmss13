@@ -890,6 +890,17 @@
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_NORMANDY
 
+/obj/structure/machinery/computer/dropship_weapons/upp
+	req_one_access = list(ACCESS_UPP_FLIGHT)
+	faction = FACTION_UPP
+	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
+
+/obj/structure/machinery/computer/dropship_weapons/upp/upp_dropship1
+	name = "\improper 'Neprobivaemiy' weapons controls" //transport ship
+
+/obj/structure/machinery/computer/dropship_weapons/upp/upp_dropship1
+	name = "\improper 'Vsyoprobivaemyiy' weapons controls" //CAS ship
+
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
 	. = ..()
 	QDEL_NULL(firemission_envelope)

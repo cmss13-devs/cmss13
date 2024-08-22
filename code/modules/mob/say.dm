@@ -167,11 +167,11 @@ for it but just ignore it.
 //returns the message mode string or null for no message mode.
 //standard mode is the mode returned for the special ';' radio code.
 /mob/proc/parse_message_mode(message, standard_mode="headset")
-	if(length(message) >= 1 && copytext(message,1,2) == ";")
+	if(length(message) >= 1 && copytext_char(message,1,2) == ";")
 		return standard_mode
 
 	if(length(message) >= 2)
-		var/channel_prefix = copytext(message, 1 ,3)
+		var/channel_prefix = copytext_char(message, 1 ,3)
 		return GLOB.department_radio_keys[channel_prefix]
 
 	return null

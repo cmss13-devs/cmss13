@@ -1,3 +1,0 @@
-## Word filter
-## WORD_FILTER <regex_expression>
-## Case sensitive

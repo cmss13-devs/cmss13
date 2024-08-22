@@ -63,12 +63,10 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	return GLOB.department_radio_keys[prefix]
 
 /proc/filter_message(client/user, message)
-	var/filter = CONFIG_GET(string/word_filter)
-	var/message_lowercase = lowertext(message)
-	if(!filter)
+	if(!config.word_filter_regex)
 		return TRUE
 
-	if(findtext(message_lowercase, regex(filter)))
+	if(config.word_filter_regex.Find(message))
 		to_chat(user,
 			html = "\n<font color='red' size='4'><b>-- Word Filter Message --</b></font>",
 			)

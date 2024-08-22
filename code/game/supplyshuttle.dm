@@ -924,7 +924,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					else if (shuttle.can_cancel())
 						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
 					else
-						dat += "*#[asrs_is_busy_text]*"
+						dat += "*[asrs_is_busy_text]*"
 					dat += "<BR>\n<BR>"
 				else
 					dat += "Lowered<BR>"
@@ -933,7 +933,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					else if (shuttle.can_cancel())
 						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
 					else
-						dat += "*#[asrs_is_busy_text]*"
+						dat += "*[asrs_is_busy_text]*"
 					dat += "<BR>\n<BR>"
 
 

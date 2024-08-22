@@ -83,13 +83,15 @@
 /datum/ammo/bullet/tank/minigun
 	name = "minigun bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
+	icon_state = "bullet_large"
 
 	accuracy = -HIT_ACCURACY_TIER_1
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_8
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_8
 	accurate_range = 12
-	damage = 35
+	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_6
+	damage_armor_punch = 1
 
 /datum/ammo/bullet/tank/minigun/New()
 	..()

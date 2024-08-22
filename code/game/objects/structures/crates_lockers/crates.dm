@@ -355,13 +355,6 @@
 	if(weapon_type)
 		new weapon_type(src)
 
-/obj/structure/closet/crate/weapon/upp_random_weapon
-	name = "weapons crate"
-	desc = "A weapons crate."
-	icon_state = "closed_weapons"
-	icon_opened = "open_weapons"
-	icon_closed = "closed_weapons"
-
 /obj/structure/closet/crate/empexplosives
 	name = "electromagnetic explosives crate"
 	desc = "An explosives crate, containing EMP grenades"

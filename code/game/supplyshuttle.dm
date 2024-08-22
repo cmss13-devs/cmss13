@@ -111,6 +111,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/datum/controller/supply/linked_supply_controller
 	var/faction = FACTION_MARINE
 	var/form_shipname = ""
+	var/asrs_is_busy_text = "ASRS is busy"
+	var/asrs_name = "Automated Storage and Retrieval System"
 
 /obj/structure/machinery/computer/supplycomp/Initialize()
 	. = ..()
@@ -170,6 +172,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/last_viewed_group = "categories"
 	var/datum/controller/supply/linked_supply_controller
 	var/form_shipname = ""
+	var/asrs_is_busy_text = "ASRS is busy"
+	var/asrs_name = "Automated Storage and Retrieval System"
 
 /obj/structure/machinery/computer/ordercomp/Initialize()
 	. = ..()
@@ -429,6 +433,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/datum/shuttle/ferry/supply/shuttle
 
 	var/obj/structure/machinery/computer/supplycomp/bound_supply_computer_list
+	var/obj/item/paper/manifest/manifest_to_print = /obj/item/paper/manifest
 
 	var/list/all_supply_groups = list(
 		"Operations",
@@ -667,11 +672,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		// Contents generation
 		var/list/content_names = list()
-		var/list/content_types = package.contains
+		var/list/content_types = package.Get_contains()
 		if(package.randomised_num_contained)
 			content_types = list()
 			for(var/i in 1 to package.randomised_num_contained)
-				content_types += pick(package.contains)
+				content_types += pick(package.Get_contains())
 		for(var/typepath in content_types)
 			var/atom/item = new typepath(container)
 			content_names += item.name
@@ -679,7 +684,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		// Manifest generation
 		var/obj/item/paper/manifest/slip
 		if(!package.contraband) // I'm sorry boss i misplaced it...
-			slip = new /obj/item/paper/manifest(container)
+			slip = new manifest_to_print(container)
 			slip.ordername = package.name
 			slip.ordernum = order.ordernum
 			slip.orderedby = order.orderedby
@@ -775,7 +780,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR><BR>
 		<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
 
-	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
+	show_browser(user, dat, asrs_name, "computer", "size=575x450")
 	return
 
 /obj/structure/machinery/computer/ordercomp/Topic(href, href_list)
@@ -919,7 +924,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					else if (shuttle.can_cancel())
 						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
 					else
-						dat += "*ASRS is busy*"
+						dat += "*[asrs_is_busy_text]*"
 					dat += "<BR>\n<BR>"
 				else
 					dat += "Lowered<BR>"
@@ -928,7 +933,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					else if (shuttle.can_cancel())
 						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
 					else
-						dat += "*ASRS is busy*"
+						dat += "*[asrs_is_busy_text]*"
 					dat += "<BR>\n<BR>"
 
 
@@ -939,7 +944,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		\n<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
 
 
-	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
+	show_browser(user, dat, asrs_name, "computer", "size=575x450")
 	return
 
 /obj/structure/machinery/computer/supplycomp/Topic(href, href_list)
@@ -961,7 +966,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(href_list["send"])
 		if(shuttle.at_station())
 			if (shuttle.forbidden_atoms_check())
-				temp = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+				temp = "For safety reasons, the [asrs_name] cannot store live organisms, classified nuclear weaponry or homing beacons.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 			else
 				shuttle.launch(src)
 				temp = "Lowering platform. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
@@ -1321,7 +1326,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(supply_pack.contraband && !can_order_contraband || supply_pack.contraband && black_market_lockout)
 		return
 
-	if(isnull(supply_pack.contains) && isnull(supply_pack.containertype))
+	if(isnull(supply_pack.Get_contains()) && isnull(supply_pack.containertype))
 		return
 
 	return TRUE
@@ -1461,7 +1466,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			else
 				dat += "<a href='?src=\ref[src];get_vehicle=\ref[VO]'>[VO.name]</a><br>"
 
-	show_browser(H, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
+	show_browser(H, dat, asrs_name, "computer", "size=575x450")
 
 /obj/structure/machinery/computer/supplycomp/vehicle/Topic(href, href_list)
 	. = ..()

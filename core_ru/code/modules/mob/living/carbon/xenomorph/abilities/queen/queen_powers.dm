@@ -14,18 +14,18 @@
 		to_chat(usr, SPAN_XENOWARNING("We are stopped get points from larvae!"))
 		return
 
-	if(tgui_alert(user_xeno, "Do you really want to exchange your doughter for points?", "Sacrafice larvae?", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user_xeno, "Do you really want to exchange your doughter for points?", "Sacrifice larvae?", list("Yes", "No")) != "Yes")
 		return
 
 	if(user_xeno.hive.stored_larva < required_larva)
-		to_chat(usr, SPAN_XENOWARNING("Not enought larvaes in core."))
+		to_chat(usr, SPAN_XENOWARNING("Not enought larvae in core."))
 		return
 
 	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost))
 		return
 
-	xeno_message(SPAN_XENOANNOUNCE("Hive sacrafice larva for points! influx of points stop in [duration/600] minutes."), hivenumber = user_xeno.hive.hivenumber)
-	xeno_maptext("Hive sacrafice larva for points!", "Hive evolution", user_xeno.hive.hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("Hive sacrifice larva for points! influx of points stop in [duration/600] minutes."), hivenumber = user_xeno.hive.hivenumber)
+	xeno_maptext("Hive sacrifice larva for points!", "Hive evolution", user_xeno.hive.hivenumber)
 	addtimer(CALLBACK(src, PROC_REF(end_boost), user_xeno), duration)
 	active = TRUE
 
@@ -41,5 +41,5 @@
 	active = FALSE
 	if(!user_xeno)
 		return
-	xeno_message(SPAN_XENOANNOUNCE("Hive stopped get points from sacrafice. Larvae will not be forgotten!"), hivenumber = user_xeno.hive.hivenumber)
-	xeno_maptext("Hive stopped get points from sacrafice.", "Hive evolution", user_xeno.hive.hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("Hive stopped get points from sacrifice. Larvae will not be forgotten!"), hivenumber = user_xeno.hive.hivenumber)
+	xeno_maptext("Hive stopped get points from sacrifice.", "Hive evolution", user_xeno.hive.hivenumber)

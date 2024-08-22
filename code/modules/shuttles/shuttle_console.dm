@@ -397,8 +397,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	density = TRUE
 
 /obj/structure/machinery/computer/shuttle_control/dropship3
-	name = "\improper 'Resolute' dropship console"
-	desc = "The remote controls for the 'Resolute' Dropship."
+	name = "\improper 'Saipan' dropship console"
+	desc = "The remote controls for the 'Saipan' Dropship."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 
@@ -410,11 +410,11 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 /obj/structure/machinery/computer/shuttle_control/dropship3/Initialize()
 	. = ..()
-	shuttle_tag = DROPSHIP_RESOLUTE
+	shuttle_tag = DROPSHIP_SAIPAN
 
 /obj/structure/machinery/computer/shuttle_control/dropship3/onboard
-	name = "\improper 'Resolute' flight controls"
-	desc = "The flight controls for the 'Resolute' Dropship."
+	name = "\improper 'Saipan' flight controls"
+	desc = "The flight controls for the 'Saipan' Dropship."
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
 	onboard = 1

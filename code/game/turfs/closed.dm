@@ -283,7 +283,7 @@
 	opacity = FALSE
 
 /turf/closed/shuttle/dropship3
-	name = "\improper Resolute"
+	name = "\improper Saipan"
 	icon = 'icons/turf/dropship3.dmi'
 	icon_state = "1"
 

@@ -393,7 +393,7 @@
 	network = list(CAMERA_NET_NORMANDY, CAMERA_NET_LASER_TARGETS)
 
 /obj/structure/machinery/computer/cameras/dropship/three
-	name = "\improper 'Resolute' camera controls"
+	name = "\improper 'Saipan' camera controls"
 	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_LASER_TARGETS)
 
 #undef DEFAULT_MAP_SIZE

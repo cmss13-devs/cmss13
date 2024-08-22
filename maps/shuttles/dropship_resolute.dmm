@@ -18,7 +18,7 @@
 	},
 /area/shuttle/drop3/sulaco)
 "cd" = (
-/obj/item/device/radio/intercom/resolute{
+/obj/item/device/radio/intercom/saipan{
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship/light_grey_left_to_right,
@@ -49,7 +49,7 @@
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
 "eh" = (
-/obj/item/device/radio/intercom/resolute{
+/obj/item/device/radio/intercom/saipan{
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship/light_grey_top_left,
@@ -77,7 +77,7 @@
 	},
 /area/shuttle/drop3/sulaco)
 "gF" = (
-/obj/item/device/radio/intercom/resolute{
+/obj/item/device/radio/intercom/saipan{
 	layer = 3.5;
 	pixel_x = 10
 	},
@@ -170,7 +170,7 @@
 	},
 /area/shuttle/drop3/sulaco)
 "nB" = (
-/obj/item/device/radio/intercom/resolute{
+/obj/item/device/radio/intercom/saipan{
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship/light_grey_top_right,
@@ -208,7 +208,7 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop3/sulaco)
 "qU" = (
-/obj/docking_port/mobile/marine_dropship/resolute,
+/obj/docking_port/mobile/marine_dropship/saipan,
 /turf/closed/shuttle/dropship3{
 	icon_state = "53"
 	},
@@ -287,7 +287,7 @@
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
 "xi" = (
-/obj/item/device/radio/intercom/resolute{
+/obj/item/device/radio/intercom/saipan{
 	layer = 3.5;
 	pixel_x = 21;
 	pixel_y = 43
@@ -318,7 +318,7 @@
 /area/shuttle/drop3/sulaco)
 "BR" = (
 /obj/structure/machinery/door_control{
-	id = "dropship_resolute";
+	id = "dropship_saipan";
 	name = "Dropship Lockdown";
 	normaldoorcontrol = 3;
 	pixel_y = -19;
@@ -538,9 +538,9 @@
 "QI" = (
 /obj/structure/machinery/computer/dropship_weapons/dropship3,
 /obj/structure/transmitter/rotary{
-	name = "resolute Telephone";
+	name = "saipan Telephone";
 	phone_category = "Dropship";
-	phone_id = "resolute";
+	phone_id = "saipan";
 	pixel_x = 11;
 	pixel_y = 16
 	},
@@ -618,7 +618,7 @@
 	},
 /area/shuttle/drop3/sulaco)
 "Vl" = (
-/obj/item/device/radio/intercom/resolute{
+/obj/item/device/radio/intercom/saipan{
 	layer = 3.5;
 	pixel_x = -10
 	},

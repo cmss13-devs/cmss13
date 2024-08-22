@@ -264,8 +264,8 @@
 	shuttle_tag = DROPSHIP_NORMANDY
 	dir = SOUTH
 
-/turf/open/space/transit/dropship/resolute
-	shuttle_tag = DROPSHIP_RESOLUTE
+/turf/open/space/transit/dropship/saipan
+	shuttle_tag = DROPSHIP_SAIPAN
 	dir = SOUTH
 
 /turf/open/space/transit/south

@@ -330,7 +330,7 @@
 	icon = 'icons/obj/structures/doors/dropship2_cargo.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds3
-	name = "\improper Resolute cargo door"
+	name = "\improper Saipan cargo door"
 	icon = 'icons/obj/structures/doors/dropship3_cargo.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside
@@ -345,7 +345,7 @@
 	icon = 'icons/obj/structures/doors/dropship2_side2.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds3
-	name = "\improper Resolute crew hatch"
+	name = "\improper Saipan crew hatch"
 	icon = 'icons/obj/structures/doors/dropship3_side2.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor

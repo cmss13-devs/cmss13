@@ -130,42 +130,42 @@
 	base_lighting_alpha = 0
 
 /area/shuttle/drop3/sulaco
-	name = "\improper Dropship Resolute"
+	name = "\improper Dropship Saipan"
 	icon_state = "shuttle"
 	base_muffle = MUFFLE_HIGH
 	base_lighting_alpha = 255
 
 /area/shuttle/drop3/LV624
-	name = "\improper Dropship Resolute"
+	name = "\improper Dropship Saipan"
 	ambience_exterior = AMBIENCE_LV624
 	icon_state = "shuttle2"
 
 /area/shuttle/drop3/prison
-	name = "\improper Dropship Resolute"
+	name = "\improper Dropship Saipan"
 	ambience_exterior = AMBIENCE_PRISON
 	icon_state = "shuttle2"
 
 /area/shuttle/drop3/BigRed
-	name = "\improper Dropship Resolute"
+	name = "\improper Dropship Saipan"
 	ambience_exterior = AMBIENCE_BIGRED
 	icon_state = "shuttle2"
 
 /area/shuttle/drop3/ice_colony
-	name = "\improper Dropship Resolute"
+	name = "\improper Dropship Saipan"
 	icon_state = "shuttle2"
 
 /area/shuttle/drop3/DesertDam
-	name = "\improper Dropship Resolute"
+	name = "\improper Dropship Saipan"
 	ambience_exterior = AMBIENCE_TRIJENT
 	icon_state = "shuttle2"
 
 /area/shuttle/drop3/transit
 	ambience_exterior = 'sound/ambience/dropship_ambience_loop.ogg'
-	name = "\improper Dropship Resolute Transit"
+	name = "\improper Dropship Saipan Transit"
 	icon_state = "shuttlered"
 
 /area/shuttle/drop3/lz3
-	name = "\improper Resolute Landing Zone"
+	name = "\improper Saipan Landing Zone"
 	icon_state = "away2"
 
 

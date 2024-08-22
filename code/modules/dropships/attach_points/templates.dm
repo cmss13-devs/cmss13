@@ -81,7 +81,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship3
-	ship_tag = DROPSHIP_RESOLUTE
+	ship_tag = DROPSHIP_SAIPAN
 
 /obj/effect/attach_point/weapon/dropship3/left_wing
 	name = "port wing weapon attach point"
@@ -138,7 +138,7 @@
 	plane = FLOOR_PLANE
 
 /obj/effect/attach_point/crew_weapon/dropship3
-	ship_tag = DROPSHIP_RESOLUTE
+	ship_tag = DROPSHIP_SAIPAN
 
 /obj/effect/attach_point/crew_weapon/dropship3/floor
 	plane = FLOOR_PLANE
@@ -156,7 +156,7 @@
 	ship_tag = DROPSHIP_NORMANDY
 
 /obj/effect/attach_point/electronics/dropship3
-	ship_tag = DROPSHIP_RESOLUTE
+	ship_tag = DROPSHIP_SAIPAN
 
 /obj/effect/attach_point/fuel
 	name = "engine system attach point"
@@ -171,7 +171,7 @@
 	ship_tag = DROPSHIP_NORMANDY
 
 /obj/effect/attach_point/fuel/dropship3
-	ship_tag = DROPSHIP_RESOLUTE
+	ship_tag = DROPSHIP_SAIPAN
 
 
 /obj/effect/attach_point/computer
@@ -184,4 +184,4 @@
 	ship_tag = DROPSHIP_NORMANDY
 
 /obj/effect/attach_point/computer/dropship3
-	ship_tag = DROPSHIP_RESOLUTE
+	ship_tag = DROPSHIP_SAIPAN

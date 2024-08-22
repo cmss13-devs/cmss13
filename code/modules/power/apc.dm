@@ -461,17 +461,23 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			overlays = 0
 
 		if(!(stat & (BROKEN|MAINT)) && update_state & UPSTATE_ALLGOOD)
-			overlays += emissive_appearance(status_overlays_lock[locked + 1].icon, status_overlays_lock[locked + 1].icon_state)
-			overlays += mutable_appearance(status_overlays_lock[locked + 1].icon, status_overlays_lock[locked + 1].icon_state)
-			overlays += emissive_appearance(status_overlays_charging[charging + 1].icon, status_overlays_charging[charging + 1].icon_state)
-			overlays += mutable_appearance(status_overlays_charging[charging + 1].icon, status_overlays_charging[charging + 1].icon_state)
+			var/image/_lock = status_overlays_lock[locked + 1]
+			var/image/_charging = status_overlays_charging[charging + 1]
+			var/image/_equipment = status_overlays_equipment[equipment + 1]
+			var/image/_lighting = status_overlays_lighting[lighting + 1]
+			var/image/_environ = status_overlays_environ[environ + 1]
+
+			overlays += emissive_appearance(_lock.icon, _lock.icon_state)
+			overlays += mutable_appearance(_lock.icon, _lock.icon_state)
+			overlays += emissive_appearance(_charging.icon, _charging.icon_state)
+			overlays += mutable_appearance(_charging.icon, _charging.icon_state)
 			if(operating)
-				overlays += emissive_appearance(status_overlays_equipment[equipment + 1].icon, status_overlays_equipment[equipment + 1].icon_state)
-				overlays += mutable_appearance(status_overlays_equipment[equipment + 1].icon, status_overlays_equipment[equipment + 1].icon_state)
-				overlays += emissive_appearance(status_overlays_lighting[lighting + 1].icon, status_overlays_lighting[lighting + 1].icon_state)
-				overlays += mutable_appearance(status_overlays_lighting[lighting + 1].icon, status_overlays_lighting[lighting + 1].icon_state)
-				overlays += emissive_appearance(status_overlays_environ[environ + 1].icon, status_overlays_environ[environ + 1].icon_state)
-				overlays += mutable_appearance(status_overlays_environ[environ + 1].icon, status_overlays_environ[environ + 1].icon_state)
+				overlays += emissive_appearance(_equipment.icon, _equipment.icon_state)
+				overlays += mutable_appearance(_equipment.icon, _equipment.icon_state)
+				overlays += emissive_appearance(_lighting.icon, _lighting.icon_state)
+				overlays += mutable_appearance(_lighting.icon, _lighting.icon_state)
+				overlays += emissive_appearance(_environ.icon, _environ.icon_state)
+				overlays += mutable_appearance(_environ.icon, _environ.icon_state)
 			
 			switch(charging)
 				if(APC_NOT_CHARGING)

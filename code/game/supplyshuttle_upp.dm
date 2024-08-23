@@ -212,10 +212,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 //No random crates for UPP
 /datum/controller/supply/upp/process(delta_time)
-	iteration++
 	points += points_per_process
-	if(iteration < 20)
-		return
 
 /datum/controller/supply/upp/buy()
 	var/area/area_shuttle = shuttle?.get_location_area()

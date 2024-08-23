@@ -20,6 +20,7 @@
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 	var/skill_required = SKILL_PILOT_TRAINED
 	var/combat_equipment = TRUE
+	var/faction_exclusive //if null all factions can print it
 
 
 /obj/structure/dropship_equipment/Destroy()
@@ -841,6 +842,11 @@
 	var/medevac_cooldown
 	var/busy_winch
 	combat_equipment = FALSE
+	faction_exclusive = FACTION_MARINE
+
+/obj/structure/dropship_equipment/medevac_system/upp
+	name = "\improper RMU-4M Medevac System UPP"
+	faction_exclusive = FACTION_UPP
 
 /obj/structure/dropship_equipment/medevac_system/Destroy()
 	if(linked_stretcher)
@@ -859,7 +865,10 @@
 
 /obj/structure/dropship_equipment/medevac_system/proc/get_targets()
 	. = list()
+
 	for(var/obj/structure/bed/medevac_stretcher/MS in GLOB.activated_medevac_stretchers)
+		if(MS.faction != faction_exclusive)
+			continue
 		var/area/AR = get_area(MS)
 		var/evaccee_name
 		var/evaccee_triagecard_color

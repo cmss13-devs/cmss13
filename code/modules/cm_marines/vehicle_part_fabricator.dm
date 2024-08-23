@@ -12,6 +12,7 @@
 	var/generate_points = TRUE
 	var/omnisentry_price_scale = 100
 	var/omnisentry_price = 300
+	var/faction = FACTION_MARINE
 
 /obj/structure/machinery/part_fabricator/New()
 	..()
@@ -90,7 +91,15 @@
 		var/index = params["index"]
 
 		if(is_ammo == 0)
-			var/obj/structure/dropship_equipment/produce = (typesof(/obj/structure/dropship_equipment))[index]
+			var/produce_list = list()
+			var/possible_produce = typesof(/obj/structure/dropship_equipment)
+			for(var/p_produce in possible_produce)
+				var/obj/structure/dropship_equipment/produce = p_produce
+				if(produce.faction_exclusive)
+					if(produce.faction_exclusive != faction)
+						continue
+				produce_list += produce
+			var/obj/structure/dropship_equipment/produce = produce_list[index]
 			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
 				log_admin("Bad topic: [user] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
@@ -99,7 +108,15 @@
 			return
 
 		else
-			var/obj/structure/ship_ammo/produce = (typesof(/obj/structure/ship_ammo))[index]
+			var/produce_list = list()
+			var/possible_produce = typesof(/obj/structure/ship_ammo)
+			for(var/p_produce in possible_produce)
+				var/obj/structure/dropship_equipment/produce = p_produce
+				if(produce.faction_exclusive)
+					if(produce.faction_exclusive != faction)
+						continue
+				produce_list += produce
+			var/obj/structure/dropship_equipment/produce = produce_list[index]
 			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
 				log_admin("Bad topic: [user] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
@@ -130,6 +147,12 @@
 
 	unslashable = TRUE
 	unacidable = TRUE
+	faction = FACTION_MARINE
+
+/obj/structure/machinery/part_fabricator/dropship/upp
+	name = "UPP dropship part fabricator"
+	faction = FACTION_UPP
+	req_access = list(ACCESS_UPP_FLIGHT)
 
 
 /obj/structure/machinery/part_fabricator/dropship/get_point_store()
@@ -148,6 +171,10 @@
 	var/index = 1
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/dropship_equipment_data = build_type
+		if(dropship_equipment_data.faction_exclusive)
+			if(faction != dropship_equipment_data.faction_exclusive)
+				continue
+
 		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && dropship_equipment_data.combat_equipment)
 			index +=  1
 			continue
@@ -169,6 +196,9 @@
 	index = 1
 	for(var/build_type in typesof(/obj/structure/ship_ammo))
 		var/obj/structure/ship_ammo/ship_ammo_data = build_type
+		if(ship_ammo_data.faction_exclusive)
+			if(faction != ship_ammo_data.faction_exclusive)
+				continue
 		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && ship_ammo_data.combat_equipment)
 			index = index + 1
 			continue

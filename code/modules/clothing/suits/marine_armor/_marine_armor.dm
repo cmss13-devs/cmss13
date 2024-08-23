@@ -341,6 +341,11 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO)
 	black_market_value = 35
 
+/obj/item/clothing/suit/storage/marine/MP/CO/no_pauldrons
+	icon_state = "co_light_officer"
+	item_state = "co_light_officer"
+	item_state_slots = list(WEAR_JACKET = "co_light_officer")
+
 
 /obj/item/clothing/suit/storage/marine/MP/CO/jacket
 	name = "\improper M3 pattern commanding officer armored coat"

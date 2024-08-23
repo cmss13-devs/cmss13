@@ -65,8 +65,8 @@ export const Controls = (props) => {
   const {
     selectedMode,
     setSelectedMode,
-    complexityMenu,
-    setComplexityMenu,
+    conflictingSafety,
+    setConflictingSafety,
     setSelectedReferenceProperty,
     setSelectedTargetProperty,
   } = props;
@@ -138,12 +138,15 @@ export const Controls = (props) => {
               fluid
               onClick={() => {
                 act('keyboard_sound');
-                setComplexityMenu(!complexityMenu);
+                setConflictingSafety(!conflictingSafety);
               }}
-              selected={complexityMenu}
+              selected={!conflictingSafety}
               icon={'hard-drive'}
+              tooltip={
+                'Disable the protection for relating conflicting properties.'
+              }
             >
-              COMPLEXITY
+              OVERRIDE
             </Button>
           </Stack.Item>
         </Stack>
@@ -296,6 +299,7 @@ export const ModeRelate = (props) => {
     setSelectedReferenceProperty,
     selectedReferenceProperty,
     selectedTargetProperty,
+    conflictingSafety,
   } = props;
   return (
     (target_data && reference_data && (
@@ -333,7 +337,10 @@ export const ModeRelate = (props) => {
                   selected={
                     selectedTargetProperty === property.code ? true : false
                   }
-                  disabled={lock_control || property.is_locked}
+                  disabled={
+                    lock_control ||
+                    (conflictingSafety ? property.is_locked : false)
+                  }
                   tooltip={property.tooltip}
                 >
                   {property.code} {property.level}
@@ -381,7 +388,10 @@ export const ModeRelate = (props) => {
                     selected={
                       selectedReferenceProperty === property.code ? true : false
                     }
-                    disabled={lock_control || property.is_locked}
+                    disabled={
+                      lock_control ||
+                      (conflictingSafety ? property.is_locked : false)
+                    }
                     tooltip={property.tooltip}
                   >
                     {property.code} {property.level}
@@ -532,9 +542,9 @@ export const ChemSimulator = () => {
   const { data } = useBackend();
   const { is_picking_recipe } = data;
   const [selectedMode, setSelectedMode] = useSharedState('modes');
-  const [complexityMenu, setComplexityMenu] = useSharedState(
-    'complexity_flip',
-    false,
+  const [conflictingSafety, setConflictingSafety] = useSharedState(
+    'conflicting_flip',
+    true,
   );
   const [selectedTargetProperty, setSelectedTargetProperty] = useSharedState(
     'target',
@@ -554,8 +564,8 @@ export const ChemSimulator = () => {
               <Controls
                 selectedMode={selectedMode}
                 setSelectedMode={setSelectedMode}
-                complexityMenu={complexityMenu}
-                setComplexityMenu={setComplexityMenu}
+                conflictingSafety={conflictingSafety}
+                setConflictingSafety={setConflictingSafety}
                 setSelectedTargetProperty={setSelectedTargetProperty}
                 setSelectedReferenceProperty={setSelectedReferenceProperty}
               />
@@ -581,6 +591,7 @@ export const ChemSimulator = () => {
             selectedTargetProperty={selectedTargetProperty}
             setSelectedReferenceProperty={setSelectedReferenceProperty}
             selectedReferenceProperty={selectedReferenceProperty}
+            conflictingSafety={conflictingSafety}
           />
         )}
         {selectedMode === 4 && (

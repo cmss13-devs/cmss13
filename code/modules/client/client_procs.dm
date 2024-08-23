@@ -730,7 +730,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
 /client/proc/update_fullscreen()
-	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN))
+	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
 		winset(src, "mainwindow", "is-fullscreen=true;menu=")
 	else
 		winset(src, "mainwindow", "is-fullscreen=false;menu=menu")

@@ -32,7 +32,6 @@
 
 /obj/structure/machinery/defenses/planetary_anti_air/destroyed_action()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
-	update_icon()
 
 /obj/structure/machinery/defenses/planetary_anti_air/get_examine_text(mob/user)
 	var/message = ""
@@ -227,5 +226,4 @@
 
 /obj/structure/machinery/defenses/planetary_anti_air/Destroy()
 	remove_protected_area()
-	icon_state = "aa_destroyed"
 	. = ..()

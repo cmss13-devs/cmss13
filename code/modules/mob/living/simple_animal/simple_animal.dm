@@ -6,14 +6,16 @@
 	health = 20
 	maxHealth = 20
 
-	speed = 0 //LETS SEE IF I CAN SET SPEEDS FOR SIMPLE MOBS WITHOUT DESTROYING EVERYTHING. Higher speed is slower, negative speed is faster
+	///Higher speed is slower, negative speed is faster.
+	speed = 0
 
-	//LETTING SIMPLE ANIMALS ATTACK? WHAT COULD GO WRONG. Defaults to zero so Ian can still be cuddly
+
 	melee_damage_lower = 0
 	melee_damage_upper = 0
 	attacktext = "attacks"
 	attack_sound = null
-	friendly = "nuzzles" //If the mob does no damage with it's attack
+	//Attacktext is the mob deal 0 damaage.
+	friendly = "nuzzles"
 	can_crawl = FALSE
 	black_market_value = 25
 	dead_black_market_value = 0
@@ -22,21 +24,26 @@
 
 	var/icon_living = ""
 	var/icon_dead = ""
-	var/icon_gib = null //We only try to show a gibbing animation if this exists.
+	var/icon_gib = null
 
 	var/list/speak = list()
 	var/speak_chance = 0
-	var/list/emote_hear = list() //Hearable emotes
-	var/list/emote_see = list() //Unlike speak_emote, the list of things in this variable only show by themselves with no spoken text. IE: Ian barks, Ian yaps
+	///Emotes that can be heard by other mobs.
+	var/list/emote_hear = list()
+	///Unlike speak_emote, the list of things in this variable only show by themselves with no spoken text. IE: Ian barks, Ian yaps.
+	var/list/emote_see = list()
 
 	var/turns_per_move = 1
 	var/turns_since_move = 0
 	universal_speak = 0 //No, just no.
 	var/meat_amount = 0
 	var/meat_type
-	var/stop_automated_movement = 0 //Use this to temporarely stop random movement or to if you write special movement code for animals.
-	var/wander = 1 // Does the mob wander around when idle?
-	var/stop_automated_movement_when_pulled = 1 //When set to 1 this stops the animal from moving when someone is pulling it.
+	///Use this to temporarely stop random movement or to if you write special movement code for animals.
+	var/stop_automated_movement = 0
+	///Does the mob wander around when idle?
+	var/wander = 1
+	///When set to 1 this stops the animal from moving when someone is pulling it.
+	var/stop_automated_movement_when_pulled = 1
 
 	//Interaction
 	var/response_help   = "tries to help"
@@ -47,22 +54,26 @@
 	//Temperature effect
 	var/minbodytemp = 250
 	var/maxbodytemp = 350
-	var/heat_damage_per_tick = 3 //amount of damage applied if animal's body temperature is higher than maxbodytemp
-	var/cold_damage_per_tick = 2 //same as heat_damage_per_tick, only if the bodytemperature it's lower than minbodytemp
+	///amount of damage applied if animal's body temperature is higher than maxbodytemp
+	var/heat_damage_per_tick = 3
+	///same as heat_damage_per_tick, only if the bodytemperature it's lower than minbodytemp
+	var/cold_damage_per_tick = 2
 
 	///Will this mob be affected by fire/napalm? Set to FALSE for all mobs as the implications could be weird due to not being tested for all simple mobs.
 	var/affected_by_fire = FALSE
 
 	//Atmos effect - Yes, you can make creatures that require phoron or co2 to survive. N2O is a trace gas and handled separately, hence why it isn't here. It'd be hard to add it. Hard and me don't mix (Yes, yes make all the dick jokes you want with that.) - Errorage
+	//Leaving something at 0 means it's off - has no maximum
 	var/min_oxy = 5
-	var/max_oxy = 0 //Leaving something at 0 means it's off - has no maximum
+	var/max_oxy = 0
 	var/min_tox = 0
 	var/max_tox = 1
 	var/min_co2 = 0
 	var/max_co2 = 5
 	var/min_n2 = 0
 	var/max_n2 = 0
-	var/unsuitable_atoms_damage = 2 //This damage is taken when atmos doesn't fit all the requirements above
+	///This damage is taken when atmos doesn't fit all the requirements above
+	var/unsuitable_atoms_damage = 2
 	var/fire_overlay
 
 /mob/living/simple_animal/Initialize()
@@ -80,6 +91,11 @@
 
 /mob/living/simple_animal/updatehealth()
 	return
+
+/mob/living/simple_animal/rejuvenate()
+	health = maxHealth
+	SSmob.living_misc_mobs += src
+	return ..()
 
 /mob/living/simple_animal/get_examine_text(mob/user)
 	. = ..()

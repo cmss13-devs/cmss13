@@ -39,6 +39,7 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 25
 	attack_same = FALSE
+	langchat_color = LIGHT_COLOR_GREEN
 
 	///Reference to the ZZzzz sleep overlay when resting.
 	var/sleep_overlay
@@ -136,12 +137,10 @@
 
 //procs for handling sleeping icons when resting
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/AddSleepingIcon()
-	var/image/SL
-	SL = new /image('icons/mob/hud/hud.dmi', "slept_icon_centered")
-	SL.pixel_x = 20
+	var/image/sleeping_icon = new /image('icons/mob/hud/hud.dmi', "slept_icon_centered")
 	if(sleep_overlay)
 		return
-	sleep_overlay = SL
+	sleep_overlay = sleeping_icon
 	overlays += sleep_overlay
 	addtimer(CALLBACK(src, PROC_REF(RemoveSleepingIcon)), 6 SECONDS)
 
@@ -231,6 +230,12 @@
 	if(attacking_mob.a_intent == INTENT_DISARM && prob(75))
 		step_to(src, get_step(loc, attacking_mob.dir), 0, LIZARD_SPEED_NORMAL)
 
+//apply blood splatter when attacked by a sufficently damaging sharp weapon
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/attackby(obj/item/weapon, mob/living/carbon/human/attacker)
+	if(weapon.force > 10 && weapon.sharp && attacker.a_intent != INTENT_HELP)
+		handle_blood_splatter(get_dir(attacker.loc, loc))
+	return ..()
+
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force)
 	Retaliate()
 	aggression_value = clamp(aggression_value + 5, 0, 30)
@@ -249,17 +254,20 @@
 		add_splatter_floor(loc, TRUE)
 		bleed_ticks = clamp(bleed_ticks + ceil(damage / 10), 0, 30)
 
+///Proc that forces the mob to disengage and try to extinguish itself. Will not be called if the mob is already retreating.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/try_to_extinguish()
-	if(!is_retreating && on_fire && !client)
-		//forget EVERYTHING. we need to stop the flames!!!
-		stance = HOSTILE_STANCE_ALERT
-		target_mob = null
-		food_target = null
-		is_eating = FALSE
-		manual_emote("hisses in agony!")
-		playsound(src, "giant_lizard_hiss", 40)
-		MoveTo(null, 9, TRUE, 4 SECONDS, FALSE)
-		COOLDOWN_START(src, calm_cooldown, 8 SECONDS)
+	if(is_retreating || !on_fire || client)
+		return
+
+	//forget EVERYTHING. we need to stop the flames!!!
+	stance = HOSTILE_STANCE_ALERT
+	target_mob = null
+	food_target = null
+	is_eating = FALSE
+	manual_emote("hisses in agony!")
+	playsound(src, "giant_lizard_hiss", 40)
+	MoveTo(null, 9, TRUE, 4 SECONDS, FALSE)
+	COOLDOWN_START(src, calm_cooldown, 8 SECONDS)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/IgniteMob()
 	. = ..()
@@ -275,11 +283,12 @@
 	//simplemobs don't have innate knockdown reduction so we'll manually lower it here.
 	AdjustKnockDown(-0.5)
 	AdjustStun(-0.5)
-	if(aggression_value > 0) aggression_value--
+	if(aggression_value > 0)
+		aggression_value--
 
 	if(resting && stat != DEAD)
 		health += maxHealth * 0.05
-		if(prob(33))
+		if(prob(33) && !HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 			AddSleepingIcon()
 
 	if(bleed_ticks)
@@ -288,81 +297,88 @@
 		bleed_ticks--
 		add_splatter_floor(loc, is_small_pool)
 
-	//if we haven't gotten hurt in a while, calm down and go back to idling
-	if(!client)
-		if(aggression_value == 0 && stance == HOSTILE_STANCE_ATTACKING)
-			enemies = new()
-			LoseTarget()
-			if(COOLDOWN_FINISHED(src, emote_cooldown))
-				manual_emote("calms down.")
-				COOLDOWN_START(src, calm_cooldown, 4 SECONDS)
-				COOLDOWN_START(src, emote_cooldown, 3 SECONDS)
-
-		if(stance > HOSTILE_STANCE_ALERT)
-			is_eating = FALSE
-
-		if(stance == HOSTILE_STANCE_IDLE)
-			stop_automated_movement = FALSE
-			//if there's a friend on the same tile as us, don't bother getting up (cute!)
-			var/mob/living/carbon/friend = locate(/mob/living/carbon) in get_turf(src)
-			if((friend?.faction in faction_group) && resting)
-				chance_to_rest = 0
-
-			if(prob(chance_to_rest))
-				set_resting(!resting)
-				chance_to_rest = 0
-
-			chance_to_rest += rand(1, 2)
-
-		if(stance != HOSTILE_STANCE_IDLE && resting)
-			set_resting(FALSE)
-
-		if(!target_mob && !on_fire)
-			if(is_retreating)
-				stop_moving()
-				stance = HOSTILE_STANCE_IDLE
-
-			if(!food_target && COOLDOWN_FINISHED(src, food_cooldown))
-				for(var/obj/item/reagent_container/food/snacks/food in view(6, src))
-					if(!is_type_in_list(food, acceptable_foods))
-						continue
-					food_target = food
-					stance = HOSTILE_STANCE_ALERT
-					stop_automated_movement = TRUE
-					MoveTo(food_target)
-					break
-
-			if(stance <= HOSTILE_STANCE_ALERT && !food_target && COOLDOWN_FINISHED(src, calm_cooldown))
-				var/intruder_in_sight = FALSE
-				for(var/mob/living/carbon/intruder in view(5, src))
-					if((intruder.faction in faction_group) || intruder.stat != CONSCIOUS || ismonkey(intruder) || intruder.alpha <= 200)
-						continue
-
-					intruder_in_sight = TRUE
-					face_atom(intruder)
-					stance = HOSTILE_STANCE_ALERT
-					stop_automated_movement = TRUE
-					if(get_dist(src, intruder) == 3)
-						growl(intruder)
-					else if(get_dist(src, intruder) <= 2)
-						Retaliate()
-						COOLDOWN_START(src, pounce_cooldown, 1 SECONDS)
-						break
-
-				if(!intruder_in_sight && stance == HOSTILE_STANCE_ALERT)
-					stance = HOSTILE_STANCE_IDLE
-
-			if(food_target && !is_eating)
-				if(!(food_target in view(5, src)))
-					stop_moving()
-					lose_food()
-				else if(!check_food_loc(food_target) && Adjacent(food_target))
-					INVOKE_ASYNC(src, PROC_REF(handle_food), food_target)
-
 	. = ..()
 
-	if(!client && target_mob && !is_retreating && target_mob.stat == CONSCIOUS && stance == HOSTILE_STANCE_ATTACKING && COOLDOWN_FINISHED(src, pounce_cooldown) && (prob(75) || get_dist(src, target_mob) <= 5) && (target_mob in view(5, src)))
+	if(client)
+		return .
+
+	//if we haven't gotten hurt in a while, calm down and go back to idling
+	if(aggression_value == 0 && stance == HOSTILE_STANCE_ATTACKING)
+		enemies = new()
+		LoseTarget()
+		if(COOLDOWN_FINISHED(src, emote_cooldown))
+			manual_emote("calms down.")
+			COOLDOWN_START(src, calm_cooldown, 4 SECONDS)
+			COOLDOWN_START(src, emote_cooldown, 3 SECONDS)
+
+	//no longer interested in food when we're in combat
+	if(stance > HOSTILE_STANCE_ALERT)
+		is_eating = FALSE
+
+	if(stance == HOSTILE_STANCE_IDLE)
+		stop_automated_movement = FALSE
+		//if there's a friend on the same tile as us, don't bother getting up (cute!)
+		var/mob/living/carbon/friend = locate(/mob/living/carbon) in get_turf(src)
+		if((friend?.faction in faction_group) && resting)
+			chance_to_rest = 0
+
+		if(prob(chance_to_rest))
+			set_resting(!resting)
+			chance_to_rest = 0
+
+		chance_to_rest += rand(1, 2)
+
+	//if we're resting and something catches our interest, get up
+	if(stance != HOSTILE_STANCE_IDLE && resting)
+		set_resting(FALSE)
+
+	if(target_mob && !is_retreating && target_mob.stat == CONSCIOUS && stance == HOSTILE_STANCE_ATTACKING && COOLDOWN_FINISHED(src, pounce_cooldown) && (prob(75) || get_dist(src, target_mob) <= 5) && (target_mob in view(5, src)))
 		pounce(target_mob)
+
+	if(target_mob || on_fire)
+		return .
+
+	if(is_retreating)
+		stop_moving()
+		stance = HOSTILE_STANCE_IDLE
+
+	if(!food_target && COOLDOWN_FINISHED(src, food_cooldown))
+		for(var/obj/item/reagent_container/food/snacks/food in view(6, src))
+			if(!is_type_in_list(food, acceptable_foods))
+				continue
+			food_target = food
+			stance = HOSTILE_STANCE_ALERT
+			stop_automated_movement = TRUE
+			MoveTo(food_target)
+			break
+
+	if(stance <= HOSTILE_STANCE_ALERT && !food_target && COOLDOWN_FINISHED(src, calm_cooldown))
+		var/intruder_in_sight = FALSE
+		for(var/mob/living/carbon/intruder in view(5, src))
+			if((intruder.faction in faction_group) || intruder.stat != CONSCIOUS || ismonkey(intruder) || intruder.alpha <= 200)
+				continue
+
+			intruder_in_sight = TRUE
+			face_atom(intruder)
+			stance = HOSTILE_STANCE_ALERT
+			stop_automated_movement = TRUE
+			if(get_dist(src, intruder) == 3)
+				growl(intruder)
+			else if(get_dist(src, intruder) <= 2)
+				Retaliate()
+				COOLDOWN_START(src, pounce_cooldown, 1 SECONDS)
+				break
+
+		if(!intruder_in_sight && stance == HOSTILE_STANCE_ALERT)
+			stance = HOSTILE_STANCE_IDLE
+
+	if(food_target && !is_eating)
+		if(!(food_target in view(5, src)))
+			stop_moving()
+			lose_food()
+		else if(!check_food_loc(food_target) && Adjacent(food_target))
+			INVOKE_ASYNC(src, PROC_REF(handle_food), food_target)
+
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bullet_act(obj/projectile/projectile)
 	. = ..()
@@ -453,20 +469,22 @@
 
 ///Proc for checking if someone picked our food target.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/check_food_loc(obj/food)
-	if(ismob(food.loc))
-		var/mob/living/food_holder = food.loc
-		stop_moving()
-		COOLDOWN_START(src, food_cooldown, 15 SECONDS)
-		food_target = null
-		is_eating = FALSE
-		//snagging the food while you're right next to the mob makes it very angry
-		if(get_dist(src, food_holder) <= 2 && !(food_holder.faction in faction_group))
-			Retaliate()
-			return TRUE
+	if(!ismob(food.loc))
+		return
 
-		growl(food.loc)
-		stance = HOSTILE_STANCE_IDLE
+	var/mob/living/food_holder = food.loc
+	stop_moving()
+	COOLDOWN_START(src, food_cooldown, 15 SECONDS)
+	food_target = null
+	is_eating = FALSE
+	//snagging the food while you're right next to the mob makes it very angry
+	if(get_dist(src, food_holder) <= 2 && !(food_holder.faction in faction_group))
+		Retaliate()
 		return TRUE
+
+	growl(food.loc)
+	stance = HOSTILE_STANCE_IDLE
+	return TRUE
 
 //Proc for when we lose our food target.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/lose_food()
@@ -487,9 +505,9 @@
 	//we need to check for monkeys else these guys will tear up all the small hosts for xenos
 	if((target.faction == faction || (target.faction in faction_group)) && !attack_same || ismonkey(target))
 		return FALSE
-	else if(target in friends)
+	if(target in friends)
 		return FALSE
-	else if(target.stat != DEAD)
+	if(target.stat != DEAD)
 		return target
 
 //Mobs in critical state are now fair game. Rip and tear.

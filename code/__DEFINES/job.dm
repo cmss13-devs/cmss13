@@ -267,12 +267,8 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_UPP_SPECIALIST "UPP Serzhant"
 #define JOB_UPP_LEADER "UPP Starshiy Serzhant"
 #define JOB_UPP_POLICE "UPP Politsiya"
-<<<<<<< HEAD
 #define JOB_UPP_LT_OFFICER "UPP Mladshiy Leytenant"
-=======
 #define JOB_UPP_SUPPLY "UPP Logistics Technician"
-#define JOB_UPP_LT_OFFICER "UPP Leytenant"
->>>>>>> upstream/master
 #define JOB_UPP_LT_DOKTOR "UPP Leytenant Doktor"
 #define JOB_UPP_SRLT_OFFICER "UPP Starshiy Leytenant"
 #define JOB_UPP_KPT_OFFICER "UPP Kapitan"

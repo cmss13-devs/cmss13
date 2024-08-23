@@ -3786,14 +3786,11 @@
 
 //*****************************************************************************************************/
 
-<<<<<<< HEAD
 /datum/equipment_preset/upp/doctor
 	name = "UPP Doktor"
-=======
 /datum/equipment_preset/upp/conscript
 	//meme role
 	name = "UPP Conscript"
->>>>>>> upstream/master
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp

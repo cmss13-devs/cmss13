@@ -25,7 +25,6 @@
 	if(isnull(item_reference))
 		return
 	new item_reference(machine_loc)
-	return
 
 /datum/research_upgrades/machinery
 	name = "Machinery"

@@ -104,7 +104,7 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
 	if(values["extra_titles_encoded"])
 		admin.rank_ids_extra = json_decode(values["extra_titles_encoded"])
 		for(var/rank_id as anything in admin.rank_ids_extra)
-			var/datum/view_record/admin_rank = SAFEPICK(DB_VIEW(/datum/view_record/admin_rank, DB_COMP("id", DB_EQUALS, text2num(rank_id))))
+			var/datum/view_record/admin_rank/admin_rank = SAFEPICK(DB_VIEW(/datum/view_record/admin_rank, DB_COMP("id", DB_EQUALS, text2num(rank_id))))
 			if(!admin_rank)
 				continue
 			admin.extra_titles += admin_rank.rank_name

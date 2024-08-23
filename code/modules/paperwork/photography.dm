@@ -11,7 +11,7 @@
 *******/
 /obj/item/device/camera_film
 	name = "film cartridge"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/paper.dmi'
 	desc = "A camera film cartridge. Insert it into a camera to reload it."
 	icon_state = "film"
 	item_state = "electropack"
@@ -27,8 +27,8 @@
 ********/
 /obj/item/photo
 	name = "photo"
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "photo"
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "photo_item"
 	item_state = "paper"
 	w_class = SIZE_TINY
 	var/icon/img //Big photo image

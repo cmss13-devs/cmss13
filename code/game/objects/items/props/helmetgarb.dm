@@ -542,8 +542,8 @@
 /obj/item/prop/helmetgarb/family_photo
 	name = "family photo"
 	desc = ""
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "photo"
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "photo_item"
 	///The human who spawns with the photo
 	var/datum/weakref/owner
 	///The belonging human name

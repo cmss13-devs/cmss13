@@ -981,23 +981,6 @@
 		var/obj/item/clothing/mask/new_glasses = pick(possible_glasses)
 		new_human.equip_to_slot_or_del(new new_glasses, WEAR_EYES)
 
-/datum/equipment_preset/uscm/proc/spawn_marine_armor(mob/living/carbon/human/new_human)
-	if(prob(66))
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium, WEAR_JACKET)
-	else if(prob(50))
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light, WEAR_JACKET)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/heavy, WEAR_JACKET)
-
-/datum/equipment_preset/uscm/proc/spawn_marine_backpack(mob/living/carbon/human/new_human)
-	if(prob(75))
-		new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel, WEAR_BACK)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine, WEAR_BACK)
-
-/datum/equipment_preset/uscm/proc/spawn_marine_sidearm(mob/living/carbon/human/new_human)
-	return
-
 //## Rifleman ##//
 /datum/equipment_preset/uscm/rifleman_pve
 	name = "USCM Solar Devils Rifleman"

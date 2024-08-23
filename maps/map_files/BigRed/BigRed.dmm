@@ -19764,7 +19764,7 @@
 /area/space)
 "cns" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "se-checkpoint"
+	insert_tag = "se_checkpoint"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris/rock,

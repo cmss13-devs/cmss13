@@ -149,6 +149,7 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(setup_hvh_damage))
 
 /datum/ammo/bullet/minigun/proc/setup_hvh_damage()
+	SIGNAL_HANDLER
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		damage = 15
 

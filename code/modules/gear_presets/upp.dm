@@ -4133,7 +4133,7 @@
 	skills = /datum/skills/upp/commissar
 
 
-/datum/equipment_preset/upp/Commisar/leader/dressed
+/datum/equipment_preset/upp/commissar/dressed
 	name = "UPP Political Commissar"
 	flags = EQUIPMENT_PRESET_EXTRA
 

@@ -293,7 +293,8 @@
 
 	if(bleed_ticks)
 		var/is_small_pool = FALSE
-		if(bleed_ticks < 10) is_small_pool = TRUE
+		if(bleed_ticks < 10)
+			is_small_pool = TRUE
 		bleed_ticks--
 		add_splatter_floor(loc, is_small_pool)
 
@@ -336,12 +337,14 @@
 		pounce(target_mob)
 
 	if(target_mob || on_fire)
-		return .
+		return
 
+	//if we are retreating, but we don't have any targets or we're not on fire, stop retreating
 	if(is_retreating)
 		stop_moving()
 		stance = HOSTILE_STANCE_IDLE
 
+	//if we're hungry and we don't have already have our eyes on a snack, try eating food if possible
 	if(!food_target && COOLDOWN_FINISHED(src, food_cooldown))
 		for(var/obj/item/reagent_container/food/snacks/food in view(6, src))
 			if(!is_type_in_list(food, acceptable_foods))
@@ -352,6 +355,7 @@
 			MoveTo(food_target)
 			break
 
+	//handling mobs that are invading our personal space
 	if(stance <= HOSTILE_STANCE_ALERT && !food_target && COOLDOWN_FINISHED(src, calm_cooldown))
 		var/intruder_in_sight = FALSE
 		for(var/mob/living/carbon/intruder in view(5, src))
@@ -372,10 +376,12 @@
 		if(!intruder_in_sight && stance == HOSTILE_STANCE_ALERT)
 			stance = HOSTILE_STANCE_IDLE
 
+	//if we have a snack that we want to eat, but we're not munching on it currently, check if it's close to us.
 	if(food_target && !is_eating)
 		if(!(food_target in view(5, src)))
 			stop_moving()
 			lose_food()
+		//if the food is next to us AND not in the hands of a mob, start eating
 		else if(!check_food_loc(food_target) && Adjacent(food_target))
 			INVOKE_ASYNC(src, PROC_REF(handle_food), food_target)
 
@@ -503,9 +509,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/evaluate_target(mob/living/target)
 	//we need to check for monkeys else these guys will tear up all the small hosts for xenos
-	if((target.faction == faction || (target.faction in faction_group)) && !attack_same || ismonkey(target))
-		return FALSE
-	if(target in friends)
+	if((target.faction == faction || (target.faction in faction_group)) && !attack_same || ismonkey(target) || (target in friends))
 		return FALSE
 	if(target.stat != DEAD)
 		return target

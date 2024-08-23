@@ -52,10 +52,32 @@
 
 	next_scan = world.time + 15
 	var/area/A = get_area(src)
-	var/APC = A? A.get_apc() : null
+	var/atom/APC = A? A.get_apc() : null
 	if(APC)
 		to_chat(user, SPAN_NOTICE("The local APC is located at [SPAN_BOLD("[get_dist(src, APC)] units [dir2text(Get_Compass_Dir(src, APC))]")]."))
 		user.balloon_alert(user, "[get_dist(src, APC)] units [dir2text(Get_Compass_Dir(src, APC))]")
+		if(user.client)
+			//Create the appearance so we have something to apply the filter to.
+			var/mutable_appearance/apc_appearnce = new /mutable_appearance()
+			apc_appearnce.appearance = APC
+			apc_appearnce.filters += list("type" = "outline", "size" = 1, "color" = COLOR_GREEN)
+			var/image/final_image = image(apc_appearnce)
+			//Make it an image we can give to the client
+
+			final_image.layer = WALL_OBJ_LAYER
+			final_image.plane = GAME_PLANE
+			final_image.loc = get_turf(APC)
+			final_image.dir = apc_appearnce.dir
+			user.client.images += final_image
+			addtimer(CALLBACK(src, PROC_REF(remove_apc_highlight), user.client, final_image), 2 SECONDS)
+
+
 	else
 		to_chat(user, SPAN_WARNING("ERROR: Could not locate local APC."))
 		user.balloon_alert(user, "could not locate!")
+
+/obj/item/device/multitool/proc/remove_apc_highlight(client/user_client, image/highlight_image)
+	if(!user_client)
+		return
+	user_client.images -= highlight_image
+

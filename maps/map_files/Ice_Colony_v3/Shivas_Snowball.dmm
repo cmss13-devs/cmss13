@@ -12692,11 +12692,11 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/warehouse/caves)
 "jWL" = (
-/obj/structure/machinery/space_heater,
 /obj/structure/machinery/light/double{
 	dir = 1;
 	pixel_y = 9
 	},
+/obj/structure/machinery/power/smes/buildable,
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/aux_power)
 "jXD" = (
@@ -15502,6 +15502,10 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/research_caves)
+"niD" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/aux_power)
 "niL" = (
 /obj/structure/platform/strata{
 	dir = 8
@@ -19149,6 +19153,9 @@
 /obj/structure/machinery/light/double{
 	dir = 1;
 	pixel_y = 9
+	},
+/obj/structure/machinery/power/smes/buildable{
+	pixel_x = 1
 	},
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/aux_power)
@@ -23648,6 +23655,10 @@
 /obj/item/tool/warning_cone,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
+"xEU" = (
+/obj/structure/machinery/power/smes/buildable,
+/turf/open/floor/shiva/yellowfull/west,
+/area/shiva/interior/garage)
 "xFp" = (
 /obj/structure/bed/chair/comfy/orange{
 	dir = 4
@@ -33924,7 +33935,7 @@ puZ
 puZ
 anc
 anc
-ctz
+niD
 cJu
 cJu
 nTC
@@ -50679,11 +50690,11 @@ ktd
 ktd
 ktd
 ktd
-ktd
+xEU
 tXd
 ado
 pSD
-ktd
+xEU
 ktd
 ktd
 ktd

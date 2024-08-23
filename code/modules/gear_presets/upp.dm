@@ -4117,10 +4117,13 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/commisar
+	title = JOB_UPP_COMMISSAR
+	selection_class = "job_antag"
+	gear_preset = /datum/equipment_preset/upp/commissar
 
 /datum/equipment_preset/upp/commissar
-	name = "UPP Political Commissar"
-	flags = EQUIPMENT_PRESET_EXTRA
+	name = "UPP Political Commissar (Cryo)"
 
 	assignment = JOB_UPP_COMMISSAR
 	rank = JOB_UPP_COMMISSAR
@@ -4129,7 +4132,20 @@
 	minimum_age = 30
 	skills = /datum/skills/upp/commissar
 
+
+/datum/equipment_preset/upp/Commisar/leader/dressed
+	name = "UPP Political Commissar"
+	flags = EQUIPMENT_PRESET_EXTRA
+
 /datum/equipment_preset/upp/commissar/load_gear(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command(new_human), WEAR_L_EAR)
+
+/datum/equipment_preset/upp/commissar/dressed/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)

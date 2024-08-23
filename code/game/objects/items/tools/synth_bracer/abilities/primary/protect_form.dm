@@ -41,6 +41,8 @@
 	addtimer(CALLBACK(src, PROC_REF(disable_shield), wearer), 120)
 
 /obj/item/clothing/gloves/synth/proc/disable_shield(charge_cost)
+	if(!active_ability == SIMI_ABILITY_PROTECT)
+		return FALSE
 	flags_item &= ~NODROP
 	flags_inventory &= ~CANTSTRIP
 	wearer.melee_allowed = saved_melee_allowed

@@ -925,10 +925,7 @@
 /turf/open/floor/plating/kutjevo/panelscorched,
 /area/kutjevo/interior/complex/botany/east_tech)
 "buo" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/kutjevo/colors/orange/inner_corner,
 /area/kutjevo/interior/foremans_office)
 "bux" = (
@@ -1221,11 +1218,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/foremans_office)
 "bQk" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/kutjevo/colors/orange/edge/north,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "bQy" = (
@@ -1294,6 +1287,11 @@
 /obj/effect/landmark/corpsespawner/security/marshal,
 /turf/open/gm/river/desert/deep/toxic,
 /area/kutjevo/interior/power)
+"bVI" = (
+/obj/structure/surface/table/gamblingtable,
+/obj/item/storage/box/stompers,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/construction)
 "bVK" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 9;
@@ -1475,11 +1473,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "coF" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "coL" = (
@@ -5426,11 +5420,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/construction)
 "hIp" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/kutjevo/colors/orange/edge/west,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "hJN" = (
@@ -5655,11 +5645,7 @@
 /turf/closed/wall/kutjevo/colony,
 /area/kutjevo/interior/complex/med/pano)
 "ifE" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/kutjevo/tan/grey_edge/west,
 /area/kutjevo/interior/construction)
 "ifT" = (
@@ -6167,11 +6153,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/kutjevo/colors/cyan/edge/west,
 /area/kutjevo/interior/complex/med/auto_doc)
 "jcl" = (
@@ -7568,11 +7550,7 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
 "lfb" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/kutjevo/multi_tiles/west,
 /area/kutjevo/interior/complex/med/locks)
 "lfm" = (
@@ -7692,11 +7670,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/complex_border/med_rec)
 "lpF" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/kutjevo/colors/cyan/edge/north,
 /area/kutjevo/interior/complex/med/triage)
 "lpJ" = (
@@ -8204,11 +8178,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
 "mdw" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 29;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east)
 "mej" = (
@@ -9187,11 +9157,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_central/mine_elevator)
 "nyp" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/kutjevo/colors/cyan/edge/north,
 /area/kutjevo/interior/complex/med/operating)
@@ -9311,11 +9277,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_dunes)
 "nFY" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 29;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/telecomm/lz1_south)
 "nGg" = (
@@ -11181,11 +11143,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/med/pano)
@@ -11255,13 +11213,8 @@
 /turf/open/gm/river/desert/deep/toxic,
 /area/kutjevo/interior/oob)
 "qwT" = (
-/obj/item/tool/wirecutters/clippers,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
-/turf/open/auto_turf/sand/layer0,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "qxc" = (
 /obj/structure/barricade/metal/wired{
@@ -11509,11 +11462,7 @@
 /area/kutjevo/interior/complex/botany)
 "qQp" = (
 /obj/item/frame/rack,
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east_tech)
 "qQU" = (
@@ -11567,11 +11516,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "qVe" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 29;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/telecomm/lz2_north)
 "qVg" = (
@@ -11602,11 +11547,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "qXd" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
 "qYn" = (
@@ -11842,11 +11783,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_pad)
 "rsM" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/kutjevo/multi_tiles/east,
 /area/kutjevo/interior/colony_South/power2)
 "rsV" = (
@@ -11880,11 +11817,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany)
 "rvZ" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power/comms)
 "rwj" = (
@@ -14631,11 +14564,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/scrubland)
 "vqQ" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 29;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/telecomm/lz2_south)
 "vre" = (
@@ -15574,11 +15503,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "wNh" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -15589,11 +15514,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "wOI" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -15741,11 +15662,7 @@
 /turf/open/floor/kutjevo/colors/green/tile,
 /area/kutjevo/interior/complex/botany/east)
 "xca" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/kutjevo/tan/alt_inner_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "xcG" = (
@@ -15865,11 +15782,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "xof" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 29;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "xoq" = (
@@ -16193,11 +16106,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
 "xRx" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
 	},
@@ -33477,7 +33386,7 @@ lHs
 kDS
 xQM
 mbS
-nCM
+qwT
 bds
 qGA
 mbS
@@ -33979,7 +33888,7 @@ kDS
 alh
 mbS
 mbS
-qwT
+qGA
 xfW
 nCM
 mbS
@@ -37096,7 +37005,7 @@ wuL
 juz
 oUP
 vfr
-gew
+bVI
 wAo
 uDm
 sCG

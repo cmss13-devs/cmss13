@@ -152,6 +152,9 @@ GLOBAL_LIST_INIT_TYPED(chemical_gen_classes_list, /list, list("C" = list(),"C1" 
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
 GLOBAL_LIST_INIT_TYPED(generated_properties, /list, list("positive" = list(), "negative" = list(), "neutral" = list()))
 
+GLOBAL_LIST_INIT_TYPED(space_weapons, /datum/space_weapon, setup_ship_weapon())
+GLOBAL_LIST_INIT_TYPED(space_weapons_ammo, /datum/space_weapon_ammo, setup_ship_ammo())
+
 GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo()) //List of all ammo types. Used by guns to tell the projectile how to act.
 GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title) //List of all jobstypes, minus borg and AI
 
@@ -348,6 +351,20 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 		all_species[S.name] = S
 	return all_species
 
+/proc/setup_ship_weapon()
+	var/list/ammo_list = list()
+	for(var/weapon_type in subtypesof(/datum/space_weapon))
+		var/datum/space_weapon/new_weapon  = new weapon_type
+		ammo_list[new_weapon.type] = new_weapon
+	return ammo_list
+
+/proc/setup_ship_ammo()
+	var/list/ammo_list = list()
+	for(var/ammo_type in subtypesof(/datum/space_weapon_ammo))
+		var/datum/space_weapon_ammo/new_ammo = new ammo_type
+		ammo_list[new_ammo.type] = new_ammo
+	return ammo_list
+
 /proc/setup_ammo()
 	var/list/blacklist = list(/datum/ammo/energy, /datum/ammo/energy/yautja, /datum/ammo/energy/yautja/rifle, /datum/ammo/bullet/shotgun, /datum/ammo/xeno)
 	var/list/ammo_list = list()
@@ -527,26 +544,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(all_skills, /datum/skill, skill_name)
 // Timelock
 GLOBAL_LIST_EMPTY(timelocks)
 
-
-//the global list of specialist kits that haven't been claimed yet.
-GLOBAL_LIST_INIT(available_specialist_sets, list(
-			"Scout Set",
-			"Sniper Set",
-			"Anti-materiel Sniper Set",
-			"Demolitionist Set",
-			"Heavy Grenadier Set",
-			"Pyro Set"
-			))
-
-//Similar thing, but used in /obj/item/spec_kit
-GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
-			"Pyro" = 2,
-			"Grenadier" = 2,
-			"Sniper" = 2,
-			"Scout" = 2,
-			"Demo" = 2,
-			"Anti-materiel Sniper" = 2,
-			))
+GLOBAL_LIST_EMPTY_TYPED(specialist_set_name_dict, /datum/specialist_set)
+GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_specialist_sets())
 
 /proc/init_global_referenced_datums()
 	init_keybindings()

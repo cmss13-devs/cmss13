@@ -131,10 +131,7 @@
 /turf/open/floor/plating/warnplate/west,
 /area/bigredv2/outside/telecomm/warehouse)
 "S" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 2.5;

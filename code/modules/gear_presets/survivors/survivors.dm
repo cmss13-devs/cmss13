@@ -5,7 +5,7 @@
 
 	skills = /datum/skills/civilian/survivor
 	languages = list(LANGUAGE_ENGLISH)
-	paygrade = PAY_SHORT_CIV
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/lanyard
 	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_SURVIVOR)
@@ -17,6 +17,74 @@
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
+
+	dress_under = list(
+		/obj/item/clothing/under/liaison_suit/black,
+		/obj/item/clothing/under/liaison_suit/blue,
+		/obj/item/clothing/under/liaison_suit/brown,
+		/obj/item/clothing/under/liaison_suit/corporate_formal,
+		/obj/item/clothing/under/liaison_suit,
+		/obj/item/clothing/under/liaison_suit/charcoal,
+		/obj/item/clothing/under/liaison_suit/formal,
+		/obj/item/clothing/under/liaison_suit/blazer,
+		/obj/item/clothing/under/liaison_suit/suspenders,
+		/obj/item/clothing/under/blackskirt,
+		/obj/item/clothing/under/suit_jacket/trainee,
+		/obj/item/clothing/under/liaison_suit/ivy,
+		/obj/item/clothing/under/liaison_suit/orange,
+		/obj/item/clothing/under/liaison_suit/field,
+		/obj/item/clothing/under/colonist/workwear,
+		/obj/item/clothing/under/colonist/workwear/khaki,
+		/obj/item/clothing/under/colonist/workwear/pink,
+		/obj/item/clothing/under/colonist/workwear/green,
+	)
+	dress_over = list(
+		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
+		/obj/item/clothing/suit/storage/jacket/marine/corporate,
+		/obj/item/clothing/suit/storage/jacket/marine/corporate/brown,
+		/obj/item/clothing/suit/storage/jacket/marine/corporate/blue,
+		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
+		/obj/item/clothing/suit/storage/jacket/marine/bomber/grey,
+		/obj/item/clothing/suit/storage/jacket/marine/bomber/red,
+		/obj/item/clothing/suit/storage/jacket/marine/bomber,
+		/obj/item/clothing/suit/storage/bomber,
+		/obj/item/clothing/suit/storage/bomber/alt,
+		/obj/item/clothing/suit/storage/snow_suit/liaison,
+		/obj/item/clothing/suit/storage/labcoat,
+		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
+		/obj/item/clothing/suit/storage/jacket/marine/vest,
+		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
+		/obj/item/clothing/suit/storage/webbing,
+	)
+	dress_extra = list(
+		/obj/item/clothing/accessory/black,
+		/obj/item/clothing/accessory/red,
+		/obj/item/clothing/accessory/purple,
+		/obj/item/clothing/accessory/blue,
+		/obj/item/clothing/accessory/green,
+		/obj/item/clothing/accessory/gold,
+		/obj/item/clothing/accessory/horrible,
+		/obj/item/clothing/glasses/sunglasses/big,
+		/obj/item/clothing/glasses/sunglasses/aviator,
+		/obj/item/clothing/glasses/sunglasses,
+		/obj/item/clothing/glasses/sunglasses/prescription,
+		/obj/item/clothing/glasses/regular/hipster,
+	)
+	dress_gloves = list(
+		/obj/item/clothing/gloves/black,
+		/obj/item/clothing/gloves/marine/dress,
+	)
+	dress_shoes = list(
+		/obj/item/clothing/shoes/laceup,
+		/obj/item/clothing/shoes/laceup/brown,
+		/obj/item/clothing/shoes/black,
+		/obj/item/clothing/shoes/marine/corporate,
+	)
+	dress_hat = list(
+		/obj/item/clothing/head/fedora,
+		/obj/item/clothing/head/beret/cm/black/civilian,
+		/obj/item/clothing/head/beret/cm/white/civilian,
+	)
 
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
@@ -64,6 +132,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 
 	survivor_variant = SCIENTIST_SURVIVOR
 
@@ -92,6 +161,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 
 	survivor_variant = MEDICAL_SURVIVOR
 
@@ -187,7 +257,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 /datum/equipment_preset/survivor/colonial_marshal
 	name = "Survivor - Colonial Marshal Deputy"
 	assignment = "CMB Deputy"
-	paygrade = PAY_SHORT_CMBD
+	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
@@ -256,6 +326,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/data
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_COMMAND)
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -288,7 +359,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade = PAY_SHORT_WYC2
+	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
@@ -313,20 +384,6 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	add_random_cl_survivor_loot(new_human)
 	add_ice_colony_survivor_equipment(new_human)
 	..()
-
-/datum/equipment_preset/survivor/corporate/load_rank(mob/living/carbon/human/new_human)
-	if(new_human.client)
-		var/playtime = get_job_playtime(new_human.client, JOB_CORPORATE_LIAISON)
-		if(new_human.client.prefs.playtime_perks)
-			if(playtime > JOB_PLAYTIME_TIER_4)
-				return PAY_SHORT_WYC5
-			else if(playtime > JOB_PLAYTIME_TIER_3)
-				return PAY_SHORT_WYC4
-			else if(playtime > JOB_PLAYTIME_TIER_2)
-				return PAY_SHORT_WYC3
-			else
-				return paygrade
-	return paygrade
 
 // ---- Trucker Survivor
 
@@ -408,7 +465,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade = PAY_SHORT_ICCL
+	paygrades = list(PAY_SHORT_ICCL = JOB_PLAYTIME_TIER_0)
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
@@ -442,7 +499,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "USCM Survivor"
 	skills = /datum/skills/civilian/survivor/marshal
 	idtype = /obj/item/card/id/dogtag
-	paygrade = PAY_SHORT_ME2
+	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 

@@ -896,7 +896,7 @@
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/bunker01/hydroponics)
 "df" = (
-/obj/structure/machinery/hydro_floodlight,
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/almayer/blue/northeast,
 /area/adminlevel/bunker01/hydroponics)
 "dg" = (

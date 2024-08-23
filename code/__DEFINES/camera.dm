@@ -3,8 +3,10 @@
 #define CAMERA_NET_CONTAINMENT "Containment"
 #define CAMERA_NET_CONTAINMENT_HIDDEN "Containment Hidden"
 #define CAMERA_NET_RESEARCH "Research"
+#define CAMERA_NET_BRIG "Brig"
 #define CAMERA_NET_ALAMO "Alamo"
 #define CAMERA_NET_NORMANDY "Normandy"
+#define CAMERA_NET_SAIPAN "Saipan"
 #define CAMERA_NET_COLONY "Colony"
 #define CAMERA_NET_ARES "ARES"
 

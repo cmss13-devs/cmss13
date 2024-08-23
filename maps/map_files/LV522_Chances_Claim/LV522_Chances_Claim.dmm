@@ -38961,6 +38961,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security/glass)
 "ukT" = (
+/turf/open/floor/prison/floor_marked,
 /area/lv522/indoors/lone_buildings/engineering)
 "ulh" = (
 /turf/closed/shuttle/dropship3/tornado{

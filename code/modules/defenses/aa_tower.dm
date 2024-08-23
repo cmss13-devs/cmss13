@@ -35,7 +35,7 @@
 	var/fire_angle = 90
 
 /obj/structure/machinery/defenses/planetary_anti_air/proc/fire()
-	if(!(world.time-last_fired >= fire_delay) || !turned_on || health <= 0)
+	if(!(world.time - last_fired >= fire_delay) || !turned_on || health <= 0)
 		return
 
 	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
@@ -45,11 +45,10 @@
 
 	last_fired = world.time
 
-/obj/structure/machinery/defenses/planetary_anti_air/destroyed_action()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
-
 /obj/structure/machinery/defenses/planetary_anti_air/get_examine_text(mob/user)
 	var/message = ""
+	if(stat == DEFENSE_DAMAGED)
+		message += "It does not appear to be working."
 	if(ishuman(user))
 		if (FACTION_UPP in faction_group)
 			message += SPAN_INFO("It is currently allied to [FACTION_UPP].") + "\n"
@@ -242,3 +241,19 @@
 /obj/structure/machinery/defenses/planetary_anti_air/Destroy()
 	remove_protected_area()
 	. = ..()
+
+/obj/structure/machinery/defenses/planetary_anti_air/destroyed_action()
+	remove_protected_area()
+	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
+
+	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
+
+	sleep(10)
+
+	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("AA tower explosion"))
+
+/obj/structure/machinery/defenses/planetary_anti_air/damaged_action(damage)
+	if(health < health_max * 0.15)
+		visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] cracks and breaks apart!"))
+		stat |= DEFENSE_DAMAGED
+		power_off_action()

@@ -29,6 +29,7 @@
 	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
 	var/can_bloody = TRUE //Can blood spawn on this turf?
 	var/list/linked_pylons
+	var/list/linked_aa
 	var/obj/effect/alien/weeds/weeds
 
 	var/list/datum/automata_cell/autocells
@@ -386,6 +387,7 @@
 	// return src
 
 	var/pylons = linked_pylons
+	var/aa_to_copy = linked_aa
 
 	var/list/old_baseturfs = baseturfs
 
@@ -413,6 +415,7 @@
 		W.baseturfs = old_baseturfs
 
 	W.linked_pylons = pylons
+	W.linked_aa = aa_to_copy
 
 	W.hybrid_lights_affecting = old_hybrid_lights_affecting
 	W.dynamic_lumcount = dynamic_lumcount
@@ -729,6 +732,16 @@
 				protection_level = P.protection_level
 		else
 			LAZYREMOVE(linked_pylons, pylon)
+
+	return protection_level
+
+/turf/proc/get_aa_protection_level(faction)
+	var/protection_level = TURF_PROTECTION_NONE
+	for (var/obj/structure/machinery/defenses/planetary_anti_air/planetary_aa in src.linked_aa)
+		if (!(faction in planetary_aa.faction_group))
+			var/protection_lvl = planetary_aa.get_protection_level(src)
+			if(protection_lvl > protection_level)
+				protection_level = protection_lvl
 
 	return protection_level
 

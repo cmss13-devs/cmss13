@@ -1708,6 +1708,7 @@
 #include "code\modules\decorators\mass_xeno_decorator.dm"
 #include "code\modules\decorators\weapon_decorator.dm"
 #include "code\modules\decorators\weapon_map_decorator.dm"
+#include "code\modules\defenses\aa_tower.dm"
 #include "code\modules\defenses\bell_tower.dm"
 #include "code\modules\defenses\defenses.dm"
 #include "code\modules\defenses\handheld.dm"

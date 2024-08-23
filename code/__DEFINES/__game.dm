@@ -494,6 +494,9 @@
 #define TURF_PROTECTION_CAS 2
 #define TURF_PROTECTION_OB 3
 
+#define TURF_AA_PROTECTION_CAS_COVERED 4
+#define TURF_AA_PROTECTION_CAS_RESTRICTED 5
+
 /// Convert a turf protection level to a ceiling protection level
 /proc/get_ceiling_protection_level(turf_protection_level)
 	switch(turf_protection_level)

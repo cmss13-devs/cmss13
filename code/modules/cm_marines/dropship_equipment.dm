@@ -931,6 +931,10 @@
 		to_chat(user, SPAN_WARNING("There's another dropship hovering over that medevac stretcher."))
 		return
 
+
+	if(!linked_shuttle.aa_protection_check(location, user))
+		return FALSE
+
 	if(!linked_shuttle)
 		return
 

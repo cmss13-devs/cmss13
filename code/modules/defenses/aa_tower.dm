@@ -30,6 +30,21 @@
 	var/linked_turfs_restricted = list()
 	var/linked_turfs_covered = list()
 
+	var/last_fired = 0
+	var/fire_delay = 30
+	var/fire_angle = 90
+
+/obj/structure/machinery/defenses/planetary_anti_air/proc/fire()
+	if(!(world.time-last_fired >= fire_delay) || !turned_on || health <= 0)
+		return
+
+	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
+	sleep(3)
+	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] fire projectiles into air!")]")
+	playsound(loc, 'sound/weapons/gun_rifle.ogg', 60, 1)
+
+	last_fired = world.time
+
 /obj/structure/machinery/defenses/planetary_anti_air/destroyed_action()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
 

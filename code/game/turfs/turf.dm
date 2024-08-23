@@ -735,6 +735,18 @@
 
 	return protection_level
 
+/turf/proc/get_aa_with_highest_protection_level(faction)
+	var/obj/structure/machinery/defenses/planetary_anti_air/highest_aa = null
+	var/protection_level = TURF_PROTECTION_NONE
+
+	for (var/obj/structure/machinery/defenses/planetary_anti_air/planetary_aa in src.linked_aa)
+		if (!(faction in planetary_aa.faction_group))
+			var/protection_lvl = planetary_aa.get_protection_level(src)
+			if(protection_lvl > protection_level)
+				protection_level = protection_lvl
+				highest_aa = planetary_aa
+	return highest_aa
+
 /turf/proc/get_aa_protection_level(faction)
 	var/protection_level = TURF_PROTECTION_NONE
 	for (var/obj/structure/machinery/defenses/planetary_anti_air/planetary_aa in src.linked_aa)

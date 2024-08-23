@@ -809,13 +809,19 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/aa_protection_check(turf/target, mob/weapon_operator)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
-	switch(target.get_aa_protection_level(faction))
+	var/obj/structure/machinery/defenses/planetary_anti_air/highest_aa = target.get_aa_with_highest_protection_level(faction)
+	if (!highest_aa)
+		return
+
+	switch(highest_aa.get_protection_level(target))
 		if(TURF_AA_PROTECTION_CAS_COVERED)
 			to_chat(weapon_operator, SPAN_WARNING("WARNING: AA protection persist in area."))
+			highest_aa.fire()
 			dropship.on_planetary_aa_interception()
 			return TRUE
 		if(TURF_AA_PROTECTION_CAS_RESTRICTED)
 			to_chat(weapon_operator, SPAN_WARNING("WARNING: strong AA protection persist in area. Perfoming an evasive maneuver"))
+			highest_aa.fire()
 			dropship.on_planetary_aa_interception_heavy()
 			return FALSE
 	return TRUE

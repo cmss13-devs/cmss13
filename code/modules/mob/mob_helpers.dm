@@ -477,7 +477,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	return TRUE
 
 /mob/proc/can_see_reagents()
-	return stat == DEAD || issynth(src) ||HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
+	return stat == DEAD || issynth(src) || HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
 
 /**
  * Examine a mob

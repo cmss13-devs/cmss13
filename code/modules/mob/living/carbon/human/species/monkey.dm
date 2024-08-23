@@ -21,6 +21,8 @@
 		/mob/living/proc/ventcrawl,
 		/mob/living/proc/hide,
 	)
+	fire_sprite_prefix = "monkey"
+	fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
 
 /datum/species/monkey/New()
 	equip_adjust = list(

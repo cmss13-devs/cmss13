@@ -119,6 +119,9 @@
 
 	var/has_species_tab_items = FALSE
 
+	var/fire_sprite_prefix = "Standing"
+	var/fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
+
 /datum/species/New()
 	if(unarmed_type)
 		unarmed = new unarmed_type()

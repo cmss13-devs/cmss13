@@ -13,6 +13,8 @@
 	secondary_unarmed_type = /datum/unarmed_attack
 	death_message = "lets out a faint whimper as it collapses and stops moving..."
 	flags = IS_WHITELISTED|NO_BREATHE|NO_CLONE_LOSS|NO_BLOOD|NO_POISON|IS_SYNTHETIC|NO_CHEM_METABOLIZATION|NO_NEURO|NO_OVERLAYS
+	fire_sprite_prefix = "k9"
+	fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/synthetic/proc/toggle_HUD,

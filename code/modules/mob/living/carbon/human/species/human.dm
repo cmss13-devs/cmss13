@@ -90,6 +90,8 @@
 	mob_flags = KNOWS_TECHNOLOGY
 	uses_skin_color = TRUE
 	special_body_types = TRUE
+	fire_sprite_prefix = "Standing"
+	fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
 
 /datum/species/human/handle_on_fire(humanoidmob)
 	. = ..()

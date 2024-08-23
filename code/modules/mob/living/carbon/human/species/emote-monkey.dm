@@ -4,7 +4,7 @@
 
 /datum/emote/living/carbon/human/primate/New()  //Monkey's are blacklisted from human emotes on emote.dm, we need to not block the new emotes below
 	. = ..()
-	species_type_blacklist_typecache -= /datum/species/monkey
+	species_type_blacklist_typecache = null
 
 /datum/emote/living/carbon/human/primate/jump
 	key = "jump"

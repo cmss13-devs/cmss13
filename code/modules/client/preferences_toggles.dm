@@ -224,7 +224,7 @@
 	set category = "Preferences"
 	set desc = "Toggles whether the game window will be true fullscreen or normal."
 
-	TOGGLE_BITFIELD(prefs.toggle_prefs, TOGGLE_FULLSCREEN)
+	prefs.toggle_prefs ^= TOGGLE_FULLSCREEN
 	prefs.save_preferences()
 	update_fullscreen()
 

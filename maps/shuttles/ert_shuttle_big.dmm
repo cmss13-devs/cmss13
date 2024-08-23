@@ -625,9 +625,7 @@
 /turf/closed/wall/almayer/white/hull,
 /area/shuttle/ert)
 "Qb" = (
-/obj/docking_port/mobile/emergency_response/big{
-	dwidth = 8
-	},
+/obj/docking_port/mobile/emergency_response/big,
 /turf/closed/wall/almayer/white/hull,
 /area/shuttle/ert)
 "Qr" = (

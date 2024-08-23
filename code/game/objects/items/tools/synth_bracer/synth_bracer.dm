@@ -64,9 +64,9 @@
 	var/bracer_color = SIMI_COLOR_DEFAULT
 
 	// Capability states used in FORITIFY mode.
-	var/saved_melee_allowed
-	var/saved_throw_allowed
-	var/saved_gun_allowed
+	var/saved_melee_allowed = TRUE
+	var/saved_throw_allowed = TRUE
+	var/saved_gun_allowed = FALSE
 
 	var/mob/living/carbon/human/wearer
 

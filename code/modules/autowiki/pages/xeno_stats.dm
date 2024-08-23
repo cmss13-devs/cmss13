@@ -21,7 +21,7 @@
 
 			qdel(strain_instance)
 
-		qdel(xeno)
+		qdel(xeno_instance)
 
 	return output
 

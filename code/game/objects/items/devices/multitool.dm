@@ -68,8 +68,9 @@
 			final_image.plane = GAME_PLANE
 			final_image.loc = get_turf(APC)
 			final_image.dir = apc_appearnce.dir
+			final_image.alpha = 225
 			user.client.images += final_image
-			addtimer(CALLBACK(src, PROC_REF(remove_apc_highlight), user.client, final_image), 2 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(remove_apc_highlight), user.client, final_image), 1.4 SECONDS)
 
 
 	else

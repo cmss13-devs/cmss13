@@ -161,7 +161,7 @@
 		return
 
 	var/verify = tgui_input_list(user, "Are you SURE you wish to be named: [newname]?", "Confirm", list("Yes", "No"))
-	if(verify != "yes")
+	if(verify != "Yes")
 		return
 
 	user.change_real_name(user, newname)

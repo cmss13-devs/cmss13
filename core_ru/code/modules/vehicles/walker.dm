@@ -31,7 +31,7 @@
 	var/acid_process_cooldown = null
 	var/list/dmg_multipliers = list(
 		"all" = 1.0, //for when you want to make it invincible
-		"acid" = 1.2,
+		"acid" = 2,
 		"slash" = 0.85,
 		"bullet" = 0.2,
 		"explosive" = 5.0,
@@ -105,17 +105,30 @@
 
 /obj/vehicle/walker/get_examine_text(mob/user)
 	. = ..()
+	if(isxeno(user))
+		switch(round(100 * health / max_health))
+			if(85 to 100)
+				. += SPAN_BLUE("It's fully intact.")
+			if(65 to 85)
+				. += SPAN_GREEN("It's slightly damaged.")
+			if(45 to 65)
+				. += SPAN_ORANGE("It's badly damaged.")
+			if(25 to 45)
+				. += SPAN_RED("It's heavily damaged.")
+			else
+				. += SPAN_ALERT("It's falling apart.")
+		return
 	switch(round(100 * health / max_health))
 		if(85 to 100)
-			. += "It's fully intact."
+			. += SPAN_BLUE("It's have [round(health / 10)] % integrity.")
 		if(65 to 85)
-			. += "It's slightly damaged."
+			. += SPAN_GREEN("It's have [round(health / 10)] % integrity.")
 		if(45 to 65)
-			. += "It's badly damaged."
+			. += SPAN_ORANGE("It's have [round(health / 10)] % integrity.")
 		if(25 to 45)
-			. += "It's heavily damaged."
+			. += SPAN_RED("It's have [round(health / 10)] % integrity.")
 		else
-			. += "It's falling apart."
+			. += SPAN_ALERT("It's falling apart.")
 	. += "[left ? left.name : "Nothing"] is placed on its left hardpoint."
 	. += "[right ? right.name : "Nothing"] is placed on its right hardpoint."
 
@@ -146,7 +159,7 @@
 		if(dir != direction && GLOB.reverse_dir[dir] != direction)
 			l_move_time = world.time
 			dir = direction
-			playsound(src.loc, pick(turn_sounds), 70, 1)
+			playsound(src.loc, pick(turn_sounds), 20, 1)
 			. = TRUE
 		else
 			var/oldDir = dir
@@ -171,7 +184,7 @@
 					SPAN_DANGER("\The [src] smashes at [xeno], bringing him down!"),
 					SPAN_DANGER("You got smashed by walking metal box!")
 				)
-				xeno.AdjustKnockDown(0.5 SECONDS)
+				xeno.AdjustKnockDown(0.2 SECONDS)
 				xeno.apply_damage(round((max_health / 100) * VEHICLE_TRAMPLE_DAMAGE_MIN), BRUTE)
 				xeno.last_damage_data = create_cause_data("[initial(name)] roadkill", seats[VEHICLE_DRIVER])
 				var/mob/living/driver = seats[VEHICLE_DRIVER]
@@ -260,8 +273,8 @@
 			seats[VEHICLE_DRIVER].client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
 			seats[VEHICLE_DRIVER].set_interaction(src)
 			RegisterSignal(H, COMSIG_MOB_RESISTED, PROC_REF(move_out))
-			to_chat(seats[VEHICLE_DRIVER], SPAN_HELPFUL("Нажмите среднюю кнопку мыши чтобы менять оружие."))
-			to_chat(seats[VEHICLE_DRIVER], SPAN_HELPFUL("Нажмите Shift+MMB для сброса боеприпасов с основного орудия."))
+			to_chat(seats[VEHICLE_DRIVER], SPAN_HELPFUL("Press MMB to change your active weapon."))
+			to_chat(seats[VEHICLE_DRIVER], SPAN_HELPFUL("Press Shift+MMB for drop ammunition from active weapon."))
 
 			if(selected)
 				if(left && left.automatic)
@@ -270,9 +283,9 @@
 				if (right && right.automatic)
 					right.register_signals(user)
 
-			playsound_client(seats[VEHICLE_DRIVER].client, 'core_ru/sound/vehicle/walker/mecha_start.ogg', 60)
+			playsound_client(seats[VEHICLE_DRIVER].client, 'core_ru/sound/vehicle/walker/mecha_start.ogg', null, 40)
 			update_icon()
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), seats[VEHICLE_DRIVER].client, 'core_ru/sound/vehicle/walker/mecha_online.ogg', 60), 2 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), seats[VEHICLE_DRIVER].client, 'core_ru/sound/vehicle/walker/mecha_online.ogg', null, 40), 2 SECONDS)
 			return
 
 	to_chat(user, "Access denied.")
@@ -306,9 +319,6 @@
 		unzoom()
 	if(driver.client)
 		driver.client.mouse_pointer_icon = initial(driver.client.mouse_pointer_icon)
-
-	if(!do_after(driver, 1 SECONDS, INTERRUPT_ALL, null, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-		return
 
 	driver.unset_interaction()
 	driver.loc = src.loc

@@ -510,6 +510,10 @@
 	for(var/obj/structure/machinery/m56d_hmg/auto/gun in cur_turf)
 		gun.update_health(XENO_ACID_HMG_DAMAGE)
 
+//RUCM START
+	for(var/obj/vehicle/walker/walker in cur_turf)
+		walker.take_damage_type(15, "acid")
+//RUCM END
 //No effect when merely entering the smoke turf, for balance reasons
 /obj/effect/particle_effect/smoke/xeno_burn/Crossed(mob/living/carbon/affected_mob as mob)
 	return

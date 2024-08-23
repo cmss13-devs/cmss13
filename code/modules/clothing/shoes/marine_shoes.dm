@@ -99,6 +99,12 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 
+/obj/item/clothing/shoes/stompers
+	name = "Reebok Stompers"
+	desc = "A pair of sneakers designed to elicit a morale boosting response within anyone that witnesses them."
+	icon_state = "stompers"
+	flags_inventory = NOSLIPPING
+
 /obj/item/clothing/shoes/veteran/pmc
 	name = "polished shoes"
 	desc = "The height of fashion, but these look to be woven with protective fiber."
